@@ -41,7 +41,7 @@ jobs:
         python -m pytest ns-root/namespaces-adk/adk/plugins/memory_plugins/tests/ -v --cov=ns-root/namespaces-adk/adk/plugins/memory_plugins --cov-report=xml --cov-report=html
     
     - name: Upload coverage reports
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         file: ./coverage.xml
         flags: unittests
