@@ -7,7 +7,7 @@ metadata:
   name: machine-native-ops-governance
   version: "2.0.0"
   created: "2025-01-05"
-  updated: "2026-01-19"
+  updated: "2026-01-27"
   owner: "MachineNativeOps"
   gl_layer: "GL00-09"
 spec:
@@ -83,6 +83,24 @@ spec:
         - "create_change_request"
         - "validate_rfc"
         - "execute_migration_phase"
+    
+    - id: "system-architecture"
+      name: "System Architecture"
+      gl_layer: "GL00-09"
+      status: "active"
+      location: "gl/00-strategic/artifacts"
+      schemas:
+        - "gl/00-strategic/artifacts/frontend-backend-separation-architecture.yaml"
+      documentation:
+        - "docs/architecture/frontend-backend-separation-diagrams.md"
+      functions:
+        - "define_system_boundaries"
+        - "specify_communication_patterns"
+        - "manage_api_versions"
+      description: |
+        Frontend-backend separation architecture with API-first design.
+        Defines system boundaries, communication patterns, development workflow,
+        and deployment strategy for parallel frontend-backend development.
     
     # GL10-29: Operational Layer
     - id: "policy"
@@ -176,6 +194,40 @@ spec:
         - "validate_name"
         - "check_compliance"
         - "batch_validate"
+    
+    - id: "api-design"
+      name: "API Design Specification"
+      gl_layer: "GL30-49"
+      status: "active"
+      location: "gl/30-execution/artifacts"
+      schemas:
+        - "gl/30-execution/artifacts/api-design-specification.yaml"
+      functions:
+        - "define_api_endpoints"
+        - "validate_api_contract"
+        - "generate_openapi_spec"
+        - "enforce_api_standards"
+      description: |
+        Comprehensive API design specification including RESTful conventions,
+        versioning strategy, authentication/authorization patterns, request/response
+        formats, error handling, and OpenAPI template.
+    
+    # GL20-29: Data Layer
+    - id: "database-architecture"
+      name: "Database Architecture"
+      gl_layer: "GL20-29"
+      status: "active"
+      location: "gl/20-data/artifacts"
+      schemas:
+        - "gl/20-data/artifacts/database-architecture-specification.yaml"
+      functions:
+        - "define_data_models"
+        - "manage_schema_migrations"
+        - "enforce_data_governance"
+        - "optimize_data_access"
+      description: |
+        Database architecture specification covering data models, access patterns,
+        schema management, data governance, backup/recovery, and security.
   
   # AI 操作接口
   ai_interface:
