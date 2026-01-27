@@ -353,7 +353,7 @@ jobs:
     
     - name: Install dependencies
       run: |
-        pip install asyncio aiohttp
+        pip install aiohttp
     
     - name: Run Multi-Agent System
       env:
