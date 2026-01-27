@@ -89,7 +89,7 @@ jobs:
           fi
 
       - name: Create compliance issues
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             // Helper function to parse count outputs
