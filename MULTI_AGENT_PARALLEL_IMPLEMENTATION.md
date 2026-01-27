@@ -376,6 +376,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install pyyaml
+        pip install aiohttp
     
     - name: Run Multi-Agent System
       env:

@@ -186,6 +186,11 @@
 - **Execution Time**: Target ~60% faster than sequential (estimated)
 - **Scalability**: Configurable 1-50 parallel tasks (planned)
 - **Success Rate**: Target >80% (estimated)
+### Performance
+- **Parallel Tasks**: 20 concurrent
+- **Execution Time**: Target ~60% faster than sequential
+- **Scalability**: Configurable 1-50 parallel tasks
+- **Success Rate**: Target >80%
 
 ### System Capabilities
 - **Agent Types**: 5 specialized agents
