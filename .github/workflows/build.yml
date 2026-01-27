@@ -35,14 +35,12 @@ jobs:
     
     - name: Build package
       if: steps.check-python-package.outputs.python_package == 'true'
-      working-directory: workspace
       working-directory: ${{ steps.check-python-package.outputs.package_dir }}
       run: |
         python -m build
     
     - name: Check package
       if: steps.check-python-package.outputs.python_package == 'true'
-      working-directory: workspace
       working-directory: ${{ steps.check-python-package.outputs.package_dir }}
       run: |
         twine check dist/*
