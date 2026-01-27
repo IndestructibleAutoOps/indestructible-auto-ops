@@ -104,14 +104,14 @@ jobs:
           python3 scripts/gl/generate-audit-report.py --layer GL20-29 --output var/audit/
 
       - name: Upload Audit Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-DATA-AUDIT-${{ github.run_number }}
           path: var/audit/
           retention-days: 90
 
       - name: Upload Evidence Chain
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-DATA-EVIDENCE-${{ github.run_number }}
           path: var/evidence/

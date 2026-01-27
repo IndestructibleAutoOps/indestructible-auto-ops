@@ -206,7 +206,7 @@ jobs:
           echo "| Bandit | ✅ Complete |" >> $GITHUB_STEP_SUMMARY
 
       - name: 📤 Upload SAST reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: sast-reports
           path: |
@@ -320,7 +320,7 @@ jobs:
           echo "Total: ${{ steps.safety_check.outputs.vulnerabilities }}" >> $GITHUB_STEP_SUMMARY
 
       - name: 📤 Upload dependency reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dependency-reports
           path: |
@@ -436,7 +436,7 @@ jobs:
           cat license-summary.txt >> $GITHUB_STEP_SUMMARY || true
 
       - name: 📤 Upload license reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: license-reports
           path: |
@@ -568,7 +568,7 @@ jobs:
           EOF
 
       - name: 📤 Upload security event
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: gl-security-event
           path: gl-security-event.json

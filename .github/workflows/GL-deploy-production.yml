@@ -246,7 +246,7 @@ jobs:
           echo "digest=${DIGEST}" >> $GITHUB_OUTPUT
 
       - name: 📤 Upload production package
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: production-package
           path: production-package/
@@ -644,7 +644,7 @@ jobs:
           echo "**Active Environment:** ${{ needs.pre-flight.outputs.target_environment }}" >> $GITHUB_STEP_SUMMARY
 
       - name: 📤 Upload deployment record
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: production-deployment-record
           path: production-deployment-record.json

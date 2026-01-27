@@ -285,7 +285,7 @@ jobs:
           echo "Immediate attention required." >> $GITHUB_STEP_SUMMARY
 
       - name: 📤 Upload health report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: runner-health-report
           path: runner-health-report.json

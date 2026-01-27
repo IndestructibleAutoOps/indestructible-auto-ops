@@ -389,7 +389,7 @@ jobs:
           echo "| Initiated By | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
 
       - name: 📤 Upload rollback record
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: rollback-record
           path: rollback-record.json

@@ -108,21 +108,21 @@ jobs:
           python3 scripts/gl/generate-audit-report.py --layer GL50-59 --output var/audit/
 
       - name: Upload Monitoring Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-GPU-MONITORING-${{ github.run_number }}
           path: var/monitoring/
           retention-days: 90
 
       - name: Upload Audit Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-GPU-AUDIT-${{ github.run_number }}
           path: var/audit/
           retention-days: 90
 
       - name: Upload Evidence Chain
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-GPU-EVIDENCE-${{ github.run_number }}
           path: var/evidence/

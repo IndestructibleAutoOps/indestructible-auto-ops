@@ -57,7 +57,7 @@ jobs:
       
       - name: Upload assessment report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: fhs-assessment-report
           path: docs/fhs-integration/assessment-*.json
@@ -113,7 +113,7 @@ jobs:
       
       - name: Upload integration plan
         if: steps.check-ready.outputs.ready == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: fhs-integration-plan
           path: /tmp/integration-plan.txt
