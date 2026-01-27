@@ -471,7 +471,7 @@ jobs:
         continue-on-error: true
 
       - name: 🔒 Run Grype Container Scan
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v7
         with:
           image: 'security-scan:${{ github.sha }}'
           fail-build: false
