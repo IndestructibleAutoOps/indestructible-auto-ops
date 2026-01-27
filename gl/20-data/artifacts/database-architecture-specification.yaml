@@ -243,16 +243,16 @@ spec:
       - entity: "Session"
         description: "用戶會話 (存儲於Redis)"
         database: "Redis"
-        key_pattern: "session:{userId}:{sessionId}"
+        key_pattern: "session:{user_id}:{session_id}"
         
         fields:
-          userId: "用戶ID"
-          sessionId: "會話ID"
-          accessToken: "訪問令牌"
-          refreshToken: "刷新令牌"
-          expiresAt: "過期時間"
-          ipAddress: "IP地址"
-          userAgent: "用戶代理"
+          user_id: "用戶ID"
+          session_id: "會話ID"
+          access_token: "訪問令牌"
+          refresh_token: "刷新令牌"
+          expires_at: "過期時間"
+          ip_address: "IP地址"
+          user_agent: "用戶代理"
         
         ttl: 604800  # 7 days in seconds
   
