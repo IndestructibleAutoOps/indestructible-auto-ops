@@ -315,7 +315,7 @@ spec:
               echo "Backup finished at $(date)"
             env:
             - name: REDIS_HOST
-              value: "redis-master.production.svc.cluster.local"
+              value: "redis-leader.production.svc.cluster.local"
             - name: REDIS_PORT
               value: "6379"
             volumeMounts:
@@ -546,17 +546,17 @@ BACKUP_FILE="redis-20240127-020000.rdb"
 kubectl cp deployment/redis-backup:/backup/${BACKUP_FILE} \
   /tmp/${BACKUP_FILE} -n production
 kubectl cp /tmp/${BACKUP_FILE} \
-  deployment/redis-master:/data/dump.rdb -n production
+  deployment/redis-leader:/data/dump.rdb -n production
 
 # Restart Redis to load backup
-kubectl rollout restart deployment/redis-master -n production
+kubectl rollout restart deployment/redis-leader -n production
 
 # Verify restore
-kubectl exec -it deployment/redis-master -n production -- \
+kubectl exec -it deployment/redis-leader -n production -- \
   redis-cli -h localhost INFO keyspace
 
 # Check key count
-kubectl exec -it deployment/redis-master -n production -- \
+kubectl exec -it deployment/redis-leader -n production -- \
   redis-cli -h localhost DBSIZE
 ```
 

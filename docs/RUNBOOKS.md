@@ -53,7 +53,7 @@
    - Check Redis connectivity:
      ```bash
      kubectl exec -it deployment/machine-native-ops -n production -- \
-       redis-cli -h redis-master.production.svc.cluster.local ping
+       redis-cli -h redis-leader.production.svc.cluster.local ping
      ```
 
 4. **Implement Fix** (5-15 min)
@@ -71,7 +71,7 @@
    
    **If Redis issue:**
    ```bash
-   kubectl rollout restart deployment/redis-master -n production
+   kubectl rollout restart deployment/redis-leader -n production
    ```
    
    **If resource exhaustion:**
@@ -663,11 +663,11 @@ kubectl exec -it deployment/redis-backup -n production -- \
 
 ```bash
 # Flush all cache
-kubectl exec -it deployment/redis-master -n production -- \
+kubectl exec -it deployment/redis-leader -n production -- \
   redis-cli FLUSHALL
 
 # Flush database 0 only
-kubectl exec -it deployment/redis-master -n production -- \
+kubectl exec -it deployment/redis-leader -n production -- \
   redis-cli FLUSHDB
 ```
 

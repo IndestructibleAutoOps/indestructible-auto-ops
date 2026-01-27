@@ -281,7 +281,7 @@ redis:
     - "redis-sentinel-1:26379"
     - "redis-sentinel-2:26379"
     - "redis-sentinel-3:26379"
-  master_name: "mymaster"
+  leader_name: "myleader"
 
 # Connection Resilience
 resilience:

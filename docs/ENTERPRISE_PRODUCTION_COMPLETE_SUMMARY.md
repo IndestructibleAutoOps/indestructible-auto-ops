@@ -420,7 +420,7 @@ Successfully completed all 10 phases of enterprise-grade production infrastructu
 - ✅ Leaky bucket algorithm (health endpoint)
 - ✅ Sliding window algorithm (admin endpoints)
 - ✅ User-based limits (free, standard, premium tiers)
-- ✅ IP-based limits with whitelist/blacklist
+- ✅ IP-based limits with allowlist/blocklist
 
 ### Request Queuing
 - ✅ API queue (max: 5000, timeout: 60s)
