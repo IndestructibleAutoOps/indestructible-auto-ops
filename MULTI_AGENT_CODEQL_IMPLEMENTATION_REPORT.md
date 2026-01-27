@@ -180,7 +180,7 @@
 
 ### Performance
 - **Parallel Tasks**: 20 concurrent
-- **Execution Time**: ~60% faster than sequential
+- **Execution Time**: Target ~60% faster than sequential
 - **Scalability**: Configurable 1-50 parallel tasks
 - **Success Rate**: Target >80%
 
