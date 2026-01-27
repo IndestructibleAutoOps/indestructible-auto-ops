@@ -44,7 +44,7 @@ Region: us-east-1
 
 #### Data Replication
 - **Synchronous Replication**: Primary-Secondary
-- **Asynchronous Replication**: Multi-master
+- **Asynchronous Replication**: Multi-leader
 - **Automatic Failover**: Promote replicas
 - **Data Consistency**: Strong consistency guarantees
 
@@ -284,7 +284,7 @@ metadata:
   name: redis-cluster
   namespace: machine-native-ops
 spec:
-  size: 6  # 3 master + 3 replicas
+  size: 6  # 3 leader + 3 replicas
   clusterSize: 3
   persistence:
     enabled: true

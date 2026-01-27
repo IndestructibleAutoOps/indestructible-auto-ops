@@ -294,7 +294,7 @@ Required Secrets:
 
 Optional Configuration:
   - LOG_LEVEL (default: INFO)
-  - REDIS_HOST (default: redis-master)
+  - REDIS_HOST (default: redis-leader)
   - POSTGRES_HOST (default: postgresql)
   - CACHE_ENABLED (default: true)
   - RATE_LIMIT_PER_MINUTE (default: 1000)
