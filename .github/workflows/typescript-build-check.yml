@@ -216,7 +216,7 @@ jobs:
           fi
 
       - name: Upload TypeScript error log
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: typescript-build-errors
@@ -225,7 +225,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload distribution files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: success()
         with:
           name: typescript-dist

@@ -335,7 +335,7 @@ jobs:
             --output ${{ env.VALIDATION_REPORT_PATH }}/schema-validation.md
             
       - name: Upload Validation Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: schema-validation-report
@@ -539,7 +539,7 @@ jobs:
           python scripts/gl-engine/dependency_validator.py
           
       - name: Upload Dependency Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: dependency-validation-report
@@ -724,7 +724,7 @@ jobs:
           python scripts/gl-engine/completeness_checker.py
           
       - name: Upload Completeness Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: completeness-report
@@ -837,7 +837,7 @@ jobs:
           EOF
           
       - name: Upload Summary Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: gl-validation-summary
           path: reports/gl-validation/summary.md

@@ -104,14 +104,14 @@ jobs:
           python3 scripts/gl/generate-risk-assessment.py --layer GL40-49 --output var/risk/
 
       - name: Upload Risk Assessment Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-ALGORITHMS-RISK-${{ github.run_number }}
           path: var/risk/
           retention-days: 90
 
       - name: Upload Evidence Chain
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: GL-ALGORITHMS-EVIDENCE-${{ github.run_number }}
           path: var/evidence/

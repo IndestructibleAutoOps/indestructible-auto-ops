@@ -59,7 +59,7 @@ jobs:
         run: echo "passed=true" >> $GITHUB_OUTPUT
       
       - name: Upload security reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: security-reports
           path: |
@@ -111,7 +111,7 @@ jobs:
           fail_ci_if_error: false
       
       - name: Upload test reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: unit-test-reports
           path: |
@@ -159,7 +159,7 @@ jobs:
             --timeout=300
       
       - name: Upload integration test reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: integration-test-reports
           path: |
@@ -205,7 +205,7 @@ jobs:
           cat benchmark.json | python -m json.tool >> $GITHUB_STEP_SUMMARY || true
       
       - name: Upload benchmark results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: performance-benchmark-results
           path: benchmark.json
@@ -266,7 +266,7 @@ jobs:
           output-file: sbom.json
       
       - name: Upload SBOM
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: sbom
           path: sbom.json
