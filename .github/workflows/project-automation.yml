@@ -1,0 +1,45 @@
+name: GitHub Project Automation+
+
+# DISABLED: GitHub Projects (classic) has been deprecated
+# See: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/
+# To re-enable, migrate to the new GitHub Projects experience and update this workflow
+
+on:
+  workflow_dispatch:  # Only manual trigger - effectively disabled
+    inputs:
+      reason:
+        description: 'Reason for manual run'
+        required: false
+        default: 'Manual trigger'
+
+# Original triggers (disabled):
+# on:
+#   issues:
+#     types: [opened, reopened, assigned]
+#   pull_request:
+#     types: [opened, reopened, assigned, ready_for_review]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  repository-projects: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  automate-project-columns:
+    runs-on: ubuntu-latest
+    # This job is effectively disabled since the workflow only triggers on workflow_dispatch
+    steps:
+      - name: Notice
+        run: |
+          echo "⚠️ GitHub Projects (classic) has been deprecated."
+          echo "This workflow needs to be migrated to the new GitHub Projects experience."
+          echo "See: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/"
+          echo ""
+          echo "To migrate:"
+          echo "1. Create a new GitHub Project (not classic)"
+          echo "2. Use actions/add-to-project action instead"
+          echo "3. Update this workflow accordingly"

@@ -1,0 +1,65 @@
+# Base Application Configuration
+# Provider-agnostic settings
+
+application:
+  name: machine-native-ops
+  version: "1.0.0"
+  description: "Machine Native Operations Platform"
+  
+  # Default replicas for all services
+  default_replicas: 3
+  
+  # Resource defaults
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+  
+  # Health check defaults
+  health_checks:
+    liveness:
+      initial_delay_seconds: 30
+      period_seconds: 10
+      timeout_seconds: 5
+      failure_threshold: 3
+    readiness:
+      initial_delay_seconds: 10
+      period_seconds: 5
+      timeout_seconds: 3
+      failure_threshold: 3
+  
+  # Security defaults
+  security:
+    encryption:
+      at_rest: true
+      in_transit: true
+    tls:
+      min_version: "1.2"
+      cipher_suites:
+        - "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+        - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+    rbac:
+      enabled: true
+    secrets:
+      rotation_days: 90
+  
+  # Logging defaults
+  logging:
+    level: "INFO"
+    format: "json"
+    retention_days: 30
+    
+  # Monitoring defaults
+  monitoring:
+    enabled: true
+    metrics:
+      enabled: true
+      port: 9090
+    tracing:
+      enabled: true
+      sample_rate: 0.1
+    alerts:
+      enabled: true

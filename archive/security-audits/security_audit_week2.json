@@ -1,0 +1,1378 @@
+{
+  "audit_timestamp": "2026-01-16T11:16:18.880286",
+  "total_findings": 45,
+  "summary": {
+    "critical": 0,
+    "high": 36,
+    "medium": 9,
+    "low": 0,
+    "info": 0
+  },
+  "by_severity": {
+    "critical": [],
+    "high": [
+      {
+        "file": "code_quality_analyzer.py",
+        "line": 159,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    def check_security(self, file_path, content, lines):\n        \"\"\"Check for security issues\"\"\"\n        security_patterns = [\n            (r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"exec\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 exec() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"pickle\\.(loads|load)\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 pickle \u53ef\u80fd\u5c0e\u81f4\u53cd\u5e8f\u5217\u5316\u6f0f\u6d1e\"),\n            (r\"md5\\s*\\(\", \"\u4e2d\u5371\uff1aMD5 \u4e0d\u662f\u5b89\u5168\u7684\u54c8\u5e0c\u7b97\u6cd5\"),"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 3,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "Fix HIGH severity eval() usage issues.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "#!/usr/bin/env python3\n\"\"\"\nFix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 5,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "This script analyzes and fixes eval() usage by:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\"\"\"\nFix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 6,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "1. Replacing eval() with ast.literal_eval() for literal evaluation",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "Fix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\""
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 7,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "2. Replacing eval() with json.loads() for JSON parsing",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\"\n"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 8,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "3. Adding security warnings for eval() that cannot be replaced",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "This script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\"\n\nimport ast"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 18,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Analyze eval() usage in a file.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "from typing import List, Tuple\n\ndef analyze_eval_usage(file_path: str) -> List[dict]:\n    \"\"\"Analyze eval() usage in a file.\"\"\"\n    findings = []\n    \n    try:"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 78,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check if eval() can be replaced with json.loads().\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        return False\n\ndef can_replace_with_json(code: str) -> bool:\n    \"\"\"Check if eval() can be replaced with json.loads().\"\"\"\n    inner = code[5:-1].strip()\n    \n    # Check if it looks like a JSON string"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 93,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Fix eval() usage in a file.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    return False\n\ndef fix_file(file_path: str) -> Tuple[int, int]:\n    \"\"\"Fix eval() usage in a file.\n    \n    Returns:\n        Tuple of (fixed_count, warning_added_count)"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 184,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(\"Phase 2 Week 2: Fix HIGH Severity eval() Usage\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "def main():\n    \"\"\"Main function.\"\"\"\n    print(\"=\"*70)\n    print(\"Phase 2 Week 2: Fix HIGH Severity eval() Usage\")\n    print(\"=\"*70)\n    \n    # Files with eval() usage (from security audit)"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 221,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(f\"eval() calls fixed: {total_fixed}\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    print(\"Summary\")\n    print(\"=\"*70)\n    print(f\"Files processed: {files_processed}\")\n    print(f\"eval() calls fixed: {total_fixed}\")\n    print(f\"Security warnings added: {total_warnings}\")\n    print(\"\\nNext steps:\")\n    print(\"1. Review the changes with: git diff\")"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 7,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "- 77 security vulnerabilities (MD5, eval())",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\nThis script addresses the remaining 866 low-severity issues:\n- 772 import order violations\n- 77 security vulnerabilities (MD5, eval())\n- 72 code smells (hardcoded URLs)\n- 22 missing docstrings\n\"\"\""
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 172,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Replace unsafe eval() with safer alternatives.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            return False\n\n    def fix_eval_usage(self, file_path: Path) -> bool:\n        \"\"\"Replace unsafe eval() with safer alternatives.\"\"\"\n        try:\n            with open(file_path, \"r\", encoding=\"utf-8\") as f:\n                content = f.read()"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 178,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" not in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                content = f.read()\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            if \"eval(\" not in content:\n                return False\n\n            # Note: eval() replacement is complex and context-dependent"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 195,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in line and \"# TODO: Security\" not in line:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n                modified_lines = []\n                for line in lines:\n                    if \"eval(\" in line and \"# TODO: Security\" not in line:\n                        # Insert warning before the line\n                        indent = len(line) - len(line.lstrip())\n                        modified_lines.append(\" \" * indent + warning.rstrip())"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 328,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(\"  \u26a0\ufe0f  eval() usage marked for review\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    print(\"  \u2705 MD5 replaced with SHA256\")\n                if results[\"eval_fixed\"]:\n                    summary[\"eval_fixed\"] += 1\n                    print(\"  \u26a0\ufe0f  eval() usage marked for review\")\n\n                summary[\"total_fixes\"] += results[\"total_fixes\"]\n"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 364,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(f\"eval() reviews: {summary['eval_fixed']}\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    print(f\"Hardcoded URL fixes: {summary['hardcoded_urls_fixed']}\")\n    print(f\"Docstrings added: {summary['docstrings_added']}\")\n    print(f\"MD5 replacements: {summary['md5_fixed']}\")\n    print(f\"eval() reviews: {summary['eval_fixed']}\")\n    print(f\"Total fixes applied: {summary['total_fixes']}\")\n    print(f\"Errors encountered: {summary['errors']}\")\n    print(\"=\" * 60)"
+      },
+      {
+        "file": "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+        "line": 368,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "return eval(condition, {\"__builtins__\": {}}, context)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # For now, support simple comparisons\n            # In production, use a safe expression evaluator\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            return eval(condition, {\"__builtins__\": {}}, context)\n        except Exception as e:\n            self.logger.warning(f\"Condition evaluation failed: {e}\")\n            return False"
+      },
+      {
+        "file": "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+        "line": 114,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                \"xss\",\n                \"Potential XSS vulnerability via document.write\",\n            ),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+        "line": 361,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "line": 42,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = os.getenv(\"DATABASE_PASSWORD\", \"admin123\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+        "line": 221,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 135,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/src/automation/architect/core/analysis/security_scanner.py",
+        "line": 114,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                \"xss\",\n                \"Potential XSS vulnerability via document.write\",\n            ),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/src/core/run-debug/cli.py",
+        "line": 388,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "def eval(expression):",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "@debug.command()\n@click.argument(\"expression\")\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\ndef eval(expression):\n    \"\"\"\u8a55\u4f30\u8868\u9054\u5f0f\"\"\"\n    cli = DebugCLI()\n    asyncio.run(cli.evaluate_expression(expression))"
+      },
+      {
+        "file": "workspace/src/core/virtual_experts/domain_experts.py",
+        "line": 506,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                )\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+        "line": 501,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                )\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/pipeline_service.py",
+        "line": 362,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "def unsafe_function(user_input):\n    # Security issue: eval\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/examples/demo.py",
+        "line": 43,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "def process_user_data(user_input, password):\n    # Security issue: using eval\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = os.getenv(\"DATABASE_PASSWORD\", \"admin123\")"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/test-vectors/generator.py",
+        "line": 222,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    \",\n            \"    # Issue 1: Eval injection\",\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 137,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        # Basic security pattern detection\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 299,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 6,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "analyzing MD5 usage, eval() usage, and other security concerns.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "Security Audit Tool\n\nThis script performs a comprehensive security audit of the codebase,\nanalyzing MD5 usage, eval() usage, and other security concerns.\n\"\"\"\n\nimport ast"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 150,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check for eval() usage.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        return findings\n\n    def check_eval_usage(self, file_path: Path) -> List[SecurityFinding]:\n        \"\"\"Check for eval() usage.\"\"\"\n        findings = []\n\n        try:"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 190,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "issue=\"eval() function usage detected\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                        line_number=line_num,\n                        severity=severity,\n                        category=\"Code Injection\",\n                        issue=\"eval() function usage detected\",\n                        code_snippet=code_snippet,\n                        recommendation=\"Avoid eval() as it can execute arbitrary code. \"\n                        \"Consider using ast.literal_eval() for parsing literals, \""
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 192,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "recommendation=\"Avoid eval() as it can execute arbitrary code. \"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                        category=\"Code Injection\",\n                        issue=\"eval() function usage detected\",\n                        code_snippet=code_snippet,\n                        recommendation=\"Avoid eval() as it can execute arbitrary code. \"\n                        \"Consider using ast.literal_eval() for parsing literals, \"\n                        \"or implement a proper parser for your use case.\",\n                        context=context,"
+      }
+    ],
+    "medium": [
+      {
+        "file": "fix_eval_usage.py",
+        "line": 50,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check if eval() can be replaced with ast.literal_eval().\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    return findings\n\ndef can_replace_with_literal_eval(code: str) -> bool:\n    \"\"\"Check if eval() can be replaced with ast.literal_eval().\"\"\"\n    # Remove 'eval(' and ')'\n    inner = code[5:-1].strip()\n    "
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 123,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "new_code = code.replace('eval(', 'ast.literal_eval(')",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # Determine if we can replace it\n            if can_replace_with_literal_eval(code):\n                # Replace with ast.literal_eval()\n                new_code = code.replace('eval(', 'ast.literal_eval(')\n                \n                # Add import if needed\n                if 'import ast' not in content and 'from ast import' not in content:"
+      },
+      {
+        "file": "fix_md5_usage.py",
+        "line": 26,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "# Pattern 1: hashlib.md5() calls",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        \n        original_content = content\n        \n        # Pattern 1: hashlib.md5() calls\n        pattern1 = r'hashlib\\.md5\\s*\\('\n        content = re.sub(pattern1, 'hashlib.sha256(', content)\n        replacements1 = len(re.findall(pattern1, original_content))"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 186,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # We'll add a warning comment instead of automatic replacement\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n\n            if \"eval(\" in content:\n                # Add security warning comment\n                warning = \"# TODO: Security - Consider replacing eval() with safer alternatives like ast.literal_eval()\\n\"\n                lines = content.split(\"\\n\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 234,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 236,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 293,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 238,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 240,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      }
+    ],
+    "low": [],
+    "info": []
+  },
+  "by_category": {
+    "Code Injection": [
+      {
+        "file": "code_quality_analyzer.py",
+        "line": 159,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    def check_security(self, file_path, content, lines):\n        \"\"\"Check for security issues\"\"\"\n        security_patterns = [\n            (r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"exec\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 exec() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"pickle\\.(loads|load)\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 pickle \u53ef\u80fd\u5c0e\u81f4\u53cd\u5e8f\u5217\u5316\u6f0f\u6d1e\"),\n            (r\"md5\\s*\\(\", \"\u4e2d\u5371\uff1aMD5 \u4e0d\u662f\u5b89\u5168\u7684\u54c8\u5e0c\u7b97\u6cd5\"),"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 3,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "Fix HIGH severity eval() usage issues.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "#!/usr/bin/env python3\n\"\"\"\nFix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 5,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "This script analyzes and fixes eval() usage by:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\"\"\"\nFix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 6,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "1. Replacing eval() with ast.literal_eval() for literal evaluation",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "Fix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\""
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 7,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "2. Replacing eval() with json.loads() for JSON parsing",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\"\n"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 8,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "3. Adding security warnings for eval() that cannot be replaced",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "This script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\"\n\nimport ast"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 18,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Analyze eval() usage in a file.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "from typing import List, Tuple\n\ndef analyze_eval_usage(file_path: str) -> List[dict]:\n    \"\"\"Analyze eval() usage in a file.\"\"\"\n    findings = []\n    \n    try:"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 50,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check if eval() can be replaced with ast.literal_eval().\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    return findings\n\ndef can_replace_with_literal_eval(code: str) -> bool:\n    \"\"\"Check if eval() can be replaced with ast.literal_eval().\"\"\"\n    # Remove 'eval(' and ')'\n    inner = code[5:-1].strip()\n    "
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 78,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check if eval() can be replaced with json.loads().\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        return False\n\ndef can_replace_with_json(code: str) -> bool:\n    \"\"\"Check if eval() can be replaced with json.loads().\"\"\"\n    inner = code[5:-1].strip()\n    \n    # Check if it looks like a JSON string"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 93,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Fix eval() usage in a file.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    return False\n\ndef fix_file(file_path: str) -> Tuple[int, int]:\n    \"\"\"Fix eval() usage in a file.\n    \n    Returns:\n        Tuple of (fixed_count, warning_added_count)"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 123,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "new_code = code.replace('eval(', 'ast.literal_eval(')",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # Determine if we can replace it\n            if can_replace_with_literal_eval(code):\n                # Replace with ast.literal_eval()\n                new_code = code.replace('eval(', 'ast.literal_eval(')\n                \n                # Add import if needed\n                if 'import ast' not in content and 'from ast import' not in content:"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 184,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(\"Phase 2 Week 2: Fix HIGH Severity eval() Usage\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "def main():\n    \"\"\"Main function.\"\"\"\n    print(\"=\"*70)\n    print(\"Phase 2 Week 2: Fix HIGH Severity eval() Usage\")\n    print(\"=\"*70)\n    \n    # Files with eval() usage (from security audit)"
+      },
+      {
+        "file": "fix_eval_usage.py",
+        "line": 221,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(f\"eval() calls fixed: {total_fixed}\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    print(\"Summary\")\n    print(\"=\"*70)\n    print(f\"Files processed: {files_processed}\")\n    print(f\"eval() calls fixed: {total_fixed}\")\n    print(f\"Security warnings added: {total_warnings}\")\n    print(\"\\nNext steps:\")\n    print(\"1. Review the changes with: git diff\")"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 7,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "- 77 security vulnerabilities (MD5, eval())",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\nThis script addresses the remaining 866 low-severity issues:\n- 772 import order violations\n- 77 security vulnerabilities (MD5, eval())\n- 72 code smells (hardcoded URLs)\n- 22 missing docstrings\n\"\"\""
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 172,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Replace unsafe eval() with safer alternatives.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            return False\n\n    def fix_eval_usage(self, file_path: Path) -> bool:\n        \"\"\"Replace unsafe eval() with safer alternatives.\"\"\"\n        try:\n            with open(file_path, \"r\", encoding=\"utf-8\") as f:\n                content = f.read()"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 178,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" not in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                content = f.read()\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            if \"eval(\" not in content:\n                return False\n\n            # Note: eval() replacement is complex and context-dependent"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 186,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # We'll add a warning comment instead of automatic replacement\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n\n            if \"eval(\" in content:\n                # Add security warning comment\n                warning = \"# TODO: Security - Consider replacing eval() with safer alternatives like ast.literal_eval()\\n\"\n                lines = content.split(\"\\n\")"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 195,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in line and \"# TODO: Security\" not in line:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n                modified_lines = []\n                for line in lines:\n                    if \"eval(\" in line and \"# TODO: Security\" not in line:\n                        # Insert warning before the line\n                        indent = len(line) - len(line.lstrip())\n                        modified_lines.append(\" \" * indent + warning.rstrip())"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 328,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(\"  \u26a0\ufe0f  eval() usage marked for review\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    print(\"  \u2705 MD5 replaced with SHA256\")\n                if results[\"eval_fixed\"]:\n                    summary[\"eval_fixed\"] += 1\n                    print(\"  \u26a0\ufe0f  eval() usage marked for review\")\n\n                summary[\"total_fixes\"] += results[\"total_fixes\"]\n"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 364,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(f\"eval() reviews: {summary['eval_fixed']}\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    print(f\"Hardcoded URL fixes: {summary['hardcoded_urls_fixed']}\")\n    print(f\"Docstrings added: {summary['docstrings_added']}\")\n    print(f\"MD5 replacements: {summary['md5_fixed']}\")\n    print(f\"eval() reviews: {summary['eval_fixed']}\")\n    print(f\"Total fixes applied: {summary['total_fixes']}\")\n    print(f\"Errors encountered: {summary['errors']}\")\n    print(\"=\" * 60)"
+      },
+      {
+        "file": "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+        "line": 368,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "return eval(condition, {\"__builtins__\": {}}, context)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # For now, support simple comparisons\n            # In production, use a safe expression evaluator\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            return eval(condition, {\"__builtins__\": {}}, context)\n        except Exception as e:\n            self.logger.warning(f\"Condition evaluation failed: {e}\")\n            return False"
+      },
+      {
+        "file": "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+        "line": 114,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                \"xss\",\n                \"Potential XSS vulnerability via document.write\",\n            ),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+        "line": 361,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "line": 42,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = os.getenv(\"DATABASE_PASSWORD\", \"admin123\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+        "line": 221,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 135,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 234,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 236,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 293,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/src/automation/architect/core/analysis/security_scanner.py",
+        "line": 114,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                \"xss\",\n                \"Potential XSS vulnerability via document.write\",\n            ),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/src/core/run-debug/cli.py",
+        "line": 388,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "def eval(expression):",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "@debug.command()\n@click.argument(\"expression\")\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\ndef eval(expression):\n    \"\"\"\u8a55\u4f30\u8868\u9054\u5f0f\"\"\"\n    cli = DebugCLI()\n    asyncio.run(cli.evaluate_expression(expression))"
+      },
+      {
+        "file": "workspace/src/core/virtual_experts/domain_experts.py",
+        "line": 506,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                )\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+        "line": 501,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                )\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/pipeline_service.py",
+        "line": 362,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "def unsafe_function(user_input):\n    # Security issue: eval\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/examples/demo.py",
+        "line": 43,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "def process_user_data(user_input, password):\n    # Security issue: using eval\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = os.getenv(\"DATABASE_PASSWORD\", \"admin123\")"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/test-vectors/generator.py",
+        "line": 222,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    \",\n            \"    # Issue 1: Eval injection\",\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 137,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        # Basic security pattern detection\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 238,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 240,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 299,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 6,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "analyzing MD5 usage, eval() usage, and other security concerns.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "Security Audit Tool\n\nThis script performs a comprehensive security audit of the codebase,\nanalyzing MD5 usage, eval() usage, and other security concerns.\n\"\"\"\n\nimport ast"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 150,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check for eval() usage.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        return findings\n\n    def check_eval_usage(self, file_path: Path) -> List[SecurityFinding]:\n        \"\"\"Check for eval() usage.\"\"\"\n        findings = []\n\n        try:"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 190,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "issue=\"eval() function usage detected\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                        line_number=line_num,\n                        severity=severity,\n                        category=\"Code Injection\",\n                        issue=\"eval() function usage detected\",\n                        code_snippet=code_snippet,\n                        recommendation=\"Avoid eval() as it can execute arbitrary code. \"\n                        \"Consider using ast.literal_eval() for parsing literals, \""
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 192,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "recommendation=\"Avoid eval() as it can execute arbitrary code. \"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                        category=\"Code Injection\",\n                        issue=\"eval() function usage detected\",\n                        code_snippet=code_snippet,\n                        recommendation=\"Avoid eval() as it can execute arbitrary code. \"\n                        \"Consider using ast.literal_eval() for parsing literals, \"\n                        \"or implement a proper parser for your use case.\",\n                        context=context,"
+      }
+    ],
+    "Cryptographic": [
+      {
+        "file": "fix_md5_usage.py",
+        "line": 26,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "# Pattern 1: hashlib.md5() calls",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        \n        original_content = content\n        \n        # Pattern 1: hashlib.md5() calls\n        pattern1 = r'hashlib\\.md5\\s*\\('\n        content = re.sub(pattern1, 'hashlib.sha256(', content)\n        replacements1 = len(re.findall(pattern1, original_content))"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "file": "code_quality_analyzer.py",
+      "line": 159,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "(r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    def check_security(self, file_path, content, lines):\n        \"\"\"Check for security issues\"\"\"\n        security_patterns = [\n            (r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"exec\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 exec() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"pickle\\.(loads|load)\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 pickle \u53ef\u80fd\u5c0e\u81f4\u53cd\u5e8f\u5217\u5316\u6f0f\u6d1e\"),\n            (r\"md5\\s*\\(\", \"\u4e2d\u5371\uff1aMD5 \u4e0d\u662f\u5b89\u5168\u7684\u54c8\u5e0c\u7b97\u6cd5\"),"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 3,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "Fix HIGH severity eval() usage issues.",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "#!/usr/bin/env python3\n\"\"\"\nFix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 5,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "This script analyzes and fixes eval() usage by:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "\"\"\"\nFix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 6,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "1. Replacing eval() with ast.literal_eval() for literal evaluation",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "Fix HIGH severity eval() usage issues.\n\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\""
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 7,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "2. Replacing eval() with json.loads() for JSON parsing",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "\nThis script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\"\n"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 8,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "3. Adding security warnings for eval() that cannot be replaced",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "This script analyzes and fixes eval() usage by:\n1. Replacing eval() with ast.literal_eval() for literal evaluation\n2. Replacing eval() with json.loads() for JSON parsing\n3. Adding security warnings for eval() that cannot be replaced\n\"\"\"\n\nimport ast"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 18,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Analyze eval() usage in a file.\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "from typing import List, Tuple\n\ndef analyze_eval_usage(file_path: str) -> List[dict]:\n    \"\"\"Analyze eval() usage in a file.\"\"\"\n    findings = []\n    \n    try:"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 50,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Check if eval() can be replaced with ast.literal_eval().\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    return findings\n\ndef can_replace_with_literal_eval(code: str) -> bool:\n    \"\"\"Check if eval() can be replaced with ast.literal_eval().\"\"\"\n    # Remove 'eval(' and ')'\n    inner = code[5:-1].strip()\n    "
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 78,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Check if eval() can be replaced with json.loads().\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        return False\n\ndef can_replace_with_json(code: str) -> bool:\n    \"\"\"Check if eval() can be replaced with json.loads().\"\"\"\n    inner = code[5:-1].strip()\n    \n    # Check if it looks like a JSON string"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 93,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Fix eval() usage in a file.",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    return False\n\ndef fix_file(file_path: str) -> Tuple[int, int]:\n    \"\"\"Fix eval() usage in a file.\n    \n    Returns:\n        Tuple of (fixed_count, warning_added_count)"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 123,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "new_code = code.replace('eval(', 'ast.literal_eval(')",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            # Determine if we can replace it\n            if can_replace_with_literal_eval(code):\n                # Replace with ast.literal_eval()\n                new_code = code.replace('eval(', 'ast.literal_eval(')\n                \n                # Add import if needed\n                if 'import ast' not in content and 'from ast import' not in content:"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 184,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "print(\"Phase 2 Week 2: Fix HIGH Severity eval() Usage\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "def main():\n    \"\"\"Main function.\"\"\"\n    print(\"=\"*70)\n    print(\"Phase 2 Week 2: Fix HIGH Severity eval() Usage\")\n    print(\"=\"*70)\n    \n    # Files with eval() usage (from security audit)"
+    },
+    {
+      "file": "fix_eval_usage.py",
+      "line": 221,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "print(f\"eval() calls fixed: {total_fixed}\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    print(\"Summary\")\n    print(\"=\"*70)\n    print(f\"Files processed: {files_processed}\")\n    print(f\"eval() calls fixed: {total_fixed}\")\n    print(f\"Security warnings added: {total_warnings}\")\n    print(\"\\nNext steps:\")\n    print(\"1. Review the changes with: git diff\")"
+    },
+    {
+      "file": "fix_md5_usage.py",
+      "line": 26,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "# Pattern 1: hashlib.md5() calls",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        \n        original_content = content\n        \n        # Pattern 1: hashlib.md5() calls\n        pattern1 = r'hashlib\\.md5\\s*\\('\n        content = re.sub(pattern1, 'hashlib.sha256(', content)\n        replacements1 = len(re.findall(pattern1, original_content))"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 7,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "- 77 security vulnerabilities (MD5, eval())",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "\nThis script addresses the remaining 866 low-severity issues:\n- 772 import order violations\n- 77 security vulnerabilities (MD5, eval())\n- 72 code smells (hardcoded URLs)\n- 22 missing docstrings\n\"\"\""
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 172,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Replace unsafe eval() with safer alternatives.\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            return False\n\n    def fix_eval_usage(self, file_path: Path) -> bool:\n        \"\"\"Replace unsafe eval() with safer alternatives.\"\"\"\n        try:\n            with open(file_path, \"r\", encoding=\"utf-8\") as f:\n                content = f.read()"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 178,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" not in content:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                content = f.read()\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            if \"eval(\" not in content:\n                return False\n\n            # Note: eval() replacement is complex and context-dependent"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 186,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in content:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            # We'll add a warning comment instead of automatic replacement\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n\n            if \"eval(\" in content:\n                # Add security warning comment\n                warning = \"# TODO: Security - Consider replacing eval() with safer alternatives like ast.literal_eval()\\n\"\n                lines = content.split(\"\\n\")"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 195,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in line and \"# TODO: Security\" not in line:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n                modified_lines = []\n                for line in lines:\n                    if \"eval(\" in line and \"# TODO: Security\" not in line:\n                        # Insert warning before the line\n                        indent = len(line) - len(line.lstrip())\n                        modified_lines.append(\" \" * indent + warning.rstrip())"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 328,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "print(\"  \u26a0\ufe0f  eval() usage marked for review\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                    print(\"  \u2705 MD5 replaced with SHA256\")\n                if results[\"eval_fixed\"]:\n                    summary[\"eval_fixed\"] += 1\n                    print(\"  \u26a0\ufe0f  eval() usage marked for review\")\n\n                summary[\"total_fixes\"] += results[\"total_fixes\"]\n"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 364,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "print(f\"eval() reviews: {summary['eval_fixed']}\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    print(f\"Hardcoded URL fixes: {summary['hardcoded_urls_fixed']}\")\n    print(f\"Docstrings added: {summary['docstrings_added']}\")\n    print(f\"MD5 replacements: {summary['md5_fixed']}\")\n    print(f\"eval() reviews: {summary['eval_fixed']}\")\n    print(f\"Total fixes applied: {summary['total_fixes']}\")\n    print(f\"Errors encountered: {summary['errors']}\")\n    print(\"=\" * 60)"
+    },
+    {
+      "file": "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+      "line": 368,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "return eval(condition, {\"__builtins__\": {}}, context)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            # For now, support simple comparisons\n            # In production, use a safe expression evaluator\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            return eval(condition, {\"__builtins__\": {}}, context)\n        except Exception as e:\n            self.logger.warning(f\"Condition evaluation failed: {e}\")\n            return False"
+    },
+    {
+      "file": "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+      "line": 114,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                \"xss\",\n                \"Potential XSS vulnerability via document.write\",\n            ),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+      "line": 361,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+      "line": 42,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = os.getenv(\"DATABASE_PASSWORD\", \"admin123\")"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+      "line": 221,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"    result = eval(user_input)\",",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 135,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 234,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 236,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 293,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)  # Security issue!",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+    },
+    {
+      "file": "workspace/src/automation/architect/core/analysis/security_scanner.py",
+      "line": 114,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                \"xss\",\n                \"Potential XSS vulnerability via document.write\",\n            ),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+    },
+    {
+      "file": "workspace/src/core/run-debug/cli.py",
+      "line": 388,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "def eval(expression):",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "@debug.command()\n@click.argument(\"expression\")\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\ndef eval(expression):\n    \"\"\"\u8a55\u4f30\u8868\u9054\u5f0f\"\"\"\n    cli = DebugCLI()\n    asyncio.run(cli.evaluate_expression(expression))"
+    },
+    {
+      "file": "workspace/src/core/virtual_experts/domain_experts.py",
+      "line": 506,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                )\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+    },
+    {
+      "file": "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+      "line": 501,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                )\n\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+    },
+    {
+      "file": "workspace/src/autonomous/agents/pipeline_service.py",
+      "line": 362,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "def unsafe_function(user_input):\n    # Security issue: eval\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/examples/demo.py",
+      "line": 43,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "def process_user_data(user_input, password):\n    # Security issue: using eval\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = os.getenv(\"DATABASE_PASSWORD\", \"admin123\")"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/test-vectors/generator.py",
+      "line": 222,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"    result = eval(user_input)\",",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            \"    \",\n            \"    # Issue 1: Eval injection\",\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 137,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        # Basic security pattern detection\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 238,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 240,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 299,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)  # Security issue!",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "# SECURITY: eval() used with trusted input only. Do not use with untrusted user input.\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 6,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "analyzing MD5 usage, eval() usage, and other security concerns.",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "Security Audit Tool\n\nThis script performs a comprehensive security audit of the codebase,\nanalyzing MD5 usage, eval() usage, and other security concerns.\n\"\"\"\n\nimport ast"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 150,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Check for eval() usage.\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        return findings\n\n    def check_eval_usage(self, file_path: Path) -> List[SecurityFinding]:\n        \"\"\"Check for eval() usage.\"\"\"\n        findings = []\n\n        try:"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 190,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "issue=\"eval() function usage detected\",",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                        line_number=line_num,\n                        severity=severity,\n                        category=\"Code Injection\",\n                        issue=\"eval() function usage detected\",\n                        code_snippet=code_snippet,\n                        recommendation=\"Avoid eval() as it can execute arbitrary code. \"\n                        \"Consider using ast.literal_eval() for parsing literals, \""
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 192,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "recommendation=\"Avoid eval() as it can execute arbitrary code. \"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                        category=\"Code Injection\",\n                        issue=\"eval() function usage detected\",\n                        code_snippet=code_snippet,\n                        recommendation=\"Avoid eval() as it can execute arbitrary code. \"\n                        \"Consider using ast.literal_eval() for parsing literals, \"\n                        \"or implement a proper parser for your use case.\",\n                        context=context,"
+    }
+  ]
+}

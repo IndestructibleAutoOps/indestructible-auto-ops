@@ -1,0 +1,26 @@
+# Team Collaboration Platform Configuration
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  debug: false
+
+redis:
+  host: "gl-redis"  # 匹配 docker-compose 中的服務名稱
+  port: 6379
+  db: 0
+
+github:
+  token: "${GITHUB_TOKEN}"
+  repo: "MachineNativeOps/machine-native-ops"
+
+notifications:
+  email_enabled: false
+  slack_webhook: "${SLACK_WEBHOOK_URL}"
+  teams_webhook: "${TEAMS_WEBHOOK_URL}"
+
+features:
+  real_time_collaboration: true
+  code_review_integration: true
+  deployment_notifications: true
+  alert_system: true

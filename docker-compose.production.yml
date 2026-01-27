@@ -1,0 +1,365 @@
+version: '3.8'
+
+# Enterprise-grade Docker Compose for production deployment
+# This configuration is optimized for production use
+
+services:
+  # Main application service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+      args:
+        BUILD_DATE: ${BUILD_DATE:-}
+        VCS_REF: ${VCS_REF:-}
+        VERSION: ${VERSION:-latest}
+    image: ${REGISTRY:-machinenativeops}/machine-native-ops:${VERSION:-latest}
+    container_name: machine-native-ops-app
+    restart: unless-stopped
+    
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    
+    environment:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-machinenativeops}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+    
+    volumes:
+      - app-logs:/app/logs
+      - app-data:/app/data
+      - app-cache:/app/cache
+      - app-tmp:/app/tmp
+    
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "application=machine-native-ops"
+        tag: "production"
+
+  # Redis service for caching and data storage
+  redis:
+    image: redis:7-alpine
+    container_name: machine-native-ops-redis
+    restart: unless-stopped
+    
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    
+    command: >
+      redis-server
+      --save 900 1
+      --save 300 10
+      --save 60 10000
+      --appendonly yes
+      --maxmemory 1gb
+      --maxmemory-policy allkeys-lru
+    
+    volumes:
+      - redis-data:/data
+      - redis-conf:/usr/local/etc/redis
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # PostgreSQL service for persistent data
+  postgres:
+    image: postgres:15-alpine
+    container_name: machine-native-ops-postgres
+    restart: unless-stopped
+    
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-machinenativeops}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - postgres-backup:/backup
+    
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Nginx reverse proxy and load balancer
+  nginx:
+    image: nginx:alpine
+    container_name: machine-native-ops-nginx
+    restart: unless-stopped
+    
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - nginx-logs:/var/log/nginx
+    
+    depends_on:
+      - app
+    
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: machine-native-ops-prometheus
+    restart: unless-stopped
+    
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  # Grafana for monitoring visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: machine-native-ops-grafana
+    restart: unless-stopped
+    
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=redis-datasource
+      - GF_SERVER_ROOT_URL=https://grafana.machinenativeops.com
+    
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+    
+    depends_on:
+      - prometheus
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+  # Loki for log aggregation
+  loki:
+    image: grafana/loki:latest
+    container_name: machine-native-ops-loki
+    restart: unless-stopped
+    
+    ports:
+      - "${LOKI_PORT:-3100}:3100"
+    
+    volumes:
+      - ./loki/loki-config.yml:/etc/loki/local-config.yaml:ro
+      - loki-data:/loki
+    
+    command: -config.file=/etc/loki/local-config.yaml
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+  # Promtail for log collection
+  promtail:
+    image: grafana/promtail:latest
+    container_name: machine-native-ops-promtail
+    restart: unless-stopped
+    
+    volumes:
+      - ./promtail/promtail-config.yml:/etc/promtail/config.yml:ro
+      - app-logs:/var/log/app:ro
+      - nginx-logs:/var/log/nginx:ro
+    
+    command: -config.file=/etc/promtail/config.yml
+    
+    depends_on:
+      - loki
+    
+    networks:
+      - production-network
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+# Volumes
+volumes:
+  app-logs:
+    driver: local
+  app-data:
+    driver: local
+  app-cache:
+    driver: local
+  app-tmp:
+    driver: local
+  redis-data:
+    driver: local
+  redis-conf:
+    driver: local
+  postgres-data:
+    driver: local
+  postgres-backup:
+    driver: local
+  nginx-logs:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  loki-data:
+    driver: local
+
+# Networks
+networks:
+  production-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

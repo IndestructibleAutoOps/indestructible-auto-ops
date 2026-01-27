@@ -1,0 +1,21 @@
+# Bandit configuration file for MachineNativeOps
+# https://bandit.readthedocs.io/en/latest/config.html
+#
+# This configuration is used by the security scanning workflows.
+# B101 (assert_used) is skipped globally as it generates too many false positives
+# in test files where assert statements are expected and appropriate.
+
+[bandit]
+exclude_dirs = [
+    ".git",
+    "__pycache__",
+    ".venv",
+    "venv",
+    "node_modules",
+    ".tox",
+    "archive"
+]
+
+# Skip B101 (assert_used) - assert statements are expected in test code
+# and are not a security concern in Python (they are stripped in optimized mode)
+skips = ["B101"]

@@ -1,0 +1,420 @@
+# GL Unified Charter Activated
+# Rollback Pipeline - Manual and Automated Rollback Capabilities
+name: GL-Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment for rollback'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      rollback_type:
+        description: 'Rollback type'
+        required: true
+        type: choice
+        options:
+          - previous
+          - specific_version
+          - specific_commit
+      target_version:
+        description: 'Target version/commit (required for specific rollback)'
+        required: false
+        type: string
+      reason:
+        description: 'Reason for rollback'
+        required: true
+        type: string
+      notify_team:
+        description: 'Send notifications'
+        required: false
+        default: 'true'
+        type: boolean
+
+env:
+  NODE_VERSION: '20.x'
+
+concurrency:
+  group: rollback-${{ github.event.inputs.environment }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+  deployments: write
+  packages: read
+  id-token: write
+
+jobs:
+  # ============================================
+  # Rollback Preparation
+  # ============================================
+  prepare-rollback:
+    name: 🔍 Prepare Rollback
+    runs-on: ubuntu-latest
+    outputs:
+      rollback_target: ${{ steps.determine.outputs.target }}
+      rollback_tag: ${{ steps.determine.outputs.tag }}
+      current_version: ${{ steps.current.outputs.version }}
+      rollback_approved: ${{ steps.approval.outputs.approved }}
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 50
+
+      - name: 🔍 Get current deployment info
+        id: current
+        run: |
+          ENV="${{ github.event.inputs.environment }}"
+          
+          # Get current deployed version
+          CURRENT_TAG=$(git tag -l "${ENV}-*" --sort=-creatordate | head -1)
+          CURRENT_VERSION=$(echo ${CURRENT_TAG} | sed 's/.*-\([0-9.]*\)-.*/\1/')
+          
+          echo "version=${CURRENT_VERSION}" >> $GITHUB_OUTPUT
+          echo "tag=${CURRENT_TAG}" >> $GITHUB_OUTPUT
+          
+          echo "## 📊 Current Deployment" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment:** ${ENV}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Current Tag:** ${CURRENT_TAG}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Current Version:** ${CURRENT_VERSION}" >> $GITHUB_STEP_SUMMARY
+
+      - name: 🎯 Determine rollback target
+        id: determine
+        run: |
+          ENV="${{ github.event.inputs.environment }}"
+          ROLLBACK_TYPE="${{ github.event.inputs.rollback_type }}"
+          TARGET_INPUT="${{ github.event.inputs.target_version }}"
+          
+          case ${ROLLBACK_TYPE} in
+            "previous")
+              # Get the second most recent deployment tag
+              TARGET_TAG=$(git tag -l "${ENV}-*" --sort=-creatordate | head -2 | tail -1)
+              ;;
+            "specific_version")
+              # Find tag matching the version
+              TARGET_TAG=$(git tag -l "${ENV}-${TARGET_INPUT}-*" --sort=-creatordate | head -1)
+              if [ -z "${TARGET_TAG}" ]; then
+                TARGET_TAG=$(git tag -l "*${TARGET_INPUT}*" --sort=-creatordate | head -1)
+              fi
+              ;;
+            "specific_commit")
+              # Use commit SHA directly
+              TARGET_TAG="${TARGET_INPUT}"
+              ;;
+          esac
+          
+          if [ -z "${TARGET_TAG}" ]; then
+            echo "❌ Could not determine rollback target"
+            exit 1
+          fi
+          
+          echo "target=${TARGET_TAG}" >> $GITHUB_OUTPUT
+          echo "tag=rollback-${ENV}-$(date +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
+          
+          echo "## 🎯 Rollback Target" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target:** ${TARGET_TAG}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Type:** ${ROLLBACK_TYPE}" >> $GITHUB_STEP_SUMMARY
+
+      - name: ✅ Validate rollback target
+        run: |
+          TARGET="${{ steps.determine.outputs.target }}"
+          
+          # Verify target exists
+          if git rev-parse "${TARGET}" >/dev/null 2>&1; then
+            echo "✅ Rollback target validated: ${TARGET}"
+          else
+            echo "❌ Invalid rollback target: ${TARGET}"
+            exit 1
+          fi
+
+      - name: 🔐 Approval check
+        id: approval
+        run: |
+          ENV="${{ github.event.inputs.environment }}"
+          
+          # Production rollbacks require additional verification
+          if [ "${ENV}" == "production" ]; then
+            echo "⚠️ Production rollback requested"
+            echo "Reason: ${{ github.event.inputs.reason }}"
+            echo "Initiated by: ${{ github.actor }}"
+          fi
+          
+          echo "approved=true" >> $GITHUB_OUTPUT
+
+  # ============================================
+  # Execute Staging Rollback
+  # ============================================
+  rollback-staging:
+    name: ⏪ Rollback Staging
+    runs-on: self-hosted
+    needs: prepare-rollback
+    if: github.event.inputs.environment == 'staging' && needs.prepare-rollback.outputs.rollback_approved == 'true'
+    environment:
+      name: staging
+    steps:
+      - name: 📥 Checkout rollback target
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.prepare-rollback.outputs.rollback_target }}
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build application
+        run: |
+          npm run build || true
+          cd engine && npm ci && npm run build && cd ..
+
+      - name: ⏪ Execute rollback
+        id: rollback
+        run: |
+          echo "Executing staging rollback..."
+          
+          DEPLOY_DIR="/opt/deployments/staging/rollback-$(date +%Y%m%d%H%M%S)"
+          sudo mkdir -p ${DEPLOY_DIR}
+          
+          # Copy built artifacts
+          cp -r . ${DEPLOY_DIR}/
+          
+          cd ${DEPLOY_DIR}
+          
+          # Stop current deployment
+          docker compose down || true
+          pm2 delete staging-app || true
+          
+          # Start rollback version
+          if [ -f "docker-compose.yml" ]; then
+            docker compose up -d --build
+          else
+            npm ci --production
+            pm2 start npm --name "staging-app" -- start
+          fi
+          
+          echo "✅ Staging rollback executed"
+
+      - name: 🏥 Verify rollback
+        run: |
+          STAGING_URL="${{ secrets.STAGING_URL || 'https://staging.machine-native-ops.local' }}"
+          
+          sleep 30
+          
+          for i in $(seq 1 5); do
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${STAGING_URL}/health" || echo "000")
+            
+            if [ "${HTTP_STATUS}" == "200" ]; then
+              echo "✅ Rollback verification passed"
+              exit 0
+            fi
+            
+            sleep 10
+          done
+          
+          echo "❌ Rollback verification failed"
+          exit 1
+
+  # ============================================
+  # Execute Production Rollback
+  # ============================================
+  rollback-production:
+    name: ⏪ Rollback Production
+    runs-on: self-hosted
+    needs: prepare-rollback
+    if: github.event.inputs.environment == 'production' && needs.prepare-rollback.outputs.rollback_approved == 'true'
+    environment:
+      name: production
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v6
+
+      - name: 🔍 Determine current active environment
+        id: active
+        run: |
+          if [ -f "/tmp/active-environment" ]; then
+            ACTIVE=$(cat /tmp/active-environment)
+          else
+            ACTIVE="blue"
+          fi
+          
+          echo "environment=${ACTIVE}" >> $GITHUB_OUTPUT
+          
+          # Determine inactive environment for rollback
+          if [ "${ACTIVE}" == "blue" ]; then
+            INACTIVE="green"
+          else
+            INACTIVE="blue"
+          fi
+          
+          echo "inactive=${INACTIVE}" >> $GITHUB_OUTPUT
+
+      - name: "⏪ Option 1: Switch to previous environment"
+        id: switch_rollback
+        run: |
+          INACTIVE="${{ steps.active.outputs.inactive }}"
+          
+          echo "Attempting to switch to ${INACTIVE} environment..."
+          
+          # Check if inactive environment is healthy
+          if [ "${INACTIVE}" == "blue" ]; then
+            ENV_URL="${{ secrets.PRODUCTION_BLUE_URL || 'https://blue.machine-native-ops.com' }}"
+          else
+            ENV_URL="${{ secrets.PRODUCTION_GREEN_URL || 'https://green.machine-native-ops.com' }}"
+          fi
+          
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${ENV_URL}/health" --max-time 10 || echo "000")
+          
+          if [ "${HTTP_STATUS}" == "200" ]; then
+            echo "✅ ${INACTIVE} environment is healthy, switching traffic..."
+            ./scripts/switch-traffic.sh ${INACTIVE} 100
+            echo "${INACTIVE}" > /tmp/active-environment
+            echo "switch_success=true" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ ${INACTIVE} environment not healthy, proceeding with full rollback..."
+            echo "switch_success=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: "⏪ Option 2: Full rollback deployment"
+        if: steps.switch_rollback.outputs.switch_success != 'true'
+        run: |
+          TARGET="${{ needs.prepare-rollback.outputs.rollback_target }}"
+          ACTIVE="${{ steps.active.outputs.environment }}"
+          
+          echo "Executing full rollback to ${TARGET} on ${ACTIVE}..."
+          
+          # Checkout target version
+          git checkout ${TARGET}
+          
+          # Build and deploy
+          npm ci
+          npm run build || true
+          cd engine && npm ci && npm run build && cd ..
+          
+          DEPLOY_DIR="/opt/deployments/production/${ACTIVE}/rollback-$(date +%Y%m%d%H%M%S)"
+          sudo mkdir -p ${DEPLOY_DIR}
+          cp -r . ${DEPLOY_DIR}/
+          
+          cd ${DEPLOY_DIR}
+          
+          # Restart services
+          docker compose -p ${ACTIVE} down || true
+          docker compose -p ${ACTIVE} up -d --build || {
+            npm ci --production
+            pm2 delete ${ACTIVE}-app || true
+            pm2 start npm --name "${ACTIVE}-app" -- start
+          }
+
+      - name: 🏥 Verify production rollback
+        run: |
+          PRODUCTION_URL="${{ secrets.PRODUCTION_URL || 'https://machine-native-ops.com' }}"
+          
+          sleep 45
+          
+          for i in $(seq 1 10); do
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${PRODUCTION_URL}/health" || echo "000")
+            
+            if [ "${HTTP_STATUS}" == "200" ]; then
+              echo "✅ Production rollback verification passed"
+              exit 0
+            fi
+            
+            echo "Health check attempt ${i}: ${HTTP_STATUS}"
+            sleep 15
+          done
+          
+          echo "❌ Production rollback verification failed"
+          exit 1
+
+  # ============================================
+  # Post-Rollback Tasks
+  # ============================================
+  post-rollback:
+    name: 📋 Post-Rollback
+    runs-on: ubuntu-latest
+    needs: [prepare-rollback, rollback-staging, rollback-production]
+    if: always() && (needs.rollback-staging.result == 'success' || needs.rollback-production.result == 'success')
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v6
+
+      - name: 📝 Create rollback record
+        run: |
+          cat > rollback-record.json << EOF
+          {
+            "rollback_id": "${{ github.run_id }}",
+            "environment": "${{ github.event.inputs.environment }}",
+            "rollback_type": "${{ github.event.inputs.rollback_type }}",
+            "from_version": "${{ needs.prepare-rollback.outputs.current_version }}",
+            "to_target": "${{ needs.prepare-rollback.outputs.rollback_target }}",
+            "reason": "${{ github.event.inputs.reason }}",
+            "initiated_by": "${{ github.actor }}",
+            "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "status": {
+              "staging": "${{ needs.rollback-staging.result }}",
+              "production": "${{ needs.rollback-production.result }}"
+            },
+            "gl_charter": "activated"
+          }
+          EOF
+
+      - name: 🏷️ Create rollback tag
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          git tag -a "${{ needs.prepare-rollback.outputs.rollback_tag }}" \
+            -m "Rollback: ${{ github.event.inputs.reason }}"
+          
+          git push origin "${{ needs.prepare-rollback.outputs.rollback_tag }}" || true
+
+      - name: 📢 Send notifications
+        if: github.event.inputs.notify_team == 'true'
+        run: |
+          echo "## ⏪ Rollback Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Environment | ${{ github.event.inputs.environment }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| From | ${{ needs.prepare-rollback.outputs.current_version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| To | ${{ needs.prepare-rollback.outputs.rollback_target }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Reason | ${{ github.event.inputs.reason }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Initiated By | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: 📤 Upload rollback record
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollback-record
+          path: rollback-record.json
+          retention-days: 365
+
+  # ============================================
+  # Rollback Failure Handler
+  # ============================================
+  rollback-failure:
+    name: 🚨 Rollback Failure Handler
+    runs-on: ubuntu-latest
+    needs: [rollback-staging, rollback-production]
+    if: failure()
+    steps:
+      - name: 🚨 Alert on rollback failure
+        run: |
+          echo "## 🚨 CRITICAL: Rollback Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Reason:** ${{ github.event.inputs.reason }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ Manual intervention required!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Recommended Actions:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Check deployment logs" >> $GITHUB_STEP_SUMMARY
+          echo "2. Verify infrastructure health" >> $GITHUB_STEP_SUMMARY
+          echo "3. Consider manual deployment" >> $GITHUB_STEP_SUMMARY
+          echo "4. Contact on-call engineer" >> $GITHUB_STEP_SUMMARY

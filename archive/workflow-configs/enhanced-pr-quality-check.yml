@@ -1,0 +1,316 @@
+name: Enhanced PR Quality Check
+
+# 觸發條件
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:  # 允許手動觸發
+
+# 環境變量
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+
+jobs:
+  # 並行執行的檢查工作
+  parallel-quality-checks:
+    name: ${{ matrix.check-name }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false  # 一個檢查失敗不影響其他檢查
+      matrix:
+        check-name: [security, formatting, linting, typing, documentation]
+        include:
+          - check-name: security
+            continue-on-error: true  # 安全檢查非阻塞
+            critical: false
+          - check-name: formatting
+            continue-on-error: false
+            critical: true
+          - check-name: linting
+            continue-on-error: false
+            critical: true
+          - check-name: typing
+            continue-on-error: true  # 類型檢查非阻塞
+            critical: false
+          - check-name: documentation
+            continue-on-error: true
+            critical: false
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 獲取完整歷史用於更好的分析
+      
+      # 設置 Python 環境
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      # 安裝依賴
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black ruff mypy bandit detect-secrets interrogate pylint
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      # 安裝 Node.js（如果需要）
+      - name: Set up Node.js
+        if: matrix.check-name == 'documentation'
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      # 執行具體檢查
+      - name: Run ${{ matrix.check-name }} check
+        continue-on-error: ${{ matrix.continue-on-error }}
+        run: |
+          echo "Running ${{ matrix.check-name }} check..."
+          case "${{ matrix.check-name }}" in
+            security)
+              echo "Running Bandit security scan..."
+              SCAN_DIRS=""
+              [ -d "workspace/src" ] && SCAN_DIRS="$SCAN_DIRS workspace/src/"
+              [ -d "ns-root" ] && SCAN_DIRS="$SCAN_DIRS ns-root/"
+              
+              if [ -n "$SCAN_DIRS" ]; then
+                bandit -r $SCAN_DIRS -f json -o bandit-report.json || true
+                echo "::notice::Security scan completed. Review bandit-report.json for details."
+                
+                if [ -f bandit-report.json ] && [ -s bandit-report.json ]; then
+                  # Check if jq is available, otherwise skip count
+                  if command -v jq >/dev/null 2>&1; then
+                    ISSUES_COUNT=$(cat bandit-report.json | jq '.results | length' 2>/dev/null || echo "0")
+                    echo "::notice::Found $ISSUES_COUNT security issues (informational only)"
+                  else
+                    echo "::notice::Security scan completed (jq not available for issue count)"
+                  fi
+                fi
+              else
+                echo "::notice::No directories found to scan"
+              fi
+              ;;
+            
+            formatting)
+              echo "Checking code formatting with Black..."
+              SCAN_DIRS=""
+              [ -d "workspace/src" ] && SCAN_DIRS="$SCAN_DIRS workspace/src/"
+              [ -d "ns-root" ] && SCAN_DIRS="$SCAN_DIRS ns-root/"
+              
+              if [ -n "$SCAN_DIRS" ]; then
+                black --check $SCAN_DIRS
+                echo "::notice::Code formatting check passed"
+              else
+                echo "::notice::No directories found to check formatting"
+              fi
+              ;;
+            
+            linting)
+              echo "Linting code with Ruff..."
+              SCAN_DIRS=""
+              [ -d "workspace/src" ] && SCAN_DIRS="$SCAN_DIRS workspace/src/"
+              [ -d "ns-root" ] && SCAN_DIRS="$SCAN_DIRS ns-root/"
+              
+              if [ -n "$SCAN_DIRS" ]; then
+                ruff check $SCAN_DIRS
+                echo "::notice::Code linting check passed"
+              else
+                echo "::notice::No directories found to lint"
+              fi
+              ;;
+            
+            typing)
+              echo "Type checking with MyPy..."
+              SCAN_DIRS=""
+              [ -d "workspace/src" ] && SCAN_DIRS="$SCAN_DIRS workspace/src/"
+              [ -d "ns-root" ] && SCAN_DIRS="$SCAN_DIRS ns-root/"
+              
+              if [ -n "$SCAN_DIRS" ]; then
+                mypy $SCAN_DIRS --no-error-summary || echo "::warning::Type checking issues found"
+                echo "::notice::Type checking completed"
+              else
+                echo "::notice::No directories found to type check"
+              fi
+              ;;
+            
+            documentation)
+              echo "Checking documentation coverage..."
+              SCAN_DIRS=""
+              [ -d "workspace/src" ] && SCAN_DIRS="$SCAN_DIRS workspace/src/"
+              [ -d "ns-root" ] && SCAN_DIRS="$SCAN_DIRS ns-root/"
+              
+              if [ -n "$SCAN_DIRS" ]; then
+                interrogate -vv $SCAN_DIRS --fail-under 85 || echo "::warning::Documentation coverage below 85%"
+                echo "::notice::Documentation check completed"
+              else
+                echo "::notice::No directories found to check documentation"
+              fi
+              ;;
+          esac
+      
+      # 上傳檢查結果
+      - name: Upload ${{ matrix.check-name }} results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.check-name }}-results
+          path: |
+            bandit-report.json
+            *.log
+          retention-days: 30
+          if-no-files-found: warn
+
+  # 綜合質量報告
+  generate-quality-report:
+    name: Generate Quality Report
+    runs-on: ubuntu-latest
+    needs: [parallel-quality-checks]
+    if: always()  # 即使某些檢查失敗也生成報告
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./artifacts
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Generate comprehensive report
+        run: |
+          cat > quality-report.md << 'EOF'
+          # PR Quality Check Report
+          
+          ## 📊 Summary
+          
+          - **Repository**: ${{ github.repository }}
+          - **PR Number**: ${{ github.event.pull_request.number }}
+          - **Branch**: ${{ github.head_ref }}
+          - **Commit**: ${{ github.sha }}
+          - **Triggered by**: ${{ github.actor }}
+          - **Timestamp**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          ## 🔍 Check Results
+          
+          EOF
+          
+          # 分析各個檢查的結果
+          for dir in ./artifacts/*-results; do
+            if [ -d "$dir" ]; then
+              check_name=$(basename "$dir" | sed 's/-results//')
+              echo "### $check_name" >> quality-report.md
+              
+              if [ -f "$dir/bandit-report.json" ]; then
+                echo "Security scan completed successfully." >> quality-report.md
+              else
+                echo "Check completed." >> quality-report.md
+              fi
+              
+              echo "" >> quality-report.md
+            fi
+          done
+          
+          cat >> quality-report.md << 'EOF'
+          
+          ## 📝 Notes
+          
+          - Security checks are informational and won't block PRs
+          - Formatting and linting checks are critical and must pass
+          - Type checking and documentation are warnings
+          
+          ## 🔗 Resources
+          
+          - [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          - [View PR](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }})
+          
+          EOF
+          
+          cat quality-report.md
+      
+      - name: Upload quality report
+        uses: actions/upload-artifact@v3
+        with:
+          name: quality-report
+          path: quality-report.md
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('quality-report.md', 'utf8');
+            
+            // 尋找現有的評論
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            // 刪除舊的評論
+            for (const comment of comments.data) {
+              if (comment.user.type === 'Bot' && comment.body.includes('PR Quality Check Report')) {
+                await github.rest.issues.deleteComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: comment.id
+                });
+              }
+            }
+            
+            // 添加新評論
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: report
+            });
+
+  # 通知工作流
+  notify-team:
+    name: Notify Team
+    runs-on: ubuntu-latest
+    needs: [parallel-quality-checks]
+    if: failure()  # 只在失敗時通知
+    
+    steps:
+      - name: Send failure notification
+        run: |
+          echo "Critical checks failed. Team should be notified."
+          # 這裡可以集成 Slack、Email 或其他通知系統
+          echo "::error::Critical quality checks failed. Please review the workflow run."
+
+  # 依賴項漏洞掃描（可選）
+  dependency-vulnerability-scan:
+    name: Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'

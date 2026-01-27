@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "platform": "GitHub",
+    "repository": "namespace-mcp",
+    "clone_url": "https://github.com/namespace-mcp.git",
+    "analysis_scope": "entire",
+    "analyzer_version": "3.0.0",
+    "quantum_enabled": true
+  },
+  "timestamp": "2026-01-06T23:12:01.353060Z",
+  "analysis_scope": "entire",
+  "quantum_metrics": {
+    "enabled": true,
+    "algorithms_tested": [
+      "VQE",
+      "QAOA",
+      "QML"
+    ],
+    "results": {
+      "VQE": {
+        "algo": "VQE",
+        "energy": -0.7453573265003,
+        "fidelity": 0.9689327615888055
+      },
+      "QAOA": {
+        "algo": "QAOA",
+        "opt": 0.849125025190055,
+        "fidelity": 0.9523389582574022
+      },
+      "QML": {
+        "algo": "QML",
+        "acc": 0.9292807084481,
+        "fidelity": 0.9464811046880021
+      }
+    },
+    "average_fidelity": 0.9559176081780699
+  },
+  "workspace_validation": {
+    "summary": {
+      "total_files": 34,
+      "yaml_files": 5,
+      "json_files": 2,
+      "typescript_files": 18,
+      "python_files": 3,
+      "markdown_files": 6,
+      "yaml_valid": 1,
+      "json_valid": 2,
+      "typescript_valid": 18,
+      "python_valid": 3,
+      "total_errors": 4,
+      "total_warnings": 0
+    }
+  },
+  "sections": {
+    "architecture": {
+      "core_patterns": [
+        {
+          "pattern": "Quantum-Enhanced Microservices",
+          "rationale": "整合量子計算的分散式系統設計",
+          "implementation": "Kubernetes + Qiskit Runtime"
+        },
+        {
+          "pattern": "MCP Protocol Integration",
+          "rationale": "Model Context Protocol 整合設計",
+          "implementation": "MCP SDK + TypeScript Server"
+        }
+      ]
+    },
+    "capabilities": {
+      "core_features": [
+        {
+          "name": "MCP Tool Integration",
+          "status": "production"
+        },
+        {
+          "name": "INSTANT Pipelines",
+          "status": "production"
+        },
+        {
+          "name": "Quantum Fallback",
+          "status": "production"
+        },
+        {
+          "name": "Auto-Healing",
+          "status": "beta"
+        }
+      ]
+    }
+  }
+}

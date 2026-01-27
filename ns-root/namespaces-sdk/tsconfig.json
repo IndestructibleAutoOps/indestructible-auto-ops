@@ -1,0 +1,52 @@
+{
+  "_gl_metadata": {
+    "gl_layer": "GL-00-NAMESPACE",
+    "gl_module": "ns-root/namespaces-sdk",
+    "gl_semantic_anchor": "GL-00-NAMESPAC_TSCONFIG",
+    "gl_evidence_required": false,
+    "gl_charter": "GL Unified Charter Activated"
+  },
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "importHelpers": true,
+    "isolatedModules": false,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "***.spec.ts"
+  ]
+}

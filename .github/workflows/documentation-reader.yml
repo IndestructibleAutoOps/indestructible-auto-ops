@@ -1,0 +1,60 @@
+# =============================================================================
+# Documentation Reader Workflow
+# Reads and processes documentation files using read-files-action
+# =============================================================================
+name: Documentation Reader
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+    inputs:
+      files_pattern:
+        description: 'Pattern for files to read (e.g., "*.md")'
+        required: false
+        default: 'README.md'
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'project-docs/**'
+      - '*.md'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'project-docs/**'
+      - '*.md'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  read-documentation:
+    name: Read Documentation Files
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        
+      - name: Read files action
+        uses: komorebitech/read-files-action@v1.5
+        id: read-files
+        with:
+          files: '["README.md","docs/QUICKSTART.md","project-docs/analysis/PROJECT_STATUS.md"]'
+          pattern: '.*'
+          
+      - name: Process Documentation
+        run: |
+          echo "Documentation files have been read successfully"
+          echo "Files processed:"
+          echo "- README.md"
+          echo "- docs/QUICKSTART.md"
+          echo "- project-docs/analysis/PROJECT_STATUS.md"
+          
+      - name: Display File Stats
+        run: |
+          echo "Processing complete"
+          echo "Workflow executed successfully using read-files-action@v1.5"

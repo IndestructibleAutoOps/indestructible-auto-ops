@@ -1,0 +1,442 @@
+{
+  "_gl_metadata": {
+    "gl_layer": "GL-00-NAMESPACE",
+    "gl_module": "ns-root/namespaces-sdk/monitoring",
+    "gl_semantic_anchor": "GL-00-NAMESPAC_MONITORI_GRAFANADASHB",
+    "gl_evidence_required": false,
+    "gl_charter": "GL Unified Charter Activated"
+  },
+  "dashboard": {
+    "id": null,
+    "title": "Namespaces SDK - Instant System Dashboard",
+    "tags": [
+      "namespaces-sdk",
+      "instant-system",
+      "machine-native-ops"
+    ],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "System Overview",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "targets": [
+          {
+            "expr": "namespaces_sdk_latency_ms",
+            "legendFormat": "Latency (ms)",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "red",
+                  "value": 100
+                }
+              ]
+            },
+            "unit": "ms"
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "auto"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Success Rate",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "targets": [
+          {
+            "expr": "namespaces_sdk_success_rate",
+            "legendFormat": "Success Rate (%)",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 95
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent",
+            "max": 100,
+            "min": 0
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Parallel Agent Pool",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 8
+        },
+        "targets": [
+          {
+            "expr": "namespaces_sdk_active_agents",
+            "legendFormat": "Active Agents",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 64
+                },
+                {
+                  "color": "green",
+                  "value": 128
+                }
+              ]
+            },
+            "unit": "short"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Human Interventions",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 8
+        },
+        "targets": [
+          {
+            "expr": "increase(namespaces_sdk_human_intervention_count[5m])",
+            "legendFormat": "Interventions (5m)",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 1
+                }
+              ]
+            },
+            "unit": "short"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Governance Compliance",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 8
+        },
+        "targets": [
+          {
+            "expr": "namespaces_sdk_governance_compliance",
+            "legendFormat": "Compliance %",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 95
+                },
+                {
+                  "color": "green",
+                  "value": 98
+                }
+              ]
+            },
+            "unit": "percent"
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Latency Trend",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "targets": [
+          {
+            "expr": "namespaces_sdk_latency_ms",
+            "legendFormat": "Response Time",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0
+            },
+            "unit": "ms"
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Throughput",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "targets": [
+          {
+            "expr": "rate(namespaces_sdk_operations_total[5m])",
+            "legendFormat": "Ops/sec",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto"
+            },
+            "unit": "ops"
+          }
+        }
+      },
+      {
+        "id": 8,
+        "title": "Error Rate",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        },
+        "targets": [
+          {
+            "expr": "rate(namespaces_sdk_errors_total[5m]) / rate(namespaces_sdk_operations_total[5m]) * 100",
+            "legendFormat": "Error Rate %",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "yellow",
+                  "value": 1
+                },
+                {
+                  "color": "red",
+                  "value": 5
+                }
+              ]
+            },
+            "unit": "percent"
+          }
+        }
+      },
+      {
+        "id": 9,
+        "title": "Event Processing",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 24
+        },
+        "targets": [
+          {
+            "expr": "rate(namespaces_sdk_events_processed[5m])",
+            "legendFormat": "Events/sec",
+            "refId": "A"
+          },
+          {
+            "expr": "namespaces_sdk_event_backlog_size",
+            "legendFormat": "Backlog Size",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "unit": "short"
+          }
+        }
+      },
+      {
+        "id": 10,
+        "title": "Auto-Healing Activity",
+        "type": "timeseries",
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 32
+        },
+        "targets": [
+          {
+            "expr": "increase(namespaces_sdk_auto_healing_triggers[5m])",
+            "legendFormat": "Healing Triggers",
+            "refId": "A"
+          },
+          {
+            "expr": "increase(namespaces_sdk_auto_healing_failures[5m])",
+            "legendFormat": "Healing Failures",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "unit": "short"
+          }
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "5s",
+    "variables": {
+      "interval": {
+        "type": "interval",
+        "name": "interval",
+        "query": "1m",
+        "refresh": 0,
+        "options": [
+          "1m",
+          "5m",
+          "10m",
+          "30m",
+          "1h",
+          "6h",
+          "12h",
+          "1d"
+        ]
+      }
+    },
+    "annotations": {
+      "list": [
+        {
+          "name": "Deployments",
+          "datasource": "-- Grafana --",
+          "type": "dashboard",
+          "enable": true,
+          "iconColor": "#73BF69",
+          "tags": [
+            "deployment"
+          ]
+        }
+      ]
+    }
+  }
+}

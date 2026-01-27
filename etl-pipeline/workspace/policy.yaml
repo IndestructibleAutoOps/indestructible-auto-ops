@@ -1,0 +1,13 @@
+# Workspace Policy
+# GL-Layer: GL05 (Workspace)
+# Closure-Signal: policy
+
+metadata:
+  name: workspace-policy
+  version: "1.0.0"
+  layer: "GL05"
+
+policy-rules:
+  - rule: "artifact-generation"
+    description: "All operations must generate artifacts"
+    enforcement: "strict"

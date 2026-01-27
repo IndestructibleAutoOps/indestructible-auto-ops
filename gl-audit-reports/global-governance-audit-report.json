@@ -1,0 +1,157 @@
+{
+  "session_id": "gl-audit-20260126-020557",
+  "charter_version": "2.0.0",
+  "audit_start": "2026-01-26T02:05:57.101990+00:00",
+  "audit_end": "2026-01-26T02:05:57.164586+00:00",
+  "summary": {
+    "total_files": 47,
+    "files_processed": 47,
+    "files_passed": 47,
+    "files_failed": 0,
+    "total_issues": 143,
+    "issues_by_severity": {
+      "P1": 47,
+      "P2": 93,
+      "P3": 3
+    },
+    "issues_by_type": {
+      "gl_marker_missing": 47,
+      "metadata_missing": 44,
+      "type_error": 23,
+      "pipeline_error": 1,
+      "semantic_manifest_missing": 26,
+      "naming_inconsistent": 2
+    }
+  },
+  "best_practice_recommendations": [
+    {
+      "type": "structure",
+      "priority": "medium",
+      "title": "建議添加 .gl 目錄",
+      "description": "最佳實踐建議包含 .gl 目錄以組織相關功能",
+      "action": "mkdir -p engine/.gl"
+    },
+    {
+      "type": "governance",
+      "priority": "high",
+      "title": "建議添加 .gl 治理目錄",
+      "description": "缺少 .gl 目錄，無法存放治理配置",
+      "action": "mkdir -p engine/.gl && touch engine/.gl/manifest.yaml"
+    },
+    {
+      "type": "governance",
+      "priority": "high",
+      "title": "批量添加 GL 標記",
+      "description": "有 47 個檔案缺少 GL 標記",
+      "action": "執行自動化腳本批量添加 GL 標記"
+    },
+    {
+      "type": "documentation",
+      "priority": "medium",
+      "title": "添加 Semantic Manifest",
+      "description": "有 26 個檔案缺少語意標記",
+      "action": "為主要模組添加 @module 和 @description JSDoc 標記"
+    }
+  ],
+  "migration_plan": {
+    "migrations": [],
+    "suggested_structure": {
+      "engine": {
+        "core": {
+          "description": "核心入口和介面定義",
+          "files": [
+            "index.ts",
+            "interfaces.d.ts",
+            "interfaces-fix.d.ts"
+          ]
+        },
+        "parser": {
+          "description": "解析器模組",
+          "files": [
+            "yaml_parser.ts",
+            "json_passthrough.ts",
+            "anchor_resolver.ts"
+          ]
+        },
+        "loader": {
+          "description": "載入器模組",
+          "files": [
+            "fs_loader.ts",
+            "git_loader.ts",
+            "merge_index.ts"
+          ]
+        },
+        "normalizer": {
+          "description": "正規化模組",
+          "files": [
+            "defaults_applier.ts",
+            "env_merger.ts",
+            "module_defaults.ts"
+          ]
+        },
+        "validator": {
+          "description": "驗證器模組",
+          "files": [
+            "schema_validator.ts",
+            "module_validator.ts",
+            "error_reporter.ts"
+          ]
+        },
+        "renderer": {
+          "description": "渲染器模組",
+          "files": [
+            "template_engine.ts",
+            "module_mapper.ts",
+            "artifact_writer.ts"
+          ]
+        },
+        "executor": {
+          "description": "執行器模組",
+          "files": [
+            "local_executor.ts",
+            "remote_executor.ts",
+            "rollback.ts"
+          ]
+        },
+        "governance": {
+          "description": "治理模組",
+          "files": [
+            "gl_engine.ts",
+            "rule_evaluator.ts",
+            "events_writer.ts",
+            "anchor_resolver.ts"
+          ]
+        },
+        "artifacts": {
+          "description": "產出物管理",
+          "files": [
+            "artifact_manager.ts",
+            "evidence_chain.ts",
+            "manifest_generator.ts"
+          ]
+        },
+        "tests": {
+          "description": "測試檔案",
+          "subdirs": [
+            "artifacts",
+            "validator",
+            "normalizer",
+            "governance",
+            "loader"
+          ]
+        },
+        ".gl": {
+          "description": "GL 治理配置",
+          "files": [
+            "manifest.yaml",
+            "semantic-anchors.yaml",
+            "evidence-chain.json"
+          ]
+        }
+      }
+    },
+    "migration_commands": [
+      "# 執行以下命令進行遷移"
+    ]
+  }
+}

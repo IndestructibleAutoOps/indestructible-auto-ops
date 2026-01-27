@@ -1,0 +1,477 @@
+# GL Governance Markers
+# @gl-layer GL-00-NAMESPACE
+# @gl-module ns-root/namespaces-mcp/k8s
+# @gl-semantic-anchor GL-00-NAMESPAC_K8S_MONITORING
+# @gl-evidence-required false
+# GL Unified Charter Activated
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-mcp-config
+  namespace: mcp-system
+  labels:
+    app: prometheus
+    component: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+      external_labels:
+        cluster: 'mcp-production'
+        environment: 'prod'
+
+    scrape_configs:
+    - job_name: 'mcp-semantic-control-plane'
+      kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+          - mcp-system
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+        target_label: __address__
+      - action: labelmap
+        regex: __meta_kubernetes_pod_label_(.+)
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: kubernetes_namespace
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: kubernetes_pod_name
+
+    - job_name: 'mcp-validation-engine'
+      static_configs:
+      - targets: ['mcp-semantic-control-plane:9090']
+        labels:
+          component: 'validation-engine'
+
+    - job_name: 'mcp-promotion-engine'
+      static_configs:
+      - targets: ['mcp-semantic-control-plane:9090']
+        labels:
+          component: 'promotion-engine'
+
+    - job_name: 'mcp-artifact-registry'
+      static_configs:
+      - targets: ['mcp-semantic-control-plane:9090']
+        labels:
+          component: 'artifact-registry'
+
+  alerts.yml: |
+    groups:
+    - name: mcp-semantic-alerts
+      interval: 30s
+      rules:
+      # Validation Engine Alerts
+      - alert: ValidationEngineHighErrorRate
+        expr: rate(validation_errors_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          component: validation-engine
+        annotations:
+          summary: "High validation error rate"
+          description: "Validation error rate is {{ $value }} errors/sec"
+
+      - alert: ValidationEngineSlowResponse
+        expr: histogram_quantile(0.95, rate(validation_duration_seconds_bucket[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          component: validation-engine
+        annotations:
+          summary: "Slow validation response time"
+          description: "95th percentile validation time is {{ $value }}s"
+
+      - alert: ValidationEngineLowCacheHitRate
+        expr: validation_cache_hit_rate < 0.8
+        for: 10m
+        labels:
+          severity: info
+          component: validation-engine
+        annotations:
+          summary: "Low cache hit rate"
+          description: "Cache hit rate is {{ $value }}"
+
+      # Promotion Engine Alerts
+      - alert: PromotionEngineHighFailureRate
+        expr: rate(promotion_failures_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+          component: promotion-engine
+        annotations:
+          summary: "High promotion failure rate"
+          description: "Promotion failure rate is {{ $value }} failures/sec"
+
+      - alert: PromotionEngineSlowPromotion
+        expr: histogram_quantile(0.95, rate(promotion_duration_seconds_bucket[5m])) > 300
+        for: 5m
+        labels:
+          severity: warning
+          component: promotion-engine
+        annotations:
+          summary: "Slow promotion time"
+          description: "95th percentile promotion time is {{ $value }}s"
+
+      - alert: PromotionEngineRollbackTriggered
+        expr: increase(promotion_rollbacks_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+          component: promotion-engine
+        annotations:
+          summary: "Promotion rollback triggered"
+          description: "{{ $value }} rollbacks in the last 5 minutes"
+
+      # Artifact Registry Alerts
+      - alert: ArtifactRegistryHighLatency
+        expr: histogram_quantile(0.95, rate(artifact_lookup_duration_seconds_bucket[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          component: artifact-registry
+        annotations:
+          summary: "High artifact lookup latency"
+          description: "95th percentile lookup time is {{ $value }}s"
+
+      - alert: ArtifactRegistryStorageFull
+        expr: artifact_storage_used_bytes / artifact_storage_total_bytes > 0.9
+        for: 5m
+        labels:
+          severity: critical
+          component: artifact-registry
+        annotations:
+          summary: "Artifact storage nearly full"
+          description: "Storage usage is {{ $value | humanizePercentage }}"
+
+      - alert: ArtifactRegistryLowThroughput
+        expr: rate(artifact_uploads_total[5m]) < 10
+        for: 10m
+        labels:
+          severity: info
+          component: artifact-registry
+        annotations:
+          summary: "Low artifact upload throughput"
+          description: "Upload rate is {{ $value }} artifacts/sec"
+
+      # System-wide Alerts
+      - alert: MCPSemanticHighMemoryUsage
+        expr: container_memory_usage_bytes{pod=~"mcp-semantic-.*"} / container_spec_memory_limit_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value | humanizePercentage }}"
+
+      - alert: MCPSemanticHighCPUUsage
+        expr: rate(container_cpu_usage_seconds_total{pod=~"mcp-semantic-.*"}[5m]) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is {{ $value | humanizePercentage }}"
+
+      - alert: MCPSemanticPodNotReady
+        expr: kube_pod_status_ready{pod=~"mcp-semantic-.*", condition="true"} == 0
+        for: 5m
+        labels:
+          severity: critical
+          component: system
+        annotations:
+          summary: "Pod not ready"
+          description: "Pod {{ $labels.pod }} is not ready"
+
+      - alert: MCPSemanticPodCrashLooping
+        expr: rate(kube_pod_container_status_restarts_total{pod=~"mcp-semantic-.*"}[15m]) > 0
+        for: 5m
+        labels:
+          severity: critical
+          component: system
+        annotations:
+          summary: "Pod crash looping"
+          description: "Pod {{ $labels.pod }} is crash looping"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-mcp-dashboards
+  namespace: mcp-system
+  labels:
+    app: grafana
+    component: monitoring
+data:
+  mcp-semantic-overview.json: |
+    {
+      "dashboard": {
+        "title": "MCP Semantic Control Plane - Overview",
+        "tags": ["mcp", "semantic", "overview"],
+        "timezone": "browser",
+        "panels": [
+          {
+            "title": "Validation Engine - Throughput",
+            "targets": [
+              {
+                "expr": "rate(validation_total[5m])",
+                "legendFormat": "Validations/sec"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Validation Engine - Error Rate",
+            "targets": [
+              {
+                "expr": "rate(validation_errors_total[5m])",
+                "legendFormat": "Errors/sec"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Validation Engine - Response Time",
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.50, rate(validation_duration_seconds_bucket[5m]))",
+                "legendFormat": "p50"
+              },
+              {
+                "expr": "histogram_quantile(0.95, rate(validation_duration_seconds_bucket[5m]))",
+                "legendFormat": "p95"
+              },
+              {
+                "expr": "histogram_quantile(0.99, rate(validation_duration_seconds_bucket[5m]))",
+                "legendFormat": "p99"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Promotion Engine - Success Rate",
+            "targets": [
+              {
+                "expr": "rate(promotion_success_total[5m]) / rate(promotion_total[5m])",
+                "legendFormat": "Success Rate"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Artifact Registry - Storage Usage",
+            "targets": [
+              {
+                "expr": "artifact_storage_used_bytes",
+                "legendFormat": "Used"
+              },
+              {
+                "expr": "artifact_storage_total_bytes",
+                "legendFormat": "Total"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "System - Memory Usage",
+            "targets": [
+              {
+                "expr": "container_memory_usage_bytes{pod=~&quot;mcp-semantic-.*&quot;}",
+                "legendFormat": "{{ pod }}"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "System - CPU Usage",
+            "targets": [
+              {
+                "expr": "rate(container_cpu_usage_seconds_total{pod=~&quot;mcp-semantic-.*&quot;}[5m])",
+                "legendFormat": "{{ pod }}"
+              }
+            ],
+            "type": "graph"
+          }
+        ]
+      }
+    }
+
+  mcp-validation-engine.json: |
+    {
+      "dashboard": {
+        "title": "MCP Validation Engine - Detailed",
+        "tags": ["mcp", "validation"],
+        "panels": [
+          {
+            "title": "Validation Throughput by Schema",
+            "targets": [
+              {
+                "expr": "rate(validation_total{schema_id=~&quot;.+&quot;}[5m])",
+                "legendFormat": "{{ schema_id }}"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Cache Hit Rate",
+            "targets": [
+              {
+                "expr": "validation_cache_hit_rate",
+                "legendFormat": "Hit Rate"
+              }
+            ],
+            "type": "gauge"
+          },
+          {
+            "title": "Quality Metrics",
+            "targets": [
+              {
+                "expr": "validation_quality_completeness",
+                "legendFormat": "Completeness"
+              },
+              {
+                "expr": "validation_quality_accuracy",
+                "legendFormat": "Accuracy"
+              },
+              {
+                "expr": "validation_quality_consistency",
+                "legendFormat": "Consistency"
+              }
+            ],
+            "type": "graph"
+          }
+        ]
+      }
+    }
+
+  mcp-promotion-engine.json: |
+    {
+      "dashboard": {
+        "title": "MCP Promotion Engine - Detailed",
+        "tags": ["mcp", "promotion"],
+        "panels": [
+          {
+            "title": "Promotions by Stage",
+            "targets": [
+              {
+                "expr": "rate(promotion_total{to_stage=~&quot;.+&quot;}[5m])",
+                "legendFormat": "{{ to_stage }}"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Approval Time",
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, rate(approval_duration_seconds_bucket[5m]))",
+                "legendFormat": "p95"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Rollback Rate",
+            "targets": [
+              {
+                "expr": "rate(promotion_rollbacks_total[5m])",
+                "legendFormat": "Rollbacks/sec"
+              }
+            ],
+            "type": "graph"
+          }
+        ]
+      }
+    }
+
+  mcp-artifact-registry.json: |
+    {
+      "dashboard": {
+        "title": "MCP Artifact Registry - Detailed",
+        "tags": ["mcp", "artifacts"],
+        "panels": [
+          {
+            "title": "Upload/Download Throughput",
+            "targets": [
+              {
+                "expr": "rate(artifact_uploads_total[5m])",
+                "legendFormat": "Uploads/sec"
+              },
+              {
+                "expr": "rate(artifact_downloads_total[5m])",
+                "legendFormat": "Downloads/sec"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Lookup Performance",
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, rate(artifact_lookup_duration_seconds_bucket[5m]))",
+                "legendFormat": "p95"
+              }
+            ],
+            "type": "graph"
+          },
+          {
+            "title": "Deduplication Rate",
+            "targets": [
+              {
+                "expr": "rate(artifact_deduplicated_total[5m]) / rate(artifact_uploads_total[5m])",
+                "legendFormat": "Dedup Rate"
+              }
+            ],
+            "type": "gauge"
+          }
+        ]
+      }
+    }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-mcp
+  namespace: mcp-system
+  labels:
+    app: prometheus
+    component: monitoring
+spec:
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 9090
+    targetPort: 9090
+  selector:
+    app: prometheus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-mcp
+  namespace: mcp-system
+  labels:
+    app: grafana
+    component: monitoring
+spec:
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: grafana

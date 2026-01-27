@@ -1,0 +1,469 @@
+{
+  "audit_metadata": {
+    "gl_unified_charter": "activated",
+    "audit_date": "2026-01-23T13:53:00.298794",
+    "auditor": "GL Governance Audit Script",
+    "version": "1.0.0"
+  },
+  "summary": {
+    "total_files": 19,
+    "successful_executions": 19,
+    "files_with_issues": 0,
+    "total_issues": 0,
+    "governance_events": 19,
+    "severity_breakdown": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    }
+  },
+  "file_reports": [
+    {
+      "file": "root/.root.gates.map.yaml",
+      "type": "yaml",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.302159",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec",
+          "status"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "yaml_parsed",
+          "timestamp": "2026-01-23T13:53:00.324799",
+          "details": "YAML file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/00-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.325271",
+      "structure": {
+        "line_count": 134,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.325427",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/01-semantic-root-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.325844",
+      "structure": {
+        "line_count": 325,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.325951",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/02-modules-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.326376",
+      "structure": {
+        "line_count": 113,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.326436",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/03-governance-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.326828",
+      "structure": {
+        "line_count": 118,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.326881",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/04-trust-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.327299",
+      "structure": {
+        "line_count": 104,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.327351",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/05-provenance-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.327744",
+      "structure": {
+        "line_count": 79,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.327792",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/06-integrity-init.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.328197",
+      "structure": {
+        "line_count": 94,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.328248",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.init.d/99-finalize.sh",
+      "type": "shell",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.328635",
+      "structure": {
+        "line_count": 171,
+        "has_shebang": true,
+        "uses_set_e": true
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "shell_analyzed",
+          "timestamp": "2026-01-23T13:53:00.328691",
+          "details": "Shell script structure analyzed"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/concept-registry.json",
+      "type": "json",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.329090",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "_gl",
+          "version",
+          "created",
+          "base_concepts",
+          "derived_concepts",
+          "concepts"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "json_parsed",
+          "timestamp": "2026-01-23T13:53:00.329214",
+          "details": "JSON file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/final-attestation.yaml",
+      "type": "yaml",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.329618",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec",
+          "status"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "yaml_parsed",
+          "timestamp": "2026-01-23T13:53:00.331992",
+          "details": "YAML file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/governance-registry.json",
+      "type": "json",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.332429",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "_gl",
+          "version",
+          "created",
+          "total_roles",
+          "total_policies",
+          "roles",
+          "policies"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "json_parsed",
+          "timestamp": "2026-01-23T13:53:00.332510",
+          "details": "JSON file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/modules-registry.json",
+      "type": "json",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.332906",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "_gl",
+          "version",
+          "created",
+          "total_modules",
+          "enabled_modules",
+          "disabled_modules",
+          "modules"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "json_parsed",
+          "timestamp": "2026-01-23T13:53:00.332984",
+          "details": "JSON file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/provenance-registry.json",
+      "type": "json",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.333396",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "_gl",
+          "version",
+          "created",
+          "source_tracking",
+          "modification_history",
+          "artifacts_tracked"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "json_parsed",
+          "timestamp": "2026-01-23T13:53:00.333443",
+          "details": "JSON file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/semantic-root-attestations/initial-attestation.yaml",
+      "type": "yaml",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.333851",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec",
+          "status"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "yaml_parsed",
+          "timestamp": "2026-01-23T13:53:00.335731",
+          "details": "YAML file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/trust-registry.json",
+      "type": "json",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.336166",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "_gl",
+          "version",
+          "created",
+          "trust_chain",
+          "certificates_count",
+          "certificates"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "json_parsed",
+          "timestamp": "2026-01-23T13:53:00.336215",
+          "details": "JSON file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.jobs/validation-rules.json",
+      "type": "json",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.336609",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "_gl",
+          "version",
+          "created",
+          "rules"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "json_parsed",
+          "timestamp": "2026-01-23T13:53:00.336661",
+          "details": "JSON file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/.root.semantic-root.yaml",
+      "type": "yaml",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.337053",
+      "structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec",
+          "status"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "yaml_parsed",
+          "timestamp": "2026-01-23T13:53:00.360919",
+          "details": "YAML file successfully parsed and validated"
+        }
+      ]
+    },
+    {
+      "file": "root/ROOT_DIRECTORY_DESIGN_REPORT.md",
+      "type": "markdown",
+      "status": "success",
+      "execution_time": "2026-01-23T13:53:00.361466",
+      "structure": {
+        "line_count": 75,
+        "header_count": 4,
+        "headers": [
+          "# root/ \u4e3b\u5c64\u76ee\u9304\u8a2d\u8a08\u5831\u544a\uff08namespaces-mcp \u5c0d\u9f4a\uff09",
+          "## 1. \u6838\u5fc3\u6a94\u6848\u6e05\u55ae\u5c0d\u7167\uff08\u73fe\u6cc1 / \u6240\u5c6c / \u5f85\u88dc\uff09",
+          "## 2. \u4e00\u9ad4\u5316\u5354\u4f5c\u7b56\u7565\uff08namespaces-mcp \u539f\u5247\uff09",
+          "## 3. \u5f85\u88dc\u884c\u52d5\uff08\u6700\u5c0f\u8b8a\u66f4\u5efa\u8b70\uff09"
+        ]
+      },
+      "issues": [],
+      "governance_events": [
+        {
+          "event": "markdown_analyzed",
+          "timestamp": "2026-01-23T13:53:00.361564",
+          "details": "Markdown file structure analyzed"
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "recommendations": [
+    {
+      "id": "REC-001",
+      "priority": "HIGH",
+      "title": "Add GL Layer Markers",
+      "description": "Most YAML/JSON files lack GL layer markers. Add machinenativeops.io annotations to all governance-critical files.",
+      "affected_files": 0
+    },
+    {
+      "id": "REC-002",
+      "priority": "MEDIUM",
+      "title": "Add Standard Metadata",
+      "description": "General recommendation: ensure configuration files include standard metadata fields (version, description) for better traceability, even if no missing-metadata issues were detected in this report.",
+      "affected_files": 0
+    },
+    {
+      "id": "REC-003",
+      "priority": "LOW",
+      "title": "Best Practice Directory Structure",
+      "description": "Consider organizing root files into logical subdirectories: config/, policies/, scripts/, docs/",
+      "affected_files": 0
+    }
+  ]
+}

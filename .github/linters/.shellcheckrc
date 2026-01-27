@@ -1,0 +1,22 @@
+# ShellCheck configuration for MachineNativeOps
+# Disable certain checks that are too strict
+
+# Disable multiple checks - comma-separated list (PHASE 1: Enable critical security checks)
+disable=SC2012,SC2028,SC2129,SC2181,SC2002,SC2004,SC2006,SC2015,SC2068,SC2069,SC2071,SC2072,SC2076,SC2091,SC2103,SC2115,SC2116,SC2119,SC2120,SC2124,SC2128,SC2140,SC2143,SC2144,SC2148,SC2153,SC2156,SC2157,SC2166,SC2168,SC2169,SC2170,SC2172,SC2174,SC2178,SC2179,SC2185,SC2188,SC2194,SC2196,SC2197,SC2199,SC2207,SC2211,SC2213,SC2215,SC2219,SC2220,SC2221,SC2227,SC2229,SC2231,SC2233,SC2235
+
+# Critical security checks NOW ENABLED:
+# SC2086 - Double quote to prevent globbing and word splitting
+# SC2034 - Variable appears unused
+# SC2145 - Argument mixes string and array
+# SC2155 - Declare and assign separately
+# SC2154 - Variable is referenced but not assigned
+# SC2046 - Quote this to prevent word splitting
+# SC2053 - Quote the rhs of == in [[ ]] to prevent globbing
+# SC2064 - Use indirect expansion
+# SC2206 - Quote to prevent word splitting/globbing
+
+# Set shell to bash
+shell=bash
+
+# External sources
+external-sources=true

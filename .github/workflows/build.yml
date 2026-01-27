@@ -1,0 +1,55 @@
+name: Build
+
+on:
+  push:
+    branches: [ main, feature/* ]
+  pull_request:
+    branches: [ main, feature/* ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+    
+    - name: Check if Python package exists in workspace
+      id: check-python-package
+      run: |
+        if [ -f "workspace/pyproject.toml" ] || [ -f "workspace/setup.py" ]; then
+          echo "python_package=true" >> $GITHUB_OUTPUT
+          echo "package_dir=workspace" >> $GITHUB_OUTPUT
+        else
+          echo "python_package=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Build package
+      if: steps.check-python-package.outputs.python_package == 'true'
+      working-directory: workspace
+      working-directory: ${{ steps.check-python-package.outputs.package_dir }}
+      run: |
+        python -m build
+    
+    - name: Check package
+      if: steps.check-python-package.outputs.python_package == 'true'
+      working-directory: workspace
+      working-directory: ${{ steps.check-python-package.outputs.package_dir }}
+      run: |
+        twine check dist/*
+    
+    - name: Upload artifacts
+      if: steps.check-python-package.outputs.python_package == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: workspace/dist/

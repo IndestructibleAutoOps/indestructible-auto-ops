@@ -1,0 +1,68 @@
+name: Words Really Matter
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    # Run weekly on Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  words-matter:
+    runs-on: ubuntu-latest
+    name: Remove problematic words from markdown files
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Words Really Matter
+        uses: jjasghar/actions-words-really-matter@v2.2.0
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        continue-on-error: true  # Don't fail if PR creation fails due to branch protection rules
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'docs: replace problematic words with inclusive alternatives'
+          committer: GitHub Actions <actions@github.com>
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: automated/words-really-matter
+          delete-branch: true
+          title: '[Automated] Replace problematic words with inclusive alternatives'
+          body: |
+            This automated PR replaces problematic words in markdown files
+            with more inclusive alternatives.
+
+            Changes made by the [Words Really Matter]
+            (https://github.com/jjasghar/actions-words-really-matter) action.
+
+            Common replacements include:
+            - `master` → `leader` or `main`
+            - `slave` → `follower`
+            - `whitelist` → `allowlist`
+            - `blacklist` → `denylist`
+
+            Please review the changes and merge if appropriate.
+          labels: |
+            automated
+            documentation
+            inclusive-language
+
+      - name: Check outputs
+        if: steps.cpr.outputs.pull-request-number
+        run: |
+          echo "Pull Request Number: ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL: ${{ steps.cpr.outputs.pull-request-url }}"

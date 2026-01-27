@@ -1,0 +1,54 @@
+# Branch comparison: origin/main vs origin/feature/aep-foundation
+
+## Summary
+- Compared full trees between `origin/main` and `origin/feature/aep-foundation` (no merge base found).
+- Tree sizes: `origin/main` has 7,386 files; `origin/feature/aep-foundation` has 29 files.
+- Diff results: 23 added, 5 modified, 7,380 removed, 1 renamed.
+
+## Added files (23)
+- `IMPLEMENTATION_STATUS.md`
+- `VERSION`
+- `dsl/schema.yaml`
+- `dsl/site.yaml`
+- `engine/SPEC.md`
+- `engine/executor/README.md`
+- `engine/gl/README.md`
+- `engine/index.ts`
+- `engine/loader/README.md`
+- `engine/normalizer/README.md`
+- `engine/parser/README.md`
+- `engine/renderer/README.md`
+- `engine/validator/README.md`
+- `gl/anchors.yaml`
+- `gl/charter.yaml`
+- `gl/manifests/nginx.gl.yaml`
+- `gl/rules/naming.yaml`
+- `gl/rules/network.yaml`
+- `modules/nginx/module.yaml`
+- `modules/nginx/schema.json`
+- `modules/nginx/templates/nginx.conf.j2`
+- `scripts/build.sh`
+- `system/system.yaml`
+
+## Modified files (5)
+- `.gitignore`
+- `README.md`
+- `engine/interfaces.d.ts`
+- `package.json`
+- `todo.md`
+
+## Removed files (7,380)
+- Major removals are concentrated in:
+  - `workspace/` (4,618 files)
+  - `ns-root/` (744 files)
+  - `archive/` (679 files)
+  - `tools/` (235 files)
+  - `config/` (189 files)
+  - `governance/` (98 files)
+  - `gl/` (94 files)
+  - `scripts/` (87 files)
+  - `.github/` (84 files)
+  - `docs/` (58 files)
+
+## Renamed files (1)
+- `workspace/src/services/scheduler/tsconfig.json` → `tsconfig.json`

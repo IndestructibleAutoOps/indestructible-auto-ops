@@ -1,0 +1,13 @@
+# Root Policy Manifest
+# GL-Layer: GL06 (Root Policy)
+# Closure-Signal: manifest
+
+metadata:
+  name: root-policy-manifest
+  version: "1.0.0"
+  layer: "GL06"
+  description: "Root policy manifest for search system"
+
+artifacts:
+  - policy.yaml
+  - naming-convention/naming-registry.yaml

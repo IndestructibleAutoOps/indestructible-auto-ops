@@ -1,0 +1,57 @@
+name: Super-Linter
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+  statuses: write
+
+# Cancel in-progress runs for the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  super-linter:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          # Full git history is needed for a better linter experience
+          fetch-depth: 0
+
+      - name: Super-Linter
+        uses: super-linter/super-linter/slim@v8
+        env:
+          # GitHub token for API calls
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Linter configuration
+          DEFAULT_BRANCH: main
+          VALIDATE_ALL_CODEBASE: false
+
+          # IMPORTANT: Disable all linters by default, then enable only what we need
+          # This ensures no unexpected linters run
+          VALIDATE_YAML: true
+          VALIDATE_MARKDOWN: true
+
+          # Use configuration files from .github/linters/
+          LINTER_RULES_PATH: .github/linters
+          YAML_CONFIG_FILE: .yamllint.yml
+          MARKDOWN_CONFIG_FILE: .markdownlint.json
+
+          # Filter paths - exclude problematic directories
+          FILTER_REGEX_EXCLUDE: (archive/.*|vendor/.*|node_modules/.*|dist/.*|build/.*|init\.d/.*|reports/.*|workspace/scripts/maintenance/.*|etl-pipeline/root-policy/naming-convention/.*)
+
+          # Log level for debugging
+          LOG_LEVEL: NOTICE

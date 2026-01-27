@@ -1,0 +1,61 @@
+# AWS Staging Environment Configuration
+
+provider:
+  type: aws
+  environment: staging
+
+infrastructure:
+  vpc:
+    enabled: true
+    cidr: "10.1.0.0/16"  # Different CIDR from production
+    subnets:
+      public:
+        count: 1  # Fewer subnets for staging
+        cidr_bits: 8
+      private:
+        count: 2
+        cidr_bits: 8
+  
+  kubernetes:
+    enabled: true
+    name: "machine-native-ops-staging"
+    version: "1.28"
+    node_groups:
+      main:
+        min_size: 1
+        max_size: 3
+        desired_size: 1  # Single node for staging
+        instance_types:
+          - "t3.small"  # Smaller instances for staging
+        capacity_type: "ON_DEMAND"
+  
+  database:
+    enabled: true
+    engine: "postgres"
+    version: "15.4"
+    instance_class: "db.t3.micro"  # Smaller instance for staging
+    allocated_storage: 20
+    storage_type: "gp2"
+    backup_retention: 7  # Shorter retention for staging
+    multi_az: false  # Single AZ for staging
+  
+  storage:
+    enabled: true
+    s3:
+      buckets:
+        artifacts:
+          versioning: enabled
+          lifecycle:
+            rules:
+              - id: archive-old-files
+                status: enabled
+                expiration:
+                  days: 30  # Shorter retention for staging
+        backups:
+          versioning: enabled
+          lifecycle:
+            rules:
+              - id: archive-old-backups
+                status: enabled
+                expiration:
+                  days: 14

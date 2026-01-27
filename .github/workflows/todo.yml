@@ -1,0 +1,26 @@
+name: "Create TODOs as Issues"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write  # Required for pushing TODO reference updates
+  issues: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: todo-actions
+        uses: dtinth/todo-actions@v0.2.0
+        continue-on-error: true  # Don't fail the workflow if TODO action fails
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

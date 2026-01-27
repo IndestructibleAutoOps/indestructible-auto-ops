@@ -1,0 +1,89 @@
+---
+# Istio-enabled namespace with automatic sidecar injection
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: machine-native-ops
+  labels:
+    istio-injection: enabled
+    name: machine-native-ops
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+# Resource quotas for namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-resources
+  namespace: machine-native-ops
+spec:
+  hard:
+    requests.cpu: "10"
+    requests.memory: 20Gi
+    limits.cpu: "20"
+    limits.memory: 40Gi
+    persistentvolumeclaims: "10"
+---
+# Limit range for pods
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: default-limits
+  namespace: machine-native-ops
+spec:
+  limits:
+  - default:
+      cpu: 1000m
+      memory: 512Mi
+    defaultRequest:
+      cpu: 100m
+      memory: 128Mi
+    type: Container
+---
+# Network policy for namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all
+  namespace: machine-native-ops
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+# Network policy allowing Istio traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-istio
+  namespace: machine-native-ops
+spec:
+  podSelector:
+    matchLabels:
+      istio-injection: enabled
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          istio-injection: enabled
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          istio-injection: enabled
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: istio-system
+    ports:
+    - protocol: TCP
+      port: 15012
+    - protocol: TCP
+      port: 15014
+    - protocol: TCP
+      port: 15021

@@ -1,0 +1,270 @@
+name: 🔗 PR-Issue Linker
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, closed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ============================================
+  # PR-Issue Linker - Single Job Design
+  # Handles both linking and merge scenarios
+  # No skipped jobs - always runs to completion
+  # ============================================
+  pr-issue-linker:
+    name: PR-Issue Linker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Process PR and Issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const body = pr.body || '';
+            const title = pr.title || '';
+            const branch = pr.head.ref || '';
+            const isMerged = pr.merged === true;
+            const isClosed = pr.state === 'closed';
+            const eventAction = context.payload.action;
+
+            console.log(`Processing PR #${pr.number}`);
+            console.log(`Event action: ${eventAction}`);
+            console.log(`PR state: ${pr.state}, merged: ${isMerged}`);
+
+            // ============================================
+            // Helper: Extract issue numbers from text
+            // ============================================
+            const extractIssueNumbers = (text) => {
+              const numbers = new Set();
+
+              // Pattern 1: Closing keywords with issue number
+              const closingPattern = /(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+(?:issue\s+)?#(\d+)/gi;
+              let match;
+              while ((match = closingPattern.exec(text)) !== null) {
+                numbers.add(parseInt(match[1]));
+              }
+
+              // Pattern 2: Simple issue references
+              const simplePattern = /#(\d+)/g;
+              while ((match = simplePattern.exec(text)) !== null) {
+                numbers.add(parseInt(match[1]));
+              }
+
+              // Pattern 3: "issue 123" or "issue: 123"
+              const issueWordPattern = /issue[s]?\s*[:#]?\s*(\d+)/gi;
+              while ((match = issueWordPattern.exec(text)) !== null) {
+                numbers.add(parseInt(match[1]));
+              }
+
+              return numbers;
+            };
+
+            // ============================================
+            // Helper: Extract issues to close (with keywords)
+            // ============================================
+            const extractIssuesToClose = (text) => {
+              const numbers = new Set();
+              const closePattern = /(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s*#(\d+)/gi;
+              let match;
+              while ((match = closePattern.exec(text)) !== null) {
+                numbers.add(parseInt(match[1]));
+              }
+              return numbers;
+            };
+
+            // ============================================
+            // Collect all referenced issues
+            // ============================================
+            const issueNumbers = new Set();
+
+            // Extract from body
+            for (const num of extractIssueNumbers(body)) {
+              issueNumbers.add(num);
+            }
+
+            // Extract from title
+            for (const num of extractIssueNumbers(title)) {
+              issueNumbers.add(num);
+            }
+
+            // Extract from branch name (e.g., feature/123-description)
+            const branchMatch = branch.match(/(\d+)/);
+            if (branchMatch) {
+              issueNumbers.add(parseInt(branchMatch[1]));
+            }
+
+            console.log(`Found issue references: ${[...issueNumbers].join(', ') || 'none'}`);
+
+            // ============================================
+            // SCENARIO 1: PR Merged - Close linked issues
+            // ============================================
+            if (isMerged) {
+              console.log('PR was merged - processing issue closures');
+              
+              const issuesToClose = extractIssuesToClose(body);
+              console.log(`Issues to close: ${[...issuesToClose].join(', ') || 'none'}`);
+
+              for (const issueNumber of issuesToClose) {
+                try {
+                  // Verify it's an issue, not a PR
+                  const { data: issue } = await github.rest.issues.get({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber
+                  });
+
+                  if (issue.pull_request) {
+                    console.log(`#${issueNumber} is a PR, skipping`);
+                    continue;
+                  }
+
+                  // Close the issue
+                  await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    state: 'closed',
+                    state_reason: 'completed'
+                  });
+
+                  // Add resolution comment
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    body: [
+                      '## ✅ Issue Resolved',
+                      '',
+                      `This issue has been resolved by PR #${pr.number}.`,
+                      '',
+                      `**Merged by**: @${pr.merged_by?.login || pr.user.login}`,
+                      `**Merge commit**: \`${pr.merge_commit_sha?.substring(0, 7)}\``,
+                      '',
+                      '**GL Unified Charter Activated** 🏛️'
+                    ].join('\n')
+                  });
+
+                  console.log(`✅ Closed issue #${issueNumber} via PR #${pr.number}`);
+
+                } catch (error) {
+                  console.log(`Error closing issue #${issueNumber}: ${error?.message || error}`);
+                }
+              }
+
+              console.log('Merge processing complete');
+              return;
+            }
+
+            // ============================================
+            // SCENARIO 2: PR Closed without merge
+            // ============================================
+            if (isClosed && !isMerged) {
+              console.log('PR was closed without merge - no action needed');
+              return;
+            }
+
+            // ============================================
+            // SCENARIO 3: PR Opened/Updated - Link issues
+            // ============================================
+            console.log('Processing PR linking to issues');
+
+            for (const issueNumber of issueNumbers) {
+              try {
+                // Check if issue exists
+                const { data: issue } = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber
+                });
+
+                // Skip if it's a PR
+                if (issue.pull_request) {
+                  console.log(`#${issueNumber} is a PR, skipping`);
+                  continue;
+                }
+
+                // Check if already commented
+                const comments = await github.paginate(
+                  github.rest.issues.listComments,
+                  {
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    per_page: 100,
+                  }
+                );
+
+                const alreadyLinked = comments.some(c =>
+                  c.body && c.body.includes(`PR #${pr.number}`) &&
+                  c.body.includes('🔗 Linked Pull Request')
+                );
+
+                if (!alreadyLinked) {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    body: [
+                      '## 🔗 Linked Pull Request',
+                      '',
+                      'A pull request has been opened that references this issue:',
+                      '',
+                      `**PR #${pr.number}**: [${pr.title}](${pr.html_url})`,
+                      '',
+                      '| Status | Branch | Author |',
+                      '|--------|--------|--------|',
+                      `| ${pr.state} | \`${pr.head.ref}\` | @${pr.user.login} |`,
+                      '',
+                      '**GL Unified Charter Activated** 🏛️'
+                    ].join('\n')
+                  });
+
+                  console.log(`🔗 Linked PR #${pr.number} to issue #${issueNumber}`);
+                } else {
+                  console.log(`Issue #${issueNumber} already linked`);
+                }
+
+                // Update issue status to in-progress if in triage
+                const labels = issue.labels.map(l => l.name);
+                if (labels.includes('status:triage') || labels.includes('status:ready')) {
+                  // Remove old status labels
+                  for (const label of ['status:triage', 'status:ready']) {
+                    if (labels.includes(label)) {
+                      try {
+                        await github.rest.issues.removeLabel({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: issueNumber,
+                          name: label
+                        });
+                      } catch (e) {
+                        console.log(`Could not remove label ${label}: ${e?.message || e}`);
+                      }
+                    }
+                  }
+
+                  // Add in-progress status
+                  await github.rest.issues.addLabels({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber,
+                    labels: ['status:in-progress']
+                  });
+
+                  console.log(`Updated issue #${issueNumber} status to in-progress`);
+                }
+
+              } catch (error) {
+                console.log(`Issue #${issueNumber} not found or error: ${error?.message || error}`);
+              }
+            }
+
+            console.log('PR-Issue linking complete');

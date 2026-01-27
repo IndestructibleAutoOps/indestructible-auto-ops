@@ -1,0 +1,136 @@
+/**
+ * GL Governance Markers
+ * @gl-layer GL-00-NAMESPACE
+ * @gl-module ns-root/namespaces-mcp/level2/src/monitoring/tracing
+ * @gl-semantic-anchor GL-00-MONITORI_TRACING_TRACEMANAGER
+ * @gl-evidence-required false
+ * GL Unified Charter Activated
+ */
+
+/**
+ * Trace Manager - Distributed Tracing Management
+ * 
+ * @version 1.0.0
+ */
+
+import { EventEmitter } from 'events';
+
+export interface Span {
+  traceId: string;
+  spanId: string;
+  parentSpanId?: string;
+  name: string;
+  startTime: number;
+  endTime?: number;
+  duration?: number;
+  tags?: Record<string, string>;
+  logs?: Array<{ timestamp: number; message: string }>;
+}
+
+export interface Trace {
+  traceId: string;
+  spans: Span[];
+  startTime: number;
+  endTime?: number;
+  duration?: number;
+}
+
+export class TraceManager extends EventEmitter {
+  private traces: Map<string, Trace>;
+  private activeSpans: Map<string, Span>;
+  
+  constructor() {
+    super();
+    this.traces = new Map();
+    this.activeSpans = new Map();
+  }
+  
+  startTrace(name: string): string {
+    const traceId = `trace-${crypto.randomUUID()}`;
+    
+    const trace: Trace = {
+      traceId,
+      spans: [],
+      startTime: Date.now()
+    };
+    
+    this.traces.set(traceId, trace);
+    
+    const rootSpan = this.startSpan(traceId, name);
+    
+    this.emit('trace:started', { traceId, span: rootSpan });
+    
+    return traceId;
+  }
+  
+  startSpan(traceId: string, name: string, parentSpanId?: string): Span {
+    const span: Span = {
+      traceId,
+      spanId: `span-${crypto.randomUUID()}`,
+      parentSpanId,
+      name,
+      startTime: Date.now(),
+      tags: {},
+      logs: []
+    };
+    
+    this.activeSpans.set(span.spanId, span);
+    
+    const trace = this.traces.get(traceId);
+    if (trace) {
+      trace.spans.push(span);
+    }
+    
+    this.emit('span:started', { span });
+    
+    return span;
+  }
+  
+  endSpan(spanId: string): void {
+    const span = this.activeSpans.get(spanId);
+    
+    if (!span) return;
+    
+    span.endTime = Date.now();
+    span.duration = span.endTime - span.startTime;
+    
+    this.activeSpans.delete(spanId);
+    
+    this.emit('span:ended', { span });
+    
+    // Check if this trace is complete by counting remaining spans for this trace
+    const trace = this.traces.get(span.traceId);
+    if (trace) {
+      const remainingSpans = Array.from(this.activeSpans.values())
+        .filter(s => s.traceId === span.traceId);
+      
+      if (remainingSpans.length === 0) {
+        trace.endTime = Date.now();
+        trace.duration = trace.endTime - trace.startTime;
+        this.emit('trace:completed', { trace });
+      }
+    }
+  }
+  
+  addSpanTag(spanId: string, key: string, value: string): void {
+    const span = this.activeSpans.get(spanId);
+    if (span && span.tags) {
+      span.tags[key] = value;
+    }
+  }
+  
+  addSpanLog(spanId: string, message: string): void {
+    const span = this.activeSpans.get(spanId);
+    if (span && span.logs) {
+      span.logs.push({ timestamp: Date.now(), message });
+    }
+  }
+  
+  getTrace(traceId: string): Trace | null {
+    return this.traces.get(traceId) || null;
+  }
+  
+  getTraces(): Trace[] {
+    return Array.from(this.traces.values());
+  }
+}

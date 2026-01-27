@@ -1,0 +1,24 @@
+name: Automated Issue Carrier
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  carry-issues:
+    name: Carry Issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Automated Issue Carrier
+        uses: OoBook/automated-issue-carrier@v1.0.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

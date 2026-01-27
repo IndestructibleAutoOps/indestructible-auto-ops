@@ -1,0 +1,69 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
+    "no-redeclare": "warn",
+    "no-empty": "warn",
+    "no-constant-condition": "warn",
+    "no-prototype-builtins": "warn",
+    "no-useless-escape": "warn",
+    "no-control-regex": "warn",
+    "no-case-declarations": "warn",
+    "no-fallthrough": "warn",
+    "no-extra-boolean-cast": "warn",
+    "no-irregular-whitespace": "warn",
+    "no-async-promise-executor": "warn",
+    "getter-return": "warn",
+    "valid-typeof": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-inferrable-types": "warn",
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    "import/namespace": "warn",
+    "import/order": "warn",
+    "import/no-unresolved": "warn",
+    "import/no-duplicates": "warn",
+    "import/named": "warn",
+    "import/default": "warn",
+    "import/export": "warn",
+    "import/no-named-as-default": "warn",
+    "import/no-named-as-default-member": "warn"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "build/",
+    "coverage/",
+    "*.min.js",
+    "*.d.ts",
+    "archive/",
+    "vendor/"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

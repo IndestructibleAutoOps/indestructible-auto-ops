@@ -1,0 +1,70 @@
+# Kubernetes Deployment Configuration
+
+provider:
+  type: kubernetes
+  
+deployment:
+  namespace:
+    name: machine-native-ops
+    labels:
+      app: machine-native-ops
+      environment: production
+  
+  config_maps:
+    app-config:
+      data:
+        LOG_LEVEL: "INFO"
+        METRICS_ENABLED: "true"
+        TRACING_ENABLED: "true"
+        SAMPLE_RATE: "0.1"
+    
+    feature-flags:
+      data:
+        FEATURE_NEW_UI: "true"
+        FEATURE_ADVANCED_ANALYTICS: "false"
+  
+  secrets:
+    database-credentials:
+      type: Opaque
+      data:
+        username: # Base64 encoded
+        password: # Base64 encoded
+  
+  deployments:
+    api-server:
+      replicas: 3
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 0
+      selector:
+        matchLabels:
+          app: api-server
+      template:
+        metadata:
+          labels:
+            app: api-server
+        spec:
+          containers:
+            - name: api-server
+              image: "machine-native-ops/api-server:1.0.0"
+              ports:
+                - containerPort: 8080
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+  
+  services:
+    api-server:
+      type: LoadBalancer
+      selector:
+        app: api-server
+      ports:
+        - name: http
+          port: 80
+          targetPort: 8080

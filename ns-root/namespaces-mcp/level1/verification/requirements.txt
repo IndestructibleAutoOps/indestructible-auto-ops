@@ -1,0 +1,22 @@
+# MCP Level 1 Namespace Verification System Requirements
+
+# Core dependencies
+requests>=2.31.0
+dnspython>=2.4.0
+PyYAML>=6.0.1
+
+# Security and cryptography
+cryptography>=41.0.0
+secrets
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.7.0
+flake8>=6.0.0
+
+# Optional: For enhanced DNS resolution
+dnspython>=2.4.0
+
+# Optional: For advanced HTTP requests
+urllib3>=2.0.0

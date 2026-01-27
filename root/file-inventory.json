@@ -1,0 +1,159 @@
+{
+  "generated": "2026-01-23T13:53:00.298794",
+  "root_path": "/home/runner/work/machine-native-ops/machine-native-ops/root",
+  "total_files": 19,
+  "files": [
+    {
+      "path": "root/.root.gates.map.yaml",
+      "name": ".root.gates.map.yaml",
+      "extension": ".yaml",
+      "size_bytes": 14905,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "6e6da2ceb62537439fce76b4ebbe040f5ffe4407d053d859cd729a534fcfbf63"
+    },
+    {
+      "path": "root/.root.init.d/00-init.sh",
+      "name": "00-init.sh",
+      "extension": ".sh",
+      "size_bytes": 4120,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "74ed4b76d7fa635b1c2b6f6b1a9d615d11d72ad2e5ce0739848a0afab79f54f2"
+    },
+    {
+      "path": "root/.root.init.d/01-semantic-root-init.sh",
+      "name": "01-semantic-root-init.sh",
+      "extension": ".sh",
+      "size_bytes": 10784,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "56d6c995d2605612f0d57c8d314207812f3ab17b77eedf780b7b9116312cfa0a"
+    },
+    {
+      "path": "root/.root.init.d/02-modules-init.sh",
+      "name": "02-modules-init.sh",
+      "extension": ".sh",
+      "size_bytes": 3398,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "9003a1263e85d5fa25831447dc3a8fd476b75c4143ee577e74717c3db7e626a1"
+    },
+    {
+      "path": "root/.root.init.d/03-governance-init.sh",
+      "name": "03-governance-init.sh",
+      "extension": ".sh",
+      "size_bytes": 3637,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "43844a05eed99194cdf41173800b797f87c3430c7c37efbfc3886e15e653a141"
+    },
+    {
+      "path": "root/.root.init.d/04-trust-init.sh",
+      "name": "04-trust-init.sh",
+      "extension": ".sh",
+      "size_bytes": 2947,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "6b6595926b81a48efa92ecc6791d87e91f28bb344a8d4eaf5eb0a8c199f8e0a9"
+    },
+    {
+      "path": "root/.root.init.d/05-provenance-init.sh",
+      "name": "05-provenance-init.sh",
+      "extension": ".sh",
+      "size_bytes": 2423,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "95a2cf13ac0348ebbc8bc98a2c4df5d8832aa39d72a1ae698cf85aaa0d97261e"
+    },
+    {
+      "path": "root/.root.init.d/06-integrity-init.sh",
+      "name": "06-integrity-init.sh",
+      "extension": ".sh",
+      "size_bytes": 3050,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "29ad08af1a494a27e9839983e1b4b1ce87c659811cc53fbede1dcbf5cc83a3f3"
+    },
+    {
+      "path": "root/.root.init.d/99-finalize.sh",
+      "name": "99-finalize.sh",
+      "extension": ".sh",
+      "size_bytes": 4951,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "157caba10d668e8c0da9d525b58857543573e8d7f9b4156ccc64ba8aac6acd84"
+    },
+    {
+      "path": "root/.root.jobs/concept-registry.json",
+      "name": "concept-registry.json",
+      "extension": ".json",
+      "size_bytes": 6969,
+      "modified": "2026-01-23T13:52:32.324399",
+      "sha256": "60dbcd8195d2fb7b914bc1aa6dd3d8a204707a4e178c2d7e333cbbdc662b2e71"
+    },
+    {
+      "path": "root/.root.jobs/final-attestation.yaml",
+      "name": "final-attestation.yaml",
+      "extension": ".yaml",
+      "size_bytes": 1047,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "1648c2315c4d17c543aa4d1446fbefc55c969f42d356438941d8af764cabc4d7"
+    },
+    {
+      "path": "root/.root.jobs/governance-registry.json",
+      "name": "governance-registry.json",
+      "extension": ".json",
+      "size_bytes": 4974,
+      "modified": "2026-01-23T13:52:37.347412",
+      "sha256": "bd6025652534081ecc3e3aab7dc91e7d134393d280fd5102a69dec0b7b3b5abf"
+    },
+    {
+      "path": "root/.root.jobs/modules-registry.json",
+      "name": "modules-registry.json",
+      "extension": ".json",
+      "size_bytes": 5170,
+      "modified": "2026-01-23T13:52:47.162437",
+      "sha256": "fc9a20c1b90278146db0531d6ab8521556e44e163408b3c2ee6f03ee44374c9e"
+    },
+    {
+      "path": "root/.root.jobs/provenance-registry.json",
+      "name": "provenance-registry.json",
+      "extension": ".json",
+      "size_bytes": 340,
+      "modified": "2026-01-23T13:52:47.162437",
+      "sha256": "f2a257941b4b3a23db2bba7467687f3c2f2daa3cac92035226da0a64087343cc"
+    },
+    {
+      "path": "root/.root.jobs/semantic-root-attestations/initial-attestation.yaml",
+      "name": "initial-attestation.yaml",
+      "extension": ".yaml",
+      "size_bytes": 838,
+      "modified": "2026-01-23T13:51:49.763324",
+      "sha256": "968ddf301f030253280d9a3ad3ab187c4c1bb529edfdc94036db15f778e5dbe2"
+    },
+    {
+      "path": "root/.root.jobs/trust-registry.json",
+      "name": "trust-registry.json",
+      "extension": ".json",
+      "size_bytes": 316,
+      "modified": "2026-01-23T13:52:47.162437",
+      "sha256": "61c719f5aa5b4e8c622c91d129fd528a33102baa968680ebade13b0ecd264d9e"
+    },
+    {
+      "path": "root/.root.jobs/validation-rules.json",
+      "name": "validation-rules.json",
+      "extension": ".json",
+      "size_bytes": 1041,
+      "modified": "2026-01-23T13:52:55.815463",
+      "sha256": "ce95cf36c72858410cc874854b87c168883ab5e8222885887c3adc1663310dc9"
+    },
+    {
+      "path": "root/.root.semantic-root.yaml",
+      "name": ".root.semantic-root.yaml",
+      "extension": ".yaml",
+      "size_bytes": 15034,
+      "modified": "2026-01-23T13:51:49.764324",
+      "sha256": "54c6947f7c8718aae83f99588028d140bb0042957e30d1537ad4a50c4b46109e"
+    },
+    {
+      "path": "root/ROOT_DIRECTORY_DESIGN_REPORT.md",
+      "name": "ROOT_DIRECTORY_DESIGN_REPORT.md",
+      "extension": ".md",
+      "size_bytes": 6049,
+      "modified": "2026-01-23T13:51:49.764324",
+      "sha256": "3ba8d51eabbbede13b64b16892b65fd7fcd5bfb81aee45dfa1f64ff2ac1b1fef"
+    }
+  ]
+}

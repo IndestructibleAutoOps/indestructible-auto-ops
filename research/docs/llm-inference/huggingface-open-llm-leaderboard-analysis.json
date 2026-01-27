@@ -1,0 +1,98 @@
+{
+  "research_summary": {
+    "source": "Hugging Face Open LLM Leaderboard",
+    "url": "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard",
+    "date": "2025-12-14",
+    "total_models_in_leaderboard": 4576,
+    "displayed_models": 27,
+    "key_findings": {
+      "math_benchmark_available": true,
+      "gsm8k_benchmark_available": false,
+      "qwen_models_dominance": true,
+      "deepseek_models_visible": false,
+      "llama_models_visible": false
+    }
+  },
+  "math_benchmark_analysis": {
+    "description": "MATH基准测试评估模型解决数学问题的能力，分数越高表示数学推理能力越强",
+    "top_performers": [
+      {
+        "rank": 22,
+        "model": "Qwen/Qwen2.5-32B-Instruct",
+        "math_score": 62.54,
+        "average_score": 46.60
+      },
+      {
+        "rank": 19,
+        "model": "maldv/Awqward2.5-32B-Instruct", 
+        "math_score": 62.31,
+        "average_score": 46.75
+      },
+      {
+        "rank": 25,
+        "model": "Saxo/Linkbricks-Horizon-AI-Avengers-V3-32B",
+        "math_score": 61.78,
+        "average_score": 46.37
+      },
+      {
+        "rank": 27,
+        "model": "Saxo/Linkbricks-Horizon-AI-Avengers-V6-32B",
+        "math_score": 62.24,
+        "average_score": 46.23
+      }
+    ]
+  },
+  "qwen_models_performance": {
+    "total_qwen_models": 17,
+    "average_math_score": 54.82,
+    "top_qwen_performers": [
+      {
+        "model": "Qwen/Qwen2.5-32B-Instruct",
+        "math_score": 62.54,
+        "rank": 22
+      },
+      {
+        "model": "maldv/Awqward2.5-32B-Instruct",
+        "math_score": 62.31,
+        "rank": 19
+      },
+      {
+        "model": "Saxo/Linkbricks-Horizon-AI-Avengers-V3-32B",
+        "math_score": 61.78,
+        "rank": 25
+      },
+      {
+        "model": "Saxo/Linkbricks-Horizon-AI-Avengers-V6-32B",
+        "math_score": 62.24,
+        "rank": 27
+      },
+      {
+        "model": "huihui-ai/Qwen2.5-72B-Instruct-abliterated",
+        "math_score": 60.12,
+        "rank": 5
+      }
+    ]
+  },
+  "gsm8k_availability": {
+    "status": "不可用",
+    "explanation": "在当前的Hugging Face Open LLM Leaderboard中，GSM8K基准测试列不可用。排行榜中只显示以下基准测试：Average、IFEval、BBH、MATH、GPQA、MUSR、MMLU-PRO和CO₂成本",
+    "available_benchmarks": [
+      "IFEval (指令跟随评估)",
+      "BBH (Big-Bench Hard)",
+      "MATH (数学问题解决)",
+      "GPQA (研究生水平问答)",
+      "MUSR (多语言理解)",
+      "MMLU-PRO (多任务语言理解专业版)"
+    ]
+  },
+  "missing_models": {
+    "deepseek_models": "在前27名中没有发现DeepSeek系列模型",
+    "llama_models": "在前27名中没有发现Llama系列模型",
+    "note": "这可能是因为排行榜显示的是按综合分数排序的前27名，DeepSeek和Llama模型可能在排名更后的位置"
+  },
+  "methodology": {
+    "data_extraction_method": "使用网页内容提取工具获取完整的排行榜数据",
+    "data_validation": "提取的数据包含完整的模型信息、基准分数和排名",
+    "limitations": "只获取了前27名模型的数据，总排行榜包含4576个模型"
+  }
+}

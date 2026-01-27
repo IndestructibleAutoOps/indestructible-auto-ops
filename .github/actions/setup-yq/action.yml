@@ -1,0 +1,13 @@
+name: yq - portable yaml processor
+description: Install yq - a portable YAML processor for reading and manipulating YAML files
+author: MachineNativeOps
+
+branding:
+  icon: file-text
+  color: blue
+
+runs:
+  using: composite
+  steps:
+    - name: Install yq
+      uses: mikefarah/yq@v4.50.1

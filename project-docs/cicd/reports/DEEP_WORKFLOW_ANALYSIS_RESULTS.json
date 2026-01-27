@@ -1,0 +1,1636 @@
+{
+  "total_workflows": 53,
+  "analyses": {
+    ".github/workflows/infrastructure-validation.yml": {
+      "workflow": ".github/workflows/infrastructure-validation.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "validate-infrastructure",
+        "validate-modules",
+        "validate-policies",
+        "validate-registry",
+        "summary"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/setup-python@v6",
+        "open-policy-agent/setup-opa@v2"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pull-requests": "write"
+      },
+      "file_size": 5635,
+      "file_hash": "24902731c8dbcf82"
+    },
+    ".github/workflows/website-vulnerability-check.yml": {
+      "workflow": ".github/workflows/website-vulnerability-check.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "check-vulnerability"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "lirantal/is-website-vulnerable@1.15.10"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write"
+      },
+      "file_size": 1679,
+      "file_hash": "842d0e8470f329b7"
+    },
+    ".github/workflows/release.yml": {
+      "workflow": ".github/workflows/release.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "release"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/setup-python@v6",
+        "python-semantic-release/python-semantic-release@v10.5.3"
+      ],
+      "permissions": {
+        "contents": "write",
+        "issues": "write",
+        "pull-requests": "write",
+        "id-token": "write"
+      },
+      "file_size": 719,
+      "file_hash": "64a2ce5532611a77"
+    },
+    ".github/workflows/ai-pr-reviewer.yml": {
+      "workflow": ".github/workflows/ai-pr-reviewer.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "review"
+      ],
+      "actions_used": [
+        "coderabbitai/ai-pr-reviewer@1.16.2"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pull-requests": "write",
+        "issues": "write"
+      },
+      "file_size": 839,
+      "file_hash": "ffac9c7bd06105e6"
+    },
+    ".github/workflows/publish-npm-packages.yml": {
+      "workflow": ".github/workflows/publish-npm-packages.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "publish"
+      ],
+      "actions_used": [
+        "actions/attest-build-provenance@v3.1.0",
+        "actions/checkout@v6",
+        "actions/setup-node@v6",
+        "nodejs/is-my-node-vulnerable@v1.6.1"
+      ],
+      "permissions": {
+        "contents": "read",
+        "packages": "write",
+        "id-token": "write",
+        "attestations": "write"
+      },
+      "file_size": 3516,
+      "file_hash": "706857972de259fb"
+    },
+    ".github/workflows/config-example.yml": {
+      "workflow": ".github/workflows/config-example.yml",
+      "status": "parsed",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'name' field",
+        "Missing 'on' trigger field",
+        "Missing 'jobs' field"
+      ],
+      "critical_issues": [
+        "Missing workflow name",
+        "Missing trigger - workflow will never run",
+        "No jobs defined - workflow does nothing"
+      ],
+      "triggers": [],
+      "jobs": [],
+      "actions_used": [],
+      "permissions": {},
+      "file_size": 6329,
+      "file_hash": "26daa21e2f75de83"
+    },
+    ".github/workflows/gl-layer-validation.yml": {
+      "workflow": ".github/workflows/gl-layer-validation.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "schema-validation",
+        "dependency-validation",
+        "completeness-check",
+        "yaml-lint",
+        "summary-report"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/download-artifact@v7",
+        "actions/github-script@v8",
+        "actions/setup-python@v6",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 35764,
+      "file_hash": "c8934ad6d5f19c99"
+    },
+    ".github/workflows/words-really-matter.yml": {
+      "workflow": ".github/workflows/words-really-matter.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "words-matter"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "jjasghar/actions-words-really-matter@v2.2.0",
+        "peter-evans/create-pull-request@v6"
+      ],
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 1984,
+      "file_hash": "43d9b4cd692f66ca"
+    },
+    ".github/workflows/super-linter.yml": {
+      "workflow": ".github/workflows/super-linter.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "super-linter"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "super-linter/super-linter@v8.3.2"
+      ],
+      "permissions": {
+        "contents": "read",
+        "statuses": "write"
+      },
+      "file_size": 1268,
+      "file_hash": "8ad83a85561bb053"
+    },
+    ".github/workflows/deploy-staging.yml": {
+      "workflow": ".github/workflows/deploy-staging.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "deploy"
+      ],
+      "actions_used": [
+        "8398a7/action-slack@v3",
+        "actions/checkout@v4",
+        "actions/setup-node@v4",
+        "aws-actions/configure-aws-credentials@v4"
+      ],
+      "permissions": {},
+      "file_size": 2799,
+      "file_hash": "cf434e6944bb105a"
+    },
+    ".github/workflows/test-yq-action.yml": {
+      "workflow": ".github/workflows/test-yq-action.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "test-yq"
+      ],
+      "actions_used": [
+        "./.github/actions/setup-yq",
+        "actions/checkout@v6"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 1467,
+      "file_hash": "0258021262be5938"
+    },
+    ".github/workflows/typescript-build-check.yml": {
+      "workflow": ".github/workflows/typescript-build-check.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "typescript-build"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/setup-node@v6",
+        "actions/upload-artifact@v4",
+        "nodejs/is-my-node-vulnerable@v1.6.1"
+      ],
+      "permissions": {},
+      "file_size": 8874,
+      "file_hash": "679e0b62c8efd224"
+    },
+    ".github/workflows/GL-GPU-CI.yml": {
+      "workflow": ".github/workflows/GL-GPU-CI.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl-gpu-validation",
+        "gl-gpu-performance-tests",
+        "gl-gpu-monitoring"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 3032,
+      "file_hash": "a7770eb4191496e7"
+    },
+    ".github/workflows/ai-integration-analyzer.yml": {
+      "workflow": ".github/workflows/ai-integration-analyzer.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "ai-analysis"
+      ],
+      "actions_used": [
+        "Rishabh510/Path-lister-action@1.0",
+        "actions/checkout@v6",
+        "actions/github-script@v8",
+        "maiz-an/SPIDYNAL@v1.3.0.8"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 4919,
+      "file_hash": "b03ef56c8d7cd1e3"
+    },
+    ".github/workflows/transform-lab-to-skills.yml": {
+      "workflow": ".github/workflows/transform-lab-to-skills.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "transform"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "stefanzweifel/git-auto-commit-action@v7",
+        "wix-academy/github-lab-config-to-github-skills-readme-action@v4.2"
+      ],
+      "permissions": {},
+      "file_size": 806,
+      "file_hash": "fa049142387bae2e"
+    },
+    ".github/workflows/config.yml": {
+      "workflow": ".github/workflows/config.yml",
+      "status": "parsed",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'name' field",
+        "Missing 'on' trigger field",
+        "Missing 'jobs' field"
+      ],
+      "critical_issues": [
+        "Missing workflow name",
+        "Missing trigger - workflow will never run",
+        "No jobs defined - workflow does nothing"
+      ],
+      "triggers": [],
+      "jobs": [],
+      "actions_used": [],
+      "permissions": {},
+      "file_size": 4893,
+      "file_hash": "db7be351548b50ef"
+    },
+    ".github/workflows/todo.yml": {
+      "workflow": ".github/workflows/todo.yml",
+      "status": "parsed",
+      "issues": [
+        "Job 'runs-on' missing timeout-minutes (defaults to 360)"
+      ],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run"
+      ],
+      "triggers": [],
+      "jobs": [
+        "todo"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "dtinth/todo-actions@v0.2.0"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write"
+      },
+      "file_size": 338,
+      "file_hash": "8bac4a42cd6a01be"
+    },
+    ".github/workflows/project-automation.yml": {
+      "workflow": ".github/workflows/project-automation.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "automate-project-columns"
+      ],
+      "actions_used": [
+        "alex-page/github-project-automation-plus@v0.9.0"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write",
+        "pull-requests": "write",
+        "repository-projects": "write"
+      },
+      "file_size": 581,
+      "file_hash": "20691284e6767033"
+    },
+    ".github/workflows/waka-readme.yml": {
+      "workflow": ".github/workflows/waka-readme.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "update-readme"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "athul/waka-readme@v0.3.1"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "file_size": 777,
+      "file_hash": "280f685855974ca7"
+    },
+    ".github/workflows/ai-code-review.yml": {
+      "workflow": ".github/workflows/ai-code-review.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "code-review"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "mariomac/phoenix-plugin@v0.0.3"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pull-requests": "write"
+      },
+      "file_size": 1040,
+      "file_hash": "0d8f14a3f752fcce"
+    },
+    ".github/workflows/GL-ALGORITHMS-CI.yml": {
+      "workflow": ".github/workflows/GL-ALGORITHMS-CI.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl-algorithms-validation",
+        "gl-algorithms-tests",
+        "gl-algorithms-risk-assessment"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 2774,
+      "file_hash": "8de8f711d57dfe24"
+    },
+    ".github/workflows/security-scan.yml": {
+      "workflow": ".github/workflows/security-scan.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "sast-scan",
+        "dependency-scan",
+        "container-scan",
+        "codeql-analysis",
+        "secret-scan",
+        "security-report"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/github-script@v6",
+        "actions/upload-artifact@v4",
+        "aquasecurity/trivy-action@master",
+        "github/codeql-action/analyze@v3",
+        "github/codeql-action/init@v3",
+        "github/codeql-action/upload-sarif@v3",
+        "returntocorp/semgrep-action@v1",
+        "snyk/actions/node@master",
+        "trufflesecurity/trufflehog@main"
+      ],
+      "permissions": {},
+      "file_size": 5139,
+      "file_hash": "e81a90777e792ff6"
+    },
+    ".github/workflows/profile-readme-stats.yml": {
+      "workflow": ".github/workflows/profile-readme-stats.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "update-readme"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "anmol098/waka-readme-stats@v5",
+        "siddharth2016/update-readme-image@0.1.1"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "file_size": 1080,
+      "file_hash": "ca2c90ee3d57cbee"
+    },
+    ".github/workflows/documentation-reader.yml": {
+      "workflow": ".github/workflows/documentation-reader.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "read-documentation"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "komorebitech/read-files-action@v1.5"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 1460,
+      "file_hash": "3a14584667e1de8f"
+    },
+    ".github/workflows/launchdarkly-code-references.yml": {
+      "workflow": ".github/workflows/launchdarkly-code-references.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "launchDarklyCodeReferences"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "launchdarkly/find-code-references@v2.14.0"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 829,
+      "file_hash": "e7de96edac7de169"
+    },
+    ".github/workflows/fhs-integration-auto-init.yml": {
+      "workflow": ".github/workflows/fhs-integration-auto-init.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "auto-initialize",
+        "auto-integration"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/github-script@v8",
+        "actions/setup-python@v6",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {},
+      "file_size": 5001,
+      "file_hash": "86d31fa5d427db8e"
+    },
+    ".github/workflows/gl10-phase2-semantic.yml": {
+      "workflow": ".github/workflows/gl10-phase2-semantic.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl10-phase2-semantic"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-python@v4"
+      ],
+      "permissions": {},
+      "file_size": 766,
+      "file_hash": "4bf6443083646bed"
+    },
+    ".github/workflows/issue-metrics.yml": {
+      "workflow": ".github/workflows/issue-metrics.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "issue-metrics"
+      ],
+      "actions_used": [
+        "github/issue-metrics@v3.25.5",
+        "peter-evans/create-issue-from-file@v6"
+      ],
+      "permissions": {
+        "issues": "write",
+        "pull-requests": "read",
+        "contents": "read"
+      },
+      "file_size": 762,
+      "file_hash": "8d8cb2a87f568906"
+    },
+    ".github/workflows/auto-fix-staging-validation.yml": {
+      "workflow": ".github/workflows/auto-fix-staging-validation.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "config-validation",
+        "strategy-tests",
+        "config-sync",
+        "staging-validation-summary"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-python@v5",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {
+        "contents": "read",
+        "checks": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 11191,
+      "file_hash": "fd5461dd3298ef65"
+    },
+    ".github/workflows/GL-DATA-CI.yml": {
+      "workflow": ".github/workflows/GL-DATA-CI.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl-data-validation",
+        "gl-data-tests",
+        "gl-data-audit"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 2592,
+      "file_hash": "c8ef5b79eade4b21"
+    },
+    ".github/workflows/dependency-check.yml": {
+      "workflow": ".github/workflows/dependency-check.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "npm-audit",
+        "python-safety",
+        "license-check",
+        "outdated-check",
+        "sbom-generation",
+        "dependency-report"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/github-script@v6",
+        "actions/setup-node@v4",
+        "actions/setup-python@v5",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {},
+      "file_size": 6121,
+      "file_hash": "7594f8e70bf6eca4"
+    },
+    ".github/workflows/gl-validator.yml": {
+      "workflow": ".github/workflows/gl-validator.yml",
+      "status": "parsed",
+      "issues": [
+        "Job 'runs-on' missing timeout-minutes (defaults to 360)"
+      ],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl-validate"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-python@v4"
+      ],
+      "permissions": {},
+      "file_size": 428,
+      "file_hash": "a43cfeddfe425b23"
+    },
+    ".github/workflows/gl-artifacts-generator.yml": {
+      "workflow": ".github/workflows/gl-artifacts-generator.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "generate-artifact",
+        "create-pr",
+        "validate-artifact"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/download-artifact@v7",
+        "actions/setup-python@v6",
+        "actions/upload-artifact@v4",
+        "di-sukharev/opencommit@github-action-v1.0.4",
+        "peter-evans/create-pull-request@v8.0.0"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 25962,
+      "file_hash": "61754d04a7ef2171"
+    },
+    ".github/workflows/gl10-top10-validator.yml": {
+      "workflow": ".github/workflows/gl10-top10-validator.yml",
+      "status": "parsed",
+      "issues": [
+        "Job 'runs-on' missing timeout-minutes (defaults to 360)"
+      ],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl10-top10-validate"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-python@v4"
+      ],
+      "permissions": {},
+      "file_size": 517,
+      "file_hash": "3d424ea6da83f8e2"
+    },
+    ".github/workflows/gl-mainline-enforcement.yml": {
+      "workflow": ".github/workflows/gl-mainline-enforcement.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl-layer-check",
+        "gl-code-annotation-check",
+        "gl-pr-label-check"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-python@v5"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pull-requests": "write"
+      },
+      "file_size": 4428,
+      "file_hash": "b69bbddcc6609101"
+    },
+    ".github/workflows/policy-gate.yml": {
+      "workflow": ".github/workflows/policy-gate.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "validate-naming-policy",
+        "validate-semantic-health",
+        "validate-security-requirements",
+        "validate-autonomy-levels",
+        "policy-gate-summary"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/github-script@v8",
+        "open-policy-agent/setup-opa@v2"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pull-requests": "write",
+        "checks": "write"
+      },
+      "file_size": 11965,
+      "file_hash": "79422cc7c07a7d94"
+    },
+    ".github/workflows/pr-quality-check.yml": {
+      "workflow": ".github/workflows/pr-quality-check.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "quality-check"
+      ],
+      "actions_used": [
+        "Rishabh510/Path-lister-action@1.0",
+        "actions/cache@v5",
+        "actions/checkout@v6",
+        "actions/setup-python@v6",
+        "actions/upload-artifact@v4",
+        "lingodotdev/lingo.dev@@lingo.dev/_compiler@0.8.11",
+        "maiz-an/SPIDYNAL@v1.3.0.8"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 6176,
+      "file_hash": "60f37f11de1972d4"
+    },
+    ".github/workflows/automated-issue-carrier.yml": {
+      "workflow": ".github/workflows/automated-issue-carrier.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "carry-issues"
+      ],
+      "actions_used": [
+        "OoBook/automated-issue-carrier@v1.0.2"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write"
+      },
+      "file_size": 383,
+      "file_hash": "c4e916e37899353e"
+    },
+    ".github/workflows/todo-to-issue.yml": {
+      "workflow": ".github/workflows/todo-to-issue.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "todo-to-issue"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "alstr/todo-to-issue-action@v5.1.13"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write"
+      },
+      "file_size": 624,
+      "file_hash": "bc1a099a38ae4f9f"
+    },
+    ".github/workflows/update-readme-repo-info.yml": {
+      "workflow": ".github/workflows/update-readme-repo-info.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "update-readme"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "chroming/update-readme-repo-info@v1.6"
+      ],
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 659,
+      "file_hash": "0f81e99d257b0c0c"
+    },
+    ".github/workflows/ci.yml": {
+      "workflow": ".github/workflows/ci.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "lint",
+        "test",
+        "build",
+        "security-scan",
+        "dependency-check"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-node@v4",
+        "actions/setup-python@v5",
+        "actions/upload-artifact@v4",
+        "aquasecurity/trivy-action@master",
+        "codecov/codecov-action@v3",
+        "github/codeql-action/analyze@v3",
+        "github/codeql-action/upload-sarif@v3"
+      ],
+      "permissions": {},
+      "file_size": 4508,
+      "file_hash": "e0157f03761fee0e"
+    },
+    ".github/workflows/gl-compliance-check.yml": {
+      "workflow": ".github/workflows/gl-compliance-check.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "policy-compliance",
+        "security-compliance",
+        "consistency-check",
+        "compliance-dashboard"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/download-artifact@v7",
+        "actions/github-script@v8",
+        "actions/setup-python@v6",
+        "actions/upload-artifact@v4"
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "file_size": 41087,
+      "file_hash": "549fbc3b402eadad"
+    },
+    ".github/workflows/static.yml": {
+      "workflow": ".github/workflows/static.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "deploy"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/configure-pages@v5",
+        "actions/deploy-pages@v4",
+        "actions/setup-node@v6",
+        "actions/upload-pages-artifact@v3",
+        "alireza-fa/asset-crusher@v1.1.0",
+        "codeatlasHQ/codebase-visualizer-action@v1-beta",
+        "lirantal/is-website-vulnerable@v1.14.11",
+        "nodejs/is-my-node-vulnerable@v1.6.1"
+      ],
+      "permissions": {
+        "contents": "read",
+        "pages": "write",
+        "id-token": "write"
+      },
+      "file_size": 2882,
+      "file_hash": "2335b7568c79dbd0"
+    },
+    ".github/workflows/gl10-validator.yml": {
+      "workflow": ".github/workflows/gl10-validator.yml",
+      "status": "parsed",
+      "issues": [
+        "Job 'runs-on' missing timeout-minutes (defaults to 360)"
+      ],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run"
+      ],
+      "triggers": [],
+      "jobs": [
+        "gl10-validate"
+      ],
+      "actions_used": [
+        "actions/checkout@v4",
+        "actions/setup-python@v4"
+      ],
+      "permissions": {},
+      "file_size": 437,
+      "file_hash": "63a93113f03df5ca"
+    },
+    ".github/workflows/combined-ci.yml": {
+      "workflow": ".github/workflows/combined-ci.yml",
+      "status": "error",
+      "issues": [
+        "Job 'lint' missing 'runs-on' or 'strategy'",
+        "Job 'lint' missing 'steps'",
+        "Job 'test' missing 'runs-on' or 'strategy'",
+        "Job 'test' missing 'steps'",
+        "Job 'build' missing 'runs-on' or 'strategy'",
+        "Job 'build' missing 'steps'",
+        "Job 'security' missing 'runs-on' or 'strategy'",
+        "Job 'security' missing 'steps'",
+        "Job 'notify-ci' missing 'runs-on' or 'strategy'",
+        "Job 'notify-ci' missing 'steps'",
+        "Job 'deploy-staging' missing 'runs-on' or 'strategy'",
+        "Job 'deploy-staging' missing 'steps'",
+        "Job 'deploy-production' missing 'runs-on' or 'strategy'",
+        "Job 'deploy-production' missing 'steps'",
+        "Job 'notify-deployment' missing 'runs-on' or 'strategy'",
+        "Job 'notify-deployment' missing 'steps'"
+      ],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Job 'lint' cannot execute - no runner specified",
+        "Job 'lint' has no steps - will do nothing",
+        "Job 'test' cannot execute - no runner specified",
+        "Job 'test' has no steps - will do nothing",
+        "Job 'build' cannot execute - no runner specified",
+        "Job 'build' has no steps - will do nothing",
+        "Job 'security' cannot execute - no runner specified",
+        "Job 'security' has no steps - will do nothing",
+        "Job 'notify-ci' cannot execute - no runner specified",
+        "Job 'notify-ci' has no steps - will do nothing",
+        "Job 'deploy-staging' cannot execute - no runner specified",
+        "Job 'deploy-staging' has no steps - will do nothing",
+        "Job 'deploy-production' cannot execute - no runner specified",
+        "Job 'deploy-production' has no steps - will do nothing",
+        "Job 'notify-deployment' cannot execute - no runner specified",
+        "Job 'notify-deployment' has no steps - will do nothing",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "parse-config",
+        "lint",
+        "test",
+        "build",
+        "security",
+        "notify-ci",
+        "deploy-staging",
+        "deploy-production",
+        "notify-deployment"
+      ],
+      "actions_used": [
+        "actions/checkout@v4"
+      ],
+      "permissions": {},
+      "file_size": 7301,
+      "file_hash": "29d13742fb445d57"
+    },
+    ".github/workflows/codeql.yml": {
+      "workflow": ".github/workflows/codeql.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "analyze"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/setup-node@v6",
+        "github/codeql-action/analyze@v4",
+        "github/codeql-action/init@v4"
+      ],
+      "permissions": {},
+      "file_size": 5112,
+      "file_hash": "d121f82d0b7964d8"
+    },
+    ".github/workflows/scheduled-dashboard-updates.yml": {
+      "workflow": ".github/workflows/scheduled-dashboard-updates.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "update-dashboards",
+        "generate-autonomy-reports",
+        "summary"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "actions/setup-python@v6",
+        "di-sukharev/opencommit@github-action-v1.0.4",
+        "src-d/hercules@v10.7.2"
+      ],
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 5937,
+      "file_hash": "35ddce691194d96b"
+    },
+    ".github/workflows/supply-chain-security.yml": {
+      "workflow": ".github/workflows/supply-chain-security.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "security-check"
+      ],
+      "actions_used": [
+        "Legit-Labs/legitify@v1.0.11",
+        "actions/checkout@v6",
+        "aquasecurity/trivy-action@master",
+        "bugbounty-site/GitSecure@v1",
+        "david-a-wheeler/flawfinder@2.0.19-alpha1",
+        "github/codeql-action/upload-sarif@v4"
+      ],
+      "permissions": {
+        "contents": "read",
+        "security-events": "write",
+        "id-token": "write"
+      },
+      "file_size": 1981,
+      "file_hash": "1614f73aa87586a2"
+    },
+    ".github/workflows/test-suite.yml": {
+      "workflow": ".github/workflows/test-suite.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "test"
+      ],
+      "actions_used": [
+        "actions/cache@v5",
+        "actions/checkout@v6",
+        "actions/setup-python@v6",
+        "actions/upload-artifact@v4",
+        "test-summary/action@v2.3"
+      ],
+      "permissions": {
+        "contents": "read",
+        "checks": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 5641,
+      "file_hash": "249c018d833e16cf"
+    },
+    ".github/workflows/deploy-production.yml": {
+      "workflow": ".github/workflows/deploy-production.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [
+        "Missing 'permissions' field (recommended)"
+      ],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "pre-deploy-checks",
+        "deploy-blue",
+        "deploy-green",
+        "switch-traffic",
+        "rollback",
+        "post-deploy"
+      ],
+      "actions_used": [
+        "8398a7/action-slack@v3",
+        "actions/checkout@v4",
+        "actions/setup-node@v4"
+      ],
+      "permissions": {},
+      "file_size": 7818,
+      "file_hash": "7a9bcb1606d528e7"
+    },
+    ".github/workflows/issue-pr-automation.yml": {
+      "workflow": ".github/workflows/issue-pr-automation.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [
+        "issues",
+        "pull_request"
+      ],
+      "jobs": [
+        "automation"
+      ],
+      "actions_used": [
+        "SillyLittleTech/AutomationSuite@0.1"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write",
+        "pull-requests": "write"
+      },
+      "file_size": 470,
+      "file_hash": "4d063310b09b69f4"
+    },
+    ".github/workflows/todo-tracker.yml": {
+      "workflow": ".github/workflows/todo-tracker.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "track-todos"
+      ],
+      "actions_used": [
+        "actions/checkout@v6",
+        "ribtoks/tdg-github-action@v0.4.16-beta"
+      ],
+      "permissions": {
+        "contents": "read",
+        "issues": "write"
+      },
+      "file_size": 756,
+      "file_hash": "4cadeca6a45c9036"
+    },
+    ".github/workflows/ai-algorithm-mentor.yml": {
+      "workflow": ".github/workflows/ai-algorithm-mentor.yml",
+      "status": "error",
+      "issues": [],
+      "warnings": [],
+      "errors": [
+        "Missing 'on' trigger field",
+        "Unexpected error: too many values to unpack (expected 2)"
+      ],
+      "critical_issues": [
+        "Missing trigger - workflow will never run",
+        "Analysis error: too many values to unpack (expected 2)"
+      ],
+      "triggers": [],
+      "jobs": [
+        "ai-review"
+      ],
+      "actions_used": [
+        "choam2426/AI-Algorithm-Mentor@v5"
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "file_size": 610,
+      "file_hash": "de75724e354b07fd"
+    }
+  },
+  "summary": {
+    "critical_issues": 103,
+    "errors": 119,
+    "warnings": 16,
+    "issues": 20,
+    "workflows_with_trigger_bug": 52,
+    "workflows_with_critical_issues": 53,
+    "workflows_with_errors": 53,
+    "workflows_with_warnings": 16,
+    "clean_workflows": 0
+  }
+}

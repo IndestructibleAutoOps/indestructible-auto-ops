@@ -1,0 +1,24 @@
+{
+  "file": "root/.root.gates.map.yaml",
+  "type": "yaml",
+  "status": "success",
+  "execution_time": "2026-01-23T13:53:00.302159",
+  "structure": {
+    "type": "dict",
+    "top_level_keys": [
+      "apiVersion",
+      "kind",
+      "metadata",
+      "spec",
+      "status"
+    ]
+  },
+  "issues": [],
+  "governance_events": [
+    {
+      "event": "yaml_parsed",
+      "timestamp": "2026-01-23T13:53:00.324799",
+      "details": "YAML file successfully parsed and validated"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+name: Test Suite
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+# Cancel in-progress runs for the same PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-test-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-test-
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet --upgrade pip
+          pip install --quiet pytest pytest-cov pytest-xdist pyyaml
+
+          # Install test dependencies if they exist
+          if [ -f tests/requirements-test.txt ]; then
+            pip install --quiet -r tests/requirements-test.txt
+          fi
+
+          # Install project dependencies if they exist
+          if [ -f requirements.txt ]; then
+            pip install --quiet -r requirements.txt
+          fi
+
+      - name: Run unit tests
+        id: unit_tests
+        run: |
+          echo "🧪 Running unit tests..."
+
+          # Create test-results directory
+          mkdir -p test-results
+
+          # Run pytest with JUnit XML output for test-summary action
+          pytest tests/unit/ \
+            -v \
+            --tb=short \
+            --junitxml=test-results/unit-tests.xml \
+            --cov=workspace/src \
+            --cov-report=xml:coverage.xml \
+            --cov-report=term-missing \
+            || echo "unit_tests_failed=true" >> $GITHUB_OUTPUT
+
+          echo "✅ Unit tests completed"
+
+      - name: Run integration tests
+        id: integration_tests
+        if: always()
+        run: |
+          echo "🔗 Running integration tests..."
+
+          # Run integration tests if they exist
+          if [ -d "tests/integration" ] && [ "$(ls -A tests/integration/*.py 2>/dev/null)" ]; then
+            pytest tests/integration/ \
+              -v \
+              --tb=short \
+              --junitxml=test-results/integration-tests.xml \
+              || echo "integration_tests_failed=true" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️ No integration tests found"
+          fi
+
+      - name: Run e2e tests
+        id: e2e_tests
+        if: always()
+        run: |
+          echo "🌐 Running e2e tests..."
+
+          # Run e2e tests if they exist
+          if [ -d "tests/e2e" ] && [ "$(ls -A tests/e2e/*.py 2>/dev/null)" ]; then
+            pytest tests/e2e/ \
+              -v \
+              --tb=short \
+              --junitxml=test-results/e2e-tests.xml \
+              || echo "e2e_tests_failed=true" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️ No e2e tests found"
+          fi
+
+      - name: TestForest Dashboard
+        uses: test-summary/action@v2.4
+        if: always()
+        with:
+          paths: "test-results/*.xml"
+          show: "all"
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-reports
+          path: |
+            coverage.xml
+            htmlcov/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Generate test summary
+        if: always()
+        run: |
+          echo "## 🧪 Test Suite Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Type | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|--------|" >> $GITHUB_STEP_SUMMARY
+
+          # Unit tests
+          if [ "${{ steps.unit_tests.outputs.unit_tests_failed }}" == "true" ]; then
+            echo "| Unit Tests | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Unit Tests | ✅ Passed |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Integration tests
+          if [ "${{ steps.integration_tests.outputs.integration_tests_failed }}" == "true" ]; then
+            echo "| Integration Tests | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.integration_tests.outcome }}" == "skipped" ]; then
+            echo "| Integration Tests | ⏭️ Skipped |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Integration Tests | ✅ Passed |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # E2E tests
+          if [ "${{ steps.e2e_tests.outputs.e2e_tests_failed }}" == "true" ]; then
+            echo "| E2E Tests | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.e2e_tests.outcome }}" == "skipped" ]; then
+            echo "| E2E Tests | ⏭️ Skipped |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| E2E Tests | ✅ Passed |" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Coverage info
+          if [ -f coverage.xml ]; then
+            echo "### 📊 Coverage Report" >> $GITHUB_STEP_SUMMARY
+            echo "See coverage artifacts for detailed report" >> $GITHUB_STEP_SUMMARY
+          fi

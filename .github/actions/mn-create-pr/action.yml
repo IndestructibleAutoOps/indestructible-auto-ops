@@ -1,0 +1,441 @@
+# MachineNativeOps Official Action: mn-create-pr
+# Replaces: peter-evans/create-pull-request@v6
+# Description: Create or update pull requests programmatically
+# Version: 1.0.0
+
+name: 'MN Create PR'
+description: 'MachineNativeOps official action to create or update pull requests'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'git-pull-request'
+  color: 'green'
+
+inputs:
+  token:
+    description: 'GitHub token for authentication'
+    required: false
+    default: ${{ github.token }}
+  branch:
+    description: 'The branch name for the pull request'
+    required: false
+    default: ''
+  base:
+    description: 'The base branch for the pull request'
+    required: false
+    default: ''
+  title:
+    description: 'The title of the pull request'
+    required: false
+    default: 'Automated PR'
+  body:
+    description: 'The body/description of the pull request'
+    required: false
+    default: ''
+  labels:
+    description: 'Comma-separated list of labels to add'
+    required: false
+    default: ''
+  assignees:
+    description: 'Comma-separated list of assignees'
+    required: false
+    default: ''
+  reviewers:
+    description: 'Comma-separated list of reviewers'
+    required: false
+    default: ''
+  team-reviewers:
+    description: 'Comma-separated list of team reviewers'
+    required: false
+    default: ''
+  milestone:
+    description: 'Milestone number to associate'
+    required: false
+    default: ''
+  draft:
+    description: 'Create as draft PR'
+    required: false
+    default: 'false'
+  maintainer-can-modify:
+    description: 'Allow maintainers to modify the PR'
+    required: false
+    default: 'true'
+  commit-message:
+    description: 'Commit message for any staged changes'
+    required: false
+    default: 'Automated changes'
+  committer:
+    description: 'Committer name and email (format: Name <email>)'
+    required: false
+    default: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
+  author:
+    description: 'Author name and email (format: Name <email>)'
+    required: false
+    default: ''
+  signoff:
+    description: 'Add Signed-off-by line to commit'
+    required: false
+    default: 'false'
+  delete-branch:
+    description: 'Delete branch after merge'
+    required: false
+    default: 'false'
+  add-paths:
+    description: 'Paths to add to commit (space-separated, default: all changes)'
+    required: false
+    default: '.'
+
+outputs:
+  pull-request-number:
+    description: 'The number of the created/updated pull request'
+    value: ${{ steps.create-pr.outputs.pr_number }}
+  pull-request-url:
+    description: 'The URL of the pull request'
+    value: ${{ steps.create-pr.outputs.pr_url }}
+  pull-request-operation:
+    description: 'The operation performed: created, updated, or none'
+    value: ${{ steps.create-pr.outputs.operation }}
+  pull-request-head-sha:
+    description: 'The SHA of the head commit'
+    value: ${{ steps.create-pr.outputs.head_sha }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Git
+      shell: bash
+      run: |
+        COMMITTER="${{ inputs.committer }}"
+        AUTHOR="${{ inputs.author }}"
+
+        # Parse committer
+        if [[ "$COMMITTER" =~ ^(.+)\ \<(.+)\>$ ]]; then
+          COMMITTER_NAME="${BASH_REMATCH[1]}"
+          COMMITTER_EMAIL="${BASH_REMATCH[2]}"
+        else
+          COMMITTER_NAME="github-actions[bot]"
+          COMMITTER_EMAIL="github-actions[bot]@users.noreply.github.com"
+        fi
+
+        git config --local user.name "$COMMITTER_NAME"
+        git config --local user.email "$COMMITTER_EMAIL"
+
+        echo "Git configured with: $COMMITTER_NAME <$COMMITTER_EMAIL>"
+
+    - name: Determine Branch Names
+      id: branches
+      shell: bash
+      run: |
+        BRANCH="${{ inputs.branch }}"
+        BASE="${{ inputs.base }}"
+
+        # Default base branch
+        if [[ -z "$BASE" ]]; then
+          BASE=$(git remote show origin | grep 'HEAD branch' | cut -d: -f2 | xargs)
+          if [[ -z "$BASE" ]]; then
+            BASE="main"
+          fi
+        fi
+
+        # Default branch name
+        if [[ -z "$BRANCH" ]]; then
+          BRANCH="automated-pr-$(date +%Y%m%d-%H%M%S)"
+        fi
+
+        echo "head_branch=$BRANCH" >> $GITHUB_OUTPUT
+        echo "base_branch=$BASE" >> $GITHUB_OUTPUT
+
+        echo "Head branch: $BRANCH"
+        echo "Base branch: $BASE"
+
+    - name: Check for Changes
+      id: changes
+      shell: bash
+      run: |
+        ADD_PATHS="${{ inputs.add-paths }}"
+
+        # Add specified paths
+        git add $ADD_PATHS 2>/dev/null || git add -A
+
+        # Check for changes
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changes detected"
+          git diff --cached --stat
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create Commit
+      id: commit
+      if: steps.changes.outputs.has_changes == 'true'
+      shell: bash
+      run: |
+        COMMIT_MESSAGE="${{ inputs.commit-message }}"
+        SIGNOFF="${{ inputs.signoff }}"
+        AUTHOR="${{ inputs.author }}"
+
+        # Build commit command arguments
+        COMMIT_ARGS=()
+
+        if [[ "$SIGNOFF" == "true" ]]; then
+          COMMIT_ARGS+=(--signoff)
+        fi
+
+        if [[ -n "$AUTHOR" ]]; then
+          COMMIT_ARGS+=(--author="$AUTHOR")
+        fi
+
+        COMMIT_ARGS+=(-m "$COMMIT_MESSAGE")
+
+        git commit "${COMMIT_ARGS[@]}"
+
+        COMMIT_SHA=$(git rev-parse HEAD)
+        echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
+        echo "Committed: $COMMIT_SHA"
+
+    - name: Create/Update Branch
+      id: branch
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        HEAD_BRANCH="${{ steps.branches.outputs.head_branch }}"
+        BASE_BRANCH="${{ steps.branches.outputs.base_branch }}"
+        HAS_CHANGES="${{ steps.changes.outputs.has_changes }}"
+
+        # Check if we're already on the head branch
+        CURRENT_BRANCH=$(git branch --show-current)
+
+        if [[ "$CURRENT_BRANCH" != "$HEAD_BRANCH" ]]; then
+          # Check if branch exists remotely
+          if git ls-remote --heads origin "$HEAD_BRANCH" | grep -q "$HEAD_BRANCH"; then
+            echo "Branch exists, checking out..."
+            git fetch origin "$HEAD_BRANCH"
+            git checkout "$HEAD_BRANCH"
+            git merge "$BASE_BRANCH" --no-edit || true
+          else
+            echo "Creating new branch: $HEAD_BRANCH"
+            git checkout -b "$HEAD_BRANCH"
+          fi
+        fi
+
+        # Push branch
+        if [[ "$HAS_CHANGES" == "true" ]] || ! git ls-remote --heads origin "$HEAD_BRANCH" | grep -q "$HEAD_BRANCH"; then
+          echo "Pushing branch..."
+          git push -u origin "$HEAD_BRANCH" --force-with-lease 2>/dev/null || git push -u origin "$HEAD_BRANCH" --force
+        fi
+
+        HEAD_SHA=$(git rev-parse HEAD)
+        echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
+
+    - name: Check Existing PR
+      id: check-pr
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        HEAD_BRANCH="${{ steps.branches.outputs.head_branch }}"
+        BASE_BRANCH="${{ steps.branches.outputs.base_branch }}"
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+
+        # Search for existing PR
+        EXISTING_PR=$(curl -s \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$API_URL/repos/$REPO/pulls?head=${{ github.repository_owner }}:$HEAD_BRANCH&base=$BASE_BRANCH&state=open" | \
+          jq -r '.[0].number // empty')
+
+        if [[ -n "$EXISTING_PR" ]]; then
+          echo "Existing PR found: #$EXISTING_PR"
+          echo "existing_pr=$EXISTING_PR" >> $GITHUB_OUTPUT
+        else
+          echo "No existing PR found"
+          echo "existing_pr=" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create or Update PR
+      id: create-pr
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        HEAD_BRANCH="${{ steps.branches.outputs.head_branch }}"
+        BASE_BRANCH="${{ steps.branches.outputs.base_branch }}"
+        EXISTING_PR="${{ steps.check-pr.outputs.existing_pr }}"
+        HEAD_SHA="${{ steps.branch.outputs.head_sha }}"
+
+        TITLE="${{ inputs.title }}"
+        BODY="${{ inputs.body }}"
+        DRAFT="${{ inputs.draft }}"
+        MAINTAINER_CAN_MODIFY="${{ inputs.maintainer-can-modify }}"
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+
+        OPERATION=""
+        PR_NUMBER=""
+        PR_URL=""
+
+        if [[ -n "$EXISTING_PR" ]]; then
+          # Update existing PR
+          echo "Updating PR #$EXISTING_PR..."
+
+          UPDATE_DATA=$(jq -n \
+            --arg title "$TITLE" \
+            --arg body "$BODY" \
+            '{title: $title, body: $body}')
+
+          RESPONSE=$(curl -s -X PATCH \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$API_URL/repos/$REPO/pulls/$EXISTING_PR" \
+            -d "$UPDATE_DATA")
+
+          PR_NUMBER="$EXISTING_PR"
+          PR_URL=$(echo "$RESPONSE" | jq -r '.html_url // empty')
+          OPERATION="updated"
+
+        else
+          # Create new PR
+          echo "Creating new PR..."
+
+          CREATE_DATA=$(jq -n \
+            --arg title "$TITLE" \
+            --arg body "$BODY" \
+            --arg head "$HEAD_BRANCH" \
+            --arg base "$BASE_BRANCH" \
+            --argjson draft "$([[ "$DRAFT" == "true" ]] && echo "true" || echo "false")" \
+            --argjson maintainer_can_modify "$([[ "$MAINTAINER_CAN_MODIFY" == "true" ]] && echo "true" || echo "false")" \
+            '{
+              title: $title,
+              body: $body,
+              head: $head,
+              base: $base,
+              draft: $draft,
+              maintainer_can_modify: $maintainer_can_modify
+            }')
+
+          RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$API_URL/repos/$REPO/pulls" \
+            -d "$CREATE_DATA")
+
+          PR_NUMBER=$(echo "$RESPONSE" | jq -r '.number // empty')
+          PR_URL=$(echo "$RESPONSE" | jq -r '.html_url // empty')
+
+          if [[ -n "$PR_NUMBER" ]]; then
+            OPERATION="created"
+          else
+            echo "::error::Failed to create PR"
+            echo "$RESPONSE"
+            OPERATION="none"
+          fi
+        fi
+
+        echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+        echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
+        echo "operation=$OPERATION" >> $GITHUB_OUTPUT
+        echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
+
+        echo "PR #$PR_NUMBER: $PR_URL ($OPERATION)"
+
+    - name: Add Labels
+      if: inputs.labels != '' && steps.create-pr.outputs.pr_number != ''
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        PR_NUMBER="${{ steps.create-pr.outputs.pr_number }}"
+        LABELS="${{ inputs.labels }}"
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+
+        # Convert comma-separated to JSON array
+        LABELS_JSON=$(echo "$LABELS" | tr ',' '\n' | jq -R . | jq -s .)
+
+        # Build proper JSON payload
+        LABELS_PAYLOAD=$(jq -n --argjson labels "$LABELS_JSON" '{labels: $labels}')
+
+        curl -s -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$API_URL/repos/$REPO/issues/$PR_NUMBER/labels" \
+          -d "$LABELS_PAYLOAD"
+
+        echo "Labels added: $LABELS"
+
+    - name: Add Assignees
+      if: inputs.assignees != '' && steps.create-pr.outputs.pr_number != ''
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        PR_NUMBER="${{ steps.create-pr.outputs.pr_number }}"
+        ASSIGNEES="${{ inputs.assignees }}"
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+
+        ASSIGNEES_JSON=$(echo "$ASSIGNEES" | tr ',' '\n' | jq -R . | jq -s .)
+        ASSIGNEES_PAYLOAD=$(jq -n --argjson assignees "$ASSIGNEES_JSON" '{assignees: $assignees}')
+
+        curl -s -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$API_URL/repos/$REPO/issues/$PR_NUMBER/assignees" \
+          -d "$ASSIGNEES_PAYLOAD"
+
+        echo "Assignees added: $ASSIGNEES"
+
+    - name: Request Reviewers
+      if: (inputs.reviewers != '' || inputs.team-reviewers != '') && steps.create-pr.outputs.pr_number != ''
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        PR_NUMBER="${{ steps.create-pr.outputs.pr_number }}"
+        REVIEWERS="${{ inputs.reviewers }}"
+        TEAM_REVIEWERS="${{ inputs.team-reviewers }}"
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+
+        REQUEST_DATA="{}"
+
+        if [[ -n "$REVIEWERS" ]]; then
+          REVIEWERS_JSON=$(echo "$REVIEWERS" | tr ',' '\n' | jq -R . | jq -s .)
+          REQUEST_DATA=$(echo "$REQUEST_DATA" | jq --argjson r "$REVIEWERS_JSON" '.reviewers = $r')
+        fi
+
+        if [[ -n "$TEAM_REVIEWERS" ]]; then
+          TEAMS_JSON=$(echo "$TEAM_REVIEWERS" | tr ',' '\n' | jq -R . | jq -s .)
+          REQUEST_DATA=$(echo "$REQUEST_DATA" | jq --argjson t "$TEAMS_JSON" '.team_reviewers = $t')
+        fi
+
+        curl -s -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$API_URL/repos/$REPO/pulls/$PR_NUMBER/requested_reviewers" \
+          -d "$REQUEST_DATA"
+
+        echo "Reviewers requested"
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-CREATE-PR SUMMARY"
+        echo "=========================================="
+        echo "Operation: ${{ steps.create-pr.outputs.operation }}"
+        echo "PR Number: ${{ steps.create-pr.outputs.pr_number }}"
+        echo "PR URL: ${{ steps.create-pr.outputs.pr_url }}"
+        echo "Head Branch: ${{ steps.branches.outputs.head_branch }}"
+        echo "Base Branch: ${{ steps.branches.outputs.base_branch }}"
+        echo "Head SHA: ${{ steps.create-pr.outputs.head_sha }}"
+        echo "=========================================="

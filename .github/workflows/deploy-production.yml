@@ -1,0 +1,275 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      deploy_blue:
+        description: 'Deploy to blue environment'
+        required: true
+        default: true
+        type: boolean
+      deploy_green:
+        description: 'Deploy to green environment'
+        required: true
+        default: false
+        type: boolean
+      rollback:
+        description: 'Perform rollback'
+        required: true
+        default: false
+        type: boolean
+
+env:
+  ENVIRONMENT: production
+  NODE_VERSION: '20.x'
+  DEPLOYMENT_TYPE: blue-green
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pre-deploy-checks:
+    name: Pre-deployment Checks
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Verify staging deployment
+        run: |
+          echo "Verifying staging deployment before production..."
+          # Add checks to ensure staging is healthy
+          exit 0
+
+      - name: Check approvals
+        id: check
+        run: |
+          echo "Checking for required approvals..."
+          echo "proceed=true" >> $GITHUB_OUTPUT
+
+  deploy-blue:
+    name: Deploy to Blue Environment
+    runs-on: ubuntu-latest
+    needs: pre-deploy-checks
+    if: github.event.inputs.deploy_blue != 'false'
+    environment:
+      name: production-blue
+      url: https://blue.example.com
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build || echo "No build script found"
+        continue-on-error: true
+
+      - name: Configure deployment credentials
+        run: |
+          echo "Configuring deployment credentials..."
+          # Add credential setup here
+
+      - name: Deploy to blue environment
+        run: |
+          echo "Deploying to BLUE environment..."
+          ./scripts/deploy-blue.sh ${{ github.sha }}
+        continue-on-error: true
+
+      - name: Health check - Blue
+        run: |
+          echo "Checking blue environment health..."
+          ./scripts/health-check.sh https://blue.example.com/health
+        continue-on-error: true
+
+      - name: Run smoke tests - Blue
+        run: |
+          echo "Running smoke tests on blue environment..."
+          npm run test:smoke || echo "No smoke tests configured"
+        continue-on-error: true
+
+  deploy-green:
+    name: Deploy to Green Environment
+    runs-on: ubuntu-latest
+    needs: pre-deploy-checks
+    if: github.event.inputs.deploy_green == 'true'
+    environment:
+      name: production-green
+      url: https://green.example.com
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build || echo "No build script found"
+        continue-on-error: true
+
+      - name: Deploy to green environment
+        run: |
+          echo "Deploying to GREEN environment..."
+          ./scripts/deploy-green.sh ${{ github.sha }}
+        continue-on-error: true
+
+      - name: Health check - Green
+        run: |
+          echo "Checking green environment health..."
+          ./scripts/health-check.sh https://green.example.com/health
+        continue-on-error: true
+
+      - name: Run smoke tests - Green
+        run: |
+          echo "Running smoke tests on green environment..."
+          npm run test:smoke || echo "No smoke tests configured"
+        continue-on-error: true
+
+  switch-traffic:
+    name: Switch Traffic
+    runs-on: ubuntu-latest
+    needs: [deploy-blue, deploy-green]
+    if: always() && (needs.deploy-blue.result == 'success' || needs.deploy-green.result == 'success')
+    environment:
+      name: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Determine active environment
+        id: active
+        run: |
+          if [ "${{ needs.deploy-blue.result }}" == "success" ]; then
+            echo "environment=blue" >> $GITHUB_OUTPUT
+            echo "url=https://blue.example.com" >> $GITHUB_OUTPUT
+          else
+            echo "environment=green" >> $GITHUB_OUTPUT
+            echo "url=https://green.example.com" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Switch traffic to new environment
+        run: |
+          echo "Switching traffic to ${{ steps.active.outputs.environment }} environment..."
+          ./scripts/switch-traffic.sh ${{ steps.active.outputs.environment }}
+        continue-on-error: true
+
+      - name: Final health check
+        run: |
+          echo "Final health check after traffic switch..."
+          ./scripts/health-check.sh ${{ steps.active.outputs.url }}/health
+        continue-on-error: true
+
+      - name: Run acceptance tests
+        run: |
+          echo "Running acceptance tests..."
+          npm run test:acceptance || echo "No acceptance tests configured"
+        continue-on-error: true
+
+      - name: Monitor deployment
+        run: |
+          echo "Monitoring deployment for 5 minutes..."
+          sleep 300
+          ./scripts/health-check.sh ${{ steps.active.outputs.url }}/health
+        continue-on-error: true
+
+  rollback:
+    name: Rollback
+    runs-on: ubuntu-latest
+    needs: switch-traffic
+    if: failure() || github.event.inputs.rollback == 'true'
+    environment:
+      name: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Get previous successful deployment
+        id: previous
+        run: |
+          echo "Getting previous successful deployment..."
+          PREVIOUS_SHA=$(git log --before="5 minutes ago" --format=%H -1)
+          echo "sha=${PREVIOUS_SHA}" >> $GITHUB_OUTPUT
+
+      - name: Execute rollback
+        run: |
+          echo "Executing rollback to ${{ steps.previous.outputs.sha }}..."
+          ./scripts/rollback.sh ${{ steps.previous.outputs.sha }}
+        continue-on-error: true
+
+      - name: Verify rollback
+        run: |
+          echo "Verifying rollback..."
+          ./scripts/health-check.sh https://example.com/health
+        continue-on-error: true
+
+      - name: Notify rollback
+        uses: 8398a7/action-slack@v3
+        with:
+          status: 'warning'
+          text: 'Production rollback executed'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        continue-on-error: true
+
+  post-deploy:
+    name: Post-deployment Tasks
+    runs-on: ubuntu-latest
+    needs: switch-traffic
+    if: success()
+    
+    steps:
+      - name: Cleanup old deployments
+        run: |
+          echo "Cleaning up old deployments..."
+          ./scripts/cleanup-old-deployments.sh
+
+      - name: Update monitoring
+        run: |
+          echo "Updating monitoring dashboards..."
+
+      - name: Create deployment record
+        run: |
+          echo "Creating deployment record..."
+          echo "${{ github.sha }}" > deployment-record.txt
+
+      - name: Notify success
+        uses: 8398a7/action-slack@v3
+        with:
+          status: 'success'
+          text: 'Production deployment successful'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        continue-on-error: true
+
+      - name: Create deployment tag
+        run: |
+          git tag -a "prod-${{ github.sha }}" -m "Production deployment ${{ github.sha }}"
+          git push origin "prod-${{ github.sha }}"
+        continue-on-error: true

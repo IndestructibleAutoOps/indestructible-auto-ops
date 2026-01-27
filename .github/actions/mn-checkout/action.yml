@@ -1,0 +1,338 @@
+# MachineNativeOps Official Action: mn-checkout
+# Replaces: actions/checkout@v4
+# Description: Git repository checkout with full feature parity
+# Version: 1.0.0
+
+name: 'MN Checkout'
+description: 'MachineNativeOps official checkout action - checks out your repository'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'git-branch'
+  color: 'blue'
+
+inputs:
+  repository:
+    description: 'Repository name with owner (e.g., owner/repo)'
+    required: false
+    default: ${{ github.repository }}
+  ref:
+    description: 'The branch, tag or SHA to checkout'
+    required: false
+    default: ''
+  token:
+    description: 'Personal access token (PAT) used to fetch the repository'
+    required: false
+    default: ${{ github.token }}
+  ssh-key:
+    description: 'SSH key used to fetch the repository'
+    required: false
+    default: ''
+  ssh-known-hosts:
+    description: 'Known hosts in addition to the user and global host key database'
+    required: false
+    default: ''
+  ssh-strict:
+    description: 'Whether to perform strict host key checking'
+    required: false
+    default: 'true'
+  persist-credentials:
+    description: 'Whether to configure the token or SSH key with the local git config'
+    required: false
+    default: 'true'
+  path:
+    description: 'Relative path under $GITHUB_WORKSPACE to place the repository'
+    required: false
+    default: ''
+  clean:
+    description: 'Whether to execute git clean -ffdx && git reset --hard HEAD before fetching'
+    required: false
+    default: 'true'
+  filter:
+    description: 'Partially clone against a given filter'
+    required: false
+    default: ''
+  sparse-checkout:
+    description: 'Do a sparse checkout on given patterns'
+    required: false
+    default: ''
+  sparse-checkout-cone-mode:
+    description: 'Specifies whether to use cone-mode when doing a sparse checkout'
+    required: false
+    default: 'true'
+  fetch-depth:
+    description: 'Number of commits to fetch. 0 indicates all history for all branches and tags'
+    required: false
+    default: '1'
+  fetch-tags:
+    description: 'Whether to fetch tags, even if fetch-depth > 0'
+    required: false
+    default: 'false'
+  show-progress:
+    description: 'Whether to show progress status output when fetching'
+    required: false
+    default: 'true'
+  lfs:
+    description: 'Whether to download Git-LFS files'
+    required: false
+    default: 'false'
+  submodules:
+    description: 'Whether to checkout submodules: true to checkout submodules or recursive'
+    required: false
+    default: 'false'
+  set-safe-directory:
+    description: 'Add repository path as safe.directory for Git'
+    required: false
+    default: 'true'
+  github-server-url:
+    description: 'The base URL for the GitHub instance'
+    required: false
+    default: ${{ github.server_url }}
+
+outputs:
+  ref:
+    description: 'The branch, tag or SHA that was checked out'
+    value: ${{ steps.checkout.outputs.ref }}
+  commit:
+    description: 'The commit SHA that was checked out'
+    value: ${{ steps.checkout.outputs.commit }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Git Configuration
+      shell: bash
+      run: |
+        # Configure git safe directory
+        if [[ "${{ inputs.set-safe-directory }}" == "true" ]]; then
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          if [[ -n "${{ inputs.path }}" ]]; then
+            git config --global --add safe.directory "$GITHUB_WORKSPACE/${{ inputs.path }}"
+          fi
+        fi
+
+    - name: Determine Checkout Directory
+      id: setup
+      shell: bash
+      run: |
+        CHECKOUT_PATH="${GITHUB_WORKSPACE}"
+        if [[ -n "${{ inputs.path }}" ]]; then
+          CHECKOUT_PATH="${GITHUB_WORKSPACE}/${{ inputs.path }}"
+          mkdir -p "$CHECKOUT_PATH"
+        fi
+        echo "checkout_path=$CHECKOUT_PATH" >> $GITHUB_OUTPUT
+
+    - name: Clean Existing Repository
+      if: inputs.clean == 'true'
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        if [[ -d ".git" ]]; then
+          git clean -ffdx || true
+          git reset --hard HEAD || true
+        fi
+      continue-on-error: true
+
+    - name: Configure Authentication
+      id: auth
+      shell: bash
+      run: |
+        AUTH_METHOD="token"
+        if [[ -n "${{ inputs.ssh-key }}" ]]; then
+          AUTH_METHOD="ssh"
+          mkdir -p ~/.ssh
+          echo "${{ inputs.ssh-key }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          if [[ -n "${{ inputs.ssh-known-hosts }}" ]]; then
+            echo "${{ inputs.ssh-known-hosts }}" >> ~/.ssh/known_hosts
+          else
+            ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null || true
+          fi
+
+          if [[ "${{ inputs.ssh-strict }}" == "true" ]]; then
+            git config --global core.sshCommand "ssh -o StrictHostKeyChecking=yes"
+          else
+            git config --global core.sshCommand "ssh -o StrictHostKeyChecking=no"
+          fi
+        fi
+        echo "auth_method=$AUTH_METHOD" >> $GITHUB_OUTPUT
+
+    - name: Build Clone URL
+      id: url
+      shell: bash
+      run: |
+        REPO="${{ inputs.repository }}"
+        SERVER="${{ inputs.github-server-url }}"
+
+        if [[ "${{ steps.auth.outputs.auth_method }}" == "ssh" ]]; then
+          # Extract hostname from server URL
+          HOSTNAME=$(echo "$SERVER" | sed -E 's|https?://||' | sed 's|/.*||')
+          CLONE_URL="git@${HOSTNAME}:${REPO}.git"
+        else
+          # Use HTTPS with token
+          TOKEN="${{ inputs.token }}"
+          CLONE_URL="${SERVER}/${REPO}.git"
+          # Configure credential helper for token auth
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+        fi
+        echo "clone_url=$CLONE_URL" >> $GITHUB_OUTPUT
+
+    - name: Determine Ref to Checkout
+      id: ref
+      shell: bash
+      run: |
+        REF="${{ inputs.ref }}"
+        if [[ -z "$REF" ]]; then
+          # Default ref based on event type
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            REF="${{ github.head_ref }}"
+          else
+            REF="${{ github.ref }}"
+          fi
+        fi
+        echo "ref=$REF" >> $GITHUB_OUTPUT
+
+    - name: Clone Repository
+      id: clone
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        CLONE_ARGS=""
+
+        # Fetch depth
+        DEPTH="${{ inputs.fetch-depth }}"
+        if [[ "$DEPTH" != "0" ]]; then
+          CLONE_ARGS="$CLONE_ARGS --depth=$DEPTH"
+        fi
+
+        # Filter
+        if [[ -n "${{ inputs.filter }}" ]]; then
+          CLONE_ARGS="$CLONE_ARGS --filter=${{ inputs.filter }}"
+        fi
+
+        # Progress
+        if [[ "${{ inputs.show-progress }}" == "true" ]]; then
+          CLONE_ARGS="$CLONE_ARGS --progress"
+        else
+          CLONE_ARGS="$CLONE_ARGS --quiet"
+        fi
+
+        # Single branch for shallow clones
+        if [[ "$DEPTH" != "0" ]]; then
+          CLONE_ARGS="$CLONE_ARGS --single-branch"
+        fi
+
+        REF="${{ steps.ref.outputs.ref }}"
+        CLONE_URL="${{ steps.url.outputs.clone_url }}"
+
+        # Handle branch/tag reference
+        if [[ "$REF" == refs/heads/* ]]; then
+          BRANCH="${REF#refs/heads/}"
+          CLONE_ARGS="$CLONE_ARGS --branch=$BRANCH"
+        elif [[ "$REF" == refs/tags/* ]]; then
+          TAG="${REF#refs/tags/}"
+          CLONE_ARGS="$CLONE_ARGS --branch=$TAG"
+        elif [[ -n "$REF" && "$REF" != refs/* ]]; then
+          # Assume it's a branch name
+          CLONE_ARGS="$CLONE_ARGS --branch=$REF"
+        fi
+
+        # Remove existing .git if present
+        rm -rf .git
+
+        # Clone
+        echo "Cloning repository..."
+        git clone $CLONE_ARGS "$CLONE_URL" . 2>&1 || {
+          # If branch clone fails, try full clone and checkout
+          echo "Branch clone failed, trying full clone..."
+          git clone --depth=1 "$CLONE_URL" . 2>&1
+          if [[ -n "$REF" ]]; then
+            git fetch origin "$REF" --depth=1 2>&1 || true
+            git checkout "$REF" 2>&1 || git checkout FETCH_HEAD 2>&1
+          fi
+        }
+
+    - name: Checkout Specific Ref
+      id: checkout
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        REF="${{ steps.ref.outputs.ref }}"
+
+        # For SHA references, fetch and checkout
+        if [[ "$REF" =~ ^[0-9a-f]{40}$ ]]; then
+          git fetch origin "$REF" --depth=1 2>&1 || true
+          git checkout "$REF" 2>&1 || true
+        fi
+
+        # Get current commit
+        COMMIT=$(git rev-parse HEAD)
+        CURRENT_REF=$(git symbolic-ref -q --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null || echo "$COMMIT")
+
+        echo "ref=$CURRENT_REF" >> $GITHUB_OUTPUT
+        echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+
+        echo "Checked out: $CURRENT_REF ($COMMIT)"
+
+    - name: Fetch Tags
+      if: inputs.fetch-tags == 'true'
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        git fetch --tags --force 2>&1 || true
+
+    - name: Setup Sparse Checkout
+      if: inputs.sparse-checkout != ''
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        git sparse-checkout init ${{ inputs.sparse-checkout-cone-mode == 'true' && '--cone' || '' }}
+        echo "${{ inputs.sparse-checkout }}" | tr ',' '\n' | while read pattern; do
+          git sparse-checkout add "$pattern" 2>/dev/null || true
+        done
+
+    - name: Setup LFS
+      if: inputs.lfs == 'true'
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        if command -v git-lfs &> /dev/null; then
+          git lfs install --local
+          git lfs pull
+        else
+          echo "Warning: git-lfs not installed, skipping LFS setup"
+        fi
+
+    - name: Setup Submodules
+      if: inputs.submodules != 'false'
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        if [[ "${{ inputs.submodules }}" == "recursive" ]]; then
+          git submodule update --init --recursive
+        else
+          git submodule update --init
+        fi
+
+    - name: Persist Credentials
+      if: inputs.persist-credentials == 'true'
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        if [[ "${{ steps.auth.outputs.auth_method }}" == "token" ]]; then
+          git config --local credential.helper store
+        fi
+
+    - name: Display Checkout Summary
+      shell: bash
+      working-directory: ${{ steps.setup.outputs.checkout_path }}
+      run: |
+        echo "=========================================="
+        echo "MN-CHECKOUT SUMMARY"
+        echo "=========================================="
+        echo "Repository: ${{ inputs.repository }}"
+        echo "Ref: ${{ steps.checkout.outputs.ref }}"
+        echo "Commit: ${{ steps.checkout.outputs.commit }}"
+        echo "Path: ${{ steps.setup.outputs.checkout_path }}"
+        echo "=========================================="

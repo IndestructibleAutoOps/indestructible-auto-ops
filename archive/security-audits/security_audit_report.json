@@ -1,0 +1,2281 @@
+{
+  "audit_timestamp": "2026-01-16T11:00:33.713782",
+  "total_findings": 75,
+  "summary": {
+    "critical": 19,
+    "high": 29,
+    "medium": 27,
+    "low": 0,
+    "info": 0
+  },
+  "by_severity": {
+    "critical": [
+      {
+        "file": "ns-root/namespaces-adk/adk/security/a2a_auth.py",
+        "line": 25,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "SHARED_SECRET = \"shared_secret\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "class A2AAuthMethod(Enum):\n    \"\"\"Agent-to-agent authentication methods.\"\"\"\n\n    SHARED_SECRET = \"shared_secret\"\n    PUBLIC_KEY = \"public_key\"\n    MUTUAL_TLS = \"mutual_tls\"\n    CHALLENGE_RESPONSE = \"challenge_response\""
+      },
+      {
+        "file": "ns-root/namespaces-adk/adk/security/auth.py",
+        "line": 22,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "PASSWORD = \"password\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "class AuthMethod(Enum):\n    \"\"\"Authentication methods.\"\"\"\n\n    PASSWORD = \"password\"\n    TOKEN = \"token\"\n    OAUTH2 = \"oauth2\"\n    API_KEY = \"api_key\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "line": 45,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "db_password = \"admin123\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\"\n\n    # Performance issue: nested loops\n    data = []"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/future/privacy_framework.py",
+        "line": 31,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/future/privacy_framework.py",
+        "line": 33,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/src/ai/agents/dependency-manager/src/future/privacy_framework.py",
+        "line": 33,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/src/core/training_system/example_library.py",
+        "line": 292,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "AND password = '{password}'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    query = f\\\"\\\"\\\"\n    SELECT * FROM users\n    WHERE username = '{username}'\n    AND password = '{password}'\n    \\\"\\\"\\\"\n    return db.execute(query)\n"
+      },
+      {
+        "file": "workspace/src/core/training_system/example_library.py",
+        "line": 299,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "# \u653b\u64ca\u8005\u53ef\u4ee5\u7e5e\u904e\u767b\u9304\uff1a\n# username: admin' --\n# password: anything\n# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'\n\"\"\",\n            good_code=\"\"\"\n# \u2705 \u4f7f\u7528\u53c3\u6578\u5316\u67e5\u8a62"
+      },
+      {
+        "file": "workspace/src/core/training_system/skills_training.py",
+        "line": 575,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "                    \"question\": \"\"\"\n\u4fee\u5fa9\u9019\u6bb5\u4ee3\u78bc\u7684\u5b89\u5168\u6f0f\u6d1e\uff1a\ndef login(email, password):\n    query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"\n    user = db.execute(query)\n    return user\n\"\"\","
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/example_library.py",
+        "line": 290,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "AND password = '{password}'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    query = f\\\"\\\"\\\"\n    SELECT * FROM users\n    WHERE username = '{username}'\n    AND password = '{password}'\n    \\\"\\\"\\\"\n    return db.execute(query)\n"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/example_library.py",
+        "line": 297,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "# \u653b\u64ca\u8005\u53ef\u4ee5\u7e5e\u904e\u767b\u9304\uff1a\n# username: admin' --\n# password: anything\n# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'\n\"\"\",\n            good_code=\"\"\"\n# \u2705 \u4f7f\u7528\u53c3\u6578\u5316\u67e5\u8a62"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/skills_training.py",
+        "line": 575,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "                    \"question\": \"\"\"\n\u4fee\u5fa9\u9019\u6bb5\u4ee3\u78bc\u7684\u5b89\u5168\u6f0f\u6d1e\uff1a\ndef login(email, password):\n    query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"\n    user = db.execute(query)\n    return user\n\"\"\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/examples/demo.py",
+        "line": 45,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "db_password = \"admin123\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\"\n\n    # Performance issue: nested loops\n    data = []"
+      },
+      {
+        "file": "workspace/src/services/agents/dependency-manager/src/future/privacy_framework.py",
+        "line": 31,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/src/enterprise/integrations/providers.py",
+        "line": 35,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "PERSONAL_TOKEN = \"personal_token\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "\n    GITHUB_APP = \"github_app\"\n    OAUTH_APP = \"oauth_app\"\n    PERSONAL_TOKEN = \"personal_token\"\n    GITLAB_INTEGRATION = \"gitlab_integration\"\n    BITBUCKET_APP = \"bitbucket_app\"\n"
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 32,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "DATABASE_PASSWORD = \"database_password\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\"\n    SIGNING_KEY = \"signing_key\"\n    DATABASE_PASSWORD = \"database_password\"\n    SERVICE_ACCOUNT = \"service_account\"\n    CUSTOM = \"custom\"\n"
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 26,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "WEBHOOK_SECRET = \"webhook_secret\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "class SecretType(Enum):\n    \"\"\"Types of secrets\"\"\"\n\n    WEBHOOK_SECRET = \"webhook_secret\"\n    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\""
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 27,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "PROVIDER_TOKEN = \"provider_token\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    \"\"\"Types of secrets\"\"\"\n\n    WEBHOOK_SECRET = \"webhook_secret\"\n    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\""
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 30,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "OAUTH_CLIENT_SECRET = \"oauth_client_secret\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\"\n    SIGNING_KEY = \"signing_key\"\n    DATABASE_PASSWORD = \"database_password\"\n    SERVICE_ACCOUNT = \"service_account\""
+      }
+    ],
+    "high": [
+      {
+        "file": "code_quality_analyzer.py",
+        "line": 159,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    def check_security(self, file_path, content, lines):\n        \"\"\"Check for security issues\"\"\"\n        security_patterns = [\n            (r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"exec\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 exec() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"pickle\\.(loads|load)\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 pickle \u53ef\u80fd\u5c0e\u81f4\u53cd\u5e8f\u5217\u5316\u6f0f\u6d1e\"),\n            (r\"md5\\s*\\(\", \"\u4e2d\u5371\uff1aMD5 \u4e0d\u662f\u5b89\u5168\u7684\u54c8\u5e0c\u7b97\u6cd5\"),"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 7,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "- 77 security vulnerabilities (MD5, eval())",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\nThis script addresses the remaining 866 low-severity issues:\n- 772 import order violations\n- 77 security vulnerabilities (MD5, eval())\n- 72 code smells (hardcoded URLs)\n- 22 missing docstrings\n\"\"\""
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 161,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Replace unsafe eval() with safer alternatives.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            return False\n\n    def fix_eval_usage(self, file_path: Path) -> bool:\n        \"\"\"Replace unsafe eval() with safer alternatives.\"\"\"\n        try:\n            with open(file_path, 'r', encoding='utf-8') as f:\n                content = f.read()"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 166,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if 'eval(' not in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            with open(file_path, 'r', encoding='utf-8') as f:\n                content = f.read()\n\n            if 'eval(' not in content:\n                return False\n\n            # Note: eval() replacement is complex and context-dependent"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 181,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if 'eval(' in line and '# TODO: Security' not in line:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                # Find eval() lines and add warning\n                modified_lines = []\n                for line in lines:\n                    if 'eval(' in line and '# TODO: Security' not in line:\n                        # Insert warning before the line\n                        indent = len(line) - len(line.lstrip())\n                        modified_lines.append(' ' * indent + warning.rstrip())"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 310,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(\"  \u26a0\ufe0f  eval() usage marked for review\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    print(\"  \u2705 MD5 replaced with SHA256\")\n                if results['eval_fixed']:\n                    summary['eval_fixed'] += 1\n                    print(\"  \u26a0\ufe0f  eval() usage marked for review\")\n\n                summary['total_fixes'] += results['total_fixes']\n"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 344,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(f\"eval() reviews: {summary['eval_fixed']}\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    print(f\"Hardcoded URL fixes: {summary['hardcoded_urls_fixed']}\")\n    print(f\"Docstrings added: {summary['docstrings_added']}\")\n    print(f\"MD5 replacements: {summary['md5_fixed']}\")\n    print(f\"eval() reviews: {summary['eval_fixed']}\")\n    print(f\"Total fixes applied: {summary['total_fixes']}\")\n    print(f\"Errors encountered: {summary['errors']}\")\n    print(\"=\" * 60)"
+      },
+      {
+        "file": "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+        "line": 367,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "return eval(condition, {\"__builtins__\": {}}, context)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        try:\n            # For now, support simple comparisons\n            # In production, use a safe expression evaluator\n            return eval(condition, {\"__builtins__\": {}}, context)\n        except Exception as e:\n            self.logger.warning(f\"Condition evaluation failed: {e}\")\n            return False"
+      },
+      {
+        "file": "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+        "line": 102,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        self.xss_patterns = [\n            (r\"innerHTML\\s*=\\s*\", \"xss\", \"Potential XSS vulnerability via innerHTML\"),\n            (r\"document\\.write\\s*\\(\", \"xss\", \"Potential XSS vulnerability via document.write\"),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+        "line": 333,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "line": 42,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+        "line": 218,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 129,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/src/automation/architect/core/analysis/security_scanner.py",
+        "line": 102,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        self.xss_patterns = [\n            (r\"innerHTML\\s*=\\s*\", \"xss\", \"Potential XSS vulnerability via innerHTML\"),\n            (r\"document\\.write\\s*\\(\", \"xss\", \"Potential XSS vulnerability via document.write\"),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/src/core/run-debug/cli.py",
+        "line": 385,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "def eval(expression):",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\n@debug.command()\n@click.argument(\"expression\")\ndef eval(expression):\n    \"\"\"\u8a55\u4f30\u8868\u9054\u5f0f\"\"\"\n    cli = DebugCLI()\n    asyncio.run(cli.evaluate_expression(expression))"
+      },
+      {
+        "file": "workspace/src/core/training_system/example_library.py",
+        "line": 378,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "import hashlib\n\ndef hash_password_weak(password: str) -> str:\n    return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\n# \u554f\u984c 3\uff1a\u6c92\u6709\u52a0\u9e7d\ndef hash_password_no_salt(password: str) -> str:"
+      },
+      {
+        "file": "workspace/src/core/training_system/knowledge_base.py",
+        "line": 425,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n# \u274c \u4f7f\u7528\u5f31\u54c8\u5e0c\nimport hashlib\nhashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\"\"\",\n            priority=\"critical\",\n            tags=[\"password\", \"authentication\", \"hashing\"],"
+      },
+      {
+        "file": "workspace/src/core/virtual_experts/domain_experts.py",
+        "line": 505,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    }\n                )\n\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/example_library.py",
+        "line": 376,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "import hashlib\n\ndef hash_password_weak(password: str) -> str:\n    return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\n# \u554f\u984c 3\uff1a\u6c92\u6709\u52a0\u9e7d\ndef hash_password_no_salt(password: str) -> str:"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/knowledge_base.py",
+        "line": 424,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n# \u274c \u4f7f\u7528\u5f31\u54c8\u5e0c\nimport hashlib\nhashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\"\"\",\n            priority=\"critical\",\n            tags=[\"password\", \"authentication\", \"hashing\"],"
+      },
+      {
+        "file": "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+        "line": 500,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    }\n                )\n\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/pipeline_service.py",
+        "line": 333,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/examples/demo.py",
+        "line": 42,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\""
+      },
+      {
+        "file": "workspace/src/autonomous/agents/test-vectors/generator.py",
+        "line": 218,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 129,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 6,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "analyzing MD5 usage, eval() usage, and other security concerns.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "Security Audit Tool\n\nThis script performs a comprehensive security audit of the codebase,\nanalyzing MD5 usage, eval() usage, and other security concerns.\n\"\"\"\n\nimport ast"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 120,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check for eval() usage.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        return findings\n    \n    def check_eval_usage(self, file_path: Path) -> List[SecurityFinding]:\n        \"\"\"Check for eval() usage.\"\"\"\n        findings = []\n        \n        try:"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 157,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "issue='eval() function usage detected',",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    line_number=line_num,\n                    severity=severity,\n                    category='Code Injection',\n                    issue='eval() function usage detected',\n                    code_snippet=code_snippet,\n                    recommendation='Avoid eval() as it can execute arbitrary code. '\n                                 'Consider using ast.literal_eval() for parsing literals, '"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 159,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "recommendation='Avoid eval() as it can execute arbitrary code. '",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    category='Code Injection',\n                    issue='eval() function usage detected',\n                    code_snippet=code_snippet,\n                    recommendation='Avoid eval() as it can execute arbitrary code. '\n                                 'Consider using ast.literal_eval() for parsing literals, '\n                                 'or implement a proper parser for your use case.',\n                    context=context"
+      }
+    ],
+    "medium": [
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 173,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if 'eval(' in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # This is a basic implementation - manual review recommended\n            # We'll add a warning comment instead of automatic replacement\n            \n            if 'eval(' in content:\n                # Add security warning comment\n                warning = '# TODO: Security - Consider replacing eval() with safer alternatives like ast.literal_eval()\\n'\n                lines = content.split('\\n')"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 231,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 233,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 290,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/ai/agents/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/src/ai/agents/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/core/island_ai_runtime/knowledge_engine.py",
+        "line": 306,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return hashlib.md5(path.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    @staticmethod\n    def _generate_id(path: str) -> str:\n        \"\"\"\u751f\u6210\u7bc0\u9ede ID\"\"\"\n        return hashlib.md5(path.encode()).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 231,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 233,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 290,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/src/services/agents/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/src/services/agents/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/frontend/ui/services/code_analyzer.py",
+        "line": 196,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _get_cache_key(self, code: str, file_path: str) -> str:\n        \"\"\"\u751f\u6210\u7de9\u5b58\u9375\"\"\"\n        content = f\"{code}:{file_path}\"\n        return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"\n\n    async def analyze(\n        self, code: str, file_path: str, strategy: AnalysisStrategy = AnalysisStrategy.STANDARD"
+      },
+      {
+        "file": "workspace/src/apps/web-backend/services/code_analyzer.py",
+        "line": 195,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _get_cache_key(self, code: str, file_path: str) -> str:\n        \"\"\"\u751f\u6210\u7de9\u5b58\u9375\"\"\"\n        content = f\"{code}:{file_path}\"\n        return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"\n\n    async def analyze(\n        self, code: str, file_path: str, strategy: AnalysisStrategy = AnalysisStrategy.STANDARD"
+      },
+      {
+        "file": "workspace/tools/find_duplicate_scripts.py",
+        "line": 65,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hasher = hashlib.md5()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n    def _hash_file(self, file_path: Path) -> str:\n        \"\"\"\u8a08\u7b97\u6587\u4ef6\u7684\u54c8\u5e0c\u503c\"\"\"\n        hasher = hashlib.md5()\n        with open(file_path, \"rb\") as f:\n            hasher.update(f.read())\n        return hasher.hexdigest()"
+      },
+      {
+        "file": "workspace/tools/autonomous_cleanup_toolkit.py",
+        "line": 205,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "md5_hash = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n                try:\n                    content = file_path.read_bytes()\n                    md5_hash = hashlib.md5(content).hexdigest()\n                    hash_map[md5_hash].append(str(file_path.relative_to(self.repo_path)))\n                except Exception as e:\n                    self.logger.warning(f\"Error reading {file_path}: {e}\")"
+      },
+      {
+        "file": "workspace/tools/cleanup_duplicates.py",
+        "line": 81,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "empty_init_hash = hashlib.md5(b\"\").hexdigest()  # \u7a7a\u6587\u4ef6\u54c8\u5e0c",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        \"\"\"\u6e05\u7406\u7a7a\u7684 __init__.py \u6587\u4ef6\u91cd\u8907\"\"\"\n        print(\"\\n3\ufe0f\u20e3  \u6e05\u7406\u7a7a __init__.py \u91cd\u8907...\")\n\n        empty_init_hash = hashlib.md5(b\"\").hexdigest()  # \u7a7a\u6587\u4ef6\u54c8\u5e0c\n        init_files = list(self.repo_root.rglob(\"__init__.py\"))\n\n        # \u6309\u76ee\u9304\u5206\u7d44"
+      },
+      {
+        "file": "workspace/tools/cleanup_duplicates.py",
+        "line": 104,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hasher = hashlib.md5()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _hash_file(self, file_path: Path) -> str:\n        \"\"\"\u8a08\u7b97\u6587\u4ef6\u54c8\u5e0c\"\"\"\n        try:\n            hasher = hashlib.md5()\n            with open(file_path, \"rb\") as f:\n                hasher.update(f.read())\n            return hasher.hexdigest()"
+      },
+      {
+        "file": "workspace/tools/automation/engines/integration_automation_engine.py",
+        "line": 151,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "file_hash = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        for file in self._target_path.rglob(\"*\"):\n            if file.is_file():\n                content = file.read_bytes()\n                file_hash = hashlib.md5(content).hexdigest()\n                if file_hash in hashes:\n                    duplicates.append((str(file), hashes[file_hash]))\n                else:"
+      },
+      {
+        "file": "workspace/tools/refactor/process_legacy_scratch.py",
+        "line": 809,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "file_hash = hashlib.md5(content.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        content = filepath.read_text(encoding=\"utf-8\", errors=\"ignore\")\n\n        # \u8a08\u7b97\u54c8\u5e0c\n        file_hash = hashlib.md5(content.encode()).hexdigest()\n\n        # \u8a5e\u5f59\u6383\u63cf\n        print(\"   \u8a5e\u5f59\u6383\u63cf...\")"
+      },
+      {
+        "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+        "line": 137,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "policy_hash = hashlib.md5(b\"axiom-naming-v9\").hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        \"\"\"\n        # In production, load from governance-manifest.yaml\n        # For now, generate deterministic vector from policy hash\n        policy_hash = hashlib.md5(b\"axiom-naming-v9\").hexdigest()\n\n        # Convert hash to vector\n        vector = np.array([int(c, 16) for c in policy_hash], dtype=float)"
+      },
+      {
+        "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+        "line": 218,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "namespace_hash = hashlib.md5(namespace.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        Generate 8192-dimensional semantic vector for namespace\n        \"\"\"\n        # Create deterministic vector from namespace string\n        namespace_hash = hashlib.md5(namespace.encode()).hexdigest()\n\n        # Convert to vector\n        vector = np.array([int(c, 16) for c in namespace_hash], dtype=float)"
+      },
+      {
+        "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+        "line": 749,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "text_hash = hashlib.md5(text.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        # In production, use proper embedding model (e.g., sentence-transformers)\n        # For now, generate deterministic vector from hash\n\n        text_hash = hashlib.md5(text.encode()).hexdigest()\n        vector = np.array([int(c, 16) for c in text_hash], dtype=float)\n\n        # Expand to 8192 dimensions"
+      }
+    ],
+    "low": [],
+    "info": []
+  },
+  "by_category": {
+    "Code Injection": [
+      {
+        "file": "code_quality_analyzer.py",
+        "line": 159,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    def check_security(self, file_path, content, lines):\n        \"\"\"Check for security issues\"\"\"\n        security_patterns = [\n            (r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"exec\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 exec() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"pickle\\.(loads|load)\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 pickle \u53ef\u80fd\u5c0e\u81f4\u53cd\u5e8f\u5217\u5316\u6f0f\u6d1e\"),\n            (r\"md5\\s*\\(\", \"\u4e2d\u5371\uff1aMD5 \u4e0d\u662f\u5b89\u5168\u7684\u54c8\u5e0c\u7b97\u6cd5\"),"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 7,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "- 77 security vulnerabilities (MD5, eval())",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\nThis script addresses the remaining 866 low-severity issues:\n- 772 import order violations\n- 77 security vulnerabilities (MD5, eval())\n- 72 code smells (hardcoded URLs)\n- 22 missing docstrings\n\"\"\""
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 161,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Replace unsafe eval() with safer alternatives.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            return False\n\n    def fix_eval_usage(self, file_path: Path) -> bool:\n        \"\"\"Replace unsafe eval() with safer alternatives.\"\"\"\n        try:\n            with open(file_path, 'r', encoding='utf-8') as f:\n                content = f.read()"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 166,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if 'eval(' not in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            with open(file_path, 'r', encoding='utf-8') as f:\n                content = f.read()\n\n            if 'eval(' not in content:\n                return False\n\n            # Note: eval() replacement is complex and context-dependent"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 173,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if 'eval(' in content:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            # This is a basic implementation - manual review recommended\n            # We'll add a warning comment instead of automatic replacement\n            \n            if 'eval(' in content:\n                # Add security warning comment\n                warning = '# TODO: Security - Consider replacing eval() with safer alternatives like ast.literal_eval()\\n'\n                lines = content.split('\\n')"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 181,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if 'eval(' in line and '# TODO: Security' not in line:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                # Find eval() lines and add warning\n                modified_lines = []\n                for line in lines:\n                    if 'eval(' in line and '# TODO: Security' not in line:\n                        # Insert warning before the line\n                        indent = len(line) - len(line.lstrip())\n                        modified_lines.append(' ' * indent + warning.rstrip())"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 310,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(\"  \u26a0\ufe0f  eval() usage marked for review\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    print(\"  \u2705 MD5 replaced with SHA256\")\n                if results['eval_fixed']:\n                    summary['eval_fixed'] += 1\n                    print(\"  \u26a0\ufe0f  eval() usage marked for review\")\n\n                summary['total_fixes'] += results['total_fixes']\n"
+      },
+      {
+        "file": "fix_remaining_issues.py",
+        "line": 344,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "print(f\"eval() reviews: {summary['eval_fixed']}\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    print(f\"Hardcoded URL fixes: {summary['hardcoded_urls_fixed']}\")\n    print(f\"Docstrings added: {summary['docstrings_added']}\")\n    print(f\"MD5 replacements: {summary['md5_fixed']}\")\n    print(f\"eval() reviews: {summary['eval_fixed']}\")\n    print(f\"Total fixes applied: {summary['total_fixes']}\")\n    print(f\"Errors encountered: {summary['errors']}\")\n    print(\"=\" * 60)"
+      },
+      {
+        "file": "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+        "line": 367,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "return eval(condition, {\"__builtins__\": {}}, context)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        try:\n            # For now, support simple comparisons\n            # In production, use a safe expression evaluator\n            return eval(condition, {\"__builtins__\": {}}, context)\n        except Exception as e:\n            self.logger.warning(f\"Condition evaluation failed: {e}\")\n            return False"
+      },
+      {
+        "file": "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+        "line": 102,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        self.xss_patterns = [\n            (r\"innerHTML\\s*=\\s*\", \"xss\", \"Potential XSS vulnerability via innerHTML\"),\n            (r\"document\\.write\\s*\\(\", \"xss\", \"Potential XSS vulnerability via document.write\"),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+        "line": 333,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "line": 42,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+        "line": 218,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 129,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 231,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 233,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "line": 290,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/src/automation/architect/core/analysis/security_scanner.py",
+        "line": 102,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        self.xss_patterns = [\n            (r\"innerHTML\\s*=\\s*\", \"xss\", \"Potential XSS vulnerability via innerHTML\"),\n            (r\"document\\.write\\s*\\(\", \"xss\", \"Potential XSS vulnerability via document.write\"),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+      },
+      {
+        "file": "workspace/src/core/run-debug/cli.py",
+        "line": 385,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "def eval(expression):",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "\n@debug.command()\n@click.argument(\"expression\")\ndef eval(expression):\n    \"\"\"\u8a55\u4f30\u8868\u9054\u5f0f\"\"\"\n    cli = DebugCLI()\n    asyncio.run(cli.evaluate_expression(expression))"
+      },
+      {
+        "file": "workspace/src/core/virtual_experts/domain_experts.py",
+        "line": 505,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    }\n                )\n\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+        "line": 500,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    }\n                )\n\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/pipeline_service.py",
+        "line": 333,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/examples/demo.py",
+        "line": 42,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\""
+      },
+      {
+        "file": "workspace/src/autonomous/agents/test-vectors/generator.py",
+        "line": 218,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"    result = eval(user_input)\",",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 129,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 231,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "if \"eval(\" in code or \"exec(\" in code:",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 233,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+      },
+      {
+        "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+        "line": 290,
+        "severity": "medium",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "result = eval(user_input)  # Security issue!",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 6,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "analyzing MD5 usage, eval() usage, and other security concerns.",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "Security Audit Tool\n\nThis script performs a comprehensive security audit of the codebase,\nanalyzing MD5 usage, eval() usage, and other security concerns.\n\"\"\"\n\nimport ast"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 120,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "\"\"\"Check for eval() usage.\"\"\"",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "        return findings\n    \n    def check_eval_usage(self, file_path: Path) -> List[SecurityFinding]:\n        \"\"\"Check for eval() usage.\"\"\"\n        findings = []\n        \n        try:"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 157,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "issue='eval() function usage detected',",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    line_number=line_num,\n                    severity=severity,\n                    category='Code Injection',\n                    issue='eval() function usage detected',\n                    code_snippet=code_snippet,\n                    recommendation='Avoid eval() as it can execute arbitrary code. '\n                                 'Consider using ast.literal_eval() for parsing literals, '"
+      },
+      {
+        "file": "workspace/tools/security_audit.py",
+        "line": 159,
+        "severity": "high",
+        "category": "Code Injection",
+        "issue": "eval() function usage detected",
+        "code": "recommendation='Avoid eval() as it can execute arbitrary code. '",
+        "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+        "context": "                    category='Code Injection',\n                    issue='eval() function usage detected',\n                    code_snippet=code_snippet,\n                    recommendation='Avoid eval() as it can execute arbitrary code. '\n                                 'Consider using ast.literal_eval() for parsing literals, '\n                                 'or implement a proper parser for your use case.',\n                    context=context"
+      }
+    ],
+    "Secrets Management": [
+      {
+        "file": "ns-root/namespaces-adk/adk/security/a2a_auth.py",
+        "line": 25,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "SHARED_SECRET = \"shared_secret\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "class A2AAuthMethod(Enum):\n    \"\"\"Agent-to-agent authentication methods.\"\"\"\n\n    SHARED_SECRET = \"shared_secret\"\n    PUBLIC_KEY = \"public_key\"\n    MUTUAL_TLS = \"mutual_tls\"\n    CHALLENGE_RESPONSE = \"challenge_response\""
+      },
+      {
+        "file": "ns-root/namespaces-adk/adk/security/auth.py",
+        "line": 22,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "PASSWORD = \"password\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "class AuthMethod(Enum):\n    \"\"\"Authentication methods.\"\"\"\n\n    PASSWORD = \"password\"\n    TOKEN = \"token\"\n    OAUTH2 = \"oauth2\"\n    API_KEY = \"api_key\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "line": 45,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "db_password = \"admin123\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\"\n\n    # Performance issue: nested loops\n    data = []"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/future/privacy_framework.py",
+        "line": 31,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/future/privacy_framework.py",
+        "line": 33,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/src/ai/agents/dependency-manager/src/future/privacy_framework.py",
+        "line": 33,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/src/core/training_system/example_library.py",
+        "line": 292,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "AND password = '{password}'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    query = f\\\"\\\"\\\"\n    SELECT * FROM users\n    WHERE username = '{username}'\n    AND password = '{password}'\n    \\\"\\\"\\\"\n    return db.execute(query)\n"
+      },
+      {
+        "file": "workspace/src/core/training_system/example_library.py",
+        "line": 299,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "# \u653b\u64ca\u8005\u53ef\u4ee5\u7e5e\u904e\u767b\u9304\uff1a\n# username: admin' --\n# password: anything\n# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'\n\"\"\",\n            good_code=\"\"\"\n# \u2705 \u4f7f\u7528\u53c3\u6578\u5316\u67e5\u8a62"
+      },
+      {
+        "file": "workspace/src/core/training_system/skills_training.py",
+        "line": 575,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "                    \"question\": \"\"\"\n\u4fee\u5fa9\u9019\u6bb5\u4ee3\u78bc\u7684\u5b89\u5168\u6f0f\u6d1e\uff1a\ndef login(email, password):\n    query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"\n    user = db.execute(query)\n    return user\n\"\"\","
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/example_library.py",
+        "line": 290,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "AND password = '{password}'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    query = f\\\"\\\"\\\"\n    SELECT * FROM users\n    WHERE username = '{username}'\n    AND password = '{password}'\n    \\\"\\\"\\\"\n    return db.execute(query)\n"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/example_library.py",
+        "line": 297,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "# \u653b\u64ca\u8005\u53ef\u4ee5\u7e5e\u904e\u767b\u9304\uff1a\n# username: admin' --\n# password: anything\n# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'\n\"\"\",\n            good_code=\"\"\"\n# \u2705 \u4f7f\u7528\u53c3\u6578\u5316\u67e5\u8a62"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/skills_training.py",
+        "line": 575,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "                    \"question\": \"\"\"\n\u4fee\u5fa9\u9019\u6bb5\u4ee3\u78bc\u7684\u5b89\u5168\u6f0f\u6d1e\uff1a\ndef login(email, password):\n    query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"\n    user = db.execute(query)\n    return user\n\"\"\","
+      },
+      {
+        "file": "workspace/src/autonomous/agents/examples/demo.py",
+        "line": 45,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "db_password = \"admin123\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\"\n\n    # Performance issue: nested loops\n    data = []"
+      },
+      {
+        "file": "workspace/src/services/agents/dependency-manager/src/future/privacy_framework.py",
+        "line": 31,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+      },
+      {
+        "file": "workspace/src/enterprise/integrations/providers.py",
+        "line": 35,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "PERSONAL_TOKEN = \"personal_token\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "\n    GITHUB_APP = \"github_app\"\n    OAUTH_APP = \"oauth_app\"\n    PERSONAL_TOKEN = \"personal_token\"\n    GITLAB_INTEGRATION = \"gitlab_integration\"\n    BITBUCKET_APP = \"bitbucket_app\"\n"
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 32,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded password",
+        "code": "DATABASE_PASSWORD = \"database_password\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\"\n    SIGNING_KEY = \"signing_key\"\n    DATABASE_PASSWORD = \"database_password\"\n    SERVICE_ACCOUNT = \"service_account\"\n    CUSTOM = \"custom\"\n"
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 26,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "WEBHOOK_SECRET = \"webhook_secret\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "class SecretType(Enum):\n    \"\"\"Types of secrets\"\"\"\n\n    WEBHOOK_SECRET = \"webhook_secret\"\n    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\""
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 27,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "PROVIDER_TOKEN = \"provider_token\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    \"\"\"Types of secrets\"\"\"\n\n    WEBHOOK_SECRET = \"webhook_secret\"\n    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\""
+      },
+      {
+        "file": "workspace/src/enterprise/execution/secrets.py",
+        "line": 30,
+        "severity": "critical",
+        "category": "Secrets Management",
+        "issue": "Hardcoded secret/token",
+        "code": "OAUTH_CLIENT_SECRET = \"oauth_client_secret\"",
+        "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+        "context": "    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\"\n    SIGNING_KEY = \"signing_key\"\n    DATABASE_PASSWORD = \"database_password\"\n    SERVICE_ACCOUNT = \"service_account\""
+      }
+    ],
+    "Cryptographic": [
+      {
+        "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/ai/agents/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/src/ai/agents/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/core/training_system/example_library.py",
+        "line": 378,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "import hashlib\n\ndef hash_password_weak(password: str) -> str:\n    return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\n# \u554f\u984c 3\uff1a\u6c92\u6709\u52a0\u9e7d\ndef hash_password_no_salt(password: str) -> str:"
+      },
+      {
+        "file": "workspace/src/core/training_system/knowledge_base.py",
+        "line": 425,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n# \u274c \u4f7f\u7528\u5f31\u54c8\u5e0c\nimport hashlib\nhashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\"\"\",\n            priority=\"critical\",\n            tags=[\"password\", \"authentication\", \"hashing\"],"
+      },
+      {
+        "file": "workspace/src/core/island_ai_runtime/knowledge_engine.py",
+        "line": 306,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return hashlib.md5(path.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    @staticmethod\n    def _generate_id(path: str) -> str:\n        \"\"\"\u751f\u6210\u7bc0\u9ede ID\"\"\"\n        return hashlib.md5(path.encode()).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/example_library.py",
+        "line": 376,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "import hashlib\n\ndef hash_password_weak(password: str) -> str:\n    return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\n# \u554f\u984c 3\uff1a\u6c92\u6709\u52a0\u9e7d\ndef hash_password_no_salt(password: str) -> str:"
+      },
+      {
+        "file": "workspace/src/core/plugins/training_system/knowledge_base.py",
+        "line": 424,
+        "severity": "high",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n# \u274c \u4f7f\u7528\u5f31\u54c8\u5e0c\nimport hashlib\nhashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\"\"\",\n            priority=\"critical\",\n            tags=[\"password\", \"authentication\", \"hashing\"],"
+      },
+      {
+        "file": "workspace/src/services/agents/dependency-manager/src/enterprise/security.py",
+        "line": 296,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+      },
+      {
+        "file": "workspace/src/services/agents/dependency-manager/src/enterprise/security.py",
+        "line": 687,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "actual = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+      },
+      {
+        "file": "workspace/src/frontend/ui/services/code_analyzer.py",
+        "line": 196,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _get_cache_key(self, code: str, file_path: str) -> str:\n        \"\"\"\u751f\u6210\u7de9\u5b58\u9375\"\"\"\n        content = f\"{code}:{file_path}\"\n        return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"\n\n    async def analyze(\n        self, code: str, file_path: str, strategy: AnalysisStrategy = AnalysisStrategy.STANDARD"
+      },
+      {
+        "file": "workspace/src/apps/web-backend/services/code_analyzer.py",
+        "line": 195,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _get_cache_key(self, code: str, file_path: str) -> str:\n        \"\"\"\u751f\u6210\u7de9\u5b58\u9375\"\"\"\n        content = f\"{code}:{file_path}\"\n        return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"\n\n    async def analyze(\n        self, code: str, file_path: str, strategy: AnalysisStrategy = AnalysisStrategy.STANDARD"
+      },
+      {
+        "file": "workspace/tools/find_duplicate_scripts.py",
+        "line": 65,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hasher = hashlib.md5()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n    def _hash_file(self, file_path: Path) -> str:\n        \"\"\"\u8a08\u7b97\u6587\u4ef6\u7684\u54c8\u5e0c\u503c\"\"\"\n        hasher = hashlib.md5()\n        with open(file_path, \"rb\") as f:\n            hasher.update(f.read())\n        return hasher.hexdigest()"
+      },
+      {
+        "file": "workspace/tools/autonomous_cleanup_toolkit.py",
+        "line": 205,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "md5_hash = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "\n                try:\n                    content = file_path.read_bytes()\n                    md5_hash = hashlib.md5(content).hexdigest()\n                    hash_map[md5_hash].append(str(file_path.relative_to(self.repo_path)))\n                except Exception as e:\n                    self.logger.warning(f\"Error reading {file_path}: {e}\")"
+      },
+      {
+        "file": "workspace/tools/cleanup_duplicates.py",
+        "line": 81,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "empty_init_hash = hashlib.md5(b\"\").hexdigest()  # \u7a7a\u6587\u4ef6\u54c8\u5e0c",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        \"\"\"\u6e05\u7406\u7a7a\u7684 __init__.py \u6587\u4ef6\u91cd\u8907\"\"\"\n        print(\"\\n3\ufe0f\u20e3  \u6e05\u7406\u7a7a __init__.py \u91cd\u8907...\")\n\n        empty_init_hash = hashlib.md5(b\"\").hexdigest()  # \u7a7a\u6587\u4ef6\u54c8\u5e0c\n        init_files = list(self.repo_root.rglob(\"__init__.py\"))\n\n        # \u6309\u76ee\u9304\u5206\u7d44"
+      },
+      {
+        "file": "workspace/tools/cleanup_duplicates.py",
+        "line": 104,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "hasher = hashlib.md5()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "    def _hash_file(self, file_path: Path) -> str:\n        \"\"\"\u8a08\u7b97\u6587\u4ef6\u54c8\u5e0c\"\"\"\n        try:\n            hasher = hashlib.md5()\n            with open(file_path, \"rb\") as f:\n                hasher.update(f.read())\n            return hasher.hexdigest()"
+      },
+      {
+        "file": "workspace/tools/automation/engines/integration_automation_engine.py",
+        "line": 151,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "file_hash = hashlib.md5(content).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        for file in self._target_path.rglob(\"*\"):\n            if file.is_file():\n                content = file.read_bytes()\n                file_hash = hashlib.md5(content).hexdigest()\n                if file_hash in hashes:\n                    duplicates.append((str(file), hashes[file_hash]))\n                else:"
+      },
+      {
+        "file": "workspace/tools/refactor/process_legacy_scratch.py",
+        "line": 809,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "file_hash = hashlib.md5(content.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        content = filepath.read_text(encoding=\"utf-8\", errors=\"ignore\")\n\n        # \u8a08\u7b97\u54c8\u5e0c\n        file_hash = hashlib.md5(content.encode()).hexdigest()\n\n        # \u8a5e\u5f59\u6383\u63cf\n        print(\"   \u8a5e\u5f59\u6383\u63cf...\")"
+      },
+      {
+        "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+        "line": 137,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "policy_hash = hashlib.md5(b\"axiom-naming-v9\").hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        \"\"\"\n        # In production, load from governance-manifest.yaml\n        # For now, generate deterministic vector from policy hash\n        policy_hash = hashlib.md5(b\"axiom-naming-v9\").hexdigest()\n\n        # Convert hash to vector\n        vector = np.array([int(c, 16) for c in policy_hash], dtype=float)"
+      },
+      {
+        "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+        "line": 218,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "namespace_hash = hashlib.md5(namespace.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        Generate 8192-dimensional semantic vector for namespace\n        \"\"\"\n        # Create deterministic vector from namespace string\n        namespace_hash = hashlib.md5(namespace.encode()).hexdigest()\n\n        # Convert to vector\n        vector = np.array([int(c, 16) for c in namespace_hash], dtype=float)"
+      },
+      {
+        "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+        "line": 749,
+        "severity": "medium",
+        "category": "Cryptographic",
+        "issue": "MD5 hash usage detected",
+        "code": "text_hash = hashlib.md5(text.encode()).hexdigest()",
+        "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+        "context": "        # In production, use proper embedding model (e.g., sentence-transformers)\n        # For now, generate deterministic vector from hash\n\n        text_hash = hashlib.md5(text.encode()).hexdigest()\n        vector = np.array([int(c, 16) for c in text_hash], dtype=float)\n\n        # Expand to 8192 dimensions"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "file": "code_quality_analyzer.py",
+      "line": 159,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "(r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    def check_security(self, file_path, content, lines):\n        \"\"\"Check for security issues\"\"\"\n        security_patterns = [\n            (r\"eval\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 eval() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"exec\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 exec() \u53ef\u80fd\u5c0e\u81f4\u4ee3\u78bc\u6ce8\u5165\u6f0f\u6d1e\"),\n            (r\"pickle\\.(loads|load)\\s*\\(\", \"\u9ad8\u5371\uff1a\u4f7f\u7528 pickle \u53ef\u80fd\u5c0e\u81f4\u53cd\u5e8f\u5217\u5316\u6f0f\u6d1e\"),\n            (r\"md5\\s*\\(\", \"\u4e2d\u5371\uff1aMD5 \u4e0d\u662f\u5b89\u5168\u7684\u54c8\u5e0c\u7b97\u6cd5\"),"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 7,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "- 77 security vulnerabilities (MD5, eval())",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "\nThis script addresses the remaining 866 low-severity issues:\n- 772 import order violations\n- 77 security vulnerabilities (MD5, eval())\n- 72 code smells (hardcoded URLs)\n- 22 missing docstrings\n\"\"\""
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 161,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Replace unsafe eval() with safer alternatives.\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            return False\n\n    def fix_eval_usage(self, file_path: Path) -> bool:\n        \"\"\"Replace unsafe eval() with safer alternatives.\"\"\"\n        try:\n            with open(file_path, 'r', encoding='utf-8') as f:\n                content = f.read()"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 166,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if 'eval(' not in content:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            with open(file_path, 'r', encoding='utf-8') as f:\n                content = f.read()\n\n            if 'eval(' not in content:\n                return False\n\n            # Note: eval() replacement is complex and context-dependent"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 173,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if 'eval(' in content:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            # This is a basic implementation - manual review recommended\n            # We'll add a warning comment instead of automatic replacement\n            \n            if 'eval(' in content:\n                # Add security warning comment\n                warning = '# TODO: Security - Consider replacing eval() with safer alternatives like ast.literal_eval()\\n'\n                lines = content.split('\\n')"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 181,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if 'eval(' in line and '# TODO: Security' not in line:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                # Find eval() lines and add warning\n                modified_lines = []\n                for line in lines:\n                    if 'eval(' in line and '# TODO: Security' not in line:\n                        # Insert warning before the line\n                        indent = len(line) - len(line.lstrip())\n                        modified_lines.append(' ' * indent + warning.rstrip())"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 310,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "print(\"  \u26a0\ufe0f  eval() usage marked for review\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                    print(\"  \u2705 MD5 replaced with SHA256\")\n                if results['eval_fixed']:\n                    summary['eval_fixed'] += 1\n                    print(\"  \u26a0\ufe0f  eval() usage marked for review\")\n\n                summary['total_fixes'] += results['total_fixes']\n"
+    },
+    {
+      "file": "fix_remaining_issues.py",
+      "line": 344,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "print(f\"eval() reviews: {summary['eval_fixed']}\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    print(f\"Hardcoded URL fixes: {summary['hardcoded_urls_fixed']}\")\n    print(f\"Docstrings added: {summary['docstrings_added']}\")\n    print(f\"MD5 replacements: {summary['md5_fixed']}\")\n    print(f\"eval() reviews: {summary['eval_fixed']}\")\n    print(f\"Total fixes applied: {summary['total_fixes']}\")\n    print(f\"Errors encountered: {summary['errors']}\")\n    print(\"=\" * 60)"
+    },
+    {
+      "file": "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+      "line": 367,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "return eval(condition, {\"__builtins__\": {}}, context)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        try:\n            # For now, support simple comparisons\n            # In production, use a safe expression evaluator\n            return eval(condition, {\"__builtins__\": {}}, context)\n        except Exception as e:\n            self.logger.warning(f\"Condition evaluation failed: {e}\")\n            return False"
+    },
+    {
+      "file": "ns-root/namespaces-adk/adk/security/a2a_auth.py",
+      "line": 25,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "SHARED_SECRET = \"shared_secret\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "class A2AAuthMethod(Enum):\n    \"\"\"Agent-to-agent authentication methods.\"\"\"\n\n    SHARED_SECRET = \"shared_secret\"\n    PUBLIC_KEY = \"public_key\"\n    MUTUAL_TLS = \"mutual_tls\"\n    CHALLENGE_RESPONSE = \"challenge_response\""
+    },
+    {
+      "file": "ns-root/namespaces-adk/adk/security/auth.py",
+      "line": 22,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "PASSWORD = \"password\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "class AuthMethod(Enum):\n    \"\"\"Authentication methods.\"\"\"\n\n    PASSWORD = \"password\"\n    TOKEN = \"token\"\n    OAUTH2 = \"oauth2\"\n    API_KEY = \"api_key\""
+    },
+    {
+      "file": "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+      "line": 102,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        self.xss_patterns = [\n            (r\"innerHTML\\s*=\\s*\", \"xss\", \"Potential XSS vulnerability via innerHTML\"),\n            (r\"document\\.write\\s*\\(\", \"xss\", \"Potential XSS vulnerability via document.write\"),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+      "line": 333,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+      "line": 42,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\""
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+      "line": 45,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "db_password = \"admin123\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\"\n\n    # Performance issue: nested loops\n    data = []"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+      "line": 218,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"    result = eval(user_input)\",",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 129,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 231,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 233,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+      "line": 290,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)  # Security issue!",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/enterprise/security.py",
+      "line": 296,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/enterprise/security.py",
+      "line": 687,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "actual = hashlib.md5(content).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/services/dependency-manager/src/future/privacy_framework.py",
+      "line": 31,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/enterprise/security.py",
+      "line": 296,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/enterprise/security.py",
+      "line": 687,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "actual = hashlib.md5(content).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+    },
+    {
+      "file": "workspace/teams/holy-grail/agents/ai-experts/dependency-manager/src/future/privacy_framework.py",
+      "line": 33,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+    },
+    {
+      "file": "workspace/src/ai/agents/dependency-manager/src/enterprise/security.py",
+      "line": 296,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+    },
+    {
+      "file": "workspace/src/ai/agents/dependency-manager/src/enterprise/security.py",
+      "line": 687,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "actual = hashlib.md5(content).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+    },
+    {
+      "file": "workspace/src/ai/agents/dependency-manager/src/future/privacy_framework.py",
+      "line": 33,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+    },
+    {
+      "file": "workspace/src/automation/architect/core/analysis/security_scanner.py",
+      "line": 102,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "(r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        self.xss_patterns = [\n            (r\"innerHTML\\s*=\\s*\", \"xss\", \"Potential XSS vulnerability via innerHTML\"),\n            (r\"document\\.write\\s*\\(\", \"xss\", \"Potential XSS vulnerability via document.write\"),\n            (r\"eval\\s*\\(\", \"eval-usage\", \"Use of eval() can lead to code injection\"),\n        ]\n\n        # \u4e0d\u5b89\u5168\u7684\u52a0\u5bc6"
+    },
+    {
+      "file": "workspace/src/core/run-debug/cli.py",
+      "line": 385,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "def eval(expression):",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "\n@debug.command()\n@click.argument(\"expression\")\ndef eval(expression):\n    \"\"\"\u8a55\u4f30\u8868\u9054\u5f0f\"\"\"\n    cli = DebugCLI()\n    asyncio.run(cli.evaluate_expression(expression))"
+    },
+    {
+      "file": "workspace/src/core/training_system/example_library.py",
+      "line": 378,
+      "severity": "high",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "import hashlib\n\ndef hash_password_weak(password: str) -> str:\n    return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\n# \u554f\u984c 3\uff1a\u6c92\u6709\u52a0\u9e7d\ndef hash_password_no_salt(password: str) -> str:"
+    },
+    {
+      "file": "workspace/src/core/training_system/example_library.py",
+      "line": 292,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "AND password = '{password}'",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    query = f\\\"\\\"\\\"\n    SELECT * FROM users\n    WHERE username = '{username}'\n    AND password = '{password}'\n    \\\"\\\"\\\"\n    return db.execute(query)\n"
+    },
+    {
+      "file": "workspace/src/core/training_system/example_library.py",
+      "line": 299,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "# \u653b\u64ca\u8005\u53ef\u4ee5\u7e5e\u904e\u767b\u9304\uff1a\n# username: admin' --\n# password: anything\n# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'\n\"\"\",\n            good_code=\"\"\"\n# \u2705 \u4f7f\u7528\u53c3\u6578\u5316\u67e5\u8a62"
+    },
+    {
+      "file": "workspace/src/core/training_system/knowledge_base.py",
+      "line": 425,
+      "severity": "high",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "hashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "\n# \u274c \u4f7f\u7528\u5f31\u54c8\u5e0c\nimport hashlib\nhashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\"\"\",\n            priority=\"critical\",\n            tags=[\"password\", \"authentication\", \"hashing\"],"
+    },
+    {
+      "file": "workspace/src/core/training_system/skills_training.py",
+      "line": 575,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "                    \"question\": \"\"\"\n\u4fee\u5fa9\u9019\u6bb5\u4ee3\u78bc\u7684\u5b89\u5168\u6f0f\u6d1e\uff1a\ndef login(email, password):\n    query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"\n    user = db.execute(query)\n    return user\n\"\"\","
+    },
+    {
+      "file": "workspace/src/core/island_ai_runtime/knowledge_engine.py",
+      "line": 306,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return hashlib.md5(path.encode()).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    @staticmethod\n    def _generate_id(path: str) -> str:\n        \"\"\"\u751f\u6210\u7bc0\u9ede ID\"\"\"\n        return hashlib.md5(path.encode()).hexdigest()\n"
+    },
+    {
+      "file": "workspace/src/core/virtual_experts/domain_experts.py",
+      "line": 505,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                    }\n                )\n\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+    },
+    {
+      "file": "workspace/src/core/plugins/training_system/example_library.py",
+      "line": 376,
+      "severity": "high",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "import hashlib\n\ndef hash_password_weak(password: str) -> str:\n    return hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\n# \u554f\u984c 3\uff1a\u6c92\u6709\u52a0\u9e7d\ndef hash_password_no_salt(password: str) -> str:"
+    },
+    {
+      "file": "workspace/src/core/plugins/training_system/example_library.py",
+      "line": 290,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "AND password = '{password}'",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    query = f\\\"\\\"\\\"\n    SELECT * FROM users\n    WHERE username = '{username}'\n    AND password = '{password}'\n    \\\"\\\"\\\"\n    return db.execute(query)\n"
+    },
+    {
+      "file": "workspace/src/core/plugins/training_system/example_library.py",
+      "line": 297,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "# \u653b\u64ca\u8005\u53ef\u4ee5\u7e5e\u904e\u767b\u9304\uff1a\n# username: admin' --\n# password: anything\n# \u7d50\u679c: SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'\n\"\"\",\n            good_code=\"\"\"\n# \u2705 \u4f7f\u7528\u53c3\u6578\u5316\u67e5\u8a62"
+    },
+    {
+      "file": "workspace/src/core/plugins/training_system/knowledge_base.py",
+      "line": 424,
+      "severity": "high",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "hashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "\n# \u274c \u4f7f\u7528\u5f31\u54c8\u5e0c\nimport hashlib\nhashed = hashlib.md5(password.encode()).hexdigest()  # MD5 \u592a\u5f31\u4e86\uff01\n\"\"\",\n            priority=\"critical\",\n            tags=[\"password\", \"authentication\", \"hashing\"],"
+    },
+    {
+      "file": "workspace/src/core/plugins/training_system/skills_training.py",
+      "line": 575,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "                    \"question\": \"\"\"\n\u4fee\u5fa9\u9019\u6bb5\u4ee3\u78bc\u7684\u5b89\u5168\u6f0f\u6d1e\uff1a\ndef login(email, password):\n    query = f\"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'\"\n    user = db.execute(query)\n    return user\n\"\"\","
+    },
+    {
+      "file": "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+      "line": 500,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code_lower or \"exec(\" in code_lower:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                    }\n                )\n\n        if \"eval(\" in code_lower or \"exec(\" in code_lower:\n            issues.append(\n                {\n                    \"severity\": \"critical\","
+    },
+    {
+      "file": "workspace/src/autonomous/agents/pipeline_service.py",
+      "line": 333,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    test_code = \"\"\"\ndef unsafe_function(user_input):\n    # Security issue: eval\n    result = eval(user_input)\n\n    # Performance issue: nested loops\n    for i in range(100):"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/examples/demo.py",
+      "line": 42,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    problematic_code = \"\"\"\ndef process_user_data(user_input, password):\n    # Security issue: using eval\n    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\""
+    },
+    {
+      "file": "workspace/src/autonomous/agents/examples/demo.py",
+      "line": 45,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "db_password = \"admin123\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    result = eval(user_input)\n\n    # Security issue: hardcoded password\n    db_password = \"admin123\"\n\n    # Performance issue: nested loops\n    data = []"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/test-vectors/generator.py",
+      "line": 218,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"    result = eval(user_input)\",",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "            \"    # Multiple security issues for comprehensive testing\",\n            \"    \",\n            \"    # Issue 1: Eval injection\",\n            \"    result = eval(user_input)\",\n            \"    \",\n            \"    # Issue 2: Hardcoded credential\",\n            '    db_password = \"PLACEHOLDER_TEST_ONLY\"',"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 129,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        issues = []\n\n        # Basic security pattern detection\n        if \"eval(\" in code or \"exec(\" in code:\n            issues.append(\n                {\n                    \"type\": \"security\","
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 231,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "if \"eval(\" in code or \"exec(\" in code:",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        fixed_code = code\n\n        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 233,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        if issue[\"type\"] == \"security\":\n            if \"eval(\" in code or \"exec(\" in code:\n                # Remove dangerous code execution\n                fixed_code = code.replace(\"eval(\", \"# REMOVED_eval(\")\n                fixed_code = fixed_code.replace(\"exec(\", \"# REMOVED_exec(\")\n                logger.info(\"Applied security fix: removed eval/exec\")\n"
+    },
+    {
+      "file": "workspace/src/autonomous/agents/agents/task_executor.py",
+      "line": 290,
+      "severity": "medium",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "result = eval(user_input)  # Security issue!",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "    # Example: Analyze potentially unsafe code\n    test_code = \"\"\"\ndef process_data(user_input):\n    result = eval(user_input)  # Security issue!\n    password = \"hardcoded123\"   # Security issue!\n\n    for i in range(len(data)):"
+    },
+    {
+      "file": "workspace/src/services/agents/dependency-manager/src/enterprise/security.py",
+      "line": 296,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _generate_serial(self) -> str:\n        \"\"\"\u751f\u6210\u5e8f\u5217\u865f\"\"\"\n        timestamp = datetime.now().isoformat()\n        return f\"urn:uuid:{hashlib.md5(timestamp.encode()).hexdigest()}\"\n\n    def _get_spec_version(self, sbom_format: SBOMFormat) -> str:\n        \"\"\"\u53d6\u5f97\u898f\u7bc4\u7248\u672c\"\"\""
+    },
+    {
+      "file": "workspace/src/services/agents/dependency-manager/src/enterprise/security.py",
+      "line": 687,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "actual = hashlib.md5(content).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        elif algorithm == \"sha512\":\n            actual = hashlib.sha512(content).hexdigest()\n        elif algorithm == \"md5\":\n            actual = hashlib.md5(content).hexdigest()\n        else:\n            actual = hashlib.sha256(content).hexdigest()\n"
+    },
+    {
+      "file": "workspace/src/services/agents/dependency-manager/src/future/privacy_framework.py",
+      "line": 31,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    INTERNAL = \"internal\"  # \u5167\u90e8\n    CONFIDENTIAL = \"confidential\"  # \u6a5f\u5bc6\n    RESTRICTED = \"restricted\"  # \u53d7\u9650\n    TOP_SECRET = \"top_secret\"  # \u7d55\u5bc6\n\n\nclass ConsentType(Enum):"
+    },
+    {
+      "file": "workspace/src/enterprise/integrations/providers.py",
+      "line": 35,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "PERSONAL_TOKEN = \"personal_token\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "\n    GITHUB_APP = \"github_app\"\n    OAUTH_APP = \"oauth_app\"\n    PERSONAL_TOKEN = \"personal_token\"\n    GITLAB_INTEGRATION = \"gitlab_integration\"\n    BITBUCKET_APP = \"bitbucket_app\"\n"
+    },
+    {
+      "file": "workspace/src/enterprise/execution/secrets.py",
+      "line": 32,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded password",
+      "code": "DATABASE_PASSWORD = \"database_password\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\"\n    SIGNING_KEY = \"signing_key\"\n    DATABASE_PASSWORD = \"database_password\"\n    SERVICE_ACCOUNT = \"service_account\"\n    CUSTOM = \"custom\"\n"
+    },
+    {
+      "file": "workspace/src/enterprise/execution/secrets.py",
+      "line": 26,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "WEBHOOK_SECRET = \"webhook_secret\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "class SecretType(Enum):\n    \"\"\"Types of secrets\"\"\"\n\n    WEBHOOK_SECRET = \"webhook_secret\"\n    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\""
+    },
+    {
+      "file": "workspace/src/enterprise/execution/secrets.py",
+      "line": 27,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "PROVIDER_TOKEN = \"provider_token\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    \"\"\"Types of secrets\"\"\"\n\n    WEBHOOK_SECRET = \"webhook_secret\"\n    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\""
+    },
+    {
+      "file": "workspace/src/enterprise/execution/secrets.py",
+      "line": 30,
+      "severity": "critical",
+      "category": "Secrets Management",
+      "issue": "Hardcoded secret/token",
+      "code": "OAUTH_CLIENT_SECRET = \"oauth_client_secret\"",
+      "recommendation": "Move to environment variables or secret management system. Never commit secrets to version control.",
+      "context": "    PROVIDER_TOKEN = \"provider_token\"\n    API_KEY = \"api_key\"\n    ENCRYPTION_KEY = \"encryption_key\"\n    OAUTH_CLIENT_SECRET = \"oauth_client_secret\"\n    SIGNING_KEY = \"signing_key\"\n    DATABASE_PASSWORD = \"database_password\"\n    SERVICE_ACCOUNT = \"service_account\""
+    },
+    {
+      "file": "workspace/src/frontend/ui/services/code_analyzer.py",
+      "line": 196,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _get_cache_key(self, code: str, file_path: str) -> str:\n        \"\"\"\u751f\u6210\u7de9\u5b58\u9375\"\"\"\n        content = f\"{code}:{file_path}\"\n        return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"\n\n    async def analyze(\n        self, code: str, file_path: str, strategy: AnalysisStrategy = AnalysisStrategy.STANDARD"
+    },
+    {
+      "file": "workspace/src/apps/web-backend/services/code_analyzer.py",
+      "line": 195,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _get_cache_key(self, code: str, file_path: str) -> str:\n        \"\"\"\u751f\u6210\u7de9\u5b58\u9375\"\"\"\n        content = f\"{code}:{file_path}\"\n        return f\"analysis:{hashlib.md5(content.encode()).hexdigest()}\"\n\n    async def analyze(\n        self, code: str, file_path: str, strategy: AnalysisStrategy = AnalysisStrategy.STANDARD"
+    },
+    {
+      "file": "workspace/tools/find_duplicate_scripts.py",
+      "line": 65,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "hasher = hashlib.md5()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "\n    def _hash_file(self, file_path: Path) -> str:\n        \"\"\"\u8a08\u7b97\u6587\u4ef6\u7684\u54c8\u5e0c\u503c\"\"\"\n        hasher = hashlib.md5()\n        with open(file_path, \"rb\") as f:\n            hasher.update(f.read())\n        return hasher.hexdigest()"
+    },
+    {
+      "file": "workspace/tools/autonomous_cleanup_toolkit.py",
+      "line": 205,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "md5_hash = hashlib.md5(content).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "\n                try:\n                    content = file_path.read_bytes()\n                    md5_hash = hashlib.md5(content).hexdigest()\n                    hash_map[md5_hash].append(str(file_path.relative_to(self.repo_path)))\n                except Exception as e:\n                    self.logger.warning(f\"Error reading {file_path}: {e}\")"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 6,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "analyzing MD5 usage, eval() usage, and other security concerns.",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "Security Audit Tool\n\nThis script performs a comprehensive security audit of the codebase,\nanalyzing MD5 usage, eval() usage, and other security concerns.\n\"\"\"\n\nimport ast"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 120,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "\"\"\"Check for eval() usage.\"\"\"",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "        return findings\n    \n    def check_eval_usage(self, file_path: Path) -> List[SecurityFinding]:\n        \"\"\"Check for eval() usage.\"\"\"\n        findings = []\n        \n        try:"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 157,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "issue='eval() function usage detected',",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                    line_number=line_num,\n                    severity=severity,\n                    category='Code Injection',\n                    issue='eval() function usage detected',\n                    code_snippet=code_snippet,\n                    recommendation='Avoid eval() as it can execute arbitrary code. '\n                                 'Consider using ast.literal_eval() for parsing literals, '"
+    },
+    {
+      "file": "workspace/tools/security_audit.py",
+      "line": 159,
+      "severity": "high",
+      "category": "Code Injection",
+      "issue": "eval() function usage detected",
+      "code": "recommendation='Avoid eval() as it can execute arbitrary code. '",
+      "recommendation": "Avoid eval() as it can execute arbitrary code. Consider using ast.literal_eval() for parsing literals, or implement a proper parser for your use case.",
+      "context": "                    category='Code Injection',\n                    issue='eval() function usage detected',\n                    code_snippet=code_snippet,\n                    recommendation='Avoid eval() as it can execute arbitrary code. '\n                                 'Consider using ast.literal_eval() for parsing literals, '\n                                 'or implement a proper parser for your use case.',\n                    context=context"
+    },
+    {
+      "file": "workspace/tools/cleanup_duplicates.py",
+      "line": 81,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "empty_init_hash = hashlib.md5(b\"\").hexdigest()  # \u7a7a\u6587\u4ef6\u54c8\u5e0c",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        \"\"\"\u6e05\u7406\u7a7a\u7684 __init__.py \u6587\u4ef6\u91cd\u8907\"\"\"\n        print(\"\\n3\ufe0f\u20e3  \u6e05\u7406\u7a7a __init__.py \u91cd\u8907...\")\n\n        empty_init_hash = hashlib.md5(b\"\").hexdigest()  # \u7a7a\u6587\u4ef6\u54c8\u5e0c\n        init_files = list(self.repo_root.rglob(\"__init__.py\"))\n\n        # \u6309\u76ee\u9304\u5206\u7d44"
+    },
+    {
+      "file": "workspace/tools/cleanup_duplicates.py",
+      "line": 104,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "hasher = hashlib.md5()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "    def _hash_file(self, file_path: Path) -> str:\n        \"\"\"\u8a08\u7b97\u6587\u4ef6\u54c8\u5e0c\"\"\"\n        try:\n            hasher = hashlib.md5()\n            with open(file_path, \"rb\") as f:\n                hasher.update(f.read())\n            return hasher.hexdigest()"
+    },
+    {
+      "file": "workspace/tools/automation/engines/integration_automation_engine.py",
+      "line": 151,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "file_hash = hashlib.md5(content).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        for file in self._target_path.rglob(\"*\"):\n            if file.is_file():\n                content = file.read_bytes()\n                file_hash = hashlib.md5(content).hexdigest()\n                if file_hash in hashes:\n                    duplicates.append((str(file), hashes[file_hash]))\n                else:"
+    },
+    {
+      "file": "workspace/tools/refactor/process_legacy_scratch.py",
+      "line": 809,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "file_hash = hashlib.md5(content.encode()).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        content = filepath.read_text(encoding=\"utf-8\", errors=\"ignore\")\n\n        # \u8a08\u7b97\u54c8\u5e0c\n        file_hash = hashlib.md5(content.encode()).hexdigest()\n\n        # \u8a5e\u5f59\u6383\u63cf\n        print(\"   \u8a5e\u5f59\u6383\u63cf...\")"
+    },
+    {
+      "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+      "line": 137,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "policy_hash = hashlib.md5(b\"axiom-naming-v9\").hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        \"\"\"\n        # In production, load from governance-manifest.yaml\n        # For now, generate deterministic vector from policy hash\n        policy_hash = hashlib.md5(b\"axiom-naming-v9\").hexdigest()\n\n        # Convert hash to vector\n        vector = np.array([int(c, 16) for c in policy_hash], dtype=float)"
+    },
+    {
+      "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+      "line": 218,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "namespace_hash = hashlib.md5(namespace.encode()).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        Generate 8192-dimensional semantic vector for namespace\n        \"\"\"\n        # Create deterministic vector from namespace string\n        namespace_hash = hashlib.md5(namespace.encode()).hexdigest()\n\n        # Convert to vector\n        vector = np.array([int(c, 16) for c in namespace_hash], dtype=float)"
+    },
+    {
+      "file": "workspace/tools/quantum-alignment-engine/src/core/transformer.py",
+      "line": 749,
+      "severity": "medium",
+      "category": "Cryptographic",
+      "issue": "MD5 hash usage detected",
+      "code": "text_hash = hashlib.md5(text.encode()).hexdigest()",
+      "recommendation": "Replace with SHA256 for security-sensitive operations. MD5 is considered cryptographically broken.",
+      "context": "        # In production, use proper embedding model (e.g., sentence-transformers)\n        # For now, generate deterministic vector from hash\n\n        text_hash = hashlib.md5(text.encode()).hexdigest()\n        vector = np.array([int(c, 16) for c in text_hash], dtype=float)\n\n        # Expand to 8192 dimensions"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+name: 🏛️ GL Compliance Issue
+description: Report a GL governance compliance issue
+title: "[GL Compliance]: "
+labels: ["gl:compliance", "status:triage", "priority:high"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🏛️ GL Compliance Issue
+        Report issues related to GL (Governance Layer) compliance, charter violations, or audit findings.
+        
+        **GL Unified Charter Activated** - Compliance issues are treated with high priority.
+
+  - type: dropdown
+    id: compliance-type
+    attributes:
+      label: Compliance Type
+      description: What type of compliance issue is this?
+      options:
+        - Missing GL Markers (@gl-governed)
+        - Invalid GL Manifest
+        - Charter Violation
+        - Layer Assignment Error
+        - Gate Failure
+        - Audit Finding
+        - Documentation Gap
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: gl-layer
+    attributes:
+      label: Affected GL Layer
+      description: Which GL layer is affected?
+      options:
+        - L0-Foundation
+        - L1-Core
+        - L2-Engine
+        - L3-Application
+        - L4-Integration
+        - Multiple Layers
+        - Unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Compliance Severity
+      description: How severe is this compliance issue?
+      options:
+        - Critical - Blocks deployment/release
+        - High - Must fix before next release
+        - Medium - Should fix soon
+        - Low - Minor compliance gap
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe the compliance issue in detail
+      placeholder: |
+        Clearly describe the compliance issue, including:
+        - What rule/requirement is being violated
+        - Where the violation occurs
+        - Impact of the violation
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-files
+    attributes:
+      label: Affected Files/Modules
+      description: List the files or modules affected
+      placeholder: |
+        - engine/loader/index.ts
+        - engine/parser/schema.ts
+        - etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Provide evidence of the compliance issue
+      placeholder: |
+        Include relevant code snippets, error messages, or audit logs.
+      render: shell
+
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Suggested Remediation
+      description: How should this issue be fixed?
+      placeholder: |
+        Describe the steps needed to fix this compliance issue.
+
+  - type: dropdown
+    id: gate-affected
+    attributes:
+      label: Gate Affected
+      description: Which governance gate is affected?
+      options:
+        - Semantic Gate
+        - Compliance Gate
+        - Quality Gate
+        - Security Gate
+        - Performance Gate
+        - Multiple Gates
+        - None/Unknown
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Compliance Checklist
+      description: Check all that apply
+      options:
+        - label: This issue was found during automated scanning
+          required: false
+        - label: This issue was found during manual review
+          required: false
+        - label: This issue blocks CI/CD pipeline
+          required: false
+        - label: This issue affects production
+          required: false

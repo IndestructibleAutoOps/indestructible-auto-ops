@@ -1,0 +1,13 @@
+# Root Policy Manifest
+# GL-Layer: GL06 (Root Policy)
+# Closure-Signal: manifest
+
+metadata:
+  name: root-policy
+  version: "1.0.0"
+  layer: "GL06"
+
+components:
+  - naming-convention
+  - binary-authorization
+  - admission-control

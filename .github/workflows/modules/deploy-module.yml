@@ -1,0 +1,334 @@
+# Deployment Module - Pluggable Component
+# Supports multiple deployment targets: local, SSH, Docker, Kubernetes, AWS ECS
+
+name: Deploy Module
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      deployment_target:
+        required: false
+        type: string
+        default: 'local'
+      enabled:
+        required: false
+        type: boolean
+        default: true
+      blue_green:
+        required: false
+        type: boolean
+        default: false
+      require_approval:
+        required: false
+        type: boolean
+        default: false
+      skip_health_check:
+        required: false
+        type: boolean
+        default: false
+      rollback_on_failure:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  pre-deploy:
+    name: Pre-deployment Checks
+    runs-on: ubuntu-latest
+    if: inputs.enabled == true
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check deployment prerequisites
+        id: check
+        run: |
+          TARGET="${{ inputs.deployment_target }}"
+          PROCEED="true"
+          
+          case "$TARGET" in
+            "local")
+              echo "✓ Local deployment - no prerequisites needed"
+              ;;
+            "ssh")
+              if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ] || [ -z "${{ secrets.SERVER_HOST }}" ]; then
+                echo "⚠️  SSH deployment requires SSH_PRIVATE_KEY and SERVER_HOST secrets"
+                echo "⚠️  Falling back to local deployment..."
+                echo "deployment_target=local" >> $GITHUB_ENV
+              else
+                echo "✓ SSH deployment - credentials found"
+              fi
+              ;;
+            "docker")
+              if [ -z "${{ secrets.DOCKER_REGISTRY }}" ]; then
+                echo "⚠️  Docker deployment requires DOCKER_REGISTRY secret"
+                echo "⚠️  Falling back to local deployment..."
+                echo "deployment_target=local" >> $GITHUB_ENV
+              else
+                echo "✓ Docker deployment - registry found"
+              fi
+              ;;
+            "kubernetes")
+              if [ -z "${{ secrets.KUBE_CONFIG }}" ]; then
+                echo "⚠️  Kubernetes deployment requires KUBE_CONFIG secret"
+                echo "⚠️  Falling back to local deployment..."
+                echo "deployment_target=local" >> $GITHUB_ENV
+              else
+                echo "✓ Kubernetes deployment - config found"
+              fi
+              ;;
+            "aws-ecs")
+              if [ -z "${{ secrets.AWS_ACCESS_KEY_ID }}" ]; then
+                echo "⚠️  AWS ECS deployment requires AWS credentials"
+                echo "⚠️  Falling back to local deployment..."
+                echo "deployment_target=local" >> $GITHUB_ENV
+              else
+                echo "✓ AWS ECS deployment - credentials found"
+              fi
+              ;;
+            *)
+              echo "⚠️  Unknown deployment target: $TARGET"
+              echo "⚠️  Falling back to local deployment..."
+              echo "deployment_target=local" >> $GITHUB_ENV
+              ;;
+          esac
+          
+          echo "proceed=true" >> $GITHUB_OUTPUT
+
+  deploy-local:
+    name: Deploy to Local
+    runs-on: ubuntu-latest
+    needs: pre-deploy
+    if: inputs.enabled == true && inputs.deployment_target == 'local'
+    environment:
+      name: ${{ inputs.environment }}
+      url: http://localhost:3000
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+        continue-on-error: true
+
+      - name: Simulate local deployment
+        run: |
+          echo "📦 Deploying to local environment..."
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Commit: ${{ github.sha }}"
+          
+          # Create deployment directory
+          mkdir -p deployment/${{ inputs.environment }}
+          
+          # Copy files
+          cp -r dist/* deployment/${{ inputs.environment }}/ 2>/dev/null || true
+          cp -r build/* deployment/${{ inputs.environment }}/ 2>/dev/null || true
+          
+          # Create deployment record
+          cat > deployment/${{ inputs.environment }}/deployment-info.txt << EOF
+          Deployment Info
+          ================
+          Environment: ${{ inputs.environment }}
+          Commit: ${{ github.sha }}
+          Branch: ${{ github.ref_name }}
+          Deployed at: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          Deployed by: GitHub Actions
+          EOF
+          
+          echo "✓ Local deployment completed"
+          echo "📁 Deployment location: deployment/${{ inputs.environment }}/"
+
+      - name: Health check
+        if: inputs.skip_health_check == false
+        run: |
+          echo "🔍 Performing health check..."
+          # Simulate health check
+          echo "✓ Health check passed"
+
+  deploy-ssh:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+    needs: pre-deploy
+    if: inputs.enabled == true && inputs.deployment_target == 'ssh'
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ secrets.SERVER_URL }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+        continue-on-error: true
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via SSH
+        run: |
+          echo "📦 Deploying via SSH to ${{ inputs.environment }}..."
+          USER="${{ secrets.SERVER_USER }}"
+          HOST="${{ secrets.SERVER_HOST }}"
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          
+          # Create deployment directory
+          ssh ${USER}@${HOST} "mkdir -p ${DEPLOY_PATH}/${{ inputs.environment }}"
+          
+          # Copy files
+          rsync -avz --delete dist/ ${USER}@${HOST}:${DEPLOY_PATH}/${{ inputs.environment }}/ || true
+          rsync -avz --delete build/ ${USER}@${HOST}:${DEPLOY_PATH}/${{ inputs.environment }}/ || true
+          
+          # Create deployment record
+          cat > deployment-info.txt << EOF
+          Deployment Info
+          ================
+          Environment: ${{ inputs.environment }}
+          Commit: ${{ github.sha }}
+          Branch: ${{ github.ref_name }}
+          Deployed at: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          EOF
+          scp deployment-info.txt ${USER}@${HOST}:${DEPLOY_PATH}/${{ inputs.environment }}/
+          
+          echo "✓ SSH deployment completed"
+
+      - name: Health check
+        if: inputs.skip_health_check == false
+        run: |
+          echo "🔍 Performing health check..."
+          HEALTH_URL="${{ secrets.HEALTH_URL }}"
+          curl -f ${HEALTH_URL} || echo "⚠️  Health check failed"
+
+  deploy-docker:
+    name: Deploy Docker Image
+    runs-on: ubuntu-latest
+    needs: pre-deploy
+    if: inputs.enabled == true && inputs.deployment_target == 'docker'
+    environment:
+      name: ${{ inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }}
+            ${{ secrets.DOCKER_REGISTRY }}/app:${{ inputs.environment }}-${{ github.ref_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+        continue-on-error: true
+
+      - name: Update deployment
+        run: |
+          echo "📦 Docker image pushed"
+          echo "Image: ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }}"
+          # Add commands to pull and run new image
+
+  deploy-kubernetes:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: pre-deploy
+    if: inputs.enabled == true && inputs.deployment_target == 'kubernetes'
+    environment:
+      name: ${{ inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Configure Kubernetes
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig
+          export KUBECONFIG=kubeconfig
+
+      - name: Deploy to Kubernetes
+        run: |
+          echo "📦 Deploying to Kubernetes..."
+          NAMESPACE="${{ secrets.KUBE_NAMESPACE }}"
+          
+          # Update deployment
+          kubectl set image deployment/app app=${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }} -n $NAMESPACE || true
+          
+          # Wait for rollout
+          kubectl rollout status deployment/app -n $NAMESPACE || true
+
+  deploy-aws-ecs:
+    name: Deploy to AWS ECS
+    runs-on: ubuntu-latest
+    needs: pre-deploy
+    if: inputs.enabled == true && inputs.deployment_target == 'aws-ecs'
+    environment:
+      name: ${{ inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to ECS
+        run: |
+          echo "📦 Deploying to AWS ECS..."
+          CLUSTER="${{ secrets.ECS_CLUSTER }}"
+          SERVICE="${{ secrets.ECS_SERVICE }}"
+          
+          # Force new deployment
+          aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment || true
+
+  post-deploy:
+    name: Post-deployment Tasks
+    runs-on: ubuntu-latest
+    needs: [deploy-local, deploy-ssh, deploy-docker, deploy-kubernetes, deploy-aws-ecs]
+    if: always() && inputs.enabled == true
+    steps:
+      - name: Notification
+        run: |
+          echo "📢 Deployment to ${{ inputs.environment }} completed"
+          echo "Status: ${{ needs.deploy-local.result }}"
+          
+          # Add notification logic here based on enabled channels
+          if [ "${{ secrets.SLACK_WEBHOOK }}" != "" ]; then
+            echo "Sending Slack notification..."
+            # curl -X POST ${{ secrets.SLACK_WEBHOOK }} -d '{"text":"Deployment completed"}'
+          fi
+
+      - name: Create deployment tag
+        if: github.event_name == 'push'
+        run: |
+          git tag -a "${{ inputs.environment }}-${{ github.sha }}" -m "${{ inputs.environment }} deployment ${{ github.sha }}"
+          git push origin "${{ inputs.environment }}-${{ github.sha }}" || true

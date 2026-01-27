@@ -1,0 +1,234 @@
+name: 🏛️ GL Compliance Issue Generator
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Weekly on Monday at 6 AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ============================================
+  # Scan for GL compliance issues
+  # ============================================
+  compliance-scan:
+    name: GL Compliance Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Scan for missing GL markers
+        id: markers
+        run: |
+          set -euo pipefail
+          echo "Scanning for missing @gl-governed markers..."
+
+          # Find TypeScript files missing GL markers
+          MISSING_MARKERS=$(find engine -name "*.ts" ! -name "*.d.ts" ! -name "*.test.ts" ! -path "*/node_modules/*" -exec grep -L "@gl-governed" {} \; 2>/dev/null || true)
+
+          # Count missing
+          if [ -n "$MISSING_MARKERS" ]; then
+            COUNT=$(echo "$MISSING_MARKERS" | wc -l)
+            echo "missing_count=$COUNT" >> "$GITHUB_OUTPUT"
+            echo "missing_files<<EOF" >> "$GITHUB_OUTPUT"
+            echo "$MISSING_MARKERS" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          else
+            echo "missing_count=0" >> "$GITHUB_OUTPUT"
+            echo "missing_files=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Scan for missing GL manifests
+        id: manifests
+        run: |
+          echo "Scanning for missing .gl-manifest.yaml files..."
+
+          # Find directories that should have manifests
+          MISSING_MANIFESTS=""
+          for dir in engine/*/; do
+            if [ -d "$dir" ] && [ ! -f "${dir}.gl-manifest.yaml" ]; then
+              # Skip node_modules and common non-module directories
+              dirname=$(basename "$dir")
+              if [[ "$dirname" != "node_modules" && "$dirname" != "dist" && "$dirname" != "coverage" ]]; then
+                MISSING_MANIFESTS="$MISSING_MANIFESTS$dir\n"
+              fi
+            fi
+          done
+
+          if [ -n "$MISSING_MANIFESTS" ]; then
+            COUNT=$(echo -e "$MISSING_MANIFESTS" | grep -c . || echo 0)
+            echo "missing_count=$COUNT" >> $GITHUB_OUTPUT
+            echo "missing_dirs<<EOF" >> $GITHUB_OUTPUT
+            echo -e "$MISSING_MANIFESTS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "missing_count=0" >> $GITHUB_OUTPUT
+            echo "missing_dirs=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Scan for invalid version formats
+        id: versions
+        run: |
+          echo "Scanning for invalid version formats..."
+
+          # Find files with invalid @version tags
+          INVALID_VERSIONS=$(grep -rn "@version" engine --include="*.ts" | grep -v "node_modules" | grep -vE "@version\s+[0-9]+\.[0-9]+\.[0-9]+" || true)
+
+          if [ -n "$INVALID_VERSIONS" ]; then
+            COUNT=$(echo "$INVALID_VERSIONS" | wc -l)
+            echo "invalid_count=$COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "invalid_count=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create compliance issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Helper function to parse count outputs
+            const parseCount = (raw) => Number.parseInt((raw ?? '').toString().trim(), 10) || 0;
+
+            const missingMarkersCount = parseCount(${{ toJSON(steps.markers.outputs.missing_count) }});
+            const missingManifestsCount = parseCount(${{ toJSON(steps.manifests.outputs.missing_count) }});
+            const invalidVersionsCount = parseCount(${{ toJSON(steps.versions.outputs.invalid_count) }});
+
+            const missingFilesRaw = ${{ toJSON(steps.markers.outputs.missing_files) }};
+            const missingDirsRaw = ${{ toJSON(steps.manifests.outputs.missing_dirs) }};
+
+            const missingFiles = (missingFilesRaw ?? '').toString().trim();
+            const missingDirs = (missingDirsRaw ?? '').toString().trim();
+
+            const totalIssues = missingMarkersCount + missingManifestsCount + invalidVersionsCount;
+
+            if (totalIssues === 0) {
+              console.log('✅ No GL compliance issues found');
+              return;
+            }
+
+            // Check for existing compliance issue
+            // Search for issues with gl:compliance label (they may or may not have 'automated')
+            const existingIssues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                labels: 'gl:compliance',
+                per_page: 100
+              }
+            );
+
+            const existingComplianceIssue = existingIssues.find(i =>
+              i.title.includes('GL Compliance Scan Report') &&
+              i.labels.some(l => l.name === 'automated')
+            );
+
+            // Build issue body using array join for consistency
+            const bodyLines = [
+              '## 🏛️ GL Compliance Scan Report',
+              '',
+              `**Scan Date**: ${new Date().toISOString().split('T')[0]}`,
+              '**GL Unified Charter Activated**',
+              '',
+              '---',
+              '',
+              '### 📊 Summary',
+              '',
+              '| Check | Issues Found | Status |',
+              '|-------|--------------|--------|',
+              `| Missing @gl-governed markers | ${missingMarkersCount} | ${missingMarkersCount > 0 ? '❌ Failed' : '✅ Passed'} |`,
+              `| Missing .gl-manifest.yaml | ${missingManifestsCount} | ${missingManifestsCount > 0 ? '❌ Failed' : '✅ Passed'} |`,
+              `| Invalid version formats | ${invalidVersionsCount} | ${invalidVersionsCount > 0 ? '⚠️ Warning' : '✅ Passed'} |`,
+              `| **Total Issues** | **${totalIssues}** | ${totalIssues > 0 ? '🔴 Action Required' : '🟢 Compliant'} |`,
+              '',
+              '---',
+              ''
+            ];
+
+            if (missingMarkersCount > 0) {
+              bodyLines.push(
+                '### ❌ Missing @gl-governed Markers',
+                '',
+                'The following files are missing the required `@gl-governed` JSDoc marker:',
+                '',
+                '```',
+                missingFiles,
+                '```',
+                '',
+                '**Remediation**: Add the following to each file:',
+                '```typescript',
+                '/**',
+                ' * @gl-governed',
+                ' * @gl-layer L2-Engine',
+                ' * @version 1.0.0',
+                ` * @since ${new Date().toISOString().split('T')[0]}`,
+                ' * ',
+                ' * GL Unified Charter Activated',
+                ' */',
+                '```',
+                '',
+                '---',
+                ''
+              );
+            }
+
+            if (missingManifestsCount > 0) {
+              bodyLines.push(
+                '### ❌ Missing .gl-manifest.yaml Files',
+                '',
+                'The following directories are missing GL manifest files:',
+                '',
+                '```',
+                missingDirs,
+                '```',
+                '',
+                '**Remediation**: Create a `.gl-manifest.yaml` file in each directory.',
+                '',
+                '---',
+                ''
+              );
+            }
+
+            bodyLines.push(
+              '### 🎯 Action Items',
+              '',
+              '- [ ] Fix all missing @gl-governed markers',
+              '- [ ] Create missing .gl-manifest.yaml files',
+              '- [ ] Validate version formats',
+              '- [ ] Run compliance check locally: `npm run gl:check`',
+              '',
+              '---',
+              '',
+              '*This issue is automatically generated by the GL Compliance Scanner.*',
+              `*Last scan: ${new Date().toISOString()}*`
+            );
+
+            const body = bodyLines.join('\n');
+
+            if (existingComplianceIssue) {
+              // Update existing issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingComplianceIssue.number,
+                body: body
+              });
+              console.log(`Updated compliance issue #${existingComplianceIssue.number}`);
+            } else {
+              // Create new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🏛️ GL Compliance Scan Report - Action Required',
+                body: body,
+                labels: ['gl:compliance', 'automated', 'priority:high']
+              });
+              console.log('Created new compliance issue');
+            }

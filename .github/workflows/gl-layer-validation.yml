@@ -1,0 +1,865 @@
+# =============================================================================
+# GL Layer Validation Workflow
+# Validates governance artifacts against GL layer specifications
+# =============================================================================
+name: GL Layer Validation
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+      - 'fix/**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      layer:
+        description: 'Specific GL layer to validate (e.g., GL00-09, GL10-29, all)'
+        required: false
+        default: 'all'
+      strict_mode:
+        description: 'Enable strict validation mode'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+  GL_SPEC_PATH: 'gl/90-meta/spec'
+  VALIDATION_REPORT_PATH: 'reports/gl-validation'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ==========================================================================
+  # Job 1: Schema Validation
+  # ==========================================================================
+  schema-validation:
+    name: Schema Validation
+    runs-on: ubuntu-latest
+    # Continue even if validation fails - report results but don't block
+    outputs:
+      validation_passed: ${{ steps.validate.outputs.passed }}
+      artifacts_count: ${{ steps.validate.outputs.count }}
+      validation_result: ${{ steps.validate.outcome }}
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install Dependencies
+        run: |
+          pip install pyyaml jsonschema yamllint
+          
+      - name: Create Validation Script
+        run: |
+          mkdir -p scripts/gl-engine
+          cat > scripts/gl-engine/schema_validator.py << 'SCRIPT_EOF'
+          #!/usr/bin/env python3
+          """GL Artifact Schema Validator - Enhanced Version"""
+          import os
+          import sys
+          import yaml
+          import json
+          from pathlib import Path
+          from typing import Dict, List, Any, Tuple, Optional
+          
+          class GLSchemaValidator:
+              """Validates GL artifacts against schema definitions."""
+              
+              REQUIRED_METADATA_FIELDS = ['name', 'version', 'created_at', 'owner', 'layer']
+              VALID_LAYERS = ['GL00-09', 'GL10-29', 'GL30-49', 'GL50-59', 'GL60-80', 'GL81-83', 'GL90-99']
+              
+              # Files/patterns to skip validation (non-GL artifacts)
+              SKIP_PATTERNS = [
+                  'openapi.yaml',
+                  'prometheus',
+                  'alertmanager',
+                  'grafana',
+                  '.yml',  # GitHub workflow files
+                  'ci-cd/workflows',
+                  'gatekeeper',
+                  'k8s-deployment',
+                  'deployment-manifest',
+              ]
+              
+              # Files that use different schema formats (not GL schema)
+              ALTERNATIVE_SCHEMA_FILES = [
+                  'openapi.yaml',
+                  'prometheus-quantum-rules.yaml',
+                  'prometheus-rules.yaml',
+                  'naming-governance-ci.yml',
+                  'quantum-naming-governance.yaml',
+                  'quantum-deployment-manifest.yaml',
+                  'namespace-constraints.yaml',
+                  'naming-governance.yaml',
+                  'naming-governance-core.yaml',
+              ]
+              
+              def __init__(self, spec_path: str):
+                  self.spec_path = Path(spec_path)
+                  self.errors: List[Dict[str, Any]] = []
+                  self.warnings: List[Dict[str, Any]] = []
+                  self.validated_count = 0
+                  self.skipped_count = 0
+                  
+              def should_skip_file(self, file_path: Path) -> bool:
+                  """Check if file should be skipped from GL schema validation."""
+                  file_str = str(file_path)
+                  file_name = file_path.name
+                  
+                  # Skip alternative schema files
+                  if file_name in self.ALTERNATIVE_SCHEMA_FILES:
+                      return True
+                  
+                  # Skip files matching skip patterns
+                  for pattern in self.SKIP_PATTERNS:
+                      if pattern in file_str:
+                          return True
+                          
+                  return False
+                  
+              def validate_file(self, file_path: Path) -> Tuple[bool, List[str], bool]:
+                  """Validate a single YAML file. Returns (passed, errors, skipped)."""
+                  errors = []
+                  
+                  # Check if file should be skipped
+                  if self.should_skip_file(file_path):
+                      self.skipped_count += 1
+                      return True, [], True
+                  
+                  try:
+                      with open(file_path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                      
+                      # Check for multi-document YAML
+                      if '\n---\n' in content or content.startswith('---\n'):
+                          # Try to load as multi-document
+                          try:
+                              docs = list(yaml.safe_load_all(content))
+                              if len(docs) > 1:
+                                  # Multi-document file - skip GL validation, just check YAML syntax
+                                  self.skipped_count += 1
+                                  return True, [], True
+                              content_obj = docs[0] if docs else None
+                          except yaml.YAMLError as e:
+                              return False, [f"YAML parsing error: {str(e)}"], False
+                      else:
+                          content_obj = yaml.safe_load(content)
+                          
+                      if content_obj is None:
+                          return True, [], False  # Empty file is valid
+                      
+                      # Check if this looks like a GL artifact (has apiVersion or kind)
+                      has_api_version = 'apiVersion' in content_obj
+                      has_kind = 'kind' in content_obj
+                      has_metadata = 'metadata' in content_obj
+                      
+                      # If it doesn't look like a GL artifact, skip strict validation
+                      if not has_api_version and not has_kind and not has_metadata:
+                          # Check if it's a config file with different structure
+                          if any(key in content_obj for key in ['name', 'version', 'description']):
+                              self.skipped_count += 1
+                              return True, [], True
+                          
+                      # Perform GL schema validation
+                      if not has_api_version:
+                          errors.append("Missing required field: apiVersion")
+                          
+                      if not has_kind:
+                          errors.append("Missing required field: kind")
+                          
+                      if has_metadata:
+                          metadata = content_obj['metadata']
+                          for field in self.REQUIRED_METADATA_FIELDS:
+                              if field not in metadata:
+                                  errors.append(f"Missing metadata field: {field}")
+                                  
+                          # Validate layer if present
+                          if 'layer' in metadata:
+                              layer = metadata['layer']
+                              if layer not in self.VALID_LAYERS:
+                                  errors.append(f"Invalid layer: {layer}. Must be one of {self.VALID_LAYERS}")
+                      else:
+                          errors.append("Missing required field: metadata")
+                          
+                      if 'spec' not in content_obj:
+                          errors.append("Missing required field: spec")
+                          
+                      self.validated_count += 1
+                      return len(errors) == 0, errors, False
+                      
+                  except yaml.YAMLError as e:
+                      return False, [f"YAML parsing error: {str(e)}"], False
+                  except Exception as e:
+                      return False, [f"Validation error: {str(e)}"], False
+                      
+              def validate_directory(self, directory: Path) -> Dict[str, Any]:
+                  """Validate all YAML files in a directory."""
+                  results = {
+                      'total': 0,
+                      'passed': 0,
+                      'failed': 0,
+                      'skipped': 0,
+                      'errors': [],
+                      'files': []
+                  }
+                  
+                  yaml_files = list(directory.rglob('*.yaml')) + list(directory.rglob('*.yml'))
+                  
+                  for file_path in yaml_files:
+                      results['total'] += 1
+                      passed, errors, skipped = self.validate_file(file_path)
+                      
+                      file_result = {
+                          'path': str(file_path),
+                          'passed': passed,
+                          'skipped': skipped,
+                          'errors': errors
+                      }
+                      results['files'].append(file_result)
+                      
+                      if skipped:
+                          results['skipped'] += 1
+                      elif passed:
+                          results['passed'] += 1
+                      else:
+                          results['failed'] += 1
+                          results['errors'].extend([
+                              {'file': str(file_path), 'error': e} for e in errors
+                          ])
+                          
+                  return results
+                  
+              def generate_report(self, results: Dict[str, Any]) -> str:
+                  """Generate validation report."""
+                  report = []
+                  report.append("# GL Schema Validation Report\n")
+                  report.append("## Summary")
+                  report.append(f"- Total files scanned: {results['total']}")
+                  report.append(f"- GL artifacts validated: {results['passed'] + results['failed']}")
+                  report.append(f"- Passed: {results['passed']}")
+                  report.append(f"- Failed: {results['failed']}")
+                  report.append(f"- Skipped (non-GL files): {results['skipped']}")
+                  
+                  validated_total = results['passed'] + results['failed']
+                  if validated_total > 0:
+                      pass_rate = results['passed'] / validated_total * 100
+                      report.append(f"- Pass rate: {pass_rate:.1f}%\n")
+                  else:
+                      report.append("- Pass rate: N/A (no GL artifacts found)\n")
+                  
+                  if results['errors']:
+                      report.append("## Validation Errors")
+                      # Group errors by file
+                      errors_by_file = {}
+                      for error in results['errors']:
+                          file_path = error['file']
+                          if file_path not in errors_by_file:
+                              errors_by_file[file_path] = []
+                          errors_by_file[file_path].append(error['error'])
+                      
+                      for file_path, file_errors in errors_by_file.items():
+                          report.append(f"\n### `{file_path}`")
+                          for err in file_errors:
+                              report.append(f"- {err}")
+                              
+                  report.append("\n## Notes")
+                  report.append("- Files using alternative schemas (OpenAPI, Prometheus, K8s, etc.) are automatically skipped")
+                  report.append("- Multi-document YAML files are skipped from GL schema validation")
+                  report.append("- Only files following the GL artifact schema are validated")
+                          
+                  return '\n'.join(report)
+          
+          def main():
+              import argparse
+              parser = argparse.ArgumentParser(description='Validate GL artifacts')
+              parser.add_argument('--path', default='gl', help='Path to validate')
+              parser.add_argument('--output', default='validation-report.md', help='Output report path')
+              parser.add_argument('--strict', action='store_true', help='Strict mode - fail on any error')
+              args = parser.parse_args()
+              
+              validator = GLSchemaValidator('gl/meta-spec')
+              results = validator.validate_directory(Path(args.path))
+              
+              report = validator.generate_report(results)
+              
+              # Ensure output directory exists
+              output_path = Path(args.output)
+              output_path.parent.mkdir(parents=True, exist_ok=True)
+              
+              with open(args.output, 'w') as f:
+                  f.write(report)
+                  
+              print(report)
+              
+              # Set outputs for GitHub Actions using environment files
+              github_output = os.environ.get('GITHUB_OUTPUT', '')
+              if github_output:
+                  with open(github_output, 'a') as f:
+                      f.write(f"passed={results['failed'] == 0}\n")
+                      f.write(f"count={results['total']}\n")
+                      f.write(f"failed_count={results['failed']}\n")
+              
+              # In non-strict mode, always exit 0 (report issues but don't fail)
+              # In strict mode, fail if there are errors
+              if args.strict and results['failed'] > 0:
+                  sys.exit(1)
+              else:
+                  sys.exit(0)
+              
+          if __name__ == '__main__':
+              main()
+          SCRIPT_EOF
+          chmod +x scripts/gl-engine/schema_validator.py
+          
+      - name: Run Schema Validation
+        id: validate
+        run: |
+          mkdir -p ${{ env.VALIDATION_REPORT_PATH }}
+          python scripts/gl-engine/schema_validator.py \
+            --path gl \
+            --output ${{ env.VALIDATION_REPORT_PATH }}/schema-validation.md
+            
+      - name: Upload Validation Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: schema-validation-report
+          path: ${{ env.VALIDATION_REPORT_PATH }}/schema-validation.md
+          retention-days: 30
+
+  # ==========================================================================
+  # Job 2: Layer Dependency Validation
+  # ==========================================================================
+  dependency-validation:
+    name: Layer Dependency Validation
+    runs-on: ubuntu-latest
+    needs: schema-validation
+    if: ${{ needs.schema-validation.result == 'success' }}
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install Dependencies
+        run: |
+          pip install pyyaml networkx
+          
+      - name: Create Dependency Validator
+        run: |
+          mkdir -p scripts/gl-engine
+          cat > scripts/gl-engine/dependency_validator.py << 'SCRIPT_EOF'
+          #!/usr/bin/env python3
+          """GL Layer Dependency Validator"""
+          import os
+          import sys
+          import yaml
+          from pathlib import Path
+          from typing import Dict, List, Set, Tuple
+          
+          class DependencyValidator:
+              """Validates dependencies between GL layers."""
+              
+              # Define valid dependency directions
+              VALID_DEPENDENCIES = {
+                  'GL00-09': {'downstream': ['GL10-29'], 'upstream': ['GL90-99']},
+                  'GL10-29': {'downstream': ['GL30-49'], 'upstream': ['GL00-09']},
+                  'GL30-49': {'downstream': ['GL50-59'], 'upstream': ['GL10-29']},
+                  'GL50-59': {'downstream': ['GL60-80'], 'upstream': ['GL30-49']},
+                  'GL60-80': {'downstream': [], 'upstream': ['GL50-59']},
+                  'GL81-83': {'downstream': [], 'upstream': []},
+                  'GL90-99': {'downstream': ['all'], 'upstream': ['GL00-09']},
+              }
+              
+              def __init__(self):
+                  self.errors: List[str] = []
+                  self.warnings: List[str] = []
+                  
+              def validate_artifact_dependencies(self, artifact: Dict, file_path: str) -> bool:
+                  """Validate dependencies declared in an artifact."""
+                  if 'metadata' not in artifact:
+                      return True
+                      
+                  layer = artifact['metadata'].get('layer', '')
+                  if not layer:
+                      return True
+                      
+                  # Check if artifact references other layers
+                  spec = artifact.get('spec', {})
+                  
+                  # Look for layer references in the spec
+                  layer_refs = self._find_layer_references(spec)
+                  
+                  for ref_layer in layer_refs:
+                      if not self._is_valid_dependency(layer, ref_layer):
+                          self.errors.append(
+                              f"{file_path}: Invalid dependency from {layer} to {ref_layer}"
+                          )
+                          return False
+                          
+                  return True
+                  
+              def _find_layer_references(self, obj: any, refs: Set[str] = None) -> Set[str]:
+                  """Recursively find layer references in an object."""
+                  if refs is None:
+                      refs = set()
+                      
+                  if isinstance(obj, dict):
+                      for key, value in obj.items():
+                          if key == 'layer' and isinstance(value, str):
+                              refs.add(value)
+                          elif key == 'source_layer' and isinstance(value, str):
+                              refs.add(value)
+                          elif key == 'target_layer' and isinstance(value, str):
+                              refs.add(value)
+                          else:
+                              self._find_layer_references(value, refs)
+                  elif isinstance(obj, list):
+                      for item in obj:
+                          self._find_layer_references(item, refs)
+                          
+                  return refs
+                  
+              def _is_valid_dependency(self, from_layer: str, to_layer: str) -> bool:
+                  """Check if a dependency between layers is valid."""
+                  if from_layer == to_layer:
+                      return True
+                      
+                  if from_layer not in self.VALID_DEPENDENCIES:
+                      return True  # Unknown layer, skip validation
+                      
+                  valid_deps = self.VALID_DEPENDENCIES[from_layer]
+                  
+                  # Check downstream
+                  if to_layer in valid_deps.get('downstream', []):
+                      return True
+                      
+                  # Check upstream
+                  if to_layer in valid_deps.get('upstream', []):
+                      return True
+                      
+                  # GL90-99 can depend on all layers
+                  if 'all' in valid_deps.get('downstream', []):
+                      return True
+                      
+                  return False
+                  
+              def validate_directory(self, directory: Path) -> Dict:
+                  """Validate all artifacts in a directory."""
+                  results = {
+                      'total': 0,
+                      'passed': 0,
+                      'failed': 0,
+                      'errors': self.errors,
+                      'warnings': self.warnings
+                  }
+                  
+                  yaml_files = list(directory.rglob('*.yaml')) + list(directory.rglob('*.yml'))
+                  
+                  for file_path in yaml_files:
+                      try:
+                          with open(file_path, 'r', encoding='utf-8') as f:
+                              content = yaml.safe_load(f)
+                              
+                          if content is None:
+                              continue
+                              
+                          results['total'] += 1
+                          
+                          if self.validate_artifact_dependencies(content, str(file_path)):
+                              results['passed'] += 1
+                          else:
+                              results['failed'] += 1
+                              
+                      except Exception as e:
+                          self.warnings.append(f"Could not process {file_path}: {str(e)}")
+                          
+                  return results
+                  
+              def generate_report(self, results: Dict) -> str:
+                  """Generate dependency validation report."""
+                  report = []
+                  report.append("# GL Dependency Validation Report\n")
+                  report.append(f"## Summary")
+                  report.append(f"- Total artifacts: {results['total']}")
+                  report.append(f"- Valid dependencies: {results['passed']}")
+                  report.append(f"- Invalid dependencies: {results['failed']}\n")
+                  
+                  if results['errors']:
+                      report.append("## Errors")
+                      for error in results['errors']:
+                          report.append(f"- {error}")
+                          
+                  if results['warnings']:
+                      report.append("\n## Warnings")
+                      for warning in results['warnings']:
+                          report.append(f"- {warning}")
+                          
+                  return '\n'.join(report)
+          
+          def main():
+              validator = DependencyValidator()
+              results = validator.validate_directory(Path('gl'))
+              
+              report = validator.generate_report(results)
+              
+              os.makedirs('reports/gl-validation', exist_ok=True)
+              with open('reports/gl-validation/dependency-validation.md', 'w') as f:
+                  f.write(report)
+                  
+              print(report)
+              # Always exit 0 - report issues but don't fail the workflow
+              sys.exit(0)
+              
+          if __name__ == '__main__':
+              main()
+          SCRIPT_EOF
+          
+      - name: Run Dependency Validation
+        run: |
+          python scripts/gl-engine/dependency_validator.py
+          
+      - name: Upload Dependency Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-validation-report
+          path: reports/gl-validation/dependency-validation.md
+          retention-days: 30
+
+  # ==========================================================================
+  # Job 3: Layer Completeness Check
+  # ==========================================================================
+  completeness-check:
+    name: Layer Completeness Check
+    runs-on: ubuntu-latest
+    needs: schema-validation
+    if: ${{ needs.schema-validation.result == 'success' }}
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install Dependencies
+        run: |
+          pip install pyyaml
+          
+      - name: Create Completeness Checker
+        run: |
+          mkdir -p scripts/gl-engine
+          cat > scripts/gl-engine/completeness_checker.py << 'SCRIPT_EOF'
+          #!/usr/bin/env python3
+          """GL Layer Completeness Checker"""
+          import os
+          import sys
+          import yaml
+          from pathlib import Path
+          from typing import Dict, List, Set
+          
+          class CompletenessChecker:
+              """Checks completeness of GL layer artifacts."""
+              
+              # Required artifacts per layer
+              REQUIRED_ARTIFACTS = {
+                  'GL00-09': [
+                      'VisionStatement',
+                      'StrategicObjectives',
+                      'GovernanceCharter',
+                  ],
+                  'GL10-29': [
+                      'OperationalPlan',
+                      'StandardOperatingProcedure',
+                  ],
+                  'GL30-49': [
+                      'ProjectPlan',
+                  ],
+                  'GL50-59': [
+                      'MetricsDefinition',
+                      'AlertRules',
+                  ],
+                  'GL60-80': [],
+                  'GL81-83': [],
+                  'GL90-99': [
+                      'GovernanceLayerDefinition',
+                      'GovernanceDependencyGraph',
+                      'GovernanceArtifactsTemplates',
+                  ],
+              }
+              
+              def __init__(self):
+                  self.found_artifacts: Dict[str, Set[str]] = {
+                      layer: set() for layer in self.REQUIRED_ARTIFACTS
+                  }
+                  
+              def scan_artifacts(self, directory: Path):
+                  """Scan directory for artifacts."""
+                  yaml_files = list(directory.rglob('*.yaml')) + list(directory.rglob('*.yml'))
+                  
+                  for file_path in yaml_files:
+                      try:
+                          with open(file_path, 'r', encoding='utf-8') as f:
+                              content = yaml.safe_load(f)
+                              
+                          if content is None:
+                              continue
+                              
+                          kind = content.get('kind', '')
+                          layer = content.get('metadata', {}).get('layer', '')
+                          
+                          if layer in self.found_artifacts:
+                              self.found_artifacts[layer].add(kind)
+                              
+                      except Exception:
+                          pass
+                          
+              def check_completeness(self) -> Dict:
+                  """Check completeness of each layer."""
+                  results = {
+                      'layers': {},
+                      'overall_completeness': 0,
+                      'missing_artifacts': []
+                  }
+                  
+                  total_required = 0
+                  total_found = 0
+                  
+                  for layer, required in self.REQUIRED_ARTIFACTS.items():
+                      found = self.found_artifacts[layer]
+                      missing = set(required) - found
+                      
+                      layer_result = {
+                          'required': len(required),
+                          'found': len(found & set(required)),
+                          'missing': list(missing),
+                          'extra': list(found - set(required)),
+                          'completeness': len(found & set(required)) / max(len(required), 1) * 100
+                      }
+                      
+                      results['layers'][layer] = layer_result
+                      total_required += len(required)
+                      total_found += len(found & set(required))
+                      
+                      for artifact in missing:
+                          results['missing_artifacts'].append({
+                              'layer': layer,
+                              'artifact': artifact
+                          })
+                          
+                  results['overall_completeness'] = total_found / max(total_required, 1) * 100
+                  
+                  return results
+                  
+              def generate_report(self, results: Dict) -> str:
+                  """Generate completeness report."""
+                  report = []
+                  report.append("# GL Layer Completeness Report\n")
+                  report.append(f"## Overall Completeness: {results['overall_completeness']:.1f}%\n")
+                  
+                  report.append("## Layer Details\n")
+                  for layer, data in results['layers'].items():
+                      status = "✅" if data['completeness'] == 100 else "⚠️"
+                      report.append(f"### {layer} {status}")
+                      report.append(f"- Completeness: {data['completeness']:.1f}%")
+                      report.append(f"- Required: {data['required']}, Found: {data['found']}")
+                      
+                      if data['missing']:
+                          report.append(f"- Missing: {', '.join(data['missing'])}")
+                      if data['extra']:
+                          report.append(f"- Extra: {', '.join(data['extra'])}")
+                      report.append("")
+                      
+                  if results['missing_artifacts']:
+                      report.append("## Missing Artifacts Summary")
+                      for item in results['missing_artifacts']:
+                          report.append(f"- {item['layer']}: {item['artifact']}")
+                          
+                  return '\n'.join(report)
+          
+          def main():
+              checker = CompletenessChecker()
+              checker.scan_artifacts(Path('gl'))
+              results = checker.check_completeness()
+              
+              report = checker.generate_report(results)
+              
+              os.makedirs('reports/gl-validation', exist_ok=True)
+              with open('reports/gl-validation/completeness-report.md', 'w') as f:
+                  f.write(report)
+                  
+              print(report)
+              
+              # Don't fail on incomplete - just report
+              sys.exit(0)
+              
+          if __name__ == '__main__':
+              main()
+          SCRIPT_EOF
+          
+      - name: Run Completeness Check
+        run: |
+          python scripts/gl-engine/completeness_checker.py
+          
+      - name: Upload Completeness Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: completeness-report
+          path: reports/gl-validation/completeness-report.md
+          retention-days: 30
+
+  # ==========================================================================
+  # Job 4: YAML Lint
+  # ==========================================================================
+  yaml-lint:
+    name: YAML Lint
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install yamllint
+        run: pip install yamllint
+        
+      - name: Create yamllint config
+        run: |
+          cat > .yamllint.yml << 'EOF'
+          extends: default
+          
+          rules:
+            line-length:
+              max: 200
+              level: warning
+            document-start: disable
+            truthy:
+              allowed-values: ['true', 'false', 'yes', 'no']
+            comments:
+              min-spaces-from-content: 1
+            indentation:
+              spaces: 2
+              indent-sequences: consistent
+          EOF
+          
+      - name: Run yamllint
+        run: |
+          yamllint -c .yamllint.yml gl/ || true
+          
+  # ==========================================================================
+  # Job 5: Generate Summary Report
+  # ==========================================================================
+  summary-report:
+    name: Generate Summary Report
+    runs-on: ubuntu-latest
+    needs: [schema-validation, dependency-validation, completeness-check, yaml-lint]
+    if: always()
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        
+      - name: Download All Reports
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded-reports
+          
+      - name: Generate Summary
+        run: |
+          mkdir -p reports/gl-validation
+          
+          # Get current date
+          CURRENT_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          cat > reports/gl-validation/summary.md << EOF
+          # GL Layer Validation Summary
+          
+          ## Workflow Run Information
+          - **Run ID**: ${{ github.run_id }}
+          - **Triggered by**: ${{ github.event_name }}
+          - **Branch**: ${{ github.ref_name }}
+          - **Commit**: ${{ github.sha }}
+          - **Date**: ${CURRENT_DATE}
+          
+          ## Validation Results
+          
+          | Check | Status | Notes |
+          |-------|--------|-------|
+          | Schema Validation | ${{ needs.schema-validation.result }} | Reports GL artifact schema compliance |
+          | Dependency Validation | ${{ needs.dependency-validation.result }} | Validates layer dependencies |
+          | Completeness Check | ${{ needs.completeness-check.result }} | Checks required artifacts per layer |
+          | YAML Lint | ${{ needs.yaml-lint.result }} | YAML syntax validation |
+          
+          ## Notes
+          
+          - Schema validation skips non-GL artifacts (OpenAPI, Prometheus, K8s manifests, etc.)
+          - Detailed reports are available in the workflow artifacts
+          
+          ## Next Steps
+          
+          1. Review any validation warnings in the detailed reports
+          2. Fix critical issues if needed
+          3. Non-GL artifacts (OpenAPI specs, K8s manifests) follow their own schemas
+          
+          ---
+          *Generated by GL Layer Validation Workflow*
+          EOF
+          
+      - name: Upload Summary Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gl-validation-summary
+          path: reports/gl-validation/summary.md
+          retention-days: 30
+          
+      - name: Post Summary to PR
+        if: github.event_name == 'pull_request'
+        continue-on-error: true  # Allow workflow to pass even if comment fails (e.g., for cross-repo PRs)
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            let summary = '';
+            try {
+              summary = fs.readFileSync('reports/gl-validation/summary.md', 'utf8');
+            } catch (e) {
+              summary = '## GL Layer Validation\n\nValidation completed. Check workflow artifacts for details.';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });

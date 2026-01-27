@@ -1,0 +1,244 @@
+name: Security Scanning
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sast-scan:
+    name: Static Application Security Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      # Using native CodeQL for SAST (GitHub official action)
+      - name: Initialize CodeQL for SAST
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript, python
+          queries: security-and-quality
+
+      # Note: Category is set to javascript-typescript only because CodeQL analyze
+      # action requires a single language category. Python analysis is performed
+      # separately in the codeql-analysis job below using matrix strategy.
+      - name: Perform CodeQL SAST Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:javascript-typescript"
+
+  dependency-scan:
+    name: Dependency Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Using npm audit (native tool) instead of third-party actions
+      - name: Run npm audit for vulnerabilities
+        run: |
+          if [ -f "package-lock.json" ] || [ -f "package.json" ]; then
+            npm audit --audit-level=high --json > npm-audit-results.json 2>&1 || true
+            echo "NPM audit completed"
+            cat npm-audit-results.json | head -100 || true
+          else
+            echo "No package.json found, skipping npm audit"
+          fi
+        continue-on-error: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Run pip-audit for Python dependencies
+        run: |
+          pip install pip-audit
+          if [ -f "requirements.txt" ]; then
+            pip-audit -r requirements.txt --format=json --output=pip-audit-results.json || true
+            echo "Pip audit completed"
+          else
+            echo "No requirements.txt found, skipping pip audit"
+          fi
+        continue-on-error: true
+
+  container-scan:
+    name: Container Image Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Check for Dockerfile
+        id: check-dockerfile
+        run: |
+          if [ -f "Dockerfile" ]; then
+            echo "dockerfile_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "dockerfile_exists=false" >> $GITHUB_OUTPUT
+            echo "No Dockerfile found, skipping container scan"
+          fi
+
+      - name: Build Docker image
+        if: steps.check-dockerfile.outputs.dockerfile_exists == 'true'
+        run: |
+          docker build -t test-image:${{ github.sha }} . || echo "Docker build failed"
+        continue-on-error: true
+
+      # Using docker's built-in scanning instead of third-party trivy-action
+      - name: Run Docker Scout vulnerability scanner
+        if: steps.check-dockerfile.outputs.dockerfile_exists == 'true'
+        run: |
+          # Check if image was built successfully
+          if docker image inspect test-image:${{ github.sha }} > /dev/null 2>&1; then
+            echo "Running security scan on container image..."
+
+            # Try Docker Scout (if available)
+            if docker scout version &> /dev/null 2>&1; then
+              echo "Using Docker Scout for vulnerability scanning..."
+              docker scout cves test-image:${{ github.sha }} --format sarif --output docker-scout-results.sarif 2>/dev/null || \
+              docker scout cves test-image:${{ github.sha }} || echo "Docker Scout scan failed"
+            # Try docker scan (legacy)
+            elif docker scan --help &> /dev/null 2>&1; then
+              echo "Using legacy docker scan..."
+              docker scan test-image:${{ github.sha }} --json > container-scan-results.json 2>/dev/null || echo "Docker scan failed"
+            else
+              echo "⚠️ No container scanning tools available. Consider:"
+              echo "  - Installing Docker Scout: curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh"
+              echo "  - Using Trivy: https://github.com/aquasecurity/trivy"
+            fi
+          else
+            echo "No image to scan"
+          fi
+        continue-on-error: true
+
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    strategy:
+      matrix:
+        language: ['javascript', 'python']
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:${{matrix.language}}"
+
+  secret-scan:
+    name: Secret Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      # Using native git grep for secret scanning instead of third-party actions
+      - name: Run native secret scanning
+        run: |
+          echo "Running basic secret pattern detection..."
+
+          # Define patterns to search for (using proper escaping)
+          PATTERNS=(
+            "password\\s*=\\s*['\"][^'\"]+['\"]"
+            "api[_-]?key\\s*=\\s*['\"][^'\"]+['\"]"
+            "secret\\s*=\\s*['\"][^'\"]+['\"]"
+            "token\\s*=\\s*['\"][^'\"]+['\"]"
+            "AWS_ACCESS_KEY_ID"
+            "AWS_SECRET_ACCESS_KEY"
+            "PRIVATE[_-]?KEY"
+          )
+
+          FOUND_SECRETS=0
+          for pattern in "${PATTERNS[@]}"; do
+            if grep -rniE "$pattern" \
+              --include="*.js" --include="*.ts" --include="*.py" \
+              --include="*.json" --include="*.yml" --include="*.yaml" --include="*.env*" \
+              --exclude="*.log" --exclude="*.db" \
+              --exclude-dir="node_modules" --exclude-dir=".git" \
+              --exclude-dir="dist" --exclude-dir="build" --exclude-dir="coverage" --exclude-dir=".next" \
+              . 2>/dev/null | head -5; then
+              echo "⚠️ Potential secret pattern found: $pattern"
+              FOUND_SECRETS=$((FOUND_SECRETS + 1))
+            fi
+          done
+
+          if [ $FOUND_SECRETS -eq 0 ]; then
+            echo "✅ No obvious secret patterns detected"
+          else
+            echo "⚠️ Found $FOUND_SECRETS potential secret patterns. Please review."
+          fi
+        continue-on-error: true
+
+  security-report:
+    name: Generate Security Report
+    runs-on: ubuntu-latest
+    needs: [sast-scan, dependency-scan, container-scan, codeql-analysis, secret-scan]
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Generate summary
+        run: |
+          echo "# Security Scan Report" > security-report.md
+          echo "" >> security-report.md
+          echo "## Workflow: ${{ github.workflow }}" >> security-report.md
+          echo "## Run: #${{ github.run_number }}" >> security-report.md
+          echo "## Commit: ${{ github.sha }}" >> security-report.md
+          echo "" >> security-report.md
+          echo "### Scan Results" >> security-report.md
+          echo "- SAST: ${{ needs.sast-scan.result }}" >> security-report.md
+          echo "- Dependency: ${{ needs.dependency-scan.result }}" >> security-report.md
+          echo "- Container: ${{ needs.container-scan.result }}" >> security-report.md
+          echo "- CodeQL: ${{ needs.codeql-analysis.result }}" >> security-report.md
+          echo "- Secrets: ${{ needs.secret-scan.result }}" >> security-report.md
+
+      - name: Upload security report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: security-report.md
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('security-report.md', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+        continue-on-error: true

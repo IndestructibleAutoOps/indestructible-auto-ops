@@ -1,0 +1,20 @@
+{
+  "stage": "AI_ANALYSIS",
+  "status": "failed",
+  "duration": 0.6930701732635498,
+  "details": {
+    "metrics": {
+      "total_files": 7428,
+      "total_lines": 2880201
+    },
+    "decision": "needs_review",
+    "confidence": 0.6402818555490312,
+    "risk_score": 70.0,
+    "conflicts": 750,
+    "recommendations": [
+      "Pattern confidence below threshold",
+      "Additional validation recommended",
+      "Review naming conventions"
+    ]
+  }
+}

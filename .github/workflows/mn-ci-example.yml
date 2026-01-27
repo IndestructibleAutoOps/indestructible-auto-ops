@@ -1,0 +1,259 @@
+# MachineNativeOps Official CI Pipeline Example
+# This workflow demonstrates the use of MN official actions
+# All actions are self-contained within the repository
+#
+# IMPORTANT: Bootstrap Requirement
+# The first checkout step in each job MUST use actions/checkout
+# (any supported version) to access local actions. This is a GitHub
+# Actions limitation - local actions cannot be used until the repository
+# is checked out. After the initial checkout, all subsequent steps can
+# use MN actions.
+
+name: 'MN CI Pipeline (Self-Contained)'
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: write
+  actions: read
+
+env:
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.11'  # Pinned to match repository standard (ci.yml, GL-security-pipeline.yml)
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ============================================
+  # Stage 1: Code Checkout and Setup
+  # ============================================
+  setup:
+    name: '📦 Setup & Validate'
+    runs-on: ubuntu-latest
+    outputs:
+      should-deploy: ${{ steps.check.outputs.should_deploy }}
+    steps:
+      # NOTE: First checkout MUST use actions/checkout to access local actions
+      # This is a bootstrap requirement - subsequent jobs can use mn-checkout
+      - name: Checkout Repository (Bootstrap)
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: ./.github/actions/mn-setup-node
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: ./.github/actions/mn-setup-python
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Check Deployment Conditions
+        id: check
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" && "${{ github.event_name }}" == "push" ]]; then
+            echo "should_deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_deploy=false" >> $GITHUB_OUTPUT
+          fi
+
+  # ============================================
+  # Stage 2: Code Quality
+  # ============================================
+  lint:
+    name: '🔍 Code Quality'
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      # Bootstrap checkout to access local actions
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Run Super Linter
+        uses: ./.github/actions/mn-super-linter
+        with:
+          validate-all-codebase: false
+          default-branch: main
+          validate-javascript: true
+          validate-python: true
+          validate-yaml: true
+          validate-json: true
+          validate-markdown: true
+          fail-on-error: false
+
+  # ============================================
+  # Stage 3: Security Scanning
+  # ============================================
+  security:
+    name: '🛡️ Security Scan'
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      # Bootstrap checkout to access local actions
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: CodeQL Analysis
+        uses: ./.github/actions/mn-codeql
+        with:
+          mode: full
+          languages: javascript,python
+          queries: security-extended
+          upload-sarif: true
+
+      - name: Trivy Vulnerability Scan
+        uses: ./.github/actions/mn-trivy-scan
+        with:
+          scan-type: fs
+          scan-ref: '.'
+          severity: HIGH,CRITICAL
+          scanners: vuln,secret
+          upload-sarif: true
+          exit-code: '0'
+
+      - name: Secret Scan
+        uses: ./.github/actions/mn-secret-scan
+        with:
+          scan-path: '.'
+          fail-on-secrets: false
+          upload-sarif: true
+
+  # ============================================
+  # Stage 4: Build
+  # ============================================
+  build:
+    name: '🔨 Build'
+    runs-on: ubuntu-latest
+    needs: [lint, security]
+    steps:
+      # Bootstrap checkout to access local actions
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: ./.github/actions/mn-setup-node
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build Project
+        run: npm run build --if-present
+
+      - name: Upload Build Artifacts
+        uses: ./.github/actions/mn-upload-artifact
+        with:
+          name: build-output
+          path: |
+            dist/
+            build/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  # ============================================
+  # Stage 5: Test
+  # ============================================
+  test:
+    name: '🧪 Test'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # Bootstrap checkout to access local actions
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: ./.github/actions/mn-setup-node
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Download Build Artifacts
+        uses: ./.github/actions/mn-download-artifact
+        with:
+          name: build-output
+          path: ./
+
+      - name: Run Tests
+        run: npm test --if-present
+
+      - name: Upload Test Results
+        if: always()
+        uses: ./.github/actions/mn-upload-artifact
+        with:
+          name: test-results
+          path: |
+            coverage/
+            test-results/
+          if-no-files-found: ignore
+
+  # ============================================
+  # Stage 6: Docker Build (Optional)
+  # ============================================
+  docker:
+    name: '🐳 Docker Build'
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push'
+    steps:
+      # Bootstrap checkout to access local actions
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Build Docker Image
+        uses: ./.github/actions/mn-docker-build
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          auto-tag: true
+          image-name: ghcr.io/${{ github.repository }}
+          tag-latest: true
+          tag-sha: true
+
+  # ============================================
+  # Stage 7: Notification
+  # ============================================
+  notify:
+    name: '📢 Notify'
+    runs-on: ubuntu-latest
+    needs: [build, test, security]
+    if: always()
+    steps:
+      - name: Determine Status
+        id: status
+        run: |
+          if [[ "${{ needs.build.result }}" == "success" && "${{ needs.test.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "message=✅ CI Pipeline completed successfully" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "message=❌ CI Pipeline failed" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Slack Notification
+        if: vars.SLACK_WEBHOOK_URL != ''
+        uses: ./.github/actions/mn-slack-notify
+        with:
+          webhook-url: ${{ vars.SLACK_WEBHOOK_URL }}
+          status: ${{ steps.status.outputs.status }}
+          title: 'CI Pipeline Result'
+          message: ${{ steps.status.outputs.message }}
+          include-job-info: true
+          include-commit-info: true

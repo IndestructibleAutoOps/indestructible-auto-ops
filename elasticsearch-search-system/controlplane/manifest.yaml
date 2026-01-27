@@ -1,0 +1,12 @@
+# Controlplane Manifest
+# GL-Layer: GL00-09 (Strategic)
+# Closure-Signal: manifest
+
+metadata:
+  name: controlplane-manifest
+  version: "1.0.0"
+  layer: "GL00-09"
+  description: "Controlplane manifest for search system"
+
+artifacts:
+  - policy.yaml

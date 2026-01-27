@@ -1,0 +1,246 @@
+# =============================================================================
+# Agent Memory & Cache Configuration
+# =============================================================================
+# This configuration file defines settings for the agent memory system,
+# including Redis backend, vector search, semantic cache, and compaction.
+#
+# GL Governance Markers
+# @gl-layer GL-00-NAMESPACE
+# @gl-module research/agent-memory-cache/config
+# @gl-semantic-anchor GL-00-CONFIG_MEMORY
+# @gl-evidence-required false
+# GL Unified Charter Activated
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Memory Backend Configuration
+# -----------------------------------------------------------------------------
+memory:
+  # Backend type: "in_memory", "redis", "vector"
+  backend: redis
+  
+  # Redis connection settings
+  redis:
+    host: ${REDIS_HOST:-localhost}
+    port: ${REDIS_PORT:-6379}
+    db: 0
+    password: ${REDIS_PASSWORD:-}
+    prefix: "agent:memory:"
+    
+    # Connection pool settings
+    pool:
+      max_connections: 50
+      timeout: 5
+      retry_on_timeout: true
+      
+    # Persistence settings
+    persistence:
+      enabled: true
+      aof_enabled: true
+      rdb_enabled: true
+
+# -----------------------------------------------------------------------------
+# Vector Search Configuration
+# -----------------------------------------------------------------------------
+vector:
+  # Embedding dimension (1536 for OpenAI, 768 for many open-source models)
+  dim: 1536
+  
+  # Embedding model settings
+  embedding:
+    provider: openai  # "openai", "huggingface", "local"
+    model: text-embedding-3-small
+    batch_size: 100
+    
+  # Vector index settings
+  index:
+    algorithm: FLAT  # "FLAT" or "HNSW"
+    distance_metric: COSINE  # "COSINE", "L2", "IP"
+    
+    # HNSW-specific settings (if algorithm is HNSW)
+    hnsw:
+      m: 16
+      ef_construction: 200
+      ef_runtime: 10
+
+# -----------------------------------------------------------------------------
+# Semantic Cache Configuration
+# -----------------------------------------------------------------------------
+cache:
+  enabled: true
+  
+  # Redis settings for cache (separate DB recommended)
+  redis:
+    db: 1
+    prefix: "agent:cache:"
+    
+  # Similarity settings
+  similarity:
+    threshold: 0.85  # Minimum similarity for cache hit
+    algorithm: cosine
+    
+  # TTL settings
+  ttl:
+    default: 3600  # 1 hour
+    min: 300       # 5 minutes
+    max: 604800    # 7 days
+    
+  # Adaptive TTL settings
+  adaptive_ttl:
+    enabled: true
+    boost_threshold: 10  # Access count to trigger TTL boost
+    boost_multiplier: 1.5
+    
+  # Capacity settings
+  capacity:
+    max_entries: 10000
+    eviction_policy: lru  # "lru", "lfu", "ttl"
+    eviction_batch_size: 100
+    
+  # Pre-warming settings
+  warmup:
+    enabled: false
+    source: null  # Path to warmup data file
+    batch_size: 100
+
+# -----------------------------------------------------------------------------
+# Memory Compaction Configuration
+# -----------------------------------------------------------------------------
+compaction:
+  enabled: true
+  
+  # Context window settings
+  context:
+    max_tokens: 4000
+    summarization_threshold: 3000
+    
+  # Eviction settings
+  eviction:
+    ratio: 0.7  # Evict 70% of messages when compacting
+    
+  # Summarization settings
+  summarization:
+    enabled: true
+    max_tokens: 500
+    importance: 0.8
+    
+    # LLM settings for summarization
+    llm:
+      provider: openai
+      model: gpt-4o-mini
+      temperature: 0.3
+      
+  # Importance decay settings
+  decay:
+    enabled: true
+    rate: 0.1  # Daily decay rate
+    min_threshold: 0.1
+    access_boost_factor: 0.01
+    max_access_boost: 0.3
+    
+  # Deduplication settings
+  deduplication:
+    enabled: true
+    similarity_threshold: 0.95
+    
+  # Scheduling settings
+  schedule:
+    auto_compact: true
+    compact_interval_hours: 6
+    decay_interval_hours: 24
+    consolidate_on_idle: true
+    idle_threshold_minutes: 30
+
+# -----------------------------------------------------------------------------
+# Memory Types Configuration
+# -----------------------------------------------------------------------------
+memory_types:
+  short_term:
+    description: "Context window memory for current session"
+    default_ttl: 14400  # 4 hours
+    max_ttl: 86400      # 24 hours
+    importance_weight: 0.5
+    
+  long_term:
+    description: "Persistent memory across sessions"
+    default_ttl: 2592000  # 30 days
+    max_ttl: 31536000     # 365 days
+    importance_weight: 1.0
+    
+  vector:
+    description: "Vector-indexed memory for semantic search"
+    default_ttl: 604800   # 7 days
+    max_ttl: 2592000      # 30 days
+    importance_weight: 0.8
+
+# -----------------------------------------------------------------------------
+# Observability Configuration
+# -----------------------------------------------------------------------------
+observability:
+  # Metrics settings
+  metrics:
+    enabled: true
+    prefix: "agent_memory"
+    
+    # Prometheus settings
+    prometheus:
+      enabled: true
+      port: 9090
+      path: /metrics
+      
+  # Logging settings
+  logging:
+    level: INFO
+    format: json
+    
+  # Tracing settings
+  tracing:
+    enabled: true
+    provider: opentelemetry
+    sample_rate: 0.1
+
+# -----------------------------------------------------------------------------
+# Security Configuration
+# -----------------------------------------------------------------------------
+security:
+  # PII filtering
+  pii_filter:
+    enabled: true
+    patterns:
+      - email
+      - phone
+      - ssn
+      - credit_card
+      
+  # Encryption settings
+  encryption:
+    enabled: false
+    algorithm: AES-256-GCM
+    key_source: env  # "env", "vault", "kms"
+    
+  # Access control
+  access_control:
+    enabled: true
+    default_policy: deny
+    
+# -----------------------------------------------------------------------------
+# Performance Tuning
+# -----------------------------------------------------------------------------
+performance:
+  # Batch processing
+  batch:
+    enabled: true
+    size: 100
+    timeout_ms: 1000
+    
+  # Caching
+  local_cache:
+    enabled: true
+    max_size: 1000
+    ttl: 60
+    
+  # Connection pooling
+  connection_pool:
+    min_size: 5
+    max_size: 50
+    timeout: 30

@@ -1,0 +1,431 @@
+name: 📊 Issue Triage & Metrics
+
+# This workflow provides daily issue management and metrics.
+# It complements (not replaces) the weekly issue-metrics.yml workflow.
+# - issue-metrics.yml: Weekly comprehensive metrics (Monday midnight UTC)
+# - issue-triage.yml: Daily triage, stale management, and enhanced metrics
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:
+    inputs:
+      generate_report:
+        description: 'Generate metrics report'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ============================================
+  # Mark stale issues
+  # ============================================
+  stale:
+    name: Mark Stale Issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mark stale issues and PRs
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: |
+            ## ⏰ Stale Issue Notice
+
+            This issue has been automatically marked as **stale** because it has not had recent activity.
+
+            - It will be closed in **7 days** if no further activity occurs.
+            - To keep this issue open, please comment or update the issue.
+            - If this issue is still relevant, add the `keep-open` label.
+
+            **GL Unified Charter Activated** 🏛️
+          stale-pr-message: |
+            ## ⏰ Stale PR Notice
+
+            This pull request has been automatically marked as **stale** because it has not had recent activity.
+
+            - It will be closed in **14 days** if no further activity occurs.
+            - To keep this PR open, please push new commits or comment.
+
+            **GL Unified Charter Activated** 🏛️
+          close-issue-message: |
+            ## 🔒 Issue Closed
+
+            This issue has been automatically closed due to inactivity.
+
+            If you believe this issue is still relevant, please reopen it with additional context.
+
+            **GL Unified Charter Activated** 🏛️
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'
+          days-before-stale: 30
+          days-before-close: 7
+          days-before-pr-stale: 45
+          days-before-pr-close: 14
+          exempt-issue-labels: 'priority:critical,priority:high,keep-open,status:in-progress,status:blocked'
+          exempt-pr-labels: 'priority:critical,priority:high,keep-open,status:in-progress'
+          remove-stale-when-updated: true
+
+  # ============================================
+  # Generate issue metrics report
+  # ============================================
+  metrics:
+    name: Generate Issue Metrics
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.generate_report == 'true'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Generate metrics
+        uses: actions/github-script@v7
+        id: metrics
+        with:
+          script: |
+            const now = new Date();
+            const thirtyDaysAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
+            const sevenDaysAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
+
+            // Get all issues
+            const { data: allIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            // Filter out PRs
+            const issues = allIssues.filter(i => !i.pull_request);
+
+            // Calculate metrics
+            const openIssues = issues.filter(i => i.state === 'open');
+            const closedIssues = issues.filter(i => i.state === 'closed');
+            const recentlyOpened = issues.filter(i => new Date(i.created_at) > sevenDaysAgo);
+            const recentlyClosed = closedIssues.filter(i => new Date(i.closed_at) > sevenDaysAgo);
+
+            // Priority breakdown
+            const critical = openIssues.filter(i => i.labels.some(l => l.name === 'priority:critical'));
+            const high = openIssues.filter(i => i.labels.some(l => l.name === 'priority:high'));
+            const medium = openIssues.filter(i => i.labels.some(l => l.name === 'priority:medium'));
+            const low = openIssues.filter(i => i.labels.some(l => l.name === 'priority:low'));
+
+            // Type breakdown
+            const bugs = openIssues.filter(i => i.labels.some(l => l.name === 'type:bug'));
+            const features = openIssues.filter(i => i.labels.some(l => l.name === 'type:feature'));
+            const security = openIssues.filter(i => i.labels.some(l => l.name === 'type:security'));
+
+            // Status breakdown
+            const triage = openIssues.filter(i => i.labels.some(l => l.name === 'status:triage'));
+            const inProgress = openIssues.filter(i => i.labels.some(l => l.name === 'status:in-progress'));
+            const blocked = openIssues.filter(i => i.labels.some(l => l.name === 'status:blocked'));
+
+            // GL compliance
+            const glCompliance = openIssues.filter(i => i.labels.some(l => l.name.startsWith('gl:')));
+
+            // Calculate average time to close (last 30 days)
+            const recentClosedWithTime = closedIssues
+              .filter(i => new Date(i.closed_at) > thirtyDaysAgo)
+              .map(i => ({
+                created: new Date(i.created_at),
+                closed: new Date(i.closed_at)
+              }));
+
+            let avgTimeToClose = 'N/A';
+            if (recentClosedWithTime.length > 0) {
+              const totalTime = recentClosedWithTime.reduce((sum, i) => {
+                return sum + (i.closed - i.created);
+              }, 0);
+              const avgMs = totalTime / recentClosedWithTime.length;
+              const avgDays = Math.round(avgMs / (1000 * 60 * 60 * 24) * 10) / 10;
+              avgTimeToClose = `${avgDays} days`;
+            }
+
+            // Unassigned issues
+            const unassigned = openIssues.filter(i => !i.assignees || i.assignees.length === 0);
+
+            return {
+              total: issues.length,
+              open: openIssues.length,
+              closed: closedIssues.length,
+              recentlyOpened: recentlyOpened.length,
+              recentlyClosed: recentlyClosed.length,
+              critical: critical.length,
+              high: high.length,
+              medium: medium.length,
+              low: low.length,
+              bugs: bugs.length,
+              features: features.length,
+              security: security.length,
+              triage: triage.length,
+              inProgress: inProgress.length,
+              blocked: blocked.length,
+              glCompliance: glCompliance.length,
+              avgTimeToClose: avgTimeToClose,
+              unassigned: unassigned.length
+            };
+
+      - name: Create or update metrics issue
+        uses: actions/github-script@v7
+        env:
+          METRICS_JSON: ${{ steps.metrics.outputs.result }}
+        with:
+          script: |
+            const metrics = JSON.parse(process.env.METRICS_JSON);
+            const now = new Date().toISOString().split('T')[0];
+
+            const reportBodyLines = [
+              '## 📊 Issue Metrics Report',
+              '',
+              `**Generated**: ${now}`,
+              '**GL Unified Charter Activated** 🏛️',
+              '',
+              '---',
+              '',
+              '### 📈 Overview',
+              '',
+              '| Metric | Value |',
+              '|--------|-------|',
+              `| Total Issues | ${metrics.total} |`,
+              `| Open Issues | ${metrics.open} |`,
+              `| Closed Issues | ${metrics.closed} |`,
+              `| Opened (7 days) | ${metrics.recentlyOpened} |`,
+              `| Closed (7 days) | ${metrics.recentlyClosed} |`,
+              `| Avg Time to Close | ${metrics.avgTimeToClose} |`,
+              '',
+              '---',
+              '',
+              '### 🎯 Priority Breakdown',
+              '',
+              '| Priority | Count | Status |',
+              '|----------|-------|--------|',
+              `| 🔴 Critical | ${metrics.critical} | ${metrics.critical > 0 ? '⚠️ Needs attention' : '✅ Clear'} |`,
+              `| 🟠 High | ${metrics.high} | ${metrics.high > 5 ? '⚠️ Review needed' : '✅ OK'} |`,
+              `| 🟡 Medium | ${metrics.medium} | - |`,
+              `| 🟢 Low | ${metrics.low} | - |`,
+              '',
+              '---',
+              '',
+              '### 📋 Type Breakdown',
+              '',
+              '| Type | Count |',
+              '|------|-------|',
+              `| 🐛 Bugs | ${metrics.bugs} |`,
+              `| ✨ Features | ${metrics.features} |`,
+              `| 🔒 Security | ${metrics.security} |`,
+              '',
+              '---',
+              '',
+              '### 📊 Status Breakdown',
+              '',
+              '| Status | Count |',
+              '|--------|-------|',
+              `| 🏷️ Needs Triage | ${metrics.triage} |`,
+              `| 🔄 In Progress | ${metrics.inProgress} |`,
+              `| 🚫 Blocked | ${metrics.blocked} |`,
+              `| 👤 Unassigned | ${metrics.unassigned} |`,
+              '',
+              '---',
+              '',
+              '### 🏛️ GL Governance',
+              '',
+              '| Metric | Count |',
+              '|--------|-------|',
+              `| GL Compliance Issues | ${metrics.glCompliance} |`,
+              '',
+              '---',
+              '',
+              '### 🎯 Action Items',
+              ''
+            ];
+
+            // Add action items conditionally
+            if (metrics.critical > 0) {
+              reportBodyLines.push('- [ ] **CRITICAL**: Review and address critical issues immediately');
+            }
+            if (metrics.security > 0) {
+              reportBodyLines.push('- [ ] **SECURITY**: Review security-related issues');
+            }
+            if (metrics.triage > 5) {
+              reportBodyLines.push('- [ ] **TRIAGE**: Multiple issues need triage');
+            }
+            if (metrics.unassigned > 10) {
+              reportBodyLines.push('- [ ] **ASSIGN**: Many unassigned issues need owners');
+            }
+            if (metrics.blocked > 0) {
+              reportBodyLines.push('- [ ] **BLOCKED**: Review blocked issues for resolution');
+            }
+
+            reportBodyLines.push('');
+            reportBodyLines.push('---');
+            reportBodyLines.push('');
+            reportBodyLines.push(`*This report is automatically generated daily. Last updated: ${new Date().toISOString()}*`);
+            reportBodyLines.push('');
+
+            const reportBody = reportBodyLines.join('\n');
+
+            // Find existing metrics issue (paginated to handle many automated issues)
+            const existingIssues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                labels: 'automated,maintenance',
+                per_page: 100
+              }
+            );
+
+            const metricsIssue = existingIssues.find(i =>
+              i.title.includes('Issue Metrics Report') ||
+              i.title.includes('📊 Weekly Issue Metrics')
+            );
+
+            if (metricsIssue) {
+              // Update existing issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: metricsIssue.number,
+                body: reportBody
+              });
+              console.log(`Updated metrics issue #${metricsIssue.number}`);
+            } else {
+              // Create new issue
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '📊 Weekly Issue Metrics Report',
+                body: reportBody,
+                labels: ['automated', 'maintenance']
+              });
+              console.log('Created new metrics issue');
+            }
+
+  # ============================================
+  # Auto-close resolved issues
+  # ============================================
+  auto-close:
+    name: Auto-close Resolved Issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Find and close resolved issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Get all open issues (paginated) with "resolved" or "fixed" comments
+            const issues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                per_page: 100
+              }
+            );
+
+            for (const issue of issues) {
+              // Skip PRs
+              if (issue.pull_request) continue;
+
+              // Check for auto-close conditions
+              const labels = issue.labels.map(l => l.name);
+
+              // If marked as duplicate and has been open for more than 24 hours
+              if (labels.includes('duplicate')) {
+                const createdAt = new Date(issue.created_at);
+                const now = new Date();
+                const hoursSinceCreation = (now - createdAt) / (1000 * 60 * 60);
+
+                if (hoursSinceCreation > 24) {
+                  await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    state: 'closed',
+                    state_reason: 'not_planned'
+                  });
+
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    body: '🔒 This issue has been automatically closed as a duplicate.'
+                  });
+
+                  console.log(`Closed duplicate issue #${issue.number}`);
+                }
+              }
+            }
+
+  # ============================================
+  # Notify on critical issues
+  # ============================================
+  notify-critical:
+    name: Notify Critical Issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for unaddressed critical issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = await github.paginate(
+              github.rest.issues.listForRepo,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                labels: 'priority:critical',
+                per_page: 100
+              }
+            );
+
+            // Filter issues older than 24 hours without assignee
+            const now = new Date();
+            const criticalUnassigned = issues.filter(issue => {
+              if (issue.pull_request) return false;
+              if (issue.assignees && issue.assignees.length > 0) return false;
+
+              const createdAt = new Date(issue.created_at);
+              const hoursSinceCreation = (now - createdAt) / (1000 * 60 * 60);
+              return hoursSinceCreation > 24;
+            });
+
+            if (criticalUnassigned.length > 0) {
+              console.log(`Found ${criticalUnassigned.length} unaddressed critical issues`);
+
+              // Add urgent comment to each
+              for (const issue of criticalUnassigned) {
+                // Check if we already commented (paginate through all comments)
+                const comments = await github.paginate(
+                  github.rest.issues.listComments,
+                  {
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    per_page: 100,
+                  }
+                );
+
+                const alreadyNotified = comments.some(c =>
+                  c.body && c.body.includes('⚠️ CRITICAL ISSUE ALERT')
+                );
+
+                if (!alreadyNotified) {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    body: `## ⚠️ CRITICAL ISSUE ALERT\n\nThis critical issue has been open for more than 24 hours without an assignee.\n\n**Action Required**: Please assign this issue immediately.\n\n**GL Unified Charter Activated** 🏛️`
+                  });
+                }
+              }
+            }

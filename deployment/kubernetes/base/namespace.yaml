@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: machine-native-ops
+  labels:
+    name: machine-native-ops
+    environment: production
+    tier: infrastructure

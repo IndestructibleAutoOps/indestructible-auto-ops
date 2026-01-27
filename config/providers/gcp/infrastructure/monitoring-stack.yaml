@@ -1,0 +1,391 @@
+# GCP Infrastructure Configuration - Monitoring Stack
+# Provider: GCP (Google Cloud Platform)
+# Components: Prometheus, Grafana, AlertManager, Thanos
+
+apiVersion: "v1"
+kind: "Config"
+metadata:
+  name: "gcp-monitoring-stack"
+  provider: "gcp"
+  project: "{{ .Values.gcp.projectId }}"
+  region: "us-central1"
+  zone: "us-central1-a"
+
+# GKE Cluster Configuration
+gke_cluster:
+  name: "monitoring-cluster"
+  location: "us-central1"
+  version: "1.28.4-gke.1000"
+  node_pools:
+    default:
+      name: "default-pool"
+      machine_type: "e2-standard-4"
+      node_count: 3
+      min_nodes: 2
+      max_nodes: 10
+      auto_upgrade: true
+      auto_repair: true
+      taints: []
+      labels:
+        role: "monitoring"
+    
+    prometheus:
+      name: "prometheus-pool"
+      machine_type: "n2-highmem-8"
+      node_count: 2
+      min_nodes: 1
+      max_nodes: 5
+      auto_upgrade: true
+      auto_repair: true
+      taints:
+        - key: "dedicated"
+          value: "prometheus"
+          effect: "NO_SCHEDULE"
+      labels:
+        component: "prometheus"
+    
+    grafana:
+      name: "grafana-pool"
+      machine_type: "e2-standard-2"
+      node_count: 2
+      min_nodes: 1
+      max_nodes: 3
+      auto_upgrade: true
+      auto_repair: true
+      taints: []
+      labels:
+        component: "grafana"
+
+# VPC Configuration
+vpc:
+  name: "monitoring-vpc"
+  auto_create_subnetworks: false
+  
+  subnetworks:
+    - name: "monitoring-subnet"
+      region: "us-central1"
+      ip_cidr_range: "10.0.0.0/24"
+      secondary_ip_ranges:
+        - range_name: "pods-range"
+          ip_cidr_range: "10.1.0.0/16"
+        - range_name: "services-range"
+          ip_cidr_range: "10.2.0.0/16"
+  
+  routes:
+    - name: "default-route"
+      dest_range: "0.0.0.0/0"
+      next_hop_gateway: "default-internet-gateway"
+  
+  firewall_rules:
+    - name: "allow-internal"
+      direction: "INGRESS"
+      priority: 1000
+      source_ranges:
+        - "10.0.0.0/8"
+      allowed:
+        - protocol: "tcp"
+          ports:
+            - "0-65535"
+    
+    - name: "allow-prometheus"
+      direction: "INGRESS"
+      priority: 1000
+      source_ranges:
+        - "0.0.0.0/0"
+      allowed:
+        - protocol: "tcp"
+          ports:
+            - "9090"
+      target_tags:
+        - "prometheus"
+    
+    - name: "allow-grafana"
+      direction: "INGRESS"
+      priority: 1000
+      source_ranges:
+        - "0.0.0.0/0"
+      allowed:
+        - protocol: "tcp"
+          ports:
+            - "3000"
+      target_tags:
+        - "grafana"
+
+# Prometheus Configuration
+prometheus:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "1000m"
+      memory: "2Gi"
+    limits:
+      cpu: "4000m"
+      memory: "8Gi"
+  persistence:
+    enabled: true
+    storage_class: "standard-rwo"
+    size: "100Gi"
+  retention:
+    days: 15
+    size: "50GB"
+  service:
+    type: "LoadBalancer"
+    load_balancer_ip: "{{ .Values.prometheus.loadBalancerIP }}"
+    annotations:
+      networking.gke.io/load-balancer-type: "Internal"
+  service_account:
+    create: true
+    annotations:
+      iam.gke.io/gcp-service-account: "prometheus@{{ .Values.gcp.projectId }}.iam.gserviceaccount.com"
+  env:
+    GCP_PROJECT: "{{ .Values.gcp.projectId }}"
+
+# Grafana Configuration
+grafana:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  persistence:
+    enabled: true
+    storage_class: "standard-rwo"
+    size: "10Gi"
+  service:
+    type: "LoadBalancer"
+    load_balancer_ip: "{{ .Values.grafana.loadBalancerIP }}"
+    annotations:
+      networking.gke.io/load-balancer-type: "External"
+  service_account:
+    create: true
+    annotations:
+      iam.gke.io/gcp-service-account: "grafana@{{ .Values.gcp.projectId }}.iam.gserviceaccount.com"
+  admin_password: "{{ .Values.grafana.adminPassword }}"
+  env:
+    GF_SERVER_ROOT_URL: "https://grafana.example.com"
+    GF_INSTALL_PLUGINS: "grafana-piechart-panel,grafana-worldmap-panel"
+
+# AlertManager Configuration
+alertmanager:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  persistence:
+    enabled: true
+    storage_class: "standard-rwo"
+    size: "5Gi"
+  config:
+    global:
+      resolve_timeout: "5m"
+    route:
+      group_by: ["alertname", "cluster", "service"]
+      group_wait: "30s"
+      group_interval: "5m"
+      repeat_interval: "12h"
+      receiver: "default"
+    receivers:
+      - name: "default"
+      - name: "slack"
+        slack_configs:
+          - api_url: "{{ .Values.alertmanager.slack.webhook_url }}"
+            channel: "#alerts"
+            title: "[{{ .Status }}] {{ .CommonLabels.alertname }}"
+            text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+      - name: "pagerduty"
+        pagerduty_configs:
+          - service_key: "{{ .Values.alertmanager.pagerduty.service_key }}"
+            description: "{{ .CommonLabels.alertname }}"
+
+# Thanos Configuration (Long-term Storage)
+thanos:
+  enabled: true
+  replicas: 2
+  objstore_config:
+    type: "gcs"
+    config:
+      bucket: "{{ .Values.thanos.gcs.bucket }}"
+  query:
+    replicas: 2
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+      limits:
+        cpu: "2000m"
+        memory: "4Gi"
+  store:
+    enabled: true
+    persistence:
+      enabled: true
+      storage_class: "standard-rwo"
+      size: "50Gi"
+  compactor:
+    enabled: true
+    retention:
+      raw: "90d"
+      resolution_5m: "180d"
+      resolution_1h: "365d"
+    resources:
+      requests:
+        cpu: "1000m"
+        memory: "2Gi"
+      limits:
+        cpu: "4000m"
+        memory: "8Gi"
+
+# GCS Bucket Configuration
+gcs:
+  thanos:
+    bucket: "{{ .Values.thanos.gcs.bucket }}"
+    location: "us-central1"
+    storage_class: "STANDARD"
+    versioning:
+      enabled: true
+    lifecycle:
+      rules:
+        - action:
+            type: "Delete"
+          condition:
+            age: 365
+        - action:
+            type: "SetStorageClass"
+            storage_class: "NEARLINE"
+          condition:
+            age: 30
+
+# Cloud Monitoring (Stackdriver) Integration
+cloud_monitoring:
+  enabled: true
+  project_id: "{{ .Values.gcp.projectId }}"
+  
+  # Custom Metrics
+  custom_metrics:
+    - type: "gauge"
+      name: "projects/{{ .Values.gcp.projectId }}/metricDescriptors/prometheus.http.requests.total"
+      display_name: "Prometheus HTTP Requests Total"
+      metric_kind: "GAUGE"
+      value_type: "INT64"
+      unit: "1"
+      description: "Total HTTP requests to Prometheus"
+    
+    - type: "gauge"
+      name: "projects/{{ .Values.gcp.projectId }}/metricDescriptors/grafana.active.users"
+      display_name: "Grafana Active Users"
+      metric_kind: "GAUGE"
+      value_type: "INT64"
+      unit: "1"
+      description: "Number of active Grafana users"
+
+# Cloud Alerting Policies
+cloud_alerting:
+  enabled: true
+  policies:
+    - name: "Prometheus High CPU"
+      display_name: "Prometheus CPU High"
+      conditions:
+        - display_name: "CPU > 80%"
+          condition_threshold:
+            filter: 'resource.type="gke_container" AND metric.name="container.cpu/usage_time"'
+            comparison: "COMPARISON_GT"
+            threshold_value: 80
+            duration: "300s"
+      enabled: true
+      notification_channels:
+        - "{{ .Values.cloud_alerting.notificationChannels.slack }}"
+        - "{{ .Values.cloud_alerting.notificationChannels.email }}"
+    
+    - name: "Grafana Pod Down"
+      display_name: "Grafana Pod Down"
+      conditions:
+        - display_name: "Pod count < 1"
+          condition_threshold:
+            filter: 'resource.type="gke_container" AND resource.labels.container_name="grafana"'
+            comparison: "COMPARISON_LT"
+            threshold_value: 1
+            duration: "60s"
+      enabled: true
+      notification_channels:
+        - "{{ .Values.cloud_alerting.notificationChannels.pagerduty }}"
+
+# IAM Service Accounts
+iam:
+  service_accounts:
+    prometheus:
+      email: "prometheus@{{ .Values.gcp.projectId }}.iam.gserviceaccount.com"
+      display_name: "Prometheus Service Account"
+      description: "Service account for Prometheus monitoring"
+      roles:
+        - "roles/monitoring.viewer"
+        - "roles/storage.objectViewer"
+        - "roles/stackdriver.resourceMetadata.writer"
+    
+    grafana:
+      email: "grafana@{{ .Values.gcp.projectId }}.iam.gserviceaccount.com"
+      display_name: "Grafana Service Account"
+      description: "Service account for Grafana visualization"
+      roles:
+        - "roles/monitoring.viewer"
+        - "roles/stackdriver.resourceMetadata.writer"
+
+# Cloud Logging Configuration
+cloud_logging:
+  enabled: true
+  sinks:
+    - name: "prometheus-logs"
+      destination: "bigquery"
+      dataset: "{{ .Values.cloud_logging.bigQueryDataset }}"
+      filter: 'resource.type="gke_container" AND resource.labels.container_name="prometheus"'
+    
+    - name: "grafana-logs"
+      destination: "pubsub"
+      topic: "{{ .Values.cloud_logging.pubsubTopic }}"
+      filter: 'resource.type="gke_container" AND resource.labels.container_name="grafana"'
+
+# Workload Identity
+workload_identity:
+  enabled: true
+  identity_providers:
+    - name: "monitoring-identity-provider"
+      display_name: "Monitoring Workload Identity"
+      workload_pool_project_id: "{{ .Values.gcp.projectId }}"
+      workload_pool_id: "monitoring-pool"
+      attribute_mapping:
+        google.subject: "assertion.sub"
+        attribute.actor: "assertion.actor"
+
+# Network Policies
+network_policies:
+  enabled: true
+  policies:
+    - name: "allow-prometheus-scrape"
+      selector:
+        match_labels:
+          app: "prometheus"
+      ingress:
+        - from:
+          - namespace_selector: {}
+          ports:
+            - protocol: "TCP"
+              port: 9090
+    
+    - name: "allow-grafana-access"
+      selector:
+        match_labels:
+          app: "grafana"
+      ingress:
+        - from:
+          - namespace_selector: {}
+          ports:
+            - protocol: "TCP"
+              port: 3000

@@ -1,0 +1,370 @@
+# MachineNativeOps Official Action: mn-setup-node
+# Replaces: actions/setup-node@v4
+# Description: Set up Node.js environment with full feature parity
+# Version: 1.0.0
+
+name: 'MN Setup Node'
+description: 'MachineNativeOps official Node.js setup action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'hexagon'
+  color: 'green'
+
+inputs:
+  node-version:
+    description: 'Version Spec of the version to use (e.g., 18, 20.x, lts/*)'
+    required: false
+    default: ''
+  node-version-file:
+    description: 'File containing the version Spec (e.g., .nvmrc, .node-version, package.json)'
+    required: false
+    default: ''
+  architecture:
+    description: 'Target architecture for Node to use (x64, x86, arm64)'
+    required: false
+    default: ''
+  check-latest:
+    description: 'Check for the latest available version matching the specification'
+    required: false
+    default: 'false'
+  registry-url:
+    description: 'Optional registry to set up for auth'
+    required: false
+    default: ''
+  scope:
+    description: 'Optional scope for authenticating against scoped registries'
+    required: false
+    default: ''
+  token:
+    description: 'Used to pull node distributions from node-versions'
+    required: false
+    default: ${{ github.token }}
+  cache:
+    description: 'Package manager to cache dependencies for (npm, yarn, pnpm)'
+    required: false
+    default: ''
+  cache-dependency-path:
+    description: 'Path to dependency file(s) for caching'
+    required: false
+    default: ''
+  always-auth:
+    description: 'Set always-auth in npmrc'
+    required: false
+    default: 'false'
+
+outputs:
+  node-version:
+    description: 'The installed Node.js version'
+    value: ${{ steps.setup.outputs.node_version }}
+  cache-hit:
+    description: 'Whether the cache was hit'
+    value: ${{ steps.cache.outputs.cache_hit }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Detect Node Version from File
+      id: detect
+      shell: bash
+      run: |
+        VERSION="${{ inputs.node-version }}"
+        VERSION_FILE="${{ inputs.node-version-file }}"
+
+        # Try to read version from file if specified or auto-detect
+        if [[ -n "$VERSION_FILE" && -f "$VERSION_FILE" ]]; then
+          echo "Reading Node version from: $VERSION_FILE"
+
+          case "$VERSION_FILE" in
+            *.nvmrc|.nvmrc)
+              VERSION=$(cat "$VERSION_FILE" | head -1 | tr -d '[:space:]' | sed 's/^v//')
+              ;;
+            *.node-version|.node-version)
+              VERSION=$(cat "$VERSION_FILE" | head -1 | tr -d '[:space:]' | sed 's/^v//')
+              ;;
+            *package.json)
+              # Extract from package.json engines.node
+              VERSION=$(jq -r '.engines.node // empty' "$VERSION_FILE" 2>/dev/null | sed 's/[^0-9.]//g' | head -1) || true
+              ;;
+            *.tool-versions)
+              VERSION=$(grep "^nodejs" "$VERSION_FILE" | awk '{print $2}' | sed 's/^v//') || true
+              ;;
+          esac
+        elif [[ -z "$VERSION" ]]; then
+          # Auto-detect from common files
+          for file in .nvmrc .node-version .tool-versions package.json; do
+            if [[ -f "$file" ]]; then
+              case "$file" in
+                .nvmrc|.node-version)
+                  VERSION=$(cat "$file" | head -1 | tr -d '[:space:]' | sed 's/^v//')
+                  ;;
+                .tool-versions)
+                  VERSION=$(grep "^nodejs" "$file" | awk '{print $2}' | sed 's/^v//') || true
+                  ;;
+                package.json)
+                  VERSION=$(jq -r '.engines.node // empty' "$file" 2>/dev/null | sed 's/[^0-9.]//g' | head -1) || true
+                  ;;
+              esac
+              if [[ -n "$VERSION" ]]; then
+                echo "Auto-detected Node version from $file"
+                break
+              fi
+            fi
+          done
+        fi
+
+        # Handle special version specs
+        case "$VERSION" in
+          lts/*|lts/*)
+            VERSION="lts"
+            ;;
+          current|latest)
+            VERSION="current"
+            ;;
+        esac
+
+        echo "Requested Node version: $VERSION"
+        echo "requested_version=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Resolve Node Version
+      id: resolve
+      shell: bash
+      run: |
+        REQUESTED="${{ steps.detect.outputs.requested_version }}"
+        CHECK_LATEST="${{ inputs.check-latest }}"
+
+        # Get available Node versions
+        AVAILABLE_VERSIONS=""
+
+        # Check system Node
+        if command -v node &> /dev/null; then
+          SYSTEM_VER=$(node --version 2>&1 | sed 's/^v//')
+          AVAILABLE_VERSIONS="$SYSTEM_VER"
+        fi
+
+        # Check nvm if available
+        if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
+          source "$HOME/.nvm/nvm.sh" 2>/dev/null || true
+          NVM_VERSIONS=$(nvm ls --no-colors 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' | sed 's/^v//' || true)
+          AVAILABLE_VERSIONS="$AVAILABLE_VERSIONS $NVM_VERSIONS"
+        fi
+
+        # Check fnm if available
+        if command -v fnm &> /dev/null; then
+          FNM_VERSIONS=$(fnm ls 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' || true)
+          AVAILABLE_VERSIONS="$AVAILABLE_VERSIONS $FNM_VERSIONS"
+        fi
+
+        echo "Available versions: $AVAILABLE_VERSIONS"
+
+        # Resolve version
+        RESOLVED=""
+
+        if [[ -z "$REQUESTED" || "$REQUESTED" == "lts" ]]; then
+          # Use LTS version (20.x as of 2024)
+          RESOLVED=$(echo "$AVAILABLE_VERSIONS" | tr ' ' '\n' | grep "^20\." | sort -V | tail -1)
+          if [[ -z "$RESOLVED" ]]; then
+            RESOLVED=$(echo "$AVAILABLE_VERSIONS" | tr ' ' '\n' | grep "^18\." | sort -V | tail -1)
+          fi
+        elif [[ "$REQUESTED" == "current" ]]; then
+          # Use latest available
+          RESOLVED=$(echo "$AVAILABLE_VERSIONS" | tr ' ' '\n' | sort -V | tail -1)
+        elif [[ "$REQUESTED" =~ ^[0-9]+$ ]]; then
+          # Major version only (e.g., 18, 20)
+          RESOLVED=$(echo "$AVAILABLE_VERSIONS" | tr ' ' '\n' | grep "^${REQUESTED}\." | sort -V | tail -1)
+        elif [[ "$REQUESTED" =~ ^[0-9]+\.[0-9]+$ ]]; then
+          # Major.minor (e.g., 20.10)
+          RESOLVED=$(echo "$AVAILABLE_VERSIONS" | tr ' ' '\n' | grep "^${REQUESTED}\." | sort -V | tail -1)
+          if [[ -z "$RESOLVED" ]]; then
+            RESOLVED="${REQUESTED}.0"
+          fi
+        elif [[ "$REQUESTED" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          # Exact version
+          RESOLVED="$REQUESTED"
+        elif [[ "$REQUESTED" =~ \.x$ ]]; then
+          # Pattern like 20.x
+          MAJOR=$(echo "$REQUESTED" | cut -d. -f1)
+          RESOLVED=$(echo "$AVAILABLE_VERSIONS" | tr ' ' '\n' | grep "^${MAJOR}\." | sort -V | tail -1)
+        fi
+
+        # Fallback to system Node
+        if [[ -z "$RESOLVED" ]]; then
+          RESOLVED=$(node --version 2>&1 | sed 's/^v//' || echo "")
+        fi
+
+        echo "Resolved version: $RESOLVED"
+        echo "resolved_version=$RESOLVED" >> $GITHUB_OUTPUT
+
+    - name: Setup Node Environment
+      id: setup
+      shell: bash
+      run: |
+        RESOLVED="${{ steps.resolve.outputs.resolved_version }}"
+        ARCH="${{ inputs.architecture }}"
+
+        echo "Setting up Node.js $RESOLVED..."
+
+        NODE_PATH=""
+        MAJOR=$(echo "$RESOLVED" | cut -d. -f1)
+
+        # Try to use nvm if available
+        if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
+          source "$HOME/.nvm/nvm.sh" 2>/dev/null || true
+
+          # Check if version is installed
+          if nvm ls "$RESOLVED" &>/dev/null || nvm ls "v$RESOLVED" &>/dev/null; then
+            nvm use "$RESOLVED" 2>/dev/null || nvm use "v$RESOLVED" 2>/dev/null || true
+            NODE_PATH=$(which node)
+          else
+            # Try to install
+            echo "Installing Node.js $RESOLVED via nvm..."
+            nvm install "$RESOLVED" 2>/dev/null || nvm install "$MAJOR" 2>/dev/null || true
+            nvm use "$RESOLVED" 2>/dev/null || nvm use "$MAJOR" 2>/dev/null || true
+            NODE_PATH=$(which node)
+          fi
+        fi
+
+        # Try fnm if nvm didn't work
+        if [[ -z "$NODE_PATH" ]] && command -v fnm &> /dev/null; then
+          fnm use "$RESOLVED" 2>/dev/null || fnm install "$RESOLVED" 2>/dev/null || true
+          NODE_PATH=$(which node 2>/dev/null)
+        fi
+
+        # Fallback to system Node
+        if [[ -z "$NODE_PATH" ]]; then
+          NODE_PATH=$(which node 2>/dev/null)
+        fi
+
+        if [[ -z "$NODE_PATH" ]]; then
+          echo "::error::Node.js not found. Please ensure Node.js is installed."
+          exit 1
+        fi
+
+        # Get actual version
+        ACTUAL_VERSION=$("$NODE_PATH" --version 2>&1 | sed 's/^v//')
+
+        echo "Node executable: $NODE_PATH"
+        echo "Node version: $ACTUAL_VERSION"
+
+        # Update PATH
+        NODE_DIR=$(dirname "$NODE_PATH")
+        echo "$NODE_DIR" >> $GITHUB_PATH
+
+        # Set environment variables
+        echo "NODE_PATH=$NODE_PATH" >> $GITHUB_ENV
+        echo "NODE_VERSION=$ACTUAL_VERSION" >> $GITHUB_ENV
+
+        echo "node_version=$ACTUAL_VERSION" >> $GITHUB_OUTPUT
+        echo "node_path=$NODE_PATH" >> $GITHUB_OUTPUT
+
+    - name: Setup Registry Authentication
+      if: inputs.registry-url != ''
+      shell: bash
+      run: |
+        REGISTRY="${{ inputs.registry-url }}"
+        SCOPE="${{ inputs.scope }}"
+        ALWAYS_AUTH="${{ inputs.always-auth }}"
+        TOKEN="${{ inputs.token }}"
+
+        echo "Configuring npm registry: $REGISTRY"
+
+        # Create or update .npmrc
+        NPMRC="$HOME/.npmrc"
+
+        if [[ -n "$SCOPE" ]]; then
+          # Scoped registry
+          echo "${SCOPE}:registry=$REGISTRY" >> "$NPMRC"
+          echo "//${REGISTRY#https://}/:_authToken=\${NODE_AUTH_TOKEN}" >> "$NPMRC"
+        else
+          # Default registry
+          echo "registry=$REGISTRY" >> "$NPMRC"
+          echo "//${REGISTRY#https://}/:_authToken=\${NODE_AUTH_TOKEN}" >> "$NPMRC"
+        fi
+
+        if [[ "$ALWAYS_AUTH" == "true" ]]; then
+          echo "always-auth=true" >> "$NPMRC"
+        fi
+
+        # Set auth token environment variable
+        echo "NODE_AUTH_TOKEN=$TOKEN" >> $GITHUB_ENV
+
+    - name: Setup Cache
+      id: cache
+      if: inputs.cache != ''
+      shell: bash
+      run: |
+        CACHE_TYPE="${{ inputs.cache }}"
+        CACHE_PATH="${{ inputs.cache-dependency-path }}"
+        NODE_VERSION="${{ steps.setup.outputs.node_version }}"
+
+        echo "Setting up cache for: $CACHE_TYPE"
+
+        # Determine cache directory and lock file
+        case "$CACHE_TYPE" in
+          npm)
+            CACHE_DIR=$(npm config get cache 2>/dev/null || echo "$HOME/.npm")
+            LOCK_FILE="package-lock.json"
+            ;;
+          yarn)
+            CACHE_DIR=$(yarn cache dir 2>/dev/null || echo "$HOME/.cache/yarn")
+            LOCK_FILE="yarn.lock"
+            ;;
+          pnpm)
+            CACHE_DIR=$(pnpm store path 2>/dev/null || echo "$HOME/.local/share/pnpm/store")
+            LOCK_FILE="pnpm-lock.yaml"
+            ;;
+          *)
+            CACHE_DIR="$HOME/.npm"
+            LOCK_FILE="package-lock.json"
+            ;;
+        esac
+
+        mkdir -p "$CACHE_DIR"
+
+        # Use custom cache path if specified
+        if [[ -n "$CACHE_PATH" ]]; then
+          LOCK_FILE="$CACHE_PATH"
+        fi
+
+        # Generate cache key
+        CACHE_KEY="node-$CACHE_TYPE-$NODE_VERSION-${{ runner.os }}"
+
+        # Add hash of lock file
+        if [[ -f "$LOCK_FILE" ]]; then
+          LOCK_HASH=$(md5sum "$LOCK_FILE" 2>/dev/null | cut -d' ' -f1 || echo "")
+          CACHE_KEY="$CACHE_KEY-$LOCK_HASH"
+        fi
+
+        echo "Cache directory: $CACHE_DIR"
+        echo "Cache key: $CACHE_KEY"
+
+        # Check if cache exists
+        CACHE_HIT="false"
+        if [[ -d "$CACHE_DIR" && -n "$(ls -A "$CACHE_DIR" 2>/dev/null)" ]]; then
+          CACHE_HIT="true"
+        fi
+
+        echo "cache_hit=$CACHE_HIT" >> $GITHUB_OUTPUT
+        echo "cache_dir=$CACHE_DIR" >> $GITHUB_OUTPUT
+        echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
+
+    - name: Display Setup Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-SETUP-NODE SUMMARY"
+        echo "=========================================="
+        echo "Node Version: ${{ steps.setup.outputs.node_version }}"
+        echo "Node Path: ${{ steps.setup.outputs.node_path }}"
+        echo "Registry: ${{ inputs.registry-url }}"
+        echo "Cache: ${{ inputs.cache }}"
+        echo "Cache Hit: ${{ steps.cache.outputs.cache_hit }}"
+        echo "=========================================="
+
+        # Display versions
+        node --version
+        npm --version 2>/dev/null || true
+
+        # Check for yarn/pnpm
+        yarn --version 2>/dev/null && echo "Yarn available" || true
+        pnpm --version 2>/dev/null && echo "pnpm available" || true

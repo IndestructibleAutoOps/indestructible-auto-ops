@@ -1,0 +1,29 @@
+[Unit]
+Description=FHS Integration System Auto-Initialization
+Documentation=https://github.com/MachineNativeOps/machine-native-ops/tree/main/docs/fhs-integration
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Set working directory to repository root
+WorkingDirectory=/home/runner/work/machine-native-ops/machine-native-ops
+
+# Run auto-startup script
+ExecStart=/bin/bash /home/runner/work/machine-native-ops/machine-native-ops/scripts/fhs-integration/auto_startup.sh
+
+# Restart on failure
+Restart=on-failure
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+# Run as specific user (adjust as needed)
+# User=runner
+# Group=runner
+
+[Install]
+WantedBy=multi-user.target

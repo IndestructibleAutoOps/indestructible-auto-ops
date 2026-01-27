@@ -1,0 +1,99 @@
+name: AI Code Review with Claude
+
+# DISABLED: Claude Code GitHub App is not installed on this repository
+# To re-enable:
+# 1. Install Claude Code GitHub App: https://github.com/apps/claude
+# 2. Or provide ANTHROPIC_API_KEY secret and github_token
+# 3. Change trigger back to pull_request events
+
+on:
+  workflow_dispatch:  # Only manual trigger - effectively disabled
+    inputs:
+      reason:
+        description: 'Reason for manual run'
+        required: false
+        default: 'Manual trigger'
+
+# Original triggers (disabled):
+# on:
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-review:
+    name: AI Code Review
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Notice
+        run: |
+          echo "⚠️ AI Code Review with Claude is currently disabled."
+          echo ""
+          echo "This workflow requires the Claude Code GitHub App to be installed."
+          echo "Install at: https://github.com/apps/claude"
+          echo ""
+          echo "Alternatively, provide:"
+          echo "  - ANTHROPIC_API_KEY secret"
+          echo "  - github_token in the workflow"
+          echo ""
+          echo "Once configured, update this workflow to trigger on pull_request events."
+
+      # Original steps (disabled):
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
+      #
+      # - name: AI Code Review with Claude
+      #   uses: anthropics/claude-code-action@v1
+      #   with:
+      #     anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      #     prompt: |
+      #       REVIEW CONTEXT:
+      #       - Repository: ${{ github.repository }}
+      #       - Pull Request: #${{ github.event.pull_request.number }}
+      #       - Branch: ${{ github.event.pull_request.head.ref }}
+      #       - Title: ${{ github.event.pull_request.title }}
+      #       
+      #       INSTRUCTIONS:
+      #       Please review this pull request thoroughly:
+      #       
+      #       1. Code Quality:
+      #       - Check for bugs, errors, or potential issues
+      #       - Verify code follows best practices
+      #       - Look for security vulnerabilities
+      #       - Assess performance implications
+      #       
+      #       2. Best Practices:
+      #       - Ensure the code follows established coding standards
+      #       - Check for proper error handling
+      #       - Verify adequate documentation and comments
+      #       - Look for code duplication or inefficiencies
+      #       
+      #       3. Security Review:
+      #       - Identify any security vulnerabilities
+      #       - Check for proper input validation
+      #       - Verify safe handling of sensitive data
+      #       - Review authentication and authorization if applicable
+      #       
+      #       4. Testing:
+      #       - Assess if changes have adequate test coverage
+      #       - Check for edge cases that might not be tested
+      #       - Verify tests are meaningful and effective
+      #       
+      #       5. Documentation:
+      #       - Check if README, API docs, or inline comments need updates
+      #       - Verify changes are reflected in relevant documentation
+      #       
+      #       Please provide your review as a structured comment with:
+      #       - Summary of changes
+      #       - Specific issues found (if any)
+      #       - Suggestions for improvements
+      #       - Approval or request for changes

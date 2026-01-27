@@ -1,0 +1,113 @@
+# Linting Module - Pluggable Component
+# Can be enabled/disabled via config.yml
+
+name: Lint Module
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        required: false
+        type: string
+        default: '20.x'
+      python_version:
+        required: false
+        type: string
+        default: '3.11'
+      enabled:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    if: inputs.enabled == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run ESLint
+        run: |
+          if [ -f "package.json" ] && grep -q '"lint"' package.json; then
+            npm run lint
+          elif [ -f ".eslintrc.js" ] || [ -f ".eslintrc.json" ] || [ -f ".eslintrc.yaml" ]; then
+            npx eslint . --ext .js,.jsx,.ts,.tsx || true
+          else
+            echo "⚠️  No ESLint configuration found, skipping..."
+          fi
+        continue-on-error: true
+
+  pylint:
+    name: Pylint
+    runs-on: ubuntu-latest
+    if: inputs.enabled == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+
+      - name: Install Pylint
+        run: pip install pylint || pip3 install pylint
+
+      - name: Run Pylint
+        run: |
+          if find . -name "*.py" -type f | grep -q .; then
+            find . -name "*.py" -type f -exec pylint {} + || echo "⚠️  Pylint found issues"
+          else
+            echo "⚠️  No Python files found, skipping..."
+          fi
+        continue-on-error: true
+
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    if: inputs.enabled == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Lint Markdown files
+        uses: articulate/actions-markdownlint@v1
+        with:
+          config: '.markdownlint.json'
+          ignore: 'node_modules'
+        continue-on-error: true
+
+  json-yaml-lint:
+    name: JSON/YAML Lint
+    runs-on: ubuntu-latest
+    if: inputs.enabled == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Lint JSON and YAML files
+        run: |
+          # Validate JSON files
+          find . -name "*.json" -not -path "*/node_modules/*" -not -path "*/.git/*" | while read file; do
+            if ! jq empty "$file" 2>/dev/null; then
+              echo "❌ Invalid JSON: $file"
+            fi
+          done || true
+          
+          # Validate YAML files
+          pip install pyyaml
+          find . -name "*.yml" -o -name "*.yaml" | while read file; do
+            python -c "import yaml; yaml.safe_load(open('$file'))" 2>/dev/null || echo "⚠️  Invalid YAML: $file"
+          done || true
+        continue-on-error: true

@@ -1,0 +1,33 @@
+name: Update Repo Info in README
+
+on:
+  push:
+    tags:
+      - '*'  # Trigger on any new tag push
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-readme:
+    name: Update Repository Information
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Repo Info in README
+        uses: chroming/update-readme-repo-info@v1.6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          mode: pr
+          base_branch: main

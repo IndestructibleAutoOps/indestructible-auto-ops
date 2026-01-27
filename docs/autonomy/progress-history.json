@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "timestamp": "2026-01-18T11:07:52.880973",
+      "modules": {
+        "01-core": {
+          "autonomy_level": "L1-L2",
+          "autonomy_value": 1.5,
+          "semantic_health_score": 100,
+          "status": "active"
+        },
+        "02-intelligence": {
+          "autonomy_level": "L2-L3",
+          "autonomy_value": 2.5,
+          "semantic_health_score": 100,
+          "status": "active"
+        },
+        "03-governance": {
+          "autonomy_level": "L3-L4",
+          "autonomy_value": 3.5,
+          "semantic_health_score": 100,
+          "status": "active"
+        },
+        "04-autonomous": {
+          "autonomy_level": "L4-L5",
+          "autonomy_value": 4.5,
+          "semantic_health_score": 85,
+          "status": "in-development"
+        },
+        "05-observability": {
+          "autonomy_level": "L4-L5",
+          "autonomy_value": 4.5,
+          "semantic_health_score": 100,
+          "status": "active"
+        },
+        "06-security": {
+          "autonomy_level": "Global Layer",
+          "autonomy_value": 10,
+          "semantic_health_score": 100,
+          "status": "active"
+        }
+      },
+      "aggregate": {
+        "average_autonomy": 4.416666666666667,
+        "average_health": 97.5,
+        "total_modules": 6,
+        "active_modules": 5
+      }
+    }
+  ],
+  "metadata": {
+    "created": "2026-01-18T11:07:52.875206",
+    "last_updated": "2026-01-18T11:07:52.881038"
+  }
+}

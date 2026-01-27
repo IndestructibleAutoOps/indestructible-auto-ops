@@ -1,0 +1,37 @@
+# Production Environment Configuration
+# Environment-specific overrides for production
+
+services:
+  web:
+    domain: docs.acme.com
+    replicas: 2
+    port: 80
+    ssl: true
+    ssl_cert_path: /etc/ssl/certs/docs.acme.com.crt
+    ssl_key_path: /etc/ssl/private/docs.acme.com.key
+
+network:
+  ports:
+    - 80
+    - 443
+
+deployment:
+  strategy: "blue-green"
+  health_check_interval: 15
+
+monitoring:
+  enabled: true
+  alerts:
+    enabled: true
+    channels:
+      - slack
+      - email
+      - pagerduty
+
+logging:
+  level: "warn"
+  retention_days: 90
+
+security:
+  require_ssl: true
+  ssl_min_version: "TLSv1.2"

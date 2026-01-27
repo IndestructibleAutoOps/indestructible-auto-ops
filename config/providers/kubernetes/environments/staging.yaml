@@ -1,0 +1,60 @@
+# Kubernetes Staging Environment Configuration
+
+provider:
+  type: kubernetes
+  environment: staging
+
+deployment:
+  namespace:
+    name: machine-native-ops-staging
+    labels:
+      app: machine-native-ops
+      environment: staging
+  
+  deployments:
+    api-server:
+      replicas: 1  # Single replica for staging
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 0
+      selector:
+        matchLabels:
+          app: api-server
+      template:
+        metadata:
+          labels:
+            app: api-server
+        spec:
+          containers:
+            - name: api-server
+              image: "machine-native-ops/api-server:1.0.0-staging"
+              ports:
+                - containerPort: 8080
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+                limits:
+                  cpu: 250m
+                  memory: 256Mi
+              env:
+                - name: LOG_LEVEL
+                  value: "DEBUG"
+                - name: ENVIRONMENT
+                  value: "staging"
+  
+  services:
+    api-server:
+      type: ClusterIP  # Internal only for staging
+      selector:
+        app: api-server
+      ports:
+        - name: http
+          port: 80
+          targetPort: 8080
+  
+  horizontalpodautoscaler:
+    api-server:
+      enabled: false  # Disable auto-scaling for staging

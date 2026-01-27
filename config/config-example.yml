@@ -1,0 +1,235 @@
+# 配置示例文件
+# 複製此文件為 config.yml 並根據需要修改
+
+# ============================================
+# 核心功能配置
+# ============================================
+
+core:
+  linting: true      # 代碼檢查（建議始終啟用）
+  testing: true      # 運行測試（建議始終啟用）
+  building: true     # 構建應用（建議始終啟用）
+
+# ============================================
+# 可選功能配置
+# ============================================
+
+optional:
+  # 安全掃描配置
+  security:
+    enabled: true    # 是否啟用安全掃描
+    
+    # 靜態代碼分析（無需配置，始終可用）
+    sast_scan: true
+    
+    # 依賴掃描（無需配置，始終可用）
+    dependency_scan: true
+    
+    # 容器掃描（需要 Docker，無 Dockerfile 時會跳過）
+    container_scan: false
+    
+    # CodeQL 分析（無需配置，始終可用）
+    codeql_analysis: true
+    
+    # 密鑰掃描（無需配置，始終可用）
+    secret_scan: true
+    
+    # Snyk 掃描（需要 SNYK_TOKEN）
+    snyk_enabled: false
+  
+  # 部署配置
+  deployment:
+    enabled: true    # 是否啟用部署
+    
+    # Staging 環境配置
+    staging:
+      enabled: true
+      auto_deploy: true        # 自動部署到 staging（推送到 develop 時）
+      require_approval: false  # 是否需要批准
+      deployment_target: "local"  # 默認部署目標：local, ssh, docker, kubernetes, aws-ecs
+    
+    # Production 環境配置
+    production:
+      enabled: true
+      auto_deploy: false       # 手動部署到 production（推送到 main 時）
+      require_approval: true   # 需要批准
+      deployment_target: "local"  # 默認部署目標
+      blue_green: true         # 啟用藍綠部署
+  
+  # 集成配置
+  integrations:
+    # 云服務提供商
+    aws: false         # AWS（需要 AWS 憑據）
+    gcp: false         # GCP（需要 GCP 憑據）
+    azure: false       # Azure（需要 Azure 憑據）
+    
+    # 容器註冊表
+    docker_registry: false  # Docker（需要註冊表憑據）
+    
+    # 安全工具
+    snyk: false        # Snyk（需要 SNYK_TOKEN）
+    trivy: true        # Trivy（內置，無需配置）
+    
+    # 通知渠道
+    slack: false       # Slack（需要 SLACK_WEBHOOK）
+    email: false       # 郵件（需要 SMTP 配置）
+    discord: false     # Discord（需要 DISCORD_WEBHOOK）
+    
+    # 監控工具
+    datadog: false     # Datadog（需要 DATADOG_API_KEY）
+    prometheus: false  # Prometheus（需要 PROMETHEUS_ENDPOINT）
+    sentry: false      # Sentry（需要 SENTRY_DSN）
+  
+  # 高級功能
+  advanced:
+    database_migrations: false  # 數據庫遷移（需要數據庫訪問）
+    smoke_tests: true           # 煙霧測試
+    acceptance_tests: false     # 驗收測試
+    performance_tests: false    # 性能測試
+    backup_automation: true     # 自動備份
+
+# ============================================
+# 部署目標配置
+# ============================================
+
+deployment_targets:
+  # 本地部署（默認，無需任何配置）
+  local:
+    enabled: true
+    type: "local"
+    description: "部署到本地文件系統進行測試"
+    requires: []
+  
+  # SSH 部署（需要 SSH 配置）
+  self_hosted:
+    enabled: false
+    type: "ssh"
+    description: "通過 SSH 部署到自託管服務器"
+    requires:
+      - SSH_PRIVATE_KEY
+      - SERVER_HOST
+      - SERVER_USER
+      - DEPLOY_PATH
+      - SERVER_URL
+      - HEALTH_URL
+  
+  # Docker 部署（需要 Docker 配置）
+  docker:
+    enabled: false
+    type: "docker"
+    description: "構建並部署 Docker 容器"
+    requires:
+      - DOCKER_REGISTRY
+      - DOCKER_USERNAME
+      - DOCKER_PASSWORD
+  
+  # Kubernetes 部署（需要 K8s 配置）
+  kubernetes:
+    enabled: false
+    type: "kubernetes"
+    description: "部署到 Kubernetes 集群"
+    requires:
+      - KUBE_CONFIG
+      - KUBE_NAMESPACE
+  
+  # AWS ECS 部署（需要 AWS 配置）
+  aws_ecs:
+    enabled: false
+    type: "aws-ecs"
+    description: "部署到 AWS ECS"
+    requires:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_REGION
+      - ECS_CLUSTER
+      - ECS_SERVICE
+
+# ============================================
+# 環境配置
+# ============================================
+
+environments:
+  staging:
+    enabled: true
+    auto_deploy: true
+    require_approval: false
+    deployment_target: "local"
+    blue_green: false
+    url: "http://staging.example.com"
+  
+  production:
+    enabled: true
+    auto_deploy: false
+    require_approval: true
+    deployment_target: "local"
+    blue_green: true
+    url: "https://example.com"
+
+# ============================================
+# 測試配置
+# ============================================
+
+testing:
+  unit_tests:
+    enabled: true
+    coverage_threshold: 80  # 覆蓋率閾值
+  
+  integration_tests:
+    enabled: true
+    requires_external_services: false
+  
+  e2e_tests:
+    enabled: false
+    requires_browser: false
+  
+  smoke_tests:
+    enabled: true
+    run_after_deployment: true
+
+# ============================================
+# 回滾配置
+# ============================================
+
+rollback:
+  enabled: true
+  auto_rollback: true          # 健康檢查失敗時自動回滾
+  backup_retention_days: 7     # 備份保留天數
+  max_rollback_versions: 5     # 最多保留回滾版本數
+
+# ============================================
+# 通知配置
+# ============================================
+
+notifications:
+  enabled: false
+  
+  channels:
+    - type: "console"
+      enabled: true
+      description: "控制台輸出（始終可用）"
+    
+    - type: "slack"
+      enabled: false
+      description: "Slack 通知"
+      webhook: "${{ secrets.SLACK_WEBHOOK }}"
+    
+    - type: "email"
+      enabled: false
+      description: "郵件通知"
+      smtp_server: "${{ secrets.SMTP_SERVER }}"
+      smtp_port: "${{ secrets.SMTP_PORT }}"
+      smtp_username: "${{ secrets.SMTP_USERNAME }}"
+      smtp_password: "${{ secrets.SMTP_PASSWORD }}"
+      email_to: "${{ secrets.EMAIL_TO }}"
+    
+    - type: "discord"
+      enabled: false
+      description: "Discord 通知"
+      webhook: "${{ secrets.DISCORD_WEBHOOK }}"
+  
+  events:
+    on_deployment_start: true
+    on_deployment_success: true
+    on_deployment_failure: true
+    on_rollback: true
+    on_security_issue: true
