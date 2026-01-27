@@ -53,7 +53,7 @@ jobs:
 
       - name: Upload Flawfinder results to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
-        if: always() &amp;&amp; hashFiles('flawfinder-results.sarif') != ''
+        if: always() && hashFiles('flawfinder-results.sarif') != ''
         with:
           sarif_file: flawfinder-results.sarif
           category: flawfinder
