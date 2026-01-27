@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # ADR-001: Inference Ecosystem Research Integration
 
 ## Status

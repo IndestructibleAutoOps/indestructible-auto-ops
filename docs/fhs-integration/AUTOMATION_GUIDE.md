@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # FHS Integration System - Automated Operation Guide
 # FHS 整合系統 - 自動化運作指南
 

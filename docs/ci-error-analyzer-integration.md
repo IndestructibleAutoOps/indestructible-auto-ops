@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # CI/CD Error Analyzer Integration
 
 ## Overview

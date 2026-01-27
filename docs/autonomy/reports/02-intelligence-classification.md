@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Classification Report: 02-intelligence
 
 **Module**: Intelligence Engine & Multi-Agent Collaboration  

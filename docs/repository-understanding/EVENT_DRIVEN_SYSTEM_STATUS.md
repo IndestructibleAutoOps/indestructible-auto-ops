@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Event-Driven System Status Report
 
 ## System Overview

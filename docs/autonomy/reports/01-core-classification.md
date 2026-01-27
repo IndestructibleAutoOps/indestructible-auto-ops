@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Classification Report: 01-core
 
 **Module**: Core Engine & Infrastructure  

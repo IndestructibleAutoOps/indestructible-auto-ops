@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # GitBook Sync Troubleshooting Guide
 
 ## GitBook Sync Failures

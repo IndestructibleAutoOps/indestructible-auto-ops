@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # YAML 驗證系統指南
 
 ## 概述

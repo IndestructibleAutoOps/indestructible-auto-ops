@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # 操作檢查清單系統
 
 ## 操作前必須執行的檢查

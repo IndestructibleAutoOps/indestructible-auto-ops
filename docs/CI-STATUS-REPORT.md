@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # CI/CD Status Report
 
 ## PR #146: Pluggable CI/CD Architecture

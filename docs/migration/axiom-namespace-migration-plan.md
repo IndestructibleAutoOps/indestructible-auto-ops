@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # AXIOM 到 MachineNativeOps 命名空間遷移計劃
 # AXIOM to MachineNativeOps Namespace Migration Plan
 

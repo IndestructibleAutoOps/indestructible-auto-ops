@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Classification Report: 03-governance
 
 **Module**: Governance System & Policy Enforcement  

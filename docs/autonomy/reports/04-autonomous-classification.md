@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Classification Report: 04-autonomous
 
 **Module**: Autonomous Systems Framework  

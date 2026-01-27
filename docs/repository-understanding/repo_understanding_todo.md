@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Repository Understanding System - Todo List
 
 ## Completed Tasks ✅

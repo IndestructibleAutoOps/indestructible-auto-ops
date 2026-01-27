@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Language Governance Dashboard
 
 **Generated**: 2026-01-18 08:53:17 UTC  

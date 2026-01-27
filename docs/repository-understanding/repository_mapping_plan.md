@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # 儲存庫完整映射計畫
 
 ## 目標

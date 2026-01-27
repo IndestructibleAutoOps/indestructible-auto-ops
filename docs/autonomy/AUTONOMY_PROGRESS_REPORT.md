@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Progress Report
 
 **Generated**: 2026-01-18 11:07 UTC  

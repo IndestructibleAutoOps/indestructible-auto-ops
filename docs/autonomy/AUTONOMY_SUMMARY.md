@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Classification Summary
 
 **Generated**: 2026-01-18 10:55 UTC  

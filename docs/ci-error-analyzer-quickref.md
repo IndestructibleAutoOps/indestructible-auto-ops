@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # CI Error Analyzer - Quick Reference
 
 ## 🚀 Quick Start

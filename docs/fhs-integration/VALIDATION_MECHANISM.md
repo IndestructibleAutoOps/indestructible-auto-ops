@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # FHS 整合驗證機制
 
 ## 概述

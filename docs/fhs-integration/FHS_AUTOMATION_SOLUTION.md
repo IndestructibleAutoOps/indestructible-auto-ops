@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # FHS Integration Automation - Complete Solution
 
 ## 背景

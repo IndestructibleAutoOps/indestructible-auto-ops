@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Phase 1 Infrastructure Integration Guide
 
 **Last Updated**: 2026-01-18  

@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Classification Report: 05-observability
 
 **Module**: Observability & Monitoring System  

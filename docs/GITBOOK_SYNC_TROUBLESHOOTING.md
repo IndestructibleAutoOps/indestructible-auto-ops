@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # GitBook 同步故障排除指南
 
 ## 与 GitBook 同步失败

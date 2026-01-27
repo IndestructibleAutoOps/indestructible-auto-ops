@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # 可插拔 CI/CD 架構指南
 
 ## 概述

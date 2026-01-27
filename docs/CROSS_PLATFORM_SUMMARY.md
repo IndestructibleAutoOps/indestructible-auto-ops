@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Cross-Platform Configuration Summary
 
 ## Executive Summary

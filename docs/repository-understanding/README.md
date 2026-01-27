@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Repository Understanding System - 文檔中心
 
 ## 📚 概述

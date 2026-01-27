@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Multi-Layer Cache Architecture Guide
 
 ## Overview

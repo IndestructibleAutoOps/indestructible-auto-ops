@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 <!-- GL Layer: GL90-99 Meta-Specification Layer -->
 <!-- Purpose: Provide repository Copilot Memory content and setup guidance -->
 # GitHub Copilot Memory Guide

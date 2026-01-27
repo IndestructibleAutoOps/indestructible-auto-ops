@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Pull-All-Files Architecture
 
 <!-- GL Layer: GL30-49 Execution Layer -->

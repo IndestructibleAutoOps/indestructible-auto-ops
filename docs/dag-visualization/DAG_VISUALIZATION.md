@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Module Dependency DAG Visualization
 
 **Generated**: 2026-01-18 08:56:30 UTC  

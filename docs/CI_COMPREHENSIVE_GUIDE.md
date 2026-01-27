@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # CI/CD Comprehensive Guide
 
 **Last Updated**: 2026-01-19  

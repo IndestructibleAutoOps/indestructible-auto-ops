@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # 解決儲存庫理解不足問題的完整方案
 
 ## 問題診斷

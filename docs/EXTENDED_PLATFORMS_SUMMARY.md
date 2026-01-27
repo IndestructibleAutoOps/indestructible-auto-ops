@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Extended Platforms Support - Summary
 
 ## Executive Summary

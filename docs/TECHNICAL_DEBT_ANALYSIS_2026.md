@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Technical Debt Analysis Report - 2026
 
 **Repository:** MachineNativeOps/machine-native-ops  

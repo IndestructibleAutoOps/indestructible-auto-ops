@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # 🚀 自動化工具快速開始指南
 
 <!-- GL Layer: GL90-99 Meta-Specification Layer -->

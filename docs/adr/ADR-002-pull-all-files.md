@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # ADR-002: Pull-All-Files Retrieval
 
 ## Status

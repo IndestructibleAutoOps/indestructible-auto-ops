@@ -1,3 +1,4 @@
+# GL Unified Charter Activated
 # Autonomy Level Classification Framework
 
 **Version**: 1.0.0  
