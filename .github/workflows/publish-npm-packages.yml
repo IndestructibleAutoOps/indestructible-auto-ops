@@ -77,7 +77,7 @@ jobs:
           echo "package-path=${{ matrix.package.path }}/$PACKAGE_FILE" >> $GITHUB_OUTPUT
 
       - name: Attest Build Provenance
-        uses: actions/attest-build-provenance@v3.1.0
+        uses: actions/attest-build-provenance@v3.2.0
         with:
           subject-path: ${{ steps.pack.outputs.package-path }}
 
