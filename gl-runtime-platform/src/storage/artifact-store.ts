@@ -117,6 +117,40 @@ export class ArtifactStore {
     }
   }
 
+  public async listArtifacts(limit: number = 100): Promise<Artifact[]> {
+    const allArtifacts: Artifact[] = [];
+    
+    try {
+      const artifactPath = path.join(this.artifactsPath);
+      const types = await fs.readdir(artifactPath);
+      
+      for (const type of types) {
+        const typePath = path.join(artifactPath, type);
+        const files = await fs.readdir(typePath);
+        
+        for (const file of files) {
+          if (file.endsWith('.json')) {
+            const artifactId = file.replace('.json', '');
+            const artifact = await this.loadArtifact(artifactId);
+            if (artifact) {
+              allArtifacts.push(artifact);
+            }
+          }
+          
+          if (allArtifacts.length >= limit) {
+            return allArtifacts.slice(0, limit);
+          }
+        }
+      }
+    } catch (error: any) {
+      if (error.code !== 'ENOENT') {
+        logger.error(`Failed to list artifacts: ${error.message}`);
+      }
+    }
+    
+    return allArtifacts.slice(0, limit);
+  }
+
   public getArtifactCount(): number {
     return this.artifacts.size;
   }
