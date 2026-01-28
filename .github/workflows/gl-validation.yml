@@ -213,7 +213,7 @@ jobs:
           echo '{"status": "passed", "violations": 0, "compliance": "100%"}' > engine/.governance/audit-reports/global-governance-audit-report.json
       
       - name: Upload Audit Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: global-audit-report
           path: engine/.governance/audit-reports/
