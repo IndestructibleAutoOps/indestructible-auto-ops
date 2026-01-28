@@ -1,0 +1,34 @@
+# @GL-governed
+# GL-ROOT Global Governance Audit & Platform Build
+# Unified Charter v2.0.0 - Governance Event Stream Monitor Configuration
+
+# Governance Event Stream Monitor Configuration
+# GL-ROOT Global Governance Audit & Platform Build
+
+monitor:
+  enabled: true
+  check_interval: 60  # seconds
+  auto_commit: true
+  auto_push: true
+  
+paths:
+  event_streams:
+    - engine/.governance/event-stream.jsonl
+    - engine/.governance/governance-event-stream.jsonl
+    - file-organizer-system/.governance/event-stream.jsonl
+  
+git:
+  user_name: "MachineNativeOps"
+  user_email: "251967226+MachineNativeOps@users.noreply.github.com"
+  commit_message_template: "chore: periodic governance event stream update - {timestamp}"
+  branch: "main"
+  remote: "origin"
+  
+logging:
+  enabled: true
+  log_file: "governance-monitor.log"
+  verbose: true
+  
+notifications:
+  enabled: false
+  # 可以在未來添加通知功能
