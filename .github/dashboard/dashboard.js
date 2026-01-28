@@ -17,7 +17,6 @@ const AUTO_REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes in milliseconds
 const THRESHOLD_SUCCESS = 90;
 const THRESHOLD_WARNING = 75;
 const THRESHOLD_CRITICAL = 60;
-const AUTO_REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
 // Load metrics from GL02-success-metrics.json
 async function loadMetrics() {
@@ -151,13 +150,6 @@ function createMetricCard(metric) {
 }
 
 // Calculate progress percentage
-function calculateProgress(current, target, unit) {
-    if (target === 0) return 0;
-    
-    // For metrics where lower is better (like Time-to-Market)
-    const metricsLowerBetter = ['days', 'incidents'];
-    
-    if (metricsLowerBetter.includes(unit) && current > target) {
 function calculateProgress(current, target, unit = '') {
     if (target === 0) return 0;
     
@@ -331,24 +323,12 @@ function generateAlerts(metrics) {
                 description: `Current: ${formatMetricValue(metric.current, metric.unit)}, Target: ${formatMetricValue(metric.target, metric.unit)}`,
                 icon: '⚠️'
             });
-        } else if (progress < PROGRESS_THRESHOLD_CRITICAL) {
         } else if (progress < THRESHOLD_CRITICAL) {
             alerts.push({
                 type: 'critical',
                 title: `${metric.name} is below critical threshold`,
                 description: `Current: ${formatMetricValue(metric.current, metric.unit)}, Target: ${formatMetricValue(metric.target, metric.unit)}`,
                 icon: '🚨'
-            });
-        }
-        
-        // Warning alerts
-        if (progress >= PROGRESS_THRESHOLD_CRITICAL && progress < PROGRESS_THRESHOLD_WARNING) {
-        if (progress >= THRESHOLD_CRITICAL && progress < THRESHOLD_WARNING) {
-            alerts.push({
-                type: 'warning',
-                title: `${metric.name} needs attention`,
-                description: `Current: ${formatMetricValue(metric.current, metric.unit)}, Target: ${formatMetricValue(metric.target, metric.unit)}`,
-                icon: '⚡'
             });
         }
     });

@@ -4,7 +4,6 @@
 // @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
 //
 // GL Unified Charter Activated
-#!/usr/bin/env node
 /**
  * Gates-01-99 YAML Validator
  * GL Unified Charter Activated v2.0.0

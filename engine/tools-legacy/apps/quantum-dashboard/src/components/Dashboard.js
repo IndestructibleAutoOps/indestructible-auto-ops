@@ -1,14 +1,9 @@
-# @GL-governed
-# @GL-layer: GL90-99
-# @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
-// @GL-governed
-// @GL-layer: GL-L0-UNCLASSIFIED
-// @GL-semantic: governance-layer-unclassified
-// @GL-revision: 1.0.0
-// @GL-status: active
+//# @GL-governed
+//# @GL-layer: GL90-99
+//# @GL-semantic: archive-tools
+//# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+//#
+//# GL Unified Charter Activated
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';

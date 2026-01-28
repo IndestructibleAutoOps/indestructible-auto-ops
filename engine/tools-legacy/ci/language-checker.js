@@ -1,14 +1,9 @@
-# @GL-governed
-# @GL-layer: GL90-99
-# @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
-#!/usr/bin/env node
-// @GL-governed
-// @GL-layer: GL-L0-UNCLASSIFIED
-// @GL-semantic: governance-layer-unclassified
-// @GL-revision: 1.0.0
+//# @GL-governed
+//# @GL-layer: GL90-99
+//# @GL-semantic: archive-tools
+//# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+//#
+//# GL Unified Charter Activated
 // @GL-status: active
 
 /**
