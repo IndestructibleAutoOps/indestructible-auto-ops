@@ -4,28 +4,22 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: pr_comment_summary
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: pr_comment_summary
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 PR Comment Summary Generator
 PR 評論摘要生成器
-
 Generates formatted summary comments for Pull Requests based on
 governance pipeline results.
-
 Usage:
     python tools/docs/pr_comment_summary.py --run-id 12345
     python tools/docs/pr_comment_summary.py --input results.json
 """
-
 import argparse
 import json
 import os
@@ -33,14 +27,11 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-
 try:
     import yaml
 except ImportError:
     print("Error: PyYAML is required. Install with: pip install pyyaml")
     sys.exit(1)
-
-
 def generate_stage_summary(results: dict[str, Any]) -> str:
     """Generate a markdown table summarizing stage results."""
     stages = [
@@ -53,17 +44,14 @@ def generate_stage_summary(results: dict[str, Any]) -> str:
         ("7", "Provenance", "provenance"),
         ("8", "Audit", "audit"),
     ]
-
     lines = [
         "| Stage | Name | Status | Duration |",
         "|-------|------|--------|----------|",
     ]
-
     for num, name, key in stages:
         stage_result = results.get(key, {})
         status = stage_result.get("status", "unknown")
         duration = stage_result.get("duration_ms", 0)
-
         if status == "success":
             status_icon = "✅"
         elif status == "failure":
@@ -72,25 +60,18 @@ def generate_stage_summary(results: dict[str, Any]) -> str:
             status_icon = "⏭️"
         else:
             status_icon = "⚪"
-
         duration_str = f"{duration}ms" if duration else "-"
         lines.append(f"| {num} | {name} | {status_icon} | {duration_str} |")
-
     return "\n".join(lines)
-
-
 def generate_validation_details(results: dict[str, Any]) -> str:
     """Generate details about validation results."""
     details = []
-
     schema_result = results.get("schema", {})
     if schema_result:
         items = schema_result.get("items_validated", 0)
         errors = schema_result.get("errors", [])
-
         details.append("### Schema Validation")
         details.append(f"- Items validated: {items}")
-
         if errors:
             details.append(f"- Errors found: {len(errors)}")
             details.append("```")
@@ -99,11 +80,9 @@ def generate_validation_details(results: dict[str, Any]) -> str:
             if len(errors) > 5:
                 details.append(f"  ... and {len(errors) - 5} more")
             details.append("```")
-
     policy_result = results.get("policy", {})
     if policy_result:
         violations = policy_result.get("violations", [])
-
         details.append("### Policy Gate")
         if violations:
             details.append(f"- Violations: {len(violations)}")
@@ -111,14 +90,10 @@ def generate_validation_details(results: dict[str, Any]) -> str:
                 details.append(f"  - {v}")
         else:
             details.append("- No policy violations")
-
     return "\n".join(details) if details else ""
-
-
 def generate_supply_chain_status(results: dict[str, Any]) -> str:
     """Generate supply chain status summary."""
     lines = ["### Supply Chain Status"]
-
     sbom = results.get("sbom", {})
     if sbom.get("generated"):
         lines.append(f"- 📦 SBOM: Generated ({sbom.get('packages', 0)} packages)")
@@ -126,7 +101,6 @@ def generate_supply_chain_status(results: dict[str, Any]) -> str:
         lines.append(f"- 📦 SBOM: Exists ({sbom.get('packages', 0)} packages)")
     else:
         lines.append("- 📦 SBOM: Not available")
-
     provenance = results.get("provenance", {})
     if provenance.get("generated"):
         lines.append("- 🔏 Provenance: Generated")
@@ -136,15 +110,11 @@ def generate_supply_chain_status(results: dict[str, Any]) -> str:
         lines.append("- 🔏 Provenance: Exists")
     else:
         lines.append("- 🔏 Provenance: Not available")
-
     return "\n".join(lines)
-
-
 def generate_pr_comment(results: dict[str, Any], context: dict[str, str] = None) -> str:
     """Generate the full PR comment markdown."""
     if context is None:
         context = {}
-
     # Determine overall status
     all_passed = all(
         results.get(stage, {}).get("status") in ("success", "skipped")
@@ -159,31 +129,26 @@ def generate_pr_comment(results: dict[str, Any], context: dict[str, str] = None)
             "audit",
         ]
     )
-
     header_emoji = "✅" if all_passed else "⚠️"
     header_text = (
         "Governance Pipeline Passed"
         if all_passed
         else "Governance Pipeline Issues Found"
     )
-
     sections = [
         f"## {header_emoji} {header_text}",
         "",
         generate_stage_summary(results),
         "",
     ]
-
     # Add details if there are issues
     details = generate_validation_details(results)
     if details:
         sections.append(details)
         sections.append("")
-
     # Add supply chain status
     sections.append(generate_supply_chain_status(results))
     sections.append("")
-
     # Add context info
     if context:
         sections.append("---")
@@ -202,7 +167,6 @@ def generate_pr_comment(results: dict[str, Any], context: dict[str, str] = None)
             sections.append(f"- **Timestamp:** {context['timestamp']}")
         sections.append("")
         sections.append("</details>")
-
     # Add footer
     sections.append("")
     if all_passed:
@@ -211,10 +175,7 @@ def generate_pr_comment(results: dict[str, Any], context: dict[str, str] = None)
         sections.append(
             "*Please review the issues above and address them before merging.*"
         )
-
     return "\n".join(sections)
-
-
 def load_results_from_file(file_path: Path) -> dict[str, Any]:
     """Load results from a JSON or YAML file."""
     with open(file_path, "r", encoding="utf-8") as f:
@@ -222,8 +183,6 @@ def load_results_from_file(file_path: Path) -> dict[str, Any]:
             return yaml.safe_load(f)
         else:
             return json.load(f)
-
-
 def main():
     parser = argparse.ArgumentParser(description="Generate PR comment summary")
     parser.add_argument("--input", "-i", help="Input results file (JSON/YAML)")
@@ -235,7 +194,6 @@ def main():
         help="Output format",
     )
     args = parser.parse_args()
-
     # Get context from environment
     context = {
         "commit": os.environ.get("GITHUB_SHA", ""),
@@ -244,7 +202,6 @@ def main():
         "run_id": os.environ.get("GITHUB_RUN_ID", ""),
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
-
     # Load or generate results
     if args.input:
         results = load_results_from_file(Path(args.input))
@@ -275,7 +232,6 @@ def main():
             },
             "audit": {"status": "success", "duration_ms": 300},
         }
-
     # Generate output
     if args.format == "json":
         output = json.dumps(
@@ -288,7 +244,6 @@ def main():
         )
     else:
         output = generate_pr_comment(results, context)
-
     # Write output
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:
@@ -296,9 +251,6 @@ def main():
         print(f"✅ Output written to: {args.output}")
     else:
         print(output)
-
     return 0
-
-
 if __name__ == "__main__":
     sys.exit(main())

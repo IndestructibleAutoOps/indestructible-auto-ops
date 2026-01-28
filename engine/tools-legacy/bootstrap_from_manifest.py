@@ -4,19 +4,15 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: bootstrap_from_manifest
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: bootstrap_from_manifest
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """Bootstrap the repository structure based on island.bootstrap.stage0.yaml."""
 from __future__ import annotations
-
 import argparse
 import os
 import shutil
@@ -25,15 +21,12 @@ import tempfile
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
-
 try:
     import yaml
 except ImportError as exc:  # pragma: no cover
     raise SystemExit(
         "PyYAML is required. Install it via `pip install pyyaml` before running this tool."
     ) from exc
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Materialize the Island AI Stage 0 bootstrap manifest",
@@ -52,29 +45,23 @@ def parse_args() -> argparse.Namespace:
         help="If provided, only run the bootstrap steps whose IDs match these values",
     )
     return parser.parse_args()
-
-
 class BootstrapContext:
     def __init__(self, repo_root: Path, apply_changes: bool) -> None:
         self.repo_root = repo_root
         self.apply = apply_changes
-
     def rel(self, path: Path) -> str:
         try:
             return str(path.relative_to(self.repo_root))
         except ValueError:
             return str(path)
-
     def log(self, message: str) -> None:
         print(message)
-
     def ensure_directory(self, directory: Path) -> None:
         if self.apply:
             directory.mkdir(parents=True, exist_ok=True)
             self.log(f"[dir] ensured {self.rel(directory)}")
         else:
             self.log(f"[dry-run] mkdir -p {self.rel(directory)}")
-
     def copy_file(self, source: Path, target: Path, mode: str | None) -> None:
         if not source.exists():
             self.log(f"[warn] template missing: {self.rel(source)}")
@@ -100,16 +87,13 @@ class BootstrapContext:
             self.log(f"[file] materialized {self.rel(target)} from {self.rel(source)}")
         else:
             self.log(f"[dry-run] cp {self.rel(source)} {self.rel(target)}")
-
     def run_shell(self, script: str) -> None:
         """Execute shell script with proper security considerations.
-
         Security Controls:
         - Input Source: YAML manifest should be version-controlled and code-reviewed
         - File Permissions: Manifest file should have restricted write permissions
         - Validation: Consider verifying manifest signature or checksum before execution
         - Execution Context: Runs in subprocess with cwd restricted to repo_root
-
         Note: This uses shell=True for compatibility with multi-line shell scripts
         from YAML configuration. For untrusted input, use subprocess with shell=False
         and shlex.split() for proper argument parsing.
@@ -146,25 +130,17 @@ class BootstrapContext:
             self.log("[shell] executed block")
         else:
             self.log("[dry-run] shell block:\n" + formatted)
-
-
 def load_manifest(path: Path) -> Mapping[str, Any]:
     data = yaml.safe_load(path.read_text())
     if not isinstance(data, Mapping):  # pragma: no cover
         raise SystemExit("Manifest root must be a mapping")
     return data
-
-
 def _as_str(value: Any, default: str = "") -> str:
     return str(value) if value is not None else default
-
-
 def _iter_sequence(obj: Any) -> Sequence[Any]:
     if isinstance(obj, Sequence) and not isinstance(obj, (str, bytes)):
         return obj
     return []
-
-
 def scaffold_entries(
     entries: Sequence[Mapping[str, Any]], ctx: BootstrapContext
 ) -> None:
@@ -183,8 +159,6 @@ def scaffold_entries(
         for extra in _iter_sequence(entry.get("extra_paths")):
             target = (base / _as_str(extra)).resolve()
             ctx.ensure_directory(target)
-
-
 def materialize_templates(
     templates: Sequence[Mapping[str, Any]], ctx: BootstrapContext
 ) -> None:
@@ -193,8 +167,6 @@ def materialize_templates(
         target = ctx.repo_root / _as_str(template.get("target"))
         mode = _as_str(template.get("mode")) if template.get("mode") else None
         ctx.copy_file(source, target, mode)
-
-
 def execute_bootstrap_sequence(
     sequence: Sequence[Mapping[str, Any]],
     spec: Mapping[str, Any],
@@ -223,19 +195,15 @@ def execute_bootstrap_sequence(
             materialize_templates(templates, ctx)
         else:
             ctx.log(f"[warn] unsupported step kind: {kind}")
-
-
 def main() -> None:
     args = parse_args()
     manifest_path = args.manifest.resolve()
     if not manifest_path.exists():
         raise SystemExit(f"Manifest not found: {manifest_path}")
-
     manifest = load_manifest(manifest_path)
     spec = manifest.get("spec", {})
     if not isinstance(spec, Mapping):  # pragma: no cover
         raise SystemExit("spec section is required in manifest")
-
     ctx = BootstrapContext(repo_root=manifest_path.parent, apply_changes=args.apply)
     automation = spec.get("automation")
     sequence = (
@@ -245,9 +213,6 @@ def main() -> None:
     )
     if not sequence:
         raise SystemExit("No automation.bootstrap_sequence defined in manifest")
-
     execute_bootstrap_sequence(sequence, spec, ctx, args.steps)
-
-
 if __name__ == "__main__":
     main()

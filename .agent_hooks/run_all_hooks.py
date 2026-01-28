@@ -1,13 +1,10 @@
-/**
- * @GL-governed
- * @GL-layer: common
- * @GL-semantic: run_all_hooks
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
 #!/usr/local/bin/python3
+# @GL-governed
+# @GL-layer: common
+# @GL-semantic: run_all_hooks
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 """
 Run all hooks in a given directory by hook type.
 The hook type is the name of the directory in the `BASE_DIR` directory (default: /workspace/.agent_hooks).

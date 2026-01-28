@@ -1,36 +1,27 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: reconciliation
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: reconciliation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Backward Reconciliation Mechanism Implementation
-
 Implements rigid adjustment mechanism for governance loop:
 - 4 reconciliation strategies: Semantic Maximization, Governance Violation, Semantic Conflict, Validation Failure
 - Decision traceback and semantic root traceback
 - Priority queue: 10K capacity, 1000 events/sec throughput
 """
-
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 import heapq
-
-
 class ReconciliationStrategyType(Enum):
     """Types of reconciliation strategies"""
     SEMANTIC_MAXIMIZATION = "SEMANTIC_MAXIMIZATION"
     GOVERNANCE_VIOLATION = "GOVERNANCE_VIOLATION"
     SEMANTIC_CONFLICT = "SEMANTIC_CONFLICT"
     VALIDATION_FAILURE = "VALIDATION_FAILURE"
-
-
 @dataclass
 class ReconciliationAction:
     """Reconciliation action"""
@@ -39,7 +30,6 @@ class ReconciliationAction:
     status: str = "PENDING"
     executed_at: Optional[datetime] = None
     result: Optional[Dict[str, Any]] = None
-    
     def to_dict(self) -> Dict[str, Any]:
         return {
             "action_id": self.action_id,
@@ -48,8 +38,6 @@ class ReconciliationAction:
             "executed_at": self.executed_at.isoformat() if self.executed_at else None,
             "result": self.result,
         }
-
-
 @dataclass
 class ReconciliationResult:
     """Result of reconciliation execution"""
@@ -58,7 +46,6 @@ class ReconciliationResult:
     actions: List[ReconciliationAction] = field(default_factory=list)
     metrics: Dict[str, Any] = field(default_factory=dict)
     errors: List[str] = field(default_factory=list)
-    
     def to_dict(self) -> Dict[str, Any]:
         return {
             "strategy_id": self.strategy_id,
@@ -67,27 +54,21 @@ class ReconciliationResult:
             "metrics": self.metrics,
             "errors": self.errors,
         }
-
-
 @dataclass(order=True)
 class PriorityItem:
     """Priority queue item"""
     priority: int
     item: Any = field(compare=False)
     item: Any
-
-
 class ReconciliationEngine:
     """
     Executes backward reconciliation mechanisms
-    
     Core capabilities:
     - 4 reconciliation strategies
     - Decision and semantic root traceback
     - Priority queue: 10K capacity
     - Throughput: 1000 events/sec
     """
-    
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
         self.strategies = self._init_strategies()
@@ -95,7 +76,6 @@ class ReconciliationEngine:
         self.priority_queue = []
         self.max_queue_capacity = 10000
         self.throughput_target = 1000  # events/sec
-        
     def _init_strategies(self) -> Dict[str, Dict[str, Any]]:
         """Initialize reconciliation strategies"""
         return {
@@ -152,7 +132,6 @@ class ReconciliationEngine:
                 "semantic_boundary": "urn:machinenativeops:gl:recon:validation-failure:1.0.0",
             },
         }
-    
     def _init_traceback_mechanisms(self) -> Dict[str, Dict[str, Any]]:
         """Initialize traceback mechanisms"""
         return {
@@ -169,23 +148,18 @@ class ReconciliationEngine:
                 "capability": "Semantic root version history",
             },
         }
-    
     def execute_reconciliation(self, event: Dict[str, Any]) -> ReconciliationResult:
         """
         Execute reconciliation for an event
-        
         Args:
             event: Event requiring reconciliation
-            
         Returns:
             ReconciliationResult
         """
         # Determine strategy
         strategy = self._determine_strategy(event)
-        
         # Add to priority queue
         self._enqueue_event(event, strategy["priority"])
-        
         # Execute reconciliation actions
         actions = []
         for action_desc in strategy["actions"]:
@@ -197,7 +171,6 @@ class ReconciliationEngine:
                 result={"status": "success"},
             )
             actions.append(action)
-        
         result = ReconciliationResult(
             strategy_id=strategy["strategy_id"],
             status="COMPLETED",
@@ -208,13 +181,10 @@ class ReconciliationEngine:
                 "reconciliation_time_ms": 50,
             },
         )
-        
         return result
-    
     def _determine_strategy(self, event: Dict[str, Any]) -> Dict[str, Any]:
         """Determine appropriate reconciliation strategy"""
         event_type = event.get("type", "")
-        
         if "semantic_conflict" in event_type:
             return self.strategies["SEMANTIC_CONFLICT"]
         elif "governance_violation" in event_type:
@@ -223,16 +193,13 @@ class ReconciliationEngine:
             return self.strategies["VALIDATION_FAILURE"]
         else:
             return self.strategies["SEMANTIC_MAXIMIZATION"]
-    
     def _enqueue_event(self, event: Dict[str, Any], priority: int):
         """Add event to priority queue"""
         if len(self.priority_queue) >= self.max_queue_capacity:
             # Queue full, remove oldest
             heapq.heappop(self.priority_queue)
-        
         item = PriorityItem(priority=priority, item=event)
         heapq.heappush(self.priority_queue, item)
-    
     def trace_decision(self, decision_id: str) -> Dict[str, Any]:
         """Trace decision back to its origin"""
         return {
@@ -242,7 +209,6 @@ class ReconciliationEngine:
             "history": ["step1", "step2", "step3"],
             "semantic_boundary": "urn:machinenativeops:gl:trace:decision:1.0.0",
         }
-    
     def trace_semantic_root(self, semantic_root_id: str) -> Dict[str, Any]:
         """Trace semantic root changes"""
         return {
@@ -251,7 +217,6 @@ class ReconciliationEngine:
             "version_history": ["v1.0.0", "v1.1.0"],
             "semantic_boundary": "urn:machinenativeops:gl:trace:semantic-root:1.0.0",
         }
-    
     def get_queue_status(self) -> Dict[str, Any]:
         """Get priority queue status"""
         return {
@@ -260,8 +225,6 @@ class ReconciliationEngine:
             "throughput_target": self.throughput_target,
             "throughput_actual": min(len(self.priority_queue) * 100, self.throughput_target),
         }
-
-
 # Factory function for creating ReconciliationEngine instances
 def create_reconciliation_engine(config: Optional[Dict[str, Any]] = None) -> ReconciliationEngine:
     """Factory function to create ReconciliationEngine"""

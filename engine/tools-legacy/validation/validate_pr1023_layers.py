@@ -4,48 +4,38 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: validate_pr1023_layers
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: validate_pr1023_layers
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Validate PR #1023 layer coverage (L4–L8).
-
 Checks the presence of key artifacts introduced in PR #1023:
  - L4: monitor modules and quantum tests
  - L5: quantum dashboard UI source
  - L6: Kubernetes manifests for quantum stack and validation system
  - L7: validation tools and evidence chains
  - L8: five-layer quantum security configs
-
 Exit codes:
   0 -> all checks passed
   1 -> one or more checks failed
 """
 from __future__ import annotations
-
 import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List
-
 REPO_ROOT = Path(__file__).resolve().parents[2]
-
-
 @dataclass
 class Check:
     name: str
     patterns: List[str]
     min_count: int = 1
     description: str | None = None
-
     def run(self) -> dict:
         matches: List[str] = []
         for pattern in self.patterns:
@@ -58,8 +48,6 @@ class Check:
             "expected_min": self.min_count,
             "description": self.description or "",
         }
-
-
 def build_checks(evidence_min: int) -> Iterable[Check]:
     return [
         Check(
@@ -104,8 +92,6 @@ def build_checks(evidence_min: int) -> Iterable[Check]:
             description="五層量子安全策略",
         ),
     ]
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate PR #1023 layers (L4–L8).")
     parser.add_argument(
@@ -121,10 +107,8 @@ def main() -> int:
         help="Minimum expected EV-* evidence chain files (default: 23).",
     )
     args = parser.parse_args()
-
     results = [check.run() for check in build_checks(args.evidence_min)]
     all_passed = all(r["passed"] for r in results)
-
     if args.json_output:
         print(
             json.dumps(
@@ -140,9 +124,6 @@ def main() -> int:
             print(f"      patterns: {', '.join(result['patterns'])}")
             print(f"      found: {len(result['found'])} item(s)")
         print(f"\nOverall: {'PASSED' if all_passed else 'FAILED'}")
-
     return 0 if all_passed else 1
-
-
 if __name__ == "__main__":
     raise SystemExit(main())

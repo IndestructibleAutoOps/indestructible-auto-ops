@@ -4,31 +4,25 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: language-governance-analyzer
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: language-governance-analyzer
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Language Governance Analyzer
 分析代碼庫中的語言使用情況，並根據語言策略進行驗證
-
 Usage:
     python language-governance-analyzer.py --config config/language-policy.yaml --repo-root . --output-format json
 """
-
 import argparse
 import json
 import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, List
-
 try:
     import yaml
 except ImportError:
@@ -37,7 +31,6 @@ except ImportError:
         file=sys.stderr,
     )
     sys.exit(1)
-
 # Language extensions mapping
 LANGUAGE_EXTENSIONS = {
     "TypeScript": [".ts", ".tsx"],
@@ -62,14 +55,11 @@ LANGUAGE_EXTENSIONS = {
     "HCL": [".tf", ".hcl"],
     "XML": [".xml"],
 }
-
 # Reverse mapping for faster lookup
 EXTENSION_TO_LANGUAGE = {}
 for lang, exts in LANGUAGE_EXTENSIONS.items():
     for ext in exts:
         EXTENSION_TO_LANGUAGE[ext] = lang
-
-
 def load_policy(config_path: str) -> Dict:
     """Load language policy from YAML file"""
     try:
@@ -78,8 +68,6 @@ def load_policy(config_path: str) -> Dict:
     except Exception as e:
         print(f"Error loading policy file {config_path}: {e}", file=sys.stderr)
         sys.exit(1)
-
-
 def scan_directory(
     repo_root: str, exclude_dirs: List[str] = None
 ) -> Dict[str, Dict[str, int]]:
@@ -97,25 +85,19 @@ def scan_directory(
             "vendor",
             "target",
         ]
-
     stats = defaultdict(lambda: defaultdict(int))
     repo_path = Path(repo_root)
-
     for file_path in repo_path.rglob("*"):
         if not file_path.is_file():
             continue
-
         # Skip excluded directories
         if any(excluded in file_path.parts for excluded in exclude_dirs):
             continue
-
         # Determine language from extension
         ext = file_path.suffix.lower()
         if ext not in EXTENSION_TO_LANGUAGE:
             continue
-
         language = EXTENSION_TO_LANGUAGE[ext]
-
         # Get relative directory - use at least 2 levels for better matching
         try:
             rel_path = file_path.relative_to(repo_path)
@@ -128,12 +110,8 @@ def scan_directory(
                 directory = ""
         except ValueError:
             continue
-
         stats[directory][language] += 1
-
     return dict(stats)
-
-
 def check_violations(
     stats: Dict[str, Dict[str, int]], policy: Dict
 ) -> List[Dict[str, Any]]:
@@ -142,7 +120,6 @@ def check_violations(
     directory_rules = policy.get("directory_rules", {})
     global_policy = policy.get("global_policy", {})
     forbidden_languages = global_policy.get("forbidden_languages", [])
-
     for directory, language_counts in stats.items():
         # Check directory-specific rules - find the most specific match
         dir_rule = None
@@ -153,7 +130,6 @@ def check_violations(
                 if len(rule_pattern) > len(best_match):
                     best_match = rule_pattern
                     dir_rule = rule
-
         for language, count in language_counts.items():
             # Check forbidden languages globally
             if language in forbidden_languages:
@@ -168,16 +144,13 @@ def check_violations(
                     }
                 )
                 continue
-
             # Check directory-specific rules
             if dir_rule:
                 allowed = dir_rule.get("allowed_languages", [])
                 dir_rule.get("forbidden_patterns", [])
-
                 # Configuration and data formats are generally allowed
                 # everywhere
                 config_formats = ["YAML", "JSON", "Markdown", "TOML", "XML"]
-
                 # Check if language is allowed
                 if (
                     allowed
@@ -194,16 +167,12 @@ def check_violations(
                             "rule": f'directory_rules.{directory.rstrip("/")}.allowed_languages',
                             "allowed": allowed,
                         })
-
     return violations
-
-
 def generate_report(
     stats: Dict, violations: List[Dict], output_format: str, output_file: str = None
 ):
     """Generate report in specified format"""
     total_files = sum(sum(langs.values()) for langs in stats.values())
-
     report = {
         "total_files": total_files,
         "violations": violations,
@@ -215,28 +184,23 @@ def generate_report(
             "warning": sum(1 for v in violations if v["severity"] == "WARNING"),
         },
     }
-
     if output_format == "json":
         output = json.dumps(report, indent=2, ensure_ascii=False)
     elif output_format == "markdown":
         output = generate_markdown_report(report)
     else:
         output = generate_text_report(report)
-
     if output_file:
         with open(output_file, "w", encoding="utf-8") as f:
             f.write(output)
     else:
         print(output)
-
-
 def generate_markdown_report(report: Dict) -> str:
     """Generate markdown format report"""
     lines = []
     lines.append("# Language Governance Report\n")
     lines.append(f"**Total Files Scanned:** {report['total_files']}\n")
     lines.append(f"**Total Violations:** {report['summary']['total_violations']}\n")
-
     if report["violations"]:
         lines.append("\n## Violations\n")
         for v in report["violations"]:
@@ -254,7 +218,6 @@ def generate_markdown_report(report: Dict) -> str:
                 lines.append("\n")
     else:
         lines.append("\n✅ No violations found!\n")
-
     lines.append("\n## Language Distribution\n")
     for directory, languages in sorted(report["stats"].items()):
         if languages:
@@ -263,10 +226,7 @@ def generate_markdown_report(report: Dict) -> str:
                 languages.items(), key=lambda x: x[1], reverse=True
             ):
                 lines.append(f"- {lang}: {count} files\n")
-
     return "".join(lines)
-
-
 def generate_text_report(report: Dict) -> str:
     """Generate plain text report"""
     lines = []
@@ -275,7 +235,6 @@ def generate_text_report(report: Dict) -> str:
     lines.append("\n" + "=" * 60)
     lines.append(f"\nTotal Files: {report['total_files']}")
     lines.append(f"Total Violations: {report['summary']['total_violations']}")
-
     if report["violations"]:
         lines.append("\n\nViolations:")
         lines.append("\n" + "-" * 60)
@@ -284,10 +243,7 @@ def generate_text_report(report: Dict) -> str:
             lines.append(f"  {v['message']}")
             if "count" in v:
                 lines.append(f"  Files: {v['count']}")
-
     return "\n".join(lines)
-
-
 def main():
     parser = argparse.ArgumentParser(description="Language Governance Analyzer")
     parser.add_argument(
@@ -302,27 +258,19 @@ def main():
     )
     parser.add_argument("--output-file", help="Output file path")
     args = parser.parse_args()
-
     # Load policy
     policy = load_policy(args.config)
-
     # Scan repository
     print(f"Scanning repository: {args.repo_root}", file=sys.stderr)
     stats = scan_directory(args.repo_root)
-
     # Check violations
     print("Checking for violations...", file=sys.stderr)
     violations = check_violations(stats, policy)
-
     # Generate report
     generate_report(stats, violations, args.output_format, args.output_file)
-
     # Exit with error if violations found
     if violations:
         sys.exit(1)
-
     return 0
-
-
 if __name__ == "__main__":
     sys.exit(main())

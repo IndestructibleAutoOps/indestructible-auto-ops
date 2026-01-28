@@ -17,3 +17,17 @@
 {"timestamp":"2026-01-28T08:00:00Z","event_type":"audit-initiated","audit_id":"gl-root-audit-2026-01-28","governance_charter_version":"2.0.0","status":"started"}
 {"timestamp":"2026-01-28T07:57:37Z","event_type":"validation-executed","system":"engine","violations":0,"critical_violations":0,"status":"passed"}
 {"timestamp":"2026-01-28T07:57:49Z","event_type":"validation-executed","system":"file-organizer-system","violations":0,"critical_violations":0,"status":"passed"}
+{
+  "timestamp": "2026-01-28T07:58:29Z",
+  "event_type": "post-commit-validation",
+  "commit_hash": "bb45bcf237048793d7ea458b8739c3df2ca485dd",
+  "governance_charter_version": "2.0.0",
+  "status": "completed"
+}
+{
+  "timestamp": "2026-01-28T07:59:07Z",
+  "event_type": "post-commit-validation",
+  "commit_hash": "6b18a9a843c9c23ed4116c39ce415ab8a04068c9",
+  "governance_charter_version": "2.0.0",
+  "status": "completed"
+}

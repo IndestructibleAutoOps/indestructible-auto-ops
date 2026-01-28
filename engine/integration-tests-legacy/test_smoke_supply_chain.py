@@ -1,12 +1,9 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: test_smoke_supply_chain
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: test_smoke_supply_chain
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 Smoke Tests for Supply Chain Verification - Quick verification of supply chain functionality
 """
@@ -15,43 +12,31 @@ import sys
 from pathlib import Path
 import tempfile
 import shutil
-
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
-
-
 @pytest.mark.smoke
 class TestSupplyChainVerifierSmoke:
     """Smoke tests for Supply Chain Verifier"""
-    
     @pytest.fixture(scope="class")
     def supply_chain_verifier(self):
         """Create Supply Chain Verifier instance"""
         try:
             from controlplane.validation import SupplyChainVerifier
-            
             verifier = SupplyChainVerifier()
-            
             yield verifier
-                
         except ImportError as e:
             pytest.skip(f"SupplyChainVerifier not importable: {e}")
-    
     def test_verifier_initialization(self, supply_chain_verifier):
         """Test that Supply Chain Verifier initializes correctly"""
         assert supply_chain_verifier is not None
-    
     def test_verifier_structure(self, supply_chain_verifier):
         """Test verifier structure"""
         # Verify structure exists
         assert supply_chain_verifier is not None
-
-
 @pytest.mark.smoke
 class TestSupplyChainStagesSmoke:
     """Smoke tests for individual verification stages"""
-    
     def test_stage1_lint_format_importable(self):
         """Test that Stage 1 (Lint & Format) is importable"""
         try:
@@ -59,7 +44,6 @@ class TestSupplyChainStagesSmoke:
             assert Stage1Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage1Verifier not importable: {e}")
-    
     def test_stage2_schema_semantic_importable(self):
         """Test that Stage 2 (Schema & Semantic) is importable"""
         try:
@@ -67,7 +51,6 @@ class TestSupplyChainStagesSmoke:
             assert Stage2Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage2Verifier not importable: {e}")
-    
     def test_stage3_dependency_importable(self):
         """Test that Stage 3 (Dependency) is importable"""
         try:
@@ -75,7 +58,6 @@ class TestSupplyChainStagesSmoke:
             assert Stage3Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage3Verifier not importable: {e}")
-    
     def test_stage4_sbom_scan_importable(self):
         """Test that Stage 4 (SBOM Scan) is importable"""
         try:
@@ -83,7 +65,6 @@ class TestSupplyChainStagesSmoke:
             assert Stage4Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage4Verifier not importable: {e}")
-    
     def test_stage5_sign_attestation_importable(self):
         """Test that Stage 5 (Sign & Attestation) is importable"""
         try:
@@ -91,7 +72,6 @@ class TestSupplyChainStagesSmoke:
             assert Stage5Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage5Verifier not importable: {e}")
-    
     def test_stage6_admission_policy_importable(self):
         """Test that Stage 6 (Admission Policy) is importable"""
         try:
@@ -99,7 +79,6 @@ class TestSupplyChainStagesSmoke:
             assert Stage6Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage6Verifier not importable: {e}")
-    
     def test_stage7_runtime_monitoring_importable(self):
         """Test that Stage 7 (Runtime Monitoring) is importable"""
         try:
@@ -107,17 +86,13 @@ class TestSupplyChainStagesSmoke:
             assert Stage7Verifier is not None
         except ImportError as e:
             pytest.skip(f"Stage7Verifier not importable: {e}")
-
-
 @pytest.mark.smoke
 class TestSupplyChainTypesSmoke:
     """Smoke tests for supply chain data types"""
-    
     def test_verification_stage_enum(self):
         """Test VerificationStage enum"""
         try:
             from controlplane.validation.supply_chain_types import VerificationStage
-            
             # Verify enum values
             stages = [
                 "STAGE1_LINT_FORMAT",
@@ -128,18 +103,14 @@ class TestSupplyChainTypesSmoke:
                 "STAGE6_ADMISSION_POLICY",
                 "STAGE7_RUNTIME_MONITORING",
             ]
-            
             for stage in stages:
                 assert hasattr(VerificationStage, stage)
-            
         except ImportError as e:
             pytest.skip(f"VerificationStage not importable: {e}")
-    
     def test_verification_evidence(self):
         """Test VerificationEvidence dataclass"""
         try:
             from controlplane.validation.supply_chain_types import VerificationEvidence
-            
             # Create a test evidence
             evidence = VerificationEvidence(
                 stage="STAGE1_LINT_FORMAT",
@@ -147,18 +118,14 @@ class TestSupplyChainTypesSmoke:
                 timestamp="2024-01-01T00:00:00Z",
                 details={"test": "smoke"},
             )
-            
             assert evidence.stage == "STAGE1_LINT_FORMAT"
             assert evidence.status == "passed"
-            
         except ImportError as e:
             pytest.skip(f"VerificationEvidence not importable: {e}")
-    
     def test_chain_verification_result(self):
         """Test ChainVerificationResult dataclass"""
         try:
             from controlplane.validation.supply_chain_types import ChainVerificationResult
-            
             # Create a test result
             result = ChainVerificationResult(
                 project_id="test_project",
@@ -167,30 +134,23 @@ class TestSupplyChainTypesSmoke:
                 stage_results=[],
                 evidence_chain=[],
             )
-            
             assert result.project_id == "test_project"
             assert result.status == "passed"
             assert result.overall_score == 100
-            
         except ImportError as e:
             pytest.skip(f"ChainVerificationResult not importable: {e}")
-
-
 @pytest.mark.smoke
 class TestSupplyChainProjectSmoke:
     """Smoke tests for supply chain project structure"""
-    
     def test_project_structure(self, test_data):
         """Test project structure"""
         project = test_data["supply_chain_small"]
-        
         assert project is not None
         assert "name" in project
         assert "size" in project
         assert "files" in project
         assert "config" in project
         assert "stages" in project["config"]
-        
         # Verify stages
         expected_stages = [
             "lint",
@@ -201,33 +161,25 @@ class TestSupplyChainProjectSmoke:
             "admission",
             "runtime",
         ]
-        
         for stage in expected_stages:
             assert stage in project["config"]["stages"]
-    
     def test_project_files(self, test_data):
         """Test project files structure"""
         project = test_data["supply_chain_small"]
-        
         for file_data in project["files"]:
             assert "path" in file_data
             assert "content" in file_data
             assert "hash" in file_data
-    
     def test_project_services(self, test_data):
         """Test project services structure"""
         project = test_data["supply_chain_small"]
-        
         for service in project["services"]:
             assert "name" in service
             assert "image" in service
             assert "ports" in service
-
-
 @pytest.mark.smoke
 class TestSupplyChainIntegrationSmoke:
     """Smoke tests for supply chain integration"""
-    
     def test_all_stages_available(self):
         """Test that all verification stages are available"""
         try:
@@ -240,7 +192,6 @@ class TestSupplyChainIntegrationSmoke:
                 Stage6Verifier,
                 Stage7Verifier,
             )
-            
             assert all([
                 Stage1Verifier is not None,
                 Stage2Verifier is not None,
@@ -250,10 +201,8 @@ class TestSupplyChainIntegrationSmoke:
                 Stage6Verifier is not None,
                 Stage7Verifier is not None,
             ])
-            
         except ImportError as e:
             pytest.skip(f"Supply chain stages not importable: {e}")
-    
     def test_hash_manager_importable(self):
         """Test that HashManager is importable"""
         try:
@@ -261,7 +210,6 @@ class TestSupplyChainIntegrationSmoke:
             assert HashManager is not None
         except ImportError as e:
             pytest.skip(f"HashManager not importable: {e}")
-    
     def test_supply_chain_verifier_importable(self):
         """Test that SupplyChainVerifier is importable"""
         try:
@@ -269,8 +217,6 @@ class TestSupplyChainIntegrationSmoke:
             assert SupplyChainVerifier is not None
         except ImportError as e:
             pytest.skip(f"SupplyChainVerifier not importable: {e}")
-
-
 @pytest.mark.smoke
 def test_supply_chain_system_integration():
     """Test basic integration of supply chain system components"""
@@ -283,7 +229,6 @@ def test_supply_chain_system_integration():
             VerificationEvidence,
             ChainVerificationResult,
         )
-        
         assert all([
             SupplyChainVerifier is not None,
             HashManager is not None,
@@ -291,16 +236,12 @@ def test_supply_chain_system_integration():
             VerificationEvidence is not None,
             ChainVerificationResult is not None,
         ])
-        
     except ImportError as e:
         pytest.skip(f"Supply chain system integration test failed: {e}")
-
-
 @pytest.mark.smoke
 def test_supply_chain_data_integrity(test_data):
     """Test data integrity of supply chain test data"""
     project = test_data["supply_chain_medium"]
-    
     # Verify project data consistency
     assert project["name"] is not None
     assert len(project["name"]) > 0

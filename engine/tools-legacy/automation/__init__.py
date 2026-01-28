@@ -4,20 +4,15 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: __init__
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: __init__
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 SynergyMesh Automation Framework - 全自動化引擎框架
-
 100% 機器自主操作，零人類介入的自動化系統
-
 架構層次：
 ├── MasterOrchestrator (根目錄主控)
 │   ├── EngineRegistry (引擎註冊中心)
@@ -34,22 +29,17 @@ SynergyMesh Automation Framework - 全自動化引擎框架
     ├── IntegrationEngine
     ├── DeconstructionEngine
     └── ... (可擴展)
-
 Version: 1.0.0
 """
-
 __version__ = "1.0.0"
 __author__ = "SynergyMesh"
-
 from typing import TYPE_CHECKING
-
 if TYPE_CHECKING:
     from .engine_base import BaseEngine, EngineConfig, EngineState
     from .engine_registry import EngineRegistry
     from .engine_scheduler import EngineScheduler
     from .event_bus import EventBus
     from .master_orchestrator import MasterOrchestrator
-
 __all__ = [
     "MasterOrchestrator",
     "BaseEngine",

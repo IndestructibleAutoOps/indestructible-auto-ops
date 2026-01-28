@@ -1,42 +1,30 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: stage6_admission_policy
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: stage6_admission_policy
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification - Stage 6: Admission Policy Gate
-
 This module handles admission policy validation (OPA/Kyverno).
 """
-
 import json
 import logging
 import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
-
 import yaml
-
 from .hash_manager import HashManager
 from .supply_chain_types import VerificationEvidence
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
-
 class Stage6AdmissionPolicyVerifier:
     """Verifier for Stage 6: Admission Policy Gate"""
-
     def __init__(self, repo_path: Path, evidence_dir: Path, hash_manager: HashManager):
         """
         Initialize Stage 6 verifier
-
         Args:
             repo_path: Path to repository
             evidence_dir: Path to evidence directory
@@ -45,37 +33,30 @@ class Stage6AdmissionPolicyVerifier:
         self.repo_path = repo_path
         self.evidence_dir = evidence_dir
         self.hash_manager = hash_manager
-
     def verify(self) -> VerificationEvidence:
         """
         Execute Stage 6: Admission Policy gate verification
-
         Returns:
             VerificationEvidence with validation results
         """
         logger.info("🔍 Stage 6: Admission Policy 門禁驗證開始")
-
         data = {
             "opa_policies": self._validate_opa_policies(),
             "kyverno_policies": self._validate_kyverno_policies(),
             "admission_decisions": self._simulate_admission_decisions(),
             "policy_violations": [],
         }
-
         evidence = self._create_evidence(
             stage=6,
             stage_name="Admission Policy 門禁",
             evidence_type="admission_policy",
             data=data,
         )
-
         logger.info(f"✅ Stage 6 完成: {evidence.compliant and '通過' or '失敗'}")
         return evidence
-
     def _validate_opa_policies(self) -> List[Dict[str, Any]]:
         """驗證 OPA 政策"""
         policies = []
-
         # 檢查 OPA 政策文件
         opa_files = list(self.repo_path.rglob("*.rego"))
         for opa_file in opa_files:
@@ -98,7 +79,6 @@ class Stage6AdmissionPolicyVerifier:
                         "syntactically_valid": False,
                     }
                 )
-
         # 如果沒有找到rego文件，創建默認政策
         if not policies:
             default_policy = {
@@ -113,23 +93,18 @@ class Stage6AdmissionPolicyVerifier:
                 "generated": True,
             }
             policies.append(default_policy)
-
         return policies
-
     def _extract_rego_package(self, content: str) -> str:
         """提取 Rego package"""
         match = re.search(r"package\s+([^\s]+)", content)
         return match.group(1) if match else "unknown"
-
     def _extract_rego_rules(self, content: str) -> List[str]:
         """提取 Rego rules"""
         rules = re.findall(r"(deny|allow|warn)\s*\[", content)
         return list(set(rules)) if rules else ["unknown"]
-
     def _validate_kyverno_policies(self) -> List[Dict[str, Any]]:
         """驗證 Kyverno 政策"""
         policies = []
-
         # 檢查 Kyverno 政策文件
         kyverno_files = list(self.repo_path.rglob("kyverno-*.yaml")) + list(
             self.repo_path.rglob("*-policy.yaml")
@@ -138,7 +113,6 @@ class Stage6AdmissionPolicyVerifier:
             try:
                 with open(kyverno_file, "r") as f:
                     policy_docs = list(yaml.safe_load_all(f))
-
                 for doc in policy_docs:
                     if doc and doc.get("apiVersion") == "kyverno.io/v1":
                         policy_info = {
@@ -159,7 +133,6 @@ class Stage6AdmissionPolicyVerifier:
                         "syntactically_valid": False,
                     }
                 )
-
         # 如果沒有找到Kyverno政策，創建默認政策
         if not policies:
             default_policy = {
@@ -171,13 +144,10 @@ class Stage6AdmissionPolicyVerifier:
                 "generated": True,
             }
             policies.append(default_policy)
-
         return policies
-
     def _simulate_admission_decisions(self) -> List[Dict[str, Any]]:
         """模擬準入決策"""
         decisions = []
-
         # 模擬一些 K8s 資源的準入決策
         resources = [
             {
@@ -195,7 +165,6 @@ class Stage6AdmissionPolicyVerifier:
                 "reason": "Missing resource limits and using latest tag",
             },
         ]
-
         for resource in resources:
             decision_data = {
                 "resource": resource,
@@ -212,9 +181,7 @@ class Stage6AdmissionPolicyVerifier:
                 ),
             }
             decisions.append(decision_data)
-
         return decisions
-
     def _create_evidence(
         self,
         stage: int,
@@ -227,7 +194,6 @@ class Stage6AdmissionPolicyVerifier:
         verification_hash, reproducible_hash = self.hash_manager.compute_dual_hash(
             data_str, f"stage{stage}"
         )
-
         # Save evidence file
         evidence_file = (
             self.evidence_dir / f"stage{stage:02d}-{evidence_type.replace(' ', '_')}.json"
@@ -248,7 +214,6 @@ class Stage6AdmissionPolicyVerifier:
                 indent=2,
                 default=str,
             )
-
         evidence = VerificationEvidence(
             stage=stage,
             stage_name=stage_name,
@@ -261,9 +226,7 @@ class Stage6AdmissionPolicyVerifier:
             rollback_available=True,
             reproducible=True,
         )
-
         return evidence
-
     def _check_compliance(self, data: Dict[str, Any]) -> bool:
         """Check if Stage 6 passed compliance"""
         # Check if all policies are syntactically valid

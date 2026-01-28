@@ -1,40 +1,28 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: stage2_schema_semantic
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: stage2_schema_semantic
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification - Stage 2: Schema/Semantic Validation
-
 This module handles schema and semantic verification for Kubernetes resources.
 """
-
 import logging
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
-
 import yaml
-
 from .hash_manager import HashManager
 from .supply_chain_types import VerificationEvidence
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
-
 class Stage2SchemaSemanticVerifier:
     """Verifier for Stage 2: Schema/Semantic Validation"""
-
     def __init__(self, repo_path: Path, evidence_dir: Path, hash_manager: HashManager):
         """
         Initialize Stage 2 verifier
-
         Args:
             repo_path: Path to repository
             evidence_dir: Path to evidence directory
@@ -43,23 +31,19 @@ class Stage2SchemaSemanticVerifier:
         self.repo_path = repo_path
         self.evidence_dir = evidence_dir
         self.hash_manager = hash_manager
-
     def verify(self) -> VerificationEvidence:
         """
         Execute Stage 2: Schema/Semantic validation
-
         Returns:
             VerificationEvidence with validation results
         """
         logger.info("🔍 Stage 2: Schema/語意驗證開始")
-
         data = {
             "k8s_resources": [],
             "helm_charts": [],
             "semantic_violations": [],
             "policy_violations": [],
         }
-
         # Kubernetes 資源驗證
         k8s_patterns = ["*.yaml", "*.yml"]
         for pattern in k8s_patterns:
@@ -69,15 +53,12 @@ class Stage2SchemaSemanticVerifier:
                     for skip in [".git", "__pycache__", "node_modules"]
                 ):
                     continue
-
                 try:
                     with open(k8s_file, "r") as f:
                         docs = list(yaml.safe_load_all(f))
-
                     for i, doc in enumerate(docs):
                         if not doc:
                             continue
-
                         if "apiVersion" in doc and "kind" in doc:
                             resource = {
                                 "file": str(k8s_file.relative_to(self.repo_path)),
@@ -87,7 +68,6 @@ class Stage2SchemaSemanticVerifier:
                                 "metadata": doc.get("metadata", {}),
                                 "violations": [],
                             }
-
                             # 語意驗證
                             if doc["kind"] in [
                                 "Deployment",
@@ -100,7 +80,6 @@ class Stage2SchemaSemanticVerifier:
                                     .get("spec", {})
                                 )
                                 containers = spec.get("containers", [])
-
                                 for j, container in enumerate(containers):
                                     # 檢查 resource limits
                                     if "resources" not in container:
@@ -119,7 +98,6 @@ class Stage2SchemaSemanticVerifier:
                                                 "severity": "MEDIUM",
                                             }
                                         )
-
                                     # 檢查 image tag
                                     image = container.get("image", "")
                                     if ":latest" in image or ":" not in image:
@@ -131,7 +109,6 @@ class Stage2SchemaSemanticVerifier:
                                                 "severity": "HIGH",
                                             }
                                         )
-
                                     # 檢查 security context
                                     if (
                                         "securityContext" not in container
@@ -144,9 +121,7 @@ class Stage2SchemaSemanticVerifier:
                                                 "severity": "MEDIUM",
                                             }
                                         )
-
                             data["k8s_resources"].append(resource)
-
                             # 收集違規
                             for violation in resource["violations"]:
                                 if violation["severity"] == "HIGH":
@@ -157,20 +132,16 @@ class Stage2SchemaSemanticVerifier:
                                             "severity": "HIGH",
                                         }
                                     )
-
                 except Exception as e:
                     logger.warning(f"無法處理 {k8s_file}: {e}")
-
         evidence = self._create_evidence(
             stage=2,
             stage_name="Schema/語意驗證",
             evidence_type="schema_validation",
             data=data,
         )
-
         logger.info(f"✅ Stage 2 完成: {evidence.compliant and '通過' or '失敗'}")
         return evidence
-
     def _create_evidence(
         self,
         stage: int,
@@ -180,12 +151,10 @@ class Stage2SchemaSemanticVerifier:
     ) -> VerificationEvidence:
         """Create verification evidence"""
         import json
-
         data_str = json.dumps(data, sort_keys=True, default=str)
         verification_hash, reproducible_hash = self.hash_manager.compute_dual_hash(
             data_str, f"stage{stage}"
         )
-
         # Save evidence file
         evidence_file = (
             self.evidence_dir / f"stage{stage:02d}-{evidence_type.replace(' ', '_')}.json"
@@ -206,7 +175,6 @@ class Stage2SchemaSemanticVerifier:
                 indent=2,
                 default=str,
             )
-
         evidence = VerificationEvidence(
             stage=stage,
             stage_name=stage_name,
@@ -219,9 +187,7 @@ class Stage2SchemaSemanticVerifier:
             rollback_available=True,
             reproducible=True,
         )
-
         return evidence
-
     def _check_compliance(self, data: Dict[str, Any]) -> bool:
         """Check if Stage 2 passed compliance"""
         # Fail if there are HIGH severity semantic violations

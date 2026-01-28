@@ -1,20 +1,14 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: test-count-bandit-issues
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: test-count-bandit-issues
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
-
 """Test Count Bandit Issues Script
-
 Validates that the count_bandit_issues script correctly counts high/medium severity
 issues from Bandit JSON reports and handles edge cases gracefully.
 """
-
 import importlib.util
 import json
 import os
@@ -23,12 +17,10 @@ import sys
 import tempfile
 from pathlib import Path
 from typing import Tuple
-
 # Constants
 SCRIPT_TIMEOUT = 10  # seconds
 BANDIT_REPORT_FILENAME = "bandit-report.json"
 SCRIPT_NAME = "count_bandit_issues.py"
-
 # Test Bandit report samples
 TEST_REPORTS = {
     "empty_results": {
@@ -146,21 +138,16 @@ TEST_REPORTS = {
         "metrics": {}
     }
 }
-
-
 def run_count_script_in_temp_dir(report_data) -> Tuple[str, int]:
     """Helper function to run count_bandit_issues.py with a test report.
-    
     Args:
         report_data: Dictionary or string to write to bandit-report.json
-        
     Returns:
         Tuple[str, int]: (stdout, exit_code)
     """
     with tempfile.TemporaryDirectory() as temp_dir:
         original_dir = os.getcwd()
         os.chdir(temp_dir)
-        
         try:
             # Create bandit-report.json
             with open(BANDIT_REPORT_FILENAME, "w") as f:
@@ -168,7 +155,6 @@ def run_count_script_in_temp_dir(report_data) -> Tuple[str, int]:
                     json.dump(report_data, f)
                 else:
                     f.write(report_data)
-            
             # Run the script
             script_path = Path(__file__).parent / SCRIPT_NAME
             result = subprocess.run(
@@ -177,17 +163,12 @@ def run_count_script_in_temp_dir(report_data) -> Tuple[str, int]:
                 text=True,
                 timeout=SCRIPT_TIMEOUT,
             )
-            
             return result.stdout.strip(), result.returncode
-            
         finally:
             os.chdir(original_dir)
-
-
 def test_script_import():
     """Test that the count_bandit_issues script can be imported and has expected functionality"""
     print("Testing import...")
-
     try:
         spec = importlib.util.spec_from_file_location(
             "count_bandit_issues",
@@ -195,27 +176,21 @@ def test_script_import():
         )
         count_bandit = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(count_bandit)
-
         # Verify the module has the expected main function
         if not hasattr(count_bandit, 'main'):
             print("❌ Module is missing expected 'main' function")
             return False
-
         print("✅ Successfully imported count_bandit_issues module with expected functions")
         return True
     except Exception as e:
         print(f"❌ Import failed: {e}")
         return False
-
-
 def test_empty_results():
     """Test counting with empty results"""
     print("\nTesting empty results...")
-
     try:
         output, exit_code = run_count_script_in_temp_dir(TEST_REPORTS["empty_results"])
         expected = "0"
-
         if output == expected:
             print(f"✅ Empty results: got {output} as expected")
             return True
@@ -225,16 +200,12 @@ def test_empty_results():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_high_severity_count():
     """Test counting high severity issues"""
     print("\nTesting high severity count...")
-
     try:
         output, exit_code = run_count_script_in_temp_dir(TEST_REPORTS["high_severity_only"])
         expected = "2"  # 2 HIGH severity issues
-
         if output == expected:
             print(f"✅ High severity count: got {output} as expected")
             return True
@@ -244,16 +215,12 @@ def test_high_severity_count():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_medium_severity_count():
     """Test counting medium severity issues"""
     print("\nTesting medium severity count...")
-
     try:
         output, exit_code = run_count_script_in_temp_dir(TEST_REPORTS["medium_severity_only"])
         expected = "1"  # 1 MEDIUM severity issue
-
         if output == expected:
             print(f"✅ Medium severity count: got {output} as expected")
             return True
@@ -263,16 +230,12 @@ def test_medium_severity_count():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_mixed_severity_count():
     """Test counting mixed severity issues (should count HIGH + MEDIUM only)"""
     print("\nTesting mixed severity count...")
-
     try:
         output, exit_code = run_count_script_in_temp_dir(TEST_REPORTS["mixed_severity"])
         expected = "2"  # 1 HIGH + 1 MEDIUM, LOW should be excluded
-
         if output == expected:
             print(f"✅ Mixed severity count: got {output} (HIGH+MEDIUM only)")
             return True
@@ -282,16 +245,12 @@ def test_mixed_severity_count():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_low_severity_excluded():
     """Test that LOW severity issues are not counted"""
     print("\nTesting LOW severity exclusion...")
-
     try:
         output, exit_code = run_count_script_in_temp_dir(TEST_REPORTS["low_severity_only"])
         expected = "0"  # LOW severity should not be counted
-
         if output == expected:
             print(f"✅ LOW severity excluded: got {output} as expected")
             return True
@@ -301,18 +260,14 @@ def test_low_severity_excluded():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_missing_file():
     """Test handling of missing bandit-report.json file"""
     print("\nTesting missing file handling...")
-
     try:
         # Create a temporary directory without bandit-report.json
         with tempfile.TemporaryDirectory() as temp_dir:
             original_dir = os.getcwd()
             os.chdir(temp_dir)
-
             try:
                 script_path = Path(__file__).parent / SCRIPT_NAME
                 result = subprocess.run(
@@ -321,7 +276,6 @@ def test_missing_file():
                     text=True,
                     timeout=SCRIPT_TIMEOUT,
                 )
-
                 output = result.stdout.strip()
                 expected = "0"
                 exit_code = result.returncode
@@ -333,22 +287,17 @@ def test_missing_file():
                     return False
             finally:
                 os.chdir(original_dir)
-
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_malformed_json():
     """Test handling of malformed JSON"""
     print("\nTesting malformed JSON handling...")
-
     try:
         # Use clearly invalid JSON
         malformed_json = '{"key": unclosed'
         output, exit_code = run_count_script_in_temp_dir(malformed_json)
         expected = "0"
-
         if output == expected and exit_code == 0:
             print(f"✅ Malformed JSON handled gracefully: got {output}, exit code {exit_code}")
             return True
@@ -358,17 +307,13 @@ def test_malformed_json():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def test_malformed_missing_severity_field():
     """Test handling of report with missing severity fields"""
     print("\nTesting missing severity field handling...")
-
     try:
         output, exit_code = run_count_script_in_temp_dir(TEST_REPORTS["malformed_missing_severity"])
         # Should handle gracefully and return 0 since issue has no severity
         expected = "0"
-
         if output == expected:
             print(f"✅ Missing severity field handled: got {output}")
             return True
@@ -378,14 +323,11 @@ def test_malformed_missing_severity_field():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         return False
-
-
 def main():
     """Run all tests"""
     print("=" * 60)
     print("count_bandit_issues.py Test Suite")
     print("=" * 60)
-
     tests = [
         ("Import Test", test_script_import),
         ("Empty Results", test_empty_results),
@@ -397,7 +339,6 @@ def main():
         ("Malformed JSON Handling", test_malformed_json),
         ("Missing Severity Field Handling", test_malformed_missing_severity_field),
     ]
-
     results = []
     for test_name, test_func in tests:
         print(f"\n{'=' * 60}")
@@ -411,28 +352,21 @@ def main():
             import traceback
             traceback.print_exc()
             results.append((test_name, False))
-
     # Summary
     print(f"\n{'=' * 60}")
     print("Test Summary")
     print(f"{'=' * 60}")
-
     passed = sum(1 for _, result in results if result)
     total = len(results)
-
     for test_name, result in results:
         status = "✅ PASS" if result else "❌ FAIL"
         print(f"{status}: {test_name}")
-
     print(f"\nResults: {passed}/{total} tests passed")
-
     if passed == total:
         print("\n🎉 All tests passed!")
         sys.exit(0)
     else:
         print(f"\n⚠️  {total - passed} test(s) failed")
         sys.exit(1)
-
-
 if __name__ == "__main__":
     main()

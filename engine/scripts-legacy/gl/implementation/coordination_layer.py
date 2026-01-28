@@ -1,46 +1,34 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: coordination_layer
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: coordination_layer
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Coordination Layer Implementation
-
 Coordinates all GL core architecture components:
 - Governance Loop Executor
 - Semantic Root Manager
 - Quantum Validator
 - Reconciliation Engine
 """
-
 from typing import Dict, Any, Optional
 from datetime import datetime
 import json
 import logging
-
 from .governance_loop import GovernanceLoopExecutor
 from .semantic_root import SemanticRootManager
 from .quantum_validation import QuantumValidator
 from .reconciliation import ReconciliationEngine
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
 # Configure logging
 logger = logging.getLogger('GLCoordinationLayer')
-
-
 class GLCoordinationLayer:
     """
     Coordinates all GL core architecture components
-    
     Responsibilities:
     - Orchestrate governance loop execution
     - Manage semantic root lifecycle
@@ -48,57 +36,45 @@ class GLCoordinationLayer:
     - Trigger reconciliation when needed
     - Generate comprehensive evidence chains
     """
-    
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
-        
         # Initialize core components
         self.governance_loop = GovernanceLoopExecutor(config)
         self.semantic_root = SemanticRootManager(config)
         self.quantum_validator = QuantumValidator(config)
         self.reconciliation_engine = ReconciliationEngine(config)
-        
         # Coordination state
         self.coordination_session_id = ""
         self.session_start_time = None
         self.session_end_time = None
         self.session_metrics = {}
-    
     def start_coordination_session(self, input_data: Dict[str, Any]) -> str:
         """
         Start a new coordination session
-        
         Args:
             input_data: Input data for the session
-            
         Returns:
             Session ID
         """
         self.coordination_session_id = f"COORD-{datetime.now().timestamp()}"
         self.session_start_time = datetime.now()
-        
         return self.coordination_session_id
-    
     def execute_full_workflow(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Execute the full GL coordination workflow
-        
         Args:
             input_data: Input data for the workflow
-            
         Returns:
             Comprehensive workflow results
         """
         # Start session
         session_id = self.start_coordination_session(input_data)
-        
         workflow_result = {
             "session_id": session_id,
             "components_executed": [],
             "evidence_chains": {},
             "metrics": {},
         }
-        
         try:
             # Step 1: Execute governance loop
             logger.info("Executing governance loop...")
@@ -107,7 +83,6 @@ class GLCoordinationLayer:
             workflow_result["evidence_chains"]["governance_loop"] = (
                 self.governance_loop.generate_evidence_chain(loop_context)
             )
-            
             # Step 2: Validate with quantum validator
             logger.info("Executing quantum validation...")
             validation_result = self.quantum_validator.validate(input_data)
@@ -115,7 +90,6 @@ class GLCoordinationLayer:
             workflow_result["evidence_chains"]["quantum_validation"] = (
                 self.quantum_validator.generate_evidence_chain(validation_result)
             )
-            
             # Step 3: Check if reconciliation is needed
             if validation_result.status.value in ["FAILED", "FELLBACK"]:
                 logger.info("Executing reconciliation...")
@@ -130,7 +104,6 @@ class GLCoordinationLayer:
                 workflow_result["evidence_chains"]["reconciliation"] = (
                     reconciliation_result.to_dict()
                 )
-            
             # Step 4: Update semantic root
             logger.info("Updating semantic root...")
             semantic_seal = self.semantic_root.create_semantic_seal(
@@ -142,29 +115,22 @@ class GLCoordinationLayer:
                 "content_hash": semantic_seal.content_hash,
                 "verified": semantic_seal.verified,
             }
-            
             # Generate session metrics
             self.session_end_time = datetime.now()
             self.session_metrics = self._calculate_session_metrics()
             workflow_result["metrics"] = self.session_metrics
-            
             workflow_result["status"] = "COMPLETED"
             workflow_result["success"] = True
-        
         except Exception as e:
             workflow_result["status"] = "FAILED"
             workflow_result["success"] = False
             workflow_result["error"] = str(e)
-        
         return workflow_result
-    
     def _calculate_session_metrics(self) -> Dict[str, Any]:
         """Calculate session metrics"""
         if not self.session_start_time or not self.session_end_time:
             return {}
-        
         duration_seconds = (self.session_end_time - self.session_start_time).total_seconds()
-        
         return {
             "session_id": self.coordination_session_id,
             "start_time": self.session_start_time.isoformat(),
@@ -175,23 +141,18 @@ class GLCoordinationLayer:
             "semantic_mapping_status": self.semantic_root.get_semantic_mapping_status(),
             "reconciliation_queue_status": self.reconciliation_engine.get_queue_status(),
         }
-    
     def get_governance_loop_executor(self) -> GovernanceLoopExecutor:
         """Get governance loop executor"""
         return self.governance_loop
-    
     def get_semantic_root_manager(self) -> SemanticRootManager:
         """Get semantic root manager"""
         return self.semantic_root
-    
     def get_quantum_validator(self) -> QuantumValidator:
         """Get quantum validator"""
         return self.quantum_validator
-    
     def get_reconciliation_engine(self) -> ReconciliationEngine:
         """Get reconciliation engine"""
         return self.reconciliation_engine
-    
     def generate_comprehensive_evidence_chain(self) -> Dict[str, Any]:
         """Generate comprehensive evidence chain for all components"""
         return {
@@ -203,8 +164,6 @@ class GLCoordinationLayer:
             "reconciliation": self.reconciliation_engine.get_queue_status(),
             "generated_at": datetime.now().isoformat(),
         }
-
-
 # Factory function for creating GLCoordinationLayer instances
 def create_gl_coordination_layer(config: Optional[Dict[str, Any]] = None) -> GLCoordinationLayer:
     """Factory function to create GLCoordinationLayer"""

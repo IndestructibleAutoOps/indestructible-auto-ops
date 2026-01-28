@@ -1,18 +1,13 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: __init__
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: __init__
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Implementation Modules
-
 This package contains concrete implementations for all GL core architecture components.
 """
-
 from .governance_loop import (
     GovernanceLoopExecutor,
     GovernancePhase,
@@ -33,7 +28,6 @@ from .reconciliation import (
     ReconciliationEngine,
     ReconciliationResult,
 )
-
 __all__ = [
     # Governance Loop
     "GovernanceLoopExecutor",
@@ -56,5 +50,4 @@ __all__ = [
     "ReconciliationEngine",
     "ReconciliationResult",
 ]
-
 __version__ = "1.0.0"

@@ -1,21 +1,15 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: count_bandit_issues
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: count_bandit_issues
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
-
 """Count high/medium severity issues from Bandit report."""
 import json
 import sys
-
 def main() -> None:
     """Count HIGH severity issues from Bandit report (for CI blocking).
-    
     MEDIUM severity issues are shown as warnings only and do not block CI.
     """
     try:
@@ -42,6 +36,5 @@ def main() -> None:
         print(f"Error: I/O error reading Bandit report: {exc}", file=sys.stderr)
         print("0")
         sys.exit(0)
-
 if __name__ == "__main__":
     main()

@@ -1,32 +1,24 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: metrics_collector
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: metrics_collector
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Machine-Native Observability Metrics Collector
 Collects and exports metrics for monitoring dashboards.
 """
-
 import json
 import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
-
-
 class MetricsCollector:
     """Collects observability metrics from the repository."""
-
     def __init__(self, repo_root: str = "."):
         self.repo_root = Path(repo_root)
         self.metrics: Dict[str, Any] = {}
-
     def collect_all(self) -> Dict[str, Any]:
         """Collect all metrics."""
         self.metrics = {
@@ -38,7 +30,6 @@ class MetricsCollector:
             "documentation": self._collect_doc_metrics(),
         }
         return self.metrics
-
     def _collect_repo_metrics(self) -> Dict[str, Any]:
         """Collect repository structure metrics."""
         metrics = {
@@ -48,10 +39,8 @@ class MetricsCollector:
             "markdown_files": 0,
             "total_lines": 0,
         }
-        
         # Use pathlib for safe file counting instead of shell commands
         exclude_dirs = {'archive', '.git', '__pycache__', 'node_modules', '.venv', 'venv'}
-        
         for ext, key in [(".py", "python_files"), (".yaml", "yaml_files"), 
                          (".yml", "yaml_files"), (".md", "markdown_files")]:
             try:
@@ -64,15 +53,12 @@ class MetricsCollector:
                 metrics[key] += count
             except (OSError, PermissionError):
                 pass
-        
         metrics["total_files"] = sum([
             metrics["python_files"], 
             metrics["yaml_files"], 
             metrics["markdown_files"]
         ])
-        
         return metrics
-
     def _collect_code_quality_metrics(self) -> Dict[str, Any]:
         """Collect code quality metrics."""
         metrics = {
@@ -81,10 +67,8 @@ class MetricsCollector:
             "linting_enabled": True,
             "type_hints_usage": "partial",
         }
-        
         # Use pathlib for safe file counting instead of shell commands
         exclude_dirs = {'archive', '.git', '__pycache__', 'node_modules', '.venv', 'venv'}
-        
         try:
             count = 0
             for file_path in self.repo_root.rglob("*.py"):
@@ -98,9 +82,7 @@ class MetricsCollector:
             metrics["test_files"] = count
         except (OSError, PermissionError):
             pass
-        
         return metrics
-
     def _collect_ci_metrics(self) -> Dict[str, Any]:
         """Collect CI/CD metrics."""
         workflows_dir = self.repo_root / ".github" / "workflows"
@@ -108,14 +90,11 @@ class MetricsCollector:
             "workflow_count": 0,
             "workflows": [],
         }
-        
         if workflows_dir.exists():
             workflows = list(workflows_dir.glob("*.yml"))
             metrics["workflow_count"] = len(workflows)
             metrics["workflows"] = [w.stem for w in workflows]
-        
         return metrics
-
     def _collect_security_metrics(self) -> Dict[str, Any]:
         """Collect security metrics."""
         return {
@@ -123,7 +102,6 @@ class MetricsCollector:
             "secrets_baseline_exists": (self.repo_root / ".secrets.baseline").exists(),
             "pre_commit_enabled": (self.repo_root / ".pre-commit-config.yaml").exists(),
         }
-
     def _collect_doc_metrics(self) -> Dict[str, Any]:
         """Collect documentation metrics."""
         docs = {
@@ -132,49 +110,36 @@ class MetricsCollector:
             "project_status_exists": (self.repo_root / "PROJECT_STATUS.md").exists(),
         }
         return docs
-
     def export_json(self, output_path: str) -> None:
         """Export metrics to JSON file."""
         with open(output_path, "w") as f:
             json.dump(self.metrics, f, indent=2)
-
     def export_prometheus(self) -> str:
         """Export metrics in Prometheus format."""
         lines = []
         lines.append("# HELP repo_files_total Total number of files by type")
         lines.append("# TYPE repo_files_total gauge")
-        
         repo = self.metrics.get("repository", {})
         for key in ["python_files", "yaml_files", "markdown_files"]:
             lines.append(f'repo_files_total{{type="{key}"}} {repo.get(key, 0)}')
-        
         lines.append("# HELP code_quality_test_files Number of test files")
         lines.append("# TYPE code_quality_test_files gauge")
         lines.append(f'code_quality_test_files {self.metrics.get("code_quality", {}).get("test_files", 0)}')
-        
         lines.append("# HELP ci_workflow_count Number of CI workflows")
         lines.append("# TYPE ci_workflow_count gauge")
         lines.append(f'ci_workflow_count {self.metrics.get("ci_cd", {}).get("workflow_count", 0)}')
-        
         return "\n".join(lines)
-
-
 def main():
     collector = MetricsCollector()
     metrics = collector.collect_all()
-    
     # Export to JSON
     output_dir = Path("reports")
     output_dir.mkdir(exist_ok=True)
     collector.export_json(str(output_dir / "metrics.json"))
-    
     # Print Prometheus format
     print(collector.export_prometheus())
-    
     # Print summary
     print("\n--- Metrics Summary ---")
     print(json.dumps(metrics, indent=2))
-
-
 if __name__ == "__main__":
     main()

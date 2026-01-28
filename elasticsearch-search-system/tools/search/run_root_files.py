@@ -1,21 +1,18 @@
-/**
- * @GL-governed
- * @GL-layer: search
- * @GL-semantic: run_root_files
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+# 
+#  @GL-governed
+#  @GL-layer: search
+#  @GL-semantic: run_root_files
+#  @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+#  GL Unified Charter Activated
+# /
 #!/usr/bin/env python3
 """
 Elasticsearch Search System Root File Runner
 GL-Layer: GL30-49 (Execution)
 Closure-Signal: execution
 """
-
 from __future__ import annotations
-
 import json
 import os
 import subprocess
@@ -23,10 +20,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
-
 import yaml
-
-
 ROOT_FILES = [
     ".root.gates.map.yaml",
     ".root.init.d/00-init.sh",
@@ -43,8 +37,6 @@ ROOT_FILES = [
     ".root.semantic-root.yaml",
     "ROOT_DIRECTORY_DESIGN_REPORT.md",
 ]
-
-
 def _find_repo_root(start_path: Path) -> Path:
     current = start_path
     while current != current.parent:
@@ -52,8 +44,6 @@ def _find_repo_root(start_path: Path) -> Path:
             return current
         current = current.parent
     raise FileNotFoundError("Unable to locate repository root containing 'root' directory")
-
-
 def _parse_semantic_root_version(root_path: Path) -> str:
     semantic_root_file = root_path / ".root.semantic-root.yaml"
     if not semantic_root_file.exists():
@@ -61,8 +51,6 @@ def _parse_semantic_root_version(root_path: Path) -> str:
     with semantic_root_file.open("r", encoding="utf-8") as handle:
         data = yaml.safe_load(handle) or {}
     return str(data.get("metadata", {}).get("version", "unknown"))
-
-
 def _run_init_scripts(root_path: Path, env: Dict[str, str]) -> List[Dict[str, Any]]:
     results: List[Dict[str, Any]] = []
     init_dir = root_path / ".root.init.d"
@@ -79,7 +67,6 @@ def _run_init_scripts(root_path: Path, env: Dict[str, str]) -> List[Dict[str, An
                 "message": "Initialization script not found",
             })
             continue
-
         script_path.chmod(0o755)
         command = f"{bootstrap_cmd} && \"{script_path}\""
         completed = subprocess.run(
@@ -99,8 +86,6 @@ def _run_init_scripts(root_path: Path, env: Dict[str, str]) -> List[Dict[str, An
             entry["return_code"] = completed.returncode
         results.append(entry)
     return results
-
-
 def _collect_file_metadata(root_path: Path) -> List[Dict[str, Any]]:
     metadata: List[Dict[str, Any]] = []
     for relative_path in ROOT_FILES:
@@ -117,8 +102,6 @@ def _collect_file_metadata(root_path: Path) -> List[Dict[str, Any]]:
             })
         metadata.append(entry)
     return metadata
-
-
 def _build_environment(repo_root: Path, root_path: Path, semantic_version: str) -> Dict[str, str]:
     env = os.environ.copy()
     env.update({
@@ -143,16 +126,12 @@ def _build_environment(repo_root: Path, root_path: Path, semantic_version: str) 
         "INTEGRITY_CONFIG": str(repo_root / "controlplane/config/root.integrity.yaml"),
     })
     return env
-
-
 def run_root_files(repo_root: Path) -> Dict[str, Any]:
     root_path = repo_root / "root"
     semantic_version = _parse_semantic_root_version(root_path)
     env = _build_environment(repo_root, root_path, semantic_version)
-
     file_metadata = _collect_file_metadata(root_path)
     script_results = _run_init_scripts(root_path, env)
-
     return {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "repo_root": str(repo_root),
@@ -161,36 +140,28 @@ def run_root_files(repo_root: Path) -> Dict[str, Any]:
         "file_metadata": file_metadata,
         "script_results": script_results,
     }
-
-
 def main() -> int:
     try:
         repo_root = _find_repo_root(Path(__file__).resolve())
     except FileNotFoundError as exc:
         print(f"❌ {exc}")
         return 1
-
     try:
         result = run_root_files(repo_root)
     except Exception as exc:  # pragma: no cover - defensive for CLI usage
         print(f"❌ Failed to run root files: {exc}")
         return 1
-
     output_path = repo_root / "elasticsearch-search-system" / "root-evidence" / "root-file-run.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
-
     print("✅ Elasticsearch search system root files executed")
     print(f"   Output: {output_path}")
     print(f"   Semantic root version: {result['semantic_root_version']}")
-
     failed = [entry for entry in result["script_results"] if entry.get("status") == "failed"]
     missing = [entry for entry in result["script_results"] if entry.get("status") == "missing"]
     if failed or missing:
         print(f"⚠️  Scripts failed: {len(failed)} | missing: {len(missing)}")
         return 1
     return 0
-
-
 if __name__ == "__main__":
     sys.exit(main())

@@ -4,17 +4,13 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: generate-language-dashboard
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: generate-language-dashboard
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
-
 """
 Language Governance Dashboard Generator
 ----------------------------------------
@@ -27,7 +23,6 @@ Generates comprehensive Language Governance Dashboard with:
 - Security status
 - Architecture compliance
 - Mermaid diagrams
-
 Usage:
     python3 tools/generate-language-dashboard.py \
         --governance-report governance/language-governance-report.json \
@@ -37,20 +32,15 @@ Usage:
         --health knowledge/language-health-score.yaml \
         --output docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 """
-
 import argparse
 import datetime
 import glob
 import json
 import os
 from collections import defaultdict
-
 import yaml
 from rich.console import Console
-
 console = Console()
-
-
 def load_json(path: str) -> dict:
     """Load JSON file"""
     if not os.path.exists(path):
@@ -61,8 +51,6 @@ def load_json(path: str) -> dict:
     except Exception as e:
         console.print(f"[yellow]Warning: Could not load {path}: {e}[/yellow]")
         return {}
-
-
 def load_yaml(path: str) -> dict:
     """Load YAML file"""
     if not os.path.exists(path):
@@ -73,8 +61,6 @@ def load_yaml(path: str) -> dict:
     except Exception as e:
         console.print(f"[yellow]Warning: Could not load {path}: {e}[/yellow]")
         return {}
-
-
 def load_sarif(pattern: str) -> list[dict]:
     """Load SARIF files matching pattern"""
     results = []
@@ -83,8 +69,6 @@ def load_sarif(pattern: str) -> list[dict]:
         if data and "runs" in data:
             results.extend(data["runs"])
     return results
-
-
 def calculate_statistics(
     governance_data: dict, codeql_data: list, semgrep_data: list, health_data: dict
 ) -> dict:
@@ -95,12 +79,10 @@ def calculate_statistics(
             "%Y-%m-%d %H:%M:%S UTC"
         ),
     }
-
     # Health score
     stats["health_score"] = health_data.get("overall_score", 0)
     stats["health_grade"] = health_data.get("grade", "N/A")
     stats["health_status"] = get_status_emoji(stats["health_score"])
-
     # Violations
     violations = governance_data.get("violations", [])
     stats["total_violations"] = len(violations)
@@ -110,22 +92,19 @@ def calculate_statistics(
     stats["forbidden_count"] = sum(
         1 for v in violations if "forbidden" in v.get("type", "").lower()
     )
-
     # Security findings
     codeql_count = sum(len(run.get("results", [])) for run in codeql_data)
     semgrep_count = sum(len(run.get("results", [])) for run in semgrep_data)
     stats["security_findings"] = codeql_count + semgrep_count
     stats["codeql_count"] = codeql_count
     stats["semgrep_count"] = semgrep_count
-
     # Architecture
     stats["architecture_compliance"] = (
         health_data.get("components", {})
         .get("architecture_alignment", {})
         .get("score", 0)
-        * 5
+# 5
     )
-
     # Trends
     stats["violation_trend"] = "📈" if stats["total_violations"] > 50 else "📉"
     stats["security_status"] = (
@@ -138,10 +117,7 @@ def calculate_statistics(
         if stats["architecture_compliance"] > 80
         else "🟡" if stats["architecture_compliance"] > 60 else "🔴"
     )
-
     return stats
-
-
 def get_status_emoji(score: float) -> str:
     """Get status emoji for score"""
     if score >= 90:
@@ -154,13 +130,10 @@ def get_status_emoji(score: float) -> str:
         return "🔴 Poor"
     else:
         return "🔴 Critical"
-
-
 def generate_violations_table(violations: list[dict]) -> str:
     """Generate violations table markdown"""
     if not violations:
         return "| Type | File | Issue | Severity |\n|------|------|-------|----------|\n| No violations | - | - | - |\n"
-
     lines = ["| Type | File | Issue | Severity |", "|------|------|-------|----------|"]
     for v in violations[:20]:  # Limit to top 20
         vtype = v.get("type", "Unknown")
@@ -168,79 +141,56 @@ def generate_violations_table(violations: list[dict]) -> str:
         vmsg = v.get("message", "No description")[:80]
         vsev = v.get("severity", "UNKNOWN")
         lines.append(f"| {vtype} | `{vfile}` | {vmsg} | **{vsev}** |")
-
     if len(violations) > 20:
         lines.append(f"| ... | ... | {len(violations) - 20} more violations | ... |")
-
     return "\n".join(lines)
-
-
 def generate_language_chart(governance_data: dict) -> str:
     """Generate ASCII language distribution chart"""
     stats = governance_data.get("statistics", {})
     lang_dist = stats.get("by_language", {})
-
     if not lang_dist:
         return "No language data available"
-
     max_count = max(lang_dist.values()) if lang_dist else 1
     lines = []
-
     for lang, count in sorted(lang_dist.items(), key=lambda x: x[1], reverse=True)[:10]:
         bar_length = int((count / max_count) * 50)
         bar = "█" * bar_length
         lines.append(f"{lang:15} {bar} {count}")
-
     return "\n".join(lines)
-
-
 def generate_trend_chart(history_data: dict) -> str:
     """Generate ASCII trend chart"""
     fixes = history_data.get("fixes", [])
     if not fixes:
         return "No historical data available"
-
     # Group by date
     dates = defaultdict(int)
     for fix in fixes:
         date = fix.get("timestamp", "")[:10]
         dates[date] += 1
-
     # Get last 30 days
     sorted_dates = sorted(dates.items())[-30:]
     if not sorted_dates:
         return "No recent data"
-
     max_count = max(d[1] for d in sorted_dates)
     lines = []
-
     for date, count in sorted_dates:
         bar_length = int((count / max_count) * 30) if max_count > 0 else 0
         bar = "█" * bar_length
         lines.append(f"{date} {bar} {count}")
-
     return "\n".join(lines[-14:])  # Show last 2 weeks
-
-
 def generate_fix_history_table(history_data: dict) -> str:
     """Generate fix history table"""
     fixes = history_data.get("fixes", [])[-10:]  # Last 10 fixes
-
     if not fixes:
         return "| Date | Type | Action | Status |\n|------|------|--------|--------|\n| No fixes yet | - | - | - |\n"
-
     lines = ["| Date | Type | Action | Status |", "|------|------|--------|--------|"]
-
     for fix in reversed(fixes):
         date = fix.get("timestamp", "")[:10]
         ftype = fix.get("type", "Unknown")
         action = fix.get("action", "Unknown")
         status = "✅ Success" if fix.get("success", False) else "❌ Failed"
         lines.append(f"| {date} | {ftype} | {action} | {status} |")
-
     return "\n".join(lines)
-
-
 def generate_hotspot_table(violations: list[dict]) -> str:
     """Generate violation hotspot table"""
     # Count violations by directory
@@ -249,39 +199,30 @@ def generate_hotspot_table(violations: list[dict]) -> str:
         vfile = v.get("file", "")
         vdir = "/".join(vfile.split("/")[:2]) if "/" in vfile else vfile
         dir_counts[vdir] += 1
-
     lines = [
         "| Directory | Violations | Status |",
         "|-----------|------------|--------|",
     ]
-
     for vdir, count in sorted(dir_counts.items(), key=lambda x: x[1], reverse=True)[
         :10
     ]:
         status = "🔴" if count > 10 else "🟡" if count > 5 else "🟢"
         lines.append(f"| `{vdir}` | {count} | {status} |")
-
     return "\n".join(lines)
-
-
 def generate_dashboard(args):
     """Generate complete dashboard"""
     console.print("[cyan]Loading data sources...[/cyan]")
-
     # Load all data
     governance_data = load_json(args.governance_report)
     health_data = load_yaml(args.health)
     history_data = load_yaml(args.history)
     codeql_data = load_sarif(args.codeql_results)
     semgrep_data = load_sarif(args.semgrep_results)
-
     console.print("[cyan]Calculating statistics...[/cyan]")
     stats = calculate_statistics(
         governance_data, codeql_data, semgrep_data, health_data
     )
-
     console.print("[cyan]Generating dashboard sections...[/cyan]")
-
     # Read template
     template_path = args.output
     if os.path.exists(template_path):
@@ -290,7 +231,6 @@ def generate_dashboard(args):
     else:
         console.print("[yellow]Template not found, using default[/yellow]")
         template = "# Dashboard Template Missing"
-
     # Replace placeholders
     replacements = {
         "TIMESTAMP": stats["timestamp"],
@@ -318,26 +258,19 @@ def generate_dashboard(args):
         "FORBIDDEN_COUNT": str(stats["forbidden_count"]),
         "SECURITY_COUNT": str(stats["security_findings"]),
     }
-
     # Apply replacements
     dashboard = template
     for key, value in replacements.items():
         dashboard = dashboard.replace("{{ " + key + " }}", value)
-
     # Write output
     with open(args.output, "w", encoding="utf-8") as f:
         f.write(dashboard)
-
     console.print(f"[green]✓ Dashboard generated: {args.output}[/green]")
-
     # Generate data file
     data_output = args.output.replace(".md", "-data.yaml")
     with open(data_output, "w", encoding="utf-8") as f:
         yaml.dump(stats, f)
-
     console.print(f"[green]✓ Data file generated: {data_output}[/green]")
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="Generate Language Governance Dashboard"
@@ -372,20 +305,14 @@ def main():
         default="docs/LANGUAGE_GOVERNANCE_DASHBOARD.md",
         help="Output dashboard file",
     )
-
     args = parser.parse_args()
-
     try:
         generate_dashboard(args)
     except Exception as e:
         console.print(f"[red]Error generating dashboard: {e}[/red]")
         import traceback
-
         traceback.print_exc()
         return 1
-
     return 0
-
-
 if __name__ == "__main__":
     exit(main())

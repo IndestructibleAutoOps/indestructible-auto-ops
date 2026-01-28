@@ -1,12 +1,9 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: conftest
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: conftest
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 Configuration and fixtures for integration tests
 """
@@ -20,22 +17,16 @@ from datetime import datetime
 from typing import Dict, List, Any
 import redis
 import json
-
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
-
 # Environment configuration
 os.environ["TEST_MODE"] = "true"
 os.environ["LOG_LEVEL"] = "INFO"
-
 # Test markers
 pytest_plugins = []
-
-
 class TestDataFactory:
     """Factory for creating test data"""
-    
     @staticmethod
     def create_memory(count: int = 1, metadata: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         """Create test memory data"""
@@ -50,7 +41,6 @@ class TestDataFactory:
             }
             memories.append(memory)
         return memories
-    
     @staticmethod
     def create_configuration(version: str = "1.0.0") -> Dict[str, Any]:
         """Create test configuration"""
@@ -79,12 +69,10 @@ class TestDataFactory:
                 "memory_compaction": True,
             },
         }
-    
     @staticmethod
     def create_report_data(num_charts: int = 5, num_tables: int = 3) -> Dict[str, Any]:
         """Create test report data"""
         import random
-        
         charts = []
         for i in range(num_charts):
             chart_type = random.choice(["bar", "line", "pie", "scatter"])
@@ -100,7 +88,6 @@ class TestDataFactory:
                 },
             }
             charts.append(chart_data)
-        
         tables = []
         for i in range(num_tables):
             table_data = {
@@ -112,7 +99,6 @@ class TestDataFactory:
                 ],
             }
             tables.append(table_data)
-        
         return {
             "title": "Integration Test Report",
             "created_at": datetime.now().isoformat(),
@@ -123,7 +109,6 @@ class TestDataFactory:
                 "generated_by": "integration-tests",
             },
         }
-    
     @staticmethod
     def create_supply_chain_project(size: str = "small") -> Dict[str, Any]:
         """Create test supply chain project"""
@@ -132,9 +117,7 @@ class TestDataFactory:
             "medium": {"files": 50, "depth": 4, "services": 10},
             "large": {"files": 200, "depth": 6, "services": 30},
         }
-        
         config = sizes.get(size, sizes["small"])
-        
         return {
             "name": f"test_project_{size}_{int(time.time() * 1000)}",
             "size": size,
@@ -160,8 +143,6 @@ class TestDataFactory:
                 "severity": "strict",
             },
         }
-
-
 @pytest.fixture(scope="session")
 def test_config() -> Dict[str, Any]:
     """Global test configuration"""
@@ -180,8 +161,6 @@ def test_config() -> Dict[str, Any]:
             "report_generation_medium_s": 15,
         },
     }
-
-
 @pytest.fixture(scope="session")
 def test_environment(test_config: Dict[str, Any]):
     """Setup test environment"""
@@ -190,22 +169,17 @@ def test_environment(test_config: Dict[str, Any]):
     test_config["output_dir"].mkdir(parents=True, exist_ok=True)
     test_config["log_dir"].mkdir(parents=True, exist_ok=True)
     test_config["report_dir"].mkdir(parents=True, exist_ok=True)
-    
     # Create subdirectories for test data
     (test_config["test_data_dir"] / "memories").mkdir(exist_ok=True)
     (test_config["test_data_dir"] / "configurations").mkdir(exist_ok=True)
     (test_config["test_data_dir"] / "reports").mkdir(exist_ok=True)
     (test_config["test_data_dir"] / "supply_chain").mkdir(exist_ok=True)
-    
     yield test_config
-    
     # Cleanup
     try:
         shutil.rmtree(test_config["output_dir"])
     except Exception as e:
         print(f"Warning: Failed to cleanup output directory: {e}")
-
-
 @pytest.fixture(scope="function")
 def redis_client(test_config: Dict[str, Any]):
     """Redis client for testing"""
@@ -229,13 +203,10 @@ def redis_client(test_config: Dict[str, Any]):
                 client.flushdb()
             except Exception:
                 pass
-
-
 @pytest.fixture(scope="function")
 def test_data(test_config: Dict[str, Any]):
     """Fresh test data for each test"""
     factory = TestDataFactory()
-    
     data = {
         "memories": factory.create_memory(10),
         "configuration": factory.create_configuration(),
@@ -244,12 +215,8 @@ def test_data(test_config: Dict[str, Any]):
         "supply_chain_medium": factory.create_supply_chain_project("medium"),
         "supply_chain_large": factory.create_supply_chain_project("large"),
     }
-    
     yield data
-    
     # Cleanup will be handled by individual tests or redis_client fixture
-
-
 @pytest.fixture(scope="function")
 def performance_metrics():
     """Collect performance metrics during test"""
@@ -261,43 +228,32 @@ def performance_metrics():
         "errors": 0,
         "memory_usage_mb": None,
     }
-    
     class MetricsCollector:
         def start(self):
             metrics["start_time"] = time.time()
-        
         def stop(self):
             metrics["end_time"] = time.time()
             metrics["duration_ms"] = (metrics["end_time"] - metrics["start_time"]) * 1000
-        
         def record_operation(self):
             metrics["operations"] += 1
-        
         def record_error(self):
             metrics["errors"] += 1
-        
         def get_metrics(self):
             if metrics["start_time"] and metrics["end_time"]:
                 metrics["duration_ms"] = (metrics["end_time"] - metrics["start_time"]) * 1000
             return metrics
-    
     collector = MetricsCollector()
     yield collector
-    
     # Log metrics
     final_metrics = collector.get_metrics()
     if final_metrics["duration_ms"]:
         print(f"\n[PERFORMANCE] Duration: {final_metrics['duration_ms']:.2f}ms, "
               f"Operations: {final_metrics['operations']}, "
               f"Errors: {final_metrics['errors']}")
-
-
 @pytest.fixture(scope="session")
 def performance_baseline(test_config: Dict[str, Any]):
     """Performance baseline for comparison"""
     return test_config["performance_baseline"]
-
-
 # Test markers configuration
 def pytest_configure(config):
     """Configure custom markers"""

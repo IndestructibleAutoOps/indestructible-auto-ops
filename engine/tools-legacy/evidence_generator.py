@@ -4,28 +4,22 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: evidence_generator
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: evidence_generator
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 # tools/evidence_generator.py
 # Phase 1：產出 manifest + provenance stub + 簡化 SBOM（檔案清單）+ gate 聚合報告
 # 雜湊：sha3-512（權威）+ sha256（相容）
-
 import hashlib
 import json
 import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-
-
 def hash_file(path: Path):
     h3 = hashlib.sha3_512()
     h2 = hashlib.sha256()
@@ -37,8 +31,6 @@ def hash_file(path: Path):
             h3.update(b)
             h2.update(b)
     return {"sha3-512": h3.hexdigest(), "sha256": h2.hexdigest()}
-
-
 def hash_tree(root: Path):
     items = []
     for p in sorted(root.rglob("*")):
@@ -55,15 +47,12 @@ def hash_tree(root: Path):
     for it in items:
         h3.update((it["path"] + ":" + it["hash"]["sha3-512"]).encode("utf-8"))
     return items, {"sha3-512": h3.hexdigest()}
-
-
 def main():
     repo = Path(".")
     dist = repo / "dist"
     evidence_dir = dist / "evidence"
     reports_dir = dist / "reports"
     evidence_dir.mkdir(parents=True, exist_ok=True)
-
     # 收集 artifacts
     artifacts = []
     artifacts_root = dist / "artifacts"
@@ -77,13 +66,11 @@ def main():
                         "size": p.stat().st_size,
                     }
                 )
-
     # 收集 rootfs
     rootfs = dist / "rootfs"
     rootfs_items, rootfs_hash = ([], {"sha3-512": None})
     if rootfs.exists():
         rootfs_items, rootfs_hash = hash_tree(rootfs)
-
     # Gate reports（若存在就聚合）
     gate_reports = []
     if reports_dir.exists():
@@ -92,7 +79,6 @@ def main():
                 gate_reports.append(json.loads(p.read_text(encoding="utf-8")))
             except Exception:
                 pass
-
     now = datetime.now(timezone.utc).isoformat()
     provenance = {
         "system": "aaps",
@@ -120,14 +106,12 @@ def main():
         },
         "gates": gate_reports,
     }
-
     manifest = {
         "generated_at": now,
         "artifacts": artifacts,
         "rootfs_files": rootfs_items,
         "rootfs_tree_hash": rootfs_hash,
     }
-
     # 簡化 SBOM（Phase 1）：用檔案清單 + hash 代表
     sbom = {
         "spdxVersion": "SPDX-2.3",
@@ -165,7 +149,6 @@ def main():
             for i, it in enumerate(rootfs_items[:5000])  # Phase 1 防爆：上限 5000
         ],
     }
-
     (dist / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
     )
@@ -179,10 +162,7 @@ def main():
         json.dumps({"gates": gate_reports}, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-
     print("Evidence generated under dist/evidence/")
     return 0
-
-
 if __name__ == "__main__":
     sys.exit(main())

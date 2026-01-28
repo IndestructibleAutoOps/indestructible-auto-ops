@@ -4,28 +4,23 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: gl_aep_engine_auditor
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: gl_aep_engine_auditor
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 GL Unified Charter - AEP Engine Governance Auditor
 ===================================================
 Executes one-by-one isolated ETL → Elasticsearch pipeline for all AEP Engine files.
-
 GL Unified Charter Activated
 - Strict GL Root Semantic Anchor compliance
 - Mandatory governance event stream
 - Consistency / Reversibility / Provability enforcement
 - No continue-on-error policy
 """
-
 import os
 import json
 import hashlib
@@ -35,17 +30,14 @@ from pathlib import Path
 from typing import Dict, List, Any
 from dataclasses import dataclass, asdict
 from enum import Enum
-
 # Compile regex pattern once at module level for performance
 TYPESCRIPT_ANY_PATTERN = re.compile(r':\s*any\b')
-
 class Severity(Enum):
     CRITICAL = "CRITICAL"
     HIGH = "HIGH"
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     INFO = "INFO"
-
 class IssueType(Enum):
     PIPELINE_ERROR = "pipeline_execution_error"
     SCHEMA_MISMATCH = "schema_mismatch"
@@ -57,7 +49,6 @@ class IssueType(Enum):
     DAG_BREAK = "dag_governance_chain_break"
     SYNTAX_ERROR = "syntax_error"
     TYPE_ERROR = "type_error"
-
 @dataclass
 class GovernanceEvent:
     """Represents a governance event in the event stream."""
@@ -70,7 +61,6 @@ class GovernanceEvent:
     status: str
     details: Dict[str, Any]
     evidence_hash: str
-
 @dataclass
 class FileAuditResult:
     """Result of auditing a single file."""
@@ -86,7 +76,6 @@ class FileAuditResult:
     governance_events: List[GovernanceEvent]
     timestamp: str
     execution_time_ms: int
-
 @dataclass
 class GlobalAuditReport:
     """Global governance audit report aggregating all file results."""
@@ -103,10 +92,8 @@ class GlobalAuditReport:
     governance_event_summary: Dict[str, Any]
     best_practice_recommendations: List[Dict[str, Any]]
     migration_suggestions: List[Dict[str, Any]]
-
 class GLRootSemanticAnchor:
     """GL Root Semantic Anchor resolver and validator."""
-    
     LAYER_MAPPING = {
         "00-strategic": "GL-00",
         "10-operational": "GL-10",
@@ -116,7 +103,6 @@ class GLRootSemanticAnchor:
         "81-extended": "GL-81",
         "90-meta": "GL-90"
     }
-    
     FILE_TYPE_ANCHORS = {
         ".ts": "GL-30-EXEC-TS",
         ".js": "GL-30-EXEC-JS",
@@ -126,24 +112,19 @@ class GLRootSemanticAnchor:
         ".md": "GL-90-META-DOC",
         ".d.ts": "GL-30-EXEC-TYPEDEF"
     }
-    
     @classmethod
     def resolve_anchor(cls, file_path: str) -> str:
         """Resolve the semantic anchor for a given file."""
         path = Path(file_path)
         suffix = path.suffix
-        
         # Check for .d.ts files
         if file_path.endswith('.d.ts'):
             return cls.FILE_TYPE_ANCHORS['.d.ts']
-        
         return cls.FILE_TYPE_ANCHORS.get(suffix, "GL-90-META-UNKNOWN")
-    
     @classmethod
     def resolve_layer(cls, file_path: str) -> str:
         """Resolve the GL layer for a given file."""
         path_parts = Path(file_path).parts
-        
         # Engine files are execution layer
         if 'engine' in path_parts:
             if 'tests' in path_parts:
@@ -152,25 +133,18 @@ class GLRootSemanticAnchor:
                 return "GL-10-OPERATIONAL"
             else:
                 return "GL-30-EXECUTION"
-        
         return "GL-90-META"
-
 class ETLPipeline:
     """ETL Pipeline executor for governance audit."""
-    
     def __init__(self, base_path: str):
         self.base_path = Path(base_path)
-    
     def extract(self, file_path: str) -> Dict[str, Any]:
         """Extract data from a file."""
         full_path = self.base_path / file_path
-        
         if not full_path.exists():
             raise FileNotFoundError(f"File not found: {file_path}")
-        
         content = full_path.read_text(encoding='utf-8', errors='replace')
         stat = full_path.stat()
-        
         return {
             "file_path": file_path,
             "content": content,
@@ -180,20 +154,17 @@ class ETLPipeline:
             "line_count": len(content.splitlines()),
             "file_extension": full_path.suffix
         }
-    
     def transform(self, extracted_data: Dict[str, Any]) -> Dict[str, Any]:
         """Transform extracted data with governance metadata."""
         file_path = extracted_data["file_path"]
         content = extracted_data["content"]
-        
         # Analyze content for governance markers
         gl_markers = self._detect_gl_markers(content)
         semantic_markers = self._detect_semantic_markers(content)
         metadata = self._extract_metadata(content, file_path)
         issues = self._detect_issues(content, file_path, extracted_data)
-        
         return {
-            **extracted_data,
+#*extracted_data,
             "gl_markers": gl_markers,
             "semantic_markers": semantic_markers,
             "metadata": metadata,
@@ -202,7 +173,6 @@ class ETLPipeline:
             "semantic_anchor": GLRootSemanticAnchor.resolve_anchor(file_path),
             "governance_compliant": len([i for i in issues if i["severity"] in ["CRITICAL", "HIGH"]]) == 0
         }
-    
     def load(self, transformed_data: Dict[str, Any]) -> Dict[str, Any]:
         """Load transformed data (prepare for ES indexing)."""
         return {
@@ -222,33 +192,26 @@ class ETLPipeline:
                 "indexed_at": datetime.datetime.utcnow().isoformat()
             }
         }
-    
     def _detect_gl_markers(self, content: str) -> List[str]:
         """Detect GL governance markers in content."""
         markers = []
         gl_patterns = ["GL-", "gl_", "governance", "Governance", "GOVERNANCE"]
-        
         for line in content.splitlines():
             for pattern in gl_patterns:
                 if pattern in line:
                     markers.append(line.strip()[:100])
                     break
-        
         return markers[:50]  # Limit to 50 markers
-    
     def _detect_semantic_markers(self, content: str) -> List[str]:
         """Detect semantic markers in content."""
         markers = []
         semantic_patterns = ["@semantic", "@anchor", "semantic:", "anchor:"]
-        
         for line in content.splitlines():
             for pattern in semantic_patterns:
                 if pattern.lower() in line.lower():
                     markers.append(line.strip()[:100])
                     break
-        
         return markers[:20]
-    
     def _extract_metadata(self, content: str, file_path: str) -> Dict[str, Any]:
         """Extract metadata from file content."""
         metadata = {
@@ -263,7 +226,6 @@ class ETLPipeline:
             "has_readme_reference": "README" in content,
             "has_license": "license" in content.lower() or "LICENSE" in content
         }
-        
         # JSON specific
         if file_path.endswith('.json'):
             try:
@@ -271,13 +233,10 @@ class ETLPipeline:
                 metadata["valid_json"] = True
             except json.JSONDecodeError:
                 metadata["valid_json"] = False
-        
         return metadata
-    
     def _detect_issues(self, content: str, file_path: str, extracted_data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Detect governance and quality issues."""
         issues = []
-        
         # Check for missing GL markers
         if "GL-" not in content and "gl_" not in content:
             issues.append({
@@ -287,7 +246,6 @@ class ETLPipeline:
                 "file_path": file_path,
                 "recommendation": "Add GL layer annotation comment at file header"
             })
-        
         # Check for missing semantic manifest reference
         if "@semantic" not in content.lower() and "semantic" not in content.lower():
             issues.append({
@@ -297,7 +255,6 @@ class ETLPipeline:
                 "file_path": file_path,
                 "recommendation": "Add semantic anchor annotation"
             })
-        
         # Check naming conventions
         path = Path(file_path)
         if path.stem != path.stem.lower() and not path.stem[0].isupper():
@@ -310,7 +267,6 @@ class ETLPipeline:
                     "file_path": file_path,
                     "recommendation": "Use snake_case or kebab-case for file names"
                 })
-        
         # Check for TypeScript issues
         if file_path.endswith('.ts'):
             # Cheap fast-path: skip detailed scanning if there is no obvious 'any' usage
@@ -324,11 +280,9 @@ class ETLPipeline:
                 lines = content.split('\n')
                 any_count = 0
                 in_block_comment = False
-                
                 # Use precompiled regex with word boundary to avoid matching 'anyThing', 'anyType', etc.
                 for i, line in enumerate(lines):
                     stripped = line.strip()
-                    
                     # Handle block comments - check for single-line vs multiline
                     if '/*' in stripped and '*/' in stripped:
                         # Single-line block comment - remove it and process the rest of the line
@@ -351,16 +305,13 @@ class ETLPipeline:
                         continue
                     else:
                         line_to_check = line
-                    
                     # Skip if the entire line is a line comment
                     if line_to_check.strip().startswith('//'):
                         continue
-                    
                     # For inline comments, we use a simple heuristic since proper parsing is complex
                     # Limitation: This may incorrectly split on '//' within string literals (e.g., URLs)
                     # A proper fix would require a full TypeScript parser, but this works for most cases
                     code_part = line_to_check.split('//')[0] if '//' in line_to_check else line_to_check
-                    
                     # Count occurrences of ': any' or ':any' with word boundary
                     matches = TYPESCRIPT_ANY_PATTERN.findall(code_part)
                     if matches:
@@ -383,7 +334,6 @@ class ETLPipeline:
                                     has_ignore = True
                         if not has_ignore:
                             any_count += len(matches)
-                
                 if any_count > 0:
                     issues.append({
                         "type": IssueType.TYPE_ERROR.value,
@@ -392,7 +342,6 @@ class ETLPipeline:
                         "file_path": file_path,
                         "recommendation": "Replace 'any' with specific types for better type safety"
                     })
-            
             # Check for missing exports in non-test files
             if "tests" not in file_path and "export " not in content:
                 issues.append({
@@ -402,7 +351,6 @@ class ETLPipeline:
                     "file_path": file_path,
                     "recommendation": "Add exports for module functionality"
                 })
-        
         # Check for missing documentation
         if file_path.endswith('.ts') and "/**" not in content:
             issues.append({
@@ -412,7 +360,6 @@ class ETLPipeline:
                 "file_path": file_path,
                 "recommendation": "Add JSDoc comments for public APIs"
             })
-        
         # Check README files
         if file_path.endswith('README.md'):
             if len(content) < 100:
@@ -423,7 +370,6 @@ class ETLPipeline:
                     "file_path": file_path,
                     "recommendation": "Expand README with usage examples and API documentation"
                 })
-        
         # Check JSON validity
         if file_path.endswith('.json'):
             try:
@@ -436,19 +382,15 @@ class ETLPipeline:
                     "file_path": file_path,
                     "recommendation": "Fix JSON syntax errors"
                 })
-        
         return issues
-
 class GovernanceAuditEngine:
     """Main governance audit engine orchestrator."""
-    
     def __init__(self, repo_path: str):
         self.repo_path = Path(repo_path)
         self.etl_pipeline = ETLPipeline(repo_path)
         self.governance_events: List[GovernanceEvent] = []
         self.file_results: List[FileAuditResult] = []
         self.start_time = datetime.datetime.utcnow()
-    
     def emit_event(self, event_type: str, source_file: str, status: str, details: Dict[str, Any]) -> GovernanceEvent:
         """Emit a governance event."""
         event = GovernanceEvent(
@@ -464,12 +406,10 @@ class GovernanceAuditEngine:
         )
         self.governance_events.append(event)
         return event
-    
     def audit_file(self, file_path: str) -> FileAuditResult:
         """Audit a single file through the ETL pipeline."""
         start_time = datetime.datetime.utcnow()
         file_events = []
-        
         # Emit start event
         file_events.append(self.emit_event(
             "ETL_START",
@@ -477,7 +417,6 @@ class GovernanceAuditEngine:
             "STARTED",
             {"phase": "extract"}
         ))
-        
         try:
             # Extract
             extracted = self.etl_pipeline.extract(file_path)
@@ -487,7 +426,6 @@ class GovernanceAuditEngine:
                 "SUCCESS",
                 {"size_bytes": extracted["size_bytes"], "line_count": extracted["line_count"]}
             ))
-            
             # Transform
             transformed = self.etl_pipeline.transform(extracted)
             file_events.append(self.emit_event(
@@ -496,7 +434,6 @@ class GovernanceAuditEngine:
                 "SUCCESS",
                 {"issues_count": len(transformed["issues"]), "gl_compliant": transformed["governance_compliant"]}
             ))
-            
             # Load (prepare for ES)
             loaded = self.etl_pipeline.load(transformed)
             file_events.append(self.emit_event(
@@ -505,10 +442,8 @@ class GovernanceAuditEngine:
                 "SUCCESS",
                 {"index": loaded["index"]}
             ))
-            
             etl_status = "SUCCESS"
             es_status = "READY"
-            
         except Exception as e:
             file_events.append(self.emit_event(
                 "ETL_ERROR",
@@ -532,10 +467,8 @@ class GovernanceAuditEngine:
                 "content_hash": ""
             }
             extracted = {"content_hash": "", "file_extension": Path(file_path).suffix}
-        
         end_time = datetime.datetime.utcnow()
         execution_time_ms = int((end_time - start_time).total_seconds() * 1000)
-        
         result = FileAuditResult(
             file_path=file_path,
             file_type=extracted.get("file_extension", "unknown"),
@@ -550,15 +483,12 @@ class GovernanceAuditEngine:
             timestamp=end_time.isoformat(),
             execution_time_ms=execution_time_ms
         )
-        
         self.file_results.append(result)
         return result
-    
     def generate_global_report(self) -> GlobalAuditReport:
         """Generate the global governance audit report."""
         issues_by_severity = {s.value: 0 for s in Severity}
         issues_by_type = {t.value: 0 for t in IssueType}
-        
         for result in self.file_results:
             for issue in result.issues:
                 severity = issue.get("severity", "INFO")
@@ -567,15 +497,12 @@ class GovernanceAuditEngine:
                     issues_by_severity[severity] += 1
                 if issue_type in issues_by_type:
                     issues_by_type[issue_type] += 1
-        
         files_passed = len([r for r in self.file_results if r.etl_status == "SUCCESS" and 
                           len([i for i in r.issues if i["severity"] in ["CRITICAL", "HIGH"]]) == 0])
         files_failed = len(self.file_results) - files_passed
-        
         # Generate recommendations
         recommendations = self._generate_recommendations()
         migrations = self._generate_migration_suggestions()
-        
         return GlobalAuditReport(
             report_id=hashlib.sha256(f"{self.start_time.isoformat()}-global".encode()).hexdigest()[:16],
             gl_charter_version="GL-UNIFIED-CHARTER-v1.0",
@@ -595,29 +522,24 @@ class GovernanceAuditEngine:
             best_practice_recommendations=recommendations,
             migration_suggestions=migrations
         )
-    
     def _count_events_by_type(self) -> Dict[str, int]:
         """Count governance events by type."""
         counts = {}
         for event in self.governance_events:
             counts[event.event_type] = counts.get(event.event_type, 0) + 1
         return counts
-    
     def _count_events_by_status(self) -> Dict[str, int]:
         """Count governance events by status."""
         counts = {}
         for event in self.governance_events:
             counts[event.status] = counts.get(event.status, 0) + 1
         return counts
-    
     def _generate_recommendations(self) -> List[Dict[str, Any]]:
         """Generate best practice recommendations."""
         recommendations = []
-        
         # Analyze common issues
         gl_marker_missing_count = sum(1 for r in self.file_results 
                                       for i in r.issues if i["type"] == IssueType.GL_MARKER_MISSING.value)
-        
         if gl_marker_missing_count > 0:
             recommendations.append({
                 "id": "REC-001",
@@ -628,11 +550,9 @@ class GovernanceAuditEngine:
                 "action": "Add GL layer annotation comments to file headers",
                 "template": "// @gl-layer: GL-30-EXECUTION\n// @semantic-anchor: GL-30-EXEC-TS"
             })
-        
         # Check for documentation
         doc_missing_count = sum(1 for r in self.file_results 
                                for i in r.issues if "documentation" in i.get("message", "").lower())
-        
         if doc_missing_count > 0:
             recommendations.append({
                 "id": "REC-002",
@@ -642,13 +562,10 @@ class GovernanceAuditEngine:
                 "description": f"{doc_missing_count} files need better documentation",
                 "action": "Add JSDoc comments for all public APIs and exports"
             })
-        
         return recommendations
-    
     def _generate_migration_suggestions(self) -> List[Dict[str, Any]]:
         """Generate migration suggestions for better structure."""
         suggestions = []
-        
         # Suggest consolidating test files
         test_files = [r for r in self.file_results if "test" in r.file_path.lower()]
         if len(test_files) > 0:
@@ -661,45 +578,36 @@ class GovernanceAuditEngine:
                 "suggested_path": "engine/__tests__/",
                 "rationale": "Follow Jest conventions for test file organization"
             })
-        
         return suggestions
-
 def discover_engine_files(repo_path: str) -> List[str]:
     """Discover all files in the engine directory."""
     engine_path = Path(repo_path) / "engine"
     files = []
-    
     for file_path in engine_path.rglob("*"):
         if file_path.is_file():
             relative_path = str(file_path.relative_to(repo_path))
             files.append(relative_path)
-    
     return sorted(files)
-
 def main():
     """Main execution entry point."""
     repo_path = os.environ.get("REPO_PATH", "/workspace/machine-native-ops")
     output_dir = Path(repo_path) / "governance-audit-results"
     output_dir.mkdir(exist_ok=True)
-    
     print("=" * 80)
     print("GL UNIFIED CHARTER ACTIVATED")
     print("AEP Engine Governance Audit Pipeline")
     print("=" * 80)
     print()
-    
     # Discover files
     print("[Phase 1] Discovering AEP Engine files...")
     files = discover_engine_files(repo_path)
     print(f"  Found {len(files)} files to audit")
     print()
-    
     # Initialize audit engine
     print("[Phase 2] Initializing Governance Audit Engine...")
     engine = GovernanceAuditEngine(repo_path)
     print("  Engine initialized")
     print()
-    
     # Audit each file
     print("[Phase 3] Executing ETL Pipeline (One-by-One Isolated Execution)...")
     for i, file_path in enumerate(files, 1):
@@ -709,7 +617,6 @@ def main():
         issue_count = len(result.issues)
         print(f"    {status_icon} ETL: {result.etl_status} | Issues: {issue_count} | Time: {result.execution_time_ms}ms")
     print()
-    
     # Generate global report
     print("[Phase 4] Generating Global Governance Audit Report...")
     global_report = engine.generate_global_report()
@@ -717,10 +624,8 @@ def main():
     print(f"  Passed: {global_report.files_passed}")
     print(f"  Failed: {global_report.files_failed}")
     print()
-    
     # Save reports
     print("[Phase 5] Saving Audit Artifacts...")
-    
     # Save global report
     global_report_path = output_dir / "GLOBAL_GOVERNANCE_AUDIT_REPORT.json"
     with open(global_report_path, 'w', encoding='utf-8') as f:
@@ -732,7 +637,6 @@ def main():
             fr["governance_events"] = [asdict(e) if hasattr(e, '__dataclass_fields__') else e for e in fr["governance_events"]]
         json.dump(report_dict, f, indent=2, default=str)
     print(f"  Saved: {global_report_path}")
-    
     # Save per-file reports
     per_file_dir = output_dir / "per-file-reports"
     per_file_dir.mkdir(exist_ok=True)
@@ -744,14 +648,12 @@ def main():
             result_dict["governance_events"] = [asdict(e) if hasattr(e, '__dataclass_fields__') else e for e in result.governance_events]
             json.dump(result_dict, f, indent=2, default=str)
     print(f"  Saved {len(global_report.file_results)} per-file reports to {per_file_dir}")
-    
     # Save governance event stream
     events_path = output_dir / "governance_event_stream.json"
     with open(events_path, 'w', encoding='utf-8') as f:
         events_list = [asdict(e) for e in engine.governance_events]
         json.dump(events_list, f, indent=2, default=str)
     print(f"  Saved: {events_path}")
-    
     # Generate summary markdown
     summary_path = output_dir / "AUDIT_SUMMARY.md"
     with open(summary_path, 'w', encoding='utf-8') as f:
@@ -782,14 +684,11 @@ def main():
         f.write(f"- Events by Type: {global_report.governance_event_summary['events_by_type']}\n")
         f.write(f"- Events by Status: {global_report.governance_event_summary['events_by_status']}\n")
     print(f"  Saved: {summary_path}")
-    
     print()
     print("=" * 80)
     print("AUDIT COMPLETE")
     print(f"Results saved to: {output_dir}")
     print("=" * 80)
-    
     return global_report
-
 if __name__ == "__main__":
     main()

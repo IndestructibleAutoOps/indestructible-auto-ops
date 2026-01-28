@@ -1,19 +1,14 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: stage7_runtime_monitoring
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: stage7_runtime_monitoring
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification - Stage 7: Runtime Monitoring & Traceability
-
 This module handles runtime monitoring and audit log collection.
 """
-
 import hashlib
 import json
 import logging
@@ -21,21 +16,15 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
-
 from .hash_manager import HashManager
 from .supply_chain_types import VerificationEvidence
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
-
 class Stage7RuntimeMonitoringVerifier:
     """Verifier for Stage 7: Runtime Monitoring & Traceability"""
-
     def __init__(self, repo_path: Path, evidence_dir: Path, hash_manager: HashManager):
         """
         Initialize Stage 7 verifier
-
         Args:
             repo_path: Path to repository
             evidence_dir: Path to evidence directory
@@ -46,45 +35,36 @@ class Stage7RuntimeMonitoringVerifier:
         self.hash_manager = hash_manager
         self.audit_trail = []  # Will be populated by main verifier
         self.evidence_chain = []  # Will be populated by main verifier
-
     def set_audit_trail(self, audit_trail: List[Dict[str, Any]]) -> None:
         """Set audit trail reference"""
         self.audit_trail = audit_trail
-
     def set_evidence_chain(self, evidence_chain: List[VerificationEvidence]) -> None:
         """Set evidence chain reference"""
         self.evidence_chain = evidence_chain
-
     def verify(self) -> VerificationEvidence:
         """
         Execute Stage 7: Runtime monitoring and traceability verification
-
         Returns:
             VerificationEvidence with validation results
         """
         logger.info("🔍 Stage 7: Runtime 監控 + 可追溯留存驗證開始")
-
         data = {
             "runtime_events": self._simulate_runtime_events(),
             "falco_rules": self._validate_falco_rules(),
             "audit_logs": self._collect_audit_logs(),
             "traceability_chain": self._build_traceability_chain(),
         }
-
         evidence = self._create_evidence(
             stage=7,
             stage_name="Runtime 監控 + 可追溯留存",
             evidence_type="runtime_monitoring",
             data=data,
         )
-
         logger.info(f"✅ Stage 7 完成: {evidence.compliant and '通過' or '失敗'}")
         return evidence
-
     def _simulate_runtime_events(self) -> List[Dict[str, Any]]:
         """模擬 Runtime 事件（Falco）"""
         events = []
-
         # 模擬一些正常的 runtime 事件
         normal_events = [
             {
@@ -106,7 +86,6 @@ class Stage7RuntimeMonitoringVerifier:
                 "severity": "INFO",
             },
         ]
-
         # 模擬一些可疑事件
         suspicious_events = [
             {
@@ -119,15 +98,12 @@ class Stage7RuntimeMonitoringVerifier:
                 "severity": "WARNING",
             }
         ]
-
         events.extend(normal_events)
         events.extend(suspicious_events)
         return events
-
     def _validate_falco_rules(self) -> List[Dict[str, Any]]:
         """驗證 Falco 規則"""
         rules = []
-
         # 檢查 Falco 規則文件
         falco_files = list(self.repo_path.rglob("falco-*.yaml")) + list(
             self.repo_path.rglob("*.falco")
@@ -151,7 +127,6 @@ class Stage7RuntimeMonitoringVerifier:
                         "syntactically_valid": False,
                     }
                 )
-
         # 如果沒有找到Falco規則，創建默認規則
         if not rules:
             default_rules = {
@@ -161,13 +136,10 @@ class Stage7RuntimeMonitoringVerifier:
                 "generated": True,
             }
             rules.append(default_rules)
-
         return rules
-
     def _collect_audit_logs(self) -> List[Dict[str, Any]]:
         """收集審計日誌"""
         audit_logs = []
-
         # 收集所有的審計軌跡
         for entry in self.audit_trail:
             audit_logs.append(
@@ -180,9 +152,7 @@ class Stage7RuntimeMonitoringVerifier:
                     "source": "supply-chain-verifier",
                 }
             )
-
         return audit_logs
-
     def _build_traceability_chain(self) -> Dict[str, Any]:
         """建立可追溯鏈"""
         traceability = {
@@ -200,17 +170,13 @@ class Stage7RuntimeMonitoringVerifier:
             "can_rollback": all(e.rollback_available for e in self.evidence_chain),
             "is_reproducible": all(e.reproducible for e in self.evidence_chain),
         }
-
         return traceability
-
     def _compute_final_chain_hash(self) -> str:
         """計算最終鏈路雜湊"""
         chain_data = ""
         for evidence in self.evidence_chain:
             chain_data += f"{evidence.stage}:{evidence.hash_value}:"
-
         return hashlib.sha3_512(chain_data.encode()).hexdigest()
-
     def _create_evidence(
         self,
         stage: int,
@@ -223,7 +189,6 @@ class Stage7RuntimeMonitoringVerifier:
         verification_hash, reproducible_hash = self.hash_manager.compute_dual_hash(
             data_str, f"stage{stage}"
         )
-
         # Save evidence file
         evidence_file = (
             self.evidence_dir / f"stage{stage:02d}-{evidence_type.replace(' ', '_')}.json"
@@ -244,7 +209,6 @@ class Stage7RuntimeMonitoringVerifier:
                 indent=2,
                 default=str,
             )
-
         evidence = VerificationEvidence(
             stage=stage,
             stage_name=stage_name,
@@ -257,9 +221,7 @@ class Stage7RuntimeMonitoringVerifier:
             rollback_available=True,
             reproducible=True,
         )
-
         return evidence
-
     def _check_compliance(self, data: Dict[str, Any]) -> bool:
         """Check if Stage 7 passed compliance"""
         # Check if traceability chain is complete

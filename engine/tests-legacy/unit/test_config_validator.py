@@ -1,77 +1,61 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: test_config_validator
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: test_config_validator
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Unit tests for Configuration Validator
 Tests YAML/JSON configuration validation functionality
 """
-
 import json
 import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-
 import yaml
-
 # Add parent path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-
 try:
     from scripts.utils.config_validator import ConfigValidator
 except ImportError:
     ConfigValidator = None
-
-
 class TestConfigValidator(unittest.TestCase):
     """Test cases for ConfigValidator."""
-    
     @classmethod
     def setUpClass(cls):
         """Set up test fixtures."""
         if ConfigValidator is None:
             raise unittest.SkipTest("ConfigValidator not available")
-    
     def setUp(self):
         """Set up test instance."""
         self.validator = ConfigValidator(strict=True)
         self.temp_dir = tempfile.mkdtemp()
-    
     def tearDown(self):
         """Clean up temp files."""
         import shutil
         if os.path.exists(self.temp_dir):
             shutil.rmtree(self.temp_dir)
-    
     def _create_yaml_file(self, filename: str, content: dict) -> str:
         """Create a temporary YAML file."""
         filepath = os.path.join(self.temp_dir, filename)
         with open(filepath, 'w') as f:
             yaml.dump(content, f)
         return filepath
-    
     def _create_json_file(self, filename: str, content: dict) -> str:
         """Create a temporary JSON file."""
         filepath = os.path.join(self.temp_dir, filename)
         with open(filepath, 'w') as f:
             json.dump(content, f)
         return filepath
-    
     def test_initialization(self):
         """Test ConfigValidator initialization."""
         validator = ConfigValidator(strict=True)
         self.assertTrue(validator.strict)
         self.assertEqual(validator.errors, [])
         self.assertEqual(validator.warnings, [])
-    
     def test_valid_config(self):
         """Test validation of a valid configuration."""
         config = {
@@ -89,7 +73,6 @@ class TestConfigValidator(unittest.TestCase):
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertTrue(is_valid)
         self.assertEqual(len(errors), 0)
-    
     def test_missing_api_version(self):
         """Test validation fails when apiVersion is missing."""
         config = {
@@ -103,7 +86,6 @@ class TestConfigValidator(unittest.TestCase):
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertFalse(is_valid)
         self.assertTrue(any('apiVersion' in e for e in errors))
-    
     def test_missing_kind(self):
         """Test validation fails when kind is missing."""
         config = {
@@ -117,7 +99,6 @@ class TestConfigValidator(unittest.TestCase):
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertFalse(is_valid)
         self.assertTrue(any('kind' in e for e in errors))
-    
     def test_missing_metadata(self):
         """Test validation fails when metadata is missing."""
         config = {
@@ -128,7 +109,6 @@ class TestConfigValidator(unittest.TestCase):
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertFalse(is_valid)
         self.assertTrue(any('metadata' in e for e in errors))
-    
     def test_invalid_name_format(self):
         """Test validation fails for invalid name format."""
         config = {
@@ -142,7 +122,6 @@ class TestConfigValidator(unittest.TestCase):
         filepath = self._create_yaml_file("invalid_name.yaml", config)
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertFalse(is_valid)
-    
     def test_invalid_version_format(self):
         """Test validation warns for invalid version format."""
         config = {
@@ -158,7 +137,6 @@ class TestConfigValidator(unittest.TestCase):
         # Invalid version generates a warning, not an error (design decision)
         self.assertTrue(is_valid)  # Still valid, but with warnings
         self.assertTrue(any('version' in w.lower() or 'semver' in w.lower() for w in warnings))
-    
     def test_json_file_validation(self):
         """Test validation of JSON configuration files."""
         config = {
@@ -172,22 +150,18 @@ class TestConfigValidator(unittest.TestCase):
         filepath = self._create_json_file("config.json", config)
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertTrue(is_valid)
-    
     def test_nonexistent_file(self):
         """Test validation of non-existent file."""
         is_valid, errors, warnings = self.validator.validate_file("/nonexistent/file.yaml")
         self.assertFalse(is_valid)
         self.assertTrue(len(errors) > 0)
-    
     def test_invalid_yaml_syntax(self):
         """Test validation of file with invalid YAML syntax."""
         filepath = os.path.join(self.temp_dir, "invalid.yaml")
         with open(filepath, 'w') as f:
             f.write("invalid: yaml: content: [")
-        
         is_valid, errors, warnings = self.validator.validate_file(filepath)
         self.assertFalse(is_valid)
-    
     def test_non_strict_mode(self):
         """Test validation in non-strict mode."""
         validator = ConfigValidator(strict=False)
@@ -202,16 +176,12 @@ class TestConfigValidator(unittest.TestCase):
         filepath = self._create_yaml_file("non_strict.yaml", config)
         is_valid, errors, warnings = validator.validate_file(filepath)
         self.assertTrue(is_valid)
-
-
 class TestConfigValidatorPatterns(unittest.TestCase):
     """Test ConfigValidator pattern matching."""
-    
     @classmethod
     def setUpClass(cls):
         if ConfigValidator is None:
             raise unittest.SkipTest("ConfigValidator not available")
-    
     def test_name_pattern_valid(self):
         """Test valid name patterns."""
         valid_names = [
@@ -226,7 +196,6 @@ class TestConfigValidatorPatterns(unittest.TestCase):
                 ConfigValidator.NAME_PATTERN.match(name),
                 f"Name '{name}' should be valid"
             )
-    
     def test_name_pattern_invalid(self):
         """Test invalid name patterns."""
         invalid_names = [
@@ -241,7 +210,6 @@ class TestConfigValidatorPatterns(unittest.TestCase):
                 ConfigValidator.NAME_PATTERN.match(name),
                 f"Name '{name}' should be invalid"
             )
-    
     def test_version_pattern_valid(self):
         """Test valid version patterns."""
         valid_versions = [
@@ -256,7 +224,6 @@ class TestConfigValidatorPatterns(unittest.TestCase):
                 ConfigValidator.VERSION_PATTERN.match(version),
                 f"Version '{version}' should be valid"
             )
-    
     def test_version_pattern_invalid(self):
         """Test invalid version patterns."""
         invalid_versions = [
@@ -271,7 +238,5 @@ class TestConfigValidatorPatterns(unittest.TestCase):
                 ConfigValidator.VERSION_PATTERN.match(version),
                 f"Version '{version}' should be invalid"
             )
-
-
 if __name__ == '__main__':
     unittest.main()

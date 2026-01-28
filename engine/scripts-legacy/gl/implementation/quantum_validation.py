@@ -1,21 +1,16 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: quantum_validation
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: quantum_validation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Quantum Validation Implementation
-
 Implements quantum-classical hybrid validation system:
 - 8-dimension validation matrix
 - 3 quantum algorithms (16-24 qubits each)
 - Automatic fallback to classical algorithms (<200ms)
 """
-
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Any, Optional, Tuple
@@ -23,8 +18,6 @@ from datetime import datetime
 import json
 import hashlib
 import random
-
-
 class ValidationStatus(Enum):
     """Validation status"""
     PENDING = "PENDING"
@@ -32,8 +25,6 @@ class ValidationStatus(Enum):
     PASSED = "PASSED"
     FAILED = "FAILED"
     FELLBACK = "FELLBACK"
-
-
 @dataclass
 class ValidationDimension:
     """Validation dimension with metrics"""
@@ -44,7 +35,6 @@ class ValidationDimension:
     target: str
     current: str
     status: str = "PENDING"
-    
     def to_dict(self) -> Dict[str, Any]:
         return {
             "dimension_id": self.dimension_id,
@@ -55,8 +45,6 @@ class ValidationDimension:
             "current": self.current,
             "status": self.status,
         }
-
-
 @dataclass
 class ValidationResult:
     """Result of validation execution"""
@@ -69,7 +57,6 @@ class ValidationResult:
     fellback: bool = False
     fallback_reason: Optional[str] = None
     errors: List[str] = field(default_factory=list)
-    
     def to_dict(self) -> Dict[str, Any]:
         return {
             "validation_id": self.validation_id,
@@ -82,8 +69,6 @@ class ValidationResult:
             "fallback_reason": self.fallback_reason,
             "errors": self.errors,
         }
-
-
 @dataclass
 class QuantumAlgorithm:
     """Quantum validation algorithm"""
@@ -94,7 +79,6 @@ class QuantumAlgorithm:
     description: str
     timeout_ms: float
     fallback_algorithm: str
-    
     def to_dict(self) -> Dict[str, Any]:
         return {
             "algorithm_id": self.algorithm_id,
@@ -105,12 +89,9 @@ class QuantumAlgorithm:
             "timeout_ms": self.timeout_ms,
             "fallback_algorithm": self.fallback_algorithm,
         }
-
-
 class QuantumValidator:
     """
     Executes quantum-classical hybrid validation
-    
     Core capabilities:
     - 8-dimension validation matrix
     - 3 quantum algorithms (16-24 qubits each)
@@ -120,7 +101,6 @@ class QuantumValidator:
     - Throughput: 1247 documents/sec
     - Availability: 99.9%
     """
-    
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
         self.dimensions = self._init_dimensions()
@@ -143,7 +123,6 @@ class QuantumValidator:
             "availability": 99.9,
             "fallback_success_rate": 100.0,
         }
-    
     def _init_dimensions(self) -> List[ValidationDimension]:
         """Initialize 8 validation dimensions"""
         return [
@@ -220,7 +199,6 @@ class QuantumValidator:
                 status="PASS",
             ),
         ]
-    
     def _init_quantum_algorithms(self) -> Dict[str, QuantumAlgorithm]:
         """Initialize quantum validation algorithms"""
         return {
@@ -252,7 +230,6 @@ class QuantumValidator:
                 fallback_algorithm="CLASSICAL-PROOF",
             ),
         }
-    
     def _init_validation_pipeline(self) -> List[Dict[str, Any]]:
         """Initialize validation pipeline"""
         return [
@@ -287,14 +264,11 @@ class QuantumValidator:
                 },
             },
         ]
-    
     def validate(self, input_data: Dict[str, Any]) -> ValidationResult:
         """
         Execute validation using quantum-classical hybrid approach
-        
         Args:
             input_data: Data to validate
-            
         Returns:
             ValidationResult
         """
@@ -303,26 +277,21 @@ class QuantumValidator:
             validation_id=validation_id,
             status=ValidationStatus.IN_PROGRESS,
         )
-        
         start_time = datetime.now()
-        
         try:
             # Execute validation pipeline
             for stage in self.validation_pipeline:
                 stage_result = self._execute_validation_stage(stage, input_data)
-                
                 if stage_result["fellback"]:
                     result.fellback = True
                     result.fallback_reason = stage_result.get("fallback_reason", "Unknown")
                     break
-            
             # Calculate overall accuracy
             passed_dimensions = sum(
                 1 for dim in self.dimensions
                 if dim.status == "PASS"
             )
             result.overall_accuracy = (passed_dimensions / len(self.dimensions)) * 100.0
-            
             # Determine final status
             if result.fellback:
                 result.status = ValidationStatus.FELLBACK
@@ -330,31 +299,24 @@ class QuantumValidator:
                 result.status = ValidationStatus.PASSED
             else:
                 result.status = ValidationStatus.FAILED
-        
         except Exception as e:
             result.status = ValidationStatus.FAILED
             result.errors.append(str(e))
-        
         finally:
             end_time = datetime.now()
             result.execution_time_ms = (end_time - start_time).total_seconds() * 1000.0
-        
         return result
-    
     def _execute_validation_stage(self, stage: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Execute a single validation stage
-        
         Args:
             stage: Validation stage configuration
             input_data: Data to validate
-            
         Returns:
             Stage execution result
         """
         algorithm_id = stage["algorithm"]
         timeout_ms = stage["timeout_ms"]
-        
         algorithm = self.quantum_algorithms.get(algorithm_id)
         if not algorithm:
             return {
@@ -363,18 +325,15 @@ class QuantumValidator:
                 "fellback": True,
                 "fallback_reason": f"Algorithm {algorithm_id} not found",
             }
-        
         # Simulate quantum validation execution
         try:
             validation_result = self._execute_quantum_validation(algorithm, input_data, timeout_ms)
-            
             if validation_result["timed_out"]:
                 # Fallback to classical algorithm
                 fallback_result = self._execute_classical_validation(
                     algorithm.fallback_algorithm,
                     input_data,
                 )
-                
                 return {
                     "stage_id": stage["stage_id"],
                     "status": "FELLBACK",
@@ -383,21 +342,18 @@ class QuantumValidator:
                     "quantum_result": validation_result,
                     "classical_result": fallback_result,
                 }
-            
             return {
                 "stage_id": stage["stage_id"],
                 "status": "PASSED",
                 "fellback": False,
                 "quantum_result": validation_result,
             }
-        
         except Exception as e:
             # Fallback to classical algorithm on error
             fallback_result = self._execute_classical_validation(
                 algorithm.fallback_algorithm,
                 input_data,
             )
-            
             return {
                 "stage_id": stage["stage_id"],
                 "status": "FELLBACK",
@@ -406,7 +362,6 @@ class QuantumValidator:
                 "quantum_error": str(e),
                 "classical_result": fallback_result,
             }
-    
     def _execute_quantum_validation(
         self,
         algorithm: QuantumAlgorithm,
@@ -415,18 +370,15 @@ class QuantumValidator:
     ) -> Dict[str, Any]:
         """
         Execute quantum validation algorithm
-        
         Args:
             algorithm: Quantum algorithm to execute
             input_data: Data to validate
             timeout_ms: Timeout in milliseconds
-            
         Returns:
             Validation result
         """
         # Simulate quantum validation execution
         execution_time_ms = random.uniform(30.0, 60.0)
-        
         # Check if execution exceeds timeout
         if execution_time_ms > timeout_ms:
             return {
@@ -435,11 +387,9 @@ class QuantumValidator:
                 "execution_time_ms": execution_time_ms,
                 "timeout_ms": timeout_ms,
             }
-        
         # Simulate validation accuracy based on algorithm
         accuracy_str = algorithm.accuracy.replace("%", "")
         accuracy = float(accuracy_str) / 100.0
-        
         # Simulate dimension validation
         validated_dimensions = []
         for dim in self.dimensions:
@@ -449,7 +399,6 @@ class QuantumValidator:
             else:
                 dim.status = "FAIL"
             validated_dimensions.append(dim.to_dict())
-        
         return {
             "algorithm_id": algorithm.algorithm_id,
             "timed_out": False,
@@ -457,7 +406,6 @@ class QuantumValidator:
             "accuracy": algorithm.accuracy,
             "dimensions": validated_dimensions,
         }
-    
     def _execute_classical_validation(
         self,
         algorithm_id: str,
@@ -465,20 +413,16 @@ class QuantumValidator:
     ) -> Dict[str, Any]:
         """
         Execute classical validation algorithm (fallback)
-        
         Args:
             algorithm_id: Classical algorithm ID
             input_data: Data to validate
-            
         Returns:
             Validation result
         """
         algorithm_name = self.classical_algorithms.get(algorithm_id, "Unknown")
-        
         # Simulate classical validation execution
         execution_time_ms = random.uniform(20.0, 40.0)
         accuracy = 98.0  # Classical accuracy
-        
         return {
             "algorithm_id": algorithm_id,
             "algorithm_name": algorithm_name,
@@ -486,23 +430,18 @@ class QuantumValidator:
             "accuracy": f"{accuracy}%",
             "dimensions": [dim.to_dict() for dim in self.dimensions],
         }
-    
     def get_dimensions(self) -> List[ValidationDimension]:
         """Get all validation dimensions"""
         return self.dimensions
-    
     def get_quantum_algorithms(self) -> Dict[str, QuantumAlgorithm]:
         """Get all quantum algorithms"""
         return self.quantum_algorithms
-    
     def get_validation_pipeline(self) -> List[Dict[str, Any]]:
         """Get validation pipeline"""
         return self.validation_pipeline
-    
     def get_performance_metrics(self) -> Dict[str, float]:
         """Get performance metrics"""
         return self.performance_metrics.copy()
-    
     def generate_evidence_chain(self, result: ValidationResult) -> Dict[str, Any]:
         """Generate evidence chain for validation result"""
         evidence_chain = {
@@ -518,9 +457,7 @@ class QuantumValidator:
             "evidence_hash": self._generate_evidence_hash(result),
             "generated_at": datetime.now().isoformat(),
         }
-        
         return evidence_chain
-    
     def _generate_evidence_hash(self, result: ValidationResult) -> str:
         """Generate SHA-256 hash of evidence chain"""
         evidence_data = json.dumps(
@@ -531,10 +468,7 @@ class QuantumValidator:
             },
             sort_keys=True,
         )
-        
         return hashlib.sha256(evidence_data.encode()).hexdigest()
-
-
 # Factory function for creating QuantumValidator instances
 def create_quantum_validator(config: Optional[Dict[str, Any]] = None) -> QuantumValidator:
     """Factory function to create QuantumValidator"""

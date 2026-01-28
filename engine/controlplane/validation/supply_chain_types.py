@@ -1,29 +1,21 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: supply_chain_types
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: supply_chain_types
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification - Types and Data Structures
-
 This module contains all type definitions and data structures used
 across the supply chain verification system.
 """
-
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List
-
-
 class VerificationStage(Enum):
     """Verification stage enumeration"""
-
     LINT_FORMAT = 1
     SCHEMA_SEMANTIC = 2
     DEPENDENCY_REPRODUCIBLE = 3
@@ -31,12 +23,9 @@ class VerificationStage(Enum):
     SIGN_ATTESTATION = 5
     ADMISSION_POLICY = 6
     RUNTIME_MONITORING = 7
-
-
 @dataclass
 class VerificationEvidence:
     """Verification evidence data structure"""
-
     stage: int
     stage_name: str
     evidence_type: str
@@ -47,12 +36,9 @@ class VerificationEvidence:
     compliant: bool
     rollback_available: bool
     reproducible: bool
-
-
 @dataclass
 class ChainVerificationResult:
     """Complete chain verification result"""
-
     total_stages: int
     passed_stages: int
     failed_stages: int

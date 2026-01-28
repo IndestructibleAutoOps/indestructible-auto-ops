@@ -1,19 +1,14 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: stage5_sign_attestation
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: stage5_sign_attestation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification - Stage 5: Signature and Attestation
-
 This module handles signature verification and attestation generation.
 """
-
 import base64
 import hashlib
 import json
@@ -22,21 +17,15 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
-
 from .hash_manager import HashManager
 from .supply_chain_types import VerificationEvidence
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
-
 class Stage5SignAttestationVerifier:
     """Verifier for Stage 5: Signature and Attestation"""
-
     def __init__(self, repo_path: Path, evidence_dir: Path, hash_manager: HashManager):
         """
         Initialize Stage 5 verifier
-
         Args:
             repo_path: Path to repository
             evidence_dir: Path to evidence directory
@@ -46,48 +35,39 @@ class Stage5SignAttestationVerifier:
         self.evidence_dir = evidence_dir
         self.hash_manager = hash_manager
         self.audit_trail = []  # Will be populated by main verifier
-
     def set_audit_trail(self, audit_trail: List[Dict[str, Any]]) -> None:
         """Set audit trail reference"""
         self.audit_trail = audit_trail
-
     def verify(self) -> VerificationEvidence:
         """
         Execute Stage 5: Signature and Attestation verification
-
         Returns:
             VerificationEvidence with validation results
         """
         logger.info("🔍 Stage 5: 簽章 + Attestation 驗證開始")
-
         data = {
             "signatures": self._verify_signatures(),
             "provenance": self._generate_provenance(),
             "attestations": self._generate_attestations(),
             "transparency_log": self._create_transparency_log(),
         }
-
         evidence = self._create_evidence(
             stage=5,
             stage_name="簽章 + Attestation",
             evidence_type="signature_attestation",
             data=data,
         )
-
         logger.info(f"✅ Stage 5 完成: {evidence.compliant and '通過' or '失敗'}")
         return evidence
-
     def _verify_signatures(self) -> List[Dict[str, Any]]:
         """驗證簽章（模擬 Cosign）"""
         signatures = []
-
         # 模擬容器映像簽章驗證
         images = [
             "axiom-hft-quantum:v1.0.0",
             "axiom-inference-engine:v2.1.0",
             "axiom-quantum-coordinator:v1.5.0",
         ]
-
         for image in images:
             signature_data = {
                 "image": image,
@@ -104,9 +84,7 @@ class Stage5SignAttestationVerifier:
                 "timestamp": datetime.now(timezone.utc).isoformat(),
             }
             signatures.append(signature_data)
-
         return signatures
-
     def _generate_provenance(self) -> Dict[str, Any]:
         """生成 SLSA Provenance"""
         provenance = {
@@ -169,13 +147,10 @@ class Stage5SignAttestationVerifier:
                 ],
             },
         }
-
         return provenance
-
     def _generate_attestations(self) -> List[Dict[str, Any]]:
         """生成 in-toto Attestations"""
         attestations = []
-
         # Lint 步驟證明
         lint_attestation = {
             "_type": "https://in-toto.io/Statement/v0.1",
@@ -212,7 +187,6 @@ class Stage5SignAttestationVerifier:
             },
         }
         attestations.append(lint_attestation)
-
         # 掃描步驟證明
         scan_attestation = {
             "_type": "https://in-toto.io/Statement/v0.1",
@@ -250,9 +224,7 @@ class Stage5SignAttestationVerifier:
             },
         }
         attestations.append(scan_attestation)
-
         return attestations
-
     def _create_transparency_log(self) -> Dict[str, Any]:
         """創建透明度日誌（模擬 Rekor）"""
         log_entry = {
@@ -295,9 +267,7 @@ class Stage5SignAttestationVerifier:
                 },
             },
         }
-
         return log_entry
-
     def _create_evidence(
         self,
         stage: int,
@@ -310,7 +280,6 @@ class Stage5SignAttestationVerifier:
         verification_hash, reproducible_hash = self.hash_manager.compute_dual_hash(
             data_str, f"stage{stage}"
         )
-
         # Save evidence file
         evidence_file = (
             self.evidence_dir / f"stage{stage:02d}-{evidence_type.replace(' ', '_')}.json"
@@ -331,7 +300,6 @@ class Stage5SignAttestationVerifier:
                 indent=2,
                 default=str,
             )
-
         evidence = VerificationEvidence(
             stage=stage,
             stage_name=stage_name,
@@ -344,9 +312,7 @@ class Stage5SignAttestationVerifier:
             rollback_available=True,
             reproducible=True,
         )
-
         return evidence
-
     def _check_compliance(self, data: Dict[str, Any]) -> bool:
         """Check if Stage 5 passed compliance"""
         # Check if all signatures are verified

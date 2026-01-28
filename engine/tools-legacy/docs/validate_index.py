@@ -4,87 +4,67 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: validate_index
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: validate_index
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Knowledge Index Validator
 知識索引驗證工具
-
 Validates the docs/knowledge_index.yaml file to ensure:
 - Schema validation against docs-index.schema.json
 - All referenced files exist
 - Required fields are present
 - IDs are unique
 - Relationships reference valid documents
-
 Usage:
     python tools/docs/validate_index.py
     python tools/docs/validate_index.py --verbose
 """
-
 import argparse
 import json
 import sys
 from pathlib import Path
 from typing import Any
-
 # Try to import yaml, provide helpful error if not available
 try:
     import yaml
 except ImportError:
     print("Error: PyYAML is required. Install with: pip install pyyaml")
     sys.exit(1)
-
 # Try to import jsonschema for schema validation
 try:
     from jsonschema import ValidationError, validate
-
     HAS_JSONSCHEMA = True
 except ImportError:
     HAS_JSONSCHEMA = False
-
-
 def load_index(index_path: Path) -> dict[str, Any]:
     """Load and parse the knowledge index YAML file."""
     with open(index_path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
-
-
 def load_json_schema(schema_path: Path) -> dict[str, Any]:
     """Load JSON schema file."""
     with open(schema_path, "r", encoding="utf-8") as f:
         return json.load(f)
-
-
 def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> list[str]:
     """Validate data against JSON schema."""
     errors = []
     if not HAS_JSONSCHEMA:
         return ["⚠️  Schema validation skipped (jsonschema not installed)"]
-
     try:
         validate(instance=data, schema=schema)
     except ValidationError as e:
         errors.append(f"Schema validation error: {e.message}")
         if e.path:
             errors.append(f"  At path: {'.'.join(str(p) for p in e.path)}")
-
     return errors
-
-
 def validate_required_fields(
     doc: dict[str, Any], doc_id: str, schema: dict[str, Any] | None = None
 ) -> list[str]:
     """Check that all required fields are present in a document entry.
-
     If schema is provided, required fields are extracted from the schema.
     Otherwise, falls back to default required fields.
     """
@@ -121,14 +101,11 @@ def validate_required_fields(
             "status",
             "description",
         ]
-
     errors = []
     for field in required_fields:
         if field not in doc:
             errors.append(f"Document '{doc_id}' missing required field: {field}")
     return errors
-
-
 def validate_file_exists(doc: dict[str, Any], repo_root: Path) -> list[str]:
     """Check that the referenced file exists."""
     errors = []
@@ -138,8 +115,6 @@ def validate_file_exists(doc: dict[str, Any], repo_root: Path) -> list[str]:
             f"Document '{doc['id']}' references non-existent file: {doc['path']}"
         )
     return errors
-
-
 def validate_unique_ids(documents: list[dict[str, Any]]) -> list[str]:
     """Check that all document IDs are unique."""
     errors = []
@@ -150,8 +125,6 @@ def validate_unique_ids(documents: list[dict[str, Any]]) -> list[str]:
             errors.append(f"Duplicate document ID: {doc_id}")
         seen_ids.add(doc_id)
     return errors
-
-
 def validate_relationships(
     relationships: list[dict[str, Any]], doc_ids: set[str]
 ) -> list[str]:
@@ -165,8 +138,6 @@ def validate_relationships(
         if rel.get("to") not in doc_ids:
             errors.append(f"Relationship references unknown document: {rel.get('to')}")
     return errors
-
-
 def validate_domains(
     documents: list[dict[str, Any]], categories: dict[str, Any]
 ) -> list[str]:
@@ -178,8 +149,6 @@ def validate_domains(
         if domain and domain not in valid_domains:
             errors.append(f"Document '{doc.get('id')}' uses unknown domain: {domain}")
     return errors
-
-
 def validate_layers(documents: list[dict[str, Any]], layers: list[str]) -> list[str]:
     """Check that all documents use valid layers."""
     errors = []
@@ -189,8 +158,6 @@ def validate_layers(documents: list[dict[str, Any]], layers: list[str]) -> list[
         if layer and layer not in valid_layers:
             errors.append(f"Document '{doc.get('id')}' uses unknown layer: {layer}")
     return errors
-
-
 def main():
     parser = argparse.ArgumentParser(description="Validate knowledge index YAML file")
     parser.add_argument(
@@ -200,22 +167,18 @@ def main():
         "--skip-schema", action="store_true", help="Skip JSON schema validation"
     )
     args = parser.parse_args()
-
     # Determine paths
     script_dir = Path(__file__).parent
     repo_root = script_dir.parent.parent
     index_path = repo_root / "docs" / "knowledge_index.yaml"
     schema_path = repo_root / "governance" / "schemas" / "docs-index.schema.json"
-
     if not index_path.exists():
         print(f"Error: Knowledge index not found at {index_path}")
         sys.exit(1)
-
     if args.verbose:
         print(f"Validating: {index_path}")
         print(f"Repo root: {repo_root}")
         print()
-
     # Load the index
     try:
         index = load_index(index_path)
@@ -223,11 +186,9 @@ def main():
         print(f"Error: Invalid YAML syntax in {index_path}")
         print(str(e))
         sys.exit(1)
-
     # Collect all errors
     all_errors = []
     schema = None
-
     # JSON Schema validation
     if not args.skip_schema and schema_path.exists():
         if args.verbose:
@@ -242,46 +203,35 @@ def main():
             all_errors.append(f"Failed to load schema: {e}")
     elif args.verbose:
         print("⚠️  Schema validation skipped")
-
     documents = index.get("items", [])
     categories = index.get("categories", {})
     layers = index.get("layers", [])
     relationships = index.get("relationships", [])
-
     if args.verbose:
         print(f"Found {len(documents)} documents")
         print(f"Found {len(categories)} categories")
         print(f"Found {len(layers)} layers")
         print(f"Found {len(relationships)} relationships")
         print()
-
     # Validate unique IDs
     all_errors.extend(validate_unique_ids(documents))
-
     # Get all valid document IDs
     doc_ids = {doc.get("id") for doc in documents if doc.get("id")}
-
     # Validate each document
     for doc in documents:
         doc_id = doc.get("id", "<unknown>")
-
         # Check required fields (using schema if available)
         all_errors.extend(validate_required_fields(doc, doc_id, schema))
-
         # Check file exists
         if "path" in doc:
             file_errors = validate_file_exists(doc, repo_root)
             all_errors.extend(file_errors)
-
     # Validate domains
     all_errors.extend(validate_domains(documents, categories))
-
     # Validate layers
     all_errors.extend(validate_layers(documents, layers))
-
     # Validate relationships
     all_errors.extend(validate_relationships(relationships, doc_ids))
-
     # Output results
     if all_errors:
         print("❌ Validation FAILED")
@@ -299,7 +249,5 @@ def main():
         print("  • All referenced files exist")
         print("  • All IDs are unique")
         sys.exit(0)
-
-
 if __name__ == "__main__":
     main()

@@ -4,52 +4,38 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: generate-sankey-data
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: generate-sankey-data
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Generate Sankey Diagram Data for Language Governance Dashboard
-
 This script analyzes the language governance report and generates
 Sankey diagram data showing language flow violations.
-
 Usage:
     python tools/generate-sankey-data.py
-
 Output:
     governance/sankey-data.json
 """
-
 import json
 import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-
-
 def get_project_root() -> Path:
     """Get the project root directory"""
     current = Path(__file__).resolve().parent
     return current.parent
-
-
 def parse_governance_report(report_path: Path) -> list[dict[str, Any]]:
     """Parse violations from governance report"""
     violations = []
-
     if not report_path.exists():
         return violations
-
     with open(report_path, encoding="utf-8") as f:
         content = f.read()
-
     # Parse violations section
     lines = content.split("\n")
     for line in lines:
@@ -62,20 +48,16 @@ def parse_governance_report(report_path: Path) -> list[dict[str, Any]]:
                 file_path = match.group(1).strip()
                 reason = match.group(2).strip()
                 match.group(3).strip() if match.group(3) else "Unknown"
-
                 # Determine source layer from file path
                 source_layer = determine_layer(file_path)
-
                 # Extract language and violation type
                 language, violation_type = extract_language_and_violation(
                     file_path, reason
                 )
-
                 # Determine fix target
                 fix_target = determine_fix_target(
                     language, violation_type, source_layer
                 )
-
                 violations.append(
                     {
                         "sourceLayer": source_layer,
@@ -87,14 +69,10 @@ def parse_governance_report(report_path: Path) -> list[dict[str, Any]]:
                         "count": 1,
                     }
                 )
-
     return violations
-
-
 def determine_layer(file_path: str) -> str:
     """Determine layer from file path"""
     path_lower = file_path.lower()
-
     if "apps/web" in path_lower or "frontend" in path_lower:
         return "L5: Applications"
     elif "services" in path_lower:
@@ -109,8 +87,6 @@ def determine_layer(file_path: str) -> str:
         return "L0: OS/Hardware"
     else:
         return "Unknown Layer"
-
-
 def extract_language_and_violation(file_path: str, reason: str) -> tuple:
     """Extract language and violation type from file and reason"""
     # Determine language from file extension
@@ -130,9 +106,7 @@ def extract_language_and_violation(file_path: str, reason: str) -> tuple:
         ".rb": "Ruby",
         ".php": "PHP",
     }
-
     language = language_map.get(ext, "Unknown")
-
     # Determine violation type from reason
     reason_lower = reason.lower()
     if "forbidden" in reason_lower or "not allowed" in reason_lower:
@@ -145,10 +119,7 @@ def extract_language_and_violation(file_path: str, reason: str) -> tuple:
         violation_type = "Security Issue"
     else:
         violation_type = "Policy Violation"
-
     return language, violation_type
-
-
 def determine_fix_target(language: str, violation_type: str, source_layer: str) -> str:
     """Determine fix target based on violation"""
     if violation_type == "Forbidden Language":
@@ -164,12 +135,9 @@ def determine_fix_target(language: str, violation_type: str, source_layer: str) 
         return "Fix Security Vulnerability"
     else:
         return "Apply Policy Fix"
-
-
 def aggregate_flows(violations: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Aggregate duplicate flows"""
     flow_map = {}
-
     for v in violations:
         key = (
             f"{v['sourceLayer']}|{v['language']}|{v['violationType']}|{v['fixTarget']}"
@@ -178,18 +146,13 @@ def aggregate_flows(violations: list[dict[str, Any]]) -> list[dict[str, Any]]:
             flow_map[key]["count"] += 1
         else:
             flow_map[key] = v.copy()
-
     return list(flow_map.values())
-
-
 def generate_sankey_data():
     """Generate Sankey diagram data"""
     project_root = get_project_root()
-
     # Parse governance report
     report_path = project_root / "governance" / "language-governance-report.md"
     violations = parse_governance_report(report_path)
-
     # Add some example flows if no violations found
     if not violations:
         violations = [
@@ -230,10 +193,8 @@ def generate_sankey_data():
                 "count": 1,
             },
         ]
-
     # Aggregate flows
     aggregated = aggregate_flows(violations)
-
     # Generate output
     output = {
         "generatedAt": datetime.utcnow().isoformat() + "Z",
@@ -241,20 +202,14 @@ def generate_sankey_data():
         "totalViolations": sum(v["count"] for v in aggregated),
         "flows": aggregated,
     }
-
     # Save to file
     output_path = project_root / "governance" / "sankey-data.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
-
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-
     print(f"✅ Generated Sankey data: {output_path}")
     print(f"   Total flows: {output['totalFlows']}")
     print(f"   Total violations: {output['totalViolations']}")
-
     return output
-
-
 if __name__ == "__main__":
     generate_sankey_data()

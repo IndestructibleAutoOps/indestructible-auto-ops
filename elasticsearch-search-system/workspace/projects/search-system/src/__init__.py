@@ -1,22 +1,19 @@
-/**
- * @GL-governed
- * @GL-layer: search
- * @GL-semantic: __init__
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+# 
+#  @GL-governed
+#  @GL-layer: search
+#  @GL-semantic: __init__
+#  @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+#  GL Unified Charter Activated
+# /
 """
 Search System Package
 GL-Layer: GL30-49 (Execution)
 Closure-Signal: artifact
 """
-
 __version__ = "1.0.0"
 __author__ = "Data Engineering Team"
 __description__ = "Comprehensive Elasticsearch search indexing system"
-
 from .elasticsearch.client import EsClientManager
 from .indexing.bulk_indexer import BulkIndexer
 from .indexing.incremental_updater import IncrementalUpdater
@@ -26,7 +23,6 @@ from .search.faceted_search import FacetedSearch
 from .search.autocomplete import Autocomplete
 from .analytics.search_analytics import SearchAnalytics
 from .analytics.relevance_tuning import RelevanceTuner
-
 __all__ = [
     'EsClientManager',
     'BulkIndexer',

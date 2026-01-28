@@ -1,20 +1,15 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: aep-executor
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: aep-executor
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 AEP Engine - Architecture Execution Pipeline
 GL Unified Charter Activated
-
 逐檔單一執行（one-by-one isolated execution）治理稽核引擎
 """
-
 import os
 import sys
 import json
@@ -26,14 +21,12 @@ from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 import traceback
-
 class Severity(Enum):
     CRITICAL = "CRITICAL"
     HIGH = "HIGH"
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     INFO = "INFO"
-
 class IssueCategory(Enum):
     PIPELINE_ERROR = "pipeline_error"
     SCHEMA_MISMATCH = "schema_mismatch"
@@ -44,7 +37,6 @@ class IssueCategory(Enum):
     SEMANTIC_MANIFEST_MISSING = "semantic_manifest_missing"
     DAG_INTEGRITY = "dag_integrity"
     GOVERNANCE_CHAIN = "governance_chain"
-
 @dataclass
 class GovernanceEvent:
     """治理事件"""
@@ -56,7 +48,6 @@ class GovernanceEvent:
     severity: str
     reversible: bool = True
     provable: bool = True
-
 @dataclass
 class FileIssue:
     """檔案問題"""
@@ -68,7 +59,6 @@ class FileIssue:
     description: str
     suggestion: str
     evidence: Dict[str, Any]
-
 @dataclass
 class FileReport:
     """單一檔案報告"""
@@ -87,10 +77,8 @@ class FileReport:
     best_practice_violations: List[str] = field(default_factory=list)
     suggested_path: Optional[str] = None
     suggested_name: Optional[str] = None
-
 class AEPGovernanceAuditor:
     """AEP 治理稽核引擎"""
-    
     # GL 標記正則表達式
     GL_MARKER_PATTERNS = [
         r'@gl-layer\s+(\S+)',
@@ -102,7 +90,6 @@ class AEPGovernanceAuditor:
         r'gl_layer:\s*(\S+)',
         r'gl_module:\s*(\S+)',
     ]
-    
     # 最佳實踐目錄結構
     BEST_PRACTICE_STRUCTURE = {
         'docs': ['*.md', 'README.md', 'CHANGELOG.md'],
@@ -114,7 +101,6 @@ class AEPGovernanceAuditor:
         'policies': ['*.policy.yaml', 'policies.yaml'],
         'governance': ['*.governance.yaml'],
     }
-    
     # 命名規範
     NAMING_CONVENTIONS = {
         '.yaml': r'^[a-z][a-z0-9-]*\.yaml$',
@@ -124,7 +110,6 @@ class AEPGovernanceAuditor:
         '.py': r'^[a-z_][a-z0-9_]*\.py$',
         '.md': r'^[A-Z][A-Z0-9_-]*\.md$|^README\.md$|^CHANGELOG\.md$',
     }
-    
     def __init__(self, root_path: str, output_dir: str):
         self.root_path = Path(root_path)
         self.output_dir = Path(output_dir)
@@ -133,15 +118,12 @@ class AEPGovernanceAuditor:
         self.governance_events: List[GovernanceEvent] = []
         self.global_issues: List[FileIssue] = []
         self.execution_id = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
-        
     def generate_event_id(self) -> str:
         """生成唯一事件 ID"""
         return f"GE-{self.execution_id}-{len(self.governance_events):06d}"
-    
     def generate_issue_id(self) -> str:
         """生成唯一問題 ID"""
         return f"ISS-{self.execution_id}-{len(self.global_issues):06d}"
-    
     def emit_governance_event(self, event_type: str, file_path: str, 
                               details: Dict[str, Any], severity: str) -> GovernanceEvent:
         """發出治理事件"""
@@ -155,7 +137,6 @@ class AEPGovernanceAuditor:
         )
         self.governance_events.append(event)
         return event
-    
     def calculate_file_hash(self, file_path: Path) -> str:
         """計算檔案 SHA256 雜湊"""
         try:
@@ -163,7 +144,6 @@ class AEPGovernanceAuditor:
                 return hashlib.sha256(f.read()).hexdigest()
         except Exception:
             return "HASH_ERROR"
-    
     def detect_file_type(self, file_path: Path) -> str:
         """檢測檔案類型"""
         suffix = file_path.suffix.lower()
@@ -179,7 +159,6 @@ class AEPGovernanceAuditor:
             '.txt': 'text',
         }
         return type_map.get(suffix, 'unknown')
-    
     def check_gl_markers(self, content: str, file_path: Path) -> List[str]:
         """檢查 GL 標記"""
         markers = []
@@ -187,7 +166,6 @@ class AEPGovernanceAuditor:
             matches = re.findall(pattern, content, re.MULTILINE)
             markers.extend(matches)
         return markers
-    
     def check_metadata(self, content: str, file_path: Path, file_type: str) -> Dict[str, Any]:
         """檢查 metadata"""
         result = {
@@ -196,9 +174,7 @@ class AEPGovernanceAuditor:
             'missing_fields': [],
             'issues': []
         }
-        
         required_fields = ['version', 'name', 'description']
-        
         if file_type == 'yaml':
             # 檢查 YAML metadata
             if 'metadata:' in content or 'apiVersion:' in content:
@@ -208,7 +184,6 @@ class AEPGovernanceAuditor:
                     result['metadata_fields'].append(field)
                 else:
                     result['missing_fields'].append(field)
-                    
         elif file_type == 'json':
             try:
                 data = json.loads(content)
@@ -221,12 +196,10 @@ class AEPGovernanceAuditor:
                             result['missing_fields'].append(field)
             except json.JSONDecodeError:
                 result['issues'].append('Invalid JSON format')
-                
         elif file_type == 'markdown':
             # 檢查 frontmatter
             if content.startswith('---'):
                 result['has_metadata'] = True
-                
         elif file_type in ['typescript', 'javascript', 'python']:
             # 檢查文件頭註釋
             if content.startswith('/**') or content.startswith('"""') or content.startswith("'''"):
@@ -234,9 +207,7 @@ class AEPGovernanceAuditor:
             # 檢查 @gl- 標記
             if '@gl-' in content:
                 result['has_metadata'] = True
-                
         return result
-    
     def check_schema(self, content: str, file_path: Path, file_type: str) -> Dict[str, Any]:
         """檢查 schema"""
         result = {
@@ -245,7 +216,6 @@ class AEPGovernanceAuditor:
             'schema_valid': None,
             'issues': []
         }
-        
         if file_type == 'yaml':
             if '$schema:' in content or 'schema:' in content:
                 result['has_schema_reference'] = True
@@ -253,25 +223,20 @@ class AEPGovernanceAuditor:
             if 'apiVersion:' in content and 'kind:' in content:
                 result['has_schema_reference'] = True
                 result['schema_type'] = 'kubernetes'
-                
         elif file_type == 'json':
             if '"$schema"' in content:
                 result['has_schema_reference'] = True
                 result['schema_type'] = 'json-schema'
-                
         elif file_type == 'typescript':
             if 'interface ' in content or 'type ' in content:
                 result['has_schema_reference'] = True
                 result['schema_type'] = 'typescript-types'
-                
         return result
-    
     def check_naming_convention(self, file_path: Path) -> List[FileIssue]:
         """檢查命名規範"""
         issues = []
         suffix = file_path.suffix.lower()
         filename = file_path.name
-        
         if suffix in self.NAMING_CONVENTIONS:
             pattern = self.NAMING_CONVENTIONS[suffix]
             if not re.match(pattern, filename):
@@ -285,7 +250,6 @@ class AEPGovernanceAuditor:
                     suggestion=f"Rename to match pattern: {pattern}",
                     evidence={'current_name': filename, 'expected_pattern': pattern}
                 ))
-        
         # 檢查空格和特殊字符
         if ' ' in filename:
             issues.append(FileIssue(
@@ -298,15 +262,12 @@ class AEPGovernanceAuditor:
                 suggestion="Replace spaces with hyphens or underscores",
                 evidence={'current_name': filename}
             ))
-            
         return issues
-    
     def check_structure(self, file_path: Path) -> List[FileIssue]:
         """檢查目錄結構"""
         issues = []
         relative_path = file_path.relative_to(self.root_path)
         parts = relative_path.parts
-        
         # 檢查深度
         if len(parts) > 8:
             issues.append(FileIssue(
@@ -319,14 +280,11 @@ class AEPGovernanceAuditor:
                 suggestion="Consider flattening directory structure",
                 evidence={'depth': len(parts), 'path': str(relative_path)}
             ))
-        
         return issues
-    
     def suggest_best_practice_path(self, file_path: Path, file_type: str) -> Optional[str]:
         """建議最佳實踐路徑"""
         filename = file_path.name
         suffix = file_path.suffix.lower()
-        
         # 根據檔案類型建議目錄
         suggestions = {
             'markdown': 'docs',
@@ -337,7 +295,6 @@ class AEPGovernanceAuditor:
             'python': 'src',
             'shell': 'scripts',
         }
-        
         # 特殊檔案處理
         if 'test' in filename.lower() or 'spec' in filename.lower():
             return f"tests/{filename}"
@@ -347,13 +304,10 @@ class AEPGovernanceAuditor:
             return f"manifests/{filename}"
         if 'policy' in filename.lower() or 'policies' in filename.lower():
             return f"policies/{filename}"
-            
         suggested_dir = suggestions.get(file_type)
         if suggested_dir:
             return f"{suggested_dir}/{filename}"
-            
         return None
-    
     def execute_file_audit(self, file_path: Path) -> FileReport:
         """執行單一檔案稽核"""
         # 發出開始事件
@@ -363,7 +317,6 @@ class AEPGovernanceAuditor:
             details={'action': 'start_audit'},
             severity=Severity.INFO.value
         )
-        
         try:
             # 讀取檔案
             try:
@@ -371,11 +324,9 @@ class AEPGovernanceAuditor:
                     content = f.read()
             except Exception as e:
                 content = ""
-                
             file_type = self.detect_file_type(file_path)
             file_hash = self.calculate_file_hash(file_path)
             file_size = file_path.stat().st_size
-            
             # 建立報告
             report = FileReport(
                 file_path=str(file_path.relative_to(self.root_path)),
@@ -385,7 +336,6 @@ class AEPGovernanceAuditor:
                 execution_timestamp=datetime.now(timezone.utc).isoformat(),
                 execution_status="SUCCESS"
             )
-            
             # 檢查 GL 標記
             report.gl_markers = self.check_gl_markers(content, file_path)
             if not report.gl_markers:
@@ -401,7 +351,6 @@ class AEPGovernanceAuditor:
                 )
                 report.issues.append(issue)
                 self.global_issues.append(issue)
-            
             # 檢查 metadata
             report.metadata_check = self.check_metadata(content, file_path, file_type)
             if not report.metadata_check.get('has_metadata'):
@@ -417,23 +366,18 @@ class AEPGovernanceAuditor:
                 )
                 report.issues.append(issue)
                 self.global_issues.append(issue)
-            
             # 檢查 schema
             report.schema_check = self.check_schema(content, file_path, file_type)
-            
             # 檢查命名規範
             naming_issues = self.check_naming_convention(file_path)
             report.issues.extend(naming_issues)
             self.global_issues.extend(naming_issues)
-            
             # 檢查結構
             structure_issues = self.check_structure(file_path)
             report.issues.extend(structure_issues)
             self.global_issues.extend(structure_issues)
-            
             # 建議最佳實踐路徑
             report.suggested_path = self.suggest_best_practice_path(file_path, file_type)
-            
             # 發出完成事件
             self.emit_governance_event(
                 event_type="FILE_AUDIT_COMPLETE",
@@ -445,9 +389,7 @@ class AEPGovernanceAuditor:
                 },
                 severity=Severity.INFO.value
             )
-            
             return report
-            
         except Exception as e:
             # 發出錯誤事件
             self.emit_governance_event(
@@ -456,7 +398,6 @@ class AEPGovernanceAuditor:
                 details={'error': str(e), 'traceback': traceback.format_exc()},
                 severity=Severity.HIGH.value
             )
-            
             return FileReport(
                 file_path=str(file_path),
                 file_hash="ERROR",
@@ -475,7 +416,6 @@ class AEPGovernanceAuditor:
                     evidence={'error': str(e)}
                 )]
             )
-    
     def scan_directory(self) -> List[Path]:
         """掃描目錄獲取所有檔案"""
         files = []
@@ -490,14 +430,12 @@ class AEPGovernanceAuditor:
                     continue
                 files.append(file_path)
         return sorted(files)
-    
     def run_full_audit(self) -> Dict[str, Any]:
         """執行完整稽核"""
         print(f"\n{'='*60}")
         print("AEP Engine - Architecture Execution Pipeline")
         print("GL Unified Charter Activated")
         print(f"{'='*60}\n")
-        
         # 發出開始事件
         self.emit_governance_event(
             event_type="FULL_AUDIT_START",
@@ -505,12 +443,10 @@ class AEPGovernanceAuditor:
             details={'execution_id': self.execution_id},
             severity=Severity.INFO.value
         )
-        
         # 掃描檔案
         print(f"[Phase 1] Scanning directory: {self.root_path}")
         files = self.scan_directory()
         print(f"  Found {len(files)} files to audit\n")
-        
         # 逐檔執行
         print(f"[Phase 2] Executing one-by-one isolated audit...")
         for i, file_path in enumerate(files, 1):
@@ -518,41 +454,32 @@ class AEPGovernanceAuditor:
                 print(f"  Progress: {i}/{len(files)} files processed")
             report = self.execute_file_audit(file_path)
             self.reports.append(report)
-        
         print(f"\n[Phase 3] Generating reports...")
-        
         # 生成全域報告
         global_report = self.generate_global_report()
-        
         # 保存報告
         self.save_reports()
-        
         print(f"\n[Phase 4] Audit complete!")
         print(f"  Total files: {len(self.reports)}")
         print(f"  Total issues: {len(self.global_issues)}")
         print(f"  Total governance events: {len(self.governance_events)}")
-        
         return global_report
-    
     def generate_global_report(self) -> Dict[str, Any]:
         """生成全域治理稽核報告"""
         # 統計問題
         issues_by_severity = {}
         issues_by_category = {}
-        
         for issue in self.global_issues:
             # 按嚴重度統計
             sev = issue.severity
             if sev not in issues_by_severity:
                 issues_by_severity[sev] = []
             issues_by_severity[sev].append(asdict(issue))
-            
             # 按類別統計
             cat = issue.category
             if cat not in issues_by_category:
                 issues_by_category[cat] = []
             issues_by_category[cat].append(asdict(issue))
-        
         # 統計檔案類型
         files_by_type = {}
         for report in self.reports:
@@ -560,15 +487,12 @@ class AEPGovernanceAuditor:
             if ft not in files_by_type:
                 files_by_type[ft] = 0
             files_by_type[ft] += 1
-        
         # 統計 GL 標記覆蓋率
         files_with_gl_markers = sum(1 for r in self.reports if r.gl_markers)
         gl_coverage = files_with_gl_markers / len(self.reports) * 100 if self.reports else 0
-        
         # 統計 metadata 覆蓋率
         files_with_metadata = sum(1 for r in self.reports if r.metadata_check.get('has_metadata'))
         metadata_coverage = files_with_metadata / len(self.reports) * 100 if self.reports else 0
-        
         # 生成最佳實踐建議
         migration_suggestions = []
         for report in self.reports:
@@ -578,7 +502,6 @@ class AEPGovernanceAuditor:
                     'suggested_path': report.suggested_path,
                     'file_type': report.file_type
                 })
-        
         return {
             'gl_unified_charter': 'ACTIVATED',
             'execution_id': self.execution_id,
@@ -609,11 +532,9 @@ class AEPGovernanceAuditor:
             },
             'best_practice_recommendations': self.generate_best_practice_recommendations()
         }
-    
     def generate_best_practice_recommendations(self) -> List[Dict[str, Any]]:
         """生成最佳實踐建議"""
         recommendations = []
-        
         # 檢查 GL 標記覆蓋率
         files_with_gl = sum(1 for r in self.reports if r.gl_markers)
         if files_with_gl < len(self.reports) * 0.5:
@@ -624,7 +545,6 @@ class AEPGovernanceAuditor:
                 'description': f'Only {files_with_gl}/{len(self.reports)} files have GL markers',
                 'action': 'Add @gl-layer, @gl-module annotations to all configuration files'
             })
-        
         # 檢查 metadata 覆蓋率
         files_with_meta = sum(1 for r in self.reports if r.metadata_check.get('has_metadata'))
         if files_with_meta < len(self.reports) * 0.5:
@@ -635,7 +555,6 @@ class AEPGovernanceAuditor:
                 'description': f'Only {files_with_meta}/{len(self.reports)} files have metadata',
                 'action': 'Add metadata headers with version, name, description fields'
             })
-        
         # 檢查命名問題
         naming_issues = [i for i in self.global_issues if i.category == IssueCategory.NAMING_INCONSISTENT.value]
         if naming_issues:
@@ -646,9 +565,7 @@ class AEPGovernanceAuditor:
                 'description': f'{len(naming_issues)} files have naming convention issues',
                 'action': 'Rename files to follow kebab-case for configs, snake_case for Python'
             })
-        
         return recommendations
-    
     def save_reports(self):
         """保存所有報告"""
         # 保存全域報告
@@ -657,34 +574,27 @@ class AEPGovernanceAuditor:
         with open(global_report_path, 'w', encoding='utf-8') as f:
             json.dump(global_report, f, indent=2, ensure_ascii=False)
         print(f"  Global report saved: {global_report_path}")
-        
         # 保存治理事件流
         events_path = self.output_dir / f'GL-GOVERNANCE-EVENT-STREAM-{self.execution_id}.json'
         with open(events_path, 'w', encoding='utf-8') as f:
             json.dump([asdict(e) for e in self.governance_events], f, indent=2, ensure_ascii=False)
         print(f"  Event stream saved: {events_path}")
-        
         # 保存問題列表
         issues_path = self.output_dir / f'GL-ISSUES-LIST-{self.execution_id}.json'
         with open(issues_path, 'w', encoding='utf-8') as f:
             json.dump([asdict(i) for i in self.global_issues], f, indent=2, ensure_ascii=False)
         print(f"  Issues list saved: {issues_path}")
-        
         # 保存個別檔案報告（壓縮版）
         file_reports_path = self.output_dir / f'GL-FILE-REPORTS-{self.execution_id}.json'
         with open(file_reports_path, 'w', encoding='utf-8') as f:
             json.dump([asdict(r) for r in self.reports], f, indent=2, ensure_ascii=False)
         print(f"  File reports saved: {file_reports_path}")
-
-
 def main():
     """主程式"""
     root_path = sys.argv[1] if len(sys.argv) > 1 else '/workspace/machine-native-ops/ns-root'
     output_dir = sys.argv[2] if len(sys.argv) > 2 else '/workspace/machine-native-ops/aep-governance-audit/reports'
-    
     auditor = AEPGovernanceAuditor(root_path, output_dir)
     report = auditor.run_full_audit()
-    
     # 輸出摘要
     print(f"\n{'='*60}")
     print("AUDIT SUMMARY")
@@ -699,9 +609,6 @@ def main():
     print(f"\nIssues by Category:")
     for cat, count in report['issues_by_category'].items():
         print(f"  {cat}: {count}")
-    
     return 0 if report['summary']['total_issues'] == 0 else 1
-
-
 if __name__ == '__main__':
     sys.exit(main())

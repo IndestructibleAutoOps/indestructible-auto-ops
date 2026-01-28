@@ -4,75 +4,57 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: verify-namespace-alignment
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: verify-namespace-alignment
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 MachineNativeOps Namespace Alignment Verification
 ==================================================
-
 Comprehensive verification script for namespace alignment and auto-monitor tools.
 This script performs all verification stages: Basic, Advanced, and Production.
-
 Usage:
     python3 tools/verify-namespace-alignment.py [--stage STAGE]
-
 Stages:
     basic       - Basic verification (YAML syntax, namespace consistency)
     advanced    - Advanced verification (architecture patterns, deployment config)
     production  - Production verification (e2e tests, security scan, load tests)
     all         - Run all stages (default)
 """
-
 import subprocess
 import sys
 from pathlib import Path
-
 import yaml
-
-
 class VerificationReport:
     """Manages verification results and reporting."""
-
     def __init__(self):
         self.results = {"basic": {}, "advanced": {}, "production": {}}
         self.passed = {"basic": True, "advanced": True, "production": True}
-
     def add_result(self, stage: str, check: str, passed: bool, message: str = ""):
         """Add a verification result."""
         self.results[stage][check] = {"passed": passed, "message": message}
         if not passed:
             self.passed[stage] = False
-
     def print_report(self):
         """Print comprehensive verification report."""
         print("=" * 80)
         print("MachineNativeOps Namespace Alignment Verification Report")
         print("=" * 80)
         print()
-
         for stage in ["basic", "advanced", "production"]:
             if not self.results[stage]:
                 continue
-
             print(f"{stage.upper()} VERIFICATION")
             print("-" * 80)
-
             for check, result in self.results[stage].items():
                 status = "✓" if result["passed"] else "✗"
                 print(f"{status} {check}: {'PASS' if result['passed'] else 'FAIL'}")
                 if result["message"]:
                     print(f"  {result['message']}")
-
             print()
-
         print("=" * 80)
         print("SUMMARY")
         print("-" * 80)
@@ -82,23 +64,17 @@ class VerificationReport:
                 print(
                     f"{status} {stage.capitalize()}: {'PASSED' if self.passed[stage] else 'FAILED'}"
                 )
-
         print("=" * 80)
-
         all_passed = all(self.passed.values())
         if all_passed:
             print("✓ ALL VERIFICATION STAGES PASSED - 100% COMPLIANT")
         else:
             print("✗ SOME VERIFICATION STAGES FAILED")
         print("=" * 80)
-
         return 0 if all_passed else 1
-
-
 def run_basic_verification(report: VerificationReport):
     """Run basic verification checks."""
     print("\n🔍 Running Basic Verification...")
-
     # 1. YAML syntax validation
     try:
         with open("mno-namespace.yaml", "r") as f:
@@ -106,12 +82,10 @@ def run_basic_verification(report: VerificationReport):
         report.add_result("basic", "YAML syntax (mno-namespace.yaml)", True)
     except Exception as e:
         report.add_result("basic", "YAML syntax (mno-namespace.yaml)", False, str(e))
-
     # 2. Namespace consistency check
     try:
         with open("mno-namespace.yaml", "r") as f:
             config = yaml.safe_load(f)
-
         checks = [
             config["spec"]["namespaces"]["primary"]["name"] == "machinenativeops",
             config["spec"]["domains"]["primary"] == "machinenativeops.io",
@@ -121,7 +95,6 @@ def run_basic_verification(report: VerificationReport):
             == "/etc/machinenativeops/pkl",
             config["spec"]["etcd"]["cluster_name"] == "super-agent-etcd-cluster",
         ]
-
         if all(checks):
             report.add_result(
                 "basic",
@@ -138,7 +111,6 @@ def run_basic_verification(report: VerificationReport):
             )
     except Exception as e:
         report.add_result("basic", "Namespace consistency check", False, str(e))
-
     # 3. Conversion report check
     try:
         result = subprocess.run(
@@ -152,7 +124,6 @@ def run_basic_verification(report: VerificationReport):
             text=True,
             timeout=30,
         )
-
         # Check for 0 missing references in non-migration sections
         # (migration rules are allowed to have axiom references)
         if result.returncode == 0:
@@ -173,12 +144,10 @@ def run_basic_verification(report: VerificationReport):
         report.add_result(
             "basic", "Conversion report (0 missing references)", False, str(e)
         )
-
     # 4. Resource type standardization
     try:
         sys.path.insert(0, "engine/machinenativenops-auto-monitor/src")
         from machinenativenops_auto_monitor import AutoMonitorConfig
-
         config = AutoMonitorConfig.default()
         if config.namespace == "machinenativeops":
             report.add_result(
@@ -196,12 +165,9 @@ def run_basic_verification(report: VerificationReport):
             )
     except Exception as e:
         report.add_result("basic", "Resource type standardization", False, str(e))
-
-
 def run_advanced_verification(report: VerificationReport):
     """Run advanced verification checks."""
     print("\n🔧 Running Advanced Verification...")
-
     # 1. Architecture pattern verification
     try:
         # Check that all files follow the expected structure
@@ -217,9 +183,7 @@ def run_advanced_verification(report: VerificationReport):
             "engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/config.py",
             "engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/儲存.py",
         ]
-
         missing_files = [f for f in required_files if not Path(f).exists()]
-
         if not missing_files:
             report.add_result(
                 "advanced",
@@ -238,7 +202,6 @@ def run_advanced_verification(report: VerificationReport):
         report.add_result(
             "advanced", "Architecture pattern verification", False, str(e)
         )
-
     # 2. Deployment configuration test
     try:
         # Verify setup.py exists and is valid
@@ -259,7 +222,6 @@ def run_advanced_verification(report: VerificationReport):
             )
     except Exception as e:
         report.add_result("advanced", "Deployment configuration test", False, str(e))
-
     # 3. Integration point check
     try:
         # Check that modules can be imported
@@ -267,7 +229,6 @@ def run_advanced_verification(report: VerificationReport):
         from machinenativenops_auto_monitor import (
             AutoMonitorConfig,
         )
-
         report.add_result(
             "advanced",
             "Integration point check",
@@ -276,19 +237,14 @@ def run_advanced_verification(report: VerificationReport):
         )
     except Exception as e:
         report.add_result("advanced", "Integration point check", False, str(e))
-
     # 4. Performance benchmark (basic)
     try:
         import time
-
         start = time.time()
-
         # Test config creation performance
         for _ in range(100):
             AutoMonitorConfig.default()
-
         duration = time.time() - start
-
         if duration < 1.0:  # Should be much faster than 1 second for 100 iterations
             report.add_result(
                 "advanced",
@@ -305,33 +261,24 @@ def run_advanced_verification(report: VerificationReport):
             )
     except Exception as e:
         report.add_result("advanced", "Performance benchmark", False, str(e))
-
-
 def run_production_verification(report: VerificationReport):
     """Run production verification checks."""
     print("\n🚀 Running Production Verification...")
-
     # 1. End-to-end functional testing
     try:
         import tempfile
-
         sys.path.insert(0, "engine/machinenativenops-auto-monitor/src")
         from machinenativenops_auto_monitor import AutoMonitorApp, AutoMonitorConfig
-
         # Create a test configuration with temp storage
         config = AutoMonitorConfig.default()
         config.dry_run = True
-
         # Use temp directory for storage
         temp_dir = tempfile.mkdtemp()
         config.storage["path"] = f"{temp_dir}/metrics.db"
-
         # Create app instance (e2e test)
         app = AutoMonitorApp(config)
-
         # Get status
         status = app.get_status()
-
         if status and status.get("namespace") == "machinenativeops":
             report.add_result(
                 "production",
@@ -348,29 +295,24 @@ def run_production_verification(report: VerificationReport):
             )
     except Exception as e:
         report.add_result("production", "End-to-end functional testing", False, str(e))
-
     # 2. Security scan (basic check for no hardcoded secrets)
     try:
         # Check for common secret patterns in Python files
         import re
-
         secret_patterns = [
             r'password\s*=\s*["\'][^"\']+["\']',
             r'api_key\s*=\s*["\'][^"\']+["\']',
             r'secret\s*=\s*["\'][^"\']+["\']',
         ]
-
         python_files = list(
             Path("engine/machinenativenops-auto-monitor/src").rglob("*.py")
         )
         found_secrets = []
-
         for py_file in python_files:
             content = py_file.read_text()
             for pattern in secret_patterns:
                 if re.search(pattern, content, re.IGNORECASE):
                     found_secrets.append(str(py_file))
-
         if not found_secrets:
             report.add_result(
                 "production",
@@ -389,11 +331,9 @@ def run_production_verification(report: VerificationReport):
         report.add_result(
             "production", "Security scan (no hardcoded secrets)", False, str(e)
         )
-
     # 3. Load test (simulated)
     try:
         import time
-
         # Simulate load: create many config objects rapidly
         start = time.time()
         configs = []
@@ -401,7 +341,6 @@ def run_production_verification(report: VerificationReport):
             config = AutoMonitorConfig.default()
             configs.append(config)
         duration = time.time() - start
-
         # Should handle 1000 config creations in reasonable time (< 5 seconds)
         if duration < 5.0:
             report.add_result(
@@ -421,18 +360,14 @@ def run_production_verification(report: VerificationReport):
         report.add_result(
             "production", "Load test (1000 config creations)", False, str(e)
         )
-
     # 4. Recovery test (error handling)
     try:
         # Test that invalid config is handled gracefully
         from machinenativenops_auto_monitor import AutoMonitorConfig
-
         config = AutoMonitorConfig()
         config.collection_interval = -1  # Invalid
-
         # Validation should catch this
         is_valid = config.validate()
-
         if not is_valid:  # Should return False for invalid config
             report.add_result(
                 "production",
@@ -455,12 +390,9 @@ def run_production_verification(report: VerificationReport):
             True,
             "Invalid config properly rejected (exception)",
         )
-
-
 def main():
     """Main entry point."""
     import argparse
-
     parser = argparse.ArgumentParser(
         description="MachineNativeOps Namespace Alignment Verification"
     )
@@ -470,27 +402,18 @@ def main():
         default="all",
         help="Verification stage to run",
     )
-
     args = parser.parse_args()
-
     print("=" * 80)
     print("MachineNativeOps Namespace Alignment Verification")
     print("=" * 80)
-
     report = VerificationReport()
-
     if args.stage in ["basic", "all"]:
         run_basic_verification(report)
-
     if args.stage in ["advanced", "all"]:
         run_advanced_verification(report)
-
     if args.stage in ["production", "all"]:
         run_production_verification(report)
-
     exit_code = report.print_report()
     sys.exit(exit_code)
-
-
 if __name__ == "__main__":
     main()

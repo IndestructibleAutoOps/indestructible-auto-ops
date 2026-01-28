@@ -1,31 +1,23 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: __init__
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: __init__
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Engine - Governance Layer Execution Engine
 MachineNativeOps GL Architecture Implementation
-
 This package provides the core components for GL governance operations:
 - gl_executor: Main execution engine for GL commands
 - gl_validator: Comprehensive artifact validation
 - gl_reporter: Report generation and dashboards
 """
-
 from pathlib import Path
-
 __version__ = "2.0.0"
 __author__ = "MachineNativeOps Team"
-
 # Package metadata
 PACKAGE_NAME = "gl-engine"
 PACKAGE_DESCRIPTION = "Governance Layer Execution Engine for MachineNativeOps"
-
 # GL Layer definitions
 GL_LAYERS = {
     "GL00-09": {
@@ -64,23 +56,16 @@ GL_LAYERS = {
         "description": "治理體系的元規範、標準制定、規格管理、治理流程定義"
     }
 }
-
 # Default paths
 DEFAULT_GOVERNANCE_PATH = "workspace/governance"
 DEFAULT_REPORTS_PATH = "reports/gl-governance"
 DEFAULT_TEMPLATES_PATH = "workspace/governance/meta-spec/GL-ARTIFACTS-TEMPLATES.yaml"
-
-
 def get_version() -> str:
     """Get package version."""
     return __version__
-
-
 def get_layer_info(layer_id: str) -> dict:
     """Get information about a GL layer."""
     return GL_LAYERS.get(layer_id, {})
-
-
 def list_layers() -> list:
     """List all GL layers."""
     return list(GL_LAYERS.keys())

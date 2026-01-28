@@ -1,19 +1,14 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: stage4_sbom_scan
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: stage4_sbom_scan
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification - Stage 4: SBOM + Vulnerability/Secrets Scanning
-
 This module handles SBOM generation and security scanning.
 """
-
 import hashlib
 import json
 import logging
@@ -21,21 +16,15 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
-
 from .hash_manager import HashManager
 from .supply_chain_types import VerificationEvidence
-
 # Configure logging
 logger = logging.getLogger(__name__)
-
-
 class Stage4SbomScanVerifier:
     """Verifier for Stage 4: SBOM + Vulnerability/Secrets Scanning"""
-
     def __init__(self, repo_path: Path, evidence_dir: Path, hash_manager: HashManager):
         """
         Initialize Stage 4 verifier
-
         Args:
             repo_path: Path to repository
             evidence_dir: Path to evidence directory
@@ -44,33 +33,27 @@ class Stage4SbomScanVerifier:
         self.repo_path = repo_path
         self.evidence_dir = evidence_dir
         self.hash_manager = hash_manager
-
     def verify(self) -> VerificationEvidence:
         """
         Execute Stage 4: SBOM generation and security scanning
-
         Returns:
             VerificationEvidence with validation results
         """
         logger.info("🔍 Stage 4: SBOM + 漏洞/Secrets 掃描開始")
-
         data = {
             "sbom": self._generate_sbom(),
             "vulnerabilities": self._scan_vulnerabilities(),
             "secrets": self._scan_secrets(),
             "malware": self._scan_malware(),
         }
-
         evidence = self._create_evidence(
             stage=4,
             stage_name="SBOM + 漏洞/Secrets 掃描",
             evidence_type="security_scan",
             data=data,
         )
-
         logger.info(f"✅ Stage 4 完成: {evidence.compliant and '通過' or '失敗'}")
         return evidence
-
     def _generate_sbom(self) -> Dict[str, Any]:
         """生成軟體物料清單（SBOM）"""
         sbom = {
@@ -88,10 +71,8 @@ class Stage4SbomScanVerifier:
             },
             "components": [],
         }
-
         # 掃描依賴
         dependencies = []
-
         # Python 依賴
         if (self.repo_path / "requirements.txt").exists():
             with open(self.repo_path / "requirements.txt") as f:
@@ -111,7 +92,6 @@ class Stage4SbomScanVerifier:
                                     "language": "python",
                                 }
                             )
-
         # Go 依賴
         if (self.repo_path / "go.mod").exists():
             try:
@@ -137,7 +117,6 @@ class Stage4SbomScanVerifier:
                                 )
             except Exception as e:
                 logger.warning(f"無法解析 go.mod: {e}")
-
         # Node.js 依賴
         if (self.repo_path / "package.json").exists():
             try:
@@ -156,13 +135,10 @@ class Stage4SbomScanVerifier:
                         )
             except Exception as e:
                 logger.warning(f"無法解析 package.json: {e}")
-
         sbom["components"] = dependencies
         return sbom
-
     def _scan_vulnerabilities(self) -> List[Dict[str, Any]]:
         """掃描漏洞（模擬 Trivy/Grype）"""
-
         # 模擬一些常見漏洞
         simulated_vulns = [
             {
@@ -182,13 +158,10 @@ class Stage4SbomScanVerifier:
                 "fixed_in": "1.26.5",
             },
         ]
-
         return simulated_vulns
-
     def _scan_secrets(self) -> List[Dict[str, Any]]:
         """掃描 Secrets（模擬 gitleaks）"""
         secrets = []
-
         secret_patterns = {
             "aws_access_key": r"AKIA[0-9A-Z]{16}",
             "aws_secret_key": r"[A-Za-z0-9/+=]{40}",
@@ -198,10 +171,8 @@ class Stage4SbomScanVerifier:
             "api_key": r'[Aa][Pp][Ii]_[Kk][Ee][Yy].*["\']?[A-Za-z0-9_]{16,}["\']?',
             "password": r'[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd].*["\']?[A-Za-z0-9_@#$%^&*]{8,}["\']?',
         }
-
         # 掃描所有文本文件
         text_extensions = [".py", ".yaml", ".yml", ".json", ".sh", ".md", ".txt"]
-
         for ext in text_extensions:
             for file_path in self.repo_path.rglob(f"*{ext}"):
                 if any(
@@ -209,12 +180,10 @@ class Stage4SbomScanVerifier:
                     for skip in [".git", "__pycache__", "node_modules"]
                 ):
                     continue
-
                 try:
                     with open(file_path, "r", encoding="utf-8") as f:
                         content = f.read()
                         lines = content.split("\n")
-
                         for line_num, line in enumerate(lines, 1):
                             for secret_type, pattern in secret_patterns.items():
                                 if re.search(pattern, line, re.IGNORECASE):
@@ -253,13 +222,10 @@ class Stage4SbomScanVerifier:
                                         )
                 except Exception as e:
                     logger.warning(f"無法掃描 {file_path}: {e}")
-
         return secrets
-
     def _scan_malware(self) -> List[Dict[str, Any]]:
         """掃描惡意程式（模擬 ClamAV/YARA）"""
         malware = []
-
         # 檢查可疑的檔案模式
         suspicious_patterns = {
             "suspicious_executable": r"\.(exe|bat|cmd|scr|pif)$",
@@ -267,14 +233,12 @@ class Stage4SbomScanVerifier:
             "suspicious_network": r"(curl|wget).*http.*\|.*sh",
             "reverse_shell": r"(bash -i|/bin/sh|nc -e|python -c).*[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}",
         }
-
         # 掃描所有檔案
         for file_path in self.repo_path.rglob("*"):
             if file_path.is_file() and any(
                 skip not in str(file_path) for skip in [".git", "__pycache__"]
             ):
                 file_name = file_path.name.lower()
-
                 for pattern_type, pattern in suspicious_patterns.items():
                     if re.search(pattern, file_name, re.IGNORECASE):
                         malware.append(
@@ -285,7 +249,6 @@ class Stage4SbomScanVerifier:
                             }
                         )
                         break
-
                 # 檢查文件內容
                 if file_path.suffix in [".py", ".sh", ".yaml", ".yml"]:
                     try:
@@ -317,9 +280,7 @@ class Stage4SbomScanVerifier:
                                             break
                     except Exception:
                         pass  # 忽略無法讀取的檔案
-
         return malware
-
     def _create_evidence(
         self,
         stage: int,
@@ -332,7 +293,6 @@ class Stage4SbomScanVerifier:
         verification_hash, reproducible_hash = self.hash_manager.compute_dual_hash(
             data_str, f"stage{stage}"
         )
-
         # Save evidence file
         evidence_file = (
             self.evidence_dir / f"stage{stage:02d}-{evidence_type.replace(' ', '_')}.json"
@@ -353,7 +313,6 @@ class Stage4SbomScanVerifier:
                 indent=2,
                 default=str,
             )
-
         evidence = VerificationEvidence(
             stage=stage,
             stage_name=stage_name,
@@ -366,9 +325,7 @@ class Stage4SbomScanVerifier:
             rollback_available=True,
             reproducible=True,
         )
-
         return evidence
-
     def _check_compliance(self, data: Dict[str, Any]) -> bool:
         """Check if Stage 4 passed compliance"""
         # Check for CRITICAL severity issues
@@ -378,5 +335,4 @@ class Stage4SbomScanVerifier:
         critical_malware = [
             m for m in data["malware"] if m["severity"] == "CRITICAL"
         ]
-
         return len(critical_secrets) == 0 and len(critical_malware) == 0

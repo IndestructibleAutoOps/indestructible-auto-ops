@@ -1,20 +1,15 @@
-/**
- * @GL-governed
- * @GL-layer: governance
- * @GL-semantic: __init__
- * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
- *
- * GL Unified Charter Activated
- */
-
+#
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: __init__
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
 #!/usr/bin/env python3
 """
 Supply Chain Verification Package
-
 This package provides enterprise-grade supply chain verification capabilities
 for MachineNativeOps, including seven-stage verification workflow.
 """
-
 from .hash_manager import HashManager
 from .stage1_lint_format import Stage1LintFormatVerifier
 from .stage2_schema_semantic import Stage2SchemaSemanticVerifier
@@ -29,7 +24,6 @@ from .supply_chain_types import (
     VerificationStage,
 )
 from .supply_chain_verifier import UltimateSupplyChainVerifier
-
 __all__ = [
     # Main verifier
     "UltimateSupplyChainVerifier",
@@ -48,5 +42,4 @@ __all__ = [
     "VerificationEvidence",
     "ChainVerificationResult",
 ]
-
 __version__ = "1.0.0"
