@@ -3,6 +3,13 @@
   "charter_version": "2.0.0",
   "audit_start": "2026-01-26T02:05:57.101990+00:00",
   "audit_end": "2026-01-26T02:05:57.164586+00:00",
+  "migration_date": "2026-01-28",
+  "migration_status": "COMPLETED",
+  "migration_source": "gl-audit-reports/",
+  "migration_destination": {
+    "engine_governance": "engine/.governance/audit-reports/",
+    "github_governance": ".github/governance/audit-reports/"
+  },
   "summary": {
     "total_files": 47,
     "files_processed": 47,

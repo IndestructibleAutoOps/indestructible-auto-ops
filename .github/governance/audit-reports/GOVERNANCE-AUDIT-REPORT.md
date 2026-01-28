@@ -2,6 +2,13 @@
 
 **GL Unified Charter Activated**
 
+## Migration Status
+
+**✅ GL Audit Reports Migration Complete** - All audit reports have been migrated to their proper locations:
+- Audit Data: `engine/.governance/audit-reports/`
+- Documentation: `.github/governance/audit-reports/`
+- Legacy: `gl-audit-reports/` (Removed)
+
 ## 執行摘要
 
 | 項目 | 數值 |
@@ -14,6 +21,8 @@
 | 處理成功 | 47 |
 | 處理失敗 | 0 |
 | 總問題數 | 143 |
+| Migration Date | 2026-01-28 |
+| Migration Status | COMPLETED |
 
 ## 問題分布
 
