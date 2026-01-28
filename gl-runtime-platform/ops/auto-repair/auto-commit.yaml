@@ -1,0 +1,44 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-commit-configuration
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: gl.machinenativeops.io/v1
+kind: AutoCommit
+metadata:
+  name: gl-runtime-auto-commit
+  version: "1.0.0"
+  layer: "GL90-99"
+  owner: "engineering-team"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
+
+spec:
+  enable: true
+  branch_strategy:
+    mode: "per-repair-session"
+    prefix: "gl-auto-fix/"
+    suffix: "-{{timestamp}}"
+  commit_message_template: "chore(gl): auto-fix governance issues for {{issueBatchId}} - {{issuesSummary}}"
+  author:
+    name: "GL Auto-Repair Bot"
+    email: "gl-autorepair@machinenativeops.com"
+  sign_commits: false
+  validation:
+    require_gl_markers: true
+    require_semantic_anchors: true
+    require_metadata: true
+
+status:
+  phase: "configured"
+  conditions:
+    - type: "Enabled"
+      status: "True"
+      lastTransitionTime: "2026-01-28T13:29:00Z"
+      reason: "Auto-commit strategy activated"
+    - type: "GLGovernanceIntegrated"
+      status: "True"
+      lastTransitionTime: "2026-01-28T13:29:00Z"
+      reason: "GL semantic anchor verified"
