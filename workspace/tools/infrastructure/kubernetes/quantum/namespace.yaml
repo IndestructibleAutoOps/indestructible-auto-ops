@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: quantumflow
-  labels:
-    name: quantumflow
-    app.kubernetes.io/name: quantumflow
-    app.kubernetes.io/version: "1.0.0"
-

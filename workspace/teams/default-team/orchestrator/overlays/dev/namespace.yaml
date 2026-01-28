@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: machinenativeops-dev
-  labels:
-    name: machinenativeops-dev
-    purpose: multi-agent-orchestration
-    environment: dev
