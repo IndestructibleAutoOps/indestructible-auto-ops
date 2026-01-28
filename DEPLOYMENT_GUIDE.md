@@ -18,7 +18,7 @@ git status
 
 Expected output should show:
 - Modified: `.github/workflows/infrastructure-validation.yml`
-- Modified: `scripts/validate-infrastructure.sh`
+- Modified: `engine/scripts-legacy/validate-infrastructure.sh`
 - New file: `PRODUCTION_BUG_FIX_SUMMARY.md`
 
 ### Step 2: Review Changes
@@ -27,7 +27,7 @@ Expected output should show:
 git diff .github/workflows/infrastructure-validation.yml
 
 # Review script changes
-git diff scripts/validate-infrastructure.sh
+git diff engine/scripts-legacy/validate-infrastructure.sh
 
 # View the bug fix summary
 cat PRODUCTION_BUG_FIX_SUMMARY.md
@@ -39,7 +39,7 @@ cat PRODUCTION_BUG_FIX_SUMMARY.md
 pip install pyyaml jsonschema
 
 # Run validation script
-./scripts/validate-infrastructure.sh
+./engine/scripts-legacy/validate-infrastructure.sh
 
 # Expected: All validations should pass with ✅ indicators
 ```
@@ -185,7 +185,7 @@ The deployment is considered successful when:
 ## Additional Resources
 
 - **Bug Fix Summary**: PRODUCTION_BUG_FIX_SUMMARY.md
-- **Validation Script**: scripts/validate-infrastructure.sh
+- **Validation Script**: engine/scripts-legacy/validate-infrastructure.sh
 - **Workflow File**: .github/workflows/infrastructure-validation.yml
 - **GitHub Actions**: https://github.com/MachineNativeOps/machine-native-ops/actions
 
