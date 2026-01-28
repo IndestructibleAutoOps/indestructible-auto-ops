@@ -123,7 +123,7 @@ jobs:
           upload: false
 
       - name: Upload SARIF results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: codeql-sarif-${{ matrix.language }}
           path: sarif-results/${{ matrix.language }}.sarif
@@ -181,7 +181,7 @@ jobs:
           EOF
 
       - name: Upload summary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: codeql-summary-${{ matrix.language }}
           path: codeql-summary-${{ matrix.language }}.json
@@ -252,7 +252,7 @@ jobs:
           EOF
 
       - name: Upload comprehensive report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: codeql-comprehensive-report
           path: codeql-comprehensive-report.json
