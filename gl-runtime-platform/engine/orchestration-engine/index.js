@@ -53,13 +53,28 @@ class OrchestrationEngine {
 
   async loadConfiguration() {
     try {
-      const configPath = path.join(__dirname, '../../ops/agents/agent-orchestration.yaml');
-      const configContent = await fs.readFile(configPath, 'utf8');
+      const primaryConfigPath = path.join(__dirname, '../../../.github/agents/agent-orchestration.yml');
+      const fallbackConfigPath = path.join(__dirname, '../../ops/agents/agent-orchestration.yaml');
+      const configPath = (await this._resolveConfigPath(primaryConfigPath, fallbackConfigPath));
+      await fs.readFile(configPath, 'utf8');
       logger.info('Configuration loaded', { path: configPath });
       this.logGovernanceEvent('config_loaded', { path: configPath });
     } catch (error) {
       logger.error('Configuration load failed', { error: error.message });
       this.logGovernanceEvent('config_load_failed', { error: error.message });
+    }
+  }
+
+  async _resolveConfigPath(primaryPath, fallbackPath) {
+    try {
+      await fs.access(primaryPath);
+      return primaryPath;
+    } catch (error) {
+      logger.warn('Primary configuration missing, falling back', {
+        primaryPath,
+        fallbackPath
+      });
+      return fallbackPath;
     }
   }
 
@@ -295,3 +310,4 @@ if (require.main === module) {
 }
 
 module.exports = OrchestrationEngine;
+
