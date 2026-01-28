@@ -1,154 +1,205 @@
 # @GL-governed
 # @GL-layer: GL90-99
-# @GL-semantic: federation-orchestration-config
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-semantic: federation-orchestration-configuration
+# @GL-charter-version: 2.0.0
 
 apiVersion: federation.machinenativeops.io/v1
 kind: FederationOrchestration
 metadata:
-  name: federation-orchestration-config
-  version: "1.0.0"
+  name: cross-repo-orchestration
+  version: "5.0.0"
   created_at: "2026-01-28T00:00:00Z"
   layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approved: "approved"
 
 spec:
+  # Cross-repo orchestration strategy
   orchestration_strategy:
-    mode: "multi-repo-parallel"
-    execution_mode: "per-repo-sandbox-per-file-sequential"
-    max_concurrent_repos: 8
-    max_concurrent_files_per_repo: 1
+    mode: "parallel-federation"
+    max_concurrent_repos: 10
+    max_concurrent_agents_per_repo: 8
     timeout_seconds: 3600
     retry_policy:
       max_retries: 3
       backoff_multiplier: 2
+      retry_on:
+        - "network-error"
+        - "timeout"
+        - "transient-failure"
 
-  repo_pipelines:
-    directory_audit_pipeline:
+  # Per-repo pipeline configuration
+  per_repo_pipelines:
+    - name: "directory-audit-pipeline"
+      description: "Per-repo directory audit with per-file sandbox execution"
       enabled: true
-      execution_order: "parallel"
-      trigger: "on-push"
-      steps:
-        - name: "clone-repo"
-          timeout: 300
-        - name: "scan-files"
-          timeout: 600
-        - name: "validate-gl-markers"
-          timeout: 300
-        - name: "check-semantic-anchors"
-          timeout: 300
-        - name: "validate-schemas"
-          timeout: 300
-        - name: "check-naming-paths"
-          timeout: 300
-        - name: "generate-audit-report"
-          timeout: 300
-      failure_action: "stop"
+      execution_mode: "per-file-isolated"
+      stages:
+        - name: "scan-repository"
+          description: "Scan all files in repository"
+          agents:
+            - "dependency-scanner"
+            - "codeql-monitor"
+        - name: "validate-governance"
+          description: "Validate governance compliance for each file"
+          agents:
+            - "gl-governance-validator"
+            - "architecture-validator"
+        - name: "quality-check"
+          description: "Perform quality checks"
+          agents:
+            - "quality-assurance"
+            - "security-auditor"
+        - name: "generate-reports"
+          description: "Generate audit reports"
+          agents:
+            - "reporting-aggregator"
+            - "documentation-generator"
+      output:
+        - "repo-audit-report.json"
+        - "per-file-reports/"
+        - "governance-summary.md"
 
-    repo_gl_fix_pipeline:
+    - name: "repo-gl-fix-pipeline"
+      description: "Per-repo GL fixes with sandbox validation and PR creation"
       enabled: true
-      execution_order: "parallel"
-      trigger: "after-audit"
-      steps:
+      execution_mode: "per-file-isolated"
+      stages:
         - name: "analyze-violations"
-          timeout: 300
+          description: "Analyze governance violations"
+          agents:
+            - "gl-governance-validator"
+            - "architecture-validator"
         - name: "generate-patches"
-          timeout: 600
-        - name: "sandbox-validate"
-          timeout: 300
-        - name: "create-branch"
-          timeout: 60
-        - name: "apply-patches"
-          timeout: 300
-        - name: "commit-changes"
-          timeout: 60
+          description: "Generate automatic patches"
+          agents:
+            - "gl-governance-validator"
+          sandbox_validation: true
+        - name: "apply-fixes"
+          description: "Apply fixes in sandbox"
+          agents:
+            - "connector-git"
         - name: "create-pr"
-          timeout: 120
-      failure_action: "stop"
-      approval_required: false
-      auto_merge: true
+          description: "Create pull requests for fixes"
+          agents:
+            - "connector-git"
+          requires_approval: false
+      output:
+        - "fix-report.json"
+        - "patches/"
+        - "pr-urls.txt"
 
-  priority_levels:
-    critical:
-      max_concurrent: 8
-      priority: 1
-      timeout_seconds: 1800
-      auto_deploy: true
-    
-    high:
-      max_concurrent: 6
-      priority: 2
-      timeout_seconds: 3600
-      auto_deploy: false
-    
-    medium:
-      max_concurrent: 4
-      priority: 3
-      timeout_seconds: 7200
-      auto_deploy: false
-    
-    low:
-      max_concurrent: 2
-      priority: 4
-      timeout_seconds: 14400
-      auto_deploy: false
-
-  event_stream:
+  # Cross-repo event aggregation
+  event_aggregation:
     enabled: true
-    aggregation_mode: "federated"
-    retention_days: 30
-    storage_path: "gl-runtime-platform/storage/federation-events-stream"
-    schema:
-      required_fields:
-        - "event_id"
-        - "timestamp"
-        - "event_type"
-        - "source_repo"
-        - "source_project"
-        - "organization"
-        - "data"
-        - "governance_layer"
+    event_stream_path: "storage/federation-events-stream/federation-events.jsonl"
+    aggregation_rules:
+      - event_type: "audit_started"
+        aggregate_by: "organization_id,repo_id"
+      - event_type: "audit_completed"
+        aggregate_by: "organization_id,repo_id"
+      - event_type: "fix_applied"
+        aggregate_by: "organization_id,repo_id"
+      - event_type: "deployment_completed"
+        aggregate_by: "organization_id,cluster_id"
+    retention_hours: 168
 
-  audit_reports:
-    output_path: "gl-runtime-platform/storage/federation-audit-reports"
-    formats:
-      - "json"
-      - "markdown"
-    aggregation:
-      per_repo: true
-      per_org: true
-      global: true
-    include:
-      - "violations"
-      - "warnings"
-      - "compliance_score"
-      - "governance_events"
-      - "patches_applied"
-
-  resource_allocation:
-    per_repo:
-      memory_mb: 512
-      cpu_cores: 1
-      disk_mb: 256
-    
-    federation_coordinator:
-      memory_mb: 2048
-      cpu_cores: 4
-      disk_mb: 1024
-
-  monitoring:
+  # Priority management
+  priority_management:
     enabled: true
-    metrics_port: 9090
-    health_check_interval: 30
-    log_level: "info"
-    alert_channels:
-      - "slack"
-      - "email"
-      - "pagerduty"
+    priority_levels:
+      - level: "critical"
+        repos:
+          - "repo-machine-native-ops-main"
+        weight: 10
+      - level: "high"
+        repos:
+          - "repo-enterprise-a-core"
+        weight: 8
+      - level: "medium"
+        repos: []
+        weight: 5
+      - level: "low"
+        repos: []
+        weight: 3
+    preemption_enabled: true
 
-_status:
-  federation_status: "operational"
-  total_repositories: 4
-  active_pipelines: 2
-  total_projects: 4
-  total_organizations: 2
-  last_sync: "2026-01-28T00:00:00Z"
+  # Trust-based execution
+  trust_based_execution:
+    enabled: true
+    rules:
+      - trust_level: "high"
+        auto_fix: true
+        auto_deploy: true
+        auto_pr: true
+        approval_required: false
+      - trust_level: "medium"
+        auto_fix: true
+        auto_deploy: false
+        auto_pr: true
+        approval_required: true
+      - trust_level: "low"
+        auto_fix: false
+        auto_deploy: false
+        auto_pr: false
+        approval_required: true
+
+  # Cross-repo dependencies
+  dependency_management:
+    enabled: true
+    resolution_strategy: "topological"
+    parallel_independent: true
+    wait_for_dependencies: true
+
+  # Federated reporting
+  federated_reporting:
+    enabled: true
+    report_types:
+      - name: "federated-audit-report"
+        format: "json"
+        include:
+          - "all-repos"
+          - "summary-metrics"
+          - "violations-by-repo"
+          - "compliance-scores"
+      - name: "executive-summary"
+        format: "markdown"
+        include:
+          - "overall-compliance"
+          - "critical-issues"
+          - "recommendations"
+      - name: "dashboard-data"
+        format: "json"
+        include:
+          - "metrics"
+          - "charts"
+          - "trends"
+    output_path: "storage/federation-audit-reports/"
+
+  # Integration with existing systems
+  integrations:
+    - type: "gl-runtime-platform"
+      enabled: true
+      api_endpoint: "http://localhost:3000"
+    - type: "git"
+      enabled: true
+      provider: "github"
+    - type: "kubernetes"
+      enabled: true
+      clusters:
+        - "cluster-prod-us-east"
+        - "cluster-staging-us-west"
+        - "cluster-enterprise-prod"
+
+status:
+  phase: "configured"
+  conditions:
+    - type: "PipelinesConfigured"
+      status: "True"
+    - type: "EventAggregationEnabled"
+      status: "True"
+    - type: "PriorityManagementConfigured"
+      status: "True"
+    - type: "TrustBasedExecutionEnabled"
+      status: "True"

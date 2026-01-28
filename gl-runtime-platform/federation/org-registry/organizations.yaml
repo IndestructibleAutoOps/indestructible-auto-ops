@@ -1,0 +1,78 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-organizations-registry
+# @GL-charter-version: 2.0.0
+
+apiVersion: federation.machinenativeops.io/v1
+kind: OrganizationRegistry
+metadata:
+  name: federation-org-registry
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  organizations:
+    - id: "org-machinenativeops"
+      name: "MachineNativeOps"
+      type: "root"
+      trust_level: "high"
+      governance_level: "GL90-99"
+      contact:
+        email: "governance@machinenativeops.io"
+      capabilities:
+        - multi-agent-orchestration
+        - cross-repo-governance
+        - auto-repair
+        - auto-deploy
+      policies:
+        - baseline: "gl-standard"
+        - override_allowed: true
+      signing_keys:
+        primary: "machinenativeops-primary"
+        backup: "machinenativeops-backup"
+      created_at: "2026-01-28T00:00:00Z"
+
+    - id: "org-enterprise-a"
+      name: "Enterprise A"
+      type: "member"
+      trust_level: "medium"
+      governance_level: "GL70-89"
+      contact:
+        email: "governance@enterprise-a.com"
+      capabilities:
+        - basic-orchestration
+        - repo-level-governance
+        - manual-approval-required
+      policies:
+        - baseline: "gl-minimal"
+        - override_allowed: false
+      signing_keys:
+        primary: "enterprise-a-primary"
+      created_at: "2026-01-28T00:00:00Z"
+
+  federation_config:
+    minimum_governance_level: "GL70-89"
+    trust_propagation: "hierarchical"
+    approval_matrix:
+      auto_fix_allowed:
+        - "high"
+      auto_deploy_allowed:
+        - "high"
+      manual_approval_required:
+        - "low"
+        - "medium"
+
+status:
+  phase: "active"
+  total_organizations: 2
+  conditions:
+    - type: "OrganizationsRegistered"
+      status: "True"
+    - type: "TrustConfigured"
+      status: "True"
+    - type: "SigningKeysDefined"
+      status: "True"

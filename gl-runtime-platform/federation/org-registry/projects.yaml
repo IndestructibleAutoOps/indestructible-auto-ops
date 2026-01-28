@@ -1,0 +1,126 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-projects-registry
+# @GL-charter-version: 2.0.0
+
+apiVersion: federation.machinenativeops.io/v1
+kind: ProjectRegistry
+metadata:
+  name: federation-project-registry
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  projects:
+    - id: "proj-machine-native-ops"
+      name: "Machine Native Ops Platform"
+      organization_id: "org-machinenativeops"
+      type: "core"
+      criticality: "high"
+      primary_language: "typescript"
+      governance_level: "GL90-99"
+      repositories:
+        - repo-id: "repo-machine-native-ops-main"
+          name: "machine-native-ops"
+          url: "https://github.com/MachineNativeOps/machine-native-ops.git"
+          branch: "main"
+          auto_scan: true
+          auto_fix: true
+          auto_deploy: true
+      policies:
+        - profile: "gl-standard"
+        - enforce_semantic_anchors: true
+        - enforce_naming_conventions: true
+        - enforce_governance_tags: true
+      created_at: "2026-01-28T00:00:00Z"
+
+    - id: "proj-elasticsearch-search-system"
+      name: "Elasticsearch Search System"
+      organization_id: "org-machinenativeops"
+      type: "subsystem"
+      criticality: "medium"
+      primary_language: "python"
+      governance_level: "GL80-89"
+      repositories:
+        - repo-id: "repo-elasticsearch-search"
+          name: "elasticsearch-search-system"
+          url: "https://github.com/MachineNativeOps/machine-native-ops.git"
+          branch: "main"
+          path: "elasticsearch-search-system"
+          auto_scan: true
+          auto_fix: true
+          auto_deploy: false
+      policies:
+        - profile: "gl-extended"
+        - enforce_semantic_anchors: true
+        - enforce_naming_conventions: true
+      created_at: "2026-01-28T00:00:00Z"
+
+    - id: "proj-file-organizer"
+      name: "File Organizer System"
+      organization_id: "org-machinenativeops"
+      type: "subsystem"
+      criticality: "medium"
+      primary_language: "python"
+      governance_level: "GL80-89"
+      repositories:
+        - repo-id: "repo-file-organizer"
+          name: "file-organizer-system"
+          url: "https://github.com/MachineNativeOps/machine-native-ops.git"
+          branch: "main"
+          path: "file-organizer-system"
+          auto_scan: true
+          auto_fix: true
+          auto_deploy: false
+      policies:
+        - profile: "gl-extended"
+        - enforce_semantic_anchors: true
+      created_at: "2026-01-28T00:00:00Z"
+
+    - id: "proj-enterprise-a-core"
+      name: "Enterprise A Core System"
+      organization_id: "org-enterprise-a"
+      type: "external"
+      criticality: "high"
+      primary_language: "java"
+      governance_level: "GL70-79"
+      repositories:
+        - repo-id: "repo-enterprise-a-core"
+          name: "enterprise-a-core"
+          url: "https://github.com/Enterprise-A/core-system.git"
+          branch: "main"
+          auto_scan: true
+          auto_fix: false
+          auto_deploy: false
+      policies:
+        - profile: "gl-minimal"
+        - enforce_semantic_anchors: false
+        - manual_approval_required: true
+      created_at: "2026-01-28T00:00:00Z"
+
+  project_templates:
+    standard:
+      governance_level: "GL80-89"
+      auto_scan: true
+      auto_fix: true
+      auto_deploy: false
+    minimal:
+      governance_level: "GL70-79"
+      auto_scan: true
+      auto_fix: false
+      auto_deploy: false
+
+status:
+  phase: "active"
+  total_projects: 4
+  conditions:
+    - type: "ProjectsRegistered"
+      status: "True"
+    - type: "PoliciesAssigned"
+      status: "True"
+    - type: "RepositoriesLinked"
+      status: "True"

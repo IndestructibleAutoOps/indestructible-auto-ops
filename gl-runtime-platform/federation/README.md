@@ -1,199 +1,318 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: federation-readme
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-charter-version: 2.0.0
 
-# GL Federation Layer - Cross-Project/Cross-Organization Governance Hub
+# GL Federation Layer v5.0.0
 
-## Version 5.0.0
+## Overview
 
-This federation layer extends the GL Runtime Platform from a single-repo governance runtime to a multi-repo, multi-organization, multi-cluster governance hub.
+The GL Federation Layer transforms the GL Runtime Platform from a single-repository governance runtime into a cross-organization, cross-repository, cross-cluster governance hub. This layer enables centralized governance management across multiple organizations, projects, and deployment environments while maintaining full GL Unified Charter compliance.
 
 ## Architecture
 
-### Federation Components
+```
+federation/
+├── org-registry/              # Organization and project registration
+│   ├── organizations.yaml    # Organization definitions and trust levels
+│   └── projects.yaml         # Project and repository mappings
+├── policies/                  # Cross-organization GL policies
+│   └── federation-policies.yaml
+├── topology/                  # Multi-repo and multi-cluster topology
+│   ├── repos.yaml            # Repository definitions and mappings
+│   └── clusters.yaml         # Kubernetes cluster definitions
+├── federation-orchestration/  # Cross-repo orchestration
+│   └── federation-orchestration.yaml
+├── trust/                     # Trust model and signing keys
+│   ├── trust-model.yaml      # Trust levels and permissions
+│   └── signing-keys.md       # Key management documentation
+├── index.yaml                 # Federation overview and index
+└── README.md                  # This file
+```
 
-1. **org-registry/** - Organization and Project Registration
-   - Organizations management
-   - Project registration
-   - Policy profile assignment
-   - Trust level configuration
+## Components
 
-2. **policies/** - Cross-Organization Governance Policies
-   - Federation baseline policies
-   - Naming conventions
-   - Path policies
-   - Schema requirements
-   - Governance marker policies
+### 1. Organization Registry (`org-registry/`)
 
-3. **topology/** - Repository and Cluster Topology
-   - Repository registry
-   - Cluster topology
-   - Dependency graph
-   - Network topology
+**Purpose**: Central registration of organizations, projects, and repositories.
 
-4. **federation-orchestration/** - Cross-Repo Orchestration
-   - Multi-repo parallel execution
-   - Pipeline definitions
-   - Priority levels
-   - Resource allocation
-   - Event stream aggregation
+**Key Features**:
+- Organization definitions with trust levels
+- Project registration with governance levels
+- Repository mapping and auto-scan configuration
+- Policy profile assignment
 
-5. **trust/** - Trust and Permission Model
-   - Trust levels
-   - Permission matrix
-   - Signing policy
-   - Provenance requirements
-   - Approval workflows
+**Files**:
+- `organizations.yaml`: Organization definitions
+- `projects.yaml`: Project and repository mappings
+
+### 2. Policies (`policies/`)
+
+**Purpose**: Define cross-organization GL governance policies.
+
+**Key Features**:
+- Baseline policies (minimum standards)
+- Sharing policies (artifact and event sharing)
+- Validation policies (schema, dependency, security)
+- Orchestration policies (parallel execution, retry)
+- Deployment policies (auto-deploy, rollback)
+- Policy profiles (standard, minimal, extended)
+
+**Files**:
+- `federation-policies.yaml`: All federation policies
+
+### 3. Topology (`topology/`)
+
+**Purpose**: Define repository and cluster topology.
+
+**Key Features**:
+- Repository definitions with governance levels
+- Cluster definitions with capacity management
+- Repository-to-cluster mappings
+- Dependency graphs and deployment order
+- Network topology definitions
+
+**Files**:
+- `repos.yaml`: Repository topology
+- `clusters.yaml`: Cluster topology
+
+### 4. Federation Orchestration (`federation-orchestration/`)
+
+**Purpose**: Configure cross-repo orchestration and execution.
+
+**Key Features**:
+- Parallel execution across repositories
+- Per-repo pipeline definitions
+- Event aggregation and streaming
+- Priority management and preemption
+- Trust-based execution rules
+- Federated reporting
+
+**Files**:
+- `federation-orchestration.yaml`: Orchestration configuration
+
+### 5. Trust (`trust/`)
+
+**Purpose**: Define trust model, permissions, and signing keys.
+
+**Key Features**:
+- Trust levels (high, medium, low)
+- Permission matrix for operations
+- Signature and verification policies
+- Cross-organization boundaries
+- Reputation system
+- Audit trail and revocation
+
+**Files**:
+- `trust-model.yaml`: Trust model configuration
+- `signing-keys.md`: Key management documentation
 
 ## Capabilities
 
-### Cross-Repo Governance
-- Multi-repo parallel audit
-- Cross-repo fixes
-- Federated event stream
-- Global compliance reporting
+### Cross-Repository Governance
+- Govern multiple repositories simultaneously
+- Parallel execution with configurable concurrency
+- Per-repo sandbox isolation
+- Cross-repo dependency management
 
-### Cross-Org Governance
-- Organization registry
-- Trust model enforcement
-- Permission matrix
-- Signing and verification
+### Cross-Organization Governance
+- Manage multiple organizations
+- Trust-based permission system
+- Cross-org audit access
+- Artifact sharing across organizations
 
 ### Multi-Cluster Support
-- Cluster topology
-- Deployment targets
-- Network topology
-- Capacity management
+- Deploy to multiple Kubernetes clusters
+- Cluster-specific governance policies
+- Capacity management and auto-scaling
+- Network topology configuration
 
-## Configuration
+### Parallel Orchestration
+- Execute audits across multiple repos in parallel
+- Configurable concurrency limits
+- Priority-based execution
+- Preemption support for critical operations
 
-### Federation Index
-```yaml
-federation/
-  index.yaml              # Federation overview and status
-```
+### Trust Management
+- Three-tier trust system (high/medium/low)
+- Automatic operations based on trust level
+- Approval workflows for lower trust levels
+- Reputation-based trust adjustment
 
-### Organization Registry
-```yaml
-federation/
-  org-registry/
-    organizations.yaml    # Organization definitions
-    projects.yaml         # Project registrations
-```
+### Signing and Verification
+- ECDSA P-256 cryptographic signing
+- Patch signing and verification
+- Deployment signing and verification
+- PR signing for cross-org operations
 
-### Federation Policies
-```yaml
-federation/
-  policies/
-    federation-policies.yaml  # Cross-org governance policies
-```
+### Event Aggregation
+- Federated governance event stream
+- Event aggregation by organization and repo
+- 168-hour retention period
+- Real-time event streaming
 
-### Topology
-```yaml
-federation/
-  topology/
-    repos.yaml            # Repository definitions
-    clusters.yaml         # Cluster topology
-```
-
-### Orchestration
-```yaml
-federation/
-  federation-orchestration/
-    federation-orchestration.yaml  # Cross-repo orchestration config
-```
-
-### Trust Model
-```yaml
-federation/
-  trust/
-    trust-model.yaml      # Trust and permission model
-    signing-keys.md       # Key management documentation
-```
+### Federated Reporting
+- Cross-repo and cross-org reporting
+- JSON and Markdown formats
+- Executive summaries
+- Dashboard data generation
 
 ## Usage
 
-### Registering an Organization
-Edit `org-registry/organizations.yaml`:
-```yaml
-spec:
-  organizations:
-    - id: "org-new"
-      name: "New Organization"
-      trust_level: "medium"
-      compliance_level: "GL50-79"
-      ...
-```
+### Registering a New Organization
 
-### Registering a Project
-Edit `org-registry/projects.yaml`:
-```yaml
-spec:
-  projects:
-    - id: "proj-new"
-      name: "new-project"
-      organization: "org-new"
-      git_url: "https://github.com/org/repo.git"
-      ...
-```
+1. Add organization to `federation/org-registry/organizations.yaml`
+2. Define trust level and capabilities
+3. Configure signing keys
+4. Update trust model permissions
+
+### Registering a New Project
+
+1. Add project to `federation/org-registry/projects.yaml`
+2. Link to organization
+3. Define repositories and policies
+4. Configure cluster mappings
 
 ### Running Federation Audit
+
 ```bash
-gl-federation-cli audit --all-repos
+curl -X POST http://localhost:3000/api/v1/federation/audit \
+  -H "Content-Type: application/json" \
+  -d '{
+    "pipeline": "directory-audit-pipeline",
+    "repos": ["all"],
+    "parallel": true
+  }'
 ```
 
-### Running Federation Repair
+### Running Federation Fix
+
 ```bash
-gl-federation-cli repair --project proj-new --pipeline repo-gl-fix-pipeline
+curl -X POST http://localhost:3000/api/v1/federation/fix \
+  -H "Content-Type: application/json" \
+  -d '{
+    "pipeline": "repo-gl-fix-pipeline",
+    "repos": ["repo-machine-native-ops-main"],
+    "trust_level": "high"
+  }'
 ```
 
-### Viewing Federation Status
+### Viewing Federation Reports
+
 ```bash
-gl-federation-cli status
+curl http://localhost:3000/api/v1/federation/reports
 ```
 
-## Governance Enforcement
+## Trust Levels
 
-All federation operations enforce:
-- GL Root Semantic Anchor compliance
-- Federation policy adherence
-- Trust model validation
-- Signature verification
-- Provenance validation
+### High Trust
+- **Auto Fix**: Enabled
+- **Auto Deploy**: Enabled
+- **Auto PR**: Enabled
+- **Approval Required**: No
+- **Signature Verification**: Strict
+- **Audit Frequency**: Continuous
 
-## Storage
+### Medium Trust
+- **Auto Fix**: Enabled
+- **Auto Deploy**: Disabled
+- **Auto PR**: Enabled
+- **Approval Required**: Yes
+- **Signature Verification**: Standard
+- **Audit Frequency**: Daily
 
-```
-gl-runtime-platform/storage/
-  federation-events-stream/      # Federated governance events
-  federation-audit-reports/      # Cross-repo audit reports
-  federation-artifacts/          # Patches, metadata, signed artifacts
-```
+### Low Trust
+- **Auto Fix**: Disabled
+- **Auto Deploy**: Disabled
+- **Auto PR**: Disabled
+- **Approval Required**: Yes
+- **Signature Verification**: Basic
+- **Audit Frequency**: Weekly
 
 ## Security
 
-- All operations are signed using ECDSA P-256
-- Provenance tracking via SLSA format
-- Trust model enforced for cross-org operations
-- Approval workflows for critical operations
+### Signing Keys
+- Primary keys: ECDSA P-256
+- Rotation: Every 90 days
+- Storage: HSM or KMS
+- Verification: Required for all operations
 
-## Monitoring
+### Cross-Organization Boundaries
+- No direct cross-org fixes
+- Cross-org audit requires approval
+- Artifact sharing is allowed
+- Approval workflows defined
 
-Federation metrics are available at:
-- Prometheus: `http://localhost:9090`
-- Grafana: `http://localhost:3000`
+### Audit Trail
+- All operations logged
+- Detailed logging level
+- 365-day retention
+- Verification enabled
 
-## Support
+## Integration
 
-For federation-related issues:
-- Federation Coordinator: federation@machinenativeops.io
-- Documentation: See individual component files
-- Status: Check `index.yaml` for current status
+### With GL Runtime Platform
+- API endpoint: `http://localhost:3000`
+- Version: 5.0.0
+- Full governance integration
+
+### With Multi-Agent Orchestration
+- Configuration: `.github/agents/agent-orchestration.yml`
+- Version: 1.0.0
+- Parallel execution support
+
+### With Global Resource Graph
+- Path: `governance/gl-resource-graph/`
+- Version: 6.0.0
+- Resource graph integration
+
+## Statistics
+
+- **Total Organizations**: 2
+- **Total Projects**: 4
+- **Total Repositories**: 4
+- **Total Clusters**: 3
+- **Total Namespaces**: 4
+- **Total Nodes**: 38
+- **Active Pipelines**: 2
+- **Governance Compliance**: 95%
+
+## Storage
+
+- **Federation Events Stream**: `storage/federation-events-stream/`
+- **Federation Audit Reports**: `storage/federation-audit-reports/`
+- **Federation Artifacts**: `storage/federation-artifacts/`
+- **Global Resource Graph**: `storage/gl-artifacts-store/global-resource-graph.json`
+
+## Compliance
+
+- **GL Unified Charter**: Activated
+- **Charter Version**: 2.0.0
+- **Governance Layer**: GL90-99
+- **Semantic Anchor**: GL-ROOT-GOVERNANCE
+- **All Operations**: Traced, Reversible, Verifiable
+
+## Version History
+
+### v5.0.0 (2026-01-28)
+- Initial federation layer implementation
+- Cross-organization governance support
+- Multi-cluster support
+- Trust model implementation
+- Signing and verification
+- Federation orchestration
+- Event aggregation
+- Federated reporting
+
+## References
+
+- GL Unified Charter: Charter Version 2.0.0
+- GL Runtime Platform: v5.0.0
+- Multi-Agent Orchestration: v1.0.0
+- Global Resource Graph: v6.0.0
 
 ---
 
-**GL Version:** 5.0.0
-**GL Layer:** GL90-99
-**Status:** Operational
-**Last Updated:** 2026-01-28T00:00:00Z
+**Last Updated**: 2026-01-28  
+**Version**: 5.0.0  
+**Governance Layer**: GL90-99

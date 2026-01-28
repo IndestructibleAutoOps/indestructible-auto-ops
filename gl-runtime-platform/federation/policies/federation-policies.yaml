@@ -1,0 +1,184 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-policies
+# @GL-charter-version: 2.0.0
+
+apiVersion: federation.machinenativeops.io/v1
+kind: FederationPolicies
+metadata:
+  name: federation-governance-policies
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  # Baseline policies - minimum standards across all organizations
+  baseline_policies:
+    - id: "policy-semantic-anchor"
+      name: "Semantic Anchor Requirement"
+      severity: "critical"
+      enforced: true
+      overridable: false
+      description: "All files must have GL semantic anchor"
+      rule: "@GL-semantic: must be present in file header"
+      scope: "all-files"
+
+    - id: "policy-governance-tags"
+      name: "Governance Tags Requirement"
+      severity: "critical"
+      enforced: true
+      overridable: false
+      description: "All files must have governance tags"
+      rule: "@GL-governed, @GL-layer, @GL-semantic must be present"
+      scope: "code-files"
+
+    - id: "policy-naming-convention"
+      name: "Naming Convention"
+      severity: "warning"
+      enforced: true
+      overridable: true
+      description: "Files must follow kebab-case naming"
+      rule: "filenames must match /^[a-z0-9-]+\\.[a-z]+$/"
+      scope: "all-files"
+
+    - id: "policy-charter-version"
+      name: "Charter Version Requirement"
+      severity: "critical"
+      enforced: true
+      overridable: false
+      description: "All files must specify charter version"
+      rule: "@GL-charter-version must be present and >= 2.0.0"
+      scope: "governance-files"
+
+  # Cross-organization sharing policies
+  sharing_policies:
+    - id: "policy-artifact-sharing"
+      name: "Artifact Sharing"
+      enabled: true
+      description: "Governance artifacts can be shared across organizations"
+      rules:
+        - "audit-reports: read-only"
+        - "patches: approval-required"
+        - "metadata: read-only"
+
+    - id: "policy-event-streaming"
+      name: "Event Streaming"
+      enabled: true
+      description: "Governance events can be streamed across organizations"
+      rules:
+        - "governance-events: read-only"
+        - "audit-events: read-only"
+        - "repair-events: approval-required"
+
+  # Validation policies
+  validation_policies:
+    - id: "policy-schema-validation"
+      name: "Schema Validation"
+      enabled: true
+      description: "All YAML/JSON files must validate against schemas"
+      schema_paths:
+        - "gl/**/schemas/*.json"
+        - "federation/**/*.yaml"
+
+    - id: "policy-dependency-validation"
+      name: "Dependency Validation"
+      enabled: true
+      description: "Dependencies must be validated for security"
+      severity: "critical"
+      enforced: true
+
+    - id: "policy-security-validation"
+      name: "Security Validation"
+      enabled: true
+      description: "Security scanning must pass for all code"
+      standards:
+        - "OWASP"
+        - "CIS"
+      severity: "critical"
+      enforced: true
+
+  # Orchestration policies
+  orchestration_policies:
+    - id: "policy-parallel-execution"
+      name: "Parallel Execution"
+      enabled: true
+      max_concurrent_repos: 10
+      max_concurrent_agents: 8
+      timeout_seconds: 3600
+
+    - id: "policy-retry-strategy"
+      name: "Retry Strategy"
+      enabled: true
+      max_retries: 3
+      backoff_multiplier: 2
+      retry_on:
+        - "network-error"
+        - "timeout"
+        - "transient-failure"
+
+  # Deployment policies
+  deployment_policies:
+    - id: "policy-auto-deploy"
+      name: "Auto Deployment"
+      enabled: true
+      description: "Auto deployment based on trust level"
+      rules:
+        - "high-trust: auto-deploy-enabled"
+        - "medium-trust: approval-required"
+        - "low-trust: manual-only"
+
+    - id: "policy-rollback-strategy"
+      name: "Rollback Strategy"
+      enabled: true
+      description: "Automatic rollback on deployment failure"
+      conditions:
+        - "health-check-fail"
+        - "compliance-drop"
+        - "critical-error"
+
+  # Policy profiles
+  profiles:
+    standard:
+      description: "Standard governance profile"
+      policies:
+        - "policy-semantic-anchor"
+        - "policy-governance-tags"
+        - "policy-naming-convention"
+        - "policy-charter-version"
+        - "policy-schema-validation"
+        - "policy-dependency-validation"
+        - "policy-security-validation"
+
+    minimal:
+      description: "Minimal governance profile"
+      policies:
+        - "policy-semantic-anchor"
+        - "policy-governance-tags"
+        - "policy-security-validation"
+
+    extended:
+      description: "Extended governance profile"
+      policies:
+        - "policy-semantic-anchor"
+        - "policy-governance-tags"
+        - "policy-naming-convention"
+        - "policy-charter-version"
+        - "policy-schema-validation"
+        - "policy-dependency-validation"
+        - "policy-security-validation"
+        - "policy-artifact-sharing"
+        - "policy-event-streaming"
+
+status:
+  phase: "active"
+  total_policies: 15
+  conditions:
+    - type: "BaselinePoliciesDefined"
+      status: "True"
+    - type: "ProfilesConfigured"
+      status: "True"
+    - type: "ValidationPoliciesEnabled"
+      status: "True"

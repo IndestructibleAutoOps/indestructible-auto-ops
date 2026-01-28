@@ -1,190 +1,219 @@
 # @GL-governed
 # @GL-layer: GL90-99
-# @GL-semantic: federation-signing-keys
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-semantic: federation-signing-keys-documentation
+# @GL-charter-version: 2.0.0
 
 # Federation Signing Keys Documentation
 
 ## Overview
 
-This document describes the signing key management for the GL Federation platform. All operations within the federation require cryptographic signing to ensure authenticity, integrity, and non-repudiation.
+This document describes the signing key management for the GL Federation Layer. All governance operations across organizations require cryptographic signing to ensure authenticity, integrity, and non-repudiation.
 
-## Key Management
+## Key Types
 
-### Federation Root Keys
+### 1. Primary Signing Keys
 
-The federation maintains root keys that are used to sign and verify operations across all organizations.
+Primary signing keys are used for the most critical operations:
+- Patch signing
+- Deployment signing
+- PR signing
+- Cross-organization approvals
 
-**Root Key Details:**
-- Algorithm: ECDSA P-256
-- Key ID: GL-FEDERATION-ROOT-2024
-- Created: 2026-01-28T00:00:00Z
-- Purpose: Federation-level signing and verification
-- Storage: Hardware Security Module (HSM)
+**Format**: ECDSA P-256  
+**Storage**: Hardware Security Module (HSM) or KMS  
+**Rotation**: Every 90 days
 
-### Organization Keys
+### 2. Backup Signing Keys
 
-Each organization in the federation maintains its own signing keys:
+Backup keys provide redundancy and disaster recovery:
+- Secondary verification
+- Emergency operations
+- Key recovery
 
-#### MachineNativeOps (org-machinenativeops)
-- Algorithm: ECDSA P-256
-- Key ID: GL-ORG-MNO-2024
-- Trust Level: High
-- Capabilities: Auto-repair, auto-deploy, cross-org fixes
-- Key Rotation: Quarterly
+**Format**: ECDSA P-256  
+**Storage**: Encrypted at rest in key vault  
+**Rotation**: Every 180 days
 
-#### Enterprise A (org-enterprise-a)
-- Algorithm: ECDSA P-256
-- Key ID: GL-ORG-ENT-A-2024
-- Trust Level: Medium
-- Capabilities: Auto-repair, manual approval deploy
-- Key Rotation: Biannually
+### 3. Organization-Level Keys
 
-## Signed Operations
+Each organization has its own key pair:
+- Internal operations signing
+- Artifact verification
+- Cross-org communication
 
-The following operations must be signed:
+**Format**: ECDSA P-256  
+**Storage**: Organization's KMS  
+**Rotation**: Every 120 days
 
-### Patches
-- All GL repair patches
-- Cross-org fix patches
-- Schema updates
-- Governance marker additions
+## Key Management Process
 
-**Verification:**
-- Verify signature before applying patch
-- Check provenance chain
-- Validate signer trust level
+### Key Generation
 
-### Commits
-- All commits to main branch
-- Auto-generated commits
-- Manual commits with GL markers
+1. **Generate Key Pair**:
+   ```bash
+   openssl ecparam -name prime256v1 -genkey -noout -out private-key.pem
+   openssl ec -in private-key.pem -pubout -out public-key.pem
+   ```
 
-**Verification:**
-- Verify commit signature
-- Check signer authorization
-- Validate against trust model
+2. **Derive Key ID**:
+   ```bash
+   sha256sum public-key.pem | cut -d' ' -f1
+   ```
 
-### Deployments
-- Production deployments
-- Staging deployments
-- Cross-cluster deployments
+3. **Register Key**:
+   - Store private key in HSM/KMS
+   - Publish public key to federation registry
+   - Update trust model configuration
 
-**Verification:**
-- Verify deployment signature
-- Check deployment provenance
-- Validate deployment authorization
+### Key Distribution
 
-### PR/MR Merges
-- Automatic merges
-- Manual merges with GL approval
-- Cross-org PR merges
+Public keys are distributed through:
+1. Federation registry (org-registry/organizations.yaml)
+2. Git repository (in federation/trust/)
+3. Key management service (KMS)
 
-**Verification:**
-- Verify merge signature
-- Check merge authorization
-- Validate compliance with trust model
+### Key Rotation
 
-## Key Rotation Policy
+**Rotation Procedure**:
+1. Generate new key pair
+2. Publish new public key
+3. Allow 7-day grace period for key adoption
+4. Revoke old key
+5. Update all references
 
-### Root Keys
-- Rotation interval: Annually
-- Overlap period: 30 days
-- Notification: 7 days before rotation
-- Storage: HSM with multi-party control
+**Rollback**: Keep old key in backup for 30 days
 
-### Organization Keys
-- Rotation interval: Quarterly (High Trust) / Biannually (Medium Trust)
-- Overlap period: 14 days
-- Notification: 3 days before rotation
-- Storage: Secure key management service
+## Signing Operations
 
-### Emergency Key Rotation
-- Trigger: Compromise detection
-- Process: Immediate revocation, new key generation, re-signing of active operations
-- Recovery: Federation coordinator approval required
+### Patch Signing
 
-## Key Verification Process
-
-### Step 1: Retrieve Public Key
-```bash
-gl-federation-cli keys get-public --key-id <KEY_ID>
+When generating a patch for GL fixes:
+```typescript
+const signature = signPatch(patchData, organizationPrivateKey);
+const verified = verifyPatch(patchData, signature, organizationPublicKey);
 ```
 
-### Step 2: Verify Signature
-```bash
-gl-federation-cli verify --signature <SIG_FILE> --data <DATA_FILE> --public-key <PUB_KEY>
+### Deployment Signing
+
+Before deploying to production:
+```typescript
+const deploymentManifest = {
+  version: "5.0.0",
+  artifacts: [...],
+  timestamp: new Date().toISOString()
+};
+const signature = signDeployment(deploymentManifest, organizationPrivateKey);
 ```
 
-### Step 3: Check Trust Level
-```bash
-gl-federation-cli trust check --signer <ORG_ID> --operation <OPERATION>
+### PR Signing
+
+When creating pull requests:
+```typescript
+const prManifest = {
+  prId: "123",
+  changes: [...],
+  approver: "governance-team"
+};
+const signature = signPR(prManifest, organizationPrivateKey);
 ```
 
-### Step 4: Validate Provenance
-```bash
-gl-federation-cli provenance validate --provenance <PROVENANCE_FILE>
+## Verification Operations
+
+### Patch Verification
+
+Before applying a patch:
+```typescript
+const isValid = verifyPatch(
+  patchData,
+  signature,
+  sourceOrganizationPublicKey
+);
+if (!isValid) {
+  throw new Error("Invalid patch signature");
+}
+```
+
+### Deployment Verification
+
+Before accepting a deployment:
+```typescript
+const isValid = verifyDeployment(
+  deploymentManifest,
+  signature,
+  deployingOrganizationPublicKey
+);
 ```
 
 ## Security Best Practices
 
-1. **Never expose private keys**
-   - Private keys must remain in secure storage
-   - No key material in logs or debug output
-   - Rotate keys immediately on compromise
+1. **Private Key Protection**:
+   - Never expose private keys in logs
+   - Use HSM or KMS for storage
+   - Rotate keys regularly
+   - Monitor key usage
 
-2. **Use hardware security modules**
-   - Store root keys in HSM
-   - Use secure enclaves for organization keys
-   - Implement multi-party approval for key access
+2. **Public Key Distribution**:
+   - Use secure channels for distribution
+   - Verify public key fingerprints
+   - Keep public keys up-to-date
 
-3. **Regular key rotation**
-   - Follow rotation schedule strictly
-   - Maintain key overlap during rotation
-   - Document all rotation events
+3. **Signature Verification**:
+   - Always verify signatures before applying changes
+   - Use strict verification mode
+   - Log all verification failures
+   - Alert on verification failures
 
-4. **Audit key usage**
-   - Log all signing operations
-   - Monitor for anomalous signing patterns
-   - Review audit logs regularly
+4. **Revocation Handling**:
+   - Immediately revoke compromised keys
+   - Notify all federation members
+   - Update trust model configuration
+   - Re-verify all signatures with old key
 
-5. **Implement key recovery**
-   - Maintain secure key backup
-   - Test recovery procedures regularly
-   - Document recovery process
+## Key Registry
+
+### MachineNativeOps Keys
+
+- **Primary**: `machinenativeops-primary` (SHA256: TBD)
+- **Backup**: `machinenativeops-backup` (SHA256: TBD)
+- **Status**: Active
+
+### Enterprise A Keys
+
+- **Primary**: `enterprise-a-primary` (SHA256: TBD)
+- **Backup**: Not configured
+- **Status**: Active
 
 ## Troubleshooting
 
-### Signature Verification Failed
-1. Check if public key is current
-2. Verify key rotation hasn't occurred
-3. Check signer trust level
-4. Validate operation is permitted
+### Signature Verification Fails
 
-### Key Not Found
-1. Check key ID format
+1. Check if public key is up-to-date
 2. Verify key hasn't been revoked
-3. Check organization is registered
-4. Contact federation coordinator
+3. Check signature algorithm matches
+4. Verify data hasn't been tampered with
 
-### Provenance Validation Failed
-1. Check SLSA format version
-2. Verify all required fields present
-3. Validate provenance chain
-4. Check for tampering indicators
+### Key Rotation Issues
 
-## Contact
+1. Ensure grace period has elapsed
+2. Check all services updated to new key
+3. Verify old key is properly revoked
+4. Check backup key availability
 
-For key management issues:
-- Federation Coordinator: federation@machinenativeops.io
-- Security Team: security@machinenativeops.io
-- Emergency: +1-555-GL-FED-SEC
+## Compliance
+
+- **Audit Trail**: All signing operations are logged
+- **Verification Required**: All operations must verify signatures
+- **Key Rotation**: Automated rotation enforcement
+- **Revocation**: Immediate revocation on compromise detection
+
+## References
+
+- Federation Trust Model: `federation/trust/trust-model.yaml`
+- Organization Registry: `federation/org-registry/organizations.yaml`
+- GL Unified Charter: Charter Version 2.0.0
 
 ---
 
-**Document Version:** 1.0.0
-**Last Updated:** 2026-01-28T00:00:00Z
-**Next Review:** 2026-04-28T00:00:00Z
-**GL Governance:** Active
-**GL Layer:** GL90-99
-**Semantic:** federation-signing-keys
+**Last Updated**: 2026-01-28  
+**Document Version**: 5.0.0  
+**Governance Layer**: GL90-99
