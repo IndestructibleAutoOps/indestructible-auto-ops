@@ -14,6 +14,7 @@ This directory contains all agent-related configurations for the MachineNativeOp
 ```
 config/agents/
 ├── profiles/           # Individual agent profiles (個別代理配置)
+│   ├── custom_agent.yaml
 │   └── recovery_expert.yaml
 ├── team/              # Team/multi-agent configurations (團隊配置)
 │   └── virtual-experts.yaml
@@ -28,7 +29,7 @@ config/agents/
 
 Single agent configurations defining specific capabilities and behaviors.
 
-**Example**: `recovery_expert.yaml`
+**Examples**: `custom_agent.yaml`, `recovery_expert.yaml`
 
 - Recovery and self-healing capabilities
 - Dr. Phoenix agent configuration
@@ -123,6 +124,19 @@ services/agents/
     ├── README.md
     ├── agent.py (or .ts, .js)
     └── tests/
+```
+
+### Example Custom Agent Profile
+
+```yaml
+agent_profile:
+  identity:
+    name: "Custom Agent Builder"
+    chinese_name: "自訂代理建立者"
+    title: "Custom Agent Specialist"
+    chinese_title: "自訂代理專家"
+    avatar: "🧩"
+    version: "1.0.0"
 ```
 
 ## 📖 Related Documentation
