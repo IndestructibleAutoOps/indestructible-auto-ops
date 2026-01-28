@@ -7,6 +7,8 @@ on:
       - 'engine/**'
       - 'file-organizer-system/**'
       - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
       - '.github/governance/**'
       - '.github/agents/**'
   pull_request:
@@ -15,6 +17,8 @@ on:
       - 'engine/**'
       - 'file-organizer-system/**'
       - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
       - '.github/governance/**'
       - '.github/agents/**'
   workflow_dispatch:
@@ -126,7 +130,7 @@ jobs:
 
   gl-gate-execution:
     runs-on: ubuntu-latest
-    needs: [gl-engine-validation, gl-file-organizer-validation, gl-instant-validation]
+    needs: [gl-engine-validation, gl-file-organizer-validation, gl-instant-validation, gl-elasticsearch-validation, gl-infrastructure-validation]
     steps:
       - uses: actions/checkout@v3
       
@@ -187,3 +191,68 @@ jobs:
           name: gl-audit-history
           path: |
             engine/.governance/audit-results/history/
+  gl-elasticsearch-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - Elasticsearch
+        run: |
+          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=elasticsearch-search-system
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Upload Governance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-governance-elasticsearch
+          path: |
+            elasticsearch-search-system/.governance/event-stream.jsonl
+            elasticsearch-search-system/.governance/evidence-chain.jsonl
+
+  gl-infrastructure-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - Infrastructure
+        run: |
+          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=infrastructure
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Upload Governance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-governance-infrastructure
+          path: |
+            infrastructure/.governance/event-stream.jsonl
+            infrastructure/.governance/evidence-chain.jsonl
