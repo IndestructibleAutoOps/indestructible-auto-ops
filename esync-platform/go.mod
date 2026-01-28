@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL10-29
+// @GL-semantic: go-dependencies
+// @GL-audit-trail: ../engine/governance/GL_SEMANTIC_ANCHOR.json
+//
+// GL Unified Charter Activated
 module github.com/machine-native-ops/esync-platform
 
 go 1.21

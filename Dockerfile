@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: infrastructure-deployment
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # GL30-49 Execution Layer - Docker Image
 FROM python:3.11-slim
 

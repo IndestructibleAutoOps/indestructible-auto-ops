@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: infrastructure-deployment
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:18
 
 # Install essential system dependencies for life system development
