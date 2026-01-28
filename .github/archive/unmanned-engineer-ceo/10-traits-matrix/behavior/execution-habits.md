@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Execution Habits / 執行習慣
 
 - 日計畫：優先處理高影響任務，對齊 roadmap。

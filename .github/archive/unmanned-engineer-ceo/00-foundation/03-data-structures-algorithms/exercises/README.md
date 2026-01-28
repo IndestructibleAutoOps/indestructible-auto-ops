@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Exercises: Backend/Distributed Focus
 
 1. **Shard-Aware Index**：設計一個同時支援 range 與哈希的索引，實作於 core/storage-engine。

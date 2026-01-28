@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # 性能基準測試實施總結
 # Performance Benchmarking Implementation Summary
 

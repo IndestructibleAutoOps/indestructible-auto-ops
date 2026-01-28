@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 ---
 title: "機器可執行治理系統 - 完成報告 / Machine-Executable Governance System - Completion Report"
 date: 2025-01-05

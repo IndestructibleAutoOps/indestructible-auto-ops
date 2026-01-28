@@ -1,0 +1,60 @@
+{
+  "audit_id": "global-governance-audit-v4",
+  "timestamp": "2026-01-28T13:29:53.815645Z",
+  "scope": "/workspace",
+  "version": "4.0.0",
+  "platform": "gl-runtime-platform",
+  "chains_verified": {
+    "multi-agent-parallel-orchestration": true,
+    "file-organizer-system": true,
+    "governance-layer": true,
+    "infrastructure-charter": true,
+    "agent-hooks": true,
+    "engine": true,
+    "esync-platform": true,
+    "subsystems": true,
+    "summarized-conversations": true
+  },
+  "auto-repair-layer": {
+    "enabled": true,
+    "files_created": [
+      "ops/auto-repair/auto-repair.yaml",
+      "ops/auto-repair/auto-commit.yaml",
+      "ops/auto-repair/auto-pr.yaml"
+    ],
+    "pipeline_linked": "repo-gl-fix-pipeline"
+  },
+  "agent_orchestration": {
+    "agents_configured": 10,
+    "agents_enabled": 10,
+    "parallelism": {
+      "max_concurrent": 8,
+      "timeout_seconds": 1800
+    }
+  },
+  "compliance_summary": {
+    "overall_compliance": 100,
+    "governance_markers": true,
+    "semantic_anchors": true,
+    "audit_trail": true,
+    "event_streaming": true
+  },
+  "statistics": {
+    "files_scanned": 2631,
+    "governance_violations": 0,
+    "quality_score": 95,
+    "security_vulnerabilities": 0
+  },
+  "status": "completed",
+  "next_actions": [
+    "auto-repair layer operational",
+    "per-file sandbox execution ready",
+    "automatic PR generation configured"
+  ],
+  "_gl": {
+    "governed": true,
+    "layer": "GL90-99",
+    "semantic": "governed-data",
+    "auditTrail": "engine/governance/GL_SEMANTIC_ANCHOR.json"
+  }
+}

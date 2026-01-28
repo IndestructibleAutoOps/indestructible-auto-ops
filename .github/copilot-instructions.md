@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # GitHub Copilot Instructions for Machine Native Ops
 
 This document provides comprehensive instructions for GitHub Copilot coding agents working on the machine-native-ops project.

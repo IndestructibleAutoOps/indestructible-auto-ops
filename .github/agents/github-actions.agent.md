@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 ---
 name: 'GitHub Actions Expert'
 description: 'CI/CD specialist focused on secure GitHub Actions workflows, action pinning, OIDC authentication, and pipeline optimization'

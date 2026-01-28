@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # AI即時執行系統 - INSTANT 標準操作指南
 
 > **目標**：3 分鐘內完成全堆疊、0 次人工介入、64-256 代理並行、關鍵操作 <100ms  

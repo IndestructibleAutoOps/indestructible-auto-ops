@@ -1,3 +1,8 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
 # Gatekeeper Namespace Constraints
 # Kubernetes Admission Control 用於強制執行命名和標籤規範
 # 此文件的 parameters 應從 canonical/machine-spec.yaml 自動生成（codegen）

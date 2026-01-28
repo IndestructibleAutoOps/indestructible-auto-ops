@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # 骨架 4: Security & Observability (安全與可觀測性)
 
 **目的**: 建立企業級安全和可觀測性基礎設施，確保系統的安全性、合規性和可監測性。

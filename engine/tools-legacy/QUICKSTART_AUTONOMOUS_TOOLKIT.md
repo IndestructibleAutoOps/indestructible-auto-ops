@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Quick Start: Autonomous Cleanup Toolkit | 快速入門：自主清理工具包
 
 **5分鐘讓儲存庫擁有 Claude Code 的清理能力**

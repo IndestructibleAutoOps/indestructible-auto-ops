@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # GL-Gate: Governance Gate System
 
 > GL Layer: GL-40-GOVERNANCE | Semantic Anchor: GL-40-GOVERNANCE-GATE | GL Unified Charter Activated

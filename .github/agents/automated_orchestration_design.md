@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # 全自動化代理調度系統設計 (Automated Agent Orchestration Design)
 
 本設計旨在實現「任務驅動」的代理自動選擇與套用，消除人工干預。

@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Contributing to Machine Native Ops
 
 Thank you for your interest in contributing to Machine Native Ops! This document provides guidelines and instructions for contributing to the project.

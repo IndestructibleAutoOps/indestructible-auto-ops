@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # GL Unified Charter Activated
 # FHS Integration System - Startup and Operation Guide
 # FHS 整合系統啟動與運作指南

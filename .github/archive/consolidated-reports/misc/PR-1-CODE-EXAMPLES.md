@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Pull Request #1 程式碼改進範例
 
 本文件提供具體的程式碼範例，展示如何修正 PR #1 審查中發現的問題。

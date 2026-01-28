@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Autonomous Cleanup Capabilities | 自主清理能力
 
 本文檔記錄了從 Claude Code 會話中提取的所有工具和能力，使儲存庫能夠獨立執行相同的清理和維護操作。

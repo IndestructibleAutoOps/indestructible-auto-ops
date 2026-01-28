@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Quantum Naming Governance Monitoring
 
 This directory contains observability configurations for the MachineNativeOps Quantum-Enhanced Naming Governance system.

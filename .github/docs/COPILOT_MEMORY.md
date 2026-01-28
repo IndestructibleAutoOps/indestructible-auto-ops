@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # GL Unified Charter Activated
 <!-- GL Layer: GL90-99 Meta-Specification Layer -->
 <!-- Purpose: Provide repository Copilot Memory content and setup guidance -->

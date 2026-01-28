@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # GL (Governance Layers) 架構
 
 GL 是 MachineNativeOps 的核心治理架構，定義了從戰略到執行的完整治理層級。

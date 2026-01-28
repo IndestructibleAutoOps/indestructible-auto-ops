@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Frontend-Backend Separation Architecture Guide
 
 > **GL Layers**: GL00-09 (Strategic), GL20-29 (Data), GL30-49 (Execution)  

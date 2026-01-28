@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Policy-as-Code Framework - MachineNativeOps
 
 This directory contains the OPA/Rego policies that implement Governance-as-Code for the MachineNativeOps platform. All governance rules are codified as machine-readable policies that can be automatically validated and enforced.

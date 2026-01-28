@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Quantum Naming Governance Deployment
 
 This directory contains Kubernetes deployment manifests for the MachineNativeOps Quantum-Enhanced Naming Governance system.

@@ -1,0 +1,60 @@
+{
+  "audit_id": "global-governance-audit-full-scan",
+  "timestamp": "2026-01-28T13:31:47.274767Z",
+  "scope": "/workspace",
+  "mode": "multi-agent-parallel-orchestration",
+  "strategy": "one-by-one-isolated-execution",
+  "execution_chains": {
+    "0-multi-agent-parallel-orchestration": "verified",
+    "1-file-organizer-system": "verified",
+    "2-governance-layer": "verified",
+    "3-infrastructure-charter": "verified",
+    "4-agent-hooks": "verified",
+    "5-engine": "verified",
+    "6-esync-platform": "verified",
+    "7-subsystems": "verified",
+    "8-summarized-conversations": "verified"
+  },
+  "platform_status": {
+    "gl-runtime-platform": {
+      "version": "4.0.0",
+      "status": "operational",
+      "port": 3000,
+      "auto-repair-layer": "enabled"
+    },
+    "elasticsearch-search-system": "enabled"
+  },
+  "governance_compliance": {
+    "total_files_scanned": 2631,
+    "files_with_gl_governed_marker": 1505,
+    "files_without_gl_governed_marker": 1126,
+    "compliance_percentage": 57.2,
+    "governance_violations_detected": 1126,
+    "issue_types": [
+      "MISSING_GOVERNANCE_TAG",
+      "MISSING_SEMANTIC_ANCHOR",
+      "MISSING_AUDIT_TRAIL",
+      "MISSING_LAYER_COMPLIANCE"
+    ]
+  },
+  "auto_repair_status": {
+    "enabled": true,
+    "trigger_ready": true,
+    "max_parallel_repairs": 8,
+    "pipeline": "repo-gl-fix-pipeline",
+    "files_to_repair": 1126
+  },
+  "next_actions": [
+    "Execute auto-repair on 1126 files missing @GL-governed markers",
+    "Add @GL-governed, @GL-layer, @GL-semantic, @GL-audit-trail markers",
+    "Update semantic anchor references",
+    "Verify compliance reaches 100%"
+  ],
+  "status": "pending-repair",
+  "_gl": {
+    "governed": true,
+    "layer": "GL90-99",
+    "semantic": "governed-data",
+    "auditTrail": "engine/governance/GL_SEMANTIC_ANCHOR.json"
+  }
+}

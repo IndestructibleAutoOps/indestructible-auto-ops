@@ -1,3 +1,8 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
 # MachineNativeOps Official Action: mn-docker-build
 # Replaces: docker/build-push-action@v5, docker/setup-buildx-action@v3, docker/metadata-action@v5
 # Description: Complete Docker build, tag, and push workflow

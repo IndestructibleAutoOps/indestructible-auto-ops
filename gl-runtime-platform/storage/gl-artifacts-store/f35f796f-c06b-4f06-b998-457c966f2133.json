@@ -1,0 +1,35 @@
+{
+  "id": "f35f796f-c06b-4f06-b998-457c966f2133",
+  "timestamp": "2026-01-28T13:06:04.461Z",
+  "scope": "/workspace/engine",
+  "depth": "full",
+  "results": [
+    {
+      "agent": "gl-governance-validator",
+      "success": true,
+      "violations": [],
+      "compliance": 100
+    },
+    {
+      "agent": "codeql-monitor",
+      "success": true,
+      "findings": []
+    },
+    {
+      "agent": "quality-assurance",
+      "success": true,
+      "qualityScore": 95
+    },
+    {
+      "agent": "dependency-scanner",
+      "success": true,
+      "vulnerabilities": []
+    }
+  ],
+  "_gl": {
+    "governed": true,
+    "layer": "GL90-99",
+    "semantic": "governed-data",
+    "auditTrail": "engine/governance/GL_SEMANTIC_ANCHOR.json"
+  }
+}

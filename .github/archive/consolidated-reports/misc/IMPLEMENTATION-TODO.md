@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # MCP Level 1 Implementation TODO - 開始實施
 
 ## 🚀 Phase 1: Critical Security & Validation (P0 Items)

@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # CI 即時修復模板升級報告 | CI Instant Fix Template Update Report
 
 ## ✅ 升級完成 | Update Complete

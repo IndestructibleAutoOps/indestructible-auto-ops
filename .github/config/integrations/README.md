@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Integration Scripts / 整合腳本
 
 本目錄包含與第三方服務整合的腳本，用於擴展 GHAS 的通知和工單管理功能。

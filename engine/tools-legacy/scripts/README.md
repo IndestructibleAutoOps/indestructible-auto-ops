@@ -1,3 +1,8 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Scripts Directory
 
 本目錄包含 MachineNativeOps 專案的自動化腳本，主要用於 GitHub Advanced Security (GHAS) 功能的實施和管理。
