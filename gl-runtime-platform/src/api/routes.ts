@@ -39,18 +39,46 @@ export function setupRoutes(app: express.Application, services: Services): void 
     
     res.json({
       status: 'healthy',
-      version: '7.0.0',
+      version: '8.0.0',
       timestamp: new Date().toISOString(),
       governance: {
         activated: true,
         charterVersion: '2.0.0'
       },
       semanticGraph: {
+      selfHealingEngine: {
         enabled: true,
+        operational: true
+      }
+        enabled: true,
+      selfHealingEngine: {
+        enabled: true,
+        operational: true
+      }
         ready: srgStatus.ready,
+      selfHealingEngine: {
+        enabled: true,
+        operational: true
+      }
         totalFilesAnalyzed: srgStatus.totalFilesAnalyzed,
+      selfHealingEngine: {
+        enabled: true,
+        operational: true
+      }
         compliantFiles: srgStatus.compliantFiles,
+      selfHealingEngine: {
+        enabled: true,
+        operational: true
+      }
         nonCompliantFiles: srgStatus.nonCompliantFiles
+      selfHealingEngine: {
+        enabled: true,
+        operational: true
+      }
+      }
+      selfHealingEngine: {
+        enabled: true,
+        operational: true
       }
     });
   });
