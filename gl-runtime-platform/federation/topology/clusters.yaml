@@ -1,0 +1,113 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-cluster-topology
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: federation.machinenativeops.io/v1
+kind: ClusterTopology
+metadata:
+  name: federation-cluster-topology
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  clusters:
+    - id: "cluster-prod-us-east"
+      name: "Production US East"
+      provider: "aws"
+      region: "us-east-1"
+      type: "production"
+      k8s_version: "1.28.0"
+      node_count: 12
+      enabled: true
+      health_status: "healthy"
+      gl_agent_installed: true
+      gl_agent_version: "4.0.0"
+      namespaces:
+        - name: "machine-native-ops"
+          projects:
+            - "proj-machine-native-ops"
+            - "proj-aep-engine"
+            - "proj-instant-execution"
+        - name: "enterprise-a"
+          projects:
+            - "proj-enterprise-a-app"
+      monitoring:
+        prometheus_url: "https://prometheus.prod.internal"
+        grafana_url: "https://grafana.prod.internal"
+      capacity:
+        cpu_cores: 96
+        memory_gb: 384
+        storage_gb: 2000
+
+    - id: "cluster-staging-us-west"
+      name: "Staging US West"
+      provider: "aws"
+      region: "us-west-2"
+      type: "staging"
+      k8s_version: "1.28.0"
+      node_count: 6
+      enabled: true
+      health_status: "healthy"
+      gl_agent_installed: true
+      gl_agent_version: "4.0.0"
+      namespaces:
+        - name: "machine-native-ops"
+          projects:
+            - "proj-machine-native-ops"
+            - "proj-instant-execution"
+      monitoring:
+        prometheus_url: "https://prometheus.staging.internal"
+        grafana_url: "https://grafana.staging.internal"
+      capacity:
+        cpu_cores: 48
+        memory_gb: 192
+        storage_gb: 1000
+
+    - id: "cluster-enterprise-prod"
+      name: "Enterprise Production"
+      provider: "azure"
+      region: "eastus"
+      type: "production"
+      k8s_version: "1.27.0"
+      node_count: 20
+      enabled: true
+      health_status: "healthy"
+      gl_agent_installed: true
+      gl_agent_version: "3.0.0"
+      namespaces:
+        - name: "enterprise-a"
+          projects:
+            - "proj-enterprise-a-app"
+      monitoring:
+        prometheus_url: "https://prometheus.enterprise.internal"
+        grafana_url: "https://grafana.enterprise.internal"
+      capacity:
+        cpu_cores: 160
+        memory_gb: 640
+        storage_gb: 4000
+
+  network_topology:
+    regions:
+      - id: "us-east-1"
+        clusters:
+          - "cluster-prod-us-east"
+        latency_ms: 0
+      - id: "us-west-2"
+        clusters:
+          - "cluster-staging-us-west"
+        latency_ms: 50
+      - id: "eastus"
+        clusters:
+          - "cluster-enterprise-prod"
+        latency_ms: 30
+
+_status:
+  total_clusters: 3
+  active_clusters: 3
+  healthy_clusters: 3
+  total_namespaces: 4
+  total_nodes: 38
+  federation_status: "operational"
+  last_sync: "2026-01-28T00:00:00Z"

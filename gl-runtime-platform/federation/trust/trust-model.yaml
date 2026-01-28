@@ -1,0 +1,157 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-trust-model
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: federation.machinenativeops.io/v1
+kind: TrustModel
+metadata:
+  name: federation-trust-model
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  trust_levels:
+    - id: "high"
+      name: "High Trust"
+      description: "Full automation and cross-org repair capabilities"
+      capabilities:
+        - "auto-repair"
+        - "auto-deploy"
+        - "cross-org-fixes"
+        - "auto-merge"
+        - "federation-coordinator"
+      restrictions:
+        - "require_signing"
+        - "require_provenance"
+      organizations:
+        - "org-machinenativeops"
+
+    - id: "medium"
+      name: "Medium Trust"
+      description: "Limited automation with manual approval for critical operations"
+      capabilities:
+        - "auto-repair"
+        - "manual-approval-deploy"
+        - "intra-org-fixes"
+      restrictions:
+        - "require_signing"
+        - "require_provenance"
+        - "manual_approval_deploy"
+      organizations:
+        - "org-enterprise-a"
+
+    - id: "low"
+      name: "Low Trust"
+      description: "Audit-only mode, no automated fixes"
+      capabilities:
+        - "audit-only"
+        - "manual-fixes"
+      restrictions:
+        - "manual_approval_all"
+      organizations: []
+
+  permission_matrix:
+    repair_permissions:
+      org-machinenativeops:
+        - can_repair_self: true
+          can_repair_cross_org: false
+          require_approval: false
+          auto_merge: true
+        org-enterprise-a:
+          can_repair_self: true
+          can_repair_cross_org: false
+          require_approval: true
+          auto_merge: false
+
+    deployment_permissions:
+      org-machinenativeops:
+        - can_deploy: true
+          require_approval: false
+          auto_rollback: true
+        org-enterprise-a:
+          can_deploy: true
+          require_approval: true
+          auto_rollback: false
+
+    orchestration_permissions:
+      org-machinenativeops:
+        - can_orchestrate_federation: true
+          can_trigger_cross_repo: true
+        org-enterprise-a:
+          can_orchestrate_federation: false
+          can_trigger_cross_repo: false
+
+  signing_policy:
+    enabled: true
+    algorithm: "ECDSA"
+    key_size: 256
+    sign_actions:
+      - "patches"
+      - "commits"
+      - "deployments"
+      - "pr_merges"
+    verify_actions:
+      - "incoming_patches"
+      - "incoming_commits"
+      - "incoming_deployments"
+      - "pr_reviews"
+
+  provenance_policy:
+    enabled: true
+    format: "SLSA"
+    version: "1.0"
+    require_for:
+      - "all_deployments"
+      - "all_patches"
+      - "all_cross_org_operations"
+
+  approval_requirements:
+    critical_operations:
+      - "cross_org_repairs"
+      - "production_deployments"
+      - "federation_config_changes"
+    approval_required:
+      - operation: "cross_org_repairs"
+        min_approvers: 2
+        trust_level: "high"
+      - operation: "production_deployments"
+        min_approvers: 1
+        trust_level: "high"
+      - operation: "federation_config_changes"
+        min_approvers: 3
+        trust_level: "high"
+
+  audit_trail:
+    enabled: true
+    retention_days: 365
+    include:
+      - "all_repairs"
+      - "all_deployments"
+      - "all_approvals"
+      - "all_cross_org_operations"
+      - "all_trust_changes"
+
+  federation_boundaries:
+    isolated_operations:
+      - "org_enterprise_a_prod_deployment"
+      - "org_enterprise_a_security_fixes"
+    
+    shared_operations:
+      - "baseline_governance_audit"
+      - "federation_event_aggregation"
+      - "global_compliance_reporting"
+    
+    forbidden_operations:
+      - "unauthorized_cross_org_access"
+      - "bypass_trust_model"
+      - "modify_federation_policies_without_approval"
+
+_status:
+  total_trust_levels: 3
+  total_organizations: 2
+  federation_status: "operational"
+  signing_enabled: true
+  provenance_enabled: true
+  last_updated: "2026-01-28T00:00:00Z"

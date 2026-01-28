@@ -1,0 +1,124 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-index
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: federation.machinenativeops.io/v1
+kind: FederationIndex
+metadata:
+  name: gl-federation-index
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  description: "GL Federation Layer - Cross-project/Cross-organization Governance Hub"
+
+spec:
+  version_info:
+    current_version: "5.0.0"
+    previous_version: "4.0.0"
+    upgrade_date: "2026-01-28T00:00:00Z"
+    upgrade_notes: "Added federation layer for cross-org governance"
+
+  federation_components:
+    - name: "org-registry"
+      description: "Organization and project registration center"
+      status: "operational"
+      version: "1.0.0"
+      files:
+        - "org-registry/organizations.yaml"
+        - "org-registry/projects.yaml"
+
+    - name: "policies"
+      description: "Cross-organization GL governance policies"
+      status: "operational"
+      version: "1.0.0"
+      files:
+        - "policies/federation-policies.yaml"
+
+    - name: "topology"
+      description: "Multi-repo/multi-cluster topology definition"
+      status: "operational"
+      version: "1.0.0"
+      files:
+        - "topology/repos.yaml"
+        - "topology/clusters.yaml"
+
+    - name: "federation-orchestration"
+      description: "Cross-repo orchestration configuration"
+      status: "operational"
+      version: "1.0.0"
+      files:
+        - "federation-orchestration/federation-orchestration.yaml"
+
+    - name: "trust"
+      description: "Trust, signing, and permission model"
+      status: "operational"
+      version: "1.0.0"
+      files:
+        - "trust/trust-model.yaml"
+        - "trust/signing-keys.md"
+
+  capabilities:
+    cross_repo_governance:
+      enabled: true
+      features:
+        - "multi-repo-parallel-audit"
+        - "cross-repo-fixes"
+        - "federated-event-stream"
+        - "global-compliance-reporting"
+
+    cross_org_governance:
+      enabled: true
+      features:
+        - "org-registry"
+        - "trust-model"
+        - "permission-matrix"
+        - "signing-verification"
+
+    multi_cluster_support:
+      enabled: true
+      features:
+        - "cluster-topology"
+        - "deployment-targets"
+        - "network-topology"
+        - "capacity-management"
+
+  integration_points:
+    gl_runtime_platform:
+      version: "4.0.0"
+      integration_type: "extension"
+      status: "integrated"
+
+    orchestration_engine:
+      version: "2.0.0"
+      integration_type: "extension"
+      status: "integrated"
+
+    governance_event_stream:
+      version: "2.0.0"
+      integration_type: "extension"
+      status: "integrated"
+
+  federation_statistics:
+    total_organizations: 2
+    total_projects: 4
+    total_repositories: 4
+    total_clusters: 3
+    active_pipelines: 2
+    total_namespaces: 4
+    total_nodes: 38
+    average_compliance: 95
+
+  governance_status:
+    gl_compliance: 100
+    federation_active: true
+    all_components_operational: true
+    trust_model_enforced: true
+    signing_enabled: true
+    provenance_enabled: true
+
+_status:
+  federation_version: "5.0.0"
+  status: "operational"
+  health_check: "healthy"
+  last_updated: "2026-01-28T00:00:00Z"

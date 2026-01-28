@@ -1,0 +1,154 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-orchestration-config
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: federation.machinenativeops.io/v1
+kind: FederationOrchestration
+metadata:
+  name: federation-orchestration-config
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  orchestration_strategy:
+    mode: "multi-repo-parallel"
+    execution_mode: "per-repo-sandbox-per-file-sequential"
+    max_concurrent_repos: 8
+    max_concurrent_files_per_repo: 1
+    timeout_seconds: 3600
+    retry_policy:
+      max_retries: 3
+      backoff_multiplier: 2
+
+  repo_pipelines:
+    directory_audit_pipeline:
+      enabled: true
+      execution_order: "parallel"
+      trigger: "on-push"
+      steps:
+        - name: "clone-repo"
+          timeout: 300
+        - name: "scan-files"
+          timeout: 600
+        - name: "validate-gl-markers"
+          timeout: 300
+        - name: "check-semantic-anchors"
+          timeout: 300
+        - name: "validate-schemas"
+          timeout: 300
+        - name: "check-naming-paths"
+          timeout: 300
+        - name: "generate-audit-report"
+          timeout: 300
+      failure_action: "stop"
+
+    repo_gl_fix_pipeline:
+      enabled: true
+      execution_order: "parallel"
+      trigger: "after-audit"
+      steps:
+        - name: "analyze-violations"
+          timeout: 300
+        - name: "generate-patches"
+          timeout: 600
+        - name: "sandbox-validate"
+          timeout: 300
+        - name: "create-branch"
+          timeout: 60
+        - name: "apply-patches"
+          timeout: 300
+        - name: "commit-changes"
+          timeout: 60
+        - name: "create-pr"
+          timeout: 120
+      failure_action: "stop"
+      approval_required: false
+      auto_merge: true
+
+  priority_levels:
+    critical:
+      max_concurrent: 8
+      priority: 1
+      timeout_seconds: 1800
+      auto_deploy: true
+    
+    high:
+      max_concurrent: 6
+      priority: 2
+      timeout_seconds: 3600
+      auto_deploy: false
+    
+    medium:
+      max_concurrent: 4
+      priority: 3
+      timeout_seconds: 7200
+      auto_deploy: false
+    
+    low:
+      max_concurrent: 2
+      priority: 4
+      timeout_seconds: 14400
+      auto_deploy: false
+
+  event_stream:
+    enabled: true
+    aggregation_mode: "federated"
+    retention_days: 30
+    storage_path: "gl-runtime-platform/storage/federation-events-stream"
+    schema:
+      required_fields:
+        - "event_id"
+        - "timestamp"
+        - "event_type"
+        - "source_repo"
+        - "source_project"
+        - "organization"
+        - "data"
+        - "governance_layer"
+
+  audit_reports:
+    output_path: "gl-runtime-platform/storage/federation-audit-reports"
+    formats:
+      - "json"
+      - "markdown"
+    aggregation:
+      per_repo: true
+      per_org: true
+      global: true
+    include:
+      - "violations"
+      - "warnings"
+      - "compliance_score"
+      - "governance_events"
+      - "patches_applied"
+
+  resource_allocation:
+    per_repo:
+      memory_mb: 512
+      cpu_cores: 1
+      disk_mb: 256
+    
+    federation_coordinator:
+      memory_mb: 2048
+      cpu_cores: 4
+      disk_mb: 1024
+
+  monitoring:
+    enabled: true
+    metrics_port: 9090
+    health_check_interval: 30
+    log_level: "info"
+    alert_channels:
+      - "slack"
+      - "email"
+      - "pagerduty"
+
+_status:
+  federation_status: "operational"
+  total_repositories: 4
+  active_pipelines: 2
+  total_projects: 4
+  total_organizations: 2
+  last_sync: "2026-01-28T00:00:00Z"
