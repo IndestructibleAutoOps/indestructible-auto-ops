@@ -251,6 +251,7 @@ spec:
 
 status:
   phase: "active"
+  last_updated: "2025-01-28T08:55:00Z"
   conditions:
     - type: "AgentsConfigured"
       status: "True"
@@ -272,3 +273,7 @@ status:
       status: "True"
       lastTransitionTime: "2026-01-28T08:30:00Z"
       reason: "GL validation strict mode enabled across all systems"
+    - type: "TokenUpdated"
+      status: "True"
+      lastTransitionTime: "2025-01-28T08:55:00Z"
+      reason: "GL_TOKEN refreshed and configured for GitHub integration"

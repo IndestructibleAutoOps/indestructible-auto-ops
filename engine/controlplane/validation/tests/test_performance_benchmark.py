@@ -21,6 +21,7 @@ sys.path.insert(0, str(repo_root))
 # Import from the validation package
 from controlplane.validation.supply_chain_verifier import UltimateSupplyChainVerifier  # noqa: E402
 from controlplane.validation.stage1_lint_format import Stage1LintFormatVerifier  # noqa: E402
+from controlplane.validation.stage4_sbom_scan import Stage4SbomScanVerifier  # noqa: E402
 from controlplane.validation.hash_manager import HashManager  # noqa: E402
 class TestPerformanceBenchmark(unittest.TestCase):
     """Performance benchmarks for verification system"""
