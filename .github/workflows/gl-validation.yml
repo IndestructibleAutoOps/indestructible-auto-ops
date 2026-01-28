@@ -19,6 +19,9 @@ on:
       - '.github/agents/**'
   workflow_dispatch:
 
+  schedule:
+    - cron: '0 0 * * *' # Daily audit at midnight UTC
+
 jobs:
   gl-engine-validation:
     runs-on: ubuntu-latest
@@ -155,3 +158,32 @@ jobs:
           name: gl-gate-reports
           path: |
             engine/.governance/gate-reports/*.json
+
+  gl-audit-history-sync:
+    runs-on: ubuntu-latest
+    needs: [gl-gate-execution]
+    if: github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Generate Audit History Report
+        run: |
+          cd engine
+          npx ts-node governance/gl_engine.ts audit-history --days=7
+          
+      - name: Sync Audit Results
+        run: |
+          mkdir -p engine/.governance/audit-results/history
+          cp engine/.governance/audit-reports/GLOBAL_GOVERNANCE_AUDIT_REPORT.json engine/.governance/audit-results/history/audit-$(date +%Y%m%d).json
+          
+      - name: Upload Audit History
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-audit-history
+          path: |
+            engine/.governance/audit-results/history/
