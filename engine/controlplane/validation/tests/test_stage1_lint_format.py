@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: test_stage1_lint_format
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Unit tests for stage1_lint_format.py
 

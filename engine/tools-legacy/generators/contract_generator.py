@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: contract_generator
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """Smart Contract Generator for SynergyMesh Workflow System"""
 from datetime import datetime

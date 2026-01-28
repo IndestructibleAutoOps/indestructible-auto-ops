@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: generation_engine
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """
 Generation Engine - 生成全自動化引擎

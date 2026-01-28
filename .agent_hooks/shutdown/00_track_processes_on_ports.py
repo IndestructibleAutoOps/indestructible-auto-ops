@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: common
+ * @GL-semantic: 00_track_processes_on_ports
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/local/bin/python3
 """
 Track processes running on ports on the sandbox.

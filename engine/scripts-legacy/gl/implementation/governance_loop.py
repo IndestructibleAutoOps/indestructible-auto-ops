@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: governance_loop
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 GL Governance Loop Implementation
 

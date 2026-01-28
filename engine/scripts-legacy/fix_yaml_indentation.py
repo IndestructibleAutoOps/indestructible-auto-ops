@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: fix_yaml_indentation
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """
 修復 YAML 縮排問題的腳本

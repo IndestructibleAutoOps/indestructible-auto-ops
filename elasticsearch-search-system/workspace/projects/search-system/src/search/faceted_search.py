@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: search
+ * @GL-semantic: faceted_search
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Faceted Search Implementation
 GL-Layer: GL30-49 (Execution)

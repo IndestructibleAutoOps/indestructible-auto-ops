@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: data
+ * @GL-semantic: test_registry_instant
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Unit Tests for Registry - INSTANT 模式
 

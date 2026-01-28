@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: data
+ * @GL-semantic: instant_execution_engine_v2
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """
 INSTANT Execution Engine v2.0.0

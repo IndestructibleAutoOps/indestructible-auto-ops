@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: data
+ * @GL-semantic: instant_archiver_v1
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """
 INSTANT Archive System v1.0.0

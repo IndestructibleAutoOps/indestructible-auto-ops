@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: search
+ * @GL-semantic: index_optimizer
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Index Optimization Service
 GL-Layer: GL30-49 (Execution)

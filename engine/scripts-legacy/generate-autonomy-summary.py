@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: generate-autonomy-summary
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 # GL-Layer: GL30-49 (Execution)
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-

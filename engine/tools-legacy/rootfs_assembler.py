@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: rootfs_assembler
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 # tools/rootfs_assembler.py
 # Phase 1：組裝 dist/rootfs（FHS） + 生成檔案清單 manifest（含來源標註）

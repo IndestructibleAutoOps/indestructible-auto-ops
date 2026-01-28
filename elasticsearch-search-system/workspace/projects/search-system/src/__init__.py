@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: search
+ * @GL-semantic: __init__
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Search System Package
 GL-Layer: GL30-49 (Execution)

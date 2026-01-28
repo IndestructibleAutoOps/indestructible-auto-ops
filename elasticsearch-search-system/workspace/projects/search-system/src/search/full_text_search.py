@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: search
+ * @GL-semantic: full_text_search
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Full-Text Search Implementation
 GL-Layer: GL30-49 (Execution)

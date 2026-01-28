@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: data
+ * @GL-semantic: instant_execution_pipeline
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """
 Instant Execution Pipeline - 即時執行管線

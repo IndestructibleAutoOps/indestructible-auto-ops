@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: data
+ * @GL-semantic: registry_instant
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 Registry Manager - INSTANT 模式增強版
 

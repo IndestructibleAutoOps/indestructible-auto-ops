@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: search
+ * @GL-semantic: run_root_files
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 #!/usr/bin/env python3
 """
 Elasticsearch Search System Root File Runner

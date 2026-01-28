@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: data
+ * @GL-semantic: INSTANT-DEPLOY
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ */
+
 """
 INSTANT DEPLOY - 即時完整部署腳本
 一鍵完成所有架構部署，零報告輸出
