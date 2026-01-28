@@ -408,6 +408,43 @@ export function setupRoutes(app: express.Application, services: Services): void 
     }
   });
 
+  // Repository file inventory export endpoint
+  router.get('/api/v1/files/export', async (req, res) => {
+    try {
+      const mode = String(req.query.mode || '').toLowerCase();
+      if (mode !== 'all') {
+        return res.status(400).json({
+          error: 'mode=all is required for export'
+        });
+      }
+
+      const files = await services.gitConnector.scanRepository();
+      await services.eventStream.logEvent({
+        eventType: 'repository_export',
+        layer: 'GL70-89',
+        semanticAnchor: 'REPOSITORY-INTEGRATION',
+        timestamp: new Date().toISOString(),
+        metadata: {
+          mode: 'all',
+          totalFiles: files.length
+        }
+      });
+
+      res.json({
+        success: true,
+        mode: 'all',
+        count: files.length,
+        files
+      });
+    } catch (error: any) {
+      logger.error(`Repository export failed: ${error.message}`);
+      res.status(500).json({
+        error: 'Repository export failed',
+        message: error.message
+      });
+    }
+  });
+
   // Get events endpoint
   router.get('/api/v1/events', async (req, res) => {
     try {

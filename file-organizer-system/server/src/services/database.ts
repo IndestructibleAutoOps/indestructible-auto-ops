@@ -53,6 +53,22 @@ export class DatabaseService {
   }
 
   /**
+   * Get files in chunks
+   */
+  async getFilesChunked(chunkSize: number = 100, offset: number = 0): Promise<{
+    files: File[];
+    total: number;
+  }> {
+    const files = await this.getFiles();
+    const safeOffset = Math.max(0, offset);
+    const safeChunkSize = Math.max(1, chunkSize);
+    return {
+      files: files.slice(safeOffset, safeOffset + safeChunkSize),
+      total: files.length
+    };
+  }
+
+  /**
    * Save files
    */
   async saveFiles(files: File[]): Promise<void> {
