@@ -46,6 +46,8 @@ When the `yaml` module was not available:
 - Added 5-second delay between retries
 - Clear progress reporting for each attempt
 
+> **Note**: The workflow references `scripts/validate-infrastructure.sh`, but the actual script is located at `engine/scripts-legacy/validate-infrastructure.sh`. This path discrepancy should be corrected in a future update.
+
 ```bash
 max_retries=3
 retry_count=0
