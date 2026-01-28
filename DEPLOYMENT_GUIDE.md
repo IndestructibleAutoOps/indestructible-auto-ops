@@ -46,12 +46,18 @@ pip install pyyaml jsonschema
 
 ### Step 4: Push Branch to Remote
 ```bash
-# Set up git remote with authentication
-git remote set-url origin https://YOUR_TOKEN@github.com/MachineNativeOps/machine-native-ops.git
+# Ensure you're authenticated with GitHub before pushing:
+# - Recommended: use GitHub CLI (`gh auth login`) or
+# - Use Git credential helper with HTTPS, or
+# - Use SSH keys configured for your GitHub account.
 
-# OR use the x-access-token method
-export GITHUB_TOKEN=your_personal_access_token
-git push https://x-access-token:$GITHUB_TOKEN@github.com/MachineNativeOps/machine-native-ops.git hotfix/infrastructure-validation-dependencies
+# Option A: HTTPS remote (credentials managed by gh or Git credential helper)
+git remote set-url origin https://github.com/MachineNativeOps/machine-native-ops.git
+git push origin hotfix/infrastructure-validation-dependencies
+
+# Option B: SSH remote
+# git remote set-url origin git@github.com:MachineNativeOps/machine-native-ops.git
+# git push origin hotfix/infrastructure-validation-dependencies
 ```
 
 ### Step 5: Create Pull Request
