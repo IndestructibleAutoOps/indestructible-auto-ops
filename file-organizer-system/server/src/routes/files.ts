@@ -10,6 +10,8 @@
 import { Router } from 'express';
 import { DatabaseService } from '../services/database';
 import { File } from '../types';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 const router = Router();
 const dbService = new DatabaseService();
@@ -17,7 +19,7 @@ const dbService = new DatabaseService();
 /**
  * GET /api/files - Get all files
  */
-router.get('/', async (req, res) => {
+router.get('/', async (_req, res) => {
   try {
     const files = await dbService.getFiles();
     res.json(files);
@@ -25,6 +27,57 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve files' });
   }
 });
+
+/**
+ * GET /api/files/export - Export all files in chunks
+ */
+router.get('/export', async (req, res) => {
+  try {
+    const mode = String(req.query.mode || '').toLowerCase();
+    if (mode !== 'all') {
+      return res.status(400).json({ error: 'mode=all is required for export' });
+    }
+
+    const chunkSize = Number.parseInt(String(req.query.chunkSize || '100'), 10);
+    const offset = Number.parseInt(String(req.query.offset || '0'), 10);
+    const safeChunkSize = Number.isNaN(chunkSize) ? 100 : Math.max(1, chunkSize);
+    const safeOffset = Number.isNaN(offset) ? 0 : Math.max(0, offset);
+
+    const chunk = await dbService.getFilesChunked(safeChunkSize, safeOffset);
+    await appendAuditEvent({
+      eventType: 'files_export_chunk',
+      timestamp: new Date().toISOString(),
+      metadata: {
+        mode: 'all',
+        chunkSize: safeChunkSize,
+        offset: safeOffset,
+        total: chunk.total,
+        returned: chunk.files.length
+      }
+    });
+    res.json({
+      mode: 'all',
+      chunkSize: safeChunkSize,
+      offset: safeOffset,
+      total: chunk.total,
+      files: chunk.files,
+      hasMore: safeOffset + safeChunkSize < chunk.total
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to export files' });
+  }
+});
+
+async function appendAuditEvent(event: {
+  eventType: string;
+  timestamp: string;
+  metadata: Record<string, unknown>;
+}): Promise<void> {
+  const eventPath = path.resolve(__dirname, '../../../.governance/event-stream.jsonl');
+  const eventLine = JSON.stringify({ source: 'files-route', ...event }) + '\n';
+  await fs.mkdir(path.dirname(eventPath), { recursive: true });
+  await fs.appendFile(eventPath, eventLine, 'utf-8');
+}
 
 /**
  * GET /api/files/:id - Get a specific file

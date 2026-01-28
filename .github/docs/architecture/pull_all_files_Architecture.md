@@ -138,3 +138,19 @@ defaults and prevent accidental large responses.
 
 ### Decision: Chunked Streaming
 Bulk responses are streamed or batched to prevent memory spikes and timeouts during large exports.
+
+## Implementation Snapshot
+
+The File Organizer server now exposes a dedicated export route that honors the pull-all-files
+architecture while keeping default pagination unchanged.
+
+```http
+GET /api/files/export?mode=all&chunkSize=100&offset=0
+```
+
+The GL Runtime Platform exposes a repository integration endpoint for full inventory export
+backed by the Git connector.
+
+```http
+GET /api/v1/files/export?mode=all
+```
