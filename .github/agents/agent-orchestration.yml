@@ -2,7 +2,7 @@
 # @GL-layer: agents
 # @GL-semantic: agent-orchestration-configuration
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-
+#
 # GL Unified Charter Activated
 # Multi-Agent Orchestration Configuration
 
@@ -20,6 +20,7 @@ metadata:
     governance.machinenativeops.io/charter-version: "2.0.0"
 
 spec:
+  # Parallel execution strategy
   parallelism:
     max_concurrent_agents: 8
     timeout_seconds: 1800
@@ -27,6 +28,7 @@ spec:
       max_retries: 3
       backoff_multiplier: 2
 
+  # Agent definitions
   agents:
     - id: gl-governance-validator
       name: "GL Governance Validator Agent"
@@ -37,8 +39,7 @@ spec:
         validation_scope:
           - "engine"
           - "file-organizer-system"
-          - "gl-runtime-platform"
-          - ".governance"
+          - "gl-audit-reports"
         strict_mode: true
         enforce_semantic_anchors: true
       dependencies: []
@@ -214,6 +215,7 @@ spec:
         - "executive-summary.md"
         - "dashboard-data.json"
 
+  # Communication channels
   channels:
     - id: events
       type: "event-bus"
@@ -227,12 +229,14 @@ spec:
         webhook_url: "${ALERT_WEBHOOK_URL}"
         severity_filter: "high+"
 
+  # Resource limits
   resources:
     memory_limit_mb: 2048
     cpu_limit_cores: 4
     disk_limit_mb: 1024
     network_bandwidth_mbps: 100
 
+  # Monitoring configuration
   monitoring:
     enabled: true
     metrics_port: 9090
@@ -257,5 +261,5 @@ status:
       reason: "Resource limits set"
     - type: "GLGovernanceIntegrated"
       status: "True"
-      lastTransitionTime: "2026-01-28T13:29:00Z"
+      lastTransitionTime: "2026-01-28T00:31:00Z"
       reason: "GL governance validator agent activated"

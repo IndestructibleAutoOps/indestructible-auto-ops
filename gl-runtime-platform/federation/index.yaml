@@ -1,0 +1,182 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-index
+# @GL-charter-version: 2.0.0
+
+apiVersion: federation.machinenativeops.io/v1
+kind: FederationIndex
+metadata:
+  name: gl-federation-index
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approved: "approved"
+
+spec:
+  federation_name: "GL Federation Layer"
+  description: "Cross-organization, cross-repository, cross-cluster governance federation hub"
+  
+  version: "5.0.0"
+  charter_version: "2.0.0"
+  semantic_anchor: "GL-ROOT-GOVERNANCE"
+  
+  # Federation components
+  components:
+    - name: "org-registry"
+      path: "federation/org-registry/"
+      description: "Organization and project registration center"
+      files:
+        - "organizations.yaml"
+        - "projects.yaml"
+      status: "active"
+    
+    - name: "policies"
+      path: "federation/policies/"
+      description: "Cross-organization GL policies"
+      files:
+        - "federation-policies.yaml"
+      status: "active"
+    
+    - name: "topology"
+      path: "federation/topology/"
+      description: "Multi-repo and multi-cluster topology"
+      files:
+        - "repos.yaml"
+        - "clusters.yaml"
+      status: "active"
+    
+    - name: "federation-orchestration"
+      path: "federation/federation-orchestration/"
+      description: "Cross-repo orchestration configuration"
+      files:
+        - "federation-orchestration.yaml"
+      status: "active"
+    
+    - name: "trust"
+      path: "federation/trust/"
+      description: "Trust model and signing keys"
+      files:
+        - "trust-model.yaml"
+        - "signing-keys.md"
+      status: "active"
+
+  # Federation capabilities
+  capabilities:
+    cross_repo_governance:
+      enabled: true
+      description: "Governance across multiple repositories"
+      max_concurrent_repos: 10
+    
+    cross_org_governance:
+      enabled: true
+      description: "Governance across multiple organizations"
+      total_organizations: 2
+    
+    multi_cluster_support:
+      enabled: true
+      description: "Support for multiple Kubernetes clusters"
+      total_clusters: 3
+    
+    parallel_orchestration:
+      enabled: true
+      description: "Parallel execution across repos and orgs"
+      max_concurrent_agents: 8
+    
+    trust_management:
+      enabled: true
+      description: "Trust-based permission and approval system"
+      trust_levels: ["high", "medium", "low"]
+    
+    signing_verification:
+      enabled: true
+      description: "Cryptographic signing and verification"
+      algorithm: "ECDSA-P256"
+    
+    event_aggregation:
+      enabled: true
+      description: "Federated governance event stream"
+      retention_hours: 168
+    
+    federated_reporting:
+      enabled: true
+      description: "Cross-repo and cross-org reporting"
+      report_formats: ["json", "markdown"]
+
+  # Governance integration
+  governance_integration:
+    gl_root_semantic_anchor: true
+    gl_unified_charter: true
+    charter_version: "2.0.0"
+    governance_layers: ["GL90-99"]
+    
+    # Federation-level policies
+    baseline_policies: true
+    sharing_policies: true
+    validation_policies: true
+    orchestration_policies: true
+    deployment_policies: true
+
+  # Integration points
+  integrations:
+    - type: "gl-runtime-platform"
+      version: "5.0.0"
+      enabled: true
+      api_endpoint: "http://localhost:3000"
+    
+    - type: "multi-agent-orchestration"
+      version: "1.0.0"
+      enabled: true
+      config: ".github/agents/agent-orchestration.yml"
+    
+    - type: "global-resource-graph"
+      version: "6.0.0"
+      enabled: true
+      path: "governance/gl-resource-graph/"
+    
+    - type: "git"
+      provider: "github"
+      enabled: true
+    
+    - type: "kubernetes"
+      enabled: true
+      clusters: 3
+
+  # Statistics
+  statistics:
+    total_organizations: 2
+    total_projects: 4
+    total_repositories: 4
+    total_clusters: 3
+    total_namespaces: 4
+    total_nodes: 38
+    active_pipelines: 2
+    governance_compliance: 95
+
+  # Storage locations
+  storage:
+    federation_events_stream: "storage/federation-events-stream/"
+    federation_audit_reports: "storage/federation-audit-reports/"
+    federation_artifacts: "storage/federation-artifacts/"
+    global_resource_graph: "storage/gl-artifacts-store/global-resource-graph.json"
+
+status:
+  phase: "active"
+  conditions:
+    - type: "FederationConfigured"
+      status: "True"
+    - type: "OrganizationsRegistered"
+      status: "True"
+    - type: "PoliciesDefined"
+      status: "True"
+    - type: "TopologyConfigured"
+      status: "True"
+    - type: "OrchestrationEnabled"
+      status: "True"
+    - type: "TrustModelActive"
+      status: "True"
+    - type: "GLGovernanceIntegrated"
+      status: "True"
+
+  last_updated: "2026-01-28T00:00:00Z"

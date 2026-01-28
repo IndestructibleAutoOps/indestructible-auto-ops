@@ -1,0 +1,146 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-cluster-topology
+# @GL-charter-version: 2.0.0
+
+apiVersion: federation.machinenativeops.io/v1
+kind: ClusterTopology
+metadata:
+  name: federation-cluster-topology
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  clusters:
+    - id: "cluster-prod-us-east"
+      name: "Production US East"
+      organization_id: "org-machinenativeops"
+      type: "production"
+      region: "us-east-1"
+      provider: "aws"
+      kubernetes_version: "1.28"
+      node_pools:
+        - name: "primary"
+          instance_type: "t3.large"
+          min_nodes: 3
+          max_nodes: 10
+          auto_scaling: true
+        - name: "critical"
+          instance_type: "t3.xlarge"
+          min_nodes: 2
+          max_nodes: 5
+          auto_scaling: true
+      namespaces:
+        - name: "machine-native-ops-prod"
+          resource_quotas:
+            cpu: "10"
+            memory: "20Gi"
+            storage: "100Gi"
+      network_topology:
+        vpc_id: "vpc-prod-us-east"
+        subnet_ids:
+          - "subnet-prod-us-east-1a"
+          - "subnet-prod-us-east-1b"
+        load_balancer_type: "application"
+      monitoring:
+        enabled: true
+        metrics_port: 9090
+        log_level: "info"
+      governance:
+        gl_runtime_enabled: true
+        auto_fix_enabled: true
+        auto_deploy_enabled: true
+      created_at: "2026-01-28T00:00:00Z"
+
+    - id: "cluster-staging-us-west"
+      name: "Staging US West"
+      organization_id: "org-machinenativeops"
+      type: "staging"
+      region: "us-west-2"
+      provider: "aws"
+      kubernetes_version: "1.28"
+      node_pools:
+        - name: "standard"
+          instance_type: "t3.medium"
+          min_nodes: 2
+          max_nodes: 5
+          auto_scaling: true
+      namespaces:
+        - name: "machine-native-ops-staging"
+          resource_quotas:
+            cpu: "5"
+            memory: "10Gi"
+            storage: "50Gi"
+      network_topology:
+        vpc_id: "vpc-staging-us-west"
+        subnet_ids:
+          - "subnet-staging-us-west-2a"
+          - "subnet-staging-us-west-2b"
+        load_balancer_type: "application"
+      monitoring:
+        enabled: true
+        metrics_port: 9090
+        log_level: "debug"
+      governance:
+        gl_runtime_enabled: true
+        auto_fix_enabled: true
+        auto_deploy_enabled: false
+      created_at: "2026-01-28T00:00:00Z"
+
+    - id: "cluster-enterprise-prod"
+      name: "Enterprise Production"
+      organization_id: "org-enterprise-a"
+      type: "production"
+      region: "eu-west-1"
+      provider: "aws"
+      kubernetes_version: "1.27"
+      node_pools:
+        - name: "main"
+          instance_type: "m5.large"
+          min_nodes: 3
+          max_nodes: 8
+          auto_scaling: true
+      namespaces:
+        - name: "enterprise-a-prod"
+          resource_quotas:
+            cpu: "8"
+            memory: "16Gi"
+            storage: "80Gi"
+      network_topology:
+        vpc_id: "vpc-enterprise-prod"
+        subnet_ids:
+          - "subnet-enterprise-prod-1a"
+          - "subnet-enterprise-prod-1b"
+        load_balancer_type: "network"
+      monitoring:
+        enabled: true
+        metrics_port: 9090
+        log_level: "info"
+      governance:
+        gl_runtime_enabled: false
+        auto_fix_enabled: false
+        auto_deploy_enabled: false
+      created_at: "2026-01-28T00:00:00Z"
+
+  capacity_management:
+    total_nodes: 38
+    total_namespaces: 4
+    auto_scaling_enabled: true
+    resource_monitoring:
+      enabled: true
+      interval_seconds: 60
+
+status:
+  phase: "active"
+  total_clusters: 3
+  conditions:
+    - type: "ClustersConfigured"
+      status: "True"
+    - type: "NamespacesDefined"
+      status: "True"
+    - type: "MonitoringEnabled"
+      status: "True"

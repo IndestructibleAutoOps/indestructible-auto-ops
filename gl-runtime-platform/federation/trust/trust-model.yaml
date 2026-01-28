@@ -1,0 +1,178 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: federation-trust-model
+# @GL-charter-version: 2.0.0
+
+apiVersion: federation.machinenativeops.io/v1
+kind: TrustModel
+metadata:
+  name: federation-trust-model"
+  version: "5.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approved: "approved"
+
+spec:
+  # Trust levels
+  trust_levels:
+    - level: "high"
+      description: "Full trust - automatic operations enabled"
+      auto_fix: true
+      auto_deploy: true
+      auto_pr: true
+      approval_required: false
+      signature_verification: "strict"
+      audit_frequency: "continuous"
+    
+    - level: "medium"
+      description: "Medium trust - operations require approval"
+      auto_fix: true
+      auto_deploy: false
+      auto_pr: true
+      approval_required: true
+      signature_verification: "standard"
+      audit_frequency: "daily"
+    
+    - level: "low"
+      description: "Low trust - manual operations only"
+      auto_fix: false
+      auto_deploy: false
+      auto_pr: false
+      approval_required: true
+      signature_verification: "basic"
+      audit_frequency: "weekly"
+
+  # Permission matrix
+  permission_matrix:
+    operations:
+      repair:
+        allowed_by_trust_level:
+          - "high"
+          - "medium"
+        requires_approval:
+          high: false
+          medium: true
+          low: true
+      
+      deploy:
+        allowed_by_trust_level:
+          - "high"
+        requires_approval:
+          high: false
+          medium: true
+          low: true
+      
+      orchestrate:
+        allowed_by_trust_level:
+          - "high"
+          - "medium"
+          - "low"
+        requires_approval:
+          high: false
+          medium: false
+          low: true
+      
+      audit:
+        allowed_by_trust_level:
+          - "high"
+          - "medium"
+          - "low"
+        requires_approval:
+          high: false
+          medium: false
+          low: false
+
+  # Signature and verification
+  signature_policy:
+    enabled: true
+    algorithm: "ECDSA-P256"
+    key_management: "centralized"
+    verification_rules:
+      - rule: "patch-signing"
+        description: "All patches must be signed"
+        required: true
+        trust_levels: ["high", "medium"]
+      - rule: "pr-signing"
+        description: "All PRs must be signed"
+        required: true
+        trust_levels: ["high"]
+      - rule: "deployment-signing"
+        description: "All deployments must be signed"
+        required: true
+        trust_levels: ["high"]
+
+  # Cross-organization boundaries
+  cross_org_boundaries:
+    enabled: true
+    boundary_rules:
+      - rule: "no-direct-cross-org-fixes"
+        description: "Cannot directly fix files in another organization's repo"
+        enforcement: "block"
+      - rule: "cross-org-audit-access"
+        description: "Can audit another organization's repo with permission"
+        enforcement: "allow-with-approval"
+      - rule: "cross-org-artifact-sharing"
+        description: "Can share governance artifacts across organizations"
+        enforcement: "allow"
+    approval_workflows:
+      - workflow: "cross-org-repair"
+        approvers:
+          - "target-org-governance-team"
+          - "source-org-governance-team"
+        timeout_hours: 24
+
+  # Reputation system
+  reputation_system:
+    enabled: true
+    metrics:
+      - name: "compliance_score"
+        weight: 0.4
+      - name: "fix_success_rate"
+        weight: 0.3
+      - name: "deployment_success_rate"
+        weight: 0.2
+      - name: "security_incidents"
+        weight: 0.1
+    scoring:
+      min_score: 0
+      max_score: 100
+      auto_adjust_trust: true
+
+  # Audit trail
+  audit_trail:
+    enabled: true
+    log_all_operations: true
+    log_level: "detailed"
+    retention_days: 365
+    export_format: "json"
+    verification_enabled: true
+
+  # Revocation handling
+  revocation_policy:
+    enabled: true
+    revoke_on:
+      - "security-compromise"
+      - "compliance-violation-critical"
+      - "malicious-activity-detected"
+    revocation_actions:
+      - "revoke-all-permissions"
+      - "invalidate-signatures"
+      - "trigger-audit"
+    notification_channels:
+      - "email"
+      - "slack"
+      - "pagerduty"
+
+status:
+  phase: "active"
+  conditions:
+    - type: "TrustLevelsDefined"
+      status: "True"
+    - type: "PermissionMatrixConfigured"
+      status: "True"
+    - type: "SignaturePolicyEnabled"
+      status: "True"
+    - type: "CrossOrgBoundariesDefined"
+      status: "True"
