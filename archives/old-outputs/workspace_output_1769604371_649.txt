@@ -1,0 +1,88 @@
+Running GL governance pre-commit validation...
+No relevant files staged. Skipping GL validation.
+✅ Governance event logged to event stream
+[main 7f65fed1] chore: final workspace cleanup and governance updates
+ 12 files changed, 270 insertions(+)
+ create mode 100644 archives/old-outputs/workspace_output_1769604343_3283.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604345_856.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604347_4006.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604355_3145.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604357_8136.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604360_5518.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604362_2825.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604369_7507.txt
+ create mode 100644 archives/old-outputs/workspace_output_1769604371_649.txt
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769604374321",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:46:14.321Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:46:14.091Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769604376408",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:46:16.408Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:46:16.401Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit cf8cb78.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      https://github.com/MachineNativeOps/machine-native-ops/security/dependabot        
+remote: 
+To https://github.com/MachineNativeOps/machine-native-ops.git
+   5f9dea15..7f65fed1  main -> main
