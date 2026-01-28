@@ -1,0 +1,27 @@
+# @GL-governed
+# @GL-layer: infrastructure
+# @GL-semantic: kubernetes-service-file-organizer
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# File Organizer System Service Manifest
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: file-organizer-service
+  namespace: machine-native-ops
+  labels:
+    app.kubernetes.io/name: file-organizer-system
+    app.kubernetes.io/component: application
+    app.kubernetes.io/part-of: machine-native-ops
+    governance.machinenativeops.io/charter-version: "2.0.0"
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: file-organizer-system

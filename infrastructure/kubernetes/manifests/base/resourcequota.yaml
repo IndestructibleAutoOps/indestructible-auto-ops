@@ -1,0 +1,24 @@
+# @GL-governed
+# @GL-layer: infrastructure
+# @GL-semantic: kubernetes-resourcequota
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Kubernetes Base ResourceQuota Manifest
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: machine-native-ops-quota
+  namespace: machine-native-ops
+  labels:
+    app.kubernetes.io/name: machine-native-ops
+    app.kubernetes.io/component: resource-quota
+    governance.machinenativeops.io/charter-version: "2.0.0"
+spec:
+  hard:
+    requests.cpu: "4"
+    requests.memory: "8Gi"
+    limits.cpu: "8"
+    limits.memory: "16Gi"
+    persistentvolumeclaims: "10"

@@ -1,0 +1,22 @@
+# @GL-governed
+# @GL-layer: infrastructure
+# @GL-semantic: kubernetes-poddisruptionbudget
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Kubernetes Base PodDisruptionBudget Manifest
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: aep-engine-pdb
+  namespace: machine-native-ops
+  labels:
+    app.kubernetes.io/name: aep-engine
+    app.kubernetes.io/component: disruption-budget
+    governance.machinenativeops.io/charter-version: "2.0.0"
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aep-engine
