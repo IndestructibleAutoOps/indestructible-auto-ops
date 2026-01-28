@@ -8,15 +8,18 @@
 Unit tests for hash_manager.py
 Tests hash computation and management functionality.
 """
-import unittest
 import hashlib
 import sys
+import unittest
 from pathlib import Path
+
 # Add repository root to path
 repo_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(repo_root))
 # Import from the validation package
 from controlplane.validation.hash_manager import HashManager
+
+
 class TestHashManager(unittest.TestCase):
     """Test HashManager class"""
     def setUp(self):

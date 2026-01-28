@@ -18,7 +18,7 @@ metadata:
 
 naming-rules:
   directories:
-    pattern: "^[a-z0-9\-]+$"
+    pattern: "^[a-z0-9-]+$"
     case: "kebab-case"
     max-length: "64"
     examples:
@@ -26,7 +26,7 @@ naming-rules:
       invalid: ["ETLPipeline", "data_source", "Data Source"]
   
   files:
-    pattern: "^[a-z0-9\-\_\.]+$"
+    pattern: "^[a-z0-9-_.]+$"
     case: "kebab-case" or "snake_case"
     max-length: "128"
     examples:

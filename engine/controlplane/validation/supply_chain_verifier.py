@@ -16,6 +16,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -31,6 +32,8 @@ from .stage5_sign_attestation import Stage5SignAttestationVerifier
 from .stage6_admission_policy import Stage6AdmissionPolicyVerifier
 from .stage7_runtime_monitoring import Stage7RuntimeMonitoringVerifier
 from .supply_chain_types import ChainVerificationResult, VerificationEvidence
+
+
 class UltimateSupplyChainVerifier:
     """Ultimate Supply Chain Verifier - Enterprise-grade complete implementation"""
     def __init__(self, repo_path: str = "."):
