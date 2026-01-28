@@ -17,8 +17,7 @@ Intermittent CI/CD failures in infrastructure validation workflow caused by miss
 ### 1. Push to Remote
 ```bash
 cd machine-native-ops
-export GITHUB_TOKEN=your_token_here
-git push https://x-access-token:$GITHUB_TOKEN@github.com/MachineNativeOps/machine-native-ops.git hotfix/infrastructure-validation-dependencies
+git push origin hotfix/infrastructure-validation-dependencies
 ```
 
 ### 2. Create Pull Request
