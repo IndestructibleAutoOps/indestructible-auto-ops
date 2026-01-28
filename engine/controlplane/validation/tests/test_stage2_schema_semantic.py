@@ -9,17 +9,17 @@ Unit tests for stage2_schema_semantic.py
 Tests Stage 2 Schema/Semantic verification.
 """
 import unittest
-import tempfile
-import shutil
-from pathlib import Path
-import sys
+import tempfile  # noqa: E402
+import shutil  # noqa: E402
+from pathlib import Path  # noqa: E402
+import sys  # noqa: E402
 # Add repository root to path
 repo_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(repo_root))
 # Import from the validation package
-from controlplane.validation.hash_manager import HashManager
-from controlplane.validation.stage2_schema_semantic import Stage2SchemaSemanticVerifier
-from controlplane.validation.supply_chain_types import VerificationEvidence
+from controlplane.validation.hash_manager import HashManager  # noqa: E402
+from controlplane.validation.stage2_schema_semantic import Stage2SchemaSemanticVerifier  # noqa: E402
+from controlplane.validation.supply_chain_types import VerificationEvidence  # noqa: E402
 class TestStage2SchemaSemanticVerifier(unittest.TestCase):
     """Test Stage2SchemaSemanticVerifier class"""
     def setUp(self):

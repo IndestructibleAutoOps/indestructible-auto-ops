@@ -9,17 +9,17 @@ Integration tests for the complete supply chain verification system.
 Tests the interaction between all components and the complete verification workflow.
 """
 import unittest
-import tempfile
-import shutil
-from pathlib import Path
-import json
-import sys
+import tempfile  # noqa: E402
+import shutil  # noqa: E402
+from pathlib import Path  # noqa: E402
+import json  # noqa: E402
+import sys  # noqa: E402
 # Add repository root to path
 repo_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(repo_root))
 # Import from the validation package
-from controlplane.validation.supply_chain_verifier import UltimateSupplyChainVerifier
-from controlplane.validation.supply_chain_types import ChainVerificationResult
+from controlplane.validation.supply_chain_verifier import UltimateSupplyChainVerifier  # noqa: E402
+from controlplane.validation.supply_chain_types import ChainVerificationResult  # noqa: E402
 class TestCompleteVerification(unittest.TestCase):
     """Test complete verification workflow"""
     def setUp(self):

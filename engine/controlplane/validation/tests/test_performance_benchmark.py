@@ -9,20 +9,20 @@ Performance benchmarks for the supply chain verification system.
 Tests performance characteristics and establishes baseline metrics.
 """
 import unittest
-import time
-import tempfile
-import shutil
-from pathlib import Path
-import statistics
-import sys
+import time  # noqa: E402
+import tempfile  # noqa: E402
+import shutil  # noqa: E402
+from pathlib import Path  # noqa: E402
+import statistics  # noqa: E402
+import sys  # noqa: E402
 # Add repository root to path
 repo_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(repo_root))
 # Import from the validation package
-from controlplane.validation.supply_chain_verifier import UltimateSupplyChainVerifier
-from controlplane.validation.stage1_lint_format import Stage1LintFormatVerifier
-from controlplane.validation.stage4_sbom_scan import Stage4SbomScanVerifier
-from controlplane.validation.hash_manager import HashManager
+from controlplane.validation.supply_chain_verifier import UltimateSupplyChainVerifier  # noqa: E402
+from controlplane.validation.stage1_lint_format import Stage1LintFormatVerifier  # noqa: E402
+from controlplane.validation.stage4_sbom_scan import Stage4SbomScanVerifier  # noqa: E402
+from controlplane.validation.hash_manager import HashManager  # noqa: E402
 class TestPerformanceBenchmark(unittest.TestCase):
     """Performance benchmarks for verification system"""
     @classmethod
