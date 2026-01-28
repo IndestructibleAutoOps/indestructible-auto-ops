@@ -1,6 +1,10 @@
+# @GL-governed
+# @GL-layer: agents
+# @GL-semantic: agent-orchestration-configuration
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
 # GL Unified Charter Activated
 # Multi-Agent Orchestration Configuration
-# GL Layer: GL90-99 (Meta-Specification)
 
 apiVersion: orchestration.machinenativeops.io/v1
 kind: AgentOrchestration
@@ -13,6 +17,7 @@ metadata:
   annotations:
     governance.machinenativeops.io/classification: "internal"
     governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
 
 spec:
   # Parallel execution strategy
@@ -25,10 +30,27 @@ spec:
   
   # Agent definitions
   agents:
+    - id: gl-governance-validator
+      name: "GL Governance Validator Agent"
+      type: "governance"
+      priority: 1
+      enabled: true
+      config:
+        validation_scope:
+          - "engine"
+          - "file-organizer-system"
+          - "gl-audit-reports"
+        strict_mode: true
+        enforce_semantic_anchors: true
+      dependencies: []
+      outputs:
+        - "gl-validation-report.json"
+        - "gl-compliance-summary.md"
+
     - id: codeql-monitor
       name: "CodeQL Monitor Agent"
       type: "monitoring"
-      priority: 1
+      priority: 2
       enabled: true
       config:
         languages:
@@ -45,7 +67,7 @@ spec:
     - id: quality-assurance
       name: "Quality Assurance Agent"
       type: "validation"
-      priority: 2
+      priority: 3
       enabled: true
       config:
         checks:
@@ -62,7 +84,7 @@ spec:
     - id: dependency-scanner
       name: "Dependency Scanner Agent"
       type: "security"
-      priority: 3
+      priority: 4
       enabled: true
       config:
         scan_types:
@@ -78,7 +100,7 @@ spec:
     - id: architecture-validator
       name: "Architecture Validator Agent"
       type: "validation"
-      priority: 4
+      priority: 5
       enabled: true
       config:
         validation_rules:
@@ -95,7 +117,7 @@ spec:
     - id: documentation-generator
       name: "Documentation Generator Agent"
       type: "documentation"
-      priority: 5
+      priority: 6
       enabled: true
       config:
         formats:
@@ -112,7 +134,7 @@ spec:
     - id: performance-monitor
       name: "Performance Monitor Agent"
       type: "monitoring"
-      priority: 6
+      priority: 7
       enabled: true
       config:
         metrics:
@@ -130,7 +152,7 @@ spec:
     - id: security-auditor
       name: "Security Auditor Agent"
       type: "security"
-      priority: 7
+      priority: 8
       enabled: true
       config:
         audit_scopes:
@@ -150,7 +172,7 @@ spec:
     - id: reporting-aggregator
       name: "Reporting Aggregator Agent"
       type: "aggregation"
-      priority: 8
+      priority: 9
       enabled: true
       config:
         aggregation_strategy: "merge"
@@ -159,6 +181,7 @@ spec:
           - "detailed"
           - "dashboard"
       dependencies:
+        - "gl-governance-validator"
         - "codeql-monitor"
         - "quality-assurance"
         - "dependency-scanner"
@@ -214,3 +237,7 @@ status:
       status: "True"
       lastTransitionTime: "2026-01-27T00:00:00Z"
       reason: "Resource limits set"
+    - type: "GLGovernanceIntegrated"
+      status: "True"
+      lastTransitionTime: "2026-01-28T00:31:00Z"
+      reason: "GL governance validator agent activated"
