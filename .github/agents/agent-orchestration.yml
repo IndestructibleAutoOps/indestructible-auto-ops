@@ -2,7 +2,7 @@
 # @GL-layer: agents
 # @GL-semantic: agent-orchestration-configuration
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-# 
+#
 # GL Unified Charter Activated
 # Multi-Agent Orchestration Configuration
 
@@ -27,7 +27,7 @@ spec:
     retry_policy:
       max_retries: 3
       backoff_multiplier: 2
-  
+
   # Agent definitions
   agents:
     - id: gl-governance-validator
@@ -39,15 +39,9 @@ spec:
         validation_scope:
           - "engine"
           - "file-organizer-system"
-          - "instant
-          - elasticsearch-search-system
-          - infrastructure
-          - esync-platform
-          - gl-gate
-          - .github"
+          - "gl-audit-reports"
         strict_mode: true
         enforce_semantic_anchors: true
-        continue_on_error: false
       dependencies: []
       outputs:
         - "gl-validation-report.json"
@@ -228,7 +222,7 @@ spec:
       config:
         retention_hours: 24
         max_size_mb: 100
-    
+
     - id: alerts
       type: "notification"
       config:

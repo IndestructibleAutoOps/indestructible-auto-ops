@@ -1,270 +1,150 @@
 # @GL-governed
-# @GL-layer: CI/CD
-# @GL-semantic: workflow-validation
+# @GL-layer: GL10-29
+# @GL-semantic: ci-cd-workflow-governance-validation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
-# @GL-governed
-# @GL-layer: CI/CD
-# @GL-semantic: workflow-validation
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
+
 name: GL Governance Validation
 
 on:
   push:
-    branches: [ main, develop ]
-    paths:
+    branches:
+      - main
+      - 'gl/**'
       - 'engine/**'
       - 'file-organizer-system/**'
       - 'instant/**'
       - 'elasticsearch-search-system/**'
       - 'infrastructure/**'
-      - '.github/governance/**'
-      - '.github/agents/**'
+      - 'esync-platform/**'
+      - '.github/**'
+      - 'gl-gate/**'
   pull_request:
-    branches: [ main, develop ]
-    paths:
-      - 'engine/**'
-      - 'file-organizer-system/**'
-      - 'instant/**'
-      - 'elasticsearch-search-system/**'
-      - 'infrastructure/**'
-      - '.github/governance/**'
-      - '.github/agents/**'
+    branches:
+      - main
   workflow_dispatch:
-
+    inputs:
+      validation_mode:
+        description: 'Validation mode'
+        required: true
+        default: 'strict'
+        type: choice
+        options:
+          - strict
+          - standard
   schedule:
-    - cron: '0 0 * * *' # Daily audit at midnight UTC
+    - cron: '0 0 * * *'
 
 jobs:
   gl-engine-validation:
+    name: GL Engine Module Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install GL Engine Dependencies
+      - uses: actions/checkout@v4
+      - name: Validate Engine GL Markers
         run: |
-          cd engine
-          npm ci
-          
-      - name: Run GL Semantic Validation - Engine
-        run: |
-          cd engine
-          npx ts-node governance/gl_engine.ts validate --strict
-          
-      - name: Generate Governance Event Stream
-        if: failure()
-        run: |
-          cd engine
-          npx ts-node governance/events_writer.ts --event-type=validation_failure
-          
-      - name: Upload Governance Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-governance-engine
-          path: |
-            engine/.governance/event-stream.jsonl
-            engine/.governance/evidence-chain.jsonl
+          cd engine && npm run validate-gl
+        continue-on-error: false
 
   gl-file-organizer-validation:
+    name: GL File Organizer Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install GL Engine Dependencies
+      - uses: actions/checkout@v4
+      - name: Validate File Organizer GL Markers
         run: |
-          cd engine
-          npm ci
-          
-      - name: Run GL Semantic Validation - File Organizer
-        run: |
-          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=file-organizer-system
-          
-      - name: Generate Governance Event Stream
-        if: failure()
-        run: |
-          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
-          
-      - name: Upload Governance Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-governance-file-organizer
-          path: |
-            file-organizer-system/.governance/event-stream.jsonl
-            file-organizer-system/.governance/evidence-chain.jsonl
+          cd file-organizer-system && npm run validate-gl
+        continue-on-error: false
 
   gl-instant-validation:
+    name: GL Instant System Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install GL Engine Dependencies
+      - uses: actions/checkout@v4
+      - name: Validate Instant System GL Markers
         run: |
-          cd engine
-          npm ci
-          
-      - name: Run GL Semantic Validation - Instant
-        run: |
-          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=instant
-          
-      - name: Generate Governance Event Stream
-        if: failure()
-        run: |
-          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
-          
-      - name: Upload Governance Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-governance-instant
-          path: |
-            instant/.governance/event-stream.jsonl
-            instant/.governance/evidence-chain.jsonl
+          cd instant && npm run validate-gl
+        continue-on-error: false
 
-  gl-gate-execution:
-    runs-on: ubuntu-latest
-    needs: [gl-engine-validation, gl-file-organizer-validation, gl-instant-validation, gl-elasticsearch-validation, gl-infrastructure-validation]
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install GL Engine Dependencies
-        run: |
-          cd engine
-          npm ci
-          
-      - name: Execute All GL Gates
-        run: |
-          cd engine
-          npx ts-node gl-gate/core/GateExecutor.ts executeAll
-          
-      - name: Generate Governance Summary
-        if: always()
-        run: |
-          cd engine
-          npx ts-node gl-gate/gates/GovernanceSummaryGate.ts
-          
-      - name: Upload Gate Reports
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-gate-reports
-          path: |
-            engine/.governance/gate-reports/*.json
-
-  gl-audit-history-sync:
-    runs-on: ubuntu-latest
-    needs: [gl-gate-execution]
-    if: github.event_name == 'schedule'
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Generate Audit History Report
-        run: |
-          cd engine
-          npx ts-node governance/gl_engine.ts audit-history --days=7
-          
-      - name: Sync Audit Results
-        run: |
-          mkdir -p engine/.governance/audit-results/history
-          cp engine/.governance/audit-reports/GLOBAL_GOVERNANCE_AUDIT_REPORT.json engine/.governance/audit-results/history/audit-$(date +%Y%m%d).json
-          
-      - name: Upload Audit History
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-audit-history
-          path: |
-            engine/.governance/audit-results/history/
   gl-elasticsearch-validation:
+    name: GL Elasticsearch Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install GL Engine Dependencies
+      - uses: actions/checkout@v4
+      - name: Validate Elasticsearch GL Markers
         run: |
-          cd engine
-          npm ci
-          
-      - name: Run GL Semantic Validation - Elasticsearch
-        run: |
-          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=elasticsearch-search-system
-          
-      - name: Generate Governance Event Stream
-        if: failure()
-        run: |
-          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
-          
-      - name: Upload Governance Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-governance-elasticsearch
-          path: |
-            elasticsearch-search-system/.governance/event-stream.jsonl
-            elasticsearch-search-system/.governance/evidence-chain.jsonl
+          cd elasticsearch-search-system && npm run validate-gl
+        continue-on-error: false
 
   gl-infrastructure-validation:
+    name: GL Infrastructure Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Validate Infrastructure GL Markers
+        run: |
+          cd infrastructure && npm run validate-gl
+        continue-on-error: false
+
+  gl-esync-platform-validation:
+    name: GL ESync Platform Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate ESync Platform GL Markers
+        run: |
+          cd esync-platform && npm run validate-gl
+        continue-on-error: false
+
+  gl-gate-validation:
+    name: GL Gate Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate GL Gate Configuration
+        run: |
+          cd engine/gl-gate && npm run validate-gates
+        continue-on-error: false
+
+  gl-gate-execution:
+    name: GL Gate Execution
+    needs:
+      - gl-engine-validation
+      - gl-file-organizer-validation
+      - gl-instant-validation
+      - gl-elasticsearch-validation
+      - gl-infrastructure-validation
+      - gl-esync-platform-validation
+      - gl-gate-validation
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute GL Gate Validation
+        run: |
+          cd engine/gl-gate && npm run validate-gates:strict
+        continue-on-error: false
+
+  global-audit-report:
+    name: Global Audit Report
+    needs:
+      - gl-engine-validation
+      - gl-file-organizer-validation
+      - gl-instant-validation
+      - gl-elasticsearch-validation
+      - gl-infrastructure-validation
+      - gl-esync-platform-validation
+      - gl-gate-validation
+      - gl-gate-execution
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Global Audit Report
+        run: |
+          cd engine && npm run generate-global-audit
+        continue-on-error: false
+      - name: Upload Audit Report
+        uses: actions/upload-artifact@v4
         with:
-          node-version: '18'
-      
-      - name: Install GL Engine Dependencies
-        run: |
-          cd engine
-          npm ci
-          
-      - name: Run GL Semantic Validation - Infrastructure
-        run: |
-          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=infrastructure
-          
-      - name: Generate Governance Event Stream
-        if: failure()
-        run: |
-          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
-          
-      - name: Upload Governance Artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: gl-governance-infrastructure
-          path: |
-            infrastructure/.governance/event-stream.jsonl
-            infrastructure/.governance/evidence-chain.jsonl
+          name: global-audit-report
+          path: engine/.governance/audit-reports/global-governance-audit-report.json

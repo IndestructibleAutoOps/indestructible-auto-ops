@@ -1,0 +1,32 @@
+#!/bin/bash
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: git-hook-pre-push-validation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+GL_FAILED=0
+
+# Validate all systems before push
+WORKSPACES=("engine" "file-organizer-system" "instant" "elasticsearch-search-system" "infrastructure" "esync-platform")
+
+for workspace in "${WORKSPACES[@]}"; do
+    if [ -d "$workspace" ]; then
+        echo "Validating $workspace..."
+        if [ -f "$workspace/package.json" ]; then
+            cd "$workspace" && npm run validate-gl 2>/dev/null
+            if [ $? -ne 0 ]; then
+                echo "❌ GL validation failed for $workspace"
+                GL_FAILED=1
+            fi
+            cd - > /dev/null
+        fi
+    fi
+done
+
+if [ $GL_FAILED -ne 0 ]; then
+    echo "❌ GL validation failed. Fix violations before pushing."
+    exit 1
+fi
+
+echo "✅ GL validation passed for all workspaces"
+exit 0
