@@ -9,17 +9,17 @@ Unit tests for stage1_lint_format.py
 Tests Stage 1 Lint/Format verification.
 """
 import unittest
-import tempfile
-import shutil
-from pathlib import Path
-import sys
+import tempfile  # noqa: E402
+import shutil  # noqa: E402
+from pathlib import Path  # noqa: E402
+import sys  # noqa: E402
 # Add repository root to path
 repo_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(repo_root))
 # Import from the validation package
-from controlplane.validation.hash_manager import HashManager
-from controlplane.validation.stage1_lint_format import Stage1LintFormatVerifier
-from controlplane.validation.supply_chain_types import VerificationEvidence
+from controlplane.validation.hash_manager import HashManager  # noqa: E402
+from controlplane.validation.stage1_lint_format import Stage1LintFormatVerifier  # noqa: E402
+from controlplane.validation.supply_chain_types import VerificationEvidence  # noqa: E402
 class TestStage1LintFormatVerifier(unittest.TestCase):
     """Test Stage1LintFormatVerifier class"""
     def setUp(self):
