@@ -21,6 +21,6 @@
     "sourceMap": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "cognitive-mesh/**/*", "evolution/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "global-dag", "dist/src/engine/global-dag"]
+  "include": ["src/**/*", "cognitive-mesh/**/*", "evolution/**/*", "civilization/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "global-dag", "global-dag.disabled", "dist/src/engine/global-dag", "dist/src/engine/global-dag.disabled", "src/engine/global-dag.disabled"]
 }
