@@ -63,7 +63,7 @@ The issue appeared intermittently because:
 - Comprehensive validation summary
 
 ### 2. Script Improvements
-**File**: `scripts/validate-infrastructure.sh`
+**File**: `engine/scripts-legacy/validate-infrastructure.sh`
 
 **Key Changes**:
 - Explicit dependency checks before YAML validation
@@ -129,7 +129,7 @@ Validation Summary
    - Enhanced validation summary
    - Lines changed: +50, -10
 
-2. **`scripts/validate-infrastructure.sh`**
+2. **`engine/scripts-legacy/validate-infrastructure.sh`**
    - Added dependency verification
    - Enhanced error handling
    - Added comprehensive logging
@@ -280,7 +280,7 @@ The hotfix is ready to be pushed to the remote repository and merged to main fol
 2. **DEPLOYMENT_GUIDE.md** - Deployment instructions and procedures
 3. **Modified Files**:
    - `.github/workflows/infrastructure-validation.yml`
-   - `scripts/validate-infrastructure.sh`
+   - `engine/scripts-legacy/validate-infrastructure.sh`
 4. **Validation Output**: Available in `/workspace/validation_output.log`
 5. **Branch**: `hotfix/infrastructure-validation-dependencies` (local)
 

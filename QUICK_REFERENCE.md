@@ -5,7 +5,7 @@ Intermittent CI/CD failures in infrastructure validation workflow caused by miss
 
 ## 📋 Files Modified
 1. `.github/workflows/infrastructure-validation.yml` - Enhanced with dependency installation and retry logic
-2. `scripts/validate-infrastructure.sh` - Added dependency checks and comprehensive logging
+2. `engine/scripts-legacy/validate-infrastructure.sh` - Added dependency checks and comprehensive logging
 
 ## 📄 Documentation Created
 - **PRODUCTION_BUG_FIX_SUMMARY.md** - Detailed technical analysis
