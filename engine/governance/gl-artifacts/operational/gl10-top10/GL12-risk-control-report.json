@@ -1,1 +1,23 @@
-{"id":"GL12-risk-control-report","gllevel":"GL12","name":"GL12-risk-control-report","createdat":"$TIMESTAMP","immutable":true,"language":"zh-TW","semanticterms":["Risk Control"],"functionaldimensions":["Risk Control"],"path":"risk-control/GL12-risk-control-report.json"}
+{
+  "id": "GL12-risk-control-report",
+  "gllevel": "GL12",
+  "name": "GL12-risk-control-report",
+  "createdat": "$TIMESTAMP",
+  "immutable": true,
+  "language": "zh-TW",
+  "semanticterms": [
+    "Risk Control"
+  ],
+  "functionaldimensions": [
+    "Risk Control"
+  ],
+  "path": "risk-control/GL12-risk-control-report.json",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL12-risk-control-report",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

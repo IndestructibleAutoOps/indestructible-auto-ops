@@ -106,7 +106,15 @@
   },
   "artifacts": [],
   "stage": 3,
-  "stage_name": "\u4f9d\u8cf4\u9396\u5b9a\u8207\u53ef\u91cd\u73fe\u5efa\u7f6e",
+  "stage_name": "依賴鎖定與可重現建置",
   "evidence_type": "dependency_reproducibility",
-  "timestamp": "2026-01-06T01:16:22.832291+00:00"
+  "timestamp": "2026-01-06T01:16:22.832291+00:00",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "stage03-dependency_reproducibility",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

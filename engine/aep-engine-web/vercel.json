@@ -4,5 +4,13 @@
   "framework": "vite",
   "env": {
     "VITE_APP_TITLE": "AEP Engine - Governance & Audit"
+  },
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "vercel",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
   }
 }

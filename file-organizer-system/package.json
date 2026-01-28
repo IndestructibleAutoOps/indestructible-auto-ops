@@ -30,5 +30,13 @@
   "workspaces": [
     "server",
     "client"
-  ]
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "application",
+    "semantic": "package",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

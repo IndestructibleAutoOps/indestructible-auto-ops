@@ -4841,5 +4841,13 @@
       "suggested_path": "engine/__tests__/",
       "rationale": "Follow Jest conventions for test file organization"
     }
-  ]
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GLOBAL_GOVERNANCE_AUDIT_REPORT",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

@@ -1,1 +1,27 @@
-{"id": "GL16-training-materials", "gllevel": "GL16", "name": "GL16-training-materials", "createdat": "2026-01-21T19:14:06.679783Z", "immutable": true, "language": "zh-TW", "semanticterms": ["Process", "Standard", "Training", "Resource Allocation"], "functionaldimensions": ["Resource Allocation", "Resource Scheduling"], "path": "training/GL16-training-materials.json"}
+{
+  "id": "GL16-training-materials",
+  "gllevel": "GL16",
+  "name": "GL16-training-materials",
+  "createdat": "2026-01-21T19:14:06.679783Z",
+  "immutable": true,
+  "language": "zh-TW",
+  "semanticterms": [
+    "Process",
+    "Standard",
+    "Training",
+    "Resource Allocation"
+  ],
+  "functionaldimensions": [
+    "Resource Allocation",
+    "Resource Scheduling"
+  ],
+  "path": "training/GL16-training-materials.json",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL16-training-materials",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

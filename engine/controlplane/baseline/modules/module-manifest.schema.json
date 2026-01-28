@@ -56,7 +56,13 @@
           },
           "type": {
             "type": "string",
-            "enum": ["api", "event", "data", "service", "workflow"]
+            "enum": [
+              "api",
+              "event",
+              "data",
+              "service",
+              "workflow"
+            ]
           },
           "description": {
             "type": "string"
@@ -73,7 +79,12 @@
     },
     "status": {
       "type": "string",
-      "enum": ["planned", "in-development", "active", "deprecated"],
+      "enum": [
+        "planned",
+        "in-development",
+        "active",
+        "deprecated"
+      ],
       "description": "Current status of the module"
     },
     "version": {
@@ -91,7 +102,13 @@
           },
           "type": {
             "type": "string",
-            "enum": ["service", "library", "tool", "workflow", "framework"]
+            "enum": [
+              "service",
+              "library",
+              "tool",
+              "workflow",
+              "framework"
+            ]
           },
           "description": {
             "type": "string"
@@ -146,5 +163,13 @@
         }
       }
     }
+  },
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "module-manifest.schema",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
   }
 }

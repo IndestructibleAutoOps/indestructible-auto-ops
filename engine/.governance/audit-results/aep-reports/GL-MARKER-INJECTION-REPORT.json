@@ -721,5 +721,13 @@
     "ns-root/namespaces-sdk/monitoring/prometheus-rules.yml",
     "ns-root/namespaces-sdk/k8s/crds/namespace-sdk.yaml"
   ],
-  "error_list": []
+  "error_list": [],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL-MARKER-INJECTION-REPORT",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

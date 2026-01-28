@@ -1,1 +1,28 @@
-{"id": "GL14-metrics-dashboard", "gllevel": "GL14", "name": "GL14-metrics-dashboard", "createdat": "2026-01-21T19:14:06.679783Z", "immutable": true, "language": "zh-TW", "semanticterms": ["Process", "Standard", "Metrics", "Monitoring", "Resource Allocation"], "functionaldimensions": ["Process Optimization", "Resource Scheduling"], "path": "metrics/GL14-metrics-dashboard.json"}
+{
+  "id": "GL14-metrics-dashboard",
+  "gllevel": "GL14",
+  "name": "GL14-metrics-dashboard",
+  "createdat": "2026-01-21T19:14:06.679783Z",
+  "immutable": true,
+  "language": "zh-TW",
+  "semanticterms": [
+    "Process",
+    "Standard",
+    "Metrics",
+    "Monitoring",
+    "Resource Allocation"
+  ],
+  "functionaldimensions": [
+    "Process Optimization",
+    "Resource Scheduling"
+  ],
+  "path": "metrics/GL14-metrics-dashboard.json",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL14-metrics-dashboard",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

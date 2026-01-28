@@ -130,7 +130,15 @@
   },
   "artifacts": [],
   "stage": 7,
-  "stage_name": "Runtime \u76e3\u63a7 + \u53ef\u8ffd\u6eaf\u7559\u5b58",
+  "stage_name": "Runtime 監控 + 可追溯留存",
   "evidence_type": "runtime_monitoring",
-  "timestamp": "2026-01-06T01:16:31.998447+00:00"
+  "timestamp": "2026-01-06T01:16:31.998447+00:00",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "stage07-runtime_monitoring",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

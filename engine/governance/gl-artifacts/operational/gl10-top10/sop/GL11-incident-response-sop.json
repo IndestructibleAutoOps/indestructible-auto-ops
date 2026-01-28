@@ -1,1 +1,24 @@
-{"id":"GL11-incident-response-sop","gllevel":"GL11","name":"GL11-incident-response-sop","createdat":"$TIMESTAMP","immutable":true,"language":"zh-TW","semanticterms":["Process","Incident Response"],"functionaldimensions":["Operational Supervision"],"path":"sop/GL11-incident-response-sop.json"}
+{
+  "id": "GL11-incident-response-sop",
+  "gllevel": "GL11",
+  "name": "GL11-incident-response-sop",
+  "createdat": "$TIMESTAMP",
+  "immutable": true,
+  "language": "zh-TW",
+  "semanticterms": [
+    "Process",
+    "Incident Response"
+  ],
+  "functionaldimensions": [
+    "Operational Supervision"
+  ],
+  "path": "sop/GL11-incident-response-sop.json",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL11-incident-response-sop",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

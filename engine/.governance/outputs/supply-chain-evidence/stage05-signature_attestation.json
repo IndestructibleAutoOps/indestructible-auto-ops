@@ -209,7 +209,15 @@
   },
   "artifacts": [],
   "stage": 5,
-  "stage_name": "\u7c3d\u7ae0 + Attestation",
+  "stage_name": "簽章 + Attestation",
   "evidence_type": "signature_attestation",
-  "timestamp": "2026-01-06T01:16:31.457097+00:00"
+  "timestamp": "2026-01-06T01:16:31.457097+00:00",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "stage05-signature_attestation",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

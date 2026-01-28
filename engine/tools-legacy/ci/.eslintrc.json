@@ -1,3 +1,13 @@
 {
-  "extends": ["../../config/.eslintrc.yaml"]
+  "extends": [
+    "../../config/.eslintrc.yaml"
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": ".eslintrc",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

@@ -1,1 +1,28 @@
-{"id": "GL15-issue-tracker", "gllevel": "GL15", "name": "GL15-issue-tracker", "createdat": "2026-01-21T19:14:06.679783Z", "immutable": true, "language": "zh-TW", "semanticterms": ["Process", "Standard", "Issue Tracking", "Monitoring", "Resource Allocation"], "functionaldimensions": ["Operational Supervision", "Risk Control"], "path": "issue-tracking/GL15-issue-tracker.json"}
+{
+  "id": "GL15-issue-tracker",
+  "gllevel": "GL15",
+  "name": "GL15-issue-tracker",
+  "createdat": "2026-01-21T19:14:06.679783Z",
+  "immutable": true,
+  "language": "zh-TW",
+  "semanticterms": [
+    "Process",
+    "Standard",
+    "Issue Tracking",
+    "Monitoring",
+    "Resource Allocation"
+  ],
+  "functionaldimensions": [
+    "Operational Supervision",
+    "Risk Control"
+  ],
+  "path": "issue-tracking/GL15-issue-tracker.json",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL15-issue-tracker",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

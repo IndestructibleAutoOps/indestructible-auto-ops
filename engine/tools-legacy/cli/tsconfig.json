@@ -10,5 +10,15 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "tsconfig",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

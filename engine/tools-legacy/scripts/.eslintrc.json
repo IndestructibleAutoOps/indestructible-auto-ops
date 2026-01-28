@@ -13,11 +13,32 @@
   },
   "rules": {
     "no-console": "off",
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "no-var": "error",
     "prefer-const": "error",
-    "eqeqeq": ["error", "always"],
-    "curly": ["error", "all"]
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "curly": [
+      "error",
+      "all"
+    ]
   },
-  "ignorePatterns": ["node_modules/"]
+  "ignorePatterns": [
+    "node_modules/"
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": ".eslintrc",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

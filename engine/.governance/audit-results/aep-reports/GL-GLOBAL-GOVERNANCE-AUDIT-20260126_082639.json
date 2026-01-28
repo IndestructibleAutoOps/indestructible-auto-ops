@@ -1332,5 +1332,13 @@
       "description": "173 files have naming convention issues",
       "action": "Rename files to follow kebab-case for configs, snake_case for Python"
     }
-  ]
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL-GLOBAL-GOVERNANCE-AUDIT-20260126_082639",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

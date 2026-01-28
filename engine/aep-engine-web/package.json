@@ -65,5 +65,13 @@
     "version": "1.0.0",
     "audit-compliant": true,
     "sibling": "../aep-engine-app"
+  },
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "package",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
   }
 }

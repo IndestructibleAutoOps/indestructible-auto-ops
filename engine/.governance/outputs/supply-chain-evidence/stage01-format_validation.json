@@ -4935,7 +4935,7 @@
       {
         "file": "src/governance/10-policy/naming-alert-rules.yaml",
         "status": "invalid",
-        "error": "while parsing a block mapping\n  in \"<unicode string>\", line 3, column 1:\n    version: \"2.0\"\n    ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 409, column 2:\n     \u6f14\u7ec3:\n     ^"
+        "error": "while parsing a block mapping\n  in \"<unicode string>\", line 3, column 1:\n    version: \"2.0\"\n    ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 409, column 2:\n     演练:\n     ^"
       },
       {
         "file": "src/governance/10-policy/naming-validation-automations.yaml",
@@ -5561,7 +5561,7 @@
       {
         "file": "src/governance/12-culture-capability/naming-training-map.yaml",
         "status": "invalid",
-        "error": "while parsing a block mapping\n  in \"<unicode string>\", line 696, column 3:\n      lecture_based:\n      ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 699, column 4:\n       \u9002\u7528_roles: [\"general-user\", \"busi ... \n       ^"
+        "error": "while parsing a block mapping\n  in \"<unicode string>\", line 696, column 3:\n      lecture_based:\n      ^\nexpected <block end>, but found '<block mapping start>'\n  in \"<unicode string>\", line 699, column 4:\n       适用_roles: [\"general-user\", \"busi ... \n       ^"
       },
       {
         "file": "src/governance/00-vision-strategy/strategic-objectives.yaml",
@@ -5838,7 +5838,7 @@
       {
         "file": "src/governance/27-templates/naming-examples-library.yaml",
         "status": "invalid",
-        "error": "while parsing a block collection\n  in \"<unicode string>\", line 62, column 5:\n        - \"my-service-123\" (\u7f3a\u5c11\u74b0\u5883\u548c\u5718\u968a)\n        ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 62, column 24:\n        - \"my-service-123\" (\u7f3a\u5c11\u74b0\u5883\u548c\u5718\u968a)\n                           ^"
+        "error": "while parsing a block collection\n  in \"<unicode string>\", line 62, column 5:\n        - \"my-service-123\" (缺少環境和團隊)\n        ^\nexpected <block end>, but found '<scalar>'\n  in \"<unicode string>\", line 62, column 24:\n        - \"my-service-123\" (缺少環境和團隊)\n                           ^"
       },
       {
         "file": "src/governance/26-tools/dimension.yaml",
@@ -11224,7 +11224,7 @@
         "lines": 1093
       },
       {
-        "file": "engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/\u5132\u5b58.py",
+        "file": "engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/儲存.py",
         "status": "valid",
         "issues": [],
         "lines": 860
@@ -15909,7 +15909,15 @@
   },
   "artifacts": [],
   "stage": 1,
-  "stage_name": "Lint/\u683c\u5f0f\u9a57\u8b49",
+  "stage_name": "Lint/格式驗證",
   "evidence_type": "format_validation",
-  "timestamp": "2026-01-06T01:16:15.231970+00:00"
+  "timestamp": "2026-01-06T01:16:15.231970+00:00",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "stage01-format_validation",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

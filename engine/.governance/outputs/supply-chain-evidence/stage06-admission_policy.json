@@ -1759,7 +1759,15 @@
   },
   "artifacts": [],
   "stage": 6,
-  "stage_name": "Admission Policy \u9580\u7981",
+  "stage_name": "Admission Policy 門禁",
   "evidence_type": "admission_policy",
-  "timestamp": "2026-01-06T01:16:31.924081+00:00"
+  "timestamp": "2026-01-06T01:16:31.924081+00:00",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "stage06-admission_policy",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

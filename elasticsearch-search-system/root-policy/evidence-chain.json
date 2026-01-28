@@ -1,5 +1,13 @@
 {
   "chain_id": "elasticsearch-search-root-policy",
   "version": "1.0.0",
-  "evidence": []
+  "evidence": [],
+  "_GL": {
+    "governed": true,
+    "layer": "search",
+    "semantic": "evidence-chain",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

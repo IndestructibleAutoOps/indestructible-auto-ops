@@ -40,7 +40,15 @@
     "enabled": true,
     "artifactsPath": "workspace/governance/layers",
     "validationMode": "strict",
-    "layers": ["GL00-09", "GL10-29", "GL30-49", "GL50-59", "GL60-80", "GL81-83", "GL90-99"],
+    "layers": [
+      "GL00-09",
+      "GL10-29",
+      "GL30-49",
+      "GL50-59",
+      "GL60-80",
+      "GL81-83",
+      "GL90-99"
+    ],
     "enforceOnCommit": true,
     "enforceOnPR": true,
     "enforceOnDeploy": true
@@ -50,5 +58,13 @@
   "bugs": {
     "url": "https://github.com/MachineNativeOps/machine-native-ops/issues"
   },
-  "homepage": "https://github.com/MachineNativeOps/machine-native-ops#readme"
+  "homepage": "https://github.com/MachineNativeOps/machine-native-ops#readme",
+  "_GL": {
+    "governed": true,
+    "layer": "common",
+    "semantic": "package",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }

@@ -16,7 +16,7 @@
             "machinenativeops.io/version": "v2"
           },
           "annotations": {
-            "machinenativeops.io/description": "MachineNativeOps \u547d\u540d\u7a7a\u9593\u6a19\u6e96\u914d\u7f6e",
+            "machinenativeops.io/description": "MachineNativeOps 命名空間標準配置",
             "machinenativeops.io/urn": "urn:machinenativeops:config:namespace:v2"
           }
         },
@@ -35,7 +35,7 @@
             "machinenativeops.io/component": "core"
           },
           "annotations": {
-            "machinenativeops.io/description": "MachineNativeOps \u6838\u5fc3\u547d\u540d\u7a7a\u9593",
+            "machinenativeops.io/description": "MachineNativeOps 核心命名空間",
             "machinenativeops.io/registry": "registry.machinenativeops.io",
             "machinenativeops.io/certificate-path": "etc/machinenativeops/pkl",
             "machinenativeops.io/cluster-token": "super-agent-etcd-cluster"
@@ -201,7 +201,7 @@
           },
           "annotations": {
             "machinenativeops.io/urn": "urn:machinenativeops:baseline:stage0:bootstrap:v1",
-            "machinenativeops.io/description": "Stage 0 \u5b8c\u6574\u81ea\u5305\u542b\u90e8\u7f72\u914d\u7f6e\uff08AAPS Profile\uff09",
+            "machinenativeops.io/description": "Stage 0 完整自包含部署配置（AAPS Profile）",
             "machinenativeops.io/version": "v1.0.0"
           }
         },
@@ -4219,7 +4219,7 @@
           },
           "annotations": {
             "machinenativeops.io/urn": "urn:machinenativeops:agent:super:orchestrator:v2.0.0",
-            "machinenativeops.io/description": "SuperAgent \u591a\u4ee3\u7406\u5354\u8abf\u5668\u57fa\u7dda\u914d\u7f6e\uff08AAPS Profile\uff09",
+            "machinenativeops.io/description": "SuperAgent 多代理協調器基線配置（AAPS Profile）",
             "machinenativeops.io/version": "v2.0.0"
           }
         },
@@ -4638,7 +4638,7 @@
         "kind": "ReferenceLibrary",
         "metadata": {
           "name": "canonical-naming-governance-references",
-          "description": "Canonical Naming Governance \u76f8\u95dc\u7684\u5916\u90e8\u53c3\u8003\u8cc7\u6e90",
+          "description": "Canonical Naming Governance 相關的外部參考資源",
           "category": "naming-governance",
           "version": "v1.0.0",
           "lastUpdated": "2025-01-15"
@@ -4664,7 +4664,7 @@
         "kind": "ReferenceLibrary",
         "metadata": {
           "name": "observability-validation-migration-references",
-          "description": "\u53ef\u89c2\u6d4b\u6027\u3001\u9a8c\u8bc1\u4e0e\u8fc1\u79fb\u76f8\u5173\u7684\u5916\u90e8\u53c2\u8003\u8d44\u6e90",
+          "description": "可观测性、验证与迁移相关的外部参考资源",
           "category": "governance-playbooks",
           "version": "v1.0.0",
           "lastUpdated": "2025-01-15"
@@ -4686,8 +4686,8 @@
             "baseline.dependency": "namespace-governance,security-rbac"
           },
           "annotations": {
-            "baseline.io/description": "\u8cc7\u6e90\u914d\u984d\u8207\u9650\u5236\u57fa\u7dda / Resource Quotas and Limits Foundation",
-            "baseline.io/purpose": "\u5efa\u7acb\u591a\u79df\u6236\u8cc7\u6e90\u9694\u96e2\u8207\u516c\u5e73\u5206\u914d\u6a5f\u5236 / Establish multi-tenant resource isolation and fair allocation",
+            "baseline.io/description": "資源配額與限制基線 / Resource Quotas and Limits Foundation",
+            "baseline.io/purpose": "建立多租戶資源隔離與公平分配機制 / Establish multi-tenant resource isolation and fair allocation",
             "baseline.io/capability-scope": "compute-limits,storage-limits,object-counts",
             "baseline.io/conflict-priority": "900"
           }
@@ -4706,7 +4706,7 @@
             "baseline.component": "limit-enforcement"
           },
           "annotations": {
-            "baseline.io/description": "\u5bb9\u5668\u8cc7\u6e90\u9650\u5236\u7bc4\u570d / Container resource limit ranges"
+            "baseline.io/description": "容器資源限制範圍 / Container resource limit ranges"
           }
         },
         "violations": []
@@ -4754,8 +4754,8 @@
             "baseline.dependency": "namespace-governance,security-rbac,resource-management"
           },
           "annotations": {
-            "baseline.io/description": "\u7db2\u8def\u7b56\u7565\u57fa\u7dda / Network Policy Foundation",
-            "baseline.io/purpose": "\u5efa\u7acb\u96f6\u4fe1\u4efb\u7db2\u8def\u67b6\u69cb\u8207\u5fae\u5206\u6bb5 / Establish Zero Trust network architecture and microsegmentation",
+            "baseline.io/description": "網路策略基線 / Network Policy Foundation",
+            "baseline.io/purpose": "建立零信任網路架構與微分段 / Establish Zero Trust network architecture and microsegmentation",
             "baseline.io/capability-scope": "ingress-control,egress-control,service-mesh-integration",
             "baseline.io/conflict-priority": "850"
           }
@@ -4774,7 +4774,7 @@
             "baseline.component": "intra-namespace-communication"
           },
           "annotations": {
-            "baseline.io/description": "\u5141\u8a31\u540c\u547d\u540d\u7a7a\u9593\u5167\u901a\u8a0a / Allow intra-namespace communication"
+            "baseline.io/description": "允許同命名空間內通訊 / Allow intra-namespace communication"
           }
         },
         "violations": []
@@ -4791,7 +4791,7 @@
             "baseline.component": "dns-resolution"
           },
           "annotations": {
-            "baseline.io/description": "\u5141\u8a31 DNS \u89e3\u6790 / Allow DNS resolution"
+            "baseline.io/description": "允許 DNS 解析 / Allow DNS resolution"
           }
         },
         "violations": []
@@ -4808,7 +4808,7 @@
             "baseline.component": "api-gateway"
           },
           "annotations": {
-            "baseline.io/description": "API \u9598\u9053\u5165\u53e3\u63a7\u5236 / API gateway ingress control"
+            "baseline.io/description": "API 閘道入口控制 / API gateway ingress control"
           }
         },
         "violations": []
@@ -4856,8 +4856,8 @@
             "baseline.dependency": "namespace-governance,security-rbac,resource-management,network-security"
           },
           "annotations": {
-            "baseline.io/description": "\u5408\u898f\u8207\u8b49\u660e\u57fa\u7dda / Compliance and Attestation Foundation",
-            "baseline.io/purpose": "\u5efa\u7acb\u81ea\u52d5\u5316\u5408\u898f\u9a57\u8b49\u8207\u4e0d\u53ef\u8b8a\u8b49\u660e\u93c8 / Establish automated compliance validation and immutable attestation chain",
+            "baseline.io/description": "合規與證明基線 / Compliance and Attestation Foundation",
+            "baseline.io/purpose": "建立自動化合規驗證與不可變證明鏈 / Establish automated compliance validation and immutable attestation chain",
             "baseline.io/capability-scope": "policy-validation,drift-detection,attestation-generation,audit-trail",
             "baseline.io/conflict-priority": "800",
             "baseline.io/state-machine": "REGISTERED->COORDINATED->ACTIVE"
@@ -4951,8 +4951,8 @@
             "topology.kubernetes.io/zone": "constitutional"
           },
           "annotations": {
-            "baseline.io/description": "\u547d\u540d\u7a7a\u9593\u6cbb\u7406\u57fa\u7dda / Namespace Governance Foundation",
-            "baseline.io/purpose": "\u5efa\u7acb L1 \u61b2\u6cd5\u7d1a\u547d\u540d\u7a7a\u9593\u9694\u96e2\u8207\u6a19\u7c64\u898f\u7bc4 / Establish L1 constitutional namespace isolation and labeling standards",
+            "baseline.io/description": "命名空間治理基線 / Namespace Governance Foundation",
+            "baseline.io/purpose": "建立 L1 憲法級命名空間隔離與標籤規範 / Establish L1 constitutional namespace isolation and labeling standards",
             "baseline.io/capability-scope": "namespace-lifecycle,label-enforcement,resource-isolation",
             "baseline.io/conflict-priority": "1000",
             "baseline.io/state-machine": "DECLARED->REGISTERED->COORDINATED->ACTIVE",
@@ -5066,8 +5066,8 @@
             "baseline.dependency": "namespace-governance,security-rbac,resource-management,network-security,compliance-attestation"
           },
           "annotations": {
-            "baseline.io/description": "\u91cf\u5b50\u8a08\u7b97\u7de8\u6392\u57fa\u7dda / Quantum-Enabled Orchestration Foundation",
-            "baseline.io/purpose": "\u5efa\u7acb\u6df7\u5408\u91cf\u5b50-\u7d93\u5178\u8a08\u7b97\u7de8\u6392\u80fd\u529b / Establish hybrid quantum-classical compute orchestration",
+            "baseline.io/description": "量子計算編排基線 / Quantum-Enabled Orchestration Foundation",
+            "baseline.io/purpose": "建立混合量子-經典計算編排能力 / Establish hybrid quantum-classical compute orchestration",
             "baseline.io/capability-scope": "quantum-circuit-execution,hybrid-workflow-orchestration,quantum-resource-management",
             "baseline.io/conflict-priority": "750",
             "baseline.io/state-machine": "DECLARED->REGISTERED->COORDINATED->ACTIVE",
@@ -5163,8 +5163,8 @@
             "baseline.dependency": "namespace-governance"
           },
           "annotations": {
-            "baseline.io/description": "\u5b89\u5168\u8207\u5b58\u53d6\u63a7\u5236\u57fa\u7dda / Security and RBAC Foundation",
-            "baseline.io/purpose": "\u5efa\u7acb\u96f6\u4fe1\u4efb\u67b6\u69cb\u8207\u6700\u5c0f\u6b0a\u9650\u539f\u5247 / Establish Zero Trust architecture and least privilege principles",
+            "baseline.io/description": "安全與存取控制基線 / Security and RBAC Foundation",
+            "baseline.io/purpose": "建立零信任架構與最小權限原則 / Establish Zero Trust architecture and least privilege principles",
             "baseline.io/capability-scope": "authentication,authorization,encryption,audit",
             "baseline.io/conflict-priority": "950",
             "baseline.io/state-machine": "REGISTERED->COORDINATED->ACTIVE"
@@ -5224,7 +5224,7 @@
             "baseline.rbac": "developer-template"
           },
           "annotations": {
-            "rbac.io/description": "\u53d7\u9650\u958b\u767c\u8005\u89d2\u8272\u6a21\u677f / Restricted developer role template"
+            "rbac.io/description": "受限開發者角色模板 / Restricted developer role template"
           }
         },
         "violations": []
@@ -5241,7 +5241,7 @@
             "baseline.rbac": "ci-cd-template"
           },
           "annotations": {
-            "rbac.io/description": "CI/CD \u90e8\u7f72\u8005\u89d2\u8272\u6a21\u677f / CI/CD deployer role template"
+            "rbac.io/description": "CI/CD 部署者角色模板 / CI/CD deployer role template"
           }
         },
         "violations": []
@@ -5281,7 +5281,7 @@
         "kind": "NamingPolicy",
         "metadata": {
           "name": "pipeline-naming-standard",
-          "description": "CI/CD Pipeline \u547d\u540d\u89c4\u8303",
+          "description": "CI/CD Pipeline 命名规范",
           "labels": {
             "category": "cicd",
             "team": "platform"
@@ -5300,7 +5300,7 @@
         "kind": "NamingPolicy",
         "metadata": {
           "name": "api-naming-standard",
-          "description": "RESTful API \u7aef\u70b9\u548c\u8d44\u6e90\u7684\u547d\u540d\u89c4\u8303",
+          "description": "RESTful API 端点和资源的命名规范",
           "labels": {
             "category": "api",
             "team": "backend"
@@ -5327,7 +5327,7 @@
           "annotations": {
             "source": "canonical/machine-spec.yaml",
             "generated": "false",
-            "description": "\u547d\u540d\u6b63\u5247\u8868\u9054\u5f0f\u9a57\u8b49\u7b56\u7565"
+            "description": "命名正則表達式驗證策略"
           }
         },
         "violations": []
@@ -5347,7 +5347,7 @@
           "annotations": {
             "source": "canonical/machine-spec.yaml",
             "generated": "false",
-            "description": "\u5f37\u5236\u8981\u6c42\u7684\u6a19\u7c64\u7b56\u7565"
+            "description": "強制要求的標籤策略"
           }
         },
         "violations": []
@@ -5359,7 +5359,7 @@
         "kind": "NamingPolicy",
         "metadata": {
           "name": "k8s-deployment-standard",
-          "description": "Kubernetes Deployment \u8d44\u6e90\u7684\u6807\u51c6\u547d\u540d\u89c4\u8303",
+          "description": "Kubernetes Deployment 资源的标准命名规范",
           "labels": {
             "category": "kubernetes",
             "resourceType": "deployment",
@@ -5380,7 +5380,7 @@
         "kind": "GovernancePolicy",
         "metadata": {
           "name": "exception-handling-policy",
-          "description": "\u5408\u89c4\u4f8b\u5916\u5904\u7406\u6d41\u7a0b\u4e0e\u89c4\u8303",
+          "description": "合规例外处理流程与规范",
           "labels": {
             "category": "process",
             "domain": "compliance"
@@ -5399,7 +5399,7 @@
         "kind": "GovernancePolicy",
         "metadata": {
           "name": "change-management-policy",
-          "description": "\u53d8\u66f4\u7ba1\u7406\u6d41\u7a0b\u4e0e\u89c4\u8303",
+          "description": "变更管理流程与规范",
           "labels": {
             "category": "process",
             "domain": "change-management"
@@ -5473,7 +5473,7 @@
         "kind": "GovernancePolicy",
         "metadata": {
           "name": "information-security-policy-reference",
-          "description": "\u4fe1\u606f\u5b89\u5168\u7b56\u7565\u7d22\u5f15\u548c\u6cbb\u7406\u96c6\u6210\u70b9",
+          "description": "信息安全策略索引和治理集成点",
           "labels": {
             "category": "security",
             "domain": "compliance"
@@ -6055,7 +6055,7 @@
         "kind": "NamingPolicy",
         "metadata": {
           "name": "pipeline-naming-standard",
-          "description": "CI/CD Pipeline \u547d\u540d\u89c4\u8303",
+          "description": "CI/CD Pipeline 命名规范",
           "labels": {
             "category": "cicd",
             "team": "platform"
@@ -6074,7 +6074,7 @@
         "kind": "NamingPolicy",
         "metadata": {
           "name": "api-naming-standard",
-          "description": "RESTful API \u7aef\u70b9\u548c\u8d44\u6e90\u7684\u547d\u540d\u89c4\u8303",
+          "description": "RESTful API 端点和资源的命名规范",
           "labels": {
             "category": "api",
             "team": "backend"
@@ -6101,7 +6101,7 @@
           "annotations": {
             "source": "canonical/machine-spec.yaml",
             "generated": "false",
-            "description": "\u547d\u540d\u6b63\u5247\u8868\u9054\u5f0f\u9a57\u8b49\u7b56\u7565"
+            "description": "命名正則表達式驗證策略"
           }
         },
         "violations": []
@@ -6121,7 +6121,7 @@
           "annotations": {
             "source": "canonical/machine-spec.yaml",
             "generated": "false",
-            "description": "\u5f37\u5236\u8981\u6c42\u7684\u6a19\u7c64\u7b56\u7565"
+            "description": "強制要求的標籤策略"
           }
         },
         "violations": []
@@ -6133,7 +6133,7 @@
         "kind": "NamingPolicy",
         "metadata": {
           "name": "k8s-deployment-standard",
-          "description": "Kubernetes Deployment \u8d44\u6e90\u7684\u6807\u51c6\u547d\u540d\u89c4\u8303",
+          "description": "Kubernetes Deployment 资源的标准命名规范",
           "labels": {
             "category": "kubernetes",
             "resourceType": "deployment",
@@ -6154,7 +6154,7 @@
         "kind": "GovernancePolicy",
         "metadata": {
           "name": "exception-handling-policy",
-          "description": "\u5408\u89c4\u4f8b\u5916\u5904\u7406\u6d41\u7a0b\u4e0e\u89c4\u8303",
+          "description": "合规例外处理流程与规范",
           "labels": {
             "category": "process",
             "domain": "compliance"
@@ -6173,7 +6173,7 @@
         "kind": "GovernancePolicy",
         "metadata": {
           "name": "change-management-policy",
-          "description": "\u53d8\u66f4\u7ba1\u7406\u6d41\u7a0b\u4e0e\u89c4\u8303",
+          "description": "变更管理流程与规范",
           "labels": {
             "category": "process",
             "domain": "change-management"
@@ -6247,7 +6247,7 @@
         "kind": "GovernancePolicy",
         "metadata": {
           "name": "information-security-policy-reference",
-          "description": "\u4fe1\u606f\u5b89\u5168\u7b56\u7565\u7d22\u5f15\u548c\u6cbb\u7406\u96c6\u6210\u70b9",
+          "description": "信息安全策略索引和治理集成点",
           "labels": {
             "category": "security",
             "domain": "compliance"
@@ -6335,7 +6335,7 @@
           "name": "machine-native-ops-governance",
           "version": "1.0.0",
           "createdAt": "2025-12-17",
-          "description": "Organizational Naming Governance and Lifecycle Framework \u2013 Machine-readable manifest for policies, templates, schemas, and automation entrypoints. This manifest provides a complete, automation-ready governance framework that can be consumed by CI/CD systems, bots, and validation tools.\n"
+          "description": "Organizational Naming Governance and Lifecycle Framework – Machine-readable manifest for policies, templates, schemas, and automation entrypoints. This manifest provides a complete, automation-ready governance framework that can be consumed by CI/CD systems, bots, and validation tools.\n"
         },
         "violations": []
       },
@@ -6347,7 +6347,7 @@
         "metadata": {
           "name": "tenant-tier-definitions",
           "version": "v1.0.0",
-          "description": "\u591a\u79df\u6236\u5c64\u7d1a\u5b9a\u7fa9\u8207\u8cc7\u6e90\u914d\u984d / Multi-tenant tier definitions and resource quotas"
+          "description": "多租戶層級定義與資源配額 / Multi-tenant tier definitions and resource quotas"
         },
         "violations": []
       },
@@ -6610,7 +6610,7 @@
           "name": "canonical-naming-governance",
           "version": "v1.0",
           "rfc": "RFC-2025-10-25",
-          "description": "\u5355\u4e00\u6743\u5a01\u547d\u540d\u89c4\u8303\uff0c\u6240\u6709 Gatekeeper\u3001Conftest\u3001CI/CD \u89c4\u5219\u7531\u6b64\u6d3e\u751f",
+          "description": "单一权威命名规范，所有 Gatekeeper、Conftest、CI/CD 规则由此派生",
           "lastUpdated": "2025-01-15",
           "owner": "Platform Engineering Team",
           "approvedBy": "Governance Board"
@@ -10496,7 +10496,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "03-change",
-          "name": "\u8b8a\u66f4\u6cbb\u7406",
+          "name": "變更治理",
           "name_en": "Change Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.900221Z",
@@ -10517,7 +10517,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "21-ecological",
-          "name": "\u751f\u614b\u6cbb\u7406",
+          "name": "生態治理",
           "name_en": "Ecological Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.927084Z",
@@ -10538,7 +10538,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "05-compliance",
-          "name": "\u5408\u898f\u6cbb\u7406",
+          "name": "合規治理",
           "name_en": "Compliance Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.902962Z",
@@ -10559,7 +10559,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "10-policy",
-          "name": "\u653f\u7b56\u6cbb\u7406",
+          "name": "政策治理",
           "name_en": "Policy Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.909717Z",
@@ -10584,7 +10584,7 @@
           "category": "namespace-governance",
           "enforcement": "mandatory",
           "priority": 1000,
-          "description": "\u547d\u540d\u7a7a\u9593\u547d\u540d\u898f\u7bc4 / Namespace naming convention standards"
+          "description": "命名空間命名規範 / Namespace naming convention standards"
         },
         "violations": []
       },
@@ -10595,7 +10595,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "23-policies",
-          "name": "\u653f\u7b56\u5eab\u6cbb\u7406",
+          "name": "政策庫治理",
           "name_en": "Policies Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.929723Z",
@@ -10616,7 +10616,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "31-schemas",
-          "name": "\u67b6\u69cb\u5b9a\u7fa9\u6cbb\u7406",
+          "name": "架構定義治理",
           "name_en": "Schemas Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.941693Z",
@@ -10637,7 +10637,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "14-improvement",
-          "name": "\u6539\u9032\u6cbb\u7406",
+          "name": "改進治理",
           "name_en": "Improvement Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.916441Z",
@@ -10658,7 +10658,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "09-performance",
-          "name": "\u6548\u80fd\u6cbb\u7406",
+          "name": "效能治理",
           "name_en": "Performance Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.908375Z",
@@ -10682,7 +10682,7 @@
           "version": "1.0.0",
           "lastUpdated": "2025-12-18",
           "owner": "performance-team",
-          "description": "\u7cfb\u7d71\u6027\u80fd\u76ee\u6a19\u5b9a\u7fa9\u548c\u76e3\u63a7\u6307\u6a19"
+          "description": "系統性能目標定義和監控指標"
         },
         "violations": []
       },
@@ -10693,7 +10693,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "08-process",
-          "name": "\u6d41\u7a0b\u6cbb\u7406",
+          "name": "流程治理",
           "name_en": "Process Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.907032Z",
@@ -10714,7 +10714,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "15-economic",
-          "name": "\u7d93\u6fdf\u6cbb\u7406",
+          "name": "經濟治理",
           "name_en": "Economic Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.917770Z",
@@ -10735,7 +10735,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "37-behavior-contracts",
-          "name": "\u884c\u70ba\u5951\u7d04\u6cbb\u7406",
+          "name": "行為契約治理",
           "name_en": "Behavior Contracts Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.949638Z",
@@ -10756,7 +10756,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "04-risk",
-          "name": "\u98a8\u96aa\u6cbb\u7406",
+          "name": "風險治理",
           "name_en": "Risk Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.901600Z",
@@ -10777,7 +10777,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "36-modules",
-          "name": "\u6a21\u7d44\u6cbb\u7406",
+          "name": "模組治理",
           "name_en": "Modules Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.948304Z",
@@ -10798,7 +10798,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "28-tests",
-          "name": "\u6e2c\u8a66\u6cbb\u7406",
+          "name": "測試治理",
           "name_en": "Tests Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.936391Z",
@@ -10819,7 +10819,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "12-culture-capability",
-          "name": "\u6587\u5316\u80fd\u529b\u6cbb\u7406",
+          "name": "文化能力治理",
           "name_en": "Culture Capability Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.913720Z",
@@ -10840,7 +10840,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "00-vision-strategy",
-          "name": "\u9858\u666f\u7b56\u7565\u6cbb\u7406",
+          "name": "願景策略治理",
           "name_en": "Vision Strategy Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.895729Z",
@@ -10861,7 +10861,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "13-metrics-reporting",
-          "name": "\u6307\u6a19\u5831\u544a\u6cbb\u7406",
+          "name": "指標報告治理",
           "name_en": "Metrics Reporting Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.915064Z",
@@ -10882,7 +10882,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "07-audit",
-          "name": "\u5be9\u8a08\u6cbb\u7406",
+          "name": "審計治理",
           "name_en": "Audit Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.905682Z",
@@ -10903,7 +10903,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "60-contracts",
-          "name": "\u5951\u7d04\u6cbb\u7406",
+          "name": "契約治理",
           "name_en": "Contracts Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.954958Z",
@@ -10924,7 +10924,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "27-templates",
-          "name": "\u7bc4\u672c\u6cbb\u7406",
+          "name": "範本治理",
           "name_en": "Templates Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.935048Z",
@@ -10945,7 +10945,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "26-tools",
-          "name": "\u5de5\u5177\u6cbb\u7406",
+          "name": "工具治理",
           "name_en": "Tools Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.933719Z",
@@ -10966,7 +10966,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "33-common",
-          "name": "\u5171\u7528\u6cbb\u7406",
+          "name": "共用治理",
           "name_en": "Common Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.944338Z",
@@ -10987,7 +10987,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "20-intent",
-          "name": "\u610f\u5716\u6cbb\u7406",
+          "name": "意圖治理",
           "name_en": "Intent Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.925767Z",
@@ -11008,7 +11008,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "24-registry",
-          "name": "\u8a3b\u518a\u8868\u6cbb\u7406",
+          "name": "註冊表治理",
           "name_en": "Registry Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.931037Z",
@@ -11029,7 +11029,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "17-sociological",
-          "name": "\u793e\u6703\u6cbb\u7406",
+          "name": "社會治理",
           "name_en": "Sociological Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.920420Z",
@@ -11050,7 +11050,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "22-aesthetic",
-          "name": "\u7f8e\u5b78\u6cbb\u7406",
+          "name": "美學治理",
           "name_en": "Aesthetic Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.928393Z",
@@ -11071,7 +11071,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "06-security",
-          "name": "\u5b89\u5168\u6cbb\u7406",
+          "name": "安全治理",
           "name_en": "Security Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.904323Z",
@@ -11092,7 +11092,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "29-docs",
-          "name": "\u6587\u6a94\u6cbb\u7406",
+          "name": "文檔治理",
           "name_en": "Documentation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.937720Z",
@@ -11113,7 +11113,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "38-sbom",
-          "name": "\u8edf\u9ad4\u7269\u6599\u6e05\u55ae\u6cbb\u7406",
+          "name": "軟體物料清單治理",
           "name_en": "SBOM Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.950978Z",
@@ -11137,7 +11137,7 @@
           "version": "1.0.0",
           "lastUpdated": "2025-12-18",
           "owner": "governance-team",
-          "description": "\u6c7a\u7b56\u6b0a\u9650\u77e9\u9663\u5b9a\u7fa9\u5404\u7d1a\u6c7a\u7b56\u7684\u6b0a\u9650\u7bc4\u570d\u548c\u57f7\u884c\u6d41\u7a0b"
+          "description": "決策權限矩陣定義各級決策的權限範圍和執行流程"
         },
         "violations": []
       },
@@ -11148,7 +11148,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "02-decision",
-          "name": "\u6c7a\u7b56\u6cbb\u7406",
+          "name": "決策治理",
           "name_en": "Decision Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.898843Z",
@@ -11169,7 +11169,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "32-rules",
-          "name": "\u898f\u5247\u6cbb\u7406",
+          "name": "規則治理",
           "name_en": "Rules Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.943013Z",
@@ -11190,7 +11190,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "40-self-healing",
-          "name": "\u81ea\u6211\u4fee\u5fa9\u6cbb\u7406",
+          "name": "自我修復治理",
           "name_en": "Self-Healing Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.953626Z",
@@ -11211,7 +11211,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "30-agents",
-          "name": "\u4ee3\u7406\u6cbb\u7406",
+          "name": "代理治理",
           "name_en": "Agents Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.939047Z",
@@ -11232,7 +11232,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "35-scripts",
-          "name": "\u8173\u672c\u6cbb\u7406",
+          "name": "腳本治理",
           "name_en": "Scripts Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.946985Z",
@@ -11331,7 +11331,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "70-audit",
-          "name": "\u5be9\u8a08\u8ffd\u8e64\u6cbb\u7406",
+          "name": "審計追蹤治理",
           "name_en": "Audit Trail Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.956362Z",
@@ -11352,7 +11352,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "34-config",
-          "name": "\u914d\u7f6e\u6cbb\u7406",
+          "name": "配置治理",
           "name_en": "Config Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.945669Z",
@@ -11373,7 +11373,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "80-feedback",
-          "name": "\u53cd\u994b\u6cbb\u7406",
+          "name": "反饋治理",
           "name_en": "Feedback Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.957753Z",
@@ -11394,7 +11394,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "01-architecture",
-          "name": "\u67b6\u69cb\u6cbb\u7406",
+          "name": "架構治理",
           "name_en": "Architecture Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.897395Z",
@@ -11415,7 +11415,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "25-principles",
-          "name": "\u539f\u5247\u6cbb\u7406",
+          "name": "原則治理",
           "name_en": "Principles Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.932366Z",
@@ -11436,7 +11436,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "11-tools-systems",
-          "name": "\u5de5\u5177\u7cfb\u7d71\u6cbb\u7406",
+          "name": "工具系統治理",
           "name_en": "Tools Systems Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.912378Z",
@@ -11457,7 +11457,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "16-psychological",
-          "name": "\u5fc3\u7406\u6cbb\u7406",
+          "name": "心理治理",
           "name_en": "Psychological Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.919096Z",
@@ -11478,7 +11478,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "18-complex-system",
-          "name": "\u8907\u96dc\u7cfb\u7d71\u6cbb\u7406",
+          "name": "複雜系統治理",
           "name_en": "Complex System Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.921764Z",
@@ -11499,7 +11499,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "39-automation",
-          "name": "\u81ea\u52d5\u5316\u6cbb\u7406",
+          "name": "自動化治理",
           "name_en": "Automation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.952286Z",
@@ -11520,7 +11520,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "19-evolutionary",
-          "name": "\u6f14\u5316\u6cbb\u7406",
+          "name": "演化治理",
           "name_en": "Evolutionary Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.923101Z",
@@ -11545,7 +11545,7 @@
           "category": "compliance-attestation",
           "enforcement": "mandatory",
           "priority": 800,
-          "description": "\u5408\u898f\u6846\u67b6\u6a19\u6e96\u8207\u63a7\u5236\u8981\u6c42 / Compliance framework standards and control requirements"
+          "description": "合規框架標準與控制要求 / Compliance framework standards and control requirements"
         },
         "violations": []
       },
@@ -11560,7 +11560,7 @@
           "category": "security-rbac",
           "enforcement": "mandatory",
           "priority": 950,
-          "description": "\u57fa\u65bc\u89d2\u8272\u7684\u5b58\u53d6\u63a7\u5236\u77e9\u9663 / Role-based access control matrix"
+          "description": "基於角色的存取控制矩陣 / Role-based access control matrix"
         },
         "violations": []
       },
@@ -11575,7 +11575,7 @@
           "category": "security-audit",
           "enforcement": "mandatory",
           "priority": 950,
-          "description": "Kubernetes \u5be9\u8a08\u65e5\u8a8c\u7b56\u7565 / Kubernetes audit logging policy"
+          "description": "Kubernetes 審計日誌策略 / Kubernetes audit logging policy"
         },
         "violations": []
       },
@@ -12314,7 +12314,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "56-incidents",
-          "name": "\u4e8b\u4ef6\u6cbb\u7406",
+          "name": "事件治理",
           "name_en": "Incidents Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12337,7 +12337,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "03-change",
-          "name": "\u8b8a\u66f4\u6cbb\u7406",
+          "name": "變更治理",
           "name_en": "Change Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12360,7 +12360,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "21-ecological",
-          "name": "\u751f\u614b\u6cbb\u7406",
+          "name": "生態治理",
           "name_en": "Ecological Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12383,7 +12383,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "05-compliance",
-          "name": "\u5408\u898f\u6cbb\u7406",
+          "name": "合規治理",
           "name_en": "Compliance Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12406,7 +12406,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "10-policy",
-          "name": "\u653f\u7b56\u6cbb\u7406",
+          "name": "政策治理",
           "name_en": "Policy Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12429,7 +12429,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "23-policies",
-          "name": "\u653f\u7b56\u5b9a\u7fa9",
+          "name": "政策定義",
           "name_en": "Policy Definitions",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12452,7 +12452,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "49-canary",
-          "name": "\u91d1\u7d72\u96c0\u6cbb\u7406",
+          "name": "金絲雀治理",
           "name_en": "Canary Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12475,7 +12475,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "31-schemas",
-          "name": "\u7d50\u69cb\u6cbb\u7406",
+          "name": "結構治理",
           "name_en": "Schemas Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12498,7 +12498,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "14-improvement",
-          "name": "\u6539\u5584\u6cbb\u7406",
+          "name": "改善治理",
           "name_en": "Improvement Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12521,7 +12521,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "52-tracing",
-          "name": "\u8ffd\u8e64\u6cbb\u7406",
+          "name": "追蹤治理",
           "name_en": "Tracing Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12544,7 +12544,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "09-performance",
-          "name": "\u7e3e\u6548\u6cbb\u7406",
+          "name": "績效治理",
           "name_en": "Performance Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12567,7 +12567,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "08-process",
-          "name": "\u6d41\u7a0b\u6cbb\u7406",
+          "name": "流程治理",
           "name_en": "Process Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12590,7 +12590,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "99-metadata",
-          "name": "\u5143\u6578\u64da\u7ba1\u7406\u4e2d\u5fc3",
+          "name": "元數據管理中心",
           "name_en": "Metadata Management Center",
           "version": "1.0.0",
           "created_at": "2025-12-19T00:00:00Z",
@@ -12618,7 +12618,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "81-auto-comment",
-          "name": "\u81ea\u52d5\u8a55\u8ad6\u6cbb\u7406",
+          "name": "自動評論治理",
           "name_en": "Auto Comment Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T00:00:00Z",
@@ -12641,7 +12641,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "15-economic",
-          "name": "\u7d93\u6fdf\u6cbb\u7406",
+          "name": "經濟治理",
           "name_en": "Economic Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12664,7 +12664,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "37-behavior-contracts",
-          "name": "\u884c\u70ba\u5951\u7d04\u6cbb\u7406",
+          "name": "行為契約治理",
           "name_en": "Behavior Contracts Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12687,7 +12687,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "67-analytics",
-          "name": "\u5206\u6790\u6cbb\u7406",
+          "name": "分析治理",
           "name_en": "Analytics Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12710,7 +12710,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "44-resilience",
-          "name": "\u97cc\u6027\u6cbb\u7406",
+          "name": "韌性治理",
           "name_en": "Resilience Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12732,7 +12732,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "04-risk",
-          "name": "\u98a8\u96aa\u6cbb\u7406",
+          "name": "風險治理",
           "name_en": "Risk Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12755,7 +12755,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "46-migration",
-          "name": "\u9077\u79fb\u6cbb\u7406",
+          "name": "遷移治理",
           "name_en": "Migration Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12778,7 +12778,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "36-modules",
-          "name": "\u6a21\u7d44\u6cbb\u7406",
+          "name": "模組治理",
           "name_en": "Modules Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12801,7 +12801,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "28-tests",
-          "name": "\u6e2c\u8a66\u6cbb\u7406",
+          "name": "測試治理",
           "name_en": "Tests Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12824,7 +12824,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "43-scaling",
-          "name": "\u64f4\u5c55\u6cbb\u7406",
+          "name": "擴展治理",
           "name_en": "Scaling Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12847,7 +12847,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "12-culture-capability",
-          "name": "\u6587\u5316\u80fd\u529b\u6cbb\u7406",
+          "name": "文化能力治理",
           "name_en": "Culture Capability Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12870,7 +12870,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "00-vision-strategy",
-          "name": "\u9858\u666f\u7b56\u7565\u6cbb\u7406",
+          "name": "願景策略治理",
           "name_en": "Vision Strategy Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12893,7 +12893,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "57-postmortems",
-          "name": "\u4e8b\u5f8c\u5206\u6790\u6cbb\u7406",
+          "name": "事後分析治理",
           "name_en": "Postmortems Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12916,7 +12916,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "58-capacity",
-          "name": "\u5bb9\u91cf\u6cbb\u7406",
+          "name": "容量治理",
           "name_en": "Capacity Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12939,7 +12939,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "13-metrics-reporting",
-          "name": "\u6307\u6a19\u5831\u544a\u6cbb\u7406",
+          "name": "指標報告治理",
           "name_en": "Metrics Reporting Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -12962,7 +12962,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "99-naming-convention",
-          "name": "\u7d71\u4e00\u547d\u540d\u898f\u7bc4\u6cbb\u7406",
+          "name": "統一命名規範治理",
           "name_en": "Unified Naming Convention Governance",
           "version": "1.0.0",
           "created_at": "2025-12-18T00:00:00Z",
@@ -12990,7 +12990,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "73-learning",
-          "name": "\u5b78\u7fd2\u6cbb\u7406",
+          "name": "學習治理",
           "name_en": "Learning Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13013,7 +13013,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "78-simulation",
-          "name": "\u6a21\u64ec\u6cbb\u7406",
+          "name": "模擬治理",
           "name_en": "Simulation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13036,7 +13036,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "07-audit",
-          "name": "\u7a3d\u6838\u6cbb\u7406",
+          "name": "稽核治理",
           "name_en": "Audit Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13059,7 +13059,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "60-contracts",
-          "name": "\u5951\u7d04\u6cbb\u7406",
+          "name": "契約治理",
           "name_en": "Contracts Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13082,7 +13082,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "59-forecasting",
-          "name": "\u9810\u6e2c\u6cbb\u7406",
+          "name": "預測治理",
           "name_en": "Forecasting Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13105,7 +13105,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "65-certification",
-          "name": "\u9a57\u8b49\u6cbb\u7406",
+          "name": "驗證治理",
           "name_en": "Certification Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13128,7 +13128,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "27-templates",
-          "name": "\u6a21\u677f\u6cbb\u7406",
+          "name": "模板治理",
           "name_en": "Templates Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13151,7 +13151,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "26-tools",
-          "name": "\u5de5\u5177\u6cbb\u7406",
+          "name": "工具治理",
           "name_en": "Tools Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13174,7 +13174,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "33-common",
-          "name": "\u5171\u7528\u6cbb\u7406",
+          "name": "共用治理",
           "name_en": "Common Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13197,7 +13197,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "55-slo-sli",
-          "name": "SLO/SLI\u6cbb\u7406",
+          "name": "SLO/SLI治理",
           "name_en": "SLO SLI Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13220,7 +13220,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "20-intent",
-          "name": "\u610f\u5716\u6cbb\u7406",
+          "name": "意圖治理",
           "name_en": "Intent Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13243,7 +13243,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "24-registry",
-          "name": "\u767b\u9304\u6cbb\u7406",
+          "name": "登錄治理",
           "name_en": "Registry Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13266,7 +13266,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "61-lineage",
-          "name": "\u8840\u7de3\u6cbb\u7406",
+          "name": "血緣治理",
           "name_en": "Lineage Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13289,7 +13289,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "79-prediction",
-          "name": "\u9810\u6e2c\u6cbb\u7406",
+          "name": "預測治理",
           "name_en": "Prediction Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13312,7 +13312,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "17-sociological",
-          "name": "\u793e\u6703\u5b78\u6cbb\u7406",
+          "name": "社會學治理",
           "name_en": "Sociological Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13335,7 +13335,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "77-experimentation",
-          "name": "\u5be6\u9a57\u6cbb\u7406",
+          "name": "實驗治理",
           "name_en": "Experimentation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13358,7 +13358,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "22-aesthetic",
-          "name": "\u7f8e\u5b78\u6cbb\u7406",
+          "name": "美學治理",
           "name_en": "Aesthetic Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13381,7 +13381,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "41-orchestration",
-          "name": "\u7de8\u6392\u6cbb\u7406",
+          "name": "編排治理",
           "name_en": "Orchestration Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13404,7 +13404,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "06-security",
-          "name": "\u5b89\u5168\u6cbb\u7406",
+          "name": "安全治理",
           "name_en": "Security Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13427,7 +13427,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "29-docs",
-          "name": "\u6587\u6a94\u6cbb\u7406",
+          "name": "文檔治理",
           "name_en": "Documentation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13450,7 +13450,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "45-recovery",
-          "name": "\u5fa9\u539f\u6cbb\u7406",
+          "name": "復原治理",
           "name_en": "Recovery Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13473,7 +13473,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "75-evolution",
-          "name": "\u6f14\u5316\u6cbb\u7406",
+          "name": "演化治理",
           "name_en": "Evolution Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13496,7 +13496,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "38-sbom",
-          "name": "\u8edf\u9ad4\u7269\u6599\u6e05\u55ae\u6cbb\u7406",
+          "name": "軟體物料清單治理",
           "name_en": "SBOM Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13519,7 +13519,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "54-dashboards",
-          "name": "\u5100\u8868\u677f\u6cbb\u7406",
+          "name": "儀表板治理",
           "name_en": "Dashboards Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13542,7 +13542,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "76-innovation",
-          "name": "\u5275\u65b0\u6cbb\u7406",
+          "name": "創新治理",
           "name_en": "Innovation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13565,7 +13565,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "02-decision",
-          "name": "\u6c7a\u7b56\u6cbb\u7406",
+          "name": "決策治理",
           "name_en": "Decision Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13588,7 +13588,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "48-rollback",
-          "name": "\u56de\u6efe\u6cbb\u7406",
+          "name": "回滾治理",
           "name_en": "Rollback Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13611,7 +13611,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "32-rules",
-          "name": "\u898f\u5247\u6cbb\u7406",
+          "name": "規則治理",
           "name_en": "Rules Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13634,7 +13634,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "70-audit-trail",
-          "name": "\u7a3d\u6838\u8ecc\u8de1\u6cbb\u7406",
+          "name": "稽核軌跡治理",
           "name_en": "Audit Trail Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13657,7 +13657,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "63-evidence",
-          "name": "\u8b49\u64da\u6cbb\u7406",
+          "name": "證據治理",
           "name_en": "Evidence Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13680,7 +13680,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "83-integration",
-          "name": "\u6574\u5408\u6cbb\u7406",
+          "name": "整合治理",
           "name_en": "Integration Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.940366Z",
@@ -13701,7 +13701,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "53-alerting",
-          "name": "\u544a\u8b66\u6cbb\u7406",
+          "name": "告警治理",
           "name_en": "Alerting Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13724,7 +13724,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "82-stakeholder",
-          "name": "\u5229\u5bb3\u95dc\u4fc2\u4eba\u6cbb\u7406",
+          "name": "利害關係人治理",
           "name_en": "Stakeholder Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T22:17:20.911039Z",
@@ -13745,7 +13745,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "40-self-healing",
-          "name": "\u81ea\u7652\u6cbb\u7406",
+          "name": "自癒治理",
           "name_en": "Self-Healing Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13768,7 +13768,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "71-feedback-loops",
-          "name": "\u56de\u994b\u8ff4\u8def\u6cbb\u7406",
+          "name": "回饋迴路治理",
           "name_en": "Feedback Loops Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13791,7 +13791,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "51-logging",
-          "name": "\u65e5\u8a8c\u6cbb\u7406",
+          "name": "日誌治理",
           "name_en": "Logging Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13814,7 +13814,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "30-agents",
-          "name": "\u4ee3\u7406\u6cbb\u7406",
+          "name": "代理治理",
           "name_en": "Agents Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13837,7 +13837,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "50-monitoring",
-          "name": "\u76e3\u63a7\u6cbb\u7406",
+          "name": "監控治理",
           "name_en": "Monitoring Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13860,7 +13860,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "35-scripts",
-          "name": "\u8173\u672c\u6cbb\u7406",
+          "name": "腳本治理",
           "name_en": "Scripts Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13883,7 +13883,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "62-provenance",
-          "name": "\u4f86\u6e90\u6cbb\u7406",
+          "name": "來源治理",
           "name_en": "Provenance Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13906,7 +13906,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "34-config",
-          "name": "\u914d\u7f6e\u6cbb\u7406",
+          "name": "配置治理",
           "name_en": "Config Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13929,7 +13929,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "66-reporting",
-          "name": "\u5831\u544a\u6cbb\u7406",
+          "name": "報告治理",
           "name_en": "Reporting Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13952,7 +13952,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "01-architecture",
-          "name": "\u67b6\u69cb\u6cbb\u7406",
+          "name": "架構治理",
           "name_en": "Architecture Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13975,7 +13975,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "69-correlation",
-          "name": "\u95dc\u806f\u6cbb\u7406",
+          "name": "關聯治理",
           "name_en": "Correlation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -13998,7 +13998,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "72-optimization",
-          "name": "\u512a\u5316\u6cbb\u7406",
+          "name": "優化治理",
           "name_en": "Optimization Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14021,7 +14021,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "80-synthesis",
-          "name": "\u7d9c\u5408\u6cbb\u7406",
+          "name": "綜合治理",
           "name_en": "Synthesis Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14044,7 +14044,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "25-principles",
-          "name": "\u539f\u5247\u6cbb\u7406",
+          "name": "原則治理",
           "name_en": "Principles Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14067,7 +14067,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "11-tools-systems",
-          "name": "\u5de5\u5177\u7cfb\u7d71\u6cbb\u7406",
+          "name": "工具系統治理",
           "name_en": "Tools Systems Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14090,7 +14090,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "68-visualization",
-          "name": "\u8996\u89ba\u5316\u6cbb\u7406",
+          "name": "視覺化治理",
           "name_en": "Visualization Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14113,7 +14113,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "47-versioning",
-          "name": "\u7248\u672c\u6cbb\u7406",
+          "name": "版本治理",
           "name_en": "Versioning Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14136,7 +14136,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "74-adaptation",
-          "name": "\u9069\u61c9\u6cbb\u7406",
+          "name": "適應治理",
           "name_en": "Adaptation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14159,7 +14159,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "16-psychological",
-          "name": "\u5fc3\u7406\u6cbb\u7406",
+          "name": "心理治理",
           "name_en": "Psychological Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14182,7 +14182,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "18-complex-system",
-          "name": "\u8907\u96dc\u7cfb\u7d71\u6cbb\u7406",
+          "name": "複雜系統治理",
           "name_en": "Complex System Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14205,7 +14205,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "64-attestation",
-          "name": "\u8a8d\u8b49\u6cbb\u7406",
+          "name": "認證治理",
           "name_en": "Attestation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14228,7 +14228,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "39-automation",
-          "name": "\u81ea\u52d5\u5316\u6cbb\u7406",
+          "name": "自動化治理",
           "name_en": "Automation Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14251,7 +14251,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "42-deployment",
-          "name": "\u90e8\u7f72\u6cbb\u7406",
+          "name": "部署治理",
           "name_en": "Deployment Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14274,7 +14274,7 @@
         "kind": "DimensionModule",
         "metadata": {
           "id": "19-evolutionary",
-          "name": "\u6f14\u5316\u6cbb\u7406",
+          "name": "演化治理",
           "name_en": "Evolutionary Governance",
           "version": "1.0.0",
           "created_at": "2025-12-11T15:30:50Z",
@@ -14297,7 +14297,7 @@
         "kind": "ChangeRequest",
         "metadata": {
           "id": "CHG-2025-001",
-          "title": "\u5347\u7ea7 Payment Service \u5230 v2.0.0",
+          "title": "升级 Payment Service 到 v2.0.0",
           "createdAt": "2025-12-17T10:00:00Z",
           "labels": {
             "service": "payment",
@@ -14406,7 +14406,7 @@
         "kind": "NamingConventionExample",
         "metadata": {
           "id": "complete-naming-example",
-          "name": "\u5b8c\u6574\u547d\u540d\u898f\u7bc4\u7bc4\u4f8b",
+          "name": "完整命名規範範例",
           "name_en": "Complete Naming Convention Examples",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-example:complete:v1",
@@ -14422,7 +14422,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "dependency-standards",
-          "name": "\u4f9d\u8cf4\u898f\u7bc4",
+          "name": "依賴規範",
           "name_en": "Dependency Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:dependency:v1",
@@ -14437,7 +14437,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "mapping-standards",
-          "name": "\u6620\u5c04\u898f\u7bc4",
+          "name": "映射規範",
           "name_en": "Mapping Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:mapping:v1",
@@ -14452,7 +14452,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "value-naming",
-          "name": "\u503c\u540d\u898f\u7bc4",
+          "name": "值名規範",
           "name_en": "Value Naming Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:value:v1",
@@ -14467,7 +14467,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "reference-standards",
-          "name": "\u5f15\u7528\u898f\u7bc4",
+          "name": "引用規範",
           "name_en": "Reference Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:reference:v1",
@@ -14482,7 +14482,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "dir-naming",
-          "name": "\u76ee\u9304\u547d\u540d\u898f\u7bc4",
+          "name": "目錄命名規範",
           "name_en": "Directory Naming Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:directory:v1",
@@ -14497,7 +14497,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "key-naming",
-          "name": "\u9375\u540d\u898f\u7bc4",
+          "name": "鍵名規範",
           "name_en": "Key Naming Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:key:v1",
@@ -14512,7 +14512,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "uri-urn-standards",
-          "name": "URI/URN \u898f\u7bc4",
+          "name": "URI/URN 規範",
           "name_en": "URI/URN Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:uri-urn:v1",
@@ -14527,7 +14527,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "file-naming",
-          "name": "\u6a94\u6848\u547d\u540d\u898f\u7bc4",
+          "name": "檔案命名規範",
           "name_en": "File Naming Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:file:v1",
@@ -14542,7 +14542,7 @@
         "kind": "NamingSpec",
         "metadata": {
           "id": "extension-standards",
-          "name": "\u526f\u6a94\u540d\u898f\u7bc4",
+          "name": "副檔名規範",
           "name_en": "File Extension Standards",
           "version": "1.0.0",
           "urn": "urn:machinenativeops:governance:naming-spec:extension:v1",
@@ -15709,7 +15709,7 @@
         "kind": "RemediationPlaybook",
         "metadata": {
           "name": "naming-violation-auto-remediation",
-          "description": "\u6807\u51c6\u547d\u540d\u8fdd\u89c4\u81ea\u52a8\u4fee\u590d\u6d41\u7a0b",
+          "description": "标准命名违规自动修复流程",
           "labels": {
             "category": "remediation",
             "module": "naming-governance",
@@ -15859,7 +15859,7 @@
         "kind": "AuditReport",
         "metadata": {
           "id": "AUD-YYYY-MM",
-          "title": "YYYY\u5e74MM\u6708\u6cbb\u7406\u5ba1\u8ba1\u62a5\u544a",
+          "title": "YYYY年MM月治理审计报告",
           "period": {
             "startDate": "YYYY-MM-DD",
             "endDate": "YYYY-MM-DD"
@@ -15876,7 +15876,7 @@
         "kind": "ChangeRequest",
         "metadata": {
           "id": "CHG-YYYY-NNN",
-          "title": "\u7b80\u8981\u63cf\u8ff0\u53d8\u66f4\u5185\u5bb9",
+          "title": "简要描述变更内容",
           "createdAt": "YYYY-MM-DDTHH:MM:SSZ",
           "labels": {
             "service": "",
@@ -16310,7 +16310,15 @@
   },
   "artifacts": [],
   "stage": 2,
-  "stage_name": "Schema/\u8a9e\u610f\u9a57\u8b49",
+  "stage_name": "Schema/語意驗證",
   "evidence_type": "schema_validation",
-  "timestamp": "2026-01-06T01:16:22.816313+00:00"
+  "timestamp": "2026-01-06T01:16:22.816313+00:00",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "stage02-schema_validation",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
 }
