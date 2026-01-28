@@ -1,0 +1,243 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-bootstrap-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Auto-Sync Configuration
+
+apiVersion: bootstrap.machinenativeops.io/v1
+kind: AutoSyncConfiguration
+metadata:
+  name: gl-auto-sync
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  enabled: true
+  sync_modes:
+    - name: "bidirectional"
+      type: "full_sync"
+      conflict_resolution: "timestamp"
+    
+    - name: "push_only"
+      type: "one_way"
+      direction: "push"
+    
+    - name: "pull_only"
+      type: "one_way"
+      direction: "pull"
+    
+    - name: "selective"
+      type: "partial_sync"
+      filters:
+        - "gl-markers"
+        - "governance-policies"
+        - "semantic-anchors"
+
+  sync_targets:
+    - id: "git-sync"
+      name: "Git Repository Sync"
+      type: "version_control"
+      priority: 100
+      config:
+        repositories:
+          - name: "main_repo"
+            url: "https://github.com/MachineNativeOps/machine-native-ops.git"
+            branch: "main"
+            sync_frequency: "realtime"
+          
+          - name: "backup_repo"
+            url: "https://github.com/MachineNativeOps/machine-native-ops-backup.git"
+            branch: "main"
+            sync_frequency: "hourly"
+        
+        sync_items:
+          - "source_code"
+          - "configuration"
+          - "documentation"
+          - "governance_artifacts"
+        
+        conflict_resolution: "preserve_source"
+    
+    - id: "semantic-anchor-sync"
+      name: "Semantic Anchor Sync"
+      type: "governance"
+      priority: 100
+      config:
+        source: "engine/governance/GL_SEMANTIC_ANCHOR.json"
+        destinations:
+          - "ops/auto-bootstrap/*.yaml"
+          - "ops/pipelines/*.yaml"
+          - "engine/**/*.js"
+          - "governance/**/*.js"
+        
+        sync_strategy: "version_based"
+        validate_on_sync: true
+        rollback_on_error: true
+    
+    - id: "event-stream-sync"
+      name: "Event Stream Sync"
+      type: "data"
+      priority: 95
+      config:
+        sources:
+          - "engine/.governance/event-stream.jsonl"
+          - "engine/.governance/governance-event-stream.jsonl"
+        
+        destinations:
+          - "storage/gl-events-stream/"
+          - "remote_storage/gl-events-stream/"
+        
+        sync_strategy: "append_only"
+        compression: true
+        encryption: true
+    
+    - id: "artifact-sync"
+      name: "Artifact Sync"
+      type: "storage"
+      priority: 90
+      config:
+        source: "storage/gl-artifacts-store/"
+        destinations:
+          - "remote_storage/gl-artifacts-store/"
+          - "backup_storage/gl-artifacts-store/"
+        
+        sync_strategy: "incremental"
+        deduplication: true
+        retention: "30days"
+    
+    - id: "config-sync"
+      name: "Configuration Sync"
+      type: "configuration"
+      priority: 85
+      config:
+        sources:
+          - "gl-runtime-platform/package.json"
+          - "ops/auto-bootstrap/*.yaml"
+          - "ops/pipelines/*.yaml"
+        
+        destinations:
+          - "runtime_config/"
+          - "backup_config/"
+        
+        sync_strategy: "replace"
+        validation: true
+
+  sync_pipelines:
+    - name: "git-sync-pipeline"
+      stages:
+        - name: "fetch_changes"
+          action: "git_fetch"
+          config:
+            remote: "origin"
+            prune: true
+        
+        - name: "check_conflicts"
+          action: "check_conflicts"
+          config:
+            strategy: "merge_strategy"
+        
+        - name: "resolve_conflicts"
+          action: "resolve_conflicts"
+          depends_on: ["check_conflicts"]
+          config:
+            method: "timestamp"
+            backup: true
+        
+        - name: "push_changes"
+          action: "git_push"
+          depends_on: ["resolve_conflicts"]
+          config:
+            force: false
+    
+    - name: "semantic-sync-pipeline"
+      stages:
+        - name: "load_anchor"
+          action: "load_file"
+          config:
+            path: "engine/governance/GL_SEMANTIC_ANCHOR.json"
+        
+        - name: "validate_anchor"
+          action: "validate_schema"
+          depends_on: ["load_anchor"]
+          config:
+            schema: "semantic-anchor-schema"
+        
+        - name: "distribute_anchor"
+          action: "distribute"
+          depends_on: ["validate_anchor"]
+          config:
+            targets: "sync_targets.semantic-anchor-sync.destinations"
+        
+        - name: "verify_sync"
+          action: "verify"
+          depends_on: ["distribute_anchor"]
+          config:
+            method: "checksum"
+
+  conflict_resolution:
+    strategies:
+      - name: "timestamp"
+        priority: "newer_wins"
+        backup_both: true
+      
+      - name: "source_authority"
+        priority: "source_wins"
+        notify_destination: true
+      
+      - name: "manual_review"
+        priority: "manual"
+        create_ticket: true
+        assignee: "governance-team"
+
+  validation:
+    pre_sync:
+      enabled: true
+      checks:
+        - "source_accessible"
+        - "destination_writable"
+        - "enough_disk_space"
+        - "network_available"
+    
+    post_sync:
+      enabled: true
+      checks:
+        - "sync_successful"
+        - "data_integrity"
+        - "no_corruption"
+        - "performance_acceptable"
+
+  notifications:
+    enabled: true
+    channels:
+      - type: "event-stream"
+      - type: "log"
+      - type: "slack"
+        channel: "#gl-sync"
+    events:
+      - "sync_started"
+      - "sync_completed"
+      - "sync_failed"
+      - "conflict_detected"
+      - "conflict_resolved"
+
+  monitoring:
+    enabled: true
+    metrics:
+      - "syncs_completed"
+      - "syncs_failed"
+      - "conflicts_detected"
+      - "conflicts_resolved"
+      - "sync_duration"
+      - "data_transferred"
+    reporting_interval: "hourly"
+
+status:
+  phase: "active"
+  last_sync: null
+  total_syncs: 0
+  success_rate: 100
+  conflicts_detected: 0
+  conflicts_resolved: 0

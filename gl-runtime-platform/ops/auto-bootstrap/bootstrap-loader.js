@@ -5,7 +5,6 @@
 const fs = require('fs').promises;
 const path = require('path');
 const yaml = require('js-yaml');
-const { v4: uuidv4 } = require('uuid');
 const winston = require('winston');
 
 const logger = winston.createLogger({
@@ -19,214 +18,229 @@ const logger = winston.createLogger({
 
 class BootstrapLoader {
   constructor() {
-    this.bootstraps = new Map();
-    this.eventStream = [];
+    this.configDir = path.join(__dirname);
+    this.autoStarters = new Map();
+    this.status = 'idle';
   }
 
-  async loadBootstraps() {
-    const bootstrapDir = path.join(__dirname, '../auto-bootstrap');
-    const files = await fs.readdir(bootstrapDir);
-    
-    for (const file of files) {
-      if (file.endsWith('.yaml') || file.endsWith('.yml')) {
-        await this.loadBootstrap(path.join(bootstrapDir, file));
-      }
-    }
-
-    logger.info('Bootstraps loaded', { count: this.bootstraps.size });
-    this.logEvent('bootstraps_loaded', { count: this.bootstraps.size });
-  }
-
-  async loadBootstrap(filePath) {
+  async loadAll() {
     try {
+      logger.info('Loading all auto-bootstrap configurations...');
+      
+      const files = await fs.readdir(this.configDir);
+      const yamlFiles = files.filter(f => f.startsWith('auto-') && f.endsWith('.yaml'));
+      
+      logger.info(`Found ${yamlFiles.length} auto-bootstrap configuration files`);
+      
+      for (const file of yamlFiles) {
+        await this.loadConfig(file);
+      }
+      
+      this.status = 'loaded';
+      logger.info(`Successfully loaded ${this.autoStarters.size} auto-starters`);
+      
+      return {
+        success: true,
+        loaded: this.autoStarters.size,
+        starters: Array.from(this.autoStarters.keys())
+      };
+      
+    } catch (error) {
+      logger.error('Failed to load auto-bootstrap configurations', { error: error.message });
+      throw error;
+    }
+  }
+
+  async loadConfig(filename) {
+    try {
+      const filePath = path.join(this.configDir, filename);
       const content = await fs.readFile(filePath, 'utf8');
-      const bootstrap = yaml.load(content);
+      const config = yaml.load(content);
       
-      this.bootstraps.set(bootstrap.metadata.name, bootstrap);
-      logger.info('Bootstrap loaded', { name: bootstrap.metadata.name });
-      this.logEvent('bootstrap_loaded', { name: bootstrap.metadata.name });
+      const starterName = filename.replace('.yaml', '');
+      this.autoStarters.set(starterName, config);
       
-      return bootstrap;
+      logger.info(`Loaded auto-starter: ${starterName}`, {
+        kind: config.kind,
+        enabled: config.spec?.enabled,
+        version: config.metadata?.version
+      });
+      
+      return config;
+      
     } catch (error) {
-      logger.error('Failed to load bootstrap', { filePath, error: error.message });
-      this.logEvent('bootstrap_load_failed', { filePath, error: error.message });
+      logger.error(`Failed to load configuration: ${filename}`, { error: error.message });
       throw error;
     }
   }
 
-  async enableBootstrap(name) {
-    const bootstrap = this.bootstraps.get(name);
-    if (!bootstrap) {
-      throw new Error(`Bootstrap not found: ${name}`);
-    }
-
-    bootstrap.spec.enabled = true;
-    await this.saveBootstrap(name, bootstrap);
-    
-    logger.info('Bootstrap enabled', { name });
-    this.logEvent('bootstrap_enabled', { name });
-    
-    return { enabled: true, name };
-  }
-
-  async disableBootstrap(name) {
-    const bootstrap = this.bootstraps.get(name);
-    if (!bootstrap) {
-      throw new Error(`Bootstrap not found: ${name}`);
-    }
-
-    bootstrap.spec.enabled = false;
-    await this.saveBootstrap(name, bootstrap);
-    
-    logger.info('Bootstrap disabled', { name });
-    this.logEvent('bootstrap_disabled', { name });
-    
-    return { disabled: true, name };
-  }
-
-  async executeBootstrap(name, context) {
-    const bootstrap = this.bootstraps.get(name);
-    if (!bootstrap) {
-      throw new Error(`Bootstrap not found: ${name}`);
-    }
-
-    if (!bootstrap.spec.enabled) {
-      throw new Error(`Bootstrap not enabled: ${name}`);
-    }
-
-    const executionId = uuidv4();
-    logger.info('Bootstrap execution started', { executionId, name });
-    this.logEvent('bootstrap_execution_started', { executionId, name });
-
+  async startAll() {
     try {
-      const result = await this.executeBootstrapLogic(bootstrap, context);
+      logger.info('Starting all auto-starters...');
       
-      bootstrap.status.last_execution = new Date().toISOString();
-      bootstrap.status.total_executions = (bootstrap.status.total_executions || 0) + 1;
+      const results = [];
       
-      await this.saveBootstrap(name, bootstrap);
+      for (const [name, config] of this.autoStarters) {
+        if (config.spec?.enabled !== false) {
+          const result = await this.startStarter(name, config);
+          results.push(result);
+        }
+      }
       
-      this.logEvent('bootstrap_execution_completed', { executionId, name, result });
-      return { executionId, name, result };
+      this.status = 'running';
+      logger.info(`Started ${results.filter(r => r.success).length} auto-starters`);
+      
+      return {
+        success: true,
+        started: results.filter(r => r.success).length,
+        results
+      };
+      
     } catch (error) {
-      logger.error('Bootstrap execution failed', { executionId, name, error: error.message });
-      this.logEvent('bootstrap_execution_failed', { executionId, name, error: error.message });
+      logger.error('Failed to start auto-starters', { error: error.message });
       throw error;
     }
   }
 
-  async executeBootstrapLogic(bootstrap, context) {
-    const results = [];
-    
-    // Execute repair strategies
-    if (bootstrap.spec.repair_strategies) {
-      for (const strategy of bootstrap.spec.repair_strategies) {
-        const result = await this.executeRepairStrategy(strategy, context);
-        results.push({ strategy: strategy.id, result });
-      }
+  async startStarter(name, config) {
+    try {
+      logger.info(`Starting auto-starter: ${name}`);
+      
+      // Simulate starting the auto-starter
+      // In production, this would actually trigger the orchestration engine
+      
+      const startTime = Date.now();
+      
+      // Log to event stream
+      await this.logEvent('starter_started', {
+        name,
+        kind: config.kind,
+        version: config.metadata?.version,
+        layer: config.metadata?.layer
+      });
+      
+      const duration = Date.now() - startTime;
+      
+      logger.info(`Successfully started auto-starter: ${name}`, { duration });
+      
+      return {
+        success: true,
+        name,
+        duration,
+        status: 'running'
+      };
+      
+    } catch (error) {
+      logger.error(`Failed to start auto-starter: ${name}`, { error: error.message });
+      
+      await this.logEvent('starter_failed', {
+        name,
+        error: error.message
+      });
+      
+      return {
+        success: false,
+        name,
+        error: error.message,
+        status: 'failed'
+      };
     }
+  }
 
-    // Execute integration points
-    if (bootstrap.spec.integration_points) {
-      for (const point of bootstrap.spec.integration_points) {
-        const result = await this.executeIntegrationPoint(point, context);
-        results.push({ point: point.id, result });
+  async stopAll() {
+    try {
+      logger.info('Stopping all auto-starters...');
+      
+      for (const [name, config] of this.autoStarters) {
+        await this.stopStarter(name);
       }
+      
+      this.status = 'stopped';
+      logger.info('All auto-starters stopped');
+      
+      return {
+        success: true,
+        status: 'stopped'
+      };
+      
+    } catch (error) {
+      logger.error('Failed to stop auto-starters', { error: error.message });
+      throw error;
     }
+  }
 
-    // Execute deployment targets
-    if (bootstrap.spec.deployment_targets) {
-      for (const target of bootstrap.spec.deployment_targets) {
-        const result = await this.executeDeploymentTarget(target, context);
-        results.push({ target: target.id, result });
-      }
+  async stopStarter(name) {
+    try {
+      logger.info(`Stopping auto-starter: ${name}`);
+      
+      await this.logEvent('starter_stopped', { name });
+      
+      logger.info(`Successfully stopped auto-starter: ${name}`);
+      
+      return {
+        success: true,
+        name,
+        status: 'stopped'
+      };
+      
+    } catch (error) {
+      logger.error(`Failed to stop auto-starter: ${name}`, { error: error.message });
+      return {
+        success: false,
+        name,
+        error: error.message,
+        status: 'error'
+      };
     }
+  }
 
-    // Execute federation layers
-    if (bootstrap.spec.federation_layers) {
-      for (const layer of bootstrap.spec.federation_layers) {
-        const result = await this.executeFederationLayer(layer, context);
-        results.push({ layer: layer.id, result });
-      }
+  async getStatus() {
+    return {
+      status: this.status,
+      loaded: this.autoStarters.size,
+      starters: Array.from(this.autoStarters.keys()).map(name => ({
+        name,
+        config: this.autoStarters.get(name),
+        enabled: this.autoStarters.get(name).spec?.enabled !== false
+      }))
+    };
+  }
+
+  async logEvent(eventType, eventData) {
+    try {
+      const event = {
+        id: `bootstrap-${Date.now()}`,
+        type: eventType,
+        timestamp: new Date().toISOString(),
+        source: 'bootstrap-loader',
+        data: eventData
+      };
+      
+      const eventStreamPath = path.join(__dirname, '../../storage/gl-events-stream/bootstrap-events.jsonl');
+      await fs.appendFile(eventStreamPath, JSON.stringify(event) + '\n');
+      
+    } catch (error) {
+      logger.error('Failed to log event', { error: error.message });
     }
-
-    return { success: true, results };
-  }
-
-  async executeRepairStrategy(strategy, context) {
-    logger.info('Executing repair strategy', { strategyId: strategy.id });
-    
-    // Repair strategy execution logic
-    return {
-      executed: true,
-      strategyId: strategy.id,
-      repairs: []
-    };
-  }
-
-  async executeIntegrationPoint(point, context) {
-    logger.info('Executing integration point', { pointId: point.id });
-    
-    // Integration point execution logic
-    return {
-      integrated: true,
-      pointId: point.id,
-      status: 'successful'
-    };
-  }
-
-  async executeDeploymentTarget(target, context) {
-    logger.info('Executing deployment target', { targetId: target.id });
-    
-    // Deployment target execution logic
-    return {
-      deployed: true,
-      targetId: target.id,
-      status: 'operational'
-    };
-  }
-
-  async executeFederationLayer(layer, context) {
-    logger.info('Executing federation layer', { layerId: layer.id });
-    
-    // Federation layer execution logic
-    return {
-      federated: true,
-      layerId: layer.id,
-      status: 'active'
-    };
-  }
-
-  async saveBootstrap(name, bootstrap) {
-    const filePath = path.join(__dirname, '../auto-bootstrap', `${name}.yaml`);
-    const content = yaml.dump(bootstrap, { indent: 2 });
-    await fs.writeFile(filePath, content, 'utf8');
-  }
-
-  getBootstrap(name) {
-    return this.bootstraps.get(name);
-  }
-
-  getAllBootstraps() {
-    return Array.from(this.bootstraps.values());
-  }
-
-  logEvent(type, data) {
-    const event = {
-      id: uuidv4(),
-      timestamp: new Date().toISOString(),
-      type,
-      data,
-      source: 'bootstrap-loader'
-    };
-    this.eventStream.push(event);
-    logger.info('Bootstrap loader event logged', event);
-
-    fs.appendFile(
-      path.join(__dirname, '../../storage/gl-events-stream/bootstrap-events.jsonl'),
-      JSON.stringify(event) + '\n'
-    ).catch(err => logger.error('Event stream write failed', { error: err.message }));
   }
 }
 
+// Export for use in other modules
 module.exports = BootstrapLoader;
+
+// If run directly, execute bootstrap loader
+if (require.main === module) {
+  const loader = new BootstrapLoader();
+  
+  loader.loadAll()
+    .then(() => loader.startAll())
+    .then(() => loader.getStatus())
+    .then(status => {
+      console.log('Bootstrap Loader Status:', JSON.stringify(status, null, 2));
+      process.exit(0);
+    })
+    .catch(error => {
+      console.error('Bootstrap Loader Error:', error);
+      process.exit(1);
+    });
+}

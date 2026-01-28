@@ -1,0 +1,262 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-bootstrap-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Auto-Monitor Configuration
+
+apiVersion: bootstrap.machinenativeops.io/v1
+kind: AutoMonitorConfiguration
+metadata:
+  name: gl-auto-monitor
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  enabled: true
+  monitoring_modes:
+    - name: "continuous"
+      interval: 60
+      type: "realtime"
+    
+    - name: "periodic"
+      interval: 300
+      type: "scheduled"
+    
+    - name: "event_driven"
+      trigger: "event"
+      type: "reactive"
+
+  monitor_targets:
+    - id: "governance-health-monitor"
+      name: "Governance Health Monitor"
+      type: "health"
+      priority: 100
+      config:
+        checks:
+          - name: "gl_core_status"
+            metric: "gl_core.health"
+            threshold: ">= 95"
+            alert_on: "below_threshold"
+          
+          - name: "policy_engine_status"
+            metric: "policy_engine.health"
+            threshold: ">= 95"
+            alert_on: "below_threshold"
+          
+          - name: "event_stream_status"
+            metric: "event_stream.health"
+            threshold: ">= 95"
+            alert_on: "below_threshold"
+    
+    - id: "performance-monitor"
+      name: "Performance Monitor"
+      type: "performance"
+      priority: 90
+      config:
+        metrics:
+          - name: "response_time"
+            threshold: "< 1000ms"
+            alert_on: "above_threshold"
+          
+          - name: "throughput"
+            threshold: "> 100 req/sec"
+            alert_on: "below_threshold"
+          
+          - name: "error_rate"
+            threshold: "< 1%"
+            alert_on: "above_threshold"
+          
+          - name: "memory_usage"
+            threshold: "< 80%"
+            alert_on: "above_threshold"
+          
+          - name: "cpu_usage"
+            threshold: "< 80%"
+            alert_on: "above_threshold"
+    
+    - id: "governance-compliance-monitor"
+      name: "Governance Compliance Monitor"
+      type: "compliance"
+      priority: 95
+      config:
+        checks:
+          - name: "marker_compliance"
+            metric: "compliance.markers"
+            threshold: ">= 99%"
+            alert_on: "below_threshold"
+          
+          - name: "validation_pass_rate"
+            metric: "compliance.validation_pass"
+            threshold: ">= 95%"
+            alert_on: "below_threshold"
+          
+          - name: "violation_count"
+            metric: "compliance.violations"
+            threshold: "< 10"
+            alert_on: "above_threshold"
+    
+    - id: "security-monitor"
+      name: "Security Monitor"
+      type: "security"
+      priority: 100
+      config:
+        checks:
+          - name: "vulnerability_scan"
+            metric: "security.vulnerabilities"
+            threshold: "critical == 0"
+            alert_on: "threshold_breached"
+          
+          - name: "secret_detection"
+            metric: "security.secrets_found"
+            threshold: "== 0"
+            alert_on: "above_threshold"
+          
+          - name: "dependency_health"
+            metric: "security.dependency_health"
+            threshold: ">= 90%"
+            alert_on: "below_threshold"
+    
+    - id: "pipeline-monitor"
+      name: "Pipeline Monitor"
+      type: "orchestration"
+      priority: 85
+      config:
+        checks:
+          - name: "pipeline_success_rate"
+            metric: "pipeline.success_rate"
+            threshold: ">= 95%"
+            alert_on: "below_threshold"
+          
+          - name: "pipeline_duration"
+            metric: "pipeline.avg_duration"
+            threshold: "< 5min"
+            alert_on: "above_threshold"
+          
+          - name: "failed_pipelines"
+            metric: "pipeline.failed_count"
+            threshold: "< 5"
+            alert_on: "above_threshold"
+
+  alerting:
+    enabled: true
+    alert_rules:
+      - name: "critical_alert"
+        severity: "critical"
+        conditions:
+          - metric: "system.health"
+            operator: "<"
+            value: 50
+        actions:
+          - "pagerduty"
+          - "slack_critical"
+          - "email_oncall"
+      
+      - name: "warning_alert"
+        severity: "warning"
+        conditions:
+          - metric: "system.health"
+            operator: "<"
+            value: 80
+        actions:
+          - "slack_warning"
+          - "log_alert"
+      
+      - name: "info_alert"
+        severity: "info"
+        conditions:
+          - metric: "system.health"
+            operator: "<"
+            value: 95
+        actions:
+          - "log_alert"
+    
+    notification_channels:
+      - type: "slack"
+        webhook_url: "${SLACK_WEBHOOK_URL}"
+        channels:
+          critical: "#gl-critical"
+          warning: "#gl-warnings"
+          info: "#gl-info"
+      
+      - type: "pagerduty"
+        integration_key: "${PAGERDUTY_KEY}"
+      
+      - type: "email"
+        recipients:
+          critical: ["oncall@company.com"]
+          warning: ["devops@company.com"]
+
+  dashboards:
+    enabled: true
+    dashboards:
+      - name: "governance-overview"
+        panels:
+          - "Governance Health"
+          - "Compliance Rate"
+          - "Violation Count"
+          - "Validation Pass Rate"
+      
+      - name: "performance-overview"
+        panels:
+          - "Response Time"
+          - "Throughput"
+          - "Error Rate"
+          - "Resource Usage"
+      
+      - name: "security-overview"
+        panels:
+          - "Vulnerability Count"
+          - "Secret Detection"
+          - "Dependency Health"
+
+  anomaly_detection:
+    enabled: true
+    algorithms:
+      - name: "statistical"
+        method: "zscore"
+        threshold: 3
+      
+      - name: "ml_based"
+        model: "isolation_forest"
+        threshold: 0.5
+    
+    metrics_to_monitor:
+      - "response_time"
+      - "error_rate"
+      - "throughput"
+      - "memory_usage"
+      - "cpu_usage"
+
+  notifications:
+    enabled: true
+    channels:
+      - type: "event-stream"
+      - type: "log"
+      - type: "slack"
+        channel: "#gl-monitoring"
+    events:
+      - "alert_triggered"
+      - "alert_resolved"
+      - "anomaly_detected"
+      - "monitor_started"
+      - "monitor_failed"
+
+  monitoring:
+    enabled: true
+    metrics:
+      - "monitor_uptime"
+      - "alerts_triggered"
+      - "alerts_resolved"
+      - "anomalies_detected"
+      - "false_positives"
+    reporting_interval: "minute"
+
+status:
+  phase: "active"
+  last_monitor_cycle: null
+  uptime: 100
+  alerts_triggered: 0
+  alerts_resolved: 0
