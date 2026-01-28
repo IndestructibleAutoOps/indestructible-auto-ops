@@ -55,10 +55,10 @@ class OrchestrationEngine {
     try {
       const primaryConfigPath = path.join(__dirname, '../../../.github/agents/agent-orchestration.yml');
       const fallbackConfigPath = path.join(__dirname, '../../ops/agents/agent-orchestration.yaml');
-      const configPath = (await this._resolveConfigPath(primaryConfigPath, fallbackConfigPath));
-      await fs.readFile(configPath, 'utf8');
-      logger.info('Configuration loaded', { path: configPath });
-      this.logGovernanceEvent('config_loaded', { path: configPath });
+      const configPath = await this._resolveConfigPath(primaryConfigPath, fallbackConfigPath);
+      const configContent = await fs.readFile(configPath, 'utf8');
+      logger.info('Configuration loaded', { path: configPath, size: configContent.length });
+      this.logGovernanceEvent('config_loaded', { path: configPath, size: configContent.length });
     } catch (error) {
       logger.error('Configuration load failed', { error: error.message });
       this.logGovernanceEvent('config_load_failed', { error: error.message });
@@ -70,11 +70,16 @@ class OrchestrationEngine {
       await fs.access(primaryPath);
       return primaryPath;
     } catch (error) {
-      logger.warn('Primary configuration missing, falling back', {
-        primaryPath,
-        fallbackPath
-      });
-      return fallbackPath;
+      try {
+        await fs.access(fallbackPath);
+        logger.warn('Primary configuration missing, falling back', {
+          primaryPath,
+          fallbackPath
+        });
+        return fallbackPath;
+      } catch (fallbackError) {
+        throw new Error(`Configuration not found at ${primaryPath} or ${fallbackPath}`);
+      }
     }
   }
 
@@ -310,4 +315,3 @@ if (require.main === module) {
 }
 
 module.exports = OrchestrationEngine;
-
