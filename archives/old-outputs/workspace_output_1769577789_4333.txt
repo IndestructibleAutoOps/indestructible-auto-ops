@@ -1,0 +1,14 @@
+infrastructure/kubernetes/manifests
+├── base
+├── overlays
+│   ├── dev
+│   ├── production
+│   └── staging
+└── systems
+    ├── elasticsearch-search-system
+    ├── engine
+    ├── esync-platform
+    ├── file-organizer-system
+    └── instant
+
+12 directories, 0 files

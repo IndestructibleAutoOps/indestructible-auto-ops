@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "violations": [
+    {
+      "code": "JSON-INVALID",
+      "severity": "high",
+      "message": "Invalid JSON syntax",
+      "file": "aep-engine-web/tsconfig.json",
+      "fixRequired": true
+    }
+  ],
+  "events": [
+    {
+      "id": "gl-validation-1769559943552",
+      "type": "validation",
+      "timestamp": "2026-01-28T00:25:43.552Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 1,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T00:25:43.467Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}

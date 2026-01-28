@@ -1,0 +1,118 @@
+name: GL Governance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+  workflow_dispatch:
+
+jobs:
+  gl-engine-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - Engine
+        run: |
+          cd engine
+          npx ts-node governance/gl_engine.ts validate --strict
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          cd engine
+          npx ts-node governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Upload Governance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-governance-engine
+          path: |
+            engine/.governance/event-stream.jsonl
+            engine/.governance/evidence-chain.jsonl
+
+  gl-file-organizer-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - File Organizer
+        run: |
+          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=file-organizer-system
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Upload Governance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-governance-file-organizer
+          path: |
+            file-organizer-system/.governance/event-stream.jsonl
+            file-organizer-system/.governance/evidence-chain.jsonl
+
+  gl-gate-execution:
+    runs-on: ubuntu-latest
+    needs: [gl-engine-validation, gl-file-organizer-validation]
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Execute All GL Gates
+        run: |
+          cd engine
+          npx ts-node gl-gate/core/GateExecutor.ts executeAll
+          
+      - name: Generate Governance Summary
+        if: always()
+        run: |
+          cd engine
+          npx ts-node gl-gate/gates/GovernanceSummaryGate.ts
+          
+      - name: Upload Gate Reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-gate-reports
+          path: |
+            engine/.governance/gate-reports/*.json

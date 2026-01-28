@@ -1,0 +1,63 @@
+From https://github.com/MachineNativeOps/machine-native-ops
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+error: The following untracked working tree files would be overwritten by checkout:
+	.agent_hooks/run_all_hooks.py
+	.agent_hooks/shutdown/00_track_processes_on_ports.py
+	.agent_hooks/shutdown/_readme.txt
+	.agent_hooks/startup/_readme.txt
+	.github/agents/agent-orchestration.yml
+	.github/hooks/post-commit.sh
+	.github/hooks/pre-commit
+	.github/hooks/pre-push
+	.github/workflows/gl-validation.yml
+	GL-GLOBAL-INTEGRATION-COMPLETE.md
+	KUBERNETES-INTEGRATION-COMPLETE.md
+	add-gl-markers.py
+	engine/.governance/audit-reports/gl-root-audit-init.json
+	engine/.governance/governance-event-stream.jsonl
+	engine/aep-engine-app/scripts/generate_qr.mjs
+	engine/gl-gate/gates/gates-01-99.yaml
+	engine/gl-gate/gates/index.ts
+	engine/gl-gate/scripts/validate-gates-01-99.js
+	engine/scripts/add-gl-markers.js
+	engine/scripts/generate-global-audit-report.js
+	esync-platform/.governance/event-stream.jsonl
+	esync-platform/README.md
+	esync-platform/cmd/syncd/main.go
+	esync-platform/go.mod
+	esync-platform/governance/GL_SEMANTIC_ANCHOR.json
+	esync-platform/internal/connectors/interface.go
+	esync-platform/internal/monitoring/metrics.go
+	esync-platform/internal/registry/service.go
+	esync-platform/pipelines/example-pipeline.yaml
+	infrastructure/kubernetes/manifests/INDEX.yaml
+	infrastructure/kubernetes/manifests/README.md
+	infrastructure/kubernetes/manifests/base/configmap.yaml
+	infrastructure/kubernetes/manifests/base/hpa.yaml
+	infrastructure/kubernetes/manifests/base/ingress.yaml
+	infrastructure/kubernetes/manifests/base/kustomization.yaml
+	infrastructure/kubernetes/manifests/base/limitrange.yaml
+	infrastructure/kubernetes/manifests/base/namespace.yaml
+	infrastructure/kubernetes/manifests/base/networkpolicy.yaml
+	infrastructure/kubernetes/manifests/base/poddisruptionbudget.yaml
+	infrastructure/kubernetes/manifests/base/resourcequota.yaml
+	infrastructure/kubernetes/manifests/base/secret.yaml
+	infrastructure/kubernetes/manifests/base/serviceaccount.yaml
+	infrastructure/kubernetes/manifests/overlays/dev/kustomization.yaml
+	infrastructure/kubernetes/manifests/overlays/production/kustomization.yaml
+	infrastructure/kubernetes/manifests/overlays/staging/kustomization.yaml
+	infrastructure/kubernetes/manifests/systems/elasticsearch-search-system/deployment.yaml
+	infrastructure/kubernetes/manifests/systems/elasticsearch-search-system/service.yaml
+	infrastructure/kubernetes/manifests/systems/engine/deployment.yaml
+	infrastructure/kubernetes/manifests/systems/engine/service.yaml
+	infrastructure/kubernetes/manifests/systems/esync-platform/deployment.yaml
+	infrastructure/kubernetes/manifests/systems/esync-platform/service.yaml
+	infrastructure/kubernetes/manifests/systems/file-organizer-system/deployment.yaml
+	infrastructure/kubernetes/manifests/systems/file-organizer-system/service.yaml
+	infrastructure/kubernetes/manifests/systems/instant/deployment.yaml
+	infrastructure/kubernetes/manifests/systems/instant/service.yaml
+	instant/governance/GL_SEMANTIC_ANCHOR.json
+	todo.md
+Please move or remove them before you switch branches.
+Aborting

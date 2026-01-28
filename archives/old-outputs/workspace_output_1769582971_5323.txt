@@ -1,0 +1,50 @@
+name: GL Governance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - '.github/governance/**'
+      - '.github/agents/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - '.github/governance/**'
+      - '.github/agents/**'
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 0 * * *' # Daily audit at midnight UTC
+
+jobs:
+  gl-engine-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - Engine
+        run: |
+          cd engine
+          npx ts-node governance/gl_engine.ts validate --strict
+          
+      - name: Generate Governance Event Stream

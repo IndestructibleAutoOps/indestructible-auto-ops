@@ -1,0 +1,186 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-bootstrap-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Auto-Federation Configuration
+
+apiVersion: bootstrap.machinenativeops.io/v1
+kind: AutoFederationConfiguration
+metadata:
+  name: gl-auto-federation
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  enabled: true
+  federation_modes:
+    - name: "cross-repository"
+      trigger: "governance_policy_update"
+      scope: "all_repositories"
+    - name: "cross-platform"
+      trigger: "platform_event"
+      scope: "all_platforms"
+    - name: "cross-organization"
+      trigger: "organization_policy_update"
+      scope: "all_organizations"
+
+  federation_layers:
+    - id: "gl-layer-federation"
+      name: "GL Layer Federation"
+      type: "governance"
+      priority: 100
+      config:
+        federation_type: "synchronization"
+        sync_direction: "bidirectional"
+        conflict_resolution: "manual"
+        layers:
+          - "GL00-10"
+          - "GL10-30"
+          - "GL30-60"
+          - "GL60-90"
+          - "GL90-99"
+
+    - id: "policy-federation"
+      name: "Policy Federation"
+      type: "policy"
+      priority: 95
+      config:
+        federation_type: "propagation"
+        propagation_direction: "downstream"
+        policy_types:
+          - "naming_conventions"
+          - "schema_compliance"
+          - "governance_markers"
+          - "semantic_anchoring"
+        override_protection: true
+
+    - id: "artifact-federation"
+      name: "Artifact Federation"
+      type: "data"
+      priority: 90
+      config:
+        federation_type: "replication"
+        replication_strategy: "eventual_consistency"
+        artifact_types:
+          - "audit_reports"
+          - "validation_results"
+          - "compliance_metrics"
+          - "governance_events"
+        retention_policy: "90_days"
+
+  federation_endpoints:
+    - id: "github-federation"
+      name: "GitHub Federation"
+      type: "git_platform"
+      config:
+        platform: "github"
+        repositories:
+          - "MachineNativeOps/machine-native-ops"
+          - "MachineNativeOps/gl-runtime-platform"
+        sync_patterns:
+          - ".governance/**"
+          - "gl-runtime-platform/**"
+        authentication:
+          type: "token"
+          token_env: "GL_GITHUB_TOKEN"
+
+    - id: "gitlab-federation"
+      name: "GitLab Federation"
+      type: "git_platform"
+      config:
+        platform: "gitlab"
+        projects:
+          - "machinenativeops/governance-core"
+          - "machinenativeops/governance-tools"
+        sync_patterns:
+          - ".governance/**"
+          - "engine/governance/**"
+        authentication:
+          type: "token"
+          token_env: "GL_GITLAB_TOKEN"
+
+  validation:
+    pre_federation:
+      enabled: true
+      checks:
+        - "endpoint_accessible"
+        - "authentication_valid"
+        - "permissions_sufficient"
+        - "quota_available"
+    post_federation:
+      enabled: true
+      checks:
+        - "federation_successful"
+        - "data_integrity_verified"
+        - "conflicts_resolved"
+      rollback_on_failure: true
+
+  conflict_resolution:
+    enabled: true
+    strategies:
+      - name: "last_write_wins"
+        applies_to:
+          - "metadata"
+          - "timestamps"
+      - name: "manual_review"
+        applies_to:
+          - "policy_definitions"
+          - "governance_rules"
+      - name: "merge_with_conflict_markers"
+        applies_to:
+          - "documentation"
+          - "configuration_files"
+    escalation:
+      enabled: true
+      threshold: "critical_conflicts"
+      channel: "#gl-federation-issues"
+
+  hooks:
+    pre_federation:
+      - name: "validate-endpoints"
+        type: "validation"
+        script: "../scripts/validate-federation-endpoints.sh"
+      - name: "create-backup"
+        type: "backup"
+        action: "snapshot"
+    
+    post_federation:
+      - name: "verify-integrity"
+        type: "verification"
+        script: "../scripts/verify-federation-integrity.sh"
+      - name: "update-metadata"
+        type: "metadata"
+        action: "update"
+
+  notifications:
+    enabled: true
+    channels:
+      - type: "event-stream"
+      - type: "log"
+      - type: "slack"
+        channel: "#gl-federation"
+    events:
+      - "federation_started"
+      - "federation_completed"
+      - "federation_failed"
+      - "conflict_detected"
+      - "conflict_resolved"
+
+  monitoring:
+    enabled: true
+    metrics:
+      - "federations_performed"
+      - "federations_failed"
+      - "conflicts_detected"
+      - "conflicts_resolved"
+      - "average_federation_time"
+    reporting_interval: "hourly"
+
+status:
+  phase: "active"
+  last_federation: null
+  total_federations: 0
+  success_rate: 100

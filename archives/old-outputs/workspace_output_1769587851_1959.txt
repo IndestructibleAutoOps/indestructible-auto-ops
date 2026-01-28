@@ -1,0 +1,72 @@
+✅ GL validation passed
+[main b2c62add] GL-ROOT 全域稽核報告生成 - Global Audit Report Generated
+ 2 files changed, 14 insertions(+), 26 deletions(-)
+Validating engine...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587854129",
+      "type": "validation",
+      "timestamp": "2026-01-28T08:10:54.129Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T08:10:53.901Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587856074",
+      "type": "validation",
+      "timestamp": "2026-01-28T08:10:56.074Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T08:10:56.067Z",
+    "Workspace: /workspace/machine-native-ops/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+Validating instant...
+Validating elasticsearch-search-system...
+Validating infrastructure...
+Validating esync-platform...
+✅ GL validation passed for all workspaces
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit b2c62ad.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      https://github.com/MachineNativeOps/machine-native-ops/security/dependabot        
+remote: 
+To https://github.com/MachineNativeOps/machine-native-ops.git
+   606bea93..b2c62add  main -> main

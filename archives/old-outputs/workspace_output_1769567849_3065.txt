@@ -1,0 +1,25 @@
+{
+  "success": false,
+  "violations": [
+    {
+      "code": "GL-ANCHOR-MISSING",
+      "severity": "critical",
+      "message": "GL Semantic Anchor not found or invalid",
+      "file": "governance/GL_SEMANTIC_ANCHOR.json",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-ENGINE-ERROR",
+      "severity": "critical",
+      "message": "GL Engine execution error: Critical GL violations detected: 1",
+      "file": "governance/gl_engine.ts",
+      "fixRequired": true
+    }
+  ],
+  "events": [],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T02:37:32.031Z",
+    "Workspace: /workspace/machine-native-ops",
+    "Strict Mode: true"
+  ]
+}

@@ -1,0 +1,75 @@
+✅ GL validation passed
+[main 606bea93] GL Python Syntax Fixes - 300 files fixed, 0 syntax errors remaining
+ 306 files changed, 38299 insertions(+), 18173 deletions(-)
+ create mode 100644 engine/.governance/audit-reports/bandit-report-final.json
+ create mode 100644 engine/.governance/audit-reports/bandit-report-fixed.json
+ create mode 100644 engine/engine/.governance/audit-reports/global-governance-audit-report.json
+Validating engine...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587615292",
+      "type": "validation",
+      "timestamp": "2026-01-28T08:06:55.292Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T08:06:55.061Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587617279",
+      "type": "validation",
+      "timestamp": "2026-01-28T08:06:57.279Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T08:06:57.235Z",
+    "Workspace: /workspace/machine-native-ops/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+Validating instant...
+Validating elasticsearch-search-system...
+Validating infrastructure...
+Validating esync-platform...
+✅ GL validation passed for all workspaces
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit 606bea9. Existing alerts might have been detected because the code changes were too large.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      https://github.com/MachineNativeOps/machine-native-ops/security/dependabot        
+remote: 
+To https://github.com/MachineNativeOps/machine-native-ops.git
+   6b18a9a8..606bea93  main -> main

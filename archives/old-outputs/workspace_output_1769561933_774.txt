@@ -1,0 +1,6 @@
+Testing exclusion logic:
+  config/build-tools/drizzle.config.ts: NOT EXCLUDED
+  node_modules/package/index.js: EXCLUDED
+  dist/bundle.js: EXCLUDED
+  coverage/report.html: EXCLUDED
+  gl-audit-reports/report.json: EXCLUDED

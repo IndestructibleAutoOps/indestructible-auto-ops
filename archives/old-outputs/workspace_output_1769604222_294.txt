@@ -1,0 +1,165 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: deployment-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Docker Compose Deployment Configuration
+
+version: '3.8'
+
+services:
+  # Orchestration Engine
+  orchestration-engine:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    image: gl-runtime-platform:latest
+    container_name: gl-orchestration-engine
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - GL_MODE=orchestration
+      - LOG_LEVEL=info
+    volumes:
+      - ../storage/gl-artifacts-store:/app/storage/gl-artifacts-store
+      - ../storage/gl-events-stream:/app/storage/gl-events-stream
+    networks:
+      - gl-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "gl-governed=true"
+      - "gl-layer=GL90-99"
+      - "gl-semantic=orchestration-service"
+
+  # Governance Core Service
+  governance-core:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    image: gl-governance:latest
+    container_name: gl-governance-core
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - GL_MODE=governance
+      - LOG_LEVEL=info
+    volumes:
+      - ../storage/gl-events-stream:/app/storage/gl-events-stream
+    networks:
+      - gl-network
+    restart: unless-stopped
+    depends_on:
+      - orchestration-engine
+    labels:
+      - "gl-governed=true"
+      - "gl-layer=GL60-90"
+      - "gl-semantic=governance-service"
+
+  # Connector Services
+  connector-services:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    image: gl-connectors:latest
+    container_name: gl-connector-services
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+      - GL_MODE=connectors
+      - LOG_LEVEL=info
+      - GL_TOKEN=${GL_TOKEN}
+    volumes:
+      - ../storage/gl-events-stream:/app/storage/gl-events-stream
+      - /workspace:/workspace:ro
+    networks:
+      - gl-network
+    restart: unless-stopped
+    depends_on:
+      - orchestration-engine
+      - governance-core
+    labels:
+      - "gl-governed=true"
+      - "gl-layer=GL30-60"
+      - "gl-semantic=connector-service"
+
+  # Storage Service
+  storage-service:
+    image: redis:alpine
+    container_name: gl-storage-service
+    ports:
+      - "6379:6379"
+    volumes:
+      - gl-storage-data:/data
+    networks:
+      - gl-network
+    restart: unless-stopped
+    labels:
+      - "gl-governed=true"
+      - "gl-layer=GL00-10"
+      - "gl-semantic=storage-service"
+
+  # Monitoring Service
+  monitoring:
+    image: prom/prometheus:latest
+    container_name: gl-monitoring
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    networks:
+      - gl-network
+    restart: unless-stopped
+    labels:
+      - "gl-governed=true"
+      - "gl-layer=GL90-99"
+      - "gl-semantic=monitoring-service"
+
+  # Dashboard Service
+  dashboard:
+    image: grafana/grafana:latest
+    container_name: gl-dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards
+    networks:
+      - gl-network
+    restart: unless-stopped
+    depends_on:
+      - monitoring
+    labels:
+      - "gl-governed=true"
+      - "gl-layer=GL90-99"
+      - "gl-semantic=dashboard-service"
+
+networks:
+  gl-network:
+    driver: bridge
+    labels:
+      - "gl-governed=true"
+      - "gl-semantic=network"
+
+volumes:
+  gl-storage-data:
+    labels:
+      - "gl-governed=true"
+  prometheus-data:
+    labels:
+      - "gl-governed=true"
+  grafana-data:
+    labels:
+      - "gl-governed=true"

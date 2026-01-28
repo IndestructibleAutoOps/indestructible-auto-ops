@@ -1,0 +1,8 @@
+[main 8eaa7347] GL 漏洞修復完成 - 為所有系統添加 GL 治理結構
+ 9 files changed, 211 insertions(+), 2 deletions(-)
+ create mode 100644 elasticsearch-search-system/.governance/event-stream.jsonl
+ create mode 100644 elasticsearch-search-system/governance/GL_SEMANTIC_ANCHOR.json
+ create mode 100644 infrastructure/.governance/event-stream.jsonl
+ create mode 100644 infrastructure/governance/GL_SEMANTIC_ANCHOR.json
+ create mode 100644 instant/.governance/event-stream.jsonl
+ create mode 100644 instant/governance/GL_SEMANTIC_ANCHOR.json

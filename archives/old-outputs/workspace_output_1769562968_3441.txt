@@ -1,0 +1,109 @@
+A  .github/governance/audit-results/AUDIT_SUMMARY.md
+A  .github/governance/audit-results/BEST_PRACTICE_MIGRATION_PLAN.md
+M  .github/workflows/gl-validation.yml
+ M .governance/event-stream.jsonl
+A  engine/.governance/audit-results/GLOBAL_GOVERNANCE_AUDIT_REPORT.json
+A  engine/.governance/audit-results/GL_EVIDENCE_CHAIN.json
+A  engine/.governance/audit-results/governance_event_stream.json
+A  engine/.governance/audit-results/per-file-reports/engine_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_SPEC.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_artifacts_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_artifacts_artifact_manager.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_artifacts_evidence_chain.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_artifacts_manifest_generator.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_executor_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_executor_local_executor.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_executor_remote_executor.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_executor_rollback.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_governance_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_governance_anchor_resolver.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_governance_events_writer.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_governance_gl_engine.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_governance_rule_evaluator.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_index.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_interfaces-fix.d.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_interfaces.d.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_jest.config.js_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_loader_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_loader_fs_loader.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_loader_git_loader.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_loader_merge_index.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_normalizer_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_normalizer_defaults_applier.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_normalizer_env_merger.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_normalizer_module_defaults.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_package-lock.json_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_package.json_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_parser_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_parser_anchor_resolver.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_parser_json_passthrough.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_parser_yaml_parser.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_renderer_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_renderer_artifact_writer.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_renderer_module_mapper.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_renderer_template_engine.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tests_artifacts_evidence_chain.test.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tests_governance_rule_evaluator.test.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tests_loader_fs_loader.test.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tests_loader_merge_index.test.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tests_normalizer_env_merger.test.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tests_validator_schema_validator.test.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_tsconfig.json_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_validator_README.md_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_validator_error_reporter.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_validator_module_validator.ts_audit.json
+A  engine/.governance/audit-results/per-file-reports/engine_validator_schema_validator.ts_audit.json
+ D governance-audit-results/AUDIT_SUMMARY.md
+ D governance-audit-results/BEST_PRACTICE_MIGRATION_PLAN.md
+ D governance-audit-results/GLOBAL_GOVERNANCE_AUDIT_REPORT.json
+ D governance-audit-results/GL_EVIDENCE_CHAIN.json
+ D governance-audit-results/governance_event_stream.json
+ D governance-audit-results/per-file-reports/engine_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_SPEC.md_audit.json
+ D governance-audit-results/per-file-reports/engine_artifacts_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_artifacts_artifact_manager.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_artifacts_evidence_chain.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_artifacts_manifest_generator.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_executor_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_executor_local_executor.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_executor_remote_executor.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_executor_rollback.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_governance_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_governance_anchor_resolver.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_governance_events_writer.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_governance_gl_engine.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_governance_rule_evaluator.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_index.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_interfaces-fix.d.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_interfaces.d.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_jest.config.js_audit.json
+ D governance-audit-results/per-file-reports/engine_loader_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_loader_fs_loader.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_loader_git_loader.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_loader_merge_index.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_normalizer_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_normalizer_defaults_applier.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_normalizer_env_merger.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_normalizer_module_defaults.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_package-lock.json_audit.json
+ D governance-audit-results/per-file-reports/engine_package.json_audit.json
+ D governance-audit-results/per-file-reports/engine_parser_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_parser_anchor_resolver.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_parser_json_passthrough.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_parser_yaml_parser.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_renderer_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_renderer_artifact_writer.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_renderer_module_mapper.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_renderer_template_engine.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tests_artifacts_evidence_chain.test.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tests_governance_rule_evaluator.test.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tests_loader_fs_loader.test.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tests_loader_merge_index.test.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tests_normalizer_env_merger.test.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tests_validator_schema_validator.test.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_tsconfig.json_audit.json
+ D governance-audit-results/per-file-reports/engine_validator_README.md_audit.json
+ D governance-audit-results/per-file-reports/engine_validator_error_reporter.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_validator_module_validator.ts_audit.json
+ D governance-audit-results/per-file-reports/engine_validator_schema_validator.ts_audit.json
+ M todo.md

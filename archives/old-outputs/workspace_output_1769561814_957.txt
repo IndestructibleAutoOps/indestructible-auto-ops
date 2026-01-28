@@ -1,0 +1,300 @@
+{
+  "success": true,
+  "violations": [
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-console.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-console.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-console.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-lint.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-lint.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-lint.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tests/arch-lint.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tests/arch-lint.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tests/arch-lint.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tools/arch-lint.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tools/arch-lint.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tools/arch-lint.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/log-validator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/log-validator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/log-validator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/dev/automation/auto-pilot.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/dev/automation/auto-pilot.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/dev/automation/auto-pilot.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/dev/automation/code-generator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/dev/automation/code-generator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/dev/automation/code-generator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",

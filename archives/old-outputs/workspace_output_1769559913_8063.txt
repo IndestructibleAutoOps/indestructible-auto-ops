@@ -1,0 +1,1668 @@
+{
+  "success": true,
+  "violations": [
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/(tabs)/_layout.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/(tabs)/_layout.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/(tabs)/_layout.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/(tabs)/audit.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/(tabs)/audit.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/(tabs)/audit.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/(tabs)/index.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/(tabs)/index.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/(tabs)/index.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/(tabs)/report.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/(tabs)/report.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/(tabs)/report.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/(tabs)/results.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/(tabs)/results.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/(tabs)/results.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/(tabs)/settings.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/(tabs)/settings.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/(tabs)/settings.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/_layout.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/_layout.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/_layout.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/dev/theme-lab.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/dev/theme-lab.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/dev/theme-lab.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app/oauth/callback.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app/oauth/callback.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app/oauth/callback.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/app.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/app.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/app.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/babel.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/babel.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/babel.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/external-link.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/external-link.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/external-link.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/haptic-tab.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/haptic-tab.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/haptic-tab.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/hello-wave.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/hello-wave.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/hello-wave.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/parallax-scroll-view.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/parallax-scroll-view.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/parallax-scroll-view.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/screen-container.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/screen-container.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/screen-container.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/themed-view.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/themed-view.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/themed-view.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/ui/collapsible.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/ui/collapsible.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/ui/collapsible.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/ui/event-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/ui/event-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/ui/event-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/ui/icon-symbol.ios.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/ui/icon-symbol.ios.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/ui/icon-symbol.ios.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/ui/icon-symbol.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/ui/icon-symbol.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/ui/icon-symbol.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/ui/problem-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/ui/problem-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/ui/problem-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/components/ui/statistic-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/components/ui/statistic-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/components/ui/statistic-card.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/constants/const.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/constants/const.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/constants/const.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/constants/oauth.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/constants/oauth.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/constants/oauth.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/constants/theme.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/constants/theme.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/constants/theme.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/hooks/use-auth.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/hooks/use-auth.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/hooks/use-auth.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/hooks/use-color-scheme.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/hooks/use-color-scheme.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/hooks/use-color-scheme.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/hooks/use-color-scheme.web.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/hooks/use-color-scheme.web.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/hooks/use-color-scheme.web.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/hooks/use-colors.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/hooks/use-colors.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/hooks/use-colors.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/metro.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/metro.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/metro.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/scripts/load-env.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/scripts/load-env.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/scripts/load-env.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-app/tailwind.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-app/tailwind.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-app/tailwind.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/App.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/App.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/App.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/components/EventCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/components/EventCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/components/EventCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/components/ProblemCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/components/ProblemCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/components/ProblemCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/components/StatisticCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/components/StatisticCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/components/StatisticCard.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/data/mock.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/data/mock.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/data/mock.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/hooks/useAppState.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/hooks/useAppState.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/hooks/useAppState.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/main.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/main.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/main.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/screens/AuditScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/screens/AuditScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/screens/AuditScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/screens/HomeScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/screens/HomeScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/screens/HomeScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/screens/ReportScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/screens/ReportScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/screens/ReportScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/screens/ResultsScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/screens/ResultsScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/screens/ResultsScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/src/screens/SettingsScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/src/screens/SettingsScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/src/screens/SettingsScreen.tsx",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/tailwind.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/tailwind.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/tailwind.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "JSON-INVALID",
+      "severity": "high",
+      "message": "Invalid JSON syntax",
+      "file": "aep-engine-web/tsconfig.json",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "aep-engine-web/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "aep-engine-web/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "aep-engine-web/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "executor/local_executor.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "executor/local_executor.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "executor/local_executor.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "executor/remote_executor.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "executor/remote_executor.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "executor/remote_executor.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "executor/rollback.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "executor/rollback.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "executor/rollback.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "gl-gate/core/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "gl-gate/core/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "gl-gate/core/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "gl-gate/gates/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "gl-gate/gates/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "gl-gate/gates/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "gl-gate/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "gl-gate/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "gl-gate/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "gl-gate/types/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "gl-gate/types/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "gl-gate/types/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "interfaces-fix.d.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "interfaces-fix.d.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "interfaces-fix.d.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "interfaces.d.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "interfaces.d.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "interfaces.d.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "loader/git_loader.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "loader/git_loader.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "loader/git_loader.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "normalizer/defaults_applier.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "normalizer/defaults_applier.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "normalizer/defaults_applier.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "normalizer/env_merger.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "normalizer/env_merger.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "normalizer/env_merger.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "normalizer/module_defaults.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "normalizer/module_defaults.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "normalizer/module_defaults.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "parser/anchor_resolver.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "parser/anchor_resolver.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "parser/anchor_resolver.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "parser/json_passthrough.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "parser/json_passthrough.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "parser/json_passthrough.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "parser/yaml_parser.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "parser/yaml_parser.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "parser/yaml_parser.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "renderer/artifact_writer.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "renderer/artifact_writer.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "renderer/artifact_writer.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "renderer/module_mapper.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "renderer/module_mapper.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "renderer/module_mapper.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "renderer/template_engine.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "renderer/template_engine.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "renderer/template_engine.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "tests/artifacts/evidence_chain.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "tests/artifacts/evidence_chain.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "tests/artifacts/evidence_chain.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "tests/governance/rule_evaluator.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "tests/governance/rule_evaluator.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "tests/governance/rule_evaluator.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "tests/loader/fs_loader.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "tests/loader/fs_loader.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "tests/loader/fs_loader.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "tests/loader/merge_index.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "tests/loader/merge_index.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "tests/loader/merge_index.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "tests/normalizer/env_merger.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "tests/normalizer/env_merger.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "tests/normalizer/env_merger.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "tests/validator/schema_validator.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "tests/validator/schema_validator.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "tests/validator/schema_validator.test.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "types/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "types/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "types/index.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "validator/error_reporter.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "validator/error_reporter.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "validator/error_reporter.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "validator/module_validator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "validator/module_validator.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "validator/module_validator.ts",
+      "fixRequired": true
+    }
+  ],
+  "events": [
+    {
+      "id": "gl-validation-1769559915415",
+      "type": "validation",
+      "timestamp": "2026-01-28T00:25:15.415Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 235,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T00:25:15.379Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}

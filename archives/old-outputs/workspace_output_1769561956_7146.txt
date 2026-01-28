@@ -1,0 +1,50 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   .governance/event-stream.jsonl
+	new file:   GL-FINAL-COMPLETION.md
+	new file:   GL-FIX-COMPLETION.md
+	new file:   GL-INTEGRATION-COMPLETION.md
+	modified:   archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-console.ts
+	modified:   archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-lint.ts
+	modified:   archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tests/arch-lint.test.ts
+	modified:   archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tools/arch-lint.ts
+	modified:   archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/log-validator.ts
+	modified:   archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts
+	modified:   config/build-tools/drizzle.config.ts
+	modified:   config/build-tools/eslint.config.js
+	modified:   config/build-tools/jest.config.js
+	modified:   config/build-tools/postcss.config.js
+	modified:   config/build-tools/tailwind.config.ts
+	modified:   config/build-tools/vite.config.ts
+	modified:   config/dev/automation/auto-pilot.js
+	modified:   config/dev/automation/code-generator.ts
+	modified:   config/validation/worldClassValidation.ts
+	modified:   dashboard/dashboard.js
+	modified:   docs/dag-visualization/interactive/dag-data.js
+	modified:   docs/dag-visualization/interactive/dag-visualization.js
+	modified:   engine/.governance/event-stream.jsonl
+	modified:   engine/aep-engine-app/constants/const.ts
+	modified:   engine/aep-engine-app/constants/oauth.ts
+	modified:   engine/aep-engine-app/constants/theme.ts
+	modified:   engine/aep-engine-app/hooks/use-auth.ts
+	modified:   engine/aep-engine-app/hooks/use-color-scheme.ts
+	modified:   engine/aep-engine-app/hooks/use-color-scheme.web.ts
+	modified:   engine/aep-engine-app/hooks/use-colors.ts
+	modified:   engine/aep-engine-app/scripts/load-env.js
+	modified:   engine/aep-engine-web/src/data/mock.ts
+	modified:   engine/aep-engine-web/src/hooks/useAppState.ts
+	modified:   engine/gl-gate/core/index.ts
+	modified:   engine/gl-gate/gates/index.ts
+	modified:   engine/gl-gate/types/index.ts
+	modified:   engine/index.ts
+	modified:   engine/interfaces-fix.d.ts
+	modified:   engine/interfaces.d.ts
+	modified:   engine/jest.config.js
+	new file:   engine/scripts/add-gl-markers-v2.js
+	modified:   engine/scripts/add-gl-markers.js
+	modified:   engine/tests/artifacts/evidence_chain.test.ts
+	modified:   engine/tests/governance/rule_evaluator.test.ts
+	modified:   engine/tests/loader/fs_loader.test.ts

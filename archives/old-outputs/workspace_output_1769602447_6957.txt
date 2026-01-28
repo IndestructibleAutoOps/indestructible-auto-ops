@@ -1,0 +1,98 @@
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769602449828",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:14:09.828Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:14:09.611Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769602451805",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:14:11.805Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:14:11.793Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   —————————————————————————————————————————        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       —— GitHub Personal Access Token ——————————————————————        
+remote:        locations:        
+remote:          - commit: af57628a89583137c6bfe8c8b82a2261e9ebfce9        
+remote:            path: summarized_conversations/original_conversation_1769597186_8209.txt:3        
+remote:          - commit: af57628a89583137c6bfe8c8b82a2261e9ebfce9        
+remote:            path: summarized_conversations/original_conversation_1769597186_8209.txt:101        
+remote:          - commit: af57628a89583137c6bfe8c8b82a2261e9ebfce9        
+remote:            path: summarized_conversations/original_conversation_1769597186_8209.txt:111        
+remote:          - commit: af57628a89583137c6bfe8c8b82a2261e9ebfce9        
+remote:            path: summarized_conversations/original_conversation_1769597186_8209.txt:121        
+remote:          - commit: af57628a89583137c6bfe8c8b82a2261e9ebfce9        
+remote:            path: summarized_conversations/original_conversation_1769597186_8209.txt:195        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/MachineNativeOps/machine-native-ops/security/secret-scanning/unblock-secret/38sWWVfLKwRDOs7ou3pz3NzZbDM        
+remote:             
+remote: 
+remote: 
+To https://github.com/MachineNativeOps/machine-native-ops.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/MachineNativeOps/machine-native-ops.git'

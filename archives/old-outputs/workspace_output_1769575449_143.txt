@@ -1,0 +1,31 @@
+  gl-file-organizer-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - File Organizer
+        run: |
+          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=file-organizer-system
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          npx ts-node engine/governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Upload Governance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-governance-file-organizer
+          path: |
+            file-organizer-system/.governance/event-stream.jsonl

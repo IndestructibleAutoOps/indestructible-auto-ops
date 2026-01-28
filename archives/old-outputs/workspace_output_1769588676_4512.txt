@@ -1,0 +1,17 @@
+error: The following untracked working tree files would be overwritten by checkout:
+	engine/aep-engine-app/scripts/generate_qr.mjs
+	engine/gl-gate/gates/gates-01-99.yaml
+	engine/gl-gate/gates/index.ts
+	engine/gl-gate/scripts/validate-gates-01-99.js
+	engine/scripts/add-gl-markers.js
+	engine/scripts/generate-global-audit-report.js
+	esync-platform/README.md
+	esync-platform/cmd/syncd/main.go
+	esync-platform/go.mod
+	esync-platform/governance/GL_SEMANTIC_ANCHOR.json
+	esync-platform/internal/connectors/interface.go
+	esync-platform/internal/monitoring/metrics.go
+	esync-platform/internal/registry/service.go
+	esync-platform/pipelines/example-pipeline.yaml
+Please move or remove them before you switch branches.
+Aborting

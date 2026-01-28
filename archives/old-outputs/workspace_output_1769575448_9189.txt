@@ -1,0 +1,80 @@
+name: GL Governance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - '.github/governance/**'
+      - '.github/agents/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - '.github/governance/**'
+      - '.github/agents/**'
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 0 * * *' # Daily audit at midnight UTC
+
+jobs:
+  gl-engine-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - Engine
+        run: |
+          cd engine
+          npx ts-node governance/gl_engine.ts validate --strict
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          cd engine
+          npx ts-node governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Upload Governance Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: gl-governance-engine
+          path: |
+            engine/.governance/event-stream.jsonl
+            engine/.governance/evidence-chain.jsonl
+
+  gl-file-organizer-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation - File Organizer

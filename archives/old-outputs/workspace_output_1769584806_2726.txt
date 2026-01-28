@@ -1,0 +1,20 @@
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: package-configuration
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+{
+  "name": "@machinenativeops/aep-engine",
+  "version": "1.0.0",
+  "description": "GL Unified Charter Activated - Architecture Execution Pipeline Engine",
+  "main": "index.ts",
+  "scripts": {
+    "validate": "npx ts-node governance/gl_engine.ts validate --strict",
+    "governance:check": "npx ts-node governance/gl_engine.ts check",
+    "governance:fix": "npx ts-node governance/gl_engine.ts fix --auto",
+    "test": "jest --coverage",
+    "build": "tsc",
+    "gate:execute": "npx ts-node gl-gate/core/GateExecutor.ts",
+    "pipeline:run": "npx ts-node governance/gl_engine.ts pipeline --full"
+  },

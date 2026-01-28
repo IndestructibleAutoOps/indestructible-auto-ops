@@ -1,0 +1,171 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: pipeline-definition
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Repository GL Fix Pipeline
+
+apiVersion: pipeline.machinenativeops.io/v1
+kind: Pipeline
+metadata:
+  name: repo-gl-fix-pipeline
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  description: "Repository-level GL governance fix and remediation pipeline"
+  triggers:
+    - type: "manual"
+    - type: "audit_result"
+      condition: "compliance_score < 90"
+    - type: "webhook"
+      endpoint: "/api/v1/pipelines/repo-gl-fix/trigger"
+
+  stages:
+    - id: "analyze"
+      name: "Violation Analysis"
+      type: "analysis"
+      config:
+        input_source: "audit_results"
+        analysis_type: "violations"
+        categorization:
+          - "missing_markers"
+          - "semantic_anchors"
+          - "naming_conventions"
+          - "path_structure"
+          - "schema_compliance"
+      continue_on_error: false
+
+    - id: "prioritize"
+      name: "Fix Prioritization"
+      type: "prioritization"
+      depends_on: ["analyze"]
+      config:
+        priority_rules:
+          - severity: "critical"
+            weight: 100
+          - severity: "error"
+            weight: 75
+          - severity: "warning"
+            weight: 50
+          - severity: "info"
+            weight: 25
+        max_concurrent_fixes: 10
+      continue_on_error: false
+
+    - id: "fix"
+      name: "GL Governance Fixes"
+      type: "fix"
+      depends_on: ["prioritize"]
+      config:
+        fix_strategies:
+          - name: "add_gl_marker"
+            type: "annotation"
+            auto_apply: true
+          - name: "add_semantic_anchor"
+            type: "annotation"
+            auto_apply: true
+          - name: "fix_naming"
+            type: "transformation"
+            auto_apply: false
+            requires_approval: true
+          - name: "fix_path_structure"
+            type: "transformation"
+            auto_apply: false
+            requires_approval: true
+          - name: "fix_schema"
+            type: "validation"
+            auto_apply: true
+        backup_before_fix: true
+      continue_on_error: false
+
+    - id: "validate_fixes"
+      name: "Fix Validation"
+      type: "validation"
+      depends_on: ["fix"]
+      config:
+        validators:
+          - "gl-governance-validator"
+          - "gl-policy-engine"
+        validation_scope: "fixed_files"
+        require_zero_violations: true
+      continue_on_error: false
+
+    - id: "commit"
+      name: "Commit Fixes"
+      type: "git"
+      depends_on: ["validate_fixes"]
+      config:
+        commit_message_template: "chore: GL governance fixes - {fix_count} files corrected"
+        add_gl_tag: true
+        create_branch: false
+        push_immediately: true
+      continue_on_error: false
+
+    - id: "report"
+      name: "Fix Report Generation"
+      type: "report"
+      depends_on: ["commit"]
+      config:
+        report_formats:
+          - "json"
+          - "markdown"
+        output_path: "../storage/gl-artifacts-store/fix-reports/"
+        include_metrics:
+          - "files_fixed"
+          - "violations_resolved"
+          - "compliance_improvement"
+        diff_summary: true
+      continue_on_error: false
+
+  hooks:
+    pre_pipeline:
+      - name: "create_backup_branch"
+        type: "git"
+        action: "branch"
+        branch_name: "backup-before-gl-fix-{timestamp}"
+      - name: "snapshot_repository_state"
+        type: "storage"
+        action: "snapshot"
+
+    post_pipeline:
+      - name: "compare_compliance"
+        type: "analysis"
+        action: "compare"
+        baseline: "pre_fix_audit"
+        current: "post_fix_validation"
+      - name: "generate_fix_summary"
+        type: "report"
+        template: "../engine/governance/templates/fix-summary.md"
+      - name: "cleanup_intermediate_files"
+        type: "cleanup"
+        files:
+          - "temp_fixes/**"
+          - "backup_patches/**"
+
+  resources:
+    memory_limit_mb: 2048
+    cpu_limit_cores: 4
+    timeout_seconds: 1200
+    max_retries: 2
+
+  monitoring:
+    enabled: true
+    metrics:
+      - "fixes_applied"
+      - "violations_resolved"
+      - "compliance_improvement"
+      - "execution_time"
+    alert_thresholds:
+      fixes_applied: 100
+      execution_time_ms: 600000
+
+status:
+  phase: "ready"
+  last_execution: null
+  success_rate: 0

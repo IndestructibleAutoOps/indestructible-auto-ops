@@ -1,0 +1,41 @@
+name: GL Governance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  gl-governance-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install GL Engine Dependencies
+        run: |
+          cd engine
+          npm ci
+          
+      - name: Run GL Semantic Validation
+        run: |
+          cd engine
+          npx ts-node governance/gl_engine.ts validate --strict
+          
+      - name: Generate Governance Event Stream
+        if: failure()
+        run: |
+          cd engine
+          npx ts-node governance/events_writer.ts --event-type=validation_failure
+          
+      - name: Block on GL Violations
+        run: |
+          echo "GL Unified Charter Activated - Validation Failed"
+          exit 1
+        if: failure()

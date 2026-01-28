@@ -1,0 +1,30 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    gl-audit-reports/GOVERNANCE-AUDIT-REPORT.md -> .github/governance/audit-reports/GOVERNANCE-AUDIT-REPORT.md
+	renamed:    gl-audit-reports/LINK-KEY-CERTIFICATE.md -> .github/governance/audit-reports/LINK-KEY-CERTIFICATE.md
+	renamed:    gl-audit-reports/link-key.json -> .github/governance/audit-reports/link-key.json
+	modified:   .governance/event-stream.jsonl
+	renamed:    gl-audit-reports/es-bulk-index.ndjson -> engine/.governance/audit-reports/es-bulk-index.ndjson
+	renamed:    gl-audit-reports/file-reports/engine_.gl_evidence-chain.json.json -> engine/.governance/audit-reports/file-reports/engine_.gl_evidence-chain.json.json
+	renamed:    gl-audit-reports/file-reports/engine_.gl_manifest.yaml.json -> engine/.governance/audit-reports/file-reports/engine_.gl_manifest.yaml.json
+	renamed:    gl-audit-reports/file-reports/engine_.gl_semantic-anchors.yaml.json -> engine/.governance/audit-reports/file-reports/engine_.gl_semantic-anchors.yaml.json
+	renamed:    gl-audit-reports/file-reports/engine_README.md.json -> engine/.governance/audit-reports/file-reports/engine_README.md.json
+	renamed:    gl-audit-reports/file-reports/engine_SPEC.md.json -> engine/.governance/audit-reports/file-reports/engine_SPEC.md.json
+	renamed:    gl-audit-reports/file-reports/engine_artifacts_README.md.json -> engine/.governance/audit-reports/file-reports/engine_artifacts_README.md.json
+	renamed:    gl-audit-reports/file-reports/engine_artifacts_artifact_manager.ts.json -> engine/.governance/audit-reports/file-reports/engine_artifacts_artifact_manager.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_artifacts_evidence_chain.ts.json -> engine/.governance/audit-reports/file-reports/engine_artifacts_evidence_chain.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_artifacts_manifest_generator.ts.json -> engine/.governance/audit-reports/file-reports/engine_artifacts_manifest_generator.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_executor_README.md.json -> engine/.governance/audit-reports/file-reports/engine_executor_README.md.json
+	renamed:    gl-audit-reports/file-reports/engine_executor_local_executor.ts.json -> engine/.governance/audit-reports/file-reports/engine_executor_local_executor.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_executor_remote_executor.ts.json -> engine/.governance/audit-reports/file-reports/engine_executor_remote_executor.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_executor_rollback.ts.json -> engine/.governance/audit-reports/file-reports/engine_executor_rollback.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_governance_README.md.json -> engine/.governance/audit-reports/file-reports/engine_governance_README.md.json
+	renamed:    gl-audit-reports/file-reports/engine_governance_anchor_resolver.ts.json -> engine/.governance/audit-reports/file-reports/engine_governance_anchor_resolver.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_governance_events_writer.ts.json -> engine/.governance/audit-reports/file-reports/engine_governance_events_writer.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_governance_gl_engine.ts.json -> engine/.governance/audit-reports/file-reports/engine_governance_gl_engine.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_governance_rule_evaluator.ts.json -> engine/.governance/audit-reports/file-reports/engine_governance_rule_evaluator.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_index.ts.json -> engine/.governance/audit-reports/file-reports/engine_index.ts.json
+	renamed:    gl-audit-reports/file-reports/engine_interfaces-fix.d.ts.json -> engine/.governance/audit-reports/file-reports/engine_interfaces-fix.d.ts.json

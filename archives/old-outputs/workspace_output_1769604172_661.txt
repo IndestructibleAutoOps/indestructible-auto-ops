@@ -1,0 +1,52 @@
+diff --git a/gl-runtime-platform/package.json b/gl-runtime-platform/package.json
+new file mode 100644
+index 00000000..e7998c2d
+--- /dev/null
++++ b/gl-runtime-platform/package.json
+@@ -0,0 +1,45 @@
++{
++  "name": "gl-runtime-platform",
++  "version": "2.1.0",
++  "description": "GL-ROOT Global Governance Audit & Platform Build - Runtime Platform",
++  "main": "engine/orchestration-engine/index.js",
++  "_gl_governed": true,
++  "_gl_layer": "GL90-99",
++  "_gl_semantic": "runtime-platform",
++  "_gl_version": "2.1.0",
++  "_gl_layer": "GL90-99",
++  "_gl_semantic": "runtime-platform",
++  "_gl_version": "2.1.0",
++  "scripts": {
++    "start": "node engine/orchestration-engine/index.js",
++    "dev": "nodemon engine/orchestration-engine/index.js",
++    "test": "jest",
++    "lint": "eslint .",
++    "audit": "npm audit",
++    "fix": "npm run lint -- --fix"
++  },
++  "dependencies": {
++    "express": "^4.18.2",
++    "axios": "^1.6.0",
++    "yaml": "^2.3.0",
++    "js-yaml": "^4.1.0",
++    "jsonwebtoken": "^9.0.0",
++    "winston": "^3.11.0",
++    "uuid": "^9.0.0",
++    "lodash": "^4.17.21"
++  },
++  "devDependencies": {
++    "jest": "^29.7.0",
++    "eslint": "^8.54.0",
++    "nodemon": "^3.0.0"
++  },
++  "engines": {
++    "node": ">=18.0.0"
++  },
++  "author": "GL-Governance",
++  "license": "MIT",
++  "repository": {
++    "type": "git",
++    "url": "https://github.com/MachineNativeOps/machine-native-ops.git"
++  }
++}
+\ No newline at end of file

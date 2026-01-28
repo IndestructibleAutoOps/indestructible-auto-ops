@@ -1,0 +1,26 @@
+[main 8bcf2bcd] GL 全域修復完成 - GL Unified Charter Activated
+ Committer: root <root@172.16.12.72>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 57 files changed, 597 insertions(+), 7 deletions(-)
+ create mode 100644 engine/scripts/add-gl-markers.js
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit 8bcf2bc.        
+remote: 
+remote: 
+remote: GitHub found 60 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (1 critical, 23 high, 32 moderate, 4 low). To find out more, visit:        
+remote:      https://github.com/MachineNativeOps/machine-native-ops/security/dependabot        
+remote: 
+To https://github.com/MachineNativeOps/machine-native-ops.git
+   0b7b261a..8bcf2bcd  main -> main

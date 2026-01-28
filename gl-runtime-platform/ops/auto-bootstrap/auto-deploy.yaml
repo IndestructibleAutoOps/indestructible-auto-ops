@@ -1,0 +1,174 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-bootstrap-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Auto-Deploy Configuration
+
+apiVersion: bootstrap.machinenativeops.io/v1
+kind: AutoDeployConfiguration
+metadata:
+  name: gl-auto-deploy
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+
+spec:
+  enabled: true
+  deployment_modes:
+    - name: "continuous"
+      trigger: "successful_integration"
+      pipeline: "auto-deploy-pipeline"
+      environments:
+        - "development"
+    
+    - name: "staged"
+      trigger: "manual_approval"
+      pipeline: "staged-deploy-pipeline"
+      environments:
+        - "staging"
+        - "production"
+      require_approval: true
+    
+    - name: "rollback"
+      trigger: "deployment_failure"
+      pipeline: "auto-rollback-pipeline"
+      environments:
+        - "all"
+
+  deployment_targets:
+    - id: "orchestration-engine"
+      name: "Orchestration Engine"
+      type: "service"
+      priority: 100
+      config:
+        deployment_type: "container"
+        image: "gl-runtime-platform:latest"
+        replicas: 2
+        resources:
+          cpu: "500m"
+          memory: "512Mi"
+        health_checks:
+          enabled: true
+          path: "/api/v1/status"
+          interval: 30
+        monitoring:
+          enabled: true
+          metrics_port: 9090
+
+    - id: "governance-services"
+      name: "Governance Services"
+      type: "service"
+      priority: 95
+      config:
+        deployment_type: "container"
+        image: "gl-governance:latest"
+        replicas: 1
+        resources:
+          cpu: "250m"
+          memory: "256Mi"
+        health_checks:
+          enabled: true
+          path: "/api/v1/governance/status"
+          interval: 30
+
+    - id: "connectors"
+      name: "Connector Services"
+      type: "service"
+      priority: 90
+      config:
+        deployment_type: "container"
+        image: "gl-connectors:latest"
+        replicas: 3
+        resources:
+          cpu: "300m"
+          memory: "384Mi"
+        health_checks:
+          enabled: true
+          path: "/api/v1/connectors/status"
+          interval: 30
+
+  validation:
+    pre_deploy:
+      enabled: true
+      checks:
+        - "image_exists"
+        - "configuration_valid"
+        - "dependencies_available"
+        - "resource_limits_within_quotas"
+    post_deploy:
+      enabled: true
+      checks:
+        - "service_healthy"
+        - "endpoints_accessible"
+        - "metrics_available"
+        - "logs_available"
+      rollback_on_failure: true
+      health_check_timeout: 300
+      rollback_timeout: 600
+
+  hooks:
+    pre_deploy:
+      - name: "validate-environment"
+        type: "validation"
+        script: "../scripts/validate-environment.sh"
+      - name: "backup-current-deployment"
+        type: "backup"
+        action: "snapshot"
+    
+    post_deploy:
+      - name: "run-smoke-tests"
+        type: "test"
+        script: "../scripts/run-smoke-tests.sh"
+      - name: "verify-deployment"
+        type: "verification"
+        script: "../scripts/verify-deployment.sh"
+      - name: "update-monitoring"
+        type: "monitoring"
+        action: "configure"
+
+  notifications:
+    enabled: true
+    channels:
+      - type: "event-stream"
+      - type: "log"
+      - type: "slack"
+        channel: "#gl-deployments"
+      - type: "email"
+        recipients:
+          - "devops@machinenativeops.io"
+          - "engineering@machinenativeops.io"
+    events:
+      - "deployment_started"
+      - "deployment_completed"
+      - "deployment_failed"
+      - "deployment_rolled_back"
+      - "health_check_failed"
+
+  monitoring:
+    enabled: true
+    metrics:
+      - "deployments_performed"
+      - "deployments_failed"
+      - "rollbacks_executed"
+      - "average_deployment_time"
+      - "service_availability"
+    reporting_interval: "5m"
+    alerting:
+      enabled: true
+      rules:
+        - metric: "deployment_failure_rate"
+          threshold: 0.1
+          duration: "15m"
+          severity: "critical"
+        - metric: "service_availability"
+          threshold: 0.99
+          duration: "5m"
+          severity: "warning"
+
+status:
+  phase: "active"
+  last_deployment: null
+  total_deployments: 0
+  success_rate: 100

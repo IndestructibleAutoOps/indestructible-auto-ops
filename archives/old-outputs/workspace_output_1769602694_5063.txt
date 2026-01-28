@@ -1,0 +1,70 @@
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769602696737",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:18:16.737Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:18:16.487Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769602698661",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:18:18.661Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:18:18.644Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: error: GH007: Your push would publish a private email address.        
+remote: You can make your email public or disable this protection by visiting:        
+remote: https://github.com/settings/emails        
+To https://github.com/MachineNativeOps/machine-native-ops.git
+ ! [remote rejected] main -> main (push declined due to email privacy restrictions)
+error: failed to push some refs to 'https://github.com/MachineNativeOps/machine-native-ops.git'
