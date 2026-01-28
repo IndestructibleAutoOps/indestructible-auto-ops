@@ -9,6 +9,15 @@ This guide serves as:
 - Troubleshooting resource for similar issues
 - Template for future infrastructure fixes
 
+**What's in This PR:**
+- Validation scripts in the `scripts/` directory (copied from `engine/scripts-legacy/`)
+- Documentation updates (DEPLOYMENT_GUIDE.md, QUICK_REFERENCE.md, BUG_FIX_COMPLETION_REPORT.md)
+
+**What Was Added Previously:**
+- The `.github/workflows/infrastructure-validation.yml` workflow file (commit 600a8a4)
+
+This PR completes the infrastructure validation fix by adding the required scripts that the workflow references.
+
 ## Prerequisites
 - Git access to MachineNativeOps/machine-native-ops repository
 - GitHub authentication configured (SSH keys or GitHub CLI)
@@ -27,12 +36,35 @@ The fix was deployed in commit 600a8a4 with the following changes:
 - **Date**: 2026-01-26
 - **Status**: ✅ Deployed and Active
 
+Expected output should show:
+- New directory: `scripts/` (with validation scripts)
+- New file: `scripts/validate-infrastructure.sh`
+- New file: `scripts/validate-module-manifests.py`
+- New file: `scripts/validate-module-registry.py`
+- New file: `scripts/generate-governance-dashboard.py`
+- New file: `scripts/generate-dag-visualization.py`
+- Modified: `DEPLOYMENT_GUIDE.md` (this file)
+- Modified: `QUICK_REFERENCE.md`
+- Modified: `BUG_FIX_COMPLETION_REPORT.md`
+
+Note: The `.github/workflows/infrastructure-validation.yml` file was added in a previous commit (600a8a4) and is not modified by this PR.
 ## Verification Steps
 
 To verify the fix is working correctly:
 
 ### Step 1: Review Deployed Changes
 ```bash
+# View the main validation script
+cat scripts/validate-infrastructure.sh
+
+# List all new scripts
+ls -la scripts/
+
+# View the bug fix summary
+cat BUG_FIX_COMPLETION_REPORT.md
+
+# Review the workflow file (added in previous commit 600a8a4)
+cat .github/workflows/infrastructure-validation.yml
 cd machine-native-ops
 
 # View the workflow changes
@@ -74,8 +106,8 @@ git push origin hotfix/infrastructure-validation-dependencies
 Option A - Using GitHub CLI:
 ```bash
 gh pr create \
-  --title "fix(ci): resolve intermittent infrastructure validation failures" \
-  --body "Fix intermittent CI/CD failures by ensuring pyyaml dependency is installed before validation. See PRODUCTION_BUG_FIX_SUMMARY.md for details." \
+  --title "fix(ci): complete infrastructure validation fix by adding required scripts" \
+  --body "Add validation scripts to complete the infrastructure validation hotfix. See BUG_FIX_COMPLETION_REPORT.md for details." \
   --base main \
   --head hotfix/infrastructure-validation-dependencies
 ```
@@ -87,26 +119,26 @@ Option B - Manual via GitHub Web UI:
 
 ```
 ## Summary
-Fix intermittent CI/CD failures in infrastructure validation workflow.
+Complete the infrastructure validation hotfix by adding the required validation scripts.
 
 ## Problem
-The validation script was failing with "YAML syntax error" messages even when YAML files were valid. Root cause: missing pyyaml Python dependency.
+The workflow file `.github/workflows/infrastructure-validation.yml` (added in commit 600a8a4) references scripts in the `scripts/` directory, but these scripts were not present in the repository.
 
 ## Solution
-- Install pyyaml and jsonschema dependencies before running validation
-- Add retry logic for transient failures (3 attempts)
-- Enhanced error handling with explicit dependency checks
-- Added comprehensive logging for debugging
+- Add validation scripts to `scripts/` directory (copied from `engine/scripts-legacy/`)
+- Scripts include: validate-infrastructure.sh, validate-module-manifests.py, validate-module-registry.py, generate-governance-dashboard.py, and generate-dag-visualization.py
+- Update documentation to accurately reflect the changes in this PR
+- Provide deployment guide and quick reference for the infrastructure validation fix
 
-## Testing
-- ✅ All 6 module manifests validated
-- ✅ Module registry validated
-- ✅ Governance policies validated
-- ✅ Dependency validation passed
-- ✅ Error handling tested
+## Files Added
+- `scripts/validate-infrastructure.sh` - Main validation script
+- `scripts/validate-module-manifests.py` - Module manifest validator
+- `scripts/validate-module-registry.py` - Module registry validator  
+- `scripts/generate-governance-dashboard.py` - Dashboard generator
+- `scripts/generate-dag-visualization.py` - DAG visualization generator
 
 ## Documentation
-See PRODUCTION_BUG_FIX_SUMMARY.md for complete analysis and fix details.
+See BUG_FIX_COMPLETION_REPORT.md and DEPLOYMENT_GUIDE.md for complete details.
 
 GL Unified Charter Activated
 ```
@@ -189,6 +221,8 @@ The deployment is successful (verified):
 
 ## Additional Resources
 
+- **Bug Fix Summary**: BUG_FIX_COMPLETION_REPORT.md
+- **Validation Script**: scripts/validate-infrastructure.sh
 - **Bug Fix Summary**: PRODUCTION_BUG_FIX_SUMMARY.md
 - **Validation Script**: engine/scripts-legacy/validate-infrastructure.sh
 - **Workflow File**: .github/workflows/infrastructure-validation.yml
