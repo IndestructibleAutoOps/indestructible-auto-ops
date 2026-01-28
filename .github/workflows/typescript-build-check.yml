@@ -42,7 +42,7 @@ jobs:
 
       - name: Check Node.js for vulnerabilities
         uses: nodejs/is-my-node-vulnerable@v1.6.1
-        continue-on-error: true  # Don't fail the build on vulnerability check errors
+        continue-on-error: false  # Don't fail the build on vulnerability check errors
 
       - name: Install dependencies
         working-directory: './ns-root/namespaces-sdk'
@@ -117,7 +117,7 @@ jobs:
       - name: TypeScript compilation check
         id: typescript
         working-directory: './ns-root/namespaces-sdk'
-        continue-on-error: true  # Non-blocking build - failures are warnings, not errors
+        continue-on-error: false  # Non-blocking build - failures are warnings, not errors
         run: |
           # Use pipefail to ensure tee doesn't mask npm build failures
           set -o pipefail
@@ -176,7 +176,7 @@ jobs:
             if [ "$ERROR_COUNT" -gt 0 ] || [ "$BUILD_EXIT_CODE" -ne 0 ]; then
               echo "has_errors=true" >> $GITHUB_OUTPUT
               echo "❌ TypeScript build failed with $ERROR_COUNT errors"
-              echo "::warning::TypeScript build failed but not blocking merge (continue-on-error: true)"
+              echo "::warning::TypeScript build failed but not blocking merge (continue-on-error: false)"
             else
               echo "has_errors=false" >> $GITHUB_OUTPUT
               echo "✅ TypeScript compilation successful"
@@ -185,7 +185,7 @@ jobs:
             echo "::warning::TypeScript build failed with $ERROR_COUNT errors (non-blocking)"
           fi
           
-          # Note: This step has continue-on-error: true, meaning TypeScript
+          # Note: This step has continue-on-error: false, meaning TypeScript
           # compilation failures will NOT block the workflow or PR merges.
           # This is intentional to prevent CI from blocking on TypeScript errors
           # while still maintaining visibility through warnings and reports.

@@ -47,6 +47,7 @@ spec:
           - ".github"
         strict_mode: true
         enforce_semantic_anchors: true
+        continue_on_error: false
       dependencies: []
       outputs:
         - "gl-validation-report.json"
@@ -64,6 +65,7 @@ spec:
           - typescript
         scan_frequency: "daily"
         alert_threshold: "high"
+        continue_on_error: false
       dependencies: []
       outputs:
         - "codeql-results.json"
@@ -81,6 +83,7 @@ spec:
           - "test-coverage"
           - "security-scan"
         quality_threshold: 85
+        continue_on_error: false
       dependencies: []
       outputs:
         - "quality-report.json"
@@ -97,6 +100,7 @@ spec:
           - "license"
           - "outdated"
         severity_filter: "medium+"
+        continue_on_error: false
       dependencies: []
       outputs:
         - "dependency-report.json"
@@ -113,7 +117,8 @@ spec:
           - "api-version-consistency"
           - "metadata-completeness"
         schema_paths:
-          - "gl/**/artifacts/*.yaml"
+          - "engine/governance/gl-artifacts/**/*.yaml"
+        continue_on_error: false
       dependencies: []
       outputs:
         - "architecture-validation.json"
@@ -149,6 +154,7 @@ spec:
         benchmark_targets:
           execution_time_ms: 5000
           memory_mb: 512
+        continue_on_error: false
       dependencies: []
       outputs:
         - "performance-metrics.json"
@@ -167,10 +173,11 @@ spec:
           - "inventory-sync"
         integration_points:
           - "file-organizer-system"
-          - "AEP-Engine"
+          - "engine"
         sync_modes:
           - "real-time"
           - "scheduled"
+        continue_on_error: false
       dependencies: []
       outputs:
         - "sync-status.json"
@@ -190,6 +197,7 @@ spec:
         compliance_standards:
           - "OWASP"
           - "CIS"
+        continue_on_error: false
       dependencies:
         - "dependency-scanner"
       outputs:
@@ -207,6 +215,7 @@ spec:
           - "summary"
           - "detailed"
           - "dashboard"
+        continue_on_error: false
       dependencies:
         - "gl-governance-validator"
         - "codeql-monitor"
@@ -251,7 +260,6 @@ spec:
 
 status:
   phase: "active"
-  last_updated: "2025-01-28T08:55:00Z"
   conditions:
     - type: "AgentsConfigured"
       status: "True"
@@ -267,13 +275,9 @@ status:
       reason: "Resource limits set"
     - type: "GLGovernanceIntegrated"
       status: "True"
-      lastTransitionTime: "2026-01-28T00:31:00Z"
-      reason: "GL governance validator agent activated"
-    - type: "ValidationEnabled"
+      lastTransitionTime: "2026-01-28T10:15:00Z"
+      reason: "GL governance validator agent activated with strict mode"
+    - type: "CodeQLToolsIntegrated"
       status: "True"
-      lastTransitionTime: "2026-01-28T08:30:00Z"
-      reason: "GL validation strict mode enabled across all systems"
-    - type: "TokenUpdated"
-      status: "True"
-      lastTransitionTime: "2025-01-28T08:55:00Z"
-      reason: "GL_TOKEN refreshed and configured for GitHub integration"
+      lastTransitionTime: "2026-01-28T10:15:00Z"
+      reason: "CodeQL monitor agent activated with no continue-on-error"

@@ -4,10 +4,12 @@
 # @GL-semantic: git-hook-pre-push-validation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
+set -e  # Exit on any error
+
 GL_FAILED=0
 
 # Validate all systems before push
-WORKSPACES=("engine" "file-organizer-system" "instant" "elasticsearch-search-system" "infrastructure" "esync-platform")
+WORKSPACES=("engine" "file-organizer-system" "instant" "elasticsearch-search-system" "infrastructure" "esync-platform" "gl-gate")
 
 for workspace in "${WORKSPACES[@]}"; do
     if [ -d "$workspace" ]; then
@@ -19,6 +21,17 @@ for workspace in "${WORKSPACES[@]}"; do
                 GL_FAILED=1
             fi
             cd - > /dev/null
+        elif [ -d "$workspace" ] && [ "$workspace" == "esync-platform" ]; then
+            if command -v go >/dev/null 2>&1; then
+                cd "$workspace" && go vet ./... 2>/dev/null && go build ./... 2>/dev/null
+                if [ $? -ne 0 ]; then
+                    echo "❌ GL validation failed for $workspace"
+                    GL_FAILED=1
+                fi
+                cd - > /dev/null
+            else
+                echo "⚠️  Go not installed, skipping $workspace validation"
+            fi
         fi
     fi
 done

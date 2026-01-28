@@ -60,7 +60,7 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true  # Auto-enable GitHub Pages if not already enabled
-        continue-on-error: true  # Don't fail if Pages is not available
+        continue-on-error: false  # Don't fail if Pages is not available
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

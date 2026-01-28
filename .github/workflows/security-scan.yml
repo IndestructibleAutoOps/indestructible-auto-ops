@@ -67,7 +67,7 @@ jobs:
           else
             echo "No package.json found, skipping npm audit"
           fi
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -83,7 +83,7 @@ jobs:
           else
             echo "No requirements.txt found, skipping pip audit"
           fi
-        continue-on-error: true
+        continue-on-error: false
 
   container-scan:
     name: Container Image Scanning
@@ -106,7 +106,7 @@ jobs:
         if: steps.check-dockerfile.outputs.dockerfile_exists == 'true'
         run: |
           docker build -t test-image:${{ github.sha }} . || echo "Docker build failed"
-        continue-on-error: true
+        continue-on-error: false
 
       # Using docker's built-in scanning instead of third-party trivy-action
       - name: Run Docker Scout vulnerability scanner
@@ -133,7 +133,7 @@ jobs:
           else
             echo "No image to scan"
           fi
-        continue-on-error: true
+        continue-on-error: false
 
   codeql-analysis:
     name: CodeQL Analysis
@@ -202,7 +202,7 @@ jobs:
           else
             echo "⚠️ Found $FOUND_SECRETS potential secret patterns. Please review."
           fi
-        continue-on-error: true
+        continue-on-error: false
 
   security-report:
     name: Generate Security Report
@@ -247,4 +247,4 @@ jobs:
               repo: context.repo.repo,
               body: report
             });
-        continue-on-error: true
+        continue-on-error: false

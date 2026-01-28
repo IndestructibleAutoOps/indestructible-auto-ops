@@ -91,7 +91,7 @@ jobs:
 
       - name: Build application
         run: npm run build || echo "No build script found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Configure deployment credentials
         run: |
@@ -102,19 +102,19 @@ jobs:
         run: |
           echo "Deploying to BLUE environment..."
           ./scripts/deploy-blue.sh ${{ github.sha }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Health check - Blue
         run: |
           echo "Checking blue environment health..."
           ./scripts/health-check.sh https://blue.example.com/health
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run smoke tests - Blue
         run: |
           echo "Running smoke tests on blue environment..."
           npm run test:smoke || echo "No smoke tests configured"
-        continue-on-error: true
+        continue-on-error: false
 
   deploy-green:
     name: Deploy to Green Environment
@@ -142,25 +142,25 @@ jobs:
 
       - name: Build application
         run: npm run build || echo "No build script found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Deploy to green environment
         run: |
           echo "Deploying to GREEN environment..."
           ./scripts/deploy-green.sh ${{ github.sha }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Health check - Green
         run: |
           echo "Checking green environment health..."
           ./scripts/health-check.sh https://green.example.com/health
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run smoke tests - Green
         run: |
           echo "Running smoke tests on green environment..."
           npm run test:smoke || echo "No smoke tests configured"
-        continue-on-error: true
+        continue-on-error: false
 
   switch-traffic:
     name: Switch Traffic
@@ -189,26 +189,26 @@ jobs:
         run: |
           echo "Switching traffic to ${{ steps.active.outputs.environment }} environment..."
           ./scripts/switch-traffic.sh ${{ steps.active.outputs.environment }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Final health check
         run: |
           echo "Final health check after traffic switch..."
           ./scripts/health-check.sh ${{ steps.active.outputs.url }}/health
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run acceptance tests
         run: |
           echo "Running acceptance tests..."
           npm run test:acceptance || echo "No acceptance tests configured"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Monitor deployment
         run: |
           echo "Monitoring deployment for 5 minutes..."
           sleep 300
           ./scripts/health-check.sh ${{ steps.active.outputs.url }}/health
-        continue-on-error: true
+        continue-on-error: false
 
   rollback:
     name: Rollback
@@ -235,13 +235,13 @@ jobs:
         run: |
           echo "Executing rollback to ${{ steps.previous.outputs.sha }}..."
           ./scripts/rollback.sh ${{ steps.previous.outputs.sha }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Verify rollback
         run: |
           echo "Verifying rollback..."
           ./scripts/health-check.sh https://example.com/health
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Notify rollback
         uses: 8398a7/action-slack@v3
@@ -249,7 +249,7 @@ jobs:
           status: 'warning'
           text: 'Production rollback executed'
           webhook_url: ${{ secrets.SLACK_WEBHOOK }}
-        continue-on-error: true
+        continue-on-error: false
 
   post-deploy:
     name: Post-deployment Tasks
@@ -278,10 +278,10 @@ jobs:
           status: 'success'
           text: 'Production deployment successful'
           webhook_url: ${{ secrets.SLACK_WEBHOOK }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Create deployment tag
         run: |
           git tag -a "prod-${{ github.sha }}" -m "Production deployment ${{ github.sha }}"
           git push origin "prod-${{ github.sha }}"
-        continue-on-error: true
+        continue-on-error: false

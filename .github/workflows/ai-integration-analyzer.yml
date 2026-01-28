@@ -46,7 +46,7 @@ jobs:
         uses: Rishabh510/Path-lister-action@1.0
 
       - name: SPIDYNAL SYSTEM
-        continue-on-error: true
+        continue-on-error: false
         uses: maiz-an/SPIDYNAL@v1.3.0.8
 
       - name: Analyze code changes
@@ -94,7 +94,7 @@ jobs:
 
       - name: Create or update PR comment
         if: github.event_name == 'pull_request'
-        continue-on-error: true  # Allow workflow to pass even if comment fails (e.g., for cross-repo PRs)
+        continue-on-error: false  # Allow workflow to pass even if comment fails (e.g., for cross-repo PRs)
         uses: actions/github-script@v8
         with:
           script: |

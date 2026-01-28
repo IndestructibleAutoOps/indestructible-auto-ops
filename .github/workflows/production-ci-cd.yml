@@ -66,11 +66,11 @@ jobs:
       
       - name: Run Bandit security scan
         run: bandit -r ns_root/ -f json -o bandit-report.json || echo "Security issues found"
-        continue-on-error: true
+        continue-on-error: false
       
       - name: Run Safety dependency check
         run: safety check --json > safety-report.json || echo "Dependency issues found"
-        continue-on-error: true
+        continue-on-error: false
       
       - name: Check quality gates
         id: check

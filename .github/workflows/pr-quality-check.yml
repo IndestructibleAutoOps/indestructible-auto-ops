@@ -39,12 +39,12 @@ jobs:
 
       - name: Lingo.Dev AI Localization
         uses: lingodotdev/lingo.dev@main
-        continue-on-error: true
+        continue-on-error: false
       - name: Path lister action
         uses: Rishabh510/Path-lister-action@1.0
 
       - name: SPIDYNAL SYSTEM
-        continue-on-error: true
+        continue-on-error: false
         uses: maiz-an/SPIDYNAL@v1.3.0.8
 
       - name: Set up Python

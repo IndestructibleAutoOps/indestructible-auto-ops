@@ -39,7 +39,7 @@ jobs:
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v8
-        continue-on-error: true  # Don't fail if PR creation fails due to branch protection rules
+        continue-on-error: false  # Don't fail if PR creation fails due to branch protection rules
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'docs: replace problematic words with inclusive alternatives'

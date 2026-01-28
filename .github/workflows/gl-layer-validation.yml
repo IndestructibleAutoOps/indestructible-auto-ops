@@ -857,7 +857,7 @@ jobs:
           
       - name: Post Summary to PR
         if: github.event_name == 'pull_request'
-        continue-on-error: true  # Allow workflow to pass even if comment fails (e.g., for cross-repo PRs)
+        continue-on-error: false  # Allow workflow to pass even if comment fails (e.g., for cross-repo PRs)
         uses: actions/github-script@v8
         with:
           script: |

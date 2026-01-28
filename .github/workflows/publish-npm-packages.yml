@@ -60,7 +60,7 @@ jobs:
 
       - name: Check Node.js for vulnerabilities
         uses: nodejs/is-my-node-vulnerable@v1.6.1
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Configure npm for GitHub Packages
         run: |

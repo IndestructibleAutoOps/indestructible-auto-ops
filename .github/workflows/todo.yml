@@ -21,6 +21,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: todo-actions
         uses: dtinth/todo-actions@v0.2.0
-        continue-on-error: true  # Don't fail the workflow if TODO action fails
+        continue-on-error: false  # Don't fail the workflow if TODO action fails
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
