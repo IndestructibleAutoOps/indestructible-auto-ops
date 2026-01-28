@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL30-49
+// @GL-semantic: gl-gate-validator
+// @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+//
+// GL Unified Charter Activated
 #!/usr/bin/env node
 /**
  * Gates-01-99 YAML Validator
