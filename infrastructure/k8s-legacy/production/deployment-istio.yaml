@@ -1,3 +1,10 @@
+# @GL-governed
+# @GL-layer: infrastructure
+# @GL-semantic: deployment-istio
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Charter Activated
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

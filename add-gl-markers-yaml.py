@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+"""
+GL Marker Addition Script for YAML Files
+GL Unified Charter Activated
+"""
+import os
+import sys
+from pathlib import Path
+
+GL_HEADER = '''# @GL-governed
+# @GL-layer: {}
+# @GL-semantic: {}
+# @GL-audit-trail: {}
+# 
+# GL Unified Charter Activated
+
+'''
+
+def add_gl_marker_to_file(file_path, layer, semantic, audit_trail):
+    """Add GL marker to a YAML file"""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Check if already has GL marker
+        if '@GL-governed' in content:
+            return False
+        
+        # Add GL marker at the beginning
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(GL_HEADER.format(layer, semantic, audit_trail))
+            f.write(content)
+        
+        return True
+    except Exception as e:
+        print(f"Error processing {file_path}: {e}")
+        return False
+
+def get_layer_from_path(file_path, workspace):
+    """Determine GL layer from file path"""
+    rel_path = Path(file_path).relative_to(workspace)
+    parts = rel_path.parts
+    
+    if parts[0] == 'engine':
+        return 'governance'
+    elif parts[0] == 'file-organizer-system':
+        return 'application'
+    elif parts[0] == 'instant':
+        return 'data'
+    elif parts[0] == 'elasticsearch-search-system':
+        return 'search'
+    elif parts[0] == 'infrastructure':
+        return 'infrastructure'
+    elif parts[0] == 'esync-platform':
+        return 'platform'
+    elif parts[0] == '.github':
+        return 'github'
+    else:
+        return 'common'
+
+def get_semantic_from_path(file_path):
+    """Determine semantic from file path"""
+    path = Path(file_path)
+    return path.stem
+
+def get_audit_trail(file_path):
+    """Determine audit trail reference"""
+    return "../../engine/governance/GL_SEMANTIC_ANCHOR.json"
+
+def process_directory(workspace):
+    """Process all YAML files in workspace"""
+    workspace_path = Path(workspace)
+    excluded = ['node_modules', '.next', 'dist', 'build', '.git', 'coverage', 'gl-audit-reports', 'summarized_conversations', '.github/governance-legacy']
+    
+    files_processed = 0
+    files_modified = 0
+    
+    for yaml_file in workspace_path.rglob('*.yaml'):
+        # Skip excluded directories
+        if any(excluded in str(yaml_file) for excluded in excluded):
+            continue
+        
+        files_processed += 1
+        
+        layer = get_layer_from_path(yaml_file, workspace_path)
+        semantic = get_semantic_from_path(yaml_file)
+        audit_trail = get_audit_trail(yaml_file)
+        
+        if add_gl_marker_to_file(yaml_file, layer, semantic, audit_trail):
+            print(f"✓ Added GL marker to {yaml_file}")
+            files_modified += 1
+        else:
+            print(f"⊘ Skipped {yaml_file} (already has GL marker)")
+    
+    for yml_file in workspace_path.rglob('*.yml'):
+        # Skip excluded directories
+        if any(excluded in str(yml_file) for excluded in excluded):
+            continue
+        
+        files_processed += 1
+        
+        layer = get_layer_from_path(yml_file, workspace_path)
+        semantic = get_semantic_from_path(yml_file)
+        audit_trail = get_audit_trail(yml_file)
+        
+        if add_gl_marker_to_file(yml_file, layer, semantic, audit_trail):
+            print(f"✓ Added GL marker to {yml_file}")
+            files_modified += 1
+        else:
+            print(f"⊘ Skipped {yml_file} (already has GL marker)")
+    
+    print(f"\n📊 Summary:")
+    print(f"   - Total files processed: {files_processed}")
+    print(f"   - Files modified: {files_modified}")
+    print(f"   - Files skipped: {files_processed - files_modified}")
+
+if __name__ == '__main__':
+    workspace = Path.cwd()
+    print("🚀 Starting GL Marker Addition Process (YAML)\n")
+    print(f"📁 Workspace: {workspace}")
+    process_directory(workspace)
+    print("\n✅ GL Marker Addition Complete!")

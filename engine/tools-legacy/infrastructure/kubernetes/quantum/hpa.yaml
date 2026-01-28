@@ -1,3 +1,10 @@
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: hpa
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Charter Activated
+
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
