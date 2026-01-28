@@ -180,7 +180,7 @@ spec:
         subset: v1
     mirror:
       host: machine-native-ops-service
-        subset: v2
+      subset: v2
     mirrorPercentage:
       value: 10  # Mirror 10% of traffic to v2
 ---
