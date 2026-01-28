@@ -149,6 +149,28 @@ spec:
         - "performance-metrics.json"
         - "performance-report.md"
 
+    - id: data-sync-agent
+      name: "Data Synchronization Agent"
+      type: "synchronization"
+      priority: 1
+      enabled: true
+      config:
+        serviceConfig: "instant/configs/data-sync-config.yaml"
+        pipelines:
+          - "users-sync"
+          - "orders-sync"
+          - "inventory-sync"
+        integration_points:
+          - "file-organizer-system"
+          - "AEP-Engine"
+        sync_modes:
+          - "real-time"
+          - "scheduled"
+      dependencies: []
+      outputs:
+        - "sync-status.json"
+        - "sync-report.md"
+
     - id: security-auditor
       name: "Security Auditor Agent"
       type: "security"
