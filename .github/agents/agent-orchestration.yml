@@ -39,7 +39,12 @@ spec:
         validation_scope:
           - "engine"
           - "file-organizer-system"
-          - "gl-audit-reports"
+          - "instant"
+          - "elasticsearch-search-system"
+          - "infrastructure"
+          - "esync-platform"
+          - "gl-gate"
+          - ".github"
         strict_mode: true
         enforce_semantic_anchors: true
       dependencies: []
@@ -263,3 +268,7 @@ status:
       status: "True"
       lastTransitionTime: "2026-01-28T00:31:00Z"
       reason: "GL governance validator agent activated"
+    - type: "ValidationEnabled"
+      status: "True"
+      lastTransitionTime: "2026-01-28T08:30:00Z"
+      reason: "GL validation strict mode enabled across all systems"
