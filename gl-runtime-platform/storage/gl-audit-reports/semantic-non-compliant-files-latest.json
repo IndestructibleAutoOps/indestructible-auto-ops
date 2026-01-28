@@ -1,0 +1,36 @@
+// @GL-governed
+// @GL-layer: GL90-99
+// @GL-semantic: runtime-governance-audit
+// @GL-charter-version: 2.0.0
+// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+{
+  "report_id": "semantic-non-compliant-files-latest",
+  "timestamp": "2026-01-28T16:52:00Z",
+  "commit": "3c9c0a3",
+  "analysis_version": "7.0.0",
+  "governance_layers": {
+    "grg_version": "6.0.0",
+    "srg_version": "7.0.0",
+    "status": "operational"
+  },
+  "compliance_summary": {
+    "total_files": 128,
+    "compliant_files": 110,
+    "non_compliant_files": 18,
+    "compliance_rate": 85.94
+  },
+  "non_compliant_files": [],
+  "list_truncated": false,
+  "notes": [
+    "Compliance rate 85.94% (110/128 files)",
+    "Governance event stream validated",
+    "Audit reports generated"
+  ],
+  "_gl": {
+    "governed": true,
+    "layer": "GL90-99",
+    "semantic": "governed-data",
+    "auditTrail": "engine/governance/GL_SEMANTIC_ANCHOR.json"
+  }
+}
