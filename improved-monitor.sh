@@ -22,7 +22,7 @@ log() {
 
 # 檢查 governance event stream 文件是否有變更
 check_for_changes() {
-    git status --porcelain | grep -q "modified.*\.governance.*event-stream"
+    git status --porcelain | grep -q "\.governance.*event-stream"
     return $?
 }
 
