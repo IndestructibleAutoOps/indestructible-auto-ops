@@ -5,7 +5,10 @@ metadata:
   version: "1.0.0"
   created: "2026-01-18"
 spec:
-  base_path: "governance/gl-architecture"
+  base_path: ".github/governance/architecture"
+  migration_status: "COMPLETED"
+  migration_date: "2026-01-28"
+  legacy_path: "gl/"
   core_files:
     - name: "GL Layer Definitions"
       path: "GL_LAYERS.yaml"

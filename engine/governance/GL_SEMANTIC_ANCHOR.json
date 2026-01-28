@@ -1,8 +1,10 @@
 {
   "governance": {
     "charter": "GL Unified Charter",
-    "version": "1.0.0",
-    "activation": "active"
+    "version": "2.0.0",
+    "activation": "active",
+    "migration_status": "completed",
+    "migration_date": "2026-01-28"
   },
   "semantic": {
     "anchor": {
@@ -33,5 +35,11 @@
     "continue_on_error": false,
     "validation_required": true,
     "audit_trail_required": true
+  },
+  "paths": {
+    "gl_artifacts": "engine/governance/gl-artifacts/",
+    "gl_architecture": ".github/governance/architecture/",
+    "gl_sealed": ".github/governance/sealed/",
+    "legacy_root": "gl/ (removed)"
   }
 }

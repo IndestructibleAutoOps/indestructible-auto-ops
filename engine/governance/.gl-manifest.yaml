@@ -3,13 +3,14 @@
 # @gl-semantic-anchor GL-10-GOV-ENGINE
 # GL Unified Charter Activated
 
-gl_version: "1.0"
+gl_version: "2.0"
 manifest:
   subsystem: "governance"
   module: "aep-engine"
   layer: "GL-10-OPERATIONAL"
   semantic_anchor: "GL-10-GOV-ENGINE"
-  updated: "2026-01-26"
+  updated: "2026-01-28"
+  migration_status: "completed"
 
 components:
   anchor_resolver:
