@@ -50,6 +50,9 @@ def analyze_task(task_description):
     if any(kw in task_lower for kw in ["security", "audit", "safe", "安全", "審計"]):
         selected_agents.append("security-reviewer.agent.md")
 
+    if any(kw in task_lower for kw in ["custom agent", "custom-agent", "agent profile", "自訂代理", "自訂代理人"]):
+        selected_agents.append("custom-agent.agent.md")
+
     return list(set(selected_agents))
 
 if __name__ == "__main__":
