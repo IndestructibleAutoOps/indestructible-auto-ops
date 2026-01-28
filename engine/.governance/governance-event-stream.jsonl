@@ -175,3 +175,29 @@
     "governance_status": "validated"
   }
 }
+{
+  "event_type": "commit",
+  "event_id": "evt_9138",
+  "timestamp": "2026-01-28T12:30:11Z",
+  "charter_version": "2.0.0",
+  "execution_chain": ["pre-commit", "commit", "post-commit"],
+  "data": {
+    "commit_hash": "dd50aa5ceb7162bb8732235e8009a16684a2cfde",
+    "author": "MachineNativeOps",
+    "commit_timestamp": "1769603411",
+    "governance_status": "validated"
+  }
+}
+{
+  "event_type": "commit",
+  "event_id": "evt_21572",
+  "timestamp": "2026-01-28T12:30:37Z",
+  "charter_version": "2.0.0",
+  "execution_chain": ["pre-commit", "commit", "post-commit"],
+  "data": {
+    "commit_hash": "856063f26d6ca07436d342f6e3c258dabdfef8fa",
+    "author": "MachineNativeOps",
+    "commit_timestamp": "1769603437",
+    "governance_status": "validated"
+  }
+}
