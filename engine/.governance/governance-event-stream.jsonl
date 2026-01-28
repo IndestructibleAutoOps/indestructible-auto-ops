@@ -45,3 +45,42 @@
 {"event_type":"agent-orchestration-activated","event_id":"evt_agent_orch_001","timestamp":"2026-01-28T08:05:00Z","charter_version":"2.0.0","execution_chain":["agent-orchestration"],"data":{"phase":"active","agents_count":10,"max_concurrent":8,"continue_on_error":false}}
 {"event_type":"validation-executed","event_id":"evt_val_engine_001","timestamp":"2026-01-28T08:10:00Z","charter_version":"2.0.0","execution_chain":["engine"],"data":{"system":"engine","violations":0,"critical":0,"status":"passed"}}
 {"event_type":"validation-executed","event_id":"evt_val_fos_001","timestamp":"2026-01-28T08:10:00Z","charter_version":"2.0.0","execution_chain":["file-organizer-system"],"data":{"system":"file-organizer-system","violations":0,"critical":0,"status":"passed"}}
+{
+  "event_type": "commit",
+  "event_id": "evt_14414",
+  "timestamp": "2026-01-28T12:20:31Z",
+  "charter_version": "2.0.0",
+  "execution_chain": ["pre-commit", "commit", "post-commit"],
+  "data": {
+    "commit_hash": "4c77511a7d277ddd64f4b2d123782923f74c194c",
+    "author": "MachineNativeOps",
+    "commit_timestamp": "1769602831",
+    "governance_status": "validated"
+  }
+}
+{
+  "event_type": "commit",
+  "event_id": "evt_32646",
+  "timestamp": "2026-01-28T12:20:35Z",
+  "charter_version": "2.0.0",
+  "execution_chain": ["pre-commit", "commit", "post-commit"],
+  "data": {
+    "commit_hash": "40e69f54c6b3d741aa3c4717e96dab2172a9bd53",
+    "author": "MachineNativeOps",
+    "commit_timestamp": "1769602835",
+    "governance_status": "validated"
+  }
+}
+{
+  "event_type": "commit",
+  "event_id": "evt_6054",
+  "timestamp": "2026-01-28T12:20:35Z",
+  "charter_version": "2.0.0",
+  "execution_chain": ["pre-commit", "commit", "post-commit"],
+  "data": {
+    "commit_hash": "023c2cae0637443c49215752e3f2f8ba48605003",
+    "author": "MachineNativeOps",
+    "commit_timestamp": "1769602835",
+    "governance_status": "validated"
+  }
+}
