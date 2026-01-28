@@ -1,2 +1,19 @@
 {"event_id": "per-file-audit-complete", "event_type": "audit-completed", "timestamp": "2026-01-28T07:27:50.742151Z", "governance_charter": "2.0.0", "audit_scope": "per-file-sandbox-execution", "execution_strategy": "one-by-one-isolated-execution", "files_audited": 100, "total_files": 692, "violations": 0, "critical_violations": 0, "compliance_percentage": 100, "status": "completed", "traceability": "ENABLED", "provability": "ENABLED", "metadata": {"audit_reports_generated": 100, "audit_reports_location": "engine/.governance/per-file-audits", "global_audit_report": "engine/.governance/audit-reports/global-governance-audit-report.json"}}
 {"event_id": "elasticsearch-audit-complete", "event_type": "subsystem-audit-completed", "timestamp": "2026-01-28T07:51:16.313432Z", "governance_charter": "2.0.0", "subsystem": "elasticsearch-search-system", "files_audited": 26, "violations": 0, "critical_violations": 0, "compliance_percentage": 100, "status": "completed", "execution_chain_complete": true, "traceability": "ENABLED", "provability": "ENABLED"}
+{
+  "timestamp": "2026-01-28T07:56:06Z",
+  "event_type": "post-commit-validation",
+  "commit_hash": "0ca01658a3c315a1834dd81fb8de925ca58ef6d9",
+  "governance_charter_version": "2.0.0",
+  "status": "completed"
+}
+{
+  "timestamp": "2026-01-28T07:57:08Z",
+  "event_type": "post-commit-validation",
+  "commit_hash": "be5195d080395de1add55c3aa6a34716d69e5f75",
+  "governance_charter_version": "2.0.0",
+  "status": "completed"
+}
+{"timestamp":"2026-01-28T08:00:00Z","event_type":"audit-initiated","audit_id":"gl-root-audit-2026-01-28","governance_charter_version":"2.0.0","status":"started"}
+{"timestamp":"2026-01-28T07:57:37Z","event_type":"validation-executed","system":"engine","violations":0,"critical_violations":0,"status":"passed"}
+{"timestamp":"2026-01-28T07:57:49Z","event_type":"validation-executed","system":"file-organizer-system","violations":0,"critical_violations":0,"status":"passed"}
