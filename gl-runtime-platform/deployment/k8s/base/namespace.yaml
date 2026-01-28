@@ -1,0 +1,13 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: kubernetes-namespace
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gl-runtime-platform
+  labels:
+    gl-governed: "true"
+    gl-layer: "GL90-99"
+    gl-semantic: "platform-namespace"

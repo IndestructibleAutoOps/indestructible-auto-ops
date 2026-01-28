@@ -1,0 +1,63 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: kubernetes-configmaps
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gl-config
+  namespace: gl-runtime-platform
+data:
+  agent-orchestration.yaml: |
+    apiVersion: orchestration.machinenativeops.io/v1
+    kind: AgentOrchestration
+    metadata:
+      name: multi-agent-parallel-orchestration
+      version: "1.0.0"
+    spec:
+      parallelism:
+        max_concurrent_agents: 8
+      agents:
+        - id: gl-governance-validator
+          enabled: true
+        - id: codeql-monitor
+          enabled: true
+        - id: quality-assurance
+          enabled: true
+        - id: dependency-scanner
+          enabled: true
+        - id: architecture-validator
+          enabled: true
+        - id: documentation-generator
+          enabled: true
+        - id: performance-monitor
+          enabled: true
+        - id: data-sync-agent
+          enabled: true
+        - id: security-auditor
+          enabled: true
+        - id: reporting-aggregator
+          enabled: true
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gl-pipelines-config
+  namespace: gl-runtime-platform
+data:
+  directory-audit-pipeline.yaml: |
+    apiVersion: pipeline.machinenativeops.io/v1
+    kind: Pipeline
+    metadata:
+      name: directory-audit-pipeline
+    spec:
+      description: "Directory-level GL governance audit pipeline"
+      stages:
+        - id: scan
+          name: Directory Scanning
+        - id: validate
+          name: GL Governance Validation
+        - id: report
+          name: Report Generation

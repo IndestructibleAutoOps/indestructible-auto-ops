@@ -1,0 +1,25 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: hpa-patch-prod
+# @GL-audit-trail: ../../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: gl-orchestration-engine-hpa
+spec:
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

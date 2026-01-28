@@ -1,0 +1,28 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: kustomization-prod
+# @GL-audit-trail: ../../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Production Environment Kustomization
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: gl-runtime-platform-prod
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+  - hpa-patch.yaml
+
+images:
+  - name: gl-runtime-platform
+    newTag: v2.2.0
+    
+commonLabels:
+  environment: prod
+  gl-governed: "true"
+  gl-layer: "GL90-99"

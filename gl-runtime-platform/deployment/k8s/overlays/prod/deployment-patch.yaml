@@ -1,0 +1,27 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: deployment-patch-prod
+# @GL-audit-trail: ../../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gl-orchestration-engine
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: orchestration-engine
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: LOG_LEVEL
+              value: "warn"

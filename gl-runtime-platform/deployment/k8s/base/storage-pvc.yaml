@@ -1,0 +1,35 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: kubernetes-persistent-volume-claim
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gl-artifacts-store-pvc
+  namespace: gl-runtime-platform
+  labels:
+    gl-governed: "true"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: gl-storage-class
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gl-events-stream-pvc
+  namespace: gl-runtime-platform
+  labels:
+    gl-governed: "true"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: gl-storage-class

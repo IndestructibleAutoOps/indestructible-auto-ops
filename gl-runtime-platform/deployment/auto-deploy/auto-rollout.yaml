@@ -1,0 +1,89 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-rollout-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Version 3: Auto-Deploy Layer (Deployment Automation)
+
+apiVersion: gl.machinenativeops.io/v1
+kind: AutoRollout
+metadata:
+  name: gl-runtime-rollout
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  enable: true
+  
+  strategy: "rolling"
+  rollout_options:
+    max_surge: 1
+    max_unavailable: 0
+    timeout_seconds: 600
+    interval_seconds: 30
+    
+  health_check:
+    enabled: true
+    probe_type: "http"
+    path: "/api/v1/health"
+    port: 8080
+    initial_delay_seconds: 30
+    period_seconds: 10
+    timeout_seconds: 5
+    failure_threshold: 3
+    success_threshold: 1
+    
+  restart_on:
+    - trigger: "config-change"
+      paths:
+        - "deployment/k8s/*.yaml"
+        - "deployment/docker-compose/*.yaml"
+    - trigger: "policy-change"
+      paths:
+        - "governance/**/*.yaml"
+        - "governance/**/*.json"
+    - trigger: "pipeline-change"
+      paths:
+        - "ops/pipelines/*.yaml"
+        - ".github/workflows/*.yml"
+    - trigger: "agent-change"
+      paths:
+        - ".github/agents/*.yaml"
+        
+  zero_downtime:
+    enabled: true
+    method: "blue-green"
+    blue_green_options:
+      switch_back_on_failure: true
+      health_check_before_switch: true
+      
+  pre_rollback:
+    - notify_stakeholders
+    - collect_diagnostic_logs
+    
+  monitoring:
+    enabled: true
+    track_metrics:
+      - "rollout_progress"
+      - "pod_status"
+      - "response_time"
+      - "error_rate"
+      
+status:
+  phase: "ready"
+  last_rollout: null
+  rollout_count: 0
+  conditions:
+    - type: "AutoRolloutConfigured"
+      status: "True"
+      lastTransitionTime: "2026-01-28T00:00:00Z"
+      reason: "Auto-rollout configuration loaded"
+    - type: "HealthCheckEnabled"
+      status: "True"
+      lastTransitionTime: "2026-01-28T00:00:00Z"
+      reason: "Health check probes configured"

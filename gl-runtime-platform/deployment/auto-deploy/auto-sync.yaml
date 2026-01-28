@@ -1,0 +1,98 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: auto-sync-configuration
+# @GL-audit-trail: ../../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Version 3: Auto-Deploy Layer (Deployment Automation)
+
+apiVersion: gl.machinenativeops.io/v1
+kind: AutoSync
+metadata:
+  name: gl-runtime-sync
+  version: "1.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+
+spec:
+  enable: true
+  
+  sync:
+    - source: "ops/pipelines/"
+      target: "k8s-config"
+      target_type: "ConfigMap"
+      namespace: "gl-runtime-platform"
+      enabled: true
+      format: "yaml"
+      
+    - source: "ops/agents/"
+      target: "k8s-config"
+      target_type: "ConfigMap"
+      namespace: "gl-runtime-platform"
+      enabled: true
+      format: "yaml"
+      
+    - source: "governance/policies/"
+      target: "k8s-config"
+      target_type: "ConfigMap"
+      namespace: "gl-runtime-platform"
+      enabled: true
+      format: "yaml"
+      
+    - source: ".github/agents/agent-orchestration.yml"
+      target: "k8s-crd"
+      target_type: "CustomResourceDefinition"
+      namespace: "gl-runtime-platform"
+      enabled: true
+      format: "yaml"
+      
+  triggers:
+    - type: "file-change"
+      watch_paths:
+        - "ops/pipelines/"
+        - "ops/agents/"
+        - "governance/policies/"
+        - ".github/agents/"
+      debounce_seconds: 5
+      
+    - type: "scheduled"
+      schedule: "*/5 * * * *"
+      
+    - type: "manual"
+      source: "api"
+      endpoint: "/api/v1/sync/trigger"
+      
+  sync_strategy:
+    type: "atomic"
+    validation: true
+    backup: true
+    on_conflict: "merge"
+    
+  post_sync:
+    - verify_synced_resources
+    - update_pod_annotations
+    - generate_sync_report
+    
+  monitoring:
+    enabled: true
+    track_metrics:
+      - "sync_duration"
+      - "sync_success_rate"
+      - "resource_count"
+      
+status:
+  phase: "ready"
+  last_sync: null
+  sync_count: 0
+  conditions:
+    - type: "AutoSyncConfigured"
+      status: "True"
+      lastTransitionTime: "2026-01-28T00:00:00Z"
+      reason: "Auto-sync configuration loaded"
+    - type: "SyncSourcesDefined"
+      status: "True"
+      lastTransitionTime: "2026-01-28T00:00:00Z"
+      reason: "Sync sources and targets configured"
