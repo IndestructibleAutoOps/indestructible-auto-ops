@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: ui-statistic-card
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import { View, Text } from "react-native";
 import { cn } from "@/lib/utils";
 

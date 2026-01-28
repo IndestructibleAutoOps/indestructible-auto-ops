@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: components-parallax-scroll-view
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import type { PropsWithChildren, ReactElement } from "react";
 import { View } from "react-native";
 import Animated, {

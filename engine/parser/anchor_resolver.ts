@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: parser
+ * @GL-semantic: parser-anchor_resolver
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module anchor_resolver
  * @description YAML anchor and alias resolution
  * @gl-governed

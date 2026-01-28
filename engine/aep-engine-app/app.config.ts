@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: aep-engine-app-app.config
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module app.config
  * @description Expo configuration for AEP Engine Governance & Audit App
  * @gl-governed

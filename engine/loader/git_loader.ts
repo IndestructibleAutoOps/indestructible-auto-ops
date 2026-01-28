@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: loader
+ * @GL-semantic: loader-git_loader
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module git_loader
  * @description Git repository configuration loader
  * @gl-governed

@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: executor
+ * @GL-semantic: executor-rollback
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module rollback
  * @description Rollback operations with state tracking and backup
  * @gl-governed

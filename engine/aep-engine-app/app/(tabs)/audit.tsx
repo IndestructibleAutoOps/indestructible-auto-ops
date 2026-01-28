@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: (tabs)-audit
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import { ScrollView, Text, View, TouchableOpacity, FlatList } from "react-native";
 import { useState } from "react";
 import { ScreenContainer } from "@/components/screen-container";

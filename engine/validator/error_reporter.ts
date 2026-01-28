@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: validator
+ * @GL-semantic: validator-error_reporter
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module error_reporter
  * @description Format and report validation errors
  * @gl-governed

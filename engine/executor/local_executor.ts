@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: executor
+ * @GL-semantic: executor-local_executor
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module local_executor
  * @description Local artifact execution with command and file operations
  * @gl-governed

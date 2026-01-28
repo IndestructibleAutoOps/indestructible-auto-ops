@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: gl-gate
+ * @GL-semantic: gl-gate-index
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @fileoverview GL-Gate Main Entry Point
  * @module @machine-native-ops/gl-gate
  * @version 1.0.0

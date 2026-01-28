@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-web
+ * @GL-semantic: screens-AuditScreen
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 interface AuditScreenProps {
   etlStages: any[];
   files: any[];

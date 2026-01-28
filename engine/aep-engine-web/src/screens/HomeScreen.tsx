@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-web
+ * @GL-semantic: screens-HomeScreen
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import { StatisticCard } from '@/components/StatisticCard';
 import { EventCard } from '@/components/EventCard';
 

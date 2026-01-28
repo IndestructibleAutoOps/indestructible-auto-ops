@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: validator
+ * @GL-semantic: validator-module_validator
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module module_validator
  * @description Validate module manifests and configurations
  * @gl-governed

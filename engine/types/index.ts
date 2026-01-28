@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: types
+ * @GL-semantic: types-index
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * Engine Type Definitions
  * 
  * @description Centralized type definitions for the AEP engine

@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: normalizer
+ * @GL-semantic: normalizer-defaults_applier
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module defaults_applier
  * @description Apply default values to configuration
  * @gl-governed

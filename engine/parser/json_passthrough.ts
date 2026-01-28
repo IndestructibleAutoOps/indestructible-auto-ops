@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: parser
+ * @GL-semantic: parser-json_passthrough
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module json_passthrough
  * @description JSON parsing with validation and passthrough
  * @gl-governed

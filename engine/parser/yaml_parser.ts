@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: parser
+ * @GL-semantic: parser-yaml_parser
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module yaml_parser
  * @description YAML parser with schema validation
  * @gl-governed

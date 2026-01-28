@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-web
+ * @GL-semantic: src-App
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import { useState } from 'react';
 import { useAppState } from '@/hooks/useAppState';
 import { HomeScreen } from '@/screens/HomeScreen';

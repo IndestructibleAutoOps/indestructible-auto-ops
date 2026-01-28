@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: renderer
+ * @GL-semantic: renderer-template_engine
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module template_engine
  * @description Jinja2/Nunjucks template rendering engine
  * @gl-governed

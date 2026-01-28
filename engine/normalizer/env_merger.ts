@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: normalizer
+ * @GL-semantic: normalizer-env_merger
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module env_merger
  * @description Merge environment-specific configuration with base
  * @gl-governed

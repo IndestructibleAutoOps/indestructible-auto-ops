@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: renderer
+ * @GL-semantic: renderer-artifact_writer
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module artifact_writer
  * @description Write rendered artifacts with integrity verification
  * @gl-governed

@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: executor
+ * @GL-semantic: executor-remote_executor
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module remote_executor
  * @description Remote artifact execution via SSH or API
  * @gl-governed

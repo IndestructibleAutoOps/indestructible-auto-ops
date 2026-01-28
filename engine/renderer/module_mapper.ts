@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: renderer
+ * @GL-semantic: renderer-module_mapper
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module module_mapper
  * @description Map module configurations to artifacts
  * @gl-governed
