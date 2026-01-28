@@ -1,178 +1,233 @@
 # @GL-governed
-# @GL-layer: GL90-99
+# @GL-layer: governance
 # @GL-semantic: federation-trust-model
 # @GL-charter-version: 2.0.0
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 apiVersion: federation.machinenativeops.io/v1
 kind: TrustModel
 metadata:
-  name: federation-trust-model"
-  version: "5.0.0"
+  name: trust-model
+  version: "7.0.0"
   created_at: "2026-01-28T00:00:00Z"
   layer: "GL90-99"
+  owner: "engineering-team"
   annotations:
     governance.machinenativeops.io/classification: "internal"
-    governance.machinenativeops.io/approved: "approved"
+    governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
+    governance.machinenativeops.io/semantic-enabled: "true"
 
 spec:
-  # Trust levels
   trust_levels:
-    - level: "high"
-      description: "Full trust - automatic operations enabled"
-      auto_fix: true
-      auto_deploy: true
-      auto_pr: true
+    - id: "high"
+      name: "High Trust"
+      description: "Full trust with automatic operations"
+      semantic_validation_required: true
+      semantic_compliance_threshold: 100
+      auto_repair_enabled: true
+      auto_deploy_enabled: true
       approval_required: false
-      signature_verification: "strict"
-      audit_frequency: "continuous"
-    
-    - level: "medium"
-      description: "Medium trust - operations require approval"
-      auto_fix: true
-      auto_deploy: false
-      auto_pr: true
-      approval_required: true
-      signature_verification: "standard"
-      audit_frequency: "daily"
-    
-    - level: "low"
-      description: "Low trust - manual operations only"
-      auto_fix: false
-      auto_deploy: false
-      auto_pr: false
-      approval_required: true
-      signature_verification: "basic"
-      audit_frequency: "weekly"
+      signing_required: true
+      semantic_verification_required: true
 
-  # Permission matrix
+    - id: "medium"
+      name: "Medium Trust"
+      description: "Partial trust with approval required"
+      semantic_validation_required: true
+      semantic_compliance_threshold: 90
+      auto_repair_enabled: false
+      auto_deploy_enabled: false
+      approval_required: true
+      signing_required: true
+      semantic_verification_required: true
+
+    - id: "low"
+      name: "Low Trust"
+      description: "Manual operations only"
+      semantic_validation_required: true
+      semantic_compliance_threshold: 80
+      auto_repair_enabled: false
+      auto_deploy_enabled: false
+      approval_required: true
+      signing_required: true
+      semantic_verification_required: true
+
+  semantic_trust_validation:
+    enabled: true
+    validation_rules:
+      - id: "semantic-compliance-check"
+        name: "Semantic Compliance Check"
+        enabled: true
+        description: "Verify semantic compliance with GL standards"
+        check_type: "semantic"
+        severity: "critical"
+        action: "block"
+
+      - id: "semantic-anchor-validation"
+        name: "Semantic Anchor Validation"
+        enabled: true
+        description: "Validate semantic anchors are present and correct"
+        check_type: "semantic"
+        severity: "critical"
+        action: "block"
+
+      - id: "gl-layer-consistency-check"
+        name: "GL Layer Consistency Check"
+        enabled: true
+        description: "Ensure GL layers are consistent across dependencies"
+        check_type: "semantic"
+        severity: "high"
+        action: "warn"
+
+      - id: "semantic-dependency-validation"
+        name: "Semantic Dependency Validation"
+        enabled: true
+        description: "Validate semantic dependencies are valid"
+        check_type: "semantic"
+        severity: "high"
+        action: "warn"
+
+      - id: "schema-inference-validation"
+        name: "Schema Inference Validation"
+        enabled: true
+        description: "Validate inferred schemas match actual content"
+        check_type: "semantic"
+        severity: "medium"
+        action: "warn"
+
   permission_matrix:
-    operations:
-      repair:
-        allowed_by_trust_level:
-          - "high"
-          - "medium"
-        requires_approval:
-          high: false
-          medium: true
-          low: true
-      
-      deploy:
-        allowed_by_trust_level:
-          - "high"
-        requires_approval:
-          high: false
-          medium: true
-          low: true
-      
-      orchestrate:
-        allowed_by_trust_level:
-          - "high"
-          - "medium"
-          - "low"
-        requires_approval:
-          high: false
-          medium: false
-          low: true
-      
-      audit:
-        allowed_by_trust_level:
-          - "high"
-          - "medium"
-          - "low"
-        requires_approval:
-          high: false
-          medium: false
-          low: false
+    repair:
+      high: "automatic"
+      medium: "approval_required"
+      low: "manual_only"
 
-  # Signature and verification
-  signature_policy:
+    deploy:
+      high: "automatic"
+      medium: "manual_only"
+      low: "manual_only"
+
+    orchestrate:
+      high: "automatic"
+      medium: "automatic"
+      low: "approval_required"
+
+    audit:
+      high: "automatic"
+      medium: "automatic"
+      low: "automatic"
+
+    semantic_analysis:
+      high: "automatic"
+      medium: "automatic"
+      low: "automatic"
+
+  semantic_signing:
     enabled: true
     algorithm: "ECDSA-P256"
-    key_management: "centralized"
+    key_rotation_days: 90
+    signing_requirements:
+      - artifact_type: "semantic-analysis"
+        signing_required: true
+        trust_requirement: "medium"
+      - artifact_type: "semantic-classification"
+        signing_required: true
+        trust_requirement: "medium"
+      - artifact_type: "gl-mapping"
+        signing_required: true
+        trust_requirement: "medium"
+      - artifact_type: "semantic-fix-patch"
+        signing_required: true
+        trust_requirement: "high"
+      - artifact_type: "semantic-pr"
+        signing_required: true
+        trust_requirement: "high"
+
+  semantic_verification:
+    enabled: true
     verification_rules:
-      - rule: "patch-signing"
-        description: "All patches must be signed"
-        required: true
-        trust_levels: ["high", "medium"]
-      - rule: "pr-signing"
-        description: "All PRs must be signed"
-        required: true
-        trust_levels: ["high"]
-      - rule: "deployment-signing"
-        description: "All deployments must be signed"
-        required: true
-        trust_levels: ["high"]
+      - id: "verify-semantic-signatures"
+        name: "Verify Semantic Signatures"
+        enabled: true
+        description: "Verify all semantic artifacts are properly signed"
+        check_type: "signature"
+        severity: "critical"
+        action: "block"
 
-  # Cross-organization boundaries
-  cross_org_boundaries:
-    enabled: true
-    boundary_rules:
-      - rule: "no-direct-cross-org-fixes"
-        description: "Cannot directly fix files in another organization's repo"
-        enforcement: "block"
-      - rule: "cross-org-audit-access"
-        description: "Can audit another organization's repo with permission"
-        enforcement: "allow-with-approval"
-      - rule: "cross-org-artifact-sharing"
-        description: "Can share governance artifacts across organizations"
-        enforcement: "allow"
-    approval_workflows:
-      - workflow: "cross-org-repair"
-        approvers:
-          - "target-org-governance-team"
-          - "source-org-governance-team"
-        timeout_hours: 24
+      - id: "verify-semantic-consistency"
+        name: "Verify Semantic Consistency"
+        enabled: true
+        description: "Verify semantic consistency across artifacts"
+        check_type: "semantic"
+        severity: "high"
+        action: "warn"
 
-  # Reputation system
-  reputation_system:
-    enabled: true
-    metrics:
-      - name: "compliance_score"
-        weight: 0.4
-      - name: "fix_success_rate"
-        weight: 0.3
-      - name: "deployment_success_rate"
-        weight: 0.2
-      - name: "security_incidents"
-        weight: 0.1
-    scoring:
-      min_score: 0
-      max_score: 100
-      auto_adjust_trust: true
+      - id: "verify-gl-compliance"
+        name: "Verify GL Compliance"
+        enabled: true
+        description: "Verify all semantic artifacts comply with GL standards"
+        check_type: "governance"
+        severity: "critical"
+        action: "block"
 
-  # Audit trail
-  audit_trail:
+  cross_org_trust:
     enabled: true
-    log_all_operations: true
-    log_level: "detailed"
-    retention_days: 365
-    export_format: "json"
-    verification_enabled: true
+    trust_propagation:
+      - from: "org-001"
+        to: "org-002"
+        level: "medium"
+        semantic_validation_required: true
 
-  # Revocation handling
-  revocation_policy:
+    semantic_trust_requirements:
+      - org_id: "org-001"
+        required_semantic_compliance: 100
+        required_trust_level: "high"
+        semantic_signing_required: true
+
+      - org_id: "org-002"
+        required_semantic_compliance: 90
+        required_trust_level: "medium"
+        semantic_signing_required: true
+
+  provenance:
     enabled: true
-    revoke_on:
-      - "security-compromise"
-      - "compliance-violation-critical"
-      - "malicious-activity-detected"
+    track_semantic_provenance: true
+    provenance_data:
+      - "semantic_analysis_timestamp"
+      - "semantic_analyzer_version"
+      - "semantic_graph_version"
+      - "gl_charter_version"
+      - "classification_confidence"
+      - "mapping_confidence"
+      - "schema_inference_confidence"
+      - "intent_resolution_priority"
+
+  revocation:
+    enabled: true
+    semantic_violation_threshold: 10
     revocation_actions:
-      - "revoke-all-permissions"
-      - "invalidate-signatures"
-      - "trigger-audit"
-    notification_channels:
-      - "email"
-      - "slack"
-      - "pagerduty"
+      - trigger: "semantic_compliance_below_threshold"
+        action: "revoke_auto_repair_permissions"
+        severity: "high"
+
+      - trigger: "semantic_signature_verification_failed"
+        action: "block_operation"
+        severity: "critical"
+
+      - trigger: "semantic_dependency_conflict"
+        action: "warn_and_flag_for_review"
+        severity: "medium"
 
 status:
-  phase: "active"
+  phase: "configured"
+  semantic_trust_validation_enabled: true
   conditions:
-    - type: "TrustLevelsDefined"
+    - type: "SemanticTrustValidationEnabled"
       status: "True"
-    - type: "PermissionMatrixConfigured"
+      message: "Semantic trust validation is enabled"
+    - type: "SemanticSigningConfigured"
       status: "True"
-    - type: "SignaturePolicyEnabled"
+      message: "Semantic signing is configured"
+    - type: "SemanticVerificationEnabled"
       status: "True"
-    - type: "CrossOrgBoundariesDefined"
-      status: "True"
+      message: "Semantic verification is enabled"

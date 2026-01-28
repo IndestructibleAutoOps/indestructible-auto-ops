@@ -1,6 +1,12 @@
+// @GL-governed
+// @GL-layer: GL70-89
+// @GL-semantic: runtime-general-purpose
+// @GL-charter-version: 2.0.0
+// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
 {
   "name": "gl-runtime-platform",
-  "version": "5.0.0",
+  "version": "7.0.0",
   "description": "GL Governance Runtime Platform - Production-grade multi-agent orchestration and governance engine",
   "main": "dist/index.js",
   "scripts": {

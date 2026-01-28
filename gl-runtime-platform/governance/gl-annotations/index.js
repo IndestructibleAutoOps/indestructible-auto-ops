@@ -1,4 +1,9 @@
 // @GL-governed
+// @GL-layer: GL90-99
+// @GL-semantic: runtime-indexing
+// @GL-charter-version: 2.0.0
+// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
 // GL-ROOT Global Governance Audit & Platform Build
 // Unified Charter v2.0.0 - GL Annotations Module
 

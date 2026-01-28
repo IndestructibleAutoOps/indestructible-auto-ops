@@ -1,184 +1,262 @@
 # @GL-governed
-# @GL-layer: GL90-99
+# @GL-layer: governance
 # @GL-semantic: federation-policies
 # @GL-charter-version: 2.0.0
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 apiVersion: federation.machinenativeops.io/v1
 kind: FederationPolicies
 metadata:
-  name: federation-governance-policies
-  version: "5.0.0"
+  name: federation-policies
+  version: "7.0.0"
   created_at: "2026-01-28T00:00:00Z"
   layer: "GL90-99"
+  owner: "engineering-team"
   annotations:
     governance.machinenativeops.io/classification: "internal"
     governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
+    governance.machinenativeops.io/semantic-enabled: "true"
 
 spec:
-  # Baseline policies - minimum standards across all organizations
   baseline_policies:
-    - id: "policy-semantic-anchor"
-      name: "Semantic Anchor Requirement"
-      severity: "critical"
-      enforced: true
-      overridable: false
-      description: "All files must have GL semantic anchor"
-      rule: "@GL-semantic: must be present in file header"
-      scope: "all-files"
+    - id: "semantic-analysis-required"
+      name: "Semantic Analysis Required"
+      enabled: true
+      scope: "all"
+      description: "All files must undergo semantic analysis and classification"
+      rules:
+        - type: "semantic_classification"
+          enabled: true
+          severity: "critical"
+          check: "has_semantic_classification"
+        - type: "gl_mapping"
+          enabled: true
+          severity: "critical"
+          check: "has_gl_mapping"
+      enforcement: "block"
+      exceptions: []
 
-    - id: "policy-governance-tags"
-      name: "Governance Tags Requirement"
-      severity: "critical"
-      enforced: true
-      overridable: false
-      description: "All files must have governance tags"
-      rule: "@GL-governed, @GL-layer, @GL-semantic must be present"
-      scope: "code-files"
+    - id: "governance-tags-required"
+      name: "Governance Tags Required"
+      enabled: true
+      scope: "all"
+      description: "All governance files must have GL governance tags"
+      rules:
+        - type: "governance_tag"
+          tag: "@GL-governed"
+          required: true
+          severity: "critical"
+        - type: "governance_tag"
+          tag: "@GL-layer:"
+          required: true
+          severity: "critical"
+        - type: "governance_tag"
+          tag: "@GL-semantic:"
+          required: true
+          severity: "critical"
+        - type: "governance_tag"
+          tag: "@GL-charter-version:"
+          required: true
+          severity: "high"
+      enforcement: "block"
+      exceptions: ["*.md", "*.txt"]
 
-    - id: "policy-naming-convention"
+    - id: "schema-compliance"
+      name: "Schema Compliance"
+      enabled: true
+      scope: "configuration"
+      description: "All configuration files must comply with GL schema standards"
+      rules:
+        - type: "schema_validation"
+          required_fields: ["apiVersion", "kind", "metadata", "spec"]
+          severity: "critical"
+      enforcement: "block"
+      exceptions: []
+
+    - id: "naming-convention"
       name: "Naming Convention"
-      severity: "warning"
-      enforced: true
-      overridable: true
-      description: "Files must follow kebab-case naming"
-      rule: "filenames must match /^[a-z0-9-]+\\.[a-z]+$/"
-      scope: "all-files"
+      enabled: true
+      scope: "all"
+      description: "All files and resources must follow GL naming conventions"
+      rules:
+        - type: "naming"
+          convention: "kebab-case"
+          scope: "filenames"
+          severity: "high"
+        - type: "naming"
+          convention: "kebab-case"
+          scope: "resource_names"
+          severity: "medium"
+      enforcement: "warn"
+      exceptions: ["README", "LICENSE"]
 
-    - id: "policy-charter-version"
-      name: "Charter Version Requirement"
-      severity: "critical"
-      enforced: true
-      overridable: false
-      description: "All files must specify charter version"
-      rule: "@GL-charter-version must be present and >= 2.0.0"
-      scope: "governance-files"
+  semantic_policies:
+    - id: "semantic-anchor-required"
+      name: "Semantic Anchor Required"
+      enabled: true
+      scope: "all"
+      description: "All files must have a semantic anchor defined"
+      rules:
+        - type: "semantic_analysis"
+          check: "semantic_anchor_present"
+          severity: "critical"
+      enforcement: "block"
 
-  # Cross-organization sharing policies
+    - id: "intent-resolution-required"
+      name: "Intent Resolution Required"
+      enabled: true
+      scope: "critical"
+      description: "Critical files must have intent resolution"
+      rules:
+        - type: "semantic_analysis"
+          check: "intent_resolved"
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "schema-inference-required"
+      name: "Schema Inference Required"
+      enabled: true
+      scope: "configuration"
+      description: "Configuration files must have schema inference"
+      rules:
+        - type: "semantic_analysis"
+          check: "schema_inferred"
+          severity: "high"
+      enforcement: "warn"
+
   sharing_policies:
-    - id: "policy-artifact-sharing"
-      name: "Artifact Sharing"
+    - id: "semantic-artifact-sharing"
+      name: "Semantic Artifact Sharing"
       enabled: true
-      description: "Governance artifacts can be shared across organizations"
+      scope: "federation"
+      description: "Share semantic analysis artifacts across federation"
       rules:
-        - "audit-reports: read-only"
-        - "patches: approval-required"
-        - "metadata: read-only"
+        - type: "artifact_sharing"
+          artifact_types: ["semantic-analysis", "classification", "gl-mapping"]
+          sharing_mode: "read-only"
+          require_trust: "high"
+      enforcement: "allow"
 
-    - id: "policy-event-streaming"
-      name: "Event Streaming"
+    - id: "semantic-event-sharing"
+      name: "Semantic Event Sharing"
       enabled: true
-      description: "Governance events can be streamed across organizations"
+      scope: "federation"
+      description: "Share semantic analysis events across federation"
       rules:
-        - "governance-events: read-only"
-        - "audit-events: read-only"
-        - "repair-events: approval-required"
+        - type: "event_sharing"
+          event_types: ["semantic-analysis-complete", "semantic-violation-detected", "semantic-fix-applied"]
+          sharing_mode: "read-only"
+          require_trust: "medium"
+      enforcement: "allow"
 
-  # Validation policies
   validation_policies:
-    - id: "policy-schema-validation"
-      name: "Schema Validation"
+    - id: "semantic-dependency-validation"
+      name: "Semantic Dependency Validation"
       enabled: true
-      description: "All YAML/JSON files must validate against schemas"
-      schema_paths:
-        - "gl/**/schemas/*.json"
-        - "federation/**/*.yaml"
-
-    - id: "policy-dependency-validation"
-      name: "Dependency Validation"
-      enabled: true
-      description: "Dependencies must be validated for security"
-      severity: "critical"
-      enforced: true
-
-    - id: "policy-security-validation"
-      name: "Security Validation"
-      enabled: true
-      description: "Security scanning must pass for all code"
-      standards:
-        - "OWASP"
-        - "CIS"
-      severity: "critical"
-      enforced: true
-
-  # Orchestration policies
-  orchestration_policies:
-    - id: "policy-parallel-execution"
-      name: "Parallel Execution"
-      enabled: true
-      max_concurrent_repos: 10
-      max_concurrent_agents: 8
-      timeout_seconds: 3600
-
-    - id: "policy-retry-strategy"
-      name: "Retry Strategy"
-      enabled: true
-      max_retries: 3
-      backoff_multiplier: 2
-      retry_on:
-        - "network-error"
-        - "timeout"
-        - "transient-failure"
-
-  # Deployment policies
-  deployment_policies:
-    - id: "policy-auto-deploy"
-      name: "Auto Deployment"
-      enabled: true
-      description: "Auto deployment based on trust level"
+      scope: "all"
+      description: "Validate semantic dependencies between files"
       rules:
-        - "high-trust: auto-deploy-enabled"
-        - "medium-trust: approval-required"
-        - "low-trust: manual-only"
+        - type: "dependency_validation"
+          validation_mode: "semantic"
+          check: "semantic_dependencies_valid"
+          severity: "high"
+      enforcement: "warn"
 
-    - id: "policy-rollback-strategy"
-      name: "Rollback Strategy"
+    - id: "gl-layer-consistency"
+      name: "GL Layer Consistency"
       enabled: true
-      description: "Automatic rollback on deployment failure"
-      conditions:
-        - "health-check-fail"
-        - "compliance-drop"
-        - "critical-error"
+      scope: "all"
+      description: "Ensure GL layers are consistent across dependencies"
+      rules:
+        - type: "consistency_check"
+          check: "gl_layer_consistency"
+          severity: "medium"
+      enforcement: "warn"
 
-  # Policy profiles
-  profiles:
-    standard:
-      description: "Standard governance profile"
+  orchestration_policies:
+    - id: "semantic-aware-orchestration"
+      name: "Semantic Aware Orchestration"
+      enabled: true
+      scope: "federation"
+      description: "Orchestration must be semantic-aware"
+      rules:
+        - type: "orchestration"
+          requirement: "semantic_graph_required"
+          severity: "critical"
+        - type: "orchestration"
+          requirement: "classification_aware"
+          severity: "high"
+      enforcement: "block"
+
+    - id: "semantic-auto-repair"
+      name: "Semantic Auto-Repair"
+      enabled: true
+      scope: "high-trust"
+      description: "Enable semantic-aware auto-repair for high-trust organizations"
+      rules:
+        - type: "auto_repair"
+          enabled: true
+          trust_requirement: "high"
+          semantic_aware: true
+      enforcement: "allow"
+
+  deployment_policies:
+    - id: "semantic-validation-before-deploy"
+      name: "Semantic Validation Before Deploy"
+      enabled: true
+      scope: "all"
+      description: "Require semantic validation before deployment"
+      rules:
+        - type: "pre_deployment"
+          requirement: "semantic_validation_passed"
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "semantic-artifact-signing"
+      name: "Semantic Artifact Signing"
+      enabled: true
+      scope: "federation"
+      description: "Sign semantic artifacts before sharing"
+      rules:
+        - type: "signing"
+          artifact_types: ["semantic-analysis", "classification", "gl-mapping"]
+          required: true
+          algorithm: "ECDSA-P256"
+      enforcement: "block"
+
+  policy_profiles:
+    - id: "standard"
+      name: "Standard Profile"
       policies:
-        - "policy-semantic-anchor"
-        - "policy-governance-tags"
-        - "policy-naming-convention"
-        - "policy-charter-version"
-        - "policy-schema-validation"
-        - "policy-dependency-validation"
-        - "policy-security-validation"
+        - "semantic-analysis-required"
+        - "governance-tags-required"
+        - "schema-compliance"
+        - "semantic-anchor-required"
+        - "semantic-validation-before-deploy"
+      applicable_trust_levels: ["high", "medium"]
 
-    minimal:
-      description: "Minimal governance profile"
+    - id: "extended"
+      name: "Extended Profile"
       policies:
-        - "policy-semantic-anchor"
-        - "policy-governance-tags"
-        - "policy-security-validation"
+        - "semantic-analysis-required"
+        - "governance-tags-required"
+        - "schema-compliance"
+        - "naming-convention"
+        - "semantic-anchor-required"
+        - "intent-resolution-required"
+        - "schema-inference-required"
+        - "semantic-artifact-sharing"
+        - "semantic-event-sharing"
+        - "semantic-aware-orchestration"
+        - "semantic-auto-repair"
+        - "semantic-validation-before-deploy"
+        - "semantic-artifact-signing"
+      applicable_trust_levels: ["high"]
 
-    extended:
-      description: "Extended governance profile"
+    - id: "minimal"
+      name: "Minimal Profile"
       policies:
-        - "policy-semantic-anchor"
-        - "policy-governance-tags"
-        - "policy-naming-convention"
-        - "policy-charter-version"
-        - "policy-schema-validation"
-        - "policy-dependency-validation"
-        - "policy-security-validation"
-        - "policy-artifact-sharing"
-        - "policy-event-streaming"
-
-status:
-  phase: "active"
-  total_policies: 15
-  conditions:
-    - type: "BaselinePoliciesDefined"
-      status: "True"
-    - type: "ProfilesConfigured"
-      status: "True"
-    - type: "ValidationPoliciesEnabled"
-      status: "True"
+        - "governance-tags-required"
+        - "schema-compliance"
+      applicable_trust_levels: ["medium", "low"]

@@ -1,205 +1,245 @@
 # @GL-governed
-# @GL-layer: GL90-99
-# @GL-semantic: federation-orchestration-configuration
+# @GL-layer: governance
+# @GL-semantic: federation-orchestration
 # @GL-charter-version: 2.0.0
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 apiVersion: federation.machinenativeops.io/v1
 kind: FederationOrchestration
 metadata:
-  name: cross-repo-orchestration
-  version: "5.0.0"
+  name: federation-orchestration
+  version: "7.0.0"
   created_at: "2026-01-28T00:00:00Z"
   layer: "GL90-99"
+  owner: "engineering-team"
   annotations:
     governance.machinenativeops.io/classification: "internal"
-    governance.machinenativeops.io/approved: "approved"
+    governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
+    governance.machinenativeops.io/semantic-enabled: "true"
 
 spec:
-  # Cross-repo orchestration strategy
-  orchestration_strategy:
-    mode: "parallel-federation"
+  mode: "semantic-aware-federation"
+  semantic_graph_required: true
+  semantic_validation_required: true
+
+  parallelism:
     max_concurrent_repos: 10
     max_concurrent_agents_per_repo: 8
-    timeout_seconds: 3600
+    timeout_seconds: 1800
     retry_policy:
       max_retries: 3
       backoff_multiplier: 2
-      retry_on:
-        - "network-error"
-        - "timeout"
-        - "transient-failure"
 
-  # Per-repo pipeline configuration
+  semantic_prerequisites:
+    - id: "semantic-graph-build"
+      name: "Build Semantic Resource Graph"
+      enabled: true
+      required: true
+      description: "Build SRG before any orchestration"
+      priority: 1
+    - id: "semantic-validation"
+      name: "Semantic Validation"
+      enabled: true
+      required: true
+      description: "Validate semantic consistency"
+      priority: 2
+    - id: "semantic-compliance-check"
+      name: "Semantic Compliance Check"
+      enabled: true
+      required: true
+      description: "Check GL semantic compliance"
+      priority: 3
+
   per_repo_pipelines:
-    - name: "directory-audit-pipeline"
-      description: "Per-repo directory audit with per-file sandbox execution"
+    - id: "directory-semantic-audit-pipeline"
+      name: "Directory Semantic Audit Pipeline"
       enabled: true
-      execution_mode: "per-file-isolated"
+      description: "Semantic-aware directory audit"
       stages:
-        - name: "scan-repository"
-          description: "Scan all files in repository"
-          agents:
-            - "dependency-scanner"
-            - "codeql-monitor"
-        - name: "validate-governance"
-          description: "Validate governance compliance for each file"
-          agents:
-            - "gl-governance-validator"
-            - "architecture-validator"
-        - name: "quality-check"
-          description: "Perform quality checks"
-          agents:
-            - "quality-assurance"
-            - "security-auditor"
-        - name: "generate-reports"
-          description: "Generate audit reports"
-          agents:
-            - "reporting-aggregator"
-            - "documentation-generator"
-      output:
-        - "repo-audit-report.json"
-        - "per-file-reports/"
-        - "governance-summary.md"
+        - id: "semantic-analysis"
+          name: "Semantic Analysis"
+          agent: "semantic-analyzer"
+          enabled: true
+          config:
+            parse_content: true
+            classify_semantics: true
+            map_gl_standards: true
+            infer_schemas: true
+            resolve_intents: true
+        - id: "semantic-validation"
+          name: "Semantic Validation"
+          agent: "semantic-validator"
+          enabled: true
+          config:
+            validate_governance_tags: true
+            validate_semantic_anchors: true
+            validate_gl_layers: true
+            check_compliance: true
+        - id: "semantic-reporting"
+          name: "Semantic Reporting"
+          agent: "semantic-reporter"
+          enabled: true
+          config:
+            generate_semantic_reports: true
+            aggregate_findings: true
+            create_recommendations: true
 
-    - name: "repo-gl-fix-pipeline"
-      description: "Per-repo GL fixes with sandbox validation and PR creation"
+    - id: "repo-semantic-fix-pipeline"
+      name: "Repository Semantic Fix Pipeline"
       enabled: true
-      execution_mode: "per-file-isolated"
+      description: "Semantic-aware fix pipeline"
       stages:
-        - name: "analyze-violations"
-          description: "Analyze governance violations"
-          agents:
-            - "gl-governance-validator"
-            - "architecture-validator"
-        - name: "generate-patches"
-          description: "Generate automatic patches"
-          agents:
-            - "gl-governance-validator"
-          sandbox_validation: true
-        - name: "apply-fixes"
-          description: "Apply fixes in sandbox"
-          agents:
-            - "connector-git"
-        - name: "create-pr"
-          description: "Create pull requests for fixes"
-          agents:
-            - "connector-git"
-          requires_approval: false
-      output:
-        - "fix-report.json"
-        - "patches/"
-        - "pr-urls.txt"
+        - id: "semantic-issue-detection"
+          name: "Semantic Issue Detection"
+          agent: "semantic-issue-detector"
+          enabled: true
+          config:
+            detect_missing_tags: true
+            detect_semantic_conflicts: true
+            detect_schema_issues: true
+        - id: "semantic-fix-generation"
+          name: "Semantic Fix Generation"
+          agent: "semantic-fix-generator"
+          enabled: true
+          config:
+            generate_governance_tags: true
+            generate_semantic_anchors: true
+            generate_gl_mappings: true
+        - id: "semantic-fix-validation"
+          name: "Semantic Fix Validation"
+          agent: "semantic-fix-validator"
+          enabled: true
+          config:
+            validate_fixes: true
+            ensure_compliance: true
+        - id: "semantic-pr-creation"
+          name: "Semantic PR/MR Creation"
+          agent: "semantic-pr-creator"
+          enabled: true
+          config:
+            create_prs: true
+            attach_semantic_artifacts: true
+            require_approval: true
 
-  # Cross-repo event aggregation
+  cross_repo_orchestration:
+    - id: "federation-semantic-audit"
+      name: "Federation Semantic Audit"
+      enabled: true
+      description: "Cross-repo semantic audit"
+      trigger: "scheduled"
+      schedule: "0 */6 * * *"
+      pipelines:
+        - "directory-semantic-audit-pipeline"
+      target_repos: "all"
+      semantic_aggregation:
+        enabled: true
+        aggregate_by: "organization"
+        generate_federation_report: true
+
+    - id: "federation-semantic-sync"
+      name: "Federation Semantic Sync"
+      enabled: true
+      description: "Synchronize semantic graphs across federation"
+      trigger: "event"
+      trigger_event: "semantic-graph-updated"
+      action: "sync-semantic-graphs"
+      target_repos: "all"
+      semantic_validation:
+        enabled: true
+        validate_cross_repo_consistency: true
+
   event_aggregation:
     enabled: true
-    event_stream_path: "storage/federation-events-stream/federation-events.jsonl"
-    aggregation_rules:
-      - event_type: "audit_started"
-        aggregate_by: "organization_id,repo_id"
-      - event_type: "audit_completed"
-        aggregate_by: "organization_id,repo_id"
-      - event_type: "fix_applied"
-        aggregate_by: "organization_id,repo_id"
-      - event_type: "deployment_completed"
-        aggregate_by: "organization_id,cluster_id"
+    semantic_events:
+      - "semantic-analysis-started"
+      - "semantic-analysis-completed"
+      - "semantic-validation-started"
+      - "semantic-validation-completed"
+      - "semantic-violation-detected"
+      - "semantic-fix-generated"
+      - "semantic-fix-applied"
+      - "semantic-pr-created"
+      - "semantic-graph-updated"
+    aggregation_by:
+      - "organization"
+      - "repository"
+      - "semantic_anchor"
+      - "gl_layer"
     retention_hours: 168
 
-  # Priority management
-  priority_management:
+  reporting:
     enabled: true
-    priority_levels:
-      - level: "critical"
-        repos:
-          - "repo-machine-native-ops-main"
-        weight: 10
-      - level: "high"
-        repos:
-          - "repo-enterprise-a-core"
-        weight: 8
-      - level: "medium"
-        repos: []
-        weight: 5
-      - level: "low"
-        repos: []
-        weight: 3
-    preemption_enabled: true
-
-  # Trust-based execution
-  trust_based_execution:
-    enabled: true
-    rules:
-      - trust_level: "high"
-        auto_fix: true
-        auto_deploy: true
-        auto_pr: true
-        approval_required: false
-      - trust_level: "medium"
-        auto_fix: true
-        auto_deploy: false
-        auto_pr: true
-        approval_required: true
-      - trust_level: "low"
-        auto_fix: false
-        auto_deploy: false
-        auto_pr: false
-        approval_required: true
-
-  # Cross-repo dependencies
-  dependency_management:
-    enabled: true
-    resolution_strategy: "topological"
-    parallel_independent: true
-    wait_for_dependencies: true
-
-  # Federated reporting
-  federated_reporting:
-    enabled: true
-    report_types:
-      - name: "federated-audit-report"
+    semantic_reports:
+      - id: "federation-semantic-compliance-report"
+        name: "Federation Semantic Compliance Report"
         format: "json"
+        schedule: "daily"
         include:
-          - "all-repos"
-          - "summary-metrics"
-          - "violations-by-repo"
-          - "compliance-scores"
-      - name: "executive-summary"
+          - "semantic_compliance_metrics"
+          - "semantic_violation_summary"
+          - "semantic_fix_statistics"
+          - "cross_repo_semantic_consistency"
+      - id: "federation-semantic-health-report"
+        name: "Federation Semantic Health Report"
         format: "markdown"
+        schedule: "daily"
         include:
-          - "overall-compliance"
-          - "critical-issues"
-          - "recommendations"
-      - name: "dashboard-data"
-        format: "json"
+          - "semantic_graph_health"
+          - "semantic_analysis_performance"
+          - "semantic_validation_results"
+      - id: "federation-semantic-executive-summary"
+        name: "Federation Semantic Executive Summary"
+        format: "dashboard"
+        schedule: "hourly"
         include:
-          - "metrics"
-          - "charts"
-          - "trends"
-    output_path: "storage/federation-audit-reports/"
+          - "overall_semantic_compliance"
+          - "critical_semantic_issues"
+          - "semantic_fix_recommendations"
 
-  # Integration with existing systems
-  integrations:
-    - type: "gl-runtime-platform"
-      enabled: true
-      api_endpoint: "http://localhost:3000"
-    - type: "git"
-      enabled: true
-      provider: "github"
-    - type: "kubernetes"
-      enabled: true
-      clusters:
-        - "cluster-prod-us-east"
-        - "cluster-staging-us-west"
-        - "cluster-enterprise-prod"
+  semantic_artifact_sharing:
+    enabled: true
+    share_semantic_analyses: true
+    share_semantic_classifications: true
+    share_gl_mappings: true
+    share_semantic_graphs: true
+    trust_requirement: "medium"
+    signing_required: true
+
+  semantic_auto_repair:
+    enabled: true
+    trust_requirement: "high"
+    auto_repair_rules:
+      - id: "add-missing-governance-tags"
+        name: "Add Missing Governance Tags"
+        enabled: true
+        severity: "auto-fix"
+        description: "Automatically add missing governance tags"
+        trust_level: "high"
+      - id: "add-missing-semantic-anchors"
+        name: "Add Missing Semantic Anchors"
+        enabled: true
+        severity: "auto-fix"
+        description: "Automatically add missing semantic anchors"
+        trust_level: "high"
+      - id: "fix-naming-conventions"
+        name: "Fix Naming Conventions"
+        enabled: true
+        severity: "warn"
+        description: "Fix naming convention violations"
+        trust_level: "medium"
 
 status:
   phase: "configured"
+  semantic_graph_ready: false
+  semantic_validation_enabled: true
   conditions:
-    - type: "PipelinesConfigured"
+    - type: "SemanticGraphRequired"
       status: "True"
-    - type: "EventAggregationEnabled"
+      message: "Semantic graph is required for all operations"
+    - type: "SemanticPipelinesConfigured"
       status: "True"
-    - type: "PriorityManagementConfigured"
+      message: "Semantic-aware pipelines configured"
+    - type: "FederationOrchestrationReady"
       status: "True"
-    - type: "TrustBasedExecutionEnabled"
-      status: "True"
+      message: "Federation orchestration ready with semantic awareness"

@@ -20,6 +20,7 @@ export interface Services {
   eventStream: EventStreamManager;
   artifactStore: ArtifactStore;
   gitConnector: GitConnector;
+  srgRuntime?: any;
 }
 
 export function setupRoutes(app: express.Application, services: Services): void {
@@ -29,15 +30,223 @@ export function setupRoutes(app: express.Application, services: Services): void 
 
   // Health check endpoint
   router.get('/health', (req, res) => {
+    const srgStatus = services.srgRuntime?.getStatus() || {
+      ready: false,
+      totalFilesAnalyzed: 0,
+      compliantFiles: 0,
+      nonCompliantFiles: 0
+    };
+    
     res.json({
       status: 'healthy',
-      version: '5.0.0',
+      version: '7.0.0',
       timestamp: new Date().toISOString(),
       governance: {
         activated: true,
         charterVersion: '2.0.0'
+      },
+      semanticGraph: {
+        enabled: true,
+        ready: srgStatus.ready,
+        totalFilesAnalyzed: srgStatus.totalFilesAnalyzed,
+        compliantFiles: srgStatus.compliantFiles,
+        nonCompliantFiles: srgStatus.nonCompliantFiles
       }
     });
+  });
+
+  // Semantic Graph endpoints
+  router.get('/api/v1/semantic/status', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      const status = services.srgRuntime.getStatus();
+      res.json({
+        success: true,
+        data: status
+      });
+    } catch (error) {
+      logger.error('Failed to get semantic graph status', error);
+      res.status(500).json({
+        error: 'Failed to get semantic graph status',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  router.get('/api/v1/semantic/file/:filePath(*)', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      const filePath = req.params.filePath;
+      const analysis = await services.srgRuntime.getFileAnalysis(filePath);
+      
+      if (!analysis) {
+        return res.status(404).json({
+          error: 'File analysis not found',
+          filePath
+        });
+      }
+      
+      res.json({
+        success: true,
+        data: analysis
+      });
+    } catch (error) {
+      logger.error('Failed to get file semantic analysis', error);
+      res.status(500).json({
+        error: 'Failed to get file semantic analysis',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  router.get('/api/v1/semantic/search/anchor/:semanticAnchor', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      const semanticAnchor = req.params.semanticAnchor;
+      const results = await services.srgRuntime.searchBySemanticAnchor(semanticAnchor);
+      
+      res.json({
+        success: true,
+        data: {
+          semanticAnchor,
+          count: results.length,
+          files: results.map((r: any) => r.filePath)
+        }
+      });
+    } catch (error) {
+      logger.error('Failed to search by semantic anchor', error);
+      res.status(500).json({
+        error: 'Failed to search by semantic anchor',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  router.get('/api/v1/semantic/search/layer/:glLayer', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      const glLayer = req.params.glLayer;
+      const results = await services.srgRuntime.searchByGLLayer(glLayer);
+      
+      res.json({
+        success: true,
+        data: {
+          glLayer,
+          count: results.length,
+          files: results.map((r: any) => r.filePath)
+        }
+      });
+    } catch (error) {
+      logger.error('Failed to search by GL layer', error);
+      res.status(500).json({
+        error: 'Failed to search by GL layer',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  router.get('/api/v1/semantic/non-compliant', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      const results = await services.srgRuntime.getNonCompliantFiles();
+      
+      res.json({
+        success: true,
+        data: {
+          count: results.length,
+          files: results.map((r: any) => ({
+            filePath: r.filePath,
+            issues: r.issues,
+            missingTags: r.mapping.missingTags
+          }))
+        }
+      });
+    } catch (error) {
+      logger.error('Failed to get non-compliant files', error);
+      res.status(500).json({
+        error: 'Failed to get non-compliant files',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  router.post('/api/v1/semantic/auto-repair', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      const results = await services.srgRuntime.applyAutoRepair();
+      
+      res.json({
+        success: true,
+        data: {
+          applied: results.applied,
+          failed: results.failed,
+          message: `Auto-repair applied to ${results.applied} files, ${results.failed} failed`
+        }
+      });
+    } catch (error) {
+      logger.error('Failed to apply auto-repair', error);
+      res.status(500).json({
+        error: 'Failed to apply auto-repair',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
+  router.post('/api/v1/semantic/refresh', async (req, res) => {
+    try {
+      if (!services.srgRuntime) {
+        return res.status(503).json({
+          error: 'Semantic Graph Runtime not available'
+        });
+      }
+      
+      await services.srgRuntime.refreshGraph();
+      const status = services.srgRuntime.getStatus();
+      
+      res.json({
+        success: true,
+        data: {
+          message: 'Semantic graph refreshed successfully',
+          status
+        }
+      });
+    } catch (error) {
+      logger.error('Failed to refresh semantic graph', error);
+      res.status(500).json({
+        error: 'Failed to refresh semantic graph',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
   });
 
   // Audit endpoint - trigger per-file audit

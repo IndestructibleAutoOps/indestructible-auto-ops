@@ -1,78 +1,96 @@
 # @GL-governed
-# @GL-layer: GL90-99
-# @GL-semantic: federation-organizations-registry
+# @GL-layer: governance
+# @GL-semantic: federation-org-registry
 # @GL-charter-version: 2.0.0
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 apiVersion: federation.machinenativeops.io/v1
 kind: OrganizationRegistry
 metadata:
-  name: federation-org-registry
-  version: "5.0.0"
+  name: organization-registry
+  version: "7.0.0"
   created_at: "2026-01-28T00:00:00Z"
   layer: "GL90-99"
+  owner: "engineering-team"
   annotations:
     governance.machinenativeops.io/classification: "internal"
     governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
+    governance.machinenativeops.io/semantic-enabled: "true"
 
 spec:
   organizations:
-    - id: "org-machinenativeops"
+    - id: "org-001"
       name: "MachineNativeOps"
       type: "root"
       trust_level: "high"
-      governance_level: "GL90-99"
+      gl_compliance_level: "GL90-99"
+      semantic_analysis_enabled: true
+      auto_repair_enabled: true
+      federation_enabled: true
+      signing_required: true
       contact:
-        email: "governance@machinenativeops.io"
-      capabilities:
-        - multi-agent-orchestration
-        - cross-repo-governance
-        - auto-repair
-        - auto-deploy
-      policies:
-        - baseline: "gl-standard"
-        - override_allowed: true
-      signing_keys:
-        primary: "machinenativeops-primary"
-        backup: "machinenativeops-backup"
-      created_at: "2026-01-28T00:00:00Z"
+        email: "engineering@machinenativeops.io"
+        team: "platform-team"
+      projects:
+        - project-id: "proj-001"
+          name: "Machine Native Ops Platform"
+          repository_url: "https://github.com/MachineNativeOps/machine-native-ops.git"
+          primary_language: "typescript"
+          gl_level: "GL90-99"
+          semantic_enabled: true
+          auto_repair_enabled: true
+          criticality: "critical"
+        - project-id: "proj-002"
+          name: "Elasticsearch Search System"
+          repository_url: "https://github.com/MachineNativeOps/elasticsearch-search-system.git"
+          primary_language: "typescript"
+          gl_level: "GL70-89"
+          semantic_enabled: true
+          auto_repair_enabled: true
+          criticality: "high"
+        - project-id: "proj-003"
+          name: "File Organizer System"
+          repository_url: "https://github.com/MachineNativeOps/file-organizer-system.git"
+          primary_language: "python"
+          gl_level: "GL70-89"
+          semantic_enabled: true
+          auto_repair_enabled: true
+          criticality: "high"
 
-    - id: "org-enterprise-a"
+    - id: "org-002"
       name: "Enterprise A"
       type: "member"
       trust_level: "medium"
-      governance_level: "GL70-89"
+      gl_compliance_level: "GL70-89"
+      semantic_analysis_enabled: true
+      auto_repair_enabled: false
+      federation_enabled: true
+      signing_required: true
       contact:
-        email: "governance@enterprise-a.com"
-      capabilities:
-        - basic-orchestration
-        - repo-level-governance
-        - manual-approval-required
-      policies:
-        - baseline: "gl-minimal"
-        - override_allowed: false
-      signing_keys:
-        primary: "enterprise-a-primary"
-      created_at: "2026-01-28T00:00:00Z"
+        email: "platform@enterprise-a.io"
+        team: "devops-team"
+      projects:
+        - project-id: "proj-004"
+          name: "Enterprise A Core System"
+          repository_url: "https://github.com/EnterpriseA/core-system.git"
+          primary_language: "java"
+          gl_level: "GL70-79"
+          semantic_enabled: true
+          auto_repair_enabled: false
+          criticality: "high"
 
-  federation_config:
-    minimum_governance_level: "GL70-89"
-    trust_propagation: "hierarchical"
-    approval_matrix:
-      auto_fix_allowed:
-        - "high"
-      auto_deploy_allowed:
-        - "high"
-      manual_approval_required:
-        - "low"
-        - "medium"
+  semantic_mapping:
+    enabled: true
+    auto_discovery: true
+    classification_required: true
+    schema_validation_required: true
+    gl_mapping_required: true
 
-status:
-  phase: "active"
-  total_organizations: 2
-  conditions:
-    - type: "OrganizationsRegistered"
-      status: "True"
-    - type: "TrustConfigured"
-      status: "True"
-    - type: "SigningKeysDefined"
-      status: "True"
+  compliance_enforcement:
+    require_semantic_anchors: true
+    require_gl_layers: true
+    require_charter_version: true
+    require_governed_tags: true
+    auto_fix_minor_violations: true
+    block_on_major_violations: true
