@@ -54,6 +54,79 @@ pip install pyyaml jsonschema
 ```
 
 ### Step 3: Monitor GitHub Actions
+### Step 4: Push Branch to Remote
+```bash
+# Ensure you're authenticated with GitHub before pushing:
+# - Recommended: use GitHub CLI (`gh auth login`) or
+# - Use Git credential helper with HTTPS, or
+# - Use SSH keys configured for your GitHub account.
+
+# Option A: HTTPS remote (credentials managed by gh or Git credential helper)
+git remote set-url origin https://github.com/MachineNativeOps/machine-native-ops.git
+git push origin hotfix/infrastructure-validation-dependencies
+
+# Option B: SSH remote
+# git remote set-url origin git@github.com:MachineNativeOps/machine-native-ops.git
+# git push origin hotfix/infrastructure-validation-dependencies
+```
+
+### Step 5: Create Pull Request
+Option A - Using GitHub CLI:
+```bash
+gh pr create \
+  --title "fix(ci): resolve intermittent infrastructure validation failures" \
+  --body "Fix intermittent CI/CD failures by ensuring pyyaml dependency is installed before validation. See PRODUCTION_BUG_FIX_SUMMARY.md for details." \
+  --base main \
+  --head hotfix/infrastructure-validation-dependencies
+```
+
+Option B - Manual via GitHub Web UI:
+1. Navigate to: https://github.com/MachineNativeOps/machine-native-ops
+2. Click "Compare & pull request" for the hotfix branch
+3. Use the following PR description:
+
+```
+## Summary
+Fix intermittent CI/CD failures in infrastructure validation workflow.
+
+## Problem
+The validation script was failing with "YAML syntax error" messages even when YAML files were valid. Root cause: missing pyyaml Python dependency.
+
+## Solution
+- Install pyyaml and jsonschema dependencies before running validation
+- Add retry logic for transient failures (3 attempts)
+- Enhanced error handling with explicit dependency checks
+- Added comprehensive logging for debugging
+
+## Testing
+- ✅ All 6 module manifests validated
+- ✅ Module registry validated
+- ✅ Governance policies validated
+- ✅ Dependency validation passed
+- ✅ Error handling tested
+
+## Documentation
+See PRODUCTION_BUG_FIX_SUMMARY.md for complete analysis and fix details.
+
+GL Unified Charter Activated
+```
+
+### Step 6: Review and Approval
+1. Assign reviewers from the MachineNativeOps team
+2. Request at least 1 approval before merging
+3. Ensure all CI/CD checks pass in the PR
+
+### Step 7: Merge to Main
+Once approved:
+```bash
+# Using GitHub CLI
+gh pr merge hotfix/infrastructure-validation-dependencies --merge
+
+# OR merge via GitHub Web UI with "Create a merge commit" option
+```
+
+### Step 8: Verify Deployment
+After merging:
 1. Navigate to: https://github.com/MachineNativeOps/machine-native-ops/actions
 2. Check that the `infrastructure-validation` workflow runs successfully
 3. Verify no "YAML syntax error" false positives occur

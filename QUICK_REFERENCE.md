@@ -23,6 +23,7 @@ cd machine-native-ops
 # View the deployed changes
 git show 600a8a4:.github/workflows/infrastructure-validation.yml
 git show 600a8a4:engine/scripts-legacy/validate-infrastructure.sh
+git push origin hotfix/infrastructure-validation-dependencies
 ```
 
 ### 2. Test Validation Locally
