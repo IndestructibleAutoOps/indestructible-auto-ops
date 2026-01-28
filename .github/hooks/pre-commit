@@ -1,45 +1,60 @@
 #!/bin/bash
 # @GL-governed
-# @GL-layer: GL10-29
-# @GL-semantic: git-hook-pre-commit-validation
+# @GL-layer: GL30-49
+# @GL-semantic: git-hook-pre-commit
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
-GL_FAILED=0
+set -e
 
-# Validate GL markers in staged files
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+# GL Governance Pre-Commit Hook
+# Validates GL markers and semantic anchoring for staged files
 
-for file in $STAGED_FILES; do
-    # Skip non-code files
-    if [[ "$file" =~ \.(md|txt|json|yaml|yml)$ ]]; then
-        continue
+echo "Running GL governance pre-commit validation..."
+
+# Get staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx|js|jsx|py|yaml|yml|json|md)$' || true)
+
+if [ -z "$STAGED_FILES" ]; then
+    echo "No relevant files staged. Skipping GL validation."
+    exit 0
+fi
+
+GL_VIOLATIONS=0
+
+for FILE in $STAGED_FILES; do
+    echo "Checking: $FILE"
+    
+    # Check for GL governance markers in source files
+    if [[ "$FILE" =~ \.(ts|tsx|js|jsx|py|yaml|yml|md)$ ]]; then
+        if ! grep -q "@GL-governed" "$FILE"; then
+            echo "❌ ERROR: Missing @GL-governed marker in $FILE"
+            GL_VIOLATIONS=$((GL_VIOLATIONS + 1))
+        fi
     fi
     
-    # Check for GL governance markers
-    if [[ -f "$file" ]]; then
-        if [[ "$file" =~ \.(ts|tsx|js|jsx|py|go)$ ]]; then
-            if ! grep -q "@GL-governed" "$file"; then
-                echo "❌ GL violation: $file missing @GL-governed marker"
-                GL_FAILED=1
-            fi
+    # Check for GL _gl metadata in JSON files
+    if [[ "$FILE" == *".json" ]] && [[ "$FILE" != *"node_modules"* ]] && [[ "$FILE" != *".governance"* ]]; then
+        if ! grep -q '"_gl"' "$FILE"; then
+            echo "❌ ERROR: Missing _gl metadata in $FILE"
+            GL_VIOLATIONS=$((GL_VIOLATIONS + 1))
+        fi
+    fi
+    
+    # Check YAML syntax
+    if [[ "$FILE" =~ \.(yaml|yml)$ ]]; then
+        if ! python3 -c "import yaml; yaml.safe_load(open('$FILE'))" 2>/dev/null; then
+            echo "❌ ERROR: Invalid YAML syntax in $FILE"
+            GL_VIOLATIONS=$((GL_VIOLATIONS + 1))
         fi
     fi
 done
 
-# Validate YAML syntax for staged YAML files
-for file in $STAGED_FILES; do
-    if [[ "$file" =~ \.(yaml|yml)$ ]]; then
-        if ! python3 -c "import yaml; yaml.safe_load(open('$file'))" 2>/dev/null; then
-            echo "❌ YAML syntax error in $file"
-            GL_FAILED=1
-        fi
-    fi
-done
-
-if [ $GL_FAILED -ne 0 ]; then
-    echo "❌ GL validation failed. Fix violations before committing."
+if [ $GL_VIOLATIONS -gt 0 ]; then
+    echo ""
+    echo "❌ GL Governance Validation Failed"
+    echo "Found $GL_VIOLATIONS violations. Please fix before committing."
     exit 1
 fi
 
-echo "✅ GL validation passed"
+echo "✅ GL Governance Validation Passed"
 exit 0

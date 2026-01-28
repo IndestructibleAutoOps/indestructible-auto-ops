@@ -1,5 +1,5 @@
 # @GL-governed
-# @GL-layer: agents
+# @GL-layer: GL90-99
 # @GL-semantic: agent-orchestration-configuration
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
@@ -39,9 +39,15 @@ spec:
         validation_scope:
           - "engine"
           - "file-organizer-system"
-          - "gl-audit-reports"
+          - "instant"
+          - "elasticsearch-search-system"
+          - "infrastructure"
+          - "esync-platform"
+          - "gl-gate"
+          - ".github"
         strict_mode: true
         enforce_semantic_anchors: true
+        continue_on_error: false
       dependencies: []
       outputs:
         - "gl-validation-report.json"
@@ -162,7 +168,8 @@ spec:
           - "inventory-sync"
         integration_points:
           - "file-organizer-system"
-          - "AEP-Engine"
+          - "engine"
+          - "esync-platform"
         sync_modes:
           - "real-time"
           - "scheduled"
@@ -245,7 +252,7 @@ spec:
     log_output: "stdout"
 
 status:
-  phase: "configured"
+  phase: "active"
   conditions:
     - type: "AgentsConfigured"
       status: "True"
