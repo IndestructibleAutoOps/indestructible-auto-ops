@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # PR #1 改進行動計劃
 
 本文件提供 Pull Request #1 改進工作的具體執行計劃，包含優先級、時間線和負責人分配。

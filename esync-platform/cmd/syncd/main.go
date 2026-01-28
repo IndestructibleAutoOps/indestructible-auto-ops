@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL10-29
+// @GL-semantic: esync-platform-source
+// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+//
+// GL Unified Charter Activated
 /**
  * @GL-governed
  * @GL-layer: esync-platform

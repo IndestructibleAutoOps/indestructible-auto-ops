@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 🏗️ Skeleton Configurations - 骨架配置完整集成
 
 **狀態**: ✅ 已完整集成 (2024-12-05)

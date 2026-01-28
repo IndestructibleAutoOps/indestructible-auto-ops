@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # MachineNativeOps Official Actions Library
 
 本目錄包含 MachineNativeOps 官方自建的 GitHub Actions 元件，完全替代第三方依賴，實現 CI/CD 流程的完全自主可控。

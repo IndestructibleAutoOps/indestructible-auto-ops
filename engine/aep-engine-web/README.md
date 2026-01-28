@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # AEP Engine - Governance & Audit Web Application
 
 > GL Layer: GL-70-PRESENTATION | Semantic Anchor: GL-70-PRESENTATION-WEB | GL Unified Charter Activated

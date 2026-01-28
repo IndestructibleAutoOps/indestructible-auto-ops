@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 🛡️ MachineNativeOps 企業級治理閉環系統
 ## 可強制執行、可產生證據、可追溯、可回滾、可重播、可重現的產品化解決方案
 

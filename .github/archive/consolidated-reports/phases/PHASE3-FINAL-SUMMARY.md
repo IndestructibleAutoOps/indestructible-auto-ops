@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 🎉 MCP Level 3 - Phase 3 COMPLETE!
 
 ## Achievement Unlocked: 100% Engine Manifest Completion

@@ -1,3 +1,15 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 必要核心檔案工程師指南 / Essential Core Files Guide
 
 > 本指南提供工程師在 SynergyMesh 平台上必須掌握的 15 份核心檔案。依照「讀取優先順序 → 內容要點 → 驗證方式」的格式，確保在開發、部署與維運過程中不會遺漏關鍵資訊。

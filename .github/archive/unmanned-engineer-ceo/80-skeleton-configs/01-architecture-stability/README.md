@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 骨架 1: Architecture Stability (架構穩定性)
 
 **目的**: 確保整個系統的架構穩定性和可維護性，通過明確的分層規則、依賴管理和架構驗證機制。

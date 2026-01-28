@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 ---
 name: 'Senior Architect'
 description: 'Expert in AEP Engine architecture design, system patterns, and creating comprehensive architectural documentation with Mermaid diagrams'

@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 高級多代理研究系統 (Advanced Multi-Agent Research System)
 
 本系統旨在升級現有的代理架構，支援 20 個並行任務的高強度研究、專業網站部署以及幻燈片生成。

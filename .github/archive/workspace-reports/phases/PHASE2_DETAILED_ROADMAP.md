@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # MachineNativeOps 第二階段詳細路線圖
 # FHS (Filesystem Hierarchy Standard) 目錄深度實施
 

@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # INSTANT 執行重構計劃 v2.0.0
 
 > **核心理念**：AI 自動演化，即時交付，零延遲

@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # 架構審查清單 / Architecture Review Checklist
 
 - [ ] 需求與範圍已於 DOCUMENTATION_INDEX.md 登記

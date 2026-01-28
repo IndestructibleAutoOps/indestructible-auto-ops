@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # Experiments - 實驗與原型空間
 
 > **用途**：此目錄用於存放原型程式、實驗性腳本、技術驗證等可執行的試驗性內容。

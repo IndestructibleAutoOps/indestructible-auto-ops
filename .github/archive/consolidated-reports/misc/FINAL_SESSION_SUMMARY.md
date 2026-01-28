@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 # Final Session Summary - CI Monitoring & Issue Resolution
 
 ## 🎉 Session Complete: All CI Jobs Passed Successfully
