@@ -13,6 +13,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const winston = require('winston');
+const yaml = require('yaml');
 
 const logger = winston.createLogger({
   level: 'info',
@@ -53,13 +54,35 @@ class OrchestrationEngine {
 
   async loadConfiguration() {
     try {
-      const configPath = path.join(__dirname, '../../ops/agents/agent-orchestration.yaml');
+      const primaryConfigPath = path.join(__dirname, '../../../.github/agents/agent-orchestration.yml');
+      const fallbackConfigPath = path.join(__dirname, '../../ops/agents/agent-orchestration.yaml');
+      const configPath = await this._resolveConfigPath(primaryConfigPath, fallbackConfigPath);
       const configContent = await fs.readFile(configPath, 'utf8');
-      logger.info('Configuration loaded', { path: configPath });
-      this.logGovernanceEvent('config_loaded', { path: configPath });
+      this.config = yaml.parse(configContent);
+      logger.info('Configuration loaded', { path: configPath, size: configContent.length });
+      this.logGovernanceEvent('config_loaded', { path: configPath, size: configContent.length });
     } catch (error) {
       logger.error('Configuration load failed', { error: error.message });
       this.logGovernanceEvent('config_load_failed', { error: error.message });
+      throw error;
+    }
+  }
+
+  async _resolveConfigPath(primaryPath, fallbackPath) {
+    try {
+      await fs.access(primaryPath);
+      return primaryPath;
+    } catch (error) {
+      try {
+        await fs.access(fallbackPath);
+        logger.warn('Primary configuration missing, falling back', {
+          primaryPath,
+          fallbackPath
+        });
+        return fallbackPath;
+      } catch (fallbackError) {
+        throw new Error(`Configuration not found at ${primaryPath} or ${fallbackPath}`);
+      }
     }
   }
 
