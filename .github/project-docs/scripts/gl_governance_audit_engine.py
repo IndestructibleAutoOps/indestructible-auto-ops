@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: legacy-scripts
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 #!/usr/bin/env python3
 """
 GL Unified Charter - AEP Engine 治理稽核引擎

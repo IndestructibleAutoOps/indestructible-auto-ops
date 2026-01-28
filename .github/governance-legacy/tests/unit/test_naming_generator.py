@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: legacy-scripts
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 """
 Unit tests for naming generator
 Tests the core naming generation functionality

@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: legacy-scripts
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 #!/usr/bin/env python3
 """
 命名生成器 - 依據 machine-spec.yaml 規範生成標準化命名

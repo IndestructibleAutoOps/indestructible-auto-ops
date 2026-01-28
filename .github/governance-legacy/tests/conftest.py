@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: legacy-scripts
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 """
 MachineNativeOps Naming Governance - Test Configuration
 Pytest configuration and fixtures for all test suites

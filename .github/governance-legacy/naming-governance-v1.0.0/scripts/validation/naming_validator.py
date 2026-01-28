@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: legacy-scripts
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 #!/usr/bin/env python3
 """
 命名稽核工具 - 自動化檢查資源命名合規性
