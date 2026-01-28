@@ -37,14 +37,14 @@ def check_file(file_path: Path) -> dict:
         ext = file_path.suffix.lower()
         if ext in ['.yaml', '.yml']:
             try:
-                data = yaml.safe_load(content)
+                yaml.safe_load(content)
                 result["status"] = "parsed"
             except yaml.YAMLError as e:
                 result["status"] = "error"
                 result["issues"].append(f"YAML parse error: {e}")
         elif ext == '.json':
             try:
-                data = json.loads(content)
+                json.loads(content)
                 result["status"] = "parsed"
             except json.JSONDecodeError as e:
                 result["status"] = "error"
