@@ -47,6 +47,7 @@ spec:
           - .github"
         strict_mode: true
         enforce_semantic_anchors: true
+        continue_on_error: false
       dependencies: []
       outputs:
         - "gl-validation-report.json"
@@ -250,7 +251,7 @@ spec:
     log_output: "stdout"
 
 status:
-  phase: "configured"
+  phase: "active"
   conditions:
     - type: "AgentsConfigured"
       status: "True"
