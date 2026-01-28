@@ -27,6 +27,10 @@ This PR completes the infrastructure validation fix by adding the required scrip
 
 The fix was deployed in commit 600a8a4 with the following changes:
 
+Expected output should show:
+- Modified: `.github/workflows/infrastructure-validation.yml`
+- Modified: `engine/scripts-legacy/validate-infrastructure.sh`
+- New file: `PRODUCTION_BUG_FIX_SUMMARY.md`
 ### Files Modified
 - `.github/workflows/infrastructure-validation.yml` - Enhanced workflow with retry logic and better error handling
 - `engine/scripts-legacy/validate-infrastructure.sh` - Added dependency checks, logging, and improved error messages
@@ -57,6 +61,8 @@ To verify the fix is working correctly:
 # View the main validation script
 cat scripts/validate-infrastructure.sh
 
+# Review script changes
+git diff engine/scripts-legacy/validate-infrastructure.sh
 # List all new scripts
 ls -la scripts/
 

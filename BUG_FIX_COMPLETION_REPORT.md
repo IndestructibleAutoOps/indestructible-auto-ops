@@ -273,6 +273,8 @@ The fix has been deployed and is currently running in production with positive r
 3. **Modified Files** (in commit 600a8a4):
    - `.github/workflows/infrastructure-validation.yml`
    - `engine/scripts-legacy/validate-infrastructure.sh`
+4. **Validation Output**: Available in `/workspace/validation_output.log`
+5. **Branch**: `hotfix/infrastructure-validation-dependencies` (local)
 4. **Validation Output**: Available in CI/CD logs
 5. **Commit**: 600a8a4 (deployed)
 
