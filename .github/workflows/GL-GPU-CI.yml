@@ -71,7 +71,7 @@ jobs:
           pip install pytest pyyaml
 
       - name: Run CUDA Kernel Tests
-        continue-on-error: true  # Don't fail if tests don't exist yet
+        continue-on-error: false  # Don't fail if tests don't exist yet
         run: |
           if [ -d "workspace/src/gpu/cuda_kernels/tests/" ]; then
             python3 -m pytest workspace/src/gpu/cuda_kernels/tests/ -v || echo "Tests failed or not found"
@@ -80,7 +80,7 @@ jobs:
           fi
 
       - name: Run GPU Scheduler Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/gpu/gpu_scheduler/tests/" ]; then
             python3 -m pytest workspace/src/gpu/gpu_scheduler/tests/ -v || echo "Tests failed or not found"
@@ -89,7 +89,7 @@ jobs:
           fi
 
       - name: Run Accelerator Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/gpu/accelerators/tests/" ]; then
             python3 -m pytest workspace/src/gpu/accelerators/tests/ -v || echo "Tests failed or not found"

@@ -71,7 +71,7 @@ jobs:
           pip install pytest pyyaml
 
       - name: Run Data Ingestion Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/data/ingestion/tests/" ]; then
             python3 -m pytest workspace/src/data/ingestion/tests/ -v || echo "Tests failed or not found"
@@ -80,7 +80,7 @@ jobs:
           fi
 
       - name: Run Data Catalog Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/data/catalog/tests/" ]; then
             python3 -m pytest workspace/src/data/catalog/tests/ -v || echo "Tests failed or not found"
@@ -89,7 +89,7 @@ jobs:
           fi
 
       - name: Run Metadata Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/data/metadata/tests/" ]; then
             python3 -m pytest workspace/src/data/metadata/tests/ -v || echo "Tests failed or not found"

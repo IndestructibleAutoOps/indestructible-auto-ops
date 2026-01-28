@@ -83,7 +83,7 @@ jobs:
           pip install pytest pyyaml
 
       - name: Run Model Registry Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/algorithms/models/tests/" ]; then
             python3 -m pytest workspace/src/algorithms/models/tests/ -v || echo "Tests failed or not found"
@@ -92,7 +92,7 @@ jobs:
           fi
 
       - name: Run Pipeline Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/algorithms/pipelines/tests/" ]; then
             python3 -m pytest workspace/src/algorithms/pipelines/tests/ -v || echo "Tests failed or not found"
@@ -101,7 +101,7 @@ jobs:
           fi
 
       - name: Run Feature Engineering Tests
-        continue-on-error: true
+        continue-on-error: false
         run: |
           if [ -d "workspace/src/algorithms/feature_engineering/tests/" ]; then
             python3 -m pytest workspace/src/algorithms/feature_engineering/tests/ -v || echo "Tests failed or not found"

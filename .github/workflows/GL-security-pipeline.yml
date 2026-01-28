@@ -64,12 +64,12 @@ jobs:
         with:
           languages: javascript-typescript, python
           queries: +security-extended,security-and-quality
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Autobuild
         id: codeql_build
         uses: github/codeql-action/autobuild@v4
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Perform CodeQL Analysis
         id: codeql_analyze
@@ -78,7 +78,7 @@ jobs:
           category: "/language:javascript-typescript"
           output: codeql-results
           upload: true
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Run Semgrep SAST
         id: semgrep
@@ -90,7 +90,7 @@ jobs:
             --exclude='node_modules' --exclude='.git' --exclude='archive' \
             . || true
           echo "Semgrep scan completed"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Ensure Semgrep SARIF exists
         run: |
@@ -120,7 +120,7 @@ jobs:
         with:
           sarif_file: semgrep.sarif
           category: semgrep
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔐 Run Bandit (Python Security)
         id: bandit
@@ -139,7 +139,7 @@ jobs:
             echo '{"results":[],"metrics":{}}' > bandit-report.json
           fi
           echo "Bandit scan completed"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Convert Bandit to SARIF
         run: |
@@ -203,7 +203,7 @@ jobs:
         with:
           sarif_file: bandit.sarif
           category: bandit
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 📊 SAST Result Summary
         id: sast_result
@@ -228,7 +228,7 @@ jobs:
             bandit.sarif
           retention-days: 30
           if-no-files-found: ignore
-        continue-on-error: true
+        continue-on-error: false
 
   # ============================================
   # Dependency Vulnerability Scanning
@@ -297,11 +297,11 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: 'trivy-results.sarif'
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Run Snyk Security Scan
         uses: snyk/actions/node@master
-        continue-on-error: true
+        continue-on-error: false
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
@@ -319,7 +319,7 @@ jobs:
         with:
           sarif_file: snyk.sarif
         if: always()
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 📊 Dependency Scan Summary
         run: |
@@ -362,7 +362,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔑 Run TruffleHog
         uses: trufflesecurity/trufflehog@main
@@ -371,7 +371,7 @@ jobs:
           base: ${{ github.event.repository.default_branch }}
           head: HEAD
           extra_args: --only-verified
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔑 Run detect-secrets
         run: |
@@ -480,7 +480,7 @@ jobs:
           format: 'sarif'
           output: 'trivy-container.sarif'
           severity: 'CRITICAL,HIGH'
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 🔒 Run Grype Container Scan
         uses: anchore/scan-action@v7
@@ -488,7 +488,7 @@ jobs:
           image: 'security-scan:${{ github.sha }}'
           fail-build: false
           severity-cutoff: high
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 📊 Container Scan Summary
         run: |

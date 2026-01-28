@@ -46,18 +46,18 @@ jobs:
 
       - name: Run npm audit
         run: npm audit --audit-level=moderate
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run npm audit with JSON output
         run: npm audit --json > npm-audit.json
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload audit results
         uses: actions/upload-artifact@v6
         with:
           name: npm-audit-results
           path: npm-audit.json
-        continue-on-error: true
+        continue-on-error: false
 
   python-safety:
     name: Python Safety Check
@@ -78,14 +78,14 @@ jobs:
         run: |
           safety check --json > safety-report.json || true
           safety check || true
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload Safety results
         uses: actions/upload-artifact@v6
         with:
           name: safety-report
           path: safety-report.json
-        continue-on-error: true
+        continue-on-error: false
 
   license-check:
     name: License Compliance
@@ -104,14 +104,14 @@ jobs:
 
       - name: Check licenses
         run: license-checker --production --json > licenses.json
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload license report
         uses: actions/upload-artifact@v6
         with:
           name: license-report
           path: licenses.json
-        continue-on-error: true
+        continue-on-error: false
 
   outdated-check:
     name: Outdated Dependencies
@@ -137,7 +137,7 @@ jobs:
         with:
           name: outdated-packages
           path: outdated.json
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Create issue for outdated packages
         if: github.event_name == 'schedule'
@@ -159,7 +159,7 @@ jobs:
                 labels: ['dependencies', 'maintenance']
               });
             }
-        continue-on-error: true
+        continue-on-error: false
 
   sbom-generation:
     name: Generate SBOM
@@ -177,13 +177,13 @@ jobs:
         run: |
           npm install -g @cyclonedx/cyclonedx-npm
           cyclonedx-npm -o sbom-cyclonedx.json || true
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Generate SPDX SBOM
         run: |
           npm install -g @spdx/tools-generate
           spdx-tools-generate -p package.json -o sbom-spdx.json || true
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload SBOM artifacts
         uses: actions/upload-artifact@v6
@@ -192,7 +192,7 @@ jobs:
           path: |
             sbom-*.json
           retention-days: 90
-        continue-on-error: true
+        continue-on-error: false
 
   dependency-report:
     name: Dependency Report

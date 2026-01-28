@@ -48,7 +48,7 @@ jobs:
   staging-runner-health:
     name: 🏥 Staging Runner Health
     runs-on: self-hosted
-    continue-on-error: true
+    continue-on-error: false
     outputs:
       status: ${{ steps.health.outputs.status }}
       cpu_usage: ${{ steps.metrics.outputs.cpu }}
@@ -136,7 +136,7 @@ jobs:
   production-runner-health:
     name: 🏥 Production Runner Health
     runs-on: self-hosted
-    continue-on-error: true
+    continue-on-error: false
     outputs:
       status: ${{ steps.health.outputs.status }}
       cpu_usage: ${{ steps.metrics.outputs.cpu }}

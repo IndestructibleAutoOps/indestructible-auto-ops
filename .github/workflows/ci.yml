@@ -50,13 +50,13 @@ jobs:
 
       - name: Run ESLint
         run: npm run lint || echo "No lint script found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run Pylint
         run: |
           pip install pylint
           pylint **/*.py || echo "No Python files to lint"
-        continue-on-error: true
+        continue-on-error: false
 
   test:
     name: Run Tests
@@ -86,11 +86,11 @@ jobs:
 
       - name: Run Node.js tests
         run: npm test || echo "No Node.js tests found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run Python tests
         run: pytest || echo "No Python tests found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v5
@@ -99,7 +99,7 @@ jobs:
           files: ./coverage/lcov.info,./htmlcov/
           flags: unittests
           name: codecov-umbrella
-        continue-on-error: true
+        continue-on-error: false
 
   build:
     name: Build Application
@@ -119,7 +119,7 @@ jobs:
         run: |
           npm ci
           npm run build || echo "No build script found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6
@@ -130,7 +130,7 @@ jobs:
             build/
             node_modules/
           retention-days: 7
-        continue-on-error: true
+        continue-on-error: false
 
   security-scan:
     name: Security Scanning
@@ -152,19 +152,19 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: 'trivy-results.sarif'
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript, python
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
         with:
           category: "/language:javascript-typescript-python"
-        continue-on-error: true
+        continue-on-error: false
 
   dependency-check:
     name: Dependency Check
@@ -180,23 +180,23 @@ jobs:
 
       - name: Run npm audit
         run: npm audit --audit-level=moderate
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Run safety check for Python
         run: |
           pip install safety
           safety check || echo "No Python dependencies found"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Generate SBOM
         run: |
           npm install -g @cyclonedx/cyclonedx-npm
           cyclonedx-npm -o sbom.json || echo "SBOM generation failed"
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload SBOM
         uses: actions/upload-artifact@v6
         with:
           name: sbom
           path: sbom.json
-        continue-on-error: true
+        continue-on-error: false
