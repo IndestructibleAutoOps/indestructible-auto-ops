@@ -1,7 +1,7 @@
 {
   "name": "gl-runtime-platform",
-  "version": "9.0.0",
-  "description": "GL Governance Runtime Platform v9.0.0 - Global DAG-Based Multi-Repo Execution multi-agent orchestration and governance engine",
+  "version": "12.0.0",
+  "description": "GL Governance Runtime Platform v12.0.0 - Self-Evolving Runtime: Autonomous Self-Rewriting and Evolution",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -11,7 +11,9 @@
     "audit": "node dist/commands/audit.js",
     "fix": "node dist/commands/fix.js",
     "deploy": "node dist/commands/deploy.js",
-    "orchestrate": "node dist/commands/orchestrate.js"
+    "orchestrate": "node dist/commands/orchestrate.js",
+    "mesh": "node dist/cognitive-mesh-server.js",
+    "evolution": "node dist/evolution-server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -36,6 +38,8 @@
     "governance",
     "orchestration",
     "multi-agent",
+    "cognitive-mesh",
+    "self-evolving",
     "gl",
     "governance-layers"
   ],
@@ -44,6 +48,6 @@
   "governance": {
     "layer": "GL90-99",
     "semantic-anchor": "GL-ROOT-GOVERNANCE",
-    "charter-version": "2.0.0"
+    "charter-version": "4.0.0"
   }
 }
