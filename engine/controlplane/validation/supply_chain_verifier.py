@@ -23,15 +23,15 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - [SupplyChainVerifier] - %(message)s",
 )
 logger = logging.getLogger(__name__)
-from .hash_manager import HashManager
-from .stage1_lint_format import Stage1LintFormatVerifier
-from .stage2_schema_semantic import Stage2SchemaSemanticVerifier
-from .stage3_dependency import Stage3DependencyVerifier
-from .stage4_sbom_scan import Stage4SbomScanVerifier
-from .stage5_sign_attestation import Stage5SignAttestationVerifier
-from .stage6_admission_policy import Stage6AdmissionPolicyVerifier
-from .stage7_runtime_monitoring import Stage7RuntimeMonitoringVerifier
-from .supply_chain_types import ChainVerificationResult, VerificationEvidence
+from .hash_manager import HashManager  # noqa: E402
+from .stage1_lint_format import Stage1LintFormatVerifier  # noqa: E402
+from .stage2_schema_semantic import Stage2SchemaSemanticVerifier  # noqa: E402
+from .stage3_dependency import Stage3DependencyVerifier  # noqa: E402
+from .stage4_sbom_scan import Stage4SbomScanVerifier  # noqa: E402
+from .stage5_sign_attestation import Stage5SignAttestationVerifier  # noqa: E402
+from .stage6_admission_policy import Stage6AdmissionPolicyVerifier  # noqa: E402
+from .stage7_runtime_monitoring import Stage7RuntimeMonitoringVerifier  # noqa: E402
+from .supply_chain_types import ChainVerificationResult, VerificationEvidence  # noqa: E402
 
 
 class UltimateSupplyChainVerifier:

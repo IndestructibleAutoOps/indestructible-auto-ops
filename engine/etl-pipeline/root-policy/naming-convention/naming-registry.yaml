@@ -27,14 +27,14 @@ naming-rules:
   
   files:
     pattern: "^[a-z0-9-_.]+$"
-    case: "kebab-case" or "snake_case"
+    case: "kebab-case or snake_case"
     max-length: "128"
     examples:
       valid: ["pipeline-config.yaml", "extract_data.py", "sync-service.sh"]
       invalid: ["PipelineConfig.yaml", "extractData.py", "SyncService.sh"]
   
   database-tables:
-    pattern: "^[a-z][a-z0-9\_]*$"
+    pattern: "^[a-z][a-z0-9_]*$"
     case: "snake_case"
     max-length: "63"
     examples:
@@ -42,7 +42,7 @@ naming-rules:
       invalid: ["UserAnalytics", "sync-status", "PipelineLogs"]
   
   database-columns:
-    pattern: "^[a-z][a-z0-9\_]*$"
+    pattern: "^[a-z][a-z0-9_]*$"
     case: "snake_case"
     max-length: "63"
     examples:
@@ -50,7 +50,7 @@ naming-rules:
       invalid: ["userId", "CreatedAt", "SyncStatus"]
   
   api-endpoints:
-    pattern: "^\/[a-z0-9\-\/]+$"
+    pattern: /[a-z0-9-\/]+$/
     case: "kebab-case"
     examples:
       valid: ["/api/v1/extract", "/api/v1/sync/start", "/api/v1/pipeline/status"]
@@ -85,34 +85,34 @@ reserved-words:
 naming-conventions-by-component:
   extraction:
     connectors:
-      pattern: "^[a-z]+\-connector$"
+      pattern: "^[a-z]+-connector$"
       examples: ["postgres-connector", "api-connector", "log-connector"]
     
     extractors:
-      pattern: "^[a-z]+\-extractor$"
+      pattern: "^[a-z]+-extractor$"
       examples: ["user-extractor", "event-extractor", "transaction-extractor"]
   
   transformation:
     transformers:
-      pattern: "^[a-z]+\-transformer$"
+      pattern: "^[a-z]+-transformer$"
       examples: ["data-cleaner", "schema-normalizer", "business-rule-applier"]
     
     validators:
-      pattern: "^[a-z]+\-validator$"
+      pattern: "^[a-z]+-validator$"
       examples: ["quality-validator", "schema-validator", "business-validator"]
   
   loading:
     loaders:
-      pattern: "^[a-z]+\-loader$"
+      pattern: "^[a-z]+-loader$"
       examples: ["warehouse-loader", "datalake-loader", "stream-loader"]
   
   synchronization:
     sync-strategies:
-      pattern: "^[a-z]+\-sync$"
+      pattern: "^[a-z]+-sync$"
       examples: ["real-time-sync", "scheduled-sync", "batch-sync"]
     
     conflict-resolvers:
-      pattern: "^[a-z]+\-resolver$"
+      pattern: "^[a-z]+-resolver$"
       examples: ["last-write-resolver", "merge-resolver", "custom-resolver"]
 
 file-type-restrictions:
