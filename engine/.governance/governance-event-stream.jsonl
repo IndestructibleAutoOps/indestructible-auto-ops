@@ -448,3 +448,16 @@
     "governance_status": "validated"
   }
 }
+{
+  "event_type": "commit",
+  "event_id": "evt_6958",
+  "timestamp": "2026-01-28T12:46:21Z",
+  "charter_version": "2.0.0",
+  "execution_chain": ["pre-commit", "commit", "post-commit"],
+  "data": {
+    "commit_hash": "5efefc47d124410e6beaa5be2dfb9546217b0b23",
+    "author": "MachineNativeOps",
+    "commit_timestamp": "1769604381",
+    "governance_status": "validated"
+  }
+}
