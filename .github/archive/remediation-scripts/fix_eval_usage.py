@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: archive-tools
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 #!/usr/bin/env python3
 # SECURITY TOOL:
 # This file contains security analysis and remediation tools.

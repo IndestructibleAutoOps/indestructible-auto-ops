@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: archive-tools
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 #!/usr/bin/env ts-node
 // @GL-governed
 // @GL-layer: GL-L5-CONFIG

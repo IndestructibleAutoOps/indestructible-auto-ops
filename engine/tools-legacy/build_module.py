@@ -1,3 +1,9 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: archive-tools
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
 #!/usr/bin/env python3
 # tools/build_module.py
 # Phase 1：建置單一 python wheel 模組（python -m build），輸出到 dist/artifacts/...
