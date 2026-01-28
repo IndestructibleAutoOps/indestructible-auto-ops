@@ -29,7 +29,9 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "prepublishOnly": "npm run clean && npm run build && npm run test"
+    "prepublishOnly": "npm run clean && npm run build && npm run test",
+    "validate-gates": "node scripts/validate-gates-01-99.js",
+    "validate-gates:strict": "node scripts/validate-gates-01-99.js --strict --no-continue-on-error"
   },
   "keywords": [
     "governance",
