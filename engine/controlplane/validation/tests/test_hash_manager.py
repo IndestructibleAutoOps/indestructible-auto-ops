@@ -17,7 +17,7 @@ from pathlib import Path
 repo_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(repo_root))
 # Import from the validation package
-from controlplane.validation.hash_manager import HashManager
+from controlplane.validation.hash_manager import HashManager  # noqa: E402
 
 
 class TestHashManager(unittest.TestCase):
