@@ -39,7 +39,12 @@ spec:
         validation_scope:
           - "engine"
           - "file-organizer-system"
-          - "gl-audit-reports"
+          - "instant
+          - elasticsearch-search-system
+          - infrastructure
+          - esync-platform
+          - gl-gate
+          - .github"
         strict_mode: true
         enforce_semantic_anchors: true
       dependencies: []
