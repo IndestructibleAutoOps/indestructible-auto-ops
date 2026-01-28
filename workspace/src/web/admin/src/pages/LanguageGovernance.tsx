@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 import { useEffect, useState } from 'react';
 import { Activity, AlertCircle, CheckCircle, TrendingDown, TrendingUp, GitBranch, Flame, ArrowRightLeft } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';

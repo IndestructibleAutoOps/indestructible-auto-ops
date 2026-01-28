@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { cva, type VariantProps } from "class-variance-authority"

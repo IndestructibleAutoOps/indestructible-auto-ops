@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: scripts-load-env
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * Custom environment loader that prioritizes system environment variables
  * over .env file values. This ensures that Manus platform-injected variables
  * are not overridden by placeholder values in .env

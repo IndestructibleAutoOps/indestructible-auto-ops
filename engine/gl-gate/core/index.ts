@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: gl-gate
+ * @GL-semantic: core-index
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @fileoverview GL-Gate Core Module Index
  * @module @machine-native-ops/gl-gate/core
  * @version 1.0.0

@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 export type JobType = 'cron' | 'once' | 'interval';
 export type JobPriority = 'low' | 'normal' | 'high' | 'critical';
 export type JobStatus = 'pending' | 'running' | 'completed' | 'failed' | 'cancelled';

@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: core
+ * @GL-semantic: engine-interfaces-fix.d
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module interfaces-fix
  * @description Fixed interface definitions for AEP Engine
  * @gl-governed

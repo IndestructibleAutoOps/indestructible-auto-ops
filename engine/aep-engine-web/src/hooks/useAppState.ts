@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-web
+ * @GL-semantic: hooks-useAppState
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import { useState } from 'react';
 import {
   mockAuditSummary,

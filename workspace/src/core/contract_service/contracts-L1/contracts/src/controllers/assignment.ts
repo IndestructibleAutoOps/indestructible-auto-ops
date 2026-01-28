@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * 自動分派控制器 (Assignment Controller)
  * Handles auto-assignment API requests

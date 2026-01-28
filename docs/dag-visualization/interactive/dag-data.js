@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L8-DOC
+// @GL-semantic: governance-layer-documentation
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 // MachineNativeOps Module Data
 // This file contains the module dependency data for visualization
 

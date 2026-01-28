@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+// @GL-governed
+// @GL-layer: GL-L9-ARCHIVE
+// @GL-semantic: governance-layer-archive
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * Architecture Debug Console
  * 提供統一的偵錯與診斷入口

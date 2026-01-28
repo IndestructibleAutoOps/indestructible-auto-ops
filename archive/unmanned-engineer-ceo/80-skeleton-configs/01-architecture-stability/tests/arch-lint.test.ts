@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L9-ARCHIVE
+// @GL-semantic: governance-layer-archive
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 import * as fs from 'fs'
 import * as path from 'path'
 

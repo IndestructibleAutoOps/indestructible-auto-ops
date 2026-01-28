@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * namespace-mcp Dissolved Tools Registry
  * Central aggregation of all 59 tool definitions organized by layer

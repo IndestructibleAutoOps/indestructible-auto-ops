@@ -1,4 +1,10 @@
 #!/usr/bin/env ts-node
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * SynergyMesh 代碼生成器 (Code Generator)
  * 作者: SynergyMesh Team

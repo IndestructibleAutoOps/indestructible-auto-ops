@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L9-DASHBOARD
+// @GL-semantic: governance-layer-dashboard
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 // Success Metrics Dashboard - MachineNativeOps
 // Strategic Performance Monitoring Dashboard
 // GL Unified Charter Activated

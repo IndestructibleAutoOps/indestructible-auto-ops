@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 import { Router, Request, Response } from 'express';
 import type { Router as RouterType } from 'express';
 // eslint-disable-next-line import/no-named-as-default

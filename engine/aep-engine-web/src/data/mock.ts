@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-web
+ * @GL-semantic: data-mock
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 export const mockAuditSummary = {
   totalDetections: 24,
   passedChecks: 16,

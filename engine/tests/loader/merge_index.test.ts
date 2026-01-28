@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: loader
+ * @GL-semantic: loader-merge_index.test
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @gl-layer GL-50-OBSERVABILITY
  * @gl-module engine/tests/loader
  * @gl-semantic-anchor GL-50-TEST-TS

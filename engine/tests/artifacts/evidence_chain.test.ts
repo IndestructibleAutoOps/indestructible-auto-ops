@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: artifacts
+ * @GL-semantic: artifacts-evidence_chain.test
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @gl-layer GL-50-OBSERVABILITY
  * @gl-module engine/tests/artifacts
  * @gl-semantic-anchor GL-50-TEST-TS

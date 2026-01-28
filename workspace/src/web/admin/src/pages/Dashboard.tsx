@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 import { useState, useEffect } from 'react';
 import { Activity, Server, Database, Cpu, HardDrive, Network, AlertTriangle, CheckCircle, Clock, TrendingUp } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';

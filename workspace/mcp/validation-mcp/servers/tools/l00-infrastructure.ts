@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * Layer L00: Infrastructure & Bootstrap Tools
  * Platform initialization, kernel compute, emergency systems

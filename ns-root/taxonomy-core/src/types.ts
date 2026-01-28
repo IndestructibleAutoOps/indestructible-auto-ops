@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L6-NAMESPACE
+// @GL-semantic: governance-layer-namespace
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * GL Governance Markers
  * @gl-layer GL-25-TAXONOMY

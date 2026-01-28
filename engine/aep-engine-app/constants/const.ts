@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: constants-const
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 export const COOKIE_NAME = "app_session_id";
 export const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
 export const AXIOS_TIMEOUT_MS = 30_000;

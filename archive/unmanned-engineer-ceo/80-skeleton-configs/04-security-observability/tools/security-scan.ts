@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+// @GL-governed
+// @GL-layer: GL-L9-ARCHIVE
+// @GL-semantic: governance-layer-archive
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * Security Scanner
  * 掃描代碼中的安全問題

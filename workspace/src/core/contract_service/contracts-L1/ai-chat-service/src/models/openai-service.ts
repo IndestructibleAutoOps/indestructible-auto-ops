@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * OpenAI 服務適配器 - 無人機/自動駕駛應用
  * OpenAI Service Adapter for Drone/Autonomous Systems

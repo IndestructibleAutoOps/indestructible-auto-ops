@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: constants-oauth
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import * as Linking from "expo-linking";
 import * as ReactNative from "react-native";
 

@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L5-CONFIG
+// @GL-semantic: governance-layer-configuration
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
 

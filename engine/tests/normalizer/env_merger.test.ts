@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: normalizer
+ * @GL-semantic: normalizer-env_merger.test
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @gl-layer GL-50-OBSERVABILITY
  * @gl-module engine/tests/normalizer
  * @gl-semantic-anchor GL-50-TEST-TS

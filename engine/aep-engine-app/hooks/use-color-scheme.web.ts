@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: aep-engine-app
+ * @GL-semantic: hooks-use-color-scheme.web
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 import { useEffect, useState } from "react";
 import { useColorScheme as useRNColorScheme } from "react-native";
 

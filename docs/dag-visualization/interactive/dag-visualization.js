@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L8-DOC
+// @GL-semantic: governance-layer-documentation
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 // MachineNativeOps Interactive DAG Visualization
 // Using D3.js for rendering
 

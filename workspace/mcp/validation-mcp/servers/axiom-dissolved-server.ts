@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * namespace-mcp Dissolved MCP Server Implementation
  * 硫酸溶解法 - 完全 MCP 對齊實現

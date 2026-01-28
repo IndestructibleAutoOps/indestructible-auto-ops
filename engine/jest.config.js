@@ -1,3 +1,12 @@
+/**
+ * @GL-governed
+ * @GL-layer: core
+ * @GL-semantic: engine-jest.config
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',

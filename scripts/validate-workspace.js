@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+// @GL-governed
+// @GL-layer: GL-L7-SCRIPT
+// @GL-semantic: governance-layer-script
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * Workspace Validation Script
  * Validates workspace files and configurations for npm workspaces

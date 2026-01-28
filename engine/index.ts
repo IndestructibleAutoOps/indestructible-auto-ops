@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: core
+ * @GL-semantic: engine-index
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @module index
  * @description AEP Engine main entry point
  * @gl-governed

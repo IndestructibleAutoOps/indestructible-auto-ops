@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: tests
+ * @GL-semantic: governance-rule_evaluator.test
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @gl-layer GL-50-OBSERVABILITY
  * @gl-module engine/tests/governance
  * @gl-semantic-anchor GL-50-TEST-TS

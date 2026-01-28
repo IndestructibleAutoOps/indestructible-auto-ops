@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: gl-gate
+ * @GL-semantic: types-index
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * @fileoverview GL-Gate Type Definitions
  * @module @machine-native-ops/gl-gate/types
  * @version 1.0.0

@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L10-WORKSPACE
+// @GL-semantic: governance-layer-workspace
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import { rm, readFile } from "fs/promises";

@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+// @GL-governed
+// @GL-layer: GL-L9-ARCHIVE
+// @GL-semantic: governance-layer-archive
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * Architecture Linter
  * 檢查代碼是否符合架構規則

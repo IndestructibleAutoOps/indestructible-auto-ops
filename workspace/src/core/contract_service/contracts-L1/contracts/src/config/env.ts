@@ -1,3 +1,9 @@
+// @GL-governed
+// @GL-layer: GL-L0-UNCLASSIFIED
+// @GL-semantic: governance-layer-unclassified
+// @GL-revision: 1.0.0
+// @GL-status: active
+
 /**
  * Environment variable utilities for SynergyMesh contracts-l1 service.
  * Provides type-safe access to required environment variables with fail-fast behavior.

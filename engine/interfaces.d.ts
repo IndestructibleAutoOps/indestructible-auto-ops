@@ -1,4 +1,13 @@
 /**
+ * @GL-governed
+ * @GL-layer: core
+ * @GL-semantic: engine-interfaces.d
+ * @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated
+ */
+
+/**
  * Evidence Record Interface
  * 
  * @description Records audit trail for all pipeline operations
