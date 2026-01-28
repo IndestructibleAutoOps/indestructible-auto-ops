@@ -1,11 +1,13 @@
 # Production Bug Fix Summary
 ## Intermittent CI/CD Failures in Infrastructure Validation
 
+> **Note**: This document describes fixes that were implemented in commit 600a8a4. The changes have already been applied to the codebase. This documentation serves as a reference for the bug fix that was completed.
+
 ### Bug Description
 The GitHub Actions workflow `infrastructure-validation.yml` was experiencing intermittent failures with "YAML syntax error" messages, even though the YAML files were valid. This caused false negatives and unreliable CI/CD pipeline results.
 
 ### Root Cause Analysis
-The infrastructure validation script (`scripts/validate-infrastructure.sh`) uses Python with the `yaml` module to validate YAML syntax in module manifests and the module registry. The GitHub Actions workflow was not installing the `pyyaml` Python dependency before running the validation script, causing the Python `import yaml` statements to fail with `ModuleNotFoundError`.
+The infrastructure validation script (`engine/scripts-legacy/validate-infrastructure.sh`) uses Python with the `yaml` module to validate YAML syntax in module manifests and the module registry. The GitHub Actions workflow was not installing the `pyyaml` Python dependency before running the validation script, causing the Python `import yaml` statements to fail with `ModuleNotFoundError`.
 
 When the `yaml` module was not available:
 - The command `python3 -c "import yaml; yaml.safe_load(open('file.yaml'))"` would fail
@@ -65,7 +67,7 @@ done
 ```
 
 #### 3. Enhanced Error Handling in Validation Script
-**File**: `scripts/validate-infrastructure.sh`
+**File**: `engine/scripts-legacy/validate-infrastructure.sh`
 
 **Changes**:
 - Added explicit checks for `pyyaml` availability before attempting YAML validation
@@ -83,7 +85,7 @@ fi
 ```
 
 #### 4. Comprehensive Logging
-**File**: `scripts/validate-infrastructure.sh`
+**File**: `engine/scripts-legacy/validate-infrastructure.sh`
 
 **Changes**:
 - Added timestamp logging for all validation runs
@@ -186,7 +188,7 @@ After deployment, monitor:
 ### Related Files Modified
 
 - `.github/workflows/infrastructure-validation.yml` - Enhanced workflow with retry logic and better error handling
-- `scripts/validate-infrastructure.sh` - Added dependency checks, logging, and improved error messages
+- `engine/scripts-legacy/validate-infrastructure.sh` - Added dependency checks, logging, and improved error messages
 
 ### Verification
 
@@ -196,13 +198,13 @@ To verify the fix:
 # Test validation script
 cd machine-native-ops
 pip install pyyaml jsonschema
-./scripts/validate-infrastructure.sh
+./engine/scripts-legacy/validate-infrastructure.sh
 
 # Expected output: All validations passed with ✅ indicators
 ```
 
 ### Status
 
-✅ **FIX COMPLETED AND VALIDATED**
+✅ **FIX COMPLETED AND DEPLOYED**
 
-The bug has been identified, fixed, and tested locally. The changes are ready for deployment to production.
+The bug was identified, fixed in commit 600a8a4, tested, and deployed. The changes are currently active in the codebase.
