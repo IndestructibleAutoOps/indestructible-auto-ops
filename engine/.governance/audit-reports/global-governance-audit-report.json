@@ -1,7 +1,7 @@
 {
-  "audit_id": "gl-global-audit-1769585268136",
+  "audit_id": "gl-global-audit-1769586672985",
   "audit_type": "GL-ROOT Global Governance Audit",
-  "timestamp": "2026-01-28T07:27:48.136Z",
+  "timestamp": "2026-01-28T07:51:12.985Z",
   "governance_charter": {
     "version": "2.0.0",
     "status": "ACTIVATED",
@@ -99,7 +99,29 @@
     "naming_convention_violations": 0,
     "path_violations": 0
   },
-  "validation_events": [],
+  "validation_events": [
+    {
+      "event_id": "per-file-audit-complete",
+      "event_type": "audit-completed",
+      "timestamp": "2026-01-28T07:27:50.742151Z",
+      "governance_charter": "2.0.0",
+      "audit_scope": "per-file-sandbox-execution",
+      "execution_strategy": "one-by-one-isolated-execution",
+      "files_audited": 100,
+      "total_files": 692,
+      "violations": 0,
+      "critical_violations": 0,
+      "compliance_percentage": 100,
+      "status": "completed",
+      "traceability": "ENABLED",
+      "provability": "ENABLED",
+      "metadata": {
+        "audit_reports_generated": 100,
+        "audit_reports_location": "engine/.governance/per-file-audits",
+        "global_audit_report": "engine/.governance/audit-reports/global-governance-audit-report.json"
+      }
+    }
+  ],
   "recommendations": [
     "Continue maintaining GL governance markers across all files",
     "Ensure all new files include proper GL semantic annotations",
@@ -107,7 +129,7 @@
     "Monitor governance event stream for anomalies"
   ],
   "audit_trail": [
-    "Audit initiated at 2026-01-28T07:27:48.137Z",
+    "Audit initiated at 2026-01-28T07:51:12.985Z",
     "Multi-agent parallel orchestration active",
     "Strict mode enforcement enabled",
     "All systems passed validation",
