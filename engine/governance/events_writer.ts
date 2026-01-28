@@ -1,206 +1,84 @@
 /**
- * @module events_writer
- * @description Governance event stream writer
- * @gl-governed
- * GL Unified Charter Activated
- * @gl-layer GL-10-OPERATIONAL
- * @gl-module engine/governance
- * @gl-semantic-anchor GL-10-GOV-TS
- * @gl-evidence-required true
- * @version 1.0.0
- * @since 2026-01-24
- * @author MachineNativeOps Team
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: event-stream
+ * @GL-audit-trail: GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated - Governance Event Writer
+ * Maintains persistent governance event stream
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import { GLEvent, EvidenceRecord } from '../interfaces.d';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-/**
- * Events Writer
- * 
- * GL00-99: Unified Governance Framework
- * 
- * Writes governance events to stream for audit trail
- * and compliance requirements.
- */
-export class EventsWriter {
-  private evidence: EvidenceRecord[] = [];
-  private readonly eventStream: GLEvent[] = [];
-  private readonly outputPath?: string;
-  private readonly enabled: boolean;
+export interface GovernanceEvent {
+  id: string;
+  type: 'validation' | 'compliance' | 'enforcement' | 'audit';
+  timestamp: string;
+  source: string;
+  data: any;
+}
 
-  constructor(options?: {
-    outputPath?: string;
-    enabled?: boolean;
-  }) {
-    this.outputPath = options?.outputPath;
-    this.enabled = options?.enabled ?? true;
+export class GovernanceEventWriter {
+  private eventLogPath: string;
+
+  constructor(private workspace: string = process.cwd()) {
+    this.eventLogPath = path.join(workspace, '.governance', 'event-stream.jsonl');
   }
 
-  /**
-   * Write events to stream
-   */
-  async write(events: GLEvent[]): Promise<void> {
-    const startTime = Date.now();
+  async writeEvents(events: GovernanceEvent[]): Promise<void> {
+    await this.ensureEventLogDirectory();
 
+    const lines = events.map(event => JSON.stringify(event)).join('\n');
+    await fs.appendFile(this.eventLogPath, lines + '\n', 'utf-8');
+  }
+
+  async writeEvent(event: GovernanceEvent): Promise<void> {
+    await this.writeEvents([event]);
+  }
+
+  async readEvents(limit?: number): Promise<GovernanceEvent[]> {
     try {
-      if (!this.enabled) {
-        return;
-      }
-
-      // Add events to stream
-      this.eventStream.push(...events);
-
-      // Write to file if output path is specified
-      if (this.outputPath) {
-        await this.writeToFile();
-      }
-
-      // Generate evidence record
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'governance',
-        component: 'events_writer',
-        action: 'write',
-        status: 'success',
-        input: { eventCount: events.length },
-        output: {
-          totalEvents: this.eventStream.length,
-          written: !!this.outputPath
-        },
-        metrics: { duration: Date.now() - startTime }
-      });
+      const content = await fs.readFile(this.eventLogPath, 'utf-8');
+      const lines = content.trim().split('\n').filter(line => line.trim());
+      
+      const events = lines.map(line => JSON.parse(line));
+      
+      return limit ? events.slice(-limit) : events;
     } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'governance',
-        component: 'events_writer',
-        action: 'write',
-        status: 'error',
-        input: { eventCount: events.length },
-        output: { error: errorMsg },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      throw error;
+      return [];
     }
   }
 
-  /**
-   * Write events to file
-   */
-  private async writeToFile(): Promise<void> {
-    if (!this.outputPath) {
-      return;
+  async clearEvents(): Promise<void> {
+    try {
+      await fs.writeFile(this.eventLogPath, '', 'utf-8');
+    } catch (error) {
+      // Ignore if file doesn't exist
     }
-
-    // Ensure output directory exists
-    const dir = path.dirname(this.outputPath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-
-    // Write events as JSON Lines
-    const lines = this.eventStream.map(event => JSON.stringify(event));
-    fs.writeFileSync(this.outputPath, lines.join('\n') + '\n', 'utf-8');
   }
 
-  /**
-   * Get event stream
-   */
-  getEvents(): GLEvent[] {
-    return [...this.eventStream];
+  private async ensureEventLogDirectory(): Promise<void> {
+    const dir = path.dirname(this.eventLogPath);
+    await fs.mkdir(dir, { recursive: true });
   }
 
-  /**
-   * Get events by type
-   */
-  getEventsByType(type: string): GLEvent[] {
-    return this.eventStream.filter(event => event.type === type);
-  }
-
-  /**
-   * Get events by stage
-   */
-  getEventsByStage(stage: string): GLEvent[] {
-    return this.eventStream.filter(event => event.stage === stage);
-  }
-
-  /**
-   * Get events by component
-   */
-  getEventsByComponent(component: string): GLEvent[] {
-    return this.eventStream.filter(event => event.component === component);
-  }
-
-  /**
-   * Get events by time range
-   */
-  getEventsByTimeRange(start: Date, end: Date): GLEvent[] {
-    const startTime = start.getTime();
-    const endTime = end.getTime();
-
-    return this.eventStream.filter(event => {
-      const eventTime = new Date(event.timestamp).getTime();
-      return eventTime >= startTime && eventTime <= endTime;
-    });
-  }
-
-  /**
-   * Get event statistics
-   */
-  getStatistics(): {
+  async getEventStats(): Promise<{
     total: number;
-    byType: Map<string, number>;
-    byStage: Map<string, number>;
-    byComponent: Map<string, number>;
-  } {
-    const byType = new Map<string, number>();
-    const byStage = new Map<string, number>();
-    const byComponent = new Map<string, number>();
-
-    for (const event of this.eventStream) {
-      byType.set(event.type, (byType.get(event.type) || 0) + 1);
-      byStage.set(event.stage, (byStage.get(event.stage) || 0) + 1);
-      byComponent.set(event.component, (byComponent.get(event.component) || 0) + 1);
-    }
+    byType: Record<string, number>;
+    lastEvent?: GovernanceEvent;
+  }> {
+    const events = await this.readEvents();
+    
+    const byType: Record<string, number> = {};
+    events.forEach(event => {
+      byType[event.type] = (byType[event.type] || 0) + 1;
+    });
 
     return {
-      total: this.eventStream.length,
+      total: events.length,
       byType,
-      byStage,
-      byComponent
+      lastEvent: events.length > 0 ? events[events.length - 1] : undefined
     };
-  }
-
-  /**
-   * Clear event stream
-   */
-  clear(): void {
-    this.eventStream.length = 0;
-  }
-
-  /**
-   * Export events as JSON
-   */
-  exportJson(): string {
-    return JSON.stringify(this.eventStream, null, 2);
-  }
-
-  /**
-   * Export events as NDJSON
-   */
-  exportNdjson(): string {
-    return this.eventStream.map(event => JSON.stringify(event)).join('\n');
-  }
-
-  /**
-   * Get evidence records
-   */
-  getEvidence(): EvidenceRecord[] {
-    return this.evidence;
   }
 }

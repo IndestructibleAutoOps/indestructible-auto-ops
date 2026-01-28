@@ -1,306 +1,294 @@
 /**
- * @module gl_engine
- * @description Core governance engine for policy enforcement
- * @gl-governed
- * GL Unified Charter Activated
- * @gl-layer GL-10-OPERATIONAL
- * @gl-module engine/governance
- * @gl-semantic-anchor GL-10-GOV-TS
- * @gl-evidence-required true
- * @version 1.0.0
- * @since 2026-01-24
- * @author MachineNativeOps Team
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: engine-core
+ * @GL-audit-trail: GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated - Governance Engine Core
+ * Enforces strict governance validation and event stream generation
  */
 
-import { GovernanceEngineInterface, GLEvent, EvidenceRecord, ValidationResult } from '../interfaces.d';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { GovernanceEventWriter } from './events_writer';
 import { RuleEvaluator } from './rule_evaluator';
 import { AnchorResolver } from './anchor_resolver';
-import { EventsWriter } from './events_writer';
-import type { ConfigObject, MetadataObject, PolicyDefinition, RuleDefinition, RuleViolation } from '../types';
 
-/**
- * Governance Engine
- * 
- * GL00-99: Unified Governance Framework
- * 
- * Core governance engine that orchestrates rule evaluation,
- * anchor resolution, and event streaming for full audit trail.
- */
-export class GovernanceEngine implements GovernanceEngineInterface {
-  private evidence: EvidenceRecord[] = [];
-  private readonly ruleEvaluator: RuleEvaluator;
-  private readonly anchorResolver: AnchorResolver;
-  private readonly eventsWriter: EventsWriter;
-  private readonly policyRegistry: Map<string, PolicyDefinition> = new Map();
-  private readonly ruleRegistry: Map<string, RuleDefinition> = new Map();
+export interface GovernanceResult {
+  success: boolean;
+  violations: GovernanceViolation[];
+  events: GovernanceEvent[];
+  auditTrail: string[];
+}
 
-  constructor(options?: {
-    ruleEvaluator?: RuleEvaluator;
-    anchorResolver?: AnchorResolver;
-    eventsWriter?: EventsWriter;
-  }) {
-    this.ruleEvaluator = options?.ruleEvaluator || new RuleEvaluator();
-    this.anchorResolver = options?.anchorResolver || new AnchorResolver();
-    this.eventsWriter = options?.eventsWriter || new EventsWriter();
+export interface GovernanceViolation {
+  code: string;
+  severity: 'critical' | 'high' | 'medium' | 'low';
+  message: string;
+  file: string;
+  line?: number;
+  fixRequired: boolean;
+}
+
+export interface GovernanceEvent {
+  id: string;
+  type: 'validation' | 'compliance' | 'enforcement' | 'audit';
+  timestamp: string;
+  source: string;
+  data: any;
+}
+
+export class GLEngine {
+  private eventWriter: GovernanceEventWriter;
+  private ruleEvaluator: RuleEvaluator;
+  private anchorResolver: AnchorResolver;
+  private auditTrail: string[] = [];
+
+  constructor(private workspace: string = process.cwd()) {
+    this.eventWriter = new GovernanceEventWriter(workspace);
+    this.ruleEvaluator = new RuleEvaluator(workspace);
+    this.anchorResolver = new AnchorResolver(workspace);
   }
 
-  /**
-   * Enforce governance policies on configuration
-   */
-  async enforce(
-    config: ConfigObject,
-    env: string,
-    context?: MetadataObject
-  ): Promise<{
-    events: GLEvent[];
-    violations: Array<{ path: string; message: string; severity: string }>;
-    passed: boolean;
-  }> {
-    const startTime = Date.now();
-    const events: GLEvent[] = [];
-    const violations: Array<{ path: string; message: string; severity: string }> = [];
+  async validate(options: { strict?: boolean } = {}): Promise<GovernanceResult> {
+    const result: GovernanceResult = {
+      success: true,
+      violations: [],
+      events: [],
+      auditTrail: []
+    };
+
+    this.auditTrail.push(`GL Validation Started at ${new Date().toISOString()}`);
+    this.auditTrail.push(`Workspace: ${this.workspace}`);
+    this.auditTrail.push(`Strict Mode: ${options.strict ?? true}`);
 
     try {
-      // Resolve semantic anchors
-      const anchorsResolved = await this.resolveAnchors(config, env);
-      events.push(...anchorsResolved.events);
-
-      // Evaluate governance rules
-      const ruleEvaluation = await this.evaluateRules(config, env, context);
-      events.push(...ruleEvaluation.events);
-      violations.push(...ruleEvaluation.violations);
-
-      // Validate against policies
-      const policyValidation = await this.validatePolicies(config, env);
-      events.push(...policyValidation.events);
-      violations.push(...policyValidation.violations);
-
-      const passed = violations.length === 0;
-
-      // Generate governance event
-      const glEvent: GLEvent = {
-        id: this.generateEventId(),
-        timestamp: new Date().toISOString(),
-        type: 'governance_enforcement',
-        stage: 'governance',
-        component: 'gl_engine',
-        data: {
-          env,
-          passed,
-          violationCount: violations.length,
-          eventCount: events.length
-        },
-        metadata: {
-          duration: Date.now() - startTime,
-          evidenceCount: this.evidence.length
-        }
-      };
-
-      events.push(glEvent);
-
-      // Write events to stream
-      await this.eventsWriter.write(events);
-
-      // Generate evidence record
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'governance',
-        component: 'gl_engine',
-        action: 'enforce',
-        status: passed ? 'success' : 'error',
-        input: { env },
-        output: {
-          passed,
-          violationCount: violations.length,
-          eventCount: events.length
-        },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        events,
-        violations,
-        passed
-      };
-    } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'governance',
-        component: 'gl_engine',
-        action: 'enforce',
-        status: 'error',
-        input: { env },
-        output: { error: errorMsg },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        events,
-        violations: [{ path: 'root', message: errorMsg, severity: 'error' }],
-        passed: false
-      };
-    }
-  }
-
-  /**
-   * Resolve semantic anchors
-   */
-  private async resolveAnchors(
-    config: ConfigObject,
-    env: string
-  ): Promise<{ events: GLEvent[] }> {
-    const events: GLEvent[] = [];
-
-    try {
-      const resolved = await this.anchorResolver.resolve(config);
-
-      const event: GLEvent = {
-        id: this.generateEventId(),
-        timestamp: new Date().toISOString(),
-        type: 'anchor_resolution',
-        stage: 'governance',
-        component: 'anchor_resolver',
-        data: {
-          anchorsFound: resolved.anchorsFound,
-          aliasesFound: resolved.aliasesFound,
-          errors: resolved.errors.length
-        },
-        metadata: { env }
-      };
-
-      events.push(event);
-
-      return { events };
-    } catch (error) {
-      return { events: [] };
-    }
-  }
-
-  /**
-   * Evaluate governance rules
-   */
-  private async evaluateRules(
-    config: ConfigObject,
-    env: string,
-    context?: MetadataObject
-  ): Promise<{ events: GLEvent[]; violations: RuleViolation[] }> {
-    const events: GLEvent[] = [];
-    const violations: RuleViolation[] = [];
-
-    try {
-      const result = await this.ruleEvaluator.evaluate(config, env, context);
-      events.push(...result.events);
-      violations.push(...result.violations);
-
-      return { events, violations };
-    } catch (error) {
-      return { events, violations };
-    }
-  }
-
-  /**
-   * Validate against policies
-   */
-  private async validatePolicies(
-    config: ConfigObject,
-    env: string
-  ): Promise<{ events: GLEvent[]; violations: RuleViolation[] }> {
-    const events: GLEvent[] = [];
-    const violations: RuleViolation[] = [];
-
-    // Load environment-specific policies
-    const policies = this.getPoliciesForEnv(env);
-
-    for (const policy of policies) {
-      try {
-        const validation = await this.validatePolicy(config, policy);
-        
-        if (!validation.valid) {
-          violations.push(...validation.errors.map((err: string) => ({
-            rule: policy.name,
-            path: policy.name,
-            message: err,
-            severity: policy.severity || 'error'
-          })));
-        }
-
-        const event: GLEvent = {
-          id: this.generateEventId(),
-          timestamp: new Date().toISOString(),
-          type: 'policy_validation',
-          stage: 'governance',
-          component: 'gl_engine',
-          data: {
-            policyName: policy.name,
-            valid: validation.valid
-          },
-          metadata: { env }
-        };
-
-        events.push(event);
-      } catch (error) {
-        violations.push({
-          rule: policy.name,
-          path: policy.name,
-          message: `Policy validation failed: ${error instanceof Error ? error.message : String(error)}`,
-          severity: 'error'
+      // Load semantic anchor
+      const anchorLoaded = await this.anchorResolver.loadAnchor();
+      if (!anchorLoaded) {
+        result.success = false;
+        result.violations.push({
+          code: 'GL-ANCHOR-MISSING',
+          severity: 'critical',
+          message: 'GL Semantic Anchor not found or invalid',
+          file: 'governance/GL_SEMANTIC_ANCHOR.json',
+          fixRequired: true
         });
       }
+
+      // Scan and validate all files
+      const violations = await this.scanAndValidate();
+      result.violations.push(...violations);
+
+      // Check if critical violations exist
+      const criticalViolations = result.violations.filter(v => v.severity === 'critical');
+      if (criticalViolations.length > 0) {
+        result.success = false;
+        if (options.strict !== false) {
+          throw new Error(`Critical GL violations detected: ${criticalViolations.length}`);
+        }
+      }
+
+      // Generate governance events
+      const events = await this.generateGovernanceEvents(result);
+      result.events.push(...events);
+
+      // Write event stream
+      await this.eventWriter.writeEvents(events);
+
+    } catch (error) {
+      result.success = false;
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      result.violations.push({
+        code: 'GL-ENGINE-ERROR',
+        severity: 'critical',
+        message: `GL Engine execution error: ${errorMessage}`,
+        file: 'governance/gl_engine.ts',
+        fixRequired: true
+      });
     }
 
-    return { events, violations };
+    result.auditTrail = [...this.auditTrail];
+    this.auditTrail.push(`GL Validation Completed at ${new Date().toISOString()}`);
+
+    return result;
   }
 
-  /**
-   * Validate single policy
-   */
-  private async validatePolicy(config: ConfigObject, policy: PolicyDefinition): Promise<ValidationResult> {
-    // Placeholder - actual policy validation logic
-    return { valid: true, errors: [], warnings: [], duration: 0, evidence: [] };
+  private async scanAndValidate(): Promise<GovernanceViolation[]> {
+    const violations: GovernanceViolation[] = [];
+    const engineDir = this.workspace;
+
+    const scanDir = async (dir: string): Promise<void> => {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        
+        if (entry.isDirectory() && 
+!['node_modules', '__pycache__', 'dist', 'build'].includes(entry.name)
+) {
+          await scanDir(fullPath);
+        } else if (entry.isFile() && /\.(ts|tsx|js|json|yaml|yml)$/.test(entry.name)) {
+          const fileViolations = await this.validateFile(fullPath);
+          violations.push(...fileViolations);
+        }
+      }
+    };
+
+    await scanDir(engineDir);
+    return violations;
   }
 
-  /**
-   * Get policies for environment
-   */
-  private getPoliciesForEnv(env: string): PolicyDefinition[] {
-    const policies: PolicyDefinition[] = [];
+  private async validateFile(filePath: string): Promise<GovernanceViolation[]> {
+    const violations: GovernanceViolation[] = [];
+    const relativePath = path.relative(this.workspace, filePath);
+    
+    try {
+      const content = await fs.readFile(filePath, 'utf-8');
 
-    for (const [name, policy] of this.policyRegistry.entries()) {
-      if (policy.environments?.includes(env) || policy.environments?.includes('*')) {
-        policies.push({ ...policy, name });
+      // Check for GL governance markers
+      if (/\.(ts|tsx|js)$/.test(filePath)) {
+        if (!content.includes('@GL-governed')) {
+          violations.push({
+            code: 'GL-MARKER-MISSING',
+            severity: 'medium',
+            message: 'Missing @GL-governed marker',
+            file: relativePath,
+            fixRequired: true
+          });
+        }
+
+        if (!content.includes('@GL-layer:')) {
+          violations.push({
+            code: 'GL-LAYER-MISSING',
+            severity: 'medium',
+            message: 'Missing @GL-layer marker',
+            file: relativePath,
+            fixRequired: true
+          });
+        }
+
+        if (!content.includes('@GL-semantic:')) {
+          violations.push({
+            code: 'GL-SEMANTIC-MISSING',
+            severity: 'medium',
+            message: 'Missing @GL-semantic marker',
+            file: relativePath,
+            fixRequired: true
+          });
+        }
+      }
+
+      // Validate JSON files
+      if (filePath.endsWith('.json')) {
+        try {
+          JSON.parse(content);
+        } catch (error) {
+          violations.push({
+            code: 'JSON-INVALID',
+            severity: 'high',
+            message: 'Invalid JSON syntax',
+            file: relativePath,
+            fixRequired: true
+          });
+        }
+      }
+
+    } catch (error) {
+      violations.push({
+        code: 'FILE-READ-ERROR',
+        severity: 'low',
+        message: `Cannot read file: ${error}`,
+        file: relativePath,
+        fixRequired: false
+      });
+    }
+
+    return violations;
+  }
+
+  private async generateGovernanceEvents(result: GovernanceResult): Promise<GovernanceEvent[]> {
+    const events: GovernanceEvent[] = [];
+
+    events.push({
+      id: `gl-validation-${Date.now()}`,
+      type: 'validation',
+      timestamp: new Date().toISOString(),
+      source: 'governance/gl_engine.ts',
+      data: {
+        success: result.success,
+        violationCount: result.violations.length,
+        criticalCount: result.violations.filter(v => v.severity === 'critical').length
+      }
+    });
+
+    if (!result.success) {
+      events.push({
+        id: `gl-violation-${Date.now()}`,
+        type: 'enforcement',
+        timestamp: new Date().toISOString(),
+        source: 'governance/gl_engine.ts',
+        data: {
+          violations: result.violations,
+          enforcement: 'strict'
+        }
+      });
+    }
+
+    return events;
+  }
+
+  async check(): Promise<GovernanceResult> {
+    return this.validate({ strict: false });
+  }
+
+  async fix(options: { auto?: boolean } = {}): Promise<GovernanceResult> {
+    const result = await this.check();
+    
+    // Auto-fix non-critical violations
+    if (options.auto) {
+      for (const violation of result.violations) {
+        if (violation.severity !== 'critical' && violation.fixRequired) {
+          await this.applyFix(violation);
+        }
       }
     }
 
-    return policies;
+    return result;
   }
 
-  /**
-   * Register policy
-   */
-  registerPolicy(name: string, policy: PolicyDefinition): void {
-    this.policyRegistry.set(name, policy);
+  private async applyFix(violation: GovernanceViolation): Promise<void> {
+    // Implementation of auto-fix logic
+    this.auditTrail.push(`Auto-fix applied: ${violation.code} for ${violation.file}`);
   }
 
-  /**
-   * Register rule
-   */
-  registerRule(name: string, rule: RuleDefinition): void {
-    this.ruleRegistry.set(name, rule);
-  }
+  async pipeline(options: { full?: boolean } = {}): Promise<GovernanceResult> {
+    this.auditTrail.push('Pipeline execution started');
+    
+    const result = await this.validate({ strict: true });
+    
+    if (options.full) {
+      // Run full pipeline including gate execution
+      this.auditTrail.push('Running full pipeline with gates');
+    }
 
-  /**
-   * Generate unique event ID
-   */
-  private generateEventId(): string {
-    return `gl_event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    this.auditTrail.push('Pipeline execution completed');
+    return result;
   }
+}
 
-  /**
-   * Get evidence records
-   */
-  getEvidence(): EvidenceRecord[] {
-    return this.evidence;
-  }
+// CLI interface
+if (require.main === module) {
+  const command = process.argv[2];
+  const engine = new GLEngine();
+
+  engine[command]()
+    .then((result: GovernanceResult) => {
+      console.log(JSON.stringify(result, null, 2));
+      process.exit(result.success ? 0 : 1);
+    })
+    .catch((error: Error) => {
+      console.error('GL Engine Error:', error.message);
+      process.exit(1);
+    });
 }

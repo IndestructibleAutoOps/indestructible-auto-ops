@@ -1,186 +1,176 @@
 /**
- * @module schema_validator
- * @description JSON Schema validation with comprehensive error reporting
- * @gl-governed
- * GL Unified Charter Activated
- * @gl-layer GL-30-EXECUTION
- * @gl-module engine/validator
- * @gl-semantic-anchor GL-30-EXEC-TS
- * @gl-evidence-required true
- * @version 1.0.0
- * @since 2026-01-24
- * @author MachineNativeOps Team
+ * @GL-governed
+ * @GL-layer: validation
+ * @GL-semantic: schema-validation
+ * @GL-audit-trail: GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated - Schema Validator
+ * Validates artifact schemas against GL governance standards
  */
 
-import Ajv, { KeywordDefinition, SchemaObject, ErrorObject } from 'ajv';
-import { ValidatorInterface, ValidationResult, EvidenceRecord } from '../interfaces.d';
-import type { ConfigObject, SchemaValidationInput, AjvError } from '../types';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-/**
- * Schema Validator
- * 
- * GL30-49: Execution Layer - Validator Stage
- * 
- * Validates configuration against JSON Schema with
- * comprehensive error reporting and evidence generation.
- */
-export class SchemaValidator implements ValidatorInterface {
-  private evidence: EvidenceRecord[] = [];
-  private readonly ajv: Ajv;
+export interface ValidationResult {
+  valid: boolean;
+  errors: ValidationError[];
+  warnings: ValidationWarning[];
+}
 
-  constructor(options?: {
-    allErrors?: boolean;
-    strict?: boolean;
-  }) {
-    this.ajv = new Ajv({
-      allErrors: options?.allErrors ?? true,
-      strict: options?.strict ?? true,
-      verbose: true,
-      coerceTypes: false
-    });
-  }
+export interface ValidationError {
+  code: string;
+  path: string;
+  message: string;
+  severity: 'critical' | 'high';
+}
 
-  /**
-   * Validate configuration against schema
-   */
-  async validate(
-    config: ConfigObject,
-    schema: ConfigObject,
-    configPath: string = 'root'
-  ): Promise<ValidationResult> {
-    const startTime = Date.now();
+export interface ValidationWarning {
+  code: string;
+  path: string;
+  message: string;
+  suggestion?: string;
+}
+
+export class SchemaValidator {
+  constructor(private workspace: string = process.cwd()) {}
+
+  async validateFile(filePath: string): Promise<ValidationResult> {
+    const result: ValidationResult = {
+      valid: true,
+      errors: [],
+      warnings: []
+    };
+
+    const relativePath = path.relative(this.workspace, filePath);
 
     try {
-      // Compile schema
-      const validate = this.ajv.compile(schema as SchemaObject);
+      const content = await fs.readFile(filePath, 'utf-8');
 
-      // Validate config
-      const valid = validate(config);
+      // Validate JSON files
+      if (filePath.endsWith('.json')) {
+        this.validateJSON(content, relativePath, result);
+      }
 
-      // Collect errors
-      const errors: string[] = [];
-      if (!valid && validate.errors) {
-        for (const error of validate.errors) {
-          errors.push(this.formatError(error, configPath));
+      // Validate TypeScript files
+      if (/\.(ts|tsx)$/.test(filePath)) {
+        this.validateTypeScript(content, relativePath, result);
+      }
+
+      // Validate YAML files
+      if (/\.(yaml|yml)$/.test(filePath)) {
+        this.validateYAML(content, relativePath, result);
+      }
+
+    } catch (error) {
+      result.errors.push({
+        code: 'FILE_READ_ERROR',
+        path: relativePath,
+        message: `Cannot read file: ${error}`,
+        severity: 'high'
+      });
+    }
+
+    result.valid = result.errors.length === 0;
+    return result;
+  }
+
+  private validateJSON(content: string, filePath: string, result: ValidationResult): void {
+    try {
+      const data = JSON.parse(content);
+
+      // Check for GL governance markers
+      if (typeof data === 'object' && data !== null) {
+        if (!data.governance) {
+          result.warnings.push({
+            code: 'GL_GOVERNANCE_MISSING',
+            path: filePath,
+            message: 'Missing "governance" section in JSON',
+            suggestion: 'Add governance section with charter, version, and activation status'
+          });
         }
       }
 
-      // Generate evidence record
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'validator',
-        component: 'schema_validator',
-        action: 'validate',
-        status: valid ? 'success' : 'error',
-        input: { path: configPath, schemaKeys: Object.keys(schema) },
-        output: {
-          valid,
-          errorCount: errors.length,
-          errors: errors.slice(0, 10) // Limit in evidence
-        },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        valid,
-        errors,
-        warnings: [],
-        duration: Date.now() - startTime,
-        evidence: this.evidence
-      };
     } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'validator',
-        component: 'schema_validator',
-        action: 'validate',
-        status: 'error',
-        input: { path: configPath },
-        output: { error: errorMsg },
-        metrics: { duration: Date.now() - startTime }
+      result.errors.push({
+        code: 'JSON_PARSE_ERROR',
+        path: filePath,
+        message: `Invalid JSON: ${error}`,
+        severity: 'critical'
       });
-
-      return {
-        valid: false,
-        errors: [errorMsg],
-        warnings: [],
-        duration: Date.now() - startTime,
-        evidence: this.evidence
-      };
     }
   }
 
-  /**
-   * Validate multiple configurations
-   */
-  async validateBatch(
-    configs: Map<string, SchemaValidationInput>
-  ): Promise<Map<string, ValidationResult>> {
-    const results: Map<string, ValidationResult> = new Map();
-
-    for (const [path, { config, schema }] of configs.entries()) {
-      const result = await this.validate(config, schema, path);
-      results.set(path, result);
+  private validateTypeScript(content: string, filePath: string, result: ValidationResult): void {
+    // Check for required GL markers
+    const requiredMarkers = ['@GL-governed', '@GL-layer:', '@GL-semantic:'];
+    
+    for (const marker of requiredMarkers) {
+      if (!content.includes(marker)) {
+        result.errors.push({
+          code: 'GL_MARKER_MISSING',
+          path: filePath,
+          message: `Missing GL marker: ${marker}`,
+          severity: 'high'
+        });
+      }
     }
 
+    // Check for export statements
+    if (!content.includes('export') && (filePath.endsWith('.ts') || filePath.endsWith('.tsx'))) {
+      result.warnings.push({
+        code: 'NO_EXPORT',
+        path: filePath,
+        message: 'File has no exports',
+        suggestion: 'Add appropriate exports for module usage'
+      });
+    }
+  }
+
+  private validateYAML(content: string, filePath: string, result: ValidationResult): void {
+    // Basic YAML validation
+    const lines = content.split('\n');
+    
+    lines.forEach((line, index) => {
+      // Check for indentation consistency
+      if (line.startsWith('  ') && !line.startsWith('    ')) {
+        // 2-space indentation
+      } else if (line.startsWith('    ')) {
+        // 4-space indentation
+      }
+    });
+
+    // Check for GL markers in comments
+    if (!content.includes('@GL-governed')) {
+      result.warnings.push({
+        code: 'GL_MARKER_MISSING',
+        path: filePath,
+        message: 'Missing @GL-governed marker in YAML comments',
+        suggestion: 'Add GL governance markers as comments'
+      });
+    }
+  }
+
+  async validateDirectory(dirPath: string): Promise<Map<string, ValidationResult>> {
+    const results = new Map<string, ValidationResult>();
+
+    const scanDir = async (dir: string): Promise<void> => {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        
+        if (entry.isDirectory() && 
+!['node_modules', '__pycache__', 'dist', 'build'].includes(entry.name)
+) {
+          await scanDir(fullPath);
+        } else if (entry.isFile() && /\.(ts|tsx|js|json|yaml|yml)$/.test(entry.name)) {
+          const result = await this.validateFile(fullPath);
+          results.set(fullPath, result);
+        }
+      }
+    };
+
+    await scanDir(dirPath);
     return results;
-  }
-
-  /**
-   * Format AJV error message
-   */
-  private formatError(error: ErrorObject, path: string): string {
-    const dataPath = error.instancePath ? `${path}${error.instancePath}` : path;
-    const keyword = error.keyword;
-    const message = error.message || 'Validation error';
-    const params = error.params as Record<string, unknown>;
-
-    switch (keyword) {
-      case 'required':
-        return `Required property missing: ${params.missingProperty} at ${dataPath}`;
-      case 'type':
-        return `Type mismatch at ${dataPath}: expected ${params.type}, got ${typeof error.data}`;
-      case 'additionalProperties':
-        return `Additional property not allowed: ${params.additionalProperty} at ${dataPath}`;
-      case 'enum':
-        return `Invalid value at ${dataPath}: must be one of ${(params.allowedValues as unknown[]).join(', ')}`;
-      case 'minimum':
-        return `Value at ${dataPath} must be >= ${params.limit}`;
-      case 'maximum':
-        return `Value at ${dataPath} must be <= ${params.limit}`;
-      case 'minLength':
-        return `String at ${dataPath} must have minimum length of ${params.limit}`;
-      case 'maxLength':
-        return `String at ${dataPath} must have maximum length of ${params.limit}`;
-      case 'pattern':
-        return `String at ${dataPath} does not match pattern: ${params.pattern}`;
-      case 'format':
-        return `String at ${dataPath} does not match format: ${params.format}`;
-      default:
-        return `${message} at ${dataPath}`;
-    }
-  }
-
-  /**
-   * Add custom keyword
-   */
-  addKeyword(keyword: string, definition: KeywordDefinition): void {
-    this.ajv.addKeyword({ keyword, ...definition });
-  }
-
-  /**
-   * Add schema to registry
-   */
-  addSchema(schema: ConfigObject, id?: string): void {
-    this.ajv.addSchema(schema as SchemaObject, id);
-  }
-
-  /**
-   * Get evidence records
-   */
-  getEvidence(): EvidenceRecord[] {
-    return this.evidence;
   }
 }

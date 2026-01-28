@@ -1,300 +1,114 @@
 /**
- * @module anchor_resolver
- * @description Semantic anchor resolution for configuration
- * @gl-governed
- * GL Unified Charter Activated
- * @gl-layer GL-10-OPERATIONAL
- * @gl-module engine/governance
- * @gl-semantic-anchor GL-10-GOV-TS
- * @gl-evidence-required true
- * @version 1.0.0
- * @since 2026-01-24
- * @author MachineNativeOps Team
+ * @GL-governed
+ * @GL-layer: governance
+ * @GL-semantic: anchor-resolution
+ * @GL-audit-trail: GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated - Semantic Anchor Resolver
+ * Resolves and validates GL semantic anchors
  */
 
-import { EvidenceRecord } from '../interfaces.d';
-import type { ConfigObject, AnchorDefinition, AnchorUsage } from '../types';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-interface StoredAnchor {
-  name: string;
-  path: string;
-  value: unknown;
+export interface SemanticAnchor {
+  governance: {
+    charter: string;
+    version: string;
+    activation: string;
+  };
+  semantic: {
+    anchor: {
+      id: string;
+      namespace: string;
+      description: string;
+    };
+    hierarchy: {
+      levels: string[];
+    };
+    metadata: {
+      required: string[];
+    };
+  };
+  enforcement: {
+    strict: boolean;
+    continue_on_error: boolean;
+    validation_required: boolean;
+    audit_trail_required: boolean;
+  };
 }
 
-/**
- * Anchor Resolver
- * 
- * GL00-99: Unified Governance Framework
- * 
- * Resolves semantic anchors in configuration, ensuring
- * traceability and auditability of all references.
- */
 export class AnchorResolver {
-  private evidence: EvidenceRecord[] = [];
-  private readonly anchorDefinitions: Map<string, StoredAnchor> = new Map();
-  private readonly anchorUsages: Map<string, string[]> = new Map();
+  private anchorPath: string;
+  private anchor: SemanticAnchor | null = null;
 
-  constructor() {
-    // Initialize with default semantic anchors
-    this.initializeDefaultAnchors();
+  constructor(private workspace: string = process.cwd()) {
+    this.anchorPath = path.join(workspace, 'governance', 'GL_SEMANTIC_ANCHOR.json');
   }
 
-  /**
-   * Resolve semantic anchors in configuration
-   */
-  async resolve(
-    config: ConfigObject
-  ): Promise<{
-    resolved: ConfigObject;
-    anchorsFound: number;
-    aliasesFound: number;
-    errors: string[];
-  }> {
-    const startTime = Date.now();
-    const errors: string[] = [];
-    let anchorsFound = 0;
-    let aliasesFound = 0;
-
+  async loadAnchor(): Promise<boolean> {
     try {
-      // Extract and register anchor definitions
-      const anchors = this.extractAnchors(config);
-      anchorsFound = anchors.length;
-
-      for (const anchor of anchors) {
-        this.anchorDefinitions.set(anchor.name, anchor);
-      }
-
-      // Extract and track anchor usages
-      const usages = this.extractUsages(config);
-      aliasesFound = usages.length;
-
-      for (const usage of usages) {
-        if (!this.anchorUsages.has(usage.name)) {
-          this.anchorUsages.set(usage.name, []);
-        }
-        this.anchorUsages.get(usage.name)!.push(usage.path);
-      }
-
-      // Validate anchor references
-      const validationErrors = this.validateReferences();
-      errors.push(...validationErrors);
-
-      // Resolve anchors
-      const resolved = this.resolveReferences(config);
-
-      // Generate evidence record
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'governance',
-        component: 'anchor_resolver',
-        action: 'resolve',
-        status: errors.length === 0 ? 'success' : 'warning',
-        input: { anchorsFound, aliasesFound },
-        output: {
-          resolved: true,
-          errorCount: errors.length
-        },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        resolved,
-        anchorsFound,
-        aliasesFound,
-        errors
-      };
+      const content = await fs.readFile(this.anchorPath, 'utf-8');
+      this.anchor = JSON.parse(content);
+      return this.validateAnchor();
     } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      errors.push(errorMsg);
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'governance',
-        component: 'anchor_resolver',
-        action: 'resolve',
-        status: 'error',
-        input: {},
-        output: { error: errorMsg },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        resolved: config,
-        anchorsFound,
-        aliasesFound,
-        errors
-      };
+      return false;
     }
   }
 
-  /**
-   * Extract anchor definitions
-   */
-  private extractAnchors(config: ConfigObject): StoredAnchor[] {
-    const anchors: StoredAnchor[] = [];
+  private validateAnchor(): boolean {
+    if (!this.anchor) return false;
 
-    const traverse = (obj: unknown, path: string = ''): void => {
-      if (!obj || typeof obj !== 'object') {
-        return;
-      }
-
-      const record = obj as Record<string, unknown>;
-
-      // Check for anchor marker
-      if (record.$anchor) {
-        anchors.push({
-          name: record.$anchor as string,
-          path,
-          value: record.value
-        });
-      }
-
-      // Traverse nested objects
-      for (const key in record) {
-        if (key === '$anchor' || key === 'value') {
-          continue;
-        }
-        traverse(record[key], path ? `${path}.${key}` : key);
-      }
-    };
-
-    traverse(config);
-    return anchors;
-  }
-
-  /**
-   * Extract anchor usages
-   */
-  private extractUsages(config: ConfigObject): AnchorUsage[] {
-    const usages: AnchorUsage[] = [];
-
-    const traverse = (obj: unknown, path: string = ''): void => {
-      if (!obj || typeof obj !== 'object') {
-        return;
-      }
-
-      const record = obj as Record<string, unknown>;
-
-      // Check for alias marker
-      if (record.$ref) {
-        usages.push({
-          name: record.$ref as string,
-          path
-        });
-      }
-
-      // Traverse nested objects
-      for (const key in record) {
-        if (key === '$ref') {
-          continue;
-        }
-        traverse(record[key], path ? `${path}.${key}` : key);
-      }
-    };
-
-    traverse(config);
-    return usages;
-  }
-
-  /**
-   * Validate anchor references
-   */
-  private validateReferences(): string[] {
-    const errors: string[] = [];
-
-    for (const [anchorName, usages] of this.anchorUsages.entries()) {
-      if (!this.anchorDefinitions.has(anchorName)) {
-        for (const usage of usages) {
-          errors.push(`Undefined anchor referenced: ${anchorName} at ${usage}`);
-        }
-      }
+    // Validate governance section
+    if (!this.anchor.governance?.charter || !this.anchor.governance?.version) {
+      return false;
     }
 
-    // Check for unused anchors
-    for (const anchorName of this.anchorDefinitions.keys()) {
-      if (!this.anchorUsages.has(anchorName)) {
-        this.evidence.push({
-          timestamp: new Date().toISOString(),
-          stage: 'governance',
-          component: 'anchor_resolver',
-          action: 'warning',
-          status: 'warning',
-          input: { anchor: anchorName },
-          output: { message: 'Unused anchor definition' },
-          metrics: {}
-        });
-      }
+    // Validate semantic section
+    if (!this.anchor.semantic?.anchor?.id || !this.anchor.semantic?.anchor?.namespace) {
+      return false;
     }
 
-    return errors;
+    // Validate enforcement section
+    if (typeof this.anchor.enforcement?.strict !== 'boolean') {
+      return false;
+    }
+
+    return true;
   }
 
-  /**
-   * Resolve anchor references
-   */
-  private resolveReferences(config: ConfigObject): ConfigObject {
-    const resolved = JSON.parse(JSON.stringify(config)) as ConfigObject;
-
-    const traverse = (obj: unknown, path: string = ''): void => {
-      if (!obj || typeof obj !== 'object') {
-        return;
-      }
-
-      const record = obj as Record<string, unknown>;
-
-      // Resolve $ref
-      if (record.$ref) {
-        const anchor = this.anchorDefinitions.get(record.$ref as string);
-        if (anchor) {
-          Object.assign(record, { value: anchor.value });
-          delete record.$ref;
-        }
-      }
-
-      // Remove $anchor markers
-      if (record.$anchor) {
-        delete record.$anchor;
-      }
-
-      // Traverse nested objects
-      for (const key in record) {
-        traverse(record[key], path ? `${path}.${key}` : key);
-      }
-    };
-
-    traverse(resolved);
-    return resolved;
+  getAnchor(): SemanticAnchor | null {
+    return this.anchor;
   }
 
-  /**
-   * Initialize default semantic anchors
-   */
-  private initializeDefaultAnchors(): void {
-    // Default anchor definitions can be added here
+  getAnchorId(): string | null {
+    return this.anchor?.semantic.anchor.id || null;
   }
 
-  /**
-   * Register custom anchor
-   */
-  registerAnchor(name: string, value: unknown): void {
-    this.anchorDefinitions.set(name, {
-      name,
-      path: 'registered',
-      value
-    });
+  getNamespace(): string | null {
+    return this.anchor?.semantic.anchor.namespace || null;
   }
 
-  /**
-   * Get anchor usages
-   */
-  getAnchorUsages(): Map<string, string[]> {
-    return this.anchorUsages;
+  isStrictMode(): boolean {
+    return this.anchor?.enforcement.strict ?? false;
   }
 
-  /**
-   * Get evidence records
-   */
-  getEvidence(): EvidenceRecord[] {
-    return this.evidence;
+  isContinueOnError(): boolean {
+    return this.anchor?.enforcement.continue_on_error ?? false;
+  }
+
+  getRequiredMetadata(): string[] {
+    return this.anchor?.semantic.metadata.required || [];
+  }
+
+  async resolveHierarchy(level: string): Promise<string[]> {
+    if (!this.anchor) return [];
+
+    const hierarchy = this.anchor.semantic.hierarchy.levels;
+    const index = hierarchy.indexOf(level);
+    
+    if (index === -1) return [];
+    
+    return hierarchy.slice(0, index + 1);
   }
 }

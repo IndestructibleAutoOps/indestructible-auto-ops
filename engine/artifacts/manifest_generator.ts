@@ -1,370 +1,157 @@
 /**
- * @module manifest_generator
- * @description Deployment manifest generation with verification
- * @gl-governed
- * GL Unified Charter Activated
- * @gl-layer GL-30-EXECUTION
- * @gl-module engine/artifacts
- * @gl-semantic-anchor GL-30-EXEC-TS
- * @gl-evidence-required true
- * @version 1.0.0
- * @since 2026-01-24
- * @author MachineNativeOps Team
+ * @GL-governed
+ * @GL-layer: artifacts
+ * @GL-semantic: manifest-generator
+ * @GL-audit-trail: GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated - Manifest Generator
+ * Generates governance manifests with semantic metadata
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import * as crypto from 'crypto';
-import { EvidenceRecord } from '../interfaces.d';
-import type { ManifestArtifact, GeneratedManifest, ManifestResult } from '../types';
+import { promises as fs } from 'fs';
+import path from 'path';
+import crypto from 'crypto';
 
-/**
- * Manifest Generator
- * 
- * GL90-99: Meta Layer - Manifest Management
- * 
- * Generates deployment manifests with artifact listings,
- * dependencies, and verification data.
- */
-export class ManifestGenerator {
-  private evidence: EvidenceRecord[] = [];
-  private readonly outputDir: string;
-
-  constructor(options?: {
-    outputDir?: string;
-  }) {
-    this.outputDir = options?.outputDir || './artifacts';
-    this.ensureDirectoryExists(this.outputDir);
-  }
-
-  /**
-   * Generate deployment manifest
-   */
-  async generate(
-    config: {
-      name: string;
-      version: string;
-      environment: string;
-      artifacts: ManifestArtifact[];
-      evidence?: EvidenceRecord[];
-    }
-  ): Promise<ManifestResult> {
-    const startTime = Date.now();
-    const errors: string[] = [];
-
-    try {
-      // Generate manifest
-      const manifest: GeneratedManifest = {
-        name: config.name,
-        version: config.version,
-        generatedAt: new Date().toISOString(),
-        artifacts: await this.generateArtifactList(config.artifacts),
-        dependencies: this.generateDependencyList(config.artifacts),
-        verification: this.generateVerificationData(config.artifacts),
-        metadata: {
-          environment: config.environment,
-          generator: 'Machine-Native-Architecture AEP',
-          chainId: this.generateChainId(),
-          evidence: this.generateEvidenceSummary(config.evidence || [])
-        }
-      };
-
-      // Save manifest
-      const manifestPath = path.join(
-        this.outputDir,
-        `manifest_${config.environment}_${config.version}.json`
-      );
-
-      fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
-
-      // Generate evidence record
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'artifacts',
-        component: 'manifest_generator',
-        action: 'generate',
-        status: 'success',
-        input: {
-          name: config.name,
-          version: config.version,
-          environment: config.environment,
-          artifactCount: config.artifacts.length
-        },
-        output: {
-          path: manifestPath,
-          artifactCount: manifest.artifacts.length,
-          dependencyCount: manifest.dependencies.length
-        },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        status: 'success',
-        manifest,
-        errors: [],
-        warnings: []
-      };
-    } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      errors.push(errorMsg);
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'artifacts',
-        component: 'manifest_generator',
-        action: 'generate',
-        status: 'error',
-        input: { name: config.name },
-        output: { error: errorMsg },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return {
-        status: 'error',
-        manifest: {
-          name: config.name,
-          version: config.version,
-          generatedAt: new Date().toISOString(),
-          artifacts: [],
-          dependencies: [],
-          verification: { checksum: '', algorithm: 'sha256' }
-        },
-        errors,
-        warnings: []
-      };
-    }
-  }
-
-  /**
-   * Generate artifact list
-   */
-  private async generateArtifactList(artifacts: ManifestArtifact[]): Promise<ManifestArtifact[]> {
-    const artifactList: ManifestArtifact[] = [];
-
-    for (const artifact of artifacts) {
-      const artifactData: ManifestArtifact = {
-        id: artifact.id,
-        type: artifact.type,
-        name: artifact.name,
-        path: artifact.path,
-        checksum: artifact.checksum || this.generateHash(JSON.stringify(artifact)),
-        dependencies: artifact.dependencies || [],
-        metadata: artifact.metadata || {}
-      };
-
-      artifactList.push(artifactData);
-    }
-
-    return artifactList;
-  }
-
-  /**
-   * Generate dependency list
-   */
-  private generateDependencyList(artifacts: ManifestArtifact[]): string[] {
-    const dependencies = new Set<string>();
-
-    for (const artifact of artifacts) {
-      if (artifact.dependencies) {
-        for (const dep of artifact.dependencies) {
-          dependencies.add(dep);
-        }
-      }
-    }
-
-    return Array.from(dependencies);
-  }
-
-  /**
-   * Generate verification data
-   */
-  private generateVerificationData(artifacts: ManifestArtifact[]): {
-    algorithm: string;
+export interface Manifest {
+  id: string;
+  version: string;
+  timestamp: string;
+  governance: {
+    charter: string;
+    semanticAnchor: string;
+    enforcement: 'strict' | 'lenient';
+  };
+  artifacts: ManifestArtifact[];
+  metadata: {
+    totalArtifacts: number;
+    governedArtifacts: number;
+    complianceRate: number;
     checksum: string;
-    checksums?: Record<string, string>;
-  } {
-    const checksums: Record<string, string> = {};
-    const hashes: string[] = [];
+  };
+}
 
-    for (const artifact of artifacts) {
-      const hash = artifact.checksum || this.generateHash(JSON.stringify(artifact));
-      checksums[artifact.id] = hash;
-      hashes.push(hash);
-    }
+export interface ManifestArtifact {
+  path: string;
+  type: string;
+  governed: boolean;
+  layer?: string;
+  semantic?: string;
+  checksum: string;
+}
 
-    // Generate total checksum
-    const totalChecksum = this.generateHash(hashes.join(''));
+export class ManifestGenerator {
+  private manifestPath: string;
 
-    return {
-      algorithm: 'sha256',
-      checksum: totalChecksum,
-      checksums
+  constructor(private workspace: string = process.cwd()) {
+    this.manifestPath = path.join(workspace, '.governance', 'manifest.json');
+  }
+
+  async generateManifest(): Promise<Manifest> {
+    const artifacts = await this.scanArtifacts();
+    
+    const governedArtifacts = artifacts.filter(a => a.governed);
+    const complianceRate = artifacts.length > 0 
+      ? (governedArtifacts.length / artifacts.length) * 100 
+      : 0;
+
+    const manifest: Manifest = {
+      id: this.generateManifestId(),
+      version: '1.0.0',
+      timestamp: new Date().toISOString(),
+      governance: {
+        charter: 'GL Unified Charter',
+        semanticAnchor: 'GL-ROOT-SEMANTIC-ANCHOR',
+        enforcement: 'strict'
+      },
+      artifacts,
+      metadata: {
+        totalArtifacts: artifacts.length,
+        governedArtifacts: governedArtifacts.length,
+        complianceRate,
+        checksum: this.calculateChecksum(JSON.stringify(artifacts))
+      }
     };
+
+    await this.saveManifest(manifest);
+    return manifest;
   }
 
-  /**
-   * Generate evidence summary
-   */
-  private generateEvidenceSummary(evidence: EvidenceRecord[]): {
-    totalRecords: number;
-    byStage: Record<string, number>;
-    hash: string;
-  } {
-    const byStage: Record<string, number> = {};
-
-    for (const record of evidence) {
-      byStage[record.stage] = (byStage[record.stage] || 0) + 1;
-    }
-
-    return {
-      totalRecords: evidence.length,
-      byStage,
-      hash: this.generateHash(JSON.stringify(evidence))
-    };
-  }
-
-  /**
-   * Verify manifest
-   */
-  async verify(manifestPath: string): Promise<{
-    valid: boolean;
-    errors: string[];
-  }> {
-    const startTime = Date.now();
-    const errors: string[] = [];
-
+  async getManifest(): Promise<Manifest | null> {
     try {
-      // Load manifest
-      if (!fs.existsSync(manifestPath)) {
-        errors.push(`Manifest file not found: ${manifestPath}`);
-        return { valid: false, errors };
-      }
-
-      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8')) as GeneratedManifest;
-
-      // Verify metadata
-      if (!manifest.name || !manifest.version) {
-        errors.push('Invalid manifest metadata');
-      }
-
-      // Verify artifacts
-      if (!Array.isArray(manifest.artifacts)) {
-        errors.push('Invalid artifacts list');
-      } else {
-        for (const artifact of manifest.artifacts) {
-          if (!artifact.id || !artifact.checksum) {
-            errors.push(`Invalid artifact: ${artifact.id}`);
-          }
-
-          // Verify artifact file exists if path is provided
-          if (artifact.path) {
-            // Sanitize path to prevent path traversal attacks
-            const sanitizedPath = path.normalize(artifact.path).replace(/^(\.\.(\/|\\|$))+/, '');
-            const artifactPath = path.join(this.outputDir, sanitizedPath);
-            // Ensure the resolved path is within outputDir (prevent path traversal)
-            const resolvedPath = path.resolve(artifactPath);
-            const resolvedOutputDir = path.resolve(this.outputDir);
-            if (!resolvedPath.startsWith(resolvedOutputDir + path.sep) && resolvedPath !== resolvedOutputDir) {
-              errors.push(`Path traversal detected for artifact: ${artifact.id}`);
-              continue;
-            }
-            if (fs.existsSync(resolvedPath)) {
-              const content = fs.readFileSync(resolvedPath, 'utf-8');
-              const hash = this.generateHash(content);
-
-              if (hash !== artifact.checksum) {
-                errors.push(`Artifact hash mismatch: ${artifact.id}`);
-              }
-            }
-          }
-        }
-      }
-
-      // Verify verification data
-      if (manifest.verification && manifest.verification.checksums) {
-        const hashes = Object.values(manifest.verification.checksums);
-        const calculatedTotal = this.generateHash(hashes.join(''));
-
-        if (calculatedTotal !== manifest.verification.checksum) {
-          errors.push('Total checksum verification failed');
-        }
-      }
-
-      const valid = errors.length === 0;
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'artifacts',
-        component: 'manifest_generator',
-        action: 'verify',
-        status: valid ? 'success' : 'error',
-        input: { manifestPath },
-        output: { valid, errorCount: errors.length },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return { valid, errors };
-    } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      errors.push(errorMsg);
-
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'artifacts',
-        component: 'manifest_generator',
-        action: 'verify',
-        status: 'error',
-        input: { manifestPath },
-        output: { error: errorMsg },
-        metrics: { duration: Date.now() - startTime }
-      });
-
-      return { valid: false, errors };
-    }
-  }
-
-  /**
-   * Load manifest
-   */
-  load(manifestPath: string): GeneratedManifest | null {
-    try {
-      if (!fs.existsSync(manifestPath)) {
-        return null;
-      }
-
-      return JSON.parse(fs.readFileSync(manifestPath, 'utf-8')) as GeneratedManifest;
-    } catch (error) {
+      const content = await fs.readFile(this.manifestPath, 'utf-8');
+      const manifest: Manifest = JSON.parse(content);
+      manifest.timestamp = new Date(manifest.timestamp).toISOString();
+      return manifest;
+    } catch {
       return null;
     }
   }
 
-  /**
-   * Generate chain ID
-   */
-  private generateChainId(): string {
-    return `chain_${Date.now()}_${crypto.randomBytes(8).toString('hex')}`;
-  }
-
-  /**
-   * Generate SHA256 hash
-   */
-  private generateHash(data: string): string {
-    return crypto.createHash('sha256').update(data).digest('hex');
-  }
-
-  /**
-   * Ensure directory exists
-   */
-  private ensureDirectoryExists(dirPath: string): void {
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath, { recursive: true });
+  async validateManifest(manifest: Manifest): Promise<boolean> {
+    // Verify manifest structure
+    if (!manifest.id || !manifest.version || !manifest.governance) {
+      return false;
     }
+
+    // Verify checksum
+    const calculatedChecksum = this.calculateChecksum(JSON.stringify(manifest.artifacts));
+    if (calculatedChecksum !== manifest.metadata.checksum) {
+      return false;
+    }
+
+    return true;
   }
 
-  /**
-   * Get evidence records
-   */
-  getEvidence(): EvidenceRecord[] {
-    return this.evidence;
+  private async scanArtifacts(): Promise<ManifestArtifact[]> {
+    const artifacts: ManifestArtifact[] = [];
+    const engineDir = path.join(this.workspace, 'engine');
+
+    const scanDir = async (dir: string): Promise<void> => {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        const relativePath = path.relative(this.workspace, fullPath);
+        
+        if (entry.isDirectory() && 
+!['node_modules', '__pycache__', 'dist', 'build'].includes(entry.name)
+) {
+          await scanDir(fullPath);
+        } else if (entry.isFile() && /\.(ts|tsx|js|json|yaml|yml)$/.test(entry.name)) {
+          const content = await fs.readFile(fullPath, 'utf-8');
+          const artifact: ManifestArtifact = {
+            path: relativePath,
+            type: path.extname(entry.name),
+            governed: content.includes('@GL-governed'),
+            layer: this.extractMarker(content, '@GL-layer:'),
+            semantic: this.extractMarker(content, '@GL-semantic:'),
+            checksum: this.calculateChecksum(content)
+          };
+          artifacts.push(artifact);
+        }
+      }
+    };
+
+    await scanDir(engineDir);
+    return artifacts;
+  }
+
+  private extractMarker(content: string, marker: string): string | undefined {
+    const match = content.match(new RegExp(`${marker}(\\w+)`));
+    return match ? match[1] : undefined;
+  }
+
+  private generateManifestId(): string {
+    return `GL-MANIFEST-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
+  }
+
+  private calculateChecksum(content: string): string {
+    return crypto.createHash('sha256').update(content).digest('hex');
+  }
+
+  private async saveManifest(manifest: Manifest): Promise<void> {
+    const dir = path.dirname(this.manifestPath);
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(this.manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
   }
 }

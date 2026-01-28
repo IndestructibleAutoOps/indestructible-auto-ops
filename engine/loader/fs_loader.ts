@@ -1,203 +1,116 @@
 /**
- * @module fs_loader
- * @description File system configuration loader
- * @gl-governed
- * GL Unified Charter Activated
- * @gl-layer GL-30-EXECUTION
- * @gl-module engine/loader
- * @gl-semantic-anchor GL-30-EXEC-TS
- * @gl-evidence-required true
- * @version 1.0.0
- * @since 2026-01-24
- * @author MachineNativeOps Team
+ * @GL-governed
+ * @GL-layer: loader
+ * @GL-semantic: filesystem-loader
+ * @GL-audit-trail: GL_SEMANTIC_ANCHOR.json
+ * 
+ * GL Unified Charter Activated - Filesystem Loader
+ * Loads artifacts with governance validation
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import { LoaderInterface, LoadResult, EvidenceRecord } from '../interfaces.d';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-/**
- * File System Loader
- * 
- * GL30-49: Execution Layer - Loader Stage
- * 
- * Recursively loads YAML/JSON files from the file system,
- * maintaining directory structure and generating evidence chains.
- */
-export class FsLoader implements LoaderInterface {
-  private evidence: EvidenceRecord[] = [];
-  private readonly baseDir: string;
-  private readonly ignorePatterns: string[];
+export interface LoadResult {
+  success: boolean;
+  content?: string;
+  metadata?: FileMetadata;
+  error?: string;
+}
 
-  constructor(baseDir: string, options?: { ignore?: string[] }) {
-    this.baseDir = path.resolve(baseDir);
-    this.ignorePatterns = options?.ignore || [
-      'node_modules',
-      '.git',
-      '.DS_Store',
-      '*.log'
-    ];
-  }
+export interface FileMetadata {
+  path: string;
+  size: number;
+  modified: Date;
+  governance: {
+    governed: boolean;
+    markers: string[];
+    layer?: string;
+    semantic?: string;
+  };
+}
 
-  /**
-   * Load all DSL files from the file system
-   */
-  async load(): Promise<LoadResult> {
-    const startTime = Date.now();
-    const files: Map<string, any> = new Map();
-    const errors: string[] = [];
+export class FsLoader {
+  constructor(private workspace: string = process.cwd()) {}
+
+  async load(filePath: string): Promise<LoadResult> {
+    const fullPath = path.resolve(this.workspace, filePath);
 
     try {
-      // Validate base directory exists
-      if (!fs.existsSync(this.baseDir)) {
-        throw new Error(`Base directory does not exist: ${this.baseDir}`);
-      }
+      const content = await fs.readFile(fullPath, 'utf-8');
+      const stats = await fs.stat(fullPath);
 
-      // Recursively load files
-      await this.loadDirectory(this.baseDir, '', files, errors);
-
-      // Generate evidence record
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'loader',
-        component: 'fs_loader',
-        action: 'load',
-        status: errors.length > 0 ? 'warning' : 'success',
-        input: { baseDir: this.baseDir },
-        output: { fileCount: files.size, errorCount: errors.length },
-        metrics: { duration: Date.now() - startTime }
-      });
+      const metadata: FileMetadata = {
+        path: fullPath,
+        size: stats.size,
+        modified: stats.mtime,
+        governance: this.extractGovernanceInfo(content)
+      };
 
       return {
-        status: errors.length > 0 ? 'warning' : 'success',
-        files,
-        errors,
-        evidence: this.evidence
+        success: true,
+        content,
+        metadata
       };
     } catch (error) {
-      this.evidence.push({
-        timestamp: new Date().toISOString(),
-        stage: 'loader',
-        component: 'fs_loader',
-        action: 'load',
-        status: 'error',
-        input: { baseDir: this.baseDir },
-        output: { error: error instanceof Error ? error.message : String(error) },
-        metrics: { duration: Date.now() - startTime }
-      });
-
       return {
-        status: 'error',
-        files,
-        errors: [error instanceof Error ? error.message : String(error)],
-        evidence: this.evidence
+        success: false,
+        error: `Failed to load file: ${error}`
       };
     }
   }
 
-  /**
-   * Recursively load directory contents
-   */
-  private async loadDirectory(
-    dirPath: string,
-    relativePath: string,
-    files: Map<string, any>,
-    errors: string[]
-  ): Promise<void> {
-    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  async loadDirectory(dirPath: string): Promise<Map<string, LoadResult>> {
+    const results = new Map<string, LoadResult>();
+    const fullPath = path.resolve(this.workspace, dirPath);
 
-    for (const entry of entries) {
-      const fullPath = path.join(dirPath, entry.name);
-      const relPath = path.join(relativePath, entry.name);
+    const scanDir = async (dir: string): Promise<void> => {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
 
-      // Skip ignored patterns
-      if (this.shouldIgnore(entry.name)) {
-        continue;
-      }
-
-      if (entry.isDirectory()) {
-        // Recursively process subdirectories
-        await this.loadDirectory(fullPath, relPath, files, errors);
-      } else if (entry.isFile()) {
-        // Load file content
-        try {
-          await this.loadFile(fullPath, relPath, files);
-        } catch (error) {
-          errors.push(
-            `Failed to load ${relPath}: ${error instanceof Error ? error.message : String(error)}`
-          );
+      for (const entry of entries) {
+        const entryPath = path.join(dir, entry.name);
+        
+        if (entry.isDirectory() && 
+!['node_modules', '__pycache__', 'dist', 'build'].includes(entry.name)
+) {
+          await scanDir(entryPath);
+        } else if (entry.isFile()) {
+          const result = await this.load(entryPath);
+          const relativePath = path.relative(this.workspace, entryPath);
+          results.set(relativePath, result);
         }
       }
+    };
+
+    await scanDir(fullPath);
+    return results;
+  }
+
+  private extractGovernanceInfo(content: string): FileMetadata['governance'] {
+    const governance: FileMetadata['governance'] = {
+      governed: false,
+      markers: []
+    };
+
+    // Check for GL markers
+    const governedMatch = content.match(/@GL-governed/);
+    if (governedMatch) {
+      governance.governed = true;
+      governance.markers.push('@GL-governed');
     }
-  }
 
-  /**
-   * Load single file content
-   */
-  private async loadFile(
-    fullPath: string,
-    relativePath: string,
-    files: Map<string, any>
-  ): Promise<void> {
-    const ext = path.extname(fullPath).toLowerCase();
-
-    // Only load YAML/JSON files
-    if (
-!['.yaml', '.yml', '.json'].includes(ext)
-) {
-      return;
+    const layerMatch = content.match(/@GL-layer:\s*(\w+)/);
+    if (layerMatch) {
+      governance.layer = layerMatch[1];
+      governance.markers.push('@GL-layer');
     }
 
-    const content = fs.readFileSync(fullPath, 'utf-8');
-    
-    files.set(relativePath, {
-      path: relativePath,
-      fullPath,
-      content,
-      type: ext,
-      size: content.length,
-      hash: this.generateHash(content),
-      modified: fs.statSync(fullPath).mtime.toISOString()
-    });
+    const semanticMatch = content.match(/@GL-semantic:\s*(\w+)/);
+    if (semanticMatch) {
+      governance.semantic = semanticMatch[1];
+      governance.markers.push('@GL-semantic');
+    }
 
-    // Record evidence for each file
-    this.evidence.push({
-      timestamp: new Date().toISOString(),
-      stage: 'loader',
-      component: 'fs_loader',
-      action: 'load_file',
-      status: 'success',
-      input: { path: relativePath },
-      output: { size: content.length, type: ext },
-      metrics: {}
-    });
-  }
-
-  /**
-   * Check if file/directory should be ignored
-   */
-  private shouldIgnore(name: string): boolean {
-    return this.ignorePatterns.some(pattern => {
-      if (pattern.includes('*')) {
-        const regex = new RegExp(pattern.replace(/\*/g, '.*'));
-        return regex.test(name);
-      }
-      return name === pattern;
-    });
-  }
-
-  /**
-   * Generate SHA256 hash for content integrity
-   */
-  private generateHash(content: string): string {
-    const crypto = require('crypto');
-    return crypto.createHash('sha256').update(content).digest('hex');
-  }
-
-  /**
-   * Get evidence records
-   */
-  getEvidence(): EvidenceRecord[] {
-    return this.evidence;
+    return governance;
   }
 }

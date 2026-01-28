@@ -1,0 +1,145 @@
+engine
+├── README.md
+├── SPEC.md
+├── aep-engine-app
+│   ├── README.md
+│   ├── app
+│   │   ├── (tabs)
+│   │   ├── _layout.tsx
+│   │   ├── dev
+│   │   └── oauth
+│   ├── app.config.ts
+│   ├── assets
+│   │   └── images
+│   ├── babel.config.js
+│   ├── components
+│   │   ├── external-link.tsx
+│   │   ├── haptic-tab.tsx
+│   │   ├── hello-wave.tsx
+│   │   ├── parallax-scroll-view.tsx
+│   │   ├── screen-container.tsx
+│   │   ├── themed-view.tsx
+│   │   └── ui
+│   ├── constants
+│   │   ├── const.ts
+│   │   ├── oauth.ts
+│   │   └── theme.ts
+│   ├── global.css
+│   ├── hooks
+│   │   ├── use-auth.ts
+│   │   ├── use-color-scheme.ts
+│   │   ├── use-color-scheme.web.ts
+│   │   └── use-colors.ts
+│   ├── metro.config.js
+│   ├── package.json
+│   ├── scripts
+│   │   └── load-env.js
+│   ├── tailwind.config.js
+│   └── tsconfig.json
+├── aep-engine-web
+│   ├── README.md
+│   ├── index.html
+│   ├── netlify.toml
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── components
+│   │   ├── data
+│   │   ├── hooks
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   └── screens
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── vercel.json
+│   └── vite.config.ts
+├── artifacts
+│   ├── README.md
+│   ├── artifact_manager.ts
+│   ├── evidence_chain.ts
+│   └── manifest_generator.ts
+├── executor
+│   ├── README.md
+│   ├── local_executor.ts
+│   ├── remote_executor.ts
+│   └── rollback.ts
+├── gl-gate
+│   ├── README.md
+│   ├── core
+│   │   ├── GateExecutor.ts
+│   │   ├── GateRegistry.ts
+│   │   └── index.ts
+│   ├── gates
+│   │   ├── BaseGate.ts
+│   │   ├── DataAccessGate.ts
+│   │   ├── FinalSealGate.ts
+│   │   ├── GovernanceSummaryGate.ts
+│   │   ├── IntegrationGate.ts
+│   │   ├── ObservabilityGate.ts
+│   │   ├── PerformanceGate.ts
+│   │   ├── SecurityGate.ts
+│   │   ├── StressTestingGate.ts
+│   │   ├── TestingGate.ts
+│   │   └── index.ts
+│   ├── index.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── types
+│       └── index.ts
+├── governance
+│   ├── README.md
+│   ├── anchor_resolver.ts
+│   ├── events_writer.ts
+│   ├── gl_engine.ts
+│   └── rule_evaluator.ts
+├── index.ts
+├── interfaces-fix.d.ts
+├── interfaces.d.ts
+├── jest.config.js
+├── loader
+│   ├── README.md
+│   ├── fs_loader.ts
+│   ├── git_loader.ts
+│   └── merge_index.ts
+├── normalizer
+│   ├── README.md
+│   ├── defaults_applier.ts
+│   ├── env_merger.ts
+│   └── module_defaults.ts
+├── package-lock.json
+├── package.json
+├── parser
+│   ├── README.md
+│   ├── anchor_resolver.ts
+│   ├── json_passthrough.ts
+│   └── yaml_parser.ts
+├── renderer
+│   ├── README.md
+│   ├── artifact_writer.ts
+│   ├── module_mapper.ts
+│   └── template_engine.ts
+├── tests
+│   ├── artifacts
+│   │   └── evidence_chain.test.ts
+│   ├── governance
+│   │   └── rule_evaluator.test.ts
+│   ├── loader
+│   │   ├── fs_loader.test.ts
+│   │   └── merge_index.test.ts
+│   ├── normalizer
+│   │   └── env_merger.test.ts
+│   └── validator
+│       └── schema_validator.test.ts
+├── tsconfig.json
+├── types
+│   └── index.ts
+└── validator
+    ├── README.md
+    ├── error_reporter.ts
+    ├── module_validator.ts
+    └── schema_validator.ts
+
+38 directories, 105 files
