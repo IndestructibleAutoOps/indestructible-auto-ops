@@ -1,7 +1,7 @@
 // @GL-governed
 // @GL-layer: GL70-89
 // @GL-semantic: runtime-general-purpose
-// @GL-charter-version: 2.0.0
+// @GL-charter-version: 3.0.0
 // @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 {
@@ -21,6 +21,6 @@
     "sourceMap": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+  "include": ["src/**/*", "cognitive-mesh/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "global-dag", "dist/src/engine/global-dag"]
 }
