@@ -1,0 +1,41 @@
+# @GL-governed
+# @version 21.0.0
+# @priority 2
+# @stage complete
+
+name: Integration Tests
+
+on:
+  push:
+    branches: [ main, feature-v19-unified-fabric ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+    
+    - name: Install dependencies
+      run: |
+        cd gl-runtime-platform
+        npm ci
+    
+    - name: Run integration tests
+      run: |
+        cd gl-runtime-platform
+        npx ts-node tests/integration-main/run-integration-tests-simple.ts
+    
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: gl-runtime-platform/test-reports-main/

@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * General Problem Solving Engine
  * 通用問題解決引擎 - 具備解決任何問題的能力
  * 

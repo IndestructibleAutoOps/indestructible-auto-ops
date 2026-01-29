@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Meta-Cognitive Runtime Deep API Server (Version 14.0.0 Deep)
  * 
  * REST API server for all deep meta-cognitive capabilities:

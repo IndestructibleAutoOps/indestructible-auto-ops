@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Meta-Cognitive Runtime API Server (Version 14.0.0)
  * 
  * REST API server for all meta-cognitive capabilities:

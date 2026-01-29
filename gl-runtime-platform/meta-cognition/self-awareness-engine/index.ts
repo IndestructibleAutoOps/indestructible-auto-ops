@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Meta-Cognitive Runtime - Self-Awareness Engine (Version 14.0.0)
  * 
  * The Self-Awareness Engine provides the GL Runtime with the ability to:

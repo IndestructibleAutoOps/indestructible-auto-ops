@@ -1,3 +1,9 @@
+/**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
 const { MetaCognitiveServer } = require('./dist/src/meta-cognitive-server');
 
 const server = new MetaCognitiveServer(3004);

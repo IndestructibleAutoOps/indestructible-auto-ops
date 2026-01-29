@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Meta-Cognitive Runtime - Meta-Cognitive Feedback Loop (Version 14.0.0)
  * 
  * The Meta-Cognitive Feedback Loop provides the GL Runtime with:

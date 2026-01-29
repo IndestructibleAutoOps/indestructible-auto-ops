@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Self-Versioning
  * @GL-layer: GL12
  * @GL-semantic: self-versioning
