@@ -1,0 +1,3 @@
+  "include": ["src/unified-fabric-server.ts", "unified-intelligence-fabric/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "global-dag", "global-dag.disabled", "dist/src/engine/global-dag", "dist/src/engine/global-dag.disabled", "src/engine/global-dag.disabled", "src/connectors/git-connector.ts", "src/utils/logger.ts", "cognitive-mesh", "evolution", "civilization", "meta-cognitive", "meta-cognition", "universal-intelligence", "omni-context", "trans-domain", "inter-reality", "swarm"]
+}

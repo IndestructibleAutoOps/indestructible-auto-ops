@@ -1,0 +1,377 @@
+{
+  "_gl": {
+    "governance": "GL-Standard",
+    "version": "1.0.0",
+    "validated": true
+  },
+  "capabilities": [
+    {
+      "@GL-governed": true,
+      "@GL-layer": "GL100-119",
+      "@GL-semantic": "capability-examples",
+      "@GL-charter-version": "4.0.0",
+      "@GL-audit-trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+      "type": "metadata",
+      "description": "Example capabilities for Code Intelligence & Security Layer",
+      "version": "21.0.0"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "name": "SQL Injection Detector",
+      "version": "1.0.0",
+      "category": "security-hardening",
+      "description": "Detects SQL injection vulnerabilities in code by analyzing SQL query patterns and user input handling",
+      "inputs": [
+        {
+          "id": "source-code",
+          "type": "sourcecode",
+          "description": "Source code files to analyze for SQL injection vulnerabilities",
+          "required": true,
+          "validation": [
+            {
+              "type": "type-check",
+              "rule": "string",
+              "errorMessage": "Source code must be a string"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "vulnerabilities",
+          "type": "risk-profile",
+          "description": "Detected SQL injection vulnerabilities with severity ratings",
+          "format": "sarif"
+        },
+        {
+          "id": "report",
+          "type": "report",
+          "description": "Detailed analysis report",
+          "format": "markdown"
+        }
+      ],
+      "dimensions": {
+        "precision": 0.95,
+        "recall": 0.9,
+        "f1-score": 0.92,
+        "latency-ms": 500,
+        "throughput-files-per-second": 10
+      },
+      "guarantees": [
+        {
+          "type": "no-false-positives",
+          "description": "Zero false positive rate on known safe code patterns"
+        },
+        {
+          "type": "cwe-compliance",
+          "description": "Compliance with CWE-89: SQL Injection"
+        }
+      ],
+      "metadata": {
+        "author": "GL Security Team",
+        "created-at": "2026-01-29T00:00:00Z",
+        "updated-at": "2026-01-29T00:00:00Z",
+        "tags": [
+          "security",
+          "sql",
+          "injection",
+          "vulnerability"
+        ]
+      },
+      "evolution": {
+        "generation": 1,
+        "usage-count": 0,
+        "success-rate": 1.0,
+        "average-performance": 0.0
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "name": "Code Performance Profiler",
+      "version": "1.0.0",
+      "category": "performance-optimization",
+      "description": "Analyzes code performance and identifies optimization opportunities",
+      "inputs": [
+        {
+          "id": "source-code",
+          "type": "sourcecode",
+          "description": "Source code to profile",
+          "required": true
+        },
+        {
+          "id": "runtime-traces",
+          "type": "runtimetraces",
+          "description": "Execution traces for performance analysis",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "id": "performance-metrics",
+          "type": "metrics",
+          "description": "Performance metrics and bottlenecks",
+          "format": "json"
+        },
+        {
+          "id": "optimization-suggestions",
+          "type": "patch",
+          "description": "Suggested code optimizations",
+          "format": "diff"
+        }
+      ],
+      "dimensions": {
+        "precision": 0.9,
+        "recall": 0.85,
+        "f1-score": 0.87,
+        "latency-ms": 1000,
+        "throughput-files-per-second": 5
+      },
+      "guarantees": [
+        {
+          "type": "no-regression",
+          "description": "Optimizations do not introduce performance regressions"
+        },
+        {
+          "type": "safe-optimization",
+          "description": "Only safe and verified optimizations are suggested"
+        }
+      ],
+      "metadata": {
+        "author": "GL Performance Team",
+        "created-at": "2026-01-29T00:00:00Z",
+        "updated-at": "2026-01-29T00:00:00Z",
+        "tags": [
+          "performance",
+          "optimization",
+          "profiling"
+        ]
+      },
+      "evolution": {
+        "generation": 1,
+        "usage-count": 0,
+        "success-rate": 1.0,
+        "average-performance": 0.0
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "name": "Automated Test Generator",
+      "version": "1.0.0",
+      "category": "test-generation",
+      "description": "Automatically generates unit tests based on code analysis",
+      "inputs": [
+        {
+          "id": "source-code",
+          "type": "sourcecode",
+          "description": "Source code to generate tests for",
+          "required": true
+        },
+        {
+          "id": "existing-tests",
+          "type": "sourcecode",
+          "description": "Existing test files for coverage analysis",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "id": "test-cases",
+          "type": "test-cases",
+          "description": "Generated unit test cases",
+          "format": "typescript"
+        },
+        {
+          "id": "coverage-report",
+          "type": "report",
+          "description": "Test coverage report",
+          "format": "html"
+        }
+      ],
+      "dimensions": {
+        "precision": 0.88,
+        "recall": 0.82,
+        "f1-score": 0.85,
+        "latency-ms": 1500,
+        "throughput-files-per-second": 3
+      },
+      "guarantees": [
+        {
+          "type": "test-coverage",
+          "description": "Generated tests achieve 80%+ code coverage"
+        },
+        {
+          "type": "meaningful-tests",
+          "description": "Tests are meaningful and test actual functionality"
+        }
+      ],
+      "metadata": {
+        "author": "GL QA Team",
+        "created-at": "2026-01-29T00:00:00Z",
+        "updated-at": "2026-01-29T00:00:00Z",
+        "tags": [
+          "testing",
+          "automation",
+          "coverage"
+        ]
+      },
+      "evolution": {
+        "generation": 1,
+        "usage-count": 0,
+        "success-rate": 1.0,
+        "average-performance": 0.0
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "name": "Architecture Analyzer",
+      "version": "1.0.0",
+      "category": "architecture-refactoring",
+      "description": "Analyzes software architecture and identifies refactoring opportunities",
+      "inputs": [
+        {
+          "id": "source-code",
+          "type": "sourcecode",
+          "description": "Source code to analyze",
+          "required": true
+        },
+        {
+          "id": "dependency-graph",
+          "type": "dependency-graph",
+          "description": "Dependency graph for architecture analysis",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "id": "architecture-map",
+          "type": "architecture-map",
+          "description": "Architecture visualization and analysis",
+          "format": "html"
+        },
+        {
+          "id": "refactoring-suggestions",
+          "type": "patch",
+          "description": "Suggested architectural refactoring",
+          "format": "diff"
+        }
+      ],
+      "dimensions": {
+        "precision": 0.85,
+        "recall": 0.8,
+        "f1-score": 0.82,
+        "latency-ms": 2000,
+        "throughput-files-per-second": 2
+      },
+      "guarantees": [
+        {
+          "type": "semantic-equivalence",
+          "description": "Refactored code maintains semantic equivalence"
+        },
+        {
+          "type": "test-preservation",
+          "description": "All existing tests continue to pass after refactoring"
+        }
+      ],
+      "metadata": {
+        "author": "GL Architecture Team",
+        "created-at": "2026-01-29T00:00:00Z",
+        "updated-at": "2026-01-29T00:00:00Z",
+        "tags": [
+          "architecture",
+          "refactoring",
+          "analysis"
+        ]
+      },
+      "evolution": {
+        "generation": 1,
+        "usage-count": 0,
+        "success-rate": 1.0,
+        "average-performance": 0.0
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "name": "Documentation Synthesizer",
+      "version": "1.0.0",
+      "category": "documentation-synthesis",
+      "description": "Generates comprehensive documentation from source code",
+      "inputs": [
+        {
+          "id": "source-code",
+          "type": "sourcecode",
+          "description": "Source code to document",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "id": "documentation",
+          "type": "documentation",
+          "description": "Generated documentation",
+          "format": "markdown"
+        },
+        {
+          "id": "api-reference",
+          "type": "documentation",
+          "description": "API reference documentation",
+          "format": "html"
+        }
+      ],
+      "dimensions": {
+        "precision": 0.92,
+        "recall": 0.88,
+        "f1-score": 0.9,
+        "latency-ms": 800,
+        "throughput-files-per-second": 8
+      },
+      "guarantees": [
+        {
+          "type": "accuracy",
+          "description": "Documentation accurately describes code behavior"
+        },
+        {
+          "type": "completeness",
+          "description": "Documentation covers all public APIs and interfaces"
+        }
+      ],
+      "metadata": {
+        "author": "GL Documentation Team",
+        "created-at": "2026-01-29T00:00:00Z",
+        "updated-at": "2026-01-29T00:00:00Z",
+        "tags": [
+          "documentation",
+          "synthesis",
+          "auto-doc"
+        ]
+      },
+      "evolution": {
+        "generation": 1,
+        "usage-count": 0,
+        "success-rate": 1.0,
+        "average-performance": 0.0
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "name": "Example Validation Capability",
+      "version": "1.0.0",
+      "category": "test-generation",
+      "description": "Example capability for validation testing",
+      "inputs": [],
+      "outputs": [],
+      "dimensions": {},
+      "guarantees": [],
+      "metadata": {
+        "author": "GL Test Team",
+        "created-at": "2026-01-29T00:00:00Z",
+        "updated-at": "2026-01-29T00:00:00Z"
+      },
+      "evolution": {
+        "generation": 1,
+        "usage-count": 0,
+        "success-rate": 1.0,
+        "average-performance": 0.0
+      }
+    }
+  ]
+}

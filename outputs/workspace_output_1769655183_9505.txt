@@ -1,0 +1,11 @@
+export type NodeType = 
+  | 'file'           // 檔案節點
+  | 'semantic'       // 語意節點
+  | 'agent'          // 代理節點
+  | 'dag'            // DAG 節點
+  | 'mesh'           // Mesh 節點
+  | 'swarm'          // Swarm 節點
+  | 'civilization'   // 文明節點
+  | 'reality'        // 現實節點
+  | 'flow'           // 流節點
+  | 'compute'        // 運算節點

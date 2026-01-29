@@ -1,0 +1,200 @@
+# @GL-governed
+# @GL-layer: agents
+# @GL-semantic: agent-orchestration-configuration
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Multi-Agent Orchestration Configuration v7.0.0
+# Semantic-Resource-Graph-Aware
+
+apiVersion: orchestration.machinenativeops.io/v1
+kind: AgentOrchestration
+metadata:
+  name: multi-agent-parallel-orchestration
+  version: "7.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  layer: "GL90-99"
+  owner: "engineering-team"
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/approval: "approved"
+    governance.machinenativeops.io/charter-version: "2.0.0"
+    governance.machinenativeops.io/semantic-enabled: "true"
+    governance.machinenativeops.io/srg-aware: "true"
+
+spec:
+  # Parallel execution strategy
+  parallelism:
+    max_concurrent_agents: 8
+    timeout_seconds: 1800
+    retry_policy:
+      max_retries: 3
+      backoff_multiplier: 2
+
+  # Semantic Resource Graph requirements
+  semantic_prerequisites:
+    enabled: true
+    srg_required: true
+    srg_validation_required: true
+    build_before_orchestration: true
+    refresh_interval_seconds: 300
+
+  # Agent definitions
+  agents:
+    - id: gl-governance-validator
+      name: "GL Governance Validator Agent"
+      type: "governance"
+      priority: 1
+      enabled: true
+      semantic_aware: true
+      config:
+        validation_scope:
+          - "engine"
+          - "file-organizer-system"
+          - "gl-audit-reports"
+        strict_mode: true
+        enforce_semantic_anchors: true
+        require_srg_analysis: true
+        validate_governance_tags: true
+      dependencies: []
+      outputs:
+        - "gl-validation-report.json"
+        - "gl-compliance-summary.md"
+
+    - id: semantic-analyzer
+      name: "Semantic Analyzer Agent"
+      type: "semantic"
+      priority: 1
+      enabled: true
+      semantic_aware: true
+      config:
+        parse_content: true
+        classify_semantics: true
+        map_gl_standards: true
+        infer_schemas: true
+        resolve_intents: true
+        generate_semantic_reports: true
+      dependencies: []
+      outputs:
+        - "semantic-analysis-report.json"
+        - "semantic-classification-report.json"
+        - "semantic-graph-status.json"
+
+    - id: semantic-validator
+      name: "Semantic Validator Agent"
+      type: "semantic"
+      priority: 2
+      enabled: true
+      semantic_aware: true
+      config:
+        validate_governance_tags: true
+        validate_semantic_anchors: true
+        validate_gl_layers: true
+        validate_semantic_consistency: true
+        check_schema_compliance: true
+        check_intent_resolution: true
+      dependencies:
+        - "semantic-analyzer"
+      outputs:
+        - "semantic-validation-report.json"
+        - "semantic-violation-summary.json"
+
+    - id: semantic-repair-agent
+      name: "Semantic Repair Agent"
+      type: "repair"
+      priority: 2
+      enabled: true
+      semantic_aware: true
+      config:
+        auto_repair_enabled: true
+        repair_missing_tags: true
+        repair_missing_anchors: true
+        generate_governance_tags: true
+        generate_semantic_anchors: true
+        trust_requirement: "high"
+      dependencies:
+        - "semantic-validator"
+      outputs:
+        - "semantic-repair-report.json"
+        - "semantic-fixes-applied.json"
+
+    - id: codeql-monitor
+      name: "CodeQL Monitor Agent"
+      type: "monitoring"
+      priority: 3
+      enabled: true
+      semantic_aware: false
+      config:
+        languages:
+          - javascript
+          - python
+          - typescript
+        scan_frequency: "daily"
+        alert_threshold: "high"
+      dependencies: []
+      outputs:
+        - "codeql-results.json"
+        - "codeql-report.md"
+
+    - id: quality-assurance
+      name: "Quality Assurance Agent"
+      type: "validation"
+      priority: 4
+      enabled: true
+      semantic_aware: false
+      config:
+        checks:
+          - "linting"
+          - "formatting"
+          - "test-coverage"
+          - "security-scan"
+        quality_threshold: 85
+      dependencies: []
+      outputs:
+        - "quality-report.json"
+        - "quality-metrics.md"
+
+    - id: dependency-scanner
+      name: "Dependency Scanner Agent"
+      type: "security"
+      priority: 5
+      enabled: true
+      semantic_aware: false
+      config:
+        scan_types:
+          - "vulnerability"
+          - "license"
+          - "outdated"
+        severity_filter: "medium+"
+      dependencies: []
+      outputs:
+        - "dependency-report.json"
+        - "vulnerability-summary.md"
+
+    - id: architecture-validator
+      name: "Architecture Validator Agent"
+      type: "validation"
+      priority: 6
+      enabled: true
+      semantic_aware: true
+      config:
+        validation_rules:
+          - "gl-layer-compliance"
+          - "api-version-consistency"
+          - "metadata-completeness"
+          - "semantic-consistency"
+        schema_paths:
+          - "gl/**/artifacts/*.yaml"
+        require_srg_analysis: true
+      dependencies:
+        - "semantic-analyzer"
+      outputs:
+        - "architecture-validation.json"
+        - "compliance-report.md"
+
+    - id: documentation-generator
+      name: "Documentation Generator Agent"
+      type: "documentation"
+      priority: 7
+      enabled: true
+      semantic_aware: true

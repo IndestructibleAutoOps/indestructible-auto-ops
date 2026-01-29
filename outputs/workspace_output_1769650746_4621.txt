@@ -1,0 +1,11 @@
+    
+    return results;
+  }
+  
+  async count(): Promise<number> {
+    const fs = require('fs');
+    const files = fs.readdirSync(this.config.basePath);
+    return files.filter(f => f.endsWith('.json')).length;
+  }
+  
+  async getStorageSize(): Promise<number> {

@@ -1,0 +1,91 @@
+On branch feature/v19-unified-fabric
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   GL_V19_UNIFIED_INTELLIGENCE_FABRIC.md
+	modified:   package.json
+	new file:   src/unified-fabric-server.ts
+	modified:   tsconfig.json
+	new file:   unified-intelligence-fabric/fabric-algo/index.ts
+	new file:   unified-intelligence-fabric/fabric-composition/index.ts
+	new file:   unified-intelligence-fabric/fabric-compute/index.ts
+	new file:   unified-intelligence-fabric/fabric-core/index.ts
+	new file:   unified-intelligence-fabric/fabric-evolution/index.ts
+	new file:   unified-intelligence-fabric/fabric-flows/index.ts
+	new file:   unified-intelligence-fabric/fabric-storage/index.ts
+	new file:   unified-intelligence-fabric/index.ts
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ../engine/.governance/event-stream.jsonl
+	modified:   ../engine/.governance/governance-event-stream.jsonl
+	modified:   ../file-organizer-system/.governance/event-stream.jsonl
+	modified:   ../outputs/workspace_output_1769650193_7653.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../outputs/workspace_output_1769650197_9739.txt
+	../outputs/workspace_output_1769650200_8329.txt
+	../outputs/workspace_output_1769650613_2048.txt
+	../outputs/workspace_output_1769650616_8174.txt
+	../outputs/workspace_output_1769650620_7219.txt
+	../outputs/workspace_output_1769650623_7871.txt
+	../outputs/workspace_output_1769650639_2985.txt
+	../outputs/workspace_output_1769650645_80.txt
+	../outputs/workspace_output_1769650677_7569.txt
+	../outputs/workspace_output_1769650681_9295.txt
+	../outputs/workspace_output_1769650683_4298.txt
+	../outputs/workspace_output_1769650687_1162.txt
+	../outputs/workspace_output_1769650689_2873.txt
+	../outputs/workspace_output_1769650692_4311.txt
+	../outputs/workspace_output_1769650697_4057.txt
+	../outputs/workspace_output_1769650701_2257.txt
+	../outputs/workspace_output_1769650715_9192.txt
+	../outputs/workspace_output_1769650718_6932.txt
+	../outputs/workspace_output_1769650723_6054.txt
+	../outputs/workspace_output_1769650727_2288.txt
+	../outputs/workspace_output_1769650729_281.txt
+	../outputs/workspace_output_1769650734_7941.txt
+	../outputs/workspace_output_1769650746_4621.txt
+	../outputs/workspace_output_1769650752_6507.txt
+	../outputs/workspace_output_1769650754_6030.txt
+	../outputs/workspace_output_1769650765_9438.txt
+	../outputs/workspace_output_1769650778_8231.txt
+	../outputs/workspace_output_1769650780_8569.txt
+	../outputs/workspace_output_1769650793_9969.txt
+	../outputs/workspace_output_1769650815_3563.txt
+	../outputs/workspace_output_1769650818_8110.txt
+	../outputs/workspace_output_1769650839_501.txt
+	../outputs/workspace_output_1769650841_2140.txt
+	../outputs/workspace_output_1769650844_9463.txt
+	../outputs/workspace_output_1769650849_5001.txt
+	../outputs/workspace_output_1769650856_2477.txt
+	../outputs/workspace_output_1769650858_9022.txt
+	../outputs/workspace_output_1769650866_8538.txt
+	../outputs/workspace_output_1769650872_8643.txt
+	../outputs/workspace_output_1769650877_4781.txt
+	../outputs/workspace_output_1769650886_4282.txt
+	../outputs/workspace_output_1769650889_6672.txt
+	../outputs/workspace_output_1769650896_5442.txt
+	../outputs/workspace_output_1769650902_3841.txt
+	../outputs/workspace_output_1769650905_5095.txt
+	../outputs/workspace_output_1769650908_6324.txt
+	../outputs/workspace_output_1769650913_967.txt
+	../outputs/workspace_output_1769650916_2556.txt
+	../outputs/workspace_output_1769650919_2541.txt
+	../outputs/workspace_output_1769650922_6114.txt
+	../summarized_conversations/original_conversation_1769650502_3666.txt
+	../summarized_conversations/original_conversation_1769650670_3957.txt
+	../summarized_conversations/original_conversation_1769650670_4299.txt
+	../summarized_conversations/original_conversation_1769650671_5287.txt
+	../summarized_conversations/original_conversation_1769650671_5506.txt
+	../summarized_conversations/original_conversation_1769650671_8528.txt
+	../summarized_conversations/original_conversation_1769650671_8726.txt
+	../summarized_conversations/original_conversation_1769650672_6410.txt
+	../summarized_conversations/original_conversation_1769650672_8462.txt
+	../summarized_conversations/original_conversation_1769650672_9805.txt
+	../summarized_conversations/original_conversation_1769650673_3576.txt
+	../summarized_conversations/original_conversation_1769650673_9949.txt
+	../summarized_conversations/original_conversation_1769650674_249.txt
+	../todo-v19.md
+

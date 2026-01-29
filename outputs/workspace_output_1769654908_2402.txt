@@ -1,0 +1,23 @@
+
+> gl-runtime-platform@20.0.0 build
+> tsc
+
+src/infinite-continuum-server.ts(15,43): error TS2307: Cannot find module './unified-intelligence-fabric' or its corresponding type declarations.
+src/infinite-continuum-server.ts(191,68): error TS2345: Argument of type 'string' is not assignable to parameter of type '"fact" | "concept" | "relation" | "pattern" | "insight"'.
+src/infinite-continuum/algorithmic-evolution.ts(114,7): error TS2322: Type '"generation"' is not assignable to type '"mutation" | "crossover" | "selection" | "extinction"'.
+src/infinite-continuum/fabric-expansion.ts(17,3): error TS2459: Module '"./types"' declares 'FabricNode' locally, but it is not exported.
+src/infinite-continuum/fabric-expansion.ts(18,3): error TS2459: Module '"./types"' declares 'FabricEdge' locally, but it is not exported.
+src/infinite-continuum/fabric-expansion.ts(19,3): error TS2459: Module '"./types"' declares 'FabricGraph' locally, but it is not exported.
+src/infinite-continuum/fabric-expansion.ts(165,42): error TS7006: Parameter 'node' implicitly has an 'any' type.
+src/infinite-continuum/fabric-expansion.ts(247,53): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/infinite-continuum/fabric-expansion.ts(250,46): error TS2345: Argument of type 'Set<unknown>' is not assignable to parameter of type 'Set<string>'.
+  Type 'unknown' is not assignable to type 'string'.
+src/infinite-continuum/fabric-expansion.ts(353,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/infinite-continuum/fabric-expansion.ts(560,39): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/infinite-continuum/index.ts(12,43): error TS2307: Cannot find module '../unified-intelligence-fabric' or its corresponding type declarations.
+src/infinite-continuum/index.ts(325,47): error TS2339: Property 'exportPopulation' does not exist on type 'InfiniteKnowledgeAccretion'.
+src/infinite-continuum/infinite-composition.ts(120,11): error TS2322: Type 'string' is not assignable to type '"transformation" | "algorithm" | "data" | "control"'.
+src/infinite-continuum/infinite-composition.ts(121,43): error TS2345: Argument of type 'string' is not assignable to parameter of type '"transformation" | "algorithm" | "data" | "control"'.
+src/infinite-continuum/infinite-composition.ts(530,49): error TS1117: An object literal cannot have multiple properties with the same name.
+src/infinite-continuum/knowledge-accretion.ts(19,60): error TS2307: Cannot find module '../unified-intelligence-fabric/fabric-core' or its corresponding type declarations.
+src/infinite-continuum/types.ts(12,53): error TS2307: Cannot find module '../unified-intelligence-fabric/fabric-core' or its corresponding type declarations.

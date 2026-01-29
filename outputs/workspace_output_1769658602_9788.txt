@@ -1,0 +1,84 @@
+🧪 Code Intelligence & Security Layer Tester v21.0.0
+📁 Workspace: /workspace/gl-runtime-platform
+📊 Output: test-reports
+
+🚀 Starting comprehensive testing...
+
+================================================================================
+Testing Capability Schema
+================================================================================
+✅ Test 1: Directory exists
+✅ Test 2: All schema files present
+❌ Test 3: Invalid schema structure
+
+================================================================================
+Testing Pattern Library
+================================================================================
+✅ Test 1: Pattern library directory exists
+✅ Test 2: All pattern categories present
+✅ Test 3: Found 4 patterns
+   - security-patterns: 2 patterns
+   - performance-patterns: 1 patterns
+   - architecture-patterns: 1 patterns
+
+================================================================================
+Testing Generator Engine
+================================================================================
+✅ Test 1: Generator engine directory exists
+✅ Test 2: All generator components present
+
+================================================================================
+Testing Evaluation Engine
+================================================================================
+✅ Test 1: Evaluation engine directory exists
+✅ Test 2: Evaluation criteria file exists
+
+================================================================================
+Testing Deployment Weaver
+================================================================================
+✅ Test 1: Deployment weaver directory exists
+✅ Test 2: All deployment platforms configured
+
+================================================================================
+Testing Evolution Engine
+================================================================================
+✅ Test 1: Evolution engine directory exists
+✅ Test 2: Evolution mechanisms defined (3/3)
+
+================================================================================
+Testing V19 Fabric Integration
+================================================================================
+✅ Test 1: V19 fabric integration directory exists
+✅ Test 2: Integration files present (2/2)
+
+================================================================================
+Testing V20 Continuum Integration
+================================================================================
+✅ Test 1: V20 continuum integration directory exists
+✅ Test 2: Integration files present (2/2)
+
+📊 Test report saved to: test-reports/code-intel-test-report.json
+📝 Summary saved to: test-reports/test-summary.md
+
+================================================================================
+TEST SUMMARY
+================================================================================
+
+Overall Status: ❌ FAILED
+Total Tests: 18
+Passed: 17
+Failed: 1
+Skipped: 0
+Pass Rate: 94.44%
+Total Duration: 0.0s
+
+❌ FAIL Capability Schema: 2/3 tests passed
+✅ PASS Pattern Library: 3/3 tests passed
+✅ PASS Generator Engine: 2/2 tests passed
+✅ PASS Evaluation Engine: 2/2 tests passed
+✅ PASS Deployment Weaver: 2/2 tests passed
+✅ PASS Evolution Engine: 2/2 tests passed
+✅ PASS V19 Fabric Integration: 2/2 tests passed
+✅ PASS V20 Continuum Integration: 2/2 tests passed
+
+================================================================================

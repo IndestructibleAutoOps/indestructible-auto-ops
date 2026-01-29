@@ -1,0 +1,168 @@
+# @GL-governed
+# @GL-layer: GL100-119
+# @GL-semantic: evaluation-criteria
+# @GL-charter-version: 4.0.0
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# Evaluation Criteria for Code Intelligence & Security Layer
+# Defines the criteria for evaluating generated capabilities and fixes
+
+evaluation_criteria:
+  # Security Evaluation
+  security:
+    name: "Security Evaluation"
+    description: "Evaluates security aspects of code and fixes"
+    criteria:
+      - id: "behavior-equivalence"
+        name: "Behavior Equivalence"
+        description: "Fixed code behaves identically to original (except for security fix)"
+        weight: 0.30
+        metric_type: "boolean"
+        
+      - id: "security-regression"
+        name: "Security Regression"
+        description: "Fix does not introduce new security vulnerabilities"
+        weight: 0.25
+        metric_type: "boolean"
+        
+      - id: "semantic-consistency"
+        name: "Semantic Consistency"
+        description: "Fix maintains semantic meaning of original code"
+        weight: 0.20
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "cwe-compliance"
+        name: "CWE Compliance"
+        description: "Fix complies with relevant CWE standards"
+        weight: 0.15
+        metric_type: "boolean"
+        
+      - id: "secure-defaults"
+        name: "Secure Defaults"
+        description: "Fix uses secure-by-default practices"
+        weight: 0.10
+        metric_type: "boolean"
+
+  # Performance Evaluation
+  performance:
+    name: "Performance Evaluation"
+    description: "Evaluates performance aspects of code and optimizations"
+    criteria:
+      - id: "performance-improvement"
+        name: "Performance Improvement"
+        description: "Optimization actually improves performance"
+        weight: 0.40
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "no-regression"
+        name: "No Performance Regression"
+        description: "Optimization does not degrade performance"
+        weight: 0.30
+        metric_type: "boolean"
+        
+      - id: "resource-efficiency"
+        name: "Resource Efficiency"
+        description: "Optimization improves resource utilization"
+        weight: 0.20
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "scalability"
+        name: "Scalability"
+        description: "Optimization improves scalability"
+        weight: 0.10
+        metric_type: "float"
+        range: [0.0, 1.0]
+
+  # Code Quality Evaluation
+  code_quality:
+    name: "Code Quality Evaluation"
+    description: "Evaluates code quality aspects"
+    criteria:
+      - id: "readability"
+        name: "Readability"
+        description: "Code is readable and maintainable"
+        weight: 0.25
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "maintainability"
+        name: "Maintainability"
+        description: "Code is easy to maintain and extend"
+        weight: 0.25
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "test-coverage"
+        name: "Test Coverage"
+        description: "Code has adequate test coverage"
+        weight: 0.20
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "documentation"
+        name: "Documentation"
+        description: "Code is well-documented"
+        weight: 0.15
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "best-practices"
+        name: "Best Practices"
+        description: "Code follows industry best practices"
+        weight: 0.15
+        metric_type: "boolean"
+
+  # Architecture Evaluation
+  architecture:
+    name: "Architecture Evaluation"
+    description: "Evaluates architectural aspects"
+    criteria:
+      - id: "solid-compliance"
+        name: "SOLID Principles Compliance"
+        description: "Code follows SOLID principles"
+        weight: 0.30
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "design-patterns"
+        name: "Design Patterns"
+        description: "Code uses appropriate design patterns"
+        weight: 0.25
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "coupling"
+        name: "Coupling"
+        description: "Code has appropriate coupling levels"
+        weight: 0.20
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "cohesion"
+        name: "Cohesion"
+        description: "Code has high cohesion"
+        weight: 0.15
+        metric_type: "float"
+        range: [0.0, 1.0]
+        
+      - id: "extensibility"
+        name: "Extensibility"
+        description: "Code is easy to extend"
+        weight: 0.10
+        metric_type: "float"
+        range: [0.0, 1.0]
+
+# Thresholds for passing evaluation
+thresholds:
+  overall_score: 0.80
+  category_score: 0.70
+  critical_criteria: 1.0  # Must pass all critical criteria
+
+# Scoring rules
+scoring:
+  aggregation: "weighted_average"
+  normalization: "min_max"
+  penalty_factor: 0.1  # Penalty for failed criteria

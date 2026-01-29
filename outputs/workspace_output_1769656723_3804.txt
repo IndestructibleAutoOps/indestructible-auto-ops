@@ -1,0 +1,100 @@
+// @GL-governed
+// @GL-layer: GL90-99
+// @GL-semantic: runtime-fabric-server
+// @GL-charter-version: 4.0.0
+// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+/**
+ * GL Unified Intelligence Fabric - REST API Server
+ * Version 19.0.0
+ * 
+ * 核心：統一智慧織網 API
+ * - 提供 Fabric 的所有功能的 REST API 接口
+ * - 支援所有 V1-18 能力的統一訪問
+ * - 實時狀態監控與控制
+ */
+
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import { UnifiedIntelligenceFabric, FabricStatus } from '../unified-intelligence-fabric';
+
+// ============================================================================
+// Server Configuration
+// ============================================================================
+
+const PORT = 3011;
+const app = express();
+let fabric: UnifiedIntelligenceFabric;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ============================================================================
+// Health Check
+// ============================================================================
+
+app.get('/health', async (req: Request, res: Response) => {
+  try {
+    if (!fabric || !fabric.isInitialized()) {
+      return res.status(503).json({
+        status: 'unhealthy',
+        message: 'Unified Intelligence Fabric not initialized'
+      });
+    }
+    
+    const status = await fabric.getStatus();
+    
+    res.json({
+      status: 'healthy',
+      version: '19.0.0',
+      timestamp: Date.now(),
+      fabric: status
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: (error as Error).message
+    });
+  }
+});
+
+// ============================================================================
+// Fabric Status
+// ============================================================================
+
+app.get('/api/v19/fabric/status', async (req: Request, res: Response) => {
+  try {
+    const status = await fabric.getStatus();
+    res.json(status);
+  } catch (error) {
+    res.status(500).json({
+      error: (error as Error).message
+    });
+  }
+});
+
+// ============================================================================
+// High-Level Operations
+// ============================================================================
+
+/**
+ * POST /api/v19/fabric/reason
+ * 在織網上執行推理
+ */
+app.post('/api/v19/fabric/reason', async (req: Request, res: Response) => {
+  try {
+    const { query, reasoningStyle, maxDepth } = req.body;
+    
+    if (!query) {
+      return res.status(400).json({
+        error: 'Missing required field: query'
+      });
+    }
+    
+    const result = await fabric.reason(query, {
+      reasoningStyle,
+      maxDepth
+    });
+    

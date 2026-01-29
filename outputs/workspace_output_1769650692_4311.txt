@@ -1,0 +1,15 @@
+  events: EvolutionEvent[];
+  adaptationRate: number;
+  stabilityScore: number;
+}
+
+export type ProjectionView = {
+  id: string;
+  sourceSystem: string;
+  nodes: Set<string>;
+  edges: Set<string>;
+  transformationRules: any[];
+  mappingFunctions: Map<string, any>;
+  lastSync: number;
+  consistency: number;
+};

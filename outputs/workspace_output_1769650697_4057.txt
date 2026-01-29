@@ -1,0 +1,2 @@
+335:    const allNodes = Array.from((await this.fabric.getStatistics()).layerStats?.['fabric']?.nodeCount || 0);
+981:    return Array.from(this.activeFlows.values());

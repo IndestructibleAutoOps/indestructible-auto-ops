@@ -1,0 +1,11 @@
+  private async addKnowledgeNode(req: Request, res: Response): Promise<void> {
+    try {
+      const { content, type, source, confidence } = req.body;
+      const nodeId = this.continuum.getKnowledgeAccretion().addKnowledgeNode(
+        content,
+        type as 'fact' | 'concept' | 'relation' | 'pattern' | 'insight',
+        source,
+        confidence
+      );
+      res.json({ success: true, nodeId });
+    } catch (error: any) {

@@ -1,0 +1,20 @@
+[
+  {
+    "@GL-governed": true,
+    "@GL-layer": "GL100-119",
+    "@GL-semantic": "capability-examples",
+    "@GL-charter-version": "4.0.0",
+    "@GL-audit-trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    
+    "type": "metadata",
+    "description": "Example capabilities for Code Intelligence & Security Layer",
+    "version": "21.0.0"
+  },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "name": "SQL Injection Detector",
+      "version": "1.0.0",
+      "category": "security-hardening",
+      "description": "Detects SQL injection vulnerabilities in code by analyzing SQL query patterns and user input handling",
+      "inputs": [
+        {
