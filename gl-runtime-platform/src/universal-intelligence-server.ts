@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Universal Intelligence Server (Version 15.0.0)
  * 通用智慧層 API 伺服器
  * 

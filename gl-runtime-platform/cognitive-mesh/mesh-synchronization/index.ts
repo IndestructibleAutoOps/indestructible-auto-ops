@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Cognitive Mesh Synchronization
  * @GL-layer: GL11
  * @GL-semantic: mesh-synchronization

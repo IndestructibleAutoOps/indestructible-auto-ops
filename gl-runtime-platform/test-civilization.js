@@ -1,3 +1,9 @@
+/**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
 const { CivilizationServer } = require('./dist/src/civilization-server');
 
 const server = new CivilizationServer(3003);

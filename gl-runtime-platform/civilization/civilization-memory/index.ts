@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Runtime Platform v13.0.0
  * Module: Civilization Memory
  * 

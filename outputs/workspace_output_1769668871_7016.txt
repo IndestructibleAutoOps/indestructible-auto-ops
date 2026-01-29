@@ -1,0 +1,92 @@
+Running GL governance pre-commit validation...
+Checking: .github/workflows/integration-tests.yml
+❌ ERROR: Missing @GL-governed marker in .github/workflows/integration-tests.yml
+Checking: gl-runtime-platform/civilization/civilization-memory/index.ts
+Checking: gl-runtime-platform/civilization/cultural-engine/index.ts
+Checking: gl-runtime-platform/civilization/ecosystem-engine/index.ts
+Checking: gl-runtime-platform/civilization/expansion-engine/index.ts
+Checking: gl-runtime-platform/civilization/governance-system/index.ts
+Checking: gl-runtime-platform/civilization/role-specialization/index.ts
+Checking: gl-runtime-platform/civilization/sustainability-engine/index.ts
+Checking: gl-runtime-platform/code-intel-security-layer/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-core/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-emergence/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-memory/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-nodes/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-optimizer/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-routing/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-synchronization/index.ts
+Checking: gl-runtime-platform/docs/API-Documentation.md
+❌ ERROR: Missing @GL-governed marker in gl-runtime-platform/docs/API-Documentation.md
+Checking: gl-runtime-platform/docs/Deployment-Guide.md
+Checking: gl-runtime-platform/evolution/evolutionary-memory/index.ts
+Checking: gl-runtime-platform/evolution/evolutionary-strategy-engine/index.ts
+Checking: gl-runtime-platform/evolution/index.ts
+Checking: gl-runtime-platform/evolution/self-optimization-loop/index.ts
+Checking: gl-runtime-platform/evolution/self-rewriting-engine/index.ts
+Checking: gl-runtime-platform/evolution/self-versioning/index.ts
+Checking: gl-runtime-platform/evolution/structural-mutation-engine/index.ts
+Checking: gl-runtime-platform/fabric-storage/fabric-edges.json
+Checking: gl-runtime-platform/fabric-storage/fabric-nodes.json
+Checking: gl-runtime-platform/fix-v14.js
+Checking: gl-runtime-platform/global-dag/dag-builder/index.ts
+Checking: gl-runtime-platform/global-dag/dag-executor/index.ts
+Checking: gl-runtime-platform/global-dag/dag-optimizer/index.ts
+Checking: gl-runtime-platform/global-dag/dag-repair/index.ts
+Checking: gl-runtime-platform/global-dag/dag-resolver/index.ts
+Checking: gl-runtime-platform/global-dag/dag-visualizer/index.ts
+Checking: gl-runtime-platform/governance-audit-reports-main/governance-tags-report.json
+Checking: gl-runtime-platform/governance-audit-reports-main/governance-tags-report.md
+❌ ERROR: Missing @GL-governed marker in gl-runtime-platform/governance-audit-reports-main/governance-tags-report.md
+Checking: gl-runtime-platform/meta-cognition/decision-optimizer/index.ts
+Checking: gl-runtime-platform/meta-cognition/deep-consciousness-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/deep-index.ts
+Checking: gl-runtime-platform/meta-cognition/deep-thinking-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/index.ts
+Checking: gl-runtime-platform/meta-cognition/meta-correction-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/meta-feedback-loop/index.ts
+Checking: gl-runtime-platform/meta-cognition/meta-reasoning-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/reflective-memory/index.ts
+Checking: gl-runtime-platform/meta-cognition/self-awareness-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/self-monitoring-layer/index.ts
+Checking: gl-runtime-platform/meta-cognition/wisdom-engine/index.ts
+Checking: gl-runtime-platform/meta-cognitive/consciousness-emergence/index.ts
+Checking: gl-runtime-platform/meta-cognitive/meta-cognitive-monitoring/index.ts
+Checking: gl-runtime-platform/meta-cognitive/meta-decision/index.ts
+Checking: gl-runtime-platform/meta-cognitive/reflection-loop/index.ts
+Checking: gl-runtime-platform/meta-cognitive/self-assessment/index.ts
+Checking: gl-runtime-platform/package.json
+Checking: gl-runtime-platform/reports-main/priority2-completion-report.md
+❌ ERROR: Missing @GL-governed marker in gl-runtime-platform/reports-main/priority2-completion-report.md
+Checking: gl-runtime-platform/scripts/add-governance-tags-main.py
+Checking: gl-runtime-platform/src/civilization-server.ts
+Checking: gl-runtime-platform/src/cognitive-mesh-server.ts
+Checking: gl-runtime-platform/src/deep-meta-cognitive-server.ts
+Checking: gl-runtime-platform/src/evolution-server.ts
+Checking: gl-runtime-platform/src/meta-cognitive-server.ts
+Checking: gl-runtime-platform/src/universal-intelligence-server.ts
+Checking: gl-runtime-platform/storage/gl-artifacts-store/global-resource-graph.json
+Checking: gl-runtime-platform/storage/gl-artifacts-store/semantic-resource-graph.json
+Checking: gl-runtime-platform/storage/gl-semantic-graph/analyses.json
+Checking: gl-runtime-platform/test-civilization.js
+Checking: gl-runtime-platform/test-meta-cognitive.js
+Checking: gl-runtime-platform/test-reports-main/integration-test-report.json
+Checking: gl-runtime-platform/test-reports-main/integration-test-report.md
+❌ ERROR: Missing @GL-governed marker in gl-runtime-platform/test-reports-main/integration-test-report.md
+Checking: gl-runtime-platform/tests/integration-main/integration-test-suite.ts
+Checking: gl-runtime-platform/tests/integration-main/run-integration-tests-simple.ts
+Checking: gl-runtime-platform/tests/integration-main/run-integration-tests.ts
+Checking: gl-runtime-platform/universal-intelligence/cross-domain-reasoning/index.ts
+Checking: gl-runtime-platform/universal-intelligence/general-problem-solving/index.ts
+Checking: gl-runtime-platform/universal-intelligence/index.ts
+Checking: gl-runtime-platform/universal-intelligence/intelligence-transfer/index.ts
+Checking: gl-runtime-platform/universal-intelligence/knowledge-synthesis-engine/index.ts
+Checking: gl-runtime-platform/universal-intelligence/universal-abstraction-engine/index.ts
+Checking: gl-runtime-platform/universal-intelligence/universal-adaptation/index.ts
+Checking: gl-runtime-platform/universal-intelligence/universal-learning-loop/index.ts
+Checking: priority2-main.md
+❌ ERROR: Missing @GL-governed marker in priority2-main.md
+
+❌ GL Governance Validation Failed
+Found 6 violations. Please fix before committing.

@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * Intelligence Transfer Engine
  * 智慧轉移引擎 - 具備跨領域、跨文明、跨 Mesh 的智慧轉移能力
  * 

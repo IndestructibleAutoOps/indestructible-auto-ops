@@ -1,0 +1,9 @@
+diff --git a/engine/.governance/event-stream.jsonl b/engine/.governance/event-stream.jsonl
+index 72056242..c2be54b2 100644
+--- a/engine/.governance/event-stream.jsonl
++++ b/engine/.governance/event-stream.jsonl
+@@ -131,3 +131,4 @@
+ {"id":"gl-validation-1769608745093","type":"validation","timestamp":"2026-01-28T13:59:05.093Z","source":"governance/gl_engine.ts","data":{"success":true,"violationCount":0,"criticalCount":0}}
+ {"id":"gl-validation-1769608810316","type":"validation","timestamp":"2026-01-28T14:00:10.316Z","source":"governance/gl_engine.ts","data":{"success":true,"violationCount":0,"criticalCount":0}}
+ {"id":"gl-validation-1769668984022","type":"validation","timestamp":"2026-01-29T06:43:04.022Z","source":"governance/gl_engine.ts","data":{"success":true,"violationCount":0,"criticalCount":0}}
++{"id":"gl-validation-1769669053393","type":"validation","timestamp":"2026-01-29T06:44:13.393Z","source":"governance/gl_engine.ts","data":{"success":true,"violationCount":0,"criticalCount":0}}
