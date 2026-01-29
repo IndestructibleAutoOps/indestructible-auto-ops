@@ -39,6 +39,8 @@ yarn-error.*
 # Compiled JavaScript files in source directories
 # (TypeScript output should only go to dist/)
 gl-runtime-platform/inter-reality/**/*.js
+!gl-runtime-platform/inter-reality/**/*.config.js
+!gl-runtime-platform/inter-reality/**/*.test.js
 gl-runtime-platform/src/**/*.js
 !gl-runtime-platform/src/**/*.config.js
 !gl-runtime-platform/src/**/*.test.js
