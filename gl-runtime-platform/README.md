@@ -55,6 +55,7 @@ GL Runtime Platform is a production-grade, cross-module, cross-platform, cross-l
 
 - **Docker Compose** - Local development and testing
 - **Kubernetes** - Production deployment with auto-scaling
+- **Enterprise Automation Architecture** - GL99 enterprise architecture specification
 
 ## Installation
 
@@ -130,6 +131,9 @@ kubectl apply -f deployment/k8s/
 - `ops/pipelines/` - Pipeline definitions
 - `ops/agents/agent-orchestration.yaml` - Agent configuration
 - `ops/auto-bootstrap/` - Auto-bootstrap configurations
+- `ops/executors/zero-residue-executor.sh` - Zero-residue execution runner
+- `deployment/enterprise-platform-deployment.yaml` - Enterprise production deployment configuration
+- `docs/architecture/Enterprise-Automation-Platform-Architecture.yaml` - Enterprise architecture spec
 
 ## Governance Compliance
 
