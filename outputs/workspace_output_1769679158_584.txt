@@ -1,0 +1,86 @@
+Running GL governance pre-commit validation...
+Checking: gl-runtime-platform/todo-ultra-strict-verification.md
+Checking: gl-runtime-platform/ultra-strict-verification-core/anti-fabric/adversarial-generator/adversarial-generator.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/anti-fabric/assumption-invalidator/assumption-invalidator.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/anti-fabric/contradiction-detector/contradiction-detector.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/anti-fabric/index.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/anti-fabric/pattern-breaker/pattern-breaker.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/anti-fabric/semantic-inconsistency-scanner/semantic-inconsistency-scanner.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/baseline-comparator/baseline-comparator.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/fuzzing-engine/fuzzing-engine.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/index.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/oracle-validator/oracle-validator.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/real-runner/real-runner.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/regression-diff/regression-diff.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/execution-harness/stress-tester/stress-tester.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/falsification-engine/adversarial-inputs/adversarial-inputs.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/falsification-engine/behavior-divergence-tests/behavior-divergence-tests.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/falsification-engine/extreme-boundary-tests/extreme-boundary-tests.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/falsification-engine/index.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/falsification-engine/reality-vs-report-diff/reality-vs-report-diff.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/falsification-engine/semantic-contradiction-tests/semantic-contradiction-tests.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/governance-event-stream.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/index.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/test-verification.ts
+Checking: gl-runtime-platform/ultra-strict-verification-core/types.ts
+✅ GL Governance Validation Passed
+✅ Governance event logged to event stream
+[main e1d88ddf] feat: Implement Ultra-Strict Verification Core with anti-system verification architecture
+ 61 files changed, 9431 insertions(+)
+ create mode 100644 gl-runtime-platform/todo-ultra-strict-verification.md
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/anti-fabric/adversarial-generator/adversarial-generator.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/anti-fabric/assumption-invalidator/assumption-invalidator.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/anti-fabric/contradiction-detector/contradiction-detector.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/anti-fabric/index.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/anti-fabric/pattern-breaker/pattern-breaker.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/anti-fabric/semantic-inconsistency-scanner/semantic-inconsistency-scanner.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/baseline-comparator/baseline-comparator.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/fuzzing-engine/fuzzing-engine.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/index.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/oracle-validator/oracle-validator.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/real-runner/real-runner.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/regression-diff/regression-diff.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/execution-harness/stress-tester/stress-tester.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/falsification-engine/adversarial-inputs/adversarial-inputs.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/falsification-engine/behavior-divergence-tests/behavior-divergence-tests.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/falsification-engine/extreme-boundary-tests/extreme-boundary-tests.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/falsification-engine/index.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/falsification-engine/reality-vs-report-diff/reality-vs-report-diff.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/falsification-engine/semantic-contradiction-tests/semantic-contradiction-tests.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/governance-event-stream.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/index.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/test-verification.ts
+ create mode 100644 gl-runtime-platform/ultra-strict-verification-core/types.ts
+ create mode 100644 outputs/workspace_output_1769669031_5669.txt
+ create mode 100644 outputs/workspace_output_1769669050_2222.txt
+ create mode 100644 outputs/workspace_output_1769670400_7768.txt
+ create mode 100644 outputs/workspace_output_1769670490_7149.txt
+ create mode 100644 outputs/workspace_output_1769679093_5434.txt
+ create mode 100644 outputs/workspace_output_1769679143_237.txt
+ create mode 100644 outputs/workspace_output_1769679146_3946.txt
+ create mode 100644 outputs/workspace_output_1769679150_494.txt
+ create mode 100644 outputs/workspace_output_1769679158_584.txt
+ create mode 100644 summarized_conversations/original_conversation_1769670122_6548.txt
+ create mode 100644 summarized_conversations/original_conversation_1769670333_9393.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677609_5209.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677610_203.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677610_289.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677610_3226.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677611_5611.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677611_6760.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677611_8685.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677611_9255.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677612_2956.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677612_5137.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677612_9098.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677612_9823.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677613_5214.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677613_88.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677613_9224.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677613_97.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677614_5338.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677614_8370.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677614_8800.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677615_6683.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677615_7883.txt
+ create mode 100644 summarized_conversations/original_conversation_1769677615_8760.txt
