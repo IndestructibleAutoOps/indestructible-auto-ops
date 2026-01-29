@@ -683,17 +683,30 @@ class StorageEngine {
     const fs = require('fs');
     const path = require('path');
     
-    // 建立儲存目錄
-    if (!fs.existsSync(this.config.basePath)) {
-      fs.mkdirSync(this.config.basePath, { recursive: true });
+    // 正規化並建立儲存目錄
+    const basePathResolved = path.resolve(this.config.basePath);
+    
+    if (!fs.existsSync(basePathResolved)) {
+      fs.mkdirSync(basePathResolved, { recursive: true });
     }
+    
+    // 將正規化後的路徑回寫設定，後續統一使用
+    this.config.basePath = basePathResolved;
   }
   
   async store(nodeId: string, compressed: CompressedSuperposition): Promise<void> {
     const fs = require('fs');
     const path = require('path');
     
-    const filePath = path.join(this.config.basePath, `${nodeId}.json`);
+    // 使用正規化後的根目錄，並確保目標路徑不會逃離根目錄
+    const basePathResolved = path.resolve(this.config.basePath);
+    const candidatePath = path.resolve(basePathResolved, `${nodeId}.json`);
+    
+    if (!(candidatePath === basePathResolved || candidatePath.startsWith(basePathResolved + path.sep))) {
+      throw new Error(`Invalid nodeId for storage path: ${nodeId}`);
+    }
+    
+    const filePath = candidatePath;
     const content = JSON.stringify(compressed, null, 2);
     
     fs.writeFileSync(filePath, content, 'utf-8');
@@ -703,7 +716,15 @@ class StorageEngine {
     const fs = require('fs');
     const path = require('path');
     
-    const filePath = path.join(this.config.basePath, `${nodeId}.json`);
+    // 使用與 store 相同的安全路徑解析邏輯
+    const basePathResolved = path.resolve(this.config.basePath);
+    const candidatePath = path.resolve(basePathResolved, `${nodeId}.json`);
+    if (!(candidatePath === basePathResolved || candidatePath.startsWith(basePathResolved + path.sep))) {
+      throw new Error(`Invalid nodeId for storage path: ${nodeId}`);
+    }
+    
+    const filePath = candidatePath;
+    
     
     if (!fs.existsSync(filePath)) {
       return undefined;
