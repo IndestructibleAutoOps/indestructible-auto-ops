@@ -93,7 +93,6 @@ export class GLInterRealityArchitecture extends EventEmitter {
 
     for (const engine of engines) {
       engine.on('initialized', () => this.emit('component-initialized'));
-      engine.on('*', (event, data) => this.emit(event, data));
     }
   }
 
