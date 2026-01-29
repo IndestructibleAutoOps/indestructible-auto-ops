@@ -1,7 +1,7 @@
 {
   "name": "gl-runtime-platform",
-  "version": "17.0.0",
-  "description": "GL Governance Runtime Platform v17.0.0 - Trans-Domain Integration Architecture: External System Integration and Cross-Domain Intelligence",
+  "version": "18.0.0",
+  "description": "GL Governance Runtime Platform v18.0.0 - Inter-Reality Integration Architecture: Cross-Framework Stability and Adaptive Intelligence",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -16,7 +16,8 @@
     "evolution": "node dist/evolution-server.js",
     "universal-intelligence": "node dist/universal-intelligence-server.js",
     "omni-context": "node dist/omni-context-server.js",
-    "trans-domain": "node dist/trans-domain-server.js"
+    "trans-domain": "node dist/trans-domain-server.js",
+    "inter-reality": "node dist/inter-reality-server.js"
   },
   "dependencies": {
     "@types/cors": "^2.8.19",
