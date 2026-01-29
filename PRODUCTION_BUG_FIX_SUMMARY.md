@@ -13,7 +13,6 @@ The GitHub Actions workflow `infrastructure-validation.yml` was experiencing fai
 - These scripts existed in `engine/scripts-legacy/` but not in `scripts/`
 - The `scripts/` directory itself did not exist
 - This caused the workflow to fail with "file not found" errors
-The infrastructure validation script (`engine/scripts-legacy/validate-infrastructure.sh`) uses Python with the `yaml` module to validate YAML syntax in module manifests and the module registry. The GitHub Actions workflow was not installing the `pyyaml` Python dependency before running the validation script, causing the Python `import yaml` statements to fail with `ModuleNotFoundError`.
 
 **Note on Previous Fixes**: The workflow already contains dependency installation (`pyyaml`, `jsonschema`) and retry logic. These fixes were previously applied to address intermittent failures due to missing Python dependencies.
 
