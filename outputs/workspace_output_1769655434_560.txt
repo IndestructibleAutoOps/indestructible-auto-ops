@@ -1,6 +1,0 @@
-
-      if (type) {
-        nodes = this.continuum.getKnowledgeAccretion().queryByType(type as string);
-      } else if (source) {
-        nodes = this.continuum.getKnowledgeAccretion().queryBySource(source as string);
-      } else {
