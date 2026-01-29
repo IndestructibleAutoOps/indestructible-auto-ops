@@ -2,7 +2,7 @@
 // @GL-layer: GL70-89
 // @GL-semantic: runtime-trans-domain-integration
 // @GL-charter-version: 4.0.0
-// @GL-audit-trail: ../engine/governance/GL_SEMANTIC_ANCHOR.json
+// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 /**
  * GL Trans-Domain Integration Architecture (Version 17.0.0)
