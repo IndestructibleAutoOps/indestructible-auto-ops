@@ -49,6 +49,8 @@ def load_module_registry() -> Dict[str, Any]:
         )
         sys.exit(1)
     return data
+    with open(registry_path, 'r') as f:
+        return yaml.safe_load(f)
 
 
 def load_policy_manifest() -> Dict[str, Any]:
@@ -82,6 +84,8 @@ def load_policy_manifest() -> Dict[str, Any]:
         )
         sys.exit(1)
     return data
+    with open(manifest_path, 'r') as f:
+        return yaml.safe_load(f)
 
 
 def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:

@@ -20,7 +20,7 @@
 # ADR-002: Pull-All-Files Retrieval
 
 ## Status
-Proposed
+Accepted (2026-01-28)
 
 ## Context
 Issue #326 requests a "pull all files" capability for the File Organizer system. Current APIs

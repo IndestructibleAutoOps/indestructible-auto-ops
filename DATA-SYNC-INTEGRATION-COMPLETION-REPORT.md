@@ -123,7 +123,7 @@ The service leverages the AEP (Architecture Execution Pipeline) Engine for:
 ✅ **Target-Wins**
 - Always preserve target data when conflicts occur
 - Protects downstream systems from unwanted changes
-- Useful for master-slave scenarios
+- Useful for leader-follower scenarios
 
 ✅ **Latest-Timestamp**
 - Compare timestamps and use most recent version

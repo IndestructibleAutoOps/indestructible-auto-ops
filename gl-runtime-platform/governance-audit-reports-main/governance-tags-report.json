@@ -1,0 +1,50 @@
+{
+  "_gl": {
+    "governed": true,
+    "version": "21.0.0",
+    "timestamp": "2026-01-29T05:45:00Z",
+    "priority": "2",
+    "stage": "complete",
+    "validation": "passed"
+  },
+  "auditSummary": {
+    "branch": "main",
+    "filesProcessed": 160,
+    "filesUpdated": 66,
+    "filesSkipped": 81,
+    "complianceRate": 91.25,
+    "complianceBefore": 50.63,
+    "complianceAfter": 91.25,
+    "improvement": 40.62
+  },
+  "details": {
+    "typescriptFiles": {
+      "processed": 80,
+      "updated": 60,
+      "skipped": 20
+    },
+    "javascriptFiles": {
+      "processed": 3,
+      "updated": 3,
+      "skipped": 0
+    },
+    "jsonFiles": {
+      "processed": 76,
+      "updated": 3,
+      "skipped": 61,
+      "errors": 12
+    },
+    "otherFiles": {
+      "processed": 1,
+      "updated": 0,
+      "skipped": 0
+    }
+  },
+  "recommendations": [
+    "Continue improving governance compliance to reach 95%+ target",
+    "Fix JSON parsing errors in storage files",
+    "Add governance markers to markdown files",
+    "Regular governance audits every 2 weeks"
+  ],
+  "overallStatus": "IMPROVED"
+}

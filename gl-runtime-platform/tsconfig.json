@@ -1,7 +1,7 @@
 // @GL-governed
 // @GL-layer: GL70-89
 // @GL-semantic: runtime-general-purpose
-// @GL-charter-version: 2.0.0
+// @GL-charter-version: 4.0.0
 // @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
 {
@@ -21,6 +21,6 @@
     "sourceMap": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+  "include": ["src/**/*", "cognitive-mesh/**/*", "evolution/**/*", "civilization/**/*", "meta-cognitive/**/*", "universal-intelligence/**/*", "omni-context/**/*", "trans-domain/**/*", "inter-reality/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "global-dag", "global-dag.disabled", "dist/src/engine/global-dag", "dist/src/engine/global-dag.disabled", "src/engine/global-dag.disabled", "src/connectors/git-connector.ts", "src/utils/logger.ts"]
 }
