@@ -192,7 +192,6 @@ export class MultiRealityMappingEngine extends EventEmitter {
     element: string
   ): Promise<CrossRealityTransfer> {
     // Find the mapping
-    const mappingKey = `${sourceReality}->${targetReality}-*`;
     let mapping: RealityMapping | null = null;
 
     for (const [key, value] of Array.from(this.realityMappings.entries())) {
