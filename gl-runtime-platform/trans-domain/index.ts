@@ -94,8 +94,17 @@ export class GLTransDomainArchitecture extends EventEmitter {
     ];
 
     for (const engine of engines) {
+      // Forward explicit initialization events
       engine.on('initialized', () => this.emit('component-initialized'));
-      engine.on('*', (event, data) => this.emit(event, data));
+
+      // Wrap the engine's emit to forward all events to this architecture
+      const originalEmit = (engine as any).emit.bind(engine);
+      (engine as any).emit = (event: string | symbol, ...args: any[]): boolean => {
+        // Re-emit the event from the trans-domain architecture
+        this.emit(event, ...args);
+        // Preserve original engine behavior
+        return originalEmit(event, ...args);
+      };
     }
   }
 
