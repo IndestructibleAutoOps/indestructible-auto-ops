@@ -1,10 +1,10 @@
+#!/usr/bin/env python3
 #
 # @GL-governed
 # @GL-layer: governance
 # @GL-semantic: generate-dag-visualization
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-#!/usr/bin/env python3
 """
 Module Dependency DAG Visualization Generator
 Generates Mermaid diagram and DOT graph of module dependencies
