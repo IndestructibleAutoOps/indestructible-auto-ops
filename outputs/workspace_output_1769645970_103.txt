@@ -1,0 +1,372 @@
+On branch feature/v16-omni-context-clean
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   GL_V16_OMNI_CONTEXT_INTEGRATION.md
+	new file:   GL_V17_TRANS_DOMAIN_INTEGRATION.md
+	new file:   omni-context/context-aware-strategy/index.ts
+	new file:   omni-context/context-fusion/index.ts
+	new file:   omni-context/global-consistency-fabric/index.ts
+	new file:   omni-context/index.ts
+	new file:   omni-context/knowledge-alignment/index.ts
+	new file:   omni-context/multi-scale-reasoning/index.ts
+	new file:   omni-context/temporal-coherence/index.ts
+	modified:   package.json
+	new file:   src/omni-context-server-simple.ts
+	new file:   src/trans-domain-server.js
+	new file:   src/trans-domain-server.ts
+	new file:   trans-domain/cross-system-integration/index.js
+	new file:   trans-domain/cross-system-integration/index.ts
+	new file:   trans-domain/index.js
+	new file:   trans-domain/index.ts
+	new file:   trans-domain/inter-system-governance/index.js
+	new file:   trans-domain/inter-system-governance/index.ts
+	new file:   trans-domain/knowledge-mapping/index.js
+	new file:   trans-domain/knowledge-mapping/index.ts
+	new file:   trans-domain/multi-model-alignment/index.js
+	new file:   trans-domain/multi-model-alignment/index.ts
+	new file:   trans-domain/stability-engine/index.js
+	new file:   trans-domain/stability-engine/index.ts
+	new file:   trans-domain/universal-interface/index.js
+	new file:   trans-domain/universal-interface/index.ts
+	modified:   tsconfig.json
+	deleted:    ../outputs/workspace_output_1769607321_1902.txt
+	deleted:    ../outputs/workspace_output_1769607330_5066.txt
+	deleted:    ../outputs/workspace_output_1769607332_7848.txt
+	deleted:    ../outputs/workspace_output_1769607334_6889.txt
+	deleted:    ../outputs/workspace_output_1769607337_2335.txt
+	deleted:    ../outputs/workspace_output_1769607339_7616.txt
+	deleted:    ../outputs/workspace_output_1769607347_1944.txt
+	deleted:    ../outputs/workspace_output_1769607350_9452.txt
+	deleted:    ../outputs/workspace_output_1769607352_6027.txt
+	deleted:    ../outputs/workspace_output_1769607366_1128.txt
+	deleted:    ../outputs/workspace_output_1769607368_453.txt
+	deleted:    ../outputs/workspace_output_1769608198_9442.txt
+	deleted:    ../outputs/workspace_output_1769608200_6.txt
+	deleted:    ../outputs/workspace_output_1769608203_7682.txt
+	deleted:    ../outputs/workspace_output_1769608208_5745.txt
+	deleted:    ../outputs/workspace_output_1769608210_7857.txt
+	deleted:    ../outputs/workspace_output_1769608216_4466.txt
+	deleted:    ../outputs/workspace_output_1769608227_5226.txt
+	deleted:    ../outputs/workspace_output_1769608229_2977.txt
+	deleted:    ../outputs/workspace_output_1769608235_6415.txt
+	deleted:    ../outputs/workspace_output_1769608239_4646.txt
+	deleted:    ../outputs/workspace_output_1769608248_9176.txt
+	deleted:    ../outputs/workspace_output_1769608251_7646.txt
+	deleted:    ../outputs/workspace_output_1769608253_573.txt
+	deleted:    ../outputs/workspace_output_1769608260_9936.txt
+	deleted:    ../outputs/workspace_output_1769608262_2705.txt
+	deleted:    ../outputs/workspace_output_1769608279_7483.txt
+	deleted:    ../outputs/workspace_output_1769608282_1718.txt
+	deleted:    ../outputs/workspace_output_1769608284_4803.txt
+	deleted:    ../outputs/workspace_output_1769608287_4691.txt
+	deleted:    ../outputs/workspace_output_1769608295_5148.txt
+	new file:   ../outputs/workspace_output_1769645002_3466.txt
+	new file:   ../outputs/workspace_output_1769645005_6931.txt
+	new file:   ../outputs/workspace_output_1769645035_8760.txt
+	new file:   ../outputs/workspace_output_1769645052_4862.txt
+	new file:   ../outputs/workspace_output_1769645055_7690.txt
+	renamed:    ../outputs/workspace_output_1769608225_8575.txt -> ../outputs/workspace_output_1769645059_5002.txt
+	new file:   ../outputs/workspace_output_1769645066_370.txt
+	new file:   ../outputs/workspace_output_1769645067_9424.txt
+	new file:   ../outputs/workspace_output_1769645070_1353.txt
+	new file:   ../outputs/workspace_output_1769645070_2315.txt
+	renamed:    ../outputs/workspace_output_1769608302_6746.txt -> ../outputs/workspace_output_1769645074_4541.txt
+	new file:   ../outputs/workspace_output_1769645074_9034.txt
+	new file:   ../outputs/workspace_output_1769645077_3153.txt
+	new file:   ../outputs/workspace_output_1769645080_4419.txt
+	new file:   ../outputs/workspace_output_1769645084_2109.txt
+	new file:   ../outputs/workspace_output_1769645094_6741.txt
+	new file:   ../outputs/workspace_output_1769645113_1156.txt
+	new file:   ../outputs/workspace_output_1769645129_5684.txt
+	new file:   ../outputs/workspace_output_1769645131_3097.txt
+	new file:   ../outputs/workspace_output_1769645133_6759.txt
+	new file:   ../outputs/workspace_output_1769645134_4871.txt
+	new file:   ../outputs/workspace_output_1769645137_4147.txt
+	new file:   ../outputs/workspace_output_1769645138_4062.txt
+	new file:   ../outputs/workspace_output_1769645141_2032.txt
+	new file:   ../outputs/workspace_output_1769645141_6158.txt
+	new file:   ../outputs/workspace_output_1769645144_8934.txt
+	new file:   ../outputs/workspace_output_1769645145_9945.txt
+	new file:   ../outputs/workspace_output_1769645146_9833.txt
+	new file:   ../outputs/workspace_output_1769645147_5647.txt
+	new file:   ../outputs/workspace_output_1769645149_9396.txt
+	new file:   ../outputs/workspace_output_1769645150_9361.txt
+	new file:   ../outputs/workspace_output_1769645151_3537.txt
+	new file:   ../outputs/workspace_output_1769645152_138.txt
+	new file:   ../outputs/workspace_output_1769645154_3021.txt
+	new file:   ../outputs/workspace_output_1769645154_5513.txt
+	new file:   ../outputs/workspace_output_1769645157_3403.txt
+	new file:   ../outputs/workspace_output_1769645157_940.txt
+	new file:   ../outputs/workspace_output_1769645159_6446.txt
+	new file:   ../outputs/workspace_output_1769645160_100.txt
+	new file:   ../outputs/workspace_output_1769645163_3219.txt
+	new file:   ../outputs/workspace_output_1769645165_7780.txt
+	new file:   ../outputs/workspace_output_1769645168_7013.txt
+	new file:   ../outputs/workspace_output_1769645169_4450.txt
+	new file:   ../outputs/workspace_output_1769645172_2995.txt
+	new file:   ../outputs/workspace_output_1769645175_9781.txt
+	new file:   ../outputs/workspace_output_1769645176_6976.txt
+	new file:   ../outputs/workspace_output_1769645178_6869.txt
+	new file:   ../outputs/workspace_output_1769645179_6697.txt
+	new file:   ../outputs/workspace_output_1769645181_7372.txt
+	new file:   ../outputs/workspace_output_1769645182_2276.txt
+	new file:   ../outputs/workspace_output_1769645183_6046.txt
+	new file:   ../outputs/workspace_output_1769645184_8373.txt
+	new file:   ../outputs/workspace_output_1769645186_3889.txt
+	new file:   ../outputs/workspace_output_1769645187_8437.txt
+	new file:   ../outputs/workspace_output_1769645189_4551.txt
+	new file:   ../outputs/workspace_output_1769645190_615.txt
+	new file:   ../outputs/workspace_output_1769645191_9657.txt
+	new file:   ../outputs/workspace_output_1769645193_1142.txt
+	new file:   ../outputs/workspace_output_1769645194_1584.txt
+	new file:   ../outputs/workspace_output_1769645195_8737.txt
+	new file:   ../outputs/workspace_output_1769645197_6604.txt
+	new file:   ../outputs/workspace_output_1769645198_4542.txt
+	new file:   ../outputs/workspace_output_1769645199_8358.txt
+	new file:   ../outputs/workspace_output_1769645200_738.txt
+	new file:   ../outputs/workspace_output_1769645203_9054.txt
+	new file:   ../outputs/workspace_output_1769645205_7064.txt
+	new file:   ../outputs/workspace_output_1769645206_1781.txt
+	new file:   ../outputs/workspace_output_1769645208_4513.txt
+	new file:   ../outputs/workspace_output_1769645209_144.txt
+	new file:   ../outputs/workspace_output_1769645211_3509.txt
+	new file:   ../outputs/workspace_output_1769645213_8231.txt
+	new file:   ../outputs/workspace_output_1769645216_1891.txt
+	new file:   ../outputs/workspace_output_1769645218_5611.txt
+	new file:   ../outputs/workspace_output_1769645220_4623.txt
+	new file:   ../outputs/workspace_output_1769645223_7761.txt
+	new file:   ../outputs/workspace_output_1769645224_5035.txt
+	new file:   ../outputs/workspace_output_1769645226_7161.txt
+	new file:   ../outputs/workspace_output_1769645226_7800.txt
+	new file:   ../outputs/workspace_output_1769645229_3588.txt
+	new file:   ../outputs/workspace_output_1769645229_5534.txt
+	new file:   ../outputs/workspace_output_1769645231_1967.txt
+	new file:   ../outputs/workspace_output_1769645231_2249.txt
+	new file:   ../outputs/workspace_output_1769645234_5444.txt
+	new file:   ../outputs/workspace_output_1769645234_55.txt
+	new file:   ../outputs/workspace_output_1769645238_7183.txt
+	new file:   ../outputs/workspace_output_1769645241_4535.txt
+	new file:   ../outputs/workspace_output_1769645241_7760.txt
+	new file:   ../outputs/workspace_output_1769645244_1189.txt
+	new file:   ../outputs/workspace_output_1769645244_8022.txt
+	new file:   ../outputs/workspace_output_1769645248_3466.txt
+	new file:   ../outputs/workspace_output_1769645248_6478.txt
+	new file:   ../outputs/workspace_output_1769645252_4418.txt
+	new file:   ../outputs/workspace_output_1769645252_9151.txt
+	new file:   ../outputs/workspace_output_1769645256_5036.txt
+	new file:   ../outputs/workspace_output_1769645256_6352.txt
+	new file:   ../outputs/workspace_output_1769645258_8629.txt
+	new file:   ../outputs/workspace_output_1769645259_3703.txt
+	new file:   ../outputs/workspace_output_1769645261_4719.txt
+	new file:   ../outputs/workspace_output_1769645261_5901.txt
+	new file:   ../outputs/workspace_output_1769645263_1393.txt
+	new file:   ../outputs/workspace_output_1769645264_7856.txt
+	new file:   ../outputs/workspace_output_1769645266_5734.txt
+	new file:   ../outputs/workspace_output_1769645267_7917.txt
+	new file:   ../outputs/workspace_output_1769645269_6650.txt
+	new file:   ../outputs/workspace_output_1769645270_7222.txt
+	new file:   ../outputs/workspace_output_1769645272_1370.txt
+	new file:   ../outputs/workspace_output_1769645273_2447.txt
+	new file:   ../outputs/workspace_output_1769645275_4789.txt
+	new file:   ../outputs/workspace_output_1769645276_9347.txt
+	new file:   ../outputs/workspace_output_1769645278_4565.txt
+	new file:   ../outputs/workspace_output_1769645279_4889.txt
+	new file:   ../outputs/workspace_output_1769645281_2449.txt
+	new file:   ../outputs/workspace_output_1769645281_9710.txt
+	new file:   ../outputs/workspace_output_1769645284_3445.txt
+	new file:   ../outputs/workspace_output_1769645284_7711.txt
+	new file:   ../outputs/workspace_output_1769645286_7606.txt
+	new file:   ../outputs/workspace_output_1769645287_127.txt
+	new file:   ../outputs/workspace_output_1769645290_5079.txt
+	new file:   ../outputs/workspace_output_1769645290_636.txt
+	new file:   ../outputs/workspace_output_1769645292_7593.txt
+	new file:   ../outputs/workspace_output_1769645292_9698.txt
+	new file:   ../outputs/workspace_output_1769645295_6625.txt
+	new file:   ../outputs/workspace_output_1769645296_5128.txt
+	new file:   ../outputs/workspace_output_1769645301_9609.txt
+	new file:   ../outputs/workspace_output_1769645302_2296.txt
+	new file:   ../outputs/workspace_output_1769645305_6027.txt
+	new file:   ../outputs/workspace_output_1769645307_4797.txt
+	new file:   ../outputs/workspace_output_1769645308_1390.txt
+	new file:   ../outputs/workspace_output_1769645310_3705.txt
+	new file:   ../outputs/workspace_output_1769645310_8371.txt
+	new file:   ../outputs/workspace_output_1769645312_4984.txt
+	new file:   ../outputs/workspace_output_1769645313_4803.txt
+	new file:   ../outputs/workspace_output_1769645315_3189.txt
+	new file:   ../outputs/workspace_output_1769645316_4860.txt
+	new file:   ../outputs/workspace_output_1769645318_2492.txt
+	new file:   ../outputs/workspace_output_1769645318_5331.txt
+	new file:   ../outputs/workspace_output_1769645320_602.txt
+	new file:   ../outputs/workspace_output_1769645321_45.txt
+	new file:   ../outputs/workspace_output_1769645323_372.txt
+	new file:   ../outputs/workspace_output_1769645324_5916.txt
+	new file:   ../outputs/workspace_output_1769645327_4748.txt
+	new file:   ../outputs/workspace_output_1769645327_8393.txt
+	new file:   ../outputs/workspace_output_1769645330_2551.txt
+	new file:   ../outputs/workspace_output_1769645330_8458.txt
+	new file:   ../outputs/workspace_output_1769645332_9535.txt
+	new file:   ../outputs/workspace_output_1769645333_8898.txt
+	new file:   ../outputs/workspace_output_1769645335_8948.txt
+	new file:   ../outputs/workspace_output_1769645336_8376.txt
+	new file:   ../outputs/workspace_output_1769645337_6575.txt
+	new file:   ../outputs/workspace_output_1769645338_9466.txt
+	new file:   ../outputs/workspace_output_1769645340_263.txt
+	new file:   ../outputs/workspace_output_1769645341_6285.txt
+	new file:   ../outputs/workspace_output_1769645343_8322.txt
+	new file:   ../outputs/workspace_output_1769645344_3461.txt
+	new file:   ../outputs/workspace_output_1769645347_5371.txt
+	new file:   ../outputs/workspace_output_1769645347_6708.txt
+	new file:   ../outputs/workspace_output_1769645350_2022.txt
+	new file:   ../outputs/workspace_output_1769645350_5283.txt
+	new file:   ../outputs/workspace_output_1769645353_4298.txt
+	new file:   ../outputs/workspace_output_1769645353_5526.txt
+	new file:   ../outputs/workspace_output_1769645355_3584.txt
+	new file:   ../outputs/workspace_output_1769645356_2931.txt
+	new file:   ../outputs/workspace_output_1769645358_5649.txt
+	new file:   ../outputs/workspace_output_1769645358_8155.txt
+	new file:   ../outputs/workspace_output_1769645361_6842.txt
+	new file:   ../outputs/workspace_output_1769645361_9946.txt
+	new file:   ../outputs/workspace_output_1769645364_8684.txt
+	new file:   ../outputs/workspace_output_1769645367_6450.txt
+	new file:   ../outputs/workspace_output_1769645368_4579.txt
+	new file:   ../outputs/workspace_output_1769645370_2267.txt
+	new file:   ../outputs/workspace_output_1769645371_9016.txt
+	new file:   ../outputs/workspace_output_1769645373_5476.txt
+	new file:   ../outputs/workspace_output_1769645376_2445.txt
+	new file:   ../outputs/workspace_output_1769645376_8275.txt
+	new file:   ../outputs/workspace_output_1769645379_9323.txt
+	new file:   ../outputs/workspace_output_1769645381_4200.txt
+	new file:   ../outputs/workspace_output_1769645381_997.txt
+	new file:   ../outputs/workspace_output_1769645384_9492.txt
+	new file:   ../outputs/workspace_output_1769645385_3220.txt
+	new file:   ../outputs/workspace_output_1769645387_116.txt
+	new file:   ../outputs/workspace_output_1769645387_6938.txt
+	new file:   ../outputs/workspace_output_1769645390_5619.txt
+	new file:   ../outputs/workspace_output_1769645390_8053.txt
+	new file:   ../outputs/workspace_output_1769645393_2201.txt
+	new file:   ../outputs/workspace_output_1769645394_1607.txt
+	new file:   ../outputs/workspace_output_1769645395_9234.txt
+	new file:   ../outputs/workspace_output_1769645396_9072.txt
+	new file:   ../outputs/workspace_output_1769645398_7797.txt
+	new file:   ../outputs/workspace_output_1769645399_3392.txt
+	new file:   ../outputs/workspace_output_1769645401_2401.txt
+	new file:   ../outputs/workspace_output_1769645402_3599.txt
+	new file:   ../outputs/workspace_output_1769645403_484.txt
+	new file:   ../outputs/workspace_output_1769645405_6789.txt
+	new file:   ../outputs/workspace_output_1769645406_8304.txt
+	new file:   ../outputs/workspace_output_1769645409_6122.txt
+	new file:   ../outputs/workspace_output_1769645409_6746.txt
+	new file:   ../outputs/workspace_output_1769645411_1319.txt
+	new file:   ../outputs/workspace_output_1769645412_5201.txt
+	new file:   ../outputs/workspace_output_1769645414_5777.txt
+	new file:   ../outputs/workspace_output_1769645415_7735.txt
+	new file:   ../outputs/workspace_output_1769645417_7320.txt
+	new file:   ../outputs/workspace_output_1769645419_3622.txt
+	new file:   ../outputs/workspace_output_1769645421_2728.txt
+	new file:   ../outputs/workspace_output_1769645422_9110.txt
+	new file:   ../outputs/workspace_output_1769645425_6423.txt
+	new file:   ../outputs/workspace_output_1769645425_9325.txt
+	new file:   ../outputs/workspace_output_1769645428_8703.txt
+	new file:   ../outputs/workspace_output_1769645429_162.txt
+	new file:   ../outputs/workspace_output_1769645431_1638.txt
+	new file:   ../outputs/workspace_output_1769645431_7946.txt
+	new file:   ../outputs/workspace_output_1769645434_1709.txt
+	new file:   ../outputs/workspace_output_1769645434_3728.txt
+	new file:   ../outputs/workspace_output_1769645437_6333.txt
+	new file:   ../outputs/workspace_output_1769645437_9889.txt
+	new file:   ../outputs/workspace_output_1769645439_9946.txt
+	new file:   ../outputs/workspace_output_1769645440_6830.txt
+	new file:   ../outputs/workspace_output_1769645442_7806.txt
+	new file:   ../outputs/workspace_output_1769645444_9282.txt
+	new file:   ../outputs/workspace_output_1769645446_6454.txt
+	new file:   ../outputs/workspace_output_1769645446_9992.txt
+	new file:   ../outputs/workspace_output_1769645448_517.txt
+	new file:   ../outputs/workspace_output_1769645449_323.txt
+	new file:   ../outputs/workspace_output_1769645451_7740.txt
+	new file:   ../outputs/workspace_output_1769645452_5976.txt
+	new file:   ../outputs/workspace_output_1769645454_3943.txt
+	new file:   ../outputs/workspace_output_1769645455_9412.txt
+	new file:   ../outputs/workspace_output_1769645459_3303.txt
+	new file:   ../outputs/workspace_output_1769645461_8985.txt
+	new file:   ../outputs/workspace_output_1769645462_6730.txt
+	new file:   ../outputs/workspace_output_1769645464_4138.txt
+	new file:   ../outputs/workspace_output_1769645465_4664.txt
+	new file:   ../outputs/workspace_output_1769645466_5647.txt
+	new file:   ../outputs/workspace_output_1769645468_6371.txt
+	new file:   ../outputs/workspace_output_1769645469_8476.txt
+	new file:   ../outputs/workspace_output_1769645471_5290.txt
+	new file:   ../outputs/workspace_output_1769645474_8401.txt
+	new file:   ../outputs/workspace_output_1769645476_9046.txt
+	new file:   ../outputs/workspace_output_1769645478_525.txt
+	new file:   ../outputs/workspace_output_1769645479_55.txt
+	new file:   ../outputs/workspace_output_1769645481_5814.txt
+	new file:   ../outputs/workspace_output_1769645482_4830.txt
+	new file:   ../outputs/workspace_output_1769645484_5471.txt
+	new file:   ../outputs/workspace_output_1769645486_4940.txt
+	new file:   ../outputs/workspace_output_1769645487_3652.txt
+	new file:   ../outputs/workspace_output_1769645490_5706.txt
+	new file:   ../outputs/workspace_output_1769645490_9717.txt
+	new file:   ../outputs/workspace_output_1769645493_5318.txt
+	new file:   ../outputs/workspace_output_1769645494_4513.txt
+	new file:   ../outputs/workspace_output_1769645496_1385.txt
+	new file:   ../outputs/workspace_output_1769645497_6871.txt
+	new file:   ../outputs/workspace_output_1769645501_1327.txt
+	new file:   ../outputs/workspace_output_1769645503_6468.txt
+	new file:   ../outputs/workspace_output_1769645503_917.txt
+	new file:   ../outputs/workspace_output_1769645506_3771.txt
+	new file:   ../outputs/workspace_output_1769645507_226.txt
+	new file:   ../outputs/workspace_output_1769645510_4263.txt
+	new file:   ../outputs/workspace_output_1769645510_4404.txt
+	new file:   ../outputs/workspace_output_1769645513_6431.txt
+	new file:   ../outputs/workspace_output_1769645513_6798.txt
+	new file:   ../outputs/workspace_output_1769645516_2901.txt
+	new file:   ../outputs/workspace_output_1769645516_6112.txt
+	new file:   ../outputs/workspace_output_1769645518_4610.txt
+	new file:   ../outputs/workspace_output_1769645519_9652.txt
+	new file:   ../outputs/workspace_output_1769645523_1948.txt
+	new file:   ../outputs/workspace_output_1769645525_1187.txt
+	new file:   ../outputs/workspace_output_1769645526_9828.txt
+	new file:   ../outputs/workspace_output_1769645528_5735.txt
+	new file:   ../outputs/workspace_output_1769645529_752.txt
+	new file:   ../outputs/workspace_output_1769645532_1826.txt
+	new file:   ../outputs/workspace_output_1769645534_6070.txt
+	new file:   ../outputs/workspace_output_1769645534_7658.txt
+	new file:   ../outputs/workspace_output_1769645536_8101.txt
+	new file:   ../outputs/workspace_output_1769645538_2643.txt
+	new file:   ../outputs/workspace_output_1769645541_7306.txt
+	new file:   ../outputs/workspace_output_1769645542_632.txt
+	new file:   ../outputs/workspace_output_1769645544_5279.txt
+	new file:   ../outputs/workspace_output_1769645545_2627.txt
+	new file:   ../outputs/workspace_output_1769645546_1696.txt
+	new file:   ../outputs/workspace_output_1769645548_4644.txt
+	new file:   ../outputs/workspace_output_1769645549_9049.txt
+	new file:   ../outputs/workspace_output_1769645551_5794.txt
+	new file:   ../outputs/workspace_output_1769645552_2979.txt
+	new file:   ../outputs/workspace_output_1769645555_9484.txt
+	new file:   ../outputs/workspace_output_1769645556_3584.txt
+	new file:   ../outputs/workspace_output_1769645558_7781.txt
+	new file:   ../outputs/workspace_output_1769645559_6091.txt
+	new file:   ../outputs/workspace_output_1769645560_2253.txt
+	new file:   ../outputs/workspace_output_1769645561_5537.txt
+	new file:   ../outputs/workspace_output_1769645770_7868.txt
+	new file:   ../outputs/workspace_output_1769645783_8979.txt
+	new file:   ../outputs/workspace_output_1769645786_8303.txt
+	new file:   ../outputs/workspace_output_1769645804_5298.txt
+	new file:   ../outputs/workspace_output_1769645807_2205.txt
+	new file:   ../outputs/workspace_output_1769645820_2226.txt
+	new file:   ../outputs/workspace_output_1769645839_8734.txt
+	new file:   ../outputs/workspace_output_1769645846_734.txt
+	new file:   ../outputs/workspace_output_1769645854_8900.txt
+	new file:   ../outputs/workspace_output_1769645866_3235.txt
+	new file:   ../outputs/workspace_output_1769645879_9207.txt
+	new file:   ../outputs/workspace_output_1769645885_6928.txt
+	new file:   ../outputs/workspace_output_1769645887_4681.txt
+	new file:   ../outputs/workspace_output_1769645900_2405.txt
+	new file:   ../outputs/workspace_output_1769645906_8293.txt
+	new file:   ../outputs/workspace_output_1769645908_6474.txt
+	new file:   ../outputs/workspace_output_1769645925_6710.txt
+	new file:   ../outputs/workspace_output_1769645937_8976.txt
+	new file:   ../outputs/workspace_output_1769645947_9992.txt
+	new file:   ../outputs/workspace_output_1769645970_103.txt
+	new file:   ../summarized_conversations/original_conversation_1769645726_7693.txt
+
