@@ -1,38 +1,44 @@
-# Production Bug Fix - Quick Reference
+# Infrastructure Validation Fix - Quick Reference
+
+> **Note**: This document describes the fix deployed in commit 600a8a4. The changes are already active in production.
 
 ## 🎯 What Was Fixed
 Intermittent CI/CD failures in infrastructure validation workflow caused by missing `pyyaml` Python dependency.
 
-## 📋 Files Modified
+## 📋 Files Modified (in commit 600a8a4)
 1. `.github/workflows/infrastructure-validation.yml` - Enhanced with dependency installation and retry logic
-2. `scripts/validate-infrastructure.sh` - Added dependency checks and comprehensive logging
+2. `engine/scripts-legacy/validate-infrastructure.sh` - Added dependency checks and comprehensive logging
 
-## 📄 Documentation Created
+## 📄 Documentation
 - **PRODUCTION_BUG_FIX_SUMMARY.md** - Detailed technical analysis
-- **DEPLOYMENT_GUIDE.md** - Step-by-step deployment instructions
+- **DEPLOYMENT_GUIDE.md** - Deployment reference and verification
 - **BUG_FIX_COMPLETION_REPORT.md** - Comprehensive completion report
 
-## 🚀 Quick Deployment Steps
+## 🚀 Verification Steps
 
-### 1. Push to Remote
+### 1. Check Current Status
 ```bash
 cd machine-native-ops
+
+# View the deployed changes
+git show 600a8a4:.github/workflows/infrastructure-validation.yml
+git show 600a8a4:engine/scripts-legacy/validate-infrastructure.sh
 git push origin hotfix/infrastructure-validation-dependencies
 ```
 
-### 2. Create Pull Request
+### 2. Test Validation Locally
 ```bash
-gh pr create \
-  --title "fix(ci): resolve intermittent infrastructure validation failures" \
-  --body "Fix intermittent CI/CD failures by ensuring pyyaml dependency is installed before validation. See PRODUCTION_BUG_FIX_SUMMARY.md for details." \
-  --base main \
-  --head hotfix/infrastructure-validation-dependencies
+# Install dependencies
+pip install pyyaml jsonschema
+
+# Run validation script
+./engine/scripts-legacy/validate-infrastructure.sh
 ```
 
-### 3. Monitor Deployment
+### 3. Monitor GitHub Actions
 - Watch GitHub Actions: https://github.com/MachineNativeOps/machine-native-ops/actions
 - Verify workflow passes successfully
-- Monitor for 24 hours post-deployment
+- Confirm no false-positive errors
 
 ## ✅ Validation Results
 - ✅ All 6 module manifests validated
@@ -57,7 +63,7 @@ gh pr create \
 ## 🔄 Rollback Plan
 If issues occur:
 ```bash
-git revert <commit-hash>
+git revert 600a8a4
 git push origin main
 ```
 
@@ -68,7 +74,6 @@ git push origin main
 
 ---
 
-**Status**: ✅ Ready for Deployment  
-**Branch**: hotfix/infrastructure-validation-dependencies  
+**Status**: ✅ Deployed and Active (commit 600a8a4)  
 **Risk Level**: LOW  
 **GL Unified Charter Activated**
