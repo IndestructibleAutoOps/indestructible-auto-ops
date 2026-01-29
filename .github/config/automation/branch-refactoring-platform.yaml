@@ -1,0 +1,243 @@
+# @GL-governed @GL-layer: GL99 @GL-semantic: branch-refactoring-integration-platform
+# @GL-audit-trail: internal://system/branch-integration/anchors.json
+# GL Unified Charter Activated v4.0
+# 分支重構與集成自動化平台
+
+apiVersion: integration.machinenativeops.io/v4
+kind: BranchRefactoringPlatform
+metadata:
+  name: gl-branch-refactoring-engine
+  deploymentTier: "production"
+  operationType: "branch-integration"
+  sourceBranch: "legacy-branch"
+  targetBranch: "main"
+  integrationMode: "structure-preserving-adaptation"
+  executionScope: "repository-root"
+  executionStrategy: "one-by-one-isolated"
+  sourceBranches:
+    - "pr-7"
+    - "copilot/system-architecture-planning"
+    - "copilot/sub-pr-11"
+    - "copilot/sub-pr-11-again"
+    - "copilot/sub-pr-11-another-one"
+    - "copilot/sub-pr-11-yet-again"
+    - "copilot/sub-pr-11-c388eb87-c57f-4b47-adf7-fea5885f493c"
+    - "copilot/sub-pr-11-997809d9-c20b-4f41-9e33-4fc4ff28c484"
+    - "copilot/sub-pr-11-one-more-time"
+    - "copilot/sub-pr-11-2329f449-b9f4-4a40-b46a-99a995b4714f"
+    - "copilot/sub-pr-11-please-work"
+    - "copilot/sub-pr-11-0068a0b5-7c64-4d3b-9cd4-6ecc55dd8f97"
+    - "copilot/sub-pr-11-c7ef9a06-8aa3-424a-9f2e-8ac511c4a055"
+    - "copilot/sub-pr-11-fcd95635-da00-4406-9433-8f9464f6a48b"
+    - "copilot/sub-pr-11-324fc8f6-abde-422f-a12e-06c6777cdd03"
+    - "feature/multi-agent-parallel-codeql-fix-v2"
+
+spec:
+  # === 執行範圍與策略 ===
+  executionScope:
+    repositoryRoot: true
+    sandboxMode: "one-by-one-isolated"
+    commitSelection: "commits-ahead-of-target"
+
+  # === 核心集成策略 ===
+  integrationStrategy:
+    principle: "main-first-preservation"
+    rules:
+      - "以main根目錄結構為權威主體"
+      - "僅抓取 commits ahead of target branch"
+      - "不在根目錄新建額外目錄"
+      - "分支文件重新編譯適配main結構"
+      - "檔案位置精確對齊"
+      - "刪除重複、無用、過時檔案"
+
+  # === 檔案映射引擎 ===
+  fileMappingEngine:
+    mappingStrategy: "semantic-aware-mapping"
+    techniques:
+      - "content-fingerprint-analysis"
+      - "semantic-similarity-scoring"
+      - "structure-preserving-transformation"
+      - "dependency-aware-relocation"
+
+    targetStructure:
+      rootDirectory: "strict-main-layout"
+      allowedLocations:
+        - "與main現有目錄結構匹配"
+        - "現有子目錄擴展"
+        - "現有檔案替換/更新"
+
+    prohibitedActions:
+      - "創建新的根級目錄"
+      - "修改main現有目錄結構"
+      - "添加與main架構不兼容的檔案"
+
+  # === 智能檔案分析 ===
+  intelligentFileAnalysis:
+    analysisLevels:
+      level1: "檔案類型與用途識別"
+      level2: "依賴關係與引用分析"
+      level3: "語義功能分類"
+      level4: "與main現有檔案比對"
+
+    classificationRules:
+      essentialFiles:
+        - "核心業務邏輯"
+        - "平台基礎組件"
+        - "治理與安全配置"
+        - "集成適配層"
+
+      adapterFiles:
+        - "分支特定擴展"
+        - "兼容性層"
+        - "臨時遷移腳本"
+
+      deprecatedFiles:
+        - "已被main取代的功能"
+        - "過時的配置格式"
+        - "重複的實現"
+        - "測試與調試殘留"
+
+  # === 重新編譯適配引擎 ===
+  recompilationAdapter:
+    adaptionPhases:
+      phase1:
+        name: "語法與結構分析"
+        actions:
+          - "分析分支檔案語法結構"
+          - "比對main對應檔案格式"
+          - "識別需要轉換的結構差異"
+
+      phase2:
+        name: "依賴關係重寫"
+        actions:
+          - "更新導入/引用路徑"
+          - "重寫依賴版本"
+          - "調整模組導出"
+
+      phase3:
+        name: "API適配層生成"
+        actions:
+          - "創建兼容性接口"
+          - "生成橋接代碼"
+          - "適配main的API規範"
+
+      phase4:
+        name: "集成測試生成"
+        actions:
+          - "生成集成測試用例"
+          - "創建回歸測試套件"
+          - "驗證功能等價性"
+
+  # === 位置驗證系統 ===
+  locationVerification:
+    verificationCriteria:
+      criterion1:
+        name: "路徑語義一致性"
+        check: "檔案位置反映其功能語義"
+
+      criterion2:
+        name: "命名規範符合性"
+        check: "遵循main命名約定"
+
+      criterion3:
+        name: "依賴關係完整性"
+        check: "所有引用路徑有效"
+
+      criterion4:
+        name: "架構層級正確性"
+        check: "檔案位於正確的架構層級"
+
+    automatedFixes:
+      - "自動修正路徑引用"
+      - "重命名不符合規範的檔案"
+      - "移動到正確的架構位置"
+      - "更新相關配置文件"
+
+  # === 集成工作流 ===
+  integrationWorkflow:
+    stages:
+      # 階段1: 分支分析與提取
+      stage1_branch_analysis:
+        name: "分支內容智能提取"
+        actions:
+          - "克隆舊分支到內存工作區"
+          - "分析分支完整結構"
+          - "提取 commits ahead of target branch"
+          - "逐檔單一 sandbox 全流程執行"
+          - "提取所有檔案元數據"
+          - "構建分支依賴圖"
+        output: "in-memory-branch-model"
+
+      # 階段2: main結構分析
+      stage2_main_analysis:
+        name: "main權威結構分析"
+        actions:
+          - "掃描main完整目錄結構"
+          - "分析現有檔案用途"
+          - "識別架構模式與約定"
+          - "建立權威位置映射"
+        output: "main-structure-authority-map"
+
+      # 階段3: 智能映射與適配
+      stage3_intelligent_mapping:
+        name: "智能映射與重新編譯"
+        actions:
+          - "執行語義相似性分析"
+          - "生成最佳位置映射"
+          - "重新編譯分支檔案適配main"
+          - "創建必要的適配層"
+        output: "adapted-files-ready-for-integration"
+
+      # 階段4: 集成驗證
+      stage4_integration_verification:
+        name: "集成完整性驗證"
+        actions:
+          - "驗證所有檔案位置正確"
+          - "測試編譯與構建"
+          - "運行集成測試"
+          - "驗證功能等價性"
+        output: "verified-integration-ready"
+
+      # 階段5: 清理與優化
+      stage5_cleanup_optimization:
+        name: "清理與架構優化"
+        actions:
+          - "移除重複與無用檔案"
+          - "優化檔案組織結構"
+          - "更新文檔與配置"
+          - "生成集成報告"
+        output: "clean-optimized-integration"
+
+  # === 零殘留執行環境 ===
+  zeroResidueExecution:
+    workspace: "/dev/shm/gl-branch-integration"
+    persistencePolicy: "execution-duration-only"
+    cleanupProtocol:
+      - "7-pass-secure-erase"
+      - "memory-zeroing"
+      - "temp-files-purge"
+
+  # === 輸出控制 ===
+  outputControl:
+    externalOutput: "none"
+    internalStorage: "encrypted-memory-only"
+    reporting: "internal-api-accessible"
+    visibility: "system-internal"
+
+  # === 安全與合規 ===
+  securityCompliance:
+    dataHandling:
+      sourceCode: "encrypted-in-transit-and-rest"
+      credentials: "ephemeral-token-based"
+      auditTrail: "immutable-encrypted-log"
+
+    accessControl:
+      authentication: "mutual-tls"
+      authorization: "rbac-with-time-bound-tokens"
+      audit: "all-operations-logged"
+
+status:
+  readiness: "fully-operational"
+  integrationCapability: "branch-to-main-adaptation"
+  cleanupAssurance: "zero-residue-guaranteed"
+  securityPosture: "enterprise-grade"

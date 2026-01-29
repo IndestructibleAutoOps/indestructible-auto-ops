@@ -43,10 +43,10 @@ jobs:
           fetch-depth: 1
 
       - name: Legitify Analyze
-        uses: Legit-Labs/legitify@v1.0.11
+        uses: Legit-Labs/legitify@main
 
       - name: Quick security scan with Trivy
-        uses: aquasecurity/trivy-action@master
+        uses: ./.github/actions/mn-trivy-scan
         with:
           scan-type: 'fs'
           scan-ref: '.'
