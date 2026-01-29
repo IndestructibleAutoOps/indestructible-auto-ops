@@ -1,11 +1,11 @@
+#!/usr/bin/env python3
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: GL30-49
 # @GL-semantic: validate-module-manifests
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL-Layer: GL30-49 (Execution)
-#!/usr/bin/env python3
 """
 Module Manifest Validator
 Validates module manifests against JSON schema
@@ -15,6 +15,8 @@ import yaml
 import sys
 from pathlib import Path
 from jsonschema import validate, ValidationError
+
+
 def main():
     # Load schema
     schema_path = Path("controlplane/baseline/modules/module-manifest.schema.json")
@@ -40,11 +42,15 @@ def main():
                 except ValidationError as e:
                     print(f"❌ {module_dir.name}: {e.message}")
                     failed = True
+
     print(f"\nValidated {validated} module manifest(s)")
+
     if failed:
         sys.exit(1)
     else:
         print("✅ All module manifests are valid!")
         sys.exit(0)
+
+
 if __name__ == "__main__":
     main()

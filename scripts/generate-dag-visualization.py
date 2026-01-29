@@ -1,33 +1,77 @@
+#!/usr/bin/env python3
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: GL30-49
 # @GL-semantic: generate-dag-visualization
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-#!/usr/bin/env python3
 """
 Module Dependency DAG Visualization Generator
 Generates Mermaid diagram and DOT graph of module dependencies
 """
 import yaml
+import sys
 from pathlib import Path
 from typing import Dict, List, Set
+
+
 def load_module_registry() -> Dict:
-    """Load the module registry"""
+    """Load the module registry.
+
+    Returns:
+        Parsed registry dictionary.
+
+    Raises:
+        SystemExit: If the registry file is missing, unreadable, or contains invalid YAML.
+    """
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
-    with open(registry_path, 'r') as f:
-        return yaml.safe_load(f)
+    try:
+        with registry_path.open('r', encoding='utf-8') as f:
+            data = yaml.safe_load(f) or {}
+    except FileNotFoundError:
+        print(
+            f"Error: Module registry file not found at '{registry_path}'.",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+    except yaml.YAMLError as exc:
+        print(
+            f"Error: Failed to parse YAML module registry at '{registry_path}': {exc}",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+    except OSError as exc:
+        print(
+            f"Error: Could not read module registry file at '{registry_path}': {exc}",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+    if not isinstance(data, dict):
+        print(
+            f"Error: Module registry at '{registry_path}' must be a YAML mapping at the root.",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+    return data
+
+
 def build_dependency_graph(registry: Dict) -> Dict[str, List[str]]:
     """Build dependency graph from registry"""
     modules = registry.get('modules', [])
     graph = {}
+
     for module in modules:
         module_id = module.get('module_id')
+        if module_id is None:
+            continue
         dependencies = module.get('dependencies', [])
         # Filter out 'none' dependencies
         deps = [d for d in dependencies if d != 'none']
         graph[module_id] = deps
+
     return graph
+
+
 def detect_cycles(graph: Dict[str, List[str]]) -> List[List[str]]:
     """Detect cycles in the dependency graph"""
     cycles = []
@@ -49,6 +93,8 @@ def detect_cycles(graph: Dict[str, List[str]]) -> List[List[str]]:
         if node not in visited:
             dfs(node, visited, [])
     return cycles
+
+
 def calculate_depths(graph: Dict[str, List[str]]) -> Dict[str, int]:
     """Calculate depth of each module in dependency tree"""
     depths = {}
@@ -69,9 +115,11 @@ def calculate_depths(graph: Dict[str, List[str]]) -> Dict[str, int]:
     for node in graph:
         get_depth(node, set())
     return depths
+
+
 def generate_mermaid_diagram(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate Mermaid flowchart diagram"""
-    modules = {m['module_id']: m for m in registry.get('modules', [])}
+    modules = {m['module_id']: m for m in registry.get('modules', []) if 'module_id' in m}
     mermaid = """```mermaid
 graph TD
     %% Module Dependency Graph
@@ -105,9 +153,11 @@ graph TD
 ```
 """
     return mermaid
+
+
 def generate_dot_graph(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate DOT graph for Graphviz"""
-    modules = {m['module_id']: m for m in registry.get('modules', [])}
+    modules = {m['module_id']: m for m in registry.get('modules', []) if 'module_id' in m}
     dot = """digraph ModuleDependencies {
     rankdir=BT;
     node [shape=box, style=rounded];
@@ -133,9 +183,11 @@ def generate_dot_graph(graph: Dict[str, List[str]], registry: Dict) -> str:
             dot += f'    "{dep}" -> "{module_id}";\n'
     dot += "}\n"
     return dot
+
+
 def generate_ascii_tree(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate ASCII tree representation"""
-    modules = {m['module_id']: m for m in registry.get('modules', [])}
+    modules = {m['module_id']: m for m in registry.get('modules', []) if 'module_id' in m}
     depths = calculate_depths(graph)
     # Sort modules by depth
     sorted_modules = sorted(graph.keys(), key=lambda x: depths.get(x, 0))
@@ -161,9 +213,10 @@ def generate_ascii_tree(graph: Dict[str, List[str]], registry: Dict) -> str:
                 prefix = "└─" if is_last else "├─"
                 tree += f"{indent}│  {prefix} depends on: {dep}\n"
     return tree
+
+
 def generate_statistics(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate dependency statistics"""
-    {m['module_id']: m for m in registry.get('modules', [])}
     depths = calculate_depths(graph)
     cycles = detect_cycles(graph)
     stats = "Dependency Statistics\n"
@@ -198,6 +251,8 @@ def generate_statistics(graph: Dict[str, List[str]], registry: Dict) -> str:
         for i, cycle in enumerate(cycles, 1):
             stats += f"  Cycle {i}: {' -> '.join(cycle)}\n"
     return stats
+
+
 def generate_visualization(output_dir: str = "docs/dag-visualization"):
     """Generate all visualization formats"""
     # Load data
@@ -209,12 +264,12 @@ def generate_visualization(output_dir: str = "docs/dag-visualization"):
     # Generate main documentation
     from datetime import datetime
     doc = f"""# Module Dependency DAG Visualization
-#*Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
-#*Purpose**: Visualize module dependencies and governance structure
+**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
+**Purpose**: Visualize module dependencies and governance structure
 ---
 ## 📊 Dependency Graph (Mermaid)
 {generate_mermaid_diagram(graph, registry)}
-#*Legend**:
+**Legend**:
 - 🟢 Green: Active modules
 - 🟡 Yellow: In development
 - ⚪ Gray: Planned modules
@@ -269,7 +324,7 @@ mmdc -i docs/DAG_VISUALIZATION.md -o dag-visualization.png
 - [Integration Guide](../PHASE1_INTEGRATION_GUIDE.md)
 - [Governance Dashboard](../LANGUAGE_GOVERNANCE_DASHBOARD.md)
 ---
-#This visualization is automatically generated from the module registry.*
+*This visualization is automatically generated from the module registry.*
 """
     # Write main documentation
     with open(output_path / "DAG_VISUALIZATION.md", 'w') as f:
@@ -294,6 +349,9 @@ mmdc -i docs/DAG_VISUALIZATION.md -o dag-visualization.png
     with open(output_path / "module-dependencies.json", 'w') as f:
         json.dump(json_data, f, indent=2)
     print(f"✅ Generated: {output_path}/module-dependencies.json")
+
     print(f"\n✅ All DAG visualizations generated in: {output_dir}")
+
+
 if __name__ == "__main__":
     generate_visualization()

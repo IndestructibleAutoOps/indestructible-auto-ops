@@ -229,8 +229,11 @@ echo "---------------------------------"
 
 # Check if modules reference each other correctly
 if command -v python3 &> /dev/null && [ -f "$REGISTRY_FILE" ]; then
-    # Create temporary Python script for dependency validation
-    cat > /tmp/validate_deps.py << 'PYEOF'
+    # Create temporary Python script for dependency validation using mktemp
+    temp_script=$(mktemp /tmp/validate_deps.XXXXXX.py)
+    trap "rm -f $temp_script" EXIT
+    
+    cat > "$temp_script" << 'PYEOF'
 import yaml
 import sys
 
@@ -265,7 +268,7 @@ except Exception as e:
     sys.exit(1)
 PYEOF
     
-    cd "$REPO_ROOT" && python3 /tmp/validate_deps.py
+    cd "$REPO_ROOT" && python3 "$temp_script"
     exit_code=$?
     if [ $exit_code -eq 0 ]; then
         print_status "PASS" "Module dependencies validated"
@@ -274,7 +277,6 @@ PYEOF
     else
         print_status "FAIL" "Module dependency validation failed"
     fi
-    rm -f /tmp/validate_deps.py
 else
     print_status "WARN" "Python3 or registry not available for dependency validation"
 fi
