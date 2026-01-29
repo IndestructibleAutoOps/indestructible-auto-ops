@@ -21,10 +21,18 @@ def main():
     # Load schema
     schema_path = Path("controlplane/baseline/modules/module-manifest.schema.json")
     if not schema_path.exists():
-        print(f"❌ Schema file not found: {schema_path}")
+        print(f"❌ Schema file not found: {schema_path}", file=sys.stderr)
         sys.exit(1)
-    with open(schema_path, 'r') as f:
-        schema = json.load(f)
+
+    try:
+        with open(schema_path, 'r', encoding='utf-8') as f:
+            schema = json.load(f)
+    except json.JSONDecodeError as exc:
+        print(f"Error: Failed to parse JSON schema at {schema_path}: {exc}", file=sys.stderr)
+        sys.exit(1)
+    except OSError as exc:
+        print(f"Error: Could not read schema file at {schema_path}: {exc}", file=sys.stderr)
+        sys.exit(1)
     # Validate each module manifest
     modules_dir = Path("controlplane/baseline/modules")
     failed = False
@@ -33,14 +41,24 @@ def main():
         if module_dir.is_dir():
             manifest_path = module_dir / "module-manifest.yaml"
             if manifest_path.exists():
-                with open(manifest_path, 'r') as f:
-                    manifest = yaml.safe_load(f)
+                try:
+                    with open(manifest_path, 'r', encoding='utf-8') as f:
+                        manifest = yaml.safe_load(f)
+                except yaml.YAMLError as exc:
+                    print(f"❌ {module_dir.name}: Failed to parse YAML: {exc}", file=sys.stderr)
+                    failed = True
+                    continue
+                except OSError as exc:
+                    print(f"❌ {module_dir.name}: Could not read file: {exc}", file=sys.stderr)
+                    failed = True
+                    continue
+
                 try:
                     validate(instance=manifest, schema=schema)
                     print(f"✅ {module_dir.name}: Valid")
                     validated += 1
                 except ValidationError as e:
-                    print(f"❌ {module_dir.name}: {e.message}")
+                    print(f"❌ {module_dir.name}: {e.message}", file=sys.stderr)
                     failed = True
 
     print(f"\nValidated {validated} module manifest(s)")

@@ -18,10 +18,18 @@ def main():
     # Load registry
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
     if not registry_path.exists():
-        print(f"❌ Registry file not found: {registry_path}")
+        print(f"❌ Registry file not found: {registry_path}", file=sys.stderr)
         sys.exit(1)
-    with open(registry_path, 'r') as f:
-        registry = yaml.safe_load(f)
+
+    try:
+        with open(registry_path, 'r', encoding='utf-8') as f:
+            registry = yaml.safe_load(f)
+    except yaml.YAMLError as exc:
+        print(f"Error: Failed to parse YAML registry at {registry_path}: {exc}", file=sys.stderr)
+        sys.exit(1)
+    except OSError as exc:
+        print(f"Error: Could not read registry file at {registry_path}: {exc}", file=sys.stderr)
+        sys.exit(1)
     print("📋 Module Registry Validation")
     print("=" * 50)
     if 'modules' not in registry:

@@ -231,7 +231,7 @@ echo "---------------------------------"
 if command -v python3 &> /dev/null && [ -f "$REGISTRY_FILE" ]; then
     # Create temporary Python script for dependency validation using mktemp
     temp_script=$(mktemp /tmp/validate_deps.XXXXXX.py)
-    trap "rm -f $temp_script" EXIT
+    trap "rm -f \"$temp_script\"" EXIT
     
     cat > "$temp_script" << 'PYEOF'
 import yaml
