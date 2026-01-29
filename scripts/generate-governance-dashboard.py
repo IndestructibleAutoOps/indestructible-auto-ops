@@ -1,30 +1,93 @@
+#!/usr/bin/env python3
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: GL30-49
 # @GL-semantic: generate-governance-dashboard
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL-Layer: GL30-49 (Execution)
-#!/usr/bin/env python3
 """
 Language Governance Dashboard Generator
 Generates a dashboard showing semantic health and governance metrics
 """
 import yaml
 import json
+import sys
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any
+
+
 def load_module_registry() -> Dict[str, Any]:
-    """Load the module registry"""
+    """Load the module registry.
+
+    Returns:
+        Parsed module registry data as a dictionary.
+
+    Exits:
+        The process with a non-zero status code if the file is missing, cannot be read,
+        or contains invalid YAML.
+    """
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
+    try:
+        with registry_path.open('r', encoding='utf-8') as f:
+            data = yaml.safe_load(f) or {}
+    except FileNotFoundError:
+        print(f"Error: Module registry file not found: {registry_path}", file=sys.stderr)
+        sys.exit(1)
+    except yaml.YAMLError as exc:
+        print(
+            f"Error: Failed to parse YAML module registry at {registry_path}: {exc}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    if not isinstance(data, dict):
+        print(
+            f"Error: Module registry at {registry_path} must be a mapping, "
+            f"but got {type(data).__name__}.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    return data
     with open(registry_path, 'r') as f:
         return yaml.safe_load(f)
+
+
 def load_policy_manifest() -> Dict[str, Any]:
-    """Load the policy manifest"""
+    """Load the policy manifest.
+
+    Returns:
+        Parsed policy manifest data as a dictionary.
+
+    Exits:
+        The process with a non-zero status code if the file is missing, cannot be read,
+        or contains invalid YAML.
+    """
     manifest_path = Path("controlplane/governance/policies/POLICY_MANIFEST.yaml")
+    try:
+        with manifest_path.open('r', encoding='utf-8') as f:
+            data = yaml.safe_load(f) or {}
+    except FileNotFoundError:
+        print(f"Error: Policy manifest file not found: {manifest_path}", file=sys.stderr)
+        sys.exit(1)
+    except yaml.YAMLError as exc:
+        print(
+            f"Error: Failed to parse YAML policy manifest at {manifest_path}: {exc}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    if not isinstance(data, dict):
+        print(
+            f"Error: Policy manifest at {manifest_path} must be a mapping, "
+            f"but got {type(data).__name__}.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    return data
     with open(manifest_path, 'r') as f:
         return yaml.safe_load(f)
+
+
 def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
     """Calculate governance metrics"""
     modules = registry.get('modules', [])
@@ -52,6 +115,8 @@ def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
         'autonomy_distribution': autonomy_counts,
         'health_scores': health_scores
     }
+
+
 def generate_health_bar(score: float, width: int = 20) -> str:
     """Generate a visual health bar"""
     filled = int((score / 100) * width)
@@ -65,6 +130,8 @@ def generate_health_bar(score: float, width: int = 20) -> str:
     else:
         color = "🟥"
     return color * filled + "⬜" * empty
+
+
 def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md"):
     """Generate the Language Governance Dashboard"""
     # Load data
@@ -73,9 +140,9 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
     metrics = calculate_governance_metrics(registry)
     # Generate dashboard content
     dashboard = f"""# Language Governance Dashboard
-#*Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
-#*Status**: 🟢 Active  
-#*Framework**: OPA/Rego Policy-as-Code
+**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
+**Status**: 🟢 Active  
+**Framework**: OPA/Rego Policy-as-Code
 ---
 ## 📊 Executive Summary
 | Metric | Value | Status |
@@ -90,7 +157,7 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 ## 🎯 Semantic Health Overview
 ### Global Semantic Health: {metrics['average_semantic_health']}%
 {generate_health_bar(metrics['average_semantic_health'], 30)}
-#*Health Threshold**: ≥ 80% (Policy Enforced)
+**Health Threshold**: ≥ 80% (Policy Enforced)
 ### Module Health Scores
 """
     # Add individual module scores
@@ -205,7 +272,7 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 ## 🔄 Continuous Improvement
 ### Recommendations
 1. **High Priority**
-   - Monitor modules in development: {', '.join([m['module_id'] for m in modules if m.get('status') == 'in-development'])}
+   - Monitor modules in development: {', '.join([m['module_id'] for m in modules if m.get('status') == 'in-development' and 'module_id' in m])}
 2. **Medium Priority**
    - Maintain semantic health scores above 90%
    - Regular policy reviews and updates
@@ -221,8 +288,8 @@ Recommended review: **{(datetime.now()).strftime('%Y-%m-%d')}** (Monthly)
 - [Integration Guide](PHASE1_INTEGRATION_GUIDE.md)
 - [Validation Tools](../scripts/validate-infrastructure.sh)
 ---
-#This dashboard is automatically generated from module registry and policy manifest data.*  
-#Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}*
+*This dashboard is automatically generated from module registry and policy manifest data.*  
+*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}*
 """
     # Write dashboard
     output = Path(output_path)
@@ -240,6 +307,9 @@ Recommended review: **{(datetime.now()).strftime('%Y-%m-%d')}** (Monthly)
     }
     with open(json_output, 'w') as f:
         json.dump(report, f, indent=2)
+
     print(f"✅ JSON report generated: {json_output}")
+
+
 if __name__ == "__main__":
     generate_dashboard()
