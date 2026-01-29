@@ -36,6 +36,13 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# Compiled JavaScript files in source directories
+# (TypeScript output should only go to dist/)
+gl-runtime-platform/inter-reality/**/*.js
+gl-runtime-platform/src/**/*.js
+!gl-runtime-platform/src/**/*.config.js
+!gl-runtime-platform/src/**/*.test.js
+
 app-example
 
 # generated native folders
