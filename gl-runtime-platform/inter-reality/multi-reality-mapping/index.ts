@@ -176,7 +176,9 @@ export class MultiRealityMappingEngine extends EventEmitter {
     if (mappings.length === 0) return 0;
     
     const applicableMappings = mappings.filter(m => m.applicable);
-    const avgConfidence = applicableMappings.reduce((sum, m) => sum + m.confidence, 0) / applicableMappings.length;
+    const mappingsToAverage = applicableMappings.length > 0 ? applicableMappings : mappings;
+    const avgConfidence =
+      mappingsToAverage.reduce((sum, m) => sum + m.confidence, 0) / mappingsToAverage.length;
     
     return avgConfidence;
   }
