@@ -1,0 +1,50 @@
+/**
+ * Omni-Context Fusion Engine
+ * 全域脈絡融合引擎
+ * 
+ * 功能：整合所有類型的脈絡（技術、語意、歷史、任務、文化、組織、推理）
+ * 目標：讓所有代理、策略、推理在同一個脈絡空間中協作
+ */
+
+export interface Context {
+  id: string;
+  type: 'technical' | 'semantic' | 'historical' | 'task' | 'cultural' | 'organizational' | 'reasoning';
+  data: Record<string, any>;
+  timestamp: number;
+  confidence: number;
+  source: string;
+  metadata?: Record<string, any>;
+}
+
+export interface FusedContext {
+  id: string;
+  primaryContext: Context;
+  relatedContexts: Context[];
+  fusionScore: number;
+  coherence: number;
+  completeness: number;
+  confidence: number;
+  timestamp: number;
+  metadata?: Record<string, any>;
+}
+
+export interface FusionRequest {
+  contexts: Context[];
+  priorities?: Record<string, number>;
+  filters?: {
+    types?: string[];
+    confidenceThreshold?: number;
+    timeWindow?: { start: number; end: number };
+  };
+}
+
+export interface FusionResult {
+  success: boolean;
+  fusedContexts: FusedContext[];
+  fusionStatistics: {
+    totalContexts: number;
+    fusedCount: number;
+    averageConfidence: number;
+    averageCoherence: number;
+    averageCompleteness: number;
+  };
