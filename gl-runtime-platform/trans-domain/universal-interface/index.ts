@@ -154,12 +154,12 @@ export class UniversalInterfaceLayer extends EventEmitter {
    * Validate universal message
    */
   private validateMessage(message: UniversalMessage): boolean {
-    return !!(
-      message.id &&
-      message.type &&
-      message.source &&
-      message.target &&
-      message.payload
+    return (
+      !!message.id &&
+      !!message.type &&
+      !!message.source &&
+      !!message.target &&
+      message.payload !== undefined
     );
   }
 
