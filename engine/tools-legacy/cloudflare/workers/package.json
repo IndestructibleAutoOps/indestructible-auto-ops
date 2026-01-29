@@ -21,12 +21,12 @@
     "r2:list": "wrangler r2 bucket list"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241205.0",
     "@cloudflare/vitest-pool-workers": "^0.12.5",
+    "@cloudflare/workers-types": "^4.20241205.0",
     "@types/node": "^22.10.1",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
     "typescript": "5.5.4",
     "vitest": "^3.2.4",
     "wrangler": "^4.59.3"
