@@ -1,0 +1,95 @@
+# @GL-governed
+# @GL-layer: GL99
+# @GL-semantic: production-platform-deployment
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 生產級平台部署配置
+
+platform:
+  name: 'gl-native-enterprise-platform'
+  version: '3.0.0'
+  deploymentType: 'immutable-infrastructure'
+
+  components:
+    # 核心編排引擎
+    orchestrationEngine:
+      type: 'memory-optimized'
+      replicas: 3
+      resources:
+        requests:
+          memory: '512Mi'
+          cpu: '250m'
+        limits:
+          memory: '1Gi'
+          cpu: '500m'
+      autoScaling:
+        minReplicas: 3
+        maxReplicas: 10
+        targetCPU: 70
+
+    # 治理層
+    governanceLayer:
+      type: 'high-availability'
+      replicas: 2
+      persistence: 'encrypted-ephemeral'
+      dataRetention: 'memory-only'
+
+    # 事件流系統
+    eventSystem:
+      type: 'in-memory-streaming'
+      transport: 'internal-grpc'
+      storage: 'ring-buffer'
+      retention: '24h'
+
+    # 報告引擎
+    reportingEngine:
+      type: 'encrypted-output'
+      format: 'internal-protobuf'
+      delivery: 'api-only'
+      export: 'disabled'
+
+  deployment:
+    strategy: 'blue-green'
+    autoRollback: true
+    healthChecks:
+      liveness: '/internal/health'
+      readiness: '/internal/ready'
+      startup: '/internal/started'
+
+  monitoring:
+    internal:
+      enabled: true
+      metrics: ['execution_duration', 'memory_usage', 'governance_compliance']
+      alerts: ['high_memory_usage', 'governance_violation']
+
+    external:
+      enabled: false  # 無外部監控
+
+  security:
+    isolation:
+      - 'pod-security-policies'
+      - 'network-policies'
+      - 'seccomp-profiles'
+      - 'apparmor-profiles'
+
+    encryption:
+      dataAtRest: 'always'
+      dataInTransit: 'always'
+      keyManagement: 'hardware-security-module'
+
+  cleanup:
+    cronSchedule: '*/5 * * * *'  # 每 5 分鐘清理一次
+    policies:
+      - name: 'temp-file-cleanup'
+        pattern: '*.tmp,*.temp,*.cache'
+        maxAge: '5m'
+        action: 'delete'
+
+      - name: 'log-rotation'
+        pattern: '*.log'
+        maxSize: '10MB'
+        maxFiles: 1
+        action: 'rotate-and-delete'
+
+      - name: 'memory-cleanup'
+        action: 'drop-caches'
+        schedule: 'hourly'

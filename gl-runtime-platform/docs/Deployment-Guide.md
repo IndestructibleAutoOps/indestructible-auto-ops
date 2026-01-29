@@ -9,9 +9,10 @@
 1. [Prerequisites](#prerequisites)
 2. [Installation](#installation)
 3. [Configuration](#configuration)
-4. [Deployment](#deployment)
-5. [Monitoring](#monitoring)
-6. [Troubleshooting](#troubleshooting)
+4. [Enterprise Automation Architecture](#enterprise-automation-architecture)
+5. [Deployment](#deployment)
+6. [Monitoring](#monitoring)
+7. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -119,6 +120,29 @@ Ensure governance markers are present in all files:
  * @stage complete
  */
 ```
+
+---
+
+## Enterprise Automation Architecture
+
+The enterprise automation architecture is defined as machine-readable configuration in:
+
+- `docs/architecture/Enterprise-Automation-Platform-Architecture.yaml`
+
+This architecture specification captures the zero-residue execution model, internal-only event flow, and
+production automation pipeline described in GL99.
+
+### Zero-Residue Executor
+
+The internal zero-residue executor is provided at:
+
+- `ops/executors/zero-residue-executor.sh`
+
+### Enterprise Deployment Configuration
+
+Production deployment configuration for the enterprise automation platform is defined in:
+
+- `deployment/enterprise-platform-deployment.yaml`
 
 ---
 
