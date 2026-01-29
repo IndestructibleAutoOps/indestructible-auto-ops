@@ -818,8 +818,15 @@ export class FabricCore {
       // 查找相鄰節點
       const adjacentEdges = await this.queryEdges({sourceId: nodeId});
       
+      // 將 edgeTypes 轉換為標準陣列以避免型別混淆（例如字串 vs 陣列）
+      const allowedEdgeTypes = Array.isArray(options?.edgeTypes)
+        ? options!.edgeTypes
+        : (typeof options?.edgeTypes === 'string'
+            ? [options!.edgeTypes]
+            : undefined);
+      
       for (const edge of adjacentEdges) {
-        if (options?.edgeTypes && !options.edgeTypes.includes(edge.type)) {
+        if (allowedEdgeTypes && !allowedEdgeTypes.includes(edge.type)) {
           continue;
         }
         
