@@ -17,15 +17,16 @@ DEFAULT_REPO_PATH="/home/runner/work/machine-native-ops/machine-native-ops"
 
 # 創建零殘留執行環境
 create_zero_residue_environment() {
-    echo "初始化零殘留執行環境..." > /dev/null
 
     # 創建內存工作區
     WORKSPACE=$(mktemp -d -p /dev/shm gl-workspace.XXXXXXXXXX)
     export GL_WORKSPACE="${WORKSPACE}"
 
     # 掛載臨時文件系統 (若已掛載則跳過)
-    if ! mountpoint -q "${WORKSPACE}"; then
-        mount -t tmpfs -o size=2G,nr_inodes=100k,mode=0700 tmpfs "${WORKSPACE}"
+    if [[ "$(id -u)" -eq 0 ]]; then
+        if ! mountpoint -q "${WORKSPACE}"; then
+            mount -t tmpfs -o size=2G,nr_inodes=100k,mode=0700 tmpfs "${WORKSPACE}"
+        fi
     fi
 
     # 設置嚴格的資源限制
@@ -34,7 +35,7 @@ create_zero_residue_environment() {
     ulimit -u 512   # 進程數限制
 
     # 配置 cgroup 限制
-    if command -v cgcreate &> /dev/null; then
+    if [[ "$(id -u)" -eq 0 ]] && command -v cgcreate &> /dev/null; then
         CGROUP_NAME="gl-exec-$(uuidgen)"
         cgcreate -g cpu,memory,blkio,pids:/"${CGROUP_NAME}"
         cgset -r cpu.shares=512 "${CGROUP_NAME}"
@@ -48,37 +49,31 @@ create_zero_residue_environment() {
 
 # 清理環境
 cleanup_environment() {
-    echo "執行零殘留清理..." > /dev/null
-
     # 殺死所有子進程
     pkill -9 -P $$ 2>/dev/null || true
 
     # 清理 cgroup
-    if [[ -n "${GL_CGROUP:-}" ]]; then
+    if [[ -n "${GL_CGROUP:-}" && "$(id -u)" -eq 0 ]]; then
         cgdelete -g cpu,memory,blkio,pids:/"${GL_CGROUP}" 2>/dev/null || true
     fi
 
-    # 安全擦除工作區
+    # 清理工作區
     if [[ -d "${GL_WORKSPACE:-}" ]]; then
-        # 7 次安全擦除
-        for i in {1..7}; do
-            find "${GL_WORKSPACE}" -type f -exec shred -n 3 -z -u {} \; 2>/dev/null || true
-        done
-
-        # 卸載並刪除
-        umount "${GL_WORKSPACE}" 2>/dev/null || true
+        if [[ "$(id -u)" -eq 0 ]] && mountpoint -q "${GL_WORKSPACE}"; then
+            umount "${GL_WORKSPACE}" 2>/dev/null || true
+        fi
         rm -rf "${GL_WORKSPACE}" 2>/dev/null || true
     fi
 
     # 清理內存中的殘留
-    sync && echo 3 > /proc/sys/vm/drop_caches 2>/dev/null || true
+    if [[ "$(id -u)" -eq 0 && -w /proc/sys/vm/drop_caches ]]; then
+        sync && echo 3 > /proc/sys/vm/drop_caches 2>/dev/null || true
+    fi
 }
 
 # 內部分析函數
 internal_analysis() {
     local repo_path="$1"
-
-    echo "開始內部分析（無輸出）..." > /dev/null
 
     # 在內存中構建分析
     ANALYSIS_DATA=$(cat <<EOF
@@ -110,29 +105,28 @@ EOF
 # 無痕執行函數
 execute_without_trace() {
     local command="$1"
+    local exec_dir="${GL_WORKSPACE}/exec-$(uuidgen)"
 
-    echo "執行無痕命令..." > /dev/null
+    mkdir -p "${exec_dir}"
+    export TMPDIR="${exec_dir}/tmp"
+    mkdir -p "${TMPDIR}"
 
-    # 使用 unshare 創建完全隔離的命名空間
-    unshare --mount --uts --ipc --net --pid --fork --cgroup --user --map-root-user \
-        sh -c "
-            # 在隔離環境中執行
-            cd /tmp
-            ${command}
+    if command -v unshare &> /dev/null; then
+        if unshare --mount --uts --ipc --net --pid --fork --cgroup --user --map-root-user \
+            sh -c "cd \"${exec_dir}\" && ${command}" > /dev/null 2>&1; then
+            rm -rf "${exec_dir}" 2>/dev/null || true
+            return 0
+        fi
+    fi
 
-            # 退出前清理
-            find /tmp -type f -delete 2>/dev/null || true
-            find /var/tmp -type f -delete 2>/dev/null || true
-            sync
-        " > /dev/null 2>&1
-
-    return $?
+    (cd "${exec_dir}" && ${command}) > /dev/null 2>&1
+    local status=$?
+    rm -rf "${exec_dir}" 2>/dev/null || true
+    return "${status}"
 }
 
 # 內部報告生成
 generate_internal_report() {
-    echo "生成內部報告（不輸出）..." > /dev/null
-
     # 創建加密的內部報告
     INTERNAL_REPORT=$(cat <<EOF
 -----BEGIN GL ENCRYPTED REPORT-----
@@ -158,13 +152,13 @@ EOF
 
 # 完整性驗證
 verify_execution_integrity() {
-    # 檢查是否殘留文件
-    local residual_files
-    residual_files=$(find /tmp /var/tmp -name "*gl*" -o -name "*temp*" -o -name "*tmp*" 2>/dev/null | wc -l)
+    # 檢查是否殘留工作區
+    local residual_dirs
+    residual_dirs=$(find /dev/shm -maxdepth 1 -type d -name "gl-workspace.*" 2>/dev/null | wc -l)
 
-    if [[ "${residual_files}" -gt 0 ]]; then
+    if [[ "${residual_dirs}" -gt 0 ]]; then
         # 自動清理殘留
-        find /tmp /var/tmp -name "*gl*" -o -name "*temp*" -o -name "*tmp*" -delete 2>/dev/null || true
+        find /dev/shm -maxdepth 1 -type d -name "gl-workspace.*" -exec rm -rf {} + 2>/dev/null || true
         return 1
     fi
 
@@ -191,16 +185,11 @@ main() {
 
     # 驗證執行完整性
     if verify_execution_integrity; then
-        echo "執行完成，零殘留驗證通過" > /dev/null
         return 0
     fi
 
-    echo "執行完整性驗證失敗" > /dev/null
     return 1
 }
 
 # 執行主函數
 main "$@"
-
-# 最終清理（確保無殘留）
-cleanup_environment

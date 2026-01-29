@@ -80,7 +80,10 @@ platform:
     cronSchedule: '*/5 * * * *'  # 每 5 分鐘清理一次
     policies:
       - name: 'temp-file-cleanup'
-        pattern: '*.tmp,*.temp,*.cache'
+        patterns:
+          - '*.tmp'
+          - '*.temp'
+          - '*.cache'
         maxAge: '5m'
         action: 'delete'
 

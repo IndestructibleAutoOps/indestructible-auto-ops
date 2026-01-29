@@ -113,7 +113,7 @@ spec:
 
       - type: 'compliance-certificate'
         location: 'hardware-security-module'
-        retention: '7y-legal-requirement'
+        retention: '2555d-legal-requirement'
 
     prohibitedArtifacts:
       - '*.log'
@@ -129,7 +129,7 @@ spec:
     version: '3.0.0'
 
     sandboxing:
-      level: 'max-isolation'
+      level: 'maximum-isolation'
       techniques:
         - 'namespaces-unshare-all'
         - 'cgroups-strict-resource-limits'
