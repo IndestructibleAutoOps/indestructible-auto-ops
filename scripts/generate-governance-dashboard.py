@@ -15,16 +15,22 @@ import json
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any
+
+
 def load_module_registry() -> Dict[str, Any]:
     """Load the module registry"""
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
     with open(registry_path, 'r') as f:
         return yaml.safe_load(f)
+
+
 def load_policy_manifest() -> Dict[str, Any]:
     """Load the policy manifest"""
     manifest_path = Path("controlplane/governance/policies/POLICY_MANIFEST.yaml")
     with open(manifest_path, 'r') as f:
         return yaml.safe_load(f)
+
+
 def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
     """Calculate governance metrics"""
     modules = registry.get('modules', [])
@@ -52,6 +58,8 @@ def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
         'autonomy_distribution': autonomy_counts,
         'health_scores': health_scores
     }
+
+
 def generate_health_bar(score: float, width: int = 20) -> str:
     """Generate a visual health bar"""
     filled = int((score / 100) * width)
@@ -65,6 +73,8 @@ def generate_health_bar(score: float, width: int = 20) -> str:
     else:
         color = "🟥"
     return color * filled + "⬜" * empty
+
+
 def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md"):
     """Generate the Language Governance Dashboard"""
     # Load data
@@ -241,5 +251,7 @@ Recommended review: **{(datetime.now()).strftime('%Y-%m-%d')}** (Monthly)
     with open(json_output, 'w') as f:
         json.dump(report, f, indent=2)
     print(f"✅ JSON report generated: {json_output}")
+
+
 if __name__ == "__main__":
     generate_dashboard()
