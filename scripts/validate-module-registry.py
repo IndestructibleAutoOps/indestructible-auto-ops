@@ -1,10 +1,10 @@
+#!/usr/bin/env python3
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: GL30-49
 # @GL-semantic: validate-module-registry
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-#!/usr/bin/env python3
 """
 Module Registry Validator
 Validates module registry structure and dependencies
@@ -12,21 +12,33 @@ Validates module registry structure and dependencies
 import yaml
 import sys
 from pathlib import Path
+
+
 def main():
     # Load registry
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
     if not registry_path.exists():
-        print(f"❌ Registry file not found: {registry_path}")
+        print(f"❌ Registry file not found: {registry_path}", file=sys.stderr)
         sys.exit(1)
-    with open(registry_path, 'r') as f:
-        registry = yaml.safe_load(f)
+
+    try:
+        with open(registry_path, 'r', encoding='utf-8') as f:
+            registry = yaml.safe_load(f)
+    except yaml.YAMLError as exc:
+        print(f"Error: Failed to parse YAML registry at {registry_path}: {exc}", file=sys.stderr)
+        sys.exit(1)
+    except OSError as exc:
+        print(f"Error: Could not read registry file at {registry_path}: {exc}", file=sys.stderr)
+        sys.exit(1)
     print("📋 Module Registry Validation")
     print("=" * 50)
     if 'modules' not in registry:
         print("❌ Registry missing 'modules' section")
         sys.exit(1)
+
     modules = registry['modules']
-    module_ids = {m['module_id'] for m in modules}
+    module_ids = {m['module_id'] for m in modules if 'module_id' in m}
+
     print(f"✅ Found {len(modules)} modules")
     # Check each module
     has_errors = False
@@ -47,12 +59,16 @@ def main():
             for dep in deps:
                 if dep not in module_ids and dep != 'none':
                     print(f"  ⚠️  Unknown dependency: {dep}")
+
     print("\n" + "=" * 50)
+
     if has_errors:
         print("❌ Registry validation failed!")
         sys.exit(1)
     else:
         print("✅ Registry validation passed!")
         sys.exit(0)
+
+
 if __name__ == "__main__":
     main()
