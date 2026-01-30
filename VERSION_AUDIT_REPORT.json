@@ -1,0 +1,39 @@
+{
+  "audit_timestamp": "2026-01-30T16:11:47.093524",
+  "issues": [],
+  "warnings": [
+    "agent-orchestration.yml 版本不一致: metadata=9.0.0, comment=7.0.0",
+    "治理目錄不存在: gl-runtime-platform/governance-root-layer",
+    "治理目錄不存在: gl-runtime-platform/meta-governance-layer",
+    "治理目錄不存在: gl-runtime-platform/reality-falsification-layer"
+  ],
+  "version_conflicts": [
+    "agent-orchestration.yml 版本不一致: metadata=9.0.0, comment=7.0.0"
+  ],
+  "missing_files": [],
+  "successes": [],
+  "package_json": {
+    "version": "9.0.0",
+    "gl_layer": "GL90-99",
+    "gl_purpose": "Global DAG orchestration and federation management",
+    "status": "ok"
+  },
+  "agent_orchestration": {
+    "metadata_version": "9.0.0",
+    "comment_version": "7.0.0",
+    "version_match": false,
+    "status": "conflict"
+  },
+  "governance-quantum_file_count": 13,
+  "infrastructure-quantum_file_count": 7,
+  "monitoring-quantum_file_count": 3,
+  "artifacts-quantum_file_count": 1,
+  "completion_docs_count": 16,
+  "summary_docs_count": 10,
+  "summary": {
+    "total_issues": 0,
+    "total_warnings": 4,
+    "total_version_conflicts": 1,
+    "total_missing_files": 0
+  }
+}
