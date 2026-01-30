@@ -1,0 +1,167 @@
+# @GL-governed
+# @GL-layer: GL90-95 (Optimization Layer)
+# @GL-semantic: performance-baselines
+# @GL-charter-version: 5.0.0
+# @GL-audit-trail: Created for GL Platform v5.0 optimization
+
+apiVersion: performance.machinenativeops.io/v1
+kind: PerformanceBaselines
+metadata:
+  name: gl-platform-baselines
+  namespace: gl-platform
+  labels:
+    app: gl-platform
+    component: optimization
+    tier: performance
+  annotations:
+    governance.machinenativeops.io/charter: "GL Unified Charter v5.0"
+    governance.machinenativeops.io/layer: "Optimization"
+    governance.machinenativeops.io/version: "5.0.0"
+
+spec:
+  # Naming Compliance Baselines
+  namingCompliance:
+    targetRate: 100
+    warningThreshold: 95
+    criticalThreshold: 90
+    measurementWindow: 24h
+    aggregationMethod: average
+  
+  # Auto-Fix Performance Baselines
+  autoFix:
+    successRate:
+      target: 90
+      warning: 80
+      critical: 70
+    
+    meanTimeToFix:
+      target: 300s  # 5 minutes
+      warning: 600s  # 10 minutes
+      critical: 900s  # 15 minutes
+    
+    fixAttempts:
+      maxAttempts: 3
+      backoffStrategy: exponential
+  
+  # Security Scan Performance
+  securityScans:
+    checkov:
+      maxScanTime: 300s  # 5 minutes
+      passRateTarget: 100
+      passRateWarning: 95
+    
+    kubeBench:
+      maxScanTime: 180s  # 3 minutes
+      scoreTarget: 100
+      scoreWarning: 90
+    
+    gitleaks:
+      maxScanTime: 60s   # 1 minute
+      falsePositiveRate: 0
+  
+  # CI/CD Pipeline Performance
+  ciCd:
+    pipelineDuration:
+      target: 600s      # 10 minutes
+      warning: 900s      # 15 minutes
+      critical: 1200s    # 20 minutes
+    
+    prValidationTime:
+      target: 180s      # 3 minutes
+      warning: 300s      # 5 minutes
+    
+    deploymentTime:
+      target: 120s      # 2 minutes
+      warning: 180s      # 3 minutes
+      critical: 300s    # 5 minutes
+  
+  # Observability Performance
+  observability:
+    prometheus:
+      scrapeIntervalTarget: 30s
+      scrapeIntervalWarning: 60s
+      scrapeDuration: 5s
+      queryLatency: 100ms
+    
+    alertmanager:
+      evaluationInterval: 15s
+      notificationLatency: 500ms
+      groupEvaluationTime: 100ms
+    
+    grafana:
+      dashboardLoadTime: 2s
+      queryExecutionTime: 1s
+      refreshInterval: 30s
+  
+  # Resource Utilization
+  resourceUtilization:
+    cpu:
+      target: 70
+      warning: 85
+      critical: 95
+    
+    memory:
+      target: 70
+      warning: 85
+      critical: 95
+    
+    storage:
+      target: 50
+      warning: 75
+      critical: 90
+    
+    network:
+      target: 40
+      warning: 70
+      critical: 85
+  
+  # Response Times
+  responseTimes:
+    apiResponseTime:
+      target: 100ms
+      warning: 200ms
+      critical: 500ms
+    
+    webhookResponseTime:
+      target: 200ms
+      warning: 500ms
+      critical: 1000ms
+    
+    discoveryScriptTime:
+      target: 60s
+      warning: 120s
+      critical: 180s
+  
+  # Availability Targets
+  availability:
+    platform:
+      target: 99.9
+      warning: 99.5
+      critical: 99.0
+    
+    integrations:
+      target: 99.5
+      warning: 99.0
+      critical: 98.0
+    
+    workflows:
+      target: 99.0
+      warning: 98.5
+      critical: 98.0
+  
+  # Error Rates
+  errorRates:
+    criticalErrors:
+      target: 0
+      warning: 0.01
+      critical: 0.1
+    
+    warningErrors:
+      target: 0.01
+      warning: 0.05
+      critical: 0.1
+    
+    timeoutErrors:
+      target: 0
+      warning: 0.01
+      critical: 0.05
