@@ -9,6 +9,8 @@ kind: OrganizationRegistry
 metadata:
   name: organization-registry
   version: "9.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  updated_at: "2026-01-30T00:00:00Z"
   created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
@@ -31,6 +33,13 @@ spec:
       auto_repair_enabled: true
       federation_enabled: true
       signing_required: true
+      global_dag:
+        enabled: true
+        node_id: "dag-org-001"
+        participation_level: "full"
+        dag_builder_enabled: true
+        dag_executor_enabled: true
+        cross_repo_resolver_enabled: true
       contact:
         email: "engineering@machinenativeops.io"
         team: "platform-team"
@@ -69,6 +78,13 @@ spec:
       auto_repair_enabled: false
       federation_enabled: true
       signing_required: true
+      global_dag:
+        enabled: true
+        node_id: "dag-org-002"
+        participation_level: "observer"
+        dag_builder_enabled: false
+        dag_executor_enabled: false
+        cross_repo_resolver_enabled: false
       contact:
         email: "platform@enterprise-a.io"
         team: "devops-team"

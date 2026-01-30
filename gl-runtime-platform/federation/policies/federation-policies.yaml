@@ -9,6 +9,8 @@ kind: FederationPolicies
 metadata:
   name: federation-policies
   version: "9.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  updated_at: "2026-01-30T00:00:00Z"
   created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
@@ -284,6 +286,76 @@ spec:
           algorithm: "ECDSA-P256"
       enforcement: "block"
 
+  dag_policies:
+    - id: "dag-construction-required"
+      name: "DAG Construction Required"
+      enabled: true
+      scope: "federation"
+      description: "Organizations must participate in Global DAG construction"
+      rules:
+        - type: "dag_participation"
+          minimum_level: "observer"
+          severity: "high"
+        - type: "dag_node_registration"
+          required: true
+          severity: "critical"
+      enforcement: "warn"
+
+    - id: "dag-dependency-tracking"
+      name: "DAG Dependency Tracking"
+      enabled: true
+      scope: "all"
+      description: "Track all cross-repo dependencies in Global DAG"
+      rules:
+        - type: "dependency_tracking"
+          tracking_mode: "automatic"
+          include_external: true
+          severity: "high"
+      enforcement: "block"
+
+    - id: "dag-execution-policy"
+      name: "DAG Execution Policy"
+      enabled: true
+      scope: "federation"
+      description: "Control parallel DAG execution across federation"
+      rules:
+        - type: "execution"
+          parallel_execution: true
+          max_concurrent: 100
+          require_trust: "medium"
+          severity: "high"
+        - type: "execution"
+          deadlock_detection: true
+          automatic_recovery: true
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "dag-consistency-policy"
+      name: "DAG Consistency Policy"
+      enabled: true
+      scope: "federation"
+      description: "Ensure Global DAG consistency across organizations"
+      rules:
+        - type: "consistency"
+          validation_mode: "strict"
+          automatic_sync: true
+          conflict_resolution: "semantic"
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "dag-audit-policy"
+      name: "DAG Audit Policy"
+      enabled: true
+      scope: "all"
+      description: "Audit all DAG operations and state changes"
+      rules:
+        - type: "audit"
+          log_operations: true
+          log_state_changes: true
+          retention_days: 90
+          severity: "high"
+      enforcement: "allow"
+
   policy_profiles:
     - id: "standard"
       name: "Standard Profile"
@@ -311,6 +383,11 @@ spec:
         - "semantic-auto-repair"
         - "semantic-validation-before-deploy"
         - "semantic-artifact-signing"
+        - "dag-construction-required"
+        - "dag-dependency-tracking"
+        - "dag-execution-policy"
+        - "dag-consistency-policy"
+        - "dag-audit-policy"
       applicable_trust_levels: ["high"]
 
     - id: "minimal"

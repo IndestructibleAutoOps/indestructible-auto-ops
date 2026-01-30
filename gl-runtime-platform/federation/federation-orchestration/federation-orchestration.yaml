@@ -9,6 +9,8 @@ kind: FederationOrchestration
 metadata:
   name: federation-orchestration
   version: "9.0.0"
+  created_at: "2026-01-28T00:00:00Z"
+  updated_at: "2026-01-30T00:00:00Z"
   created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
@@ -21,6 +23,10 @@ metadata:
     governance.machinenativeops.io/global-dag-enabled: "true"
 
 spec:
+  mode: "dag-aware-federation"
+  semantic_graph_required: true
+  semantic_validation_required: true
+  global_dag_required: true
   mode: "dag-aware-semantic-federation"
   semantic_graph_required: true
   semantic_validation_required: true
@@ -28,12 +34,30 @@ spec:
   dag_version: "9.0.0"
 
   parallelism:
-    max_concurrent_repos: 10
+    max_concurrent_repos: 100
     max_concurrent_agents_per_repo: 8
-    timeout_seconds: 1800
+    timeout_seconds: 3600
     retry_policy:
       max_retries: 3
       backoff_multiplier: 2
+
+  dag_awareness:
+    enabled: true
+    global_dag_builder:
+      enabled: true
+      agent: "global-dag-builder"
+      scan_interval: 300
+      include_external_repos: true
+    global_dag_executor:
+      enabled: true
+      agent: "global-dag-executor"
+      parallel_execution: true
+      max_parallel_tasks: 100
+    cross_repo_resolver:
+      enabled: true
+      agent: "cross-repo-resolver"
+      resolution_strategy: "semantic"
+      conflict_resolution: "priority"
 
   semantic_prerequisites:
     - id: "semantic-graph-build"

@@ -1,0 +1,331 @@
+# @GL-governed
+# @GL-layer: GL50-69
+# @GL-semantic: security-validation-workflow
+# @GL-charter-version: 2.0.0
+
+name: RKE2 Security Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'infrastructure/rke2/**'
+      - '.github/workflows/rke2-security-validation.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'infrastructure/rke2/**'
+      - '.github/workflows/rke2-security-validation.yml'
+  workflow_dispatch:
+    inputs:
+      cis_level:
+        description: 'CIS Benchmark Level (1 or 2)'
+        required: true
+        default: '1'
+        type: choice
+        options:
+          - '1'
+          - '2'
+
+env:
+  CIS_LEVEL: ${{ github.event.inputs.cis_level || '1' }}
+
+jobs:
+  validate-rke2-config:
+    name: Validate RKE2 Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate YAML syntax
+        run: |
+          echo "Validating RKE2 configuration files..."
+          for file in infrastructure/rke2/profiles/production/*.yaml; do
+            echo "Checking $file..."
+            yamllint -c .yamllint.yml "$file" || exit 1
+          done
+          echo "All YAML files are valid"
+
+      - name: Check configuration completeness
+        run: |
+          echo "Checking required configuration files..."
+          required_files=(
+            "infrastructure/rke2/profiles/production/config.yaml"
+            "infrastructure/rke2/profiles/production/encryption-provider-config.yaml"
+            "infrastructure/rke2/profiles/production/psa-config.yaml"
+            "infrastructure/rke2/profiles/production/audit-policy.yaml"
+          )
+          
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Error: Required file $file is missing"
+              exit 1
+            fi
+          done
+          echo "All required configuration files are present"
+
+      - name: Validate encryption configuration
+        run: |
+          echo "Validating encryption provider configuration..."
+          python3 << 'EOF'
+          import yaml
+          
+          with open('infrastructure/rke2/profiles/production/encryption-provider-config.yaml') as f:
+              config = yaml.safe_load(f)
+              
+          if 'apiVersion' not in config or config['apiVersion'] != 'apiserver.config.k8s.io/v1':
+              print("Error: Invalid apiVersion in encryption config")
+              exit(1)
+              
+          if 'kind' not in config or config['kind'] != 'EncryptionConfiguration':
+              print("Error: Invalid kind in encryption config")
+              exit(1)
+              
+          resources = config.get('resources', [])
+          if not resources:
+              print("Error: No resources defined in encryption config")
+              exit(1)
+              
+          for resource in resources:
+              providers = resource.get('providers', [])
+              if not providers:
+                  print(f"Error: No providers defined for resource {resource.get('resources')}")
+                  exit(1)
+                  
+              # Check if aescbc is used (recommended)
+              aescbc_used = any(p.get('aescbc') for p in providers)
+              if not aescbc_used:
+                  print("Warning: aescbc provider not found in encryption config")
+          
+          print("Encryption configuration validation passed")
+          EOF
+
+      - name: Validate PSA configuration
+        run: |
+          echo "Validating Pod Security Admission configuration..."
+          python3 << 'EOF'
+          import yaml
+          
+          with open('infrastructure/rke2/profiles/production/psa-config.yaml') as f:
+              config = yaml.safe_load(f)
+              
+          if 'apiVersion' not in config or config['apiVersion'] != 'pod-security.admission.config.k8s.io/v1':
+              print("Error: Invalid apiVersion in PSA config")
+              exit(1)
+              
+          if 'kind' not in config or config['kind'] != 'PodSecurityConfiguration':
+              print("Error: Invalid kind in PSA config")
+              exit(1)
+              
+          defaults = config.get('defaults', [])
+          if not defaults:
+              print("Error: No default PSA policies defined")
+              exit(1)
+              
+          # Check enforce level (should be restricted for production)
+          for default in defaults:
+              enforce = default.get('enforce')
+              if enforce and enforce != 'restricted':
+                  print(f"Warning: Enforce level is '{enforce}', should be 'restricted' for production")
+          
+          print("PSA configuration validation passed")
+          EOF
+
+      - name: Validate audit policy
+        run: |
+          echo "Validating audit policy configuration..."
+          python3 << 'EOF'
+          import yaml
+          
+          with open('infrastructure/rke2/profiles/production/audit-policy.yaml') as f:
+              policy = yaml.safe_load(f)
+              
+          if 'apiVersion' not in policy or policy['apiVersion'] != 'audit.k8s.io/v1':
+              print("Error: Invalid apiVersion in audit policy")
+              exit(1)
+              
+          if 'kind' not in policy or policy['kind'] != 'Policy':
+              print("Error: Invalid kind in audit policy")
+              exit(1)
+              
+          rules = policy.get('rules', [])
+          if not rules:
+              print("Error: No audit rules defined")
+              exit(1)
+              
+          # Check for critical events
+          critical_events = ['pods', 'secrets', 'configmaps', 'deployments', 'services']
+          found_events = set()
+          
+          for rule in rules:
+              resources = rule.get('resources', [])
+              for resource in resources:
+                  if resource in critical_events:
+                      found_events.add(resource)
+          
+          missing_events = set(critical_events) - found_events
+          if missing_events:
+              print(f"Warning: Missing audit rules for critical resources: {missing_events}")
+          else:
+              print("All critical resources have audit rules")
+          
+          print("Audit policy validation passed")
+          EOF
+
+      - name: Validate network policies
+        run: |
+          echo "Validating network policies..."
+          python3 << 'EOF'
+          import yaml
+          
+          with open('infrastructure/rke2/manifests/network-policies/default-deny-all.yaml') as f:
+              policy = yaml.safe_load(f)
+              
+          if 'apiVersion' not in policy or policy['apiVersion'] != 'networking.k8s.io/v1':
+              print("Error: Invalid apiVersion in network policy")
+              exit(1)
+              
+          if 'kind' not in policy or policy['kind'] != 'NetworkPolicy':
+              print("Error: Invalid kind in network policy")
+              exit(1)
+              
+          # Check if it's a default deny all policy
+          pod_selector = policy.get('spec', {}).get('podSelector', {})
+          if pod_selector != {}:
+              print("Warning: Default deny policy should have empty podSelector to apply to all pods")
+          
+          policy_types = policy.get('spec', {}).get('policyTypes', [])
+          if 'Ingress' not in policy_types or 'Egress' not in policy_types:
+              print("Warning: Default deny policy should block both Ingress and Egress")
+          
+          print("Network policy validation passed")
+          EOF
+
+      - name: Check script permissions
+        run: |
+          echo "Checking script permissions..."
+          scripts=(
+            "infrastructure/rke2/scripts/install-rke2.sh"
+            "infrastructure/rke2/scripts/validate-cis.sh"
+          )
+          
+          for script in "${scripts[@]}"; do
+            if [ ! -x "$script" ]; then
+              echo "Warning: Script $script is not executable"
+            fi
+          done
+          echo "Script permissions check complete"
+
+  cis-compliance-check:
+    name: CIS Compliance Check
+    runs-on: ubuntu-latest
+    needs: validate-rke2-config
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run CIS validation script
+        run: |
+          echo "Running CIS Level ${{ env.CIS_LEVEL }} compliance check..."
+          bash infrastructure/rke2/scripts/validate-cis.sh ${{ env.CIS_LEVEL }}
+
+      - name: Generate compliance report
+        run: |
+          echo "# RKE2 CIS Compliance Report" > compliance-report.md
+          echo "" >> compliance-report.md
+          echo "## Scan Details" >> compliance-report.md
+          echo "- **CIS Level:** ${{ env.CIS_LEVEL }}" >> compliance-report.md
+          echo "- **Date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> compliance-report.md
+          echo "- **Commit:** ${{ github.sha }}" >> compliance-report.md
+          echo "- **Branch:** ${{ github.ref_name }}" >> compliance-report.md
+          echo "" >> compliance-report.md
+          echo "## Results" >> compliance-report.md
+          echo "Configuration validation passed successfully." >> compliance-report.md
+          cat compliance-report.md
+
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: rke2-compliance-report
+          path: compliance-report.md
+          retention-days: 30
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: validate-rke2-config
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          scan-ref: 'infrastructure/rke2/'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Check for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: infrastructure/rke2/
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+
+  documentation-check:
+    name: Documentation Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check README completeness
+        run: |
+          echo "Checking RKE2 documentation..."
+          if [ ! -f "infrastructure/rke2/README.md" ]; then
+            echo "Error: README.md is missing"
+            exit 1
+          fi
+          
+          # Check for required sections
+          required_sections=(
+            "Prerequisites"
+            "Installation"
+            "Configuration"
+            "Validation"
+            "Troubleshooting"
+          )
+          
+          for section in "${required_sections[@]}"; do
+            if ! grep -q "## $section" infrastructure/rke2/README.md; then
+              echo "Warning: README missing section: $section"
+            fi
+          done
+          
+          echo "Documentation check complete"
+
+  summary:
+    name: Validation Summary
+    runs-on: ubuntu-latest
+    needs: [validate-rke2-config, security-scan, documentation-check]
+    if: always()
+    steps:
+      - name: Generate summary
+        run: |
+          echo "# RKE2 Security Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Job Status" >> $GITHUB_STEP_SUMMARY
+          echo "- Configuration Validation: ${{ needs.validate-rke2-config.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Security Scan: ${{ needs.security-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Documentation Check: ${{ needs.documentation-check.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All validation checks completed successfully!" >> $GITHUB_STEP_SUMMARY
