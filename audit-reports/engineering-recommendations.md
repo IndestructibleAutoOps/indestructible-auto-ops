@@ -863,7 +863,7 @@ class OptimizedExecutorAgent:
     
     async def execute_batch(self, tasks: List[Task]) -> List[Result]:
         """Execute tasks in parallel with connection pooling"""
-        async with self.connection_pool:
+        async with self.connection_pool.acquire() as conn:
             results = await asyncio.gather(*[
                 self.execute(task) for task in tasks
             ])

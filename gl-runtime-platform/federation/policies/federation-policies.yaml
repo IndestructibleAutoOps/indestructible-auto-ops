@@ -8,8 +8,8 @@ apiVersion: federation.machinenativeops.io/v1
 kind: FederationPolicies
 metadata:
   name: federation-policies
-  version: "7.0.0"
-  created_at: "2026-01-28T00:00:00Z"
+  version: "9.0.0"
+  created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -17,8 +17,67 @@ metadata:
     governance.machinenativeops.io/approval: "approved"
     governance.machinenativeops.io/charter-version: "2.0.0"
     governance.machinenativeops.io/semantic-enabled: "true"
+    governance.machinenativeops.io/dag-version: "9.0.0"
+    governance.machinenativeops.io/global-dag-enabled: "true"
 
 spec:
+  dag_governance_policies:
+    - id: "dag-construction-required"
+      name: "DAG Construction Required"
+      enabled: true
+      scope: "all"
+      description: "All federated operations must construct DAG graphs"
+      rules:
+        - type: "dag_construction"
+          check: "dag_graph_constructed"
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "dag-validation-required"
+      name: "DAG Validation Required"
+      enabled: true
+      scope: "all"
+      description: "All DAGs must be validated before execution"
+      rules:
+        - type: "dag_validation"
+          check: "dag_validated"
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "dag-parallel-execution-enabled"
+      name: "DAG Parallel Execution Enabled"
+      enabled: true
+      scope: "federation"
+      description: "Enable parallel DAG execution where possible"
+      rules:
+        - type: "dag_execution"
+          mode: "parallel"
+          severity: "high"
+      enforcement: "allow"
+
+    - id: "dag-dependency-resolution"
+      name: "DAG Dependency Resolution"
+      enabled: true
+      scope: "all"
+      description: "Resolve cross-repo dependencies in DAG"
+      rules:
+        - type: "dependency_resolution"
+          check: "cross_repo_dependencies_resolved"
+          severity: "critical"
+      enforcement: "block"
+
+    - id: "dag-cross-repo-synchronization"
+      name: "DAG Cross-Repo Synchronization"
+      enabled: true
+      scope: "federation"
+      description: "Synchronize DAG execution across repositories"
+      rules:
+        - type: "synchronization"
+          mode: "cross_repo"
+          check: "synchronization_points_defined"
+          severity: "high"
+      enforcement: "block"
+
   baseline_policies:
     - id: "semantic-analysis-required"
       name: "Semantic Analysis Required"

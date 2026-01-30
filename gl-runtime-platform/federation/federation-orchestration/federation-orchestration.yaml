@@ -8,8 +8,8 @@ apiVersion: federation.machinenativeops.io/v1
 kind: FederationOrchestration
 metadata:
   name: federation-orchestration
-  version: "7.0.0"
-  created_at: "2026-01-28T00:00:00Z"
+  version: "9.0.0"
+  created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -17,11 +17,15 @@ metadata:
     governance.machinenativeops.io/approval: "approved"
     governance.machinenativeops.io/charter-version: "2.0.0"
     governance.machinenativeops.io/semantic-enabled: "true"
+    governance.machinenativeops.io/dag-version: "9.0.0"
+    governance.machinenativeops.io/global-dag-enabled: "true"
 
 spec:
-  mode: "semantic-aware-federation"
+  mode: "dag-aware-semantic-federation"
   semantic_graph_required: true
   semantic_validation_required: true
+  dag_aware_enabled: true
+  dag_version: "9.0.0"
 
   parallelism:
     max_concurrent_repos: 10
@@ -50,6 +54,32 @@ spec:
       required: true
       description: "Check GL semantic compliance"
       priority: 3
+
+  dag_prerequisites:
+    - id: "dag-construction"
+      name: "Global DAG Construction"
+      enabled: true
+      required: true
+      description: "Construct global DAG across all repositories"
+      priority: 1
+    - id: "dag-validation"
+      name: "DAG Validation"
+      enabled: true
+      required: true
+      description: "Validate DAG integrity and no cycles"
+      priority: 2
+    - id: "dag-dependency-resolution"
+      name: "DAG Dependency Resolution"
+      enabled: true
+      required: true
+      description: "Resolve cross-repo dependencies in DAG"
+      priority: 3
+    - id: "dag-optimization"
+      name: "DAG Optimization"
+      enabled: true
+      required: false
+      description: "Optimize DAG for parallel execution"
+      priority: 4
 
   per_repo_pipelines:
     - id: "directory-semantic-audit-pipeline"
@@ -148,6 +178,41 @@ spec:
       semantic_validation:
         enabled: true
         validate_cross_repo_consistency: true
+
+    - id: "global-dag-execution"
+      name: "Global DAG Execution"
+      enabled: true
+      description: "Execute global DAG across federation"
+      trigger: "scheduled"
+      schedule: "0 * * * *"
+      dag_aware: true
+      parallel_execution: true
+      target_repos: "all"
+      dag_execution:
+        build_dag: true
+        validate_dag: true
+        resolve_dependencies: true
+        execute_parallel: true
+        synchronization_points: true
+        retry_on_failure: true
+      reporting:
+        generate_dag_execution_report: true
+        track_dag_metrics: true
+        capture_dag_events: true
+
+    - id: "dag-cross-repo-synchronization"
+      name: "DAG Cross-Repo Synchronization"
+      enabled: true
+      description: "Synchronize DAG execution across repositories"
+      trigger: "event"
+      trigger_event: "dag-node-completed"
+      action: "sync-dag-execution"
+      target_repos: "all"
+      dag_sync:
+        sync_at_synchronization_points: true
+        validate_synchronization: true
+        timeout_handling: "continue"
+        failure_handling: "retry"
 
   event_aggregation:
     enabled: true

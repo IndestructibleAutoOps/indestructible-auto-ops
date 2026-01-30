@@ -1,4 +1,0 @@
-337:  async addNode(node: FabricNode): Promise<string> {
-338:    const nodeId = await this.core.addNode(node);
-368:  async addEdge(edge: FabricEdge): Promise<string> {
-369:    return await this.core.addEdge(edge);
