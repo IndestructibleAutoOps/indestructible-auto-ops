@@ -36,7 +36,7 @@ jobs:
       - name: AI-based PR Reviewer & Summarizer with Chat Capabilities
         uses: coderabbitai/ai-pr-reviewer@1.16.2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GL_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         with:
           debug: false

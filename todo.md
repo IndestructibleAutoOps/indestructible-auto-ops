@@ -10,6 +10,15 @@
 - [x] Verify gl-runtime-platform v8.0.0 operational status
 - [x] Verify multi-agent-parallel-orchestration configuration
 
+## Phase 0.5: GL_TOKEN and Runner Configuration (New Tasks)
+- [x] Clear token from environment variables for security
+- [x] Create GL_TOKEN secret in GitHub repository
+- [x] Identify all workflows using GITHUB_TOKEN
+- [x] Replace GITHUB_TOKEN with GL_TOKEN in workflows
+- [x] Create self-hosted runner setup documentation
+- [x] Push all changes to repository
+- [x] Create pull request for review
+
 ## Phase 1: Global DAG Core Components Construction
 - [x] Create global-dag/dag-model/ (dag-node.ts, dag-graph.ts)
 - [x] Create global-dag/dag-builder/ (builder.ts)

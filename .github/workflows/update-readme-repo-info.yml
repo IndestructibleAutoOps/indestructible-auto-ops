@@ -35,11 +35,11 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GL_TOKEN }}
 
       - name: Update Repo Info in README
         uses: chroming/update-readme-repo-info@v1.6
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GL_TOKEN }}
           mode: pr
           base_branch: main
