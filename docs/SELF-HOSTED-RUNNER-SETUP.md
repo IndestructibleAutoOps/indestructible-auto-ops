@@ -1,3 +1,9 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: ../engine/governance/GL_SEMANTIC_ANCHOR.json -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
 # Self-Hosted GitHub Actions Runner Setup Guide
 
 ## Overview
@@ -185,6 +191,79 @@ The GL_TOKEN is used for the following operations:
 
 2. **Add to repository secrets**:
    - Go to: https://github.com/MachineNativeOps/machine-native-ops/settings/secrets/actions
+### Overview
+This repository uses a custom `GL_TOKEN` secret instead of the default `GITHUB_TOKEN` for enhanced capabilities across 19+ workflows. The GL_TOKEN requires specific permissions to support all automated operations.
+
+### Required Token Permissions
+
+The GL_TOKEN must be a **Personal Access Token (Classic)** or **Fine-Grained Personal Access Token** with the following scopes:
+
+#### For Classic Personal Access Token:
+- **`repo`** (Full control of private repositories)
+  - Includes: `repo:status`, `repo_deployment`, `public_repo`, `repo:invite`, `security_events`
+  - Required for: Checkout with token, creating PRs, pushing commits, triggering workflows
+- **`write:packages`** (Upload packages to GitHub Package Registry)
+  - Includes: `read:packages`
+  - Required for: Publishing NPM packages and Docker images to GitHub Container Registry
+- **`workflow`** (Update GitHub Action workflows)
+  - Required for: Workflows that trigger other workflows or modify workflow files
+
+#### For Fine-Grained Personal Access Token:
+- **Repository permissions**:
+  - **Contents**: Read and write
+  - **Pull requests**: Read and write
+  - **Issues**: Read and write
+  - **Metadata**: Read-only (automatically included)
+  - **Workflows**: Read and write
+  - **Actions**: Read and write
+  - **Security events**: Read and write
+- **Account permissions**:
+  - **Packages**: Read and write
+
+### Token Use Cases by Workflow
+
+The GL_TOKEN is used for the following operations:
+
+1. **Repository Operations**
+   - Checking out code with extended permissions
+   - Creating and updating pull requests
+   - Pushing commits and tags
+   - Triggering workflow runs
+
+2. **Package Publishing**
+   - Publishing NPM packages to GitHub Packages (`@machinenativeops/*`, `@machine-native-ops/*`)
+   - Building and pushing Docker images to GitHub Container Registry (ghcr.io)
+   - Authenticating to package registries
+
+3. **Issue & PR Management**
+   - Creating and updating issues
+   - Adding comments and labels
+   - Managing stale issues and PRs
+   - Running AI-based PR reviews
+
+4. **Release Management**
+   - Creating releases via semantic-release
+   - Generating release notes
+   - Publishing release artifacts
+
+5. **Security & Quality**
+   - Running CodeQL security scans
+   - Uploading security scan results
+   - Running super-linter and other quality tools
+
+### Creating the GL_TOKEN
+
+1. **Generate a Personal Access Token**:
+   - Go to: https://github.com/settings/tokens
+   - Click "Generate new token" → "Generate new token (classic)" or "Fine-grained token"
+   - Set a descriptive name (e.g., "MachineNativeOps GL_TOKEN")
+   - Set expiration (recommended: 90 days for security, up to 365 days for convenience)
+   - Select the required scopes (see above)
+   - Click "Generate token" and copy the token immediately
+
+2. **Add to Repository Secrets**:
+   - Go to your repository Settings → Secrets and variables → Actions
+   - Or navigate to: `https://github.com/<YOUR_ORG>/<YOUR_REPO>/settings/secrets/actions`
    - Click "New repository secret"
    - Name: `GL_TOKEN`
    - Value: Paste the token you generated
@@ -218,6 +297,28 @@ The GL_TOKEN is used for the following operations:
 **PR creation failures**:
 - Ensure `repo` scope is enabled (for classic tokens)
 - For fine-grained tokens, verify `Pull requests: Read and write` permission
+### Security Best Practices
+
+1. **Token Rotation**: Rotate the GL_TOKEN regularly (recommended: every 90 days for production)
+2. **Least Privilege**: Only grant the minimum required permissions
+3. **Monitoring**: Regularly audit token usage in workflow logs
+4. **Revocation**: Immediately revoke tokens if compromised
+5. **Fine-Grained Tokens**: Prefer fine-grained tokens over classic tokens when possible
+6. **Expiration**: Set an expiration date based on your security requirements (90 days for high security, up to 365 days for lower-risk environments)
+
+### Troubleshooting Token Issues
+
+**Symptom**: Workflow fails with "Resource not accessible by integration" or "Bad credentials"
+- **Solution**: Verify GL_TOKEN is set correctly in repository secrets and has required permissions
+
+**Symptom**: Package publishing fails with 403 Forbidden
+- **Solution**: Ensure GL_TOKEN has `write:packages` permission and the token owner has write access to the repository
+
+**Symptom**: Cannot trigger workflows
+- **Solution**: Add the `workflow` scope to GL_TOKEN
+
+**Symptom**: CodeQL scan fails to upload results
+- **Solution**: Ensure GL_TOKEN has `security_events` scope (included in `repo` for classic tokens)
 
 ## Security Considerations
 
@@ -225,6 +326,7 @@ The GL_TOKEN is used for the following operations:
 2. **Permissions**: Use minimal required permissions
 3. **Secrets**: Store sensitive data in GitHub secrets, not in workflow files
 4. **Updates**: Keep the runner updated with the latest version
+5. **Token Security**: Follow GL_TOKEN security best practices (see GL_TOKEN Configuration section)
 
 ## Additional Resources
 
