@@ -690,10 +690,10 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Run Trivy vulnerability scanner
-        # SECURITY: Pin to a specific commit SHA instead of @master
+        # SECURITY: Pin to a specific commit SHA instead of @leader
         # Example: uses: aquasecurity/trivy-action@<commit-sha>
         # Visit https://github.com/aquasecurity/trivy-action/commits to find latest vetted commit
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@leader
         uses: aquasecurity/trivy-action@leader
         with:
           scan-type: 'fs'
