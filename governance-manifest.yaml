@@ -235,6 +235,34 @@ spec:
       description: |
         Database architecture specification covering data models, access patterns,
         schema management, data governance, backup/recovery, and security.
+    
+    # GL50-69: Security Layer
+    - id: "rke2-security"
+      name: "RKE2 Security Hardening"
+      gl_layer: "GL50-69"
+      status: "active"
+      location: "infrastructure/rke2"
+      configs:
+        - "infrastructure/rke2/profiles/production/config.yaml"
+        - "infrastructure/rke2/profiles/production/encryption-provider-config.yaml"
+        - "infrastructure/rke2/profiles/production/psa-config.yaml"
+        - "infrastructure/rke2/profiles/production/audit-policy.yaml"
+      scripts:
+        - "infrastructure/rke2/scripts/install-rke2.sh"
+        - "infrastructure/rke2/scripts/validate-cis.sh"
+      manifests:
+        - "infrastructure/rke2/manifests/network-policies/default-deny-all.yaml"
+      documentation:
+        - "infrastructure/rke2/README.md"
+      functions:
+        - "configure_rke2_security"
+        - "validate_cis_compliance"
+        - "deploy_rke2_cluster"
+        - "audit_rke2_configuration"
+      description: |
+        RKE2 (Rancher Kubernetes Engine 2) security hardening implementation aligned with
+        CIS Kubernetes Benchmark v1.9.0. Includes encryption at rest, Pod Security Admission,
+        network policies, audit logging, and automated compliance validation.
   
   # AI 操作接口
   ai_interface:
