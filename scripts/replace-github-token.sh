@@ -1,5 +1,10 @@
 #!/bin/bash
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: replace-github-token
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 
+# GL Governance Token Replacement Script
 # Script to replace GITHUB_TOKEN with GL_TOKEN in workflows
 
 set -e
