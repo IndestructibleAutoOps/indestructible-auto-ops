@@ -674,22 +674,11 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Build with provenance
-        uses: slsa-framework/slsa-github-generator/.github/workflows/builder_generic_slsa3.yml@v1.9.0
-        with:
-          base64-input-glob: |
-            artifacts/*
-          base64-output-name: artifact.slsa3.intoto.jsonl
-      
-      - name: Upload provenance
-        uses: actions/upload-artifact@v4
-        with:
-          name: provenance
-          path: artifact.slsa3.intoto.jsonl
+    uses: slsa-framework/slsa-github-generator/.github/workflows/builder_generic_slsa3.yml@v1.9.0
+    with:
+      base64-input-glob: |
+        artifacts/*
+      base64-output-name: artifact.slsa3.intoto.jsonl
 ```
 
 **Implementation Timeline:**
