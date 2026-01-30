@@ -19,6 +19,20 @@
 - [x] Push all changes to repository
 - [x] Create pull request for review
 
+## Phase 0.6: RKE2 Security Hardening Integration (New Tasks)
+- [x] Analyze current main branch architecture
+- [x] Create RKE2 integration plan document
+- [x] Create RKE2 directory structure
+- [x] Create production configuration files
+- [x] Create automation scripts
+- [x] Create Kubernetes manifests
+- [x] Create comprehensive documentation
+- [ ] Update governance-manifest.yaml with RKE2 integration
+- [ ] Create GitHub Actions workflow for RKE2 validation
+- [ ] Test RKE2 configuration validation
+- [ ] Commit and push RKE2 integration
+- [ ] Create pull request for RKE2 integration
+
 ## Phase 1: Global DAG Core Components Construction
 - [x] Create global-dag/dag-model/ (dag-node.ts, dag-graph.ts)
 - [x] Create global-dag/dag-builder/ (builder.ts)
