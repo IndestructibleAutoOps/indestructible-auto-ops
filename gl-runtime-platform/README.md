@@ -18,6 +18,17 @@ GL Runtime Platform is a production-grade, cross-module, cross-platform, cross-l
 
 ## Architecture
 
+### 📘 GL Runtime Evolution Path
+
+For the complete GL Runtime architecture evolution from V1 to V24, see:
+- **[GL Runtime Evolution Path](GL_RUNTIME_EVOLUTION_PATH.md)** - Complete documentation of all versions
+- **[GL Evolution Diagram](GL_EVOLUTION_DIAGRAM.md)** - Visual architecture diagrams
+
+The architecture presents a **complete intelligent system evolution timeline** from basic execution to native autonomous platform, covering:
+- **Intelligence Dimensions** (V1-V20): Execution → Semantic → Reasoning → Evolution
+- **Governance Dimensions** (V21-V24): Code Intelligence → Root Governance → Meta-Governance
+- **Platform Dimensions** (V0 Pro-V25): GL-Native Platform → Ecosystem Integration
+
 ### Core Components
 
 - **Orchestration Engine** - Multi-agent parallel orchestration system
@@ -55,6 +66,7 @@ GL Runtime Platform is a production-grade, cross-module, cross-platform, cross-l
 
 - **Docker Compose** - Local development and testing
 - **Kubernetes** - Production deployment with auto-scaling
+- **Enterprise Automation Architecture** - GL99 enterprise architecture specification
 
 ## Installation
 
@@ -130,6 +142,9 @@ kubectl apply -f deployment/k8s/
 - `ops/pipelines/` - Pipeline definitions
 - `ops/agents/agent-orchestration.yaml` - Agent configuration
 - `ops/auto-bootstrap/` - Auto-bootstrap configurations
+- `ops/executors/zero-residue-executor.sh` - Zero-residue execution runner
+- `deployment/enterprise-platform-deployment.yaml` - Enterprise production deployment configuration
+- `docs/architecture/Enterprise-Automation-Platform-Architecture.yaml` - Enterprise architecture spec
 
 ## Governance Compliance
 

@@ -1,0 +1,28 @@
+{
+  "id": "cec0833c-4bf5-4b7d-8f1b-ecb8c7f38777",
+  "timestamp": "2026-01-29T15:52:36.766Z",
+  "scope": "full",
+  "results": [
+    {
+      "agent": "gl-governance-validator",
+      "success": true,
+      "violations": [],
+      "compliance": 100
+    },
+    {
+      "agent": "codeql-monitor",
+      "success": true,
+      "findings": []
+    },
+    {
+      "agent": "quality-assurance",
+      "success": true,
+      "qualityScore": 95
+    },
+    {
+      "agent": "dependency-scanner",
+      "success": true,
+      "vulnerabilities": []
+    }
+  ]
+}

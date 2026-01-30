@@ -1,0 +1,223 @@
+name: GL Naming Governance
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+concurrency:
+  group: naming-governance-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NAMING_PATTERN: '^(dev|staging|prod)-[a-z0-9-]+-(deploy|svc|ing|cm|secret)-v\d+\.\d+\.\d+(-[A-Za-z0-9]+)?$'
+  GOVERNANCE_LEVEL: "3"
+
+jobs:
+  validate-naming:
+    runs-on: ubuntu-latest
+    outputs:
+      violations: ${{ steps.check.outputs.violations }}
+      compliance_rate: ${{ steps.check.outputs.compliance_rate }}
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          fetch-depth: 0
+
+      - name: Setup OPA
+        run: |
+          curl -L -o opa https://openpolicyagent.org/downloads/v0.60.0/opa_linux_amd64_static
+          chmod +x opa
+          sudo mv opa /usr/local/bin/
+
+      - name: Create Naming Policy
+        run: |
+          mkdir -p .governance/policies
+          cat > .governance/policies/naming.rego << 'EOF'
+          package gl.naming
+
+          import future.keywords.in
+          import future.keywords.if
+
+          default allow := false
+          default compliant := false
+
+          # Resource naming pattern
+          resource_pattern := `^(dev|staging|prod)-[a-z0-9-]+-(deploy|svc|ing|cm|secret|pvc|hpa|pdb)-v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9]+)?$`
+
+          # Kubernetes resource naming
+          k8s_name_pattern := `^[a-z0-9]([-a-z0-9]*[a-z0-9])?$`
+
+          # Workflow naming pattern
+          workflow_pattern := `^(GL|gl)-[a-z-]+-[a-z]+\.yml$`
+
+          # Validate resource names
+          compliant if {
+              regex.match(resource_pattern, input.name)
+          }
+
+          # Check K8s naming conventions
+          valid_k8s_name if {
+              regex.match(k8s_name_pattern, input.metadata.name)
+              count(input.metadata.name) <= 63
+          }
+
+          # Violations report
+          violations[msg] {
+              not compliant
+              msg := sprintf("Resource '%s' does not match naming convention: %s", [input.name, resource_pattern])
+          }
+
+          violations[msg] {
+              input.kind == "Deployment"
+              not valid_k8s_name
+              msg := sprintf("K8s resource '%s' violates naming rules", [input.metadata.name])
+          }
+
+          # Naming suggestions
+          suggest_name(current) = suggested {
+              parts := split(current, "-")
+              count(parts) >= 2
+              env := parts[0]
+              env in ["dev", "staging", "prod"]
+              suggested := sprintf("%s-%s-deploy-v1.0.0", [env, concat("-", array.slice(parts, 1, count(parts)))])
+          }
+          EOF
+
+      - name: Scan Repository
+        id: check
+        run: |
+          VIOLATIONS=0
+          TOTAL=0
+          
+          # Scan YAML files for naming violations
+          for file in $(find . -type f \( -name "*.yaml" -o -name "*.yml" \) -not -path "./.git/*"); do
+            TOTAL=$((TOTAL + 1))
+            # Check file naming
+            filename=$(basename "$file")
+            if [[ ! "$filename" =~ ^[a-z0-9-]+\.(yaml|yml)$ ]]; then
+              VIOLATIONS=$((VIOLATIONS + 1))
+              echo "::warning file=$file::File naming violation: $filename"
+            fi
+          done
+          
+          # Calculate compliance rate
+          if [ $TOTAL -gt 0 ]; then
+            RATE=$(echo "scale=2; (($TOTAL - $VIOLATIONS) / $TOTAL) * 100" | bc)
+          else
+            RATE="100.00"
+          fi
+          
+          echo "violations=$VIOLATIONS" >> $GITHUB_OUTPUT
+          echo "compliance_rate=$RATE" >> $GITHUB_OUTPUT
+          echo "total_scanned=$TOTAL" >> $GITHUB_OUTPUT
+
+      - name: Generate Compliance Report
+        run: |
+          mkdir -p reports/naming
+          cat > reports/naming/compliance-$(date +%Y%m%d).json << EOF
+          {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "governance_level": "${{ env.GOVERNANCE_LEVEL }}",
+            "metrics": {
+              "total_resources": "${{ steps.check.outputs.total_scanned }}",
+              "violations": "${{ steps.check.outputs.violations }}",
+              "compliance_rate": "${{ steps.check.outputs.compliance_rate }}%"
+            },
+            "sla_targets": {
+              "NCR": "95%",
+              "VFC": "<10",
+              "MFR": ">80%"
+            }
+          }
+          EOF
+
+      - name: Upload Compliance Report
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
+        with:
+          name: naming-compliance-${{ github.run_id }}
+          path: reports/naming/
+          retention-days: 90
+
+  conftest-validation:
+    runs-on: ubuntu-latest
+    needs: validate-naming
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      - name: Install Conftest
+        run: |
+          wget -q https://github.com/open-policy-agent/conftest/releases/download/v0.48.0/conftest_0.48.0_Linux_x86_64.tar.gz
+          tar xzf conftest_0.48.0_Linux_x86_64.tar.gz
+          sudo mv conftest /usr/local/bin/
+
+      - name: Run Conftest
+        run: |
+          mkdir -p .governance/policies
+          cat > .governance/policies/naming_conftest.rego << 'EOF'
+          package main
+
+          deny[msg] {
+              input.kind == "Deployment"
+              name := input.metadata.name
+              not regex.match(`^[a-z0-9]([-a-z0-9]*[a-z0-9])?$`, name)
+              msg := sprintf("Deployment name '%s' violates K8s naming convention", [name])
+          }
+
+          deny[msg] {
+              input.kind == "Service"
+              name := input.metadata.name
+              count(name) > 63
+              msg := sprintf("Service name '%s' exceeds 63 character limit", [name])
+          }
+
+          warn[msg] {
+              input.kind
+              not input.metadata.labels["app.kubernetes.io/name"]
+              msg := sprintf("%s '%s' missing recommended label 'app.kubernetes.io/name'", [input.kind, input.metadata.name])
+          }
+          EOF
+
+          find . -type f \( -name "*.yaml" -o -name "*.yml" \) -path "*/k8s/*" -exec conftest test {} --policy .governance/policies/ \; || true
+
+  alert-violations:
+    needs: [validate-naming]
+    runs-on: ubuntu-latest
+    if: needs.validate-naming.outputs.violations != '0'
+    steps:
+      - name: Create Issue for Violations
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          script: |
+            const violations = '${{ needs.validate-naming.outputs.violations }}';
+            const rate = '${{ needs.validate-naming.outputs.compliance_rate }}';
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[GL Governance] Naming violations detected: ${violations}`,
+              body: `## Naming Governance Report
+              
+              **Compliance Rate:** ${rate}%
+              **Violations Found:** ${violations}
+              **Governance Level:** ${{ env.GOVERNANCE_LEVEL }}
+              
+              ### Action Required
+              Please review and fix naming violations to meet governance standards.
+              
+              ### SLA Targets
+              - NCR (Naming Compliance Rate): 95%
+              - VFC (Violation Fix Count): <10 per week
+              - MFR (Manual Fix Rate): >80%
+              
+              _Generated by GL Naming Governance workflow_`,
+              labels: ['governance', 'naming', 'automated']
+            });

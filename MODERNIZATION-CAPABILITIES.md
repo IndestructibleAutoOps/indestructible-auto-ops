@@ -787,7 +787,7 @@ try {
 ```
 
 ### References
-- [Mastering JavaScript Async Patterns](https://dev.to/okrahul/mastering-javascript-async-patterns-from-callbacks-to-asyncawait-2l18)
+- [Mastering JavaScript Async Patterns](https://dev.to/okrahul/leadering-javascript-async-patterns-from-callbacks-to-asyncawait-2l18)
 - [Async Patterns and Best Practices in Node.js](https://arunangshudas.medium.com/asynchronous-patterns-and-best-practices-in-node-js-87ba2a7c0477)
 - [How to Escape Callback Hell in JavaScript](https://dev.to/alex_aslam/how-to-escape-callback-hell-in-javascript-a-developer-s-guide-2hpm)
 

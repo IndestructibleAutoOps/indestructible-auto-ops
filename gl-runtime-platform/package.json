@@ -1,7 +1,15 @@
 {
   "name": "gl-runtime-platform",
-  "version": "15.0.0",
-  "description": "GL Governance Runtime Platform v15.0.0 - Universal Intelligence Layer: Cross-Domain Reasoning, General Problem Solving, and Universal Adaptation",
+  "version": "20.0.0",
+  "description": "GL Governance Runtime Platform v20.0.0 - Infinite Learning Continuum: Perpetual Knowledge Accretion, Semantic Reformation, and Autonomous Evolution",
+  "_gl": {
+    "version": "20.0.0",
+    "layer": "GL90-99",
+    "semantic": "runtime-fabric-config",
+    "charter": "4.0.0"
+  },
+"version": "16.0.0",
+  "description": "GL Governance Runtime Platform v16.0.0 - Inter-Reality Integration Architecture: Cross-Framework Stability and Adaptive Intelligence",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -14,14 +22,17 @@
     "orchestrate": "node dist/commands/orchestrate.js",
     "mesh": "node dist/cognitive-mesh-server.js",
     "evolution": "node dist/evolution-server.js",
-    "universal-intelligence": "node dist/universal-intelligence-server.js"
+    "universal-intelligence": "node dist/universal-intelligence-server.js",
+    "omni-context": "node dist/omni-context-server.js",
+    "trans-domain": "node dist/trans-domain-server.js",
+    "inter-reality": "node dist/inter-reality-server.js"
   },
   "dependencies": {
     "@types/cors": "^2.8.19",
     "ajv": "^8.12.0",
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "dotenv": "^16.4.1",
-    "express": "^4.18.2",
+    "express": "^4.22.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

@@ -1,0 +1,162 @@
+name: "[L2-Audit] Naming Convention Validation (Conftest)"
+
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: naming-validation-workflow
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+
+on:
+  pull_request:
+    paths:
+      - "**/*.yaml"
+      - "**/*.yml"
+      - "deploy/**"
+      - "apps/**"
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - "**/*.yaml"
+      - "**/*.yml"
+      - "deploy/**"
+      - "apps/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-naming:
+    name: Validate Naming Conventions
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        with:
+          fetch-depth: 0
+
+      - name: Setup Conftest
+        uses: influxdata/setup-conftest@v2.0.1
+        with:
+          conftest-version: latest
+
+      - name: Validate Kubernetes manifests
+        run: |
+          conftest test \
+            --policy .config/conftest/policies/ \
+            --all-namespaces \
+            --output json \
+            deploy/kustomize/overlays/*/kustomization.yaml \
+            deploy/helm/*/templates/*.yaml \
+            2>&1 | tee conftest-output.json
+
+      - name: Validate Helm charts
+        run: |
+          for chart in deploy/helm/*/; do
+            echo "Validating chart: $chart"
+            conftest test \
+              --policy .config/conftest/policies/ \
+              --output json \
+              "$chart"
+          done
+
+      - name: Parse Conftest results
+        id: parse
+        run: |
+          if [ -f conftest-output.json ]; then
+            FAILURES=$(jq '[.[] | select(.failures != [])] | length' conftest-output.json)
+            echo "failures=$FAILURES" >> $GITHUB_OUTPUT
+            
+            if [ "$FAILURES" -gt 0 ]; then
+              jq '.' conftest-output.json > conftest-failures.json
+            fi
+          else
+            echo "failures=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Conftest artifacts
+        if: always()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: conftest-results-${{ github.sha }}
+          path: |
+            conftest-output.json
+            conftest-failures.json
+          retention-days: 30
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const failures = ${{ steps.parse.outputs.failures }};
+            
+            let comment = `## 🔍 Naming Convention Validation Results\n\n`;
+            
+            if (failures > 0) {
+              comment += `❌ **FAILED**: Found ${failures} naming convention violation(s)\n\n`;
+              comment += `### 📋 Violations\n\n`;
+              comment += `The following resources do not follow the naming policy:\n`;
+              comment += `- Pattern: \`^(dev|staging|prod)-[a-z0-9-]+-(deploy|svc|ing|cm|secret)-v\\d+\\.\\d+\\.\\d+(-[A-Za-z0-9]+)?$\`\n`;
+              comment += `- Required labels: \`app\`, \`version\`, \`environment\`\n\n`;
+              comment += `Please review the full report in the workflow artifacts.\n\n`;
+              comment += `### 🔧 How to Fix\n\n`;
+              comment += `Use the naming suggester: \`./scripts/naming/suggest-name.mjs\`\n`;
+              comment += `Or run auto-labeler: \`./scripts/naming/auto-label.k8s.yaml\`\n\n`;
+            } else {
+              comment += `✅ **PASSED**: All resources follow naming conventions\n\n`;
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Fail if violations found
+        if: steps.parse.outputs.failures != '0'
+        run: |
+          echo "❌ Naming convention violations detected"
+          exit 1
+
+  report-metrics:
+    name: Report Metrics to Prometheus
+    needs: validate-naming
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: conftest-results-${{ github.sha }}
+
+      - name: Push metrics to Prometheus Pushgateway
+        run: |
+          FAILURES=${{ needs.validate-naming.outputs.failures || '0' }}
+          TOTAL_RESOURCES=$(find deploy -name "*.yaml" | wc -l)
+          
+          cat <<EOF | curl --data-binary @- http://${{ secrets.PROMETHEUS_PUSHGATEWAY }}/metrics/job/naming-validation/instance/${{ github.run_number }}
+            # HELP naming_violations_total Total number of naming convention violations
+            # TYPE naming_violations_total gauge
+            naming_violations_total{repo="${{ github.repository }}", branch="${{ github.ref_name }}"} $FAILURES
+            
+            # HELP naming_resources_total Total number of resources checked
+            # TYPE naming_resources_total gauge
+            naming_resources_total{repo="${{ github.repository }}", branch="${{ github.ref_name }}"} $TOTAL_RESOURCES
+            
+            # HELP naming_compliance_rate Percentage of resources that comply
+            # TYPE naming_compliance_rate gauge
+            naming_compliance_rate{repo="${{ github.repository }}", branch="${{ github.ref_name }}"} $(( (TOTAL_RESOURCES - FAILURES) * 100 / TOTAL_RESOURCES ))
+          EOF

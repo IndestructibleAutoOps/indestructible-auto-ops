@@ -11,6 +11,7 @@ metadata:
   version: "9.0.0"
   created_at: "2026-01-28T00:00:00Z"
   updated_at: "2026-01-30T00:00:00Z"
+  created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -18,6 +19,8 @@ metadata:
     governance.machinenativeops.io/approval: "approved"
     governance.machinenativeops.io/charter-version: "2.0.0"
     governance.machinenativeops.io/semantic-enabled: "true"
+    governance.machinenativeops.io/dag-version: "9.0.0"
+    governance.machinenativeops.io/global-dag-enabled: "true"
 
 spec:
   repositories:
@@ -300,3 +303,113 @@ spec:
       sync_interval: 30
       conflict_resolution: "semantic"
       consistency_level: "strict"
+  dag_topology:
+    enabled: true
+    version: "9.0.0"
+    global_dag:
+      enabled: true
+      graph_id: "global-federation-dag"
+      construction_mode: "auto"
+      validation_mode: "strict"
+      execution_mode: "parallel"
+    
+    dag_nodes:
+      - id: "dag-node-001"
+        repository_id: "repo-001"
+        type: "root-orchestrator"
+        priority: 0
+        criticality: "critical"
+        dependencies: []
+        parallelization_enabled: true
+        retry_policy:
+          max_retries: 3
+          backoff_seconds: 30
+      
+      - id: "dag-node-002"
+        repository_id: "repo-002"
+        type: "search-system"
+        priority: 1
+        criticality: "high"
+        dependencies: ["dag-node-001"]
+        parallelization_enabled: true
+        retry_policy:
+          max_retries: 2
+          backoff_seconds: 20
+      
+      - id: "dag-node-003"
+        repository_id: "repo-003"
+        type: "file-organizer"
+        priority: 1
+        criticality: "high"
+        dependencies: ["dag-node-001"]
+        parallelization_enabled: true
+        retry_policy:
+          max_retries: 2
+          backoff_seconds: 20
+      
+      - id: "dag-node-004"
+        repository_id: "repo-004"
+        type: "enterprise-core"
+        priority: 2
+        criticality: "high"
+        dependencies: ["dag-node-001"]
+        parallelization_enabled: false
+        retry_policy:
+          max_retries: 1
+          backoff_seconds: 60
+    
+    cross_repo_edges:
+      - source: "dag-node-001"
+        target: "dag-node-002"
+        type: "dependency"
+        strength: "strong"
+        validation_required: true
+      
+      - source: "dag-node-001"
+        target: "dag-node-003"
+        type: "dependency"
+        strength: "strong"
+        validation_required: true
+      
+      - source: "dag-node-001"
+        target: "dag-node-004"
+        type: "dependency"
+        strength: "medium"
+        validation_required: true
+      
+      - source: "dag-node-002"
+        target: "dag-node-003"
+        type: "data-sharing"
+        strength: "weak"
+        validation_required: false
+    
+    dag_synchronization:
+      enabled: true
+      synchronization_points:
+        - id: "sync-point-001"
+          name: "post-orchestration"
+          participating_nodes: ["dag-node-001"]
+          timeout_seconds: 300
+          required_completion: 100
+        - id: "sync-point-002"
+          name: "pre-deployment"
+          participating_nodes: ["dag-node-001", "dag-node-002", "dag-node-003"]
+          timeout_seconds: 600
+          required_completion: 100
+        - id: "sync-point-003"
+          name: "final-verification"
+          participating_nodes: ["dag-node-001", "dag-node-002", "dag-node-003", "dag-node-004"]
+          timeout_seconds: 900
+          required_completion: 100
+    
+    dag_parallelization:
+      enabled: true
+      strategy: "topological"
+      max_concurrent_executions: 10
+      resource_constraints:
+        max_cpu: 16
+        max_memory: "32Gi"
+        max_disk: "100Gi"
+      priority_preemption:
+        enabled: true
+        preemption_timeout: 300
