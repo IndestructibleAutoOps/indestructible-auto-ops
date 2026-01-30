@@ -8,8 +8,9 @@ apiVersion: federation.machinenativeops.io/v1
 kind: TrustModel
 metadata:
   name: trust-model
-  version: "7.0.0"
+  version: "9.0.0"
   created_at: "2026-01-28T00:00:00Z"
+  updated_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -96,6 +97,30 @@ spec:
         severity: "medium"
         action: "warn"
 
+      - id: "dag-consistency-validation"
+        name: "DAG Consistency Validation"
+        enabled: true
+        description: "Validate DAG consistency across federation"
+        check_type: "dag"
+        severity: "critical"
+        action: "block"
+
+      - id: "dag-dependency-validation"
+        name: "DAG Dependency Validation"
+        enabled: true
+        description: "Validate DAG dependencies are resolved"
+        check_type: "dag"
+        severity: "critical"
+        action: "block"
+
+      - id: "dag-execution-authorization"
+        name: "DAG Execution Authorization"
+        enabled: true
+        description: "Authorize DAG execution based on trust level"
+        check_type: "dag"
+        severity: "critical"
+        action: "block"
+
   permission_matrix:
     repair:
       high: "automatic"
@@ -121,6 +146,21 @@ spec:
       high: "automatic"
       medium: "automatic"
       low: "automatic"
+
+    dag_build:
+      high: "automatic"
+      medium: "read_only"
+      low: "denied"
+
+    dag_execute:
+      high: "automatic"
+      medium: "approval_required"
+      low: "denied"
+
+    dag_resolve:
+      high: "automatic"
+      medium: "read_only"
+      low: "denied"
 
   semantic_signing:
     enabled: true

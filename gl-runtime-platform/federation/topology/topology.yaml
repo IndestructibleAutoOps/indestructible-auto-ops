@@ -8,8 +8,9 @@ apiVersion: federation.machinenativeops.io/v1
 kind: FederationTopology
 metadata:
   name: federation-topology
-  version: "7.0.0"
+  version: "9.0.0"
   created_at: "2026-01-28T00:00:00Z"
+  updated_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -229,3 +230,73 @@ spec:
       enabled: true
       track_cross_repo_dependencies: true
       detect_semantic_conflicts: true
+
+  global_dag_topology:
+    enabled: true
+    dag_graph_id: "global-dag-v9"
+    version: "9.0.0"
+    nodes:
+      - id: "dag-node-001"
+        repository_id: "repo-001"
+        organization_id: "org-001"
+        node_type: "orchestrator"
+        participation_level: "full"
+        capabilities:
+          - "dag_builder"
+          - "dag_executor"
+          - "cross_repo_resolver"
+        dependencies: []
+      - id: "dag-node-002"
+        repository_id: "repo-002"
+        organization_id: "org-001"
+        node_type: "worker"
+        participation_level: "full"
+        capabilities:
+          - "dag_executor"
+        dependencies:
+          - "dag-node-001"
+      - id: "dag-node-003"
+        repository_id: "repo-003"
+        organization_id: "org-001"
+        node_type: "worker"
+        participation_level: "full"
+        capabilities:
+          - "dag_executor"
+        dependencies:
+          - "dag-node-001"
+      - id: "dag-node-004"
+        repository_id: "repo-004"
+        organization_id: "org-002"
+        node_type: "observer"
+        participation_level: "observer"
+        capabilities:
+          - "dag_reader"
+        dependencies:
+          - "dag-node-001"
+    edges:
+      - from: "dag-node-001"
+        to: "dag-node-002"
+        type: "orchestration"
+        weight: 1.0
+      - from: "dag-node-001"
+        to: "dag-node-003"
+        type: "orchestration"
+        weight: 1.0
+      - from: "dag-node-001"
+        to: "dag-node-004"
+        type: "read-only"
+        weight: 0.5
+    execution_policies:
+      parallel_execution: true
+      max_concurrent_executions: 100
+      timeout_seconds: 3600
+      retry_policy:
+        max_retries: 3
+        backoff_multiplier: 2
+      deadlock_detection: true
+      automatic_recovery: true
+    synchronization:
+      mode: "event-driven"
+      sync_interval: 30
+      conflict_resolution: "semantic"
+      consistency_level: "strict"

@@ -4,15 +4,16 @@
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
-# Multi-Agent Orchestration Configuration v7.0.0
-# Semantic-Resource-Graph-Aware
+# Multi-Agent Orchestration Configuration v9.0.0
+# DAG-Aware Orchestration
 
 apiVersion: orchestration.machinenativeops.io/v1
 kind: AgentOrchestration
 metadata:
   name: multi-agent-parallel-orchestration
-  version: "7.0.0"
+  version: "9.0.0"
   created_at: "2026-01-28T00:00:00Z"
+  updated_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -25,8 +26,8 @@ metadata:
 spec:
   # Parallel execution strategy
   parallelism:
-    max_concurrent_agents: 8
-    timeout_seconds: 1800
+    max_concurrent_agents: 100
+    timeout_seconds: 3600
     retry_policy:
       max_retries: 3
       backoff_multiplier: 2
@@ -39,8 +40,82 @@ spec:
     build_before_orchestration: true
     refresh_interval_seconds: 300
 
+  # Global DAG requirements
+  dag_prerequisites:
+    enabled: true
+    global_dag_required: true
+    dag_validation_required: true
+    build_before_orchestration: true
+    refresh_interval_seconds: 300
+    include_external_repos: true
+
   # Agent definitions
   agents:
+    - id: global-dag-builder
+      name: "Global DAG Builder Agent"
+      type: "dag-builder"
+      priority: 0
+      enabled: true
+      semantic_aware: true
+      config:
+        build_scope:
+          - "all-repositories"
+          - "external-dependencies"
+        scan_interval_seconds: 300
+        dependency_resolution: "semantic"
+        include_test_repos: false
+        generate_dag_visualization: true
+        validate_dag_consistency: true
+      dependencies: []
+      outputs:
+        - "global-dag-graph.json"
+        - "dag-nodes.json"
+        - "dag-edges.json"
+        - "dag-dependencies.json"
+
+    - id: global-dag-executor
+      name: "Global DAG Executor Agent"
+      type: "dag-executor"
+      priority: 0
+      enabled: true
+      semantic_aware: true
+      config:
+        parallel_execution: true
+        max_parallel_tasks: 100
+        execution_timeout_seconds: 3600
+        retry_policy:
+          max_retries: 3
+          backoff_multiplier: 2
+        deadlock_detection: true
+        automatic_recovery: true
+        execution_tracking: true
+      dependencies:
+        - "global-dag-builder"
+      outputs:
+        - "dag-execution-log.json"
+        - "execution-results.json"
+        - "execution-metrics.json"
+
+    - id: cross-repo-resolver
+      name: "Cross-Repo Resolver Agent"
+      type: "resolver"
+      priority: 0
+      enabled: true
+      semantic_aware: true
+      config:
+        resolution_strategy: "semantic"
+        conflict_resolution: "priority"
+        include_external_repos: true
+        validate_resolutions: true
+        cache_resolutions: true
+        cache_ttl_seconds: 3600
+      dependencies:
+        - "global-dag-builder"
+      outputs:
+        - "dependency-resolutions.json"
+        - "conflict-resolutions.json"
+        - "resolution-report.json"
+
     - id: gl-governance-validator
       name: "GL Governance Validator Agent"
       type: "governance"
@@ -324,10 +399,10 @@ spec:
 
   # Resource limits
   resources:
-    memory_limit_mb: 2048
-    cpu_limit_cores: 4
-    disk_limit_mb: 1024
-    network_bandwidth_mbps: 100
+    memory_limit_mb: 4096
+    cpu_limit_cores: 8
+    disk_limit_mb: 2048
+    network_bandwidth_mbps: 1000
 
   # Monitoring configuration
   monitoring:
