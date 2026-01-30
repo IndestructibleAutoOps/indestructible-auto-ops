@@ -694,6 +694,7 @@ jobs:
         # Example: uses: aquasecurity/trivy-action@<commit-sha>
         # Visit https://github.com/aquasecurity/trivy-action/commits to find latest vetted commit
         uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@leader
         with:
           scan-type: 'fs'
           scan-ref: '.'
@@ -786,6 +787,12 @@ jobs:
     with:
       base64-subjects: "${{ needs.build-artifacts.outputs.digests }}"
       upload-assets: true
+  build:
+    uses: slsa-framework/slsa-github-generator/.github/workflows/builder_generic_slsa3.yml@v1.9.0
+    with:
+      base64-input-glob: |
+        artifacts/*
+      base64-output-name: artifact.slsa3.intoto.jsonl
 ```
 
 **Implementation Timeline:**
@@ -988,6 +995,22 @@ class TTLCache:
         # - get/set methods with TTL checking
         # - Background cleanup task
 
+from functools import lru_cache
+from typing import List
+from cachetools import TTLCache
+# ConnectionPool can be from aiohttp.connector or a custom implementation
+# Example: from aiohttp import ClientSession, TCPConnector
+
+class ConnectionPool:
+    """Example connection pool implementation"""
+    def __init__(self, size: int):
+        self.size = size
+    
+    async def __aenter__(self):
+        return self
+    
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        pass
 
 class OptimizedExecutorAgent:
     def __init__(self):

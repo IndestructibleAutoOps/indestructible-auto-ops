@@ -76,6 +76,19 @@ class PlannerAgent:
             raise PlanningError(
                 f"Failed to create execution plan for task {task!r}"
             ) from exc
+
+            # Dependency analysis
+            dag = self.build_dag(subtasks)
+
+            # Resource estimation
+            resources = self.estimate_resources(dag)
+        except Exception as exc:
+            # In a full implementation, consider catching more specific
+            # exception types from decompose/build_dag/estimate_resources.
+            raise PlanningError(
+                f"Failed to create execution plan for task {task!r}"
+            ) from exc
+        return ExecutionPlan(dag, resources)
 ```
 
 ---
@@ -446,6 +459,25 @@ class AuditLogger:
         # For other types, return as-is
         else:
             return data
+
+    def _redact_data(self, data: dict) -> dict:
+        """Return a redacted copy of the data, masking likely secret fields.
+
+        This method performs a shallow key-based redaction. In a full
+        implementation, this should be extended to handle nested structures
+        and project-specific secret patterns.
+        """
+        if not isinstance(data, dict):
+            return data
+
+        sensitive_keys = {"password", "token", "secret", "api_key", "authorization", "auth"}
+        redacted: dict = {}
+        for key, value in data.items():
+            if isinstance(key, str) and key.lower() in sensitive_keys:
+                redacted[key] = "***REDACTED***"
+            else:
+                redacted[key] = value
+        return redacted
 
     def log_action(self, action: AgentAction):
         # Redact potentially sensitive input/output before persisting
