@@ -1,15 +1,12 @@
 {
-  "audit_timestamp": "2026-01-30T16:11:47.093524",
+  "audit_timestamp": "2026-01-30T16:43:40.306795",
   "issues": [],
   "warnings": [
-    "agent-orchestration.yml 版本不一致: metadata=9.0.0, comment=7.0.0",
     "治理目錄不存在: gl-runtime-platform/governance-root-layer",
     "治理目錄不存在: gl-runtime-platform/meta-governance-layer",
     "治理目錄不存在: gl-runtime-platform/reality-falsification-layer"
   ],
-  "version_conflicts": [
-    "agent-orchestration.yml 版本不一致: metadata=9.0.0, comment=7.0.0"
-  ],
+  "version_conflicts": [],
   "missing_files": [],
   "successes": [],
   "package_json": {
@@ -20,9 +17,9 @@
   },
   "agent_orchestration": {
     "metadata_version": "9.0.0",
-    "comment_version": "7.0.0",
-    "version_match": false,
-    "status": "conflict"
+    "comment_version": "9.0.0",
+    "version_match": true,
+    "status": "ok"
   },
   "governance-quantum_file_count": 13,
   "infrastructure-quantum_file_count": 7,
@@ -32,8 +29,8 @@
   "summary_docs_count": 10,
   "summary": {
     "total_issues": 0,
-    "total_warnings": 4,
-    "total_version_conflicts": 1,
+    "total_warnings": 3,
+    "total_version_conflicts": 0,
     "total_missing_files": 0
   }
 }

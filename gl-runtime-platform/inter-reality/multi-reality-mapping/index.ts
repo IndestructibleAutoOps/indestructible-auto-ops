@@ -176,9 +176,7 @@ export class MultiRealityMappingEngine extends EventEmitter {
     if (mappings.length === 0) return 0;
     
     const applicableMappings = mappings.filter(m => m.applicable);
-    const mappingsToAverage = applicableMappings.length > 0 ? applicableMappings : mappings;
-    const avgConfidence =
-      mappingsToAverage.reduce((sum, m) => sum + m.confidence, 0) / mappingsToAverage.length;
+    const avgConfidence = applicableMappings.reduce((sum, m) => sum + m.confidence, 0) / applicableMappings.length;
     
     return avgConfidence;
   }
@@ -192,6 +190,7 @@ export class MultiRealityMappingEngine extends EventEmitter {
     element: string
   ): Promise<CrossRealityTransfer> {
     // Find the mapping
+    const mappingKey = `${sourceReality}->${targetReality}-*`;
     let mapping: RealityMapping | null = null;
 
     for (const [key, value] of Array.from(this.realityMappings.entries())) {
