@@ -39,7 +39,9 @@ echo "===================================================="
 for workflow in "${WORKFLOWS[@]}"; do
     if [ -f "$workflow" ]; then
         echo "Processing: $workflow"
-        sed -i 's/secrets\.GITHUB_TOKEN/secrets.GL_TOKEN/g' "$workflow"
+        tmp_file="$(mktemp)"
+        sed 's/secrets\.GITHUB_TOKEN/secrets.GL_TOKEN/g' "$workflow" > "$tmp_file"
+        mv "$tmp_file" "$workflow"
         echo "  ✓ Updated"
     else
         echo "  ✗ File not found: $workflow"
