@@ -111,9 +111,13 @@ jobs:
       - name: Check workflow count
         run: |
           WORKFLOW_COUNT=$(find .github/workflows -name '*.yml' -o -name '*.yaml' | wc -l)
-          if [ $WORKFLOW_COUNT -gt 50 ]; then
-            echo "Error: Too many workflows ($WORKFLOW_COUNT > 50)"
-            echo "Please consolidate workflows before adding new ones"
+          # Baseline from current audit: repository has 81 workflows
+          BASELINE_WORKFLOW_COUNT=81
+          TARGET_WORKFLOW_COUNT=${WORKFLOW_GOVERNANCE_TARGET:-$BASELINE_WORKFLOW_COUNT}
+          
+          if [ "$WORKFLOW_COUNT" -gt "$TARGET_WORKFLOW_COUNT" ]; then
+            echo "Error: Too many workflows ($WORKFLOW_COUNT > $TARGET_WORKFLOW_COUNT)"
+            echo "Please consolidate workflows before adding new ones or adjust WORKFLOW_GOVERNANCE_TARGET"
             exit 1
           fi
       
@@ -201,9 +205,27 @@ mkdir -p ".governance/versions/v1.0.0"
 mkdir -p ".governance/tests"/{root,platform,services}
 
 # Move existing policies
-mv .governance/policies/naming.rego "$POLICY_ROOT/root/"
-mv engine/controlplane/governance/policies/*.rego "$POLICY_ROOT/platform/"
-mv governance-quantum/naming/opa-naming-policy.rego "$POLICY_ROOT/root/"
+if [ -f ".governance/policies/naming.rego" ]; then
+    mv ".governance/policies/naming.rego" "$POLICY_ROOT/root/"
+else
+    echo "Skipping .governance/policies/naming.rego (file not found)"
+fi
+
+if [ -d "engine/controlplane/governance/policies" ]; then
+    for file in engine/controlplane/governance/policies/*.rego; do
+        if [ -f "$file" ]; then
+            mv "$file" "$POLICY_ROOT/platform/"
+        fi
+    done
+else
+    echo "Skipping engine/controlplane/governance/policies (directory not found)"
+fi
+
+if [ -f "governance-quantum/naming/opa-naming-policy.rego" ]; then
+    mv "governance-quantum/naming/opa-naming-policy.rego" "$POLICY_ROOT/root/"
+else
+    echo "Skipping governance-quantum/naming/opa-naming-policy.rego (file not found)"
+fi
 
 # Create policy index
 cat > "$POLICY_ROOT/INDEX.md" << EOF
@@ -265,11 +287,23 @@ class PolicyVersionManager:
         with open(version_dir / "metadata.json", "w") as f:
             json.dump(metadata, f, indent=2)
         
-        # Update current symlink
+        # Update current symlink (cross-platform compatible)
         current = self.policy_root / "versions" / "current"
         if current.exists():
-            current.unlink()
-        current.symlink_to(version_dir)
+            if current.is_symlink():
+                current.unlink()
+            else:
+                # Handle Windows case where it might be a junction or directory
+                import shutil
+                shutil.rmtree(current)
+        
+        # Create symlink (or copy on Windows if symlink fails)
+        try:
+            current.symlink_to(version_dir)
+        except (OSError, NotImplementedError):
+            # Fallback for Windows or filesystems without symlink support
+            import shutil
+            shutil.copytree(version_dir, current)
         
         return metadata
 
@@ -284,6 +318,8 @@ print(f"Created version {metadata['version']} with {metadata['policies']} polici
 ```python
 # .governance/tests/test_policies.py
 import pytest
+# Note: Install opa-python-client or similar OPA client library
+# Example: pip install opa-python-client
 from opa_client import OpaClient
 
 class TestRootPolicies:
@@ -360,7 +396,7 @@ class TestRootPolicies:
         "type": "stat",
         "targets": [
           {
-            "expr": "up{job=~&quot;.*&quot;}",
+            "expr": "up{job=~\".*\"}",
             "legendFormat": "{{job}}"
           }
         ]
@@ -499,11 +535,15 @@ route:
 receivers:
   - name: 'critical-alerts'
     slack_configs:
+      # NOTE: Replace with your actual Slack webhook URL and load it from a secure secret
+      #       or environment variable. Do not commit real webhook URLs to version control.
       - api_url: 'https://hooks.slack.com/services/xxx'
         channel: '#platform-critical'
     
   - name: 'warning-alerts'
     slack_configs:
+      # NOTE: Replace with your actual Slack webhook URL and load it from a secure secret
+      #       or environment variable. Do not commit real webhook URLs to version control.
       - api_url: 'https://hooks.slack.com/services/xxx'
         channel: '#platform-alerts'
     
@@ -562,6 +602,9 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Generate SBOM (Syft)
+        # SECURITY: Pin to a specific commit SHA instead of @v0
+        # Example: uses: anchore/sbom-action@<commit-sha>
+        # Visit https://github.com/anchore/sbom-action/commits to find latest vetted commit
         uses: anchore/sbom-action@v0
         with:
           image: ${{ github.repository }}:${{ github.sha }}
@@ -574,15 +617,20 @@ jobs:
           name: sbom-${{ github.sha }}
           path: sbom.json
       
-      - name: Store SBOM in governance
+      - name: Store SBOM in governance workspace
         run: |
           mkdir -p .governance/sboms
           cp sbom.json .governance/sboms/sbom-${{ github.sha }}.json
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .governance/sboms/
-          git commit -m "chore: add SBOM for ${{ github.sha }}"
-          git push
+
+      - name: Create SBOM update pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore: add SBOM for ${{ github.sha }}'
+          title: 'chore: add SBOM for ${{ github.sha }}'
+          body: 'Automated SBOM update generated by GitHub Actions.'
+          branch: 'automation/sbom-${{ github.sha }}'
+          add-paths: |
+            .governance/sboms/sbom-${{ github.sha }}.json
 ```
 
 #### Step 2: Implement Provenance Verification
@@ -603,7 +651,14 @@ jobs:
       
       - name: Install Cosign
         run: |
+          # Download Cosign binary
           wget https://github.com/sigstore/cosign/releases/download/v2.2.0/cosign-linux-amd64
+          
+          # Download and verify checksum
+          wget https://github.com/sigstore/cosign/releases/download/v2.2.0/cosign-linux-amd64.sha256
+          echo "$(cat cosign-linux-amd64.sha256)  cosign-linux-amd64" | sha256sum --check
+          
+          # Install if checksum is valid
           chmod +x cosign-linux-amd64
           sudo mv cosign-linux-amd64 /usr/local/bin/cosign
       
@@ -637,6 +692,9 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Run Trivy vulnerability scanner
+        # SECURITY: Pin to a specific commit SHA instead of @master
+        # Example: uses: aquasecurity/trivy-action@<commit-sha>
+        # Visit https://github.com/aquasecurity/trivy-action/commits to find latest vetted commit
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
@@ -651,8 +709,20 @@ jobs:
       
       - name: Check for high-severity vulnerabilities
         run: |
+          # Check if jq is installed
+          if ! command -v jq >/dev/null 2>&1; then
+            echo "Error: 'jq' is not installed. Install jq to parse Trivy SARIF results."
+            exit 1
+          fi
+          
+          # Check if SARIF file exists
+          if [ ! -f "trivy-results.sarif" ]; then
+            echo "Error: Trivy SARIF file 'trivy-results.sarif' not found. Ensure the Trivy step completed successfully."
+            exit 1
+          fi
+          
           HIGH_VULNS=$(jq '.runs[].results[].ruleId | select(contains("HIGH"))' trivy-results.sarif | wc -l)
-          if [ $HIGH_VULNS -gt 0 ]; then
+          if [ "$HIGH_VULNS" -gt 0 ]; then
             echo "Found $HIGH_VULNS high-severity vulnerabilities"
             exit 1
           fi
@@ -671,25 +741,41 @@ on:
 permissions:
   id-token: write
   contents: read
+  actions: read
 
 jobs:
-  build:
+  # Build artifacts in a separate job
+  build-artifacts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Build with provenance
-        uses: slsa-framework/slsa-github-generator/.github/workflows/builder_generic_slsa3.yml@v1.9.0
-        with:
-          base64-input-glob: |
-            artifacts/*
-          base64-output-name: artifact.slsa3.intoto.jsonl
+      - name: Build artifacts
+        run: |
+          # Your build commands here
+          mkdir -p artifacts
+          # Example: npm run build && cp dist/* artifacts/
       
-      - name: Upload provenance
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: provenance
-          path: artifact.slsa3.intoto.jsonl
+          name: build-artifacts
+          path: artifacts/
+
+  # Generate SLSA provenance using reusable workflow
+  provenance:
+    needs: [build-artifacts]
+    permissions:
+      id-token: write
+      contents: write
+      actions: read
+    # SECURITY: Pin to a specific commit SHA instead of @v1.9.0
+    # Example: uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@<commit-sha>
+    # Visit https://github.com/slsa-framework/slsa-github-generator/commits to find latest vetted commit
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.9.0
+    with:
+      base64-subjects: "${{ needs.build-artifacts.outputs.digests }}"
+      upload-assets: true
 ```
 
 **Implementation Timeline:**
@@ -846,6 +932,41 @@ jobs:
 # Implement connection pooling and caching
 import asyncio
 from functools import lru_cache
+from typing import List
+
+# Example imports - adjust based on actual libraries used
+# from aiohttp import ClientSession
+# from cachetools import TTLCache
+# from asyncio import Semaphore
+
+class ConnectionPool:
+    """Example connection pool implementation."""
+    def __init__(self, size: int):
+        self.semaphore = asyncio.Semaphore(size)
+    
+    async def acquire(self):
+        """Acquire a connection from the pool."""
+        await self.semaphore.acquire()
+        return self
+    
+    async def release(self):
+        """Release a connection back to the pool."""
+        self.semaphore.release()
+    
+    async def __aenter__(self):
+        return await self.acquire()
+    
+    async def __aexit__(self, *args):
+        await self.release()
+
+
+class TTLCache:
+    """Example TTL cache implementation."""
+    def __init__(self, maxsize: int, ttl: int):
+        self.maxsize = maxsize
+        self.ttl = ttl
+        self.cache = {}
+
 
 class OptimizedExecutorAgent:
     def __init__(self):
@@ -859,7 +980,7 @@ class OptimizedExecutorAgent:
     
     async def execute_batch(self, tasks: List[Task]) -> List[Result]:
         """Execute tasks in parallel with connection pooling"""
-        async with self.connection_pool:
+        async with self.connection_pool.acquire() as conn:
             results = await asyncio.gather(*[
                 self.execute(task) for task in tasks
             ])

@@ -48,18 +48,34 @@ This document defines a **real, implementable Multi-Agent System (MAS)** for the
 
 **Implementation:**
 ```python
+class PlanningError(Exception):
+    """Raised when the planner cannot create a valid execution plan."""
+    pass
+
+
 class PlannerAgent:
     def plan(self, task: Task) -> ExecutionPlan:
-        # Task decomposition
-        subtasks = self.decompose(task)
-        
-        # Dependency analysis
-        dag = self.build_dag(subtasks)
-        
-        # Resource estimation
-        resources = self.estimate_resources(dag)
-        
-        return ExecutionPlan(dag, resources)
+        """Create an execution plan for the given task.
+
+        Raises:
+            PlanningError: If decomposition, DAG construction, or resource
+                estimation fails.
+        """
+        try:
+            # Task decomposition
+            subtasks = self.decompose(task)
+            
+            # Dependency analysis
+            dag = self.build_dag(subtasks)
+            
+            # Resource estimation
+            resources = self.estimate_resources(dag)
+            
+            return ExecutionPlan(dag, resources)
+        except Exception as exc:
+            raise PlanningError(
+                f"Failed to create execution plan for task {task!r}"
+            ) from exc
 ```
 
 ---
@@ -99,9 +115,12 @@ class ExecutorAgent:
             
             return TaskResult(success=True, data=result, metrics=metrics)
             
-        except Exception as e:
-            # Handle error with retry logic
+        except (TimeoutError, OSError, RuntimeError) as e:
+            # Handle expected operational errors with retry logic
             return self.handle_error(task, e)
+        except (KeyboardInterrupt, SystemExit):
+            # Do not swallow critical termination signals
+            raise
 ```
 
 ---
@@ -263,7 +282,7 @@ class Orchestrator:
             context = self.retriever.retrieve(assignment.subtask.context)
             
             # Execute
-            result = self.executor.execute(assignment.subtask, context)
+            result = self.executors.execute(assignment.subtask, context)
             results.append(result)
         
         # 4. Validate results
@@ -325,6 +344,10 @@ class Orchestrator:
 All agent communication uses a standardized message format:
 
 ```python
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Dict, Any
+
 @dataclass
 class AgentMessage:
     id: str                    # Unique message ID
@@ -387,22 +410,52 @@ All agent actions are logged for auditability:
 
 ```python
 class AuditLogger:
+    def _redact_data(self, data: dict) -> dict:
+        """Return a redacted copy of the data, masking likely secret fields.
+
+        This method performs a shallow key-based redaction. In a full
+        implementation, this should be extended to handle nested structures
+        and project-specific secret patterns.
+        """
+        if not isinstance(data, dict):
+            return data
+
+        sensitive_keys = {"password", "token", "secret", "api_key", "authorization", "auth"}
+        redacted: dict = {}
+        for key, value in data.items():
+            if isinstance(key, str) and key.lower() in sensitive_keys:
+                redacted[key] = "***REDACTED***"
+            else:
+                redacted[key] = value
+        return redacted
+
     def log_action(self, action: AgentAction):
+        # Redact potentially sensitive input/output before persisting
+        redacted_input = self._redact_data(action.input)
+        redacted_output = self._redact_data(action.output)
+
         entry = AuditEntry(
             timestamp=datetime.now(),
             agent=action.agent_id,
             action_type=action.type,
-            input_data=action.input,
-            output_data=action.output,
+            input_data=redacted_input,
+            output_data=redacted_output,
             duration=action.duration,
             governance_checks=action.governance_results
         )
         
-        # Write to audit log
+        # Write to audit log (redacted payload only)
         self.audit_store.write(entry)
         
-        # Emit to monitoring
-        self.monitoring.emit("agent_action", entry.to_dict())
+        # Emit only non-sensitive metadata to monitoring
+        monitoring_payload = {
+            "timestamp": entry.timestamp,
+            "agent": entry.agent,
+            "action_type": entry.action_type,
+            "duration": entry.duration,
+            "governance_checks": entry.governance_checks,
+        }
+        self.monitoring.emit("agent_action", monitoring_payload)
 ```
 
 ---
@@ -412,6 +465,15 @@ class AuditLogger:
 ### Agent Pool Management
 
 ```python
+from queue import Empty, Queue
+from typing import Type
+
+
+class AgentAcquisitionTimeoutError(Exception):
+    """Raised when acquiring an agent from the pool times out."""
+    pass
+
+
 class AgentPool:
     def __init__(self, agent_class: Type[Agent], pool_size: int):
         self.pool = Queue(maxsize=pool_size)
@@ -419,8 +481,25 @@ class AgentPool:
             agent = agent_class()
             self.pool.put(agent)
     
-    def acquire(self) -> Agent:
-        return self.pool.get()
+    def acquire(self, timeout: float = 30.0) -> Agent:
+        """Acquire an agent from the pool, waiting up to ``timeout`` seconds.
+
+        Args:
+            timeout: Maximum time in seconds to wait for an available agent.
+
+        Returns:
+            An available Agent instance.
+
+        Raises:
+            AgentAcquisitionTimeoutError: If no agent becomes available
+                within the given timeout.
+        """
+        try:
+            return self.pool.get(timeout=timeout)
+        except Empty as exc:
+            raise AgentAcquisitionTimeoutError(
+                f"Timed out after {timeout} seconds while waiting for an available agent"
+            ) from exc
     
     def release(self, agent: Agent):
         self.pool.put(agent)
