@@ -48,17 +48,34 @@ This document defines a **real, implementable Multi-Agent System (MAS)** for the
 
 **Implementation:**
 ```python
+class PlanningError(Exception):
+    """Raised when the planner cannot create a valid execution plan."""
+    pass
+
+
 class PlannerAgent:
     def plan(self, task: Task) -> ExecutionPlan:
-        # Task decomposition
-        subtasks = self.decompose(task)
-        
-        # Dependency analysis
-        dag = self.build_dag(subtasks)
-        
-        # Resource estimation
-        resources = self.estimate_resources(dag)
-        
+        """Create an execution plan for the given task.
+
+        Raises:
+            PlanningError: If decomposition, DAG construction, or resource
+                estimation fails.
+        """
+        try:
+            # Task decomposition
+            subtasks = self.decompose(task)
+
+            # Dependency analysis
+            dag = self.build_dag(subtasks)
+
+            # Resource estimation
+            resources = self.estimate_resources(dag)
+        except Exception as exc:
+            # In a full implementation, consider catching more specific
+            # exception types from decompose/build_dag/estimate_resources.
+            raise PlanningError(
+                f"Failed to create execution plan for task {task!r}"
+            ) from exc
         return ExecutionPlan(dag, resources)
 ```
 
