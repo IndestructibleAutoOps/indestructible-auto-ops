@@ -16,6 +16,7 @@
 3. [Global DAG System](#global-dag-system)
 4. [Multi-Agent Orchestration](#multi-agent-orchestration)
 5. [End-to-End Workflows](#end-to-end-workflows)
+6. [Enterprise Automation Architecture](#enterprise-automation-architecture)
 
 ---
 
@@ -212,6 +213,15 @@ The agent orchestration is configured in `.github/agents/agent-orchestration.yml
 
 ### Overview
 End-to-end workflows provide complete automation of build, test, and deployment processes.
+
+---
+
+## Enterprise Automation Architecture
+
+Enterprise automation platform specifications are defined as configuration artifacts and can be referenced
+for internal orchestration and deployment workflows.
+
+- `docs/architecture/Enterprise-Automation-Platform-Architecture.yaml`
 
 ### Available Workflows
 

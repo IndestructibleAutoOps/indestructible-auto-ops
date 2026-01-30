@@ -1,0 +1,202 @@
+apiVersion: workflow.machinenativeops.io/v1
+kind: SecurityScanningWorkflow
+metadata:
+  name: gl-quantum-security-scanning
+  namespace: github-actions
+  labels:
+    gl-version: v10.0.0
+    tier: quantum-security
+spec:
+  name: Comprehensive Security Scanning
+  
+  on:
+    push:
+      branches: [main, develop]
+    pull_request:
+      branches: [main]
+    schedule:
+      - cron: '0 4 * * *'  # Daily at 4 AM UTC
+      
+  jobs:
+    dependency-scan:
+      name: Dependency Vulnerability Scan
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Run Trivy dependency scan
+          uses: aquasecurity/trivy-action@master
+          with:
+            scan-type: 'fs'
+            scan-ref: '.'
+            format: 'json'
+            output: 'artifacts/security/trivy-dependency-scan.json'
+            severity: 'CRITICAL,HIGH,MEDIUM'
+            
+        - name: Run Snyk dependency scan
+          uses: snyk/actions/python@master
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          with:
+            args: --sarif-file-output=artifacts/security/snyk-results.sarif
+            
+        - name: Upload security results
+          uses: github/codeql-action/upload-sarif@2cb45c40a191506f6b3f993f2c69a4e9b0c2e223
+          if: always()
+          with:
+            sarif_file: artifacts/security/snyk-results.sarif
+            
+    code-scan:
+      name: Code Security Analysis
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Initialize CodeQL
+          uses: github/codeql-action/init@2cb45c40a191506f6b3f993f2c69a4e9b0c2e223
+          with:
+            languages: python
+            queries: security-extended,security-and-quality
+            
+        - name: Perform CodeQL Analysis
+          uses: github/codeql-action/analyze@2cb45c40a191506f6b3f993f2c69a4e9b0c2e223
+          with:
+            category: "/language:python"
+            
+    secrets-scan:
+      name: Secrets Scanning
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Run Gitleaks
+          uses: gitleaks/gitleaks-action@master
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+          with:
+            config-path: gitleaks.toml
+            format: sarif
+            output: artifacts/security/gitleaks-results.sarif
+            
+        - name: Upload Gitleaks results
+          uses: github/codeql-action/upload-sarif@2cb45c40a191506f6b3f993f2c69a4e9b0c2e223
+          if: always()
+          with:
+            sarif_file: artifacts/security/gitleaks-results.sarif
+            
+    container-scan:
+      name: Container Image Security Scan
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Build image for scanning
+          run: |
+            docker build -t gl-quantum-scan:latest .
+            
+        - name: Run Trivy image scan
+          uses: aquasecurity/trivy-action@master
+          with:
+            image-ref: 'gl-quantum-scan:latest'
+            format: 'json'
+            output: 'artifacts/security/trivy-container-scan.json'
+            severity: 'CRITICAL,HIGH,MEDIUM'
+            
+        - name: Run Grype image scan
+          uses: anchore/scan-action@v3
+          with:
+            image-ref: 'gl-quantum-scan:latest'
+            output-format: json
+            output: artifacts/security/grype-results.json
+            
+    infrastructure-scan:
+      name: Infrastructure Security Scan
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Run Kube-Bench
+          run: |
+            docker run --rm -v $(pwd):/host \
+              aquasec/kube-bench:latest \
+              --benchmark cis-1.6 \
+              --json > artifacts/security/kube-bench-results.json
+              
+        - name: Run Checkov
+          run: |
+            docker run --rm -v $(pwd):/workspace \
+              bridgecrew/checkov:latest \
+              -f infrastructure-quantum/kubernetes/ \
+              -o json \
+              --output-file-path artifacts/security/checkov-results.json
+              
+    compliance-scan:
+      name: Compliance and Policy Scan
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Run OPA checks
+          run: |
+            opa eval -f yaml \
+              -d infrastructure-quantum/policies/ \
+              -i governance-quantum/naming/opa-naming-policy.rego \
+              'data.machinenativeops.naming' \
+              --format json > artifacts/security/opa-results.json
+              
+        - name: Run Conftest
+          run: |
+            conftest test infrastructure-quantum/kubernetes/ \
+              -p governance-quantum/naming/conftest-policy.yaml \
+              --output json > artifacts/security/conftest-results.json
+              
+    security-report:
+      name: Generate Security Report
+      runs-on: ubuntu-latest
+      needs: [dependency-scan, code-scan, secrets-scan, container-scan, infrastructure-scan, compliance-scan]
+      if: always()
+      
+      steps:
+        - name: Download all security artifacts
+          uses: actions/download-artifact@9fb559a0d22c77fb732c8d4f1d7e75161623783e
+          
+        - name: Generate comprehensive security report
+          run: |
+            python scripts/generate-security-report.py \
+              --input artifacts/security/ \
+              --output artifacts/security-report.html
+              
+        - name: Upload security report
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: comprehensive-security-report
+            path: artifacts/security-report.html
+            
+        - name: Comment PR with security results
+          if: github.event_name == 'pull_request' && failure()
+          uses: actions/github-script@d7906e4ad0b1822421a7e6a35d565356e75e0d6b
+          with:
+            script: |
+              const fs = require('fs');
+              const vulnerabilities = JSON.parse(fs.readFileSync('artifacts/security/trivy-container-scan.json', 'utf8'));
+              const criticalCount = vulnerabilities.Results[0].Vulnerabilities.filter(v => v.Severity === 'CRITICAL').length;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## Security Scan Results\n\n⚠️ **Critical Vulnerabilities Found: ${criticalCount}**\n\nSee the security report for details.`
+              });
