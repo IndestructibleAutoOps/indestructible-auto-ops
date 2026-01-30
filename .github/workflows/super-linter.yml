@@ -39,7 +39,7 @@ jobs:
         uses: super-linter/super-linter/slim@v8
         env:
           # GitHub token for API calls
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GL_TOKEN }}
 
           # Linter configuration
           DEFAULT_BRANCH: main

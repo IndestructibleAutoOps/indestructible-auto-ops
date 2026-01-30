@@ -1,0 +1,133 @@
+Running GL governance pre-commit validation...
+Checking: .github/workflows/integration-tests.yml
+Checking: gl-runtime-platform/civilization/civilization-memory/index.ts
+Checking: gl-runtime-platform/civilization/cultural-engine/index.ts
+Checking: gl-runtime-platform/civilization/ecosystem-engine/index.ts
+Checking: gl-runtime-platform/civilization/expansion-engine/index.ts
+Checking: gl-runtime-platform/civilization/governance-system/index.ts
+Checking: gl-runtime-platform/civilization/role-specialization/index.ts
+Checking: gl-runtime-platform/civilization/sustainability-engine/index.ts
+Checking: gl-runtime-platform/code-intel-security-layer/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-core/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-emergence/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-memory/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-nodes/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-optimizer/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-routing/index.ts
+Checking: gl-runtime-platform/cognitive-mesh/mesh-synchronization/index.ts
+Checking: gl-runtime-platform/docs/API-Documentation.md
+Checking: gl-runtime-platform/docs/Deployment-Guide.md
+Checking: gl-runtime-platform/evolution/evolutionary-memory/index.ts
+Checking: gl-runtime-platform/evolution/evolutionary-strategy-engine/index.ts
+Checking: gl-runtime-platform/evolution/index.ts
+Checking: gl-runtime-platform/evolution/self-optimization-loop/index.ts
+Checking: gl-runtime-platform/evolution/self-rewriting-engine/index.ts
+Checking: gl-runtime-platform/evolution/self-versioning/index.ts
+Checking: gl-runtime-platform/evolution/structural-mutation-engine/index.ts
+Checking: gl-runtime-platform/fabric-storage/fabric-edges.json
+Checking: gl-runtime-platform/fabric-storage/fabric-nodes.json
+Checking: gl-runtime-platform/fix-v14.js
+Checking: gl-runtime-platform/global-dag/dag-builder/index.ts
+Checking: gl-runtime-platform/global-dag/dag-executor/index.ts
+Checking: gl-runtime-platform/global-dag/dag-optimizer/index.ts
+Checking: gl-runtime-platform/global-dag/dag-repair/index.ts
+Checking: gl-runtime-platform/global-dag/dag-resolver/index.ts
+Checking: gl-runtime-platform/global-dag/dag-visualizer/index.ts
+Checking: gl-runtime-platform/governance-audit-reports-main/governance-tags-report.json
+Checking: gl-runtime-platform/governance-audit-reports-main/governance-tags-report.md
+Checking: gl-runtime-platform/meta-cognition/decision-optimizer/index.ts
+Checking: gl-runtime-platform/meta-cognition/deep-consciousness-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/deep-index.ts
+Checking: gl-runtime-platform/meta-cognition/deep-thinking-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/index.ts
+Checking: gl-runtime-platform/meta-cognition/meta-correction-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/meta-feedback-loop/index.ts
+Checking: gl-runtime-platform/meta-cognition/meta-reasoning-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/reflective-memory/index.ts
+Checking: gl-runtime-platform/meta-cognition/self-awareness-engine/index.ts
+Checking: gl-runtime-platform/meta-cognition/self-monitoring-layer/index.ts
+Checking: gl-runtime-platform/meta-cognition/wisdom-engine/index.ts
+Checking: gl-runtime-platform/meta-cognitive/consciousness-emergence/index.ts
+Checking: gl-runtime-platform/meta-cognitive/meta-cognitive-monitoring/index.ts
+Checking: gl-runtime-platform/meta-cognitive/meta-decision/index.ts
+Checking: gl-runtime-platform/meta-cognitive/reflection-loop/index.ts
+Checking: gl-runtime-platform/meta-cognitive/self-assessment/index.ts
+Checking: gl-runtime-platform/package.json
+Checking: gl-runtime-platform/reports-main/priority2-completion-report.md
+Checking: gl-runtime-platform/scripts/add-governance-tags-main.py
+Checking: gl-runtime-platform/src/civilization-server.ts
+Checking: gl-runtime-platform/src/cognitive-mesh-server.ts
+Checking: gl-runtime-platform/src/deep-meta-cognitive-server.ts
+Checking: gl-runtime-platform/src/evolution-server.ts
+Checking: gl-runtime-platform/src/meta-cognitive-server.ts
+Checking: gl-runtime-platform/src/universal-intelligence-server.ts
+Checking: gl-runtime-platform/storage/gl-artifacts-store/global-resource-graph.json
+Checking: gl-runtime-platform/storage/gl-artifacts-store/semantic-resource-graph.json
+Checking: gl-runtime-platform/storage/gl-semantic-graph/analyses.json
+Checking: gl-runtime-platform/test-civilization.js
+Checking: gl-runtime-platform/test-meta-cognitive.js
+Checking: gl-runtime-platform/test-reports-main/integration-test-report.json
+Checking: gl-runtime-platform/test-reports-main/integration-test-report.md
+Checking: gl-runtime-platform/tests/integration-main/integration-test-suite.ts
+Checking: gl-runtime-platform/tests/integration-main/run-integration-tests-simple.ts
+Checking: gl-runtime-platform/tests/integration-main/run-integration-tests.ts
+Checking: gl-runtime-platform/universal-intelligence/cross-domain-reasoning/index.ts
+Checking: gl-runtime-platform/universal-intelligence/general-problem-solving/index.ts
+Checking: gl-runtime-platform/universal-intelligence/index.ts
+Checking: gl-runtime-platform/universal-intelligence/intelligence-transfer/index.ts
+Checking: gl-runtime-platform/universal-intelligence/knowledge-synthesis-engine/index.ts
+Checking: gl-runtime-platform/universal-intelligence/universal-abstraction-engine/index.ts
+Checking: gl-runtime-platform/universal-intelligence/universal-adaptation/index.ts
+Checking: gl-runtime-platform/universal-intelligence/universal-learning-loop/index.ts
+Checking: priority2-main.md
+✅ GL Governance Validation Passed
+✅ Governance event logged to event stream
+[main bda54514] feat(v21): Complete Priority 2 on main branch - Integration tests, governance tags, documentation
+ 112 files changed, 499648 insertions(+), 495779 deletions(-)
+ create mode 100644 .github/workflows/integration-tests.yml
+ create mode 100644 gl-runtime-platform/code-intel-security-layer/index.ts
+ create mode 100644 gl-runtime-platform/docs/API-Documentation.md
+ create mode 100644 gl-runtime-platform/docs/Deployment-Guide.md
+ create mode 100644 gl-runtime-platform/fabric-storage/fabric-edges.json
+ create mode 100644 gl-runtime-platform/fabric-storage/fabric-nodes.json
+ create mode 100644 gl-runtime-platform/governance-audit-reports-main/governance-tags-report.json
+ create mode 100644 gl-runtime-platform/governance-audit-reports-main/governance-tags-report.md
+ create mode 100644 gl-runtime-platform/reports-main/priority2-completion-report.md
+ create mode 100644 gl-runtime-platform/scripts/add-governance-tags-main.py
+ create mode 100644 gl-runtime-platform/test-reports-main/integration-test-report.json
+ create mode 100644 gl-runtime-platform/test-reports-main/integration-test-report.md
+ create mode 100644 gl-runtime-platform/tests/integration-main/integration-test-suite.ts
+ create mode 100644 gl-runtime-platform/tests/integration-main/run-integration-tests-simple.ts
+ create mode 100644 gl-runtime-platform/tests/integration-main/run-integration-tests.ts
+ create mode 100644 outputs/workspace_output_1769665448_8638.txt
+ create mode 100644 outputs/workspace_output_1769665452_7275.txt
+ create mode 100644 outputs/workspace_output_1769665466_7086.txt
+ create mode 100644 outputs/workspace_output_1769665476_1188.txt
+ create mode 100644 outputs/workspace_output_1769665479_283.txt
+ create mode 100644 outputs/workspace_output_1769665482_9348.txt
+ create mode 100644 outputs/workspace_output_1769665485_2113.txt
+ create mode 100644 outputs/workspace_output_1769665489_4092.txt
+ create mode 100644 outputs/workspace_output_1769665502_6153.txt
+ create mode 100644 outputs/workspace_output_1769665516_2386.txt
+ create mode 100644 outputs/workspace_output_1769665524_878.txt
+ create mode 100644 outputs/workspace_output_1769665586_204.txt
+ create mode 100644 outputs/workspace_output_1769665661_4905.txt
+ create mode 100644 outputs/workspace_output_1769665964_7678.txt
+ create mode 100644 outputs/workspace_output_1769666038_3707.txt
+ create mode 100644 outputs/workspace_output_1769668299_3113.txt
+ create mode 100644 outputs/workspace_output_1769668348_4849.txt
+ create mode 100644 outputs/workspace_output_1769668377_3515.txt
+ create mode 100644 outputs/workspace_output_1769668381_3041.txt
+ create mode 100644 outputs/workspace_output_1769668394_3794.txt
+ create mode 100644 outputs/workspace_output_1769668434_4464.txt
+ create mode 100644 outputs/workspace_output_1769668438_1469.txt
+ create mode 100644 outputs/workspace_output_1769668473_9812.txt
+ create mode 100644 outputs/workspace_output_1769668501_1384.txt
+ create mode 100644 outputs/workspace_output_1769668512_4382.txt
+ create mode 100644 outputs/workspace_output_1769668584_1073.txt
+ create mode 100644 outputs/workspace_output_1769668860_3556.txt
+ create mode 100644 outputs/workspace_output_1769668864_4192.txt
+ create mode 100644 outputs/workspace_output_1769668871_7016.txt
+ create mode 100644 outputs/workspace_output_1769668949_2085.txt
+ create mode 100644 priority2-main.md

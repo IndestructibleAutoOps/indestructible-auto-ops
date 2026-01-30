@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Meta-Cognitive Runtime - Main Index (Version 14.0.0)
  * 
  * This is the unified interface for all meta-cognitive components:

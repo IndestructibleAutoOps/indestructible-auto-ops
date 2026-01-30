@@ -1,0 +1,23 @@
+{
+  "version": "24.0.0",
+  "name": "meta-governance",
+  "layer": "meta-governance",
+  "capabilities": [
+    "meta-rules",
+    "meta-auditor",
+    "meta-falsification",
+    "meta-integrity-checker"
+  ],
+  "dependencies": ["v23"],
+  "governance": {
+    "level": 5,
+    "rules": [
+      "all-rules-falsifiable",
+      "meta-consistency-required"
+    ]
+  },
+  "integrity": {
+    "hash": "sha256:pending",
+    "timestamp": "2026-01-30T00:00:00Z"
+  }
+}

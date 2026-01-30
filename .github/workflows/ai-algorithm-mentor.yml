@@ -37,7 +37,7 @@ jobs:
       - name: AI Algorithm Mentor
         uses: choam2426/AI-Algorithm-Mentor@v5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GL_TOKEN }}
           LLM_PROVIDER: google              # openai, google, anthropic
           MODEL_NAME: gemini-3-pro-preview  # 모델명 (선택사항)
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

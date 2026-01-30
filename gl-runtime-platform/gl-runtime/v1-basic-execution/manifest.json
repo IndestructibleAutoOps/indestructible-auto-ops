@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "name": "basic-execution",
+  "layer": "execution",
+  "capabilities": [
+    "task-execution",
+    "task-state-management",
+    "task-io"
+  ],
+  "dependencies": [],
+  "governance": {
+    "level": 0,
+    "rules": []
+  },
+  "integrity": {
+    "hash": "sha256:pending",
+    "timestamp": "2026-01-30T00:00:00Z"
+  }
+}

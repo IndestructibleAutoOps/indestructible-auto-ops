@@ -34,12 +34,12 @@ jobs:
       - name: issue-metrics
         uses: github/issue-metrics@v3.25.5
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GL_TOKEN }}
           SEARCH_QUERY: 'repo:${{ github.repository }} is:issue created:>2024-01-01'
       
       - name: Create issue with metrics
         uses: peter-evans/create-issue-from-file@v6
         with:
           title: Issue Metrics Report
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GL_TOKEN }}
           content-filepath: ./issue_metrics.md

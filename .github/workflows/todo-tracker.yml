@@ -37,7 +37,7 @@ jobs:
       - name: Track TODO Action
         uses: ribtoks/tdg-github-action@v0.4.16-beta
         with:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.GL_TOKEN }}
           REPO: ${{ github.repository }}
           CLOSE_ON_DONE: true
           VERBOSE: true

@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * Knowledge Synthesis Engine
  * 知識綜合引擎 - 具備結合多領域知識產生新知識的能力
  * 

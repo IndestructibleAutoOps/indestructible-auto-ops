@@ -1,0 +1,244 @@
+apiVersion: workflow.machinenativeops.io/v1
+kind: BackupRestoreWorkflow
+metadata:
+  name: gl-quantum-backup-restore
+  namespace: github-actions
+  labels:
+    gl-version: v10.0.0
+    tier: quantum-backup
+spec:
+  name: Automated Backup and Restore
+  
+  on:
+    schedule:
+      - cron: '0 3 * * *'  # Daily at 3 AM UTC
+      - cron: '0 0 * * 0'  # Weekly full backup on Sunday
+    workflow_dispatch:
+      inputs:
+        backup_type:
+          description: 'Type of backup'
+          required: true
+          type: choice
+          options:
+            - incremental
+            - full
+            - selective
+        resources:
+          description: 'Resources to backup'
+          required: false
+          type: string
+          
+  jobs:
+    etcd-backup:
+      name: Etcd Backup
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Configure kubectl
+          run: |
+            echo "${{ secrets.KUBECONFIG_PRODUCTION }}" | base64 -d > kubeconfig
+            export KUBECONFIG=kubeconfig
+            
+        - name: Create etcd snapshot
+          run: |
+            TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+            k3s etcd-snapshot save \
+              --name "etcd-backup-${TIMESTAMP}" \
+              --output artifacts/backups/etcd/
+            
+        - name: Upload etcd backup
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: etcd-backup
+            path: artifacts/backups/etcd/
+            retention-days: 30
+            
+    kubernetes-resources-backup:
+      name: Kubernetes Resources Backup
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Set up kubectl
+          uses: azure/setup-kubectl@v3
+          
+        - name: Configure kubeconfig
+          run: |
+            echo "${{ secrets.KUBECONFIG_PRODUCTION }}" | base64 -d > kubeconfig
+            export KUBECONFIG=kubeconfig
+            
+        - name: Backup all namespaces
+          run: |
+            mkdir -p artifacts/backups/kubernetes/namespaces
+            for ns in $(kubectl get ns -o jsonpath='{.items[*].metadata.name}'); do
+              kubectl get all,configmaps,secrets,pvc -n $ns -o yaml \
+                > artifacts/backups/kubernetes/namespaces/${ns}.yaml
+            done
+            
+        - name: Backup CRDs
+          run: |
+            kubectl get crds -o yaml \
+              > artifacts/backups/kubernetes/crds.yaml
+              
+        - name: Upload Kubernetes backup
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: kubernetes-resources-backup
+            path: artifacts/backups/kubernetes/
+            retention-days: 30
+            
+    database-backup:
+      name: Database Backup
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Set up Python
+          uses: actions/setup-python@b55c28f9c9bbb6369b725b2853c1275c637c5f1b
+          with:
+            python-version: '3.11'
+            
+        - name: Install backup tools
+          run: |
+            pip install pgbackrest
+            
+        - name: Backup PostgreSQL
+          run: |
+            python scripts/backup-database.py \
+              --type postgresql \
+              --host ${{ secrets.DB_HOST }} \
+              --database gl-quantum \
+              --output artifacts/backups/databases/postgresql
+              
+        - name: Backup Redis
+          run: |
+            redis-cli -h ${{ secrets.REDIS_HOST }} \
+              --rdb artifacts/backups/databases/redis/dump.rdb
+              
+        - name: Upload database backup
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: database-backup
+            path: artifacts/backups/databases/
+            retention-days: 30
+            
+    config-backup:
+      name: Configuration Backup
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Backup secrets
+          run: |
+            mkdir -p artifacts/backups/config/secrets
+            gh secret list --json name,value > artifacts/backups/config/secrets/list.json
+            
+        - name: Backup environment variables
+          run: |
+            mkdir -p artifacts/backups/config/env
+            for env in dev staging production; do
+              gh variable list --env ${env} --json name,value \
+                > artifacts/backups/config/env/${env}.json
+            done
+            
+        - name: Backup configuration files
+          run: |
+            tar -czf artifacts/backups/config/config-files.tar.gz \
+              governance-quantum/ \
+              infrastructure-quantum/ \
+              k3s-upgrade-quantum/
+              
+        - name: Upload config backup
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: configuration-backup
+            path: artifacts/backups/config/
+            retention-days: 90
+            
+    verify-backup:
+      name: Verify Backup Integrity
+      runs-on: ubuntu-latest
+      needs: [etcd-backup, kubernetes-resources-backup, database-backup, config-backup]
+      
+      steps:
+        - name: Download all backup artifacts
+          uses: actions/download-artifact@9fb559a0d22c77fb732c8d4f1d7e75161623783e
+          
+        - name: Verify etcd backup
+          run: |
+            python scripts/verify-backup.py \
+              --type etcd \
+              --path artifacts/backups/etcd/
+              
+        - name: Verify Kubernetes resources backup
+          run: |
+            python scripts/verify-backup.py \
+              --type kubernetes \
+              --path artifacts/backups/kubernetes/
+              
+        - name: Verify database backup
+          run: |
+            python scripts/verify-backup.py \
+              --type database \
+              --path artifacts/backups/databases/
+              
+    restore-test:
+      name: Test Restore Procedure
+      runs-on: ubuntu-latest
+      needs: verify-backup
+      if: github.event_name == 'workflow_dispatch'
+      
+      steps:
+        - name: Download backup artifacts
+          uses: actions/download-artifact@9fb559a0d22c77fb732c8d4f1d7e75161623783e
+          
+        - name: Create test cluster
+          run: |
+            kind create cluster --name gl-quantum-restore-test
+            
+        - name: Restore etcd
+          run: |
+            python scripts/restore-etcd.py \
+              --backup artifacts/backups/etcd/ \
+              --cluster test
+              
+        - name: Restore Kubernetes resources
+          run: |
+            kubectl apply -f artifacts/backups/kubernetes/
+            
+        - name: Verify restore
+          run: |
+            python scripts/verify-restore.py \
+              --cluster test
+              
+        - name: Cleanup test cluster
+          if: always()
+          run: |
+            kind delete cluster --name gl-quantum-restore-test
+            
+    backup-report:
+      name: Generate Backup Report
+      runs-on: ubuntu-latest
+      needs: [etcd-backup, kubernetes-resources-backup, database-backup, config-backup, verify-backup]
+      if: always()
+      
+      steps:
+        - name: Generate backup report
+          run: |
+            python scripts/generate-backup-report.py \
+              --output artifacts/backup-report.html
+              
+        - name: Upload backup report
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: backup-report
+            path: artifacts/backup-report.html

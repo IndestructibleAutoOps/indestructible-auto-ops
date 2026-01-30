@@ -1,4 +1,10 @@
 /**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
+/**
  * GL Meta-Cognitive Runtime - Reflective Memory (Version 14.0.0)
  * 
  * The Reflective Memory provides the GL Runtime with the ability to:

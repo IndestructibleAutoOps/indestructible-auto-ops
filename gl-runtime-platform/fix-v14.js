@@ -1,3 +1,9 @@
+/**
+ * @GL-governed
+ * @version 21.0.0
+ * @priority 2
+ * @stage complete
+ */
 const fs = require('fs');
 
 // Fix self-assessment/index.ts
