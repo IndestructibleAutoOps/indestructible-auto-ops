@@ -11,8 +11,8 @@ apiVersion: orchestration.machinenativeops.io/v1
 kind: AgentOrchestration
 metadata:
   name: multi-agent-parallel-orchestration
-  version: "7.0.0"
-  created_at: "2026-01-28T00:00:00Z"
+  version: "9.0.0"
+  created_at: "2026-01-30T00:00:00Z"
   layer: "GL90-99"
   owner: "engineering-team"
   annotations:
@@ -21,11 +21,13 @@ metadata:
     governance.machinenativeops.io/charter-version: "2.0.0"
     governance.machinenativeops.io/semantic-enabled: "true"
     governance.machinenativeops.io/srg-aware: "true"
+    governance.machinenativeops.io/dag-version: "9.0.0"
+    governance.machinenativeops.io/global-dag-enabled: "true"
 
 spec:
   # Parallel execution strategy
   parallelism:
-    max_concurrent_agents: 8
+    max_concurrent_agents: 100
     timeout_seconds: 1800
     retry_policy:
       max_retries: 3
@@ -306,6 +308,74 @@ spec:
         - "dashboard-data.json"
         - "semantic-executive-summary.json"
 
+    # DAG-Aware Agents (v9.0.0)
+    - id: global-dag-builder
+      name: "Global DAG Builder Agent"
+      type: "dag"
+      priority: 0
+      enabled: true
+      semantic_aware: true
+      dag_aware: true
+      config:
+        build_mode: "auto"
+        discovery_scope: "all-repos"
+        include_cross_repo_dependencies: true
+        validate_topology: true
+        detect_cycles: true
+        parallelization_analysis: true
+        resource_requirements_analysis: true
+      dependencies: []
+      outputs:
+        - "global-dag-graph.json"
+        - "dag-nodes.json"
+        - "dag-edges.json"
+        - "dag-topology-report.json"
+
+    - id: global-dag-executor
+      name: "Global DAG Executor Agent"
+      type: "dag"
+      priority: 0
+      enabled: true
+      semantic_aware: true
+      dag_aware: true
+      config:
+        execution_mode: "parallel"
+        strategy: "topological"
+        max_concurrent_executions: 10
+        retry_on_failure: true
+        max_retries_per_node: 3
+        backoff_seconds: 30
+        timeout_handling: "continue"
+        failure_handling: "retry"
+        synchronization_points: true
+      dependencies:
+        - "global-dag-builder"
+      outputs:
+        - "dag-execution-report.json"
+        - "node-execution-status.json"
+        - "dag-execution-log.json"
+
+    - id: cross-repo-resolver
+      name: "Cross-Repo Dependency Resolver Agent"
+      type: "dag"
+      priority: 0
+      enabled: true
+      semantic_aware: true
+      dag_aware: true
+      config:
+        resolution_mode: "semantic"
+        detect_cross_repo_conflicts: true
+        validate_cross_repo_consistency: true
+        semantic_dependency_validation: true
+        conflict_resolution_strategy: "manual"
+        generate_dependency_report: true
+      dependencies:
+        - "global-dag-builder"
+      outputs:
+        - "cross-repo-dependencies.json"
+        - "dependency-conflicts.json"
+        - "resolution-report.json"
+
   # Communication channels
   channels:
     - id: events
@@ -324,8 +394,8 @@ spec:
 
   # Resource limits
   resources:
-    memory_limit_mb: 2048
-    cpu_limit_cores: 4
+    memory_limit_mb: 4096
+    cpu_limit_cores: 8
     disk_limit_mb: 1024
     network_bandwidth_mbps: 100
 

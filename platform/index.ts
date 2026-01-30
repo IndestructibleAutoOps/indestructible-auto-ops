@@ -1,11 +1,12 @@
 // @GL-governed @GL-internal-only
-// GL Enterprise Platform - Main Orchestrator
-// Version: 3.0.0
+// GL Enterprise Platform - Main Orchestrator with Global DAG v9.0.0
+// Version: 9.0.0
 
 import { ExecutionEngine, ExecutionOptions } from './execution/execution-engine';
 import { ComplianceValidator, ComplianceReport } from './validation/compliance-validator';
 import { ZeroResidueCleaner, CleanupResult } from './cleanup/zero-residue-cleaner';
 import { InternalMonitor, MonitoringStats } from './monitoring/internal-monitor';
+import { GlobalDAGOrchestrator, DAGGraph, DAGExecutionResult } from '../gl-runtime-platform/global-dag';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface PlatformConfig {
@@ -13,6 +14,8 @@ export interface PlatformConfig {
   enableCleanup?: boolean;
   enableMonitoring?: boolean;
   monitoringInterval?: number;
+  enableGlobalDAG?: boolean;
+  dagExecutionMode?: 'sequential' | 'parallel' | 'hybrid';
 }
 
 export interface PlatformResult {
@@ -32,12 +35,15 @@ export class GLPlatform {
   private cleanupEngine: ZeroResidueCleaner;
   private monitor: InternalMonitor;
   private config: PlatformConfig;
+  private globalDAGOrchestrator: GlobalDAGOrchestrator | null;
 
   constructor(config: PlatformConfig = {}) {
     this.config = {
       enableCleanup: true,
       enableMonitoring: true,
       monitoringInterval: 10000,
+      enableGlobalDAG: true,
+      dagExecutionMode: 'parallel',
       ...config
     };
 
@@ -45,6 +51,7 @@ export class GLPlatform {
     this.complianceValidator = new ComplianceValidator();
     this.cleanupEngine = new ZeroResidueCleaner();
     this.monitor = new InternalMonitor();
+    this.globalDAGOrchestrator = null;
   }
 
   /**
@@ -54,6 +61,21 @@ export class GLPlatform {
     // Initialize execution engine
     await this.executionEngine.initialize();
 
+    // Initialize Global DAG orchestrator if enabled
+    if (this.config.enableGlobalDAG) {
+      this.globalDAGOrchestrator = new GlobalDAGOrchestrator({
+        executionMode: this.config.dagExecutionMode || 'parallel',
+        federationPath: './gl-runtime-platform/federation'
+      });
+      await this.globalDAGOrchestrator.initialize();
+      
+      this.monitor.recordMetric({
+        name: 'global_dag_initialized',
+        value: 1,
+        labels: { mode: this.config.dagExecutionMode || 'parallel' }
+      });
+    }
+
     // Start monitoring if enabled
     if (this.config.enableMonitoring) {
       this.monitor.start(this.config.monitoringInterval);
@@ -62,7 +84,7 @@ export class GLPlatform {
     this.monitor.recordMetric({
       name: 'platform_initialized',
       value: 1,
-      labels: { platform: 'gl-enterprise' }
+      labels: { platform: 'gl-enterprise', version: '9.0.0' }
     });
   }
 
@@ -201,13 +223,60 @@ export class GLPlatform {
    * Get platform status
    */
   getStatus() {
-    return {
+    const status: any = {
       initialized: true,
       executionEngine: this.executionEngine.getStats(),
       monitoring: this.monitor.getStats(),
       zeroResidue: 'verified',
-      productionReady: true
+      productionReady: true,
+      version: '9.0.0'
     };
+
+    if (this.globalDAGOrchestrator) {
+      status.globalDAG = this.globalDAGOrchestrator.getStatus();
+    }
+
+    return status;
+  }
+
+  /**
+   * Build Global DAG
+   */
+  async buildGlobalDAG(): Promise<DAGGraph> {
+    if (!this.globalDAGOrchestrator) {
+      throw new Error('Global DAG orchestrator not enabled');
+    }
+    return await this.globalDAGOrchestrator.buildDAG();
+  }
+
+  /**
+   * Execute Global DAG
+   */
+  async executeGlobalDAG(): Promise<DAGExecutionResult> {
+    if (!this.globalDAGOrchestrator) {
+      throw new Error('Global DAG orchestrator not enabled');
+    }
+    return await this.globalDAGOrchestrator.executeDAG();
+  }
+
+  /**
+   * Get Global DAG status
+   */
+  getGlobalDAGStatus() {
+    if (!this.globalDAGOrchestrator) {
+      return { enabled: false };
+    }
+    return this.globalDAGOrchestrator.getStatus();
+  }
+
+  /**
+   * Get Global DAG graph
+   */
+  getGlobalDAGGraph() {
+    if (!this.globalDAGOrchestrator) {
+      return null;
+    }
+    return this.globalDAGOrchestrator.getGraph();
   }
 }
 
