@@ -1,0 +1,54 @@
+name: 'Setup Build Environment'
+description: 'Setup consistent build environment across all workflows with caching and pinned dependencies'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js 20
+      uses: actions/setup-node@v4.0.2
+      with:
+        node-version: '20'
+        cache: 'npm'
+      
+    - name: Setup Python 3.11
+      uses: actions/setup-python@v5.0.0
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+    - name: Setup Go
+      uses: actions/setup-go@v5.0.0
+      with:
+        go-version: '1.21'
+        cache: true
+      
+    - name: Install Node.js dependencies
+      shell: bash
+      run: |
+        if [ -f package.json ]; then
+          echo "Installing Node.js dependencies..."
+          npm ci || npm install
+        else
+          echo "No package.json found, skipping npm install"
+        fi
+      
+    - name: Install Python dependencies
+      shell: bash
+      run: |
+        if [ -f requirements.txt ]; then
+          echo "Installing Python dependencies..."
+          pip install -r requirements.txt
+        elif [ -f pyproject.toml ]; then
+          echo "Installing Python dependencies from pyproject.toml..."
+          pip install -e .
+        else
+          echo "No Python dependencies found, skipping pip install"
+        fi
+      
+    - name: Cache Docker layers
+      uses: actions/cache@v4.0.0
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
