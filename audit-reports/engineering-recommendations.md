@@ -637,7 +637,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@leader
         with:
           scan-type: 'fs'
           scan-ref: '.'
