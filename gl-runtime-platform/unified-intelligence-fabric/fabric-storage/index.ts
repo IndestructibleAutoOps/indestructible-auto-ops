@@ -690,23 +690,43 @@ class StorageEngine {
       fs.mkdirSync(basePathResolved, { recursive: true });
     }
     
-    // 將正規化後的路徑回寫設定，後續統一使用
-    this.config.basePath = basePathResolved;
+    // 解析實際路徑（處理符號連結），並回寫設定，後續統一使用
+    const basePathReal = fs.realpathSync(basePathResolved);
+    this.config.basePath = basePathReal;
   }
   
   async store(nodeId: string, compressed: CompressedSuperposition): Promise<void> {
     const fs = require('fs');
     const path = require('path');
     
+    // 基本的 nodeId 檢查：禁止路徑分隔符，避免明顯的目錄穿越
+    if (typeof nodeId !== 'string' || nodeId.includes(path.sep) || nodeId.includes('..')) {
+      throw new Error(`Invalid nodeId for storage path: ${nodeId}`);
+    }
+    
     // 使用正規化後的根目錄，並確保目標路徑不會逃離根目錄
-    const basePathResolved = path.resolve(this.config.basePath);
+    const basePathResolved = fs.realpathSync(this.config.basePath);
     const candidatePath = path.resolve(basePathResolved, `${nodeId}.json`);
     
-    if (!(candidatePath === basePathResolved || candidatePath.startsWith(basePathResolved + path.sep))) {
+    let realCandidatePath: string;
+    try {
+      // 解析實際路徑以處理符號連結
+      realCandidatePath = fs.realpathSync(candidatePath);
+    } catch {
+      // 若檔案尚不存在，realpathSync 會失敗；此時使用規劃中的路徑做前綴檢查
+      realCandidatePath = candidatePath;
+    }
+    
+    if (!realCandidatePath.startsWith(basePathResolved + path.sep)) {
       throw new Error(`Invalid nodeId for storage path: ${nodeId}`);
     }
     
     const filePath = candidatePath;
+    // 與 store 相同的 nodeId 檢查
+    if (typeof nodeId !== 'string' || nodeId.includes(path.sep) || nodeId.includes('..')) {
+      throw new Error(`Invalid nodeId for storage path: ${nodeId}`);
+    }
+    
     const content = JSON.stringify(compressed, null, 2);
     
     fs.writeFileSync(filePath, content, 'utf-8');
@@ -717,14 +737,22 @@ class StorageEngine {
     const path = require('path');
     
     // 使用與 store 相同的安全路徑解析邏輯
-    const basePathResolved = path.resolve(this.config.basePath);
+    const basePathResolved = fs.realpathSync(this.config.basePath);
     const candidatePath = path.resolve(basePathResolved, `${nodeId}.json`);
-    if (!(candidatePath === basePathResolved || candidatePath.startsWith(basePathResolved + path.sep))) {
+    
+    let realCandidatePath: string;
+    try {
+      realCandidatePath = fs.realpathSync(candidatePath);
+    } catch {
+      // 若檔案不存在，沿用 candidatePath 進行前綴檢查與存在性檢查
+      realCandidatePath = candidatePath;
+    }
+    
+    if (!realCandidatePath.startsWith(basePathResolved + path.sep)) {
       throw new Error(`Invalid nodeId for storage path: ${nodeId}`);
     }
     
     const filePath = candidatePath;
-    
     
     if (!fs.existsSync(filePath)) {
       return undefined;
