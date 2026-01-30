@@ -46,7 +46,7 @@ jobs:
       - name: Mark stale issues and PRs
         uses: actions/stale@v10
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GL_TOKEN }}
           stale-issue-message: |
             ## ⏰ Stale Issue Notice
 

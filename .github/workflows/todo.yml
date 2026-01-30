@@ -23,9 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GL_TOKEN }}
       - name: todo-actions
         uses: dtinth/todo-actions@v0.2.0
         continue-on-error: false  # Don't fail the workflow if TODO action fails
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GL_TOKEN }}
