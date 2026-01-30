@@ -410,24 +410,42 @@ All agent actions are logged for auditability:
 
 ```python
 class AuditLogger:
-    def _redact_data(self, data: dict) -> dict:
+    def _redact_data(self, data, depth=0, max_depth=10):
         """Return a redacted copy of the data, masking likely secret fields.
 
-        This method performs a shallow key-based redaction. In a full
-        implementation, this should be extended to handle nested structures
-        and project-specific secret patterns.
+        This method performs recursive redaction to handle nested structures.
+        
+        Args:
+            data: Data to redact (dict, list, or other type)
+            depth: Current recursion depth
+            max_depth: Maximum recursion depth to prevent infinite loops
+            
+        Returns:
+            Redacted copy of the data
         """
-        if not isinstance(data, dict):
+        # Prevent infinite recursion
+        if depth > max_depth:
+            return "***MAX_DEPTH_EXCEEDED***"
+        
+        # Handle dictionaries recursively
+        if isinstance(data, dict):
+            sensitive_keys = {"password", "token", "secret", "api_key", "authorization", "auth"}
+            redacted = {}
+            for key, value in data.items():
+                if isinstance(key, str) and key.lower() in sensitive_keys:
+                    redacted[key] = "***REDACTED***"
+                else:
+                    # Recursively redact nested structures
+                    redacted[key] = self._redact_data(value, depth + 1, max_depth)
+            return redacted
+        
+        # Handle lists recursively
+        elif isinstance(data, (list, tuple)):
+            return [self._redact_data(item, depth + 1, max_depth) for item in data]
+        
+        # For other types, return as-is
+        else:
             return data
-
-        sensitive_keys = {"password", "token", "secret", "api_key", "authorization", "auth"}
-        redacted: dict = {}
-        for key, value in data.items():
-            if isinstance(key, str) and key.lower() in sensitive_keys:
-                redacted[key] = "***REDACTED***"
-            else:
-                redacted[key] = value
-        return redacted
 
     def log_action(self, action: AgentAction):
         # Redact potentially sensitive input/output before persisting

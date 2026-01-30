@@ -125,7 +125,7 @@ jobs:
         run: |
           for workflow in .github/workflows/*.yml; do
             LINES=$(wc -l < "$workflow")
-            if [ $LINES -gt 500 ]; then
+            if [ "$LINES" -gt 500 ]; then
               echo "Error: $workflow too large ($LINES lines > 500)"
               exit 1
             fi
@@ -256,6 +256,7 @@ Create version management:
 
 ```python
 # .governance/scripts/policy-version-manager.py
+import json
 import shutil
 from datetime import datetime
 from pathlib import Path
@@ -283,7 +284,6 @@ class PolicyVersionManager:
             "policies": len(list(version_dir.glob("**/*.rego")))
         }
         
-        import json
         with open(version_dir / "metadata.json", "w") as f:
             json.dump(metadata, f, indent=2)
         
@@ -294,7 +294,6 @@ class PolicyVersionManager:
                 current.unlink()
             else:
                 # Handle Windows case where it might be a junction or directory
-                import shutil
                 shutil.rmtree(current)
         
         # Create symlink (or copy on Windows if symlink fails)
@@ -302,7 +301,6 @@ class PolicyVersionManager:
             current.symlink_to(version_dir)
         except (OSError, NotImplementedError):
             # Fallback for Windows or filesystems without symlink support
-            import shutil
             shutil.copytree(version_dir, current)
         
         return metadata
@@ -747,6 +745,8 @@ jobs:
   # Build artifacts in a separate job
   build-artifacts:
     runs-on: ubuntu-latest
+    outputs:
+      digests: ${{ steps.hash.outputs.digests }}
     steps:
       - uses: actions/checkout@v4
       
@@ -755,6 +755,16 @@ jobs:
           # Your build commands here
           mkdir -p artifacts
           # Example: npm run build && cp dist/* artifacts/
+      
+      - name: Generate artifact digests
+        id: hash
+        working-directory: artifacts
+        run: |
+          # Generate SHA256 digests for all artifacts
+          sha256sum * > checksums.txt
+          # Convert to base64-encoded format required by SLSA
+          DIGESTS=$(sha256sum * | awk '{print $2":"$1}' | base64 -w0)
+          echo "digests=$DIGESTS" >> $GITHUB_OUTPUT
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -931,22 +941,26 @@ jobs:
 ```python
 # Implement connection pooling and caching
 import asyncio
-from functools import lru_cache
 from typing import List
 
-# Example imports - adjust based on actual libraries used
-# from aiohttp import ClientSession
-# from cachetools import TTLCache
-# from asyncio import Semaphore
+# NOTE: This is a simplified example for documentation purposes.
+# In production, use established libraries like:
+# - aiohttp.ClientSession for connection pooling
+# - aiocache or async-lru for async caching
 
 class ConnectionPool:
-    """Example connection pool implementation."""
+    """Example connection pool implementation.
+    
+    Note: This is a simplified example. In production, use a proper
+    connection pool library that manages actual connection objects.
+    """
     def __init__(self, size: int):
         self.semaphore = asyncio.Semaphore(size)
     
     async def acquire(self):
         """Acquire a connection from the pool."""
         await self.semaphore.acquire()
+        # In a real implementation, return an actual connection object
         return self
     
     async def release(self):
@@ -961,11 +975,18 @@ class ConnectionPool:
 
 
 class TTLCache:
-    """Example TTL cache implementation."""
+    """Example TTL cache implementation (placeholder).
+    
+    Note: This is a stub. In production, use async-lru, aiocache,
+    or cachetools with proper async support.
+    """
     def __init__(self, maxsize: int, ttl: int):
         self.maxsize = maxsize
         self.ttl = ttl
-        self.cache = {}
+        # Placeholder - full implementation would include:
+        # - Cache dictionary with timestamps
+        # - get/set methods with TTL checking
+        # - Background cleanup task
 
 
 class OptimizedExecutorAgent:
@@ -973,14 +994,23 @@ class OptimizedExecutorAgent:
         self.connection_pool = ConnectionPool(size=10)
         self.cache = TTLCache(maxsize=1000, ttl=300)
     
-    @lru_cache(maxsize=512)
+    # NOTE: functools.lru_cache does not work with async functions
+    # Use async-lru library instead: from async_lru import alru_cache
+    # @alru_cache(maxsize=512)
     async def execute_cached(self, task: str) -> Result:
-        """Cache frequently executed tasks"""
+        """Cache frequently executed tasks.
+        
+        Note: For async function caching, use the async-lru library:
+        pip install async-lru
+        from async_lru import alru_cache
+        """
+        # Check cache (simplified - real implementation would use proper async cache)
         return await self.execute(task)
     
     async def execute_batch(self, tasks: List[Task]) -> List[Result]:
         """Execute tasks in parallel with connection pooling"""
         async with self.connection_pool.acquire() as conn:
+            # In production, pass conn to execute methods
             results = await asyncio.gather(*[
                 self.execute(task) for task in tasks
             ])
