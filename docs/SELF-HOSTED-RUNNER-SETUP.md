@@ -175,7 +175,8 @@ The GL_TOKEN is used for the following operations:
 ### Setting Up GL_TOKEN
 
 1. **Create the token**:
-   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Go to your GitHub profile Settings (not repository settings) → Developer settings → Personal access tokens → Tokens (classic)
+   - Or visit directly: https://github.com/settings/tokens
    - Click "Generate new token (classic)"
    - Add a descriptive note: "GL_TOKEN for machine-native-ops workflows"
    - Select the required scopes listed above
