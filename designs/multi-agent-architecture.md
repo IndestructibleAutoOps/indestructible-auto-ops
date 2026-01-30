@@ -64,6 +64,18 @@ class PlannerAgent:
         try:
             # Task decomposition
             subtasks = self.decompose(task)
+            
+            # Dependency analysis
+            dag = self.build_dag(subtasks)
+            
+            # Resource estimation
+            resources = self.estimate_resources(dag)
+            
+            return ExecutionPlan(dag, resources)
+        except Exception as exc:
+            raise PlanningError(
+                f"Failed to create execution plan for task {task!r}"
+            ) from exc
 
             # Dependency analysis
             dag = self.build_dag(subtasks)
@@ -116,9 +128,12 @@ class ExecutorAgent:
             
             return TaskResult(success=True, data=result, metrics=metrics)
             
-        except Exception as e:
-            # Handle error with retry logic
+        except (TimeoutError, OSError, RuntimeError) as e:
+            # Handle expected operational errors with retry logic
             return self.handle_error(task, e)
+        except (KeyboardInterrupt, SystemExit):
+            # Do not swallow critical termination signals
+            raise
 ```
 
 ---
@@ -280,7 +295,7 @@ class Orchestrator:
             context = self.retriever.retrieve(assignment.subtask.context)
             
             # Execute
-            result = self.executor.execute(assignment.subtask, context)
+            result = self.executors.execute(assignment.subtask, context)
             results.append(result)
         
         # 4. Validate results
@@ -342,6 +357,10 @@ class Orchestrator:
 All agent communication uses a standardized message format:
 
 ```python
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Dict, Any
+
 @dataclass
 class AgentMessage:
     id: str                    # Unique message ID
@@ -404,6 +423,43 @@ All agent actions are logged for auditability:
 
 ```python
 class AuditLogger:
+    def _redact_data(self, data, depth=0, max_depth=10):
+        """Return a redacted copy of the data, masking likely secret fields.
+
+        This method performs recursive redaction to handle nested structures.
+        
+        Args:
+            data: Data to redact (dict, list, or other type)
+            depth: Current recursion depth
+            max_depth: Maximum recursion depth to prevent infinite loops
+            
+        Returns:
+            Redacted copy of the data
+        """
+        # Prevent infinite recursion
+        if depth > max_depth:
+            return "***MAX_DEPTH_EXCEEDED***"
+        
+        # Handle dictionaries recursively
+        if isinstance(data, dict):
+            sensitive_keys = {"password", "token", "secret", "api_key", "authorization", "auth"}
+            redacted = {}
+            for key, value in data.items():
+                if isinstance(key, str) and key.lower() in sensitive_keys:
+                    redacted[key] = "***REDACTED***"
+                else:
+                    # Recursively redact nested structures
+                    redacted[key] = self._redact_data(value, depth + 1, max_depth)
+            return redacted
+        
+        # Handle lists recursively
+        elif isinstance(data, (list, tuple)):
+            return [self._redact_data(item, depth + 1, max_depth) for item in data]
+        
+        # For other types, return as-is
+        else:
+            return data
+
     def _redact_data(self, data: dict) -> dict:
         """Return a redacted copy of the data, masking likely secret fields.
 
@@ -459,6 +515,15 @@ class AuditLogger:
 ### Agent Pool Management
 
 ```python
+from queue import Empty, Queue
+from typing import Type
+
+
+class AgentAcquisitionTimeoutError(Exception):
+    """Raised when acquiring an agent from the pool times out."""
+    pass
+
+
 class AgentPool:
     def __init__(self, agent_class: Type[Agent], pool_size: int):
         self.pool = Queue(maxsize=pool_size)
@@ -466,8 +531,25 @@ class AgentPool:
             agent = agent_class()
             self.pool.put(agent)
     
-    def acquire(self) -> Agent:
-        return self.pool.get()
+    def acquire(self, timeout: float = 30.0) -> Agent:
+        """Acquire an agent from the pool, waiting up to ``timeout`` seconds.
+
+        Args:
+            timeout: Maximum time in seconds to wait for an available agent.
+
+        Returns:
+            An available Agent instance.
+
+        Raises:
+            AgentAcquisitionTimeoutError: If no agent becomes available
+                within the given timeout.
+        """
+        try:
+            return self.pool.get(timeout=timeout)
+        except Empty as exc:
+            raise AgentAcquisitionTimeoutError(
+                f"Timed out after {timeout} seconds while waiting for an available agent"
+            ) from exc
     
     def release(self, agent: Agent):
         self.pool.put(agent)
