@@ -1,0 +1,135 @@
+name: 'Convert Docx to Artifact'
+description: 'Convert docx/PDF/Markdown documents to structured artifacts (YAML/JSON/Markdown/Python modules)'
+
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: docx-to-artifact-action
+# @GL-audit-trail: ../../../governance/GL_SEMANTIC_ANCHOR.json
+
+inputs:
+  source-files:
+    description: 'Path to source files (supports glob patterns)'
+    required: true
+    default: 'docs/**/*.md'
+  
+  output-dir:
+    description: 'Output directory for artifacts'
+    required: true
+    default: 'artifacts/modules'
+  
+  artifact-type:
+    description: 'Type of artifact to generate'
+    required: false
+    default: 'all'
+    type: choice
+    options:
+      - all
+      - yaml
+      - json
+      - markdown
+      - python
+  
+  format:
+    description: 'Output format (flat, nested)'
+    required: false
+    default: 'nested'
+  
+  validate:
+    description: 'Validate generated artifacts'
+    required: false
+    default: 'true'
+  
+  upload-to-artifacts:
+    description: 'Upload artifacts to GitHub Actions artifacts'
+    required: false
+    default: 'true'
+
+outputs:
+  artifacts-generated:
+    description: 'Number of artifacts generated'
+    value: ${{ steps.convert.outputs.count }}
+  
+  artifacts-path:
+    description: 'Path to generated artifacts'
+    value: ${{ steps.convert.outputs.path }}
+  
+  validation-status:
+    description: 'Validation status'
+    value: ${{ steps.validate.outputs.status }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+
+    - name: Setup Python
+      uses: actions/setup-python@v5.0.0
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        pip install -r .config/requirements-docx.txt
+        pip install --upgrade pip
+
+    - name: Convert documents to artifacts
+      id: convert
+      shell: bash
+      run: |
+        echo "Converting documents to artifacts..."
+        python scripts/docx/convert.py \
+          --source "${{ inputs.source-files }}" \
+          --output "${{ inputs.output-dir }}" \
+          --type "${{ inputs.artifact-type }}" \
+          --format "${{ inputs.format }}" \
+          --count-output artifacts-count.txt
+        
+        ARTIFACTS_COUNT=$(cat artifacts-count.txt)
+        echo "count=$ARTIFACTS_COUNT" >> $GITHUB_OUTPUT
+        echo "path=${{ inputs.output-dir }}" >> $GITHUB_OUTPUT
+        echo "Generated $ARTIFACTS_COUNT artifacts"
+
+    - name: Validate artifacts
+      id: validate
+      if: inputs.validate == 'true'
+      shell: bash
+      run: |
+        echo "Validating artifacts..."
+        python scripts/docx/validate.py \
+          --path "${{ inputs.output-dir }}" \
+          --format json
+        
+        VALIDATION_STATUS=$?
+        echo "status=$VALIDATION_STATUS" >> $GITHUB_OUTPUT
+        
+        if [ $VALIDATION_STATUS -eq 0 ]; then
+          echo "✅ All artifacts validated successfully"
+        else
+          echo "❌ Artifact validation failed"
+          exit 1
+        fi
+
+    - name: Upload artifacts
+      if: inputs.upload-to-artifacts == 'true'
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: docx-artifacts-${{ github.sha }}
+        path: |
+          ${{ inputs.output-dir }}
+          artifacts-count.txt
+        retention-days: 30
+
+    - name: Generate summary
+      shell: bash
+      run: |
+        cat <<EOF >> $GITHUB_STEP_SUMMARY
+        
+        # Docx to Artifact Conversion Summary
+        
+        - **Source Files**: ${{ inputs.source-files }}
+        - **Output Directory**: ${{ inputs.output-dir }}
+        - **Artifacts Generated**: ${{ steps.convert.outputs.count }}
+        - **Validation Status**: ${{ steps.validate.outputs.status == '0' && '✅ Passed' || '❌ Failed' }}
+        EOF
