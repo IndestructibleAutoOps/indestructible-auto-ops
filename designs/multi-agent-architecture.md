@@ -404,22 +404,52 @@ All agent actions are logged for auditability:
 
 ```python
 class AuditLogger:
+    def _redact_data(self, data: dict) -> dict:
+        """Return a redacted copy of the data, masking likely secret fields.
+
+        This method performs a shallow key-based redaction. In a full
+        implementation, this should be extended to handle nested structures
+        and project-specific secret patterns.
+        """
+        if not isinstance(data, dict):
+            return data
+
+        sensitive_keys = {"password", "token", "secret", "api_key", "authorization", "auth"}
+        redacted: dict = {}
+        for key, value in data.items():
+            if isinstance(key, str) and key.lower() in sensitive_keys:
+                redacted[key] = "***REDACTED***"
+            else:
+                redacted[key] = value
+        return redacted
+
     def log_action(self, action: AgentAction):
+        # Redact potentially sensitive input/output before persisting
+        redacted_input = self._redact_data(action.input)
+        redacted_output = self._redact_data(action.output)
+
         entry = AuditEntry(
             timestamp=datetime.now(),
             agent=action.agent_id,
             action_type=action.type,
-            input_data=action.input,
-            output_data=action.output,
+            input_data=redacted_input,
+            output_data=redacted_output,
             duration=action.duration,
             governance_checks=action.governance_results
         )
         
-        # Write to audit log
+        # Write to audit log (redacted payload only)
         self.audit_store.write(entry)
         
-        # Emit to monitoring
-        self.monitoring.emit("agent_action", entry.to_dict())
+        # Emit only non-sensitive metadata to monitoring
+        monitoring_payload = {
+            "timestamp": entry.timestamp,
+            "agent": entry.agent,
+            "action_type": entry.action_type,
+            "duration": entry.duration,
+            "governance_checks": entry.governance_checks,
+        }
+        self.monitoring.emit("agent_action", monitoring_payload)
 ```
 
 ---
