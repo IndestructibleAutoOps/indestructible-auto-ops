@@ -1,0 +1,173 @@
+apiVersion: workflow.machinenativeops.io/v1
+kind: DependencyUpdateWorkflow
+metadata:
+  name: gl-quantum-dependency-update
+  namespace: github-actions
+  labels:
+    gl-version: v10.0.0
+    tier: quantum-automation
+spec:
+  name: Automated Dependency Management
+  
+  on:
+    schedule:
+      - cron: '0 6 * * 1'  # Every Monday at 6 AM UTC
+    workflow_dispatch:
+      
+  jobs:
+    update-python-dependencies:
+      name: Update Python Dependencies
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Set up Python
+          uses: actions/setup-python@b55c28f9c9bbb6369b725b2853c1275c637c5f1b
+          with:
+            python-version: '3.11'
+            
+        - name: Install pip-tools
+          run: |
+            pip install pip-tools
+            pip install pip-audit
+            
+        - name: Check for outdated dependencies
+          run: |
+            pip list --outdated --format=json > artifacts/dependencies/outdated.json
+            pip-audit --format=json --output artifacts/dependencies/audit.json
+            
+        - name: Update dependencies
+          run: |
+            pip-compile requirements.in --upgrade
+            pip-sync requirements.txt
+            
+        - name: Run tests with new dependencies
+          run: |
+            pytest tests/unit/ -v --tb=short
+            
+        - name: Create PR if changes needed
+          uses: peter-evans/create-pull-request@5e1e1cc557324d7578778c77a345f9a021d5f9f7
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            commit-message: 'chore: update python dependencies'
+            title: 'chore: Update Python Dependencies'
+            body: |
+              Automated Python dependency update
+              
+              ## Changes
+              - Updated Python packages to latest stable versions
+              - Ran unit tests to verify compatibility
+              
+              ## Verification
+              ✅ Unit tests passed
+              ✅ Security audit completed
+              
+            branch: feature/update-python-dependencies
+            labels: automated, dependencies
+            reviewers: platform-team
+            
+    update-golang-dependencies:
+      name: Update Go Dependencies
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Set up Go
+          uses: actions/setup-go@93397bea11091af506dff004f7f4b0c0cdddaad8
+          with:
+            go-version: '1.21'
+            cache: true
+            
+        - name: Update dependencies
+          run: |
+            go get -u ./...
+            go mod tidy
+            go mod verify
+            
+        - name: Run tests
+          run: |
+            go test -v ./...
+            
+        - name: Create PR if changes needed
+          uses: peter-evans/create-pull-request@5e1e1cc557324d7578778c77a345f9a021d5f9f7
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            commit-message: 'chore: update golang dependencies'
+            title: 'chore: Update Go Dependencies'
+            body: |
+              Automated Go dependency update
+              
+              ## Changes
+              - Updated Go modules to latest versions
+              - Ran tests to verify compatibility
+              
+            branch: feature/update-go-dependencies
+            labels: automated, dependencies
+            reviewers: platform-team
+            
+    update-container-dependencies:
+      name: Update Container Base Images
+      runs-on: ubuntu-latest
+      
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
+          
+        - name: Check for base image updates
+          run: |
+            python scripts/check-base-image-updates.py \
+              --dockerfile Dockerfile \
+              --output artifacts/dependencies/base-image-updates.json
+              
+        - name: Update base images
+          run: |
+            python scripts/update-base-images.py \
+              --dockerfile Dockerfile
+              
+        - name: Build and test new images
+          run: |
+            docker build -t gl-quantum-test:latest .
+            docker run --rm gl-quantum-test:latest pytest tests/
+            
+        - name: Create PR if changes needed
+          uses: peter-evans/create-pull-request@5e1e1cc557324d7578778c77a345f9a021d5f9f7
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            commit-message: 'chore: update container base images'
+            title: 'chore: Update Container Base Images'
+            body: |
+              Automated container base image update
+              
+              ## Changes
+              - Updated base images to latest stable versions
+              - Tested container build and execution
+              
+            branch: feature/update-container-images
+            labels: automated, dependencies, security
+            reviewers: platform-team
+            
+    generate-dependency-report:
+      name: Generate Dependency Report
+      runs-on: ubuntu-latest
+      needs: [update-python-dependencies, update-golang-dependencies, update-container-dependencies]
+      if: always()
+      
+      steps:
+        - name: Download all dependency artifacts
+          uses: actions/download-artifact@9fb559a0d22c77fb732c8d4f1d7e75161623783e
+          
+        - name: Generate dependency report
+          run: |
+            python scripts/generate-dependency-report.py \
+              --input artifacts/dependencies/ \
+              --output artifacts/dependency-report.html
+              
+        - name: Upload dependency report
+          uses: actions/upload-artifact@f44cd7b26bfd925d344808df135416398c3a1d95
+          with:
+            name: dependency-report
+            path: artifacts/dependency-report.html
