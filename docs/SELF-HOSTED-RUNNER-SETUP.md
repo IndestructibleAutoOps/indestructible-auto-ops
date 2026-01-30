@@ -133,6 +133,91 @@ tar xzf ./actions-runner-linux-arm64-2.331.0.tar.gz --overwrite
 - Review runner logs for errors
 - Restart the service: `./svc.sh restart`
 
+## GL_TOKEN Configuration
+
+The `GL_TOKEN` is a GitHub Personal Access Token (PAT) or GitHub App token that replaces the default `GITHUB_TOKEN` across 19 workflows in this repository. It requires elevated permissions to perform various operations including creating PRs, publishing packages, and deploying to registries.
+
+### Required Token Permissions/Scopes
+
+When creating the GL_TOKEN, ensure it has the following minimum required scopes:
+
+#### For Personal Access Token (Classic)
+- `repo` (Full control of private repositories)
+  - Includes: `repo:status`, `repo_deployment`, `public_repo`, `repo:invite`, `security_events`
+  - **Required for**: Checking out code, creating/updating PRs, pushing commits, accessing repository content
+- `write:packages` (Upload packages to GitHub Package Registry)
+  - **Required for**: Publishing npm packages to GitHub Packages
+- `read:packages` (Download packages from GitHub Package Registry)
+  - **Required for**: Installing dependencies from GitHub Packages
+- `workflow` (Update GitHub Action workflows)
+  - **Required for**: Workflows that trigger other workflows or update workflow files
+
+#### For Fine-Grained Personal Access Token
+- **Repository permissions:**
+  - Contents: `Read and write`
+  - Issues: `Read and write`
+  - Pull requests: `Read and write`
+  - Workflows: `Read and write`
+  - Metadata: `Read-only` (automatically included)
+- **Account permissions:**
+  - Packages: `Read and write` (if publishing to GitHub Packages)
+
+### Token Usage in Workflows
+
+The GL_TOKEN is used for the following operations:
+1. **Repository Operations**: Checkout, commit, push, create PRs
+2. **Package Publishing**: Publishing to GitHub Packages (npm registry)
+3. **Container Registry**: Pushing images to GitHub Container Registry (ghcr.io)
+4. **Issue/PR Management**: Creating and updating issues and pull requests
+5. **Workflow Automation**: Triggering workflows and updating workflow files
+6. **Semantic Release**: Automated version management and releases
+
+### Setting Up GL_TOKEN
+
+1. **Create the token**:
+   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Click "Generate new token (classic)"
+   - Add a descriptive note: "GL_TOKEN for machine-native-ops workflows"
+   - Select the required scopes listed above
+   - Set an appropriate expiration date (recommend: 90 days with calendar reminder for renewal)
+   - Click "Generate token" and copy the token immediately
+
+2. **Add to repository secrets**:
+   - Go to: https://github.com/MachineNativeOps/machine-native-ops/settings/secrets/actions
+   - Click "New repository secret"
+   - Name: `GL_TOKEN`
+   - Value: Paste the token you generated
+   - Click "Add secret"
+
+3. **Verify the token**:
+   - Trigger a workflow that uses GL_TOKEN (e.g., manually trigger a workflow)
+   - Check the workflow logs to ensure authentication succeeds
+   - Monitor for any permission-related errors
+
+### Security Best Practices for GL_TOKEN
+
+1. **Scope Minimization**: Only grant the minimum required permissions
+2. **Regular Rotation**: Rotate the token every 90 days or when team members with access leave
+3. **Audit Trail**: Regularly review workflow runs to monitor token usage
+4. **Access Control**: Limit who can view/modify repository secrets
+5. **Expiration**: Set token expiration dates and use calendar reminders for renewal
+6. **Monitoring**: Watch for unauthorized usage or permission errors in workflow logs
+
+### Troubleshooting GL_TOKEN Issues
+
+**403 Forbidden errors**:
+- Verify the token has all required scopes
+- Check if the token has expired
+- Ensure the token has access to the repository
+
+**Package publishing failures**:
+- Confirm `write:packages` scope is enabled
+- Verify the package name matches the repository owner/org
+
+**PR creation failures**:
+- Ensure `repo` scope is enabled (for classic tokens)
+- For fine-grained tokens, verify `Pull requests: Read and write` permission
+
 ## Security Considerations
 
 1. **Isolation**: Consider running the runner in a container or VM for isolation
