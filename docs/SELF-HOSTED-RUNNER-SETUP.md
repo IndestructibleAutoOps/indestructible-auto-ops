@@ -2,6 +2,7 @@
 <!-- @GL-layer: GL90-99 -->
 <!-- @GL-semantic: governed-documentation -->
 <!-- @GL-audit-trail: ../engine/governance/GL_SEMANTIC_ANCHOR.json -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
 
 # Self-Hosted GitHub Actions Runner Setup Guide
 
