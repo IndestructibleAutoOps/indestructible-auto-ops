@@ -1,0 +1,11 @@
+  private async getKnowledgeNodes(req: Request, res: Response): Promise<void> {
+    try {
+      const { type, source } = req.query;
+      let nodes: any[];
+
+      if (type) {
+        nodes = this.continuum.getKnowledgeAccretion().queryByType(type as string);
+      } else if (source) {
+        nodes = this.continuum.getKnowledgeAccretion().queryBySource(source as string);
+      } else {
+        nodes = Array.from(this.continuum.getKnowledgeAccretion().getKnowledgeGraph().nodes.values());

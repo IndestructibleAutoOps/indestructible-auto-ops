@@ -1,0 +1,3 @@
+59:    this.router.post('/knowledge/nodes', this.addKnowledgeNode.bind(this));
+170:  private async addKnowledgeNode(req: Request, res: Response): Promise<void> {
+173:      const nodeId = this.continuum.getKnowledgeAccretion().addKnowledgeNode(

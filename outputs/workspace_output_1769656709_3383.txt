@@ -1,0 +1,25 @@
+code-intel-security-layer
+├── capability-schema
+│   └── index.ts
+├── deployment-weaver
+│   ├── cicd-adapter
+│   ├── cli-adapter
+│   ├── ide-adapter
+│   ├── index.ts
+│   └── web-console-adapter
+├── evaluation-engine
+│   └── index.ts
+├── evolution-engine
+│   └── index.ts
+├── generator-engine
+│   └── index.ts
+├── index.ts
+└── pattern-library
+    ├── architecture-refactoring
+    ├── documentation-synthesis
+    ├── index.ts
+    ├── performance-optimization
+    ├── security-hardening
+    └── test-generation
+
+16 directories, 7 files

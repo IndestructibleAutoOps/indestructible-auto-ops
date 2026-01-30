@@ -1,0 +1,129 @@
+# @GL-governed
+# @GL-layer: GL100-119
+# @GL-semantic: capability-templates
+# @GL-charter-version: 4.0.0
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# Capability Templates
+# Pre-defined templates for common capability types
+
+templates:
+  # Security Hardening Template
+  security-hardening-template:
+    category: security-hardening
+    dimensions:
+      precision: 0.95
+      recall: 0.90
+      f1-score: 0.92
+      latency-ms: 500
+      throughput-files-per-second: 10
+    guarantees:
+      - type: no-false-positives
+        description: Zero false positive rate on known safe code
+      - type: complete-coverage
+        description: Complete code path coverage
+
+  # Performance Optimization Template
+  performance-optimization-template:
+    category: performance-optimization
+    dimensions:
+      precision: 0.90
+      recall: 0.85
+      f1-score: 0.87
+      latency-ms: 1000
+      throughput-files-per-second: 5
+    guarantees:
+      - type: no-regression
+        description: No performance regression
+      - type: safe-optimization
+        description: Only safe optimizations applied
+
+  # Architecture Refactoring Template
+  architecture-refactoring-template:
+    category: architecture-refactoring
+    dimensions:
+      precision: 0.85
+      recall: 0.80
+      f1-score: 0.82
+      latency-ms: 2000
+      throughput-files-per-second: 2
+    guarantees:
+      - type: semantic-equivalence
+        description: Refactored code is semantically equivalent
+      - type: test-preservation
+        description: All existing tests still pass
+
+  # Test Generation Template
+  test-generation-template:
+    category: test-generation
+    dimensions:
+      precision: 0.88
+      recall: 0.82
+      f1-score: 0.85
+      latency-ms: 1500
+      throughput-files-per-second: 3
+    guarantees:
+      - type: test-coverage
+        description: Tests cover all code paths
+      - type: meaningful-tests
+        description: Generated tests are meaningful and useful
+
+  # Documentation Synthesis Template
+  documentation-synthesis-template:
+    category: documentation-synthesis
+    dimensions:
+      precision: 0.92
+      recall: 0.88
+      f1-score: 0.90
+      latency-ms: 800
+      throughput-files-per-second: 8
+    guarantees:
+      - type: accuracy
+        description: Documentation accurately describes code
+      - type: completeness
+        description: Documentation covers all public APIs
+
+  # Dependency Analysis Template
+  dependency-analysis-template:
+    category: dependency-analysis
+    dimensions:
+      precision: 0.95
+      recall: 0.93
+      f1-score: 0.94
+      latency-ms: 300
+      throughput-files-per-second: 20
+    guarantees:
+      - type: complete-detection
+        description: All dependencies detected
+      - type: version-accuracy
+        description: Accurate version information
+
+  # Vulnerability Detection Template
+  vulnerability-detection-template:
+    category: vulnerability-detection
+    dimensions:
+      precision: 0.97
+      recall: 0.92
+      f1-score: 0.94
+      latency-ms: 400
+      throughput-files-per-second: 15
+    guarantees:
+      - type: no-false-negatives
+        description: Zero false negative rate on known vulnerable code
+      - type: cwe-compliance
+        description: Compliance with CWE standards
+
+  # Deep Code Understanding Template
+  deep-code-understanding-template:
+    category: deep-code-understanding
+    dimensions:
+      precision: 0.93
+      recall: 0.90
+      f1-score: 0.91
+      latency-ms: 600
+      throughput-files-per-second: 7
+    guarantees:
+      - type: semantic-accuracy
+        description: Accurate semantic understanding
+      - type: context-awareness
+        description: Understanding of code context and intent

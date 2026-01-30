@@ -1,0 +1,20 @@
+  "name": "gl-runtime-platform",
+  "version": "20.0.0",
+  "description": "GL Governance Runtime Platform v20.0.0 - Infinite Learning Continuum: Perpetual Knowledge Accretion, Semantic Reformation, and Autonomous Evolution",
+  "_gl": {
+    "version": "20.0.0",
+    "layer": "GL90-99",
+    "semantic": "runtime-fabric-config",
+    "charter": "4.0.0"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "test": "jest",
+    "audit": "node dist/commands/audit.js",
+    "fix": "node dist/commands/fix.js",
+    "deploy": "node dist/commands/deploy.js",
+    "orchestrate": "node dist/commands/orchestrate.js",
+    "mesh": "node dist/cognitive-mesh-server.js",

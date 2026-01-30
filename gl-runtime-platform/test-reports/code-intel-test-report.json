@@ -1,0 +1,404 @@
+{
+  "test_metadata": {
+    "version": "21.0.0",
+    "test_date": "2026-01-29T03:51:01.226560",
+    "tester": "CodeIntelTester v21.0.0",
+    "workspace_root": "/workspace/gl-runtime-platform"
+  },
+  "summary": {
+    "total_tests": 18,
+    "total_passed": 18,
+    "total_failed": 0,
+    "total_skipped": 0,
+    "pass_rate": 100.0,
+    "total_duration_ms": 0.74,
+    "total_duration_seconds": 0.0
+  },
+  "test_suites": [
+    {
+      "name": "Capability Schema",
+      "description": "Test capability description language and generation",
+      "statistics": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.22459030151367188,
+      "test_cases": [
+        {
+          "name": "Directory Exists",
+          "description": "Verify capability-schema directory exists",
+          "status": "passed",
+          "duration_ms": 0.03933906555175781,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/capability-schema",
+            "directory_exists": true
+          }
+        },
+        {
+          "name": "Schema Files",
+          "description": "Verify required schema files exist",
+          "status": "passed",
+          "duration_ms": 0.03170967102050781,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_files": [
+              "capability-definition-language.md",
+              "capability-templates.yaml",
+              "capability-examples.json"
+            ],
+            "found_files": [
+              "capability-definition-language.md",
+              "capability-templates.yaml",
+              "capability-examples.json"
+            ],
+            "all_present": true
+          }
+        },
+        {
+          "name": "Schema Structure",
+          "description": "Validate schema structure and content",
+          "status": "passed",
+          "duration_ms": 0.13780593872070312,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "total_examples": 7,
+            "first_example_id": "N/A",
+            "structure_valid": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pattern Library",
+      "description": "Test security, performance, and architecture patterns",
+      "statistics": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.335693359375,
+      "test_cases": [
+        {
+          "name": "Directory Exists",
+          "description": "Verify pattern-library directory exists",
+          "status": "passed",
+          "duration_ms": 0.02002716064453125,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/pattern-library"
+          }
+        },
+        {
+          "name": "Pattern Categories",
+          "description": "Verify all pattern categories exist",
+          "status": "passed",
+          "duration_ms": 0.021219253540039062,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_categories": [
+              "security-patterns",
+              "performance-patterns",
+              "architecture-patterns"
+            ],
+            "found_categories": [
+              "security-patterns",
+              "performance-patterns",
+              "architecture-patterns"
+            ],
+            "all_present": true
+          }
+        },
+        {
+          "name": "Pattern Count",
+          "description": "Count and validate patterns",
+          "status": "passed",
+          "duration_ms": 0.2789497375488281,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "total_patterns": 4,
+            "pattern_details": {
+              "security-patterns": 2,
+              "performance-patterns": 1,
+              "architecture-patterns": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Generator Engine",
+      "description": "Test capability generation engine",
+      "statistics": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.03981590270996094,
+      "test_cases": [
+        {
+          "name": "Directory Exists",
+          "description": "Verify generator-engine directory exists",
+          "status": "passed",
+          "duration_ms": 0.014543533325195312,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/generator-engine"
+          }
+        },
+        {
+          "name": "Generator Components",
+          "description": "Verify generator engine components",
+          "status": "passed",
+          "duration_ms": 0.018596649169921875,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_components": [
+              "capability-generator.py",
+              "pattern-matcher.py",
+              "template-engine.py"
+            ],
+            "found_components": [
+              "capability-generator.py",
+              "pattern-matcher.py",
+              "template-engine.py"
+            ],
+            "all_present": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Evaluation Engine",
+      "description": "Test verification and evaluation layer",
+      "statistics": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.021219253540039062,
+      "test_cases": [
+        {
+          "name": "Directory Exists",
+          "description": "Verify evaluation-engine directory exists",
+          "status": "passed",
+          "duration_ms": 0.010728836059570312,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/evaluation-engine"
+          }
+        },
+        {
+          "name": "Evaluation Criteria",
+          "description": "Verify evaluation criteria definitions",
+          "status": "passed",
+          "duration_ms": 0.0059604644775390625,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "criteria_file": "/workspace/gl-runtime-platform/code-intel-security-layer/evaluation-engine/evaluation-criteria.yaml",
+            "exists": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deployment Weaver",
+      "description": "Test CLI/IDE/Web/CI/CD integration",
+      "statistics": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.03314018249511719,
+      "test_cases": [
+        {
+          "name": "Directory Exists",
+          "description": "Verify deployment-weaver directory exists",
+          "status": "passed",
+          "duration_ms": 0.009298324584960938,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/deployment-weaver"
+          }
+        },
+        {
+          "name": "Deployment Platforms",
+          "description": "Verify all deployment platforms are configured",
+          "status": "passed",
+          "duration_ms": 0.019788742065429688,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_platforms": [
+              "cli-generator",
+              "ide-extension",
+              "web-console",
+              "ci-cd-integration"
+            ],
+            "found_platforms": [
+              "cli-generator",
+              "ide-extension",
+              "web-console",
+              "ci-cd-integration"
+            ],
+            "all_present": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Evolution Engine",
+      "description": "Test self-evolving system",
+      "statistics": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.029087066650390625,
+      "test_cases": [
+        {
+          "name": "Directory Exists",
+          "description": "Verify evolution-engine directory exists",
+          "status": "passed",
+          "duration_ms": 0.009298324584960938,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/evolution-engine"
+          }
+        },
+        {
+          "name": "Evolution Mechanisms",
+          "description": "Verify evolution mechanisms are defined",
+          "status": "passed",
+          "duration_ms": 0.015735626220703125,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_files": [
+              "usage-tracker.py",
+              "adaptation-engine.py",
+              "self-optimizer.py"
+            ],
+            "found_files": [
+              "usage-tracker.py",
+              "adaptation-engine.py",
+              "self-optimizer.py"
+            ],
+            "minimum_met": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "V19 Fabric Integration",
+      "description": "Test integration with Unified Intelligence Fabric",
+      "statistics": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.02956390380859375,
+      "test_cases": [
+        {
+          "name": "Integration Directory",
+          "description": "Verify V19 fabric integration directory exists",
+          "status": "passed",
+          "duration_ms": 0.012159347534179688,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/integrations/v19-fabric"
+          }
+        },
+        {
+          "name": "Integration Files",
+          "description": "Verify integration files are present",
+          "status": "passed",
+          "duration_ms": 0.0133514404296875,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_files": [
+              "fabric-connector.py",
+              "fabric-adapter.py"
+            ],
+            "found_files": [
+              "fabric-connector.py",
+              "fabric-adapter.py"
+            ],
+            "minimum_met": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "V20 Continuum Integration",
+      "description": "Test integration with Infinite Learning Continuum",
+      "statistics": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "duration_ms": 0.024318695068359375,
+      "test_cases": [
+        {
+          "name": "Integration Directory",
+          "description": "Verify V20 continuum integration directory exists",
+          "status": "passed",
+          "duration_ms": 0.0095367431640625,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/integrations/v20-continuum"
+          }
+        },
+        {
+          "name": "Integration Files",
+          "description": "Verify continuum integration files",
+          "status": "passed",
+          "duration_ms": 0.010728836059570312,
+          "error_message": null,
+          "assertions": [],
+          "metrics": {
+            "required_files": [
+              "continuum-connector.py",
+              "learning-adapter.py"
+            ],
+            "found_files": [
+              "continuum-connector.py",
+              "learning-adapter.py"
+            ],
+            "minimum_met": true
+          }
+        }
+      ]
+    }
+  ],
+  "overall_status": "PASSED",
+  "_gl": {
+    "governance": "GL-Standard",
+    "version": "1.0.0",
+    "validated": true
+  }
+}

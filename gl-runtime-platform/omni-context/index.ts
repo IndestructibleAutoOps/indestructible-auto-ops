@@ -5,42 +5,42 @@
  * 整合所有脈絡組件的主入口
  */
 
-import { ContextFusionEngine, Context, FusionRequest, FusionResult } from './context-fusion/index.js';
+import { ContextFusionEngine, Context, FusionRequest, FusionResult } from './context-fusion/index';
 import { 
   TemporalCoherenceEngine, 
   TemporalState, 
   CoherenceRequest, 
   CoherenceResult,
   StabilityMetrics
-} from './temporal-coherence/index.js';
+} from './temporal-coherence/index';
 import { 
   MultiScaleReasoningEngine, 
   ReasoningTask, 
   ReasoningResult,
   ScaleLevel,
   MultiScalePlan
-} from './multi-scale-reasoning/index.js';
+} from './multi-scale-reasoning/index';
 import {
   ContextAwareStrategyEngine,
   StrategySelectionRequest,
   StrategySelectionResult,
   Strategy,
   Agent
-} from './context-aware-strategy/index.js';
+} from './context-aware-strategy/index';
 import {
   GlobalConsistencyFabric,
   ConsistencyContext,
   ConsistencyCheck,
   ConsistencyViolation,
   ConsistencyMetrics
-} from './global-consistency-fabric/index.js';
+} from './global-consistency-fabric/index';
 import {
   KnowledgeAlignmentEngine,
   KnowledgeDomain,
   AlignmentRequest,
   AlignmentResult,
   KnowledgeAlignmentMetrics
-} from './knowledge-alignment/index.js';
+} from './knowledge-alignment/index';
 
 export interface OmniContextConfig {
   contextFusion?: {
@@ -334,9 +334,9 @@ export class OmniContextIntegration {
 }
 
 // 導出所有類型
-export * from './context-fusion/index.js';
-export * from './temporal-coherence/index.js';
-export * from './multi-scale-reasoning/index.js';
-export * from './context-aware-strategy/index.js';
-export * from './global-consistency-fabric/index.js';
-export * from './knowledge-alignment/index.js';
+export * from './context-fusion/index';
+export * from './temporal-coherence/index';
+export * from './multi-scale-reasoning/index';
+export * from './context-aware-strategy/index';
+export * from './global-consistency-fabric/index';
+export * from './knowledge-alignment/index';

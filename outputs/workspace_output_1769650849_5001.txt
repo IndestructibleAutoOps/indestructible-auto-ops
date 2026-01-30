@@ -1,0 +1,21 @@
+Running GL governance pre-commit validation...
+Checking: gl-runtime-platform/GL_V19_UNIFIED_INTELLIGENCE_FABRIC.md
+❌ ERROR: Missing @GL-governed marker in gl-runtime-platform/GL_V19_UNIFIED_INTELLIGENCE_FABRIC.md
+Checking: gl-runtime-platform/package.json
+❌ ERROR: Missing _gl metadata in gl-runtime-platform/package.json
+Checking: gl-runtime-platform/src/unified-fabric-server.ts
+Checking: gl-runtime-platform/tsconfig.json
+❌ ERROR: Missing _gl metadata in gl-runtime-platform/tsconfig.json
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-algo/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-composition/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-compute/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-core/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-evolution/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-flows/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/fabric-storage/index.ts
+Checking: gl-runtime-platform/unified-intelligence-fabric/index.ts
+Checking: todo-v19.md
+❌ ERROR: Missing @GL-governed marker in todo-v19.md
+
+❌ GL Governance Validation Failed
+Found 4 violations. Please fix before committing.

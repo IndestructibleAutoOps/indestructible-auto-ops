@@ -1,0 +1,5 @@
+35:  compressedVersions: CompressedVersion[];
+812:    const compressedVersions = this.compressVersions(superposition.versions);
+823:      compressedVersions,
+831:      compressedVersions,
+944:    const versions = this.decompressVersions(compressed.compressedVersions);

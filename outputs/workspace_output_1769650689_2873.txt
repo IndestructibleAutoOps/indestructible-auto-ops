@@ -1,0 +1,11 @@
+157:  projections: Map<string, ProjectionView>;
+186:export interface ProjectionView {
+882:  private async syncGRGProjection(projection: ProjectionView): Promise<void> {
+887:  private async syncSRGProjection(projection: ProjectionView): Promise<void> {
+892:  private async syncGlobalDAGProjection(projection: ProjectionView): Promise<void> {
+896:  private async syncSwarmProjection(projection: ProjectionView): Promise<void> {
+900:  private async syncMeshProjection(projection: ProjectionView): Promise<void> {
+904:  private async syncCivilizationProjection(projection: ProjectionView): Promise<void> {
+908:  private async syncInterRealityProjection(projection: ProjectionView): Promise<void> {
+1177:  async getProjection(projectionId: string): Promise<ProjectionView | undefined> {
+1205:export type ProjectionView = {

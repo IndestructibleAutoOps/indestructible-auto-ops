@@ -1,0 +1,21 @@
+  edgeCount: number;
+  density: number;
+  avgClustering: number;
+  maxConnectedComponent: number;
+}
+
+export interface ProjectionView {
+  id: string;
+  sourceSystem: string;         // 例如 'GRG', 'SRG', 'DAG'
+  nodes: Set<string>;
+  edges: Set<string>;
+  
+  transformationRules: any[];
+  mappingFunctions: Map<string, any>;
+  
+  lastSync: number;
+  consistency: number;
+}
+
+export interface FabricMetadata {
+  version: string;
