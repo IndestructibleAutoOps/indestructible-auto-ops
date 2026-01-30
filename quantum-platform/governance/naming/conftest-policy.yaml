@@ -1,0 +1,56 @@
+apiVersion: policy.machinenativeops.io/v1
+kind: ConftestPolicy
+metadata:
+  name: gl-quantum-naming-conftest
+  namespace: governance
+  labels:
+    gl-version: v10.0.0
+    tier: quantum-naming
+spec:
+  policies:
+    - name: kubernetes-naming-policy
+      path: policies/naming
+      rego: |
+        package machinenativeops.naming
+        
+        deny[reason] {
+          input.kind == "Deployment"
+          not regex.match("^(dev|staging|prod)-[a-z0-9-]+-deploy-v[0-9]+\\.[0-9]+\\.[0-9]+", input.metadata.name)
+          reason := sprintf("Deployment name %s does not follow naming pattern", [input.metadata.name])
+        }
+        
+        deny[reason] {
+          input.kind == "Service"
+          not regex.match("^(dev|staging|prod)-[a-z0-9-]+-svc-v[0-9]+\\.[0-9]+\\.[0-9]+", input.metadata.name)
+          reason := sprintf("Service name %s does not follow naming pattern", [input.metadata.name])
+        }
+        
+        deny[reason] {
+          input.kind == "Ingress"
+          not regex.match("^(dev|staging|prod)-[a-z0-9-]+-ing-v[0-9]+\\.[0-9]+\\.[0-9]+", input.metadata.name)
+          reason := sprintf("Ingress name %s does not follow naming pattern", [input.metadata.name])
+        }
+        
+        deny[reason] {
+          not input.metadata.labels["app.kubernetes.io/name"]
+          reason := "Missing required label: app.kubernetes.io/name"
+        }
+        
+        deny[reason] {
+          not input.metadata.labels["app.kubernetes.io/version"]
+          reason := "Missing required label: app.kubernetes.io/version"
+        }
+        
+        deny[reason] {
+          not input.metadata.labels["machinenativeops.gl/environment"]
+          reason := "Missing required label: machinenativeops.gl/environment"
+        }
+
+  validation:
+    enabled: true
+    severity: error
+    failOnViolation: true
+
+  remediation:
+    autoFix: false
+    suggestionsEnabled: true
