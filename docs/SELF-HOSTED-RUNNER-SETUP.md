@@ -201,12 +201,13 @@ The GL_TOKEN is used for the following operations:
    - Go to: https://github.com/settings/tokens
    - Click "Generate new token" → "Generate new token (classic)" or "Fine-grained token"
    - Set a descriptive name (e.g., "MachineNativeOps GL_TOKEN")
-   - Set expiration (recommended: 90 days, then rotate)
+   - Set expiration (recommended: 90 days for security, up to 365 days for convenience)
    - Select the required scopes (see above)
    - Click "Generate token" and copy the token immediately
 
 2. **Add to Repository Secrets**:
-   - Go to: https://github.com/MachineNativeOps/machine-native-ops/settings/secrets/actions
+   - Go to your repository Settings → Secrets and variables → Actions
+   - Or navigate to: `https://github.com/<YOUR_ORG>/<YOUR_REPO>/settings/secrets/actions`
    - Click "New repository secret"
    - Name: `GL_TOKEN`
    - Value: Paste the token you generated
@@ -214,12 +215,12 @@ The GL_TOKEN is used for the following operations:
 
 ### Security Best Practices
 
-1. **Token Rotation**: Rotate the GL_TOKEN every 90 days
+1. **Token Rotation**: Rotate the GL_TOKEN regularly (recommended: every 90 days for production)
 2. **Least Privilege**: Only grant the minimum required permissions
 3. **Monitoring**: Regularly audit token usage in workflow logs
 4. **Revocation**: Immediately revoke tokens if compromised
 5. **Fine-Grained Tokens**: Prefer fine-grained tokens over classic tokens when possible
-6. **Expiration**: Set a reasonable expiration date (90-365 days)
+6. **Expiration**: Set an expiration date based on your security requirements (90 days for high security, up to 365 days for lower-risk environments)
 
 ### Troubleshooting Token Issues
 
