@@ -16,8 +16,8 @@
 - [x] Identify all workflows using GITHUB_TOKEN
 - [x] Replace GITHUB_TOKEN with GL_TOKEN in workflows
 - [x] Create self-hosted runner setup documentation
-- [ ] Push all changes to repository
-- [ ] Create pull request for review
+- [x] Push all changes to repository
+- [x] Create pull request for review
 
 ## Phase 1: Global DAG Core Components Construction
 - [x] Create global-dag/dag-model/ (dag-node.ts, dag-graph.ts)
