@@ -230,7 +230,7 @@ spec:
     # 當前狀態摘要
     current_status:
       overall: "production"
-      last_updated: "2026-01-05"
+      last_updated: "{{LAST_UPDATED_YEAR}}-01-05"
       focus:
         - "執行已確定的三階段重構計劃（解構 → 集成 → 重構）"
         - "保持架構重構與自動化執行的專注範圍"
@@ -240,7 +240,7 @@ spec:
       - id: "phase-1"
         name: "基礎架構"
         status: "completed"
-        completion_date: "2024-12-01"
+        completion_date: "{{COMPLETION_MILESTONE}}"
         key_deliverables:
           - "governance-manifest.yaml 建立"
           - "核心 schema 定義"
@@ -249,7 +249,7 @@ spec:
       - id: "phase-2"
         name: "目錄重構"
         status: "completed"
-        completion_date: "2024-12-15"
+        completion_date: "{{COMPLETION_MILESTONE}}"
         key_deliverables:
           - "FHS 標準對齊"
           - "controlplane/workspace 分離"
@@ -276,7 +276,7 @@ spec:
       - id: "phase-5"
         name: "文檔重構"
         status: "in_progress"
-        target_date: "2025-01-15"
+        target_date: "{{MILESTONE_JANUARY}}"
         key_deliverables:
           - "documentation-manifest.yaml"
           - "清理冗餘文檔"
@@ -447,7 +447,7 @@ spec:
         input: "phase-5"
         output:
           status: "in_progress"
-          target_date: "2025-01-15"
+          target_date: "{{MILESTONE_JANUARY}}"
 
     # 文檔查詢
     find_document:
