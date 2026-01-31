@@ -1,0 +1,416 @@
+apiVersion: gl-runtime.io/v1.0.0
+kind: NamingConventionSpecification
+metadata:
+  name: naming-conventions
+  version: v1.0.0
+  description: "Complete Naming Conventions for GL Platform Universe"
+  namespace: gl-platform-universe
+spec:
+  conventions:
+    ## 1. Comment Naming Convention
+    comment-naming:
+      version: v1.0.0
+      format: "gl:<domain>:<capability>:<tag>"
+      block-format: "gl-block:<domain>:<capability>:<block_name>"
+      key-format: "gl.key.<domain>.<capability>.<semantic_key>"
+      
+      rules:
+        - "必須以 gl: 開頭"
+        - "使用冒號分隔（machine-friendly）"
+        - "domain/capability 必須與平台一致"
+        - "tag 必須是語意化名詞"
+      
+      examples:
+        tag:
+          - "gl:runtime:dag:description"
+          - "gl:api:schema:field"
+          - "gl:agent:max:behavior"
+          - "gl:governance:policy:rule"
+          - "gl:semantic:node:explain"
+        block:
+          - "gl-block:runtime:dag:validation"
+          - "gl-block:agent:max:planning"
+          - "gl-block:governance:policy:enforcement"
+        key:
+          - "gl.key.runtime.dag.node_type"
+          - "gl.key.api.schema.field_type"
+          - "gl.key.agent.max.intent"
+          - "gl.key.governance.policy.level"
+    
+    ## 2. Mapping Naming Convention
+    mapping-naming:
+      version: v1.0.0
+      format: "gl-<domain>-<capability>-map"
+      
+      rules:
+        - "全小寫"
+        - "只能使用 a-z、0-9、-"
+        - "domain 必須是語意分類"
+        - "capability 必須是平台能力"
+      
+      examples:
+        - "gl-runtime-dag-map"
+        - "gl-quantum-compute-map"
+        - "gl-api-schema-map"
+        - "gl-agent-behavior-map"
+        - "gl-multimodal-vision-map"
+    
+    ## 3. Reference Naming Convention
+    reference-naming:
+      version: v1.0.0
+      format: "gl.ref.<domain>.<capability>.<resource>"
+      
+      rules:
+        - "使用 dot notation（便於工具解析）"
+        - "domain + capability 必須與平台一致"
+        - "resource 必須是具體功能"
+      
+      examples:
+        - "gl.ref.runtime.dag.executor"
+        - "gl.ref.api.schema.user"
+        - "gl.ref.agent.max.behavior"
+        - "gl.ref.mcp.multimodal.router"
+        - "gl.ref.db.shard.manager"
+    
+    ## 4. Path Naming Convention
+    path-naming:
+      version: v1.0.0
+      
+      repo-format: "/platforms/gl-<domain>-<capability>-platform"
+      api-format: "/gl/<domain>/<capability>/<resource>"
+      
+      rules:
+        - "所有 API path 必須以 /gl/ 開頭"
+        - "domain/capability 必須與平台一致"
+      
+      examples:
+        repo:
+          - "/platforms/gl-runtime-dag-platform"
+          - "/platforms/gl-api-schema-platform"
+          - "/platforms/gl-agent-max-platform"
+        api:
+          - "/gl/runtime/dag/submit"
+          - "/gl/api/schema/generate"
+          - "/gl/agent/max/execute"
+          - "/gl/mcp/multimodal/process"
+          - "/gl/db/shard/rebalance"
+    
+    ## 5. Port Naming Convention
+    port-naming:
+      version: v1.0.0
+      format: "<protocol>-<domain>-<capability>"
+      
+      protocols:
+        - http
+        - grpc
+        - metrics
+      
+      rules:
+        - "protocol = http | grpc | metrics"
+        - "domain/capability 必須與平台一致"
+        - "端口號不寫在名稱裡（避免耦合）"
+      
+      examples:
+        - "http-runtime-dag"
+        - "grpc-quantum-compute"
+        - "http-api-schema"
+        - "grpc-agent-max"
+        - "metrics-mcp-multimodal"
+    
+    ## 6. Service Naming Convention
+    service-naming:
+      version: v1.0.0
+      format: "gl-<domain>-<capability>-svc"
+      
+      rules:
+        - "必須以 gl- 開頭"
+        - "必須以 -svc 結尾"
+        - "domain/capability 必須與平台一致"
+      
+      examples:
+        - "gl-runtime-dag-svc"
+        - "gl-quantum-compute-svc"
+        - "gl-api-schema-svc"
+        - "gl-agent-max-svc"
+        - "gl-mcp-multimodal-svc"
+    
+    ## 7. Dependency Naming Convention
+    dependency-naming:
+      version: v1.0.0
+      format: "gl.dep.<domain>.<capability>"
+      
+      rules:
+        - "使用 dot notation"
+        - "domain/capability 必須與平台一致"
+        - "用於自動生成 semantic dependency graph"
+      
+      examples:
+        - "gl.dep.runtime.dag"
+        - "gl.dep.quantum.compute"
+        - "gl.dep.api.schema"
+        - "gl.dep.agent.max"
+        - "gl.dep.db.shard"
+    
+    ## 8. Short Naming Convention
+    short-naming:
+      version: v1.0.0
+      formats:
+        - "gl.<abbr>"
+        - "gl.<domainabbr>.<capabbr>"
+      
+      rules:
+        - "全小寫"
+        - "不超過 15 字元"
+        - "domain、capability 必須有標準縮寫"
+        - "必須以 gl. 開頭"
+        - "不允許破折號（短命名用 dot notation）"
+      
+      standard-abbreviations:
+        runtime: rt
+        quantum: qm
+        api: api
+        agent: ag
+        multimodal: mm
+        database: db
+        compute: cp
+        storage: st
+        governance: gov
+        semantic: sem
+      
+      examples:
+        - "gl.rt.dag"
+        - "gl.api.sch"
+        - "gl.ag.max"
+        - "gl.mm.proc"
+        - "gl.db.shd"
+        - "gl.qm.comp"
+        - "gl.sem.map"
+    
+    ## 9. Long Naming Convention
+    long-naming:
+      version: v1.0.0
+      formats:
+        - "gl-<domain>-<capability>-<resource>"
+        - "gl-<domain>-<capability>-platform"
+        - "gl-<domain>-<capability>-service"
+      
+      rules:
+        - "全小寫"
+        - "使用破折號（kebab-case）"
+        - "domain、capability 必須使用完整語意"
+        - "resource 可選"
+        - "必須以 gl- 開頭"
+      
+      examples:
+        - "gl-runtime-dag-platform"
+        - "gl-quantum-compute-service"
+        - "gl-api-schema-generator"
+        - "gl-agent-max-runner"
+        - "gl-multimodal-vision-router"
+        - "gl-database-shard-manager"
+        - "gl-governance-policy-engine"
+    
+    ## 10. Directory Naming Convention
+    directory-naming:
+      version: v1.0.0
+      
+      platform-format: "gl-<domain>-<capability>-platform/"
+      service-format: "gl-<domain>-<capability>-service/"
+      module-format: "gl-<domain>-<capability>-module/"
+      
+      rules:
+        - "全小寫"
+        - "必須使用 kebab-case"
+        - "必須以 gl- 開頭"
+        - "domain 必須是語意分類"
+        - "capability 必須是平台能力"
+        - "結尾必須是 platform/service/module"
+      
+      sub-directories:
+        - src/
+        - src/api/
+        - src/core/
+        - src/adapters/
+        - src/services/
+        - src/models/
+        - src/controllers/
+        - src/workflows/
+        - src/agents/
+        - src/pipelines/
+        - tests/
+        - docs/
+        - configs/
+        - contracts/
+        - governance/
+      
+      examples:
+        - "gl-api-realtime-platform/"
+        - "gl-code-ai-platform/"
+        - "gl-agent-autonomy-platform/"
+        - "gl-mcp-multimodal-platform/"
+        - "gl-ai-suite-platform/"
+        - "gl-learning-ai-platform/"
+        - "gl-model-hub-platform/"
+        - "gl-collaboration-ai-platform/"
+        - "gl-gitops-dev-platform/"
+        - "gl-edge-deploy-platform/"
+        - "gl-iac-multicloud-platform/"
+        - "gl-community-ai-platform/"
+        - "gl-docs-collab-platform/"
+        - "gl-nocode-ai-platform/"
+        - "gl-distributed-db-platform/"
+        - "gl-code-search-platform/"
+        - "gl-ci-review-platform/"
+        - "gl-longtext-multimodal-platform/"
+        - "gl-realtime-agent-platform/"
+        - "gl-general-ai-platform/"
+        - "gl-build-accelerator-platform/"
+    
+    ## 11. File Naming Convention
+    file-naming:
+      version: v1.0.0
+      format: "gl-<domain>-<capability>-<resource>.<ext>"
+      
+      rules:
+        - "全小寫"
+        - "必須使用 kebab-case"
+        - "必須以 gl- 開頭（平台層）"
+        - "resource 必須是語意化名詞"
+        - "檔案類型必須明確（yaml/json/md/ts/js/go/py）"
+      
+      core-files:
+        - "platform.config.yaml"
+        - "platform.contract.yaml"
+        - "platform.capabilities.yaml"
+        - "platform.dependencies.yaml"
+        - "platform.metadata.yaml"
+      
+      api-files:
+        - "gl-api-schema-user.yaml"
+        - "gl-api-schema-auth.yaml"
+        - "gl-api-schema-product.yaml"
+      
+      agent-files:
+        - "gl-agent-max-behavior.yaml"
+        - "gl-agent-max-rules.yaml"
+        - "gl-agent-max-actions.yaml"
+      
+      pipeline-files:
+        - "gl-runtime-dag-execution.yaml"
+        - "gl-runtime-dag-validation.yaml"
+      
+      governance-files:
+        - "gl-governance-policy-runtime.yaml"
+        - "gl-governance-policy-security.yaml"
+        - "gl-governance-policy-compliance.yaml"
+      
+      semantic-graph-files:
+        - "gl-semantic-nodes.yaml"
+        - "gl-semantic-edges.yaml"
+        - "gl-semantic-metadata.yaml"
+    
+    ## 12. Event Naming Convention
+    event-naming:
+      version: v1.0.0
+      format: "gl.event.<domain>.<capability>.<action>"
+      
+      rules:
+        - "必須以 gl.event. 開頭"
+        - "使用 dot notation"
+        - "action 必須是動詞"
+      
+      examples:
+        - "gl.event.runtime.dag.started"
+        - "gl.event.runtime.dag.completed"
+        - "gl.event.api.schema.generated"
+        - "gl.event.api.schema.validated"
+        - "gl.event.agent.max.completed"
+        - "gl.event.agent.max.failed"
+        - "gl.event.naming.violation.detected"
+        - "gl.event.naming.fix.applied"
+        - "gl.event.contract.updated"
+        - "gl.event.semantic.changed"
+    
+    ## 13. Variable Naming Convention
+    variable-naming:
+      version: v1.0.0
+      format: "GL<DOMAIN><CAPABILITY>_<RESOURCE>"
+      
+      rules:
+        - "全大寫"
+        - "使用下劃線分隔"
+        - "必須以 GL 開頭"
+        - "適用於常量和配置變量"
+      
+      examples:
+        - "GLRUNTIMEDAG_TIMEOUT"
+        - "GLRUNTIMEDAG_MAX_DEPTH"
+        - "GLAPISCHEMA_VERSION"
+        - "GLAPISCHEMA_VALIDATION_ENABLED"
+        - "GLAGENTMAX_RETRIES"
+        - "GLAGENTMAX_TIMEOUT"
+        - "GLMULTIMODALVISION_MODEL"
+        - "GLGOVERNANCEPOLICY_LEVEL"
+    
+    ## 14. Environment Variable Naming Convention
+    env-naming:
+      version: v1.0.0
+      format: "GL_<PLATFORM>_<SETTING>"
+      
+      rules:
+        - "全大寫"
+        - "使用下劃線分隔"
+        - "必須以 GL_ 開頭"
+        - "適用於環境變量"
+      
+      examples:
+        - "GL_RUNTIME_MAX_WORKERS"
+        - "GL_RUNTIME_TIMEOUT"
+        - "GL_API_RATE_LIMIT"
+        - "GL_API_PORT"
+        - "GL_DB_SHARD_COUNT"
+        - "GL_DB_CONNECTION_POOL"
+        - "GL_AGENT_MAX_ENABLED"
+        - "GL_GOVERNANCE_LEVEL"
+    
+    ## 15. GitOps Naming Convention
+    gitops-naming:
+      version: v1.0.0
+      format: "gl-<domain>-<capability>-app"
+      
+      rules:
+        - "全小寫"
+        - "使用 kebab-case"
+        - "必須以 gl- 開頭"
+        - "必須以 -app 結尾"
+      
+      examples:
+        - "gl-runtime-dag-app"
+        - "gl-quantum-compute-app"
+        - "gl-api-schema-app"
+        - "gl-agent-max-app"
+        - "gl-multimodal-vision-app"
+    
+    ## 16. Helm Release Naming Convention
+    helm-naming:
+      version: v1.0.0
+      format: "gl-<domain>-<capability>-release"
+      
+      rules:
+        - "全小寫"
+        - "使用 kebab-case"
+        - "必須以 gl- 開頭"
+        - "必須以 -release 結尾"
+      
+      examples:
+        - "gl-runtime-dag-release"
+        - "gl-quantum-compute-release"
+        - "gl-api-schema-release"
+        - "gl-agent-max-release"
+        - "gl-multimodal-vision-release"
+
+metadata:
+  created_at: "2025-01-31T00:00:00Z"
+  updated_at: "2025-01-31T00:00:00Z"
+  governance_level: CONSTITUTIONAL
+  enforcement: MANDATORY
