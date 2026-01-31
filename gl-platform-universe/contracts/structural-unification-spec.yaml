@@ -21,7 +21,7 @@ spec:
         purpose: "存放所有 GL 平台的實現代碼"
         sub-structure:
           - pattern: "gl-<domain>-<capability>-platform/"
-          example: "gl-runtime-dag-platform/"
+            example: "gl-runtime-dag-platform/"
         
       - name: contracts
         description: "架構契約層"
@@ -453,8 +453,8 @@ spec:
         - "gl-agent-max-secret"
 
 metadata:
-  created_at: "2025-01-31T00:00:00Z"
-  updated_at: "2025-01-31T00:00:00Z"
+  created_at: "2026-01-31T00:00:00Z"
+  updated_at: "2026-01-31T00:00:00Z"
   governance_level: CONSTITUTIONAL
   enforcement: MANDATORY
   compatibility:

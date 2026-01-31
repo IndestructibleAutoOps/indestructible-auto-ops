@@ -272,13 +272,13 @@ spec:
         domain: governance
     
       - term: compliance
-        abbr: comp
+        abbr: cmpl
         description: "Compliance"
         category: capability
         domain: governance
     
       - term: validation
-        abbr: val
+        abbr: valid
         description: "Validation"
         category: capability
         domain: governance
@@ -296,7 +296,7 @@ spec:
         domain: semantic
     
       - term: reasoning
-        abbr: reas
+        abbr: semreas
         description: "Reasoning"
         category: capability
         domain: semantic
@@ -376,7 +376,7 @@ spec:
         category: resource
       
       - term: planner
-        abbr: plan
+        abbr: plnr
         description: "Planner"
         category: resource
       
@@ -473,7 +473,7 @@ spec:
         category: common
       
       - term: version
-        abbr: ver
+        abbr: vrsn
         description: "Version"
         category: common
       
@@ -523,8 +523,8 @@ spec:
         category: common
 
 metadata:
-  created_at: "2025-01-31T00:00:00Z"
-  updated_at: "2025-01-31T00:00:00Z"
+  created_at: "2026-01-31T00:00:00Z"
+  updated_at: "2026-01-31T00:00:00Z"
   total_abbreviations: 90
   categories:
     - domain
