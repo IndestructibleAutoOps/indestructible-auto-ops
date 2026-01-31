@@ -1,0 +1,88 @@
+# GL Runtime Platform API 水平 Pod 自動擴展器
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: gl-runtime-platform-api-hpa
+  namespace: team-gl-runtime-prod-us-west
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: 'gl-runtime-platform-api'
+    app.kubernetes.io/component: 'hpa'
+    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/version: 'v1.0.0'
+    app.kubernetes.io/managed-by: 'kubectl'
+    
+    # 企業治理標籤
+    tenant: 'gl-runtime-team'
+    cost-center: 'platform-engineering'
+    business-unit: 'infrastructure'
+    project: 'gl-runtime-platform'
+    
+    # 操作標籤
+    tier: 'core'
+    
+  annotations:
+    # 描述性註解
+    description: 'GL Runtime Platform API 自動擴展配置'
+    owner: 'platform-team@gl-runtime.io'
+    
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gl-runtime-platform-api-deploy-v1
+  
+  minReplicas: 3
+  maxReplicas: 10
+  
+  metrics:
+  # CPU 使用率指標
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  
+  # 記憶體使用率指標
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  
+  # 自定義指標（可選）
+  # - type: Pods
+  #   pods:
+  #     metric:
+  #       name: http_requests_per_second
+  #     target:
+  #       type: AverageValue
+  #       averageValue: "1000"
+  
+  behavior:
+    # 擴展行為
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+      - type: Pods
+        value: 2
+        periodSeconds: 60
+      selectPolicy: Max
+    
+    # 縮減行為
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 20
+        periodSeconds: 120
+      - type: Pods
+        value: 1
+        periodSeconds: 120
+      selectPolicy: Min

@@ -1,0 +1,78 @@
+# GL Runtime Platform 生產環境命名空間
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-gl-runtime-prod-us-west
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: 'gl-runtime-platform'
+    app.kubernetes.io/component: 'namespace'
+    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/version: 'v1.0.0'
+    app.kubernetes.io/managed-by: 'argocd'
+    
+    # 企業治理標籤
+    tenant: 'gl-runtime-team'
+    environment: 'production'
+    region: 'us-west-2'
+    zone: 'west-2a'
+    cost-center: 'platform-engineering'
+    business-unit: 'infrastructure'
+    project: 'gl-runtime-platform'
+    
+    # 操作標籤
+    monitoring.tier: 'critical'
+    backup.tier: 'gold'
+    scaling.group: 'prod-services'
+    network.policy: 'platform-isolation'
+    security.classification: 'confidential'
+    
+    # 治理標籤
+    governance.level: 'production'
+    compliance.framework: 'sox-gdpr-pci'
+    data.classification: 'confidential'
+    
+    # 生命週期標籤
+    lifecycle.stage: 'production'
+    retention.policy: '7-years'
+    
+  annotations:
+    # 描述性註解
+    description: 'GL Runtime Platform 生產環境 - 美西區域'
+    owner: 'platform-team@gl-runtime.io'
+    escalation: 'platform-oncall@gl-runtime.io'
+    architecture.doc: 'https://docs.gl-runtime.io/architecture/production'
+    
+    # 文件連結
+    documentation: 'https://docs.gl-runtime.io/environments/production'
+    architecture: 'https://docs.gl-runtime.io/architecture'
+    runbook: 'https://runbooks.gl-runtime.io/platform'
+    
+    # 生產環境特定註解
+    environment.type: 'production'
+    environment.purpose: 'production-workload'
+    environment.sla: '99.95'
+    environment.dr-strategy: 'active-active'
+    
+    # 操作性註解
+    deployment.strategy: 'blue-green'
+    scaling.policy: 'cpu-memory-hybrid'
+    backup.schedule: '0 2 * * *'
+    backup.encryption: 'required'
+    monitoring.runbook: 'https://runbooks.gl-runtime.io/platform'
+    emergency.contact: 'platform-emergency@gl-runtime.io'
+    
+    # 合規性註解
+    audit.last-reviewed: '2024-01-31'
+    audit.next-review: '2024-07-31'
+    compliance.framework: 'sox-gdpr-pci'
+    data.classification: 'confidential'
+    retention.policy: '7-years-encrypted'
+    data.residency: 'us-only'
+    encryption.required: 'true'
+    
+    # 自動化註解
+    argocd.argoproj.io/sync-policy: 'automated'
+    argocd.argoproj.io/sync-options: 'Prune=false'
+    argocd.argoproj.io/sync-wave: '0'

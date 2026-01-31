@@ -1,0 +1,48 @@
+# GL Runtime Platform 基礎命名空間模板
+# 這是一個抽象基礎模板，不應直接應用
+# 使用具體環境命名空間模板
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-gl-runtime-base
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: "gl-runtime-platform"
+    app.kubernetes.io/component: "namespace"
+    app.kubernetes.io/part-of: "gl-runtime-platform"
+    app.kubernetes.io/version: "v1.0.0"
+    app.kubernetes.io/managed-by: "kubectl"
+    
+    # 企業治理標籤
+    tenant: "gl-runtime-team"
+    environment: "base"
+    cost-center: "platform-engineering"
+    business-unit: "infrastructure"
+    project: "gl-runtime-platform"
+    
+    # 操作標籤
+    monitoring.tier: "medium"
+    backup.tier: "silver"
+    
+    # 治理標籤
+    governance.level: "unified"
+    compliance.framework: "internal"
+    
+  annotations:
+    # 描述性註解
+    description: "GL Runtime Platform 基礎命名空間"
+    owner: "platform-team@gl-runtime.io"
+    created-by: "platform-team"
+    
+    # 文件連結
+    documentation: "https://docs.gl-runtime.io/architecture/namespaces"
+    architecture: "https://docs.gl-runtime.io/architecture"
+    
+    # 治理註解
+    governance.review-date: "2024-01-31"
+    governance.next-review: "2024-07-31"
+    governance.approver: "platform-lead"
+    
+    # 自動化註解
+    argocd.argoproj.io/sync-wave: "0"

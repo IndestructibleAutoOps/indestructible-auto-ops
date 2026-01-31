@@ -1,0 +1,86 @@
+# GL Runtime Platform 生產環境 Kustomization 配置
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: gl-runtime-prod
+
+namespace: team-gl-runtime-prod-us-west
+
+resources:
+  - ../../base/namespace/namespace-prod.yaml
+  - ../../base/deployments/deployment-platform-api.yaml
+  - ../../base/deployments/deployment-rest-api.yaml
+  - ../../base/deployments/deployment-nlp-control-plane.yaml
+  - ../../base/deployments/deployment-postgres.yaml
+  - ../../base/services/service-platform-api.yaml
+  - ../../base/services/service-rest-api.yaml
+  - ../../base/services/service-nlp-control-plane.yaml
+  - ../../base/services/service-postgres.yaml
+  - ../../base/configmaps/configmap-platform-api.yaml
+  - ../../base/configmaps/configmap-rest-api.yaml
+  - ../../base/configmaps/configmap-postgres.yaml
+  - ../../base/secrets/secret-postgres.yaml
+  - ../../base/rbac/serviceaccount-platform-api.yaml
+  - ../../base/rbac/serviceaccount-rest-api.yaml
+  - ../../base/rbac/serviceaccount-nlp-control-plane.yaml
+  - ingress/ingress-platform.yaml
+  - hpa/hpa-platform-api.yaml
+  - hpa/hpa-rest-api.yaml
+  - hpa/hpa-nlp-control-plane.yaml
+
+# 生產環境標籤
+commonLabels:
+  environment: production
+  tier: prod
+  cost-center: platform-engineering
+  monitoring.tier: critical
+  backup.tier: gold
+
+# 生產環境註解
+commonAnnotations:
+  environment.config: production
+  backup.policy: '0 2 * * *'
+  monitoring.tier: critical
+  documentation: https://docs.gl-runtime.io/environments/production
+  runbook: https://runbooks.gl-runtime.io/platform
+  security.classification: confidential
+
+# 資源名稱轉換
+namePrefix: prod-
+
+# 資源命名空間覆蓋
+namespace: team-gl-runtime-prod-us-west
+
+# 副本數覆蓋
+replicas:
+  - name: prod-gl-runtime-platform-api-deploy-v1
+    count: 5
+  - name: prod-gl-runtime-rest-api-deploy-v1
+    count: 3
+  - name: prod-gl-runtime-nlp-control-plane-deploy-v1
+    count: 3
+  - name: prod-gl-runtime-postgres-deploy-v1
+    count: 1
+
+# 映像標籤覆蓋
+images:
+  - name: gl-registry.io/gl-runtime-platform/api
+    newTag: v1.0.0
+  - name: gl-registry.io/gl-runtime-platform/rest-api
+    newTag: v1.0.0
+  - name: gl-registry.io/gl-runtime-platform/nlp-control-plane
+    newTag: v1.0.0
+  - name: postgres
+    newTag: 15-alpine
+
+# 配置補丁
+patchesStrategicMerge:
+  - patches/deployment-patch.yaml
+  - patches/configmap-patch.yaml
+  - patches/service-patch.yaml
+
+# 資源配置
+configurations:
+  - kustomizeconfig.yaml

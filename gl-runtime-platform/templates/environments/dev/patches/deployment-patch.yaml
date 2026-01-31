@@ -1,0 +1,90 @@
+# 開發環境部署補丁
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gl-runtime-platform-api-deploy-v1
+spec:
+  template:
+    spec:
+      containers:
+      - name: api-server
+        resources:
+          requests:
+            cpu: '100m'
+            memory: '256Mi'
+          limits:
+            cpu: '500m'
+            memory: '512Mi'
+        env:
+        - name: NODE_ENV
+          value: 'development'
+        - name: LOG_LEVEL
+          value: 'debug'
+        - name: DEBUG
+          value: 'true'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gl-runtime-rest-api-deploy-v1
+spec:
+  template:
+    spec:
+      containers:
+      - name: rest-api
+        resources:
+          requests:
+            cpu: '100m'
+            memory: '128Mi'
+          limits:
+            cpu: '400m'
+            memory: '256Mi'
+        env:
+        - name: FLASK_ENV
+          value: 'development'
+        - name: LOG_LEVEL
+          value: 'debug'
+        - name: DEBUG
+          value: 'true'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gl-runtime-nlp-control-plane-deploy-v1
+spec:
+  template:
+    spec:
+      containers:
+      - name: nlp-control-plane
+        resources:
+          requests:
+            cpu: '250m'
+            memory: '512Mi'
+          limits:
+            cpu: '1000m'
+            memory: '1Gi'
+        env:
+        - name: NODE_ENV
+          value: 'development'
+        - name: LOG_LEVEL
+          value: 'debug'
+        - name: DEBUG
+          value: 'true'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gl-runtime-postgres-deploy-v1
+spec:
+  template:
+    spec:
+      containers:
+      - name: postgres
+        resources:
+          requests:
+            cpu: '250m'
+            memory: '512Mi'
+          limits:
+            cpu: '1000m'
+            memory: '1Gi'
