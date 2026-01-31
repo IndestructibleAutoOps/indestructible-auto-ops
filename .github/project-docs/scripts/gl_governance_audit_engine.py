@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -56,7 +56,7 @@ class IssueType(Enum):
     TYPE_ERROR = "type_error"
     DOCUMENTATION_MISSING = "documentation_missing"
     EVIDENCE_CHAIN_BROKEN = "evidence_chain_broken"
-    GOVERNANCE_EVENT_MISSING = "governance_event_missing"
+    GOVERNANCE_EVENT_MISSING = "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_missing"
 
 # GL Marker patterns
 GL_MARKER_PATTERNS = [
@@ -64,7 +64,7 @@ GL_MARKER_PATTERNS = [
     r'@gl-governed',
     r'gl-root-anchor',
     r'GL_GOVERNANCE',
-    r'governance[-_]enabled',
+    r'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance[-_]enabled',
     r'\[GL\]',
     r'GL\s*Root\s*Semantic\s*Anchor'
 ]
@@ -82,7 +82,7 @@ BEST_PRACTICE_STRUCTURE = {
         'validator': ['schema_validator.ts', 'module_validator.ts', 'error_reporter.ts'],
         'renderer': ['template_engine.ts', 'module_mapper.ts', 'artifact_writer.ts'],
         'executor': ['local_executor.ts', 'remote_executor.ts', 'rollback.ts'],
-        'governance': ['gl_engine.ts', 'rule_evaluator.ts', 'events_writer.ts', 'anchor_resolver.ts'],
+        'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance': ['gl_engine.ts', 'rule_evaluator.ts', 'events_writer.ts', 'anchor_resolver.ts'],
         'artifacts': ['artifact_manager.ts', 'evidence_chain.ts', 'manifest_generator.ts'],
         'tests': {},
         '.gl': ['manifest.yaml', 'semantic-anchors.yaml', 'evidence-chain.json']
@@ -143,7 +143,7 @@ class FileAuditResult:
     es_index_status: str
     issues: List[Issue] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
-    governance_events: List[GovernanceEvent] = field(default_factory=list)
+    gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events: List[GovernanceEvent] = field(default_factory=list)
     execution_time_ms: int = 0
     
 @dataclass
@@ -161,7 +161,7 @@ class GlobalAuditReport:
     issues_by_severity: Dict[str, int] = field(default_factory=dict)
     issues_by_type: Dict[str, int] = field(default_factory=dict)
     file_results: List[FileAuditResult] = field(default_factory=list)
-    governance_event_stream: List[GovernanceEvent] = field(default_factory=list)
+    gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream: List[GovernanceEvent] = field(default_factory=list)
     best_practice_recommendations: List[Dict[str, Any]] = field(default_factory=list)
     migration_plan: Dict[str, Any] = field(default_factory=dict)
 
@@ -391,7 +391,7 @@ class ETLPipeline:
             'metadata': metadata_found,
             'has_gl_marker': has_gl_marker,
             'issues_count': len(issues),
-            'governance_compliant': len([i for i in issues if i.severity in [Severity.CRITICAL, Severity.HIGH]]) == 0
+            'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_compliant': len([i for i in issues if i.severity in [Severity.CRITICAL, Severity.HIGH]]) == 0
         }
         
         event = self.emit_event("ETL", "transform", file_path, "complete", "success",
@@ -407,7 +407,7 @@ class ETLPipeline:
         
         # 構建 ES 文檔
         es_document = {
-            '_index': 'gl-governance-audit',
+            '_index': 'gl-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit',
             '_id': transformed_data['file_hash'][:16],
             '_source': {
                 'file_path': file_path,
@@ -422,7 +422,7 @@ class ETLPipeline:
                 'session_id': GL_AUDIT_SESSION_ID,
                 'metadata': transformed_data['metadata'],
                 'has_gl_marker': transformed_data['has_gl_marker'],
-                'governance_compliant': transformed_data['governance_compliant'],
+                'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_compliant': transformed_data['gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_compliant'],
                 'issues': [
                     {
                         'issue_id': i.issue_id,
@@ -444,7 +444,7 @@ class ETLPipeline:
         }
         
         event = self.emit_event("ETL", "load", file_path, "complete", "success",
-                               {"es_index": "gl-governance-audit", "doc_id": es_document['_id']})
+                               {"es_index": "gl-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit", "doc_id": es_document['_id']})
         
         return es_document, event
 
@@ -500,7 +500,7 @@ class GovernanceAuditEngine:
                 es_index_status="indexed",
                 issues=issues,
                 metadata=transformed_data['metadata'],
-                governance_events=self.etl.events[-4:],  # 最近4個事件
+                gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events=self.etl.events[-4:],  # 最近4個事件
                 execution_time_ms=execution_time_ms
             )
             
@@ -529,7 +529,7 @@ class GovernanceAuditEngine:
                     suggestion="檢查檔案格式和編碼"
                 )],
                 metadata={},
-                governance_events=self.etl.events[-2:],
+                gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events=self.etl.events[-2:],
                 execution_time_ms=0
             )
     
@@ -549,7 +549,7 @@ class GovernanceAuditEngine:
         
         # 檢查是否缺少核心目錄
         expected_dirs = ['core', 'parser', 'loader', 'normalizer', 'validator', 
-                        'renderer', 'executor', 'governance', 'artifacts', 'tests', '.gl']
+                        'renderer', 'executor', 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance', 'artifacts', 'tests', '.gl']
         
         for expected in expected_dirs:
             if expected not in current_structure and expected != 'core':
@@ -565,7 +565,7 @@ class GovernanceAuditEngine:
         gl_files = [r.file_path for r in self.file_results if '.gl' in r.file_path]
         if not gl_files:
             recommendations.append({
-                'type': 'governance',
+                'type': 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance',
                 'priority': 'high',
                 'title': '建議添加 .gl 治理目錄',
                 'description': '缺少 .gl 目錄，無法存放治理配置',
@@ -583,7 +583,7 @@ class GovernanceAuditEngine:
         
         if issue_types.get('gl_marker_missing', 0) > 10:
             recommendations.append({
-                'type': 'governance',
+                'type': 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance',
                 'priority': 'high',
                 'title': '批量添加 GL 標記',
                 'description': f'有 {issue_types["gl_marker_missing"]} 個檔案缺少 GL 標記',
@@ -652,7 +652,7 @@ class GovernanceAuditEngine:
                     'description': '執行器模組',
                     'files': ['local_executor.ts', 'remote_executor.ts', 'rollback.ts']
                 },
-                'governance': {
+                'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance': {
                     'description': '治理模組',
                     'files': ['gl_engine.ts', 'rule_evaluator.ts', 'events_writer.ts', 'anchor_resolver.ts']
                 },
@@ -662,7 +662,7 @@ class GovernanceAuditEngine:
                 },
                 'tests': {
                     'description': '測試檔案',
-                    'subdirs': ['artifacts', 'validator', 'normalizer', 'governance', 'loader']
+                    'subdirs': ['artifacts', 'validator', 'normalizer', 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance', 'loader']
                 },
                 '.gl': {
                     'description': 'GL 治理配置',
@@ -730,7 +730,7 @@ class GovernanceAuditEngine:
             issues_by_severity=issues_by_severity,
             issues_by_type=issues_by_type,
             file_results=self.file_results,
-            governance_event_stream=self.etl.events,
+            gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream=self.etl.events,
             best_practice_recommendations=self.generate_best_practice_recommendations(),
             migration_plan=self.generate_migration_plan()
         )
@@ -757,7 +757,7 @@ def generate_json_reports(report: GlobalAuditReport, output_dir: Path):
         raise RuntimeError(f"Failed to create output directory {output_dir}: {e}")
     
     # 全域報告
-    global_report_path = output_dir / 'global-governance-audit-report.json'
+    global_report_path = output_dir / 'global-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-report.json'
     try:
         with open(global_report_path, 'w', encoding='utf-8') as f:
             json.dump({
@@ -813,22 +813,22 @@ def generate_json_reports(report: GlobalAuditReport, output_dir: Path):
                         }
                         for i in result.issues
                     ],
-                    'governance_events': [asdict(e) for e in result.governance_events]
+                    'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events': [asdict(e) for e in result.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events]
                 }, f, indent=2, ensure_ascii=False)
         except (PermissionError, OSError, UnicodeEncodeError) as e:
             raise RuntimeError(f"Failed to write file report {file_report_path}: {e}")
     
     # 治理事件流
-    events_path = output_dir / 'governance-event-stream.json'
+    events_path = output_dir / 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-event-stream.json'
     try:
         with open(events_path, 'w', encoding='utf-8') as f:
             json.dump({
                 'session_id': report.session_id,
-                'total_events': len(report.governance_event_stream),
-                'events': [asdict(e) for e in report.governance_event_stream]
+                'total_events': len(report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream),
+                'events': [asdict(e) for e in report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream]
             }, f, indent=2, ensure_ascii=False)
     except (PermissionError, OSError, UnicodeEncodeError) as e:
-        raise RuntimeError(f"Failed to write governance event stream to {events_path}: {e}")
+        raise RuntimeError(f"Failed to write gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance event stream to {events_path}: {e}")
     
     # ES 批量索引文件
     es_bulk_path = output_dir / 'es-bulk-index.ndjson'
@@ -836,7 +836,7 @@ def generate_json_reports(report: GlobalAuditReport, output_dir: Path):
         with open(es_bulk_path, 'w', encoding='utf-8') as f:
             for result in report.file_results:
                 # Index action
-                f.write(json.dumps({'index': {'_index': 'gl-governance-audit', '_id': result.file_hash[:16]}}) + '\n')
+                f.write(json.dumps({'index': {'_index': 'gl-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit', '_id': result.file_hash[:16]}}) + '\n')
                 # Document
                 f.write(json.dumps({
                     'file_path': result.file_path,
@@ -847,7 +847,7 @@ def generate_json_reports(report: GlobalAuditReport, output_dir: Path):
                     'issues_count': len(result.issues),
                     'critical_issues': len([i for i in result.issues if i.severity == Severity.CRITICAL]),
                     'high_issues': len([i for i in result.issues if i.severity == Severity.HIGH]),
-                    'governance_compliant': len([i for i in result.issues if i.severity in [Severity.CRITICAL, Severity.HIGH]]) == 0
+                    'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_compliant': len([i for i in result.issues if i.severity in [Severity.CRITICAL, Severity.HIGH]]) == 0
                 }) + '\n')
     except (PermissionError, OSError, UnicodeEncodeError) as e:
         raise RuntimeError(f"Failed to write ES bulk index file to {es_bulk_path}: {e}")
@@ -966,7 +966,7 @@ engine/
 │   ├── local_executor.ts
 │   ├── remote_executor.ts
 │   └── rollback.ts
-├── governance/              # 治理模組
+├── gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/              # 治理模組
 │   ├── gl_engine.ts
 │   ├── rule_evaluator.ts
 │   ├── events_writer.ts
@@ -979,7 +979,7 @@ engine/
 │   ├── artifacts/
 │   ├── validator/
 │   ├── normalizer/
-│   ├── governance/
+│   ├── gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/
 │   └── loader/
 └── .gl/                     # GL 治理配置
     ├── manifest.yaml
@@ -1008,12 +1008,12 @@ GL-AUDIT-LINK-KEY: {link_key}
 **GL Unified Charter Activated**  
 **Generated**: {timestamp}
 """.format(
-        total_events=len(report.governance_event_stream),
-        etl_events=len([e for e in report.governance_event_stream if e.event_type == 'ETL']),
-        audit_events=len([e for e in report.governance_event_stream if e.event_type == 'AUDIT']),
+        total_events=len(report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream),
+        etl_events=len([e for e in report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream if e.event_type == 'ETL']),
+        audit_events=len([e for e in report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream if e.event_type == 'AUDIT']),
         # Count both 'success' and 'running' status as successful (start events have 'running' status)
-        success_events=len([e for e in report.governance_event_stream if e.status in ['success', 'running']]),
-        failed_events=len([e for e in report.governance_event_stream if e.status == 'failed']),
+        success_events=len([e for e in report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream if e.status in ['success', 'running']]),
+        failed_events=len([e for e in report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream if e.status == 'failed']),
         link_key=hashlib.sha256(f"{report.session_id}{report.audit_end}{report.total_issues}".encode()).hexdigest()[:32],
         timestamp=datetime.now(timezone.utc).isoformat()
     )
@@ -1043,7 +1043,7 @@ def generate_link_key(report: GlobalAuditReport, output_path: Path):
                 ''.join(r.file_hash for r in report.file_results).encode()
             ).hexdigest()[:32],
             'events_hash': hashlib.sha256(
-                ''.join(e.hash for e in report.governance_event_stream).encode()
+                ''.join(e.hash for e in report.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_stream).encode()
             ).hexdigest()[:32]
         },
         'provenance': {
@@ -1073,13 +1073,13 @@ def main():
         epilog="""
 Examples:
   # Run audit on current directory
-  python gl_governance_audit_engine.py
+  python gl_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_engine.py
   
   # Run audit on specific repository
-  python gl_governance_audit_engine.py --repo-path /path/to/repo
+  python gl_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_engine.py --repo-path /path/to/repo
   
   # Specify custom output directory
-  python gl_governance_audit_engine.py --output-dir /path/to/output
+  python gl_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_engine.py --output-dir /path/to/output
         """
     )
     

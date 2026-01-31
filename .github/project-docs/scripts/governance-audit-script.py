@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -43,7 +43,7 @@ class GLGovernanceAudit:
                 "successful_executions": 0,
                 "files_with_issues": 0,
                 "total_issues": 0,
-                "governance_events": 0,
+                "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events": 0,
                 "severity_breakdown": {
                     "CRITICAL": 0,
                     "HIGH": 0,
@@ -101,7 +101,7 @@ class GLGovernanceAudit:
             issues.append({
                 "type": "missing_gl_marker",
                 "severity": "MEDIUM",
-                "message": "File lacks GL layer markers for governance traceability",
+                "message": "File lacks GL layer markers for gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance traceability",
                 "recommendation": "Add GL layer markers (e.g., machinenativeops.io annotations)"
             })
         
@@ -148,7 +148,7 @@ class GLGovernanceAudit:
             "execution_time": datetime.now().isoformat(),
             "structure": {},
             "issues": [],
-            "governance_events": []
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events": []
         }
         
         try:
@@ -176,8 +176,8 @@ class GLGovernanceAudit:
                     self.check_metadata(content, '.yaml', parsed_data)
                 )
                 
-                # Log governance event
-                result["governance_events"].append({
+                # Log gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance event
+                result["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events"].append({
                     "event": "yaml_parsed",
                     "timestamp": datetime.now().isoformat(),
                     "details": "YAML file successfully parsed and validated"
@@ -214,7 +214,7 @@ class GLGovernanceAudit:
             "execution_time": datetime.now().isoformat(),
             "structure": {},
             "issues": [],
-            "governance_events": []
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events": []
         }
         
         try:
@@ -237,8 +237,8 @@ class GLGovernanceAudit:
                     self.check_gl_markers(content, '.json')
                 )
                 
-                # Log governance event
-                result["governance_events"].append({
+                # Log gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance event
+                result["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events"].append({
                     "event": "json_parsed",
                     "timestamp": datetime.now().isoformat(),
                     "details": "JSON file successfully parsed and validated"
@@ -275,7 +275,7 @@ class GLGovernanceAudit:
             "execution_time": datetime.now().isoformat(),
             "structure": {},
             "issues": [],
-            "governance_events": []
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events": []
         }
         
         try:
@@ -308,7 +308,7 @@ class GLGovernanceAudit:
                 })
             
             # Check for shellcheck validation syntax
-            result["governance_events"].append({
+            result["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events"].append({
                 "event": "shell_analyzed",
                 "timestamp": datetime.now().isoformat(),
                 "details": "Shell script structure analyzed"
@@ -336,7 +336,7 @@ class GLGovernanceAudit:
             "execution_time": datetime.now().isoformat(),
             "structure": {},
             "issues": [],
-            "governance_events": []
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events": []
         }
         
         try:
@@ -355,7 +355,7 @@ class GLGovernanceAudit:
                 "headers": headers[:10]  # First 10 headers
             }
             
-            result["governance_events"].append({
+            result["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events"].append({
                 "event": "markdown_analyzed",
                 "timestamp": datetime.now().isoformat(),
                 "details": "Markdown file structure analyzed"
@@ -396,7 +396,7 @@ class GLGovernanceAudit:
                 "execution_time": datetime.now().isoformat(),
                 "structure": {},
                 "issues": [],
-                "governance_events": [{
+                "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events": [{
                     "event": "file_skipped",
                     "timestamp": datetime.now().isoformat(),
                     "details": f"Unknown file type: {ext}"
@@ -443,7 +443,7 @@ class GLGovernanceAudit:
             json.dump(report, f, indent=2, default=str)
     
     def run_audit(self) -> dict[str, Any]:
-        """Execute the complete governance audit."""
+        """Execute the complete gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance audit."""
         print("=" * 60)
         print("GL Governance Audit - Starting")
         print("=" * 60)
@@ -490,9 +490,9 @@ class GLGovernanceAudit:
                     self.audit_results["summary"]["severity_breakdown"][severity] += 1
                     self.audit_results["summary"]["total_issues"] += 1
             
-            # Count governance events
-            events = len(report.get("governance_events", []))
-            self.audit_results["summary"]["governance_events"] += events
+            # Count gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance events
+            events = len(report.get("gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events", []))
+            self.audit_results["summary"]["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events"] += events
             
             status = "✅" if report["status"] == "success" else "❌"
             issue_count = len(report.get("issues", []))
@@ -506,7 +506,7 @@ class GLGovernanceAudit:
                 "title": "Add GL Layer Markers",
                 "description": (
                     "Most YAML/JSON files lack GL layer markers. "
-                    "Add machinenativeops.io annotations to all governance-critical files."
+                    "Add machinenativeops.io annotations to all gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-critical files."
                 ),
                 "affected_files": len([
                     i for i in self.audit_results["issues"]
@@ -554,7 +554,7 @@ class GLGovernanceAudit:
         print(f"   Successful: {summary['successful_executions']}")
         print(f"   With Issues: {summary['files_with_issues']}")
         print(f"   Total Issues: {summary['total_issues']}")
-        print(f"   Governance Events: {summary['governance_events']}")
+        print(f"   Governance Events: {summary['gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events']}")
         print("\n🔍 Severity Breakdown:")
         for sev, count in summary["severity_breakdown"].items():
             print(f"   {sev}: {count}")

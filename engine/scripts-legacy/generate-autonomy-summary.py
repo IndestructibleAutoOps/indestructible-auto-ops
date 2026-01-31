@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: generate-autonomy-summary
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL-Layer: GL30-49 (Execution)
 #!/usr/bin/env python3
@@ -24,7 +24,7 @@ from pathlib import Path
 MODULE_DEFINITIONS = {
     "01-core": {"name": "Core Infrastructure", "expected_min": "L1", "expected_max": "L2"},
     "02-intelligence": {"name": "Intelligence Layer", "expected_min": "L2", "expected_max": "L3"},
-    "03-governance": {"name": "Governance Framework", "expected_min": "L3", "expected_max": "L4"},
+    "03-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance": {"name": "Governance Framework", "expected_min": "L3", "expected_max": "L4"},
     "04-autonomous": {"name": "Autonomous Operations", "expected_min": "L4", "expected_max": "L5"},
     "05-observability": {"name": "Observability Platform", "expected_min": "L4", "expected_max": "L5"},
     "06-security": {"name": "Security & Compliance", "expected_min": "Global Layer", "expected_max": "Global Layer"}

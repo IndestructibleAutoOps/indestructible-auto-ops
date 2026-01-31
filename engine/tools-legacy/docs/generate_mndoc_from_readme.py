@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: generate_mndoc_from_readme
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -40,7 +40,7 @@ SECTION_H3_RE = re.compile(r"^###\s+(.+)$", re.MULTILINE)
 # Subsystem detection keywords
 SUBSYSTEM_KEYWORDS = {
     "machinenativenops": ["SynergyMesh", "Core Engine", "核心引擎"],
-    "governance": ["Governance", "治理", "Schema"],
+    "gl_platform_universegl_platform_universe.governance": ["Governance", "治理", "Schema"],
     "autonomous": ["Autonomous", "自主", "五骨架", "Framework"],
 }
 def extract_title(text: str) -> str:
@@ -79,8 +79,8 @@ TAG_CANON = {
     "cloud-native": "cloud-native",
     "cloud native": "cloud-native",
     # Governance variants
-    "治理": "governance",
-    "governance": "governance",
+    "治理": "gl_platform_universegl_platform_universe.governance",
+    "gl_platform_universegl_platform_universe.governance": "gl_platform_universegl_platform_universe.governance",
     # Kubernetes variants
     "Kubernetes": "kubernetes",
     "K8s": "kubernetes",

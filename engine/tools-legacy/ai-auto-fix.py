@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: ai-auto-fix
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -57,22 +57,22 @@ class ArtifactLoader:
     """Load and parse all analysis artifacts"""
     def __init__(self, artifacts_dir: str):
         self.artifacts_dir = Path(artifacts_dir)
-        self.governance_data = None
+        self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_data = None
         self.semgrep_data = None
         self.codeql_data = []
         self.ai_suggestions = None
     def load_all(self):
         """Load all available artifacts"""
         print("📥 Loading analysis artifacts...")
-        # Load governance report
+        # Load gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance report
         gov_report = (
-            self.artifacts_dir / "language-governance-report" / "governance-report.json"
+            self.artifacts_dir / "language-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-report" / "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-report.json"
         )
         if gov_report.exists():
             with open(gov_report, encoding="utf-8") as f:
-                self.governance_data = json.load(f)
+                self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_data = json.load(f)
             print(
-                f"✓ Loaded governance report: {len(self.governance_data.get('violations', []))} violations"
+                f"✓ Loaded gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance report: {len(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_data.get('violations', []))} violations"
             )
         # Load Semgrep report
         semgrep_report = self.artifacts_dir / "semgrep-results" / "semgrep.sarif"
@@ -107,12 +107,12 @@ class ArtifactLoader:
         """Extract fixable issues from all reports"""
         issues = []
         # Governance violations
-        if self.governance_data:
-            for violation in self.governance_data.get("violations", []):
+        if self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_data:
+            for violation in self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_data.get("violations", []):
                 if violation.get("severity") in ["CRITICAL", "ERROR"]:
                     issues.append(
                         {
-                            "type": "governance",
+                            "type": "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance",
                             "severity": violation.get("severity"),
                             "file": violation.get("file"),
                             "language": violation.get("language"),
@@ -182,10 +182,10 @@ class AIFixGenerator:
             if itype not in by_type:
                 by_type[itype] = []
             by_type[itype].append(issue)
-        # Generate fixes for governance issues (these are often file movements)
-        if "governance" in by_type:
+        # Generate fixes for gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance issues (these are often file movements)
+        if "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance" in by_type:
             fixes.extend(
-                self._generate_governance_fixes(by_type["governance"], repo_root)
+                self._generate_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_fixes(by_type["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance"], repo_root)
             )
         # Generate fixes for security issues (code changes)
         if "semgrep" in by_type or "codeql" in by_type:
@@ -197,10 +197,10 @@ class AIFixGenerator:
                     self._generate_rule_based_fixes(security_issues, repo_root)
                 )
         return fixes
-    def _generate_governance_fixes(
+    def _generate_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_fixes(
         self, issues: list[dict], repo_root: str
     ) -> list[dict]:
-        """Generate fixes for governance violations"""
+        """Generate fixes for gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance violations"""
         fixes = []
         for issue in issues[:10]:  # Limit to first 10
             file_path = issue.get("file", "")
@@ -209,7 +209,7 @@ class AIFixGenerator:
             # For now, suggest file removal or documentation of exception
             fixes.append(
                 {
-                    "type": "governance",
+                    "type": "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance",
                     "file": file_path,
                     "action": "document",
                     "suggestion": f"Add exception request or remove {file_path}",

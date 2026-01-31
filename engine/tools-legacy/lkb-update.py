@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: lkb-update
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -142,12 +142,12 @@ def update_knowledge_health_md(summary: str, metrics: dict[str, Any] = None):
     content += """## Recent Updates
 This document is automatically updated by the Living Knowledge Base system when:
 - AI Auto-Fix Bot applies repairs
-- Language governance violations are resolved
+- Language gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance violations are resolved
 - Security issues are remediated
 - System health changes significantly
 ## Knowledge Cycle
 The Living Knowledge Base operates in continuous cycles:
-1. **Detection**: Language governance, CodeQL, and Semgrep scans detect issues
+1. **Detection**: Language gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance, CodeQL, and Semgrep scans detect issues
 2. **Analysis**: AI analyzes violations and generates fix suggestions
 3. **Remediation**: Auto-Fix Bot creates and applies patches
 4. **Verification**: Changes are validated through CI/CD

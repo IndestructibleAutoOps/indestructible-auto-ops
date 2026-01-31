@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: gl_reporter
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Reporter - Governance Layer Report Generator
 MachineNativeOps GL Architecture Implementation
-This module provides comprehensive reporting capabilities for GL governance,
+This module provides comprehensive reporting capabilities for GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance,
 including dashboards, compliance reports, layer analysis, and trend tracking.
 """
 import yaml
@@ -76,7 +76,7 @@ class LayerMetrics:
         return max(0, score)
 @dataclass
 class GovernanceMetrics:
-    """Overall governance metrics."""
+    """Overall gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance metrics."""
     total_artifacts: int = 0
     total_layers: int = 0
     total_errors: int = 0
@@ -100,12 +100,12 @@ class GLReporter:
     }
     def __init__(self, workspace_path: str = '.'):
         self.workspace_path = Path(workspace_path).resolve()
-        self.governance_path = self.workspace_path / 'workspace' / 'governance'
+        self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path = self.workspace_path / 'workspace' / 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance'
     def collect_metrics(self) -> GovernanceMetrics:
-        """Collect governance metrics from workspace."""
+        """Collect gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance metrics from workspace."""
         metrics = GovernanceMetrics()
-        if not self.governance_path.exists():
-            logger.warning(f"Governance path not found: {self.governance_path}")
+        if not self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path.exists():
+            logger.warning(f"Governance path not found: {self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path}")
             return metrics
         # Initialize layer metrics
         for layer_id, info in self.LAYER_INFO.items():
@@ -114,8 +114,8 @@ class GLReporter:
                 layer_name=info['name']
             )
         # Scan artifacts
-        yaml_files = list(self.governance_path.rglob('*.yaml')) + \
-                     list(self.governance_path.rglob('*.yml'))
+        yaml_files = list(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path.rglob('*.yaml')) + \
+                     list(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path.rglob('*.yml'))
         now = datetime.utcnow()
         for file_path in yaml_files:
             try:
@@ -315,7 +315,7 @@ class GLReporter:
         report.append(f"**Generated**: {datetime.utcnow().isoformat()}Z\n")
         if not layer or layer.artifact_count == 0:
             report.append("## Status: No Artifacts\n")
-            report.append("This layer has no governance artifacts defined.\n")
+            report.append("This layer has no gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance artifacts defined.\n")
             report.append("### Recommended Actions\n")
             report.append("1. Review the GL architecture specification")
             report.append("2. Create required artifacts for this layer")

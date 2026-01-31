@@ -21,7 +21,7 @@ class VersionPhase(Enum):
     META_COGNITION = "meta_cognition"   # V14-V18
     UNIFIED_FABRIC = "unified_fabric"   # V19-V20
     CODE_INTELLIGENCE = "code_intel"    # V21-V22
-    GOVERNANCE = "governance"           # V23-V24
+    GOVERNANCE = "gl_platform_universegl_platform_universe.governance"           # V23-V24
     NATIVE_PLATFORM = "native_platform" # V0Pro-V25
 
 
@@ -34,7 +34,7 @@ class VersionSpec:
     core_modules: List[str]
     path: str
     direct_deps: List[str] = field(default_factory=list)
-    governance_req: List[str] = field(default_factory=list)
+    gl_platform_universegl_platform_universe.governance_req: List[str] = field(default_factory=list)
     encryption_required: bool = False
     zero_residue: bool = True
     status: str = "active"
@@ -49,7 +49,7 @@ GL_VERSIONS: Dict[str, VersionSpec] = {
         core_modules=["task_executor", "state_manager", "io_handler"],
         path="/gl/v01/exec/",
         direct_deps=[],
-        governance_req=[]
+        gl_platform_universegl_platform_universe.governance_req=[]
     ),
     "V02": VersionSpec(
         version="V02",
@@ -64,7 +64,7 @@ GL_VERSIONS: Dict[str, VersionSpec] = {
         name="基礎治理層",
         phase=VersionPhase.FOUNDATION,
         core_modules=["audit", "result_checker"],
-        path="/gl/v03/governance/",
+        path="/gl/v03/gl_platform_universegl_platform_universe.governance/",
         direct_deps=["V01", "V02"]
     ),
     "V04": VersionSpec(
@@ -229,11 +229,11 @@ GL_VERSIONS: Dict[str, VersionSpec] = {
         name="根本治理層(Root Governance)",
         phase=VersionPhase.GOVERNANCE,
         core_modules=["anti_fabric", "falsification_engine", "execution_harness",
-                      "governance_rules", "governance_auditor", "governance_enforcer", 
-                      "governance_memory"],
-        path="/gl/v23/root_governance/",
+                      "gl_platform_universegl_platform_universe.governance_rules", "gl_platform_universegl_platform_universe.governance_auditor", "gl_platform_universegl_platform_universe.governance_enforcer", 
+                      "gl_platform_universegl_platform_universe.governance_memory"],
+        path="/gl/v23/root_gl_platform_universegl_platform_universe.governance/",
         direct_deps=["V20", "V21"],
-        governance_req=["V01", "V02", "V03", "V04", "V05", "V06", "V07", "V08",
+        gl_platform_universegl_platform_universe.governance_req=["V01", "V02", "V03", "V04", "V05", "V06", "V07", "V08",
                         "V09", "V10", "V11", "V12", "V13", "V14", "V15", "V16",
                         "V17", "V18", "V19", "V20", "V21", "V22"],
         encryption_required=True
@@ -245,9 +245,9 @@ GL_VERSIONS: Dict[str, VersionSpec] = {
         core_modules=["meta_rules", "meta_auditor", "meta_falsification",
                       "integrity_checker", "meta_enforcer", "meta_memory",
                       "success_criteria_auditor"],
-        path="/gl/v24/meta_governance/",
+        path="/gl/v24/meta_gl_platform_universegl_platform_universe.governance/",
         direct_deps=["V23"],
-        governance_req=["V23"],
+        gl_platform_universegl_platform_universe.governance_req=["V23"],
         encryption_required=True
     ),
     "V0Pro": VersionSpec(
@@ -265,7 +265,7 @@ GL_VERSIONS: Dict[str, VersionSpec] = {
         name="生態整合(Ecosystem Integration)",
         phase=VersionPhase.NATIVE_PLATFORM,
         core_modules=["p2p_federation", "local_marketplace", 
-                      "resource_sharing", "community_governance"],
+                      "resource_sharing", "community_gl_platform_universegl_platform_universe.governance"],
         path="/gl/v25/ecosystem/",
         direct_deps=["V0Pro"],
         status="reserved"

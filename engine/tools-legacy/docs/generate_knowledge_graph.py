@@ -1,20 +1,20 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: generate_knowledge_graph
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Generate a Knowledge Graph from the repository structure and MN-DOC entities.
 This script scans the repository and creates a knowledge graph representation
-that can be used for visualization, querying, and governance analysis.
+that can be used for visualization, querying, and gl_platform_universegl_platform_universe.governance analysis.
 Usage:
   python tools/docs/generate_knowledge_graph.py \
     --repo-root . \
@@ -62,7 +62,7 @@ EXCLUDE_DIRS = {
 DIR_TYPE_MAPPING = {
     "core": ("subsystem", "子系統"),
     "automation": ("subsystem", "子系統"),
-    "governance": ("subsystem", "子系統"),
+    "gl_platform_universegl_platform_universe.governance": ("subsystem", "子系統"),
     "config": ("config", "設定"),
     "docs": ("document", "文件"),
     "tests": ("module", "模組"),
@@ -176,7 +176,7 @@ class KnowledgeGraphGenerator:
             label="Unmanned Island System",
             description="Enterprise-grade cloud-native intelligent automation platform",
             properties={"label_zh": "系統"},
-            tags=["cloud-native", "automation", "governance"],
+            tags=["cloud-native", "automation", "gl_platform_universegl_platform_universe.governance"],
         )
     def _scan_directories(self) -> None:
         """Scan repository directories and create nodes."""

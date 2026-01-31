@@ -1,12 +1,12 @@
 #
 # @GL-governed
-# @GL-layer: governance
-# @GL-semantic: governance_loop
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-semantic: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 GL Governance Loop Implementation
-Implements the 5-stage bi-directional governance closed-loop:
+Implements the 5-stage bi-directional gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance closed-loop:
 Input → Parsing → Governance → Feedback → Re-Governance
 """
 from dataclasses import dataclass, field
@@ -23,7 +23,7 @@ class PhaseStatus(Enum):
     FAILED = "FAILED"
     BLOCKED = "BLOCKED"
 class GovernancePhase(Enum):
-    """5-stage governance closed-loop phases"""
+    """5-stage gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance closed-loop phases"""
     INPUT = "INPUT"
     PARSING = "PARSING"
     GOVERNANCE = "GOVERNANCE"
@@ -31,7 +31,7 @@ class GovernancePhase(Enum):
     RE_GOVERNANCE = "RE_GOVERNANCE"
 @dataclass
 class PhaseResult:
-    """Result of a governance phase execution"""
+    """Result of a gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance phase execution"""
     phase: GovernancePhase
     status: PhaseStatus
     start_time: datetime
@@ -53,7 +53,7 @@ class PhaseResult:
         }
 @dataclass
 class LoopContext:
-    """Context for governance loop execution"""
+    """Context for gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop execution"""
     cycle_id: int
     input_data: Dict[str, Any]
     metadata: Dict[str, Any] = field(default_factory=dict)
@@ -65,20 +65,20 @@ class LoopContext:
         self.phase_results[result.phase] = result
 class GovernanceLoopExecutor:
     """
-    Executes the 5-stage bi-directional governance closed-loop
+    Executes the 5-stage bi-directional gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance closed-loop
     Core capabilities:
-    - Complete 5-stage governance closed-loop
+    - Complete 5-stage gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance closed-loop
     - Semantic boundaries for each phase
     - Full traceability across all stages
     - Bi-directional feedback mechanisms
-    - Automated governance enforcement
+    - Automated gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance enforcement
     """
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
         self.cycle_counter = 0
         self.semantic_boundaries = self._init_semantic_boundaries()
         self.performance_metrics = {
-            "governance_closure_rate": 100.0,
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_closure_rate": 100.0,
             "semantic_consistency": 99.9,
             "validation_accuracy": 99.3,
             "cycle_time": 0.0,
@@ -89,15 +89,15 @@ class GovernanceLoopExecutor:
         return {
             GovernancePhase.INPUT: "urn:machinenativeops:gl:phase:input:1.0.0",
             GovernancePhase.PARSING: "urn:machinenativeops:gl:phase:parsing:1.0.0",
-            GovernancePhase.GOVERNANCE: "urn:machinenativeops:gl:phase:governance:1.0.0",
+            GovernancePhase.GOVERNANCE: "urn:machinenativeops:gl:phase:gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance:1.0.0",
             GovernancePhase.FEEDBACK: "urn:machinenativeops:gl:phase:feedback:1.0.0",
-            GovernancePhase.RE_GOVERNANCE: "urn:machinenativeops:gl:phase:re-governance:1.0.0",
+            GovernancePhase.RE_GOVERNANCE: "urn:machinenativeops:gl:phase:re-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance:1.0.0",
         }
     def execute_cycle(self, input_data: Dict[str, Any]) -> LoopContext:
         """
-        Execute a complete governance cycle
+        Execute a complete gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance cycle
         Args:
-            input_data: Input data for the governance cycle
+            input_data: Input data for the gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance cycle
         Returns:
             LoopContext with execution results
         """
@@ -136,7 +136,7 @@ class GovernanceLoopExecutor:
         return context
     def _execute_phase(self, phase: GovernancePhase, context: LoopContext) -> PhaseResult:
         """
-        Execute a single governance phase
+        Execute a single gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance phase
         Args:
             phase: Phase to execute
             context: Loop context
@@ -171,13 +171,13 @@ class GovernanceLoopExecutor:
         elif phase == GovernancePhase.PARSING:
             self._execute_parsing_phase(context, result)
         elif phase == GovernancePhase.GOVERNANCE:
-            self._execute_governance_phase(context, result)
+            self._execute_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_phase(context, result)
         elif phase == GovernancePhase.FEEDBACK:
             self._execute_feedback_phase(context, result)
         elif phase == GovernancePhase.RE_GOVERNANCE:
-            self._execute_re_governance_phase(context, result)
+            self._execute_re_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_phase(context, result)
     def _execute_input_phase(self, context: LoopContext, result: PhaseResult):
-        """Phase 1: Input Stage - Receive governance tasks and requirements"""
+        """Phase 1: Input Stage - Receive gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance tasks and requirements"""
         # Validate input data
         if not context.input_data:
             raise ValueError("Input data is required")
@@ -186,7 +186,7 @@ class GovernanceLoopExecutor:
         result.output_artifacts.append(input_artifact)
         result.metrics["tasks_received"] = len(context.input_data.get("tasks", []))
     def _execute_parsing_phase(self, context: LoopContext, result: PhaseResult):
-        """Phase 2: Parsing Stage - Analyze and classify governance requirements"""
+        """Phase 2: Parsing Stage - Analyze and classify gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance requirements"""
         # Parse input data
         tasks = context.input_data.get("tasks", [])
         # Classify tasks to GL layers
@@ -199,27 +199,27 @@ class GovernanceLoopExecutor:
         result.output_artifacts.append(parsing_artifact)
         result.metrics["tasks_classified"] = len(classified_tasks)
         result.metrics["classification_accuracy"] = 99.9
-    def _execute_governance_phase(self, context: LoopContext, result: PhaseResult):
-        """Phase 3: Governance Stage - Execute governance policies and rules"""
-        # Execute governance policies for each layer
+    def _execute_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_phase(self, context: LoopContext, result: PhaseResult):
+        """Phase 3: Governance Stage - Execute gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance policies and rules"""
+        # Execute gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance policies for each layer
         tasks = context.input_data.get("tasks", [])
-        governance_results = []
+        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_results = []
         for task in tasks:
-            # Apply governance rules
-            governance_result = self._apply_governance_rules(task)
-            governance_results.append(governance_result)
-        # Generate governance artifacts
-        governance_artifact = f"governance-results-cycle-{context.cycle_id}.json"
-        result.output_artifacts.append(governance_artifact)
-        result.metrics["governance_actions"] = len(governance_results)
+            # Apply gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance rules
+            gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_result = self._apply_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_rules(task)
+            gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_results.append(gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_result)
+        # Generate gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance artifacts
+        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_artifact = f"gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-results-cycle-{context.cycle_id}.json"
+        result.output_artifacts.append(gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_artifact)
+        result.metrics["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_actions"] = len(gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_results)
         result.metrics["policy_compliance"] = 100.0
     def _execute_feedback_phase(self, context: LoopContext, result: PhaseResult):
         """Phase 4: Feedback Stage - Collect and analyze feedback from execution"""
-        # Collect feedback from governance phase
-        governance_results = context.get_phase_result(GovernancePhase.GOVERNANCE)
+        # Collect feedback from gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance phase
+        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_results = context.get_phase_result(GovernancePhase.GOVERNANCE)
         feedback_data = []
-        if governance_results:
-            for artifact in governance_results.output_artifacts:
+        if gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_results:
+            for artifact in gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_results.output_artifacts:
                 feedback_data.append({
                     "source": artifact,
                     "feedback_type": "execution",
@@ -230,7 +230,7 @@ class GovernanceLoopExecutor:
         result.output_artifacts.append(feedback_artifact)
         result.metrics["feedback_collected"] = len(feedback_data)
         result.metrics["feedback_integration"] = 100.0
-    def _execute_re_governance_phase(self, context: LoopContext, result: PhaseResult):
+    def _execute_re_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_phase(self, context: LoopContext, result: PhaseResult):
         """Phase 5: Re-Governance Stage - Apply improvements and continue the loop"""
         # Analyze feedback and apply improvements
         feedback_results = context.get_phase_result(GovernancePhase.FEEDBACK)
@@ -238,9 +238,9 @@ class GovernanceLoopExecutor:
         if feedback_results:
             # Apply improvements based on feedback
             improvements = self._apply_improvements(feedback_results)
-        # Generate re-governance artifacts
-        re_governance_artifact = f"improvements-cycle-{context.cycle_id}.json"
-        result.output_artifacts.append(re_governance_artifact)
+        # Generate re-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance artifacts
+        re_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_artifact = f"improvements-cycle-{context.cycle_id}.json"
+        result.output_artifacts.append(re_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_artifact)
         result.metrics["improvements_applied"] = len(improvements)
         result.metrics["loop_closure_rate"] = 100.0
     def _classify_task_to_layer(self, task: Dict[str, Any]) -> str:
@@ -259,8 +259,8 @@ class GovernanceLoopExecutor:
             if any(keyword in task_type for keyword in pattern.split("|")):
                 return layer
         return "GL10-29"  # Default layer
-    def _apply_governance_rules(self, task: Dict[str, Any]) -> Dict[str, Any]:
-        """Apply governance rules to a task"""
+    def _apply_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_rules(self, task: Dict[str, Any]) -> Dict[str, Any]:
+        """Apply gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance rules to a task"""
         return {
             "task_id": task.get("id"),
             "status": "governed",
@@ -277,16 +277,16 @@ class GovernanceLoopExecutor:
             }
         ]
     def _update_closure_rate(self, context: LoopContext):
-        """Update governance closure rate metric"""
+        """Update gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance closure rate metric"""
         total_phases = len(GovernancePhase)
         completed_phases = len(context.phase_results)
         closure_rate = (completed_phases / total_phases) * 100.0
-        self.performance_metrics["governance_closure_rate"] = closure_rate
+        self.performance_metrics["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_closure_rate"] = closure_rate
     def get_performance_metrics(self) -> Dict[str, float]:
         """Get current performance metrics"""
         return self.performance_metrics.copy()
     def generate_evidence_chain(self, context: LoopContext) -> Dict[str, Any]:
-        """Generate evidence chain for the governance cycle"""
+        """Generate evidence chain for the gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance cycle"""
         evidence_chain = {
             "cycle_id": context.cycle_id,
             "cycle_metrics": context.loop_metrics,
@@ -313,6 +313,6 @@ class GovernanceLoopExecutor:
         )
         return hashlib.sha256(evidence_data.encode()).hexdigest()
 # Factory function for creating GovernanceLoopExecutor instances
-def create_governance_loop_executor(config: Optional[Dict[str, Any]] = None) -> GovernanceLoopExecutor:
+def create_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop_executor(config: Optional[Dict[str, Any]] = None) -> GovernanceLoopExecutor:
     """Factory function to create GovernanceLoopExecutor"""
     return GovernanceLoopExecutor(config)

@@ -1,21 +1,21 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: generate-refactor-playbook
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 AI Refactor Playbook Generator
 AI 重構 Playbook 生成器
 Generates actionable refactor playbooks for each directory cluster based on
-language governance data, security scans, and hotspot analysis.
+language gl_platform_universegl_platform_universe.governance data, security scans, and hotspot analysis.
 專門為大型雲原生平台設計重構計畫的「AI Refactor Playbook Generator」
 """
 import argparse
@@ -63,7 +63,7 @@ class RefactorPlaybookGenerator:
 - Cluster 名稱：{cluster_name}
 - Cluster Score：{cluster_score}
 ---
-[2] 語言治理違規（從 governance/language-governance-report.md 擷取）
+[2] 語言治理違規（從 gl_platform_universegl_platform_universe.governance/language-gl_platform_universegl_platform_universe.governance-report.md 擷取）
 目前屬於該 cluster 的違規檔案與原因如下：
 {violations_text}
 ---
@@ -71,7 +71,7 @@ class RefactorPlaybookGenerator:
 該 cluster 下違規與風險分數最高的檔案如下：
 {hotspot_text}
 ---
-[4] Semgrep 安全問題（governance/semgrep-report.json）
+[4] Semgrep 安全問題（gl_platform_universegl_platform_universe.governance/semgrep-report.json）
 該 cluster 相關的 Semgrep 結果如下：
 {semgrep_text}
 ---
@@ -82,7 +82,7 @@ class RefactorPlaybookGenerator:
 - Outgoing Flows（本 cluster → 其他 cluster 或 removed）：
 {outgoing_text}
 ---
-[6] 全局 AI 建議（governance/ai-refactor-suggestions.md）
+[6] 全局 AI 建議（gl_platform_universegl_platform_universe.governance/ai-refactor-suggestions.md）
 以下是對整個儲存庫的全局 AI 建議摘要，供你在制定本 cluster 計畫時參考：
 {global_ai_suggestions_excerpt}
 ---
@@ -172,15 +172,15 @@ services/gateway/
         self.cache_dir = self.repo_root / ".cache" / "refactor"
         if self.cache_enabled:
             self.cache_dir.mkdir(parents=True, exist_ok=True)
-    def load_governance_data(self):
-        """Load all governance data files"""
-        print("📂 Loading governance data...")
-        # Load language governance report
+    def load_gl_platform_universegl_platform_universe.governance_data(self):
+        """Load all gl_platform_universegl_platform_universe.governance data files"""
+        print("📂 Loading gl_platform_universegl_platform_universe.governance data...")
+        # Load language gl_platform_universegl_platform_universe.governance report
         gov_report_path = (
-            self.repo_root / "governance" / "language-governance-report.md"
+            self.repo_root / "gl_platform_universegl_platform_universe.governance" / "language-gl_platform_universegl_platform_universe.governance-report.md"
         )
         if gov_report_path.exists():
-            self._parse_governance_report(gov_report_path)
+            self._parse_gl_platform_universegl_platform_universe.governance_report(gov_report_path)
         else:
             print(f"⚠️ Governance report not found: {gov_report_path}")
         # Load hotspot data
@@ -193,7 +193,7 @@ services/gateway/
         else:
             print(f"⚠️ Hotspot data not found: {hotspot_path}")
         # Load semgrep report
-        semgrep_path = self.repo_root / "governance" / "semgrep-report.json"
+        semgrep_path = self.repo_root / "gl_platform_universegl_platform_universe.governance" / "semgrep-report.json"
         if semgrep_path.exists():
             with open(semgrep_path) as f:
                 self.semgrep_results = json.load(f)
@@ -219,7 +219,7 @@ services/gateway/
             print(f"⚠️ Cluster heatmap not found: {cluster_path}")
         # Load global AI suggestions
         ai_suggestions_path = (
-            self.repo_root / "governance" / "ai-refactor-suggestions.md"
+            self.repo_root / "gl_platform_universegl_platform_universe.governance" / "ai-refactor-suggestions.md"
         )
         if ai_suggestions_path.exists():
             with open(ai_suggestions_path) as f:
@@ -251,8 +251,8 @@ services/gateway/
         hash_content = []
         # Hash all data source files
         data_files = [
-            self.repo_root / "governance" / "language-governance-report.md",
-            self.repo_root / "governance" / "semgrep-report.json",
+            self.repo_root / "gl_platform_universegl_platform_universe.governance" / "language-gl_platform_universegl_platform_universe.governance-report.md",
+            self.repo_root / "gl_platform_universegl_platform_universe.governance" / "semgrep-report.json",
             self.repo_root / "apps" / "web" / "public" / "data" / "hotspot.json",
             self.repo_root
             / "apps"
@@ -261,7 +261,7 @@ services/gateway/
             / "data"
             / "cluster-heatmap.json",
             self.repo_root / "apps" / "web" / "public" / "data" / "migration-flow.json",
-            self.repo_root / "governance" / "ai-refactor-suggestions.md",
+            self.repo_root / "gl_platform_universegl_platform_universe.governance" / "ai-refactor-suggestions.md",
         ]
         for file_path in data_files:
             if file_path.exists():
@@ -321,8 +321,8 @@ services/gateway/
                 json.dump(cache_data, f, ensure_ascii=False, indent=2)
         except Exception as e:
             print(f"⚠️ Cache save error for {cluster_name}: {e}")
-    def _parse_governance_report(self, report_path: Path):
-        """Parse language governance report markdown
+    def _parse_gl_platform_universegl_platform_universe.governance_report(self, report_path: Path):
+        """Parse language gl_platform_universegl_platform_universe.governance report markdown
         Expected format:
         - **path/to/file.ext** — Reason for violation
         - **path/to/file.ext** - Reason for violation
@@ -735,7 +735,7 @@ services/gateway/
             "services/",
             "automation/",
             "autonomous/",
-            "governance/",
+            "gl_platform_universegl_platform_universe.governance/",
             "apps/",
             "tools/",
             "infrastructure/",
@@ -761,8 +761,8 @@ def main():
     print("=" * 70)
     # Create generator
     generator = RefactorPlaybookGenerator(args.repo_root)
-    # Load governance data
-    generator.load_governance_data()
+    # Load gl_platform_universegl_platform_universe.governance data
+    generator.load_gl_platform_universegl_platform_universe.governance_data()
     # Generate playbooks
     if args.cluster:
         # Single cluster

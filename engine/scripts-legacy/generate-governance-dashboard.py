@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: governance
-# @GL-semantic: generate-governance-dashboard
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-semantic: generate-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-dashboard
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL-Layer: GL30-49 (Execution)
 #!/usr/bin/env python3
 """
 Language Governance Dashboard Generator
-Generates a dashboard showing semantic health and governance metrics
+Generates a dashboard showing semantic health and gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance metrics
 """
 import yaml
 import json
@@ -22,11 +22,11 @@ def load_module_registry() -> Dict[str, Any]:
         return yaml.safe_load(f)
 def load_policy_manifest() -> Dict[str, Any]:
     """Load the policy manifest"""
-    manifest_path = Path("controlplane/governance/policies/POLICY_MANIFEST.yaml")
+    manifest_path = Path("controlplane/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/policies/POLICY_MANIFEST.yaml")
     with open(manifest_path, 'r') as f:
         return yaml.safe_load(f)
-def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
-    """Calculate governance metrics"""
+def calculate_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
+    """Calculate gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance metrics"""
     modules = registry.get('modules', [])
     # Calculate semantic health statistics
     health_scores = [m.get('semantic_health_score', 0) for m in modules]
@@ -70,7 +70,7 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
     # Load data
     registry = load_module_registry()
     policy_manifest = load_policy_manifest()
-    metrics = calculate_governance_metrics(registry)
+    metrics = calculate_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_metrics(registry)
     # Generate dashboard content
     dashboard = f"""# Language Governance Dashboard
 #*Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
@@ -217,7 +217,7 @@ Recommended review: **{(datetime.now()).strftime('%Y-%m-%d')}** (Monthly)
 ---
 ## 📚 Resources
 - [Module Registry](../controlplane/baseline/modules/REGISTRY.yaml)
-- [Policy Manifest](../controlplane/governance/policies/POLICY_MANIFEST.yaml)
+- [Policy Manifest](../controlplane/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/policies/POLICY_MANIFEST.yaml)
 - [Integration Guide](PHASE1_INTEGRATION_GUIDE.md)
 - [Validation Tools](../scripts/validate-infrastructure.sh)
 ---

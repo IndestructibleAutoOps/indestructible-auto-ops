@@ -2,9 +2,9 @@
 """
 # @GL-governed
 # @GL-layer: GL90-99
-# @GL-semantic: add-governance-tags
+# @GL-semantic: add-gl_platform_universegl_platform_universe.governance-tags
 # @GL-charter-version: 4.0.0
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 
 GL Runtime Platform - Batch Add Governance Tags
 Version 21.0.0
@@ -36,7 +36,7 @@ EXCLUDE_DIRS = [
     ".next",
     "outputs",
     "test-reports",
-    "governance-audit-reports",
+    "gl_platform_universegl_platform_universe.governance-audit-reports",
     ".git",
     "summarized_conversations",
     ".venv",
@@ -45,7 +45,7 @@ EXCLUDE_DIRS = [
     "node_modules",
 ]
 
-OUTPUT_DIR = WORKSPACE_DIR / "governance-audit-reports"
+OUTPUT_DIR = WORKSPACE_DIR / "gl_platform_universegl_platform_universe.governance-audit-reports"
 COMPLIANCE_TARGET = 80.0
 
 # ============================================================================
@@ -56,7 +56,7 @@ TS_JS_HEADER = """// @GL-governed
 // @GL-layer: GL{layer}
 // @GL-semantic: {semantic}
 // @GL-charter-version: 4.0.0
-// @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+// @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 
 """
 
@@ -65,7 +65,7 @@ MD_HEADER = """---
 # @GL-layer: GL{layer}
 # @GL-semantic: {semantic}
 # @GL-charter-version: 4.0.0
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 
 """
 
@@ -101,7 +101,7 @@ def get_semantic_from_path(file_path: Path) -> str:
     semantic = re.sub(r'[_\s]+', '-', filename)
     return semantic.lower()
 
-def has_governance_marker(file_path: Path) -> bool:
+def has_gl_platform_universegl_platform_universe.governance_marker(file_path: Path) -> bool:
     """檢查文件是否已有治理標記"""
     try:
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -193,7 +193,7 @@ def add_json_metadata(file_path: Path) -> bool:
             "layer": get_layer_from_path(file_path),
             "semantic": get_semantic_from_path(file_path),
             "charter_version": "4.0.0",
-            "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+            "audit_trail": "../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json",
             "timestamp": datetime.now().isoformat()
         }
         
@@ -261,7 +261,7 @@ def process_files(files_by_type: Dict[str, List[Path]]) -> Dict[str, int]:
         "markdown": 0
     }
     
-    print("\n🏷️  Adding governance tags...")
+    print("\n🏷️  Adding gl_platform_universegl_platform_universe.governance tags...")
     
     # 處理 TypeScript 文件
     print("\n  TypeScript files:")
@@ -322,7 +322,7 @@ def generate_report(files_by_type: Dict[str, List[Path]], results: Dict[str, int
         "target_achieved": compliance_rate >= COMPLIANCE_TARGET,
         "statistics": {
             "total_files": total_files,
-            "files_with_governance_tags": total_with_tags,
+            "files_with_gl_platform_universegl_platform_universe.governance_tags": total_with_tags,
             "files_without_tags": total_files - total_with_tags
         },
         "by_file_type": {
@@ -349,14 +349,14 @@ def generate_report(files_by_type: Dict[str, List[Path]], results: Dict[str, int
     OUTPUT_DIR.mkdir(exist_ok=True)
     
     # 保存 JSON 報告
-    json_path = OUTPUT_DIR / "governance-tags-report.json"
+    json_path = OUTPUT_DIR / "gl_platform_universegl_platform_universe.governance-tags-report.json"
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2)
     
     print(f"\n✅ Report saved: {json_path}")
     
     # 生成 Markdown 報告
-    md_path = OUTPUT_DIR / "governance-tags-report.md"
+    md_path = OUTPUT_DIR / "gl_platform_universegl_platform_universe.governance-tags-report.md"
     markdown = generate_markdown_report(report)
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write(markdown)
@@ -367,9 +367,9 @@ def generate_markdown_report(report: Dict) -> str:
     """生成 Markdown 格式的報告"""
     md = f"""# @GL-governed
 # @GL-layer: GL90-99
-# @GL-semantic: governance-tags-report
+# @GL-semantic: gl_platform_universegl_platform_universe.governance-tags-report
 # @GL-charter-version: 4.0.0
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 
 # Governance Tags Addition Report
 
@@ -389,7 +389,7 @@ def generate_markdown_report(report: Dict) -> str:
 | Metric | Value |
 |--------|-------|
 | Total Files | {report['statistics']['total_files']} |
-| Files with Governance Tags | {report['statistics']['files_with_governance_tags']} |
+| Files with Governance Tags | {report['statistics']['files_with_gl_platform_universegl_platform_universe.governance_tags']} |
 | Files without Tags | {report['statistics']['files_without_tags']} |
 
 ## By File Type

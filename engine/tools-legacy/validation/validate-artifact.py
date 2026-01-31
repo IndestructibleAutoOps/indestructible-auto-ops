@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: validate-artifact
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -20,7 +20,7 @@ Purpose: Complete 5-level validation pipeline for Machine Native Ops artifacts
 2. Semantic Validation (語義驗證) - Semantic root traceability, concept consistency
 3. Dependency Validation (依賴驗證) - DAG validation, circular dependency detection
 4. Governance Validation (治理驗證) - Naming conventions, documentation, policies
-5. Closure Validation (閉包驗證) - Dependency, semantic, and governance closure
+5. Closure Validation (閉包驗證) - Dependency, semantic, and gl_platform_universegl_platform_universe.governance closure
 Integration Points:
 - Semantic Root: root/.root.semantic-root.yaml
 - Gates Map: root/.root.gates.map.yaml
@@ -163,8 +163,8 @@ class ArtifactValidator:
             self._validate_semantic()
         if self.validation_level == "dependency" or self.validation_level == "all":
             self._validate_dependency()
-        if self.validation_level == "governance" or self.validation_level == "all":
-            self._validate_governance()
+        if self.validation_level == "gl_platform_universegl_platform_universe.governance" or self.validation_level == "all":
+            self._validate_gl_platform_universegl_platform_universe.governance()
         if self.validation_level == "closure" or self.validation_level == "all":
             self._validate_closure()
         # Check results
@@ -630,7 +630,7 @@ class ArtifactValidator:
             if node not in visited:
                 dfs(node)
         return cycles
-    def _validate_governance(self):
+    def _validate_gl_platform_universegl_platform_universe.governance(self):
         """Level 4: Governance Validation - Complete Implementation
         Validates:
         - Naming convention enforcement
@@ -642,7 +642,7 @@ class ArtifactValidator:
         if not self.semantic_root:
             self.results.append(
                 ValidationResult(
-                    level="governance",
+                    level="gl_platform_universegl_platform_universe.governance",
                     status="warning",
                     message="Semantic root not loaded, using default naming conventions",
                     details={},
@@ -664,7 +664,7 @@ class ArtifactValidator:
                 if not re.match(name_pattern, artifact_name):
                     self.results.append(
                         ValidationResult(
-                            level="governance",
+                            level="gl_platform_universegl_platform_universe.governance",
                             status="fail",
                             message=f"Artifact name '{artifact_name}' violates naming convention",
                             details={
@@ -687,7 +687,7 @@ class ArtifactValidator:
                 if not re.match(version_pattern, version):
                     self.results.append(
                         ValidationResult(
-                            level="governance",
+                            level="gl_platform_universegl_platform_universe.governance",
                             status="fail",
                             message=f"Version '{version}' violates naming convention",
                             details={
@@ -709,7 +709,7 @@ class ArtifactValidator:
                 if not re.match(namespace_pattern, namespace):
                     self.results.append(
                         ValidationResult(
-                            level="governance",
+                            level="gl_platform_universegl_platform_universe.governance",
                             status="fail",
                             message=f"Namespace '{namespace}' violates naming convention",
                             details={
@@ -724,7 +724,7 @@ class ArtifactValidator:
             if not documentation:
                 self.results.append(
                     ValidationResult(
-                        level="governance",
+                        level="gl_platform_universegl_platform_universe.governance",
                         status="warning",
                         message="No documentation section found",
                         details={
@@ -741,7 +741,7 @@ class ArtifactValidator:
                 if missing_doc:
                     self.results.append(
                         ValidationResult(
-                            level="governance",
+                            level="gl_platform_universegl_platform_universe.governance",
                             status="warning",
                             message=f"Documentation missing recommended fields: {', '.join(missing_doc)}",
                             details={
@@ -754,7 +754,7 @@ class ArtifactValidator:
             if not attestation:
                 self.results.append(
                     ValidationResult(
-                        level="governance",
+                        level="gl_platform_universegl_platform_universe.governance",
                         status="warning",
                         message="No attestation configuration found",
                         details={
@@ -763,18 +763,18 @@ class ArtifactValidator:
                         },
                     )
                 )
-            # If no governance failures for this artifact
+            # If no gl_platform_universegl_platform_universe.governance failures for this artifact
             artifact_failures = [
                 r
                 for r in self.results
-                if r.level == "governance"
+                if r.level == "gl_platform_universegl_platform_universe.governance"
                 and r.status == "fail"
                 and r.details.get("path") == artifact_path
             ]
             if not artifact_failures:
                 self.results.append(
                     ValidationResult(
-                        level="governance",
+                        level="gl_platform_universegl_platform_universe.governance",
                         status="pass",
                         message=f"Governance validation passed: {artifact_path}",
                         details={"path": artifact_path},
@@ -793,7 +793,7 @@ class ArtifactValidator:
         for artifact in self.artifacts:
             artifact_path = artifact.get("_source_path", "unknown")
             # Check all previous validation levels passed
-            levels_to_check = ["structural", "semantic", "dependency", "governance"]
+            levels_to_check = ["structural", "semantic", "dependency", "gl_platform_universegl_platform_universe.governance"]
             closure_status = {}
             for level in levels_to_check:
                 level_results = [
@@ -807,8 +807,8 @@ class ArtifactValidator:
             dependency_closure_passed = closure_status.get("dependency") == "pass"
             # Semantic closure: All concepts trace to semantic root
             semantic_closure_passed = closure_status.get("semantic") == "pass"
-            # Governance closure: All governance policies satisfied
-            governance_closure_passed = closure_status.get("governance") == "pass"
+            # Governance closure: All gl_platform_universegl_platform_universe.governance policies satisfied
+            gl_platform_universegl_platform_universe.governance_closure_passed = closure_status.get("gl_platform_universegl_platform_universe.governance") == "pass"
             # Structural closure: Basic structure valid
             structural_closure_passed = closure_status.get("structural") == "pass"
             # Check backward reconciliation configuration
@@ -821,7 +821,7 @@ class ArtifactValidator:
             all_closures_passed = (
                 dependency_closure_passed
                 and semantic_closure_passed
-                and governance_closure_passed
+                and gl_platform_universegl_platform_universe.governance_closure_passed
                 and structural_closure_passed
             )
             if not all_closures_passed:
@@ -841,8 +841,8 @@ class ArtifactValidator:
                                 "pass" if dependency_closure_passed else "fail"),
                             "semantic_closure": (
                                 "pass" if semantic_closure_passed else "fail"),
-                            "governance_closure": (
-                                "pass" if governance_closure_passed else "fail"),
+                            "gl_platform_universegl_platform_universe.governance_closure": (
+                                "pass" if gl_platform_universegl_platform_universe.governance_closure_passed else "fail"),
                             "structural_closure": (
                                 "pass" if structural_closure_passed else "fail"),
                             "failed_levels": failed_closures,
@@ -855,7 +855,7 @@ class ArtifactValidator:
                         ValidationResult(
                             level="closure",
                             status="warning",
-                            message="No backward reconciliation configured (bi-directional governance incomplete)",
+                            message="No backward reconciliation configured (bi-directional gl_platform_universegl_platform_universe.governance incomplete)",
                             details={
                                 "path": artifact_path,
                                 "recommendation": "Add spec.generation.backward.reconciliation",
@@ -870,7 +870,7 @@ class ArtifactValidator:
                             "path": artifact_path,
                             "dependency_closure": "pass",
                             "semantic_closure": "pass",
-                            "governance_closure": "pass",
+                            "gl_platform_universegl_platform_universe.governance_closure": "pass",
                             "structural_closure": "pass",
                             "has_backward_reconciliation": has_reconciliation,
                         },
@@ -1001,34 +1001,34 @@ class ArtifactValidator:
                             r.to_dict() for r in results_by_level.get("dependency", [])
                         ],
                     },
-                    "governance": {
+                    "gl_platform_universegl_platform_universe.governance": {
                         "status": self._get_level_status(
-                            results_by_level.get("governance", [])
+                            results_by_level.get("gl_platform_universegl_platform_universe.governance", [])
                         ),
-                        "checks": len(results_by_level.get("governance", [])),
+                        "checks": len(results_by_level.get("gl_platform_universegl_platform_universe.governance", [])),
                         "passed": len(
                             [
                                 r
-                                for r in results_by_level.get("governance", [])
+                                for r in results_by_level.get("gl_platform_universegl_platform_universe.governance", [])
                                 if r.status == "pass"
                             ]
                         ),
                         "failed": len(
                             [
                                 r
-                                for r in results_by_level.get("governance", [])
+                                for r in results_by_level.get("gl_platform_universegl_platform_universe.governance", [])
                                 if r.status == "fail"
                             ]
                         ),
                         "warnings": len(
                             [
                                 r
-                                for r in results_by_level.get("governance", [])
+                                for r in results_by_level.get("gl_platform_universegl_platform_universe.governance", [])
                                 if r.status == "warning"
                             ]
                         ),
                         "details": [
-                            r.to_dict() for r in results_by_level.get("governance", [])
+                            r.to_dict() for r in results_by_level.get("gl_platform_universegl_platform_universe.governance", [])
                         ],
                     },
                     "closure": {
@@ -1063,7 +1063,7 @@ class ArtifactValidator:
                     },
                 },
                 # Governance compliance summary
-                "governance_compliance": {
+                "gl_platform_universegl_platform_universe.governance_compliance": {
                     "semantic_root_loaded": self.semantic_root is not None,
                     "semantic_root_version": (
                         self.semantic_root.get("metadata", {}).get("version", "unknown")
@@ -1098,8 +1098,8 @@ class ArtifactValidator:
                     results_by_level.get("semantic", [])
                 )
                 == "pass",
-                "governance_closure": self._get_level_status(
-                    results_by_level.get("governance", [])
+                "gl_platform_universegl_platform_universe.governance_closure": self._get_level_status(
+                    results_by_level.get("gl_platform_universegl_platform_universe.governance", [])
                 )
                 == "pass",
             },
@@ -1136,8 +1136,8 @@ Validation Levels:
   structural   - Schema compliance, required fields, data types
   semantic     - Semantic root traceability, concept consistency
   dependency   - DAG validation, circular dependency detection
-  governance   - Naming conventions, documentation, policies
-  closure      - Complete governance closure validation
+  gl_platform_universegl_platform_universe.governance   - Naming conventions, documentation, policies
+  closure      - Complete gl_platform_universegl_platform_universe.governance closure validation
   all          - Run all validation levels (default)
 Examples:
   # Validate single artifact
@@ -1157,7 +1157,7 @@ Examples:
             "structural",
             "semantic",
             "dependency",
-            "governance",
+            "gl_platform_universegl_platform_universe.governance",
             "closure",
             "all",
         ],

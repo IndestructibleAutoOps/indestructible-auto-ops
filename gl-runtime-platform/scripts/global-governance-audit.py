@@ -4,7 +4,7 @@
 GL Global Governance Audit Script
 Version 21.0.0
 
-This script performs a comprehensive governance audit across all components
+This script performs a comprehensive gl_platform_universegl_platform_universe.governance audit across all components
 of the GL Runtime Platform and generates detailed audit reports.
 """
 
@@ -29,7 +29,7 @@ AUDIT_CONFIG = {
         "/workspace/elasticsearch-search-system",
         "/workspace/.github/agents",
         "/workspace/file-organizer-system",
-        "/workspace/.governance",
+        "/workspace/.gl_platform_universegl_platform_universe.governance",
         "/workspace/infrastructure",
         "/workspace/.agent_hooks",
         "/workspace/engine",
@@ -41,10 +41,10 @@ AUDIT_CONFIG = {
         ".ts", ".js", ".json", ".yaml", ".yml", 
         ".md", ".txt", ".py", ".sh"
     ],
-    "governance_checks": {
-        "gl_governance_tags": {
+    "gl_platform_universegl_platform_universe.governance_checks": {
+        "gl_gl_platform_universegl_platform_universe.governance_tags": {
             "required_tags": ["@GL-governed", "@GL-layer", "@GL-semantic"],
-            "description": "Check for GL governance header tags"
+            "description": "Check for GL gl_platform_universegl_platform_universe.governance header tags"
         },
         "semantic_anchors": {
             "required": True,
@@ -59,7 +59,7 @@ AUDIT_CONFIG = {
             "description": "Check for audit trail references"
         }
     },
-    "output_directory": "./governance-audit-reports"
+    "output_directory": "./gl_platform_universegl_platform_universe.governance-audit-reports"
 }
 
 # ============================================================================
@@ -79,8 +79,8 @@ class FileAuditResult:
         ).isoformat() if os.path.exists(file_path) else None
         self.hash = self._calculate_hash() if os.path.exists(file_path) else None
         
-        self.governance_compliance = {
-            "has_governance_tags": False,
+        self.gl_platform_universegl_platform_universe.governance_compliance = {
+            "has_gl_platform_universegl_platform_universe.governance_tags": False,
             "has_semantic_anchor": False,
             "has_charter_version": False,
             "has_audit_trail": False,
@@ -123,39 +123,39 @@ class FileAuditResult:
             return None
     
     def analyze_content(self, content: str):
-        """Analyze file content for governance compliance"""
+        """Analyze file content for gl_platform_universegl_platform_universe.governance compliance"""
         lines = content.split('\n')
         
-        # Analyze governance tags
-        self.governance_compliance["has_governance_tags"] = (
+        # Analyze gl_platform_universegl_platform_universe.governance tags
+        self.gl_platform_universegl_platform_universe.governance_compliance["has_gl_platform_universegl_platform_universe.governance_tags"] = (
             "@GL-governed" in content
         )
         
         # Extract specific tags
-        if self.governance_compliance["has_governance_tags"]:
+        if self.gl_platform_universegl_platform_universe.governance_compliance["has_gl_platform_universegl_platform_universe.governance_tags"]:
             if "@GL-layer:" in content:
-                self.governance_compliance["has_governance_tags"] = True
+                self.gl_platform_universegl_platform_universe.governance_compliance["has_gl_platform_universegl_platform_universe.governance_tags"] = True
                 self.semantic_analysis["gl_layer"] = self._extract_tag_value(content, "@GL-layer:")
             else:
-                self.governance_compliance["missing_tags"].append("@GL-layer:")
+                self.gl_platform_universegl_platform_universe.governance_compliance["missing_tags"].append("@GL-layer:")
             
             if "@GL-semantic:" in content:
-                self.governance_compliance["has_governance_tags"] = True
+                self.gl_platform_universegl_platform_universe.governance_compliance["has_gl_platform_universegl_platform_universe.governance_tags"] = True
                 self.semantic_analysis["semantic_type"] = self._extract_tag_value(content, "@GL-semantic:")
             else:
-                self.governance_compliance["missing_tags"].append("@GL-semantic:")
+                self.gl_platform_universegl_platform_universe.governance_compliance["missing_tags"].append("@GL-semantic:")
             
             if "@GL-audit-trail:" in content:
-                self.governance_compliance["has_audit_trail"] = True
+                self.gl_platform_universegl_platform_universe.governance_compliance["has_audit_trail"] = True
             else:
-                self.governance_compliance["missing_tags"].append("@GL-audit-trail:")
+                self.gl_platform_universegl_platform_universe.governance_compliance["missing_tags"].append("@GL-audit-trail:")
             
             if "@GL-charter-version:" in content:
-                self.governance_compliance["has_charter_version"] = True
+                self.gl_platform_universegl_platform_universe.governance_compliance["has_charter_version"] = True
         
         # Analyze semantic anchors
         if "GL_SEMANTIC_ANCHOR" in content or "semantic-anchor" in content:
-            self.governance_compliance["has_semantic_anchor"] = True
+            self.gl_platform_universegl_platform_universe.governance_compliance["has_semantic_anchor"] = True
         
         # Analyze code quality
         self.code_quality["line_count"] = len(lines)
@@ -171,14 +171,14 @@ class FileAuditResult:
             self.security_analysis["has_hardcoded_credentials"] = False  # URLs are OK
         
         # Generate recommendations
-        if not self.governance_compliance["has_governance_tags"]:
-            self.recommendations.append("Add GL governance tags to file header")
+        if not self.gl_platform_universegl_platform_universe.governance_compliance["has_gl_platform_universegl_platform_universe.governance_tags"]:
+            self.recommendations.append("Add GL gl_platform_universegl_platform_universe.governance tags to file header")
         
         if self.code_quality["comment_ratio"] < 0.1:
             self.recommendations.append("Consider adding more documentation comments")
     
     def _extract_tag_value(self, content: str, tag: str) -> str:
-        """Extract value from governance tag"""
+        """Extract value from gl_platform_universegl_platform_universe.governance tag"""
         for line in content.split('\n'):
             if tag in line:
                 parts = line.split(tag)
@@ -195,7 +195,7 @@ class FileAuditResult:
             "file_size": self.file_size,
             "last_modified": self.last_modified,
             "hash": self.hash,
-            "governance_compliance": self.governance_compliance,
+            "gl_platform_universegl_platform_universe.governance_compliance": self.gl_platform_universegl_platform_universe.governance_compliance,
             "semantic_analysis": self.semantic_analysis,
             "code_quality": self.code_quality,
             "security_analysis": self.security_analysis,
@@ -209,14 +209,14 @@ class FileAuditResult:
 # ============================================================================
 
 class GlobalGovernanceAuditor:
-    """Main auditor class for global governance audit"""
+    """Main auditor class for global gl_platform_universegl_platform_universe.governance audit"""
     
     def __init__(self, config: Dict[str, Any]):
         self.config = config
         self.audit_results = []
         self.summary_statistics = {
             "total_files_scanned": 0,
-            "files_with_governance_tags": 0,
+            "files_with_gl_platform_universegl_platform_universe.governance_tags": 0,
             "files_compliant": 0,
             "files_with_issues": 0,
             "total_issues": 0,
@@ -261,8 +261,8 @@ class GlobalGovernanceAuditor:
             
             # Update statistics
             self.summary_statistics["total_files_scanned"] += 1
-            if result.governance_compliance["has_governance_tags"]:
-                self.summary_statistics["files_with_governance_tags"] += 1
+            if result.gl_platform_universegl_platform_universe.governance_compliance["has_gl_platform_universegl_platform_universe.governance_tags"]:
+                self.summary_statistics["files_with_gl_platform_universegl_platform_universe.governance_tags"] += 1
             
             if result.issues:
                 self.summary_statistics["files_with_issues"] += 1
@@ -282,7 +282,7 @@ class GlobalGovernanceAuditor:
         # Calculate compliance rate
         if self.summary_statistics["total_files_scanned"] > 0:
             self.summary_statistics["compliance_rate"] = (
-                self.summary_statistics["files_with_governance_tags"] / 
+                self.summary_statistics["files_with_gl_platform_universegl_platform_universe.governance_tags"] / 
                 self.summary_statistics["total_files_scanned"]
             ) * 100
         
@@ -366,7 +366,7 @@ class GlobalGovernanceAuditor:
     
     def save_audit_report(self, report: Dict[str, Any]):
         """Save audit report to JSON file"""
-        report_path = self.output_dir / "global-governance-audit-report.json"
+        report_path = self.output_dir / "global-gl_platform_universegl_platform_universe.governance-audit-report.json"
         
         with open(report_path, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
@@ -389,7 +389,7 @@ class GlobalGovernanceAuditor:
 ## Executive Summary
 
 - **Total Files Scanned:** {report['summary_statistics']['total_files_scanned']}
-- **Files with Governance Tags:** {report['summary_statistics']['files_with_governance_tags']}
+- **Files with Governance Tags:** {report['summary_statistics']['files_with_gl_platform_universegl_platform_universe.governance_tags']}
 - **Compliance Rate:** {report['summary_statistics']['compliance_rate']:.2f}%
 - **Files with Issues:** {report['summary_statistics']['files_with_issues']}
 - **Total Issues:** {report['summary_statistics']['total_issues']}

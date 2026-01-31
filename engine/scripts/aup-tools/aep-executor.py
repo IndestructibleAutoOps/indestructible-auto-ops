@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: aep-executor
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -36,7 +36,7 @@ class IssueCategory(Enum):
     GL_MARKER_MISSING = "gl_marker_missing"
     SEMANTIC_MANIFEST_MISSING = "semantic_manifest_missing"
     DAG_INTEGRITY = "dag_integrity"
-    GOVERNANCE_CHAIN = "governance_chain"
+    GOVERNANCE_CHAIN = "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_chain"
 @dataclass
 class GovernanceEvent:
     """治理事件"""
@@ -69,7 +69,7 @@ class FileReport:
     execution_timestamp: str
     execution_status: str
     issues: List[FileIssue] = field(default_factory=list)
-    governance_events: List[GovernanceEvent] = field(default_factory=list)
+    gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events: List[GovernanceEvent] = field(default_factory=list)
     metadata_check: Dict[str, Any] = field(default_factory=dict)
     schema_check: Dict[str, Any] = field(default_factory=dict)
     gl_markers: List[str] = field(default_factory=list)
@@ -85,7 +85,7 @@ class AEPGovernanceAuditor:
         r'@gl-module\s+(\S+)',
         r'@gl-semantic-anchor\s+(\S+)',
         r'@gl-evidence-required\s+(\S+)',
-        r'@gl-governance\s+(\S+)',
+        r'@gl-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance\s+(\S+)',
         r'GL-\d{2}-[A-Z]+',
         r'gl_layer:\s*(\S+)',
         r'gl_module:\s*(\S+)',
@@ -99,7 +99,7 @@ class AEPGovernanceAuditor:
         'schemas': ['*.schema.yaml', '*.schema.json'],
         'manifests': ['manifest.yaml', '*.manifest.yaml'],
         'policies': ['*.policy.yaml', 'policies.yaml'],
-        'governance': ['*.governance.yaml'],
+        'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance': ['*.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.yaml'],
     }
     # 命名規範
     NAMING_CONVENTIONS = {
@@ -115,16 +115,16 @@ class AEPGovernanceAuditor:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.reports: List[FileReport] = []
-        self.governance_events: List[GovernanceEvent] = []
+        self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events: List[GovernanceEvent] = []
         self.global_issues: List[FileIssue] = []
         self.execution_id = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
     def generate_event_id(self) -> str:
         """生成唯一事件 ID"""
-        return f"GE-{self.execution_id}-{len(self.governance_events):06d}"
+        return f"GE-{self.execution_id}-{len(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events):06d}"
     def generate_issue_id(self) -> str:
         """生成唯一問題 ID"""
         return f"ISS-{self.execution_id}-{len(self.global_issues):06d}"
-    def emit_governance_event(self, event_type: str, file_path: str, 
+    def emit_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event(self, event_type: str, file_path: str, 
                               details: Dict[str, Any], severity: str) -> GovernanceEvent:
         """發出治理事件"""
         event = GovernanceEvent(
@@ -135,7 +135,7 @@ class AEPGovernanceAuditor:
             details=details,
             severity=severity
         )
-        self.governance_events.append(event)
+        self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events.append(event)
         return event
     def calculate_file_hash(self, file_path: Path) -> str:
         """計算檔案 SHA256 雜湊"""
@@ -311,7 +311,7 @@ class AEPGovernanceAuditor:
     def execute_file_audit(self, file_path: Path) -> FileReport:
         """執行單一檔案稽核"""
         # 發出開始事件
-        self.emit_governance_event(
+        self.emit_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event(
             event_type="FILE_AUDIT_START",
             file_path=str(file_path),
             details={'action': 'start_audit'},
@@ -345,7 +345,7 @@ class AEPGovernanceAuditor:
                     severity=Severity.MEDIUM.value,
                     file_path=str(file_path),
                     line_number=None,
-                    description="No GL governance markers found",
+                    description="No GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance markers found",
                     suggestion="Add @gl-layer, @gl-module, or @gl-semantic-anchor markers",
                     evidence={'searched_patterns': self.GL_MARKER_PATTERNS[:3]}
                 )
@@ -379,7 +379,7 @@ class AEPGovernanceAuditor:
             # 建議最佳實踐路徑
             report.suggested_path = self.suggest_best_practice_path(file_path, file_type)
             # 發出完成事件
-            self.emit_governance_event(
+            self.emit_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event(
                 event_type="FILE_AUDIT_COMPLETE",
                 file_path=str(file_path),
                 details={
@@ -392,7 +392,7 @@ class AEPGovernanceAuditor:
             return report
         except Exception as e:
             # 發出錯誤事件
-            self.emit_governance_event(
+            self.emit_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event(
                 event_type="FILE_AUDIT_ERROR",
                 file_path=str(file_path),
                 details={'error': str(e), 'traceback': traceback.format_exc()},
@@ -437,7 +437,7 @@ class AEPGovernanceAuditor:
         print("GL Unified Charter Activated")
         print(f"{'='*60}\n")
         # 發出開始事件
-        self.emit_governance_event(
+        self.emit_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event(
             event_type="FULL_AUDIT_START",
             file_path=str(self.root_path),
             details={'execution_id': self.execution_id},
@@ -462,7 +462,7 @@ class AEPGovernanceAuditor:
         print(f"\n[Phase 4] Audit complete!")
         print(f"  Total files: {len(self.reports)}")
         print(f"  Total issues: {len(self.global_issues)}")
-        print(f"  Total governance events: {len(self.governance_events)}")
+        print(f"  Total gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance events: {len(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events)}")
         return global_report
     def generate_global_report(self) -> Dict[str, Any]:
         """生成全域治理稽核報告"""
@@ -510,7 +510,7 @@ class AEPGovernanceAuditor:
             'summary': {
                 'total_files': len(self.reports),
                 'total_issues': len(self.global_issues),
-                'total_governance_events': len(self.governance_events),
+                'total_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events': len(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events),
                 'gl_marker_coverage_percent': round(gl_coverage, 2),
                 'metadata_coverage_percent': round(metadata_coverage, 2),
                 'files_with_errors': sum(1 for r in self.reports if r.execution_status == 'ERROR')
@@ -526,9 +526,9 @@ class AEPGovernanceAuditor:
             'high_issues': issues_by_severity.get(Severity.HIGH.value, []),
             'medium_issues': issues_by_severity.get(Severity.MEDIUM.value, [])[:50],  # 限制數量
             'migration_suggestions': migration_suggestions[:100],  # 限制數量
-            'governance_event_summary': {
-                'total_events': len(self.governance_events),
-                'event_types': list(set(e.event_type for e in self.governance_events))
+            'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_event_summary': {
+                'total_events': len(self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events),
+                'event_types': list(set(e.event_type for e in self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events))
             },
             'best_practice_recommendations': self.generate_best_practice_recommendations()
         }
@@ -540,7 +540,7 @@ class AEPGovernanceAuditor:
         if files_with_gl < len(self.reports) * 0.5:
             recommendations.append({
                 'priority': 'HIGH',
-                'category': 'governance',
+                'category': 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance',
                 'title': 'Improve GL Marker Coverage',
                 'description': f'Only {files_with_gl}/{len(self.reports)} files have GL markers',
                 'action': 'Add @gl-layer, @gl-module annotations to all configuration files'
@@ -577,7 +577,7 @@ class AEPGovernanceAuditor:
         # 保存治理事件流
         events_path = self.output_dir / f'GL-GOVERNANCE-EVENT-STREAM-{self.execution_id}.json'
         with open(events_path, 'w', encoding='utf-8') as f:
-            json.dump([asdict(e) for e in self.governance_events], f, indent=2, ensure_ascii=False)
+            json.dump([asdict(e) for e in self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_events], f, indent=2, ensure_ascii=False)
         print(f"  Event stream saved: {events_path}")
         # 保存問題列表
         issues_path = self.output_dir / f'GL-ISSUES-LIST-{self.execution_id}.json'
@@ -592,7 +592,7 @@ class AEPGovernanceAuditor:
 def main():
     """主程式"""
     root_path = sys.argv[1] if len(sys.argv) > 1 else '/workspace/machine-native-ops/ns-root'
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else '/workspace/machine-native-ops/aep-governance-audit/reports'
+    output_dir = sys.argv[2] if len(sys.argv) > 2 else '/workspace/machine-native-ops/aep-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit/reports'
     auditor = AEPGovernanceAuditor(root_path, output_dir)
     report = auditor.run_full_audit()
     # 輸出摘要

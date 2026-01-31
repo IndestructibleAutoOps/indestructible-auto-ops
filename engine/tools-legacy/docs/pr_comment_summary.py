@@ -1,21 +1,21 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: pr_comment_summary
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 PR Comment Summary Generator
 PR 評論摘要生成器
 Generates formatted summary comments for Pull Requests based on
-governance pipeline results.
+gl_platform_universegl_platform_universe.governance pipeline results.
 Usage:
     python tools/docs/pr_comment_summary.py --run-id 12345
     python tools/docs/pr_comment_summary.py --input results.json
@@ -170,7 +170,7 @@ def generate_pr_comment(results: dict[str, Any], context: dict[str, str] = None)
     # Add footer
     sections.append("")
     if all_passed:
-        sections.append("*All governance checks completed successfully.* 🎉")
+        sections.append("*All gl_platform_universegl_platform_universe.governance checks completed successfully.* 🎉")
     else:
         sections.append(
             "*Please review the issues above and address them before merging.*"

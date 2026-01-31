@@ -1,6 +1,6 @@
 # GL Runtime V24 - Meta-Governance: Meta-Auditor
 # @GL-governed
-# @GL-layer: V24-meta-governance
+# @GL-layer: V24-meta-gl_platform_universegl_platform_universe.governance
 # @GL-semantic: meta-auditor-core
 # @GL-dependencies: V23
 
@@ -78,27 +78,27 @@ class MetaAuditor:
         self._recursion_depth: int = 0
         self._max_recursion: int = 10
     
-    def audit_root_governance(
+    def audit_root_gl_platform_universegl_platform_universe.governance(
         self,
-        root_governance_state: Dict[str, Any]
+        root_gl_platform_universegl_platform_universe.governance_state: Dict[str, Any]
     ) -> MetaAuditRecord:
         """審計 V23 Root Governance"""
         findings = []
         recommendations = []
         
         # 檢查 Anti-Fabric 運作
-        if "anti_fabric" in root_governance_state:
-            af_result = self._audit_anti_fabric(root_governance_state["anti_fabric"])
+        if "anti_fabric" in root_gl_platform_universegl_platform_universe.governance_state:
+            af_result = self._audit_anti_fabric(root_gl_platform_universegl_platform_universe.governance_state["anti_fabric"])
             findings.extend(af_result.get("findings", []))
             recommendations.extend(af_result.get("recommendations", []))
         
         # 檢查 Falsification Engine
-        if "falsification" in root_governance_state:
-            fe_result = self._audit_falsification(root_governance_state["falsification"])
+        if "falsification" in root_gl_platform_universegl_platform_universe.governance_state:
+            fe_result = self._audit_falsification(root_gl_platform_universegl_platform_universe.governance_state["falsification"])
             findings.extend(fe_result.get("findings", []))
         
         # 檢查治理規則一致性
-        rules_result = self._audit_governance_rules(root_governance_state)
+        rules_result = self._audit_gl_platform_universegl_platform_universe.governance_rules(root_gl_platform_universegl_platform_universe.governance_state)
         findings.extend(rules_result.get("findings", []))
         
         # 確定整體結果
@@ -161,7 +161,7 @@ class MetaAuditor:
         
         return {"findings": findings}
     
-    def _audit_governance_rules(self, state: Dict[str, Any]) -> Dict[str, Any]:
+    def _audit_gl_platform_universegl_platform_universe.governance_rules(self, state: Dict[str, Any]) -> Dict[str, Any]:
         """審計治理規則"""
         findings = []
         

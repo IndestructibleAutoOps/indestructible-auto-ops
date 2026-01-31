@@ -1,3 +1,12 @@
+# @GL-governed
+# @GL-layer: GL20-29
+# @GL-semantic: python-module
+# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+
 #!/usr/bin/env python3
 """
 Script to fix missing @GL-governed markers and _gl metadata
@@ -27,7 +36,7 @@ MARKER_FILES = [
     "gl-runtime-platform/code-intel-security-layer/pattern-library/performance-patterns/database-optimization.md",
     "gl-runtime-platform/code-intel-security-layer/pattern-library/security-patterns/sql-injection-prevention.md",
     "gl-runtime-platform/code-intel-security-layer/pattern-library/security-patterns/xss-prevention.md",
-    "gl-runtime-platform/governance-audit-reports/audit-summary.md",
+    "gl-runtime-platform/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/audit-summary.md",
     "gl-runtime-platform/infinite-learning-continuum/index.ts",
     "gl-runtime-platform/progress-report.md",
     "gl-runtime-platform/scripts/test-code-intel-security-layer.py",
@@ -40,7 +49,7 @@ MARKER_FILES = [
 # JSON files that need _gl metadata
 JSON_FILES = [
     "gl-runtime-platform/code-intel-security-layer/capability-schema/capability-examples.json",
-    "gl-runtime-platform/governance-audit-reports/global-governance-audit-report.json",
+    "gl-runtime-platform/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/global-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-report.json",
     "gl-runtime-platform/test-reports/code-intel-test-report.json",
 ]
 
@@ -99,7 +108,7 @@ def add_metadata_to_json(filepath):
         # Add _gl metadata
         if isinstance(data, dict):
             data['_gl'] = {
-                'governance': 'GL-Standard',
+                'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance': 'GL-Standard',
                 'version': '1.0.0',
                 'validated': True
             }

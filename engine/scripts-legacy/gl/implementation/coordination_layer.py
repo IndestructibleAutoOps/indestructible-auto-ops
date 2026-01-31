@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: coordination_layer
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 GL Coordination Layer Implementation
@@ -16,7 +16,7 @@ from typing import Dict, Any, Optional
 from datetime import datetime
 import json
 import logging
-from .governance_loop import GovernanceLoopExecutor
+from .gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop import GovernanceLoopExecutor
 from .semantic_root import SemanticRootManager
 from .quantum_validation import QuantumValidator
 from .reconciliation import ReconciliationEngine
@@ -30,7 +30,7 @@ class GLCoordinationLayer:
     """
     Coordinates all GL core architecture components
     Responsibilities:
-    - Orchestrate governance loop execution
+    - Orchestrate gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop execution
     - Manage semantic root lifecycle
     - Execute quantum validation
     - Trigger reconciliation when needed
@@ -39,7 +39,7 @@ class GLCoordinationLayer:
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
         # Initialize core components
-        self.governance_loop = GovernanceLoopExecutor(config)
+        self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop = GovernanceLoopExecutor(config)
         self.semantic_root = SemanticRootManager(config)
         self.quantum_validator = QuantumValidator(config)
         self.reconciliation_engine = ReconciliationEngine(config)
@@ -76,12 +76,12 @@ class GLCoordinationLayer:
             "metrics": {},
         }
         try:
-            # Step 1: Execute governance loop
-            logger.info("Executing governance loop...")
-            loop_context = self.governance_loop.execute_cycle(input_data)
-            workflow_result["components_executed"].append("governance_loop")
-            workflow_result["evidence_chains"]["governance_loop"] = (
-                self.governance_loop.generate_evidence_chain(loop_context)
+            # Step 1: Execute gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop
+            logger.info("Executing gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop...")
+            loop_context = self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop.execute_cycle(input_data)
+            workflow_result["components_executed"].append("gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop")
+            workflow_result["evidence_chains"]["gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop"] = (
+                self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop.generate_evidence_chain(loop_context)
             )
             # Step 2: Validate with quantum validator
             logger.info("Executing quantum validation...")
@@ -136,14 +136,14 @@ class GLCoordinationLayer:
             "start_time": self.session_start_time.isoformat(),
             "end_time": self.session_end_time.isoformat(),
             "duration_seconds": duration_seconds,
-            "governance_performance": self.governance_loop.get_performance_metrics(),
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_performance": self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop.get_performance_metrics(),
             "validation_performance": self.quantum_validator.get_performance_metrics(),
             "semantic_mapping_status": self.semantic_root.get_semantic_mapping_status(),
             "reconciliation_queue_status": self.reconciliation_engine.get_queue_status(),
         }
-    def get_governance_loop_executor(self) -> GovernanceLoopExecutor:
-        """Get governance loop executor"""
-        return self.governance_loop
+    def get_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop_executor(self) -> GovernanceLoopExecutor:
+        """Get gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop executor"""
+        return self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop
     def get_semantic_root_manager(self) -> SemanticRootManager:
         """Get semantic root manager"""
         return self.semantic_root
@@ -158,7 +158,7 @@ class GLCoordinationLayer:
         return {
             "session_id": self.coordination_session_id,
             "session_metrics": self.session_metrics,
-            "governance_loop": self.governance_loop.get_performance_metrics(),
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop": self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop.get_performance_metrics(),
             "semantic_root": self.semantic_root.generate_evidence_chain(),
             "quantum_validation": self.quantum_validator.get_performance_metrics(),
             "reconciliation": self.reconciliation_engine.get_queue_status(),

@@ -43,13 +43,13 @@ except:
 class NaturalLanguageTask:
     """自然語言任務模型"""
     def __init__(self, task_id: str, command: str, priority: str = "normal",
-                 execution_mode: str = "strict", governance_level: str = "root",
+                 execution_mode: str = "strict", gl_platform_universegl_platform_universe.governance_level: str = "root",
                  parameters: Dict = None, requester: str = "system"):
         self.task_id = task_id
         self.command = command
         self.priority = priority
         self.execution_mode = execution_mode
-        self.governance_level = governance_level
+        self.gl_platform_universegl_platform_universe.governance_level = gl_platform_universegl_platform_universe.governance_level
         self.parameters = parameters or {}
         self.requester = requester
 
@@ -58,13 +58,13 @@ class TaskResponse:
     def __init__(self, task_id: str, status: str, message: str,
                  execution_id: Optional[str] = None,
                  estimated_completion: Optional[datetime] = None,
-                 governance_approval: Optional[bool] = None):
+                 gl_platform_universegl_platform_universe.governance_approval: Optional[bool] = None):
         self.task_id = task_id
         self.status = status
         self.message = message
         self.execution_id = execution_id
         self.estimated_completion = estimated_completion
-        self.governance_approval = governance_approval
+        self.gl_platform_universegl_platform_universe.governance_approval = gl_platform_universegl_platform_universe.governance_approval
 
     def to_dict(self):
         return {
@@ -73,7 +73,7 @@ class TaskResponse:
             "message": self.message,
             "execution_id": self.execution_id,
             "estimated_completion": self.estimated_completion.isoformat() if self.estimated_completion else None,
-            "governance_approval": self.governance_approval
+            "gl_platform_universegl_platform_universe.governance_approval": self.gl_platform_universegl_platform_universe.governance_approval
         }
 
 # 任務處理器
@@ -83,7 +83,7 @@ class TaskProcessor:
     def __init__(self):
         self.active_tasks = {}
         self.agents = {}
-        self.governance_enabled = True
+        self.gl_platform_universegl_platform_universe.governance_enabled = True
         
     def parse_natural_language(self, command: str) -> Dict[str, Any]:
         """解析自然語言命令為結構化任務"""
@@ -123,24 +123,24 @@ class TaskProcessor:
         
         return structured_task
     
-    def validate_with_governance(self, task: NaturalLanguageTask) -> bool:
+    def validate_with_gl_platform_universegl_platform_universe.governance(self, task: NaturalLanguageTask) -> bool:
         """通過治理層驗證任務"""
-        if not self.governance_enabled:
+        if not self.gl_platform_universegl_platform_universe.governance_enabled:
             return True
             
         # 發送到治理事件流
         if redis_client:
-            governance_check = {
+            gl_platform_universegl_platform_universe.governance_check = {
                 "task_id": task.task_id,
                 "command": task.command,
                 "requester": task.requester,
-                "governance_level": task.governance_level,
+                "gl_platform_universegl_platform_universe.governance_level": task.gl_platform_universegl_platform_universe.governance_level,
                 "timestamp": datetime.utcnow().isoformat()
             }
             
             redis_client.publish(
-                "governance-requests",
-                json.dumps(governance_check, ensure_ascii=False)
+                "gl_platform_universegl_platform_universe.governance-requests",
+                json.dumps(gl_platform_universegl_platform_universe.governance_check, ensure_ascii=False)
             )
         
         return True
@@ -153,13 +153,13 @@ class TaskProcessor:
         agents_to_engage = []
         
         if structured_task["action"] in ["start", "stop", "deploy"]:
-            agents_to_engage = ["deployment-agent", "verification-agent", "governance-agent"]
+            agents_to_engage = ["deployment-agent", "verification-agent", "gl_platform_universegl_platform_universe.governance-agent"]
         elif structured_task["action"] == "status":
             agents_to_engage = ["monitoring-agent", "health-agent"]
         elif structured_task["action"] == "verify":
             agents_to_engage = ["verification-agent", "audit-agent", "compliance-agent"]
         elif structured_task["action"] == "audit":
-            agents_to_engage = ["audit-agent", "governance-agent", "reporting-agent"]
+            agents_to_engage = ["audit-agent", "gl_platform_universegl_platform_universe.governance-agent", "reporting-agent"]
         
         # 創建協調任務
         coordination_task = {
@@ -189,14 +189,14 @@ class TaskProcessor:
         structured_task = self.parse_natural_language(task.command)
         
         # 2. 治理層驗證
-        governance_approved = self.validate_with_governance(task)
+        gl_platform_universegl_platform_universe.governance_approved = self.validate_with_gl_platform_universegl_platform_universe.governance(task)
         
-        if not governance_approved:
+        if not gl_platform_universegl_platform_universe.governance_approved:
             return TaskResponse(
                 task_id=task.task_id,
                 status="failed",
                 message="任務未通過治理層驗證",
-                governance_approval=False
+                gl_platform_universegl_platform_universe.governance_approval=False
             )
         
         # 3. 協調代理執行
@@ -211,7 +211,7 @@ class TaskProcessor:
                 "command": task.command,
                 "requester": task.requester,
                 "timestamp": datetime.utcnow().isoformat(),
-                "governance_level": task.governance_level
+                "gl_platform_universegl_platform_universe.governance_level": task.gl_platform_universegl_platform_universe.governance_level
             }
             
             redis_client.publish(
@@ -226,7 +226,7 @@ class TaskProcessor:
             message=f"任務已接受，正在協調 {len(structured_task.get('agents', []))} 個代理執行",
             execution_id=execution_id,
             estimated_completion=datetime.utcnow(),
-            governance_approval=True
+            gl_platform_universegl_platform_universe.governance_approval=True
         )
 
 # 全局處理器實例
@@ -242,7 +242,7 @@ def health_check():
         "version": "1.0.0",
         "timestamp": datetime.utcnow().isoformat(),
         "ready_for_tasks": True,
-        "governance": "GL Unified Charter Activated"
+        "gl_platform_universegl_platform_universe.governance": "GL Unified Charter Activated"
     })
 
 @app.route('/api/control/execute', methods=['POST'])
@@ -264,7 +264,7 @@ def submit_task():
             command=data['command'],
             priority=data.get('priority', 'normal'),
             execution_mode=data.get('execution_mode', 'strict'),
-            governance_level=data.get('governance_level', 'root'),
+            gl_platform_universegl_platform_universe.governance_level=data.get('gl_platform_universegl_platform_universe.governance_level', 'root'),
             parameters=data.get('parameters', {}),
             requester=data.get('requester', 'unknown')
         )
@@ -287,7 +287,7 @@ def get_control_status():
     return jsonify({
         "status": "operational",
         "mode": "natural-language",
-        "governance": "GL Unified Charter Activated",
+        "gl_platform_universegl_platform_universe.governance": "GL Unified Charter Activated",
         "ready_for_tasks": True,
         "tasks_processed": len(task_processor.active_tasks),
         "timestamp": datetime.utcnow().isoformat()
@@ -318,7 +318,7 @@ def get_system_status():
                 "health": "healthy",
                 "tasks_processed": len(task_processor.active_tasks)
             },
-            "governance": {
+            "gl_platform_universegl_platform_universe.governance": {
                 "charter": "GL Unified Charter",
                 "status": "ACTIVATED",
                 "level": "UNIFIED_ROOT_META"
@@ -333,12 +333,12 @@ def get_system_status():
             "timestamp": datetime.utcnow().isoformat()
         }), 500
 
-@app.route('/api/governance/report', methods=['GET'])
-def get_governance_report():
+@app.route('/api/gl_platform_universegl_platform_universe.governance/report', methods=['GET'])
+def get_gl_platform_universegl_platform_universe.governance_report():
     """獲取治理層報告"""
     try:
         return jsonify({
-            "governance_levels": {
+            "gl_platform_universegl_platform_universe.governance_levels": {
                 "unified": "active",
                 "root": "active",
                 "meta": "active"
@@ -367,7 +367,7 @@ if __name__ == '__main__':
         "port": 5001,
         "timestamp": datetime.utcnow().isoformat(),
         "version": "1.0.0",
-        "governance": "GL Unified Charter Activated"
+        "gl_platform_universegl_platform_universe.governance": "GL Unified Charter Activated"
     }
     
     if redis_client:

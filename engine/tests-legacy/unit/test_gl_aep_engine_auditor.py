@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: test_gl_aep_engine_auditor
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -12,8 +12,8 @@ import re
 import sys
 from pathlib import Path
 import pytest
-# Add the tools/governance-audit directory to the path
-tools_path = Path(__file__).parent.parent.parent / "tools" / "governance-audit"
+# Add the tools/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit directory to the path
+tools_path = Path(__file__).parent.parent.parent / "tools" / "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit"
 sys.path.insert(0, str(tools_path))
 from gl_aep_engine_auditor import ETLPipeline, IssueType
 def extract_any_count_from_message(message: str) -> int:

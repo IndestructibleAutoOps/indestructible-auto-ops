@@ -1,12 +1,12 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: reconciliation
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 GL Backward Reconciliation Mechanism Implementation
-Implements rigid adjustment mechanism for governance loop:
+Implements rigid adjustment mechanism for gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop:
 - 4 reconciliation strategies: Semantic Maximization, Governance Violation, Semantic Conflict, Validation Failure
 - Decision traceback and semantic root traceback
 - Priority queue: 10K capacity, 1000 events/sec throughput
@@ -100,10 +100,10 @@ class ReconciliationEngine:
                 "actions": [
                     "Trace violation to origin",
                     "Apply corrective measures",
-                    "Update governance policies",
+                    "Update gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance policies",
                 ],
                 "priority": 1,
-                "semantic_boundary": "urn:machinenativeops:gl:recon:governance-violation:1.0.0",
+                "semantic_boundary": "urn:machinenativeops:gl:recon:gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-violation:1.0.0",
             },
             "SEMANTIC_CONFLICT": {
                 "strategy_id": "STRAT-3",
@@ -187,7 +187,7 @@ class ReconciliationEngine:
         event_type = event.get("type", "")
         if "semantic_conflict" in event_type:
             return self.strategies["SEMANTIC_CONFLICT"]
-        elif "governance_violation" in event_type:
+        elif "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_violation" in event_type:
             return self.strategies["GOVERNANCE_VIOLATION"]
         elif "validation_failure" in event_type:
             return self.strategies["VALIDATION_FAILURE"]

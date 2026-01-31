@@ -1,21 +1,21 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
-# @GL-semantic: validate-governance-matrix
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-semantic: validate-gl_platform_universegl_platform_universe.governance-matrix
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Validate Architecture Governance Matrix
 驗證架構治理矩陣的完整性和一致性
 Usage:
-    python validate-governance-matrix.py [--verbose]
+    python validate-gl_platform_universegl_platform_universe.governance-matrix.py [--verbose]
 """
 import argparse
 import json
@@ -41,7 +41,7 @@ def load_yaml_safe(file_path: str) -> Dict:
         return {}
 def validate_layers_domains(verbose: bool = False) -> bool:
     """Validate layers and domains configuration"""
-    file_path = "governance/architecture/layers-domains.yaml"
+    file_path = "gl_platform_universegl_platform_universe.governance/architecture/layers-domains.yaml"
     if not os.path.exists(file_path):
         print(f"Warning: {file_path} not found, skipping validation", file=sys.stderr)
         return True  # Don't fail if file doesn't exist
@@ -60,7 +60,7 @@ def validate_layers_domains(verbose: bool = False) -> bool:
     return True
 def validate_ownership_map(verbose: bool = False) -> bool:
     """Validate ownership map"""
-    file_path = "governance/ownership-map.yaml"
+    file_path = "gl_platform_universegl_platform_universe.governance/ownership-map.yaml"
     if not os.path.exists(file_path):
         print(f"Warning: {file_path} not found, skipping validation", file=sys.stderr)
         return True
@@ -74,7 +74,7 @@ def validate_ownership_map(verbose: bool = False) -> bool:
     return True
 def validate_behavior_contracts(verbose: bool = False) -> bool:
     """Validate behavior contracts"""
-    contracts_dir = "governance/behavior-contracts"
+    contracts_dir = "gl_platform_universegl_platform_universe.governance/behavior-contracts"
     if not os.path.exists(contracts_dir):
         print(
             f"Warning: {contracts_dir} not found, skipping validation", file=sys.stderr
@@ -90,8 +90,8 @@ def validate_behavior_contracts(verbose: bool = False) -> bool:
             print(f"Warning: Invalid contract: {contract_path}", file=sys.stderr)
     return True
 def validate_schemas(verbose: bool = False) -> bool:
-    """Validate governance schemas"""
-    schemas_dir = "governance/schemas"
+    """Validate gl_platform_universegl_platform_universe.governance schemas"""
+    schemas_dir = "gl_platform_universegl_platform_universe.governance/schemas"
     if not os.path.exists(schemas_dir):
         print(
             f"Warning: {schemas_dir} not found, creating empty validation",
@@ -112,7 +112,7 @@ def validate_schemas(verbose: bool = False) -> bool:
     return True
 def validate_policies(verbose: bool = False) -> bool:
     """Validate policy files"""
-    policies_dir = "governance/policies"
+    policies_dir = "gl_platform_universegl_platform_universe.governance/policies"
     if not os.path.exists(policies_dir):
         print(
             f"Info: {policies_dir} not found, skipping policy validation",
@@ -159,10 +159,10 @@ def main():
             print(f"❌ {name} validation error: {e}", file=sys.stderr)
             all_valid = False
     if all_valid:
-        print("\n✅ All governance validations passed", file=sys.stderr)
+        print("\n✅ All gl_platform_universegl_platform_universe.governance validations passed", file=sys.stderr)
         return 0
     else:
-        print("\n❌ Some governance validations failed", file=sys.stderr)
+        print("\n❌ Some gl_platform_universegl_platform_universe.governance validations failed", file=sys.stderr)
         return 1
 if __name__ == "__main__":
     sys.exit(main())

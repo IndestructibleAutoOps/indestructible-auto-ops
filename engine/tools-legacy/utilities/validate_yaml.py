@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: validate_yaml
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -70,7 +70,7 @@ def find_schema_for_file(file_path: Path, repo_root: Path) -> Path | None:
         "auto-fix-bot.yml": "schemas/auto-fix-bot-v2.schema.json",
         ".auto-fix-bot.yml": "schemas/.auto-fix-bot.schema.json",
         "cloud-agent-delegation.yml": "schemas/cloud-agent-delegation.schema.json",
-        "knowledge_index.yaml": "governance/schemas/docs-index.schema.json",
+        "knowledge_index.yaml": "gl_platform_universegl_platform_universe.governance/schemas/docs-index.schema.json",
     }
     file_name = file_path.name
     if file_name in schema_mapping:

@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: gl_validator
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Artifacts Validator - Comprehensive Governance Artifact Validation
 MachineNativeOps GL Architecture Implementation
-This module provides comprehensive validation for GL governance artifacts,
+This module provides comprehensive validation for GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance artifacts,
 including schema validation, policy compliance, security checks, and
 cross-layer consistency verification.
 """
@@ -314,7 +314,7 @@ class SpecCompletenessRule(ValidationRule):
     REQUIRED_SPEC_FIELDS = {
         'VisionStatement': ['vision', 'mission'],
         'StrategicObjectives': ['objectives'],
-        'GovernanceCharter': ['governance_structure'],
+        'GovernanceCharter': ['gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_structure'],
         'OperationalPlan': ['initiatives'],
         'StandardOperatingProcedure': ['procedure'],
         'MetricsDefinition': ['metrics'],
@@ -367,8 +367,8 @@ class GLValidator:
         # Format rules
         self.rules.append(FieldFormatRule(
             'apiVersion',
-            r'^governance\.machinenativeops\.io/v\d+$',
-            "apiVersion should be 'governance.machinenativeops.io/v2'"
+            r'^gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance\.machinenativeops\.io/v\d+$',
+            "apiVersion should be 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.machinenativeops.io/v2'"
         ))
         self.rules.append(FieldFormatRule(
             'metadata.version',
@@ -467,18 +467,18 @@ class GLValidator:
         )
     def validate_workspace(self) -> ValidationResult:
         """Validate the entire workspace."""
-        governance_path = self.workspace_path / 'workspace' / 'governance'
-        if not governance_path.exists():
+        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path = self.workspace_path / 'workspace' / 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance'
+        if not gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path.exists():
             return ValidationResult(
                 passed=False,
                 findings=[ValidationFinding(
                     rule_id="PATH-001",
                     rule_name="Governance Path",
                     severity=ValidationSeverity.ERROR,
-                    message=f"Governance path not found: {governance_path}"
+                    message=f"Governance path not found: {gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path}"
                 )]
             )
-        return self.validate_directory(governance_path)
+        return self.validate_directory(gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path)
     def generate_report(self, result: ValidationResult, format: str = 'markdown') -> str:
         """Generate validation report."""
         if format == 'json':
@@ -534,7 +534,7 @@ class GLValidator:
         if result.error_count > 0:
             report.append("1. ⚠️ Fix all errors before proceeding")
         if result.warning_count > 5:
-            report.append("2. 📋 Address warnings to improve governance quality")
+            report.append("2. 📋 Address warnings to improve gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance quality")
         if result.passed:
             report.append("✅ All validations passed!")
         return '\n'.join(report)

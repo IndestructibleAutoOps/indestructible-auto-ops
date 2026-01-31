@@ -2,7 +2,7 @@
 #  @GL-governed
 #  @GL-layer: search
 #  @GL-semantic: structure_validator
-#  @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#  @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 # 
 #  GL Unified Charter Activated
 # /
@@ -21,7 +21,7 @@ from datetime import datetime
 import hashlib
 logger = logging.getLogger(__name__)
 class SearchStructureValidator:
-    """Validates search system structure against governance standards."""
+    """Validates search system structure against gl_platform_universegl_platform_universe.governance standards."""
     def __init__(self, root_path: str):
         self.root_path = Path(root_path)
         self.validation_results = {

@@ -1,3 +1,12 @@
+# @GL-governed
+# @GL-layer: GL20-29
+# @GL-semantic: python-module
+# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+
 #!/usr/bin/env python3
 """
 GL Marker Addition Script for JSON Files
@@ -54,7 +63,7 @@ def get_layer_from_path(file_path, workspace):
     parts = rel_path.parts
     
     if parts[0] == 'engine':
-        return 'governance'
+        return 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance'
     elif parts[0] == 'file-organizer-system':
         return 'application'
     elif parts[0] == 'instant':
@@ -77,12 +86,12 @@ def get_semantic_from_path(file_path):
 
 def get_audit_trail(file_path):
     """Determine audit trail reference"""
-    return "../../engine/governance/GL_SEMANTIC_ANCHOR.json"
+    return "../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json"
 
 def process_directory(workspace):
     """Process all JSON files in workspace"""
     workspace_path = Path(workspace)
-    excluded = ['node_modules', '.next', 'dist', 'build', '.git', 'coverage', 'gl-audit-reports', 'summarized_conversations', '.github/governance-legacy', 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml']
+    excluded = ['node_modules', '.next', 'dist', 'build', '.git', 'coverage', 'gl-audit-reports', 'summarized_conversations', '.github/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-legacy', 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml']
     
     files_processed = 0
     files_modified = 0

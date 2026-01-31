@@ -1,3 +1,13 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: execution-script
+# @GL-audit-trail: gl-platform-universe/gl_platform_universegl_platform_universe.governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
 #!/usr/bin/env python3
 """
 文件版本核對腳本
@@ -94,15 +104,15 @@ class VersionAuditor:
             self.results['issues'].append(f"agent-orchestration.yml 讀取失敗: {e}")
             print(f"❌ agent-orchestration.yml: 讀取失敗 - {e}")
     
-    def audit_governance_files(self):
+    def audit_gl_platform_universegl_platform_universe.governance_files(self):
         """核對治理相關文件"""
-        governance_dirs = [
-            'gl-runtime-platform/governance-root-layer',
-            'gl-runtime-platform/meta-governance-layer',
+        gl_platform_universegl_platform_universe.governance_dirs = [
+            'gl-runtime-platform/gl_platform_universegl_platform_universe.governance-root-layer',
+            'gl-runtime-platform/meta-gl_platform_universegl_platform_universe.governance-layer',
             'gl-runtime-platform/reality-falsification-layer'
         ]
         
-        for gov_dir in governance_dirs:
+        for gov_dir in gl_platform_universegl_platform_universe.governance_dirs:
             gov_path = self.repo_path / gov_dir
             if not gov_path.exists():
                 self.results['warnings'].append(f"治理目錄不存在: {gov_dir}")
@@ -119,7 +129,7 @@ class VersionAuditor:
     def audit_quantum_platform(self):
         """核對量子平台文件"""
         quantum_dirs = [
-            'governance-quantum',
+            'gl_platform_universegl_platform_universe.governance-quantum',
             'infrastructure-quantum', 
             'monitoring-quantum',
             'artifacts-quantum'
@@ -170,7 +180,7 @@ class VersionAuditor:
         
         self.audit_package_json()
         self.audit_agent_orchestration()
-        self.audit_governance_files()
+        self.audit_gl_platform_universegl_platform_universe.governance_files()
         self.audit_quantum_platform()
         self.audit_completion_docs()
         

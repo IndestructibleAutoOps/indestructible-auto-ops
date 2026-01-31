@@ -3,7 +3,7 @@
 # @GL-governed
 # @GL-layer: GL30-49
 # @GL-semantic: validate-module-registry
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 Module Registry Validator

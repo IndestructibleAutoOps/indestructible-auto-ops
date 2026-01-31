@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -345,10 +345,10 @@ def main():
     
     # Test on the problematic files
     problematic_files = [
-        "/workspace/machine-native-ops/governance/naming-governance-v1.0.0-extended/governance/naming/naming-governance-core.yaml",
-        "/workspace/machine-native-ops/governance/naming-governance-v1.0.0-extended/monitoring/prometheus-rules.yaml",
-        "/workspace/machine-native-ops/governance/policies/gatekeeper/namespace-constraints.yaml",
-        "/workspace/machine-native-ops/governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml"
+        "/workspace/machine-native-ops/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-v1.0.0-extended/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-core.yaml",
+        "/workspace/machine-native-ops/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-v1.0.0-extended/monitoring/prometheus-rules.yaml",
+        "/workspace/machine-native-ops/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/policies/gatekeeper/namespace-constraints.yaml",
+        "/workspace/machine-native-ops/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml"
     ]
     
     # Filter to existing files

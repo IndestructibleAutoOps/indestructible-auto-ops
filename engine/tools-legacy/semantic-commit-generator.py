@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: semantic-commit-generator
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -30,7 +30,7 @@ Semantic Commit Message Generator
         --files "services/api/legacy.php" \
         --action "removed" \
         --reason "PHP forbidden in services directory" \
-        --violation-type "language-governance"
+        --violation-type "language-gl_platform_universegl_platform_universe.governance"
 """
 import argparse
 import os
@@ -93,14 +93,14 @@ def generate_semantic_commit_rules(
     """使用規則生成 semantic commit message"""
     # 決定 commit type
     commit_type = "fix"
-    scope = "governance"
+    scope = "gl_platform_universegl_platform_universe.governance"
     if (
         "security" in violation_type.lower()
         or "vulnerability" in violation_type.lower()
     ):
         commit_type = "fix"
         scope = "security"
-    elif "language" in violation_type.lower() or "governance" in violation_type.lower():
+    elif "language" in violation_type.lower() or "gl_platform_universegl_platform_universe.governance" in violation_type.lower():
         commit_type = "refactor"
         scope = "language"
     elif "architecture" in violation_type.lower():
@@ -199,7 +199,7 @@ def main():
     parser.add_argument(
         "--violation-type",
         required=True,
-        help="Type of violation (e.g., 'language-governance', 'security')",
+        help="Type of violation (e.g., 'language-gl_platform_universegl_platform_universe.governance', 'security')",
     )
     parser.add_argument(
         "--use-ai", action="store_true", help="Use AI to generate commit message"

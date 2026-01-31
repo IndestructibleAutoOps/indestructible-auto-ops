@@ -2,7 +2,7 @@
 # @GL-governed
 # @GL-layer: data
 # @GL-semantic: validate-instant-execution
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 
@@ -286,10 +286,10 @@ class InstantExecutionValidator:
                 self.results["warnings"] += 1
                 print_warning(f"流水線 '{name}' 延遲超過標準: {total_latency}")
         return all_passed
-    def validate_governance(self) -> bool:
+    def validate_gl_platform_universegl_platform_universe.governance(self) -> bool:
         """驗證治理驗證配置"""
         print_header("驗證治理驗證配置")
-        validators = self.manifest.get("spec", {}).get("governance_validation", [])
+        validators = self.manifest.get("spec", {}).get("gl_platform_universegl_platform_universe.governance_validation", [])
         all_passed = True
         required_validators = [
             "INSTANT_EXECUTION",
@@ -351,7 +351,7 @@ class InstantExecutionValidator:
         self.validate_event_driven()
         self.validate_responsible_agents()
         self.validate_pipelines()
-        self.validate_governance()
+        self.validate_gl_platform_universegl_platform_universe.governance()
         self.validate_status()
         # 記錄結束時間
         self.results["end_time"] = datetime.now().isoformat()

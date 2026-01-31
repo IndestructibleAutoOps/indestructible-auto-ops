@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: validate_index
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -171,7 +171,7 @@ def main():
     script_dir = Path(__file__).parent
     repo_root = script_dir.parent.parent
     index_path = repo_root / "docs" / "knowledge_index.yaml"
-    schema_path = repo_root / "governance" / "schemas" / "docs-index.schema.json"
+    schema_path = repo_root / "gl_platform_universegl_platform_universe.governance" / "schemas" / "docs-index.schema.json"
     if not index_path.exists():
         print(f"Error: Knowledge index not found at {index_path}")
         sys.exit(1)

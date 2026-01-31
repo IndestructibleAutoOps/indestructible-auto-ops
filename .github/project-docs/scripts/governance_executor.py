@@ -1,13 +1,13 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
 """
 System Governance Executor
-Executes all governance files systematically and detects problems
+Executes all gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance files systematically and detects problems
 """
 
 import json
@@ -20,7 +20,7 @@ from enhanced_yaml_parser import EnhancedYAMLParser
 class GovernanceExecutor:
     def __init__(self, base_path: str = "/workspace/machine-native-ops"):
         self.base_path = Path(base_path)
-        self.governance_path = self.base_path / "governance"
+        self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path = self.base_path / "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance"
         self.results = {
             "execution_timestamp": datetime.now().isoformat(),
             "total_files": 0,
@@ -31,15 +31,15 @@ class GovernanceExecutor:
             "execution_log": []
         }
         
-    def scan_governance_files(self) -> List[Path]:
-        """Scan all governance files excluding evidence archives"""
-        governance_files = []
-        for file_path in self.governance_path.rglob("*"):
+    def scan_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_files(self) -> List[Path]:
+        """Scan all gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance files excluding evidence archives"""
+        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_files = []
+        for file_path in self.gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path.rglob("*"):
             if file_path.is_file() and file_path.suffix in ['.md', '.yaml', '.yml', '.json']:
                 # Skip evidence directories
                 if 'evidence' not in str(file_path) and '.tar.gz' not in str(file_path):
-                    governance_files.append(file_path)
-        return sorted(governance_files)
+                    gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_files.append(file_path)
+        return sorted(gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_files)
     
     def execute_markdown_file(self, file_path: Path) -> Dict[str, Any]:
         """Execute/analyze markdown file"""
@@ -115,7 +115,7 @@ class GovernanceExecutor:
                 else:
                     result["problems"].append("No documents found")
                 
-                # Check for common governance issues
+                # Check for common gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance issues
                 if first_doc is not None and isinstance(first_doc, dict):
                     if 'version' not in first_doc and 'metadata' not in first_doc:
                         result["problems"].append("Missing version or metadata section")
@@ -205,16 +205,16 @@ class GovernanceExecutor:
         return problems
     
     def run_execution(self):
-        """Execute all governance files"""
+        """Execute all gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance files"""
         print(f"\n{'='*60}")
         print("Governance File Execution Starting")
         print(f"{'='*60}\n")
         
-        # Scan governance files
-        files = self.scan_governance_files()
+        # Scan gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance files
+        files = self.scan_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_files()
         self.results["total_files"] = len(files)
         
-        print(f"Found {len(files)} governance files to process\n")
+        print(f"Found {len(files)} gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance files to process\n")
         
         # Execute each file
         for idx, file_path in enumerate(files, 1):
@@ -283,7 +283,7 @@ class GovernanceExecutor:
         
         print(f"\n{'='*60}\n")
     
-    def save_report(self, output_path: str = "/workspace/machine-native-ops/workspace/governance_execution_report.json"):
+    def save_report(self, output_path: str = "/workspace/machine-native-ops/workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_execution_report.json"):
         """Save execution report to JSON file"""
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)

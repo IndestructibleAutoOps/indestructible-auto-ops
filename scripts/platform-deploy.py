@@ -1,3 +1,12 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: python-module
+# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+
 #!/usr/bin/env python3
 # @GL-governed @GL-internal-only
 # Production-grade Zero Residue Platform Deployment
@@ -187,7 +196,7 @@ class PlatformDeployer:
             print("Phase 1: Governance Validation")
             result = self.env.execute_command("echo 'Governance validation complete'", 5)
             print(f"   Status: {'✅ SUCCESS' if result['success'] else '❌ FAILED'}")
-            self.reports.append({'phase': 'governance', 'result': result})
+            self.reports.append({'phase': 'gl_platform_universegl_platform_universe.governance', 'result': result})
             print()
             
             # Phase 2: Architecture Deployment

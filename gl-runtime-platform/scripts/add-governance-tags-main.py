@@ -1,6 +1,15 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: python-module
+# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+
 #!/usr/bin/env python3
 """
-Add governance tags to files on main branch
+Add gl_platform_universegl_platform_universe.governance tags to files on main branch
 
 @GL-governed
 @version 21.0.0
@@ -15,8 +24,8 @@ from pathlib import Path
 # Define workspace root
 workspace_root = Path("/workspace/gl-runtime-platform")
 
-# File extensions and their governance markers
-governance_markers = {
+# File extensions and their gl_platform_universegl_platform_universe.governance markers
+gl_platform_universegl_platform_universe.governance_markers = {
     '.ts': '''/**
  * @GL-governed
  * @version 21.0.0
@@ -93,13 +102,13 @@ for ext in ['.ts', '.js']:
                 continue
             
             # Add marker at the beginning
-            new_content = governance_markers[ext] + content
+            new_content = gl_platform_universegl_platform_universe.governance_markers[ext] + content
             
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)
             
             files_updated += 1
-            print(f"✅ Added governance marker to {file_path}")
+            print(f"✅ Added gl_platform_universegl_platform_universe.governance marker to {file_path}")
         except Exception as e:
             print(f"❌ Error processing {file_path}: {e}")
 

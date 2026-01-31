@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: language-history-writer
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -38,7 +38,7 @@ def load_language_history() -> dict[str, Any]:
             "metadata": {
                 "version": "1.0",
                 "created_at": datetime.datetime.utcnow().isoformat() + "Z",
-                "description": "Language governance fix history tracking",
+                "description": "Language gl_platform_universegl_platform_universe.governance fix history tracking",
             },
             "history": [],
         }
@@ -162,7 +162,7 @@ def generate_report() -> str:
     return report
 def main():
     parser = argparse.ArgumentParser(
-        description="Record language governance fix history"
+        description="Record language gl_platform_universegl_platform_universe.governance fix history"
     )
     parser.add_argument(
         "--violation-type",

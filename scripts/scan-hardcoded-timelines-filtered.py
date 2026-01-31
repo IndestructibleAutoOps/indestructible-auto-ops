@@ -1,3 +1,13 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: execution-script
+# @GL-audit-trail: gl-platform-universe/gl_platform_universegl_platform_universe.governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
 #!/usr/bin/env python3
 """
 掃描全儲存庫硬編時間線（過濾版本）

@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: autonomous_cleanup_toolkit
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 # GL Layer: GL30-49 Execution Layer
@@ -286,7 +286,7 @@ class AutonomousCleanupEngine:
         """
         Determine TODO severity based on type and message.
         Aligned with tools/scan_tech_debt.py severity determination logic
-        for consistency across the GL governance layer.
+        for consistency across the GL gl_platform_universegl_platform_universe.governance layer.
         Severity determination order:
             1. Check message for high priority keywords -> HIGH
             2. Check message for medium priority keywords -> MEDIUM

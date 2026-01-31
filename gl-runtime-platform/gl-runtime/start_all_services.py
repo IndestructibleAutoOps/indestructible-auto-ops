@@ -1,3 +1,13 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-platform-universe/gl_platform_universegl_platform_universe.governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
 #!/usr/bin/env python3
 """GL Runtime V1-V25 服務啟動器"""
 import threading
@@ -9,7 +19,7 @@ import time
 VERSIONS = [
     (8001, "v1-basic-execution"),
     (8002, "v2-basic-analysis"),
-    (8003, "v3-basic-governance"),
+    (8003, "v3-basic-gl_platform_universegl_platform_universe.governance"),
     (8004, "v4-auto-repair"),
     (8005, "v5-auto-optimization"),
     (8006, "v6-multi-module"),
@@ -29,8 +39,8 @@ VERSIONS = [
     (8020, "v20-infinity-pool"),
     (8021, "v21-genesis-protocol"),
     (8022, "v22-omega-synthesis"),
-    (8023, "v23-root-governance"),
-    (8024, "v24-meta-governance"),
+    (8023, "v23-root-gl_platform_universegl_platform_universe.governance"),
+    (8024, "v24-meta-gl_platform_universegl_platform_universe.governance"),
     (8025, "v25-ecosystem-integration"),
 ]
 

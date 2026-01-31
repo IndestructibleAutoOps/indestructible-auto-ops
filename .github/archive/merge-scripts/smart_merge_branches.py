@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -107,7 +107,7 @@ def main():
         ("origin/copilot/sub-pr-971-65ab11db-179b-4059-8627-6c21f61b17c3", 59),
         ("origin/copilot/sub-pr-971-ba2b6fcc-1f63-482b-8806-186f3b948e5a", 43),
         ("origin/copilot/sub-pr-971", 39),
-        ("origin/feature/schema-driven-governance", 2),
+        ("origin/feature/schema-driven-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance", 2),
     ]
 
     success_count = 0

@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -62,8 +62,8 @@ class ConsistencyFixer:
         
         # 檢查 GL99 的風險處理流程
         risk_levels_in_gl99 = set()
-        if 'content' in gl99_data and 'governance_processes' in gl99_data['content']:
-            for process in gl99_data['content']['governance_processes']:
+        if 'content' in gl99_data and 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_processes' in gl99_data['content']:
+            for process in gl99_data['content']['gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_processes']:
                 if process.get('name') == '風險管理' and 'stages' in process:
                     for stage in process['stages']:
                         if 'thresholds' in stage:
@@ -103,8 +103,8 @@ class ConsistencyFixer:
                     self.fixes_applied.append(f"GL01 風險 '{risk.get('id', 'unknown')}' 等級標準化: {old_level} → {risk['level']}")
         
         # 修復 GL99 的風險處理流程閾值
-        if 'content' in gl99_data and 'governance_processes' in gl99_data['content']:
-            for process in gl99_data['content']['governance_processes']:
+        if 'content' in gl99_data and 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_processes' in gl99_data['content']:
+            for process in gl99_data['content']['gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_processes']:
                 if process.get('name') == '風險管理' and 'stages' in process:
                     for stage in process['stages']:
                         if 'thresholds' in stage:
@@ -531,12 +531,12 @@ class ConsistencyFixer:
                         })
             
             # 檢查治理流程中的角色引用
-            if 'governance_processes' in gl99_data['content']:
+            if 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_processes' in gl99_data['content']:
                 defined_roles = set()
                 if 'roles' in gl99_data['content']:
                     defined_roles = set(role['id'] for role in gl99_data['content']['roles'])
                 
-                for process in gl99_data['content']['governance_processes']:
+                for process in gl99_data['content']['gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_processes']:
                     if 'stages' in process:
                         for stage in process['stages']:
                             if 'responsible' in stage:

@@ -1,3 +1,13 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
 /**
  * Simple Omni-Context Integration Layer Server
  * 簡化版全域脈絡整合層 API 伺服器

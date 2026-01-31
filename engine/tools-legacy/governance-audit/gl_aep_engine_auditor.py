@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: gl_aep_engine_auditor
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -17,7 +17,7 @@ GL Unified Charter - AEP Engine Governance Auditor
 Executes one-by-one isolated ETL → Elasticsearch pipeline for all AEP Engine files.
 GL Unified Charter Activated
 - Strict GL Root Semantic Anchor compliance
-- Mandatory governance event stream
+- Mandatory gl_platform_universegl_platform_universe.governance event stream
 - Consistency / Reversibility / Provability enforcement
 - No continue-on-error policy
 """
@@ -46,12 +46,12 @@ class IssueType(Enum):
     STRUCTURE_VIOLATION = "directory_structure_violation"
     GL_MARKER_MISSING = "gl_marker_missing"
     SEMANTIC_MANIFEST_MISSING = "semantic_manifest_missing"
-    DAG_BREAK = "dag_governance_chain_break"
+    DAG_BREAK = "dag_gl_platform_universegl_platform_universe.governance_chain_break"
     SYNTAX_ERROR = "syntax_error"
     TYPE_ERROR = "type_error"
 @dataclass
 class GovernanceEvent:
-    """Represents a governance event in the event stream."""
+    """Represents a gl_platform_universegl_platform_universe.governance event in the event stream."""
     event_id: str
     timestamp: str
     event_type: str
@@ -73,12 +73,12 @@ class FileAuditResult:
     es_index_status: str
     issues: List[Dict[str, Any]]
     metadata: Dict[str, Any]
-    governance_events: List[GovernanceEvent]
+    gl_platform_universegl_platform_universe.governance_events: List[GovernanceEvent]
     timestamp: str
     execution_time_ms: int
 @dataclass
 class GlobalAuditReport:
-    """Global governance audit report aggregating all file results."""
+    """Global gl_platform_universegl_platform_universe.governance audit report aggregating all file results."""
     report_id: str
     gl_charter_version: str
     execution_timestamp: str
@@ -89,7 +89,7 @@ class GlobalAuditReport:
     issues_by_severity: Dict[str, int]
     issues_by_type: Dict[str, int]
     file_results: List[FileAuditResult]
-    governance_event_summary: Dict[str, Any]
+    gl_platform_universegl_platform_universe.governance_event_summary: Dict[str, Any]
     best_practice_recommendations: List[Dict[str, Any]]
     migration_suggestions: List[Dict[str, Any]]
 class GLRootSemanticAnchor:
@@ -129,13 +129,13 @@ class GLRootSemanticAnchor:
         if 'engine' in path_parts:
             if 'tests' in path_parts:
                 return "GL-50-OBSERVABILITY"
-            elif 'governance' in path_parts:
+            elif 'gl_platform_universegl_platform_universe.governance' in path_parts:
                 return "GL-10-OPERATIONAL"
             else:
                 return "GL-30-EXECUTION"
         return "GL-90-META"
 class ETLPipeline:
-    """ETL Pipeline executor for governance audit."""
+    """ETL Pipeline executor for gl_platform_universegl_platform_universe.governance audit."""
     def __init__(self, base_path: str):
         self.base_path = Path(base_path)
     def extract(self, file_path: str) -> Dict[str, Any]:
@@ -155,10 +155,10 @@ class ETLPipeline:
             "file_extension": full_path.suffix
         }
     def transform(self, extracted_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Transform extracted data with governance metadata."""
+        """Transform extracted data with gl_platform_universegl_platform_universe.governance metadata."""
         file_path = extracted_data["file_path"]
         content = extracted_data["content"]
-        # Analyze content for governance markers
+        # Analyze content for gl_platform_universegl_platform_universe.governance markers
         gl_markers = self._detect_gl_markers(content)
         semantic_markers = self._detect_semantic_markers(content)
         metadata = self._extract_metadata(content, file_path)
@@ -171,7 +171,7 @@ class ETLPipeline:
             "issues": issues,
             "gl_layer": GLRootSemanticAnchor.resolve_layer(file_path),
             "semantic_anchor": GLRootSemanticAnchor.resolve_anchor(file_path),
-            "governance_compliant": len([i for i in issues if i["severity"] in ["CRITICAL", "HIGH"]]) == 0
+            "gl_platform_universegl_platform_universe.governance_compliant": len([i for i in issues if i["severity"] in ["CRITICAL", "HIGH"]]) == 0
         }
     def load(self, transformed_data: Dict[str, Any]) -> Dict[str, Any]:
         """Load transformed data (prepare for ES indexing)."""
@@ -186,16 +186,16 @@ class ETLPipeline:
                 "semantic_anchor": transformed_data["semantic_anchor"],
                 "gl_markers_count": len(transformed_data["gl_markers"]),
                 "issues_count": len(transformed_data["issues"]),
-                "governance_compliant": transformed_data["governance_compliant"],
+                "gl_platform_universegl_platform_universe.governance_compliant": transformed_data["gl_platform_universegl_platform_universe.governance_compliant"],
                 "metadata": transformed_data["metadata"],
                 "issues": transformed_data["issues"],
                 "indexed_at": datetime.datetime.utcnow().isoformat()
             }
         }
     def _detect_gl_markers(self, content: str) -> List[str]:
-        """Detect GL governance markers in content."""
+        """Detect GL gl_platform_universegl_platform_universe.governance markers in content."""
         markers = []
-        gl_patterns = ["GL-", "gl_", "governance", "Governance", "GOVERNANCE"]
+        gl_patterns = ["GL-", "gl_", "gl_platform_universegl_platform_universe.governance", "Governance", "GOVERNANCE"]
         for line in content.splitlines():
             for pattern in gl_patterns:
                 if pattern in line:
@@ -235,14 +235,14 @@ class ETLPipeline:
                 metadata["valid_json"] = False
         return metadata
     def _detect_issues(self, content: str, file_path: str, extracted_data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Detect governance and quality issues."""
+        """Detect gl_platform_universegl_platform_universe.governance and quality issues."""
         issues = []
         # Check for missing GL markers
         if "GL-" not in content and "gl_" not in content:
             issues.append({
                 "type": IssueType.GL_MARKER_MISSING.value,
                 "severity": Severity.MEDIUM.value,
-                "message": "No GL governance markers found in file",
+                "message": "No GL gl_platform_universegl_platform_universe.governance markers found in file",
                 "file_path": file_path,
                 "recommendation": "Add GL layer annotation comment at file header"
             })
@@ -384,15 +384,15 @@ class ETLPipeline:
                 })
         return issues
 class GovernanceAuditEngine:
-    """Main governance audit engine orchestrator."""
+    """Main gl_platform_universegl_platform_universe.governance audit engine orchestrator."""
     def __init__(self, repo_path: str):
         self.repo_path = Path(repo_path)
         self.etl_pipeline = ETLPipeline(repo_path)
-        self.governance_events: List[GovernanceEvent] = []
+        self.gl_platform_universegl_platform_universe.governance_events: List[GovernanceEvent] = []
         self.file_results: List[FileAuditResult] = []
         self.start_time = datetime.datetime.utcnow()
     def emit_event(self, event_type: str, source_file: str, status: str, details: Dict[str, Any]) -> GovernanceEvent:
-        """Emit a governance event."""
+        """Emit a gl_platform_universegl_platform_universe.governance event."""
         event = GovernanceEvent(
             event_id=hashlib.sha256(f"{datetime.datetime.utcnow().isoformat()}-{source_file}".encode()).hexdigest()[:16],
             timestamp=datetime.datetime.utcnow().isoformat(),
@@ -404,7 +404,7 @@ class GovernanceAuditEngine:
             details=details,
             evidence_hash=hashlib.sha256(json.dumps(details, sort_keys=True).encode()).hexdigest()
         )
-        self.governance_events.append(event)
+        self.gl_platform_universegl_platform_universe.governance_events.append(event)
         return event
     def audit_file(self, file_path: str) -> FileAuditResult:
         """Audit a single file through the ETL pipeline."""
@@ -432,7 +432,7 @@ class GovernanceAuditEngine:
                 "ETL_TRANSFORM",
                 file_path,
                 "SUCCESS",
-                {"issues_count": len(transformed["issues"]), "gl_compliant": transformed["governance_compliant"]}
+                {"issues_count": len(transformed["issues"]), "gl_compliant": transformed["gl_platform_universegl_platform_universe.governance_compliant"]}
             ))
             # Load (prepare for ES)
             loaded = self.etl_pipeline.load(transformed)
@@ -479,14 +479,14 @@ class GovernanceAuditEngine:
             es_index_status=es_status,
             issues=transformed["issues"],
             metadata=transformed["metadata"],
-            governance_events=file_events,
+            gl_platform_universegl_platform_universe.governance_events=file_events,
             timestamp=end_time.isoformat(),
             execution_time_ms=execution_time_ms
         )
         self.file_results.append(result)
         return result
     def generate_global_report(self) -> GlobalAuditReport:
-        """Generate the global governance audit report."""
+        """Generate the global gl_platform_universegl_platform_universe.governance audit report."""
         issues_by_severity = {s.value: 0 for s in Severity}
         issues_by_type = {t.value: 0 for t in IssueType}
         for result in self.file_results:
@@ -514,8 +514,8 @@ class GovernanceAuditEngine:
             issues_by_severity=issues_by_severity,
             issues_by_type=issues_by_type,
             file_results=self.file_results,
-            governance_event_summary={
-                "total_events": len(self.governance_events),
+            gl_platform_universegl_platform_universe.governance_event_summary={
+                "total_events": len(self.gl_platform_universegl_platform_universe.governance_events),
                 "events_by_type": self._count_events_by_type(),
                 "events_by_status": self._count_events_by_status()
             },
@@ -523,15 +523,15 @@ class GovernanceAuditEngine:
             migration_suggestions=migrations
         )
     def _count_events_by_type(self) -> Dict[str, int]:
-        """Count governance events by type."""
+        """Count gl_platform_universegl_platform_universe.governance events by type."""
         counts = {}
-        for event in self.governance_events:
+        for event in self.gl_platform_universegl_platform_universe.governance_events:
             counts[event.event_type] = counts.get(event.event_type, 0) + 1
         return counts
     def _count_events_by_status(self) -> Dict[str, int]:
-        """Count governance events by status."""
+        """Count gl_platform_universegl_platform_universe.governance events by status."""
         counts = {}
-        for event in self.governance_events:
+        for event in self.gl_platform_universegl_platform_universe.governance_events:
             counts[event.status] = counts.get(event.status, 0) + 1
         return counts
     def _generate_recommendations(self) -> List[Dict[str, Any]]:
@@ -544,9 +544,9 @@ class GovernanceAuditEngine:
             recommendations.append({
                 "id": "REC-001",
                 "priority": "HIGH",
-                "category": "governance",
+                "category": "gl_platform_universegl_platform_universe.governance",
                 "title": "Add GL Governance Markers",
-                "description": f"{gl_marker_missing_count} files are missing GL governance markers",
+                "description": f"{gl_marker_missing_count} files are missing GL gl_platform_universegl_platform_universe.governance markers",
                 "action": "Add GL layer annotation comments to file headers",
                 "template": "// @gl-layer: GL-30-EXECUTION\n// @semantic-anchor: GL-30-EXEC-TS"
             })
@@ -591,7 +591,7 @@ def discover_engine_files(repo_path: str) -> List[str]:
 def main():
     """Main execution entry point."""
     repo_path = os.environ.get("REPO_PATH", "/workspace/machine-native-ops")
-    output_dir = Path(repo_path) / "governance-audit-results"
+    output_dir = Path(repo_path) / "gl_platform_universegl_platform_universe.governance-audit-results"
     output_dir.mkdir(exist_ok=True)
     print("=" * 80)
     print("GL UNIFIED CHARTER ACTIVATED")
@@ -634,7 +634,7 @@ def main():
         # Convert nested dataclasses
         report_dict["file_results"] = [asdict(r) for r in global_report.file_results]
         for fr in report_dict["file_results"]:
-            fr["governance_events"] = [asdict(e) if hasattr(e, '__dataclass_fields__') else e for e in fr["governance_events"]]
+            fr["gl_platform_universegl_platform_universe.governance_events"] = [asdict(e) if hasattr(e, '__dataclass_fields__') else e for e in fr["gl_platform_universegl_platform_universe.governance_events"]]
         json.dump(report_dict, f, indent=2, default=str)
     print(f"  Saved: {global_report_path}")
     # Save per-file reports
@@ -645,13 +645,13 @@ def main():
         file_report_path = per_file_dir / f"{safe_name}_audit.json"
         with open(file_report_path, 'w', encoding='utf-8') as f:
             result_dict = asdict(result)
-            result_dict["governance_events"] = [asdict(e) if hasattr(e, '__dataclass_fields__') else e for e in result.governance_events]
+            result_dict["gl_platform_universegl_platform_universe.governance_events"] = [asdict(e) if hasattr(e, '__dataclass_fields__') else e for e in result.gl_platform_universegl_platform_universe.governance_events]
             json.dump(result_dict, f, indent=2, default=str)
     print(f"  Saved {len(global_report.file_results)} per-file reports to {per_file_dir}")
-    # Save governance event stream
-    events_path = output_dir / "governance_event_stream.json"
+    # Save gl_platform_universegl_platform_universe.governance event stream
+    events_path = output_dir / "gl_platform_universegl_platform_universe.governance_event_stream.json"
     with open(events_path, 'w', encoding='utf-8') as f:
-        events_list = [asdict(e) for e in engine.governance_events]
+        events_list = [asdict(e) for e in engine.gl_platform_universegl_platform_universe.governance_events]
         json.dump(events_list, f, indent=2, default=str)
     print(f"  Saved: {events_path}")
     # Generate summary markdown
@@ -680,9 +680,9 @@ def main():
             if count > 0:
                 f.write(f"| {issue_type} | {count} |\n")
         f.write("\n## Governance Event Stream Summary\n\n")
-        f.write(f"- Total Events: {global_report.governance_event_summary['total_events']}\n")
-        f.write(f"- Events by Type: {global_report.governance_event_summary['events_by_type']}\n")
-        f.write(f"- Events by Status: {global_report.governance_event_summary['events_by_status']}\n")
+        f.write(f"- Total Events: {global_report.gl_platform_universegl_platform_universe.governance_event_summary['total_events']}\n")
+        f.write(f"- Events by Type: {global_report.gl_platform_universegl_platform_universe.governance_event_summary['events_by_type']}\n")
+        f.write(f"- Events by Status: {global_report.gl_platform_universegl_platform_universe.governance_event_summary['events_by_status']}\n")
     print(f"  Saved: {summary_path}")
     print()
     print("=" * 80)

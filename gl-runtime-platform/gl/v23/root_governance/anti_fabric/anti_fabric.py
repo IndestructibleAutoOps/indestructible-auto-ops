@@ -1,6 +1,6 @@
 # GL Runtime V23 - Root Governance: Anti-Fabric
 # @GL-governed
-# @GL-layer: V23-root-governance
+# @GL-layer: V23-root-gl_platform_universegl_platform_universe.governance
 # @GL-semantic: anti-fabric-core
 # @GL-dependencies: V1-V22
 
@@ -23,7 +23,7 @@ class ContradictionType(Enum):
     SEMANTIC = "semantic"         # 語義矛盾
     BEHAVIORAL = "behavioral"     # 行為矛盾
     TEMPORAL = "temporal"         # 時序矛盾
-    GOVERNANCE = "governance"     # 治理矛盾
+    GOVERNANCE = "gl_platform_universegl_platform_universe.governance"     # 治理矛盾
 
 
 class ContradictionSeverity(Enum):

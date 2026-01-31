@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: naming-migration
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -224,7 +224,7 @@ class NamingMigrationTool:
     def generate_migration_plan(self, namespaces: List[Dict], output_path: str):
         """生成完整遷移計劃"""
         plan = {
-            "apiVersion": "governance.machinenativeops.io/v1alpha1",
+            "apiVersion": "gl_platform_universegl_platform_universe.governance.machinenativeops.io/v1alpha1",
             "kind": "MigrationPlan",
             "metadata": {
                 "name": "naming-migration-plan",

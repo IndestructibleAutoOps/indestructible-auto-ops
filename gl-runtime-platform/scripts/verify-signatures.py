@@ -17,8 +17,8 @@ def main():
     """Verify code signatures"""
     print(f"[{datetime.utcnow().isoformat()}] Starting signature verification...")
     
-    # Check for GL governance markers in files
-    print("Checking for GL governance markers in key files...")
+    # Check for GL gl_platform_universegl_platform_universe.governance markers in files
+    print("Checking for GL gl_platform_universegl_platform_universe.governance markers in key files...")
     
     key_files = [
         'simple-server.js',
@@ -33,10 +33,10 @@ def main():
             with open(file, 'r') as f:
                 content = f.read()
                 if '@GL-governed' in content:
-                    print(f"✓ {file} - GL governance marker found")
+                    print(f"✓ {file} - GL gl_platform_universegl_platform_universe.governance marker found")
                     markers_found += 1
                 else:
-                    print(f"⚠ {file} - GL governance marker not found")
+                    print(f"⚠ {file} - GL gl_platform_universegl_platform_universe.governance marker not found")
     
     total_files = len([f for f in key_files if os.path.exists(f)])
     

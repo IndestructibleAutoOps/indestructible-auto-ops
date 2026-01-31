@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: gl_automation_engine
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Automation Engine - Core Orchestration for Governance Automation
 MachineNativeOps GL Architecture Implementation
-This module provides the central automation engine for GL governance operations,
+This module provides the central automation engine for GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance operations,
 enabling continuous monitoring, automated validation, and intelligent orchestration.
 """
 import logging
@@ -66,7 +66,7 @@ class AutomationResult:
     timestamp: datetime = field(default_factory=datetime.now)
 class GLAutomationEngine:
     """
-    Central orchestration engine for GL governance automation.
+    Central orchestration engine for GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance automation.
     Features:
     - Scheduled task execution
     - Event-driven automation
@@ -215,7 +215,7 @@ class GLAutomationEngine:
         }
 # Built-in automation handlers
 def validate_all_artifacts(engine: GLAutomationEngine) -> Dict[str, Any]:
-    """Validate all GL governance artifacts."""
+    """Validate all GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance artifacts."""
     try:
         # Import validator here to avoid circular imports
         from gl_validator import GLValidator
@@ -229,8 +229,8 @@ def validate_all_artifacts(engine: GLAutomationEngine) -> Dict[str, Any]:
         }
     except Exception as e:
         raise Exception(f"Validation failed: {str(e)}")
-def generate_governance_report(engine: GLAutomationEngine) -> Dict[str, Any]:
-    """Generate comprehensive governance report."""
+def generate_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_report(engine: GLAutomationEngine) -> Dict[str, Any]:
+    """Generate comprehensive gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance report."""
     try:
         metrics = engine.get_automation_metrics()
         task_status = engine.get_all_task_status()
@@ -250,8 +250,8 @@ def generate_governance_report(engine: GLAutomationEngine) -> Dict[str, Any]:
         }
     except Exception as e:
         raise Exception(f"Report generation failed: {str(e)}")
-def monitor_governance_health(engine: GLAutomationEngine) -> Dict[str, Any]:
-    """Monitor overall governance health."""
+def monitor_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_health(engine: GLAutomationEngine) -> Dict[str, Any]:
+    """Monitor overall gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance health."""
     try:
         metrics = engine.get_automation_metrics()
         # Calculate health score
@@ -278,7 +278,7 @@ def setup_default_tasks(engine: GLAutomationEngine) -> None:
     engine.register_task(
         task_id="daily_validation",
         name="Daily Artifact Validation",
-        description="Validate all GL governance artifacts daily",
+        description="Validate all GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance artifacts daily",
         handler=lambda: validate_all_artifacts(engine),
         trigger=AutomationTrigger.SCHEDULED,
         schedule="06:00"
@@ -287,8 +287,8 @@ def setup_default_tasks(engine: GLAutomationEngine) -> None:
     engine.register_task(
         task_id="hourly_health_check",
         name="Hourly Governance Health Check",
-        description="Monitor governance health every hour",
-        handler=lambda: monitor_governance_health(engine),
+        description="Monitor gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance health every hour",
+        handler=lambda: monitor_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_health(engine),
         trigger=AutomationTrigger.SCHEDULED,
         schedule="*:00"  # Every hour
     )
@@ -296,8 +296,8 @@ def setup_default_tasks(engine: GLAutomationEngine) -> None:
     engine.register_task(
         task_id="generate_report",
         name="Generate Governance Report",
-        description="Generate comprehensive governance report",
-        handler=lambda: generate_governance_report(engine),
+        description="Generate comprehensive gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance report",
+        handler=lambda: generate_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_report(engine),
         trigger=AutomationTrigger.SCHEDULED,
         schedule="08:00"
     )

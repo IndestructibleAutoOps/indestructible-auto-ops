@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: generate-hotspot-heatmap
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -37,8 +37,8 @@ def get_project_root() -> Path:
     """Get the project root directory"""
     current = Path(__file__).resolve().parent
     return current.parent
-def parse_governance_report(report_path: Path) -> list[dict[str, Any]]:
-    """Parse violations from governance report"""
+def parse_gl_platform_universegl_platform_universe.governance_report(report_path: Path) -> list[dict[str, Any]]:
+    """Parse violations from gl_platform_universegl_platform_universe.governance report"""
     violations = []
     if not report_path.exists():
         return violations
@@ -143,7 +143,7 @@ def determine_layer_from_path(file_path: str) -> str:
         return "L4: Services"
     elif "automation" in path_lower or "ai" in path_lower:
         return "L3: AI/Automation"
-    elif "governance" in path_lower:
+    elif "gl_platform_universegl_platform_universe.governance" in path_lower:
         return "L2: Governance"
     elif "core" in path_lower:
         return "L1: Core Engine"
@@ -172,10 +172,10 @@ def generate_hotspot_data():
     """Generate hotspot heatmap data"""
     project_root = get_project_root()
     # Load data sources
-    report_path = project_root / "governance" / "language-governance-report.md"
-    semgrep_path = project_root / "governance" / "semgrep-report.json"
+    report_path = project_root / "gl_platform_universegl_platform_universe.governance" / "language-gl_platform_universegl_platform_universe.governance-report.md"
+    semgrep_path = project_root / "gl_platform_universegl_platform_universe.governance" / "semgrep-report.json"
     history_path = project_root / "knowledge" / "language-history.yaml"
-    violations = parse_governance_report(report_path)
+    violations = parse_gl_platform_universegl_platform_universe.governance_report(report_path)
     semgrep_issues = load_semgrep_results(semgrep_path)
     repeated_violations = load_violation_history(history_path)
     # Aggregate by file
@@ -249,7 +249,7 @@ def generate_hotspot_data():
         "hotspots": hotspots,
     }
     # Save JSON
-    output_path = project_root / "governance" / "hotspot-data.json"
+    output_path = project_root / "gl_platform_universegl_platform_universe.governance" / "hotspot-data.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)

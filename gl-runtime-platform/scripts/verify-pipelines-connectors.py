@@ -1,3 +1,12 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: python-module
+# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+
 #!/usr/bin/env python3
 """
 Verify all pipelines and connectors in the GL Runtime Platform

@@ -1,34 +1,34 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: test_implementation
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 GL Implementation Test Suite
 Tests all GL core architecture implementations.
 """
-from .governance_loop import GovernanceLoopExecutor
+from .gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop import GovernanceLoopExecutor
 from .semantic_root import SemanticRootManager
 from .quantum_validation import QuantumValidator
 from .reconciliation import ReconciliationEngine
 from .coordination_layer import GLCoordinationLayer
-def test_governance_loop():
-    """Test governance loop implementation"""
+def test_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop():
+    """Test gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance loop implementation"""
     print("\n" + "="*80)
     print("Testing Governance Loop Implementation")
     print("="*80)
     # Create executor
     executor = GovernanceLoopExecutor()
-    # Execute a governance cycle
+    # Execute a gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance cycle
     input_data = {
         "tasks": [
-            {"id": "TASK-001", "type": "vision", "description": "Define governance vision"},
-            {"id": "TASK-002", "type": "policy", "description": "Create governance policies"},
+            {"id": "TASK-001", "type": "vision", "description": "Define gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance vision"},
+            {"id": "TASK-002", "type": "policy", "description": "Create gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance policies"},
             {"id": "TASK-003", "type": "validation", "description": "Implement validation"},
         ],
     }
-    print(f"\nExecuting governance cycle with {len(input_data['tasks'])} tasks...")
+    print(f"\nExecuting gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance cycle with {len(input_data['tasks'])} tasks...")
     context = executor.execute_cycle(input_data)
     # Print results
     print(f"\nCycle ID: {context.cycle_id}")
@@ -173,7 +173,7 @@ def test_coordination_layer():
     # Execute full workflow
     input_data = {
         "tasks": [
-            {"id": "TASK-001", "type": "vision", "description": "Define governance vision"},
+            {"id": "TASK-001", "type": "vision", "description": "Define gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance vision"},
         ],
     }
     print("\nExecuting full coordination workflow...")
@@ -190,9 +190,9 @@ def test_coordination_layer():
     if metrics:
         print("\nSession Metrics:")
         print(f"  Duration: {metrics.get('duration_seconds', 0):.2f}s")
-        gov_perf = metrics.get("governance_performance", {})
+        gov_perf = metrics.get("gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_performance", {})
         if gov_perf:
-            print(f"  Governance Closure Rate: {gov_perf.get('governance_closure_rate', 0)}%")
+            print(f"  Governance Closure Rate: {gov_perf.get('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_closure_rate', 0)}%")
         val_perf = metrics.get("validation_performance", {})
         if val_perf:
             print(f"  Validation Accuracy: {val_perf.get('validation_accuracy', 0)}%")
@@ -207,7 +207,7 @@ def run_all_tests():
     print("GL Implementation Test Suite")
     print("="*80)
     tests = [
-        ("Governance Loop", test_governance_loop),
+        ("Governance Loop", test_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_loop),
         ("Semantic Root", test_semantic_root),
         ("Quantum Validation", test_quantum_validation),
         ("Reconciliation Engine", test_reconciliation),

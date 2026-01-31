@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: generate-migration-flow
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -20,7 +20,7 @@ Purpose:
   - Track source violations and their remediation paths
   - Show language spread/convergence across architecture layers
 Inputs:
-  - governance/language-governance-report.md (current violations)
+  - gl_platform_universegl_platform_universe.governance/language-gl_platform_universegl_platform_universe.governance-report.md (current violations)
   - knowledge/language-history.yaml (historical migration events)
 Outputs:
   - apps/web/public/data/migration-flow.json (for web dashboard)
@@ -43,7 +43,7 @@ def determine_cluster_from_path(file_path: str) -> str:
     if len(parts) < 2:
         return "root"
     # Main directory clusters
-    if parts[0] in ["core", "governance", "automation", "services", "apps", "tools"]:
+    if parts[0] in ["core", "gl_platform_universegl_platform_universe.governance", "automation", "services", "apps", "tools"]:
         if len(parts) >= 2:
             return f"{parts[0]}/{parts[1]}"
         return parts[0]
@@ -102,8 +102,8 @@ def suggest_target_from_violation(
         # C++ in services should move to autonomous
         if "services" in cluster and language == "cpp":
             return "automation/autonomous", "cpp"
-        # TypeScript in governance should move to core
-        if "governance" in cluster and language == "typescript":
+        # TypeScript in gl_platform_universegl_platform_universe.governance should move to core
+        if "gl_platform_universegl_platform_universe.governance" in cluster and language == "typescript":
             return "core", "typescript"
         # Python in apps/web should move to services or be rewritten
         if "apps/web" in cluster and language == "python":
@@ -114,7 +114,7 @@ def suggest_target_from_violation(
     # Default: rewrite to primary language of cluster
     cluster_primary_lang = {
         "core": "typescript",
-        "governance": "python",
+        "gl_platform_universegl_platform_universe.governance": "python",
         "automation": "python",
         "services": "typescript",
         "apps/web": "typescript",
@@ -125,8 +125,8 @@ def suggest_target_from_violation(
             if lang != language:
                 return cluster, lang
     return cluster, language
-def parse_governance_report(report_path: Path) -> list[dict[str, Any]]:
-    """Parse current violations from governance report"""
+def parse_gl_platform_universegl_platform_universe.governance_report(report_path: Path) -> list[dict[str, Any]]:
+    """Parse current violations from gl_platform_universegl_platform_universe.governance report"""
     violations = []
     if not report_path.exists():
         return violations
@@ -249,9 +249,9 @@ def generate_migration_flow_data():
     """Main function to generate migration flow data"""
     project_root = get_project_root()
     # Load input data
-    report_path = project_root / "governance" / "language-governance-report.md"
+    report_path = project_root / "gl_platform_universegl_platform_universe.governance" / "language-gl_platform_universegl_platform_universe.governance-report.md"
     history_path = project_root / "knowledge" / "language-history.yaml"
-    violations = parse_governance_report(report_path)
+    violations = parse_gl_platform_universegl_platform_universe.governance_report(report_path)
     history_migrations = parse_migration_history(history_path)
     print(f"📊 Parsed {len(violations)} violations")
     print(f"📜 Parsed {len(history_migrations)} historical migrations")
@@ -273,7 +273,7 @@ def generate_migration_flow_data():
                 "type": "suggested",
             },
             {
-                "source": "governance:typescript",
+                "source": "gl_platform_universegl_platform_universe.governance:typescript",
                 "target": "core:typescript",
                 "count": 1,
                 "type": "suggested",
@@ -318,7 +318,7 @@ def generate_migration_flow_data():
         "edges": edges,
     }
     # Save JSON
-    output_json_path = project_root / "governance" / "migration-flow.json"
+    output_json_path = project_root / "gl_platform_universegl_platform_universe.governance" / "migration-flow.json"
     output_json_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_json_path, "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)

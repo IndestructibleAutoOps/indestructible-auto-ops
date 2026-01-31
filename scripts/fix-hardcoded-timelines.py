@@ -1,3 +1,13 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: execution-script
+# @GL-audit-trail: gl-platform-universe/gl_platform_universegl_platform_universe.governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-universe/gl_platform_universegl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
 #!/usr/bin/env python3
 """
 修復源代碼中的硬編時間線
@@ -261,22 +271,22 @@ def main():
     # 定義需要修復的文件列表（高優先級）
     files_to_fix = [
         # 高優先級 - 截止日期
-        repo_path / "engine/governance/gl-artifacts/operational/artifacts/operational-plan.yaml",
-        repo_path / "engine/governance/gl-artifacts/strategic/artifacts/strategic-objectives.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/operational/artifacts/operational-plan.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/strategic/artifacts/strategic-objectives.yaml",
         repo_path / "documentation-manifest.yaml",
         
         # 中優先級
-        repo_path / "engine/governance/gl-artifacts/strategic/artifacts/cross-domain-integration.yaml",
-        repo_path / "engine/governance/gl-artifacts/feedback/artifacts/innovation-registry.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/strategic/artifacts/cross-domain-integration.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/feedback/artifacts/innovation-registry.yaml",
         
         # 配置文件
         repo_path / "engine/etl-pipeline/controlplane/baseline/pipeline-baseline.yaml",
         
         # 元數據文件
-        repo_path / "engine/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
-        repo_path / "engine/governance/gl-artifacts/meta/spec/GL-ARTIFACTS-TEMPLATES.yaml",
-        repo_path / "engine/governance/gl-artifacts/meta/spec/GL-DEPENDENCY-GRAPH.yaml",
-        repo_path / "engine/governance/gl-artifacts/execution/artifacts/deployment-record.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/meta/spec/GL-ARTIFACTS-TEMPLATES.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/meta/spec/GL-DEPENDENCY-GRAPH.yaml",
+        repo_path / "engine/gl_platform_universegl_platform_universe.governance/gl-artifacts/execution/artifacts/deployment-record.yaml",
     ]
     
     # 過濾存在的文件

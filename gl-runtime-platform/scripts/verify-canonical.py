@@ -22,8 +22,8 @@ def main():
         print("ERROR: Not a git repository")
         sys.exit(1)
     
-    # Check for GL governance markers
-    print("Checking for GL governance markers...")
+    # Check for GL gl_platform_universegl_platform_universe.governance markers
+    print("Checking for GL gl_platform_universegl_platform_universe.governance markers...")
     
     # Essential files that should exist
     essential_files = [
@@ -31,7 +31,7 @@ def main():
         'package.json',
         'config/ports-config.yml',
         'config/services-config.yml',
-        'config/governance-config.yml'
+        'config/gl_platform_universegl_platform_universe.governance-config.yml'
     ]
     
     all_found = True

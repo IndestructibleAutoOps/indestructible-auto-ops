@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.governance
 # @GL-semantic: language-health-score
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -22,7 +22,7 @@ Language Health Score Calculator
 4. 修復歷史趨勢
 使用：
     python tools/language-health-score.py \
-        --governance-report governance/language-governance-report.json \
+        --gl_platform_universegl_platform_universe.governance-report gl_platform_universegl_platform_universe.governance/language-gl_platform_universegl_platform_universe.governance-report.json \
         --history knowledge/language-history.yaml \
         --output knowledge/language-health-score.yaml
 """
@@ -62,9 +62,9 @@ def save_yaml(path: str, data: dict[str, Any]):
         yaml.dump(
             data, f, default_flow_style=False, allow_unicode=True, sort_keys=False
         )
-def calculate_violation_score(governance_report: dict[str, Any]) -> float:
+def calculate_violation_score(gl_platform_universegl_platform_universe.governance_report: dict[str, Any]) -> float:
     """計算違規分數 (0-40分)"""
-    violations = governance_report.get("violations", [])
+    violations = gl_platform_universegl_platform_universe.governance_report.get("violations", [])
     if not violations:
         return 40.0
     # 按嚴重程度計分
@@ -105,9 +105,9 @@ def calculate_security_score(
     # 最大扣分 30 分
     score = max(0, 30 - penalty)
     return score
-def calculate_architecture_score(governance_report: dict[str, Any]) -> float:
+def calculate_architecture_score(gl_platform_universegl_platform_universe.governance_report: dict[str, Any]) -> float:
     """計算架構對齊分數 (0-20分)"""
-    violations = governance_report.get("violations", [])
+    violations = gl_platform_universegl_platform_universe.governance_report.get("violations", [])
     # 架構違規類型
     arch_violations = [
         v
@@ -152,16 +152,16 @@ def calculate_trend_score(history: dict[str, Any]) -> float:
     else:
         return 5.0
 def calculate_health_score(
-    governance_report: dict[str, Any],
+    gl_platform_universegl_platform_universe.governance_report: dict[str, Any],
     semgrep_report: dict[str, Any] = None,
     codeql_report: dict[str, Any] = None,
     history: dict[str, Any] = None,
 ) -> dict[str, Any]:
     """計算整體健康分數"""
     # 各項分數
-    violation_score = calculate_violation_score(governance_report)
+    violation_score = calculate_violation_score(gl_platform_universegl_platform_universe.governance_report)
     security_score = calculate_security_score(semgrep_report or {}, codeql_report or {})
-    architecture_score = calculate_architecture_score(governance_report)
+    architecture_score = calculate_architecture_score(gl_platform_universegl_platform_universe.governance_report)
     trend_score = calculate_trend_score(history or {})
     # 總分 (0-100)
     total_score = violation_score + security_score + architecture_score + trend_score
@@ -228,7 +228,7 @@ def display_score(score_data: dict[str, Any]):
 def main():
     parser = argparse.ArgumentParser(description="Calculate language health score")
     parser.add_argument(
-        "--governance-report", required=True, help="Path to governance report JSON"
+        "--gl_platform_universegl_platform_universe.governance-report", required=True, help="Path to gl_platform_universegl_platform_universe.governance report JSON"
     )
     parser.add_argument("--semgrep-report", help="Path to Semgrep SARIF report")
     parser.add_argument("--codeql-report", help="Path to CodeQL SARIF report")
@@ -242,13 +242,13 @@ def main():
     args = parser.parse_args()
     console.print("[cyan]🔍 Calculating language health score...[/cyan]")
     # 載入報告
-    governance_report = load_json(args.governance_report)
+    gl_platform_universegl_platform_universe.governance_report = load_json(args.gl_platform_universegl_platform_universe.governance_report)
     semgrep_report = load_json(args.semgrep_report) if args.semgrep_report else {}
     codeql_report = load_json(args.codeql_report) if args.codeql_report else {}
     history = load_yaml(args.history) if args.history else {}
     # 計算分數
     score_data = calculate_health_score(
-        governance_report, semgrep_report, codeql_report, history
+        gl_platform_universegl_platform_universe.governance_report, semgrep_report, codeql_report, history
     )
     # 儲存分數
     save_yaml(args.output, score_data)

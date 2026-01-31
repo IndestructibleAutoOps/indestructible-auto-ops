@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -56,7 +56,7 @@ class ProjectRestructurer:
         # Define the target directory structure
         target_structure = {
             ".github": {
-                "workflows": ["ci.yml", "cd.yml", "security.yml", "governance.yml"],
+                "workflows": ["ci.yml", "cd.yml", "security.yml", "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.yml"],
                 "ISSUE_TEMPLATE": ["bug_report.md", "feature_request.md", "config.yml"],
                 "policies": ["CODEOWNERS", "security.md", "contributing.md"],
             },
@@ -76,14 +76,14 @@ class ProjectRestructurer:
                 "architecture": ["system-design.md", "api-specs.md"],
                 "guides": ["quick-start.md", "development.md", "deployment.md"],
                 "api": ["rest-api.md", "graphql.md", "openapi.yaml"],
-                "governance": ["policies.md", "standards.md", "compliance.md"],
+                "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance": ["policies.md", "standards.md", "compliance.md"],
             },
             "examples": {
                 "basic": ["hello-world", "simple-service"],
                 "advanced": ["microservices", "distributed-systems"],
                 "templates": ["web-app", "api-service", "batch-job"],
             },
-            "governance": {
+            "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance": {
                 "policies": ["code-of-conduct.md", "security-policy.md"],
                 "standards": ["coding-standards.md", "api-standards.md"],
                 "compliance": ["SOC2.md", "GDPR.md", "HIPAA.md"],
@@ -284,12 +284,12 @@ The project now follows the standardized 12-main-directory structure:
 
 ```
 MachineNativeOps/
-├── .github/                    # GitHub CI/CD and governance
+├── .github/                    # GitHub CI/CD and gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 ├── .vscode/                    # VS Code configuration
 ├── config/                     # Configuration files
 ├── docs/                       # Documentation
 ├── examples/                   # Example projects and templates
-├── governance/                 # Governance policies and standards
+├── gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/                 # Governance policies and standards
 ├── ops/                        # Operations and monitoring
 ├── scripts/                    # Build and automation scripts
 ├── src/                        # Source code
@@ -333,7 +333,7 @@ For any issues with the restructured project:
 4. Contact the development team
 
 ---
-*This restructuring enables better maintainability, scalability, and governance of the MachineNativeOps project.*
+*This restructuring enables better maintainability, scalability, and gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance of the MachineNativeOps project.*
 """
 
         with open(self.log_file, "w", encoding="utf-8") as f:

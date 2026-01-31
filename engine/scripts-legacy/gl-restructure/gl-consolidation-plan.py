@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: governance
+# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
 # @GL-semantic: gl-consolidation-plan
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -46,13 +46,13 @@ class GLConsolidationPlanner:
     }
     # 已知的重複目錄對
     DUPLICATE_DIRECTORIES = [
-        ('governance/GL-architecture', 'workspace/governance/GL-architecture'),
-        ('governance/layers', 'workspace/governance/layers'),
-        ('governance/meta-spec', 'workspace/governance/meta-spec'),
-        ('governance/sealed', 'workspace/governance/sealed'),
-        ('governance/naming-governance-v1.0.0', 'workspace/governance/naming-governance-v1.0.0'),
-        ('governance/naming-governance-v1.0.0-extended', 'workspace/governance/naming-governance-v1.0.0-extended'),
-        ('governance/quantum-naming-v4.0.0', 'workspace/governance/quantum-naming-v4.0.0'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL-architecture', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL-architecture'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/layers', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/layers'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/meta-spec', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/meta-spec'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/sealed', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/sealed'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-v1.0.0', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-v1.0.0'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-v1.0.0-extended', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/naming-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-v1.0.0-extended'),
+        ('gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/quantum-naming-v4.0.0', 'workspace/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/quantum-naming-v4.0.0'),
     ]
     # 需要重命名的檔案 (舊名 -> 新名)
     RENAME_MAP = {
@@ -160,7 +160,7 @@ class GLConsolidationPlanner:
         root_gl_files = [f for f in self.gl_files if '/' not in f.path or f.path.count('/') == 0]
         for file_info in root_gl_files:
             if file_info.name.startswith('GL-') or file_info.name.startswith('gl-'):
-                target_path = f"governance/GL-architecture/{file_info.name}"
+                target_path = f"gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL-architecture/{file_info.name}"
                 actions.append(ConsolidationAction(
                     action_type="move",
                     source=file_info.path,
