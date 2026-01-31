@@ -14,7 +14,7 @@ governance:
   layer: "GL00-09"
   component: "Cross-Domain Integration"
   version: "1.0.0"
-  last_updated: "2025-01-18"
+  last_updated: "{{LAST_UPDATED_YEAR}}-01-18"
   status: "active"
   approved_by: "Governance Board"
 # Integration Domains
@@ -409,7 +409,7 @@ implementation_roadmap:
   - phase_id: "ph-001"
     name: "Phase 1: Foundation"
     status: "complete"
-    timeline: "2024-Q4"
+    timeline: "{{TIMELINE_QUARTER}}"
     deliverables:
       - "All domains defined and prioritized"
       - "Core integration points established"
@@ -418,7 +418,7 @@ implementation_roadmap:
   - phase_id: "ph-002"
     name: "Phase 2: Optimization"
     status: "in_progress"
-    timeline: "2025-Q1"
+    timeline: "{{TIMELINE_QUARTER}}"
     deliverables:
       - "Advanced conflict resolution mechanisms"
       - "Comprehensive testing framework"
@@ -427,7 +427,7 @@ implementation_roadmap:
   - phase_id: "ph-003"
     name: "Phase 3: Automation"
     status: "planned"
-    timeline: "2025-Q2"
+    timeline: "{{TIMELINE_QUARTER}}"
     deliverables:
       - "Automated rollback procedures"
       - "Self-healing integration points"

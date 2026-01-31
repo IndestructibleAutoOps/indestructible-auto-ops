@@ -15,7 +15,7 @@ kind: GovernanceDependencyGraph
 metadata:
   name: gl-dependency-graph
   version: "2.0.0"
-  created_at: "2025-01-18T00:00:00Z"
+  created_at: "{{CREATED_AT_YEAR}}-01-18T00:00:00Z"
   owner: governance-team
   description: |
     定義GL00-99各層級之間的依賴關係、數據流向、互動模式與整合點
@@ -775,7 +775,7 @@ validation_rules:
 # =============================================================================
 versioning:
   current_version: "2.0.0"
-  release_date: "2025-01-18"
+  release_date: "{{RELEASE_DATE}}"
   changelog:
     - version: "2.0.0"
       date: "2025-01-18"
