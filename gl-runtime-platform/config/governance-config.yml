@@ -1,0 +1,228 @@
+# @GL-governed
+# @GL-layer: GL90-99 Meta-Specification
+# @GL-semantic: governance-configuration
+# @GL-charter-version: 1.0.0
+#
+# GL Runtime Platform 治理配置
+
+governance:
+  # 治理層級
+  levels:
+    unified:
+      enabled: true
+      priority: 1
+      scope: "global"
+      description: "統一治理層 - 全域策略與規則"
+      
+    root:
+      enabled: true
+      priority: 2
+      scope: "system"
+      description: "根治理層 - 系統核心規則"
+      
+    meta:
+      enabled: true
+      priority: 3
+      scope: "execution"
+      description: "元治理層 - 執行監控與優化"
+
+  # 治理策略
+  policies:
+    enforcement:
+      mode: "strict"
+      auto_correction: true
+      violation_action: "halt_and_audit"
+      
+    compliance:
+      level: "canonical"
+      verification_frequency: "continuous"
+      audit_retention: "30d"
+      
+    security:
+      encryption_level: "aes_256_gcm"
+      authentication_required: true
+      authorization_checks: true
+
+  # 治理規則
+  rules:
+    - id: "GL-001"
+      name: "Code Compliance"
+      description: "所有代碼必須遵循 GL 統一章程"
+      severity: "critical"
+      enabled: true
+      
+    - id: "GL-002"
+      name: "Service Health"
+      description: "所有服務必須定期報告健康狀態"
+      severity: "high"
+      enabled: true
+      
+    - id: "GL-003"
+      name: "Audit Trail"
+      description: "所有操作必須記錄到審計日誌"
+      severity: "critical"
+      enabled: true
+      
+    - id: "GL-004"
+      name: "Agent Communication"
+      description: "代理間通信必須通過認證"
+      severity: "high"
+      enabled: true
+
+  # 審計配置
+  audit:
+    enabled: true
+    level: "debug"
+    stream: "redis://localhost:6379/0"
+    retention: "30d"
+    realtime_reporting: true
+    events:
+      lifecycle:
+        - "service_started"
+        - "service_stopped"
+        - "agent_started"
+        - "agent_stopped"
+        
+      governance:
+        - "rule_violation"
+        - "compliance_check"
+        - "governance_override"
+        
+      security:
+        - "authentication_failure"
+        - "authorization_denied"
+        - "tampering_detected"
+
+  # 驗證配置
+  verification:
+    enabled: true
+    strict_mode: true
+    canonical_verification: true
+    signature_verification: true
+    
+    checks:
+      - name: "port_availability"
+        script: "scripts/check-ports.py"
+        interval: "30s"
+        
+      - name: "service_health"
+        script: "scripts/check-service-health.py"
+        interval: "60s"
+        
+      - name: "governance_compliance"
+        script: "governance/verify-compliance.py"
+        interval: "300s"
+        
+      - name: "agent_status"
+        script: "agents/check-agent-status.py"
+        interval: "60s"
+
+  # 監控配置
+  monitoring:
+    enabled: true
+    prometheus:
+      enabled: true
+      port: 9090
+      metrics_path: "/metrics"
+      
+    health_checks:
+      enabled: true
+      endpoints:
+        - port: 3000
+          path: "/health"
+          name: "gl_platform"
+        - port: 8080
+          path: "/health"
+          name: "rest_api"
+        - port: 5001
+          path: "/health"
+          name: "control_plane"
+
+  # Multi-Agent 配置
+  multi_agent:
+    enabled: true
+    orchestrator:
+      enabled: true
+      consensus_threshold: 0.8
+      timeout: "30s"
+      
+    agents:
+      governance_agent:
+        enabled: true
+        priority: 1
+        governance_level: "UNIFIED"
+        
+      verification_agent:
+        enabled: true
+        priority: 1
+        governance_level: "ROOT"
+        
+      audit_agent:
+        enabled: true
+        priority: 2
+        governance_level: "META"
+        
+      health_agent:
+        enabled: true
+        priority: 2
+        governance_level: "ROOT"
+
+  # 事件處理配置
+  events:
+    enabled: true
+    queue: "redis"
+    max_queue_size: 10000
+    processing_threads: 10
+    
+    event_types:
+      - "task_submitted"
+      - "task_started"
+      - "task_completed"
+      - "task_failed"
+      - "service_health_changed"
+      - "governance_violation"
+      - "agent_status_changed"
+
+  # 故障處理配置
+  failure_handling:
+    policy: "graceful_degradation"
+    auto_recovery: true
+    max_retry_attempts: 3
+    retry_delay: "5s"
+    
+    escalation:
+      level_1: "automatic_retry"
+      level_2: "failover"
+      level_3: "human_intervention"
+
+  # 報告配置
+  reporting:
+    enabled: true
+    format: "json"
+    destinations:
+      - type: "console"
+        enabled: true
+      - type: "file"
+        enabled: true
+        path: "/var/log/gl-reports"
+      - type: "redis"
+        enabled: true
+        stream: "gl-reports"
+        
+    reports:
+      - name: "startup_report"
+        enabled: true
+        schedule: "on_startup"
+      - name: "compliance_report"
+        enabled: true
+        schedule: "daily"
+      - name: "performance_report"
+        enabled: true
+        schedule: "hourly"
+
+# 統一章程激活
+unified_charter:
+  activated: true
+  version: "1.0.0"
+  activation_date: "2024-01-20T00:00:00Z"
+  mode: "HIGH_PRIVILEGE"

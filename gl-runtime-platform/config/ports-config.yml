@@ -1,0 +1,81 @@
+# @GL-governed
+# @GL-layer: GL10-29 Operational
+# @GL-semantic: ports-configuration
+# @GL-charter-version: 1.0.0
+#
+# GL Runtime Platform 端口配置
+
+# 主應用服務
+main_application:
+  port: 3000
+  health_check: "/health"
+  description: "GL Runtime Platform 主應用"
+
+# REST API
+rest_api:
+  port: 8080
+  health_check: "/health"
+  description: "REST API 服務"
+
+# 自然語言控制平面
+nlp_control_plane:
+  port: 5001
+  health_check: "/health"
+  description: "自然語言控制平面 API"
+  note: "原始端口 5000 被系統佔用，使用 5001"
+
+# 健康檢查服務
+health_checks:
+  primary:
+    port: 3001
+    health_check: "/health"
+    description: "主健康檢查服務"
+  secondary:
+    port: 3002
+    health_check: "/health"
+    description: "備用健康檢查服務"
+
+# 存儲服務
+minio:
+  api_port: 9000
+  console_port: 9001
+  health_check: "/health"
+  description: "MinIO 物件存儲服務"
+
+redis:
+  port: 6379
+  health_check: "ping"
+  description: "Redis 事件流與緩存服務"
+
+postgres:
+  port: 5432
+  health_check: "pg_isready"
+  description: "PostgreSQL 資料庫服務"
+
+# 監控服務
+prometheus:
+  port: 9090
+  health_check: "/-/healthy"
+  description: "Prometheus 監控服務"
+
+# 端口範圍配置
+port_ranges:
+  application_ports: "3000-3999"
+  api_ports: "5000-5999"
+  storage_ports: "9000-9999"
+  monitoring_ports: "8000-8999"
+  database_ports: "5400-5500"
+
+# 安全配置
+security:
+  allow_external_access: true
+  firewall_rules:
+    - port: 3000
+      protocol: "tcp"
+      allow_from: ["0.0.0.0/0"]
+    - port: 8080
+      protocol: "tcp"
+      allow_from: ["0.0.0.0/0"]
+    - port: 5001
+      protocol: "tcp"
+      allow_from: ["0.0.0.0/0"]
