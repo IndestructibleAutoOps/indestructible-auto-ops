@@ -9,7 +9,7 @@
 #
 # 解構階段輸出：識別現有組件與 AXIOM 15 層架構的差距
 
-apiVersion: axiom.io/v2
+apiVersion: gl-runtime.io/v2
 kind: LayerGapAnalysis
 metadata:
   name: axiom-layer-gap-analysis

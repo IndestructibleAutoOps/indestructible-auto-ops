@@ -9,7 +9,7 @@ apiVersion: validation.machinenativeops/v1
 kind: HybridWeightsConfig
 metadata:
   name: hybrid-weights-config
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   version: v1.0.0
   labels:
     app: validation-system

@@ -7,7 +7,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dynamic-validator-core
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: dynamic-validator
@@ -131,7 +131,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dynamic-validator-service
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: dynamic-validator
@@ -157,7 +157,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: validation-system-config
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
 data:
@@ -171,7 +171,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: evidence-storage-pvc
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
 spec:
@@ -186,7 +186,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: dynamic-validator-pdb
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
 spec:
   minAvailable: 2
   selector:

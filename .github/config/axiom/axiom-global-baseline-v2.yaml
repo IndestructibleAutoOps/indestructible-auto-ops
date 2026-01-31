@@ -12,8 +12,8 @@
 # 核心理念：AI 自動演化，即時交付，零延遲
 # 競爭力：與 Replit、Claude 4、GPT 同等水平的即時交付能力
 
-apiVersion: axiom.io/v2
-kind: AxiomGlobalBaseline
+apiVersion: gl-runtime.io/v2
+kind: GLRuntimeGlobalBaseline
 metadata:
   name: axiom-global-baseline-v2
   version: v2.0.0

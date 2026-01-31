@@ -71,10 +71,10 @@ class NamespaceConverter:
             # Registry conversions
             r"registry\.axiom\.io": r"registry.machinenativeops.io",
             # Path conversions
-            r"/etc/axiom": r"/etc/machinenativeops",
-            r"/opt/axiom": r"/opt/machinenativeops",
-            r"/var/lib/axiom": r"/var/lib/machinenativeops",
-            r"/var/log/axiom": r"/var/log/machinenativeops",
+            r"/etc/gl-runtime": r"/etc/machinenativeops",
+            r"/opt/gl-runtime": r"/opt/machinenativeops",
+            r"/var/lib/gl-runtime": r"/var/lib/machinenativeops",
+            r"/var/log/gl-runtime": r"/var/log/machinenativeops",
             # Cluster name conversions
             r"\bmachinenativeops-etcd-cluster\b": r"super-agent-etcd-cluster",
             # Label key conversions

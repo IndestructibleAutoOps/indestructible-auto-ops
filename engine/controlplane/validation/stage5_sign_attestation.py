@@ -64,9 +64,9 @@ class Stage5SignAttestationVerifier:
         signatures = []
         # 模擬容器映像簽章驗證
         images = [
-            "axiom-hft-quantum:v1.0.0",
-            "axiom-inference-engine:v2.1.0",
-            "axiom-quantum-coordinator:v1.5.0",
+            "gl-hft-quantum:v1.0.0",
+            "gl-inference-engine:v2.1.0",
+            "gl-quantum-coordinator:v1.5.0",
         ]
         for image in images:
             signature_data = {

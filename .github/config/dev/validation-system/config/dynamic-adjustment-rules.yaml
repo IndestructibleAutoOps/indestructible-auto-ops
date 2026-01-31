@@ -7,7 +7,7 @@ apiVersion: validation.machinenativeops/v1
 kind: DynamicAdjustmentPolicy
 metadata:
   name: dynamic-adjustment-rules
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   version: v1.0.0
   labels:
     app: validation-system

@@ -9,7 +9,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hybrid-decider-service
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: hybrid-decider
@@ -36,7 +36,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hybrid-decider
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: hybrid-decider
@@ -134,7 +134,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hybrid-decider-config
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: hybrid-decider
@@ -183,7 +183,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: hybrid-decider-hpa
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
 spec:

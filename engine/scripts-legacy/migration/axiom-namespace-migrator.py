@@ -152,8 +152,8 @@ class AxiomNamespaceMigrator:
             ),
             (r"axiom\.io/v(\d+)", r"machinenativeops.io/v\1", "api_version"),
             # Kind/Type conversions (full type names first)
-            (r"\bAxiomGlobalBaseline\b", r"MachineNativeOpsGlobalBaseline", "kind"),
-            (r"\bAxiomNamespaceConfig\b", r"MachineNativeOpsNamespaceConfig", "kind"),
+            (r"\bGLRuntimeGlobalBaseline\b", r"MachineNativeOpsGlobalBaseline", "kind"),
+            (r"\bGLRuntimeNamespaceConfig\b", r"MachineNativeOpsNamespaceConfig", "kind"),
             (r"\bAxiomAutoMonitor\b", r"MachineNativeOpsAutoMonitor", "kind"),
             (r"\bAxiomConfigValidator\b", r"MachineNativeOpsConfigValidator", "kind"),
             (
@@ -172,10 +172,10 @@ class AxiomNamespaceMigrator:
             (r"registry\.axiom\.io", r"registry.machinenativeops.io", "registry"),
             (r"ghcr\.io/axiom", r"ghcr.io/machinenativeops", "registry"),
             # Path conversions (filesystem)
-            (r"/etc/axiom", r"/etc/machinenativeops", "path"),
-            (r"/opt/axiom", r"/opt/machinenativeops", "path"),
-            (r"/var/lib/axiom", r"/var/lib/machinenativeops", "path"),
-            (r"/var/log/axiom", r"/var/log/machinenativeops", "path"),
+            (r"/etc/gl-runtime", r"/etc/machinenativeops", "path"),
+            (r"/opt/gl-runtime", r"/opt/machinenativeops", "path"),
+            (r"/var/lib/gl-runtime", r"/var/lib/machinenativeops", "path"),
+            (r"/var/log/gl-runtime", r"/var/log/machinenativeops", "path"),
             (r"/var/cache/axiom", r"/var/cache/machinenativeops", "path"),
             (r"/tmp/axiom", r"/tmp/machinenativeops", "path"),
             # Cluster/Resource name conversions
@@ -205,8 +205,8 @@ class AxiomNamespaceMigrator:
             (r"\baxiom\.io/", "Legacy axiom.io domain found"),
             (r"\bAxiom[A-Z]", "Legacy Axiom class/type name found"),
             (r"urn:axiom:", "Legacy axiom URN found"),
-            (r"/etc/axiom/", "Legacy axiom filesystem path found"),
-            (r"/opt/axiom/", "Legacy axiom filesystem path found"),
+            (r"/etc/gl-runtime/", "Legacy axiom filesystem path found"),
+            (r"/opt/gl-runtime/", "Legacy axiom filesystem path found"),
             (r"apiVersion:\s*axiom\.io", "Legacy axiom API version found"),
             (r"namespace:\s*axiom\b", "Legacy axiom namespace found"),
         ]
@@ -570,12 +570,12 @@ def main():
 ║    python axiom-namespace-migrator.py --verbose --report --json --output r.json .  ║
 ║                                                                              ║
 ║  Conversion Categories:                                                      ║
-║    - api_version:   axiom.io/v* → machinenativeops.io/v*                    ║
+║    - api_version:   gl-runtime.io/v* → machinenativeops.io/v*                    ║
 ║    - kind:          Axiom* → MachineNativeOps*                              ║
 ║    - urn:           urn:axiom: → urn:machinenativeops:                      ║
-║    - domain:        axiom.io/* → machinenativeops.io/*                      ║
-║    - registry:      registry.axiom.io → registry.machinenativeops.io        ║
-║    - path:          /etc/axiom → /etc/machinenativeops                      ║
+║    - domain:        gl-runtime.io/* → machinenativeops.io/*                      ║
+║    - registry:      registry.gl-runtime.io → registry.machinenativeops.io        ║
+║    - path:          /etc/gl-runtime → /etc/machinenativeops                      ║
 ║    - namespace:     namespace: axiom → namespace: machinenativeops          ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝

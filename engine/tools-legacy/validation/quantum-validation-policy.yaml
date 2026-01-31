@@ -9,7 +9,7 @@ apiVersion: validation.machinenativeops/v1
 kind: QuantumValidationPolicy
 metadata:
   name: quantum-validation-policy
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   version: v1.0.0
   labels:
     app: validation-system

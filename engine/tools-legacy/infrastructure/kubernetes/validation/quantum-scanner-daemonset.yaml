@@ -9,7 +9,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: quantum-scanner
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: quantum-scanner
@@ -114,7 +114,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: quantum-scanner-config
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
     component: quantum-scanner
@@ -151,7 +151,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: validation-system-sa
-  namespace: axiom-verification
+  namespace: gl-runtime-verification
   labels:
     app: validation-system
 ---
@@ -182,4 +182,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: validation-system-sa
-    namespace: axiom-verification
+    namespace: gl-runtime-verification
