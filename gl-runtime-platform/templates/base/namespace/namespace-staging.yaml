@@ -1,0 +1,67 @@
+# GL Runtime Platform 預發布環境命名空間
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: team-gl-runtime-staging-us-west
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: 'gl-runtime-platform'
+    app.kubernetes.io/component: 'namespace'
+    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/version: 'v1.0.0'
+    app.kubernetes.io/managed-by: 'kubectl'
+    
+    # 企業治理標籤
+    tenant: 'gl-runtime-team'
+    environment: 'staging'
+    region: 'us-west-2'
+    cost-center: 'platform-engineering'
+    business-unit: 'infrastructure'
+    project: 'gl-runtime-platform'
+    
+    # 操作標籤
+    monitoring.tier: 'high'
+    backup.tier: 'gold'
+    scaling.group: 'staging-services'
+    
+    # 治理標籤
+    governance.level: 'pre-production'
+    compliance.framework: 'sox-gdpr'
+    data.classification: 'confidential'
+    
+    # 生命週期標籤
+    lifecycle.stage: 'staging'
+    cleanup.policy: 'manual-review'
+    
+  annotations:
+    # 描述性註解
+    description: 'GL Runtime Platform 預發布環境 - 美西區域'
+    owner: 'platform-team@gl-runtime.io'
+    escalation: 'staging-oncall@gl-runtime.io'
+    
+    # 文件連結
+    documentation: 'https://docs.gl-runtime.io/environments/staging'
+    architecture: 'https://docs.gl-runtime.io/architecture'
+    
+    # 預發布環境特定註解
+    environment.type: 'staging'
+    environment.purpose: 'pre-production-validation'
+    environment.mirrors: 'production'
+    
+    # 治理註解
+    governance.review-date: '2024-01-31'
+    governance.next-review: '2024-04-30'
+    governance.approver: 'release-manager'
+    
+    # 備份註解
+    backup.schedule: '0 2 * * *'
+    backup.retention: '30d'
+    
+    # 監控註解
+    monitoring.enabled: 'true'
+    monitoring.alerting: 'production'
+    monitoring.runbook: 'https://runbooks.gl-runtime.io/staging'
+    
+    # 自動化註解
+    argocd.argoproj.io/sync-wave: '0'

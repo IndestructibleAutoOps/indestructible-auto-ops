@@ -1,0 +1,187 @@
+# GL Runtime Platform PostgreSQL 資料庫部署
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gl-runtime-postgres-deploy-v1
+  namespace: team-gl-runtime-base
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: 'gl-runtime-postgres'
+    app.kubernetes.io/component: 'database'
+    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/version: 'v1.0.0'
+    app.kubernetes.io/managed-by: 'kubectl'
+    
+    # 企業治理標籤
+    tenant: 'gl-runtime-team'
+    cost-center: 'platform-engineering'
+    business-unit: 'infrastructure'
+    project: 'gl-runtime-platform'
+    
+    # 操作標籤
+    tier: 'data'
+    scaling.group: 'database-services'
+    backup.tier: 'gold'
+    
+  annotations:
+    # 描述性註解
+    description: 'GL Runtime Platform PostgreSQL 資料庫'
+    owner: 'platform-team@gl-runtime.io'
+    architecture.doc: 'https://docs.gl-runtime.io/architecture/database'
+    
+    # 部署註解
+    deployment.config.kubernetes.io/revision: '1'
+    deployment.strategy: 'Recreate'
+    
+    # 備份註解
+    backup.schedule: '0 2 * * *'
+    backup.retention: '30d'
+    backup.encryption: 'required'
+    
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: 'gl-runtime-postgres'
+      app.kubernetes.io/component: 'database'
+  template:
+    metadata:
+      labels:
+        # Kubernetes 標準標籤
+        app.kubernetes.io/name: 'gl-runtime-postgres'
+        app.kubernetes.io/component: 'database'
+        app.kubernetes.io/part-of: 'gl-runtime-platform'
+        app.kubernetes.io/version: 'v1.0.0'
+        
+        # 運行時標籤
+        tier: 'data'
+        environment: 'base'
+        
+      annotations:
+        # Prometheus 監控
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9187'
+        prometheus.io/path: '/metrics'
+        
+    spec:
+      serviceAccountName: gl-runtime-postgres-sa
+      securityContext:
+        fsGroup: 999
+        runAsNonRoot: true
+        runAsUser: 999
+      
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5432
+          name: postgresql
+          protocol: TCP
+        - containerPort: 9187
+          name: metrics
+          protocol: TCP
+        
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: gl-runtime-postgres-secret
+              key: database-name
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: gl-runtime-postgres-secret
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gl-runtime-postgres-secret
+              key: password
+        - name: PGDATA
+          value: '/var/lib/postgresql/data/pgdata'
+        
+        resources:
+          requests:
+            cpu: '500m'
+            memory: '1Gi'
+          limits:
+            cpu: '2000m'
+            memory: '4Gi'
+        
+        livenessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - $(POSTGRES_USER)
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        
+        readinessProbe:
+          exec:
+            command:
+            - pg_isready
+            - -U
+            - $(POSTGRES_USER)
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+        - name: postgres-config
+          mountPath: /etc/postgresql
+          readOnly: true
+      
+      - name: postgres-exporter
+        image: prometheuscommunity/postgres-exporter:v0.12.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9187
+          name: metrics
+          protocol: TCP
+        
+        env:
+        - name: DATA_SOURCE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: gl-runtime-postgres-secret
+              key: datasource-uri
+        
+        resources:
+          requests:
+            cpu: '100m'
+            memory: '128Mi'
+          limits:
+            cpu: '200m'
+            memory: '256Mi'
+      
+      volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: gl-runtime-postgres-pvc
+      - name: postgres-config
+        configMap:
+          name: gl-runtime-postgres-config
+          defaultMode: 0644
+      
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                  - gl-runtime-postgres
+              topologyKey: kubernetes.io/hostname

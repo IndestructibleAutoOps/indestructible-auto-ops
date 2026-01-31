@@ -14,7 +14,7 @@ kind: StrategicObjectives
 metadata:
   name: machinenativeops-okr-2025
   version: "1.0.0"
-  created_at: "2025-01-18T00:00:00Z"
+  created_at: "{{CREATED_AT_YEAR}}-01-18T00:00:00Z"
   updated_at: "2025-01-18T00:00:00Z"
   owner: governance-team
   layer: "GL00-09"
@@ -76,13 +76,13 @@ spec:
           status: "at_risk"
       milestones:
         - name: "GL00-09規範完成"
-          due_date: "2025-03-31"
+          due_date: "{{MILESTONE_Q1}}"
           status: "completed"
         - name: "GL10-29規範完成"
-          due_date: "2025-06-30"
+          due_date: "{{MILESTONE_Q2}}"
           status: "in_progress"
         - name: "全層級規範完成"
-          due_date: "2025-09-30"
+          due_date: "{{MILESTONE_Q3}}"
           status: "planned"
     # Objective 2: CI/CD整合
     - id: "OBJ-2025-002"
@@ -122,13 +122,13 @@ spec:
           status: "at_risk"
       milestones:
         - name: "基礎工作流程建立"
-          due_date: "2025-02-28"
+          due_date: "{{MILESTONE_FEBRUARY}}"
           status: "completed"
         - name: "合規檢查整合"
-          due_date: "2025-05-31"
+          due_date: "{{MILESTONE_MAY}}"
           status: "in_progress"
         - name: "完整自動化達成"
-          due_date: "2025-10-31"
+          due_date: "{{MILESTONE_Q4}}"
           status: "planned"
     # Objective 3: 觀測性提升
     - id: "OBJ-2025-003"
@@ -168,13 +168,13 @@ spec:
           status: "at_risk"
       milestones:
         - name: "指標定義完成"
-          due_date: "2025-04-30"
+          due_date: "{{MILESTONE_APRIL}}"
           status: "in_progress"
         - name: "儀表板上線"
-          due_date: "2025-07-31"
+          due_date: "{{MILESTONE_DATE}}"
           status: "planned"
         - name: "告警系統完成"
-          due_date: "2025-11-30"
+          due_date: "{{MILESTONE_Q4}}"
           status: "planned"
     # Objective 4: 文件與知識管理
     - id: "OBJ-2025-004"
@@ -214,13 +214,13 @@ spec:
           status: "at_risk"
       milestones:
         - name: "核心文件完成"
-          due_date: "2025-03-31"
+          due_date: "{{MILESTONE_Q1}}"
           status: "in_progress"
         - name: "最佳實踐發布"
-          due_date: "2025-06-30"
+          due_date: "{{MILESTONE_Q2}}"
           status: "planned"
         - name: "培訓課程上線"
-          due_date: "2025-09-30"
+          due_date: "{{MILESTONE_Q3}}"
           status: "planned"
     # Objective 5: 安全與合規
     - id: "OBJ-2025-005"
@@ -260,13 +260,13 @@ spec:
           status: "on_track"
       milestones:
         - name: "RBAC設計完成"
-          due_date: "2025-02-28"
+          due_date: "{{MILESTONE_FEBRUARY}}"
           status: "completed"
         - name: "審計系統上線"
-          due_date: "2025-05-31"
+          due_date: "{{MILESTONE_MAY}}"
           status: "in_progress"
         - name: "安全評估通過"
-          due_date: "2025-08-31"
+          due_date: "{{MILESTONE_DATE}}"
           status: "planned"
   summary:
     total_objectives: 5

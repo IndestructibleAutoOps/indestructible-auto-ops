@@ -1,0 +1,70 @@
+# OPA Gatekeeper 約束 - 命名空間命名規範
+
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sNamingRequirements
+metadata:
+  name: namespace-naming-policy
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: 'namespace-naming-policy'
+    app.kubernetes.io/component: 'constraint'
+    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/version: 'v1.0.0'
+    app.kubernetes.io/managed-by: 'kubectl'
+    
+    # 企業治理標籤
+    tenant: 'gl-runtime-team'
+    cost-center: 'platform-engineering'
+    business-unit: 'infrastructure'
+    project: 'gl-runtime-platform'
+    
+  annotations:
+    # 描述性註解
+    description: 'GL Runtime Platform 命名空間命名規範政策'
+    owner: 'platform-team@gl-runtime.io'
+    documentation: 'https://docs.gl-runtime.io/policies/naming'
+    
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Namespace"]
+    # 排除系統命名空間
+    excludedNamespaces:
+      - "kube-system"
+      - "kube-public"
+      - "kube-node-lease"
+      - "gatekeeper-system"
+      - "cert-manager"
+  
+  parameters:
+    # 命名模式：team-{service}-{environment}-{region} 或 {env}-{service}-{version}
+    namingPattern: "^(team|dev|test|staging|prod|learn)-[a-z0-9-]+[a-z0-9]$"
+    
+    # 最大長度
+    maxLength: 63
+    
+    # 禁用的命名模式
+    forbiddenPatterns:
+      - "--"
+      - "^-"
+      - "-$"
+      - "kube-.*"
+    
+    # 必要的標籤
+    requiredLabels:
+      - "app.kubernetes.io/name"
+      - "app.kubernetes.io/component"
+      - "app.kubernetes.io/part-of"
+      - "app.kubernetes.io/version"
+      - "app.kubernetes.io/managed-by"
+      - "tenant"
+      - "environment"
+      - "cost-center"
+    
+    # 保留字
+    reservedWords:
+      - "default"
+      - "kube-system"
+      - "kube-public"
+      - "kubernetes"

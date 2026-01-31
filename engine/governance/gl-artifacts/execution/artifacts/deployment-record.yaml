@@ -14,7 +14,7 @@ kind: DeploymentRecord
 metadata:
   name: gl-engine-deployment-v1.0.0
   version: "1.0.0"
-  created_at: "2025-01-18T00:00:00Z"
+  created_at: "{{CREATED_AT_YEAR}}-01-18T00:00:00Z"
   updated_at: "2025-01-18T00:00:00Z"
   owner: platform-team
   layer: "GL30-49"
@@ -35,7 +35,7 @@ spec:
       version: "1.0.0"
       status: "deployed"
   timeline:
-    deployment_date: "2025-01-18"
+    deployment_date: "{{RELEASE_DATE}}"
     deployment_duration: "3.5 hours"
   verification:
     smoke_test: "passed"
@@ -43,7 +43,7 @@ spec:
   deployment:
     release_version: "1.0.0"
     release_name: "GL Engine Initial Release"
-    release_date: "2025-01-18"
+    release_date: "{{RELEASE_DATE}}"
     deployment_type: "initial"
   release_info:
     version: "1.0.0"

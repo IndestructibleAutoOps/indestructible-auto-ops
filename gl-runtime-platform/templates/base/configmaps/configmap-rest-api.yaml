@@ -1,0 +1,138 @@
+# GL Runtime Platform REST API 配置映射
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gl-runtime-rest-api-config
+  namespace: team-gl-runtime-base
+  labels:
+    # Kubernetes 標準標籤
+    app.kubernetes.io/name: 'gl-runtime-rest-api'
+    app.kubernetes.io/component: 'configmap'
+    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/version: 'v1.0.0'
+    app.kubernetes.io/managed-by: 'kubectl'
+    
+    # 企業治理標籤
+    tenant: 'gl-runtime-team'
+    cost-center: 'platform-engineering'
+    business-unit: 'infrastructure'
+    project: 'gl-runtime-platform'
+    
+    # 操作標籤
+    config.type: 'application'
+    
+  annotations:
+    # 描述性註解
+    description: 'GL Runtime Platform REST API 應用程式配置'
+    owner: 'platform-team@gl-runtime.io'
+    
+    # 配置註解
+    config.version: 'v1.0.0'
+    config.last-updated: '2024-01-31'
+    
+data:
+  # 應用程式配置
+  app.yaml: |
+    app:
+      name: gl-runtime-rest-api
+      version: 'v1.0.0'
+      description: GL Runtime Platform REST API Gateway
+      environment: production
+      debug: false
+    
+    server:
+      host: '0.0.0.0'
+      port: 8080
+      workers: 4
+      timeout: 30000
+      
+    logging:
+      level: info
+      format: json
+      destination: stdout
+      
+  # 上游服務配置
+  upstream.yaml: |
+    upstream:
+      platform_api:
+        url: http://gl-runtime-platform-api-svc:3000
+        timeout: 30000
+        retries: 3
+        circuit_breaker:
+          enabled: true
+          failure_threshold: 5
+          recovery_timeout: 60000
+          
+      nlp_control_plane:
+        url: http://gl-runtime-nlp-control-plane-svc:5001
+        timeout: 60000
+        retries: 2
+        circuit_breaker:
+          enabled: true
+          failure_threshold: 3
+          recovery_timeout: 120000
+          
+  # API 路由配置
+  routes.yaml: |
+    routes:
+      - path: /api/v1/platform
+        upstream: platform_api
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+        rate_limiting:
+          enabled: true
+          requests_per_minute: 1000
+          
+      - path: /api/v1/control
+        upstream: nlp_control_plane
+        methods:
+          - POST
+        rate_limiting:
+          enabled: true
+          requests_per_minute: 100
+          
+      - path: /api/v1/governance
+        upstream: platform_api
+        methods:
+          - GET
+        rate_limiting:
+          enabled: true
+          requests_per_minute: 500
+          
+  # 安全配置
+  security.yaml: |
+    security:
+      cors:
+        enabled: true
+        allowed_origins:
+          - https://gl-runtime.io
+          - https://app.gl-runtime.io
+        allowed_methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+        allowed_headers:
+          - Content-Type
+          - Authorization
+          - X-Request-ID
+        max_age: 3600
+          
+      authentication:
+        enabled: true
+        jwt:
+          issuer: gl-runtime.io
+          audience: gl-runtime-platform
+          algorithm: RS256
+          
+      rate_limiting:
+        enabled: true
+        default_limit: 1000
+        default_window: 60
+        storage: redis
+        redis_url: redis://gl-runtime-redis-svc:6379
