@@ -1,0 +1,349 @@
+apiVersion: naming.gl/v1
+kind: NamingOntology
+metadata:
+  name: gl-naming-ontology
+  version: "1.0.0"
+  description: "GL 命名本體 - 定義 26 個命名層級的語意結構與關係"
+  category: core
+  compliance:
+    - gl-enterprise-architecture
+    - gl-boundary-enforcement
+    - gl-meta-specifications
+
+spec:
+  # 命名層級定義
+  layers:
+    # L1: 語意層級
+    - id: L01-semantic
+      name: "語意層級"
+      description: "定義命名單元的語意與含義"
+      purpose: "確保名稱具有清晰的語意和業務含義"
+      rules:
+        - "名稱必須反映實際功能或用途"
+        - "避免模糊或多義的名稱"
+        - "使用業務領域詞彙"
+      examples:
+        - "user-service" (正確)
+        - "service-01" (錯誤 - 無語意)
+
+    # L2: 契約層級
+    - id: L02-contract
+      name: "契約層級"
+      description: "定義命名規範與規則"
+      purpose: "確保命名符合契約規範"
+      rules:
+        - "名稱必須符合契約格式"
+        - "遵循命名契約定義"
+      examples:
+        - "gl.ai.gpt-platform" (正確)
+        - "gpt-platform" (錯誤 - 不符合契約)
+
+    # L3: 平台層級
+    - id: L03-platform
+      name: "平台層級"
+      description: "定義平台級資源的命名"
+      purpose: "平台級資源的命名規範"
+      rules:
+        - "平台名稱格式: gl.{domain}.{capability}-platform"
+        - "必須在平台註冊表中註冊"
+      examples:
+        - "gl.ai.gpt-platform" (正確)
+        - "ai-platform" (錯誤 - 缺少 domain)
+
+    # L4: 格式層級
+    - id: L04-format
+      name: "格式層級"
+      description: "定義命名格式規範"
+      purpose: "統一命名格式"
+      rules:
+        - "使用小寫字母和連字符"
+        - "避免特殊字符"
+        - "單詞之間用連字符分隔"
+      examples:
+        - "user-service" (正確)
+        - "userService" (錯誤 - 駝峰命名)
+
+    # L5: 語言層級
+    - id: L05-language
+      name: "語言層級"
+      description: "定義編程語言特定的命名規範"
+      purpose: "符合語言慣例"
+      rules:
+        - "Python: snake_case"
+        - "JavaScript: camelCase"
+        - "Java: PascalCase"
+      examples:
+        - "user_service" (Python)
+        - "userService" (JavaScript)
+
+    # L6: 部署層級
+    - id: L06-deployment
+      name: "部署層級"
+      description: "定義部署資源的命名"
+      purpose: "部署資源的識別"
+      rules:
+        - "資源類型前綴"
+        - "環境標識"
+      examples:
+        - "prod-user-service" (生產環境)
+        - "dev-user-service" (開發環境)
+
+    # L7: 供應鏈層級
+    - id: L07-supply-chain
+      name: "供應鏈層級"
+      description: "定義供應鏈資源的命名"
+      purpose: "追蹤和管理供應鏈"
+      rules:
+        - "供應商標識"
+        - "版本標識"
+      examples:
+        - "vendor-package-1.0.0"
+
+    # L8: 用戶面向層級
+    - id: L08-user-facing
+      name: "用戶面向層級"
+      description: "定義用戶面向資源的命名"
+      purpose: "用戶友好的命名"
+      rules:
+        - "簡單易懂"
+        - "避免技術術語"
+      examples:
+        - "user-profile" (正確)
+        - "authentication-authorization-service" (錯誤 - 過於技術化)
+
+    # L9: 元數據層級
+    - id: L09-metadata
+      name: "元數據層級"
+      description: "定義元數據的命名"
+      purpose: "元數據的可追溯性"
+      rules:
+        - "包含版本信息"
+        - "包含時間戳"
+      examples:
+        - "schema-2025-01-20"
+
+    # L10: 接口層級
+    - id: L10-interface
+      name: "接口層級"
+      description: "定義接口的命名"
+      purpose: "接口的清晰識別"
+      rules:
+        - "接口類型後綴"
+        - "動詞-名詞結構"
+      examples:
+        - "getUserProfile" (正確)
+        - "userProfile" (錯誤 - 不是動詞)
+
+    # L11: 依賴層級
+    - id: L11-dependency
+      name: "依賴層級"
+      description: "定義依賴的命名"
+      purpose: "依賴關係清晰"
+      rules:
+        - "依賴類型標識"
+        - "版本約束"
+      examples:
+        - "com.example:library:1.0.0"
+
+    # L12: 版本層級
+    - id: L12-versioning
+      name: "版本層級"
+      description: "定義版本的命名"
+      purpose: "版本追蹤"
+      rules:
+        - "語意化版本"
+        - "主.次.修訂格式"
+      examples:
+        - "1.0.0" (正確)
+        - "v1" (錯誤 - 不明確)
+
+    # L13: 測試層級
+    - id: L13-testing
+      name: "測試層級"
+      description: "定義測試的命名"
+      purpose: "測試組織"
+      rules:
+        - "測試類型前綴"
+        - "測試目標名稱"
+      examples:
+        - "test-user-service-login"
+
+    # L14: 構建層級
+    - id: L14-build
+      name: "構建層級"
+      description: "定義構建產物的命名"
+      purpose: "構建產物識別"
+      rules:
+        - "構建類型標識"
+        - "版本標識"
+      examples:
+        - "app-1.0.0.jar"
+
+    # L15: CI/CD 層級
+    - id: L15-ci-cd
+      name: "CI/CD 層級"
+      description: "定義 CI/CD 資源的命名"
+      purpose: "CI/CD 管道組織"
+      rules:
+        - "階段標識"
+        - "作業類型"
+      examples:
+        - "build-frontend"
+        - "deploy-backend"
+
+    # L16: 文檔層級
+    - id: L16-documentation
+      name: "文檔層級"
+      description: "定義文檔的命名"
+      purpose: "文檔組織"
+      rules:
+        - "文檔類型標識"
+        - "主題明確"
+      examples:
+        - "api-user-service.md"
+
+    # L17: 權限層級
+    - id: L17-permission
+      name: "權限層級"
+      description: "定義權限的命名"
+      purpose: "權限管理"
+      rules:
+        - "權限類型標識"
+        - "資源標識"
+      examples:
+        - "user:read"
+        - "admin:write"
+
+    # L18: 可觀測性層級
+    - id: L18-observability
+      name: "可觀測性層級"
+      description: "定義可觀測性資源的命名"
+      purpose: "監控追蹤"
+      rules:
+        - "指標類型標識"
+        - "資源標識"
+      examples:
+        - "user-service.request-count"
+
+    # L19: 安全層級
+    - id: L19-security
+      name: "安全層級"
+      description: "定義安全資源的命名"
+      purpose: "安全管理"
+      rules:
+        - "資源敏感性標識"
+        - "訪問控制"
+      examples:
+        - "secret-database-password"
+
+    # L20: 打包層級
+    - id: L20-packaging
+      name: "打包層級"
+      description: "定義打包資源的命名"
+      purpose: "包管理"
+      rules:
+        - "包類型標識"
+        - "版本約束"
+      examples:
+        - "com.example:app:1.0.0"
+
+    # L21: 索引層級
+    - id: L21-indexing
+      name: "索引層級"
+      description: "定義索引的命名"
+      purpose: "快速檢索"
+      rules:
+        - "索引類型標識"
+        - "索引字段"
+      examples:
+        - "user-email-index"
+
+    # L22: 擴展性層級
+    - id: L22-extensibility
+      name: "擴展性層級"
+      description: "定義擴展點的命名"
+      purpose: "擴展機制"
+      rules:
+        - "擴展點類型標識"
+        - "擴展名稱"
+      examples:
+        - "extension-user-validator"
+
+    # L23: 驗證層級
+    - id: L23-validation
+      name: "驗證層級"
+      description: "定義驗證規則的命名"
+      purpose: "驗證規則組織"
+      rules:
+        - "驗證類型標識"
+        - "驗證目標"
+      examples:
+        - "validate-user-email"
+
+    # L24: 治理層級
+    - id: L24-governance
+      name: "治理層級"
+      description: "定義治理規則的命名"
+      purpose: "治理執行"
+      rules:
+        - "治理類型標識"
+        - "治理範圍"
+      examples:
+        - "governance-platform-placement"
+
+    # L25: 生成器層級
+    - id: L25-generator
+      name: "生成器層級"
+      description: "定義生成器的命名"
+      purpose: "代碼生成"
+      rules:
+        - "生成器類型標識"
+        - "生成目標"
+      examples:
+        - "generator-platform-structure"
+
+    # L26: 推理層級
+    - id: L26-reasoning
+      name: "推理層級"
+      description: "定義推理規則的命名"
+      purpose: "智能推理"
+      rules:
+        - "推理類型標識"
+        - "推理規則"
+      examples:
+        - "reason-platform-location"
+
+  # 層級關係
+  relationships:
+    - from: "L01-semantic"
+      to: ["L02-contract"]
+      type: "defines"
+    
+    - from: "L02-contract"
+      to: ["L03-platform", "L04-format"]
+      type: "governs"
+    
+    - from: "L03-platform"
+      to: ["L05-language", "L06-deployment"]
+      type: "applies"
+    
+    - from: "L23-validation"
+      to: ["all"]
+      type: "validates"
+
+  # 驗證規則
+  validationRules:
+    - rule: "GL-NO-001"
+      name: "語意一致性"
+      description: "名稱必須具有清晰的語意"
+      level: "CRITICAL"
+    
+    - rule: "GL-NO-002"
+      name: "層級關係驗證"
+      description: "層級間的關係必須正確"
+      level: "HIGH"
+    
+    - rule: "GL-NO-003"
+      name: "命名格式驗證"
+      description: "必須符合命名格式規範"
+      level: "CRITICAL"

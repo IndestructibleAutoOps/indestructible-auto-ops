@@ -1,0 +1,219 @@
+apiVersion: extensions.gl/v1
+kind: ExtensionPoints
+metadata:
+  name: gl-extension-points
+  version: "1.0.0"
+  description: "GL 擴展點定義 - 定義命名系統的擴展點與擴展機制"
+  category: extension
+  compliance:
+    - gl-extension-framework
+    - gl-meta-specifications
+
+spec:
+  extensionPoints:
+    # 自定義平台擴展點
+    - id: custom-platform
+      name: "自定義平台擴展點"
+      description: "允許用戶創建自定義平台"
+      type: platform
+      interface:
+        method: register_platform
+        parameters:
+          - name: platform_id
+            type: string
+            required: true
+          - name: domain
+            type: string
+            required: true
+          - name: capability
+            type: string
+            required: true
+      validator: gl-validation-rules
+
+    # 自定義規則擴展點
+    - id: custom-rules
+      name: "自定義規則擴展點"
+      description: "允許用戶添加自定義驗證規則"
+      type: validation
+      interface:
+        method: add_validation_rule
+        parameters:
+          - name: rule_id
+            type: string
+            required: true
+          - name: rule_definition
+            type: object
+            required: true
+      validator: gl-validation-rules
+
+    # 自定義驗證器擴展點
+    - id: custom-validators
+      name: "自定義驗證器擴展點"
+      description: "允許用戶創建自定義驗證器"
+      type: validator
+      interface:
+        method: register_validator
+        parameters:
+          - name: validator_id
+            type: string
+            required: true
+          - name: validator_function
+            type: function
+            required: true
+      validator: gl-validation-rules
+
+    # 命名生成器擴展點
+    - id: naming-generator
+      name: "命名生成器擴展點"
+      description: "允許用戶創建自定義命名生成器"
+      type: generator
+      interface:
+        method: generate_name
+        parameters:
+          - name: context
+            type: object
+            required: true
+          - name: naming_convention
+            type: object
+            required: false
+      validator: gl-naming-ontology
+
+    # 語意引擎擴展點
+    - id: semantic-engine
+      name: "語意引擎擴展點"
+      description: "允許用戶擴展語意分析能力"
+      type: engine
+      interface:
+        method: analyze_semantic
+        parameters:
+          - name: name
+            type: string
+            required: true
+          - name: context
+            type: object
+            required: false
+      validator: gl-naming-ontology
+
+    # 推理引擎擴展點
+    - id: reasoning-engine
+      name: "推理引擎擴展點"
+      description: "允許用戶添加自定義推理規則"
+      type: engine
+      interface:
+        method: add_reasoning_rule
+        parameters:
+          - name: rule_id
+            type: string
+            required: true
+          - name: rule_definition
+            type: object
+            required: true
+      validator: gl-reasoning-rules
+
+    # 治理規則擴展點
+    - id: governance-rules
+      name: "治理規則擴展點"
+      description: "允許用戶添加自定義治理規則"
+      type: governance
+      interface:
+        method: add_governance_rule
+        parameters:
+          - name: rule_id
+            type: string
+            required: true
+          - name: rule_definition
+            type: object
+            required: true
+      validator: gl-governance-layers
+
+  extensionFramework:
+    registration:
+      method: register_extension
+      parameters:
+        - name: extension_id
+          type: string
+          required: true
+        - name: extension_type
+          type: string
+          required: true
+        - name: extension_implementation
+          type: object
+          required: true
+    
+    validation:
+      method: validate_extension
+      parameters:
+        - name: extension
+          type: object
+          required: true
+    
+    execution:
+      method: execute_extension
+      parameters:
+        - name: extension_id
+          type: string
+          required: true
+        - name: input
+          type: object
+          required: true
+
+  builtInExtensions:
+    - id: gl-extension-validator
+      name: "GL 擴展驗證器"
+      type: validator
+      description: "內建擴展驗證器"
+    
+    - id: gl-extension-generator
+      name: "GL 擴展生成器"
+      type: generator
+      description: "內建擴展生成器"
+    
+    - id: gl-extension-transformer
+      name: "GL 擴展轉換器"
+      type: transformer
+      description: "內建擴展轉換器"
+
+  extensionLifecycle:
+    phases:
+      - phase: registration
+        description: "擴展註冊階段"
+        actions:
+          - "驗證擴展定義"
+          - "註冊擴展"
+          - "設置依賴"
+      
+      - phase: activation
+        description: "擴展激活階段"
+        actions:
+          - "初始化擴展"
+          - "加載依賴"
+          - "啟用擴展"
+      
+      - phase: execution
+        description: "擴展執行階段"
+        actions:
+          - "執行擴展邏輯"
+          - "處理輸入"
+          - "返回結果"
+      
+      - phase: deactivation
+        description: "擴展停用階段"
+        actions:
+          - "清理資源"
+          - "保存狀態"
+          - "停用擴展"
+      
+      - phase: removal
+        description: "擴展移除階段"
+        actions:
+          - "移除擴展"
+          - "清理依賴"
+          - "更新註冊表"
+
+  bestPractices:
+    - "擴展應該有明確的目的和範圍"
+    - "擴展應該遵循命名規範"
+    - "擴展應該通過驗證"
+    - "擴展應該有完整的文檔"
+    - "擴展應該有測試覆蓋"
+    - "擴展應該考慮向後兼容"
