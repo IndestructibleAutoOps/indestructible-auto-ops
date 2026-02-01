@@ -1,0 +1,98 @@
+# API Gateway Configuration
+# GL Governance Layer: GL10-29 (Operational Layer)
+
+apiVersion: ecosystem.coordination/v1
+kind: APIGatewayConfig
+metadata:
+  name: api-gateway-config
+  version: "1.0.0"
+
+# Server Configuration
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  timeout: 30
+
+# Routes Configuration
+routes:
+  - path: /api/v1/services/*
+    platform: service-discovery
+    service: service-discovery-api
+    methods: [GET, POST, PUT, DELETE]
+    timeout: 10
+    authentication: optional
+    
+  - path: /api/v1/platforms/*
+    platform: platform-registry
+    service: platform-api
+    methods: [GET, POST]
+    timeout: 15
+    authentication: required
+
+# Authentication Configuration
+authentication:
+  enabled: true
+  default_required: false
+  
+  jwt:
+    enabled: true
+    secret: "${JWT_SECRET}"
+    algorithm: HS256
+    expiration: 3600
+    
+  api_key:
+    enabled: true
+    header: X-API-Key
+    keys_file: /etc/api-gateway/api-keys.yaml
+
+# Rate Limiting Configuration
+rate_limiting:
+  enabled: true
+  default_limit: 1000  # requests per minute
+  burst: 100
+  
+  per_route:
+    "/api/v1/services/*": 2000
+    "/api/v1/platforms/*": 500
+
+# Load Balancing
+load_balancing:
+  strategy: health-based
+  health_check_interval: 30
+
+# Caching
+caching:
+  enabled: true
+  default_ttl: 300
+  backend: memory  # memory, redis
+  
+  cache_rules:
+    - path: /api/v1/platforms/*
+      methods: [GET]
+      ttl: 600
+    - path: /api/v1/services/*
+      methods: [GET]
+      ttl: 60
+
+# Logging
+logging:
+  level: INFO
+  format: json
+  access_log: true
+  
+# Monitoring
+monitoring:
+  metrics:
+    enabled: true
+    port: 9091
+  health_check:
+    enabled: true
+    path: /health
+
+# CORS
+cors:
+  enabled: true
+  allowed_origins: ["*"]
+  allowed_methods: [GET, POST, PUT, DELETE, OPTIONS]
+  allowed_headers: ["*"]
