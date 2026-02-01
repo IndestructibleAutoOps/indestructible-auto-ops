@@ -1,0 +1,120 @@
+# Platform Services Configuration
+# Defines all services that run on this platform
+
+apiVersion: platform.ecosystem/v1
+kind: ServicesConfig
+metadata:
+  name: core-platform-services
+  version: "1.0.0"
+
+# Service Definitions
+services:
+  # Service Discovery
+  service-discovery:
+    enabled: true
+    name: service-discovery
+    image: ecosystem/service-discovery:1.0.0
+    port: 8500
+    replicas: 1
+    
+    environment:
+      - REGISTRY_TYPE=inmemory
+      - LOG_LEVEL=INFO
+    
+    health_check:
+      type: http
+      path: /health
+      interval: 30
+      timeout: 5
+    
+    resources:
+      cpu: 500m
+      memory: 512Mi
+
+  # API Gateway
+  api-gateway:
+    enabled: true
+    name: api-gateway
+    image: ecosystem/api-gateway:1.0.0
+    port: 8000
+    replicas: 1
+    
+    environment:
+      - GATEWAY_PORT=8000
+      - JWT_SECRET=${JWT_SECRET}
+      - LOG_LEVEL=INFO
+    
+    health_check:
+      type: http
+      path: /health
+      interval: 30
+      timeout: 5
+    
+    resources:
+      cpu: 1000m
+      memory: 1Gi
+
+  # Message Bus
+  message-bus:
+    enabled: true
+    name: message-bus
+    image: ecosystem/message-bus:1.0.0
+    port: 5672
+    replicas: 1
+    
+    environment:
+      - BUS_TYPE=inmemory
+      - MAX_QUEUE_SIZE=10000
+      - LOG_LEVEL=INFO
+    
+    health_check:
+      type: tcp
+      port: 5672
+      interval: 30
+      timeout: 5
+    
+    resources:
+      cpu: 500m
+      memory: 512Mi
+
+  # Data Sync Service
+  data-sync:
+    enabled: true
+    name: data-sync
+    image: ecosystem/data-sync:1.0.0
+    port: 8080
+    replicas: 1
+    
+    environment:
+      - SYNC_MODE=scheduled
+      - BATCH_SIZE=1000
+      - LOG_LEVEL=INFO
+    
+    health_check:
+      type: http
+      path: /health
+      interval: 60
+      timeout: 10
+    
+    resources:
+      cpu: 1000m
+      memory: 1Gi
+    
+    volumes:
+      - /data/sync:/data
+
+# Service Dependencies
+dependencies:
+  api-gateway:
+    - service-discovery
+  data-sync:
+    - service-discovery
+  message-bus: []
+  service-discovery: []
+
+# Startup Order
+startup_order:
+  - service-discovery
+  - message-bus
+  - api-gateway
+  - data-sync
