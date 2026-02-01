@@ -1,0 +1,78 @@
+# Communication System Configuration
+# GL Governance Layer: GL10-29 (Operational Layer)
+
+apiVersion: ecosystem.coordination/v1
+kind: CommunicationConfig
+metadata:
+  name: communication-config
+  version: "1.0.0"
+
+# Message Bus Configuration
+message_bus:
+  enabled: true
+  type: inmemory  # Options: inmemory, rabbitmq, kafka
+  max_queue_size: 10000
+  
+  # RabbitMQ Configuration (if type: rabbitmq)
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    vhost: /
+    
+  # Kafka Configuration (if type: kafka)
+  kafka:
+    bootstrap_servers:
+      - localhost:9092
+    client_id: ecosystem-communication
+
+# Event Dispatcher Configuration
+event_dispatcher:
+  enabled: true
+  async_processing: true
+  worker_threads: 4
+  max_retries: 3
+  retry_delay: 1  # seconds
+
+# Protocol Handlers
+protocols:
+  http:
+    enabled: true
+    timeout: 30
+  websocket:
+    enabled: false
+    heartbeat_interval: 30
+  grpc:
+    enabled: false
+  amqp:
+    enabled: false
+
+# Topic Configuration
+topics:
+  default_ttl: 3600  # seconds
+  max_subscribers: 100
+  
+  predefined:
+    - name: platform.events
+      description: Platform lifecycle events
+    - name: service.events
+      description: Service events
+    - name: monitoring.events
+      description: Monitoring and metrics events
+
+# Monitoring
+monitoring:
+  metrics:
+    enabled: true
+    port: 9092
+  logging:
+    level: INFO
+    format: json
+
+# Security
+security:
+  authentication:
+    enabled: false
+  encryption:
+    enabled: false

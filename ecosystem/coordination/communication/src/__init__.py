@@ -1,0 +1,23 @@
+"""
+GL Communication System
+=======================
+通信系統 - 跨平台消息和事件處理
+
+GL Governance Layer: GL10-29 (Operational Layer)
+"""
+
+from .message_bus import MessageBus, Message, Subscription
+from .event_dispatcher import EventDispatcher, EventHandler
+
+__all__ = [
+    # Message Bus
+    'MessageBus',
+    'Message',
+    'Subscription',
+    
+    # Event Dispatcher
+    'EventDispatcher',
+    'EventHandler',
+]
+
+__version__ = '1.0.0'
