@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-platform-ecosystem/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-platform-ecosystem/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-ecosystem/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 apiVersion: gl-runtime.io/v1.0.0
@@ -14,7 +14,7 @@ metadata:
   name: structural-unification-spec
   version: v1.0.0
   description: "GL Structural Unification Specification - 結構統一規範"
-  namespace: gl-platform-universe
+  namespace: gl-platform-ecosystem
   labels:
     unification.level: L1
     unification.type: structural
@@ -23,7 +23,7 @@ spec:
   ## Project Structure
   project-structure:
     version: v1.0.0
-    description: "GL Platform Universe 專案結構定義"
+    description: "GL Platform Enterprise Architecture 專案結構定義"
     
     root-directories:
       - name: platforms
@@ -288,7 +288,7 @@ spec:
           good:
             - "./config.yaml"
             - "./contracts/contract.yaml"
-            - "/gl-platform-universe/contracts/shared.yaml"
+            - "/gl-platform-ecosystem/contracts/shared.yaml"
       
       ## Relative Path Outside Platform
       no-relative-path-outside-platform:

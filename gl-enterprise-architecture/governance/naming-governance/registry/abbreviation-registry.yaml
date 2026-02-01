@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: naming-governance
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL90_99-audit.json
+# @GL-audit-trail: gl-platform-ecosystem/governance/audit-trails/GL90_99-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-platform-ecosystem/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-ecosystem/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 apiVersion: gl-runtime.io/v1.0.0
@@ -14,7 +14,7 @@ metadata:
   name: abbreviation-registry
   version: v1.0.0
   description: "GL Abbreviation Registry - 定義所有標準縮寫"
-  namespace: gl-platform-universe
+  namespace: gl-platform-ecosystem
 spec:
   abbreviations:
     ## Domain Abbreviations

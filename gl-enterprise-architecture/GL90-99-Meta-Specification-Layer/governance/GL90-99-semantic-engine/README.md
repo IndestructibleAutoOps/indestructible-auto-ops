@@ -168,4 +168,4 @@ GL Semantic Core Platform v1.0.0
 
 ## Contributing
 
-This is part of the MachineNativeOps GL Platform Universe.
+This is part of the MachineNativeOps GL Platform Enterprise Architecture.

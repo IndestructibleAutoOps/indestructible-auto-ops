@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-platform-ecosystem/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-platform-ecosystem/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform-ecosystem/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 apiVersion: gl-runtime.io/v1.0.0
@@ -14,7 +14,7 @@ metadata:
   name: semantic-unification-spec
   version: v1.0.0
   description: "GL Semantic Unification Specification - 語意統一規範"
-  namespace: gl-platform-universe
+  namespace: gl-platform-ecosystem
   labels:
     unification.level: L1
     unification.type: semantic

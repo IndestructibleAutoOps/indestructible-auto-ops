@@ -1,4 +1,4 @@
-# GL Platform Universe - v1.0.0 Implementation
+# GL Platform Enterprise Architecture - v1.0.0 Implementation
 
 ## Task List
 
