@@ -6,7 +6,7 @@
 ## 📊 現狀分析
 
 ### zip 文件內容（正確版本）
-- **總文件數**: 589 個 gl-runtime-platform 文件
+- **總文件數**: 589 個 gl-execution-runtime 文件
 - **治理文件**: 114 個
 - **V23 Root Governance**: 9 個文件 ✅
 - **V24 Meta Governance**: 8 個文件 ✅
@@ -29,7 +29,7 @@
 
 #### zip 文件中的正確結構：
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── gl/v23/root_governance/
 │   ├── anti_fabric/
 │   │   └── anti_fabric.py
@@ -55,7 +55,7 @@ gl-runtime-platform/
 
 #### 當前倉庫結構（不完整）：
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── gl/v23/root_governance/ ❌ 不完整
 ├── gl/v24/meta_governance/ ❌ 不完整
 └── 缺少大量文件...
@@ -75,7 +75,7 @@ gl-runtime-platform/
 - [ ] 導入 Falsification Engine (6 個文件)
 - [ ] 導入其他治理文件 (91 個文件)
 
-### Phase 3: 導入所有 gl-runtime-platform 文件
+### Phase 3: 導入所有 gl-execution-runtime 文件
 - [ ] 導入 582 個缺失文件
 - [ ] 導入文檔文件 (82 個 .md)
 - [ ] 導入代碼文件 (324 個 .py/.ts/.js)
@@ -165,13 +165,13 @@ gl-runtime-platform/
 # 解壓縮並導入所有文件
 cd /workspace
 unzip -q "package (1).zip" -d /tmp/extracted
-cp -r /tmp/extracted/gl-repo/gl-runtime-platform/* /workspace/gl-repo/gl-runtime-platform/
+cp -r /tmp/extracted/gl-repo/gl-execution-runtime/* /workspace/gl-repo/gl-execution-runtime/
 ```
 
 ### 驗證導入
 ```bash
 # 檢查導入的文件數量
-find /workspace/gl-repo/gl-runtime-platform -type f | wc -l
+find /workspace/gl-repo/gl-execution-runtime -type f | wc -l
 
 # 執行版本核對
 python3 /workspace/gl-repo/scripts/version-audit.py

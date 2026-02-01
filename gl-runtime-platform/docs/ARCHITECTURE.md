@@ -17,7 +17,7 @@
 ## 📁 完整文件結構
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── tasks/
 │   ├── start-runtime.yml                 # 主啟動任務定義
 │   ├── governance-bootstrap.yml          # 治理層啟動任務
@@ -189,7 +189,7 @@ GET /api/governance/report
 ### 快速啟動
 ```bash
 # 1. 導航到項目目錄
-cd /workspace/machine-native-ops/gl-runtime-platform
+cd /workspace/machine-native-ops/gl-execution-runtime
 
 # 2. 執行服務健康檢查
 ./ops/service-health-check.sh

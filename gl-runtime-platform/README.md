@@ -73,7 +73,7 @@ The architecture presents a **complete intelligent system evolution timeline** f
 ```bash
 # Clone repository
 git clone https://github.com/MachineNativeOps/machine-native-ops.git
-cd machine-native-ops/gl-runtime-platform
+cd machine-native-ops/gl-execution-runtime
 
 # Install dependencies
 npm install
@@ -190,7 +190,7 @@ npm run audit
 ### Project Structure
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── engine/
 │   ├── orchestration-engine/
 │   ├── sandbox-runner/

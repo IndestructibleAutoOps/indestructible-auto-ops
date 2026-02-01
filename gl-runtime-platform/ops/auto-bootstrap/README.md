@@ -18,7 +18,7 @@ The Auto-Bootstrap Layer provides comprehensive automatic startup, triggering, a
 
 ## Auto-Starters
 
-All auto-starters are located in this directory (`gl-runtime-platform/ops/auto-bootstrap/`) and follow the naming convention `auto-*.yaml`.
+All auto-starters are located in this directory (`gl-execution-runtime/ops/auto-bootstrap/`) and follow the naming convention `auto-*.yaml`.
 
 ### 1. Auto-Trigger (`auto-trigger.yaml`)
 

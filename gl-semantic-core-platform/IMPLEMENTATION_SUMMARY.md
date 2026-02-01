@@ -9,7 +9,7 @@ GL Semantic Core Platform v1.0.0 has been successfully created as a complete sem
 ### 1. Directory Structure (Complete)
 
 ```
-gl-semantic-core-platform/
+gl-platform-services/
 ├── src/                          # Source code
 │   ├── semantic-folding/         # Semantic folding engine ✅
 │   ├── semantic-computation/     # Semantic computation engine (stub)

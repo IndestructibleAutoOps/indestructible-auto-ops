@@ -264,7 +264,7 @@ spec:
           - "governance/"
           - "workflows/"
         exceptions:
-          - "/gl-runtime (allowed symlink to /workspace/machine-native-ops/gl-runtime-platform)"
+          - "/gl-runtime (allowed symlink to /workspace/machine-native-ops/gl-execution-runtime)"
       
       ## Hard Links
       no-hardlink:
@@ -362,7 +362,7 @@ spec:
         - "gl_runtime_dag_platform/"
         - "runtime-dag-platform/"
         - "GL-Runtime-DAG-Platform/"
-        - "gl-runtime-platform/"
+        - "gl-execution-runtime/"
     
     ## Sub-Directory Naming
     sub-directories:

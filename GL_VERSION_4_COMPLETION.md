@@ -13,7 +13,7 @@ GL Runtime Platform Version 4.0.0 has been successfully implemented and deployed
 
 ### Core Auto-Repair Module
 
-**Location:** `gl-runtime-platform/ops/auto-repair/`
+**Location:** `gl-execution-runtime/ops/auto-repair/`
 
 1. **auto-repair.yaml**
    - Automated repair configuration

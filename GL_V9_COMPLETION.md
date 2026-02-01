@@ -18,7 +18,7 @@ This document summarizes the successful completion of the Global DAG-Based Multi
 
 ### Phase 0: Platform Verification & Token Setup ✓
 - GL_TOKEN environment variable configured
-- gl-runtime-platform v8.0.0 operational status verified
+- gl-execution-runtime v8.0.0 operational status verified
 - multi-agent-parallel-orchestration configuration validated
 
 ### Phase 0.5: GL_TOKEN and Runner Configuration ✓
@@ -167,11 +167,11 @@ This document summarizes the successful completion of the Global DAG-Based Multi
 - governance-manifest.yaml
 - package.json
 - todo.md
-- gl-runtime-platform/federation/org-registry/organizations.yaml
-- gl-runtime-platform/federation/policies/federation-policies.yaml
-- gl-runtime-platform/federation/topology/topology.yaml
-- gl-runtime-platform/federation/federation-orchestration/federation-orchestration.yaml
-- gl-runtime-platform/federation/trust/trust-model.yaml
+- gl-execution-runtime/federation/org-registry/organizations.yaml
+- gl-execution-runtime/federation/policies/federation-policies.yaml
+- gl-execution-runtime/federation/topology/topology.yaml
+- gl-execution-runtime/federation/federation-orchestration/federation-orchestration.yaml
+- gl-execution-runtime/federation/trust/trust-model.yaml
 - .github/agents/agent-orchestration.yml
 
 ### Created Files

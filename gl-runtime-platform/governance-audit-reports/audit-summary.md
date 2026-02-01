@@ -27,7 +27,7 @@ Overall Compliance: **13.40%**
 - **Affected Files:** 498
 - **Priority:** High
 
-### Error reading file: [Errno 21] Is a directory: '/workspace/gl-runtime-platform/node_modules/ipaddr.js'
+### Error reading file: [Errno 21] Is a directory: '/workspace/gl-execution-runtime/node_modules/ipaddr.js'
 
 - **Affected Files:** 1
 - **Priority:** High

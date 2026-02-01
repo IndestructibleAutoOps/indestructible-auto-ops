@@ -30,28 +30,28 @@ spec:
     - source: "ops/pipelines/"
       target: "k8s-config"
       target_type: "ConfigMap"
-      namespace: "gl-runtime-platform"
+      namespace: "gl-execution-runtime"
       enabled: true
       format: "yaml"
       
     - source: "ops/agents/"
       target: "k8s-config"
       target_type: "ConfigMap"
-      namespace: "gl-runtime-platform"
+      namespace: "gl-execution-runtime"
       enabled: true
       format: "yaml"
       
     - source: "governance/policies/"
       target: "k8s-config"
       target_type: "ConfigMap"
-      namespace: "gl-runtime-platform"
+      namespace: "gl-execution-runtime"
       enabled: true
       format: "yaml"
       
     - source: ".github/agents/agent-orchestration.yml"
       target: "k8s-crd"
       target_type: "CustomResourceDefinition"
-      namespace: "gl-runtime-platform"
+      namespace: "gl-execution-runtime"
       enabled: true
       format: "yaml"
       

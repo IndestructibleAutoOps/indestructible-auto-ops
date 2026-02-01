@@ -120,7 +120,7 @@ spec:
       priority: 85
       config:
         sources:
-          - "gl-runtime-platform/package.json"
+          - "gl-execution-runtime/package.json"
           - "ops/auto-bootstrap/*.yaml"
           - "ops/pipelines/*.yaml"
         

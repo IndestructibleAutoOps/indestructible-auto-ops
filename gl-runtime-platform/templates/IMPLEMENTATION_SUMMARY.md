@@ -2,7 +2,7 @@
 
 ## 概述
 
-本文檔總結了使用 GL Semantic Core Platform v1.0.0 的語義折疊能力重構 gl-runtime-platform 內的 Kubernetes 模板的實施情況。所有模板嚴格對齊 GL 全域命名治理規範 v2.1.0。
+本文檔總結了使用 GL Semantic Core Platform v1.0.0 的語義折疊能力重構 gl-execution-runtime 內的 Kubernetes 模板的實施情況。所有模板嚴格對齊 GL 全域命名治理規範 v2.1.0。
 
 ## 版本信息
 
@@ -17,7 +17,7 @@
 ### 目錄結構
 
 ```
-gl-runtime-platform/templates/
+gl-execution-runtime/templates/
 ├── README.md                                          # 主文檔
 ├── IMPLEMENTATION_SUMMARY.md                          # 本文件
 ├── base/                                              # 基礎模板
@@ -104,7 +104,7 @@ team-gl-runtime-prod-us-west
 {service-name}-deploy-v{version}
 ```
 範例:
-- `gl-runtime-platform-api-deploy-v1`
+- `gl-execution-runtime-api-deploy-v1`
 - `gl-runtime-rest-api-deploy-v1`
 - `gl-runtime-nlp-control-plane-deploy-v1`
 - `gl-runtime-postgres-deploy-v1`
@@ -114,7 +114,7 @@ team-gl-runtime-prod-us-west
 {service-name}-svc
 ```
 範例:
-- `gl-runtime-platform-api-svc`
+- `gl-execution-runtime-api-svc`
 - `gl-runtime-rest-api-svc`
 - `gl-runtime-nlp-control-plane-svc`
 - `gl-runtime-postgres-svc`
@@ -124,7 +124,7 @@ team-gl-runtime-prod-us-west
 {service-name}-config
 ```
 範例:
-- `gl-runtime-platform-api-config`
+- `gl-execution-runtime-api-config`
 - `gl-runtime-rest-api-config`
 - `gl-runtime-postgres-config`
 
@@ -143,7 +143,7 @@ team-gl-runtime-prod-us-west
 ```yaml
 app.kubernetes.io/name: "{service-name}"
 app.kubernetes.io/component: "{component}"
-app.kubernetes.io/part-of: "gl-runtime-platform"
+app.kubernetes.io/part-of: "gl-execution-runtime"
 app.kubernetes.io/version: "{version}"
 app.kubernetes.io/managed-by: "{tool}"
 ```
@@ -154,7 +154,7 @@ tenant: "gl-runtime-team"
 environment: "{environment}"
 cost-center: "platform-engineering"
 business-unit: "infrastructure"
-project: "gl-runtime-platform"
+project: "gl-execution-runtime"
 ```
 
 #### 操作標籤 (依需求)
@@ -329,7 +329,7 @@ data.classification: "confidential"
 
 ```bash
 # 1. 驗證命名規範
-cd gl-runtime-platform/templates
+cd gl-execution-runtime/templates
 ./tools/validate-naming.sh
 
 # 2. 部署基礎模板
@@ -476,8 +476,8 @@ kubectl apply -f policies/opa/constraint-namespace-naming.yaml
 ### 內部文檔
 
 - [GL 全域命名治理規範 v2.1.0](../一月三十一命名規範.txt)
-- [GL Platform Universe v1.0.0](../../gl-platform-universe/)
-- [GL Semantic Core Platform v1.0.0](../../gl-semantic-core-platform/)
+- [GL Platform Universe v1.0.0](../../gl-enterprise-architecture/)
+- [GL Semantic Core Platform v1.0.0](../../gl-platform-services/)
 - [Kubernetes 命名規範指南](https://docs.gl-runtime.io/naming)
 
 ### 外部文檔

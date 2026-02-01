@@ -120,7 +120,7 @@ spec:
 
   # Integration points
   integrations:
-    - type: "gl-runtime-platform"
+    - type: "gl-execution-runtime"
       version: "5.0.0"
       enabled: true
       api_endpoint: "http://localhost:3000"

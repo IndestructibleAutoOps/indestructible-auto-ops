@@ -11,7 +11,7 @@ v1.3 (AXIOM 命名重構版本)
 ## 📋 修復內容總結
 
 ### 1. 路徑標準化 ✅
-- **問題**: 符號連接 `/gl-runtime` 指向 `/workspace/machine-native-ops/gl-runtime-platform`
+- **問題**: 符號連接 `/gl-runtime` 指向 `/workspace/machine-native-ops/gl-execution-runtime`
 - **解決**: 保留符號連接作為便捷訪問，所有配置使用原始路徑
 - **狀態**: 完成
 
@@ -80,10 +80,10 @@ v1.3 (AXIOM 命名重構版本)
 10. `engine/tools-legacy/namespace-converter.py`
 
 ### GL Runtime Platform 文件 (4 文件)
-1. `gl-runtime-platform/scripts/fix-axiom-naming.py` (新建)
-2. `gl-runtime-platform/scripts/fix-axiom-naming.sh` (新建)
-3. `gl-runtime-platform/scripts/check-ports.py` (之前創建)
-4. `gl-runtime-platform/scripts/check-service-health.py` (之前創建)
+1. `gl-execution-runtime/scripts/fix-axiom-naming.py` (新建)
+2. `gl-execution-runtime/scripts/fix-axiom-naming.sh` (新建)
+3. `gl-execution-runtime/scripts/check-ports.py` (之前創建)
+4. `gl-execution-runtime/scripts/check-service-health.py` (之前創建)
 
 ### 根目錄腳本 (1 文件)
 1. `scripts/fix-axiom-naming-repo.sh` (新建)
@@ -175,7 +175,7 @@ cd /gl-runtime && python3 scripts/verify-canonical.py
 ### 路徑驗證
 ```bash
 ls -la /gl-runtime
-✅ lrwxrwxrwx 1 root root 49 /gl-runtime -> /workspace/machine-native-ops/gl-runtime-platform
+✅ lrwxrwxrwx 1 root root 49 /gl-runtime -> /workspace/machine-native-ops/gl-execution-runtime
 ```
 
 ### 端口驗證
@@ -223,7 +223,7 @@ curl -s -X POST http://localhost:5001/api/control/execute \
 
 ### 備份目錄
 1. **`.axiom-refactor-backup-repo/`** - 倉庫級別修復備份
-2. **`gl-runtime-platform/.axiom-refactor-backup/`** - 本地修復備份
+2. **`gl-execution-runtime/.axiom-refactor-backup/`** - 本地修復備份
 
 ### 恢復命令
 ```bash
@@ -231,7 +231,7 @@ curl -s -X POST http://localhost:5001/api/control/execute \
 cp -r .axiom-refactor-backup-repo/* .
 
 # 恢復本地備份
-cp -r gl-runtime-platform/.axiom-refactor-backup/* gl-runtime-platform/
+cp -r gl-execution-runtime/.axiom-refactor-backup/* gl-execution-runtime/
 ```
 
 ---

@@ -112,7 +112,7 @@ GL Runtime Platform v5.0.0 Federation 層已成功建構、修復、集成、整
 
 ## 整合狀態
 
-- ✅ gl-runtime-platform v4.0.0
+- ✅ gl-execution-runtime v4.0.0
 - ✅ orchestration-engine v2.0.0
 - ✅ governance-event-stream v2.0.0
 - ✅ All connectors operational

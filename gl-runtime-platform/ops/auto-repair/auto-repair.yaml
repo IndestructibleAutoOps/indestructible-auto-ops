@@ -46,7 +46,7 @@ spec:
   scope:
     include:
       - "engine/**"
-      - "gl-runtime-platform/**"
+      - "gl-execution-runtime/**"
       - "file-organizer-system/**"
       - ".governance/**"
       - ".agent_hooks/**"

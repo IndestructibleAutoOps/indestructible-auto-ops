@@ -2,7 +2,7 @@
 
 ## 專案概述
 
-成功使用 GL Semantic Core Platform v1.0.0 的語義折疊能力重構 gl-runtime-platform 內的 Kubernetes 模板，嚴格對齊 GL 全域命名治理規範 v2.1.0。
+成功使用 GL Semantic Core Platform v1.0.0 的語義折疊能力重構 gl-execution-runtime 內的 Kubernetes 模板，嚴格對齊 GL 全域命名治理規範 v2.1.0。
 
 ## 完成時間
 
@@ -178,7 +178,7 @@ Secret: {service-name}-secret
 | **總計** | **26** |
 
 ### Git 統計
-- **分支**: feature/gl-platform-universe-v1.0.0
+- **分支**: feature/gl-enterprise-architecture-v1.0.0
 - **提交數**: 2
 - **文件變更**: 38 files
 - **代碼行數**: 4,172 insertions(+)
@@ -300,8 +300,8 @@ Secret: {service-name}-secret
 
 ### 內部文檔
 - [GL 全域命名治理規範 v2.1.0](../一月三十一命名規範.txt)
-- [GL Platform Universe v1.0.0](../../gl-platform-universe/)
-- [GL Semantic Core Platform v1.0.0](../../gl-semantic-core-platform/)
+- [GL Platform Universe v1.0.0](../../gl-enterprise-architecture/)
+- [GL Semantic Core Platform v1.0.0](../../gl-platform-services/)
 
 ### 外部文檔
 - [Kubernetes 文檔](https://kubernetes.io/docs/)
@@ -330,4 +330,4 @@ Secret: {service-name}-secret
 **專案狀態**: ✅ 已完成  
 **最後更新**: 2024-01-31 14:45  
 **推送狀態**: 成功推送到 GitHub  
-**分支**: feature/gl-platform-universe-v1.0.0
+**分支**: feature/gl-enterprise-architecture-v1.0.0

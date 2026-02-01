@@ -65,7 +65,7 @@ The GL Runtime Platform has evolved to **Version 8.0.0**, introducing the ground
 
 ### Directory Structure Created
 ```
-gl-runtime-platform/
+gl-execution-runtime/
   engine/
     self-healing-engine/          # ⭐ Version 8 Core
       strategy-library/           # Multi-strategy execution library

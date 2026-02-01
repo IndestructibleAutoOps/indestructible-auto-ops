@@ -44,10 +44,10 @@ templates/
 ```
 
 範例：
-- 部署: `gl-runtime-platform-api-deploy-v1`
-- 服務: `gl-runtime-platform-api-svc`
-- 配置映射: `gl-runtime-platform-api-config`
-- 入口: `gl-runtime-platform-ingress`
+- 部署: `gl-execution-runtime-api-deploy-v1`
+- 服務: `gl-execution-runtime-api-svc`
+- 配置映射: `gl-execution-runtime-api-config`
+- 入口: `gl-execution-runtime-ingress`
 
 ### 標籤標準
 
@@ -58,7 +58,7 @@ labels:
   # Kubernetes 標準標籤
   app.kubernetes.io/name: "{service-name}"
   app.kubernetes.io/component: "{component}"
-  app.kubernetes.io/part-of: "gl-runtime-platform"
+  app.kubernetes.io/part-of: "gl-execution-runtime"
   app.kubernetes.io/version: "{version}"
   app.kubernetes.io/managed-by: "{tool}"
   

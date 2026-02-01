@@ -12,7 +12,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: gl-runtime-platform
+  name: gl-execution-runtime
   labels:
     gl-governed: "true"
     gl-layer: "GL90-99"

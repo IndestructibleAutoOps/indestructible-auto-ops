@@ -85,10 +85,10 @@ spec:
         platform: "github"
         repositories:
           - "MachineNativeOps/machine-native-ops"
-          - "MachineNativeOps/gl-runtime-platform"
+          - "MachineNativeOps/gl-execution-runtime"
         sync_patterns:
           - ".governance/**"
-          - "gl-runtime-platform/**"
+          - "gl-execution-runtime/**"
         authentication:
           type: "token"
           token_env: "GL_GITHUB_TOKEN"

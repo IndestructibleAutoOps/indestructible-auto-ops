@@ -7,11 +7,11 @@
 version: '3.8'
 
 services:
-  gl-runtime-platform:
+  gl-execution-runtime:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: gl-runtime-platform
+    container_name: gl-execution-runtime
     ports:
       - "3000:3000"
     environment:

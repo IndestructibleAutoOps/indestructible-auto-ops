@@ -1125,7 +1125,7 @@
     },
     {
       "id": "node-109",
-      "path": "gl-runtime-platform/docker-compose.yml",
+      "path": "gl-execution-runtime/docker-compose.yml",
       "type": "yml",
       "hash": "8b46eedd8f0cc18d42bfe0f6a385fdba",
       "size": 1827,
@@ -1135,7 +1135,7 @@
     },
     {
       "id": "node-110",
-      "path": "gl-runtime-platform/Dockerfile",
+      "path": "gl-execution-runtime/Dockerfile",
       "type": "directory",
       "hash": "f499b3fd3887beb4f12f938fb012ed4f",
       "size": 749,
@@ -1145,7 +1145,7 @@
     },
     {
       "id": "node-111",
-      "path": "gl-runtime-platform/tsconfig.json",
+      "path": "gl-execution-runtime/tsconfig.json",
       "type": "json",
       "hash": "a5d37bdcde4b85f11fae2536cff2e2e0",
       "size": 667,
@@ -1155,7 +1155,7 @@
     },
     {
       "id": "node-112",
-      "path": "gl-runtime-platform/package.json",
+      "path": "gl-execution-runtime/package.json",
       "type": "json",
       "hash": "1149ca23d21ca84ddb340481af0d5ff2",
       "size": 1425,
@@ -1165,7 +1165,7 @@
     },
     {
       "id": "node-113",
-      "path": "gl-runtime-platform/README.md",
+      "path": "gl-execution-runtime/README.md",
       "type": "md",
       "hash": "6c6ead3878f0caf7152d51bb5aaf3c16",
       "size": 5432,
@@ -1175,7 +1175,7 @@
     },
     {
       "id": "node-114",
-      "path": "gl-runtime-platform/GL_V7_COMPLETION.md",
+      "path": "gl-execution-runtime/GL_V7_COMPLETION.md",
       "type": "md",
       "hash": "9144d0abefc07ef58ad3f3e799fdc3ef",
       "size": 13242,
@@ -1185,7 +1185,7 @@
     },
     {
       "id": "node-115",
-      "path": "gl-runtime-platform/api/rest/index.js",
+      "path": "gl-execution-runtime/api/rest/index.js",
       "type": "js",
       "hash": "0b4b31b7457881d4df5e5399422b6cab",
       "size": 8396,
@@ -1195,7 +1195,7 @@
     },
     {
       "id": "node-116",
-      "path": "gl-runtime-platform/src/index.ts",
+      "path": "gl-execution-runtime/src/index.ts",
       "type": "ts",
       "hash": "aed62e7957a6c06b4b69322e16a56af9",
       "size": 3707,
@@ -1205,7 +1205,7 @@
     },
     {
       "id": "node-117",
-      "path": "gl-runtime-platform/src/api/routes.ts",
+      "path": "gl-execution-runtime/src/api/routes.ts",
       "type": "ts",
       "hash": "091c918b047cbe59204423b2072c599b",
       "size": 13089,
@@ -1215,7 +1215,7 @@
     },
     {
       "id": "node-118",
-      "path": "gl-runtime-platform/src/policies/policy-engine.ts",
+      "path": "gl-execution-runtime/src/policies/policy-engine.ts",
       "type": "ts",
       "hash": "b0608f141a5925d1bfeea31a83ef973c",
       "size": 6096,
@@ -1225,7 +1225,7 @@
     },
     {
       "id": "node-119",
-      "path": "gl-runtime-platform/src/utils/logger.ts",
+      "path": "gl-execution-runtime/src/utils/logger.ts",
       "type": "ts",
       "hash": "582255efb7ace3c0528bb482c2bfa2c4",
       "size": 1705,
@@ -1235,7 +1235,7 @@
     },
     {
       "id": "node-120",
-      "path": "gl-runtime-platform/src/events/event-stream-manager.ts",
+      "path": "gl-execution-runtime/src/events/event-stream-manager.ts",
       "type": "ts",
       "hash": "89dcc656c18af7b48603b0e054b4cf5e",
       "size": 2427,
@@ -1245,7 +1245,7 @@
     },
     {
       "id": "node-121",
-      "path": "gl-runtime-platform/src/orchestration/orchestrator-engine.ts",
+      "path": "gl-execution-runtime/src/orchestration/orchestrator-engine.ts",
       "type": "ts",
       "hash": "da424e11a2f915212a4bb6ae53671e7e",
       "size": 5258,
@@ -1255,7 +1255,7 @@
     },
     {
       "id": "node-122",
-      "path": "gl-runtime-platform/src/connectors/git-connector.ts",
+      "path": "gl-execution-runtime/src/connectors/git-connector.ts",
       "type": "ts",
       "hash": "ec0337d97163c13c10cb514d22ee161f",
       "size": 4736,
@@ -1265,7 +1265,7 @@
     },
     {
       "id": "node-123",
-      "path": "gl-runtime-platform/src/storage/artifact-store.ts",
+      "path": "gl-execution-runtime/src/storage/artifact-store.ts",
       "type": "ts",
       "hash": "3e08ecdd1a1b6f02beb513f03f475303",
       "size": 3589,
@@ -1275,7 +1275,7 @@
     },
     {
       "id": "node-124",
-      "path": "gl-runtime-platform/ops/auto-repair/auto-commit.yaml",
+      "path": "gl-execution-runtime/ops/auto-repair/auto-commit.yaml",
       "type": "yaml",
       "hash": "26c3247399e16828c9cfa9aa579f510b",
       "size": 1461,
@@ -1285,7 +1285,7 @@
     },
     {
       "id": "node-125",
-      "path": "gl-runtime-platform/ops/auto-repair/auto-repair.yaml",
+      "path": "gl-execution-runtime/ops/auto-repair/auto-repair.yaml",
       "type": "yaml",
       "hash": "837d0782f92c1f652acd017ee58f9f0d",
       "size": 1940,
@@ -1295,7 +1295,7 @@
     },
     {
       "id": "node-126",
-      "path": "gl-runtime-platform/ops/auto-repair/auto-pr.yaml",
+      "path": "gl-execution-runtime/ops/auto-repair/auto-pr.yaml",
       "type": "yaml",
       "hash": "3d9e4f2876fe62cb2d2875c689c59819",
       "size": 1958,
@@ -1305,7 +1305,7 @@
     },
     {
       "id": "node-127",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-orchestrate.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-orchestrate.yaml",
       "type": "yaml",
       "hash": "bf29efd9e75e3d17bce948ca71012b3b",
       "size": 5888,
@@ -1315,7 +1315,7 @@
     },
     {
       "id": "node-128",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-optimize.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-optimize.yaml",
       "type": "yaml",
       "hash": "4a77203ac90e0b9fbdba5a092c86a46f",
       "size": 6521,
@@ -1325,7 +1325,7 @@
     },
     {
       "id": "node-129",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-sync.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-sync.yaml",
       "type": "yaml",
       "hash": "bb2ee1193ee7da9458db5f3d7ac1221a",
       "size": 6252,
@@ -1335,7 +1335,7 @@
     },
     {
       "id": "node-130",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-federation.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-federation.yaml",
       "type": "yaml",
       "hash": "72afd19dd49510e43d57375cab40b612",
       "size": 4986,
@@ -1345,7 +1345,7 @@
     },
     {
       "id": "node-131",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-integrate.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-integrate.yaml",
       "type": "yaml",
       "hash": "484840d513a4de6de58f5b78afa8419f",
       "size": 3694,
@@ -1355,7 +1355,7 @@
     },
     {
       "id": "node-132",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-scan.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-scan.yaml",
       "type": "yaml",
       "hash": "022a738bc1722588b9010014066d6f49",
       "size": 4983,
@@ -1365,7 +1365,7 @@
     },
     {
       "id": "node-133",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-trigger.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-trigger.yaml",
       "type": "yaml",
       "hash": "c674d10986a70376010fff0d22032342",
       "size": 3713,
@@ -1375,7 +1375,7 @@
     },
     {
       "id": "node-134",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-repair.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-repair.yaml",
       "type": "yaml",
       "hash": "b0fb60797254db5b26c3f4d934a7f6fe",
       "size": 4100,
@@ -1385,7 +1385,7 @@
     },
     {
       "id": "node-135",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/bootstrap-loader.js",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/bootstrap-loader.js",
       "type": "js",
       "hash": "a246a4ed4150f78f13048f57a9f6abc1",
       "size": 6614,
@@ -1395,7 +1395,7 @@
     },
     {
       "id": "node-136",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-monitor.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-monitor.yaml",
       "type": "yaml",
       "hash": "607e56a7d5c09c219cb868d8d8990228",
       "size": 6802,
@@ -1405,7 +1405,7 @@
     },
     {
       "id": "node-137",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-validate.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-validate.yaml",
       "type": "yaml",
       "hash": "c25cb4e7672e261062c5d02f37837461",
       "size": 5771,
@@ -1415,7 +1415,7 @@
     },
     {
       "id": "node-138",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/README.md",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/README.md",
       "type": "md",
       "hash": "cbd1599e392c1629fe15aa0fff646f7c",
       "size": 7416,
@@ -1425,7 +1425,7 @@
     },
     {
       "id": "node-139",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-deploy.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-deploy.yaml",
       "type": "yaml",
       "hash": "d6d9c7694d94a74cfd321cc631e69046",
       "size": 4456,
@@ -1435,7 +1435,7 @@
     },
     {
       "id": "node-140",
-      "path": "gl-runtime-platform/ops/pipelines/global-audit-pipeline.yaml",
+      "path": "gl-execution-runtime/ops/pipelines/global-audit-pipeline.yaml",
       "type": "yaml",
       "hash": "a5acf5bceb999c7d2fdfe22c05370e29",
       "size": 4248,
@@ -1445,7 +1445,7 @@
     },
     {
       "id": "node-141",
-      "path": "gl-runtime-platform/ops/pipelines/repo-gl-fix-pipeline.yaml",
+      "path": "gl-execution-runtime/ops/pipelines/repo-gl-fix-pipeline.yaml",
       "type": "yaml",
       "hash": "4eeaadac6485323f1d53d4f29d9ce9d4",
       "size": 4719,
@@ -1455,7 +1455,7 @@
     },
     {
       "id": "node-142",
-      "path": "gl-runtime-platform/ops/pipelines/directory-audit-pipeline.yaml",
+      "path": "gl-execution-runtime/ops/pipelines/directory-audit-pipeline.yaml",
       "type": "yaml",
       "hash": "a5a0ad128f3ea3ad3ec16109c7cc12ac",
       "size": 3615,
@@ -1465,7 +1465,7 @@
     },
     {
       "id": "node-143",
-      "path": "gl-runtime-platform/ops/agents/agent-orchestration.yaml",
+      "path": "gl-execution-runtime/ops/agents/agent-orchestration.yaml",
       "type": "yaml",
       "hash": "0ddff1c4d0da4acc0f60f4544cb44a03",
       "size": 6871,
@@ -1475,7 +1475,7 @@
     },
     {
       "id": "node-144",
-      "path": "gl-runtime-platform/federation/index.yaml",
+      "path": "gl-execution-runtime/federation/index.yaml",
       "type": "yaml",
       "hash": "de81738773145b6c3508637a5ace2ebb",
       "size": 4860,
@@ -1485,7 +1485,7 @@
     },
     {
       "id": "node-145",
-      "path": "gl-runtime-platform/federation/README.md",
+      "path": "gl-execution-runtime/federation/README.md",
       "type": "md",
       "hash": "b4740016d0c9cb545a0e6cc845db7eb8",
       "size": 8708,
@@ -1495,7 +1495,7 @@
     },
     {
       "id": "node-146",
-      "path": "gl-runtime-platform/federation/policies/federation-policies.yaml",
+      "path": "gl-execution-runtime/federation/policies/federation-policies.yaml",
       "type": "yaml",
       "hash": "661bc7e2b39b15828b97950e94e38d65",
       "size": 8154,
@@ -1505,7 +1505,7 @@
     },
     {
       "id": "node-147",
-      "path": "gl-runtime-platform/federation/topology/topology.yaml",
+      "path": "gl-execution-runtime/federation/topology/topology.yaml",
       "type": "yaml",
       "hash": "628a6cfea2b0427b0c015ba37ca56d9a",
       "size": 6737,
@@ -1515,7 +1515,7 @@
     },
     {
       "id": "node-148",
-      "path": "gl-runtime-platform/federation/topology/repos.yaml",
+      "path": "gl-execution-runtime/federation/topology/repos.yaml",
       "type": "yaml",
       "hash": "b63669f0354aa8a1bca541910439cc2f",
       "size": 3188,
@@ -1525,7 +1525,7 @@
     },
     {
       "id": "node-149",
-      "path": "gl-runtime-platform/federation/topology/clusters.yaml",
+      "path": "gl-execution-runtime/federation/topology/clusters.yaml",
       "type": "yaml",
       "hash": "a147010a0607f018068bfb60a1e87744",
       "size": 3943,
@@ -1535,7 +1535,7 @@
     },
     {
       "id": "node-150",
-      "path": "gl-runtime-platform/federation/trust/signing-keys.md",
+      "path": "gl-execution-runtime/federation/trust/signing-keys.md",
       "type": "md",
       "hash": "21255faf4d6a83e0f9cecf28bc009600",
       "size": 5114,
@@ -1545,7 +1545,7 @@
     },
     {
       "id": "node-151",
-      "path": "gl-runtime-platform/federation/trust/trust-model.yaml",
+      "path": "gl-execution-runtime/federation/trust/trust-model.yaml",
       "type": "yaml",
       "hash": "d1bd8252a3d83b802111522f968c5616",
       "size": 6805,
@@ -1555,7 +1555,7 @@
     },
     {
       "id": "node-152",
-      "path": "gl-runtime-platform/federation/federation-orchestration/federation-orchestration.yaml",
+      "path": "gl-execution-runtime/federation/federation-orchestration/federation-orchestration.yaml",
       "type": "yaml",
       "hash": "b55f6293b7fdcda62d37a707d6f045e8",
       "size": 7713,
@@ -1565,7 +1565,7 @@
     },
     {
       "id": "node-153",
-      "path": "gl-runtime-platform/federation/org-registry/projects.yaml",
+      "path": "gl-execution-runtime/federation/org-registry/projects.yaml",
       "type": "yaml",
       "hash": "acc14a5cb0d3b765ba1c14f5b653baa8",
       "size": 3795,
@@ -1575,7 +1575,7 @@
     },
     {
       "id": "node-154",
-      "path": "gl-runtime-platform/federation/org-registry/organizations.yaml",
+      "path": "gl-execution-runtime/federation/org-registry/organizations.yaml",
       "type": "yaml",
       "hash": "0d6e336fca2516ff0195075df0ce1d36",
       "size": 3130,
@@ -1585,7 +1585,7 @@
     },
     {
       "id": "node-155",
-      "path": "gl-runtime-platform/engine/sandbox-runner/index.js",
+      "path": "gl-execution-runtime/engine/sandbox-runner/index.js",
       "type": "js",
       "hash": "6151699673cd399c48a72b5c4e1b9945",
       "size": 6036,
@@ -1595,7 +1595,7 @@
     },
     {
       "id": "node-156",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.d.ts.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.d.ts.map",
       "type": "map",
       "hash": "d87ff86db278878fa2b07735c5b58002",
       "size": 1348,
@@ -1605,7 +1605,7 @@
     },
     {
       "id": "node-157",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.js",
       "type": "js",
       "hash": "09946abea486216f522c19d4d48da924",
       "size": 439,
@@ -1615,7 +1615,7 @@
     },
     {
       "id": "node-158",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.js.map",
       "type": "map",
       "hash": "faa4e6e87747cdc8aa5ff6198ca00efd",
       "size": 182,
@@ -1625,7 +1625,7 @@
     },
     {
       "id": "node-159",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.ts",
       "type": "ts",
       "hash": "05345d2e7aa0a9197eb70fb4e836f017",
       "size": 6742,
@@ -1635,7 +1635,7 @@
     },
     {
       "id": "node-160",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.js",
       "type": "js",
       "hash": "3e288d38bf06d0a38f208948e74b0869",
       "size": 6658,
@@ -1645,7 +1645,7 @@
     },
     {
       "id": "node-161",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.d.ts.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.d.ts.map",
       "type": "map",
       "hash": "090db818d99300ecff1b2234a9a6a6c4",
       "size": 160,
@@ -1655,7 +1655,7 @@
     },
     {
       "id": "node-162",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.d.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.d.ts",
       "type": "ts",
       "hash": "e07a8c1f4a7b0bda39ba52bad4d7abbe",
       "size": 1608,
@@ -1665,7 +1665,7 @@
     },
     {
       "id": "node-163",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.js.map",
       "type": "map",
       "hash": "c088ef57cf575ea1b739dea85ef5c9d5",
       "size": 5817,
@@ -1675,7 +1675,7 @@
     },
     {
       "id": "node-164",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.ts",
       "type": "ts",
       "hash": "c11ac168dd61e2d5dd39af2e34998a7d",
       "size": 192,
@@ -1685,7 +1685,7 @@
     },
     {
       "id": "node-165",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.d.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.d.ts",
       "type": "ts",
       "hash": "6c694d033adbb6bb463c46cbc04b0c41",
       "size": 284,
@@ -1695,7 +1695,7 @@
     },
     {
       "id": "node-166",
-      "path": "gl-runtime-platform/engine/scheduler/index.js",
+      "path": "gl-execution-runtime/engine/scheduler/index.js",
       "type": "js",
       "hash": "b956462e59f1b72bae7f1fb84b2006bf",
       "size": 4322,
@@ -1705,7 +1705,7 @@
     },
     {
       "id": "node-167",
-      "path": "gl-runtime-platform/engine/orchestration-engine/index.js",
+      "path": "gl-execution-runtime/engine/orchestration-engine/index.js",
       "type": "js",
       "hash": "39c1cd9c112266ece484f932791a6716",
       "size": 7931,
@@ -1715,7 +1715,7 @@
     },
     {
       "id": "node-168",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.d.ts.map",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.d.ts.map",
       "type": "map",
       "hash": "32a2e6f9074225269f6e0108da3a3477",
       "size": 889,
@@ -1725,7 +1725,7 @@
     },
     {
       "id": "node-169",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.ts",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.ts",
       "type": "ts",
       "hash": "00c826c59832d6627b3dce1d19678b30",
       "size": 5611,
@@ -1735,7 +1735,7 @@
     },
     {
       "id": "node-170",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.js",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.js",
       "type": "js",
       "hash": "bf8505d6f8ed0b8fabc5a24a79ff0750",
       "size": 5959,
@@ -1745,7 +1745,7 @@
     },
     {
       "id": "node-171",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.d.ts",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.d.ts",
       "type": "ts",
       "hash": "da50c7358121078eea171cbc40e413ff",
       "size": 1118,
@@ -1755,7 +1755,7 @@
     },
     {
       "id": "node-172",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.js.map",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.js.map",
       "type": "map",
       "hash": "b612214f0e0cc79aaddacc9abeb382d3",
       "size": 4557,
@@ -1765,7 +1765,7 @@
     },
     {
       "id": "node-173",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.d.ts.map",
       "type": "map",
       "hash": "074c900790e3f8530c069c1722db2abb",
       "size": 972,
@@ -1775,7 +1775,7 @@
     },
     {
       "id": "node-174",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.ts",
       "type": "ts",
       "hash": "40ea8ec5639f68a9e543e9b3c2885299",
       "size": 5314,
@@ -1785,7 +1785,7 @@
     },
     {
       "id": "node-175",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.d.ts",
       "type": "ts",
       "hash": "ca038aede962b88cf51d40bc02a7b423",
       "size": 1232,
@@ -1795,7 +1795,7 @@
     },
     {
       "id": "node-176",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.js",
       "type": "js",
       "hash": "38487de1df75b22beed20254fb4a78ba",
       "size": 5444,
@@ -1805,7 +1805,7 @@
     },
     {
       "id": "node-177",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.js.map",
       "type": "map",
       "hash": "367c0d4f5a9095b50dfc5b57f90c14b9",
       "size": 3961,
@@ -1815,7 +1815,7 @@
     },
     {
       "id": "node-178",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.js.map",
       "type": "map",
       "hash": "ba4869b911f7b4e6435c4f6e33d9607c",
       "size": 5126,
@@ -1825,7 +1825,7 @@
     },
     {
       "id": "node-179",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.ts",
       "type": "ts",
       "hash": "5592fb3e6895b2ce50e8458415713a4e",
       "size": 5568,
@@ -1835,7 +1835,7 @@
     },
     {
       "id": "node-180",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.d.ts.map",
       "type": "map",
       "hash": "857c00dee73965feb197fae01258e227",
       "size": 999,
@@ -1845,7 +1845,7 @@
     },
     {
       "id": "node-181",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.js",
       "type": "js",
       "hash": "3e1866dd872a06ab649d1c8169e8d837",
       "size": 5608,
@@ -1855,7 +1855,7 @@
     },
     {
       "id": "node-182",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.d.ts",
       "type": "ts",
       "hash": "cb59fe8a7aea8828a887fd4dbab7f143",
       "size": 1173,
@@ -1865,7 +1865,7 @@
     },
     {
       "id": "node-183",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.d.ts.map",
       "type": "map",
       "hash": "2089e6b2ae71a9bec071c07956f578b3",
       "size": 1272,
@@ -1875,7 +1875,7 @@
     },
     {
       "id": "node-184",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.js",
       "type": "js",
       "hash": "46455109fb53677ae0e472c7cf3fc930",
       "size": 3947,
@@ -1885,7 +1885,7 @@
     },
     {
       "id": "node-185",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.ts",
       "type": "ts",
       "hash": "6b1fc2975094b9bc4bf1aa955e684eb4",
       "size": 4041,
@@ -1895,7 +1895,7 @@
     },
     {
       "id": "node-186",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.d.ts",
       "type": "ts",
       "hash": "2c6a7360c79c7b3a30bb0274d732212a",
       "size": 1439,
@@ -1905,7 +1905,7 @@
     },
     {
       "id": "node-187",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.js.map",
       "type": "map",
       "hash": "6806aba8170ee27a038f8a902b1bef90",
       "size": 3872,
@@ -1915,7 +1915,7 @@
     },
     {
       "id": "node-188",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.ts",
       "type": "ts",
       "hash": "fea9af057ca251143b38bc7539a0bcac",
       "size": 4501,
@@ -1925,7 +1925,7 @@
     },
     {
       "id": "node-189",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.d.ts",
       "type": "ts",
       "hash": "5dd9e7334f9b2a61b759324da7a6a083",
       "size": 945,
@@ -1935,7 +1935,7 @@
     },
     {
       "id": "node-190",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.d.ts.map",
       "type": "map",
       "hash": "40bf5ba58577586159b11f0e8c01f357",
       "size": 730,
@@ -1945,7 +1945,7 @@
     },
     {
       "id": "node-191",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.js.map",
       "type": "map",
       "hash": "511cf567e24ec23ffde22d3935650cd2",
       "size": 4057,
@@ -1955,7 +1955,7 @@
     },
     {
       "id": "node-192",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.js",
       "type": "js",
       "hash": "c5602012ab86ddd70ba66836519953dd",
       "size": 4882,
@@ -1965,7 +1965,7 @@
     },
     {
       "id": "node-193",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.ts",
       "type": "ts",
       "hash": "114084c8b9ef3b46929440f13f91879a",
       "size": 5245,
@@ -1975,7 +1975,7 @@
     },
     {
       "id": "node-194",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.js.map",
       "type": "map",
       "hash": "785374b81fcc5984ea356353dfcf1251",
       "size": 5414,
@@ -1985,7 +1985,7 @@
     },
     {
       "id": "node-195",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.d.ts.map",
       "type": "map",
       "hash": "91552277fcaed4bcd5a98b3a541f12aa",
       "size": 1124,
@@ -1995,7 +1995,7 @@
     },
     {
       "id": "node-196",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.d.ts",
       "type": "ts",
       "hash": "07ee5cdc7d7d6dc36f4ed20e7f6f3027",
       "size": 1408,
@@ -2005,7 +2005,7 @@
     },
     {
       "id": "node-197",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.js",
       "type": "js",
       "hash": "1a6597368692086cdb9e4691ef55cd3f",
       "size": 5264,
@@ -2015,7 +2015,7 @@
     },
     {
       "id": "node-198",
-      "path": "gl-runtime-platform/governance/gl-policy-engine/index.js",
+      "path": "gl-execution-runtime/governance/gl-policy-engine/index.js",
       "type": "js",
       "hash": "7645ec6b1721d094bcb71cc765c020f0",
       "size": 10029,
@@ -2025,7 +2025,7 @@
     },
     {
       "id": "node-199",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.js",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.js",
       "type": "js",
       "hash": "986916463bf0d3e9340533a36b670836",
       "size": 6076,
@@ -2035,7 +2035,7 @@
     },
     {
       "id": "node-200",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.js.map",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.js.map",
       "type": "map",
       "hash": "896dda0d8f09496797c69c39ccfdd037",
       "size": 4545,
@@ -2045,7 +2045,7 @@
     },
     {
       "id": "node-201",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.d.ts.map",
       "type": "map",
       "hash": "d637d65c1e9fcc161a175bb553817396",
       "size": 1184,
@@ -2055,7 +2055,7 @@
     },
     {
       "id": "node-202",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.ts",
       "type": "ts",
       "hash": "9a49665298d78ca6491e71f87c23aba8",
       "size": 6171,
@@ -2065,7 +2065,7 @@
     },
     {
       "id": "node-203",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.d.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.d.ts",
       "type": "ts",
       "hash": "64342a8d455037b84e7e8274a454268f",
       "size": 1512,
@@ -2075,7 +2075,7 @@
     },
     {
       "id": "node-204",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/parser.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/content-parsers/parser.ts",
       "type": "ts",
       "hash": "a7909fb5b0e994f4e483e4f7f58ae3dd",
       "size": 6299,
@@ -2085,7 +2085,7 @@
     },
     {
       "id": "node-205",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/content-parsers/index.ts",
       "type": "ts",
       "hash": "82c48839240fa8736c7a28bba21bff53",
       "size": 175,
@@ -2095,7 +2095,7 @@
     },
     {
       "id": "node-206",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/inferencer.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/schema-infer/inferencer.ts",
       "type": "ts",
       "hash": "6a5594fb016fb52190e2c980a60f950a",
       "size": 8419,
@@ -2105,7 +2105,7 @@
     },
     {
       "id": "node-207",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/schema-infer/index.ts",
       "type": "ts",
       "hash": "355520587ec2433f56fd7595f268c549",
       "size": 178,
@@ -2115,7 +2115,7 @@
     },
     {
       "id": "node-208",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/resolver.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/intent-resolver/resolver.ts",
       "type": "ts",
       "hash": "86ad71f2c4ed85d7a5b09fc01d71c2cc",
       "size": 11322,
@@ -2125,7 +2125,7 @@
     },
     {
       "id": "node-209",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/intent-resolver/index.ts",
       "type": "ts",
       "hash": "49e382fc5616dc123b49b60a76d6020a",
       "size": 173,
@@ -2135,7 +2135,7 @@
     },
     {
       "id": "node-210",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
       "type": "ts",
       "hash": "aa985e3efad4720d5f08a11ec0dbf4a9",
       "size": 9622,
@@ -2145,7 +2145,7 @@
     },
     {
       "id": "node-211",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/semantic-classifiers/index.ts",
       "type": "ts",
       "hash": "5d44a91f5df72b0f4f949b235ef700ce",
       "size": 189,
@@ -2155,7 +2155,7 @@
     },
     {
       "id": "node-212",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/mapper.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/gl-mapping/mapper.ts",
       "type": "ts",
       "hash": "f33ee58be7909af3e899508a421cddcb",
       "size": 7230,
@@ -2165,7 +2165,7 @@
     },
     {
       "id": "node-213",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/gl-mapping/index.ts",
       "type": "ts",
       "hash": "70798f551f9dc6772e5a6754cc084304",
       "size": 153,
@@ -2175,7 +2175,7 @@
     },
     {
       "id": "node-214",
-      "path": "gl-runtime-platform/governance/gl-annotations/index.js",
+      "path": "gl-execution-runtime/governance/gl-annotations/index.js",
       "type": "js",
       "hash": "ae8ca0b1a5ce76475025946bec739df9",
       "size": 5253,
@@ -2185,7 +2185,7 @@
     },
     {
       "id": "node-215",
-      "path": "gl-runtime-platform/governance/gl-core/index.js",
+      "path": "gl-execution-runtime/governance/gl-core/index.js",
       "type": "js",
       "hash": "978a44700c4e3add6d97ad73ac501908",
       "size": 6923,
@@ -2195,7 +2195,7 @@
     },
     {
       "id": "node-216",
-      "path": "gl-runtime-platform/deployment/docker-compose.yaml",
+      "path": "gl-execution-runtime/deployment/docker-compose.yaml",
       "type": "yaml",
       "hash": "0cbc4e16bc84dd15b965b2b4fa704c7b",
       "size": 4113,
@@ -2205,7 +2205,7 @@
     },
     {
       "id": "node-217",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-sync.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-sync.yaml",
       "type": "yaml",
       "hash": "435fbc912e88c7a04168dc5e96cf5591",
       "size": 2549,
@@ -2215,7 +2215,7 @@
     },
     {
       "id": "node-218",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-rollout.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-rollout.yaml",
       "type": "yaml",
       "hash": "db9c0cfa4e8a66c99821649c96535738",
       "size": 2328,
@@ -2225,7 +2225,7 @@
     },
     {
       "id": "node-219",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-healthcheck.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-healthcheck.yaml",
       "type": "yaml",
       "hash": "8db022574f6bbdd40600978648b987b3",
       "size": 2740,
@@ -2235,7 +2235,7 @@
     },
     {
       "id": "node-220",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-deploy.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-deploy.yaml",
       "type": "yaml",
       "hash": "cf2237eb68a3b451aa0bb41e920942fa",
       "size": 2503,
@@ -2245,7 +2245,7 @@
     },
     {
       "id": "node-221",
-      "path": "gl-runtime-platform/deployment/k8s/deployment.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/deployment.yaml",
       "type": "yaml",
       "hash": "88791aa4edc494d0a77f6d2c7d37fc2e",
       "size": 2862,
@@ -2255,7 +2255,7 @@
     },
     {
       "id": "node-222",
-      "path": "gl-runtime-platform/deployment/k8s/orchestration-engine-deployment.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/orchestration-engine-deployment.yaml",
       "type": "yaml",
       "hash": "44551e30691efd9f3b119c061b0f875c",
       "size": 3921,
@@ -2265,7 +2265,7 @@
     },
     {
       "id": "node-223",
-      "path": "gl-runtime-platform/deployment/k8s/base/storage-pvc.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/storage-pvc.yaml",
       "type": "yaml",
       "hash": "636afcde04100eb9c545e3d274c3b51a",
       "size": 884,
@@ -2275,7 +2275,7 @@
     },
     {
       "id": "node-224",
-      "path": "gl-runtime-platform/deployment/k8s/base/configmaps.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/configmaps.yaml",
       "type": "yaml",
       "hash": "141ecf9a312e3a1497780c24dd20ea8a",
       "size": 1793,
@@ -2285,7 +2285,7 @@
     },
     {
       "id": "node-225",
-      "path": "gl-runtime-platform/deployment/k8s/base/namespace.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/namespace.yaml",
       "type": "yaml",
       "hash": "2100c7f1b0a5122f23d8409b14efec6d",
       "size": 481,
@@ -2295,7 +2295,7 @@
     },
     {
       "id": "node-226",
-      "path": "gl-runtime-platform/deployment/k8s/base/secrets.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/secrets.yaml",
       "type": "yaml",
       "hash": "93311ed4002b4c0eaf2df3132ffdb842",
       "size": 489,
@@ -2305,7 +2305,7 @@
     },
     {
       "id": "node-227",
-      "path": "gl-runtime-platform/deployment/k8s/base/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/kustomization.yaml",
       "type": "yaml",
       "hash": "b2c559b530535dcca4e0f556ceeb8936",
       "size": 686,
@@ -2315,7 +2315,7 @@
     },
     {
       "id": "node-228",
-      "path": "gl-runtime-platform/deployment/k8s/base/orchestration-engine-service.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/orchestration-engine-service.yaml",
       "type": "yaml",
       "hash": "3e75cf7c963635409ddf02b6f3994a1b",
       "size": 777,
@@ -2325,7 +2325,7 @@
     },
     {
       "id": "node-229",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/prod/deployment-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/prod/deployment-patch.yaml",
       "type": "yaml",
       "hash": "3490a8d71f9514688157a64af0233ad7",
       "size": 801,
@@ -2335,7 +2335,7 @@
     },
     {
       "id": "node-230",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/prod/hpa-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/prod/hpa-patch.yaml",
       "type": "yaml",
       "hash": "c9e1913e12fbf5395fe029da80bf8764",
       "size": 711,
@@ -2345,7 +2345,7 @@
     },
     {
       "id": "node-231",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/prod/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/prod/kustomization.yaml",
       "type": "yaml",
       "hash": "46191bd813603f56e780c2ef57253581",
       "size": 727,
@@ -2355,7 +2355,7 @@
     },
     {
       "id": "node-232",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/dev/deployment-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/dev/deployment-patch.yaml",
       "type": "yaml",
       "hash": "1e15f451299467fa979fa9fa61f687b3",
       "size": 800,
@@ -2365,7 +2365,7 @@
     },
     {
       "id": "node-233",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/dev/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/dev/kustomization.yaml",
       "type": "yaml",
       "hash": "f1f8d19c46c1d02fe4cad95dbc8cbcc9",
       "size": 710,
@@ -2375,7 +2375,7 @@
     },
     {
       "id": "node-234",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/staging/deployment-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/staging/deployment-patch.yaml",
       "type": "yaml",
       "hash": "16df6fc6e771150307c6080d497e5d7f",
       "size": 799,
@@ -2385,7 +2385,7 @@
     },
     {
       "id": "node-235",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/staging/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/staging/kustomization.yaml",
       "type": "yaml",
       "hash": "3f89a4c5acf816360a9a53e0cbdd84d6",
       "size": 722,
@@ -2395,7 +2395,7 @@
     },
     {
       "id": "node-236",
-      "path": "gl-runtime-platform/connectors/connector-lang-js/index.js",
+      "path": "gl-execution-runtime/connectors/connector-lang-js/index.js",
       "type": "js",
       "hash": "298b72cf48d81687024abe8bb51b4aa9",
       "size": 7539,
@@ -2405,7 +2405,7 @@
     },
     {
       "id": "node-237",
-      "path": "gl-runtime-platform/connectors/connector-format-yaml-json-md/index.js",
+      "path": "gl-execution-runtime/connectors/connector-format-yaml-json-md/index.js",
       "type": "js",
       "hash": "6ac630faa6c10d9b8d39288cca92d0fc",
       "size": 10711,
@@ -2415,7 +2415,7 @@
     },
     {
       "id": "node-238",
-      "path": "gl-runtime-platform/connectors/connector-ci-github/index.js",
+      "path": "gl-execution-runtime/connectors/connector-ci-github/index.js",
       "type": "js",
       "hash": "95bae87560bd00d0152618b6720dedd7",
       "size": 4880,
@@ -2425,7 +2425,7 @@
     },
     {
       "id": "node-239",
-      "path": "gl-runtime-platform/connectors/connector-lang-py/index.js",
+      "path": "gl-execution-runtime/connectors/connector-lang-py/index.js",
       "type": "js",
       "hash": "4f4c0560f74a82ce1be9468d5896cc67",
       "size": 7925,
@@ -2435,7 +2435,7 @@
     },
     {
       "id": "node-240",
-      "path": "gl-runtime-platform/connectors/connector-git/index.js",
+      "path": "gl-execution-runtime/connectors/connector-git/index.js",
       "type": "js",
       "hash": "052b6f2446c0f4a80c6a8fd811dfea72",
       "size": 6622,
@@ -2445,7 +2445,7 @@
     },
     {
       "id": "node-241",
-      "path": "gl-runtime-platform/storage/gl-events-stream/events.jsonl",
+      "path": "gl-execution-runtime/storage/gl-events-stream/events.jsonl",
       "type": "jsonl",
       "hash": "3e9148c86cae910163ebb6dfc8394075",
       "size": 6436,
@@ -2455,7 +2455,7 @@
     },
     {
       "id": "node-242",
-      "path": "gl-runtime-platform/storage/gl-semantic-graph/analyses.json",
+      "path": "gl-execution-runtime/storage/gl-semantic-graph/analyses.json",
       "type": "json",
       "hash": "1575da80ac4e1529a137ea9f71092ba7",
       "size": 2704031,
@@ -2465,7 +2465,7 @@
     },
     {
       "id": "node-243",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/f35f796f-c06b-4f06-b998-457c966f2133.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/f35f796f-c06b-4f06-b998-457c966f2133.json",
       "type": "json",
       "hash": "9ebc5021fcfc9a3b1910b65a0b4033a2",
       "size": 913,
@@ -2475,7 +2475,7 @@
     },
     {
       "id": "node-244",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/aa055817-30e7-4da4-83ad-0bff6764d5ef.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/aa055817-30e7-4da4-83ad-0bff6764d5ef.json",
       "type": "json",
       "hash": "352644f76ec4d2a0a2ef7632f1910add",
       "size": 906,
@@ -2485,7 +2485,7 @@
     },
     {
       "id": "node-245",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/6ddff5c6-49cb-4087-9964-5565acc35730.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/6ddff5c6-49cb-4087-9964-5565acc35730.json",
       "type": "json",
       "hash": "9bbd905df7647dfb25236e00cdb74593",
       "size": 906,
@@ -2495,7 +2495,7 @@
     },
     {
       "id": "node-246",
-      "path": "gl-runtime-platform/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json",
       "type": "json",
       "hash": "abde93832e087a68f3b9e5ffd5708e09",
       "size": 658,
@@ -2505,7 +2505,7 @@
     },
     {
       "id": "node-247",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json",
       "type": "json",
       "hash": "2cc10188344f26c68d39d9c106484ced",
       "size": 6482,
@@ -2515,7 +2515,7 @@
     },
     {
       "id": "node-248",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/gl-auto-repair-completion-report.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/gl-auto-repair-completion-report.json",
       "type": "json",
       "hash": "01f0175392f530f824f0f190f22deab5",
       "size": 445,
@@ -2525,7 +2525,7 @@
     },
     {
       "id": "node-249",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report.json",
       "type": "json",
       "hash": "46e1820baae9476d00cf35fcbbbbbff7",
       "size": 4910,
@@ -2535,7 +2535,7 @@
     },
     {
       "id": "node-250",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-full-scan.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-full-scan.json",
       "type": "json",
       "hash": "c5e4f51e3f720f79f8c18238a5b25a9e",
       "size": 2006,
@@ -2545,7 +2545,7 @@
     },
     {
       "id": "node-251",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json",
       "type": "json",
       "hash": "382c434653abb76c4edf704cfc7a791d",
       "size": 7389,
@@ -2555,7 +2555,7 @@
     },
     {
       "id": "node-252",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-v4.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-v4.json",
       "type": "json",
       "hash": "f15f6e30c0e7ad0386292a8587d3a25b",
       "size": 1728,

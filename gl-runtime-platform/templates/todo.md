@@ -1,7 +1,7 @@
 # GL Runtime Platform Kubernetes Templates 實施任務清單
 
 ## 項目概述
-使用 GL Semantic Core Platform v1.0.0 的語義折疊能力重構 gl-runtime-platform 內的 Kubernetes 模板，嚴格對齊命名規範。
+使用 GL Semantic Core Platform v1.0.0 的語義折疊能力重構 gl-execution-runtime 內的 Kubernetes 模板，嚴格對齊命名規範。
 
 ---
 

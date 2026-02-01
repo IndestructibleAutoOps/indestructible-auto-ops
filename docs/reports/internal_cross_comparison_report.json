@@ -6,13 +6,13 @@
       "total_patterns_found": 9,
       "sample_patterns": {
         "platform-universe-unknown": [
-          "gl-platform-universe"
+          "gl-enterprise-architecture"
         ],
         "semantic-core-platform": [
-          "gl-semantic-core-platform"
+          "gl-platform-services"
         ],
         "runtime-platform-unknown": [
-          "gl-runtime-platform"
+          "gl-execution-runtime"
         ],
         "policy-engine-unknown": [
           "gl-policy-engine"
@@ -394,31 +394,31 @@
       },
       {
         "file": "naming-conventions.yaml",
-        "path": "/workspace/machine-native-ops/gl-platform-universe/governance/naming-governance/contracts/naming-conventions.yaml",
+        "path": "/workspace/machine-native-ops/gl-enterprise-architecture/governance/naming-governance/contracts/naming-conventions.yaml",
         "kind": "NamingConventionSpecification",
         "api_version": "gl-runtime.io/v1.0.0"
       },
       {
         "file": "capability-registry.yaml",
-        "path": "/workspace/machine-native-ops/gl-platform-universe/governance/naming-governance/registry/capability-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-enterprise-architecture/governance/naming-governance/registry/capability-registry.yaml",
         "kind": "CapabilityRegistry",
         "api_version": "gl-runtime.io/v1.0.0"
       },
       {
         "file": "abbreviation-registry.yaml",
-        "path": "/workspace/machine-native-ops/gl-platform-universe/governance/naming-governance/registry/abbreviation-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-enterprise-architecture/governance/naming-governance/registry/abbreviation-registry.yaml",
         "kind": "AbbreviationRegistry",
         "api_version": "gl-runtime.io/v1.0.0"
       },
       {
         "file": "resource-registry.yaml",
-        "path": "/workspace/machine-native-ops/gl-platform-universe/governance/naming-governance/registry/resource-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-enterprise-architecture/governance/naming-governance/registry/resource-registry.yaml",
         "kind": "ResourceRegistry",
         "api_version": "gl-runtime.io/v1.0.0"
       },
       {
         "file": "domain-registry.yaml",
-        "path": "/workspace/machine-native-ops/gl-platform-universe/governance/naming-governance/registry/domain-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-enterprise-architecture/governance/naming-governance/registry/domain-registry.yaml",
         "kind": "DomainRegistry",
         "api_version": "gl-runtime.io/v1.0.0"
       }

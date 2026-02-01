@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 name: GL Cluster Security Scan
@@ -15,7 +15,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'gl-runtime-platform/deployment/**'
+      - 'gl-execution-runtime/deployment/**'
       - '.governance/**'
   workflow_dispatch:
 
@@ -85,7 +85,7 @@ jobs:
           mkdir -p reports/checkov
           
           # Scan Kubernetes manifests
-          checkov -d gl-runtime-platform/deployment \
+          checkov -d gl-execution-runtime/deployment \
             --framework kubernetes \
             --output json \
             --output-file-path reports/checkov/ \
@@ -111,7 +111,7 @@ jobs:
           PATTERN = r'^(dev|staging|prod)-[a-z0-9-]+-(deploy|svc|ing|cm|secret)-v\d+\.\d+\.\d+(-[A-Za-z0-9]+)?$'
           violations = []
           
-          for yaml_file in Path('gl-runtime-platform/deployment').rglob('*.yaml'):
+          for yaml_file in Path('gl-execution-runtime/deployment').rglob('*.yaml'):
               # Simple check - production would use proper YAML parsing
               content = yaml_file.read_text()
               if 'name:' in content:
@@ -143,7 +143,7 @@ jobs:
           mkdir -p reports/kubescape
           
           kubescape scan framework nsa,mitre \
-            gl-runtime-platform/deployment \
+            gl-execution-runtime/deployment \
             --format json \
             --output reports/kubescape/kubescape-results.json || true
 

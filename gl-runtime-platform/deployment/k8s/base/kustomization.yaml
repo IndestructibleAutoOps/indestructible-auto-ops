@@ -24,6 +24,6 @@ resources:
   - storage-pvc.yaml
 
 commonLabels:
-  app: gl-runtime-platform
+  app: gl-execution-runtime
   gl-governed: "true"
   gl-layer: "GL90-99"

@@ -51,13 +51,13 @@
 
 ### 任務 1: 治理目錄結構統一
 **當前問題**: 治理文件分散在多個位置
-- gl-runtime-platform/gl-runtime/v23-root-governance/
-- gl-runtime-platform/gl-runtime/v24-meta-governance/
-- gl-runtime-platform/gl/v23/root_governance/
-- gl-runtime-platform/gl/v24/meta_governance/
+- gl-execution-runtime/gl-runtime/v23-root-governance/
+- gl-execution-runtime/gl-runtime/v24-meta-governance/
+- gl-execution-runtime/gl/v23/root_governance/
+- gl-execution-runtime/gl/v24/meta_governance/
 
 **建議方案**:
-1. 保留 gl-runtime-platform/gl-runtime/ 作為主位置
+1. 保留 gl-execution-runtime/gl-runtime/ 作為主位置
 2. 建立符號鏈接或合併重複目錄
 3. 更新所有引用
 

@@ -6,7 +6,7 @@ Version 20 extends V19's Unified Intelligence Fabric with perpetual learning cap
 
 ## Directory Structure
 ```
-gl-runtime-platform/src/infinite-continuum/
+gl-execution-runtime/src/infinite-continuum/
 ├── index.ts (Main integration)
 ├── knowledge-accretion.ts (Continuous knowledge accumulation)
 ├── semantic-reformation.ts (Dynamic semantic evolution)

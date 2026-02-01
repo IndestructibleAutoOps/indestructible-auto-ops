@@ -289,7 +289,7 @@
 ### Directory Structure
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── omni-context/
 │   ├── index.ts                          # Main integration
 │   ├── context-fusion/

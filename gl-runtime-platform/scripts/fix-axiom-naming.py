@@ -18,7 +18,7 @@ from datetime import datetime
 class AxiomNamingRefactor:
     """Refactor AXIOM naming to GL Runtime Platform standards"""
     
-    def __init__(self, root_path="/workspace/machine-native-ops/gl-runtime-platform"):
+    def __init__(self, root_path="/workspace/machine-native-ops/gl-execution-runtime"):
         self.root_path = Path(root_path)
         self.backup_dir = self.root_path / ".axiom-refactor-backup"
         self.log_file = self.root_path / "logs" / f"axiom-refactor-{datetime.now().strftime('%Y%m%d-%H%M%S')}.log"
@@ -208,7 +208,7 @@ def main():
     
     parser = argparse.ArgumentParser(description='AXIOM to GL Runtime Naming Refactor')
     parser.add_argument('--dry-run', action='store_true', help='Perform dry run without making changes')
-    parser.add_argument('--path', default='/workspace/machine-native-ops/gl-runtime-platform',
+    parser.add_argument('--path', default='/workspace/machine-native-ops/gl-execution-runtime',
                         help='Root path to refactor')
     
     args = parser.parse_args()

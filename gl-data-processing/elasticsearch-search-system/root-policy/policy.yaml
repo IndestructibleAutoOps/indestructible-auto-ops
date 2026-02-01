@@ -1,0 +1,20 @@
+# @GL-governed
+# @GL-layer: search
+# @GL-semantic: policy
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Charter Activated
+
+# Root Policy
+# GL-Layer: GL06 (Root Policy)
+# Closure-Signal: policy
+
+metadata:
+  name: root-policy
+  version: "1.0.0"
+  layer: "GL06"
+
+policy-rules:
+  - rule: "naming-convention-enforced"
+    description: "All artifacts must follow naming conventions"
+    enforcement: "strict"

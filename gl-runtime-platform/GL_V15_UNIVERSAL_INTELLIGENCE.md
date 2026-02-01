@@ -407,7 +407,7 @@ const synthesis = await uiSystem.knowledgeSynthesis.synthesize({
 ## 🏗️ 目錄結構
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── universal-intelligence/              # 通用智慧層主目錄
 │   ├── index.ts                         # 主整合檔案
 │   ├── cross-domain-reasoning/          # 跨領域推理

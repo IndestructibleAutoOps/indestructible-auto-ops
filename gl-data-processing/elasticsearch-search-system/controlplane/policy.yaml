@@ -1,0 +1,24 @@
+# @GL-governed
+# @GL-layer: search
+# @GL-semantic: policy
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Charter Activated
+
+# Controlplane Policy
+# GL-Layer: GL00-09 (Strategic)
+# Closure-Signal: policy
+
+metadata:
+  name: controlplane-policy
+  version: "1.0.0"
+  layer: "GL00-09"
+
+policy-rules:
+  - rule: "immutable-governance"
+    description: "All governance artifacts must be immutable"
+    enforcement: "strict"
+  
+  - rule: "version-control-required"
+    description: "All changes must be tracked with version control"
+    enforcement: "strict"

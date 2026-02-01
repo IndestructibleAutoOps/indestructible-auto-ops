@@ -32,7 +32,7 @@ spec:
       paths:
         - path: "/"
           components:
-            - "gl-runtime-platform"
+            - "gl-execution-runtime"
             - "engine"
             - "file-organizer-system"
             - "elasticsearch-search-system"

@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 # GL Runtime Platform REST API 部署
@@ -19,7 +19,7 @@ metadata:
     # Kubernetes 標準標籤
     app.kubernetes.io/name: 'gl-runtime-rest-api'
     app.kubernetes.io/component: 'api-gateway'
-    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/part-of: 'gl-execution-runtime'
     app.kubernetes.io/version: 'v1.0.0'
     app.kubernetes.io/managed-by: 'kubectl'
     
@@ -27,7 +27,7 @@ metadata:
     tenant: 'gl-runtime-team'
     cost-center: 'platform-engineering'
     business-unit: 'infrastructure'
-    project: 'gl-runtime-platform'
+    project: 'gl-execution-runtime'
     
     # 操作標籤
     tier: 'gateway'
@@ -60,7 +60,7 @@ spec:
         # Kubernetes 標準標籤
         app.kubernetes.io/name: 'gl-runtime-rest-api'
         app.kubernetes.io/component: 'api-gateway'
-        app.kubernetes.io/part-of: 'gl-runtime-platform'
+        app.kubernetes.io/part-of: 'gl-execution-runtime'
         app.kubernetes.io/version: 'v1.0.0'
         
         # 運行時標籤
@@ -86,7 +86,7 @@ spec:
       
       containers:
       - name: rest-api
-        image: gl-registry.io/gl-runtime-platform/rest-api:v1.0.0
+        image: gl-registry.io/gl-execution-runtime/rest-api:v1.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -104,7 +104,7 @@ spec:
         - name: LOG_LEVEL
           value: 'info'
         - name: UPSTREAM_API_URL
-          value: 'http://gl-runtime-platform-api-svc:3000'
+          value: 'http://gl-execution-runtime-api-svc:3000'
         
         resources:
           requests:

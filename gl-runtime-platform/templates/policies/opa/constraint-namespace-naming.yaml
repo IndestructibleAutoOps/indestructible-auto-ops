@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: naming-governance
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 # OPA Gatekeeper 約束 - 命名空間命名規範
@@ -18,7 +18,7 @@ metadata:
     # Kubernetes 標準標籤
     app.kubernetes.io/name: 'namespace-naming-policy'
     app.kubernetes.io/component: 'constraint'
-    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/part-of: 'gl-execution-runtime'
     app.kubernetes.io/version: 'v1.0.0'
     app.kubernetes.io/managed-by: 'kubectl'
     
@@ -26,7 +26,7 @@ metadata:
     tenant: 'gl-runtime-team'
     cost-center: 'platform-engineering'
     business-unit: 'infrastructure'
-    project: 'gl-runtime-platform'
+    project: 'gl-execution-runtime'
     
   annotations:
     # 描述性註解

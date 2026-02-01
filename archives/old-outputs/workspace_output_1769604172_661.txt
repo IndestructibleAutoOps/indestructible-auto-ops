@@ -1,11 +1,11 @@
-diff --git a/gl-runtime-platform/package.json b/gl-runtime-platform/package.json
+diff --git a/gl-execution-runtime/package.json b/gl-execution-runtime/package.json
 new file mode 100644
 index 00000000..e7998c2d
 --- /dev/null
-+++ b/gl-runtime-platform/package.json
++++ b/gl-execution-runtime/package.json
 @@ -0,0 +1,45 @@
 +{
-+  "name": "gl-runtime-platform",
++  "name": "gl-execution-runtime",
 +  "version": "2.1.0",
 +  "description": "GL-ROOT Global Governance Audit & Platform Build - Runtime Platform",
 +  "main": "engine/orchestration-engine/index.js",

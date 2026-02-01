@@ -13,7 +13,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gl-config
-  namespace: gl-runtime-platform
+  namespace: gl-execution-runtime
 data:
   agent-orchestration.yaml: |
     apiVersion: orchestration.machinenativeops.io/v1
@@ -51,7 +51,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gl-pipelines-config
-  namespace: gl-runtime-platform
+  namespace: gl-execution-runtime
 data:
   directory-audit-pipeline.yaml: |
     apiVersion: pipeline.machinenativeops.io/v1

@@ -34,7 +34,7 @@ Ensure all modules compile without errors and the V20 build is successful.
 
 ### Execution
 ```bash
-cd /workspace/gl-runtime-platform
+cd /workspace/gl-execution-runtime
 npm run build
 ```
 
@@ -99,7 +99,7 @@ python3 scan-secrets.py
 - ✅ **Previous Secret:** Removed (GitHub token)
 
 ### Reports Generated
-- `/workspace/gl-runtime-platform/security-scan-report.md`
+- `/workspace/gl-execution-runtime/security-scan-report.md`
 - `/workspace/scan-secrets.py` (scanner script)
 
 ---
@@ -143,8 +143,8 @@ python3 scripts/verify-pipelines-connectors.py
 - ✅ **Pass Rate:** 100%
 
 ### Reports Generated
-- `/workspace/gl-runtime-platform/test-reports/pipelines-connectors-verification.json`
-- `/workspace/gl-runtime-platform/scripts/verify-pipelines-connectors.py` (verification script)
+- `/workspace/gl-execution-runtime/test-reports/pipelines-connectors-verification.json`
+- `/workspace/gl-execution-runtime/scripts/verify-pipelines-connectors.py` (verification script)
 
 ---
 

@@ -119,13 +119,13 @@ Version 3 adds complete Kubernetes deployment automation to the GL Runtime Platf
 ### 1. Environment-Specific Deployment
 ```bash
 # Development
-kubectl apply -k gl-runtime-platform/deployment/k8s/overlays/dev
+kubectl apply -k gl-execution-runtime/deployment/k8s/overlays/dev
 
 # Staging
-kubectl apply -k gl-runtime-platform/deployment/k8s/overlays/staging
+kubectl apply -k gl-execution-runtime/deployment/k8s/overlays/staging
 
 # Production
-kubectl apply -k gl-runtime-platform/deployment/k8s/overlays/prod
+kubectl apply -k gl-execution-runtime/deployment/k8s/overlays/prod
 ```
 
 ### 2. Automated Triggers

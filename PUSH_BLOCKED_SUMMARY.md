@@ -143,7 +143,7 @@ remote:         path: summarized_conversation_1769606924_7127.txt:235
 
 ### Files Staged for Push
 - GL_V4_POST_DEPLOYMENT_COMPLETE.md
-- gl-runtime-platform/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json
+- gl-execution-runtime/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json
 - Updated governance event streams
 - Updated todo.md (all phases marked complete)
 - Multiple output files and documentation
@@ -179,7 +179,7 @@ Nothing to commit, working tree clean.
 ### Governance Event Stream
 - 16 events logged (including this completion)
 - All events properly formatted with GL metadata
-- Event stream: gl-runtime-platform/storage/gl-events-stream/events.jsonl
+- Event stream: gl-execution-runtime/storage/gl-events-stream/events.jsonl
 
 ---
 

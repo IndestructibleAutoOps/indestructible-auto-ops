@@ -236,7 +236,7 @@ expose-port 8080
 ## Logs Directory
 
 All service logs are available in:
-- GL Platform: `/workspace/machine-native-ops/gl-runtime-platform/storage/gl-events-stream/platform.log`
+- GL Platform: `/workspace/machine-native-ops/gl-execution-runtime/storage/gl-events-stream/platform.log`
 - Startup Log: `/workspace/machine-native-ops/logs/startup.log` (if startup script was used)
 
 ---

@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 # GL Runtime Platform Ingress
@@ -13,13 +13,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: gl-runtime-platform-ingress
+  name: gl-execution-runtime-ingress
   namespace: team-gl-runtime-prod-us-west
   labels:
     # Kubernetes 標準標籤
-    app.kubernetes.io/name: 'gl-runtime-platform'
+    app.kubernetes.io/name: 'gl-execution-runtime'
     app.kubernetes.io/component: 'ingress'
-    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/part-of: 'gl-execution-runtime'
     app.kubernetes.io/version: 'v1.0.0'
     app.kubernetes.io/managed-by: 'kubectl'
     
@@ -27,7 +27,7 @@ metadata:
     tenant: 'gl-runtime-team'
     cost-center: 'platform-engineering'
     business-unit: 'infrastructure'
-    project: 'gl-runtime-platform'
+    project: 'gl-execution-runtime'
     
     # 操作標籤
     tier: 'gateway'
@@ -79,7 +79,7 @@ spec:
     - api.gl-runtime.io
     - rest-api.gl-runtime.io
     - control-plane.gl-runtime.io
-    secretName: gl-runtime-platform-tls
+    secretName: gl-execution-runtime-tls
   
   rules:
   - host: api.gl-runtime.io
@@ -89,7 +89,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: gl-runtime-platform-api-svc
+            name: gl-execution-runtime-api-svc
             port:
               number: 80
   

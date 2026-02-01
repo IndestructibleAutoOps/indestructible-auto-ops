@@ -181,7 +181,7 @@ The system can:
 ### Directory Structure
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── inter-reality/
 │   ├── index.ts                              # Main integration layer
 │   ├── reality-model-abstraction/

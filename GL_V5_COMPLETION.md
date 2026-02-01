@@ -108,7 +108,7 @@ GL Runtime Platform v5.0.0 has been successfully constructed, integrated, and de
 ### Docker Compose
 ```yaml
 Services:
-- gl-runtime-platform (port 3000)
+- gl-execution-runtime (port 3000)
 - gl-artifacts-store (MinIO, ports 9000/9001)
 - gl-events-stream (Redis, port 6379)
 - gl-postgres (port 5432)
@@ -230,7 +230,7 @@ Resources:
 ```
 feat: implement GL Runtime Platform v5.0.0 with complete multi-agent orchestration
 
-- Construct complete gl-runtime-platform with minimal operational implementation
+- Construct complete gl-execution-runtime with minimal operational implementation
 - Implement orchestration-engine with multi-agent + per-file pipeline support
 - Implement gl-policy-engine with schema/naming/path/semantic/governance validation
 - Implement connector-git with scan/diff/patch/apply/commit/push capabilities
@@ -255,26 +255,26 @@ GL Unified Charter Activated | Version 5.0.0 | Charter Version 2.0.0
 - **Deletions**: 39
 
 ### New Files Created
-1. `gl-runtime-platform/.gitignore`
-2. `gl-runtime-platform/Dockerfile`
-3. `gl-runtime-platform/deployment/k8s/deployment.yaml`
-4. `gl-runtime-platform/docker-compose.yml`
-5. `gl-runtime-platform/ops/pipelines/global-audit-pipeline.yaml`
-6. `gl-runtime-platform/src/api/routes.ts`
-7. `gl-runtime-platform/src/connectors/git-connector.ts`
-8. `gl-runtime-platform/src/events/event-stream-manager.ts`
-9. `gl-runtime-platform/src/index.ts`
-10. `gl-runtime-platform/src/orchestration/orchestrator-engine.ts`
-11. `gl-runtime-platform/src/policies/policy-engine.ts`
-12. `gl-runtime-platform/src/storage/artifact-store.ts`
-13. `gl-runtime-platform/src/utils/logger.ts`
-14. `gl-runtime-platform/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json`
-15. `gl-runtime-platform/tsconfig.json`
+1. `gl-execution-runtime/.gitignore`
+2. `gl-execution-runtime/Dockerfile`
+3. `gl-execution-runtime/deployment/k8s/deployment.yaml`
+4. `gl-execution-runtime/docker-compose.yml`
+5. `gl-execution-runtime/ops/pipelines/global-audit-pipeline.yaml`
+6. `gl-execution-runtime/src/api/routes.ts`
+7. `gl-execution-runtime/src/connectors/git-connector.ts`
+8. `gl-execution-runtime/src/events/event-stream-manager.ts`
+9. `gl-execution-runtime/src/index.ts`
+10. `gl-execution-runtime/src/orchestration/orchestrator-engine.ts`
+11. `gl-execution-runtime/src/policies/policy-engine.ts`
+12. `gl-execution-runtime/src/storage/artifact-store.ts`
+13. `gl-execution-runtime/src/utils/logger.ts`
+14. `gl-execution-runtime/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json`
+15. `gl-execution-runtime/tsconfig.json`
 
 ### Modified Files
 1. `.github/agents/agent-orchestration.yml`
-2. `gl-runtime-platform/package.json`
-3. `gl-runtime-platform/storage/gl-events-stream/events.jsonl`
+2. `gl-execution-runtime/package.json`
+3. `gl-execution-runtime/storage/gl-events-stream/events.jsonl`
 
 ## Deployment Verification
 

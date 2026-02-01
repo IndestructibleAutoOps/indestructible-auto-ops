@@ -156,7 +156,7 @@ The system can maintain:
 ### Directory Structure
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── trans-domain/
 │   ├── index.ts                              # Main integration layer
 │   ├── cross-system-integration/

@@ -4,8 +4,8 @@
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 """
 Semantic Engine Test and Demonstration
@@ -39,7 +39,7 @@ def test_gl_platform_universe.gl_platform_universegl_platform_universe.governanc
     # Load the semantic-unification-spec.yaml
     print_section("Loading Semantic Specification")
     
-    spec_file = "/workspace/machine-native-ops/gl-platform-universe/contracts/semantic-unification-spec.yaml"
+    spec_file = "/workspace/machine-native-ops/gl-enterprise-architecture/contracts/semantic-unification-spec.yaml"
     
     try:
         with open(spec_file, 'r') as f:

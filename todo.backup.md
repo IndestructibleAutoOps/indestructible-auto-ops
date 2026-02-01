@@ -7,7 +7,7 @@
 # GL Runtime Platform Integration Task List
 
 ## Current Status Analysis
-- [ ] Review all new files in gl-runtime-platform directory
+- [ ] Review all new files in gl-execution-runtime directory
 - [ ] Verify GL governance markers are present
 - [ ] Check package.json dependencies
 - [ ] Review deployment configurations
@@ -18,7 +18,7 @@
 - [x] Archive old output files if needed
 
 ## Commit & Push Changes
-- [x] Add all gl-runtime-platform files to Git
+- [x] Add all gl-execution-runtime files to Git
 - [x] Add governance event stream updates
 - [x] Commit with proper GL governance message
 - [x] Push to remote repository

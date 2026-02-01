@@ -113,17 +113,17 @@ c7289f85 feat: activate GL-ROOT global governance audit parallel multi-agent mod
 ## Governance Artifacts
 
 ### Event Stream
-- **Location**: `/workspace/gl-runtime-platform/storage/gl-events-stream/events.jsonl`
+- **Location**: `/workspace/gl-execution-runtime/storage/gl-events-stream/events.jsonl`
 - **Status**: Active logging
 - **Events**: Audit, configuration, engine lifecycle
 
 ### Artifacts Store
-- **Location**: `/workspace/gl-runtime-platform/storage/gl-artifacts-store/`
+- **Location**: `/workspace/gl-execution-runtime/storage/gl-artifacts-store/`
 - **Status**: Operational
 - **Content**: Audit reports, validation results
 
 ### Global Audit Report
-- **Location**: `/workspace/gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report.json`
+- **Location**: `/workspace/gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report.json`
 - **Status**: Generated
 - **Content**: Comprehensive governance audit results
 

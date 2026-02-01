@@ -164,7 +164,7 @@ c7289f85 feat: activate GL-ROOT global governance audit parallel multi-agent mod
 
 ## 完成條件驗證
 
-- ✅ gl-runtime-platform 全模組建構完成
+- ✅ gl-execution-runtime 全模組建構完成
 - ✅ 全模組整合 GL 治理層
 - ✅ 全模組可執行、可部署、可修復、可稽核
 - ✅ 所有 pipelines 可運行
@@ -198,17 +198,17 @@ GL Runtime Platform v2.2.0 現已完全運作，具備：
 ## 最終輸出
 
 ### 1. Global Governance Audit Report ✅
-- Location: `/workspace/gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json`
+- Location: `/workspace/gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json`
 - Status: Generated
 - Content: Comprehensive governance audit results
 
 ### 2. Governance Event Stream ✅
-- Location: `/workspace/gl-runtime-platform/storage/gl-events-stream/events.jsonl`
+- Location: `/workspace/gl-execution-runtime/storage/gl-events-stream/events.jsonl`
 - Status: Active logging
 - Events: Audit, configuration, engine lifecycle, deployment
 
 ### 3. Artifact Store ✅
-- Location: `/workspace/gl-runtime-platform/storage/gl-artifacts-store/`
+- Location: `/workspace/gl-execution-runtime/storage/gl-artifacts-store/`
 - Status: Operational
 - Content: Audit reports, validation results
 

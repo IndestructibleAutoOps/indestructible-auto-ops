@@ -20,7 +20,7 @@ services:
     build:
       context: ..
       dockerfile: deployment/Dockerfile
-    image: gl-runtime-platform:latest
+    image: gl-execution-runtime:latest
     container_name: gl-orchestration-engine
     ports:
       - "3000:3000"

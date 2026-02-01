@@ -1,28 +1,28 @@
 Running GL governance pre-commit validation...
-Checking: gl-runtime-platform/README.md
-Checking: gl-runtime-platform/api/rest/index.js
-Checking: gl-runtime-platform/connectors/connector-ci-github/index.js
-Checking: gl-runtime-platform/connectors/connector-format-yaml-json-md/index.js
-Checking: gl-runtime-platform/connectors/connector-git/index.js
-Checking: gl-runtime-platform/connectors/connector-lang-js/index.js
-Checking: gl-runtime-platform/connectors/connector-lang-py/index.js
-Checking: gl-runtime-platform/deployment/docker-compose.yaml
-Checking: gl-runtime-platform/deployment/k8s/orchestration-engine-deployment.yaml
-Checking: gl-runtime-platform/engine/orchestration-engine/index.js
-Checking: gl-runtime-platform/engine/sandbox-runner/index.js
-Checking: gl-runtime-platform/engine/scheduler/index.js
-Checking: gl-runtime-platform/governance/gl-annotations/index.js
-Checking: gl-runtime-platform/governance/gl-core/index.js
-Checking: gl-runtime-platform/governance/gl-policy-engine/index.js
-Checking: gl-runtime-platform/ops/agents/agent-orchestration.yaml
-Checking: gl-runtime-platform/ops/auto-bootstrap/auto-deploy.yaml
-Checking: gl-runtime-platform/ops/auto-bootstrap/auto-federation.yaml
-Checking: gl-runtime-platform/ops/auto-bootstrap/auto-integrate.yaml
-Checking: gl-runtime-platform/ops/auto-bootstrap/auto-repair.yaml
-Checking: gl-runtime-platform/ops/auto-bootstrap/bootstrap-loader.js
-Checking: gl-runtime-platform/ops/pipelines/directory-audit-pipeline.yaml
-Checking: gl-runtime-platform/ops/pipelines/repo-gl-fix-pipeline.yaml
-Checking: gl-runtime-platform/package.json
+Checking: gl-execution-runtime/README.md
+Checking: gl-execution-runtime/api/rest/index.js
+Checking: gl-execution-runtime/connectors/connector-ci-github/index.js
+Checking: gl-execution-runtime/connectors/connector-format-yaml-json-md/index.js
+Checking: gl-execution-runtime/connectors/connector-git/index.js
+Checking: gl-execution-runtime/connectors/connector-lang-js/index.js
+Checking: gl-execution-runtime/connectors/connector-lang-py/index.js
+Checking: gl-execution-runtime/deployment/docker-compose.yaml
+Checking: gl-execution-runtime/deployment/k8s/orchestration-engine-deployment.yaml
+Checking: gl-execution-runtime/engine/orchestration-engine/index.js
+Checking: gl-execution-runtime/engine/sandbox-runner/index.js
+Checking: gl-execution-runtime/engine/scheduler/index.js
+Checking: gl-execution-runtime/governance/gl-annotations/index.js
+Checking: gl-execution-runtime/governance/gl-core/index.js
+Checking: gl-execution-runtime/governance/gl-policy-engine/index.js
+Checking: gl-execution-runtime/ops/agents/agent-orchestration.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-deploy.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-federation.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-integrate.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-repair.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/bootstrap-loader.js
+Checking: gl-execution-runtime/ops/pipelines/directory-audit-pipeline.yaml
+Checking: gl-execution-runtime/ops/pipelines/repo-gl-fix-pipeline.yaml
+Checking: gl-execution-runtime/package.json
 Checking: todo.md
 ✅ GL Governance Validation Passed
 ✅ Governance event logged to event stream
@@ -1305,30 +1305,30 @@ Checking: todo.md
  rename {outputs => archives/old-outputs}/workspace_output_PYTHON_AST_SYNTAX_ERRORS_2349.txt (100%)
  create mode 100644 archives/old-scripts/governance-monitor.pid
  create mode 100755 archives/old-scripts/monitor-governance-events.sh
- create mode 100644 gl-runtime-platform/README.md
- create mode 100644 gl-runtime-platform/api/rest/index.js
- create mode 100644 gl-runtime-platform/connectors/connector-ci-github/index.js
- create mode 100644 gl-runtime-platform/connectors/connector-format-yaml-json-md/index.js
- create mode 100644 gl-runtime-platform/connectors/connector-git/index.js
- create mode 100644 gl-runtime-platform/connectors/connector-lang-js/index.js
- create mode 100644 gl-runtime-platform/connectors/connector-lang-py/index.js
- create mode 100644 gl-runtime-platform/deployment/docker-compose.yaml
- create mode 100644 gl-runtime-platform/deployment/k8s/orchestration-engine-deployment.yaml
- create mode 100644 gl-runtime-platform/engine/orchestration-engine/index.js
- create mode 100644 gl-runtime-platform/engine/sandbox-runner/index.js
- create mode 100644 gl-runtime-platform/engine/scheduler/index.js
- create mode 100644 gl-runtime-platform/governance/gl-annotations/index.js
- create mode 100644 gl-runtime-platform/governance/gl-core/index.js
- create mode 100644 gl-runtime-platform/governance/gl-policy-engine/index.js
- create mode 100644 gl-runtime-platform/ops/agents/agent-orchestration.yaml
- create mode 100644 gl-runtime-platform/ops/auto-bootstrap/auto-deploy.yaml
- create mode 100644 gl-runtime-platform/ops/auto-bootstrap/auto-federation.yaml
- create mode 100644 gl-runtime-platform/ops/auto-bootstrap/auto-integrate.yaml
- create mode 100644 gl-runtime-platform/ops/auto-bootstrap/auto-repair.yaml
- create mode 100644 gl-runtime-platform/ops/auto-bootstrap/bootstrap-loader.js
- create mode 100644 gl-runtime-platform/ops/pipelines/directory-audit-pipeline.yaml
- create mode 100644 gl-runtime-platform/ops/pipelines/repo-gl-fix-pipeline.yaml
- create mode 100644 gl-runtime-platform/package.json
+ create mode 100644 gl-execution-runtime/README.md
+ create mode 100644 gl-execution-runtime/api/rest/index.js
+ create mode 100644 gl-execution-runtime/connectors/connector-ci-github/index.js
+ create mode 100644 gl-execution-runtime/connectors/connector-format-yaml-json-md/index.js
+ create mode 100644 gl-execution-runtime/connectors/connector-git/index.js
+ create mode 100644 gl-execution-runtime/connectors/connector-lang-js/index.js
+ create mode 100644 gl-execution-runtime/connectors/connector-lang-py/index.js
+ create mode 100644 gl-execution-runtime/deployment/docker-compose.yaml
+ create mode 100644 gl-execution-runtime/deployment/k8s/orchestration-engine-deployment.yaml
+ create mode 100644 gl-execution-runtime/engine/orchestration-engine/index.js
+ create mode 100644 gl-execution-runtime/engine/sandbox-runner/index.js
+ create mode 100644 gl-execution-runtime/engine/scheduler/index.js
+ create mode 100644 gl-execution-runtime/governance/gl-annotations/index.js
+ create mode 100644 gl-execution-runtime/governance/gl-core/index.js
+ create mode 100644 gl-execution-runtime/governance/gl-policy-engine/index.js
+ create mode 100644 gl-execution-runtime/ops/agents/agent-orchestration.yaml
+ create mode 100644 gl-execution-runtime/ops/auto-bootstrap/auto-deploy.yaml
+ create mode 100644 gl-execution-runtime/ops/auto-bootstrap/auto-federation.yaml
+ create mode 100644 gl-execution-runtime/ops/auto-bootstrap/auto-integrate.yaml
+ create mode 100644 gl-execution-runtime/ops/auto-bootstrap/auto-repair.yaml
+ create mode 100644 gl-execution-runtime/ops/auto-bootstrap/bootstrap-loader.js
+ create mode 100644 gl-execution-runtime/ops/pipelines/directory-audit-pipeline.yaml
+ create mode 100644 gl-execution-runtime/ops/pipelines/repo-gl-fix-pipeline.yaml
+ create mode 100644 gl-execution-runtime/package.json
  create mode 100644 outputs/workspace_output_1769604226_5622.txt
  create mode 100644 outputs/workspace_output_1769604227_4590.txt
  create mode 100644 outputs/workspace_output_1769604231_8605.txt

@@ -27,7 +27,7 @@ from typing import Dict, List, Tuple
 # Configuration
 # ============================================================================
 
-WORKSPACE_DIR = Path("/workspace/gl-runtime-platform")
+WORKSPACE_DIR = Path("/workspace/gl-execution-runtime")
 EXCLUDE_DIRS = [
     "node_modules",
     "dist",

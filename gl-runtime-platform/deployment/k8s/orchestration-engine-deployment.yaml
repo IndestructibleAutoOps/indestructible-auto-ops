@@ -16,7 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gl-orchestration-engine
-  namespace: gl-runtime-platform
+  namespace: gl-execution-runtime
   labels:
     app: gl-orchestration-engine
     gl-governed: "true"
@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: orchestration-engine
-        image: gl-runtime-platform:latest
+        image: gl-execution-runtime:latest
         imagePullPolicy: Always
         
         ports:
@@ -108,7 +108,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gl-orchestration-engine
-  namespace: gl-runtime-platform
+  namespace: gl-execution-runtime
   labels:
     app: gl-orchestration-engine
     gl-governed: "true"
@@ -134,7 +134,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gl-orchestration-engine-hpa
-  namespace: gl-runtime-platform
+  namespace: gl-execution-runtime
   labels:
     app: gl-orchestration-engine
     gl-governed: "true"
@@ -167,7 +167,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: gl-artifacts-store-pvc
-  namespace: gl-runtime-platform
+  namespace: gl-execution-runtime
   labels:
     gl-governed: "true"
 

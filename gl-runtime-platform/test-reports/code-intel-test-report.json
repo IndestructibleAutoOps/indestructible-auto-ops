@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: test
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 {
@@ -13,7 +13,7 @@
     "version": "21.0.0",
     "test_date": "2026-01-29T03:51:01.226560",
     "tester": "CodeIntelTester v21.0.0",
-    "workspace_root": "/workspace/gl-runtime-platform"
+    "workspace_root": "/workspace/gl-execution-runtime"
   },
   "summary": {
     "total_tests": 18,
@@ -44,7 +44,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/capability-schema",
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/capability-schema",
             "directory_exists": true
           }
         },
@@ -103,7 +103,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/pattern-library"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/pattern-library"
           }
         },
         {
@@ -164,7 +164,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/generator-engine"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/generator-engine"
           }
         },
         {
@@ -209,7 +209,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/evaluation-engine"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/evaluation-engine"
           }
         },
         {
@@ -220,7 +220,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "criteria_file": "/workspace/gl-runtime-platform/code-intel-security-layer/evaluation-engine/evaluation-criteria.yaml",
+            "criteria_file": "/workspace/gl-execution-runtime/code-intel-security-layer/evaluation-engine/evaluation-criteria.yaml",
             "exists": true
           }
         }
@@ -245,7 +245,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/deployment-weaver"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/deployment-weaver"
           }
         },
         {
@@ -292,7 +292,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/evolution-engine"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/evolution-engine"
           }
         },
         {
@@ -337,7 +337,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/integrations/v19-fabric"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/integrations/v19-fabric"
           }
         },
         {
@@ -380,7 +380,7 @@
           "error_message": null,
           "assertions": [],
           "metrics": {
-            "directory_path": "/workspace/gl-runtime-platform/code-intel-security-layer/integrations/v20-continuum"
+            "directory_path": "/workspace/gl-execution-runtime/code-intel-security-layer/integrations/v20-continuum"
           }
         },
         {

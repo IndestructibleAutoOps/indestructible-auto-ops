@@ -29,7 +29,7 @@
 - **建議**:
   - ✅ 已完成：所有新增組件都有完整的 README 和文檔
   - ⚠️ 需要微調：為現有核心文件添加文檔註釋
-  - **微調方案**: 優先為關鍵模組（engine, gl-runtime-platform/src/）添加 JSDoc/TypeDoc 註釋
+  - **微調方案**: 優先為關鍵模組（engine, gl-execution-runtime/src/）添加 JSDoc/TypeDoc 註釋
 
 #### 3. 檢查安全性（優先級：MEDIUM）
 - **受影響文件數量**: 498 個文件（潛在機密）

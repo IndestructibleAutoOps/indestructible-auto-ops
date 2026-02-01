@@ -261,7 +261,7 @@ git push origin main
 
 **核心平台層（獨立）**
 ```
-gl-runtime-platform/      # GL 治理運行時
+gl-execution-runtime/      # GL 治理運行時
 esync-platform/          # 資料同步平台
 instant/                 # 即時處理
 engine/                  # 核心引擎

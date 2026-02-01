@@ -25,7 +25,7 @@ AUDIT_CONFIG = {
     "audit_date": datetime.datetime.now().isoformat(),
     "workspace_root": "/workspace",
     "scan_directories": [
-        "/workspace/gl-runtime-platform",
+        "/workspace/gl-execution-runtime",
         "/workspace/elasticsearch-search-system",
         "/workspace/.github/agents",
         "/workspace/file-organizer-system",

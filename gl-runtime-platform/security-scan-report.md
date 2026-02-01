@@ -34,7 +34,7 @@ Completed comprehensive security scan across the entire repository. **37,620 pot
 ### 1. Potential API Keys (32/40 hex) - 37,536 findings
 
 **Distribution:**
-- `gl-runtime-platform/governance-audit-reports/global-governance-audit-report.json`: 23,193 findings
+- `gl-execution-runtime/governance-audit-reports/global-governance-audit-report.json`: 23,193 findings
 - `engine/.governance/audit-results/`: 7,000+ findings
 - `backup-v7-artifacts/global-resource-graph.json`: 2,590 findings
 - Other test/validation reports: ~5,000 findings

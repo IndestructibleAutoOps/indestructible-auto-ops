@@ -7,9 +7,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gl-runtime-platform
+  name: gl-execution-runtime
   labels:
-    app: gl-runtime-platform
+    app: gl-execution-runtime
     version: "5.0.0"
     governance-layer: "GL90-99"
     charter-version: "2.0.0"
@@ -20,16 +20,16 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: gl-runtime-platform
+      app: gl-execution-runtime
   template:
     metadata:
       labels:
-        app: gl-runtime-platform
+        app: gl-execution-runtime
         governance-layer: "GL90-99"
     spec:
       containers:
-      - name: gl-runtime-platform
-        image: gl-runtime-platform:5.0.0
+      - name: gl-execution-runtime
+        image: gl-execution-runtime:5.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -85,9 +85,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: gl-runtime-platform-service
+  name: gl-execution-runtime-service
   labels:
-    app: gl-runtime-platform
+    app: gl-execution-runtime
 spec:
   type: LoadBalancer
   ports:
@@ -96,7 +96,7 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: gl-runtime-platform
+    app: gl-execution-runtime
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

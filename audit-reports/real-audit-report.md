@@ -54,7 +54,7 @@ This report provides a **real, verifiable audit** of the Machine Native Ops repo
 The repository contains **144 directories** organized into the following major components:
 
 #### Core Platform Components (Largest Directories)
-1. **gl-runtime-platform/** - 97 MB (35% of total size)
+1. **gl-execution-runtime/** - 97 MB (35% of total size)
 2. **engine/** - 39 MB (14% of total size)
 3. **archives/** - 7.0 MB (2.5% of total size)
 4. **summarized_conversations/** - 3.1 MB (1.1% of total size)
@@ -99,7 +99,7 @@ The repository contains **144 directories** organized into the following major c
 
 **Detected Package Managers:**
 1. **npm/package.json** - Multiple instances:
-   - gl-runtime-platform/
+   - gl-execution-runtime/
    - file-organizer-system/ (client, server)
    - engine/ (aep-engine-web, semantic-search-system, github-repository-analyzer)
    
@@ -200,7 +200,7 @@ The repository contains **144 directories** organized into the following major c
 - **Dockerfiles** - 5 instances:
   - .github/config/deployment/Dockerfile
   - .github/config/dev/Dockerfile
-  - gl-runtime-platform/Dockerfile
+  - gl-execution-runtime/Dockerfile
   - Dockerfile, Dockerfile.production
 
 ---

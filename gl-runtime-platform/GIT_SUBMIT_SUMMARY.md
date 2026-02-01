@@ -13,14 +13,14 @@
 **描述：** Reorganize GL Runtime evolution path with complete documentation
 
 **新增文件：**
-1. `gl-runtime-platform/GL_RUNTIME_EVOLUTION_PATH.md` (24,553 bytes)
+1. `gl-execution-runtime/GL_RUNTIME_EVOLUTION_PATH.md` (24,553 bytes)
    - 完整的 GL Runtime 架構進化路徑文檔
    - 包含 V1-V24 + V0 Pro-V25 的完整演化年表
    - 八大演進階段詳細說明
    - 版本間依賴關係矩陣
    - 核心演進邏輯說明
 
-2. `gl-runtime-platform/GL_EVOLUTION_DIAGRAM.md` (8,699 bytes)
+2. `gl-execution-runtime/GL_EVOLUTION_DIAGRAM.md` (8,699 bytes)
    - 6 個 Mermaid 視覜化圖表
    - 整體架構流程圖
    - 層級層次圖
@@ -29,11 +29,11 @@
    - 四大核心維度圖
 
 **修改文件：**
-1. `gl-runtime-platform/README.md`
+1. `gl-execution-runtime/README.md`
    - 添加進化路徑文檔引用
    - 更新架構說明
 
-2. `gl-runtime-platform/todo.md`
+2. `gl-execution-runtime/todo.md`
    - 更新為進化路徑重整任務
 
 **變更統計：**
@@ -46,22 +46,22 @@
 **描述：** Add comprehensive system test report and documentation
 
 **新增文件：**
-1. `gl-runtime-platform/SYSTEM_TEST_REPORT.md`
+1. `gl-execution-runtime/SYSTEM_TEST_REPORT.md`
    - 完整的系統測試報告
    - 測試範圍：V8, V12, V13, V17, V18 層級
    - 所有服務的詳細測試結果
    - 性能指標和已知問題
    - 系統架構驗證結果
 
-2. `gl-runtime-platform/system-test-todo.md`
+2. `gl-execution-runtime/system-test-todo.md`
    - 系統測試任務追蹤
    - 已完成和待測試項目清單
    - 測試進度跟蹤
 
-3. `gl-runtime-platform/test-sandbox.json`
+3. `gl-execution-runtime/test-sandbox.json`
    - 沙箱測試配置文件
 
-4. `gl-runtime-platform/storage/gl-artifacts-store/cec0833c-4bf5-4b7d-8f1b-ecb8c7f38777.json`
+4. `gl-execution-runtime/storage/gl-artifacts-store/cec0833c-4bf5-4b7d-8f1b-ecb8c7f38777.json`
    - 審計結果存儲文件
 
 **變更統計：**

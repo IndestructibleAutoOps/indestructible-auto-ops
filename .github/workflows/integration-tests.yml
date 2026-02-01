@@ -4,8 +4,8 @@
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 # @GL-governed
 # @version 21.0.0
@@ -34,12 +34,12 @@ jobs:
     
     - name: Install dependencies
       run: |
-        cd gl-runtime-platform
+        cd gl-execution-runtime
         npm ci
     
     - name: Run integration tests
       run: |
-        cd gl-runtime-platform
+        cd gl-execution-runtime
         npx ts-node tests/integration-main/run-integration-tests-simple.ts
     
     - name: Upload test results
@@ -47,4 +47,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: gl-runtime-platform/test-reports-main/
+        path: gl-execution-runtime/test-reports-main/

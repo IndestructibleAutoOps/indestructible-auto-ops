@@ -1011,7 +1011,7 @@
     },
     {
       "id": "node-109",
-      "path": "gl-runtime-platform/docker-compose.yml",
+      "path": "gl-execution-runtime/docker-compose.yml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1020,7 +1020,7 @@
     },
     {
       "id": "node-110",
-      "path": "gl-runtime-platform/Dockerfile",
+      "path": "gl-execution-runtime/Dockerfile",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1029,7 +1029,7 @@
     },
     {
       "id": "node-111",
-      "path": "gl-runtime-platform/tsconfig.json",
+      "path": "gl-execution-runtime/tsconfig.json",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1038,7 +1038,7 @@
     },
     {
       "id": "node-112",
-      "path": "gl-runtime-platform/package.json",
+      "path": "gl-execution-runtime/package.json",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1047,7 +1047,7 @@
     },
     {
       "id": "node-113",
-      "path": "gl-runtime-platform/README.md",
+      "path": "gl-execution-runtime/README.md",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1056,7 +1056,7 @@
     },
     {
       "id": "node-114",
-      "path": "gl-runtime-platform/GL_V7_COMPLETION.md",
+      "path": "gl-execution-runtime/GL_V7_COMPLETION.md",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1065,7 +1065,7 @@
     },
     {
       "id": "node-115",
-      "path": "gl-runtime-platform/api/rest/index.js",
+      "path": "gl-execution-runtime/api/rest/index.js",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1074,7 +1074,7 @@
     },
     {
       "id": "node-116",
-      "path": "gl-runtime-platform/src/index.ts",
+      "path": "gl-execution-runtime/src/index.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1083,7 +1083,7 @@
     },
     {
       "id": "node-117",
-      "path": "gl-runtime-platform/src/api/routes.ts",
+      "path": "gl-execution-runtime/src/api/routes.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1092,7 +1092,7 @@
     },
     {
       "id": "node-118",
-      "path": "gl-runtime-platform/src/policies/policy-engine.ts",
+      "path": "gl-execution-runtime/src/policies/policy-engine.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1101,7 +1101,7 @@
     },
     {
       "id": "node-119",
-      "path": "gl-runtime-platform/src/utils/logger.ts",
+      "path": "gl-execution-runtime/src/utils/logger.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1110,7 +1110,7 @@
     },
     {
       "id": "node-120",
-      "path": "gl-runtime-platform/src/events/event-stream-manager.ts",
+      "path": "gl-execution-runtime/src/events/event-stream-manager.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1119,7 +1119,7 @@
     },
     {
       "id": "node-121",
-      "path": "gl-runtime-platform/src/orchestration/orchestrator-engine.ts",
+      "path": "gl-execution-runtime/src/orchestration/orchestrator-engine.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1128,7 +1128,7 @@
     },
     {
       "id": "node-122",
-      "path": "gl-runtime-platform/src/connectors/git-connector.ts",
+      "path": "gl-execution-runtime/src/connectors/git-connector.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1137,7 +1137,7 @@
     },
     {
       "id": "node-123",
-      "path": "gl-runtime-platform/src/storage/artifact-store.ts",
+      "path": "gl-execution-runtime/src/storage/artifact-store.ts",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1146,7 +1146,7 @@
     },
     {
       "id": "node-124",
-      "path": "gl-runtime-platform/ops/auto-repair/auto-commit.yaml",
+      "path": "gl-execution-runtime/ops/auto-repair/auto-commit.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1155,7 +1155,7 @@
     },
     {
       "id": "node-125",
-      "path": "gl-runtime-platform/ops/auto-repair/auto-repair.yaml",
+      "path": "gl-execution-runtime/ops/auto-repair/auto-repair.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1164,7 +1164,7 @@
     },
     {
       "id": "node-126",
-      "path": "gl-runtime-platform/ops/auto-repair/auto-pr.yaml",
+      "path": "gl-execution-runtime/ops/auto-repair/auto-pr.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1173,7 +1173,7 @@
     },
     {
       "id": "node-127",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-orchestrate.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-orchestrate.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1182,7 +1182,7 @@
     },
     {
       "id": "node-128",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-optimize.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-optimize.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1191,7 +1191,7 @@
     },
     {
       "id": "node-129",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-sync.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-sync.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1200,7 +1200,7 @@
     },
     {
       "id": "node-130",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-federation.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-federation.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1209,7 +1209,7 @@
     },
     {
       "id": "node-131",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-integrate.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-integrate.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1218,7 +1218,7 @@
     },
     {
       "id": "node-132",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-scan.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-scan.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1227,7 +1227,7 @@
     },
     {
       "id": "node-133",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-trigger.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-trigger.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1236,7 +1236,7 @@
     },
     {
       "id": "node-134",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-repair.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-repair.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1245,7 +1245,7 @@
     },
     {
       "id": "node-135",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/bootstrap-loader.js",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/bootstrap-loader.js",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1254,7 +1254,7 @@
     },
     {
       "id": "node-136",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-monitor.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-monitor.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1263,7 +1263,7 @@
     },
     {
       "id": "node-137",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-validate.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-validate.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1272,7 +1272,7 @@
     },
     {
       "id": "node-138",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/README.md",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/README.md",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1281,7 +1281,7 @@
     },
     {
       "id": "node-139",
-      "path": "gl-runtime-platform/ops/auto-bootstrap/auto-deploy.yaml",
+      "path": "gl-execution-runtime/ops/auto-bootstrap/auto-deploy.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1290,7 +1290,7 @@
     },
     {
       "id": "node-140",
-      "path": "gl-runtime-platform/ops/pipelines/global-audit-pipeline.yaml",
+      "path": "gl-execution-runtime/ops/pipelines/global-audit-pipeline.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1299,7 +1299,7 @@
     },
     {
       "id": "node-141",
-      "path": "gl-runtime-platform/ops/pipelines/repo-gl-fix-pipeline.yaml",
+      "path": "gl-execution-runtime/ops/pipelines/repo-gl-fix-pipeline.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1308,7 +1308,7 @@
     },
     {
       "id": "node-142",
-      "path": "gl-runtime-platform/ops/pipelines/directory-audit-pipeline.yaml",
+      "path": "gl-execution-runtime/ops/pipelines/directory-audit-pipeline.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1317,7 +1317,7 @@
     },
     {
       "id": "node-143",
-      "path": "gl-runtime-platform/ops/agents/agent-orchestration.yaml",
+      "path": "gl-execution-runtime/ops/agents/agent-orchestration.yaml",
       "semantic_class": "multi-agent-orchestrator",
       "gl_layer": "GL90-99",
       "gl_mapping": "mno.agent.orchestrator",
@@ -1326,7 +1326,7 @@
     },
     {
       "id": "node-144",
-      "path": "gl-runtime-platform/federation/index.yaml",
+      "path": "gl-execution-runtime/federation/index.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1335,7 +1335,7 @@
     },
     {
       "id": "node-145",
-      "path": "gl-runtime-platform/federation/README.md",
+      "path": "gl-execution-runtime/federation/README.md",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1344,7 +1344,7 @@
     },
     {
       "id": "node-146",
-      "path": "gl-runtime-platform/federation/policies/federation-policies.yaml",
+      "path": "gl-execution-runtime/federation/policies/federation-policies.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1353,7 +1353,7 @@
     },
     {
       "id": "node-147",
-      "path": "gl-runtime-platform/federation/topology/topology.yaml",
+      "path": "gl-execution-runtime/federation/topology/topology.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1362,7 +1362,7 @@
     },
     {
       "id": "node-148",
-      "path": "gl-runtime-platform/federation/topology/repos.yaml",
+      "path": "gl-execution-runtime/federation/topology/repos.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1371,7 +1371,7 @@
     },
     {
       "id": "node-149",
-      "path": "gl-runtime-platform/federation/topology/clusters.yaml",
+      "path": "gl-execution-runtime/federation/topology/clusters.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1380,7 +1380,7 @@
     },
     {
       "id": "node-150",
-      "path": "gl-runtime-platform/federation/trust/signing-keys.md",
+      "path": "gl-execution-runtime/federation/trust/signing-keys.md",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1389,7 +1389,7 @@
     },
     {
       "id": "node-151",
-      "path": "gl-runtime-platform/federation/trust/trust-model.yaml",
+      "path": "gl-execution-runtime/federation/trust/trust-model.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1398,7 +1398,7 @@
     },
     {
       "id": "node-152",
-      "path": "gl-runtime-platform/federation/federation-orchestration/federation-orchestration.yaml",
+      "path": "gl-execution-runtime/federation/federation-orchestration/federation-orchestration.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1407,7 +1407,7 @@
     },
     {
       "id": "node-153",
-      "path": "gl-runtime-platform/federation/org-registry/projects.yaml",
+      "path": "gl-execution-runtime/federation/org-registry/projects.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1416,7 +1416,7 @@
     },
     {
       "id": "node-154",
-      "path": "gl-runtime-platform/federation/org-registry/organizations.yaml",
+      "path": "gl-execution-runtime/federation/org-registry/organizations.yaml",
       "semantic_class": "federation-config",
       "gl_layer": "GL80-89",
       "gl_mapping": "mno.federation.config",
@@ -1425,7 +1425,7 @@
     },
     {
       "id": "node-155",
-      "path": "gl-runtime-platform/engine/sandbox-runner/index.js",
+      "path": "gl-execution-runtime/engine/sandbox-runner/index.js",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1434,7 +1434,7 @@
     },
     {
       "id": "node-156",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.d.ts.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.d.ts.map",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1443,7 +1443,7 @@
     },
     {
       "id": "node-157",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.js",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1452,7 +1452,7 @@
     },
     {
       "id": "node-158",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.js.map",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1461,7 +1461,7 @@
     },
     {
       "id": "node-159",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.ts",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1470,7 +1470,7 @@
     },
     {
       "id": "node-160",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.js",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1479,7 +1479,7 @@
     },
     {
       "id": "node-161",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.d.ts.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.d.ts.map",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1488,7 +1488,7 @@
     },
     {
       "id": "node-162",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.d.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.d.ts",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1497,7 +1497,7 @@
     },
     {
       "id": "node-163",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.js.map",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1506,7 +1506,7 @@
     },
     {
       "id": "node-164",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.ts",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1515,7 +1515,7 @@
     },
     {
       "id": "node-165",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.d.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.d.ts",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1524,7 +1524,7 @@
     },
     {
       "id": "node-166",
-      "path": "gl-runtime-platform/engine/scheduler/index.js",
+      "path": "gl-execution-runtime/engine/scheduler/index.js",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1533,7 +1533,7 @@
     },
     {
       "id": "node-167",
-      "path": "gl-runtime-platform/engine/orchestration-engine/index.js",
+      "path": "gl-execution-runtime/engine/orchestration-engine/index.js",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1542,7 +1542,7 @@
     },
     {
       "id": "node-168",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.d.ts.map",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.d.ts.map",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1551,7 +1551,7 @@
     },
     {
       "id": "node-169",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.ts",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.ts",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1560,7 +1560,7 @@
     },
     {
       "id": "node-170",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.js",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.js",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1569,7 +1569,7 @@
     },
     {
       "id": "node-171",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.d.ts",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.d.ts",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1578,7 +1578,7 @@
     },
     {
       "id": "node-172",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.js.map",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.js.map",
       "semantic_class": "orchestration-engine",
       "gl_layer": "GL50-69",
       "gl_mapping": "mno.engine.orchestrator",
@@ -1587,7 +1587,7 @@
     },
     {
       "id": "node-173",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.d.ts.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1596,7 +1596,7 @@
     },
     {
       "id": "node-174",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1605,7 +1605,7 @@
     },
     {
       "id": "node-175",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.d.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1614,7 +1614,7 @@
     },
     {
       "id": "node-176",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1623,7 +1623,7 @@
     },
     {
       "id": "node-177",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.js.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1632,7 +1632,7 @@
     },
     {
       "id": "node-178",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.js.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1641,7 +1641,7 @@
     },
     {
       "id": "node-179",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1650,7 +1650,7 @@
     },
     {
       "id": "node-180",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.d.ts.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1659,7 +1659,7 @@
     },
     {
       "id": "node-181",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1668,7 +1668,7 @@
     },
     {
       "id": "node-182",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.d.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1677,7 +1677,7 @@
     },
     {
       "id": "node-183",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.d.ts.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1686,7 +1686,7 @@
     },
     {
       "id": "node-184",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1695,7 +1695,7 @@
     },
     {
       "id": "node-185",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1704,7 +1704,7 @@
     },
     {
       "id": "node-186",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.d.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1713,7 +1713,7 @@
     },
     {
       "id": "node-187",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.js.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1722,7 +1722,7 @@
     },
     {
       "id": "node-188",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1731,7 +1731,7 @@
     },
     {
       "id": "node-189",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.d.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1740,7 +1740,7 @@
     },
     {
       "id": "node-190",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.d.ts.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1749,7 +1749,7 @@
     },
     {
       "id": "node-191",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.js.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1758,7 +1758,7 @@
     },
     {
       "id": "node-192",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1767,7 +1767,7 @@
     },
     {
       "id": "node-193",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1776,7 +1776,7 @@
     },
     {
       "id": "node-194",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.js.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1785,7 +1785,7 @@
     },
     {
       "id": "node-195",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.d.ts.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1794,7 +1794,7 @@
     },
     {
       "id": "node-196",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.d.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1803,7 +1803,7 @@
     },
     {
       "id": "node-197",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1812,7 +1812,7 @@
     },
     {
       "id": "node-198",
-      "path": "gl-runtime-platform/governance/gl-policy-engine/index.js",
+      "path": "gl-execution-runtime/governance/gl-policy-engine/index.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1821,7 +1821,7 @@
     },
     {
       "id": "node-199",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.js",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1830,7 +1830,7 @@
     },
     {
       "id": "node-200",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.js.map",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.js.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1839,7 +1839,7 @@
     },
     {
       "id": "node-201",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.d.ts.map",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1848,7 +1848,7 @@
     },
     {
       "id": "node-202",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1857,7 +1857,7 @@
     },
     {
       "id": "node-203",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.d.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.d.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1866,7 +1866,7 @@
     },
     {
       "id": "node-204",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/parser.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/content-parsers/parser.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1875,7 +1875,7 @@
     },
     {
       "id": "node-205",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/content-parsers/index.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1884,7 +1884,7 @@
     },
     {
       "id": "node-206",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/inferencer.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/schema-infer/inferencer.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1893,7 +1893,7 @@
     },
     {
       "id": "node-207",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/schema-infer/index.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1902,7 +1902,7 @@
     },
     {
       "id": "node-208",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/resolver.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/intent-resolver/resolver.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1911,7 +1911,7 @@
     },
     {
       "id": "node-209",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/intent-resolver/index.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1920,7 +1920,7 @@
     },
     {
       "id": "node-210",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1929,7 +1929,7 @@
     },
     {
       "id": "node-211",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/semantic-classifiers/index.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1938,7 +1938,7 @@
     },
     {
       "id": "node-212",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/mapper.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/gl-mapping/mapper.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1947,7 +1947,7 @@
     },
     {
       "id": "node-213",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/gl-mapping/index.ts",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1956,7 +1956,7 @@
     },
     {
       "id": "node-214",
-      "path": "gl-runtime-platform/governance/gl-annotations/index.js",
+      "path": "gl-execution-runtime/governance/gl-annotations/index.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1965,7 +1965,7 @@
     },
     {
       "id": "node-215",
-      "path": "gl-runtime-platform/governance/gl-core/index.js",
+      "path": "gl-execution-runtime/governance/gl-core/index.js",
       "semantic_class": "governance-policy",
       "gl_layer": "GL10-29",
       "gl_mapping": "mno.governance.policy",
@@ -1974,7 +1974,7 @@
     },
     {
       "id": "node-216",
-      "path": "gl-runtime-platform/deployment/docker-compose.yaml",
+      "path": "gl-execution-runtime/deployment/docker-compose.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1983,7 +1983,7 @@
     },
     {
       "id": "node-217",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-sync.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-sync.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -1992,7 +1992,7 @@
     },
     {
       "id": "node-218",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-rollout.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-rollout.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2001,7 +2001,7 @@
     },
     {
       "id": "node-219",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-healthcheck.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-healthcheck.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2010,7 +2010,7 @@
     },
     {
       "id": "node-220",
-      "path": "gl-runtime-platform/deployment/auto-deploy/auto-deploy.yaml",
+      "path": "gl-execution-runtime/deployment/auto-deploy/auto-deploy.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2019,7 +2019,7 @@
     },
     {
       "id": "node-221",
-      "path": "gl-runtime-platform/deployment/k8s/deployment.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/deployment.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2028,7 +2028,7 @@
     },
     {
       "id": "node-222",
-      "path": "gl-runtime-platform/deployment/k8s/orchestration-engine-deployment.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/orchestration-engine-deployment.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2037,7 +2037,7 @@
     },
     {
       "id": "node-223",
-      "path": "gl-runtime-platform/deployment/k8s/base/storage-pvc.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/storage-pvc.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2046,7 +2046,7 @@
     },
     {
       "id": "node-224",
-      "path": "gl-runtime-platform/deployment/k8s/base/configmaps.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/configmaps.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2055,7 +2055,7 @@
     },
     {
       "id": "node-225",
-      "path": "gl-runtime-platform/deployment/k8s/base/namespace.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/namespace.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2064,7 +2064,7 @@
     },
     {
       "id": "node-226",
-      "path": "gl-runtime-platform/deployment/k8s/base/secrets.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/secrets.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2073,7 +2073,7 @@
     },
     {
       "id": "node-227",
-      "path": "gl-runtime-platform/deployment/k8s/base/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/kustomization.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2082,7 +2082,7 @@
     },
     {
       "id": "node-228",
-      "path": "gl-runtime-platform/deployment/k8s/base/orchestration-engine-service.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/base/orchestration-engine-service.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2091,7 +2091,7 @@
     },
     {
       "id": "node-229",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/prod/deployment-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/prod/deployment-patch.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2100,7 +2100,7 @@
     },
     {
       "id": "node-230",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/prod/hpa-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/prod/hpa-patch.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2109,7 +2109,7 @@
     },
     {
       "id": "node-231",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/prod/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/prod/kustomization.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2118,7 +2118,7 @@
     },
     {
       "id": "node-232",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/dev/deployment-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/dev/deployment-patch.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2127,7 +2127,7 @@
     },
     {
       "id": "node-233",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/dev/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/dev/kustomization.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2136,7 +2136,7 @@
     },
     {
       "id": "node-234",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/staging/deployment-patch.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/staging/deployment-patch.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2145,7 +2145,7 @@
     },
     {
       "id": "node-235",
-      "path": "gl-runtime-platform/deployment/k8s/overlays/staging/kustomization.yaml",
+      "path": "gl-execution-runtime/deployment/k8s/overlays/staging/kustomization.yaml",
       "semantic_class": "unknown",
       "gl_layer": "unclassified",
       "gl_mapping": null,
@@ -2154,7 +2154,7 @@
     },
     {
       "id": "node-236",
-      "path": "gl-runtime-platform/connectors/connector-lang-js/index.js",
+      "path": "gl-execution-runtime/connectors/connector-lang-js/index.js",
       "semantic_class": "integration-connector",
       "gl_layer": "GL70-79",
       "gl_mapping": "mno.connector.integration",
@@ -2163,7 +2163,7 @@
     },
     {
       "id": "node-237",
-      "path": "gl-runtime-platform/connectors/connector-format-yaml-json-md/index.js",
+      "path": "gl-execution-runtime/connectors/connector-format-yaml-json-md/index.js",
       "semantic_class": "integration-connector",
       "gl_layer": "GL70-79",
       "gl_mapping": "mno.connector.integration",
@@ -2172,7 +2172,7 @@
     },
     {
       "id": "node-238",
-      "path": "gl-runtime-platform/connectors/connector-ci-github/index.js",
+      "path": "gl-execution-runtime/connectors/connector-ci-github/index.js",
       "semantic_class": "integration-connector",
       "gl_layer": "GL70-79",
       "gl_mapping": "mno.connector.integration",
@@ -2181,7 +2181,7 @@
     },
     {
       "id": "node-239",
-      "path": "gl-runtime-platform/connectors/connector-lang-py/index.js",
+      "path": "gl-execution-runtime/connectors/connector-lang-py/index.js",
       "semantic_class": "integration-connector",
       "gl_layer": "GL70-79",
       "gl_mapping": "mno.connector.integration",
@@ -2190,7 +2190,7 @@
     },
     {
       "id": "node-240",
-      "path": "gl-runtime-platform/connectors/connector-git/index.js",
+      "path": "gl-execution-runtime/connectors/connector-git/index.js",
       "semantic_class": "integration-connector",
       "gl_layer": "GL70-79",
       "gl_mapping": "mno.connector.integration",
@@ -2199,7 +2199,7 @@
     },
     {
       "id": "node-241",
-      "path": "gl-runtime-platform/storage/gl-events-stream/events.jsonl",
+      "path": "gl-execution-runtime/storage/gl-events-stream/events.jsonl",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2208,7 +2208,7 @@
     },
     {
       "id": "node-242",
-      "path": "gl-runtime-platform/storage/gl-semantic-graph/analyses.json",
+      "path": "gl-execution-runtime/storage/gl-semantic-graph/analyses.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2217,7 +2217,7 @@
     },
     {
       "id": "node-243",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/f35f796f-c06b-4f06-b998-457c966f2133.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/f35f796f-c06b-4f06-b998-457c966f2133.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2226,7 +2226,7 @@
     },
     {
       "id": "node-244",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/aa055817-30e7-4da4-83ad-0bff6764d5ef.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/aa055817-30e7-4da4-83ad-0bff6764d5ef.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2235,7 +2235,7 @@
     },
     {
       "id": "node-245",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/6ddff5c6-49cb-4087-9964-5565acc35730.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/6ddff5c6-49cb-4087-9964-5565acc35730.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2244,7 +2244,7 @@
     },
     {
       "id": "node-246",
-      "path": "gl-runtime-platform/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2253,7 +2253,7 @@
     },
     {
       "id": "node-247",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2262,7 +2262,7 @@
     },
     {
       "id": "node-248",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/gl-auto-repair-completion-report.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/gl-auto-repair-completion-report.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2271,7 +2271,7 @@
     },
     {
       "id": "node-249",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2280,7 +2280,7 @@
     },
     {
       "id": "node-250",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-full-scan.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-full-scan.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2289,7 +2289,7 @@
     },
     {
       "id": "node-251",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -2298,7 +2298,7 @@
     },
     {
       "id": "node-252",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-v4.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-v4.json",
       "semantic_class": "storage-artifact",
       "gl_layer": "GL30-49",
       "gl_mapping": "mno.storage.artifact",
@@ -23369,541 +23369,541 @@
   "gl_mappings": [
     {
       "node_id": "node-143",
-      "path": "gl-runtime-platform/ops/agents/agent-orchestration.yaml",
+      "path": "gl-execution-runtime/ops/agents/agent-orchestration.yaml",
       "gl_mapping": "mno.agent.orchestrator",
       "gl_layer": "GL90-99"
     },
     {
       "node_id": "node-144",
-      "path": "gl-runtime-platform/federation/index.yaml",
+      "path": "gl-execution-runtime/federation/index.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-145",
-      "path": "gl-runtime-platform/federation/README.md",
+      "path": "gl-execution-runtime/federation/README.md",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-146",
-      "path": "gl-runtime-platform/federation/policies/federation-policies.yaml",
+      "path": "gl-execution-runtime/federation/policies/federation-policies.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-147",
-      "path": "gl-runtime-platform/federation/topology/topology.yaml",
+      "path": "gl-execution-runtime/federation/topology/topology.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-148",
-      "path": "gl-runtime-platform/federation/topology/repos.yaml",
+      "path": "gl-execution-runtime/federation/topology/repos.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-149",
-      "path": "gl-runtime-platform/federation/topology/clusters.yaml",
+      "path": "gl-execution-runtime/federation/topology/clusters.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-150",
-      "path": "gl-runtime-platform/federation/trust/signing-keys.md",
+      "path": "gl-execution-runtime/federation/trust/signing-keys.md",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-151",
-      "path": "gl-runtime-platform/federation/trust/trust-model.yaml",
+      "path": "gl-execution-runtime/federation/trust/trust-model.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-152",
-      "path": "gl-runtime-platform/federation/federation-orchestration/federation-orchestration.yaml",
+      "path": "gl-execution-runtime/federation/federation-orchestration/federation-orchestration.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-153",
-      "path": "gl-runtime-platform/federation/org-registry/projects.yaml",
+      "path": "gl-execution-runtime/federation/org-registry/projects.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-154",
-      "path": "gl-runtime-platform/federation/org-registry/organizations.yaml",
+      "path": "gl-execution-runtime/federation/org-registry/organizations.yaml",
       "gl_mapping": "mno.federation.config",
       "gl_layer": "GL80-89"
     },
     {
       "node_id": "node-155",
-      "path": "gl-runtime-platform/engine/sandbox-runner/index.js",
+      "path": "gl-execution-runtime/engine/sandbox-runner/index.js",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-156",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.d.ts.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.d.ts.map",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-157",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.js",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-158",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.js.map",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-159",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.ts",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-160",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.js",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-161",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.d.ts.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.d.ts.map",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-162",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.d.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.d.ts",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-163",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js.map",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/runtime.js.map",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-164",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.ts",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-165",
-      "path": "gl-runtime-platform/engine/semantic-graph-runtime/index.d.ts",
+      "path": "gl-execution-runtime/engine/semantic-graph-runtime/index.d.ts",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-166",
-      "path": "gl-runtime-platform/engine/scheduler/index.js",
+      "path": "gl-execution-runtime/engine/scheduler/index.js",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-167",
-      "path": "gl-runtime-platform/engine/orchestration-engine/index.js",
+      "path": "gl-execution-runtime/engine/orchestration-engine/index.js",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-168",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.d.ts.map",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.d.ts.map",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-169",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.ts",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.ts",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-170",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.js",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.js",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-171",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.d.ts",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.d.ts",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-172",
-      "path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.js.map",
+      "path": "gl-execution-runtime/engine/resource-graph-runtime/runtime.js.map",
       "gl_mapping": "mno.engine.orchestrator",
       "gl_layer": "GL50-69"
     },
     {
       "node_id": "node-173",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.d.ts.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-174",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-175",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.d.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-176",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-177",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resource-graph-manager.js.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-178",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.js.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-179",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-180",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.d.ts.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-181",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-182",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/indexers/indexer.d.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-183",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.d.ts.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-184",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-185",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-186",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.d.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-187",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/graph-model/graph-model.js.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-188",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-189",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.d.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-190",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.d.ts.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-191",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.js.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-192",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/scanners/scanner.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-193",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-194",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.js.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.js.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-195",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.d.ts.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-196",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.d.ts",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.d.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-197",
-      "path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.js",
+      "path": "gl-execution-runtime/governance/gl-resource-graph/resolvers/resolver.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-198",
-      "path": "gl-runtime-platform/governance/gl-policy-engine/index.js",
+      "path": "gl-execution-runtime/governance/gl-policy-engine/index.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-199",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.js",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-200",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.js.map",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.js.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-201",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.d.ts.map",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.d.ts.map",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-202",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-203",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/index.d.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/index.d.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-204",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/parser.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/content-parsers/parser.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-205",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/content-parsers/index.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-206",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/inferencer.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/schema-infer/inferencer.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-207",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/schema-infer/index.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-208",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/resolver.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/intent-resolver/resolver.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-209",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/intent-resolver/index.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-210",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-211",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/semantic-classifiers/index.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-212",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/mapper.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/gl-mapping/mapper.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-213",
-      "path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/index.ts",
+      "path": "gl-execution-runtime/governance/gl-semantic-graph/gl-mapping/index.ts",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-214",
-      "path": "gl-runtime-platform/governance/gl-annotations/index.js",
+      "path": "gl-execution-runtime/governance/gl-annotations/index.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-215",
-      "path": "gl-runtime-platform/governance/gl-core/index.js",
+      "path": "gl-execution-runtime/governance/gl-core/index.js",
       "gl_mapping": "mno.governance.policy",
       "gl_layer": "GL10-29"
     },
     {
       "node_id": "node-236",
-      "path": "gl-runtime-platform/connectors/connector-lang-js/index.js",
+      "path": "gl-execution-runtime/connectors/connector-lang-js/index.js",
       "gl_mapping": "mno.connector.integration",
       "gl_layer": "GL70-79"
     },
     {
       "node_id": "node-237",
-      "path": "gl-runtime-platform/connectors/connector-format-yaml-json-md/index.js",
+      "path": "gl-execution-runtime/connectors/connector-format-yaml-json-md/index.js",
       "gl_mapping": "mno.connector.integration",
       "gl_layer": "GL70-79"
     },
     {
       "node_id": "node-238",
-      "path": "gl-runtime-platform/connectors/connector-ci-github/index.js",
+      "path": "gl-execution-runtime/connectors/connector-ci-github/index.js",
       "gl_mapping": "mno.connector.integration",
       "gl_layer": "GL70-79"
     },
     {
       "node_id": "node-239",
-      "path": "gl-runtime-platform/connectors/connector-lang-py/index.js",
+      "path": "gl-execution-runtime/connectors/connector-lang-py/index.js",
       "gl_mapping": "mno.connector.integration",
       "gl_layer": "GL70-79"
     },
     {
       "node_id": "node-240",
-      "path": "gl-runtime-platform/connectors/connector-git/index.js",
+      "path": "gl-execution-runtime/connectors/connector-git/index.js",
       "gl_mapping": "mno.connector.integration",
       "gl_layer": "GL70-79"
     },
     {
       "node_id": "node-241",
-      "path": "gl-runtime-platform/storage/gl-events-stream/events.jsonl",
+      "path": "gl-execution-runtime/storage/gl-events-stream/events.jsonl",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-242",
-      "path": "gl-runtime-platform/storage/gl-semantic-graph/analyses.json",
+      "path": "gl-execution-runtime/storage/gl-semantic-graph/analyses.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-243",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/f35f796f-c06b-4f06-b998-457c966f2133.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/f35f796f-c06b-4f06-b998-457c966f2133.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-244",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/aa055817-30e7-4da4-83ad-0bff6764d5ef.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/aa055817-30e7-4da4-83ad-0bff6764d5ef.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-245",
-      "path": "gl-runtime-platform/storage/gl-artifacts-store/6ddff5c6-49cb-4087-9964-5565acc35730.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts-store/6ddff5c6-49cb-4087-9964-5565acc35730.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-246",
-      "path": "gl-runtime-platform/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json",
+      "path": "gl-execution-runtime/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-247",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-248",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/gl-auto-repair-completion-report.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/gl-auto-repair-completion-report.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-249",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-250",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-full-scan.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-full-scan.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-251",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },
     {
       "node_id": "node-252",
-      "path": "gl-runtime-platform/storage/gl-audit-reports/global-governance-audit-v4.json",
+      "path": "gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-v4.json",
       "gl_mapping": "mno.storage.artifact",
       "gl_layer": "GL30-49"
     },

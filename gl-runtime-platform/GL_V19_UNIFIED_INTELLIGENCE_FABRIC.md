@@ -96,7 +96,7 @@ Version 19 做的事只有一件：
 ## 📁 架構結構
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── unified-intelligence-fabric/
 │   ├── fabric-core/              # 統一圖核心（GRG + SRG + DAG + Mesh + Swarm + Reality）
 │   ├── fabric-storage/           # 疊加態原生儲存（整合 superposition-compression）
@@ -541,7 +541,7 @@ GET /api/v19/fabric/demonstrate
 ### 啟動 Fabric Server
 
 ```bash
-cd gl-runtime-platform
+cd gl-execution-runtime
 npm run build
 node dist/src/unified-fabric-server.js
 ```

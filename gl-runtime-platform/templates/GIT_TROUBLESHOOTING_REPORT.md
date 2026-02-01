@@ -49,7 +49,7 @@ git config --list | grep -E "(user|credential|url)"
 使用 `GIT_CURL_VERBOSE=1` 進行詳細診斷：
 
 ```bash
-GIT_CURL_VERBOSE=1 git push origin feature/gl-platform-universe-v1.0.0 2>&1 | head -50
+GIT_CURL_VERBOSE=1 git push origin feature/gl-enterprise-architecture-v1.0.0 2>&1 | head -50
 ```
 
 **關鍵發現**:
@@ -153,14 +153,14 @@ git remote set-url origin \
   https://x-access-token:<TOKEN_REDACTED>@github.com/MachineNativeOps/machine-native-ops.git
 
 # 推送代碼
-git push origin feature/gl-platform-universe-v1.0.0
+git push origin feature/gl-enterprise-architecture-v1.0.0
 ```
 
 **結果**: ✅ 成功推送
 ```
 remote: GitHub found 3 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (2 moderate, 1 low).
 To https://github.com/MachineNativeOps/machine-native-ops.git
-   a087bf69..28fb94a0  feature/gl-platform-universe-v1.0.0 -> feature/gl-platform-universe-v1.0.0
+   a087bf69..28fb94a0  feature/gl-enterprise-architecture-v1.0.0 -> feature/gl-enterprise-architecture-v1.0.0
 ```
 
 ### 方案 2: 使用 SSH Key（推薦用於長期使用）
@@ -186,7 +186,7 @@ ssh -T git@github.com
 gh auth login
 
 # 推送代碼
-git push origin feature/gl-platform-universe-v1.0.0
+git push origin feature/gl-enterprise-architecture-v1.0.0
 ```
 
 ## 學習要點

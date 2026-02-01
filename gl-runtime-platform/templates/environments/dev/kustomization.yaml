@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 # GL Runtime Platform 開發環境 Kustomization 配置
@@ -57,7 +57,7 @@ namespace: team-gl-runtime-dev-us-west
 
 # 副本數覆蓋
 replicas:
-  - name: dev-gl-runtime-platform-api-deploy-v1
+  - name: dev-gl-execution-runtime-api-deploy-v1
     count: 1
   - name: dev-gl-runtime-rest-api-deploy-v1
     count: 1
@@ -68,11 +68,11 @@ replicas:
 
 # 映像標籤覆蓋
 images:
-  - name: gl-registry.io/gl-runtime-platform/api
+  - name: gl-registry.io/gl-execution-runtime/api
     newTag: v1.0.0-dev
-  - name: gl-registry.io/gl-runtime-platform/rest-api
+  - name: gl-registry.io/gl-execution-runtime/rest-api
     newTag: v1.0.0-dev
-  - name: gl-registry.io/gl-runtime-platform/nlp-control-plane
+  - name: gl-registry.io/gl-execution-runtime/nlp-control-plane
     newTag: v1.0.0-dev
   - name: postgres
     newTag: 15-alpine

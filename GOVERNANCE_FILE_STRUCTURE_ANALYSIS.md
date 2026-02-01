@@ -8,15 +8,15 @@
 ### 治理文件分佈
 
 #### 預期位置（不存在）
-- gl-runtime-platform/governance-root-layer/ ❌
-- gl-runtime-platform/meta-governance-layer/ ❌  
-- gl-runtime-platform/reality-falsification-layer/ ❌
+- gl-execution-runtime/governance-root-layer/ ❌
+- gl-execution-runtime/meta-governance-layer/ ❌  
+- gl-execution-runtime/reality-falsification-layer/ ❌
 
 #### 實際位置（分散）
 - .github/governance-legacy/ (舊版治理)
-- gl-runtime-platform/gl-runtime/v23-root-governance/ (Root Governance)
-- gl-runtime-platform/gl-runtime/v24-meta-governance/ (Meta Governance)
-- gl-runtime-platform/ultra-strict-verification-core/ (驗證核心)
+- gl-execution-runtime/gl-runtime/v23-root-governance/ (Root Governance)
+- gl-execution-runtime/gl-runtime/v24-meta-governance/ (Meta Governance)
+- gl-execution-runtime/ultra-strict-verification-core/ (驗證核心)
 - .github/governance/ (當前治理)
 
 ### 量子平台文件狀態

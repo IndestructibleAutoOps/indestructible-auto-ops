@@ -472,7 +472,7 @@ feedbackLoop.createOptimizationSuggestion(
 ### 🏗️ 目錄結構
 
 ```
-gl-runtime-platform/
+gl-execution-runtime/
 ├── meta-cognition/                    # 元認知核心模塊
 │   ├── index.ts                      # 主入口
 │   ├── self-awareness-engine/        # 自我覺察引擎
@@ -633,7 +633,7 @@ metaRuntime.start(60000).then(() => {
 ### 🚀 啟動服務器
 
 ```bash
-cd gl-runtime-platform
+cd gl-execution-runtime
 node dist/src/meta-cognitive-server.js
 ```
 
@@ -813,7 +813,7 @@ curl "http://localhost:3005/api/v14/feedback/cycles?limit=5" | jq
 ### 📦 安裝依賴
 
 ```bash
-cd machine-native-ops/gl-runtime-platform
+cd machine-native-ops/gl-execution-runtime
 npm install
 ```
 

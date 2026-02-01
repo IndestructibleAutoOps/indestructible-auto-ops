@@ -33,7 +33,7 @@ GL 语义核心平台是 MachineNativeOps 平台宇宙的语义计算基础设�
 ## 平台架构
 
 ```
-gl-semantic-core-platform/
+gl-platform-services/
 ├── src/                          # 源代码
 │   ├── semantic-folding/         # 语义折叠引擎
 │   ├── semantic-computation/     # 语义计算引擎
@@ -75,7 +75,7 @@ metadata:
   name: gl-runtime-dag-platform
 spec:
   semantic_core:
-    service_endpoint: "http://semantic-core.gl-platform-universe.svc.cluster.local:8080"
+    service_endpoint: "http://semantic-core.gl-enterprise-architecture.svc.cluster.local:8080"
     features:
       - semantic-folding
       - vector-search

@@ -4,8 +4,8 @@
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 # @GL-governed
 #!/usr/bin/env python3
@@ -36,7 +36,7 @@ import hashlib
 TEST_CONFIG = {
     "version": "21.0.0",
     "test_date": datetime.datetime.now().isoformat(),
-    "workspace_root": "/workspace/gl-runtime-platform",
+    "workspace_root": "/workspace/gl-execution-runtime",
     "code_intel_layer": "code-intel-security-layer",
     "test_output_dir": "./test-reports",
     "test_scenarios": [

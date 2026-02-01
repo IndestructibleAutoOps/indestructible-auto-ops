@@ -4,8 +4,8 @@
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 #!/usr/bin/env python3
 """
@@ -17,40 +17,40 @@ from pathlib import Path
 
 # Files that need @GL-governed marker
 MARKER_FILES = [
-    "gl-runtime-platform/code-intel-security-layer/capability-schema/capability-definition-language.md",
-    "gl-runtime-platform/code-intel-security-layer/deployment-weaver/ci-cd-integration/README.md",
-    "gl-runtime-platform/code-intel-security-layer/deployment-weaver/cli-generator/README.md",
-    "gl-runtime-platform/code-intel-security-layer/deployment-weaver/ide-extension/README.md",
-    "gl-runtime-platform/code-intel-security-layer/deployment-weaver/web-console/README.md",
-    "gl-runtime-platform/code-intel-security-layer/evolution-engine/adaptation-engine.py",
-    "gl-runtime-platform/code-intel-security-layer/evolution-engine/self-optimizer.py",
-    "gl-runtime-platform/code-intel-security-layer/evolution-engine/usage-tracker.py",
-    "gl-runtime-platform/code-intel-security-layer/generator-engine/capability-generator.py",
-    "gl-runtime-platform/code-intel-security-layer/generator-engine/pattern-matcher.py",
-    "gl-runtime-platform/code-intel-security-layer/generator-engine/template-engine.py",
-    "gl-runtime-platform/code-intel-security-layer/integrations/v19-fabric/fabric-adapter.py",
-    "gl-runtime-platform/code-intel-security-layer/integrations/v19-fabric/fabric-connector.py",
-    "gl-runtime-platform/code-intel-security-layer/integrations/v20-continuum/continuum-connector.py",
-    "gl-runtime-platform/code-intel-security-layer/integrations/v20-continuum/learning-adapter.py",
-    "gl-runtime-platform/code-intel-security-layer/pattern-library/architecture-patterns/solid-principles.md",
-    "gl-runtime-platform/code-intel-security-layer/pattern-library/performance-patterns/database-optimization.md",
-    "gl-runtime-platform/code-intel-security-layer/pattern-library/security-patterns/sql-injection-prevention.md",
-    "gl-runtime-platform/code-intel-security-layer/pattern-library/security-patterns/xss-prevention.md",
-    "gl-runtime-platform/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/audit-summary.md",
-    "gl-runtime-platform/infinite-learning-continuum/index.ts",
-    "gl-runtime-platform/progress-report.md",
-    "gl-runtime-platform/scripts/test-code-intel-security-layer.py",
-    "gl-runtime-platform/test-reports/test-summary.md",
-    "gl-runtime-platform/todo-v20.md",
-    "gl-runtime-platform/todo.md",
+    "gl-execution-runtime/code-intel-security-layer/capability-schema/capability-definition-language.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/ci-cd-integration/README.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/cli-generator/README.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/ide-extension/README.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/web-console/README.md",
+    "gl-execution-runtime/code-intel-security-layer/evolution-engine/adaptation-engine.py",
+    "gl-execution-runtime/code-intel-security-layer/evolution-engine/self-optimizer.py",
+    "gl-execution-runtime/code-intel-security-layer/evolution-engine/usage-tracker.py",
+    "gl-execution-runtime/code-intel-security-layer/generator-engine/capability-generator.py",
+    "gl-execution-runtime/code-intel-security-layer/generator-engine/pattern-matcher.py",
+    "gl-execution-runtime/code-intel-security-layer/generator-engine/template-engine.py",
+    "gl-execution-runtime/code-intel-security-layer/integrations/v19-fabric/fabric-adapter.py",
+    "gl-execution-runtime/code-intel-security-layer/integrations/v19-fabric/fabric-connector.py",
+    "gl-execution-runtime/code-intel-security-layer/integrations/v20-continuum/continuum-connector.py",
+    "gl-execution-runtime/code-intel-security-layer/integrations/v20-continuum/learning-adapter.py",
+    "gl-execution-runtime/code-intel-security-layer/pattern-library/architecture-patterns/solid-principles.md",
+    "gl-execution-runtime/code-intel-security-layer/pattern-library/performance-patterns/database-optimization.md",
+    "gl-execution-runtime/code-intel-security-layer/pattern-library/security-patterns/sql-injection-prevention.md",
+    "gl-execution-runtime/code-intel-security-layer/pattern-library/security-patterns/xss-prevention.md",
+    "gl-execution-runtime/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/audit-summary.md",
+    "gl-execution-runtime/infinite-learning-continuum/index.ts",
+    "gl-execution-runtime/progress-report.md",
+    "gl-execution-runtime/scripts/test-code-intel-security-layer.py",
+    "gl-execution-runtime/test-reports/test-summary.md",
+    "gl-execution-runtime/todo-v20.md",
+    "gl-execution-runtime/todo.md",
     "todo-v20.md",
 ]
 
 # JSON files that need _gl metadata
 JSON_FILES = [
-    "gl-runtime-platform/code-intel-security-layer/capability-schema/capability-examples.json",
-    "gl-runtime-platform/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/global-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-report.json",
-    "gl-runtime-platform/test-reports/code-intel-test-report.json",
+    "gl-execution-runtime/code-intel-security-layer/capability-schema/capability-examples.json",
+    "gl-execution-runtime/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/global-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-report.json",
+    "gl-execution-runtime/test-reports/code-intel-test-report.json",
 ]
 
 def add_marker_to_file(filepath):

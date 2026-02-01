@@ -25,7 +25,7 @@ Successfully scanned and analyzed all components:
 
 | Component | Files Scanned | Status |
 |-----------|--------------|---------|
-| gl-runtime-platform/ | 1,617 | ✅ Complete |
+| gl-execution-runtime/ | 1,617 | ✅ Complete |
 | elasticsearch-search-system/ | 33 | ✅ Complete |
 | .github/agents/ | 16 | ✅ Complete |
 | file-organizer-system/ | 19 | ✅ Complete |

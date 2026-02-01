@@ -50,7 +50,7 @@ spec:
       priority: 100
       config:
         deployment_type: "container"
-        image: "gl-runtime-platform:latest"
+        image: "gl-execution-runtime:latest"
         replicas: 2
         resources:
           cpu: "500m"

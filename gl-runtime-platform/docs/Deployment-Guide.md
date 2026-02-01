@@ -55,7 +55,7 @@ cd machine-native-ops
 ### 2. Install Dependencies
 
 ```bash
-cd gl-runtime-platform
+cd gl-execution-runtime
 npm install
 ```
 
@@ -81,7 +81,7 @@ npm test
 
 ### Environment Variables
 
-Create a `.env` file in the `gl-runtime-platform` directory:
+Create a `.env` file in the `gl-execution-runtime` directory:
 
 ```env
 # Node Environment
@@ -105,7 +105,7 @@ DAG_TIMEOUT=300000
 
 # Logging
 LOG_LEVEL=info
-LOG_FILE=/var/log/gl-runtime-platform.log
+LOG_FILE=/var/log/gl-execution-runtime.log
 ```
 
 ### Governance Configuration
@@ -167,7 +167,7 @@ npm start
 npm install -g pm2
 
 # Start the application
-pm2 start dist/index.js --name gl-runtime-platform
+pm2 start dist/index.js --name gl-execution-runtime
 
 # Configure PM2 to start on system boot
 pm2 startup
@@ -179,17 +179,17 @@ pm2 save
 #### Build Docker Image
 
 ```bash
-docker build -t gl-runtime-platform:21.0.0 .
+docker build -t gl-execution-runtime:21.0.0 .
 ```
 
 #### Run Docker Container
 
 ```bash
 docker run -d \
-  --name gl-runtime-platform \
+  --name gl-execution-runtime \
   -p 3000:3000 \
   --env-file .env \
-  gl-runtime-platform:21.0.0
+  gl-execution-runtime:21.0.0
 ```
 
 #### Using Docker Compose
@@ -236,13 +236,13 @@ curl http://localhost:3000/health
 
 ```bash
 # View application logs
-pm2 logs gl-runtime-platform
+pm2 logs gl-execution-runtime
 
 # View Docker logs
-docker logs -f gl-runtime-platform
+docker logs -f gl-execution-runtime
 
 # View Kubernetes logs
-kubectl logs -f deployment/gl-runtime-platform
+kubectl logs -f deployment/gl-execution-runtime
 ```
 
 ### Metrics
@@ -346,20 +346,20 @@ git commit -m "Add governance markers"
 
 ```bash
 # Backup configuration
-tar -czf gl-runtime-platform-config-$(date +%Y%m%d).tar.gz .env
+tar -czf gl-execution-runtime-config-$(date +%Y%m%d).tar.gz .env
 
 # Backup data
-tar -czf gl-runtime-platform-data-$(date +%Y%m%d).tar.gz storage/
+tar -czf gl-execution-runtime-data-$(date +%Y%m%d).tar.gz storage/
 ```
 
 ### Recovery
 
 ```bash
 # Restore configuration
-tar -xzf gl-runtime-platform-config-YYYYMMDD.tar.gz
+tar -xzf gl-execution-runtime-config-YYYYMMDD.tar.gz
 
 # Restore data
-tar -xzf gl-runtime-platform-data-YYYYMMDD.tar.gz
+tar -xzf gl-execution-runtime-data-YYYYMMDD.tar.gz
 ```
 
 ---
@@ -387,7 +387,7 @@ tar -xzf gl-runtime-platform-data-YYYYMMDD.tar.gz
    ```
 6. **Restart the application**
    ```bash
-   pm2 restart gl-runtime-platform
+   pm2 restart gl-execution-runtime
    ```
 
 ---

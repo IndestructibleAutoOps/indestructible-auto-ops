@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 # GL Runtime Platform API 部署
@@ -13,13 +13,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gl-runtime-platform-api-deploy-v1
+  name: gl-execution-runtime-api-deploy-v1
   namespace: team-gl-runtime-base
   labels:
     # Kubernetes 標準標籤
-    app.kubernetes.io/name: 'gl-runtime-platform-api'
+    app.kubernetes.io/name: 'gl-execution-runtime-api'
     app.kubernetes.io/component: 'api-server'
-    app.kubernetes.io/part-of: 'gl-runtime-platform'
+    app.kubernetes.io/part-of: 'gl-execution-runtime'
     app.kubernetes.io/version: 'v1.0.0'
     app.kubernetes.io/managed-by: 'kubectl'
     
@@ -27,7 +27,7 @@ metadata:
     tenant: 'gl-runtime-team'
     cost-center: 'platform-engineering'
     business-unit: 'infrastructure'
-    project: 'gl-runtime-platform'
+    project: 'gl-execution-runtime'
     
     # 操作標籤
     tier: 'core'
@@ -52,15 +52,15 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app.kubernetes.io/name: 'gl-runtime-platform-api'
+      app.kubernetes.io/name: 'gl-execution-runtime-api'
       app.kubernetes.io/component: 'api-server'
   template:
     metadata:
       labels:
         # Kubernetes 標準標籤
-        app.kubernetes.io/name: 'gl-runtime-platform-api'
+        app.kubernetes.io/name: 'gl-execution-runtime-api'
         app.kubernetes.io/component: 'api-server'
-        app.kubernetes.io/part-of: 'gl-runtime-platform'
+        app.kubernetes.io/part-of: 'gl-execution-runtime'
         app.kubernetes.io/version: 'v1.0.0'
         
         # 運行時標籤
@@ -78,7 +78,7 @@ spec:
         health.check.path: '/health'
         
     spec:
-      serviceAccountName: gl-runtime-platform-api-sa
+      serviceAccountName: gl-execution-runtime-api-sa
       securityContext:
         fsGroup: 1000
         runAsNonRoot: true
@@ -86,7 +86,7 @@ spec:
       
       containers:
       - name: api-server
-        image: gl-registry.io/gl-runtime-platform/api:v1.0.0
+        image: gl-registry.io/gl-execution-runtime/api:v1.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
@@ -146,7 +146,7 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: gl-runtime-platform-api-config
+          name: gl-execution-runtime-api-config
           defaultMode: 0644
       - name: logs-volume
         emptyDir: {}
@@ -161,5 +161,5 @@ spec:
                 - key: app.kubernetes.io/name
                   operator: In
                   values:
-                  - gl-runtime-platform-api
+                  - gl-execution-runtime-api
               topologyKey: kubernetes.io/hostname
