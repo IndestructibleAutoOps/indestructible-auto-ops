@@ -59,6 +59,54 @@ spec:
         - "GL-NO-001: 語意一致性"
         - "GL-NO-002: 層級關係驗證"
 
+    # === 擴展命名本體 ===
+    - id: gl-naming-ontology-expanded
+      name: "GL 擴展命名本體 (工程級)"
+      version: "3.0.0"
+      path: "ecosystem/contracts/naming-governance/gl-naming-ontology-expanded.yaml"
+      description: "完整工程級 21 層命名本體，包含生成器與語意引擎相容性"
+      type: core
+      status: active
+      layers:
+        - semantic
+        - contract
+        - platform
+        - format
+        - language
+        - deployment
+        - supply-chain
+        - user-facing
+        - metadata
+        - interface
+        - dependency
+        - versioning
+        - testing
+        - build
+        - ci-cd
+        - documentation
+        - permission
+        - observability
+        - security
+        - packaging
+        - indexing
+        - extensibility
+        - validation
+        - governance
+        - generator
+        - reasoning
+      governance:
+        - gl-enterprise-architecture
+        - gl-boundary-enforcement
+        - gl-meta-specifications
+        - gl-extension-framework
+      dependencies:
+        - gl-naming-ontology
+      validationRules:
+        - "GL-NO-001: 語意一致性"
+        - "GL-NO-002: 層級關係驗證"
+        - "GL-NO-003: 命名格式規則"
+        - "GL-NO-004: 命名實體屬性區分"
+
     # === 平台命名契約 ===
     - id: gl-platforms
       name: "GL 平台命名契約"
@@ -446,16 +494,17 @@ spec:
 
   # 統計信息
   statistics:
-    totalContracts: 11
-    activeContracts: 11
+    totalContracts: 12
+    activeContracts: 12
     deprecatedContracts: 0
-    coreContracts: 1
+    coreContracts: 2
     platformContracts: 6
     validationContracts: 2
     governanceContracts: 2
     extensionContracts: 1
     generatorContracts: 1
     reasoningContracts: 1
-    totalValidationRules: 100+
+    totalValidationRules: 150+
     totalGovernanceLayers: 26
     totalExtensionPoints: 10+
+    expandedNamingEntities: 100+
