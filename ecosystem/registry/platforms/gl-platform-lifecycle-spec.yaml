@@ -1,0 +1,410 @@
+apiVersion: lifecycle.gl/v1
+kind: PlatformLifecycleSpec
+metadata:
+  name: gl-platform-lifecycle
+  version: "1.0.0"
+  description: "GL 平台生命週期規範 - 定義平台從創建到退役的完整生命週期"
+  category: governance
+  compliance:
+    - gl-enterprise-architecture
+    - gl-boundary-enforcement
+    - gl-meta-specifications
+
+spec:
+  # 生命週期階段定義
+  phases:
+    - phase: draft
+      code: "P01"
+      description: "平台開發初期，尚未正式註冊"
+      location: "platforms/draft/"
+      visibility: "private"
+      actions:
+        - "創建平台目錄結構"
+        - "實作核心功能"
+        - "準備 manifest 檔案"
+        - "定義 capabilities"
+        - "設計 governance 層級"
+      validationRules:
+        - "GL-PD-001: 命名格式驗證"
+        - "GL-PD-005: 目錄結構驗證"
+      exitCriteria:
+        - "所有核心功能已實作"
+        - "Manifest 檔案已準備"
+        - "通過初步驗證"
+      transitionTo: "review"
+
+    - phase: review
+      code: "P02"
+      description: "平台審查階段，評估是否可轉為正式"
+      location: "platforms/draft/"
+      visibility: "team"
+      actions:
+        - "技術審查"
+        - "治理合規審查"
+        - "安全審查"
+        - "性能評估"
+        - "文檔審查"
+      validationRules:
+        - "GL-PD-004: Manifest 註冊驗證"
+        - "GL-PD-006: Capabilities 驗證"
+        - "GL-PD-007: 治理層級驗證"
+      exitCriteria:
+        - "通過所有審查"
+        - "Manifest 已在 registry 註冊"
+        - "文檔完整"
+      transitionTo: "active"
+
+    - phase: active
+      code: "P03"
+      description: "平台正式運行，可供生產使用"
+      location: "platforms/"
+      visibility: "public"
+      actions:
+        - "在 registry 中註冊"
+        - "通過治理驗證"
+        - "部署到生產環境"
+        - "開啟協調服務"
+        - "更新 gl-platforms.index.yaml"
+        - "生成平台文檔"
+      validationRules:
+        - "GL-PD-001 至 GL-PD-008: 全部驗證規則"
+        - "PR-001: 契約平台位置驗證"
+        - "PR-009: Manifest 註冊驗證"
+      exitCriteria:
+        - "所有驗證通過"
+        - "生產環境運行正常"
+      transitionTo:
+        - "experimental" (如需實驗新功能)
+        - "deprecated" (如需退役)
+
+    - phase: experimental
+      code: "P04"
+      description: "實驗性平台，不保證穩定性"
+      location: "platforms/experimental/"
+      visibility: "limited"
+      actions:
+        - "標記為 gl.experimental domain"
+        - "限制生產使用"
+        - "啟用實驗性功能"
+        - "收集反饋"
+      validationRules:
+        - "PR-003: 實驗性平台規則"
+      exitCriteria:
+        - "實驗成功或失敗"
+      transitionTo:
+        - "active" (如實驗成功)
+        - "deprecated" (如實驗失敗)
+
+    - phase: deprecated
+      code: "P05"
+      description: "已退役，不再維護"
+      location: "platforms/deprecated/"
+      visibility: "archived"
+      actions:
+        - "標記為 deprecated 狀態"
+        - "提供遷移指南"
+        - "計劃移除日期"
+        - "移除生產依賴"
+        - "更新文檔"
+      validationRules:
+        - "PR-004: 已退役平台規則"
+      exitCriteria:
+        - "所有依賴已移除"
+        - "文檔已更新"
+      transitionTo: "archived"
+
+    - phase: archived
+      code: "P06"
+      description: "已歸檔，僅供參考"
+      location: "platforms/archived/"
+      visibility: "historical"
+      actions:
+        - "壓縮歸檔"
+        - "保留文檔"
+        - "移除所有引用"
+      validationRules:
+        - "無（歷史參考）"
+      exitCriteria:
+        - "永久歸檔"
+      transitionTo: null
+
+  # 狀態轉換規則
+  transitions:
+    - from: draft
+      to: review
+      conditions:
+        - "核心功能已實作"
+        - "Manifest 檔案已準備"
+        - "通過初步驗證"
+      approval: "required"
+      approvers: ["platform-owner", "tech-lead"]
+
+    - from: review
+      to: active
+      conditions:
+        - "通過技術審查"
+        - "通過治理合規審查"
+        - "通過安全審查"
+        - "文檔完整"
+      approval: "required"
+      approvers: ["platform-owner", "governance-lead"]
+
+    - from: active
+      to: experimental
+      conditions:
+        - "需要測試新功能"
+        - "不影響生產穩定性"
+      approval: "optional"
+      approvers: ["platform-owner"]
+
+    - from: active
+      to: deprecated
+      conditions:
+        - "平台不再需要"
+        - "有更好的替代方案"
+        - "維護成本過高"
+      approval: "required"
+      approvers: ["platform-owner", "governance-lead"]
+
+    - from: experimental
+      to: active
+      conditions:
+        - "實驗成功"
+        - "通過所有驗證"
+      approval: "required"
+      approvers: ["platform-owner", "tech-lead"]
+
+    - from: experimental
+      to: deprecated
+      conditions:
+        - "實驗失敗"
+        - "無法解決的問題"
+      approval: "required"
+      approvers: ["platform-owner"]
+
+    - from: deprecated
+      to: archived
+      conditions:
+        - "所有依賴已移除"
+        - "文檔已更新"
+        - "足夠的過渡期"
+      approval: "required"
+      approvers: ["platform-owner", "governance-lead"]
+
+  # 審查檢查清單
+  reviewChecklists:
+    technical:
+      - "代碼質量審查"
+      - "性能評估"
+      - "安全審查"
+      - "依賴檢查"
+      - "測試覆蓋率"
+      - "文檔完整性"
+
+    governance:
+      - "GL 合規性檢查"
+      - "命名規範驗證"
+      - "目錄結構驗證"
+      - "Manifest 註冊驗證"
+      - "邊界規則驗證"
+      - "擴展框架支援"
+
+    security:
+      - "漏洞掃描"
+      - "依賴安全性檢查"
+      - "訪問控制審查"
+      - "數據隱私檢查"
+      - "加密驗證"
+
+    documentation:
+      - "README 完整性"
+      - "API 文檔"
+      - "架構文檔"
+      - "部署指南"
+      - "故障排除指南"
+
+  # 遷移策略
+  migrationStrategies:
+    - scenario: "platform_creation"
+      description: "新平台創建"
+      steps:
+        - "在 platforms/draft/ 創建平台目錄"
+        - "實作核心功能"
+        - "準備 manifest 檔案"
+        - "提交審查"
+        - "審查通過後移至 platforms/"
+        - "更新 gl-platforms.index.yaml"
+
+    - scenario: "platform_promotion"
+      description: "實驗平台轉正式"
+      steps:
+        - "驗證實驗結果"
+        - "修復發現的問題"
+        - "更新平台狀態為 active"
+        - "從 platforms/experimental/ 移至 platforms/"
+        - "更新 gl-platforms.index.yaml"
+        - "通知相關團隊"
+
+    - scenario: "platform_deprecation"
+      description: "平台退役"
+      steps:
+        - "發布退役公告"
+        - "提供遷移指南"
+        - "設置退役日期"
+        - "逐步移除生產依賴"
+        - "更新平台狀態為 deprecated"
+        - "移至 platforms/deprecated/"
+        - "更新 gl-platforms.index.yaml"
+
+  # 監控與報告
+  monitoring:
+    metrics:
+      - name: "platform_lifecycle_status"
+        description: "平台生命週期狀態分佈"
+        calculation: "count(platforms by status)"
+        target: "合理的狀態分佈"
+
+      - name: "platform_transition_rate"
+        description: "平台狀態轉換率"
+        calculation: "transitions / time"
+        target: "適當的轉換頻率"
+
+      - name: "platform_deprecation_time"
+        description: "平台從 deprecated 到 archived 的時間"
+        calculation: "time(deprecated -> archived)"
+        target: "30-90 天"
+
+    reports:
+      - name: "platform-lifecycle-report"
+        format: "markdown"
+        schedule: "weekly"
+        includes:
+          - "各狀態平台數量"
+          - "狀態轉換記錄"
+          - "即將退役的平台"
+          - "需要審查的平台"
+
+  # 自動化工作流
+  automation:
+    preCommit:
+      - "驗證平台命名"
+      - "檢查平台狀態"
+      - "驗證位置規則"
+      - "檢查 Manifest 註冊"
+
+    ciCd:
+      - "自動化審查檢查"
+      - "自動化合規驗證"
+      - "自動化測試"
+      - "自動化部署"
+
+    postDeploy:
+      - "更新平台索引"
+      - "生成平台文檔"
+      - "發布通知"
+      - "收集指標"
+
+  # 治理合規
+  compliance:
+    requiredForPhaseTransition:
+      draft: ["GL-PD-001", "GL-PD-005"]
+      review: ["GL-PD-004", "GL-PD-006", "GL-PD-007"]
+      active: ["GL-PD-001 至 GL-PD-008", "PR-001", "PR-009"]
+      experimental: ["PR-003"]
+      deprecated: ["PR-004"]
+      archived: []
+
+    enforcement:
+      - "阻擋不合規的提交"
+      - "自動檢測狀態違規"
+      - "生成合規報告"
+      - "發送合規通知"
+
+  # 文檔要求
+  documentation:
+    requiredDocuments:
+      - name: "README.md"
+        requiredFor: ["review", "active"]
+        content:
+          - "平台描述"
+          - "功能列表"
+          - "安裝指南"
+          - "使用指南"
+          - "API 文檔"
+          - "故障排除"
+
+      - name: "ARCHITECTURE.md"
+        requiredFor: ["review", "active"]
+        content:
+          - "架構概述"
+          - "設計原則"
+          - "組件說明"
+          - "數據流"
+          - "依賴關係"
+
+      - name: "DEPLOYMENT.md"
+        requiredFor: ["review", "active"]
+        content:
+          - "部署前置條件"
+          - "部署步驟"
+          - "配置說明"
+          - "驗證方法"
+
+      - name: "MIGRATION.md"
+        requiredFor: ["deprecated"]
+        content:
+          - "遷移原因"
+          - "遷移步驟"
+          - "替代方案"
+          - "常見問題"
+
+  # 風險管理
+  riskManagement:
+    riskFactors:
+      - name: "stability_risk"
+        description: "平台穩定性風險"
+        impact: "HIGH"
+        mitigation: "充分測試、灰度發布"
+
+      - name: "security_risk"
+        description: "安全風險"
+        impact: "CRITICAL"
+        mitigation: "安全審查、定期掃描"
+
+      - name: "dependency_risk"
+        description: "依賴風險"
+        impact: "MEDIUM"
+        mitigation: "依賴管理、版本控制"
+
+      - name: "knowledge_loss"
+        description: "知識丟失風險"
+        impact: "MEDIUM"
+        mitigation: "文檔完善、知識傳承"
+
+    escalation:
+      - level: "LOW"
+        notify: ["platform-owner"]
+        action: "記錄並監控"
+
+      - level: "MEDIUM"
+        notify: ["platform-owner", "tech-lead"]
+        action: "調查並修復"
+
+      - level: "HIGH"
+        notify: ["platform-owner", "tech-lead", "governance-lead"]
+        action: "立即處理並報告"
+
+      - level: "CRITICAL"
+        notify: ["platform-owner", "tech-lead", "governance-lead", "management"]
+        action: "緊急響應並升級"
+
+  # 最佳實踐
+  bestPractices:
+    - "保持平台簡單，專注核心功能"
+    - "及早進行審查，不要等到最後"
+    - "充分測試，確保穩定性"
+    - "完善文檔，便於維護"
+    - "監控指標，及時發現問題"
+    - "定期審查，持續改進"
+    - "平滑遷移，減少影響"
+    - "知識傳承，避免單點"
