@@ -61,7 +61,7 @@ The workflow uses sensible defaults:
 ### Advanced Configuration
 For advanced configuration (monorepo support, custom aliases, etc.), create a configuration file at `.launchdarkly/coderefs.yml`. 
 
-See [LaunchDarkly Configuration Documentation](https://github.com/launchdarkly/ld-find-code-refs/blob/main/docs/CONFIGURATION.md) for details.
+See [LaunchDarkly Configuration Documentation]([EXTERNAL_URL_REMOVED]) for details.
 
 ## Troubleshooting
 
@@ -80,6 +80,6 @@ See [LaunchDarkly Configuration Documentation](https://github.com/launchdarkly/l
 - Check for typos in the secret value
 
 ## Related Documentation
-- [LaunchDarkly Code References Action](https://github.com/launchdarkly/find-code-references)
-- [LaunchDarkly Documentation](https://docs.launchdarkly.com/home/code/github-actions)
+- [LaunchDarkly Code References Action]([EXTERNAL_URL_REMOVED])
+- [LaunchDarkly Documentation]([EXTERNAL_URL_REMOVED])
 - [CI/CD Comprehensive Guide](./CI_COMPREHENSIVE_GUIDE.md)

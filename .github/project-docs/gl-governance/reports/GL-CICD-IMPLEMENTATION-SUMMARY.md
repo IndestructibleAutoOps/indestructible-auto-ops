@@ -330,10 +330,10 @@ git push origin v1.2.3
 ## Monitoring & Alerts
 
 ### Health Check Endpoints
-- Staging: `https://staging.example.com/health`
-- Production: `https://example.com/health`
-- Blue: `https://blue.example.com/health`
-- Green: `https://green.example.com/health`
+- Staging: `[EXTERNAL_URL_REMOVED]
+- Production: `[EXTERNAL_URL_REMOVED]
+- Blue: `[EXTERNAL_URL_REMOVED]
+- Green: `[EXTERNAL_URL_REMOVED]
 
 ### Log Locations
 - Deployment logs: `/var/log/deployments/`

@@ -18,8 +18,8 @@ npm run deploy:web
 ```
 
 ## Access
-- Local: http://localhost:3000
-- Production: https://codeintel.gl-platform.io
+- Local: [EXTERNAL_URL_REMOVED]
+- Production: [EXTERNAL_URL_REMOVED]
 
 ## Dashboard Components
 1. **Overview**: Summary of codebase health

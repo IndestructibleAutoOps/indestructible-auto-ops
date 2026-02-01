@@ -49,7 +49,7 @@ This directory contains enterprise-grade disaster recovery configuration for the
 1. **Install Velero CLI:**
 ```bash
 # Download Velero CLI
-wget https://github.com/vmware-tanzu/velero/releases/download/v1.12.0/velero-v1.12.0-linux-amd64.tar.gz
+wget [EXTERNAL_URL_REMOVED]
 tar -xvf velero-v1.12.0-linux-amd64.tar.gz
 sudo mv velero-v1.12.0-linux-amd64/velero /usr/local/bin/
 ```
@@ -73,7 +73,7 @@ velero install \
   --bucket machine-native-ops-backups \
   --secret-file /tmp/velero-credentials.txt \
   --use-volume-snapshots \
-  --backup-location-config region=us-east-1,s3ForcePathStyle="true",s3Url=https://s3.amazonaws.com \
+  --backup-location-config region=us-east-1,s3ForcePathStyle="true",s3Url=[EXTERNAL_URL_REMOVED] \
   --snapshot-location-config region=us-east-1
 ```
 
@@ -556,6 +556,6 @@ velero restore describe <restore-name> --details
 
 ## References
 
-- [Velero Documentation](https://velero.io/docs/)
-- [Kubernetes Backup Best Practices](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
-- [Disaster Recovery Planning](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/)
+- [Velero Documentation]([EXTERNAL_URL_REMOVED])
+- [Kubernetes Backup Best Practices]([EXTERNAL_URL_REMOVED])
+- [Disaster Recovery Planning]([EXTERNAL_URL_REMOVED])

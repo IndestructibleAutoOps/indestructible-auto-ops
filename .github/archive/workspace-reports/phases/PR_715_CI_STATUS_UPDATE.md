@@ -183,7 +183,7 @@
 gh pr merge 715 --repo MachineNativeOps/machine-native-ops-aaps --squash
 
 # 選項 2: 使用 Web 界面
-# 訪問: https://github.com/MachineNativeOps/mno-repository-understanding-system-aaps/pull/715
+# 訪問: [EXTERNAL_URL_REMOVED]
 # 點擊 "Merge pull request"
 ```
 

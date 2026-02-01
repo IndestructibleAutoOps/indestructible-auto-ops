@@ -160,7 +160,7 @@ Bandit 安全掃描在倉庫中發現了多個安全問題：
 
 ```bash
 # 查看最新的工作流程運行
-https://github.com/MachineNativeOps/mno-repository-understanding-system/actions
+[EXTERNAL_URL_REMOVED]
 ```
 
 ### 2. 預期結果
@@ -256,9 +256,9 @@ on:
 
 ## 相關文件
 
-- [Bandit 文件](https://bandit.readthedocs.io/)
-- [GitHub Actions 工作流程語法](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
-- [GitHub Actions 警告命令](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-a-warning-message)
+- [Bandit 文件]([EXTERNAL_URL_REMOVED])
+- [GitHub Actions 工作流程語法]([EXTERNAL_URL_REMOVED])
+- [GitHub Actions 警告命令]([EXTERNAL_URL_REMOVED])
 - [PR-1-REVIEW-REPORT.md](./PR-1-REVIEW-REPORT.md) - 原始安全問題審查
 
 ---

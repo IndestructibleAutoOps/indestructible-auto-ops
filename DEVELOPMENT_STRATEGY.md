@@ -1519,34 +1519,34 @@ class OrganizationalMeasures:
 #### **儲存系統**
 
 1. **IPFS (InterPlanetary File System)**
-   - 網址: https://ipfs.io/
+   - 網址: [EXTERNAL_URL_REMOVED]
    - 特點: 去中心化、內容定址、P2P 網絡
    - 參考點: 內容定址機制、P2P 協議設計
 
 2. **MinIO**
-   - 網址: https://min.io/
+   - 網址: [EXTERNAL_URL_REMOVED]
    - 特點: S3 兼容、高性能、自託管
    - 參考點: S3 API 設計、對象存儲架構
 
 3. **Ceph**
-   - 網址: https://ceph.com/
+   - 網址: [EXTERNAL_URL_REMOVED]
    - 特點: 統一存儲、可擴展、高可用
    - 參考點: CRUSH 算法、分片策略
 
 #### **分佈式系統**
 
 1. **Apache Cassandra**
-   - 網址: https://cassandra.apache.org/
+   - 網址: [EXTERNAL_URL_REMOVED]
    - 特點: 去中心化、無主架構、最終一致性
    - 參考點: Gossip 協議、一致性哈希
 
 2. **etcd**
-   - 網址: https://etcd.io/
+   - 網址: [EXTERNAL_URL_REMOVED]
    - 特點: 分佈式鍵值存儲、強一致性
    - 參考點: Raft 共識算法
 
 3. **Apache Kafka**
-   - 網址: https://kafka.apache.org/
+   - 網址: [EXTERNAL_URL_REMOVED]
    - 特點: 分佈式日誌、高吞吐量
    - 參考點: 訊息隊列設計、分區機制
 

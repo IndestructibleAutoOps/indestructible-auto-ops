@@ -1,27 +1,2 @@
-# @GL-governed
-# @GL-layer: GL10-29
-# @GL-semantic: python-dependencies
-# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
-# MachineNativeOps Platform Tools Dependencies
-# Platform-grade validation and bootstrap dependencies
-
-# Core validation dependencies
-PyYAML>=6.0
-jsonschema>=4.17.0
-requests>=2.28.0
-
-# Cryptographic dependencies for hash locks
-blake3>=0.4.1
-cryptography>=41.0.0
-
-# Logging and monitoring
-structlog>=23.1.0
-colorama>=0.4.6
-
-# Development and testing dependencies (optional)
-pytest>=7.2.0
-pytest-cov>=4.0.0
-black>=23.1.0
-flake8>=6.0.0
+# Pure Python Standard Library Only
+# No external dependencies

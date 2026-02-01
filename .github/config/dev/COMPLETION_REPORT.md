@@ -32,7 +32,7 @@
 ### 1. Dockerfile 更新
 ```dockerfile
 # 新增 Kind 安裝 + 版本驗證
-RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64 \
+RUN curl -Lo ./kind [EXTERNAL_URL_REMOVED] \
     && chmod +x ./kind \
     && ./kind version | grep -q "v0.20.0" \
     && mv ./kind /usr/local/bin/kind

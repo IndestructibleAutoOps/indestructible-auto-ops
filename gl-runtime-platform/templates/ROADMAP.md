@@ -274,15 +274,15 @@
 ## 參考資源
 
 ### 相關文檔
-- [Kubernetes 最佳實踐](https://kubernetes.io/docs/concepts/configuration/overview/)
-- [CNCF 景觀](https://landscape.cncf.io/)
-- [GitOps 最佳實踐](https://www.weave.works/technologies/gitops/)
+- [Kubernetes 最佳實踐]([EXTERNAL_URL_REMOVED])
+- [CNCF 景觀]([EXTERNAL_URL_REMOVED])
+- [GitOps 最佳實踐]([EXTERNAL_URL_REMOVED])
 
 ### 工具和平台
-- [Helm](https://helm.sh/)
-- [Kustomize](https://kustomize.io/)
-- [ArgoCD](https://argoproj.github.io/argo-cd/)
-- [Istio](https://istio.io/)
+- [Helm]([EXTERNAL_URL_REMOVED])
+- [Kustomize]([EXTERNAL_URL_REMOVED])
+- [ArgoCD]([EXTERNAL_URL_REMOVED])
+- [Istio]([EXTERNAL_URL_REMOVED])
 
 ---
 

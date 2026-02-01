@@ -7,7 +7,7 @@
 # GitHub Copilot Instructions Enhancement Summary
 
 **Date**: 2026-01-27  
-**Issue**: [✨ Set up Copilot instructions](https://github.com/MachineNativeOps/machine-native-ops/issues/XXX)  
+**Issue**: [✨ Set up Copilot instructions]([EXTERNAL_URL_REMOVED])  
 **Status**: ✅ Complete
 
 ---
@@ -203,10 +203,10 @@ grep -c "GL" .github/copilot-instructions.md
 ## References
 
 ### Documentation
-- [Best practices for Copilot coding agent in your repository](https://gh.io/copilot-coding-agent-tips)
-- [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [PEP 8 Style Guide](https://peps.python.org/pep-0008/)
+- [Best practices for Copilot coding agent in your repository]([EXTERNAL_URL_REMOVED])
+- [GitHub Copilot Documentation]([EXTERNAL_URL_REMOVED])
+- [Conventional Commits]([EXTERNAL_URL_REMOVED])
+- [PEP 8 Style Guide]([EXTERNAL_URL_REMOVED])
 
 ### Repository Documents
 - [README.md](../README.md)

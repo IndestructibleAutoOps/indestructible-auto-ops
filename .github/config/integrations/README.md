@@ -23,7 +23,7 @@
 
 ```bash
 # 設定 webhook URL
-export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+export SLACK_WEBHOOK_URL="[EXTERNAL_URL_REMOVED]
 
 # 發送告警
 ./slack-webhook.sh critical "Critical vulnerability detected" "CVE-2024-1234 in package xyz" "org/repo"
@@ -67,7 +67,7 @@ export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
 
 ```bash
 # 設定環境變數
-export JIRA_URL="https://your-company.atlassian.net"
+export JIRA_URL="[EXTERNAL_URL_REMOVED]
 export JIRA_USERNAME="your-email@company.com"
 export JIRA_API_TOKEN="your-api-token"
 export JIRA_PROJECT="SEC"
@@ -259,7 +259,7 @@ fi
 
    ```bash
    curl -u "email@example.com:api-token" \
-     https://your-company.atlassian.net/rest/api/2/myself
+     [EXTERNAL_URL_REMOVED]
    ```
 
 ---
@@ -284,9 +284,9 @@ fi
 
 ## 相關資源
 
-- [Slack Incoming Webhooks](https://api.slack.com/messaging/webhooks)
-- [Jira REST API](https://developer.atlassian.com/cloud/jira/platform/rest/v2/)
-- [GitHub Actions Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+- [Slack Incoming Webhooks]([EXTERNAL_URL_REMOVED])
+- [Jira REST API]([EXTERNAL_URL_REMOVED])
+- [GitHub Actions Secrets]([EXTERNAL_URL_REMOVED])
 
 ---
 

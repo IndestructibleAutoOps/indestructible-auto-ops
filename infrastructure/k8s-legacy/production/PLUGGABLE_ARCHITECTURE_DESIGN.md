@@ -656,13 +656,13 @@ class EnvironmentDetector:
         """Check AWS metadata"""
         try:
             response = requests.get(
-                'http://169.254.169.254/latest/meta-data/',
+                '[EXTERNAL_URL_REMOVED]
                 timeout=1
             )
             if response.status_code == 200:
                 # Get region
                 region_response = requests.get(
-                    'http://169.254.169.254/latest/meta-data/placement/region',
+                    '[EXTERNAL_URL_REMOVED]
                     timeout=1
                 )
                 return {
@@ -1240,7 +1240,7 @@ infrastructure:
       in_transit: true
     secrets:
       provider: vault
-      vault_address: https://vault.internal:8200
+      vault_address: [EXTERNAL_URL_REMOVED]
       # NOTE: Production deployments MUST use properly configured TLS certificates
       # and enforce strict TLS verification for all Vault connections.
     rbac:
@@ -2090,7 +2090,7 @@ class AzureAdapter:
         
         credential = DefaultAzureCredential()
         blob_service = BlobServiceClient(
-            account_url=f"https://{account_name}.blob.core.windows.net",
+            account_url=f"[EXTERNAL_URL_REMOVED]}.blob.core.windows.net",
             credential=credential
         )
         

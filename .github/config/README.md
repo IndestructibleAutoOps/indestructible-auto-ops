@@ -247,5 +247,5 @@ cp .env.staging .env
 ## 📞 支援 / Support
 
 - 📖 [配置文檔](./README.md)
-- 🐛 [報告問題](https://github.com/MachineNativeOps-admin/Unmanned-Island/issues)
-- 💬 [討論](https://github.com/MachineNativeOps-admin/Unmanned-Island/discussions)
+- 🐛 [報告問題]([EXTERNAL_URL_REMOVED])
+- 💬 [討論]([EXTERNAL_URL_REMOVED])

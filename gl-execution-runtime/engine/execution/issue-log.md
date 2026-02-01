@@ -303,8 +303,8 @@ Open → In Progress → Resolved → Closed
 - [Project Plan](artifacts/project-plan.yaml)
 
 ### External Systems
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
-- JIRA: https://machinenativeops.atlassian.net (if applicable)
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
+- JIRA: [EXTERNAL_URL_REMOVED] (if applicable)
 
 ---
 

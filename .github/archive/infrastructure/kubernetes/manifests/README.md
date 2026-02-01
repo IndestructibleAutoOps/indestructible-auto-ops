@@ -288,10 +288,10 @@ kubectl run -it --rm debug \
   -n autofix -- sh
 
 # 測試服務
-curl http://code-analyzer:8080/health
-curl http://vulnerability-detector:8081/health
-curl http://auto-repair:8082/health
-curl http://orchestrator:8083/health
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### 檢查監控
@@ -300,14 +300,14 @@ curl http://orchestrator:8083/health
 # Port-forward Grafana
 kubectl port-forward -n monitoring svc/grafana 3000:3000
 
-# 訪問 http://localhost:3000
+# 訪問 [EXTERNAL_URL_REMOVED]
 # 用戶名: admin
 # 密碼: admin
 
 # Port-forward Prometheus
 kubectl port-forward -n monitoring svc/prometheus 9090:9090
 
-# 訪問 http://localhost:9090
+# 訪問 [EXTERNAL_URL_REMOVED]
 ```
 
 ## 📈 監控與告警
@@ -315,7 +315,7 @@ kubectl port-forward -n monitoring svc/prometheus 9090:9090
 ### Prometheus 指標
 
 ```
-http://prometheus:9090/metrics
+[EXTERNAL_URL_REMOVED]
 ```
 
 關鍵指標：
@@ -513,7 +513,7 @@ kubectl exec -i -n autofix postgres-0 -- \
 
 - **團隊**: SynergyMesh Team
 - **郵箱**: <support@synergymesh.com>
-- **文檔**: <https://docs.synergymesh.com>
+- **文檔**: <[EXTERNAL_URL_REMOVED]
 
 ---
 

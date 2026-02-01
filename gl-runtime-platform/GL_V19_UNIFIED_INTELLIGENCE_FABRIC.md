@@ -549,19 +549,19 @@ node dist/src/unified-fabric-server.js
 ### Health Check
 
 ```bash
-curl http://localhost:3011/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### 查詢 Fabric 狀態
 
 ```bash
-curl http://localhost:3011/api/v19/fabric/status
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### 在織網上執行推理
 
 ```bash
-curl -X POST http://localhost:3011/api/v19/fabric/reason \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "query": "What is the relationship between node A and node B?",
@@ -573,7 +573,7 @@ curl -X POST http://localhost:3011/api/v19/fabric/reason \
 ### 觸發演化
 
 ```bash
-curl -X POST http://localhost:3011/api/v19/fabric/evolve \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "scope": "global",
@@ -584,7 +584,7 @@ curl -X POST http://localhost:3011/api/v19/fabric/evolve \
 ### 展開疊加態節點
 
 ```bash
-curl -X POST http://localhost:3011/api/v19/fabric/superposition/expand \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "nodeId": "node-123",

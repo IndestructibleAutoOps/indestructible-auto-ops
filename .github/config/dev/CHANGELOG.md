@@ -180,4 +180,4 @@ npm install -g typescript ts-node nodemon @types/node
 
 ---
 
-**版本說明**: 遵循 [語義化版本](https://semver.org/) 規範
+**版本說明**: 遵循 [語義化版本]([EXTERNAL_URL_REMOVED]) 規範

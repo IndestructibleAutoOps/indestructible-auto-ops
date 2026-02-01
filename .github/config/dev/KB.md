@@ -156,7 +156,7 @@
 6. **健康检查**（第58-59行）
    ```dockerfile
    HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-       CMD curl -f http://localhost:3000/health || exit 1
+       CMD curl -f [EXTERNAL_URL_REMOVED] || exit 1
    ```
 
    - 每 30 秒检查应用健康状态
@@ -255,8 +255,8 @@ docker-compose -f .devcontainer/docker-compose.dev.yml up -d
 **调试支持：**
 
 - Node.js 调试端口：9229
-- Prometheus 指标：http://localhost:9090
-- Grafana 仪表板：http://localhost:3001
+- Prometheus 指标：[EXTERNAL_URL_REMOVED]
+- Grafana 仪表板：[EXTERNAL_URL_REMOVED]
 
 ---
 
@@ -543,10 +543,10 @@ bash .devcontainer/install-optional-tools.sh
   - 应用可通过 `postgres-dev:5432` 连接数据库
   - 应用可通过 `redis-dev:6379` 连接缓存
 - **本地宿主机访问**：通过端口转发
-  - http://localhost:3000 → 应用
-  - http://localhost:5432 → 数据库
-  - http://localhost:9090 → Prometheus
-  - http://localhost:3001 → Grafana
+  - [EXTERNAL_URL_REMOVED] → 应用
+  - [EXTERNAL_URL_REMOVED] → 数据库
+  - [EXTERNAL_URL_REMOVED] → Prometheus
+  - [EXTERNAL_URL_REMOVED] → Grafana
 
 ### 工具链层次结构
 
@@ -645,9 +645,9 @@ docker-compose -f .devcontainer/docker-compose.dev.yml down -v
 
 | 服务       | 访问地址              |
 | ---------- | --------------------- |
-| 应用       | http://localhost:3000 |
-| Prometheus | http://localhost:9090 |
-| Grafana    | http://localhost:3001 |
+| 应用       | [EXTERNAL_URL_REMOVED] |
+| Prometheus | [EXTERNAL_URL_REMOVED] |
+| Grafana    | [EXTERNAL_URL_REMOVED] |
 | PostgreSQL | localhost:5432        |
 | Redis      | localhost:6379        |
 
@@ -665,7 +665,7 @@ NODE_ENV=development
 DATABASE_URL=postgresql://developer:development@postgres-dev:5432/keystone_platform
 REDIS_URL=redis://redis-dev:6379
 # API 和服务端点
-PROMETHEUS_URL=http://prometheus-dev:9090
+PROMETHEUS_URL=[EXTERNAL_URL_REMOVED]
 ```
 
 ### 敏感信息处理
@@ -763,9 +763,9 @@ npm update
 
 ## 相关文档和资源
 
-- **VSCode Remote 容器官方文档**：https://code.visualstudio.com/docs/devcontainers/containers
-- **Docker Compose 文档**：https://docs.docker.com/compose/
-- **Prometheus 文档**：https://prometheus.io/docs/
+- **VSCode Remote 容器官方文档**：[EXTERNAL_URL_REMOVED]
+- **Docker Compose 文档**：[EXTERNAL_URL_REMOVED]
+- **Prometheus 文档**：[EXTERNAL_URL_REMOVED]
 - **Kubernetes 部署**：见 /ARCHITECTURE.md
 
 ---

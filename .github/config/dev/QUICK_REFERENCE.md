@@ -62,7 +62,7 @@ kubectl top pods -A
 ```bash
 # 訪問 ArgoCD UI
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-# 瀏覽器開啟: https://localhost:8080
+# 瀏覽器開啟: [EXTERNAL_URL_REMOVED]
 
 # 取得 ArgoCD 密碼
 kubectl -n argocd get secret argocd-initial-admin-secret \
@@ -82,7 +82,7 @@ flux reconcile source git <repo-name>
 ```bash
 # 訪問 Grafana
 kubectl port-forward -n monitoring svc/prometheus-grafana 3000:80
-# 瀏覽器開啟: http://localhost:3000
+# 瀏覽器開啟: [EXTERNAL_URL_REMOVED]
 # 預設帳號: admin / prom-operator
 
 # 訪問 Prometheus
@@ -217,4 +217,4 @@ podman system prune -a -f
 
 ## 支援
 
-如有問題，請查看 [Kind 官方文檔](https://kind.sigs.k8s.io/) 或提交 Issue。
+如有問題，請查看 [Kind 官方文檔]([EXTERNAL_URL_REMOVED]) 或提交 Issue。

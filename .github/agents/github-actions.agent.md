@@ -247,7 +247,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: '[EXTERNAL_URL_REMOVED]
       
       - name: Install dependencies
         working-directory: engine

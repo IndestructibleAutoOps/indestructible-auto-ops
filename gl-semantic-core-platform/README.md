@@ -75,7 +75,7 @@ metadata:
   name: gl-runtime-dag-platform
 spec:
   semantic_core:
-    service_endpoint: "http://semantic-core.gl-enterprise-architecture.svc.cluster.local:8080"
+    service_endpoint: "[EXTERNAL_URL_REMOVED]
     features:
       - semantic-folding
       - vector-search
@@ -106,15 +106,15 @@ results = engine.semantic_search(
 
 ```bash
 # 语义折叠
-curl -X POST https://semantic-core.gl/semantic/fold \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/yaml" \
   -d @UnificationSpecification.yaml
 
 # 语义搜索
-curl -X GET "https://semantic-core.gl/semantic/search?query=runtime.dag&limit=10"
+curl -X GET "[EXTERNAL_URL_REMOVED]
 
 # 语义推理
-curl -X POST https://semantic-core.gl/semantic/infer \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"domain": "runtime", "inference_type": "capability-inheritance"}'
 ```
@@ -219,8 +219,8 @@ GL Semantic Core Platform 是 MachineNativeOps 平台宇宙的一部分。
 
 ## 联系方式
 
-- GitHub: https://github.com/MachineNativeOps/machine-native-ops
-- Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
+- GitHub: [EXTERNAL_URL_REMOVED]
+- Issues: [EXTERNAL_URL_REMOVED]
 
 ---
 

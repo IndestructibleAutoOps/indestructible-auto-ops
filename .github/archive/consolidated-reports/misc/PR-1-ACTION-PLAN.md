@@ -582,19 +582,19 @@
 - [PR-1-CODE-EXAMPLES.md](./PR-1-CODE-EXAMPLES.md) - 程式碼範例
 
 ### 外部資源
-- [PEP 8 - Python 編碼規範](https://peps.python.org/pep-0008/)
-- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
-- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
-- [12 Factor App](https://12factor.net/)
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [PEP 8 - Python 編碼規範]([EXTERNAL_URL_REMOVED])
+- [Google Python Style Guide]([EXTERNAL_URL_REMOVED])
+- [TypeScript Deep Dive]([EXTERNAL_URL_REMOVED])
+- [12 Factor App]([EXTERNAL_URL_REMOVED])
+- [OWASP Top 10]([EXTERNAL_URL_REMOVED])
 
 ### 工具文件
-- [Black Documentation](https://black.readthedocs.io/)
-- [Ruff Documentation](https://beta.ruff.rs/docs/)
-- [MyPy Documentation](https://mypy.readthedocs.io/)
-- [ESLint Rules](https://eslint.org/docs/rules/)
-- [Winston Logger](https://github.com/winstonjs/winston)
-- [Pytest Documentation](https://docs.pytest.org/)
+- [Black Documentation]([EXTERNAL_URL_REMOVED])
+- [Ruff Documentation]([EXTERNAL_URL_REMOVED])
+- [MyPy Documentation]([EXTERNAL_URL_REMOVED])
+- [ESLint Rules]([EXTERNAL_URL_REMOVED])
+- [Winston Logger]([EXTERNAL_URL_REMOVED])
+- [Pytest Documentation]([EXTERNAL_URL_REMOVED])
 
 ---
 

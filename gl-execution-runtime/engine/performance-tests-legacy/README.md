@@ -155,7 +155,7 @@ pytest --benchmark-compare=baseline.json
 ### 使用 Locust 進行負載測試
 ```bash
 # 啟動 Locust web interface
-locust -f locustfiles/load_test.py --host=http://localhost:8000
+locust -f locustfiles/load_test.py --host=[EXTERNAL_URL_REMOVED]
 
 # 運行 headless 模式
 locust -f locustfiles/load_test.py --headless -u 100 -r 10 -t 10m
@@ -235,7 +235,7 @@ docker-compose -f docker-compose.performance.yml up -d prometheus
 docker-compose -f docker-compose.performance.yml up -d grafana
 
 # 查看指標
-curl http://localhost:9090/metrics
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ## 性能報告 (Performance Reports)

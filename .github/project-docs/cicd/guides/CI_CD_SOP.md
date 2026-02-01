@@ -281,14 +281,14 @@ Closes #123
 
 **自動生成的 URL 格式：**
 ```
-https://github.com/MachineNativeOps/machine-native-ops/pull/[PR_NUMBER]
+[EXTERNAL_URL_REMOVED]]
 ```
 
 **獲取 PR URL 的方法：**
 ```bash
 # 方法 1：創建後自動顯示
 gh pr create --title "..." --body "..." --base main
-# 輸出：https://github.com/MachineNativeOps/machine-native-ops/pull/123
+# 輸出：[EXTERNAL_URL_REMOVED]
 
 # 方法 2：列出最近創建的 PR
 gh pr list --head your-branch-name --json url --jq '.[0].url'
@@ -303,7 +303,7 @@ gh pr view --web
 ```bash
 # Slack/Discord 示例
 🔔 新 PR 待審查：[PR標題]
-📋 URL: https://github.com/MachineNativeOps/machine-native-ops/pull/123
+📋 URL: [EXTERNAL_URL_REMOVED]
 👤 作者: @author
 🏷️ Labels: feature, high-priority
 📊 CI 狀態: ⏳ 運行中
@@ -312,7 +312,7 @@ gh pr view --web
 2. **在 issue 中引用：**
 ```markdown
 此 PR 解決了當前 issue：
-- [PR #123](https://github.com/MachineNativeOps/machine-native-ops/pull/123)
+- [PR #123]([EXTERNAL_URL_REMOVED])
 ```
 
 3. **使用 GitHub @提及：**
@@ -444,7 +444,7 @@ gh pr view --web
        }
    }
 
-   參考：https://github.com/auth0/node-jsonwebtoken#readme
+   參考：[EXTERNAL_URL_REMOVED]
    ```
 
 3. **上下文相關性（Contextual）**
@@ -800,7 +800,7 @@ class CICommentManager:
             'Authorization': f'token {token}',
             'Accept': 'application/vnd.github.v3+json'
         }
-        self.api_base = f'https://api.github.com/repos/{repo}'
+        self.api_base = f'[EXTERNAL_URL_REMOVED]}'
     
     def get_pr_comments(self, pr_number):
         """獲取 PR 的所有評論"""
@@ -998,7 +998,7 @@ class CIDashboard:
             'Authorization': f'token {token}',
             'Accept': 'application/vnd.github.v3+json'
         }
-        self.api_base = f'https://api.github.com/repos/{repo}'
+        self.api_base = f'[EXTERNAL_URL_REMOVED]}'
     
     def get_pr_status(self, pr_number: int) -> Dict:
         """獲取 PR 的 CI 狀態"""
@@ -1365,7 +1365,7 @@ class CIMetrics:
             'Authorization': f'token {token}',
             'Accept': 'application/vnd.github.v3+json'
         }
-        self.api_base = f'https://api.github.com/repos/{repo}'
+        self.api_base = f'[EXTERNAL_URL_REMOVED]}'
     
     def get_workflow_runs(self, days: int = 30) -> List[Dict]:
         """獲取最近 N 天的工作流運行"""

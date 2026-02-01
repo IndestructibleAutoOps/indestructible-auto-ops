@@ -6,10 +6,10 @@
 # GL Unified Charter Activated
 # 命名治理系統 v1.0.0
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Kubernetes 1.24+](https://img.shields.io/badge/kubernetes-1.24+-326ce5.svg)](https://kubernetes.io)
-[![CI/CD](https://github.com/MachineNativeOps/mno-repository-understanding-system/workflows/Naming%20Governance%20CI/CD/badge.svg)](https://github.com/MachineNativeOps/mno-repository-understanding-system/actions)
+[![License: MIT]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![Python 3.11+]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![Kubernetes 1.24+]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![CI/CD]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
 
 ## 概述
 
@@ -332,7 +332,7 @@ metadata:
 
 - 📧 Email: platform-governance@example.com
 - 💬 Slack: #platform-governance
-- 🐛 Issue Tracker: [GitHub Issues](https://github.com/MachineNativeOps/mno-repository-understanding-system/issues)
+- 🐛 Issue Tracker: [GitHub Issues]([EXTERNAL_URL_REMOVED])
 - 📖 文檔: [docs/](docs/)
 
 ## 更新日誌

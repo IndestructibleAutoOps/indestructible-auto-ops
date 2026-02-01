@@ -228,9 +228,9 @@ podman system prune -a -f
 
 ## 🎓 學習資源
 
-- [Kind 官方文檔](https://kind.sigs.k8s.io/)
-- [Podman 使用指南](https://podman.io/getting-started/)
-- [Kubernetes 基礎教學](https://kubernetes.io/docs/tutorials/)
+- [Kind 官方文檔]([EXTERNAL_URL_REMOVED])
+- [Podman 使用指南]([EXTERNAL_URL_REMOVED])
+- [Kubernetes 基礎教學]([EXTERNAL_URL_REMOVED])
 
 ## 📝 符合標準
 

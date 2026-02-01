@@ -323,7 +323,7 @@ from opa_client import OpaClient
 class TestRootPolicies:
     @pytest.fixture
     def opa(self):
-        return OpaClient("http://localhost:8181")
+        return OpaClient("[EXTERNAL_URL_REMOVED])
     
     def test_naming_policy(self, opa):
         """Test naming convention enforcement"""
@@ -535,14 +535,14 @@ receivers:
     slack_configs:
       # NOTE: Replace with your actual Slack webhook URL and load it from a secure secret
       #       or environment variable. Do not commit real webhook URLs to version control.
-      - api_url: 'https://hooks.slack.com/services/xxx'
+      - api_url: '[EXTERNAL_URL_REMOVED]
         channel: '#platform-critical'
     
   - name: 'warning-alerts'
     slack_configs:
       # NOTE: Replace with your actual Slack webhook URL and load it from a secure secret
       #       or environment variable. Do not commit real webhook URLs to version control.
-      - api_url: 'https://hooks.slack.com/services/xxx'
+      - api_url: '[EXTERNAL_URL_REMOVED]
         channel: '#platform-alerts'
     
   - name: 'platform-team'
@@ -602,7 +602,7 @@ jobs:
       - name: Generate SBOM (Syft)
         # SECURITY: Pin to a specific commit SHA instead of @v0
         # Example: uses: anchore/sbom-action@<commit-sha>
-        # Visit https://github.com/anchore/sbom-action/commits to find latest vetted commit
+        # Visit [EXTERNAL_URL_REMOVED] to find latest vetted commit
         uses: anchore/sbom-action@v0
         with:
           image: ${{ github.repository }}:${{ github.sha }}
@@ -650,10 +650,10 @@ jobs:
       - name: Install Cosign
         run: |
           # Download Cosign binary
-          wget https://github.com/sigstore/cosign/releases/download/v2.2.0/cosign-linux-amd64
+          wget [EXTERNAL_URL_REMOVED]
           
           # Download and verify checksum
-          wget https://github.com/sigstore/cosign/releases/download/v2.2.0/cosign-linux-amd64.sha256
+          wget [EXTERNAL_URL_REMOVED]
           echo "$(cat cosign-linux-amd64.sha256)  cosign-linux-amd64" | sha256sum --check
           
           # Install if checksum is valid
@@ -663,8 +663,8 @@ jobs:
       - name: Verify Build Provenance
         run: |
           cosign verify-attestation \
-            --certificate-identity https://github.com/${{ github.repository }}/.github/workflows/build.yml@refs/heads/main \
-            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            --certificate-identity [EXTERNAL_URL_REMOVED] github.repository }}/.github/workflows/build.yml@refs/heads/main \
+            --certificate-oidc-issuer [EXTERNAL_URL_REMOVED] \
             ghcr.io/${{ github.repository }}:${{ github.sha }}
 ```
 
@@ -692,7 +692,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         # SECURITY: Pin to a specific commit SHA instead of @leader
         # Example: uses: aquasecurity/trivy-action@<commit-sha>
-        # Visit https://github.com/aquasecurity/trivy-action/commits to find latest vetted commit
+        # Visit [EXTERNAL_URL_REMOVED] to find latest vetted commit
         uses: aquasecurity/trivy-action@leader
         uses: aquasecurity/trivy-action@leader
         with:
@@ -782,7 +782,7 @@ jobs:
       actions: read
     # SECURITY: Pin to a specific commit SHA instead of @v1.9.0
     # Example: uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@<commit-sha>
-    # Visit https://github.com/slsa-framework/slsa-github-generator/commits to find latest vetted commit
+    # Visit [EXTERNAL_URL_REMOVED] to find latest vetted commit
     uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.9.0
     with:
       base64-subjects: "${{ needs.build-artifacts.outputs.digests }}"

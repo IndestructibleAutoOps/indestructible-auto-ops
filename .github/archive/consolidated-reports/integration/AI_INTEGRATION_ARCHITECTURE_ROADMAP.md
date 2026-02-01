@@ -745,7 +745,7 @@ def generate_dashboard():
 <html>
 <head>
     <title>AI自動集成系統 - 質量儀表板</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="[EXTERNAL_URL_REMOVED]
     <style>
         body {{ font-family: Arial, sans-serif; margin: 20px; }}
         .dashboard {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }}

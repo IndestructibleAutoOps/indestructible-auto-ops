@@ -515,11 +515,11 @@ istioctl pc destinationrule <pod-name>
 
 ## References
 
-- [Istio Documentation](https://istio.io/latest/docs/)
-- [Jaeger Documentation](https://www.jaegertracing.io/docs/)
-- [Velero Documentation](https://velero.io/docs/)
-- [Kubernetes HA](https://kubernetes.io/docs/tasks/administer-cluster/highly-available-control-plane/)
-- [AWS Multi-AZ](https://docs.aws.amazon.com/eks/latest/userguide/discoveryservice.html)
+- [Istio Documentation]([EXTERNAL_URL_REMOVED])
+- [Jaeger Documentation]([EXTERNAL_URL_REMOVED])
+- [Velero Documentation]([EXTERNAL_URL_REMOVED])
+- [Kubernetes HA]([EXTERNAL_URL_REMOVED])
+- [AWS Multi-AZ]([EXTERNAL_URL_REMOVED])
 
 ---
 

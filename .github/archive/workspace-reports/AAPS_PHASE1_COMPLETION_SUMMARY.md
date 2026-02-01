@@ -78,7 +78,7 @@ MachineNativeOps AAPS (AI Architecture & Artifact Provisioning System) has succe
 ```
 ✅ ps aux | grep config-manager: Shows PID 2106
 ✅ netstat -tlnp | grep 8081: Service listening
-✅ curl http://localhost:8081/health: Returns 200
+✅ curl [EXTERNAL_URL_REMOVED] Returns 200
 ✅ Bootstrap pipeline: All 5 stages pass
 ```
 

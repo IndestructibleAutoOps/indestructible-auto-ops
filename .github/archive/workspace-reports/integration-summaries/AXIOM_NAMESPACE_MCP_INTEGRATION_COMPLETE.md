@@ -151,7 +151,7 @@ axiom_backup/                     → ns-root/namespaces-mcp/axiom/
 ## 🔗 相關文檔
 
 ### 核心文檔
-- [Pull Request #1186](https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/1186)
+- [Pull Request #1186]([EXTERNAL_URL_REMOVED])
 - [NAMESPACE_INDEX.yaml](mno-repository-understanding-system/ns-root/namespaces-mcp/NAMESPACE_INDEX.yaml)
 - [集成配置](NAMESPACE_MCP_AXIOM_INTEGRATION.yaml)
 

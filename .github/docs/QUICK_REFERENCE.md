@@ -23,7 +23,7 @@ Intermittent CI/CD failures in infrastructure validation workflow caused by miss
 ```bash
 cd machine-native-ops
 export GITHUB_TOKEN=your_token_here
-git push https://x-access-token:$GITHUB_TOKEN@github.com/MachineNativeOps/machine-native-ops.git hotfix/infrastructure-validation-dependencies
+git push [EXTERNAL_URL_REMOVED] hotfix/infrastructure-validation-dependencies
 ```
 
 ### 2. Create Pull Request
@@ -36,7 +36,7 @@ gh pr create \
 ```
 
 ### 3. Monitor Deployment
-- Watch GitHub Actions: https://github.com/MachineNativeOps/machine-native-ops/actions
+- Watch GitHub Actions: [EXTERNAL_URL_REMOVED]
 - Verify workflow passes successfully
 - Monitor for 24 hours post-deployment
 

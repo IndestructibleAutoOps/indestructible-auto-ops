@@ -115,7 +115,7 @@ EOF
 wrangler deploy
 
 # 4. Test worker
-curl https://machine-native-ops-worker.your-subdomain.workers.dev
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### Cloudflare Pages Deployment
@@ -177,7 +177,7 @@ supabase init
 ```bash
 export SUPABASE_ENABLED=true
 export SUPABASE_PROJECT_ID=your_project_id
-export SUPABASE_API_URL=https://your-project-id.supabase.co
+export SUPABASE_API_URL=[EXTERNAL_URL_REMOVED]
 export SUPABASE_ANON_KEY=your_anon_key
 export SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 export SUPABASE_DATABASE_URL=postgresql://postgres:[PASSWORD]@db.your-project-id.supabase.co:5432/postgres
@@ -294,8 +294,8 @@ supabase functions new webhook-handler
 
 # 2. Write function code
 cat > supabase/functions/webhook-handler/index.ts << 'EOF'
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { serve } from "[EXTERNAL_URL_REMOVED]
+import { createClient } from '[EXTERNAL_URL_REMOVED]
 
 const supabase = createClient(
   Deno.env.get('SUPABASE_URL') ?? '',
@@ -344,7 +344,7 @@ EOF
 supabase functions deploy webhook-handler
 
 # 4. Test function
-curl -X POST https://your-project-id.supabase.co/functions/v1/webhook-handler \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"test": "data"}'
 ```
@@ -404,7 +404,7 @@ export GITBOOK_GITHUB_INTEGRATION_ENABLED=true
 ### GitBook Space Setup
 ```bash
 # 1. Create GitBook space via web interface
-# Go to https://app.gitbook.com and create a new space
+# Go to [EXTERNAL_URL_REMOVED] and create a new space
 
 # 2. Set up GitHub integration
 # In GitBook space settings -> Integrations -> GitHub
@@ -477,9 +477,9 @@ info:
   description: MachineNativeOps API Reference
 
 servers:
-  - url: https://api.machine-native-ops.com
+  - url: [EXTERNAL_URL_REMOVED]
     description: Production API
-  - url: https://staging-api.machine-native-ops.com
+  - url: [EXTERNAL_URL_REMOVED]
     description: Staging API
 
 paths:
@@ -650,7 +650,7 @@ wrangler deploy
 supabase db push
 
 # 5. Test integration
-curl https://your-app.vercel.app/api/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -713,6 +713,6 @@ supabase logs db
 ## Support
 
 For issues or questions:
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
-- Documentation: https://docs.machine-native-ops.com
-- Community: https://community.machine-native-ops.com
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
+- Documentation: [EXTERNAL_URL_REMOVED]
+- Community: [EXTERNAL_URL_REMOVED]

@@ -23,7 +23,7 @@ This code of conduct applies to all spaces managed by the Machine Native Ops pro
 If you believe someone is violating the code of conduct, we ask that you report it by:
 
 1. **Creating a GitHub Issue** with the `code-of-conduct` label
-   - Visit: https://github.com/MachineNativeOps/machine-native-ops/issues/new
+   - Visit: [EXTERNAL_URL_REMOVED]
    - Use the "Code of Conduct Report" template (if available)
    - Include detailed information about the incident
 
@@ -48,13 +48,13 @@ For more details please see our
  - Repeated harassment of others. In general, if someone asks you to stop, then stop.
 - **When we disagree, try to understand why.** Disagreements, both social and technical, happen all the time and Machine Native Ops is no exception. It is important that we resolve disagreements and differing views constructively. Remember that we’re different. The strength of Machine Native Ops comes from its varied community, people from a wide range of backgrounds. Different people have different perspectives on issues. Being unable to understand why someone holds a viewpoint doesn’t mean that they’re wrong. Don’t forget that it is human to err and blaming each other doesn’t get us anywhere. Instead, focus on helping to resolve issues and learning from mistakes.
 
-Original text courtesy of the [Speak Up! project](http://web.archive.org/web/20141109123859/http://speakup.io/coc.html).
+Original text courtesy of the [Speak Up! project]([EXTERNAL_URL_REMOVED]).
 
 ## Questions?
 
 If you have questions about the Code of Conduct, please:
 
 1. **Review the [Contributing Guidelines](CONTRIBUTING.md)** for general project participation
-2. **Check existing [GitHub Issues](https://github.com/MachineNativeOps/machine-native-ops/issues)** for similar questions
+2. **Check existing [GitHub Issues]([EXTERNAL_URL_REMOVED])** for similar questions
 3. **Create a new GitHub Issue** with the `question` label
 4. **Email the project maintainers** at contact@machinenativeops.com for private questions

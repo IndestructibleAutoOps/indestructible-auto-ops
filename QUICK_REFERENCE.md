@@ -36,7 +36,7 @@ pip install pyyaml jsonschema
 ```
 
 ### 3. Monitor GitHub Actions
-- Watch GitHub Actions: https://github.com/MachineNativeOps/machine-native-ops/actions
+- Watch GitHub Actions: [EXTERNAL_URL_REMOVED]
 - Verify workflow passes successfully
 - Confirm no false-positive errors
 

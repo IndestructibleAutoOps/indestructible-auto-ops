@@ -309,7 +309,7 @@ The service exposes metrics on port 9090:
 Health check endpoint at `/health`:
 
 ```bash
-curl http://localhost:9090/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ## Testing
@@ -394,7 +394,7 @@ cp configs/data-sync-config.yaml configs/backup/data-sync-config.yaml.$(date +%Y
 tail -f logs/data-sync.log
 
 # Check status
-curl http://localhost:9090/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ## Contributing

@@ -87,34 +87,34 @@ python -c "from semantic_engine.api_server import app; app.run(host='0.0.0.0', p
 
 **Health Check**
 ```bash
-curl http://localhost:3333/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 **Load Specification**
 ```bash
-curl -X POST http://localhost:3333/semantic/load \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"specification": "<yaml_content>"}'
 ```
 
 **Query Semantic Node**
 ```bash
-curl "http://localhost:3333/semantic/query?id=domain.runtime"
+curl "[EXTERNAL_URL_REMOVED]
 ```
 
 **Query by Feature**
 ```bash
-curl "http://localhost:3333/semantic/feature/execution"
+curl "[EXTERNAL_URL_REMOVED]
 ```
 
 **Infer Capabilities**
 ```bash
-curl "http://localhost:3333/semantic/infer/capabilities/api"
+curl "[EXTERNAL_URL_REMOVED]
 ```
 
 **Validate Conflict**
 ```bash
-curl -X POST http://localhost:3333/semantic/validate/conflict \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"node_a_id": "domain.runtime", "node_b_id": "domain.api"}'
 ```

@@ -304,10 +304,10 @@ Secret: {service-name}-secret
 - [GL Semantic Core Platform v1.0.0](../../gl-platform-services/)
 
 ### 外部文檔
-- [Kubernetes 文檔](https://kubernetes.io/docs/)
-- [OPA Gatekeeper 文檔](https://open-policy-agent.github.io/gatekeeper/)
-- [Kustomize 文檔](https://kustomize.io/)
-- [CNCF 最佳實務](https://www.cncf.io/projects/)
+- [Kubernetes 文檔]([EXTERNAL_URL_REMOVED])
+- [OPA Gatekeeper 文檔]([EXTERNAL_URL_REMOVED])
+- [Kustomize 文檔]([EXTERNAL_URL_REMOVED])
+- [CNCF 最佳實務]([EXTERNAL_URL_REMOVED])
 
 ## 致謝
 

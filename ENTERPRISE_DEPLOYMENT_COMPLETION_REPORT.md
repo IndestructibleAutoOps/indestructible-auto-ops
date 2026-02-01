@@ -232,9 +232,9 @@ MachineNativeOps has been successfully deployed with enterprise-grade infrastruc
 ## Support and Maintenance
 
 ### Monitoring
-- Grafana dashboards: http://localhost:3000
-- Prometheus: http://localhost:9091
-- Kibana logs: http://localhost:5601
+- Grafana dashboards: [EXTERNAL_URL_REMOVED]
+- Prometheus: [EXTERNAL_URL_REMOVED]
+- Kibana logs: [EXTERNAL_URL_REMOVED]
 
 ### Documentation
 - Deployment Guide: `/deployment/README.md`
@@ -242,9 +242,9 @@ MachineNativeOps has been successfully deployed with enterprise-grade infrastruc
 - Architecture: `/docs/architecture/`
 
 ### Contact
-- **GitHub Issues**: https://github.com/MachineNativeOps/machine-native-ops/issues
+- **GitHub Issues**: [EXTERNAL_URL_REMOVED]
 - **Email**: support@machinenativeops.com
-- **Documentation**: https://docs.machinenativeops.com
+- **Documentation**: [EXTERNAL_URL_REMOVED]
 
 ## Conclusion
 

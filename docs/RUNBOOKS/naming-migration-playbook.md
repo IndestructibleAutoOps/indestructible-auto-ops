@@ -175,7 +175,7 @@ kubectl diff -f artifacts/reports/naming/proposed-changes.yaml \
 
 # 4. Test applications locally
 kubectl port-forward svc/dev-myapp-svc-v1.0.0 8080:80
-curl http://localhost:8080/health
+curl [EXTERNAL_URL_REMOVED]
 
 # 5. Validate YAML syntax
 yamllint artifacts/reports/naming/proposed-changes.yaml
@@ -275,7 +275,7 @@ kubectl patch ingress dev-myapp-ing-v1.0.0 \
   -p '{"spec":{"rules":[{"http":{"paths":[{"path":"/","backend":{"service":{"name":"dev-myapp-svc-v1.0.0","port":{"number":80}}}}]}}]}}'
 
 # 3. Verify new endpoints
-curl -H "Host: myapp.example.com" http://ingress-controller/health
+curl -H "Host: myapp.example.com" [EXTERNAL_URL_REMOVED]
 
 # 4. Gradually increase traffic
 for weight in 10 20 50 100; do
@@ -284,7 +284,7 @@ for weight in 10 20 50 100; do
   sleep 300  # Wait 5 minutes between steps
   
   # Validate health
-  if ! curl -f http://ingress-controller/health; then
+  if ! curl -f [EXTERNAL_URL_REMOVED] then
     echo "Health check failed at weight $weight"
     # Trigger rollback
     ./scripts/naming/rollback.sh
@@ -380,7 +380,7 @@ echo "Rollback completed successfully"
 kubectl get all --all-namespaces -o json | jq '.items[] | select(.metadata.name | test(".*-v1.0.0$")) | "Still using new names: " + .metadata.name'
 
 # Verify applications are accessible
-curl http://myapp.example.com/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Verify metrics are healthy
 kubectl top pods -l app=myapp

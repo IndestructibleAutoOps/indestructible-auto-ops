@@ -151,7 +151,7 @@ quantum_conflict_entropy{service="quantum-naming-governance"}
 
 ### Grafana Dashboard
 
-Access the quantum dashboard at: `http://<service-ip>:3000`
+Access the quantum dashboard at: `[EXTERNAL_URL_REMOVED]
 
 Panels include:
 - Quantum Coherence Waveform
@@ -232,7 +232,7 @@ python -m src.core.transformer /path/to/code \
 - **Comprehensive Guide**: [docs/README.md](docs/README.md)
 - **Project Summary**: [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md)
 - **API Documentation**: Available at `/api/v4/docs` after deployment
-- **Online Docs**: https://docs.machinenativeops.io/quantum
+- **Online Docs**: [EXTERNAL_URL_REMOVED]
 
 ## 🆘 Troubleshooting
 
@@ -244,7 +244,7 @@ python -m src.core.transformer /path/to/code \
    kubectl logs -n quantum-governance -l app=quantum-governance | grep coherence
    
    # Trigger realignment
-   curl -X POST https://gov.quantum.machinenativeops.io/v4/repair \
+   curl -X POST [EXTERNAL_URL_REMOVED] \
      -H "Authorization: Bearer $QUANTUM_API_TOKEN" \
      -d '{"action": "quantum-realignment"}'
    ```
@@ -252,7 +252,7 @@ python -m src.core.transformer /path/to/code \
 2. **Entanglement Weakness**
    ```bash
    # Check entanglement strength
-   curl https://gov.quantum.machinenativeops.io/metrics | grep entanglement
+   curl [EXTERNAL_URL_REMOVED] | grep entanglement
    ```
 
 ### Debug Commands
@@ -269,8 +269,8 @@ kubectl exec -it deployment/quantum-governance-service \
 
 ## 📞 Support
 
-- **Documentation**: https://docs.machinenativeops.io/quantum
-- **Discord Community**: https://discord.gg/quantum-governance
+- **Documentation**: [EXTERNAL_URL_REMOVED]
+- **Discord Community**: [EXTERNAL_URL_REMOVED]
 - **Issue Tracking**: GitHub Issues
 - **Enterprise Support**: quantum-support@machinenativeops.io
 

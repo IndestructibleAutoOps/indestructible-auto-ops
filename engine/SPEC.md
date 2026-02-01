@@ -461,6 +461,6 @@ Contributions should follow:
 ## 14. Support
 
 For issues and questions:
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
 - Documentation: See individual component README files
 - Specification: This document (SPEC.md)

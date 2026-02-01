@@ -56,11 +56,11 @@ Please ensure:
 Your repository **has a `README.md` file in the root directory** (or in the folder specified in `.gitbook.yaml`) created directly in your git repository.
 
 - This file is **required** and serves as the homepage of your documentation
-- For more details, see our [.gitbook.yaml content configuration](https://docs.gitbook.com/integrations/git-sync/content-configuration)
+- For more details, see our [.gitbook.yaml content configuration]([EXTERNAL_URL_REMOVED])
 
 #### 2. YAML Frontmatter Validation
 
-If your Markdown files contain YAML frontmatter, use a [YAML checker](https://yamlchecker.com/) to ensure they are valid.
+If your Markdown files contain YAML frontmatter, use a [YAML checker]([EXTERNAL_URL_REMOVED]) to ensure they are valid.
 
 **Example YAML Frontmatter:**
 
@@ -93,7 +93,7 @@ structure:
   summary: SUMMARY.md
 ```
 
-For more information, see the [GitBook content configuration documentation](https://docs.gitbook.com/integrations/git-sync/content-configuration).
+For more information, see the [GitBook content configuration documentation]([EXTERNAL_URL_REMOVED]).
 
 ---
 
@@ -131,7 +131,7 @@ If after updating your repository by adding or modifying Markdown files, you don
 
 #### Still Not Resolved?
 
-If GitBook still shows no response after confirming all files are included in the `SUMMARY.md` file, feel free to [contact support](https://www.gitbook.com/support) for assistance.
+If GitBook still shows no response after confirming all files are included in the `SUMMARY.md` file, feel free to [contact support]([EXTERNAL_URL_REMOVED]) for assistance.
 
 ---
 
@@ -143,7 +143,7 @@ YAML files need to be properly formatted for redirects to work. Issues like inde
 
 #### Key Points for Redirect Configuration
 
-1. **Validate YAML Format**: Using a [YAML validator](https://yamlchecker.com/) ensures redirects work smoothly
+1. **Validate YAML Format**: Using a [YAML validator]([EXTERNAL_URL_REMOVED]) ensures redirects work smoothly
 2. **Don't Add Leading Slashes**:
    - ❌ Wrong: `./misc/support.md`
    - ✅ Correct: `misc/support.md`
@@ -179,7 +179,7 @@ Ensure you've installed the GitBook GitHub app to the correct location:
 
 **Steps to Check Installation:**
 
-1. Visit [GitHub Apps Settings](https://github.com/settings/installations)
+1. Visit [GitHub Apps Settings]([EXTERNAL_URL_REMOVED])
 2. Find the GitBook app
 3. Verify repository access permissions
 
@@ -236,7 +236,7 @@ To identify which GitBook account the GitHub account is linked to:
 1. **Log Out of Current Session**: Log out of your current GitBook user session (e.g., `name@email.com`)
 2. **Log Out of GitHub**: Log out of any GitHub user sessions
 3. **Log In with GitHub**:
-   - Go to the [GitBook login page](https://app.gitbook.com/login)
+   - Go to the [GitBook login page]([EXTERNAL_URL_REMOVED])
    - Select the "Sign in with GitHub" option
    - Enter your GitHub credentials
 4. **Check Account Settings**:
@@ -253,10 +253,10 @@ To identify which GitBook account the GitHub account is linked to:
 
 ## 📚 Related Resources
 
-- [GitBook Official Documentation](https://docs.gitbook.com/)
-- [Git Sync Guide](https://docs.gitbook.com/integrations/git-sync)
-- [Content Configuration](https://docs.gitbook.com/integrations/git-sync/content-configuration)
-- [GitBook Support Center](https://www.gitbook.com/support)
+- [GitBook Official Documentation]([EXTERNAL_URL_REMOVED])
+- [Git Sync Guide]([EXTERNAL_URL_REMOVED])
+- [Content Configuration]([EXTERNAL_URL_REMOVED])
+- [GitBook Support Center]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -264,9 +264,9 @@ To identify which GitBook account the GitHub account is linked to:
 
 If none of the above solutions resolve your issue:
 
-1. Check the [GitBook Support Center](https://www.gitbook.com/support)
-2. Visit the [GitBook Community Forum](https://github.com/GitbookIO/gitbook/discussions)
-3. [Contact GitBook Support Team](https://www.gitbook.com/support)
+1. Check the [GitBook Support Center]([EXTERNAL_URL_REMOVED])
+2. Visit the [GitBook Community Forum]([EXTERNAL_URL_REMOVED])
+3. [Contact GitBook Support Team]([EXTERNAL_URL_REMOVED])
 
 ---
 

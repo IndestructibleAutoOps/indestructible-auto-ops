@@ -164,7 +164,7 @@ Validating esync-platform...
 remote: Bypassed rule violations for refs/heads/main:
 remote: - Code scanning is waiting for results from Bandit for the commit 38e4f38.
 remote: GitHub found 4 vulnerabilities on default branch (3 moderate, 1 low)
-To https://github.com/MachineNativeOps/machine-native-ops.git
+To [EXTERNAL_URL_REMOVED]
    c5cb64cf..38e4f381  main -> main
 ```
 

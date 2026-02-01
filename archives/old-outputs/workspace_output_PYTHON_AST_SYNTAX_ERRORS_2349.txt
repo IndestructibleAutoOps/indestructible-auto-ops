@@ -3792,7 +3792,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -3800,7 +3800,7 @@
             "line_range": [
                 13
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -3812,7 +3812,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -3820,7 +3820,7 @@
             "line_range": [
                 19
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -3832,7 +3832,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -3840,7 +3840,7 @@
             "line_range": [
                 16
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -3852,7 +3852,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -3861,7 +3861,7 @@
                 98,
                 99
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -3873,7 +3873,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -3882,7 +3882,7 @@
                 98,
                 99
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -3894,7 +3894,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -3903,7 +3903,7 @@
                 107,
                 108
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -3915,7 +3915,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -3924,7 +3924,7 @@
                 107,
                 108
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -3936,7 +3936,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -3945,7 +3945,7 @@
                 116,
                 117
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -3957,7 +3957,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -3966,7 +3966,7 @@
                 116,
                 117
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -3978,7 +3978,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -3987,7 +3987,7 @@
                 125,
                 126
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -3999,7 +3999,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4008,7 +4008,7 @@
                 125,
                 126
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4020,7 +4020,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -4028,7 +4028,7 @@
             "line_range": [
                 19
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -4040,7 +4040,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4049,7 +4049,7 @@
                 77,
                 78
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4061,7 +4061,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4070,7 +4070,7 @@
                 77,
                 78
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4082,7 +4082,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4091,7 +4091,7 @@
                 82,
                 83
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4103,7 +4103,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4112,7 +4112,7 @@
                 82,
                 83
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4124,7 +4124,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4133,7 +4133,7 @@
                 87,
                 88
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4145,7 +4145,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4154,7 +4154,7 @@
                 87,
                 88
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4166,7 +4166,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4175,7 +4175,7 @@
                 92,
                 93
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4187,7 +4187,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4196,7 +4196,7 @@
                 92,
                 93
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4208,7 +4208,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -4216,7 +4216,7 @@
             "line_range": [
                 15
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -4228,7 +4228,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4238,7 +4238,7 @@
                 118,
                 119
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4250,7 +4250,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4263,7 +4263,7 @@
                 215,
                 216
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4275,7 +4275,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4288,7 +4288,7 @@
                 215,
                 216
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4300,7 +4300,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4313,7 +4313,7 @@
                 234,
                 235
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4325,7 +4325,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4338,7 +4338,7 @@
                 234,
                 235
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4350,7 +4350,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4363,7 +4363,7 @@
                 248,
                 249
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4375,7 +4375,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4388,7 +4388,7 @@
                 248,
                 249
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4400,7 +4400,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4410,7 +4410,7 @@
                 271,
                 272
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4422,7 +4422,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4432,7 +4432,7 @@
                 271,
                 272
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4444,7 +4444,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -4452,7 +4452,7 @@
             "line_range": [
                 15
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -4464,7 +4464,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4474,7 +4474,7 @@
                 91,
                 92
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4486,7 +4486,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4496,7 +4496,7 @@
                 218,
                 219
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4508,7 +4508,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4518,7 +4518,7 @@
                 218,
                 219
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4530,7 +4530,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -4538,7 +4538,7 @@
             "line_range": [
                 16
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -4550,7 +4550,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4558,7 +4558,7 @@
             "line_range": [
                 121
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4570,7 +4570,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4578,7 +4578,7 @@
             "line_range": [
                 121
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4590,7 +4590,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4600,7 +4600,7 @@
                 131,
                 132
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4612,7 +4612,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4622,7 +4622,7 @@
                 131,
                 132
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4634,7 +4634,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4644,7 +4644,7 @@
                 136,
                 137
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4656,7 +4656,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4666,7 +4666,7 @@
                 136,
                 137
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4678,7 +4678,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4691,7 +4691,7 @@
                 211,
                 212
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4703,7 +4703,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4716,7 +4716,7 @@
                 211,
                 212
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4728,7 +4728,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4738,7 +4738,7 @@
                 216,
                 217
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4750,7 +4750,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4760,7 +4760,7 @@
                 216,
                 217
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4772,7 +4772,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Try, Except, Pass detected.",
@@ -4781,7 +4781,7 @@
                 218,
                 219
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b110_try_except_pass.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B110",
             "test_name": "try_except_pass"
         },
@@ -4793,7 +4793,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4806,7 +4806,7 @@
                 228,
                 229
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4818,7 +4818,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4831,7 +4831,7 @@
                 228,
                 229
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4843,7 +4843,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4853,7 +4853,7 @@
                 270,
                 271
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4865,7 +4865,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4875,7 +4875,7 @@
                 277,
                 278
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4887,7 +4887,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4900,7 +4900,7 @@
                 303,
                 304
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4912,7 +4912,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4925,7 +4925,7 @@
                 303,
                 304
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -4937,7 +4937,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Try, Except, Pass detected.",
@@ -4946,7 +4946,7 @@
                 311,
                 312
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b110_try_except_pass.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B110",
             "test_name": "try_except_pass"
         },
@@ -4958,7 +4958,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -4968,7 +4968,7 @@
                 364,
                 365
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -4980,7 +4980,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -4990,7 +4990,7 @@
                 364,
                 365
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5002,7 +5002,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5010,7 +5010,7 @@
             "line_range": [
                 15
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5022,7 +5022,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5032,7 +5032,7 @@
                 156,
                 157
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5044,7 +5044,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5054,7 +5054,7 @@
                 171,
                 172
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5066,7 +5066,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5076,7 +5076,7 @@
                 186,
                 187
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5088,7 +5088,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5096,7 +5096,7 @@
             "line_range": [
                 14
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5108,7 +5108,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5118,7 +5118,7 @@
                 130,
                 131
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5130,7 +5130,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5138,7 +5138,7 @@
             "line_range": [
                 14
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5150,7 +5150,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5158,7 +5158,7 @@
             "line_range": [
                 103
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5170,7 +5170,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5178,7 +5178,7 @@
             "line_range": [
                 14
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5190,7 +5190,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5198,7 +5198,7 @@
             "line_range": [
                 108
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5210,7 +5210,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5218,7 +5218,7 @@
             "line_range": [
                 14
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5230,7 +5230,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -5240,7 +5240,7 @@
                 160,
                 161
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -5252,7 +5252,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5262,7 +5262,7 @@
                 160,
                 161
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5274,7 +5274,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5282,7 +5282,7 @@
             "line_range": [
                 14
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5294,7 +5294,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -5304,7 +5304,7 @@
                 101,
                 102
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -5316,7 +5316,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5326,7 +5326,7 @@
                 101,
                 102
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5338,7 +5338,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5346,7 +5346,7 @@
             "line_range": [
                 120
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5358,7 +5358,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5366,7 +5366,7 @@
             "line_range": [
                 15
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5378,7 +5378,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5388,7 +5388,7 @@
                 208,
                 209
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5400,7 +5400,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5408,7 +5408,7 @@
             "line_range": [
                 13
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5420,7 +5420,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "HIGH",
             "issue_text": "subprocess call with shell=True identified, security issue.",
@@ -5430,7 +5430,7 @@
                 22,
                 23
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B602",
             "test_name": "subprocess_popen_with_shell_equals_true"
         },
@@ -5442,7 +5442,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "HIGH",
             "issue_text": "subprocess call with shell=True identified, security issue.",
@@ -5450,7 +5450,7 @@
             "line_range": [
                 26
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B602",
             "test_name": "subprocess_popen_with_shell_equals_true"
         },
@@ -5462,7 +5462,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5470,7 +5470,7 @@
             "line_range": [
                 13
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5482,7 +5482,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5490,7 +5490,7 @@
             "line_range": [
                 21
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5502,7 +5502,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5510,7 +5510,7 @@
             "line_range": [
                 17
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5522,7 +5522,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5532,7 +5532,7 @@
                 33,
                 34
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5544,7 +5544,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Try, Except, Pass detected.",
@@ -5553,7 +5553,7 @@
                 100,
                 101
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b110_try_except_pass.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B110",
             "test_name": "try_except_pass"
         },
@@ -5565,7 +5565,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5573,7 +5573,7 @@
             "line_range": [
                 31
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5585,7 +5585,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5593,7 +5593,7 @@
             "line_range": [
                 45
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5605,7 +5605,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "HIGH",
             "issue_text": "subprocess call with shell=True identified, security issue.",
@@ -5613,7 +5613,7 @@
             "line_range": [
                 108
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B602",
             "test_name": "subprocess_popen_with_shell_equals_true"
         },
@@ -5625,7 +5625,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "HIGH",
             "issue_text": "subprocess call with shell=True identified, security issue.",
@@ -5633,7 +5633,7 @@
             "line_range": [
                 175
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B602",
             "test_name": "subprocess_popen_with_shell_equals_true"
         },
@@ -5645,7 +5645,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5653,7 +5653,7 @@
             "line_range": [
                 26
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5665,7 +5665,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Starting a process with a partial executable path",
@@ -5678,7 +5678,7 @@
                 45,
                 46
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b607_start_process_with_partial_path.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B607",
             "test_name": "start_process_with_partial_path"
         },
@@ -5690,7 +5690,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5703,7 +5703,7 @@
                 45,
                 46
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5715,7 +5715,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5723,7 +5723,7 @@
             "line_range": [
                 21
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5735,7 +5735,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5745,7 +5745,7 @@
                 127,
                 128
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5757,7 +5757,7 @@
             "issue_confidence": "MEDIUM",
             "issue_cwe": {
                 "id": 259,
-                "link": "https://cwe.mitre.org/data/definitions/259.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Possible hardcoded password: 'PASS'",
@@ -5765,7 +5765,7 @@
             "line_range": [
                 34
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b105_hardcoded_password_string.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B105",
             "test_name": "hardcoded_password_string"
         },
@@ -5777,7 +5777,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 330,
-                "link": "https://cwe.mitre.org/data/definitions/330.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
@@ -5785,7 +5785,7 @@
             "line_range": [
                 79
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_calls.html#b311-random",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B311",
             "test_name": "blacklist"
         },
@@ -5797,7 +5797,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 330,
-                "link": "https://cwe.mitre.org/data/definitions/330.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
@@ -5805,7 +5805,7 @@
             "line_range": [
                 84
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_calls.html#b311-random",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B311",
             "test_name": "blacklist"
         },
@@ -5817,7 +5817,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 330,
-                "link": "https://cwe.mitre.org/data/definitions/330.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
@@ -5825,7 +5825,7 @@
             "line_range": [
                 88
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_calls.html#b311-random",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B311",
             "test_name": "blacklist"
         },
@@ -5837,7 +5837,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 330,
-                "link": "https://cwe.mitre.org/data/definitions/330.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
@@ -5845,7 +5845,7 @@
             "line_range": [
                 92
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_calls.html#b311-random",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B311",
             "test_name": "blacklist"
         },
@@ -5857,7 +5857,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 330,
-                "link": "https://cwe.mitre.org/data/definitions/330.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
@@ -5865,7 +5865,7 @@
             "line_range": [
                 98
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_calls.html#b311-random",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B311",
             "test_name": "blacklist"
         },
@@ -5877,7 +5877,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -5885,7 +5885,7 @@
             "line_range": [
                 30
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -5897,7 +5897,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5905,7 +5905,7 @@
             "line_range": [
                 224
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5917,7 +5917,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5925,7 +5925,7 @@
             "line_range": [
                 262
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5937,7 +5937,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5945,7 +5945,7 @@
             "line_range": [
                 358
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5957,7 +5957,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5965,7 +5965,7 @@
             "line_range": [
                 447
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5977,7 +5977,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -5985,7 +5985,7 @@
             "line_range": [
                 646
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -5997,7 +5997,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6005,7 +6005,7 @@
             "line_range": [
                 718
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6017,7 +6017,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6027,7 +6027,7 @@
                 908,
                 909
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6039,7 +6039,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6047,7 +6047,7 @@
             "line_range": [
                 920
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6059,7 +6059,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6067,7 +6067,7 @@
             "line_range": [
                 932
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6079,7 +6079,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6087,7 +6087,7 @@
             "line_range": [
                 944
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6099,7 +6099,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6107,7 +6107,7 @@
             "line_range": [
                 1010
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6119,7 +6119,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6127,7 +6127,7 @@
             "line_range": [
                 1025
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6139,7 +6139,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6147,7 +6147,7 @@
             "line_range": [
                 1061
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6159,7 +6159,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6167,7 +6167,7 @@
             "line_range": [
                 1074
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6179,7 +6179,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6187,7 +6187,7 @@
             "line_range": [
                 1117
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6199,7 +6199,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6207,7 +6207,7 @@
             "line_range": [
                 1148
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6219,7 +6219,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -6227,7 +6227,7 @@
             "line_range": [
                 26
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -6239,7 +6239,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6247,7 +6247,7 @@
             "line_range": [
                 205
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6259,7 +6259,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6267,7 +6267,7 @@
             "line_range": [
                 578
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6279,7 +6279,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6287,7 +6287,7 @@
             "line_range": [
                 649
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6299,7 +6299,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -6307,7 +6307,7 @@
             "line_range": [
                 707
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         },
@@ -6319,7 +6319,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6327,7 +6327,7 @@
             "line_range": [
                 25
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6339,7 +6339,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6347,7 +6347,7 @@
             "line_range": [
                 29
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6359,7 +6359,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6367,7 +6367,7 @@
             "line_range": [
                 32
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6379,7 +6379,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6387,7 +6387,7 @@
             "line_range": [
                 44
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6399,7 +6399,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6407,7 +6407,7 @@
             "line_range": [
                 60
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6419,7 +6419,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6427,7 +6427,7 @@
             "line_range": [
                 72
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6439,7 +6439,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6447,7 +6447,7 @@
             "line_range": [
                 93
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6459,7 +6459,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6467,7 +6467,7 @@
             "line_range": [
                 116
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6479,7 +6479,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6487,7 +6487,7 @@
             "line_range": [
                 117
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6499,7 +6499,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6507,7 +6507,7 @@
             "line_range": [
                 118
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6519,7 +6519,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6527,7 +6527,7 @@
             "line_range": [
                 23
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6539,7 +6539,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6547,7 +6547,7 @@
             "line_range": [
                 27
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6559,7 +6559,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6567,7 +6567,7 @@
             "line_range": [
                 31
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6579,7 +6579,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6587,7 +6587,7 @@
             "line_range": [
                 39
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6599,7 +6599,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6607,7 +6607,7 @@
             "line_range": [
                 43
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6619,7 +6619,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6627,7 +6627,7 @@
             "line_range": [
                 54
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6639,7 +6639,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6647,7 +6647,7 @@
             "line_range": [
                 61
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6659,7 +6659,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6667,7 +6667,7 @@
             "line_range": [
                 73
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6679,7 +6679,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6687,7 +6687,7 @@
             "line_range": [
                 95
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6699,7 +6699,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6707,7 +6707,7 @@
             "line_range": [
                 110
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6719,7 +6719,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6727,7 +6727,7 @@
             "line_range": [
                 111
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6739,7 +6739,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6747,7 +6747,7 @@
             "line_range": [
                 112
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6759,7 +6759,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6767,7 +6767,7 @@
             "line_range": [
                 113
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6779,7 +6779,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6787,7 +6787,7 @@
             "line_range": [
                 32
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6799,7 +6799,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6807,7 +6807,7 @@
             "line_range": [
                 45
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6819,7 +6819,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6827,7 +6827,7 @@
             "line_range": [
                 56
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6839,7 +6839,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6847,7 +6847,7 @@
             "line_range": [
                 67
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6859,7 +6859,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6867,7 +6867,7 @@
             "line_range": [
                 86
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6879,7 +6879,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6887,7 +6887,7 @@
             "line_range": [
                 101
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6899,7 +6899,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6907,7 +6907,7 @@
             "line_range": [
                 119
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6919,7 +6919,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6927,7 +6927,7 @@
             "line_range": [
                 120
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6939,7 +6939,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6947,7 +6947,7 @@
             "line_range": [
                 121
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6959,7 +6959,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6967,7 +6967,7 @@
             "line_range": [
                 134
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6979,7 +6979,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -6987,7 +6987,7 @@
             "line_range": [
                 143
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -6999,7 +6999,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7007,7 +7007,7 @@
             "line_range": [
                 152
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7019,7 +7019,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7027,7 +7027,7 @@
             "line_range": [
                 31
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7039,7 +7039,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7047,7 +7047,7 @@
             "line_range": [
                 45
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7059,7 +7059,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7067,7 +7067,7 @@
             "line_range": [
                 58
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7079,7 +7079,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7087,7 +7087,7 @@
             "line_range": [
                 71
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7099,7 +7099,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7107,7 +7107,7 @@
             "line_range": [
                 88
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7119,7 +7119,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7127,7 +7127,7 @@
             "line_range": [
                 102
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7139,7 +7139,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7147,7 +7147,7 @@
             "line_range": [
                 116
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7159,7 +7159,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7167,7 +7167,7 @@
             "line_range": [
                 121
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7179,7 +7179,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7187,7 +7187,7 @@
             "line_range": [
                 137
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7199,7 +7199,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7207,7 +7207,7 @@
             "line_range": [
                 138
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7219,7 +7219,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7227,7 +7227,7 @@
             "line_range": [
                 155
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7239,7 +7239,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7247,7 +7247,7 @@
             "line_range": [
                 156
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7259,7 +7259,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7267,7 +7267,7 @@
             "line_range": [
                 168
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7279,7 +7279,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7287,7 +7287,7 @@
             "line_range": [
                 174
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7299,7 +7299,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7307,7 +7307,7 @@
             "line_range": [
                 23
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7319,7 +7319,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7327,7 +7327,7 @@
             "line_range": [
                 24
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7339,7 +7339,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7347,7 +7347,7 @@
             "line_range": [
                 29
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7359,7 +7359,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7367,7 +7367,7 @@
             "line_range": [
                 30
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7379,7 +7379,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7387,7 +7387,7 @@
             "line_range": [
                 37
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7399,7 +7399,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7409,7 +7409,7 @@
                 45,
                 46
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7421,7 +7421,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7429,7 +7429,7 @@
             "line_range": [
                 51
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7441,7 +7441,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7449,7 +7449,7 @@
             "line_range": [
                 57
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7461,7 +7461,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7469,7 +7469,7 @@
             "line_range": [
                 62
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7481,7 +7481,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7489,7 +7489,7 @@
             "line_range": [
                 63
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7501,7 +7501,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7509,7 +7509,7 @@
             "line_range": [
                 68
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7521,7 +7521,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7529,7 +7529,7 @@
             "line_range": [
                 83
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7541,7 +7541,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7549,7 +7549,7 @@
             "line_range": [
                 106
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7561,7 +7561,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7569,7 +7569,7 @@
             "line_range": [
                 121
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7581,7 +7581,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7589,7 +7589,7 @@
             "line_range": [
                 135
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7601,7 +7601,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7609,7 +7609,7 @@
             "line_range": [
                 21
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7621,7 +7621,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7629,7 +7629,7 @@
             "line_range": [
                 22
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7641,7 +7641,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7649,7 +7649,7 @@
             "line_range": [
                 27
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7661,7 +7661,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7669,7 +7669,7 @@
             "line_range": [
                 28
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7681,7 +7681,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7689,7 +7689,7 @@
             "line_range": [
                 33
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7701,7 +7701,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7709,7 +7709,7 @@
             "line_range": [
                 34
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7721,7 +7721,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7729,7 +7729,7 @@
             "line_range": [
                 39
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7741,7 +7741,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7749,7 +7749,7 @@
             "line_range": [
                 40
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7761,7 +7761,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7769,7 +7769,7 @@
             "line_range": [
                 45
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7781,7 +7781,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7789,7 +7789,7 @@
             "line_range": [
                 46
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7801,7 +7801,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7809,7 +7809,7 @@
             "line_range": [
                 54
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7821,7 +7821,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7829,7 +7829,7 @@
             "line_range": [
                 62
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7841,7 +7841,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7849,7 +7849,7 @@
             "line_range": [
                 78
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7861,7 +7861,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7869,7 +7869,7 @@
             "line_range": [
                 90
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7881,7 +7881,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7889,7 +7889,7 @@
             "line_range": [
                 97
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7901,7 +7901,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7909,7 +7909,7 @@
             "line_range": [
                 98
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7921,7 +7921,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7929,7 +7929,7 @@
             "line_range": [
                 105
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7941,7 +7941,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7949,7 +7949,7 @@
             "line_range": [
                 121
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7961,7 +7961,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7969,7 +7969,7 @@
             "line_range": [
                 21
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -7981,7 +7981,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -7989,7 +7989,7 @@
             "line_range": [
                 25
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8001,7 +8001,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8009,7 +8009,7 @@
             "line_range": [
                 29
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8021,7 +8021,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8029,7 +8029,7 @@
             "line_range": [
                 33
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8041,7 +8041,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8049,7 +8049,7 @@
             "line_range": [
                 34
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8061,7 +8061,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8069,7 +8069,7 @@
             "line_range": [
                 42
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8081,7 +8081,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8089,7 +8089,7 @@
             "line_range": [
                 49
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8101,7 +8101,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8109,7 +8109,7 @@
             "line_range": [
                 56
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8121,7 +8121,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8129,7 +8129,7 @@
             "line_range": [
                 62
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8141,7 +8141,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8149,7 +8149,7 @@
             "line_range": [
                 75
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8161,7 +8161,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8169,7 +8169,7 @@
             "line_range": [
                 84
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8181,7 +8181,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8189,7 +8189,7 @@
             "line_range": [
                 91
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8201,7 +8201,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8209,7 +8209,7 @@
             "line_range": [
                 104
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8221,7 +8221,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 703,
-                "link": "https://cwe.mitre.org/data/definitions/703.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
@@ -8229,7 +8229,7 @@
             "line_range": [
                 112
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b101_assert_used.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B101",
             "test_name": "assert_used"
         },
@@ -8241,7 +8241,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -8249,7 +8249,7 @@
             "line_range": [
                 22
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -8261,7 +8261,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "Consider possible security implications associated with the subprocess module.",
@@ -8269,7 +8269,7 @@
             "line_range": [
                 12
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B404",
             "test_name": "blacklist"
         },
@@ -8281,7 +8281,7 @@
             "issue_confidence": "HIGH",
             "issue_cwe": {
                 "id": 78,
-                "link": "https://cwe.mitre.org/data/definitions/78.html"
+                "link": "[EXTERNAL_URL_REMOVED]
             },
             "issue_severity": "LOW",
             "issue_text": "subprocess call - check for execution of untrusted input.",
@@ -8291,7 +8291,7 @@
                 21,
                 22
             ],
-            "more_info": "https://bandit.readthedocs.io/en/1.9.3/plugins/b603_subprocess_without_shell_equals_true.html",
+            "more_info": "[EXTERNAL_URL_REMOVED]
             "test_id": "B603",
             "test_name": "subprocess_without_shell_equals_true"
         }

@@ -118,11 +118,11 @@ info:
     email: api@machinenativeops.io
   license:
     name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
+    url: [EXTERNAL_URL_REMOVED]
 servers:
-  - url: https://api.machinenativeops.io/v1
+  - url: [EXTERNAL_URL_REMOVED]
     description: Production
-  - url: https://api-staging.machinenativeops.io/v1
+  - url: [EXTERNAL_URL_REMOVED]
     description: Staging
 ```
 
@@ -588,12 +588,12 @@ X-RateLimit-Reset: 1642946400
 
 - **Email:** api@machinenativeops.io
 - **Slack:** #api-development
-- **Documentation:** https://docs.machinenativeops.io/api
+- **Documentation:** [EXTERNAL_URL_REMOVED]
 
 ### 13.2 Support
 
 - **Email:** support@machinenativeops.io
-- **Status Page:** https://status.machinenativeops.io
+- **Status Page:** [EXTERNAL_URL_REMOVED]
 
 ---
 

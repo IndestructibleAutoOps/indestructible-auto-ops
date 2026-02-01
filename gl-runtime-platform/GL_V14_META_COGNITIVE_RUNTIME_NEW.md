@@ -637,7 +637,7 @@ cd gl-execution-runtime
 node dist/src/meta-cognitive-server.js
 ```
 
-服務器將在 `http://localhost:3005` 啟動。
+服務器將在 `[EXTERNAL_URL_REMOVED] 啟動。
 
 ### 📡 核心端點
 
@@ -770,34 +770,34 @@ POST /api/v14/meta-cognitive/stop
 
 ```bash
 # 健康檢查
-curl http://localhost:3005/health | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # 獲取完整狀態
-curl http://localhost:3005/api/v14/meta-cognitive/status | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # 獲取覺察狀態
-curl http://localhost:3005/api/v14/awareness/state | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # 獲取觀察記錄
-curl "http://localhost:3005/api/v14/awareness/observations?type=reasoning&limit=5" | jq
+curl "[EXTERNAL_URL_REMOVED] | jq
 
 # 獲取推理歷史
-curl "http://localhost:3005/api/v14/reasoning/history?limit=5" | jq
+curl "[EXTERNAL_URL_REMOVED] | jq
 
 # 獲取性能指標
-curl http://localhost:3005/api/v14/monitoring/performance | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # 獲取錯誤
-curl "http://localhost:3005/api/v14/monitoring/errors?limit=10" | jq
+curl "[EXTERNAL_URL_REMOVED] | jq
 
 # 搜索記憶
-curl "http://localhost:3005/api/v14/memory/search?keywords=error,timeout&limit=10" | jq
+curl "[EXTERNAL_URL_REMOVED] | jq
 
 # 獲取智慧
-curl "http://localhost:3005/api/v14/memory/wisdom?limit=10" | jq
+curl "[EXTERNAL_URL_REMOVED] | jq
 
 # 獲取循環歷史
-curl "http://localhost:3005/api/v14/feedback/cycles?limit=5" | jq
+curl "[EXTERNAL_URL_REMOVED] | jq
 ```
 
 ---
@@ -847,10 +847,10 @@ export META_COGNITIVE_PORT=3005
 
 ```bash
 # 健康檢查
-curl http://localhost:3005/health
+curl [EXTERNAL_URL_REMOVED]
 
 # 獲取狀態
-curl http://localhost:3005/api/v14/meta-cognitive/status | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 ```
 
 ### 📊 監控

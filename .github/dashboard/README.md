@@ -166,7 +166,7 @@ Based on 2025 dashboard best practices:
 ### Accessing the Dashboard
 1. Navigate to the dashboard directory: `cd machine-native-ops/dashboard`
 2. Start the local server: `python3 -m http.server 8081`
-3. Open browser to: `http://localhost:8081`
+3. Open browser to: `[EXTERNAL_URL_REMOVED]
 
 ### Using the Dashboard
 1. **View All Metrics:** Dashboard loads with all 12 metrics displayed

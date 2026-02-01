@@ -481,11 +481,11 @@ metadata:
 spec:
   project: production
   source:
-    repoURL: https://github.com/MachineNativeOps/manifests
+    repoURL: [EXTERNAL_URL_REMOVED]
     targetRevision: main
     path: applications/axiom-hft-quantum
   destination:
-    server: https://kubernetes.default.svc
+    server: [EXTERNAL_URL_REMOVED]
     namespace: axiom-system
   syncPolicy:
     automated:
@@ -568,7 +568,7 @@ spec:
   sources:
     - name: git-manifests
       type: git
-      repository: https://github.com/MachineNativeOps/manifests
+      repository: [EXTERNAL_URL_REMOVED]
       path: applications
     - name: live-cluster
       type: kubernetes
@@ -661,7 +661,7 @@ spec:
   
   baselineSource:
     type: git
-    repository: https://github.com/MachineNativeOps/manifests
+    repository: [EXTERNAL_URL_REMOVED]
     branch: main
     path: production/
   

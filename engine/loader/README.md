@@ -58,7 +58,7 @@ Git repository loader supporting branches, tags, and commits.
 import { GitLoader } from './loader/git_loader';
 
 const loader = new GitLoader({
-  url: 'https://github.com/user/repo.git',
+  url: '[EXTERNAL_URL_REMOVED]
   branch: 'main',
   commit: 'abc123'
 });

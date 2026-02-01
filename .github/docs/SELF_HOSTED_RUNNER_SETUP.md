@@ -66,11 +66,11 @@ sudo apt install -y \
 ```bash
 # Add Docker's official GPG key
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL [EXTERNAL_URL_REMOVED] | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 # Set up repository
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] [EXTERNAL_URL_REMOVED] \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Install Docker
@@ -85,7 +85,7 @@ sudo usermod -aG docker $USER
 
 ```bash
 # Install Node.js 20.x
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+curl -fsSL [EXTERNAL_URL_REMOVED] | sudo -E bash -
 sudo apt install -y nodejs
 
 # Verify installation
@@ -130,7 +130,7 @@ RUNNER_VERSION="2.331.0"
 if [ "$ARCH" = "x86_64" ]; then
     # For x64/AMD64 systems
     curl -o actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz -L \
-        https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+        [EXTERNAL_URL_REMOVED]}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
     
     # Validate hash (x64)
     echo "7e8e2095d2c30bbaa3d2ef03505622b883d9116a1b62d0a2050a1a8a4e37decd  actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz" | shasum -a 256 -c
@@ -141,7 +141,7 @@ if [ "$ARCH" = "x86_64" ]; then
 elif [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
     # For ARM64 systems (e.g., AWS Graviton, Apple Silicon, Raspberry Pi 4)
     curl -o actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz -L \
-        https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz
+        [EXTERNAL_URL_REMOVED]}/actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz
     
     # Validate hash (ARM64)
     echo "f5863a211241436186723159a111f352f25d5d22711639761ea24c98caef1a9a  actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz" | shasum -a 256 -c
@@ -161,7 +161,7 @@ fi
 mkdir actions-runner && cd actions-runner
 
 # Download the latest runner package for ARM64
-curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-linux-arm64-2.331.0.tar.gz
+curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L [EXTERNAL_URL_REMOVED]
 
 # Validate the hash
 echo "f5863a211241436186723159a111f352f25d5d22711639761ea24c98caef1a9a  actions-runner-linux-arm64-2.331.0.tar.gz" | shasum -a 256 -c
@@ -187,7 +187,7 @@ fi
 
 # Configure runner for STAGING
 ./config.sh \
-    --url https://github.com/MachineNativeOps/machine-native-ops \
+    --url [EXTERNAL_URL_REMOVED] \
     --token YOUR_REGISTRATION_TOKEN \
     --name "staging-runner-01" \
     --labels "self-hosted,staging,linux,${ARCH_LABEL}" \
@@ -196,7 +196,7 @@ fi
 
 # OR Configure runner for PRODUCTION
 ./config.sh \
-    --url https://github.com/MachineNativeOps/machine-native-ops \
+    --url [EXTERNAL_URL_REMOVED] \
     --token YOUR_REGISTRATION_TOKEN \
     --name "production-runner-01" \
     --labels "self-hosted,production,linux,${ARCH_LABEL}" \
@@ -211,7 +211,7 @@ For ARM64 runners (AWS Graviton, Apple Silicon, etc.):
 ```bash
 # Configure runner for STAGING (ARM64)
 ./config.sh \
-    --url https://github.com/MachineNativeOps/machine-native-ops \
+    --url [EXTERNAL_URL_REMOVED] \
     --token YOUR_REGISTRATION_TOKEN \
     --name "staging-runner-arm64-01" \
     --labels "self-hosted,staging,linux,arm64" \
@@ -220,7 +220,7 @@ For ARM64 runners (AWS Graviton, Apple Silicon, etc.):
 
 # Configure runner for PRODUCTION (ARM64)
 ./config.sh \
-    --url https://github.com/MachineNativeOps/machine-native-ops \
+    --url [EXTERNAL_URL_REMOVED] \
     --token YOUR_REGISTRATION_TOKEN \
     --name "production-runner-arm64-01" \
     --labels "self-hosted,production,linux,arm64" \
@@ -305,7 +305,7 @@ server {
     server_name your-domain.com;
 
     location / {
-        proxy_pass http://app_backend;
+        proxy_pass [EXTERNAL_URL_REMOVED]
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -318,20 +318,20 @@ server {
     }
 
     location /health {
-        proxy_pass http://app_backend/health;
+        proxy_pass [EXTERNAL_URL_REMOVED]
         proxy_http_version 1.1;
     }
 
     # Blue environment direct access (internal)
     location /blue/ {
         internal;
-        proxy_pass http://localhost:3001/;
+        proxy_pass [EXTERNAL_URL_REMOVED]
     }
 
     # Green environment direct access (internal)
     location /green/ {
         internal;
-        proxy_pass http://localhost:3002/;
+        proxy_pass [EXTERNAL_URL_REMOVED]
     }
 }
 ```
@@ -436,7 +436,7 @@ check_service() {
 check_port() {
     local port=$1
     local name=$2
-    if curl -sf "http://localhost:$port/health" > /dev/null 2>&1; then
+    if curl -sf "[EXTERNAL_URL_REMOVED] > /dev/null 2>&1; then
         echo "✅ $name (port $port): healthy"
         return 0
     else
@@ -571,13 +571,13 @@ Configure these secrets in your GitHub repository:
 | Secret Name | Description | Example |
 |-------------|-------------|---------|
 | `GL_TOKEN` | GitHub Personal Access Token | `ghp_xxxx` |
-| `STAGING_URL` | Staging environment URL | `https://staging.example.com` |
-| `PRODUCTION_URL` | Production environment URL | `https://example.com` |
-| `PRODUCTION_BLUE_URL` | Blue environment URL | `https://blue.example.com` |
-| `PRODUCTION_GREEN_URL` | Green environment URL | `https://green.example.com` |
+| `STAGING_URL` | Staging environment URL | `[EXTERNAL_URL_REMOVED] |
+| `PRODUCTION_URL` | Production environment URL | `[EXTERNAL_URL_REMOVED] |
+| `PRODUCTION_BLUE_URL` | Blue environment URL | `[EXTERNAL_URL_REMOVED] |
+| `PRODUCTION_GREEN_URL` | Green environment URL | `[EXTERNAL_URL_REMOVED] |
 | `STAGING_DATABASE_URL` | Staging database connection | `postgresql://...` |
 | `PRODUCTION_DATABASE_URL` | Production database connection | `postgresql://...` |
-| `SLACK_WEBHOOK` | Slack notification webhook | `https://hooks.slack.com/...` |
+| `SLACK_WEBHOOK` | Slack notification webhook | `[EXTERNAL_URL_REMOVED] |
 
 ---
 

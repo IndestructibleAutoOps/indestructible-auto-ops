@@ -255,14 +255,14 @@ archive/
 - **文件變更**: 91 files, 3,293 insertions(+), 41,669 deletions(-)
 
 ### Pull Request
-- **PR #3**: https://github.com/MachineNativeOps/machine-native-ops/pull/3
+- **PR #3**: [EXTERNAL_URL_REMOVED]
 - **狀態**: Open
 - **內容**: Sprint 1.3 Day 1 + 重複路徑 Phase 1
 
 ### 分支信息
 - **當前分支**: feature/add-repository-structure
 - **狀態**: 已推送到遠端
-- **URL**: https://github.com/MachineNativeOps/machine-native-ops/tree/feature/add-repository-structure
+- **URL**: [EXTERNAL_URL_REMOVED]
 
 ---
 
@@ -274,8 +274,8 @@ archive/
 - [Sprint 1.3 Day 1 報告](SPRINT13_DAY1_COMPLETION_REPORT.md)
 
 ### Git 資源
-- [Commit e3934b9](https://github.com/MachineNativeOps/machine-native-ops/commit/e3934b9)
-- [PR #3](https://github.com/MachineNativeOps/machine-native-ops/pull/3)
+- [Commit e3934b9]([EXTERNAL_URL_REMOVED])
+- [PR #3]([EXTERNAL_URL_REMOVED])
 
 ---
 

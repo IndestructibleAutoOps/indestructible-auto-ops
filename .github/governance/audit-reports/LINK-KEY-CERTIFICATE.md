@@ -106,9 +106,9 @@
 
 ## 🔗 相關連結
 
-- **Pull Request**: [PR #215](https://github.com/MachineNativeOps/machine-native-ops/pull/215)
+- **Pull Request**: [PR #215]([EXTERNAL_URL_REMOVED])
 - **Branch**: `feature/gl-aep-engine-governance-audit-2026-01-24-v2`
-- **Repository**: [MachineNativeOps/machine-native-ops](https://github.com/MachineNativeOps/machine-native-ops)
+- **Repository**: [MachineNativeOps/machine-native-ops]([EXTERNAL_URL_REMOVED])
 
 ---
 

@@ -264,6 +264,6 @@ class TestMyIntegration:
 
 ## Resources
 
-- [Pytest Documentation](https://docs.pytest.org/)
-- [Coverage.py Documentation](https://coverage.readthedocs.io/)
-- [Testing Best Practices](https://docs.python-guide.org/writing/tests/)
+- [Pytest Documentation]([EXTERNAL_URL_REMOVED])
+- [Coverage.py Documentation]([EXTERNAL_URL_REMOVED])
+- [Testing Best Practices]([EXTERNAL_URL_REMOVED])

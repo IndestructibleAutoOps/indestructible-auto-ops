@@ -62,7 +62,7 @@ kubectl apply -f prometheus-quantum-rules.yaml
 
 ### Import Grafana Dashboard
 
-1. Access Grafana at `http://<grafana-service>:3000`
+1. Access Grafana at `[EXTERNAL_URL_REMOVED]
 2. Navigate to **Dashboards** → **Import**
 3. Upload `grafana-quantum-dashboard.json`
 4. Select Prometheus data source

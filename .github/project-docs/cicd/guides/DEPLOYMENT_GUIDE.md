@@ -52,11 +52,11 @@ pip install pyyaml jsonschema
 ### Step 4: Push Branch to Remote
 ```bash
 # Set up git remote with authentication
-git remote set-url origin https://YOUR_TOKEN@github.com/MachineNativeOps/machine-native-ops.git
+git remote set-url origin [EXTERNAL_URL_REMOVED]
 
 # OR use the x-access-token method
 export GITHUB_TOKEN=your_personal_access_token
-git push https://x-access-token:$GITHUB_TOKEN@github.com/MachineNativeOps/machine-native-ops.git hotfix/infrastructure-validation-dependencies
+git push [EXTERNAL_URL_REMOVED] hotfix/infrastructure-validation-dependencies
 ```
 
 ### Step 5: Create Pull Request
@@ -70,7 +70,7 @@ gh pr create \
 ```
 
 Option B - Manual via GitHub Web UI:
-1. Navigate to: https://github.com/MachineNativeOps/machine-native-ops
+1. Navigate to: [EXTERNAL_URL_REMOVED]
 2. Click "Compare & pull request" for the hotfix branch
 3. Use the following PR description:
 
@@ -116,7 +116,7 @@ gh pr merge hotfix/infrastructure-validation-dependencies --merge
 
 ### Step 8: Verify Deployment
 After merging:
-1. Navigate to: https://github.com/MachineNativeOps/machine-native-ops/actions
+1. Navigate to: [EXTERNAL_URL_REMOVED]
 2. Check that the `infrastructure-validation` workflow runs successfully
 3. Verify no "YAML syntax error" false positives occur
 4. Monitor subsequent workflow runs for stability
@@ -186,7 +186,7 @@ The deployment is considered successful when:
 - **Bug Fix Summary**: PRODUCTION_BUG_FIX_SUMMARY.md
 - **Validation Script**: scripts/validate-infrastructure.sh
 - **Workflow File**: .github/workflows/infrastructure-validation.yml
-- **GitHub Actions**: https://github.com/MachineNativeOps/machine-native-ops/actions
+- **GitHub Actions**: [EXTERNAL_URL_REMOVED]
 
 ## Contact
 

@@ -209,7 +209,7 @@ Comprehensive logging of:
 
 1. **Clone Repository**
 ```bash
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 ```
 

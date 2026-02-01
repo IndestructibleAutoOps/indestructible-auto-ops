@@ -212,7 +212,7 @@ The Profile Readme Development Stats workflow automatically updates the reposito
 
 To enable this workflow, you need to:
 
-1. **Create a WakaTime Account**: Sign up at [wakatime.com](https://wakatime.com)
+1. **Create a WakaTime Account**: Sign up at [wakatime.com]([EXTERNAL_URL_REMOVED])
 2. **Get API Key**: Find your API key in WakaTime settings
 3. **Add Secret**: Add `WAKATIME_API_KEY` to repository secrets
    - Go to repository Settings → Secrets and variables → Actions

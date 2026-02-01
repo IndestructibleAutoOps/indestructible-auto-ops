@@ -414,15 +414,15 @@ data:
       us-east-1a:
         nodes: 5
         expected_pods: 3
-        health_endpoint: http://us-east-1a.machine-native-ops.local/health
+        health_endpoint: [EXTERNAL_URL_REMOVED]
       us-east-1b:
         nodes: 5
         expected_pods: 3
-        health_endpoint: http://us-east-1b.machine-native-ops.local/health
+        health_endpoint: [EXTERNAL_URL_REMOVED]
       us-east-1c:
         nodes: 5
         expected_pods: 3
-        health_endpoint: http://us-east-1c.machine-native-ops.local/health
+        health_endpoint: [EXTERNAL_URL_REMOVED]
 ```
 
 **Prometheus Alerts:**
@@ -556,7 +556,7 @@ kubectl drain -l topology.kubernetes.io/zone=us-east-1a --ignore-daemonsets --de
 kubectl get pods -o wide -n machine-native-ops
 
 # Test connectivity
-kubectl run test-pod --rm -it --image=curlimages/curl --restart=Never -- curl http://machine-native-ops.machine-native-ops.svc.cluster.local/health
+kubectl run test-pod --rm -it --image=curlimages/curl --restart=Never -- curl [EXTERNAL_URL_REMOVED]
 ```
 
 **Test Database Failover:**
@@ -645,7 +645,7 @@ istioctl pc route <pod-name> -n machine-native-ops
 
 ## References
 
-- [Kubernetes Topology Constraints](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/)
-- [AWS Multi-AZ Deployments](https://docs.aws.amazon.com/eks/latest/userguide/discoveryservice.html)
-- [Istio Locality-aware Load Balancing](https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/)
-- [PostgreSQL High Availability](https://www.postgresql.org/docs/current/high-availability.html)
+- [Kubernetes Topology Constraints]([EXTERNAL_URL_REMOVED])
+- [AWS Multi-AZ Deployments]([EXTERNAL_URL_REMOVED])
+- [Istio Locality-aware Load Balancing]([EXTERNAL_URL_REMOVED])
+- [PostgreSQL High Availability]([EXTERNAL_URL_REMOVED])

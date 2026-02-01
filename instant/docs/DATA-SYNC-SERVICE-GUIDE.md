@@ -365,7 +365,7 @@ The service exposes the following metrics:
 Health check endpoint at `/health`:
 
 ```bash
-curl http://localhost:9090/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 Response:

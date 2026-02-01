@@ -219,7 +219,7 @@ sum(increase(rke2_pod_security_violations[24h]))
 rke2 --version
 
 # Upgrade to latest version
-curl -sfL https://get.rke2.io | sh -
+curl -sfL [EXTERNAL_URL_REMOVED] | sh -
 systemctl restart rke2-server
 
 # Verify upgrade
@@ -316,8 +316,8 @@ This RKE2 integration follows GL (Governance Layers) framework:
 
 ### Related Documentation
 
-- [RKE2 Official Documentation](https://docs.rke2.io/)
-- [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes)
+- [RKE2 Official Documentation]([EXTERNAL_URL_REMOVED])
+- [CIS Kubernetes Benchmark]([EXTERNAL_URL_REMOVED])
 - [MachineNativeOps README](../../../README.md)
 - [GL Governance System](../../../GL-STATUS-REPORT.md)
 

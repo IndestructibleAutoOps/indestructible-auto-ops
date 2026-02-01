@@ -8,9 +8,9 @@
 
 > Architecture Execution Pipeline (AEP) Engine - Machine-Native Declarative Architecture Engine
 
-[![npm version](https://badge.fury.io/js/%40machine-native-ops%2Faep-engine.svg)](https://www.npmjs.com/package/@machine-native-ops/aep-engine)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GL Charter](https://img.shields.io/badge/GL%20Charter-Activated-green.svg)](https://github.com/MachineNativeOps/machine-native-ops)
+[![npm version]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![License: MIT]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![GL Charter]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
 <!--
 @gl-layer GL-90-META
 @gl-module engine/docs

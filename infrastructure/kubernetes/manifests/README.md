@@ -115,11 +115,11 @@ kubectl get pods -n machine-native-ops -L governance.machinenativeops.io/charter
 
 | System | Internal Service | External Endpoint |
 |--------|-----------------|-------------------|
-| AEP Engine | aep-engine-service:80 | https://machinenativeops.io |
-| File Organizer | file-organizer-service:80 | https://api.machinenativeops.io/file-organizer |
-| Instant System | instant-service:80 | https://api.machinenativeops.io/instant |
-| Elasticsearch | elasticsearch-search-service:80 | https://api.machinenativeops.io/search |
-| ESync Platform | esync-platform-service:80 | https://api.machinenativeops.io/esync |
+| AEP Engine | aep-engine-service:80 | [EXTERNAL_URL_REMOVED] |
+| File Organizer | file-organizer-service:80 | [EXTERNAL_URL_REMOVED] |
+| Instant System | instant-service:80 | [EXTERNAL_URL_REMOVED] |
+| Elasticsearch | elasticsearch-search-service:80 | [EXTERNAL_URL_REMOVED] |
+| ESync Platform | esync-platform-service:80 | [EXTERNAL_URL_REMOVED] |
 
 ## Maintenance
 

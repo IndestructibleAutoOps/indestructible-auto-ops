@@ -135,7 +135,7 @@ metadata:
 
 ```bash
 # Using the official install script
-curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
+curl -L -o opa [EXTERNAL_URL_REMOVED]
 chmod +x opa
 sudo mv opa /usr/local/bin/
 
@@ -367,7 +367,7 @@ git checkout HEAD -- controlplane/baseline/modules/module-manifest.schema.json
 **Solution**:
 ```bash
 # Install OPA
-curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
+curl -L -o opa [EXTERNAL_URL_REMOVED]
 chmod +x opa
 sudo mv opa /usr/local/bin/
 ```
@@ -441,10 +441,10 @@ cat research_report_verification_plan.md | grep -A 20 "Phase 2"
 - [Phase 1 Completion Report](PHASE1_COMPLETION_REPORT.md)
 
 ### Tools
-- [OPA Documentation](https://www.openpolicyagent.org/docs/)
-- [syft Documentation](https://github.com/anchore/syft)
-- [Cosign Documentation](https://docs.sigstore.dev/cosign/overview/)
-- [SLSA Framework](https://slsa.dev/)
+- [OPA Documentation]([EXTERNAL_URL_REMOVED])
+- [syft Documentation]([EXTERNAL_URL_REMOVED])
+- [Cosign Documentation]([EXTERNAL_URL_REMOVED])
+- [SLSA Framework]([EXTERNAL_URL_REMOVED])
 
 ### Support
 - Review [FEATURE_BRANCH_MERGE_SUMMARY.md](FEATURE_BRANCH_MERGE_SUMMARY.md) for integration details

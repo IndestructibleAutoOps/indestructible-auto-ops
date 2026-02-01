@@ -12,7 +12,7 @@
 **Phase**: 2 - Security Remediation  
 **Status**: ✅ **FULLY COMPLETED**  
 **Date**: January 16, 2025  
-**Pull Request**: [#3](https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3)
+**Pull Request**: [#3]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -358,7 +358,7 @@ Phase 2 Security Remediation has been **FULLY COMPLETED** with outstanding resul
 
 ## Pull Request Information
 
-**PR URL**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3  
+**PR URL**: [EXTERNAL_URL_REMOVED]  
 **Title**: Phase 2 & 4A: Security Remediation and Code Quality Improvements  
 **Branch**: `feature/add-repository-structure`  
 **Status**: ✅ **READY FOR REVIEW AND MERGE**  

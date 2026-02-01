@@ -323,8 +323,8 @@ infrastructure/rke2/
 
 ## 📚 參考資源
 
-- [RKE2 官方文檔](https://docs.rke2.io/)
-- [CIS Kubernetes 基準](https://www.cisecurity.org/benchmark/kubernetes)
+- [RKE2 官方文檔]([EXTERNAL_URL_REMOVED])
+- [CIS Kubernetes 基準]([EXTERNAL_URL_REMOVED])
 - [MachineNativeOps README](README.md)
 - [GL 治理系統](GL-STATUS-REPORT.md)
 - [RKE2 安全加固集成方案](docs/RKE2_SECURITY_INTEGRATION_PLAN.md)

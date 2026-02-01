@@ -192,7 +192,7 @@ Note: Quantum transformation engine is located at workspace/tools/quantum-alignm
 
 ```bash
 # Download and run quick install
-curl -fsSL https://raw.githubusercontent.com/MachineNativeOps/mno-repository-understanding-system/main/QUICK_INSTALL.sh | bash
+curl -fsSL [EXTERNAL_URL_REMOVED] | bash
 
 # Or manual installation
 kubectl apply -f quantum-deployment-manifest.yaml
@@ -214,12 +214,12 @@ kubectl wait --for=condition=ready pod \
 
 ```bash
 # Test quantum validation API
-curl -X POST https://gov.quantum.machinenativeops.io/v4/validate \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Authorization: Bearer $QUANTUM_API_TOKEN" \
   -d '{"resource_name":"prod-app-service-v1.0_quantum-abc123"}'
 
 # Check quantum coherence
-curl https://gov.quantum.machinenativeops.io/metrics | grep quantum_coherence
+curl [EXTERNAL_URL_REMOVED] | grep quantum_coherence
 ```
 
 ## 📊 Business Value & ROI
@@ -327,8 +327,8 @@ ROI Calculation:
 
 ### Support Channels
 
-- **Documentation**: https://docs.machinenativeops.io/quantum
-- **Discord Community**: https://discord.gg/quantum-governance
+- **Documentation**: [EXTERNAL_URL_REMOVED]
+- **Discord Community**: [EXTERNAL_URL_REMOVED]
 - **Issue Tracking**: GitHub Issues
 - **Enterprise Support**: quantum-support@machinenativeops.io
 

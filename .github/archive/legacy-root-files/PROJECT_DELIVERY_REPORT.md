@@ -388,7 +388,7 @@ mno debug continue
 
 ```bash
 # 1. 克隆儲存庫
-git clone https://github.com/MachineNativeOps/MachineNativeOps.git
+git clone [EXTERNAL_URL_REMOVED]
 cd MachineNativeOps
 
 # 2. 執行安裝腳本

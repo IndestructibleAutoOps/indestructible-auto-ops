@@ -285,7 +285,7 @@ print(metrics)
 
 ## 📞 聯繫方式
 
-- 項目主頁：https://github.com/MachineNativeOps/MachineNativeOps
+- 項目主頁：[EXTERNAL_URL_REMOVED]
 - 問題反饋：GitHub Issues
 - 技術討論：GitHub Discussions
 

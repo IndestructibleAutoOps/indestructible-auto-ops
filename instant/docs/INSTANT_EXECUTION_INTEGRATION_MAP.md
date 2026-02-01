@@ -733,7 +733,7 @@ class BaselineValidationEngine:
 
 ### Issues
 
-Report issues at: [GitHub Issues](https://github.com/your-org/MachineNativeOps/issues)
+Report issues at: [GitHub Issues]([EXTERNAL_URL_REMOVED])
 
 ### Contributing
 

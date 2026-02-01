@@ -49,13 +49,13 @@ Before contributing, ensure you have:
    ```bash
    # Click the "Fork" button on GitHub
    # Clone your fork locally
-   git clone https://github.com/YOUR_USERNAME/machine-native-ops.git
+   git clone [EXTERNAL_URL_REMOVED]
    cd machine-native-ops
    ```
 
 2. **Add upstream remote**
    ```bash
-   git remote add upstream https://github.com/MachineNativeOps/machine-native-ops.git
+   git remote add upstream [EXTERNAL_URL_REMOVED]
    ```
 
 3. **Install dependencies**
@@ -252,7 +252,7 @@ Example:
 
 ## Subheading
 
-This is a paragraph with [a descriptive link](https://example.com).
+This is a paragraph with [a descriptive link]([EXTERNAL_URL_REMOVED]).
 
 - Item 1
 - Item 2
@@ -274,7 +274,7 @@ def example():
 
 ### Format
 
-Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+Follow the [Conventional Commits]([EXTERNAL_URL_REMOVED]) specification:
 
 ```
 <type>(<scope>): <short description>
@@ -576,7 +576,7 @@ If you need help:
    - [GL-CORE-INTEGRATION-REPORT.md](GL-CORE-INTEGRATION-REPORT.md)
 
 2. **Search existing issues**
-   - [GitHub Issues](https://github.com/MachineNativeOps/machine-native-ops/issues)
+   - [GitHub Issues]([EXTERNAL_URL_REMOVED])
 
 3. **Create a new issue**
    - Use appropriate labels

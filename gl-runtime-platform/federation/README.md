@@ -176,7 +176,7 @@ federation/
 ### Running Federation Audit
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/federation/audit \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "pipeline": "directory-audit-pipeline",
@@ -188,7 +188,7 @@ curl -X POST http://localhost:3000/api/v1/federation/audit \
 ### Running Federation Fix
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/federation/fix \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "pipeline": "repo-gl-fix-pipeline",
@@ -200,7 +200,7 @@ curl -X POST http://localhost:3000/api/v1/federation/fix \
 ### Viewing Federation Reports
 
 ```bash
-curl http://localhost:3000/api/v1/federation/reports
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ## Trust Levels
@@ -252,7 +252,7 @@ curl http://localhost:3000/api/v1/federation/reports
 ## Integration
 
 ### With GL Runtime Platform
-- API endpoint: `http://localhost:3000`
+- API endpoint: `[EXTERNAL_URL_REMOVED]
 - Version: 5.0.0
 - Full governance integration
 

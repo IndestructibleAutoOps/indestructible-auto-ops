@@ -268,8 +268,8 @@ cosign verify-blob \
 
 # Verify against transparency log
 cosign verify-blob \
-  --certificate-identity "https://github.com/MachineNativeOps/machine-native-ops/.github/workflows/supply-chain-security.yml@refs/heads/main" \
-  --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+  --certificate-identity "[EXTERNAL_URL_REMOVED] \
+  --certificate-oidc-issuer "[EXTERNAL_URL_REMOVED] \
   workspace/artifacts/sbom/sbom-spdx.json
 ```
 
@@ -402,12 +402,12 @@ Configure alerts for:
 
 ## References
 
-- [SLSA Specification](https://slsa.dev/)
-- [SPDX Specification](https://spdx.dev/)
-- [CycloneDX Specification](https://cyclonedx.org/)
-- [Cosign Documentation](https://docs.sigstore.dev/cosign/)
-- [Syft Documentation](https://github.com/anchore/syft)
-- [Trivy Documentation](https://aquasecurity.github.io/trivy/)
+- [SLSA Specification]([EXTERNAL_URL_REMOVED])
+- [SPDX Specification]([EXTERNAL_URL_REMOVED])
+- [CycloneDX Specification]([EXTERNAL_URL_REMOVED])
+- [Cosign Documentation]([EXTERNAL_URL_REMOVED])
+- [Syft Documentation]([EXTERNAL_URL_REMOVED])
+- [Trivy Documentation]([EXTERNAL_URL_REMOVED])
 
 ## Support
 

@@ -214,8 +214,8 @@ l3_cache:
 ### Monitoring
 
 Access metrics at:
-- Prometheus: `http://localhost:9090`
-- Grafana: `http://localhost:3000`
+- Prometheus: `[EXTERNAL_URL_REMOVED]
+- Grafana: `[EXTERNAL_URL_REMOVED]
 
 Key metrics:
 - `cache_hits_total`: Total cache hits
@@ -229,7 +229,7 @@ Key metrics:
 
 ```bash
 # Check statistics
-curl http://localhost:8080/stats
+curl [EXTERNAL_URL_REMOVED]
 
 # Increase L1 cache size
 # Adjust TTL values
@@ -240,7 +240,7 @@ curl http://localhost:8080/stats
 
 ```bash
 # Check L1 memory usage
-curl http://localhost:8080/stats/l1
+curl [EXTERNAL_URL_REMOVED]
 
 # Reduce L1 max_size
 # Enable compression

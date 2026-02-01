@@ -22,7 +22,7 @@
 
 ```bash
 # Clone repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # Set environment variables
@@ -193,7 +193,7 @@ docker-compose ps
 docker-compose logs -f memory-cache
 
 # Health check
-curl http://localhost:8080/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### Kubernetes
@@ -249,10 +249,10 @@ resources:
 
 ### Accessing Dashboards
 
-- **Grafana**: http://localhost:3000
-- **Prometheus**: http://localhost:9090
-- **Jaeger**: http://localhost:16686
-- **Redis Insight**: http://localhost:8001
+- **Grafana**: [EXTERNAL_URL_REMOVED]
+- **Prometheus**: [EXTERNAL_URL_REMOVED]
+- **Jaeger**: [EXTERNAL_URL_REMOVED]
+- **Redis Insight**: [EXTERNAL_URL_REMOVED]
 
 ### Key Metrics
 
@@ -359,7 +359,7 @@ kubectl exec -n cache-system <pod-name> -- redis-cli -h redis-service ping
 kubectl top pods -n cache-system
 
 # Check cache stats
-curl http://localhost:8080/stats
+curl [EXTERNAL_URL_REMOVED]
 
 # Reduce cache size in config
 ```
@@ -368,7 +368,7 @@ curl http://localhost:8080/stats
 
 ```bash
 # Check hit rate
-curl http://localhost:8080/stats/layers
+curl [EXTERNAL_URL_REMOVED]
 
 # Adjust TTL values
 # Increase cache size
@@ -414,7 +414,7 @@ kubectl apply -f kubernetes/deployment.yaml
 kubectl rollout status deployment/memory-cache -n cache-system
 
 # 4. Monitor metrics
-curl http://localhost:8080/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### Database Migration

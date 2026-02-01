@@ -15,7 +15,7 @@
 
 ```bash
 # 1. 克隆倉庫
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # 2. 查看默認配置
@@ -121,8 +121,8 @@ Settings → Secrets and variables → Actions
 - `SERVER_HOST` - 服務器地址（如：example.com）
 - `SERVER_USER` - SSH 用戶名（如：deploy）
 - `DEPLOY_PATH` - 部署路徑（如：/var/www/app）
-- `SERVER_URL` - 服務器 URL（如：https://example.com）
-- `HEALTH_URL` - 健康檢查 URL（如：https://example.com/health）
+- `SERVER_URL` - 服務器 URL（如：[EXTERNAL_URL_REMOVED]
+- `HEALTH_URL` - 健康檢查 URL（如：[EXTERNAL_URL_REMOVED]
 
 **步驟 2：** 更新配置
 
@@ -385,7 +385,7 @@ optional:
 現在就開始使用可插拔 CI/CD 架構吧！
 
 ```bash
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 git push origin main
 ```

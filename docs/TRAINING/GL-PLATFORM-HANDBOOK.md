@@ -175,9 +175,9 @@ cosign verify --key cosign.pub your-image:tag
 - Performance Dashboard
 
 **How to Access**:
-- Grafana: https://grafana.machinenativeops.io
-- Prometheus: https://prometheus.machinenativeops.io
-- Alertmanager: https://alertmanager.machinenativeops.io
+- Grafana: [EXTERNAL_URL_REMOVED]
+- Prometheus: [EXTERNAL_URL_REMOVED]
+- Alertmanager: [EXTERNAL_URL_REMOVED]
 
 ### 5. Auto-Fix Automation
 
@@ -207,7 +207,7 @@ cosign verify --key cosign.pub your-image:tag
 
 ```bash
 # Clone repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # Install required tools
@@ -380,7 +380,7 @@ Before creating resources, understand the naming pattern:
 ```bash
 # Query Prometheus directly
 kubectl port-forward svc/prometheus-operated 9090:9090 -n gl-platform
-# Open http://localhost:9090
+# Open [EXTERNAL_URL_REMOVED]
 
 # View alerts
 kubectl get prometheusrule -A
@@ -544,7 +544,7 @@ kubectl get prometheus -A
 
 # Check if metrics are being scraped
 kubectl port-forward svc/prometheus-operated 9090:9090 -n gl-platform
-# Access http://localhost:9090/targets
+# Access [EXTERNAL_URL_REMOVED]
 ```
 
 **Solution**:

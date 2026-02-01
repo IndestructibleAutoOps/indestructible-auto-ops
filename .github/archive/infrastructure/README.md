@@ -187,7 +187,7 @@ kubectl apply -f infrastructure/monitoring/grafana/
 
 # 訪問 Grafana
 kubectl port-forward svc/grafana 3000:3000 -n synergymesh
-# 開啟瀏覽器: http://localhost:3000
+# 開啟瀏覽器: [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -387,5 +387,5 @@ affinity:
 ## 📞 支援 / Support
 
 - 📖 [基礎設施文檔](./README.md)
-- 🐛 [報告問題](https://github.com/SynergyMesh-admin/Unmanned-Island/issues)
-- 💬 [討論](https://github.com/SynergyMesh-admin/Unmanned-Island/discussions)
+- 🐛 [報告問題]([EXTERNAL_URL_REMOVED])
+- 💬 [討論]([EXTERNAL_URL_REMOVED])

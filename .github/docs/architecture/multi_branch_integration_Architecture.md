@@ -40,9 +40,9 @@ These branches need to be integrated into the main development line while:
 
 ### Problem Statement
 Pull all files from the three branches and perform further integration/consolidation:
-- https://github.com/Machine-Organization/machine-native-ops/compare/staging?expand=1
-- https://github.com/Machine-Organization/machine-native-ops/compare/test/template-branch?expand=1
-- https://github.com/Machine-Organization/machine-native-ops/compare/research/template-branch?expand=1
+- [EXTERNAL_URL_REMOVED]
+- [EXTERNAL_URL_REMOVED]
+- [EXTERNAL_URL_REMOVED]
 
 ### Scope
 - **In Scope**:

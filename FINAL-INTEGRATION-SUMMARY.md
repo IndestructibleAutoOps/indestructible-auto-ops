@@ -206,7 +206,7 @@ instant/
 ## 🚀 Deployment Information
 
 ### Repository Details
-- **Repository URL**: https://github.com/MachineNativeOps/machine-native-ops.git
+- **Repository URL**: [EXTERNAL_URL_REMOVED]
 - **Branch**: main
 - **Status**: Production-ready
 

@@ -96,7 +96,7 @@ class GateValidationHandler:
 - SuperAgent (Port 8082) + Auto-Monitor (Port 8000) + Redis
 
 # 統一驗證請求
-curl -X POST http://localhost:8082/message \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -d '{"message_type": "GateValidationRequest", "payload": {...}}'
 
 # AI 自動修復
@@ -164,10 +164,10 @@ git push origin feature/new-validation
 ### **監控驗證狀態**
 ```bash
 # 檢查 SuperAgent 狀態
-curl http://localhost:8082/health
+curl [EXTERNAL_URL_REMOVED]
 
 # 檢查 Auto-Monitor 指標
-curl http://localhost:8000/metrics
+curl [EXTERNAL_URL_REMOVED]
 
 # 查看驗證報告
 # 下載 GitHub Actions artifacts

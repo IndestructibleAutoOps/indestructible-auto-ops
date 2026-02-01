@@ -96,9 +96,9 @@ module.exports = {
 - **Tailwind-CLI**: Build tool integration
 
 ### References
-- [Migrate from Bootstrap to Tailwind CSS](https://asepalazhari.com/blog/migrate-bootstrap-to-tailwindcss)
-- [Migrating from Bootstrap to Tailwind](https://johnzanussi.com/posts/bootstrap-to-tailwind-migration)
-- [How to Guide: Migrate React Project](https://thetshaped.dev/p/how-to-guide-migrate-react-project-from-bootstrap-to-tailwindcss)
+- [Migrate from Bootstrap to Tailwind CSS]([EXTERNAL_URL_REMOVED])
+- [Migrating from Bootstrap to Tailwind]([EXTERNAL_URL_REMOVED])
+- [How to Guide: Migrate React Project]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -252,9 +252,9 @@ function calculateTotal(items: CartItem[]): number {
 - **JSDoc to TS**: Generate types from JSDoc comments
 
 ### References
-- [JavaScript to TypeScript Migration: 5 Best Practices](https://www.blazemeter.com/blog/javascript-to-typescript)
-- [Migrating from JavaScript to TypeScript](https://dev.to/shantih_palani/migrating-from-javascript-to-typescript-strategies-and-gotchas-4e68)
-- [Converting with ts-migrate](https://medium.com/simform-engineering/easy-guide-converting-your-javascript-project-to-typescript-with-ts-migrate-1a69f5f36d2a)
+- [JavaScript to TypeScript Migration: 5 Best Practices]([EXTERNAL_URL_REMOVED])
+- [Migrating from JavaScript to TypeScript]([EXTERNAL_URL_REMOVED])
+- [Converting with ts-migrate]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -455,8 +455,8 @@ app.get('/api/users', getUsersV2);
 ```
 
 ### References
-- [A Comparative Analysis of REST, GraphQL, and Asynchronous APIs](https://dzone.com/articles/understand-api-technologies-comparative-analysis)
-- [Exploring Reasons People Embrace GraphQL in 2024](https://wundergraph.com/blog/exploring_reasons_people_embrace_graphql_in_2024_and_the_caveats_behind_its_non_adoption)
+- [A Comparative Analysis of REST, GraphQL, and Asynchronous APIs]([EXTERNAL_URL_REMOVED])
+- [Exploring Reasons People Embrace GraphQL in 2024]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -618,9 +618,9 @@ const ExpensiveComponent = ({ data, onAction }) => {
 ```
 
 ### References
-- [Migrating from Class Components to Functional Components](https://www.geeksforgeeks.org/reactjs/migrating-from-class-components-to-functional-components-in-react/)
-- [From Class Components to Hooks: A Migration Strategy](https://medium.com/@ignatovich.dm/from-class-components-to-hooks-a-migration-strategy-28fe50b69669)
-- [The world's longest React hooks migration](https://craft.faire.com/the-worlds-longest-react-hooks-migration-8f357cdcdbe9)
+- [Migrating from Class Components to Functional Components]([EXTERNAL_URL_REMOVED])
+- [From Class Components to Hooks: A Migration Strategy]([EXTERNAL_URL_REMOVED])
+- [The world's longest React hooks migration]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -787,9 +787,9 @@ try {
 ```
 
 ### References
-- [Mastering JavaScript Async Patterns](https://dev.to/okrahul/leadering-javascript-async-patterns-from-callbacks-to-asyncawait-2l18)
-- [Async Patterns and Best Practices in Node.js](https://arunangshudas.medium.com/asynchronous-patterns-and-best-practices-in-node-js-87ba2a7c0477)
-- [How to Escape Callback Hell in JavaScript](https://dev.to/alex_aslam/how-to-escape-callback-hell-in-javascript-a-developer-s-guide-2hpm)
+- [Mastering JavaScript Async Patterns]([EXTERNAL_URL_REMOVED])
+- [Async Patterns and Best Practices in Node.js]([EXTERNAL_URL_REMOVED])
+- [How to Escape Callback Hell in JavaScript]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -997,9 +997,9 @@ async function validateMigration() {
 - **Liquibase**: Database change management
 
 ### References
-- [The 7 Best Data Migration Tools In 2024](https://visual-flow.com/blog/the-7-best-data-migration-tools-in-2024)
-- [Best Schema Migration Tools for Developers in 2024](https://debugg.ai/resources/best-schema-migration-tools-2024)
-- [MySQL to PostgreSQL Migration Tool Comparison](https://www.hakunamatatatech.com/our-resources/blog/mysql-migration)
+- [The 7 Best Data Migration Tools In 2024]([EXTERNAL_URL_REMOVED])
+- [Best Schema Migration Tools for Developers in 2024]([EXTERNAL_URL_REMOVED])
+- [MySQL to PostgreSQL Migration Tool Comparison]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -1245,9 +1245,9 @@ const DataTable = ({ data, columns }) => {
 - **Framer Motion**: Animation library
 
 ### References
-- [jQuery Modernization Guide: Move to React](https://www.legacyleap.ai/blog/jquery-migration/)
-- [Modernize EdTech: jQuery to React Migration Guide](https://kitemetric.com/blogs/modernize-edtech-jquery-to-react-migration-guide)
-- [Migration from jQuery to React](https://singula.team/blog/how-to-transitioning-from-jquery-to-react)
+- [jQuery Modernization Guide: Move to React]([EXTERNAL_URL_REMOVED])
+- [Modernize EdTech: jQuery to React Migration Guide]([EXTERNAL_URL_REMOVED])
+- [Migration from jQuery to React]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -1286,7 +1286,7 @@ info:
   title: Order Service API
   version: 1.0.0
 servers:
-  - url: https://api.example.com/orders
+  - url: [EXTERNAL_URL_REMOVED]
 
 paths:
   /orders:
@@ -1478,7 +1478,7 @@ spec:
 #### 9.6 Communication Patterns
 ```javascript
 // Synchronous: HTTP/REST or gRPC
-const response = await axios.get('http://product-service/products/123');
+const response = await axios.get('[EXTERNAL_URL_REMOVED]);
 
 // Asynchronous: Message Queue (Kafka/RabbitMQ)
 await producer.send({
@@ -1503,10 +1503,10 @@ const order = rebuildFromEvents(events);
 - **GraphQL**: API Gateway
 
 ### References
-- [Architectural patterns for modular monoliths](https://microservices.io/post/architecture/2024/09/09/modular-monolith-patterns-for-fast-flow.html)
-- [Transition from Monolithic Application to Microservices](https://medium.com/@milos.kecman/transition-from-a-monolithic-application-to-microservices-a5184fb4c417)
-- [From Monolith to Microservices: DDD Approach](https://mvineetsharma.medium.com/from-monolith-to-microservices-a-domain-driven-design-ddd-approach-2cdaa95ae808)
-- [Monolith to Microservices Migration Strategies](https://circleci.com/blog/monolith-to-microservices-migration-strategies/)
+- [Architectural patterns for modular monoliths]([EXTERNAL_URL_REMOVED])
+- [Transition from Monolithic Application to Microservices]([EXTERNAL_URL_REMOVED])
+- [From Monolith to Microservices: DDD Approach]([EXTERNAL_URL_REMOVED])
+- [Monolith to Microservices Migration Strategies]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -1744,9 +1744,9 @@ Variables: { "id": 123 }
 - **Apollo Federation**: Distributed GraphQL
 
 ### References
-- [A Comparative Analysis of REST, GraphQL, and Asynchronous APIs](https://dzone.com/articles/understand-api-technologies-comparative-analysis)
-- [Simplify monolith to microservices migration using GraphQL](https://tailcall.run/blog/graphql-microservices-migration/)
-- [Modernize APIs with GraphQL Serverless Patterns](https://aws.amazon.com/video/watch/5fce97195b7/)
+- [A Comparative Analysis of REST, GraphQL, and Asynchronous APIs]([EXTERNAL_URL_REMOVED])
+- [Simplify monolith to microservices migration using GraphQL]([EXTERNAL_URL_REMOVED])
+- [Modernize APIs with GraphQL Serverless Patterns]([EXTERNAL_URL_REMOVED])
 
 ---
 

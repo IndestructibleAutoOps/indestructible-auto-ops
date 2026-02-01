@@ -467,7 +467,7 @@ inputs:
    - 詳細的行業標準分析
 
 2. **GitHub Actions文檔**
-   - 官方文檔：https://docs.github.com/actions
+   - 官方文檔：[EXTERNAL_URL_REMOVED]
    - 最佳實踐
 
 3. **CI/CD最佳實踐**

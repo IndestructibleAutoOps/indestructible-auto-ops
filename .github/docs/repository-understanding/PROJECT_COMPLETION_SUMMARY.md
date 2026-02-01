@@ -202,7 +202,7 @@ File/System Change Detected
 
 ## 🌐 GitHub Repository
 
-**Repository URL**: https://github.com/MachineNativeOps/mno-repository-understanding-system
+**Repository URL**: [EXTERNAL_URL_REMOVED]
 
 **Latest Commit**: `09afbbb` - "feat: Add event-driven automation system with comprehensive documentation"
 

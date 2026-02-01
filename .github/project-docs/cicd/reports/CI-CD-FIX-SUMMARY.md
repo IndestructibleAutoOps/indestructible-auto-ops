@@ -127,7 +127,7 @@ expected <block end>, but found '-'
 
 **已知問題：**
 - GitHub 發現 8 個依賴套件漏洞（1 critical, 6 high, 1 moderate）
-- 可在此查看：https://github.com/MachineNativeOps/machine-native-ops/security/dependabot
+- 可在此查看：[EXTERNAL_URL_REMOVED]
 
 **建議：**
 - 更新受影響的依賴套件
@@ -161,8 +161,8 @@ git push origin main-fork:main --no-verify
 
 ## 相關資源
 
-- GitHub Actions: https://github.com/MachineNativeOps/machine-native-ops/actions
-- 安全性警報: https://github.com/MachineNativeOps/machine-native-ops/security/dependabot
+- GitHub Actions: [EXTERNAL_URL_REMOVED]
+- 安全性警報: [EXTERNAL_URL_REMOVED]
 - GL 治理規範: workspace/governance/meta-spec/
 
 ---

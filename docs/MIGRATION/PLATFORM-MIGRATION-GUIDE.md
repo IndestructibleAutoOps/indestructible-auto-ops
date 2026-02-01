@@ -55,7 +55,7 @@ jq --version
 #### 1.1 Slack Integration
 
 1. **Create Slack App**
-   - Navigate to https://api.slack.com/apps
+   - Navigate to [EXTERNAL_URL_REMOVED]
    - Create new app: "GL Platform Bot"
    - Enable incoming webhooks
    - Copy webhook URL
@@ -333,7 +333,7 @@ kubectl get pods -A | awk '{print $4}' | grep -v RESTARTS
 kubectl logs -l app=gl-platform --tail=100 | grep -i error
 
 # Check alert firing rates
-# Access Prometheus UI: http://prometheus.machinenativeops.io
+# Access Prometheus UI: [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -438,7 +438,7 @@ curl -X POST YOUR_WEBHOOK_URL -d '{"text":"test"}'
 - Verify metrics are being scraped:
   ```bash
   kubectl port-forward svc/prometheus-operated 9090:9090 -n gl-platform
-  # Access http://localhost:9090 and check targets
+  # Access [EXTERNAL_URL_REMOVED] and check targets
   ```
 
 ### Getting Help

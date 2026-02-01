@@ -72,7 +72,7 @@ The architecture presents a **complete intelligent system evolution timeline** f
 
 ```bash
 # Clone repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops/gl-execution-runtime
 
 # Install dependencies

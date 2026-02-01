@@ -8,9 +8,9 @@
 
 > Mobile application for AEP Engine governance auditing and monitoring
 
-[![GL Charter](https://img.shields.io/badge/GL%20Charter-Activated-green.svg)](https://github.com/MachineNativeOps/machine-native-ops)
-[![Expo](https://img.shields.io/badge/Expo-54.0-blue.svg)](https://expo.dev)
-[![React Native](https://img.shields.io/badge/React%20Native-0.81-blue.svg)](https://reactnative.dev)
+[![GL Charter]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![Expo]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![React Native]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
 
 ## Overview
 

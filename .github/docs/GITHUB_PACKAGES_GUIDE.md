@@ -53,8 +53,8 @@ To install packages from GitHub Packages, you need to authenticate with a Person
 Add the following to your `~/.npmrc` file:
 
 ```shell
-@machinenativeops:registry=https://npm.pkg.github.com
-@machine-native-ops:registry=https://npm.pkg.github.com
+@machinenativeops:registry=[EXTERNAL_URL_REMOVED]
+@machine-native-ops:registry=[EXTERNAL_URL_REMOVED]
 //npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
 ```
 
@@ -65,7 +65,7 @@ Replace `YOUR_PERSONAL_ACCESS_TOKEN` with your GitHub Personal Access Token.
 For npm CLI version 9 or higher, use the `--auth-type=legacy` option:
 
 ```shell
-npm login --scope=@machinenativeops --auth-type=legacy --registry=https://npm.pkg.github.com
+npm login --scope=@machinenativeops --auth-type=legacy --registry=[EXTERNAL_URL_REMOVED]
 ```
 
 When prompted:
@@ -126,11 +126,11 @@ Example `package.json` configuration:
   "name": "@machinenativeops/mcp-servers",
   "version": "1.0.0",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "[EXTERNAL_URL_REMOVED]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MachineNativeOps/machine-native-ops.git",
+    "url": "git+[EXTERNAL_URL_REMOVED]
     "directory": "workspace/src/mcp-servers"
   }
 }
@@ -147,11 +147,11 @@ To use these packages in GitHub Actions workflows:
   uses: actions/setup-node@v4
   with:
     node-version: '18'
-    registry-url: 'https://npm.pkg.github.com'
+    registry-url: '[EXTERNAL_URL_REMOVED]
 
 - name: Configure npm
   run: |
-    echo "@machinenativeops:registry=https://npm.pkg.github.com" >> .npmrc
+    echo "@machinenativeops:registry=[EXTERNAL_URL_REMOVED] >> .npmrc
     echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
 - name: Install dependencies
@@ -164,9 +164,9 @@ If you need to install packages from both GitHub Packages and npmjs.org:
 
 ```shell
 # In your .npmrc
-@machinenativeops:registry=https://npm.pkg.github.com
-@machine-native-ops:registry=https://npm.pkg.github.com
-registry=https://registry.npmjs.org/
+@machinenativeops:registry=[EXTERNAL_URL_REMOVED]
+@machine-native-ops:registry=[EXTERNAL_URL_REMOVED]
+registry=[EXTERNAL_URL_REMOVED]
 ```
 
 This configuration routes scoped packages to GitHub Packages while other packages come from npmjs.org.
@@ -196,9 +196,9 @@ If publishing fails due to build errors:
 
 ## References
 
-- [GitHub Packages Documentation](https://docs.github.com/en/packages)
-- [Configuring npm for use with GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry)
-- [Publishing and installing a package with GitHub Actions](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions)
+- [GitHub Packages Documentation]([EXTERNAL_URL_REMOVED])
+- [Configuring npm for use with GitHub Packages]([EXTERNAL_URL_REMOVED])
+- [Publishing and installing a package with GitHub Actions]([EXTERNAL_URL_REMOVED])
 
 ## Support
 

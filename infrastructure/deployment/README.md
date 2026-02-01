@@ -59,19 +59,19 @@ MachineNativeOps supports multiple deployment methods:
 
 ```bash
 # Install kubectl
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "[EXTERNAL_URL_REMOVED] -L -s [EXTERNAL_URL_REMOVED])/bin/linux/amd64/kubectl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 
 # Install Helm
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+curl [EXTERNAL_URL_REMOVED] | bash
 ```
 
 ### Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # Create namespace
@@ -141,7 +141,7 @@ kubectl logs -f deployment/machine-native-ops -n machine-native-ops
 
 ```bash
 # Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "[EXTERNAL_URL_REMOVED] -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
@@ -149,7 +149,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ```bash
 # Clone the repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops/deployment/docker-compose
 
 # Copy environment file
@@ -170,11 +170,11 @@ docker-compose logs -f
 
 ### Service URLs
 
-- **MachineNativeOps**: http://localhost:8080
-- **Grafana**: http://localhost:3000 (admin/admin)
-- **Prometheus**: http://localhost:9091
-- **Kibana**: http://localhost:5601
-- **Jaeger**: http://localhost:16686
+- **MachineNativeOps**: [EXTERNAL_URL_REMOVED]
+- **Grafana**: [EXTERNAL_URL_REMOVED] (admin/admin)
+- **Prometheus**: [EXTERNAL_URL_REMOVED]
+- **Kibana**: [EXTERNAL_URL_REMOVED]
+- **Jaeger**: [EXTERNAL_URL_REMOVED]
 
 ### Stop Services
 
@@ -192,8 +192,8 @@ docker-compose down -v
 
 ```bash
 # Install Terraform
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+wget -O- [EXTERNAL_URL_REMOVED] | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] [EXTERNAL_URL_REMOVED] $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 ```
 
@@ -256,7 +256,7 @@ helm install machine-native-ops ./deployment/helm/machine-native-ops \
 kubectl port-forward -n machine-native-ops svc/grafana 3000:3000
 
 # Open browser
-open http://localhost:3000
+open [EXTERNAL_URL_REMOVED]
 ```
 
 ### Elasticsearch and Kibana
@@ -267,7 +267,7 @@ open http://localhost:3000
 kubectl port-forward -n machine-native-ops svc/kibana 5601:5601
 
 # Open browser
-open http://localhost:5601
+open [EXTERNAL_URL_REMOVED]
 ```
 
 ## Security Configuration
@@ -314,6 +314,6 @@ kubectl get networkpolicies -n machine-native-ops
 ## Support
 
 For issues and questions:
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
-- Documentation: https://docs.machinenativeops.com
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
+- Documentation: [EXTERNAL_URL_REMOVED]
 - Email: support@machinenativeops.com

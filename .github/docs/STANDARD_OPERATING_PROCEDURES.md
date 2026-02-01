@@ -110,7 +110,7 @@ kubectl get pods -n production
 
 # 3.2 Check pod health
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl http://localhost:8000/health
+  curl [EXTERNAL_URL_REMOVED]
 
 # 3.3 Check application logs
 kubectl logs -l app=machine-native-ops -n production --tail=100
@@ -193,7 +193,7 @@ This SOP applies to all monitoring activities for the production environment.
 
 ```bash
 # 1.1 Check Grafana dashboards
-# Open Grafana: http://grafana.production.machinenativeops.com
+# Open Grafana: [EXTERNAL_URL_REMOVED]
 # Review:
 # - Machine Native Ops Dashboard
 # - Istio Mesh Dashboard
@@ -201,7 +201,7 @@ This SOP applies to all monitoring activities for the production environment.
 # - Infrastructure Dashboard
 
 # 1.2 Check Alertmanager
-# Open Alertmanager: http://alertmanager.production.machinenativeops.com
+# Open Alertmanager: [EXTERNAL_URL_REMOVED]
 # Review:
 # - Active alerts
 # - Alert history
@@ -418,7 +418,7 @@ kubectl scale deployment/machine-native-ops --replicas=3 -n production
 
 # 4.6 Verify application health
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl http://localhost:8000/health
+  curl [EXTERNAL_URL_REMOVED]
 
 # 4.7 Monitor recovery
 # Watch Grafana dashboards
@@ -1026,7 +1026,7 @@ k6 run tests/memory-leak-test.js
 ```bash
 # Quick health check
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl http://localhost:8000/health
+  curl [EXTERNAL_URL_REMOVED]
 
 # Check pod status
 kubectl get pods -n production

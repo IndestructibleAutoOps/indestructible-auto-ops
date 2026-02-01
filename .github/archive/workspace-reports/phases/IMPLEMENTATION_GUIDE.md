@@ -204,7 +204,7 @@
 
 當您完成任務後，必須提供以下證據：
 
-1. **repo**: https://github.com/MachineNativeOps/MachineNativeOps
+1. **repo**: [EXTERNAL_URL_REMOVED]
 2. **branch**: [您的分支名稱]
 3. **commit**: [完整 40 字元 SHA]
 4. **PR**: [PR URL]
@@ -215,10 +215,10 @@
 - 如果變更了 root/ 目錄，請勾選第五證據
 
 範例：
-- repo: https://github.com/MachineNativeOps/MachineNativeOps
+- repo: [EXTERNAL_URL_REMOVED]
 - branch: feature/add-new-module
 - commit: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-- PR: https://github.com/MachineNativeOps/MachineNativeOps/pull/123
+- PR: [EXTERNAL_URL_REMOVED]
 ```
 
 ---

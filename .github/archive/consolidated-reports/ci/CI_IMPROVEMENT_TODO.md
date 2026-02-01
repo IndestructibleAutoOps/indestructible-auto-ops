@@ -77,8 +77,8 @@
 
 ## 🔗 相關鏈接
 
-- PR #2: https://github.com/MachineNativeOps/machine-native-ops/pull/2
-- CI Actions: https://github.com/MachineNativeOps/machine-native-ops/actions
+- PR #2: [EXTERNAL_URL_REMOVED]
+- CI Actions: [EXTERNAL_URL_REMOVED]
 - CI 修復 Commit: 66285be
 
 ## 📝 注意事項

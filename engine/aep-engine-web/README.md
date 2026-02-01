@@ -74,7 +74,7 @@ npm run dev
 pnpm dev
 ```
 
-應用將在 `http://localhost:5173` 啟動
+應用將在 `[EXTERNAL_URL_REMOVED] 啟動
 
 ### 生產構建
 

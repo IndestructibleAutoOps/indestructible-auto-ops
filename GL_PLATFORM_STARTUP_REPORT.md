@@ -58,7 +58,7 @@ All critical services have been started, all subsystems are loaded, and the plat
 - **Status:** ✅ OPERATIONAL
 - **Self-Healing Engine:** ENABLED
 - **Multi-Agent Orchestration:** ACTIVE
-- **Health Check:** http://localhost:3000/health
+- **Health Check:** [EXTERNAL_URL_REMOVED]
 
 **Features Active:**
 - ✅ Self-Healing Orchestration Engine (SHEL)
@@ -205,7 +205,7 @@ Capabilities:
 
 The Control Plane is now accepting natural language commands and tasks. Submit tasks to:
 ```
-POST http://localhost:5001/api/control/execute
+POST [EXTERNAL_URL_REMOVED]
 Content-Type: application/json
 
 {
@@ -269,13 +269,13 @@ All service logs are available in:
 
 ```bash
 # Check GL Platform Health
-curl http://localhost:3000/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Check Control Plane Status
-curl http://localhost:5001/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Check Prometheus Targets
-curl http://localhost:9090/api/v1/targets
+curl [EXTERNAL_URL_REMOVED]
 
 # Check All Services
 netstat -tlnp | grep LISTEN | grep -E "3000|3001|3002|5001|5432|6379|8080|9000|9090"

@@ -30,7 +30,7 @@ class EsClientManager:
     def __init__(self, config: Dict[str, Any]):
         self.config = config
         self.client_id = config.get('id', 'es-client')
-        self.hosts = config.get('hosts', ['http://localhost:9200'])
+        self.hosts = config.get('hosts', ['[EXTERNAL_URL_REMOVED]])
         self.timeout = config.get('timeout', 30)
         self.max_retries = config.get('max_retries', 3)
         self.retry_on_timeout = config.get('retry_on_timeout', True)

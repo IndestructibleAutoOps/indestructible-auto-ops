@@ -276,13 +276,13 @@ echo "::notice::Security scan completed. Review bandit-report.json for details."
 - [enhanced-pr-quality-check.yml](enhanced-pr-quality-check.yml) - 增強版工作流
 
 ### 外部資源
-- [GitHub Actions 文檔](https://docs.github.com/en/actions)
-- [CI/CD 最佳實踐](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment)
-- [Bandit 安全掃描器](https://bandit.readthedocs.io/)
+- [GitHub Actions 文檔]([EXTERNAL_URL_REMOVED])
+- [CI/CD 最佳實踐]([EXTERNAL_URL_REMOVED])
+- [Bandit 安全掃描器]([EXTERNAL_URL_REMOVED])
 
 ### 團隊資源
-- PR #2: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/2
-- GitHub Actions: https://github.com/MachineNativeOps/mno-repository-understanding-system/actions
+- PR #2: [EXTERNAL_URL_REMOVED]
+- GitHub Actions: [EXTERNAL_URL_REMOVED]
 
 ---
 

@@ -105,17 +105,17 @@ k8s/production/
 #### Prerequisites
 ```bash
 # Install AWS CLI
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+curl "[EXTERNAL_URL_REMOVED] -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 
 # Install kubectl
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "[EXTERNAL_URL_REMOVED] -L -s [EXTERNAL_URL_REMOVED])/bin/linux/amd64/kubectl"
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 
 # Install eksctl
-curl --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+curl --location "[EXTERNAL_URL_REMOVED] -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin/
 ```
 
@@ -176,7 +176,7 @@ kubectl get services -n production
 #### Prerequisites
 ```bash
 # Install Google Cloud SDK
-curl https://sdk.cloud.google.com | bash
+curl [EXTERNAL_URL_REMOVED] | bash
 exec -l $SHELL
 gcloud init
 
@@ -257,7 +257,7 @@ kubectl get services -n production
 #### Prerequisites
 ```bash
 # Install Azure CLI
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+curl -sL [EXTERNAL_URL_REMOVED] | sudo bash
 
 # Install kubectl
 az aks install-cli
@@ -326,11 +326,11 @@ kubectl get services -n production
 #### Prerequisites
 ```bash
 # Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
+curl -fsSL [EXTERNAL_URL_REMOVED] -o get-docker.sh
 sudo sh get-docker.sh
 
 # Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "[EXTERNAL_URL_REMOVED] -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
@@ -386,7 +386,7 @@ docker-compose logs -f
 #### Prerequisites
 ```bash
 # Install Nomad
-wget https://releases.hashicorp.com/nomad/1.5.0/nomad_1.5.0_linux_amd64.zip
+wget [EXTERNAL_URL_REMOVED]
 unzip nomad_1.5.0_linux_amd64.zip
 sudo mv nomad /usr/local/bin/
 ```
@@ -589,7 +589,7 @@ kubectl get svc -n production
 kubectl get endpoints -n production
 
 # Test connectivity
-kubectl run -it --rm debug --image=busybox --restart=Never -- wget -O- http://service-name:port/health
+kubectl run -it --rm debug --image=busybox --restart=Never -- wget -O- [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -609,6 +609,6 @@ kubectl run -it --rm debug --image=busybox --restart=Never -- wget -O- http://se
 ## Support
 
 For issues or questions:
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
-- Documentation: https://docs.machine-native-ops.com
-- Community: https://community.machine-native-ops.com
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
+- Documentation: [EXTERNAL_URL_REMOVED]
+- Community: [EXTERNAL_URL_REMOVED]

@@ -222,10 +222,10 @@ kubectl run -it --rm test-pod \
   -n autofix-bot -- sh
 
 # 在 Pod 內測試服務
-curl http://code-analyzer:8080/health
-curl http://vulnerability-detector:8081/health
-curl http://auto-repair:8082/health
-curl http://orchestrator:8083/health
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### 3. 測試 Ingress
@@ -235,15 +235,15 @@ curl http://orchestrator:8083/health
 kubectl get ingress -n autofix-bot
 
 # 測試端點
-curl https://autofix-bot.example.com/api/analyze/health
-curl https://autofix-bot.example.com/api/scan/health
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### 4. 負載測試
 
 ```bash
 # 使用 hey 進行負載測試
-hey -n 10000 -c 100 https://autofix-bot.example.com/api/analyze
+hey -n 10000 -c 100 [EXTERNAL_URL_REMOVED]
 
 # 監控 HPA 擴展
 kubectl get hpa -n autofix-bot -w
@@ -255,18 +255,18 @@ kubectl get hpa -n autofix-bot -w
 
 ### Prometheus
 
-- **URL**: `https://autofix-bot.example.com/prometheus`
+- **URL**: `[EXTERNAL_URL_REMOVED]
 - **指標**: 請求率、錯誤率、延遲、資源使用
 
 ### Grafana
 
-- **URL**: `https://autofix-bot.example.com/grafana`
+- **URL**: `[EXTERNAL_URL_REMOVED]
 - **默認用戶**: admin
 - **密碼**: 查看 secrets
 
 ### Loki
 
-- **端點**: `http://loki:3100`
+- **端點**: `[EXTERNAL_URL_REMOVED]
 - **日誌聚合**: 所有服務日誌
 
 ### Jaeger
@@ -277,7 +277,7 @@ kubectl get hpa -n autofix-bot -w
 ```bash
 # Port-forward Jaeger UI
 kubectl port-forward -n autofix-bot svc/jaeger 16686:16686
-# 訪問: http://localhost:16686
+# 訪問: [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -334,7 +334,7 @@ kubectl run -it --rm debug \
   -n autofix-bot -- sh
 
 # 在 debug Pod 內
-curl http://code-analyzer:8080/health
+curl [EXTERNAL_URL_REMOVED]
 nslookup code-analyzer
 ```
 

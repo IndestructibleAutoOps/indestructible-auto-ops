@@ -7,8 +7,8 @@
 
 本文件記錄命名治理系統的所有重要變更。
 
-格式基於 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
-項目遵循 [語義化版本](https://semver.org/lang/zh-TW/)。
+格式基於 [Keep a Changelog]([EXTERNAL_URL_REMOVED])，
+項目遵循 [語義化版本]([EXTERNAL_URL_REMOVED])。
 
 ## [1.0.0] - 2025-01-18
 
@@ -309,7 +309,7 @@ MAJOR.MINOR.PATCH
 
 - 📧 Email: platform-governance@example.com
 - 💬 Slack: #platform-governance
-- 🐛 Issue Tracker: [GitHub Issues](https://github.com/MachineNativeOps/mno-repository-understanding-system/issues)
+- 🐛 Issue Tracker: [GitHub Issues]([EXTERNAL_URL_REMOVED])
 
 ---
 

@@ -110,5 +110,5 @@ A: 使用 `check_ci_comments.py` 檢查並根據建議改進。
 ## 🔗 相關資源
 
 - [完整 SOP 文檔](CI_CD_SOP.md)
-- [GitHub CLI 文檔](https://cli.github.com/)
-- [CI/CD 最佳實踐](https://docs.github.com/en/actions)
+- [GitHub CLI 文檔]([EXTERNAL_URL_REMOVED])
+- [CI/CD 最佳實踐]([EXTERNAL_URL_REMOVED])

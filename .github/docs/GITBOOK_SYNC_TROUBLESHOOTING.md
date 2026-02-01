@@ -62,11 +62,11 @@
 你的仓库**在根目录有一个 `README.md` 文件**（或在 `.gitbook.yaml` 中指定的文件夹）直接在你的 git 仓库中创建。
 
 - 该文件是**必需的**，并用作文档的首页
-- 更多细节请参阅我们的 [.gitbook.yaml 内容配置](https://docs.gitbook.com/integrations/git-sync/content-configuration)
+- 更多细节请参阅我们的 [.gitbook.yaml 内容配置]([EXTERNAL_URL_REMOVED])
 
 #### 2. YAML Frontmatter 验证
 
-如果你的 Markdown 文件中有 YAML frontmatter，请使用 [YAML 检查器](https://yamlchecker.com/) 以确保它们有效。
+如果你的 Markdown 文件中有 YAML frontmatter，请使用 [YAML 检查器]([EXTERNAL_URL_REMOVED]) 以确保它们有效。
 
 **示例 YAML Frontmatter：**
 
@@ -99,7 +99,7 @@ structure:
   summary: SUMMARY.md
 ```
 
-有关更多信息，请查看 [GitBook 内容配置文档](https://docs.gitbook.com/integrations/git-sync/content-configuration)。
+有关更多信息，请查看 [GitBook 内容配置文档]([EXTERNAL_URL_REMOVED])。
 
 ---
 
@@ -137,7 +137,7 @@ structure:
 
 #### 仍然没有解决？
 
-如果在确认所有文件都包含在 `SUMMARY.md` 文件中后，GitBook 仍然没有任何反应，请随时[联系支持](https://www.gitbook.com/support)寻求帮助。
+如果在确认所有文件都包含在 `SUMMARY.md` 文件中后，GitBook 仍然没有任何反应，请随时[联系支持]([EXTERNAL_URL_REMOVED])寻求帮助。
 
 ---
 
@@ -149,7 +149,7 @@ YAML 文件需要正确格式化，重定向才能生效。诸如缩进或空格
 
 #### 重定向配置要点
 
-1. **验证 YAML 格式**：使用 [YAML 验证器](https://yamlchecker.com/)可以确保重定向顺利工作
+1. **验证 YAML 格式**：使用 [YAML 验证器]([EXTERNAL_URL_REMOVED])可以确保重定向顺利工作
 2. **不要添加前导斜杠**：
    - ❌ 错误：`./misc/support.md`
    - ✅ 正确：`misc/support.md`
@@ -185,7 +185,7 @@ redirects:
 
 **检查安装步骤：**
 
-1. 访问 [GitHub Apps 设置](https://github.com/settings/installations)
+1. 访问 [GitHub Apps 设置]([EXTERNAL_URL_REMOVED])
 2. 找到 GitBook 应用
 3. 验证仓库访问权限
 
@@ -242,7 +242,7 @@ redirects:
 1. **登出当前会话**：登出你当前的 GitBook 用户会话（例如：`name@email.com`）
 2. **登出 GitHub**：登出任何 GitHub 用户会话
 3. **使用 GitHub 登录**：
-   - 前往 [GitBook 登录页面](https://app.gitbook.com/login)
+   - 前往 [GitBook 登录页面]([EXTERNAL_URL_REMOVED])
    - 选择"使用 GitHub 登录"选项
    - 输入你的 GitHub 凭据
 4. **检查账户设置**：
@@ -259,10 +259,10 @@ redirects:
 
 ## 📚 相关资源
 
-- [GitBook 官方文档](https://docs.gitbook.com/)
-- [Git 同步指南](https://docs.gitbook.com/integrations/git-sync)
-- [内容配置](https://docs.gitbook.com/integrations/git-sync/content-configuration)
-- [GitBook 支持中心](https://www.gitbook.com/support)
+- [GitBook 官方文档]([EXTERNAL_URL_REMOVED])
+- [Git 同步指南]([EXTERNAL_URL_REMOVED])
+- [内容配置]([EXTERNAL_URL_REMOVED])
+- [GitBook 支持中心]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -270,9 +270,9 @@ redirects:
 
 如果以上解决方案都无法解决你的问题：
 
-1. 查看 [GitBook 支持中心](https://www.gitbook.com/support)
-2. 访问 [GitBook 社区论坛](https://github.com/GitbookIO/gitbook/discussions)
-3. [联系 GitBook 支持团队](https://www.gitbook.com/support)
+1. 查看 [GitBook 支持中心]([EXTERNAL_URL_REMOVED])
+2. 访问 [GitBook 社区论坛]([EXTERNAL_URL_REMOVED])
+3. [联系 GitBook 支持团队]([EXTERNAL_URL_REMOVED])
 
 ---
 

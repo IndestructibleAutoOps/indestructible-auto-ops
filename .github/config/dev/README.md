@@ -18,7 +18,7 @@
    - ✅ 自動安裝所有項目依賴
    - ✅ 自動配置開發環境
    - ✅ 自動啟動開發伺服器
-3. 開發服務器會自動啟動在 `http://localhost:3000`
+3. 開發服務器會自動啟動在 `[EXTERNAL_URL_REMOVED]
 4. 🎉 **完全自動化！登入後即可開始開發**
 
 ### 使用 VS Code Remote Containers
@@ -48,7 +48,7 @@
     └── ⏱️  約 5-10 秒
     ↓
 [3] 🎉 環境就緒！
-    ├── 開發伺服器運行在 http://localhost:3000
+    ├── 開發伺服器運行在 [EXTERNAL_URL_REMOVED]
     ├── 可以立即開始編碼
     └── 所有工具已配置完成
 ```
@@ -269,8 +269,8 @@ sudo apt-get install <tool-name>
 ## 進一步閱讀
 
 - [KB.md](./KB.md) - 詳細的技術文檔和配置說明
-- [VS Code Remote Containers](https://code.visualstudio.com/docs/devcontainers/containers)
-- [GitHub Codespaces 文檔](https://docs.github.com/en/codespaces)
+- [VS Code Remote Containers]([EXTERNAL_URL_REMOVED])
+- [GitHub Codespaces 文檔]([EXTERNAL_URL_REMOVED])
 
 ## 貢獻
 

@@ -26,7 +26,7 @@ pre-commit install
 ```yaml
 repos:
   # General hooks
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v4.5.0
     hooks:
       - id: trailing-whitespace
@@ -37,28 +37,28 @@ repos:
       - id: debug-statements
 
   # Python imports
-  - repo: https://github.com/pycqa/isort
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 5.13.2
     hooks:
       - id: isort
         args: ["--profile", "black"]
 
   # Python formatting
-  - repo: https://github.com/psf/black
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 24.3.0
     hooks:
       - id: black
         language_version: python3.11
 
   # Python linting
-  - repo: https://github.com/pycqa/flake8
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 7.0.0
     hooks:
       - id: flake8
         args: ["--max-line-length=100", "--extend-ignore=E203,W503"]
 
   # Security checks
-  - repo: https://github.com/PyCQA/bandit
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 1.7.6
     hooks:
       - id: bandit
@@ -170,11 +170,11 @@ hash = hashlib.sha256(data).hexdigest()
 #### Avoid Hardcoded URLs
 ```python
 # ❌ BAD
-API_URL = "https://api.example.com/endpoint"
+API_URL = "[EXTERNAL_URL_REMOVED]
 
 # ✅ GOOD
 import os
-API_URL = os.getenv("API_URL", "https://api.example.com/endpoint")
+API_URL = os.getenv("API_URL", "[EXTERNAL_URL_REMOVED])
 ```
 
 ### Documentation Standards
@@ -237,7 +237,7 @@ from typing import Optional
 class Settings:
     """Application settings with environment variable support."""
     
-    API_URL: str = os.getenv("API_URL", "http://localhost:8080")
+    API_URL: str = os.getenv("API_URL", "[EXTERNAL_URL_REMOVED])
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
     TIMEOUT: int = int(os.getenv("TIMEOUT", "30"))
     RETRY_COUNT: int = int(os.getenv("RETRY_COUNT", "3"))
@@ -470,7 +470,7 @@ if __name__ == "__main__":
 Create `.env.example`:
 ```bash
 # API Configuration
-API_URL=http://localhost:8080
+API_URL=[EXTERNAL_URL_REMOVED]
 API_TIMEOUT=30
 API_RETRY_COUNT=3
 
@@ -486,14 +486,14 @@ HASH_ALGORITHM=sha256
 ## Step 3: Update Code
 ```python
 # Before
-API_URL = "http://localhost:8080"
+API_URL = "[EXTERNAL_URL_REMOVED]
 
 # After
 import os
 from pydantic import BaseSettings
 
 class Settings(BaseSettings):
-    api_url: str = "http://localhost:8080"
+    api_url: str = "[EXTERNAL_URL_REMOVED]
     api_timeout: int = 30
     api_retry_count: int = 3
     

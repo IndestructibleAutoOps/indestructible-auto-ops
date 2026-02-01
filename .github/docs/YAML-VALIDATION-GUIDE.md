@@ -257,7 +257,7 @@ git push --no-verify
 ## 聯繫
 
 如有問題或建議，請通過以下方式聯繫：
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
 - Governance Committee: governance-committee@machinenativeops.io
 
 ---

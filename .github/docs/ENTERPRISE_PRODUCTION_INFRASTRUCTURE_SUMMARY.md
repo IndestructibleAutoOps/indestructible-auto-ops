@@ -73,7 +73,7 @@ Successfully implemented comprehensive enterprise-grade production infrastructur
 - Agent Host: `jaeger-agent.istio-system.svc.cluster.local`
 - Agent Port: 6831
 - Sampling Rate: 0.1 (10%)
-- Collector Endpoint: `http://jaeger-collector.istio-system.svc.cluster.local:14268/api/traces`
+- Collector Endpoint: `[EXTERNAL_URL_REMOVED]
 
 ---
 

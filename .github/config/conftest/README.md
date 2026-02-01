@@ -27,5 +27,5 @@ conftest test <file> -p .meta/policies/
 
 ## See Also
 
-- [Conftest Documentation](https://www.conftest.dev/)
+- [Conftest Documentation]([EXTERNAL_URL_REMOVED])
 - [Policies Directory](../../.meta/policies/)

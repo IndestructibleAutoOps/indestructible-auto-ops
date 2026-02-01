@@ -39,7 +39,7 @@
 5. **Pull Request 創建**
    - PR #2 已成功創建
    - 包含詳細的修復說明和測試建議
-   - URL: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/2
+   - URL: [EXTERNAL_URL_REMOVED]
 
 ## 修復詳情
 

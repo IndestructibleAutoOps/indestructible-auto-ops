@@ -98,7 +98,7 @@ kubectl get configmap naming-governance-config -n machine-native-ops -o yaml
 #### 3. 安裝監控組件
 ```bash
 # 安裝 Prometheus Operator
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community [EXTERNAL_URL_REMOVED]
 helm repo update
 
 # 部署 Prometheus 監控棧
@@ -146,15 +146,15 @@ kubectl get all -n machine-native-ops
 
 # 驗證 API 服務
 kubectl port-forward -n machine-native-ops svc/naming-governance-api 8080:80 &
-curl http://localhost:8080/health
+curl [EXTERNAL_URL_REMOVED]
 
 # 檢查監控狀態
 kubectl port-forward -n monitoring svc/prometheus-server 9090:90 &
-curl http://localhost:9090/-/healthy
+curl [EXTERNAL_URL_REMOVED]
 
 # 驗證 Grafana 儀表板
 kubectl port-forward -n monitoring svc/grafana 3000:80 &
-# 訪問 http://localhost:3000
+# 訪問 [EXTERNAL_URL_REMOVED]
 ```
 
 ## ⚙️ 配置指南
@@ -317,7 +317,7 @@ migrationStrategy:
 kubectl get pods -n machine-native-ops
 
 # 2. 查看關鍵指標
-curl -s "http://prometheus-server:9090/api/v1/query?query=naming_compliance_rate_gauge"
+curl -s "[EXTERNAL_URL_REMOVED]
 
 # 3. 檢查告警狀態
 kubectl get prometheusrules -n machine-native-ops
@@ -380,7 +380,7 @@ kubectl top pods -n machine-native-ops
    kubectl get prometheus -n monitoring
 
 2. 驗證指標端點
-   curl http://naming-governance-api:8080/metrics
+   curl [EXTERNAL_URL_REMOVED]
 
 3. 重新載入配置
    kubectl rollout restart deployment/prometheus-server -n monitoring
@@ -613,7 +613,7 @@ security:
 #### 驗證 API
 ```bash
 # 驗證命名規範
-curl -X POST http://naming-governance-api:8080/validate \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "name": "payment-service",
@@ -625,7 +625,7 @@ curl -X POST http://naming-governance-api:8080/validate \
 #### 修復 API
 ```bash
 # 觸發自動修復
-curl -X POST http://naming-governance-api:8080/repair \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{
     "violation_ids": ["violation-001", "violation-002"],
@@ -636,14 +636,14 @@ curl -X POST http://naming-governance-api:8080/repair \
 #### 合規 API
 ```bash
 # 獲取合規狀態
-curl http://naming-governance-api:8080/compliance \
+curl [EXTERNAL_URL_REMOVED] \
   -H "Accept: application/json"
 ```
 
 ### 指標 API
 ```bash
 # 獲取監控指標
-curl http://naming-governance-api:8080/metrics
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ## 🔧 故障排除
@@ -668,7 +668,7 @@ kubectl logs -n machine-native-ops -l app=naming-governance-migration --tail=100
 kubectl top pods -n machine-native-ops
 
 # API 響應時間
-curl -w "@curl-format.txt" -o /dev/null -s http://naming-governance-api:8080/health
+curl -w "@curl-format.txt" -o /dev/null -s [EXTERNAL_URL_REMOVED]
 
 # 修復隊列狀態
 kubectl get repairjobs -n machine-native-ops -o wide
@@ -759,8 +759,8 @@ python scripts/performance_test.py --load-level medium
 - **安全問題**: security@machinenativeops.io
 
 ### 社區資源
-- **GitHub**: https://github.com/MachineNativeOps/naming-governance
-- **文檔網站**: https://docs.machinenativeops.io
+- **GitHub**: [EXTERNAL_URL_REMOVED]
+- **文檔網站**: [EXTERNAL_URL_REMOVED]
 - **Slack 社群**: #naming-governance
 
 ### 版本發布

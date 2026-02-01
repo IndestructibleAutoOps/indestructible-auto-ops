@@ -10,7 +10,7 @@
 **專案名稱**: MachineNativeOps GL (Governance Layers) 架構深度整合  
 **執行日期**: 2025-01-18  
 **狀態**: ✅ 完成  
-**PR**: [#33](https://github.com/MachineNativeOps/machine-native-ops/pull/33)
+**PR**: [#33]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -83,7 +83,7 @@
 - **Commit**: `70a1dcd` - feat(gl-architecture): Complete GL00-99 governance layers CI/CD integration
 - **Files Changed**: 29 files
 - **Lines Added**: +15,772
-- **PR**: [#33](https://github.com/MachineNativeOps/machine-native-ops/pull/33)
+- **PR**: [#33]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -167,8 +167,8 @@ tests/unit/
 
 ## 相關連結
 
-- [PR #33](https://github.com/MachineNativeOps/machine-native-ops/pull/33)
-- [Repository](https://github.com/MachineNativeOps/machine-native-ops)
+- [PR #33]([EXTERNAL_URL_REMOVED])
+- [Repository]([EXTERNAL_URL_REMOVED])
 - [GL層級README](workspace/governance/layers/README.md)
 
 ---

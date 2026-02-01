@@ -78,10 +78,10 @@ tar -xzf offline-bundle.tar.gz -C /tmp/offline
 # 4. 安裝 k3s
 ./04_install_k3s.sh \
   --bundle-dir /tmp/offline \
-  --registry-url http://localhost:5000
+  --registry-url [EXTERNAL_URL_REMOVED]
 
 # 5. 部署 GL-Native Backend
-./05_deploy_gl_backend.sh --registry-url http://localhost:5000
+./05_deploy_gl_backend.sh --registry-url [EXTERNAL_URL_REMOVED]
 
 # 6. 健康檢查
 ./health_check.sh
@@ -163,7 +163,7 @@ docker pull flannel/flannel:v0.22.0
 helm pull stable/nginx-ingress --version 1.0.0
 
 # k3s 二進制文件
-curl -LO https://github.com/k3s-io/k3s/releases/download/v1.28.3+k3s2/k3s
+curl -LO [EXTERNAL_URL_REMOVED]
 
 # OS 套件
 apt-get download docker-ce docker-ce-cli containerd.io
@@ -326,7 +326,7 @@ dpkg -l | grep -E "docker|containerd"
 ls -lh /tmp/offline/charts/
 
 # 驗證 Registry
-curl http://localhost:5000/v2/_catalog
+curl [EXTERNAL_URL_REMOVED]
 
 # 驗證 CA 證書
 openssl verify ca.crt
@@ -537,7 +537,7 @@ docker ps | grep registry
 docker logs registry
 
 # 測試 Registry 連接
-curl http://localhost:5000/v2/_catalog
+curl [EXTERNAL_URL_REMOVED]
 
 # 配置 Registry 高可用
 ./03_setup_registry.sh --ha

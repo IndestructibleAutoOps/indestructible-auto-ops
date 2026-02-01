@@ -27,10 +27,10 @@ mkdir actions-runner && cd actions-runner
 For ARM64 architecture:
 
 ```bash
-curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-linux-arm64-2.331.0.tar.gz
+curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L [EXTERNAL_URL_REMOVED]
 ```
 
-**Note:** Check for the latest version at: https://github.com/actions/runner/releases
+**Note:** Check for the latest version at: [EXTERNAL_URL_REMOVED]
 
 ### 3. Optional: Validate the Hash
 
@@ -47,14 +47,14 @@ tar xzf ./actions-runner-linux-arm64-2.331.0.tar.gz
 ### 5. Configure the Runner
 
 You'll need a registration token from GitHub. Get it by:
-1. Go to: https://github.com/MachineNativeOps/machine-native-ops/settings/actions/runners
+1. Go to: [EXTERNAL_URL_REMOVED]
 2. Click "New self-hosted runner"
 3. Copy the registration token
 
 Then run:
 
 ```bash
-./config.sh --url https://github.com/MachineNativeOps/machine-native-ops --token <YOUR_REGISTRATION_TOKEN>
+./config.sh --url [EXTERNAL_URL_REMOVED] --token <YOUR_REGISTRATION_TOKEN>
 ```
 
 ### 6. Install and Run the Runner
@@ -75,7 +75,7 @@ Then run:
 ### 7. Verify Runner Status
 
 Check that the runner is active at:
-https://github.com/MachineNativeOps/machine-native-ops/settings/actions/runners
+[EXTERNAL_URL_REMOVED]
 
 ## Runner Configuration Options
 
@@ -118,7 +118,7 @@ Assign to a specific runner group:
 ### Update the Runner
 ```bash
 ./svc.sh stop
-curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-linux-arm64-2.331.0.tar.gz
+curl -o actions-runner-linux-arm64-2.331.0.tar.gz -L [EXTERNAL_URL_REMOVED]
 tar xzf ./actions-runner-linux-arm64-2.331.0.tar.gz --overwrite
 ./svc.sh start
 ```
@@ -182,7 +182,7 @@ The GL_TOKEN is used for the following operations:
 
 1. **Create the token**:
    - Go to your GitHub profile Settings (not repository settings) → Developer settings → Personal access tokens → Tokens (classic)
-   - Or visit directly: https://github.com/settings/tokens
+   - Or visit directly: [EXTERNAL_URL_REMOVED]
    - Click "Generate new token (classic)"
    - Add a descriptive note: "GL_TOKEN for machine-native-ops workflows"
    - Select the required scopes listed above
@@ -190,7 +190,7 @@ The GL_TOKEN is used for the following operations:
    - Click "Generate token" and copy the token immediately
 
 2. **Add to repository secrets**:
-   - Go to: https://github.com/MachineNativeOps/machine-native-ops/settings/secrets/actions
+   - Go to: [EXTERNAL_URL_REMOVED]
 ### Overview
 This repository uses a custom `GL_TOKEN` secret instead of the default `GITHUB_TOKEN` for enhanced capabilities across 19+ workflows. The GL_TOKEN requires specific permissions to support all automated operations.
 
@@ -254,7 +254,7 @@ The GL_TOKEN is used for the following operations:
 ### Creating the GL_TOKEN
 
 1. **Generate a Personal Access Token**:
-   - Go to: https://github.com/settings/tokens
+   - Go to: [EXTERNAL_URL_REMOVED]
    - Click "Generate new token" → "Generate new token (classic)" or "Fine-grained token"
    - Set a descriptive name (e.g., "MachineNativeOps GL_TOKEN")
    - Set expiration (recommended: 90 days for security, up to 365 days for convenience)
@@ -263,7 +263,7 @@ The GL_TOKEN is used for the following operations:
 
 2. **Add to Repository Secrets**:
    - Go to your repository Settings → Secrets and variables → Actions
-   - Or navigate to: `https://github.com/<YOUR_ORG>/<YOUR_REPO>/settings/secrets/actions`
+   - Or navigate to: `[EXTERNAL_URL_REMOVED]
    - Click "New repository secret"
    - Name: `GL_TOKEN`
    - Value: Paste the token you generated
@@ -330,9 +330,9 @@ The GL_TOKEN is used for the following operations:
 
 ## Additional Resources
 
-- [GitHub Actions Runner Documentation](https://docs.github.com/en/actions/hosting-your-own-runners)
-- [Runner Releases](https://github.com/actions/runner/releases)
-- [Troubleshooting Self-Hosted Runners](https://docs.github.com/en/actions/hosting-your-own-runners/troubleshooting-self-hosted-runners)
+- [GitHub Actions Runner Documentation]([EXTERNAL_URL_REMOVED])
+- [Runner Releases]([EXTERNAL_URL_REMOVED])
+- [Troubleshooting Self-Hosted Runners]([EXTERNAL_URL_REMOVED])
 
 ## Notes
 

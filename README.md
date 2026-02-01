@@ -9,13 +9,13 @@
 <!-- GL Layer: GL90-99 Meta-Specification Layer -->
 <!-- Purpose: Project overview and navigation with GL Governance System -->
 
-[![Build Status](https://github.com/MachineNativeOps/machine-native-ops/workflows/CI/badge.svg)](https://github.com/MachineNativeOps/machine-native-ops/actions)
-[![CodeQL](https://github.com/MachineNativeOps/machine-native-ops/actions/workflows/codeql.yml/badge.svg)](https://github.com/MachineNativeOps/machine-native-ops/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![GL Compliance](https://img.shields.io/badge/GL%20Compliance-100%25-green.svg)](GL-STATUS-REPORT.md)
-[![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen.svg)](AUTO-QUALITY-REPORT.md)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/MachineNativeOps/machine-native-ops/graphs/commit-activity)
+[![Build Status]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![CodeQL]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![License: MIT]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![Python Version]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
+[![GL Compliance]([EXTERNAL_URL_REMOVED])](GL-STATUS-REPORT.md)
+[![Code Quality]([EXTERNAL_URL_REMOVED])](AUTO-QUALITY-REPORT.md)
+[![Maintenance]([EXTERNAL_URL_REMOVED])]([EXTERNAL_URL_REMOVED])
 
 > **📚 Quick Navigation**: 
 > - **GL System Status** → [GL-STATUS-REPORT.md](GL-STATUS-REPORT.md)
@@ -421,7 +421,7 @@ python tools/python/governance_agent.py info
 
 ```bash
 # Clone the repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # Install Python dependencies
@@ -872,7 +872,7 @@ If you continue to experience issues:
    - [GL-IMPLEMENTATION-COMPLETE.md](GL-IMPLEMENTATION-COMPLETE.md)
 
 2. **Search existing issues**:
-   - [GitHub Issues](https://github.com/MachineNativeOps/machine-native-ops/issues)
+   - [GitHub Issues]([EXTERNAL_URL_REMOVED])
    - Use keywords related to your problem
 
 3. **Create a new issue** with:
@@ -899,7 +899,7 @@ If you continue to experience issues:
 For questions or support:
 
 - Documentation: [workspace/docs/DOCUMENTATION_INDEX.md](workspace/docs/DOCUMENTATION_INDEX.md)
-- Issues: [GitHub Issues](https://github.com/MachineNativeOps/machine-native-ops/issues)
+- Issues: [GitHub Issues]([EXTERNAL_URL_REMOVED])
 - Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 - Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
 - Email: contact@machinenativeops.com

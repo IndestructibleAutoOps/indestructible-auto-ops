@@ -289,7 +289,7 @@ export GITHUB_TOKEN="your_personal_access_token"
 export GITHUB_ORG="your-organization"
 
 # Elasticsearch (如使用)
-export ELASTICSEARCH_ENDPOINT="http://elasticsearch:9200"
+export ELASTICSEARCH_ENDPOINT="[EXTERNAL_URL_REMOVED]
 export ELASTICSEARCH_PASSWORD="your_password"
 
 # 其他配置
@@ -499,9 +499,9 @@ grep "detected" scan.log
 
 ### 外部資源
 
-- [GitHub CLI 文檔](https://cli.github.com/manual/)
-- [CodeQL 查詢語言](https://codeql.github.com/docs/ql-language-reference/)
-- [Secret Scanning API](https://docs.github.com/en/rest/secret-scanning)
+- [GitHub CLI 文檔]([EXTERNAL_URL_REMOVED])
+- [CodeQL 查詢語言]([EXTERNAL_URL_REMOVED])
+- [Secret Scanning API]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -516,8 +516,8 @@ grep "detected" scan.log
 
 ### 編碼規範
 
-- Bash: 遵循 [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html)
-- Python: 遵循 [PEP 8](https://www.python.org/dev/peps/pep-0008/)
+- Bash: 遵循 [Google Shell Style Guide]([EXTERNAL_URL_REMOVED])
+- Python: 遵循 [PEP 8]([EXTERNAL_URL_REMOVED])
 - 添加適當的錯誤處理
 - 包含使用範例和註釋
 

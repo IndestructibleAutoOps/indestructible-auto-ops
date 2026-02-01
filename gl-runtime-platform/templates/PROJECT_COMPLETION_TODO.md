@@ -191,7 +191,7 @@ Status: ✅ 推送成功
 Branch: feature/gl-enterprise-architecture-v1.0.0
 Remote: origin
 Status: 同步完成
-URL: https://github.com/MachineNativeOps/machine-native-ops
+URL: [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -337,8 +337,8 @@ URL: https://github.com/MachineNativeOps/machine-native-ops
 
 - **平台團隊**: platform-team@gl-runtime.io
 - **DevOps 團隊**: devops@gl-runtime.io
-- **文檔**: https://docs.gl-runtime.io
-- **GitHub**: https://github.com/MachineNativeOps/machine-native-ops
+- **文檔**: [EXTERNAL_URL_REMOVED]
+- **GitHub**: [EXTERNAL_URL_REMOVED]
 
 ---
 

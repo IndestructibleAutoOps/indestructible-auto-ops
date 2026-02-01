@@ -216,11 +216,11 @@ scripts/deploy/
 # 監控配置
 monitoring:
   prometheus:
-    endpoint: http://localhost:9090
+    endpoint: [EXTERNAL_URL_REMOVED]
     scrape_interval: 15s
   
   grafana:
-    endpoint: http://localhost:3000
+    endpoint: [EXTERNAL_URL_REMOVED]
     dashboards:
       - system-overview
       - service-metrics

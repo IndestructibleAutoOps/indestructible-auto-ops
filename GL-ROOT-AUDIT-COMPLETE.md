@@ -151,7 +151,7 @@
 
 ### 遠端倉庫
 - **狀態**: 已推送至 origin/main
-- **URL**: https://github.com/MachineNativeOps/machine-native-ops.git
+- **URL**: [EXTERNAL_URL_REMOVED]
 
 ### 安全掃描
 - GitHub 發現 4 個漏洞 (3 moderate, 1 low)

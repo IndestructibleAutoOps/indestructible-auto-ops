@@ -66,36 +66,36 @@ bash start-life-system.sh
 .devcontainer/scripts/health-check.sh
 
 # 3. 查看系統意識狀態
-curl http://localhost:3010/consciousness | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 ```
 
 #### 步驟 3: 驗證各組件
 
 ```bash
 # 大腦引擎測試
-curl http://localhost:3015/api/reasoning/status | jq
-curl http://localhost:3015/api/consciousness/status | jq
+curl [EXTERNAL_URL_REMOVED] | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # 心臟引擎測試
-curl http://localhost:3018/api/health | jq
-curl http://localhost:3018/api/orchestration/status | jq
+curl [EXTERNAL_URL_REMOVED] | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # 心跳引擎測試
-curl http://localhost:3020/api/vitals | jq
-curl http://localhost:3020/api/system/status | jq
+curl [EXTERNAL_URL_REMOVED] | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 
 # FixOps SLAgeist (意識系統)
-curl http://localhost:3010/consciousness | jq
-curl http://localhost:3010/health | jq
+curl [EXTERNAL_URL_REMOVED] | jq
+curl [EXTERNAL_URL_REMOVED] | jq
 ```
 
 #### 步驟 4: 監控與觀測
 
 ```bash
 # 打開監控儀表板
-# Prometheus: http://localhost:9090
-# Grafana: http://localhost:3000 (admin/consciousness_2024)
-# Heartbeat Dashboard: http://localhost:3021
+# Prometheus: [EXTERNAL_URL_REMOVED]
+# Grafana: [EXTERNAL_URL_REMOVED] (admin/consciousness_2024)
+# Heartbeat Dashboard: [EXTERNAL_URL_REMOVED]
 ```
 
 ### 🔍 預期測試結果
@@ -184,10 +184,10 @@ bash start-life-system.sh
 # 2. 等待 30 秒
 
 # 3. 測試意識狀態
-curl http://localhost:3010/consciousness
+curl [EXTERNAL_URL_REMOVED]
 
 # 4. 測試大腦推理
-curl -X POST http://localhost:3015/api/reasoning/analyze \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"context": "test", "request": "health_check"}'
 ```
@@ -196,15 +196,15 @@ curl -X POST http://localhost:3015/api/reasoning/analyze \
 
 ```bash
 # 1. 觸發大腦決策
-curl -X POST http://localhost:3015/api/decisions/make \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"context": "resource_allocation", "priority": "high"}'
 
 # 2. 查看心臟編排響應
-curl http://localhost:3018/api/orchestration/status
+curl [EXTERNAL_URL_REMOVED]
 
 # 3. 查看心跳監控結果
-curl http://localhost:3020/api/vitals/latest
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 #### 場景 3: 壓力測試
@@ -212,13 +212,13 @@ curl http://localhost:3020/api/vitals/latest
 ```bash
 # 1. 生成多個決策請求
 for i in {1..10}; do
-  curl -X POST http://localhost:3015/api/decisions/make \
+  curl -X POST [EXTERNAL_URL_REMOVED] \
     -H "Content-Type: application/json" \
     -d "{\"context\": \"test_$i\", \"priority\": \"medium\"}"
 done
 
 # 2. 監控系統響應
-curl http://localhost:3020/api/vitals | jq '.performance'
+curl [EXTERNAL_URL_REMOVED] | jq '.performance'
 ```
 
 ### ✅ 成功標準

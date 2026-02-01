@@ -641,7 +641,7 @@ npm test               # 執行測試
 
 ```yaml
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v4.5.0
     hooks:
       - id: trailing-whitespace
@@ -649,18 +649,18 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
       
-  - repo: https://github.com/psf/black
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 23.12.1
     hooks:
       - id: black
       
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v0.1.9
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
         
-  - repo: https://github.com/pre-commit/mirrors-mypy
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v1.8.0
     hooks:
       - id: mypy

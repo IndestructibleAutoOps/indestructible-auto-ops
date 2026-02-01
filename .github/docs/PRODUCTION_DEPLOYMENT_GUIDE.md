@@ -61,9 +61,9 @@ export POSTGRES_PASSWORD=$(openssl rand -base64 32)
 export SECRET_KEY=$(openssl rand -base64 32)
 
 # Notification Channels
-export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
+export SLACK_WEBHOOK_URL="[EXTERNAL_URL_REMOVED]
 export PAGERDUTY_SERVICE_KEY="your-pagerduty-key"
-export PAGERDUTY_URL="https://events.pagerduty.com/v2/enqueue"
+export PAGERDUTY_URL="[EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -145,7 +145,7 @@ kubectl create namespace velero
 
 ```bash
 # Download Istio
-curl -L https://istio.io/downloadIstio | sh -
+curl -L [EXTERNAL_URL_REMOVED] | sh -
 cd istio-*
 
 # Install Istio with production profile
@@ -217,7 +217,7 @@ kubectl apply -f k8s/production/grafana-dashboards.yaml
 kubectl apply -f k8s/production/alertmanager-config.yaml
 
 # Deploy monitoring stack (if using Helm)
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community [EXTERNAL_URL_REMOVED]
 helm repo update
 
 # Install Prometheus
@@ -240,7 +240,7 @@ kubectl get svc -n production
 kubectl get pods -n istio-system
 
 # Test application health
-kubectl exec -it deployment/machine-native-ops -n production -- curl http://localhost:8000/health
+kubectl exec -it deployment/machine-native-ops -n production -- curl [EXTERNAL_URL_REMOVED]
 
 # Check Istio gateway
 kubectl get gateway -n production
@@ -404,7 +404,7 @@ kubectl apply -f k8s/istio/metrics.yaml
 
 # Query metrics
 kubectl port-forward -n monitoring svc/prometheus 9090:9090
-# Open http://localhost:9090
+# Open [EXTERNAL_URL_REMOVED]
 
 # Common queries:
 # - Request rate: sum(rate(istio_requests_total[5m])) by (destination_service)
@@ -422,13 +422,13 @@ kubectl port-forward -n monitoring svc/prometheus 9090:9090
 
 ```bash
 # Install Elasticsearch Operator
-kubectl apply -f https://download.elastic.co/downloads/eck/2.9.0/crds.yaml
+kubectl apply -f [EXTERNAL_URL_REMOVED]
 
 # Install Elasticsearch
 kubectl apply -f k8s/jaeger/elasticsearch.yaml
 
 # Install Jaeger
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+helm repo add jaegertracing [EXTERNAL_URL_REMOVED]
 helm install jaeger jaegertracing/jaeger \
   --namespace istio-system \
   --values k8s/jaeger/values.yaml
@@ -465,7 +465,7 @@ with tracer.start_as_current_span("operation_name") as span:
 # Port forward to Jaeger UI
 kubectl port-forward -n istio-system svc/jaeger-query 16686:16686
 
-# Open http://localhost:16686
+# Open [EXTERNAL_URL_REMOVED]
 
 # Search traces by:
 # - Service name
@@ -669,7 +669,7 @@ exit
 # Port forward to Grafana
 kubectl port-forward -n monitoring svc/grafana 3000:3000
 
-# Open http://localhost:3000
+# Open [EXTERNAL_URL_REMOVED]
 # Default credentials: admin / admin (change on first login)
 
 # Import dashboards:
@@ -813,7 +813,7 @@ kubectl exec -it deployment/machine-native-ops -n production -- \
 
 # Test network connectivity
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl -v http://postgresql.production.svc.cluster.local:5432
+  curl -v [EXTERNAL_URL_REMOVED]
 
 # Check network policies
 kubectl get networkpolicy -n production -o yaml
@@ -961,7 +961,7 @@ kubectl get all -n production
 
 # 3. Check application health
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl http://localhost:8000/health
+  curl [EXTERNAL_URL_REMOVED]
 
 # 4. Verify monitoring stack
 kubectl get pods -n monitoring
@@ -1015,11 +1015,11 @@ istioctl proxy-config clusters <pod-name> -n production
 
 ### Additional Resources
 
-- [Istio Documentation](https://istio.io/latest/docs/)
-- [Jaeger Documentation](https://www.jaegertracing.io/docs/)
-- [Velero Documentation](https://velero.io/docs/)
-- [Prometheus Documentation](https://prometheus.io/docs/)
-- [Grafana Documentation](https://grafana.com/docs/)
+- [Istio Documentation]([EXTERNAL_URL_REMOVED])
+- [Jaeger Documentation]([EXTERNAL_URL_REMOVED])
+- [Velero Documentation]([EXTERNAL_URL_REMOVED])
+- [Prometheus Documentation]([EXTERNAL_URL_REMOVED])
+- [Grafana Documentation]([EXTERNAL_URL_REMOVED])
 
 ---
 

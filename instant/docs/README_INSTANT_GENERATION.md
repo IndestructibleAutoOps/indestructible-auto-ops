@@ -226,8 +226,8 @@ result = await agent.process_task(task)
 ## 🤝 社區支持
 
 ### 💬 獲取幫助
-- 🐛 [報告問題](https://github.com/MachineNativeOps/MachineNativeOps/issues)
-- 💡 [功能建議](https://github.com/MachineNativeOps/MachineNativeOps/discussions)
+- 🐛 [報告問題]([EXTERNAL_URL_REMOVED])
+- 💡 [功能建議]([EXTERNAL_URL_REMOVED])
 - 📧 [郵件支持](mailto:support@myninja.ai)
 
 ### 🎯 參與貢獻
@@ -235,7 +235,7 @@ result = await agent.process_task(task)
 
 - 🔧 [貢獻代碼](CONTRIBUTING.md)
 - 📝 [改進文檔](docs/contributing.md)
-- 🌟 [推薦項目](https://github.com/MachineNativeOps/MachineNativeOps)
+- 🌟 [推薦項目]([EXTERNAL_URL_REMOVED])
 
 ## 📄 許可證
 
@@ -247,7 +247,7 @@ result = await agent.process_task(task)
 
 ```bash
 # 1. 克隆項目
-git clone https://github.com/MachineNativeOps/MachineNativeOps.git
+git clone [EXTERNAL_URL_REMOVED]
 
 # 2. 安裝依賴
 cd MachineNativeOps

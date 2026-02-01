@@ -339,7 +339,7 @@ All paths are relative and portable. The system can be:
 ## 🔗 Related Resources
 
 ### Original Repository
-- https://github.com/MachineNativeOps/mno-repository-understanding-system
+- [EXTERNAL_URL_REMOVED]
 
 ### Integration Locations
 - Tools: `workspace/tools/repository-understanding/`

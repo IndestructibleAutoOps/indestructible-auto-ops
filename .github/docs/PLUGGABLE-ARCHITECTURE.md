@@ -412,7 +412,7 @@ DATADOG_API_KEY: <api-key>
 
 ```bash
 # 克隆倉庫
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # 查看配置文件

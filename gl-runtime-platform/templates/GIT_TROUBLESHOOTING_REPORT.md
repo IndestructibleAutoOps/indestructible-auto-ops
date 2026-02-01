@@ -3,7 +3,7 @@
 ## 問題概述
 
 **問題描述**: 無法將代碼推送到 GitHub 倉庫  
-**錯誤信息**: `fatal: unable to access 'https://github.com/MachineNativeOps/machine-native-ops.git/': Could not resolve host: github.com`  
+**錯誤信息**: `fatal: unable to access '[EXTERNAL_URL_REMOVED] Could not resolve host: github.com`  
 **實際錯誤**: HTTP/2 401 Unauthorized
 
 ## 排查過程
@@ -28,13 +28,13 @@ nslookup github.com
 # 檢查 Remote URL
 git remote -v
 # 結果:
-# origin  https://<TOKEN_REDACTED>@github.com/MachineNativeOps/machine-native-ops.git (fetch)
-# origin  https://<TOKEN_REDACTED>@github.com/MachineNativeOps/machine-native-ops.git (push)
+# origin  [EXTERNAL_URL_REMOVED] (fetch)
+# origin  [EXTERNAL_URL_REMOVED] (push)
 
 # 檢查 Git 配置
 git config --list | grep -E "(user|credential|url)"
 # 結果:
-# remote.origin.url=https://<TOKEN_REDACTED>@github.com/MachineNativeOps/machine-native-ops.git
+# remote.origin.url=[EXTERNAL_URL_REMOVED]
 # user.name=GL Runtime Platform
 # user.email=gl-platform@machine-native-ops.com
 ```
@@ -76,7 +76,7 @@ GIT_CURL_VERBOSE=1 git push origin feature/gl-enterprise-architecture-v1.0.0 2>&
 
 ```bash
 # 測試 GitHub API 認證
-curl -H "Authorization: token <TOKEN_REDACTED>" https://api.github.com/user
+curl -H "Authorization: token <TOKEN_REDACTED>" [EXTERNAL_URL_REMOVED]
 ```
 
 **結果**: ✅ 成功
@@ -94,7 +94,7 @@ curl -H "Authorization: token <TOKEN_REDACTED>" https://api.github.com/user
 
 ```bash
 curl -sH "Authorization: token <TOKEN_REDACTED>" \
-  https://api.github.com/repos/MachineNativeOps/machine-native-ops | \
+  [EXTERNAL_URL_REMOVED] | \
   grep -E "(push|admin|permissions)"
 ```
 
@@ -128,8 +128,8 @@ date
 通過深入分析，確定問題根源：
 
 1. **URL 格式問題**:
-   - 舊格式: `https://ghp_TOKEN@github.com/...`
-   - 新格式: `https://x-access-token:TOKEN@github.com/...`
+   - 舊格式: `[EXTERNAL_URL_REMOVED]
+   - 新格式: `[EXTERNAL_URL_REMOVED]
    - Git 2.39.5 對舊格式支持有變化
 
 2. **缺少 Credential Helper**:
@@ -150,7 +150,7 @@ git config --global credential.helper store
 
 # 更新 Remote URL 格式
 git remote set-url origin \
-  https://x-access-token:<TOKEN_REDACTED>@github.com/MachineNativeOps/machine-native-ops.git
+  [EXTERNAL_URL_REMOVED]
 
 # 推送代碼
 git push origin feature/gl-enterprise-architecture-v1.0.0
@@ -159,7 +159,7 @@ git push origin feature/gl-enterprise-architecture-v1.0.0
 **結果**: ✅ 成功推送
 ```
 remote: GitHub found 3 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (2 moderate, 1 low).
-To https://github.com/MachineNativeOps/machine-native-ops.git
+To [EXTERNAL_URL_REMOVED]
    a087bf69..28fb94a0  feature/gl-enterprise-architecture-v1.0.0 -> feature/gl-enterprise-architecture-v1.0.0
 ```
 
@@ -195,12 +195,12 @@ git push origin feature/gl-enterprise-architecture-v1.0.0
 
 **舊方式**:
 ```bash
-https://TOKEN@github.com/user/repo.git
+[EXTERNAL_URL_REMOVED]
 ```
 
 **新方式**:
 ```bash
-https://x-access-token:TOKEN@github.com/user/repo.git
+[EXTERNAL_URL_REMOVED]
 ```
 
 **SSH 方式**:
@@ -260,7 +260,7 @@ git remote -v
 git config --list
 
 # 3. 測試 Token
-curl -H "Authorization: token YOUR_TOKEN" https://api.github.com/user
+curl -H "Authorization: token YOUR_TOKEN" [EXTERNAL_URL_REMOVED]
 
 # 4. 詳細診斷
 GIT_CURL_VERBOSE=1 git push origin BRANCH_NAME

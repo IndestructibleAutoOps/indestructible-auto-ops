@@ -110,17 +110,17 @@ v1.3 (AXIOM 命名重構版本)
 ### API 端點測試
 ```bash
 # 健康檢查
-curl http://localhost:5001/health
+curl [EXTERNAL_URL_REMOVED]
 ✅ {"governance":"GL Unified Charter Activated", ...}
 
 # 提交任務
-curl -X POST http://localhost:5001/api/control/execute \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"command": "檢查系統狀態", "priority": "normal"}'
 ✅ {"status":"accepted", "ticket":"TKT-791cf87b", ...}
 
 # 控制狀態
-curl http://localhost:5001/api/control/status
+curl [EXTERNAL_URL_REMOVED]
 ✅ {"status":"operational", "ready_for_tasks": true, ...}
 ```
 
@@ -207,11 +207,11 @@ python3 scripts/check-service-health.py
 ### API 端點驗證
 ```bash
 # 健康檢查
-curl -s http://localhost:5001/health | jq .
+curl -s [EXTERNAL_URL_REMOVED] | jq .
 ✅ {"governance":"GL Unified Charter Activated", ...}
 
 # 自然語言任務
-curl -s -X POST http://localhost:5001/api/control/execute \
+curl -s -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"command": "檢查系統狀態", "priority": "normal"}' | jq .
 ✅ {"status":"accepted", ...}

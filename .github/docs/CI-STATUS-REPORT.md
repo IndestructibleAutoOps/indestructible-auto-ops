@@ -8,7 +8,7 @@
 
 ## PR #146: Pluggable CI/CD Architecture
 
-**URL:** https://github.com/MachineNativeOps/machine-native-ops/pull/146
+**URL:** [EXTERNAL_URL_REMOVED]
 
 ---
 

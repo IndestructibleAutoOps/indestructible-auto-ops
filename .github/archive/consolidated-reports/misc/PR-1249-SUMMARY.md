@@ -8,7 +8,7 @@
 
 ## 🎉 MCP Level 3 Implementation Complete
 
-**PR URL:** https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/1249  
+**PR URL:** [EXTERNAL_URL_REMOVED]  
 **Status:** Ready for Review  
 **Branch:** feature/mcp-level2-artifacts-completion → main
 
@@ -251,7 +251,7 @@ Import `ns-root/mcp-level3/visualizations/grafana-dashboard.json` into Grafana f
 ### Current Status
 Most CI checks are failing due to a GitHub Actions infrastructure issue:
 ```
-##[error]An action could not be found at the URI 'https://api.github.com/repos/actions/checkout/tarball/...'
+##[error]An action could not be found at the URI '[EXTERNAL_URL_REMOVED]
 ```
 
 This is a temporary GitHub infrastructure problem, not an issue with our code.

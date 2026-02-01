@@ -120,7 +120,7 @@
 
 **遠端分支：** main  
 **推送狀態：** ✅ 成功  
-**遠端 URL：** https://github.com/MachineNativeOps/machine-native-ops.git
+**遠端 URL：** [EXTERNAL_URL_REMOVED]
 
 ### GitHub 安全警告
 ⚠️ **發現 4 個安全漏洞**
@@ -128,7 +128,7 @@
 - 1 個低風險
 
 **建議操作：**
-訪問 https://github.com/MachineNativeOps/machine-native-ops/security/dependabot 
+訪問 [EXTERNAL_URL_REMOVED] 
 查看並修復依賴項安全漏洞
 
 ---

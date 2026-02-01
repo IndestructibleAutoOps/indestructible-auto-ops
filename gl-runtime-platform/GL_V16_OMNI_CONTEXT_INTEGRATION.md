@@ -325,7 +325,7 @@ gl-execution-runtime/
 
 ### Server Information
 - **Port:** 3008
-- **Base URL:** `http://localhost:3008`
+- **Base URL:** `[EXTERNAL_URL_REMOVED]
 
 ### Core Endpoints
 

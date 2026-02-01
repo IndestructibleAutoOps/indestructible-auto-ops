@@ -235,16 +235,16 @@ This portal provides comprehensive documentation for the AI-native infrastructur
 ## 🔗 External Resources
 
 ### Standards & Specifications
-- [SLSA Framework](https://slsa.dev/) - Supply chain security framework
-- [OPA Documentation](https://www.openpolicyagent.org/docs/) - Open Policy Agent
-- [Sigstore](https://www.sigstore.dev/) - Signing and transparency
-- [SPDX](https://spdx.dev/) - Software Package Data Exchange
+- [SLSA Framework]([EXTERNAL_URL_REMOVED]) - Supply chain security framework
+- [OPA Documentation]([EXTERNAL_URL_REMOVED]) - Open Policy Agent
+- [Sigstore]([EXTERNAL_URL_REMOVED]) - Signing and transparency
+- [SPDX]([EXTERNAL_URL_REMOVED]) - Software Package Data Exchange
 
 ### Tools
-- [syft](https://github.com/anchore/syft) - SBOM generation
-- [Cosign](https://docs.sigstore.dev/cosign/overview/) - Container signing
-- [Trivy](https://aquasecurity.github.io/trivy/) - Vulnerability scanning
-- [Graphviz](https://graphviz.org/) - Graph visualization
+- [syft]([EXTERNAL_URL_REMOVED]) - SBOM generation
+- [Cosign]([EXTERNAL_URL_REMOVED]) - Container signing
+- [Trivy]([EXTERNAL_URL_REMOVED]) - Vulnerability scanning
+- [Graphviz]([EXTERNAL_URL_REMOVED]) - Graph visualization
 
 ---
 

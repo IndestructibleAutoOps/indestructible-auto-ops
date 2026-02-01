@@ -546,8 +546,8 @@ kubectl get ingress -n autofix
 
 如有問題或建議，請通過以下方式聯繫：
 
-- **Issues**: <https://github.com/we-can-fix/synergymesh/issues>
-- **Documentation**: <https://docs.synergymesh.com>
+- **Issues**: <[EXTERNAL_URL_REMOVED]
+- **Documentation**: <[EXTERNAL_URL_REMOVED]
 - **Email**: <support@synergymesh.com>
 
 ---

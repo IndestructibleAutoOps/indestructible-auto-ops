@@ -55,6 +55,6 @@ Target: Self-hosted production server deployment with blue-green strategy.
 ## Completion Status
 ✅ **ALL TASKS COMPLETED**
 
-**Pull Request:** https://github.com/MachineNativeOps/machine-native-ops/pull/256
+**Pull Request:** [EXTERNAL_URL_REMOVED]
 **Branch:** feature/gl-cicd-pipeline-enhancement
 **Status:** Ready for Review

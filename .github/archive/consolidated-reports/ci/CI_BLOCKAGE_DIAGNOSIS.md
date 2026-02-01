@@ -89,7 +89,7 @@
 
 1. **等待 Security Scan 完成**
    - 預計完成時間：5-10 分鐘
-   - 監控 URL: https://github.com/MachineNativeOps/machine-native-ops/actions/runs/21094856234/job/60671062596
+   - 監控 URL: [EXTERNAL_URL_REMOVED]
 
 2. **檢查完成狀態**
    - 使用命令：`gh run watch 21094856234`

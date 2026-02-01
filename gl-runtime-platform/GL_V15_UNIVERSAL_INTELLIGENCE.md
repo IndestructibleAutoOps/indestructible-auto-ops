@@ -455,7 +455,7 @@ UNIVERSAL_INTELLIGENCE_PORT=3007
 ### 健康檢查
 
 ```bash
-curl http://localhost:3007/health
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ---

@@ -228,12 +228,12 @@ results = engine.semantic_search(
 
 ```bash
 # Semantic folding
-curl -X POST https://semantic-core.gl/semantic/fold \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/yaml" \
   -d @specification.yaml
 
 # Semantic search
-curl "https://semantic-core.gl/semantic/search?query=runtime&limit=10"
+curl "[EXTERNAL_URL_REMOVED]
 ```
 
 ### Kubernetes Deployment

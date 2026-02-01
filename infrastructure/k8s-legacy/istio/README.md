@@ -51,7 +51,7 @@ This directory contains enterprise-grade Istio Service Mesh configuration for th
 1. **Install Istio:**
 ```bash
 # Download Istio
-curl -L https://istio.io/downloadIstio | sh -
+curl -L [EXTERNAL_URL_REMOVED] | sh -
 cd istio-*
 
 # Install with custom profile
@@ -221,7 +221,7 @@ istioctl proxy-config routes <pod-name> -n machine-native-ops
 
 ## References
 
-- [Istio Documentation](https://istio.io/latest/docs/)
-- [Traffic Management](https://istio.io/latest/docs/concepts/traffic-management/)
-- [Security](https://istio.io/latest/docs/concepts/security/)
-- [Observability](https://istio.io/latest/docs/concepts/observability/)
+- [Istio Documentation]([EXTERNAL_URL_REMOVED])
+- [Traffic Management]([EXTERNAL_URL_REMOVED])
+- [Security]([EXTERNAL_URL_REMOVED])
+- [Observability]([EXTERNAL_URL_REMOVED])

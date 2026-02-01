@@ -478,21 +478,21 @@ kubectl apply -f policies/opa/constraint-namespace-naming.yaml
 - [GL 全域命名治理規範 v2.1.0](../一月三十一命名規範.txt)
 - [GL Platform Universe v1.0.0](../../gl-enterprise-architecture/)
 - [GL Semantic Core Platform v1.0.0](../../gl-platform-services/)
-- [Kubernetes 命名規範指南](https://docs.gl-runtime.io/naming)
+- [Kubernetes 命名規範指南]([EXTERNAL_URL_REMOVED])
 
 ### 外部文檔
 
-- [Kubernetes 文檔](https://kubernetes.io/docs/)
-- [OPA Gatekeeper 文檔](https://open-policy-agent.github.io/gatekeeper/)
-- [Kustomize 文檔](https://kustomize.io/)
-- [CNCF 最佳實務](https://www.cncf.io/projects/)
+- [Kubernetes 文檔]([EXTERNAL_URL_REMOVED])
+- [OPA Gatekeeper 文檔]([EXTERNAL_URL_REMOVED])
+- [Kustomize 文檔]([EXTERNAL_URL_REMOVED])
+- [CNCF 最佳實務]([EXTERNAL_URL_REMOVED])
 
 ## 聯繫方式
 
 - **平台團隊**: platform-team@gl-runtime.io
 - **DevOps 團隊**: devops@gl-runtime.io
 - **安全團隊**: security@gl-runtime.io
-- **文檔**: https://docs.gl-runtime.io
+- **文檔**: [EXTERNAL_URL_REMOVED]
 
 ## 變更日誌
 

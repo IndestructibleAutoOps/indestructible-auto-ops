@@ -338,16 +338,16 @@ HPA:
 ## 監控和告警 (Monitoring & Alerting)
 
 ### 可用端點
-- **Health Check**: `http://<service-url>/health`
-- **Ready Check**: `http://<service-url>/ready`
-- **Metrics**: `http://<service-url>/metrics`
+- **Health Check**: `[EXTERNAL_URL_REMOVED]
+- **Ready Check**: `[EXTERNAL_URL_REMOVED]
+- **Metrics**: `[EXTERNAL_URL_REMOVED]
 
 ### 監控面板
-- **Grafana**: `http://grafana.machinenativeops.com`
-- **Prometheus**: `http://prometheus.machinenativeops.com`
+- **Grafana**: `[EXTERNAL_URL_REMOVED]
+- **Prometheus**: `[EXTERNAL_URL_REMOVED]
 
 ### 日誌查看
-- **Loki**: `http://loki.machinenativeops.com`
+- **Loki**: `[EXTERNAL_URL_REMOVED]
 - **Kubectl**: `kubectl logs -f deployment/machine-native-ops -n production`
 
 ## 安全配置 (Security Configuration)

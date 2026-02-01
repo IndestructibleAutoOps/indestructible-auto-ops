@@ -44,7 +44,7 @@ pip install elasticsearch==8.11.0
 from src.elasticsearch.client import EsClientManager
 
 client = EsClientManager({
-    'hosts': ['http://localhost:9200'],
+    'hosts': ['[EXTERNAL_URL_REMOVED]],
     'timeout': 30,
     'username': 'elastic',
     'password': 'your-password'

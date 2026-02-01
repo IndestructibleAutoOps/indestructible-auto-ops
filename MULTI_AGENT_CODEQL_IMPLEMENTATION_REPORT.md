@@ -232,7 +232,7 @@
 
 2. **Push Branch**
    ```bash
-   git push https://x-access-token:$GL_TOKEN@github.com/MachineNativeOps/machine-native-ops.git feature/multi-agent-parallel-codeql-fix
+   git push [EXTERNAL_URL_REMOVED] feature/multi-agent-parallel-codeql-fix
    ```
 
 3. **Create Pull Request**
@@ -282,9 +282,9 @@
 7. `.github/workflows/codeql-monitor.yml` - Monitoring workflow
 
 ### External References
-- GitHub Actions Docs: https://docs.github.com/en/actions
-- CodeQL Docs: https://docs.github.com/en/code-security/code-scanning
-- Python Asyncio: https://docs.python.org/3/library/asyncio.html
+- GitHub Actions Docs: [EXTERNAL_URL_REMOVED]
+- CodeQL Docs: [EXTERNAL_URL_REMOVED]
+- Python Asyncio: [EXTERNAL_URL_REMOVED]
 
 ---
 
@@ -345,9 +345,9 @@
 - Task Tracking: `multi-agent-setup-todo.md`
 
 ### GitHub Resources
-- Repository: https://github.com/MachineNativeOps/machine-native-ops
-- Actions: https://github.com/MachineNativeOps/machine-native-ops/actions
-- Security: https://github.com/MachineNativeOps/machine-native-ops/security
+- Repository: [EXTERNAL_URL_REMOVED]
+- Actions: [EXTERNAL_URL_REMOVED]
+- Security: [EXTERNAL_URL_REMOVED]
 
 ---
 

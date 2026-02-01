@@ -82,7 +82,7 @@ All tasks have been successfully completed. The GL v9 Global DAG-Based Multi-Rep
 **PR #82**: feat: Implement GL v9 Global DAG-Based Multi-Repo Execution
 **Branch**: feature/gl-v9-global-dag-integration
 **Status**: Open for review
-**URL**: https://github.com/MachineNativeOps/machine-native-ops/pull/82
+**URL**: [EXTERNAL_URL_REMOVED]
 
 ## Compliance Summary
 

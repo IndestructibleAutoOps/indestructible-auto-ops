@@ -476,7 +476,7 @@ inputs:
    - 完整的使用指南
 
 3. **GitHub Actions文檔**
-   - 官方文檔：https://docs.github.com/actions
+   - 官方文檔：[EXTERNAL_URL_REMOVED]
    - 最佳實踐
 
 4. **CI/CD最佳實踐**

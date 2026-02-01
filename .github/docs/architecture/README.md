@@ -116,7 +116,7 @@ This architecture is documented across three GL (Governance Layers):
    npm install axios
    
    # Configure API base URL
-   echo "REACT_APP_API_URL=http://localhost:4010/api/v1" > .env.local
+   echo "REACT_APP_API_URL=[EXTERNAL_URL_REMOVED] > .env.local
    ```
 
 ### For Backend Developers
@@ -385,16 +385,16 @@ Content-Type: application/json
 - [Architecture Diagrams](frontend-backend-separation-diagrams.md)
 
 ### External Standards
-- [OpenAPI Specification 3.0](https://swagger.io/specification/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [12-Factor App](https://12factor.net/)
-- [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)
+- [OpenAPI Specification 3.0]([EXTERNAL_URL_REMOVED])
+- [RESTful API Design Best Practices]([EXTERNAL_URL_REMOVED])
+- [12-Factor App]([EXTERNAL_URL_REMOVED])
+- [OWASP API Security Top 10]([EXTERNAL_URL_REMOVED])
 
 ### Tools Documentation
-- [OpenAPI Generator](https://openapi-generator.tech/)
-- [Pact Contract Testing](https://docs.pact.io/)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [NestJS Documentation](https://docs.nestjs.com/)
+- [OpenAPI Generator]([EXTERNAL_URL_REMOVED])
+- [Pact Contract Testing]([EXTERNAL_URL_REMOVED])
+- [FastAPI Documentation]([EXTERNAL_URL_REMOVED])
+- [NestJS Documentation]([EXTERNAL_URL_REMOVED])
 
 ## 🤝 Contributing
 

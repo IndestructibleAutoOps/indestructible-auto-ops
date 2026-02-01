@@ -483,8 +483,8 @@ chmod +x QUICK_INSTALL.sh
 - **v4.0.0 Quantum**: [governance/quantum-naming-v4.0.0/docs/README.md](quantum-naming-v4.0.0/docs/README.md)
 
 ### Community Support
-- **Documentation**: https://docs.machinenativeops.io
-- **Discord Community**: https://discord.gg/machinenativeops
+- **Documentation**: [EXTERNAL_URL_REMOVED]
+- **Discord Community**: [EXTERNAL_URL_REMOVED]
 - **Issue Tracking**: GitHub Issues
 - **Enterprise Support**: support@machinenativeops.io
 

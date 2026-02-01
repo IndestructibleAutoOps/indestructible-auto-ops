@@ -156,6 +156,6 @@ The CI pipeline is functioning as designed:
 
 ---
 
-**PR URL**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/11
+**PR URL**: [EXTERNAL_URL_REMOVED]
 **Branch**: copilot/integrate-main-into-feature-branch
 **Status**: ✅ CI Functioning Correctly

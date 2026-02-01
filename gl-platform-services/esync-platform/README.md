@@ -1,8 +1,8 @@
 # ESync Platform - Enterprise Data Synchronization Platform
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Status](https://img.shields.io/badge/status-production--ready-brightgreen.svg)
-![Governance](https://img.shields.io/badge/governance-integrated-success.svg)
+![Version]([EXTERNAL_URL_REMOVED])
+![Status]([EXTERNAL_URL_REMOVED])
+![Governance]([EXTERNAL_URL_REMOVED])
 
 ## Overview
 
@@ -94,7 +94,7 @@ esync-platform/
 
 ```bash
 # Clone the repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops/esync-platform
 
 # Build the sync daemon
@@ -226,8 +226,8 @@ This project is licensed under the MIT License - see the [LICENSE](../../LICENSE
 ## 🔗 Links
 
 - [GL Unified Charter v5.0](../../GOVERNANCE.md)
-- [MachineNativeOps Repository](https://github.com/MachineNativeOps/machine-native-ops)
-- [Issue Tracker](https://github.com/MachineNativeOps/machine-native-ops/issues)
+- [MachineNativeOps Repository]([EXTERNAL_URL_REMOVED])
+- [Issue Tracker]([EXTERNAL_URL_REMOVED])
 
 ## 🏆 Status
 

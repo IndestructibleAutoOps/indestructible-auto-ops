@@ -137,7 +137,7 @@ kubectl apply -k environments/prod/
 
 - **平台團隊**: platform-team@gl-runtime.io
 - **DevOps 團隊**: devops@gl-runtime.io
-- **文檔**: https://docs.gl-runtime.io/templates
+- **文檔**: [EXTERNAL_URL_REMOVED]
 
 ## 變更日誌
 

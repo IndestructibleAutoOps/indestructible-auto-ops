@@ -183,7 +183,7 @@ jobs:
 
 ```bash
 # 1. 克隆倉庫
-git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git
+git clone [EXTERNAL_URL_REMOVED]
 cd mno-repository-understanding-system
 
 # 2. 創建開發分支
@@ -378,19 +378,19 @@ gh workflow run pr-quality-check.yml
 ## 📚 相關資源
 
 ### 文檔
-- [GitHub Actions 文檔](https://docs.github.com/en/actions)
-- [YAML 語法參考](https://yaml.org/spec/1.2/spec.html)
-- [CI/CD 最佳實踐](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment)
+- [GitHub Actions 文檔]([EXTERNAL_URL_REMOVED])
+- [YAML 語法參考]([EXTERNAL_URL_REMOVED])
+- [CI/CD 最佳實踐]([EXTERNAL_URL_REMOVED])
 
 ### 工具
-- [act](https://github.com/nektos/act) - 本地 GitHub Actions 測試
-- [yamllint](https://yamllint.readthedocs.io/) - YAML 語法檢查
-- [actionlint](https://github.com/rhysd/actionlint) - Actions 語法檢查
+- [act]([EXTERNAL_URL_REMOVED]) - 本地 GitHub Actions 測試
+- [yamllint]([EXTERNAL_URL_REMOVED]) - YAML 語法檢查
+- [actionlint]([EXTERNAL_URL_REMOVED]) - Actions 語法檢查
 
 ### 社區
-- [GitHub Actions 社區論壇](https://github.community/t5/GitHub-Actions/bd-p/actions)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/github-actions)
-- [Reddit r/devops](https://www.reddit.com/r/devops/)
+- [GitHub Actions 社區論壇]([EXTERNAL_URL_REMOVED])
+- [Stack Overflow]([EXTERNAL_URL_REMOVED])
+- [Reddit r/devops]([EXTERNAL_URL_REMOVED])
 
 ---
 

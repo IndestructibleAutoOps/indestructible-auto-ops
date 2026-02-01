@@ -187,13 +187,13 @@ node test-meta-cognitive.js
 
 ```bash
 # Health check
-curl http://localhost:3004/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Meta-cognitive status
-curl http://localhost:3004/api/v14/meta-cognitive/status
+curl [EXTERNAL_URL_REMOVED]
 
 # Consciousness state
-curl http://localhost:3004/api/v14/consciousness/state
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ---

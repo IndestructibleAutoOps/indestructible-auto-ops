@@ -9,7 +9,7 @@
 # GitHub Copilot Memory Guide
 
 Use this guide to configure the repository Copilot Memory at:
-`https://github.com/MachineNativeOps/machine-native-ops/settings/copilot/memory`.
+`[EXTERNAL_URL_REMOVED]
 
 ## ✅ Copilot Memory Content (Paste into Settings)
 

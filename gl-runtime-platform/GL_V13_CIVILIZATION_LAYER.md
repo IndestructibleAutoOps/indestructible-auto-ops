@@ -296,16 +296,16 @@ node test-civilization.js
 
 ```bash
 # Health check
-curl http://localhost:3003/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Civilization status
-curl http://localhost:3003/api/v13/civilization/status
+curl [EXTERNAL_URL_REMOVED]
 
 # Governance state
-curl http://localhost:3003/api/v13/governance/state
+curl [EXTERNAL_URL_REMOVED]
 
 # Cultural state
-curl http://localhost:3003/api/v13/cultural/state
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ---

@@ -135,7 +135,7 @@ Net change: +8,663 lines (formatting improvements)
 
 ## Pull Request
 
-**PR #3**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3  
+**PR #3**: [EXTERNAL_URL_REMOVED]  
 **Status**: Open  
 **Branch**: `feature/add-repository-structure`  
 **Base**: `main`
@@ -181,9 +181,9 @@ The remaining issues are non-blocking and primarily include:
    pip install pre-commit
    
    # Configure .pre-commit-config.yaml
-   - repo: https://github.com/psf/black
-   - repo: https://github.com/pycqa/isort
-   - repo: https://github.com/psf/black
+   - repo: [EXTERNAL_URL_REMOVED]
+   - repo: [EXTERNAL_URL_REMOVED]
+   - repo: [EXTERNAL_URL_REMOVED]
    ```
 
 2. **Configure CI/CD Pipeline**

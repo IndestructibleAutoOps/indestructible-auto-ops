@@ -290,6 +290,6 @@ All CI monitoring tasks have been completed successfully:
 **Total Commits**: 6 with detailed commit messages  
 **Success Rate**: 100%  
 
-**PR URL**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/11  
+**PR URL**: [EXTERNAL_URL_REMOVED]  
 **Branch**: copilot/integrate-main-into-feature-branch  
 **Status**: ✅ ALL TASKS COMPLETED SUCCESSFULLY

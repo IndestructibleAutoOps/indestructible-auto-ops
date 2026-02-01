@@ -287,7 +287,7 @@ All required completion markers are present:
 ## 📞 Support
 
 For questions or issues related to GL10 Top10 remediation:
-- **Repository**: https://github.com/MachineNativeOps/machine-native-ops
+- **Repository**: [EXTERNAL_URL_REMOVED]
 - **Documentation**: See `GL10-TOP10-EXECUTION-COMPLETE.md`
 - **Validator**: `tools/gl10top10validator.py`
 - **Completion Marker**: `gl/10-operational/GL10TOP10COMPLETE.json`

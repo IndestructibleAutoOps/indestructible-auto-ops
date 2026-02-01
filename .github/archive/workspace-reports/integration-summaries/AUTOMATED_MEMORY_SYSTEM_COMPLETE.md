@@ -154,7 +154,7 @@ $ git commit -m "fix: Resolve monitoring-service inconsistency..."
 ```bash
 $ git push origin main
 
-To https://github.com/MachineNativeOps/MachineNativeOps.git
+To [EXTERNAL_URL_REMOVED]
    8404106e..3407c997  main -> main
 ```
 

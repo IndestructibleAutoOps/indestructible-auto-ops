@@ -14,12 +14,12 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript)
-![Python](https://img.shields.io/badge/Python-3.10+-yellow?style=for-the-badge&logo=python)
-![Rust](https://img.shields.io/badge/Rust-1.75-orange?style=for-the-badge&logo=rust)
-![Go](https://img.shields.io/badge/Go-1.21-cyan?style=for-the-badge&logo=go)
+![Version]([EXTERNAL_URL_REMOVED])
+![License]([EXTERNAL_URL_REMOVED])
+![TypeScript]([EXTERNAL_URL_REMOVED])
+![Python]([EXTERNAL_URL_REMOVED])
+![Rust]([EXTERNAL_URL_REMOVED])
+![Go]([EXTERNAL_URL_REMOVED])
 
 **🌐 Enterprise-Grade AI Engineering Platform**
 
@@ -375,7 +375,7 @@ Kubernetes >= 1.25
 
 ```bash
 # 克隆倉庫
-git clone https://github.com/Island-AI/island-ai.git
+git clone [EXTERNAL_URL_REMOVED]
 cd island-ai
 
 # 安裝依賴
@@ -618,10 +618,10 @@ island-cli test:integration
 
 ## 📞 聯繫我們
 
-- 🌐 官網：[island-ai.io](https://island-ai.io)
+- 🌐 官網：[island-ai.io]([EXTERNAL_URL_REMOVED])
 - 📧 Email：<hello@island-ai.io>
-- 💬 Discord：[加入社群](https://discord.gg/island-ai)
-- 🐦 Twitter：[@IslandAI](https://twitter.com/IslandAI)
+- 💬 Discord：[加入社群]([EXTERNAL_URL_REMOVED])
+- 🐦 Twitter：[@IslandAI]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -631,10 +631,10 @@ island-cli test:integration
 
 _讓 AI 工程更高效，讓系統更智能！_
 
-[GitHub](https://github.com/Island-AI/island-ai) •
-[文檔](https://docs.island-ai.io) •
-[Issues](https://github.com/Island-AI/island-ai/issues) •
-[Discussions](https://github.com/Island-AI/island-ai/discussions)
+[GitHub]([EXTERNAL_URL_REMOVED]) •
+[文檔]([EXTERNAL_URL_REMOVED]) •
+[Issues]([EXTERNAL_URL_REMOVED]) •
+[Discussions]([EXTERNAL_URL_REMOVED])
 
 Made with ❤️ by the Island AI Team
 

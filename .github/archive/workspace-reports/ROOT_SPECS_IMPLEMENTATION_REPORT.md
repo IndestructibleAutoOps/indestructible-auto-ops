@@ -483,7 +483,7 @@ Implements machine-verifiable governance framework with 5 core specifications
 
 **Push Status:** ✅ Successful  
 **Branch:** `main`  
-**Remote:** `https://github.com/MachineNativeOps/MachineNativeOps.git`
+**Remote:** `[EXTERNAL_URL_REMOVED]
 
 **Notes:**
 - CodeQL scanning in progress

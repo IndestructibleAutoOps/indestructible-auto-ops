@@ -233,12 +233,12 @@ tests/unit/test_helpers.py .. [100%]
 ### Git 資源
 - **Branch**: feature/add-repository-structure
 - **Latest Commit**: 66e1575
-- **PR #3**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3
+- **PR #3**: [EXTERNAL_URL_REMOVED]
 
 ### 文檔資源
-- [測試 README](https://github.com/MachineNativeOps/mno-repository-understanding-system/blob/feature/add-repository-structure/tests/README.md)
-- [整合計劃](https://github.com/MachineNativeOps/mno-repository-understanding-system/blob/feature/add-repository-structure/DUPLICATE_PATHS_INTEGRATION_PLAN.md)
-- [Phase 1 報告](https://github.com/MachineNativeOps/mno-repository-understanding-system/blob/feature/add-repository-structure/DUPLICATE_PATHS_PHASE1_COMPLETE.md)
+- [測試 README]([EXTERNAL_URL_REMOVED])
+- [整合計劃]([EXTERNAL_URL_REMOVED])
+- [Phase 1 報告]([EXTERNAL_URL_REMOVED])
 
 ---
 

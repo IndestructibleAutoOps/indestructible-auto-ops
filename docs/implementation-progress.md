@@ -200,7 +200,7 @@
 
 ## Pull Request
 
-**PR #76:** https://github.com/MachineNativeOps/machine-native-ops/pull/76
+**PR #76:** [EXTERNAL_URL_REMOVED]
 
 Includes:
 - Real audit report with verifiable metrics

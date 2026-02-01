@@ -38,7 +38,7 @@
 
 ### Phase 5: 提交與鏈鍵
 - [x] 生成鏈鍵 (Link Key): GL-AEP-AUDIT-20260126-082815
-- [x] 建立 PR: https://github.com/MachineNativeOps/machine-native-ops/pull/255
+- [x] 建立 PR: [EXTERNAL_URL_REMOVED]
 - [x] 推送至遠端: feature/aep-governance-audit-20260126
 
 ## ✅ 任務完成！

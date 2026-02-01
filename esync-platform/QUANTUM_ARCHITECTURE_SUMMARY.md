@@ -171,8 +171,8 @@ esync-platform/
 ## 🔗 Quick Links
 
 - [GL Unified Charter v5.0](../../GOVERNANCE.md)
-- [MachineNativeOps Repository](https://github.com/MachineNativeOps/machine-native-ops)
-- [Issue Tracker](https://github.com/MachineNativeOps/machine-native-ops/issues)
+- [MachineNativeOps Repository]([EXTERNAL_URL_REMOVED])
+- [Issue Tracker]([EXTERNAL_URL_REMOVED])
 
 ## 🏆 Achievements
 

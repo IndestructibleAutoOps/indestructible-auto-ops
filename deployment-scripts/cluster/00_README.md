@@ -63,7 +63,7 @@ sudo ./02_init_control_plane.sh --role first-server
 ```bash
 # 在第二和第三個控制平面節點上執行
 sudo ./01_pre_install_check.sh
-sudo ./02_init_control_plane.sh --role additional-server --server-url https://192.168.1.11:6443 --token <token>
+sudo ./02_init_control_plane.sh --role additional-server --server-url [EXTERNAL_URL_REMOVED] --token <token>
 ```
 
 ### 添加 Worker 節點
@@ -71,7 +71,7 @@ sudo ./02_init_control_plane.sh --role additional-server --server-url https://19
 ```bash
 # 在 Worker 節點上執行
 sudo ./01_pre_install_check.sh
-sudo ./03_join_worker_node.sh --server-url https://192.168.1.11:6443 --token <token>
+sudo ./03_join_worker_node.sh --server-url [EXTERNAL_URL_REMOVED] --token <token>
 ```
 
 ### 安裝 CNI

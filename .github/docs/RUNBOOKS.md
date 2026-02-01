@@ -92,7 +92,7 @@
    - Verify application health:
      ```bash
      kubectl exec -it deployment/machine-native-ops -n production -- \
-       curl http://localhost:8000/health
+       curl [EXTERNAL_URL_REMOVED]
      ```
 
 6. **Document Incident** (Post-incident)
@@ -121,7 +121,7 @@
    ```bash
    # Check Jaeger traces
    kubectl port-forward -n istio-system svc/jaeger-query 16686:16686
-   # Open http://localhost:16686
+   # Open [EXTERNAL_URL_REMOVED]
    # Search slow operations
    ```
 
@@ -401,7 +401,7 @@
    # Check current health
    kubectl get pods -n production
    kubectl exec -it deployment/machine-native-ops -n production -- \
-     curl http://localhost:8000/health
+     curl [EXTERNAL_URL_REMOVED]
    
    # Check metrics
    # Open Grafana dashboard: machine-native-ops-prod
@@ -427,7 +427,7 @@
    
    # Check health
    kubectl exec -it deployment/machine-native-ops -n production -- \
-     curl http://localhost:8000/health
+     curl [EXTERNAL_URL_REMOVED]
    
    # Check metrics in Grafana
    # Monitor for 15 minutes
@@ -887,7 +887,7 @@ kubectl exec -it deployment/redis-leader -n production -- \
 6. **Verify Application**
    ```bash
    kubectl exec -it deployment/machine-native-ops -n production -- \
-     curl http://localhost:8000/health
+     curl [EXTERNAL_URL_REMOVED]
    ```
 
 ---
@@ -919,7 +919,7 @@ kubectl exec -it deployment/redis-leader -n production -- \
    # Check system health
    kubectl get pods -n production
    kubectl exec -it deployment/machine-native-ops -n production -- \
-     curl http://localhost:8000/health
+     curl [EXTERNAL_URL_REMOVED]
    
    # Document current metrics
    # Take screenshots of Grafana dashboards
@@ -990,7 +990,7 @@ kubectl exec -it deployment/redis-leader -n production -- \
    
    # Check health
    kubectl exec -it deployment/machine-native-ops -n production -- \
-     curl http://localhost:8000/health
+     curl [EXTERNAL_URL_REMOVED]
    
    # Check metrics
    # Verify error rate < 1%
@@ -1051,7 +1051,7 @@ kubectl exec -it deployment/redis-leader -n production -- \
 
 ```bash
 # Quick health check
-kubectl exec -it deployment/machine-native-ops -n production -- curl http://localhost:8000/health
+kubectl exec -it deployment/machine-native-ops -n production -- curl [EXTERNAL_URL_REMOVED]
 
 # Get all pods with restarts
 kubectl get pods -n production --sort-by='.status.containerStatuses[0].restartCount'

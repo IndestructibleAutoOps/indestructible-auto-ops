@@ -81,7 +81,7 @@ Installs Jaeger distributed tracing with Elasticsearch backend.
 **Access Jaeger UI:**
 ```bash
 kubectl port-forward -n jaeger svc/jaeger-query 16686:16686
-# Open browser at http://localhost:16686
+# Open browser at [EXTERNAL_URL_REMOVED]
 ```
 
 **Verification:**
@@ -117,7 +117,7 @@ Configures Velero for automated backups in testing environment.
 **Usage:**
 ```bash
 # Set S3 credentials first
-export S3_ENDPOINT="https://s3.amazonaws.com"
+export S3_ENDPOINT="[EXTERNAL_URL_REMOVED]
 export S3_ACCESS_KEY="your-access-key"
 export S3_SECRET_KEY="your-secret-key"
 
@@ -269,7 +269,7 @@ Deploy the components in the following order:
 
 3. **Configure Velero:**
    ```bash
-   export S3_ENDPOINT="https://s3.amazonaws.com"
+   export S3_ENDPOINT="[EXTERNAL_URL_REMOVED]
    export S3_ACCESS_KEY="your-access-key"
    export S3_SECRET_KEY="your-secret-key"
    ./scripts/configure-velero-backups.sh
@@ -304,7 +304,7 @@ All scripts require:
 
 **For Velero:**
 ```bash
-export S3_ENDPOINT="https://s3.amazonaws.com"
+export S3_ENDPOINT="[EXTERNAL_URL_REMOVED]
 export S3_ACCESS_KEY="your-access-key"
 export S3_SECRET_KEY="your-secret-key"
 ```

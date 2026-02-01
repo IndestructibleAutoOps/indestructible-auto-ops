@@ -116,10 +116,10 @@ gl-execution-runtime/
 ## 📊 監控與觀察性
 
 ### 健康檢查
-- 主健康檢查端點: http://localhost:3000/health
-- REST API 健康檢查: http://localhost:8080/health
-- 控制平面健康檢查: http://localhost:5001/health
-- Prometheus 監控: http://localhost:9090
+- 主健康檢查端點: [EXTERNAL_URL_REMOVED]
+- REST API 健康檢查: [EXTERNAL_URL_REMOVED]
+- 控制平面健康檢查: [EXTERNAL_URL_REMOVED]
+- Prometheus 監控: [EXTERNAL_URL_REMOVED]
 
 ### 審計日誌
 - 審計流: redis://localhost:6379/0
@@ -127,9 +127,9 @@ gl-execution-runtime/
 - 審計保留期: 30天
 
 ### 治理報告
-- 治理狀態: http://localhost:5001/api/governance/report
-- 系統狀態: http://localhost:5001/api/control/system/status
-- 代理狀態: http://localhost:5001/api/control/agents/status
+- 治理狀態: [EXTERNAL_URL_REMOVED]
+- 系統狀態: [EXTERNAL_URL_REMOVED]
+- 代理狀態: [EXTERNAL_URL_REMOVED]
 
 ## 🛡️ 治理與安全
 
@@ -198,7 +198,7 @@ cd /workspace/machine-native-ops/gl-execution-runtime
 ./ops/governance-verification.sh
 
 # 4. 提交自然語言任務
-curl -X POST http://localhost:5001/api/control/execute \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"command": "檢查系統狀態", "priority": "normal"}'
 ```
@@ -209,10 +209,10 @@ curl -X POST http://localhost:5001/api/control/execute \
 redis-cli MONITOR | grep gl-audit-stream
 
 # 查看 GL Platform 健康狀態
-curl http://localhost:3000/health | jq .
+curl [EXTERNAL_URL_REMOVED] | jq .
 
 # 查看控制平面狀態
-curl http://localhost:5001/api/control/system/status | jq .
+curl [EXTERNAL_URL_REMOVED] | jq .
 ```
 
 ## 🔧 配置文件

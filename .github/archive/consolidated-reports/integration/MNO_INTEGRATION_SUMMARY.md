@@ -12,7 +12,7 @@ This document summarizes the integration of workflow syntax fixes from the `mno-
 
 ## Problem Statement
 
-將 https://github.com/MachineNativeOps/mno-repository-understanding-system/tree/copilot/integrate-main-into-feature-branch 與 https://github.com/MachineNativeOps/mno-repository-understanding-system/tree/fix/workflow-syntax-errors 整合入main
+將 [EXTERNAL_URL_REMOVED] 與 [EXTERNAL_URL_REMOVED] 整合入main
 
 Translation: Integrate the `copilot/integrate-main-into-feature-branch` and `fix/workflow-syntax-errors` branches from the mno-repository-understanding-system repository into main.
 

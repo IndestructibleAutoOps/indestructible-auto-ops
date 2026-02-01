@@ -389,7 +389,7 @@ def tearDown(self):
 4. 更新測試摘要
 
 ### 文檔資源
-- Python unittest 文檔: https://docs.python.org/3/library/unittest.html
+- Python unittest 文檔: [EXTERNAL_URL_REMOVED]
 - 測試最佳實踐: TESTING_SUMMARY.md
 - 重構文檔: REFACTORING_SUMMARY.md
 

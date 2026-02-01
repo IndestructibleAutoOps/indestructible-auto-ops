@@ -418,7 +418,7 @@ docker pull flannel/flannel:v0.22.0
 helm pull stable/nginx-ingress --version 1.0.0
 
 # k3s 二進制文件
-curl -LO https://github.com/k3s-io/k3s/releases/download/v1.28.3+k3s2/k3s
+curl -LO [EXTERNAL_URL_REMOVED]
 
 # OS 套件
 apt-get download docker-ce docker-ce-cli containerd.io

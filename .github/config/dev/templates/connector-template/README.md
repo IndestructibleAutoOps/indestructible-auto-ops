@@ -36,5 +36,5 @@ ts-node code-generator.ts connector <名稱> [類型] [端點]
 ## 範例
 
 ```bash
-ts-node code-generator.ts connector payment-gateway rest https://api.payment.com
+ts-node code-generator.ts connector payment-gateway rest [EXTERNAL_URL_REMOVED]
 ```

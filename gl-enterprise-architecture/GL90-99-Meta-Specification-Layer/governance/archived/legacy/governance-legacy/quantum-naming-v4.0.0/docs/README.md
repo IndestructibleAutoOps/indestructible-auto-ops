@@ -37,7 +37,7 @@ export ENTANGLEMENT_DEPTH="7"
 
 ```bash
 # Clone the quantum governance repository
-git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git
+git clone [EXTERNAL_URL_REMOVED]
 cd mno-repository-understanding-system/governance/naming
 
 # Deploy quantum governance stack
@@ -57,7 +57,7 @@ kubectl wait --for=condition=ready pod \
 
 ```bash
 # Test quantum naming validation
-curl -X POST https://gov.quantum.machinenativeops.io/v4/validate \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Authorization: Bearer $QUANTUM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -67,7 +67,7 @@ curl -X POST https://gov.quantum.machinenativeops.io/v4/validate \
   }'
 
 # Check quantum coherence metrics
-curl https://gov.quantum.machinenativeops.io/metrics | grep quantum_coherence
+curl [EXTERNAL_URL_REMOVED] | grep quantum_coherence
 ```
 
 ## 🏗️ Architecture
@@ -365,7 +365,7 @@ resources:
    kubectl logs -n quantum-governance -l app=quantum-governance | grep coherence
    
    # Trigger realignment
-   curl -X POST https://gov.quantum.machinenativeops.io/v4/repair \
+   curl -X POST [EXTERNAL_URL_REMOVED] \
      -H "Authorization: Bearer $QUANTUM_API_TOKEN" \
      -d '{"action": "quantum-realignment"}'
    ```
@@ -373,7 +373,7 @@ resources:
 2. **Entanglement Weakness**
    ```bash
    # Check entanglement strength
-   curl https://gov.quantum.machinenativeops.io/metrics | grep entanglement
+   curl [EXTERNAL_URL_REMOVED] | grep entanglement
    
    # Trigger re-entanglement
    kubectl patch deployment quantum-governance-service \
@@ -428,4 +428,4 @@ MachineNativeOps Quantum-Enhanced Naming Governance is licensed under the Apache
 
 **🚀 Ready to experience quantum governance? Deploy now and achieve 99.99% naming coherence!**
 
-For support and questions, join our [Quantum Governance Discord](https://discord.gg/quantum-governance) or check our [Documentation](https://docs.machinenativeops.io/quantum).
+For support and questions, join our [Quantum Governance Discord]([EXTERNAL_URL_REMOVED]) or check our [Documentation]([EXTERNAL_URL_REMOVED]).

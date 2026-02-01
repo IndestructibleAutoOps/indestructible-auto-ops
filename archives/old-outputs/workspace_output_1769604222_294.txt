@@ -30,7 +30,7 @@ services:
       - gl-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/status"]
+      test: ["CMD", "curl", "-f", "[EXTERNAL_URL_REMOVED]]
       interval: 30s
       timeout: 10s
       retries: 3

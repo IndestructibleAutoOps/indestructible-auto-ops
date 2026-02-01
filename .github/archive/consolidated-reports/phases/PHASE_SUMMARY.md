@@ -11,7 +11,7 @@
 **Phases Completed**: Phase 2 (Security Remediation) & Phase 4A (Code Quality)  
 **Date**: January 16, 2025  
 **Status**: ✅ **BOTH PHASES COMPLETED**  
-**Pull Request**: [#3](https://github.com/MachineNativeOps/machine-native-ops/pull/3)
+**Pull Request**: [#3]([EXTERNAL_URL_REMOVED])
 
 ---
 
@@ -285,7 +285,7 @@ Phase 2 and Phase 4A have been **SUCCESSFULLY COMPLETED** with significant impro
 
 ---
 
-**Pull Request URL**: https://github.com/MachineNativeOps/machine-native-ops/pull/3  
+**Pull Request URL**: [EXTERNAL_URL_REMOVED]  
 **Branch**: `feature/add-repository-structure`  
 **Status**: ✅ **READY FOR REVIEW**  
 

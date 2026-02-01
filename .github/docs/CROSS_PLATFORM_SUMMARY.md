@@ -278,9 +278,9 @@ export S3_BUCKET=my-bucket
 export S3_REGION=us-east-1
 
 # Monitoring
-export PROMETHEUS_URL=http://prometheus:9090
-export JAEGER_ENDPOINT=http://jaeger:14250
-export LOKI_ENDPOINT=http://loki:3100
+export PROMETHEUS_URL=[EXTERNAL_URL_REMOVED]
+export JAEGER_ENDPOINT=[EXTERNAL_URL_REMOVED]
+export LOKI_ENDPOINT=[EXTERNAL_URL_REMOVED]
 ```
 
 ### Optional Variables
@@ -421,8 +421,8 @@ sudo systemctl start machine-native-ops
 
 - **Documentation**: `docs/CROSS_PLATFORM_GUIDE.md`
 - **Configuration Files**: `k8s/production/*.yaml`
-- **GitHub Repository**: https://github.com/MachineNativeOps/machine-native-ops
-- **Issues**: https://github.com/MachineNativeOps/machine-native-ops/issues
+- **GitHub Repository**: [EXTERNAL_URL_REMOVED]
+- **Issues**: [EXTERNAL_URL_REMOVED]
 
 ---
 

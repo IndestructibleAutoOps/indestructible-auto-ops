@@ -8,7 +8,7 @@
 
 ## 📚 概述
 
-本目錄包含 Repository Understanding System 的完整文檔，該系統從 [superninja-repository-understanding-system](https://github.com/MachineNativeOps/superninja-repository-understanding-system) 整合而來。
+本目錄包含 Repository Understanding System 的完整文檔，該系統從 [superninja-repository-understanding-system]([EXTERNAL_URL_REMOVED]) 整合而來。
 
 ## 📖 文檔索引
 
@@ -237,7 +237,7 @@ bash ../../scripts/repository-understanding/status_event_driven.sh
 ## 🔗 相關資源
 
 ### 原始儲存庫
-- https://github.com/MachineNativeOps/superninja-repository-understanding-system
+- [EXTERNAL_URL_REMOVED]
 
 ### 相關工具
 - `workspace/tools/repository-understanding/` - Python 腳本

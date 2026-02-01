@@ -234,7 +234,7 @@ class RegistryManager:
 class JiraIntegration:
     def __init__(self):
         self.api_key = "JIRA-API-KEY-1234567890"  # 硬編碼!
-        self.base_url = "https://company.atlassian.net"
+        self.base_url = "[EXTERNAL_URL_REMOVED]
         self.username = "admin@company.com"
 ```
 
@@ -310,7 +310,7 @@ class JiraIntegration:
 ```bash
 # .env
 JIRA_API_KEY=your-actual-api-key-here
-JIRA_BASE_URL=https://company.atlassian.net
+JIRA_BASE_URL=[EXTERNAL_URL_REMOVED]
 JIRA_USERNAME=admin@company.com
 ```
 
@@ -1124,7 +1124,7 @@ class TestRegistryService:
 # .pre-commit-config.yaml
 repos:
   # 通用 hooks
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v4.5.0
     hooks:
       - id: trailing-whitespace
@@ -1138,7 +1138,7 @@ repos:
       - id: detect-private-key
       
   # Python - Black formatter
-  - repo: https://github.com/psf/black
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 23.12.1
     hooks:
       - id: black
@@ -1146,21 +1146,21 @@ repos:
         args: ['--line-length=100']
         
   # Python - isort
-  - repo: https://github.com/pycqa/isort
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 5.13.2
     hooks:
       - id: isort
         args: ['--profile=black', '--line-length=100']
         
   # Python - Ruff
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v0.1.9
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
         
   # Python - MyPy
-  - repo: https://github.com/pre-commit/mirrors-mypy
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v1.8.0
     hooks:
       - id: mypy
@@ -1170,14 +1170,14 @@ repos:
         args: [--strict, --ignore-missing-imports]
         
   # Python - Security check
-  - repo: https://github.com/PyCQA/bandit
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: 1.7.6
     hooks:
       - id: bandit
         args: [-r, src/, -ll]
         
   # TypeScript/JavaScript - ESLint
-  - repo: https://github.com/pre-commit/mirrors-eslint
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v8.56.0
     hooks:
       - id: eslint
@@ -1189,14 +1189,14 @@ repos:
           - '@typescript-eslint/parser'
           
   # TypeScript/JavaScript - Prettier
-  - repo: https://github.com/pre-commit/mirrors-prettier
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v3.1.0
     hooks:
       - id: prettier
         types_or: [javascript, jsx, ts, tsx, json, yaml]
         
   # Secrets detection
-  - repo: https://github.com/Yelp/detect-secrets
+  - repo: [EXTERNAL_URL_REMOVED]
     rev: v1.4.0
     hooks:
       - id: detect-secrets

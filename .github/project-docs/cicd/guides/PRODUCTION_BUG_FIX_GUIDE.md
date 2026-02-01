@@ -1671,7 +1671,7 @@ ENVIRONMENT=staging pytest tests/integration/
 pip install locust
 
 # Run load test
-locust -f tests/load/test_fix.py --host=http://localhost:8080
+locust -f tests/load/test_fix.py --host=[EXTERNAL_URL_REMOVED]
 ```
 
 ## 3. Deployment Process
@@ -2668,7 +2668,7 @@ route:
 receivers:
   - name: 'web.hook'
     webhook_configs:
-      - url: 'http://localhost:5001/webhook'
+      - url: '[EXTERNAL_URL_REMOVED]
 EOF
 
 log "Starting monitoring stack..."
@@ -2678,9 +2678,9 @@ log "Waiting for services to start..."
 sleep 10
 
 log "=== Monitoring Stack Setup Complete ==="
-log "Prometheus: http://localhost:9090"
-log "Grafana: http://localhost:3000 (admin/admin)"
-log "Alertmanager: http://localhost:9093"
+log "Prometheus: [EXTERNAL_URL_REMOVED]
+log "Grafana: [EXTERNAL_URL_REMOVED] (admin/admin)"
+log "Alertmanager: [EXTERNAL_URL_REMOVED]
 
 # Expose ports for external access
 log "Exposing monitoring ports..."

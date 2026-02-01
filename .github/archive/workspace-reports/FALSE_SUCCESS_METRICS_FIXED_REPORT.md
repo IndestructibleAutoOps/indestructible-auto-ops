@@ -41,7 +41,7 @@
 #### 任務1.3: ✅ 平台驗證
 - **進程驗證**: ✅ `ps aux | grep config-manager` 顯示真實進程
 - **端口驗證**: ✅ `netstat` 顯示8081端口被我們的服務佔用
-- **API驗證**: ✅ `curl http://localhost:8081/health` 返回正確響應
+- **API驗證**: ✅ `curl [EXTERNAL_URL_REMOVED] 返回正確響應
 - **引導驗證**: ✅ 完整的5步驟真實引導流程
 
 ---

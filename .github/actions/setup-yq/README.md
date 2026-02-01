@@ -10,7 +10,7 @@ A reusable GitHub Action for installing yq, a lightweight and portable command-l
 
 ## About
 
-This action installs [yq](https://github.com/mikefarah/yq) which is used throughout the MachineNativeOps repository for:
+This action installs [yq]([EXTERNAL_URL_REMOVED]) which is used throughout the MachineNativeOps repository for:
 - Reading version numbers from YAML configuration files
 - Validating YAML file syntax
 - Parsing and manipulating YAML data in scripts and workflows
@@ -55,6 +55,6 @@ This action uses `mikefarah/yq@v4.50.1`.
 
 ## References
 
-- [yq GitHub Repository](https://github.com/mikefarah/yq)
-- [yq Documentation](https://mikefarah.gitbook.io/yq/)
+- [yq GitHub Repository]([EXTERNAL_URL_REMOVED])
+- [yq Documentation]([EXTERNAL_URL_REMOVED])
 - [VERSION_MANAGEMENT.md](../../../workspace/docs/VERSION_MANAGEMENT.md) - How yq is used for version management in this repository

@@ -65,7 +65,7 @@ The backup strategy follows the industry-standard 3-2-1 rule:
 
 ```bash
 # Install Velero CLI
-curl -L https://github.com/vmware-tanzu/velero/releases/download/v1.12.0/velero-v1.12.0-linux-amd64.tar.gz -o velero.tar.gz
+curl -L [EXTERNAL_URL_REMOVED] -o velero.tar.gz
 tar -xvf velero.tar.gz
 sudo mv velero-v1.12.0-linux-amd64/velero /usr/local/bin/
 
@@ -116,7 +116,7 @@ spec:
     prefix: velero
   config:
     region: us-east-1
-    s3Url: https://s3.amazonaws.com
+    s3Url: [EXTERNAL_URL_REMOVED]
     s3ForcePathStyle: "true"
   accessMode: ReadWrite
 ```
@@ -638,7 +638,7 @@ kubectl rollout restart deployment/machine-native-ops -n production
 
 # Step 9: Verify application health
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl http://localhost:8000/health
+  curl [EXTERNAL_URL_REMOVED]
 
 # Step 10: Monitor application metrics
 # Check Grafana dashboards
@@ -757,7 +757,7 @@ kubectl wait --for=condition=ready pod -l app=machine-native-ops -n production -
 
 # Step 8: Verify application health
 kubectl exec -it deployment/machine-native-ops -n production -- \
-  curl http://localhost:8000/health
+  curl [EXTERNAL_URL_REMOVED]
 
 # Step 9: Compare with pre-test state
 kubectl get all -n production -o yaml > /tmp/post-test-state.yaml
@@ -1117,10 +1117,10 @@ aws s3 ls s3://machinenativeops-backups/ --recursive --summarize
 
 ### Additional Resources
 
-- [Velero Documentation](https://velero.io/docs/)
-- [AWS S3 Documentation](https://docs.aws.amazon.com/s3/)
-- [PostgreSQL Backup](https://www.postgresql.org/docs/current/backup.html)
-- [Redis Persistence](https://redis.io/topics/persistence)
+- [Velero Documentation]([EXTERNAL_URL_REMOVED])
+- [AWS S3 Documentation]([EXTERNAL_URL_REMOVED])
+- [PostgreSQL Backup]([EXTERNAL_URL_REMOVED])
+- [Redis Persistence]([EXTERNAL_URL_REMOVED])
 
 ---
 

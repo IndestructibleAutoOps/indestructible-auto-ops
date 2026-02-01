@@ -373,9 +373,9 @@ logging.basicConfig(
 
 ## 🔗 相關資源
 
-- [INSTANT 標準規範](https://machinenativeops.com/instant)
-- [專案主頁](https://github.com/MachineNativeOps/mno-repository-understanding-system)
-- [文檔中心](https://github.com/MachineNativeOps/mno-repository-understanding-system/tree/main/ns-root/namespaces-mcp/docs)
+- [INSTANT 標準規範]([EXTERNAL_URL_REMOVED])
+- [專案主頁]([EXTERNAL_URL_REMOVED])
+- [文檔中心]([EXTERNAL_URL_REMOVED])
 
 ---
 

@@ -49,7 +49,7 @@ This directory contains enterprise-grade Jaeger distributed tracing configuratio
 
 1. **Add Jaeger Helm Repository:**
 ```bash
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+helm repo add jaegertracing [EXTERNAL_URL_REMOVED]
 helm repo update
 ```
 
@@ -71,7 +71,7 @@ kubectl apply -f k8s/jaeger/istio-config.yaml
 
 4. **Install Jaeger Operator (Optional):**
 ```bash
-kubectl apply -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.52.0/jaeger-operator.yaml -n jaeger
+kubectl apply -f [EXTERNAL_URL_REMOVED] -n jaeger
 ```
 
 ## Configuration
@@ -161,7 +161,7 @@ spec:
 # Port-forward to access Jaeger UI
 kubectl port-forward -n jaeger svc/jaeger-query 16686:16686
 
-# Open browser at http://localhost:16686
+# Open browser at [EXTERNAL_URL_REMOVED]
 ```
 
 ### Search Traces
@@ -372,7 +372,7 @@ kubectl logs -n elasticsearch elasticsearch-xxx
 
 ## References
 
-- [Jaeger Documentation](https://www.jaegertracing.io/docs/)
-- [OpenTelemetry Python](https://opentelemetry.io/docs/instrumentation/python/)
-- [Istio Distributed Tracing](https://istio.io/latest/docs/tasks/observability/distributed-tracing/)
-- [W3C Trace Context](https://www.w3.org/TR/trace-context/)
+- [Jaeger Documentation]([EXTERNAL_URL_REMOVED])
+- [OpenTelemetry Python]([EXTERNAL_URL_REMOVED])
+- [Istio Distributed Tracing]([EXTERNAL_URL_REMOVED])
+- [W3C Trace Context]([EXTERNAL_URL_REMOVED])

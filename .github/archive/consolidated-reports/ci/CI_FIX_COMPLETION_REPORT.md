@@ -134,7 +134,7 @@ python3 -c "import yaml; yaml.safe_load(open('.github/workflows/ai-integration-a
 ### Git 資訊
 - **分支：** `copilot/integrate-main-into-feature-branch`
 - **提交 ID：** `30e28a1f`
-- **遠端倉庫：** `https://github.com/MachineNativeOps/mno-repository-understanding-system.git`
+- **遠端倉庫：** `[EXTERNAL_URL_REMOVED]
 
 ## 結論
 

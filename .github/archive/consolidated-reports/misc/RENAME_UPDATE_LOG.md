@@ -10,7 +10,7 @@
 **Date**: 2025-01-17  
 **Action**: Renamed repository from `machine-native-ops` to `mno-repository-understanding-system`  
 **Status**: ✅ Completed  
-**PR**: #13 - https://github.com/MachineNativeOps/machine-native-ops/pull/13
+**PR**: #13 - [EXTERNAL_URL_REMOVED]
 
 ## Overview
 
@@ -19,16 +19,16 @@ This document records the systematic renaming of the repository and all associat
 ## Changes Summary
 
 ### 1. GitHub Repository URLs
-- **Old**: `https://github.com/MachineNativeOps/machine-native-ops`
-- **New**: `https://github.com/MachineNativeOps/mno-repository-understanding-system`
+- **Old**: `[EXTERNAL_URL_REMOVED]
+- **New**: `[EXTERNAL_URL_REMOVED]
 
 ### 2. Git Clone Commands
 ```bash
 # Old
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 
 # New  
-git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git
+git clone [EXTERNAL_URL_REMOVED]
 ```
 
 ### 3. Package Names
@@ -77,7 +77,7 @@ git clone https://github.com/MachineNativeOps/mno-repository-understanding-syste
 The following search-replace operations were performed:
 
 1. `github.com/MachineNativeOps/machine-native-ops` → `github.com/MachineNativeOps/mno-repository-understanding-system`
-2. `git clone https://github.com/MachineNativeOps/machine-native-ops.git` → `git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git`
+2. `git clone [EXTERNAL_URL_REMOVED] → `git clone [EXTERNAL_URL_REMOVED]
 3. `cd machine-native-ops` → `cd mno-repository-understanding-system`
 4. `/home/runner/work/machine-native-ops/machine-native-ops` → `/home/runner/work/mno-repository-understanding-system/mno-repository-understanding-system`
 5. `@machine-native-ops/` → `@mno-repository-understanding-system/`
@@ -124,7 +124,7 @@ Some descriptive text references to "machine-native-ops project" were intentiona
 rm -rf machine-native-ops
 
 # Step 2: Clone with new name
-git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git
+git clone [EXTERNAL_URL_REMOVED]
 
 # Step 3: Navigate to repository
 cd mno-repository-understanding-system
@@ -136,7 +136,7 @@ cd mno-repository-understanding-system
 cd machine-native-ops
 
 # Step 2: Update remote URL
-git remote set-url origin https://github.com/MachineNativeOps/mno-repository-understanding-system.git
+git remote set-url origin [EXTERNAL_URL_REMOVED]
 
 # Step 3: Fetch latest changes
 git fetch origin
@@ -169,10 +169,10 @@ If rollback is needed:
 
 ## References
 
-- **PR URL**: https://github.com/MachineNativeOps/machine-native-ops/pull/13
+- **PR URL**: [EXTERNAL_URL_REMOVED]
 - **Branch**: `feat/rename-repository-to-mno`
 - **Commit**: `b4adee94`
-- **Repository**: https://github.com/MachineNativeOps/mno-repository-understanding-system
+- **Repository**: [EXTERNAL_URL_REMOVED]
 
 ## Notes
 

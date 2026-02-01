@@ -236,8 +236,8 @@ print(f"發現漏洞: {len(evidence.data['vulnerabilities'])}")
 ## 📞 聯繫方式
 
 如有任何問題或建議，請通過以下方式聯繫：
-- GitHub Issues: https://github.com/MachineNativeOps/machine-native-ops/issues
-- GitHub Discussions: https://github.com/MachineNativeOps/machine-native-ops/discussions
+- GitHub Issues: [EXTERNAL_URL_REMOVED]
+- GitHub Discussions: [EXTERNAL_URL_REMOVED]
 
 ---
 

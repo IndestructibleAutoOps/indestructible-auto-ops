@@ -43,7 +43,7 @@
 環境已完全就緒:
 ✓ 所有依賴已安裝
 ✓ 開發伺服器已運行
-✓ 訪問 http://localhost:3000
+✓ 訪問 [EXTERNAL_URL_REMOVED]
 ```
 
 ---
@@ -78,7 +78,7 @@
 
 ### Q: 開發伺服器在哪裡運行？
 
-**A:** 自動運行在 `http://localhost:3000`，VS Code 會自動提示開啟。
+**A:** 自動運行在 `[EXTERNAL_URL_REMOVED] Code 會自動提示開啟。
 
 ### Q: 如果安裝失敗怎麼辦？
 

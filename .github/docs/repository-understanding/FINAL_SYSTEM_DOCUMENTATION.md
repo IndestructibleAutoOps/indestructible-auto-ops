@@ -124,7 +124,7 @@ The event-driven system is the heart of the automation infrastructure. It monito
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/MachineNativeOps/superninja-repository-understanding-system
+   git clone [EXTERNAL_URL_REMOVED]
    cd superninja-repository-understanding-system
    ```
 
@@ -511,4 +511,4 @@ The system is ready for production deployment and continuous operation.
 **System Version**: 1.0.1  
 **Last Updated**: 2025-01-16  
 **Status**: Production Ready ✅  
-**Repository**: https://github.com/MachineNativeOps/superninja-repository-understanding-system
+**Repository**: [EXTERNAL_URL_REMOVED]

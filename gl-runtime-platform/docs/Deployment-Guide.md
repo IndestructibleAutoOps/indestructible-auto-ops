@@ -31,14 +31,14 @@
 
 ```bash
 # Install Node.js 20
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+curl -fsSL [EXTERNAL_URL_REMOVED] | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # Install Git
 sudo apt-get install -y git
 
 # Install Docker (optional, for containerized deployment)
-curl -fsSL https://get.docker.com | sh
+curl -fsSL [EXTERNAL_URL_REMOVED] | sh
 ```
 
 ---
@@ -48,7 +48,7 @@ curl -fsSL https://get.docker.com | sh
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 ```
 
@@ -222,7 +222,7 @@ kubectl get services
 
 ```bash
 # Check health endpoint
-curl http://localhost:3000/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Expected response
 {
@@ -323,7 +323,7 @@ git commit -m "Add governance markers"
 
 ### Getting Help
 
-1. Check the [GitHub Issues](https://github.com/MachineNativeOps/machine-native-ops/issues)
+1. Check the [GitHub Issues]([EXTERNAL_URL_REMOVED])
 2. Review the [API Documentation](./API-Documentation.md)
 3. Contact the engineering team
 

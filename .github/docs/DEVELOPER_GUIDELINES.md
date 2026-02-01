@@ -164,12 +164,12 @@ token = secrets.token_hex(32)
 
 ```python
 # ❌ BAD - Hardcoded values
-API_URL = "https://api.example.com/endpoint"
+API_URL = "[EXTERNAL_URL_REMOVED]
 DATABASE_PASSWORD = "secret123"
 
 # ✅ GOOD - Environment variables
 import os
-API_URL = os.getenv("API_URL", "https://api.example.com/endpoint")
+API_URL = os.getenv("API_URL", "[EXTERNAL_URL_REMOVED])
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
 
 # ✅ BEST - Configuration class with validation
@@ -790,10 +790,10 @@ All automated checks must pass:
 ## Additional Resources
 
 ### External References
-- [PEP 8 Style Guide](https://peps.python.org/pep-0008/)
-- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
-- [Python Type Hints](https://docs.python.org/3/library/typing.html)
-- [pytest Documentation](https://docs.pytest.org/)
+- [PEP 8 Style Guide]([EXTERNAL_URL_REMOVED])
+- [Google Python Style Guide]([EXTERNAL_URL_REMOVED])
+- [Python Type Hints]([EXTERNAL_URL_REMOVED])
+- [pytest Documentation]([EXTERNAL_URL_REMOVED])
 
 ### Internal Resources
 - [Code Review Checklist](../.github/CODE_REVIEW_CHECKLIST.md)

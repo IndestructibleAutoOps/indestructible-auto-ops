@@ -182,7 +182,7 @@ SNYK_TOKEN=your-snyk-token
 
 #### Notifications
 ```bash
-SLACK_WEBHOOK=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
+SLACK_WEBHOOK=[EXTERNAL_URL_REMOVED]
 ```
 
 #### Server Access
@@ -215,7 +215,7 @@ PRODUCTION_SERVER=production.example.com
 
 ```bash
 # Clone the repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 cd machine-native-ops
 
 # Install dependencies
@@ -240,14 +240,14 @@ Add all required secrets listed in the Prerequisites section.
 sudo apt update && sudo apt upgrade -y
 
 # Install Node.js
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+curl -fsSL [EXTERNAL_URL_REMOVED] | sudo -E bash -
 sudo apt install -y nodejs
 
 # Install Python
 sudo apt install -y python3.11 python3-pip
 
 # Install Docker (optional)
-curl -fsSL https://get.docker.com | sh
+curl -fsSL [EXTERNAL_URL_REMOVED] | sh
 sudo usermod -aG docker $USER
 
 # Install Nginx
@@ -335,7 +335,7 @@ server {
     server_name example.com;
 
     location / {
-        proxy_pass http://backend;
+        proxy_pass [EXTERNAL_URL_REMOVED]
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -488,7 +488,7 @@ This will:
 
 After rollback, verify:
 1. Services are running: `systemctl status app-blue app-green`
-2. Health check passes: `curl https://example.com/health`
+2. Health check passes: `curl [EXTERNAL_URL_REMOVED]
 3. Application logs show no errors
 4. User traffic is flowing normally
 
@@ -500,9 +500,9 @@ After rollback, verify:
 
 Configure monitoring for these endpoints:
 
-- **Health Check**: `https://example.com/health`
-- **Metrics**: `https://example.com/metrics`
-- **Status Page**: `https://example.com/status`
+- **Health Check**: `[EXTERNAL_URL_REMOVED]
+- **Metrics**: `[EXTERNAL_URL_REMOVED]
+- **Status Page**: `[EXTERNAL_URL_REMOVED]
 
 ### Log Files
 
@@ -655,7 +655,7 @@ ssh user@server "systemctl status app-blue"
 ssh user@server "journalctl -u app-blue -f"
 
 # Manual health check
-curl https://example.com/health
+curl [EXTERNAL_URL_REMOVED]
 
 # Manual rollback
 ssh user@server "cd /var/www && ./scripts/rollback.sh previous"

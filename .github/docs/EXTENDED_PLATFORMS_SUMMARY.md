@@ -211,7 +211,7 @@ export CLOUDFLARE_D1_DATABASE_ID=xxx
 ```bash
 export SUPABASE_ENABLED=true
 export SUPABASE_PROJECT_ID=xxx
-export SUPABASE_API_URL=https://xxx.supabase.co
+export SUPABASE_API_URL=[EXTERNAL_URL_REMOVED]
 export SUPABASE_ANON_KEY=xxx
 export SUPABASE_SERVICE_ROLE_KEY=xxx
 export SUPABASE_DATABASE_URL=postgresql://...
@@ -249,8 +249,8 @@ export VERCEL_ENABLED=true
 vercel --prod
 
 # 4. Test integration
-curl https://your-worker.workers.dev
-curl https://your-app.vercel.app
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ### GitBook Documentation
@@ -326,8 +326,8 @@ git push origin main
 
 - **Documentation**: `docs/EXTENDED_PLATFORMS_GUIDE.md`
 - **Configuration Files**: `k8s/production/extended-platforms-*.yaml`
-- **GitHub Repository**: https://github.com/MachineNativeOps/machine-native-ops
-- **Issues**: https://github.com/MachineNativeOps/machine-native-ops/issues
+- **GitHub Repository**: [EXTERNAL_URL_REMOVED]
+- **Issues**: [EXTERNAL_URL_REMOVED]
 
 ---
 

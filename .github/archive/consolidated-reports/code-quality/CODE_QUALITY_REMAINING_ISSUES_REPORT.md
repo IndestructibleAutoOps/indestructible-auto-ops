@@ -79,10 +79,10 @@ result = eval(user_input)  # Potentially unsafe
 **Example**:
 ```python
 # Current
-URL = "https://api.github.com/repos/MachineNativeOps/machine-native-ops"
+URL = "[EXTERNAL_URL_REMOVED]
 
 # Better
-URL = os.getenv("GITHUB_API_URL", "https://api.github.com/repos/...")
+URL = os.getenv("GITHUB_API_URL", "[EXTERNAL_URL_REMOVED])
 ```
 
 **Recommendation**:

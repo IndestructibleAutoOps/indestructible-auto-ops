@@ -284,7 +284,7 @@ INSTALL_DIR="/opt/rke2"
 echo "🚀 Installing RKE2 ${RKE2_VERSION} with CIS profile..."
 
 # Download RKE2
-curl -sfL https://get.rke2.io | sh -
+curl -sfL [EXTERNAL_URL_REMOVED] | sh -
 
 # Create configuration directory
 mkdir -p /etc/rancher/rke2

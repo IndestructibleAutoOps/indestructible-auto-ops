@@ -116,7 +116,7 @@ remote:         path: summarized_conversation_1769606924_7127.txt:235
 
 ### Option 1: GitHub Secret Unblock (Recommended)
 - Use the GitHub-provided unblock URL to bypass this specific secret
-- URL: https://github.com/MachineNativeOps/machine-native-ops/security/secret-scanning/unblock-secret/38sWWVfLKwRDOs7ou3pz3NzZbDM
+- URL: [EXTERNAL_URL_REMOVED]
 - This allows the push to proceed with the detected secret flagged but not blocking
 
 ### Option 2: Remove Historical Commit

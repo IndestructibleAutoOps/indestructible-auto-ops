@@ -16,7 +16,7 @@
 ### Message Envelope
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "[EXTERNAL_URL_REMOVED]
   "title": "AAPS Agent Message Envelope",
   "type": "object",
   "required": ["meta", "context", "payload"],
@@ -69,7 +69,7 @@
 #### IncidentSignal
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "[EXTERNAL_URL_REMOVED]
   "title": "Incident Signal",
   "type": "object",
   "required": ["incident_type", "severity", "affected_resources"],
@@ -97,7 +97,7 @@
 #### FixProposal
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "[EXTERNAL_URL_REMOVED]
   "title": "Fix Proposal",
   "type": "object",
   "required": ["proposal_id", "fix_type", "change_scope", "rollback_strategy"],
@@ -136,7 +136,7 @@
 #### VerificationReport
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "[EXTERNAL_URL_REMOVED]
   "title": "Verification Report",
   "type": "object",
   "required": ["verification_stages", "overall_status"],
@@ -413,11 +413,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/MachineNativeOps/mno-repository-understanding-system-aaps.git
+    repoURL: [EXTERNAL_URL_REMOVED]
     targetRevision: main
     path: deployments/multi-agent
   destination:
-    server: https://kubernetes.default.svc
+    server: [EXTERNAL_URL_REMOVED]
     namespace: machinenativeops
   syncPolicy:
     automated:
@@ -721,7 +721,7 @@ spec:
 set -euo pipefail
 
 NAMESPACE="machinenativeops"
-REPO="https://github.com/MachineNativeOps/mno-repository-understanding-system-aaps.git"
+REPO="[EXTERNAL_URL_REMOVED]
 BRANCH="main"
 
 echo "🚀 部署AAPS多代理MPC系統..."
@@ -893,7 +893,7 @@ kubectl get svc -n $NAMESPACE
 echo "🔍 測試代理連接..."
 SUPER_AGENT_IP=$(kubectl get svc super-agent -n $NAMESPACE -o jsonpath='{.spec.clusterIP}')
 
-curl -X GET "http://$SUPER_AGENT_IP:8080/health" || echo "等待服務啟動..."
+curl -X GET "[EXTERNAL_URL_REMOVED] || echo "等待服務啟動..."
 
 echo ""
 echo "🎉 AAPS多代理MPC系統部署完成！"
@@ -901,10 +901,10 @@ echo ""
 echo "📋 下一步操作："
 echo "1. 檢查代理狀態: kubectl get pods -n $NAMESPACE"
 echo "2. 查看日誌: kubectl logs -f deployment/super-agent -n $NAMESPACE"
-echo "3. 測試API: curl http://$SUPER_AGENT_IP:8080/health"
+echo "3. 測試API: curl [EXTERNAL_URL_REMOVED]
 echo "4. 部署其他代理: 繼續部署monitoring-agent, problem-solver-agent, maintenance-agent"
 echo ""
-echo "📚 詳細文檔: https://github.com/MachineNativeOps/mno-repository-understanding-system-aaps/tree/main/docs/multi-agent"
+echo "📚 詳細文檔: [EXTERNAL_URL_REMOVED]
 ```
 
 ---

@@ -8,7 +8,7 @@
 
 ## 🔍 問題概述
 
-**Repository:** https://github.com/MachineNativeOps/mno-repository-understanding-system  
+**Repository:** [EXTERNAL_URL_REMOVED]  
 **分支:** main  
 **問題狀態:** CI 持續整合流程失敗
 

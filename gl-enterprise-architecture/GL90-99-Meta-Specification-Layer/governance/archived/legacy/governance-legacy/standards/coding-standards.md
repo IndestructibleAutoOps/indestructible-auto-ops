@@ -757,7 +757,7 @@ api_key = 'sk-1234567890abcdef'
 
 - **Email:** engineering@machinenativeops.io
 - **Slack:** #engineering
-- **Documentation:** https://docs.machinenativeops.io/engineering
+- **Documentation:** [EXTERNAL_URL_REMOVED]
 
 ---
 

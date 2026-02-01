@@ -42,7 +42,7 @@
 - **統計**: 2 files changed, 655 insertions(+), 83 deletions(-)
 
 #### 5. 推送到遠端 ✅
-- **遠端倉庫**: https://github.com/MachineNativeOps/mno-repository-understanding-system.git
+- **遠端倉庫**: [EXTERNAL_URL_REMOVED]
 - **推送分支**: feature/add-repository-structure
 - **推送狀態**: 成功
 - **推送時間**: 2025-01-16
@@ -201,7 +201,7 @@
 ### PR 統計
 - **創建 PR**: 1 個
   - PR #3: chore: File organization cleanup and analysis report
-  - URL: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3
+  - URL: [EXTERNAL_URL_REMOVED]
   - 狀態: Open
 
 ---
@@ -269,7 +269,7 @@
 - **任務追蹤**: `todo.md`
 
 ### 相關 PR
-- **PR #3**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3
+- **PR #3**: [EXTERNAL_URL_REMOVED]
 - **狀態**: Open
 - **審查**: 待審查
 

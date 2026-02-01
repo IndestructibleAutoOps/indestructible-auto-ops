@@ -13,7 +13,7 @@
 
 ### Pull Request 信息
 - **PR 編號**: #1258
-- **URL**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/1258
+- **URL**: [EXTERNAL_URL_REMOVED]
 - **分支**: `fix/merge-level3-level4-directories`
 - **狀態**: ✅ 已創建，等待審查
 

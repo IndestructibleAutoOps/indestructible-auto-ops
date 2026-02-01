@@ -50,7 +50,7 @@ python -m uvicorn api:app --host 0.0.0.0 --port 8000 --workers 4
 
 ### 3. 即時架構請求
 ```bash
-curl -X POST http://localhost:8000/instant/architect \
+curl -X POST [EXTERNAL_URL_REMOVED] \
   -H "Content-Type: application/json" \
   -d '{"project_type": "mcp_level1", "requirements": {"instant_mode": true}}'
 ```
@@ -80,8 +80,8 @@ kubectl apply -f instant-k8s.yaml
 ## 📊 INSTANT 指標監控
 
 ```bash
-curl http://localhost:8000/instant/health
-curl http://localhost:8000/instant/metrics
+curl [EXTERNAL_URL_REMOVED]
+curl [EXTERNAL_URL_REMOVED]
 ```
 
 ## 🎯 即時競爭優勢

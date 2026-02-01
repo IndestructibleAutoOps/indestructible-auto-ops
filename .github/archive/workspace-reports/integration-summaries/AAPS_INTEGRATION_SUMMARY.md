@@ -326,8 +326,8 @@ docker-compose up -d
 - Workflow logs in GitHub Actions
 
 ### Health Checks
-- Auto-Monitor: `http://localhost:8000/health`
-- SuperAgent: `http://localhost:8082/health`
+- Auto-Monitor: `[EXTERNAL_URL_REMOVED]
+- SuperAgent: `[EXTERNAL_URL_REMOVED]
 - Redis: `redis-cli ping`
 
 ## Security
@@ -401,9 +401,9 @@ MNO_LOG_LEVEL=DEBUG machinenativenops-auto-monitor serve
 
 ## Support
 
-- **Documentation**: https://docs.machinenativenops.io
-- **Issues**: https://github.com/MachineNativeOps/mno-repository-understanding-system-aaps/issues
-- **Community**: https://github.com/MachineNativeOps/mno-repository-understanding-system-aaps/discussions
+- **Documentation**: [EXTERNAL_URL_REMOVED]
+- **Issues**: [EXTERNAL_URL_REMOVED]
+- **Community**: [EXTERNAL_URL_REMOVED]
 - **Email**: support@machinenativenops.io
 
 ## References

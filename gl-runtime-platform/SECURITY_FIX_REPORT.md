@@ -187,7 +187,7 @@ npm audit fix --force
 **當前狀態：**
 - **遠端分支：** main
 - **漏洞總數：** 3 個（2 個中等，1 個低級）
-- **GitHub 報告：** https://github.com/MachineNativeOps/machine-native-ops/security/dependabot
+- **GitHub 報告：** [EXTERNAL_URL_REMOVED]
 
 **進度：**
 ```

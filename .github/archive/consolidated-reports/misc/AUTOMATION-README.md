@@ -238,7 +238,7 @@ quality-report:
 - [PR-1-REVIEW-REPORT.md](../PR-1-REVIEW-REPORT.md) - 完整審查報告
 - [PR-1-CODE-EXAMPLES.md](../PR-1-CODE-EXAMPLES.md) - 程式碼範例
 - [PR-1-ACTION-PLAN.md](../PR-1-ACTION-PLAN.md) - 執行計劃
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [GitHub Actions Documentation]([EXTERNAL_URL_REMOVED])
 
 ## 🆘 故障排除
 

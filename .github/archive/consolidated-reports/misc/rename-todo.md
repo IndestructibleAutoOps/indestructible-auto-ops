@@ -26,6 +26,6 @@
 - [ ] 創建 PR
 
 ## 需要更新的內容
-- GitHub URL: `https://github.com/MachineNativeOps/mno-repository-understanding-system` → `https://github.com/MachineNativeOps/mno-repository-understanding-system`
-- Git clone URL: `git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git` → `git clone https://github.com/MachineNativeOps/mno-repository-understanding-system.git`
+- GitHub URL: `[EXTERNAL_URL_REMOVED] → `[EXTERNAL_URL_REMOVED]
+- Git clone URL: `git clone [EXTERNAL_URL_REMOVED] → `git clone [EXTERNAL_URL_REMOVED]
 - 其他文本引用

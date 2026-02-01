@@ -158,7 +158,7 @@ import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentation
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc'
 
 const traceExporter = new OTLPTraceExporter({
-  url: 'http://otel-collector:4317'
+  url: '[EXTERNAL_URL_REMOVED]
 })
 
 const sdk = new NodeSDK({

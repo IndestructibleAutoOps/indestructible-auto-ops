@@ -225,14 +225,14 @@ tests/unit/test_helpers.py .. [100%]
 - **文件變更**: 21 files, 1,504 insertions(+)
 
 ### Pull Request
-- **PR #3**: https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3
+- **PR #3**: [EXTERNAL_URL_REMOVED]
 - **狀態**: Open
 - **內容**: Sprint 1.3 Day 1 完成
 
 ### 分支信息
 - **當前分支**: feature/add-repository-structure
 - **狀態**: 已推送到遠端
-- **URL**: https://github.com/MachineNativeOps/mno-repository-understanding-system/tree/feature/add-repository-structure
+- **URL**: [EXTERNAL_URL_REMOVED]
 
 ---
 
@@ -261,13 +261,13 @@ Day 1 的執行**非常成功**，所有預定任務均已完成：
 ## 📞 相關資源
 
 ### 文檔
-- [測試 README](https://github.com/MachineNativeOps/mno-repository-understanding-system/blob/feature/add-repository-structure/tests/README.md)
-- [Day 1 完成報告](https://github.com/MachineNativeOps/mno-repository-understanding-system/blob/feature/add-repository-structure/SPRINT13_DAY1_COMPLETION_REPORT.md)
+- [測試 README]([EXTERNAL_URL_REMOVED])
+- [Day 1 完成報告]([EXTERNAL_URL_REMOVED])
 
 ### Git 資源
-- [Commit 6585e45](https://github.com/MachineNativeOps/mno-repository-understanding-system/commit/6585e45)
-- [PR #3](https://github.com/MachineNativeOps/mno-repository-understanding-system/pull/3)
-- [分支](https://github.com/MachineNativeOps/mno-repository-understanding-system/tree/feature/add-repository-structure)
+- [Commit 6585e45]([EXTERNAL_URL_REMOVED])
+- [PR #3]([EXTERNAL_URL_REMOVED])
+- [分支]([EXTERNAL_URL_REMOVED])
 
 ---
 

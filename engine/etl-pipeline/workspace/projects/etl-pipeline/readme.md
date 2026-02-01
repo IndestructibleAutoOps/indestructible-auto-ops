@@ -103,7 +103,7 @@ etl-pipeline/
 
 ```bash
 # Clone repository
-git clone https://github.com/MachineNativeOps/machine-native-ops.git
+git clone [EXTERNAL_URL_REMOVED]
 
 # Navigate to ETL pipeline
 cd machine-native-ops/etl-pipeline
