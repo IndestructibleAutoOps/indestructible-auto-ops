@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+#
 # Machine-Native Governance Framework Initialization Script
 # GL Layer: GL00-09 Strategic Layer
 # Purpose: Initialize governance framework

@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Post-Execution Hook
 =======================

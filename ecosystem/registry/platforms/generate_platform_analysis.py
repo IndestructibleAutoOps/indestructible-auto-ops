@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: registry
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 平台分析生成器 - 自動生成所有平台的詳細分析
 """

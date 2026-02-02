@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: tools
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 # GL Runtime Platform High-Privilege Startup Script (v1.0)
 # GL Unified Charter Activated
 

@@ -1,3 +1,9 @@
+#
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 Pipeline Integration - GL治理執行層與事實驗證管道的集成
 

@@ -1,254 +1,332 @@
 # On-Premise Platform Template
 
-This template provides the foundational structure for on-premise infrastructure platforms.
+本地部署平台模板 - 用於私有數據中心和邊緣環境
 
-## Template Structure
-
-```
-on-premise-template/
-├── src/              # Platform source code
-├── configs/          # Infrastructure configurations
-├── docs/             # Platform documentation
-├── tests/            # Platform tests
-├── deployments/      # Deployment configurations
-├── governance/       # On-premise governance
-├── services/         # Platform services
-└── data/             # Platform data schemas
-```
-
-## Purpose
-
-On-premise platforms provide local infrastructure services:
-- Physical and virtual compute
-- Local storage systems
-- Network infrastructure
-- Local databases
-- On-premise monitoring
-- Security and compliance
-
-## On-Premise Platform Capabilities
-
-### Compute Services
-- Physical servers
-- Virtual machines (VMware, Hyper-V, KVM)
-- Container orchestration
-- Resource management
-
-### Storage Services
-- Local disk storage
-- Network-attached storage (NAS)
-- Storage area networks (SAN)
-- Backup systems
-
-### Networking Services
-- Physical network infrastructure
-- Virtual networks
-- Load balancers
-- Firewall configurations
-
-### Database Services
-- Local database servers
-- High availability clusters
-- Replication and backup
-- Data archiving
-
-### Monitoring Services
-- Infrastructure monitoring
-- Application monitoring
-- Log aggregation
-- Alert management
-
-## Template Customization
-
-### Step 1: Define Infrastructure
-Update `configs/infrastructure-config.yaml`:
-
-```yaml
-infrastructure:
-  compute:
-    type: physical|virtual
-    hypervisor: vmware|hyper-v|kvm
-    resource-pools: production, staging, development
-  storage:
-    type: local|nas|san
-    backup-policy: daily
-  networking:
-    type: physical|virtual
-    network-isolation: enabled
-```
-
-### Step 2: Implement Services
-Implement platform services in `src/`:
-- **compute-manager.py**: Compute resource management
-- **storage-manager.py**: Storage management
-- **network-manager.py**: Network configuration
-- **monitoring-service.py**: Monitoring and alerting
-
-### Step 3: Configure Deployments
-Set up deployment in `deployments/`:
-- **ansible-playbooks**: Infrastructure provisioning
-- **puppet-chef-configs**: Configuration management
-- **backup-scripts**: Backup and recovery
-- **monitoring-configs**: Monitoring setup
-
-### Step 4: Set Up Governance
-Implement governance in `governance/`:
-- **access-control**: Local access control policies
-- **compliance-policies**: Compliance requirements
-- **security-policies**: Security configurations
-- **audit-policies**: Audit logging
-
-## Required Implementations
-
-### src/infrastructure-manager.py
-Infrastructure resource management
-
-### src/backup-manager.py
-Backup and recovery
-
-### src/monitoring-agent.py
-Infrastructure monitoring
-
-### configs/infrastructure-config.yaml
-Infrastructure configuration
-
-### deployments/infrastructure-provisioning/
-Infrastructure provisioning scripts
-
-### governance/on-premise-policies/
-On-premise governance policies
-
-## Platform Services
-
-### Required Services
-- **compute-service**: Physical/virtual compute management
-- **storage-service**: Storage management
-- **networking-service**: Network configuration
-- **monitoring-service**: Infrastructure monitoring
-
-### Optional Services
-- **backup-service**: Automated backup
-- **recovery-service**: Disaster recovery
-- **compliance-service**: Compliance monitoring
-- **security-service**: Security management
-
-## Platform Registration
-
-```yaml
-# ecosystem/registry/platform-registry/platform-manifest.yaml
-- name: platform-on-premise
-  version: 1.0.0
-  type: on-premise
-  provider: local
-  status: active
-  capabilities:
-    - compute
-    - storage
-    - networking
-    - monitoring
-    - logging
-```
-
-## On-Premise Governance
-
-### Access Control
-- **Local authentication** (LDAP, Active Directory)
-- **Role-based access control** (RBAC)
-- **Regular access reviews**
-- **Audit logging** for all access
-
-### Security Controls
-- **Physical security** for data centers
-- **Network segmentation** for isolation
-- **Firewall rules** for protection
-- **Regular security audits**
-
-### Compliance
-- **Industry compliance** (HIPAA, PCI-DSS, SOC)
-- **Internal compliance** policies
-- **Regular compliance audits**
-- **Documentation and reporting**
-
-### Data Protection
-- **Encryption at rest** and in transit
-- **Regular backups** with off-site storage
-- **Data retention** policies
-- **Secure disposal** of old data
-
-## Platform Deployment
-
-### Deployment Methods
-- **Configuration Management** (Ansible, Puppet, Chef)
-- **Infrastructure Automation** (Terraform, SaltStack)
-- **Virtualization Platforms** (VMware, Hyper-V, KVM)
-- **Container Orchestration** (Kubernetes, Docker Swarm)
-
-### Deployment Requirements
-- Physical infrastructure
-- Virtualization platform
-- Configuration management tools
-- Monitoring system
-- Backup system
-
-## Platform Testing
-
-### Test Categories
-- Infrastructure provisioning tests
-- Integration tests with on-premise systems
-- Performance and load tests
-- Security and compliance tests
-- Disaster recovery tests
-
-### Test Coverage
-- All infrastructure components tested
-- All deployment scenarios tested
-- All failure modes tested
-- Performance benchmarks established
-
-## On-Premise Best Practices
-
-### Resource Management
-- **Resource pooling** for efficiency
-- **Capacity planning** for growth
-- **Resource monitoring** for optimization
-- **Lifecycle management** for resources
-
-### Security
-- **Defense in depth** strategy
-- **Network segmentation** for isolation
-- **Regular security updates**
-- **Incident response** procedures
-
-### Backup and Recovery
-- **Regular backups** with verification
-- **Off-site storage** for disaster recovery
-- **Regular recovery testing**
-- **Backup documentation**
-
-### Monitoring
-- **Comprehensive monitoring** of all systems
-- **Alerting for critical issues**
-- **Log aggregation** and analysis
-- **Performance monitoring**
-
-## Platform Maintenance
-
-### Regular Maintenance
-- **Software updates** and patches
-- **Hardware maintenance** and upgrades
-- **Security audits** and reviews
-- **Capacity planning** and optimization
-
-### Documentation
-- **Infrastructure documentation**
-- **Procedures documentation**
-- **Incident documentation**
-- **Change management documentation`
+**GL Governance Layer**: GL10-29 (Operational Layer)  
+**Template Type**: On-Premise  
+**Version**: 1.0.0
 
 ---
 
-**Template Version**: 1.0.0  
+## 📋 概述
+
+On-Premise Template 針對私有數據中心、邊緣計算和離線環境優化。
+
+### 適用場景
+
+- ✅ 私有數據中心
+- ✅ 邊緣計算節點
+- ✅ 離線/氣隙環境
+- ✅ 合規性要求嚴格的環境
+
+---
+
+## 🎯 本地特性
+
+### 1. 自包含部署
+- 無外部依賴
+- 離線安裝支持
+- 本地存儲
+- 本地服務發現
+
+### 2. 高可用性
+- 多節點部署
+- 故障轉移
+- 數據複製
+- 負載均衡
+
+### 3. 安全性
+- 完全控制
+- 網絡隔離
+- 本地加密
+- 審計日誌
+
+### 4. 性能優化
+- 低延遲
+- 高吞吐量
+- 本地緩存
+- 批量處理
+
+---
+
+## 🚀 快速開始
+
+### 單節點部署
+
+```bash
+# 1. 系統要求檢查
+bash scripts/prerequisites.sh
+
+# 2. 配置平台
+vim configs/platform-config.yaml
+
+# 3. 安裝依賴
+bash scripts/install-dependencies.sh
+
+# 4. 部署平台
+bash scripts/deploy-single-node.sh
+
+# 5. 驗證部署
+bash scripts/validate.sh
+```
+
+### 集群部署
+
+```bash
+# 1. 配置主節點
+bash scripts/init-master.sh
+
+# 2. 加入工作節點
+# 在每個工作節點上運行：
+bash scripts/join-worker.sh --master-ip <master-ip>
+
+# 3. 驗證集群
+bash scripts/cluster-status.sh
+```
+
+---
+
+## ⚙️ 配置說明
+
+### 系統要求
+
+**最小配置**:
+- CPU: 4 cores
+- Memory: 8 GB
+- Disk: 100 GB
+- OS: Ubuntu 20.04 / RHEL 8 / CentOS 8
+
+**推薦配置**:
+- CPU: 8 cores
+- Memory: 16 GB
+- Disk: 500 GB SSD
+- OS: Ubuntu 22.04 / RHEL 9
+
+### 網絡要求
+
+**端口**:
+- 8000: API Gateway
+- 8080: Data Sync
+- 8500: Service Discovery
+- 5672: Message Bus
+- 9090-9099: Monitoring
+
+**防火牆規則**:
+```bash
+# 允許內部通信
+sudo ufw allow from 10.0.0.0/8 to any port 8000:8500
+
+# 允許監控端口
+sudo ufw allow 9090:9099/tcp
+```
+
+---
+
+## 🔧 腳本說明
+
+### prerequisites.sh
+檢查系統要求：
+- 操作系統版本
+- CPU、內存、磁盤
+- 網絡配置
+- 依賴軟件
+
+### install-dependencies.sh
+安裝依賴：
+- Python 3.8+
+- Docker / Podman
+- 系統庫
+- 監控工具
+
+### deploy-single-node.sh
+單節點部署：
+- 初始化數據目錄
+- 啟動所有服務
+- 配置防火牆
+- 驗證部署
+
+### init-master.sh
+初始化主節點：
+- 配置集群
+- 啟動控制平面
+- 生成加入令牌
+- 設置負載均衡
+
+### join-worker.sh
+加入工作節點：
+- 連接主節點
+- 下載配置
+- 啟動服務
+- 註冊節點
+
+---
+
+## 🏗️ 架構
+
+### 單節點架構
+
+```
+┌─────────────────────────────────────┐
+│         Single Node                  │
+│  ┌──────────────────────────────┐   │
+│  │   Service Discovery (8500)   │   │
+│  ├──────────────────────────────┤   │
+│  │   API Gateway (8000)         │   │
+│  ├──────────────────────────────┤   │
+│  │   Message Bus (5672)         │   │
+│  ├──────────────────────────────┤   │
+│  │   Data Sync (8080)           │   │
+│  └──────────────────────────────┘   │
+│         Local Storage (/data)        │
+└─────────────────────────────────────┘
+```
+
+### 集群架構
+
+```
+┌──────────────────────────────────────────────┐
+│              Load Balancer                    │
+└───────────┬──────────────┬───────────────────┘
+            │              │
+    ┌───────▼──────┐  ┌───▼──────────┐
+    │   Master 1   │  │   Master 2   │
+    │   (Active)   │  │  (Standby)   │
+    └───────┬──────┘  └───┬──────────┘
+            │              │
+    ┌───────┴──────────────┴───────┐
+    │                              │
+┌───▼──────┐  ┌──────────┐  ┌────▼────┐
+│ Worker 1 │  │ Worker 2 │  │ Worker 3│
+└──────────┘  └──────────┘  └─────────┘
+```
+
+---
+
+## 💾 存儲配置
+
+### 數據目錄
+
+```
+/data/
+├── platform/          # 平台數據
+│   ├── registry/     # 服務註冊表
+│   ├── cache/        # 緩存
+│   └── sync/         # 同步數據
+├── services/         # 服務數據
+├── logs/            # 日誌
+└── backups/         # 備份
+```
+
+### 備份策略
+
+```yaml
+backup:
+  enabled: true
+  schedule: "0 2 * * *"  # 每天凌晨2點
+  retention: 7  # 保留7天
+  destinations:
+    - /backup/local
+    - nfs://backup-server/platform
+```
+
+---
+
+## 🔍 監控和日誌
+
+### Prometheus 集成
+
+```yaml
+monitoring:
+  prometheus:
+    enabled: true
+    port: 9090
+    scrape_interval: 30s
+    
+    targets:
+      - localhost:9091  # Service Discovery metrics
+      - localhost:9092  # API Gateway metrics
+      - localhost:9093  # Data Sync metrics
+```
+
+### 日誌管理
+
+```yaml
+logging:
+  syslog:
+    enabled: true
+    server: localhost
+    port: 514
+  
+  rotation:
+    max_size: 100M
+    max_files: 10
+    compress: true
+```
+
+---
+
+## 🔐 安全配置
+
+### 防火牆
+
+```bash
+# 配置 iptables
+sudo iptables -A INPUT -p tcp --dport 8000:8500 -s 10.0.0.0/8 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8000:8500 -j DROP
+```
+
+### SELinux / AppArmor
+
+```bash
+# SELinux 配置
+sudo semanage port -a -t http_port_t -p tcp 8000
+sudo semanage port -a -t http_port_t -p tcp 8500
+```
+
+### TLS 配置
+
+```yaml
+security:
+  tls:
+    enabled: true
+    cert_file: /etc/platform/certs/server.crt
+    key_file: /etc/platform/certs/server.key
+    ca_file: /etc/platform/certs/ca.crt
+```
+
+---
+
+## 🐛 故障排除
+
+### 服務無法啟動
+
+```bash
+# 檢查系統日誌
+sudo journalctl -u platform-* --since today
+
+# 檢查端口占用
+sudo netstat -tulpn | grep -E "8000|8500|5672"
+
+# 檢查磁盤空間
+df -h
+```
+
+### 網絡連接問題
+
+```bash
+# 檢查防火牆
+sudo ufw status
+sudo iptables -L
+
+# 測試端口連接
+telnet localhost 8000
+nc -zv localhost 8500
+```
+
+---
+
 **GL Compliance**: Yes  
 **Layer**: GL10-29 (Platform Services)  
-**Template Type**: On-Premise Platform  
-**Virtualization Support**: VMware, Hyper-V, KVM
+**Status**: Active  
+**Template Version**: 1.0.0  
+**Deployment**: On-Premise, Edge
