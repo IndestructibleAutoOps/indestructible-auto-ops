@@ -45,15 +45,18 @@ spec:
       - 必须注明引用日期
       - 必须区分要求和建议
   cross_boundary_rules:
-    rule1: 事实流向
+    rule1:
+      name: 事实流向
       description: 信息只能从内部流向报告，外部只能作为对照
-    rule2: 差异处理流程
+    rule2:
+      name: 差异处理流程
       steps:
         - 检测差异（内部 vs 外部）
         - 分类差异（aligned/intentional-debt/gap）
         - 记录理由（对于intentional差异）
         - 创建事项（对于debt/gap）
-    rule3: 术语映射
+    rule3:
+      name: 术语映射
       requirement: 当使用外部术语时，必须建立到内部术语的映射表
   enforcement:
     pre_generation_checks:
@@ -80,13 +83,16 @@ spec:
         - 差异分类正确
         - 建议基于具体差距分析
   exceptions:
-    type1: 已知设计决策
+    type1:
+      name: 已知设计决策
       process: 必须在design-decisions/目录下有记录
       presentation: 报告中必须包含'设计理由'部分
-    type2: 标准冲突
+    type2:
+      name: 标准冲突
       process: 必须记录在standards-conflicts/目录
       presentation: 必须解释选择的原因和权衡
-    type3: 部分实现
+    type3:
+      name: 部分实现
       process: 必须创建partial-implementation跟踪事项
       presentation: 必须明确标注实现百分比和缺失部分
   responsibilities:
@@ -103,7 +109,6 @@ spec:
       role: 报告生成
       accountable_for: 遵守所有生成规则和格式要求
 
----
-**Version**: 1.0.0  
-**Last Updated**: 2024-01-20  
-**Maintained By**: GL Governance Team
+# Version: 1.0.0  
+# Last Updated: 2024-01-20  
+# Maintained By: GL Governance Team

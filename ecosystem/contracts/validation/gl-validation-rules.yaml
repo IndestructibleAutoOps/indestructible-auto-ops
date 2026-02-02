@@ -125,8 +125,8 @@ spec:
       check: "平台是否違反邊界規則"
       errorMessage: "平台違反邊界規則"
 
-    # === 驗證級別定義 ===
-    levels:
+  # === 驗證級別定義 ===
+  levels:
       CRITICAL:
         description: "關鍵錯誤，必須修復"
         action: "阻擋提交"
@@ -147,8 +147,8 @@ spec:
         action: "僅顯示資訊"
         example: "建議使用更清晰的名稱"
 
-    # 驗證流程
-    validationPipeline:
+  # 驗證流程
+  validationPipeline:
       - step: 1
         name: "語意驗證"
         rules: ["GL-VR-001", "GL-VR-002"]
@@ -167,8 +167,8 @@ spec:
         rules: ["GL-VR-020 至 GL-VR-022"]
         condition: "type == platform"
 
-    # 錯誤處理
-    errorHandling:
+  # 錯誤處理
+  errorHandling:
       onCritical:
         - "阻擋提交"
         - "顯示錯誤訊息"
