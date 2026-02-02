@@ -1,3 +1,9 @@
+#
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """GL治理執行層 - 完整系統測試"""
 
 import sys

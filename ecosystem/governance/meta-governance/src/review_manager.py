@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Review Manager
 =================

@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: platform-templates
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+#
 # Core Platform Setup Script
 # 設置腳本 - 初始化平台環境
 #

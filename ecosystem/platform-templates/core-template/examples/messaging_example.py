@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: platform-templates
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 Messaging Example
 =================

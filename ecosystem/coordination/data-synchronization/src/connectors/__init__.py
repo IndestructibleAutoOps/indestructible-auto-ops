@@ -1,3 +1,9 @@
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: coordination
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 GL Data Connectors
 ==================

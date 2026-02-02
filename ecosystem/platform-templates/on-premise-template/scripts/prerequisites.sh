@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: platform-templates
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+#
 # On-Premise Platform Prerequisites Check
 # 前置檢查腳本 - 驗證系統要求
 #

@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: platform-templates
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+#
 # Core Platform Cleanup Script
 # 清理腳本 - 停止服務並清理資源
 #
