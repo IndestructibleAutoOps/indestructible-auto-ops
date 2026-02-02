@@ -151,7 +151,7 @@ class ContentAnalyzer:
         
         return ContentAnalysis(
             file_path=file_path,
-            file_size=len(content),
+            file_size=full_path.stat().st_size,
             file_type=self._determine_file_type(file_path),
             purpose=purpose,
             responsibility_boundary=responsibility_boundary,
