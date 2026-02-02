@@ -16,8 +16,7 @@ GL Governance Layer: GL10-29 (Operational Layer)
 import uuid
 import threading
 import time
-from typing import Optional, Dict, Any, Callable
-from datetime import datetime
+from typing import Optional, Dict, Any
 import logging
 
 from service_registry import (
@@ -68,12 +67,15 @@ class ServiceAgent:
         level = self.config.get('monitoring', {}).get('logging', {}).get('level', 'INFO')
         logger.setLevel(getattr(logging, level))
         
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        )
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
+        # Avoid adding duplicate handlers if multiple ServiceAgent instances
+        # are created within the same process.
+        if not logger.handlers:
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
         
         return logger
     

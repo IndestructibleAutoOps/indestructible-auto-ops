@@ -113,7 +113,8 @@ def test_authenticator():
     )
     
     assert api_key is not None, "API Key generation failed"
-    print(f"✓ API Key generated: {api_key[:20]}...")
+    # Mask the API key in logs to avoid exposing sensitive data
+    print(f"✓ API Key generated: {'*' * 20}... (masked for security)")
     
     # 驗證 API Key
     api_auth_token = auth.verify_api_key(api_key)

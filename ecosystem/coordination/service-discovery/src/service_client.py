@@ -169,9 +169,28 @@ class ServiceClient:
             'least-connections': LeastConnectionsStrategy()
         }
         
-        # 默認策略
-        default_strategy = self.config.get('load_balancing', {}).get('default_strategy', 'health-based')
-        self.default_strategy = self.load_balancing_strategies.get(default_strategy)
+        # 默認策略 - 驗證配置並在未知值時回退到安全默認值
+        default_strategy_name = self.config.get(
+            'load_balancing', {}
+        ).get('default_strategy', 'health-based')
+        self.default_strategy = self.load_balancing_strategies.get(default_strategy_name)
+        if self.default_strategy is None:
+            # 未知的負載均衡策略名稱，記錄警告並回退到 health-based
+            self.logger.warning(
+                "Unknown load_balancing.default_strategy '%s'; "
+                "falling back to 'health-based'",
+                default_strategy_name,
+            )
+            fallback_name = 'health-based'
+            fallback_strategy = self.load_balancing_strategies.get(fallback_name)
+            if fallback_strategy is None:
+                # 編碼錯誤或配置錯誤：連安全默認策略都不可用，立即失敗
+                raise ValueError(
+                    "Invalid load_balancing.default_strategy configuration: "
+                    f"'{default_strategy_name}' is not a known strategy and "
+                    f"fallback '{fallback_name}' is not available."
+                )
+            self.default_strategy = fallback_strategy
         
         self.logger.info("Service Client initialized")
     
@@ -181,12 +200,14 @@ class ServiceClient:
         level = self.config.get('monitoring', {}).get('logging', {}).get('level', 'INFO')
         logger.setLevel(getattr(logging, level))
         
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        )
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
+        # Avoid attaching multiple identical StreamHandlers to the same logger
+        if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
         
         return logger
     
