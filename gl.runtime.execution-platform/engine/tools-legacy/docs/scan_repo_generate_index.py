@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: scan_repo_generate_index
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -46,7 +46,7 @@ DOMAIN_MAPPING = {
         "workspace/tools/infrastructure/",
     ],
     "tests": ["tests/", "test-vectors/"],
-    "gl_platform_universegl_platform_universe.governance": ["gl_platform_universegl_platform_universe.governance/"],
+    "gl_platform_universe.governance": ["gl_platform_universe.governance/"],
     "tools": ["tools/", "workspace/tools/"],
     "ops": ["ops/"],
     "config": ["config/"],
@@ -69,11 +69,11 @@ LAYER_MAPPING = {
     "frontend": "experience-interfaces",
     "infrastructure": "enablement",
     "tests": "enablement",
-    "gl_platform_universegl_platform_universe.governance": "gl_platform_universegl_platform_universe.governance-ops",
+    "gl_platform_universe.governance": "gl_platform_universe.governance-ops",
     "tools": "enablement",
-    "ops": "gl_platform_universegl_platform_universe.governance-ops",
+    "ops": "gl_platform_universe.governance-ops",
     "config": "enablement",
-    "docs": "gl_platform_universegl_platform_universe.governance-ops",
+    "docs": "gl_platform_universe.governance-ops",
     "mcp-servers": "ai-automation",
     "agent": "ai-automation",
     "shared": "platform-core",
@@ -82,7 +82,7 @@ LAYER_MAPPING = {
     "runtime": "platform-core",
     "github": "enablement",
     "architecture": "platform-core",
-    "security": "gl_platform_universegl_platform_universe.governance-ops",
+    "security": "gl_platform_universe.governance-ops",
     "guides": "enablement",
 }
 # File type mapping
@@ -155,7 +155,7 @@ def determine_domain(file_path: str) -> str:
     return "docs"
 def determine_layer(domain: str) -> str:
     """Determine layer based on domain."""
-    return LAYER_MAPPING.get(domain, "gl_platform_universegl_platform_universe.governance-ops")
+    return LAYER_MAPPING.get(domain, "gl_platform_universe.governance-ops")
 def determine_type(file_path: Path) -> str:
     """Determine type based on file extension."""
     suffix = file_path.suffix.lower()
@@ -271,7 +271,7 @@ def generate_index(items: list[dict[str, Any]]) -> dict[str, Any]:
             "name": "Automation 自動化",
             "description": "Automation systems, agents, and pipelines",
         },
-        "gl_platform_universegl_platform_universe.governance": {
+        "gl_platform_universe.governance": {
             "name": "Governance 治理",
             "description": "Policies, rules, security, and compliance",
         },
@@ -294,7 +294,7 @@ def generate_index(items: list[dict[str, Any]]) -> dict[str, Any]:
         "platform-core",
         "ai-automation",
         "enablement",
-        "gl_platform_universegl_platform_universe.governance-ops",
+        "gl_platform_universe.governance-ops",
     ]
     return {
         "$schema": "https://schema.machinenativenops.io/docs-index/v1",

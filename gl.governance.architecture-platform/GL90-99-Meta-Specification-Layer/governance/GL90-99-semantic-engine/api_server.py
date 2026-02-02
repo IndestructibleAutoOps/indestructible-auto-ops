@@ -16,7 +16,7 @@ from flask import Flask, request, jsonify
 from typing import Dict, Any
 import yaml
 
-from .gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine import SemanticEngine
+from .gl_platform_universe.gl_platform_universe.governance.semantic_engine import SemanticEngine
 import traceback
 
 

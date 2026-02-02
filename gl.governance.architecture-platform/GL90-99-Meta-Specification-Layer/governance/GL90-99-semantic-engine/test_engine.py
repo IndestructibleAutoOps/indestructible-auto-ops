@@ -21,9 +21,9 @@ sys.path.insert(0, workspace_dir)
 
 import yaml
 
-# Import from gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine package
-import gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine
-from gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine.gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine import SemanticEngine
+# Import from gl_platform_universe.governance.semantic_engine package
+import gl_platform_universe.governance.semantic_engine
+from gl_platform_universe.governance.semantic_engine.gl_platform_universe.governance.semantic_engine import SemanticEngine
 
 
 def print_section(title):
@@ -33,7 +33,7 @@ def print_section(title):
     print(f"{'='*60}\n")
 
 
-def test_gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine():
+def test_governance_semantic_engine():
     """Test and demonstrate the semantic engine"""
     
     # Load the semantic-unification-spec.yaml
@@ -256,4 +256,4 @@ The UnificationSpecification is now a fully functional Semantic Core Engine!
 
 
 if __name__ == "__main__":
-    test_gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine()
+    test_gl_platform_universe.governance.semantic_engine()

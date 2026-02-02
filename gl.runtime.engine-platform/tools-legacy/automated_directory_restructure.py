@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: automated_directory_restructure
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -219,7 +219,7 @@ class DirectoryRestructureTool:
                         "typescript",
                         "build-scripts",
                     ],
-                    "gl_platform_universegl_platform_universe.governance": [
+                    "gl_platform_universe.governance": [
                         "system-manifest",
                         "module-mapping",
                         "architecture-specs",
@@ -265,7 +265,7 @@ class DirectoryRestructureTool:
         """分析當前目錄結構"""
         logger.info("🔍 分析當前目錄結構...")
         structure = {}
-        for root_dir in ["src", "config", "scripts", "gl_platform_universegl_platform_universe.governance"]:
+        for root_dir in ["src", "config", "scripts", "gl_platform_universe.governance"]:
             root_path = self.project_root / root_dir
             if root_path.exists():
                 structure[root_dir] = self._scan_directory(root_path)

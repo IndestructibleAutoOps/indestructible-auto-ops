@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: validate-refactor-index
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -116,14 +116,14 @@ class RefactorIndexValidator:
                 f"Cluster '{cluster_id}': Invalid status '{status}' "
                 f"(should be one of {valid_statuses})"
             )
-        # Check gl_platform_universegl_platform_universe.governance_status structure
-        if "gl_platform_universegl_platform_universe.governance_status" in cluster:
-            gov_status = cluster["gl_platform_universegl_platform_universe.governance_status"]
+        # Check gl_platform_universe.governance_status structure
+        if "gl_platform_universe.governance_status" in cluster:
+            gov_status = cluster["gl_platform_universe.governance_status"]
             required_gov_fields = ["violations", "threshold", "auto_fixable"]
             for field in required_gov_fields:
                 if field not in gov_status:
                     self.warnings.append(
-                        f"Cluster '{cluster_id}': gl_platform_universegl_platform_universe.governance_status missing field '{field}'"
+                        f"Cluster '{cluster_id}': gl_platform_universe.governance_status missing field '{field}'"
                     )
         return True
     def validate_index(self) -> tuple[int, int]:

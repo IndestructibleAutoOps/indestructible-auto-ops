@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: validate_restructure
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -204,7 +204,7 @@ class RestructureValidator:
                     "typescript",
                     "build-scripts",
                 ],
-                "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance": [
+                "gl_platform_universe.gl_platform_universe.governance": [
                     "system-manifest",
                     "module-mapping",
                     "architecture-specs",
@@ -377,11 +377,11 @@ class RestructureValidator:
         # 檢查關鍵配置文件
         config_checks = [
             {
-                "path": "config/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/system-manifest.yaml",
+                "path": "config/gl_platform_universe.gl_platform_universe.governance/system-manifest.yaml",
                 "required_keys": ["name", "version", "modules"],
             },
             {
-                "path": "config/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/system-module-map.yaml",
+                "path": "config/gl_platform_universe.gl_platform_universe.governance/system-module-map.yaml",
                 "required_keys": ["modules", "dependencies"],
             },
             {"path": "package.json", "required_keys": ["name", "version", "scripts"]},

@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: governance
 # @GL-semantic: generate-language-dashboard
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -25,9 +25,9 @@ Generates comprehensive Language Governance Dashboard with:
 - Mermaid diagrams
 Usage:
     python3 tools/generate-language-dashboard.py \
-        --gl_platform_universegl_platform_universe.governance-report gl_platform_universegl_platform_universe.governance/language-gl_platform_universegl_platform_universe.governance-report.json \
-        --codeql-results gl_platform_universegl_platform_universe.governance/codeql-results-*.sarif \
-        --semgrep-results gl_platform_universegl_platform_universe.governance/semgrep-results.sarif \
+        --governance-report governance/language-governance-report.json \
+        --codeql-results governance/codeql-results-*.sarif \
+        --semgrep-results governance/semgrep-results.sarif \
         --history knowledge/language-history.yaml \
         --health knowledge/language-health-score.yaml \
         --output docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
@@ -70,7 +70,7 @@ def load_sarif(pattern: str) -> list[dict]:
             results.extend(data["runs"])
     return results
 def calculate_statistics(
-    gl_platform_universegl_platform_universe.governance_data: dict, codeql_data: list, semgrep_data: list, health_data: dict
+    governance_data: dict, codeql_data: list, semgrep_data: list, health_data: dict
 ) -> dict:
     """Calculate all dashboard statistics"""
     stats = {
@@ -84,7 +84,7 @@ def calculate_statistics(
     stats["health_grade"] = health_data.get("grade", "N/A")
     stats["health_status"] = get_status_emoji(stats["health_score"])
     # Violations
-    violations = gl_platform_universegl_platform_universe.governance_data.get("violations", [])
+    violations = governance_data.get("violations", [])
     stats["total_violations"] = len(violations)
     stats["cross_layer_count"] = sum(
         1 for v in violations if "cross-layer" in v.get("type", "").lower()
@@ -144,9 +144,9 @@ def generate_violations_table(violations: list[dict]) -> str:
     if len(violations) > 20:
         lines.append(f"| ... | ... | {len(violations) - 20} more violations | ... |")
     return "\n".join(lines)
-def generate_language_chart(gl_platform_universegl_platform_universe.governance_data: dict) -> str:
+def generate_language_chart(governance_data: dict) -> str:
     """Generate ASCII language distribution chart"""
-    stats = gl_platform_universegl_platform_universe.governance_data.get("statistics", {})
+    stats = governance_data.get("statistics", {})
     lang_dist = stats.get("by_language", {})
     if not lang_dist:
         return "No language data available"
@@ -213,14 +213,14 @@ def generate_dashboard(args):
     """Generate complete dashboard"""
     console.print("[cyan]Loading data sources...[/cyan]")
     # Load all data
-    gl_platform_universegl_platform_universe.governance_data = load_json(args.gl_platform_universegl_platform_universe.governance_report)
+    governance_data = load_json(args.governance_report)
     health_data = load_yaml(args.health)
     history_data = load_yaml(args.history)
     codeql_data = load_sarif(args.codeql_results)
     semgrep_data = load_sarif(args.semgrep_results)
     console.print("[cyan]Calculating statistics...[/cyan]")
     stats = calculate_statistics(
-        gl_platform_universegl_platform_universe.governance_data, codeql_data, semgrep_data, health_data
+        governance_data, codeql_data, semgrep_data, health_data
     )
     console.print("[cyan]Generating dashboard sections...[/cyan]")
     # Read template
@@ -247,13 +247,13 @@ def generate_dashboard(args):
         "FIX_SUCCESS_RATE": "85",  # Placeholder
         "FIX_STATUS": "🟢",
         "VIOLATIONS_TABLE": generate_violations_table(
-            gl_platform_universegl_platform_universe.governance_data.get("violations", [])
+            governance_data.get("violations", [])
         ),
-        "LANGUAGE_DISTRIBUTION_CHART": generate_language_chart(gl_platform_universegl_platform_universe.governance_data),
+        "LANGUAGE_DISTRIBUTION_CHART": generate_language_chart(governance_data),
         "HEALTH_SCORE_TREND_CHART": "Trend data not available",
         "VIOLATION_TREND_CHART": generate_trend_chart(history_data),
         "FIX_HISTORY_TABLE": generate_fix_history_table(history_data),
-        "HOTSPOT_TABLE": generate_hotspot_table(gl_platform_universegl_platform_universe.governance_data.get("violations", [])),
+        "HOTSPOT_TABLE": generate_hotspot_table(governance_data.get("violations", [])),
         "CROSS_LAYER_COUNT": str(stats["cross_layer_count"]),
         "FORBIDDEN_COUNT": str(stats["forbidden_count"]),
         "SECURITY_COUNT": str(stats["security_findings"]),
@@ -276,18 +276,18 @@ def main():
         description="Generate Language Governance Dashboard"
     )
     parser.add_argument(
-        "--gl_platform_universegl_platform_universe.governance-report",
-        default="gl_platform_universegl_platform_universe.governance/language-gl_platform_universegl_platform_universe.governance-report.json",
-        help="Path to gl_platform_universegl_platform_universe.governance report JSON",
+        "--governance-report",
+        default="governance/language-governance-report.json",
+        help="Path to governance report JSON",
     )
     parser.add_argument(
         "--codeql-results",
-        default="gl_platform_universegl_platform_universe.governance/codeql-results-*.sarif",
+        default="governance/codeql-results-*.sarif",
         help="Path pattern for CodeQL SARIF files",
     )
     parser.add_argument(
         "--semgrep-results",
-        default="gl_platform_universegl_platform_universe.governance/semgrep-results.sarif",
+        default="governance/semgrep-results.sarif",
         help="Path to Semgrep SARIF file",
     )
     parser.add_argument(

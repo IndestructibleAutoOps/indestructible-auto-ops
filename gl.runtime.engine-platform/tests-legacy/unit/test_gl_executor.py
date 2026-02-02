@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: test_gl_executor
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -63,7 +63,7 @@ class TestGLArtifact:
     def sample_artifact_data(self):
         """Sample artifact data for testing."""
         return {
-            'apiVersion': 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'test-vision',
@@ -84,7 +84,7 @@ class TestGLArtifact:
     def test_from_dict(self, sample_artifact_data):
         """Test GLArtifact.from_dict."""
         artifact = GLArtifact.from_dict(sample_artifact_data)
-        assert artifact.api_version == 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.machinenativeops.io/v2'
+        assert artifact.api_version == 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2'
         assert artifact.kind == 'VisionStatement'
         assert artifact.name == 'test-vision'
         assert artifact.version == '1.0.0'
@@ -158,13 +158,13 @@ class TestArtifactManager:
     def setup_test_artifacts(self, tmp_path):
         """Setup test artifacts in temp directory."""
         import yaml
-        # Create gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance directory structure
-        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path = tmp_path / 'workspace' / 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance' / 'layers'
-        strategic_path = gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path / 'GL00-09-strategic' / 'artifacts'
+        # Create gl_platform_universe.gl_platform_universe.governance directory structure
+        gl_platform_universe.gl_platform_universe.governance_path = tmp_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance' / 'layers'
+        strategic_path = gl_platform_universe.gl_platform_universe.governance_path / 'GL00-09-strategic' / 'artifacts'
         strategic_path.mkdir(parents=True)
         # Create test artifact
         artifact_data = {
-            'apiVersion': 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'test-vision',
@@ -239,9 +239,9 @@ class TestGLExecutorIntegration:
         """Setup full test environment."""
         import yaml
         # Create directory structure
-        gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path = tmp_path / 'workspace' / 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance'
-        meta_spec_path = gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path / 'meta-spec'
-        layers_path = gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_path / 'layers'
+        gl_platform_universe.gl_platform_universe.governance_path = tmp_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance'
+        meta_spec_path = gl_platform_universe.gl_platform_universe.governance_path / 'meta-spec'
+        layers_path = gl_platform_universe.gl_platform_universe.governance_path / 'layers'
         meta_spec_path.mkdir(parents=True)
         # Create layer directories
         for layer_dir in ['GL00-09-strategic', 'GL10-29-operational']:
@@ -249,7 +249,7 @@ class TestGLExecutorIntegration:
             layer_path.mkdir(parents=True)
         # Create sample artifacts
         vision_data = {
-            'apiVersion': 'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'test-vision',

@@ -20,7 +20,7 @@ Phases Implemented:
 - Phase 6: Semantic Engine Integration (語意引擎化)
 """
 
-from .gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine import SemanticEngine
+from .gl_platform_universe.gl_platform_universe.governance.semantic_engine import SemanticEngine
 from .semantic_models import (
     SemanticNode, 
     SemanticNodeType, 

@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 """
@@ -28,7 +28,7 @@ def test_data_dir():
 @pytest.fixture(scope="session")
 def config_dir():
     """Configuration directory fixture"""
-    return project_root / "naming-gl_platform_universegl_platform_universe.governance-v1.0.0" / "config"
+    return project_root / "naming-gl_platform_universe.governance-v1.0.0" / "config"
 
 
 @pytest.fixture(scope="session")

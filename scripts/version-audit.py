@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: execution-script
-# @GL-audit-trail: gl-enterprise-architecture/gl_platform_universegl_platform_universe.governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-enterprise-architecture/gl_platform_universegl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-enterprise-architecture/gl_platform_universegl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 #!/usr/bin/env python3
@@ -104,15 +104,15 @@ class VersionAuditor:
             self.results['issues'].append(f"agent-orchestration.yml 讀取失敗: {e}")
             print(f"❌ agent-orchestration.yml: 讀取失敗 - {e}")
     
-    def audit_gl_platform_universegl_platform_universe.governance_files(self):
+    def audit_governance_files(self):
         """核對治理相關文件"""
-        gl_platform_universegl_platform_universe.governance_dirs = [
-            'gl-execution-runtime/gl_platform_universegl_platform_universe.governance-root-layer',
-            'gl-execution-runtime/meta-gl_platform_universegl_platform_universe.governance-layer',
+        governance_dirs = [
+            'gl-execution-runtime/governance-root-layer',
+            'gl-execution-runtime/meta-governance-layer',
             'gl-execution-runtime/reality-falsification-layer'
         ]
         
-        for gov_dir in gl_platform_universegl_platform_universe.governance_dirs:
+        for gov_dir in governance_dirs:
             gov_path = self.repo_path / gov_dir
             if not gov_path.exists():
                 self.results['warnings'].append(f"治理目錄不存在: {gov_dir}")
@@ -129,7 +129,7 @@ class VersionAuditor:
     def audit_quantum_platform(self):
         """核對量子平台文件"""
         quantum_dirs = [
-            'gl_platform_universegl_platform_universe.governance-quantum',
+            'governance-quantum',
             'infrastructure-quantum', 
             'monitoring-quantum',
             'artifacts-quantum'
@@ -180,7 +180,7 @@ class VersionAuditor:
         
         self.audit_package_json()
         self.audit_agent_orchestration()
-        self.audit_gl_platform_universegl_platform_universe.governance_files()
+        self.audit_governance_files()
         self.audit_quantum_platform()
         self.audit_completion_docs()
         

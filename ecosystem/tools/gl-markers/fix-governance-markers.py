@@ -36,7 +36,7 @@ MARKER_FILES = [
     "gl-execution-runtime/code-intel-security-layer/pattern-library/performance-patterns/database-optimization.md",
     "gl-execution-runtime/code-intel-security-layer/pattern-library/security-patterns/sql-injection-prevention.md",
     "gl-execution-runtime/code-intel-security-layer/pattern-library/security-patterns/xss-prevention.md",
-    "gl-execution-runtime/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/audit-summary.md",
+    "gl-execution-runtime/gl_platform_universe.gl_platform_universe.governance-audit-reports/audit-summary.md",
     "gl-execution-runtime/infinite-learning-continuum/index.ts",
     "gl-execution-runtime/progress-report.md",
     "gl-execution-runtime/scripts/test-code-intel-security-layer.py",
@@ -49,7 +49,7 @@ MARKER_FILES = [
 # JSON files that need _gl metadata
 JSON_FILES = [
     "gl-execution-runtime/code-intel-security-layer/capability-schema/capability-examples.json",
-    "gl-execution-runtime/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-reports/global-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-report.json",
+    "gl-execution-runtime/gl_platform_universe.gl_platform_universe.governance-audit-reports/global-gl_platform_universe.gl_platform_universe.governance-audit-report.json",
     "gl-execution-runtime/test-reports/code-intel-test-report.json",
 ]
 
@@ -108,7 +108,7 @@ def add_metadata_to_json(filepath):
         # Add _gl metadata
         if isinstance(data, dict):
             data['_gl'] = {
-                'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance': 'GL-Standard',
+                'gl_platform_universe.gl_platform_universe.governance': 'GL-Standard',
                 'version': '1.0.0',
                 'validated': True
             }

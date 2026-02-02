@@ -1,13 +1,13 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: semantic_root
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 GL Semantic Root Management Implementation
 Implements unified semantic root management with full traceability:
-- Unified semantic root: urn:machinenativeops:gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance:semantic-root:v1
+- Unified semantic root: urn:machinenativeops:gl_platform_universe.gl_platform_universe.governance:semantic-root:v1
 - 4 review mechanisms: Forward, Backward, Change, Audit
 - KL divergence and graph edit distance detection
 - SHA-256 integrity sealing
@@ -104,7 +104,7 @@ class SemanticRootManager:
     """
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
-        self.unified_semantic_root = "urn:machinenativeops:gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance:semantic-root:v1"
+        self.unified_semantic_root = "urn:machinenativeops:gl_platform_universe.gl_platform_universe.governance:semantic-root:v1"
         self.entities = self._init_entities()
         self.review_mechanisms = self._init_review_mechanisms()
         self.tracking_dimensions = self._init_tracking_dimensions()
@@ -140,7 +140,7 @@ class SemanticRootManager:
             SemanticEntity(
                 entity_id="ENTITY-001",
                 name="Governance Entity",
-                urn="urn:machinenativeops:gl:entity:gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance:1.0.0",
+                urn="urn:machinenativeops:gl:entity:gl_platform_universe.gl_platform_universe.governance:1.0.0",
                 description="Governance entity semantic root",
             ),
             SemanticEntity(

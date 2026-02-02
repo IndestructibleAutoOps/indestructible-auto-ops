@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: master_orchestrator
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -29,7 +29,7 @@ Project Structure Context / 專案結構定位
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  🔷 SynergyMesh Core        ⚖️ Structural Governance       │
-│     (core/)                    (gl_platform_universegl_platform_universe.governance/, config/)       │
+│     (core/)                    (gl_platform_universe.governance/, config/)       │
 │     • AI decision engine       • Schema namespaces          │
 │     • Service registries       • Ten-stage pipeline         │
 │     • Safety mechanisms        • SLSA provenance            │
@@ -49,7 +49,7 @@ Architecture Role / 架構角色
 # Discover and register automation engines from `automation/` subsystems
 # Coordinate with intelligent automation (`automation/intelligent/`)
 # Support autonomous framework skeletons (`automation/autonomous/`)
-# Interface with gl_platform_universegl_platform_universe.governance policies (`gl_platform_universegl_platform_universe.governance/policies/`)
+# Interface with gl_platform_universe.governance policies (`gl_platform_universe.governance/policies/`)
 Configuration Sources / 配置來源
 --------------------------------
 - Primary: `machinenativeops.yaml` (root-level truth source)
@@ -61,7 +61,7 @@ Related Documentation / 相關文檔
 - System Overview: README.md (三系統視圖)
 - Architecture Boundaries: docs/architecture/repo-map.md
 - Automation Layer: automation/README.md
-- Governance Integration: gl_platform_universegl_platform_universe.governance/README.md
+- Governance Integration: gl_platform_universe.governance/README.md
 Usage:
     # 啟動主控
     python master_orchestrator.py start
@@ -261,15 +261,15 @@ class EngineRegistry:
     1. **Discovery Integration** (發現整合):
        - Scans `automation/` for BaseEngine subclasses
        - Loads engine.yaml configs from engine directories
-       - Interfaces with gl_platform_universegl_platform_universe.governance schemas in `config/`
+       - Interfaces with gl_platform_universe.governance schemas in `config/`
     2. **SynergyMesh Core Integration** (核心整合):
        - Provides engine metadata to AI decision engine (`core/`)
        - Supports virtual expert coordination
        - Reports health status for monitoring
     3. **Governance Integration** (治理整合):
-       - Validates engine configs against gl_platform_universegl_platform_universe.governance schemas
+       - Validates engine configs against gl_platform_universe.governance schemas
        - Ensures SLSA provenance for discovered engines
-       - Enforces policy constraints from `gl_platform_universegl_platform_universe.governance/policies/`
+       - Enforces policy constraints from `gl_platform_universe.governance/policies/`
     4. **Autonomous Framework Support** (自主框架支援):
        - Registers five-skeleton engines (`automation/autonomous/`)
        - Coordinates drone control engines

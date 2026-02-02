@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: validate-module-manifests
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL-Layer: GL30-49 (Execution)
 #!/usr/bin/env python3

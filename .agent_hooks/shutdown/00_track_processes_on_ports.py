@@ -2,7 +2,7 @@
 # @GL-governed
 # @GL-layer: common
 # @GL-semantic: 00_track_processes_on_ports
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 """

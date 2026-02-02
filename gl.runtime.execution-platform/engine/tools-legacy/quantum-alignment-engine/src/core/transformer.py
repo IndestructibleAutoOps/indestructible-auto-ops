@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: governance
 # @GL-semantic: transformer
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 Quantum Code Alignment Engine - Core Transformer Module
@@ -112,7 +112,7 @@ class SemanticLattice:
         """
         Load project policy as quantum state
         """
-        # In production, load from gl_platform_universegl_platform_universe.governance-manifest.yaml
+        # In production, load from governance-manifest.yaml
         # For now, generate deterministic vector from policy hash
         policy_hash = hashlib.sha256(b"axiom-naming-v9").hexdigest()
         # Convert hash to vector
@@ -136,14 +136,14 @@ class NamespaceRegistry:
     Registry of project namespaces and policies
     Maps namespace names to their semantic vectors and policy configurations.
     """
-    def __init__(self, manifest_path: str = "gl_platform_universegl_platform_universe.governance-manifest.yaml"):
+    def __init__(self, manifest_path: str = "governance-manifest.yaml"):
         self.namespaces: Dict[str, str] = {}  # namespace -> policy
         self.namespace_vectors: Dict[str, np.ndarray] = {}
         self.policies: Dict[str, Dict] = {}
         self.manifest_path = manifest_path
-        self._load_from_gl_platform_universegl_platform_universe.governance()
-    def _load_from_gl_platform_universegl_platform_universe.governance(self):
-        """Load namespaces from gl_platform_universegl_platform_universe.governance-manifest.yaml"""
+        self._load_from_governance()
+    def _load_from_governance(self):
+        """Load namespaces from governance-manifest.yaml"""
         manifest_path = Path(self.manifest_path)
         if not manifest_path.exists():
             print(
@@ -163,7 +163,7 @@ class NamespaceRegistry:
     def _load_default_namespaces(self):
         """Load default namespaces if manifest not found"""
         default_namespaces = [
-            "workspace.src.gl_platform_universegl_platform_universe.governance",
+            "workspace.src.governance",
             "workspace.engine",
             "workspace.tools",
             "workspace.src.autonomous",
@@ -449,12 +449,12 @@ class QuantumCodeTransformer:
     Orchestrates the entire transformation pipeline from external code
     to MachineNativeOps-aligned code.
     """
-    def __init__(self, gl_platform_universegl_platform_universe.governance_manifest_path: str = "gl_platform_universegl_platform_universe.governance-manifest.yaml"):
+    def __init__(self, governance_manifest_path: str = "governance-manifest.yaml"):
         self.semantic_lattice = SemanticLattice(dimension=8192)
         self.entanglement_mapper = EntanglementMapper()
         self.policy_loader = PolicyLoader()
         self.validator = SemanticValidator()
-        self.gl_platform_universegl_platform_universe.governance_manifest_path = gl_platform_universegl_platform_universe.governance_manifest_path
+        self.governance_manifest_path = governance_manifest_path
     def transform(
         self,
         external_code_path: str,
@@ -701,8 +701,8 @@ class QuantumCodeTransformer:
 class PolicyLoader:
     """Load project policies"""
     def load_policy(self, policy_name: str) -> Dict:
-        """Load policy from gl_platform_universegl_platform_universe.governance system"""
-        # Load from gl_platform_universegl_platform_universe.governance-manifest.yaml
+        """Load policy from governance system"""
+        # Load from governance-manifest.yaml
         return {}
 class SemanticValidator:
     """Validate semantic coherence of transformed code"""

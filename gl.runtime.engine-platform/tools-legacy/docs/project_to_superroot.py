@@ -1,20 +1,20 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: project_to_superroot
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Project Knowledge Graph entities to SuperRoot format.
 This script transforms the repository knowledge graph into SuperRoot-compatible
-entity definitions that can be consumed by SuperRoot gl_platform_universegl_platform_universe.governance systems.
+entity definitions that can be consumed by SuperRoot gl_platform_universe.governance systems.
 Usage:
   python tools/docs/project_to_superroot.py \
     --kg docs/knowledge-graph.yaml \
