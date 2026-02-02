@@ -1,6 +1,6 @@
 {
   "summary": {
-    "total_files_scanned": 789,
+    "total_files_scanned": 790,
     "files_with_issues": 0,
     "total_syntax_errors": 0,
     "total_security_issues": 125,
@@ -725,21 +725,21 @@
       },
       {
         "file": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
-        "line": 169,
+        "line": 206,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
-        "line": 170,
+        "line": 207,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
-        "line": 176,
+        "line": 213,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -915,7 +915,7 @@
         "severity": "high"
       }
     ],
-    "total_files_scanned": 789,
+    "total_files_scanned": 790,
     "files_with_issues": 0
   }
 }
