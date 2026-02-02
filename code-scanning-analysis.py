@@ -25,6 +25,35 @@ class CodeScanningAnalyzer:
             "files_with_issues": 0
         }
         
+        # Files to skip (tools that legitimately check for these patterns)
+        self.skip_files = {
+            'code-scanning-analysis.py',
+            'fix-security-issues.py',
+            'fix-code-scanning-issues.py',
+            'scan-secrets.py',
+        }
+        
+        # Directories to skip (archived/legacy code)
+        self.skip_dirs = {
+            '.github/archive',
+            'tests-legacy',
+            'tools-legacy',
+            'scripts-legacy',  # Legacy scripts with eval/exec
+        }
+    
+    def should_skip_file(self, filepath: str) -> bool:
+        """Check if file should be skipped"""
+        # Skip if filename matches
+        if Path(filepath).name in self.skip_files:
+            return True
+        
+        # Skip if in excluded directory
+        for skip_dir in self.skip_dirs:
+            if skip_dir in filepath:
+                return True
+        
+        return False
+        
     def scan_python_files(self) -> Dict:
         """Scan all Python files in the repository"""
         print("🔍 Scanning Python files...")
@@ -42,8 +71,13 @@ class CodeScanningAnalyzer:
     
     def analyze_file(self, filepath: Path):
         """Analyze a single Python file"""
-        self.results["total_files_scanned"] += 1
         rel_path = str(filepath.relative_to(self.root_path))
+        
+        # Skip files that are tools or in excluded directories
+        if self.should_skip_file(rel_path):
+            return
+        
+        self.results["total_files_scanned"] += 1
         
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
