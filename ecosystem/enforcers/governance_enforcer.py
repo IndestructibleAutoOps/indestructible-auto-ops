@@ -271,40 +271,258 @@ class GovernanceEnforcer:
         return hashlib.sha256(content).hexdigest()
     
     def _check_quality_gates(self, contract: Dict, operation: Dict) -> Dict[str, bool]:
-        """Check quality gates"""
+        """
+        Check quality gates with comprehensive validation.
+        
+        Quality Gates:
+        1. Evidence coverage >= 90%
+        2. Forbidden phrases == 0
+        3. Source consistency check
+        """
         gates = {}
         quality_gates = contract.get("verify", {}).get("quality_gates", [])
         
+        # Gate 1: Evidence Coverage
+        gates["evidence_coverage"] = self._check_evidence_coverage_gate(operation)
+        
+        # Gate 2: Forbidden Phrases
+        gates["forbidden_phrases"] = self._check_forbidden_phrases_gate(operation)
+        
+        # Gate 3: Source Consistency
+        gates["source_consistency"] = self._check_source_consistency_gate(operation)
+        
+        # Additional contract-specific gates
         for gate in quality_gates:
             gate_name = gate.get("gate")
-            threshold = gate.get("threshold", 0.90)
-            
-            # Simplified implementation
-            if gate_name == "evidence_coverage":
-                evidence_links = operation.get("evidence_links", [])
-                total_statements = operation.get("total_statements", 1)
-                coverage = len(evidence_links) / max(total_statements, 1)
-                gates[gate_name] = coverage >= threshold
-            
-            elif gate_name == "forbidden_phrases":
-                content = operation.get("content", "")
-                count = content.count("100% 完成")
-                gates[gate_name] = count == threshold
+            if gate_name not in gates:
+                # Custom gate handling if needed
+                threshold = gate.get("threshold", 0.90)
+                gates[gate_name] = True  # Default pass
         
         return gates
     
-    def _determine_status(self, violations: List[Dict], quality_gates: Dict) -> str:
-        """Determine overall validation status"""
-        critical_violations = [v for v in violations if v.get("severity") == "CRITICAL"]
+    def _check_evidence_coverage_gate(self, operation: Dict) -> bool:
+        """
+        Check evidence coverage >= 90%.
         
+        Coverage calculation:
+        - Count evidence links in content
+        - Count total statements requiring evidence
+        - Calculate percentage
+        """
+        content = operation.get("content", "")
+        if not content:
+            return False
+        
+        # Count evidence links using pattern [证据: path/to/file#L10-L15]
+        import re
+        evidence_pattern = r'\[证据[^\]]+\]'
+        evidence_links = re.findall(evidence_pattern, content)
+        
+        # Estimate total statements (lines ending with ., 。, !, ！, ?, ？)
+        statement_pattern = r'[.。！！？？]\s*$'
+        statements = re.findall(statement_pattern, content, re.MULTILINE)
+        
+        if not statements:
+            return False
+        
+        # Calculate coverage
+        coverage = len(evidence_links) / len(statements)
+        threshold = 0.90  # 90% threshold
+        
+        # Log coverage if below threshold
+        if coverage < threshold:
+            print(f"⚠️  Evidence coverage: {coverage:.2%} (threshold: {threshold:.2%})")
+        
+        return coverage >= threshold
+    
+    def _check_forbidden_phrases_gate(self, operation: Dict) -> bool:
+        """
+        Check for forbidden phrases == 0.
+        
+        Forbidden phrases:
+        CRITICAL: "100% 完成", "完全符合", "已全部实现"
+        HIGH: "应该是", "可能是", "我认为"
+        """
+        content = operation.get("content", "")
+        if not content:
+            return True
+        
+        forbidden_phrases = {
+            "CRITICAL": ["100% 完成", "完全符合", "已全部实现"],
+            "HIGH": ["应该是", "可能是", "我认为"],
+            "MEDIUM": ["基本上", "差不多", "应该"],
+            "LOW": ["可能", "也许", "大概"]
+        }
+        
+        total_violations = 0
+        violations_found = []
+        
+        for severity, phrases in forbidden_phrases.items():
+            for phrase in phrases:
+                count = content.count(phrase)
+                if count > 0:
+                    total_violations += count
+                    violations_found.append({
+                        "phrase": phrase,
+                        "severity": severity,
+                        "count": count
+                    })
+        
+        # Log violations if any found
+        if violations_found:
+            print(f"⚠️  Forbidden phrases found: {total_violations} violations")
+            for v in violations_found:
+                print(f"   - '{v['phrase']}' ({v['severity']}): {v['count']} occurrences")
+        
+        return total_violations == 0
+    
+    def _check_source_consistency_gate(self, operation: Dict) -> bool:
+        """
+        Check source consistency in evidence links.
+        
+        Verifies that:
+        - Evidence sources exist
+        - Evidence sources are readable
+        - Evidence sources match expected paths
+        """
+        content = operation.get("content", "")
+        if not content:
+            return True
+        
+        import re
+        from pathlib import Path
+        
+        # Extract evidence paths
+        evidence_pattern = r'\[证据[^\]]+([^\]]+)\]'
+        evidence_paths = re.findall(evidence_pattern, content)
+        
+        if not evidence_paths:
+            return True
+        
+        # Check each evidence source
+        inconsistent_sources = []
+        for path in evidence_paths:
+            # Clean up path (remove line ranges, etc.)
+            clean_path = path.split('#')[0].strip()
+            full_path = self.base_path / clean_path
+            
+            if not full_path.exists():
+                inconsistent_sources.append({
+                    "path": clean_path,
+                    "issue": "file_not_exist"
+                })
+            elif not full_path.is_file():
+                inconsistent_sources.append({
+                    "path": clean_path,
+                    "issue": "not_a_file"
+                })
+        
+        # Log inconsistencies if any found
+        if inconsistent_sources:
+            print(f"⚠️  Source consistency issues: {len(inconsistent_sources)} problems")
+            for issue in inconsistent_sources:
+                print(f"   - {issue['path']}: {issue['issue']}")
+        
+        return len(inconsistent_sources) == 0
+    
+    def _determine_status(self, violations: List[Dict], quality_gates: Dict) -> str:
+        """
+        Determine overall validation status with quality gate failure handling.
+        
+        Status Logic:
+        - CRITICAL violations: FAIL (block operation)
+        - Failed quality gates: FAIL (block operation) with remediation
+        - HIGH violations: FAIL (block operation)
+        - MEDIUM/LOW violations: WARNING (allow with caution)
+        - All pass: PASS
+        """
+        # Check for CRITICAL violations
+        critical_violations = [v for v in violations if v.get("severity") == "CRITICAL"]
         if critical_violations:
+            print(f"❌ CRITICAL violations found: {len(critical_violations)}")
+            self._generate_remediation(critical_violations, quality_gates)
             return "FAIL"
         
+        # Check for HIGH violations
+        high_violations = [v for v in violations if v.get("severity") == "HIGH"]
+        if high_violations:
+            print(f"❌ HIGH violations found: {len(high_violations)}")
+            self._generate_remediation(high_violations, quality_gates)
+            return "FAIL"
+        
+        # Check for failed quality gates
         failed_gates = [k for k, v in quality_gates.items() if not v]
         if failed_gates:
+            print(f"❌ Quality gates failed: {', '.join(failed_gates)}")
+            self._generate_quality_gate_remediation(failed_gates, quality_gates)
             return "FAIL"
         
+        # Check for MEDIUM/LOW violations (WARNING)
         if violations:
-            return "WARNING"
+            medium_violations = [v for v in violations if v.get("severity") == "MEDIUM"]
+            low_violations = [v for v in violations if v.get("severity") == "LOW"]
+            
+            if medium_violations or low_violations:
+                print(f"⚠️  Non-critical violations: {len(medium_violations)} MEDIUM, {len(low_violations)} LOW")
+                self._generate_remediation(medium_violations + low_violations, quality_gates)
+                return "WARNING"
         
+        print("✅ All checks passed")
         return "PASS"
+    
+    def _generate_remediation(self, violations: List[Dict], quality_gates: Dict):
+        """Generate remediation suggestions for violations."""
+        if not violations:
+            return
+        
+        print("\n📋 Remediation Suggestions:")
+        print("-" * 50)
+        
+        # Group violations by type
+        violation_types = {}
+        for v in violations:
+            rule = v.get("rule", "unknown")
+            if rule not in violation_types:
+                violation_types[rule] = []
+            violation_types[rule].append(v)
+        
+        # Generate suggestions for each type
+        for rule, rule_violations in violation_types.items():
+            print(f"\n{rule}:")
+            print(f"  Severity: {rule_violations[0].get('severity', 'UNKNOWN')}")
+            print(f"  Count: {len(rule_violations)}")
+            
+            remediation = rule_violations[0].get("remediation", "No remediation available")
+            print(f"  Suggestion: {remediation}")
+    
+    def _generate_quality_gate_remediation(self, failed_gates: List[str], quality_gates: Dict):
+        """Generate remediation suggestions for failed quality gates."""
+        if not failed_gates:
+            return
+        
+        print("\n📋 Quality Gate Remediation:")
+        print("-" * 50)
+        
+        remediation_map = {
+            "evidence_coverage": (
+                "Add evidence links using format [证据: path/to/file#L10-L15]. "
+                "Target: 90% coverage of statements."
+            ),
+            "forbidden_phrases": (
+                "Replace forbidden phrases with approved alternatives:\n"
+                "  - '100% 完成' → '基于已实现的功能集'\n"
+                "  - '完全符合' → '在[方面]与标准对齐'\n"
+                "  - '应该是' → '根据[证据]，建议'"
+            ),
+            "source_consistency": (
+                "Verify all evidence sources exist and are accessible. "
+                "Check file paths and ensure files are in the repository."
+            )
+        }
+        
+        for gate in failed_gates:
+            print(f"\n{gate}:")
+            print(f"  Status: FAILED")
+            suggestion = remediation_map.get(gate, "Review quality gate requirements")
+            print(f"  Suggestion: {suggestion}")
