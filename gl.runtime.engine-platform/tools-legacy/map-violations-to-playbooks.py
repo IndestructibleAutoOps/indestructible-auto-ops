@@ -1,20 +1,20 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: map-violations-to-playbooks
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Map Language Governance Violations to Refactor Playbooks
 將語言治理違規映射到重構劇本
-Maps language gl_platform_universegl_platform_universe.governance violations to corresponding refactor playbooks
+Maps language gl_platform_universe.governance violations to corresponding refactor playbooks
 for display in CI/CD workflows and dashboards.
 """
 import argparse
@@ -132,7 +132,7 @@ def generate_summary(hotspot_data: list, index: dict, repo_root: Path) -> str:
     return "".join(summary)
 def main():
     parser = argparse.ArgumentParser(
-        description="Map language gl_platform_universegl_platform_universe.governance violations to refactor playbooks"
+        description="Map language gl_platform_universe.governance violations to refactor playbooks"
     )
     parser.add_argument(
         "--hotspot",
@@ -149,7 +149,7 @@ def main():
     parser.add_argument(
         "--output",
         type=str,
-        default="gl_platform_universegl_platform_universe.governance-summary.md",
+        default="gl_platform_universe.governance-summary.md",
         help="Output markdown file path",
     )
     parser.add_argument(

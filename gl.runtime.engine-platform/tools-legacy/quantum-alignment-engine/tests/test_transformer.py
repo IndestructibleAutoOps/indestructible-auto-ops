@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: test_transformer
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 Unit tests for Quantum Code Alignment Engine
@@ -109,11 +109,11 @@ class TestEntanglementMapper:
         element = CodeElement(
             name="test", semantic_vector=np.random.randn(8192), namespace="test"
         )
-        entangled = mapper._create_entanglement(element, "workspace.src.gl_platform_universegl_platform_universe.governance")
+        entangled = mapper._create_entanglement(element, "workspace.src.gl_platform_universe.governance")
         assert isinstance(entangled, QuantumNode)
         assert (
             entangled.element.context.get("target_namespace")
-            == "workspace.src.gl_platform_universegl_platform_universe.governance"
+            == "workspace.src.gl_platform_universe.governance"
         )
     def test_coherence_measurement(self):
         """Test measuring quantum coherence"""

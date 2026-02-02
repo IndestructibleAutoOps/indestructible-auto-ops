@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: execution-script
-# @GL-audit-trail: gl-enterprise-architecture/gl_platform_universegl_platform_universe.governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gl-enterprise-architecture/gl_platform_universe.governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-enterprise-architecture/gl_platform_universegl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-enterprise-architecture/gl_platform_universegl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gl-enterprise-architecture/gl_platform_universe.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/gl_platform_universe.governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 #!/usr/bin/env python3
@@ -62,11 +62,11 @@ class SourceCodeTimelineScanner:
             'outputs',
             'audit-reports',
             'audit-results',
-            '.gl_platform_universegl_platform_universe.governance/audit-reports',
-            '.gl_platform_universegl_platform_universe.governance/audit-results',
-            '.gl_platform_universegl_platform_universe.governance/per-file-audits',
-            '.gl_platform_universegl_platform_universe.governance/outputs',
-            '.gl_platform_universegl_platform_universe.governance/supply-chain-evidence',
+            '.gl_platform_universe.governance/audit-reports',
+            '.gl_platform_universe.governance/audit-results',
+            '.gl_platform_universe.governance/per-file-audits',
+            '.gl_platform_universe.governance/outputs',
+            '.gl_platform_universe.governance/supply-chain-evidence',
             
             # 暫時文件
             'tmp',

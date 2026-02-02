@@ -11,7 +11,7 @@
 """
 Simple secret scanner to detect potential secrets in the codebase
 """
-@GL-governed
+# @GL-governed
 import os
 import re
 from pathlib import Path

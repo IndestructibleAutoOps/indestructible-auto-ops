@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 """
-Performance benchmarks for naming gl_platform_universegl_platform_universe.governance
+Performance benchmarks for naming gl_platform_universe.governance
 Measures performance of naming operations
 """
 

@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: governance
 # @GL-semantic: generate-consolidated-report
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -38,13 +38,13 @@ def find_files_recursive(directory: str, pattern: str) -> List[str]:
             if file.endswith(pattern):
                 results.append(os.path.join(root, file))
     return results
-def parse_gl_platform_universegl_platform_universe.governance_report(results_dir: str) -> Dict:
-    """Parse language gl_platform_universegl_platform_universe.governance report"""
-    gl_platform_universegl_platform_universe.governance_file = os.path.join(
-        results_dir, "language-gl_platform_universegl_platform_universe.governance-report", "gl_platform_universegl_platform_universe.governance-report.json"
+def parse_governance_report(results_dir: str) -> Dict:
+    """Parse language governance report"""
+    governance_file = os.path.join(
+        results_dir, "language-governance-report", "governance-report.json"
     )
-    if os.path.exists(gl_platform_universegl_platform_universe.governance_file):
-        return load_json_safe(gl_platform_universegl_platform_universe.governance_file)
+    if os.path.exists(governance_file):
+        return load_json_safe(governance_file)
     return {}
 def parse_sarif_results(results_dir: str, name: str) -> Dict:
     """Parse SARIF format security scan results"""
@@ -78,15 +78,15 @@ def generate_consolidated_report(results_dir: str, output_file: str):
     lines = []
     lines.append("# 🔒 Consolidated Security & Governance Report\n\n")
     lines.append(
-        "This report consolidates findings from multiple security and gl_platform_universegl_platform_universe.governance tools.\n\n"
+        "This report consolidates findings from multiple security and governance tools.\n\n"
     )
     lines.append("---\n\n")
     # Language Governance
     lines.append("## 1️⃣ Language Governance\n\n")
-    gl_platform_universegl_platform_universe.governance = parse_gl_platform_universegl_platform_universe.governance_report(results_dir)
-    if gl_platform_universegl_platform_universe.governance:
-        summary = gl_platform_universegl_platform_universe.governance.get("summary", {})
-        lines.append(f"- **Total Files Scanned:** {gl_platform_universegl_platform_universe.governance.get('total_files', 0)}\n")
+    governance = parse_governance_report(results_dir)
+    if governance:
+        summary = governance.get("summary", {})
+        lines.append(f"- **Total Files Scanned:** {governance.get('total_files', 0)}\n")
         lines.append(f"- **Total Violations:** {summary.get('total_violations', 0)}\n")
         if summary.get("critical", 0) > 0:
             lines.append(f"- 🔴 **Critical:** {summary['critical']}\n")
@@ -94,7 +94,7 @@ def generate_consolidated_report(results_dir: str, output_file: str):
             lines.append(f"- ⚠️ **Errors:** {summary['error']}\n")
         if summary.get("warning", 0) > 0:
             lines.append(f"- 💡 **Warnings:** {summary['warning']}\n")
-        violations = gl_platform_universegl_platform_universe.governance.get("violations", [])
+        violations = governance.get("violations", [])
         if violations:
             lines.append("\n### Top Violations\n\n")
             for v in violations[:5]:  # Show top 5
@@ -104,7 +104,7 @@ def generate_consolidated_report(results_dir: str, output_file: str):
                 )
     else:
         lines.append(
-            "✅ No language gl_platform_universegl_platform_universe.governance data available or no violations found.\n"
+            "✅ No language governance data available or no violations found.\n"
         )
     lines.append("\n---\n\n")
     # CodeQL Results
@@ -144,13 +144,13 @@ def generate_consolidated_report(results_dir: str, output_file: str):
     # Summary
     lines.append("## 📊 Overall Summary\n\n")
     total_issues = (
-        gl_platform_universegl_platform_universe.governance.get("summary", {}).get("total_violations", 0)
+        governance.get("summary", {}).get("total_violations", 0)
         + codeql_results["total_alerts"]
         + semgrep_results["total_alerts"]
     )
     if total_issues == 0:
         lines.append("✅ **No critical issues found across all scans!**\n\n")
-        lines.append("All security and gl_platform_universegl_platform_universe.governance checks passed successfully.\n")
+        lines.append("All security and governance checks passed successfully.\n")
     else:
         lines.append(f"⚠️ **Total Issues Found:** {total_issues}\n\n")
         lines.append(

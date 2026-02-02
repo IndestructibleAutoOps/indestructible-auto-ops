@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: test_marker_detection
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 # GL Layer: GL30-49 Execution Layer
@@ -10,7 +10,7 @@
 """
 Unit tests for marker detection functionality in autonomous_cleanup_toolkit.
 Tests the _determine_todo_severity method and related TODO marker
-detection functionality, ensuring alignment with GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance layer
+detection functionality, ensuring alignment with GL gl_platform_universe.gl_platform_universe.governance layer
 and scan_tech_debt.py severity determination logic.
 """
 import sys

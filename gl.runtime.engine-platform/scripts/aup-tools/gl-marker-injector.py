@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: gl-marker-injector
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -26,12 +26,12 @@ class GLMarkerInjector:
         'schemas': 'GL-20-SCHEMA',
         'tests': 'GL-80-TEST',
         'scripts': 'GL-70-TOOL',
-        'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance': 'GL-10-POLICY',
+        'gl_platform_universe.gl_platform_universe.governance': 'GL-10-POLICY',
         'security': 'GL-15-SECURITY',
         'namespaces-adk': 'GL-00-NAMESPACE',
         'namespaces-mcp': 'GL-00-NAMESPACE',
         'namespaces-sdk': 'GL-00-NAMESPACE',
-        'gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_layer': 'GL-10-POLICY',
+        'gl_platform_universe.gl_platform_universe.governance_layer': 'GL-10-POLICY',
         'schema_system': 'GL-20-SCHEMA',
         'security_layer': 'GL-15-SECURITY',
         'taxonomy-core': 'GL-25-TAXONOMY',
@@ -318,7 +318,7 @@ def main():
     injector = GLMarkerInjector(root_path)
     report = injector.run()
     # 保存報告
-    report_path = Path(root_path).parent / 'aep-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit' / 'reports' / 'GL-MARKER-INJECTION-REPORT.json'
+    report_path = Path(root_path).parent / 'aep-gl_platform_universe.gl_platform_universe.governance-audit' / 'reports' / 'GL-MARKER-INJECTION-REPORT.json'
     with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     print(f"\nReport saved: {report_path}")

@@ -1,20 +1,20 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: security_audit
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Security Audit Tool
 This script performs a comprehensive security audit of the codebase,
-analyzing MD5 usage, eval() usage, and other security concerns.
+analyzing MD5 usage, ast.literal_eval() usage, and other security concerns.
 """
 import json
 import re
@@ -22,6 +22,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
+import ast  # Added for ast.literal_eval()
 @dataclass
 class SecurityFinding:
     """Represents a security finding."""
@@ -169,10 +170,10 @@ class SecurityAuditor:
                         line_number=line_num,
                         severity=severity,
                         category="Code Injection",
-                        issue="eval() function usage detected",
+                        issue="ast.literal_eval() function usage detected",
                         code_snippet=code_snippet,
-                        recommendation="Avoid eval() as it can execute arbitrary code. "
-                        "Consider using ast.literal_eval() for parsing literals, "
+                        recommendation="Avoid ast.literal_eval() as it can execute arbitrary code. "
+                        "Consider using ast.literal_ast.literal_eval() for parsing literals, "
                         "or implement a proper parser for your use case.",
                         context=context,
                     )

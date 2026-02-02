@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: phase1_scanner
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -124,8 +124,8 @@ class RepositoryScanner:
             return 'namespace_organization'
         elif 'controlplane' in path_parts:
             return 'control_plane'
-        elif 'gl_platform_universegl_platform_universe.governance' in path_parts:
-            return 'gl_platform_universegl_platform_universe.governance'
+        elif 'gl_platform_universe.governance' in path_parts:
+            return 'gl_platform_universe.governance'
         elif 'github' in path_parts:
             return 'ci_cd'
         elif '.github' in path_parts:

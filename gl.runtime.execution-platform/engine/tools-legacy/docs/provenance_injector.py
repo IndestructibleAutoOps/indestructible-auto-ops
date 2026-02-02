@@ -1,21 +1,21 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.governance
 # @GL-semantic: provenance_injector
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Provenance Injector - SLSA Evidence Generator
 供應鏈證據注入器 - SLSA 證據生成器
 Generates SLSA L3 compliant provenance records, injects digests,
-and creates audit-ready evidence for supply chain gl_platform_universegl_platform_universe.governance.
+and creates audit-ready evidence for supply chain gl_platform_universe.governance.
 Usage:
     python tools/docs/provenance_injector.py --input docs/knowledge_index.yaml
     python tools/docs/provenance_injector.py --generate-sbom
@@ -213,8 +213,8 @@ def inject_provenance_into_index(
             digest = calculate_sha256(file_path)
             item["provenance"] = {
                 "digest": digest,
-                "slsaRef": "gl_platform_universegl_platform_universe.governance/sbom/provenance.json",
-                "signatureRef": "gl_platform_universegl_platform_universe.governance/sbom/signature.sig",
+                "slsaRef": "gl_platform_universe.governance/sbom/provenance.json",
+                "signatureRef": "gl_platform_universe.governance/sbom/signature.sig",
             }
     # Write updated index
     with open(output_path, "w", encoding="utf-8") as f:
@@ -265,12 +265,12 @@ def main():
     parser.add_argument("--audit", action="store_true", help="Generate audit event")
     parser.add_argument(
         "--sbom-output",
-        default="gl_platform_universegl_platform_universe.governance/sbom/docs-sbom.spdx.json",
+        default="gl_platform_universe.governance/sbom/docs-sbom.spdx.json",
         help="SBOM output path",
     )
     parser.add_argument(
         "--provenance-output",
-        default="gl_platform_universegl_platform_universe.governance/sbom/docs-provenance.json",
+        default="gl_platform_universe.governance/sbom/docs-provenance.json",
         help="Provenance output path",
     )
     args = parser.parse_args()
@@ -344,7 +344,7 @@ def main():
                 },
             },
         )
-        audit_path = repo_root / "gl_platform_universegl_platform_universe.governance" / "audit" / "events.jsonl"
+        audit_path = repo_root / "gl_platform_universe.governance" / "audit" / "events.jsonl"
         audit_path.parent.mkdir(parents=True, exist_ok=True)
         with open(audit_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(event) + "\n")

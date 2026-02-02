@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
-# @GL-semantic: test_gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_script
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-semantic: test_gl_platform_universe.gl_platform_universe.governance_audit_script
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -11,12 +11,12 @@ Unit tests for GL Governance Audit Script.
 import pytest
 import importlib.util
 from pathlib import Path
-# Import the gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-script module (hyphenated filename)
-script_path = Path(__file__).parent.parent.parent / "gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance-audit-script.py"
-spec = importlib.util.spec_from_file_location("gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_script", script_path)
-gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_script = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_script)
-GLGovernanceAudit = gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance_audit_script.GLGovernanceAudit
+# Import the gl_platform_universe.gl_platform_universe.governance-audit-script module (hyphenated filename)
+script_path = Path(__file__).parent.parent.parent / "gl_platform_universe.gl_platform_universe.governance-audit-script.py"
+spec = importlib.util.spec_from_file_location("gl_platform_universe.gl_platform_universe.governance_audit_script", script_path)
+gl_platform_universe.gl_platform_universe.governance_audit_script = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(gl_platform_universe.gl_platform_universe.governance_audit_script)
+GLGovernanceAudit = gl_platform_universe.gl_platform_universe.governance_audit_script.GLGovernanceAudit
 class TestGLGovernanceAuditInit:
     """Tests for GLGovernanceAudit initialization."""
     def test_init_default_path(self):

@@ -196,7 +196,7 @@ class PlatformDeployer:
             print("Phase 1: Governance Validation")
             result = self.env.execute_command("echo 'Governance validation complete'", 5)
             print(f"   Status: {'✅ SUCCESS' if result['success'] else '❌ FAILED'}")
-            self.reports.append({'phase': 'gl_platform_universegl_platform_universe.governance', 'result': result})
+            self.reports.append({'phase': 'gl_platform_universe.governance', 'result': result})
             print()
             
             # Phase 2: Architecture Deployment

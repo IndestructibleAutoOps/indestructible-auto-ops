@@ -1,12 +1,12 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 """
 End-to-end tests for naming workflow
-Tests complete naming gl_platform_universegl_platform_universe.governance workflow
+Tests complete naming gl_platform_universe.governance workflow
 """
 
 import pytest

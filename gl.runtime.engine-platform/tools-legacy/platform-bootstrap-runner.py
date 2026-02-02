@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
+# @GL-layer: governance
 # @GL-semantic: platform-bootstrap-runner
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -147,8 +147,8 @@ class PlatformBootstrapRunner:
                 "message": f'Root validation failed: {result.get("error", "Unknown error")}',
                 "details": result,
             }
-    def step_load_gl_platform_universegl_platform_universe.governance_framework(self) -> Dict[str, Any]:
-        """Step 2: Load gl_platform_universegl_platform_universe.governance framework (verify config-manager is running)"""
+    def step_load_governance_framework(self) -> Dict[str, Any]:
+        """Step 2: Load governance framework (verify config-manager is running)"""
         self.logger.info("Step 2: Loading Governance Framework")
         # Check if config-manager is actually running and healthy
         try:
@@ -181,7 +181,7 @@ class PlatformBootstrapRunner:
                 "message": f"Failed to verify config-manager: {str(e)}",
             }
         # Governance status (simulated for now, but with real verification)
-        gl_platform_universegl_platform_universe.governance_status = {
+        governance_status = {
             "engine": "loaded",
             "policies_count": len(self.find_all_policies()),
             "loaded_at": datetime.utcnow().isoformat(),
@@ -190,15 +190,15 @@ class PlatformBootstrapRunner:
             "config_manager_pids": pids,
             "health_check_passed": True,
         }
-        # Save gl_platform_universegl_platform_universe.governance status
-        status_file = self.var_run / "gl_platform_universegl_platform_universe.governance-engine.status"
+        # Save governance status
+        status_file = self.var_run / "governance-engine.status"
         with open(status_file, "w") as f:
-            json.dump(gl_platform_universegl_platform_universe.governance_status, f, indent=2)
-        self.bootstrap_context["evidence"]["gl_platform_universegl_platform_universe.governance_status"] = gl_platform_universegl_platform_universe.governance_status
+            json.dump(governance_status, f, indent=2)
+        self.bootstrap_context["evidence"]["governance_status"] = governance_status
         return {
             "status": "PASSED",
             "message": "Governance framework loaded successfully (config-manager verified)",
-            "gl_platform_universegl_platform_universe.governance_status": gl_platform_universegl_platform_universe.governance_status,
+            "governance_status": governance_status,
         }
     def step_load_module_registry(self) -> Dict[str, Any]:
         """Step 3: Load module registry (verify real modules)"""
@@ -347,7 +347,7 @@ class PlatformBootstrapRunner:
         # Execute each step
         step_methods = {
             "validate_root_integrity": self.step_validate_root_integrity,
-            "load_gl_platform_universegl_platform_universe.governance_framework": self.step_load_gl_platform_universegl_platform_universe.governance_framework,
+            "load_governance_framework": self.step_load_governance_framework,
             "load_module_registry": self.step_load_module_registry,
             "initialize_trust_chain": self.step_initialize_trust_chain,
             "finalize_and_emit_provenance": self.step_finalize_and_emit_provenance,

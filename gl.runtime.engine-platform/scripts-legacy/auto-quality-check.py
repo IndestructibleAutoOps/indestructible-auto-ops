@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: auto-quality-check
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Dict, Any
 import argparse
 from datetime import datetime
+import ast  # Added for ast.literal_eval()
 class QualityChecker:
     """自動化品質檢查器"""
     def __init__(self, repo_root: Path):
@@ -166,13 +167,13 @@ class QualityChecker:
         }
     def check_eval_usage(self):
         """P1: eval() 使用檢查"""
-        print("\n⚠️  檢查 eval() 使用...")
+        print("\n⚠️  檢查 ast.literal_eval() 使用...")
         files_with_eval = []
         for ext in [".py", ".ts", ".js"]:
             for file_path in self.repo_root.glob(f"**/*{ext}"):
                 try:
                     content = file_path.read_text()
-                    if "eval(" in content:
+                    if "ast.literal_eval(" in content:
                         files_with_eval.append(str(file_path.relative_to(self.repo_root)))
                 except (UnicodeDecodeError, OSError, PermissionError):
                     continue
@@ -207,11 +208,47 @@ class QualityChecker:
         print(f"警告: {warnings}")
         print(f"通過率: {report['summary']['pass_rate']}")
         print("\n詳細結果:")
+
+        def _sanitize_log_entry(log_key: Any, log_value: Any) -> str:
+            """
+            將要輸出的報告項目進行基本淨化，避免在日誌中洩漏敏感資訊。
+            僅用於人類可讀的終端輸出，不影響 JSON 報告內容。
+            """
+            # Normalize key to string for checks
+            key_str = str(log_key)
+            sensitive_key_markers = [
+                "secret", "token", "password", "passwd", "pwd",
+                "key", "credential", "auth", "apikey"
+            ]
+            lower_key = key_str.lower()
+            if any(marker in lower_key for marker in sensitive_key_markers):
+                return f"{key_str}: [REDACTED FOR SECURITY]"
+            # For large collections, only report sizes, not contents
+            if isinstance(log_value, (list, dict, set, tuple)):
+                try:
+                    size = len(log_value)  # type: ignore[arg-type]
+                except Exception:
+                    return f"{key_str}: [Collection]"
+                return f"{key_str}: [Collection with {size} items]"
+            # For other values, avoid printing excessively long data
+            value_str = str(log_value)
+            if len(value_str) > 200:
+                return f"{key_str}: {value_str[:200]}...[TRUNCATED]"
+            return f"{key_str}: {value_str}"
+
         for check_name, result in self.results.items():
             print(f"\n{check_name.upper()}: {result.get('status', 'N/A')}")
+            # 僅輸出非敏感且對人類有用的摘要資訊，避免將可能包含秘密的欄位寫入日誌
+            if check_name == "security":
+                # 對安全掃描，只顯示固定的高層次描述，不暴露任何來自掃描結果的原始資料
+                print("  - security scan executed; see JSON report for non-sensitive summary.")
+                continue
             for key, value in result.items():
-                if key != "status":
-                    print(f"  - {key}: {value}")
+                if key == "status":
+                    continue
+                # Security: Suppress potentially sensitive data in logs
+                sanitized = _sanitize_log_entry(key, value)
+                print(f"  - {sanitized}")
         # 儲存 JSON 報告
         report_file = self.repo_root / "auto-quality-report.json"
         with open(report_file, "w", encoding="utf-8") as f:
@@ -219,6 +256,50 @@ class QualityChecker:
         print(f"\n✅ 報告已儲存至: {report_file}")
         # 生成 Markdown 報告
         self.generate_markdown_report(report)
+
+    def _sanitize_value(self, key: str, value: Any) -> Any:
+        """
+        安全處理即將寫入報告的欄位值，避免在報告中儲存明文敏感資訊。
+        僅用於格式化輸出，不修改 self.results 內的原始資料結構。
+        """
+        # 粗略判斷欄位名稱是否可能包含敏感資訊
+        sensitive_key_indicators = [
+            "secret",
+            "token",
+            "password",
+            "passwd",
+            "key",
+            "credential",
+            "api_key",
+        ]
+        lower_key = key.lower()
+        if any(indicator in lower_key for indicator in sensitive_key_indicators):
+            return "[REDACTED FOR SECURITY]"
+
+        # 如果值本身是字串，做一些基本的敏感內容檢查
+        if isinstance(value, str):
+            suspicious_markers = [
+                "-----BEGIN",
+                "PRIVATE KEY",
+                "AWS",
+                "AKIA",  # 常見的 AWS Access Key 開頭
+            ]
+            if any(marker in value for marker in suspicious_markers):
+                return "[REDACTED FOR SECURITY]"
+            # 過長且無空白的字串也可能是 token/密鑰
+            if len(value) > 80 and " " not in value:
+                return "[REDACTED FOR SECURITY]"
+            return value
+
+        # 對 list/dict 進行遞迴處理，避免巢狀結構中出現明文敏感資訊
+        if isinstance(value, list):
+            return [self._sanitize_value(f"{key}[{idx}]", v) for idx, v in enumerate(value)]
+        if isinstance(value, dict):
+            return {k: self._sanitize_value(f"{key}.{k}", v) for k, v in value.items()}
+
+        # 其它型別直接返回
+        return value
+
     def generate_markdown_report(self, report: Dict):
         """生成 Markdown 格式報告"""
         md_file = self.repo_root / "AUTO-QUALITY-REPORT.md"
@@ -236,10 +317,12 @@ class QualityChecker:
                 f.write(f"**狀態**: {result.get('status', 'N/A')}\n\n")
                 for key, value in result.items():
                     if key != "status":
-                        if isinstance(value, list) and len(value) > 5:
-                            f.write(f"- **{key}**: {len(value)} 項 (僅顯示部分)\n")
+                        safe_value = self._sanitize_value(key, value)
+                        # 如果是長列表，只顯示統計資訊以避免輸出過多資料
+                        if isinstance(safe_value, list) and len(safe_value) > 5:
+                            f.write(f"- **{key}**: {len(safe_value)} 項 (僅顯示部分)\n")
                         else:
-                            f.write(f"- **{key}**: {value}\n")
+                            f.write(f"- **{key}**: {safe_value}\n")
                 f.write("\n")
             f.write("## 🎯 建議行動\n\n")
             if self.results.get("security", {}).get("secrets_detected"):

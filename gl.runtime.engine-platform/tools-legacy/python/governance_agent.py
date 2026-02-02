@@ -1,19 +1,19 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.governance
-# @GL-semantic: gl_platform_universegl_platform_universe.governance_agent
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl_platform_universe.governance
+# @GL-semantic: gl_platform_universe.governance_agent
+# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Machine-Native Governance Agent
-A machine-executable agent that reads gl_platform_universegl_platform_universe.governance-manifest.yaml and performs automated gl_platform_universegl_platform_universe.governance tasks.
+A machine-executable agent that reads gl_platform_universe.governance-manifest.yaml and performs automated gl_platform_universe.governance tasks.
 """
 import json
 import re
@@ -26,10 +26,10 @@ import yaml
 class GovernanceAgent:
     """
     Machine-Native Governance Agent
-    Reads gl_platform_universegl_platform_universe.governance-manifest.yaml and provides machine-executable gl_platform_universegl_platform_universe.governance functions.
+    Reads gl_platform_universe.governance-manifest.yaml and provides machine-executable gl_platform_universe.governance functions.
     """
-    def __init__(self, manifest_path: str = "gl_platform_universegl_platform_universe.governance-manifest.yaml"):
-        """Initialize the gl_platform_universegl_platform_universe.governance agent."""
+    def __init__(self, manifest_path: str = "gl_platform_universe.governance-manifest.yaml"):
+        """Initialize the gl_platform_universe.governance agent."""
         self.manifest_path = Path(manifest_path)
         self.manifest = None
         self.schemas = {}
@@ -37,14 +37,14 @@ class GovernanceAgent:
         self._load_manifest()
         self._load_schemas()
     def _load_manifest(self):
-        """Load the gl_platform_universegl_platform_universe.governance manifest."""
+        """Load the gl_platform_universe.governance manifest."""
         if not self.manifest_path.exists():
             raise FileNotFoundError(
                 f"Governance manifest not found: {self.manifest_path}"
             )
         with open(self.manifest_path, "r") as f:
             self.manifest = yaml.safe_load(f)
-        print(f"[INFO] Loaded gl_platform_universegl_platform_universe.governance manifest: {self.manifest['metadata']['name']}")
+        print(f"[INFO] Loaded gl_platform_universe.governance manifest: {self.manifest['metadata']['name']}")
         print(f"[INFO] Version: {self.manifest['metadata']['version']}")
     def _load_schemas(self):
         """Load all schemas defined in the manifest."""
@@ -93,7 +93,7 @@ class GovernanceAgent:
         self, name: str, resource_type: str, environment: str, **context
     ) -> Dict[str, Any]:
         """
-        Validate a resource name against gl_platform_universegl_platform_universe.governance policies.
+        Validate a resource name against gl_platform_universe.governance policies.
         Args:
             name: The name to validate
             resource_type: Type of resource
@@ -163,7 +163,7 @@ class GovernanceAgent:
                                })
         # Load naming policy for detailed validation
         policy_path = Path(
-            "workspace/src/gl_platform_universegl_platform_universe.governance/10-policy/naming-gl_platform_universegl_platform_universe.governance-policy.yaml"
+            "workspace/src/gl_platform_universe.governance/10-policy/naming-gl_platform_universe.governance-policy.yaml"
         )
         if policy_path.exists():
             try:
@@ -241,7 +241,7 @@ class GovernanceAgent:
                 "timestamp": datetime.utcnow().isoformat(),
             }
         # Load naming patterns
-        patterns_path = Path("workspace/src/gl_platform_universegl_platform_universe.governance/35-scripts/naming-patterns.yaml")
+        patterns_path = Path("workspace/src/gl_platform_universe.governance/35-scripts/naming-patterns.yaml")
         if patterns_path.exists():
             with open(patterns_path, "r") as f:
                 patterns_data = yaml.safe_load(f)
@@ -366,7 +366,7 @@ class GovernanceAgent:
             ],
         }
     def get_manifest_info(self) -> Dict[str, Any]:
-        """Get information about the gl_platform_universegl_platform_universe.governance manifest."""
+        """Get information about the gl_platform_universe.governance manifest."""
         return {
             "name": self.manifest["metadata"]["name"],
             "version": self.manifest["metadata"]["version"],
@@ -376,7 +376,7 @@ class GovernanceAgent:
             "timestamp": datetime.utcnow().isoformat(),
         }
     def list_modules(self) -> List[Dict[str, Any]]:
-        """List all gl_platform_universegl_platform_universe.governance modules."""
+        """List all gl_platform_universe.governance modules."""
         return [
             {
                 "id": module["id"],
@@ -396,7 +396,7 @@ class GovernanceAgent:
 def main():
     """Main entry point for CLI usage."""
     if len(sys.argv) < 2:
-        print("Usage: python gl_platform_universegl_platform_universe.governance_agent.py <command> [args]")
+        print("Usage: python gl_platform_universe.governance_agent.py <command> [args]")
         print("Commands:")
         print("  validate <name> <type> <env>")
         print("  generate <type> <env> [team] [service] [version]")
@@ -407,7 +407,7 @@ def main():
     agent = GovernanceAgent()
     if command == "validate":
         if len(sys.argv) < 4:
-            print("Usage: python gl_platform_universegl_platform_universe.governance_agent.py validate <name> <type> <env>")
+            print("Usage: python gl_platform_universe.governance_agent.py validate <name> <type> <env>")
             sys.exit(1)
         name = sys.argv[2]
         resource_type = sys.argv[3]
@@ -417,7 +417,7 @@ def main():
     elif command == "generate":
         if len(sys.argv) < 4:
             print(
-                "Usage: python gl_platform_universegl_platform_universe.governance_agent.py generate <type> <env> [team] [service] [version]"
+                "Usage: python gl_platform_universe.governance_agent.py generate <type> <env> [team] [service] [version]"
             )
             sys.exit(1)
         resource_type = sys.argv[2]

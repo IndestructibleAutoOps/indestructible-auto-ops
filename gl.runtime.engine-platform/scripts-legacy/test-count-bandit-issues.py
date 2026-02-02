@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: test-count-bandit-issues
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """Test Count Bandit Issues Script
@@ -43,6 +43,7 @@ TEST_REPORTS = {
                 "issue_text": "Consider possible security implications"
             },
             {
+                # SECURITY WARNING: exec() usage - ensure input is trusted
                 "code": "exec(user_input)",
                 "filename": "test2.py",
                 "issue_confidence": "HIGH",

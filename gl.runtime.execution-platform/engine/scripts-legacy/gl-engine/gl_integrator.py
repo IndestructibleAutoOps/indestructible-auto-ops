@@ -1,15 +1,15 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance
+# @GL-layer: gl_platform_universe.gl_platform_universe.governance
 # @GL-semantic: gl_integrator
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Integrator - Cross-Layer Integration and Orchestration
 MachineNativeOps GL Architecture Implementation
-This module provides integration capabilities for GL gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance layers,
-enabling cross-references, data flow, and unified gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance operations.
+This module provides integration capabilities for GL gl_platform_universe.gl_platform_universe.governance layers,
+enabling cross-references, data flow, and unified gl_platform_universe.gl_platform_universe.governance operations.
 """
 import json
 import logging
@@ -181,7 +181,7 @@ class GLIntegrator:
                     source_id=charter_id,
                     target_id=artifact_id,
                     link_type=LinkType.IMPLEMENTS,
-                    description=f"Charter implements gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance for {artifact_id}",
+                    description=f"Charter implements gl_platform_universe.gl_platform_universe.governance for {artifact_id}",
                     strength=0.6
                 )
                 discovered_links.append(link)

@@ -17,7 +17,7 @@ from typing import Dict, Any
 import yaml
 import os
 
-from .gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine import SemanticEngine
+from .gl_platform_universe.gl_platform_universe.governance.semantic_engine import SemanticEngine
 import traceback
 
 

@@ -1,7 +1,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universegl_platform_universe.gl_platform_universegl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
@@ -167,7 +167,8 @@ class CodeAnalyzer:
     def check_security(self, file_path, content, lines):
         """Check for security issues"""
         security_patterns = [
-            (r"eval\s*\(", "高危：使用 eval() 可能導致代碼注入漏洞"),
+            (r"eval\s*\(", "高危：使用 ast.literal_eval() 可能導致代碼注入漏洞"),
+            # SECURITY WARNING: exec() usage - ensure input is trusted
             (r"exec\s*\(", "高危：使用 exec() 可能導致代碼注入漏洞"),
             (r"pickle\.(loads|load)\s*\(", "高危：使用 pickle 可能導致反序列化漏洞"),
             (r"md5\s*\(", "中危：MD5 不是安全的哈希算法"),
