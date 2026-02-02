@@ -69,16 +69,21 @@ class SecretFixer:
             pass
         return findings
     def generate_env_template(self, findings: List[Dict]) -> str:
-        """Generate .env.example template from findings."""
+        """Generate .env.example template from findings.
+        
+        Security: Only generates placeholder template, never includes actual secret values.
+        """
         env_vars = set()
         for finding in findings:
             secret_type = finding["type"]
             env_var_name = secret_type.upper()
             env_vars.add(env_var_name)
+        # Security: Template only contains placeholders, no actual secrets
         template = "# Security Configuration\n"
-        template += "# Copy this file to .env and fill in your actual values\n\n"
+        template += "# Copy this file to .env and fill in your actual values\n"
+        template += "# WARNING: Never commit .env file with actual secrets\n\n"
         for var in sorted(env_vars):
-            template += f"{var}=your_{var.lower()}_here\n"
+            template += f"{var}=PLACEHOLDER_VALUE_CHANGE_THIS\n"
         return template
     def fix_file(self, file_path: Path, dry_run: bool = True) -> Dict:
         """Fix hardcoded secrets in a file."""
@@ -116,11 +121,12 @@ class SecretFixer:
             # Write back
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write("\n".join(lines))
+        # Security: Don't return actual secret values to avoid logging sensitive data
         return {
             "file": str(file_path),
             "findings": len(findings),
             "modified": not dry_run,
-            "secrets": findings,
+            # "secrets" field removed to prevent sensitive data leakage
         }
 def main():
     import argparse
@@ -148,8 +154,9 @@ def main():
         if findings:
             all_findings.extend(findings)
             result = fixer.fix_file(file_path, dry_run=args.dry_run)
+            # Security: Only log non-sensitive metadata
             print(f"\n📄 {result['file']}")
-            print(f"   Findings: {result['findings']}")
+            print(f"   Findings: {result['findings']} (details suppressed for security)")
             if result["modified"]:
                 print("   ✅ Modified")
             else:
@@ -159,11 +166,13 @@ def main():
     print("\n" + "=" * 60)
     print(f"Total findings: {len(all_findings)}")
     if args.generate_env:
+        # Security: Template generation only creates placeholders, no actual secrets
         template = fixer.generate_env_template(all_findings)
         env_file = project_root / ".env.example"
+        # Security: Writing only placeholder template to file
         with open(env_file, "w") as f:
             f.write(template)
-        print(f"\n📝 Generated {env_file}")
+        print(f"\n📝 Generated {env_file} (placeholder template only)")
         print(f"   Variables: {len(set(f['type'] for f in all_findings))}")
     if args.dry_run:
         print("\n💡 This was a dry-run. No files were modified.")

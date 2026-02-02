@@ -212,7 +212,13 @@ class QualityChecker:
             print(f"\n{check_name.upper()}: {result.get('status', 'N/A')}")
             for key, value in result.items():
                 if key != "status":
-                    print(f"  - {key}: {value}")
+                    # Security: Suppress potentially sensitive data in logs
+                    if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
+                        print(f"  - {key}: [REDACTED FOR SECURITY]")
+                    elif isinstance(value, (list, dict)) and len(str(value)) > 200:
+                        print(f"  - {key}: [Large data - {len(value)} items]")
+                    else:
+                        print(f"  - {key}: {value}")
         # 儲存 JSON 報告
         report_file = self.repo_root / "auto-quality-report.json"
         with open(report_file, "w", encoding="utf-8") as f:
@@ -237,7 +243,10 @@ class QualityChecker:
                 f.write(f"**狀態**: {result.get('status', 'N/A')}\n\n")
                 for key, value in result.items():
                     if key != "status":
-                        if isinstance(value, list) and len(value) > 5:
+                        # Security: Redact sensitive data in reports
+                        if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
+                            f.write(f"- **{key}**: [REDACTED FOR SECURITY]\n")
+                        elif isinstance(value, list) and len(value) > 5:
                             f.write(f"- **{key}**: {len(value)} 項 (僅顯示部分)\n")
                         else:
                             f.write(f"- **{key}**: {value}\n")
