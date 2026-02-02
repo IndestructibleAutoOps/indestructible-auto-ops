@@ -210,15 +210,33 @@ class QualityChecker:
         print("\n詳細結果:")
         for check_name, result in self.results.items():
             print(f"\n{check_name.upper()}: {result.get('status', 'N/A')}")
+
+            def format_safe_value(key: str, value: Any) -> str:
+                """Format values for logging without exposing sensitive data."""
+                # Explicitly redact known-sensitive keys
+                if key in ["secrets", "tokens", "passwords", "keys", "credentials"]:
+                    return "[REDACTED FOR SECURITY]"
+                # For collections, log only high-level summary information
+                try:
+                    if isinstance(value, dict):
+                        return f"[Dictionary with {len(value)} entries]"
+                    if isinstance(value, (list, tuple, set)):
+                        return f"[Sequence with {len(value)} items]"
+                except TypeError:
+                    # Fallback if len() is not supported
+                    return "[Non-scalar data]"
+                # For other (typically scalar) values, log directly
+                # Large string values are truncated to avoid accidental leaks
+                text = str(value)
+                if len(text) > 200:
+                    return text[:197] + "..."
+                return text
+
             for key, value in result.items():
-                if key != "status":
-                    # Security: Suppress potentially sensitive data in logs
-                    if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
-                        print(f"  - {key}: [REDACTED FOR SECURITY]")
-                    elif isinstance(value, (list, dict)) and len(str(value)) > 200:
-                        print(f"  - {key}: [Large data - {len(value)} items]")
-                    else:
-                        print(f"  - {key}: {value}")
+                if key == "status":
+                    continue
+                safe_value = format_safe_value(key, value)
+                print(f"  - {key}: {safe_value}")
         # 儲存 JSON 報告
         report_file = self.repo_root / "auto-quality-report.json"
         with open(report_file, "w", encoding="utf-8") as f:
