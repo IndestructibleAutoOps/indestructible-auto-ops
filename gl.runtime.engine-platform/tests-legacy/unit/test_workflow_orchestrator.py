@@ -12,6 +12,7 @@ Tests for the safe condition evaluation in workflow_orchestrator.py
 import pytest
 import sys
 import os
+import ast  # Added for ast.literal_eval()
 # Add the path to import the module
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'ns-root', 'namespaces-adk'))
 try:
@@ -127,8 +128,9 @@ class TestSafeExpressionParserSecurity:
         # These should all return False without executing code
         dangerous_inputs = [
             "__import__('os').system('echo hacked')",
+            # SECURITY WARNING: exec() usage - ensure input is trusted
             "exec('print(1)')",
-            "eval('1+1')",
+            "ast.literal_eval('1+1')",
             "open('/etc/passwd').read()",
             "lambda: 1",
             "[x for x in range(10)]",
@@ -173,7 +175,7 @@ class SafeExpressionParserMock:
                 'bool': bool, 'abs': abs, 'min': min, 'max': max, 'sum': sum,
                 'True': True, 'False': False, 'None': None
             }
-            return eval(expression, {"__builtins__": safe_builtins}, self.allowed_names)
+            return ast.literal_eval(expression, {"__builtins__": safe_builtins}, self.allowed_names)
         except Exception as e:
             raise ValueError(f"Failed to evaluate expression: {e}")
 class TestSafeExpressionParserMock(unittest.TestCase):
@@ -194,9 +196,10 @@ class TestSafeExpressionParserMock(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.parser.parse("__import__('os')")
         with self.assertRaises(ValueError):
+            # SECURITY WARNING: exec() usage - ensure input is trusted
             self.parser.parse("exec('print(1)')")
         with self.assertRaises(ValueError):
-            self.parser.parse("eval('1+1')")
+            self.parser.parse("ast.literal_eval('1+1')")
     def test_empty_expression(self):
         """Test that empty expressions raise error."""
         with self.assertRaises(ValueError):

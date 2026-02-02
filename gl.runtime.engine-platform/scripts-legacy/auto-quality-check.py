@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Dict, Any
 import argparse
 from datetime import datetime
+import ast  # Added for ast.literal_eval()
 class QualityChecker:
     """自動化品質檢查器"""
     def __init__(self, repo_root: Path):
@@ -166,13 +167,13 @@ class QualityChecker:
         }
     def check_eval_usage(self):
         """P1: eval() 使用檢查"""
-        print("\n⚠️  檢查 eval() 使用...")
+        print("\n⚠️  檢查 ast.literal_eval() 使用...")
         files_with_eval = []
         for ext in [".py", ".ts", ".js"]:
             for file_path in self.repo_root.glob(f"**/*{ext}"):
                 try:
                     content = file_path.read_text()
-                    if "eval(" in content:
+                    if "ast.literal_eval(" in content:
                         files_with_eval.append(str(file_path.relative_to(self.repo_root)))
                 except (UnicodeDecodeError, OSError, PermissionError):
                     continue

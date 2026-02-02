@@ -1,14 +1,133 @@
 {
   "summary": {
-    "total_files_scanned": 788,
+    "total_files_scanned": 789,
     "files_with_issues": 0,
     "total_syntax_errors": 0,
-    "total_security_issues": 102,
+    "total_security_issues": 125,
     "total_code_quality_issues": 4
   },
   "findings": {
     "syntax_errors": [],
     "security_issues": [
+      {
+        "file": "fix-security-issues.py",
+        "line": 4,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 4,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 4,
+        "type": "insecure-deserialization",
+        "message": "Unsafe deserialization with pickle.loads()",
+        "severity": "medium"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 121,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 135,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 138,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 157,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 162,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 170,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 176,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 178,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 186,
+        "type": "insecure-deserialization",
+        "message": "Unsafe deserialization with pickle.loads()",
+        "severity": "medium"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 192,
+        "type": "insecure-deserialization",
+        "message": "Unsafe deserialization with pickle.loads()",
+        "severity": "medium"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 194,
+        "type": "insecure-deserialization",
+        "message": "Unsafe deserialization with pickle.loads()",
+        "severity": "medium"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 232,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 233,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "fix-security-issues.py",
+        "line": 234,
+        "type": "insecure-deserialization",
+        "message": "Unsafe deserialization with pickle.loads()",
+        "severity": "medium"
+      },
       {
         "file": "code-scanning-analysis.py",
         "line": 80,
@@ -480,7 +599,7 @@
       },
       {
         "file": ".github/archive/analysis-scripts/code_quality_analyzer.py",
-        "line": 171,
+        "line": 172,
         "type": "dangerous-function",
         "message": "Use of exec() detected - security risk",
         "severity": "high"
@@ -494,21 +613,21 @@
       },
       {
         "file": "gl.runtime.execution-platform/engine/tools-legacy/security_audit.py",
-        "line": 139,
+        "line": 25,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.execution-platform/engine/tools-legacy/security_audit.py",
-        "line": 172,
+        "line": 140,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.execution-platform/engine/tools-legacy/security_audit.py",
-        "line": 174,
+        "line": 173,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -521,35 +640,7 @@
         "severity": "high"
       },
       {
-        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 24,
-        "type": "dangerous-function",
-        "message": "Use of eval() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 114,
-        "type": "dangerous-function",
-        "message": "Use of eval() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 130,
-        "type": "dangerous-function",
-        "message": "Use of exec() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 131,
-        "type": "dangerous-function",
-        "message": "Use of eval() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "file": "gl.runtime.execution-platform/engine/tools-legacy/security_audit.py",
         "line": 176,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
@@ -557,14 +648,56 @@
       },
       {
         "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 197,
+        "line": 15,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 25,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 115,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 132,
         "type": "dangerous-function",
         "message": "Use of exec() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 199,
+        "line": 133,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 178,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 200,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 202,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -578,14 +711,14 @@
       },
       {
         "file": "gl.runtime.execution-platform/engine/scripts-legacy/test-count-bandit-issues.py",
-        "line": 46,
+        "line": 47,
         "type": "dangerous-function",
         "message": "Use of exec() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
-        "line": 168,
+        "line": 20,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -599,7 +732,14 @@
       },
       {
         "file": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
-        "line": 175,
+        "line": 170,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
+        "line": 176,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -613,21 +753,21 @@
       },
       {
         "file": "gl.runtime.engine-platform/tools-legacy/security_audit.py",
-        "line": 139,
+        "line": 25,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.engine-platform/tools-legacy/security_audit.py",
-        "line": 172,
+        "line": 140,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.engine-platform/tools-legacy/security_audit.py",
-        "line": 174,
+        "line": 173,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -640,35 +780,7 @@
         "severity": "high"
       },
       {
-        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 24,
-        "type": "dangerous-function",
-        "message": "Use of eval() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 114,
-        "type": "dangerous-function",
-        "message": "Use of eval() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 130,
-        "type": "dangerous-function",
-        "message": "Use of exec() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 131,
-        "type": "dangerous-function",
-        "message": "Use of eval() detected - security risk",
-        "severity": "high"
-      },
-      {
-        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "file": "gl.runtime.engine-platform/tools-legacy/security_audit.py",
         "line": 176,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
@@ -676,14 +788,56 @@
       },
       {
         "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 197,
+        "line": 15,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 25,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 115,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 132,
         "type": "dangerous-function",
         "message": "Use of exec() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
-        "line": 199,
+        "line": 133,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 178,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 200,
+        "type": "dangerous-function",
+        "message": "Use of exec() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+        "line": 202,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -697,14 +851,14 @@
       },
       {
         "file": "gl.runtime.engine-platform/scripts-legacy/test-count-bandit-issues.py",
-        "line": 46,
+        "line": 47,
         "type": "dangerous-function",
         "message": "Use of exec() detected - security risk",
         "severity": "high"
       },
       {
         "file": "gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py",
-        "line": 168,
+        "line": 20,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -718,7 +872,14 @@
       },
       {
         "file": "gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py",
-        "line": 175,
+        "line": 170,
+        "type": "dangerous-function",
+        "message": "Use of eval() detected - security risk",
+        "severity": "high"
+      },
+      {
+        "file": "gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py",
+        "line": 176,
         "type": "dangerous-function",
         "message": "Use of eval() detected - security risk",
         "severity": "high"
@@ -754,7 +915,7 @@
         "severity": "high"
       }
     ],
-    "total_files_scanned": 788,
+    "total_files_scanned": 789,
     "files_with_issues": 0
   }
 }

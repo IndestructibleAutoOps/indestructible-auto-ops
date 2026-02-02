@@ -43,6 +43,7 @@ TEST_REPORTS = {
                 "issue_text": "Consider possible security implications"
             },
             {
+                # SECURITY WARNING: exec() usage - ensure input is trusted
                 "code": "exec(user_input)",
                 "filename": "test2.py",
                 "issue_confidence": "HIGH",
