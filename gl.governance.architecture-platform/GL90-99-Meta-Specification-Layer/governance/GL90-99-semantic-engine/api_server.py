@@ -241,4 +241,4 @@ if __name__ == '__main__':
     print("Starting GL Semantic Core Engine API Server...")
     print("API Documentation: http://localhost:5000/")
     print("Health Check: http://localhost:5000/health")
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
