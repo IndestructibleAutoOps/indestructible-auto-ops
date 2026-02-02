@@ -19,6 +19,12 @@ from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 from datetime import datetime
 
+# Import event emitter and semantic context
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from events.event_emitter import EventEmitter, EventType, emit_event, get_global_emitter
+from semantic.semantic_context import SemanticContextManager, get_global_context_manager
+
 @dataclass
 class GovernanceResult:
     """Governance enforcement result"""
@@ -45,6 +51,11 @@ class GovernanceEnforcer:
         self.base_path = Path(base_path)
         self.contracts_dir = self.base_path / "ecosystem" / "contracts"
         self.contracts = {}
+        
+        # P2: Initialize event emitter and semantic context manager
+        self.event_emitter = get_global_emitter(base_path=base_path)
+        self.context_manager = get_global_context_manager(base_path=base_path)
+        
         self._load_contracts()
     
     def _load_contracts(self):
@@ -83,6 +94,18 @@ class GovernanceEnforcer:
         evidence = []
         quality_gates = {}
         
+        # P2: Emit validation start event
+        emit_event(
+            EventType.VALIDATION_START,
+            operation_id,
+            metadata={
+                "operation_type": operation.get("type", "unknown"),
+                "files": operation.get("files", [])
+            },
+            data={"operation": operation},
+            priority=2
+        )
+        
         # Validate against each contract
         for contract_path, contract in self.contracts.items():
             if not contract:
@@ -98,12 +121,56 @@ class GovernanceEnforcer:
                 contract_evidence = self._collect_evidence(contract, operation)
                 evidence.extend(contract_evidence)
                 
+                # P2: Emit evidence collected event
+                if contract_evidence:
+                    emit_event(
+                        EventType.EVIDENCE_COLLECTED,
+                        operation_id,
+                        metadata={
+                            "contract": contract_path,
+                            "evidence_count": len(contract_evidence)
+                        },
+                        data={"evidence": contract_evidence}
+                    )
+                
                 # Check quality gates
                 contract_gates = self._check_quality_gates(contract, operation)
                 quality_gates.update(contract_gates)
         
         # Determine overall status
         status = self._determine_status(violations, quality_gates)
+        
+        # P2: Emit validation complete event
+        event_type = EventType.VALIDATION_COMPLETE if status == "PASS" else EventType.VALIDATION_FAILED
+        emit_event(
+            event_type,
+            operation_id,
+            metadata={
+                "status": status,
+                "violations_count": len(violations),
+                "evidence_count": len(evidence),
+                "failed_gates": [k for k, v in quality_gates.items() if not v]
+            },
+            data={
+                "violations": violations,
+                "quality_gates": quality_gates
+            },
+            priority=2 if status == "PASS" else 1
+        )
+        
+        # P2: Emit quality gate failure event if any gates failed
+        failed_gates = [k for k, v in quality_gates.items() if not v]
+        if failed_gates:
+            emit_event(
+                EventType.QUALITY_GATE_FAILED,
+                operation_id,
+                metadata={
+                    "failed_gates": failed_gates,
+                    "gate_count": len(failed_gates)
+                },
+                data={"quality_gates": quality_gates},
+                priority=1
+            )
         
         return GovernanceResult(
             operation_id=operation_id,
