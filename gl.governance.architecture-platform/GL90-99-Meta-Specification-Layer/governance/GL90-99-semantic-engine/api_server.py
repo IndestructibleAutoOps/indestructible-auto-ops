@@ -15,6 +15,7 @@ Provides HTTP endpoints for semantic engine operations
 from flask import Flask, request, jsonify
 from typing import Dict, Any
 import yaml
+import os
 
 from .gl_platform_universe.gl_platform_universegl_platform_universe.governance.semantic_engine import SemanticEngine
 import traceback
@@ -241,4 +242,5 @@ if __name__ == '__main__':
     print("Starting GL Semantic Core Engine API Server...")
     print("API Documentation: http://localhost:5000/")
     print("Health Check: http://localhost:5000/health")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    debug = os.environ.get("FLASK_DEBUG", "0") == "1"
+    app.run(host='0.0.0.0', port=5000, debug=debug)
