@@ -208,17 +208,42 @@ class QualityChecker:
         print(f"警告: {warnings}")
         print(f"通過率: {report['summary']['pass_rate']}")
         print("\n詳細結果:")
+
+        def _sanitize_log_entry(log_key: Any, log_value: Any) -> str:
+            """
+            將要輸出的報告項目進行基本淨化，避免在日誌中洩漏敏感資訊。
+            僅用於人類可讀的終端輸出，不影響 JSON 報告內容。
+            """
+            # Normalize key to string for checks
+            key_str = str(log_key)
+            sensitive_key_markers = [
+                "secret", "token", "password", "passwd", "pwd",
+                "key", "credential", "auth", "apikey"
+            ]
+            lower_key = key_str.lower()
+            if any(marker in lower_key for marker in sensitive_key_markers):
+                return f"{key_str}: [REDACTED FOR SECURITY]"
+            # For large collections, only report sizes, not contents
+            if isinstance(log_value, (list, dict, set, tuple)):
+                try:
+                    size = len(log_value)  # type: ignore[arg-type]
+                except Exception:
+                    return f"{key_str}: [Collection]"
+                return f"{key_str}: [Collection with {size} items]"
+            # For other values, avoid printing excessively long data
+            value_str = str(log_value)
+            if len(value_str) > 200:
+                return f"{key_str}: {value_str[:200]}...[TRUNCATED]"
+            return f"{key_str}: {value_str}"
+
         for check_name, result in self.results.items():
             print(f"\n{check_name.upper()}: {result.get('status', 'N/A')}")
             for key, value in result.items():
-                if key != "status":
-                    # Security: Suppress potentially sensitive data in logs
-                    if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
-                        print(f"  - {key}: [REDACTED FOR SECURITY]")
-                    elif isinstance(value, (list, dict)) and len(str(value)) > 200:
-                        print(f"  - {key}: [Large data - {len(value)} items]")
-                    else:
-                        print(f"  - {key}: {value}")
+                if key == "status":
+                    continue
+                # Security: Suppress potentially sensitive data in logs
+                sanitized = _sanitize_log_entry(key, value)
+                print(f"  - {sanitized}")
         # 儲存 JSON 報告
         report_file = self.repo_root / "auto-quality-report.json"
         with open(report_file, "w", encoding="utf-8") as f:
