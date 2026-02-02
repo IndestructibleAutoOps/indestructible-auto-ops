@@ -211,6 +211,21 @@ class QualityChecker:
         for check_name, result in self.results.items():
             print(f"\n{check_name.upper()}: {result.get('status', 'N/A')}")
 
+            # For security-related results, avoid logging any potentially sensitive
+            # details that may be derived from secret-scanning tools. Only emit a
+            # high-level indication of whether secrets were detected.
+            if check_name == "security":
+                secrets_detected = result.get("secrets_detected")
+                if secrets_detected is True:
+                    print("  - summary: Potential secrets were detected. Please review the repository with appropriate privileges.")
+                elif secrets_detected is False:
+                    print("  - summary: No obvious secrets were detected by the scanner.")
+                else:
+                    print("  - summary: Security scan result unavailable or inconclusive.")
+                # Skip generic field-by-field logging for security results to prevent
+                # accidental exposure of sensitive information.
+                continue
+
             def format_safe_value(key: str, value: Any) -> str:
                 """Format values for logging without exposing sensitive data."""
                 # Explicitly redact known-sensitive keys
