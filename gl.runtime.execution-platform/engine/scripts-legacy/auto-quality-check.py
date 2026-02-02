@@ -18,11 +18,48 @@ from typing import Dict, Any
 import argparse
 from datetime import datetime
 import ast  # Added for ast.literal_eval()
+
 class QualityChecker:
     """自動化品質檢查器"""
     def __init__(self, repo_root: Path):
         self.repo_root = repo_root
         self.results: Dict[str, Any] = {}
+
+    def _sanitize_results_for_report(self, results: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        安全地過濾結果中的敏感資料，避免在報告中以明文儲存。
+        僅保留必要的摘要資訊（例如計數），並對可能的敏感欄位進行遮罩。
+        """
+        # 定義可能包含敏感資訊的欄位名稱
+        sensitive_keys = {
+            "secrets",
+            "tokens",
+            "passwords",
+            "keys",
+            "credentials",
+            "secret_values",
+        }
+        sanitized: Dict[str, Any] = {}
+        for check_name, result in results.items():
+            if not isinstance(result, dict):
+                # 非預期格式，直接複製（通常不會包含敏感資訊）
+                sanitized[check_name] = result
+                continue
+            sanitized_result: Dict[str, Any] = {}
+            for key, value in result.items():
+                if key in sensitive_keys:
+                    # 統一遮罩潛在敏感資料
+                    sanitized_result[key] = "[REDACTED FOR SECURITY]"
+                elif isinstance(value, list):
+                    # 僅保留清單長度，避免意外將敏感字串寫入報告
+                    sanitized_result[key] = {
+                        "count": len(value),
+                        "note": "List content omitted for security"
+                    }
+                else:
+                    sanitized_result[key] = value
+            sanitized[check_name] = sanitized_result
+        return sanitized
     def run_all_checks(self) -> Dict[str, Any]:
         """執行所有檢查"""
         print("🚀 開始自動化品質檢查...")
@@ -182,6 +219,8 @@ class QualityChecker:
             "files": files_with_eval,
             "status": "⚠️ WARNING" if files_with_eval else "✅ PASS"
         }
+        # 先產生經過安全過濾的結果，以避免在報告中儲存明文敏感資訊
+        sanitized_results = self._sanitize_results_for_report(self.results)
     def generate_report(self):
         """生成報告"""
         print("\n" + "="*80)
@@ -190,7 +229,7 @@ class QualityChecker:
         report = {
             "timestamp": datetime.now().isoformat(),
             "summary": {},
-            "details": self.results
+            "details": sanitized_results
         }
         # 統計狀態
         total_checks = len(self.results)
@@ -257,7 +296,8 @@ class QualityChecker:
         with open(report_file, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
         print(f"\n✅ 報告已儲存至: {report_file}")
-        # 生成 Markdown 報告
+        # 生成 Markdown 報告（同樣使用已過濾的結果）
+
         self.generate_markdown_report(report)
     def generate_markdown_report(self, report: Dict):
         """生成 Markdown 格式報告"""
@@ -271,21 +311,25 @@ class QualityChecker:
             f.write(f"- ⚠️ 警告: {report['summary']['warnings']}\n")
             f.write(f"- 通過率: {report['summary']['pass_rate']}\n\n")
             f.write("## 📋 詳細結果\n\n")
-            for check_name, result in self.results.items():
+            # 僅使用已被 generate_report 過濾後的 details
+            for check_name, result in report["details"].items():
                 f.write(f"### {check_name.replace('_', ' ').title()}\n\n")
-                f.write(f"**狀態**: {result.get('status', 'N/A')}\n\n")
-                for key, value in result.items():
-                    if key != "status":
-                        # Security: Redact sensitive data in reports
-                        if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
-                            f.write(f"- **{key}**: [REDACTED FOR SECURITY]\n")
-                        elif isinstance(value, list) and len(value) > 5:
-                            f.write(f"- **{key}**: {len(value)} 項 (僅顯示部分)\n")
+                status = result.get("status", "N/A") if isinstance(result, dict) else "N/A"
+                f.write(f"**狀態**: {status}\n\n")
+                if isinstance(result, dict):
+                    for key, value in result.items():
+                        if key == "status":
+                            continue
+                        # 在此階段，敏感資料已在 _sanitize_results_for_report 中遮罩，
+                        # 因此可以直接輸出。
+                        if isinstance(value, dict) and "count" in value and "note" in value:
+                            # 這是來自清單的摘要資訊
+                            f.write(f"- **{key}**: {value['count']} 項 ({value['note']})\n")
                         else:
                             f.write(f"- **{key}**: {value}\n")
                 f.write("\n")
             f.write("## 🎯 建議行動\n\n")
-            if self.results.get("security", {}).get("secrets_detected"):
+            if report.get("details", {}).get("security", {}).get("secrets_detected"):
                 f.write("1. **高優先級**: 審查並移除硬編碼的秘密\n")
             # 安全地解析型別提示覆蓋率
             type_hint_coverage_str = self.results.get("python_quality", {}).get("type_hint_coverage", "0%")
