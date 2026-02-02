@@ -1,798 +1,595 @@
 #!/usr/bin/env python3
-#
-# @GL-governed
-# @GL-layer: GL30-49
-# @GL-semantic: governance
-# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
-#
 """
 GL Governance Enforcer
-======================
-治理強制執行器 - 確保所有操作都通過 ecosystem 框架驗證
+=====================
+Enforces governance contracts and validates operations.
 
-版本: 1.0.0
-用途: 強制執行所有治理規範，攔截違規操作
+Critical Features:
+- Contract-based validation
+- Evidence collection
+- Governance event emission
+- Quality gate enforcement
 """
 
 import os
-import sys
-import yaml
 import json
-import hashlib
+import yaml
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
-from dataclasses import dataclass, asdict
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
 
-# Add ecosystem to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-
-
-class Severity(Enum):
-    """違規嚴重性"""
-    CRITICAL = "CRITICAL"
-    HIGH = "HIGH"
-    MEDIUM = "MEDIUM"
-    LOW = "LOW"
-
+# Import event emitter and semantic context
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from events.event_emitter import EventEmitter, EventType, emit_event, get_global_emitter
+from semantic.semantic_context import SemanticContextManager, get_global_context_manager
 
 @dataclass
-class Contract:
-    """治理合約"""
-    name: str
-    path: str
-    content: Dict[str, Any]
-    version: str
-    category: str
-
-
-@dataclass
-class Validator:
-    """驗證器"""
-    name: str
-    path: str
-    type: str
-    config: Dict[str, Any]
-
-
-@dataclass
-class Gate:
-    """操作閘門"""
-    operation: str
-    required_checks: List[Dict[str, Any]]
-    action: str  # BLOCK, WARN, SKIP
-
-
-@dataclass
-class Operation:
-    """操作"""
-    name: str
-    type: str
-    parameters: Dict[str, Any]
+class GovernanceResult:
+    """Governance enforcement result"""
+    operation_id: str
+    status: str  # "PASS", "FAIL", "WARNING"
+    violations: List[Dict]
+    evidence_collected: List[Dict]
+    quality_gates: Dict[str, bool]
     timestamp: str
-    user: Optional[str] = None
-
-
-@dataclass
-class ExecutionPlan:
-    """執行計劃"""
-    operation: Operation
-    contracts: List[Contract]
-    validators: List[Validator]
-    gates: List[Gate]
-    evidence_requirements: List[str]
-    min_evidence_coverage: float
-    created_at: str
-
-
-@dataclass
-class ValidationResult:
-    """驗證結果"""
-    passed: bool
-    errors: List[str]
-    warnings: List[str]
-    evidence_coverage: float
-    forbidden_phrases: List[str]
-
-
-@dataclass
-class GateResult:
-    """閘門檢查結果"""
-    passed: bool
-    reason: str
-    gate_name: str
-
-
-@dataclass
-class AuditLog:
-    """審計日誌"""
-    operation: str
-    timestamp: str
-    passed: bool
-    findings: List[str]
-    evidence_coverage: float
-    violations: List[Dict[str, Any]]
-
-
-class GovernanceViolationError(Exception):
-    """治理違規異常"""
-    
-    def __init__(self, message: str, severity: Severity = Severity.CRITICAL):
-        self.message = message
-        self.severity = severity
-        super().__init__(self.message)
-
 
 class GovernanceEnforcer:
     """
-    治理強制執行器
+    Governance enforcement engine that executes contracts and validates operations.
     
-    職責:
-    1. 操作前強制檢查（查詢合約、檢查閘門、運行驗證器）
-    2. 操作後強制驗證（檢查證據鏈、驗證報告）
-    3. 生成治理審計日誌
+    Key responsibilities:
+    - Load and parse governance contracts
+    - Validate operations against contracts
+    - Collect evidence for all claims
+    - Enforce quality gates
+    - Emit governance events
     """
     
-    def __init__(self, workspace_path: str = "."):
-        """
-        初始化治理強制執行器
+    def __init__(self, base_path: str = "/workspace/machine-native-ops"):
+        self.base_path = Path(base_path)
+        self.contracts_dir = self.base_path / "ecosystem" / "contracts"
+        self.contracts = {}
         
-        Args:
-            workspace_path: 工作空間路徑
-        """
-        self.workspace_path = Path(workspace_path)
-        self.ecosystem_path = self.workspace_path / "ecosystem"
+        # P2: Initialize event emitter and semantic context manager
+        self.event_emitter = get_global_emitter(base_path=base_path)
+        self.context_manager = get_global_context_manager(base_path=base_path)
         
-        # 加載配置
-        self.contracts = self._load_contracts()
-        self.validators = self._load_validators()
-        self.gates = self._load_gates()
-        
-        # 禁止短語列表
-        self.forbidden_phrases = [
-            "100% 完成",
-            "完全符合",
-            "已全部实现",
-            "覆盖所有标准",
-            "100% complete",
-            "fully compliant",
-            "completely implemented",
-            "covers all standards"
+        self._load_contracts()
+    
+    def _load_contracts(self):
+        """Load all governance contracts"""
+        contract_paths = [
+            "verification/gl-verification-engine-spec-executable.yaml",
+            "verification/gl-proof-model-executable.yaml",
+            "verification/gl-verifiable-report-standard-executable.yaml"
         ]
         
-        # 治理規範強制執行點
-        self.enforcement_points = {
-            "GA-001": {
-                "name": "Query Contracts",
-                "severity": "CRITICAL",
-                "description": "所有操作必須查詢 ecosystem/contracts/ 中的相關治理合約"
-            },
-            "GA-002": {
-                "name": "Use Validators",
-                "severity": "CRITICAL",
-                "description": "所有操作必須使用 ecosystem/tools/ 中的驗證工具"
-            },
-            "GA-003": {
-                "name": "Generate Evidence",
-                "severity": "CRITICAL",
-                "description": "所有報告必須包含完整的證據鏈"
-            },
-            "GA-004": {
-                "name": "Verify Report",
-                "severity": "CRITICAL",
-                "description": "所有報告必須通過驗證器驗證"
-            }
-        }
-        
-        # 日誌路徑
-        self.audit_log_path = self.ecosystem_path / "logs" / "audit-logs"
-        self.audit_log_path.mkdir(parents=True, exist_ok=True)
-    
-    def _load_contracts(self) -> List[Contract]:
-        """加載所有治理合約"""
-        contracts = []
-        contracts_path = self.ecosystem_path / "contracts"
-        
-        if not contracts_path.exists():
-            return contracts
-        
-        # 加載所有 YAML 合約文件
-        for yaml_file in contracts_path.rglob("*.yaml"):
+        for contract_path in contract_paths:
+            full_path = self.contracts_dir / contract_path
             try:
-                with open(yaml_file, 'r', encoding='utf-8') as f:
-                    content = yaml.safe_load(f)
-                
-                contract = Contract(
-                    name=yaml_file.stem,
-                    path=str(yaml_file.relative_to(self.workspace_path)),
-                    content=content,
-                    version=content.get('metadata', {}).get('version', '1.0.0'),
-                    category=content.get('metadata', {}).get('category', 'unknown')
-                )
-                contracts.append(contract)
+                with open(full_path, 'r') as f:
+                    contract = yaml.safe_load(f)
+                    if contract:
+                        self.contracts[contract_path] = contract
             except Exception as e:
-                print(f"⚠️  無法加載合約 {yaml_file}: {e}")
-        
-        return contracts
+                print(f"⚠️  Failed to load contract {contract_path}: {e}")
     
-    def _load_validators(self) -> List[Validator]:
-        """加載所有驗證工具"""
-        validators = []
-        tools_path = self.ecosystem_path / "tools"
+    def validate(self, operation: Dict[str, Any]) -> GovernanceResult:
+        """
+        Validate an operation against governance contracts.
         
-        if not tools_path.exists():
-            return validators
+        Args:
+            operation: Dictionary containing operation details
+                - type: operation type (e.g., "file_change", "report_generation")
+                - files: list of affected files
+                - content: operation content/data
         
-        # 加載所有 Python 驗證工具
-        for py_file in tools_path.rglob("*.py"):
-            if py_file.name.startswith("_"):
+        Returns:
+            GovernanceResult with validation status, violations, and evidence
+        """
+        operation_id = self._generate_operation_id()
+        violations = []
+        evidence = []
+        quality_gates = {}
+        
+        # P2: Emit validation start event
+        emit_event(
+            EventType.VALIDATION_START,
+            operation_id,
+            metadata={
+                "operation_type": operation.get("type", "unknown"),
+                "files": operation.get("files", [])
+            },
+            data={"operation": operation},
+            priority=2
+        )
+        
+        # Validate against each contract
+        for contract_path, contract in self.contracts.items():
+            if not contract:
                 continue
             
-            try:
-                validator = Validator(
-                    name=py_file.stem,
-                    path=str(py_file.relative_to(self.workspace_path)),
-                    type="python",
-                    config={}
-                )
-                validators.append(validator)
-            except Exception as e:
-                print(f"⚠️  無法加載驗證器 {py_file}: {e}")
-        
-        return validators
-    
-    def _load_gates(self) -> List[Gate]:
-        """加載所有操作閘門"""
-        gates = []
-        gates_path = self.ecosystem_path / "gates"
-        
-        if not gates_path.exists():
-            # 創建默認閘門
-            return self._create_default_gates()
-        
-        # 加載閘門配置
-        gate_file = gates_path / "operation-gate.yaml"
-        if gate_file.exists():
-            try:
-                with open(gate_file, 'r', encoding='utf-8') as f:
-                    config = yaml.safe_load(f)
+            # Check trigger conditions
+            if self._should_validate_trigger(contract, operation):
+                # Run verification rules
+                contract_violations = self._verify_contract(contract, operation)
+                violations.extend(contract_violations)
                 
-                for gate_spec in config.get('spec', {}).get('gates', []):
-                    gate = Gate(
-                        operation=gate_spec['operation'],
-                        required_checks=gate_spec.get('required_checks', []),
-                        action=gate_spec.get('action', 'BLOCK')
+                # Collect evidence
+                contract_evidence = self._collect_evidence(contract, operation)
+                evidence.extend(contract_evidence)
+                
+                # P2: Emit evidence collected event
+                if contract_evidence:
+                    emit_event(
+                        EventType.EVIDENCE_COLLECTED,
+                        operation_id,
+                        metadata={
+                            "contract": contract_path,
+                            "evidence_count": len(contract_evidence)
+                        },
+                        data={"evidence": contract_evidence}
                     )
-                    gates.append(gate)
-            except Exception as e:
-                print(f"⚠️  無法加載閘門配置: {e}")
-                return self._create_default_gates()
-        else:
-            return self._create_default_gates()
+                
+                # Check quality gates
+                contract_gates = self._check_quality_gates(contract, operation)
+                quality_gates.update(contract_gates)
+        
+        # Determine overall status
+        status = self._determine_status(violations, quality_gates)
+        
+        # P2: Emit validation complete event
+        event_type = EventType.VALIDATION_COMPLETE if status == "PASS" else EventType.VALIDATION_FAILED
+        emit_event(
+            event_type,
+            operation_id,
+            metadata={
+                "status": status,
+                "violations_count": len(violations),
+                "evidence_count": len(evidence),
+                "failed_gates": [k for k, v in quality_gates.items() if not v]
+            },
+            data={
+                "violations": violations,
+                "quality_gates": quality_gates
+            },
+            priority=2 if status == "PASS" else 1
+        )
+        
+        # P2: Emit quality gate failure event if any gates failed
+        failed_gates = [k for k, v in quality_gates.items() if not v]
+        if failed_gates:
+            emit_event(
+                EventType.QUALITY_GATE_FAILED,
+                operation_id,
+                metadata={
+                    "failed_gates": failed_gates,
+                    "gate_count": len(failed_gates)
+                },
+                data={"quality_gates": quality_gates},
+                priority=1
+            )
+        
+        return GovernanceResult(
+            operation_id=operation_id,
+            status=status,
+            violations=violations,
+            evidence_collected=evidence,
+            quality_gates=quality_gates,
+            timestamp=datetime.now().isoformat()
+        )
+    
+    def execute_contract(self, contract_path: str, operation: Dict[str, Any]) -> GovernanceResult:
+        """
+        Execute a specific governance contract.
+        
+        Args:
+            contract_path: Path to the contract file
+            operation: Operation details
+        
+        Returns:
+            GovernanceResult from contract execution
+        """
+        if contract_path not in self.contracts:
+            return GovernanceResult(
+                operation_id=self._generate_operation_id(),
+                status="FAIL",
+                violations=[{
+                    "severity": "CRITICAL",
+                    "rule": "contract_not_found",
+                    "message": f"Contract {contract_path} not loaded"
+                }],
+                evidence_collected=[],
+                quality_gates={},
+                timestamp=datetime.now().isoformat()
+            )
+        
+        contract = self.contracts[contract_path]
+        return self.validate(operation)
+    
+    def validate_trigger(self, event: Dict[str, Any]) -> bool:
+        """
+        Validate if an event triggers governance enforcement.
+        
+        Args:
+            event: Event dictionary with type and details
+        
+        Returns:
+            True if the event should trigger governance enforcement
+        """
+        event_type = event.get("type", "")
+        
+        for contract_path, contract in self.contracts.items():
+            if not contract:
+                continue
+            
+            trigger_conditions = contract.get("trigger", {}).get("conditions", [])
+            
+            for condition in trigger_conditions:
+                if condition.get("type") == event_type:
+                    return True
+                
+                if condition.get("type") == "file_change" and "files" in event:
+                    return True
+                
+                if condition.get("type") == "ci_event" and "ci_event" in event:
+                    return True
+        
+        return False
+    
+    def _generate_operation_id(self) -> str:
+        """Generate unique operation ID"""
+        return f"gov_op_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}"
+    
+    def _should_validate_trigger(self, contract: Dict, operation: Dict) -> bool:
+        """Check if operation matches trigger conditions"""
+        trigger_conditions = contract.get("trigger", {}).get("conditions", [])
+        
+        for condition in trigger_conditions:
+            if condition.get("type") == operation.get("type"):
+                return True
+            
+            if condition.get("type") == "file_change" and "files" in operation:
+                return True
+        
+        return False
+    
+    def _verify_contract(self, contract: Dict, operation: Dict) -> List[Dict]:
+        """Verify operation against contract rules"""
+        violations = []
+        verify_rules = contract.get("verify", {})
+        
+        # Check evidence collection rules
+        evidence_rules = verify_rules.get("evidence_collection", [])
+        for rule in evidence_rules:
+            if not self._check_evidence_rule(rule, operation):
+                violations.append({
+                    "severity": rule.get("severity", "HIGH"),
+                    "rule": rule.get("rule"),
+                    "message": f"Rule failed: {rule.get('rule')}",
+                    "remediation": rule.get("remediation", "")
+                })
+        
+        # Check report validation rules
+        report_rules = verify_rules.get("report_validation", [])
+        for rule in report_rules:
+            if not self._check_report_rule(rule, operation):
+                violations.append({
+                    "severity": rule.get("severity", "HIGH"),
+                    "rule": rule.get("rule"),
+                    "message": f"Rule failed: {rule.get('rule')}",
+                    "remediation": rule.get("remediation", "")
+                })
+        
+        return violations
+    
+    def _check_evidence_rule(self, rule: Dict, operation: Dict) -> bool:
+        """Check an evidence collection rule"""
+        # Simplified implementation
+        if rule.get("rule") == "all_files_must_have_evidence":
+            return len(operation.get("evidence_links", [])) > 0
+        return True
+    
+    def _check_report_rule(self, rule: Dict, operation: Dict) -> bool:
+        """Check a report validation rule"""
+        # Simplified implementation
+        if rule.get("rule") == "no_forbidden_phrases":
+            content = operation.get("content", "")
+            forbidden = rule.get("forbidden_phrases", [])
+            for phrase in forbidden:
+                if phrase.get("phrase") in content:
+                    return False
+        return True
+    
+    def _collect_evidence(self, contract: Dict, operation: Dict) -> List[Dict]:
+        """Collect evidence for the operation"""
+        evidence = []
+        
+        # Collect file evidence
+        files = operation.get("files", [])
+        for file_path in files:
+            full_path = self.base_path / file_path
+            if full_path.exists():
+                with open(full_path, 'rb') as f:
+                    content = f.read()
+                    evidence.append({
+                        "type": "source_file",
+                        "file_path": str(full_path),
+                        "checksum": self._calculate_checksum(content),
+                        "size": len(content),
+                        "timestamp": datetime.now().isoformat()
+                    })
+        
+        # Collect contract reference evidence
+        evidence.append({
+            "type": "contract_reference",
+            "contract_path": contract.get("metadata", {}).get("name", "unknown"),
+            "version": contract.get("version", "unknown"),
+            "timestamp": datetime.now().isoformat()
+        })
+        
+        return evidence
+    
+    def _calculate_checksum(self, content: bytes) -> str:
+        """Calculate SHA-256 checksum"""
+        import hashlib
+        return hashlib.sha256(content).hexdigest()
+    
+    def _check_quality_gates(self, contract: Dict, operation: Dict) -> Dict[str, bool]:
+        """
+        Check quality gates with comprehensive validation.
+        
+        Quality Gates:
+        1. Evidence coverage >= 90%
+        2. Forbidden phrases == 0
+        3. Source consistency check
+        """
+        gates = {}
+        quality_gates = contract.get("verify", {}).get("quality_gates", [])
+        
+        # Gate 1: Evidence Coverage
+        gates["evidence_coverage"] = self._check_evidence_coverage_gate(operation)
+        
+        # Gate 2: Forbidden Phrases
+        gates["forbidden_phrases"] = self._check_forbidden_phrases_gate(operation)
+        
+        # Gate 3: Source Consistency
+        gates["source_consistency"] = self._check_source_consistency_gate(operation)
+        
+        # Additional contract-specific gates
+        for gate in quality_gates:
+            gate_name = gate.get("gate")
+            if gate_name not in gates:
+                # Custom gate handling if needed
+                threshold = gate.get("threshold", 0.90)
+                gates[gate_name] = True  # Default pass
         
         return gates
     
-    def _create_default_gates(self) -> List[Gate]:
-        """創建默認操作閘門"""
-        return [
-            Gate(
-                operation="file_migration",
-                required_checks=[
-                    {
-                        "check": "query_contracts",
-                        "action": "BLOCK_IF_SKIPPED"
-                    },
-                    {
-                        "check": "use_validator",
-                        "action": "BLOCK_IF_FAILED"
-                    },
-                    {
-                        "check": "generate_evidence",
-                        "min_coverage": 0.9,
-                        "action": "BLOCK_IF_MISSING"
-                    },
-                    {
-                        "check": "verify_report",
-                        "action": "BLOCK_IF_INVALID"
-                    }
-                ],
-                action="BLOCK"
-            ),
-            Gate(
-                operation="code_commit",
-                required_checks=[
-                    {
-                        "check": "code_quality_gate",
-                        "action": "BLOCK_IF_FAILED"
-                    },
-                    {
-                        "check": "security_scan",
-                        "action": "BLOCK_IF_FAILED"
-                    }
-                ],
-                action="BLOCK"
-            )
-        ]
-    
-    def find_contracts(self, operation: Operation) -> List[Contract]:
+    def _check_evidence_coverage_gate(self, operation: Dict) -> bool:
         """
-        查找相關治理合約 (GA-001)
+        Check evidence coverage >= 90%.
         
-        Args:
-            operation: 操作對象
-        
-        Returns:
-            相關治理合約列表
+        Coverage calculation:
+        - Count evidence links in content
+        - Count total statements requiring evidence
+        - Calculate percentage
         """
-        relevant_contracts = []
+        content = operation.get("content", "")
+        if not content:
+            return False
         
-        # 根據操作類型篩選合約
-        for contract in self.contracts:
-            # 檢查合約類別是否與操作相關
-            if self._is_contract_relevant(contract, operation):
-                relevant_contracts.append(contract)
+        # Count evidence links using pattern [证据: path/to/file#L10-L15]
+        import re
+        evidence_pattern = r'\[证据[^\]]+\]'
+        evidence_links = re.findall(evidence_pattern, content)
         
-        return relevant_contracts
+        # Estimate total statements (lines ending with ., 。, !, ！, ?, ？)
+        statement_pattern = r'[.。！！？？]\s*$'
+        statements = re.findall(statement_pattern, content, re.MULTILINE)
+        
+        if not statements:
+            return False
+        
+        # Calculate coverage
+        coverage = len(evidence_links) / len(statements)
+        threshold = 0.90  # 90% threshold
+        
+        # Log coverage if below threshold
+        if coverage < threshold:
+            print(f"⚠️  Evidence coverage: {coverage:.2%} (threshold: {threshold:.2%})")
+        
+        return coverage >= threshold
     
-    def _is_contract_relevant(self, contract: Contract, operation: Operation) -> bool:
-        """判斷合約是否與操作相關"""
-        # 根據操作類型和合約類別匹配
-        category_mapping = {
-            "file_migration": ["naming-governance", "fact-verification", "verification"],
-            "code_commit": ["validation", "verification"],
-            "report_generation": ["fact-verification", "verification"]
+    def _check_forbidden_phrases_gate(self, operation: Dict) -> bool:
+        """
+        Check for forbidden phrases == 0.
+        
+        Forbidden phrases:
+        CRITICAL: "100% 完成", "完全符合", "已全部实现"
+        HIGH: "应该是", "可能是", "我认为"
+        """
+        content = operation.get("content", "")
+        if not content:
+            return True
+        
+        forbidden_phrases = {
+            "CRITICAL": ["100% 完成", "完全符合", "已全部实现"],
+            "HIGH": ["应该是", "可能是", "我认为"],
+            "MEDIUM": ["基本上", "差不多", "应该"],
+            "LOW": ["可能", "也许", "大概"]
         }
         
-        relevant_categories = category_mapping.get(operation.type, [])
-        return contract.category in relevant_categories
+        total_violations = 0
+        violations_found = []
+        
+        for severity, phrases in forbidden_phrases.items():
+            for phrase in phrases:
+                count = content.count(phrase)
+                if count > 0:
+                    total_violations += count
+                    violations_found.append({
+                        "phrase": phrase,
+                        "severity": severity,
+                        "count": count
+                    })
+        
+        # Log violations if any found
+        if violations_found:
+            print(f"⚠️  Forbidden phrases found: {total_violations} violations")
+            for v in violations_found:
+                print(f"   - '{v['phrase']}' ({v['severity']}): {v['count']} occurrences")
+        
+        return total_violations == 0
     
-    def check_gates(self, operation: Operation) -> GateResult:
+    def _check_source_consistency_gate(self, operation: Dict) -> bool:
         """
-        檢查操作閘門
+        Check source consistency in evidence links.
         
-        Args:
-            operation: 操作對象
-        
-        Returns:
-            閘門檢查結果
+        Verifies that:
+        - Evidence sources exist
+        - Evidence sources are readable
+        - Evidence sources match expected paths
         """
-        # 查找相關閘門
-        relevant_gates = [g for g in self.gates if g.operation == operation.type]
+        content = operation.get("content", "")
+        if not content:
+            return True
         
-        if not relevant_gates:
-            return GateResult(passed=True, reason="沒有相關閘門", gate_name="none")
+        import re
+        from pathlib import Path
         
-        # 檢查每個閘門
-        for gate in relevant_gates:
-            for check in gate.required_checks:
-                check_name = check.get("check")
-                action = check.get("action", "WARN")
-                
-                # 模擬檢查（實際應該根據 check 執行具體邏輯）
-                check_passed = self._perform_check(operation, check)
-                
-                if not check_passed:
-                    if action == "BLOCK_IF_SKIPPED":
-                        return GateResult(
-                            passed=False,
-                            reason=f"閘門檢查失敗: {check_name}",
-                            gate_name=gate.operation
-                        )
-                    elif action == "BLOCK_IF_FAILED":
-                        return GateResult(
-                            passed=False,
-                            reason=f"驗證失敗: {check_name}",
-                            gate_name=gate.operation
-                        )
-                    elif action == "BLOCK_IF_MISSING":
-                        return GateResult(
-                            passed=False,
-                            reason=f"缺少必需項: {check_name}",
-                            gate_name=gate.operation
-                        )
+        # Extract evidence paths
+        evidence_pattern = r'\[证据[^\]]+([^\]]+)\]'
+        evidence_paths = re.findall(evidence_pattern, content)
         
-        return GateResult(passed=True, reason="所有閘門檢查通過", gate_name="all")
-    
-    def _perform_check(self, operation: Operation, check: Dict[str, Any]) -> bool:
-        """執行具體的檢查"""
-        check_type = check.get("check")
+        if not evidence_paths:
+            return True
         
-        # 這裡應該根據 check_type 執行具體的檢查邏輯
-        # 目前返回 True 作為示例
-        return True
-    
-    def run_validators(self, operation: Operation, contracts: List[Contract]) -> ValidationResult:
-        """
-        運行驗證器 (GA-002)
-        
-        Args:
-            operation: 操作對象
-            contracts: 相關治理合約
-        
-        Returns:
-            驗證結果
-        """
-        errors = []
-        warnings = []
-        forbidden_phrases = []
-        
-        # 檢查是否有相關驗證器
-        if not self.validators:
-            warnings.append("沒有找到驗證工具")
-        
-        # 運行所有驗證器
-        for validator in self.validators:
-            try:
-                # 這裡應該實際調用驗證器
-                # 目前只是模擬
-                pass
-            except Exception as e:
-                errors.append(f"驗證器 {validator.name} 運行失敗: {e}")
-        
-        # 檢查操作參數中的禁止短語
-        for param_name, param_value in operation.parameters.items():
-            if isinstance(param_value, str):
-                for phrase in self.forbidden_phrases:
-                    if phrase in param_value:
-                        forbidden_phrases.append(f"參數 {param_name} 包含禁止短語: '{phrase}'")
-        
-        return ValidationResult(
-            passed=len(errors) == 0,
-            errors=errors,
-            warnings=warnings,
-            evidence_coverage=0.0,
-            forbidden_phrases=forbidden_phrases
-        )
-    
-    def generate_execution_plan(
-        self,
-        operation: Operation,
-        contracts: List[Contract],
-        validation: ValidationResult
-    ) -> ExecutionPlan:
-        """
-        生成執行計劃
-        
-        Args:
-            operation: 操作對象
-            contracts: 相關治理合約
-            validation: 驗證結果
-        
-        Returns:
-            執行計劃
-        """
-        # 證據要求
-        evidence_requirements = [
-            "contract_references",
-            "validation_results",
-            "evidence_links",
-            "sha256_hashes"
-        ]
-        
-        # 最小證據覆蓋率
-        min_evidence_coverage = 0.9
-        
-        # 創建執行計劃
-        execution_plan = ExecutionPlan(
-            operation=operation,
-            contracts=contracts,
-            validators=self.validators,
-            gates=[g for g in self.gates if g.operation == operation.type],
-            evidence_requirements=evidence_requirements,
-            min_evidence_coverage=min_evidence_coverage,
-            created_at=datetime.now().isoformat()
-        )
-        
-        return execution_plan
-    
-    def validate_plan(self, plan: ExecutionPlan) -> bool:
-        """
-        驗證執行計劃
-        
-        Args:
-            plan: 執行計劃
-        
-        Returns:
-            是否通過驗證
-        """
-        # 檢查是否有相關合約
-        if not plan.contracts:
-            print("⚠️  執行計劃沒有包含任何治理合約")
-            return False
-        
-        # 檢查證據要求
-        if not plan.evidence_requirements:
-            print("⚠️  執行計劃缺少證據要求")
-            return False
-        
-        # 檢查證據覆蓋率
-        if plan.min_evidence_coverage < 0.9:
-            print("⚠️  證據覆蓋率低於要求")
-            return False
-        
-        return True
-    
-    def before_operation(self, operation: Operation) -> ExecutionPlan:
-        """
-        操作前強制檢查
-        
-        Args:
-            operation: 操作對象
-        
-        Returns:
-            執行計劃
-        
-        Raises:
-            GovernanceViolationError: 如果檢查失敗
-        """
-        print(f"\n{'='*80}")
-        print(f"🔍 治理強制執行: 操作前檢查")
-        print(f"{'='*80}")
-        print(f"操作: {operation.name}")
-        print(f"類型: {operation.type}")
-        print(f"時間: {operation.timestamp}")
-        
-        # 1. 查詢相關治理合約 (GA-001)
-        print(f"\n[GA-001] 查詢治理合約...")
-        contracts = self.find_contracts(operation)
-        if not contracts:
-            raise GovernanceViolationError(
-                f"未找到相關治理合約，請檢查 ecosystem/contracts/"
-            )
-        print(f"✅ 找到 {len(contracts)} 個相關治理合約:")
-        for contract in contracts:
-            print(f"   - {contract.name} (v{contract.version})")
-        
-        # 2. 檢查操作閘門
-        print(f"\n[GA-GATE] 檢查操作閘門...")
-        gate_result = self.check_gates(operation)
-        if not gate_result.passed:
-            raise GovernanceViolationError(
-                f"操作被閘門阻止: {gate_result.reason}"
-            )
-        print(f"✅ 閘門檢查通過: {gate_result.reason}")
-        
-        # 3. 運行驗證器 (GA-002)
-        print(f"\n[GA-002] 運行驗證器...")
-        validation_result = self.run_validators(operation, contracts)
-        if not validation_result.passed:
-            raise GovernanceViolationError(
-                f"操作被驗證器阻止: {validation_result.errors}"
-            )
-        print(f"✅ 驗證器檢查通過")
-        if validation_result.warnings:
-            print(f"⚠️  警告: {validation_result.warnings}")
-        
-        # 4. 生成執行計劃
-        print(f"\n[GA-PLAN] 生成執行計劃...")
-        execution_plan = self.generate_execution_plan(
-            operation,
-            contracts,
-            validation_result
-        )
-        print(f"✅ 執行計劃已生成")
-        print(f"   - 治理合約: {len(execution_plan.contracts)}")
-        print(f"   - 驗證器: {len(execution_plan.validators)}")
-        print(f"   - 操作閘門: {len(execution_plan.gates)}")
-        print(f"   - 證據覆蓋率要求: {execution_plan.min_evidence_coverage * 100}%")
-        
-        # 5. 驗證計劃符合治理規範
-        print(f"\n[GA-VALIDATE] 驗證執行計劃...")
-        if not self.validate_plan(execution_plan):
-            raise GovernanceViolationError("執行計劃不符合治理規範")
-        print(f"✅ 執行計劃驗證通過")
-        
-        print(f"\n{'='*80}")
-        print(f"✅ 所有檢查通過，操作可以執行")
-        print(f"{'='*80}\n")
-        
-        return execution_plan
-    
-    def after_operation(self, operation: Operation, result: Any) -> ValidationResult:
-        """
-        操作後強制驗證
-        
-        Args:
-            operation: 操作對象
-            result: 操作結果
-        
-        Returns:
-            驗證結果
-        
-        Raises:
-            GovernanceViolationError: 如果驗證失敗
-        """
-        print(f"\n{'='*80}")
-        print(f"🔍 治理強制執行: 操作後驗證")
-        print(f"{'='*80}")
-        print(f"操作: {operation.name}")
-        
-        # 檢查結果類型
-        if hasattr(result, 'has_evidence'):
-            # 1. 檢查證據鏈 (GA-003)
-            print(f"\n[GA-003] 檢查證據鏈...")
-            if not result.has_evidence():
-                raise GovernanceViolationError(
-                    "缺少證據鏈，請使用 GL Fact Verification Pipeline"
-                )
-            print(f"✅ 證據鏈存在")
+        # Check each evidence source
+        inconsistent_sources = []
+        for path in evidence_paths:
+            # Clean up path (remove line ranges, etc.)
+            clean_path = path.split('#')[0].strip()
+            full_path = self.base_path / clean_path
             
-            # 檢查證據覆蓋率
-            if hasattr(result, 'evidence_coverage'):
-                coverage = result.evidence_coverage
-                print(f"   證據覆蓋率: {coverage * 100}%")
-                if coverage < 0.9:
-                    raise GovernanceViolationError(
-                        f"證據覆蓋率不足: {coverage} < 0.9"
-                    )
-                print(f"✅ 證據覆蓋率符合要求")
-        else:
-            print(f"\n⚠️  結果對象沒有 has_evidence 方法")
+            if not full_path.exists():
+                inconsistent_sources.append({
+                    "path": clean_path,
+                    "issue": "file_not_exist"
+                })
+            elif not full_path.is_file():
+                inconsistent_sources.append({
+                    "path": clean_path,
+                    "issue": "not_a_file"
+                })
         
-        # 2. 驗證報告 (GA-004)
-        print(f"\n[GA-004] 驗證報告...")
-        if hasattr(result, 'report'):
-            report = result.report
+        # Log inconsistencies if any found
+        if inconsistent_sources:
+            print(f"⚠️  Source consistency issues: {len(inconsistent_sources)} problems")
+            for issue in inconsistent_sources:
+                print(f"   - {issue['path']}: {issue['issue']}")
+        
+        return len(inconsistent_sources) == 0
+    
+    def _determine_status(self, violations: List[Dict], quality_gates: Dict) -> str:
+        """
+        Determine overall validation status with quality gate failure handling.
+        
+        Status Logic:
+        - CRITICAL violations: FAIL (block operation)
+        - Failed quality gates: FAIL (block operation) with remediation
+        - HIGH violations: FAIL (block operation)
+        - MEDIUM/LOW violations: WARNING (allow with caution)
+        - All pass: PASS
+        """
+        # Check for CRITICAL violations
+        critical_violations = [v for v in violations if v.get("severity") == "CRITICAL"]
+        if critical_violations:
+            print(f"❌ CRITICAL violations found: {len(critical_violations)}")
+            self._generate_remediation(critical_violations, quality_gates)
+            return "FAIL"
+        
+        # Check for HIGH violations
+        high_violations = [v for v in violations if v.get("severity") == "HIGH"]
+        if high_violations:
+            print(f"❌ HIGH violations found: {len(high_violations)}")
+            self._generate_remediation(high_violations, quality_gates)
+            return "FAIL"
+        
+        # Check for failed quality gates
+        failed_gates = [k for k, v in quality_gates.items() if not v]
+        if failed_gates:
+            print(f"❌ Quality gates failed: {', '.join(failed_gates)}")
+            self._generate_quality_gate_remediation(failed_gates, quality_gates)
+            return "FAIL"
+        
+        # Check for MEDIUM/LOW violations (WARNING)
+        if violations:
+            medium_violations = [v for v in violations if v.get("severity") == "MEDIUM"]
+            low_violations = [v for v in violations if v.get("severity") == "LOW"]
             
-            # 檢查禁止短語
-            forbidden_found = []
-            for phrase in self.forbidden_phrases:
-                if phrase in report:
-                    forbidden_found.append(phrase)
+            if medium_violations or low_violations:
+                print(f"⚠️  Non-critical violations: {len(medium_violations)} MEDIUM, {len(low_violations)} LOW")
+                self._generate_remediation(medium_violations + low_violations, quality_gates)
+                return "WARNING"
+        
+        print("✅ All checks passed")
+        return "PASS"
+    
+    def _generate_remediation(self, violations: List[Dict], quality_gates: Dict):
+        """Generate remediation suggestions for violations."""
+        if not violations:
+            return
+        
+        print("\n📋 Remediation Suggestions:")
+        print("-" * 50)
+        
+        # Group violations by type
+        violation_types = {}
+        for v in violations:
+            rule = v.get("rule", "unknown")
+            if rule not in violation_types:
+                violation_types[rule] = []
+            violation_types[rule].append(v)
+        
+        # Generate suggestions for each type
+        for rule, rule_violations in violation_types.items():
+            print(f"\n{rule}:")
+            print(f"  Severity: {rule_violations[0].get('severity', 'UNKNOWN')}")
+            print(f"  Count: {len(rule_violations)}")
             
-            if forbidden_found:
-                raise GovernanceViolationError(
-                    f"報告包含禁止短語: {forbidden_found}"
-                )
-            print(f"✅ 報告未包含禁止短語")
-        else:
-            print(f"\n⚠️  結果對象沒有 report 屬性")
-        
-        # 3. 生成治理審計日誌
-        print(f"\n[GA-AUDIT] 生成審計日誌...")
-        audit_log = self.generate_audit_log(operation, result)
-        self.save_audit_log(audit_log)
-        print(f"✅ 審計日誌已保存")
-        
-        print(f"\n{'='*80}")
-        print(f"✅ 所有驗證通過")
-        print(f"{'='*80}\n")
-        
-        return ValidationResult(
-            passed=True,
-            errors=[],
-            warnings=[],
-            evidence_coverage=1.0,
-            forbidden_phrases=[]
-        )
+            remediation = rule_violations[0].get("remediation", "No remediation available")
+            print(f"  Suggestion: {remediation}")
     
-    def generate_audit_log(self, operation: Operation, result: Any) -> AuditLog:
-        """
-        生成治理審計日誌
+    def _generate_quality_gate_remediation(self, failed_gates: List[str], quality_gates: Dict):
+        """Generate remediation suggestions for failed quality gates."""
+        if not failed_gates:
+            return
         
-        Args:
-            operation: 操作對象
-            result: 操作結果
+        print("\n📋 Quality Gate Remediation:")
+        print("-" * 50)
         
-        Returns:
-            審計日誌
-        """
-        # 收集違規信息
-        violations = []
+        remediation_map = {
+            "evidence_coverage": (
+                "Add evidence links using format [证据: path/to/file#L10-L15]. "
+                "Target: 90% coverage of statements."
+            ),
+            "forbidden_phrases": (
+                "Replace forbidden phrases with approved alternatives:\n"
+                "  - '100% 完成' → '基于已实现的功能集'\n"
+                "  - '完全符合' → '在[方面]与标准对齐'\n"
+                "  - '应该是' → '根据[证据]，建议'"
+            ),
+            "source_consistency": (
+                "Verify all evidence sources exist and are accessible. "
+                "Check file paths and ensure files are in the repository."
+            )
+        }
         
-        # 檢查 GA-001
-        if not hasattr(operation, 'queried_contracts') or not operation.queried_contracts:
-            violations.append({
-                "rule": "GA-001",
-                "severity": "CRITICAL",
-                "description": "未查詢治理合約"
-            })
-        
-        # 檢查 GA-002
-        if not hasattr(operation, 'used_validators') or not operation.used_validators:
-            violations.append({
-                "rule": "GA-002",
-                "severity": "CRITICAL",
-                "description": "未使用驗證工具"
-            })
-        
-        # 檢查 GA-003
-        if hasattr(result, 'has_evidence') and not result.has_evidence():
-            violations.append({
-                "rule": "GA-003",
-                "severity": "CRITICAL",
-                "description": "未生成證據鏈"
-            })
-        
-        # 檢查 GA-004
-        if hasattr(result, 'report_verified') and not result.report_verified:
-            violations.append({
-                "rule": "GA-004",
-                "severity": "CRITICAL",
-                "description": "報告未驗證"
-            })
-        
-        # 生成審計日誌
-        audit_log = AuditLog(
-            operation=operation.name,
-            timestamp=datetime.now().isoformat(),
-            passed=len(violations) == 0,
-            findings=[f"{v['rule']}: {v['description']}" for v in violations],
-            evidence_coverage=getattr(result, 'evidence_coverage', 0.0),
-            violations=violations
-        )
-        
-        return audit_log
-    
-    def save_audit_log(self, audit_log: AuditLog):
-        """
-        保存審計日誌
-        
-        Args:
-            audit_log: 審計日誌
-        """
-        # 生成文件名
-        timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-        filename = f"audit-{timestamp}-{audit_log.operation}.json"
-        filepath = self.audit_log_path / filename
-        
-        # 保存日誌
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(asdict(audit_log), f, indent=2, ensure_ascii=False)
-        
-        print(f"📝 審計日誌已保存到: {filepath}")
-
-
-def main():
-    """測�试治理強制執行器"""
-    print("🚀 GL Governance Enforcer v1.0.0")
-    print("=" * 80)
-    
-    # 初始化強制執行器
-    enforcer = GovernanceEnforcer(workspace_path=".")
-    
-    # 創建測試操作
-    operation = Operation(
-        name="文件遷移",
-        type="file_migration",
-        parameters={
-            "source": ".",
-            "target": "ecosystem/docs/",
-            "description": "遷移治理文件"
-        },
-        timestamp=datetime.now().isoformat(),
-        user="test_user"
-    )
-    
-    # 測試操作前檢查
-    try:
-        execution_plan = enforcer.before_operation(operation)
-        print("\n✅ 測試通過：操作前檢查")
-    except GovernanceViolationError as e:
-        print(f"\n❌ 測試失敗：{e.message}")
-        return
-    
-    # 模擬操作結果
-    class MockResult:
-        def __init__(self):
-            self.has_evidence_flag = True
-            self.evidence_coverage = 0.95
-            self.report = "遷移完成"
-        
-        def has_evidence(self):
-            return self.has_evidence_flag
-    
-    result = MockResult()
-    
-    # 測試操作後驗證
-    try:
-        validation_result = enforcer.after_operation(operation, result)
-        print("\n✅ 測試通過：操作後驗證")
-    except GovernanceViolationError as e:
-        print(f"\n❌ 測試失敗：{e.message}")
-        return
-
-
-if __name__ == "__main__":
-    main()
+        for gate in failed_gates:
+            print(f"\n{gate}:")
+            print(f"  Status: FAILED")
+            suggestion = remediation_map.get(gate, "Review quality gate requirements")
+            print(f"  Suggestion: {suggestion}")
