@@ -238,6 +238,13 @@ class QualityChecker:
 
         for check_name, result in self.results.items():
             print(f"\n{check_name.upper()}: {result.get('status', 'N/A')}")
+            # 僅輸出非敏感且對人類有用的摘要資訊，避免將可能包含秘密的欄位寫入日誌
+            if check_name == "security":
+                # 對安全掃描，只顯示高層次描述，不暴露任何來自掃描結果的原始資料
+                details = result.get("details")
+                if details:
+                    print(f"  - details: {details}")
+                continue
             for key, value in result.items():
                 if key == "status":
                     continue
