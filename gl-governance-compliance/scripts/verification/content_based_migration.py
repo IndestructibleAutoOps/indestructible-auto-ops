@@ -106,10 +106,10 @@ class ContentAnalyzer:
         
         # Read file content
         try:
-            with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
+            with open(full_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-        except Exception as e:
-            # Binary file
+        except UnicodeDecodeError:
+            # Binary or non-UTF-8-decodable file
             content_hash = self._calculate_hash(full_path)
             return ContentAnalysis(
                 file_path=file_path,
