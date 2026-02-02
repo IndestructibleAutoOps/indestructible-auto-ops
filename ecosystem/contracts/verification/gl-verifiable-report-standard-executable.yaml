@@ -7,6 +7,12 @@ version: "1.0.0"
 status: "PRODUCTION_READY"
 component_type: "Standard"
 
+metadata:
+  gl_semantic_layer: "GL90-99"
+  gl_semantic_domain: "verification"
+  gl_semantic_context: "governance"
+  audit_trail_enabled: true
+
 # 觸發條件
 trigger:
   conditions:
@@ -19,6 +25,31 @@ trigger:
 
 # 驗證規則
 verify:
+  # P0 FIX: Evidence Validation Rules (CRITICAL)
+  evidence_validation:
+    - rule: "evidence_must_have_checksum"
+      severity: "CRITICAL"
+      check: "evidence.checksum exists AND evidence.checksum format_valid(SHA256)"
+      error_message: "Evidence missing SHA-256 checksum"
+      remediation: "Generate SHA-256 checksum for all evidence"
+      
+    - rule: "evidence_must_be_verifiable"
+      severity: "CRITICAL"
+      check: "evidence.source exists AND evidence.source accessible"
+      error_message: "Evidence source not verifiable"
+      remediation: "Ensure all evidence sources are accessible"
+      
+    - rule: "evidence_coverage_minimum"
+      severity: "HIGH"
+      check: "evidence_coverage_percentage >= 90"
+      error_message: "Evidence coverage below 90% threshold"
+      remediation: "Add more evidence links to meet 90% coverage"
+      
+    - rule: "evidence_timestamp_valid"
+      severity: "HIGH"
+      check: "evidence.timestamp exists AND evidence.timestamp <= report.timestamp"
+      error_message: "Evidence timestamp invalid"
+      remediation: "Ensure evidence timestamps are valid and pre-date report"
   report_structure:
     mandatory_sections:
       - name: "evidence"
@@ -138,6 +169,35 @@ fallback:
     action: "prevent_publication"
     generate_remediation_guide: true
     notify: ["author", "governance_manager"]
+
+# P0 FIX: Audit Rules
+audit:
+  - rule: "log_all_report_validations"
+    scope: "all"
+    retention: "90_days"
+    storage: "sqlite"
+    encryption: "AES-256"
+    
+  - rule: "log_evidence_validation"
+    scope: "evidence_validation"
+    include:
+      - "validation_timestamp"
+      - "report_id"
+      - "evidence_coverage"
+      - "checksum_validations"
+      - "violations"
+      - "quality_gate_results"
+      
+  - rule: "log_quality_gate_checks"
+    scope: "quality_gates"
+    include:
+      - "gate_check_timestamp"
+      - "report_id"
+      - "gate_name"
+      - "threshold"
+      - "actual_value"
+      - "passed"
+      - "remediation_required"
 
 # 合約元數據
 metadata:

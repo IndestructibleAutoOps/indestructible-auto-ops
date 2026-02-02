@@ -7,6 +7,12 @@ version: "1.0.0"
 status: "PRODUCTION_READY"
 component_type: "DataModel"
 
+metadata:
+  gl_semantic_layer: "GL90-99"
+  gl_semantic_domain: "verification"
+  gl_semantic_context: "governance"
+  audit_trail_enabled: true
+
 # 觸發條件
 trigger:
   conditions:
@@ -19,6 +25,37 @@ trigger:
 
 # 驗證規則
 verify:
+  # P0 FIX: Evidence Validation Rules (CRITICAL)
+  evidence_validation:
+    - rule: "evidence_must_exist"
+      severity: "CRITICAL"
+      check: "file.exists AND file.readable"
+      error_message: "Evidence file does not exist or is not readable"
+      remediation: "Verify evidence file path and permissions"
+      
+    - rule: "evidence_must_be_checksummed"
+      severity: "CRITICAL"
+      check: "file.checksum_valid AND file.checksum == SHA256"
+      error_message: "Evidence missing or has invalid checksum"
+      remediation: "Generate SHA-256 checksum for evidence file"
+      
+    - rule: "evidence_must_be_timestamped"
+      severity: "HIGH"
+      check: "evidence.timestamp valid AND evidence.timestamp <= current_time"
+      error_message: "Evidence missing or has invalid timestamp"
+      remediation: "Add ISO 8601 timestamp to evidence"
+      
+    - rule: "evidence_must_have_source"
+      severity: "HIGH"
+      check: "evidence.source exists AND evidence.source not_empty"
+      error_message: "Evidence missing source attribution"
+      remediation: "Document evidence source in evidence metadata"
+      
+    - rule: "evidence_chain_integrity"
+      severity: "CRITICAL"
+      check: "all_evidence_links_valid(proof_chain)"
+      error_message: "Evidence chain has broken or invalid links"
+      remediation: "Verify all evidence references in proof chain"
   proof_structure:
     - rule: "proof_must_have_id"
       severity: "CRITICAL"
@@ -114,6 +151,33 @@ fallback:
     action: "halt_processing"
     lock_chain: true
     notify: ["governance_manager", "security_team"]
+
+# P0 FIX: Audit Rules
+audit:
+  - rule: "log_all_validations"
+    scope: "all"
+    retention: "90_days"
+    storage: "sqlite"
+    encryption: "AES-256"
+    
+  - rule: "log_evidence_validation_results"
+    scope: "evidence_validation"
+    include:
+      - "validation_timestamp"
+      - "evidence_path"
+      - "checksum"
+      - "validation_result"
+      - "violations"
+      - "remediation_actions"
+      
+  - rule: "log_proof_chain_validations"
+    scope: "proof_chains"
+    include:
+      - "chain_id"
+      - "validation_timestamp"
+      - "chain_integrity_status"
+      - "missing_dependencies"
+      - "circular_references"
 
 # 合約元數據
 metadata:

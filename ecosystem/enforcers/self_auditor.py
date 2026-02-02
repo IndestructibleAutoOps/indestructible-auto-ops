@@ -15,11 +15,13 @@ Critical Features:
 import os
 import json
 import re
+import sqlite3
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
+import hashlib
 
 # Define GovernanceResult here to avoid import issues
 class GovernanceResult:
@@ -95,6 +97,153 @@ class SelfAuditor:
         self.base_path = Path(base_path)
         self.audit_logs_dir = self.base_path / "ecosystem" / "logs" / "audit-logs"
         self.audit_logs_dir.mkdir(parents=True, exist_ok=True)
+        
+        # P0 FIX: Initialize audit trail database
+        self.audit_db_path = self.audit_logs_dir / "audit_trail.db"
+        self._init_audit_database()
+    
+    def _init_audit_database(self):
+        """Initialize SQLite database for audit trail logging."""
+        conn = sqlite3.connect(self.audit_db_path)
+        cursor = conn.cursor()
+        
+        # Create tables for different audit scopes
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS all_validations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT NOT NULL,
+                operation_id TEXT NOT NULL,
+                contract_path TEXT,
+                validation_type TEXT,
+                validation_result TEXT,
+                violations_count INTEGER,
+                evidence_count INTEGER
+            )
+        ''')
+        
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS evidence_validations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT NOT NULL,
+                operation_id TEXT NOT NULL,
+                evidence_path TEXT NOT NULL,
+                checksum TEXT,
+                checksum_valid BOOLEAN,
+                timestamp_valid BOOLEAN,
+                validation_result TEXT,
+                violations TEXT
+            )
+        ''')
+        
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS report_validations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT NOT NULL,
+                report_id TEXT NOT NULL,
+                evidence_coverage REAL,
+                forbidden_phrases_count INTEGER,
+                quality_gate_results TEXT,
+                validation_status TEXT
+            )
+        ''')
+        
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS proof_chain_validations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT NOT NULL,
+                chain_id TEXT NOT NULL,
+                chain_integrity_status TEXT,
+                missing_dependencies TEXT,
+                circular_references BOOLEAN
+            )
+        ''')
+        
+        conn.commit()
+        conn.close()
+    
+    def log_validation(self, operation_id: str, contract_path: str, 
+                      validation_type: str, validation_result: str,
+                      violations_count: int, evidence_count: int):
+        """Log validation results to audit trail."""
+        conn = sqlite3.connect(self.audit_db_path)
+        cursor = conn.cursor()
+        
+        timestamp = datetime.utcnow().isoformat()
+        
+        cursor.execute('''
+            INSERT INTO all_validations 
+            (timestamp, operation_id, contract_path, validation_type, 
+             validation_result, violations_count, evidence_count)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (timestamp, operation_id, contract_path, validation_type,
+              validation_result, violations_count, evidence_count))
+        
+        conn.commit()
+        conn.close()
+    
+    def log_evidence_validation(self, operation_id: str, evidence_path: str,
+                               checksum: str, checksum_valid: bool,
+                               timestamp_valid: bool, validation_result: str,
+                               violations: List[str]):
+        """Log evidence validation results."""
+        conn = sqlite3.connect(self.audit_db_path)
+        cursor = conn.cursor()
+        
+        timestamp = datetime.utcnow().isoformat()
+        violations_json = json.dumps(violations)
+        
+        cursor.execute('''
+            INSERT INTO evidence_validations
+            (timestamp, operation_id, evidence_path, checksum, 
+             checksum_valid, timestamp_valid, validation_result, violations)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (timestamp, operation_id, evidence_path, checksum,
+              checksum_valid, timestamp_valid, validation_result, violations_json))
+        
+        conn.commit()
+        conn.close()
+    
+    def log_report_validation(self, report_id: str, evidence_coverage: float,
+                             forbidden_phrases_count: int, quality_gate_results: Dict,
+                             validation_status: str):
+        """Log report validation results."""
+        conn = sqlite3.connect(self.audit_db_path)
+        cursor = conn.cursor()
+        
+        timestamp = datetime.utcnow().isoformat()
+        quality_gates_json = json.dumps(quality_gate_results)
+        
+        cursor.execute('''
+            INSERT INTO report_validations
+            (timestamp, report_id, evidence_coverage, forbidden_phrases_count,
+             quality_gate_results, validation_status)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (timestamp, report_id, evidence_coverage, forbidden_phrases_count,
+              quality_gates_json, validation_status))
+        
+        conn.commit()
+        conn.close()
+    
+    def log_proof_chain_validation(self, chain_id: str, chain_integrity_status: str,
+                                   missing_dependencies: List[str], 
+                                   circular_references: bool):
+        """Log proof chain validation results."""
+        conn = sqlite3.connect(self.audit_db_path)
+        cursor = conn.cursor()
+        
+        timestamp = datetime.utcnow().isoformat()
+        dependencies_json = json.dumps(missing_dependencies)
+        
+        cursor.execute('''
+            INSERT INTO proof_chain_validations
+            (timestamp, chain_id, chain_integrity_status, 
+             missing_dependencies, circular_references)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (timestamp, chain_id, chain_integrity_status,
+              dependencies_json, circular_references))
+        
+        conn.commit()
+        conn.close()
     
     def audit(self, contract: Dict, result: GovernanceResult) -> AuditReport:
         """
@@ -146,6 +295,56 @@ class SelfAuditor:
         
         # Save audit report
         self._save_audit_report(audit_report)
+        
+        # P0 FIX: Log audit trail to database
+        contract_path = contract.get('metadata', {}).get('contract_path', 'unknown')
+        self.log_validation(
+            operation_id=result.operation_id,
+            contract_path=contract_path,
+            validation_type='governance_audit',
+            validation_result=status,
+            violations_count=audit_report.violations_found,
+            evidence_count=len(result.evidence_collected)
+        )
+        
+        # Log report validation if evidence data is available
+        if evidence_coverage > 0:
+            self.log_report_validation(
+                report_id=result.operation_id,
+                evidence_coverage=evidence_coverage,
+                forbidden_phrases_count=len(forbidden_phrases),
+                quality_gate_results=quality_gate_results,
+                validation_status=status
+            )
+        
+        # Log evidence validations if evidence is collected
+        for evidence in result.evidence_collected:
+            evidence_path = evidence.get('path', 'unknown')
+            checksum = evidence.get('checksum', '')
+            
+            # Validate checksum exists and is SHA-256 format
+            checksum_valid = bool(checksum and len(checksum) == 64)
+            
+            # Validate timestamp
+            timestamp = evidence.get('timestamp', '')
+            timestamp_valid = bool(timestamp)
+            
+            # Collect violations for this evidence
+            evidence_violations = []
+            if not checksum_valid:
+                evidence_violations.append('Missing or invalid checksum')
+            if not timestamp_valid:
+                evidence_violations.append('Missing timestamp')
+            
+            self.log_evidence_validation(
+                operation_id=result.operation_id,
+                evidence_path=evidence_path,
+                checksum=checksum,
+                checksum_valid=checksum_valid,
+                timestamp_valid=timestamp_valid,
+                validation_result='PASS' if not evidence_violations else 'FAIL',
+                violations=evidence_violations
+            )
         
         return audit_report
     

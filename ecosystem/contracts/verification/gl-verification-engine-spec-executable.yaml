@@ -7,6 +7,12 @@ version: "1.0.0"
 status: "PRODUCTION_READY"
 component_type: "GovernanceEngine"
 
+metadata:
+  gl_semantic_layer: "GL90-99"
+  gl_semantic_domain: "verification"
+  gl_semantic_context: "governance"
+  audit_trail_enabled: true
+
 # 觸發條件
 trigger:
   conditions:
@@ -92,6 +98,35 @@ fallback:
     action: "request_evidence"
     max_retries: 3
     timeout: 3600
+
+# P0 FIX: Audit Rules
+audit:
+  - rule: "log_all_verification_operations"
+    scope: "all"
+    retention: "90_days"
+    storage: "sqlite"
+    encryption: "AES-256"
+    
+  - rule: "log_evidence_collection"
+    scope: "evidence_collection"
+    include:
+      - "collection_timestamp"
+      - "operation_id"
+      - "files_scanned"
+      - "evidence_collected"
+      - "checksums_calculated"
+      - "validation_results"
+      
+  - rule: "log_report_validation"
+    scope: "report_validation"
+    include:
+      - "validation_timestamp"
+      - "operation_id"
+      - "report_id"
+      - "evidence_coverage"
+      - "forbidden_phrases"
+      - "quality_gate_results"
+      - "validation_status"
 
 # 合約元數據
 metadata:
