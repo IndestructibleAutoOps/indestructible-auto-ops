@@ -17,6 +17,7 @@ import re
 import json
 import hashlib
 from pathlib import Path
+from typing import List, Tuple, Optional
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass, asdict
 from datetime import datetime
@@ -107,6 +108,10 @@ class ContentAnalyzer:
         
         # Read file content
         try:
+            with open(full_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            # Binary or non-UTF-8-decodable file
             with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
         except Exception as e:
@@ -152,6 +157,7 @@ class ContentAnalyzer:
         
         return ContentAnalysis(
             file_path=file_path,
+            file_size=full_path.stat().st_size,
             file_size=len(content),
             file_type=self._determine_file_type(file_path),
             purpose=purpose,
