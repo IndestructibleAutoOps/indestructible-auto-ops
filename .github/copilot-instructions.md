@@ -9,6 +9,80 @@ This document provides comprehensive instructions for GitHub Copilot coding agen
 
 ---
 
+## ⚡ 開始前必讀 (MUST READ BEFORE STARTING)
+
+**CRITICAL**: Before making ANY changes to this repository, you MUST:
+
+### 1. Execute Ecosystem Enforcement
+
+```bash
+# Run the unified ecosystem enforcement checker
+python ecosystem/enforce.py
+```
+
+**This check is MANDATORY**. If it fails:
+- ❌ **DO NOT** proceed with code changes
+- ❌ **DO NOT** bypass the checks
+- ✅ **FIX** the reported issues first
+- ✅ **RE-RUN** the checker until it passes
+
+### 2. Understand Copilot's Limitations
+
+GitHub Copilot:
+- ✅ **DOES** read this instruction file
+- ✅ **DOES** provide code suggestions based on context
+- ❌ **DOES NOT** automatically execute Python scripts
+- ❌ **DOES NOT** automatically run governance checks
+- ❌ **DOES NOT** enforce ecosystem contracts
+
+**You must explicitly run enforcement tools.**
+
+### 3. Standard Workflow
+
+```
+任務請求 → 執行 ecosystem/enforce.py → 檢查通過? → 進行變更 → 再次檢查 → 提交
+Task Request → Run ecosystem/enforce.py → Pass? → Make Changes → Check Again → Commit
+            ↓                                ↓
+       如果失敗                          如果失敗
+       If Failed                        If Failed
+            ↓                                ↓
+       修復問題                          修復問題
+       Fix Issues                       Fix Issues
+```
+
+### 4. Security Best Practices
+
+**NEVER log sensitive data in plain text:**
+
+```python
+# ❌ BAD - Logs sensitive data
+print(f"  - details: {result['details']}")  # May contain secrets
+
+# ✅ GOOD - Use fixed safe message
+print("  - security scan executed; see JSON report for non-sensitive summary.")
+
+# ✅ GOOD - Redact sensitive fields
+if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
+    print(f"  - {key}: [REDACTED FOR SECURITY]")
+```
+
+### 5. Common Mistakes to Avoid
+
+- ❌ Skipping ecosystem enforcement checks
+- ❌ Modifying GL semantic boundaries
+- ❌ Logging sensitive information (see recent CodeQL fixes)
+- ❌ Bypassing governance contracts
+- ❌ Directly modifying controlplane/ directory
+
+**Correct Approach:**
+- ✅ Run `python ecosystem/enforce.py` first
+- ✅ Follow GL layer architecture
+- ✅ Use `[REDACTED FOR SECURITY]` for sensitive data
+- ✅ Make changes in workspace/
+- ✅ Re-run checks after each change
+
+---
+
 ## 📚 Repository Overview
 
 **MachineNativeOps** is a production-ready platform with an integrated **GL (Governance Layers) Global Governance System**. The platform combines machine-native architecture principles with advanced governance, validation, and automation capabilities.
