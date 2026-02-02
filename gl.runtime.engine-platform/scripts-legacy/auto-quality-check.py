@@ -256,6 +256,50 @@ class QualityChecker:
         print(f"\n✅ 報告已儲存至: {report_file}")
         # 生成 Markdown 報告
         self.generate_markdown_report(report)
+
+    def _sanitize_value(self, key: str, value: Any) -> Any:
+        """
+        安全處理即將寫入報告的欄位值，避免在報告中儲存明文敏感資訊。
+        僅用於格式化輸出，不修改 self.results 內的原始資料結構。
+        """
+        # 粗略判斷欄位名稱是否可能包含敏感資訊
+        sensitive_key_indicators = [
+            "secret",
+            "token",
+            "password",
+            "passwd",
+            "key",
+            "credential",
+            "api_key",
+        ]
+        lower_key = key.lower()
+        if any(indicator in lower_key for indicator in sensitive_key_indicators):
+            return "[REDACTED FOR SECURITY]"
+
+        # 如果值本身是字串，做一些基本的敏感內容檢查
+        if isinstance(value, str):
+            suspicious_markers = [
+                "-----BEGIN",
+                "PRIVATE KEY",
+                "AWS",
+                "AKIA",  # 常見的 AWS Access Key 開頭
+            ]
+            if any(marker in value for marker in suspicious_markers):
+                return "[REDACTED FOR SECURITY]"
+            # 過長且無空白的字串也可能是 token/密鑰
+            if len(value) > 80 and " " not in value:
+                return "[REDACTED FOR SECURITY]"
+            return value
+
+        # 對 list/dict 進行遞迴處理，避免巢狀結構中出現明文敏感資訊
+        if isinstance(value, list):
+            return [self._sanitize_value(f"{key}[{idx}]", v) for idx, v in enumerate(value)]
+        if isinstance(value, dict):
+            return {k: self._sanitize_value(f"{key}.{k}", v) for k, v in value.items()}
+
+        # 其它型別直接返回
+        return value
+
     def generate_markdown_report(self, report: Dict):
         """生成 Markdown 格式報告"""
         md_file = self.repo_root / "AUTO-QUALITY-REPORT.md"
@@ -273,13 +317,12 @@ class QualityChecker:
                 f.write(f"**狀態**: {result.get('status', 'N/A')}\n\n")
                 for key, value in result.items():
                     if key != "status":
-                        # Security: Redact sensitive data in reports
-                        if key in ['secrets', 'tokens', 'passwords', 'keys', 'credentials']:
-                            f.write(f"- **{key}**: [REDACTED FOR SECURITY]\n")
-                        elif isinstance(value, list) and len(value) > 5:
-                            f.write(f"- **{key}**: {len(value)} 項 (僅顯示部分)\n")
+                        safe_value = self._sanitize_value(key, value)
+                        # 如果是長列表，只顯示統計資訊以避免輸出過多資料
+                        if isinstance(safe_value, list) and len(safe_value) > 5:
+                            f.write(f"- **{key}**: {len(safe_value)} 項 (僅顯示部分)\n")
                         else:
-                            f.write(f"- **{key}**: {value}\n")
+                            f.write(f"- **{key}**: {safe_value}\n")
                 f.write("\n")
             f.write("## 🎯 建議行動\n\n")
             if self.results.get("security", {}).get("secrets_detected"):
