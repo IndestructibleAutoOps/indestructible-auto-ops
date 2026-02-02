@@ -29,6 +29,9 @@ class SecurityIssuesFixer:
         # Directories to skip (archived/legacy code)
         self.skip_dirs = {
             '.github/archive/remediation-scripts',  # Legacy remediation scripts
+            'tests-legacy',
+            'tools-legacy',
+            'scripts-legacy',  # Legacy scripts with eval/exec
         }
         
     def load_report(self) -> Dict:

@@ -6,711 +6,711 @@
 #
 # GL Proof Model v1.0.0
 
-## Overview
+# Overview
 
-The GL Proof Model defines the data structures and relationships for representing evidence in verifiable reports. This model ensures all claims are backed by cryptographically-verifiable evidence.
+# The GL Proof Model defines the data structures and relationships for representing evidence in verifiable reports. This model ensures all claims are backed by cryptographically-verifiable evidence.
 
-**Version**: 1.0.0  
-**Status**: PRODUCTION READY
+# Version: 1.0.0  
+# Status: PRODUCTION READY
 
----
+# ---
 
 ## Core Data Types
 
 ### Proof
-```yaml
-Proof:
-  type: object
-  required:
-    - proof_id
-    - claim
-    - evidence
-    - verification
-  properties:
-    proof_id:
-      type: string
-      format: uuid
-      description: Unique identifier for this proof
-      
-    claim:
-      type: string
-      description: The statement being proved
-      
-    evidence:
-      $ref: '#/Evidence'
-      
-    verification:
-      $ref: '#/Verification'
-      
-    metadata:
-      $ref: '#/Metadata'
-```
+# ```yaml
+# Proof:
+#   type: object
+#   required:
+#     - proof_id
+#     - claim
+#     - evidence
+#     - verification
+#   properties:
+#     proof_id:
+#       type: string
+#       format: uuid
+#       description: Unique identifier for this proof
+#       
+#     claim:
+#       type: string
+#       description: The statement being proved
+#       
+#     evidence:
+#       $ref: '#/Evidence'
+#       
+#     verification:
+#       $ref: '#/Verification'
+#       
+#     metadata:
+#       $ref: '#/Metadata'
+# ```
 
 ### Evidence
-```yaml
-Evidence:
-  type: object
-  required:
-    - evidence_id
-    - evidence_type
-    - source
-    - checksum
-  properties:
-    evidence_id:
-      type: string
-      format: uuid
-      description: Unique identifier for this evidence
-      
-    evidence_type:
-      type: string
-      enum:
-        - source_file
-        - contract_reference
-        - validation_output
-        - reasoning_trace
-        - external_system
-      description: Type of evidence
-      
-    source:
-      $ref: '#/Source'
-      
-    checksum:
-      $ref: '#/Checksum'
-      
-    content:
-      type: string
-      description: Actual evidence content (or reference)
-      
-    timestamp:
-      type: string
-      format: date-time
-      description: When evidence was collected
-```
+# ```yaml
+# Evidence:
+#   type: object
+#   required:
+#     - evidence_id
+#     - evidence_type
+#     - source
+#     - checksum
+#   properties:
+#     evidence_id:
+#       type: string
+#       format: uuid
+#       description: Unique identifier for this evidence
+#       
+#     evidence_type:
+#       type: string
+#       enum:
+#         - source_file
+#         - contract_reference
+#         - validation_output
+#         - reasoning_trace
+#         - external_system
+#       description: Type of evidence
+#       
+#     source:
+#       $ref: '#/Source'
+#       
+#     checksum:
+#       $ref: '#/Checksum'
+#       
+#     content:
+#       type: string
+#       description: Actual evidence content (or reference)
+#       
+#     timestamp:
+#       type: string
+#       format: date-time
+#       description: When evidence was collected
+# ```
 
 ### Source
-```yaml
-Source:
-  type: object
-  required:
-    - location
-    - type
-  properties:
-    location:
-      type: string
-      description: File path, URL, or system identifier
-      
-    type:
-      type: string
-      enum:
-        - file
-        - url
-        - database
-        - api
-        - memory
-      description: Source type
-      
-    line_range:
-      type: string
-      pattern: "^[0-9]+(-[0-9]+)?$"
-      description: Line range (e.g., "42" or "42-100")
-      
-    offset:
-      type: integer
-      description: Byte offset within file
-      
-    size:
-      type: integer
-      description: Size in bytes
-      
-    version:
-      type: string
-      description: Source version or revision
-      
-    modified:
-      type: string
-      format: date-time
-      description: Last modification timestamp
-```
+# ```yaml
+# Source:
+#   type: object
+#   required:
+#     - location
+#     - type
+#   properties:
+#     location:
+#       type: string
+#       description: File path, URL, or system identifier
+#       
+#     type:
+#       type: string
+#       enum:
+#         - file
+#         - url
+#         - database
+#         - api
+#         - memory
+#       description: Source type
+#       
+#     line_range:
+#       type: string
+#       pattern: "^[0-9]+(-[0-9]+)?$"
+#       description: Line range (e.g., "42" or "42-100")
+#       
+#     offset:
+#       type: integer
+#       description: Byte offset within file
+#       
+#     size:
+#       type: integer
+#       description: Size in bytes
+#       
+#     version:
+#       type: string
+#       description: Source version or revision
+#       
+#     modified:
+#       type: string
+#       format: date-time
+#       description: Last modification timestamp
+# ```
 
 ### Checksum
-```yaml
-Checksum:
-  type: object
-  required:
-    - algorithm
-    - value
-  properties:
-    algorithm:
-      type: string
-      enum:
-        - sha256
-        - sha384
-        - sha512
-        - blake2b
-      description: Hash algorithm
-      
-    value:
-      type: string
-      pattern: "^[a-f0-9]+$"
-      description: Hash value in hexadecimal
-      
-    encoding:
-      type: string
-      enum:
-        - hex
-        - base64
-      default: hex
-```
+# ```yaml
+# Checksum:
+#   type: object
+#   required:
+#     - algorithm
+#     - value
+#   properties:
+#     algorithm:
+#       type: string
+#       enum:
+#         - sha256
+#         - sha384
+#         - sha512
+#         - blake2b
+#       description: Hash algorithm
+#       
+#     value:
+#       type: string
+#       pattern: "^[a-f0-9]+$"
+#       description: Hash value in hexadecimal
+#       
+#     encoding:
+#       type: string
+#       enum:
+#         - hex
+#         - base64
+#       default: hex
+# ```
 
 ### Verification
-```yaml
-Verification:
-  type: object
-  required:
-    - status
-    - method
-  properties:
-    status:
-      type: string
-      enum:
-        - VERIFIED
-        - UNVERIFIED
-        - FAILED
-        - INCONCLUSIVE
-      description: Verification status
-      
-    method:
-      $ref: '#/VerificationMethod'
-      
-    result:
-      type: object
-      description: Verification result details
-      
-    error:
-      type: string
-      description: Error message if verification failed
-      
-    timestamp:
-      type: string
-      format: date-time
-```
+# ```yaml
+# Verification:
+#   type: object
+#   required:
+#     - status
+#     - method
+#   properties:
+#     status:
+#       type: string
+#       enum:
+#         - VERIFIED
+#         - UNVERIFIED
+#         - FAILED
+#         - INCONCLUSIVE
+#       description: Verification status
+#       
+#     method:
+#       $ref: '#/VerificationMethod'
+#       
+#     result:
+#       type: object
+#       description: Verification result details
+#       
+#     error:
+#       type: string
+#       description: Error message if verification failed
+#       
+#     timestamp:
+#       type: string
+#       format: date-time
+# ```
 
 ### VerificationMethod
-```yaml
-VerificationMethod:
-  type: object
-  required:
-    - type
-    - algorithm
-  properties:
-    type:
-      type: string
-      enum:
-        - checksum
-        - signature
-        - schema
-        - pattern_match
-        - logical_inference
-      description: Verification type
-      
-    algorithm:
-      type: string
-      description: Specific algorithm used
-      
-    configuration:
-      type: object
-      description: Method-specific configuration
-      
-    engine:
-      type: string
-      description: Verification engine identifier
-      
-    version:
-      type: string
-      description: Engine version
-```
+# ```yaml
+# VerificationMethod:
+#   type: object
+#   required:
+#     - type
+#     - algorithm
+#   properties:
+#     type:
+#       type: string
+#       enum:
+#         - checksum
+#         - signature
+#         - schema
+#         - pattern_match
+#         - logical_inference
+#       description: Verification type
+#       
+#     algorithm:
+#       type: string
+#       description: Specific algorithm used
+#       
+#     configuration:
+#       type: object
+#       description: Method-specific configuration
+#       
+#     engine:
+#       type: string
+#       description: Verification engine identifier
+#       
+#     version:
+#       type: string
+#       description: Engine version
+# ```
 
 ### Metadata
-```yaml
-Metadata:
-  type: object
-  properties:
-    created_at:
-      type: string
-      format: date-time
-      
-    created_by:
-      type: string
-      description: System or user that created the proof
-      
-    labels:
-      type: array
-      items:
-        type: string
-      description: Classification labels
-      
-    tags:
-      type: object
-      additionalProperties:
-        type: string
-      description: Key-value tags
-```
+# ```yaml
+# Metadata:
+#   type: object
+#   properties:
+#     created_at:
+#       type: string
+#       format: date-time
+#       
+#     created_by:
+#       type: string
+#       description: System or user that created the proof
+#       
+#     labels:
+#       type: array
+#       items:
+#         type: string
+#       description: Classification labels
+#       
+#     tags:
+#       type: object
+#       additionalProperties:
+#         type: string
+#       description: Key-value tags
+# ```
 
----
+# ---
 
 ## Evidence Models
 
 ### File Evidence
-```yaml
-FileEvidence:
-  allOf:
-    - $ref: '#/Evidence'
-    - type: object
-      properties:
-        evidence_type:
-          const: source_file
-          
-        source:
-          type: object
-          properties:
-            location:
-              type: string
-              description: Absolute or relative file path
-              
-            line_range:
-              type: string
-              description: Specific lines referenced
-              
-        content:
-          type: string
-          description: File content (or excerpt)
-          
-        file_info:
-          type: object
-          properties:
-            mime_type:
-              type: string
-              
-            encoding:
-              type: string
-              
-            size:
-              type: integer
-              
-            permissions:
-              type: string
-```
+# ```yaml
+# FileEvidence:
+#   allOf:
+#     - $ref: '#/Evidence'
+#     - type: object
+#       properties:
+#         evidence_type:
+#           const: source_file
+#           
+#         source:
+#           type: object
+#           properties:
+#             location:
+#               type: string
+#               description: Absolute or relative file path
+#               
+#             line_range:
+#               type: string
+#               description: Specific lines referenced
+#               
+#         content:
+#           type: string
+#           description: File content (or excerpt)
+#           
+#         file_info:
+#           type: object
+#           properties:
+#             mime_type:
+#               type: string
+#               
+#             encoding:
+#               type: string
+#               
+#             size:
+#               type: integer
+#               
+#             permissions:
+#               type: string
+# ```
 
 ### Contract Evidence
-```yaml
-ContractEvidence:
-  allOf:
-    - $ref: '#/Evidence'
-    - type: object
-      properties:
-        evidence_type:
-          const: contract_reference
-          
-        contract:
-          type: object
-          required:
-            - contract_id
-            - version
-            - rule_id
-          properties:
-            contract_id:
-              type: string
-              
-            version:
-              type: string
-              
-            rule_id:
-              type: string
-              
-            section:
-              type: string
-              
-            line:
-              type: integer
-              
-        expected_value:
-          type: string
-          description: Expected value according to contract
-          
-        actual_value:
-          type: string
-          description: Actual value being verified
-          
-        match:
-          type: boolean
-          description: Whether values match
-```
+# ```yaml
+# ContractEvidence:
+#   allOf:
+#     - $ref: '#/Evidence'
+#     - type: object
+#       properties:
+#         evidence_type:
+#           const: contract_reference
+#           
+#         contract:
+#           type: object
+#           required:
+#             - contract_id
+#             - version
+#             - rule_id
+#           properties:
+#             contract_id:
+#               type: string
+#               
+#             version:
+#               type: string
+#               
+#             rule_id:
+#               type: string
+#               
+#             section:
+#               type: string
+#               
+#             line:
+#               type: integer
+#               
+#         expected_value:
+#           type: string
+#           description: Expected value according to contract
+#           
+#         actual_value:
+#           type: string
+#           description: Actual value being verified
+#           
+#         match:
+#           type: boolean
+#           description: Whether values match
+# ```
 
 ### Validation Evidence
-```yaml
-ValidationEvidence:
-  allOf:
-    - $ref: '#/Evidence'
-    - type: object
-      properties:
-        evidence_type:
-          const: validation_output
-          
-        validation:
-          type: object
-          required:
-            - validator_id
-            - schema_id
-          properties:
-            validator_id:
-              type: string
-              
-            schema_id:
-              type: string
-              
-            input:
-              type: object
-              description: Input provided to validator
-              
-            output:
-              type: object
-              description: Validator output
-              
-            configuration:
-              type: object
-              description: Validator configuration
-              
-        result:
-          type: object
-          properties:
-            passed:
-              type: boolean
-              
-            errors:
-              type: array
-              items:
-                type: object
-                
-            warnings:
-              type: array
-              items:
-                type: object
-```
+# ```yaml
+# ValidationEvidence:
+#   allOf:
+#     - $ref: '#/Evidence'
+#     - type: object
+#       properties:
+#         evidence_type:
+#           const: validation_output
+#           
+#         validation:
+#           type: object
+#           required:
+#             - validator_id
+#             - schema_id
+#           properties:
+#             validator_id:
+#               type: string
+#               
+#             schema_id:
+#               type: string
+#               
+#             input:
+#               type: object
+#               description: Input provided to validator
+#               
+#             output:
+#               type: object
+#               description: Validator output
+#               
+#             configuration:
+#               type: object
+#               description: Validator configuration
+#               
+#         result:
+#           type: object
+#           properties:
+#             passed:
+#               type: boolean
+#               
+#             errors:
+#               type: array
+#               items:
+#                 type: object
+#                 
+#             warnings:
+#               type: array
+#               items:
+#                 type: object
+# ```
 
 ### Reasoning Evidence
-```yaml
-ReasoningEvidence:
-  allOf:
-    - $ref: '#/Evidence'
-    - type: object
-      properties:
-        evidence_type:
-          const: reasoning_trace
-          
-        reasoning:
-          type: object
-          required:
-            - steps
-          properties:
-            steps:
-              type: array
-              items:
-                $ref: '#/ReasoningStep'
-                
-            conclusion:
-              type: string
-              description: Final conclusion from reasoning
-              
-            confidence:
-              type: number
-              format: float
-              minimum: 0.0
-              maximum: 1.0
-              description: Confidence in conclusion
-```
+# ```yaml
+# ReasoningEvidence:
+#   allOf:
+#     - $ref: '#/Evidence'
+#     - type: object
+#       properties:
+#         evidence_type:
+#           const: reasoning_trace
+#           
+#         reasoning:
+#           type: object
+#           required:
+#             - steps
+#           properties:
+#             steps:
+#               type: array
+#               items:
+#                 $ref: '#/ReasoningStep'
+#                 
+#             conclusion:
+#               type: string
+#               description: Final conclusion from reasoning
+#               
+#             confidence:
+#               type: number
+#               format: float
+#               minimum: 0.0
+#               maximum: 1.0
+#               description: Confidence in conclusion
+# ```
 
 ### ReasoningStep
-```yaml
-ReasoningStep:
-  type: object
-  required:
-    - step_number
-    - operation
-    - input
-    - output
-  properties:
-    step_number:
-      type: integer
-      minimum: 1
-      
-    operation:
-      type: string
-      description: Operation performed
-      
-    input:
-      type: object
-      description: Input to operation
-      
-    output:
-      type: object
-      description: Output from operation
-      
-    evidence:
-      type: array
-      items:
-        type: string
-      description: References to supporting evidence
-      
-    timestamp:
-      type: string
-      format: date-time
-```
+# ```yaml
+# ReasoningStep:
+#   type: object
+#   required:
+#     - step_number
+#     - operation
+#     - input
+#     - output
+#   properties:
+#     step_number:
+#       type: integer
+#       minimum: 1
+#       
+#     operation:
+#       type: string
+#       description: Operation performed
+#       
+#     input:
+#       type: object
+#       description: Input to operation
+#       
+#     output:
+#       type: object
+#       description: Output from operation
+#       
+#     evidence:
+#       type: array
+#       items:
+#         type: string
+#       description: References to supporting evidence
+#       
+#     timestamp:
+#       type: string
+#       format: date-time
+# ```
 
----
+# ---
 
 ## Proof Chain
 
 ### ProofChain
-```yaml
-ProofChain:
-  type: object
-  required:
-    - chain_id
-    - proofs
-  properties:
-    chain_id:
-      type: string
-      format: uuid
-      description: Unique identifier for the chain
-      
-    proofs:
-      type: array
-      items:
-        $ref: '#/Proof'
-        
-    dependencies:
-      type: array
-      items:
-        type: object
-        properties:
-          from_proof:
-            type: string
-            format: uuid
-            
-          to_proof:
-            type: string
-            format: uuid
-            
-          relationship:
-            type: string
-            enum:
-              - depends_on
-              - supports
-              - contradicts
-              - refines
-```
+# ```yaml
+# ProofChain:
+#   type: object
+#   required:
+#     - chain_id
+#     - proofs
+#   properties:
+#     chain_id:
+#       type: string
+#       format: uuid
+#       description: Unique identifier for the chain
+#       
+#     proofs:
+#       type: array
+#       items:
+#         $ref: '#/Proof'
+#         
+#     dependencies:
+#       type: array
+#       items:
+#         type: object
+#         properties:
+#           from_proof:
+#             type: string
+#             format: uuid
+#             
+#           to_proof:
+#             type: string
+#             format: uuid
+#             
+#           relationship:
+#             type: string
+#             enum:
+#               - depends_on
+#               - supports
+#               - contradicts
+#               - refines
+# ```
 
----
+# ---
 
 ## Cryptographic Proof
 
 ### SignatureProof
-```yaml
-SignatureProof:
-  allOf:
-    - $ref: '#/Evidence'
-    - type: object
-      properties:
-        evidence_type:
-          const: signature
-          
-        signature:
-          type: object
-          required:
-            - algorithm
-            - signature_value
-            - public_key
-          properties:
-            algorithm:
-              type: string
-              enum:
-                - RSA-2048
-                - RSA-4096
-                - ECDSA-P256
-                - ECDSA-P384
-                
-            signature_value:
-              type: string
-              encoding: base64
-              
-            public_key:
-              type: string
-              encoding: base64
-              
-            signed_data:
-              type: string
-              description: Data that was signed
-              
-            certificate_chain:
-              type: array
-              items:
-                type: string
-```
+# ```yaml
+# SignatureProof:
+#   allOf:
+#     - $ref: '#/Evidence'
+#     - type: object
+#       properties:
+#         evidence_type:
+#           const: signature
+#           
+#         signature:
+#           type: object
+#           required:
+#             - algorithm
+#             - signature_value
+#             - public_key
+#           properties:
+#             algorithm:
+#               type: string
+#               enum:
+#                 - RSA-2048
+#                 - RSA-4096
+#                 - ECDSA-P256
+#                 - ECDSA-P384
+#                 
+#             signature_value:
+#               type: string
+#               encoding: base64
+#               
+#             public_key:
+#               type: string
+#               encoding: base64
+#               
+#             signed_data:
+#               type: string
+#               description: Data that was signed
+#               
+#             certificate_chain:
+#               type: array
+#               items:
+#                 type: string
+# ```
 
 ### HashProof
-```yaml
-HashProof:
-  allOf:
-    - $ref: '#/Evidence'
-    - type: object
-      properties:
-        evidence_type:
-          const: hash
-          
-        hash:
-          type: object
-          required:
-            - algorithm
-            - hash_value
-          properties:
-            algorithm:
-              type: string
-              enum:
-                - sha256
-                - sha384
-                - sha512
-                - blake2b
-                
-            hash_value:
-              type: string
-              pattern: "^[a-f0-9]+$"
-              
-            hashed_data:
-              type: string
-              description: Reference to data that was hashed
-              
-            salt:
-              type: string
-              description: Salt used for hashing (if applicable)
-```
+# ```yaml
+# HashProof:
+#   allOf:
+#     - $ref: '#/Evidence'
+#     - type: object
+#       properties:
+#         evidence_type:
+#           const: hash
+#           
+#         hash:
+#           type: object
+#           required:
+#             - algorithm
+#             - hash_value
+#           properties:
+#             algorithm:
+#               type: string
+#               enum:
+#                 - sha256
+#                 - sha384
+#                 - sha512
+#                 - blake2b
+#                 
+#             hash_value:
+#               type: string
+#               pattern: "^[a-f0-9]+$"
+#               
+#             hashed_data:
+#               type: string
+#               description: Reference to data that was hashed
+#               
+#             salt:
+#               type: string
+#               description: Salt used for hashing (if applicable)
+# ```
 
----
+# ---
 
 ## Aggregate Proof
 
 ### AggregateProof
-```yaml
-AggregateProof:
-  type: object
-  required:
-    - aggregate_id
-    - individual_proofs
-  properties:
-    aggregate_id:
-      type: string
-      format: uuid
-      
-    individual_proofs:
-      type: array
-      items:
-        $ref: '#/Proof'
-        
-    aggregate_signature:
-      $ref: '#/SignatureProof'
-      
-    merkle_root:
-      type: string
-      description: Merkle tree root of all proofs
-      
-    merkle_proof:
-      type: object
-      description: Merkle proof for individual proof verification
-```
+# ```yaml
+# AggregateProof:
+#   type: object
+#   required:
+#     - aggregate_id
+#     - individual_proofs
+#   properties:
+#     aggregate_id:
+#       type: string
+#       format: uuid
+#       
+#     individual_proofs:
+#       type: array
+#       items:
+#         $ref: '#/Proof'
+#         
+#     aggregate_signature:
+#       $ref: '#/SignatureProof'
+#       
+#     merkle_root:
+#       type: string
+#       description: Merkle tree root of all proofs
+#       
+#     merkle_proof:
+#       type: object
+#       description: Merkle proof for individual proof verification
+# ```
 
----
+# ---
 
 ## Verification Status
 
 ### VerificationStatus
-```yaml
-VerificationStatus:
-  type: string
-  enum:
-    - VERIFIED
-    - UNVERIFIED
-    - FAILED
-    - INCONCLUSIVE
-    - PENDING
-  description:
-    VERIFIED: Evidence has been verified
-    UNVERIFIED: Evidence has not been verified yet
-    FAILED: Verification failed
-    INCONCLUSIVE: Verification results are inconclusive
-    PENDING: Verification is in progress
-```
+# ```yaml
+# VerificationStatus:
+#   type: string
+#   enum:
+#     - VERIFIED
+#     - UNVERIFIED
+#     - FAILED
+#     - INCONCLUSIVE
+#     - PENDING
+#   description:
+#     VERIFIED: Evidence has been verified
+#     UNVERIFIED: Evidence has not been verified yet
+#     FAILED: Verification failed
+#     INCONCLUSIVE: Verification results are inconclusive
+#     PENDING: Verification is in progress
+# ```
 
----
+# ---
 
 ## Usage Examples
 
 ### Example 1: File Name Verification
-```yaml
-proof_id: "550e8400-e29b-41d4-a716-446655440000"
-claim: "Platform name follows GL naming convention"
-evidence:
-  evidence_id: "660e8400-e29b-41d4-a716-446655440001"
-  evidence_type: source_file
-  source:
-    location: "platforms/gl.ai.gpt-platform/manifest.yaml"
-    line_range: "1-10"
-    type: file
-  checksum:
-    algorithm: sha256
-    value: "a1b2c3d4e5f6..."
-  content: "name: gl.ai.gpt-platform"
-verification:
-  status: VERIFIED
-  method:
-    type: pattern_match
-    algorithm: regex
-    configuration:
-      pattern: "^gl\\.[a-z]+\\.[a-z]+-platform$"
-  result:
-    match: true
-    groups:
-      - ai
-      - gpt
-metadata:
-  created_at: "2024-01-20T10:00:00Z"
-  created_by: "gl-naming-validator"
-```
+# ```yaml
+# proof_id: "550e8400-e29b-41d4-a716-446655440000"
+# claim: "Platform name follows GL naming convention"
+# evidence:
+#   evidence_id: "660e8400-e29b-41d4-a716-446655440001"
+#   evidence_type: source_file
+#   source:
+#     location: "platforms/gl.ai.gpt-platform/manifest.yaml"
+#     line_range: "1-10"
+#     type: file
+#   checksum:
+#     algorithm: sha256
+#     value: "a1b2c3d4e5f6..."
+#   content: "name: gl.ai.gpt-platform"
+# verification:
+#   status: VERIFIED
+#   method:
+#     type: pattern_match
+#     algorithm: regex
+#     configuration:
+#       pattern: "^gl\\.[a-z]+\\.[a-z]+-platform$"
+#   result:
+#     match: true
+#     groups:
+#       - ai
+#       - gpt
+# metadata:
+#   created_at: "2024-01-20T10:00:00Z"
+#   created_by: "gl-naming-validator"
+# ```
 
 ### Example 2: Contract Compliance
-```yaml
-proof_id: "550e8400-e29b-41d4-a716-446655440001"
-claim: "Platform complies with gl-platforms contract"
-evidence:
-  evidence_id: "660e8400-e29b-41d4-a716-446655440002"
-  evidence_type: contract_reference
-  contract:
-    contract_id: "gl-platforms"
-    version: "1.0.0"
-    rule_id: "namingConvention.format"
-    line: 42
-  expected_value: "gl.{domain}.{capability}-platform"
-  actual_value: "gl.ai.gpt-platform"
-  match: true
-verification:
-  status: VERIFIED
-  method:
-    type: logical_inference
-    algorithm: contract_evaluator
-  result:
-    compliance: true
-```
+# ```yaml
+# proof_id: "550e8400-e29b-41d4-a716-446655440001"
+# claim: "Platform complies with gl-platforms contract"
+# evidence:
+#   evidence_id: "660e8400-e29b-41d4-a716-446655440002"
+#   evidence_type: contract_reference
+#   contract:
+#     contract_id: "gl-platforms"
+#     version: "1.0.0"
+#     rule_id: "namingConvention.format"
+#     line: 42
+#   expected_value: "gl.{domain}.{capability}-platform"
+#   actual_value: "gl.ai.gpt-platform"
+#   match: true
+# verification:
+#   status: VERIFIED
+#   method:
+#     type: logical_inference
+#     algorithm: contract_evaluator
+#   result:
+#     compliance: true
+# ```
 
----
+# ---
 
-**Version**: 1.0.0  
-**Last Updated**: 2024-01-20  
-**Maintained By**: GL Governance Team
+# **Version**: 1.0.0  
+# **Last Updated**: 2024-01-20  
+# **Maintained By**: GL Governance Team

@@ -19,7 +19,7 @@ spec:
   executionSummary:
     duration: "{{ duration_seconds }}s"
     status: "{{ success|partial_failure|failure }}"
-    exitCode: {{ exit_code }}
+    exitCode: "{{ exit_code }}"
     resourceUsage:
       cpu: "{{ cpu_seconds }}"
       memory: "{{ memory_mb }}MB"
@@ -27,29 +27,29 @@ spec:
     
     governanceLayersInvolved:
       - layer: "gl.contracts"
-        triggeredCount: {{ count }}
+        triggeredCount: "{{ count }}"
         coverage: "{{ percentage }}%"
       - layer: "gl.validation"
-        triggeredCount: {{ count }}
+        triggeredCount: "{{ count }}"
         coverage: "{{ percentage }}%"
       - layer: "gl.platforms"
-        triggeredCount: {{ count }}
+        triggeredCount: "{{ count }}"
         coverage: "{{ percentage }}%"
     
     triggeredRules:
-      total: {{ total_rules }}
+      total: "{{ total_rules }}"
       byPriority:
-        p0: {{ count }}
-        p1: {{ count }}
-        p2: {{ count }}
-        p3: {{ count }}
+        p0: "{{ count }}"
+        p1: "{{ count }}"
+        p2: "{{ count }}"
+        p3: "{{ count }}"
 
   # 第二部分：語意解析結果
   semanticAnalysis:
     inputIntent:
       original: "{{ original_input }}"
       interpreted: "{{ interpreted_intent }}"
-      confidence: {{ confidence_score }}
+      confidence: "{{ confidence_score }}"
     
     reasoningChain:
       steps:
@@ -94,7 +94,7 @@ spec:
     successPatterns:
       - pattern: "{{ pattern_name }}"
         description: "描述成功的模式"
-        occurrences: {{ count }}
+        occurrences: "{{ count }}"
         efficiency: "{{ efficiency_metric }}"
         recommendation: "{{ how_to_replicate }}"
         evidence: "{{ evidence_path }}"
@@ -102,7 +102,7 @@ spec:
     failurePatterns:
       - pattern: "{{ pattern_name }}"
         description: "描述失敗的模式"
-        occurrences: {{ count }}
+        occurrences: "{{ count }}"
         rootCause: "{{ identified_root_cause }}"
         mitigation: "{{ suggested_mitigation }}"
         recurrenceRisk: "{{ low|medium|high }}"
@@ -115,7 +115,7 @@ spec:
         context: "{{ when_it_occurs }}"
         implication: "{{ what_it_means }}"
         actionRequired: "{{ yes|no }}"
-        confidence: {{ confidence_score }}
+        confidence: "{{ confidence_score }}"
     
     optimizationOpportunities:
       - opportunity: "{{ optimization_name }}"
@@ -136,16 +136,16 @@ spec:
   # 第四部分：治理影響評估
   governanceImpact:
     contracts:
-      validated: {{ count }}
-      created: {{ count }}
-      updated: {{ count }}
-      deprecated: {{ count }}
+      validated: "{{ count }}"
+      created: "{{ count }}"
+      updated: "{{ count }}"
+      deprecated: "{{ count }}"
     
     validationRules:
-      triggered: {{ count }}
-      passed: {{ count }}
-      failed: {{ count }}
-      newlyGenerated: {{ count }}
+      triggered: "{{ count }}"
+      passed: "{{ count }}"
+      failed: "{{ count }}"
+      newlyGenerated: "{{ count }}"
     
     complianceMetrics:
       semverCompliance: "{{ percentage }}%"
@@ -154,13 +154,13 @@ spec:
       testCoverageCompliance: "{{ percentage }}%"
     
     driftDetection:
-      detectedDrifts: {{ count }}
+      detectedDrifts: "{{ count }}"
       severity:
-        critical: {{ count }}
-        high: {{ count }}
-        medium: {{ count }}
-        low: {{ count }}
-      autoRemediated: {{ count }}
+        critical: "{{ count }}"
+        high: "{{ count }}"
+        medium: "{{ count }}"
+        low: "{{ count }}"
+      autoRemediated: "{{ count }}"
 
   # 第五部分：執行質量評估
   executionQuality:
@@ -221,8 +221,8 @@ spec:
         trustLevel: "{{ high|medium|low }}"
     
     coverage:
-      totalStatements: {{ count }}
-      statementsWithEvidence: {{ count }}
+      totalStatements: "{{ count }}"
+      statementsWithEvidence: "{{ count }}"
       coveragePercentage: "{{ percentage }}%"
       statementsWithoutEvidence:
         - statement: "{{ statement_text }}"
@@ -238,15 +238,15 @@ spec:
       - section: "recommendations"
         violations: []
     
-    totalViolations: {{ count }}
+    totalViolations: "{{ count }}"
     bySeverity:
-      critical: {{ count }}
-      high: {{ count }}
-      medium: {{ count }}
-      low: {{ count }}
+      critical: "{{ count }}"
+      high: "{{ count }}"
+      medium: "{{ count }}"
+      low: "{{ count }}"
     
-    autoCorrected: {{ count }}
-    manuallyReviewed: {{ count }}
+    autoCorrected: "{{ count }}"
+    manuallyReviewed: "{{ count }}"
 
   # 審計信息
   auditTrail:
@@ -278,17 +278,17 @@ spec:
     gate1:
       name: "evidence_coverage"
       threshold: 0.90
-      actual: {{ actual_value }}
+      actual: "{{ actual_value }}"
       status: "{{ passed|failed }}"
     gate2:
       name: "forbidden_phrase_check"
       threshold: 0
-      actual: {{ actual_value }}
+      actual: "{{ actual_value }}"
       status: "{{ passed|failed }}"
     gate3:
       name: "reasoning_quality"
       threshold: 0.85
-      actual: {{ actual_value }}
+      actual: "{{ actual_value }}"
       status: "{{ passed|failed }}"
     
     overallStatus: "{{ passed|failed }}"

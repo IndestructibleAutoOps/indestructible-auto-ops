@@ -19,25 +19,29 @@ spec:
         - generation_timestamp: ISO8601
         - internal_state_hash: SHA256
         - pipeline_version: string
-    section1: actual-state-description
+    section1:
+      name: actual-state-description
       requirements:
         - id: GL-VR-001
           name: 基于内部事实
           rule: 所有描述必须基于stage1收集的事实
           severity: CRITICAL
-    section2: external-context-reference
+    section2:
+      name: external-context-reference
       requirements:
         - id: GL-VR-101
           name: 标注参考
           rule: 明确标注为参考标准
           severity: HIGH
-    section3: gap-analysis
+    section3:
+      name: gap-analysis
       requirements:
         - id: GL-VR-201
           name: 差异分类
           rule: 差异必须分类
           severity: CRITICAL
-    section4: recommendations
+    section4:
+      name: recommendations
       requirements:
         - id: GL-VR-301
           name: 基于差异

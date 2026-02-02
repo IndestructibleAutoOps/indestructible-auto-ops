@@ -24,7 +24,7 @@ spec:
     
     preUpgradeState:
       processVersion: "{{ previous_version }}"
-      maturityScore: {{ score }}
+      maturityScore: "{{ score }}"
       knownLimitations: "{{ limitations }}"
       technicalDebt: "{{ debt_score }}"
       evidence: "{{ evidence_path }}"
@@ -37,10 +37,10 @@ spec:
       successCriteria:
         - metric: "{{ metric_name }}"
           target: "{{ target_value }}"
-          weight: {{ weight }}
+          weight: "{{ weight }}"
         - metric: "{{ metric_name }}"
           target: "{{ target_value }}"
-          weight: {{ weight }}
+          weight: "{{ weight }}"
 
   upgradeOperations:
     contractUpgrades:
@@ -110,15 +110,15 @@ spec:
         content: "{{ what_added }}"
         location: "{{ where_added }}"
         applicability: "{{ general|specific }}"
-        confidence: {{ confidence_score }}
-        evidence: "{{ evidence_path }}
+        confidence: "{{ confidence_score }}"
+        evidence: "{{ evidence_path }}"
 
   upgradeReasoning:
     problemAnalysis:
       rootCause: "{{ identified_root_cause }}"
       contributingFactors:
         - factor: "{{ factor_name }}"
-          weight: {{ weight }}
+          weight: "{{ weight }}"
           evidence: "{{ evidence_path }}"
       impactAnalysis: "{{ business|technical|governance_impact }}"
       evidence: "{{ evidence_path }}"
@@ -133,8 +133,8 @@ spec:
       selectedOption: "{{ option_name }}"
       selectionCriteria:
         - criterion: "{{ criterion }}"
-          weight: {{ weight }}
-          score: {{ score }}
+          weight: "{{ weight }}"
+          score: "{{ score }}"
           evidence: "{{ evidence_path }}"
     
     implementationStrategy:
@@ -169,11 +169,11 @@ spec:
         evidence: "{{ evidence_path }}"
     
     knowledgeImpacts:
-      - documentationUpdates: {{ count }}
+      - documentationUpdates: "{{ count }}"
         evidence: "{{ evidence_path }}"
       - trainingRequirements: "{{ new_requirements }}"
         evidence: "{{ evidence_path }}"
-      - decisionLogUpdates: {{ count }}
+      - decisionLogUpdates: "{{ count }}"
         evidence: "{{ evidence_path }}"
 
   upgradeVerification:
@@ -212,7 +212,7 @@ spec:
         context: "{{ where_found }}"
         applicability: "{{ general|specific }}"
         reusePotential: "{{ high|medium|low }}"
-        confidence: {{ confidence_score }}
+        confidence: "{{ confidence_score }}"
         evidence: "{{ evidence_path }}"
     
     adaptationMechanisms:
@@ -226,8 +226,8 @@ spec:
       - learning: "{{ about_the_upgrade_process }}"
         insight: "{{ deeper_understanding }}"
         application: "{{ how_to_apply }}"
-        confidence: {{ confidence_score }}
-        evidence: "{{ evidence_path }}
+        confidence: "{{ confidence_score }}"
+        evidence: "{{ evidence_path }}"
     
     bestPractices:
       - practice: "{{ what_worked_well }}"
@@ -262,9 +262,10 @@ spec:
     references:
       - relatedExecution: "{{ execution_id }}"
         relationship: "{{ triggered_by|validated_by }}"
+        evidence: "{{ evidence_path }}"
       - documentation: "{{ doc_link }}"
         type: "{{ design|api|user_guide }}"
-      evidence: "{{ evidence_path }}"
+        evidence: "{{ evidence_path }}"
 
   responsibilityMatrix:
     upgradeOwner: "{{ owner_name }}"
@@ -322,27 +323,27 @@ spec:
 
   postUpgradeMetrics:
     processMaturityIndex:
-      before: {{ score }}
-      after: {{ score }}
-      delta: {{ change }}
+      before: "{{ score }}"
+      after: "{{ score }}"
+      delta: "{{ change }}"
       evidence: "{{ evidence_path }}"
     
     selfEvolutionRate:
       before: "{{ percentage }}%"
       after: "{{ percentage }}%"
-      delta: {{ change }}
+      delta: "{{ change }}"
       evidence: "{{ evidence_path }}"
     
     learningAbsorptionRate:
       before: "{{ percentage }}%"
       after: "{{ percentage }}%"
-      delta: {{ change }}
+      delta: "{{ change }}"
       evidence: "{{ evidence_path }}"
     
     knowledgeCompoundingFactor:
-      before: {{ factor }}
-      after: {{ factor }}
-      delta: {{ change }}
+      before: "{{ factor }}"
+      after: "{{ factor }}"
+      delta: "{{ change }}"
       evidence: "{{ evidence_path }}"
     
     overallSuccess: "{{ yes|no }}"
@@ -366,7 +367,7 @@ spec:
     gate3:
       name: "evidence_complete"
       threshold: 0.95
-      actual: {{ actual_value }}
+      actual: "{{ actual_value }}"
       status: "{{ passed|failed }}"
       evidence: "{{ evidence_path }}"
     

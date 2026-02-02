@@ -29,8 +29,8 @@ spec:
         - "避免模糊或多義的名稱"
         - "使用業務領域詞彙"
       examples:
-        - "user-service" (正確)
-        - "service-01" (錯誤 - 無語意)
+        - "user-service (正確)"
+        - "service-01 (錯誤 - 無語意)"
 
     # L2: 契約層級
     - id: L02-contract
@@ -41,8 +41,8 @@ spec:
         - "名稱必須符合契約格式"
         - "遵循命名契約定義"
       examples:
-        - "gl.ai.gpt-platform" (正確)
-        - "gpt-platform" (錯誤 - 不符合契約)
+        - "gl.ai.gpt-platform (正確)"
+        - "gpt-platform (錯誤 - 不符合契約)"
 
     # L3: 平台層級
     - id: L03-platform
@@ -53,8 +53,8 @@ spec:
         - "平台名稱格式: gl.{domain}.{capability}-platform"
         - "必須在平台註冊表中註冊"
       examples:
-        - "gl.ai.gpt-platform" (正確)
-        - "ai-platform" (錯誤 - 缺少 domain)
+        - "gl.ai.gpt-platform (正確)"
+        - "ai-platform (錯誤 - 缺少 domain)"
 
     # L4: 格式層級
     - id: L04-format
@@ -66,8 +66,8 @@ spec:
         - "避免特殊字符"
         - "單詞之間用連字符分隔"
       examples:
-        - "user-service" (正確)
-        - "userService" (錯誤 - 駝峰命名)
+        - "user-service (正確)"
+        - "userService (錯誤 - 駝峰命名)"
 
     # L5: 語言層級
     - id: L05-language
@@ -79,8 +79,8 @@ spec:
         - "JavaScript: camelCase"
         - "Java: PascalCase"
       examples:
-        - "user_service" (Python)
-        - "userService" (JavaScript)
+        - "user_service (Python)"
+        - "userService (JavaScript)"
 
     # L6: 部署層級
     - id: L06-deployment
@@ -91,8 +91,8 @@ spec:
         - "資源類型前綴"
         - "環境標識"
       examples:
-        - "prod-user-service" (生產環境)
-        - "dev-user-service" (開發環境)
+        - "prod-user-service (生產環境)"
+        - "dev-user-service (開發環境)"
 
     # L7: 供應鏈層級
     - id: L07-supply-chain
@@ -114,8 +114,8 @@ spec:
         - "簡單易懂"
         - "避免技術術語"
       examples:
-        - "user-profile" (正確)
-        - "authentication-authorization-service" (錯誤 - 過於技術化)
+        - "user-profile (正確)"
+        - "authentication-authorization-service (錯誤 - 過於技術化)"
 
     # L9: 元數據層級
     - id: L09-metadata
@@ -137,8 +137,8 @@ spec:
         - "接口類型後綴"
         - "動詞-名詞結構"
       examples:
-        - "getUserProfile" (正確)
-        - "userProfile" (錯誤 - 不是動詞)
+        - "getUserProfile (正確)"
+        - "userProfile (錯誤 - 不是動詞)"
 
     # L11: 依賴層級
     - id: L11-dependency
@@ -160,8 +160,8 @@ spec:
         - "語意化版本"
         - "主.次.修訂格式"
       examples:
-        - "1.0.0" (正確)
-        - "v1" (錯誤 - 不明確)
+        - "1.0.0 (正確)"
+        - "v1 (錯誤 - 不明確)"
 
     # L13: 測試層級
     - id: L13-testing

@@ -414,7 +414,7 @@ spec:
         logging: "transition_log"
       
       - check: "mode_activated"
-        description:新模式必须激活"
+        description: "新模式必须激活"
         required: true
         verification: "activation_check"
       

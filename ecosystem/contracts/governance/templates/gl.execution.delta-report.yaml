@@ -60,29 +60,29 @@ spec:
   governanceDelta:
     contractCoverage:
       base:
-        totalContracts: {{ count }}
-        validated: {{ count }}
+        totalContracts: "{{ count }}"
+        validated: "{{ count }}"
         coverage: "{{ percentage }}%"
       target:
-        totalContracts: {{ count }}
-        validated: {{ count }}
+        totalContracts: "{{ count }}"
+        validated: "{{ count }}"
         coverage: "{{ percentage }}%"
       delta:
-        newContracts: {{ count }}
+        newContracts: "{{ count }}"
         increasedCoverage: "{{ percentage_points }}%"
       evidence: "{{ evidence_path }}"
     
     validationRules:
       triggered:
-        base: {{ count }}
-        target: {{ count }}
-        delta: {{ count }}
+        base: "{{ count }}"
+        target: "{{ count }}"
+        delta: "{{ count }}"
       successRate:
         base: "{{ percentage }}%"
         target: "{{ percentage }}%"
         delta: "{{ percentage_points }}%"
       newlyGenerated:
-        count: {{ count }}
+        count: "{{ count }}"
         examples:
           - rule: "{{ rule_name }}"
             context: "{{ when_generated }}"
@@ -110,10 +110,10 @@ spec:
     phaseChanges:
       - phase: "{{ phase_name }}"
         baseStructure:
-          steps: {{ count }}
+          steps: "{{ count }}"
           sequence: "{{ sequence }}"
         targetStructure:
-          steps: {{ count }}
+          steps: "{{ count }}"
           sequence: "{{ sequence }}"
         changes:
           addedSteps: "{{ step_names }}"
@@ -150,12 +150,12 @@ spec:
     reasoningPaths:
       - path: "{{ reasoning_path_id }}"
         base:
-          steps: {{ count }}
-          confidence: {{ score }}
+          steps: "{{ count }}"
+          confidence: "{{ score }}"
           outcome: "{{ previous_outcome }}"
         target:
-          steps: {{ count }}
-          confidence: {{ score }}
+          steps: "{{ count }}"
+          confidence: "{{ score }}"
           outcome: "{{ current_outcome }}"
         divergence:
           type: "{{ logical|factual|inferential }}"
@@ -163,8 +163,8 @@ spec:
           evidence: "{{ evidence_path }}"
     
     learningIntegration:
-      previousLearningsApplied: {{ count }}
-      newLearningsGenerated: {{ count }}
+      previousLearningsApplied: "{{ count }}"
+      newLearningsGenerated: "{{ count }}"
       learningEffectiveness: "{{ effectiveness_score }}"
       evidence: "{{ evidence_path }}"
 
@@ -197,9 +197,9 @@ spec:
           evidence: "{{ evidence_path }}"
     
     anomalyDetection:
-      baseAnomalies: {{ count }}
-      targetAnomalies: {{ count }}
-      newPatternsDetected: {{ count }}
+      baseAnomalies: "{{ count }}"
+      targetAnomalies: "{{ count }}"
+      newPatternsDetected: "{{ count }}"
       falsePositiveRateChange: "{{ percentage_points }}%"
       evidence: "{{ evidence_path }}"
 
@@ -266,8 +266,8 @@ spec:
         evidence: "{{ evidence_path }}"
 
   significantChanges:
-    thresholdMet: {{ count }}
-    thresholdMissed: {{ count }}
+    thresholdMet: "{{ count }}"
+    thresholdMissed: "{{ count }}"
     
     changes:
       - changeType: "{{ contract|rule|pipeline|governance }}"
@@ -276,7 +276,7 @@ spec:
         severity: "{{ low|medium|high|critical }}"
         beforeState: "{{ previous_state }}"
         afterState: "{{ current_state }}"
-        significanceScore: {{ score }}
+        significanceScore: "{{ score }}"
         evidence: "{{ evidence_path }}"
 
   upgradeTriggers:
@@ -298,7 +298,7 @@ spec:
 
   verification:
     comparisonMethodology: "multi-dimensional-semantic-diff"
-    confidence: {{ confidence_score }}
+    confidence: "{{ confidence_score }}"
     
     validationChecks:
       - check: "data-integrity"
@@ -323,7 +323,7 @@ spec:
     gate1:
       name: "delta_significance"
       threshold: 0.15
-      actual: {{ actual_value }}
+      actual: "{{ actual_value }}"
       status: "{{ passed|failed }}"
     gate2:
       name: "regression_detection"
@@ -333,7 +333,7 @@ spec:
     gate3:
       name: "evidence_coverage"
       threshold: 0.90
-      actual: {{ actual_value }}
+      actual: "{{ actual_value }}"
       status: "{{ passed|failed }}"
     
     overallStatus: "{{ passed|failed }}"
