@@ -76,7 +76,20 @@ class SecretFixer:
         env_vars = set()
         for finding in findings:
             secret_type = finding["type"]
-            env_var_name = secret_type.upper()
+            # Normalize to a safe, non-sensitive environment variable name
+            normalized_map = {
+                "password": "PASSWORD",
+                "passwd": "PASSWORD",
+                "pwd": "PASSWORD",
+                "api_key": "API_KEY",
+                "apikey": "API_KEY",
+                "api-key": "API_KEY",
+                "secret": "SECRET",
+                "token": "TOKEN",
+                "auth_key": "AUTH_KEY",
+                "authkey": "AUTH_KEY",
+            }
+            env_var_name = normalized_map.get(str(secret_type).lower(), "SECRET_VALUE")
             env_vars.add(env_var_name)
         # Security: Template only contains placeholders, no actual secrets
         template = "# Security Configuration\n"
