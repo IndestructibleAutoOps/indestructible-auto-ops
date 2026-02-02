@@ -262,9 +262,10 @@ spec:
     references:
       - relatedExecution: "{{ execution_id }}"
         relationship: "{{ triggered_by|validated_by }}"
+        evidence: "{{ evidence_path }}"
       - documentation: "{{ doc_link }}"
         type: "{{ design|api|user_guide }}"
-      evidence: "{{ evidence_path }}"
+        evidence: "{{ evidence_path }}"
 
   responsibilityMatrix:
     upgradeOwner: "{{ owner_name }}"
