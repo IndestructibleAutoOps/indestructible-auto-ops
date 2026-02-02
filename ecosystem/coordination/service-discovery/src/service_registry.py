@@ -14,7 +14,6 @@ GL Governance Layer: GL10-29 (Operational Layer)
 """
 
 import json
-import time
 import threading
 from pathlib import Path
 from typing import Dict, List, Optional, Any
@@ -124,12 +123,17 @@ class ServiceRegistry:
         level = self.config.get('monitoring', {}).get('logging', {}).get('level', 'INFO')
         logger.setLevel(getattr(logging, level))
         
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        # Avoid adding duplicate stream handlers if multiple registries are instantiated
+        has_stream_handler = any(
+            isinstance(handler, logging.StreamHandler) for handler in logger.handlers
         )
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
+        if not has_stream_handler:
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
         
         return logger
     

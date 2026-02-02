@@ -6,7 +6,6 @@ Service Discovery System Tests
 """
 
 import sys
-import time
 from pathlib import Path
 
 # Add src to path
@@ -16,8 +15,6 @@ from service_registry import (
     ServiceRegistry,
     ServiceInstance,
     ServiceMetadata,
-    HealthCheck,
-    ServiceStatus,
     HealthStatus
 )
 from service_agent import ServiceAgent

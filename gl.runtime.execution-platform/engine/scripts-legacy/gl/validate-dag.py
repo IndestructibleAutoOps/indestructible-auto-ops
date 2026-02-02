@@ -13,11 +13,11 @@ import argparse
 import sys
 import yaml
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, Optional
 from collections import defaultdict, deque
 
 
-def load_dag_file(dag_path: str) -> Dict:
+def load_dag_file(dag_path: str) -> Optional[Dict]:
     """Load and parse DAG YAML file"""
     path = Path(dag_path)
     if not path.exists():
@@ -42,6 +42,11 @@ def validate_dag_structure(dag_path: str) -> bool:
     if dag_data is None:
         return False
     
+    # Validate that dag_data is a dictionary
+    if not isinstance(dag_data, dict):
+        print("  [✗] DAG file must contain a dictionary at the top level")
+        return False
+    
     errors = []
     
     # Check required top-level fields
@@ -55,8 +60,19 @@ def validate_dag_structure(dag_path: str) -> bool:
             print(f"  [✗] {error}")
         return False
     
-    # Validate nodes
+    # Validate that nodes and edges are lists
     nodes = dag_data.get('nodes', [])
+    edges = dag_data.get('edges', [])
+    
+    if not isinstance(nodes, list):
+        print("  [✗] 'nodes' field must be a list")
+        return False
+    
+    if not isinstance(edges, list):
+        print("  [✗] 'edges' field must be a list")
+        return False
+    
+    # Validate nodes
     if not nodes:
         print("  [✗] DAG must contain at least one node")
         return False
@@ -101,8 +117,22 @@ def validate_dag_cycles(dag_path: str) -> bool:
     if dag_data is None:
         return False
     
+    # Validate that dag_data is a dictionary
+    if not isinstance(dag_data, dict):
+        print("  [✗] DAG file must contain a dictionary at the top level")
+        return False
+    
     nodes = dag_data.get('nodes', [])
     edges = dag_data.get('edges', [])
+    
+    # Validate that nodes and edges are lists
+    if not isinstance(nodes, list):
+        print("  [✗] 'nodes' field must be a list")
+        return False
+    
+    if not isinstance(edges, list):
+        print("  [✗] 'edges' field must be a list")
+        return False
     
     # Build adjacency list and in-degree count
     graph = defaultdict(list)
@@ -110,12 +140,16 @@ def validate_dag_cycles(dag_path: str) -> bool:
     
     # Initialize all nodes with 0 in-degree
     for node in nodes:
+        if not isinstance(node, dict):
+            continue
         node_id = node.get('node_id')
         if node_id:
             in_degree[node_id] = 0
     
     # Build graph (only count solid edges, not feedback loops)
     for edge in edges:
+        if not isinstance(edge, dict):
+            continue
         from_node = edge.get('from')
         to_node = edge.get('to')
         
