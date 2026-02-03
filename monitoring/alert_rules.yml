@@ -1,0 +1,274 @@
+# @GL-governed
+# @GL-layer: GL50-59
+# @GL-semantic: alert-rules
+# @GL-audit-trail: ./governance/GL_SEMANTIC_ANCHOR.json
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+#                    Machine Native Ops - Prometheus Alert Rules
+#                    GL Layer: GL50-59 Observability Layer
+#                    Purpose: SLA monitoring and governance alerts
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Alert Categories:
+# - Governance violations
+# - Build/CI failures
+# - SLA breaches
+# - Security issues
+# - Resource constraints
+
+groups:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Governance Alerts
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: governance_alerts
+    interval: 30s
+    rules:
+      - alert: NamingViolationCritical
+        expr: sum(violations_total{severity="critical",type="naming"}) > 5
+        for: 10m
+        labels:
+          severity: page
+          team: governance
+        annotations:
+          summary: "Critical naming violations exceeded threshold"
+          description: "{{ $value }} critical naming violations detected in the last 10 minutes. Immediate action required."
+          runbook_url: "https://docs.example.com/runbooks/naming-violations"
+
+      - alert: NamingViolationWarning
+        expr: sum(violations_total{severity="warning",type="naming"}) > 20
+        for: 30m
+        labels:
+          severity: warning
+          team: governance
+        annotations:
+          summary: "High number of naming violations"
+          description: "{{ $value }} naming violations detected in the last 30 minutes."
+
+      - alert: PolicyEnforcementFailure
+        expr: sum(rate(policy_enforcement_failures_total[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: critical
+          team: governance
+        annotations:
+          summary: "Policy enforcement failing"
+          description: "Policy enforcement is failing at rate {{ $value }}/s"
+
+      - alert: GovernanceComplianceBelow95
+        expr: (governance_compliant_resources / governance_total_resources) * 100 < 95
+        for: 15m
+        labels:
+          severity: warning
+          team: governance
+        annotations:
+          summary: "Governance compliance below 95%"
+          description: "Current compliance rate: {{ $value }}%"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # CI/CD Alerts
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: cicd_alerts
+    interval: 1m
+    rules:
+      - alert: BuildFailureRateHigh
+        expr: sum(rate(ci_build_failures_total[1h])) / sum(rate(ci_builds_total[1h])) > 0.2
+        for: 15m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Build failure rate exceeds 20%"
+          description: "{{ $value | humanizePercentage }} of builds are failing"
+
+      - alert: BuildDurationExceeded
+        expr: histogram_quantile(0.95, rate(ci_build_duration_seconds_bucket[1h])) > 1800
+        for: 30m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Build duration exceeds 30 minutes (p95)"
+          description: "95th percentile build duration is {{ $value | humanizeDuration }}"
+
+      - alert: ArtifactStorageLow
+        expr: (artifact_storage_available_bytes / artifact_storage_total_bytes) * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+          team: platform
+        annotations:
+          summary: "Artifact storage running low"
+          description: "Only {{ $value }}% storage remaining"
+
+      - alert: CIPipelineStuck
+        expr: ci_pipeline_duration_seconds{status="running"} > 7200
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "CI pipeline running for over 2 hours"
+          description: "Pipeline {{ $labels.pipeline_name }} has been running for {{ $value | humanizeDuration }}"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # SLA Alerts
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: sla_alerts
+    interval: 1m
+    rules:
+      - alert: SLAViolationImminent
+        expr: |
+          (
+            sum(rate(request_duration_seconds_bucket{le="1.0"}[5m])) 
+            / sum(rate(request_duration_seconds_count[5m]))
+          ) < 0.95
+        for: 10m
+        labels:
+          severity: critical
+          team: sre
+        annotations:
+          summary: "SLA violation imminent - response time degraded"
+          description: "Only {{ $value | humanizePercentage }} of requests completing under 1s (target: 95%)"
+
+      - alert: AvailabilityBelow9995
+        expr: |
+          (
+            1 - (sum(rate(http_requests_total{code=~"5.."}[24h])) 
+            / sum(rate(http_requests_total[24h])))
+          ) * 100 < 99.95
+        for: 5m
+        labels:
+          severity: critical
+          team: sre
+        annotations:
+          summary: "Availability below 99.95% SLA"
+          description: "Current availability: {{ $value | printf \"%.3f\" }}%"
+
+      - alert: ErrorBudgetExhausted
+        expr: error_budget_remaining_percent < 10
+        for: 5m
+        labels:
+          severity: critical
+          team: sre
+        annotations:
+          summary: "Error budget nearly exhausted"
+          description: "Only {{ $value }}% of error budget remaining for this period"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Security Alerts
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: security_alerts
+    interval: 30s
+    rules:
+      - alert: CriticalVulnerabilityDetected
+        expr: sum(vulnerability_count{severity="critical"}) > 0
+        for: 1m
+        labels:
+          severity: page
+          team: security
+        annotations:
+          summary: "Critical vulnerability detected"
+          description: "{{ $value }} critical vulnerabilities detected in dependencies"
+          runbook_url: "https://docs.example.com/runbooks/critical-vulnerability"
+
+      - alert: HighVulnerabilityCount
+        expr: sum(vulnerability_count{severity="high"}) > 10
+        for: 30m
+        labels:
+          severity: warning
+          team: security
+        annotations:
+          summary: "High number of high-severity vulnerabilities"
+          description: "{{ $value }} high-severity vulnerabilities detected"
+
+      - alert: SBOMGenerationFailed
+        expr: sbom_generation_failures_total > 0
+        for: 5m
+        labels:
+          severity: warning
+          team: security
+        annotations:
+          summary: "SBOM generation failing"
+          description: "Software Bill of Materials generation has failed {{ $value }} times"
+
+      - alert: SupplyChainRiskDetected
+        expr: supply_chain_risk_score > 7.0
+        for: 5m
+        labels:
+          severity: critical
+          team: security
+        annotations:
+          summary: "High supply chain risk detected"
+          description: "Supply chain risk score: {{ $value }}/10"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Auto-Fix Alerts
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: autofix_alerts
+    interval: 1m
+    rules:
+      - alert: AutoFixFailureRateHigh
+        expr: sum(rate(autofix_failures_total[1h])) / sum(rate(autofix_attempts_total[1h])) > 0.3
+        for: 30m
+        labels:
+          severity: warning
+          team: governance
+        annotations:
+          summary: "Auto-fix failure rate exceeds 30%"
+          description: "{{ $value | humanizePercentage }} of auto-fix attempts are failing"
+
+      - alert: AutoFixBacklogHigh
+        expr: autofix_pending_count > 50
+        for: 1h
+        labels:
+          severity: warning
+          team: governance
+        annotations:
+          summary: "Auto-fix backlog growing"
+          description: "{{ $value }} pending auto-fix items"
+
+      - alert: MigrationPlaybookStalled
+        expr: migration_playbook_duration_seconds{status="running"} > 3600
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Migration playbook stalled"
+          description: "Migration playbook {{ $labels.playbook_name }} has been running for {{ $value | humanizeDuration }}"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Resource Alerts
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: resource_alerts
+    interval: 30s
+    rules:
+      - alert: MemoryUsageHigh
+        expr: (process_resident_memory_bytes / node_memory_MemTotal_bytes) * 100 > 85
+        for: 10m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Memory usage exceeds 85%"
+          description: "Memory usage is at {{ $value | printf \"%.1f\" }}%"
+
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 15
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Disk space running low"
+          description: "Only {{ $value | printf \"%.1f\" }}% disk space remaining"
+
+      - alert: CPUThrottling
+        expr: rate(container_cpu_cfs_throttled_seconds_total[5m]) > 0.1
+        for: 10m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "CPU throttling detected"
+          description: "Container {{ $labels.container }} is being throttled"
