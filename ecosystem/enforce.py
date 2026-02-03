@@ -9,38 +9,31 @@
 統一的生態系統強制執行入口點
 Unified Ecosystem Enforcement Entry Point
 
-版本: 1.0.0
+版本: 2.0.0
 用途: 提供單一命令來執行所有生態系統治理檢查
 作者: Machine Native Ops Team
-日期: 2026-02-02
+日期: 2026-02-03
+
+MNGA (Machine Native Governance Architecture) 強制執行器
+- 真正執行治理檢查，不允許假 PASS
+- 掃描所有文件的 GL 合規性
+- 驗證命名規範
+- 檢查證據鏈完整性
 """
 
-"""
-Module docstring
-================
-
-This module is part of the GL governance framework.
-Please add specific module documentation here.
-"""
-# MNGA-002: Import organization needs review
 import sys
 import os
+import re
+import json
 from pathlib import Path
-from typing import Tuple, List
-from dataclasses import dataclass
-
-@dataclass
-class GovernanceResult:
-    """Governance enforcement result for testing"""
-    operation_id: str
-    status: str
-    violations: list
-    evidence_collected: list
-    quality_gates: dict
-    timestamp: str
+from typing import Tuple, List, Dict, Any, Optional
+from dataclasses import dataclass, field, asdict
+from datetime import datetime, timezone
+from collections import Counter
 
 # 添加 ecosystem 到路徑
 ECOSYSTEM_ROOT = Path(__file__).parent
+WORKSPACE_ROOT = ECOSYSTEM_ROOT.parent
 sys.path.insert(0, str(ECOSYSTEM_ROOT))
 
 # 顏色輸出
@@ -81,145 +74,548 @@ def print_info(text: str):
     """打印資訊"""
     print(f"{Colors.CYAN}ℹ️  {text}{Colors.END}")
 
-def check_file_exists(filepath: Path) -> bool:
-    """檢查文件是否存在"""
-    return filepath.exists() and filepath.is_file()
+@dataclass
+class Violation:
+    """治理違規"""
+    rule_id: str
+    file_path: str
+    line_number: Optional[int]
+    message: str
+    severity: str  # CRITICAL, HIGH, MEDIUM, LOW
+    suggestion: str
 
-def run_governance_enforcer() -> Tuple[bool, str]:
-    """執行治理強制執行器"""
-    enforcer_path = ECOSYSTEM_ROOT / "enforcers" / "governance_enforcer.py"
+@dataclass
+class EnforcementResult:
+    """強制執行結果"""
+    check_name: str
+    passed: bool
+    message: str
+    violations: List[Violation] = field(default_factory=list)
+    files_scanned: int = 0
+    execution_time_ms: int = 0
+
+# ============================================================================
+# MNGA 核心檢查器
+# ============================================================================
+
+class MNGAEnforcer:
+    """Machine Native Governance Architecture 強制執行器"""
     
-    if not check_file_exists(enforcer_path):
-        return False, f"找不到治理執行器: {enforcer_path}"
-    
-    try:
-        # 動態導入治理執行器
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("governance_enforcer", enforcer_path)
-        if spec and spec.loader:
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
+    def __init__(self, workspace_path: Path = WORKSPACE_ROOT):
+        self.workspace = workspace_path
+        self.ecosystem = workspace_path / "ecosystem"
+        self.violations: List[Violation] = []
+        self.files_scanned = 0
+        
+        # GL 命名規範
+        self.naming_patterns = {
+            "kebab-case": re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$'),
+            "snake_case": re.compile(r'^[a-z0-9]+(_[a-z0-9]+)*$'),
+            "PascalCase": re.compile(r'^[A-Z][a-zA-Z0-9]*$'),
+            "camelCase": re.compile(r'^[a-z][a-zA-Z0-9]*$'),
+        }
+        
+        # 禁止的模式 - 更精確的正則表達式
+        self.forbidden_patterns = [
+            (r'github_pat_[A-Za-z0-9_]{30,}', 'GitHub Personal Access Token exposed'),
+            (r'ghp_[A-Za-z0-9]{36,}', 'GitHub Token exposed'),
+            (r'sk-[A-Za-z0-9]{32,}', 'OpenAI API Key exposed'),
+            (r'sk-proj-[A-Za-z0-9_-]{40,}', 'OpenAI Project API Key exposed'),
+            (r'xoxb-[A-Za-z0-9-]+', 'Slack Bot Token exposed'),
+            (r'xoxp-[A-Za-z0-9-]+', 'Slack User Token exposed'),
+            (r'AKIA[A-Z0-9]{16}', 'AWS Access Key exposed'),
+        ]
+        
+        # 排除的佔位符模式
+        self.placeholder_patterns = [
+            r'\$\{[A-Z_]+\}',  # ${ENV_VAR}
+            r'change-me',
+            r'your-.*-here',
+            r'example',
+            r'placeholder',
+            r'xxx+',
+            r'\*+',
+            r'<[A-Z_]+>',  # <YOUR_TOKEN>
+        ]
+        
+        # GL 層級定義
+        self.gl_layers = {
+            "GL00-09": "Infrastructure Foundation",
+            "GL10-19": "Core Services",
+            "GL20-29": "Language Behavior - Naming",
+            "GL30-39": "Language Behavior - Execution",
+            "GL40-49": "Language Behavior - Validation",
+            "GL50-59": "Format Layer - Structure",
+            "GL60-69": "Format Layer - Schema",
+            "GL70-79": "Format Layer - Evidence",
+            "GL80-89": "Format Layer - Audit",
+            "GL90-99": "Meta-Specification",
+        }
+
+    def run_all_checks(self) -> List[EnforcementResult]:
+        """執行所有 MNGA 檢查"""
+        results = []
+        
+        # 1. GL 合規性檢查
+        results.append(self.check_gl_compliance())
+        
+        # 2. 命名規範檢查
+        results.append(self.check_naming_conventions())
+        
+        # 3. 安全性檢查
+        results.append(self.check_security())
+        
+        # 4. 證據鏈完整性檢查
+        results.append(self.check_evidence_chain())
+        
+        # 5. 治理執行器檢查
+        results.append(self.check_governance_enforcer())
+        
+        # 6. 自我審計檢查
+        results.append(self.check_self_auditor())
+        
+        return results
+
+    def check_gl_compliance(self) -> EnforcementResult:
+        """檢查 GL 治理合規性"""
+        start_time = datetime.now()
+        violations = []
+        files_scanned = 0
+        
+        # 必須存在的治理文件
+        required_files = [
+            self.ecosystem / "governance" / "governance-manifest.yaml",
+            self.ecosystem / "governance" / "GL-SEMANTIC-ANCHOR.json",
+            self.ecosystem / "contracts",
+            self.ecosystem / "enforcers",
+        ]
+        
+        for req_file in required_files:
+            if not req_file.exists():
+                violations.append(Violation(
+                    rule_id="GL-COMPLIANCE-001",
+                    file_path=str(req_file),
+                    line_number=None,
+                    message=f"必要的治理文件缺失: {req_file.name}",
+                    severity="CRITICAL",
+                    suggestion=f"創建 {req_file} 文件"
+                ))
+        
+        # 掃描 Python 文件的 GL 標註
+        python_files = list(self.ecosystem.rglob("*.py"))
+        for py_file in python_files:
+            files_scanned += 1
+            try:
+                content = py_file.read_text(encoding='utf-8', errors='ignore')
+                # 檢查是否有 GL 標註
+                if not re.search(r'@GL-governed|@GL-layer|GL\d{2}', content):
+                    # 只對核心文件要求 GL 標註
+                    if 'enforcer' in py_file.name or 'audit' in py_file.name:
+                        violations.append(Violation(
+                            rule_id="GL-COMPLIANCE-002",
+                            file_path=str(py_file.relative_to(self.workspace)),
+                            line_number=1,
+                            message="核心治理文件缺少 GL 標註",
+                            severity="MEDIUM",
+                            suggestion="添加 @GL-governed 和 @GL-layer 標註"
+                        ))
+            except Exception as e:
+                pass
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return EnforcementResult(
+            check_name="GL Compliance",
+            passed=len([v for v in violations if v.severity == "CRITICAL"]) == 0,
+            message=f"掃描 {files_scanned} 個文件，發現 {len(violations)} 個問題",
+            violations=violations,
+            files_scanned=files_scanned,
+            execution_time_ms=int(elapsed)
+        )
+
+    def check_naming_conventions(self) -> EnforcementResult:
+        """檢查命名規範 (GL20-29)"""
+        start_time = datetime.now()
+        violations = []
+        files_scanned = 0
+        
+        # 檢查目錄命名
+        for dir_path in self.workspace.rglob("*"):
+            if dir_path.is_dir() and not any(p in str(dir_path) for p in ['.git', '__pycache__', 'node_modules', '.venv']):
+                dir_name = dir_path.name
+                files_scanned += 1
+                
+                # 檢查是否包含下劃線（應該用連字符）
+                if '_' in dir_name and not dir_name.startswith('__'):
+                    # 排除 Python 特殊目錄
+                    if not dir_name.startswith('.') and dir_name not in ['__pycache__', 'site-packages']:
+                        violations.append(Violation(
+                            rule_id="GL20-NAMING-001",
+                            file_path=str(dir_path.relative_to(self.workspace)),
+                            line_number=None,
+                            message=f"目錄名稱 '{dir_name}' 使用下劃線，應使用連字符 (kebab-case)",
+                            severity="LOW",
+                            suggestion=f"重命名為 '{dir_name.replace('_', '-')}'"
+                        ))
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        # 命名問題不是關鍵性的
+        critical_violations = [v for v in violations if v.severity in ["CRITICAL", "HIGH"]]
+        
+        return EnforcementResult(
+            check_name="Naming Conventions",
+            passed=len(critical_violations) == 0,
+            message=f"掃描 {files_scanned} 個目錄，發現 {len(violations)} 個命名問題",
+            violations=violations,
+            files_scanned=files_scanned,
+            execution_time_ms=int(elapsed)
+        )
+
+    def check_security(self) -> EnforcementResult:
+        """安全性檢查 - 檢測敏感信息洩露"""
+        start_time = datetime.now()
+        violations = []
+        files_scanned = 0
+        
+        # 掃描所有文本文件
+        text_extensions = ['.py', '.js', '.ts', '.yaml', '.yml', '.json', '.md', '.txt', '.sh']
+        
+        for ext in text_extensions:
+            for file_path in self.workspace.rglob(f"*{ext}"):
+                # 排除特定目錄
+                if any(p in str(file_path) for p in ['.git', 'node_modules', '__pycache__', 'outputs', 'summarized_conversations']):
+                    continue
+                
+                files_scanned += 1
+                try:
+                    content = file_path.read_text(encoding='utf-8', errors='ignore')
+                    
+                    for pattern, description in self.forbidden_patterns:
+                        matches = list(re.finditer(pattern, content))
+                        for match in matches:
+                            matched_text = match.group()
+                            
+                            # 檢查是否為佔位符
+                            is_placeholder = False
+                            for placeholder in self.placeholder_patterns:
+                                if re.search(placeholder, matched_text, re.IGNORECASE):
+                                    is_placeholder = True
+                                    break
+                            
+                            # 獲取匹配行的上下文
+                            line_start = content.rfind('\n', 0, match.start()) + 1
+                            line_end = content.find('\n', match.end())
+                            if line_end == -1:
+                                line_end = len(content)
+                            line_content = content[line_start:line_end]
+                            
+                            # 檢查行內容是否包含佔位符
+                            for placeholder in self.placeholder_patterns:
+                                if re.search(placeholder, line_content, re.IGNORECASE):
+                                    is_placeholder = True
+                                    break
+                            
+                            if not is_placeholder:
+                                # 計算行號
+                                line_num = content[:match.start()].count('\n') + 1
+                                violations.append(Violation(
+                                    rule_id="GL-SECURITY-001",
+                                    file_path=str(file_path.relative_to(self.workspace)),
+                                    line_number=line_num,
+                                    message=description,
+                                    severity="CRITICAL",
+                                    suggestion="移除敏感信息並添加到 .gitignore"
+                                ))
+                except Exception:
+                    pass
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return EnforcementResult(
+            check_name="Security Check",
+            passed=len(violations) == 0,
+            message=f"掃描 {files_scanned} 個文件，發現 {len(violations)} 個安全問題",
+            violations=violations,
+            files_scanned=files_scanned,
+            execution_time_ms=int(elapsed)
+        )
+
+    def check_evidence_chain(self) -> EnforcementResult:
+        """檢查證據鏈完整性 (GL70-79)"""
+        start_time = datetime.now()
+        violations = []
+        files_scanned = 0
+        
+        # 檢查 .governance 目錄
+        governance_dirs = list(self.workspace.rglob(".governance"))
+        
+        for gov_dir in governance_dirs:
+            files_scanned += 1
             
-            # 檢查是否有 GovernanceEnforcer 類
-            if hasattr(module, 'GovernanceEnforcer'):
-                enforcer = module.GovernanceEnforcer()
-                # 假設有 validate 方法
-                if hasattr(enforcer, 'validate'):
-                    # Create a test operation for validation
-                    test_operation = {
-                        "type": "validation_test",
-                        "files": ["ecosystem/enforce.py"],
-                        "content": "test content for validation",
-                        "evidence_links": [
-                            "[證據: ecosystem/enforce.py#L1-L100]",
-                            "[證據: ecosystem/enforcers/governance_enforcer.py#L1-L100]"
-                        ]
-                    }
-                    result = enforcer.validate(test_operation)
-                    return True, f"治理檢查通過 (狀態: {result.status}, 違規數: {len(result.violations)})"
-                else:
-                    return True, "治理執行器已載入（無 validate 方法）"
-            else:
-                return True, "治理執行器已載入（找不到 GovernanceEnforcer 類）"
-        else:
-            return False, "無法載入治理執行器"
-    except Exception as e:
-        return False, f"執行治理檢查時發生錯誤: {str(e)}"
-
-def run_self_auditor() -> Tuple[bool, str]:
-    """執行自我審計器"""
-    auditor_path = ECOSYSTEM_ROOT / "enforcers" / "self_auditor.py"
-    
-    if not check_file_exists(auditor_path):
-        return False, f"找不到自我審計器: {auditor_path}"
-    
-    try:
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("self_auditor", auditor_path)
-        if spec and spec.loader:
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
+            # 檢查必要的證據文件
+            event_stream = gov_dir / "event-stream.jsonl"
+            if not event_stream.exists():
+                violations.append(Violation(
+                    rule_id="GL70-EVIDENCE-001",
+                    file_path=str(gov_dir.relative_to(self.workspace)),
+                    line_number=None,
+                    message="缺少 event-stream.jsonl 證據文件",
+                    severity="MEDIUM",
+                    suggestion="創建 event-stream.jsonl 來記錄治理事件"
+                ))
+        
+        # 檢查審計日誌目錄
+        audit_logs_dir = self.ecosystem / "logs" / "audit-logs"
+        if audit_logs_dir.exists():
+            log_files = list(audit_logs_dir.rglob("*.json"))
+            files_scanned += len(log_files)
             
-            if hasattr(module, 'SelfAuditor'):
-                auditor = module.SelfAuditor()
-                if hasattr(auditor, 'audit'):
-                    # Create test contract and result for audit
-                    test_contract = {"version": "1.0.0", "metadata": {"name": "test"}}
-                    test_result = GovernanceResult(
-                        operation_id="test_op",
-                        status="PASS",
-                        violations=[],
-                        evidence_collected=[],
-                        quality_gates={"evidence_coverage": True},
-                        timestamp="2026-02-02T00:00:00"
-                    )
-                    result = auditor.audit(test_contract, test_result)
-                    return True, f"自我審計通過 (狀態: {result.status}, 違規數: {result.violations_found})"
+            if len(log_files) == 0:
+                violations.append(Violation(
+                    rule_id="GL70-EVIDENCE-002",
+                    file_path=str(audit_logs_dir.relative_to(self.workspace)),
+                    line_number=None,
+                    message="審計日誌目錄為空",
+                    severity="LOW",
+                    suggestion="確保審計日誌正在被記錄"
+                ))
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return EnforcementResult(
+            check_name="Evidence Chain",
+            passed=len([v for v in violations if v.severity == "CRITICAL"]) == 0,
+            message=f"檢查 {files_scanned} 個證據源，發現 {len(violations)} 個問題",
+            violations=violations,
+            files_scanned=files_scanned,
+            execution_time_ms=int(elapsed)
+        )
+
+    def check_governance_enforcer(self) -> EnforcementResult:
+        """檢查治理執行器是否正常工作"""
+        start_time = datetime.now()
+        violations = []
+        
+        enforcer_path = self.ecosystem / "enforcers" / "governance_enforcer.py"
+        
+        if not enforcer_path.exists():
+            return EnforcementResult(
+                check_name="Governance Enforcer",
+                passed=False,
+                message="治理執行器文件不存在",
+                violations=[Violation(
+                    rule_id="MNGA-ENFORCER-001",
+                    file_path="ecosystem/enforcers/governance_enforcer.py",
+                    line_number=None,
+                    message="治理執行器文件缺失",
+                    severity="CRITICAL",
+                    suggestion="創建 governance_enforcer.py"
+                )],
+                files_scanned=0,
+                execution_time_ms=0
+            )
+        
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("governance_enforcer", enforcer_path)
+            if spec and spec.loader:
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                
+                if not hasattr(module, 'GovernanceEnforcer'):
+                    violations.append(Violation(
+                        rule_id="MNGA-ENFORCER-002",
+                        file_path="ecosystem/enforcers/governance_enforcer.py",
+                        line_number=None,
+                        message="GovernanceEnforcer 類不存在",
+                        severity="CRITICAL",
+                        suggestion="定義 GovernanceEnforcer 類"
+                    ))
                 else:
-                    return True, "自我審計器已載入（無 audit 方法）"
-            else:
-                return True, "自我審計器已載入（找不到 SelfAuditor 類）"
-        else:
-            return False, "無法載入自我審計器"
-    except Exception as e:
-        return False, f"執行自我審計時發生錯誤: {str(e)}"
+                    enforcer = module.GovernanceEnforcer()
+                    
+                    # 檢查必要的方法
+                    required_methods = ['before_operation', 'after_operation', 'check_gates']
+                    for method in required_methods:
+                        if not hasattr(enforcer, method):
+                            violations.append(Violation(
+                                rule_id="MNGA-ENFORCER-003",
+                                file_path="ecosystem/enforcers/governance_enforcer.py",
+                                line_number=None,
+                                message=f"缺少必要方法: {method}",
+                                severity="HIGH",
+                                suggestion=f"實現 {method} 方法"
+                            ))
+                    
+                    # 嘗試執行 before_operation
+                    if hasattr(enforcer, 'before_operation'):
+                        try:
+                            # 創建測試操作 - 使用正確的參數
+                            if hasattr(module, 'Operation'):
+                                test_op = module.Operation(
+                                    name="test_operation",
+                                    type="validation",
+                                    parameters={"test": True},
+                                    timestamp=datetime.now(timezone.utc).isoformat()
+                                )
+                                result = enforcer.before_operation(test_op)
+                                if result is None:
+                                    violations.append(Violation(
+                                        rule_id="MNGA-ENFORCER-004",
+                                        file_path="ecosystem/enforcers/governance_enforcer.py",
+                                        line_number=None,
+                                        message="before_operation 返回 None",
+                                        severity="MEDIUM",
+                                        suggestion="確保 before_operation 返回有效的執行計劃"
+                                    ))
+                        except Exception as e:
+                            violations.append(Violation(
+                                rule_id="MNGA-ENFORCER-005",
+                                file_path="ecosystem/enforcers/governance_enforcer.py",
+                                line_number=None,
+                                message=f"before_operation 執行失敗: {str(e)[:100]}",
+                                severity="HIGH",
+                                suggestion="修復 before_operation 方法"
+                            ))
+                            
+        except Exception as e:
+            violations.append(Violation(
+                rule_id="MNGA-ENFORCER-006",
+                file_path="ecosystem/enforcers/governance_enforcer.py",
+                line_number=None,
+                message=f"無法載入治理執行器: {str(e)[:100]}",
+                severity="CRITICAL",
+                suggestion="修復模組導入錯誤"
+            ))
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return EnforcementResult(
+            check_name="Governance Enforcer",
+            passed=len([v for v in violations if v.severity == "CRITICAL"]) == 0,
+            message=f"治理執行器檢查完成，發現 {len(violations)} 個問題",
+            violations=violations,
+            files_scanned=1,
+            execution_time_ms=int(elapsed)
+        )
 
-def run_pipeline_integration() -> Tuple[bool, str]:
-    """執行管道整合檢查"""
-    pipeline_path = ECOSYSTEM_ROOT / "enforcers" / "pipeline_integration.py"
-    
-    if not check_file_exists(pipeline_path):
-        return False, f"找不到管道整合器: {pipeline_path}"
-    
-    try:
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("pipeline_integration", pipeline_path)
-        if spec and spec.loader:
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            
-            if hasattr(module, 'PipelineIntegrator'):
-                integrator = module.PipelineIntegrator()
-                if hasattr(integrator, 'check'):
-                    result = integrator.check()
-                    return True, "管道整合檢查通過" if result else "管道整合檢查失敗"
+    def check_self_auditor(self) -> EnforcementResult:
+        """檢查自我審計器是否正常工作"""
+        start_time = datetime.now()
+        violations = []
+        
+        auditor_path = self.ecosystem / "enforcers" / "self_auditor.py"
+        
+        if not auditor_path.exists():
+            return EnforcementResult(
+                check_name="Self Auditor",
+                passed=False,
+                message="自我審計器文件不存在",
+                violations=[Violation(
+                    rule_id="MNGA-AUDITOR-001",
+                    file_path="ecosystem/enforcers/self_auditor.py",
+                    line_number=None,
+                    message="自我審計器文件缺失",
+                    severity="CRITICAL",
+                    suggestion="創建 self_auditor.py"
+                )],
+                files_scanned=0,
+                execution_time_ms=0
+            )
+        
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("self_auditor", auditor_path)
+            if spec and spec.loader:
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                
+                if not hasattr(module, 'SelfAuditor'):
+                    violations.append(Violation(
+                        rule_id="MNGA-AUDITOR-002",
+                        file_path="ecosystem/enforcers/self_auditor.py",
+                        line_number=None,
+                        message="SelfAuditor 類不存在",
+                        severity="CRITICAL",
+                        suggestion="定義 SelfAuditor 類"
+                    ))
                 else:
-                    return True, "管道整合器已載入（無 check 方法）"
-            else:
-                return True, "管道整合器已載入（找不到 PipelineIntegrator 類）"
-        else:
-            return False, "無法載入管道整合器"
-    except Exception as e:
-        return False, f"執行管道整合檢查時發生錯誤: {str(e)}"
+                    auditor = module.SelfAuditor()
+                    
+                    # 檢查必要的方法
+                    required_methods = ['audit_operation', 'generate_audit_report', 'scan_audit_logs']
+                    for method in required_methods:
+                        if not hasattr(auditor, method):
+                            violations.append(Violation(
+                                rule_id="MNGA-AUDITOR-003",
+                                file_path="ecosystem/enforcers/self_auditor.py",
+                                line_number=None,
+                                message=f"缺少必要方法: {method}",
+                                severity="HIGH",
+                                suggestion=f"實現 {method} 方法"
+                            ))
+                    
+                    # 嘗試執行 audit_operation
+                    if hasattr(auditor, 'audit_operation'):
+                        try:
+                            test_data = {
+                                "operation_id": "test_001",
+                                "type": "validation",
+                                "timestamp": datetime.now(timezone.utc).isoformat()
+                            }
+                            result = auditor.audit_operation(test_data)
+                            if result is None:
+                                violations.append(Violation(
+                                    rule_id="MNGA-AUDITOR-004",
+                                    file_path="ecosystem/enforcers/self_auditor.py",
+                                    line_number=None,
+                                    message="audit_operation 返回 None",
+                                    severity="MEDIUM",
+                                    suggestion="確保 audit_operation 返回有效的審計結果"
+                                ))
+                        except Exception as e:
+                            violations.append(Violation(
+                                rule_id="MNGA-AUDITOR-005",
+                                file_path="ecosystem/enforcers/self_auditor.py",
+                                line_number=None,
+                                message=f"audit_operation 執行失敗: {str(e)[:100]}",
+                                severity="HIGH",
+                                suggestion="修復 audit_operation 方法"
+                            ))
+                            
+        except Exception as e:
+            violations.append(Violation(
+                rule_id="MNGA-AUDITOR-006",
+                file_path="ecosystem/enforcers/self_auditor.py",
+                line_number=None,
+                message=f"無法載入自我審計器: {str(e)[:100]}",
+                severity="CRITICAL",
+                suggestion="修復模組導入錯誤"
+            ))
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return EnforcementResult(
+            check_name="Self Auditor",
+            passed=len([v for v in violations if v.severity == "CRITICAL"]) == 0,
+            message=f"自我審計器檢查完成，發現 {len(violations)} 個問題",
+            violations=violations,
+            files_scanned=1,
+            execution_time_ms=int(elapsed)
+        )
 
-def check_gl_compliance() -> Tuple[bool, str]:
-    """檢查 GL 合規性"""
-    print_info("檢查 GL 治理合規性...")
-    
-    # 檢查關鍵治理文件
-    governance_files = [
-        ECOSYSTEM_ROOT / "governance" / "governance-manifest.yaml",
-        ECOSYSTEM_ROOT / "contracts",
-        ECOSYSTEM_ROOT / "governance",
-    ]
-    
-    missing_files = []
-    for file in governance_files:
-        if not file.exists():
-            missing_files.append(str(file))
-    
-    if missing_files:
-        return False, f"缺少關鍵治理文件: {', '.join(missing_files)}"
-    
-    return True, "GL 治理文件完整"
 
+# ============================================================================
+# 主程序
+# ============================================================================
 
 def parse_args():
     """Parse command line arguments"""
     import argparse
     
     parser = argparse.ArgumentParser(
-        description="Ecosystem Governance Enforcement - 生態系統治理強制執行"
+        description="MNGA Ecosystem Governance Enforcement - 生態系統治理強制執行"
     )
     parser.add_argument(
         "--audit",
@@ -246,39 +642,55 @@ def parse_args():
         type=str,
         help="Output file for audit report"
     )
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Strict mode - fail on any violation"
+    )
     
     return parser.parse_args()
 
 
-def generate_audit_report(results: List[Tuple[str, bool, str]], args) -> dict:
+def generate_audit_report(results: List[EnforcementResult], args) -> dict:
     """Generate audit report in JSON format"""
-    from datetime import datetime, timezone
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    all_violations = []
+    for result in results:
+        all_violations.extend([asdict(v) for v in result.violations])
     
-    violations = []
-    for name, success, message in results:
-        if not success:
-            violations.append({
-                "rule_id": name.replace(" ", "-").upper(),
-                "file": "ecosystem",
-                "message": message,
-                "severity": "HIGH" if "CRITICAL" in message else "MEDIUM",
-                "suggestion": f"Fix {name} issue"
-            })
+    total_passed = sum(1 for r in results if r.passed)
+    total_failed = len(results) - total_passed
     
     return {
         "timestamp": timestamp,
-        "version": "1.0.0",
-        "status": "PASS" if all(s for _, s, _ in results) else "FAIL",
-        "total_checks": len(results),
-        "passed": sum(1 for _, s, _ in results if s),
-        "failed": sum(1 for _, s, _ in results if not s),
-        "violations": violations,
+        "version": "2.0.0",
+        "status": "PASS" if total_failed == 0 else "FAIL",
+        "summary": {
+            "total_checks": len(results),
+            "passed": total_passed,
+            "failed": total_failed,
+            "total_violations": len(all_violations),
+            "critical_violations": len([v for v in all_violations if v.get('severity') == 'CRITICAL']),
+            "high_violations": len([v for v in all_violations if v.get('severity') == 'HIGH']),
+        },
+        "checks": [
+            {
+                "name": r.check_name,
+                "passed": r.passed,
+                "message": r.message,
+                "files_scanned": r.files_scanned,
+                "execution_time_ms": r.execution_time_ms,
+                "violations_count": len(r.violations)
+            }
+            for r in results
+        ],
+        "violations": all_violations,
         "metadata": {
             "ecosystem_root": str(ECOSYSTEM_ROOT),
-            "audit_mode": args.audit if hasattr(args, 'audit') else False,
-            "auto_fix": args.auto_fix if hasattr(args, 'auto_fix') else False
+            "workspace_root": str(WORKSPACE_ROOT),
+            "audit_mode": getattr(args, 'audit', False),
+            "strict_mode": getattr(args, 'strict', False)
         }
     }
 
@@ -287,153 +699,92 @@ def main() -> int:
     """主程序"""
     args = parse_args()
     
-    print_header("🛡️  生態系統治理強制執行")
+    print_header("🛡️  MNGA 生態系統治理強制執行 v2.0")
     
     print_info(f"Ecosystem Root: {ECOSYSTEM_ROOT}")
-    print_info(f"Working Directory: {Path.cwd()}")
+    print_info(f"Workspace Root: {WORKSPACE_ROOT}")
     
     if args.audit:
         print_info("Audit mode: ENABLED")
-    if args.auto_fix:
-        print_info("Auto-fix mode: ENABLED")
+    if args.strict:
+        print_info("Strict mode: ENABLED")
     if args.dry_run:
         print_info("Dry-run mode: ENABLED")
     
-    # 追蹤結果
-    results: List[Tuple[str, bool, str]] = []
+    # 創建強制執行器
+    enforcer = MNGAEnforcer(WORKSPACE_ROOT)
     
-    # 步驟 1: GL 合規性檢查
-    print_step(1, "檢查 GL 合規性...")
-    success, message = check_gl_compliance()
-    results.append(("GL Compliance", success, message))
-    if success:
-        print_success(message)
-    else:
-        print_warning(message)
+    # 執行所有檢查
+    print_step(1, "執行 MNGA 治理檢查...")
+    results = enforcer.run_all_checks()
     
-    # 步驟 2: 治理執行器
-    print_step(2, "執行治理強制執行器...")
-    success, message = run_governance_enforcer()
-    results.append(("Governance Enforcer", success, message))
-    if success:
-        print_success(message)
-    else:
-        print_error(message)
-    
-    # 步驟 3: 自我審計
-    print_step(3, "執行自我審計...")
-    success, message = run_self_auditor()
-    results.append(("Self Auditor", success, message))
-    if success:
-        print_success(message)
-    else:
-        print_error(message)
-    
-    # 步驟 4: 管道整合
-    print_step(4, "執行管道整合檢查...")
-    success, message = run_pipeline_integration()
-    results.append(("Pipeline Integration", success, message))
-    if success:
-        print_success(message)
-    else:
-        print_error(message)
-    
-    # Generate audit report
-    audit_report = generate_audit_report(results, args)
-    
-    # Save audit report if requested
-    if args.output or args.audit:
-        import json
-        from datetime import datetime
-        
-        reports_dir = ECOSYSTEM_ROOT.parent / "reports"
-        reports_dir.mkdir(parents=True, exist_ok=True)
-        
-        output_path = args.output if args.output else str(
-            reports_dir / f"audit_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        )
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(audit_report, f, indent=2, ensure_ascii=False)
-        
-        print_info(f"Audit report saved to: {output_path}")
-    
-    # Run auto-fix if enabled and violations found
-    if args.auto_fix and audit_report["violations"]:
-        print_step(5, "執行自動修復...")
-        
-        try:
-            # Add ecosystem directory to path for imports
-            sys.path.insert(0, str(ECOSYSTEM_ROOT))
-            from autofix_engine import AutoFixEngine, Violation
-            
-            engine = AutoFixEngine(
-                project_root=str(ECOSYSTEM_ROOT.parent),
-                safe_mode=args.dry_run
-            )
-            
-            # Convert violations to Violation objects
-            violations = [
-                Violation(
-                    rule_id=v["rule_id"],
-                    file=v["file"],
-                    message=v["message"],
-                    severity=v["severity"],
-                    suggestion=v["suggestion"]
-                )
-                for v in audit_report["violations"]
-            ]
-            
-            fix_report = engine.fix_violations(violations)
-            
-            if fix_report.fixed_count > 0:
-                print_success(f"Fixed {fix_report.fixed_count} violations")
-            else:
-                print_info("No violations could be automatically fixed")
-                
-        except ImportError:
-            print_warning("AutoFix engine not available")
-        except Exception as e:
-            print_error(f"Auto-fix failed: {str(e)}")
-    
-    # JSON output
-    if args.json:
-        import json
-        print(json.dumps(audit_report, indent=2, ensure_ascii=False))
-        return 0 if audit_report["status"] == "PASS" else 1
-    
-    # 總結
+    # 打印結果
     print_header("📊 檢查結果總結")
-    
-    passed = sum(1 for _, success, _ in results if success)
-    total = len(results)
     
     print(f"\n{'檢查項目':<25} {'狀態':<10} {'訊息'}")
     print("-" * 70)
-    for name, success, message in results:
-        status = f"{Colors.GREEN}✅ PASS{Colors.END}" if success else f"{Colors.RED}❌ FAIL{Colors.END}"
-        print(f"{name:<25} {status:<20} {message}")
     
-    print("\n" + "=" * 70)
+    total_passed = 0
+    total_failed = 0
     
-    if passed == total:
-        print_success(f"所有檢查通過 ({passed}/{total})")
+    for result in results:
+        if result.passed:
+            status = f"{Colors.GREEN}✅ PASS{Colors.END}"
+            total_passed += 1
+        else:
+            status = f"{Colors.RED}❌ FAIL{Colors.END}"
+            total_failed += 1
+        
+        print(f"{result.check_name:<25} {status:<20} {result.message}")
+        
+        # 顯示違規詳情
+        if result.violations and (args.audit or not result.passed):
+            for v in result.violations[:5]:  # 最多顯示 5 個
+                severity_color = Colors.RED if v.severity == "CRITICAL" else Colors.YELLOW if v.severity == "HIGH" else Colors.CYAN
+                print(f"  {severity_color}[{v.severity}]{Colors.END} {v.file_path}: {v.message}")
+            if len(result.violations) > 5:
+                print(f"  ... 還有 {len(result.violations) - 5} 個違規")
+    
+    print("=" * 70)
+    
+    # 總結
+    if total_failed == 0:
+        print_success(f"所有檢查通過 ({total_passed}/{len(results)})")
         print_info("生態系統治理合規性: ✅ 完全符合")
-        return 0
     else:
-        print_error(f"部分檢查失敗 ({passed}/{total})")
-        print_warning("請修復失敗的檢查項目後再繼續")
-        return 1
+        print_error(f"檢查失敗 ({total_failed}/{len(results)})")
+        print_warning("生態系統治理合規性: ❌ 需要修復")
+    
+    # 生成審計報告
+    if args.audit or args.output:
+        report = generate_audit_report(results, args)
+        
+        # 保存報告
+        reports_dir = WORKSPACE_ROOT / "reports"
+        reports_dir.mkdir(exist_ok=True)
+        
+        report_file = args.output if args.output else f"audit_report_{report['timestamp']}.json"
+        report_path = reports_dir / report_file
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
+        
+        print_info(f"Audit report saved to: {report_path}")
+    
+    # JSON 輸出
+    if args.json:
+        report = generate_audit_report(results, args)
+        print(json.dumps(report, indent=2, ensure_ascii=False))
+    
+    # 返回碼
+    if args.strict:
+        # 嚴格模式：任何違規都失敗
+        all_violations = sum(len(r.violations) for r in results)
+        return 1 if all_violations > 0 else 0
+    else:
+        # 正常模式：只有關鍵違規才失敗
+        return 1 if total_failed > 0 else 0
+
 
 if __name__ == "__main__":
-    try:
-        exit_code = main()
-        sys.exit(exit_code)
-    except KeyboardInterrupt:
-        print_warning("\n檢查被用戶中斷")
-        sys.exit(130)
-    except Exception as e:
-        print_error(f"發生未預期的錯誤: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+    sys.exit(main())
