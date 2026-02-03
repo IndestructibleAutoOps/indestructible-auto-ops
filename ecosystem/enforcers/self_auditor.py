@@ -1,3 +1,9 @@
+#
+# @GL-governed
+# @GL-layer: GL40-49
+# @GL-semantic: governance-self-audit
+#
+
 """
 SelfAuditor - GL治理執行層的自我審計組件
 

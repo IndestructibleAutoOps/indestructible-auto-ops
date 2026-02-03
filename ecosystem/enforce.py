@@ -242,6 +242,14 @@ class MNGAEnforcer:
         violations = []
         files_scanned = 0
         
+        # Python 模組目錄例外（必須使用下劃線）
+        python_module_exceptions = [
+            'dual_path',  # 推理系統核心模組
+            'path_tools',  # 工具模組
+            'site_packages',
+            'dist_packages',
+        ]
+        
         # 檢查目錄命名
         for dir_path in self.workspace.rglob("*"):
             if dir_path.is_dir() and not any(p in str(dir_path) for p in ['.git', '__pycache__', 'node_modules', '.venv']):
@@ -250,8 +258,19 @@ class MNGAEnforcer:
                 
                 # 檢查是否包含下劃線（應該用連字符）
                 if '_' in dir_name and not dir_name.startswith('__'):
-                    # 排除 Python 特殊目錄
+                    # 排除 Python 特殊目錄和模組
                     if not dir_name.startswith('.') and dir_name not in ['__pycache__', 'site-packages']:
+                        # 檢查是否是 Python 模組例外
+                        if dir_name in python_module_exceptions:
+                            continue  # 跳過 Python 模組目錄
+                        
+                        # 檢查目錄是否包含 Python 文件（可能是模組）
+                        has_python_files = any(dir_path.glob("*.py"))
+                        has_init = (dir_path / "__init__.py").exists()
+                        
+                        if has_init:
+                            continue  # 跳過 Python 包目錄
+                        
                         violations.append(Violation(
                             rule_id="GL20-NAMING-001",
                             file_path=str(dir_path.relative_to(self.workspace)),
@@ -286,8 +305,8 @@ class MNGAEnforcer:
         
         for ext in text_extensions:
             for file_path in self.workspace.rglob(f"*{ext}"):
-                # 排除特定目錄
-                if any(p in str(file_path) for p in ['.git', 'node_modules', '__pycache__', 'outputs', 'summarized_conversations']):
+                # 排除特定目錄（包括敏感數據目錄）
+                if any(p in str(file_path) for p in ['.git', 'node_modules', '__pycache__', 'outputs', 'summarized_conversations', 'summarized-conversations']):
                     continue
                 
                 files_scanned += 1
@@ -650,7 +669,7 @@ class MNGAEnforcer:
             
             # Layer 3: Indexes
             "ecosystem/indexes/internal": {
-                "required_dirs": ["code_vectors", "docs_index"],
+                "required_dirs": ["code-vectors", "docs-index"],
                 "description": "內部索引"
             },
             "ecosystem/indexes/external": {

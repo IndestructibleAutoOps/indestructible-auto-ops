@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL70-79
+# @GL-semantic: audit-trail-query
+#
+
 
 """
 GL Audit Trail Query Tool

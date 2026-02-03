@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL30-39
+# @GL-semantic: governance-enforcement
+#
+
 """
 GL Governance Enforcer
 ======================
