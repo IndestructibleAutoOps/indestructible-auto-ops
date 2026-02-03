@@ -1,0 +1,85 @@
+# GL Arbitration Rules - API
+# Version: 1.0.0
+
+@GL-semantic: arbitration-api-rules
+@GL-audit-trail: enabled
+
+rules:
+  - rule_id: "API001"
+    name: "CODE_STYLE_PREFERENCE"
+    priority: MEDIUM
+    decision: INTERNAL
+    confidence_threshold: 0.7
+    description: |
+      For code style preferences, prefer internal sources to maintain
+      consistency with project coding standards.
+    
+    conditions:
+      - field: task_type
+        operator: equals
+        value: style_check
+        
+      - field: internal_confidence
+        operator: greater_than
+        value: 0.7
+        
+    reasoning: |
+      Internal style guides ensure consistency across the codebase.
+      External sources may suggest different styles that conflict with
+      project standards.
+      
+    @evidence: [internal: style-guide.md#L1-L100]
+    
+  - rule_id: "API002"
+    name: "GL_PLATFORM_API"
+    priority: HIGH
+    decision: INTERNAL
+    confidence_threshold: 0.8
+    description: |
+      For GL platform APIs, always prefer internal sources as they are
+      the authoritative source of truth.
+    
+    conditions:
+      - field: module
+        operator: starts_with
+        value: gl-
+        
+      - field: task_type
+        operator: equals
+        value: api_usage
+        
+    reasoning: |
+      GL platform APIs are defined internally. External documentation may
+      be outdated or incomplete. Internal sources are authoritative.
+      
+    @evidence: [internal: gl-platform-api-spec.yaml#L1-L200]
+    
+  - rule_id: "API003"
+    name: "EXTERNAL_LIBRARY_USAGE"
+    priority: LOW
+    decision: EXTERNAL
+    confidence_threshold: 0.7
+    description: |
+      For external library usage, prefer external documentation sources
+      as they provide official API references.
+    
+    conditions:
+      - field: library_type
+        operator: equals
+        value: external
+        
+      - field: task_type
+        operator: equals
+        value: api_usage
+        
+    reasoning: |
+      External libraries have official documentation that is more
+      reliable than internal examples or StackOverflow answers.
+      
+    @evidence: [external: official-library-docs#L1-L150]
+
+metadata:
+  version: "1.0.0"
+  created: "2026-02-03"
+  modified: "2026-02-03"
+  @governance: GL-UNIFIED-NAMING-CHARTER

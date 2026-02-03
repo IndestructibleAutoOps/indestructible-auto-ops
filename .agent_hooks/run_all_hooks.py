@@ -1,10 +1,4 @@
 #!/usr/local/bin/python3
-# @GL-governed
-# @GL-layer: common
-# @GL-semantic: run_all_hooks
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
 """
 Run all hooks in a given directory by hook type.
 The hook type is the name of the directory in the `BASE_DIR` directory (default: /workspace/.agent_hooks).
@@ -22,13 +16,6 @@ Usage:
 This will run all hooks in the `shutdown` directory.
 """
 
-"""
-Module docstring
-================
-
-This module is part of the GL governance framework.
-Please add specific module documentation here.
-"""
 import logging
 import os
 import subprocess
@@ -106,5 +93,5 @@ if __name__ == "__main__":
     try:
         main()
     except Exception:
-        logger.exception("Error running hooks")
+        logger.exception(f"Error running hooks")
         sys.exit(1)

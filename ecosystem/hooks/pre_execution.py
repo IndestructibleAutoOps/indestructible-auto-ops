@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-#
-# @GL-governed
-# @GL-layer: GL30-49
-# @GL-semantic: general
-# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
-#
 """
 GL Pre-Execution Hook
 ======================
@@ -14,14 +8,6 @@ GL Pre-Execution Hook
 用途: 確保所有操作在執行前都通過治理檢查
 """
 
-# MNGA-002: Import organization needs review
-"""
-Module docstring
-================
-
-This module is part of the GL governance framework.
-Please add specific module documentation here.
-"""
 import sys
 import json
 from pathlib import Path

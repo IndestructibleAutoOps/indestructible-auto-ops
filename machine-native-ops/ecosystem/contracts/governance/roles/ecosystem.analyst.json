@@ -1,0 +1,161 @@
+{
+  "$schema": "../role.schema.json",
+  "id": "ecosystem.analyst",
+  "name": "Ecosystem Analyst",
+  "version": "1.0.0",
+  "description": "Detects drift, semantic inconsistencies, evidence gaps, and metadata gaps across all artifacts in the MNGA ecosystem with zero-tolerance for compliance violations",
+  "capabilities": [
+    "drift_detection",
+    "semantic_inconsistency_detection",
+    "evidence_gap_detection",
+    "metadata_gap_detection"
+  ],
+  "inputs": {
+    "parameters": {
+      "target": {
+        "type": "string",
+        "description": "Artifact or directory to analyze",
+        "required": true
+      },
+      "analysis_scope": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["drift", "semantic", "evidence", "metadata", "all"]
+        },
+        "description": "Scope of analysis to perform",
+        "default": ["all"]
+      },
+      "severity_threshold": {
+        "type": "string",
+        "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"],
+        "description": "Minimum severity level to report",
+        "default": "LOW"
+      },
+      "comparison_baseline": {
+        "type": "string",
+        "description": "Baseline reference for drift detection (commit, tag, or path)",
+        "default": null
+      }
+    },
+    "required": ["target"]
+  },
+  "outputs": {
+    "format": "json",
+    "schema": {
+      "analysis_summary": {
+        "type": "object",
+        "properties": {
+          "total_issues": {"type": "integer"},
+          "critical_issues": {"type": "integer"},
+          "high_issues": {"type": "integer"},
+          "medium_issues": {"type": "integer"},
+          "low_issues": {"type": "integer"},
+          "analysis_timestamp": {"type": "string"}
+        }
+      },
+      "drift_analysis": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Detected drift from baseline"
+      },
+      "semantic_issues": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Semantic inconsistencies found"
+      },
+      "evidence_gaps": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Missing or incomplete evidence chains"
+      },
+      "metadata_gaps": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Missing metadata fields"
+      },
+      "remediation_actions": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Suggested remediation actions"
+      }
+    }
+  },
+  "runtime_behavior": {
+    "execution_mode": "synchronous",
+    "timeout": 180,
+    "retry_policy": {
+      "max_retries": 0,
+      "backoff": "none"
+    },
+    "hooks": {
+      "pre_execute": "scripts/analyst_pre_hook.sh",
+      "post_execute": "scripts/analyst_post_hook.sh"
+    }
+  },
+  "semantic_tags": [
+    "detection",
+    "validation",
+    "compliance",
+    "drift",
+    "analysis"
+  ],
+  "governance_rules": {
+    "permissions": [
+      "artifact:read",
+      "drift:analyze",
+      "semantic:validate",
+      "evidence:audit",
+      "metadata:check"
+    ],
+    "constraints": [
+      {
+        "type": "ZERO_TOLERANCE_CRITICAL",
+        "rule": "must block on any CRITICAL severity issue",
+        "severity": "CRITICAL"
+      },
+      {
+        "type": "EVIDENCE_COVERAGE",
+        "rule": "evidence coverage must be >= 90% for production artifacts",
+        "severity": "CRITICAL"
+      },
+      {
+        "type": "SEMANTIC_INTEGRITY",
+        "rule": "semantic tags must match actual content",
+        "severity": "HIGH"
+      },
+      {
+        "type": "METADATA_COMPLETENESS",
+        "rule": "required metadata fields must be present",
+        "severity": "HIGH"
+      }
+    ],
+    "audit_required": true,
+    "evidence_required": true
+  },
+  "dependencies": [
+    "@mnga/tools/drift-detector",
+    "@mnga/tools/semantic-analyzer",
+    "@mnga/tools/evidence-validator"
+  ],
+  "mnga_layer": "L5.5",
+  "layer_interactions": [
+    "L0",
+    "L1",
+    "L2",
+    "L3",
+    "L5",
+    "L6",
+    "L7"
+  ]
+}

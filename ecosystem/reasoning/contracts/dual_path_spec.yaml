@@ -1,0 +1,202 @@
+# GL Dual-Path Retrieval + Arbitration Specification
+# Version: 1.0.0
+# Contract Type: MNGA Layer 6 (Reasoning)
+
+spec:
+  version: "1.0.0"
+  layer: 6
+  name: "Dual-Path Retrieval + Arbitration"
+  description: |
+    Sophisticated decision-making system that combines internal and external 
+    knowledge sources through intelligent arbitration.
+
+  @GL-semantic: dual-path-retrieval-arbitration
+  @GL-audit-trail: enabled
+  @GL-boundary: reasoning-layer
+
+internal_retrieval:
+  vector_store:
+    type: chromadb
+    mode: offline  # Zero external dependencies
+    embedding_model: simulated
+    index_path: ecosystem/reasoning/data/vector_index
+    cache_size: 1000
+    
+  knowledge_graph:
+    type: neo4j
+    mode: offline  # Zero external dependencies
+    uri: simulated://localhost:7687
+    graph_path: ecosystem/reasoning/data/knowledge_graph
+    
+  sources:
+    code:
+      - python
+      - javascript
+      - go
+      - typescript
+      indexing: embeddings
+      
+    documentation:
+      - markdown
+      - yaml
+      - json
+      indexing: full_text
+      
+    governance:
+      - yaml
+      priority: highest
+      
+    history:
+      - git_commits
+      - issue_discussions
+      - design_decisions
+      
+  search_config:
+    max_results: 10
+    depth_control: 3
+    context_window: 4096
+    min_confidence: 0.7
+
+external_retrieval:
+  web_search:
+    provider: simulated
+    mode: offline  # Zero external dependencies
+    max_results: 10
+    timeout: 5000
+    
+  domain_filter:
+    enabled: true
+    mode: allowlist
+    allowed_domains:
+      - docs.python.org
+      - go.dev
+      - nodejs.org
+      - developer.mozilla.org
+      - kubernetes.io
+      - istio.io
+      - prometheus.io
+      - grafana.com
+      
+  cache:
+    enabled: true
+    ttl: 3600
+    max_size: 10000
+    path: ecosystem/reasoning/data/external_cache
+    
+  ranking:
+    method: confidence_based
+    min_confidence: 0.75
+
+arbitration:
+  default_strategy: confidence_based
+  fallback_strategy: hybrid
+  
+  confidence_threshold:
+    internal: 0.8
+    external: 0.85
+    hybrid: 0.75
+    reject: 0.6
+    
+  rules_path: ecosystem/reasoning/dual_path/arbitration/rules
+  
+  decision_types:
+    - INTERNAL
+    - EXTERNAL
+    - HYBRID
+    - REJECT
+    
+  merge_strategy:
+    method: weighted_average
+    internal_weight: 0.6
+    external_weight: 0.4
+
+traceability:
+  enabled: true
+  log_path: ecosystem/reasoning/logs
+  
+  audit_fields:
+    - actor
+    - action
+    - resource
+    - result
+    - hash
+    - version
+    - request_id
+    - correlation_id
+    - ip
+    - user_agent
+    - timestamp
+    
+  timestamp_format: RFC3339
+  timezone: UTC
+  
+  export_formats:
+    - json
+    - jsonl
+    - markdown
+    
+  evidence_tracking:
+    enabled: true
+    checksum_algorithm: SHA-256
+    link_format: "[evidence: path/to/file#L10-L15]"
+
+feedback:
+  enabled: true
+  storage_path: ecosystem/reasoning/data/feedback
+  
+  feedback_types:
+    - ACCEPT
+    - REJECT
+    - MODIFY
+    - IGNORE
+    
+  analysis:
+    acceptance_rate_tracking: true
+    rejection_reason_analysis: true
+    rule_performance_metrics: true
+    threshold_optimization: true
+    
+  learning:
+    enabled: false  # Offline mode - no ML
+    manual_review: true
+
+pipeline:
+  max_concurrent_requests: 10
+  timeout: 30000
+  retry_policy:
+    max_retries: 3
+    backoff: exponential
+    
+  metrics:
+    enabled: true
+    collection_interval: 60
+    storage_path: ecosystem/reasoning/data/metrics
+    
+  monitoring:
+    enabled: true
+    alert_thresholds:
+      rejection_rate: 0.3
+      low_confidence_rate: 0.2
+      high_latency_ms: 5000
+
+validation:
+  enabled: true
+  strict_mode: true
+  
+  checks:
+    - input_validation
+    - output_validation
+    - evidence_verification
+    - consistency_check
+    
+  quality_gates:
+    min_evidence_coverage: 0.90
+    max_forbidden_phrases: 0
+    min_confidence: 0.7
+
+@governance:
+  version: "1.0.0"
+  created: "2026-02-03"
+  modified: "2026-02-03"
+  status: active
+  compliance: GL-UNIFIED-NAMING-CHARTER

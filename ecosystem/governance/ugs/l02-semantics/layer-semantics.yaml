@@ -1,0 +1,205 @@
+# @GL-semantic: org.mnga.ugs.semantics@1.0.0
+# @GL-audit-trail: enabled
+# UGS Layer 02: Semantics Specification
+# Defines semantic classification and relationships for governance specifications
+
+spec_id: org.mnga.ugs.semantics@1.0.0
+spec_type: layer-semantics
+layer: L02
+immutable: true
+
+metadata:
+  name: UGS Semantics Layer
+  version: 1.0.0
+  created_at: 2024-02-03T14:00:00Z
+  updated_at: 2024-02-03T14:00:00Z
+  author: MNGA Governance Team
+  description: |
+    Defines semantic classification system for all governance specifications.
+    Provides semantic anchors, relationships, and inheritance rules.
+
+semantic_classes:
+  # Core semantic types
+  core:
+    - id: SEM_CORE_SPEC
+      name: specification
+      description: Base semantic type for all specifications
+      parent: null
+      immutable: true
+    
+    - id: SEM_CORE_CONTRACT
+      name: contract
+      description: Binding agreement between components
+      parent: SEM_CORE_SPEC
+      immutable: true
+    
+    - id: SEM_CORE_POLICY
+      name: policy
+      description: Governance rule or constraint
+      parent: SEM_CORE_SPEC
+      immutable: true
+    
+    - id: SEM_CORE_SCHEMA
+      name: schema
+      description: Data structure definition
+      parent: SEM_CORE_SPEC
+      immutable: true
+
+  # Domain semantics
+  domain:
+    - id: SEM_DOM_GOVERNANCE
+      name: governance
+      description: Governance-related specifications
+      parent: SEM_CORE_SPEC
+      keywords: [governance, compliance, audit, control]
+    
+    - id: SEM_DOM_REASONING
+      name: reasoning
+      description: Reasoning and decision-making specifications
+      parent: SEM_CORE_SPEC
+      keywords: [reasoning, arbitration, inference, logic]
+    
+    - id: SEM_DOM_PLATFORM
+      name: platform
+      description: Platform infrastructure specifications
+      parent: SEM_CORE_SPEC
+      keywords: [platform, infrastructure, deployment, runtime]
+    
+    - id: SEM_DOM_SECURITY
+      name: security
+      description: Security-related specifications
+      parent: SEM_CORE_SPEC
+      keywords: [security, auth, encryption, vulnerability]
+
+  # Lifecycle semantics
+  lifecycle:
+    - id: SEM_LIFECYCLE_DRAFT
+      name: draft
+      description: Work-in-progress specification
+      status: active
+    
+    - id: SEM_LIFECYCLE_REVIEW
+      name: review
+      description: Under review specification
+      status: active
+    
+    - id: SEM_LIFECYCLE_APPROVED
+      name: approved
+      description: Approved for production use
+      status: active
+    
+    - id: SEM_LIFECYCLE_DEPRECATED
+      name: deprecated
+      description: No longer recommended for use
+      status: active
+    
+    - id: SEM_LIFECYCLE_RETIRED
+      name: retired
+      description: Completely removed from use
+      status: active
+
+semantic_relationships:
+  # Inheritance relationships
+  inheritance:
+    - source: SEM_CORE_CONTRACT
+      target: SEM_CORE_SPEC
+      type: extends
+    
+    - source: SEM_CORE_POLICY
+      target: SEM_CORE_SPEC
+      type: extends
+    
+    - source: SEM_CORE_SCHEMA
+      target: SEM_CORE_SPEC
+      type: extends
+    
+    - source: SEM_DOM_GOVERNANCE
+      target: SEM_CORE_SPEC
+      type: extends
+    
+    - source: SEM_DOM_REASONING
+      target: SEM_CORE_SPEC
+      type: extends
+    
+    - source: SEM_DOM_PLATFORM
+      target: SEM_CORE_SPEC
+      type: extends
+    
+    - source: SEM_DOM_SECURITY
+      target: SEM_CORE_SPEC
+      type: extends
+
+  # Dependency relationships
+  dependencies:
+    - source: SEM_DOM_GOVERNANCE
+      target: SEM_CORE_SPEC
+      type: requires
+    
+    - source: SEM_DOM_REASONING
+      target: SEM_CORE_SPEC
+      type: requires
+    
+    - source: SEM_DOM_PLATFORM
+      target: SEM_CORE_SPEC
+      type: requires
+    
+    - source: SEM_DOM_SECURITY
+      target: SEM_CORE_SPEC
+      type: requires
+
+semantic_validation:
+  rules:
+    - id: SEM_VAL_001
+      name: semantic_anchor_required
+      description: All specifications must have a semantic anchor
+      severity: error
+      rule: |
+        Every specification must declare a semantic class
+        that defines its purpose and domain.
+    
+    - id: SEM_VAL_002
+      name: semantic_inheritance_valid
+      description: Semantic inheritance must follow hierarchy
+      severity: error
+      rule: |
+        Parent semantic classes must exist and be valid.
+        Circular inheritance is not allowed.
+    
+    - id: SEM_VAL_003
+      name: semantic_lifecycle_valid
+      description: Lifecycle status must be valid
+      severity: error
+      rule: |
+        Lifecycle status must be one of: draft, review,
+        approved, deprecated, retired.
+    
+    - id: SEM_VAL_004
+      name: semantic_keywords_relevant
+      description: Keywords must be relevant to semantic class
+      severity: warning
+      rule: |
+        Keywords should be relevant to the semantic class
+        and domain they belong to.
+
+semantic_mapping:
+  # Map semantic classes to specification types
+  spec_type_mapping:
+    SEM_CORE_SPEC: [spec, specification]
+    SEM_CORE_CONTRACT: [contract, agreement, binding]
+    SEM_CORE_POLICY: [policy, rule, constraint, guideline]
+    SEM_CORE_SCHEMA: [schema, structure, definition]
+    SEM_DOM_GOVERNANCE: [governance, compliance, audit, control]
+    SEM_DOM_REASONING: [reasoning, arbitration, inference, logic]
+    SEM_DOM_PLATFORM: [platform, infrastructure, deployment, runtime]
+    SEM_DOM_SECURITY: [security, auth, encryption, vulnerability]
+
+audit_trail:
+  created_at: 2024-02-03T14:00:00Z
+  created_by: MNGA Governance Team
+  version: 1.0.0
+  checksum: sha256:pending
+  changes:
+    - version: 1.0.0
+      date: 2024-02-03T14:00:00Z
+      author: MNGA Governance Team
+      description: Initial version of UGS semantics layer

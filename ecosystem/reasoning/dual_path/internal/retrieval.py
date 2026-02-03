@@ -2,11 +2,10 @@
 Internal Retrieval Engine
 Combines vector-based semantic search with knowledge graph queries
 """
-# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib
-from typing import List, Dict, Optional
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 import yaml
 

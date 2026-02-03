@@ -2,10 +2,9 @@
 Planning Agent
 Decomposes complex tasks into executable steps
 """
-# MNGA-002: Import organization needs review
 import json
 import hashlib
-from typing import Dict, List, Optional
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 from enum import Enum
 

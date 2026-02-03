@@ -1,0 +1,144 @@
+# Unified Governance Language Specification (LDL)
+# Version: 1.0.0
+# Layer: UGS / L00-Language
+
+@GL-semantic: ugs-language-spec
+@GL-audit-trail: enabled
+
+meta_spec:
+  id: org.mnga.ugs-language@1.0.0
+  version: "1.0.0"
+  title: "Unified Governance Language (LDL)"
+  description: |
+    The unified language definition for all governance specifications.
+    This is the language root layer (L00) that defines syntax, grammar,
+    and tokenization for the entire governance ecosystem.
+  
+  extends: ["org.mnga.meta-language@1.0.0"]
+  
+  immutable: true
+  
+  governance:
+    owner: "MNGA Core Team"
+    reviewers: ["governance-council"]
+    approval: "consensus"
+
+language_definition:
+  name: "LDL"
+  version: "1.0.0"
+  type: "dsl"
+  parent_language: "yaml"
+
+syntax:
+  indentation: 2
+  line_ending: "unix"
+  encoding: "utf-8"
+  
+  comments:
+    inline: "#"
+    block: 
+      start: '"""'
+      end: '"""'
+
+grammar:
+  tokens:
+    - name: "spec_marker"
+      pattern: "^@GL-"
+      description: "Governance layer marker"
+      
+    - name: "semantic_anchor"
+      pattern: "@GL-semantic:"
+      description: "Semantic anchor marker"
+      
+    - name: "audit_trail_marker"
+      pattern: "@GL-audit-trail:"
+      description: "Audit trail marker"
+      
+    - name: "version"
+      pattern: 'version:\s*["\']?[0-9]+\.[0-9]+\.[0-9]+["\']?'
+      description: "Version declaration"
+      
+    - name: "spec_id"
+      pattern: '^\s+[a-z][a-z0-9._-]+@[0-9]+\.[0-9]+\.[0-9]+'
+      description: "Specification identifier"
+
+  rules:
+    - name: "required_markers"
+      description: "All specs must have GL markers"
+      rule: "@GL-semantic and @GL-audit-trail must be present"
+      severity: "ERROR"
+      
+    - name: "version_format"
+      description: "Version must follow SemVer"
+      rule: "version must match ^[0-9]+\\.[0-9]+\\.[0-9]+$"
+      severity: "ERROR"
+      
+    - name: "naming_convention"
+      description: "Field names must be snake_case"
+      rule: "field names must match ^[a-z][a-z0-9_]*$"
+      severity: "WARNING"
+
+ast_definition:
+  node_types:
+    - name: "SpecNode"
+      fields:
+        - name: "semantic"
+          type: "string"
+          required: true
+        - name: "audit_trail"
+          type: "boolean"
+          required: true
+        - name: "meta_spec"
+          type: "MetaSpecNode"
+          required: true
+        - name: "content"
+          type: "any"
+          required: true
+    
+    - name: "MetaSpecNode"
+      fields:
+        - name: "id"
+          type: "string"
+          required: true
+        - name: "version"
+          type: "string"
+          required: true
+        - name: "title"
+          type: "string"
+          required: true
+        - name: "description"
+          type: "string"
+          required: false
+        - name: "extends"
+          type: "array<string>"
+          required: false
+        - name: "immutable"
+          type: "boolean"
+          required: false
+        - name: "governance"
+          type: "GovernanceNode"
+          required: false
+    
+    - name: "GovernanceNode"
+      fields:
+        - name: "owner"
+          type: "string"
+          required: false
+        - name: "reviewers"
+          type: "array<string>"
+          required: false
+        - name: "approval"
+          type: "enum"
+          values: ["consensus", "majority", "owner-only"]
+          required: false
+
+extensions:
+  allowed: false
+  reason: "LDL is immutable at layer L00"
+
+compatibility:
+  min_version: "1.0.0"
+  breaking_changes:
+    - "Modifying core token definitions"
+    - "Changing AST node structures"
+    - "Removing required markers"

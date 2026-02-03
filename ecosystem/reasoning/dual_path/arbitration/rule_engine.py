@@ -2,10 +2,9 @@
 Arbitration Rule Engine
 Applies rules to make conflict resolution decisions
 """
-# MNGA-002: Import organization needs review
 import os
 import yaml
-from typing import List, Dict, Optional, Callable
+from typing import List, Dict, Any, Optional, Callable
 from datetime import datetime
 from .arbitrator import ArbitrationDecision, Decision
 
@@ -107,22 +106,18 @@ class ArbitrationRuleEngine:
         self.rules = self._load_rules(rules_path)
         
     def _load_rules(self, rules_path: Optional[str]) -> Dict:
-        """Load rules from file or directory or use defaults"""
+        """Load rules from file or use defaults"""
         if rules_path and os.path.exists(rules_path):
-            if os.path.isdir(rules_path):
-                # Load all YAML files from directory
-                import glob
-                for rule_file in glob.glob(os.path.join(rules_path, "*.yaml")):
-                    with open(rule_file, 'r') as f:
-                        custom_rules = yaml.safe_load(f)
-                        if custom_rules:
-                            self.RULES.update(custom_rules)
-            else:
-                # Load single file
-                with open(rules_path, 'r') as f:
-                    custom_rules = yaml.safe_load(f)
-                    if custom_rules:
-                        self.RULES.update(custom_rules)
+            with open(rules_path, 'r') as f:
+                custom_rules = yaml.safe_load(f)
+                if isinstance(custom_rules, dict):
+                    self.RULES.update(custom_rules)
+                elif custom_rules is not None:
+                    # Warn about invalid custom rules structure without exposing sensitive data
+                    print(
+                        "Warning: Custom rules file did not contain a mapping; "
+                        "default rules will be used."
+                    )
         return self.RULES
     
     def apply_rules(self, internal_result: Dict, 

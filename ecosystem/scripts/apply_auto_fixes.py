@@ -3,12 +3,11 @@
 Apply auto-fixes to violations
 Implements fixes for common governance violations
 """
-# MNGA-002: Import organization needs review
 import json
 import sys
 import os
 import re
-from typing import Dict
+from typing import Dict, List, Any
 from pathlib import Path
 import yaml
 
@@ -193,9 +192,6 @@ if __name__ == "__main__":
         elif args[i] == "--dry-run":
             dry_run = args[i + 1].lower() != 'false'
             i += 2
-        elif args[i].startswith("--dry-run="):
-            dry_run = args[i].split("=")[1].lower() != 'false'
-            i += 1
         else:
             i += 1
     

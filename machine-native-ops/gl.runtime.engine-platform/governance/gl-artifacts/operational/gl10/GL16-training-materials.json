@@ -1,0 +1,28 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-core
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "id": "GL16-training-materials",
+  "gllevel": "GL16",
+  "name": "GL16-training-materials",
+  "createdat": "2026-01-21T17:52:22Z",
+  "immutable": true,
+  "content": {
+    "modules": []
+  },
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL16-training-materials",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

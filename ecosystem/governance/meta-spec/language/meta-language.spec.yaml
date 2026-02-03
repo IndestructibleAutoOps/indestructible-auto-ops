@@ -1,0 +1,82 @@
+# Meta-Language Specification
+# Version: 1.0.0
+# Layer: Meta-Spec / Language
+
+@GL-semantic: meta-language-spec
+@GL-audit-trail: enabled
+
+meta_spec:
+  id: org.mnga.meta-language@1.0.0
+  version: "1.0.0"
+  title: "Meta-Language Specification"
+  description: |
+    Defines the allowable languages and syntax patterns for all governance 
+    specification files within the ecosystem.
+  
+  extends: []
+  
+  immutable: true
+  
+  governance:
+    owner: "MNGA Core Team"
+    reviewers: ["governance-council"]
+    approval: "consensus"
+  
+  languages:
+    primary:
+      - id: "yaml"
+        version: ">=1.2"
+        purpose: "configuration, metadata, specifications"
+        constraints:
+          - "Must use 2-space indentation"
+          - "Must include @GL-semantic marker"
+          - "Must include @GL-audit-trail marker"
+      
+      - id: "json"
+        version: ">=1.0"
+        purpose: "schemas, registries, contracts"
+        constraints:
+          - "Must be valid JSON"
+          - "Must include version field"
+          - "Must include checksum for integrity"
+      
+      - id: "jsonl"
+        version: ">=1.0"
+        purpose: "log aggregation, streaming data"
+        constraints:
+          - "Each line must be valid JSON"
+          - "Must include timestamp field"
+    
+    secondary:
+      - id: "markdown"
+        version: ">=1.0"
+        purpose: "documentation, reports"
+        constraints:
+          - "Must use proper headers (##, ###)"
+          - "Must include code blocks with language tags"
+          - "Must include evidence links"
+  
+  syntax_rules:
+    naming_conventions:
+      spec_id_pattern: "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+      field_name_pattern: "^[a-z][a-z0-9_]*$"
+      
+    required_fields:
+      - "@GL-semantic"
+      - "@GL-audit-trail"
+      - "version"
+      - "title"
+      
+    forbidden_patterns:
+      - "tab characters (use spaces)"
+      - "trailing whitespace"
+      - "mixed indentation (2 spaces only)"
+  
+  extensions:
+    allowed: false
+    migration_path: "Submit RFC to governance council"
+
+compatibility:
+  min_version: "1.0.0"
+  deprecated: []
+  migration_guide: "See MNGA-MIGRATION-001.md"

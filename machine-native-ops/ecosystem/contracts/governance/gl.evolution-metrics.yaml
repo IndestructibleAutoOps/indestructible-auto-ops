@@ -1,0 +1,395 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: gl-monitoring/v1
+kind: EvolutionMetricsDashboard
+metadata:
+  name: gl-process-evolution-monitor
+  version: "1.0.0"
+  refreshInterval: "5m"
+  retentionPeriod: "90d"
+  description: "GL流程自我演化系統監控儀表板"
+
+spec:
+  metrics:
+    - name: "process_maturity_index"
+      description: "流程成熟度指数"
+      formula: "(reliability + efficiency + automation_level) / 3"
+      unit: "score"
+      targetRange:
+        min: 70
+        max: 100
+        optimal: 85
+      aggregation: "avg"
+      window: "24h"
+      
+    - name: "self_evolution_rate"
+      description: "自我演化速率"
+      formula: "(upgrades_executed / execution_count) * 100"
+      unit: "percentage"
+      targetRange:
+        min: 5
+        max: 20
+        optimal: 10
+      aggregation: "rate"
+      window: "7d"
+      
+    - name: "learning_absorption_rate"
+      description: "學習吸收率"
+      formula: "(learnings_applied / learnings_generated) * 100"
+      unit: "percentage"
+      targetRange:
+        min: 60
+        max: 95
+        optimal: 80
+      aggregation: "avg"
+      window: "30d"
+      
+    - name: "failure_to_improvement_cycle"
+      description: "失敗到改進周期"
+      formula: "time_between(failure_detected, improvement_deployed)"
+      unit: "hours"
+      targetRange:
+        min: "1h"
+        max: "24h"
+        optimal: "4h"
+      aggregation: "max"
+      window: "30d"
+      
+    - name: "knowledge_compounding_factor"
+      description: "知識複合因子"
+      formula: "ln(total_knowledge_units) / ln(execution_count)"
+      unit: "factor"
+      targetRange:
+        min: 0.5
+        max: 1.5
+        optimal: 1.0
+      aggregation: "current"
+      window: "all"
+      
+    - name: "evidence_coverage"
+      description: "證據覆蓋率"
+      formula: "statements_with_evidence / total_statements"
+      unit: "percentage"
+      targetRange:
+        min: 85
+        max: 100
+        optimal: 90
+      aggregation: "avg"
+      window: "24h"
+      
+    - name: "reasoning_quality"
+      description: "推理質量"
+      formula: "avg(reasoning_confidence_scores)"
+      unit: "score"
+      targetRange:
+        min: 80
+        max: 100
+        optimal: 90
+      aggregation: "avg"
+      window: "24h"
+      
+    - name: "upgrade_success_rate"
+      description: "升級成功率"
+      formula: "successful_upgrades / total_upgrades"
+      unit: "percentage"
+      targetRange:
+        min: 90
+        max: 100
+        optimal: 95
+      aggregation: "avg"
+      window: "30d"
+
+  alerts:
+    - metric: "process_maturity_index"
+      condition: "value < 60 for 1h"
+      severity: "critical"
+      action: "trigger_emergency_upgrade"
+      notification:
+        channels:
+          - email: "governance-team@company.com"
+          - slack: "#gl-governance-alerts"
+      message: "流程成熟度指數過低，需要緊急干預"
+      
+    - metric: "process_maturity_index"
+      condition: "value < 70 for 24h"
+      severity: "warning"
+      action: "review_analysis_sensitivity"
+      notification:
+        channels:
+          - slack: "#gl-governance-ops"
+      message: "流程成熟度指數下降，建議檢查分析敏感度"
+      
+    - metric: "self_evolution_rate"
+      condition: "value < 2 for 24h"
+      severity: "warning"
+      action: "review_analysis_sensitivity"
+      notification:
+        channels:
+          - slack: "#gl-governance-ops"
+      message: "自我演化速率過低，系統可能無法適應變化"
+      
+    - metric: "self_evolution_rate"
+      condition: "value > 25 for 1h"
+      severity: "high"
+      action: "review_upgrade_frequency"
+      notification:
+        channels:
+          - email: "platform-lead@company.com"
+          - slack: "#gl-governance-alerts"
+      message: "自我演化速率過高，可能導致不穩定"
+      
+    - metric: "learning_absorption_rate"
+      condition: "value < 50 for 12h"
+      severity: "high"
+      action: "optimize_knowledge_extraction"
+      notification:
+        channels:
+          - email: "knowledge-team@company.com"
+          - slack: "#gl-governance-ops"
+      message: "學習吸收率過低，需要優化知識提取機制"
+      
+    - metric: "failure_to_improvement_cycle"
+      condition: "value > 48h"
+      severity: "critical"
+      action: "escalate_to_platform_team"
+      notification:
+        channels:
+          - email: "platform-lead@company.com"
+          - slack: "#gl-governance-alerts"
+      message: "失敗到改進周期過長，影響系統恢復能力"
+      
+    - metric: "evidence_coverage"
+      condition: "value < 80 for 1h"
+      severity: "high"
+      action: "trigger_evidence_audit"
+      notification:
+        channels:
+          - slack: "#gl-governance-ops"
+      message: "證據覆蓋率過低，可能影響決策可信度"
+
+  visualization:
+    dashboards:
+      - name: "Evolution Health"
+        layout: "grid"
+        widgets:
+          - type: "gauge"
+            metric: "process_maturity_index"
+            title: "流程成熟度"
+            size: "large"
+            colorScheme: "green-red"
+            
+          - type: "line_chart"
+            metric: "self_evolution_rate"
+            title: "自我演化趨勢"
+            size: "medium"
+            timeRange: "7d"
+            showTrend: true
+            
+          - type: "heatmap"
+            metric: "learning_absorption_rate"
+            title: "學習吸收熱圖"
+            size: "medium"
+            timeRange: "30d"
+            colorScale: "blue-green"
+            
+          - type: "sparkline"
+            metric: "evidence_coverage"
+            title: "證據覆蓋率"
+            size: "small"
+            timeRange: "24h"
+            
+      - name: "Knowledge Growth"
+        layout: "flex"
+        widgets:
+          - type: "area_chart"
+            metric: "knowledge_compounding_factor"
+            title: "知識增長曲線"
+            size: "large"
+            timeRange: "90d"
+            showForecast: true
+            
+          - type: "bar_chart"
+            metric: "failures_prevented"
+            title: "預防的失敗數"
+            size: "medium"
+            timeRange: "30d"
+            groupBy: "failure_type"
+            
+          - type: "scatter_plot"
+            x_metric: "execution_count"
+            y_metric: "process_maturity_index"
+            title: "執行vs成熟度"
+            size: "large"
+            showRegression: true
+            
+      - name: "Upgrade Performance"
+        layout: "grid"
+        widgets:
+          - type: "line_chart"
+            metric: "upgrade_success_rate"
+            title: "升級成功率"
+            size: "medium"
+            timeRange: "30d"
+            showTrend: true
+            
+          - type: "bar_chart"
+            metric: "upgrades_by_type"
+            title: "升級類型分佈"
+            size: "medium"
+            groupBy: "upgrade_type"
+            
+          - type: "table"
+            title: "最近升級"
+            size: "large"
+            columns:
+              - field: "timestamp"
+                label: "時間"
+              - field: "type"
+                label: "類型"
+              - field: "reason"
+                label: "原因"
+              - field: "success"
+                label: "成功"
+              - field: "impact"
+                label: "影響"
+            
+      - name: "Quality Metrics"
+        layout: "flex"
+        widgets:
+          - type: "gauge"
+            metric: "reasoning_quality"
+            title: "推理質量"
+            size: "medium"
+            
+          - type: "line_chart"
+            metric: "evidence_coverage"
+            title: "證據覆蓋率趨勢"
+            size: "medium"
+            timeRange: "7d"
+            
+          - type: "bar_chart"
+            metric: "forbidden_phrase_violations"
+            title: "禁用短語違規"
+            size: "medium"
+            timeRange: "24h"
+            
+          - type: "pie_chart"
+            metric: "recommendations_by_priority"
+            title: "建議優先級分佈"
+            size: "medium"
+
+  reporting:
+    schedule:
+      - report: "daily_summary"
+        time: "09:00 UTC"
+        recipients:
+          - "governance-team@company.com"
+        format: "html"
+        include:
+          - process_maturity_index
+          - self_evolution_rate
+          - evidence_coverage
+          - recent_upgrades
+          
+      - report: "weekly_analysis"
+        day: "Monday"
+        time: "10:00 UTC"
+        recipients:
+          - "platform-team@company.com"
+          - "governance-team@company.com"
+        format: "pdf"
+        include:
+          - all_metrics
+          - trend_analysis
+          - upgrade_recommendations
+          - knowledge_summary
+          
+      - report: "monthly_review"
+        day: 1
+        time: "09:00 UTC"
+        recipients:
+          - "executive-team@company.com"
+          - "platform-team@company.com"
+        format: "pdf"
+        include:
+          - executive_summary
+          - key_achievements
+          - evolution_metrics
+          - strategic_recommendations
+
+  integration:
+    dataSources:
+      - source: "gl_evolution_engine"
+        type: "internal"
+        endpoint: "http://localhost:8080/api/metrics"
+        authentication:
+          type: "bearer_token"
+          token: "${EVOLUTION_API_TOKEN}"
+          
+      - source: "gl_governance_compliance"
+        type: "internal"
+        endpoint: "http://localhost:8081/api/compliance"
+        authentication:
+          type: "bearer_token"
+          token: "${GOVERNANCE_API_TOKEN}"
+          
+    exportFormats:
+      - format: "prometheus"
+        endpoint: "/metrics"
+        enabled: true
+        
+      - format: "grafana"
+        dashboardPath: "/dashboards/gl-evolution"
+        enabled: true
+        
+      - format: "json"
+        endpoint: "/api/v1/metrics"
+        enabled: true
+
+  performance:
+    retentionPolicy:
+      rawMetrics: "7d"
+      aggregatedMetrics: "90d"
+      alertHistory: "180d"
+      
+    aggregationRules:
+      - window: "1m"
+        functions: ["avg", "max", "min", "count"]
+      - window: "5m"
+        functions: ["avg", "max", "min", "count", "percentile_95"]
+      - window: "1h"
+        functions: ["avg", "max", "min", "count", "percentile_95", "percentile_99"]
+      - window: "24h"
+        functions: ["avg", "max", "min", "count", "percentile_95", "percentile_99", "stddev"]
+        
+    queryOptimization:
+      enabled: true
+      cacheDuration: "5m"
+      indexFields:
+        - "timestamp"
+        - "metric_name"
+        - "execution_id"
+        - "upgrade_id"
+
+  security:
+    accessControl:
+      - role: "admin"
+        permissions: ["read", "write", "delete", "admin"]
+      - role: "operator"
+        permissions: ["read", "write"]
+      - role: "viewer"
+        permissions: ["read"]
+        
+    auditLogging:
+      enabled: true
+      logLevel: "info"
+      retention: "90d"
+      
+    dataEncryption:
+      atRest: true
+      inTransit: true
+      algorithm: "AES-256"

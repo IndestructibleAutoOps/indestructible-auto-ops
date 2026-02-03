@@ -1,15 +1,10 @@
 # Alertmanager Configuration for MNGA
 # Handles alert routing, grouping, and inhibition
 
-version: "1.0.0"
-metadata:
-  name: ""
-  description: ""
-  labels: {}
-
 global:
   resolve_timeout: 5m
-  slack_api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+  # Slack webhook URL must be provided via environment variable SLACK_API_URL (not committed to VCS).
+  slack_api_url: '${SLACK_API_URL}'
   pagerduty_url: 'https://events.pagerduty.com/v2/enqueue'
 
 route:

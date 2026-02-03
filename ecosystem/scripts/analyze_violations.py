@@ -3,7 +3,6 @@
 Analyze governance violations
 Determines fixable issues and categorizes them
 """
-# MNGA-002: Import organization needs review
 import json
 import sys
 from typing import Dict, List, Any
@@ -127,7 +126,7 @@ def generate_suggested_fix(violation: Dict) -> Dict:
                 "file": file_path,
                 "change_type": "insert",
                 "location": "metadata.labels",
-                "content": f'{label}: "{{ .Values.appName }}"'
+                "content": f'{label}: "{{{{ .Values.appName }}}}"'
             }
         ]
     elif v_type == 'naming_convention':

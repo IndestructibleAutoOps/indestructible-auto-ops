@@ -2,11 +2,10 @@
 Core Arbitrator
 Makes decisions between internal and external reasoning results
 """
-# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib
-from typing import List, Dict, Optional
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 import yaml
 from enum import Enum
@@ -57,17 +56,10 @@ class Arbitrator:
         self.config = self._load_config(config_path)
         self.arbitration_config = self.config["spec"]["arbitration"]
         
-        # Import rule engine
+        # Import rule engine with rules_path from config if available
         from .rule_engine import ArbitrationRuleEngine
-        from pathlib import Path
-        
-        # Get rules path from config or use default relative to module
-        rules_config = self.arbitration_config.get("rule_engine", {})
-        rules_path = rules_config.get("path")
-        if not rules_path:
-            rules_path = str(Path(__file__).parent / "rules")
-        
-        self.rule_engine = ArbitrationRuleEngine(rules_path=rules_path)
+        rules_path = self.arbitration_config.get("rules_path")
+        self.rule_engine = ArbitrationRuleEngine(rules_path=rules_path) if rules_path else ArbitrationRuleEngine()
         
     def _load_config(self, config_path: str) -> Dict:
         """Load configuration from YAML file"""
@@ -90,6 +82,12 @@ class Arbitrator:
         Returns:
             ArbitrationDecision
         """
+        # Extract key information
+        internal_confidence = internal_result.get("confidence", 0.0)
+        external_confidence = external_result.get("confidence", 0.0)
+        internal_answer = internal_result.get("answer", "")
+        external_answer = external_result.get("answer", "")
+        
         # Check for conflicts
         conflicts = self._detect_conflicts(internal_result, external_result)
         

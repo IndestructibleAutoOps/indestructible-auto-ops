@@ -1,0 +1,17 @@
+{
+  "request_id": "req-20260203125814-51a97bf5",
+  "correlation_id": "req-20260203125814-51a97bf5",
+  "actor": "test_user",
+  "action": "ARBITRATION",
+  "resource": "decision: REJECT",
+  "result": "confidence: 0.000, results: 0",
+  "metadata": {
+    "decision": "REJECT",
+    "confidence": 0.0,
+    "reasoning": "Both internal (0.00) and external (0.00) confidence below reject threshold (0.6)",
+    "results_count": 0
+  },
+  "timestamp": "2026-02-03T12:58:14Z",
+  "hash": "0c49e63c454b00b520bb927582c52b50b9e31fd3678c8a5e8f22a1bf347fff4e",
+  "evidence_links": []
+}

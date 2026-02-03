@@ -1,0 +1,22 @@
+{
+  "operation": "文件遷移",
+  "timestamp": "2026-02-01T14:28:23.764279",
+  "passed": false,
+  "findings": [
+    "GA-001: 未查詢治理合約",
+    "GA-002: 未使用驗證工具"
+  ],
+  "evidence_coverage": 0.95,
+  "violations": [
+    {
+      "rule": "GA-001",
+      "severity": "CRITICAL",
+      "description": "未查詢治理合約"
+    },
+    {
+      "rule": "GA-002",
+      "severity": "CRITICAL",
+      "description": "未使用驗證工具"
+    }
+  ]
+}

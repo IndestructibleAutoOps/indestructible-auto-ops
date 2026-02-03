@@ -241,5 +241,5 @@ status:
 	@echo "================"
 	@echo "Git branch: $$(git branch --show-current)"
 	@echo "Python version: $$(python3 --version)"
-	@echo "Virtual env: $$(if [ -d venv ]; then echo \"Active\"; else echo \"Not active\"; fi)"
-	@echo "Last enforce: $$(ls -lt ecosystem/logs/audit/*.json 2>/dev/null | head -1 | awk '{print $$6, $$7, $$8}' || echo \"Never\")"
+	@echo "Virtual env: $$(if [ -d venv ]; then echo 'Active'; else echo 'Not active'; fi)"
+	@echo "Last enforce: $$(ls -lt ecosystem/logs/audit/*.json 2>/dev/null | head -1 | awk '{print $$6, $$7, $$8}' || echo 'Never')"

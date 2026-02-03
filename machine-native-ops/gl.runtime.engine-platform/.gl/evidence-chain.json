@@ -1,0 +1,107 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL30_49-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "gl_version": "1.0",
+  "chain_id": "GL-AEP-ENGINE-EVIDENCE-CHAIN",
+  "module": "aep-engine",
+  "created": "2026-01-24T12:15:00Z",
+  "updated": "2026-01-24T12:15:00Z",
+  "root_anchor": {
+    "id": "GL-30-EXEC-AEP-ENGINE",
+    "layer": "GL-30-EXECUTION",
+    "hash": "sha256:aep-engine-root"
+  },
+  "attestations": [
+    {
+      "id": "ATT-001",
+      "type": "MODULE_REGISTERED",
+      "timestamp": "2026-01-24T12:15:00Z",
+      "anchor": "GL-30-EXEC-AEP-ENGINE",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "ATT-002",
+      "type": "SEMANTIC_ANCHORS_DEFINED",
+      "timestamp": "2026-01-24T12:15:00Z",
+      "anchor": "GL-90-META-ANCHORS",
+      "status": "VERIFIED",
+      "count": 12
+    },
+    {
+      "id": "ATT-003",
+      "type": "GOVERNANCE_MARKERS_ADDED",
+      "timestamp": "2026-01-24T12:15:00Z",
+      "anchor": "GL-10-GOV-ENGINE",
+      "status": "VERIFIED",
+      "files_count": 44
+    }
+  ],
+  "subsystems": {
+    "artifacts": {
+      "anchor": "GL-30-EXEC-ARTIFACTS",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "executor": {
+      "anchor": "GL-30-EXEC-EXECUTOR",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "governance": {
+      "anchor": "GL-10-GOV-ENGINE",
+      "files": 4,
+      "status": "REGISTERED"
+    },
+    "loader": {
+      "anchor": "GL-30-EXEC-LOADER",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "normalizer": {
+      "anchor": "GL-30-EXEC-NORMALIZER",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "parser": {
+      "anchor": "GL-30-EXEC-PARSER",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "renderer": {
+      "anchor": "GL-30-EXEC-RENDERER",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "validator": {
+      "anchor": "GL-30-EXEC-VALIDATOR",
+      "files": 3,
+      "status": "REGISTERED"
+    },
+    "tests": {
+      "anchor": "GL-50-TEST-ENGINE",
+      "files": 6,
+      "status": "REGISTERED"
+    }
+  },
+  "verification": {
+    "consistency": true,
+    "reversibility": true,
+    "provability": true
+  },
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "evidence-chain",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Charter",
+    "version": "2.0.0"
+  }
+}

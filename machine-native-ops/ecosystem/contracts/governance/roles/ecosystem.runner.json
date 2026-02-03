@@ -1,0 +1,139 @@
+{
+  "$schema": "../role.schema.json",
+  "id": "ecosystem.runner",
+  "name": "Ecosystem Runner",
+  "version": "1.0.0",
+  "description": "Responsible for scanning directories, building indexes, executing governance checks, and generating comprehensive reports for the MNGA ecosystem",
+  "capabilities": [
+    "directory_scan",
+    "index_build",
+    "governance_check",
+    "report_generation"
+  ],
+  "inputs": {
+    "parameters": {
+      "path": {
+        "type": "string",
+        "description": "Directory or file path to scan",
+        "required": true
+      },
+      "scan_depth": {
+        "type": "integer",
+        "description": "Maximum directory depth to scan",
+        "default": 10,
+        "minimum": 1,
+        "maximum": 50
+      },
+      "include_patterns": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "File patterns to include (glob patterns)",
+        "default": ["*"]
+      },
+      "exclude_patterns": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "File patterns to exclude (glob patterns)",
+        "default": ["node_modules", ".git", "dist", "build"]
+      }
+    },
+    "required": ["path"]
+  },
+  "outputs": {
+    "format": "json",
+    "schema": {
+      "scan_summary": {
+        "type": "object",
+        "properties": {
+          "total_files": {"type": "integer"},
+          "total_directories": {"type": "integer"},
+          "scan_duration_ms": {"type": "integer"},
+          "files_analyzed": {"type": "integer"}
+        }
+      },
+      "index": {
+        "type": "object",
+        "description": "Generated file and directory index"
+      },
+      "governance_results": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Governance check results"
+      },
+      "issues": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Detected issues and violations"
+      }
+    }
+  },
+  "runtime_behavior": {
+    "execution_mode": "synchronous",
+    "timeout": 300,
+    "retry_policy": {
+      "max_retries": 2,
+      "backoff": "exponential"
+    },
+    "hooks": {
+      "pre_execute": "scripts/runner_pre_hook.sh",
+      "post_execute": "scripts/runner_post_hook.sh"
+    }
+  },
+  "semantic_tags": [
+    "execution",
+    "automation",
+    "verification",
+    "scanning",
+    "indexing"
+  ],
+  "governance_rules": {
+    "permissions": [
+      "filesystem:read",
+      "filesystem:write",
+      "governance:check",
+      "report:generate"
+    ],
+    "constraints": [
+      {
+        "type": "MAX_SCAN_DEPTH",
+        "rule": "scan_depth <= 50",
+        "severity": "HIGH"
+      },
+      {
+        "type": "SCAN_TIMEOUT",
+        "rule": "scan_duration_ms <= 300000",
+        "severity": "CRITICAL"
+      },
+      {
+        "type": "EXCLUDE_SENSITIVE",
+        "rule": "exclude_patterns must include .secrets, .env",
+        "severity": "HIGH"
+      }
+    ],
+    "audit_required": true,
+    "evidence_required": true
+  },
+  "dependencies": [
+    "ecosystem.validator",
+    "@mnga/tools/scanner",
+    "@mnga/tools/indexer"
+  ],
+  "mnga_layer": "L5",
+  "layer_interactions": [
+    "L0",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L7"
+  ]
+}

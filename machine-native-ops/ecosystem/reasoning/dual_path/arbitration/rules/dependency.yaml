@@ -1,0 +1,72 @@
+# GL Arbitration Rules - Dependency
+# Version: 1.0.0
+
+@GL-semantic: arbitration-dependency-rules
+@GL-audit-trail: enabled
+
+rules:
+  - rule_id: "DEP001"
+    name: "INTERNAL_DEPENDENCY_USAGE"
+    priority: HIGH
+    decision: INTERNAL
+    confidence_threshold: 0.8
+    description: |
+      For internal dependencies, always prefer internal sources to ensure
+      compatibility and consistency.
+    
+    conditions:
+      - field: dependency_type
+        operator: equals
+        value: internal
+        
+    reasoning: |
+      Internal dependencies are part of the GL enterprise architecture.
+      Internal sources provide the correct usage patterns and versions.
+      
+    @evidence: [internal: dependency-manifest.yaml#L1-L100]
+    
+  - rule_id: "DEP002"
+    name: "THIRD_PARTY_DEPENDENCY"
+    priority: MEDIUM
+    decision: HYBRID
+    confidence_threshold: 0.7
+    description: |
+      For third-party dependencies, use hybrid approach to balance
+      internal compatibility with external best practices.
+    
+    conditions:
+      - field: dependency_type
+        operator: equals
+        value: third_party
+        
+    reasoning: |
+      Third-party dependencies need internal compatibility checks and
+      external documentation. Hybrid approach provides comprehensive view.
+      
+    @evidence: [internal: dependency-requirements.txt#L1-L50, external: pypi.org/package#L1-L100]
+    
+  - rule_id: "DEP003"
+    name: "SECURITY_PATCH_UPDATE"
+    priority: CRITICAL
+    decision: EXTERNAL
+    confidence_threshold: 0.75
+    description: |
+      For security patch updates, always prefer external sources as they
+      provide the most recent security fixes.
+    
+    conditions:
+      - field: update_type
+        operator: equals
+        value: security_patch
+        
+    reasoning: |
+      Security patches are time-critical. External sources provide the
+      most recent security updates and vulnerability information.
+      
+    @evidence: [external: security-advisory-db#L1-L100]
+
+metadata:
+  version: "1.0.0"
+  created: "2026-02-03"
+  modified: "2026-02-03"
+  @governance: GL-UNIFIED-NAMING-CHARTER
