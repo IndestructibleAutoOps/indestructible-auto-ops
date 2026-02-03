@@ -6,7 +6,7 @@ Makes decisions between internal and external reasoning results
 import os
 import json
 import hashlib
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Optional
 from datetime import datetime, timezone
 import yaml
 from enum import Enum
@@ -59,7 +59,11 @@ class Arbitrator:
         
         # Import rule engine
         from .rule_engine import ArbitrationRuleEngine
-        self.rule_engine = ArbitrationRuleEngine()
+        rules_path = self.arbitration_config.get(
+            "rules_path",
+            "ecosystem/reasoning/dual_path/arbitration/rules",
+        )
+        self.rule_engine = ArbitrationRuleEngine(rules_path=rules_path)
         
     def _load_config(self, config_path: str) -> Dict:
         """Load configuration from YAML file"""
@@ -82,12 +86,6 @@ class Arbitrator:
         Returns:
             ArbitrationDecision
         """
-        # Extract key information
-        internal_confidence = internal_result.get("confidence", 0.0)
-        external_confidence = external_result.get("confidence", 0.0)
-        internal_answer = internal_result.get("answer", "")
-        external_answer = external_result.get("answer", "")
-        
         # Check for conflicts
         conflicts = self._detect_conflicts(internal_result, external_result)
         

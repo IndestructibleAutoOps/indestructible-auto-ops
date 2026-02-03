@@ -8,7 +8,7 @@ import json
 import sys
 import os
 import re
-from typing import Dict, List, Any
+from typing import Dict
 from pathlib import Path
 import yaml
 
@@ -193,7 +193,14 @@ if __name__ == "__main__":
         elif args[i] == "--dry-run":
             dry_run = args[i + 1].lower() != 'false'
             i += 2
+        elif args[i].startswith("--dry-run="):
+            dry_run = args[i].split("=")[1].lower() != 'false'
+            i += 1
         else:
             i += 1
+    
+    if not input_file or not output_file:
+        print("Error: --input and --output are required")
+        sys.exit(1)
     
     apply_auto_fixes(input_file, output_file, dry_run)

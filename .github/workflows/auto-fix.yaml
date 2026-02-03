@@ -152,7 +152,7 @@ metadata:
           python ecosystem/scripts/apply_auto_fixes.py \
             --input analysis.json \
             --output fix_report.json \
-            --dry-run=false
+            --dry-run false
           
           fixes=$(jq '.fixes_applied | length' fix_report.json)
           echo "count=$fixes" >> $GITHUB_OUTPUT

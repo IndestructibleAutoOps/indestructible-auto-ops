@@ -6,7 +6,7 @@ Builds and queries a multi-layer graph representing code structure
 import os
 import json
 import hashlib
-from typing import List, Dict, Any, Optional, Set
+from typing import List, Dict, Optional
 from datetime import datetime, timezone
 import yaml
 from collections import defaultdict
