@@ -703,19 +703,19 @@ class MNGAEnforcer:
         # MNGA 架構定義
         mnga_architecture = {
             # Layer 6: Reasoning
-            "ecosystem/reasoning/dual-path/internal": {
+            "ecosystem/reasoning/dual_path/internal": {
                 "required_files": ["retrieval.py", "knowledge_graph.py", "index_builder.py"],
                 "description": "內部檢索系統"
             },
-            "ecosystem/reasoning/dual-path/external": {
+            "ecosystem/reasoning/dual_path/external": {
                 "required_files": ["retrieval.py", "web_search.py", "domain_filter.py"],
                 "description": "外部檢索系統"
             },
-            "ecosystem/reasoning/dual-path/arbitration": {
+            "ecosystem/reasoning/dual_path/arbitration": {
                 "required_files": ["arbitrator.py", "rule_engine.py"],
                 "description": "仲裁系統"
             },
-            "ecosystem/reasoning/dual-path/arbitration/rules": {
+            "ecosystem/reasoning/dual_path/arbitration/rules": {
                 "required_files": ["security.yaml", "api.yaml", "dependency.yaml"],
                 "description": "仲裁規則庫"
             },
@@ -810,9 +810,9 @@ class MNGAEnforcer:
         
         # 檢查推理組件是否可導入
         reasoning_modules = [
-            ("ecosystem.reasoning.dual-path.arbitration.arbitrator", "Arbitrator"),
-            ("ecosystem.reasoning.dual-path.internal.retrieval", "InternalRetrievalEngine"),
-            ("ecosystem.reasoning.dual-path.external.retrieval", "ExternalRetrievalEngine"),
+            ("ecosystem.reasoning.dual_path.arbitration.arbitrator", "Arbitrator"),
+            ("ecosystem.reasoning.dual_path.internal.retrieval", "InternalRetrievalEngine"),
+            ("ecosystem.reasoning.dual_path.external.retrieval", "ExternalRetrievalEngine"),
             ("ecosystem.reasoning.traceability.traceability", "TraceabilityEngine"),
         ]
         
