@@ -228,7 +228,7 @@ groups:
           description: "{{ $value }} pending auto-fix items"
 
       - alert: MigrationPlaybookStalled
-        expr: migration_playbook_duration_seconds{status="running"} > 3600
+        expr: migration_playbook_running_duration_seconds{status="running"} > 3600
         for: 5m
         labels:
           severity: warning

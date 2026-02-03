@@ -350,8 +350,13 @@ class PlatformAdapter:
                 ""
             ] + commands)
         
-        with open(full_path, 'w', encoding='utf-8', newline='') as f:
-            f.write(content)
+        # For Windows scripts, explicitly write with Windows line endings
+        if self._platform_type == PlatformType.WINDOWS:
+            with open(full_path, 'w', encoding='utf-8', newline='\r\n') as f:
+                f.write(content)
+        else:
+            with open(full_path, 'w', encoding='utf-8') as f:
+                f.write(content)
         
         # Make executable on Unix-like systems
         if self._platform_type != PlatformType.WINDOWS:
