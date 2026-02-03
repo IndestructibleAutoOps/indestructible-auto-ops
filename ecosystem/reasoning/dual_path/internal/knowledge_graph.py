@@ -7,8 +7,13 @@ import json
 import hashlib
 from typing import List, Dict, Any, Optional, Set
 from datetime import datetime, timezone
-import yaml
 from collections import defaultdict
+
+# Import simple_yaml for zero-dependency YAML parsing
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
+from utils.simple_yaml import safe_load
 
 
 class KnowledgeGraph:

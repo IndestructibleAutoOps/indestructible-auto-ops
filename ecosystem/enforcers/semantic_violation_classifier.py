@@ -26,6 +26,11 @@ import re
 import hashlib
 import json
 from pathlib import Path
+
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.simple_yaml import safe_load
 from datetime import datetime, timezone
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
@@ -162,8 +167,7 @@ class GLSemanticViolationClassifier:
             raise FileNotFoundError(f"Contract not found: {self.contract_path}")
         
         with open(self.contract_path, 'r', encoding='utf-8') as f:
-            import yaml
-            return yaml.safe_load(f)
+            return safe_load(f)
     
     def _calculate_checksum(self, content: bytes) -> str:
         """計算 SHA-256 校驗和"""
