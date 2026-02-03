@@ -1,0 +1,434 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: semantic-governance
+# @GL-audit-trail: ./governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Semantic Violation Classifier Specification
+# GL 語意違規分類器規範
+#
+# Purpose: 自動判斷語意破損，分類違規，防止錯誤結論
+# Version: 1.0.0
+# Date: 2026-02-03
+
+version: "1.0.0"
+metadata:
+  name: "GL Semantic Violation Classifier"
+  description: "Automated semantic violation detection and classification system"
+  semantic_anchor: "SEMANTICVIOLATIONCLASSIFIER"
+  gl_semantic_context: "semantic-governance"
+  severity: "CRITICAL"
+  ecosystem_root: "/workspace/machine-native-ops/ecosystem"
+
+# ============================================================================
+# 語意違規分類維度 (Semantic Violation Classification Dimensions)
+# ============================================================================
+classification_dimensions:
+  - dimension: "evidence_integrity"
+    description: "證據鏈完整性違規"
+    priority: "CRITICAL"
+    violation_types:
+      - type: "EVIDENCE_MISSING"
+        description: "缺少必需的證據鏈接"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0  # 永不誤判
+        detection_rules:
+          - "operation.evidence_links is null or empty"
+          - "contract.requires_evidence is true and not satisfied"
+        remediation:
+          - "Add evidence links using format [證據: path/to/file#L10-L15]"
+          - "Verify evidence sources exist"
+          - "Ensure SHA-256 checksums are provided"
+        
+      - type: "EVIDENCE_COVERAGE_INSUFFICIENT"
+        description: "證據覆蓋率不足（<90%）"
+        severity: "HIGH"
+        false_positive_threshold: 0.1  # 10% 容錯，僅用於驗證階段
+        detection_rules:
+          - "evidence_coverage < 0.90 and not validation_test"
+          - "statements_without_evidence / total_statements > 0.10"
+        remediation:
+          - "Add evidence links to statements"
+          - "Increase coverage to >=90%"
+          - "Validate all claims with evidence"
+          
+      - type: "EVIDENCE_INVALID"
+        description: "證據無效或不存在"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "evidence.file does not exist"
+          - "evidence.checksum does not match"
+          - "evidence.timestamp is invalid"
+        remediation:
+          - "Verify file paths exist"
+          - "Recalculate SHA-256 checksums"
+          - "Validate timestamps in RFC3339 format"
+
+  - dimension: "contract_completeness"
+    description: "契約完整性違規"
+    priority: "CRITICAL"
+    violation_types:
+      - type: "METHOD_MISSING"
+        description: "契約要求的方法缺失"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "contract.required_methods not subset of class.methods"
+          - "interface.contract.method not implemented"
+        remediation:
+          - "Implement all required methods"
+          - "Verify method signatures match contract"
+          - "Add unit tests for missing methods"
+          
+      - type: "CONTRACT_VIOLATED"
+        description: "契約條件被違反"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "contract.invariants broken"
+          - "preconditions not satisfied"
+          - "postconditions not met"
+        remediation:
+          - "Review contract requirements"
+          - "Fix implementation to satisfy contract"
+          - "Add contract validation tests"
+
+  - dimension: "topological_consistency"
+    description: "拓樸一致性違規"
+    priority: "CRITICAL"
+    violation_types:
+      - type: "INTERFACE_MISMATCH"
+        description: "介面不匹配"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "interface.method.signature != implementation.signature"
+          - "parameter types do not match"
+          - "return types do not match"
+        remediation:
+          - "Align implementation with interface"
+          - "Update interface or implementation consistently"
+          - "Add type checking tests"
+          
+      - type: "DEPENDENCY_CYCLE"
+        description: "依賴循環"
+        severity: "HIGH"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "A depends on B, B depends on A"
+          - "circular dependency detected in DAG"
+        remediation:
+          - "Break dependency cycle"
+          - "Introduce abstraction layer"
+          - "Restructure dependencies"
+
+  - dimension: "artifact_completeness"
+    description: "Artifact 完整性違規"
+    priority: "CRITICAL"
+    violation_types:
+      - type: "PHASE_INCOMPLETE"
+        description: "計劃階段未完成"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "milestone.status != 'completed' and deadline < now()"
+          - "required_phase.tasks not all complete"
+        remediation:
+          - "Complete all phase tasks"
+          - "Update milestone status"
+          - "Generate completion evidence"
+          
+      - type: "DELIVERABLE_MISSING"
+        description: "交付物缺失"
+        severity: "CRITICAL"
+        false_positive_threshold: 0.0
+        detection_rules:
+          - "deliverable.required is true and deliverable.status != 'delivered'"
+          - "artifact.semantic_anchor not found in registry"
+        remediation:
+          - "Create missing deliverables"
+          - "Register semantic anchors"
+          - "Generate delivery evidence"
+
+  - dimension: "semantic_coherence"
+    description: "語意一致性違規"
+    priority: "HIGH"
+    violation_types:
+      - type: "NAMING_VIOLATION"
+        description: "命名規範違反"
+        severity: "MEDIUM"
+        false_positive_threshold: 0.2
+        detection_rules:
+          - "naming not follow GL.{domain}.{capability}-{type}"
+          - "semantic_anchor not consistent with name"
+        remediation:
+          - "Rename to follow GL naming convention"
+          - "Update semantic anchors"
+          - "Verify naming contract"
+          
+      - type: "SEMANTIC_DRIFT"
+        description: "語意漂移（實現與規範不一致）"
+        severity: "HIGH"
+        false_positive_threshold: 0.1
+        detection_rules:
+          - "implementation.purpose != specification.purpose"
+          - "actual_behavior != documented_behavior"
+        remediation:
+          - "Align implementation with specification"
+          - "Update documentation"
+          - "Add behavioral tests"
+
+# ============================================================================
+# 違規分類邏輯 (Violation Classification Logic)
+# ============================================================================
+classification_logic:
+  # 語意破損判定規則
+  semantic_damage_rules:
+    - rule: "EVIDENCE_MISSING"
+      condition: "evidence_links is empty and contract.requires_evidence == true"
+      classification: "SEMANTIC_DAMAGE_CRITICAL"
+      action: "BLOCK_OPERATION"
+      message: "CRITICAL: 語意破損 - 缺少必需證據鏈"
+      
+    - rule: "METHOD_MISSING"
+      condition: "contract.required_method not in implementation.methods"
+      classification: "SEMANTIC_DAMAGE_CRITICAL"
+      action: "BLOCK_OPERATION"
+      message: "CRITICAL: 語意破損 - 契約方法缺失"
+      
+    - rule: "PHASE_INCOMPLETE"
+      condition: "phase.status != 'completed' and phase.required == true"
+      classification: "SEMANTIC_DAMAGE_CRITICAL"
+      action: "BLOCK_OPERATION"
+      message: "CRITICAL: 語意破損 - 必需階段未完成"
+      
+  # 預期行為 vs 違規行為判定規則
+  expected_behavior_rules:
+    - rule: "TEST_CONFIGURATION"
+      condition: "operation.type == 'validation_test' and evidence_coverage < 0.90"
+      classification: "EXPECTED_BEHAVIOR"
+      action: "WARN_ONLY"
+      message: "INFO: 測試配置低覆蓋率是預期行為（非生產環境）"
+      
+    - rule: "PRODUCTION_DEPLOYMENT"
+      condition: "environment == 'production' and evidence_coverage < 0.90"
+      classification: "VIOLATION"
+      action: "BLOCK_OPERATION"
+      message: "CRITICAL: 生產環境證據覆蓋率必須 >=90%"
+      
+  # 誤判防止規則
+  false_positive_prevention:
+    - rule: "ENFORCE_ZERO_TOLERANCE"
+      applies_to: ["EVIDENCE_MISSING", "METHOD_MISSING", "PHASE_INCOMPLETE"]
+      logic: "false_positive_threshold == 0.0，永不誤判為預期行為"
+      
+    - rule: "CONTEXT_AWARE_CLASSIFICATION"
+      logic: "根據環境、操作類型、契約要求動態調整分類"
+      factors:
+        - "environment (test/staging/production)"
+        - "operation_type (validation_test/deployment/commit)"
+        - "contract_severity (CRITICAL/HIGH/MEDIUM)"
+        - "semantic_layer (language/format/semantic/governance)"
+
+# ============================================================================
+# 證據鏈要求 (Evidence Chain Requirements)
+# ============================================================================
+evidence_chain_requirements:
+  mandatory_for:
+    - "production_deployments"
+    - "contract_changes"
+    - "architecture_modifications"
+    - "governance_enforcement"
+    
+  format: "[證據: path/to/file#L10-L15]"
+  
+  validation:
+    - "File must exist"
+    - "SHA-256 checksum must match"
+    - "Timestamp in RFC3339 format"
+    - "Source must be traceable"
+    - "Links must be resolvable"
+    
+  coverage_thresholds:
+    production: 0.95  # 95% for production
+    staging: 0.90     # 90% for staging
+    test: 0.70        # 70% for test environments
+
+# ============================================================================
+# 違規處理流程 (Violation Handling Flow)
+# ============================================================================
+violation_handling_flow:
+  steps:
+    1. detection:
+        method: "semantic_analysis"
+        output: "violation_report"
+        
+    2. classification:
+        method: "apply_classification_logic"
+        output: "violation_classification"
+        
+    3. evidence_collection:
+        method: "collect_violation_evidence"
+        output: "evidence_chain"
+        
+    4. action_determination:
+        method: "determine_action"
+        output: "action (BLOCK/WARN/ALLOW)"
+        
+    5. governance_event_emission:
+        method: "emit_governance_event"
+        output: "event_recorded"
+        
+    6. remediation_generation:
+        method: "generate_remediation"
+        output: "remediation_plan"
+
+# ============================================================================
+# 治理事件結構 (Governance Event Structure)
+# ============================================================================
+governance_event_structure:
+  event_type: "SEMANTIC_VIOLATION_DETECTED"
+  
+  required_fields:
+    - "event_id"
+    - "timestamp"  # RFC3339 UTC
+    - "actor"      # who triggered the violation
+    - "action"     # what action caused the violation
+    - "resource"   # what resource was affected
+    - "violation_type"
+    - "classification"
+    - "severity"
+    - "evidence_chain"
+    - "remediation_plan"
+    - "semantic_anchor"
+    - "hash"       # SHA-256 of event payload
+  
+  optional_fields:
+    - "correlation_id"
+    - "request_id"
+    - "ip_address"
+    - "user_agent"
+    - "additional_context"
+
+# ============================================================================
+# 語意錨點 (Semantic Anchors)
+# ============================================================================
+semantic_anchors:
+  - anchor: "SEMANTICVIOLATIONCLASSIFIER"
+    layer: "GL90-99"
+    domain: "semantic-governance"
+    capability: "violation-classification"
+    type: "specification"
+    path: "/workspace/machine-native-ops/ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml"
+    
+  - anchor: "EVIDENCEINTEGRITY"
+    layer: "GL90-99"
+    domain: "semantic-governance"
+    capability: "evidence-validation"
+    type: "specification"
+    
+  - anchor: "CONTRACTCOMPLETENESS"
+    layer: "GL90-99"
+    domain: "semantic-governance"
+    capability: "contract-verification"
+    type: "specification"
+    
+  - anchor: "TOPOLOGICALCONSISTENCY"
+    layer: "GL90-99"
+    domain: "semantic-governance"
+    capability: "topology-validation"
+    type: "specification"
+
+# ============================================================================
+# 驗證規則 (Validation Rules)
+# ============================================================================
+validation_rules:
+  - rule: "VC-001"
+    name: "Zero Tolerance for Evidence Missing"
+    severity: "CRITICAL"
+    description: "EVIDENCE_MISSING violations must never be classified as expected behavior"
+    implementation: |
+      if violation.type == "EVIDENCE_MISSING":
+        violation.false_positive_threshold = 0.0
+        violation.classification = "SEMANTIC_DAMAGE_CRITICAL"
+        violation.action = "BLOCK_OPERATION"
+        
+  - rule: "VC-002"
+    name: "Zero Tolerance for Method Missing"
+    severity: "CRITICAL"
+    description: "METHOD_MISSING violations must never be classified as expected behavior"
+    implementation: |
+      if violation.type == "METHOD_MISSING":
+        violation.false_positive_threshold = 0.0
+        violation.classification = "SEMANTIC_DAMAGE_CRITICAL"
+        violation.action = "BLOCK_OPERATION"
+        
+  - rule: "VC-003"
+    name: "Context-Aware Evidence Coverage"
+    severity: "HIGH"
+    description: "Evidence coverage threshold depends on environment"
+    implementation: |
+      if environment == "production":
+        threshold = 0.95
+      elif environment == "staging":
+        threshold = 0.90
+      else:  # test
+        threshold = 0.70
+        
+      if evidence_coverage < threshold and environment != "test":
+        violation.classification = "VIOLATION"
+        violation.action = "BLOCK_OPERATION"
+      elif evidence_coverage < threshold and environment == "test":
+        violation.classification = "EXPECTED_BEHAVIOR"
+        violation.action = "WARN_ONLY"
+
+# ============================================================================
+# 實施指南 (Implementation Guide)
+# ============================================================================
+implementation_guide:
+  integration_points:
+    - "GovernanceEnforcer.validate() - 集成分類邏輯"
+    - "SelfAuditor.audit() - 語意違規檢測"
+    - "EventEmitter.emit() - 治理事件發射"
+    - "GLFactPipeline.run_pipeline() - 證據驗證"
+    
+  workflow:
+    1. "檢測違規"
+    2. "應用分類邏輯"
+    3. "收集證據"
+    4. "判定操作"
+    5. "發射治理事件"
+    6. "生成修復計劃"
+    
+  testing:
+    - "測試 EVIDENCE_MISSING 零容錯"
+    - "測試 METHOD_MISSING 零容錯"
+    - "測試上下文感知分類"
+    - "測試誤判防止機制"
+    - "測試治理事件發射"
+
+# ============================================================================
+# 審計日誌要求 (Audit Logging Requirements)
+# ============================================================================
+audit_logging:
+  required_fields:
+    - "actor"         # who performed the action
+    - "action"        # what action was performed
+    - "resource"      # what resource was affected
+    - "result"        # action result
+    - "hash"          # SHA-256 of resource
+    - "version"       # version of the resource
+    - "request_id"    # unique request identifier
+    - "correlation_id" # correlation tracking
+    - "ip"            # client IP address
+    - "user_agent"    # client user agent
+    - "timestamp"     # RFC3339 UTC format
+    
+  storage:
+    type: "SQLite"
+    location: "./governance/audit.db"
+    tables:
+      - "semantic_violations"
+      - "violation_classifications"
+      - "governance_events"
+      - "remediation_plans"
