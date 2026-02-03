@@ -25,7 +25,7 @@ def get_gl_layer_for_file(file_path):
     path_str = str(file_path)
     
     # GL Governance Layers mapping
-    if "/github/" in path_str or "/governance/" in path_str:
+    if "/.github/" in path_str or "/governance/" in path_str:
         return "GL90-99"
     elif "/engine/" in path_str:
         return "GL40-49"

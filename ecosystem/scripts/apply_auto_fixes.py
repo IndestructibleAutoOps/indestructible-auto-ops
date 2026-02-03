@@ -195,4 +195,8 @@ if __name__ == "__main__":
         else:
             i += 1
     
+    if not input_file or not output_file:
+        print("Error: --input and --output are required")
+        sys.exit(1)
+    
     apply_auto_fixes(input_file, output_file, dry_run)

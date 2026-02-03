@@ -1,5 +1,5 @@
-# 依赖生命周期扫描脚本
 #!/bin/bash
+# 依赖生命周期扫描脚本
 
 # 检查弃用依赖
 DEPRECATED_DEPS=$(npm ls --json | jq '.dependencies | to_entries[] | select(.value.deprecated)')

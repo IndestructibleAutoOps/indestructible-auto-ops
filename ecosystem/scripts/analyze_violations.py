@@ -126,7 +126,7 @@ def generate_suggested_fix(violation: Dict) -> Dict:
                 "file": file_path,
                 "change_type": "insert",
                 "location": "metadata.labels",
-                "content": f"{label}: &quot;{{ .Values.appName }}&quot;"
+                "content": f'{label}: "{{{{ .Values.appName }}}}"'
             }
         ]
     elif v_type == 'naming_convention':

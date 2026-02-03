@@ -56,9 +56,10 @@ class Arbitrator:
         self.config = self._load_config(config_path)
         self.arbitration_config = self.config["spec"]["arbitration"]
         
-        # Import rule engine
+        # Import rule engine with rules_path from config if available
         from .rule_engine import ArbitrationRuleEngine
-        self.rule_engine = ArbitrationRuleEngine()
+        rules_path = self.arbitration_config.get("rules_path")
+        self.rule_engine = ArbitrationRuleEngine(rules_path=rules_path) if rules_path else ArbitrationRuleEngine()
         
     def _load_config(self, config_path: str) -> Dict:
         """Load configuration from YAML file"""

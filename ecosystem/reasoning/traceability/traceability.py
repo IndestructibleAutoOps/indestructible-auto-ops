@@ -160,7 +160,7 @@ class TraceabilityEngine:
                 files.append({
                     "path": result.get("file_path"),
                     "lines": result.get("line_range"),
-                    "checksum": result.get("metadata", {}).get("checksum"),
+                    "checksum": result.get("metadata", {}).get("checksum") or result.get("checksum"),
                     "snippet": result.get("content", "")[:200] + "..."
                 })
             

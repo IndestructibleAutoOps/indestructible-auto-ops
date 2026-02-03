@@ -1,23 +1,30 @@
 {
   "@GL-semantic": "org.mnga.specs.registry@1.0.0",
   "@GL-audit-trail": "enabled",
+  "spec_id": "org.mnga.specs.registry@1.0.0",
   "registry_version": "1.0.0",
-  "last_updated": "2026-02-03T15:03:58.488760Z",
+  "last_updated": "2026-02-03T15:13:41.663102Z",
+  "audit_trail": {
+    "created": "2026-02-03T15:03:25.805751Z",
+    "last_modified": "2026-02-03T15:13:41.663102Z",
+    "version": "1.0.0",
+    "changes": []
+  },
   "specifications": [
     {
       "path": "ecosystem/governance/meta-spec/registry/specs.registry.json",
-      "checksum": "6c06bd178a5a737d7748f5c5d56ebc92bfd2ab15a49061bbb583a29ad575c25f",
-      "last_modified": "2026-02-03T15:03:58.487812Z"
+      "checksum": "bd63ab3cff824c6bf9d1cd858ee22bab2d31bc0f099db7b6c2344455a522761f",
+      "last_modified": "2026-02-03T15:13:41.662057Z"
     },
     {
       "path": "ecosystem/governance/ugs/l00-language/grammar/ast.yaml",
       "checksum": "227dbc9d13af947446bce2eccbfe19e109c360171e0c59bf3980fc8bc9f3694d",
-      "last_modified": "2026-02-03T15:03:58.487812Z"
+      "last_modified": "2026-02-03T15:13:41.662057Z"
     },
     {
       "path": "ecosystem/governance/ugs/l00-language/grammar/tokens.yaml",
-      "checksum": "21764658f9759b904ae5ebf9fd4787edd6a0a9be5e59fce0e7ff7ce0e3adac6d",
-      "last_modified": "2026-02-03T15:03:58.487812Z"
+      "checksum": "110377948b1710a584de275a7070e536565013ad0752039ea00ae565943e161c",
+      "last_modified": "2026-02-03T15:13:41.662057Z"
     }
   ]
 }

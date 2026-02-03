@@ -1,6 +1,7 @@
 # monitoring/metrics_dashboard.py - Prometheus + Grafana集成
 from prometheus_client import start_http_server, Gauge
 import requests
+import time
 
 GOVERNANCE_COMPLIANCE = Gauge('governance_compliance_score', 
                              '当前系统治理规范合规指数',

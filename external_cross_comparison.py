@@ -124,7 +124,7 @@ def generate_external_comparison():
             },
             'architecture_layers': {
                 'GL_Design': 8,
-                'TOGAF': 4-5,
+                'TOGAF': '4-5',
                 'Zachman': 6,
                 'Assessment': 'GL Design offers fine-grained layer control'
             },
@@ -184,13 +184,15 @@ if __name__ == '__main__':
     report = generate_external_comparison()
     
     # Save report
-    with open('/workspace/external_cross_comparison_report.json', 'w', encoding='utf-8') as f:
+    import os
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'external_cross_comparison_report.json')
+    with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     
     print("\n" + "="*80)
     print("EXTERNAL CROSS-COMPARISON REPORT GENERATED")
     print("="*80)
-    print(f"\nReport saved to: /workspace/external_cross_comparison_report.json")
+    print(f"\nReport saved to: {output_path}")
     print(f"\nKey Findings:")
     print(f"  - Research sources analyzed: {len(report['research_sources'])}")
     print(f"  - Strengths identified: {len(report['comparison_analysis']['strengths_identified'])}")

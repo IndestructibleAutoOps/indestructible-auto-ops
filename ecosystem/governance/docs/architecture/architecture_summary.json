@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-03T15:03:58.489363Z",
+  "timestamp": "2026-02-03T15:13:41.663509Z",
   "metrics": {
     "total_components": 295,
     "by_type": {
@@ -361,15 +361,15 @@
       "type": "python_module",
       "path": "ecosystem/autofix_engine.py",
       "dependencies": [
-        "os",
-        "pathlib",
         "typing",
-        "sys",
-        "json",
         "argparse",
         "re",
+        "json",
         "datetime",
-        "dataclasses"
+        "sys",
+        "dataclasses",
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -861,13 +861,13 @@
       "type": "python_module",
       "path": "ecosystem/coordination/api-gateway/src/authenticator.py",
       "dependencies": [
-        "jwt",
-        "logging",
-        "hashlib",
-        "datetime",
-        "time",
         "typing",
-        "dataclasses"
+        "logging",
+        "datetime",
+        "jwt",
+        "time",
+        "dataclasses",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -877,14 +877,14 @@
       "path": "ecosystem/coordination/api-gateway/src/gateway.py",
       "dependencies": [
         "rate_limiter",
+        "typing",
         "logging",
-        "pathlib",
+        "service_client",
+        "service_registry",
         "router",
         "sys",
         "authenticator",
-        "service_client",
-        "typing",
-        "service_registry"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -893,11 +893,11 @@
       "type": "python_module",
       "path": "ecosystem/coordination/api-gateway/src/rate_limiter.py",
       "dependencies": [
+        "typing",
         "collections",
         "logging",
-        "threading",
         "time",
-        "typing",
+        "threading",
         "dataclasses"
       ],
       "dependents": []
@@ -907,10 +907,10 @@
       "type": "python_module",
       "path": "ecosystem/coordination/api-gateway/src/router.py",
       "dependencies": [
-        "logging",
-        "re",
-        "typing",
         "enum",
+        "typing",
+        "re",
+        "logging",
         "dataclasses"
       ],
       "dependents": []
@@ -921,13 +921,13 @@
       "path": "ecosystem/coordination/api-gateway/tests/test_api_gateway.py",
       "dependencies": [
         "rate_limiter",
-        "pathlib",
-        "authenticator",
-        "sys",
-        "router",
         "traceback",
+        "gateway",
+        "router",
         "time",
-        "gateway"
+        "sys",
+        "authenticator",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -957,13 +957,13 @@
       "type": "python_module",
       "path": "ecosystem/coordination/communication/src/event_dispatcher.py",
       "dependencies": [
-        "collections",
-        "message_bus",
-        "logging",
-        "threading",
         "uuid",
         "typing",
-        "dataclasses"
+        "collections",
+        "logging",
+        "threading",
+        "dataclasses",
+        "message_bus"
       ],
       "dependents": []
     },
@@ -972,15 +972,15 @@
       "type": "python_module",
       "path": "ecosystem/coordination/communication/src/message_bus.py",
       "dependencies": [
+        "uuid",
+        "typing",
         "collections",
         "logging",
-        "threading",
         "datetime",
-        "uuid",
         "time",
-        "queue",
-        "typing",
-        "dataclasses"
+        "threading",
+        "dataclasses",
+        "queue"
       ],
       "dependents": []
     },
@@ -989,13 +989,13 @@
       "type": "python_module",
       "path": "ecosystem/coordination/communication/tests/test_communication.py",
       "dependencies": [
-        "message_bus",
-        "pathlib",
-        "threading",
-        "sys",
         "traceback",
+        "event_dispatcher",
         "time",
-        "event_dispatcher"
+        "sys",
+        "threading",
+        "pathlib",
+        "message_bus"
       ],
       "dependents": []
     },
@@ -1025,9 +1025,9 @@
       "type": "python_module",
       "path": "ecosystem/coordination/data-synchronization/src/conflict_resolver.py",
       "dependencies": [
-        "logging",
-        "typing",
         "uuid",
+        "typing",
+        "logging",
         "datetime",
         "dataclasses"
       ],
@@ -1045,9 +1045,9 @@
       "type": "python_module",
       "path": "ecosystem/coordination/data-synchronization/src/connectors/base_connector.py",
       "dependencies": [
-        "abc",
+        "typing",
         "logging",
-        "typing"
+        "abc"
       ],
       "dependents": []
     },
@@ -1056,10 +1056,10 @@
       "type": "python_module",
       "path": "ecosystem/coordination/data-synchronization/src/connectors/filesystem_connector.py",
       "dependencies": [
-        "pathlib",
-        "os",
         "json",
-        "typing"
+        "pathlib",
+        "typing",
+        "os"
       ],
       "dependents": []
     },
@@ -1068,16 +1068,16 @@
       "type": "python_module",
       "path": "ecosystem/coordination/data-synchronization/src/sync_engine.py",
       "dependencies": [
-        "logging",
-        "threading",
-        "hashlib",
-        "datetime",
         "uuid",
-        "json",
-        "time",
         "typing",
         "enum",
-        "dataclasses"
+        "json",
+        "logging",
+        "datetime",
+        "time",
+        "threading",
+        "dataclasses",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1086,11 +1086,11 @@
       "type": "python_module",
       "path": "ecosystem/coordination/data-synchronization/src/sync_scheduler.py",
       "dependencies": [
-        "logging",
-        "threading",
         "typing",
-        "time",
+        "logging",
         "datetime",
+        "time",
+        "threading",
         "dataclasses"
       ],
       "dependents": []
@@ -1101,14 +1101,14 @@
       "path": "ecosystem/coordination/data-synchronization/tests/test_data_sync.py",
       "dependencies": [
         "conflict_resolver",
-        "connectors",
-        "sync_engine",
-        "pathlib",
-        "shutil",
-        "sys",
-        "sync_scheduler",
         "traceback",
-        "time"
+        "sync_scheduler",
+        "connectors",
+        "shutil",
+        "time",
+        "sys",
+        "pathlib",
+        "sync_engine"
       ],
       "dependents": []
     },
@@ -1138,14 +1138,14 @@
       "type": "python_module",
       "path": "ecosystem/coordination/service-discovery/src/service_agent.py",
       "dependencies": [
-        "logging",
-        "threading",
-        "requests",
         "uuid",
-        "socket",
-        "time",
         "typing",
-        "service_registry"
+        "requests",
+        "logging",
+        "socket",
+        "service_registry",
+        "time",
+        "threading"
       ],
       "dependents": []
     },
@@ -1155,9 +1155,9 @@
       "path": "ecosystem/coordination/service-discovery/src/service_client.py",
       "dependencies": [
         "random",
-        "logging",
-        "requests",
         "typing",
+        "requests",
+        "logging",
         "service_registry"
       ],
       "dependents": []
@@ -1167,14 +1167,14 @@
       "type": "python_module",
       "path": "ecosystem/coordination/service-discovery/src/service_registry.py",
       "dependencies": [
-        "logging",
-        "pathlib",
-        "threading",
-        "datetime",
-        "json",
-        "typing",
         "enum",
-        "dataclasses"
+        "typing",
+        "json",
+        "logging",
+        "datetime",
+        "threading",
+        "dataclasses",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -1183,12 +1183,12 @@
       "type": "python_module",
       "path": "ecosystem/coordination/service-discovery/tests/test_service_discovery.py",
       "dependencies": [
-        "pathlib",
         "service_agent",
-        "sys",
         "traceback",
         "service_client",
-        "service_registry"
+        "service_registry",
+        "sys",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -1274,11 +1274,11 @@
       "type": "python_module",
       "path": "ecosystem/ecosystem-cloud/adapters/aws/aws_adapter.py",
       "dependencies": [
-        "boto3",
-        "base64",
         "typing",
-        "hashlib",
-        "datetime"
+        "datetime",
+        "base64",
+        "boto3",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1358,9 +1358,9 @@
       "path": "ecosystem/enforce.py",
       "dependencies": [
         "importlib",
-        "os",
+        "datetime",
         "sys",
-        "datetime"
+        "os"
       ],
       "dependents": []
     },
@@ -1376,20 +1376,20 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/closed_loop_governance.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "typing",
-        "hashlib",
-        "sys",
-        "json",
-        "argparse",
         "enum",
+        "typing",
+        "argparse",
+        "json",
         "re",
-        "yaml",
-        "datetime",
         "asyncio",
+        "datetime",
+        "subprocess",
+        "sys",
         "dataclasses",
-        "subprocess"
+        "yaml",
+        "pathlib",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -1398,16 +1398,16 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/governance_enforcer.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "hashlib",
-        "sys",
+        "enum",
+        "typing",
         "json",
         "datetime",
+        "sys",
+        "dataclasses",
         "yaml",
-        "typing",
-        "enum",
-        "dataclasses"
+        "pathlib",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -1416,16 +1416,16 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/pipeline_integration.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "datetime",
-        "sys",
+        "typing",
         "json",
-        "hashlib",
-        "gl_fact_pipeline",
         "re",
+        "datetime",
+        "gl_fact_pipeline",
+        "sys",
         "yaml",
-        "typing"
+        "pathlib",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -1434,16 +1434,16 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/role_executor.py",
       "dependencies": [
-        "pathlib",
-        "datetime",
-        "hashlib",
         "uuid",
-        "json",
-        "sys",
-        "traceback",
         "typing",
+        "traceback",
+        "json",
         "asyncio",
-        "dataclasses"
+        "datetime",
+        "sys",
+        "dataclasses",
+        "pathlib",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1452,14 +1452,14 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/self_auditor.py",
       "dependencies": [
-        "collections",
-        "os",
-        "pathlib",
         "typing",
-        "json",
         "re",
+        "json",
+        "collections",
+        "datetime",
         "yaml",
-        "datetime"
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -1468,15 +1468,15 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/semantic_violation_classifier.py",
       "dependencies": [
-        "pathlib",
+        "enum",
         "typing",
-        "hashlib",
+        "yaml",
         "json",
         "re",
-        "yaml",
         "datetime",
-        "enum",
-        "dataclasses"
+        "dataclasses",
+        "pathlib",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1485,10 +1485,10 @@
       "type": "python_module",
       "path": "ecosystem/enforcers/test_complete_system.py",
       "dependencies": [
+        "self_auditor",
         "pipeline_integration",
-        "sys",
         "pathlib",
-        "self_auditor"
+        "sys"
       ],
       "dependents": []
     },
@@ -1497,15 +1497,15 @@
       "type": "python_module",
       "path": "ecosystem/events/event_emitter.py",
       "dependencies": [
-        "pathlib",
-        "threading",
-        "datetime",
-        "json",
-        "queue",
-        "typing",
         "enum",
+        "typing",
+        "json",
+        "datetime",
+        "sqlite3",
+        "threading",
         "dataclasses",
-        "sqlite3"
+        "pathlib",
+        "queue"
       ],
       "dependents": []
     },
@@ -1528,14 +1528,14 @@
       "type": "python_module",
       "path": "ecosystem/foundation/format/format_enforcer.py",
       "dependencies": [
-        "pathlib",
-        "json",
-        "argparse",
-        "re",
-        "yaml",
-        "typing",
         "enum",
-        "dataclasses"
+        "typing",
+        "yaml",
+        "argparse",
+        "json",
+        "re",
+        "dataclasses",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -1544,13 +1544,13 @@
       "type": "python_module",
       "path": "ecosystem/foundation/foundation_dag.py",
       "dependencies": [
-        "pathlib",
-        "datetime",
-        "json",
-        "argparse",
-        "typing",
         "enum",
-        "dataclasses"
+        "typing",
+        "argparse",
+        "json",
+        "datetime",
+        "dataclasses",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -1566,15 +1566,15 @@
       "type": "python_module",
       "path": "ecosystem/foundation/language/language_enforcer.py",
       "dependencies": [
-        "pathlib",
-        "ast",
-        "json",
+        "enum",
+        "typing",
+        "yaml",
         "argparse",
         "re",
-        "yaml",
-        "typing",
-        "enum",
-        "dataclasses"
+        "json",
+        "ast",
+        "dataclasses",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -1653,16 +1653,16 @@
       "type": "python_module",
       "path": "ecosystem/governance/audit_logger.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "typing",
-        "hashlib",
         "uuid",
-        "json",
-        "socket",
-        "datetime",
+        "typing",
         "enum",
-        "dataclasses"
+        "json",
+        "datetime",
+        "socket",
+        "dataclasses",
+        "pathlib",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -1706,12 +1706,12 @@
       "type": "python_module",
       "path": "ecosystem/governance/engines/refresh/refresh_engine.py",
       "dependencies": [
-        "os",
-        "hashlib",
-        "datetime",
-        "json",
         "typing",
-        "dataclasses"
+        "json",
+        "datetime",
+        "dataclasses",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -1727,12 +1727,12 @@
       "type": "python_module",
       "path": "ecosystem/governance/engines/reverse-architecture/reverse_architecture_engine.py",
       "dependencies": [
-        "os",
-        "datetime",
+        "typing",
         "json",
         "re",
-        "typing",
-        "dataclasses"
+        "datetime",
+        "dataclasses",
+        "os"
       ],
       "dependents": []
     },
@@ -1748,13 +1748,13 @@
       "type": "python_module",
       "path": "ecosystem/governance/engines/validation/validation_engine.py",
       "dependencies": [
-        "os",
-        "datetime",
-        "json",
-        "re",
-        "typing",
         "enum",
-        "dataclasses"
+        "typing",
+        "re",
+        "json",
+        "datetime",
+        "dataclasses",
+        "os"
       ],
       "dependents": []
     },
@@ -1763,11 +1763,11 @@
       "type": "json_schema",
       "path": "ecosystem/governance/format-layer/schemas/contract.schema.json",
       "dependencies": [
-        "#/$defs/provider_info",
-        "#/$defs/validation_rule",
         "#/$defs/parameter",
-        "#/$defs/type_definition",
-        "#/$defs/capability"
+        "#/$defs/provider_info",
+        "#/$defs/capability",
+        "#/$defs/validation_rule",
+        "#/$defs/type_definition"
       ],
       "dependents": []
     },
@@ -1853,13 +1853,13 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/change_control_system.py",
       "dependencies": [
-        "logging",
-        "typing",
-        "hashlib",
-        "json",
-        "datetime",
         "enum",
-        "dataclasses"
+        "typing",
+        "json",
+        "logging",
+        "datetime",
+        "dataclasses",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1868,11 +1868,11 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/change_manager.py",
       "dependencies": [
-        "logging",
-        "typing",
         "uuid",
-        "datetime",
+        "typing",
         "enum",
+        "logging",
+        "datetime",
         "dataclasses"
       ],
       "dependents": []
@@ -1882,10 +1882,10 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/dependency_manager.py",
       "dependencies": [
+        "typing",
         "dataclasses",
-        "datetime",
         "logging",
-        "typing"
+        "datetime"
       ],
       "dependents": []
     },
@@ -1894,11 +1894,11 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/governance_framework.py",
       "dependencies": [
-        "version_manager",
-        "logging",
-        "review_manager",
-        "change_manager",
         "typing",
+        "review_manager",
+        "logging",
+        "change_manager",
+        "version_manager",
         "dependency_manager"
       ],
       "dependents": []
@@ -1908,10 +1908,10 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/impact_analyzer.py",
       "dependencies": [
+        "typing",
         "dataclasses",
-        "datetime",
         "logging",
-        "typing"
+        "datetime"
       ],
       "dependents": []
     },
@@ -1920,11 +1920,11 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/review_manager.py",
       "dependencies": [
-        "logging",
-        "typing",
         "uuid",
-        "datetime",
+        "typing",
         "enum",
+        "logging",
+        "datetime",
         "dataclasses"
       ],
       "dependents": []
@@ -1934,19 +1934,19 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/sha_integrity_system.py",
       "dependencies": [
-        "logging",
-        "base64",
-        "pathlib",
-        "hashlib",
-        "datetime",
-        "json",
-        "sys",
-        "hmac",
-        "platform",
-        "typing",
         "enum",
+        "typing",
+        "hmac",
+        "json",
+        "logging",
+        "datetime",
+        "subprocess",
+        "base64",
+        "sys",
+        "platform",
         "dataclasses",
-        "subprocess"
+        "pathlib",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1955,12 +1955,12 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/strict_version_enforcer.py",
       "dependencies": [
-        "logging",
         "typing",
-        "hashlib",
         "re",
+        "logging",
         "datetime",
-        "dataclasses"
+        "dataclasses",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -1969,11 +1969,11 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/src/version_manager.py",
       "dependencies": [
-        "logging",
+        "enum",
         "typing",
         "re",
+        "logging",
         "datetime",
-        "enum",
         "dataclasses"
       ],
       "dependents": []
@@ -1984,9 +1984,9 @@
       "path": "ecosystem/governance/meta-governance/tests/test_change_control.py",
       "dependencies": [
         "traceback",
-        "change_control_system",
+        "pathlib",
         "sys",
-        "pathlib"
+        "change_control_system"
       ],
       "dependents": []
     },
@@ -1995,14 +1995,14 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/tests/test_meta_governance.py",
       "dependencies": [
-        "version_manager",
-        "pathlib",
-        "sys",
         "traceback",
         "review_manager",
+        "governance_framework",
         "change_manager",
+        "sys",
+        "version_manager",
         "dependency_manager",
-        "governance_framework"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2011,11 +2011,11 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/tests/test_sha_integrity.py",
       "dependencies": [
-        "sha_integrity_system",
-        "pathlib",
-        "sys",
+        "traceback",
         "tempfile",
-        "traceback"
+        "sys",
+        "sha_integrity_system",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2024,10 +2024,10 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/tests/test_strict_version_management.py",
       "dependencies": [
+        "traceback",
         "pathlib",
         "impact_analyzer",
         "sys",
-        "traceback",
         "strict_version_enforcer"
       ],
       "dependents": []
@@ -2037,15 +2037,15 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/tools/apply_governance.py",
       "dependencies": [
-        "os",
-        "pathlib",
+        "typing",
+        "re",
+        "json",
         "datetime",
         "sys",
-        "json",
-        "re",
+        "dataclasses",
         "yaml",
-        "typing",
-        "dataclasses"
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2054,15 +2054,15 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/tools/apply_strict_versioning.py",
       "dependencies": [
-        "os",
-        "pathlib",
+        "typing",
+        "re",
+        "json",
         "datetime",
         "sys",
-        "json",
-        "re",
+        "dataclasses",
         "yaml",
-        "typing",
-        "dataclasses"
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2071,17 +2071,17 @@
       "type": "python_module",
       "path": "ecosystem/governance/meta-governance/tools/full_governance_integration.py",
       "dependencies": [
-        "collections",
-        "os",
-        "pathlib",
-        "datetime",
-        "sys",
-        "json",
-        "re",
-        "yaml",
         "typing",
+        "re",
+        "json",
+        "collections",
+        "datetime",
+        "subprocess",
+        "sys",
         "dataclasses",
-        "subprocess"
+        "yaml",
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2210,12 +2210,12 @@
       "type": "python_module",
       "path": "ecosystem/hooks/post_execution.py",
       "dependencies": [
-        "pathlib",
+        "typing",
+        "json",
         "datetime",
         "sys",
-        "json",
         "ecosystem",
-        "typing"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2224,12 +2224,12 @@
       "type": "python_module",
       "path": "ecosystem/hooks/pre_execution.py",
       "dependencies": [
-        "pathlib",
+        "typing",
+        "json",
         "datetime",
         "sys",
-        "json",
         "ecosystem",
-        "typing"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2294,11 +2294,11 @@
       "type": "python_module",
       "path": "ecosystem/mocks/services/mock_service.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "datetime",
+        "typing",
         "json",
-        "typing"
+        "datetime",
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2371,9 +2371,9 @@
       "path": "ecosystem/platform-templates/core-template/examples/api_gateway_example.py",
       "dependencies": [
         "traceback",
-        "platform_manager",
+        "pathlib",
         "sys",
-        "pathlib"
+        "platform_manager"
       ],
       "dependents": []
     },
@@ -2382,11 +2382,11 @@
       "type": "python_module",
       "path": "ecosystem/platform-templates/core-template/examples/messaging_example.py",
       "dependencies": [
-        "pathlib",
-        "sys",
         "traceback",
-        "platform_manager",
-        "time"
+        "time",
+        "sys",
+        "pathlib",
+        "platform_manager"
       ],
       "dependents": []
     },
@@ -2396,9 +2396,9 @@
       "path": "ecosystem/platform-templates/core-template/examples/register_service.py",
       "dependencies": [
         "traceback",
-        "platform_manager",
+        "pathlib",
         "sys",
-        "pathlib"
+        "platform_manager"
       ],
       "dependents": []
     },
@@ -2408,9 +2408,9 @@
       "path": "ecosystem/platform-templates/core-template/examples/sync_data.py",
       "dependencies": [
         "traceback",
-        "platform_manager",
+        "pathlib",
         "sys",
-        "pathlib"
+        "platform_manager"
       ],
       "dependents": []
     },
@@ -2419,13 +2419,13 @@
       "type": "python_module",
       "path": "ecosystem/platform-templates/core-template/platform_manager.py",
       "dependencies": [
-        "pathlib",
-        "sys",
-        "json",
-        "argparse",
-        "yaml",
         "typing",
-        "coordination"
+        "argparse",
+        "json",
+        "coordination",
+        "sys",
+        "yaml",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2448,11 +2448,11 @@
       "type": "python_module",
       "path": "ecosystem/platform-templates/test_templates.py",
       "dependencies": [
-        "pathlib",
-        "sys",
         "traceback",
+        "subprocess",
+        "sys",
         "yaml",
-        "subprocess"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2461,14 +2461,14 @@
       "type": "python_module",
       "path": "ecosystem/platform_adapter.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "shutil",
-        "platform",
-        "typing",
         "enum",
+        "typing",
+        "shutil",
+        "subprocess",
+        "platform",
         "dataclasses",
-        "subprocess"
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2477,11 +2477,11 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/agents/planning_agent.py",
       "dependencies": [
+        "enum",
         "typing",
-        "hashlib",
         "json",
         "datetime",
-        "enum"
+        "hashlib"
       ],
       "dependents": []
     },
@@ -2498,8 +2498,8 @@
       "path": "ecosystem/reasoning/auto_reasoner.py",
       "dependencies": [
         "typing",
-        "json",
         "re",
+        "json",
         "datetime",
         "dataclasses"
       ],
@@ -2517,13 +2517,13 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/dual_path/arbitration/arbitrator.py",
       "dependencies": [
-        "os",
+        "enum",
         "typing",
-        "hashlib",
         "json",
-        "yaml",
         "datetime",
-        "enum"
+        "yaml",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2532,10 +2532,10 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/dual_path/arbitration/rule_engine.py",
       "dependencies": [
-        "os",
-        "datetime",
+        "typing",
         "yaml",
-        "typing"
+        "datetime",
+        "os"
       ],
       "dependents": []
     },
@@ -2565,13 +2565,13 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/dual_path/external/retrieval.py",
       "dependencies": [
-        "os",
-        "requests",
         "typing",
-        "hashlib",
         "json",
+        "requests",
+        "datetime",
         "yaml",
-        "datetime"
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2580,13 +2580,13 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/dual_path/internal/knowledge_graph.py",
       "dependencies": [
-        "collections",
-        "os",
         "typing",
-        "hashlib",
         "json",
+        "collections",
+        "datetime",
         "yaml",
-        "datetime"
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2595,12 +2595,12 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/dual_path/internal/retrieval.py",
       "dependencies": [
-        "os",
         "typing",
-        "hashlib",
         "json",
+        "datetime",
         "yaml",
-        "datetime"
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2609,13 +2609,13 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/traceability/feedback.py",
       "dependencies": [
-        "collections",
-        "os",
-        "pathlib",
         "typing",
-        "hashlib",
         "json",
-        "datetime"
+        "collections",
+        "datetime",
+        "pathlib",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2624,12 +2624,12 @@
       "type": "python_module",
       "path": "ecosystem/reasoning/traceability/traceability.py",
       "dependencies": [
-        "os",
-        "pathlib",
         "typing",
-        "hashlib",
         "json",
-        "datetime"
+        "datetime",
+        "pathlib",
+        "hashlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2687,8 +2687,8 @@
       "type": "python_module",
       "path": "ecosystem/registry/platforms/generate_platform_analysis.py",
       "dependencies": [
-        "json",
-        "yaml"
+        "yaml",
+        "json"
       ],
       "dependents": []
     },
@@ -2732,10 +2732,10 @@
       "type": "python_module",
       "path": "ecosystem/scripts/analyze_violations.py",
       "dependencies": [
+        "typing",
         "pathlib",
         "sys",
-        "json",
-        "typing"
+        "json"
       ],
       "dependents": []
     },
@@ -2744,13 +2744,13 @@
       "type": "python_module",
       "path": "ecosystem/scripts/apply_auto_fixes.py",
       "dependencies": [
-        "os",
-        "pathlib",
-        "sys",
-        "json",
+        "typing",
         "re",
+        "json",
+        "sys",
         "yaml",
-        "typing"
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2759,12 +2759,12 @@
       "type": "python_module",
       "path": "ecosystem/semantic/semantic_context.py",
       "dependencies": [
-        "pathlib",
         "typing",
         "json",
-        "copy",
         "datetime",
-        "dataclasses"
+        "copy",
+        "dataclasses",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2773,18 +2773,18 @@
       "type": "python_module",
       "path": "ecosystem/tests/test_ecosystem_integration.py",
       "dependencies": [
-        "message_bus",
-        "pathlib",
-        "sync_engine",
         "service_agent",
-        "sys",
-        "router",
         "traceback",
         "gateway",
-        "time",
+        "event_dispatcher",
         "service_client",
         "service_registry",
-        "event_dispatcher"
+        "router",
+        "time",
+        "sys",
+        "pathlib",
+        "sync_engine",
+        "message_bus"
       ],
       "dependents": []
     },
@@ -2793,10 +2793,10 @@
       "type": "python_module",
       "path": "ecosystem/tools/audit/gl-audit-simple.py",
       "dependencies": [
-        "pathlib",
         "yaml",
-        "json",
-        "datetime"
+        "pathlib",
+        "datetime",
+        "json"
       ],
       "dependents": []
     },
@@ -2805,14 +2805,14 @@
       "type": "python_module",
       "path": "ecosystem/tools/audit_trail_query.py",
       "dependencies": [
-        "pathlib",
-        "datetime",
-        "json",
-        "argparse",
-        "csv",
         "typing",
+        "argparse",
+        "json",
+        "csv",
+        "datetime",
+        "sqlite3",
         "dataclasses",
-        "sqlite3"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2821,16 +2821,16 @@
       "type": "python_module",
       "path": "ecosystem/tools/audit_trail_report.py",
       "dependencies": [
-        "collections",
-        "pathlib",
-        "datetime",
-        "json",
-        "traceback",
-        "argparse",
-        "csv",
         "typing",
+        "argparse",
+        "traceback",
+        "json",
+        "csv",
+        "collections",
+        "datetime",
+        "sqlite3",
         "dataclasses",
-        "sqlite3"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2839,16 +2839,16 @@
       "type": "python_module",
       "path": "ecosystem/tools/fact-verification/gl-fact-pipeline.py",
       "dependencies": [
-        "pathlib",
+        "enum",
         "typing",
-        "hashlib",
-        "json",
         "argparse",
         "re",
-        "yaml",
+        "json",
         "datetime",
-        "enum",
-        "dataclasses"
+        "dataclasses",
+        "yaml",
+        "pathlib",
+        "hashlib"
       ],
       "dependents": []
     },
@@ -2857,12 +2857,12 @@
       "type": "python_module",
       "path": "ecosystem/tools/generate-governance-dashboard.py",
       "dependencies": [
-        "pathlib",
         "typing",
-        "sys",
         "json",
+        "datetime",
+        "sys",
         "yaml",
-        "datetime"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2871,9 +2871,9 @@
       "type": "python_module",
       "path": "ecosystem/tools/gl-markers/add-gl-markers.py",
       "dependencies": [
-        "os",
+        "pathlib",
         "sys",
-        "pathlib"
+        "os"
       ],
       "dependents": []
     },
@@ -2883,9 +2883,9 @@
       "path": "ecosystem/tools/gl-markers/add-gl-markers-batch.py",
       "dependencies": [
         "json",
-        "os",
+        "pathlib",
         "sys",
-        "pathlib"
+        "os"
       ],
       "dependents": []
     },
@@ -2895,9 +2895,9 @@
       "path": "ecosystem/tools/gl-markers/add-gl-markers-json.py",
       "dependencies": [
         "json",
-        "os",
+        "pathlib",
         "sys",
-        "pathlib"
+        "os"
       ],
       "dependents": []
     },
@@ -2906,9 +2906,9 @@
       "type": "python_module",
       "path": "ecosystem/tools/gl-markers/add-gl-markers-yaml.py",
       "dependencies": [
-        "os",
+        "pathlib",
         "sys",
-        "pathlib"
+        "os"
       ],
       "dependents": []
     },
@@ -2917,9 +2917,9 @@
       "type": "python_module",
       "path": "ecosystem/tools/gl-markers/fix-governance-markers.py",
       "dependencies": [
+        "json",
         "pathlib",
-        "os",
-        "json"
+        "os"
       ],
       "dependents": []
     },
@@ -2928,12 +2928,12 @@
       "type": "python_module",
       "path": "ecosystem/tools/registry/data_catalog_manager.py",
       "dependencies": [
-        "pathlib",
         "typing",
-        "json",
         "argparse",
+        "json",
+        "datetime",
         "yaml",
-        "datetime"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2942,14 +2942,14 @@
       "type": "python_module",
       "path": "ecosystem/tools/registry/platform_registry_manager.py",
       "dependencies": [
-        "os",
-        "pathlib",
+        "typing",
+        "argparse",
+        "json",
         "datetime",
         "sys",
-        "json",
-        "argparse",
         "yaml",
-        "typing"
+        "pathlib",
+        "os"
       ],
       "dependents": []
     },
@@ -2958,13 +2958,13 @@
       "type": "python_module",
       "path": "ecosystem/tools/registry/service_registry_manager.py",
       "dependencies": [
-        "pathlib",
+        "typing",
+        "argparse",
+        "json",
         "datetime",
         "sys",
-        "json",
-        "argparse",
         "yaml",
-        "typing"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2973,13 +2973,13 @@
       "type": "python_module",
       "path": "ecosystem/tools/registry/test_registry_tools.py",
       "dependencies": [
-        "platform_registry_manager",
-        "pathlib",
-        "sys",
-        "tempfile",
         "traceback",
+        "platform_registry_manager",
+        "service_registry_manager",
+        "tempfile",
         "data_catalog_manager",
-        "service_registry_manager"
+        "sys",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -2995,8 +2995,8 @@
       "type": "python_module",
       "path": "ecosystem/utils/path_utils.py",
       "dependencies": [
-        "pathlib",
-        "typing"
+        "typing",
+        "pathlib"
       ],
       "dependents": []
     },
@@ -3005,14 +3005,14 @@
       "type": "python_module",
       "path": "ecosystem/validators/network_validator.py",
       "dependencies": [
-        "pathlib",
+        "typing",
         "json",
         "socket",
-        "urllib",
+        "subprocess",
         "time",
-        "typing",
+        "urllib",
         "dataclasses",
-        "subprocess"
+        "pathlib"
       ],
       "dependents": []
     },
@@ -3021,17 +3021,17 @@
       "type": "python_module",
       "path": "ecosystem/verify_network_interaction.py",
       "dependencies": [
-        "os",
-        "pathlib",
         "typing",
-        "sys",
-        "json",
-        "reasoning",
-        "traceback",
         "argparse",
+        "traceback",
+        "json",
         "datetime",
+        "reasoning",
         "validators",
-        "subprocess"
+        "subprocess",
+        "sys",
+        "pathlib",
+        "os"
       ],
       "dependents": []
     }
