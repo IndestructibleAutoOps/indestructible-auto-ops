@@ -9,6 +9,7 @@
   "overall_status": "PASS",
   "governance": {
     "status": "PASS",
+    "status": "UNKNOWN",
     "violations": []
   },
   "network": {
@@ -25,6 +26,7 @@
         "status": "PASS",
         "latency_ms": 1.0843276977539062,
         "details": "Internal connectivity test passed; reachable ports validated. [REDACTED FOR SECURITY]",
+        "details": "Reachable ports: [22, 8080]",
         "timestamp": "2026-02-03T07:43:04Z",
         "test_type": "INTERNAL"
       },
