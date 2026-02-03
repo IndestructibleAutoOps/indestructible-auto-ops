@@ -14,6 +14,14 @@ from pathlib import Path
 import hashlib
 
 
+class DateTimeEncoder(json.JSONEncoder):
+    """Custom JSON encoder to handle datetime objects"""
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat() + 'Z'
+        return super().default(obj)
+
+
 @dataclass
 class RoleInvocation:
     """Represents a role invocation request"""
@@ -67,9 +75,16 @@ class RoleExecutionResult:
     
     def to_json(self) -> str:
         """Convert to JSON string"""
-        data = asdict(self)
-        data['timestamp'] = self.timestamp.isoformat() + 'Z'
-        return json.dumps(data, indent=2)
+        data = {
+            'role_id': self.role_id,
+            'invocation_id': self.invocation_id,
+            'status': self.status,
+            'timestamp': self.timestamp,
+            'duration_ms': self.duration_ms,
+            'result': self.result,
+            'metadata': self.metadata
+        }
+        return json.dumps(data, indent=2, cls=DateTimeEncoder)
 
 
 def parse_value(value_str: str) -> Any:
@@ -141,15 +156,23 @@ class RoleExecutor:
             return final_result
             
         except Exception as e:
+            import traceback
             duration_ms = int((datetime.utcnow() - start_time).total_seconds() * 1000)
+            error_timestamp = datetime.utcnow()
             return RoleExecutionResult(
                 role_id="unknown",
                 invocation_id=str(uuid.uuid4()),
                 status="failed",
-                timestamp=datetime.utcnow(),
+                timestamp=error_timestamp,
                 duration_ms=duration_ms,
-                result={"error": str(e)},
-                metadata={"error_type": type(e).__name__}
+                result={
+                    "error": str(e),
+                    "traceback": traceback.format_exc()
+                },
+                metadata={
+                    "error_type": type(e).__name__,
+                    "timestamp": error_timestamp.isoformat() + 'Z'
+                }
             )
     
     async def _phase1_pre_invocation(self, command: str, actor: str) -> RoleInvocation:
@@ -224,7 +247,14 @@ class RoleExecutor:
         
         # 3. Generate report
         report = {
-            "invocation": asdict(invocation),
+            "invocation": {
+                "invocation_id": invocation.invocation_id,
+                "role_id": invocation.role_id,
+                "input": invocation.input,
+                "parameters": invocation.parameters,
+                "timestamp": invocation.timestamp.isoformat() + 'Z',
+                "actor": invocation.actor
+            },
             "result": execution_result,
             "evidence": evidence_chain,
             "duration_ms": duration_ms
@@ -309,12 +339,22 @@ class RoleExecutor:
         result: Dict[str, Any]
     ) -> List[Dict[str, Any]]:
         """Collect evidence chain"""
+        # Convert invocation to serializable dict
+        invocation_dict = {
+            "invocation_id": invocation.invocation_id,
+            "role_id": invocation.role_id,
+            "input": invocation.input,
+            "parameters": invocation.parameters,
+            "timestamp": invocation.timestamp.isoformat() + 'Z',
+            "actor": invocation.actor
+        }
+        
         evidence = [
             {
                 "type": "invocation",
                 "source": f"invocation:{invocation.invocation_id}",
                 "checksum": hashlib.sha256(
-                    json.dumps(asdict(invocation)).encode()
+                    json.dumps(invocation_dict).encode()
                 ).hexdigest()
             },
             {
