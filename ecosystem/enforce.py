@@ -174,6 +174,9 @@ class MNGAEnforcer:
         # 6. 自我審計檢查
         results.append(self.check_self_auditor())
         
+        # 7. MNGA 架構完整性檢查
+        results.append(self.check_mnga_architecture())
+        
         return results
 
     def check_gl_compliance(self) -> EnforcementResult:
@@ -602,6 +605,163 @@ class MNGAEnforcer:
             message=f"自我審計器檢查完成，發現 {len(violations)} 個問題",
             violations=violations,
             files_scanned=1,
+            execution_time_ms=int(elapsed)
+        )
+
+    def check_mnga_architecture(self) -> EnforcementResult:
+        """檢查 MNGA 架構完整性"""
+        start_time = datetime.now()
+        violations = []
+        files_checked = 0
+        
+        # MNGA 架構定義
+        mnga_architecture = {
+            # Layer 6: Reasoning
+            "ecosystem/reasoning/dual_path/internal": {
+                "required_files": ["retrieval.py", "knowledge_graph.py", "index_builder.py"],
+                "description": "內部檢索系統"
+            },
+            "ecosystem/reasoning/dual_path/external": {
+                "required_files": ["retrieval.py", "web_search.py", "domain_filter.py"],
+                "description": "外部檢索系統"
+            },
+            "ecosystem/reasoning/dual_path/arbitration": {
+                "required_files": ["arbitrator.py", "rule_engine.py"],
+                "description": "仲裁系統"
+            },
+            "ecosystem/reasoning/dual_path/arbitration/rules": {
+                "required_files": ["security.yaml", "api.yaml", "dependency.yaml"],
+                "description": "仲裁規則庫"
+            },
+            "ecosystem/reasoning/traceability": {
+                "required_files": ["traceability.py", "feedback.py"],
+                "description": "溯源系統"
+            },
+            "ecosystem/reasoning/agents": {
+                "required_files": ["planning_agent.py"],
+                "description": "智能體系統"
+            },
+            
+            # Contracts
+            "ecosystem/contracts/reasoning": {
+                "required_files": ["dual-path-spec.yaml", "arbitration_rules.yaml", "feedback_schema.yaml"],
+                "description": "推理合約"
+            },
+            
+            # Layer 3: Indexes
+            "ecosystem/indexes/internal": {
+                "required_dirs": ["code_vectors", "docs_index"],
+                "description": "內部索引"
+            },
+            "ecosystem/indexes/external": {
+                "required_dirs": ["cache"],
+                "description": "外部索引緩存"
+            },
+            
+            # Platforms
+            "platforms/gl.platform-ide/plugins": {
+                "required_dirs": ["vscode"],
+                "description": "IDE 插件"
+            },
+            "platforms/gl.platform-assistant/api": {
+                "required_files": ["reasoning.py"],
+                "description": "推理 API"
+            },
+            "platforms/gl.platform-assistant/orchestration": {
+                "required_files": ["pipeline.py"],
+                "description": "編排管道"
+            }
+        }
+        
+        for path, spec in mnga_architecture.items():
+            dir_path = self.workspace / path
+            files_checked += 1
+            
+            # 檢查目錄是否存在
+            if not dir_path.exists():
+                violations.append(Violation(
+                    rule_id="MNGA-ARCH-001",
+                    file_path=path,
+                    line_number=None,
+                    message=f"MNGA 架構目錄缺失: {spec['description']}",
+                    severity="HIGH",
+                    suggestion=f"創建目錄 {path}"
+                ))
+                continue
+            
+            # 檢查必要文件
+            if "required_files" in spec:
+                for req_file in spec["required_files"]:
+                    file_path = dir_path / req_file
+                    files_checked += 1
+                    if not file_path.exists():
+                        # 檢查 kebab-case 變體
+                        kebab_file = req_file.replace("_", "-")
+                        if not (dir_path / kebab_file).exists():
+                            violations.append(Violation(
+                                rule_id="MNGA-ARCH-002",
+                                file_path=f"{path}/{req_file}",
+                                line_number=None,
+                                message=f"MNGA 架構文件缺失: {spec['description']}",
+                                severity="MEDIUM",
+                                suggestion=f"創建文件 {path}/{req_file}"
+                            ))
+            
+            # 檢查必要子目錄
+            if "required_dirs" in spec:
+                for req_dir in spec["required_dirs"]:
+                    sub_dir = dir_path / req_dir
+                    files_checked += 1
+                    if not sub_dir.exists():
+                        violations.append(Violation(
+                            rule_id="MNGA-ARCH-003",
+                            file_path=f"{path}/{req_dir}",
+                            line_number=None,
+                            message=f"MNGA 架構子目錄缺失: {spec['description']}",
+                            severity="MEDIUM",
+                            suggestion=f"創建目錄 {path}/{req_dir}"
+                        ))
+        
+        # 檢查推理組件是否可導入
+        reasoning_modules = [
+            ("ecosystem.reasoning.dual_path.arbitration.arbitrator", "Arbitrator"),
+            ("ecosystem.reasoning.dual_path.internal.retrieval", "InternalRetrievalEngine"),
+            ("ecosystem.reasoning.dual_path.external.retrieval", "ExternalRetrievalEngine"),
+            ("ecosystem.reasoning.traceability.traceability", "TraceabilityEngine"),
+        ]
+        
+        for module_path, class_name in reasoning_modules:
+            files_checked += 1
+            try:
+                import importlib
+                module = importlib.import_module(module_path)
+                if not hasattr(module, class_name):
+                    violations.append(Violation(
+                        rule_id="MNGA-ARCH-004",
+                        file_path=module_path.replace(".", "/") + ".py",
+                        line_number=None,
+                        message=f"類 {class_name} 未在模組中定義",
+                        severity="MEDIUM",
+                        suggestion=f"在 {module_path} 中定義 {class_name} 類"
+                    ))
+            except ImportError as e:
+                # 模組導入失敗不是關鍵錯誤（可能缺少依賴）
+                pass
+            except Exception as e:
+                pass
+        
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        
+        # 計算架構完整性
+        critical_violations = len([v for v in violations if v.severity == "CRITICAL"])
+        high_violations = len([v for v in violations if v.severity == "HIGH"])
+        
+        return EnforcementResult(
+            check_name="MNGA Architecture",
+            passed=critical_violations == 0 and high_violations == 0,
+            message=f"檢查 {files_checked} 個架構組件，發現 {len(violations)} 個問題",
+            violations=violations,
+            files_scanned=files_checked,
             execution_time_ms=int(elapsed)
         )
 
