@@ -59,10 +59,14 @@ class Arbitrator:
         
         # Import rule engine
         from .rule_engine import ArbitrationRuleEngine
-        rules_path = self.arbitration_config.get(
-            "rules_path",
-            "ecosystem/reasoning/dual_path/arbitration/rules",
-        )
+        from pathlib import Path
+        
+        # Get rules path from config or use default relative to module
+        rules_config = self.arbitration_config.get("rule_engine", {})
+        rules_path = rules_config.get("path")
+        if not rules_path:
+            rules_path = str(Path(__file__).parent / "rules")
+        
         self.rule_engine = ArbitrationRuleEngine(rules_path=rules_path)
         
     def _load_config(self, config_path: str) -> Dict:
