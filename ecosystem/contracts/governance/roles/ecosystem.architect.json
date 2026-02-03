@@ -1,0 +1,136 @@
+{
+  "$schema": "../role.schema.json",
+  "id": "ecosystem.architect",
+  "name": "Ecosystem Architect",
+  "version": "1.0.0",
+  "description": "Analyzes architecture consistency, semantic topology, version compatibility with contracts, and provides comprehensive architecture recommendations for the MNGA ecosystem",
+  "capabilities": [
+    "architecture_analysis",
+    "semantic_topology",
+    "version_contract_analysis",
+    "architecture_recommendation"
+  ],
+  "inputs": {
+    "parameters": {
+      "target": {
+        "type": "string",
+        "description": "Module, directory, or entire ecosystem to analyze",
+        "required": true
+      },
+      "analysis_type": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["consistency", "topology", "contracts", "recommendations"]
+        },
+        "description": "Types of analysis to perform",
+        "default": ["consistency", "topology"]
+      },
+      "depth": {
+        "type": "string",
+        "enum": ["shallow", "deep", "full"],
+        "description": "Analysis depth",
+        "default": "deep"
+      },
+      "include_dependencies": {
+        "type": "boolean",
+        "description": "Include dependency analysis",
+        "default": true
+      }
+    },
+    "required": ["target"]
+  },
+  "outputs": {
+    "format": "json",
+    "schema": {
+      "architecture_analysis": {
+        "type": "object",
+        "properties": {
+          "consistency_score": {"type": "number"},
+          "topology_graph": {"type": "object"},
+          "layer_alignment": {"type": "array"},
+          "semantic_conflicts": {"type": "array"}
+        }
+      },
+      "contract_analysis": {
+        "type": "object",
+        "properties": {
+          "version_compatibility": {"type": "object"},
+          "contract_gaps": {"type": "array"},
+          "breaking_changes": {"type": "array"}
+        }
+      },
+      "recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "priority": {"type": "string"},
+            "description": {"type": "string"},
+            "action": {"type": "string"}
+          }
+        }
+      }
+    }
+  },
+  "runtime_behavior": {
+    "execution_mode": "asynchronous",
+    "timeout": 600,
+    "retry_policy": {
+      "max_retries": 1,
+      "backoff": "exponential"
+    },
+    "hooks": {
+      "pre_execute": "scripts/architect_pre_hook.sh",
+      "post_execute": "scripts/architect_post_hook.sh"
+    }
+  },
+  "semantic_tags": [
+    "analysis",
+    "design",
+    "governance",
+    "architecture",
+    "topology"
+  ],
+  "governance_rules": {
+    "permissions": [
+      "architecture:read",
+      "contract:read",
+      "topology:analyze",
+      "recommendation:generate"
+    ],
+    "constraints": [
+      {
+        "type": "ANALYSIS_DEPTH_LIMIT",
+        "rule": "depth != 'full' or analysis_scope < 1000 artifacts",
+        "severity": "MEDIUM"
+      },
+      {
+        "type": "CONTRACT_VERSION_LOCK",
+        "rule": "must use locked contract versions in production",
+        "severity": "CRITICAL"
+      },
+      {
+        "type": "TOPOLOGY_VALIDATION",
+        "rule": "topology must respect MNGA layer boundaries",
+        "severity": "HIGH"
+      }
+    ],
+    "audit_required": true,
+    "evidence_required": true
+  },
+  "dependencies": [
+    "ecosystem.analyst",
+    "@mnga/tools/topology-analyzer",
+    "@mnga/tools/contract-validator"
+  ],
+  "mnga_layer": "L6",
+  "layer_interactions": [
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7"
+  ]
+}
