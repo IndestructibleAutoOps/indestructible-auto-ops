@@ -6,10 +6,9 @@ Integrates with web search APIs and applies domain filtering
 import os
 import json
 import hashlib
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Optional
 from datetime import datetime, timezone
 import yaml
-import requests
 
 
 class ExternalRetrievalResult:

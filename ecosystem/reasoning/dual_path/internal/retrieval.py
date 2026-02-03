@@ -6,7 +6,7 @@ Combines vector-based semantic search with knowledge graph queries
 import os
 import json
 import hashlib
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Optional
 from datetime import datetime, timezone
 import yaml
 

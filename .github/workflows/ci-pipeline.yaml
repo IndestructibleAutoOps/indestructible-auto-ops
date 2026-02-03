@@ -26,7 +26,7 @@ env:
 jobs:
   metadata:
     name: Generate Pipeline Metadata
-    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    runs-on: ubuntu-latest
     outputs:
       pipeline_id: ${{ steps.metadata.outputs.pipeline_id }}
       trigger: ${{ steps.metadata.outputs.trigger }}
@@ -53,7 +53,7 @@ jobs:
           echo "Actor: $actor"
           
       - name: Upload metadata artifact
-        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        uses: actions/upload-artifact@5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
         with:
           name: pipeline-metadata
           path: |
@@ -63,17 +63,17 @@ jobs:
 
   lint:
     name: Lint and Format Check
-    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    runs-on: ubuntu-latest
     needs: metadata
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        uses: actions/checkout@c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
         with:
           fetch-depth: 0
           
       - name: Setup Python
-        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        uses: actions/setup-python@0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
@@ -104,17 +104,17 @@ jobs:
 
   security:
     name: Security Scanning
-    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    runs-on: ubuntu-latest
     needs: metadata
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        uses: actions/checkout@c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
         with:
           fetch-depth: 0
           
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master@sha256:672a8f1b0d0c6ebf3a0e7124a8d6f7a437c28f93741e7dd3458629265250b23
+        uses: aquasecurity/trivy-action@672a8f1b0d0c6ebf3a0e7124a8d6f7a437c28f93741e7dd3458629265250b23
         with:
           scan-type: 'fs'
           scan-ref: '.'
@@ -122,18 +122,23 @@ jobs:
           output: 'trivy-results.sarif'
           
       - name: Upload Trivy results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v3@sha256:456e3f1a03225b12d388a8859bc98681f81073f01921946567c8bc5257599663
+        uses: github/codeql-action/upload-sarif@456e3f1a03225b12d388a8859bc98681f81073f01921946567c8bc5257599663
         with:
           sarif_file: 'trivy-results.sarif'
           
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@cb5d455e65754a9163f24b6df27c59e58e877b3d51520dcb07175a7d2b2b8bb5
+        with:
+          languages: 'python'
+          
       - name: Run CodeQL
-        uses: github/codeql-action/analyze@v3@sha256:cb5d455e65754a9163f24b6df27c59e58e877b3d51520dcb07175a7d2b2b8bb5
+        uses: github/codeql-action/analyze@cb5d455e65754a9163f24b6df27c59e58e877b3d51520dcb07175a7d2b2b8bb5
         with:
           languages: python
 
   test:
     name: Run Tests
-    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    runs-on: ubuntu-latest
     needs: [metadata, lint]
     
     outputs:
@@ -169,11 +174,11 @@ jobs:
           
           coverage=$(python3 -c "import json; print(json.load(open('coverage.json'))['totals']['percent_covered'])")
           
-          echo "results=$(cat test-results.xml)" >> $GITHUB_OUTPUT
+          echo "results=JUnit test results saved as artifact 'test-results'." >> $GITHUB_OUTPUT
           echo "coverage=$coverage" >> $GITHUB_OUTPUT
           
       - name: Upload test results
-        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        uses: actions/upload-artifact@5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
         with:
           name: test-results
           path: |

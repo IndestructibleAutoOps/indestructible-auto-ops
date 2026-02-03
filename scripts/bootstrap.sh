@@ -111,15 +111,7 @@ fi
 # Install additional dependencies for reasoning system
 echo ""
 echo "Installing reasoning system dependencies..."
-pip install -q \
-    openai \
-    anthropic \
-    chromadb \
-    neo4j \
-    tree-sitter \
-    networkx \
-    matplotlib \
-    seaborn
+pip install -q -r requirements.txt
 print_success "Reasoning system dependencies installed"
 
 # Create necessary directories
