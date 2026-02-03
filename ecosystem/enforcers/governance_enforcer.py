@@ -47,16 +47,31 @@ class GovernanceEnforcer:
     - Emit governance events
     """
     
-    def __init__(self, base_path: str = "/workspace/machine-native-ops"):
+    def __init__(self, base_path: str = None):
+        # Auto-detect base path if not provided
+        if base_path is None:
+            base_path = self._detect_base_path()
         self.base_path = Path(base_path)
         self.contracts_dir = self.base_path / "ecosystem" / "contracts"
         self.contracts = {}
         
         # P2: Initialize event emitter and semantic context manager
-        self.event_emitter = get_global_emitter(base_path=base_path)
-        self.context_manager = get_global_context_manager(base_path=base_path)
+        self.event_emitter = get_global_emitter(base_path=str(base_path))
+        self.context_manager = get_global_context_manager(base_path=str(base_path))
         
         self._load_contracts()
+    
+    def _detect_base_path(self) -> str:
+        """Auto-detect project base path by looking for governance-manifest.yaml"""
+        current = Path(__file__).parent  # ecosystem/enforcers
+        while current != current.parent:
+            if (current / "governance-manifest.yaml").exists():
+                return str(current)
+            if (current / "ecosystem").exists() and (current / "ecosystem" / "enforce.py").exists():
+                return str(current)
+            current = current.parent
+        # Fallback to parent of ecosystem directory
+        return str(Path(__file__).parent.parent.parent)
     
     def _load_contracts(self):
         """Load all governance contracts"""

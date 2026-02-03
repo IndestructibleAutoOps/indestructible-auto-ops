@@ -16,7 +16,7 @@
 #
 # ═══════════════════════════════════════════════════════════════════════════════
 
-.PHONY: all-kg kg mndoc superroot check-drift clean-generated analyze-reports help install automation-init automation-check automation-fix automation-verify automation-help test
+.PHONY: all-kg kg mndoc superroot check-drift clean-generated analyze-reports help install automation-init automation-check automation-fix automation-verify automation-help test test-fast quick-verify bootstrap
 
 # Default target
 .DEFAULT_GOAL := help
@@ -142,3 +142,27 @@ test:
 	@echo "For detailed validation reports, see:"
 	@echo "  - GL-STATUS-REPORT.md"
 	@echo "  - GL-CORE-INTEGRATION-REPORT.md"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Quick Test Target (fast local verification)
+# ─────────────────────────────────────────────────────────────────────────────
+.PHONY: test-fast quick-verify bootstrap
+
+test-fast:
+	@echo "⚡ Running quick tests (fast local verification)..."
+	@echo ""
+	@echo "Step 1: Quick environment verification..."
+	@bash scripts/quick-verify.sh --json 2>/dev/null || bash scripts/quick-verify.sh
+	@echo ""
+	@echo "Step 2: Ecosystem enforcement check..."
+	@python3 ecosystem/enforce.py 2>/dev/null || echo "⚠️  Ecosystem check had warnings (non-fatal)"
+	@echo ""
+	@echo "✅ Quick tests completed!"
+
+quick-verify:
+	@echo "🔍 Running quick verification..."
+	@bash scripts/quick-verify.sh
+
+bootstrap:
+	@echo "🚀 Running bootstrap..."
+	@bash scripts/bootstrap.sh

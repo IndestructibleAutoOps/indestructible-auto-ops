@@ -1,0 +1,190 @@
+# Adapter Schema
+# @GL-governed
+# @GL-layer: GL81-83
+# @GL-semantic: adapter-schema
+#
+# Schema for adapter.yaml files in the governance ecosystem
+# Adapters connect governance to cloud platforms and external systems
+
+$schema: "http://json-schema.org/draft-07/schema#"
+$id: "https://machine-native-ops.io/schemas/adapter.yaml"
+title: "Adapter Schema"
+description: "Schema for cloud and platform adapters"
+
+type: object
+
+required:
+  - id
+  - cloud
+  - version
+
+properties:
+  id:
+    type: string
+    description: "Unique adapter identifier"
+    pattern: "^ADP-[A-Z0-9-]+$"
+    examples:
+      - "ADP-AWS-001"
+      - "ADP-GCP-K8S"
+      - "ADP-AZURE-AKS"
+  
+  name:
+    type: string
+    description: "Human-readable adapter name"
+  
+  cloud:
+    type: string
+    description: "Target cloud or platform"
+    enum:
+      - aws
+      - gcp
+      - azure
+      - kubernetes
+      - docker
+      - github
+      - gitlab
+      - on-premise
+      - hybrid
+  
+  version:
+    type: string
+    description: "Adapter version"
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+  
+  description:
+    type: string
+    description: "Adapter description"
+  
+  status:
+    type: string
+    description: "Adapter status"
+    enum:
+      - active
+      - deprecated
+      - experimental
+      - planned
+    default: active
+  
+  capabilities:
+    type: array
+    description: "Adapter capabilities"
+    items:
+      type: string
+      enum:
+        - deploy
+        - monitor
+        - scan
+        - audit
+        - backup
+        - restore
+        - scale
+        - configure
+  
+  authentication:
+    type: object
+    description: "Authentication configuration"
+    properties:
+      type:
+        type: string
+        enum:
+          - api_key
+          - oauth2
+          - service_account
+          - iam_role
+          - certificate
+      required_credentials:
+        type: array
+        items:
+          type: string
+        description: "List of required credential names"
+      env_vars:
+        type: array
+        items:
+          type: string
+        description: "Required environment variables"
+  
+  endpoints:
+    type: object
+    description: "API endpoints configuration"
+    properties:
+      base_url:
+        type: string
+        format: uri
+      health_check:
+        type: string
+      api_version:
+        type: string
+  
+  mapping:
+    type: object
+    description: "Resource mapping configuration"
+    properties:
+      resources:
+        type: array
+        items:
+          type: object
+          properties:
+            governance_type:
+              type: string
+              description: "Governance resource type"
+            platform_type:
+              type: string
+              description: "Platform-specific resource type"
+            transformation:
+              type: string
+              description: "Transformation logic reference"
+  
+  contracts:
+    type: array
+    description: "Associated contracts"
+    items:
+      type: string
+      description: "Contract ID reference"
+  
+  metadata:
+    type: object
+    description: "Adapter metadata"
+    properties:
+      layer:
+        type: string
+        pattern: "^GL\\d{2}-\\d{2}$"
+      semantic:
+        type: string
+      created:
+        type: string
+        format: date-time
+      updated:
+        type: string
+        format: date-time
+      maintainer:
+        type: string
+      documentation:
+        type: string
+        format: uri
+
+additionalProperties: false
+
+examples:
+  - id: "ADP-AWS-001"
+    name: "AWS S3 Adapter"
+    cloud: aws
+    version: "1.0.0"
+    description: "Adapter for AWS S3 artifact storage"
+    status: active
+    capabilities:
+      - deploy
+      - backup
+      - restore
+    authentication:
+      type: iam_role
+      required_credentials:
+        - AWS_ACCESS_KEY_ID
+        - AWS_SECRET_ACCESS_KEY
+      env_vars:
+        - AWS_REGION
+    endpoints:
+      base_url: "https://s3.amazonaws.com"
+      api_version: "2006-03-01"
+    metadata:
+      layer: "GL81-83"
+      semantic: "aws-s3-adapter"

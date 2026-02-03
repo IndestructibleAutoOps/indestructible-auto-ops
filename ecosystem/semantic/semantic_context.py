@@ -130,18 +130,32 @@ class SemanticContextManager:
     Handles context extraction, propagation, merging, and tracking.
     """
     
-    def __init__(self, base_path: str = "/workspace/machine-native-ops"):
+    def __init__(self, base_path: str = None):
         """
         Initialize semantic context manager.
         
         Args:
             base_path: Base path for governance operations
         """
+        if base_path is None:
+            base_path = self._detect_base_path()
         self.base_path = Path(base_path)
         self.current_context: Optional[SemanticContext] = None
         self.context_history: List[SemanticContext] = []
         self.context_log_file = self.base_path / "ecosystem" / "logs" / "semantic_context.log"
         self.context_log_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    def _detect_base_path(self) -> str:
+        """Auto-detect project base path by looking for governance-manifest.yaml"""
+        current = Path(__file__).parent  # ecosystem/semantic
+        while current != current.parent:
+            if (current / "governance-manifest.yaml").exists():
+                return str(current)
+            if (current / "ecosystem").exists() and (current / "ecosystem" / "enforce.py").exists():
+                return str(current)
+            current = current.parent
+        # Fallback to parent of ecosystem directory
+        return str(Path(__file__).parent.parent.parent)
     
     def extract_context_from_contract(self, contract: Dict) -> Optional[SemanticContext]:
         """
@@ -380,7 +394,7 @@ class SemanticContextManager:
 _global_context_manager = None
 
 
-def get_global_context_manager(base_path: str = "/workspace/machine-native-ops") -> SemanticContextManager:
+def get_global_context_manager(base_path: str = None) -> SemanticContextManager:
     """
     Get global semantic context manager instance.
     

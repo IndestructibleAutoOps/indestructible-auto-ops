@@ -93,7 +93,10 @@ class SelfAuditor:
         "我认为": "基于[证据]，分析表明"
     }
     
-    def __init__(self, base_path: str = "/workspace/machine-native-ops"):
+    def __init__(self, base_path: str = None):
+        # Auto-detect base path if not provided
+        if base_path is None:
+            base_path = self._detect_base_path()
         self.base_path = Path(base_path)
         self.audit_logs_dir = self.base_path / "ecosystem" / "logs" / "audit-logs"
         self.audit_logs_dir.mkdir(parents=True, exist_ok=True)
@@ -101,6 +104,18 @@ class SelfAuditor:
         # P0 FIX: Initialize audit trail database
         self.audit_db_path = self.audit_logs_dir / "audit_trail.db"
         self._init_audit_database()
+    
+    def _detect_base_path(self) -> str:
+        """Auto-detect project base path by looking for governance-manifest.yaml"""
+        current = Path(__file__).parent  # ecosystem/enforcers
+        while current != current.parent:
+            if (current / "governance-manifest.yaml").exists():
+                return str(current)
+            if (current / "ecosystem").exists() and (current / "ecosystem" / "enforce.py").exists():
+                return str(current)
+            current = current.parent
+        # Fallback to parent of ecosystem directory
+        return str(Path(__file__).parent.parent.parent)
     
     def _init_audit_database(self):
         """Initialize SQLite database for audit trail logging."""

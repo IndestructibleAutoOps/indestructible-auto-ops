@@ -204,7 +204,7 @@ class EventEmitter:
     Manages event emission, subscription, and delivery to handlers.
     """
     
-    def __init__(self, db_path: str = None, base_path: str = "/workspace/machine-native-ops"):
+    def __init__(self, db_path: str = None, base_path: str = None):
         """
         Initialize event emitter.
         
@@ -212,12 +212,17 @@ class EventEmitter:
             db_path: Path to audit trail database
             base_path: Base path for default database location
         """
+        if base_path is None:
+            base_path = self._detect_base_path()
         self.base_path = Path(base_path)
         
         if db_path:
             self.db_path = Path(db_path)
         else:
             self.db_path = self.base_path / "ecosystem" / "logs" / "audit-logs" / "audit_trail.db"
+        
+        # Ensure logs directory exists
+        self.db_path.parent.mkdir(parents=True, exist_ok=True)
         
         self.handlers: List[EventHandler] = []
         self.event_queue = Queue()
@@ -226,6 +231,18 @@ class EventEmitter:
         
         # Add default handlers
         self.add_handler(AuditEventHandler(self.db_path))
+    
+    def _detect_base_path(self) -> str:
+        """Auto-detect project base path by looking for governance-manifest.yaml"""
+        current = Path(__file__).parent  # ecosystem/events
+        while current != current.parent:
+            if (current / "governance-manifest.yaml").exists():
+                return str(current)
+            if (current / "ecosystem").exists() and (current / "ecosystem" / "enforce.py").exists():
+                return str(current)
+            current = current.parent
+        # Fallback to parent of ecosystem directory
+        return str(Path(__file__).parent.parent.parent)
     
     def add_handler(self, handler: EventHandler):
         """
@@ -425,7 +442,7 @@ class EventEmitter:
 _global_emitter = None
 
 
-def get_global_emitter(db_path: str = None, base_path: str = "/workspace/machine-native-ops") -> EventEmitter:
+def get_global_emitter(db_path: str = None, base_path: str = None) -> EventEmitter:
     """
     Get global event emitter instance.
     
