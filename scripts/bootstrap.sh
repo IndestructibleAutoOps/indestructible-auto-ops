@@ -1,395 +1,283 @@
 #!/bin/bash
-# @GL-governed
-# @GL-layer: GQS-L7
-# @GL-semantic: bootstrap
-# @GL-audit-trail: ./governance/GL_SEMANTIC_ANCHOR.json
+# Bootstrap Script for MNGA Dual-Path Retrieval System
+# Installs dependencies and initializes the environment
 
----
-# Bootstrap Script for Governance System
-# 治理系統引導腳本
-#
-# Purpose: 初始化治理環境，安裝依賴，設置配置
-# Version: 1.0.0
+set -e
 
-set -euo pipefail
+echo "========================================="
+echo "MNGA Bootstrap Script"
+echo "========================================="
+echo ""
 
-# 顏色輸出
+# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# 日誌函數
-log_info() {
-    echo -e "${BLUE}[INFO]${NC} $1"
+# Function to print colored output
+print_success() {
+    echo -e "${GREEN}✓${NC} $1"
 }
 
-log_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
+print_error() {
+    echo -e "${RED}✗${NC} $1"
 }
 
-log_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
+print_warning() {
+    echo -e "${YELLOW}⚠${NC} $1"
 }
 
-log_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
+# Check if running as root
+if [[ $EUID -eq 0 ]]; then
+   print_error "This script should not be run as root"
+   exit 1
+fi
 
-# 檢查命令是否存在
-command_exists() {
-    command -v "$1" >/dev/null 2>&1
-}
+# Detect OS
+OS="$(uname -s)"
+case "${OS}" in
+    Linux*)     MACHINE=Linux;;
+    Darwin*)    MACHINE=Mac;;
+    MINGW*)     MACHINE=Windows;;
+    *)          MACHINE="UNKNOWN:${OS}"
+esac
 
-# 檢查依賴
-check_dependencies() {
-    log_info "Checking dependencies..."
+print_success "Detected OS: ${MACHINE}"
+
+# Check Python version
+echo ""
+echo "Checking Python installation..."
+if command -v python3 &> /dev/null; then
+    PYTHON_VERSION=$(python3 --version | awk '{print $2}')
+    print_success "Python found: ${PYTHON_VERSION}"
     
-    local missing_deps=()
+    # Check if version is >= 3.11
+    PYTHON_MAJOR=$(echo $PYTHON_VERSION | cut -d. -f1)
+    PYTHON_MINOR=$(echo $PYTHON_VERSION | cut -d. -f2)
     
-    # 必需依賴
-    local required_deps=(
-        "git"
-        "python3"
-        "pip"
-        "curl"
-        "wget"
-    )
-    
-    # 可選依賴
-    local optional_deps=(
-        "docker"
-        "kubectl"
-        "conftest"
-        "opa"
-        "jq"
-    )
-    
-    # 檢查必需依賴
-    for dep in "${required_deps[@]}"; do
-        if ! command_exists "$dep"; then
-            missing_deps+=("$dep")
-        fi
-    done
-    
-    if [ ${#missing_deps[@]} -gt 0 ]; then
-        log_error "Missing required dependencies: ${missing_deps[*]}"
-        log_error "Please install them before continuing"
+    if [[ $PYTHON_MAJOR -lt 3 || ($PYTHON_MAJOR -eq 3 && $PYTHON_MINOR -lt 11) ]]; then
+        print_error "Python 3.11 or higher is required"
         exit 1
     fi
-    
-    # 檢查可選依賴
-    local missing_optional=()
-    for dep in "${optional_deps[@]}"; do
-        if ! command_exists "$dep"; then
-            missing_optional+=("$dep")
-        fi
-    done
-    
-    if [ ${#missing_optional[@]} -gt 0 ]; then
-        log_warning "Missing optional dependencies: ${missing_optional[*]}"
-        log_warning "They will be installed automatically if possible"
-    fi
-    
-    log_success "All required dependencies are installed"
-}
+else
+    print_error "Python 3 not found. Please install Python 3.11 or higher"
+    exit 1
+fi
 
-# 安裝 Python 依賴
-install_python_deps() {
-    log_info "Installing Python dependencies..."
-    
-    if [ -f "requirements.txt" ]; then
-        pip install -r requirements.txt
-    else
-        # 基礎依賴
-        pip install pyyaml jsonschema python-dateutil requests pyjwt
-    fi
-    
-    log_success "Python dependencies installed"
-}
+# Check if pip is available
+echo ""
+echo "Checking pip installation..."
+if command -v pip3 &> /dev/null; then
+    print_success "pip3 found"
+else
+    print_error "pip3 not found"
+    exit 1
+fi
 
-# 安裝 Conftest
-install_conftest() {
-    if command_exists conftest; then
-        log_info "Conftest already installed: $(conftest --version)"
-        return
-    fi
-    
-    log_info "Installing Conftest..."
-    
-    local conftest_version="v0.49.0"
-    
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        wget "https://github.com/open-policy-agent/conftest/releases/download/${conftest_version}/conftest_${conftest_version}_Linux_x86_64.tar.gz"
-        tar xzf "conftest_${conftest_version}_Linux_x86_64.tar.gz"
-        sudo mv conftest /usr/local/bin/
-        rm "conftest_${conftest_version}_Linux_x86_64.tar.gz"
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        brew tap open-policy-agent/tap
-        brew install conftest
-    else
-        log_warning "Cannot auto-install Conftest on $OSTYPE"
-        log_warning "Please install it manually: https://github.com/open-policy-agent/conftest"
-    fi
-    
-    if command_exists conftest; then
-        log_success "Conftest installed: $(conftest --version)"
-    fi
-}
+# Create virtual environment
+echo ""
+echo "Creating virtual environment..."
+if [ ! -d "venv" ]; then
+    python3 -m venv venv
+    print_success "Virtual environment created"
+else
+    print_warning "Virtual environment already exists"
+fi
 
-# 安裝 OPA
-install_opa() {
-    if command_exists opa; then
-        log_info "OPA already installed: $(opa version --format json | jq -r '.version')"
-        return
-    fi
-    
-    log_info "Installing OPA..."
-    
-    local opa_version="v0.61.0"
-    
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        wget "https://openpolicyagent.org/downloads/${opa_version}/opa_linux_amd64"
-        sudo mv opa_linux_amd64 /usr/local/bin/opa
-        sudo chmod +x /usr/local/bin/opa
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        brew install opa
-    else
-        log_warning "Cannot auto-install OPA on $OSTYPE"
-        log_warning "Please install it manually: https://www.openpolicyagent.org/docs/latest/"
-    fi
-    
-    if command_exists opa; then
-        log_success "OPA installed: $(opa version --format json | jq -r '.version')"
-    fi
-}
+# Activate virtual environment
+echo ""
+echo "Activating virtual environment..."
+source venv/bin/activate
+print_success "Virtual environment activated"
 
-# 初始化治理數據庫
-init_governance_db() {
-    log_info "Initializing governance database..."
-    
-    local db_dir="ecosystem/governance"
-    
-    # 創建必要的目錄
-    mkdir -p "$db_dir/states"
-    mkdir -p "$db_dir/validation"
-    mkdir -p "$db_dir/verification"
-    mkdir -p "$db_dir/proofs"
-    mkdir -p "$db_dir/execution-logs"
-    mkdir -p "$db_dir/violations"
-    mkdir -p "$db_dir/fixes"
-    mkdir -p "$db_dir/reports"
-    mkdir -p "$db_dir/artifacts"
-    mkdir -p "$db_dir/audit-logs"
-    
-    # 初始化審計數據庫
-    if [ ! -f "$db_dir/audit.db" ]; then
-        log_info "Creating audit database..."
-        python3 -c "
-import sqlite3
-from datetime import datetime
+# Upgrade pip
+echo ""
+echo "Upgrading pip..."
+pip install --upgrade pip -q
+print_success "pip upgraded"
 
-db_path = 'ecosystem/governance/audit.db'
-conn = sqlite3.connect(db_path)
-cursor = conn.cursor()
+# Install dependencies
+echo ""
+echo "Installing Python dependencies..."
+if [ -f "requirements.txt" ]; then
+    pip install -r requirements.txt -q
+    print_success "Dependencies installed"
+else
+    print_warning "requirements.txt not found, installing minimal dependencies"
+    pip install pyyaml requests -q
+fi
 
-# Create tables
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS governance_events (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    event_id TEXT UNIQUE NOT NULL,
-    timestamp TEXT NOT NULL,
-    actor TEXT NOT NULL,
-    action TEXT NOT NULL,
-    resource TEXT NOT NULL,
-    result TEXT NOT NULL,
-    hash TEXT NOT NULL,
-    version TEXT NOT NULL,
-    request_id TEXT,
-    correlation_id TEXT,
-    ip TEXT,
-    user_agent TEXT
+# Install additional dependencies for reasoning system
+echo ""
+echo "Installing reasoning system dependencies..."
+pip install -q \
+    openai \
+    anthropic \
+    chromadb \
+    neo4j \
+    tree-sitter \
+    networkx \
+    matplotlib \
+    seaborn
+print_success "Reasoning system dependencies installed"
+
+# Create necessary directories
+echo ""
+echo "Creating directory structure..."
+directories=(
+    "ecosystem/logs/audit"
+    "ecosystem/logs/reasoning"
+    "ecosystem/data/feedback"
+    "ecosystem/indexes/internal/code_vectors"
+    "ecosystem/indexes/internal/docs_index"
+    "ecosystem/indexes/external/cache"
+    "artifacts/modules"
+    "artifacts/reports/naming"
+    "artifacts/reports/audit"
+    "artifacts/reports/auto-fix"
 )
-''')
 
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS semantic_violations (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    violation_type TEXT NOT NULL,
-    severity TEXT NOT NULL,
-    classification TEXT NOT NULL,
-    message TEXT NOT NULL,
-    remediation TEXT,
-    timestamp TEXT NOT NULL,
-    resolved BOOLEAN DEFAULT 0
-)
-''')
+for dir in "${directories[@]}"; do
+    mkdir -p "$dir"
+    print_success "Created: $dir"
+done
 
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS audit_trail (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    timestamp TEXT NOT NULL,
-    actor TEXT NOT NULL,
-    action TEXT NOT NULL,
-    resource TEXT NOT NULL,
-    result TEXT NOT NULL,
-    hash TEXT NOT NULL,
-    version TEXT NOT NULL,
-    request_id TEXT,
-    correlation_id TEXT,
-    ip TEXT,
-    user_agent TEXT
-)
-''')
-
-conn.commit()
-conn.close()
-print('Audit database created successfully')
-"
-        log_success "Audit database created"
-    fi
-    
-    log_success "Governance database initialized"
-}
-
-# 生成 .env.example
-generate_env_example() {
-    log_info "Generating .env.example..."
-    
+# Create .env.example if it doesn't exist
+echo ""
+echo "Creating environment configuration..."
+if [ ! -f ".env.example" ]; then
     cat > .env.example << 'EOF'
-# Governance System Environment Variables
-# 治理系統環境變量
+# MNGA Configuration
+MNGA_ENV=development
+MNGA_LOG_LEVEL=INFO
 
-# GitHub Configuration
-GITHUB_TOKEN=your_github_token_here
-GITHUB_REPO=owner/repo
-GITHUB_BRANCH=main
+# Internal Retrieval
+INTERNAL_EMBEDDING_MODEL=text-embedding-3-small
+INTERNAL_VECTOR_DB_TYPE=chromadb
+INTERNAL_VECTOR_DB_PATH=ecosystem/indexes/internal/code_vectors
 
-# Governance Configuration
-GOVERNANCE_MODE=strict
-EVIDENCE_COVERAGE_THRESHOLD=0.95
-AUTO_FIX_ENABLED=true
-AUTO_MERGE_ENABLED=false
+# Knowledge Graph
+GRAPH_DB_URI=bolt://localhost:7687
+GRAPH_DB_USER=neo4j
+GRAPH_DB_PASSWORD=your_password_here
 
-# Database Configuration
-AUDIT_DB_PATH=ecosystem/governance/audit.db
-STATE_DB_PATH=ecosystem/governance/state.db
+# External Retrieval
+EXTERNAL_SEARCH_PROVIDER=bing
+EXTERNAL_SEARCH_API_KEY=your_api_key_here
+EXTERNAL_SEARCH_MAX_RESULTS=10
 
-# OPA Configuration
-OPA_SERVER_URL=http://localhost:8181
-OPA_BUNDLE_DIR=ecosystem/contracts/policies/
+# LLM Configuration
+LLM_PROVIDER=openai
+LLM_MODEL=gpt-4
+LLM_API_KEY=your_api_key_here
+LLM_TEMPERATURE=0.7
+LLM_MAX_TOKENS=2000
 
-# Conftest Configuration
-CONFTEST_POLICY_DIR=ecosystem/contracts/policies/
-CONFTEST_TIMEOUT=30s
+# Arbitration
+ARBITRATION_INTERNAL_THRESHOLD=0.8
+ARBITRATION_EXTERNAL_THRESHOLD=0.85
+ARBITRATION_HYBRID_THRESHOLD=0.75
 
-# SLA Configuration
-SLA_RESPONSE_TIME_THRESHOLD=300
-SLA_FIX_RATE_THRESHOLD=0.95
-SLA_VIOLATION_ALERT=true
+# Traceability
+TRACEABILITY_ENABLED=true
+TRACEABILITY_OUTPUT_FORMAT=json
+TRACEABILITY_RETENTION_DAYS=90
 
-# Logging Configuration
-LOG_LEVEL=INFO
-LOG_FORMAT=json
-LOG_OUTPUT=stdout
+# Feedback
+FEEDBACK_ENABLED=true
+FEEDBACK_ANALYSIS_DAYS=30
+
+# Monitoring
+PROMETHEUS_ENABLED=false
+PROMETHEUS_PORT=9090
+GRAFANA_ENABLED=false
+GRAFANA_PORT=3000
 EOF
-    
-    log_success ".env.example generated"
-}
+    print_success "Created .env.example"
+else
+    print_warning ".env.example already exists"
+fi
 
-# 生成啟動報告
-generate_bootstrap_report() {
-    log_info "Generating bootstrap report..."
-    
-    local report_file="ecosystem/governance/bootstrap-report-$(date +%Y%m%d-%H%M%S).json"
-    
-    cat > "$report_file" << EOF
-{
-  "bootstrap_timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
-  "bootstrap_version": "1.0.0",
-  "governance_model": "Governance Quantum Stack (GQS)",
-  "gqs_version": "1.0.0",
-  "dependencies": {
-    "python": "$(python3 --version)",
-    "pip": "$(pip --version)",
-    "git": "$(git --version)"
-  },
-  "installed_tools": {
-    "conftest": "$(command_exists conftest && conftest --version || echo 'not installed')",
-    "opa": "$(command_exists opa && opa version --format json | jq -r '.version' || echo 'not installed')",
-    "docker": "$(command_exists docker && docker --version || echo 'not installed')",
-    "kubectl": "$(command_exists kubectl && kubectl version --client || echo 'not installed')"
-  },
-  "directories_created": [
-    "ecosystem/governance/states",
-    "ecosystem/governance/validation",
-    "ecosystem/governance/verification",
-    "ecosystem/governance/proofs",
-    "ecosystem/governance/execution-logs",
-    "ecosystem/governance/violations",
-    "ecosystem/governance/fixes",
-    "ecosystem/governance/reports",
-    "ecosystem/governance/artifacts",
-    "ecosystem/governance/audit-logs"
-  ],
-  "databases_initialized": [
-    "ecosystem/governance/audit.db"
-  ],
-  "configuration_files": [
-    ".env.example",
-    "ecosystem/contracts/policies/conftest.yaml",
-    "ecosystem/contracts/policies/naming-policy.rego"
-  ],
-  "next_steps": [
-    "1. Copy .env.example to .env and configure your environment variables",
-    "2. Run 'make test-fast' to verify the installation",
-    "3. Run 'scripts/start-min.sh' to start the minimal governance system",
-    "4. Review the governance policies in ecosystem/contracts/policies/"
-  ]
-}
+# Create .env from .env.example if it doesn't exist
+if [ ! -f ".env" ]; then
+    cp .env.example .env
+    print_warning "Created .env from .env.example. Please update with actual values."
+fi
+
+# Create minimal requirements.txt if it doesn't exist
+if [ ! -f "requirements.txt" ]; then
+    cat > requirements.txt << 'EOF'
+# Core dependencies
+PyYAML>=6.0
+requests>=2.31.0
+
+# LLM clients
+openai>=1.0.0
+anthropic>=0.18.0
+
+# Vector database
+chromadb>=0.4.0
+
+# Graph database
+neo4j>=5.0.0
+
+# Code analysis
+tree-sitter>=0.20.0
+tree-sitter-python>=0.20.0
+
+# Graph operations
+networkx>=3.2.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Utilities
+python-dotenv>=1.0.0
 EOF
-    
-    log_success "Bootstrap report generated: $report_file"
-}
+    print_success "Created requirements.txt"
+fi
 
-# 主函數
-main() {
-    log_info "=========================================="
-    log_info "Governance System Bootstrap"
-    log_info "Governance Quantum Stack (GQS) v1.0.0"
-    log_info "=========================================="
-    
-    # 檢查依賴
-    check_dependencies
-    
-    # 安裝 Python 依賴
-    install_python_deps
-    
-    # 安裝工具
-    install_conftest
-    install_opa
-    
-    # 初始化治理數據庫
-    init_governance_db
-    
-    # 生成配置文件
-    generate_env_example
-    
-    # 生成報告
-    generate_bootstrap_report
-    
-    log_success "=========================================="
-    log_success "Bootstrap completed successfully!"
-    log_success "=========================================="
-    
-    echo ""
-    log_info "Next steps:"
-    echo "  1. Copy .env.example to .env and configure your environment variables"
-    echo "  2. Run 'make test-fast' to verify the installation"
-    echo "  3. Run 'scripts/start-min.sh' to start the minimal governance system"
-    echo ""
-}
+# Run governance enforcement to verify setup
+echo ""
+echo "Running governance enforcement check..."
+if [ -f "ecosystem/enforce.py" ]; then
+    python3 ecosystem/enforce.py || {
+        print_error "Governance enforcement check failed"
+        exit 1
+    }
+    print_success "Governance enforcement check passed"
+else
+    print_warning "ecosystem/enforce.py not found, skipping enforcement check"
+fi
 
-# 運行主函數
-main "$@"
+# Initialize knowledge graph
+echo ""
+echo "Initializing knowledge graph..."
+if [ -f "ecosystem/reasoning/dual_path/internal/knowledge_graph.py" ]; then
+    python3 ecosystem/reasoning/dual_path/internal/knowledge_graph.py || {
+        print_warning "Knowledge graph initialization skipped (requires Neo4j)"
+    }
+    print_success "Knowledge graph initialization attempted"
+else
+    print_warning "Knowledge graph module not found"
+fi
+
+# Summary
+echo ""
+echo "========================================="
+echo "Bootstrap Complete!"
+echo "========================================="
+echo ""
+echo "Next steps:"
+echo "1. Edit .env file with your configuration"
+echo "2. Activate virtual environment: source venv/bin/activate"
+echo "3. Run minimal start: ./scripts/start-min.sh"
+echo "4. Run quick verify: ./scripts/quick-verify.sh"
+echo ""
+print_success "Bootstrap completed successfully!"

@@ -1,0 +1,179 @@
+# Naming Governance Workflow
+# Enforces naming conventions across the codebase
+
+name: Naming Governance
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/k8s/**'
+      - 'kubernetes/**'
+      - 'deploy/**'
+  pull_request:
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/k8s/**'
+      - 'kubernetes/**'
+      - 'deploy/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-naming:
+    name: Validate Naming Conventions
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install Conftest
+        run: |
+          curl -Lo conftest https://github.com/open-policy-agent/conftest/releases/download/v0.49.0/conftest_0.49.0_Linux_x86_64.tar.gz
+          tar xzf conftest
+          sudo mv conftest /usr/local/bin/
+          conftest --version
+          
+      - name: Run Conftest naming policy
+        id: conftest
+        run: |
+          conftest test .config/conftest/policies/naming_policy.rego \
+            --all \
+            --output json \
+            --policy .config/conftest/policies/ \
+            > conftest_results.json || true
+          
+          violations=$(jq '.[] | select(.namespace=="naming") | length' conftest_results.json | jq -s 'add')
+          echo "violations=$violations" >> $GITHUB_OUTPUT
+          
+      - name: Upload Conftest results
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: conftest-results
+          path: conftest_results.json
+          retention-days: 30
+          
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && steps.conftest.outputs.violations != '0'
+        uses: actions/github-script@v7@sha256:21e8c83667fbcdfb63d317dc9629d4b86aa97077e9b933c37217691d914936dc
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('conftest_results.json', 'utf8'));
+            
+            let comment = '## 🚨 Naming Convention Violations\n\n';
+            comment += `Found ${steps.conftest.outputs.violations} naming violations:\n\n`;
+            
+            results.forEach(result => {
+              if (result.namespace === 'naming') {
+                result.violations.forEach(v => {
+                  comment += `- **${result.filename}**: ${v.message}\n`;
+                });
+              }
+            });
+            
+            comment += '\nPlease fix these violations before merging.';
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+            
+      - name: Fail on violations
+        if: steps.conftest.outputs.violations != '0'
+        run: |
+          echo "::error::Found ${steps.conftest.outputs.violations} naming violations"
+          exit 1
+
+  auto-label-resources:
+    name: Auto-Label K8s Resources
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install yq
+        run: |
+          wget https://github.com/mikefarah/yq/releases/download/v4.35.2/yq_linux_amd64
+          sudo mv yq_linux_amd64 /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+          
+      - name: Auto-label resources
+        id: label
+        run: |
+          python ecosystem/scripts/naming/auto_label_resources.py \
+            --diff-target origin/${{ github.base_ref }} \
+            --output labels.json
+          
+          labels_applied=$(jq '.labels_applied | length' labels.json)
+          echo "applied=$labels_applied" >> $GITHUB_OUTPUT
+          
+      - name: Commit labels
+        if: steps.label.outputs.applied != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-apply labels to K8s resources"
+          git push
+
+  generate-naming-report:
+    name: Generate Naming Compliance Report
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Generate report
+        run: |
+          python ecosystem/scripts/naming/generate_naming_report.py \
+            --output artifacts/reports/naming/compliance_report.json \
+            --format json
+          
+      - name: Upload report
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: naming-compliance-report
+          path: artifacts/reports/naming/compliance_report.json
+          retention-days: 90
+          
+      - name: Export metrics to Prometheus
+        run: |
+          python ecosystem/scripts/naming/export_prometheus_metrics.py \
+            --input artifacts/reports/naming/compliance_report.json
