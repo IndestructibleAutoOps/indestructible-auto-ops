@@ -16,7 +16,7 @@
 #
 # ═══════════════════════════════════════════════════════════════════════════════
 
-.PHONY: all-kg kg mndoc superroot check-drift clean-generated analyze-reports help install automation-init automation-check automation-fix automation-verify automation-help test test-fast quick-verify bootstrap
+.PHONY: all-kg kg mndoc superroot check-drift clean-generated analyze-reports help install automation-init automation-check automation-fix automation-verify automation-help test
 
 # Default target
 .DEFAULT_GOAL := help
@@ -143,26 +143,99 @@ test:
 	@echo "  - GL-STATUS-REPORT.md"
 	@echo "  - GL-CORE-INTEGRATION-REPORT.md"
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Quick Test Target (fast local verification)
-# ─────────────────────────────────────────────────────────────────────────────
-.PHONY: test-fast quick-verify bootstrap
+# ============================================================================
+# Governance System Targets - Governance Quantum Stack (GQS)
+# ============================================================================
 
-test-fast:
-	@echo "⚡ Running quick tests (fast local verification)..."
-	@echo ""
-	@echo "Step 1: Quick environment verification..."
-	@bash scripts/quick-verify.sh --json 2>/dev/null || bash scripts/quick-verify.sh
-	@echo ""
-	@echo "Step 2: Ecosystem enforcement check..."
-	@python3 ecosystem/enforce.py 2>/dev/null || echo "⚠️  Ecosystem check had warnings (non-fatal)"
-	@echo ""
-	@echo "✅ Quick tests completed!"
+.PHONY: bootstrap start-min test-fast verify quick-check clean-gov deploy-gov install-deps fix-env
 
-quick-verify:
-	@echo "🔍 Running quick verification..."
-	@bash scripts/quick-verify.sh
-
-bootstrap:
-	@echo "🚀 Running bootstrap..."
+# Bootstrap & Setup
+bootstrap: ## 引導腳本 - 初始化治理環境
+	@echo "Bootstrapping governance environment..."
 	@bash scripts/bootstrap.sh
+
+start-min: ## 最小啟動 - 快速啟動治理系統
+	@echo "Starting minimal governance system..."
+	@bash scripts/start-min.sh
+
+install-deps: ## 安裝治理依賴
+	@echo "Installing governance dependencies..."
+	@pip install -q pyyaml jsonschema python-dateutil requests pyjwt
+	@echo "Dependencies installed"
+
+fix-env: ## 修復環境變量 - 生成 .env 文件
+	@echo "Fixing environment..."
+	@if [ ! -f .env ]; then \
+		cp .env.example .env; \
+		echo ".env created from .env.example"; \
+	else \
+		echo ".env already exists"; \
+	fi
+
+# Testing & Verification
+test-fast: ## 快速測試 - 驗證核心治理功能
+	@echo "Running fast governance tests..."
+	@python3 ecosystem/enforce.py
+	@python3 ecosystem/enforcers/semantic_violation_classifier.py 2>&1 | tail -5
+	@echo "Fast tests passed"
+
+verify: ## 完整驗證 - 驗證所有治理層
+	@echo "Running full governance verification..."
+	@python3 ecosystem/enforce.py
+	@echo "Governance enforcement verified"
+	@if command -v conftest >/dev/null 2>&1; then \
+		conftest verify ecosystem/contracts/policies/; \
+		echo "Policies verified"; \
+	else \
+		echo "Conftest not installed, skipping policy verification"; \
+	fi
+	@echo "Full verification completed"
+
+quick-check: ## 快速檢查 - 檢查治理系統健康狀態
+	@echo "Quick governance system health check..."
+	@echo "Checking governance compliance..."
+	@python3 ecosystem/enforce.py 2>&1 | grep -E "(PASS|FAIL|違規數)"
+	@echo "Checking database..."
+	@if [ -f ecosystem/governance/audit.db ]; then \
+		echo "✓ Database exists"; \
+	else \
+		echo "✗ Database not found"; \
+	fi
+	@echo "Checking policies..."
+	@if [ -d ecosystem/contracts/policies/ ]; then \
+		echo "✓ Policies directory exists"; \
+		echo "  Policies: $$(ls ecosystem/contracts/policies/ | wc -l)"; \
+	else \
+		echo "✗ Policies directory not found"; \
+	fi
+	@echo "Quick check completed"
+
+# Governance Operations
+enforce: ## 執行治理強制檢查
+	@echo "Enforcing governance rules..."
+	@python3 ecosystem/enforce.py
+
+audit: ## 運行治理審計
+	@echo "Running audit..."
+	@python3 ecosystem/tools/audit_trail_query.py --query all --limit 10 || echo "Audit tool not available"
+
+report: ## 生成治理報告
+	@echo "Generating governance report..."
+	@python3 ecosystem/enforcers/closed_loop_governance.py generate-report \
+		--artifacts-dir ecosystem/governance/artifacts/ \
+		--output-dir ecosystem/governance/reports/ || echo "Report generation skipped"
+
+# Cleanup
+clean-gov: ## 清理治理臨時文件和日誌
+	@echo "Cleaning up governance artifacts..."
+	@rm -rf ecosystem/governance/artifacts/
+	@rm -rf ecosystem/governance/states/
+	@rm -rf ecosystem/governance/validation/
+	@rm -rf ecosystem/governance/verification/
+	@rm -rf ecosystem/governance/proofs/
+	@rm -rf ecosystem/governance/execution-logs/
+	@rm -rf ecosystem/governance/violations/
+	@rm -rf ecosystem/governance/fixes/
+	@find ecosystem/governance/ -name "*.log" -delete 2>/dev/null || true
+	@find ecosystem/governance/ -name "*-report-*.json" -delete 2>/dev/null || true
+	@echo "Cleanup completed"
