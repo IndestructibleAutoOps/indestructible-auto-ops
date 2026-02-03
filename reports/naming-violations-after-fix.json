@@ -1,0 +1,201 @@
+{
+  "timestamp": "2026-02-03T16:55:58.666832",
+  "workspace": "/workspace",
+  "summary": {
+    "total_scanned": 13892,
+    "directories": 1991,
+    "files": 11901,
+    "violations": 14,
+    "by_severity": {
+      "LOW": 11,
+      "MEDIUM": 3
+    },
+    "by_category": {
+      "directory": 14
+    }
+  },
+  "violations": [
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": ".github",
+      "name": ".github",
+      "expected_style": "kebab-case",
+      "actual_style": "unknown",
+      "severity": "LOW",
+      "message": "目錄 '.github' 應以小寫字母開頭",
+      "suggestion": ".github",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer",
+      "name": "GL90-99-Meta-Specification-Layer",
+      "expected_style": "kebab-case",
+      "actual_style": "kebab-case (invalid)",
+      "severity": "LOW",
+      "message": "目錄 'GL90-99-Meta-Specification-Layer' 應以小寫字母開頭",
+      "suggestion": "gl90-99-meta-specification-layer",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-002",
+      "category": "directory",
+      "path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine",
+      "name": "GL90-99-semantic-engine",
+      "expected_style": "snake_case (Python package)",
+      "actual_style": "kebab-case (invalid)",
+      "severity": "MEDIUM",
+      "message": "Python 包目錄 'GL90-99-semantic-engine' 命名不規範",
+      "suggestion": "gl90_99_semantic_engine",
+      "line_number": null,
+      "auto_fixable": false
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "ecosystem/governance/GL-semantic-anchors",
+      "name": "GL-semantic-anchors",
+      "expected_style": "kebab-case",
+      "actual_style": "kebab-case (invalid)",
+      "severity": "LOW",
+      "message": "目錄 'GL-semantic-anchors' 應以小寫字母開頭",
+      "suggestion": "gl-semantic-anchors",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "gl-runtime-engine-platform/aep-engine-app/app/(tabs)",
+      "name": "(tabs)",
+      "expected_style": "kebab-case",
+      "actual_style": "unknown",
+      "severity": "LOW",
+      "message": "目錄 '(tabs)' 應以小寫字母開頭",
+      "suggestion": "(tabs)",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-001",
+      "category": "directory",
+      "path": ".github/PULL_REQUEST_TEMPLATE",
+      "name": "PULL_REQUEST_TEMPLATE",
+      "expected_style": "kebab-case",
+      "actual_style": "UPPER_SNAKE_CASE",
+      "severity": "MEDIUM",
+      "message": "目錄 'PULL_REQUEST_TEMPLATE' 使用下劃線，應使用連字符 (kebab-case)",
+      "suggestion": "pull-request-template",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-001",
+      "category": "directory",
+      "path": ".github/ISSUE_TEMPLATE",
+      "name": "ISSUE_TEMPLATE",
+      "expected_style": "kebab-case",
+      "actual_style": "UPPER_SNAKE_CASE",
+      "severity": "MEDIUM",
+      "message": "目錄 'ISSUE_TEMPLATE' 使用下劃線，應使用連字符 (kebab-case)",
+      "suggestion": "issue-template",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "gl-runtime-execution-platform/engine/aep-engine-app/app/(tabs)",
+      "name": "(tabs)",
+      "expected_style": "kebab-case",
+      "actual_style": "unknown",
+      "severity": "LOW",
+      "message": "目錄 '(tabs)' 應以小寫字母開頭",
+      "suggestion": "(tabs)",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "gl-runtime-execution-platform/file-organizer-system/.github",
+      "name": ".github",
+      "expected_style": "kebab-case",
+      "actual_style": "unknown",
+      "severity": "LOW",
+      "message": "目錄 '.github' 應以小寫字母開頭",
+      "suggestion": ".github",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "docs/RUNBOOKS",
+      "name": "RUNBOOKS",
+      "expected_style": "kebab-case",
+      "actual_style": "UPPER_SNAKE_CASE",
+      "severity": "LOW",
+      "message": "目錄 'RUNBOOKS' 應以小寫字母開頭",
+      "suggestion": "runbooks",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "docs/TRAINING",
+      "name": "TRAINING",
+      "expected_style": "kebab-case",
+      "actual_style": "UPPER_SNAKE_CASE",
+      "severity": "LOW",
+      "message": "目錄 'TRAINING' 應以小寫字母開頭",
+      "suggestion": "training",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "docs/MIGRATION",
+      "name": "MIGRATION",
+      "expected_style": "kebab-case",
+      "actual_style": "UPPER_SNAKE_CASE",
+      "severity": "LOW",
+      "message": "目錄 'MIGRATION' 應以小寫字母開頭",
+      "suggestion": "migration",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "gl-automation-organizer-platform/.github",
+      "name": ".github",
+      "expected_style": "kebab-case",
+      "actual_style": "unknown",
+      "severity": "LOW",
+      "message": "目錄 '.github' 應以小寫字母開頭",
+      "suggestion": ".github",
+      "line_number": null,
+      "auto_fixable": true
+    },
+    {
+      "rule_id": "GL20-DIR-003",
+      "category": "directory",
+      "path": "gl-runtime-services-platform/esync-platform/.github",
+      "name": ".github",
+      "expected_style": "kebab-case",
+      "actual_style": "unknown",
+      "severity": "LOW",
+      "message": "目錄 '.github' 應以小寫字母開頭",
+      "suggestion": ".github",
+      "line_number": null,
+      "auto_fixable": true
+    }
+  ]
+}

@@ -237,60 +237,127 @@ class MNGAEnforcer:
         )
 
     def check_naming_conventions(self) -> EnforcementResult:
-        """檢查命名規範 (GL20-29)"""
+        """檢查命名規範 (GL20-29) - 使用完整命名檢查器"""
         start_time = datetime.now()
         violations = []
         files_scanned = 0
+        dirs_scanned = 0
         
-        # Python 模組目錄例外（必須使用下劃線）
-        python_module_exceptions = [
-            'dual_path',  # 推理系統核心模組
-            'path_tools',  # 工具模組
-            'site_packages',
-            'dist_packages',
-        ]
+        # 特殊目錄例外
+        special_dir_exceptions = {
+            '.github', 'PULL_REQUEST_TEMPLATE', 'ISSUE_TEMPLATE',
+            '(tabs)', '(auth)', '(app)', 'RUNBOOKS', 'TRAINING', 'MIGRATION'
+        }
         
-        # 檢查目錄命名
+        # GL 語義目錄模式
+        gl_semantic_pattern = re.compile(r'^GL\d{2}(-\d{2})?(-[A-Za-z-]+)?$')
+        
+        # 排除目錄
+        excluded_dirs = {'.git', '__pycache__', 'node_modules', '.venv', 'venv', 
+                        '.idea', '.vscode', 'outputs', '.governance'}
+        
+        def should_exclude(path: Path) -> bool:
+            for part in path.parts:
+                if part in excluded_dirs:
+                    return True
+            return False
+        
+        # 1. 檢查目錄命名
         for dir_path in self.workspace.rglob("*"):
-            if dir_path.is_dir() and not any(p in str(dir_path) for p in ['.git', '__pycache__', 'node_modules', '.venv']):
-                dir_name = dir_path.name
-                files_scanned += 1
+            if not dir_path.is_dir():
+                continue
+            if should_exclude(dir_path):
+                continue
+            
+            dirs_scanned += 1
+            dir_name = dir_path.name
+            
+            # 跳過特殊目錄
+            if dir_name in special_dir_exceptions:
+                continue
+            if gl_semantic_pattern.match(dir_name):
+                continue
+            if dir_name.startswith('.') or dir_name.startswith('__'):
+                continue
+            
+            # Python 包目錄允許 snake_case
+            if (dir_path / "__init__.py").exists():
+                continue
+            
+            # 檢查下劃線（應使用連字符）
+            if '_' in dir_name:
+                violations.append(Violation(
+                    rule_id="GL20-NAMING-001",
+                    file_path=str(dir_path.relative_to(self.workspace)),
+                    line_number=None,
+                    message=f"目錄 '{dir_name}' 使用下劃線，應使用連字符 (kebab-case)",
+                    severity="MEDIUM",
+                    suggestion=f"重命名為 '{dir_name.replace('_', '-')}'"
+                ))
+        
+        # 2. 檢查 Python 文件命名（應使用 snake_case）
+        for file_path in self.workspace.rglob("*.py"):
+            if should_exclude(file_path):
+                continue
+            
+            files_scanned += 1
+            name = file_path.name
+            stem = file_path.stem
+            
+            # 跳過特殊文件
+            if name.startswith('__') and name.endswith('__.py'):
+                continue
+            
+            # Python 文件應使用 snake_case，不應有連字符
+            if '-' in stem:
+                violations.append(Violation(
+                    rule_id="GL20-NAMING-002",
+                    file_path=str(file_path.relative_to(self.workspace)),
+                    line_number=None,
+                    message=f"Python 文件 '{name}' 使用連字符，應使用下劃線 (snake_case)",
+                    severity="HIGH",
+                    suggestion=f"重命名為 '{stem.replace('-', '_')}.py'"
+                ))
+        
+        # 3. 檢查配置文件命名（應使用 kebab-case）
+        for ext in ['.yaml', '.yml', '.json']:
+            for file_path in self.workspace.rglob(f"*{ext}"):
+                if should_exclude(file_path):
+                    continue
                 
-                # 檢查是否包含下劃線（應該用連字符）
-                if '_' in dir_name and not dir_name.startswith('__'):
-                    # 排除 Python 特殊目錄和模組
-                    if not dir_name.startswith('.') and dir_name not in ['__pycache__', 'site-packages']:
-                        # 檢查是否是 Python 模組例外
-                        if dir_name in python_module_exceptions:
-                            continue  # 跳過 Python 模組目錄
-                        
-                        # 檢查目錄是否包含 Python 文件（可能是模組）
-                        has_python_files = any(dir_path.glob("*.py"))
-                        has_init = (dir_path / "__init__.py").exists()
-                        
-                        if has_init:
-                            continue  # 跳過 Python 包目錄
-                        
-                        violations.append(Violation(
-                            rule_id="GL20-NAMING-001",
-                            file_path=str(dir_path.relative_to(self.workspace)),
-                            line_number=None,
-                            message=f"目錄名稱 '{dir_name}' 使用下劃線，應使用連字符 (kebab-case)",
-                            severity="LOW",
-                            suggestion=f"重命名為 '{dir_name.replace('_', '-')}'"
-                        ))
+                files_scanned += 1
+                name = file_path.name
+                stem = file_path.stem
+                
+                # 跳過特殊文件
+                if name in {'package.json', 'package-lock.json', 'tsconfig.json'}:
+                    continue
+                # 跳過 GL 語義文件
+                if stem.startswith('GL') and re.match(r'^GL\d{2}', stem):
+                    continue
+                
+                # 配置文件應使用 kebab-case，不應有下劃線
+                if '_' in stem:
+                    violations.append(Violation(
+                        rule_id="GL20-NAMING-003",
+                        file_path=str(file_path.relative_to(self.workspace)),
+                        line_number=None,
+                        message=f"配置文件 '{name}' 使用下劃線，應使用連字符 (kebab-case)",
+                        severity="MEDIUM",
+                        suggestion=f"重命名為 '{stem.replace('_', '-')}{ext}'"
+                    ))
         
         elapsed = (datetime.now() - start_time).total_seconds() * 1000
         
-        # 命名問題不是關鍵性的
+        # 只有 HIGH 和 CRITICAL 才算失敗
         critical_violations = [v for v in violations if v.severity in ["CRITICAL", "HIGH"]]
         
         return EnforcementResult(
             check_name="Naming Conventions",
             passed=len(critical_violations) == 0,
-            message=f"掃描 {files_scanned} 個目錄，發現 {len(violations)} 個命名問題",
+            message=f"掃描 {dirs_scanned} 個目錄和 {files_scanned} 個文件，發現 {len(violations)} 個命名問題",
             violations=violations,
-            files_scanned=files_scanned,
+            files_scanned=dirs_scanned + files_scanned,
             execution_time_ms=int(elapsed)
         )
 
@@ -636,19 +703,19 @@ class MNGAEnforcer:
         # MNGA 架構定義
         mnga_architecture = {
             # Layer 6: Reasoning
-            "ecosystem/reasoning/dual_path/internal": {
+            "ecosystem/reasoning/dual-path/internal": {
                 "required_files": ["retrieval.py", "knowledge_graph.py", "index_builder.py"],
                 "description": "內部檢索系統"
             },
-            "ecosystem/reasoning/dual_path/external": {
+            "ecosystem/reasoning/dual-path/external": {
                 "required_files": ["retrieval.py", "web_search.py", "domain_filter.py"],
                 "description": "外部檢索系統"
             },
-            "ecosystem/reasoning/dual_path/arbitration": {
+            "ecosystem/reasoning/dual-path/arbitration": {
                 "required_files": ["arbitrator.py", "rule_engine.py"],
                 "description": "仲裁系統"
             },
-            "ecosystem/reasoning/dual_path/arbitration/rules": {
+            "ecosystem/reasoning/dual-path/arbitration/rules": {
                 "required_files": ["security.yaml", "api.yaml", "dependency.yaml"],
                 "description": "仲裁規則庫"
             },
@@ -663,7 +730,7 @@ class MNGAEnforcer:
             
             # Contracts
             "ecosystem/contracts/reasoning": {
-                "required_files": ["dual-path-spec.yaml", "arbitration_rules.yaml", "feedback_schema.yaml"],
+                "required_files": ["dual-path-spec.yaml", "arbitration-rules.yaml", "feedback-schema.yaml"],
                 "description": "推理合約"
             },
             
@@ -743,9 +810,9 @@ class MNGAEnforcer:
         
         # 檢查推理組件是否可導入
         reasoning_modules = [
-            ("ecosystem.reasoning.dual_path.arbitration.arbitrator", "Arbitrator"),
-            ("ecosystem.reasoning.dual_path.internal.retrieval", "InternalRetrievalEngine"),
-            ("ecosystem.reasoning.dual_path.external.retrieval", "ExternalRetrievalEngine"),
+            ("ecosystem.reasoning.dual-path.arbitration.arbitrator", "Arbitrator"),
+            ("ecosystem.reasoning.dual-path.internal.retrieval", "InternalRetrievalEngine"),
+            ("ecosystem.reasoning.dual-path.external.retrieval", "ExternalRetrievalEngine"),
             ("ecosystem.reasoning.traceability.traceability", "TraceabilityEngine"),
         ]
         

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-03T16:21:27.244237Z",
+  "timestamp": "2026-02-03T16:22:03.679031Z",
   "summary": {
     "total_checked": 8571,
-    "compliant": 7124,
-    "violations": 1447,
+    "compliant": 7125,
+    "violations": 1446,
     "compliance_rate": "83.1%"
   },
   "naming_rules": {
@@ -93,24 +93,10 @@
   "violations": [
     {
       "type": "file",
-      "path": "/workspace/Auto Version & Changelog.py",
-      "name": "Auto Version & Changelog.py",
+      "path": "/workspace/compliance-metrics-exporter.py",
+      "name": "compliance-metrics-exporter.py",
       "rule": "Python files must use lowercase with underscores",
-      "suggestion": "auto -version & -changelog.py"
-    },
-    {
-      "type": "file",
-      "path": "/workspace/Compliance Metrics Exporter.py",
-      "name": "Compliance Metrics Exporter.py",
-      "rule": "Python files must use lowercase with underscores",
-      "suggestion": "compliance -metrics -exporter.py"
-    },
-    {
-      "type": "file",
-      "path": "/workspace/Pre-commit Security Check.sh",
-      "name": "Pre-commit Security Check.sh",
-      "rule": "Shell scripts must use lowercase with hyphens",
-      "suggestion": "pre-commit -security -check.sh"
+      "suggestion": "compliance-metrics-exporter.py"
     },
     {
       "type": "file",
@@ -121,10 +107,10 @@
     },
     {
       "type": "file",
-      "path": "/workspace/Deprecation & LTS Scanner.sh",
-      "name": "Deprecation & LTS Scanner.sh",
-      "rule": "Shell scripts must use lowercase with hyphens",
-      "suggestion": "deprecation & -l-t-s -scanner.sh"
+      "path": "/workspace/auto-version-and-changelog.py",
+      "name": "auto-version-and-changelog.py",
+      "rule": "Python files must use lowercase with underscores",
+      "suggestion": "auto-version-and-changelog.py"
     },
     {
       "type": "file",
@@ -790,30 +776,30 @@
       "name": "contract.schema.yaml",
       "rule": "YAML files must use lowercase with hyphens",
       "suggestion": "contract.schema.yaml"
+    },
+    {
+      "type": "file",
+      "path": "/workspace/ecosystem/foundation/schemas/gl.meta.schema.json",
+      "name": "gl.meta.schema.json",
+      "rule": "Schema files must use .schema.json suffix",
+      "suggestion": "gl.meta.schema.json"
+    },
+    {
+      "type": "file",
+      "path": "/workspace/ecosystem/foundation/schemas/gl-rule.schema.yaml",
+      "name": "gl-rule.schema.yaml",
+      "rule": "YAML files must use lowercase with hyphens",
+      "suggestion": "gl-rule.schema.yaml"
     }
   ],
   "violation_categories": {
     "file": [
       {
         "type": "file",
-        "path": "/workspace/Auto Version & Changelog.py",
-        "name": "Auto Version & Changelog.py",
+        "path": "/workspace/compliance-metrics-exporter.py",
+        "name": "compliance-metrics-exporter.py",
         "rule": "Python files must use lowercase with underscores",
-        "suggestion": "auto -version & -changelog.py"
-      },
-      {
-        "type": "file",
-        "path": "/workspace/Compliance Metrics Exporter.py",
-        "name": "Compliance Metrics Exporter.py",
-        "rule": "Python files must use lowercase with underscores",
-        "suggestion": "compliance -metrics -exporter.py"
-      },
-      {
-        "type": "file",
-        "path": "/workspace/Pre-commit Security Check.sh",
-        "name": "Pre-commit Security Check.sh",
-        "rule": "Shell scripts must use lowercase with hyphens",
-        "suggestion": "pre-commit -security -check.sh"
+        "suggestion": "compliance-metrics-exporter.py"
       },
       {
         "type": "file",
@@ -824,10 +810,10 @@
       },
       {
         "type": "file",
-        "path": "/workspace/Deprecation & LTS Scanner.sh",
-        "name": "Deprecation & LTS Scanner.sh",
-        "rule": "Shell scripts must use lowercase with hyphens",
-        "suggestion": "deprecation & -l-t-s -scanner.sh"
+        "path": "/workspace/auto-version-and-changelog.py",
+        "name": "auto-version-and-changelog.py",
+        "rule": "Python files must use lowercase with underscores",
+        "suggestion": "auto-version-and-changelog.py"
       },
       {
         "type": "file",
@@ -7174,9 +7160,16 @@
       {
         "type": "file",
         "path": "/workspace/reports/naming/file-naming-alignment-report_20260203_162120.json",
-        "name": "file-naming-alignment-report_20260203_162120.json",
+        "name": "file-naming-alignment-report-20260203-162120.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "file-naming-alignment-report-20260203-162120.json"
+      },
+      {
+        "type": "file",
+        "path": "/workspace/reports/naming/naming-consistency-report_20260203_162127.json",
+        "name": "naming-consistency-report-20260203-162127.json",
+        "rule": "JSON files must use lowercase with hyphens",
+        "suggestion": "naming-consistency-report-20260203-162127.json"
       },
       {
         "type": "file",
@@ -7405,7 +7398,7 @@
       {
         "type": "file",
         "path": "/workspace/gl-automation-instant-platform/scripts/INSTANT-DEPLOY.py",
-        "name": "INSTANT-DEPLOY.py",
+        "name": "instant_deploy.py",
         "rule": "Python files must use lowercase with underscores",
         "suggestion": "i-n-s-t-a-n-t-d-e-p-l-o-y.py"
       },
