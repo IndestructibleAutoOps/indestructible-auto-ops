@@ -202,17 +202,28 @@ run_enforcement() {
         return $EXIT_SUCCESS
     fi
     
-    # Retry loop
+    # Retry loop with explicit exit code checking
     print_info "Running governance enforcement..."
     
-    until $cmd 2>&1 | tee "${AUDIT_DIR}/enforce_output.log" || [[ $retry_counter -ge $MAX_RETRIES ]]; do
+    local success=false
+    while [[ $retry_counter -lt $MAX_RETRIES ]]; do
+        $cmd 2>&1 | tee "${AUDIT_DIR}/enforce_output.log"
+        local cmd_exit=$?
+        
+        if [[ $cmd_exit -eq 0 ]]; then
+            success=true
+            break
+        fi
+        
         retry_counter=$((retry_counter + 1))
-        print_warning "Attempt $retry_counter failed. Retrying in ${RETRY_DELAY} seconds..."
-        sleep $RETRY_DELAY
+        if [[ $retry_counter -lt $MAX_RETRIES ]]; then
+            print_warning "Attempt $retry_counter failed (exit code: $cmd_exit). Retrying in ${RETRY_DELAY} seconds..."
+            sleep $RETRY_DELAY
+        fi
     done
     
     # Check final result
-    if [[ $retry_counter -ge $MAX_RETRIES ]]; then
+    if [[ "$success" != "true" ]]; then
         print_error "Enforcement failed after $MAX_RETRIES attempts"
         exit_code=$EXIT_BLOCKING
         
@@ -227,8 +238,24 @@ run_enforcement() {
                 print_warning "CRITICAL violations detected"
                 exit_code=$EXIT_WARNING
                 
-                # Extract violations if present
-                violations=$(grep -oP '"violations": \[.*?\]' "${AUDIT_DIR}/enforce_output.log" 2>/dev/null || echo "[]")
+                # Extract violations using Python for proper JSON parsing
+                violations=$(python3 -c "
+import json
+import sys
+try:
+    with open('${AUDIT_DIR}/enforce_output.log', 'r') as f:
+        content = f.read()
+        # Try to find and parse JSON
+        import re
+        match = re.search(r'\{.*\"violations\".*\}', content, re.DOTALL)
+        if match:
+            data = json.loads(match.group())
+            print(json.dumps(data.get('violations', [])))
+        else:
+            print('[]')
+except:
+    print('[]')
+" 2>/dev/null || echo "[]")
             fi
         fi
     fi

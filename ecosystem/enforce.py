@@ -351,6 +351,8 @@ def main() -> int:
         print_step(5, "執行自動修復...")
         
         try:
+            # Add ecosystem directory to path for imports
+            sys.path.insert(0, str(ECOSYSTEM_ROOT))
             from autofix_engine import AutoFixEngine, Violation
             
             engine = AutoFixEngine(
