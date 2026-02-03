@@ -221,6 +221,7 @@ class QualityChecker:
                 "key", "credential", "auth", "apikey"
             ]
             lower_key = key_str.lower()
+            # If the key suggests the value may be sensitive, never log the value itself.
             if any(marker in lower_key for marker in sensitive_key_markers):
                 return f"{key_str}: [REDACTED FOR SECURITY]"
             # For large collections, only report sizes, not contents
@@ -230,10 +231,14 @@ class QualityChecker:
                 except Exception:
                     return f"{key_str}: [Collection]"
                 return f"{key_str}: [Collection with {size} items]"
-            # For other values, avoid printing excessively long data
-            value_str = str(log_value)
+            # For other values, avoid printing excessively long data and avoid echoing
+            # potentially sensitive arbitrary strings.
+            try:
+                value_str = str(log_value)
+            except Exception:
+                return f"{key_str}: [Unprintable value]"
             if len(value_str) > 200:
-                return f"{key_str}: {value_str[:200]}...[TRUNCATED]"
+                return f"{key_str}: [Value truncated for display]"
             return f"{key_str}: {value_str}"
 
         for check_name, result in self.results.items():
@@ -241,7 +246,7 @@ class QualityChecker:
             # 僅輸出非敏感且對人類有用的摘要資訊，避免將可能包含秘密的欄位寫入日誌
             if check_name == "security":
                 # 對安全掃描，只顯示固定的高層次描述，不暴露任何來自掃描結果的原始資料
-                print("  - security scan executed; see JSON report for non-sensitive summary.")
+                print("  - security scan executed (details available in JSON report; raw scanner output is not logged).")
                 continue
             for key, value in result.items():
                 if key == "status":
