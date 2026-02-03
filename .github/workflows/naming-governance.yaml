@@ -110,15 +110,15 @@ jobs:
 
   auto-label-resources:
     name: Auto-Label K8s Resources
-    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        uses: actions/checkout@v4
         
       - name: Setup Python
-        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -150,14 +150,14 @@ jobs:
 
   generate-naming-report:
     name: Generate Naming Compliance Report
-    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        uses: actions/checkout@v4
         
       - name: Setup Python
-        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -169,7 +169,7 @@ jobs:
             --format json
           
       - name: Upload report
-        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        uses: actions/upload-artifact@v4
         with:
           name: naming-compliance-report
           path: artifacts/reports/naming/compliance_report.json

@@ -127,11 +127,11 @@ index_operations:
   
   delete:
     operation: delete
-    description: Remove specification from index
+    description: |
+      Remove specification from index and all associated indexes
     required_fields:
       - spec_id
     cascade: true
-    description: Removes from all indexes
 
 index_maintenance:
   # Reindexing

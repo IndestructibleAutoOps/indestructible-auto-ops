@@ -110,7 +110,14 @@ class ArbitrationRuleEngine:
         if rules_path and os.path.exists(rules_path):
             with open(rules_path, 'r') as f:
                 custom_rules = yaml.safe_load(f)
-                self.RULES.update(custom_rules)
+                if isinstance(custom_rules, dict):
+                    self.RULES.update(custom_rules)
+                elif custom_rules is not None:
+                    # Warn about invalid custom rules structure without exposing sensitive data
+                    print(
+                        "Warning: Custom rules file did not contain a mapping; "
+                        "default rules will be used."
+                    )
         return self.RULES
     
     def apply_rules(self, internal_result: Dict, 
