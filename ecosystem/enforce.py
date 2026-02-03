@@ -201,12 +201,91 @@ def check_gl_compliance() -> Tuple[bool, str]:
     
     return True, "GL 治理文件完整"
 
+
+def parse_args():
+    """Parse command line arguments"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(
+        description="Ecosystem Governance Enforcement - 生態系統治理強制執行"
+    )
+    parser.add_argument(
+        "--audit",
+        action="store_true",
+        help="Enable detailed audit logging"
+    )
+    parser.add_argument(
+        "--auto-fix",
+        action="store_true",
+        help="Enable automatic violation remediation"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview changes without applying"
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output results in JSON format"
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        help="Output file for audit report"
+    )
+    
+    return parser.parse_args()
+
+
+def generate_audit_report(results: List[Tuple[str, bool, str]], args) -> dict:
+    """Generate audit report in JSON format"""
+    from datetime import datetime, timezone
+    
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    
+    violations = []
+    for name, success, message in results:
+        if not success:
+            violations.append({
+                "rule_id": name.replace(" ", "-").upper(),
+                "file": "ecosystem",
+                "message": message,
+                "severity": "HIGH" if "CRITICAL" in message else "MEDIUM",
+                "suggestion": f"Fix {name} issue"
+            })
+    
+    return {
+        "timestamp": timestamp,
+        "version": "1.0.0",
+        "status": "PASS" if all(s for _, s, _ in results) else "FAIL",
+        "total_checks": len(results),
+        "passed": sum(1 for _, s, _ in results if s),
+        "failed": sum(1 for _, s, _ in results if not s),
+        "violations": violations,
+        "metadata": {
+            "ecosystem_root": str(ECOSYSTEM_ROOT),
+            "audit_mode": args.audit if hasattr(args, 'audit') else False,
+            "auto_fix": args.auto_fix if hasattr(args, 'auto_fix') else False
+        }
+    }
+
+
 def main() -> int:
     """主程序"""
+    args = parse_args()
+    
     print_header("🛡️  生態系統治理強制執行")
     
     print_info(f"Ecosystem Root: {ECOSYSTEM_ROOT}")
     print_info(f"Working Directory: {Path.cwd()}")
+    
+    if args.audit:
+        print_info("Audit mode: ENABLED")
+    if args.auto_fix:
+        print_info("Auto-fix mode: ENABLED")
+    if args.dry_run:
+        print_info("Dry-run mode: ENABLED")
     
     # 追蹤結果
     results: List[Tuple[str, bool, str]] = []
@@ -246,6 +325,68 @@ def main() -> int:
         print_success(message)
     else:
         print_error(message)
+    
+    # Generate audit report
+    audit_report = generate_audit_report(results, args)
+    
+    # Save audit report if requested
+    if args.output or args.audit:
+        import json
+        from datetime import datetime
+        
+        reports_dir = ECOSYSTEM_ROOT.parent / "reports"
+        reports_dir.mkdir(parents=True, exist_ok=True)
+        
+        output_path = args.output if args.output else str(
+            reports_dir / f"audit_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(audit_report, f, indent=2, ensure_ascii=False)
+        
+        print_info(f"Audit report saved to: {output_path}")
+    
+    # Run auto-fix if enabled and violations found
+    if args.auto_fix and audit_report["violations"]:
+        print_step(5, "執行自動修復...")
+        
+        try:
+            from autofix_engine import AutoFixEngine, Violation
+            
+            engine = AutoFixEngine(
+                project_root=str(ECOSYSTEM_ROOT.parent),
+                safe_mode=args.dry_run
+            )
+            
+            # Convert violations to Violation objects
+            violations = [
+                Violation(
+                    rule_id=v["rule_id"],
+                    file=v["file"],
+                    message=v["message"],
+                    severity=v["severity"],
+                    suggestion=v["suggestion"]
+                )
+                for v in audit_report["violations"]
+            ]
+            
+            fix_report = engine.fix_violations(violations)
+            
+            if fix_report.fixed_count > 0:
+                print_success(f"Fixed {fix_report.fixed_count} violations")
+            else:
+                print_info("No violations could be automatically fixed")
+                
+        except ImportError:
+            print_warning("AutoFix engine not available")
+        except Exception as e:
+            print_error(f"Auto-fix failed: {str(e)}")
+    
+    # JSON output
+    if args.json:
+        import json
+        print(json.dumps(audit_report, indent=2, ensure_ascii=False))
+        return 0 if audit_report["status"] == "PASS" else 1
     
     # 總結
     print_header("📊 檢查結果總結")
