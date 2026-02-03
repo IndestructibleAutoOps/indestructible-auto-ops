@@ -1,0 +1,118 @@
+# Development Platform Instance - Environment Configuration
+# Semantic Anchor: CLOUDPLATFORMINSTANCE.DEV
+
+platform:
+  name: dev-platform
+  instance_type: dev
+  owner: dev-team@machine-native-ops
+  cost_center: cc-dev-001
+
+cloud:
+  provider: aws
+  region: us-east-1
+  account_id: 123456789012
+  profile: dev
+
+ecosystem_cloud:
+  storage_adapter: aws
+  compute_adapter: aws
+  queue_adapter: aws
+  secrets_adapter: aws
+  logging_adapter: aws
+
+networking:
+  vpc_cidr: 10.0.0.0/16
+  subnet_cidr_bits: 8
+  availability_zones:
+    - us-east-1a
+    - us-east-1b
+  
+  subnets:
+    public:
+      cidr: 10.0.1.0/24
+      availability_zone: us-east-1a
+    
+    private:
+      cidr: 10.0.2.0/24
+      availability_zone: us-east-1a
+  
+  security_groups:
+    web:
+      description: Web tier security group
+      ingress:
+        - port: 80
+          protocol: tcp
+          source: 0.0.0.0/0
+        - port: 443
+          protocol: tcp
+          source: 0.0.0.0/0
+    
+    app:
+      description: Application tier security group
+      ingress:
+        - port: 8080
+          protocol: tcp
+          source: 10.0.1.0/24
+    
+    database:
+      description: Database tier security group
+      ingress:
+        - port: 5432
+          protocol: tcp
+          source: 10.0.2.0/24
+
+monitoring:
+  enabled: true
+  metrics_collection: true
+  alerting: true
+  dashboard: cloudwatch-dev-dashboard
+  
+  metrics:
+    cpu_utilization:
+      enabled: true
+      threshold_percent: 80
+      period_seconds: 60
+    
+    memory_utilization:
+      enabled: true
+      threshold_percent: 85
+      period_seconds: 60
+    
+    disk_utilization:
+      enabled: true
+      threshold_percent: 90
+      period_seconds: 300
+
+limits:
+  max_instances: 5
+  max_storage_gb: 200
+  max_databases: 2
+  max_queues: 10
+
+cost_management:
+  budget:
+    monthly_budget_usd: 500
+    alert_threshold_percent: 80
+  
+  tags:
+    Environment: dev
+    Owner: dev-team
+    CostCenter: cc-dev-001
+
+compliance:
+  enabled: true
+  policies:
+    - name: no_public_ip_on_database
+      severity: CRITICAL
+    
+    - name: encryption_at_rest_required
+      severity: CRITICAL
+    
+    - name: logging_enabled
+      severity: HIGH
+
+version_tracking:
+  commit_hash: ${GIT_COMMIT_HASH}
+  config_version: ${CONFIG_VERSION}
+  cloud_adapter_version: ${CLOUD_ADAPTER_VERSION}
+  contract_version: ${CONTRACT_VERSION}

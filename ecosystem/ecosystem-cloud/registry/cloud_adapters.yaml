@@ -1,0 +1,296 @@
+# Cloud Adapters Registry
+# Semantic Anchor: CLOUDPROVIDERABSTRACTION.REGISTRY
+
+registry:
+  name: CloudAdaptersRegistry
+  version: 1.0.0
+  semantic_anchor: CLOUDPROVIDERABSTRACTION.REGISTRY
+  
+  providers:
+    - name: aws
+      semantic_anchor: CLOUDPROVIDERABSTRACTION.AWS
+      description: Amazon Web Services
+      
+      adapters:
+        - service: storage
+          adapter_class: AWSStorageAdapter
+          module: adapters.aws.aws_adapter
+          contract: storage/v1/storage_contract.yaml
+          status: ACTIVE
+          capabilities:
+            - upload_object
+            - download_object
+            - delete_object
+            - list_objects
+            - create_bucket
+            - delete_bucket
+          metrics_enabled: true
+          health_check_enabled: true
+        
+        - service: compute
+          adapter_class: AWSComputeAdapter
+          module: adapters.aws.aws_adapter
+          contract: compute/v1/compute_contract.yaml
+          status: ACTIVE
+          capabilities:
+            - create_vm
+            - delete_vm
+            - start_vm
+            - stop_vm
+            - get_vm_status
+            - list_vms
+            - create_snapshot
+            - restore_from_snapshot
+          metrics_enabled: true
+          health_check_enabled: true
+        
+        - service: queue
+          adapter_class: AWSQueueAdapter
+          module: adapters.aws.aws_adapter
+          contract: queue/v1/queue_contract.yaml
+          status: ACTIVE
+          capabilities:
+            - create_queue
+            - delete_queue
+            - send_message
+            - receive_message
+            - delete_message
+            - purge_queue
+            - get_queue_attributes
+          metrics_enabled: true
+          health_check_enabled: true
+        
+        - service: secrets
+          adapter_class: AWSSecretsAdapter
+          module: adapters.aws.aws_adapter
+          contract: secrets/v1/secrets_contract.yaml
+          status: ACTIVE
+          capabilities:
+            - create_secret
+            - get_secret_value
+            - update_secret_value
+            - delete_secret
+            - list_secrets
+            - rotate_secret
+            - restore_secret
+          metrics_enabled: true
+          health_check_enabled: true
+        
+        - service: logging
+          adapter_class: AWSLoggingAdapter
+          module: adapters.aws.aws_adapter
+          contract: logging/v1/logging_contract.yaml
+          status: ACTIVE
+          capabilities:
+            - create_log_group
+            - delete_log_group
+            - put_log_events
+            - get_log_events
+            - create_log_stream
+            - describe_log_streams
+            - filter_log_events
+            - put_retention_policy
+          metrics_enabled: true
+          health_check_enabled: true
+    
+    - name: azure
+      semantic_anchor: CLOUDPROVIDERABSTRACTION.AZURE
+      description: Microsoft Azure
+      adapters:
+        - service: storage
+          adapter_class: AzureStorageAdapter
+          module: adapters.azure.azure_adapter
+          contract: storage/v1/storage_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - upload_object
+            - download_object
+            - delete_object
+            - list_objects
+          notes: Azure Blob Storage adapter not yet implemented
+        
+        - service: compute
+          adapter_class: AzureComputeAdapter
+          module: adapters.azure.azure_adapter
+          contract: compute/v1/compute_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_vm
+            - delete_vm
+            - start_vm
+            - stop_vm
+            - get_vm_status
+          notes: Azure VM adapter not yet implemented
+        
+        - service: queue
+          adapter_class: AzureQueueAdapter
+          module: adapters.azure.azure_adapter
+          contract: queue/v1/queue_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_queue
+            - send_message
+            - receive_message
+            - delete_message
+          notes: Azure Service Bus adapter not yet implemented
+        
+        - service: secrets
+          adapter_class: AzureSecretsAdapter
+          module: adapters.azure.azure_adapter
+          contract: secrets/v1/secrets_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_secret
+            - get_secret_value
+            - update_secret_value
+            - delete_secret
+          notes: Azure Key Vault adapter not yet implemented
+    
+    - name: gcp
+      semantic_anchor: CLOUDPROVIDERABSTRACTION.GCP
+      description: Google Cloud Platform
+      adapters:
+        - service: storage
+          adapter_class: GCPStorageAdapter
+          module: adapters.gcp.gcp_adapter
+          contract: storage/v1/storage_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - upload_object
+            - download_object
+            - delete_object
+            - list_objects
+          notes: GCP Cloud Storage adapter not yet implemented
+        
+        - service: compute
+          adapter_class: GCPComputeAdapter
+          module: adapters.gcp.gcp_adapter
+          contract: compute/v1/compute_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_vm
+            - delete_vm
+            - start_vm
+            - stop_vm
+            - get_vm_status
+          notes: GCP Compute Engine adapter not yet implemented
+    
+    - name: on-premise
+      semantic_anchor: CLOUDPROVIDERABSTRACTION.ON_PREMISE
+      description: On-Premise Infrastructure
+      
+      adapters:
+        - service: storage
+          adapter_class: MinIOAdapter
+          module: adapters.on_premise.minio_adapter
+          contract: storage/v1/storage_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - upload_object
+            - download_object
+            - delete_object
+            - list_objects
+          notes: MinIO S3-compatible adapter not yet implemented
+        
+        - service: queue
+          adapter_class: RabbitMQAdapter
+          module: adapters.on_premise.rabbitmq_adapter
+          contract: queue/v1/queue_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_queue
+            - send_message
+            - receive_message
+            - delete_message
+          notes: RabbitMQ adapter not yet implemented
+        
+        - service: secrets
+          adapter_class: VaultAdapter
+          module: adapters.on_premise.vault_adapter
+          contract: secrets/v1/secrets_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_secret
+            - get_secret_value
+            - update_secret_value
+            - delete_secret
+          notes: HashiCorp Vault adapter not yet implemented
+        
+        - service: logging
+          adapter_class: ELKAdapter
+          module: adapters.on_premise.elk_adapter
+          contract: logging/v1/logging_contract.yaml
+          status: PENDING_IMPLEMENTATION
+          capabilities:
+            - create_log_group
+            - put_log_events
+            - get_log_events
+            - filter_log_events
+          notes: ELK Stack adapter not yet implemented
+
+  adapter_validation:
+    enabled: true
+    validation_rules:
+      - name: contract_compliance
+        description: Adapter must implement all contract capabilities
+        severity: CRITICAL
+        enforcement: BLOCK
+      
+      - name: error_handling
+        description: Adapter must handle provider-specific errors
+        severity: HIGH
+        enforcement: WARN
+      
+      - name: metrics_collection
+        description: Adapter must provide metrics for operations
+        severity: MEDIUM
+        enforcement: LOG
+      
+      - name: security_hardening
+        description: Adapter must implement security best practices
+        severity: HIGH
+        enforcement: BLOCK
+
+  health_monitoring:
+    enabled: true
+    check_interval_seconds: 60
+    health_checks:
+      - name: api_reachable
+        description: Check if provider API is reachable
+        timeout_seconds: 10
+        failure_threshold: 3
+      
+      - name: rate_limits
+        description: Check if approaching rate limits
+        threshold_percent: 80
+      
+      - name: authentication
+        description: Check if credentials are valid
+        timeout_seconds: 5
+
+  metrics:
+    enabled: true
+    collection_interval_seconds: 30
+    metrics:
+      - name: operation_latency
+        type: histogram
+        labels: [operation, provider, status]
+      
+      - name: operation_count
+        type: counter
+        labels: [operation, provider, status]
+      
+      - name: error_count
+        type: counter
+        labels: [operation, provider, error_code]
+      
+      - name: adapter_health
+        type: gauge
+        labels: [provider, service]
+
+  configuration:
+    default_region: us-east-1
+    connection_timeout_seconds: 30
+    read_timeout_seconds: 60
+    max_retries: 3
+    retry_backoff_seconds: 1
