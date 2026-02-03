@@ -182,9 +182,7 @@ class JSONValidator:
     - Non-UTF-8 encoding
     """
     
-    # Pattern for detecting comments (not valid JSON but sometimes added)
-    # More precise pattern to avoid matching URLs (https://)
-    COMMENT_PATTERN = re.compile(r'(?<![:\"\'])//(?![\/]).*$|/\*[\s\S]*?\*/', re.MULTILINE)
+    # Pattern for detecting trailing commas (invalid in JSON)
     TRAILING_COMMA_PATTERN = re.compile(r',\s*[}\]]')
     
     def validate(self, content: str, file_path: str) -> LanguageValidationResult:
@@ -270,15 +268,17 @@ class MarkdownValidator:
     """
     
     HTML_TAG_PATTERN = re.compile(r'<(?!!)/?[a-zA-Z][^>]*>', re.IGNORECASE)
-    SCRIPT_PATTERN = re.compile(r'<script[^>]*>[\s\S]*?</script>', re.IGNORECASE)
-    IFRAME_PATTERN = re.compile(r'<iframe[^>]*>[\s\S]*?</iframe>', re.IGNORECASE)
+    # Match script/iframe opening tags - we just need to detect their presence
+    # Don't try to match end tags precisely; just detect if script/iframe exists
+    SCRIPT_OPEN_PATTERN = re.compile(r'<\s*script\b', re.IGNORECASE)
+    IFRAME_OPEN_PATTERN = re.compile(r'<\s*iframe\b', re.IGNORECASE)
     
     def validate(self, content: str, file_path: str) -> LanguageValidationResult:
         """Validate Markdown content"""
         violations = []
         
-        # Check for script tags (highest priority)
-        if self.SCRIPT_PATTERN.search(content):
+        # Check for script tags (highest priority) - just detect opening tag
+        if self.SCRIPT_OPEN_PATTERN.search(content):
             violations.append(LanguageViolation(
                 language="markdown",
                 file_path=file_path,
@@ -289,7 +289,7 @@ class MarkdownValidator:
             ))
         
         # Check for iframes
-        if self.IFRAME_PATTERN.search(content):
+        if self.IFRAME_OPEN_PATTERN.search(content):
             violations.append(LanguageViolation(
                 language="markdown",
                 file_path=file_path,
