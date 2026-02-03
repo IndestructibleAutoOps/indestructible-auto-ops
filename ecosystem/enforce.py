@@ -101,7 +101,11 @@ def run_governance_enforcer() -> Tuple[bool, str]:
                     test_operation = {
                         "type": "validation_test",
                         "files": ["ecosystem/enforce.py"],
-                        "content": "test content for validation"
+                        "content": "test content for validation",
+                        "evidence_links": [
+                            "[證據: ecosystem/enforce.py#L1-L100]",
+                            "[證據: ecosystem/enforcers/governance_enforcer.py#L1-L100]"
+                        ]
                     }
                     result = enforcer.validate(test_operation)
                     return True, f"治理檢查通過 (狀態: {result.status}, 違規數: {len(result.violations)})"
