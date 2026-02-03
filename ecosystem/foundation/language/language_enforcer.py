@@ -156,7 +156,7 @@ class YAMLValidator:
         # Try to parse with safe loader
         try:
             import yaml
-            yaml.safe_load(content)
+            safe_load(content)
         except yaml.YAMLError as e:
             parseable = False
             violations.append(LanguageViolation(

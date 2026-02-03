@@ -3,7 +3,11 @@ Arbitration Rule Engine
 Applies rules to make conflict resolution decisions
 """
 import os
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 from typing import List, Dict, Any, Optional, Callable
 from datetime import datetime
 from .arbitrator import ArbitrationDecision, Decision
@@ -109,7 +113,7 @@ class ArbitrationRuleEngine:
         """Load rules from file or use defaults"""
         if rules_path and os.path.exists(rules_path):
             with open(rules_path, 'r') as f:
-                custom_rules = yaml.safe_load(f)
+                custom_rules = safe_load(f)
                 if isinstance(custom_rules, dict):
                     self.RULES.update(custom_rules)
                 elif custom_rules is not None:

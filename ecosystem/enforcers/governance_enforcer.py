@@ -10,7 +10,11 @@ GL Governance Enforcer
 
 import os
 import sys
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import json
 import hashlib
 from pathlib import Path
@@ -195,7 +199,7 @@ class GovernanceEnforcer:
         for yaml_file in contracts_path.rglob("*.yaml"):
             try:
                 with open(yaml_file, 'r', encoding='utf-8') as f:
-                    content = yaml.safe_load(f)
+                    content = safe_load(f)
                 
                 contract = Contract(
                     name=yaml_file.stem,
@@ -250,7 +254,7 @@ class GovernanceEnforcer:
         if gate_file.exists():
             try:
                 with open(gate_file, 'r', encoding='utf-8') as f:
-                    config = yaml.safe_load(f)
+                    config = safe_load(f)
                 
                 for gate_spec in config.get('spec', {}).get('gates', []):
                     gate = Gate(

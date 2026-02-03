@@ -7,7 +7,11 @@ import json
 import hashlib
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import requests
 
 
@@ -49,7 +53,7 @@ class ExternalRetrievalEngine:
         """Load configuration from YAML file"""
         if os.path.exists(config_path):
             with open(config_path, 'r') as f:
-                return yaml.safe_load(f)
+                return safe_load(f)
         return {"spec": {"external_retrieval": {}}}
     
     def search(self, query: str, top_k: int = 5, 

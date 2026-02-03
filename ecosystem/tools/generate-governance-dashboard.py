@@ -11,7 +11,11 @@ Language Governance Dashboard Generator
 Generates a dashboard showing semantic health and governance metrics
 """
 # MNGA-002: Import organization needs review
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import json
 import sys
 from pathlib import Path
@@ -32,7 +36,7 @@ def load_module_registry() -> Dict[str, Any]:
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
     try:
         with registry_path.open('r', encoding='utf-8') as f:
-            data = yaml.safe_load(f) or {}
+            data = safe_load(f) or {}
     except FileNotFoundError:
         print(f"Error: Module registry file not found: {registry_path}", file=sys.stderr)
         sys.exit(1)
@@ -51,7 +55,7 @@ def load_module_registry() -> Dict[str, Any]:
         sys.exit(1)
     return data
     with open(registry_path, 'r') as f:
-        return yaml.safe_load(f)
+        return safe_load(f)
 
 
 def load_policy_manifest() -> Dict[str, Any]:
@@ -67,7 +71,7 @@ def load_policy_manifest() -> Dict[str, Any]:
     manifest_path = Path("controlplane/governance/policies/POLICY_MANIFEST.yaml")
     try:
         with manifest_path.open('r', encoding='utf-8') as f:
-            data = yaml.safe_load(f) or {}
+            data = safe_load(f) or {}
     except FileNotFoundError:
         print(f"Error: Policy manifest file not found: {manifest_path}", file=sys.stderr)
         sys.exit(1)
@@ -86,7 +90,7 @@ def load_policy_manifest() -> Dict[str, Any]:
         sys.exit(1)
     return data
     with open(manifest_path, 'r') as f:
-        return yaml.safe_load(f)
+        return safe_load(f)
 
 
 def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
@@ -236,7 +240,7 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
         concept_count = 0
         if manifest_path.exists():
             with open(manifest_path, 'r') as f:
-                manifest = yaml.safe_load(f)
+                manifest = safe_load(f)
                 concept_count = len(manifest.get('semantic_mappings', []))
         dashboard += f"| {module_id} | {namespace} | {concept_count} | {health}% | {status_emoji} |\n"
     dashboard += """

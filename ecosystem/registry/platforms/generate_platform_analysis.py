@@ -16,7 +16,11 @@ Module docstring
 This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import json
 
 # 平台數據源

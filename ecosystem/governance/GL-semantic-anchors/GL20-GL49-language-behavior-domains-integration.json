@@ -1,0 +1,290 @@
+{
+  "GL20-GL29": {
+    "category": "Language Behavior",
+    "description": "Parser behavior, serialization, error handling, and runtime rules",
+    "anchors": {
+      "GL20": {
+        "name": "Parser Behavior Specification",
+        "definition": "Formal specification of parser behavior including error recovery and ambiguity resolution",
+        "scope": "All parser implementations and parsing pipelines",
+        "semantic_boundaries": "Deterministic parsing with well-defined error recovery strategies",
+        "sub_semantics": ["PAR-001: Parse Strategy", "PAR-002: Error Recovery", "PAR-003: Ambiguity Resolution"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["parser-behavior-validation", "error-recovery-check"]
+      },
+      "GL21": {
+        "name": "Serializer Behavior Specification",
+        "definition": "Formal specification of serialization behavior and output formatting",
+        "scope": "All serializer implementations and data export pipelines",
+        "semantic_boundaries": "Deterministic serialization with canonical output formats",
+        "sub_semantics": ["SER-001: Serialization Format", "SER-002: Output Ordering", "SER-003: Encoding Rules"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["serializer-validation", "canonical-output-check"]
+      },
+      "GL22": {
+        "name": "Deserializer Behavior Specification",
+        "definition": "Formal specification of deserialization behavior and input validation",
+        "scope": "All deserializer implementations and data import pipelines",
+        "semantic_boundaries": "Strict input validation with graceful error handling",
+        "sub_semantics": ["DES-001: Input Validation", "DES-002: Type Coercion", "DES-003: Error Handling"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["deserializer-validation", "input-sanitization-check"]
+      },
+      "GL23": {
+        "name": "Error Model Specification",
+        "definition": "Formal specification of error types, error codes, and error propagation",
+        "scope": "All error handling mechanisms and error reporting systems",
+        "semantic_boundaries": "Structured error model with error codes and severity levels",
+        "sub_semantics": ["ERR-001: Error Types", "ERR-002: Error Codes", "ERR-003: Error Propagation"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["error-model-validation", "error-code-consistency"]
+      },
+      "GL24": {
+        "name": "Warning Model Specification",
+        "definition": "Formal specification of warning types, warning codes, and warning suppression",
+        "scope": "All warning systems and linting mechanisms",
+        "semantic_boundaries": "Structured warning model with configurable severity levels",
+        "sub_semantics": ["WRN-001: Warning Types", "WRN-002: Warning Codes", "WRN-003: Suppression Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["warning-model-validation", "warning-consistency-check"]
+      },
+      "GL25": {
+        "name": "Language Runtime Rules Specification",
+        "definition": "Formal specification of language runtime behavior and execution semantics",
+        "scope": "All runtime environments and execution engines",
+        "semantic_boundaries": "Deterministic execution with well-defined runtime semantics",
+        "sub_semantics": ["RUN-001: Execution Model", "RUN-002: Resource Management", "RUN-003: Concurrency Rules"],
+        "applicable_targets": ["platform", "adapter"],
+        "validation_rules": ["runtime-validation", "execution-safety-check"]
+      },
+      "GL26": {
+        "name": "Language Mutation Rules Specification",
+        "definition": "Formal specification of language transformation and mutation operations",
+        "scope": "All code transformation tools and refactoring engines",
+        "semantic_boundaries": "Semantics-preserving transformations with validation",
+        "sub_semantics": ["MUT-001: Transformation Rules", "MUT-002: Invariant Preservation", "MUT-003: Validation Checks"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["mutation-validation", "invariant-preservation-check"]
+      },
+      "GL27": {
+        "name": "Language Normalization Specification",
+        "definition": "Formal specification of language normalization rules and canonical forms",
+        "scope": "All normalization engines and canonical form generators",
+        "semantic_boundaries": "Deterministic normalization with unique canonical forms",
+        "sub_semantics": ["NRM-001: Normalization Rules", "NRM-002: Canonical Forms", "NRM-003: Equivalence Checking"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["normalization-validation", "canonical-form-check"]
+      },
+      "GL28": {
+        "name": "Language Canonicalization Specification",
+        "definition": "Formal specification of language canonicalization and standardization",
+        "scope": "All canonicalization engines and standardization tools",
+        "semantic_boundaries": "Standardized representations with deterministic output",
+        "sub_semantics": ["CAN-001: Canonicalization Rules", "CAN-002: Standard Formats", "CAN-003: Hash Generation"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["canonicalization-validation", "standardization-check"]
+      },
+      "GL29": {
+        "name": "Language Validation Specification",
+        "definition": "Formal specification of language validation rules and validation pipelines",
+        "scope": "All validation engines and validation frameworks",
+        "semantic_boundaries": "Comprehensive validation with configurable rule sets",
+        "sub_semantics": ["VAL-001: Validation Rules", "VAL-002: Validation Pipeline", "VAL-003: Error Reporting"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["validation-engine-validation", "rule-completeness-check"]
+      }
+    }
+  },
+  "GL30-GL39": {
+    "category": "Language Domains",
+    "description": "Domain-specific language classifications and usage patterns",
+    "anchors": {
+      "GL30": {
+        "name": "Configuration Languages Specification",
+        "definition": "Formal specification of configuration language usage and best practices",
+        "scope": "All configuration files including YAML, JSON, and INI formats",
+        "semantic_boundaries": "Declarative configuration with validation and schema enforcement",
+        "sub_semantics": ["CFG-001: Config Structure", "CFG-002: Environment Variables", "CFG-003: Secret Management"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["config-validation", "schema-enforcement"]
+      },
+      "GL31": {
+        "name": "Script Languages Specification",
+        "definition": "Formal specification of scripting language usage and automation patterns",
+        "scope": "All script files including Python, Shell, and PowerShell",
+        "semantic_boundaries": "Imperative scripting with error handling and logging",
+        "sub_semantics": ["SCR-001: Script Structure", "SCR-002: Error Handling", "SCR-003: Logging Standards"],
+        "applicable_targets": ["platform", "adapter"],
+        "validation_rules": ["script-validation", "error-handling-check"]
+      },
+      "GL32": {
+        "name": "Documentation Languages Specification",
+        "definition": "Formal specification of documentation language usage and formatting standards",
+        "scope": "All documentation files including Markdown, reStructuredText, and AsciiDoc",
+        "semantic_boundaries": "Structured documentation with cross-references and metadata",
+        "sub_semantics": ["DOC-001: Document Structure", "DOC-002: Formatting Standards", "DOC-003: Metadata Requirements"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["documentation-validation", "formatting-check"]
+      },
+      "GL33": {
+        "name": "Query Languages Specification",
+        "definition": "Formal specification of query language usage and data access patterns",
+        "scope": "All query definitions including SQL, GraphQL, and custom query DSLs",
+        "semantic_boundaries": "Declarative querying with result validation and pagination",
+        "sub_semantics": ["QRY-001: Query Structure", "QRY-002: Result Validation", "QRY-003: Pagination Rules"],
+        "applicable_targets": ["platform", "adapter"],
+        "validation_rules": ["query-validation", "result-check"]
+      },
+      "GL34": {
+        "name": "Governance DSL Specification",
+        "definition": "Formal specification of governance DSL syntax, semantics, and usage patterns",
+        "scope": "All governance rule definitions and policy specifications",
+        "semantic_boundaries": "Declarative governance with rule composition and validation",
+        "sub_semantics": ["GVR-001: Rule Syntax", "GVR-002: Policy Composition", "GVR-003: Enforcement Rules"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["governance-dsl-validation", "rule-composition-check"]
+      },
+      "GL35": {
+        "name": "Evidence Languages Specification",
+        "definition": "Formal specification of evidence language usage and evidence collection patterns",
+        "scope": "All evidence artifacts and evidence collection scripts",
+        "semantic_boundaries": "Structured evidence with provenance and integrity verification",
+        "sub_semantics": ["EVD-001: Evidence Structure", "EVD-002: Provenance Tracking", "EVD-003: Integrity Verification"],
+        "applicable_targets": ["evidence", "governance"],
+        "validation_rules": ["evidence-validation", "provenance-check"]
+      },
+      "GL36": {
+        "name": "Contract Languages Specification",
+        "definition": "Formal specification of contract language usage and contract enforcement patterns",
+        "scope": "All contract definitions and contract enforcement mechanisms",
+        "semantic_boundaries": "Formal contracts with validation and enforcement semantics",
+        "sub_semantics": ["CTR-001: Contract Structure", "CTR-002: Validation Rules", "CTR-003: Enforcement Semantics"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["contract-validation", "enforcement-check"]
+      },
+      "GL37": {
+        "name": "Adapter Languages Specification",
+        "definition": "Formal specification of adapter language usage and integration patterns",
+        "scope": "All adapter implementations and integration layers",
+        "semantic_boundaries": "Standardized adapter interfaces with error handling",
+        "sub_semantics": ["ADP-001: Adapter Interface", "ADP-002: Error Handling", "ADP-003: Data Transformation"],
+        "applicable_targets": ["adapter", "platform"],
+        "validation_rules": ["adapter-validation", "interface-compliance-check"]
+      },
+      "GL38": {
+        "name": "Platform Languages Specification",
+        "definition": "Formal specification of platform language usage and platform integration patterns",
+        "scope": "All platform-specific code and platform integration layers",
+        "semantic_boundaries": "Platform-agnostic interfaces with platform-specific implementations",
+        "sub_semantics": ["PLT-001: Platform Interface", "PLT-002: Abstraction Layer", "PLT-003: Compatibility Rules"],
+        "applicable_targets": ["platform", "adapter"],
+        "validation_rules": ["platform-validation", "compatibility-check"]
+      },
+      "GL39": {
+        "name": "Meta Languages Specification",
+        "definition": "Formal specification of meta-language usage and language description patterns",
+        "scope": "All meta-language definitions and language description files",
+        "semantic_boundaries": "Formal meta-languages with well-defined semantics",
+        "sub_semantics": ["META-001: Meta-Language Syntax", "META-002: Language Description", "META-003: Validation Rules"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["meta-language-validation", "description-completeness-check"]
+      }
+    }
+  },
+  "GL40-GL49": {
+    "category": "Language Integration",
+    "description": "Multi-language interoperability, security, and governance",
+    "anchors": {
+      "GL40": {
+        "name": "Multi-Language Interoperability Specification",
+        "definition": "Formal specification of cross-language interoperability mechanisms and protocols",
+        "scope": "All language boundary implementations and interoperability layers",
+        "semantic_boundaries": "Standardized interfaces with type-safe data exchange",
+        "sub_semantics": ["INT-001: Interface Definition", "INT-002: Type Mapping", "INT-003: Data Exchange"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["interoperability-validation", "type-safety-check"]
+      },
+      "GL41": {
+        "name": "Cross-Language Mapping Specification",
+        "definition": "Formal specification of language-to-language mapping rules and transformations",
+        "scope": "All language mapping implementations and transformation engines",
+        "semantic_boundaries": "Bi-directional mappings with semantic preservation",
+        "sub_semantics": ["MAP-001: Mapping Rules", "MAP-002: Transformation Logic", "MAP-003: Semantic Preservation"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["mapping-validation", "semantic-preservation-check"]
+      },
+      "GL42": {
+        "name": "Language Embedding Specification",
+        "definition": "Formal specification of language embedding rules and embedded code execution",
+        "scope": "All language embedding implementations and embedded code blocks",
+        "semantic_boundaries": "Secure embedding with sandboxed execution",
+        "sub_semantics": ["EMB-001: Embedding Syntax", "EMB-002: Execution Context", "EMB-003: Security Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["embedding-validation", "security-check"]
+      },
+      "GL43": {
+        "name": "Language Composition Specification",
+        "definition": "Formal specification of language composition rules and multi-language artifacts",
+        "scope": "All language composition implementations and mixed-language files",
+        "semantic_boundaries": "Well-defined composition boundaries with validation",
+        "sub_semantics": ["CMP-001: Composition Rules", "CMP-002: Boundary Definition", "CMP-003: Validation Strategy"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["composition-validation", "boundary-check"]
+      },
+      "GL44": {
+        "name": "Language Isolation Specification",
+        "definition": "Formal specification of language isolation mechanisms and separation of concerns",
+        "scope": "All language isolation implementations and separation layers",
+        "semantic_boundaries": "Strict isolation with controlled communication channels",
+        "sub_semantics": ["ISO-001: Isolation Mechanism", "ISO-002: Communication Channels", "ISO-003: Resource Separation"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["isolation-validation", "separation-check"]
+      },
+      "GL45": {
+        "name": "Language Sandbox Specification",
+        "definition": "Formal specification of language sandboxing and secure execution environments",
+        "scope": "All sandbox implementations and secure execution environments",
+        "semantic_boundaries": "Secure sandboxing with resource limits and monitoring",
+        "sub_semantics": ["SBX-001: Sandbox Definition", "SBX-002: Resource Limits", "SBX-003: Monitoring Rules"],
+        "applicable_targets": ["platform", "governance"],
+        "validation_rules": ["sandbox-validation", "security-check"]
+      },
+      "GL46": {
+        "name": "Language Security Specification",
+        "definition": "Formal specification of language security properties and security mechanisms",
+        "scope": "All language security implementations and security checks",
+        "semantic_boundaries": "Defense-in-depth with multiple security layers",
+        "sub_semantics": ["SEC-001: Security Properties", "SEC-002: Security Mechanisms", "SEC-003: Threat Mitigation"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["security-validation", "threat-mitigation-check"]
+      },
+      "GL47": {
+        "name": "Language Governance Specification",
+        "definition": "Formal specification of language governance rules and enforcement mechanisms",
+        "scope": "All language governance implementations and enforcement engines",
+        "semantic_boundaries": "Comprehensive governance with automated enforcement",
+        "sub_semantics": ["GOV-001: Governance Rules", "GOV-002: Enforcement Mechanisms", "GOV-003: Compliance Checking"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["governance-validation", "compliance-check"]
+      },
+      "GL48": {
+        "name": "Language Compliance Specification",
+        "definition": "Formal specification of language compliance requirements and validation",
+        "scope": "All compliance implementations and validation frameworks",
+        "semantic_boundaries": "Standards-based compliance with audit trails",
+        "sub_semantics": ["CMP-001: Compliance Requirements", "CMP-002: Validation Rules", "CMP-003: Audit Trails"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["compliance-validation", "audit-trail-check"]
+      },
+      "GL49": {
+        "name": "Language Observability Specification",
+        "definition": "Formal specification of language observability mechanisms and monitoring",
+        "scope": "All observability implementations and monitoring systems",
+        "semantic_boundaries": "Comprehensive observability with metrics and tracing",
+        "sub_semantics": ["OBS-001: Observability Mechanisms", "OBS-002: Metrics Collection", "OBS-003: Tracing Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["observability-validation", "monitoring-check"]
+      }
+    }
+  }
+}

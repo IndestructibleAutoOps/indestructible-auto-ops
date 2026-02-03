@@ -313,7 +313,7 @@ class FormatEnforcer:
                         # For YAML schemas, try to load
                         try:
                             import yaml
-                            self.schemas[format_type] = yaml.safe_load(content)
+                            self.schemas[format_type] = safe_load(content)
                         except ImportError:
                             # Parse YAML manually for basic cases
                             self.schemas[format_type] = self._parse_simple_yaml(content)
@@ -383,7 +383,7 @@ class FormatEnforcer:
             else:
                 try:
                     import yaml
-                    data = yaml.safe_load(content)
+                    data = safe_load(content)
                 except ImportError:
                     # Skip YAML validation if PyYAML not available
                     return FormatValidationResult(

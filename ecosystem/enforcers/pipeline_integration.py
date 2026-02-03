@@ -13,7 +13,11 @@ import os
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 import json
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 from datetime import datetime
 
 # 添加事實驗證工具的路徑

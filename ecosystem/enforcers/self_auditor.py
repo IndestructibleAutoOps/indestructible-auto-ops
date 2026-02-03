@@ -17,7 +17,11 @@ SelfAuditor - GL治理執行層的自我審計組件
 
 import os
 import json
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -83,7 +87,7 @@ class SelfAuditor:
         """加載配置文件"""
         if os.path.exists(self.config_path):
             with open(self.config_path, 'r', encoding='utf-8') as f:
-                return yaml.safe_load(f)
+                return safe_load(f)
         return {
             'audit_interval_hours': 24,
             'max_audit_days': 7,

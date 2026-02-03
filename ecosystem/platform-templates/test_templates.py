@@ -20,7 +20,11 @@ Please add specific module documentation here.
 """
 # MNGA-002: Import organization needs review
 import sys
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import subprocess
 from pathlib import Path
 
@@ -51,7 +55,7 @@ def test_core_template():
         
         # 驗證 YAML 語法
         with open(file_path) as f:
-            data = yaml.safe_load(f)
+            data = safe_load(f)
             assert data is not None, f"Invalid YAML: {config_file}"
     
     print("✓ Configuration files valid")
@@ -120,7 +124,7 @@ def test_cloud_template():
         
         # 驗證 YAML
         with open(file_path) as f:
-            data = yaml.safe_load(f)
+            data = safe_load(f)
             assert data is not None, f"Invalid YAML: {config_file}"
             assert 'platform' in data, "Missing platform section"
     
@@ -144,7 +148,7 @@ def test_onpremise_template():
     assert config_path.exists(), "Missing platform-config.yaml"
     
     with open(config_path) as f:
-        data = yaml.safe_load(f)
+        data = safe_load(f)
         assert 'platform' in data, "Missing platform section"
         assert 'infrastructure' in data, "Missing infrastructure section"
     

@@ -9,7 +9,11 @@ import os
 import re
 from typing import Dict, List, Any
 from pathlib import Path
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 
 
 def apply_auto_fixes(input_file: str, output_file: str, dry_run: bool = True):
@@ -114,7 +118,7 @@ def apply_add_label_fix(file_path: str, fix: Dict, dry_run: bool) -> Dict:
     
     # Parse YAML
     try:
-        data = yaml.safe_load(content)
+        data = safe_load(content)
     except yaml.YAMLError as e:
         return {"error": f"Failed to parse YAML: {e}"}
     

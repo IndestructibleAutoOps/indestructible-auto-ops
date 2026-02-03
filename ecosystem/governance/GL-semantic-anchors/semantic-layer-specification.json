@@ -1,0 +1,294 @@
+{
+  "SEMANTIC_LAYER_SPECIFICATION": {
+    "version": "1.0.0",
+    "created": "2025-01-18T00:00:00Z",
+    "status": "ACTIVE",
+    "description": "MNGA Semantic Layer - Semantic relationships, validation rules, and mapping tables for GL00-GL99"
+  },
+  "SEMANTIC_RELATIONSHIPS": {
+    "language_to_format_mapping": {
+      "GL00": ["GL50", "GL51"],
+      "GL01": ["GL50"],
+      "GL02": ["GL52"],
+      "GL03": ["GL60", "GL61"],
+      "GL04": ["GL60", "GL61"],
+      "GL05": ["GL60", "GL61"],
+      "GL06": ["GL57", "GL80"],
+      "GL07": ["GL65"],
+      "GL08": ["GL60", "GL61"],
+      "GL09": ["GL60", "GL61"]
+    },
+    "cross_layer_dependencies": {
+      "GL10": ["GL60", "GL61", "GL62"],
+      "GL11": ["GL60", "GL61"],
+      "GL12": ["GL62"],
+      "GL13": ["GL65"],
+      "GL14": ["GL69"],
+      "GL20": ["GL70"],
+      "GL21": ["GL67", "GL68"],
+      "GL22": ["GL70"],
+      "GL23": ["GL69"],
+      "GL24": ["GL69"],
+      "GL30": ["GL50", "GL51"],
+      "GL31": ["GL60", "GL61"],
+      "GL32": ["GL52"],
+      "GL33": ["GL60", "GL61"],
+      "GL34": ["GL57", "GL80"],
+      "GL35": ["GL53", "GL81"],
+      "GL36": ["GL54", "GL82"],
+      "GL37": ["GL55", "GL83"],
+      "GL38": ["GL56", "GL84"],
+      "GL39": ["GL59", "GL86"]
+    }
+  },
+  "VALIDATION_RULES": {
+    "language_layer_rules": {
+      "LRL-001": {
+        "name": "YAML Syntax Validation",
+        "description": "Validate YAML syntax according to GL00 specification",
+        "scope": "All YAML files",
+        "severity": "CRITICAL",
+        "check": "yaml-syntax-check",
+        "applicable_anchors": ["GL00"]
+      },
+      "LRL-002": {
+        "name": "JSON Syntax Validation",
+        "description": "Validate JSON syntax according to GL01 specification",
+        "scope": "All JSON files",
+        "severity": "CRITICAL",
+        "check": "json-syntax-check",
+        "applicable_anchors": ["GL01"]
+      },
+      "LRL-003": {
+        "name": "Python Type Hinting",
+        "description": "Enforce Python type hints according to GL03 specification",
+        "scope": "All Python files",
+        "severity": "HIGH",
+        "check": "mypy",
+        "applicable_anchors": ["GL03"]
+      },
+      "LRL-004": {
+        "name": "Shell Script Safety",
+        "description": "Validate shell script safety according to GL04 specification",
+        "scope": "All shell scripts",
+        "severity": "HIGH",
+        "check": "shellcheck",
+        "applicable_anchors": ["GL04"]
+      },
+      "LRL-005": {
+        "name": "DSL Syntax Validation",
+        "description": "Validate governance DSL syntax according to GL06 specification",
+        "scope": "All governance DSL files",
+        "severity": "CRITICAL",
+        "check": "dsl-parser",
+        "applicable_anchors": ["GL06"]
+      }
+    },
+    "format_layer_rules": {
+      "FLR-001": {
+        "name": "JSON Schema Validation",
+        "description": "Validate JSON schemas according to GL50 specification",
+        "scope": "All JSON schema files",
+        "severity": "CRITICAL",
+        "check": "json-schema-validation",
+        "applicable_anchors": ["GL50"]
+      },
+      "FLR-002": {
+        "name": "YAML Schema Validation",
+        "description": "Validate YAML schemas according to GL51 specification",
+        "scope": "All YAML schema files",
+        "severity": "CRITICAL",
+        "check": "yaml-schema-validation",
+        "applicable_anchors": ["GL51"]
+      },
+      "FLR-003": {
+        "name": "Field Naming Convention",
+        "description": "Validate field naming according to GL60 specification",
+        "scope": "All schema definitions",
+        "severity": "HIGH",
+        "check": "field-naming-convention",
+        "applicable_anchors": ["GL60"]
+      },
+      "FLR-004": {
+        "name": "Type Safety Validation",
+        "description": "Validate type safety according to GL61 specification",
+        "scope": "All type definitions",
+        "severity": "CRITICAL",
+        "check": "type-safety-validation",
+        "applicable_anchors": ["GL61"]
+      },
+      "FLR-005": {
+        "name": "Required Field Validation",
+        "description": "Validate required fields according to GL63 specification",
+        "scope": "All schema instances",
+        "severity": "CRITICAL",
+        "check": "required-field-validation",
+        "applicable_anchors": ["GL63"]
+      }
+    },
+    "semantic_layer_rules": {
+      "SLR-001": {
+        "name": "Semantic Consistency Check",
+        "description": "Validate semantic consistency across language and format layers",
+        "scope": "All artifacts",
+        "severity": "HIGH",
+        "check": "semantic-consistency-check",
+        "applicable_anchors": ["GL00-GL99"]
+      },
+      "SLR-002": {
+        "name": "Cross-Layer Dependency Validation",
+        "description": "Validate cross-layer dependencies according to semantic mapping",
+        "scope": "All artifacts",
+        "severity": "HIGH",
+        "check": "cross-layer-dependency-validation",
+        "applicable_anchors": ["GL00-GL99"]
+      },
+      "SLR-003": {
+        "name": "Semantic Boundary Enforcement",
+        "description": "Enforce semantic boundaries according to GL definitions",
+        "scope": "All artifacts",
+        "severity": "CRITICAL",
+        "check": "semantic-boundary-enforcement",
+        "applicable_anchors": ["GL00-GL99"]
+      }
+    }
+  },
+  "SEMANTIC_MAPPING_TABLES": {
+    "artifact_to_gl_mapping": {
+      "yaml_files": {
+        "primary_gl": "GL00",
+        "secondary_gl": ["GL51", "GL30"],
+        "validation_rules": ["LRL-001", "FLR-002"]
+      },
+      "json_files": {
+        "primary_gl": "GL01",
+        "secondary_gl": ["GL50", "GL59"],
+        "validation_rules": ["LRL-002", "FLR-001"]
+      },
+      "python_files": {
+        "primary_gl": "GL03",
+        "secondary_gl": ["GL60", "GL61"],
+        "validation_rules": ["LRL-003", "FLR-004"]
+      },
+      "shell_scripts": {
+        "primary_gl": "GL04",
+        "secondary_gl": ["GL31"],
+        "validation_rules": ["LRL-004"]
+      },
+      "markdown_files": {
+        "primary_gl": "GL02",
+        "secondary_gl": ["GL32", "GL52"],
+        "validation_rules": ["LRL-001"]
+      },
+      "governance_dsl": {
+        "primary_gl": "GL06",
+        "secondary_gl": ["GL34", "GL57", "GL80"],
+        "validation_rules": ["LRL-005", "FLR-001"]
+      },
+      "evidence_artifacts": {
+        "primary_gl": "GL35",
+        "secondary_gl": ["GL53", "GL81"],
+        "validation_rules": ["FLR-001", "FLR-005"]
+      },
+      "contract_artifacts": {
+        "primary_gl": "GL36",
+        "secondary_gl": ["GL54", "GL82"],
+        "validation_rules": ["FLR-001", "FLR-005"]
+      },
+      "adapter_artifacts": {
+        "primary_gl": "GL37",
+        "secondary_gl": ["GL55", "GL83"],
+        "validation_rules": ["FLR-001", "FLR-005"]
+      },
+      "platform_artifacts": {
+        "primary_gl": "GL38",
+        "secondary_gl": ["GL56", "GL84"],
+        "validation_rules": ["FLR-001", "FLR-005"]
+      }
+    },
+    "gl_to_target_mapping": {
+      "contract": ["GL00", "GL01", "GL02", "GL06", "GL30", "GL34", "GL36", "GL50", "GL51", "GL54", "GL57", "GL59", "GL60", "GL61", "GL63", "GL69", "GL80", "GL82", "GL86", "GL88", "GL97", "GL98"],
+      "adapter": ["GL03", "GL04", "GL05", "GL08", "GL09", "GL10", "GL11", "GL19", "GL21", "GL22", "GL26", "GL27", "GL28", "GL31", "GL33", "GL37", "GL40", "GL41", "GL43", "GL55", "GL56", "GL60", "GL61", "GL67", "GL68", "GL73", "GL75", "GL77", "GL83", "GL84", "GL90", "GL91", "GL93"],
+      "platform": ["GL03", "GL04", "GL05", "GL08", "GL09", "GL25", "GL31", "GL33", "GL38", "GL42", "GL44", "GL45", "GL46", "GL49", "GL56", "GL60", "GL61", "GL78", "GL79", "GL84", "GL89", "GL92", "GL94", "GL95", "GL96", "GL99"],
+      "governance": ["GL00", "GL01", "GL02", "GL06", "GL10", "GL11", "GL14", "GL16", "GL17", "GL18", "GL20", "GL23", "GL24", "GL29", "GL30", "GL32", "GL34", "GL35", "GL36", "GL39", "GL40", "GL41", "GL42", "GL43", "GL44", "GL46", "GL47", "GL48", "GL49", "GL50", "GL51", "GL57", "GL59", "GL60", "GL61", "GL62", "GL65", "GL66", "GL69", "GL70", "GL71", "GL72", "GL74", "GL76", "GL78", "GL79", "GL80", "GL81", "GL82", "GL85", "GL86", "GL88", "GL90", "GL91", "GL92", "GL93", "GL94", "GL96", "GL97", "GL98", "GL99"],
+      "evidence": ["GL01", "GL33", "GL35", "GL53", "GL81"]
+    }
+  },
+  "SEMANTIC_VALIDATION_PIPELINE": {
+    "stages": [
+      {
+        "stage": "syntax_validation",
+        "description": "Validate syntax according to language layer specifications",
+        "applicable_gl": ["GL00-GL09"],
+        "validation_rules": ["LRL-001", "LRL-002", "LRL-003", "LRL-004", "LRL-005"]
+      },
+      {
+        "stage": "structure_validation",
+        "description": "Validate structure according to format layer specifications",
+        "applicable_gl": ["GL50-GL69"],
+        "validation_rules": ["FLR-001", "FLR-002", "FLR-003", "FLR-004", "FLR-005"]
+      },
+      {
+        "stage": "semantic_validation",
+        "description": "Validate semantics according to semantic layer specifications",
+        "applicable_gl": ["GL00-GL99"],
+        "validation_rules": ["SLR-001", "SLR-002", "SLR-003"]
+      },
+      {
+        "stage": "cross_layer_validation",
+        "description": "Validate cross-layer dependencies and consistency",
+        "applicable_gl": ["GL00-GL99"],
+        "validation_rules": ["SLR-002"]
+      },
+      {
+        "stage": "compliance_validation",
+        "description": "Validate compliance with governance requirements",
+        "applicable_gl": ["GL00-GL99"],
+        "validation_rules": ["GL97", "GL98"]
+      }
+    ]
+  },
+  "SEMANTIC_BOUNDARY_DEFINITIONS": {
+    "language_layer_boundaries": {
+      "L00-L09": "Core language syntax and parsing",
+      "L10-L19": "Language structure and grammar",
+      "L20-L29": "Language behavior and runtime",
+      "L30-L39": "Domain-specific language usage",
+      "L40-L49": "Language integration and interoperability"
+    },
+    "format_layer_boundaries": {
+      "L50-L59": "Core format types and schemas",
+      "L60-L69": "Format structure and validation",
+      "L70-L79": "Format behavior and evolution",
+      "L80-L89": "Domain-specific format usage",
+      "L90-L99": "Format integration and governance"
+    },
+    "cross_layer_boundaries": {
+      "language_to_format": "Language specifications define syntax, format specifications define structure",
+      "format_to_semantic": "Format specifications define structure, semantic layer defines meaning",
+      "semantic_to_governance": "Semantic layer defines meaning, governance layer defines enforcement"
+    }
+  },
+  "SEMANTIC_INFERENCE_RULES": {
+    "type_inference": {
+      "rule": "Infer types from format specifications and language type systems",
+      "applicable_gl": ["GL61", "GL14"],
+      "validation": "type-inference-validation"
+    },
+    "structure_inference": {
+      "rule": "Infer structure from schema definitions and language grammars",
+      "applicable_gl": ["GL62", "GL12"],
+      "validation": "structure-inference-validation"
+    },
+    "dependency_inference": {
+      "rule": "Infer dependencies from import statements and schema references",
+      "applicable_gl": ["GL10", "GL58"],
+      "validation": "dependency-inference-validation"
+    },
+    "semantic_inference": {
+      "rule": "Infer semantics from naming conventions and documentation",
+      "applicable_gl": ["GL88", "GL32"],
+      "validation": "semantic-inference-validation"
+    }
+  }
+}

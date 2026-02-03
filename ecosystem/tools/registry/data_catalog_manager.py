@@ -21,7 +21,11 @@ This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
 # MNGA-002: Import organization needs review
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import json
 from pathlib import Path
 from typing import Dict, List, Optional, Any
@@ -47,7 +51,7 @@ class DataCatalogManager:
         
         try:
             with open(self.catalog_path, 'r') as f:
-                return yaml.safe_load(f) or {'datasets': []}
+                return safe_load(f) or {'datasets': []}
         except Exception as e:
             print(f"Error loading catalog: {e}")
             return {'datasets': []}

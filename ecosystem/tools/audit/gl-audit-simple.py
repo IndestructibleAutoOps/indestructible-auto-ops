@@ -8,7 +8,11 @@ GL Unified Charter Activated ✓
 
 # MNGA-002: Import organization needs review
 import json
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 from pathlib import Path
 from datetime import datetime
 
@@ -38,8 +42,8 @@ def check_file(file_path: Path) -> dict:
         ext = file_path.suffix.lower()
         if ext in ['.yaml', '.yml']:
             try:
-                yaml.safe_load(content)
-                data = yaml.safe_load(content)
+                safe_load(content)
+                data = safe_load(content)
                 result["status"] = "parsed"
             except yaml.YAMLError as e:
                 result["status"] = "error"

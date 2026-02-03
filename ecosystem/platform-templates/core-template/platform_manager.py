@@ -22,7 +22,11 @@ Please add specific module documentation here.
 """
 # MNGA-002: Import organization needs review
 import sys
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
@@ -75,7 +79,7 @@ class PlatformManager:
             raise FileNotFoundError(f"Config file not found: {self.config_path}")
         
         with open(self.config_path, 'r') as f:
-            return yaml.safe_load(f)
+            return safe_load(f)
     
     def _initialize_components(self):
         """初始化 ecosystem 組件"""

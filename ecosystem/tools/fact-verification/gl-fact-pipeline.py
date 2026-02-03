@@ -19,7 +19,11 @@ This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
 # MNGA-002: Import organization needs review
-import yaml
+# Import simple_yaml for zero-dependency YAML parsing
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from utils.simple_yaml import safe_load
 import hashlib
 import json
 import re
@@ -98,7 +102,7 @@ class GLFactPipeline:
         
         # 加载配置
         with open(self.config_path, 'r') as f:
-            self.config = yaml.safe_load(f)
+            self.config = safe_load(f)
         
         # 初始化状态
         self.internal_facts: Dict = {}
@@ -141,7 +145,7 @@ class GLFactPipeline:
             # 如果是 YAML 文件，尝试解析
             if path.suffix in ['.yaml', '.yml']:
                 try:
-                    yaml_data = yaml.safe_load(content)
+                    yaml_data = safe_load(content)
                     if yaml_data:
                         # 检查必需字段
                         if 'metadata' in yaml_data:
@@ -194,7 +198,7 @@ class GLFactPipeline:
                         
                         # 提取契约信息
                         try:
-                            yaml_data = yaml.safe_load(content)
+                            yaml_data = safe_load(content)
                             if yaml_data and 'metadata' in yaml_data:
                                 contract_id = yaml_data['metadata'].get('name', contract_file.stem)
                                 facts["contracts"][contract_id] = {
