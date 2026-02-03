@@ -75,3 +75,7 @@ __pycache__/
 build/
 .env
 .gh_token
+
+# Sensitive directories - may contain tokens/secrets
+outputs/
+summarized_conversations/
