@@ -1,0 +1,78 @@
+{
+  "timestamp": "20260203_171906",
+  "version": "2.0.0",
+  "status": "PASS",
+  "summary": {
+    "total_checks": 7,
+    "passed": 7,
+    "failed": 0,
+    "total_violations": 0,
+    "critical_violations": 0,
+    "high_violations": 0
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 133 個文件，發現 0 個問題",
+      "files_scanned": 133,
+      "execution_time_ms": 8,
+      "violations_count": 0
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1653 個目錄和 2831 個文件，發現 0 個命名問題",
+      "files_scanned": 4484,
+      "execution_time_ms": 298,
+      "violations_count": 0
+    },
+    {
+      "name": "Security Check",
+      "passed": true,
+      "message": "掃描 4226 個文件，發現 0 個安全問題",
+      "files_scanned": 4226,
+      "execution_time_ms": 764,
+      "violations_count": 0
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 0 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 29,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 0
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "MNGA Architecture",
+      "passed": true,
+      "message": "檢查 39 個架構組件，發現 0 個問題",
+      "files_scanned": 39,
+      "execution_time_ms": 49,
+      "violations_count": 0
+    }
+  ],
+  "violations": [],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

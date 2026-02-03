@@ -1,34 +1,28 @@
-# MNGA 工程治理模組執行契約 - 完整落地計劃
+# 全面維修計劃 - MNGA 治理系統
 
-## 1. 修復 Python 模組結構 [ ]
-- [ ] 將 dual-path 重命名為 dual_path（Python 模組必須使用 snake_case）
-- [ ] 添加所有必要的 __init__.py 文件
-- [ ] 確保所有模組可正確導入
+## 1. 診斷階段 [x]
+- [x] 檢查 Git 狀態 (7 個本地提交待推送)
+- [x] 運行 enforce.py --audit (7/7 通過，但有警告)
 
-## 2. 重寫 enforce.py 核心框架 [ ]
-- [ ] 實現真正的 MNGA 8 層架構檢查
-- [ ] 整合雙路檢索系統
-- [ ] 實現審計追蹤（actor/action/resource/result/hash/version）
-- [ ] 支援 RFC3339 時間戳和 OpenTelemetry/JSONL 追蹤
+## 2. 修復命名問題 [ ]
+- [ ] 重命名 summarized_conversations → summarized-conversations
+- [ ] 修復審計報告文件命名格式
 
-## 3. 實現命名治理完整鏈路 [ ]
-- [ ] OPA/Conftest 命名政策
-- [ ] PrometheusRule 告警
-- [ ] Grafana 儀表板
-- [ ] 自動修復器
-- [ ] 遷移 Playbook
+## 3. 修復治理合約問題 [ ]
+- [ ] 檢查 ecosystem/contracts/ 目錄結構
+- [ ] 創建缺失的治理合約文件
+- [ ] 驗證 governance_enforcer.py 的 before_operation 功能
 
-## 4. 實現 CI Pipeline 第三階段 [ ]
-- [ ] metadata/trigger/stages/artifacts/evidence_output
-- [ ] 跨 Job Artifact 共享
-- [ ] PR 註解和證據產出
+## 4. 完整性檢查 [ ]
+- [ ] 檢查 complete_naming_enforcer.py 整合狀態
+- [ ] 驗證所有 16 種命名類型的實現
+- [ ] 運行完整的命名治理掃描
 
-## 5. 供應鏈安全 [ ]
-- [ ] SBOM 生成
-- [ ] Cosign 簽章
-- [ ] SLSA Provenance
+## 5. 推送到 GitHub [ ]
+- [ ] 提交所有修復
+- [ ] 推送到遠端倉庫
+- [ ] 驗證推送成功
 
-## 6. 驗證並推送 [ ]
-- [ ] 運行完整測試
-- [ ] 提交變更
-- [ ] 推送到 GitHub
+## 6. 最終驗證 [ ]
+- [ ] 運行 enforce.py --audit 確認所有問題已修復
+- [ ] 生成最終報告

@@ -342,13 +342,19 @@ class GovernanceEnforcer:
     def _is_contract_relevant(self, contract: Contract, operation: Operation) -> bool:
         """判斷合約是否與操作相關"""
         # 根據操作類型和合約類別匹配
+        # 實際合約 category 值: governance, validation, generator, core, extension, platform, reasoning
         category_mapping = {
-            "file_migration": ["naming-governance", "fact-verification", "verification"],
-            "code_commit": ["validation", "verification"],
-            "report_generation": ["fact-verification", "verification"]
+            "file_migration": ["core", "governance", "validation"],
+            "code_commit": ["validation", "governance"],
+            "report_generation": ["governance", "validation"],
+            "validation": ["validation", "governance", "core"],
+            "audit": ["governance", "validation"],
+            "deployment": ["governance", "platform"],
+            "test_operation": ["governance", "validation", "core"],
+            "governance_check": ["governance", "validation"]
         }
         
-        relevant_categories = category_mapping.get(operation.type, [])
+        relevant_categories = category_mapping.get(operation.type, ["governance", "validation", "core"])
         return contract.category in relevant_categories
     
     def check_gates(self, operation: Operation) -> GateResult:
