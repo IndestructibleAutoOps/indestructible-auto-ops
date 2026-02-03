@@ -474,8 +474,9 @@ class ValidationEngine:
         errors = []
         
         # Check if file is in an immutable layer
+        # Layer directories use formats like 'l00-language', 'l02-semantics', etc.
         immutable_layers = ['l00', 'l01', 'l02', 'l03', 'l04', 'l50']
-        is_immutable_layer = any(f'/{layer}/' in file_path.lower() for layer in immutable_layers)
+        is_immutable_layer = any(f'/{layer}/' in file_path.lower() or f'/{layer}-' in file_path.lower() for layer in immutable_layers)
         
         if is_immutable_layer:
             if 'immutable:' not in content and '"immutable"' not in content:

@@ -475,13 +475,13 @@ class ReverseArchitectureEngine:
             f.write("\n")
             
             f.write("## Most Dependent Components\n\n")
-            for name, count in analysis.metrics['most_dependent']:
-                f.write(f"{count}. {name} ({count} dependencies)\n")
+            for idx, (name, count) in enumerate(analysis.metrics['most_dependent'], 1):
+                f.write(f"{idx}. {name} ({count} dependencies)\n")
             f.write("\n")
             
             f.write("## Most Coupled Components\n\n")
-            for name, count in analysis.metrics['most_coupled']:
-                f.write(f"{count}. {name} ({count} dependents)\n")
+            for idx, (name, count) in enumerate(analysis.metrics['most_coupled'], 1):
+                f.write(f"{idx}. {name} ({count} dependents)\n")
             f.write("\n")
         
         # Generate JSON summary
