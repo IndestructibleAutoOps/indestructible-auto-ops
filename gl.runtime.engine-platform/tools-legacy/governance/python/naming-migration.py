@@ -19,6 +19,7 @@ Usage:
     python naming-migration.py --spec canonical/machine-spec.yaml --detect-conflicts
     python naming-migration.py --spec canonical/machine-spec.yaml --generate-plan migration-plan.yaml
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import re

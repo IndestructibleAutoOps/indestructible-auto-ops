@@ -11,6 +11,13 @@ Messaging Example
 示例：如何使用消息系統進行服務間通信
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 import time
 from pathlib import Path

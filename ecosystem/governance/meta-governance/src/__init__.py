@@ -12,6 +12,13 @@ GL Meta-Governance Framework
 GL Governance Layer: GL90-99 (Meta-Specification Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .version_manager import (
     VersionManager,
     SemanticVersion,

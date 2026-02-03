@@ -10,6 +10,7 @@
 Module Manifest Validator
 Validates module manifests against JSON schema
 """
+# MNGA-002: Import organization needs review
 import json
 import yaml
 import sys

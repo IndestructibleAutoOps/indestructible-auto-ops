@@ -20,6 +20,7 @@ This script checks:
 3. Legacy asset IDs are defined in legacy_assets_index.yaml
 4. index.yaml and INDEX.md are in sync
 """
+# MNGA-002: Import organization needs review
 import sys
 from pathlib import Path
 import yaml

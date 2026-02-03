@@ -12,6 +12,13 @@
 對應 config/dev/automation/deployment-drone.sh (Python 版本)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import subprocess
 from datetime import datetime

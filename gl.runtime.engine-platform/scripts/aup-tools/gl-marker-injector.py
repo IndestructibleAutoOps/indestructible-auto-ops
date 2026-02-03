@@ -9,6 +9,7 @@
 GL Marker Injector - 自動注入 GL 治理標記
 GL Unified Charter Activated
 """
+# MNGA-002: Import organization needs review
 import os
 import sys
 import re

@@ -1,241 +1,247 @@
-# ═══════════════════════════════════════════════════════════════════════════════
-#                    Machine Native Ops - Root Makefile
-#                    GL Layer: GL30-49 Execution Layer
-#                    Purpose: Build automation and task delegation
-#                    Workspace Delegation & Top-Level Targets
-# ═══════════════════════════════════════════════════════════════════════════════
-#
-# This Makefile delegates most operations to workspace/Makefile while providing
-# convenient top-level targets for common operations.
-#
-# Usage:
-#   make all-kg          - Run all knowledge graph generation (delegates to workspace)
-#   make check-drift     - Check if generated files are up-to-date
-#   make clean-generated - Remove all generated YAML files
-#   make help            - Show this help message
-#
-# ═══════════════════════════════════════════════════════════════════════════════
+# MNGA Makefile
+# Convenient commands for MNGA system
 
-.PHONY: all-kg kg mndoc superroot check-drift clean-generated analyze-reports help install automation-init automation-check automation-fix automation-verify automation-help test
+.PHONY: help bootstrap start verify test clean lint enforce lint-fix
 
 # Default target
-.DEFAULT_GOAL := help
-
-# Workspace directory
-WORKSPACE := workspace
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Help
-# ─────────────────────────────────────────────────────────────────────────────
 help:
-	@echo "Machine Native Ops - Root Makefile"
+	@echo "MNGA - Machine Native Governance Architecture"
 	@echo ""
-	@echo "Available targets:"
-	@echo "  make all-kg          - Run all knowledge graph generation"
-	@echo "  make kg              - Build knowledge graph"
-	@echo "  make mndoc           - Generate MN-DOC from README"
-	@echo "  make superroot       - Generate SuperRoot entities"
-	@echo "  make check-drift     - Check for drift in generated files"
-	@echo "  make clean-generated - Remove generated YAML files"
-	@echo "  make analyze-reports - Analyze root-level reports"
-	@echo "  make install         - Install dependencies (npm + workspace)"
-	@echo "  make help            - Show this help message"
+	@echo "Available commands:"
+	@echo "  make bootstrap     - Bootstrap the development environment"
+	@echo "  make start        - Start the minimal system"
+	@echo "  make verify       - Run quick verification tests"
+	@echo "  make test         - Run all tests"
+	@echo "  make enforce      - Run governance enforcement"
+	@echo "  make lint         - Run code linting"
+	@echo "  make lint-fix     - Fix linting issues automatically"
+	@echo "  make clean        - Clean build artifacts and caches"
 	@echo ""
-	@echo "Automation targets:"
-	@echo "  make automation-init     - Initialize automation tools"
-	@echo "  make automation-check    - Run quality checks"
-	@echo "  make automation-fix      - Auto-fix issues"
-	@echo "  make automation-verify   - Verify automation setup"
-	@echo "  make automation-help     - Show automation help"
-	@echo ""
-	@echo "For workspace-specific operations, use: make -C $(WORKSPACE) <target>"
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Delegation Targets - Forward to workspace Makefile
-# ─────────────────────────────────────────────────────────────────────────────
-all-kg:
-	@$(MAKE) -C $(WORKSPACE) all-kg
+# Bootstrap environment
+bootstrap:
+	@echo "Bootstrapping MNGA environment..."
+	@./scripts/bootstrap.sh
 
-kg:
-	@$(MAKE) -C $(WORKSPACE) kg
+# Start minimal system
+start:
+	@echo "Starting MNGA minimal system..."
+	@./scripts/start-min.sh
 
-mndoc:
-	@$(MAKE) -C $(WORKSPACE) mndoc
+# Quick verification
+verify:
+	@echo "Running verification tests..."
+	@./scripts/quick-verify.sh
 
-superroot:
-	@$(MAKE) -C $(WORKSPACE) superroot
-
-check-drift:
-	@$(MAKE) -C $(WORKSPACE) check-drift
-
-clean-generated:
-	@$(MAKE) -C $(WORKSPACE) clean-generated
-
-analyze-reports:
-	@$(MAKE) -C $(WORKSPACE) analyze-reports
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Root-Level Targets
-# ─────────────────────────────────────────────────────────────────────────────
-install:
-	@echo "📦 Installing dependencies (npm workspaces handles all subdirectories)..."
-	npm install
-	@echo "✅ Installation complete"
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Automation Targets
-# ─────────────────────────────────────────────────────────────────────────────
-.PHONY: automation-init automation-check automation-fix automation-verify automation-help
-
-automation-init:
-	@echo "🚀 Initializing automation tools..."
-	@bash scripts/init-automation.sh
-
-automation-check:
-	@echo "📊 Running quality checks..."
-	@python3 scripts/auto-quality-check.py
-
-automation-fix:
-	@echo "🔧 Running auto-fix..."
-	@python3 scripts/auto-fix-issues.py
-
-automation-fix-preview:
-	@echo "🔍 Previewing auto-fix (dry run)..."
-	@python3 scripts/auto-fix-issues.py --dry-run
-
-automation-verify:
-	@echo "✅ Verifying automation setup..."
-	@bash scripts/verify-automation.sh
-
-automation-report:
-	@echo "📄 Viewing quality report..."
-	@cat AUTO-QUALITY-REPORT.md
-
-automation-help:
-	@echo "Automation Tools - Available Commands"
-	@echo ""
-	@echo "  make automation-init         - Initialize automation tools"
-	@echo "  make automation-check        - Run quality checks"
-	@echo "  make automation-fix          - Auto-fix issues"
-	@echo "  make automation-fix-preview  - Preview auto-fix (dry run)"
-	@echo "  make automation-verify       - Verify automation setup"
-	@echo "  make automation-report       - View quality report"
-	@echo "  make automation-help         - Show this help"
-	@echo ""
-	@echo "Quick start:"
-	@echo "  1. make automation-init      # First time setup"
-	@echo "  2. make automation-check     # Run checks"
-	@echo "  3. make automation-report    # View results"
-
+# Run tests
 test:
-	@echo "🧪 Running all GL implementation tests..."
-	@echo ""
-	@echo "Running GL implementation tests..."
-	@python3 scripts/gl/implementation/test_implementation.py
-	@echo ""
-	@echo "Running layer validations..."
-	@python3 scripts/gl/validate-semantics.py
-	@python3 scripts/gl/quantum-validate.py
-	@echo ""
-	@echo "✅ All tests completed!"
-	@echo ""
-	@echo "For detailed validation reports, see:"
-	@echo "  - GL-STATUS-REPORT.md"
-	@echo "  - GL-CORE-INTEGRATION-REPORT.md"
+	@echo "Running all tests..."
+	@python3 -m pytest tests/ -v --cov=. --cov-report=html
 
-# ============================================================================
-# Governance System Targets - Governance Quantum Stack (GQS)
-# ============================================================================
+# Run governance enforcement
+enforce:
+	@echo "Running governance enforcement..."
+	@python3 ecosystem/enforce.py --audit --auto-fix
 
-.PHONY: bootstrap start-min test-fast verify quick-check clean-gov deploy-gov install-deps fix-env
+# Lint code
+lint:
+	@echo "Linting code..."
+	@python3 -m flake8 ecosystem/ platforms/
+	@python3 -m mypy ecosystem/ platforms/ --ignore-missing-imports
+	@yamllint .config/ .github/workflows/
 
-# Bootstrap & Setup
-bootstrap: ## 引導腳本 - 初始化治理環境
-	@echo "Bootstrapping governance environment..."
-	@bash scripts/bootstrap.sh
+# Fix linting issues
+lint-fix:
+	@echo "Fixing linting issues..."
+	@python3 -m black ecosystem/ platforms/
+	@python3 -m isort ecosystem/ platforms/
+	@yamllint -f parsable .config/ .github/workflows/ | while read file line; do \
+		sed -i "$$line" "$$file"; \
+	done
 
-start-min: ## 最小啟動 - 快速啟動治理系統
-	@echo "Starting minimal governance system..."
-	@bash scripts/start-min.sh
+# Clean build artifacts
+clean:
+	@echo "Cleaning build artifacts..."
+	@find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+	@find . -type f -name '*.pyc' -delete 2>/dev/null || true
+	@find . -type f -name '*.pyo' -delete 2>/dev/null || true
+	@rm -rf .pytest_cache
+	@rm -rf htmlcov
+	@rm -rf .coverage
+	@rm -rf ecosystem/logs/*.log
+	@rm -rf ecosystem/indexes/internal/*.db
 
-install-deps: ## 安裝治理依賴
-	@echo "Installing governance dependencies..."
-	@pip install -q pyyaml jsonschema python-dateutil requests pyjwt
-	@echo "Dependencies installed"
+# Run reasoning pipeline test
+test-reasoning:
+	@echo "Testing reasoning pipeline..."
+	@python3 platforms/gl.platform-assistant/orchestration/pipeline.py
 
-fix-env: ## 修復環境變量 - 生成 .env 文件
-	@echo "Fixing environment..."
-	@if [ ! -f .env ]; then \
-		cp .env.example .env; \
-		echo ".env created from .env.example"; \
+# Generate naming report
+generate-naming-report:
+	@echo "Generating naming compliance report..."
+	@python3 ecosystem/scripts/naming/generate_naming_report.py \
+		--output artifacts/reports/naming/compliance_report.json
+
+# Run auto-fix pipeline
+run-autofix:
+	@echo "Running auto-fix pipeline..."
+	@python3 ecosystem/enforce.py --audit --auto-fix
+
+# Create feature branch
+create-branch:
+	@if [ -z "$(BRANCH_NAME)" ]; then \
+		echo "Error: BRANCH_NAME not set"; \
+		echo "Usage: make create-branch BRANCH_NAME=feature/my-feature"; \
+		exit 1; \
+	fi
+	@echo "Creating branch: $(BRANCH_NAME)"
+	@git checkout -b $(BRANCH_NAME)
+
+# Push to remote
+push:
+	@if [ -z "$(BRANCH_NAME)" ]; then \
+		git push origin main; \
 	else \
-		echo ".env already exists"; \
+		git push origin $(BRANCH_NAME); \
 	fi
 
-# Testing & Verification
-test-fast: ## 快速測試 - 驗證核心治理功能
-	@echo "Running fast governance tests..."
-	@python3 ecosystem/enforce.py
-	@python3 ecosystem/enforcers/semantic_violation_classifier.py 2>&1 | tail -5
-	@echo "Fast tests passed"
+# Create PR
+create-pr:
+	@gh pr create --title "$(TITLE)" --body "$(BODY)" --base main
 
-verify: ## 完整驗證 - 驗證所有治理層
-	@echo "Running full governance verification..."
-	@python3 ecosystem/enforce.py
-	@echo "Governance enforcement verified"
-	@if command -v conftest >/dev/null 2>&1; then \
-		conftest verify ecosystem/contracts/policies/; \
-		echo "Policies verified"; \
-	else \
-		echo "Conftest not installed, skipping policy verification"; \
+# Monitor system logs
+logs:
+	@echo "Monitoring system logs (Ctrl+C to exit)..."
+	@tail -f ecosystem/logs/audit/*.jsonl 2>/dev/null || echo "No logs found"
+
+# Generate SBOM
+generate-sbom:
+	@echo "Generating SBOM..."
+	@syft . -o spdx-json > sbom.json
+	@echo "SBOM generated: sbom.json"
+
+# Security scan
+security-scan:
+	@echo "Running security scan..."
+	@trivy fs --severity HIGH,CRITICAL . > security_report.txt
+	@echo "Security report: security_report.txt"
+
+# Install dependencies
+install-deps:
+	@echo "Installing dependencies..."
+	@pip install -r requirements.txt
+
+# Run development server
+dev:
+	@echo "Starting development server..."
+	@python3 -m platforms.gl.platform-assistant.api.server
+
+# Format code
+format:
+	@echo "Formatting code..."
+	@python3 -m black ecosystem/ platforms/
+	@python3 -m isort ecosystem/ platforms/
+
+# Check code quality
+quality:
+	@echo "Checking code quality..."
+	@python3 -m pylint ecosystem/ platforms/ --fail-under=8.0
+
+# Generate documentation
+docs:
+	@echo "Generating documentation..."
+	@mkdocs build
+
+# Serve documentation
+docs-serve:
+	@echo "Serving documentation..."
+	@mkdocs serve
+
+# Run migrations
+migrate:
+	@echo "Running database migrations..."
+	@python3 ecosystem/scripts/migrate.py
+
+# Backup data
+backup:
+	@echo "Creating backup..."
+	@tar -czf backup_$(shell date +%Y%m%d_%H%M%S).tar.gz \
+		ecosystem/data/ \
+		ecosystem/indexes/ \
+		ecosystem/logs/
+
+# Restore backup
+restore:
+	@if [ -z "$(BACKUP_FILE)" ]; then \
+		echo "Error: BACKUP_FILE not set"; \
+		echo "Usage: make restore BACKUP_FILE=backup_20240101_120000.tar.gz"; \
+		exit 1; \
 	fi
-	@echo "Full verification completed"
+	@echo "Restoring from $(BACKUP_FILE)..."
+	@tar -xzf $(BACKUP_FILE)
 
-quick-check: ## 快速檢查 - 檢查治理系統健康狀態
-	@echo "Quick governance system health check..."
-	@echo "Checking governance compliance..."
-	@python3 ecosystem/enforce.py 2>&1 | grep -E "(PASS|FAIL|違規數)"
-	@echo "Checking database..."
-	@if [ -f ecosystem/governance/audit.db ]; then \
-		echo "✓ Database exists"; \
-	else \
-		echo "✗ Database not found"; \
-	fi
-	@echo "Checking policies..."
-	@if [ -d ecosystem/contracts/policies/ ]; then \
-		echo "✓ Policies directory exists"; \
-		echo "  Policies: $$(ls ecosystem/contracts/policies/ | wc -l)"; \
-	else \
-		echo "✗ Policies directory not found"; \
-	fi
-	@echo "Quick check completed"
+# Build Docker image
+docker-build:
+	@echo "Building Docker image..."
+	@docker build -t mnga:latest .
 
-# Governance Operations
-enforce: ## 執行治理強制檢查
-	@echo "Enforcing governance rules..."
-	@python3 ecosystem/enforce.py
+# Run Docker container
+docker-run:
+	@echo "Running Docker container..."
+	@docker run -p 8000:8000 mnga:latest
 
-audit: ## 運行治理審計
-	@echo "Running audit..."
-	@python3 ecosystem/tools/audit_trail_query.py --query all --limit 10 || echo "Audit tool not available"
+# Deploy to staging
+deploy-staging:
+	@echo "Deploying to staging..."
+	@./scripts/deploy.sh staging
 
-report: ## 生成治理報告
-	@echo "Generating governance report..."
-	@python3 ecosystem/enforcers/closed_loop_governance.py generate-report \
-		--artifacts-dir ecosystem/governance/artifacts/ \
-		--output-dir ecosystem/governance/reports/ || echo "Report generation skipped"
+# Deploy to production
+deploy-prod:
+	@echo "Deploying to production..."
+	@./scripts/deploy.sh production
 
-# Cleanup
-clean-gov: ## 清理治理臨時文件和日誌
-	@echo "Cleaning up governance artifacts..."
-	@rm -rf ecosystem/governance/artifacts/
-	@rm -rf ecosystem/governance/states/
-	@rm -rf ecosystem/governance/validation/
-	@rm -rf ecosystem/governance/verification/
-	@rm -rf ecosystem/governance/proofs/
-	@rm -rf ecosystem/governance/execution-logs/
-	@rm -rf ecosystem/governance/violations/
-	@rm -rf ecosystem/governance/fixes/
-	@find ecosystem/governance/ -name "*.log" -delete 2>/dev/null || true
-	@find ecosystem/governance/ -name "*-report-*.json" -delete 2>/dev/null || true
-	@echo "Cleanup completed"
+# Rollback deployment
+rollback:
+	@echo "Rolling back deployment..."
+	@./scripts/rollback.sh
+
+# Monitor resources
+monitor:
+	@echo "Monitoring system resources..."
+	@htop
+
+# Check dependencies
+check-deps:
+	@echo "Checking for outdated dependencies..."
+	@pip list --outdated
+
+# Update dependencies
+update-deps:
+	@echo "Updating dependencies..."
+	@pip install --upgrade -r requirements.txt
+	@pip freeze > requirements.txt
+
+# Run benchmarks
+benchmark:
+	@echo "Running benchmarks..."
+	@python3 ecosystem/scripts/benchmark.py
+
+# Generate metrics report
+metrics:
+	@echo "Generating metrics report..."
+	@python3 ecosystem/scripts/generate_metrics.py \
+		--output artifacts/reports/metrics/report.json
+
+# Health check
+health:
+	@echo "Checking system health..."
+	@python3 ecosystem/scripts/health_check.py
+
+# Print system status
+status:
+	@echo "System Status:"
+	@echo "================"
+	@echo "Git branch: $$(git branch --show-current)"
+	@echo "Python version: $$(python3 --version)"
+	@echo "Virtual env: $$(if [ -d venv ]; then echo "Active"; else echo "Not active"; fi)"
+	@echo "Last enforce: $$(ls -lt ecosystem/logs/audit/*.json 2>/dev/null | head -1 | awk '{print $$6, $$7, $$8}' || echo "Never")"

@@ -16,6 +16,7 @@
 Scans and categorizes technical debt across the repository
 目標：識別並優先處理168個技術債務項目，減少至84個
 """
+# MNGA-002: Import organization needs review
 import json
 import os
 import re

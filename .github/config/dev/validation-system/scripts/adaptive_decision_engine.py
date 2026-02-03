@@ -12,6 +12,14 @@ MachineNativeOps 驗證系統 v1.0.0
 此模組實現量子-經典混合驗證的決策邏輯，支持動態參數調整。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import copy
 import json
 import logging

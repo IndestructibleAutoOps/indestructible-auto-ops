@@ -9,6 +9,7 @@ Database Extractors Implementation
 GL-Layer: GL30-49 (Execution)
 Closure-Signal: artifact, manifest
 """
+# MNGA-002: Import organization needs review
 import json
 import os
 import psycopg2

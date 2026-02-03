@@ -10,6 +10,14 @@ System Governance Executor
 Executes all gl_platform_universe.governance files systematically and detects problems
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import yaml
 from pathlib import Path

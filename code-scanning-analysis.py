@@ -4,6 +4,7 @@ Code Scanning Analysis Tool
 Analyzes Python code for syntax errors and common issues
 """
 
+# MNGA-002: Import organization needs review
 import ast
 import os
 import sys

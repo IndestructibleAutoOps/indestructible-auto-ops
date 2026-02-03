@@ -7,6 +7,7 @@ Apply Meta-Governance to Ecosystem
 執行：語意分析 → 飄移檢測 → 標記注入 → 驗證
 """
 
+# MNGA-002: Import organization needs review
 import os
 import re
 import yaml

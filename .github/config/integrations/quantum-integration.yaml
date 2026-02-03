@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governed-configuration
@@ -10,6 +11,11 @@
 
 quantum_integration:
   version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
   enabled: false  # Default disabled until quantum backend is ready
   
   # Quantum Scheduler Endpoint

@@ -45,6 +45,11 @@ repos:
     hooks:
       - id: black
         language_version: python3.11
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
         args: ["--line-length=100"]
         exclude: ^(build/|dist/|\.eggs/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/|venv/)
 

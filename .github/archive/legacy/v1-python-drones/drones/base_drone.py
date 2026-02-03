@@ -11,6 +11,13 @@
 所有無人機的抽象基礎類別，定義共通介面和功能。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 from abc import ABC, abstractmethod
 from datetime import datetime

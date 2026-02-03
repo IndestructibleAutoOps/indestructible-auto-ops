@@ -8,6 +8,13 @@
 工具模組
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .helpers import (
     Colors,
     print_color,

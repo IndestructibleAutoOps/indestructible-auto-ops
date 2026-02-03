@@ -32,6 +32,11 @@ infrastructure:
     enabled: true
     name: "machine-native-ops"
     version: "1.28"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     endpoint: "PUBLIC"
     logging:
       types:

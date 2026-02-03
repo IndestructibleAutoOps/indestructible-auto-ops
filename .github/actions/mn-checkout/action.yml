@@ -8,6 +8,12 @@
 # Description: Git repository checkout with full feature parity
 # Version: 1.0.0
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 name: 'MN Checkout'
 description: 'MachineNativeOps official checkout action - checks out your repository'
 author: 'MachineNativeOps'

@@ -7,6 +7,13 @@
 #!/usr/bin/env python3
 # tools/build_module.py
 # Phase 1：建置單一 python wheel 模組（python -m build），輸出到 dist/artifacts/...
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import shutil
 import subprocess
 import sys

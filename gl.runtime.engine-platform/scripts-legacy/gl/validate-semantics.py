@@ -9,6 +9,7 @@
 GL Semantic Mapping Validator
 Validates semantic mapping for GL layers with actual implementation
 """
+# MNGA-002: Import organization needs review
 import argparse
 import sys
 import yaml

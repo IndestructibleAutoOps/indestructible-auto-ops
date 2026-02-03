@@ -12,6 +12,13 @@ SynergyMesh 島嶼協調器 (Island Orchestrator)
 對應 config/dev/automation/drone-coordinator.py
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 import sys
 from datetime import datetime

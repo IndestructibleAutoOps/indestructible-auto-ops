@@ -21,6 +21,7 @@ FHS Integration Validator
 4. 完整性檢查 (Integrity checks)
 5. 回滾驗證 (Rollback validation)
 """
+# MNGA-002: Import organization needs review
 import os
 import sys
 import json

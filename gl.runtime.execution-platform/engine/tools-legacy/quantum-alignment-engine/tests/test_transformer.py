@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
@@ -13,6 +14,7 @@
 """
 Unit tests for Quantum Code Alignment Engine
 """
+# MNGA-002: Import organization needs review
 from pathlib import Path
 import numpy as np
 import pytest

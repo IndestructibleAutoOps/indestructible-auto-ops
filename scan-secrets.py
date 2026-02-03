@@ -12,6 +12,13 @@
 Simple secret scanner to detect potential secrets in the codebase
 """
 # @GL-governed
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import re
 from pathlib import Path

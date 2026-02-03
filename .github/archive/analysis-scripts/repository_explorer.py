@@ -9,6 +9,14 @@
 儲存庫探索工具 - 系統性地掃描和分析儲存庫結構
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import os
 import json
 from pathlib import Path

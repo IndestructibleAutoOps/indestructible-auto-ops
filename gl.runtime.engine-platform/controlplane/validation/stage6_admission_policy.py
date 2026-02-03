@@ -9,6 +9,7 @@
 Supply Chain Verification - Stage 6: Admission Policy Gate
 This module handles admission policy validation (OPA/Kyverno).
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 import re

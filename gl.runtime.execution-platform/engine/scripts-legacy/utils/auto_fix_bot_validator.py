@@ -11,6 +11,7 @@ Validates auto-fix templates for correctness, multi-language support,
 and ensures no false positives or incorrect fixes.
 GL Unified Charter Activated - Governance Layer Validation
 """
+# MNGA-002: Import organization needs review
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple

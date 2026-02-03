@@ -9,6 +9,7 @@
 Machine-Native Health Check System
 Performs comprehensive health checks on repository components.
 """
+# MNGA-002: Import organization needs review
 import json
 import subprocess
 import sys

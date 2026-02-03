@@ -9,6 +9,7 @@
 Unit tests for Code Deduplicator
 Tests duplicate code detection functionality
 """
+# MNGA-002: Import organization needs review
 import json
 import os
 import sys

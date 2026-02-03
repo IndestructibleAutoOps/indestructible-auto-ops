@@ -15,6 +15,7 @@ Usage:
     python3 scripts/generate-autonomy-summary.py
     python3 scripts/generate-autonomy-summary.py --output docs/autonomy/AUTONOMY_SUMMARY.md
 """
+# MNGA-002: Import organization needs review
 import yaml
 import json
 import argparse

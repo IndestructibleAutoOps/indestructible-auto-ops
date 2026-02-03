@@ -13,6 +13,7 @@ GitHub Security.
 Usage:
     python3 convert-snyk-to-sarif.py <input_json> <output_sarif>
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 def _map_severity_to_level(severity: str) -> str:

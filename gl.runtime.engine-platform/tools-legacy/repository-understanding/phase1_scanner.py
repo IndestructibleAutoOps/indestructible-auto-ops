@@ -14,6 +14,7 @@
 """
 第一階段：儲存庫掃描和知識庫建立
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 import yaml

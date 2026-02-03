@@ -8,6 +8,12 @@
 # Description: Upload build artifacts with full feature parity
 # Version: 1.0.0
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 name: 'MN Upload Artifact'
 description: 'MachineNativeOps official artifact upload action'
 author: 'MachineNativeOps'

@@ -10,6 +10,13 @@ Script to merge branches with unmerged commits to main in a smart order.
 Uses topological sorting based on commit count and merge history.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 import sys
 from datetime import datetime

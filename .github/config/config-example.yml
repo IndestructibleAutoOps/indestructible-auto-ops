@@ -10,6 +10,12 @@
 # 核心功能配置
 # ============================================
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 core:
   linting: true      # 代碼檢查（建議始終啟用）
   testing: true      # 運行測試（建議始終啟用）

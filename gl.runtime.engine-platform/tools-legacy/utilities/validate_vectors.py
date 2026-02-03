@@ -15,6 +15,7 @@
 Test Vectors Validation Tool
 This script validates test vectors against their JSON schemas with SLSA provenance support.
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import sys

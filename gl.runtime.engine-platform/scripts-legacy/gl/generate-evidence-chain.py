@@ -9,6 +9,7 @@
 GL Evidence Chain Generator
 Generates immutable evidence chains for GL gl_platform_universe.gl_platform_universe.governance
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import hashlib

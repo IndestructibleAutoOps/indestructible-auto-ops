@@ -11,6 +11,7 @@ Relevance Tuning Engine
 GL-Layer: GL30-49 (Execution)
 Closure-Signal: artifact, manifest
 """
+# MNGA-002: Import organization needs review
 from typing import Dict, Any, List, Optional
 import logging
 from datetime import datetime

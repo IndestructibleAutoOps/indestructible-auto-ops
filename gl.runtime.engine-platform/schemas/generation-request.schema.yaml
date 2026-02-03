@@ -53,6 +53,11 @@ properties:
     pattern: "^[a-z0-9-]{2,30}$"
   
   version:
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     type: string
     description: "Version identifier"
     pattern: "^v?\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9]+)?$"

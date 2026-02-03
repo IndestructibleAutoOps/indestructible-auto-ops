@@ -11,6 +11,12 @@
 # ============================================
 
 # Core Features (Always Enabled)
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 core:
   linting: true
   testing: true

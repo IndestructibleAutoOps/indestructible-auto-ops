@@ -12,6 +12,14 @@
 GL 语义折叠引擎单元测试
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import pytest
 import numpy as np
 from unittest.mock import Mock, patch

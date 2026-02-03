@@ -8,6 +8,7 @@
 Test CI Error Analyzer Script
 Validates that the CI error analyzer correctly detects and categorizes errors.
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 import tempfile

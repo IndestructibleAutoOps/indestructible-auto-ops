@@ -29,6 +29,13 @@ Refactor Tools Package - 重構工具包
     python -m tools.refactor.update_indexes all
     python -m tools.refactor.validate_structure full
     # 程式化使用
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
     from tools.refactor import RefactorEngine, CognitiveEngine
     engine = RefactorEngine()
     result = engine.analyze("docs/refactor_playbooks")

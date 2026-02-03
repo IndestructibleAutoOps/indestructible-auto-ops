@@ -6,6 +6,11 @@
 # GL Unified Charter Activated
 
 apiVersion: v2
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 name: machine-native-ops
 description: Enterprise-grade MachineNativeOps platform for infrastructure automation
 type: application

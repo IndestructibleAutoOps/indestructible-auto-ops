@@ -9,6 +9,7 @@
 Supply Chain Verification - Stage 4: SBOM + Vulnerability/Secrets Scanning
 This module handles SBOM generation and security scanning.
 """
+# MNGA-002: Import organization needs review
 import hashlib
 import json
 import logging

@@ -14,6 +14,7 @@
 """
 第二階段：操作前的檢查機制
 """
+# MNGA-002: Import organization needs review
 import json
 from pathlib import Path
 from datetime import datetime

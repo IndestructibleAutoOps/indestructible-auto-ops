@@ -7,6 +7,7 @@
 """
 Smoke Tests for Configuration Management - Quick verification of config functionality
 """
+# MNGA-002: Import organization needs review
 import pytest
 import sys
 from pathlib import Path

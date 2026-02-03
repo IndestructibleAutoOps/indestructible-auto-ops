@@ -8,6 +8,12 @@
 # Default values for machine-native-ops
 # This is a YAML-formatted file.
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 global:
   # Project and environment settings
   project: machine-native-ops

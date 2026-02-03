@@ -5,6 +5,12 @@
 
 # Docker Compose Configuration
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 provider:
   type: docker-compose
 

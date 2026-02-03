@@ -9,6 +9,7 @@
 Module Registry Validator
 Validates module registry structure and dependencies
 """
+# MNGA-002: Import organization needs review
 import yaml
 import sys
 from pathlib import Path

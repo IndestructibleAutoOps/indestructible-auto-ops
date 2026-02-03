@@ -1,6 +1,7 @@
 # Development Platform Instance - Deployment Configuration
 # Semantic Anchor: CLOUDPLATFORMINSTANCE.DEV.DEPLOYMENT
 
+version: "1.0.0"
 deployment:
   strategy: rolling
   semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.STRATEGY

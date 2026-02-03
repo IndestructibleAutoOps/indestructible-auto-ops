@@ -9,6 +9,7 @@
 Machine-Native Code Deduplicator
 Identifies and reports duplicate code patterns for refactoring.
 """
+# MNGA-002: Import organization needs review
 import ast
 import hashlib
 import json

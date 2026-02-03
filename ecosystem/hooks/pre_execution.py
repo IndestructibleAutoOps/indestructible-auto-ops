@@ -14,6 +14,14 @@ GL Pre-Execution Hook
 用途: 確保所有操作在執行前都通過治理檢查
 """
 
+# MNGA-002: Import organization needs review
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 import json
 from pathlib import Path

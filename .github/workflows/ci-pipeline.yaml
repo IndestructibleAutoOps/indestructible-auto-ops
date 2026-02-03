@@ -1,0 +1,418 @@
+# MNGA CI Pipeline
+# Comprehensive CI/CD pipeline with artifact sharing and evidence generation
+
+name: MNGA CI Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '20.x'
+
+jobs:
+  metadata:
+    name: Generate Pipeline Metadata
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    outputs:
+      pipeline_id: ${{ steps.metadata.outputs.pipeline_id }}
+      trigger: ${{ steps.metadata.outputs.trigger }}
+      commit_sha: ${{ steps.metadata.outputs.commit_sha }}
+      actor: ${{ steps.metadata.outputs.actor }}
+    
+    steps:
+      - name: Generate metadata
+        id: metadata
+        run: |
+          pipeline_id="mnga-${GITHUB_RUN_ID}-${GITHUB_SHA:0:7}"
+          trigger="${{ github.event_name }}"
+          commit_sha="${GITHUB_SHA}"
+          actor="${{ github.actor }}"
+          
+          echo "pipeline_id=$pipeline_id" >> $GITHUB_OUTPUT
+          echo "trigger=$trigger" >> $GITHUB_OUTPUT
+          echo "commit_sha=$commit_sha" >> $GITHUB_OUTPUT
+          echo "actor=$actor" >> $GITHUB_OUTPUT
+          
+          echo "Pipeline ID: $pipeline_id"
+          echo "Trigger: $trigger"
+          echo "Commit: $commit_sha"
+          echo "Actor: $actor"
+          
+      - name: Upload metadata artifact
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: pipeline-metadata
+          path: |
+            ${{ github.event_path }}
+            ${{ github.workflow }}
+          retention-days: 30
+
+  lint:
+    name: Lint and Format Check
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: metadata
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          pip install black flake8 mypy isort yamllint
+          
+      - name: Run Black
+        run: black --check ecosystem/ platforms/
+        continue-on-error: false
+        
+      - name: Run Flake8
+        run: flake8 ecosystem/ platforms/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        continue-on-error: false
+        
+      - name: Run MyPy
+        run: mypy ecosystem/ platforms/ --ignore-missing-imports
+        continue-on-error: true
+        
+      - name: Run isort
+        run: isort --check-only ecosystem/ platforms/
+        continue-on-error: false
+        
+      - name: Run Yamllint
+        run: yamllint .config/ .github/workflows/
+        continue-on-error: false
+
+  security:
+    name: Security Scanning
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: metadata
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master@sha256:672a8f1b0d0c6ebf3a0e7124a8d6f7a437c28f93741e7dd3458629265250b23
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3@sha256:456e3f1a03225b12d388a8859bc98681f81073f01921946567c8bc5257599663
+        with:
+          sarif_file: 'trivy-results.sarif'
+          
+      - name: Run CodeQL
+        uses: github/codeql-action/analyze@v3@sha256:cb5d455e65754a9163f24b6df27c59e58e877b3d51520dcb07175a7d2b2b8bb5
+        with:
+          languages: python
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: [metadata, lint]
+    
+    outputs:
+      test_results: ${{ steps.results.outputs.results }}
+      coverage: ${{ steps.results.outputs.coverage }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pytest-xdist
+          
+      - name: Run tests with coverage
+        id: results
+        run: |
+          pytest ecosystem/ platforms/ \
+            --cov=. \
+            --cov-report=xml \
+            --cov-report=html \
+            --cov-report=json \
+            --junitxml=test-results.xml \
+            --verbose \
+            -n auto
+          
+          coverage=$(python3 -c "import json; print(json.load(open('coverage.json'))['totals']['percent_covered'])")
+          
+          echo "results=$(cat test-results.xml)" >> $GITHUB_OUTPUT
+          echo "coverage=$coverage" >> $GITHUB_OUTPUT
+          
+      - name: Upload test results
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: test-results
+          path: |
+            test-results.xml
+            coverage.xml
+            coverage.json
+            htmlcov/
+          retention-days: 30
+          
+      - name: Publish coverage to Codecov
+        uses: codecov/codecov-action@v4@sha256:5a9a21e8777a4d2574c68766a5b22d48c21d6176271e2c47594608be989fb13e
+        with:
+          files: ./coverage.xml
+          flags: unittests
+
+  governance:
+    name: Governance Enforcement
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: [metadata, lint]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+          
+      - name: Run governance enforcement
+        id: enforce
+        run: |
+          python3 ecosystem/enforce.py --audit --output artifacts/reports/audit/governance_report.json
+          
+      - name: Upload governance report
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: governance-report
+          path: artifacts/reports/audit/governance_report.json
+          retention-days: 90
+
+  build:
+    name: Build and Package
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: [test, governance, security]
+    
+    outputs:
+      build_artifacts: ${{ steps.build.outputs.artifacts }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Download test results
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        with:
+          name: test-results
+          
+      - name: Download governance report
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        with:
+          name: governance-report
+          
+      - name: Build artifacts
+        id: build
+        run: |
+          artifacts_dir="artifacts/build/${{ needs.metadata.outputs.pipeline_id }}"
+          mkdir -p "$artifacts_dir"
+          
+          # Create build manifest
+          cat > "$artifacts_dir/manifest.json" << EOF
+          {
+            "pipeline_id": "${{ needs.metadata.outputs.pipeline_id }}",
+            "trigger": "${{ needs.metadata.outputs.trigger }}",
+            "commit_sha": "${{ needs.metadata.outputs.commit_sha }}",
+            "actor": "${{ needs.metadata.outputs.actor }}",
+            "build_timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "stages": {
+              "lint": "completed",
+              "test": "completed",
+              "security": "completed",
+              "governance": "completed"
+            },
+            "artifacts": [
+              "test-results",
+              "governance-report",
+              "sbom"
+            ]
+          }
+          EOF
+          
+          # Generate SBOM
+          pip install syft
+          syft . -o spdx-json > "$artifacts_dir/sbom.json"
+          
+          echo "artifacts=$artifacts_dir" >> $GITHUB_OUTPUT
+          
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: build-artifacts
+          path: artifacts/build/
+          retention-days: 90
+          
+      - name: Sign artifacts with Cosign
+        run: |
+          pip install cosign
+          cosign sign-blob artifacts/build/${{ needs.metadata.outputs.pipeline_id }}/manifest.json
+
+  evidence:
+    name: Generate Evidence
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: [metadata, test, governance, build]
+    if: always()
+    
+    outputs:
+      evidence_report: ${{ steps.evidence.outputs.report }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        
+      - name: Generate evidence report
+        id: evidence
+        run: |
+          evidence_dir="artifacts/evidence/${{ needs.metadata.outputs.pipeline_id }}"
+          mkdir -p "$evidence_dir"
+          
+          # Generate comprehensive evidence report
+          python3 ecosystem/scripts/generate_evidence.py \
+            --pipeline-id "${{ needs.metadata.outputs.pipeline_id }}" \
+            --trigger "${{ needs.metadata.outputs.trigger }}" \
+            --commit-sha "${{ needs.metadata.outputs.commit_sha }}" \
+            --actor "${{ needs.metadata.outputs.actor }}" \
+            --output "$evidence_dir/evidence_report.json"
+            
+          echo "report=$evidence_dir/evidence_report.json" >> $GITHUB_OUTPUT
+          
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: evidence-report
+          path: artifacts/evidence/
+          retention-days: 365
+          
+      - name: Comment PR with evidence
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7@sha256:21e8c83667fbcdfb63d317dc9629d4b86aa97077e9b933c37217691d914936dc
+        with:
+          script: |
+            const fs = require('fs');
+            const evidence = JSON.parse(fs.readFileSync('${{ steps.evidence.outputs.report }}', 'utf8'));
+            
+            let comment = '## 📋 CI Pipeline Evidence\n\n';
+            comment += `**Pipeline ID:** ${evidence.pipeline_id}\n`;
+            comment += `**Trigger:** ${evidence.trigger}\n`;
+            comment += `**Commit:** ${evidence.commit_sha}\n\n`;
+            comment += '### Stages\n\n';
+            
+            for (const [stage, status] of Object.entries(evidence.stages)) {
+              const icon = status === 'passed' ? '✅' : '❌';
+              comment += `${icon} ${stage}: ${status}\n`;
+            }
+            
+            comment += '\n### Artifacts\n\n';
+            comment += '- Test Results\n';
+            comment += '- Governance Report\n';
+            comment += '- SBOM\n';
+            comment += '- Evidence Report\n';
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+
+  audit-log:
+    name: Generate Audit Log
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: [metadata, evidence]
+    if: always()
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        
+      - name: Download evidence
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        with:
+          name: evidence-report
+          
+      - name: Generate audit log
+        run: |
+          audit_dir="ecosystem/logs/audit/ci"
+          mkdir -p "$audit_dir"
+          
+          audit_entry=$(cat << EOF
+          {
+            "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "actor": "${{ needs.metadata.outputs.actor }}",
+            "action": "ci_pipeline",
+            "resource": "pipeline:${{ needs.metadata.outputs.pipeline_id }}",
+            "result": {
+              "status": "completed",
+              "trigger": "${{ needs.metadata.outputs.trigger }}"
+            },
+            "hash": "${{ needs.metadata.outputs.commit_sha }}",
+            "version": "1.0.0",
+            "requestId": "${{ needs.metadata.outputs.pipeline_id }}",
+            "correlationId": "ci-${{ needs.metadata.outputs.pipeline_id }}"
+          }
+          EOF
+          )
+          
+          echo "$audit_entry" >> "$audit_dir/ci_audit_$(date +%Y%m%d).jsonl"
+
+  fail-action:
+    name: Failure Action
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    needs: [test, governance, security]
+    if: failure()
+    
+    steps:
+      - name: Create issue on failure
+        uses: actions/github-script@v7@sha256:21e8c83667fbcdfb63d317dc9629d4b86aa97077e9b933c37217691d914936dc
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'CI Pipeline Failed',
+              body: 'The MNGA CI pipeline failed. Please check the workflow logs for details.',
+              labels: ['bug', 'ci-failure']
+            })

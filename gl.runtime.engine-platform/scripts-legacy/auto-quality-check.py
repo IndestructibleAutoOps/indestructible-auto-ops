@@ -11,6 +11,7 @@ Automated Code Quality Check Tool
 此腳本自動執行 PR-1-REVIEW-REPORT.md 中識別的所有檢查項目
 This script automatically performs all checks identified in PR-1-REVIEW-REPORT.md
 """
+# MNGA-002: Import organization needs review
 import subprocess
 import json
 from pathlib import Path

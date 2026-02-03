@@ -10,6 +10,7 @@ Supply Chain Verification - Main Coordinator
 This module is the main coordinator for the supply chain verification system.
 It integrates all stage verifiers and orchestrates the complete verification workflow.
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 from dataclasses import asdict

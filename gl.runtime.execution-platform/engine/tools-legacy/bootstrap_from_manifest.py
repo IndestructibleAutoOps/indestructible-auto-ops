@@ -12,6 +12,7 @@
 #
 #!/usr/bin/env python3
 """Bootstrap the repository structure based on island.bootstrap.stage0.yaml."""
+# MNGA-002: Import organization needs review
 from __future__ import annotations
 import argparse
 import os

@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # Quantum Platform 架構文檔
 
 ## 📋 概述

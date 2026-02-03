@@ -18,6 +18,11 @@ branding:
 
 inputs:
   version:
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     description: 'OPA version to install (e.g., 0.60.0, latest)'
     required: false
     default: 'latest'

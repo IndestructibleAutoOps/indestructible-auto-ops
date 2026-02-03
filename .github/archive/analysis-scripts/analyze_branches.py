@@ -10,6 +10,13 @@ Script to analyze all remote branches and identify those with unmerged commits
 that should be merged to main.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 
 

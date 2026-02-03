@@ -12,6 +12,13 @@
 對應 config/dev/automation/auto-pilot.js (Python 版本)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 from collections.abc import Callable
 from datetime import datetime

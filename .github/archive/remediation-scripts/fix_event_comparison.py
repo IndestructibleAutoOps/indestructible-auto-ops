@@ -7,6 +7,13 @@
 #!/usr/bin/env python3
 """Fix Event comparison issue in event_driven_system.py"""
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import re
 
 # Read the file

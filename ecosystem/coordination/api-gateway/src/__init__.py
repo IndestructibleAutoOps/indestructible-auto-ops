@@ -12,6 +12,13 @@ API 網關系統 - 統一API入口
 GL Governance Layer: GL10-29 (Operational Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .router import Router, Route, RouteMatchType
 from .authenticator import Authenticator, AuthToken
 from .rate_limiter import RateLimiter, TokenBucket, RateLimitConfig

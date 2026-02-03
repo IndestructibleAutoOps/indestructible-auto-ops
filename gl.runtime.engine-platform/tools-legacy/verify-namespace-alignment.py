@@ -24,6 +24,7 @@ Stages:
     production  - Production verification (e2e tests, security scan, load tests)
     all         - Run all stages (default)
 """
+# MNGA-002: Import organization needs review
 import subprocess
 import sys
 from pathlib import Path

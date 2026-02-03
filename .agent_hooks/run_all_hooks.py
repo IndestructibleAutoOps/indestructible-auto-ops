@@ -22,6 +22,13 @@ Usage:
 This will run all hooks in the `shutdown` directory.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import logging
 import os
 import subprocess

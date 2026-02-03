@@ -9,6 +9,7 @@ Usage:
     python3 ecosystem/verify_network_interaction.py --json
 """
 
+# MNGA-002: Import organization needs review
 import sys
 import os
 import json

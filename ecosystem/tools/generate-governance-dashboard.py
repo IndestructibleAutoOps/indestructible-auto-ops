@@ -10,6 +10,7 @@
 Language Governance Dashboard Generator
 Generates a dashboard showing semantic health and governance metrics
 """
+# MNGA-002: Import organization needs review
 import yaml
 import json
 import sys

@@ -15,6 +15,7 @@
 Secret Pattern Management Script
 動態管理 GitHub Secret Scanning 自定義模式
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import os

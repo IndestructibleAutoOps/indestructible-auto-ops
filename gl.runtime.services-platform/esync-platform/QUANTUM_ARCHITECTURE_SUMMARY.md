@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # ESync Platform - Quantum Architecture Implementation Summary
 
 ## 🚀 Mission Accomplished

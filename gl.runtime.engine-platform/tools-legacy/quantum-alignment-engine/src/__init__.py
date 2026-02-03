@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
@@ -13,6 +14,13 @@
 """Quantum Code Alignment Engine"""
 __version__ = "0.1.0-alpha"
 __author__ = "MachineNativeOps Team"
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from src.core import (
     CodeElement,
     EntanglementMapper,

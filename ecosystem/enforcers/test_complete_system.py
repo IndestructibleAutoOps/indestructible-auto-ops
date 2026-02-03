@@ -6,6 +6,13 @@
 #
 """GL治理執行層 - 完整系統測試"""
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 from pathlib import Path
 

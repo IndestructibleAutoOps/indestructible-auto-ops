@@ -23,6 +23,7 @@ MachineNativeOps 自動化目錄重構工具
 使用方法：
 python tools/automated_directory_restructure.py [--dry-run] [--phase PHASE]
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import logging

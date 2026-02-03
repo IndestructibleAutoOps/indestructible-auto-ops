@@ -17,6 +17,7 @@ Validate Architecture Governance Matrix
 Usage:
     python validate-gl_platform_universe.governance-matrix.py [--verbose]
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import os

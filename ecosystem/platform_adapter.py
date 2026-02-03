@@ -20,6 +20,13 @@ Features:
 - Shell command adaptation
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import platform
 import shutil

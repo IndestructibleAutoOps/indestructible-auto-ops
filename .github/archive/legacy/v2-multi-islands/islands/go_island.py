@@ -11,6 +11,13 @@ Go 島嶼 - 雲原生服務
 負責 API 網關、微服務網格、容器管理等雲原生任務。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 from datetime import datetime
 from typing import Any

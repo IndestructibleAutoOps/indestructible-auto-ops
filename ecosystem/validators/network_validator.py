@@ -4,6 +4,7 @@ MNGA Network and External Service Validator
 內網+外網交互驗證系統
 """
 
+# MNGA-002: Import organization needs review
 import socket
 import urllib.request
 import urllib.error

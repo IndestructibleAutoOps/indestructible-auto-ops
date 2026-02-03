@@ -27,6 +27,7 @@ Purpose:
     --codeql-reports codeql-results/ \
     --output ai-refactor-suggestions.md
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import os

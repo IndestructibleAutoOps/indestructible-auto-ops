@@ -23,6 +23,7 @@ Exit codes:
   0 -> all checks passed
   1 -> one or more checks failed
 """
+# MNGA-002: Import organization needs review
 from __future__ import annotations
 import argparse
 import json

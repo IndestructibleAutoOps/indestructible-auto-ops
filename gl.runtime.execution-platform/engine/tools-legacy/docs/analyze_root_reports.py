@@ -22,6 +22,7 @@ Usage:
     --json-output docs/reports-analysis.json
   python tools/docs/analyze_root_reports.py --help
 """
+# MNGA-002: Import organization needs review
 from __future__ import annotations
 import argparse
 import json

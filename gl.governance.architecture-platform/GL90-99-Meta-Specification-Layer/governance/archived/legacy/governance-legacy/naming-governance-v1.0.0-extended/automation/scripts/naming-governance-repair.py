@@ -18,6 +18,14 @@ MachineNativeOps 命名治理自動修復腳本
 5. 審計日誌記錄
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import logging

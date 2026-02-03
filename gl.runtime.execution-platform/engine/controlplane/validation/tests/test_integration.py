@@ -8,6 +8,7 @@
 Integration tests for the complete supply chain verification system.
 Tests the interaction between all components and the complete verification workflow.
 """
+# MNGA-002: Import organization needs review
 import unittest
 import tempfile  # noqa: E402
 import shutil  # noqa: E402

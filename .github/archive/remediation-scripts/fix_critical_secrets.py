@@ -9,6 +9,13 @@
 Fix CRITICAL hardcoded secrets by replacing with environment variables.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import re
 from pathlib import Path
 

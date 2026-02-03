@@ -12,6 +12,13 @@ Semantic Parameterization Engine
 Implements queryable, referencable, composable semantic API
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from typing import Dict, Any, List, Optional, Set
 from dataclasses import dataclass
 

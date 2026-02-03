@@ -9,6 +9,7 @@
 GL Risk Assessment Generator
 Generates risk assessments for GL layers
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 from pathlib import Path

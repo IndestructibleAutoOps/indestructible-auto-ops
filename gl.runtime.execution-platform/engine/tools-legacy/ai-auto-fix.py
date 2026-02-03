@@ -27,6 +27,7 @@ Purpose:
     --branch-name ai-auto-fix-20250106 \
     --output-dir auto-fix-patches/
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import sys

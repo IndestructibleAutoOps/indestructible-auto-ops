@@ -15,6 +15,7 @@
 Machine-Native Governance Agent
 A machine-executable agent that reads gl_platform_universe.governance-manifest.yaml and performs automated gl_platform_universe.governance tasks.
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 import sys

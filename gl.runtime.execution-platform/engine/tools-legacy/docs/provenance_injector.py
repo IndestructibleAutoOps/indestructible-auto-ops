@@ -21,6 +21,7 @@ Usage:
     python tools/docs/provenance_injector.py --generate-sbom
     python tools/docs/provenance_injector.py --sign --key-path /path/to/key
 """
+# MNGA-002: Import organization needs review
 import argparse
 import hashlib
 import json

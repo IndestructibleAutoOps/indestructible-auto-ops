@@ -4,6 +4,7 @@ GL Boundary Checker Tool
 Enforces directory boundary rules across the project
 """
 
+# MNGA-002: Import organization needs review
 import os
 import sys
 import re

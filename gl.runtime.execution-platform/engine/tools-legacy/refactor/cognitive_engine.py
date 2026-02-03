@@ -20,6 +20,7 @@ Cognitive Engine - 認知推理引擎
 4. 整合層 (Integration): 整合推理結果生成決策
 Version: 1.0.0
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 from dataclasses import asdict, dataclass, field

@@ -109,6 +109,11 @@ body:
       placeholder: |
         - OS: [e.g., Ubuntu 22.04, macOS 14.0, Windows 11]
         - Node.js version: [e.g., 18.19.0]
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
         - npm version: [e.g., 10.2.3]
         - Package version: [e.g., 1.0.0]
       render: markdown

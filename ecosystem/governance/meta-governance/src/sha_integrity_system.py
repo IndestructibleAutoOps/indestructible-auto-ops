@@ -19,6 +19,14 @@ SHA完整性治理系統 - 多平台並行環境
 Standards: Blockchain-Grade + Quantum-Resistant
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import hashlib
 import hmac
 import json

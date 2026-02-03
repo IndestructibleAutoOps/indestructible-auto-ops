@@ -10,6 +10,13 @@ GL Unified Charter - Comprehensive Workflow Cleanup & Fixer
 Identifies and fixes ALL workflow issues including misclassified files
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import re
 from pathlib import Path
 import json

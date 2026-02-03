@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# @GL-layer: GL60-80
+# @GL-governed
 """
 GL Content-Based Migration System
 ==================================
@@ -12,6 +14,7 @@ Critical Features:
 - Validation before execution
 """
 
+# MNGA-002: Import organization needs review
 import os
 import re
 import json

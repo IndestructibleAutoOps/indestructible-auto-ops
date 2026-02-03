@@ -11,6 +11,13 @@ Python 島嶼 - AI 與數據科學
 負責 AI 代碼助手、數據分析、機器學習管道等任務。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 import sys
 from datetime import datetime

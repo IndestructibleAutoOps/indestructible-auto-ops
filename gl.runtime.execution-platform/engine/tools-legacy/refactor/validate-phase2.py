@@ -17,6 +17,7 @@ Validates that all Phase 2 (Integration) deliverables are present and correctly 
 Usage:
     python3 tools/refactor/validate-phase2.py --deliverables-path <path>
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import sys

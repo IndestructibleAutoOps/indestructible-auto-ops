@@ -15,6 +15,7 @@
 Real Module Launcher for Bootstrap Runner
 Replaces simulation with actual module startup and management
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 import os

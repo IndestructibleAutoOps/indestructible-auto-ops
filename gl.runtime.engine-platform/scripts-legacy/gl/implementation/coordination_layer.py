@@ -12,6 +12,7 @@ Coordinates all GL core architecture components:
 - Quantum Validator
 - Reconciliation Engine
 """
+# MNGA-002: Import organization needs review
 from typing import Dict, Any, Optional
 from datetime import datetime
 import json

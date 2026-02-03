@@ -14,6 +14,14 @@ that needs documentation, based on the comprehensive analysis.
 SECURITY NOTE: This is a code analysis and remediation tool.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 from pathlib import Path
 from typing import Dict, List

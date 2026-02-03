@@ -9,6 +9,7 @@
 Supply Chain Verification - Stage 7: Runtime Monitoring & Traceability
 This module handles runtime monitoring and audit log collection.
 """
+# MNGA-002: Import organization needs review
 import hashlib
 import json
 import logging

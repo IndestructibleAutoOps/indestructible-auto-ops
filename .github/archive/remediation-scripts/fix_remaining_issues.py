@@ -21,6 +21,14 @@ This script addresses the remaining 866 low-severity issues:
 - 22 missing docstrings
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import ast
 import re
 import subprocess

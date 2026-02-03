@@ -22,6 +22,7 @@ MachineNativeOps 目錄重構驗證工具
 使用方法：
 python tools/validate_restructure.py [--detailed] [--fix-imports]
 """
+# MNGA-002: Import organization needs review
 import argparse
 import ast
 import json

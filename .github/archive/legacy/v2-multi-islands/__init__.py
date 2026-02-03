@@ -16,6 +16,13 @@ __author__ = "SynergyMesh Team"
 # 使用延遲導入以避免循環依賴
 
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 def get_islands():
     """取得島嶼類別"""
     from .islands import (

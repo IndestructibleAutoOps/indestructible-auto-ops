@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# @GL-layer: GL60-80
+# @GL-governed
 """
 GL Naming Validator - GL 前綴使用原則驗證工具
 """

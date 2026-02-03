@@ -11,6 +11,14 @@ GL事实验证管道执行脚本
 用途: 执行三层验证管道，生成基于可验证事实的报告
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import yaml
 import hashlib
 import json

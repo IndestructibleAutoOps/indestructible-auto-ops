@@ -9,6 +9,12 @@
 # 用於監控 SynergyMesh 平台的所有服務和指標
 # ============================================================================
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 global:
   scrape_interval: 15s      # 預設抓取間隔
   evaluation_interval: 15s  # 預設規則評估間隔

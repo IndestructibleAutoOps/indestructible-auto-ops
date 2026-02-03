@@ -21,6 +21,7 @@ Usage:
     python tools/docs/scan_repo_generate_index.py --output docs/generated-index.yaml
     python tools/docs/scan_repo_generate_index.py --dry-run
 """
+# MNGA-002: Import organization needs review
 import argparse
 import hashlib
 import json

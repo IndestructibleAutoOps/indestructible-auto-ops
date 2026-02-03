@@ -12,6 +12,14 @@ Features:
 - Context tracking and logging
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 from pathlib import Path
 from typing import Dict, List, Optional, Any

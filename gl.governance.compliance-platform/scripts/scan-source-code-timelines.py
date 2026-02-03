@@ -14,6 +14,14 @@
 專注於真正需要修正的時間線，排除生成的文件和元數據
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import os
 import re
 import json

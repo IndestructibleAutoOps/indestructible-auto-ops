@@ -25,6 +25,7 @@ Usage:
     python path_fixer.py --target <dir> --fix
     python path_fixer.py --target <dir> --fix --backup
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import os

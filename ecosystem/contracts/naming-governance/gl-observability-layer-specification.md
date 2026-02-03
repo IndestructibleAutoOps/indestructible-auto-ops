@@ -1,3 +1,5 @@
+# @GL-layer: GL50-59
+# @GL-governed
 # GL Observability Layer Specification
 
 ## 8. 可觀測性層（Observability Layer）

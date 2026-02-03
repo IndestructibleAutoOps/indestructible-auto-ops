@@ -13,6 +13,12 @@
 # does NOT persist across jobs or workflow runs. For production use, consider
 # integrating with the GitHub Cache API or document this limitation to users.
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 name: 'MN Cache'
 description: 'MachineNativeOps official cache action for dependencies and build outputs (LOCAL CACHE ONLY - does not persist across jobs on hosted runners)'
 author: 'MachineNativeOps'

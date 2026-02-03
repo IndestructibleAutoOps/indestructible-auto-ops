@@ -15,6 +15,7 @@
 DIRECTORY.md 驗證工具
 此工具驗證 DIRECTORY.md 文檔的完整性、準確性和質量。
 """
+# MNGA-002: Import organization needs review
 import json
 import os
 import re

@@ -1,3 +1,5 @@
+# @GL-layer: GL60-80
+# @GL-governed
 # GL 命名驗證工具使用範例
 
 ## 概述

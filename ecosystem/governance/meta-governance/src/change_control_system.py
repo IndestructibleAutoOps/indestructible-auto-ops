@@ -14,6 +14,14 @@ Strict Change Control System
 標準: Aviation Airworthiness-Grade
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import hashlib
 import json
 from typing import Dict, List, Optional, Tuple

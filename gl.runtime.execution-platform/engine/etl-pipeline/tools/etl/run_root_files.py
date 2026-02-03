@@ -10,6 +10,7 @@ ETL Pipeline Root File Runner
 GL-Layer: GL30-49 (Execution)
 Closure-Signal: execution
 """
+# MNGA-002: Import organization needs review
 from __future__ import annotations
 import json
 import os

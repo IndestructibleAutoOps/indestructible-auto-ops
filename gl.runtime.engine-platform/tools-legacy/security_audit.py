@@ -16,6 +16,7 @@ Security Audit Tool
 This script performs a comprehensive security audit of the codebase,
 analyzing MD5 usage, ast.literal_eval() usage, and other security concerns.
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 from dataclasses import dataclass

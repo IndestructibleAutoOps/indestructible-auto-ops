@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 #
 # @GL-governed
 # @GL-layer: gl_platform_universe.gl_platform_universe.governance
@@ -9,6 +10,7 @@
 GL Quantum Validation System
 Validates consistency, reversibility, reproducibility, and provability
 """
+# MNGA-002: Import organization needs review
 import argparse
 import sys
 import json

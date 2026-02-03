@@ -9,6 +9,7 @@
 Autonomy Level Classification Script
 Classifies modules and components according to L1-L5 autonomy framework
 """
+# MNGA-002: Import organization needs review
 import yaml
 import json
 import argparse

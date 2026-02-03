@@ -13,6 +13,14 @@ Main engine integrating folding, parameterization, indexing, and inference
 Phase 6: Semantic Engine Integration (語意引擎化)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 from typing import Dict, Any, List, Optional
 import yaml
 

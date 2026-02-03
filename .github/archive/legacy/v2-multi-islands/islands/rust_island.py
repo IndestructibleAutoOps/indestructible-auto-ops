@@ -11,6 +11,13 @@ Rust 島嶼 - 高性能核心
 負責性能監控、安全守護、數據管道等高性能任務。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from datetime import datetime
 from typing import Any
 

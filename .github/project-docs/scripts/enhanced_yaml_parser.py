@@ -10,6 +10,14 @@ Enhanced YAML Parser
 Handles both single and multi-document YAML files with comprehensive validation
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import yaml
 import json
 from pathlib import Path

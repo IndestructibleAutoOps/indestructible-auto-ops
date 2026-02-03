@@ -4,6 +4,7 @@ Automated Code Scanning Issue Fixer
 Fixes syntax errors and code quality issues found in the repository
 """
 
+# MNGA-002: Import organization needs review
 import json
 import re
 from pathlib import Path

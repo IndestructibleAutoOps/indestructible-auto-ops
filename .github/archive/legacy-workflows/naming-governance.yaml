@@ -90,6 +90,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       config_version: ${{ steps.config.outputs.version }}
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
       should_proceed: ${{ steps.decision.outputs.proceed }}
       affected_components: ${{ steps.changes.outputs.components }}
     steps:

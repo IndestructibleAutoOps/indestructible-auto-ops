@@ -1,3 +1,10 @@
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 #
 # @GL-governed
 # @GL-layer: gl_platform_universe.gl_platform_universe.governance

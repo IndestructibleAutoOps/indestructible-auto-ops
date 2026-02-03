@@ -11,6 +11,7 @@ GL Consolidation Plan Generator
 This script analyzes the current GL structure and generates a consolidation plan
 based on the GL Unified Naming Charter.
 """
+# MNGA-002: Import organization needs review
 import json
 import yaml
 from pathlib import Path

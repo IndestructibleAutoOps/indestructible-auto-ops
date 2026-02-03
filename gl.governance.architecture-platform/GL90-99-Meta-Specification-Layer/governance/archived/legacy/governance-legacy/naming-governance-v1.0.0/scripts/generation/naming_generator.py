@@ -10,6 +10,13 @@
 版本: v1.0.0
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import argparse
 import re
 import sys

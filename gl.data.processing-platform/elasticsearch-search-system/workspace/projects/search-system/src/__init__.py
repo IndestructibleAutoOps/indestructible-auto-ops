@@ -14,6 +14,13 @@ Closure-Signal: artifact
 __version__ = "1.0.0"
 __author__ = "Data Engineering Team"
 __description__ = "Comprehensive Elasticsearch search indexing system"
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .elasticsearch.client import EsClientManager
 from .indexing.bulk_indexer import BulkIndexer
 from .indexing.incremental_updater import IncrementalUpdater

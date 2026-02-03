@@ -12,6 +12,14 @@ MachineNativeOps 驗證系統 v1.0.0
 此模組管理驗證系統的緊急降級和恢復流程。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import logging
 from dataclasses import dataclass

@@ -9,6 +9,13 @@
 平台分析生成器 - 自動生成所有平台的詳細分析
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import yaml
 import json
 

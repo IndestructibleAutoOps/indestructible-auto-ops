@@ -9,6 +9,7 @@
 Machine-Native Configuration Validator
 Validates YAML/JSON configurations against unified schema.
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 import sys

@@ -4,6 +4,13 @@
 # @GL-semantic: batch-gl-marker-addition-tool
 # @GL-audit-trail: engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import sys
 from pathlib import Path

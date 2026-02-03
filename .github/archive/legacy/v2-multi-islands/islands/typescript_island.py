@@ -11,6 +11,13 @@ TypeScript 島嶼 - 全棧開發
 負責 Web 儀表板、API 客戶端生成、實時監控等任務。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 from datetime import datetime
 from typing import Any

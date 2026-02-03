@@ -1,7 +1,14 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governed-configuration
 # @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
 
 name: Quantum-Enhanced Naming Governance
 on: [push, pull_request]

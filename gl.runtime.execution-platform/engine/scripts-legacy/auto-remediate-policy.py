@@ -19,6 +19,7 @@ Usage:
     python3 scripts/auto-remediate-policy.py --policy semantic --suggest
     python3 scripts/auto-remediate-policy.py --all --report
 """
+# MNGA-002: Import organization needs review
 import re
 import sys
 import yaml

@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 #
 # @GL-governed
 # @GL-layer: gl_platform_universe.gl_platform_universe.governance
@@ -11,6 +12,7 @@ Implements quantum-classical hybrid validation system:
 - 3 quantum algorithms (16-24 qubits each)
 - Automatic fallback to classical algorithms (<200ms)
 """
+# MNGA-002: Import organization needs review
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Any, Optional, Tuple

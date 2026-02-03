@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
@@ -14,6 +15,14 @@ GL Quantum Artifact Converter - DOCX to YAML
 Converts DOCX documents to structured YAML artifacts
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import os
 import sys
 import yaml

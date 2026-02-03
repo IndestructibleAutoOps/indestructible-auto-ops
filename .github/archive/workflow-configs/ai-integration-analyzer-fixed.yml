@@ -39,6 +39,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
       
       - name: Install dependencies
         run: |

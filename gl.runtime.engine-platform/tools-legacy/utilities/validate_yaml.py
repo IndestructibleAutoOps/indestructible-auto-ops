@@ -16,6 +16,7 @@ YAML and Schema Validation Tool
 This script validates all YAML files in the repository against their schemas
 and ensures test vectors are correct.
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 from pathlib import Path

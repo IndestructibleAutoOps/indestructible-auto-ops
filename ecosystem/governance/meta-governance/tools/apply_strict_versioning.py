@@ -13,6 +13,14 @@ Apply Strict Versioning to Ecosystem
 執行：版本標註注入 → 依賴聲明 → 兼容性驗證 → 審計追蹤
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import os
 import re
 import json

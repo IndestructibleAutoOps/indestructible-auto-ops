@@ -1,3 +1,5 @@
+# @GL-layer: GL60-80
+# @GL-governed
 """
 GL Governance Compliance - Formats Module
 
@@ -5,6 +7,7 @@ This module provides GL format layer implementation including
 YAML, JSON, K8s, Helm, GitOps, Terraform, OpenAPI, Docker, Markdown, and Rego.
 """
 
+# MNGA-002: Import organization needs review
 from .gl_yaml import GLYAML
 from .gl_json import GLJSON
 from .gl_k8s import GLK8s

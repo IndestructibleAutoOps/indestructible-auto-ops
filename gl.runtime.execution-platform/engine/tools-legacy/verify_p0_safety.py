@@ -21,6 +21,7 @@ Verifies all P0 critical safety and monitoring items
 4. 測試覆蓋率目標
 5. CI/CD 關鍵路徑
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 from dataclasses import dataclass, field

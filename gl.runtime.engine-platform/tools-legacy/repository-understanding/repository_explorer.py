@@ -14,6 +14,7 @@
 """
 儲存庫探索工具 - 系統性地掃描和分析儲存庫結構
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 from pathlib import Path

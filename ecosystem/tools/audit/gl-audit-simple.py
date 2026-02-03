@@ -6,6 +6,7 @@ Quick validation of GL gl_platform_universe.gl_platform_universe.governance mark
 GL Unified Charter Activated ✓
 """
 
+# MNGA-002: Import organization needs review
 import json
 import yaml
 from pathlib import Path

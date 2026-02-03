@@ -1,3 +1,5 @@
+# @GL-layer: GL60-80
+# @GL-governed
 """
 GL Contract Implementation
 

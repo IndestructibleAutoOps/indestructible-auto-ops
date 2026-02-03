@@ -11,6 +11,13 @@ Service Registration Example
 示例：如何註冊服務到平台
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 from pathlib import Path
 

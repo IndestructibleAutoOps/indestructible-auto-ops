@@ -26,6 +26,13 @@ Future engines (planned):
 __version__ = "1.0.0"
 __author__ = "SynergyMesh"
 # Lazy loading to avoid circular dependencies
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 def __getattr__(name):
     if name == "RefactorAutomationEngine":
         from .refactor_automation_engine import RefactorAutomationEngine
