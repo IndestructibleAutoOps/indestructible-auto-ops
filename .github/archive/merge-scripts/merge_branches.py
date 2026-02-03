@@ -10,6 +10,13 @@ Automated Branch Merge Script
 Merges all remote branches into main with conflict resolution
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 import sys
 from datetime import datetime

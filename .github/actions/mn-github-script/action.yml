@@ -67,6 +67,11 @@ runs:
         fi
 
         echo "Node.js version: $(node --version)"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 
     - name: Create Script Runner
       id: prepare

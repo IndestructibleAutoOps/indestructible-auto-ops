@@ -14,6 +14,7 @@
 """
 第三階段：視覺化與查詢系統
 """
+# MNGA-002: Import organization needs review
 import json
 from collections import defaultdict
 from datetime import datetime

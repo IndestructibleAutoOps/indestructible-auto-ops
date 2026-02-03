@@ -5,6 +5,13 @@
 #
 # GL Unified Charter Activated
 #!/usr/bin/env python3
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import json
 
 with open('security_audit_week2.json') as f:

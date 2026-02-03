@@ -13,6 +13,13 @@ GL API Gateway Rate Limiter
 GL Governance Layer: GL10-29 (Operational Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import time
 import threading
 from typing import Dict, Optional, Any, Tuple

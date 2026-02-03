@@ -20,6 +20,7 @@ Validation Automation Engine - 驗證全自動化引擎
 - 自動修復發現的問題
 Version: 1.0.0
 """
+# MNGA-002: Import organization needs review
 import re
 import sys
 from pathlib import Path

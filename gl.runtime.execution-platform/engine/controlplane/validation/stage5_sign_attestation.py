@@ -9,6 +9,7 @@
 Supply Chain Verification - Stage 5: Signature and Attestation
 This module handles signature verification and attestation generation.
 """
+# MNGA-002: Import organization needs review
 import base64
 import hashlib
 import json

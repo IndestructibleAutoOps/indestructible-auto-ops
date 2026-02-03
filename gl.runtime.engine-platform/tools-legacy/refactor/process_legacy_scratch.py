@@ -25,6 +25,7 @@ Usage:
     python process_legacy_scratch.py batch --all
 Version: 1.0.0
 """
+# MNGA-002: Import organization needs review
 import argparse
 import hashlib
 import re

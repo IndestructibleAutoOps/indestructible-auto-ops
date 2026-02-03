@@ -5,6 +5,7 @@
 
 # Kubernetes Staging Environment Configuration
 
+version: "1.0.0"
 provider:
   type: kubernetes
   environment: staging

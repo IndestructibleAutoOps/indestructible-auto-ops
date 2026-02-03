@@ -20,6 +20,14 @@ This script analyzes and fixes eval() usage by:
 3. Adding security warnings for eval() that cannot be replaced
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import ast
 import json
 import re

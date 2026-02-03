@@ -33,6 +33,13 @@ Version: 1.0.0
 """
 __version__ = "1.0.0"
 __author__ = "SynergyMesh"
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .engine_base import BaseEngine, EngineConfig, EngineState

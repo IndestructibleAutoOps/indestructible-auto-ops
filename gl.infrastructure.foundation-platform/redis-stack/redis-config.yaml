@@ -22,6 +22,12 @@
 # -----------------------------------------------------------------------------
 # Redis Configuration
 # -----------------------------------------------------------------------------
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 redis:
   host: ${REDIS_HOST:-localhost}
   port: ${REDIS_PORT:-6379}

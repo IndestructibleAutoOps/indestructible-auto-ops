@@ -12,6 +12,14 @@
 # Production-grade Zero Residue Platform Deployment
 # Version: 3.0.0
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import os
 import sys
 import subprocess

@@ -11,6 +11,13 @@ SynergyMesh 島嶼配置載入器
 此模組負責從 island-control.yml 或 drone-config.yml 載入配置。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from pathlib import Path
 from typing import Any, Optional
 

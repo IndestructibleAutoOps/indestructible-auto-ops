@@ -10,6 +10,13 @@
 包含所有語言島嶼的實作。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .base_island import BaseIsland, IslandStatus
 from .go_island import GoIsland
 from .java_island import JavaIsland

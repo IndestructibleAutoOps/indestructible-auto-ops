@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
@@ -7,6 +8,12 @@
 # GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
 # GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
 
 name: GL Quantum Automated Deployment
 on:

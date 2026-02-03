@@ -26,6 +26,7 @@ generate_evolution_report.py
 依賴：
   - PyYAML: pip install pyyaml
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 from datetime import UTC, datetime

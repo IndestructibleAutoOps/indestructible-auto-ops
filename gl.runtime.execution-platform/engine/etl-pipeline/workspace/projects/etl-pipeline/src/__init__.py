@@ -12,6 +12,13 @@ Closure-Signal: artifact
 __version__ = "1.0.0"
 __author__ = "Data Engineering Team"
 __description__ = "Comprehensive ETL pipeline with data synchronization service"
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .extractors.base_extractor import BaseExtractor
 from .extractors.database_extractors import PostgresExtractor, MySQLExtractor, MongoExtractor
 from .extractors.api_extractors import RestAPIExtractor, GraphQLExtractor

@@ -26,6 +26,7 @@ Outputs:
   - apps/web/public/data/migration-flow.json (for web dashboard)
   - docs/MIGRATION_FLOW.mmd (Mermaid visualization)
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 from collections import defaultdict

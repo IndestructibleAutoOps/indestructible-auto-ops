@@ -13,6 +13,14 @@ GL 语义折叠引擎核心实现
 将语义规范折叠为可计算的多维表示
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 from typing import Dict, List, Any, Optional
 import numpy as np
 from dataclasses import dataclass

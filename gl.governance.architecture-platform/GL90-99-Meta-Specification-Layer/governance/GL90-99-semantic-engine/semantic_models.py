@@ -12,6 +12,14 @@ Semantic Core Models
 Defines the fundamental data structures for the Semantic Core Engine
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional, Set
 from enum import Enum

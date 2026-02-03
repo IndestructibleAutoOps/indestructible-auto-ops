@@ -10,6 +10,13 @@
 在每次工作中自動偵測並維護儲存庫理解系統
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import time
 import threading
 from pathlib import Path

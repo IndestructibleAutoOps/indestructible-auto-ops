@@ -11,6 +11,14 @@
 負責不同語言島嶼之間的通信和數據轉換。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import subprocess
 from datetime import datetime

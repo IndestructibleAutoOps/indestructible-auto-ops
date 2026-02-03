@@ -20,6 +20,7 @@ Usage:
     python tools/docs/pr_comment_summary.py --run-id 12345
     python tools/docs/pr_comment_summary.py --input results.json
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import os

@@ -15,6 +15,14 @@ Author: MNO AI Agent
 Date: 2025-02-20
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import re
 import shutil
 from pathlib import Path

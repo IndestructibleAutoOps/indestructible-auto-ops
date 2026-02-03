@@ -12,6 +12,7 @@ Full Governance Integration - Engineering Mode
 5. 完整驗證
 """
 
+# MNGA-002: Import organization needs review
 import os
 import sys
 import re

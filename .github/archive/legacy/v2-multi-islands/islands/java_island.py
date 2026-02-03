@@ -11,6 +11,13 @@ Java 島嶼 - 企業級服務
 負責企業整合、消息隊列管理、批處理等企業級任務。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 from datetime import datetime
 from typing import Any

@@ -9,6 +9,7 @@ Base Synchronization Service
 GL-Layer: GL30-49 (Execution)
 Closure-Signal: artifact, manifest
 """
+# MNGA-002: Import organization needs review
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Optional
 import logging

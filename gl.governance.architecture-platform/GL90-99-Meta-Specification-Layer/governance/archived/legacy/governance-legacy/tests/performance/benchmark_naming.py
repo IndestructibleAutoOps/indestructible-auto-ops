@@ -9,6 +9,13 @@ Performance benchmarks for naming gl_platform_universe.governance
 Measures performance of naming operations
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import statistics
 import time
 

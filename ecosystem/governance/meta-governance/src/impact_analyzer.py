@@ -13,6 +13,13 @@ Impact Analyzer
 智能分析版本變更對下游的影響鏈路
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from typing import Dict, List, Set, Tuple, Optional
 from dataclasses import dataclass, field
 from datetime import datetime

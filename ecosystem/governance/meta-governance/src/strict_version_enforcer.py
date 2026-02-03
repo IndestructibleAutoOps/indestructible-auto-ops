@@ -14,6 +14,13 @@ Standards: DO-178C, ISO 9001, CCAR-21/R3
 Enforcement Level: STRICT
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import re
 import hashlib
 from typing import Dict, List, Optional, Tuple

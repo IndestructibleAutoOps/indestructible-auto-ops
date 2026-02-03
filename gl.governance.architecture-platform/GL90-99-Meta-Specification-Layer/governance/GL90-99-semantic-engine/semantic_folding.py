@@ -12,6 +12,14 @@ Semantic Folding Engine
 Transforms YAML semantic specifications into computable semantic nodes
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import yaml
 from typing import Dict, Any, List, Optional
 import numpy as np

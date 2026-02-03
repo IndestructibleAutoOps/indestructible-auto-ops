@@ -11,6 +11,12 @@
 # ============================================================================
 # Enables CIS 1.29 benchmark compliance
 # Reference: https://www.cisecurity.org/benchmark/kubernetes
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 profile: cis-1.29
 
 # ============================================================================

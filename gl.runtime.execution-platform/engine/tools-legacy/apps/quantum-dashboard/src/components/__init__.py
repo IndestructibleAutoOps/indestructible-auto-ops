@@ -1,3 +1,11 @@
+# @GL-layer: GQS-L0
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools

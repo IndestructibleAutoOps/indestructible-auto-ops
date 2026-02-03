@@ -6,6 +6,12 @@
 # Prometheus Alert Rules for GitHub Security
 # 定義 GitHub Advanced Security 的告警規則
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 groups:
   - name: github_security_alerts
     interval: 30s

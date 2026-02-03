@@ -21,6 +21,14 @@ MachineNativeOps 命名治理遷移腳本
 8. 遷移審計與報告
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import argparse
 import concurrent.futures
 import json

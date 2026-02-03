@@ -17,6 +17,13 @@ SynergyMesh 主協調器 (Drone Coordinator)
 - 健康監控
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import argparse
 import subprocess
 import sys

@@ -14,6 +14,13 @@ This script intelligently handles eval() usage by:
 3. Documenting context and rationale
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import re
 from pathlib import Path
 from typing import List, Tuple

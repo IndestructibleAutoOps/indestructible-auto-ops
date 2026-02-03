@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: test
@@ -27,6 +28,11 @@ jobs:
         uses: actions/setup-python@b55c28f9c9bbb6369b725b2853c1275c637c5f1b
         with:
           python-version: '3.11'
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
           cache: 'pip'
       - name: Install dependencies
         run: pip install -r requirements.txt && pip install pytest pytest-cov

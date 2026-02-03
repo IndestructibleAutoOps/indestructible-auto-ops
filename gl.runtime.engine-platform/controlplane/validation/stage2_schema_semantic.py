@@ -9,6 +9,7 @@
 Supply Chain Verification - Stage 2: Schema/Semantic Validation
 This module handles schema and semantic verification for Kubernetes resources.
 """
+# MNGA-002: Import organization needs review
 import logging
 from datetime import datetime, timezone
 from pathlib import Path

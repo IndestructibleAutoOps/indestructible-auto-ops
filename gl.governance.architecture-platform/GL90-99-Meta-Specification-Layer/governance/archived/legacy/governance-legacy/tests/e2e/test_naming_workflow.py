@@ -9,6 +9,13 @@ End-to-end tests for naming workflow
 Tests complete naming gl_platform_universe.governance workflow
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import pytest
 
 

@@ -8,6 +8,13 @@
 #
 # Hierarchy: Language → Format → Semantic
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .language import (
     LanguageEnforcer,
     LanguageType,

@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
@@ -9,6 +10,14 @@ Performance benchmarks for quantum operations
 Measures quantum computing performance
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import time
 
 import numpy as np

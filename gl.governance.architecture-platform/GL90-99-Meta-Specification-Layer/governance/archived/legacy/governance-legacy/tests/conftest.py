@@ -9,6 +9,13 @@ MachineNativeOps Naming Governance - Test Configuration
 Pytest configuration and fixtures for all test suites
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 from pathlib import Path
 

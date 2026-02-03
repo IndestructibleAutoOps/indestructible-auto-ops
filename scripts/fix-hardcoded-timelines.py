@@ -14,6 +14,13 @@
 將硬編的年份和日期替換為相對表達或配置化變量
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import re
 from pathlib import Path

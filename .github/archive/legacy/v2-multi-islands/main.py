@@ -11,6 +11,13 @@ SynergyMesh v2-multi-islands 主執行入口
 多語言自動化無人之島系統的主要入口點，提供命令行介面。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import argparse
 import sys
 from pathlib import Path

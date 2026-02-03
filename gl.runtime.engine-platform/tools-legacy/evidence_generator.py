@@ -14,6 +14,14 @@
 # tools/evidence_generator.py
 # Phase 1：產出 manifest + provenance stub + 簡化 SBOM（檔案清單）+ gate 聚合報告
 # 雜湊：sha3-512（權威）+ sha256（相容）
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import hashlib
 import json
 import os

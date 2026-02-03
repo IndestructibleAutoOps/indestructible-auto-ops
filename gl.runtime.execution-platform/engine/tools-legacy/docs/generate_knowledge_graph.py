@@ -21,6 +21,7 @@ Usage:
     --output docs/knowledge-graph.yaml
   python tools/docs/generate_knowledge_graph.py --help
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import sys

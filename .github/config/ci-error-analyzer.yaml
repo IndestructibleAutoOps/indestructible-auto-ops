@@ -7,6 +7,12 @@
 # Settings for automated CI/CD error analysis and reporting
 
 # Analysis Settings
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 analysis:
   enabled: true
   # Auto-analyze on workflow failures

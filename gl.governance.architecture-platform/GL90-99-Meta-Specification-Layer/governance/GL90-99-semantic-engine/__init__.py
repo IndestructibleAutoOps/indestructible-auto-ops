@@ -20,6 +20,13 @@ Phases Implemented:
 - Phase 6: Semantic Engine Integration (語意引擎化)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from .gl_platform_universe.gl_platform_universe.governance.semantic_engine import SemanticEngine
 from .semantic_models import (
     SemanticNode, 

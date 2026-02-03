@@ -25,6 +25,11 @@ infrastructure:
     enabled: true
     name: "machine-native-ops-staging"
     version: "1.28"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     node_groups:
       main:
         min_size: 1

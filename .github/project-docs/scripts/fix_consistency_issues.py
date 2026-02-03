@@ -10,6 +10,14 @@ GL00-09 一致性問題修復腳本
 修復8個已識別的一致性問題
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import yaml
 from datetime import datetime

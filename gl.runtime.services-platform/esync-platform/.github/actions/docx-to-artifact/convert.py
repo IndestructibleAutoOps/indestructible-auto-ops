@@ -13,6 +13,14 @@
 Convert DOCX documents to structured artifacts (YAML/JSON/Markdown)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import sys
 import json
 import yaml

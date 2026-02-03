@@ -14,6 +14,7 @@
 """
 第四階段：持續學習機制
 """
+# MNGA-002: Import organization needs review
 import json
 import os
 import shutil

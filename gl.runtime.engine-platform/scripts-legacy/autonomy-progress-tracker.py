@@ -16,6 +16,7 @@ Usage:
     python3 scripts/autonomy-progress-tracker.py --report
     python3 scripts/autonomy-progress-tracker.py --trends
 """
+# MNGA-002: Import organization needs review
 import yaml
 import json
 import argparse

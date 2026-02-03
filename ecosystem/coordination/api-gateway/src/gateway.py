@@ -13,6 +13,13 @@ API 網關 - 統一入口
 GL Governance Layer: GL10-29 (Operational Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 from pathlib import Path
 from typing import Dict, Optional, Any, Tuple

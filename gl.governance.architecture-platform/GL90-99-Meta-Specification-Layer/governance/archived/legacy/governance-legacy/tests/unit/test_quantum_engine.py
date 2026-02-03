@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
@@ -9,6 +10,14 @@ Unit tests for quantum alignment engine
 Tests quantum computing functionality
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import numpy as np
 import pytest
 

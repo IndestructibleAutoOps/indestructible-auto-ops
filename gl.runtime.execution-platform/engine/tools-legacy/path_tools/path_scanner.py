@@ -24,6 +24,7 @@ Usage:
     python path_scanner.py --target <dir> --output result.json
     python path_scanner.py --target <dir> --include "*.md" "*.yaml"
 """
+# MNGA-002: Import organization needs review
 import argparse
 import hashlib
 import json

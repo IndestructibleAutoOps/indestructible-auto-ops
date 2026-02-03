@@ -13,6 +13,7 @@ Implements unified semantic root management with full traceability:
 - SHA-256 integrity sealing
 - Full traceability (100% reversibility)
 """
+# MNGA-002: Import organization needs review
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Any, Optional

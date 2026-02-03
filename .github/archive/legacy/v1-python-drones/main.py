@@ -11,6 +11,13 @@ SynergyMesh v1-python-drones 主執行入口
 Python 無人機系統的主要入口點，提供命令行介面。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import argparse
 import sys
 from pathlib import Path

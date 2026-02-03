@@ -14,6 +14,13 @@ This script fixes low-severity code quality issues using:
 - black: Code formatting
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 import sys
 from pathlib import Path

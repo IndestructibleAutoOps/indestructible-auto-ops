@@ -20,6 +20,14 @@ Date: 2026-01-24
 - 每個文件獨立 sandbox 執行
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import hashlib
 import re

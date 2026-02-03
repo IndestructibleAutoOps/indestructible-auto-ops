@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# @GL-layer: GL60-80
+# @GL-governed
 """
 GL流程自我演化引擎
 實現：分析 → 差異 → 升級 的完整演化循環
@@ -12,6 +14,7 @@ GL流程自我演化引擎
 - 形成持續改進的治理循環
 """
 
+# MNGA-002: Import organization needs review
 import yaml
 import json
 import hashlib

@@ -18,6 +18,7 @@ Generates actionable refactor playbooks for each directory cluster based on
 language governance data, security scans, and hotspot analysis.
 專門為大型雲原生平台設計重構計畫的「AI Refactor Playbook Generator」
 """
+# MNGA-002: Import organization needs review
 import argparse
 import hashlib
 import json

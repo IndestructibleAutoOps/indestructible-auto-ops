@@ -13,6 +13,13 @@ Ecosystem Integration Tests
 GL Governance Layer: GL10-29 (Operational Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 import time
 from pathlib import Path

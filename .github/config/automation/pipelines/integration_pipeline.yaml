@@ -8,6 +8,12 @@
 #                         整合管道配置
 # ═══════════════════════════════════════════════════════════════════════════════
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 pipeline_id: integration_full_cycle
 name: "全自動整合管道"
 description: "完整的自動化整合週期：掃描 → 合併 → 同步 → 驗證"

@@ -12,6 +12,7 @@ This module provides comprehensive validation for GL gl_platform_universe.gl_pla
 including schema validation, policy compliance, security checks, and
 cross-layer consistency verification.
 """
+# MNGA-002: Import organization needs review
 import sys
 import yaml
 import json

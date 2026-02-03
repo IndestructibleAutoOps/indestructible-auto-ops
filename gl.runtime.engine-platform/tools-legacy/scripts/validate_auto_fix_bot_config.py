@@ -15,6 +15,7 @@
 驗證 Auto-Fix Bot 配置檔案
 此腳本驗證 auto-fix-bot.yml 配置檔案的結構和內容是否符合要求。
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 from pathlib import Path

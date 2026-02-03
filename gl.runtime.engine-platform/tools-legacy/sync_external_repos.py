@@ -20,6 +20,7 @@ Usage:
     python tools/sync_external_repos.py --core-only
     python tools/sync_external_repos.py --repo repo-name
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import shutil

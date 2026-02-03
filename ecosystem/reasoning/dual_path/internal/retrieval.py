@@ -2,6 +2,7 @@
 Internal Retrieval Engine
 Combines vector-based semantic search with knowledge graph queries
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib

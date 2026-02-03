@@ -9,6 +9,13 @@
 Fix final remaining security issues.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from pathlib import Path
 
 def add_tool_security_doc(file_path: str) -> bool:

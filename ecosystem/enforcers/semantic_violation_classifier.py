@@ -14,6 +14,14 @@ Version: 1.0.0
 Date: 2026-02-03
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import re
 import hashlib
 import json

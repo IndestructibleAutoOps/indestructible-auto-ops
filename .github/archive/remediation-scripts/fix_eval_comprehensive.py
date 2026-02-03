@@ -19,6 +19,14 @@ SECURITY NOTE: This script itself uses eval() for analysis purposes only.
 All eval() usage in this file is for security analysis and is not exposed to user input.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import re
 from pathlib import Path

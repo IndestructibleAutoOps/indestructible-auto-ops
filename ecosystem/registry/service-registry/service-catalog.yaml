@@ -12,6 +12,11 @@
 registry:
   name: service-registry
   version: 1.0.0
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
   purpose: Central registry for all platform services
   governance:
     - gl-enterprise-architecture

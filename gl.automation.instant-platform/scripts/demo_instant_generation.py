@@ -11,6 +11,7 @@ Instant Generation Demo
 即時生成演示
 展示革命性架構的完整功能
 """
+# MNGA-002: Import organization needs review
 import asyncio
 import json
 import logging

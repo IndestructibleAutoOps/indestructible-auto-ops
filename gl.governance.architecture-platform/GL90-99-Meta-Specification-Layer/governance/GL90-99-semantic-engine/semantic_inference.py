@@ -12,6 +12,14 @@ Semantic Inference Engine
 Implements reasoning capabilities over semantic graph
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import numpy as np
 from typing import Dict, Any, List, Optional, Set
 from dataclasses import dataclass

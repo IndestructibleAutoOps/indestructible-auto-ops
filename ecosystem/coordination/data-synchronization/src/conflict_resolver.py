@@ -13,6 +13,13 @@ GL Conflict Resolver
 GL Governance Layer: GL10-29 (Operational Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from typing import Dict, Optional, Any, Callable
 from dataclasses import dataclass
 from datetime import datetime

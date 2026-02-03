@@ -278,6 +278,11 @@ build_rules:
   
   Go:
     version: ">=1.21"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     build: "go build"
     output: "bin/"
 

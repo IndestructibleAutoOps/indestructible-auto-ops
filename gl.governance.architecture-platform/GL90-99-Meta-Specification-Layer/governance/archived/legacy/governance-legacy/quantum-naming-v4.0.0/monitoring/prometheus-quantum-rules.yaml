@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governed-configuration
@@ -8,6 +9,11 @@
 # ==============================================================================
 # Metadata:
 #   version: v4.0.0-quantum
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 #   description: Prometheus alerting rules for quantum naming governance monitoring
 #   author: MachineNativeOps Observability Team
 #   last_updated: 2026-01-23

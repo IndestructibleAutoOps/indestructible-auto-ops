@@ -32,6 +32,7 @@ Usage:
         --health knowledge/language-health-score.yaml \
         --output docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 """
+# MNGA-002: Import organization needs review
 import argparse
 import datetime
 import glob

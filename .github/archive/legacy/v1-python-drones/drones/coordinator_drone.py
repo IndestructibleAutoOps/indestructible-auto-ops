@@ -12,6 +12,13 @@
 對應 config/dev/automation/drone-coordinator.py
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 from datetime import datetime
 from typing import Any

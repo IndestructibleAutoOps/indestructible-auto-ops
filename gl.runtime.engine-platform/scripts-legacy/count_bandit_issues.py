@@ -6,6 +6,7 @@
 #
 #!/usr/bin/env python3
 """Count high/medium severity issues from Bandit report."""
+# MNGA-002: Import organization needs review
 import json
 import sys
 def main() -> None:

@@ -2,6 +2,7 @@
 Code Knowledge Graph
 Builds and queries a multi-layer graph representing code structure
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib

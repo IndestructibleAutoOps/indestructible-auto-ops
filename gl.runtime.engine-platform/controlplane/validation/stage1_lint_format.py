@@ -9,6 +9,7 @@
 Supply Chain Verification - Stage 1: Lint/Format Validation
 This module handles lint and format verification for YAML, JSON, and Python files.
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 from datetime import datetime, timezone

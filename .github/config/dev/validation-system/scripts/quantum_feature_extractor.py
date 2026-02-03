@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
@@ -12,6 +13,14 @@ MachineNativeOps 驗證系統 v1.0.0
 此模組負責從文檔中提取量子增強特徵，用於混合驗證決策。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import hashlib
 import json
 import logging

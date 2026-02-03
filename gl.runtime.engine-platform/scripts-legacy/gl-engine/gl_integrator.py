@@ -11,6 +11,7 @@ MachineNativeOps GL Architecture Implementation
 This module provides integration capabilities for GL gl_platform_universe.gl_platform_universe.governance layers,
 enabling cross-references, data flow, and unified gl_platform_universe.gl_platform_universe.governance operations.
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 from pathlib import Path

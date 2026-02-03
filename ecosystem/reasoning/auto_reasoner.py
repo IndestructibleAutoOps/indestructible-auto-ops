@@ -4,6 +4,7 @@ MNGA Automatic Reasoning Engine
 自動推理引擎 - 基於驗證結果進行推理和最佳實踐建議
 """
 
+# MNGA-002: Import organization needs review
 import json
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass

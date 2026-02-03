@@ -13,6 +13,13 @@ GL Change Manager
 GL Governance Layer: GL90-99 (Meta-Specification Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import uuid
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field

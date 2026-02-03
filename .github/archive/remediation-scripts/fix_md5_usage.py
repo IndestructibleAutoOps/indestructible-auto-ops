@@ -18,6 +18,13 @@ MD5 is cryptographically broken and should not be used for security purposes.
 This script replaces MD5 with SHA256 in all contexts.
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import re
 from pathlib import Path
 

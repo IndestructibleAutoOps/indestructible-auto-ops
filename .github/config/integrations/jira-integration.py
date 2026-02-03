@@ -10,6 +10,13 @@ Jira Integration for GitHub Security Alerts
 自動將安全告警建立為 Jira Issues
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import sys
 from typing import Optional

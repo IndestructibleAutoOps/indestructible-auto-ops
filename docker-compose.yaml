@@ -6,6 +6,11 @@
 # GL Unified Charter Activated
 
 version: '3.8'
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 services:
   # GL Execution Engine
   gl-engine:

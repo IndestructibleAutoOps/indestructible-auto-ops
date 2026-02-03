@@ -8,6 +8,12 @@
 #                         重構管道配置
 # ═══════════════════════════════════════════════════════════════════════════════
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 pipeline_id: refactor_full_cycle
 name: "全自動重構管道"
 description: "完整的自動化重構週期：掃描 → 分析 → 規劃 → 執行 → 驗證"

@@ -3,6 +3,7 @@
 Apply auto-fixes to violations
 Implements fixes for common governance violations
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 import os

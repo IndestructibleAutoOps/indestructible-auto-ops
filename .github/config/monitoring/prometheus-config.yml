@@ -6,6 +6,12 @@
 # Prometheus Configuration for GitHub Security Monitoring
 # 用於監控 GitHub Advanced Security 指標
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 global:
   scrape_interval: 15s
   evaluation_interval: 15s

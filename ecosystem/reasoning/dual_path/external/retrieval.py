@@ -2,6 +2,7 @@
 External Retrieval Engine
 Integrates with web search APIs and applies domain filtering
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib

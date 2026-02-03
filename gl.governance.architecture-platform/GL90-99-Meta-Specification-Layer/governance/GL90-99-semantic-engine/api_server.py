@@ -12,6 +12,14 @@ Semantic Engine REST API Server
 Provides HTTP endpoints for semantic engine operations
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 from flask import Flask, request, jsonify
 from typing import Dict, Any
 import yaml

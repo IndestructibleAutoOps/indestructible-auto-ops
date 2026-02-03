@@ -2,6 +2,7 @@
 Feedback Loop System
 Collects user feedback and analyzes patterns for optimization
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib

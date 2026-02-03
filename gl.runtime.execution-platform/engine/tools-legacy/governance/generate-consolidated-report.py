@@ -17,6 +17,7 @@ Generate Consolidated Security Report
 Usage:
     python generate-consolidated-report.py --results-dir analysis-results/ --output consolidated-report.md
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import os

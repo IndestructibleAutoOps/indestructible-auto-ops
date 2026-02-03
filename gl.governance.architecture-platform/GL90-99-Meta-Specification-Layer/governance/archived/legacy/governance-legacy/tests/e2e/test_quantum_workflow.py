@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
@@ -9,6 +10,13 @@ End-to-end tests for quantum workflow
 Tests complete quantum gl_platform_universe.governance workflow
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import pytest
 
 

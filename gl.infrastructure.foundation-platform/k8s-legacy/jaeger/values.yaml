@@ -39,6 +39,11 @@ global:
       healthCheck: true
       waitForDataReady: 30s
       version: 7
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
       tls:
         enabled: false
       sniffer:

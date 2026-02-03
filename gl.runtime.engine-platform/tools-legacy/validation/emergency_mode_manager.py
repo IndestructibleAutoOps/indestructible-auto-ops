@@ -16,6 +16,7 @@
 MachineNativeOps 驗證系統 v1.0.0
 此模組管理驗證系統的緊急降級和恢復流程。
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 from dataclasses import dataclass

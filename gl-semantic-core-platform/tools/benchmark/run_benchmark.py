@@ -13,6 +13,14 @@
 GL 语义折叠引擎基准测试脚本
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import asyncio
 import time
 import json

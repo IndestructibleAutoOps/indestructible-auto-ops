@@ -4,6 +4,7 @@ Security Issues Remediation Tool
 Fixes eval(), exec(), and pickle.loads() security vulnerabilities
 """
 
+# MNGA-002: Import organization needs review
 import json
 import re
 from pathlib import Path

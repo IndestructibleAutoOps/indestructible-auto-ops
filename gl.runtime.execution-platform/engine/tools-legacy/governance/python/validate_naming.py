@@ -16,6 +16,7 @@
 用途: 验证资源命名是否符合组织规范
 使用: python validate_naming.py --files <file1> <file2> --policies <policy_dir> --schemas <schema_dir>
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import re

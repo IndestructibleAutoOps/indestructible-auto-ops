@@ -8,6 +8,12 @@
 # Description: Secret and credential scanning for repositories
 # Version: 1.0.0
 
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 name: 'MN Secret Scan'
 description: 'MachineNativeOps official secret scanning action - detects leaked credentials'
 author: 'MachineNativeOps'

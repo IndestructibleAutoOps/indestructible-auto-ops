@@ -7,6 +7,11 @@
 # Unified Docker Compose Configuration Index
 
 version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 description: "統一管理所有 Docker Compose 配置檔案"
 
 # 配置檔案映射

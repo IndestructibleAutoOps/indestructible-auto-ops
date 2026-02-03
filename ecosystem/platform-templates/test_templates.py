@@ -11,6 +11,14 @@ Platform Templates Tests
 測試平台模板的完整性
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import sys
 import yaml
 import subprocess

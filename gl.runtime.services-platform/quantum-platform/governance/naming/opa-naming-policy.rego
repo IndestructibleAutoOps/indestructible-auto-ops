@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 package machinenativeops.naming
 
 # Default deny

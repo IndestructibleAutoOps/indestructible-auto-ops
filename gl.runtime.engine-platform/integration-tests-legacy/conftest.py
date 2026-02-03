@@ -7,6 +7,7 @@
 """
 Configuration and fixtures for integration tests
 """
+# MNGA-002: Import organization needs review
 import pytest
 import os
 import sys

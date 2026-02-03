@@ -11,6 +11,13 @@
 所有語言島嶼的抽象基礎類別，定義共通介面和功能。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import subprocess
 import sys
 from abc import ABC, abstractmethod

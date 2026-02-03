@@ -11,6 +11,13 @@ SynergyMesh 無人機配置載入器
 此模組負責從 drone-config.yml 載入配置並提供給無人機使用。
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 from pathlib import Path
 from typing import Any, Optional
 

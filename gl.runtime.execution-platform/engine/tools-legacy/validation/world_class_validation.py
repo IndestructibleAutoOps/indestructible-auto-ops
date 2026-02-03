@@ -17,6 +17,7 @@ Aligns with:
 - JSON Schema:   workspace/config/validation/schemas/world-class-validation.schema.json
 - TS types:      workspace/config/validation/worldClassValidation.ts
 """
+# MNGA-002: Import organization needs review
 from __future__ import annotations
 import json
 from dataclasses import dataclass

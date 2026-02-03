@@ -114,5 +114,10 @@ compliance:
 version_tracking:
   commit_hash: ${GIT_COMMIT_HASH}
   config_version: ${CONFIG_VERSION}
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
   cloud_adapter_version: ${CLOUD_ADAPTER_VERSION}
   contract_version: ${CONTRACT_VERSION}

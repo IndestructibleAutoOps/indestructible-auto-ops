@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
@@ -19,6 +20,7 @@ The core innovation is representing code elements in quantum superposition state
 allowing them to exist in multiple semantic interpretations simultaneously until
 they collapse into the target architecture's namespace and dependency structure.
 """
+# MNGA-002: Import organization needs review
 import hashlib
 from dataclasses import dataclass, field
 from enum import Enum

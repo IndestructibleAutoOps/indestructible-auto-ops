@@ -9,6 +9,7 @@
 Validates that the count_bandit_issues script correctly counts high/medium severity
 issues from Bandit JSON reports and handles edge cases gracefully.
 """
+# MNGA-002: Import organization needs review
 import importlib.util
 import json
 import os

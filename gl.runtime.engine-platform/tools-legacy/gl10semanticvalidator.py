@@ -16,6 +16,7 @@ GL10 Phase2 Semantic Validator
 Validates semantic terms and functional dimensions for GL10-29 layer
 Updated to support new project-docs directory structure
 """
+# MNGA-002: Import organization needs review
 import json
 import sys
 import glob

@@ -24,6 +24,7 @@ Living Knowledge Base Update Module
         --event "auto-fix" \
         --description "AI Auto-Fix Bot applied repository repairs"
 """
+# MNGA-002: Import organization needs review
 import argparse
 import datetime
 import os

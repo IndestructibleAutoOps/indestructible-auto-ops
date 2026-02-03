@@ -9,6 +9,7 @@ GL Governance Loop Implementation
 Implements the 5-stage bi-directional gl_platform_universe.governance closed-loop:
 Input → Parsing → Governance → Feedback → Re-Governance
 """
+# MNGA-002: Import organization needs review
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Any, Optional

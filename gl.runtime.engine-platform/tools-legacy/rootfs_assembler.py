@@ -13,6 +13,14 @@
 #!/usr/bin/env python3
 # tools/rootfs_assembler.py
 # Phase 1：組裝 dist/rootfs（FHS） + 生成檔案清單 manifest（含來源標註）
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import os
 import shutil

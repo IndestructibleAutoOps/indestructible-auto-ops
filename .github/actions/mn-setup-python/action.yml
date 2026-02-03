@@ -18,6 +18,11 @@ branding:
 
 inputs:
   python-version:
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     description: 'Version range or exact version of Python to use, using SemVer notation'
     required: false
     default: '3.x'

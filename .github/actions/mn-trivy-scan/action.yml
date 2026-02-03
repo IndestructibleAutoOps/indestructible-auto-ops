@@ -145,6 +145,11 @@ runs:
         fi
 
         echo "Installing Trivy version: $TRIVY_VERSION"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 
         # Download and install
         DOWNLOAD_URL="https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_${OS^}-${ARCH}.tar.gz"

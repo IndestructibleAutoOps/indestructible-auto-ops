@@ -17,6 +17,7 @@ Language Governance Analyzer
 Usage:
     python language-gl_platform_universe.governance-analyzer.py --config config/language-policy.yaml --repo-root . --output-format json
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import sys

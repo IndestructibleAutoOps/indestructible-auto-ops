@@ -27,6 +27,14 @@ Risk Level: VERY LOW
 - No security implications
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import subprocess
 import sys

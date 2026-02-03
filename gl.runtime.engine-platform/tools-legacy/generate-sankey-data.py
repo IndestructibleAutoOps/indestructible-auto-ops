@@ -20,6 +20,7 @@ Usage:
 Output:
     gl_platform_universe.governance/sankey-data.json
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 from datetime import datetime

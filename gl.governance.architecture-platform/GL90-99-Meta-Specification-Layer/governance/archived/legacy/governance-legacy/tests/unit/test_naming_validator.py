@@ -9,6 +9,13 @@ Unit tests for naming validator
 Tests the naming validation functionality
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import pytest
 
 

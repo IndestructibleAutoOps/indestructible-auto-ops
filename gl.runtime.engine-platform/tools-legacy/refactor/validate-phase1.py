@@ -17,6 +17,7 @@ Validates that all Phase 1 (Deconstruction) deliverables are present and correct
 Usage:
     python3 tools/refactor/validate-phase1.py --deliverables-path <path>
 """
+# MNGA-002: Import organization needs review
 import argparse
 import json
 import sys

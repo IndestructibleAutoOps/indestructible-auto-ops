@@ -9,6 +9,7 @@
 Module Dependency DAG Visualization Generator
 Generates Mermaid diagram and DOT graph of module dependencies
 """
+# MNGA-002: Import organization needs review
 import yaml
 import sys
 from pathlib import Path

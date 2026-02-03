@@ -4,6 +4,11 @@
 # @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
 
 apiVersion: 1
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
 
 datasources:
   - name: Prometheus

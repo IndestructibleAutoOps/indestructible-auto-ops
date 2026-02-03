@@ -21,6 +21,7 @@ GL Unified Charter Activated
 - Consistency / Reversibility / Provability enforcement
 - No continue-on-error policy
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib

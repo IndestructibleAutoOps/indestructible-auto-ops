@@ -11,6 +11,13 @@ Registry Tools Tests
 測試註冊表管理工具
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 import tempfile
 from pathlib import Path

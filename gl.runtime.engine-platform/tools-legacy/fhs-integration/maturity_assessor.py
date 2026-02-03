@@ -19,6 +19,7 @@ Usage:
     python3 maturity_assessor.py --all
     python3 maturity_assessor.py repository-understanding --verbose
 """
+# MNGA-002: Import organization needs review
 import os
 import sys
 import json

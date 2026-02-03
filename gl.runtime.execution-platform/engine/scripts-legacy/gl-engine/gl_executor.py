@@ -11,6 +11,7 @@ MachineNativeOps GL Architecture Implementation
 This module provides the core execution engine for GL (Governance Layers) operations,
 enabling automated gl_platform_universe.gl_platform_universe.governance artifact management, validation, and orchestration.
 """
+# MNGA-002: Import organization needs review
 import sys
 import yaml
 import json

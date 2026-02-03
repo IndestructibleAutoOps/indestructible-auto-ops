@@ -138,6 +138,11 @@ databases:
     semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.DATABASE
     engine: postgres
     engine_version: 14.7
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
     instance_type: db.t3.micro
     
     storage:

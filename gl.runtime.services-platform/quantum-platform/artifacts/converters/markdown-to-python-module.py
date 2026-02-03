@@ -1,3 +1,4 @@
+# @GL-layer: GQS-L0
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: general-component
@@ -14,6 +15,13 @@ GL Quantum Artifact Converter - Markdown to Python Module
 Converts Markdown documents to Python module artifacts
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import os
 import sys
 import re

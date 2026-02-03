@@ -89,6 +89,11 @@ runs:
           CODEQL_PATH=$(which codeql)
           CODEQL_VERSION=$(codeql version --format=json 2>/dev/null | jq -r '.version' || codeql version 2>&1 | head -1)
           echo "CodeQL CLI found: $CODEQL_PATH (version: $CODEQL_VERSION)"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
           echo "codeql_available=true" >> $GITHUB_OUTPUT
           echo "codeql_path=$CODEQL_PATH" >> $GITHUB_OUTPUT
         else

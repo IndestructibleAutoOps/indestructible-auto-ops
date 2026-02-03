@@ -7,6 +7,11 @@
 pipeline:
   id: example-sync-pipeline
   version: "1.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
   description: |
     Example pipeline demonstrating multi-source data synchronization
     to central data lake with conflict resolution and GL governance integration.

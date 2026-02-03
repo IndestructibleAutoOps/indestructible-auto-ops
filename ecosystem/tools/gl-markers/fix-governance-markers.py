@@ -11,6 +11,7 @@
 """
 Script to fix missing @GL-governed markers and _gl metadata
 """
+# MNGA-002: Import organization needs review
 import os
 import json
 from pathlib import Path

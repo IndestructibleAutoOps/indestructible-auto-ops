@@ -11,6 +11,13 @@ API Gateway Example
 示例：如何配置和使用 API Gateway
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import sys
 from pathlib import Path
 

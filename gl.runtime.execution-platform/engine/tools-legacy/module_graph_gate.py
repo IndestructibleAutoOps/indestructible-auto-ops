@@ -13,6 +13,14 @@
 #!/usr/bin/env python3
 # tools/module_graph_gate.py
 # 解析依賴圖、檢測循環、輸出 topo order
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
+# MNGA-002: Import organization needs review
 import json
 import sys
 from pathlib import Path

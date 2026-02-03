@@ -15,6 +15,7 @@ Tests cover:
 4. Configuration completeness
 5. Security rules validation
 """
+# MNGA-002: Import organization needs review
 import os
 import sys
 import tempfile

@@ -26,6 +26,7 @@ Algorithm:
         (SemgrepSecurityIssues * 2) +
         (RepeatedViolations * 4)
 """
+# MNGA-002: Import organization needs review
 import json
 import re
 from collections import defaultdict

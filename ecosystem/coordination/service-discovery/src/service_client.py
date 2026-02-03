@@ -13,6 +13,13 @@ GL Service Client
 GL Governance Layer: GL10-29 (Operational Layer)
 """
 
+"""
+Module docstring
+================
+
+This module is part of the GL governance framework.
+Please add specific module documentation here.
+"""
 import random
 from typing import Optional, List, Dict, Any
 import logging

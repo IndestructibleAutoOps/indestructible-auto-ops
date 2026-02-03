@@ -15,6 +15,7 @@
 MachineNativeOps Platform Bootstrap Runner
 Executes the minimal 5-step platform bootstrap pipeline
 """
+# MNGA-002: Import organization needs review
 import json
 import logging
 import subprocess

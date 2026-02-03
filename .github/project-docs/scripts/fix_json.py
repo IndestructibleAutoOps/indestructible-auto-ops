@@ -6,6 +6,7 @@
 # GL Unified Charter Activated
 #!/usr/bin/env python3
 """Fix JSON files with duplicate keys and structural issues."""
+# MNGA-002: Import organization needs review
 import json
 import re
 import os

@@ -16,6 +16,7 @@
 MachineNativeOps 驗證系統 v1.0.0
 此模組實現量子-經典混合驗證的決策邏輯，支持動態參數調整。
 """
+# MNGA-002: Import organization needs review
 import copy
 import json
 import logging
