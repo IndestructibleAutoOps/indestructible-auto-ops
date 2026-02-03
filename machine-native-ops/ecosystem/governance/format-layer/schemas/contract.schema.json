@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.machinenativeops.com/contract/v1.0.0.json",
+  "title": "Contract Schema",
+  "description": "Schema for contract definitions defining interfaces and capabilities",
+  "version": "1.0.0",
+  "semantic_anchor": "FORMATLAYER.SCHEMA.CONTRACT",
+
+  "type": "object",
+  "required": ["contract", "name", "version", "semantic_anchor", "capabilities"],
+
+  "properties": {
+    "contract": {
+      "type": "object",
+      "required": ["name", "version", "semantic_anchor", "description", "capability"],
+      
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Z][a-zA-Z]+$",
+          "description": "Contract name in PascalCase"
+        },
+        
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Semantic version (MAJOR.MINOR.PATCH)"
+        },
+        
+        "semantic_anchor": {
+          "type": "string",
+          "pattern": "^[A-Z_]+$",
+          "description": "Semantic anchor identifier"
+        },
+        
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Detailed description of the contract"
+        },
+        
+        "capability": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/capability"
+          }
+        }
+      }
+    },
+
+    "types": {
+      "type": "object",
+      "description": "Custom type definitions",
+      "additionalProperties": {
+        "$ref": "#/$defs/type_definition"
+      }
+    },
+
+    "validation": {
+      "type": "array",
+      "description": "Validation rules",
+      "items": {
+        "$ref": "#/$defs/validation_rule"
+      }
+    },
+
+    "adapter_requirements": {
+      "type": "array",
+      "description": "Requirements for adapter implementations",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "compatibility": {
+      "type": "object",
+      "description": "Provider compatibility matrix",
+      "additionalProperties": {
+        "$ref": "#/$defs/provider_info"
+      }
+    }
+  },
+
+  "$defs": {
+    "capability": {
+      "type": "object",
+      "required": ["name", "input", "output"],
+      
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "description": "Capability name in snake_case"
+        },
+        
+        "input": {
+          "type": "object",
+          "description": "Input parameters",
+          "additionalProperties": {
+            "$ref": "#/$defs/parameter"
+          }
+        },
+        
+        "output": {
+          "type": "object",
+          "description": "Output structure",
+          "additionalProperties": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "number" },
+              { "type": "boolean" },
+              { "type": "array" },
+              { "type": "object" }
+            ]
+          }
+        }
+      }
+    },
+
+    "parameter": {
+      "type": "object",
+      "description": "Parameter definition",
+      
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["string", "integer", "float", "boolean", "binary", "map", "array"]
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        },
+        "optional": {
+          "type": "boolean",
+          "default": false
+        },
+        "default": {
+          "description": "Default value"
+        }
+      }
+    },
+
+    "type_definition": {
+      "type": "object",
+      "required": ["type"],
+      
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["object", "array", "map", "enum"]
+        },
+        
+        "properties": {
+          "type": "object",
+          "description": "Object properties"
+        },
+        
+        "items": {
+          "description": "Array item type"
+        },
+        
+        "values": {
+          "type": "array",
+          "description": "Enum values"
+        }
+      }
+    },
+
+    "validation_rule": {
+      "type": "object",
+      "required": ["name", "rule", "severity"],
+      
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        
+        "rule": {
+          "type": "string",
+          "description": "Validation rule expression"
+        },
+        
+        "severity": {
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"]
+        }
+      }
+    },
+
+    "provider_info": {
+      "type": "object",
+      "required": ["implements"],
+      
+      "properties": {
+        "implements": {
+          "type": "string",
+          "enum": ["full", "partial", "planned"]
+        },
+        
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

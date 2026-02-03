@@ -2,11 +2,10 @@
 Code Knowledge Graph
 Builds and queries a multi-layer graph representing code structure
 """
-# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib
-from typing import List, Dict, Optional
+from typing import List, Dict, Any, Optional, Set
 from datetime import datetime, timezone
 import yaml
 from collections import defaultdict

@@ -1,431 +1,351 @@
-#!/usr/bin/env python3
 """
-GL Pipeline Integrator
-======================
-Integrates governance with CI/CD pipelines and artifact flows.
+Pipeline Integration - GL治理執行層與事實驗證管道的集成
 
-Critical Features:
-- Contract binding to pipelines
-- Hook injection at pipeline stages
-- Governance event emission
-- Multi-platform support (GitHub Actions, GitLab CI, ArgoCD, Tekton)
-- Multi-language support (YAML, JSON, DSL)
+負責將 gl-fact-pipeline.py 集成到治理執行層，提供：
+1. 標準化的管道執行接口
+2. 與 GovernanceEnforcer 的無縫集成
+3. 證據收集和驗證的自動化
+4. 報告生成和驗證
 """
 
-# MNGA-002: Import organization needs review
+import sys
 import os
-import json
-import yaml
 from pathlib import Path
 from typing import Dict, List, Optional, Any
-from dataclasses import dataclass
+import json
+import yaml
 from datetime import datetime
 
-@dataclass
-class PipelineStage:
-    """Pipeline stage definition"""
-    name: str
-    type: str  # "validation", "verification", "audit", "deployment"
-    platforms: List[str]
-    hooks: List[Dict]
-    config: Dict
+# 添加事實驗證工具的路徑
+fact_verification_path = Path(__file__).parent.parent / "tools" / "fact-verification"
+sys.path.insert(0, str(fact_verification_path))
 
-@dataclass
-class GovernanceEvent:
-    """Governance event for pipeline integration"""
-    event_type: str
-    contract_id: str
-    stage: str
-    payload: Dict
-    timestamp: str
+try:
+    from gl_fact_pipeline import GLFactPipeline, ValidationResult, InternalSource, ExternalReference, DifferenceCategory
+except ImportError as e:
+    print(f"警告: 無法導入 gl_fact_pipeline: {e}")
+    print("將使用模擬實現")
+    
+    # 模擬類（用於測試）
+    class ValidationResult:
+        def __init__(self, passed: bool, errors: List[str], warnings: List[str]):
+            self.passed = passed
+            self.errors = errors
+            self.warnings = warnings
+    
+    class DifferenceCategory:
+        ALIGNED = "aligned"
+        INTENTIONAL_DEVIATION = "intentional-deviation"
+        TECHNICAL_DEBT = "technical-debt"
+        GAP = "gap"
+        EXTENSION = "extension"
 
-class PipelineIntegrator:
-    """
-    Pipeline integration engine that binds governance contracts to CI/CD pipelines.
+
+class PipelineIntegration:
+    """GL事實驗證管道集成器"""
     
-    Key responsibilities:
-    - Bind governance contracts to pipelines
-    - Inject hooks at pipeline stages
-    - Emit governance events
-    - Support multiple platforms and languages
-    """
-    
-    SUPPORTED_PLATFORMS = {
-        "github_actions": "GitHub Actions",
-        "gitlab_ci": "GitLab CI",
-        "argocd": "ArgoCD",
-        "tekton": "Tekton Pipelines"
-    }
-    
-    SUPPORTED_LANGUAGES = ["yaml", "json", "dsl"]
-    
-    def __init__(self, base_path: str = "/workspace/machine-native-ops"):
-        self.base_path = Path(base_path)
-        self.contracts_dir = self.base_path / "ecosystem" / "contracts"
-        self.bindings = {}
-        self.hooks = {}
-        self._initialize_default_stages()
-    
-    def _initialize_default_stages(self):
-        """Initialize default pipeline stages"""
-        self.stages = [
-            PipelineStage(
-                name="validation",
-                type="validation",
-                platforms=["github_actions", "gitlab_ci", "argocd", "tekton"],
-                hooks=[
-                    {
-                        "name": "governance_validation",
-                        "action": "validate_against_contract",
-                        "platform": "all"
-                    }
-                ],
-                config={
-                    "fail_fast": True,
-                    "timeout_minutes": 10
-                }
-            ),
-            PipelineStage(
-                name="verification",
-                type="verification",
-                platforms=["github_actions", "gitlab_ci", "argocd", "tekton"],
-                hooks=[
-                    {
-                        "name": "evidence_collection",
-                        "action": "collect_evidence",
-                        "platform": "all"
-                    },
-                    {
-                        "name": "proof_verification",
-                        "action": "verify_proofs",
-                        "platform": "all"
-                    }
-                ],
-                config={
-                    "evidence_threshold": 0.90,
-                    "timeout_minutes": 15
-                }
-            ),
-            PipelineStage(
-                name="audit",
-                type="audit",
-                platforms=["github_actions", "gitlab_ci"],
-                hooks=[
-                    {
-                        "name": "self_audit",
-                        "action": "audit_operation",
-                        "platform": "all"
-                    }
-                ],
-                config={
-                    "forbidden_phrase_check": True,
-                    "quality_gate_check": True
-                }
-            ),
-            PipelineStage(
-                name="deployment",
-                type="deployment",
-                platforms=["argocd", "tekton"],
-                hooks=[
-                    {
-                        "name": "pre_deployment_check",
-                        "action": "validate_deployment_ready",
-                        "platform": "all"
-                    }
-                ],
-                config={
-                    "require_manual_approval": False,
-                    "rollback_on_failure": True
-                }
+    def __init__(self, 
+                 config_path: Optional[str] = None,
+                 workspace_path: str = "."):
+        """
+        初始化管道集成器
+        
+        Args:
+            config_path: 管道配置文件路徑
+            workspace_path: 工作區路徑
+        """
+        # 默認配置路徑
+        if config_path is None:
+            config_path = "ecosystem/contracts/naming-governance/gl.fact-pipeline-spec.yaml"
+        
+        self.config_path = Path(config_path)
+        self.workspace_path = Path(workspace_path)
+        
+        # 初始化事實驗證管道
+        try:
+            self.pipeline = GLFactPipeline(
+                config_path=str(self.config_path),
+                workspace_path=str(self.workspace_path)
             )
+            self.pipeline_available = True
+        except Exception as e:
+            print(f"無法初始化 GLFactPipeline: {e}")
+            self.pipeline = None
+            self.pipeline_available = False
+        
+        # 輸出目錄
+        self.output_dir = self.workspace_path / "ecosystem" / "outputs" / "fact-verification"
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+    
+    def run_verification(self, 
+                        topics: List[str],
+                        operation_context: Optional[Dict] = None) -> Dict:
+        """
+        執行事實驗證
+        
+        Args:
+            topics: 驗證主題列表（如 ['semver', 'cncf']）
+            operation_context: 操作上下文信息
+            
+        Returns:
+            驗證報告
+        """
+        if not self.pipeline_available:
+            return self._generate_mock_report(topics, operation_context)
+        
+        try:
+            # 執行管道
+            report = self.pipeline.run_pipeline(topics)
+            
+            # 添加操作上下文
+            if operation_context:
+                report['operation_context'] = operation_context
+            
+            # 保存報告
+            report_path = self._save_report(report, operation_context)
+            
+            return {
+                'status': 'SUCCESS',
+                'report': report,
+                'report_path': report_path
+            }
+        except Exception as e:
+            return {
+                'status': 'ERROR',
+                'error': str(e),
+                'report': None
+            }
+    
+    def collect_evidence(self, 
+                         sources: List[Dict],
+                         operation_id: str) -> List[Dict]:
+        """
+        收集證據
+        
+        Args:
+            sources: 證據源列表 [{'type': 'contract', 'path': 'path/to/contract.yaml'}]
+            operation_id: 操作ID
+            
+        Returns:
+            證據鏈列表
+        """
+        evidence_chain = []
+        
+        for source in sources:
+            try:
+                source_type = source.get('type')
+                source_path = source.get('path')
+                
+                # 計算文件哈希
+                if Path(source_path).exists():
+                    import hashlib
+                    with open(source_path, 'rb') as f:
+                        file_hash = hashlib.sha256(f.read()).hexdigest()
+                    
+                    evidence = {
+                        'type': source_type,
+                        'path': source_path,
+                        'hash': file_hash,
+                        'size': Path(source_path).stat().st_size,
+                        'timestamp': datetime.now().isoformat(),
+                        'operation_id': operation_id
+                    }
+                    
+                    evidence_chain.append(evidence)
+            except Exception as e:
+                print(f"收集證據失敗 {source_path}: {e}")
+        
+        return evidence_chain
+    
+    def validate_report(self, 
+                        report: Dict,
+                        min_evidence_coverage: float = 0.90) -> Dict:
+        """
+        驗證報告質量
+        
+        Args:
+            report: 要驗證的報告
+            min_evidence_coverage: 最小證據覆蓋率閾值
+            
+        Returns:
+            驗證結果
+        """
+        validation = {
+            'has_unverified_claims': False,
+            'evidence_coverage': 0.0,
+            'forbidden_phrase_violations': [],
+            'passed': True,
+            'errors': [],
+            'warnings': []
+        }
+        
+        # 檢查證據覆蓋率
+        report_text = json.dumps(report, ensure_ascii=False)
+        
+        # 計算證據鏈接
+        import re
+        evidence_pattern = r'\[證據:\s*[^\]]+\]'
+        evidence_links = re.findall(evidence_pattern, report_text)
+        
+        # 計算聲明句數
+        statement_pattern = r'[^.!?。？！]+[.!?。？！]'
+        statements = re.findall(statement_pattern, report_text)
+        total_statements = len(statements)
+        
+        if total_statements > 0:
+            validation['evidence_coverage'] = len(evidence_links) / total_statements
+        
+        # 檢查覆蓋率閾值
+        if validation['evidence_coverage'] < min_evidence_coverage:
+            validation['has_unverified_claims'] = True
+            validation['passed'] = False
+            validation['errors'].append(
+                f"證據覆蓋率不足: {validation['evidence_coverage']:.1%} < {min_evidence_coverage:.1%}"
+            )
+        
+        # 檢查禁止短語
+        forbidden_phrases = [
+            ("100% 完成", "基於已實現的功能集"),
+            ("完全符合", "在[方面]與標準對齊"),
+            ("已全部實現", "已實現[具體功能列表]"),
+            ("應該是", "根據[證據]，建議"),
+            ("可能是", "基於[證據]，推測"),
+            ("我認為", "基於[證據]，分析表明"),
         ]
+        
+        for phrase, replacement in forbidden_phrases:
+            if phrase in report_text:
+                validation['forbidden_phrase_violations'].append({
+                    'phrase': phrase,
+                    'replacement': replacement,
+                    'severity': 'HIGH'
+                })
+        
+        if validation['forbidden_phrase_violations']:
+            validation['passed'] = False
+            validation['warnings'].append(
+                f"發現 {len(validation['forbidden_phrase_violations'])} 個禁止短語"
+            )
+        
+        return validation
     
-    def bind(self, contract: Dict) -> str:
+    def _save_report(self, report: Dict, context: Optional[Dict] = None) -> str:
         """
-        Bind a governance contract to pipeline stages.
+        保存報告
         
         Args:
-            contract: Governance contract dictionary
-        
-        Returns:
-            Binding ID
-        """
-        contract_id = contract.get("metadata", {}).get("name", "unknown")
-        contract_version = contract.get("version", "1.0.0")
-        
-        # Create binding
-        binding_id = f"{contract_id}_v{contract_version}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
-        
-        # Determine applicable stages based on contract
-        applicable_stages = self._determine_applicable_stages(contract)
-        
-        self.bindings[binding_id] = {
-            "contract_id": contract_id,
-            "contract_version": contract_version,
-            "applicable_stages": applicable_stages,
-            "bound_at": datetime.now().isoformat(),
-            "contract": contract
-        }
-        
-        # Inject hooks for applicable stages
-        for stage_name in applicable_stages:
-            self.inject_hooks(stage_name, contract)
-        
-        return binding_id
-    
-    def injectHooks(self, stage: str, platform: str = "all"):
-        """
-        Inject hooks into a pipeline stage for specific platform.
-        
-        Args:
-            stage: Stage name (validation, verification, audit, deployment)
-            platform: Platform name or "all"
-        """
-        # Find the stage
-        stage_obj = next((s for s in self.stages if s.name == stage), None)
-        if not stage_obj:
-            raise ValueError(f"Stage {stage} not found")
-        
-        # Filter hooks by platform
-        stage_hooks = stage_obj.hooks
-        if platform != "all":
-            stage_hooks = [h for h in stage_hooks if h.get("platform") == platform or h.get("platform") == "all"]
-        
-        # Store hooks for injection
-        if stage not in self.hooks:
-            self.hooks[stage] = {}
-        
-        if platform not in self.hooks[stage]:
-            self.hooks[stage][platform] = []
-        
-        self.hooks[stage][platform].extend(stage_hooks)
-    
-    def inject_hooks(self, stage: str, contract: Dict):
-        """
-        Inject hooks into a pipeline stage based on contract.
-        
-        Args:
-            stage: Stage name
-            contract: Governance contract
-        """
-        if stage not in self.hooks:
-            self.hooks[stage] = {}
-        
-        # Generate hook configuration from contract
-        hook_config = self._generate_hook_config(contract, stage)
-        
-        self.hooks[stage]["all"] = self.hooks[stage].get("all", []) + [hook_config]
-    
-    def emit(self, event: GovernanceEvent):
-        """
-        Emit a governance event to pipeline integrations.
-        
-        Args:
-            event: GovernanceEvent to emit
-        """
-        # Save event to log
-        self._log_event(event)
-        
-        # Trigger downstream actions based on event type
-        if event.event_type == "validation_failed":
-            self._handle_validation_failure(event)
-        elif event.event_type == "audit_failed":
-            self._handle_audit_failure(event)
-        elif event.event_type == "quality_gate_failed":
-            self._handle_quality_gate_failure(event)
-    
-    def generate_github_actions_workflow(self, contract: Dict, workflow_name: str = "governance.yml") -> str:
-        """
-        Generate GitHub Actions workflow for governance.
-        
-        Args:
-            contract: Governance contract
-            workflow_name: Name of the workflow file
-        
-        Returns:
-            YAML workflow configuration
-        """
-        workflow = {
-            "name": "GL Governance Enforcement",
-            "on": {
-                "pull_request": None,
-                "push": {
-                    "branches": ["main", "develop"]
-                }
-            },
-            "jobs": {
-                "governance-validation": {
-                    "runs-on": "ubuntu-latest",
-                    "steps": [
-                        {
-                            "name": "Checkout code",
-                            "uses": "actions/checkout@v3"
-                        },
-                        {
-                            "name": "Set up Python",
-                            "uses": "actions/setup-python@v4",
-                            "with": {
-                                "python-version": "3.11"
-                            }
-                        },
-                        {
-                            "name": "Install dependencies",
-                            "run": "pip install pyyaml"
-                        },
-                        {
-                            "name": "Run governance validation",
-                            "run": "python ecosystem/enforce.py"
-                        },
-                        {
-                            "name": "Upload governance report",
-                            "uses": "actions/upload-artifact@v3",
-                            "if": "always()",
-                            "with": {
-                                "name": "governance-report",
-                                "path": "ecosystem/outputs/governance-report.json"
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-        
-        return yaml.dump(workflow, default_flow_style=False, sort_keys=False)
-    
-    def generate_gitlab_ci_config(self, contract: Dict) -> str:
-        """
-        Generate GitLab CI configuration for governance.
-        
-        Args:
-            contract: Governance contract
-        
-        Returns:
-            YAML CI configuration
-        """
-        config = {
-            "stages": ["validate", "verify", "audit", "deploy"],
-            "governance:validate": {
-                "stage": "validate",
-                "script": [
-                    "pip install pyyaml",
-                    "python ecosystem/enforce.py"
-                ],
-                "artifacts": {
-                    "paths": ["ecosystem/outputs/"],
-                    "when": "always"
-                }
-            },
-            "governance:verify": {
-                "stage": "verify",
-                "script": [
-                    "python ecosystem/tools/collect-evidence.py"
-                ],
-                "dependencies": ["governance:validate"]
-            },
-            "governance:audit": {
-                "stage": "audit",
-                "script": [
-                    "python ecosystem/enforcers/self_auditor.py"
-                ],
-                "dependencies": ["governance:verify"]
-            }
-        }
-        
-        return yaml.dump(config, default_flow_style=False, sort_keys=False)
-    
-    def _determine_applicable_stages(self, contract: Dict) -> List[str]:
-        """Determine which stages a contract applies to"""
-        stages = []
-        
-        # Check trigger conditions
-        trigger_conditions = contract.get("trigger", {}).get("conditions", [])
-        
-        for condition in trigger_conditions:
-            condition_type = condition.get("type")
+            report: 報告內容
+            context: 上下文信息
             
-            if condition_type in ["file_change", "ci_event"]:
-                stages.append("validation")
-                stages.append("verification")
-            
-            if condition_type == "report_generation":
-                stages.append("audit")
-            
-            if condition_type == "manual":
-                stages.append("deployment")
+        Returns:
+            保存的文件路徑
+        """
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
-        # Remove duplicates while preserving order
-        seen = set()
-        result = []
-        for stage in stages:
-            if stage not in seen:
-                seen.add(stage)
-                result.append(stage)
+        if context and 'operation_id' in context:
+            filename = f"{context['operation_id']}_report_{timestamp}.json"
+        else:
+            filename = f"report_{timestamp}.json"
         
-        return result
+        report_path = self.output_dir / filename
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
+        
+        return str(report_path)
     
-    def _generate_hook_config(self, contract: Dict, stage: str) -> Dict:
-        """Generate hook configuration from contract"""
+    def _generate_mock_report(self, topics: List[str], context: Optional[Dict] = None) -> Dict:
+        """
+        生成模擬報告（當管道不可用時）
+        
+        Args:
+            topics: 主題列表
+            context: 上下文信息
+            
+        Returns:
+            模擬報告
+        """
         return {
-            "name": f"gl_{stage}_hook",
-            "action": f"execute_{stage}",
-            "contract_id": contract.get("metadata", {}).get("name", "unknown"),
-            "version": contract.get("version", "1.0.0"),
-            "config": contract.get("trigger", {}).get("validation", {}),
-            "fallback": contract.get("fallback", {})
+            'status': 'MOCK',
+            'report': {
+                'verification_id': f"mock-{datetime.now().strftime('%Y%m%d%H%M%S')}",
+                'topics': topics,
+                'internal_facts': {
+                    'status': 'collected',
+                    'sources': []
+                },
+                'external_context': {
+                    'status': 'collected',
+                    'references': []
+                },
+                'differences': [],
+                'summary': {
+                    'total_sources': 0,
+                    'aligned': 0,
+                    'deviations': 0,
+                    'gaps': 0,
+                    'extensions': 0
+                },
+                'note': 'This is a mock report because GLFactPipeline is not available'
+            },
+            'report_path': None
         }
+
+
+def main():
+    """測試Pipeline Integration"""
+    print("=== Pipeline Integration 測試 ===\n")
     
-    def _log_event(self, event: GovernanceEvent):
-        """Log governance event"""
-        logs_dir = self.base_path / "ecosystem" / "logs" / "governance-events"
-        logs_dir.mkdir(parents=True, exist_ok=True)
-        
-        log_file = logs_dir / "events.log"
-        with open(log_file, 'a', encoding='utf-8') as f:
-            f.write(json.dumps({
-                "event_type": event.event_type,
-                "contract_id": event.contract_id,
-                "stage": event.stage,
-                "timestamp": event.timestamp,
-                "payload": event.payload
-            }) + "\n")
+    # 創建集成器
+    integration = PipelineIntegration()
     
-    def _handle_validation_failure(self, event: GovernanceEvent):
-        """Handle validation failure event"""
-        # Could trigger:
-        # - Block PR merge
-        # - Create issue
-        # - Send notification
-        pass
+    print(f"管道可用性: {integration.pipeline_available}\n")
     
-    def _handle_audit_failure(self, event: GovernanceEvent):
-        """Handle audit failure event"""
-        # Could trigger:
-        # - Request evidence
-        # - Mark operation as non-compliant
-        # - Schedule re-audit
-        pass
+    # 測試執行驗證
+    print("1. 測試執行驗證")
+    result = integration.run_verification(
+        topics=['semver', 'naming'],
+        operation_context={'operation_id': 'test-001', 'operation_type': 'file_migration'}
+    )
     
-    def _handle_quality_gate_failure(self, event: GovernanceEvent):
-        """Handle quality gate failure event"""
-        # Could trigger:
-        # - Block deployment
-        # - Generate remediation guide
-        # - Notify team
-        pass
+    print(f"   狀態: {result['status']}")
+    if result['status'] == 'SUCCESS':
+        report = result['report']
+        print(f"   驗證ID: {report.get('verification_id', 'N/A')}")
+        print(f"   主題: {report.get('topics', [])}")
+        summary = report.get('summary', {})
+        print(f"   對齊: {summary.get('aligned', 0)}, 偏差: {summary.get('deviations', 0)}")
+        if result.get('report_path'):
+            print(f"   報告已保存: {result['report_path']}")
+    print()
     
-    def get_binding_info(self, binding_id: str) -> Optional[Dict]:
-        """Get information about a contract binding"""
-        return self.bindings.get(binding_id)
+    # 測試收集證據
+    print("2. 測試收集證據")
+    sources = [
+        {'type': 'contract', 'path': 'ecosystem/contracts/naming-governance/gl-platforms.yaml'},
+        {'type': 'registry', 'path': 'ecosystem/registry/platforms/gl-platform-registry.yaml'}
+    ]
+    evidence = integration.collect_evidence(sources, 'test-001')
+    print(f"   收集到 {len(evidence)} 個證據")
+    for ev in evidence:
+        print(f"   - {ev['type']}: {ev['path'][:50]}... (SHA256: {ev['hash'][:16]}...)")
+    print()
     
-    def get_hooks_for_stage(self, stage: str, platform: str = "all") -> List[Dict]:
-        """Get hooks for a specific stage and platform"""
-        if stage not in self.hooks:
-            return []
-        
-        if platform in self.hooks[stage]:
-            return self.hooks[stage][platform]
-        
-        if "all" in self.hooks[stage]:
-            return self.hooks[stage]["all"]
-        
-        return []
+    # 測試驗證報告
+    print("3. 測試驗證報告")
+    test_report = {
+        'content': '根據GL治理合約[證據: ecosystem/contracts/platforms/gl-platforms.yaml]，該操作符合規範。',
+        'additional_info': '文件[證據: gl-platforms.yaml#L10-L20]也確認了這一點。'
+    }
+    validation = integration.validate_report(test_report)
+    print(f"   通過: {validation['passed']}")
+    print(f"   證據覆蓋率: {validation['evidence_coverage']:.1%}")
+    print(f"   未驗證聲明: {validation['has_unverified_claims']}")
+    print(f"   禁止短語違規: {len(validation['forbidden_phrase_violations'])}")
+    print()
+    
+    print("=== Pipeline Integration 測試完成 ===")
+
+
+if __name__ == "__main__":
+    main()

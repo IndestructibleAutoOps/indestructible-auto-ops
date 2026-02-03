@@ -1,0 +1,87 @@
+# GL Arbitration Rules - Security
+# Version: 1.0.0
+
+@GL-semantic: arbitration-security-rules
+@GL-audit-trail: enabled
+
+rules:
+  - rule_id: "SEC001"
+    name: "SECURITY_VULNERABILITY_FIX"
+    priority: CRITICAL
+    decision: EXTERNAL
+    confidence_threshold: 0.75
+    description: |
+      For security vulnerability fixes, always prefer external sources
+      as they provide the most up-to-date security patches and best practices.
+    
+    conditions:
+      - field: category
+        operator: equals
+        value: security
+        
+      - field: task_type
+        operator: equals
+        value: vulnerability_fix
+        
+    reasoning: |
+      External security sources are more likely to have recent vulnerability
+      information and patches from official security advisories.
+      
+    @evidence: [external: security-advisory-db#L1-L50]
+    
+  - rule_id: "SEC002"
+    name: "HIGH_PRIORITY_MODULE_API"
+    priority: HIGH
+    decision: INTERNAL
+    confidence_threshold: 0.8
+    description: |
+      For core GL platform modules, prefer internal sources to maintain
+      consistency with existing architecture patterns.
+    
+    conditions:
+      - field: module
+        operator: in
+        values:
+          - gl-platform-services
+          - gl-execution-runtime
+          - gl-meta-specifications
+          
+      - field: internal_confidence
+        operator: greater_than
+        value: 0.8
+        
+    reasoning: |
+      Core GL modules have well-documented internal APIs. Using internal
+      sources ensures consistency with the GL enterprise architecture.
+      
+    @evidence: [internal: gl-platform-services/api#L1-L100]
+    
+  - rule_id: "SEC003"
+    name: "DEPENDENCY_VERSION_UPDATE"
+    priority: MEDIUM
+    decision: HYBRID
+    confidence_threshold: 0.7
+    description: |
+      For dependency version updates, use hybrid approach requiring
+      manual review to ensure compatibility.
+    
+    conditions:
+      - field: task_type
+        operator: equals
+        value: dependency_update
+        
+      - field: version_mismatch
+        operator: equals
+        value: true
+        
+    reasoning: |
+      Dependency updates need both internal compatibility checks and
+      external version information. Hybrid approach provides balanced view.
+      
+    @evidence: [internal: version-checker#L1-L50, external: pypi.org/package#L1-L100]
+
+metadata:
+  version: "1.0.0"
+  created: "2026-02-03"
+  modified: "2026-02-03"
+  @governance: GL-UNIFIED-NAMING-CHARTER

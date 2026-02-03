@@ -2,13 +2,13 @@
 External Retrieval Engine
 Integrates with web search APIs and applies domain filtering
 """
-# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib
-from typing import List, Dict, Optional
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 import yaml
+import requests
 
 
 class ExternalRetrievalResult:

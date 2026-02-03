@@ -1,0 +1,490 @@
+# @GL-governed
+# @GL-layer: GQS-L0
+# @GL-semantic: quantum-primitive
+# @GL-audit-trail: ./governance/GL_SEMANTIC_ANCHOR.json
+
+---
+# Governance Quantum Stack (GQS) — 7層量子模型
+# 最終不可變、可執行、可驗證的治理架構
+#
+# 版本: v1.0.0
+# 日期: 2026-02-03
+# 狀態: Production Ready
+
+version: "1.0.0"
+metadata:
+  name: "Governance Quantum Stack"
+  description: "7-layer quantum governance model with superposition states"
+  semantic_anchor: "GQS_L0"
+  layer: "GQS-L0"
+  stability: "stable"
+
+# ============================================================================
+# GQS-L0: Quantum Primitive Layer (量子原語層)
+# ============================================================================
+gqs_l0:
+  name: "Quantum Primitive Layer"
+  purpose: "定義所有原子類型的元模式，包含不確定性標記"
+  output_type: "yaml"
+  
+  primitives:
+    # 超疊加對象原語
+    - kind: "superposed_object"
+      id_pattern: "/objects/{type}/{id}"
+      superposition_rules:
+        allow_multiple_states: true
+        collapse_condition: "on_observation"
+        max_superposition: 10
+      attributes_schema:
+        type: "string"
+        id: "string"
+        states: "array"
+        probabilities: "array"
+        observations: "array"
+        
+    # 時間原語
+    - kind: "temporal_primitive"
+      id_pattern: "/time/{timestamp}"
+      temporal_properties:
+        can_apply_retroactively: false
+        effective_time_direction: "forward_only"
+        time_resolution: "millisecond"
+      attributes_schema:
+        timestamp: "datetime RFC3339"
+        time_range: "tuple[start, end]"
+        causality_chain: "array"
+        
+    # 主體原語
+    - kind: "subject_primitive"
+      id_pattern: "/subjects/{type}/{id}"
+      identity_properties:
+        type: "human|service|system|role"
+        authentication: "jwt|oidc|api-key|mTLS"
+        authorization: "rbac|abac|pbac"
+      attributes_schema:
+        subject_id: "string"
+        subject_type: "string"
+        permissions: "array"
+        roles: "array"
+        
+    # 關係原語
+    - kind: "relationship_primitive"
+      id_pattern: "/rels/{from}/{to}/{type}"
+      relationship_types:
+        - "owns"
+        - "manages"
+        - "depends_on"
+        - "enforces"
+        - "observes"
+      attributes_schema:
+        from: "subject|object"
+        to: "subject|object"
+        type: "string"
+        strength: "float 0.0-1.0"
+        
+    # 證明原語
+    - kind: "proof_primitive"
+      id_pattern: "/proofs/{type}/{id}"
+      proof_types:
+        - "merkle_proof"
+        - "zk_snark"
+        - "digital_signature"
+        - "hash_chain"
+      attributes_schema:
+        proof_id: "string"
+        proof_type: "string"
+        data: "base64"
+        verification_key: "string"
+        
+    # 事件原語
+    - kind: "event_primitive"
+      id_pattern: "/events/{type}/{id}"
+      event_types:
+        - "observation"  # 觀測導致疊加態坍縮
+        - "mutation"     # 變更事件
+        - "enforcement"  # 執行事件
+        - "arbitration"  # 仲裁事件
+      attributes_schema:
+        event_id: "string"
+        event_type: "string"
+        timestamp: "datetime RFC3339"
+        actor: "string"
+        action: "string"
+        resource: "string"
+        result: "string"
+        hash: "string"
+        version: "string"
+        request_id: "string"
+        correlation_id: "string"
+        ip: "string"
+        user_agent: "string"
+
+# ============================================================================
+# GQS-L1: Superposed State Layer (疊加狀態層)
+# ============================================================================
+gqs_l1:
+  name: "Superposed State Layer"
+  purpose: "記錄時間點切片的完整系統狀態（概率分佈）"
+  output_type: "yaml"
+  input_from: "GQS-L0"
+  
+  state_schema:
+    superposition_id: "string"
+    time_range: "tuple[start, end]"
+    
+    # 疊加狀態
+    states:
+      - probability: "float 0.0-1.0"
+        state_id: "string"
+        description: "string"
+        evidence_sources: "array"
+        metadata: "object"
+        
+    # 觀測者效應記錄
+    observations:
+      - observer: "string"
+        collapsed_to: "string"
+        time: "datetime RFC3339"
+        context: "object"
+        
+    # 狀態關聯
+    relationships: "array"
+    
+    # 狀態證明
+    proof:
+      merkle_root: "string"
+      state_hash: "string"
+      previous_state_hash: "string"
+
+# ============================================================================
+# GQS-L2: Temporal & Causal Contract Layer (時空因果合同層)
+# ============================================================================
+gqs_l2:
+  name: "Temporal & Causal Contract Layer"
+  purpose: "定義帶時間窗口和因果鏈的規則"
+  output_type: "yaml"
+  input_from: "GQS-L1"
+  
+  contract_schema:
+    contract_id: "string"
+    valid_from: "datetime RFC3339"
+    valid_until: "datetime RFC3339"
+    
+    # 因果條件
+    causation:
+      causes: "array"  # 因為這些合同存在
+      enables: "array" # 啟用這些行為
+      prevents: "array" # 防止這些行為
+      
+    # 時間方向性
+    temporal_direction: "forward_only"
+    
+    # 範圍
+    scope:
+      subjects: "array"
+      objects: "array"
+      state_conditions: "array"
+      
+    # 規則（帶因果鏈）
+    rules:
+      - id: "string"
+        condition: "string"
+        causality_chain: "array"
+        when: "string"  # 觸發條件
+        severity: "blocking|warning|info"
+        effect: "string"  # 產生的效果
+        evidence_required: "boolean"
+        
+    # 合同本身也是治理對象
+    contract_metadata:
+      created_by: "string"
+      approved_by: "array"
+      version: "string"
+      dependencies: "array"
+
+# ============================================================================
+# GQS-L3: Deterministic Binding Layer (確定性綁定層)
+# ============================================================================
+gqs_l3:
+  name: "Deterministic Binding Layer"
+  purpose: "將規則映射到無副作用的驗證函數"
+  output_type: "yaml"
+  input_from: "GQS-L2"
+  
+  binding_schema:
+    binding_id: "string"
+    targets: "array"  # 指向的合同
+    
+    # 純函數定義
+    verifier:
+      type: "inline_wasm|external_service|opa_rego|python_lambda"
+      code: "string"
+      signature: "string"
+      
+    # 觸發條件（聲明式）
+    triggers:
+      - event_type: "string"
+        filter: "string"
+        
+    # 執行動作（聲明式）
+    actions:
+      - type: "string"
+        condition: "string"
+        params: "object"
+        
+    # 沙箱驗證
+    sandbox_verification:
+      passed: "boolean"
+      test_results: "array"
+      no_side_effects: "boolean"
+
+# ============================================================================
+# GQS-L4: Consistency Proof Layer (一致性證明層)
+# ============================================================================
+gqs_l4:
+  name: "Consistency Proof Layer"
+  purpose: "生成可驗證的數學證明"
+  output_type: "json"
+  input_from: "GQS-L3"
+  
+  proof_schema:
+    proof_id: "string"
+    
+    # 默克爾樹根
+    state_root: "string"
+    contract_root: "string"
+    binding_root: "string"
+    
+    # 包含證明
+    inclusions:
+      - object_id: "string"
+        proof: "array"  # 默克爾路徑
+        leaf_hash: "string"
+        
+    # 一致性證明
+    consistency_proof:
+      theorem: "string"
+      proof_type: "zk_snark|merkle_proof|digital_signature"
+      proof_data: "base64"
+      
+    # 時間線性證明
+    temporal_proof:
+      previous_state_root: "string"
+      current_state_root: "string"
+      transition_valid: "boolean"
+      timestamp: "datetime RFC3339"
+      
+    # 因果一致性證明
+    causal_consistency:
+      causality_chain: "array"
+      no_cycles: "boolean"
+      temporal_order: "boolean"
+
+# ============================================================================
+# GQS-L5: Pure Enforcement Layer (純執行層)
+# ============================================================================
+gqs_l5:
+  name: "Pure Enforcement Layer"
+  purpose: "基於證明執行治理動作"
+  output_type: "json"
+  input_from: "GQS-L4"
+  
+  execution_schema:
+    event_id: "string"
+    proofs_verified: "array"
+    verification_time_ms: "integer"
+    
+    # 執行決策
+    decision:
+      result: "block|allow|warn"
+      confidence: "float 0.0-1.0"
+      reasoning: "string"
+      
+    # 觸發的動作
+    actions_triggered: "array"
+    
+    # 疊加態坍縮記錄
+    state_collapse:
+      from_superposition: "string"
+      to_state: "string"
+      collapsed_at: "datetime RFC3339"
+      observer: "string"
+      
+    # 執行日誌
+    execution_log:
+      - timestamp: "datetime RFC3339"
+        step: "string"
+        result: "string"
+        evidence: "object"
+
+# ============================================================================
+# GQS-L6: Arbitration & Evolution Layer (仲裁與進化層)
+# ============================================================================
+gqs_l6:
+  name: "Arbitration & Evolution Layer"
+  purpose: "處理衝突和協議升級"
+  output_type: "yaml"
+  input_from: "GQS-L5"
+  
+  proposal_schema:
+    proposal_id: "string"
+    proposal_type: "primitive_extension|rule_modification|protocol_upgrade"
+    
+    changes:
+      - add_primitive: "object"
+      - modify_contract: "object"
+      - upgrade_protocol: "object"
+        
+    # 採用規則
+    adoption_rule:
+      type: "quorum|consensus|dictator"
+      required_approvals: "array"
+      deadline: "datetime RFC3339"
+      
+    # 自動生效條件
+    auto_enact_if:
+      - condition: "string"
+      - condition: "string"
+        
+    # 冷卻期
+    cooldown_period: "duration"
+    rollback_available: "boolean"
+    
+  ruling_schema:
+    ruling_id: "string"
+    dispute_id: "string"
+    
+    # 裁定決策
+    decision:
+      outcome: "approve|reject|modify"
+      reasoning: "string"
+      evidence_reviewed: "array"
+      
+    # 生成的合同或綁定
+    generated_artifacts: "array"
+    
+    # 審計軌跡
+    audit_trail:
+      - timestamp: "datetime RFC3339"
+        actor: "string"
+        action: "string"
+        rationale: "string"
+
+# ============================================================================
+# GQS-L7: Bootstrap & Trust Root Layer (自舉與信任根層)
+# ============================================================================
+gqs_l7:
+  name: "Bootstrap & Trust Root Layer"
+  purpose: "定義初始信任假設與不可變的核心"
+  output_type: "yaml"
+  stability: "immutable"
+  
+  trust_root:
+    genesis_id: "gqs-v1.0-2026"
+    created_at: "2026-02-03T00:00:00Z"
+    
+    # 初始原語（硬編碼）
+    initial_primitives:
+      - file: "/primitives/core-types.yaml"
+        hash: "sha256_placeholder"
+      - file: "/primitives/core-validators.yaml"
+        hash: "sha256_placeholder"
+        
+    # 初始治理委員會
+    initial_governors:
+      - subject_id: "platform/engineering"
+        weight: 1.0
+      - subject_id: "security/council"
+        weight: 1.0
+        
+    # 升級協議（初始規則）
+    bootstrap_protocol:
+      - "任何GQS-L0原語修改需要90%治理權重批准"
+      - "GQS-L1至GQS-L5邏輯可通過GQS-L6提案修改"
+      - "GQS-L7本身不可修改，除非硬分叉"
+      - "所有仲裁必須記錄完整因果鏈"
+        
+    # 數學假設
+    cryptographic_assumptions:
+      - "SHA-256抗碰撞"
+      - "ZK-SNARK完備性"
+      - "數字簽名不可偽造"
+      - "時間單向性"
+      - "因果閉環性"
+      
+    # 量子假設
+    quantum_assumptions:
+      - "疊加態可坍縮"
+      - "觀測者效應可追蹤"
+      - "概率分佈可計算"
+      - "因果鏈可驗證"
+
+# ============================================================================
+# 層級依賴圖
+# ============================================================================
+layer_dependencies:
+  GQS-L0:
+    depends_on: []
+    required_by: ["GQS-L1", "GQS-L2", "GQS-L3", "GQS-L4", "GQS-L5", "GQS-L6", "GQS-L7"]
+    
+  GQS-L1:
+    depends_on: ["GQS-L0"]
+    required_by: ["GQS-L2", "GQS-L4", "GQS-L5"]
+    
+  GQS-L2:
+    depends_on: ["GQS-L0", "GQS-L1"]
+    required_by: ["GQS-L3", "GQS-L4", "GQS-L5"]
+    
+  GQS-L3:
+    depends_on: ["GQS-L0", "GQS-L2"]
+    required_by: ["GQS-L4", "GQS-L5"]
+    
+  GQS-L4:
+    depends_on: ["GQS-L0", "GQS-L1", "GQS-L2", "GQS-L3"]
+    required_by: ["GQS-L5"]
+    
+  GQS-L5:
+    depends_on: ["GQS-L0", "GQS-L1", "GQS-L2", "GQS-L3", "GQS-L4"]
+    required_by: ["GQS-L6"]
+    
+  GQS-L6:
+    depends_on: ["GQS-L0", "GQS-L5"]
+    required_by: []
+    
+  GQS-L7:
+    depends_on: []
+    required_by: ["all_layers"]
+
+# ============================================================================
+# 驗證規則
+# ============================================================================
+validation_rules:
+  - rule: "V-001"
+    name: "層級單向依賴"
+    description: "禁止向上或跨層耦合"
+    severity: "CRITICAL"
+    check: "all dependencies are in lower layers"
+    
+  - rule: "V-002"
+    name: "時間方向性"
+    description: "禁止時間倒流"
+    severity: "CRITICAL"
+    check: "temporal_direction == 'forward_only'"
+    
+  - rule: "V-003"
+    name: "因果閉環"
+    description: "禁止因果循環"
+    severity: "CRITICAL"
+    check: "causality_chain has no cycles"
+    
+  - rule: "V-004"
+    name: "證明可驗證"
+    description: "所有證明必須可數學驗證"
+    severity: "CRITICAL"
+    check: "proof has verification_key"
+    
+  - rule: "V-005"
+    name: "執行無副作用"
+    description: "執行層必須基於證明，不能引入不確定性"
+    severity: "CRITICAL"
+    check: "execution is deterministic given proofs"

@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mnga.org/schemas/ugs-naming@1.0.0.json",
+  "title": "UGS Naming Format Schema",
+  "description": "Schema for naming conventions and identifiers",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "@GL-semantic",
+    "@GL-audit-trail",
+    "meta_spec"
+  ],
+  "properties": {
+    "@GL-semantic": {
+      "type": "string",
+      "description": "Semantic anchor"
+    },
+    "@GL-audit-trail": {
+      "type": "string",
+      "enum": ["enabled", "disabled"]
+    },
+    "meta_spec": {
+      "type": "object",
+      "required": ["id", "version", "title"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 5
+        },
+        "immutable": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "naming_conventions": {
+      "type": "object",
+      "description": "Naming convention definitions",
+      "properties": {
+        "spec_id": {
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "default": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+            },
+            "description": {
+              "type": "string",
+              "default": "Specification identifier with version"
+            },
+            "examples": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "org.mnga.meta-language@1.0.0",
+                "org.mnga.ugs-layer-format@1.0.0"
+              ]
+            }
+          }
+        },
+        "field_name": {
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "default": "^[a-z][a-z0-9_]*$"
+            },
+            "description": {
+              "type": "string",
+              "default": "Snake_case field names"
+            }
+          }
+        },
+        "semantic_anchor": {
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "default": "^[a-z][a-z0-9_-]*$"
+            },
+            "description": {
+              "type": "string",
+              "default": "Semantic anchor identifier"
+            }
+          }
+        }
+      }
+    }
+  },
+  "GL-governance": {
+    "layer": "l50-format",
+    "immutable": true,
+    "dependencies": ["org.mnga.meta-format@1.0.0"]
+  }
+}

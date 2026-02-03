@@ -55,7 +55,9 @@ lint-fix:
 	@echo "Fixing linting issues..."
 	@python3 -m black ecosystem/ platforms/
 	@python3 -m isort ecosystem/ platforms/
-	@yamllint .config/ .github/workflows/
+	@yamllint -f parsable .config/ .github/workflows/ | while read file line; do \
+		sed -i "$$line" "$$file"; \
+	done
 
 # Clean build artifacts
 clean:
@@ -132,7 +134,7 @@ install-deps:
 # Run development server
 dev:
 	@echo "Starting development server..."
-	@python3 platforms/gl.platform-assistant/api/server.py
+	@python3 -m platforms.gl.platform-assistant.api.server
 
 # Format code
 format:
@@ -241,5 +243,5 @@ status:
 	@echo "================"
 	@echo "Git branch: $$(git branch --show-current)"
 	@echo "Python version: $$(python3 --version)"
-	@echo "Virtual env: $$(if [ -d venv ]; then echo \"Active\"; else echo \"Not active\"; fi)"
-	@echo "Last enforce: $$(ls -lt ecosystem/logs/audit/*.json 2>/dev/null | head -1 | awk '{print $$6, $$7, $$8}' || echo \"Never\")"
+	@echo "Virtual env: $$(if [ -d venv ]; then echo "Active"; else echo "Not active"; fi)"
+	@echo "Last enforce: $$(ls -lt ecosystem/logs/audit/*.json 2>/dev/null | head -1 | awk '{print $$6, $$7, $$8}' || echo "Never")"

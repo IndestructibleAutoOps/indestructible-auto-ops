@@ -1,14 +1,8 @@
 #!/usr/local/bin/python3
-# @GL-governed
-# @GL-layer: common
-# @GL-semantic: 00_track_processes_on_ports
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
-#
-# GL Unified Charter Activated
 """
 Track processes running on ports on the sandbox.
 Filters out processes that are managed by the sandbox itself. (e.g. TTY terminal, VSCode server, etc.)
-Generates a supervisor config file to track the processes in `SUPERVISORD_CONF_FILE` (default: /etc/supervisor/conf.d/_mno_startup.conf).
+Generates a supervisor config file to track the processes in `SUPERVISORD_CONF_FILE` (default: /etc/supervisor/conf.d/_superninja_startup.conf).
 
 Usage:
     python3 00_track_processes_on_ports.py
@@ -41,7 +35,7 @@ PROCESS_PORTS_TO_IGNORE = {
 
 # Supervisor config file
 # This is the file that will be used to track the processes
-SUPERVISORD_CONF_FILE = "/etc/supervisor/conf.d/_mno_startup.conf"
+SUPERVISORD_CONF_FILE = "/etc/supervisor/conf.d/_superninja_startup.conf"
 
 # Supervisor config template
 # This is the template that will be used to generate each process entry in the supervisor config file
@@ -215,7 +209,7 @@ def main():
         processes: list[Process] = get_processes_listening_on_ports()
         processes = deduplicate_processes_by_port(processes)
     except Exception:
-        logger.exception("Error getting processes running on ports")
+        logger.exception(f"Error getting processes running on ports")
         sys.exit(1)
 
     # Track each unique command only once
@@ -227,7 +221,7 @@ def main():
         ]
         processes_info = deduplicate_processes_by_command(processes_info)
     except Exception:
-        logger.exception("Error getting process info")
+        logger.exception(f"Error getting process info")
         sys.exit(1)
 
     supervisor_config_entries: list[str] = []
@@ -248,7 +242,7 @@ def main():
         with open(SUPERVISORD_CONF_FILE, "w") as f:
             f.write("\n".join(supervisor_config_entries))
     except Exception:
-        logger.exception("Error writing supervisor config file")
+        logger.exception(f"Error writing supervisor config file")
         sys.exit(1)
 
     logger.info(
@@ -260,5 +254,5 @@ if __name__ == "__main__":
     try:
         main()
     except Exception:
-        logger.exception("Error tracking processes on ports")
+        logger.exception(f"Error tracking processes on ports")
         sys.exit(1)

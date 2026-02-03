@@ -2,11 +2,10 @@
 Traceability Engine
 Tracks complete reasoning process and provides full audit trail
 """
-# MNGA-002: Import organization needs review
 import os
 import json
 import hashlib
-from typing import List, Dict, Optional
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -158,13 +157,10 @@ class TraceabilityEngine:
         
         for result in results:
             if result.get("file_path"):
-                checksum = result.get("metadata", {}).get("checksum")
-                if checksum is None:
-                    checksum = result.get("checksum")
                 files.append({
                     "path": result.get("file_path"),
                     "lines": result.get("line_range"),
-                    "checksum": checksum,
+                    "checksum": result.get("metadata", {}).get("checksum"),
                     "snippet": result.get("content", "")[:200] + "..."
                 })
             

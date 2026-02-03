@@ -1,0 +1,1117 @@
+{
+  "timestamp": "2026-02-03T14:25:40.850614Z",
+  "metrics": {
+    "total_components": 105,
+    "by_type": {
+      "documentation": 33,
+      "json_schema": 19,
+      "yaml_spec": 26,
+      "python_module": 27
+    },
+    "by_layer": {
+      "meta-spec": 6,
+      "ugs": 10,
+      "governance": 49,
+      "reasoning": 15,
+      "gates": 2,
+      "platform-cloud": 4,
+      "ecosystem-cloud": 7,
+      "contracts": 0,
+      "engines": 0
+    },
+    "total_dependencies": 171,
+    "avg_dependencies_per_component": 1.6285714285714286,
+    "most_dependent": [
+      [
+        "verify_network_interaction",
+        11
+      ],
+      [
+        "enforcers.governance_enforcer",
+        10
+      ],
+      [
+        "enforcers.pipeline_integration",
+        10
+      ],
+      [
+        "enforcers.role_executor",
+        10
+      ],
+      [
+        "enforcers.self_auditor",
+        8
+      ]
+    ],
+    "most_coupled": [
+      [
+        "contracts.governance.ROLE_LANGUAGE_SPECIFICATION",
+        0
+      ],
+      [
+        "contracts.governance.ROLE_RUNTIME_FLOW",
+        0
+      ],
+      [
+        "contracts.governance.ROLE_SYSTEM_IMPLEMENTATION_COMPLETE",
+        0
+      ],
+      [
+        "contracts.governance.role.schema",
+        0
+      ],
+      [
+        "contracts.governance.roles.ecosystem.analyst",
+        0
+      ]
+    ]
+  },
+  "layers": {
+    "meta-spec": [
+      "governance.meta-spec.format.meta-format.schema",
+      "governance.meta-spec.language.meta-language.spec",
+      "governance.meta-spec.meta-spec.meta",
+      "governance.meta-spec.registry.specs.registry",
+      "governance.meta-spec.semantics.meta-semantics",
+      "governance.meta-spec.topology.meta-topology"
+    ],
+    "ugs": [
+      "governance.ugs.l00-language.grammar.ast",
+      "governance.ugs.l00-language.grammar.tokens",
+      "governance.ugs.l00-language.ldl.spec",
+      "governance.ugs.l02-semantics.layer-semantics",
+      "governance.ugs.l03-index.index-spec",
+      "governance.ugs.l04-topology.topology-spec",
+      "governance.ugs.l50-format.governance.schema",
+      "governance.ugs.l50-format.layer.schema",
+      "governance.ugs.l50-format.naming.schema",
+      "governance.ugs.ugs.meta"
+    ],
+    "governance": [
+      "contracts.governance.ROLE_LANGUAGE_SPECIFICATION",
+      "contracts.governance.ROLE_RUNTIME_FLOW",
+      "contracts.governance.ROLE_SYSTEM_IMPLEMENTATION_COMPLETE",
+      "contracts.governance.role.schema",
+      "contracts.governance.roles.ecosystem.analyst",
+      "contracts.governance.roles.ecosystem.architect",
+      "contracts.governance.roles.ecosystem.runner",
+      "contracts.governance.roles.ecosystem.semantic-checker",
+      "contracts.governance.roles.ecosystem.validator",
+      "contracts.governance.roles.registry",
+      "contracts.naming-governance.gl-build-layer-specification",
+      "contracts.naming-governance.gl-ci-cd-layer-specification",
+      "contracts.naming-governance.gl-dependency-layer-specification",
+      "contracts.naming-governance.gl-deployment-layer-specification",
+      "contracts.naming-governance.gl-documentation-layer-specification",
+      "contracts.naming-governance.gl-extensibility-layer-specification",
+      "contracts.naming-governance.gl-generator-layer-specification",
+      "contracts.naming-governance.gl-governance-layer-specification",
+      "contracts.naming-governance.gl-indexing-layer-specification",
+      "contracts.naming-governance.gl-interface-layer-specification",
+      "contracts.naming-governance.gl-metadata-layer-specification",
+      "contracts.naming-governance.gl-observability-layer-specification",
+      "contracts.naming-governance.gl-packaging-layer-specification",
+      "contracts.naming-governance.gl-permission-layer-specification",
+      "contracts.naming-governance.gl-reasoning-layer-specification",
+      "contracts.naming-governance.gl-security-layer-specification",
+      "contracts.naming-governance.gl-supply-chain-layer-specification",
+      "contracts.naming-governance.gl-testing-layer-specification",
+      "contracts.naming-governance.gl-user-facing-layer-specification",
+      "contracts.naming-governance.gl-validation-layer-specification",
+      "contracts.naming-governance.gl-versioning-layer-specification",
+      "ecosystem.governance.docs.architecture.architecture_summary",
+      "ecosystem.governance.docs.architecture.components",
+      "ecosystem.governance.docs.architecture.layers",
+      "ecosystem.governance.docs.architecture.metrics",
+      "enforcers.governance_enforcer",
+      "governance.docs.architecture.architecture_summary",
+      "governance.docs.architecture.components",
+      "governance.docs.architecture.layers",
+      "governance.docs.architecture.metrics",
+      "governance.engines.refresh.__init__",
+      "governance.engines.refresh.refresh_engine",
+      "governance.engines.reverse-architecture.__init__",
+      "governance.engines.reverse-architecture.reverse_architecture_engine",
+      "governance.engines.validation.__init__",
+      "governance.engines.validation.validation_engine",
+      "governance.format-layer.schemas.contract.schema",
+      "governance.format-layer.schemas.evidence.schema",
+      "governance.format-layer.schemas.platform-instance.schema"
+    ],
+    "reasoning": [
+      "contracts.reasoning.dual_path_spec",
+      "reasoning.agents.planning_agent",
+      "reasoning.agents.tools_registry",
+      "reasoning.auto_reasoner",
+      "reasoning.contracts.dual_path_spec",
+      "reasoning.dual_path.arbitration.arbitrator",
+      "reasoning.dual_path.arbitration.rule_engine",
+      "reasoning.dual_path.arbitration.rules.api",
+      "reasoning.dual_path.arbitration.rules.dependency",
+      "reasoning.dual_path.arbitration.rules.security",
+      "reasoning.dual_path.external.retrieval",
+      "reasoning.dual_path.internal.knowledge_graph",
+      "reasoning.dual_path.internal.retrieval",
+      "reasoning.traceability.feedback",
+      "reasoning.traceability.traceability"
+    ],
+    "gates": [
+      "gates.operation-gate",
+      "gates.self-auditor-config"
+    ],
+    "platform-cloud": [
+      "platform-cloud.README",
+      "platform-cloud.dev.deployment",
+      "platform-cloud.dev.environment",
+      "platform-cloud.dev.platform"
+    ],
+    "ecosystem-cloud": [
+      "ecosystem-cloud.adapters.aws.aws_adapter",
+      "ecosystem-cloud.contracts.compute.v1.compute_contract",
+      "ecosystem-cloud.contracts.logging.v1.logging_contract",
+      "ecosystem-cloud.contracts.queue.v1.queue_contract",
+      "ecosystem-cloud.contracts.secrets.v1.secrets_contract",
+      "ecosystem-cloud.contracts.storage.v1.storage_contract",
+      "ecosystem-cloud.registry.cloud_adapters"
+    ],
+    "contracts": [],
+    "engines": []
+  },
+  "components": [
+    {
+      "name": "contracts.governance.ROLE_LANGUAGE_SPECIFICATION",
+      "type": "documentation",
+      "path": "ecosystem/contracts/governance/ROLE_LANGUAGE_SPECIFICATION.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.ROLE_RUNTIME_FLOW",
+      "type": "documentation",
+      "path": "ecosystem/contracts/governance/ROLE_RUNTIME_FLOW.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.ROLE_SYSTEM_IMPLEMENTATION_COMPLETE",
+      "type": "documentation",
+      "path": "ecosystem/contracts/governance/ROLE_SYSTEM_IMPLEMENTATION_COMPLETE.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.role.schema",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/role.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.roles.ecosystem.analyst",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/roles/ecosystem.analyst.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.roles.ecosystem.architect",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/roles/ecosystem.architect.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.roles.ecosystem.runner",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/roles/ecosystem.runner.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.roles.ecosystem.semantic-checker",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/roles/ecosystem.semantic-checker.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.roles.ecosystem.validator",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/roles/ecosystem.validator.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.governance.roles.registry",
+      "type": "json_schema",
+      "path": "ecosystem/contracts/governance/roles/registry.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-build-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-build-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-ci-cd-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-ci-cd-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-dependency-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-dependency-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-deployment-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-deployment-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-documentation-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-documentation-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-extensibility-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-extensibility-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-generator-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-generator-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-governance-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-governance-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-indexing-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-indexing-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-interface-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-interface-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-metadata-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-metadata-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-observability-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-observability-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-packaging-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-packaging-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-permission-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-permission-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-reasoning-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-reasoning-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-security-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-security-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-supply-chain-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-supply-chain-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-testing-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-testing-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-user-facing-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-user-facing-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-validation-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-validation-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.naming-governance.gl-versioning-layer-specification",
+      "type": "documentation",
+      "path": "ecosystem/contracts/naming-governance/gl-versioning-layer-specification.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "contracts.reasoning.dual_path_spec",
+      "type": "yaml_spec",
+      "path": "ecosystem/contracts/reasoning/dual_path_spec.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "docs.NETWORK_INTERACTION_VERIFICATION",
+      "type": "documentation",
+      "path": "ecosystem/docs/NETWORK_INTERACTION_VERIFICATION.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.adapters.aws.aws_adapter",
+      "type": "python_module",
+      "path": "ecosystem/ecosystem-cloud/adapters/aws/aws_adapter.py",
+      "dependencies": [
+        "base64",
+        "boto3",
+        "hashlib",
+        "typing",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.contracts.compute.v1.compute_contract",
+      "type": "yaml_spec",
+      "path": "ecosystem/ecosystem-cloud/contracts/compute/v1/compute_contract.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.contracts.logging.v1.logging_contract",
+      "type": "yaml_spec",
+      "path": "ecosystem/ecosystem-cloud/contracts/logging/v1/logging_contract.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.contracts.queue.v1.queue_contract",
+      "type": "yaml_spec",
+      "path": "ecosystem/ecosystem-cloud/contracts/queue/v1/queue_contract.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.contracts.secrets.v1.secrets_contract",
+      "type": "yaml_spec",
+      "path": "ecosystem/ecosystem-cloud/contracts/secrets/v1/secrets_contract.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.contracts.storage.v1.storage_contract",
+      "type": "yaml_spec",
+      "path": "ecosystem/ecosystem-cloud/contracts/storage/v1/storage_contract.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem-cloud.registry.cloud_adapters",
+      "type": "yaml_spec",
+      "path": "ecosystem/ecosystem-cloud/registry/cloud_adapters.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem.governance.docs.architecture.architecture_summary",
+      "type": "json_schema",
+      "path": "ecosystem/ecosystem/governance/docs/architecture/architecture_summary.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem.governance.docs.architecture.components",
+      "type": "documentation",
+      "path": "ecosystem/ecosystem/governance/docs/architecture/components.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem.governance.docs.architecture.layers",
+      "type": "documentation",
+      "path": "ecosystem/ecosystem/governance/docs/architecture/layers.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "ecosystem.governance.docs.architecture.metrics",
+      "type": "documentation",
+      "path": "ecosystem/ecosystem/governance/docs/architecture/metrics.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "enforce",
+      "type": "python_module",
+      "path": "ecosystem/enforce.py",
+      "dependencies": [
+        "os",
+        "importlib",
+        "sys",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "enforcers.ARCHITECTURE",
+      "type": "documentation",
+      "path": "ecosystem/enforcers/ARCHITECTURE.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "enforcers.governance_enforcer",
+      "type": "python_module",
+      "path": "ecosystem/enforcers/governance_enforcer.py",
+      "dependencies": [
+        "json",
+        "enum",
+        "hashlib",
+        "yaml",
+        "datetime",
+        "typing",
+        "os",
+        "sys",
+        "dataclasses",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "enforcers.pipeline_integration",
+      "type": "python_module",
+      "path": "ecosystem/enforcers/pipeline_integration.py",
+      "dependencies": [
+        "re",
+        "json",
+        "hashlib",
+        "yaml",
+        "datetime",
+        "typing",
+        "gl_fact_pipeline",
+        "os",
+        "sys",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "enforcers.role_executor",
+      "type": "python_module",
+      "path": "ecosystem/enforcers/role_executor.py",
+      "dependencies": [
+        "json",
+        "traceback",
+        "hashlib",
+        "asyncio",
+        "uuid",
+        "typing",
+        "datetime",
+        "sys",
+        "dataclasses",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "enforcers.self_auditor",
+      "type": "python_module",
+      "path": "ecosystem/enforcers/self_auditor.py",
+      "dependencies": [
+        "re",
+        "json",
+        "collections",
+        "yaml",
+        "typing",
+        "os",
+        "datetime",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "gates.operation-gate",
+      "type": "yaml_spec",
+      "path": "ecosystem/gates/operation-gate.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "gates.self-auditor-config",
+      "type": "yaml_spec",
+      "path": "ecosystem/gates/self-auditor-config.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.docs.architecture.architecture_summary",
+      "type": "json_schema",
+      "path": "ecosystem/governance/docs/architecture/architecture_summary.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.docs.architecture.components",
+      "type": "documentation",
+      "path": "ecosystem/governance/docs/architecture/components.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.docs.architecture.layers",
+      "type": "documentation",
+      "path": "ecosystem/governance/docs/architecture/layers.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.docs.architecture.metrics",
+      "type": "documentation",
+      "path": "ecosystem/governance/docs/architecture/metrics.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.engines.refresh.__init__",
+      "type": "python_module",
+      "path": "ecosystem/governance/engines/refresh/__init__.py",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.engines.refresh.refresh_engine",
+      "type": "python_module",
+      "path": "ecosystem/governance/engines/refresh/refresh_engine.py",
+      "dependencies": [
+        "json",
+        "hashlib",
+        "typing",
+        "os",
+        "datetime",
+        "dataclasses"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.engines.reverse-architecture.__init__",
+      "type": "python_module",
+      "path": "ecosystem/governance/engines/reverse-architecture/__init__.py",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.engines.reverse-architecture.reverse_architecture_engine",
+      "type": "python_module",
+      "path": "ecosystem/governance/engines/reverse-architecture/reverse_architecture_engine.py",
+      "dependencies": [
+        "re",
+        "json",
+        "typing",
+        "os",
+        "datetime",
+        "dataclasses"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.engines.validation.__init__",
+      "type": "python_module",
+      "path": "ecosystem/governance/engines/validation/__init__.py",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.engines.validation.validation_engine",
+      "type": "python_module",
+      "path": "ecosystem/governance/engines/validation/validation_engine.py",
+      "dependencies": [
+        "re",
+        "json",
+        "enum",
+        "typing",
+        "os",
+        "datetime",
+        "dataclasses"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.format-layer.schemas.contract.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/format-layer/schemas/contract.schema.json",
+      "dependencies": [
+        "#/$defs/provider_info",
+        "#/$defs/parameter",
+        "#/$defs/validation_rule",
+        "#/$defs/capability",
+        "#/$defs/type_definition"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.format-layer.schemas.evidence.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/format-layer/schemas/evidence.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.format-layer.schemas.platform-instance.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/format-layer/schemas/platform-instance.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.meta-spec.format.meta-format.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/meta-spec/format/meta-format.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.meta-spec.language.meta-language.spec",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/meta-spec/language/meta-language.spec.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.meta-spec.meta-spec.meta",
+      "type": "json_schema",
+      "path": "ecosystem/governance/meta-spec/meta-spec.meta.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.meta-spec.registry.specs.registry",
+      "type": "json_schema",
+      "path": "ecosystem/governance/meta-spec/registry/specs.registry.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.meta-spec.semantics.meta-semantics",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/meta-spec/semantics/meta-semantics.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.meta-spec.topology.meta-topology",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/meta-spec/topology/meta-topology.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l00-language.grammar.ast",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/ugs/l00-language/grammar/ast.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l00-language.grammar.tokens",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/ugs/l00-language/grammar/tokens.yaml",
+      "dependencies": [
+        "org.mnga.ugs.tokens@1.0.0"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l00-language.ldl.spec",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/ugs/l00-language/ldl.spec.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l02-semantics.layer-semantics",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/ugs/l02-semantics/layer-semantics.yaml",
+      "dependencies": [
+        "org.mnga.ugs.semantics@1.0.0"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l03-index.index-spec",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/ugs/l03-index/index-spec.yaml",
+      "dependencies": [
+        "org.mnga.ugs.index@1.0.0"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l04-topology.topology-spec",
+      "type": "yaml_spec",
+      "path": "ecosystem/governance/ugs/l04-topology/topology-spec.yaml",
+      "dependencies": [
+        "org.mnga.ugs.topology@1.0.0"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l50-format.governance.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/ugs/l50-format/governance.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l50-format.layer.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/ugs/l50-format/layer.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.l50-format.naming.schema",
+      "type": "json_schema",
+      "path": "ecosystem/governance/ugs/l50-format/naming.schema.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "governance.ugs.ugs.meta",
+      "type": "json_schema",
+      "path": "ecosystem/governance/ugs/ugs.meta.json",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "hooks.post_execution",
+      "type": "python_module",
+      "path": "ecosystem/hooks/post_execution.py",
+      "dependencies": [
+        "json",
+        "ecosystem",
+        "typing",
+        "datetime",
+        "sys",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "hooks.pre_execution",
+      "type": "python_module",
+      "path": "ecosystem/hooks/pre_execution.py",
+      "dependencies": [
+        "json",
+        "ecosystem",
+        "typing",
+        "datetime",
+        "sys",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "platform-cloud.README",
+      "type": "documentation",
+      "path": "ecosystem/platform-cloud/README.md",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "platform-cloud.dev.deployment",
+      "type": "yaml_spec",
+      "path": "ecosystem/platform-cloud/dev/deployment.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "platform-cloud.dev.environment",
+      "type": "yaml_spec",
+      "path": "ecosystem/platform-cloud/dev/environment.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "platform-cloud.dev.platform",
+      "type": "yaml_spec",
+      "path": "ecosystem/platform-cloud/dev/platform.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.agents.planning_agent",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/agents/planning_agent.py",
+      "dependencies": [
+        "json",
+        "enum",
+        "hashlib",
+        "typing",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.agents.tools_registry",
+      "type": "yaml_spec",
+      "path": "ecosystem/reasoning/agents/tools_registry.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.auto_reasoner",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/auto_reasoner.py",
+      "dependencies": [
+        "re",
+        "json",
+        "typing",
+        "datetime",
+        "dataclasses"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.contracts.dual_path_spec",
+      "type": "yaml_spec",
+      "path": "ecosystem/reasoning/contracts/dual_path_spec.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.arbitration.arbitrator",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/dual_path/arbitration/arbitrator.py",
+      "dependencies": [
+        "json",
+        "enum",
+        "hashlib",
+        "yaml",
+        "typing",
+        "os",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.arbitration.rule_engine",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/dual_path/arbitration/rule_engine.py",
+      "dependencies": [
+        "os",
+        "datetime",
+        "typing",
+        "yaml"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.arbitration.rules.api",
+      "type": "yaml_spec",
+      "path": "ecosystem/reasoning/dual_path/arbitration/rules/api.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.arbitration.rules.dependency",
+      "type": "yaml_spec",
+      "path": "ecosystem/reasoning/dual_path/arbitration/rules/dependency.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.arbitration.rules.security",
+      "type": "yaml_spec",
+      "path": "ecosystem/reasoning/dual_path/arbitration/rules/security.yaml",
+      "dependencies": [],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.external.retrieval",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/dual_path/external/retrieval.py",
+      "dependencies": [
+        "requests",
+        "json",
+        "hashlib",
+        "yaml",
+        "typing",
+        "os",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.internal.knowledge_graph",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/dual_path/internal/knowledge_graph.py",
+      "dependencies": [
+        "json",
+        "collections",
+        "hashlib",
+        "yaml",
+        "typing",
+        "os",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.dual_path.internal.retrieval",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/dual_path/internal/retrieval.py",
+      "dependencies": [
+        "json",
+        "hashlib",
+        "yaml",
+        "typing",
+        "os",
+        "datetime"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.traceability.feedback",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/traceability/feedback.py",
+      "dependencies": [
+        "json",
+        "collections",
+        "hashlib",
+        "typing",
+        "os",
+        "datetime",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "reasoning.traceability.traceability",
+      "type": "python_module",
+      "path": "ecosystem/reasoning/traceability/traceability.py",
+      "dependencies": [
+        "json",
+        "hashlib",
+        "typing",
+        "os",
+        "datetime",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "scripts.analyze_violations",
+      "type": "python_module",
+      "path": "ecosystem/scripts/analyze_violations.py",
+      "dependencies": [
+        "json",
+        "sys",
+        "pathlib",
+        "typing"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "scripts.apply_auto_fixes",
+      "type": "python_module",
+      "path": "ecosystem/scripts/apply_auto_fixes.py",
+      "dependencies": [
+        "re",
+        "json",
+        "yaml",
+        "typing",
+        "os",
+        "sys",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "validators.network_validator",
+      "type": "python_module",
+      "path": "ecosystem/validators/network_validator.py",
+      "dependencies": [
+        "json",
+        "urllib",
+        "socket",
+        "time",
+        "typing",
+        "subprocess",
+        "dataclasses",
+        "pathlib"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "verify_network_interaction",
+      "type": "python_module",
+      "path": "ecosystem/verify_network_interaction.py",
+      "dependencies": [
+        "argparse",
+        "json",
+        "traceback",
+        "validators",
+        "reasoning",
+        "datetime",
+        "typing",
+        "subprocess",
+        "os",
+        "sys",
+        "pathlib"
+      ],
+      "dependents": []
+    }
+  ]
+}

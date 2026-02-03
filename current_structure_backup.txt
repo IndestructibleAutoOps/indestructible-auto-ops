@@ -1,0 +1,496 @@
+.
+├── =1.28.0
+├── AEP-GOVERNANCE-AUDIT-MIGRATION-COMPLETE.md
+├── AEP_ENGINE_APP_SECURITY_FIX_REPORT.md
+├── ARTIFACTS_UPGRADE_V10.md
+├── BARCODE-QR-CODE-FIX-COMPLETE.md
+├── BRANCH_QUICK_REFERENCE.md
+├── BRANCH_STATUS_REPORT.md
+├── BRANCH_STRATEGY.md
+├── BUG_FIX_COMPLETION_REPORT.md
+├── CHANGELOG.md
+├── CNAME
+├── CODE_OF_CONDUCT.md
+├── COMPLETE_UPGRADE_ROADMAP.md
+├── CONTRIBUTING.md
+├── DATA-SYNC-INTEGRATION-COMPLETION-REPORT.md
+├── DEPLOYMENT_GUIDE.md
+├── DEVELOPMENT_STRATEGY.md
+├── Dockerfile
+├── Dockerfile.production
+├── ENTERPRISE_DEPLOYMENT_COMPLETION_REPORT.md
+├── ENTERPRISE_INFRASTRUCTURE_IMPLEMENTATION.md
+├── FILE_VERSION_AUDIT_PLAN.md
+├── FINAL-INTEGRATION-SUMMARY.md
+├── GITHUB-REPOSITORY-ANALYZER-COMPLETE.md
+├── GL-AUDIT-REMEDICATION-COMPLETE.md
+├── GL-CODEQL-SECURITY-FIX-SUMMARY.md
+├── GL-CODEQL-TOOLS-FIX-COMPLETE.md
+├── GL-FINAL-COMPLETION.md
+├── GL-FIX-COMPLETION.md
+├── GL-GATES-01-99-INTEGRATION-COMPLETE.md
+├── GL-GLOBAL-COMPLETION.md
+├── GL-GLOBAL-INTEGRATION-COMPLETE.md
+├── GL-GLOBAL-REMEDIATION-COMPLETE.md
+├── GL-HOOKS-MIGRATION-COMPLETE.md
+├── GL-IMPLEMENTATION-COMPLETE.md
+├── GL-INTEGRATION-COMPLETION.md
+├── GL-ROOT-AUDIT-COMPLETE.md
+├── GL-ROOT-CONSOLIDATION-COMPLETE.md
+├── GL-VULNERABILITY-FIX-COMPLETE.md
+├── GL10-MIGRATION-COMPLETE.md
+├── GL10-TOP10-MIGRATION-COMPLETE.md
+├── GL_FEDERATION_V5_COMPLETE.md
+├── GL_FEDERATION_V5_V6_COMPLETE.md
+├── GL_FINAL_COMPLETION_V3.md
+├── GL_PLATFORM_DEPLOYMENT_SUMMARY.md
+├── GL_PLATFORM_STARTUP_REPORT.md
+├── GL_V10_QUANTUM_ARCHITECT_PLATFORM_COMPLETION.md
+├── GL_V11_COGNITIVE_MESH_IMPLEMENTATION.md
+├── GL_V12_SELF_EVOLVING_RUNTIME.md
+├── GL_V4_FINAL_DEPLOYMENT_COMPLETE.md
+├── GL_V4_POST_DEPLOYMENT_COMPLETE.md
+├── GL_V5_COMPLETION.md
+├── GL_V9_COMPLETION.md
+├── GL_V9_GLOBAL_GOVERNANCE_AUDIT_REPORT.md
+├── GL_VERSION_4_COMPLETION.md
+├── GOVERNANCE_FILE_STRUCTURE_ANALYSIS.md
+├── GOVERNANCE_IMPORT_PLAN.md
+├── IMPLEMENTATION_SUMMARY.md
+├── INFRASTRUCTURE_COMPONENTS_COMPLETION_REPORT.md
+├── INFRASTRUCTURE_TEST_REPORT.md
+├── INTEGRATION_TESTING_PLAN.md
+├── KUBERNETES-INTEGRATION-COMPLETE.md
+├── LICENSE
+├── MODERNIZATION-CAPABILITIES.md
+├── MULTI_AGENT_CODEQL_IMPLEMENTATION_REPORT.md
+├── MULTI_AGENT_PARALLEL_IMPLEMENTATION.md
+├── MULTI_BRANCH_INTEGRATION_COMPLETION_REPORT.md
+├── MULTI_BRANCH_INTEGRATION_SUMMARY.md
+├── Makefile
+├── PERFORMANCE_BENCHMARKING_PLAN.md
+├── PERFORMANCE_BENCHMARKING_SUMMARY.md
+├── PHASE_7_8_COMPLETION_REPORT.md
+├── PLATFORM_DEPLOYMENT_V3_COMPLETE.md
+├── PLUGGABLE_DEPLOYMENT_GUIDE.md
+├── PRODUCTION_BUG_FIX_SUMMARY.md
+├── PRODUCTION_DEPLOYMENT_PLAN.md
+├── PRODUCTION_DEPLOYMENT_SUMMARY.md
+├── PUSH_BLOCKED_SUMMARY.md
+├── QUANTUM_PLATFORM_ARCHITECTURE.md
+├── QUANTUM_PLATFORM_INTEGRATION_COMPLETE.md
+├── QUICK_REFERENCE.md
+├── README-GOVERNANCE-MONITOR.md
+├── README-MACHINE.md
+├── README.md
+├── REFACTORING_COMPLETION_REPORT.md
+├── REFACTORING_SUMMARY.md
+├── RKE2_INTEGRATION_SUMMARY.md
+├── SECURITY.md
+├── SEMANTIC-SEARCH-SYSTEM-COMPLETE.md
+├── TASK_COMPLETION_REPORT.md
+├── TESTING_COMPLETION_REPORT.md
+├── TESTING_SUMMARY.md
+├── VERSION_3_DEPLOYMENT_COMPLETE.md
+├── VERSION_AUDIT_REPORT.json
+├── WORKFLOW_FAILURE_ANALYSIS.md
+├── actionlint
+├── add-gl-markers-batch.py
+├── add-gl-markers-json.py
+├── add-gl-markers-yaml.py
+├── add-gl-markers.py
+├── archives
+│   ├── old-outputs
+│   └── old-scripts
+├── audit-reports
+│   ├── FINAL-SUMMARY.md
+│   ├── engineering-recommendations.md
+│   └── real-audit-report.md
+├── code-scanning-rules-used (4).csv
+├── config
+│   ├── enterprise-platform-architecture.yaml
+│   ├── performance
+│   ├── platform-deployment.yaml
+│   └── sla
+├── deploy
+│   └── platform
+├── deployment-scripts
+│   ├── 01_ARCHITECTURE_ANALYSIS.md
+│   ├── air-gapped
+│   ├── cluster
+│   ├── single-node
+│   └── todo.md
+├── designs
+│   └── multi-agent-architecture.md
+├── docker-compose.production.yml
+├── docker-compose.yaml
+├── docs
+│   ├── MIGRATION
+│   ├── QUANTUM-ARCHITECTURE-PLATFORM.md
+│   ├── RKE2_SECURITY_INTEGRATION_PLAN.md
+│   ├── ROOT_FILES_ANALYSIS.md
+│   ├── RUNBOOKS
+│   ├── SELF-HOSTED-RUNNER-SETUP.md
+│   ├── TRAINING
+│   ├── implementation-progress.md
+│   └── reports
+├── documentation-manifest.yaml
+├── elasticsearch-search-system
+│   ├── controlplane
+│   ├── governance
+│   ├── manifest.yaml
+│   ├── root-contracts
+│   ├── root-evidence
+│   ├── root-policy
+│   ├── tools
+│   ├── var
+│   └── workspace
+├── elasticsearch-validation-output.txt
+├── engine
+│   ├── README.md
+│   ├── SPEC.md
+│   ├── aep-engine-app
+│   ├── aep-engine-web
+│   ├── artifacts
+│   ├── controlplane
+│   ├── design
+│   ├── engine
+│   ├── etl-pipeline
+│   ├── execution
+│   ├── executor
+│   ├── github-repository-analyzer
+│   ├── gl-gate
+│   ├── governance
+│   ├── index.ts
+│   ├── integration-tests-legacy
+│   ├── interfaces-fix.d.ts
+│   ├── interfaces.d.ts
+│   ├── jest.config.js
+│   ├── loader
+│   ├── normalizer
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── parser
+│   ├── performance-tests-legacy
+│   ├── renderer
+│   ├── schemas
+│   ├── scripts
+│   ├── scripts-legacy
+│   ├── semantic-search-system
+│   ├── templates
+│   ├── test-results-legacy
+│   ├── tests
+│   ├── tests-legacy
+│   ├── tools-legacy
+│   ├── tsconfig.json
+│   ├── types
+│   └── validator
+├── engine_structure.txt
+├── esync-platform
+│   ├── COMPLETION_REPORT.md
+│   ├── Makefile
+│   ├── PLATFORM_STATUS.md
+│   ├── QUANTUM_ARCHITECTURE_SUMMARY.md
+│   ├── README.md
+│   ├── cmd
+│   ├── deploy
+│   ├── docs
+│   ├── go.mod
+│   ├── governance
+│   ├── internal
+│   ├── observability
+│   ├── pipelines
+│   ├── scripts
+│   └── todo.md
+├── event-driven-system.service
+├── file-organizer-system
+│   ├── GL_SEMANTIC_ANCHOR.json
+│   ├── client
+│   ├── governance
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server
+├── fix-governance-markers.py
+├── fos-validation-output.txt
+├── gitleaks
+├── gl-audit-simple.py
+├── gl-enterprise-architecture
+│   ├── config
+│   ├── deployments
+│   ├── docs
+│   ├── environments
+│   ├── infrastructure
+│   ├── libraries
+│   ├── modules
+│   ├── platforms
+│   ├── services
+│   ├── tests
+│   └── tools
+├── gl-platform-universe
+│   ├── GL90-99-Meta-Specification-Layer
+│   ├── IMPLEMENTATION_SUMMARY.md
+│   ├── README.md
+│   ├── artifacts
+│   ├── contracts
+│   ├── governance
+│   ├── observability
+│   ├── platforms
+│   ├── scripts
+│   ├── todo.md
+│   └── workflows
+├── gl-runtime-platform
+│   ├── COMPLETE_FIX_REPORT.md
+│   ├── Dockerfile
+│   ├── GIT_SUBMIT_SUMMARY.md
+│   ├── GL_EVOLUTION_DIAGRAM.md
+│   ├── GL_RUNTIME_EVOLUTION_PATH.md
+│   ├── GL_V13_CIVILIZATION_LAYER.md
+│   ├── GL_V14_META_COGNITIVE_RUNTIME.md
+│   ├── GL_V14_META_COGNITIVE_RUNTIME_NEW.md
+│   ├── GL_V15_UNIVERSAL_INTELLIGENCE.md
+│   ├── GL_V16_OMNI_CONTEXT_INTEGRATION.md
+│   ├── GL_V17_TRANS_DOMAIN_INTEGRATION.md
+│   ├── GL_V18_INTER_REALITY_INTEGRATION.md
+│   ├── GL_V19_UNIFIED_INTELLIGENCE_FABRIC.md
+│   ├── GL_V7_COMPLETION.md
+│   ├── GL_V8_COMPLETION.md
+│   ├── README.md
+│   ├── SECURITY_FIX_REPORT.md
+│   ├── SYSTEM_TEST_REPORT.md
+│   ├── analysis-recommendations.md
+│   ├── api
+│   ├── civilization
+│   ├── code-intel-security-layer
+│   ├── cognitive-mesh
+│   ├── config
+│   ├── connectors
+│   ├── control-plane
+│   ├── deployment
+│   ├── docker-compose.yml
+│   ├── docs
+│   ├── engine
+│   ├── evolution
+│   ├── fabric-storage
+│   ├── federation
+│   ├── fix-v14.js
+│   ├── gl
+│   ├── gl-runtime
+│   ├── global-dag
+│   ├── governance
+│   ├── governance-audit-reports
+│   ├── governance-audit-reports-main
+│   ├── infinite-learning-continuum
+│   ├── inter-reality
+│   ├── meta-cognition
+│   ├── meta-cognitive
+│   ├── omni-context
+│   ├── ops
+│   ├── package.json
+│   ├── priority1-completion-report.md
+│   ├── progress-report.md
+│   ├── reports-main
+│   ├── reports-review.md
+│   ├── scripts
+│   ├── security-scan-report.md
+│   ├── server.js
+│   ├── simple-server.js
+│   ├── src
+│   ├── storage
+│   ├── system-test-todo.md
+│   ├── tasks
+│   ├── templates
+│   ├── test-civilization.js
+│   ├── test-meta-cognitive.js
+│   ├── test-reports
+│   ├── test-reports-main
+│   ├── test-sandbox.json
+│   ├── tests
+│   ├── todo-priority2.md
+│   ├── todo-ultra-strict-verification.md
+│   ├── todo-v14.md
+│   ├── todo-v20.md
+│   ├── todo.md
+│   ├── trans-domain
+│   ├── tsconfig.json
+│   ├── ultra-strict-verification-core
+│   ├── unified-intelligence-fabric
+│   └── universal-intelligence
+├── gl-runtime-platform.zip
+├── gl-semantic-core-platform
+│   ├── IMPLEMENTATION_SUMMARY.md
+│   ├── README.md
+│   ├── configs
+│   ├── deployments
+│   ├── docs
+│   ├── requirements.txt
+│   ├── src
+│   ├── tests
+│   ├── todo.md
+│   └── tools
+├── gl-simple-audit-report.json
+├── gl-validation-output.txt
+├── governance-manifest.yaml
+├── governance-monitor-config.yaml
+├── improved-monitor.sh
+├── index.html
+├── infrastructure
+│   ├── deployment
+│   ├── governance
+│   ├── k8s-legacy
+│   ├── kubernetes
+│   ├── redis-stack
+│   └── rke2
+├── infrastructure-validation-output.txt
+├── init-governance.sh
+├── instant
+│   ├── README.md
+│   ├── archive
+│   ├── configs
+│   ├── docs
+│   ├── gl00-09-infrafix-dryrun.json
+│   ├── gl00-09-stage1-only.json
+│   ├── governance
+│   ├── legacy
+│   ├── scripts
+│   ├── src
+│   └── workflows
+├── instant-validation-output.txt
+├── integrations
+│   ├── pagerduty
+│   ├── prometheus
+│   └── slack
+├── multi-agent-setup-todo.md
+├── observability
+│   ├── alerts
+│   └── dashboards
+├── outputs
+│   ├── workspace_output_1769645179_6697.txt
+│   ├── workspace_output_1769665448_8638.txt
+│   ├── workspace_output_1769665452_7275.txt
+│   ├── workspace_output_1769665466_7086.txt
+│   ├── workspace_output_1769665476_1188.txt
+│   ├── workspace_output_1769665479_283.txt
+│   ├── workspace_output_1769665482_9348.txt
+│   ├── workspace_output_1769665485_2113.txt
+│   ├── workspace_output_1769665489_4092.txt
+│   ├── workspace_output_1769665502_6153.txt
+│   ├── workspace_output_1769665516_2386.txt
+│   ├── workspace_output_1769665524_878.txt
+│   ├── workspace_output_1769665586_204.txt
+│   ├── workspace_output_1769665661_4905.txt
+│   ├── workspace_output_1769665964_7678.txt
+│   ├── workspace_output_1769666038_3707.txt
+│   ├── workspace_output_1769668299_3113.txt
+│   ├── workspace_output_1769668348_4849.txt
+│   ├── workspace_output_1769668377_3515.txt
+│   ├── workspace_output_1769668381_3041.txt
+│   ├── workspace_output_1769668394_3794.txt
+│   ├── workspace_output_1769668434_4464.txt
+│   ├── workspace_output_1769668438_1469.txt
+│   ├── workspace_output_1769668473_9812.txt
+│   ├── workspace_output_1769668501_1384.txt
+│   ├── workspace_output_1769668512_4382.txt
+│   ├── workspace_output_1769668584_1073.txt
+│   ├── workspace_output_1769668860_3556.txt
+│   ├── workspace_output_1769668864_4192.txt
+│   ├── workspace_output_1769668871_7016.txt
+│   ├── workspace_output_1769668949_2085.txt
+│   ├── workspace_output_1769668965_3507.txt
+│   ├── workspace_output_1769668980_9964.txt
+│   ├── workspace_output_1769668991_8131.txt
+│   ├── workspace_output_1769669003_8883.txt
+│   ├── workspace_output_1769669008_6710.txt
+│   ├── workspace_output_1769669014_5268.txt
+│   ├── workspace_output_1769669018_968.txt
+│   ├── workspace_output_1769669022_1896.txt
+│   ├── workspace_output_1769669027_4709.txt
+│   ├── workspace_output_1769669031_5669.txt
+│   ├── workspace_output_1769669050_2222.txt
+│   ├── workspace_output_1769670400_7768.txt
+│   ├── workspace_output_1769670490_7149.txt
+│   ├── workspace_output_1769679093_5434.txt
+│   ├── workspace_output_1769679143_237.txt
+│   ├── workspace_output_1769679146_3946.txt
+│   ├── workspace_output_1769679150_494.txt
+│   └── workspace_output_1769679158_584.txt
+├── package-lock.json
+├── package.json
+├── platform
+│   ├── cleanup
+│   ├── execution
+│   ├── index.ts
+│   ├── monitoring
+│   └── validation
+├── priority2-main.md
+├── prometheus.yml
+├── pytest.ini
+├── quantum-platform
+│   ├── artifacts
+│   ├── governance
+│   ├── infrastructure
+│   ├── k3s-upgrade
+│   ├── monitoring
+│   └── workflows
+├── requirements.txt
+├── root.bootstrap.yaml
+├── root.env.sh
+├── root.fs.map
+├── ruff.toml
+├── scan-secrets.py
+├── scripts
+│   ├── deploy
+│   ├── discovery
+│   ├── docx
+│   ├── fix-axiom-naming-repo.sh
+│   ├── fix-hardcoded-timelines.py
+│   ├── generate-dag-visualization.py
+│   ├── generate-governance-dashboard.py
+│   ├── global-dag-audit.sh
+│   ├── naming
+│   ├── optimization
+│   ├── platform-deploy.py
+│   ├── platform-runner.ts
+│   ├── replace-github-token.sh
+│   ├── scan-hardcoded-timelines-filtered.py
+│   ├── scan-hardcoded-timelines.py
+│   ├── scan-naming-violations.py
+│   ├── scan-source-code-timelines.py
+│   ├── validate-infrastructure.sh
+│   ├── validate-module-manifests.py
+│   ├── validate-module-registry.py
+│   ├── version-audit.py
+│   ├── workflow-inventory.sh
+│   └── zero-residue-execution.sh
+├── start-gl-platform.sh
+├── summarized_conversations
+│   ├── original_conversation_1769670122_6548.txt
+│   ├── original_conversation_1769670333_9393.txt
+│   ├── original_conversation_1769677609_5209.txt
+│   ├── original_conversation_1769677610_203.txt
+│   ├── original_conversation_1769677610_289.txt
+│   ├── original_conversation_1769677610_3226.txt
+│   ├── original_conversation_1769677611_5611.txt
+│   ├── original_conversation_1769677611_6760.txt
+│   ├── original_conversation_1769677611_8685.txt
+│   ├── original_conversation_1769677611_9255.txt
+│   ├── original_conversation_1769677612_2956.txt
+│   ├── original_conversation_1769677612_5137.txt
+│   ├── original_conversation_1769677612_9098.txt
+│   ├── original_conversation_1769677612_9823.txt
+│   ├── original_conversation_1769677613_5214.txt
+│   ├── original_conversation_1769677613_88.txt
+│   ├── original_conversation_1769677613_9224.txt
+│   ├── original_conversation_1769677613_97.txt
+│   ├── original_conversation_1769677614_5338.txt
+│   ├── original_conversation_1769677614_8370.txt
+│   ├── original_conversation_1769677614_8800.txt
+│   ├── original_conversation_1769677615_6683.txt
+│   ├── original_conversation_1769677615_7883.txt
+│   └── original_conversation_1769677615_8760.txt
+├── todo-v19.md
+├── todo-v20.md
+├── todo.backup.md
+├── todo.md
+└── wrangler.toml
+
+182 directories, 312 files

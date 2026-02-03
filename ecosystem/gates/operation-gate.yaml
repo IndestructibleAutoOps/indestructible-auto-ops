@@ -1,0 +1,238 @@
+apiVersion: gates.gl/v1
+kind: OperationGate
+metadata:
+  name: operation-gate
+  version: "1.0.0"
+  description: "GL 操作閘門定義 - 定義所有操作的強制檢查點"
+  category: governance
+spec:
+  gates:
+    # 文件遷移操作閘門
+    - operation: "file_migration"
+      description: "文件遷移操作的強制檢查點"
+      required_checks:
+        - check: "query_contracts"
+          description: "必須查詢相關治理合約"
+          contract_paths:
+            - "ecosystem/contracts/naming-governance/gl-naming-ontology.yaml"
+            - "ecosystem/contracts/fact-verification/gl.fact-pipeline-spec.yaml"
+            - "ecosystem/contracts/verification/gl-verification-engine-spec.yaml"
+          action: "BLOCK_IF_SKIPPED"
+          severity: "CRITICAL"
+          rule: "GA-001"
+        
+        - check: "use_validator"
+          description: "必須使用驗證工具"
+          validator_paths:
+            - "ecosystem/tools/fact-verification/gl-fact-pipeline.py"
+          action: "BLOCK_IF_FAILED"
+          severity: "CRITICAL"
+          rule: "GA-002"
+        
+        - check: "generate_evidence"
+          description: "必須生成證據鏈"
+          pipeline: "ecosystem/tools/fact-verification/gl-fact-pipeline.py"
+          min_coverage: 0.9
+          required_fields:
+            - "contract_references"
+            - "validation_results"
+            - "evidence_links"
+            - "sha256_hashes"
+          action: "BLOCK_IF_MISSING"
+          severity: "CRITICAL"
+          rule: "GA-003"
+        
+        - check: "verify_report"
+          description: "必須驗證報告"
+          forbidden_phrases:
+            - "100% 完成"
+            - "完全符合"
+            - "已全部实现"
+            - "覆盖所有标准"
+            - "100% complete"
+            - "fully compliant"
+            "completely implemented"
+            - "covers all standards"
+          required_sections:
+            - "evidence_section"
+            - "verification_section"
+            - "findings_section"
+          action: "BLOCK_IF_INVALID"
+          severity: "CRITICAL"
+          rule: "GA-004"
+    
+    # 代碼提交操作閘門
+    - operation: "code_commit"
+      description: "代碼提交操作的強制檢查點"
+      required_checks:
+        - check: "code_quality_gate"
+          description: "必須通過代碼質量門禁"
+          action: "BLOCK_IF_FAILED"
+          severity: "HIGH"
+          rule: "QC-001"
+          tools:
+            - "pylint"
+            - "flake8"
+            - "mypy"
+        
+        - check: "security_scan"
+          description: "必須通過安全掃描"
+          action: "BLOCK_IF_FAILED"
+          severity: "CRITICAL"
+          rule: "SEC-001"
+          tools:
+            - "bandit"
+            - "safety"
+            - "secrets"
+        
+        - check: "test_coverage"
+          description: "必須達到測試覆蓋率要求"
+          min_coverage: 0.8
+          action: "BLOCK_IF_FAILED"
+          severity: "HIGH"
+          rule: "TEST-001"
+    
+    # 報告生成操作閘門
+    - operation: "report_generation"
+      description: "報告生成操作的強制檢查點"
+      required_checks:
+        - check: "evidence_based"
+          description: "報告必須基於證據"
+          min_evidence_coverage: 0.9
+          action: "BLOCK_IF_MISSING"
+          severity: "CRITICAL"
+          rule: "GA-003"
+        
+        - check: "verify_content"
+          description: "必須驗證報告內容"
+          forbidden_phrases:
+            - "100% 完成"
+            - "完全符合"
+            - "已全部实现"
+          action: "BLOCK_IF_INVALID"
+          severity: "CRITICAL"
+          rule: "GA-004"
+        
+        - check: "fact_pipeline"
+          description: "必須使用 GL Fact Verification Pipeline"
+          pipeline: "ecosystem/tools/fact-verification/gl-fact-pipeline.py"
+          action: "BLOCK_IF_SKIPPED"
+          severity: "CRITICAL"
+          rule: "FP-001"
+    
+    # 架構變更操作閘門
+    - operation: "architecture_change"
+      description: "架構變更操作的強制檢查點"
+      required_checks:
+        - check: "impact_analysis"
+          description: "必須進行影響分析"
+          required_sections:
+            - "affected_components"
+            - "migration_plan"
+            - "rollback_plan"
+          action: "BLOCK_IF_MISSING"
+          severity: "HIGH"
+          rule: "ARCH-001"
+        
+        - check: "design_review"
+          description: "必須通過設計審查"
+          approvers_required: 2
+          action: "BLOCK_IF_FAILED"
+          severity: "CRITICAL"
+          rule: "ARCH-002"
+        
+        - check: "document_update"
+          description: "必須更新相關文檔"
+          docs_to_update:
+            - "ARCHITECTURE.md"
+            - "CHANGELOG.md"
+            - "API.md"
+          action: "BLOCK_IF_MISSING"
+          severity: "MEDIUM"
+          rule: "DOC-001"
+    
+    # 配置變更操作閘門
+    - operation: "config_change"
+      description: "配置變更操作的強制檢查點"
+      required_checks:
+        - check: "config_validation"
+          description: "必須驗證配置文件"
+          validators:
+            - "yamllint"
+            - "json-schema"
+          action: "BLOCK_IF_FAILED"
+          severity: "HIGH"
+          rule: "CONF-001"
+        
+        - check: "version_control"
+          description: "必須在版本控制中追蹤"
+          action: "BLOCK_IF_SKIPPED"
+          severity: "MEDIUM"
+          rule: "VCS-001"
+        
+        - check: "backup_check"
+          description: "必須有配置備份"
+          action: "WARN_IF_MISSING"
+          severity: "LOW"
+          rule: "BACKUP-001"
+    
+    # 部署操作閘門
+    - operation: "deployment"
+      description: "部署操作的強制檢查點"
+      required_checks:
+        - check: "pre_deployment_check"
+          description: "必須通過部署前檢查"
+          checks:
+            - "health_check"
+            - "dependency_check"
+            - "configuration_check"
+          action: "BLOCK_IF_FAILED"
+          severity: "CRITICAL"
+          rule: "DEPLOY-001"
+        
+        - check: "approval_gate"
+          description: "必須獲得部署批准"
+          approvers_required: 2
+          action: "BLOCK_IF_FAILED"
+          severity: "CRITICAL"
+          rule: "DEPLOY-002"
+        
+        - check: "rollback_plan"
+          description: "必須有回滾計劃"
+          action: "BLOCK_IF_MISSING"
+          severity: "HIGH"
+          rule: "DEPLOY-003"
+        
+        - check: "monitoring_setup"
+          description: "必須設置監控"
+          action: "WARN_IF_MISSING"
+          severity: "MEDIUM"
+          rule: "MONITOR-001"
+
+# 全局配置
+global_config:
+  # 默認嚴重性
+  default_severity: "HIGH"
+  
+  # 默認操作
+  default_action: "BLOCK"
+  
+  # 寬鬆模式配置
+  permissive_mode:
+    enabled: false
+    allowed_deviations:
+      - rule: "GA-003"
+        max_coverage_reduction: 0.1
+      - rule: "TEST-001"
+        max_coverage_reduction: 0.05
+  
+  # 嚴格模式配置
+  strict_mode:
+    enabled: true
+    additional_checks:
+      - check: "audit_trail"
+        description: "必須有完整的審計追蹤"
+        action: "BLOCK_IF_MISSING"
+      - check: "performance_impact"
+        description: "必須評估性能影響"
+        action: "WARN_IF_MISSING"

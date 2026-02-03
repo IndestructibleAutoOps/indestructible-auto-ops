@@ -3,7 +3,6 @@
 Analyze governance violations
 Determines fixable issues and categorizes them
 """
-# MNGA-002: Import organization needs review
 import json
 import sys
 from typing import Dict, List, Any
@@ -127,7 +126,7 @@ def generate_suggested_fix(violation: Dict) -> Dict:
                 "file": file_path,
                 "change_type": "insert",
                 "location": "metadata.labels",
-                "content": f'{label}: "{{ .Values.appName }}"'
+                "content": f"{label}: &quot;{{ .Values.appName }}&quot;"
             }
         ]
     elif v_type == 'naming_convention':
@@ -171,6 +170,22 @@ if __name__ == "__main__":
             i += 1
         else:
             i += 1
+    
+    analyze_violations(input_file, output_file, auto_fixable) < 3:
+        print("Usage: python analyze_violations.py --input <input_file> --output <output_file> [--auto-fixable]")
+        sys.exit(1)
+    
+    input_file = None
+    output_file = None
+    auto_fixable = False
+    
+    for i, arg in enumerate(sys.argv):
+        if arg == '--input' and i + 1 < len(sys.argv):
+            input_file = sys.argv[i + 1]
+        elif arg == '--output' and i + 1 < len(sys.argv):
+            output_file = sys.argv[i + 1]
+        elif arg == '--auto-fixable':
+            auto_fixable = True
     
     if not input_file or not output_file:
         print("Error: --input and --output are required")

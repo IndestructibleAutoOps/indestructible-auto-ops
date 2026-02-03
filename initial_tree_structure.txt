@@ -1,0 +1,3052 @@
+.
+├── .agent_hooks
+│   ├── run_all_hooks.py
+│   ├── shutdown
+│   │   ├── 00_track_processes_on_ports.py
+│   │   └── _readme.txt
+│   └── startup
+│       └── _readme.txt
+├── .checkov.yaml
+├── .config
+│   ├── conftest
+│   │   └── policies
+│   ├── gitleaks
+│   │   └── gitleaks.toml
+│   ├── kind
+│   │   └── kube-bench-config.yaml
+│   ├── policy
+│   │   └── opa
+│   └── requirements-docx.txt
+├── .coverage
+├── .dockerignore
+├── .env.example
+├── .eslintrc.json
+├── .github
+│   ├── CODE_REVIEW_CHECKLIST.md
+│   ├── COPILOT_INSTRUCTIONS_ARCHITECTURE.md
+│   ├── COPILOT_INSTRUCTIONS_SUMMARY.md
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.yml
+│   │   ├── config.yml
+│   │   ├── feature_request.yml
+│   │   ├── gl_compliance.yml
+│   │   └── task.yml
+│   ├── PULL_REQUEST_TEMPLATE
+│   │   └── gl_governance_checklist.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── actions
+│   │   ├── README.md
+│   │   ├── docx-to-artifact
+│   │   ├── mn-cache
+│   │   ├── mn-checkout
+│   │   ├── mn-codeql
+│   │   ├── mn-create-pr
+│   │   ├── mn-docker-build
+│   │   ├── mn-download-artifact
+│   │   ├── mn-github-script
+│   │   ├── mn-secret-scan
+│   │   ├── mn-setup-node
+│   │   ├── mn-setup-opa
+│   │   ├── mn-setup-python
+│   │   ├── mn-slack-notify
+│   │   ├── mn-super-linter
+│   │   ├── mn-trivy-scan
+│   │   ├── mn-upload-artifact
+│   │   ├── policy-check
+│   │   ├── setup-build-environment
+│   │   └── setup-yq
+│   ├── agents
+│   │   ├── agent-orchestration.yml
+│   │   ├── agent-orchestration.yml.backup
+│   │   ├── architect.agent.md
+│   │   ├── automated_orchestration_design.md
+│   │   ├── custom-agent.agent.md
+│   │   ├── docs-agent.agent.md
+│   │   ├── domain-researcher.agent.md
+│   │   ├── github-actions.agent.md
+│   │   ├── gl-governance.agent.md
+│   │   ├── multi_agent_research_system.md
+│   │   ├── my-agent.agent.md
+│   │   ├── presentation-specialist.agent.md
+│   │   ├── research-coordinator.agent.md
+│   │   ├── security-reviewer.agent.md
+│   │   ├── templates
+│   │   ├── test-specialist.agent.md
+│   │   └── web-architect.agent.md
+│   ├── archive
+│   │   ├── CONSOLIDATION_2026-01-18_SUMMARY.md
+│   │   ├── README.md
+│   │   ├── analysis-reports
+│   │   ├── analysis-scripts
+│   │   ├── backups
+│   │   ├── ci-documentation
+│   │   ├── consolidated-reports
+│   │   ├── docs-reports
+│   │   ├── experiments
+│   │   ├── infrastructure
+│   │   ├── legacy
+│   │   ├── legacy-automation
+│   │   ├── legacy-root-files
+│   │   ├── legacy-workflows
+│   │   ├── merge-scripts
+│   │   ├── old-todos
+│   │   ├── phase-reports
+│   │   ├── quality-reports
+│   │   ├── remediation-scripts
+│   │   ├── security-audits
+│   │   ├── test-artifacts
+│   │   ├── unmanned-engineer-ceo
+│   │   ├── workflow-configs
+│   │   ├── workspace-reports
+│   │   └── 整合級重構完成報告.md
+│   ├── config
+│   │   ├── .auto-fix-bot.yml
+│   │   ├── .dockerignore
+│   │   ├── .eslintrc.yaml
+│   │   ├── .markdownlint.json
+│   │   ├── .markdownlintignore
+│   │   ├── .pre-commit-config.yaml
+│   │   ├── .prettierrc
+│   │   ├── README.md
+│   │   ├── agents
+│   │   ├── autofix
+│   │   ├── automation
+│   │   ├── axiom
+│   │   ├── axioms
+│   │   ├── base
+│   │   ├── brand-mapping.yaml
+│   │   ├── build-tools
+│   │   ├── builder-system-prompt.yaml
+│   │   ├── ci-cd
+│   │   ├── ci-error-analyzer.yaml
+│   │   ├── cloud-agent-delegation.yml
+│   │   ├── collaboration-config.yaml
+│   │   ├── config-example.yml
+│   │   ├── config.yml
+│   │   ├── conftest
+│   │   ├── dependencies.yaml
+│   │   ├── deployment
+│   │   ├── dev
+│   │   ├── docker
+│   │   ├── elasticsearch-config.sh
+│   │   ├── environments
+│   │   ├── external_repos.yaml.example
+│   │   ├── governance
+│   │   ├── instant-execution
+│   │   ├── integrations
+│   │   ├── integrations-index.yaml
+│   │   ├── island-control.yml
+│   │   ├── monitoring
+│   │   ├── observability.yaml
+│   │   ├── pipelines
+│   │   ├── prod
+│   │   ├── providers
+│   │   ├── security
+│   │   ├── templates
+│   │   ├── unified-config-index.yaml
+│   │   ├── unified-config-schema.yaml
+│   │   ├── validation
+│   │   ├── wrangler.toml
+│   │   └── yaml-module-system.yaml
+│   ├── copilot-instructions.md
+│   ├── dashboard
+│   │   ├── README.md
+│   │   ├── dashboard.css
+│   │   ├── dashboard.html
+│   │   └── dashboard.js
+│   ├── dependabot.yml
+│   ├── docs
+│   │   ├── AUTONOMY_CLASSIFICATION_FRAMEWORK.md
+│   │   ├── BACKUP_RESTORE_GUIDE.md
+│   │   ├── CI-CD-GUIDE.md
+│   │   ├── CI-STATUS-REPORT.md
+│   │   ├── CI_COMPREHENSIVE_GUIDE.md
+│   │   ├── COPILOT_MEMORY.md
+│   │   ├── CROSS_PLATFORM_GUIDE.md
+│   │   ├── CROSS_PLATFORM_SUMMARY.md
+│   │   ├── DEPLOYMENT_GUIDE.md
+│   │   ├── DEVELOPER_GUIDELINES.md
+│   │   ├── DOCUMENTATION_PORTAL.md
+│   │   ├── ENTERPRISE_INFRASTRUCTURE_COMPLETE_REPORT.md
+│   │   ├── ENTERPRISE_INFRASTRUCTURE_PHASES_11-15_SUMMARY.md
+│   │   ├── ENTERPRISE_PRODUCTION_COMPLETE_SUMMARY.md
+│   │   ├── ENTERPRISE_PRODUCTION_INFRASTRUCTURE_SUMMARY.md
+│   │   ├── EXTENDED_PLATFORMS_GUIDE.md
+│   │   ├── EXTENDED_PLATFORMS_SUMMARY.md
+│   │   ├── GITBOOK_SYNC_TROUBLESHOOTING.md
+│   │   ├── GITBOOK_SYNC_TROUBLESHOOTING_EN.md
+│   │   ├── GITHUB_PACKAGES_GUIDE.md
+│   │   ├── INTEGRATION_DOCS_INDEX.md
+│   │   ├── INTEGRATION_DOCS_STRUCTURE.md
+│   │   ├── ISSUE_SYSTEM.md
+│   │   ├── LANGUAGE_GOVERNANCE_DASHBOARD.json
+│   │   ├── LANGUAGE_GOVERNANCE_DASHBOARD.md
+│   │   ├── LAUNCHDARKLY_INTEGRATION.md
+│   │   ├── MULTI_BRANCH_INTEGRATION_GUIDE.md
+│   │   ├── MULTI_BRANCH_INTEGRATION_QUICKREF.md
+│   │   ├── MULTI_LAYER_CACHE_GUIDE.md
+│   │   ├── PHASE1_INTEGRATION_GUIDE.md
+│   │   ├── PLUGGABLE-ARCHITECTURE.md
+│   │   ├── PRODUCTION_CONFIG_GUIDE.md
+│   │   ├── PRODUCTION_DEPLOYMENT_GUIDE.md
+│   │   ├── QUICKSTART-EN.md
+│   │   ├── QUICKSTART-PLUGGABLE.md
+│   │   ├── QUICKSTART.md
+│   │   ├── QUICK_REFERENCE.md
+│   │   ├── RUNBOOKS.md
+│   │   ├── SELF_HOSTED_RUNNER_SETUP.md
+│   │   ├── STANDARD_OPERATING_PROCEDURES.md
+│   │   ├── TECHNICAL_DEBT_ANALYSIS.md
+│   │   ├── TECHNICAL_DEBT_ANALYSIS_2026.md
+│   │   ├── TEST_SUITE_WORKFLOW.md
+│   │   ├── YAML-VALIDATION-GUIDE.md
+│   │   ├── adr
+│   │   ├── architecture
+│   │   ├── autonomy
+│   │   ├── ci-error-analyzer-integration.md
+│   │   ├── ci-error-analyzer-quickref.md
+│   │   ├── dag-visualization
+│   │   ├── fhs-integration
+│   │   ├── migration
+│   │   ├── repository-understanding
+│   │   └── supply-chain-security.md
+│   ├── governance
+│   │   ├── GL-README.md
+│   │   ├── GL_SEMANTIC_ANCHOR.json
+│   │   ├── GOVERNANCE_ARCHITECTURE_OVERVIEW.md
+│   │   ├── architecture
+│   │   ├── audit-reports
+│   │   ├── audit-results
+│   │   ├── policies
+│   │   └── sealed
+│   ├── governance-legacy
+│   │   ├── .governance
+│   │   ├── GL_SEMANTIC_ANCHOR.json
+│   │   ├── GOVERNANCE_ARCHITECTURE_OVERVIEW.md
+│   │   ├── README.md
+│   │   ├── api
+│   │   ├── compliance
+│   │   ├── evidence
+│   │   ├── examples
+│   │   ├── gl-artifacts
+│   │   ├── gl-core
+│   │   ├── naming-governance-v1.0.0
+│   │   ├── naming-governance-v1.0.0-extended
+│   │   ├── policies
+│   │   ├── pytest.ini
+│   │   ├── quantum-naming-v4.0.0
+│   │   ├── reports
+│   │   ├── rollback
+│   │   ├── security
+│   │   ├── standards
+│   │   └── tests
+│   ├── hooks
+│   │   ├── post-commit.sh
+│   │   ├── pre-commit
+│   │   └── pre-push
+│   ├── images
+│   │   └── placeholder.svg
+│   ├── link-keys
+│   │   ├── GL-AEP-AUDIT-2026-01-26.md
+│   │   ├── GL-AEP-ENGINE-AUDIT-2026-01-24.md
+│   │   └── GL-CI-FIX-2026-01-23.md
+│   ├── linters
+│   │   ├── .bandit
+│   │   ├── .markdownlint.json
+│   │   ├── .markdownlintignore
+│   │   ├── .shellcheckrc
+│   │   ├── .yamllint.yml
+│   │   └── ruff.toml
+│   ├── project-docs
+│   │   ├── README.md
+│   │   ├── analysis
+│   │   ├── archive
+│   │   ├── cicd
+│   │   ├── gl-governance
+│   │   └── scripts
+│   ├── reports
+│   │   ├── GL_ARCHITECTURE_COMPLETION_REPORT.md
+│   │   ├── branch-comparison-feature-aep-foundation.md
+│   │   ├── gl-consolidation-report-migration.sh
+│   │   ├── gl-consolidation-report.md
+│   │   ├── gl-validation-after-refactor.json
+│   │   ├── gl-validation-initial.json
+│   │   ├── gl-validation-new-artifacts.json
+│   │   ├── health_check.json
+│   │   ├── metrics.json
+│   │   └── pr-1240-1241-status.md
+│   ├── scripts
+│   │   ├── agent-selector.py
+│   │   ├── auto-orchestrator.sh
+│   │   ├── automated-research-pipeline.yml.template
+│   │   ├── deploy-research-site.sh
+│   │   ├── parallel-agent-runner.py
+│   │   └── refactor-workflows.py
+│   ├── workflows
+│   │   ├── GL-ALGORITHMS-CI.yml
+│   │   ├── GL-DATA-CI.yml
+│   │   ├── GL-GPU-CI.yml
+│   │   ├── GL-deploy-production.yml
+│   │   ├── GL-deploy-staging.yml
+│   │   ├── GL-rollback.yml
+│   │   ├── GL-runner-health.yml
+│   │   ├── GL-security-pipeline.yml
+│   │   ├── GL-unified-ci.yml
+│   │   ├── MIGRATION_NOTE.md
+│   │   ├── ai-algorithm-mentor.yml
+│   │   ├── ai-code-review.yml
+│   │   ├── ai-integration-analyzer.yml
+│   │   ├── ai-pr-reviewer.yml
+│   │   ├── archived
+│   │   ├── auto-fix-bot.yaml
+│   │   ├── auto-fix-staging-validation.yml
+│   │   ├── automated-issue-carrier.yml
+│   │   ├── build.yml
+│   │   ├── checkov-scan.yaml
+│   │   ├── ci-fail-classifier.yml
+│   │   ├── ci.yaml
+│   │   ├── ci.yml
+│   │   ├── codeql-fix-notes.md
+│   │   ├── codeql-monitor.yml
+│   │   ├── codeql.yml
+│   │   ├── combined-ci.yml
+│   │   ├── conftest-naming.yaml
+│   │   ├── consolidated
+│   │   ├── dependency-check.yml
+│   │   ├── deploy-production.yml
+│   │   ├── deploy-staging.yml
+│   │   ├── deploy.yml
+│   │   ├── documentation-reader.yml
+│   │   ├── fhs-integration-auto-init.yml
+│   │   ├── gates-01-99-validation.yml
+│   │   ├── gitleaks-scan.yaml
+│   │   ├── gl-artifacts-generator.yml
+│   │   ├── gl-cluster-security-scan.yml
+│   │   ├── gl-compliance-check.yml
+│   │   ├── gl-compliance-issues.yml
+│   │   ├── gl-layer-validation.yml
+│   │   ├── gl-mainline-enforcement.yml
+│   │   ├── gl-naming-governance.yml
+│   │   ├── gl-supply-chain-security.yml
+│   │   ├── gl-unified-ci-fixed.yml
+│   │   ├── gl-unified-validator.yml
+│   │   ├── gl-validation.yml
+│   │   ├── gl-workflow-auto-healer.yml
+│   │   ├── infrastructure-validation.yml
+│   │   ├── integration-tests.yml
+│   │   ├── issue-automation.yml
+│   │   ├── issue-metrics.yml
+│   │   ├── issue-pr-automation.yml.disabled
+│   │   ├── issue-triage.yml
+│   │   ├── kube-bench-scan.yaml
+│   │   ├── launchdarkly-code-references.yml
+│   │   ├── mn-ci-example.yml
+│   │   ├── modules
+│   │   ├── multi-agent-parallel.yml
+│   │   ├── policy-gate.yml
+│   │   ├── pr-issue-linker.yml
+│   │   ├── pr-quality-check.yml
+│   │   ├── production-ci-cd.yml
+│   │   ├── profile-readme-stats.yml
+│   │   ├── project-automation.yml
+│   │   ├── publish-npm-packages.yml
+│   │   ├── release.yml
+│   │   ├── rke2-security-validation.yml
+│   │   ├── scheduled-dashboard-updates.yml
+│   │   ├── security-issue-handler.yml
+│   │   ├── security-scan.yml
+│   │   ├── static.yml
+│   │   ├── super-linter.yml
+│   │   ├── supply-chain-security.yaml
+│   │   ├── supply-chain-security.yml
+│   │   ├── test-suite.yml
+│   │   ├── test-yq-action.yml
+│   │   ├── test.yml
+│   │   ├── todo-to-issue.yml
+│   │   ├── todo-tracker.yml
+│   │   ├── todo.yml
+│   │   ├── transform-lab-to-skills.yml
+│   │   ├── typescript-build-check.yml
+│   │   ├── update-readme-repo-info.yml
+│   │   ├── waka-readme.yml
+│   │   ├── website-vulnerability-check.yml
+│   │   ├── words-really-matter.yml
+│   │   └── workflow-governance.yml
+│   └── workflows-quantum
+│       ├── auto-pr
+│       ├── automation
+│       ├── backup
+│       ├── deployment
+│       ├── monitoring
+│       ├── repair
+│       ├── security
+│       └── testing
+├── .gitignore
+├── .governance
+│   ├── audit
+│   │   └── audit-schema.yaml
+│   ├── event-stream.jsonl
+│   ├── monitoring
+│   │   └── prometheus-rules.yaml
+│   ├── playbooks
+│   │   └── naming-migration.yaml
+│   └── policies
+│       └── naming.rego
+├── .markdownlint.json
+├── .markdownlintignore
+├── .npmrc
+├── .pre-commit-config.yaml
+├── .secrets.baseline
+├── .watchmanconfig
+├── .yamllint.yml
+├── =1.28.0
+├── AEP-GOVERNANCE-AUDIT-MIGRATION-COMPLETE.md
+├── AEP_ENGINE_APP_SECURITY_FIX_REPORT.md
+├── ARTIFACTS_UPGRADE_V10.md
+├── BARCODE-QR-CODE-FIX-COMPLETE.md
+├── BRANCH_QUICK_REFERENCE.md
+├── BRANCH_STATUS_REPORT.md
+├── BRANCH_STRATEGY.md
+├── BUG_FIX_COMPLETION_REPORT.md
+├── CHANGELOG.md
+├── CNAME
+├── CODE_OF_CONDUCT.md
+├── COMPLETE_UPGRADE_ROADMAP.md
+├── CONTRIBUTING.md
+├── DATA-SYNC-INTEGRATION-COMPLETION-REPORT.md
+├── DEPLOYMENT_GUIDE.md
+├── DEVELOPMENT_STRATEGY.md
+├── Dockerfile
+├── Dockerfile.production
+├── ENTERPRISE_DEPLOYMENT_COMPLETION_REPORT.md
+├── ENTERPRISE_INFRASTRUCTURE_IMPLEMENTATION.md
+├── FILE_VERSION_AUDIT_PLAN.md
+├── FINAL-INTEGRATION-SUMMARY.md
+├── GITHUB-REPOSITORY-ANALYZER-COMPLETE.md
+├── GL-AUDIT-REMEDICATION-COMPLETE.md
+├── GL-CODEQL-SECURITY-FIX-SUMMARY.md
+├── GL-CODEQL-TOOLS-FIX-COMPLETE.md
+├── GL-FINAL-COMPLETION.md
+├── GL-FIX-COMPLETION.md
+├── GL-GATES-01-99-INTEGRATION-COMPLETE.md
+├── GL-GLOBAL-COMPLETION.md
+├── GL-GLOBAL-INTEGRATION-COMPLETE.md
+├── GL-GLOBAL-REMEDIATION-COMPLETE.md
+├── GL-HOOKS-MIGRATION-COMPLETE.md
+├── GL-IMPLEMENTATION-COMPLETE.md
+├── GL-INTEGRATION-COMPLETION.md
+├── GL-ROOT-AUDIT-COMPLETE.md
+├── GL-ROOT-CONSOLIDATION-COMPLETE.md
+├── GL-VULNERABILITY-FIX-COMPLETE.md
+├── GL10-MIGRATION-COMPLETE.md
+├── GL10-TOP10-MIGRATION-COMPLETE.md
+├── GL_FEDERATION_V5_COMPLETE.md
+├── GL_FEDERATION_V5_V6_COMPLETE.md
+├── GL_FINAL_COMPLETION_V3.md
+├── GL_PLATFORM_DEPLOYMENT_SUMMARY.md
+├── GL_PLATFORM_STARTUP_REPORT.md
+├── GL_V10_QUANTUM_ARCHITECT_PLATFORM_COMPLETION.md
+├── GL_V11_COGNITIVE_MESH_IMPLEMENTATION.md
+├── GL_V12_SELF_EVOLVING_RUNTIME.md
+├── GL_V4_FINAL_DEPLOYMENT_COMPLETE.md
+├── GL_V4_POST_DEPLOYMENT_COMPLETE.md
+├── GL_V5_COMPLETION.md
+├── GL_V9_COMPLETION.md
+├── GL_V9_GLOBAL_GOVERNANCE_AUDIT_REPORT.md
+├── GL_VERSION_4_COMPLETION.md
+├── GOVERNANCE_FILE_STRUCTURE_ANALYSIS.md
+├── GOVERNANCE_IMPORT_PLAN.md
+├── IMPLEMENTATION_SUMMARY.md
+├── INFRASTRUCTURE_COMPONENTS_COMPLETION_REPORT.md
+├── INFRASTRUCTURE_TEST_REPORT.md
+├── INTEGRATION_TESTING_PLAN.md
+├── KUBERNETES-INTEGRATION-COMPLETE.md
+├── LICENSE
+├── MODERNIZATION-CAPABILITIES.md
+├── MULTI_AGENT_CODEQL_IMPLEMENTATION_REPORT.md
+├── MULTI_AGENT_PARALLEL_IMPLEMENTATION.md
+├── MULTI_BRANCH_INTEGRATION_COMPLETION_REPORT.md
+├── MULTI_BRANCH_INTEGRATION_SUMMARY.md
+├── Makefile
+├── PERFORMANCE_BENCHMARKING_PLAN.md
+├── PERFORMANCE_BENCHMARKING_SUMMARY.md
+├── PHASE_7_8_COMPLETION_REPORT.md
+├── PLATFORM_DEPLOYMENT_V3_COMPLETE.md
+├── PLUGGABLE_DEPLOYMENT_GUIDE.md
+├── PRODUCTION_BUG_FIX_SUMMARY.md
+├── PRODUCTION_DEPLOYMENT_PLAN.md
+├── PRODUCTION_DEPLOYMENT_SUMMARY.md
+├── PUSH_BLOCKED_SUMMARY.md
+├── QUANTUM_PLATFORM_ARCHITECTURE.md
+├── QUANTUM_PLATFORM_INTEGRATION_COMPLETE.md
+├── QUICK_REFERENCE.md
+├── README-GOVERNANCE-MONITOR.md
+├── README-MACHINE.md
+├── README.md
+├── REFACTORING_COMPLETION_REPORT.md
+├── REFACTORING_SUMMARY.md
+├── RKE2_INTEGRATION_SUMMARY.md
+├── SECURITY.md
+├── SEMANTIC-SEARCH-SYSTEM-COMPLETE.md
+├── TASK_COMPLETION_REPORT.md
+├── TESTING_COMPLETION_REPORT.md
+├── TESTING_SUMMARY.md
+├── VERSION_3_DEPLOYMENT_COMPLETE.md
+├── VERSION_AUDIT_REPORT.json
+├── WORKFLOW_FAILURE_ANALYSIS.md
+├── actionlint
+├── add-gl-markers-batch.py
+├── add-gl-markers-json.py
+├── add-gl-markers-yaml.py
+├── add-gl-markers.py
+├── archives
+│   ├── old-outputs
+│   │   ├── workspace_output_1769558551_2625.txt
+│   │   ├── workspace_output_1769558557_2431.txt
+│   │   ├── workspace_output_1769558559_6749.txt
+│   │   ├── workspace_output_1769558564_1750.txt
+│   │   ├── workspace_output_1769558565_2428.txt
+│   │   ├── workspace_output_1769558586_8728.txt
+│   │   ├── workspace_output_1769558665_8262.txt
+│   │   ├── workspace_output_1769558672_6875.txt
+│   │   ├── workspace_output_1769558687_6812.txt
+│   │   ├── workspace_output_1769558700_7829.txt
+│   │   ├── workspace_output_1769558712_5510.txt
+│   │   ├── workspace_output_1769558726_9845.txt
+│   │   ├── workspace_output_1769558729_9776.txt
+│   │   ├── workspace_output_1769558731_596.txt
+│   │   ├── workspace_output_1769558733_9144.txt
+│   │   ├── workspace_output_1769559157_1336.txt
+│   │   ├── workspace_output_1769559159_1295.txt
+│   │   ├── workspace_output_1769559233_2863.txt
+│   │   ├── workspace_output_1769559235_9684.txt
+│   │   ├── workspace_output_1769559242_6610.txt
+│   │   ├── workspace_output_1769559245_6538.txt
+│   │   ├── workspace_output_1769559248_8363.txt
+│   │   ├── workspace_output_1769559259_7159.txt
+│   │   ├── workspace_output_1769559264_7724.txt
+│   │   ├── workspace_output_1769559267_2554.txt
+│   │   ├── workspace_output_1769559327_9712.txt
+│   │   ├── workspace_output_1769559328_2345.txt
+│   │   ├── workspace_output_1769559330_8878.txt
+│   │   ├── workspace_output_1769559331_5156.txt
+│   │   ├── workspace_output_1769559333_8918.txt
+│   │   ├── workspace_output_1769559334_5536.txt
+│   │   ├── workspace_output_1769559902_158.txt
+│   │   ├── workspace_output_1769559908_2759.txt
+│   │   ├── workspace_output_1769559913_8063.txt
+│   │   ├── workspace_output_1769559922_366.txt
+│   │   ├── workspace_output_1769559924_3823.txt
+│   │   ├── workspace_output_1769559926_4621.txt
+│   │   ├── workspace_output_1769559928_6034.txt
+│   │   ├── workspace_output_1769559932_5932.txt
+│   │   ├── workspace_output_1769559941_2388.txt
+│   │   ├── workspace_output_1769559945_2395.txt
+│   │   ├── workspace_output_1769559949_3205.txt
+│   │   ├── workspace_output_1769559953_2617.txt
+│   │   ├── workspace_output_1769559956_1862.txt
+│   │   ├── workspace_output_1769559959_2210.txt
+│   │   ├── workspace_output_1769559963_6940.txt
+│   │   ├── workspace_output_1769559969_4299.txt
+│   │   ├── workspace_output_1769559973_5556.txt
+│   │   ├── workspace_output_1769559980_5911.txt
+│   │   ├── workspace_output_1769559982_5493.txt
+│   │   ├── workspace_output_1769559984_9863.txt
+│   │   ├── workspace_output_1769560003_8839.txt
+│   │   ├── workspace_output_1769560014_7167.txt
+│   │   ├── workspace_output_1769560016_3864.txt
+│   │   ├── workspace_output_1769560018_1370.txt
+│   │   ├── workspace_output_1769560021_1014.txt
+│   │   ├── workspace_output_1769560024_6782.txt
+│   │   ├── workspace_output_1769560029_1515.txt
+│   │   ├── workspace_output_1769560033_5807.txt
+│   │   ├── workspace_output_1769560036_5496.txt
+│   │   ├── workspace_output_1769560044_748.txt
+│   │   ├── workspace_output_1769560047_6973.txt
+│   │   ├── workspace_output_1769560050_1629.txt
+│   │   ├── workspace_output_1769560228_8403.txt
+│   │   ├── workspace_output_1769560253_9850.txt
+│   │   ├── workspace_output_1769560255_7444.txt
+│   │   ├── workspace_output_1769560257_9401.txt
+│   │   ├── workspace_output_1769560260_2205.txt
+│   │   ├── workspace_output_1769560265_1075.txt
+│   │   ├── workspace_output_1769560269_4981.txt
+│   │   ├── workspace_output_1769560273_1925.txt
+│   │   ├── workspace_output_1769560280_1956.txt
+│   │   ├── workspace_output_1769560288_6957.txt
+│   │   ├── workspace_output_1769560293_9763.txt
+│   │   ├── workspace_output_1769560299_4204.txt
+│   │   ├── workspace_output_1769560301_8106.txt
+│   │   ├── workspace_output_1769560320_1320.txt
+│   │   ├── workspace_output_1769560329_6986.txt
+│   │   ├── workspace_output_1769560331_6526.txt
+│   │   ├── workspace_output_1769561594_1121.txt
+│   │   ├── workspace_output_1769561608_6148.txt
+│   │   ├── workspace_output_1769561622_3989.txt
+│   │   ├── workspace_output_1769561624_5168.txt
+│   │   ├── workspace_output_1769561632_5009.txt
+│   │   ├── workspace_output_1769561633_8689.txt
+│   │   ├── workspace_output_1769561636_2135.txt
+│   │   ├── workspace_output_1769561639_5926.txt
+│   │   ├── workspace_output_1769561641_1982.txt
+│   │   ├── workspace_output_1769561645_2318.txt
+│   │   ├── workspace_output_1769561650_5685.txt
+│   │   ├── workspace_output_1769561653_9602.txt
+│   │   ├── workspace_output_1769561655_7975.txt
+│   │   ├── workspace_output_1769561658_7895.txt
+│   │   ├── workspace_output_1769561674_5527.txt
+│   │   ├── workspace_output_1769561676_6648.txt
+│   │   ├── workspace_output_1769561679_9152.txt
+│   │   ├── workspace_output_1769561682_1997.txt
+│   │   ├── workspace_output_1769561684_6979.txt
+│   │   ├── workspace_output_1769561689_3886.txt
+│   │   ├── workspace_output_1769561691_1228.txt
+│   │   ├── workspace_output_1769561694_2198.txt
+│   │   ├── workspace_output_1769561696_7523.txt
+│   │   ├── workspace_output_1769561698_6012.txt
+│   │   ├── workspace_output_1769561700_3579.txt
+│   │   ├── workspace_output_1769561703_1876.txt
+│   │   ├── workspace_output_1769561706_7308.txt
+│   │   ├── workspace_output_1769561708_8728.txt
+│   │   ├── workspace_output_1769561721_9492.txt
+│   │   ├── workspace_output_1769561724_4166.txt
+│   │   ├── workspace_output_1769561734_5601.txt
+│   │   ├── workspace_output_1769561753_9574.txt
+│   │   ├── workspace_output_1769561755_4973.txt
+│   │   ├── workspace_output_1769561758_4132.txt
+│   │   ├── workspace_output_1769561797_1034.txt
+│   │   ├── workspace_output_1769561798_5584.txt
+│   │   ├── workspace_output_1769561800_8483.txt
+│   │   ├── workspace_output_1769561804_8875.txt
+│   │   ├── workspace_output_1769561805_6158.txt
+│   │   ├── workspace_output_1769561807_2377.txt
+│   │   ├── workspace_output_1769561809_2988.txt
+│   │   ├── workspace_output_1769561814_957.txt
+│   │   ├── workspace_output_1769561819_1994.txt
+│   │   ├── workspace_output_1769561821_4803.txt
+│   │   ├── workspace_output_1769561823_2986.txt
+│   │   ├── workspace_output_1769561826_3784.txt
+│   │   ├── workspace_output_1769561829_9804.txt
+│   │   ├── workspace_output_1769561836_4727.txt
+│   │   ├── workspace_output_1769561839_3593.txt
+│   │   ├── workspace_output_1769561843_2802.txt
+│   │   ├── workspace_output_1769561845_1607.txt
+│   │   ├── workspace_output_1769561854_5310.txt
+│   │   ├── workspace_output_1769561855_3552.txt
+│   │   ├── workspace_output_1769561860_5470.txt
+│   │   ├── workspace_output_1769561861_811.txt
+│   │   ├── workspace_output_1769561865_2263.txt
+│   │   ├── workspace_output_1769561874_231.txt
+│   │   ├── workspace_output_1769561877_5851.txt
+│   │   ├── workspace_output_1769561879_839.txt
+│   │   ├── workspace_output_1769561882_2138.txt
+│   │   ├── workspace_output_1769561885_5225.txt
+│   │   ├── workspace_output_1769561891_4094.txt
+│   │   ├── workspace_output_1769561894_3311.txt
+│   │   ├── workspace_output_1769561899_7549.txt
+│   │   ├── workspace_output_1769561901_5838.txt
+│   │   ├── workspace_output_1769561903_2478.txt
+│   │   ├── workspace_output_1769561905_9084.txt
+│   │   ├── workspace_output_1769561909_3788.txt
+│   │   ├── workspace_output_1769561910_5081.txt
+│   │   ├── workspace_output_1769561912_2575.txt
+│   │   ├── workspace_output_1769561915_5970.txt
+│   │   ├── workspace_output_1769561918_2947.txt
+│   │   ├── workspace_output_1769561920_1414.txt
+│   │   ├── workspace_output_1769561921_3935.txt
+│   │   ├── workspace_output_1769561925_801.txt
+│   │   ├── workspace_output_1769561927_7259.txt
+│   │   ├── workspace_output_1769561933_774.txt
+│   │   ├── workspace_output_1769561935_7127.txt
+│   │   ├── workspace_output_1769561938_2930.txt
+│   │   ├── workspace_output_1769561941_5525.txt
+│   │   ├── workspace_output_1769561946_6671.txt
+│   │   ├── workspace_output_1769561956_7146.txt
+│   │   ├── workspace_output_1769561961_9281.txt
+│   │   ├── workspace_output_1769561963_158.txt
+│   │   ├── workspace_output_1769561965_5242.txt
+│   │   ├── workspace_output_1769561969_8701.txt
+│   │   ├── workspace_output_1769561973_7637.txt
+│   │   ├── workspace_output_1769562212_4623.txt
+│   │   ├── workspace_output_1769562214_5900.txt
+│   │   ├── workspace_output_1769562220_4657.txt
+│   │   ├── workspace_output_1769562223_7498.txt
+│   │   ├── workspace_output_1769562225_2756.txt
+│   │   ├── workspace_output_1769562227_9606.txt
+│   │   ├── workspace_output_1769562229_6633.txt
+│   │   ├── workspace_output_1769562232_3129.txt
+│   │   ├── workspace_output_1769562234_3598.txt
+│   │   ├── workspace_output_1769562236_8763.txt
+│   │   ├── workspace_output_1769562239_3617.txt
+│   │   ├── workspace_output_1769562241_1629.txt
+│   │   ├── workspace_output_1769562244_7654.txt
+│   │   ├── workspace_output_1769562248_8982.txt
+│   │   ├── workspace_output_1769562251_7520.txt
+│   │   ├── workspace_output_1769562255_7612.txt
+│   │   ├── workspace_output_1769562269_165.txt
+│   │   ├── workspace_output_1769562273_4040.txt
+│   │   ├── workspace_output_1769562281_4879.txt
+│   │   ├── workspace_output_1769562284_1471.txt
+│   │   ├── workspace_output_1769562288_8797.txt
+│   │   ├── workspace_output_1769562293_8367.txt
+│   │   ├── workspace_output_1769562295_4482.txt
+│   │   ├── workspace_output_1769562297_2716.txt
+│   │   ├── workspace_output_1769562299_6131.txt
+│   │   ├── workspace_output_1769562302_4723.txt
+│   │   ├── workspace_output_1769562304_9835.txt
+│   │   ├── workspace_output_1769562307_743.txt
+│   │   ├── workspace_output_1769562309_126.txt
+│   │   ├── workspace_output_1769562314_7272.txt
+│   │   ├── workspace_output_1769562322_736.txt
+│   │   ├── workspace_output_1769562328_5252.txt
+│   │   ├── workspace_output_1769562330_60.txt
+│   │   ├── workspace_output_1769562333_6059.txt
+│   │   ├── workspace_output_1769562335_8324.txt
+│   │   ├── workspace_output_1769562337_2671.txt
+│   │   ├── workspace_output_1769562340_8046.txt
+│   │   ├── workspace_output_1769562343_3663.txt
+│   │   ├── workspace_output_1769562348_2213.txt
+│   │   ├── workspace_output_1769562350_3947.txt
+│   │   ├── workspace_output_1769562355_284.txt
+│   │   ├── workspace_output_1769562360_9376.txt
+│   │   ├── workspace_output_1769562362_3462.txt
+│   │   ├── workspace_output_1769562372_1899.txt
+│   │   ├── workspace_output_1769562374_8720.txt
+│   │   ├── workspace_output_1769562553_2384.txt
+│   │   ├── workspace_output_1769562575_5484.txt
+│   │   ├── workspace_output_1769562581_5649.txt
+│   │   ├── workspace_output_1769562584_3557.txt
+│   │   ├── workspace_output_1769562586_8397.txt
+│   │   ├── workspace_output_1769562590_1818.txt
+│   │   ├── workspace_output_1769562592_1612.txt
+│   │   ├── workspace_output_1769562594_966.txt
+│   │   ├── workspace_output_1769562596_5289.txt
+│   │   ├── workspace_output_1769562598_723.txt
+│   │   ├── workspace_output_1769562600_2579.txt
+│   │   ├── workspace_output_1769562610_2110.txt
+│   │   ├── workspace_output_1769562618_8517.txt
+│   │   ├── workspace_output_1769562623_6384.txt
+│   │   ├── workspace_output_1769562628_3682.txt
+│   │   ├── workspace_output_1769562631_7978.txt
+│   │   ├── workspace_output_1769562633_4279.txt
+│   │   ├── workspace_output_1769562636_624.txt
+│   │   ├── workspace_output_1769562643_3282.txt
+│   │   ├── workspace_output_1769562648_8933.txt
+│   │   ├── workspace_output_1769562653_6683.txt
+│   │   ├── workspace_output_1769562778_9972.txt
+│   │   ├── workspace_output_1769562783_1144.txt
+│   │   ├── workspace_output_1769562785_6591.txt
+│   │   ├── workspace_output_1769562910_926.txt
+│   │   ├── workspace_output_1769562912_2796.txt
+│   │   ├── workspace_output_1769562913_3054.txt
+│   │   ├── workspace_output_1769562915_6771.txt
+│   │   ├── workspace_output_1769562924_6936.txt
+│   │   ├── workspace_output_1769562926_4774.txt
+│   │   ├── workspace_output_1769562929_1854.txt
+│   │   ├── workspace_output_1769562934_7590.txt
+│   │   ├── workspace_output_1769562936_9440.txt
+│   │   ├── workspace_output_1769562941_4255.txt
+│   │   ├── workspace_output_1769562954_4243.txt
+│   │   ├── workspace_output_1769562966_8492.txt
+│   │   ├── workspace_output_1769562968_3441.txt
+│   │   ├── workspace_output_1769562970_7263.txt
+│   │   ├── workspace_output_1769562972_7161.txt
+│   │   ├── workspace_output_1769562979_6873.txt
+│   │   ├── workspace_output_1769562986_5113.txt
+│   │   ├── workspace_output_1769562991_3310.txt
+│   │   ├── workspace_output_1769562993_6104.txt
+│   │   ├── workspace_output_1769562997_5482.txt
+│   │   ├── workspace_output_1769563003_2782.txt
+│   │   ├── workspace_output_1769563011_8111.txt
+│   │   ├── workspace_output_1769563041_3594.txt
+│   │   ├── workspace_output_1769563043_9118.txt
+│   │   ├── workspace_output_1769563044_6393.txt
+│   │   ├── workspace_output_1769563046_4625.txt
+│   │   ├── workspace_output_1769563049_1331.txt
+│   │   ├── workspace_output_1769563054_833.txt
+│   │   ├── workspace_output_1769563056_1440.txt
+│   │   ├── workspace_output_1769563058_9586.txt
+│   │   ├── workspace_output_1769563060_6451.txt
+│   │   ├── workspace_output_1769563066_9759.txt
+│   │   ├── workspace_output_1769563070_1337.txt
+│   │   ├── workspace_output_1769563072_7077.txt
+│   │   ├── workspace_output_1769563074_3701.txt
+│   │   ├── workspace_output_1769563076_9315.txt
+│   │   ├── workspace_output_1769563078_3041.txt
+│   │   ├── workspace_output_1769563081_8081.txt
+│   │   ├── workspace_output_1769563084_6338.txt
+│   │   ├── workspace_output_1769563094_343.txt
+│   │   ├── workspace_output_1769563099_797.txt
+│   │   ├── workspace_output_1769563104_5659.txt
+│   │   ├── workspace_output_1769564272_3737.txt
+│   │   ├── workspace_output_1769564275_1271.txt
+│   │   ├── workspace_output_1769564281_2026.txt
+│   │   ├── workspace_output_1769564285_1828.txt
+│   │   ├── workspace_output_1769564287_5000.txt
+│   │   ├── workspace_output_1769564288_6078.txt
+│   │   ├── workspace_output_1769564290_5932.txt
+│   │   ├── workspace_output_1769564293_1093.txt
+│   │   ├── workspace_output_1769564296_656.txt
+│   │   ├── workspace_output_1769564298_6235.txt
+│   │   ├── workspace_output_1769564300_5105.txt
+│   │   ├── workspace_output_1769564307_2671.txt
+│   │   ├── workspace_output_1769564313_7532.txt
+│   │   ├── workspace_output_1769564315_8551.txt
+│   │   ├── workspace_output_1769564318_1280.txt
+│   │   ├── workspace_output_1769564320_5931.txt
+│   │   ├── workspace_output_1769564322_3727.txt
+│   │   ├── workspace_output_1769564323_2713.txt
+│   │   ├── workspace_output_1769564325_655.txt
+│   │   ├── workspace_output_1769564327_2636.txt
+│   │   ├── workspace_output_1769564329_2625.txt
+│   │   ├── workspace_output_1769564334_1620.txt
+│   │   ├── workspace_output_1769564336_5885.txt
+│   │   ├── workspace_output_1769564339_4779.txt
+│   │   ├── workspace_output_1769564343_5494.txt
+│   │   ├── workspace_output_1769564345_6809.txt
+│   │   ├── workspace_output_1769564348_6153.txt
+│   │   ├── workspace_output_1769564352_9435.txt
+│   │   ├── workspace_output_1769564437_4669.txt
+│   │   ├── workspace_output_1769564440_8715.txt
+│   │   ├── workspace_output_1769564442_248.txt
+│   │   ├── workspace_output_1769564444_6648.txt
+│   │   ├── workspace_output_1769564446_1035.txt
+│   │   ├── workspace_output_1769564448_2894.txt
+│   │   ├── workspace_output_1769564451_1084.txt
+│   │   ├── workspace_output_1769564454_3443.txt
+│   │   ├── workspace_output_1769564457_7137.txt
+│   │   ├── workspace_output_1769564460_5991.txt
+│   │   ├── workspace_output_1769564463_2242.txt
+│   │   ├── workspace_output_1769564466_3442.txt
+│   │   ├── workspace_output_1769564468_1538.txt
+│   │   ├── workspace_output_1769564470_4491.txt
+│   │   ├── workspace_output_1769564473_7115.txt
+│   │   ├── workspace_output_1769564475_6918.txt
+│   │   ├── workspace_output_1769564479_9180.txt
+│   │   ├── workspace_output_1769564484_2416.txt
+│   │   ├── workspace_output_1769564571_1238.txt
+│   │   ├── workspace_output_1769564574_3641.txt
+│   │   ├── workspace_output_1769564576_5274.txt
+│   │   ├── workspace_output_1769564578_8831.txt
+│   │   ├── workspace_output_1769564580_5985.txt
+│   │   ├── workspace_output_1769564582_3762.txt
+│   │   ├── workspace_output_1769564584_3178.txt
+│   │   ├── workspace_output_1769564586_7505.txt
+│   │   ├── workspace_output_1769564594_7973.txt
+│   │   ├── workspace_output_1769564596_1980.txt
+│   │   ├── workspace_output_1769564598_9184.txt
+│   │   ├── workspace_output_1769564600_2292.txt
+│   │   ├── workspace_output_1769564602_4927.txt
+│   │   ├── workspace_output_1769564607_1688.txt
+│   │   ├── workspace_output_1769564611_6937.txt
+│   │   ├── workspace_output_1769564614_7230.txt
+│   │   ├── workspace_output_1769564619_2366.txt
+│   │   ├── workspace_output_1769565140_3623.txt
+│   │   ├── workspace_output_1769565144_3280.txt
+│   │   ├── workspace_output_1769565148_9593.txt
+│   │   ├── workspace_output_1769565152_9539.txt
+│   │   ├── workspace_output_1769565156_1823.txt
+│   │   ├── workspace_output_1769565160_4848.txt
+│   │   ├── workspace_output_1769565164_8895.txt
+│   │   ├── workspace_output_1769565168_6111.txt
+│   │   ├── workspace_output_1769565172_7825.txt
+│   │   ├── workspace_output_1769565177_4127.txt
+│   │   ├── workspace_output_1769565181_5986.txt
+│   │   ├── workspace_output_1769565186_3009.txt
+│   │   ├── workspace_output_1769565190_9748.txt
+│   │   ├── workspace_output_1769565194_2913.txt
+│   │   ├── workspace_output_1769565198_3880.txt
+│   │   ├── workspace_output_1769565202_7360.txt
+│   │   ├── workspace_output_1769565206_5689.txt
+│   │   ├── workspace_output_1769565209_9609.txt
+│   │   ├── workspace_output_1769565213_1087.txt
+│   │   ├── workspace_output_1769565217_9894.txt
+│   │   ├── workspace_output_1769565222_5980.txt
+│   │   ├── workspace_output_1769565226_4611.txt
+│   │   ├── workspace_output_1769565229_6291.txt
+│   │   ├── workspace_output_1769565233_6260.txt
+│   │   ├── workspace_output_1769565237_2586.txt
+│   │   ├── workspace_output_1769565241_9823.txt
+│   │   ├── workspace_output_1769565246_6787.txt
+│   │   ├── workspace_output_1769565250_1854.txt
+│   │   ├── workspace_output_1769565256_574.txt
+│   │   ├── workspace_output_1769565261_8072.txt
+│   │   ├── workspace_output_1769565265_6684.txt
+│   │   ├── workspace_output_1769565269_2237.txt
+│   │   ├── workspace_output_1769565273_8705.txt
+│   │   ├── workspace_output_1769565279_6443.txt
+│   │   ├── workspace_output_1769565284_6790.txt
+│   │   ├── workspace_output_1769565287_1833.txt
+│   │   ├── workspace_output_1769565292_5167.txt
+│   │   ├── workspace_output_1769565297_4665.txt
+│   │   ├── workspace_output_1769565301_2750.txt
+│   │   ├── workspace_output_1769565306_9826.txt
+│   │   ├── workspace_output_1769565310_4733.txt
+│   │   ├── workspace_output_1769565314_3387.txt
+│   │   ├── workspace_output_1769565327_619.txt
+│   │   ├── workspace_output_1769565336_759.txt
+│   │   ├── workspace_output_1769565343_3269.txt
+│   │   ├── workspace_output_1769565364_8400.txt
+│   │   ├── workspace_output_1769565429_3419.txt
+│   │   ├── workspace_output_1769565431_8840.txt
+│   │   ├── workspace_output_1769565432_6811.txt
+│   │   ├── workspace_output_1769565444_2356.txt
+│   │   ├── workspace_output_1769565447_4988.txt
+│   │   ├── workspace_output_1769565459_6851.txt
+│   │   ├── workspace_output_1769565473_1794.txt
+│   │   ├── workspace_output_1769565485_7471.txt
+│   │   ├── workspace_output_1769565496_7503.txt
+│   │   ├── workspace_output_1769565508_3338.txt
+│   │   ├── workspace_output_1769565512_962.txt
+│   │   ├── workspace_output_1769565514_5937.txt
+│   │   ├── workspace_output_1769565524_8109.txt
+│   │   ├── workspace_output_1769565526_5903.txt
+│   │   ├── workspace_output_1769565527_4792.txt
+│   │   ├── workspace_output_1769565531_7198.txt
+│   │   ├── workspace_output_1769565532_5816.txt
+│   │   ├── workspace_output_1769565535_4405.txt
+│   │   ├── workspace_output_1769565536_1046.txt
+│   │   ├── workspace_output_1769565540_5918.txt
+│   │   ├── workspace_output_1769565542_776.txt
+│   │   ├── workspace_output_1769565548_7735.txt
+│   │   ├── workspace_output_1769565554_3983.txt
+│   │   ├── workspace_output_1769565556_4960.txt
+│   │   ├── workspace_output_1769565559_7702.txt
+│   │   ├── workspace_output_1769565561_6880.txt
+│   │   ├── workspace_output_1769565563_4039.txt
+│   │   ├── workspace_output_1769565565_5077.txt
+│   │   ├── workspace_output_1769565567_8111.txt
+│   │   ├── workspace_output_1769565572_6518.txt
+│   │   ├── workspace_output_1769565576_5005.txt
+│   │   ├── workspace_output_1769565578_4906.txt
+│   │   ├── workspace_output_1769565579_1580.txt
+│   │   ├── workspace_output_1769565583_9149.txt
+│   │   ├── workspace_output_1769565586_9541.txt
+│   │   ├── workspace_output_1769565588_2358.txt
+│   │   ├── workspace_output_1769565590_8976.txt
+│   │   ├── workspace_output_1769565596_1756.txt
+│   │   ├── workspace_output_1769565600_3898.txt
+│   │   ├── workspace_output_1769565603_9387.txt
+│   │   ├── workspace_output_1769565605_2215.txt
+│   │   ├── workspace_output_1769565607_1056.txt
+│   │   ├── workspace_output_1769565609_9900.txt
+│   │   ├── workspace_output_1769565610_9617.txt
+│   │   ├── workspace_output_1769565614_7303.txt
+│   │   ├── workspace_output_1769565617_5343.txt
+│   │   ├── workspace_output_1769565619_7455.txt
+│   │   ├── workspace_output_1769565635_8222.txt
+│   │   ├── workspace_output_1769565637_2611.txt
+│   │   ├── workspace_output_1769565650_4704.txt
+│   │   ├── workspace_output_1769567157_3645.txt
+│   │   ├── workspace_output_1769567159_5142.txt
+│   │   ├── workspace_output_1769567161_7234.txt
+│   │   ├── workspace_output_1769567163_7559.txt
+│   │   ├── workspace_output_1769567165_2761.txt
+│   │   ├── workspace_output_1769567168_3252.txt
+│   │   ├── workspace_output_1769567172_7142.txt
+│   │   ├── workspace_output_1769567174_6182.txt
+│   │   ├── workspace_output_1769567177_2066.txt
+│   │   ├── workspace_output_1769567180_2532.txt
+│   │   ├── workspace_output_1769567182_2215.txt
+│   │   ├── workspace_output_1769567192_2084.txt
+│   │   ├── workspace_output_1769567194_8596.txt
+│   │   ├── workspace_output_1769567196_401.txt
+│   │   ├── workspace_output_1769567198_3542.txt
+│   │   ├── workspace_output_1769567200_7604.txt
+│   │   ├── workspace_output_1769567223_7074.txt
+│   │   ├── workspace_output_1769567231_7991.txt
+│   │   ├── workspace_output_1769567234_3512.txt
+│   │   ├── workspace_output_1769567236_1822.txt
+│   │   ├── workspace_output_1769567238_4887.txt
+│   │   ├── workspace_output_1769567242_8700.txt
+│   │   ├── workspace_output_1769567244_7353.txt
+│   │   ├── workspace_output_1769567246_3102.txt
+│   │   ├── workspace_output_1769567249_2716.txt
+│   │   ├── workspace_output_1769567252_3111.txt
+│   │   ├── workspace_output_1769567254_8010.txt
+│   │   ├── workspace_output_1769567257_7329.txt
+│   │   ├── workspace_output_1769567259_1933.txt
+│   │   ├── workspace_output_1769567264_9194.txt
+│   │   ├── workspace_output_1769567328_5195.txt
+│   │   ├── workspace_output_1769567340_5376.txt
+│   │   ├── workspace_output_1769567347_3396.txt
+│   │   ├── workspace_output_1769567350_6946.txt
+│   │   ├── workspace_output_1769567367_4098.txt
+│   │   ├── workspace_output_1769567399_7641.txt
+│   │   ├── workspace_output_1769567402_8181.txt
+│   │   ├── workspace_output_1769567404_4219.txt
+│   │   ├── workspace_output_1769567406_3649.txt
+│   │   ├── workspace_output_1769567414_6885.txt
+│   │   ├── workspace_output_1769567416_6437.txt
+│   │   ├── workspace_output_1769567421_1255.txt
+│   │   ├── workspace_output_1769567423_9715.txt
+│   │   ├── workspace_output_1769567426_2958.txt
+│   │   ├── workspace_output_1769567429_8175.txt
+│   │   ├── workspace_output_1769567432_8131.txt
+│   │   ├── workspace_output_1769567447_4969.txt
+│   │   ├── workspace_output_1769567832_2268.txt
+│   │   ├── workspace_output_1769567845_9366.txt
+│   │   ├── workspace_output_1769567847_2342.txt
+│   │   ├── workspace_output_1769567849_3065.txt
+│   │   ├── workspace_output_1769567854_1256.txt
+│   │   ├── workspace_output_1769567862_9311.txt
+│   │   ├── workspace_output_1769567866_7154.txt
+│   │   ├── workspace_output_1769567871_5022.txt
+│   │   ├── workspace_output_1769567879_219.txt
+│   │   ├── workspace_output_1769567883_8711.txt
+│   │   ├── workspace_output_1769567888_495.txt
+│   │   ├── workspace_output_1769567892_1555.txt
+│   │   ├── workspace_output_1769567895_6353.txt
+│   │   ├── workspace_output_1769567899_9319.txt
+│   │   ├── workspace_output_1769567904_8158.txt
+│   │   ├── workspace_output_1769567907_4389.txt
+│   │   ├── workspace_output_1769567919_562.txt
+│   │   ├── workspace_output_1769567921_5734.txt
+│   │   ├── workspace_output_1769567924_2811.txt
+│   │   ├── workspace_output_1769567926_9858.txt
+│   │   ├── workspace_output_1769571764_6752.txt
+│   │   ├── workspace_output_1769571820_5179.txt
+│   │   ├── workspace_output_1769571824_2478.txt
+│   │   ├── workspace_output_1769571838_6028.txt
+│   │   ├── workspace_output_1769571840_3244.txt
+│   │   ├── workspace_output_1769571845_9018.txt
+│   │   ├── workspace_output_1769571847_3317.txt
+│   │   ├── workspace_output_1769571862_6383.txt
+│   │   ├── workspace_output_1769571865_756.txt
+│   │   ├── workspace_output_1769571896_9731.txt
+│   │   ├── workspace_output_1769571899_9449.txt
+│   │   ├── workspace_output_1769571926_3026.txt
+│   │   ├── workspace_output_1769571940_8191.txt
+│   │   ├── workspace_output_1769571942_1845.txt
+│   │   ├── workspace_output_1769571945_8736.txt
+│   │   ├── workspace_output_1769571947_322.txt
+│   │   ├── workspace_output_1769571949_7734.txt
+│   │   ├── workspace_output_1769571951_460.txt
+│   │   ├── workspace_output_1769571954_3951.txt
+│   │   ├── workspace_output_1769571956_705.txt
+│   │   ├── workspace_output_1769571959_2976.txt
+│   │   ├── workspace_output_1769571962_8566.txt
+│   │   ├── workspace_output_1769571964_9889.txt
+│   │   ├── workspace_output_1769571966_7925.txt
+│   │   ├── workspace_output_1769571971_6260.txt
+│   │   ├── workspace_output_1769571974_3644.txt
+│   │   ├── workspace_output_1769571976_399.txt
+│   │   ├── workspace_output_1769571978_3795.txt
+│   │   ├── workspace_output_1769571981_516.txt
+│   │   ├── workspace_output_1769571983_7888.txt
+│   │   ├── workspace_output_1769571986_9923.txt
+│   │   ├── workspace_output_1769571988_3908.txt
+│   │   ├── workspace_output_1769572003_762.txt
+│   │   ├── workspace_output_1769572006_2269.txt
+│   │   ├── workspace_output_1769572008_2488.txt
+│   │   ├── workspace_output_1769572011_2463.txt
+│   │   ├── workspace_output_1769572014_1937.txt
+│   │   ├── workspace_output_1769572016_2472.txt
+│   │   ├── workspace_output_1769572019_5677.txt
+│   │   ├── workspace_output_1769572022_1511.txt
+│   │   ├── workspace_output_1769572024_2459.txt
+│   │   ├── workspace_output_1769575420_7515.txt
+│   │   ├── workspace_output_1769575421_3929.txt
+│   │   ├── workspace_output_1769575424_3897.txt
+│   │   ├── workspace_output_1769575426_8700.txt
+│   │   ├── workspace_output_1769575428_7351.txt
+│   │   ├── workspace_output_1769575431_4792.txt
+│   │   ├── workspace_output_1769575442_3175.txt
+│   │   ├── workspace_output_1769575444_1427.txt
+│   │   ├── workspace_output_1769575445_491.txt
+│   │   ├── workspace_output_1769575448_9189.txt
+│   │   ├── workspace_output_1769575449_143.txt
+│   │   ├── workspace_output_1769575451_3401.txt
+│   │   ├── workspace_output_1769575454_8825.txt
+│   │   ├── workspace_output_1769575456_4626.txt
+│   │   ├── workspace_output_1769575458_6283.txt
+│   │   ├── workspace_output_1769575460_9325.txt
+│   │   ├── workspace_output_1769575464_4932.txt
+│   │   ├── workspace_output_1769575468_4692.txt
+│   │   ├── workspace_output_1769575469_1735.txt
+│   │   ├── workspace_output_1769575471_3204.txt
+│   │   ├── workspace_output_1769575474_5842.txt
+│   │   ├── workspace_output_1769575478_2963.txt
+│   │   ├── workspace_output_1769575481_2150.txt
+│   │   ├── workspace_output_1769575485_9131.txt
+│   │   ├── workspace_output_1769575489_5257.txt
+│   │   ├── workspace_output_1769575490_6749.txt
+│   │   ├── workspace_output_1769575492_7544.txt
+│   │   ├── workspace_output_1769575498_1052.txt
+│   │   ├── workspace_output_1769575500_3434.txt
+│   │   ├── workspace_output_1769575504_198.txt
+│   │   ├── workspace_output_1769575508_9782.txt
+│   │   ├── workspace_output_1769575519_923.txt
+│   │   ├── workspace_output_1769575520_3606.txt
+│   │   ├── workspace_output_1769575524_9232.txt
+│   │   ├── workspace_output_1769575525_3243.txt
+│   │   ├── workspace_output_1769575529_9159.txt
+│   │   ├── workspace_output_1769575531_2966.txt
+│   │   ├── workspace_output_1769575533_2402.txt
+│   │   ├── workspace_output_1769575534_4847.txt
+│   │   ├── workspace_output_1769575536_54.txt
+│   │   ├── workspace_output_1769575538_5761.txt
+│   │   ├── workspace_output_1769575540_4533.txt
+│   │   ├── workspace_output_1769575541_9648.txt
+│   │   ├── workspace_output_1769575547_7568.txt
+│   │   ├── workspace_output_1769575549_7189.txt
+│   │   ├── workspace_output_1769575551_9518.txt
+│   │   ├── workspace_output_1769575553_2124.txt
+│   │   ├── workspace_output_1769575559_7184.txt
+│   │   ├── workspace_output_1769575561_2906.txt
+│   │   ├── workspace_output_1769575562_5324.txt
+│   │   ├── workspace_output_1769575565_7166.txt
+│   │   ├── workspace_output_1769575567_8215.txt
+│   │   ├── workspace_output_1769575569_3108.txt
+│   │   ├── workspace_output_1769575571_3800.txt
+│   │   ├── workspace_output_1769575573_3886.txt
+│   │   ├── workspace_output_1769575581_272.txt
+│   │   ├── workspace_output_1769575585_4426.txt
+│   │   ├── workspace_output_1769575587_7788.txt
+│   │   ├── workspace_output_1769575591_5317.txt
+│   │   ├── workspace_output_1769575595_6391.txt
+│   │   ├── workspace_output_1769575596_1954.txt
+│   │   ├── workspace_output_1769575602_2351.txt
+│   │   ├── workspace_output_1769575604_7404.txt
+│   │   ├── workspace_output_1769575606_7697.txt
+│   │   ├── workspace_output_1769575609_4828.txt
+│   │   ├── workspace_output_1769575613_9001.txt
+│   │   ├── workspace_output_1769575616_5034.txt
+│   │   ├── workspace_output_1769575619_5695.txt
+│   │   ├── workspace_output_1769575626_4430.txt
+│   │   ├── workspace_output_1769575630_38.txt
+│   │   ├── workspace_output_1769575633_9292.txt
+│   │   ├── workspace_output_1769575635_5698.txt
+│   │   ├── workspace_output_1769575662_6200.txt
+│   │   ├── workspace_output_1769575666_9740.txt
+│   │   ├── workspace_output_1769575670_1305.txt
+│   │   ├── workspace_output_1769575673_562.txt
+│   │   ├── workspace_output_1769575678_7352.txt
+│   │   ├── workspace_output_1769575681_442.txt
+│   │   ├── workspace_output_1769575690_7143.txt
+│   │   ├── workspace_output_1769575697_9407.txt
+│   │   ├── workspace_output_1769577620_515.txt
+│   │   ├── workspace_output_1769577623_5146.txt
+│   │   ├── workspace_output_1769577625_1000.txt
+│   │   ├── workspace_output_1769577627_8385.txt
+│   │   ├── workspace_output_1769577629_6997.txt
+│   │   ├── workspace_output_1769577631_3182.txt
+│   │   ├── workspace_output_1769577634_7728.txt
+│   │   ├── workspace_output_1769577636_5552.txt
+│   │   ├── workspace_output_1769577639_2308.txt
+│   │   ├── workspace_output_1769577768_7754.txt
+│   │   ├── workspace_output_1769577778_7854.txt
+│   │   ├── workspace_output_1769577782_3556.txt
+│   │   ├── workspace_output_1769577784_2148.txt
+│   │   ├── workspace_output_1769577787_8188.txt
+│   │   ├── workspace_output_1769577789_4333.txt
+│   │   ├── workspace_output_1769577793_6851.txt
+│   │   ├── workspace_output_1769577800_9616.txt
+│   │   ├── workspace_output_1769577803_2512.txt
+│   │   ├── workspace_output_1769577805_8809.txt
+│   │   ├── workspace_output_1769577808_6580.txt
+│   │   ├── workspace_output_1769577810_3507.txt
+│   │   ├── workspace_output_1769577812_3110.txt
+│   │   ├── workspace_output_1769577815_4860.txt
+│   │   ├── workspace_output_1769577817_2450.txt
+│   │   ├── workspace_output_1769577823_6807.txt
+│   │   ├── workspace_output_1769577829_6908.txt
+│   │   ├── workspace_output_1769577831_2521.txt
+│   │   ├── workspace_output_1769577834_7437.txt
+│   │   ├── workspace_output_1769577836_5388.txt
+│   │   ├── workspace_output_1769577839_1398.txt
+│   │   ├── workspace_output_1769577844_4982.txt
+│   │   ├── workspace_output_1769577847_9572.txt
+│   │   ├── workspace_output_1769577849_2002.txt
+│   │   ├── workspace_output_1769577852_520.txt
+│   │   ├── workspace_output_1769577854_1742.txt
+│   │   ├── workspace_output_1769577863_9986.txt
+│   │   ├── workspace_output_1769577866_1075.txt
+│   │   ├── workspace_output_1769577868_2411.txt
+│   │   ├── workspace_output_1769577878_6611.txt
+│   │   ├── workspace_output_1769577880_9678.txt
+│   │   ├── workspace_output_1769577883_9852.txt
+│   │   ├── workspace_output_1769577885_7352.txt
+│   │   ├── workspace_output_1769577888_8161.txt
+│   │   ├── workspace_output_1769577890_516.txt
+│   │   ├── workspace_output_1769577892_5986.txt
+│   │   ├── workspace_output_1769577894_446.txt
+│   │   ├── workspace_output_1769577897_2882.txt
+│   │   ├── workspace_output_1769577906_7375.txt
+│   │   ├── workspace_output_1769577909_4244.txt
+│   │   ├── workspace_output_1769577913_3452.txt
+│   │   ├── workspace_output_1769577916_47.txt
+│   │   ├── workspace_output_1769577918_8518.txt
+│   │   ├── workspace_output_1769577930_6089.txt
+│   │   ├── workspace_output_1769577940_6976.txt
+│   │   ├── workspace_output_1769577944_3590.txt
+│   │   ├── workspace_output_1769577991_8331.txt
+│   │   ├── workspace_output_1769577996_2741.txt
+│   │   ├── workspace_output_1769580853_5858.txt
+│   │   ├── workspace_output_1769580855_1685.txt
+│   │   ├── workspace_output_1769580857_8721.txt
+│   │   ├── workspace_output_1769580860_7348.txt
+│   │   ├── workspace_output_1769580861_8857.txt
+│   │   ├── workspace_output_1769580863_402.txt
+│   │   ├── workspace_output_1769580865_2038.txt
+│   │   ├── workspace_output_1769580899_257.txt
+│   │   ├── workspace_output_1769580901_5144.txt
+│   │   ├── workspace_output_1769580903_2453.txt
+│   │   ├── workspace_output_1769580905_342.txt
+│   │   ├── workspace_output_1769580907_5646.txt
+│   │   ├── workspace_output_1769580911_9213.txt
+│   │   ├── workspace_output_1769580912_8469.txt
+│   │   ├── workspace_output_1769580916_3879.txt
+│   │   ├── workspace_output_1769580918_8004.txt
+│   │   ├── workspace_output_1769580927_9255.txt
+│   │   ├── workspace_output_1769580934_4474.txt
+│   │   ├── workspace_output_1769580936_8917.txt
+│   │   ├── workspace_output_1769580939_6693.txt
+│   │   ├── workspace_output_1769580941_331.txt
+│   │   ├── workspace_output_1769580942_6345.txt
+│   │   ├── workspace_output_1769580944_5026.txt
+│   │   ├── workspace_output_1769580946_1111.txt
+│   │   ├── workspace_output_1769580948_1407.txt
+│   │   ├── workspace_output_1769580955_4156.txt
+│   │   ├── workspace_output_1769580972_3657.txt
+│   │   ├── workspace_output_1769580975_1001.txt
+│   │   ├── workspace_output_1769580977_4508.txt
+│   │   ├── workspace_output_1769580980_4676.txt
+│   │   ├── workspace_output_1769580983_5096.txt
+│   │   ├── workspace_output_1769580994_959.txt
+│   │   ├── workspace_output_1769580996_3370.txt
+│   │   ├── workspace_output_1769580998_550.txt
+│   │   ├── workspace_output_1769581000_7573.txt
+│   │   ├── workspace_output_1769581005_699.txt
+│   │   ├── workspace_output_1769581018_6161.txt
+│   │   ├── workspace_output_1769581021_8185.txt
+│   │   ├── workspace_output_1769581028_7078.txt
+│   │   ├── workspace_output_1769581045_3380.txt
+│   │   ├── workspace_output_1769581048_86.txt
+│   │   ├── workspace_output_1769581050_2134.txt
+│   │   ├── workspace_output_1769581056_2668.txt
+│   │   ├── workspace_output_1769581059_2795.txt
+│   │   ├── workspace_output_1769582866_6200.txt
+│   │   ├── workspace_output_1769582869_8705.txt
+│   │   ├── workspace_output_1769582871_5585.txt
+│   │   ├── workspace_output_1769582872_1610.txt
+│   │   ├── workspace_output_1769582879_3676.txt
+│   │   ├── workspace_output_1769582881_3282.txt
+│   │   ├── workspace_output_1769582889_4847.txt
+│   │   ├── workspace_output_1769582898_6232.txt
+│   │   ├── workspace_output_1769582902_1811.txt
+│   │   ├── workspace_output_1769582909_9068.txt
+│   │   ├── workspace_output_1769582911_7810.txt
+│   │   ├── workspace_output_1769582917_5172.txt
+│   │   ├── workspace_output_1769582919_9454.txt
+│   │   ├── workspace_output_1769582921_9478.txt
+│   │   ├── workspace_output_1769582933_1328.txt
+│   │   ├── workspace_output_1769582940_9856.txt
+│   │   ├── workspace_output_1769582943_8797.txt
+│   │   ├── workspace_output_1769582945_7133.txt
+│   │   ├── workspace_output_1769582947_9165.txt
+│   │   ├── workspace_output_1769582950_5608.txt
+│   │   ├── workspace_output_1769582951_2019.txt
+│   │   ├── workspace_output_1769582953_5389.txt
+│   │   ├── workspace_output_1769582955_8780.txt
+│   │   ├── workspace_output_1769582956_4840.txt
+│   │   ├── workspace_output_1769582958_5814.txt
+│   │   ├── workspace_output_1769582962_4170.txt
+│   │   ├── workspace_output_1769582964_7492.txt
+│   │   ├── workspace_output_1769582965_4006.txt
+│   │   ├── workspace_output_1769582967_161.txt
+│   │   ├── workspace_output_1769582969_367.txt
+│   │   ├── workspace_output_1769582971_5323.txt
+│   │   ├── workspace_output_1769582983_1634.txt
+│   │   ├── workspace_output_1769582992_2559.txt
+│   │   ├── workspace_output_1769582996_1768.txt
+│   │   ├── workspace_output_1769582998_3531.txt
+│   │   ├── workspace_output_1769583002_9250.txt
+│   │   ├── workspace_output_1769583009_746.txt
+│   │   ├── workspace_output_1769583033_4717.txt
+│   │   ├── workspace_output_1769583038_3295.txt
+│   │   ├── workspace_output_1769583043_85.txt
+│   │   ├── workspace_output_1769583049_4594.txt
+│   │   ├── workspace_output_1769583051_472.txt
+│   │   ├── workspace_output_1769583058_2864.txt
+│   │   ├── workspace_output_1769583065_7230.txt
+│   │   ├── workspace_output_1769583068_8405.txt
+│   │   ├── workspace_output_1769583070_274.txt
+│   │   ├── workspace_output_1769583073_2494.txt
+│   │   ├── workspace_output_1769583076_2629.txt
+│   │   ├── workspace_output_1769583079_1894.txt
+│   │   ├── workspace_output_1769583085_9391.txt
+│   │   ├── workspace_output_1769583211_5932.txt
+│   │   ├── workspace_output_1769583229_7978.txt
+│   │   ├── workspace_output_1769583241_9086.txt
+│   │   ├── workspace_output_1769583243_2090.txt
+│   │   ├── workspace_output_1769583245_4988.txt
+│   │   ├── workspace_output_1769583251_1332.txt
+│   │   ├── workspace_output_1769583258_6861.txt
+│   │   ├── workspace_output_1769583268_9977.txt
+│   │   ├── workspace_output_1769583270_1802.txt
+│   │   ├── workspace_output_1769583272_7425.txt
+│   │   ├── workspace_output_1769583277_2927.txt
+│   │   ├── workspace_output_1769583284_1916.txt
+│   │   ├── workspace_output_1769583286_6552.txt
+│   │   ├── workspace_output_1769583290_6883.txt
+│   │   ├── workspace_output_1769583296_2976.txt
+│   │   ├── workspace_output_1769583298_8732.txt
+│   │   ├── workspace_output_1769583305_2694.txt
+│   │   ├── workspace_output_1769583308_7629.txt
+│   │   ├── workspace_output_1769583315_9890.txt
+│   │   ├── workspace_output_1769583322_1173.txt
+│   │   ├── workspace_output_1769583324_9542.txt
+│   │   ├── workspace_output_1769583326_7678.txt
+│   │   ├── workspace_output_1769583330_5768.txt
+│   │   ├── workspace_output_1769583332_7706.txt
+│   │   ├── workspace_output_1769583340_9565.txt
+│   │   ├── workspace_output_1769583342_9968.txt
+│   │   ├── workspace_output_1769583346_1516.txt
+│   │   ├── workspace_output_1769583349_4073.txt
+│   │   ├── workspace_output_1769583353_6321.txt
+│   │   ├── workspace_output_1769583359_5541.txt
+│   │   ├── workspace_output_1769583364_8058.txt
+│   │   ├── workspace_output_1769583367_6187.txt
+│   │   ├── workspace_output_1769583373_4253.txt
+│   │   ├── workspace_output_1769583375_9765.txt
+│   │   ├── workspace_output_1769583379_8614.txt
+│   │   ├── workspace_output_1769583381_5828.txt
+│   │   ├── workspace_output_1769583387_3085.txt
+│   │   ├── workspace_output_1769583390_6630.txt
+│   │   ├── workspace_output_1769583393_7326.txt
+│   │   ├── workspace_output_1769583395_5554.txt
+│   │   ├── workspace_output_1769583397_5585.txt
+│   │   ├── workspace_output_1769583402_4754.txt
+│   │   ├── workspace_output_1769583405_7447.txt
+│   │   ├── workspace_output_1769583407_3134.txt
+│   │   ├── workspace_output_1769583409_6985.txt
+│   │   ├── workspace_output_1769583418_4054.txt
+│   │   ├── workspace_output_1769583426_5349.txt
+│   │   ├── workspace_output_1769583428_5030.txt
+│   │   ├── workspace_output_1769583433_2850.txt
+│   │   ├── workspace_output_1769583435_1843.txt
+│   │   ├── workspace_output_1769583438_9655.txt
+│   │   ├── workspace_output_1769583449_5702.txt
+│   │   ├── workspace_output_1769583458_7896.txt
+│   │   ├── workspace_output_1769583461_7072.txt
+│   │   ├── workspace_output_1769583463_4248.txt
+│   │   ├── workspace_output_1769583469_245.txt
+│   │   ├── workspace_output_1769583472_261.txt
+│   │   ├── workspace_output_1769583476_2117.txt
+│   │   ├── workspace_output_1769583479_6605.txt
+│   │   ├── workspace_output_1769583482_4302.txt
+│   │   ├── workspace_output_1769583485_645.txt
+│   │   ├── workspace_output_1769583490_2259.txt
+│   │   ├── workspace_output_1769583492_348.txt
+│   │   ├── workspace_output_1769583494_4645.txt
+│   │   ├── workspace_output_1769583498_7710.txt
+│   │   ├── workspace_output_1769583505_7165.txt
+│   │   ├── workspace_output_1769583511_1960.txt
+│   │   ├── workspace_output_1769583514_5061.txt
+│   │   ├── workspace_output_1769583517_3644.txt
+│   │   ├── workspace_output_1769583519_6031.txt
+│   │   ├── workspace_output_1769583532_6309.txt
+│   │   ├── workspace_output_1769583545_5434.txt
+│   │   ├── workspace_output_1769583547_447.txt
+│   │   ├── workspace_output_1769583551_5209.txt
+│   │   ├── workspace_output_1769583569_6235.txt
+│   │   ├── workspace_output_1769583573_6800.txt
+│   │   ├── workspace_output_1769584735_3827.txt
+│   │   ├── workspace_output_1769584737_9380.txt
+│   │   ├── workspace_output_1769584746_9251.txt
+│   │   ├── workspace_output_1769584748_9525.txt
+│   │   ├── workspace_output_1769584750_1203.txt
+│   │   ├── workspace_output_1769584758_7942.txt
+│   │   ├── workspace_output_1769584764_5974.txt
+│   │   ├── workspace_output_1769584766_9187.txt
+│   │   ├── workspace_output_1769584775_8428.txt
+│   │   ├── workspace_output_1769584783_8638.txt
+│   │   ├── workspace_output_1769584785_9360.txt
+│   │   ├── workspace_output_1769584788_3419.txt
+│   │   ├── workspace_output_1769584791_3643.txt
+│   │   ├── workspace_output_1769584794_5173.txt
+│   │   ├── workspace_output_1769584796_8178.txt
+│   │   ├── workspace_output_1769584798_4326.txt
+│   │   ├── workspace_output_1769584800_8244.txt
+│   │   ├── workspace_output_1769584803_766.txt
+│   │   ├── workspace_output_1769584806_2726.txt
+│   │   ├── workspace_output_1769584810_9894.txt
+│   │   ├── workspace_output_1769584812_5259.txt
+│   │   ├── workspace_output_1769584815_5253.txt
+│   │   ├── workspace_output_1769584832_9072.txt
+│   │   ├── workspace_output_1769584836_7741.txt
+│   │   ├── workspace_output_1769584841_3749.txt
+│   │   ├── workspace_output_1769584845_4802.txt
+│   │   ├── workspace_output_1769584849_712.txt
+│   │   ├── workspace_output_1769584853_1045.txt
+│   │   ├── workspace_output_1769584857_2547.txt
+│   │   ├── workspace_output_1769584861_7042.txt
+│   │   ├── workspace_output_1769584865_4871.txt
+│   │   ├── workspace_output_1769584873_676.txt
+│   │   ├── workspace_output_1769584875_9378.txt
+│   │   ├── workspace_output_1769584877_3357.txt
+│   │   ├── workspace_output_1769584879_9050.txt
+│   │   ├── workspace_output_1769584915_2619.txt
+│   │   ├── workspace_output_1769584917_2389.txt
+│   │   ├── workspace_output_1769584926_2272.txt
+│   │   ├── workspace_output_1769584928_5815.txt
+│   │   ├── workspace_output_1769584931_9207.txt
+│   │   ├── workspace_output_1769584933_8197.txt
+│   │   ├── workspace_output_1769584938_1987.txt
+│   │   ├── workspace_output_1769584940_8296.txt
+│   │   ├── workspace_output_1769584946_8783.txt
+│   │   ├── workspace_output_1769584949_5942.txt
+│   │   ├── workspace_output_1769584951_7916.txt
+│   │   ├── workspace_output_1769584953_8168.txt
+│   │   ├── workspace_output_1769584955_5003.txt
+│   │   ├── workspace_output_1769584958_5814.txt
+│   │   ├── workspace_output_1769584960_4213.txt
+│   │   ├── workspace_output_1769584962_9893.txt
+│   │   ├── workspace_output_1769584964_2653.txt
+│   │   ├── workspace_output_1769584967_6845.txt
+│   │   ├── workspace_output_1769584981_776.txt
+│   │   ├── workspace_output_1769584984_8363.txt
+│   │   ├── workspace_output_1769584992_7886.txt
+│   │   ├── workspace_output_1769584994_9673.txt
+│   │   ├── workspace_output_1769584997_8542.txt
+│   │   ├── workspace_output_1769584999_9694.txt
+│   │   ├── workspace_output_1769585001_8737.txt
+│   │   ├── workspace_output_1769585004_5626.txt
+│   │   ├── workspace_output_1769585006_1020.txt
+│   │   ├── workspace_output_1769585012_7187.txt
+│   │   ├── workspace_output_1769585018_2066.txt
+│   │   ├── workspace_output_1769585021_7021.txt
+│   │   ├── workspace_output_1769585024_4905.txt
+│   │   ├── workspace_output_1769585027_756.txt
+│   │   ├── workspace_output_1769585030_8395.txt
+│   │   ├── workspace_output_1769585037_9679.txt
+│   │   ├── workspace_output_1769585043_6254.txt
+│   │   ├── workspace_output_1769585045_9916.txt
+│   │   ├── workspace_output_1769585047_1819.txt
+│   │   ├── workspace_output_1769585060_6797.txt
+│   │   ├── workspace_output_1769585088_7644.txt
+│   │   ├── workspace_output_1769585090_416.txt
+│   │   ├── workspace_output_1769585092_1686.txt
+│   │   ├── workspace_output_1769585094_3311.txt
+│   │   ├── workspace_output_1769585096_1309.txt
+│   │   ├── workspace_output_1769585182_1210.txt
+│   │   ├── workspace_output_1769585184_370.txt
+│   │   ├── workspace_output_1769585186_2743.txt
+│   │   ├── workspace_output_1769585194_2103.txt
+│   │   ├── workspace_output_1769585196_1340.txt
+│   │   ├── workspace_output_1769585198_1735.txt
+│   │   ├── workspace_output_1769585203_1728.txt
+│   │   ├── workspace_output_1769585207_6351.txt
+│   │   ├── workspace_output_1769585211_3487.txt
+│   │   ├── workspace_output_1769585215_4345.txt
+│   │   ├── workspace_output_1769585219_179.txt
+│   │   ├── workspace_output_1769585223_9781.txt
+│   │   ├── workspace_output_1769585227_2139.txt
+│   │   ├── workspace_output_1769585229_3211.txt
+│   │   ├── workspace_output_1769585232_507.txt
+│   │   ├── workspace_output_1769585236_3504.txt
+│   │   ├── workspace_output_1769585240_6974.txt
+│   │   ├── workspace_output_1769585267_3541.txt
+│   │   ├── workspace_output_1769585270_2363.txt
+│   │   ├── workspace_output_1769585272_9313.txt
+│   │   ├── workspace_output_1769585274_382.txt
+│   │   ├── workspace_output_1769586648_1475.txt
+│   │   ├── workspace_output_1769586650_2858.txt
+│   │   ├── workspace_output_1769586652_4232.txt
+│   │   ├── workspace_output_1769586655_471.txt
+│   │   ├── workspace_output_1769586658_5475.txt
+│   │   ├── workspace_output_1769586659_4645.txt
+│   │   ├── workspace_output_1769586664_3395.txt
+│   │   ├── workspace_output_1769586668_9860.txt
+│   │   ├── workspace_output_1769586670_6938.txt
+│   │   ├── workspace_output_1769586672_3309.txt
+│   │   ├── workspace_output_1769586676_541.txt
+│   │   ├── workspace_output_1769586678_4112.txt
+│   │   ├── workspace_output_1769586681_8519.txt
+│   │   ├── workspace_output_1769586749_3547.txt
+│   │   ├── workspace_output_1769586752_9209.txt
+│   │   ├── workspace_output_1769586754_756.txt
+│   │   ├── workspace_output_1769586757_6443.txt
+│   │   ├── workspace_output_1769586782_5276.txt
+│   │   ├── workspace_output_1769586784_5424.txt
+│   │   ├── workspace_output_1769586787_4312.txt
+│   │   ├── workspace_output_1769586804_2155.txt
+│   │   ├── workspace_output_1769586830_6800.txt
+│   │   ├── workspace_output_1769586930_7269.txt
+│   │   ├── workspace_output_1769586931_8366.txt
+│   │   ├── workspace_output_1769586962_2531.txt
+│   │   ├── workspace_output_1769586964_2017.txt
+│   │   ├── workspace_output_1769586966_1377.txt
+│   │   ├── workspace_output_1769586976_1412.txt
+│   │   ├── workspace_output_1769586979_5448.txt
+│   │   ├── workspace_output_1769586997_5697.txt
+│   │   ├── workspace_output_1769587002_8426.txt
+│   │   ├── workspace_output_1769587007_3965.txt
+│   │   ├── workspace_output_1769587010_6024.txt
+│   │   ├── workspace_output_1769587024_8956.txt
+│   │   ├── workspace_output_1769587026_4721.txt
+│   │   ├── workspace_output_1769587028_7554.txt
+│   │   ├── workspace_output_1769587052_5656.txt
+│   │   ├── workspace_output_1769587055_9774.txt
+│   │   ├── workspace_output_1769587067_2167.txt
+│   │   ├── workspace_output_1769587092_6965.txt
+│   │   ├── workspace_output_1769587094_2277.txt
+│   │   ├── workspace_output_1769587100_3515.txt
+│   │   ├── workspace_output_1769587103_538.txt
+│   │   ├── workspace_output_1769587109_5290.txt
+│   │   ├── workspace_output_1769587118_8789.txt
+│   │   ├── workspace_output_1769587120_3811.txt
+│   │   ├── workspace_output_1769587125_340.txt
+│   │   ├── workspace_output_1769587143_1761.txt
+│   │   ├── workspace_output_1769587147_2930.txt
+│   │   ├── workspace_output_1769587154_3816.txt
+│   │   ├── workspace_output_1769587158_5322.txt
+│   │   ├── workspace_output_1769587162_9690.txt
+│   │   ├── workspace_output_1769587165_5934.txt
+│   │   ├── workspace_output_1769587331_4353.txt
+│   │   ├── workspace_output_1769587335_9370.txt
+│   │   ├── workspace_output_1769587338_7691.txt
+│   │   ├── workspace_output_1769587360_6525.txt
+│   │   ├── workspace_output_1769587364_4934.txt
+│   │   ├── workspace_output_1769587366_29.txt
+│   │   ├── workspace_output_1769587370_1886.txt
+│   │   ├── workspace_output_1769587372_2519.txt
+│   │   ├── workspace_output_1769587375_4456.txt
+│   │   ├── workspace_output_1769587383_8165.txt
+│   │   ├── workspace_output_1769587386_3794.txt
+│   │   ├── workspace_output_1769587388_6358.txt
+│   │   ├── workspace_output_1769587390_7223.txt
+│   │   ├── workspace_output_1769587394_1252.txt
+│   │   ├── workspace_output_1769587396_4747.txt
+│   │   ├── workspace_output_1769587408_5278.txt
+│   │   ├── workspace_output_1769587422_6676.txt
+│   │   ├── workspace_output_1769587425_4619.txt
+│   │   ├── workspace_output_1769587428_3669.txt
+│   │   ├── workspace_output_1769587457_418.txt
+│   │   ├── workspace_output_1769587471_2929.txt
+│   │   ├── workspace_output_1769587475_6072.txt
+│   │   ├── workspace_output_1769587480_7122.txt
+│   │   ├── workspace_output_1769587484_949.txt
+│   │   ├── workspace_output_1769587496_9256.txt
+│   │   ├── workspace_output_1769587503_3427.txt
+│   │   ├── workspace_output_1769587507_7531.txt
+│   │   ├── workspace_output_1769587509_5273.txt
+│   │   ├── workspace_output_1769587512_4894.txt
+│   │   ├── workspace_output_1769587515_1929.txt
+│   │   ├── workspace_output_1769587517_973.txt
+│   │   ├── workspace_output_1769587520_7256.txt
+│   │   ├── workspace_output_1769587523_644.txt
+│   │   ├── workspace_output_1769587526_8978.txt
+│   │   ├── workspace_output_1769587528_2700.txt
+│   │   ├── workspace_output_1769587530_4904.txt
+│   │   ├── workspace_output_1769587540_3120.txt
+│   │   ├── workspace_output_1769587550_2631.txt
+│   │   ├── workspace_output_1769587556_6774.txt
+│   │   ├── workspace_output_1769587569_9953.txt
+│   │   ├── workspace_output_1769587578_1676.txt
+│   │   ├── workspace_output_1769587581_4612.txt
+│   │   ├── workspace_output_1769587584_3744.txt
+│   │   ├── workspace_output_1769587586_2251.txt
+│   │   ├── workspace_output_1769587589_7104.txt
+│   │   ├── workspace_output_1769587591_996.txt
+│   │   ├── workspace_output_1769587594_6111.txt
+│   │   ├── workspace_output_1769587597_8662.txt
+│   │   ├── workspace_output_1769587609_8194.txt
+│   │   ├── workspace_output_1769587612_8294.txt
+│   │   ├── workspace_output_1769587621_4116.txt
+│   │   ├── workspace_output_1769587791_1622.txt
+│   │   ├── workspace_output_1769587794_9684.txt
+│   │   ├── workspace_output_1769587798_588.txt
+│   │   ├── workspace_output_1769587801_1249.txt
+│   │   ├── workspace_output_1769587804_7496.txt
+│   │   ├── workspace_output_1769587812_7658.txt
+│   │   ├── workspace_output_1769587815_9937.txt
+│   │   ├── workspace_output_1769587828_3181.txt
+│   │   ├── workspace_output_1769587841_17.txt
+│   │   ├── workspace_output_1769587847_1659.txt
+│   │   ├── workspace_output_1769587851_1959.txt
+│   │   ├── workspace_output_1769587860_9386.txt
+│   │   ├── workspace_output_1769588623_6255.txt
+│   │   ├── workspace_output_1769588625_7471.txt
+│   │   ├── workspace_output_1769588628_43.txt
+│   │   ├── workspace_output_1769588631_5719.txt
+│   │   ├── workspace_output_1769588634_2344.txt
+│   │   ├── workspace_output_1769588639_4119.txt
+│   │   ├── workspace_output_1769588653_5544.txt
+│   │   ├── workspace_output_1769588661_4211.txt
+│   │   ├── workspace_output_1769588666_5521.txt
+│   │   ├── workspace_output_1769588668_9236.txt
+│   │   ├── workspace_output_1769588673_8013.txt
+│   │   ├── workspace_output_1769588676_4512.txt
+│   │   ├── workspace_output_1769588678_2886.txt
+│   │   ├── workspace_output_1769588680_7578.txt
+│   │   ├── workspace_output_1769588689_3059.txt
+│   │   ├── workspace_output_1769588691_634.txt
+│   │   ├── workspace_output_1769588694_7420.txt
+│   │   ├── workspace_output_1769588697_107.txt
+│   │   ├── workspace_output_1769588699_7194.txt
+│   │   ├── workspace_output_1769588701_8057.txt
+│   │   ├── workspace_output_1769588704_3279.txt
+│   │   ├── workspace_output_1769588707_8946.txt
+│   │   ├── workspace_output_1769588714_4099.txt
+│   │   ├── workspace_output_1769588717_7208.txt
+│   │   ├── workspace_output_1769588719_1317.txt
+│   │   ├── workspace_output_1769588721_535.txt
+│   │   ├── workspace_output_1769588727_193.txt
+│   │   ├── workspace_output_1769588732_1759.txt
+│   │   ├── workspace_output_1769588734_7939.txt
+│   │   ├── workspace_output_1769588737_9358.txt
+│   │   ├── workspace_output_1769588739_2478.txt
+│   │   ├── workspace_output_1769588746_577.txt
+│   │   ├── workspace_output_1769588751_1465.txt
+│   │   ├── workspace_output_1769588754_3955.txt
+│   │   ├── workspace_output_1769588758_7554.txt
+│   │   ├── workspace_output_1769588761_3822.txt
+│   │   ├── workspace_output_1769588789_1864.txt
+│   │   ├── workspace_output_1769588792_2716.txt
+│   │   ├── workspace_output_1769588794_4358.txt
+│   │   ├── workspace_output_1769589013_7886.txt
+│   │   ├── workspace_output_1769589015_4731.txt
+│   │   ├── workspace_output_1769589034_3019.txt
+│   │   ├── workspace_output_1769589037_4579.txt
+│   │   ├── workspace_output_1769589050_1773.txt
+│   │   ├── workspace_output_1769589062_9341.txt
+│   │   ├── workspace_output_1769589068_4187.txt
+│   │   ├── workspace_output_1769589080_1464.txt
+│   │   ├── workspace_output_1769589093_8468.txt
+│   │   ├── workspace_output_1769589095_3032.txt
+│   │   ├── workspace_output_1769592892_18.txt
+│   │   ├── workspace_output_1769592895_6825.txt
+│   │   ├── workspace_output_1769592898_964.txt
+│   │   ├── workspace_output_1769592900_9455.txt
+│   │   ├── workspace_output_1769592903_5335.txt
+│   │   ├── workspace_output_1769592906_6110.txt
+│   │   ├── workspace_output_1769592908_7930.txt
+│   │   ├── workspace_output_1769592910_6417.txt
+│   │   ├── workspace_output_1769592912_6527.txt
+│   │   ├── workspace_output_1769592914_1263.txt
+│   │   ├── workspace_output_1769592917_3679.txt
+│   │   ├── workspace_output_1769592919_777.txt
+│   │   ├── workspace_output_1769592922_8397.txt
+│   │   ├── workspace_output_1769592924_2127.txt
+│   │   ├── workspace_output_1769592926_4196.txt
+│   │   ├── workspace_output_1769592928_3942.txt
+│   │   ├── workspace_output_1769592931_8311.txt
+│   │   ├── workspace_output_1769592934_1410.txt
+│   │   ├── workspace_output_1769592936_7624.txt
+│   │   ├── workspace_output_1769592939_6926.txt
+│   │   ├── workspace_output_1769592942_5437.txt
+│   │   ├── workspace_output_1769592969_5253.txt
+│   │   ├── workspace_output_1769592971_804.txt
+│   │   ├── workspace_output_1769592974_6155.txt
+│   │   ├── workspace_output_1769592976_480.txt
+│   │   ├── workspace_output_1769592989_374.txt
+│   │   ├── workspace_output_1769593004_5301.txt
+│   │   ├── workspace_output_1769593008_4048.txt
+│   │   ├── workspace_output_1769602443_6846.txt
+│   │   ├── workspace_output_1769602447_6957.txt
+│   │   ├── workspace_output_1769602457_5503.txt
+│   │   ├── workspace_output_1769602461_6910.txt
+│   │   ├── workspace_output_1769602463_3642.txt
+│   │   ├── workspace_output_1769602466_7546.txt
+│   │   ├── workspace_output_1769602468_7286.txt
+│   │   ├── workspace_output_1769602471_9044.txt
+│   │   ├── workspace_output_1769602474_7789.txt
+│   │   ├── workspace_output_1769602479_4149.txt
+│   │   ├── workspace_output_1769602510_5186.txt
+│   │   ├── workspace_output_1769602514_4529.txt
+│   │   ├── workspace_output_1769602518_6610.txt
+│   │   ├── workspace_output_1769602521_8608.txt
+│   │   ├── workspace_output_1769602524_9221.txt
+│   │   ├── workspace_output_1769602527_3128.txt
+│   │   ├── workspace_output_1769602531_994.txt
+│   │   ├── workspace_output_1769602534_5741.txt
+│   │   ├── workspace_output_1769602542_8341.txt
+│   │   ├── workspace_output_1769602544_1882.txt
+│   │   ├── workspace_output_1769602547_9014.txt
+│   │   ├── workspace_output_1769602555_5472.txt
+│   │   ├── workspace_output_1769602559_7950.txt
+│   │   ├── workspace_output_1769602562_3054.txt
+│   │   ├── workspace_output_1769602580_9930.txt
+│   │   ├── workspace_output_1769602583_2982.txt
+│   │   ├── workspace_output_1769602598_9994.txt
+│   │   ├── workspace_output_1769602613_5754.txt
+│   │   ├── workspace_output_1769602615_7137.txt
+│   │   ├── workspace_output_1769602618_3289.txt
+│   │   ├── workspace_output_1769602631_1631.txt
+│   │   ├── workspace_output_1769602644_3945.txt
+│   │   ├── workspace_output_1769602657_1861.txt
+│   │   ├── workspace_output_1769602661_4702.txt
+│   │   ├── workspace_output_1769602664_8357.txt
+│   │   ├── workspace_output_1769602679_2946.txt
+│   │   ├── workspace_output_1769602682_8429.txt
+│   │   ├── workspace_output_1769602685_7421.txt
+│   │   ├── workspace_output_1769602688_5620.txt
+│   │   ├── workspace_output_1769602694_5063.txt
+│   │   ├── workspace_output_1769602707_5718.txt
+│   │   ├── workspace_output_1769602710_9548.txt
+│   │   ├── workspace_output_1769602713_215.txt
+│   │   ├── workspace_output_1769602790_5438.txt
+│   │   ├── workspace_output_1769602792_1067.txt
+│   │   ├── workspace_output_1769602794_4926.txt
+│   │   ├── workspace_output_1769602800_6873.txt
+│   │   ├── workspace_output_1769602822_8669.txt
+│   │   ├── workspace_output_1769602825_4774.txt
+│   │   ├── workspace_output_1769602828_647.txt
+│   │   ├── workspace_output_1769602831_3701.txt
+│   │   ├── workspace_output_1769602832_3615.txt
+│   │   ├── workspace_output_1769602834_7371.txt
+│   │   ├── workspace_output_1769602840_5887.txt
+│   │   ├── workspace_output_1769602843_5860.txt
+│   │   ├── workspace_output_1769602845_9209.txt
+│   │   ├── workspace_output_1769602851_7759.txt
+│   │   ├── workspace_output_1769602854_1428.txt
+│   │   ├── workspace_output_1769602857_2432.txt
+│   │   ├── workspace_output_1769602862_9807.txt
+│   │   ├── workspace_output_1769602866_7000.txt
+│   │   ├── workspace_output_1769602869_3727.txt
+│   │   ├── workspace_output_1769602872_6316.txt
+│   │   ├── workspace_output_1769602904_7168.txt
+│   │   ├── workspace_output_1769602907_4193.txt
+│   │   ├── workspace_output_1769602909_3452.txt
+│   │   ├── workspace_output_1769602913_4799.txt
+│   │   ├── workspace_output_1769602917_9698.txt
+│   │   ├── workspace_output_1769602924_2720.txt
+│   │   ├── workspace_output_1769602929_1883.txt
+│   │   ├── workspace_output_1769602931_6118.txt
+│   │   ├── workspace_output_1769602933_8882.txt
+│   │   ├── workspace_output_1769602937_5875.txt
+│   │   ├── workspace_output_1769602945_8425.txt
+│   │   ├── workspace_output_1769602947_6283.txt
+│   │   ├── workspace_output_1769602956_99.txt
+│   │   ├── workspace_output_1769603000_1958.txt
+│   │   ├── workspace_output_1769603008_5744.txt
+│   │   ├── workspace_output_1769603012_9364.txt
+│   │   ├── workspace_output_1769603056_6645.txt
+│   │   ├── workspace_output_1769603119_9024.txt
+│   │   ├── workspace_output_1769603143_1353.txt
+│   │   ├── workspace_output_1769603155_3680.txt
+│   │   ├── workspace_output_1769603158_2092.txt
+│   │   ├── workspace_output_1769603162_623.txt
+│   │   ├── workspace_output_1769603175_9623.txt
+│   │   ├── workspace_output_1769603181_8137.txt
+│   │   ├── workspace_output_1769603190_8003.txt
+│   │   ├── workspace_output_1769603192_6631.txt
+│   │   ├── workspace_output_1769603194_7489.txt
+│   │   ├── workspace_output_1769603196_5873.txt
+│   │   ├── workspace_output_1769603259_3658.txt
+│   │   ├── workspace_output_1769603328_1969.txt
+│   │   ├── workspace_output_1769603333_1490.txt
+│   │   ├── workspace_output_1769603335_3100.txt
+│   │   ├── workspace_output_1769603348_4783.txt
+│   │   ├── workspace_output_1769603411_7760.txt
+│   │   ├── workspace_output_1769603423_3475.txt
+│   │   ├── workspace_output_1769603437_2986.txt
+│   │   ├── workspace_output_1769603823_8710.txt
+│   │   ├── workspace_output_1769603839_5996.txt
+│   │   ├── workspace_output_1769603901_1870.txt
+│   │   ├── workspace_output_1769603963_6006.txt
+│   │   ├── workspace_output_1769603966_8941.txt
+│   │   ├── workspace_output_1769604079_7687.txt
+│   │   ├── workspace_output_1769604089_6080.txt
+│   │   ├── workspace_output_1769604092_9920.txt
+│   │   ├── workspace_output_1769604101_7572.txt
+│   │   ├── workspace_output_1769604105_7318.txt
+│   │   ├── workspace_output_1769604108_3897.txt
+│   │   ├── workspace_output_1769604119_9824.txt
+│   │   ├── workspace_output_1769604136_5913.txt
+│   │   ├── workspace_output_1769604139_5011.txt
+│   │   ├── workspace_output_1769604144_6696.txt
+│   │   ├── workspace_output_1769604149_694.txt
+│   │   ├── workspace_output_1769604152_4529.txt
+│   │   ├── workspace_output_1769604158_6637.txt
+│   │   ├── workspace_output_1769604172_661.txt
+│   │   ├── workspace_output_1769604178_9651.txt
+│   │   ├── workspace_output_1769604184_274.txt
+│   │   ├── workspace_output_1769604188_8520.txt
+│   │   ├── workspace_output_1769604206_8353.txt
+│   │   ├── workspace_output_1769604208_7723.txt
+│   │   ├── workspace_output_1769604210_5313.txt
+│   │   ├── workspace_output_1769604216_1893.txt
+│   │   ├── workspace_output_1769604217_3327.txt
+│   │   ├── workspace_output_1769604222_294.txt
+│   │   ├── workspace_output_1769604224_9068.txt
+│   │   ├── workspace_output_1769604226_5622.txt
+│   │   ├── workspace_output_1769604227_4590.txt
+│   │   ├── workspace_output_1769604231_8605.txt
+│   │   ├── workspace_output_1769604233_9876.txt
+│   │   ├── workspace_output_1769604235_9101.txt
+│   │   ├── workspace_output_1769604245_6490.txt
+│   │   ├── workspace_output_1769604248_69.txt
+│   │   ├── workspace_output_1769604253_696.txt
+│   │   ├── workspace_output_1769604259_3450.txt
+│   │   ├── workspace_output_1769604262_4565.txt
+│   │   ├── workspace_output_1769604265_2090.txt
+│   │   ├── workspace_output_1769604267_3087.txt
+│   │   ├── workspace_output_1769604271_8714.txt
+│   │   ├── workspace_output_1769604275_6434.txt
+│   │   ├── workspace_output_1769604279_2604.txt
+│   │   ├── workspace_output_1769604286_3474.txt
+│   │   ├── workspace_output_1769604288_9170.txt
+│   │   ├── workspace_output_1769604307_4089.txt
+│   │   ├── workspace_output_1769604318_5918.txt
+│   │   ├── workspace_output_1769604320_623.txt
+│   │   ├── workspace_output_1769604322_6027.txt
+│   │   ├── workspace_output_1769604325_1877.txt
+│   │   ├── workspace_output_1769604327_1221.txt
+│   │   ├── workspace_output_1769604334_719.txt
+│   │   ├── workspace_output_1769604340_562.txt
+│   │   ├── workspace_output_1769604343_3283.txt
+│   │   ├── workspace_output_1769604345_856.txt
+│   │   ├── workspace_output_1769604347_4006.txt
+│   │   ├── workspace_output_1769604355_3145.txt
+│   │   ├── workspace_output_1769604357_8136.txt
+│   │   ├── workspace_output_1769604360_5518.txt
+│   │   ├── workspace_output_1769604362_2825.txt
+│   │   ├── workspace_output_1769604369_7507.txt
+│   │   ├── workspace_output_1769604371_649.txt
+│   │   ├── workspace_output_ARCHIVING_WORKSPACE_OUTPUTS_2518.txt
+│   │   ├── workspace_output_GL_MARKER_VIOLATIONS_9063.txt
+│   │   ├── workspace_output_GL_METADATA_ADDED_1773.txt
+│   │   ├── workspace_output_PACKAGE_JSON_ANALYSIS_3615.txt
+│   │   └── workspace_output_PYTHON_AST_SYNTAX_ERRORS_2349.txt
+│   └── old-scripts
+│       ├── governance-monitor.pid
+│       └── monitor-governance-events.sh
+├── audit-reports
+│   ├── FINAL-SUMMARY.md
+│   ├── engineering-recommendations.md
+│   └── real-audit-report.md
+├── code-scanning-rules-used (4).csv
+├── config
+│   ├── enterprise-platform-architecture.yaml
+│   ├── performance
+│   │   └── baselines.yaml
+│   ├── platform-deployment.yaml
+│   └── sla
+│       └── slo-definitions.yaml
+├── deploy
+│   └── platform
+│       └── alertmanager
+├── deployment-scripts
+│   ├── 01_ARCHITECTURE_ANALYSIS.md
+│   ├── air-gapped
+│   │   ├── 00_README.md
+│   │   ├── 01_export_resources.sh
+│   │   ├── 02_import_resources.sh
+│   │   ├── 03_setup_registry.sh
+│   │   ├── 04_install_k3s.sh
+│   │   ├── 05_deploy_gl_backend.sh
+│   │   └── 06_dependency_check.sh
+│   ├── cluster
+│   │   ├── 00_README.md
+│   │   ├── 01_pre_install_check.sh
+│   │   ├── 02_init_control_plane.sh
+│   │   ├── 03_join_worker_node.sh
+│   │   ├── 04_install_cni.sh
+│   │   ├── 05_deploy_gl_backend.sh
+│   │   ├── 06_health_check.sh
+│   │   └── 07_remove_node.sh
+│   ├── single-node
+│   │   ├── 00_README.md
+│   │   ├── 01_pre_install_check.sh
+│   │   ├── 02_install_k3s.sh
+│   │   ├── 03_deploy_gl_backend.sh
+│   │   ├── 04_health_check.sh
+│   │   └── 05_uninstall.sh
+│   └── todo.md
+├── designs
+│   └── multi-agent-architecture.md
+├── docker-compose.production.yml
+├── docker-compose.yaml
+├── docs
+│   ├── MIGRATION
+│   │   ├── PHASE9-MIGRATION-SUMMARY.md
+│   │   └── PLATFORM-MIGRATION-GUIDE.md
+│   ├── QUANTUM-ARCHITECTURE-PLATFORM.md
+│   ├── RKE2_SECURITY_INTEGRATION_PLAN.md
+│   ├── ROOT_FILES_ANALYSIS.md
+│   ├── RUNBOOKS
+│   │   └── naming-migration-playbook.md
+│   ├── SELF-HOSTED-RUNNER-SETUP.md
+│   ├── TRAINING
+│   │   └── GL-PLATFORM-HANDBOOK.md
+│   └── implementation-progress.md
+├── documentation-manifest.yaml
+├── elasticsearch-search-system
+│   ├── .governance
+│   │   └── event-stream.jsonl
+│   ├── controlplane
+│   │   ├── evidence-chain.json
+│   │   ├── manifest.yaml
+│   │   └── policy.yaml
+│   ├── governance
+│   │   └── GL_SEMANTIC_ANCHOR.json
+│   ├── manifest.yaml
+│   ├── root-contracts
+│   │   └── .gitkeep
+│   ├── root-evidence
+│   │   ├── .gitkeep
+│   │   └── root-file-run.json
+│   ├── root-policy
+│   │   ├── evidence-chain.json
+│   │   ├── manifest.yaml
+│   │   ├── naming-convention
+│   │   └── policy.yaml
+│   ├── tools
+│   │   └── search
+│   ├── var
+│   │   ├── .gitkeep
+│   │   └── evidence
+│   └── workspace
+│       ├── evidence-chain.json
+│       ├── manifest.yaml
+│       ├── policy.yaml
+│       └── projects
+├── elasticsearch-validation-output.txt
+├── engine
+│   ├── .gl
+│   │   ├── evidence-chain.json
+│   │   ├── manifest.yaml
+│   │   └── semantic-anchors.yaml
+│   ├── .governance
+│   │   ├── audit-reports
+│   │   ├── audit-results
+│   │   ├── event-stream.jsonl
+│   │   ├── governance-event-stream.jsonl
+│   │   ├── outputs
+│   │   └── per-file-audits
+│   ├── README.md
+│   ├── SPEC.md
+│   ├── aep-engine-app
+│   │   ├── .gl-manifest.yaml
+│   │   ├── .governance
+│   │   ├── README.md
+│   │   ├── app
+│   │   ├── app.config.ts
+│   │   ├── assets
+│   │   ├── babel.config.js
+│   │   ├── components
+│   │   ├── constants
+│   │   ├── global.css
+│   │   ├── governance
+│   │   ├── hooks
+│   │   ├── metro.config.js
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── public
+│   │   ├── scripts
+│   │   ├── tailwind.config.js
+│   │   └── tsconfig.json
+│   ├── aep-engine-web
+│   │   ├── .gitignore
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── index.html
+│   │   ├── netlify.toml
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── src
+│   │   ├── tailwind.config.js
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   ├── vercel.json
+│   │   └── vite.config.ts
+│   ├── artifacts
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── artifact_manager.ts
+│   │   ├── evidence_chain.ts
+│   │   └── manifest_generator.ts
+│   ├── controlplane
+│   │   ├── README.md
+│   │   ├── baseline
+│   │   ├── config
+│   │   ├── documentation
+│   │   ├── governance
+│   │   ├── integration
+│   │   ├── registries
+│   │   ├── specifications
+│   │   └── validation
+│   ├── design
+│   │   ├── FileX-standard-template-v1.yaml
+│   │   └── semantic-closure-rules.md
+│   ├── engine
+│   │   └── .governance
+│   ├── etl-pipeline
+│   │   ├── controlplane
+│   │   ├── docs
+│   │   ├── implementation-summary.md
+│   │   ├── manifest.yaml
+│   │   ├── root-contracts
+│   │   ├── root-evidence
+│   │   ├── root-policy
+│   │   ├── tools
+│   │   ├── var
+│   │   └── workspace
+│   ├── execution
+│   │   ├── delivery-acceptance.md
+│   │   └── issue-log.md
+│   ├── executor
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── local_executor.ts
+│   │   ├── remote_executor.ts
+│   │   └── rollback.ts
+│   ├── github-repository-analyzer
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   └── tsconfig.json
+│   ├── gl-gate
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── core
+│   │   ├── gates
+│   │   ├── index.ts
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── scripts
+│   │   ├── tsconfig.json
+│   │   └── types
+│   ├── governance
+│   │   ├── .gl-manifest.yaml
+│   │   ├── GL_SEMANTIC_ANCHOR.json
+│   │   ├── README.md
+│   │   ├── anchor_resolver.ts
+│   │   ├── events_writer.ts
+│   │   ├── gl-artifacts
+│   │   ├── gl_engine.ts
+│   │   └── rule_evaluator.ts
+│   ├── index.ts
+│   ├── integration-tests-legacy
+│   │   ├── IMPLEMENTATION_SUMMARY.md
+│   │   ├── README.md
+│   │   ├── conftest.py
+│   │   ├── docker-compose.test.yml
+│   │   ├── pytest.ini
+│   │   ├── requirements-test.txt
+│   │   ├── run_tests.sh
+│   │   ├── test_functional_memory_system.py
+│   │   ├── test_smoke_config.py
+│   │   ├── test_smoke_memory.py
+│   │   ├── test_smoke_reporting.py
+│   │   ├── test_smoke_supply_chain.py
+│   │   └── test_smoke_system.py
+│   ├── interfaces-fix.d.ts
+│   ├── interfaces.d.ts
+│   ├── jest.config.js
+│   ├── loader
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── fs_loader.ts
+│   │   ├── git_loader.ts
+│   │   └── merge_index.ts
+│   ├── normalizer
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── defaults_applier.ts
+│   │   ├── env_merger.ts
+│   │   └── module_defaults.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── parser
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── anchor_resolver.ts
+│   │   ├── json_passthrough.ts
+│   │   └── yaml_parser.ts
+│   ├── performance-tests-legacy
+│   │   ├── README.md
+│   │   ├── conftest.py
+│   │   ├── docker-compose.performance.yml
+│   │   ├── pytest.ini
+│   │   ├── requirements-performance.txt
+│   │   ├── run_performance_tests.sh
+│   │   ├── test_unit_cache_operations.py
+│   │   └── test_unit_memory_operations.py
+│   ├── renderer
+│   │   ├── .gl-manifest.yaml
+│   │   ├── README.md
+│   │   ├── artifact_writer.ts
+│   │   ├── module_mapper.ts
+│   │   └── template_engine.ts
+│   ├── schemas
+│   │   ├── GL10-phase2-schema.json
+│   │   ├── change-request.schema.yaml
+│   │   ├── exception-request.schema.yaml
+│   │   ├── generation-request.schema.yaml
+│   │   ├── validation-request.schema.yaml
+│   │   └── validation-response.schema.yaml
+│   ├── scripts
+│   │   ├── add-gl-markers-json.js
+│   │   ├── add-gl-markers-v2.js
+│   │   ├── add-gl-markers.js
+│   │   ├── add-gl-markers.py
+│   │   ├── aup-tools
+│   │   ├── generate-event-stream.js
+│   │   ├── generate-global-audit-report.js
+│   │   └── tools
+│   ├── scripts-legacy
+│   │   ├── README.md
+│   │   ├── auto-fix-issues.py
+│   │   ├── auto-quality-check.py
+│   │   ├── auto-remediate-policy.py
+│   │   ├── autonomy-progress-tracker.py
+│   │   ├── branch-manager.sh
+│   │   ├── check_ci_comments.py
+│   │   ├── ci-error-analyzer.py
+│   │   ├── classify-autonomy.py
+│   │   ├── clean_yaml_files.py
+│   │   ├── cleanup-old-deployments.sh
+│   │   ├── collect_logs.sh
+│   │   ├── configure-velero-backups.sh
+│   │   ├── convert-snyk-to-sarif.py
+│   │   ├── convert_markdown_to_yaml.py
+│   │   ├── count_bandit_issues.py
+│   │   ├── deploy-blue.sh
+│   │   ├── deploy-green.sh
+│   │   ├── deploy-istio-testing.sh
+│   │   ├── deploy-multi-az-resources.sh
+│   │   ├── deploy.py
+│   │   ├── detect_patterns.py
+│   │   ├── extract_conflicts.py
+│   │   ├── fhs-integration
+│   │   ├── fix_yaml_indentation.py
+│   │   ├── fix_yaml_markdown.py
+│   │   ├── fix_yaml_structure.py
+│   │   ├── generate-autonomy-summary.py
+│   │   ├── generate-dag-visualization.py
+│   │   ├── generate-governance-dashboard.py
+│   │   ├── gl
+│   │   ├── gl-check
+│   │   ├── gl-engine
+│   │   ├── gl-hooks
+│   │   ├── gl-restructure
+│   │   ├── health-check.sh
+│   │   ├── hooks
+│   │   ├── init-automation.sh
+│   │   ├── install-jaeger-testing.sh
+│   │   ├── migrate-actions.sh
+│   │   ├── migration
+│   │   ├── monitor_ci_status.sh
+│   │   ├── monitoring
+│   │   ├── refactor
+│   │   ├── repository-understanding
+│   │   ├── rollback-git.sh
+│   │   ├── rollback.sh
+│   │   ├── safe-refactor.sh
+│   │   ├── supply-chain-tools-setup.sh
+│   │   ├── switch-traffic.sh
+│   │   ├── test-ci-error-analyzer.py
+│   │   ├── test-count-bandit-issues.py
+│   │   ├── test-failover-scenarios.sh
+│   │   ├── utils
+│   │   ├── validate-infrastructure.sh
+│   │   ├── validate-module-manifests.py
+│   │   ├── validate-module-registry.py
+│   │   ├── validate-structure.sh
+│   │   ├── validate-workspace.js
+│   │   └── verify-automation.sh
+│   ├── semantic-search-system
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   └── tsconfig.json
+│   ├── templates
+│   │   ├── ci
+│   │   └── monitoring
+│   ├── test-results-legacy
+│   │   └── .gitignore
+│   ├── tests
+│   │   ├── artifacts
+│   │   ├── governance
+│   │   ├── loader
+│   │   ├── normalizer
+│   │   └── validator
+│   ├── tests-legacy
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── e2e
+│   │   ├── fixtures
+│   │   ├── helpers
+│   │   ├── integration
+│   │   ├── test-report.md
+│   │   └── unit
+│   ├── tools-legacy
+│   │   ├── AUTONOMOUS_CAPABILITIES.md
+│   │   ├── QUICKSTART_AUTONOMOUS_TOOLKIT.md
+│   │   ├── README.md
+│   │   ├── ai
+│   │   ├── ai-auto-fix.py
+│   │   ├── ai-refactor-review.py
+│   │   ├── apps
+│   │   ├── auto-fix-bot-dashboard.html
+│   │   ├── automated_directory_restructure.py
+│   │   ├── automation
+│   │   ├── autonomous_cleanup_toolkit.py
+│   │   ├── bootstrap_from_manifest.py
+│   │   ├── build_module.py
+│   │   ├── ci
+│   │   ├── ci-cost-dashboard.py
+│   │   ├── cleanup_duplicates.py
+│   │   ├── cli
+│   │   ├── cloudflare
+│   │   ├── deploy_governance_crds.sh
+│   │   ├── directory_doc_generator.py
+│   │   ├── docs
+│   │   ├── evidence_generator.py
+│   │   ├── evolution
+│   │   ├── fhs-integration
+│   │   ├── find_duplicate_scripts.py
+│   │   ├── fix-yaml-structure.py
+│   │   ├── fix_hardcoded_secrets.py
+│   │   ├── generate-hotspot-heatmap.py
+│   │   ├── generate-language-dashboard.py
+│   │   ├── generate-migration-flow.py
+│   │   ├── generate-refactor-playbook.py
+│   │   ├── generate-sankey-data.py
+│   │   ├── generators
+│   │   ├── git-hooks
+│   │   ├── gl10_validator.sh
+│   │   ├── gl10semanticvalidator.py
+│   │   ├── gl10semanticvalidator.sh
+│   │   ├── gl10top10validator.py
+│   │   ├── gl10top10validator.sh
+│   │   ├── gl_validator.sh
+│   │   ├── governance
+│   │   ├── governance-audit
+│   │   ├── infrastructure
+│   │   ├── integrate_all_repos.sh
+│   │   ├── integrate_repositories.sh
+│   │   ├── language-dashboard-data.yaml
+│   │   ├── language-health-score.py
+│   │   ├── language-history-writer.py
+│   │   ├── lkb-update.py
+│   │   ├── load-playbook.py
+│   │   ├── map-violations-to-playbooks.py
+│   │   ├── module_graph_gate.py
+│   │   ├── namespace-converter.py
+│   │   ├── namespace-validator.py
+│   │   ├── path_tools
+│   │   ├── platform-bootstrap-runner.py
+│   │   ├── python
+│   │   ├── quantum-alignment-engine
+│   │   ├── real-module-launcher.py
+│   │   ├── refactor
+│   │   ├── repository-understanding
+│   │   ├── requirements.txt
+│   │   ├── root-validator.py
+│   │   ├── root_schema_gate.py
+│   │   ├── rootfs_assembler.py
+│   │   ├── run_full_cleanup.sh
+│   │   ├── run_restructure.sh
+│   │   ├── scan_tech_debt.py
+│   │   ├── scripts
+│   │   ├── security
+│   │   ├── security_audit.py
+│   │   ├── semantic-commit-generator.py
+│   │   ├── subtree_integrate.py
+│   │   ├── sync_external_repos.py
+│   │   ├── templates
+│   │   ├── utilities
+│   │   ├── validate-refactor-index.py
+│   │   ├── validate_directory_docs.py
+│   │   ├── validate_restructure.py
+│   │   ├── validation
+│   │   ├── verify-namespace-alignment.py
+│   │   ├── verify_p0_safety.py
+│   │   └── yaml_validator.sh
+│   ├── tsconfig.json
+│   ├── types
+│   │   └── index.ts
+│   └── validator
+│       ├── .gl-manifest.yaml
+│       ├── README.md
+│       ├── error_reporter.ts
+│       ├── module_validator.ts
+│       └── schema_validator.ts
+├── engine_structure.txt
+├── esync-platform
+│   ├── .config
+│   │   ├── conftest
+│   │   ├── gatekeeper
+│   │   ├── kyverno
+│   │   ├── lint
+│   │   └── policy
+│   ├── .github
+│   │   ├── actions
+│   │   └── workflows
+│   ├── .governance
+│   │   └── event-stream.jsonl
+│   ├── COMPLETION_REPORT.md
+│   ├── Makefile
+│   ├── PLATFORM_STATUS.md
+│   ├── QUANTUM_ARCHITECTURE_SUMMARY.md
+│   ├── README.md
+│   ├── cmd
+│   │   └── syncd
+│   ├── deploy
+│   │   └── kustomize
+│   ├── docs
+│   │   ├── SECURITY.md
+│   │   ├── adr
+│   │   └── architecture.md
+│   ├── go.mod
+│   ├── governance
+│   │   └── GL_SEMANTIC_ANCHOR.json
+│   ├── internal
+│   │   ├── connectors
+│   │   ├── monitoring
+│   │   └── registry
+│   ├── observability
+│   │   ├── alerts
+│   │   └── dashboards
+│   ├── pipelines
+│   │   └── example-pipeline.yaml
+│   ├── scripts
+│   │   ├── auto-fix
+│   │   └── naming
+│   └── todo.md
+├── event-driven-system.service
+├── file-organizer-system
+│   ├── .github
+│   │   ├── hooks
+│   │   └── workflows
+│   ├── .governance
+│   │   ├── GL_SEMANTIC_ANCHOR.json
+│   │   └── event-stream.jsonl
+│   ├── GL_SEMANTIC_ANCHOR.json
+│   ├── client
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   └── tsconfig.node.json
+│   ├── governance
+│   │   └── GL_SEMANTIC_ANCHOR.json
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server
+│       ├── package.json
+│       ├── src
+│       └── tsconfig.json
+├── fix-governance-markers.py
+├── fos-validation-output.txt
+├── gitleaks
+├── gl-audit-simple.py
+├── gl-platform-universe
+│   ├── IMPLEMENTATION_SUMMARY.md
+│   ├── README.md
+│   ├── artifacts
+│   │   └── .gitkeep
+│   ├── contracts
+│   │   ├── governance-unification-spec.yaml
+│   │   ├── semantic-unification-spec.yaml
+│   │   ├── structural-unification-spec.yaml
+│   │   └── unified-naming-governance-contract.yaml
+│   ├── governance
+│   │   ├── audit-trails
+│   │   ├── naming-governance
+│   │   ├── policies
+│   │   └── validators
+│   ├── observability
+│   │   └── .gitkeep
+│   ├── platforms
+│   │   └── .gitkeep
+│   ├── scripts
+│   │   └── .gitkeep
+│   ├── todo.md
+│   └── workflows
+│       └── .gitkeep
+├── gl-runtime-platform
+│   ├── .gitignore
+│   ├── COMPLETE_FIX_REPORT.md
+│   ├── Dockerfile
+│   ├── GIT_SUBMIT_SUMMARY.md
+│   ├── GL_EVOLUTION_DIAGRAM.md
+│   ├── GL_RUNTIME_EVOLUTION_PATH.md
+│   ├── GL_V13_CIVILIZATION_LAYER.md
+│   ├── GL_V14_META_COGNITIVE_RUNTIME.md
+│   ├── GL_V14_META_COGNITIVE_RUNTIME_NEW.md
+│   ├── GL_V15_UNIVERSAL_INTELLIGENCE.md
+│   ├── GL_V16_OMNI_CONTEXT_INTEGRATION.md
+│   ├── GL_V17_TRANS_DOMAIN_INTEGRATION.md
+│   ├── GL_V18_INTER_REALITY_INTEGRATION.md
+│   ├── GL_V19_UNIFIED_INTELLIGENCE_FABRIC.md
+│   ├── GL_V7_COMPLETION.md
+│   ├── GL_V8_COMPLETION.md
+│   ├── README.md
+│   ├── SECURITY_FIX_REPORT.md
+│   ├── SYSTEM_TEST_REPORT.md
+│   ├── analysis-recommendations.md
+│   ├── api
+│   │   └── rest
+│   ├── civilization
+│   │   ├── civilization-memory
+│   │   ├── cultural-engine
+│   │   ├── ecosystem-engine
+│   │   ├── expansion-engine
+│   │   ├── governance-system
+│   │   ├── role-specialization
+│   │   └── sustainability-engine
+│   ├── code-intel-security-layer
+│   │   ├── capability-schema
+│   │   ├── deployment-weaver
+│   │   ├── evaluation-engine
+│   │   ├── evolution-engine
+│   │   ├── fabric-continuum-integration.ts
+│   │   ├── generator-engine
+│   │   ├── index.ts
+│   │   ├── integrations
+│   │   └── pattern-library
+│   ├── cognitive-mesh
+│   │   ├── index.ts
+│   │   ├── mesh-core
+│   │   ├── mesh-emergence
+│   │   ├── mesh-memory
+│   │   ├── mesh-nodes
+│   │   ├── mesh-optimizer
+│   │   ├── mesh-routing
+│   │   └── mesh-synchronization
+│   ├── config
+│   │   ├── governance-config.yml
+│   │   ├── ports-config.yml
+│   │   └── services-config.yml
+│   ├── connectors
+│   │   ├── connector-ci-github
+│   │   ├── connector-format-yaml-json-md
+│   │   ├── connector-git
+│   │   ├── connector-lang-js
+│   │   └── connector-lang-py
+│   ├── control-plane
+│   │   └── nlp-control-api.py
+│   ├── deployment
+│   │   ├── auto-deploy
+│   │   ├── docker-compose.yaml
+│   │   ├── enterprise-platform-deployment.yaml
+│   │   └── k8s
+│   ├── docker-compose.yml
+│   ├── docs
+│   │   ├── API-Documentation.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── Deployment-Guide.md
+│   │   ├── agent-protocol.md
+│   │   └── architecture
+│   ├── engine
+│   │   ├── orchestration-engine
+│   │   ├── resource-graph-runtime
+│   │   ├── sandbox-runner
+│   │   ├── scheduler
+│   │   ├── self-healing-engine
+│   │   └── semantic-graph-runtime
+│   ├── evolution
+│   │   ├── evolutionary-memory
+│   │   ├── evolutionary-strategy-engine
+│   │   ├── index.ts
+│   │   ├── self-optimization-loop
+│   │   ├── self-rewriting-engine
+│   │   ├── self-versioning
+│   │   └── structural-mutation-engine
+│   ├── fabric-storage
+│   │   ├── fabric-edges.json
+│   │   └── fabric-nodes.json
+│   ├── federation
+│   │   ├── README.md
+│   │   ├── federation-orchestration
+│   │   ├── index.yaml
+│   │   ├── org-registry
+│   │   ├── policies
+│   │   ├── topology
+│   │   └── trust
+│   ├── fix-v14.js
+│   ├── gl
+│   │   ├── README.md
+│   │   ├── v01
+│   │   ├── v02
+│   │   ├── v03
+│   │   ├── v04
+│   │   ├── v05
+│   │   ├── v06
+│   │   ├── v07
+│   │   ├── v08
+│   │   ├── v09
+│   │   ├── v0_pro
+│   │   ├── v10
+│   │   ├── v11
+│   │   ├── v12
+│   │   ├── v13
+│   │   ├── v14
+│   │   ├── v15
+│   │   ├── v16
+│   │   ├── v17
+│   │   ├── v18
+│   │   ├── v19
+│   │   ├── v20
+│   │   ├── v21
+│   │   ├── v22
+│   │   ├── v23
+│   │   ├── v24
+│   │   ├── v25
+│   │   └── version_registry.py
+│   ├── gl-runtime
+│   │   ├── SPEC.md
+│   │   ├── VERSION_MAP.md
+│   │   ├── server.py
+│   │   ├── service_manager.py
+│   │   ├── shared
+│   │   ├── start_all_services.py
+│   │   ├── unified_server.py
+│   │   ├── v1-basic-execution
+│   │   ├── v10-multi-agent-swarm
+│   │   ├── v11-mesh-cognition
+│   │   ├── v12-evolution-engine
+│   │   ├── v13-civilization-layer
+│   │   ├── v14-quantum-consensus
+│   │   ├── v15-neural-fabric
+│   │   ├── v16-temporal-engine
+│   │   ├── v17-reality-bridge
+│   │   ├── v18-consciousness-layer
+│   │   ├── v19-universal-translator
+│   │   ├── v2-basic-analysis
+│   │   ├── v20-infinity-pool
+│   │   ├── v21-genesis-protocol
+│   │   ├── v22-omega-synthesis
+│   │   ├── v23-root-governance
+│   │   ├── v24-meta-governance
+│   │   ├── v25-ecosystem-integration
+│   │   ├── v3-basic-governance
+│   │   ├── v4-auto-repair
+│   │   ├── v5-auto-optimization
+│   │   ├── v6-multi-module
+│   │   ├── v7-global-dag
+│   │   ├── v8-semantic-resource-graph
+│   │   └── v9-self-healing
+│   ├── global-dag
+│   │   ├── dag-builder
+│   │   ├── dag-executor
+│   │   ├── dag-model
+│   │   ├── dag-optimizer
+│   │   ├── dag-repair
+│   │   ├── dag-resolver
+│   │   ├── dag-visualizer
+│   │   └── index.ts
+│   ├── governance
+│   │   ├── gl-annotations
+│   │   ├── gl-core
+│   │   ├── gl-policy-engine
+│   │   ├── gl-resource-graph
+│   │   └── gl-semantic-graph
+│   ├── governance-audit-reports
+│   │   ├── audit-summary.md
+│   │   └── global-governance-audit-report.json
+│   ├── governance-audit-reports-main
+│   │   ├── governance-tags-report.json
+│   │   └── governance-tags-report.md
+│   ├── infinite-learning-continuum
+│   │   ├── algorithmic-evolution
+│   │   ├── continuum-memory
+│   │   ├── fabric-expansion
+│   │   ├── index.ts
+│   │   ├── infinite-composition
+│   │   ├── knowledge-accretion
+│   │   └── semantic-reformation
+│   ├── inter-reality
+│   │   ├── adaptive-reasoning
+│   │   ├── cross-reality-consistency
+│   │   ├── index.ts
+│   │   ├── inter-reality-governance
+│   │   ├── invariant-knowledge
+│   │   ├── multi-reality-mapping
+│   │   └── reality-model-abstraction
+│   ├── meta-cognition
+│   │   ├── decision-optimizer
+│   │   ├── deep-consciousness-engine
+│   │   ├── deep-index.ts
+│   │   ├── deep-thinking-engine
+│   │   ├── index.ts
+│   │   ├── meta-correction-engine
+│   │   ├── meta-feedback-loop
+│   │   ├── meta-reasoning-engine
+│   │   ├── reflective-memory
+│   │   ├── self-awareness-engine
+│   │   ├── self-monitoring-layer
+│   │   └── wisdom-engine
+│   ├── meta-cognitive
+│   │   ├── consciousness-emergence
+│   │   ├── meta-cognitive-monitoring
+│   │   ├── meta-decision
+│   │   ├── reflection-loop
+│   │   └── self-assessment
+│   ├── omni-context
+│   │   ├── context-aware-strategy
+│   │   ├── context-fusion
+│   │   ├── global-consistency-fabric
+│   │   ├── index.ts
+│   │   ├── knowledge-alignment
+│   │   ├── multi-scale-reasoning
+│   │   └── temporal-coherence
+│   ├── ops
+│   │   ├── agents
+│   │   ├── auto-bootstrap
+│   │   ├── auto-repair
+│   │   ├── executors
+│   │   ├── governance-verification.sh
+│   │   ├── pipelines
+│   │   └── service-health-check.sh
+│   ├── package.json
+│   ├── priority1-completion-report.md
+│   ├── progress-report.md
+│   ├── reports-main
+│   │   └── priority2-completion-report.md
+│   ├── reports-review.md
+│   ├── scripts
+│   │   ├── add-governance-tags-main.py
+│   │   ├── add-governance-tags.py
+│   │   ├── check-ports.py
+│   │   ├── check-service-health.py
+│   │   ├── fix-axiom-naming.py
+│   │   ├── fix-axiom-naming.sh
+│   │   ├── global-governance-audit.py
+│   │   ├── test-code-intel-security-layer.py
+│   │   ├── verify-canonical.py
+│   │   ├── verify-pipelines-connectors.py
+│   │   └── verify-signatures.py
+│   ├── security-scan-report.md
+│   ├── server.js
+│   ├── simple-server.js
+│   ├── src
+│   │   ├── api
+│   │   ├── civilization-server.ts
+│   │   ├── cognitive-mesh-server.ts
+│   │   ├── connectors
+│   │   ├── deep-meta-cognitive-server.ts
+│   │   ├── engine
+│   │   ├── events
+│   │   ├── evolution-server.ts
+│   │   ├── governance
+│   │   ├── index.ts
+│   │   ├── infinite-continuum
+│   │   ├── infinite-continuum-server.ts
+│   │   ├── inter-reality-server.ts
+│   │   ├── meta-cognitive-server.ts
+│   │   ├── omni-context-server-simple.ts
+│   │   ├── orchestration
+│   │   ├── policies
+│   │   ├── storage
+│   │   ├── trans-domain-server.ts
+│   │   ├── unified-fabric-server.ts
+│   │   ├── universal-intelligence-server.ts
+│   │   └── utils
+│   ├── storage
+│   │   ├── gl-artifacts
+│   │   ├── gl-artifacts-store
+│   │   ├── gl-audit-reports
+│   │   ├── gl-events-stream
+│   │   └── gl-semantic-graph
+│   ├── system-test-todo.md
+│   ├── tasks
+│   │   └── start-runtime.yml
+│   ├── templates
+│   │   ├── FINAL_SUMMARY.md
+│   │   ├── GIT_TROUBLESHOOTING_REPORT.md
+│   │   ├── IMPLEMENTATION_SUMMARY.md
+│   │   ├── PROJECT_COMPLETION_TODO.md
+│   │   ├── README.md
+│   │   ├── ROADMAP.md
+│   │   ├── base
+│   │   ├── environments
+│   │   ├── policies
+│   │   ├── todo.md
+│   │   └── tools
+│   ├── test-civilization.js
+│   ├── test-meta-cognitive.js
+│   ├── test-reports
+│   │   ├── code-intel-test-report.json
+│   │   ├── integration-test-report.json
+│   │   ├── integration-test-report.md
+│   │   ├── pipelines-connectors-verification.json
+│   │   └── test-summary.md
+│   ├── test-reports-main
+│   │   ├── integration-test-report.json
+│   │   └── integration-test-report.md
+│   ├── test-sandbox.json
+│   ├── tests
+│   │   ├── integration
+│   │   ├── integration-main
+│   │   ├── run-integration-tests-simple.ts
+│   │   └── run-integration-tests.ts
+│   ├── todo-priority2.md
+│   ├── todo-ultra-strict-verification.md
+│   ├── todo-v14.md
+│   ├── todo-v20.md
+│   ├── todo.md
+│   ├── trans-domain
+│   │   ├── cross-system-integration
+│   │   ├── index.js
+│   │   ├── index.ts
+│   │   ├── inter-system-governance
+│   │   ├── knowledge-mapping
+│   │   ├── multi-model-alignment
+│   │   ├── stability-engine
+│   │   └── universal-interface
+│   ├── tsconfig.json
+│   ├── ultra-strict-verification-core
+│   │   ├── anti-fabric
+│   │   ├── execution-harness
+│   │   ├── falsification-engine
+│   │   ├── governance-event-stream.ts
+│   │   ├── index.ts
+│   │   ├── test-verification.ts
+│   │   └── types.ts
+│   ├── unified-intelligence-fabric
+│   │   ├── fabric-algo
+│   │   ├── fabric-composition
+│   │   ├── fabric-compute
+│   │   ├── fabric-core
+│   │   ├── fabric-evolution
+│   │   ├── fabric-flows
+│   │   ├── fabric-storage
+│   │   └── index.ts
+│   └── universal-intelligence
+│       ├── cross-domain-reasoning
+│       ├── general-problem-solving
+│       ├── index.ts
+│       ├── intelligence-transfer
+│       ├── knowledge-synthesis-engine
+│       ├── universal-abstraction-engine
+│       ├── universal-adaptation
+│       └── universal-learning-loop
+├── gl-runtime-platform.zip
+├── gl-semantic-core-platform
+│   ├── IMPLEMENTATION_SUMMARY.md
+│   ├── README.md
+│   ├── configs
+│   │   └── folding-config.yaml
+│   ├── deployments
+│   │   ├── docker
+│   │   ├── helm
+│   │   └── kubernetes
+│   ├── docs
+│   │   ├── api
+│   │   ├── architecture
+│   │   └── tutorials
+│   ├── requirements.txt
+│   ├── src
+│   │   ├── api
+│   │   ├── core
+│   │   ├── semantic-computation
+│   │   ├── semantic-folding
+│   │   ├── semantic-indexing
+│   │   └── semantic-inference
+│   ├── tests
+│   │   ├── integration
+│   │   ├── performance
+│   │   └── unit
+│   ├── todo.md
+│   └── tools
+│       ├── benchmark
+│       ├── migration
+│       └── monitoring
+├── gl-simple-audit-report.json
+├── gl-validation-output.txt
+├── governance-manifest.yaml
+├── governance-monitor-config.yaml
+├── improved-monitor.sh
+├── index.html
+├── infrastructure
+│   ├── .governance
+│   │   └── event-stream.jsonl
+│   ├── deployment
+│   │   ├── README.md
+│   │   ├── docker-compose
+│   │   ├── helm
+│   │   ├── kubernetes
+│   │   ├── scripts
+│   │   └── terraform
+│   ├── governance
+│   │   └── GL_SEMANTIC_ANCHOR.json
+│   ├── k8s-legacy
+│   │   ├── DEPLOYMENT_GUIDE.md
+│   │   ├── ENTERPRISE_INFRASTRUCTURE_SUMMARY.md
+│   │   ├── disaster-recovery
+│   │   ├── high-availability
+│   │   ├── istio
+│   │   ├── jaeger
+│   │   └── production
+│   ├── kubernetes
+│   │   └── manifests
+│   ├── redis-stack
+│   │   ├── README.md
+│   │   ├── docker-compose.yaml
+│   │   └── redis-config.yaml
+│   └── rke2
+│       ├── README.md
+│       ├── manifests
+│       ├── profiles
+│       └── scripts
+├── infrastructure-validation-output.txt
+├── init-governance.sh
+├── instant
+│   ├── .governance
+│   │   └── event-stream.jsonl
+│   ├── README.md
+│   ├── archive
+│   │   ├── INSTANT-EXECUTION-REFACTOR-PLAN.md
+│   │   ├── INSTANT_GENERATION_ARCHITECTURE.md
+│   │   ├── archive_result_20260109_000725.json
+│   │   ├── metadata_20260109_000725.json
+│   │   └── refactor_playbooks_20260109_000725.tar.gz
+│   ├── configs
+│   │   ├── INSTANT-EXECUTION-MANIFEST.yaml
+│   │   ├── INSTANT_MIGRATION_MANIFEST.yaml
+│   │   ├── data-sync-config.yaml
+│   │   ├── instant-execution-config.yaml
+│   │   └── instant-execution-pipeline.yaml
+│   ├── docs
+│   │   ├── DATA-SYNC-SERVICE-GUIDE.md
+│   │   ├── INSTANT-COMPLETION-REPORT.md
+│   │   ├── INSTANT-COMPLIANCE.md
+│   │   ├── INSTANT-EXECUTION-DAG.md
+│   │   ├── INSTANT-EXECUTION-MANIFEST.schema.json
+│   │   ├── INSTANT-EXECUTION-MANIFEST.yaml
+│   │   ├── INSTANT-IMPLEMENTATION-GUIDE.md
+│   │   ├── INSTANT-MIGRATION-PLAN.md
+│   │   ├── INSTANT-README.md
+│   │   ├── INSTANT_ARCHIVE_SUCCESS_REPORT.md
+│   │   ├── INSTANT_COMPLIANCE.md
+│   │   ├── INSTANT_EXECUTION_COMPLETION_REPORT.md
+│   │   ├── INSTANT_EXECUTION_INTEGRATION_MAP.md
+│   │   ├── INSTANT_EXECUTION_README.md
+│   │   ├── INSTANT_EXECUTION_SUMMARY.md
+│   │   ├── INSTANT_FIX_TEMPLATE_UPDATE.md
+│   │   ├── INSTANT_MIGRATION_COMPLETE.md
+│   │   ├── INSTANT_OPERATION_GUIDE.md
+│   │   ├── INSTANT_TRIGGERS_IMPLEMENTATION_REPORT.md
+│   │   ├── QUICK_START_INSTANT_EXECUTION.md
+│   │   ├── README_INSTANT_GENERATION.md
+│   │   └── pr-validation-INSTANT_TRIGGERS_IMPLEMENTATION_REPORT.json
+│   ├── gl00-09-infrafix-dryrun.json
+│   ├── gl00-09-stage1-only.json
+│   ├── governance
+│   │   └── GL_SEMANTIC_ANCHOR.json
+│   ├── legacy
+│   │   ├── .instant-manifest.yaml
+│   │   └── instant_grail.yaml
+│   ├── scripts
+│   │   ├── INSTANT-DEPLOY.py
+│   │   ├── demo-instant-execution.sh
+│   │   ├── demo_instant_generation.py
+│   │   ├── deploy-instant.sh
+│   │   ├── generate-instant-dag.py
+│   │   ├── instant_archiver_v1.py
+│   │   ├── instant_execution_engine_v2.py
+│   │   ├── instant_execution_pipeline.py
+│   │   ├── organize_instant_files.sh
+│   │   ├── registry_instant.py
+│   │   ├── run-instant-execution.sh
+│   │   ├── test_registry_instant.py
+│   │   ├── validate-instant-execution.py
+│   │   └── validate-instant-manifest.py
+│   ├── src
+│   │   ├── INSTANT_DEBT_RESOLUTION_REPORT.md
+│   │   ├── INSTANT_EXECUTION_PROOF_即時執行證明.md
+│   │   ├── INSTANT_TRANSFORMATION_SUMMARY.md
+│   │   ├── data-sync-engine.ts
+│   │   ├── data-sync-service.ts
+│   │   ├── index.ts
+│   │   └── instant-execution-engine.ts
+│   └── workflows
+│       └── instant-validation.yml
+├── instant-validation-output.txt
+├── integrations
+│   ├── pagerduty
+│   │   └── config.example.yaml
+│   ├── prometheus
+│   │   └── config.example.yaml
+│   └── slack
+│       └── config.example.yaml
+├── multi-agent-setup-todo.md
+├── observability
+│   ├── alerts
+│   │   └── prometheus-rules
+│   └── dashboards
+│       ├── naming-compliance.json
+│       └── ops-sla-overview.json
+├── outputs
+│   ├── workspace_output_1769645179_6697.txt
+│   ├── workspace_output_1769665448_8638.txt
+│   ├── workspace_output_1769665452_7275.txt
+│   ├── workspace_output_1769665466_7086.txt
+│   ├── workspace_output_1769665476_1188.txt
+│   ├── workspace_output_1769665479_283.txt
+│   ├── workspace_output_1769665482_9348.txt
+│   ├── workspace_output_1769665485_2113.txt
+│   ├── workspace_output_1769665489_4092.txt
+│   ├── workspace_output_1769665502_6153.txt
+│   ├── workspace_output_1769665516_2386.txt
+│   ├── workspace_output_1769665524_878.txt
+│   ├── workspace_output_1769665586_204.txt
+│   ├── workspace_output_1769665661_4905.txt
+│   ├── workspace_output_1769665964_7678.txt
+│   ├── workspace_output_1769666038_3707.txt
+│   ├── workspace_output_1769668299_3113.txt
+│   ├── workspace_output_1769668348_4849.txt
+│   ├── workspace_output_1769668377_3515.txt
+│   ├── workspace_output_1769668381_3041.txt
+│   ├── workspace_output_1769668394_3794.txt
+│   ├── workspace_output_1769668434_4464.txt
+│   ├── workspace_output_1769668438_1469.txt
+│   ├── workspace_output_1769668473_9812.txt
+│   ├── workspace_output_1769668501_1384.txt
+│   ├── workspace_output_1769668512_4382.txt
+│   ├── workspace_output_1769668584_1073.txt
+│   ├── workspace_output_1769668860_3556.txt
+│   ├── workspace_output_1769668864_4192.txt
+│   ├── workspace_output_1769668871_7016.txt
+│   ├── workspace_output_1769668949_2085.txt
+│   ├── workspace_output_1769668965_3507.txt
+│   ├── workspace_output_1769668980_9964.txt
+│   ├── workspace_output_1769668991_8131.txt
+│   ├── workspace_output_1769669003_8883.txt
+│   ├── workspace_output_1769669008_6710.txt
+│   ├── workspace_output_1769669014_5268.txt
+│   ├── workspace_output_1769669018_968.txt
+│   ├── workspace_output_1769669022_1896.txt
+│   ├── workspace_output_1769669027_4709.txt
+│   ├── workspace_output_1769669031_5669.txt
+│   ├── workspace_output_1769669050_2222.txt
+│   ├── workspace_output_1769670400_7768.txt
+│   ├── workspace_output_1769670490_7149.txt
+│   ├── workspace_output_1769679093_5434.txt
+│   ├── workspace_output_1769679143_237.txt
+│   ├── workspace_output_1769679146_3946.txt
+│   ├── workspace_output_1769679150_494.txt
+│   └── workspace_output_1769679158_584.txt
+├── package-lock.json
+├── package.json
+├── platform
+│   ├── cleanup
+│   │   └── zero-residue-cleaner.ts
+│   ├── execution
+│   │   └── execution-engine.ts
+│   ├── index.ts
+│   ├── monitoring
+│   │   └── internal-monitor.ts
+│   └── validation
+│       └── compliance-validator.ts
+├── priority2-main.md
+├── prometheus.yml
+├── pytest.ini
+├── quantum-platform
+│   ├── artifacts
+│   │   ├── cli
+│   │   ├── converters
+│   │   └── upload
+│   ├── governance
+│   │   ├── audit
+│   │   ├── ci-pipeline
+│   │   ├── naming
+│   │   └── supply-chain
+│   ├── infrastructure
+│   │   ├── enforcers
+│   │   ├── policies
+│   │   ├── scanners
+│   │   └── service-mesh
+│   ├── k3s-upgrade
+│   │   ├── automatic
+│   │   ├── manual
+│   │   ├── rollback
+│   │   └── upgrade-monitoring.yaml
+│   ├── monitoring
+│   │   ├── alerting
+│   │   ├── alerts
+│   │   ├── dashboards
+│   │   ├── grafana
+│   │   └── prometheus
+│   └── workflows
+│       ├── auto-pr
+│       ├── monitoring
+│       └── repair
+├── requirements.txt
+├── root.bootstrap.yaml
+├── root.env.sh
+├── root.fs.map
+├── ruff.toml
+├── scan-secrets.py
+├── scripts
+│   ├── deploy
+│   │   └── integrations-setup.sh
+│   ├── discovery
+│   │   ├── cluster-discovery.sh
+│   │   └── naming-audit.sh
+│   ├── docx
+│   │   └── convert.sh
+│   ├── fix-axiom-naming-repo.sh
+│   ├── fix-hardcoded-timelines.py
+│   ├── generate-dag-visualization.py
+│   ├── generate-governance-dashboard.py
+│   ├── global-dag-audit.sh
+│   ├── naming
+│   │   ├── auto-label.k8s.yaml
+│   │   ├── report-sla.mjs
+│   │   └── suggest-name.mjs
+│   ├── optimization
+│   │   ├── monitoring-baselines.sh
+│   │   └── performance-tuning.sh
+│   ├── platform-deploy.py
+│   ├── platform-runner.ts
+│   ├── replace-github-token.sh
+│   ├── scan-hardcoded-timelines-filtered.py
+│   ├── scan-hardcoded-timelines.py
+│   ├── scan-naming-violations.py
+│   ├── scan-source-code-timelines.py
+│   ├── validate-infrastructure.sh
+│   ├── validate-module-manifests.py
+│   ├── validate-module-registry.py
+│   ├── version-audit.py
+│   ├── workflow-inventory.sh
+│   └── zero-residue-execution.sh
+├── semantic_engine
+│   ├── README.md
+│   ├── __init__.py
+│   ├── api_server.py
+│   ├── semantic_engine.py
+│   ├── semantic_folding.py
+│   ├── semantic_indexing.py
+│   ├── semantic_inference.py
+│   ├── semantic_models.py
+│   ├── semantic_parameterization.py
+│   └── test_engine.py
+├── start-gl-platform.sh
+├── summarized_conversations
+│   ├── original_conversation_1769670122_6548.txt
+│   ├── original_conversation_1769670333_9393.txt
+│   ├── original_conversation_1769677609_5209.txt
+│   ├── original_conversation_1769677610_203.txt
+│   ├── original_conversation_1769677610_289.txt
+│   ├── original_conversation_1769677610_3226.txt
+│   ├── original_conversation_1769677611_5611.txt
+│   ├── original_conversation_1769677611_6760.txt
+│   ├── original_conversation_1769677611_8685.txt
+│   ├── original_conversation_1769677611_9255.txt
+│   ├── original_conversation_1769677612_2956.txt
+│   ├── original_conversation_1769677612_5137.txt
+│   ├── original_conversation_1769677612_9098.txt
+│   ├── original_conversation_1769677612_9823.txt
+│   ├── original_conversation_1769677613_5214.txt
+│   ├── original_conversation_1769677613_88.txt
+│   ├── original_conversation_1769677613_9224.txt
+│   ├── original_conversation_1769677613_97.txt
+│   ├── original_conversation_1769677614_5338.txt
+│   ├── original_conversation_1769677614_8370.txt
+│   ├── original_conversation_1769677614_8800.txt
+│   ├── original_conversation_1769677615_6683.txt
+│   ├── original_conversation_1769677615_7883.txt
+│   └── original_conversation_1769677615_8760.txt
+├── todo-v19.md
+├── todo-v20.md
+├── todo.backup.md
+├── todo.md
+└── wrangler.toml
+
+687 directories, 2363 files

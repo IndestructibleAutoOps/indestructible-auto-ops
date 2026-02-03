@@ -35,10 +35,7 @@ print_success "Virtual environment activated"
 
 # Load environment variables
 if [ -f ".env" ]; then
-    set -a
-    # shellcheck disable=SC1091
-    . .env
-    set +a
+    export $(cat .env | grep -v '^#' | xargs)
     print_success "Environment variables loaded"
 else
     print_warning "No .env file found, using defaults"
@@ -91,15 +88,7 @@ print_success "Arbitrator initialized"
 echo ""
 echo "Step 5: Testing reasoning pipeline..."
 python3 -c "
-import importlib.util
-import pathlib
-
-module_path = pathlib.Path('platforms/gl.platform-assistant/orchestration/pipeline.py')
-spec = importlib.util.spec_from_file_location('gl_platform_assistant_pipeline', module_path)
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
-
-ReasoningPipeline = module.ReasoningPipeline
+from platforms.gl.platform-assistant.orchestration.pipeline import ReasoningPipeline
 pipeline = ReasoningPipeline()
 response = pipeline.handle_request(
     task_spec='Test request',

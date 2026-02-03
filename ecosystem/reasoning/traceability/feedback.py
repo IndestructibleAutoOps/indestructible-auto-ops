@@ -2,10 +2,10 @@
 Feedback Loop System
 Collects user feedback and analyzes patterns for optimization
 """
-# MNGA-002: Import organization needs review
 import os
 import json
-from typing import List, Dict, Optional
+import hashlib
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 from pathlib import Path
 from collections import Counter, defaultdict
