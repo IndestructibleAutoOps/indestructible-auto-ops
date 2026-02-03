@@ -1,6 +1,6 @@
 # Architecture Layers
 
-Generated: 2026-02-03T14:25:40.850614Z
+Generated: 2026-02-03T15:03:58.489363Z
 
 ## meta-spec
 
@@ -30,11 +30,19 @@ Components: 10
 
 ## governance
 
-Components: 49
+Components: 97
 
+- contracts.fact-verification.gl.internal-vs-external-governance
 - contracts.governance.ROLE_LANGUAGE_SPECIFICATION
 - contracts.governance.ROLE_RUNTIME_FLOW
 - contracts.governance.ROLE_SYSTEM_IMPLEMENTATION_COMPLETE
+- contracts.governance.gl-governance-layers
+- contracts.governance.gl-semantic-violation-classifier
+- contracts.governance.gl.causal-reasoning-spec
+- contracts.governance.gl.cognitive-modes-spec
+- contracts.governance.gl.evolution-metrics
+- contracts.governance.gl.execution.finalization-spec
+- contracts.governance.gqs-layers
 - contracts.governance.role.schema
 - contracts.governance.roles.ecosystem.analyst
 - contracts.governance.roles.ecosystem.architect
@@ -42,20 +50,30 @@ Components: 49
 - contracts.governance.roles.ecosystem.semantic-checker
 - contracts.governance.roles.ecosystem.validator
 - contracts.governance.roles.registry
+- contracts.governance.templates.gl.execution.analysis-report
+- contracts.governance.templates.gl.execution.delta-report
+- contracts.governance.templates.gl.flow.upgrade-log
 - contracts.naming-governance.gl-build-layer-specification
 - contracts.naming-governance.gl-ci-cd-layer-specification
+- contracts.naming-governance.gl-contract-layer-specification
 - contracts.naming-governance.gl-dependency-layer-specification
 - contracts.naming-governance.gl-deployment-layer-specification
 - contracts.naming-governance.gl-documentation-layer-specification
 - contracts.naming-governance.gl-extensibility-layer-specification
+- contracts.naming-governance.gl-format-layer-specification
 - contracts.naming-governance.gl-generator-layer-specification
 - contracts.naming-governance.gl-governance-layer-specification
 - contracts.naming-governance.gl-indexing-layer-specification
 - contracts.naming-governance.gl-interface-layer-specification
+- contracts.naming-governance.gl-language-layer-specification
 - contracts.naming-governance.gl-metadata-layer-specification
+- contracts.naming-governance.gl-naming-ontology
+- contracts.naming-governance.gl-naming-ontology-expanded
 - contracts.naming-governance.gl-observability-layer-specification
 - contracts.naming-governance.gl-packaging-layer-specification
 - contracts.naming-governance.gl-permission-layer-specification
+- contracts.naming-governance.gl-platform-layer-specification
+- contracts.naming-governance.gl-prefix-principles-engineering
 - contracts.naming-governance.gl-reasoning-layer-specification
 - contracts.naming-governance.gl-security-layer-specification
 - contracts.naming-governance.gl-supply-chain-layer-specification
@@ -67,7 +85,10 @@ Components: 49
 - ecosystem.governance.docs.architecture.components
 - ecosystem.governance.docs.architecture.layers
 - ecosystem.governance.docs.architecture.metrics
+- enforcers.closed_loop_governance
 - enforcers.governance_enforcer
+- governance.GL_SEMANTIC_ANCHOR
+- governance.audit_logger
 - governance.docs.architecture.architecture_summary
 - governance.docs.architecture.components
 - governance.docs.architecture.layers
@@ -81,12 +102,40 @@ Components: 49
 - governance.format-layer.schemas.contract.schema
 - governance.format-layer.schemas.evidence.schema
 - governance.format-layer.schemas.platform-instance.schema
+- governance.governance-manifest
+- governance.governance-monitor-config
+- governance.meta-governance.DRIFT_ANALYSIS_REPORT
+- governance.meta-governance.FULL_INTEGRATION_REPORT
+- governance.meta-governance.META_GOVERNANCE_APPLICATION_REPORT
+- governance.meta-governance.README
+- governance.meta-governance.configs.governance-config
+- governance.meta-governance.schemas.version-specification
+- governance.meta-governance.src.__init__
+- governance.meta-governance.src.change_control_system
+- governance.meta-governance.src.change_manager
+- governance.meta-governance.src.dependency_manager
+- governance.meta-governance.src.governance_framework
+- governance.meta-governance.src.impact_analyzer
+- governance.meta-governance.src.review_manager
+- governance.meta-governance.src.sha_integrity_system
+- governance.meta-governance.src.strict_version_enforcer
+- governance.meta-governance.src.version_manager
+- governance.meta-governance.tests.test_change_control
+- governance.meta-governance.tests.test_meta_governance
+- governance.meta-governance.tests.test_sha_integrity
+- governance.meta-governance.tests.test_strict_version_management
+- governance.meta-governance.tools.apply_governance
+- governance.meta-governance.tools.apply_strict_versioning
+- governance.meta-governance.tools.full_governance_integration
+- tools.generate-governance-dashboard
+- tools.gl-markers.fix-governance-markers
 
 ## reasoning
 
-Components: 15
+Components: 16
 
 - contracts.reasoning.dual_path_spec
+- contracts.reasoning.gl-reasoning-rules
 - reasoning.agents.planning_agent
 - reasoning.agents.tools_registry
 - reasoning.auto_reasoner
@@ -132,8 +181,24 @@ Components: 7
 
 ## contracts
 
-Components: 0
+Components: 16
 
+- contracts.extensions.gl-extension-points
+- contracts.fact-verification.README
+- contracts.fact-verification.gl.fact-pipeline-spec
+- contracts.fact-verification.gl.verifiable-report-spec
+- contracts.generator.gl-generator-spec
+- contracts.platforms.gl-platforms
+- contracts.policies.conftest
+- contracts.validation.gl-validation-rules
+- contracts.verification.gl-audit-report-template
+- contracts.verification.gl-proof-model
+- contracts.verification.gl-proof-model-executable
+- contracts.verification.gl-verifiable-report-standard
+- contracts.verification.gl-verifiable-report-standard-executable
+- contracts.verification.gl-verification-engine-spec
+- contracts.verification.gl-verification-engine-spec-executable
+- registry.naming.gl-naming-contracts-registry
 
 ## engines
 

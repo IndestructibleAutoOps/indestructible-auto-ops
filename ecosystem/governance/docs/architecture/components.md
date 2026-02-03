@@ -1,8 +1,170 @@
 # Architecture Components
 
-Generated: 2026-02-03T14:25:40.850614Z
+Generated: 2026-02-03T15:03:58.489363Z
 
-Total Components: 105
+Total Components: 295
+
+## CODE_SCANNING_ECOSYSTEM_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/CODE_SCANNING_ECOSYSTEM_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## COMPREHENSIVE_GOVERNANCE_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/COMPREHENSIVE_GOVERNANCE_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## DEPLOYMENT_GUIDE
+
+- **Type**: documentation
+- **Path**: ecosystem/DEPLOYMENT_GUIDE.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## ECOSYSTEM_COMPLETE
+
+- **Type**: documentation
+- **Path**: ecosystem/ECOSYSTEM_COMPLETE.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## ECOSYSTEM_STATUS_ANALYSIS
+
+- **Type**: documentation
+- **Path**: ecosystem/ECOSYSTEM_STATUS_ANALYSIS.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## ENGINEERING_EXECUTION_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/ENGINEERING_EXECUTION_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## FINAL_COMPLETION_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/FINAL_COMPLETION_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## FINAL_PROGRESS_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/FINAL_PROGRESS_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## IMPLEMENTATION_PROGRESS
+
+- **Type**: documentation
+- **Path**: ecosystem/IMPLEMENTATION_PROGRESS.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## PHASE1_AND_2_COMPLETION
+
+- **Type**: documentation
+- **Path**: ecosystem/PHASE1_AND_2_COMPLETION.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## PHASE1_COMPLETION_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/PHASE1_COMPLETION_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## PROJECT_COMPLETION_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/PROJECT_COMPLETION_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## QUICK_REFERENCE
+
+- **Type**: documentation
+- **Path**: ecosystem/QUICK_REFERENCE.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## README
+
+- **Type**: documentation
+- **Path**: ecosystem/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## STRICT_VERSIONING_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/STRICT_VERSIONING_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## VERSION_MANIFEST
+
+- **Type**: json_schema
+- **Path**: ecosystem/VERSION_MANIFEST.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## autofix_engine
+
+- **Type**: python_module
+- **Path**: ecosystem/autofix_engine.py
+- **Dependencies**: 9
+  - os, pathlib, typing, sys, json, argparse, re, datetime, dataclasses
+- **Dependents**: 0
+
+## contracts.extensions.gl-extension-points
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/extensions/gl-extension-points.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.fact-verification.README
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/fact-verification/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.fact-verification.gl.fact-pipeline-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/fact-verification/gl.fact-pipeline-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.fact-verification.gl.internal-vs-external-governance
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/fact-verification/gl.internal-vs-external-governance.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.fact-verification.gl.verifiable-report-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/fact-verification/gl.verifiable-report-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.generator.gl-generator-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/generator/gl-generator-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
 
 ## contracts.governance.ROLE_LANGUAGE_SPECIFICATION
 
@@ -22,6 +184,55 @@ Total Components: 105
 
 - **Type**: documentation
 - **Path**: ecosystem/contracts/governance/ROLE_SYSTEM_IMPLEMENTATION_COMPLETE.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gl-governance-layers
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gl-governance-layers.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gl-semantic-violation-classifier
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gl.causal-reasoning-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gl.causal-reasoning-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gl.cognitive-modes-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gl.cognitive-modes-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gl.evolution-metrics
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gl.evolution-metrics.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gl.execution.finalization-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gl.execution.finalization-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.gqs-layers
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/gqs-layers.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -74,6 +285,27 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## contracts.governance.templates.gl.execution.analysis-report
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/templates/gl.execution.analysis-report.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.templates.gl.execution.delta-report
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/templates/gl.execution.delta-report.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.governance.templates.gl.flow.upgrade-log
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/governance/templates/gl.flow.upgrade-log.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
 ## contracts.naming-governance.gl-build-layer-specification
 
 - **Type**: documentation
@@ -85,6 +317,13 @@ Total Components: 105
 
 - **Type**: documentation
 - **Path**: ecosystem/contracts/naming-governance/gl-ci-cd-layer-specification.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.naming-governance.gl-contract-layer-specification
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/naming-governance/gl-contract-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -116,6 +355,13 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## contracts.naming-governance.gl-format-layer-specification
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/naming-governance/gl-format-layer-specification.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
 ## contracts.naming-governance.gl-generator-layer-specification
 
 - **Type**: documentation
@@ -144,10 +390,31 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## contracts.naming-governance.gl-language-layer-specification
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/naming-governance/gl-language-layer-specification.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
 ## contracts.naming-governance.gl-metadata-layer-specification
 
 - **Type**: documentation
 - **Path**: ecosystem/contracts/naming-governance/gl-metadata-layer-specification.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.naming-governance.gl-naming-ontology
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/naming-governance/gl-naming-ontology.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.naming-governance.gl-naming-ontology-expanded
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/naming-governance/gl-naming-ontology-expanded.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -169,6 +436,20 @@ Total Components: 105
 
 - **Type**: documentation
 - **Path**: ecosystem/contracts/naming-governance/gl-permission-layer-specification.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.naming-governance.gl-platform-layer-specification
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/naming-governance/gl-platform-layer-specification.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.naming-governance.gl-prefix-principles-engineering
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/naming-governance/gl-prefix-principles-engineering.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -221,10 +502,364 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## contracts.platforms.gl-platforms
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/platforms/gl-platforms.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.policies.conftest
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/policies/conftest.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
 ## contracts.reasoning.dual_path_spec
 
 - **Type**: yaml_spec
 - **Path**: ecosystem/contracts/reasoning/dual_path_spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.reasoning.gl-reasoning-rules
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/reasoning/gl-reasoning-rules.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.validation.gl-validation-rules
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/validation/gl-validation-rules.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-audit-report-template
+
+- **Type**: documentation
+- **Path**: ecosystem/contracts/verification/gl-audit-report-template.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-proof-model
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/verification/gl-proof-model.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-proof-model-executable
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/verification/gl-proof-model-executable.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-verifiable-report-standard
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/verification/gl-verifiable-report-standard.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-verifiable-report-standard-executable
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/verification/gl-verifiable-report-standard-executable.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-verification-engine-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/verification/gl-verification-engine-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## contracts.verification.gl-verification-engine-spec-executable
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/contracts/verification/gl-verification-engine-spec-executable.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.api-gateway.README
+
+- **Type**: documentation
+- **Path**: ecosystem/coordination/api-gateway/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.api-gateway.configs.gateway-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/coordination/api-gateway/configs/gateway-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.api-gateway.src.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/api-gateway/src/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.api-gateway.src.authenticator
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/api-gateway/src/authenticator.py
+- **Dependencies**: 7
+  - jwt, logging, hashlib, datetime, time, typing, dataclasses
+- **Dependents**: 0
+
+## coordination.api-gateway.src.gateway
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/api-gateway/src/gateway.py
+- **Dependencies**: 9
+  - rate_limiter, logging, pathlib, router, sys, authenticator, service_client, typing, service_registry
+- **Dependents**: 0
+
+## coordination.api-gateway.src.rate_limiter
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/api-gateway/src/rate_limiter.py
+- **Dependencies**: 6
+  - collections, logging, threading, time, typing, dataclasses
+- **Dependents**: 0
+
+## coordination.api-gateway.src.router
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/api-gateway/src/router.py
+- **Dependencies**: 5
+  - logging, re, typing, enum, dataclasses
+- **Dependents**: 0
+
+## coordination.api-gateway.tests.test_api_gateway
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/api-gateway/tests/test_api_gateway.py
+- **Dependencies**: 8
+  - rate_limiter, pathlib, authenticator, sys, router, traceback, time, gateway
+- **Dependents**: 0
+
+## coordination.communication.README
+
+- **Type**: documentation
+- **Path**: ecosystem/coordination/communication/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.communication.configs.communication-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/coordination/communication/configs/communication-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.communication.src.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/communication/src/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.communication.src.event_dispatcher
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/communication/src/event_dispatcher.py
+- **Dependencies**: 7
+  - collections, message_bus, logging, threading, uuid, typing, dataclasses
+- **Dependents**: 0
+
+## coordination.communication.src.message_bus
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/communication/src/message_bus.py
+- **Dependencies**: 9
+  - collections, logging, threading, datetime, uuid, time, queue, typing, dataclasses
+- **Dependents**: 0
+
+## coordination.communication.tests.test_communication
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/communication/tests/test_communication.py
+- **Dependencies**: 7
+  - message_bus, pathlib, threading, sys, traceback, time, event_dispatcher
+- **Dependents**: 0
+
+## coordination.data-synchronization.README
+
+- **Type**: documentation
+- **Path**: ecosystem/coordination/data-synchronization/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.data-synchronization.configs.sync-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/coordination/data-synchronization/configs/sync-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.conflict_resolver
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/conflict_resolver.py
+- **Dependencies**: 5
+  - logging, typing, uuid, datetime, dataclasses
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.connectors.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/connectors/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.connectors.base_connector
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/connectors/base_connector.py
+- **Dependencies**: 3
+  - abc, logging, typing
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.connectors.filesystem_connector
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/connectors/filesystem_connector.py
+- **Dependencies**: 4
+  - pathlib, os, json, typing
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.sync_engine
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/sync_engine.py
+- **Dependencies**: 10
+  - logging, threading, hashlib, datetime, uuid, json, time, typing, enum, dataclasses
+- **Dependents**: 0
+
+## coordination.data-synchronization.src.sync_scheduler
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/src/sync_scheduler.py
+- **Dependencies**: 6
+  - logging, threading, typing, time, datetime, dataclasses
+- **Dependents**: 0
+
+## coordination.data-synchronization.tests.test_data_sync
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/data-synchronization/tests/test_data_sync.py
+- **Dependencies**: 9
+  - conflict_resolver, connectors, sync_engine, pathlib, shutil, sys, sync_scheduler, traceback, time
+- **Dependents**: 0
+
+## coordination.service-discovery.README
+
+- **Type**: documentation
+- **Path**: ecosystem/coordination/service-discovery/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.service-discovery.configs.service-discovery-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/coordination/service-discovery/configs/service-discovery-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.service-discovery.src.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/service-discovery/src/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## coordination.service-discovery.src.service_agent
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/service-discovery/src/service_agent.py
+- **Dependencies**: 8
+  - logging, threading, requests, uuid, socket, time, typing, service_registry
+- **Dependents**: 0
+
+## coordination.service-discovery.src.service_client
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/service-discovery/src/service_client.py
+- **Dependencies**: 5
+  - random, logging, requests, typing, service_registry
+- **Dependents**: 0
+
+## coordination.service-discovery.src.service_registry
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/service-discovery/src/service_registry.py
+- **Dependencies**: 8
+  - logging, pathlib, threading, datetime, json, typing, enum, dataclasses
+- **Dependents**: 0
+
+## coordination.service-discovery.tests.test_service_discovery
+
+- **Type**: python_module
+- **Path**: ecosystem/coordination/service-discovery/tests/test_service_discovery.py
+- **Dependencies**: 6
+  - pathlib, service_agent, sys, traceback, service_client, service_registry
+- **Dependents**: 0
+
+## docs.GL_CONTRACT_LAYER_IMPLEMENTATION_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/GL_CONTRACT_LAYER_IMPLEMENTATION_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.GL_EXECUTION_FINALIZATION_COMPLETE
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/GL_EXECUTION_FINALIZATION_COMPLETE.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.GL_FORMAT_LAYER_IMPLEMENTATION_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/GL_FORMAT_LAYER_IMPLEMENTATION_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.GL_LANGUAGE_LAYER_IMPLEMENTATION_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/GL_LANGUAGE_LAYER_IMPLEMENTATION_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.GL_NAMING_ONTOLOGY_EXPANDED_INTEGRATION
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/GL_NAMING_ONTOLOGY_EXPANDED_INTEGRATION.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.GL_PLATFORM_LAYER_IMPLEMENTATION_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/GL_PLATFORM_LAYER_IMPLEMENTATION_SUMMARY.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -235,12 +870,40 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## docs.REVOLUTIONARY_AI_EXECUTIVE_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/REVOLUTIONARY_AI_EXECUTIVE_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.REVOLUTIONARY_AI_IMPLEMENTATION_PLAN
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/REVOLUTIONARY_AI_IMPLEMENTATION_PLAN.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.REVOLUTIONARY_AI_ROADMAP
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/REVOLUTIONARY_AI_ROADMAP.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## docs.revolutionary-ai.GL_REVOLUTIONARY_AI_FRAMEWORK_ANALYSIS
+
+- **Type**: documentation
+- **Path**: ecosystem/docs/revolutionary-ai/GL_REVOLUTIONARY_AI_FRAMEWORK_ANALYSIS.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
 ## ecosystem-cloud.adapters.aws.aws_adapter
 
 - **Type**: python_module
 - **Path**: ecosystem/ecosystem-cloud/adapters/aws/aws_adapter.py
 - **Dependencies**: 5
-  - base64, boto3, hashlib, typing, datetime
+  - boto3, base64, typing, hashlib, datetime
 - **Dependents**: 0
 
 ## ecosystem-cloud.contracts.compute.v1.compute_contract
@@ -318,7 +981,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/enforce.py
 - **Dependencies**: 4
-  - os, importlib, sys, datetime
+  - importlib, os, sys, datetime
 - **Dependents**: 0
 
 ## enforcers.ARCHITECTURE
@@ -328,12 +991,20 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## enforcers.closed_loop_governance
+
+- **Type**: python_module
+- **Path**: ecosystem/enforcers/closed_loop_governance.py
+- **Dependencies**: 14
+  - os, pathlib, typing, hashlib, sys, json, argparse, enum, re, yaml, datetime, asyncio, dataclasses, subprocess
+- **Dependents**: 0
+
 ## enforcers.governance_enforcer
 
 - **Type**: python_module
 - **Path**: ecosystem/enforcers/governance_enforcer.py
 - **Dependencies**: 10
-  - json, enum, hashlib, yaml, datetime, typing, os, sys, dataclasses, pathlib
+  - os, pathlib, hashlib, sys, json, datetime, yaml, typing, enum, dataclasses
 - **Dependents**: 0
 
 ## enforcers.pipeline_integration
@@ -341,7 +1012,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/enforcers/pipeline_integration.py
 - **Dependencies**: 10
-  - re, json, hashlib, yaml, datetime, typing, gl_fact_pipeline, os, sys, pathlib
+  - os, pathlib, datetime, sys, json, hashlib, gl_fact_pipeline, re, yaml, typing
 - **Dependents**: 0
 
 ## enforcers.role_executor
@@ -349,7 +1020,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/enforcers/role_executor.py
 - **Dependencies**: 10
-  - json, traceback, hashlib, asyncio, uuid, typing, datetime, sys, dataclasses, pathlib
+  - pathlib, datetime, hashlib, uuid, json, sys, traceback, typing, asyncio, dataclasses
 - **Dependents**: 0
 
 ## enforcers.self_auditor
@@ -357,7 +1028,125 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/enforcers/self_auditor.py
 - **Dependencies**: 8
-  - re, json, collections, yaml, typing, os, datetime, pathlib
+  - collections, os, pathlib, typing, json, re, yaml, datetime
+- **Dependents**: 0
+
+## enforcers.semantic_violation_classifier
+
+- **Type**: python_module
+- **Path**: ecosystem/enforcers/semantic_violation_classifier.py
+- **Dependencies**: 9
+  - pathlib, typing, hashlib, json, re, yaml, datetime, enum, dataclasses
+- **Dependents**: 0
+
+## enforcers.test_complete_system
+
+- **Type**: python_module
+- **Path**: ecosystem/enforcers/test_complete_system.py
+- **Dependencies**: 4
+  - pipeline_integration, sys, pathlib, self_auditor
+- **Dependents**: 0
+
+## events.event_emitter
+
+- **Type**: python_module
+- **Path**: ecosystem/events/event_emitter.py
+- **Dependencies**: 9
+  - pathlib, threading, datetime, json, queue, typing, enum, dataclasses, sqlite3
+- **Dependents**: 0
+
+## foundation.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/foundation/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.format.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/foundation/format/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.format.format_enforcer
+
+- **Type**: python_module
+- **Path**: ecosystem/foundation/format/format_enforcer.py
+- **Dependencies**: 8
+  - pathlib, json, argparse, re, yaml, typing, enum, dataclasses
+- **Dependents**: 0
+
+## foundation.foundation_dag
+
+- **Type**: python_module
+- **Path**: ecosystem/foundation/foundation_dag.py
+- **Dependencies**: 7
+  - pathlib, datetime, json, argparse, typing, enum, dataclasses
+- **Dependents**: 0
+
+## foundation.language.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/foundation/language/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.language.language_enforcer
+
+- **Type**: python_module
+- **Path**: ecosystem/foundation/language/language_enforcer.py
+- **Dependencies**: 9
+  - pathlib, ast, json, argparse, re, yaml, typing, enum, dataclasses
+- **Dependents**: 0
+
+## foundation.language.languages
+
+- **Type**: json_schema
+- **Path**: ecosystem/foundation/language/languages.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.schemas.adapter.schema
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/foundation/schemas/adapter.schema.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.schemas.contract.schema
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/foundation/schemas/contract.schema.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.schemas.evidence.schema
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/foundation/schemas/evidence.schema.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.schemas.gl-rule.schema
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/foundation/schemas/gl-rule.schema.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.schemas.gl.meta.schema
+
+- **Type**: json_schema
+- **Path**: ecosystem/foundation/schemas/gl.meta.schema.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## foundation.schemas.semantic-index.schema
+
+- **Type**: json_schema
+- **Path**: ecosystem/foundation/schemas/semantic-index.schema.json
+- **Dependencies**: 0
 - **Dependents**: 0
 
 ## gates.operation-gate
@@ -372,6 +1161,21 @@ Total Components: 105
 - **Type**: yaml_spec
 - **Path**: ecosystem/gates/self-auditor-config.yaml
 - **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.GL_SEMANTIC_ANCHOR
+
+- **Type**: json_schema
+- **Path**: ecosystem/governance/GL_SEMANTIC_ANCHOR.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.audit_logger
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/audit_logger.py
+- **Dependencies**: 10
+  - os, pathlib, typing, hashlib, uuid, json, socket, datetime, enum, dataclasses
 - **Dependents**: 0
 
 ## governance.docs.architecture.architecture_summary
@@ -414,7 +1218,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/governance/engines/refresh/refresh_engine.py
 - **Dependencies**: 6
-  - json, hashlib, typing, os, datetime, dataclasses
+  - os, hashlib, datetime, json, typing, dataclasses
 - **Dependents**: 0
 
 ## governance.engines.reverse-architecture.__init__
@@ -429,7 +1233,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/governance/engines/reverse-architecture/reverse_architecture_engine.py
 - **Dependencies**: 6
-  - re, json, typing, os, datetime, dataclasses
+  - os, datetime, json, re, typing, dataclasses
 - **Dependents**: 0
 
 ## governance.engines.validation.__init__
@@ -444,7 +1248,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/governance/engines/validation/validation_engine.py
 - **Dependencies**: 7
-  - re, json, enum, typing, os, datetime, dataclasses
+  - os, datetime, json, re, typing, enum, dataclasses
 - **Dependents**: 0
 
 ## governance.format-layer.schemas.contract.schema
@@ -452,7 +1256,7 @@ Total Components: 105
 - **Type**: json_schema
 - **Path**: ecosystem/governance/format-layer/schemas/contract.schema.json
 - **Dependencies**: 5
-  - #/$defs/provider_info, #/$defs/parameter, #/$defs/validation_rule, #/$defs/capability, #/$defs/type_definition
+  - #/$defs/provider_info, #/$defs/validation_rule, #/$defs/parameter, #/$defs/type_definition, #/$defs/capability
 - **Dependents**: 0
 
 ## governance.format-layer.schemas.evidence.schema
@@ -467,6 +1271,197 @@ Total Components: 105
 - **Type**: json_schema
 - **Path**: ecosystem/governance/format-layer/schemas/platform-instance.schema.json
 - **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.governance-manifest
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/governance/governance-manifest.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.governance-monitor-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/governance/governance-monitor-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.DRIFT_ANALYSIS_REPORT
+
+- **Type**: json_schema
+- **Path**: ecosystem/governance/meta-governance/DRIFT_ANALYSIS_REPORT.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.FULL_INTEGRATION_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/governance/meta-governance/FULL_INTEGRATION_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.META_GOVERNANCE_APPLICATION_REPORT
+
+- **Type**: documentation
+- **Path**: ecosystem/governance/meta-governance/META_GOVERNANCE_APPLICATION_REPORT.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.README
+
+- **Type**: documentation
+- **Path**: ecosystem/governance/meta-governance/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.configs.governance-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/governance/meta-governance/configs/governance-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.schemas.version-specification
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/governance/meta-governance/schemas/version-specification.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.src.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## governance.meta-governance.src.change_control_system
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/change_control_system.py
+- **Dependencies**: 7
+  - logging, typing, hashlib, json, datetime, enum, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.src.change_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/change_manager.py
+- **Dependencies**: 6
+  - logging, typing, uuid, datetime, enum, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.src.dependency_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/dependency_manager.py
+- **Dependencies**: 4
+  - dataclasses, datetime, logging, typing
+- **Dependents**: 0
+
+## governance.meta-governance.src.governance_framework
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/governance_framework.py
+- **Dependencies**: 6
+  - version_manager, logging, review_manager, change_manager, typing, dependency_manager
+- **Dependents**: 0
+
+## governance.meta-governance.src.impact_analyzer
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/impact_analyzer.py
+- **Dependencies**: 4
+  - dataclasses, datetime, logging, typing
+- **Dependents**: 0
+
+## governance.meta-governance.src.review_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/review_manager.py
+- **Dependencies**: 6
+  - logging, typing, uuid, datetime, enum, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.src.sha_integrity_system
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/sha_integrity_system.py
+- **Dependencies**: 13
+  - logging, base64, pathlib, hashlib, datetime, json, sys, hmac, platform, typing, enum, dataclasses, subprocess
+- **Dependents**: 0
+
+## governance.meta-governance.src.strict_version_enforcer
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/strict_version_enforcer.py
+- **Dependencies**: 6
+  - logging, typing, hashlib, re, datetime, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.src.version_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/src/version_manager.py
+- **Dependencies**: 6
+  - logging, typing, re, datetime, enum, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.tests.test_change_control
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tests/test_change_control.py
+- **Dependencies**: 4
+  - traceback, change_control_system, sys, pathlib
+- **Dependents**: 0
+
+## governance.meta-governance.tests.test_meta_governance
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tests/test_meta_governance.py
+- **Dependencies**: 8
+  - version_manager, pathlib, sys, traceback, review_manager, change_manager, dependency_manager, governance_framework
+- **Dependents**: 0
+
+## governance.meta-governance.tests.test_sha_integrity
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tests/test_sha_integrity.py
+- **Dependencies**: 5
+  - sha_integrity_system, pathlib, sys, tempfile, traceback
+- **Dependents**: 0
+
+## governance.meta-governance.tests.test_strict_version_management
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tests/test_strict_version_management.py
+- **Dependencies**: 5
+  - pathlib, impact_analyzer, sys, traceback, strict_version_enforcer
+- **Dependents**: 0
+
+## governance.meta-governance.tools.apply_governance
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tools/apply_governance.py
+- **Dependencies**: 9
+  - os, pathlib, datetime, sys, json, re, yaml, typing, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.tools.apply_strict_versioning
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tools/apply_strict_versioning.py
+- **Dependencies**: 9
+  - os, pathlib, datetime, sys, json, re, yaml, typing, dataclasses
+- **Dependents**: 0
+
+## governance.meta-governance.tools.full_governance_integration
+
+- **Type**: python_module
+- **Path**: ecosystem/governance/meta-governance/tools/full_governance_integration.py
+- **Dependencies**: 11
+  - collections, os, pathlib, datetime, sys, json, re, yaml, typing, dataclasses, subprocess
 - **Dependents**: 0
 
 ## governance.meta-spec.format.meta-format.schema
@@ -590,7 +1585,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/hooks/post_execution.py
 - **Dependencies**: 6
-  - json, ecosystem, typing, datetime, sys, pathlib
+  - pathlib, datetime, sys, json, ecosystem, typing
 - **Dependents**: 0
 
 ## hooks.pre_execution
@@ -598,7 +1593,71 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/hooks/pre_execution.py
 - **Dependencies**: 6
-  - json, ecosystem, typing, datetime, sys, pathlib
+  - pathlib, datetime, sys, json, ecosystem, typing
+- **Dependents**: 0
+
+## logs.audit-logs.2026-02.audit_20260203_073454
+
+- **Type**: json_schema
+- **Path**: ecosystem/logs/audit-logs/2026-02/audit_20260203_073454.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## logs.audit-logs.2026-02.audit_20260203_074304
+
+- **Type**: json_schema
+- **Path**: ecosystem/logs/audit-logs/2026-02/audit_20260203_074304.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## logs.audit-logs.2026-02.network_interaction_20260203_074307
+
+- **Type**: json_schema
+- **Path**: ecosystem/logs/audit-logs/2026-02/network_interaction_20260203_074307.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## mocks.README
+
+- **Type**: documentation
+- **Path**: ecosystem/mocks/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## mocks.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/mocks/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## mocks.api.health
+
+- **Type**: json_schema
+- **Path**: ecosystem/mocks/api/health.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## mocks.data.sample-users
+
+- **Type**: json_schema
+- **Path**: ecosystem/mocks/data/sample-users.json
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## mocks.services.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/mocks/services/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## mocks.services.mock_service
+
+- **Type**: python_module
+- **Path**: ecosystem/mocks/services/mock_service.py
+- **Dependencies**: 5
+  - os, pathlib, datetime, json, typing
 - **Dependents**: 0
 
 ## platform-cloud.README
@@ -629,12 +1688,117 @@ Total Components: 105
 - **Dependencies**: 0
 - **Dependents**: 0
 
+## platform-templates.cloud-template.README
+
+- **Type**: documentation
+- **Path**: ecosystem/platform-templates/cloud-template/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.cloud-template.configs.platform-config.aws
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/platform-templates/cloud-template/configs/platform-config.aws.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.core-template.README
+
+- **Type**: documentation
+- **Path**: ecosystem/platform-templates/core-template/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.core-template.configs.platform-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/platform-templates/core-template/configs/platform-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.core-template.configs.services-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/platform-templates/core-template/configs/services-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.core-template.examples.api_gateway_example
+
+- **Type**: python_module
+- **Path**: ecosystem/platform-templates/core-template/examples/api_gateway_example.py
+- **Dependencies**: 4
+  - traceback, platform_manager, sys, pathlib
+- **Dependents**: 0
+
+## platform-templates.core-template.examples.messaging_example
+
+- **Type**: python_module
+- **Path**: ecosystem/platform-templates/core-template/examples/messaging_example.py
+- **Dependencies**: 5
+  - pathlib, sys, traceback, platform_manager, time
+- **Dependents**: 0
+
+## platform-templates.core-template.examples.register_service
+
+- **Type**: python_module
+- **Path**: ecosystem/platform-templates/core-template/examples/register_service.py
+- **Dependencies**: 4
+  - traceback, platform_manager, sys, pathlib
+- **Dependents**: 0
+
+## platform-templates.core-template.examples.sync_data
+
+- **Type**: python_module
+- **Path**: ecosystem/platform-templates/core-template/examples/sync_data.py
+- **Dependencies**: 4
+  - traceback, platform_manager, sys, pathlib
+- **Dependents**: 0
+
+## platform-templates.core-template.platform_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/platform-templates/core-template/platform_manager.py
+- **Dependencies**: 7
+  - pathlib, sys, json, argparse, yaml, typing, coordination
+- **Dependents**: 0
+
+## platform-templates.on-premise-template.README
+
+- **Type**: documentation
+- **Path**: ecosystem/platform-templates/on-premise-template/README.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.on-premise-template.configs.platform-config
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/platform-templates/on-premise-template/configs/platform-config.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## platform-templates.test_templates
+
+- **Type**: python_module
+- **Path**: ecosystem/platform-templates/test_templates.py
+- **Dependencies**: 5
+  - pathlib, sys, traceback, yaml, subprocess
+- **Dependents**: 0
+
+## platform_adapter
+
+- **Type**: python_module
+- **Path**: ecosystem/platform_adapter.py
+- **Dependencies**: 8
+  - os, pathlib, shutil, platform, typing, enum, dataclasses, subprocess
+- **Dependents**: 0
+
 ## reasoning.agents.planning_agent
 
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/agents/planning_agent.py
 - **Dependencies**: 5
-  - json, enum, hashlib, typing, datetime
+  - typing, hashlib, json, datetime, enum
 - **Dependents**: 0
 
 ## reasoning.agents.tools_registry
@@ -649,7 +1813,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/auto_reasoner.py
 - **Dependencies**: 5
-  - re, json, typing, datetime, dataclasses
+  - typing, json, re, datetime, dataclasses
 - **Dependents**: 0
 
 ## reasoning.contracts.dual_path_spec
@@ -664,7 +1828,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/dual_path/arbitration/arbitrator.py
 - **Dependencies**: 7
-  - json, enum, hashlib, yaml, typing, os, datetime
+  - os, typing, hashlib, json, yaml, datetime, enum
 - **Dependents**: 0
 
 ## reasoning.dual_path.arbitration.rule_engine
@@ -672,7 +1836,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/dual_path/arbitration/rule_engine.py
 - **Dependencies**: 4
-  - os, datetime, typing, yaml
+  - os, datetime, yaml, typing
 - **Dependents**: 0
 
 ## reasoning.dual_path.arbitration.rules.api
@@ -701,7 +1865,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/dual_path/external/retrieval.py
 - **Dependencies**: 7
-  - requests, json, hashlib, yaml, typing, os, datetime
+  - os, requests, typing, hashlib, json, yaml, datetime
 - **Dependents**: 0
 
 ## reasoning.dual_path.internal.knowledge_graph
@@ -709,7 +1873,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/dual_path/internal/knowledge_graph.py
 - **Dependencies**: 7
-  - json, collections, hashlib, yaml, typing, os, datetime
+  - collections, os, typing, hashlib, json, yaml, datetime
 - **Dependents**: 0
 
 ## reasoning.dual_path.internal.retrieval
@@ -717,7 +1881,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/dual_path/internal/retrieval.py
 - **Dependencies**: 6
-  - json, hashlib, yaml, typing, os, datetime
+  - os, typing, hashlib, json, yaml, datetime
 - **Dependents**: 0
 
 ## reasoning.traceability.feedback
@@ -725,7 +1889,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/traceability/feedback.py
 - **Dependencies**: 7
-  - json, collections, hashlib, typing, os, datetime, pathlib
+  - collections, os, pathlib, typing, hashlib, json, datetime
 - **Dependents**: 0
 
 ## reasoning.traceability.traceability
@@ -733,7 +1897,99 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/reasoning/traceability/traceability.py
 - **Dependencies**: 6
-  - json, hashlib, typing, os, datetime, pathlib
+  - os, pathlib, typing, hashlib, json, datetime
+- **Dependents**: 0
+
+## registry.data-registry.data-catalog
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/data-registry/data-catalog.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.naming.GL_NAMING_CONTRACTS_REGISTRY_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/registry/naming/GL_NAMING_CONTRACTS_REGISTRY_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.naming.gl-naming-contracts-registry
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/naming/gl-naming-contracts-registry.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platform-registry.platform-manifest
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/platform-registry/platform-manifest.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.GL_PLATFORMS_ANALYSIS_COMPLETE
+
+- **Type**: documentation
+- **Path**: ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.GL_PLATFORMS_COMPREHENSIVE_ANALYSIS
+
+- **Type**: documentation
+- **Path**: ecosystem/registry/platforms/GL_PLATFORMS_COMPREHENSIVE_ANALYSIS.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.GL_PLATFORMS_GOVERNANCE_SUMMARY
+
+- **Type**: documentation
+- **Path**: ecosystem/registry/platforms/GL_PLATFORMS_GOVERNANCE_SUMMARY.md
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.generate_platform_analysis
+
+- **Type**: python_module
+- **Path**: ecosystem/registry/platforms/generate_platform_analysis.py
+- **Dependencies**: 2
+  - json, yaml
+- **Dependents**: 0
+
+## registry.platforms.gl-platform-definition
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/platforms/gl-platform-definition.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.gl-platform-lifecycle-spec
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.gl-platforms.index
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/platforms/gl-platforms.index.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.platforms.gl-platforms.placement-rules
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/platforms/gl-platforms.placement-rules.yaml
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## registry.service-registry.service-catalog
+
+- **Type**: yaml_spec
+- **Path**: ecosystem/registry/service-registry/service-catalog.yaml
+- **Dependencies**: 0
 - **Dependents**: 0
 
 ## scripts.analyze_violations
@@ -741,7 +1997,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/scripts/analyze_violations.py
 - **Dependencies**: 4
-  - json, sys, pathlib, typing
+  - pathlib, sys, json, typing
 - **Dependents**: 0
 
 ## scripts.apply_auto_fixes
@@ -749,7 +2005,150 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/scripts/apply_auto_fixes.py
 - **Dependencies**: 7
-  - re, json, yaml, typing, os, sys, pathlib
+  - os, pathlib, sys, json, re, yaml, typing
+- **Dependents**: 0
+
+## semantic.semantic_context
+
+- **Type**: python_module
+- **Path**: ecosystem/semantic/semantic_context.py
+- **Dependencies**: 6
+  - pathlib, typing, json, copy, datetime, dataclasses
+- **Dependents**: 0
+
+## tests.test_ecosystem_integration
+
+- **Type**: python_module
+- **Path**: ecosystem/tests/test_ecosystem_integration.py
+- **Dependencies**: 12
+  - message_bus, pathlib, sync_engine, service_agent, sys, router, traceback, gateway, time, service_client, service_registry, event_dispatcher
+- **Dependents**: 0
+
+## tools.audit.gl-audit-simple
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/audit/gl-audit-simple.py
+- **Dependencies**: 4
+  - pathlib, yaml, json, datetime
+- **Dependents**: 0
+
+## tools.audit_trail_query
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/audit_trail_query.py
+- **Dependencies**: 8
+  - pathlib, datetime, json, argparse, csv, typing, dataclasses, sqlite3
+- **Dependents**: 0
+
+## tools.audit_trail_report
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/audit_trail_report.py
+- **Dependencies**: 10
+  - collections, pathlib, datetime, json, traceback, argparse, csv, typing, dataclasses, sqlite3
+- **Dependents**: 0
+
+## tools.fact-verification.gl-fact-pipeline
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/fact-verification/gl-fact-pipeline.py
+- **Dependencies**: 10
+  - pathlib, typing, hashlib, json, argparse, re, yaml, datetime, enum, dataclasses
+- **Dependents**: 0
+
+## tools.generate-governance-dashboard
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/generate-governance-dashboard.py
+- **Dependencies**: 6
+  - pathlib, typing, sys, json, yaml, datetime
+- **Dependents**: 0
+
+## tools.gl-markers.add-gl-markers
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/gl-markers/add-gl-markers.py
+- **Dependencies**: 3
+  - os, sys, pathlib
+- **Dependents**: 0
+
+## tools.gl-markers.add-gl-markers-batch
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/gl-markers/add-gl-markers-batch.py
+- **Dependencies**: 4
+  - json, os, sys, pathlib
+- **Dependents**: 0
+
+## tools.gl-markers.add-gl-markers-json
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/gl-markers/add-gl-markers-json.py
+- **Dependencies**: 4
+  - json, os, sys, pathlib
+- **Dependents**: 0
+
+## tools.gl-markers.add-gl-markers-yaml
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/gl-markers/add-gl-markers-yaml.py
+- **Dependencies**: 3
+  - os, sys, pathlib
+- **Dependents**: 0
+
+## tools.gl-markers.fix-governance-markers
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/gl-markers/fix-governance-markers.py
+- **Dependencies**: 3
+  - pathlib, os, json
+- **Dependents**: 0
+
+## tools.registry.data_catalog_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/registry/data_catalog_manager.py
+- **Dependencies**: 6
+  - pathlib, typing, json, argparse, yaml, datetime
+- **Dependents**: 0
+
+## tools.registry.platform_registry_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/registry/platform_registry_manager.py
+- **Dependencies**: 8
+  - os, pathlib, datetime, sys, json, argparse, yaml, typing
+- **Dependents**: 0
+
+## tools.registry.service_registry_manager
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/registry/service_registry_manager.py
+- **Dependencies**: 7
+  - pathlib, datetime, sys, json, argparse, yaml, typing
+- **Dependents**: 0
+
+## tools.registry.test_registry_tools
+
+- **Type**: python_module
+- **Path**: ecosystem/tools/registry/test_registry_tools.py
+- **Dependencies**: 7
+  - platform_registry_manager, pathlib, sys, tempfile, traceback, data_catalog_manager, service_registry_manager
+- **Dependents**: 0
+
+## utils.__init__
+
+- **Type**: python_module
+- **Path**: ecosystem/utils/__init__.py
+- **Dependencies**: 0
+- **Dependents**: 0
+
+## utils.path_utils
+
+- **Type**: python_module
+- **Path**: ecosystem/utils/path_utils.py
+- **Dependencies**: 2
+  - pathlib, typing
 - **Dependents**: 0
 
 ## validators.network_validator
@@ -757,7 +2156,7 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/validators/network_validator.py
 - **Dependencies**: 8
-  - json, urllib, socket, time, typing, subprocess, dataclasses, pathlib
+  - pathlib, json, socket, urllib, time, typing, dataclasses, subprocess
 - **Dependents**: 0
 
 ## verify_network_interaction
@@ -765,6 +2164,6 @@ Total Components: 105
 - **Type**: python_module
 - **Path**: ecosystem/verify_network_interaction.py
 - **Dependencies**: 11
-  - argparse, json, traceback, validators, reasoning, datetime, typing, subprocess, os, sys, pathlib
+  - os, pathlib, typing, sys, json, reasoning, traceback, argparse, datetime, validators, subprocess
 - **Dependents**: 0
 
