@@ -5,9 +5,9 @@
 #
 # Registration is MANDATORY before tool creation (see tool-definition-protocol.md)
 
-version: "1.0.0"
+version: "1.1.0"
 era: "1"
-last_updated: "2026-02-03T00:00:00Z"
+last_updated: "2026-02-03T12:00:00Z"
 
 # ============================================================================
 # REGISTERED TOOLS (已注册工具)
@@ -465,21 +465,21 @@ approval_workflow:
 # ============================================================================
 
 compliance_metrics:
-  total_registered_tools: 20
-  active_tools: 8
-  deprecated_tools: 12
-  undefined_tools: 2  # reporting_compliance_checker.py, fix_enforce_rules_final.py
+  total_registered_tools: 24
+  active_tools: 9
+  deprecated_tools: 14
+  undefined_tools: 134  # Most are __init__.py and test files
   
   tool_distribution:
     core: 2
-    governance: 5
+    governance: 6
     execution: 13
     reporting: 0
   
-  compliance_score: 95.0  # 20 registered tools, 2 undefined tools
+  compliance_score: 15.2  # 24 registered tools, 134 undefined tools
   
   violations:
-    critical: 2  # Undefined compliance tools
+    critical: 134  # Undefined tools
     high: 0
     medium: 0
     low: 0
@@ -500,6 +500,14 @@ maintenance_notes:
 # ============================================================================
 
 change_log:
+  - version: "1.1.0"
+    date: "2026-02-03"
+    changes:
+      - "Added semantic_validator.py to governance tools"
+      - "Updated compliance metrics to reflect current state"
+      - "Active tools increased from 8 to 9"
+      - "Governance tools increased from 5 to 6"
+  
   - version: "1.0.0"
     date: "2026-02-03"
     changes:
@@ -514,4 +522,17 @@ change_log:
     changes:
       - "Draft tool registry specification"
       - "Identified undefined tools from reports"
-      - "Collected existing tool information"
+      - "Collected existing tool information"  
+  - name: "semantic_validator.py"
+    category: "governance"
+    era: "1"
+    purpose: "报告语义验证器，验证报告是否符合 reporting-governance-spec.md"
+    input_schema: "report_file"
+    output_schema: "semantic_compliance_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Report semantic validator that checks tool references, phase declarations, architecture level, compliance claims, and Era/Layer semantics"
+    file_path: "ecosystem/tools/semantic_validator.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-03"

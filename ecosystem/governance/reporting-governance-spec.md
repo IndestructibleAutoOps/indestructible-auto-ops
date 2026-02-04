@@ -311,3 +311,304 @@ Era-1 的報告必須明確說明其範圍和限制：
 - 可能擴展到 Governance Layer
 - 允許部分治理終態聲明
 - 需要明確定義「治理閉環」的條件
+---
+
+## 🔍 扩展验证规则（Option B 新增）
+
+### 要求 7：工具引用验证
+
+**规则**：报告中提到的所有工具必须在 `tools-registry.yaml` 中注册。
+
+**禁止行为**：
+- ❌ 引用未注册的工具
+- ❌ 创建或提及"虚构工具"（如 compliance_checker, final_summary 等）
+- ❌ 使用未定义工具名称作为报告标题或章节标题
+
+**验证方法**：
+1. 提取报告中所有工具名称（.py 文件引用）
+2. 检查每个工具是否在 `tools-registry.yaml` 中存在
+3. 标记未注册工具引用为 CRITICAL 违规
+
+**允许的例外**：
+- ✅ 提及核心工具（enforce.py, enforce.rules.py）- 已注册
+- ✅ 提及已注册的治理工具
+- ✅ 引用工具类别（如"governance tools", "execution tools"）
+
+**违规示例**：
+```
+❌ "reporting_compliance_checker.py 验证通过"
+❌ "使用 fix_enforce_rules_final.py 修复问题"
+❌ "compliance_checker 工具检测到 0 个违规"
+```
+
+**合规示例**：
+```
+✅ "enforce.py 执行了 18 个治理检查"
+✅ "governance_enforcer.py 验证了操作合规性"
+✅ "所有工具均已在 tools-registry.yaml 中注册"
+```
+
+---
+
+### 要求 8：阶段声明验证
+
+**规则**：禁止自创治理阶段，只允许使用 Era + Layer 的组合。
+
+**禁止的行为**：
+- ❌ 使用"第一階段"、"第二階段"、"第三階段"、"第四階段"、"第五階段"
+- ❌ 使用"Phase 1", "Phase 2", "Phase 3", "Phase 4", "Phase 5"
+- ❌ 自创治理阶段名称（如"基础设施阶段"、"验证阶段"等）
+- ❌ 描述"阶段完成"或"阶段达成"
+
+**允许的系统状态描述**：
+- ✅ Era + Layer 组合（如"Era-1 Operational Layer"）
+- ✅ 步骤描述（如"Step 1-10" - 仅限 enforce.rules.py 的 10 步流程）
+- ✅ 模块状态（如"Module X: Active"）
+
+**违规示例**：
+```
+❌ "第一阶段：问题识别"
+❌ "Phase 2：规格核定"
+❌ "第三阶段完成"
+❌ "进入第四阶段：测试验证"
+```
+
+**合规示例**：
+```
+✅ "Era-1 Operational Layer 状态稳定"
+✅ "Step 1-10 执行完成"
+✅ "当前处于 Era-1 Evidence-Native Bootstrap"
+```
+
+---
+
+### 要求 9：架构层级验证
+
+**规则**：报告必须准确描述系统架构层级，禁止虚构平台化描述。
+
+**单文件脚本的强制描述**：
+- 必须声明为"单文件脚本"（Single-file Script）
+- 禁止使用"治理平台"、"完整架构"、"多層治理平台"
+- 禁止宣称"平台级能力"、"平台就绪"
+
+**架构层级准确性要求**：
+```
+单文件脚本系统 enforce.rules.py：
+✅ 正确描述：
+- "单文件脚本" (Single-file Script)
+- "单流程执行" (Single-process execution)
+- "无核心封存" (No core sealing)
+- "Layer: Operational (Evidence Generation)"
+
+❌ 错误描述：
+- "治理平台" (Governance Platform)
+- "完整架构" (Complete Architecture)
+- "多層治理平台" (Multi-layer Governance Platform)
+- "平台级能力" (Platform-level capabilities)
+```
+
+**验证规则**：
+1. 检查报告是否包含"平台"、"架构"、"完整"、"多层"等词汇
+2. 验证系统实际架构（单文件 vs 平台）
+3. 标记架构虚构为 CRITICAL 违规
+
+---
+
+### 要求 10：合规性声明验证
+
+**规则**：禁止使用"100% 合规"、"完整成熟度"等自我验证声明，除非明确标注为 self-referential。
+
+**禁止的合规性声明**：
+- ❌ "100% 合规"（除非是自我验证的检查器输出）
+- ❌ "完整成熟度"（Era-1 未封存前）
+- ❌ "治理完成"（Semantic Closure 未达成前）
+- ❌ "零风险"（任何系统都有风险）
+- ❌ "完全符合"（自我验证不可信）
+
+**允许的声明**：
+- ✅ "通过 18/18 治理检查"（基于 enforce.py 的真实输出）
+- ✅ "所有 10 个步骤执行成功"（基于 enforce.rules.py 的真实输出）
+- ✅ "合规性评分：3.3/100"（基于工具验证器的真实输出）
+- ✅ "工具注册：7/138 已注册"（基于 registry 的真实统计）
+- ✅ "Era-1 目标达成"（明确的阶段性目标）
+
+**自我验证标记要求**：
+如果报告必须包含合规性评分，必须明确标注：
+```
+✅ "合规性评分：100/100（自我验证，仅供内部参考）"
+✅ "检查器评分：100/100（self-referential compliance check）"
+```
+
+**违规示例**：
+```
+❌ "100% 合规，可上线"
+❌ "完整治理成熟度"
+❌ "零风险部署"
+❌ "完全符合所有规范"
+```
+
+---
+
+### 要求 11：Era/Layer 语义验证
+
+**规则**：Era 和 Layer 的声明必须准确反映当前系统状态。
+
+**Era-1 强制语义**：
+```
+Era: 1 (Evidence-Native Bootstrap)
+- 必须标注"Evidence-Native Bootstrap"
+- 必须明确这是引导阶段，非完成状态
+- 必须承认 Semantic Closure = NO
+
+Layer: Operational (Evidence Generation)
+- 必须标注"Operational"（非 Governance）
+- 必须标注"Evidence Generation"（实际功能）
+- 必须说明 Governance Layer 仍在建设中
+```
+
+**验证规则**：
+1. 检查 Era 声明是否包含数字和名称
+2. 检查 Layer 声明是否为 Operational 或 Governance
+3. 验证 Semantic Closure 状态
+4. 确保 Era-1 不宣称 Governance Layer 已完成
+
+**违规示例**：
+```
+❌ "Era: 1 (Complete)" - Era-1 不是完成状态
+❌ "Layer: Governance" - Era-1 是 Operational 层
+❌ "Semantic Closure: YES" - Era-1 未闭包
+```
+
+---
+
+### 要求 12：禁止术语列表
+
+**禁止使用的术语（Era-1 未封存前）**：
+
+**终态术语**：
+- ❌ "完成"（除非明确标注 Era-1 阶段性完成）
+- ❌ "完美"（任何系统都不完美）
+- ❌ "最终"（Era 未封存前）
+- ❌ "封存"（Core hash 未封存前）
+
+**成熟度术语**：
+- ❌ "成熟度"（Era 未封存前）
+- ❌ "完整性"（Semantic Closure 未达成前）
+- ❌ "完善"（治理仍在建设中）
+- ❌ "完备"（系统仍在演进中）
+
+**平台术语**（单文件系统）：
+- ❌ "平台"（除非真实是平台）
+- ❌ "架构"（除非完整架构）
+- ❌ "生态系统"（除非完整生态）
+- ❌ "框架"（除非真实框架）
+
+**允许的替代术语**：
+- ✅ "引导完成"（Era-1 bootstrap complete）
+- ✅ "基础设施就绪"（infrastructure ready）
+- ✅ "验证通过"（validation passed）
+- ✅ "稳定运行"（stable operation）
+- ✅ "基础功能完成"（basic features complete）
+
+---
+
+## 📊 扩展验证规则总结
+
+### 新增验证类别（Option B）
+
+| 验证类别 | 检查内容 | 违规级别 |
+|---------|---------|---------|
+| 工具引用 | 报告中引用的工具是否已注册 | CRITICAL |
+| 阶段声明 | 是否使用未定义的阶段 | HIGH |
+| 架构层级 | 是否虚构平台化描述 | HIGH |
+| 合规性声明 | 是否使用虚假合规性声明 | MEDIUM |
+| Era/Layer 语义 | Era/Layer 声明是否准确 | CRITICAL |
+| 禁止术语 | 是否使用 Era-1 禁止术语 | MEDIUM |
+
+### 合规性评分（扩展版）
+
+```python
+score = (
+    # 原有要求（60%）
+    mandatory_fields * 15 +
+    final_state_narrative * 10 +
+    era_1_positioning * 10 +
+    historical_gaps * 10 +
+    conclusion_tone * 10 +
+    unfinished_governance_section * 5 +
+    
+    # 新增要求（40%）
+    tool_references * 10 +
+    phase_declarations * 8 +
+    architecture_level * 8 +
+    compliance_claims * 8 +
+    era_layer_semantics * 6
+)
+# Score range: 0-100
+# Required: >= 80 for publication
+# Required: >= 90 for production
+```
+
+---
+
+## 🔄 验证流程（Option B）
+
+### 自动化验证步骤
+
+1. **提取报告内容**
+   - 读取 markdown 文件
+   - 提取关键段落
+
+2. **工具引用验证**
+   - 提取所有工具名称
+   - 检查 tools-registry.yaml
+   - 标记未注册工具
+
+3. **阶段声明验证**
+   - 检测"阶段"、"Phase"关键词
+   - 验证是否为允许的描述
+
+4. **架构层级验证**
+   - 检测"平台"、"架构"关键词
+   - 验证系统实际架构
+
+5. **合规性声明验证**
+   - 检测"100%"、"完整"、"零风险"关键词
+   - 验证是否标注自我验证
+
+6. **Era/Layer 语义验证**
+   - 提取 Era 和 Layer 声明
+   - 验证准确性
+
+7. **生成合规性报告**
+   - 计算合规性评分
+   - 列出所有违规
+   - 提供修正建议
+
+---
+
+## 🚨 违规处理（扩展）
+
+### CRITICAL 违规（新增）
+- 未注册工具引用
+- Era/Layer 语义错误
+- **处理**：阻止报告发布，要求重写
+
+### HIGH 违规（新增）
+- 阶段声明违规
+- 架构层级虚构
+- **处理**：警告但允许发布，建议修正
+
+### MEDIUM 违规（新增）
+- 合规性声明违规
+- 禁止术语使用
+- **处理**：提醒，建议改进
+
+---
+
+## 📝 版本历史
+
+| 版本 | 日期 | 变更 |
+|------|------|------|
+| v1.0.0 | 2026-02-03 | 初始版本，基于 Era-1 Evidence-Native Bootstrap |
+| v1.1.0 | 2026-02-03 | 扩展规范：添加工具引用、阶段声明、架构层级、合规性声明验证规则 |
