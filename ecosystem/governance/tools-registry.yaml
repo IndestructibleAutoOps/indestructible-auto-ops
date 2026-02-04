@@ -189,6 +189,27 @@ registered_tools:
     output_schema: "downgrade_report"
     evidence_generation: "true"
     immutable: "false"
+    description: "Report downgrade validator that detects and removes advanced semantics not compliant with Era-1 status"
+    file_path: "ecosystem/tools/report_downgrade_validator.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "semantic_driven_executor.py"
+    category: "governance"
+    era: "1"
+    purpose: "語義驅動治理實作引擎，整合違規檢測、任務生成、實作清單與補件驗證"
+    input_schema: "violations_and_tasks"
+    output_schema: "implementation_checklist"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Semantic-Driven Governance Executor that integrates violation detection, task generation, implementation checklist creation, and comprehensive verification of implementation artifacts (files, events, artifacts, hash, sealing)"
+    file_path: "ecosystem/tools/semantic_driven_executor.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+    evidence_generation: "true"
+    immutable: "false"
     description: "Report downgrade validator that detects and removes advanced semantics not compliant with Era-1 Evidence-Native Bootstrap state, including fictional phases, completeness claims, and forbidden terminology"
     file_path: "ecosystem/tools/report_downgrade_validator.py"
     status: "active"
@@ -618,7 +639,7 @@ maintenance_notes:
 # ============================================================================
 
 change_log:
-  - version: "1.1.2"
+  - version: "1.1.3"
     date: "2026-02-04"
     changes:
       - "Added semantic_entity_task_converter.py to governance tools"
