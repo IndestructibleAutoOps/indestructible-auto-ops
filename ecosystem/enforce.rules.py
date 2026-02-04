@@ -265,6 +265,100 @@ class EnforcementCoordinator:
         print(f"[INFO] Workspace: {workspace_root}")
         print(f"[INFO] Governance rules loaded: {len(self.enforcement_rules) if self.enforcement_rules else 0}")
     
+    # ============================================================================
+    # 證據鏈生成方法
+    # ============================================================================
+    
+    def _create_evidence_dir(self) -> Path:
+        """創建證據目錄"""
+        evidence_dir = self.ecosystem / ".evidence"
+        evidence_dir.mkdir(parents=True, exist_ok=True)
+        return evidence_dir
+    
+    def _generate_artifact(
+        self, 
+        step_number: int, 
+        result: 'EnforcementResult'
+    ) -> Path:
+        """
+        生成步驟證據 artifact
+        包含: UUID, timestamp, SHA256 hash, input/output traces
+        """
+        import hashlib
+        
+        evidence_dir = self._create_evidence_dir()
+        artifact_id = str(uuid.uuid4())
+        timestamp = datetime.now(timezone.utc).isoformat()
+        
+        # 準備 artifact 數據
+        artifact_data = {
+            "artifact_id": artifact_id,
+            "step_number": step_number,
+            "timestamp": timestamp,
+            "success": result.success,
+            "metadata": result.metadata or {},
+            "execution_time_ms": result.execution_time_ms,
+            "violations_count": len(result.violations) if result.violations else 0,
+            "artifacts_generated": result.artifacts_generated or []
+        }
+        
+        # 生成 JSON
+        artifact_json = json.dumps(artifact_data, indent=2, ensure_ascii=False)
+        
+        # 生成 SHA256 hash
+        sha256_hash = hashlib.sha256(artifact_json.encode()).hexdigest()
+        
+        # 添加 hash 到 artifact 數據
+        artifact_data["sha256_hash"] = sha256_hash
+        
+        # 重新生成包含 hash 的 JSON
+        artifact_json_with_hash = json.dumps(artifact_data, indent=2, ensure_ascii=False)
+        
+        # 寫入文件
+        artifact_file = evidence_dir / f"step-{step_number}.json"
+        with open(artifact_file, 'w', encoding='utf-8') as f:
+            f.write(artifact_json_with_hash)
+        
+        print(f"[INFO] Generated artifact: {artifact_file}")
+        print(f"[INFO] Artifact ID: {artifact_id}")
+        print(f"[INFO] SHA256 Hash: {sha256_hash}")
+        
+        return artifact_file
+    
+    def _write_step_event(
+        self, 
+        step_number: int, 
+        result: 'EnforcementResult'
+    ) -> str:
+        """
+        寫入步驟執行事件到 event-stream.jsonl
+        """
+        event_id = str(uuid.uuid4())
+        timestamp = datetime.now(timezone.utc).isoformat()
+        
+        event_data = {
+            "event_id": event_id,
+            "event_type": "STEP_EXECUTED",
+            "step_number": step_number,
+            "timestamp": timestamp,
+            "success": result.success,
+            "violations_count": len(result.violations) if result.violations else 0,
+            "execution_time_ms": result.execution_time_ms,
+            "phase": result.phase if hasattr(result, 'phase') else f"Step_{step_number}"
+        }
+        
+        # 寫入事件流
+        governance_dir = self.ecosystem / ".governance"
+        governance_dir.mkdir(parents=True, exist_ok=True)
+        
+        event_stream_file = governance_dir / "event-stream.jsonl"
+        with open(event_stream_file, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(event_data, ensure_ascii=False) + '\n')
+        
+        print(f"[INFO] Event written to stream: {event_id}")
+        
+        return event_id
+
     def _load_yaml(self, file_path: Path) -> Optional[Dict]:
         """載入 YAML 文件"""
         try:
@@ -318,9 +412,11 @@ class EnforcementCoordinator:
                             current_dict[key] = False
                         elif value.isdigit():
                             current_dict[key] = int(value)
-                        elif value.replace('.', '').isdigit():
+                        elif value.count('.') == 1 and value.replace('.', '').isdigit():
+                            # 真正的浮點數（只有一個小數點）
                             current_dict[key] = float(value)
                         else:
+                            # 保持字符串（可能是版本號如 "1.0.0"）
                             current_dict[key] = value
                     elif line.startswith('- '):
                         # 列表項
@@ -435,7 +531,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Local Intelligence",
             step=1,
             success=True,
@@ -444,6 +540,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"local_state": asdict(local_state)}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=1, result=result)
+        self._write_step_event(step_number=1, result=result)
+        
+        return result
     
     def step_2_local_reasoning(self, local_state: Dict) -> EnforcementResult:
         """
@@ -520,7 +622,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Local Intelligence",
             step=2,
             success=True,
@@ -529,6 +631,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"local_gap_matrix": asdict(local_gap_matrix)}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=2, result=result)
+        self._write_step_event(step_number=2, result=result)
+        
+        return result
     
     # ========================================================================
     # Phase 2: Global Intelligence Loop (Steps 3-4)
@@ -607,7 +715,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Global Intelligence",
             step=3,
             success=True,
@@ -616,6 +724,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"global_best_practices": asdict(global_best_practices)}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=3, result=result)
+        self._write_step_event(step_number=3, result=result)
+        
+        return result
     
     def step_4_global_reasoning(self, global_best_practices: Dict) -> EnforcementResult:
         """
@@ -696,7 +810,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Global Intelligence",
             step=4,
             success=True,
@@ -705,6 +819,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"global_insight_matrix": asdict(global_insight_matrix)}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=4, result=result)
+        self._write_step_event(step_number=4, result=result)
+        
+        return result
     
     # ========================================================================
     # Phase 3: Integration Loop (Step 5)
@@ -780,7 +900,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Integration",
             step=5,
             success=True,
@@ -789,6 +909,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"optimal_blueprint": asdict(optimal_blueprint)}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=5, result=result)
+        self._write_step_event(step_number=5, result=result)
+        
+        return result
     
     # ========================================================================
     # Phase 4: Execution Loop (Steps 6-7)
@@ -849,7 +975,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Execution",
             step=6,
             success=True,
@@ -858,6 +984,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"executable_system": asdict(executable_system)}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=6, result=result)
+        self._write_step_event(step_number=6, result=result)
+        
+        return result
     
     def step_7_governance_event_stream(self) -> EnforcementResult:
         """
@@ -893,7 +1025,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Execution",
             step=7,
             success=True,
@@ -902,6 +1034,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"event_stream_active": True}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=7, result=result)
+        self._write_step_event(step_number=7, result=result)
+        
+        return result
     
     # ========================================================================
     # Phase 5: Closed Loop (Steps 8-10)
@@ -958,7 +1096,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Closed Loop",
             step=8,
             success=True,
@@ -967,6 +1105,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"auto_fix_enabled": True}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=8, result=result)
+        self._write_step_event(step_number=8, result=result)
+        
+        return result
     
     def step_9_reverse_architecture(self) -> EnforcementResult:
         """
@@ -1020,7 +1164,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Closed Loop",
             step=9,
             success=True,
@@ -1029,6 +1173,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"reverse_architecture_enabled": True}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=9, result=result)
+        self._write_step_event(step_number=9, result=result)
+        
+        return result
     
     def step_10_loop_back(self) -> EnforcementResult:
         """
@@ -1087,7 +1237,7 @@ class EnforcementCoordinator:
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
-        return EnforcementResult(
+        result = EnforcementResult(
             phase="Closed Loop",
             step=10,
             success=True,
@@ -1096,6 +1246,12 @@ class EnforcementCoordinator:
             execution_time_ms=int(execution_time),
             metadata={"governance_loop_active": True}
         )
+        
+        # 證據鏈寫入
+        artifact_file = self._generate_artifact(step_number=10, result=result)
+        self._write_step_event(step_number=10, result=result)
+        
+        return result
     
     # ========================================================================
     # 主執行流程
