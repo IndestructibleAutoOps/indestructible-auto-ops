@@ -295,6 +295,7 @@ class EnforcementCoordinator:
             "artifact_id": artifact_id,
             "step_number": step_number,
             "timestamp": timestamp,
+            "era": self.current_era(),
             "success": result.success,
             "metadata": result.metadata or {},
             "execution_time_ms": result.execution_time_ms,
@@ -341,6 +342,7 @@ class EnforcementCoordinator:
             "event_type": "STEP_EXECUTED",
             "step_number": step_number,
             "timestamp": timestamp,
+            "era": self.current_era(),
             "success": result.success,
             "violations_count": len(result.violations) if result.violations else 0,
             "execution_time_ms": result.execution_time_ms,
@@ -358,6 +360,50 @@ class EnforcementCoordinator:
         print(f"[INFO] Event written to stream: {event_id}")
         
         return event_id
+    
+    def current_era(self) -> int:
+        """讀取並返回當前的 Era 號"""
+        era_file = self.ecosystem / ".governance" / "era.json"
+        if not era_file.exists():
+            return 0
+        
+        try:
+            with open(era_file, 'r', encoding='utf-8') as f:
+                data = json.loads(f.read())
+            return int(data.get("current_era", 0))
+        except Exception as e:
+            print(f"[WARNING] Failed to read era.json: {e}")
+            return 0
+    
+    def record_governance_phase(self, phase: str, status: str) -> None:
+        """
+        將高層治理狀態寫入 event-stream.jsonl
+        例如：phase = "EvidenceBootstrap", status = "STARTED" / "COMPLETED"
+        """
+        event_id = str(uuid.uuid4())
+        timestamp = datetime.now(timezone.utc).isoformat()
+        
+        governance_dir = self.ecosystem / ".governance"
+        governance_dir.mkdir(parents=True, exist_ok=True)
+        event_stream_file = governance_dir / "event-stream.jsonl"
+        
+        event_data = {
+            "event_id": event_id,
+            "event_type": "GOVERNANCE_PHASE",
+            "timestamp": timestamp,
+            "era": self.current_era(),
+            "phase": phase,
+            "status": status
+        }
+        
+        with open(event_stream_file, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(event_data, ensure_ascii=False) + "\n")
+        
+        print(f"[INFO] Governance phase recorded: {phase} = {status}")
+    
+    def mark_evidence_bootstrap(self) -> None:
+        """標記 Era-1 證據鏈啟動完成"""
+        self.record_governance_phase("EvidenceBootstrap", "COMPLETED")
 
     def _load_yaml(self, file_path: Path) -> Optional[Dict]:
         """載入 YAML 文件"""
@@ -1251,6 +1297,9 @@ class EnforcementCoordinator:
         artifact_file = self._generate_artifact(step_number=10, result=result)
         self._write_step_event(step_number=10, result=result)
         
+        # 標記 Era-1 證據鏈啟動完成（非治理閉環）
+        self.mark_evidence_bootstrap()
+        
         return result
     
     # ========================================================================
@@ -1328,9 +1377,27 @@ class EnforcementCoordinator:
             print(f"   - Total Violations: {total_violations}")
             print(f"   - Artifacts Generated: {total_artifacts}")
             print(f"   - Total Execution Time: {total_time:.2f} seconds")
-            print(f"\n🔄 Governance Closed Loop is now ACTIVE!")
-            print(f"   The system will continuously validate, enforce, and maintain")
-            print(f"   the Immutable Core through perpetual iteration.")
+            print(f"\n" + "="*70)
+            print(f"🎯 Governance Alignment Status")
+            print(f"="*70)
+            print(f"Layer: Operational (Evidence Generation)")
+            print(f"Era: {self.current_era()} (Evidence-Native Bootstrap)")
+            print(f"Semantic Closure: NO (Evidence layer only, governance not closed)")
+            print(f"Immutable Core: CANDIDATE (Not SEALED)")
+            print(f"Governance Closure: IN PROGRESS")
+            print(f"="*70)
+            print(f"\n✅ Evidence Layer Status: ENABLED (Era-{self.current_era()})")
+            print(f"   - Evidence generation active")
+            print(f"   - Event stream recording operational")
+            print(f"   - Artifacts with cryptographic integrity")
+            print(f"\n⚠️  Governance Layer Status: IN PROGRESS")
+            print(f"   - Semantic closure not yet achieved")
+            print(f"   - Core hash in CANDIDATE state (not SEALED)")
+            print(f"   - Lineage reconstruction partial (Era-0 history not available)")
+            print(f"\n📝 Next Steps:")
+            print(f"   - Awaiting semantic closure definition")
+            print(f"   - Awaiting immutable core boundary sealing")
+            print(f"   - Awaiting full lineage reconstruction validation")
             
             return {
                 "success": True,
