@@ -283,6 +283,7 @@ class EnforcementCoordinator:
         """
         生成步驟證據 artifact
         包含: UUID, timestamp, SHA256 hash, input/output traces
+        使用規範化 canonicalization 確保 hash 一致性
         """
         import hashlib
         
@@ -303,16 +304,38 @@ class EnforcementCoordinator:
             "artifacts_generated": result.artifacts_generated or []
         }
         
+        # 使用規範化工具進行 canonicalization
+        try:
+            # 添加 workspace 到 Python path
+            import sys
+            from pathlib import Path
+            workspace_root = Path(self.workspace)
+            if str(workspace_root) not in sys.path:
+                sys.path.insert(0, str(workspace_root))
+            
+            from ecosystem.tools.canonicalize import canonicalize_json
+            
+            # 創建層級化結構（Layer 1: 核心字段，Layer 2: 可選字段，Layer 3: 擴展字段）
+            layered_data = self._create_layered_artifact(artifact_data)
+            
+            # 規範化並計算 hash
+            canonical_str = canonicalize_json(layered_data)
+            sha256_hash = hashlib.sha256(canonical_str.encode('utf-8')).hexdigest()
+            
+            # 添加規範化信息到 artifact 數據
+            artifact_data["sha256_hash"] = sha256_hash
+            artifact_data["canonical_hash"] = sha256_hash
+            artifact_data["canonicalization_version"] = "1.0"
+            artifact_data["canonicalization_method"] = "JCS+LayeredSorting"
+            
+        except Exception as e:
+            # 如果規範化工具不可用，使用傳統方法
+            print(f"[WARNING] Canonicalization tool not available ({e}), using legacy method")
+            artifact_json = json.dumps(artifact_data, sort_keys=True, ensure_ascii=False)
+            sha256_hash = hashlib.sha256(artifact_json.encode()).hexdigest()
+            artifact_data["sha256_hash"] = sha256_hash
+        
         # 生成 JSON
-        artifact_json = json.dumps(artifact_data, indent=2, ensure_ascii=False)
-        
-        # 生成 SHA256 hash
-        sha256_hash = hashlib.sha256(artifact_json.encode()).hexdigest()
-        
-        # 添加 hash 到 artifact 數據
-        artifact_data["sha256_hash"] = sha256_hash
-        
-        # 重新生成包含 hash 的 JSON
         artifact_json_with_hash = json.dumps(artifact_data, indent=2, ensure_ascii=False)
         
         # 寫入文件
@@ -325,6 +348,49 @@ class EnforcementCoordinator:
         print(f"[INFO] SHA256 Hash: {sha256_hash}")
         
         return artifact_file
+    
+    def _create_layered_artifact(self, artifact_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        創建層級化 artifact 結構用於規範化
+        
+        Layer 1: 核心字段（永遠不變）
+        - artifact_id
+        - step_number
+        - timestamp
+        - era
+        - success
+        
+        Layer 2: 可選字段（可以添加）
+        - metadata
+        - execution_time_ms
+        - violations_count
+        
+        Layer 3: 擴展字段（無限擴展）
+        - artifacts_generated
+        - 其他自定義字段
+        """
+        layered = {
+            # Layer 1: Core fields (immutable)
+            "_layer1": {
+                "artifact_id": artifact_data.get("artifact_id"),
+                "step_number": artifact_data.get("step_number"),
+                "timestamp": artifact_data.get("timestamp"),
+                "era": artifact_data.get("era"),
+                "success": artifact_data.get("success")
+            },
+            # Layer 2: Optional fields (extensible)
+            "_layer2": {
+                "metadata": artifact_data.get("metadata", {}),
+                "execution_time_ms": artifact_data.get("execution_time_ms"),
+                "violations_count": artifact_data.get("violations_count", 0)
+            },
+            # Layer 3: Extension fields (infinitely extensible)
+            "_layer3": {
+                "artifacts_generated": artifact_data.get("artifacts_generated", [])
+            }
+        }
+        
+        return layered
     
     def _write_step_event(
         self, 

@@ -1,16 +1,19 @@
 {
-  "artifact_id": "69b77792-efae-42cc-8280-1d5b3b58892e",
+  "artifact_id": "db706bab-ec8f-400b-bf08-0988419105ad",
   "step_number": 7,
-  "timestamp": "2026-02-04T11:37:39.007682+00:00",
+  "timestamp": "2026-02-04T16:18:41.727497+00:00",
   "era": 1,
   "success": true,
   "metadata": {
     "event_stream_active": true
   },
-  "execution_time_ms": 0,
+  "execution_time_ms": 1,
   "violations_count": 0,
   "artifacts_generated": [
     "event_stream_statistics.json"
   ],
-  "sha256_hash": "64738a4937e47fd98a625b12cb8f1e446937c048810b69964c7d8f669e8da918"
+  "sha256_hash": "3713fee4db3377282be646fc46937bd7e67465e2debf5438be9e63212bc83e85",
+  "canonical_hash": "3713fee4db3377282be646fc46937bd7e67465e2debf5438be9e63212bc83e85",
+  "canonicalization_version": "1.0",
+  "canonicalization_method": "JCS+LayeredSorting"
 }

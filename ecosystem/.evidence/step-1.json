@@ -1,7 +1,7 @@
 {
-  "artifact_id": "2442e43d-3d6f-439e-8cab-d450ea291276",
+  "artifact_id": "31b93466-bfd7-421b-9ab7-f2d1d145ae1b",
   "step_number": 1,
-  "timestamp": "2026-02-04T11:37:39.005043+00:00",
+  "timestamp": "2026-02-04T16:18:41.713984+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -22,8 +22,8 @@
         "reverse_architecture"
       ],
       "bound_subsystems": 7,
-      "governance_events_count": 218,
-      "last_enforcement_check": "2026-02-04T11:37:39.002539+00:00"
+      "governance_events_count": 317,
+      "last_enforcement_check": "2026-02-04T16:18:41.711489+00:00"
     }
   },
   "execution_time_ms": 1,
@@ -31,5 +31,8 @@
   "artifacts_generated": [
     "local_state_model.json"
   ],
-  "sha256_hash": "e22d9495cbd11c63441c76162aa98e85c92b1cf1fa1f82dda314b008abea9264"
+  "sha256_hash": "75ad83de6a9d6cbfb3faecdfa57d4196cb966ca5adf9c62f57a897c1a5cc1308",
+  "canonical_hash": "75ad83de6a9d6cbfb3faecdfa57d4196cb966ca5adf9c62f57a897c1a5cc1308",
+  "canonicalization_version": "1.0",
+  "canonicalization_method": "JCS+LayeredSorting"
 }
