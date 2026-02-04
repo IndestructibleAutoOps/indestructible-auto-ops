@@ -2,7 +2,7 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: batch-gl-marker-addition-tool
-# @GL-audit-trail: engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 
 """
 Module docstring
@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 def add_gl_markers(filepath):
-    """Add GL gl_platform_universe.gl_platform_universe.governance markers to a file."""
+    """Add GL gl-platform.gl-platform.governance markers to a file."""
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -30,14 +30,14 @@ def add_gl_markers(filepath):
             markers = """# @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governed-code
-# @GL-audit-trail: engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 
 """
         elif filepath.endswith(('.yaml', '.yml')):
             markers = """# @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governed-configuration
-# @GL-audit-trail: engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 
 """
         elif filepath.endswith('.json'):
@@ -46,7 +46,7 @@ def add_gl_markers(filepath):
     "governed": true,
     "layer": "GL90-99",
     "semantic": "governed-data",
-    "auditTrail": "engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json"
+    "auditTrail": "engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json"
   },
 """
             # For JSON, we need to wrap the content
@@ -59,7 +59,7 @@ def add_gl_markers(filepath):
                             "governed": True,
                             "layer": "GL90-99",
                             "semantic": "governed-data",
-                            "auditTrail": "engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json"
+                            "auditTrail": "engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json"
                         }
                     with open(filepath, 'w', encoding='utf-8') as f:
                         json.dump(data, f, indent=2)
@@ -71,7 +71,7 @@ def add_gl_markers(filepath):
             markers = """<!-- @GL-governed -->
 <!-- @GL-layer: GL90-99 -->
 <!-- @GL-semantic: governed-documentation -->
-<!-- @GL-audit-trail: engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json -->
+<!-- @GL-audit-trail: engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json -->
 
 """
         else:

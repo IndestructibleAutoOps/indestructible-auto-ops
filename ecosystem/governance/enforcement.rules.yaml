@@ -1,14 +1,16 @@
 # enforcement.rules.yaml
 # Immutable Core 強制執行規則定義
-# 版本: 1.0.0
-# 基於: UGS + Meta-Spec + 最佳架構實踐
+# 版本: 2.0.0
+# 基於: UGS + Meta-Spec + 最佳架構實踐 + 證據鏈標準
+# 修復: 增強證據閉環、不可否認性、可審計性
 
-version: 1.0.0
+version: 2.0.0
 spec_type: enforcement-rules
 layer: enforcement
 
-@GL-semantic: org.mnga.enforcement.rules@1.0.0
+@GL-semantic: org.mnga.enforcement.rules@2.0.0
 @GL-audit-trail: enabled
+@GL-evidence-chain: required
 
 # 強制執行層級定義
 enforcement_layers:
@@ -224,11 +226,129 @@ audit_trail:
     - auto_fix_applied
     - compliance_check_passed
     - compliance_check_failed
+    - step_executed
+    - artifact_generated
+    - evidence_logged
+
+# 證據鏈要求
+evidence_chain:
+  enabled: true
+  required_for_all_steps: true
+  artifact_output_dir: ".evidence"
+  event_stream_file: ".governance/event-stream.jsonl"
+  
+  requirements:
+    - step_artifacts: true
+    - hash_verification: true
+    - timestamp_tracking: true
+    - uuid_tracing: true
+    - diff_generation: true
+    - replay_capability: true
+    - provenance_tracking: true
+  
+  artifact_format:
+    schema_version: "2.0.0"
+    required_fields:
+      - artifact_id
+      - step_number
+      - timestamp
+      - uuid
+      - sha256_hash
+      - input_trace
+      - output_trace
+      - result
+      - evidence_links
+  
+  hash_algorithm: "SHA256"
+  timestamp_format: "ISO8601"
+  uuid_version: 4
+
+# 違規處理增強
+violation_handling_enhanced:
+  BLOCK:
+    description: "阻擋操作並報錯"
+    action: "阻止操作，記錄違規，發送警報"
+    requires_approval: true
+    auto_fix: false
+    evidence_required: true
+    artifact_required: true
+    event_stream_required: true
+    
+  WARN:
+    description: "警告但允許操作"
+    action: "記錄警告，發送通知，允許操作"
+    requires_approval: false
+    auto_fix: false
+    evidence_required: true
+    artifact_required: true
+    event_stream_required: true
+    
+  REBUILD:
+    description: "自動修復並重建"
+    action: "自動修復結構，重建索引/拓撲"
+    requires_approval: false
+    auto_fix: true
+    evidence_required: true
+    artifact_required: true
+    event_stream_required: true
+    diff_required: true
+    
+  LOG:
+    description: "僅記錄"
+    action: "記錄信息，不干預"
+    requires_approval: false
+    auto_fix: false
+    evidence_required: false
+    artifact_required: false
+    event_stream_required: true
+
+# Step 執行證據要求
+step_execution_requirements:
+  pre_execution:
+    - input_validation
+    - dependency_check
+    - evidence_dir_creation
+  
+  during_execution:
+    - real_time_logging
+    - intermediate_artifacts
+    - state_tracking
+  
+  post_execution:
+    - artifact_generation
+    - hash_computation
+    - event_stream_write
+    - result_serialization
+
+# 不可否認性
+non_repudiation:
+  enabled: true
+  requirements:
+    - all_actions_logged: true
+    - all_decisions_traced: true
+    - all_artifacts_hashed: true
+    - all_events_uuid_tagged: true
+    - all_actors_identified: true
+  
+  signing:
+    enabled: false
+    algorithm: "SHA256withRSA"
+    key_location: ".governance/keys"
+
+# 重放驗證
+replay_verification:
+  enabled: true
+  requirements:
+    - deterministic_execution: true
+    - input_capture: true
+    - output_capture: true
+    - state_snapshot: true
+    - side_effects_tracked: true
 
 # 元數據
 metadata:
   created_at: "2026-02-03T23:49:00Z"
-  updated_at: "2026-02-03T23:49:00Z"
+  updated_at: "2026-02-04T02:00:00Z"
   author: "MNGA Governance Team"
   status: "active"
   version_history:
@@ -236,3 +356,7 @@ metadata:
       date: "2026-02-03T23:49:00Z"
       author: "MNGA Governance Team"
       description: "Initial version - Immutable Core enforcement rules"
+    - version: "2.0.0"
+      date: "2026-02-04T02:00:00Z"
+      author: "SuperNinja AI Agent"
+      description: "Evidence chain enhancement - non-repudiation, auditability, reconstructability"

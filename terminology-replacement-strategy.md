@@ -7,7 +7,7 @@ The term "universe" appears in multiple places across the GL governance framewor
 ## Replacement Strategy
 
 ### Primary Replacement
-**From:** `gl-platform-universe`  
+**From:** `gl-platform`  
 **To:** `gl-enterprise-architecture`
 
 ### Rationale
@@ -21,7 +21,7 @@ The term "universe" appears in multiple places across the GL governance framewor
 
 | Original Term | Replacement | Context |
 |---------------|------------|---------|
-| `gl-platform-universe/` | `gl-enterprise-architecture/` | Root directory name |
+| `gl-platform/` | `gl-enterprise-architecture/` | Root directory name |
 | "Platform Universe" | "Enterprise Architecture" | Documentation |
 | "universe" (general) | "ecosystem" | Platform-level references |
 | "universe" (container) | "architecture" | Structural references |
@@ -31,7 +31,7 @@ The term "universe" appears in multiple places across the GL governance framewor
 
 ### 1. Directory Structure
 ```
-gl-platform-universe/ → gl-enterprise-architecture/
+gl-platform/ → gl-enterprise-architecture/
 ```
 
 ### 2. Governance Files
@@ -73,7 +73,7 @@ gl-platform-universe/ → gl-enterprise-architecture/
 ### Directory Naming
 ```yaml
 # OLD
-gl-platform-universe/
+gl-platform/
   └── governance/
 
 # NEW
@@ -87,7 +87,7 @@ gl-enterprise-architecture/
 platform_naming:
   format: "gl-{domain}-{capability}-platform/"
   examples:
-    - gl-platform-universe/
+    - gl-platform/
 
 # NEW
 platform_naming:
@@ -268,7 +268,7 @@ gl-enterprise-architecture/
 
 #### Bad (Informal)
 ```
-gl-platform-universe/
+gl-platform/
 ├── platforms/
 │   ├── data-platform/
 │   ├── application-platform/

@@ -1800,7 +1800,7 @@ Variables: { "id": 123 }
 
 ## Governance & Compliance
 
-### GL Unified Charter Integration
+### GL Unified Architecture Governance Framework Integration
 - **Architecture**: GL00-09 (Strategic Layer)
 - **Implementation**: GL10-29 (Operational Layer)
 - **Quality**: GL50-59 (Observability Layer)
@@ -1825,4 +1825,4 @@ This comprehensive modernization framework provides cross-module, cross-platform
 5. **Deployment & Monitoring**: Production-ready implementations
 6. **Documentation**: Complete migration guides and references
 
-All modernization activities are governed by the GL Unified Charter v2.0.0 with full audit trails, traceability, and compliance verification.
+All modernization activities are governed by the GL Unified Architecture Governance Framework v2.0.0 with full audit trails, traceability, and compliance verification.

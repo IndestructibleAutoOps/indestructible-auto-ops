@@ -1,13 +1,13 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: __init__
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 GL Engine - Governance Layer Execution Engine
 MachineNativeOps GL Architecture Implementation
-This package provides the core components for GL gl_platform_universe.gl_platform_universe.governance operations:
+This package provides the core components for GL gl-platform.gl-platform.governance operations:
 - gl_executor: Main execution engine for GL commands
 - gl_validator: Comprehensive artifact validation
 - gl_reporter: Report generation and dashboards
@@ -23,7 +23,7 @@ GL_LAYERS = {
     "GL00-09": {
         "name": "Strategic Layer",
         "name_zh": "戰略層",
-        "description": "組織願景、長期目標、治理憲章、核心政策與最高層級決策制定"
+        "description": "組織願景、長期目標、治理框架、核心政策與最高層級決策制定"
     },
     "GL10-29": {
         "name": "Operational Layer", 
@@ -57,9 +57,9 @@ GL_LAYERS = {
     }
 }
 # Default paths
-DEFAULT_GOVERNANCE_PATH = "workspace/gl_platform_universe.gl_platform_universe.governance"
-DEFAULT_REPORTS_PATH = "reports/gl-gl_platform_universe.gl_platform_universe.governance"
-DEFAULT_TEMPLATES_PATH = "workspace/gl_platform_universe.gl_platform_universe.governance/meta-spec/GL-ARTIFACTS-TEMPLATES.yaml"
+DEFAULT_GOVERNANCE_PATH = "workspace/gl-platform.gl-platform.governance"
+DEFAULT_REPORTS_PATH = "reports/gl-gl-platform.gl-platform.governance"
+DEFAULT_TEMPLATES_PATH = "workspace/gl-platform.gl-platform.governance/meta-spec/GL-ARTIFACTS-TEMPLATES.yaml"
 def get_version() -> str:
     """Get package version."""
     return __version__

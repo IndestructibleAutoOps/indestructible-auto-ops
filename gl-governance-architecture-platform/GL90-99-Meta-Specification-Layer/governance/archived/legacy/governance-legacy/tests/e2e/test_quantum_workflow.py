@@ -2,12 +2,12 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 """
 End-to-end tests for quantum workflow
-Tests complete quantum gl_platform_universe.governance workflow
+Tests complete quantum gl-platform.governance workflow
 """
 
 """

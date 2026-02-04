@@ -3,7 +3,7 @@
 # @GL-semantic: python-module
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 # GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
@@ -27,7 +27,7 @@ Module docstring
 This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
-from .gl_platform_universe.gl_platform_universe.governance.semantic_engine import SemanticEngine
+from .gl-platform.gl-platform.governance.semantic_engine import SemanticEngine
 from .semantic_models import (
     SemanticNode, 
     SemanticNodeType, 

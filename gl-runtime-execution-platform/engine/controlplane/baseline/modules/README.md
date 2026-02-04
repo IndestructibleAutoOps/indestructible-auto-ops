@@ -3,13 +3,13 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # Module Organization - MachineNativeOps
 
 This directory contains the modular architecture implementation for the MachineNativeOps platform. Each module represents a logical grouping of functionality with clear boundaries, dependencies, and interfaces.

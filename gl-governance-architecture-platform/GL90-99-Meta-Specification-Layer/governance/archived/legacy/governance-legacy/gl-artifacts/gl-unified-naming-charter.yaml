@@ -4,7 +4,7 @@
 # @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
 
 # =============================================================================
-# GL Unified Naming Charter (GL 統一命名憲章)
+# GL Unified Naming Charter (GL 統一命名框架)
 # MachineNativeOps Governance Layers Unified Naming Standard
 # Version: 1.0.0
 # Layer: GL90-99 (Meta-Specification Layer)
@@ -20,8 +20,8 @@ metadata:
   layer: "GL90-99"
   layer_name: "Meta-Specification Layer"
   description: |
-    GL 統一命名憲章定義了 MachineNativeOps 系統中所有命名規範的最高標準。
-    本憲章涵蓋三層命名架構、命名格式、語意索引整合與治理機制。
+    GL 統一命名框架定義了 MachineNativeOps 系統中所有命名規範的最高標準。
+    本框架涵蓋三層命名架構、命名格式、語意索引整合與治理機制。
 spec:
   # ===========================================================================
   # 第一章：命名原則
@@ -406,7 +406,7 @@ spec:
     pr_template:
       description: "PR 模板中的命名合規檢查項"
       checklist:
-        - "[ ] 本次 PR 涉及的目錄、檔案、模組、變數、函式命名均符合 GL 命名憲章"
+        - "[ ] 本次 PR 涉及的目錄、檔案、模組、變數、函式命名均符合 GL 命名框架"
         - "[ ] 命名與語意索引（semantic://）一致"
         - "[ ] 如有命名例外，已提交例外申請並附上審批記錄"
         - "[ ] 已通過自動化命名檢查（CI/CD）"
@@ -468,7 +468,7 @@ appendix:
       example: "MAX_RETRIES"
       note: "全大寫"
 # =============================================================================
-# 憲章生效聲明
+# 框架生效聲明
 # =============================================================================
 charter_declaration:
   status: DRAFT

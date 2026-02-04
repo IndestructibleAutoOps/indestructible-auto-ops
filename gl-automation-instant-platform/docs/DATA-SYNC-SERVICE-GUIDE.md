@@ -479,7 +479,7 @@ This project is part of the MachineNativeOps ecosystem and follows the same lice
 
 ## Governance
 
-This service is governed by the GL Unified Charter and follows all governance layer requirements.
+This service is governed by the GL Unified Architecture Governance Framework and follows all governance layer requirements.
 
 - **Governance Layer**: GL90-99
 - **Charter Version**: 2.0.0

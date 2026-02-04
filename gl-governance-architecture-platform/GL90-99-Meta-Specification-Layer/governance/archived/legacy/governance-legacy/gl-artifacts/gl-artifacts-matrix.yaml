@@ -59,7 +59,7 @@ GL00-09:
       responsibility_mapping: ["vision_mission_ownership"]
     - artifact_id: "ART-00-02"
       type: "governance-charter"
-      type_zh: "治理憲章"
+      type_zh: "治理框架"
       purpose: "建立治理框架與決策權限"
       purpose_zh: "建立治理框架與決策權限"
       format: ["yaml"]
@@ -82,10 +82,10 @@ GL00-09:
       consumers:
         - layer: "GL10-29"
           role: "operations_team"
-          usage: "依據憲章制定運營政策"
+          usage: "依據框架制定運營政策"
         - layer: "GL90-99"
           role: "governance_committee"
-          usage: "確保元規範符合憲章"
+          usage: "確保元規範符合框架"
       skill_mapping: ["vision_formulation", "compliance_management"]
       capability_mapping: ["establish_governance_charter"]
       responsibility_mapping: ["governance_charter_ownership"]

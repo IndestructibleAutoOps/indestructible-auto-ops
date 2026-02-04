@@ -50,7 +50,7 @@ This report presents a comprehensive three-phase analysis of the GL governance d
 ### Governance Coverage Analysis
 
 **Directory Patterns Identified:**
-- gl-platform-universe
+- gl-platform
 - gl-semantic-core-platform
 - gl-runtime-platform
 - gl-policy-engine

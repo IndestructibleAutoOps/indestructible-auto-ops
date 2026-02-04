@@ -1,9 +1,9 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #!/usr/bin/env python3
 """
 MachineNativeOps 命名治理遷移腳本
@@ -50,7 +50,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("/var/log/naming-gl_platform_universe.governance-migration.log"),
+        logging.FileHandler("/var/log/naming-gl-platform.governance-migration.log"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -133,7 +133,7 @@ class NamingGovernanceMigration:
 
     def __init__(self, config_path: str = None):
         """初始化遷移系統"""
-        self.config_path = config_path or "/etc/naming-gl_platform_universe.governance/migration-config.yaml"
+        self.config_path = config_path or "/etc/naming-gl-platform.governance/migration-config.yaml"
         self.config = self._load_config()
         self.kubeconfig_path = os.getenv("KUBECONFIG", "~/.kube/config")
         self.dry_run = False
@@ -641,7 +641,7 @@ class NamingGovernanceMigration:
     def _create_backup_point(self) -> str:
         """創建備份點"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        backup_path = f"/var/backups/naming-gl_platform_universe.governance/migration_{timestamp}"
+        backup_path = f"/var/backups/naming-gl-platform.governance/migration_{timestamp}"
 
         try:
             os.makedirs(backup_path, exist_ok=True)
@@ -771,7 +771,7 @@ class NamingGovernanceMigration:
 
         # 保存報告
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        report_path = f"/var/log/naming-gl_platform_universe.governance/dry_run_report_{timestamp}.json"
+        report_path = f"/var/log/naming-gl-platform.governance/dry_run_report_{timestamp}.json"
 
         os.makedirs(os.path.dirname(report_path), exist_ok=True)
         with open(report_path, "w") as f:
@@ -1098,7 +1098,7 @@ class NamingGovernanceMigration:
 
         # 保存報告
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        report_path = f"/var/log/naming-gl_platform_universe.governance/cutover_report_{timestamp}.json"
+        report_path = f"/var/log/naming-gl-platform.governance/cutover_report_{timestamp}.json"
 
         os.makedirs(os.path.dirname(report_path), exist_ok=True)
         with open(report_path, "w") as f:

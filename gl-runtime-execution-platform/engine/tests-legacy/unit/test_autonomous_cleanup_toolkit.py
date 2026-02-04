@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: test_autonomous_cleanup_toolkit
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Unit tests for Autonomous Cleanup Toolkit.
 GL Layer: GL30-49 Execution Layer
-GL Unified Charter: Activated
+GL Unified Architecture Governance Framework: Activated
 """
 import os
 import sys

@@ -14,7 +14,7 @@ def register_directory_standards():
     standards_file = Path("naming_governance_directory_standards.yaml")
     
     # 目標位置
-    target_dir = Path("machine-native-ops/gl-platform-universe/governance/naming-governance/contracts/")
+    target_dir = Path("machine-native-ops/gl-platform/governance/naming-governance/contracts/")
     
     # 創建目錄（如果不存在）
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -75,7 +75,7 @@ def generate_registration_report():
         'timestamp': '2026-01-31T00:00:00Z',
         'version': 'v2.0.0',
         'status': 'REGISTERED',
-        'location': 'gl-platform-universe/governance/naming-governance/contracts/directory-standards.yaml',
+        'location': 'gl-platform/governance/naming-governance/contracts/directory-standards.yaml',
         'key_features': [
             '8層企業架構定義',
             '責任邊界規範',

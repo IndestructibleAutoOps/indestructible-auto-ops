@@ -1,21 +1,21 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
-# @GL-semantic: gl_platform_universe.governance_engine
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl-platform.governance
+# @GL-semantic: gl-platform.governance_engine
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 AI Governance Engine - 人工智慧治理引擎
 =====================================
 Purpose: ML-powered decision making for instant execution pipeline
-Provides intelligent gl_platform_universe.governance, pattern recognition, and risk assessment
+Provides intelligent gl-platform.governance, pattern recognition, and risk assessment
 This is a stub implementation with a real interface that can be enhanced
 with actual ML models later.
 Key Features:
@@ -221,7 +221,7 @@ class AIGovernanceEngine:
         self, context: Dict[str, Any], analysis_type: str = "general"
     ) -> AnalysisResult:
         """
-        Make AI-powered gl_platform_universe.governance decision
+        Make AI-powered gl-platform.governance decision
         Main decision-making interface
         """
         self.analysis_count += 1

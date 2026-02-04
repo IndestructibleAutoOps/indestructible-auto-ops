@@ -3,7 +3,7 @@
 # @GL-semantic: task-tracking
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Runtime Platform Integration Task List
 
 ## Current Status Analysis

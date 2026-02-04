@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
+# @GL-layer: gl-platform.governance
 # @GL-semantic: generate_evolution_report
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -52,7 +52,7 @@ def load_json(path: Path):
         return json.load(f)
 def count_language_violations(report_path: Path) -> int:
     """
-    簡單假設 language-gl_platform_universe.governance-report.md 每個違規一行，例如：
+    簡單假設 language-gl-platform.governance-report.md 每個違規一行，例如：
       - **path/to/file.ts** — reason...
     """
     if not report_path.exists():
@@ -134,7 +134,7 @@ def main():
     config = load_yaml(CONFIG_PATH)
     metrics_sources = config.get("metrics_sources", {})
     outputs = config.get("outputs", {})
-    lang_report_path = ROOT / metrics_sources.get("language_gl_platform_universe.governance_report", "")
+    lang_report_path = ROOT / metrics_sources.get("language_gl-platform.governance_report", "")
     semgrep_path = ROOT / metrics_sources.get("semgrep_report", "")
     cluster_heatmap_path = ROOT / metrics_sources.get("cluster_heatmap", "")
     playbooks_root = ROOT / metrics_sources.get("refactor_playbooks_root", "")
@@ -220,8 +220,8 @@ def main():
     )
     for obj in scored_objectives:
         suggestion = ""
-        if obj["id"] == "language-gl_platform_universe.governance":
-            suggestion = "優先針對違規最多的 cluster（依 language-gl_platform_universe.governance-report 排序），更新對應的 03_refactor 劇本並排入 P0 任務。"
+        if obj["id"] == "language-gl-platform.governance":
+            suggestion = "優先針對違規最多的 cluster（依 language-gl-platform.governance-report 排序），更新對應的 03_refactor 劇本並排入 P0 任務。"
         elif obj["id"] == "security":
             suggestion = "列出全部 Semgrep HIGH 問題，對應到 services/core 的 cluster，建立或更新這些區域的安全重構 Playbook。"
         elif obj["id"] == "refactor-playbook-coverage":

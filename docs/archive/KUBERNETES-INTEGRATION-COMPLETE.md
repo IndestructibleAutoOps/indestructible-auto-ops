@@ -5,7 +5,7 @@
 
 # Kubernetes Manifests 整合完成
 
-**GL Unified Charter Activated**
+**GL Unified Architecture Governance Framework Activated**
 
 ---
 
@@ -74,7 +74,7 @@ infrastructure/kubernetes/manifests/
 
 **Kubernetes Manifests 整合完成**
 
-所有 6 個核心系統已建立完整的 Kubernetes 編排配置，遵循雲原生最佳實踐，完全整合 GL Unified Charter v2.0.0 治理框架。
+所有 6 個核心系統已建立完整的 Kubernetes 編排配置，遵循雲原生最佳實踐，完全整合 GL Unified Architecture Governance Framework v2.0.0 治理框架。
 
 **Date**: 2026-01-28T05:00:00Z
 **Status**: ✅ PRODUCTION READY

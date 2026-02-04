@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # Phase 7-8 Completion Report
 
 **Report Date:** January 27, 2026

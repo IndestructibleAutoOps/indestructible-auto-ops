@@ -6,7 +6,7 @@
 # GL Audit Remediation Complete
 
 ## Summary
-Successfully migrated all governance-audit-results/ files to their proper locations according to GL Unified Charter guidelines.
+Successfully migrated all governance-audit-results/ files to their proper locations according to GL Unified Architecture Governance Framework guidelines.
 
 ## Migration Completed
 
@@ -33,7 +33,7 @@ Successfully migrated all governance-audit-results/ files to their proper locati
 - `dd9bc952` - GL Audit Results 遷移完成
 - `54997dd2` - 清理 todo.md 和 event-stream
 
-## GL Unified Charter Status
+## GL Unified Architecture Governance Framework Status
 - ✅ Governance Structure: COMPLIANT
 - ✅ Directory Migration: COMPLETE
 - ✅ CI/CD Integration: ACTIVE

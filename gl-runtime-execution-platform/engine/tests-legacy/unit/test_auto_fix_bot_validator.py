@@ -1,13 +1,13 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: test_auto_fix_bot_validator
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Unit tests for Auto-Fix Bot Template Validator
-GL Unified Charter Activated - Comprehensive validation test suite
+GL Unified Architecture Governance Framework Activated - Comprehensive validation test suite
 Tests cover:
 1. Auto-fix template validation
 2. Multi-language support verification

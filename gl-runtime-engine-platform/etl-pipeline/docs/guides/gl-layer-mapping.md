@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Layer Mapping Guide
 **GL-Layer: GL00-99 (Meta)**
 **Closure-Signal: policy, manifest**

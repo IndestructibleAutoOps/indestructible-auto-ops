@@ -65,4 +65,4 @@ The GL V10 Quantum Architect Platform has been successfully implemented with com
 ---
 
 **GL 量子架構平台 v10.0.0 部署完成**
-**GL Unified Charter v5.0 強制執行完成**
+**GL Unified Architecture Governance Framework v5.0 強制執行完成**

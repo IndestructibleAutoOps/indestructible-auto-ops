@@ -85,7 +85,7 @@ def extract_governance_patterns():
     
     governance_dirs = [
         '/workspace/machine-native-ops/.github/governance',
-        '/workspace/machine-native-ops/gl-platform-universe/governance'
+        '/workspace/machine-native-ops/gl-platform/governance'
     ]
     
     for gov_dir in governance_dirs:
@@ -123,7 +123,7 @@ def generate_internal_report():
     
     # 2. Naming conventions analysis
     print("Analyzing naming conventions...")
-    naming_file = '/workspace/machine-native-ops/gl-platform-universe/governance/naming-governance/contracts/naming-conventions.yaml'
+    naming_file = '/workspace/machine-native-ops/gl-platform/governance/naming-governance/contracts/naming-conventions.yaml'
     conventions = analyze_naming_conventions(naming_file)
     report['findings']['naming_conventions'] = conventions
     

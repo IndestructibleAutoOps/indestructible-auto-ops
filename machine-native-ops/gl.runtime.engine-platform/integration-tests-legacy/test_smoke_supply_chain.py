@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: test_smoke_supply_chain
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 Smoke Tests for Supply Chain Verification - Quick verification of supply chain functionality

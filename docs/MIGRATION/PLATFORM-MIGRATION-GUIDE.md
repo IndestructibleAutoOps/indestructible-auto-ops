@@ -39,7 +39,7 @@ jq --version
 
 ### Pre-Migration Checklist
 
-- [ ] Read and understand GL Unified Charter v5.0
+- [ ] Read and understand GL Unified Architecture Governance Framework v5.0
 - [ ] Review naming convention policies
 - [ ] Identify critical workloads requiring special handling
 - [ ] Schedule maintenance window for cutover
@@ -452,7 +452,7 @@ curl -X POST YOUR_WEBHOOK_URL -d '{"text":"test"}'
 
 ## Additional Resources
 
-- [GL Unified Charter v5.0](./GL-UNIFIED-CHARTER.md)
+- [GL Unified Architecture Governance Framework v5.0](./GL-UNIFIED-CHARTER.md)
 - [Naming Migration Playbook](./RUNBOOKS/naming-migration-playbook.md)
 - [Security Policies](../.config/policy/)
 - [Observability Guide](../observability/README.md)

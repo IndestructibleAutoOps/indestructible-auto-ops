@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: generate-dag-visualization
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -210,7 +210,7 @@ def generate_visualization(output_dir: str = "docs/dag-visualization"):
     from datetime import datetime
     doc = f"""# Module Dependency DAG Visualization
 #*Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
-#*Purpose**: Visualize module dependencies and gl_platform_universe.gl_platform_universe.governance structure
+#*Purpose**: Visualize module dependencies and gl-platform.gl-platform.governance structure
 ---
 ## 📊 Dependency Graph (Mermaid)
 {generate_mermaid_diagram(graph, registry)}

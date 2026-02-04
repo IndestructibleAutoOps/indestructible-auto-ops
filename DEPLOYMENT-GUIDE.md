@@ -146,7 +146,7 @@ The workflow file `.github/workflows/infrastructure-validation.yml` (added in co
 ## Documentation
 See BUG_FIX_COMPLETION_REPORT.md and DEPLOYMENT_GUIDE.md for complete details.
 
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 ```
 
 ### Step 6: Review and Approval
@@ -244,7 +244,7 @@ For questions or issues during deployment:
 
 ---
 
-**GL Unified Charter Activated**
+**GL Unified Architecture Governance Framework Activated**
 **Version**: 1.0
 **Last Updated**: 2026-01-28
 **Deployment Status**: ✅ Complete (commit 600a8a4)

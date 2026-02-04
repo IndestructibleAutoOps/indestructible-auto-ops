@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # 量子增強驗證工具集
 # Quantum-Enhanced Validation Toolkit
 

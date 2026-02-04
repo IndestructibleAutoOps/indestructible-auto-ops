@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # INSTANT 執行轉型總結
 
 ## 📊 Before vs After 對比

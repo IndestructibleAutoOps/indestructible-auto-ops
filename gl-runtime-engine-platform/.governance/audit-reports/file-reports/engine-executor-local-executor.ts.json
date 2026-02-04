@@ -3,7 +3,7 @@
 # @GL-semantic: governance-core
 # @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
 # GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
@@ -24,9 +24,9 @@
       "type": "gl_marker_missing",
       "severity": "P1",
       "title": "GL 治理標記缺失",
-      "description": "檔案 engine/executor/local_executor.ts 缺少 GL Unified Charter 標記",
+      "description": "檔案 engine/executor/local_executor.ts 缺少 GL Unified Architecture Governance Framework 標記",
       "line_number": null,
-      "suggestion": "在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記",
+      "suggestion": "在檔案開頭添加 '// GL Unified Architecture Governance Framework Activated' 或 '@gl-governed' 標記",
       "auto_fixable": true
     },
     {
@@ -116,7 +116,7 @@
     "layer": "governance",
     "semantic": "engine_executor_local_executor.ts",
     "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
-    "charter": "GL Unified Charter",
+    "charter": "GL Unified Architecture Governance Framework",
     "version": "2.0.0"
   }
 }

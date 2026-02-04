@@ -1,21 +1,21 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
-# @GL-semantic: language-gl_platform_universe.governance-analyzer
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-layer: gl-platform.governance
+# @GL-semantic: language-gl-platform.governance-analyzer
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Language Governance Analyzer
 分析代碼庫中的語言使用情況，並根據語言策略進行驗證
 Usage:
-    python language-gl_platform_universe.governance-analyzer.py --config config/language-policy.yaml --repo-root . --output-format json
+    python language-gl-platform.governance-analyzer.py --config config/language-policy.yaml --repo-root . --output-format json
 """
 # MNGA-002: Import organization needs review
 import argparse

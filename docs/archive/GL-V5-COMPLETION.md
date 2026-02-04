@@ -126,7 +126,7 @@ Resources:
 
 ## Governance Compliance
 
-### GL Unified Charter
+### GL Unified Architecture Governance Framework
 - **Charter Version**: 2.0.0
 - **Governance Layer**: GL90-99
 - **Semantic Anchor**: GL-ROOT-GOVERNANCE
@@ -246,7 +246,7 @@ feat: implement GL Runtime Platform v5.0.0 with complete multi-agent orchestrati
 - Deploy platform to production on port 3000
 - Verify all components operational and APIs accessible
 
-GL Unified Charter Activated | Version 5.0.0 | Charter Version 2.0.0
+GL Unified Architecture Governance Framework Activated | Version 5.0.0 | Charter Version 2.0.0
 ```
 
 ### Files Changed
@@ -322,7 +322,7 @@ GL Unified Charter Activated | Version 5.0.0 | Charter Version 2.0.0
 
 ## Compliance Declaration
 
-**GL Unified Charter**: Activated  
+**GL Unified Architecture Governance Framework**: Activated  
 **Governance Layers**: GL90-99  
 **Semantic Anchor**: GL-ROOT-GOVERNANCE  
 **Charter Version**: 2.0.0  

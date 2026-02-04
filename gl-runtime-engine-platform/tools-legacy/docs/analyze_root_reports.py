@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
+# @GL-layer: gl-platform.governance
 # @GL-semantic: analyze_root_reports
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -218,7 +218,7 @@ def _categorize_report(file_path: Path) -> str:
         return "Validation Report"
     elif "integration" in name_lower:
         return "Integration Analysis"
-    elif "gl_platform_universe.governance" in name_lower or "ci" in name_lower:
+    elif "gl-platform.governance" in name_lower or "ci" in name_lower:
         return "Governance & CI"
     elif "reports" in path_parts:
         return "Detailed Report"

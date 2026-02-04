@@ -3,7 +3,7 @@
 # @GL-semantic: root.governance
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 # 
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 # 🏛️ Root 治理/權限/策略配置
 # MachineNativeOps Root Layer Governance Configuration
@@ -12,7 +12,7 @@
 apiVersion: machinenativeops.io/v1
 kind: RootGovernanceConfig
 metadata:
-  name: governance-baseline-config
+  name: governance-framework-baseline-config
   namespace: machinenativenops-governance
   labels:
     machinenativeops.io/tier: "governance"

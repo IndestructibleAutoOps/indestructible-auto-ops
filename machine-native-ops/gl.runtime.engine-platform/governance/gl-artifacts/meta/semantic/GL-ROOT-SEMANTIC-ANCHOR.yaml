@@ -3,7 +3,7 @@
 # @GL-semantic: GL-ROOT-SEMANTIC-ANCHOR
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 # 
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 apiVersion: governance.machinenativeops.io/v1
 kind: GLRootSemanticAnchor
@@ -99,4 +99,4 @@ event_flows:
     - trigger: "VALIDATION_FAILED"
       action: "BLOCK_AND_NOTIFY"
       handler: "gl-governance-enforcer"
-activation_status: "GL Unified Charter Activated"
+activation_status: "GL Unified Architecture Governance Framework Activated"

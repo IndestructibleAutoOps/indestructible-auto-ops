@@ -153,3 +153,32 @@
 - 使用 reporting_compliance_checker.py 進行自動化檢查
 - 所有修改必須符合 Era-1 的正確定位
 - 禁止任何暗示「治理已完成」的敘事
+### Phase 4: 測試驗證 ✅
+- [x] 創建不符合規格的測試報告
+- [x] 創建符合規格的測試報告
+- [x] 驗證檢查器功能
+- [x] 修復欄位值解析 bug
+- [x] 所有測試通過
+
+### Phase 5: 文檔和提交 ✅
+- [x] 創建完成報告
+  - `reports/REPORTING-GOVERNANCE-SPEC-IMPLEMENTATION-COMPLETION-REPORT.md`
+  - `reports/REPORTING-GOVERNANCE-STATUS-SUMMARY.md`
+- [x] 提交所有變更到 git (commit: 92af8f49)
+
+### Phase 6: 修正 enforce.rules.py 輸出 ⏸️
+- [ ] 修正 Step 10 的總結輸出
+- [ ] 在報告開頭添加三個強制欄位
+- [ ] 添加歷史缺口聲明區塊
+- [ ] 添加「尚未完成的治理面」專門區塊
+- [ ] 修正 Step 2 的虛假聲明
+
+### Phase 7: 驗證和測試 ⏸️
+- [ ] 運行修正後的 enforce.rules.py
+- [ ] 使用 reporting_compliance_checker.py 檢查輸出
+- [ ] 確保合規性評分 >= 90%
+
+### Phase 8: 整合到治理系統 ⏸️
+- [ ] 將 reporting-governance-spec.md 整合到 enforce.rules.py
+- [ ] 在每次報告生成時自動執行合規性檢查
+- [ ] 如果不合規，阻擋報告發布並提示修正

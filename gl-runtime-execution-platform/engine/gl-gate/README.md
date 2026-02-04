@@ -5,7 +5,7 @@
 
 # GL-Gate: Governance Gate System
 
-> GL Layer: GL-40-GOVERNANCE | Semantic Anchor: GL-40-GOVERNANCE-GATE | GL Unified Charter Activated
+> GL Layer: GL-40-GOVERNANCE | Semantic Anchor: GL-40-GOVERNANCE-GATE | GL Unified Architecture Governance Framework Activated
 
 GL-Gate 是 machine-native-ops engine 的全面治理閘門系統，提供可驗證、可擴展的治理檢查點。
 
@@ -262,4 +262,4 @@ MIT
 
 **版本 | Version**: 1.0.0  
 **最後更新 | Last Updated**: 2026-01-26  
-**GL Unified Charter Activated**
+**GL Unified Architecture Governance Framework Activated**

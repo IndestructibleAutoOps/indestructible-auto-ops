@@ -282,9 +282,9 @@ The GL Platform has been successfully implemented as a production-ready, event-d
 
 ## Governance Framework
 
-### GL Unified Charter v5.0
+### GL Unified Architecture Governance Framework v5.0
 
-The platform enforces the GL Unified Charter v5.0 governance requirements:
+The platform enforces the GL Unified Architecture Governance Framework v5.0 governance requirements:
 
 1. **Audit Trail**: All changes tracked with semantic anchors
 2. **Traceability**: Complete provenance from code to deployment

@@ -212,7 +212,7 @@ instant/
 
 ### Latest Commits
 1. `479877c8` - feat(agents): add data-sync-agent to agent orchestration with priority 1 integration
-2. `2f599ef0` - GL 全域治理完成 - GL Unified Charter Fully Activated
+2. `2f599ef0` - GL 全域治理完成 - GL Unified Architecture Governance Framework Fully Activated
 3. `7192cb87` - GL 全域修復完成 - GL 目錄整合遷移至治理結構
 
 ### Push Status

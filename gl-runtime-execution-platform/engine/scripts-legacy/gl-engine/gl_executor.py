@@ -1,15 +1,15 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: gl_executor
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Layer Executor - Governance Layer Execution Engine
 MachineNativeOps GL Architecture Implementation
 This module provides the core execution engine for GL (Governance Layers) operations,
-enabling automated gl_platform_universe.gl_platform_universe.governance artifact management, validation, and orchestration.
+enabling automated gl-platform.gl-platform.governance artifact management, validation, and orchestration.
 """
 # MNGA-002: Import organization needs review
 import sys
@@ -51,7 +51,7 @@ class GLLayer(Enum):
         return None
 @dataclass
 class GLArtifact:
-    """Represents a GL gl_platform_universe.gl_platform_universe.governance artifact."""
+    """Represents a GL gl-platform.gl-platform.governance artifact."""
     api_version: str
     kind: str
     metadata: Dict[str, Any]
@@ -154,14 +154,14 @@ class ListArtifactsCommand(GLCommand):
         import time
         start_time = time.time()
         artifacts = []
-        gl_platform_universe.gl_platform_universe.governance_path = context.workspace_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance'
-        if not gl_platform_universe.gl_platform_universe.governance_path.exists():
+        gl-platform.gl-platform.governance_path = context.workspace_path / 'workspace' / 'gl-platform.gl-platform.governance'
+        if not gl-platform.gl-platform.governance_path.exists():
             return ExecutionResult(
                 success=False,
-                message=f"Governance path not found: {gl_platform_universe.gl_platform_universe.governance_path}",
-                errors=[f"Path does not exist: {gl_platform_universe.gl_platform_universe.governance_path}"]
+                message=f"Governance path not found: {gl-platform.gl-platform.governance_path}",
+                errors=[f"Path does not exist: {gl-platform.gl-platform.governance_path}"]
             )
-        yaml_files = list(gl_platform_universe.gl_platform_universe.governance_path.rglob('*.yaml')) + list(gl_platform_universe.gl_platform_universe.governance_path.rglob('*.yml'))
+        yaml_files = list(gl-platform.gl-platform.governance_path.rglob('*.yaml')) + list(gl-platform.gl-platform.governance_path.rglob('*.yml'))
         for file_path in yaml_files:
             try:
                 artifact = GLArtifact.from_file(file_path)
@@ -205,8 +205,8 @@ class ValidateCommand(GLCommand):
         errors = []
         warnings = []
         validated = 0
-        gl_platform_universe.gl_platform_universe.governance_path = context.workspace_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance'
-        yaml_files = list(gl_platform_universe.gl_platform_universe.governance_path.rglob('*.yaml')) + list(gl_platform_universe.gl_platform_universe.governance_path.rglob('*.yml'))
+        gl-platform.gl-platform.governance_path = context.workspace_path / 'workspace' / 'gl-platform.gl-platform.governance'
+        yaml_files = list(gl-platform.gl-platform.governance_path.rglob('*.yaml')) + list(gl-platform.gl-platform.governance_path.rglob('*.yml'))
         for file_path in yaml_files:
             try:
                 artifact = GLArtifact.from_file(file_path)
@@ -279,7 +279,7 @@ class GenerateCommand(GLCommand):
         start_time = time.time()
         artifact_type = kwargs.get('artifact_type', '')
         artifact_name = kwargs.get('artifact_name', '')
-        owner = kwargs.get('owner', 'gl_platform_universe.gl_platform_universe.governance-team')
+        owner = kwargs.get('owner', 'gl-platform.gl-platform.governance-team')
         if not context.layer:
             return ExecutionResult(
                 success=False,
@@ -295,7 +295,7 @@ class GenerateCommand(GLCommand):
         # Generate artifact
         now = datetime.utcnow().isoformat() + 'Z'
         artifact_data = {
-            'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.gl-platform.governance.machinenativeops.io/v2',
             'kind': self._get_kind(artifact_type),
             'metadata': {
                 'name': artifact_name,
@@ -327,7 +327,7 @@ class GenerateCommand(GLCommand):
             GLLayer.GL81_83: 'extended',
             GLLayer.GL90_99: 'meta-spec',
         }
-        output_dir = context.workspace_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance' / layer_dirs.get(context.layer, 'other')
+        output_dir = context.workspace_path / 'workspace' / 'gl-platform.gl-platform.governance' / layer_dirs.get(context.layer, 'other')
         output_file = output_dir / f"{artifact_name.lower().replace(' ', '-')}.yaml"
         if not context.dry_run:
             artifact.save(output_file)
@@ -350,7 +350,7 @@ class GenerateCommand(GLCommand):
         kind_map = {
             'vision_statement': 'VisionStatement',
             'strategic_objectives': 'StrategicObjectives',
-            'gl_platform_universe.gl_platform_universe.governance_charter': 'GovernanceCharter',
+            'gl-platform.gl-platform.governance_charter': 'GovernanceCharter',
             'risk_register': 'RiskRegister',
             'operational_plan': 'OperationalPlan',
             'sop': 'StandardOperatingProcedure',
@@ -386,7 +386,7 @@ class GenerateCommand(GLCommand):
                 'alignment': {'strategic_objectives': []},
                 'initiatives': [],
                 'resource_allocation': {},
-                'gl_platform_universe.gl_platform_universe.governance': {'review_cadence': 'monthly'}
+                'gl-platform.gl-platform.governance': {'review_cadence': 'monthly'}
             },
             'metrics_definition': {
                 'metrics': [],
@@ -411,7 +411,7 @@ class ReportCommand(GLCommand):
         return "report"
     @property
     def description(self) -> str:
-        return "Generate GL gl_platform_universe.gl_platform_universe.governance reports"
+        return "Generate GL gl-platform.gl-platform.governance reports"
     def execute(self, context: ExecutionContext, **kwargs) -> ExecutionResult:
         """Generate report."""
         import time
@@ -433,7 +433,7 @@ class ReportCommand(GLCommand):
         else:
             report = self._generate_summary_report(list_result, validate_result)
         # Save report
-        reports_dir = context.workspace_path / 'reports' / 'gl-gl_platform_universe.gl_platform_universe.governance'
+        reports_dir = context.workspace_path / 'reports' / 'gl-gl-platform.gl-platform.governance'
         reports_dir.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
         report_file = reports_dir / f"gl-report-{report_type}-{timestamp}.md"
@@ -614,7 +614,7 @@ Examples:
                         help='Artifact type (for generate command)')
     parser.add_argument('--name', '-n', dest='artifact_name',
                         help='Artifact name (for generate command)')
-    parser.add_argument('--owner', '-o', default='gl_platform_universe.gl_platform_universe.governance-team',
+    parser.add_argument('--owner', '-o', default='gl-platform.gl-platform.governance-team',
                         help='Artifact owner (for generate command)')
     parser.add_argument('--report-type', '-r', dest='report_type',
                         choices=['summary', 'detailed', 'layer'], default='summary',

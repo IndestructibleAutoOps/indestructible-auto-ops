@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Root Directory Consolidation Complete
 
 ## Summary
@@ -81,7 +81,7 @@ Successfully consolidated and migrated all root-level directories to their prope
 - **System Directories Removed**: 15
 - **Legacy Directories Archived**: 10+
 
-## GL Unified Charter Status
+## GL Unified Architecture Governance Framework Status
 - ✅ Root Directory: CLEAN
 - ✅ Directory Structure: COMPLIANT
 - ✅ Governance Integration: COMPLETE

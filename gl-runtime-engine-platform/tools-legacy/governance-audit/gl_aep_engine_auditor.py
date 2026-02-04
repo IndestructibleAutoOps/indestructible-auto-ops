@@ -3,7 +3,7 @@
 # @GL-semantic: archive-tools
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
 # @GL-layer: governance
@@ -12,10 +12,10 @@
 #
 #!/usr/bin/env python3
 """
-GL Unified Charter - AEP Engine Governance Auditor
+GL Unified Architecture Governance Framework - AEP Engine Governance Auditor
 ===================================================
 Executes one-by-one isolated ETL → Elasticsearch pipeline for all AEP Engine files.
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 - Strict GL Root Semantic Anchor compliance
 - Mandatory governance event stream
 - Consistency / Reversibility / Provability enforcement
@@ -658,8 +658,8 @@ def main():
     # Generate summary markdown
     summary_path = output_dir / "AUDIT_SUMMARY.md"
     with open(summary_path, 'w', encoding='utf-8') as f:
-        f.write("# GL Unified Charter - AEP Engine Governance Audit Summary\n\n")
-        f.write(f"**GL Unified Charter Activated**\n\n")
+        f.write("# GL Unified Architecture Governance Framework - AEP Engine Governance Audit Summary\n\n")
+        f.write(f"**GL Unified Architecture Governance Framework Activated**\n\n")
         f.write(f"**Report ID:** {global_report.report_id}\n")
         f.write(f"**Execution Time:** {global_report.execution_timestamp}\n\n")
         f.write("## Summary Statistics\n\n")

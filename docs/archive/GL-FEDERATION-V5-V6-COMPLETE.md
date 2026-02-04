@@ -8,7 +8,7 @@ GL Runtime Platform has been successfully upgraded to v5.0.0 with the implementa
 
 ### Architecture Overview
 
-The Federation Layer enables centralized governance management across multiple organizations, projects, and deployment environments while maintaining full GL Unified Charter compliance.
+The Federation Layer enables centralized governance management across multiple organizations, projects, and deployment environments while maintaining full GL Unified Architecture Governance Framework compliance.
 
 ```
 federation/
@@ -339,7 +339,7 @@ The Federation Layer and Global Resource Graph work together to provide:
 
 ## Governance Compliance
 
-### GL Unified Charter
+### GL Unified Architecture Governance Framework
 - **Charter Version**: 2.0.0
 - **Governance Layer**: GL90-99
 - **Semantic Anchor**: GL-ROOT-GOVERNANCE
@@ -407,7 +407,7 @@ Global Resource Graph v6.0.0:
 - Integrate resource-graph-runtime for pipeline execution
 - Enable dependency tracking and governance compliance checks
 
-GL Unified Charter Activated | Version 5.0.0 Federation + 6.0.0 GRG | Charter Version 2.0.0
+GL Unified Architecture Governance Framework Activated | Version 5.0.0 Federation + 6.0.0 GRG | Charter Version 2.0.0
 ```
 
 ### Files Changed
@@ -441,7 +441,7 @@ GL Unified Charter Activated | Version 5.0.0 Federation + 6.0.0 GRG | Charter Ve
 
 ## Compliance Declaration
 
-**GL Unified Charter**: Activated  
+**GL Unified Architecture Governance Framework**: Activated  
 **Governance Layers**: GL90-99  
 **Semantic Anchor**: GL-ROOT-GOVERNANCE  
 **Charter Version**: 2.0.0  

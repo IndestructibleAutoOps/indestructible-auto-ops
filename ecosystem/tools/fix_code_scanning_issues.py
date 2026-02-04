@@ -93,20 +93,20 @@ class CodeScanningFixer:
             print(f"❌ Error fixing {filepath}: {e}")
     
     def fix_duplicate_prefixes(self, content: str) -> str:
-        """Fix duplicate prefix issues like gl_platform_universegl_platform_universe"""
+        """Fix duplicate prefix issues like gl-platformgl-platform"""
         patterns = [
-            # Fix duplicate gl_platform_universe prefix
-            (r'gl_platform_universegl_platform_universe\.', 'gl_platform_universe_'),
-            (r'gl_platform_universegl_platform_universe\.gl_platform_universegl_platform_universe\.', 'gl_platform_universe_'),
+            # Fix duplicate gl-platform prefix
+            (r'gl-platformgl-platform\.', 'gl-platform_'),
+            (r'gl-platformgl-platform\.gl-platformgl-platform\.', 'gl-platform_'),
             
             # Fix dot notation in identifiers (invalid Python syntax)
-            (r'gl_platform_universe\.governance_data', 'governance_data'),
-            (r'gl_platform_universe\.governance_dirs', 'governance_dirs'),
-            (r'gl_platform_universe\.governance', 'governance'),
+            (r'gl-platform\.governance_data', 'governance_data'),
+            (r'gl-platform\.governance_dirs', 'governance_dirs'),
+            (r'gl-platform\.governance', 'governance'),
             
             # Fix in function definitions with dot notation
-            (r'def\s+audit_gl_platform_universe\.governance_files', 'def audit_governance_files'),
-            (r'def\s+(\w+)_gl_platform_universe\.', r'def \1_'),
+            (r'def\s+audit_gl-platform\.governance_files', 'def audit_governance_files'),
+            (r'def\s+(\w+)_gl-platform\.', r'def \1_'),
             (r'def\s+parse_governance_report', 'def parse_governance_report'),
             (r'def\s+load_governance_data', 'def load_governance_data'),
             (r'def\s+scan_governance_files', 'def scan_governance_files'),
@@ -123,12 +123,12 @@ class CodeScanningFixer:
             (r'def\s+_generate_governance_fixes', 'def _generate_governance_fixes'),
             
             # Fix in function parameters with dot notation
-            (r'\(\s*gl_platform_universe\.governance_data:', '(governance_data:'),
-            (r'\(gl_platform_universe\.governance_report:', '(governance_report:'),
+            (r'\(\s*gl-platform\.governance_data:', '(governance_data:'),
+            (r'\(gl-platform\.governance_report:', '(governance_report:'),
             
             # Fix in variable assignments with dot notation
-            (r'(\s+)gl_platform_universe\.governance_events\s*=', r'\1governance_events ='),
-            (r'(\s+)gl_platform_universe\.governance_dirs\s*=', r'\1governance_dirs ='),
+            (r'(\s+)gl-platform\.governance_events\s*=', r'\1governance_events ='),
+            (r'(\s+)gl-platform\.governance_dirs\s*=', r'\1governance_dirs ='),
         ]
         
         for pattern, replacement in patterns:

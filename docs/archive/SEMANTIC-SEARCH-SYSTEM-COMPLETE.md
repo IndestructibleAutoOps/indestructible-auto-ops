@@ -9,7 +9,7 @@
 
 **Commit**: `8d967d6f`  
 **Date**: 2026-01-28  
-**Governance Charter**: GL Unified Charter v2.0.0 Activated
+**Governance Charter**: GL Unified Architecture Governance Framework v2.0.0 Activated
 
 ---
 
@@ -103,7 +103,7 @@
 - 所有檔案包含 GL governance markers
 - 類型定義包含 GL layer 與 semantic 註解
 - package.json 包含 _gl metadata
-- 符合 GL Unified Charter v2.0.0 規範
+- 符合 GL Unified Architecture Governance Framework v2.0.0 規範
 
 ### TypeScript 實作
 - 完整類型定義（`src/types/index.ts`）
@@ -231,7 +231,7 @@ engine/semantic-search-system/
 ## Git 推送狀態
 
 成功推送到 `origin/main` (commit `8d967d6f`)  
-GL Unified Charter Activated v2.0.0
+GL Unified Architecture Governance Framework Activated v2.0.0
 
 ---
 

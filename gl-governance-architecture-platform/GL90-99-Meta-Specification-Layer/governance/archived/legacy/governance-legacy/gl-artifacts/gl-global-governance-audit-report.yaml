@@ -41,7 +41,7 @@ audit_scope:
       code: "FILESYSTEM_INTEGRITY"
     - item: "GL 語意封存狀態完整性"
       code: "SEMANTIC_SEALING_INTEGRITY"
-    - item: "GL 全域治理憲章完整性"
+    - item: "GL 全域治理框架完整性"
       code: "CONSTITUTION_INTEGRITY"
     - item: "GL 全域語意索引完整性"
       code: "SEMANTIC_INDEX_INTEGRITY"
@@ -226,11 +226,11 @@ audit_results:
       - "GL90-99 seal_status = SEALED"
       - "GL-INTEGRATED-SEAL.yaml status = SEALED"
     issues: []
-  # 審計 11: 憲章完整性
+  # 審計 11: 框架完整性
   constitution_integrity:
     audit_id: "AUDIT-11"
     name: "Constitution Integrity"
-    name_zh: "憲章完整性"
+    name_zh: "框架完整性"
     status: PASS
     checked_files:
       - "GL-CONSTITUTION.yaml"
@@ -338,7 +338,7 @@ audit_conclusion:
       status: VERIFIED
     - item: "全域治理流程一致"
       status: VERIFIED
-    - item: "全域憲章一致"
+    - item: "全域框架一致"
       status: VERIFIED
     - item: "全域索引一致"
       status: VERIFIED

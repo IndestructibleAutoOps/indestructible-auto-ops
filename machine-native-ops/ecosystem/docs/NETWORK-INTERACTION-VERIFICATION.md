@@ -279,7 +279,7 @@ cat pre-deploy-report.json | jq '.overall_status'
 
 - [MNGA 治理框架](./GOVERNANCE_FRAMEWORK.md)
 - [角色執行系統](./ROLE_EXECUTION_SYSTEM.md)
-- [GL 統一憲章](../governance/GL_UNIFIED_CHARTER.md)
+- [GL 統一框架](../governance/GL_UNIFIED_FRAMEWORK.md)
 
 ## 🤝 貢獻
 

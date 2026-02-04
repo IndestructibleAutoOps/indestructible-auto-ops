@@ -3,13 +3,13 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Unified Naming Charter - 深度分析報告
 
 ## 執行摘要
@@ -77,7 +77,7 @@ governance/
 
 | 層級 | 名稱 | 語意範圍 | 狀態 |
 |------|------|----------|------|
-| GL00-09 | Strategic Layer (戰略層) | 願景、使命、戰略目標、治理憲章 | SEALED |
+| GL00-09 | Strategic Layer (戰略層) | 願景、使命、戰略目標、治理框架 | SEALED |
 | GL10-29 | Operational Layer (運營層) | 政策、流程、標準、工具、品質管理 | SEALED |
 | GL30-49 | Execution Layer (執行層) | 模板、契約、Schema、自動化產物 | SEALED |
 | GL50-59 | Observability Layer (觀測層) | 監控、指標、洞察、可觀測性 | SEALED |
@@ -169,7 +169,7 @@ governance/layers/
 │   └── integrations/
 ├── 90-meta/                            # GL90-99 元規範層
 │   ├── artifacts/
-│   ├── naming-charter/                 # 統一命名憲章
+│   ├── naming-charter/                 # 統一命名框架
 │   └── semantic-index/                 # 語意索引
 ├── architecture/                       # GL 架構定義
 │   ├── GL-CONSTITUTION.yaml

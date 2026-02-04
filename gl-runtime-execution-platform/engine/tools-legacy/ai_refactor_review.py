@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: ai-refactor-review
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -22,7 +22,7 @@ Purpose:
   - Output Markdown report for GitHub Actions PR comments and Issues
 使用方法:
   python tools/ai-refactor-review.py \
-    --gl_platform_universe.gl_platform_universe.governance-report gl_platform_universe.gl_platform_universe.governance-report.json \
+    --gl-platform.gl-platform.governance-report gl-platform.gl-platform.governance-report.json \
     --semgrep-report semgrep-report.json \
     --codeql-reports codeql-results/ \
     --output ai-refactor-suggestions.md
@@ -57,7 +57,7 @@ def load_json(path: str) -> dict:
 # AI System Prompt for Refactoring Suggestions
 # ---------------------------------------------------------------------
 AI_SYSTEM_PROMPT = """
-You are an enterprise-grade software architect, language gl_platform_universe.gl_platform_universe.governance expert, and security analyst.
+You are an enterprise-grade software architect, language gl-platform.gl-platform.governance expert, and security analyst.
 You must read:
 1. Language Governance Report (language layer errors, language boundary violations, illegal languages)
 2. Semgrep Security Report (security issues, dangerous patterns)
@@ -80,7 +80,7 @@ class RuleBasedSuggestionGenerator:
     def __init__(self):
         self.suggestions = []
     def generate_language_suggestions(self, violations: list[dict]) -> list[str]:
-        """Generate language gl_platform_universe.gl_platform_universe.governance suggestions"""
+        """Generate language gl-platform.gl-platform.governance suggestions"""
         suggestions = []
         # Group by violation type
         by_type = {}
@@ -240,7 +240,7 @@ class AIRefactorReviewer:
     """Main class for generating AI-powered refactor suggestions"""
     def __init__(self, args):
         self.args = args
-        self.gl_platform_universe.gl_platform_universe.governance_data = None
+        self.gl-platform.gl-platform.governance_data = None
         self.semgrep_data = None
         self.codeql_data = []
         # Initialize generators
@@ -249,11 +249,11 @@ class AIRefactorReviewer:
     def load_all_reports(self):
         """Load all input reports"""
         print("📥 Loading reports...")
-        # Load gl_platform_universe.gl_platform_universe.governance report
-        if self.args.gl_platform_universe.gl_platform_universe.governance_report and os.path.exists(self.args.gl_platform_universe.gl_platform_universe.governance_report):
-            self.gl_platform_universe.gl_platform_universe.governance_data = load_json(self.args.gl_platform_universe.gl_platform_universe.governance_report)
+        # Load gl-platform.gl-platform.governance report
+        if self.args.gl-platform.gl-platform.governance_report and os.path.exists(self.args.gl-platform.gl-platform.governance_report):
+            self.gl-platform.gl-platform.governance_data = load_json(self.args.gl-platform.gl-platform.governance_report)
             print(
-                f"✓ Loaded gl_platform_universe.gl_platform_universe.governance report: {len(self.gl_platform_universe.gl_platform_universe.governance_data.get('violations', []))} violations"
+                f"✓ Loaded gl-platform.gl-platform.governance report: {len(self.gl-platform.gl-platform.governance_data.get('violations', []))} violations"
             )
         # Load Semgrep report
         if self.args.semgrep_report and os.path.exists(self.args.semgrep_report):
@@ -271,8 +271,8 @@ class AIRefactorReviewer:
         """Generate summary of all findings for AI"""
         parts = []
         # Governance violations
-        if self.gl_platform_universe.gl_platform_universe.governance_data:
-            violations = self.gl_platform_universe.gl_platform_universe.governance_data.get("violations", [])
+        if self.gl-platform.gl-platform.governance_data:
+            violations = self.gl-platform.gl-platform.governance_data.get("violations", [])
             if violations:
                 parts.append(f"## Language Governance Violations ({len(violations)})\n")
                 for v in violations[:20]:  # Top 20
@@ -326,8 +326,8 @@ class AIRefactorReviewer:
         lines.append("## Executive Summary")
         lines.append("")
         total_issues = 0
-        if self.gl_platform_universe.gl_platform_universe.governance_data:
-            total_issues += len(self.gl_platform_universe.gl_platform_universe.governance_data.get("violations", []))
+        if self.gl-platform.gl-platform.governance_data:
+            total_issues += len(self.gl-platform.gl-platform.governance_data.get("violations", []))
         if self.semgrep_data:
             runs = self.semgrep_data.get("runs", [])
             if runs:
@@ -341,7 +341,7 @@ class AIRefactorReviewer:
         lines.append(
             "This report provides AI-powered and rule-based suggestions for addressing:"
         )
-        lines.append("- Language gl_platform_universe.gl_platform_universe.governance violations")
+        lines.append("- Language gl-platform.gl-platform.governance violations")
         lines.append("- Security vulnerabilities")
         lines.append("- Code quality issues")
         lines.append("")
@@ -350,8 +350,8 @@ class AIRefactorReviewer:
         # Rule-based suggestions
         lines.append("## 📋 Rule-Based Suggestions")
         lines.append("")
-        if self.gl_platform_universe.gl_platform_universe.governance_data:
-            violations = self.gl_platform_universe.gl_platform_universe.governance_data.get("violations", [])
+        if self.gl-platform.gl-platform.governance_data:
+            violations = self.gl-platform.gl-platform.governance_data.get("violations", [])
             if violations:
                 suggestions = self.rule_generator.generate_language_suggestions(
                     violations
@@ -403,7 +403,7 @@ class AIRefactorReviewer:
         lines.append("")
         lines.append("1. Migrate files to correct directories")
         lines.append("2. Convert JavaScript to TypeScript where needed")
-        lines.append("3. Address ERROR-level gl_platform_universe.gl_platform_universe.governance violations")
+        lines.append("3. Address ERROR-level gl-platform.gl-platform.governance violations")
         lines.append("4. Fix HIGH severity security issues")
         lines.append("")
         lines.append("### Long-term (Next Quarter)")
@@ -420,10 +420,10 @@ class AIRefactorReviewer:
         lines.append("")
         lines.append("- [Language Stack Policy](docs/architecture/language-stack.md)")
         lines.append(
-            "- [Language Governance Guide](docs/architecture/language-gl_platform_universe.gl_platform_universe.governance.md)"
+            "- [Language Governance Guide](docs/architecture/language-gl-platform.gl-platform.governance.md)"
         )
         lines.append(
-            "- [Exception Request Process](docs/architecture/language-gl_platform_universe.gl_platform_universe.governance.md#例外申請)"
+            "- [Exception Request Process](docs/architecture/language-gl-platform.gl-platform.governance.md#例外申請)"
         )
         lines.append("- [Language Policy Configuration](config/language-policy.yaml)")
         lines.append("")
@@ -442,7 +442,7 @@ class AIRefactorReviewer:
 def main():
     """Main function"""
     parser = argparse.ArgumentParser(description="AI-Powered Refactor Review Tool")
-    parser.add_argument("--gl_platform_universe.gl_platform_universe.governance-report", help="Path to gl_platform_universe.gl_platform_universe.governance report JSON")
+    parser.add_argument("--gl-platform.gl-platform.governance-report", help="Path to gl-platform.gl-platform.governance report JSON")
     parser.add_argument("--semgrep-report", help="Path to Semgrep SARIF report")
     parser.add_argument(
         "--codeql-reports", help="Directory containing CodeQL SARIF reports"

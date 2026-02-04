@@ -24,7 +24,7 @@ NAMING_RULES = {
     "yaml_files": {
         "pattern": r"^[a-z][a-z0-9-]*\.(yaml|yml)$",
         "description": "YAML files must use lowercase with hyphens",
-        "examples": ["governance-baseline.yaml", "meta-spec.yaml"],
+        "examples": ["governance-framework-baseline.yaml", "meta-spec.yaml"],
         "gl_binding": "GL00"
     },
     "json_files": {

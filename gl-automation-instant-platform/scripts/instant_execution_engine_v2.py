@@ -2,9 +2,9 @@
 # @GL-governed
 # @GL-layer: data
 # @GL-semantic: instant_execution_engine_v2
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 #!/usr/bin/env python3
 """

@@ -3,13 +3,13 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # Path Tools - 路徑掃描辨識與修復工具集
 
 本目錄包含用於掃描辨識路徑與修復路徑錯誤的工具。

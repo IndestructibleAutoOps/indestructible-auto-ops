@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 GL Marker Addition Script for YAML Files
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 """
 import os
 import sys
@@ -12,7 +12,7 @@ GL_HEADER = '''# @GL-governed
 # @GL-semantic: {}
 # @GL-audit-trail: {}
 # 
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 '''
 
@@ -42,7 +42,7 @@ def get_layer_from_path(file_path, workspace):
     parts = rel_path.parts
     
     if parts[0] == 'engine':
-        return 'gl_platform_universe.gl_platform_universe.governance'
+        return 'gl-platform.gl-platform.governance'
     elif parts[0] == 'file-organizer-system':
         return 'application'
     elif parts[0] == 'instant':
@@ -65,12 +65,12 @@ def get_semantic_from_path(file_path):
 
 def get_audit_trail(file_path):
     """Determine audit trail reference"""
-    return "../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json"
+    return "../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json"
 
 def process_directory(workspace):
     """Process all YAML files in workspace"""
     workspace_path = Path(workspace)
-    excluded = ['node_modules', '.next', 'dist', 'build', '.git', 'coverage', 'gl-audit-reports', 'summarized_conversations', '.github/gl_platform_universe.gl_platform_universe.governance-legacy']
+    excluded = ['node_modules', '.next', 'dist', 'build', '.git', 'coverage', 'gl-audit-reports', 'summarized_conversations', '.github/gl-platform.gl-platform.governance-legacy']
     
     files_processed = 0
     files_modified = 0

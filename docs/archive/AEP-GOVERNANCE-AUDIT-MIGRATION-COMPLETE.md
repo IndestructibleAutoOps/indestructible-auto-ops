@@ -3,13 +3,13 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # AEP Governance Audit Migration Complete
 
 ## Summary
@@ -49,7 +49,7 @@ Successfully migrated all AEP Governance Audit artifacts from root `aep-governan
 ## Commit
 - `90adcb38` - AEP Governance Audit 遷移完成
 
-## GL Unified Charter Status
+## GL Unified Architecture Governance Framework Status
 - ✅ Directory Structure: COMPLIANT
 - ✅ Artifact Migration: COMPLETE
 - ✅ Tool Integration: COMPLETE

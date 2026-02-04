@@ -188,11 +188,11 @@ GL00-09_templates:
         severity: "warning"
       - rule: "key_result.target must be greater than key_result.baseline"
         severity: "error"
-  # 治理憲章模板
+  # 治理框架模板
   governance_charter:
     kind: "GovernanceCharter"
-    description: "治理憲章"
-    description_zh: "治理憲章"
+    description: "治理框架"
+    description_zh: "治理框架"
     layer: "GL00-09"
     template: |
       apiVersion: governance.machinenativeops.io/v2

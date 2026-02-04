@@ -3,19 +3,19 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Hooks Migration Complete
 
 ## Summary
@@ -44,7 +44,7 @@ Successfully removed the legacy `gl-hooks/` directory. Hook functionality is alr
 ## Commit
 - `f4741b1b` - GL Hooks 遷移完成
 
-## GL Unified Charter Status
+## GL Unified Architecture Governance Framework Status
 - ✅ Directory Structure: COMPLIANT
 - ✅ Legacy Removal: COMPLETE
 - ✅ Hook Integration: VERIFIED

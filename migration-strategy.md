@@ -2,16 +2,16 @@
 
 ## 當前狀態
 - 已創建新的8層GL架構目錄
-- 舊目錄：gl-platform-universe, gl-runtime-platform, gl-semantic-core-platform
+- 舊目錄：gl-platform, gl-runtime-platform, gl-semantic-core-platform
 - 業務系統目錄：elasticsearch-search-system, file-organizer-system, esync-platform, quantum-platform
 
 ## 遷移策略
 
-### 1. 治理文件遷移（gl-platform-universe → gl-enterprise-architecture）
+### 1. 治理文件遷移（gl-platform → gl-enterprise-architecture）
 ```bash
 # 遷移治理內容到新架構
-mv gl-platform-universe/governance gl-enterprise-architecture/
-mv gl-platform-universe/governance gl-meta-specifications/
+mv gl-platform/governance gl-enterprise-architecture/
+mv gl-platform/governance gl-meta-specifications/
 ```
 
 ### 2. 平台遷移到 gl-platform-services

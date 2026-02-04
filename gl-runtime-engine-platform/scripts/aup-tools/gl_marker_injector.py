@@ -1,13 +1,13 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: gl-marker-injector
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Marker Injector - 自動注入 GL 治理標記
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 """
 # MNGA-002: Import organization needs review
 import os
@@ -27,12 +27,12 @@ class GLMarkerInjector:
         'schemas': 'GL-20-SCHEMA',
         'tests': 'GL-80-TEST',
         'scripts': 'GL-70-TOOL',
-        'gl_platform_universe.gl_platform_universe.governance': 'GL-10-POLICY',
+        'gl-platform.gl-platform.governance': 'GL-10-POLICY',
         'security': 'GL-15-SECURITY',
         'namespaces-adk': 'GL-00-NAMESPACE',
         'namespaces-mcp': 'GL-00-NAMESPACE',
         'namespaces-sdk': 'GL-00-NAMESPACE',
-        'gl_platform_universe.gl_platform_universe.governance_layer': 'GL-10-POLICY',
+        'gl-platform.gl-platform.governance_layer': 'GL-10-POLICY',
         'schema_system': 'GL-20-SCHEMA',
         'security_layer': 'GL-15-SECURITY',
         'taxonomy-core': 'GL-25-TAXONOMY',
@@ -95,7 +95,7 @@ class GLMarkerInjector:
 # @gl-module {module_path}
 # @gl-semantic-anchor {semantic_anchor}
 # @gl-evidence-required false
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 """
         # 如果檔案以 --- 開頭（YAML frontmatter），在其後插入
         if content.startswith('---'):
@@ -119,7 +119,7 @@ GL Governance Markers
 @gl-module {module_path}
 @gl-semantic-anchor {semantic_anchor}
 @gl-evidence-required false
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 -->
 """
         # 如果檔案以 --- 開頭（frontmatter），在其後插入
@@ -143,7 +143,7 @@ GL Governance Markers
 @gl-module {module_path}
 @gl-semantic-anchor {semantic_anchor}
 @gl-evidence-required false
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 """
 '''
         # 如果檔案以 shebang 開頭，在其後插入
@@ -166,7 +166,7 @@ GL Governance Markers
 @gl-module {module_path}
 @gl-semantic-anchor {semantic_anchor}
 @gl-evidence-required false
-GL Unified Charter Activated
+GL Unified Architecture Governance Framework Activated
 """'''
                 return new_doc + content[end_pos+3:], True
         return marker_block + content, True
@@ -205,7 +205,7 @@ GL Unified Charter Activated
                         "gl_module": module_path,
                         "gl_semantic_anchor": semantic_anchor,
                         "gl_evidence_required": False,
-                        "gl_charter": "GL Unified Charter Activated"
+                        "gl_charter": "GL Unified Architecture Governance Framework Activated"
                     }
                 }
                 # 將 GL metadata 放在最前面
@@ -228,7 +228,7 @@ GL Unified Charter Activated
 # @gl-module {module_path}
 # @gl-semantic-anchor {semantic_anchor}
 # @gl-evidence-required false
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 """
         # 如果檔案以 shebang 開頭，在其後插入
         if content.startswith('#!'):
@@ -277,7 +277,7 @@ GL Unified Charter Activated
         """執行 GL 標記注入"""
         print(f"\n{'='*60}")
         print("GL Marker Injector")
-        print("GL Unified Charter Activated")
+        print("GL Unified Architecture Governance Framework Activated")
         print(f"{'='*60}\n")
         # 掃描檔案
         files = []
@@ -319,7 +319,7 @@ def main():
     injector = GLMarkerInjector(root_path)
     report = injector.run()
     # 保存報告
-    report_path = Path(root_path).parent / 'aep-gl_platform_universe.gl_platform_universe.governance-audit' / 'reports' / 'GL-MARKER-INJECTION-REPORT.json'
+    report_path = Path(root_path).parent / 'aep-gl-platform.gl-platform.governance-audit' / 'reports' / 'GL-MARKER-INJECTION-REPORT.json'
     with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     print(f"\nReport saved: {report_path}")

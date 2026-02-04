@@ -208,7 +208,7 @@ npm run qr -- sample
 - `@GL-audit-trail`
 
 ### 合規狀態
-- ✅ GL Unified Charter Activated
+- ✅ GL Unified Architecture Governance Framework Activated
 - ✅ 符合 GL70-89 層級規範
 - ✅ 包含完整的審計追蹤
 

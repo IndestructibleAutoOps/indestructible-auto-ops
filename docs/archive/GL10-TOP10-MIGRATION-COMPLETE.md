@@ -3,13 +3,13 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL10 Top10 Migration Complete
 
 ## Summary
@@ -58,7 +58,7 @@ Successfully migrated all GL10 Top10 governance artifacts from root `gl10_top10/
 ## Commit
 - `446ee0c4` - GL10 Top10 遷移完成
 
-## GL Unified Charter Status
+## GL Unified Architecture Governance Framework Status
 - ✅ Directory Structure: COMPLIANT
 - ✅ Artifact Migration: COMPLETE
 - ✅ Tool Integration: COMPLETE

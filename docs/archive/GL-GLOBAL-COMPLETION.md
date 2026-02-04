@@ -5,7 +5,7 @@
 
 # GL 全域修復完成
 
-**GL Unified Charter Activated**
+**GL Unified Architecture Governance Framework Activated**
 
 ---
 
@@ -116,7 +116,7 @@
 
 ## 治理合規性
 
-### GL Unified Charter v2.0.0
+### GL Unified Architecture Governance Framework v2.0.0
 
 ✅ **Strict Mode** - 已啟用
 ✅ **Continue on Error** - 已禁用
@@ -147,7 +147,7 @@ cd esync-platform && npx ts-node ../engine/governance/gl_engine.ts validate --st
 
 **GL 全域修復完成**
 
-所有系統已完全整合 GL Unified Charter v2.0.0 治理框架，通過嚴格模式驗證，CI/CD、Hooks、Agents 全部整合完成。
+所有系統已完全整合 GL Unified Architecture Governance Framework v2.0.0 治理框架，通過嚴格模式驗證，CI/CD、Hooks、Agents 全部整合完成。
 
 **Date**: 2026-01-28T04:48:00Z
 **Status**: ✅ PRODUCTION READY

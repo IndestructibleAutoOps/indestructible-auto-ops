@@ -25,7 +25,7 @@
 
 | 當前命名 | 專業化命名 | 說明 |
 |---------|-----------|------|
-| gl-platform-universe | gl-enterprise-architecture | 企業級架構 |
+| gl-platform | gl-enterprise-architecture | 企業級架構 |
 | gl-runtime-platform | gl-execution-runtime | 執行運行時 |
 | constitution | framework | 框架（更準確） |
 | charter | specification | 規範（更準確） |

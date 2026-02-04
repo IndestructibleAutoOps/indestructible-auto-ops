@@ -34,7 +34,7 @@ MachineNativeOps項目已成功從分散式結構重建為標準化的8層GL企�
 ### 3. 文件遷移完成 ✅
 
 #### 治理文件
-- gl-platform-universe → gl-enterprise-architecture
+- gl-platform → gl-enterprise-architecture
 - 完整的治理框架、規範文檔和命名治理系統
 
 #### 業務系統分類
@@ -55,7 +55,7 @@ MachineNativeOps項目已成功從分散式結構重建為標準化的8層GL企�
 ### 4. GL標記更新 ✅
 
 成功更新了 **2479個文件** 的GL標記：
-- 路徑映射：gl-platform-universe → gl-enterprise-architecture
+- 路徑映射：gl-platform → gl-enterprise-architecture
 - 路徑映射：gl-runtime-platform → gl-execution-runtime
 - 路徑映射：gl-semantic-core-platform → gl-platform-services
 

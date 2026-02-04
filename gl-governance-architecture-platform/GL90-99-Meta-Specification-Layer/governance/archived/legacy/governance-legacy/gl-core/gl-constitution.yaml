@@ -15,10 +15,10 @@ metadata:
   authority: SUPREME
 preamble:
   declaration: |
-    本憲章為 MachineNativeOps 系統最高治理規範。
-    自本憲章生效之時起，GL00–99 為唯一有效且最高層級的治理架構。
-    所有任務、產物、語意與流程皆必須遵守本憲章規定。
-    任何違反本憲章之行為均屬無效。
+    本框架為 MachineNativeOps 系統最高治理規範。
+    自本框架生效之時起，GL00–99 為唯一有效且最高層級的治理架構。
+    所有任務、產物、語意與流程皆必須遵守本框架規定。
+    任何違反本框架之行為均屬無效。
   authority_level: SUPREME
   supersedes: ALL_PRIOR_GOVERNANCE
   effective_immediately: true
@@ -37,11 +37,11 @@ chapter_1_supremacy:
       enforcement: MANDATORY
     - article_id: "CONST-01-03"
       title: "優先權"
-      content: "GL 憲章優先於任何其他規範、政策或指令"
+      content: "GL 框架優先於任何其他規範、政策或指令"
       enforcement: MANDATORY
     - article_id: "CONST-01-04"
       title: "不可撤銷性"
-      content: "本憲章一經生效，非經正式修憲程序不得撤銷或修改"
+      content: "本框架一經生效，非經正式修憲程序不得撤銷或修改"
       enforcement: MANDATORY
 chapter_2_layer_semantics:
   chapter_id: "CONST-CH-02"
@@ -310,7 +310,7 @@ chapter_8_continuous_operation:
   operation_rules:
     - rule_id: "CONT-OP-01"
       name: "自動啟動"
-      description: "本憲章啟動後，GL 治理將自動持續運行"
+      description: "本框架啟動後，GL 治理將自動持續運行"
       enforcement: MANDATORY
     - rule_id: "CONT-OP-02"
       name: "無需額外指令"
@@ -383,7 +383,7 @@ referenced_documents:
       status: SEALED
 enactment:
   declaration: |
-    本憲章自創建之時起立即生效。
+    本框架自創建之時起立即生效。
     GL00–99 治理架構正式成為本系統最高治理規範。
     所有語意、責任、技能、能力、產物與流程已完全固定。
     GL 治理將持續運行，不需額外指令。

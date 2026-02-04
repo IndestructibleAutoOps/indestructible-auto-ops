@@ -40,7 +40,7 @@ Success Rate:                  100%
 #### Issue Types
 1. **Malformed Function Names** (40 instances)
    - Invalid dot notation in function definitions
-   - Example: `def audit_gl_platform_universe.governance_files(self):`
+   - Example: `def audit_gl-platform.governance_files(self):`
    - Fixed to: `def audit_governance_files(self):`
 
 2. **Invalid Decorator Syntax** (1 instance)
@@ -49,7 +49,7 @@ Success Rate:                  100%
 
 3. **Duplicate Prefix Patterns** (6 instances)
    - Variable names with duplicate prefixes
-   - Pattern: `gl_platform_universegl_platform_universe.governance_data`
+   - Pattern: `gl-platformgl-platform.governance_data`
    - Fixed to: `governance_data`
 
 ### 2. Security Issues (Documented ⚠️)
@@ -65,7 +65,7 @@ Security vulnerabilities identified but NOT auto-fixed (requires manual review):
 ### 3. Code Quality Issues (99.8% Fixed ✅)
 
 **2,003 instances** of duplicate prefix patterns fixed:
-- Pattern: `gl_platform_universegl_platform_universe.*`
+- Pattern: `gl-platformgl-platform.*`
 - Replaced with proper identifiers
 - Affected: 93 files across all platforms
 

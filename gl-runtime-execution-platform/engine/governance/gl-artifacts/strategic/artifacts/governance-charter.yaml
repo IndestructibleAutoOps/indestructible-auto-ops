@@ -3,7 +3,7 @@
 # @GL-semantic: governance-charter
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 # 
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 # =============================================================================
 # GL00-09 Strategic Layer - Governance Charter
@@ -38,13 +38,13 @@ spec:
     - name: "持續改進"
       description: "透過回饋機制持續優化"
   charter:
-    title: "MachineNativeOps 治理憲章"
+    title: "MachineNativeOps 治理框架"
     title_en: "MachineNativeOps Governance Charter"
     effective_date: "2025-01-01"
     version: "1.0.0"
     preamble: |
-      本憲章定義MachineNativeOps組織的治理架構、原則、角色與責任，
-      確保組織以透明、高效、可追溯的方式運作。本憲章適用於所有
+      本框架定義MachineNativeOps組織的治理架構、原則、角色與責任，
+      確保組織以透明、高效、可追溯的方式運作。本框架適用於所有
       GL（Governance Layers）層級的治理活動。
   governance_principles:
     - principle: "透明度優先"
@@ -100,7 +100,7 @@ spec:
         responsibilities:
           - "組織願景與使命定義"
           - "戰略目標制定（OKR）"
-          - "治理憲章維護"
+          - "治理框架維護"
           - "重大決策審批"
           - "資源分配決策"
         decision_authority: "highest"
@@ -177,7 +177,7 @@ spec:
         name_zh: "治理委員會"
         description: "最高治理決策機構"
         responsibilities:
-          - "審批治理憲章變更"
+          - "審批治理框架變更"
           - "審批重大戰略決策"
           - "監督治理執行情況"
           - "解決跨層級爭議"

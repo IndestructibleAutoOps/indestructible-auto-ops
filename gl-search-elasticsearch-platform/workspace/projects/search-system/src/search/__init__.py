@@ -2,9 +2,9 @@
 #  @GL-governed
 #  @GL-layer: search
 #  @GL-semantic: __init__
-#  @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+#  @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 # 
-#  GL Unified Charter Activated
+#  GL Unified Architecture Governance Framework Activated
 # /
 """Search Services Package"""
 from .full_text_search import FullTextSearch

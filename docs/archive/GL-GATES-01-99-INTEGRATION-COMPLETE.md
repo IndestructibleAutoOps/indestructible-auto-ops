@@ -3,18 +3,18 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Gates-01-99 Integration Complete
 
 ## Overview
 
-The Intelligent-Hyperautomation Pipeline Gate (Gates-01-99) system has been successfully integrated into the MachineNativeOps repository following GL Unified Charter v2.0.0 governance standards.
+The Intelligent-Hyperautomation Pipeline Gate (Gates-01-99) system has been successfully integrated into the MachineNativeOps repository following GL Unified Architecture Governance Framework v2.0.0 governance standards.
 
 ## Implementation Summary
 
@@ -246,16 +246,16 @@ The Gates-01-99 system is production-ready with:
 5. Integrate with additional scanning tools
 6. Add custom compliance policies
 
-## GL Unified Charter Status
+## GL Unified Architecture Governance Framework Status
 
 **Status**: ✅ ACTIVATED
 **Version**: 2.0.0
 **Compliance**: 100%
 **Readiness**: PRODUCTION READY
 
-The Gates-01-99 system fully complies with GL Unified Charter v2.0.0 and is integrated into the main MachineNativeOps workflow.
+The Gates-01-99 system fully complies with GL Unified Architecture Governance Framework v2.0.0 and is integrated into the main MachineNativeOps workflow.
 
 ---
 
 *Generated: 2025-01-28*
-*GL Unified Charter v2.0.0*
+*GL Unified Architecture Governance Framework v2.0.0*

@@ -147,7 +147,7 @@ class CodeScanningAnalyzer:
         
         for i, line in enumerate(lines, 1):
             # Check for malformed identifiers (duplicate prefixes)
-            if 'gl_platform_universegl_platform_universe' in line:
+            if 'gl-platformgl-platform' in line:
                 self.results["code_quality_issues"].append({
                     "file": filepath,
                     "line": i,

@@ -3,13 +3,13 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # 🏝️ Island AI - Where AI Engineers Thrive
 
 <div align="center">
@@ -323,7 +323,7 @@ ROI：+1.8%（第一年）→ +42.5%（持續收益）
 
 | 文檔 | 說明 |
 |------|------|
-| [治理概覽](governance/29-docs/overview.md) | 十階段管道、Schema、AI 憲章 |
+| [治理概覽](governance/29-docs/overview.md) | 十階段管道、Schema、AI 框架 |
 | [L2-L4 決策模型](governance/29-docs/decision_levels.md) | 分層決策詳解 |
 | [L0 治理政策](governance/29-docs/l0_policy.md) | 為何移除 L0 與未來規劃 |
 | [SLSA 溯源](governance/29-docs/slsa.md) | 供應鏈安全 |

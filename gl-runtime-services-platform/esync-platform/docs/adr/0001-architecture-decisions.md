@@ -7,7 +7,7 @@ ESync Platform Core Architecture Decisions
 Accepted
 
 ## Context
-The ESync Platform requires a robust, scalable, and governable architecture to support enterprise-grade data synchronization across multiple sources and destinations. The platform must integrate with the GL Unified Charter v5.0 and implement comprehensive governance, security, and observability features.
+The ESync Platform requires a robust, scalable, and governable architecture to support enterprise-grade data synchronization across multiple sources and destinations. The platform must integrate with the GL Unified Architecture Governance Framework v5.0 and implement comprehensive governance, security, and observability features.
 
 Key requirements:
 1. Support for multiple data sources (GitHub, MySQL, PostgreSQL, S3, Kafka)
@@ -67,7 +67,7 @@ Key requirements:
 - Need schema evolution strategy
 
 ### 004: Governance Integration
-**Decision**: Integrate GL Unified Charter v5.0 governance policies directly into the platform.
+**Decision**: Integrate GL Unified Architecture Governance Framework v5.0 governance policies directly into the platform.
 
 **Rationale**:
 - Ensure compliance from the ground up
@@ -159,7 +159,7 @@ Key requirements:
 - **Nomad**: Rejected due to smaller ecosystem
 
 ## References
-- [GL Unified Charter v5.0](../../GOVERNANCE.md)
+- [GL Unified Architecture Governance Framework v5.0](../../GOVERNANCE.md)
 - [Architecture Documentation](architecture.md)
 - [Security Documentation](SECURITY.md)
 

@@ -12,9 +12,9 @@ PYTHON_MARKER = """# @GL-governed
 # @GL-semantic: {semantic}
 # @GL-audit-trail: {audit_path}
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """
 
@@ -23,9 +23,9 @@ YAML_MARKER = """# @GL-governed
 # @GL-semantic: {semantic}
 # @GL-audit-trail: {audit_path}
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """
 
@@ -130,7 +130,7 @@ def process_files(scan_results_path):
         semantic = item['semantic_type']
         
         # 設定審計路徑
-        audit_path = f"gl-platform-universe/governance/audit-trails/{layer.replace('-', '_')}-audit.json"
+        audit_path = f"gl-platform/governance/audit-trails/{layer.replace('-', '_')}-audit.json"
         
         # 添加標記
         success, message = add_markers(file_path, layer, semantic, audit_path)

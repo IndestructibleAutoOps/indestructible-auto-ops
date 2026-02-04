@@ -1,13 +1,13 @@
 # 命名治理分析任务
 
-## 任务 1: 分析 gl-platform-universe/governance/naming-governance 四层结构
+## 任务 1: 分析 gl-platform/governance/naming-governance 四层结构
 
 ### 目标
 分析命名治理目录的四层结构，理解其组织架构和职责划分。
 
 ### 四层结构概览
 ```
-gl-platform-universe/governance/naming-governance/
+gl-platform/governance/naming-governance/
 ├── contracts/          # 第1层：契约层
 ├── registry/           # 第2层：注册表层
 ├── policies/           # 第3层：策略层
@@ -63,8 +63,8 @@ gl-platform-universe/governance/naming-governance/
 #### 3. 平台层级
 - `observability/alerts/prometheus-rules/naming-convention-alerts.yaml`
 - `observability/dashboards/naming-compliance.json`
-- `gl-platform-universe/contracts/unified-naming-governance-contract.yaml`
-- `gl-platform-universe/governance/naming-governance/contracts/naming-conventions.yaml`
+- `gl-platform/contracts/unified-naming-governance-contract.yaml`
+- `gl-platform/governance/naming-governance/contracts/naming-conventions.yaml`
 
 ### 下一步行动
 1. 读取并分析所有命名相关文件

@@ -3,10 +3,10 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # AEP Engine - Governance & Audit Web Application
 
-> GL Layer: GL-70-PRESENTATION | Semantic Anchor: GL-70-PRESENTATION-WEB | GL Unified Charter Activated
+> GL Layer: GL-70-PRESENTATION | Semantic Anchor: GL-70-PRESENTATION-WEB | GL Unified Architecture Governance Framework Activated
 
 一個零配置、開箱即用的 Web 應用，用於 AEP Engine 治理與稽核。
 
@@ -167,4 +167,4 @@ MIT
 
 **版本**: 1.0.0  
 **最後更新**: 2026-01-26  
-**GL Unified Charter Activated**
+**GL Unified Architecture Governance Framework Activated**

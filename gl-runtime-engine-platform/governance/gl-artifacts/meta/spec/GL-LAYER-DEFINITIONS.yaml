@@ -3,7 +3,7 @@
 # @GL-semantic: GL-LAYER-DEFINITIONS
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 # 
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 apiVersion: governance.machinenativeops.io/v1
 kind: GLLayerDefinitions
@@ -73,4 +73,4 @@ layer_definitions:
         name: "Accelerators"
         path: "workspace/src/gpu/accelerators"
         semantic_urn: "urn:machinenativeops:gl:gpu:accelerators:1.0.0"
-activation_status: "GL Unified Charter Activated"
+activation_status: "GL Unified Architecture Governance Framework Activated"

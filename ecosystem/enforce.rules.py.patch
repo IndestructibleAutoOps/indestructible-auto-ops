@@ -1,0 +1,139 @@
+# ecosystem/enforce.rules.py 修正補丁
+# 修復報告生成強制規格違規問題
+
+# ============================================================================
+# 新增方法（新增在 EnforcementCoordinator 類中）
+# ============================================================================
+
+def _print_report_header(self):
+    """輸出報告強制欄位（規格 #1）"""
+    print("\n" + "=" * 70)
+    print("Layer: Operational (Evidence Generation)")
+    print("Era: 1 (Evidence-Native Bootstrap)")
+    print("Semantic Closure: NO (Evidence layer only, governance not closed)")
+    print("=" * 70 + "\n")
+
+def _print_history_disclaimer(self):
+    """輸出歷史完整性聲明（規格 #4）"""
+    print("\n" + "=" * 70)
+    print("⚠️ 歷史完整性聲明")
+    print("=" * 70)
+    print("- Era-0 歷史沒有完整的證據鏈，只能部分重建")
+    print("- Era-1 是本系統第一個具備完整證據鏈的時期，仍在演化中")
+    print("- 治理閉環、不可變核心、完整 MNGA 合規「尚未完成」")
+    print("=" * 70 + "\n")
+
+def _print_pending_governance_section(self):
+    """輸出尚未完成的治理面（規格 #6）"""
+    print("\n" + "=" * 70)
+    print("🚧 尚未完成的治理面（Era-1 現狀）")
+    print("=" * 70)
+    print("\n### ❌ 尚未建立")
+    print("- Era 封存流程（Era Sealing Protocol）")
+    print("- Core hash 封存（core-hash.json 標記為 SEALED）")
+    print("- Semantic Distillation 流程")
+    print("- v1.0.0 抽離與版本管理")
+    print("\n### ⏳ 進行中")
+    print("- Semantic Closure 定義與驗證")
+    print("- Immutable Core 邊界確定")
+    print("- 完整 Lineage 重建與驗證")
+    print("\n### ✅ 已完成（Era-1）")
+    print("- Evidence Generation Layer 啟動")
+    print("- Event Stream 基礎設施")
+    print("- SHA256 完整性保護")
+    print("- Step-by-Step 執行軌跡")
+    print("=" * 70 + "\n")
+
+def _print_era_1_conclusion(self):
+    """輸出 Era-1 結論（規格 #5）"""
+    print("\n" + "=" * 70)
+    print("🎯 結論")
+    print("=" * 70)
+    print("本次變更屬於 Evidence-Native Bootstrap，而非完整治理閉環。")
+    print("目前僅在 Operational Layer 達成穩定，Governance Layer 仍在建構中。")
+    print("未來仍需：Era 封存、核心 hash 封存、語義閉環與治理一致性驗證。")
+    print("=" * 70 + "\n")
+
+# ============================================================================
+# 修改 step_2_local_reasoning() 方法（Line 596）
+# ============================================================================
+
+# 在 step_2_local_reasoning() 方法中：
+# 找到這段代碼（Line 618-625）：
+#     print(f"   ✅ UGS: {completeness['ugs']}")
+#     print(f"   ✅ Meta-Spec: {completeness['meta_spec']}")
+#     print(f"   ✅ Engines: {completeness['engines']}")
+#     print(f"   ✅ Enforcement Rules: {completeness['enforcement_rules']}")
+
+# 修改為：
+    print(f"   ✅ UGS: {completeness['ugs']}")
+    print(f"   ✅ Meta-Spec: {completeness['meta_spec']}")
+    print(f"   ⏸️  Engines: PARTIAL - Core engines present, validation incomplete")
+    print(f"   ✅ Enforcement Rules: {completeness['enforcement_rules']}")
+
+# 找到這段代碼（Line 636-638）：
+#     gaps = []
+#     if not gaps:
+#         print("   ✅ No gaps found")
+
+# 修改為：
+    gaps = [
+        "Evidence verification logic: MISSING",
+        "Governance closure: NOT DEFINED"
+    ]
+    if gaps:
+        print("   ⚠️  Gaps found:")
+        for gap in gaps:
+            print(f"      - {gap}")
+
+# 找到這段代碼（Line 642-644）：
+#     risks = []
+#     if not risks:
+#         print("   ✅ No risks detected")
+
+# 修改為：
+    risks = [
+        "Evidence credibility risk: Present (historical)",
+        "Governance completeness risk: Present"
+    ]
+    if risks:
+        print("   ⚠️  Risks detected:")
+        for risk in risks:
+            print(f"      - {risk}")
+
+# ============================================================================
+# 修改 step_10_loop_back() 方法（Line 1229）
+# ============================================================================
+
+# 在 step_10_loop_back() 方法中：
+# 找到這段代碼（Line 1280-1283）：
+#     print(f"\n✅ Governance Closed Loop Established")
+#     print(f"\n🎉 The 10-step closed-loop governance cycle is now active!")
+#     print(f"   Ready to loop back to Step 1 for perpetual governance...")
+
+# 修改為：
+    print(f"\n✅ Era-1 Evidence-Native Bootstrap 階段完成")
+    print(f"   系統已準備進入持續治理循環")
+
+# ============================================================================
+# 修改 run_full_cycle() 方法（Line 1309）
+# ============================================================================
+
+# 在 run_full_cycle() 方法中：
+
+# 1. 在方法開頭（Line 1313 之前）新增：
+    self._print_report_header()
+
+# 2. 找到這段代碼（Line 1362）：
+#             print("\n" + "="*70)
+#             print("✅ 10-Step Closed-Loop Governance Cycle Complete")
+
+# 修改為：
+            print("\n" + "="*70)
+            print("✅ 10-Step Closed-Loop Governance Cycle - Era-1 Bootstrap Complete")
+
+# 3. 在 result_10 之後（Line 1360）、總結之前新增：
+            # 在 Step 10 之後輸出額外區塊
+            self._print_pending_governance_section()
+            self._print_history_disclaimer()
+            self._print_era_1_conclusion()

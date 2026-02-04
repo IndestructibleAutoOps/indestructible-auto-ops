@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: test_gl_reporter
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -149,19 +149,19 @@ class TestGLReporter:
     def setup_test_artifacts(self, tmp_path):
         """Setup test artifacts."""
         import yaml
-        # Create gl_platform_universe.gl_platform_universe.governance directory structure
-        gl_platform_universe.gl_platform_universe.governance_path = tmp_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance' / 'layers'
+        # Create gl-platform.gl-platform.governance directory structure
+        gl-platform.gl-platform.governance_path = tmp_path / 'workspace' / 'gl-platform.gl-platform.governance' / 'layers'
         # GL00-09 artifacts
-        strategic_path = gl_platform_universe.gl_platform_universe.governance_path / 'GL00-09-strategic' / 'artifacts'
+        strategic_path = gl-platform.gl-platform.governance_path / 'GL00-09-strategic' / 'artifacts'
         strategic_path.mkdir(parents=True)
         vision = {
-            'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.gl-platform.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'vision',
                 'version': '1.0.0',
                 'created_at': datetime.now().isoformat(),
-                'owner': 'gl_platform_universe.gl_platform_universe.governance-team',
+                'owner': 'gl-platform.gl-platform.governance-team',
                 'layer': 'GL00-09'
             },
             'spec': {}
@@ -169,10 +169,10 @@ class TestGLReporter:
         with open(strategic_path / 'vision.yaml', 'w') as f:
             yaml.dump(vision, f)
         # GL10-29 artifacts
-        operational_path = gl_platform_universe.gl_platform_universe.governance_path / 'GL10-29-operational' / 'artifacts'
+        operational_path = gl-platform.gl-platform.governance_path / 'GL10-29-operational' / 'artifacts'
         operational_path.mkdir(parents=True)
         plan = {
-            'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.gl-platform.governance.machinenativeops.io/v2',
             'kind': 'OperationalPlan',
             'metadata': {
                 'name': 'plan',
@@ -187,7 +187,7 @@ class TestGLReporter:
             yaml.dump(plan, f)
         return tmp_path
     def test_collect_metrics(self, setup_test_artifacts):
-        """Test collecting gl_platform_universe.gl_platform_universe.governance metrics."""
+        """Test collecting gl-platform.gl-platform.governance metrics."""
         reporter = GLReporter(workspace_path=str(setup_test_artifacts))
         metrics = reporter.collect_metrics()
         assert metrics.total_artifacts >= 2
@@ -300,7 +300,7 @@ class TestGLReporterDashboard:
     def setup_full_environment(self, tmp_path):
         """Setup full test environment with multiple layers."""
         import yaml
-        gl_platform_universe.gl_platform_universe.governance_path = tmp_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance' / 'layers'
+        gl-platform.gl-platform.governance_path = tmp_path / 'workspace' / 'gl-platform.gl-platform.governance' / 'layers'
         layers = [
             ('GL00-09-strategic', 'GL00-09', 'VisionStatement'),
             ('GL10-29-operational', 'GL10-29', 'OperationalPlan'),
@@ -308,10 +308,10 @@ class TestGLReporterDashboard:
             ('GL50-59-observability', 'GL50-59', 'MetricsDefinition'),
         ]
         for layer_dir, layer_id, kind in layers:
-            layer_path = gl_platform_universe.gl_platform_universe.governance_path / layer_dir / 'artifacts'
+            layer_path = gl-platform.gl-platform.governance_path / layer_dir / 'artifacts'
             layer_path.mkdir(parents=True)
             artifact = {
-                'apiVersion': 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2',
+                'apiVersion': 'gl-platform.gl-platform.governance.machinenativeops.io/v2',
                 'kind': kind,
                 'metadata': {
                     'name': f'{layer_id.lower()}-artifact',

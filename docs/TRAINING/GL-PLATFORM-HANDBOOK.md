@@ -629,7 +629,7 @@ kubectl port-forward svc/prometheus-operated 9090:9090 -n gl-platform
 
 ### Documentation
 
-- [GL Unified Charter v5.0](./GL-UNIFIED-CHARTER.md)
+- [GL Unified Architecture Governance Framework v5.0](./GL-UNIFIED-CHARTER.md)
 - [Platform Migration Guide](./MIGRATION/PLATFORM-MIGRATION-GUIDE.md)
 - [Naming Migration Playbook](./RUNBOOKS/naming-migration-playbook.md)
 - [Security Policies](../.config/policy/)

@@ -6,7 +6,7 @@
 
 ## Overview
 
-ESync Platform is an enterprise-grade, quantum-architected data synchronization platform designed for integrating data from multiple sources into central repositories. Built with GL Unified Charter v5.0 compliance, it provides comprehensive governance, security, and observability.
+ESync Platform is an enterprise-grade, quantum-architected data synchronization platform designed for integrating data from multiple sources into central repositories. Built with GL Unified Architecture Governance Framework v5.0 compliance, it provides comprehensive governance, security, and observability.
 
 ## 🚀 Key Features
 
@@ -225,7 +225,7 @@ This project is licensed under the MIT License - see the [LICENSE](../../LICENSE
 
 ## 🔗 Links
 
-- [GL Unified Charter v5.0](../../GOVERNANCE.md)
+- [GL Unified Architecture Governance Framework v5.0](../../GOVERNANCE.md)
 - [MachineNativeOps Repository]([EXTERNAL_URL_REMOVED])
 - [Issue Tracker]([EXTERNAL_URL_REMOVED])
 
@@ -233,6 +233,6 @@ This project is licensed under the MIT License - see the [LICENSE](../../LICENSE
 
 **Version**: 1.0.0  
 **Status**: Production Ready  
-**Governance**: Fully Integrated (GL Unified Charter v5.0)  
+**Governance**: Fully Integrated (GL Unified Architecture Governance Framework v5.0)  
 **Security**: Zero Trust, Supply Chain Secured  
 **Observability**: MELT Stack Deployed

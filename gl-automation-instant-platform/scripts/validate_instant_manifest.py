@@ -2,9 +2,9 @@
 # @GL-governed
 # @GL-layer: data
 # @GL-semantic: validate-instant-manifest
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 #!/usr/bin/env python3
 """
@@ -99,7 +99,7 @@ class InstantManifestValidator:
                 "schema_change",
                 "artifact_update",
                 "dependency_shift",
-                "gl_platform_universe.governance_violation",
+                "gl-platform.governance_violation",
                 "deployment_request",
             ]
             for event in required_events:
@@ -205,11 +205,11 @@ class InstantManifestValidator:
         else:
             details.append("❌ 缺少 metadata.commitments")
             all_passed = False
-        # 驗證 gl_platform_universe.governance
-        if "gl_platform_universe.governance" in self.manifest:
-            gl_platform_universe.governance = self.manifest["gl_platform_universe.governance"]
-            if "responsibility_matrix" in gl_platform_universe.governance:
-                matrix = gl_platform_universe.governance["responsibility_matrix"]
+        # 驗證 gl-platform.governance
+        if "gl-platform.governance" in self.manifest:
+            gl-platform.governance = self.manifest["gl-platform.governance"]
+            if "responsibility_matrix" in gl-platform.governance:
+                matrix = gl-platform.governance["responsibility_matrix"]
                 if "ai_100_percent" in matrix:
                     ai_scope = matrix["ai_100_percent"].get("scope", [])
                     expected_scope = [
@@ -231,7 +231,7 @@ class InstantManifestValidator:
                 details.append("❌ 缺少 responsibility_matrix")
                 all_passed = False
         else:
-            details.append("❌ 缺少 gl_platform_universe.governance 定義")
+            details.append("❌ 缺少 gl-platform.governance 定義")
             all_passed = False
         return ValidationResult(
             ValidationStatus.PASSED if all_passed else ValidationStatus.FAILED,

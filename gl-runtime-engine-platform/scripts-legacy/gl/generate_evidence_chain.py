@@ -1,13 +1,13 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: generate-evidence-chain
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Evidence Chain Generator
-Generates immutable evidence chains for GL gl_platform_universe.gl_platform_universe.governance
+Generates immutable evidence chains for GL gl-platform.gl-platform.governance
 """
 # MNGA-002: Import organization needs review
 import argparse
@@ -17,7 +17,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, List
 class EvidenceChainGenerator:
-    """Generate evidence chains for GL gl_platform_universe.gl_platform_universe.governance"""
+    """Generate evidence chains for GL gl-platform.gl-platform.governance"""
     def __init__(self, layer: str, output_dir: str):
         self.layer = layer
         self.output_dir = Path(output_dir)

@@ -111,7 +111,7 @@ GL Runtime Platform v4.0.0 with Auto-Repair Layer has been successfully deployed
 - **Commit Message**: feat: add version 3 auto-deploy layer with full k8s automation
 - **Push Status**: Successful
 - **Remote Sync**: Synchronized
-- **Charter Status**: GL Unified Charter Activated
+- **Charter Status**: GL Unified Architecture Governance Framework Activated
 
 ---
 

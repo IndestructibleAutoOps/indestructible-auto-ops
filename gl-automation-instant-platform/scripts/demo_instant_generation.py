@@ -2,9 +2,9 @@
 # @GL-governed
 # @GL-layer: data
 # @GL-semantic: demo_instant_generation
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 """
 Instant Generation Demo

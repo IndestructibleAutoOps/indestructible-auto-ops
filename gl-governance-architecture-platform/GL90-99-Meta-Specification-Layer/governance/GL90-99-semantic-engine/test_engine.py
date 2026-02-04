@@ -3,7 +3,7 @@
 # @GL-semantic: python-module
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 # GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
@@ -29,9 +29,9 @@ sys.path.insert(0, workspace_dir)
 
 import yaml
 
-# Import from gl_platform_universe.governance.semantic_engine package
-import gl_platform_universe.governance.semantic_engine
-from gl_platform_universe.governance.semantic_engine.gl_platform_universe.governance.semantic_engine import SemanticEngine
+# Import from gl-platform.governance.semantic_engine package
+import gl-platform.governance.semantic_engine
+from gl-platform.governance.semantic_engine.gl-platform.governance.semantic_engine import SemanticEngine
 
 
 def print_section(title):
@@ -264,4 +264,4 @@ The UnificationSpecification is now a fully functional Semantic Core Engine!
 
 
 if __name__ == "__main__":
-    test_gl_platform_universe.governance.semantic_engine()
+    test_gl-platform.governance.semantic_engine()

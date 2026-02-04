@@ -9,9 +9,9 @@
 
 This directory contains the Data Synchronization Service for the MachineNativeOps platform. The service provides comprehensive data synchronization capabilities between two systems with advanced features including conflict resolution, incremental sync, retry logic, data validation, and monitoring.
 
-## GL Unified Charter Activated
+## GL Unified Architecture Governance Framework Activated
 
-This service is governed by the GL (Governance Layers) Unified Charter and follows all governance requirements:
+This service is governed by the GL (Governance Layers) Unified Architecture Governance Framework and follows all governance requirements:
 
 - **Governance Layer**: GL90-99
 - **Charter Version**: 2.0.0

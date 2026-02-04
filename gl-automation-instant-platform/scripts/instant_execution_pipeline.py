@@ -2,9 +2,9 @@
 # @GL-governed
 # @GL-layer: data
 # @GL-semantic: instant_execution_pipeline
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 
 #!/usr/bin/env python3
 """
@@ -48,7 +48,7 @@ sys.path.insert(0, str(REPO_ROOT / "tools" / "automation" / "engines"))
 sys.path.insert(0, str(REPO_ROOT / "tests" / "automation"))
 # Import dependencies
 try:
-    from ai.gl_platform_universe.governance_engine import AIGovernanceEngine, DecisionType, RiskLevel
+    from ai.gl-platform.governance_engine import AIGovernanceEngine, DecisionType, RiskLevel
     from baseline_validation_engine import BaselineValidationEngine
     from test_framework_patterns import TestSuiteRunner
 except ImportError as e:

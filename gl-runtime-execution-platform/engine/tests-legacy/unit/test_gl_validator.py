@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
+# @GL-layer: gl-platform.governance
 # @GL-semantic: test_gl_validator
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -303,7 +303,7 @@ class TestGLValidator:
     def valid_artifact(self):
         """Create a valid artifact for testing."""
         return {
-            'apiVersion': 'gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'test-vision',
@@ -322,7 +322,7 @@ class TestGLValidator:
     def invalid_artifact(self):
         """Create an invalid artifact for testing."""
         return {
-            'apiVersion': 'gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'test-vision',
@@ -391,7 +391,7 @@ class TestGLValidator:
             custom_rules=custom_rules
         )
         artifact = {
-            'apiVersion': 'gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.governance.machinenativeops.io/v2',
             'kind': 'CustomArtifact',
             'metadata': {
                 'name': 'test',
@@ -418,21 +418,21 @@ class TestGLValidatorIntegration:
     """Integration tests for GLValidator."""
     @pytest.fixture
     def setup_governance_structure(self, tmp_path):
-        """Setup gl_platform_universe.governance directory structure."""
+        """Setup gl-platform.governance directory structure."""
         import yaml
         # Create directory structure
-        layers_path = tmp_path / 'workspace' / 'gl_platform_universe.governance' / 'layers'
+        layers_path = tmp_path / 'workspace' / 'gl-platform.governance' / 'layers'
         # GL00-09 artifacts
         strategic_path = layers_path / 'GL00-09-strategic' / 'artifacts'
         strategic_path.mkdir(parents=True)
         vision = {
-            'apiVersion': 'gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.governance.machinenativeops.io/v2',
             'kind': 'VisionStatement',
             'metadata': {
                 'name': 'vision',
                 'version': '1.0.0',
                 'created_at': datetime.now().isoformat(),
-                'owner': 'gl_platform_universe.governance-team',
+                'owner': 'gl-platform.governance-team',
                 'layer': 'GL00-09'
             },
             'spec': {
@@ -445,7 +445,7 @@ class TestGLValidatorIntegration:
         operational_path = layers_path / 'GL10-29-operational' / 'artifacts'
         operational_path.mkdir(parents=True)
         plan = {
-            'apiVersion': 'gl_platform_universe.governance.machinenativeops.io/v2',
+            'apiVersion': 'gl-platform.governance.machinenativeops.io/v2',
             'kind': 'OperationalPlan',
             'metadata': {
                 'name': 'operational-plan',

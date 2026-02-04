@@ -297,7 +297,7 @@ class GovernanceEnforcer:
 
 ### GL 架構的要求
 
-GL Unified Charter 要求：
+GL Unified Architecture Governance Framework 要求：
 - ✅ 語意閉包
 - ✅ 契約完整性
 - ✅ 拓樸一致性
@@ -452,4 +452,4 @@ GL Unified Charter 要求：
 
 **報告生成者**: SuperNinja  
 **審計時間**: 2026-02-03T03:30:00Z  
-**治理合規性**: ✅ 完全符合 GL Unified Charter
+**治理合規性**: ✅ 完全符合 GL Unified Architecture Governance Framework

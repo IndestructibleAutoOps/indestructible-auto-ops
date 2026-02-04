@@ -38,9 +38,9 @@ Each modified file now includes:
 # @GL-semantic: {SEMANTIC_TYPE}
 # @GL-audit-trail: {AUDIT_TRAIL_PATH}
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 ```
 
 ## GL Layer Distribution
@@ -82,9 +82,9 @@ Modified files were assigned to appropriate GL layers:
 # @GL-semantic: python-module
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 def semantic_engine():
     """Main semantic processing engine"""
@@ -98,9 +98,9 @@ def semantic_engine():
 // @GL-semantic: typescript-module
 // @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 //
-// GL Unified Charter Activated
-// GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-// GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+// GL Unified Architecture Governance Framework Activated
+// GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+// GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 export class MetaCognitiveEngine {
     constructor() {}
@@ -131,5 +131,5 @@ Phase 4 successfully achieved 100% GL compliance across all eligible files in th
 ---
 
 **Report Generated**: 2026-01-31
-**GL Unified Charter Status**: ACTIVATED
+**GL Unified Architecture Governance Framework Status**: ACTIVATED
 **Compliance Status**: 100% COMPLETE

@@ -615,7 +615,7 @@ class EnforcementCoordinator:
         }
         print(f"   ✅ UGS: {completeness['ugs']}")
         print(f"   ✅ Meta-Spec: {completeness['meta_spec']}")
-        print(f"   ✅ Engines: {completeness['engines']}")
+        print(f"   ⏸️  Engines: PARTIAL - Core engines present, validation incomplete")
         print(f"   ✅ Enforcement Rules: {completeness['enforcement_rules']}")
         
         # 一致性分析
@@ -631,15 +631,25 @@ class EnforcementCoordinator:
         
         # 缺口分析
         print("\n[INFO] Analyzing gaps...")
-        gaps = []
-        if not gaps:
-            print("   ✅ No gaps found")
+        gaps = [
+            "Evidence verification logic: MISSING",
+            "Governance closure: NOT DEFINED"
+        ]
+        if gaps:
+            print("   ⚠️  Gaps found:")
+            for gap in gaps:
+                print(f"      - {gap}")
         
         # 風險評估
         print("\n[INFO] Assessing risks...")
-        risks = []
-        if not risks:
-            print("   ✅ No risks detected")
+        risks = [
+            "Evidence credibility risk: Present (historical)",
+            "Governance completeness risk: Present"
+        ]
+        if risks:
+            print("   ⚠️  Risks detected:")
+            for risk in risks:
+                print(f"      - {risk}")
         
         # 生成本地缺口矩陣
         local_gap_matrix = LocalGapMatrix(
@@ -1277,9 +1287,8 @@ class EnforcementCoordinator:
         
         artifacts.append("governance_loop_config.json")
         
-        print(f"\n✅ Governance Closed Loop Established")
-        print(f"\n🔄 The 10-step closed-loop governance cycle is now active!")
-        print(f"   Ready to loop back to Step 1 for perpetual governance...")
+        print(f"\n✅ Era-1 Evidence-Native Bootstrap 階段完成")
+        
         
         execution_time = (datetime.now(timezone.utc) - start_time).total_seconds() * 1000
         
@@ -1306,6 +1315,56 @@ class EnforcementCoordinator:
     # 主執行流程
     # ========================================================================
     
+
+    
+    def _print_report_header(self):
+        """輸出報告強制欄位（規格 #1）"""
+        print("\n" + "=" * 70)
+        print("Layer: Operational (Evidence Generation)")
+        print("Era: 1 (Evidence-Native Bootstrap)")
+        print("Semantic Closure: NO (Evidence layer only, governance not closed)")
+        print("=" * 70 + "\n")
+
+    def _print_history_disclaimer(self):
+        """輸出歷史完整性聲明（規格 #4）"""
+        print("\n" + "=" * 70)
+        print("⚠️ 歷史完整性聲明")
+        print("=" * 70)
+        print("- Era-0 歷史沒有完整的證據鏈，只能部分重建")
+        print("- Era-1 是本系統第一個具備完整證據鏈的時期，仍在演化中")
+        print("- 治理閉環、不可變核心、完整 MNGA 合規「尚未完成」")
+        print("=" * 70 + "\n")
+
+    def _print_pending_governance_section(self):
+        """輸出尚未完成的治理面（規格 #6）"""
+        print("\n" + "=" * 70)
+        print("## 🚧 尚未完成的治理面（Era-1 現狀）")
+        print("=" * 70)
+        print("\n### ❌ 尚未建立")
+        print("- Era 封存流程（Era Sealing Protocol）")
+        print("- Core hash 封存（core-hash.json 標記為 SEALED）")
+        print("- Semantic Distillation 流程")
+        print("- v1.0.0 抽離與版本管理")
+        print("\n### ⏳ 進行中")
+        print("- Semantic Closure 定義與驗證")
+        print("- Immutable Core 邊界確定")
+        print("- 完整 Lineage 重建與驗證")
+        print("\n### ✅ 已完成（Era-1）")
+        print("- Evidence Generation Layer 啟動")
+        print("- Event Stream 基礎設施")
+        print("- SHA256 完整性保護")
+        print("- Step-by-Step 執行軌跡")
+        print("=" * 70 + "\n")
+
+    def _print_era_1_conclusion(self):
+        """輸出 Era-1 結論（規格 #5）"""
+        print("\n" + "=" * 70)
+        print("🎯 結論")
+        print("=" * 70)
+        print("本次變更屬於 Evidence-Native Bootstrap，而非完整治理閉環。")
+        print("目前僅在 Operational Layer 達成穩定，Governance Layer 仍在建構中。")
+        print("未來仍需：Era 封存、核心 hash 封存、語義閉環與治理一致性驗證。")
+        print("=" * 70 + "\n")
     def run_full_cycle(self) -> Dict[str, Any]:
         """
         執行完整的 10 步驟閉環治理流程
@@ -1314,6 +1373,9 @@ class EnforcementCoordinator:
         print("🚀 Immutable Core Governance Engineering Methodology v1.0")
         print("   10-Step Closed-Loop Governance Process")
         print("="*70)
+
+        # 在所有步驟之前輸出報告頭
+        self._print_report_header()
         
         start_time = datetime.now(timezone.utc)
         results = []
@@ -1362,6 +1424,11 @@ class EnforcementCoordinator:
             
             result_10 = self.step_10_loop_back()
             results.append(result_10)
+
+            # 在 Step 10 之後輸出額外區塊
+            self._print_pending_governance_section()
+            self._print_history_disclaimer()
+            self._print_era_1_conclusion()
             
             # 總結
             total_time = (datetime.now(timezone.utc) - start_time).total_seconds()
@@ -1369,7 +1436,7 @@ class EnforcementCoordinator:
             total_artifacts = sum(len(r.artifacts_generated) for r in results)
             
             print("\n" + "="*70)
-            print("✅ 10-Step Closed-Loop Governance Cycle Complete")
+            print("✅ 10-Step Closed-Loop Governance Cycle - Era-1 Bootstrap Complete")
             print("="*70)
             print(f"\n📊 Summary:")
             print(f"   - Total Steps: 10")

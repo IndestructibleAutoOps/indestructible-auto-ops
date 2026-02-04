@@ -1,15 +1,15 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: test_auto_fix_strategies
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Unit tests for Auto-Fix Bot Strategies
 Tests the auto-fix strategies defined in .auto-fix-bot.yml
 GL Layer: GL30-49 Execution Layer
-GL Unified Charter: Activated
+GL Unified Architecture Governance Framework: Activated
 """
 import sys
 import unittest

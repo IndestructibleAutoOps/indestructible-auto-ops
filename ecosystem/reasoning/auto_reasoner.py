@@ -38,7 +38,7 @@ class AutoReasoner:
                     "name": "Evidence Coverage Rule",
                     "description": "如果 evidence coverage < 90%，需要補充證據鏈",
                     "condition": "evidence_coverage < 0.90",
-                    "inference": "證據覆蓋率不足，違反 GL 統一憲章要求",
+                    "inference": "證據覆蓋率不足，違反 GL 統一框架要求",
                     "priority": "HIGH",
                     "action": "添加 [證據: path/to/file#L10-L15] 格式的證據鏈"
                 },
@@ -56,7 +56,7 @@ class AutoReasoner:
                     "name": "Boundary Violation Rule",
                     "description": "如果發現邊界違規，需要重新架構",
                     "condition": "boundary_violations > 0",
-                    "inference": "檢測到 GL 邊界違規，違反 GL 統一憲章 E0-003 規則",
+                    "inference": "檢測到 GL 邊界違規，違反 GL 統一框架 E0-003 規則",
                     "priority": "HIGH",
                     "action": "根據 boundary-reference-matrix.md 重新組織代碼結構"
                 }

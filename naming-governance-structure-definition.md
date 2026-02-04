@@ -2,7 +2,7 @@
 
 ## 三層結構定義
 
-### 第 1 層：gl-platform-universe（平台宇宙層級）
+### 第 1 層：gl-platform（平台宇宙層級）
 
 **定義**：
 GL Platform Universe 是整個治理架構的最頂層抽象，代表整個 GL 生态系統的總體框架和範圍。
@@ -22,7 +22,7 @@ GL Platform Universe 是整個治理架構的最頂層抽象，代表整個 GL �
 ### 第 2 層：governance（治理層級）
 
 **定義**：
-Governance 層級是 gl-platform-universe 下的核心治理實體，負責實施和執行平台級別的治理策略。
+Governance 層級是 gl-platform 下的核心治理實體，負責實施和執行平台級別的治理策略。
 
 **職責範圍**：
 - 政策制定和實施

@@ -1,24 +1,24 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
+# @GL-layer: gl-platform.governance
 # @GL-semantic: generate-sankey-data
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Generate Sankey Diagram Data for Language Governance Dashboard
-This script analyzes the language gl_platform_universe.governance report and generates
+This script analyzes the language gl-platform.governance report and generates
 Sankey diagram data showing language flow violations.
 Usage:
     python tools/generate-sankey-data.py
 Output:
-    gl_platform_universe.governance/sankey-data.json
+    gl-platform.governance/sankey-data.json
 """
 # MNGA-002: Import organization needs review
 import json
@@ -31,7 +31,7 @@ def get_project_root() -> Path:
     current = Path(__file__).resolve().parent
     return current.parent
 def parse_governance_report(report_path: Path) -> list[dict[str, Any]]:
-    """Parse violations from gl_platform_universe.governance report"""
+    """Parse violations from gl-platform.governance report"""
     violations = []
     if not report_path.exists():
         return violations
@@ -80,7 +80,7 @@ def determine_layer(file_path: str) -> str:
         return "L4: Services"
     elif "automation" in path_lower or "ai" in path_lower:
         return "L3: AI/Automation"
-    elif "gl_platform_universe.governance" in path_lower:
+    elif "gl-platform.governance" in path_lower:
         return "L2: Governance"
     elif "core" in path_lower:
         return "L1: Core Engine"
@@ -151,9 +151,9 @@ def aggregate_flows(violations: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def generate_sankey_data():
     """Generate Sankey diagram data"""
     project_root = get_project_root()
-    # Parse gl_platform_universe.governance report
-    report_path = project_root / "gl_platform_universe.governance" / "language-gl_platform_universe.governance-report.md"
-    violations = parse_gl_platform_universe.governance_report(report_path)
+    # Parse gl-platform.governance report
+    report_path = project_root / "gl-platform.governance" / "language-gl-platform.governance-report.md"
+    violations = parse_gl-platform.governance_report(report_path)
     # Add some example flows if no violations found
     if not violations:
         violations = [
@@ -204,7 +204,7 @@ def generate_sankey_data():
         "flows": aggregated,
     }
     # Save to file
-    output_path = project_root / "gl_platform_universe.governance" / "sankey-data.json"
+    output_path = project_root / "gl-platform.governance" / "sankey-data.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)

@@ -6,7 +6,7 @@
 
 ## 結構驗證
 
-✗ structure_checks: {'gl-platform-universe': 'EXISTS', 'gl-platform-universe/GL90-99-Meta-Specification-Layer': 'EXISTS', 'gl-platform-universe/GL90-99-Meta-Specification-Layer/governance': 'EXISTS', 'gl-platform-universe/GL90-99-Meta-Specification-Layer/governance/archived/legacy': 'EXISTS', 'gl-platform-universe/GL30-49-Execution-Layer': 'EXISTS', 'gl-platform-universe/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine': 'EXISTS', 'gl-platform-universe/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml': 'EXISTS', 'gl-platform-universe/GL90-99-Meta-Specification-Layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml': 'NOT_FOUND'}
+✗ structure_checks: {'gl-platform': 'EXISTS', 'gl-platform/GL90-99-Meta-Specification-Layer': 'EXISTS', 'gl-platform/GL90-99-Meta-Specification-Layer/governance': 'EXISTS', 'gl-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy': 'EXISTS', 'gl-platform/GL30-49-Execution-Layer': 'EXISTS', 'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine': 'EXISTS', 'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml': 'EXISTS', 'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml': 'NOT_FOUND'}
 
 ✗ naming_checks: {}
 

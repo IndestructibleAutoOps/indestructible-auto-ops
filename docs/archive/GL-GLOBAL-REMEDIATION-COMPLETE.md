@@ -6,7 +6,7 @@
 # GL 全域修復完成
 
 ## 執行摘要
-GL Unified Charter 已完全激活於 MachineNativeOps/machine-native-ops 倉庫的所有系統。
+GL Unified Architecture Governance Framework 已完全激活於 MachineNativeOps/machine-native-ops 倉庫的所有系統。
 
 ## 系統驗證結果
 - **Engine Module**: ✅ PASSED (0 violations)

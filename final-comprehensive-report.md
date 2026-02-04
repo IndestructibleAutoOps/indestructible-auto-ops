@@ -30,7 +30,7 @@ Establish a unified governance baseline across the MachineNativeOps repository b
 - **Branch**: main
 - **Total Files**: 2,026 eligible files
 - **File Types**: Python, JavaScript, TypeScript, YAML, JSON
-- **Governance Standards**: GL Unified Charter v1.0
+- **Governance Standards**: GL Unified Architecture Governance Framework v1.0
 
 ### Success Criteria
 ✅ 100% file GL marker compliance  
@@ -133,7 +133,7 @@ Establish a unified governance baseline across the MachineNativeOps repository b
 #### GL Root Structure Analysis
 Located GL Root Semantic Anchor at:
 - Primary: `engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml`
-- Reference: `gl-platform-universe/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml`
+- Reference: `gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml`
 
 #### Layer Hierarchy Validation
 - **GL00-09**: Strategic Layer
@@ -195,7 +195,7 @@ Created `add_gl_markers_v2.py` with capabilities:
 # @GL-semantic: {SEMANTIC_TYPE}
 # @GL-audit-trail: {AUDIT_TRAIL_PATH}
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # GL Root Semantic Anchor: {PATH}
 # GL Unified Naming Charter: {PATH}
 ```
@@ -352,9 +352,9 @@ Established baseline includes:
 # @GL-semantic: python-module
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 def semantic_engine():
     """Main semantic processing engine"""
@@ -368,9 +368,9 @@ def semantic_engine():
 // @GL-semantic: typescript-module
 // @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 //
-// GL Unified Charter Activated
-// GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-// GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+// GL Unified Architecture Governance Framework Activated
+// GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+// GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 export class MetaCognitiveEngine {
     constructor() {}
@@ -384,9 +384,9 @@ export class MetaCognitiveEngine {
 # @GL-semantic: config-artifact
 # @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 apiVersion: governance.machinenativeops.io/v1
 kind: GovernanceConfig
@@ -434,10 +434,10 @@ This achievement establishes MachineNativeOps as a model for governance complian
 ---
 
 **Report Status**: COMPLETE
-**GL Unified Charter**: ACTIVATED
+**GL Unified Architecture Governance Framework**: ACTIVATED
 **Compliance Status**: 100%
 **Date**: 2026-01-31
 
-**GL Unified Charter Activated**
-**All artifacts marked with 'GL Unified Charter Activated'**
+**GL Unified Architecture Governance Framework Activated**
+**All artifacts marked with 'GL Unified Architecture Governance Framework Activated'**
 **Governance Baseline Established**

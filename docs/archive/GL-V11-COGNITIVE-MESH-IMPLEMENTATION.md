@@ -247,7 +247,7 @@ Tasks are routed based on:
 
 ## Compliance & Governance
 
-- ✅ GL Unified Charter Activated
+- ✅ GL Unified Architecture Governance Framework Activated
 - ✅ GL Root Semantic Anchor Compliance
 - ✅ Governance Event Stream Integration
 - ✅ Traceability: All mesh operations logged

@@ -75,7 +75,7 @@ Pipeline Integration      ✅ PASS      管道整合器已載入（找不到 Pip
    - Semantic validation pipeline
    - Cross-layer dependencies
 
-5. **ecosystem/governance/GL-semantic-anchors/governance-baseline.json**
+5. **ecosystem/governance/GL-semantic-anchors/governance-framework-baseline.json**
    - Governance principles and enforcement levels
    - Audit framework and metrics
    - Roles and workflows
@@ -263,7 +263,7 @@ ecosystem/governance/GL-semantic-anchors/
 ├── GL20-GL49-language-behavior-domains-integration.json
 ├── GL50-GL99-format-layer-specification.json
 ├── semantic-layer-specification.json
-├── governance-baseline.json
+├── governance-framework-baseline.json
 └── README.md
 
 ecosystem/utils/

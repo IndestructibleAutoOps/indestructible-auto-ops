@@ -117,7 +117,7 @@ quantumDeployment:
 - Cosign 簽章
 
 ### 治理合規
-- GL Unified Charter v5.0
+- GL Unified Architecture Governance Framework v5.0
 - 審計追蹤和報告
 - 合規性檢查
 

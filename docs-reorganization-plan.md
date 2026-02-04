@@ -36,7 +36,7 @@
 ### 5. 計劃文檔 - 移至 docs/plans/ (8 個)
 - execution_plan.md
 - external_dependency_removal_strategy.md
-- gl-platform-universe-restructure-plan.md
+- gl-platform-restructure-plan.md
 - migration_strategy.md
 - naming_governance_analysis_task.md
 - naming_governance_structure_definition.md
@@ -90,7 +90,7 @@ mv structure_gap_analysis.md docs/analysis/
 # 移動計劃文檔
 mv execution_plan.md docs/plans/
 mv external_dependency_removal_strategy.md docs/plans/
-mv gl-platform-universe-restructure-plan.md docs/plans/
+mv gl-platform-restructure-plan.md docs/plans/
 mv migration_strategy.md docs/plans/
 mv professional_naming_restructure_proposal.md docs/plans/
 mv radical_dependency_elimination_plan.md docs/plans/

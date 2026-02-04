@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: gl_continuous_monitor
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Continuous Monitoring System - Real-time Governance Health Tracking
 MachineNativeOps GL Architecture Implementation
-This module provides continuous monitoring capabilities for GL gl_platform_universe.gl_platform_universe.governance,
+This module provides continuous monitoring capabilities for GL gl-platform.gl-platform.governance,
 enabling real-time health checks, anomaly detection, and automated alerts.
 """
 # MNGA-002: Import organization needs review
@@ -82,7 +82,7 @@ class MonitoringReport:
     recommendations: List[str]
 class GLContinuousMonitor:
     """
-    Continuous monitoring system for GL gl_platform_universe.gl_platform_universe.governance health.
+    Continuous monitoring system for GL gl-platform.gl-platform.governance health.
     Features:
     - Real-time health checks
     - Metric collection and tracking
@@ -294,7 +294,7 @@ class GLContinuousMonitor:
         if len(active_alerts) > 5:
             recommendations.append("Multiple active alerts - review and address critical issues")
         if overall_health != HealthStatus.HEALTHY:
-            recommendations.append("Overall gl_platform_universe.gl_platform_universe.governance health needs attention - review health checks")
+            recommendations.append("Overall gl-platform.gl-platform.governance health needs attention - review health checks")
         critical_alerts = self.get_active_alerts(AlertSeverity.CRITICAL)
         if critical_alerts:
             recommendations.append(f"{len(critical_alerts)} critical alerts require immediate attention")
@@ -348,7 +348,7 @@ class GLContinuousMonitor:
             logger.info("Continuous monitoring stopped")
 # Built-in health check functions
 def check_artifact_validity() -> Dict[str, Any]:
-    """Check validity of all gl_platform_universe.gl_platform_universe.governance artifacts."""
+    """Check validity of all gl-platform.gl-platform.governance artifacts."""
     try:
         artifact_dir = Path.cwd()
         gl_files = list(artifact_dir.glob("GL*.json"))
@@ -392,7 +392,7 @@ def check_integration_health() -> Dict[str, Any]:
     except Exception as e:
         raise Exception(f"Integration health check failed: {str(e)}")
 def check_automation_coverage() -> Dict[str, Any]:
-    """Check automation coverage of gl_platform_universe.gl_platform_universe.governance operations."""
+    """Check automation coverage of gl-platform.gl-platform.governance operations."""
     try:
         # Count automated vs manual operations
         total_operations = 10  # Placeholder

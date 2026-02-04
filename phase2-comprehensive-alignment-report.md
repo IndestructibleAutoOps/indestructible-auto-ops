@@ -191,7 +191,7 @@
 
 #### 統一治理架構
 ```
-gl-platform-universe/
+gl-platform/
 ├── governance/                    # GL90-99: Meta-Specification Layer
 │   ├── root-semantic-anchor.yaml
 │   ├── unified-naming-charter.yaml
@@ -221,19 +221,19 @@ gl-platform-universe/
 | 當前路徑 | 建議路徑 | 變更類型 | 影響範圍 |
 |---------|---------|---------|---------|
 | semantic_engine/ | engine/governance/GL90-99-Semantic-Engine/ | 移動 | 中等 |
-| .governance/ | gl-platform-universe/governance/ | 合併 | 高 |
-| .github/governance-legacy/ | gl-platform-universe/governance/archived/legacy/ | 歸檔 | 低 |
-| 根目錄治理腳本 | gl-platform-universe/governance/scripts/ | 組織 | 中等 |
+| .governance/ | gl-platform/governance/ | 合併 | 高 |
+| .github/governance-legacy/ | gl-platform/governance/archived/legacy/ | 歸檔 | 低 |
+| 根目錄治理腳本 | gl-platform/governance/scripts/ | 組織 | 中等 |
 
 ### C3. 路徑設計理由
 
 #### 理由 1: 單一治理入口
-- 所有治理構件集中在 `gl-platform-universe/governance/`
+- 所有治理構件集中在 `gl-platform/governance/`
 - 便於管理和維護
 - 符合 FHS 標準
 
 #### 理由 2: 層級分明
-- GL90-99: Meta-Specification Layer 在 gl-platform-universe/
+- GL90-99: Meta-Specification Layer 在 gl-platform/
 - GL30-49: Execution Layer 在 engine/
 - 清晰的職責邊界
 
@@ -249,7 +249,7 @@ gl-platform-universe/
 ### D1. 治理層級結構
 
 ```
-gl-platform-universe/
+gl-platform/
 ├── GL90-99-Meta-Specification-Layer/
 │   ├── governance/
 │   │   ├── GL-ROOT-SEMANTIC-ANCHOR.yaml
@@ -348,11 +348,11 @@ GL30-49 Execution Layer
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: semantic-engine
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL90-99-semantic-engine-audit.json
+# @GL-audit-trail: gl-platform/governance/audit-trails/GL90-99-semantic-engine-audit.json
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """[File Description]"""
 
@@ -364,11 +364,11 @@ import ...
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governance-core
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL90-99-governance-audit.json
+# @GL-audit-trail: gl-platform/governance/audit-trails/GL90-99-governance-audit.json
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 apiVersion: governance.machinenativeops.io/v1
 kind: ...
@@ -380,11 +380,11 @@ kind: ...
 @GL-governed
 @GL-layer: GL90-99
 @GL-semantic: governance-documentation
-@GL-audit-trail: gl-platform-universe/governance/audit-trails/GL90-99-documentation-audit.json
+@GL-audit-trail: gl-platform/governance/audit-trails/GL90-99-documentation-audit.json
 
-GL Unified Charter Activated
-GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+GL Unified Architecture Governance Framework Activated
+GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 -->
 
 # [Title]
@@ -408,11 +408,11 @@ Phase 6: Semantic Engine Integration
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: semantic-engine
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL90-99-semantic-engine-audit.json
+# @GL-audit-trail: gl-platform/governance/audit-trails/GL90-99-semantic-engine-audit.json
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """
 Semantic Core Engine
@@ -440,11 +440,11 @@ GL Governed: All operations comply with GL governance standards
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: governance-monitoring
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL90-99-monitoring-audit.json
+# @GL-audit-trail: gl-platform/governance/audit-trails/GL90-99-monitoring-audit.json
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 # GL Naming Migration Playbook
 ```
@@ -464,9 +464,9 @@ def add_gl_markers(file_path, layer, semantic, audit_path):
 # @GL-semantic: {semantic}
 # @GL-audit-trail: {audit_path}
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform-universe/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """
     # Add markers to file
@@ -539,7 +539,7 @@ def add_gl_markers(file_path, layer, semantic, audit_path):
 # @GL-semantic: test
 # @GL-audit-trail: .github/governance-legacy/tests/conftest.py
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 ```
 
 ### G2. 不通過項目

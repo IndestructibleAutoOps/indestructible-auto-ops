@@ -29,7 +29,7 @@ architecture_overview:
     - layer_id: "GL00-09"
       name: "Strategic Layer"
       name_zh: "戰略層"
-      description: "組織願景、長期目標、治理憲章、核心政策與最高層級決策制定"
+      description: "組織願景、長期目標、治理框架、核心政策與最高層級決策制定"
     - layer_id: "GL10-29"
       name: "Operational Layer"
       name_zh: "運營層"
@@ -68,11 +68,11 @@ GL00-09:
   semantic_definition:
     purpose: |
       戰略層負責定義組織的願景、使命、價值觀、長期發展方向與治理原則，
-      制定OKR（Objectives and Key Results）、治理憲章、政策總則，
+      制定OKR（Objectives and Key Results）、治理框架、政策總則，
       並確保所有下層治理活動與戰略目標一致。
     scope:
       - "制定與維護組織願景、使命、價值觀"
-      - "設計與審核治理憲章、戰略目標（OKR）、政策總則"
+      - "設計與審核治理框架、戰略目標（OKR）、政策總則"
       - "決定資源分配與重大投資方向"
       - "設立高階治理委員會（如董事會、戰略委員會）"
       - "監督下層治理執行情況，確保戰略落地"
@@ -99,7 +99,7 @@ GL00-09:
         format: "yaml"
     outputs:
       - name: "governance_charter"
-        description: "治理憲章"
+        description: "治理框架"
         format: "yaml/markdown"
         path: "governance/00-vision-strategy/governance-charter.yaml"
       - name: "strategic_objectives"
@@ -193,7 +193,7 @@ GL00-09:
       - role: "Chief Governance Officer"
         role_zh: "首席治理官"
         duties:
-          - "治理憲章制定與維護"
+          - "治理框架制定與維護"
           - "戰略目標設定與監督"
           - "風險偏好定義"
           - "治理架構設計"
@@ -262,7 +262,7 @@ GL00-09:
           objectives: []
           key_results: []
     - artifact_type: "governance_charter"
-      name_zh: "治理憲章"
+      name_zh: "治理框架"
       format: "yaml"
       path: "governance/00-vision-strategy/governance-charter.yaml"
     - artifact_type: "risk_register"

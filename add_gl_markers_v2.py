@@ -82,9 +82,9 @@ def add_gl_markers(file_path):
 # @GL-semantic: {semantic}
 # @GL-audit-trail: {audit_trail}
 #
-# GL Unified Charter Activated
-# GL Root Semantic Anchor: gl-platform-universe/governance/{GL_ROOT_SEMANTIC_ANCHOR}
-# GL Unified Naming Charter: gl-platform-universe/governance/{GL_UNIFIED_NAMING_CHARTER}
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-platform/governance/{GL_ROOT_SEMANTIC_ANCHOR}
+# GL Unified Naming Charter: gl-platform/governance/{GL_UNIFIED_NAMING_CHARTER}
 
 """
         

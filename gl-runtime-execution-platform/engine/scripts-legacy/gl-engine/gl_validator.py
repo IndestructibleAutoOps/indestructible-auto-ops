@@ -1,14 +1,14 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: gl_validator
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 GL Artifacts Validator - Comprehensive Governance Artifact Validation
 MachineNativeOps GL Architecture Implementation
-This module provides comprehensive validation for GL gl_platform_universe.gl_platform_universe.governance artifacts,
+This module provides comprehensive validation for GL gl-platform.gl-platform.governance artifacts,
 including schema validation, policy compliance, security checks, and
 cross-layer consistency verification.
 """
@@ -315,7 +315,7 @@ class SpecCompletenessRule(ValidationRule):
     REQUIRED_SPEC_FIELDS = {
         'VisionStatement': ['vision', 'mission'],
         'StrategicObjectives': ['objectives'],
-        'GovernanceCharter': ['gl_platform_universe.gl_platform_universe.governance_structure'],
+        'GovernanceCharter': ['gl-platform.gl-platform.governance_structure'],
         'OperationalPlan': ['initiatives'],
         'StandardOperatingProcedure': ['procedure'],
         'MetricsDefinition': ['metrics'],
@@ -368,8 +368,8 @@ class GLValidator:
         # Format rules
         self.rules.append(FieldFormatRule(
             'apiVersion',
-            r'^gl_platform_universe.gl_platform_universe.governance\.machinenativeops\.io/v\d+$',
-            "apiVersion should be 'gl_platform_universe.gl_platform_universe.governance.machinenativeops.io/v2'"
+            r'^gl-platform.gl-platform.governance\.machinenativeops\.io/v\d+$',
+            "apiVersion should be 'gl-platform.gl-platform.governance.machinenativeops.io/v2'"
         ))
         self.rules.append(FieldFormatRule(
             'metadata.version',
@@ -468,18 +468,18 @@ class GLValidator:
         )
     def validate_workspace(self) -> ValidationResult:
         """Validate the entire workspace."""
-        gl_platform_universe.gl_platform_universe.governance_path = self.workspace_path / 'workspace' / 'gl_platform_universe.gl_platform_universe.governance'
-        if not gl_platform_universe.gl_platform_universe.governance_path.exists():
+        gl-platform.gl-platform.governance_path = self.workspace_path / 'workspace' / 'gl-platform.gl-platform.governance'
+        if not gl-platform.gl-platform.governance_path.exists():
             return ValidationResult(
                 passed=False,
                 findings=[ValidationFinding(
                     rule_id="PATH-001",
                     rule_name="Governance Path",
                     severity=ValidationSeverity.ERROR,
-                    message=f"Governance path not found: {gl_platform_universe.gl_platform_universe.governance_path}"
+                    message=f"Governance path not found: {gl-platform.gl-platform.governance_path}"
                 )]
             )
-        return self.validate_directory(gl_platform_universe.gl_platform_universe.governance_path)
+        return self.validate_directory(gl-platform.gl-platform.governance_path)
     def generate_report(self, result: ValidationResult, format: str = 'markdown') -> str:
         """Generate validation report."""
         if format == 'json':
@@ -535,7 +535,7 @@ class GLValidator:
         if result.error_count > 0:
             report.append("1. ⚠️ Fix all errors before proceeding")
         if result.warning_count > 5:
-            report.append("2. 📋 Address warnings to improve gl_platform_universe.gl_platform_universe.governance quality")
+            report.append("2. 📋 Address warnings to improve gl-platform.gl-platform.governance quality")
         if result.passed:
             report.append("✅ All validations passed!")
         return '\n'.join(report)

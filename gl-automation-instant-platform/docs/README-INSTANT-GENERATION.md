@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # 🚀 革命性即時生成架構 - 快速開始指南
 
 ## ✨ 什麼是革命性即時生成架構？

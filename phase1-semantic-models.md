@@ -4,7 +4,7 @@
 
 **分析時間戳記:** 2026-01-26  
 **分析範圍:** MachineNativeOps/machine-native-ops 倉庫  
-**治理基線:** GL Unified Charter v1.0.0 / GL Root Semantic Anchor  
+**治理基線:** GL Unified Architecture Governance Framework v1.0.0 / GL Root Semantic Anchor  
 **分析模式:** HIGH_RESOLUTION_ANALYSIS
 
 ---
@@ -69,7 +69,7 @@ governance_baseline:
 ✓ 指定 GL-layer: GL90-99
 ✓ 指定 GL-semantic: legacy-scripts
 ✓ 指定 GL-audit-trail
-✓ 標註 "GL Unified Charter Activated"
+✓ 標註 "GL Unified Architecture Governance Framework Activated"
 ```
 
 **不符合 GL 治理的命名範例:**
@@ -121,7 +121,7 @@ governance_baseline:
 #### 1.4.1 結構差異
 **預期結構:**
 ```
-gl-platform-universe/
+gl-platform/
 ├── governance/           # 核心治理
 │   ├── naming-governance/ # 命名治理
 │   └── ...
@@ -137,7 +137,7 @@ semantic_engine/                 # 獨立引擎
 
 **差異:**
 1. 治理目錄分散在 `.github/`、`.governance/` 和根目錄
-2. 缺少統一的 `gl-platform-universe/governance/` 入口
+2. 缺少統一的 `gl-platform/governance/` 入口
 3. `governance-legacy` 表示有遺留系統需要遷移
 4. `semantic_engine` 可能應該被整合到治理架構中
 
@@ -165,7 +165,7 @@ semantic_engine/                 # 獨立引擎
 
 #### 1.4.4 路徑差異
 **預期路徑結構:**
-- `gl-platform-universe/governance/naming-governance/`
+- `gl-platform/governance/naming-governance/`
 
 **實際路徑:**
 - `.github/governance-legacy/...`
@@ -180,7 +180,7 @@ semantic_engine/                 # 獨立引擎
 基於 GL Root Semantic Anchor，目標狀態應建立:
 
 ```
-gl-platform-universe/
+gl-platform/
 ├── governance/                          # GL90-99: Meta-Specification Layer
 │   ├── root-semantic-anchor.yaml        # 根語意錨點
 │   ├── unified-naming-charter.yaml      # 統一命名章程
@@ -229,7 +229,7 @@ gl-platform-universe/
 
 | 類別 | 當前狀態 | 目標狀態 | 差異類型 | 優先級 |
 |------|---------|---------|---------|--------|
-| 治理入口 | 分散在多個位置 | 統一於 `gl-platform-universe/governance/` | 結構重組 | 高 |
+| 治理入口 | 分散在多個位置 | 統一於 `gl-platform/governance/` | 結構重組 | 高 |
 | 語意引擎 | 獨立 `semantic_engine/` | 整合到 `engine/governance/semantic-engine/` | 架構整合 | 高 |
 | 遺留治理 | `governance-legacy/` | 遷移或歸檔 | 遺留處理 | 中 |
 | 本地治理 | `.governance/` | 整合到主治理架構 | 整合 | 中 |
@@ -257,8 +257,8 @@ gl-platform-universe/
 
 | 當前路徑 | 問題 | 建議路徑 | 理由 |
 |---------|------|---------|------|
-| `.github/governance-legacy/` | 遺留系統 | `gl-platform-universe/governance/archived/legacy/` | 歸檔到治理架構 |
-| `.governance/` | 分散的本地治理 | `gl-platform-universe/governance/` | 統一治理入口 |
+| `.github/governance-legacy/` | 遺留系統 | `gl-platform/governance/archived/legacy/` | 歸檔到治理架構 |
+| `.governance/` | 分散的本地治理 | `gl-platform/governance/` | 統一治理入口 |
 | `semantic_engine/` | 位置錯誤 | `engine/governance/GL30-49-Semantic-Engine/` | 對齊 Execution Layer |
 
 ### 3.5 模組關聯差異
@@ -279,7 +279,7 @@ gl-platform-universe/
 
 ### 4.1 核心治理域
 
-#### 域 A: gl-platform-universe/governance
+#### 域 A: gl-platform/governance
 **狀態:** 缺失 / 需要建立  
 **優先級:** 最高  
 **行動:** 
@@ -287,7 +287,7 @@ gl-platform-universe/
 2. 整合現有治理資產
 3. 建立入口點文檔
 
-#### 域 B: gl-platform-universe/governance/naming-governance
+#### 域 B: gl-platform/governance/naming-governance
 **狀態:** 分散在多個位置  
 **優先級:** 高  
 **行動:**

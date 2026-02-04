@@ -212,7 +212,7 @@ ecosystem/governance/GL-semantic-anchors/
 ├── GL20-GL49-language-behavior-domains-integration.json  # Language layer specifications
 ├── GL50-GL99-format-layer-specification.json            # Format layer specifications
 ├── semantic-layer-specification.json                    # Semantic layer with validation rules
-├── governance-baseline.json                             # Governance baseline document
+├── governance-framework-baseline.json                             # Governance baseline document
 └── README.md                                            # This document
 ```
 

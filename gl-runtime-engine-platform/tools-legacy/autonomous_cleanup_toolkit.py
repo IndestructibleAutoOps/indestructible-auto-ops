@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
+# @GL-layer: gl-platform.governance
 # @GL-semantic: autonomous_cleanup_toolkit
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 # GL Layer: GL30-49 Execution Layer
@@ -20,7 +20,7 @@
                      自主清理工具包 - Claude 代碼能力
 ═══════════════════════════════════════════════════════════════════════════
 GL Layer: GL30-49 Execution Layer
-GL Unified Charter: Activated
+GL Unified Architecture Governance Framework: Activated
 Semantic Root: urn:machinenativeops:gl:tools:autonomous-cleanup:1.1.0
 This toolkit replicates the cleanup capabilities demonstrated in the
 Claude Code session for repository maintenance and technical debt cleanup.
@@ -52,7 +52,7 @@ Author: Synthesized from Claude Code Session
 Version: 1.1.0
 Date: 2026-01-21
 Date: 2025-12-16
-GL Unified Charter: Activated
+GL Unified Architecture Governance Framework: Activated
 ═══════════════════════════════════════════════════════════════════════════
 """
 # MNGA-002: Import organization needs review
@@ -287,7 +287,7 @@ class AutonomousCleanupEngine:
         """
         Determine TODO severity based on type and message.
         Aligned with tools/scan_tech_debt.py severity determination logic
-        for consistency across the GL gl_platform_universe.governance layer.
+        for consistency across the GL gl-platform.governance layer.
         Severity determination order:
             1. Check message for high priority keywords -> HIGH
             2. Check message for medium priority keywords -> MEDIUM

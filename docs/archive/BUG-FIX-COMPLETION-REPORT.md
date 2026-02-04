@@ -295,7 +295,7 @@ The fix has been deployed and is currently running in production with positive r
 **Report Prepared By**: SuperNinja AI Agent  
 **Date**: 2026-01-28  
 **Version**: 1.0  
-**GL Unified Charter Activated**
+**GL Unified Architecture Governance Framework Activated**
 
 ## Attachments
 

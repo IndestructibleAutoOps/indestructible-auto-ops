@@ -9,7 +9,7 @@
 
 **Commit**: `38e4f381`  
 **Date**: 2026-01-28  
-**Governance Charter**: GL Unified Charter v2.0.0 Activated
+**Governance Charter**: GL Unified Architecture Governance Framework v2.0.0 Activated
 
 ---
 
@@ -114,7 +114,7 @@ All systems passed with 0 violations:
 
 | Requirement | Status |
 |-------------|--------|
-| GL Unified Charter Activated | ✅ v2.0.0 |
+| GL Unified Architecture Governance Framework Activated | ✅ v2.0.0 |
 | Strict Mode Enforcement | ✅ Enabled |
 | Continue-on-Error Disabled | ✅ All workflows |
 | Agent Orchestration Active | ✅ Phase: active |
@@ -172,4 +172,4 @@ To [EXTERNAL_URL_REMOVED]
 
 **GL 架構/修復/集成/整合/架構/部署/ 完成**
 
-GL Unified Charter Activated v2.0.0 - Multi-Agent Parallel Orchestration System Operational
+GL Unified Architecture Governance Framework Activated v2.0.0 - Multi-Agent Parallel Orchestration System Operational

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This playbook guides the systematic migration of existing resources to comply with the GL Unified Charter v5.0 naming conventions.
+This playbook guides the systematic migration of existing resources to comply with the GL Unified Architecture Governance Framework v5.0 naming conventions.
 
 **@GL-governed**
 **@GL-layer: GL10-29**

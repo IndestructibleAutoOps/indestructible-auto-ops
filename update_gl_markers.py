@@ -7,7 +7,7 @@ from pathlib import Path
 
 # Mapping of old paths to new paths
 PATH_MAPPINGS = {
-    'gl-platform-universe': 'gl-enterprise-architecture',
+    'gl-platform': 'gl-enterprise-architecture',
     'gl-runtime-platform': 'gl-execution-runtime',
     'gl-semantic-core-platform': 'gl-platform-services',
 }

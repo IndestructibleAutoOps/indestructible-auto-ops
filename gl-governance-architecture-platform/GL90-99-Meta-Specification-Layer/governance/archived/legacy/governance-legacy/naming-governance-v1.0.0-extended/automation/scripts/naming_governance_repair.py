@@ -1,9 +1,9 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: legacy-scripts
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #!/usr/bin/env python3
 """
 MachineNativeOps 命名治理自動修復腳本
@@ -46,7 +46,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("/var/log/naming-gl_platform_universe.governance-repair.log"),
+        logging.FileHandler("/var/log/naming-gl-platform.governance-repair.log"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -114,7 +114,7 @@ class NamingGovernanceRepair:
 
     def __init__(self, config_path: str = None):
         """初始化修復系統"""
-        self.config_path = config_path or "/etc/naming-gl_platform_universe.governance/config.yaml"
+        self.config_path = config_path or "/etc/naming-gl-platform.governance/config.yaml"
         self.config = self._load_config()
         self.kubeconfig_path = os.getenv("KUBECONFIG", "~/.kube/config")
         self.dry_run = False
@@ -619,7 +619,7 @@ class NamingGovernanceRepair:
                 labels_to_add = {}
                 for label in missing_labels:
                     if label == "managed-by":
-                        labels_to_add[label] = "naming-gl_platform_universe.governance"
+                        labels_to_add[label] = "naming-gl-platform.governance"
                     elif label == "environment":
                         labels_to_add[label] = namespace
                     elif label == "version":
@@ -854,7 +854,7 @@ class NamingGovernanceRepair:
         """保存修復報告"""
         if not output_path:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_path = f"/var/log/naming-gl_platform_universe.governance/repair_report_{timestamp}.json"
+            output_path = f"/var/log/naming-gl-platform.governance/repair_report_{timestamp}.json"
 
         try:
             os.makedirs(os.path.dirname(output_path), exist_ok=True)

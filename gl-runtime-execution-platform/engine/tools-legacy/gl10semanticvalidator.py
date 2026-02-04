@@ -1,14 +1,14 @@
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: archive-tools
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.governance
+# @GL-layer: gl-platform.governance
 # @GL-semantic: gl10semanticvalidator
-# @GL-audit-trail: ../../engine/gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -27,7 +27,7 @@ base = "."
 schema_paths = [
     os.path.join(base, "schemas", "GL10-phase2-schema.json"),
     os.path.join(base, "GL10-phase2-schema.json"),
-    os.path.join(base, "project-docs", "gl-gl_platform_universe.governance", "schemas", "GL10-phase2-schema.json"),
+    os.path.join(base, "project-docs", "gl-gl-platform.governance", "schemas", "GL10-phase2-schema.json"),
 ]
 schema = None
 for schema_path in schema_paths:
@@ -47,8 +47,8 @@ search_paths = [
     os.path.join(base, "GL1[7-9]*.json"),
     os.path.join(base, "GL2[0-4]*.json"),
     # New project-docs location
-    os.path.join(base, "project-docs", "gl-gl_platform_universe.governance", "semantic-terms", "GL1[7-9]*.json"),
-    os.path.join(base, "project-docs", "gl-gl_platform_universe.governance", "semantic-terms", "GL2[0-4]*.json"),
+    os.path.join(base, "project-docs", "gl-gl-platform.governance", "semantic-terms", "GL1[7-9]*.json"),
+    os.path.join(base, "project-docs", "gl-gl-platform.governance", "semantic-terms", "GL2[0-4]*.json"),
 ]
 files = []
 for pattern in search_paths:

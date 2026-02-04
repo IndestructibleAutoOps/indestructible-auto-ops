@@ -3,7 +3,7 @@
 # @GL-semantic: documentation
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
-# GL Unified Charter Activated
+# GL Unified Architecture Governance Framework Activated
 # Enterprise Infrastructure Deployment Scripts
 
 This directory contains enterprise-grade deployment scripts for testing the MachineNativeOps infrastructure components.

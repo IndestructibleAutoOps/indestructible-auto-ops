@@ -1,15 +1,15 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: auto_fix_bot_validator
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
 Auto-Fix Bot Template Validator
 Validates auto-fix templates for correctness, multi-language support,
 and ensures no false positives or incorrect fixes.
-GL Unified Charter Activated - Governance Layer Validation
+GL Unified Architecture Governance Framework Activated - Governance Layer Validation
 """
 # MNGA-002: Import organization needs review
 import re

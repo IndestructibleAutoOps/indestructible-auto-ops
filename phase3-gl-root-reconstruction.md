@@ -16,37 +16,37 @@
 ```
 GL00-09: Strategic Layer (戰略層)
 ├── 職責: 戰略規劃、目標設定、架構設計
-├── 路徑: gl-platform-universe/GL00-09-Strategic-Layer/
+├── 路徑: gl-platform/GL00-09-Strategic-Layer/
 └── 治理域: 戰略治理域
 
 GL20-29: Data Access Layer (數據存取層)
 ├── 職責: 數據接入、ETL、數據目錄
-├── 路徑: gl-platform-universe/GL20-29-Data-Access-Layer/
+├── 路徑: gl-platform/GL20-29-Data-Access-Layer/
 └── 治理域: 數據治理域
 
 GL30-49: Execution Layer (執行層)
 ├── 職責: 引擎執行、運行時管理、資源調度
-├── 路徑: gl-platform-universe/GL30-49-Execution-Layer/
+├── 路徑: gl-platform/GL30-49-Execution-Layer/
 └── 治理域: 執行治理域
 
 GL40-49: Algorithm Layer (演算法層)
 ├── 職責: 演算法優化、模型訓練、推理引擎
-├── 路徑: gl-platform-universe/GL40-49-Algorithm-Layer/
+├── 路徑: gl-platform/GL40-49-Algorithm-Layer/
 └── 治理域: 演算法治理域
 
 GL50-59: GPU Acceleration Layer (GPU 加速層)
 ├── 職責: CUDA 優化、GPU 調度、硬體加速
-├── 路徑: gl-platform-universe/GL50-59-GPU-Acceleration-Layer/
+├── 路徑: gl-platform/GL50-59-GPU-Acceleration-Layer/
 └── 治理域: 加速治理域
 
 GL60-80: Feedback Layer (反饋層)
 ├── 職責: 監控、日誌、異常處理
-├── 路徑: gl-platform-universe/GL60-80-Feedback-Layer/
+├── 路徑: gl-platform/GL60-80-Feedback-Layer/
 └── 治理域: 反饋治理域
 
 GL90-99: Meta-Specification Layer (元規範層)
 ├── 職責: 治理規範、命名章程、語意錨點
-├── 路徑: gl-platform-universe/GL90-99-Meta-Specification-Layer/
+├── 路徑: gl-platform/GL90-99-Meta-Specification-Layer/
 └── 治理域: 治理核心域
 ```
 
@@ -79,7 +79,7 @@ GL90-99: Meta-Specification Layer (元規範層)
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: root-semantic-anchor
-# @GL-audit-trail: gl-platform-universe/governance/audit-trails/GL-ROOT-audit.json
+# @GL-audit-trail: gl-platform/governance/audit-trails/GL-ROOT-audit.json
 
 apiVersion: governance.machinenativeops.io/v1
 kind: GLRootSemanticAnchor

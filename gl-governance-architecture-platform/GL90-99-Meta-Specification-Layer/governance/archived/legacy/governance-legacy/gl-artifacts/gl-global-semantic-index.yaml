@@ -34,7 +34,7 @@ index_scope:
     - "GL 治理閉環"
     - "GL → Filesystem 映射"
     - "GL 語意封存"
-    - "GL 全域治理憲章"
+    - "GL 全域治理框架"
   total_layers: 7
   total_directories: 38
   total_artifacts: 45
@@ -99,8 +99,8 @@ GL00-09:
       accountability: "governance-committee"
     - responsibility_id: "RESP-00-02"
       name: "governance_charter_ownership"
-      name_zh: "治理憲章所有權"
-      description: "設計與審核治理憲章、戰略目標（OKR）、政策總則"
+      name_zh: "治理框架所有權"
+      description: "設計與審核治理框架、戰略目標（OKR）、政策總則"
       accountability: "governance-committee"
     - responsibility_id: "RESP-00-03"
       name: "resource_allocation_decision"
@@ -155,7 +155,7 @@ GL00-09:
       name_zh: "定義組織願景"
     - capability_id: "CAP-00-02"
       name: "establish_governance_charter"
-      name_zh: "建立治理憲章"
+      name_zh: "建立治理框架"
     - capability_id: "CAP-00-03"
       name: "approve_strategic_decisions"
       name_zh: "審批戰略決策"
@@ -171,7 +171,7 @@ GL00-09:
       type_zh: "願景聲明"
       format: ["yaml", "markdown"]
     - type: "governance-charter"
-      type_zh: "治理憲章"
+      type_zh: "治理框架"
       format: ["yaml"]
     - type: "strategic-objectives"
       type_zh: "戰略目標"
@@ -217,7 +217,7 @@ GL00-09:
         purpose: "架構決策與設計原則"
         artifact_types: ["architecture-decision-record"]
       - path: "02-governance"
-        purpose: "治理憲章與決策權限"
+        purpose: "治理框架與決策權限"
         artifact_types: ["governance-charter"]
       - path: "03-risk"
         purpose: "企業風險識別與管理"

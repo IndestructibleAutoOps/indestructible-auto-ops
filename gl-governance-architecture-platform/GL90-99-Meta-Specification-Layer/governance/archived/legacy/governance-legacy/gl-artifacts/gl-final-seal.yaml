@@ -444,7 +444,7 @@ sealed_scope_16:
     - {constraint_id: PCON-009, name: Actionable Output Only, status: IMMUTABLE}
     - {constraint_id: PCON-010, name: Minimal Changes Only, status: IMMUTABLE}
 # ============================================================================
-# SEALED SCOPE 17: GL 全域治理憲章
+# SEALED SCOPE 17: GL 全域治理框架
 # ============================================================================
 sealed_scope_17:
   scope_id: SEAL-SCOPE-17
@@ -579,7 +579,7 @@ final_seal_confirmation:
     - "✓ GL 語意封存 - IMMUTABLE"
     - "✓ GL filesystem 封存 - IMMUTABLE"
     - "✓ GL 全域並行 + 跨模組並行 - IMMUTABLE"
-    - "✓ GL 全域治理憲章 - IMMUTABLE"
+    - "✓ GL 全域治理框架 - IMMUTABLE"
     - "✓ GL 全域治理審計 - IMMUTABLE"
   immutability_status:
     - "✓ 全 GL 語意不可變"
@@ -590,5 +590,5 @@ final_seal_confirmation:
     - "✓ 全封存狀態不可變"
     - "✓ 全 DSL 不可變"
     - "✓ 全並行模組不可變"
-    - "✓ 全憲章不可變"
+    - "✓ 全框架不可變"
     - "✓ 全索引不可變"

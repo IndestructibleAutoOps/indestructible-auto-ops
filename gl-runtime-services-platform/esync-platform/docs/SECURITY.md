@@ -2,7 +2,7 @@
 
 ## Overview
 
-ESync Platform follows a defense-in-depth security model with zero-trust principles at its core. All security controls are implemented according to the GL Unified Charter v5.0 and industry best practices.
+ESync Platform follows a defense-in-depth security model with zero-trust principles at its core. All security controls are implemented according to the GL Unified Architecture Governance Framework v5.0 and industry best practices.
 
 ## Security Principles
 
@@ -237,7 +237,7 @@ ESync Platform follows a defense-in-depth security model with zero-trust princip
 
 ## References
 
-- [GL Unified Charter v5.0](../../GOVERNANCE.md)
+- [GL Unified Architecture Governance Framework v5.0](../../GOVERNANCE.md)
 - [Architecture Documentation](architecture.md)
 - [Runbooks](RUNBOOKS/)
 - [Threat Model](THREAT_MODEL.md)

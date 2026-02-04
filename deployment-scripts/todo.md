@@ -112,10 +112,10 @@
 
 ---
 
-## GL Unified Charter 合規
+## GL Unified Architecture Governance Framework 合規
 
 ✅ 所有腳本遵循：
-- GL Unified Charter 激活
+- GL Unified Architecture Governance Framework 激活
 - GL Root Semantic Anchor 遵守
 - 治理事件流支持
 - 可追溯性、可驗證性

@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: run_root_files
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
 """
@@ -25,7 +25,7 @@ ROOT_FILES = [
     ".root.init.d/00-init.sh",
     ".root.init.d/01-semantic-root-init.sh",
     ".root.init.d/02-modules-init.sh",
-    ".root.init.d/03-gl_platform_universe.gl_platform_universe.governance-init.sh",
+    ".root.init.d/03-gl-platform.gl-platform.governance-init.sh",
     ".root.init.d/04-trust-init.sh",
     ".root.init.d/05-provenance-init.sh",
     ".root.init.d/06-integrity-init.sh",
@@ -128,13 +128,13 @@ def _build_environment(repo_root: Path, root_path: Path, semantic_version: str) 
         "VALIDATION_RULES_PATH": str(root_path / ".root.jobs/validation-rules.json"),
         "ATTESTATION_PATH": str(root_path / ".root.jobs/semantic-root-attestations/initial-attestation.yaml"),
         "MODULES_REGISTRY": str(root_path / ".root.jobs/modules-registry.json"),
-        "GOVERNANCE_REGISTRY": str(root_path / ".root.jobs/gl_platform_universe.gl_platform_universe.governance-registry.json"),
+        "GOVERNANCE_REGISTRY": str(root_path / ".root.jobs/gl-platform.gl-platform.governance-registry.json"),
         "TRUST_REGISTRY": str(root_path / ".root.jobs/trust-registry.json"),
         "PROVENANCE_REGISTRY": str(root_path / ".root.jobs/provenance-registry.json"),
         "INTEGRITY_REGISTRY": str(root_path / ".root.jobs/integrity-registry.json"),
         "FINAL_ATTESTATION": str(root_path / ".root.jobs/final-attestation.yaml"),
         "MODULES_CONFIG": str(repo_root / "controlplane/config/root.modules.yaml"),
-        "GOVERNANCE_CONFIG": str(repo_root / "controlplane/config/root.gl_platform_universe.gl_platform_universe.governance.yaml"),
+        "GOVERNANCE_CONFIG": str(repo_root / "controlplane/config/root.gl-platform.gl-platform.governance.yaml"),
         "TRUST_CONFIG": str(repo_root / "controlplane/config/root.trust.yaml"),
         "PROVENANCE_CONFIG": str(repo_root / "controlplane/config/root.provenance.yaml"),
         "INTEGRITY_CONFIG": str(repo_root / "controlplane/config/root.integrity.yaml"),

@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: autonomy-progress-tracker
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 # GL-Layer: GL30-49 (Execution)
 #!/usr/bin/env python3
@@ -33,7 +33,7 @@ class AutonomyProgressTracker:
     TARGET_LEVELS = {
         "01-core": {"target": "L2", "target_value": 2},
         "02-intelligence": {"target": "L3", "target_value": 3},
-        "03-gl_platform_universe.gl_platform_universe.governance": {"target": "L4", "target_value": 4},
+        "03-gl-platform.gl-platform.governance": {"target": "L4", "target_value": 4},
         "04-autonomous": {"target": "L5", "target_value": 5},
         "05-observability": {"target": "L5", "target_value": 5},
         "06-security": {"target": "Global Layer", "target_value": 10}
@@ -77,7 +77,7 @@ class AutonomyProgressTracker:
         return {
             "01-core": {"autonomy_level": "L1-L2", "semantic_health_score": 100, "status": "active"},
             "02-intelligence": {"autonomy_level": "L2-L3", "semantic_health_score": 100, "status": "active"},
-            "03-gl_platform_universe.gl_platform_universe.governance": {"autonomy_level": "L3-L4", "semantic_health_score": 100, "status": "active"},
+            "03-gl-platform.gl-platform.governance": {"autonomy_level": "L3-L4", "semantic_health_score": 100, "status": "active"},
             "04-autonomous": {"autonomy_level": "L4-L5", "semantic_health_score": 85, "status": "in-development"},
             "05-observability": {"autonomy_level": "L4-L5", "semantic_health_score": 100, "status": "active"},
             "06-security": {"autonomy_level": "Global Layer", "semantic_health_score": 100, "status": "active"}

@@ -2,7 +2,7 @@
 
 # @GL-governed
 # GL-ROOT Global Governance Audit & Platform Build
-# Unified Charter v2.0.0 - Governance Event Stream Monitor Component
+# Unified Architecture Governance Framework v2.0.0 - Governance Event Stream Monitor Component
 
 ## 📋 概述
 

@@ -1,8 +1,8 @@
 #
 # @GL-governed
-# @GL-layer: gl_platform_universe.gl_platform_universe.governance
+# @GL-layer: gl-platform.gl-platform.governance
 # @GL-semantic: pipeline_validator
-# @GL-audit-trail: ../../engine/gl_platform_universe.gl_platform_universe.governance/GL_SEMANTIC_ANCHOR.json
+# @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 """
 ETL Pipeline Structure Validator
@@ -20,7 +20,7 @@ import hashlib
 logger = logging.getLogger(__name__)
 class PipelineValidator:
     """
-    Validates ETL pipeline structure against gl_platform_universe.gl_platform_universe.governance standards.
+    Validates ETL pipeline structure against gl-platform.gl-platform.governance standards.
     Implements zero-tolerance validation for directory and file compliance.
     """
     def __init__(self, root_path: str):
@@ -91,7 +91,7 @@ class PipelineValidator:
         """Validate required directory structure."""
         required_dirs = [
             'controlplane',
-            'controlplane/gl_platform_universe.gl_platform_universe.governance',
+            'controlplane/gl-platform.gl-platform.governance',
             'controlplane/baseline',
             'workspace',
             'workspace/projects',

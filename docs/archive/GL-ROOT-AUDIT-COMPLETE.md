@@ -63,7 +63,7 @@
 - [x] Step 0: multi-agent-parallel-orchestration
 - [x] Step 1: Prompt Input
 - [x] Step 2: .governance (GL-gate)
-- [x] Step 3: Charter / Strategy Baseline (GL Unified Charter Activated)
+- [x] Step 3: Charter / Strategy Baseline (GL Unified Architecture Governance Framework Activated)
 - [x] Step 4: .agent_hooks (pre/post governance hooks)
 - [x] Step 5: engine (main orchestrator)
 - [x] Step 6: esync-platform (event stream and task dispatch)
@@ -105,7 +105,7 @@
 - ✅ gl-gate
 - ✅ .github
 
-### GL 統一憲章狀態
+### GL 統一框架狀態
 - **版本**: v2.0.0
 - **狀態**: Activated
 - **合規級別**: Strict
@@ -189,5 +189,5 @@
 **稽核完成時間**: 2025-01-28
 **稽核模式**: multi-agent-parallel-orchestration
 **執行策略**: one-by-one-isolated-execution
-**治理狀態**: GL Unified Charter v2.0.0 Activated
+**治理狀態**: GL Unified Architecture Governance Framework v2.0.0 Activated
 **合規級別**: Strict
