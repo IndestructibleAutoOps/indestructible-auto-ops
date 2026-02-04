@@ -1,7 +1,7 @@
 {
-  "artifact_id": "52618d2d-bf58-4450-9ba4-d5880d72eff2",
+  "artifact_id": "de118824-964b-4d90-b481-7f0240d65455",
   "step_number": 8,
-  "timestamp": "2026-02-04T16:18:41.727796+00:00",
+  "timestamp": "2026-02-04T16:52:28.397236+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -12,8 +12,13 @@
   "artifacts_generated": [
     "auto_fix_capabilities.json"
   ],
-  "sha256_hash": "34dbb4f0a544a24979ac811cddfa7f15a6d03fa8dcf7a4a2ef4ede24a2d25ff6",
-  "canonical_hash": "34dbb4f0a544a24979ac811cddfa7f15a6d03fa8dcf7a4a2ef4ede24a2d25ff6",
+  "sha256_hash": "764f61a7042b861b7b68c29ed7e84a2d1a7438c17a82b9b33f2cf97c00f4bb15",
+  "canonical_hash": "764f61a7042b861b7b68c29ed7e84a2d1a7438c17a82b9b33f2cf97c00f4bb15",
   "canonicalization_version": "1.0",
-  "canonicalization_method": "JCS+LayeredSorting"
+  "canonicalization_method": "JCS+LayeredSorting",
+  "hash_chain": {
+    "self": "764f61a7042b861b7b68c29ed7e84a2d1a7438c17a82b9b33f2cf97c00f4bb15",
+    "parent": null,
+    "merkle_root": null
+  }
 }

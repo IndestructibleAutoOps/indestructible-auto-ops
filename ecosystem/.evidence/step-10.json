@@ -1,7 +1,7 @@
 {
-  "artifact_id": "250526f7-bceb-4b3d-99e9-75fd1cd24873",
+  "artifact_id": "9c7ba9f1-f921-49db-8925-80ab2380410e",
   "step_number": 10,
-  "timestamp": "2026-02-04T16:18:41.728301+00:00",
+  "timestamp": "2026-02-04T16:52:28.398099+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -12,8 +12,13 @@
   "artifacts_generated": [
     "governance_loop_config.json"
   ],
-  "sha256_hash": "b7efeaac5ffe13d3a66cbfb5a595696d3e593991524cc92bca046cf462736ab6",
-  "canonical_hash": "b7efeaac5ffe13d3a66cbfb5a595696d3e593991524cc92bca046cf462736ab6",
+  "sha256_hash": "b992def340493fa41474f0b7d86f8d5cc23b414ad1e6a449358f8867c70d6a73",
+  "canonical_hash": "b992def340493fa41474f0b7d86f8d5cc23b414ad1e6a449358f8867c70d6a73",
   "canonicalization_version": "1.0",
-  "canonicalization_method": "JCS+LayeredSorting"
+  "canonicalization_method": "JCS+LayeredSorting",
+  "hash_chain": {
+    "self": "b992def340493fa41474f0b7d86f8d5cc23b414ad1e6a449358f8867c70d6a73",
+    "parent": null,
+    "merkle_root": null
+  }
 }

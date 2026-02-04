@@ -1,7 +1,7 @@
 {
-  "artifact_id": "0c6c4a6e-29a4-4a70-9aa9-5f0659709147",
+  "artifact_id": "a0368981-1382-4248-9458-567793fef722",
   "step_number": 6,
-  "timestamp": "2026-02-04T16:18:41.726222+00:00",
+  "timestamp": "2026-02-04T16:52:28.394914+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -24,8 +24,13 @@
   "artifacts_generated": [
     "executable_governance_system.json"
   ],
-  "sha256_hash": "3655dcd2260b5be7918886a6d9edc76f9f9cc75b1ad57590f7735bf06db24f0c",
-  "canonical_hash": "3655dcd2260b5be7918886a6d9edc76f9f9cc75b1ad57590f7735bf06db24f0c",
+  "sha256_hash": "cc1dabf086b2fe0c1d7806e2d0ff165ed6ac38fe5c6a0ab1405a8f5155079398",
+  "canonical_hash": "cc1dabf086b2fe0c1d7806e2d0ff165ed6ac38fe5c6a0ab1405a8f5155079398",
   "canonicalization_version": "1.0",
-  "canonicalization_method": "JCS+LayeredSorting"
+  "canonicalization_method": "JCS+LayeredSorting",
+  "hash_chain": {
+    "self": "cc1dabf086b2fe0c1d7806e2d0ff165ed6ac38fe5c6a0ab1405a8f5155079398",
+    "parent": null,
+    "merkle_root": null
+  }
 }

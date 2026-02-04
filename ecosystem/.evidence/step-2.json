@@ -1,7 +1,7 @@
 {
-  "artifact_id": "3e85be7c-8098-4552-a935-ce63bcfc5e9d",
+  "artifact_id": "9005a998-2b58-4eeb-95c0-de13b82e596f",
   "step_number": 2,
-  "timestamp": "2026-02-04T16:18:41.724895+00:00",
+  "timestamp": "2026-02-04T16:52:28.392504+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -32,8 +32,13 @@
   "artifacts_generated": [
     "local_gap_matrix.json"
   ],
-  "sha256_hash": "8421adc03bdba52b626d10baa816752f278cc3a2122a6889dceed50553059e68",
-  "canonical_hash": "8421adc03bdba52b626d10baa816752f278cc3a2122a6889dceed50553059e68",
+  "sha256_hash": "6e02fe6ec4a9e797c3fc11c93609e8736ef677e3abf4406fcbb1ad37f03662de",
+  "canonical_hash": "6e02fe6ec4a9e797c3fc11c93609e8736ef677e3abf4406fcbb1ad37f03662de",
   "canonicalization_version": "1.0",
-  "canonicalization_method": "JCS+LayeredSorting"
+  "canonicalization_method": "JCS+LayeredSorting",
+  "hash_chain": {
+    "self": "6e02fe6ec4a9e797c3fc11c93609e8736ef677e3abf4406fcbb1ad37f03662de",
+    "parent": null,
+    "merkle_root": null
+  }
 }

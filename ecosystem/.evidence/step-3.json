@@ -1,7 +1,7 @@
 {
-  "artifact_id": "2944a091-6c0b-4314-b8e2-bb58ae720112",
+  "artifact_id": "ba100f5d-6171-4cbb-ac38-4dd4135a4a1d",
   "step_number": 3,
-  "timestamp": "2026-02-04T16:18:41.725273+00:00",
+  "timestamp": "2026-02-04T16:52:28.393320+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -38,8 +38,13 @@
   "artifacts_generated": [
     "global_best_practices_model.json"
   ],
-  "sha256_hash": "0bcafb456639ed06ad0ebe7063f0f45c796d8805d98ee59d3adb5c151a33d1f8",
-  "canonical_hash": "0bcafb456639ed06ad0ebe7063f0f45c796d8805d98ee59d3adb5c151a33d1f8",
+  "sha256_hash": "56fe51650829a980fdf4f68c424e231bbd61d45202792c5d27f21821ae322728",
+  "canonical_hash": "56fe51650829a980fdf4f68c424e231bbd61d45202792c5d27f21821ae322728",
   "canonicalization_version": "1.0",
-  "canonicalization_method": "JCS+LayeredSorting"
+  "canonicalization_method": "JCS+LayeredSorting",
+  "hash_chain": {
+    "self": "56fe51650829a980fdf4f68c424e231bbd61d45202792c5d27f21821ae322728",
+    "parent": null,
+    "merkle_root": null
+  }
 }

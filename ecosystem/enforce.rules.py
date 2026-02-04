@@ -322,11 +322,18 @@ class EnforcementCoordinator:
             canonical_str = canonicalize_json(layered_data)
             sha256_hash = hashlib.sha256(canonical_str.encode('utf-8')).hexdigest()
             
-            # 添加規範化信息到 artifact 數據
-            artifact_data["sha256_hash"] = sha256_hash
+            # 添加規範化信息到 artifact 數據（governance-defined storage）
+            artifact_data["sha256_hash"] = sha256_hash  # Legacy compatibility (Era-1 only)
             artifact_data["canonical_hash"] = sha256_hash
             artifact_data["canonicalization_version"] = "1.0"
             artifact_data["canonicalization_method"] = "JCS+LayeredSorting"
+            
+            # 添加 hash chain（Era-1: self only）
+            artifact_data["hash_chain"] = {
+                "self": sha256_hash,
+                "parent": None,  # Era-1: no parent
+                "merkle_root": None  # Era-1: no Merkle tree
+            }
             
         except Exception as e:
             # 如果規範化工具不可用，使用傳統方法
@@ -392,17 +399,55 @@ class EnforcementCoordinator:
         
         return layered
     
+    def _get_last_event_hash(self) -> Optional[str]:
+        """獲取上一個事件的 hash"""
+        event_stream_file = self.ecosystem / ".governance" / "event-stream.jsonl"
+        if not event_stream_file.exists():
+            return None
+        
+        with open(event_stream_file, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            if lines:
+                last_event = json.loads(lines[-1])
+                return last_event.get("hash_chain", {}).get("self")
+        
+        return None
+    
+    def _get_last_artifact_hash(self) -> Optional[str]:
+        """獲取上一個 artifact 的 hash"""
+        # 找到上一個 step 的 artifact
+        for i in range(10, 0, -1):
+            artifact_file = self.ecosystem / ".evidence" / f"step-{i}.json"
+            if artifact_file.exists():
+                with open(artifact_file, 'r', encoding='utf-8') as f:
+                    artifact = json.load(f)
+                    return artifact.get("hash_chain", {}).get("self")
+        
+        return None
+    
     def _write_step_event(
         self, 
         step_number: int, 
-        result: 'EnforcementResult'
+        result: 'EnforcementResult',
+        artifact_file: Optional[Path] = None
     ) -> str:
         """
         寫入步驟執行事件到 event-stream.jsonl
+        包含 canonicalization 和 hash chain（governance-defined storage）
         """
+        import hashlib
+        
         event_id = str(uuid.uuid4())
         timestamp = datetime.now(timezone.utc).isoformat()
         
+        # 獲取 artifact hash
+        artifact_hash = None
+        if artifact_file and artifact_file.exists():
+            with open(artifact_file, 'r', encoding='utf-8') as f:
+                artifact = json.load(f)
+                artifact_hash = artifact.get("hash_chain", {}).get("self")
+        
+        # 準備事件數據（不包含 hash 字段）
         event_data = {
             "event_id": event_id,
             "event_type": "STEP_EXECUTED",
@@ -413,6 +458,44 @@ class EnforcementCoordinator:
             "violations_count": len(result.violations) if result.violations else 0,
             "execution_time_ms": result.execution_time_ms,
             "phase": result.phase if hasattr(result, 'phase') else f"Step_{step_number}"
+        }
+        
+        if artifact_file:
+            event_data["artifact_file"] = str(artifact_file)
+        
+        if artifact_hash:
+            event_data["artifact_hash"] = artifact_hash
+        
+        # 規範化並計算 hash
+        try:
+            import sys
+            from pathlib import Path
+            workspace_root = Path(self.workspace)
+            if str(workspace_root) not in sys.path:
+                sys.path.insert(0, str(workspace_root))
+            
+            from ecosystem.tools.canonicalize import canonicalize_json
+            canonical_str = canonicalize_json(event_data)
+            canonical_hash = hashlib.sha256(canonical_str.encode('utf-8')).hexdigest()
+            
+        except Exception as e:
+            # Fallback to legacy method
+            print(f"[WARNING] Event canonicalization failed ({e}), using legacy method")
+            event_json = json.dumps(event_data, sort_keys=True, ensure_ascii=False)
+            canonical_hash = hashlib.sha256(event_json.encode()).hexdigest()
+        
+        # 獲取上一個 hashes
+        previous_event_hash = self._get_last_event_hash()
+        previous_artifact_hash = self._get_last_artifact_hash()
+        
+        # 添加 hash 字段（governance-defined storage）
+        event_data["canonical_hash"] = canonical_hash
+        event_data["canonicalization_version"] = "1.0"
+        event_data["canonicalization_method"] = "JCS+LayeredSorting"
+        event_data["hash_chain"] = {
+            "self": canonical_hash,
+            "previous_event": previous_event_hash,
+            "previous_artifact": previous_artifact_hash
         }
         
         # 寫入事件流
@@ -766,7 +849,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=1, result=result)
-        self._write_step_event(step_number=1, result=result)
+        self._write_step_event(step_number=1, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -867,7 +950,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=2, result=result)
-        self._write_step_event(step_number=2, result=result)
+        self._write_step_event(step_number=2, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -960,7 +1043,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=3, result=result)
-        self._write_step_event(step_number=3, result=result)
+        self._write_step_event(step_number=3, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1055,7 +1138,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=4, result=result)
-        self._write_step_event(step_number=4, result=result)
+        self._write_step_event(step_number=4, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1145,7 +1228,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=5, result=result)
-        self._write_step_event(step_number=5, result=result)
+        self._write_step_event(step_number=5, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1220,7 +1303,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=6, result=result)
-        self._write_step_event(step_number=6, result=result)
+        self._write_step_event(step_number=6, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1270,7 +1353,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=7, result=result)
-        self._write_step_event(step_number=7, result=result)
+        self._write_step_event(step_number=7, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1341,7 +1424,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=8, result=result)
-        self._write_step_event(step_number=8, result=result)
+        self._write_step_event(step_number=8, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1409,7 +1492,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=9, result=result)
-        self._write_step_event(step_number=9, result=result)
+        self._write_step_event(step_number=9, result=result, artifact_file=artifact_file)
         
         return result
     
@@ -1481,7 +1564,7 @@ class EnforcementCoordinator:
         
         # 證據鏈寫入
         artifact_file = self._generate_artifact(step_number=10, result=result)
-        self._write_step_event(step_number=10, result=result)
+        self._write_step_event(step_number=10, result=result, artifact_file=artifact_file)
         
         # 標記 Era-1 證據鏈啟動完成（非治理閉環）
         self.mark_evidence_bootstrap()
@@ -1542,6 +1625,95 @@ class EnforcementCoordinator:
         print("目前僅在 Operational Layer 達成穩定，Governance Layer 仍在建構中。")
         print("未來仍需：Era 封存、核心 hash 封存、語義閉環與治理一致性驗證。")
         print("=" * 70 + "\n")
+    
+    def _generate_hash_registry(self) -> Dict[str, Any]:
+        """
+        生成 hash registry（governance-defined central hash storage）
+        
+        包含：
+        - 所有 artifact hashes
+        - 事件統計和 hashes
+        - Hash chains（artifact 和 event）
+        - Era-1 → Era-2 遷移支持（預留）
+        - Integrity 驗證信息
+        """
+        import hashlib
+        
+        # 收集所有 artifact hashes
+        artifacts = {}
+        for i in range(1, 11):
+            artifact_file = self.ecosystem / ".evidence" / f"step-{i}.json"
+            if artifact_file.exists():
+                with open(artifact_file, 'r', encoding='utf-8') as f:
+                    artifact = json.load(f)
+                    artifacts[f"step-{i}"] = artifact.get("canonical_hash")
+        
+        # 收集事件 hashes
+        event_stream_file = self.ecosystem / ".governance" / "event-stream.jsonl"
+        event_hashes = []
+        
+        if event_stream_file.exists():
+            with open(event_stream_file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    event = json.loads(line)
+                    event_hashes.append(event.get("canonical_hash"))
+        
+        # 構建 hash registry
+        registry = {
+            "specification_version": "1.0",
+            "era": self.current_era(),
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "canonicalization_method": "JCS+LayeredSorting",
+            
+            # Artifacts
+            "artifacts": artifacts,
+            
+            # Events
+            "events": {
+                "event-count": len(event_hashes),
+                "first-event": event_hashes[0] if event_hashes else None,
+                "last-event": event_hashes[-1] if event_hashes else None,
+                "merkle-root": None  # Era-1: no Merkle tree
+            },
+            
+            # Era migration support（Era-2）
+            "era1_to_era2": {},
+            "era2_to_era1": {},
+            
+            # Hash chains
+            "hash_chains": {
+                "artifact_chain": list(artifacts.values()),
+                "event_chain": event_hashes
+            },
+            
+            # Merkle tree（Era-2 optional）
+            "merkle_tree": {
+                "enabled": False,
+                "root": None,
+                "proofs": {}
+            },
+            
+            # Integrity verification
+            "integrity": {
+                "total_hashes": len(artifacts) + len(event_hashes),
+                "verified": True,
+                "verification_timestamp": datetime.now(timezone.utc).isoformat()
+            }
+        }
+        
+        # 保存 registry
+        governance_dir = self.ecosystem / ".governance"
+        governance_dir.mkdir(parents=True, exist_ok=True)
+        
+        registry_file = governance_dir / "hash-registry.json"
+        with open(registry_file, 'w', encoding='utf-8') as f:
+            json.dump(registry, f, indent=2, ensure_ascii=False)
+        
+        print(f"[INFO] Hash registry generated: {registry_file}")
+        print(f"[INFO] Total hashes: {registry['integrity']['total_hashes']}")
+        
+        return registry
+    
     def run_full_cycle(self) -> Dict[str, Any]:
         """
         執行完整的 10 步驟閉環治理流程
@@ -1601,6 +1773,9 @@ class EnforcementCoordinator:
             
             result_10 = self.step_10_loop_back()
             results.append(result_10)
+            
+            # 生成 hash registry（governance-defined central hash storage）
+            hash_registry = self._generate_hash_registry()
 
             # 在 Step 10 之後輸出額外區塊
             self._print_pending_governance_section()
