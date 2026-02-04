@@ -416,10 +416,12 @@ class EnforcementCoordinator:
                 content = f.read()
             
             # 簡單的 YAML 解析器（用於替代 yaml.safe_load）
-            # 這是一個最小實現，處理基本的 key-value 結構
+            # 改進版：處理嵌套字典和列表
             def parse_yaml(content):
                 result = {}
                 current_dict = result
+                current_list = None
+                current_list_key = None
                 stack = []
                 
                 for line in content.split('\n'):
@@ -429,56 +431,165 @@ class EnforcementCoordinator:
                     
                     # 計算縮進
                     indent = len(line) - len(line.lstrip())
-                    line = line.strip()
+                    stripped_line = line.strip()
+                    
+                    # 處理 @ 開頭的元數據（轉換為注釋）
+                    if stripped_line.startswith('@'):
+                        continue
                     
                     # 處理縮進層級
                     while stack and stack[-1]['indent'] >= indent:
-                        stack.pop()
+                        popped = stack.pop()
+                        if popped.get('is_list'):
+                            current_list = None
+                            current_list_key = None
+                        else:
+                            current_dict = popped['dict']
                     
                     if stack:
-                        current_dict = stack[-1]['dict']
+                        if stack[-1].get('is_list'):
+                            current_dict = stack[-1]['parent_dict']
+                            current_list = stack[-1].get('list')
+                            current_list_key = stack[-1].get('list_key')
+                        else:
+                            current_dict = stack[-1]['dict']
                     
                     # 處理 key-value
-                    if ':' in line:
-                        parts = line.split(':', 1)
+                    if ':' in stripped_line:
+                        parts = stripped_line.split(':', 1)
                         key = parts[0].strip()
                         value = parts[1].strip() if len(parts) > 1 else None
                         
                         if value is None or value == '':
                             # 這是一個嵌套字典
-                            new_dict = {}
-                            current_dict[key] = new_dict
-                            stack.append({'indent': indent, 'dict': new_dict})
+                            if current_list is not None:
+                                # 在列表中創建嵌套字典
+                                new_dict = {}
+                                current_list.append(new_dict)
+                                stack.append({
+                                    'indent': indent,
+                                    'dict': new_dict,
+                                    'parent_dict': current_dict,
+                                    'list_key': current_list_key,
+                                    'is_list': False
+                                })
+                                current_dict = new_dict
+                            else:
+                                # 在字典中創建嵌套字典
+                                new_dict = {}
+                                current_dict[key] = new_dict
+                                stack.append({'indent': indent, 'dict': new_dict, 'is_list': False})
+                                current_dict = new_dict
                         elif value.startswith('"') or value.startswith("'"):
                             # 字符串值
-                            current_dict[key] = value[1:-1]
+                            value = value[1:-1]
+                            if current_list is not None:
+                                current_list.append(value)
+                            else:
+                                current_dict[key] = value
                         elif value == 'true':
-                            current_dict[key] = True
+                            if current_list is not None:
+                                current_list.append(True)
+                            else:
+                                current_dict[key] = True
                         elif value == 'false':
-                            current_dict[key] = False
+                            if current_list is not None:
+                                current_list.append(False)
+                            else:
+                                current_dict[key] = False
                         elif value.isdigit():
-                            current_dict[key] = int(value)
+                            if current_list is not None:
+                                current_list.append(int(value))
+                            else:
+                                current_dict[key] = int(value)
                         elif value.count('.') == 1 and value.replace('.', '').isdigit():
-                            # 真正的浮點數（只有一個小數點）
-                            current_dict[key] = float(value)
+                            # 真正的浮點數
+                            if current_list is not None:
+                                current_list.append(float(value))
+                            else:
+                                current_dict[key] = float(value)
                         else:
-                            # 保持字符串（可能是版本號如 "1.0.0"）
-                            current_dict[key] = value
-                    elif line.startswith('- '):
+                            # 保持字符串
+                            if current_list is not None:
+                                current_list.append(value)
+                            else:
+                                current_dict[key] = value
+                    elif stripped_line.startswith('- '):
                         # 列表項
-                        list_value = line[2:].strip()
-                        if list_value.startswith('"') or list_value.startswith("'"):
-                            list_value = list_value[1:-1]
+                        list_value = stripped_line[2:].strip()
                         
-                        if key not in current_dict:
-                            current_dict[key] = []
-                        current_dict[key].append(list_value)
+                        if current_list is None:
+                            # 創建新列表
+                            if ':' in list_value:
+                                # 列表項是嵌套字典的開始
+                                parts = list_value.split(':', 1)
+                                key = parts[0].strip()
+                                value = parts[1].strip() if len(parts) > 1 else None
+                                
+                                new_list = current_dict.get(key, [])
+                                current_dict[key] = new_list
+                                
+                                if value is None or value == '':
+                                    new_dict = {}
+                                    new_list.append(new_dict)
+                                    stack.append({
+                                        'indent': indent,
+                                        'list': new_list,
+                                        'list_key': key,
+                                        'parent_dict': current_dict,
+                                        'is_list': True
+                                    })
+                                    current_list = new_list
+                                    current_dict = new_dict
+                                else:
+                                    if value.startswith('"') or value.startswith("'"):
+                                        value = value[1:-1]
+                                    new_list.append(value)
+                            else:
+                                # 簡單列表
+                                # 嘗試確定列表的鍵（使用上一個鍵或默認）
+                                if len(stack) > 0 and 'list_key' in stack[-1]:
+                                    list_key = stack[-1]['list_key']
+                                else:
+                                    list_key = 'items'
+                                
+                                if list_key not in current_dict:
+                                    current_dict[list_key] = []
+                                current_list = current_dict[list_key]
+                                
+                                if list_value.startswith('"') or list_value.startswith("'"):
+                                    list_value = list_value[1:-1]
+                                current_list.append(list_value)
+                        else:
+                            # 添加到現有列表
+                            if ':' in list_value:
+                                # 嵌套字典
+                                parts = list_value.split(':', 1)
+                                key = parts[0].strip()
+                                value = parts[1].strip() if len(parts) > 1 else None
+                                
+                                new_dict = {}
+                                current_list.append(new_dict)
+                                stack.append({
+                                    'indent': indent,
+                                    'list': current_list,
+                                    'list_key': current_list_key,
+                                    'parent_dict': current_dict,
+                                    'is_list': True
+                                })
+                                current_dict = new_dict
+                            else:
+                                if list_value.startswith('"') or list_value.startswith("'"):
+                                    list_value = list_value[1:-1]
+                                current_list.append(list_value)
                 
                 return result
             
             return parse_yaml(content)
         except Exception as e:
             print(f"[ERROR] Failed to load {file_path}: {e}")
+            import traceback
+            traceback.print_exc()
             return None
     
     def _parse_violation_handling(self) -> Dict[Action, EnforcementAction]:
