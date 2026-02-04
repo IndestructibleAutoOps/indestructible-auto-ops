@@ -5,9 +5,9 @@
 #
 # Registration is MANDATORY before tool creation (see tool-definition-protocol.md)
 
-version: "1.1.1"
+version: "1.1.2"
 era: "1"
-last_updated: "2026-02-04T11:30:00Z"
+last_updated: "2026-02-04T14:21:00Z"
 
 # ============================================================================
 # REGISTERED TOOLS (已注册工具)
@@ -46,6 +46,20 @@ registered_tools:
     status: "active"
     approved_by: "governance_layer"
     approved_date: "2026-02-01"
+  
+  - name: "materialization_complement_generator.py"
+    category: "governance"
+    era: "1"
+    purpose: "實體化補件生成器，為語義聲明生成具體實現補件"
+    input_schema: "command_line_args"
+    output_schema: "complement_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Materialization Complement Generator that scans reports for semantic declarations and generates concrete implementation complements without downgrading (preserving all semantic declarations and providing materialized evidence)"
+    file_path: "ecosystem/tools/materialization_complement_generator.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
   
   # --------------------------------------------------------------------------
   # CATEGORY 2: GOVERNANCE TOOLS (治理工具)
@@ -125,10 +139,41 @@ registered_tools:
     approved_by: "governance_layer"
     approved_date: "2026-02-04"
   
+  - name: "materialization_complement_generator_v2.py"
+    category: "governance"
+    era: "1"
+    purpose: "Era-1 語義實體化補件生成器 v2.0，整合 RFC 8785 正規化、證明攜帶工件、語義完整性約束"
+    input_schema: "report_files"
+    output_schema: "complements, verification_results"
+    evidence_generation: "true"
+    canonicalization: "RFC8785+LayeredSorting"
+    proof_carrying: "true"
+    immutable: "false"
+    description: "Enhanced materialization complement generator with RFC 8785 canonicalization, proof-carrying artifacts, semantic integrity constraints, and governance-first workflow"
+    file_path: "ecosystem/tools/materialization_complement_generator_v2.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
   - name: "self_auditor.py"
     category: "governance"
     era: "1"
     purpose: "自我审计器，记录和验证治理操作"
+  - name: "materialization_complement_generator_v2.py"
+    category: "governance"
+    era: "1"
+    purpose: "Era-1 語義實體化補件生成器 v2.0，整合 RFC 8785 正規化、證明攜帶工件、語義完整性約束"
+    input_schema: "report_files"
+    output_schema: "complements, verification_results"
+    evidence_generation: "true"
+    canonicalization: "RFC8785+LayeredSorting"
+    proof_carrying: "true"
+    immutable: "false"
+    description: "Enhanced materialization complement generator with RFC 8785 canonicalization, proof-carrying artifacts, semantic integrity constraints, and governance-first workflow"
+    file_path: "ecosystem/tools/materialization_complement_generator_v2.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
     input_schema: "operation_context"
     output_schema: "audit_trail"
     evidence_generation: "true"

@@ -1,7 +1,7 @@
 {
-  "artifact_id": "df173f6f-dc72-47ab-a79a-6fe77b338c99",
+  "artifact_id": "92997e79-264c-430a-aa59-cb2be29f58d0",
   "step_number": 1,
-  "timestamp": "2026-02-04T16:52:28.380170+00:00",
+  "timestamp": "2026-02-04T22:13:09.845826+00:00",
   "era": 1,
   "success": true,
   "metadata": {
@@ -22,21 +22,21 @@
         "reverse_architecture"
       ],
       "bound_subsystems": 7,
-      "governance_events_count": 361,
-      "last_enforcement_check": "2026-02-04T16:52:28.377246+00:00"
+      "governance_events_count": 405,
+      "last_enforcement_check": "2026-02-04T22:13:09.843261+00:00"
     }
   },
-  "execution_time_ms": 2,
+  "execution_time_ms": 11,
   "violations_count": 0,
   "artifacts_generated": [
     "local_state_model.json"
   ],
-  "sha256_hash": "f3b820c5ac5ff551283d5a9dc6cc07f079e4049a606601473d31ea876d2878fc",
-  "canonical_hash": "f3b820c5ac5ff551283d5a9dc6cc07f079e4049a606601473d31ea876d2878fc",
+  "sha256_hash": "a509af98b3e0d9f74198fb90f00a55687f890803af8d4999d075ae8ef3da18f6",
+  "canonical_hash": "a509af98b3e0d9f74198fb90f00a55687f890803af8d4999d075ae8ef3da18f6",
   "canonicalization_version": "1.0",
   "canonicalization_method": "JCS+LayeredSorting",
   "hash_chain": {
-    "self": "f3b820c5ac5ff551283d5a9dc6cc07f079e4049a606601473d31ea876d2878fc",
+    "self": "a509af98b3e0d9f74198fb90f00a55687f890803af8d4999d075ae8ef3da18f6",
     "parent": null,
     "merkle_root": null
   }
