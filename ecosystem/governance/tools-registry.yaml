@@ -111,6 +111,20 @@ registered_tools:
     approved_by: "governance_layer"
     approved_date: "2026-02-04"
   
+  - name: "semantic_entity_task_converter.py"
+    category: "governance"
+    era: "1"
+    purpose: "語義實體任務轉換器，將語義違規轉為實作任務"
+    input_schema: "violation_data"
+    output_schema: "implementation_tasks"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Semantic Entity Task Converter that transforms semantic violations into actionable implementation tasks, generating tool stubs, schemas, and task tracking"
+    file_path: "ecosystem/tools/semantic_entity_task_converter.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
   - name: "self_auditor.py"
     category: "governance"
     era: "1"
@@ -604,6 +618,15 @@ maintenance_notes:
 # ============================================================================
 
 change_log:
+  - version: "1.1.2"
+    date: "2026-02-04"
+    changes:
+      - "Added semantic_entity_task_converter.py to governance tools"
+      - "Implemented automatic violation-to-task conversion system"
+      - "Generated 419 tasks from semantic violations"
+      - "Active tools increased from 12 to 13"
+      - "Governance tools increased from 9 to 10"
+
   - version: "1.1.1"
     date: "2026-02-04"
     changes:
