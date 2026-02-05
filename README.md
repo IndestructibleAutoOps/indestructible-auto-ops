@@ -157,6 +157,10 @@ machine-native-ops/
 
 ## Documentation
 
+### Deep Dive & Upgrade
+- [Project Deep Dive](docs/PROJECT-DEEP-DIVE.md)
+- [Upgrade & Restructure Plan](docs/UPGRADE-RESTRUCTURE-PLAN.md)
+
 ### Core Documentation
 - [One-Stop Architecture and Specification Hub](ONE-STOP-ARCHITECTURE-SPECS.md)
 - [Directory Boundary Specification](gl-enterprise-architecture/governance/directory-boundary-specification.md)
