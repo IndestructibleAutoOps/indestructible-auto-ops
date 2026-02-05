@@ -1,0 +1,435 @@
+# Phase 2 架構分析：IndestructibleAutoOps 分類屬性映射
+
+## 日期
+2026-02-05
+
+## 分析源文件
+Violations Update Enhanced Solution Report（用戶提供）
+
+---
+
+## 1. 層級（Layer）映射分析
+
+### 1.1 L1 - Governance Layer（治理層）
+**定義**：策略定義、規則制定、決策框架
+
+**IndestructibleAutoOps 對應組件**：
+- `severity_classifier.py` - 違規嚴重性分類規則
+- `governance_registry.yaml` - 治理規則定義
+- GLCM 模組（NAR、FCT、UNC、EVC、Auto）- 無敘事封存規則
+- Governance Control Plane - 統一治理架構
+- Authorization Policies（Istio、Kong） - 訪問控制規則
+
+**責任邊界**：
+- 前端：無（純策略層）
+- 後端：全部（Governance Registry、GLCM 引擎、規則決策）
+
+---
+
+### 1.2 L2 - Evidence Layer（封存層）
+**定義**：證據收集、哈希鏈驗證、規範化
+
+**IndestructibleAutoOps 對應組件**：
+- `evidence_collector.py` - 證據收集
+- `canonicalizer.py` - 規範化處理
+- `hashchain_verifier.py` - 哈希鏈驗證
+- Evidence Chain Storage（PostgreSQL、S3/GCS）
+- Blockchain Integration（Hyperledger、Ethereum）
+
+**責任邊界**：
+- 前端：證據展示、驗證結果呈現
+- 後端：證據收集、Hash Chain 維護、Canonicalization、Immutable Storage
+
+---
+
+### 1.3 L3 - Decision Layer（決策層）
+**定義**：修復決策、優先級排序、影響分析
+
+**IndestructibleAutoOps 對應組件**：
+- `auto_fix_engine.py` - 自動修復決策
+- `impact_analyzer.py` - 影響分析
+- Approval Workflow - 人工審核決策
+- Risk Assessment - 風險評分決策
+
+**責任邊界**：
+- 前端：決策展示、用戶確認
+- 後端：算法決策、優先級排序、影響計算
+
+---
+
+### 1.4 L4 - Semantic Layer（語意層）
+**定義**：無敘事語言規範、語意標準化、多語言支持
+
+**IndestructibleAutoOps 對應組件**：
+- `enhanced_semantic_scanner.py` - 語意掃描
+- GLCM-NAR 規範 - 無敘事語言標準
+- GLCM-FCT 檢測 - 虛假時間線檢測
+- GLCM-UNC 檢測 - 未封存結論檢測
+- GLCM-EVC 強制 - 證據鏈強制
+- Multi-language Support - 跨語言語意
+
+**責任邊界**：
+- 前端：語言展示、文本解析請求
+- 後端：AST 分析、Pattern Matching、語意驗證、Multi-language Processing
+
+---
+
+### 1.5 L5 - Execution Layer（執行層）
+**定義**：實際執行、驗證、監控
+
+**IndestructibleAutoOps 對應組件**：
+- CI/CD Integrator（GitHub Actions、GitLab CI、Jenkins）
+- Fix Application（Dry-run、實際應用）
+- Rollback Scripts - 回滾能力
+- Validation Engine - 測試驗證
+- Monitoring & Alerting - 執行監控
+- Health Check API - 系統健康監控
+
+**責任邊界**：
+- 前端：執行進度展示、日誌查看
+- 後端：實際代碼修改、測試運行、部署執行、監控收集
+
+---
+
+## 2. 業務領域（Domain）映射
+
+### 2.1 D1 - Governance Domain
+**責任範疇**：治理規則、策略框架、決策引擎
+
+**組件清單**：
+- L1: Governance Control Plane（層級）
+- L3: Decision Engine（層級）
+- Capability: C1, C2, C4, C12, C13（分類、驗證、強制）
+- Artifacts: 
+  - `governance_registry.yaml`
+  - `severity_classifier.py`
+  - `authorization_policies.yaml`（Istio、Kong）
+
+**前後端責任**：
+- 前端：治理規則展示、策略編輯界面
+- 後端：規則引擎、決策算法、策略存儲
+
+---
+
+### 2.2 D2 - Evidence Domain
+**責任範疇**：證據收集、追蹤、驗證
+
+**組件清單**：
+- L2: Evidence Layer（層級）
+- Capability: C5, C6, C8, C9（Hash Chain、Canonicalization、收集、審計）
+- Artifacts:
+  - `canonicalizer.py`
+  - `hashchain_verifier.py`
+  - `evidence_collector.py`
+  - Evidence Chain Storage（PostgreSQL、Blockchain）
+
+**前後端責任**：
+- 前端：證據查看、驗證結果呈現
+- 後端：證據收集、Hash Chain 維護、Canonicalization、存儲
+
+---
+
+### 2.3 D3 - Replay Domain
+**責任範疇**：重播機制、時間線驗證
+
+**組件清單**：
+- L4: Semantic Layer（語意層）
+- Capability: C7, C11（重播能力、虛假時間線檢測）
+- Artifacts:
+  - GLCM-FCT 檢測模組
+  - Replay Engine
+  - Timeline Verification
+
+**前後端責任**：
+- 前端：重播結果展示、時間線可視化
+- 後端：重播執行、時間線驗證、虛假時間線檢測
+
+---
+
+### 2.4 D4 - Semantic Domain
+**責任範疇**：語言規範、多語言支持、語意標準化
+
+**組件清單**：
+- L4: Semantic Layer（層級）
+- Capability: C10, C11, C12, C13（GLCM-NAR、FCT、UNC、EVC）
+- Artifacts:
+  - `enhanced_semantic_scanner.py`
+  - GLCM 模組規範
+  - Multi-language parsers
+
+**前後端責任**：
+- 前端：代碼顯示、語言標記
+- 後端：AST 分析、Pattern Matching、語意驗證、多語言處理
+
+---
+
+## 3. 能力（Capability）完整映射
+
+### 3.1 L1 層級能力
+
+| ID | 名稱 | 描述 | 所屬 Domain | 前端 | 後端 |
+|----|------|------|-----------|------|------|
+| C1 | Violation Detection | 多層檢測（靜態、運行時、語意） | D4 | 檢測結果展示 | Static/Runtime Scanners |
+| C2 | Violation Classification | 按嚴重性分類（CRITICAL/HIGH/MEDIUM/LOW） | D1 | 分類結果表格 | Severity Classifier |
+| C4 | Fix Validation | 驗證修復是否有效 | D1 | 驗證結果顯示 | Test Runner、Static Analyzer |
+| C12 | GLCM-UNC Detection | 檢測未封存的結論 | D1/D4 | 違規標記 | UNC Detector |
+| C13 | GLCM-EVC Enforcement | 強制證據鏈完整性 | D1 | 強制狀態展示 | EVC Enforcement Engine |
+
+### 3.2 L2 層級能力
+
+| ID | 名稱 | 描述 | 所屬 Domain | 前端 | 後端 |
+|----|------|------|-----------|------|------|
+| C5 | Hash Chain Verification | 驗證 Hash Chain 完整性 | D2 | Chain 可視化 | Hash Verifier |
+| C6 | Canonicalization | 規範化數據表示 | D2 | 規範化結果展示 | Canonicalizer |
+| C8 | Evidence Collection | 收集違規證據 | D2 | 證據列表 | Collector Component |
+| C9 | Audit Trail Generation | 生成審計追蹤 | D2 | 審計日誌顯示 | Audit Engine |
+
+### 3.3 L3 層級能力
+
+| ID | 名稱 | 描述 | 所屬 Domain | 前端 | 後端 |
+|----|------|------|-----------|------|------|
+| C3 | Auto-Fix Generation | AI 驅動的修復生成 | D1 | 修復建議展示 | Auto Fix Engine |
+| - | Impact Analysis | 評估修復影響 | D1 | 影響報告 | Impact Analyzer |
+| - | Approval Workflow | 高危修復需人工批准 | D1 | 批准界面 | Workflow Engine |
+
+### 3.4 L4 層級能力
+
+| ID | 名稱 | 描述 | 所屬 Domain | 前端 | 後端 |
+|----|------|------|-----------|------|------|
+| C7 | Replay Capability | 重播操作序列 | D3 | 重播結果展示 | Replay Engine |
+| C10 | GLCM-NAR | 無敘事語言規範 | D4 | 語言標記 | NAR Enforcer |
+| C11 | GLCM-FCT Detection | 虛假時間線檢測 | D3/D4 | 時間線警告 | FCT Detector |
+
+### 3.5 L5 層級能力
+
+| ID | 名稱 | 描述 | 所屬 Domain | 前端 | 後端 |
+|----|------|------|-----------|------|------|
+| - | Dry-run Execution | 模擬修復執行 | - | 執行計劃展示 | Dry-run Runner |
+| - | Fix Application | 實際應用修復 | - | 應用進度 | Executor |
+| - | Rollback Support | 修復回滾能力 | - | 回滾按鈕 | Rollback Engine |
+| - | Test Validation | 修復後測試驗證 | - | 測試結果 | Test Framework |
+
+---
+
+## 4. 組件（Component）清單
+
+### 4.1 後端組件（Backend）
+
+| 組件 ID | 組件名稱 | 文件 | Layer | Capability | 語言 |
+|--------|---------|------|-------|-----------|------|
+| COMP-BE-1 | Semantic Scanner | `enhanced_semantic_scanner.py` | L1, L4 | C1, C10, C11 | Python |
+| COMP-BE-2 | Severity Classifier | `severity_classifier.py` | L1 | C2 | Python |
+| COMP-BE-3 | Auto Fix Engine | `auto_fix_engine.py` | L3 | C3 | Python |
+| COMP-BE-4 | Evidence Collector | `evidence_collector.py` | L2 | C8 | Python |
+| COMP-BE-5 | Canonicalizer | `canonicalizer.py` | L2 | C6 | Python |
+| COMP-BE-6 | Hash Chain Verifier | `hashchain_verifier.py` | L2 | C5 | Python |
+| COMP-BE-7 | Impact Analyzer | `impact_analyzer.py` | L3 | - | Python |
+| COMP-BE-8 | Governance Control Plane | Service Mesh + Kong Plugin | L1 | C2, C13 | Lua/Config |
+| COMP-BE-9 | CI/CD Integrator | GitHub Actions YAML | L5 | - | YAML |
+| COMP-BE-10 | Replay Engine | Custom Service | L4, D3 | C7 | Python |
+
+### 4.2 前端組件（Frontend）
+
+| 組件 ID | 組件名稱 | 描述 | Layer | 功能 |
+|--------|---------|------|-------|------|
+| COMP-FE-1 | Dashboard | 違規概覽、統計 | L1 | 首頁展示 |
+| COMP-FE-2 | Violation Viewer | 違規詳情、分類 | L1 | 違規查看 |
+| COMP-FE-3 | Fix Suggestion Panel | 修復建議、預覽 | L3 | 修復建議 |
+| COMP-FE-4 | Evidence Viewer | 證據鏈展示、驗證 | L2 | 證據查看 |
+| COMP-FE-5 | Audit Trail Browser | 審計日誌查看 | L2 | 審計追蹤 |
+| COMP-FE-6 | Approval Workflow UI | 批准/拒絕界面 | L3 | 批准流程 |
+| COMP-FE-7 | Deployment Monitor | 部署進度監控 | L5 | 執行監控 |
+| COMP-FE-8 | Configuration Editor | Registry 編輯界面 | L1 | 配置管理 |
+
+---
+
+## 5. 責任邊界（Responsibility Boundary）
+
+### 5.1 前端責任
+
+**數據流向**：`UI 交互` → `API 調用` → `數據呈現`
+
+**具體責任**：
+1. **用戶界面**：所有可視化、表單、儀表盤
+2. **交互邏輯**：用戶操作、頁面導航、狀態管理
+3. **數據呈現**：結果格式化、圖表繪製、列表顯示
+4. **驗證**：前端表單驗證、輸入檢查（非安全層面）
+5. **本地存儲**：會話狀態、用戶偏好設置
+
+**不涉及**：
+- 真正的違規檢測算法
+- 治理規則執行
+- Hash Chain 驗證
+- 密碼學操作
+
+### 5.2 後端責任
+
+**數據流向**：`Registry 查詢` → `規則應用` → `決策生成` → `執行`
+
+**具體責任**：
+1. **檢測和分類**：靜態分析、運行時監控、語意掃描、嚴重性分類
+2. **治理引擎**：規則執行、決策生成、GLCM 強制、證據鏈驗證
+3. **修復生成**：AI 驅動的修復、驗證、測試
+4. **證據管理**：收集、規範化、哈希化、存儲、重播
+5. **執行控制**：Dry-run、實際執行、回滾、監控
+6. **審計**：審計追蹤、日誌記錄、合規性報告
+
+**安全責任**：
+- 認證、授權（JWT、OAuth、mTLS）
+- 加密（傳輸中、存儲中）
+- 密鑰管理
+- 訪問控制（RBAC）
+
+### 5.3 責任邊界矩陣
+
+| 功能 | 前端 | 後端 | 共享 |
+|------|------|------|------|
+| 違規檢測 | 結果展示 | 檢測執行 | - |
+| 嚴重性分類 | 分類標記 | 分類算法 | - |
+| 修復建議 | UI 展示 | 生成、驗證 | - |
+| 批准流程 | 批准按鈕 | 流程控制、規則檢查 | - |
+| 證據驗證 | 鏈式展示 | Hash 驗證 | - |
+| 審計追蹤 | 日誌查看 | 日誌生成、存儲 | - |
+| 部署控制 | 進度展示 | 實際執行 | 狀態推送 |
+| 配置管理 | Registry 編輯UI | Registry 存儲、驗證 | - |
+
+---
+
+## 6. 層級間的依賴關係（Dependencies）
+
+### 6.1 垂直依賴（Vertical）
+
+```
+L5: Execution Layer
+    ↑ depends on
+L4: Semantic Layer
+    ↑ depends on
+L3: Decision Layer
+    ↑ depends on
+L2: Evidence Layer
+    ↑ depends on
+L1: Governance Layer
+```
+
+**具體依賴**：
+- L5 需要 L4 的語意驗證結果（語言規範檢查）
+- L4 需要 L3 的決策（是否應該重播）
+- L3 需要 L2 的證據（影響分析需要歷史數據）
+- L2 需要 L1 的規則（誰能訪問、如何規範化）
+
+### 6.2 跨域依賴（Cross-Domain）
+
+```
+D1 (Governance)
+    ↔ D2 (Evidence)：規則決定證據收集
+    ↔ D3 (Replay)：規則決定重播條件
+    ↔ D4 (Semantic)：規則強制語言標準
+
+D2 (Evidence)
+    ↔ D4 (Semantic)：證據必須符合語言標準
+
+D3 (Replay)
+    ↔ D4 (Semantic)：重播必須驗證語言規範
+```
+
+### 6.3 關鍵時序依賴
+
+```
+1. Detection (D4/L1) 
+   ↓
+2. Classification (D1/L1)
+   ↓
+3. Evidence Collection (D2/L2)
+   ↓
+4. Decision Making (D1/L3)
+   ↓
+5. Fix Generation & Validation (D1/L3-L4)
+   ↓
+6. Approval (if needed)
+   ↓
+7. Execution (D1/L5)
+   ↓
+8. Audit Trail Generation (D2/L2)
+```
+
+---
+
+## 7. 前端/後端架構建議
+
+### 7.1 推薦架構圖
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Frontend Layer                     │
+│   (Dashboard, Viewers, Editors, Monitors)           │
+│   責任: UI、交互、展示                               │
+└────────────────────┬────────────────────────────────┘
+                     │
+                     ↓ REST API / GraphQL
+        
+┌─────────────────────────────────────────────────────┐
+│              API Gateway / Kong                      │
+│   (Authentication, Authorization, Rate Limiting)    │
+└────────────────────┬────────────────────────────────┘
+                     │
+        ┌────────────┼────────────┐
+        ↓            ↓            ↓
+    ┌────────┐  ┌────────┐  ┌────────┐
+    │ L1/L3  │  │  L2    │  │ L4/L5  │
+    │Govern- │  │Evidence│  │Execution
+    │ance    │  │Manager │  │Engine
+    └────────┘  └────────┘  └────────┘
+    (Decision)  (Storage)   (Execution)
+        │            │            │
+        └────────────┼────────────┘
+                     ↓
+    ┌─────────────────────────────┐
+    │   Registries & Storage      │
+    │ (PostgreSQL, S3, Blockchain)│
+    └─────────────────────────────┘
+```
+
+### 7.2 技術棧建議
+
+**前端**：
+- Framework：React / Vue / Angular
+- State Management：Redux / Vuex / Pinia
+- UI Components：Ant Design / Material UI
+
+**後端**：
+- Language：Python (Flask/FastAPI)
+- Service Mesh：Istio（治理層）
+- API Gateway：Kong（L1 策略強制）
+- Storage：PostgreSQL、Redis、S3、Blockchain
+
+---
+
+## 8. 分類屬性集成總結
+
+### 8.1 IndestructibleAutoOps 的完整分類
+
+| 分類維度 | 實例 | 所屬 Layer/Domain | 責任 |
+|---------|------|------------------|------|
+| **Layer** | L1-L5 | 全部 | 架構邊界定義 |
+| **Domain** | D1-D4 | 全部 | 業務領域 |
+| **Capability** | C1-C13+ | L1-L5 | 平台能力 |
+| **Component** | COMP-BE-1 to 10、COMP-FE-1 to 8 | 具體實現 | 技術實現 |
+| **Responsibility** | Frontend/Backend | 混合 | 前後端邊界 |
+| **Dependency** | Vertical/Cross-Domain | 全部 | 組件關係 |
+
+### 8.2 待定義屬性（Phase 3-6）
+
+- **Tier**（優先級）：根據 Capability 定義
+- **Stage**（成熟度）：根據 Phase 定義
+- **Track**（平行開發）：識別團隊分工
+- **Stream**（長期演進）：Era-1 → Era-2 → Era-3
+- **Environment**（執行環境）：Local / CI / Prod / Audit
+
+---
+
+## 下一步
+
+**Phase 3**：設計三層註冊表體系結構與 YAML 規範
+- 確定 YAML 文件結構
+- 定義驗證規則
+- 建立版本管理策略

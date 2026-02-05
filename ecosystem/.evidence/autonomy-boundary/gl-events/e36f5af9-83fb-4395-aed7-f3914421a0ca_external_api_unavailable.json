@@ -1,0 +1,24 @@
+[
+  {
+    "event_id": "37115c0a-f1e6-42b3-bf4c-fd8d4797d3d0",
+    "timestamp": "2026-02-05T02:17:26.287591+00:00",
+    "era": 1,
+    "event_type": "external_api_unavailable",
+    "details": {
+      "test_id": "e36f5af9-83fb-4395-aed7-f3914421a0ca",
+      "failure_type": "network_isolation"
+    },
+    "canonical_hash": "sha256:8b5128f5be165572b6cf07cae22985eb6d7e72b0e8e3fed91be159afa0874d55"
+  },
+  {
+    "event_id": "8ad1847f-5e88-41c3-b936-ad2c0d875518",
+    "timestamp": "2026-02-05T02:17:26.287604+00:00",
+    "era": 1,
+    "event_type": "degraded_mode_activated",
+    "details": {
+      "test_id": "e36f5af9-83fb-4395-aed7-f3914421a0ca",
+      "mode": "local_governance_cache"
+    },
+    "canonical_hash": "sha256:a6ca86e5f0adae1e99be630ae0003b0df1c7309a98137bd67e06dea36b3850fc"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "test_id": "ABT-001",
+  "scenario": "external_api_unavailable",
+  "timestamp": "2026-02-05T12:52:01.821159Z",
+  "kill_switch_capability": {
+    "enabled": true,
+    "immediate_stop_time_ms": 100,
+    "graceful_shutdown_time_ms": 500,
+    "policy_violation_stop_time_ms": 50,
+    "cleanup_required": true
+  },
+  "kill_switch_tests": [
+    {
+      "type": "immediate_stop",
+      "trigger": "GOVERNANCE_KILL_SWITCH_IMMEDIATE",
+      "expected_behavior": "stop_all_autonomous_actions_within_100ms",
+      "test_injection": "trigger_kill_switch_during_cache_fallback",
+      "response_time_limit_ms": 100,
+      "status": "PENDING"
+    },
+    {
+      "type": "graceful_shutdown",
+      "trigger": "GOVERNANCE_KILL_SWITCH_GRACEFUL",
+      "expected_behavior": "complete_current_action_then_stop",
+      "test_injection": "trigger_kill_switch_after_action_start",
+      "response_time_limit_ms": 500,
+      "status": "PENDING"
+    },
+    {
+      "type": "policy_violation_stop",
+      "trigger": "POLICY_VIOLATION_DETECTED",
+      "expected_behavior": "stop_and_escalate_immediately",
+      "test_injection": "violate_cache_age_boundary",
+      "response_time_limit_ms": 50,
+      "status": "PENDING"
+    }
+  ],
+  "verification_status": "PENDING"
+}

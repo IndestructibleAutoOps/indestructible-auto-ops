@@ -1,0 +1,353 @@
+# Pilot / Parallel Run Plan for Era-1 → Era-2 Migration
+# Defines which modules migrate first, how to run in parallel, and conflict resolution
+
+version: "1.0"
+era_transition: "era-1 → era-2"
+effective_date: "2026-02-05T00:00:00Z"
+plan_owner: "IndestructibleAutoOps"
+plan_status: "proposed"
+
+# Pilot Phase
+pilot_phase:
+  enabled: true
+  description: "Initial pilot migration of selected modules to validate Era-2 infrastructure"
+  estimated_duration: "2-3 weeks"
+  success_criteria:
+    - "All pilot modules successfully migrated"
+    - "Hash translation verification 100%"
+    - "Semantic continuity 100%"
+    - "No cross-Era conflicts detected"
+    - "Performance within 10% of Era-1 baseline"
+  
+  # Pilot modules (modules that will migrate to Era-2 first)
+  pilot_modules:
+    - module: "hash_translation_engine"
+      category: "migration_infrastructure"
+      priority: "critical"
+      description: "Core migration infrastructure - generates HTT"
+      era: "era-2"
+      dependencies: []
+      migration_date: "2026-02-05"
+      status: "deployed"
+    
+    - module: "enforce.rules"
+      category: "governance_enforcement"
+      priority: "high"
+      description: "Main governance enforcement engine"
+      era: "era-2"
+      dependencies: ["hash_translation_engine"]
+      migration_date: "2026-02-10"
+      status: "pending"
+    
+    - module: "evidence_verification_engine"
+      category: "verification"
+      priority: "high"
+      description: "Evidence verification logic"
+      era: "era-2"
+      dependencies: ["hash_translation_engine"]
+      migration_date: "2026-02-12"
+      status: "pending"
+    
+    - module: "semantic_validator"
+      category: "semantic_validation"
+      priority: "medium"
+      description: "Semantic declaration validation"
+      era: "era-2"
+      dependencies: ["evidence_verification_engine"]
+      migration_date: "2026-02-15"
+      status: "pending"
+    
+    - module: "canonicalize"
+      category: "canonicalization"
+      priority: "medium"
+      description: "JSON/YAML canonicalization tool"
+      era: "era-2"
+      dependencies: []
+      migration_date: "2026-02-08"
+      status: "pending"
+
+# Parallel Run Phase
+parallel_run_phase:
+  enabled: true
+  description: "Run Era-1 and Era-2 in parallel to validate consistency"
+  estimated_duration: "1-2 weeks"
+  parallel_duration: "14 days"
+  
+  # Parallel modules (modules that maintain Era-1 while Era-2 is validated)
+  parallel_modules:
+    - module: "enforce"
+      category: "core_governance"
+      priority: "critical"
+      description: "Core governance enforcement (keep in Era-1 for stability)"
+      era: "era-1"
+      era_2_counterpart: "enforce.rules"
+      keep_reason: "Production stability - validate Era-2 before switch"
+      status: "active"
+    
+    - module: "governance_closure_engine"
+      category: "closure"
+      priority: "high"
+      description: "Governance closure engine"
+      era: "era-1"
+      era_2_counterpart: "governance_closure_engine_v2"
+      keep_reason: "Era-1 closure must remain sealed"
+      status: "active"
+    
+    - module: "evidence_chain_diagnostic"
+      category: "diagnostic"
+      priority: "medium"
+      description: "Evidence chain diagnostic tool"
+      era: "era-1"
+      era_2_counterpart: "evidence_chain_diagnostic_v2"
+      keep_reason: "Validate Era-2 diagnostics"
+      status: "active"
+
+# Synchronization Strategy
+synchronization:
+  # Hash synchronization
+  hash_sync:
+    enabled: true
+    frequency: "real-time"
+    mechanism: "event-driven"
+    source: "era-1"
+    target: "era-2"
+    translation_table: "governance/migration/hashtranslationtable.jsonl"
+    verification: "bidirectional"
+  
+  # Complement synchronization
+  complement_sync:
+    enabled: true
+    frequency: "on-demand"
+    mechanism: "translation_engine"
+    source: "era-1"
+    target: "era-2"
+    translation_method: "semantic_preserve"
+    verification: "replay_test"
+  
+  # Event stream synchronization
+  event_stream_sync:
+    enabled: true
+    frequency: "real-time"
+    mechanism: "stream_bridge"
+    source: "era-1"
+    target: "era-2"
+    fields_to_translate:
+      - "era"
+      - "semantic_version"
+      - "canonical_hash"
+      - "hash_chain"
+    verification: "chain_continuity"
+
+# Cross-Era Conflict Resolution
+conflict_resolution:
+  engine: "cross_era_conflict_resolver"
+  enabled: true
+  
+  resolution_strategies:
+    - name: "hash_collision"
+      description: "Era-1 and Era-2 hashes conflict"
+      priority: "critical"
+      action: "use_htt_mapping"
+      automated: true
+    
+    - name: "semantic_mismatch"
+      description: "Semantic declarations differ between Eras"
+      priority: "high"
+      action: "use_era2_semantics_with_htt_reference"
+      automated: true
+    
+    - name: "chain_break"
+      description: "Hash chain broken during migration"
+      priority: "critical"
+      action: "repair_chain_using_htt"
+      automated: true
+    
+    - name: "artifact_missing"
+      description: "Artifact exists in one Era but not the other"
+      priority: "medium"
+      action: "create_era2_complement"
+      automated: true
+    
+    - name: "version_incompatible"
+      description: "Artifact version incompatible across Eras"
+      priority: "high"
+      action: "require_manual_review"
+      automated: false
+  
+  escalation_path:
+    level_1_automated:
+      - "hash_collision"
+      - "semantic_mismatch"
+      - "artifact_missing"
+    
+    level_2_semi_automated:
+      - "chain_break"
+      - "version_incompatible"
+      requires_review: true
+    
+    level_3_manual:
+      - "unresolvable_conflict"
+      requires_escalation: true
+      approvers: ["IndestructibleAutoOps"]
+
+# Rollback Plan
+rollback_plan:
+  enabled: true
+  trigger_conditions:
+    - "critical_unresolvable_conflicts"
+    - "performance_degradation_50%"
+    - "data_corruption_detected"
+    - "security_compromise"
+  
+  rollback_steps:
+    1:
+      action: "pause_new_migrations"
+      description: "Stop new Era-2 migrations"
+    
+    2:
+      action: "revert_pilot_modules"
+      description: "Revert pilot modules to Era-1"
+      modules: ["hash_translation_engine", "enforce.rules", "evidence_verification_engine"]
+    
+    3:
+      action: "validate_era1_integrity"
+      description: "Verify Era-1 system integrity"
+    
+    4:
+      action: "restore_era1_closure"
+      description: "Ensure Era-1 closure is intact"
+    
+    5:
+      action: "document_incident"
+      description: "Document rollback incident and lessons learned"
+  
+  rollback_verification:
+    - "All modules running Era-1"
+    - "Era-1 closure sealed"
+    - "HTT preserved for future retry"
+    - "No data loss"
+
+# Performance Benchmarks
+performance_benchmarks:
+  era1_baseline:
+    hash_computation: "0.001s"
+    verification_time: "0.5s"
+    migration_time: "N/A"
+  
+  era2_target:
+    hash_computation: "0.0015s"  # +50% acceptable
+    verification_time: "0.6s"    # +20% acceptable
+    migration_time: "0.05s"
+  
+  performance_thresholds:
+    hash_computation_max: "0.002s"
+    verification_time_max: "0.75s"
+    migration_time_max: "0.1s"
+
+# Monitoring and Metrics
+monitoring:
+  metrics_to_track:
+    - name: "htt_translation_success_rate"
+      description: "Percentage of successful hash translations"
+      target: "100%"
+      alert_threshold: "< 95%"
+    
+    - name: "semantic_continuity_score"
+      description: "Score for semantic continuity"
+      target: "100%"
+      alert_threshold: "< 90%"
+    
+    - name: "chain_integrity_score"
+      description: "Hash chain integrity score"
+      target: "100%"
+      alert_threshold: "< 95%"
+    
+    - name: "cross_era_conflicts"
+      description: "Number of cross-Era conflicts"
+      target: "0"
+      alert_threshold: "> 0"
+    
+    - name: "migration_success_rate"
+      description: "Percentage of successful migrations"
+      target: "100%"
+      alert_threshold: "< 95%"
+    
+    - name: "performance_degradation"
+      description: "Performance degradation vs Era-1"
+      target: "< 10%"
+      alert_threshold: "> 20%"
+
+# Phase Transition Criteria
+phase_transitions:
+  pilot_to_parallel:
+    criteria:
+      - "All pilot modules migrated successfully"
+      - "HTT verification 100%"
+      - "Semantic continuity 100%"
+      - "Zero critical conflicts"
+      - "Performance within 10%"
+    approval_required: true
+    approvers: ["IndestructibleAutoOps"]
+  
+  parallel_to_full_migration:
+    criteria:
+      - "Parallel run completed (14 days)"
+      - "Zero unresolvable conflicts"
+      - "Performance within 5%"
+      - "All stakeholders approved"
+    approval_required: true
+    approvers: ["IndestructibleAutoOps", "governance_committee"]
+
+# Dependencies
+dependencies:
+  required_before_pilot:
+    - "hashtranslationtable.jsonl"
+    - "era-2.yaml hash spec"
+    - "test_hash_translation.py"
+    - "migration_tests_passed"
+  
+  required_before_parallel:
+    - "pilot_modules_deployed"
+    - "pilot_validation_passed"
+    - "synchronization_infrastructure_ready"
+  
+  required_before_full_migration:
+    - "parallel_run_completed"
+    - "all_conflicts_resolved"
+    - "era_1_closure_sealed"
+    - "era_2_ready"
+
+# Risk Assessment
+risk_assessment:
+  risks:
+    - name: "hash_collision_risk"
+      probability: "low"
+      impact: "medium"
+      mitigation: "HTT provides bidirectional mapping"
+    
+    - name: "semantic_breakage_risk"
+      probability: "low"
+      impact: "high"
+      mitigation: "Semantic delta tracking and validation"
+    
+    - name: "chain_break_risk"
+      probability: "low"
+      impact: "critical"
+      mitigation: "HTT chain references and repair logic"
+    
+    - name: "performance_regression_risk"
+      probability: "medium"
+      impact: "medium"
+      mitigation: "Performance benchmarks and rollback plan"
+    
+    - name: "rollback_complexity"
+      probability: "low"
+      impact: "high"
+      mitigation: "Comprehensive rollback plan tested"
+
+# References
+references:
+  - "ecosystem/governance/migration/hash-translation-spec-v1.md"
+  - "ecosystem/governance/hash_spec/era-2.yaml"
+  - "ecosystem/governance/migration/hashtranslationtable.jsonl"
+  - "ecosystem/tests/migration/test_hash_translation.py"

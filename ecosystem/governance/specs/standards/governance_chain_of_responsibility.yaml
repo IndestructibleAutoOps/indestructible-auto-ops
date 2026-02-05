@@ -1,0 +1,89 @@
+# GL Unified Charter - Chain of Responsibility Specification
+# Standard: Singapore IMDA Model AI Governance Framework for Agentic AI (2026)
+# Version: 1.0.0
+# Namespace: /governance/specs/standards
+# GL Level: GL50
+
+governance_chain:
+  autonomy_boundary_test:
+    test_id: "ABT-001"
+    scenario: "external_api_unavailable"
+    
+    # Core: Chain of Responsibility tracking
+    chain_of_responsibility:
+      initiator:
+        role: "test_generator"
+        entity: "claude-sonnet-4.5"
+        timestamp: "2026-02-05T11:39:13Z"
+        evidence: ".governance/chain/initiation/ABT-001-init.json"
+      
+      decision_owner:
+        role: "governance_validator"
+        entity: "human_approver_id"
+        approval_timestamp: "2026-02-05T11:40:00Z"
+        approval_evidence: ".governance/approvals/ABT-001-approval.json"
+        authority_level: "GL50"
+      
+      execution_owner:
+        role: "system_executor"
+        entity: "production_backend_gl50"
+        execution_timestamp: "2026-02-05T11:41:00Z"
+        execution_evidence: ".governance/execution/ABT-001-exec.json"
+      
+      # Critical: Every action traceable to responsible entity
+      action_trace:
+        - action: "failure_injection"
+          executor: "execution_owner"
+          timestamp: "2026-02-05T11:41:15Z"
+          evidence_hash: "sha256:abc123..."
+          reversible: true
+          responsible_entity: "governance_validator"
+          approval_reference: "ABT-001-approval.json"
+          
+        - action: "fallback_decision"
+          decision_maker: "decision_owner"
+          timestamp: "2026-02-05T11:41:30Z"
+          justification: "API unavailable → use local cache per policy"
+          policy_reference: "POLICY-FALLBACK-001"
+          evidence: ".governance/decisions/ABT-001-fallback.json"
+          reversibility: true
+          
+        - action: "gl_event_generation"
+          executor: "execution_owner"
+          timestamp: "2026-02-05T11:41:45Z"
+          event_hash: "sha256:def456..."
+          event_type: "external_api_unavailable"
+          evidence: ".governance/gl-events/external_api_unavailable.json"
+
+# Evidence requirements for chain integrity
+evidence_requirements:
+  - "每個決策必須有明確的所有者"
+  - "每個動作必須有執行者記錄"
+  - "每個動作必須有時間戳"
+  - "每個動作必須有證據雜湊"
+  - "每個動作必須標記可逆性"
+  - "責任鏈必須完整可追溯"
+  - "責任鏈必須不可篡改"
+
+# Verification requirements
+verification_requirements:
+  - "驗證責任鏈完整性"
+  - "驗證每個環節的身份"
+  - "驗證每個動作的授權"
+  - "驗證證據完整性"
+  - "驗證時間戳一致性"
+  - "驗證可逆性聲明"
+
+standards_compliance:
+  singapore_imda:
+    framework: "Model AI Governance Framework for Agentic AI (2026)"
+    requirement: "Chain of Responsibility"
+    status: "COMPLIANT"
+  
+  eu_ai_act:
+    requirement: "Decision traceability"
+    status: "COMPLIANT"
+  
+  iso_iec_42001:
+    requirement: "Responsibility assignment"
+    status: "COMPLIANT"

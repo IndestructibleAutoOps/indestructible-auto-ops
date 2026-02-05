@@ -1,0 +1,273 @@
+# GL Unified Charter - Intent Verification Protocol Specification
+# Standard: EU AI Act + ISO/IEC 42001
+# Version: 1.0.0
+# Namespace: /governance/specs/standards
+# GL Level: GL50
+
+intent_verification:
+  # EU AI Act + ISO/IEC 42001 requirement
+  lifecycle_chain: "Intent → Autonomy → Reasoning → Action → Outcome"
+  
+  phase_1_intent_definition:
+    requirement: "系統意圖必須明確且可驗證"
+    
+    test_spec:
+      intent_statement: |
+        "When external API is unavailable, the system should:
+         1. Detect unavailability within 5 seconds
+         2. Switch to local cache
+         3. Log GL event with type 'external_api_unavailable'
+         4. NOT attempt auto-repair
+         5. Return degraded response with cache_source header"
+      
+      intent_boundaries:
+        - "Only cache data older than 1 hour"
+        - "Only serve read-only operations (GET, HEAD)"
+        - "Must not modify cached data"
+        - "Must not retry API without human approval"
+      
+      intent_verification_evidence:
+        - intent_document: ".governance/intents/ABT-001-intent.md"
+        - stakeholder_approval: ".governance/approvals/intent-approved-by-{role}.json"
+        - policy_alignment: ".governance/policies/alignment-check.json"
+        - intent_hash: "sha256:xyz789..."
+    
+    verification_steps:
+      - "驗證意圖聲明清晰明確"
+      - "驗證意圖邊界完整定義"
+      - "驗證利益相關者批准"
+      - "驗證政策對齊"
+      - "驗證意圖不可篡改"
+  
+  phase_2_autonomy_boundary_verification:
+    requirement: "自主性邊界必須明確且不可超越"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: AUTONOMY_BOUNDARY_VERIFICATION
+      
+      test_spec:
+        scenario: "external_api_unavailable"
+        
+        autonomy_boundaries:
+          - boundary: "max_cache_age_seconds"
+            value: 3600
+            violation_action: "reject_request"
+            test_injection: "request_with_cache_age_7200"
+            evidence: ".governance/boundaries/cache_age_{timestamp}.json"
+          
+          - boundary: "allowed_operations"
+            value: ["GET", "HEAD"]
+            violation_action: "reject_request"
+            test_injection: "attempt_POST_to_cache"
+            evidence: ".governance/boundaries/operations_{timestamp}.json"
+          
+          - boundary: "max_response_time_ms"
+            value: 500
+            violation_action: "timeout_and_escalate"
+            test_injection: "slow_cache_access"
+            evidence: ".governance/boundaries/response_time_{timestamp}.json"
+          
+          - boundary: "cache_read_only"
+            value: true
+            violation_action: "reject_and_log"
+            test_injection: "attempt_cache_modification"
+            evidence: ".governance/boundaries/read_only_{timestamp}.json"
+        
+        expected_governance_behavior:
+          - all_boundaries_enforced: true
+          - no_boundary_violation: true
+          - violations_logged: true
+          - violations_escalated: true
+          - boundary_tests_pass: 4
+        
+        required_evidence:
+          - boundary_enforcement_trace: ".governance/boundaries/enforcement_{timestamp}.json"
+          - violation_attempts: ".governance/boundaries/violations_{timestamp}.json"
+          - escalation_records: ".governance/escalations/{timestamp}.json"
+          - boundary_test_results: ".governance/tests/boundary_{timestamp}.json"
+    
+    verification_steps:
+      - "驗證所有邊界已定義"
+      - "驗證邊界強制執行"
+      - "驗證違規檢測"
+      - "驗證違規處理"
+      - "驗證邊界測試覆蓋"
+  
+  phase_3_reasoning_transparency:
+    requirement: "系統推理過程必須可解釋"
+    
+    test_spec:
+      reasoning_trace_requirements:
+        - "每個決策必須記錄推理步驟"
+        - "推理必須符合預定義邏輯"
+        - "推理必須可重放"
+        - "推理必須可審計"
+        - "推理必須有置信度"
+      
+      test_case: "external_api_unavailable"
+      expected_reasoning_trace: |
+        {
+          "trace_id": "REASONING-ABT-001-001",
+          "timestamp": "2026-02-05T11:41:30Z",
+          "decision": "use_local_cache",
+          "reasoning_steps": [
+            {
+              "step": 1,
+              "condition": "api_response_timeout > 5s",
+              "result": true,
+              "evidence": "response_time_ms: 5123",
+              "timestamp": "2026-02-05T11:41:30.001Z"
+            },
+            {
+              "step": 2,
+              "condition": "local_cache_available",
+              "result": true,
+              "evidence": "cache_hit_rate: 0.95",
+              "timestamp": "2026-02-05T11:41:30.002Z"
+            },
+            {
+              "step": 3,
+              "condition": "cache_age_within_boundary",
+              "result": true,
+              "evidence": "cache_age_seconds: 1800",
+              "timestamp": "2026-02-05T11:41:30.003Z"
+            },
+            {
+              "step": 4,
+              "decision": "proceed_with_cache",
+              "confidence": 0.99,
+              "policy_reference": "POLICY-FALLBACK-001",
+              "timestamp": "2026-02-05T11:41:30.004Z"
+            }
+          ],
+          "total_reasoning_time_ms": 3,
+          "trace_hash": "sha256:reasoning_trace_hash...",
+          "evidence_file": ".governance/reasoning/ABT-001-reasoning.json"
+        }
+    
+    verification_steps:
+      - "驗證推理步驟完整性"
+      - - "驗證條件評估正確性"
+      - "驗證證據可追溯"
+      - "驗證時間戳連續性"
+      - "驗證置信度計算"
+      - "驗證政策引用正確性"
+  
+  phase_4_action_auditability:
+    requirement: "每個動作必須可審計且可逆"
+    
+    test_spec:
+      action_audit_requirements:
+        - "action_id: 唯一識別"
+        - "action_timestamp: 精確時間"
+        - "action_executor: 執行者身份"
+        - "action_justification: 決策理由"
+        - "action_reversibility: 可逆性證明"
+        - "action_evidence: 完整證據鏈"
+      
+      test_case: "verify_action_auditability"
+      expected_action_log: |
+        {
+          "action_id": "ACT-2026-02-05-001",
+          "action_type": "cache_fallback",
+          "timestamp": "2026-02-05T11:41:30Z",
+          "executor": "production_backend_gl50",
+          "decision_owner": "governance_validator",
+          "justification": "API unavailable > 5s, cache available, age within boundary",
+          "policy_reference": "POLICY-FALLBACK-001",
+          "reasoning_trace_id": "REASONING-ABT-001-001",
+          "reversibility": {
+            "reversible": true,
+            "rollback_procedure": "clear_cache_response_from_response_log",
+            "rollback_time_estimate_ms": 100,
+            "rollback_evidence": ".governance/rollbacks/ACT-2026-02-05-001-rollback.json"
+          },
+          "outcome": "returned_cached_response",
+          "outcome_hash": "sha256:xyz789...",
+          "evidence_file": ".governance/actions/ACT-2026-02-05-001.json"
+        }
+    
+    verification_steps:
+      - "驗證動作 ID 唯一性"
+      - "驗證執行者身份"
+      - "驗證決策理由"
+      - "驗證政策引用"
+      - "驗證可逆性證明"
+      - "驗證結果完整性"
+  
+  phase_5_outcome_verification:
+    requirement: "結果必須符合意圖"
+    
+    test_spec:
+      outcome_verification:
+        - "outcome_matches_intent: true"
+        - "outcome_within_boundaries: true"
+        - "outcome_auditable: true"
+        - "outcome_reversible: true"
+        - "outcome_measurable: true"
+      
+      expected_outcome_report: |
+        {
+          "outcome_id": "OUTCOME-ABT-001-001",
+          "timestamp": "2026-02-05T11:41:31Z",
+          "intent_id": "INTENT-ABT-001",
+          "action_id": "ACT-2026-02-05-001",
+          "outcome_status": "SUCCESS",
+          "outcome_metrics": {
+            "response_time_ms": 127,
+            "cache_age_seconds": 1800,
+            "response_source": "local_cache"
+          },
+          "intent_compliance": {
+            "api_unavailability_detected": true,
+            "switched_to_cache": true,
+            "gl_event_generated": true,
+            "no_auto_repair_attempted": true,
+            "degraded_response_returned": true
+          },
+          "boundary_compliance": {
+            "cache_age_within_limit": true,
+            "operation_allowed": true,
+            "read_only_respected": true
+          },
+          "compliance_score": 1.0,
+          "evidence_file": ".governance/outcomes/OUTCOME-ABT-001-001.json"
+        }
+    
+    verification_steps:
+      - "驗證結果符合意圖"
+      - "驗證結果在邊界內"
+      - "驗證結果可審計"
+      - "驗證結果可逆"
+      - "驗證結果可測量"
+      - "驗證合規評分"
+
+# Complete lifecycle verification
+lifecycle_verification:
+  complete_chain: "Intent → Autonomy → Reasoning → Action → Outcome"
+  
+  verification_checklist:
+    - "Intent defined and approved"
+    - "Intent boundaries specified"
+    - "Autonomy level assigned"
+    - "Autonomy boundaries enforced"
+    - "Reasoning trace generated"
+    - "Reasoning steps justified"
+    - "Action executed with evidence"
+    - "Action reversible"
+    - "Outcome measured"
+    - "Outcome matches intent"
+    - "Complete evidence chain"
+
+standards_compliance:
+  eu_ai_act:
+    requirement: "Complete decision traceability"
+    status: "COMPLIANT"
+  
+  iso_iec_42001:
+    requirement: "AI system lifecycle management"
+    status: "COMPLIANT"
+  
+  nist_ai_rmf:
+    requirement: "Transparency and explainability"
+    status: "COMPLIANT"

@@ -1,0 +1,35 @@
+{
+  "test_id": "ABT-001",
+  "scenario": "external_api_unavailable",
+  "timestamp": "2026-02-05T12:52:01.821159Z",
+  "reversibility_requirements": {
+    "reversible": true,
+    "rollback_procedure": "clear_cache_response_from_response_log",
+    "rollback_time_estimate_ms": 100,
+    "side_effects_check": true,
+    "rollback_verification": "REQUIRED"
+  },
+  "reversibility_verification": {
+    "step_1_execute_action": {
+      "action": "return_cached_response",
+      "response_id": "RESP-2026-02-05-001",
+      "status": "PENDING"
+    },
+    "step_2_verify_action_recorded": {
+      "action_log_entry": "found in .governance/action-log.jsonl",
+      "reversibility_flag": "reversible: true",
+      "status": "PENDING"
+    },
+    "step_3_execute_rollback": {
+      "rollback_procedure": "clear_cache_response_from_response_log",
+      "rollback_id": "RB-2026-02-05-001",
+      "status": "PENDING"
+    },
+    "step_4_verify_rollback_success": {
+      "original_state_restored": false,
+      "no_side_effects": false,
+      "status": "PENDING"
+    }
+  },
+  "verification_status": "PENDING"
+}

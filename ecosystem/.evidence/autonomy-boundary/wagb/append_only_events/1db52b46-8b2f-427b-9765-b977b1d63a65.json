@@ -1,0 +1,20 @@
+[
+  {
+    "event_id": "db73e72c-b598-4234-a5be-015d928434b3",
+    "timestamp": "2026-02-05T02:18:50.305429+00:00",
+    "type": "write_operation",
+    "operation": {
+      "table": "self_healing_decisions",
+      "action": "INSERT",
+      "data": {
+        "test_id": "1db52b46-8b2f-427b-9765-b977b1d63a65"
+      }
+    },
+    "metadata": {
+      "original_timestamp": "2026-02-05T02:18:50.305431+00:00",
+      "db_write_blocked": true,
+      "fallback_to_wagb": true
+    },
+    "canonical_hash": "sha256:9d4f3695f6f497bdbae95c77481f580a69cdecf4fb37d60470c6cffb43a7b82b"
+  }
+]

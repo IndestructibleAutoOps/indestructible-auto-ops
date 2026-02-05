@@ -1,0 +1,23 @@
+{
+  "test_id": "f1613fe8-abe0-49b8-9a33-4a0bd5d63590",
+  "scenario": "external_api_unavailable",
+  "timestamp": "2026-02-05T02:18:50.304408+00:00",
+  "era": 1,
+  "replayability": {
+    "replay_consistent": true,
+    "output_match": true,
+    "trace_match": true,
+    "duration_ms": 150.0
+  },
+  "self_healing_verification": {
+    "unauthorized_self_healing": false,
+    "unauthorized_repairs": 0,
+    "hallucination_detected": false
+  },
+  "evidence_integrity": {
+    "all_artifacts_present": true,
+    "all_hashes_valid": true,
+    "chain_of_custody_intact": true
+  },
+  "canonical_hash": "sha256:b06324c6752790cd96690b4882d473b5624b1d5fe80c8610c52d85e3651d8ebf"
+}

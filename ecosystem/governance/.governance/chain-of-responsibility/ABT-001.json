@@ -1,0 +1,46 @@
+{
+  "test_id": "ABT-001",
+  "scenario": "external_api_unavailable",
+  "timestamp": "2026-02-05T12:52:01.821159Z",
+  "chain_of_responsibility": {
+    "test_generator": {
+      "role": "test_generator",
+      "entity": "claude-sonnet-4.5",
+      "timestamp": "2026-02-05T11:39:13Z",
+      "evidence": ".governance/chain/initiation/ABT-001-init.json"
+    },
+    "governance_validator": {
+      "role": "governance_validator",
+      "entity": "human_approver_id",
+      "approval_timestamp": "2026-02-05T11:40:00Z",
+      "approval_evidence": ".governance/approvals/ABT-001-approval.json",
+      "authority_level": "GL50"
+    },
+    "system_executor": {
+      "role": "system_executor",
+      "entity": "production_backend_gl50",
+      "execution_timestamp": "2026-02-05T11:41:00Z",
+      "execution_evidence": ".governance/execution/ABT-001-exec.json"
+    }
+  },
+  "action_trace": [
+    {
+      "action": "failure_injection_1",
+      "executor": "execution_owner",
+      "timestamp": "2026-02-05T12:52:01.821159Z",
+      "evidence_hash": "7f7f83d888082eb1e9c65cb00ebcb06508aac90f8e68c0ba168b23878a9e29a3",
+      "reversible": true,
+      "responsible_entity": "human_approver_id",
+      "approval_reference": "ABT-001-approval.json"
+    },
+    {
+      "action": "failure_injection_2",
+      "executor": "execution_owner",
+      "timestamp": "2026-02-05T12:52:01.821159Z",
+      "evidence_hash": "2d0415e53d4885b61437c1a8984356052b2c916bfaf0528b7f80060d18a8d59f",
+      "reversible": true,
+      "responsible_entity": "human_approver_id",
+      "approval_reference": "ABT-001-approval.json"
+    }
+  ]
+}

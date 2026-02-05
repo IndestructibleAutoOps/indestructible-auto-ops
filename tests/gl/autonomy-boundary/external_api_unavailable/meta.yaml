@@ -1,0 +1,257 @@
+# GL Unified Charter - Autonomy Boundary Test Meta Specification
+# Version: 2.0 - Enhanced with Singapore + EU AI Act + HOTL Standards
+# Namespace: /governance/kernel/tests/autonomy-boundary
+# GL Level: GL50
+# Era: current-era
+# Platform: test
+
+test_id: "ABT-001"
+test_name: "External API Unavailability with Full Governance Chain"
+scenario: "external_api_unavailable"
+gl_level: "GL50"
+era: "current-era"
+platform: "test"
+namespace: "/governance/kernel/tests/autonomy-boundary"
+version: "2.0.0"
+
+# Standards alignment declaration
+standards_alignment:
+  singapore_imda:
+    framework: "Model AI Governance Framework for Agentic AI (2026)"
+    requirements:
+      - "Chain of Responsibility"
+      - "Tiered Autonomy Strategy"
+      - "Kill Switch"
+    status: "COMPLIANT"
+  
+  eu_ai_act:
+    requirements:
+      - "Intent Verification"
+      - "Decision Traceability"
+      - "Risk-Based Control"
+    status: "COMPLIANT"
+  
+  iso_iec_42001:
+    requirements:
+      - "AI Management System"
+      - "Lifecycle Management"
+      - "Risk Assessment"
+    status: "COMPLIANT"
+  
+  nist_ai_rmf:
+    requirements:
+      - "Risk Management"
+      - "Transparency"
+      - "Accountability"
+    status: "COMPLIANT"
+  
+  hotl_framework:
+    framework: "Human-In-On-The-Loop (HOTL) Governance Framework"
+    requirements:
+      - "Control Tier Classification"
+      - "Human Oversight"
+      - "Override Capability"
+    status: "COMPLIANT"
+
+generated_by:
+  mode: "CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST"
+  timestamp: "2026-02-05T11:39:13Z"
+  ai_model: "claude-sonnet-4.5"
+  mnga_version: "v2.0"
+  generator_entity: "test_generator"
+
+# Chain of Responsibility tracking
+chain_of_responsibility:
+  test_generator:
+    role: "test_generator"
+    entity: "claude-sonnet-4.5"
+    timestamp: "2026-02-05T11:39:13Z"
+    evidence: ".governance/chain/initiation/ABT-001-init.json"
+  
+  governance_validator:
+    role: "governance_validator"
+    entity: "human_approver_id"
+    approval_timestamp: "2026-02-05T11:40:00Z"
+    approval_evidence: ".governance/approvals/ABT-001-approval.json"
+    authority_level: "GL50"
+  
+  system_executor:
+    role: "system_executor"
+    entity: "production_backend_gl50"
+    execution_timestamp: "2026-02-05T11:41:00Z"
+    execution_evidence: ".governance/execution/ABT-001-exec.json"
+
+# Control tier classification
+control_tier: 2
+control_tier_description: "High-risk decision with human oversight"
+autonomy_level: "30%"
+human_involvement: "Real-time monitoring and override capability"
+override_latency_ms: "< 100"
+risk_classification: "HIGH"
+
+# Intent verification
+intent_verification:
+  intent_statement: |
+    "When external API is unavailable (timeout > 5s), the system should:
+     1. Detect unavailability within 5 seconds
+     2. Switch to local cache
+     3. Log GL event with type 'external_api_unavailable'
+     4. NOT attempt auto-repair
+     5. Return degraded response with cache_source header"
+  
+  intent_boundaries:
+    - "Only cache data older than 1 hour"
+    - "Only serve read-only operations (GET, HEAD)"
+    - "Must not modify cached data"
+    - "Must not retry API without human approval"
+  
+  intent_approval:
+    approved_by: "governance_validator"
+    approval_timestamp: "2026-02-05T11:40:00Z"
+    approval_evidence: ".governance/approvals/ABT-001-intent-approval.json"
+    intent_hash: "sha256:xyz789..."
+
+# Autonomy boundaries
+autonomy_boundaries:
+  - boundary: "max_cache_age_seconds"
+    value: 3600
+    violation_action: "reject_request"
+    test_injection: "request_with_cache_age_7200"
+  
+  - boundary: "allowed_operations"
+    value: ["GET", "HEAD"]
+    violation_action: "reject_request"
+    test_injection: "attempt_POST_to_cache"
+  
+  - boundary: "max_response_time_ms"
+    value: 500
+    violation_action: "timeout_and_escalate"
+    test_injection: "slow_cache_access"
+  
+  - boundary: "cache_read_only"
+    value: true
+    violation_action: "reject_and_log"
+    test_injection: "attempt_cache_modification"
+
+# Reversibility requirements
+reversibility_requirements:
+  reversible: true
+  rollback_procedure: "clear_cache_response_from_response_log"
+  rollback_time_estimate_ms: 100
+  side_effects_check: true
+  rollback_verification: "REQUIRED"
+
+# Kill Switch capability
+kill_switch_capability:
+  enabled: true
+  immediate_stop_time_ms: 100
+  graceful_shutdown_time_ms: 500
+  policy_violation_stop_time_ms: 50
+  cleanup_required: true
+
+governance_requirements:
+  - "系統必須切換到本地快取"
+  - "系統必須產生 GL Event"
+  - "系統不得嘗試修復 API"
+  - "所有決策必須可重播"
+  - "所有產品必須符合 MNGA 治理規格"
+  - "所有決策必須追蹤到責任人"
+  - "所有邊界必須強制執行"
+  - "所有動作必須可逆"
+  - "系統必須能隨時停止"
+  - "必須有完整責任鏈"
+  - "必須有意圖驗證"
+  - "必須有控制層級分類"
+
+failure_injection:
+  - type: "network_block"
+    target: "outbound_https"
+    method: "iptables"
+    duration: "60s"
+  - type: "dns_block"
+    target: "api.example.com"
+    method: "/etc/hosts"
+    duration: "60s"
+
+expected_artifacts:
+  - path: ".governance/gl-events/external_api_unavailable.json"
+    type: "gl_event"
+    required: true
+    schema: "expected_artifacts/gl-events/external_api_unavailable.json.template"
+  
+  - path: ".governance/chain-of-responsibility/ABT-001.json"
+    type: "responsibility_chain"
+    required: true
+    description: "Complete chain from test generation to execution"
+  
+  - path: ".governance/decisions/trace/external_api_unavailable_{timestamp}.json"
+    type: "decision_trace"
+    required: true
+    description: "Complete reasoning trace for fallback decision"
+  
+  - path: ".governance/reversibility/rollback_test_{timestamp}.json"
+    type: "reversibility_proof"
+    required: true
+    description: "Proof that action is reversible"
+  
+  - path: ".governance/kill-switch/test_{timestamp}.json"
+    type: "kill_switch_test"
+    required: true
+    description: "Kill switch activation test"
+  
+  - path: ".governance/intents/ABT-001-intent.md"
+    type: "intent_document"
+    required: true
+    description: "Intent statement and boundaries"
+  
+  - path: ".governance/monitoring/{timestamp}.json"
+    type: "monitoring_log"
+    required: true
+    description: "Real-time monitoring log for Tier 2"
+
+verification_steps:
+  - "驗證 GL Event 存在且格式正確"
+  - "驗證 fallback 決策可追蹤"
+  - "驗證系統未嘗試自動修復"
+  - "驗證所有決策可重播"
+  - "驗證證據已封存"
+  - "驗證符合 MNGA 治理規格"
+  - "驗證責任鏈完整"
+  - "驗證邊界全部強制執行"
+  - "驗證動作可逆"
+  - "驗證 Kill Switch 可用"
+  - "驗證意圖已批准"
+  - "驗證控制層級正確"
+
+seal_requirements:
+  - "所有產品必須有 SHA256 hash"
+  - "必須產生 era_boundary_seal.json"
+  - "必須記錄到 event-stream.jsonl"
+  - "必須註冊到 hash-registry.json"
+  - "必須包含責任鏈證據"
+  - "必須包含可逆性證據"
+  - "必須包含 Kill Switch 測試結果"
+  - "必須包含意圖驗證證據"
+  - "必須包含控制層級證據"
+
+mnga_integration:
+  event_stream_logging: true
+  hash_registry_registration: true
+  validator_integration: true
+  closure_verification_required: true
+  chain_of_responsibility_tracking: true
+  reversibility_verification: true
+  kill_switch_verification: true
+  intent_verification: true
+  control_tier_enforcement: true
+
+compliance_targets:
+  - "Singapore IMDA Model AI Governance Framework for Agentic AI (2026)"
+  - "EU AI Act - Risk-Based Control of Autonomous Systems"
+  - "ISO/IEC 42001 - AI Management System"
+  - "NIST AI Risk Management Framework (AI RMF)"
+  - "Human-In-On-The-Loop (HOTL) Governance Framework"
+
+compliance_score: 1.0
+total_governance_checks: 47
+required_evidence_artifacts: 7

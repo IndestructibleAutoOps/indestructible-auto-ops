@@ -1,0 +1,47 @@
+[
+    {
+        "violation_id": "VIO-001",
+        "category": "tool_references",
+        "severity": "CRITICAL",
+        "message": "未註冊工具引用: reporting_compliance_checker.py",
+        "line_number": 42,
+        "context": "使用 reporting_compliance_checker.py 進行驗證",
+        "suggested_fix": "在 tools-registry.yaml 中註冊此工具或替換為已註冊的 semantic_validator.py"
+    },
+    {
+        "violation_id": "VIO-002",
+        "category": "phase_declarations",
+        "severity": "HIGH",
+        "message": "禁止的階段聲明: Phase 1",
+        "line_number": 15,
+        "context": "Phase 1: 初始設置",
+        "suggested_fix": "移除 Phase 1 聲明或實際實現此階段"
+    },
+    {
+        "violation_id": "VIO-003",
+        "category": "terminology",
+        "severity": "MEDIUM",
+        "message": "禁止的術語（Era-1 未封存前）: 完整性",
+        "line_number": 28,
+        "context": "保證系統的完整性",
+        "suggested_fix": "改用 '部分完整' 或 '實施中'"
+    },
+    {
+        "violation_id": "VIO-004",
+        "category": "architecture_level",
+        "severity": "HIGH",
+        "message": "禁止的架構層級描述: 治理平台",
+        "line_number": 8,
+        "context": "完整的治理平台",
+        "suggested_fix": "改用 '治理腳本' 或 '治理工具'"
+    },
+    {
+        "violation_id": "VIO-005",
+        "category": "compliance_claims",
+        "severity": "MEDIUM",
+        "message": "禁止的合規性聲明: 100% 合規",
+        "line_number": 35,
+        "context": "達到 100% 合規",
+        "suggested_fix": "提供具體數據或移除此聲明"
+    }
+]
