@@ -5,9 +5,9 @@
 #
 # Registration is MANDATORY before tool creation (see tool-definition-protocol.md)
 
-version: "1.1.3"
+version: "1.1.4"
 era: "1"
-last_updated: "2026-02-04T23:40:00Z"
+last_updated: "2026-02-04T23:55:00Z"
 
 # ============================================================================
 # REGISTERED TOOLS (已注册工具)
@@ -75,6 +75,24 @@ registered_tools:
     approved_by: "governance_layer"
     approved_date: "2026-02-04"
   
+  - name: "evidence_chain_vulnerability_tests.py"
+    category: "governance"
+    era: "1"
+    purpose: "證據鏈漏洞檢測，執行 6 個證據鏈漏洞測試"
+    input_schema: "command_line_args"
+    output_schema: "vulnerability_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Evidence Chain Vulnerability Tests that implement 6 tests across hash inconsistency, YAML anchors destruction, JSON canonicalization, event-stream completeness, evidence completeness, and hash registry validation"
+    file_path: "ecosystem/tools/evidence_chain_vulnerability_tests.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 2A: GOVERNANCE ENGINES (治理引擎)
+  # --------------------------------------------------------------------------
+  
   # --------------------------------------------------------------------------
   # CATEGORY 2: GOVERNANCE TOOLS (治理工具)
   # --------------------------------------------------------------------------
@@ -109,6 +127,19 @@ registered_tools:
     file_path: "ecosystem/engines/validation_engine.py"
     status: "active"
     approved_by: "governance_layer"
+  - name: "governance_closure_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "治理閉環引擎，驗證 Era-1 封存準備度"
+    input_schema: "command_line_args"
+    output_schema: "closure_manifest"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Governance Closure Engine that validates all 6 closure categories (artifact hashes, event stream, complements, tool registration, test results, hash registry) and produces era-1-closure.json for Era-1 sealing"
+    file_path: "ecosystem/engines/governance_closure_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
     approved_date: "2026-02-04"
   
   - name: "refresh_engine.py"
