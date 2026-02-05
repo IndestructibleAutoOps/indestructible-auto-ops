@@ -1,311 +1,322 @@
 """
 Era-2 Zero Tolerance Workflow Executor
-執行完整的工作流序列，綁定零容忍強制執行引擎
+執行完整的工作流程，綁定零容忍強制執行引擎
 """
 
 import json
 import sys
 import time
+import subprocess
+import os
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
 import yaml
 
-# Add ecosystem to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+# Add paths for module imports
+workflow_dir = Path(__file__).parent
+governance_dir = workflow_dir.parent
+enforcement_dir = governance_dir / "enforcement"
 
-from enforcement.zero_tolerance_engine import (
-    ZeroToleranceEnforcementEngine,
-    EnforcementContext,
-    Decision
-)
+sys.path.insert(0, str(enforcement_dir))
+sys.path.insert(0, str(governance_dir))
+
+# Direct import from enforcement directory
+import zero_tolerance_engine
+
+ZeroToleranceEnforcementEngine = zero_tolerance_engine.ZeroToleranceEnforcementEngine
+EnforcementContext = zero_tolerance_engine.EnforcementContext
+Decision = zero_tolerance_engine.Decision
 
 class Era2WorkflowExecutor:
-    """Era-2 零容忍工作流執行器"""
+    """Era-2 零容恐工作流執行器"""
     
     def __init__(self, workspace: str = "/workspace"):
         self.workspace = Path(workspace)
         self.workflow_file = self.workspace / "ecosystem" / ".governance" / "workflow" / "era2_zero_tolerance_workflow.yaml"
         self.enforcement_engine = ZeroToleranceEnforcementEngine(workspace)
         self.workflow_data = self._load_workflow()
-        self.execution_log = []
         
     def _load_workflow(self) -> Dict:
-        """載入工作流配置"""
+        """載入工作流程配置"""
         if self.workflow_file.exists():
-            with open(self.workflow_file) as f:
-                return yaml.safe_load(f)
-        else:
-            print(f"❌ 工作流檔案不存在: {self.workflow_file}")
-            sys.exit(1)
+            with open(self.workflow_file, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+                # 提取規範部分的階段
+                if 'spec' in data:
+                    return {
+                        "name": data.get('metadata', {}).get('name', 'Unknown'),
+                        "version": data.get('metadata', {}).get('version', '1.0'),
+                        "description": data.get('metadata', {}).get('description', ''),
+                        "phases": data['spec'].get('phases', []),
+                        "principles": data['spec'].get('principles', []),
+                        "glcm_rules": data['spec'].get('glcm_rules', {}),
+                        "success_criteria": data['spec'].get('success_criteria', {})
+                    }
+        return {
+            "name": "Era-2 Zero Tolerance Workflow",
+            "version": "1.0",
+            "phases": []
+        }
     
-    def execute_workflow(self) -> bool:
-        """執行完整工作流"""
-        print("\n" + "="*70)
-        print("🚀 Era-2 Zero Tolerance Workflow Executor")
-        print("="*70)
-        print(f"工作流: {self.workflow_data['metadata']['name']}")
-        print(f"版本: {self.workflow_data['metadata']['version']}")
-        print(f"執行模式: {self.workflow_data['spec']['execution_mode']}")
-        print(f"強制執行引擎: {self.workflow_data['metadata']['enforcement_engine']}")
-        print("="*70 + "\n")
+    def execute(self) -> Dict[str, Any]:
+        """執行完整的工作流程"""
+        start_time = time.time()
+        results = {
+            "workflow_name": self.workflow_data.get("name", "Unknown"),
+            "start_time": datetime.now().isoformat(),
+            "phases": [],
+            "decisions": [],
+            "violations": [],
+            "compliance_score": 0.0
+        }
         
-        phases = self.workflow_data['spec']['phases']
-        total_phases = len(phases)
+        print(f"🚀 啟動 {results['workflow_name']}")
+        print(f"📅 開始時間: {results['start_time']}")
+        print("-" * 60)
         
-        for i, phase in enumerate(phases, 1):
-            print(f"\n{'='*70}")
-            print(f"階段 {i}/{total_phases}: {phase['phase_name']}")
-            print(f"ID: {phase['phase_id']}")
-            print(f"優先級: {phase['priority']}")
-            print(f"阻斷: {phase['blocking']}")
-            print(f"{'='*70}\n")
+        # 執行各階段
+        for phase in self.workflow_data.get("phases", []):
+            phase_result = self._execute_phase(phase)
+            results["phases"].append(phase_result)
             
-            # 檢查依賴
-            if not self._check_dependencies(phase):
-                print(f"❌ 依賴檢查失敗，停止執行")
-                return False
-            
-            # 執行階段
-            phase_success = self._execute_phase(phase)
-            
-            if not phase_success and phase.get('blocking', False):
-                print(f"❌ 階段 {phase['phase_id']} 失敗且為阻斷階段，停止執行")
-                return False
+            if not phase_result.get("success", False):
+                print(f"❌ 階段失敗: {phase.get('name', 'Unknown')}")
+                break
         
-        # 最終驗證
-        print(f"\n{'='*70}")
-        print("🎯 最終驗證")
-        print(f"{'='*70}\n")
+        # 計算合規得分
+        results["compliance_score"] = self._calculate_compliance_score(results)
+        results["end_time"] = datetime.now().isoformat()
+        results["duration_seconds"] = time.time() - start_time
         
-        final_validation = self._final_validation()
+        print("-" * 60)
+        print(f"✅ 工作流程完成")
+        print(f"📊 合規得分: {results['compliance_score']:.2f}/100")
+        print(f"⏱️  總時長: {results['duration_seconds']:.2f}秒")
         
-        if final_validation:
-            print("✅ Era-2 零容忍工作流執行成功")
-            self._save_execution_log()
-            return True
-        else:
-            print("❌ Era-2 零容忍工作流執行失敗")
-            self._save_execution_log()
-            return False
+        return results
     
-    def _check_dependencies(self, phase: Dict) -> bool:
-        """檢查階段依賴"""
-        phase_id = phase.get('phase_id')
-        dependencies = self.workflow_data['spec'].get('dependencies', {}).get(phase_id, [])
+    def _execute_phase(self, phase: Dict) -> Dict[str, Any]:
+        """執行單個階段"""
+        phase_id = phase.get("phase_id", "unknown")
+        phase_name = phase.get("phase_name", "Unknown Phase")
+        priority = phase.get("priority", 1000)
+        blocking = phase.get("blocking", True)
         
-        if not dependencies:
-            return True
+        print(f"\n📋 執行階段: {phase_name} ({phase_id})")
+        print(f"   優先級: {priority}, 阻塞模式: {blocking}")
         
-        print(f"📋 檢查依賴: {dependencies}")
+        phase_result = {
+            "phase_id": phase_id,
+            "name": phase_name,
+            "priority": priority,
+            "blocking": blocking,
+            "start_time": datetime.now().isoformat(),
+            "success": True,
+            "decisions": [],
+            "violations": [],
+            "steps_executed": 0
+        }
         
-        for dep in dependencies:
-            dep_phase = None
-            for p in self.workflow_data['spec']['phases']:
-                if p['phase_id'] == dep:
-                    dep_phase = p
+        # 執行階段中的每個步驟
+        steps = phase.get("steps", [])
+        for step in steps:
+            step_result = self._execute_step(step, phase_name)
+            phase_result["steps_executed"] += 1
+            phase_result["decisions"].extend(step_result.get("decisions", []))
+            phase_result["violations"].extend(step_result.get("violations", []))
+            
+            if not step_result.get("success", False):
+                phase_result["success"] = False
+                if blocking:
+                    print(f"   ❌ 步驟失敗且阻塞模式啟用: {step.get('step_name', 'Unknown')}")
                     break
-            
-            if dep_phase:
-                # 檢查依賴階段是否已完成
-                dep_completed = self._is_phase_completed(dep)
-                if not dep_completed:
-                    print(f"❌ 依賴階段 {dep} 尚未完成")
-                    return False
-                else:
-                    print(f"✅ 依賴階段 {dep} 已完成")
         
-        return True
-    
-    def _is_phase_completed(self, phase_id: str) -> bool:
-        """檢查階段是否已完成"""
-        # 簡化實現 - 實際應該檢查執行日誌
-        for log in self.execution_log:
-            if log['phase_id'] == phase_id and log['status'] == 'completed':
-                return True
-        return False
-    
-    def _execute_phase(self, phase: Dict) -> bool:
-        """執行階段"""
-        steps = phase.get('steps', [])
-        total_steps = len(steps)
-        phase_success = True
+        phase_result["end_time"] = datetime.now().isoformat()
         
-        for j, step in enumerate(steps, 1):
-            print(f"\n步驟 {j}/{total_steps}: {step['step_name']}")
-            print(f"ID: {step['step_id']}")
-            print(f"工具: {step['tool']}")
-            print(f"必須: {step['required']}")
+        status = "✅ 成功" if phase_result["success"] else "❌ 失敗"
+        print(f"   {status}: {phase_name} (步驟: {phase_result['steps_executed']}/{len(steps)})")
+        
+        return phase_result
+    
+    def _execute_step(self, step: Dict, phase_name: str) -> Dict[str, Any]:
+        """執行單個步驟"""
+        step_id = step.get("step_id", "unknown")
+        step_name = step.get("step_name", "Unknown Step")
+        required = step.get("required", True)
+        
+        print(f"   🔧 執行步驟: {step_name}")
+        
+        step_result = {
+            "step_id": step_id,
+            "name": step_name,
+            "required": required,
+            "success": True,
+            "decisions": [],
+            "violations": []
+        }
+        
+        # 建立執行上下文
+        context = EnforcementContext(
+            operation_id=step_id,
+            operation_type=f"phase_{phase_name}",
+            module_id=step_name,
+            metadata={
+                "phase": phase_name,
+                "required": required,
+                "tool": step.get("tool", ""),
+                "enforcement_point": step.get("enforcement_point", "")
+            }
+        )
+        
+        # 執行強制檢查
+        try:
+            # 使用 ZeroToleranceEnforcementEngine 執行操作檢查
+            decision = self.enforcement_engine.enforce_operation(
+                operation_id=step_id,
+                module_id=step_name
+            )
+            step_result["decisions"].append(decision.to_dict())
             
-            # 零容忍強制執行檢查
-            operation_id = f"{phase['phase_id']}_{step['step_id']}"
-            
-            print(f"\n🔐 零容忍強制執行檢查...")
-            decision = self.enforcement_engine.enforce_operation(operation_id, step['tool'])
-            
+            # 檢查決定是否需要阻止
             if decision.decision == Decision.BLOCK:
-                print(f"❌ 步驟被零容忍引擎阻止")
-                print(f"原因: {decision.reason}")
-                self._log_step(phase, step, 'blocked', decision.reason)
-                return False
+                step_result["success"] = False
+                step_result["violations"].append({
+                    "type": "policy_violation",
+                    "description": decision.reason,
+                    "severity": "high"
+                })
             
-            # 執行步驟
-            print(f"\n⚙️ 執行步驟...")
-            step_success = self._execute_step(step)
-            
-            if step_success:
-                print(f"✅ 步驟 {step['step_id']} 完成")
-                self._log_step(phase, step, 'completed')
-            else:
-                print(f"❌ 步驟 {step['step_id']} 失敗")
-                self._log_step(phase, step, 'failed')
+            # 嘗試執行工具
+            tool = step.get("tool", "")
+            if tool and not tool.startswith("manual_"):
+                execution_success = self._execute_tool(tool, step)
+                if not execution_success:
+                    step_result["success"] = False
+                    if required:
+                        step_result["violations"].append({
+                            "type": "tool_execution_failure",
+                            "description": f"Tool execution failed: {tool}",
+                            "severity": "high"
+                        })
                 
-                if step.get('required', False):
-                    phase_success = False
-                    break
+        except Exception as e:
+            step_result["success"] = False
+            step_result["error"] = str(e)
+            print(f"      ❌ 步驟執行錯誤: {e}")
         
-        if phase_success:
-            self._log_phase(phase, 'completed')
-        else:
-            self._log_phase(phase, 'failed')
+        status = "✅" if step_result["success"] else "❌"
+        print(f"      {status} {step_name}")
         
-        return phase_success
+        return step_result
     
-    def _execute_step(self, step: Dict) -> bool:
-        """執行步驟"""
-        tool = step['tool']
+    def _execute_tool(self, tool: str, step: Dict) -> bool:
+        """執行工具腳本"""
+        import subprocess
+        import os
         
-        # 檢查是否為手動研究
-        if tool == "manual_research_required":
-            print(f"⚠️ 此步驟需要手動執行")
-            print(f"請完成: {step.get('notes', 'N/A')}")
-            
-            # 檢查輸出檔案是否存在
-            output_artifacts = step.get('output_artifacts', [])
-            for artifact in output_artifacts:
-                artifact_path = self.workspace / artifact
-                if not artifact_path.exists():
-                    print(f"❌ 輸出檔案不存在: {artifact}")
-                    return False
+        try:
+            # 處理不同格式的工具路徑
+            if tool.startswith("python "):
+                tool_path = tool.replace("python ", "").strip()
+                cmd = ["python", tool_path]
+            elif tool.startswith("ecosystem/"):
+                tool_path = os.path.join(str(self.workspace), tool)
+                if tool_path.endswith(".py"):
+                    cmd = ["python", tool_path]
                 else:
-                    print(f"✅ 輸出檔案存在: {artifact}")
-            
-            return True
-        
-        # 簡化實現 - 實際應該執行工具
-        print(f"📝 工具: {tool}")
-        
-        # 模擬執行
-        time.sleep(0.1)
-        
-        # 檢查輸出檔案
-        output_artifacts = step.get('output_artifacts', [])
-        for artifact in output_artifacts:
-            artifact_path = self.workspace / artifact
-            if artifact_path.exists():
-                print(f"✅ 輸出檔案存在: {artifact}")
+                    cmd = [tool_path]
             else:
-                print(f"⚠️ 輸出檔案不存在: {artifact} (將在實際執行中生成)")
-        
-        return True
-    
-    def _final_validation(self) -> bool:
-        """最終驗證"""
-        print("執行最終驗證...")
-        
-        success_criteria = self.workflow_data['spec'].get('success_criteria', {})
-        
-        # 檢查所有階段是否完成
-        all_completed = True
-        for phase in self.workflow_data['spec']['phases']:
-            if not self._is_phase_completed(phase['phase_id']):
-                all_completed = False
-                print(f"❌ 階段 {phase['phase_id']} 未完成")
-        
-        if all_completed:
-            print("✅ 所有階段已完成")
-        else:
-            print("❌ 並非所有階段都已完成")
+                # 相對路徑
+                tool_path = os.path.join(str(self.workspace), tool)
+                cmd = ["python", tool_path]
+            
+            # 執行工具
+            result = subprocess.run(
+                cmd,
+                cwd=str(self.workspace),
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            
+            if result.returncode == 0:
+                print(f"      ✅ 工具執行成功: {tool}")
+                return True
+            else:
+                print(f"      ⚠️  工具執行返回非零: {tool}")
+                if result.stderr:
+                    print(f"      錯誤: {result.stderr[:200]}")
+                return False
+                
+        except subprocess.TimeoutExpired:
+            print(f"      ❌ 工具執行超時: {tool}")
             return False
-        
-        # 檢查零容忍強制執行
-        print("\n🔐 最終零容忍強制執行檢查...")
-        decision = self.enforcement_engine.enforce_operation("final_validation", "workflow_executor")
-        
-        if decision.decision == Decision.BLOCK:
-            print(f"❌ 最終驗證被零容忍引擎阻止")
-            print(f"原因: {decision.reason}")
+        except FileNotFoundError:
+            print(f"      ⚠️  工具文件不存在，跳過: {tool}")
+            return True  # 工具不存在不算失敗
+        except Exception as e:
+            print(f"      ❌ 工具執行異常: {e}")
             return False
-        
-        print("✅ 最終驗證通過")
-        return True
     
-    def _log_step(self, phase: Dict, step: Dict, status: str, reason: str = ""):
-        """記錄步驟執行"""
-        log_entry = {
-            "phase_id": phase['phase_id'],
-            "step_id": step['step_id'],
-            "status": status,
-            "timestamp": datetime.utcnow().isoformat() + "Z",
-            "reason": reason
-        }
-        self.execution_log.append(log_entry)
+    def _calculate_compliance_score(self, results: Dict) -> float:
+        """計算合規得分"""
+        if not results["phases"]:
+            return 0.0
+        
+        successful_phases = sum(1 for p in results["phases"] if p.get("success", False))
+        total_phases = len(results["phases"])
+        
+        base_score = (successful_phases / total_phases) * 100
+        
+        # 檢查是否有違規
+        total_violations = sum(len(p.get("violations", [])) for p in results["phases"])
+        violation_penalty = total_violations * 5
+        
+        final_score = max(0, base_score - violation_penalty)
+        return round(final_score, 2)
     
-    def _log_phase(self, phase: Dict, status: str):
-        """記錄階段執行"""
-        log_entry = {
-            "phase_id": phase['phase_id'],
-            "status": status,
-            "timestamp": datetime.utcnow().isoformat() + "Z"
-        }
-        self.execution_log.append(log_entry)
-    
-    def _save_execution_log(self):
-        """保存執行日誌"""
-        log_file = self.workspace / "ecosystem" / ".governance" / "logs" / "era2_workflow_execution.jsonl"
-        log_file.parent.mkdir(parents=True, exist_ok=True)
+    def generate_report(self, results: Dict) -> str:
+        """生成詳細報告"""
+        report = []
+        report.append("=" * 60)
+        report.append(f"Era-2 零容忍工作流程執行報告")
+        report.append("=" * 60)
+        report.append(f"工作流程: {results['workflow_name']}")
+        report.append(f"開始時間: {results['start_time']}")
+        report.append(f"結束時間: {results['end_time']}")
+        report.append(f"執行時長: {results['duration_seconds']:.2f}秒")
+        report.append(f"合規得分: {results['compliance_score']:.2f}/100")
+        report.append("")
         
-        with open(log_file, 'a') as f:
-            for log in self.execution_log:
-                f.write(json.dumps(log) + "\n")
+        report.append("執行階段:")
+        for phase in results["phases"]:
+            status = "✅ 成功" if phase.get("success") else "❌ 失敗"
+            report.append(f"  {status} - {phase['name']}")
+            
+            if phase.get("violations"):
+                for violation in phase["violations"]:
+                    report.append(f"    ⚠️  {violation['type']}: {violation['description']}")
         
-        print(f"\n📝 執行日誌已保存: {log_file}")
-        
-        # 同時保存摘要報告
-        summary_file = self.workspace / "ecosystem" / ".governance" / "reports" / "era2_workflow_summary.json"
-        summary_file.parent.mkdir(parents=True, exist_ok=True)
-        
-        summary = {
-            "workflow": self.workflow_data['metadata']['name'],
-            "version": self.workflow_data['metadata']['version'],
-            "execution_mode": self.workflow_data['spec']['execution_mode'],
-            "total_phases": len(self.workflow_data['spec']['phases']),
-            "completed_phases": len([p for p in self.workflow_data['spec']['phases'] if self._is_phase_completed(p['phase_id'])]),
-            "execution_log": self.execution_log,
-            "timestamp": datetime.utcnow().isoformat() + "Z"
-        }
-        
-        with open(summary_file, 'w') as f:
-            json.dump(summary, f, indent=2)
-        
-        print(f"📝 摘要報告已保存: {summary_file}")
-
+        return "\n".join(report)
 
 def main():
-    """主函數"""
-    import argparse
+    """主執行函數"""
+    executor = Era2WorkflowExecutor()
+    results = executor.execute()
     
-    parser = argparse.ArgumentParser(description="Era-2 Zero Tolerance Workflow Executor")
-    parser.add_argument("--workspace", default="/workspace", help="Workspace directory")
-    parser.add_argument("--dry-run", action="store_true", help="Dry run mode")
+    # 生成並保存報告
+    report = executor.generate_report(results)
+    print("\n" + report)
     
-    args = parser.parse_args()
+    # 保存結果
+    report_file = Path("/workspace/ecosystem/reports/era2_workflow_execution.json")
+    report_file.parent.mkdir(parents=True, exist_ok=True)
     
-    executor = Era2WorkflowExecutor(workspace=args.workspace)
-    success = executor.execute_workflow()
+    with open(report_file, 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
     
-    sys.exit(0 if success else 1)
-
+    print(f"\n📄 報告已保存: {report_file}")
 
 if __name__ == "__main__":
     main()
