@@ -101,10 +101,19 @@ class TraceReport:
 class TraceabilityEngine:
     """Engine for generating and managing traceability reports"""
     
-    def __init__(self, output_dir: str = "ecosystem/logs/audit"):
+    def __init__(self, config = None):
         """Initialize traceability engine"""
-        self.output_dir = output_dir
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        # Handle both dict config and string path
+        if isinstance(config, dict):
+            self.output_dir = config.get("output_dir", "ecosystem/logs/audit")
+        elif isinstance(config, str):
+            self.output_dir = config
+        elif config is None:
+            self.output_dir = "ecosystem/logs/audit"
+        else:
+            self.output_dir = "ecosystem/logs/audit"
+            
+        Path(self.output_dir).mkdir(parents=True, exist_ok=True)
         
     def generate_trace(self, task_spec: str, 
                        internal_results: List[Dict],
@@ -149,6 +158,69 @@ class TraceabilityEngine:
         )
         
         return report
+    
+    def trace_retrieval(self, context: Dict, internal_results: List[Dict], 
+                       external_results: List[Dict], user_id: Optional[str] = None) -> Dict:
+        """Trace retrieval step
+        
+        Args:
+            context: Retrieval context
+            internal_results: Internal retrieval results
+            external_results: External retrieval results
+            user_id: Optional user identifier
+            
+        Returns:
+            Retrieval trace dictionary
+        """
+        return {
+            "context": context,
+            "internal_count": len(internal_results),
+            "external_count": len(external_results),
+            "user_id": user_id,
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def trace_arbitration(self, decision: Dict, internal_result: Dict, 
+                         external_result: Dict, user_id: Optional[str] = None) -> Dict:
+        """Trace arbitration step
+        
+        Args:
+            decision: Arbitration decision
+            internal_result: Internal result dict
+            external_result: External result dict
+            user_id: Optional user identifier
+            
+        Returns:
+            Arbitration trace dictionary
+        """
+        return {
+            "decision": decision,
+            "internal_confidence": internal_result.get("confidence", 0.0),
+            "external_confidence": external_result.get("confidence", 0.0),
+            "user_id": user_id,
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def trace_feedback(self, request_id: str, feedback_type: str, 
+                      reason: Optional[str] = None, user_id: Optional[str] = None) -> Dict:
+        """Trace feedback submission
+        
+        Args:
+            request_id: Request identifier
+            feedback_type: Type of feedback
+            reason: Optional reason
+            user_id: Optional user identifier
+            
+        Returns:
+            Feedback trace dictionary
+        """
+        return {
+            "request_id": request_id,
+            "feedback_type": feedback_type,
+            "reason": reason,
+            "user_id": user_id,
+            "timestamp": datetime.now().isoformat()
+        }
     
     def _process_internal_sources(self, results: List[Dict]) -> Dict:
         """Process internal retrieval results"""
@@ -252,6 +324,58 @@ class TraceabilityEngine:
                 traces.append(json.load(f))
         
         return traces
+    
+    def get_stats(self) -> Dict:
+        """Get traceability engine statistics"""
+        return {
+            "engine_type": "TraceabilityEngine",
+            "output_dir": self.output_dir,
+            "status": "operational"
+        }
+    
+    def get_trace(self, request_id: str) -> Optional[Dict]:
+        """Get trace for a specific request
+        
+        Args:
+            request_id: Request identifier
+            
+        Returns:
+            Trace dictionary or None
+        """
+        traces = self.query_traces(request_id)
+        return traces[0] if traces else None
+    
+    def export_traces(self, format: str = "json") -> str:
+        """Export all traces
+        
+        Args:
+            format: Export format (json, jsonl, markdown)
+            
+        Returns:
+            Export file path
+        """
+        output_file = Path(self.output_dir) / f"traces_export.{format}"
+        traces = []
+        
+        # Collect all traces
+        for trace_file in Path(self.output_dir).glob("trace_*.json"):
+            with open(trace_file, 'r', encoding='utf-8') as f:
+                traces.append(json.load(f))
+        
+        # Export based on format
+        if format == "json":
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(traces, f, indent=2, ensure_ascii=False)
+        elif format == "jsonl":
+            with open(output_file, 'w', encoding='utf-8') as f:
+                for trace in traces:
+                    f.write(json.dumps(trace) + '\n')
+        else:
+            # Default to json
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(traces, f, indent=2, ensure_ascii=False)
+        
+        return str(output_file)
 
 
 if __name__ == "__main__":

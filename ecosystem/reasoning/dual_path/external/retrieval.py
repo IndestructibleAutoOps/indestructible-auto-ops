@@ -43,10 +43,24 @@ class ExternalRetrievalResult:
 class ExternalRetrievalEngine:
     """External knowledge retrieval engine"""
     
-    def __init__(self, config_path: str = "ecosystem/contracts/reasoning/dual_path_spec.yaml"):
+    def __init__(self, config = None):
         """Initialize external retrieval engine"""
-        self.config = self._load_config(config_path)
-        self.external_config = self.config["spec"]["external_retrieval"]
+        # Handle both dict config and string path
+        if isinstance(config, dict):
+            self.config = config
+        elif isinstance(config, str):
+            self.config = self._load_config(config)
+        elif config is None:
+            self.config = self._load_config("ecosystem/contracts/reasoning/dual_path_spec.yaml")
+        else:
+            self.config = {}
+            
+        # Get external_retrieval config or use defaults
+        if "spec" in self.config and "external_retrieval" in self.config["spec"]:
+            self.external_config = self.config["spec"]["external_retrieval"]
+        else:
+            self.external_config = {}
+            
         self.cache = {}  # Simple in-memory cache
         
     def _load_config(self, config_path: str) -> Dict:
@@ -55,6 +69,23 @@ class ExternalRetrievalEngine:
             with open(config_path, 'r') as f:
                 return safe_load(f)
         return {"spec": {"external_retrieval": {}}}
+    
+    def retrieve(self, context) -> List:
+        """Retrieve based on context (supports RetrievalContext or dict)"""
+        if hasattr(context, 'query'):
+            # RetrievalContext object
+            query = context.query
+            top_k = context.max_results
+            domains = context.domains
+        elif isinstance(context, dict):
+            # Dict context
+            query = context.get('query', '')
+            top_k = context.get('max_results', 5)
+            domains = context.get('domains')
+        else:
+            raise ValueError(f"Invalid context type: {type(context)}")
+        
+        return self.search(query, top_k=top_k, domains=domains)
     
     def search(self, query: str, top_k: int = 5, 
                domains: Optional[List[str]] = None) -> List[ExternalRetrievalResult]:
@@ -178,6 +209,15 @@ class ExternalRetrievalEngine:
         
         content = mock_snippets.get(url, "Content not available")
         return content[:max_length]
+    
+    def get_stats(self) -> Dict:
+        """Get retrieval engine statistics"""
+        return {
+            "engine_type": "ExternalRetrievalEngine",
+            "config_loaded": bool(self.external_config),
+            "cache_size": len(self.cache),
+            "status": "operational"
+        }
     
     def audit_log(self, actor: str, action: str, query: str, 
                   results_count: int) -> Dict:

@@ -56,10 +56,23 @@ class ArbitrationDecision:
 class Arbitrator:
     """Core arbitrator for dual-path reasoning"""
     
-    def __init__(self, config_path: str = "ecosystem/contracts/reasoning/dual_path_spec.yaml"):
+    def __init__(self, config = None):
         """Initialize arbitrator"""
-        self.config = self._load_config(config_path)
-        self.arbitration_config = self.config["spec"]["arbitration"]
+        # Handle both dict config and string path
+        if isinstance(config, dict):
+            self.config = config
+        elif isinstance(config, str):
+            self.config = self._load_config(config)
+        elif config is None:
+            self.config = self._load_config("ecosystem/contracts/reasoning/dual_path_spec.yaml")
+        else:
+            self.config = {}
+            
+        # Get arbitration config or use defaults
+        if "spec" in self.config and "arbitration" in self.config["spec"]:
+            self.arbitration_config = self.config["spec"]["arbitration"]
+        else:
+            self.arbitration_config = {}
         
         # Import rule engine with rules_path from config if available
         from .rule_engine import ArbitrationRuleEngine
@@ -289,6 +302,16 @@ Based on both sources, consider the following:
             "version": "1.0.0",
             "requestId": hashlib.md5(f"{actor}:{task_spec}".encode()).hexdigest()[:16],
             "correlationId": hashlib.md5(f"arbitrate:{task_spec}".encode()).hexdigest()[:16]
+        }
+
+
+    def get_stats(self) -> Dict:
+        """Get arbitrator statistics"""
+        return {
+            "engine_type": "Arbitrator",
+            "config_loaded": bool(self.arbitration_config),
+            "rule_engine_loaded": hasattr(self, 'rule_engine'),
+            "status": "operational"
         }
 
 

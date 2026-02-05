@@ -49,11 +49,41 @@ class FeedbackLoop:
     Feedback collection and analysis system
     """
     
-    def __init__(self, feedback_dir: str = "ecosystem/data/feedback"):
+    def __init__(self, config = None):
         """Initialize feedback loop system"""
-        self.feedback_dir = feedback_dir
-        Path(feedback_dir).mkdir(parents=True, exist_ok=True)
+        # Handle both dict config and string path
+        if isinstance(config, dict):
+            self.feedback_dir = config.get("feedback_dir", "ecosystem/data/feedback")
+        elif isinstance(config, str):
+            self.feedback_dir = config
+        elif config is None:
+            self.feedback_dir = "ecosystem/data/feedback"
+        else:
+            self.feedback_dir = "ecosystem/data/feedback"
+            
+        Path(self.feedback_dir).mkdir(parents=True, exist_ok=True)
         
+    def submit_feedback(self, request_id: str, feedback_type: str, 
+                       user_id: str, reason: Optional[str] = None) -> Dict:
+        """Submit feedback (simplified interface)
+        
+        Args:
+            request_id: Request identifier
+            feedback_type: Feedback type
+            user_id: User identifier
+            reason: Optional reason
+            
+        Returns:
+            Feedback record
+        """
+        feedback = UserFeedback(
+            case_id=request_id,
+            feedback_type=feedback_type,
+            user_id=user_id,
+            reason=reason
+        )
+        return self.record_feedback(request_id, {}, feedback)
+    
     def record_feedback(self, case_id: str, arbitration_decision: Dict,
                        feedback: UserFeedback) -> Dict:
         """
@@ -302,6 +332,36 @@ class FeedbackLoop:
             json.dump(report, f, indent=2, ensure_ascii=False)
         
         print(f"Feedback report exported to {output_path}")
+    
+    def get_stats(self) -> Dict:
+        """Get feedback loop statistics"""
+        return {
+            "engine_type": "FeedbackLoop",
+            "feedback_dir": self.feedback_dir,
+            "status": "operational"
+        }
+    
+    def generate_report(self) -> str:
+        """Generate feedback summary report"""
+        feedback_files = list(Path(self.feedback_dir).glob("feedback_*.json"))
+        
+        if not feedback_files:
+            return "No feedback data available"
+        
+        feedback_counts = Counter()
+        for file_path in feedback_files:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                feedback_type = data.get("feedback", {}).get("feedback_type", "UNKNOWN")
+                feedback_counts[feedback_type] += 1
+        
+        report_lines = ["Feedback Summary Report", "=" * 50]
+        report_lines.append(f"Total feedback entries: {len(feedback_files)}")
+        report_lines.append("\nFeedback Distribution:")
+        for feedback_type, count in feedback_counts.most_common():
+            report_lines.append(f"  {feedback_type}: {count}")
+        
+        return "\n".join(report_lines)
 
 
 if __name__ == "__main__":
