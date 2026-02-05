@@ -16,8 +16,9 @@ This portal provides comprehensive documentation for the AI-native infrastructur
 
 ### New Users
 1. [Introduction](../README.md) - Project overview and getting started
-2. [Integration Guide](PHASE1_INTEGRATION_GUIDE.md) - Step-by-step integration instructions
-3. [Architecture Overview](#architecture) - System architecture and design
+2. [Architecture and Specification Hub](../../ONE-STOP-ARCHITECTURE-SPECS.md) - One-stop map of specs and architecture
+3. [Integration Guide](PHASE1_INTEGRATION_GUIDE.md) - Step-by-step integration instructions
+4. [Architecture Overview](#architecture) - System architecture and design
 
 ### Developers
 1. [Module Development](#modules) - Creating and managing modules

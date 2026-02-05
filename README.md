@@ -158,6 +158,7 @@ machine-native-ops/
 ## Documentation
 
 ### Core Documentation
+- [One-Stop Architecture and Specification Hub](ONE-STOP-ARCHITECTURE-SPECS.md)
 - [Directory Boundary Specification](gl-enterprise-architecture/governance/directory-boundary-specification.md)
 - [Boundary Reference Matrix](gl-enterprise-architecture/governance/boundary-reference-matrix.md)
 - [Boundary Enforcement Rules](gl-enterprise-architecture/governance/boundary-enforcement-rules.md)
