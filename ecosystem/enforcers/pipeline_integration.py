@@ -80,6 +80,41 @@ class PipelineIntegration:
         # 輸出目錄
         self.output_dir = self.workspace_path / "ecosystem" / "outputs" / "fact-verification"
         self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def check(self) -> Dict[str, Any]:
+        """
+        基礎健康檢查，確保管道可用性與關鍵路徑完整。
+
+        Returns:
+            Dict with passed/issues/warnings/details.
+        """
+        issues: List[str] = []
+        warnings: List[str] = []
+
+        config_exists = self.config_path.exists()
+        output_writable = os.access(self.output_dir, os.W_OK)
+
+        if not config_exists:
+            issues.append(f"Config not found: {self.config_path}")
+
+        if not self.pipeline_available:
+            warnings.append("GLFactPipeline unavailable; fallback to mock mode")
+
+        if not output_writable:
+            issues.append(f"Output directory not writable: {self.output_dir}")
+
+        return {
+            "passed": len(issues) == 0,
+            "issues": issues,
+            "warnings": warnings,
+            "details": {
+                "config_path": str(self.config_path),
+                "config_exists": config_exists,
+                "pipeline_available": self.pipeline_available,
+                "output_dir": str(self.output_dir),
+                "output_writable": output_writable,
+            },
+        }
     
     def run_verification(self, 
                         topics: List[str],

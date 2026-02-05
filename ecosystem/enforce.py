@@ -862,403 +862,565 @@ class MNGAEnforcer:
             execution_time_ms=int(elapsed)
         )
 
+    def _make_violation(
+        self,
+        rule_id: str,
+        file_path: str,
+        message: str,
+        severity: str,
+        suggestion: str,
+        line_number: Optional[int] = None,
+    ) -> Violation:
+        return Violation(
+            rule_id=rule_id,
+            file_path=file_path,
+            line_number=line_number,
+            message=message,
+            severity=severity,
+            suggestion=suggestion,
+        )
 
     def check_foundation_layer(self) -> EnforcementResult:
         """檢查基礎層組件"""
+        start_time = datetime.now()
         violations = []
+        files_checked = 0
+
         foundation_modules = [
             "ecosystem/foundation/foundation_dag.py",
             "ecosystem/foundation/format/format_enforcer.py",
-            "ecosystem/foundation/language/language_enforcer.py"
+            "ecosystem/foundation/language/language_enforcer.py",
         ]
-        for module_path in foundation_modules:
-            path = self.workspace / module_path
-            if not path.exists():
-                violations.append(Violation(path=module_path, line=0, severity="MEDIUM", message=f"Foundation module not found: {module_path}"))
-                continue
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    if "@GL-governed" not in f.read():
-                        violations.append(Violation(path=module_path, line=1, severity="LOW", message="Missing @GL-governed annotation"))
-            except: pass
-        return EnforcementResult(check_name="Foundation Layer", passed=len(violations)==0, violations=violations, message=f"Scanned {len(foundation_modules)} foundation modules, found {len(violations)} issues")
-    
-    def check_coordination_layer(self) -> EnforcementResult:
-        """檢查協調層組件"""
-        violations = []
-        for coord_path in ["ecosystem/coordination/api-gateway", "ecosystem/coordination/communication", "ecosystem/coordination/data-synchronization", "ecosystem/coordination/service-discovery"]:
-            if not (self.workspace / coord_path).exists():
-                violations.append(Violation(path=coord_path, line=0, severity="MEDIUM", message=f"Coordination component not found: {coord_path}"))
-        return EnforcementResult(check_name="Coordination Layer", passed=len(violations)==0, violations=violations, message=f"Checked 4 coordination components, found {len(violations)} issues")
-    
-    def check_governance_engines(self) -> EnforcementResult:
-        """檢查治理引擎"""
-        violations = []
-        for module_path, class_name in [("ecosystem/governance/engines/validation/validation_engine.py", "ValidationEngine"), ("ecosystem/governance/engines/refresh/refresh_engine.py", "RefreshEngine"), ("ecosystem/governance/engines/reverse-architecture/reverse_architecture_engine.py", "ReverseArchitectureEngine"), ("ecosystem/governance/meta-governance/src/governance_framework.py", "GovernanceFramework")]:
-            path = self.workspace / module_path
-            if not path.exists():
-                violations.append(Violation(path=module_path, line=0, severity="HIGH", message=f"Governance engine not found: {module_path}"))
-            else:
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        if f"class {class_name}" not in f.read():
-                            violations.append(Violation(path=module_path, line=0, severity="HIGH", message=f"Class {class_name} not defined"))
-                except: pass
-        return EnforcementResult(check_name="Governance Engines", passed=len(violations)==0, violations=violations, message=f"Checked 4 governance engines, found {len(violations)} issues")
-    
-    def check_tools_layer(self) -> EnforcementResult:
-        """檢查工具層"""
-        violations = []
-        for tool_path in ["ecosystem/tools/scan_secrets.py", "ecosystem/tools/fix_security_issues.py", "ecosystem/tools/generate_governance_dashboard.py", "ecosystem/tools/fact-verification/gl_fact_pipeline.py"]:
-            if not (self.workspace / tool_path).exists():
-                violations.append(Violation(path=tool_path, line=0, severity="MEDIUM", message=f"Critical tool not found: {tool_path}"))
-        return EnforcementResult(check_name="Tools Layer", passed=len(violations)==0, violations=violations, message=f"Checked 4 critical tools, found {len(violations)} issues")
-    
-    def check_events_layer(self) -> EnforcementResult:
-        """檢查事件處理層"""
-        violations = []
-        path = self.workspace / "ecosystem/events/event_emitter.py"
-        if not path.exists():
-            violations.append(Violation(path="ecosystem/events/event_emitter.py", line=0, severity="HIGH", message="Event emitter not found"))
-        else:
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    if "class EventEmitter" not in f.read():
-                        violations.append(Violation(path="ecosystem/events/event_emitter.py", line=0, severity="HIGH", message="EventEmitter class not defined"))
-            except: pass
-        return EnforcementResult(check_name="Events Layer", passed=len(violations)==0, violations=violations, message=f"Checked event layer, found {len(violations)} issues")
-    
-    def check_complete_naming_enforcer(self) -> EnforcementResult:
-        """檢查完整命名強制執行器"""
-        violations = []
-        path = self.workspace / "ecosystem/enforcers/complete_naming_enforcer.py"
-        if not path.exists():
-            violations.append(Violation(path="ecosystem/enforcers/complete_naming_enforcer.py", line=0, severity="HIGH", message="Complete naming enforcer not found"))
-        else:
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    for naming_type in ["CommentNaming", "MappingNaming", "ReferenceNaming", "PathNaming", "PortNaming", "ServiceNaming", "DependencyNaming", "ShortNaming", "LongNaming", "DirectoryNaming", "FileNaming", "EventNaming", "VariableNaming", "EnvironmentVariableNaming", "GitOpsNaming", "HelmReleaseNaming"]:
-                        if naming_type not in content:
-                            violations.append(Violation(path="ecosystem/enforcers/complete_naming_enforcer.py", line=0, severity="MEDIUM", message=f"Naming type {naming_type} not implemented"))
-            except: pass
-        return EnforcementResult(check_name="Complete Naming Enforcer", passed=len(violations)==0, violations=violations, message=f"Checked complete naming enforcer, found {len(violations)} issues")
-    
-    def check_enforcers_completeness(self) -> EnforcementResult:
-        """檢查強制執行器完整性"""
-        violations = []
-        for module_path, class_name in [("ecosystem/enforcers/closed_loop_governance.py", "ClosedLoopGovernance"), ("ecosystem/enforcers/pipeline_integration.py", "PipelineIntegration"), ("ecosystem/enforcers/role_executor.py", "RoleExecutor"), ("ecosystem/enforcers/semantic_violation_classifier.py", "SemanticViolationClassifier")]:
-            path = self.workspace / module_path
-            if not path.exists():
-                violations.append(Violation(path=module_path, line=0, severity="MEDIUM", message=f"Enforcer module not found: {module_path}"))
-            else:
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                        if f"class {class_name}" not in content:
-                            violations.append(Violation(path=module_path, line=0, severity="MEDIUM", message=f"Class {class_name} not defined"))
-                        if "@GL-governed" not in content:
-                            violations.append(Violation(path=module_path, line=1, severity="LOW", message="Missing @GL-governed annotation"))
-                except: pass
-        return EnforcementResult(check_name="Enforcers Completeness", passed=len(violations)==0, violations=violations, message=f"Checked 4 enforcer modules, found {len(violations)} issues")
-    
-    def check_coordination_services(self) -> EnforcementResult:
-        """檢查協調服務"""
-        violations = []
-        for module_path, class_name in [("ecosystem/coordination/api-gateway/src/gateway.py", "Gateway"), ("ecosystem/coordination/communication/src/event_dispatcher.py", "EventDispatcher"), ("ecosystem/coordination/communication/src/message_bus.py", "MessageBus"), ("ecosystem/coordination/data-synchronization/src/conflict_resolver.py", "ConflictResolver"), ("ecosystem/coordination/data-synchronization/src/sync_scheduler.py", "SyncScheduler"), ("ecosystem/coordination/service-discovery/src/service_registry.py", "ServiceRegistry")]:
-            path = self.workspace / module_path
-            if not path.exists():
-                violations.append(Violation(path=module_path, line=0, severity="MEDIUM", message=f"Coordination service not found: {module_path}"))
-            else:
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        if f"class {class_name}" not in f.read():
-                            violations.append(Violation(path=module_path, line=0, severity="MEDIUM", message=f"Class {class_name} not defined"))
-                except: pass
-        return EnforcementResult(check_name="Coordination Services", passed=len(violations)==0, violations=violations, message=f"Checked 6 coordination services, found {len(violations)} issues")
-    
-    def check_meta_governance_systems(self) -> EnforcementResult:
-        """檢查元治理系統"""
-        violations = []
-        for module_path, class_name in [("ecosystem/governance/meta-governance/src/change_control_system.py", "ChangeControlSystem"), ("ecosystem/governance/meta-governance/src/dependency_manager.py", "DependencyManager"), ("ecosystem/governance/meta-governance/src/impact_analyzer.py", "ImpactAnalyzer"), ("ecosystem/governance/meta-governance/src/review_manager.py", "ReviewManager"), ("ecosystem/governance/meta-governance/src/sha_integrity_system.py", "SHAIntegritySystem"), ("ecosystem/governance/meta-governance/src/strict_version_enforcer.py", "StrictVersionEnforcer"), ("ecosystem/governance/meta-governance/src/version_manager.py", "VersionManager")]:
-            path = self.workspace / module_path
-            if not path.exists():
-                violations.append(Violation(path=module_path, line=0, severity="HIGH", message=f"Meta-governance module not found: {module_path}"))
-            else:
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                        if f"class {class_name}" not in content:
-                            violations.append(Violation(path=module_path, line=0, severity="HIGH", message=f"Class {class_name} not defined"))
-                        if "@GL-governed" not in content:
-                            violations.append(Violation(path=module_path, line=1, severity="LOW", message="Missing @GL-governed annotation"))
-                except: pass
-        return EnforcementResult(check_name="Meta-Governance Systems", passed=len(violations)==0, violations=violations, message=f"Checked 7 meta-governance modules, found {len(violations)} issues")
-    
-    def check_reasoning_system(self) -> EnforcementResult:
-        """檢查推理系統"""
-        violations = []
-        path = self.workspace / "ecosystem/reasoning/auto_reasoner.py"
-        if not path.exists():
-            violations.append(Violation(path="ecosystem/reasoning/auto_reasoner.py", line=0, severity="MEDIUM", message="Auto reasoner not found"))
-        else:
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    if "class AutoReasoner" not in f.read():
-                        violations.append(Violation(path="ecosystem/reasoning/auto_reasoner.py", line=0, severity="MEDIUM", message="AutoReasoner class not defined"))
-            except: pass
-        return EnforcementResult(check_name="Reasoning System", passed=len(violations)==0, violations=violations, message=f"Checked reasoning system, found {len(violations)} issues")
-    
-    def check_validators_layer(self) -> EnforcementResult:
-        """檢查驗證器層"""
-        violations = []
-        path = self.workspace / "ecosystem/validators/network_validator.py"
-        if not path.exists():
-            violations.append(Violation(path="ecosystem/validators/network_validator.py", line=0, severity="MEDIUM", message="Validator not found"))
-        else:
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    if "class NetworkValidator" not in f.read():
-                        violations.append(Violation(path="ecosystem/validators/network_validator.py", line=0, severity="MEDIUM", message="NetworkValidator class not defined"))
-            except: pass
-        return EnforcementResult(check_name="Validators Layer", passed=len(violations)==0, violations=violations, message=f"Checked validators, found {len(violations)} issues")
 
-
-    
-    def check_foundation_layer(self) -> EnforcementResult:
-        """檢查基礎層組件"""
-        violations = []
-        
-        foundation_modules = [
-            "ecosystem/foundation/foundation_dag.py",
-            "ecosystem/foundation/format/format_enforcer.py",
-            "ecosystem/foundation/language/language_enforcer.py"
-        ]
-        
         for module_path in foundation_modules:
+            files_checked += 1
             path = self.workspace / module_path
             if not path.exists():
-                violations.append(Violation(
-                    path=module_path,
-                    line=0,
+                violations.append(self._make_violation(
+                    rule_id="MNGA-FOUNDATION-001",
+                    file_path=module_path,
+                    line_number=None,
+                    message=f"Foundation module not found: {module_path}",
                     severity="MEDIUM",
-                    message=f"Foundation module not found: {module_path}"
+                    suggestion=f"Create {module_path}",
                 ))
                 continue
-            
-            # 檢查模組是否有 GL 標記
+
             try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    module_content = f.read()
-                
-                if "@GL-governed" not in module_content:
-                    violations.append(Violation(
-                        path=module_path,
-                        line=1,
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if "@GL-governed" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-FOUNDATION-002",
+                        file_path=module_path,
+                        line_number=1,
+                        message="Missing @GL-governed annotation",
                         severity="LOW",
-                        message=f"Foundation module missing @GL-governed annotation"
+                        suggestion="Add @GL-governed annotation",
                     ))
             except Exception:
                 pass
-        
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
         return EnforcementResult(
             check_name="Foundation Layer",
             passed=len(violations) == 0,
+            message=f"Scanned {len(foundation_modules)} foundation modules, found {len(violations)} issues",
             violations=violations,
-            message=f"Scanned {len(foundation_modules)} foundation modules, found {len(violations)} issues"
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
         )
-    
+
     def check_coordination_layer(self) -> EnforcementResult:
         """檢查協調層組件"""
+        start_time = datetime.now()
         violations = []
-        
+        files_checked = 0
+
         coordination_paths = [
             "ecosystem/coordination/api-gateway",
             "ecosystem/coordination/communication",
             "ecosystem/coordination/data-synchronization",
-            "ecosystem/coordination/service-discovery"
+            "ecosystem/coordination/service-discovery",
         ]
-        
+
         for coord_path in coordination_paths:
+            files_checked += 1
             full_path = self.workspace / coord_path
             if not full_path.exists():
-                violations.append(Violation(
-                    path=coord_path,
-                    line=0,
+                violations.append(self._make_violation(
+                    rule_id="MNGA-COORD-001",
+                    file_path=coord_path,
+                    line_number=None,
+                    message=f"Coordination component not found: {coord_path}",
                     severity="MEDIUM",
-                    message=f"Coordination component not found: {coord_path}"
+                    suggestion=f"Create {coord_path}",
                 ))
                 continue
-            
-            # 檢查是否至少有一個模組
+
             py_files = list(full_path.rglob("*.py"))
+            files_checked += len(py_files)
             if not py_files:
-                violations.append(Violation(
-                    path=coord_path,
-                    line=0,
+                violations.append(self._make_violation(
+                    rule_id="MNGA-COORD-002",
+                    file_path=coord_path,
+                    line_number=None,
+                    message="Coordination component has no Python files",
                     severity="LOW",
-                    message=f"Coordination component has no Python files"
+                    suggestion="Add at least one Python module",
                 ))
-        
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
         return EnforcementResult(
             check_name="Coordination Layer",
             passed=len(violations) == 0,
+            message=f"Checked {len(coordination_paths)} coordination components, found {len(violations)} issues",
             violations=violations,
-            message=f"Checked {len(coordination_paths)} coordination components, found {len(violations)} issues"
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
         )
-    
+
     def check_governance_engines(self) -> EnforcementResult:
         """檢查治理引擎"""
+        start_time = datetime.now()
         violations = []
-        
+        files_checked = 0
+
         governance_engines = [
             ("ecosystem/governance/engines/validation/validation_engine.py", "ValidationEngine"),
             ("ecosystem/governance/engines/refresh/refresh_engine.py", "RefreshEngine"),
             ("ecosystem/governance/engines/reverse-architecture/reverse_architecture_engine.py", "ReverseArchitectureEngine"),
-            ("ecosystem/governance/meta-governance/src/governance_framework.py", "GovernanceFramework")
+            ("ecosystem/governance/meta-governance/src/governance_framework.py", "GovernanceFramework"),
         ]
-        
+
         for module_path, class_name in governance_engines:
+            files_checked += 1
             path = self.workspace / module_path
             if not path.exists():
-                violations.append(Violation(
-                    path=module_path,
-                    line=0,
+                violations.append(self._make_violation(
+                    rule_id="MNGA-ENG-001",
+                    file_path=module_path,
+                    line_number=None,
+                    message=f"Governance engine not found: {module_path}",
                     severity="HIGH",
-                    message=f"Governance engine not found: {module_path}"
+                    suggestion=f"Create {module_path}",
                 ))
                 continue
-            
-            # 檢查類是否存在
+
             try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    module_content = f.read()
-                
-                if f"class {class_name}" not in module_content:
-                    violations.append(Violation(
-                        path=module_path,
-                        line=0,
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if f"class {class_name}" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-ENG-002",
+                        file_path=module_path,
+                        line_number=None,
+                        message=f"Class {class_name} not defined in {module_path}",
                         severity="HIGH",
-                        message=f"Class {class_name} not defined in {module_path}"
+                        suggestion=f"Define class {class_name}",
                     ))
             except Exception:
                 pass
-        
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
         return EnforcementResult(
             check_name="Governance Engines",
             passed=len(violations) == 0,
+            message=f"Checked {len(governance_engines)} governance engines, found {len(violations)} issues",
             violations=violations,
-            message=f"Checked {len(governance_engines)} governance engines, found {len(violations)} issues"
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
         )
-    
+
     def check_tools_layer(self) -> EnforcementResult:
         """檢查工具層"""
+        start_time = datetime.now()
         violations = []
-        
-        # 關鍵工具列表
+        files_checked = 0
+
         critical_tools = [
             "ecosystem/tools/scan_secrets.py",
             "ecosystem/tools/fix_security_issues.py",
             "ecosystem/tools/generate_governance_dashboard.py",
-            "ecosystem/tools/fact-verification/gl_fact_pipeline.py"
+            "ecosystem/tools/fact-verification/gl_fact_pipeline.py",
         ]
-        
+
         for tool_path in critical_tools:
+            files_checked += 1
             path = self.workspace / tool_path
             if not path.exists():
-                violations.append(Violation(
-                    path=tool_path,
-                    line=0,
+                violations.append(self._make_violation(
+                    rule_id="MNGA-TOOLS-001",
+                    file_path=tool_path,
+                    line_number=None,
+                    message=f"Critical tool not found: {tool_path}",
                     severity="MEDIUM",
-                    message=f"Critical tool not found: {tool_path}"
+                    suggestion=f"Create {tool_path}",
                 ))
-        
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
         return EnforcementResult(
             check_name="Tools Layer",
             passed=len(violations) == 0,
+            message=f"Checked {len(critical_tools)} critical tools, found {len(violations)} issues",
             violations=violations,
-            message=f"Checked {len(critical_tools)} critical tools, found {len(violations)} issues"
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
         )
-    
+
     def check_events_layer(self) -> EnforcementResult:
         """檢查事件處理層"""
+        start_time = datetime.now()
         violations = []
-        
+        files_checked = 0
+
         event_emitter_path = "ecosystem/events/event_emitter.py"
+        files_checked += 1
         path = self.workspace / event_emitter_path
-        
+
         if not path.exists():
-            violations.append(Violation(
-                path=event_emitter_path,
-                line=0,
+            violations.append(self._make_violation(
+                rule_id="MNGA-EVENTS-001",
+                file_path=event_emitter_path,
+                line_number=None,
+                message=f"Event emitter not found: {event_emitter_path}",
                 severity="HIGH",
-                message=f"Event emitter not found: {event_emitter_path}"
+                suggestion=f"Create {event_emitter_path} with EventEmitter",
             ))
         else:
             try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    file_content = f.read()
-                
-                if "class EventEmitter" not in file_content:
-                    violations.append(Violation(
-                        path=event_emitter_path,
-                        line=0,
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if "class EventEmitter" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-EVENTS-002",
+                        file_path=event_emitter_path,
+                        line_number=None,
+                        message="EventEmitter class not defined",
                         severity="HIGH",
-                        message=f"EventEmitter class not defined"
+                        suggestion="Define EventEmitter class",
                     ))
             except Exception:
                 pass
-        
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
         return EnforcementResult(
             check_name="Events Layer",
             passed=len(violations) == 0,
+            message=f"Checked event layer, found {len(violations)} issues",
             violations=violations,
-            message=f"Checked event layer, found {len(violations)} issues"
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
         )
-    
+
     def check_complete_naming_enforcer(self) -> EnforcementResult:
         """檢查完整命名強制執行器"""
+        start_time = datetime.now()
         violations = []
-        
-        complete_naming_path = "ecosystem/enforcers/complete_naming_enforcer.py"
-        path = self.workspace / complete_naming_path
-        
+        files_checked = 0
+
+        naming_path = "ecosystem/enforcers/complete_naming_enforcer.py"
+        files_checked += 1
+        path = self.workspace / naming_path
+
         if not path.exists():
-            violations.append(Violation(
-                path=complete_naming_path,
-                line=0,
+            violations.append(self._make_violation(
+                rule_id="MNGA-NAMING-001",
+                file_path=naming_path,
+                line_number=None,
+                message="Complete naming enforcer not found",
                 severity="HIGH",
-                message=f"Complete naming enforcer not found"
+                suggestion=f"Create {naming_path}",
             ))
         else:
             try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    file_content = f.read()
-                
-                # 檢查是否有 16 種命名類型
+                content = path.read_text(encoding="utf-8", errors="ignore")
                 naming_types = [
                     "CommentNaming", "MappingNaming", "ReferenceNaming", "PathNaming",
                     "PortNaming", "ServiceNaming", "DependencyNaming", "ShortNaming",
                     "LongNaming", "DirectoryNaming", "FileNaming", "EventNaming",
-                    "VariableNaming", "EnvironmentVariableNaming", "GitOpsNaming", "HelmReleaseNaming"
+                    "VariableNaming", "EnvironmentVariableNaming", "GitOpsNaming", "HelmReleaseNaming",
                 ]
-                
                 for naming_type in naming_types:
-                    if naming_type not in file_content:
-                        violations.append(Violation(
-                            path=complete_naming_path,
-                            line=0,
+                    if naming_type not in content:
+                        violations.append(self._make_violation(
+                            rule_id="MNGA-NAMING-002",
+                            file_path=naming_path,
+                            line_number=None,
+                            message=f"Naming type {naming_type} not implemented",
                             severity="MEDIUM",
-                            message=f"Naming type {naming_type} not implemented"
+                            suggestion=f"Implement {naming_type}",
                         ))
             except Exception:
                 pass
-        
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
         return EnforcementResult(
             check_name="Complete Naming Enforcer",
             passed=len(violations) == 0,
+            message=f"Checked complete naming enforcer, found {len(violations)} issues",
             violations=violations,
-            message=f"Checked complete naming enforcer, found {len(violations)} issues"
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
+        )
+
+    def check_enforcers_completeness(self) -> EnforcementResult:
+        """檢查強制執行器完整性"""
+        start_time = datetime.now()
+        violations = []
+        files_checked = 0
+
+        enforcers = [
+            ("ecosystem/enforcers/closed_loop_governance.py", "ClosedLoopGovernance"),
+            ("ecosystem/enforcers/pipeline_integration.py", "PipelineIntegration"),
+            ("ecosystem/enforcers/role_executor.py", "RoleExecutor"),
+            ("ecosystem/enforcers/semantic_violation_classifier.py", "SemanticViolationClassifier"),
+        ]
+
+        for module_path, class_name in enforcers:
+            files_checked += 1
+            path = self.workspace / module_path
+            if not path.exists():
+                violations.append(self._make_violation(
+                    rule_id="MNGA-ENFORCER-001",
+                    file_path=module_path,
+                    line_number=None,
+                    message=f"Enforcer module not found: {module_path}",
+                    severity="MEDIUM",
+                    suggestion=f"Create {module_path}",
+                ))
+                continue
+
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if f"class {class_name}" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-ENFORCER-002",
+                        file_path=module_path,
+                        line_number=None,
+                        message=f"Class {class_name} not defined",
+                        severity="MEDIUM",
+                        suggestion=f"Define class {class_name}",
+                    ))
+                if "@GL-governed" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-ENFORCER-003",
+                        file_path=module_path,
+                        line_number=1,
+                        message="Missing @GL-governed annotation",
+                        severity="LOW",
+                        suggestion="Add @GL-governed annotation",
+                    ))
+            except Exception:
+                pass
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        return EnforcementResult(
+            check_name="Enforcers Completeness",
+            passed=len(violations) == 0,
+            message=f"Checked {len(enforcers)} enforcer modules, found {len(violations)} issues",
+            violations=violations,
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
+        )
+
+    def check_coordination_services(self) -> EnforcementResult:
+        """檢查協調服務"""
+        start_time = datetime.now()
+        violations = []
+        files_checked = 0
+
+        services = [
+            ("ecosystem/coordination/api-gateway/src/gateway.py", "Gateway"),
+            ("ecosystem/coordination/communication/src/event_dispatcher.py", "EventDispatcher"),
+            ("ecosystem/coordination/communication/src/message_bus.py", "MessageBus"),
+            ("ecosystem/coordination/data-synchronization/src/conflict_resolver.py", "ConflictResolver"),
+            ("ecosystem/coordination/data-synchronization/src/sync_scheduler.py", "SyncScheduler"),
+            ("ecosystem/coordination/service-discovery/src/service_registry.py", "ServiceRegistry"),
+        ]
+
+        for module_path, class_name in services:
+            files_checked += 1
+            path = self.workspace / module_path
+            if not path.exists():
+                violations.append(self._make_violation(
+                    rule_id="MNGA-COORD-SVC-001",
+                    file_path=module_path,
+                    line_number=None,
+                    message=f"Coordination service not found: {module_path}",
+                    severity="MEDIUM",
+                    suggestion=f"Create {module_path}",
+                ))
+                continue
+
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if f"class {class_name}" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-COORD-SVC-002",
+                        file_path=module_path,
+                        line_number=None,
+                        message=f"Class {class_name} not defined",
+                        severity="MEDIUM",
+                        suggestion=f"Define class {class_name}",
+                    ))
+            except Exception:
+                pass
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        return EnforcementResult(
+            check_name="Coordination Services",
+            passed=len(violations) == 0,
+            message=f"Checked {len(services)} coordination services, found {len(violations)} issues",
+            violations=violations,
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
+        )
+
+    def check_meta_governance_systems(self) -> EnforcementResult:
+        """檢查元治理系統"""
+        start_time = datetime.now()
+        violations = []
+        files_checked = 0
+
+        systems = [
+            ("ecosystem/governance/meta-governance/src/change_control_system.py", "ChangeControlSystem"),
+            ("ecosystem/governance/meta-governance/src/dependency_manager.py", "DependencyManager"),
+            ("ecosystem/governance/meta-governance/src/impact_analyzer.py", "ImpactAnalyzer"),
+            ("ecosystem/governance/meta-governance/src/review_manager.py", "ReviewManager"),
+            ("ecosystem/governance/meta-governance/src/sha_integrity_system.py", "SHAIntegritySystem"),
+            ("ecosystem/governance/meta-governance/src/strict_version_enforcer.py", "StrictVersionEnforcer"),
+            ("ecosystem/governance/meta-governance/src/version_manager.py", "VersionManager"),
+        ]
+
+        for module_path, class_name in systems:
+            files_checked += 1
+            path = self.workspace / module_path
+            if not path.exists():
+                violations.append(self._make_violation(
+                    rule_id="MNGA-META-001",
+                    file_path=module_path,
+                    line_number=None,
+                    message=f"Meta-governance module not found: {module_path}",
+                    severity="HIGH",
+                    suggestion=f"Create {module_path}",
+                ))
+                continue
+
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if f"class {class_name}" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-META-002",
+                        file_path=module_path,
+                        line_number=None,
+                        message=f"Class {class_name} not defined",
+                        severity="HIGH",
+                        suggestion=f"Define class {class_name}",
+                    ))
+                if "@GL-governed" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-META-003",
+                        file_path=module_path,
+                        line_number=1,
+                        message="Missing @GL-governed annotation",
+                        severity="LOW",
+                        suggestion="Add @GL-governed annotation",
+                    ))
+            except Exception:
+                pass
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        return EnforcementResult(
+            check_name="Meta-Governance Systems",
+            passed=len(violations) == 0,
+            message=f"Checked {len(systems)} meta-governance modules, found {len(violations)} issues",
+            violations=violations,
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
+        )
+
+    def check_reasoning_system(self) -> EnforcementResult:
+        """檢查推理系統"""
+        start_time = datetime.now()
+        violations = []
+        files_checked = 0
+
+        module_path = "ecosystem/reasoning/auto_reasoner.py"
+        files_checked += 1
+        path = self.workspace / module_path
+        if not path.exists():
+            violations.append(self._make_violation(
+                rule_id="MNGA-REASON-001",
+                file_path=module_path,
+                line_number=None,
+                message="Auto reasoner not found",
+                severity="MEDIUM",
+                suggestion=f"Create {module_path}",
+            ))
+        else:
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if "class AutoReasoner" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-REASON-002",
+                        file_path=module_path,
+                        line_number=None,
+                        message="AutoReasoner class not defined",
+                        severity="MEDIUM",
+                        suggestion="Define AutoReasoner class",
+                    ))
+            except Exception:
+                pass
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        return EnforcementResult(
+            check_name="Reasoning System",
+            passed=len(violations) == 0,
+            message=f"Checked reasoning system, found {len(violations)} issues",
+            violations=violations,
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
+        )
+
+    def check_validators_layer(self) -> EnforcementResult:
+        """檢查驗證器層"""
+        start_time = datetime.now()
+        violations = []
+        files_checked = 0
+
+        module_path = "ecosystem/validators/network_validator.py"
+        files_checked += 1
+        path = self.workspace / module_path
+        if not path.exists():
+            violations.append(self._make_violation(
+                rule_id="MNGA-VALIDATOR-001",
+                file_path=module_path,
+                line_number=None,
+                message="Validator not found",
+                severity="MEDIUM",
+                suggestion=f"Create {module_path}",
+            ))
+        else:
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+                if "class NetworkValidator" not in content:
+                    violations.append(self._make_violation(
+                        rule_id="MNGA-VALIDATOR-002",
+                        file_path=module_path,
+                        line_number=None,
+                        message="NetworkValidator class not defined",
+                        severity="MEDIUM",
+                        suggestion="Define NetworkValidator class",
+                    ))
+            except Exception:
+                pass
+
+        elapsed = (datetime.now() - start_time).total_seconds() * 1000
+        return EnforcementResult(
+            check_name="Validators Layer",
+            passed=len(violations) == 0,
+            message=f"Checked validators, found {len(violations)} issues",
+            violations=violations,
+            files_scanned=files_checked,
+            execution_time_ms=int(elapsed),
         )
 
 # ============================================================================
