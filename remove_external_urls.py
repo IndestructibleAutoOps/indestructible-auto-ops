@@ -34,7 +34,7 @@ def remove_external_urls(file_path):
         return False
 
 def main():
-    root_dir = Path("/workspace/machine-native-ops")
+    root_dir = Path(__file__).resolve().parent
     
     # Process all markdown and text files
     files_processed = 0

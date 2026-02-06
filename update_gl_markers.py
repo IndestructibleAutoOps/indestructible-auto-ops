@@ -40,7 +40,7 @@ def update_file(file_path):
 
 def main():
     """Main function to update GL markers."""
-    root_dir = Path("/workspace/machine-native-ops")
+    root_dir = Path(__file__).resolve().parent
     
     # File patterns to check
     patterns = ['*.md', '*.yaml', '*.yml', '*.json', '*.py', '*.txt']

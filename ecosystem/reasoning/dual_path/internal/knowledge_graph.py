@@ -342,11 +342,12 @@ class KnowledgeGraph:
 
 
 if __name__ == "__main__":
-    # Test knowledge graph
-    graph = KnowledgeGraph(codebase_path="/workspace/machine-native-ops")
+    # Test knowledge graph against the current repo root (not legacy snapshots).
+    repo_root = Path(__file__).resolve().parents[4]
+    graph = KnowledgeGraph(codebase_path=str(repo_root))
 
     # Build graph
-    graph.build_graph("/workspace/machine-native-ops")
+    graph.build_graph(str(repo_root))
 
     # Query context for a symbol
     context = graph.query_context("process_task", depth=2)
@@ -362,6 +363,6 @@ if __name__ == "__main__":
         print(f"  - {rel['symbol']} ({rel['relation']})")
 
     # Export graph
-    graph.export_graph(
-        "/workspace/machine-native-ops/ecosystem/indexes/internal/knowledge_graph.json"
-    )
+    output_path = repo_root / "ecosystem" / "indexes" / "internal" / "knowledge_graph.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    graph.export_graph(str(output_path))

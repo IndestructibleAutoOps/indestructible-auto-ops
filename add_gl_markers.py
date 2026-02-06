@@ -102,6 +102,7 @@ def infer_semantic_type(path_str):
 
 def process_files(scan_results_path):
     """Process files from scan results"""
+    repo_root = Path(__file__).resolve().parent
     # 讀取掃描結果
     try:
         with open(scan_results_path, 'r') as f:
@@ -117,7 +118,7 @@ def process_files(scan_results_path):
     print(f"Processing {len(data['adjustment_suggestions'])} files...")
     
     for i, item in enumerate(data['adjustment_suggestions'], 1):
-        file_path = Path(f"/workspace/machine-native-ops/{item['current_path']}")
+        file_path = repo_root / item['current_path']
         
         # 檢查檔案是否存在
         if not file_path.exists():

@@ -419,6 +419,7 @@ if __name__ == "__main__":
     print(json.dumps(patterns, indent=2))
 
     # Export report
-    feedback_loop.export_feedback_report(
-        "/workspace/machine-native-ops/ecosystem/reports/feedback_analysis.json"
-    )
+    repo_root = Path(__file__).resolve().parents[3]
+    output_path = repo_root / "ecosystem" / "reports" / "feedback_analysis.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    feedback_loop.export_feedback_report(str(output_path))

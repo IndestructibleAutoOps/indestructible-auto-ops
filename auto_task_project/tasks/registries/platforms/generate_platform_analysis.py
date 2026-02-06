@@ -183,11 +183,15 @@ if __name__ == "__main__":
     analysis = generate_comprehensive_analysis()
 
     # 保存到文件
-    with open(
-        "/workspace/machine-native-ops/ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md",
-        "w",
-        encoding="utf-8",
-    ) as f:
+    repo_root = Path(__file__).resolve().parents[4]
+    output_path = (
+        repo_root
+        / "ecosystem"
+        / "registry"
+        / "platforms"
+        / "GL_PLATFORMS_ANALYSIS_COMPLETE.md"
+    )
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(analysis)
 
     print("✅ 平台分析已生成")

@@ -203,7 +203,7 @@ graph LR
     "best_practices": [...]
   },
   "metadata": {
-    "ecosystem_root": "/workspace/machine-native-ops/ecosystem",
+    "ecosystem_root": "/workspace/ecosystem",
     "verification_type": "NETWORK_INTERACTION_AND_AUTO_REASONING"
   }
 }

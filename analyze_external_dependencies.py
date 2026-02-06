@@ -159,7 +159,7 @@ class DependencyAnalyzer:
 
 def main():
     """Main function."""
-    root_dir = "/workspace/machine-native-ops"
+    root_dir = str(Path(__file__).resolve().parent)
     
     analyzer = DependencyAnalyzer(root_dir)
     dependencies = analyzer.scan_directory()

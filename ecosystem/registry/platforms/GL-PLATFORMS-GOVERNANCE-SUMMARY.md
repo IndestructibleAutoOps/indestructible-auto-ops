@@ -189,7 +189,7 @@ GL 平台治理體系
 #### 1. 解決重複平台
 ```bash
 # 保留 platforms/ 版本，刪除 root/ 版本
-cd /workspace/machine-native-ops
+cd /workspace
 rm -rf gl.web.wix-platform
 rm -rf gl.runtime.build-platform
 rm -rf gl.doc.gitbook-platform

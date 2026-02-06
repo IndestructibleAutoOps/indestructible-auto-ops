@@ -864,11 +864,12 @@ class ClosedLoopGovernanceSystem:
 if __name__ == "__main__":
     import argparse
 
+    default_base_path = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description="Closed Loop Governance System")
     parser.add_argument(
         "--base-path",
         type=Path,
-        default=Path("/workspace/machine-native-ops"),
+        default=default_base_path,
         help="Base path to the repository",
     )
 

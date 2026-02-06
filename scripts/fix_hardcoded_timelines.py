@@ -31,7 +31,9 @@ from collections import defaultdict
 class TimelineFixer:
     """時間線修復器"""
 
-    def __init__(self, repo_path="/workspace/machine-native-ops"):
+    def __init__(self, repo_path=None):
+        if repo_path is None:
+            repo_path = str(Path(__file__).resolve().parents[1])
         self.repo_path = Path(repo_path)
         self.fixes_applied = defaultdict(list)
         self.files_modified = 0
@@ -289,7 +291,7 @@ def main():
     print("=" * 60)
     print()
 
-    repo_path = Path("/workspace/machine-native-ops")
+    repo_path = Path(__file__).resolve().parents[1]
     fixer = TimelineFixer(repo_path)
 
     # 定義需要修復的文件列表（高優先級）

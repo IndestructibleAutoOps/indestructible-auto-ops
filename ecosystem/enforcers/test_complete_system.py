@@ -26,7 +26,8 @@ def test_enforcement():
     print("=== GL治理執行層 - 完整系統測試 ===\n")
 
     auditor = SelfAuditor()
-    pipeline = PipelineIntegration(workspace_path="/workspace/machine-native-ops")
+    repo_root = Path(__file__).resolve().parents[2]
+    pipeline = PipelineIntegration(workspace_path=str(repo_root))
 
     # 測試1: 禁止短語檢測
     print("1. 測試禁止短語檢測")

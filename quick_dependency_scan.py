@@ -51,7 +51,7 @@ def scan_file(file_path):
 
 def main():
     """Main function."""
-    root_dir = Path("/workspace/machine-native-ops")
+    root_dir = Path(__file__).resolve().parent
     
     print("Quick Dependency Scan")
     print("=" * 60)

@@ -5,6 +5,8 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
+REPO_ROOT = Path(__file__).resolve().parent
+
 def load_yaml_file(filepath):
     """Load YAML file content"""
     try:
@@ -66,7 +68,7 @@ def identify_inconsistencies():
     inconsistencies = []
     
     # Check for naming violations
-    for root, dirs, files in os.walk('/workspace/machine-native-ops'):
+    for root, dirs, files in os.walk(str(REPO_ROOT)):
         for dir_name in dirs:
             # Check GL naming violations
             if (dir_name.startswith('gl-') or dir_name.startswith('GL_')) and \
@@ -84,8 +86,8 @@ def extract_governance_patterns():
     patterns = []
     
     governance_dirs = [
-        '/workspace/machine-native-ops/.github/governance',
-        '/workspace/machine-native-ops/gl-platform/governance'
+        str(REPO_ROOT / '.github' / 'governance'),
+        str(REPO_ROOT / 'governance'),
     ]
     
     for gov_dir in governance_dirs:
@@ -115,7 +117,7 @@ def generate_internal_report():
     
     # 1. Directory pattern analysis
     print("Analyzing directory patterns...")
-    patterns = analyze_directory_patterns('/workspace/machine-native-ops')
+    patterns = analyze_directory_patterns(str(REPO_ROOT))
     report['findings']['directory_patterns'] = {
         'total_patterns_found': len(patterns),
         'sample_patterns': dict(list(patterns.items())[:10])
@@ -123,13 +125,13 @@ def generate_internal_report():
     
     # 2. Naming conventions analysis
     print("Analyzing naming conventions...")
-    naming_file = '/workspace/machine-native-ops/gl-platform/governance/naming-governance/contracts/naming-conventions.yaml'
+    naming_file = str(REPO_ROOT / 'gl-platform' / 'governance' / 'naming-governance' / 'contracts' / 'naming-conventions.yaml')
     conventions = analyze_naming_conventions(naming_file)
     report['findings']['naming_conventions'] = conventions
     
     # 3. Governance files analysis
     print("Analyzing governance files...")
-    gov_files = analyze_governance_files('/workspace/machine-native-ops')
+    gov_files = analyze_governance_files(str(REPO_ROOT))
     report['findings']['governance_files'] = {
         'total_files': len(gov_files),
         'sample_files': gov_files[:20]
@@ -148,11 +150,11 @@ def generate_internal_report():
     # 6. Statistics
     print("Calculating statistics...")
     report['findings']['statistics'] = {
-        'gl_prefixed_directories': len([d for r, dirs, files in os.walk('/workspace/machine-native-ops') 
+        'gl_prefixed_directories': len([d for r, dirs, files in os.walk(str(REPO_ROOT)) 
                                        for d in dirs if d.startswith('gl-')]),
-        'governance_yaml_files': len([f for r, d, files in os.walk('/workspace/machine-native-ops/.github/governance') 
+        'governance_yaml_files': len([f for r, d, files in os.walk(str(REPO_ROOT / '.github' / 'governance')) 
                                       for f in files if f.endswith('.yaml')]),
-        'platform_directories': len([d for r, dirs, files in os.walk('/workspace/machine-native-ops')
+        'platform_directories': len([d for r, dirs, files in os.walk(str(REPO_ROOT))
                                     for d in dirs if d.endswith('-platform')])
     }
     

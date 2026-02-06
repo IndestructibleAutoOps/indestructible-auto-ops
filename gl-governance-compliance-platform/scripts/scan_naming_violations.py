@@ -20,7 +20,9 @@ from collections import defaultdict
 class NamingViolationScanner:
     """Scan repository for naming convention violations"""
     
-    def __init__(self, root_path="/workspace/machine-native-ops"):
+    def __init__(self, root_path=None):
+        if root_path is None:
+            root_path = str(Path(__file__).resolve().parents[2])
         self.root_path = Path(root_path)
         self.violations = defaultdict(list)
         self.stats = {
@@ -277,8 +279,11 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='GL Runtime Platform Naming Violations Scanner')
-    parser.add_argument('--path', default='/workspace/machine-native-ops',
-                        help='Root path to scan')
+    parser.add_argument(
+        '--path',
+        default=str(Path(__file__).resolve().parents[2]),
+        help='Root path to scan',
+    )
     parser.add_argument('--output', help='Output JSON file for detailed report')
     
     args = parser.parse_args()

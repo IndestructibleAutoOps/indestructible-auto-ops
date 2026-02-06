@@ -175,7 +175,7 @@ class GLFileScanner:
         return suggestions
 
 def main():
-    base_path = Path('/workspace/machine-native-ops')
+    base_path = Path(__file__).resolve().parent
     scanner = GLFileScanner(base_path)
     
     print("=== GL File Scanner Starting ===")

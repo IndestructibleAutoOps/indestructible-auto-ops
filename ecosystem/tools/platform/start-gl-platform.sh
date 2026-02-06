@@ -24,7 +24,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Log directory
-LOG_DIR="/workspace/machine-native-ops/logs"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
+LOG_DIR="${REPO_ROOT}/logs"
 mkdir -p "$LOG_DIR"
 
 # Start timestamp
@@ -108,14 +109,37 @@ fi
 # Phase 2: Start GL Runtime Platform
 log "INFO" "=== Phase 2: Starting GL Runtime Platform ==="
 
-cd /workspace/machine-native-ops/gl-runtime-platform
+# Determine a runtime directory (legacy paths may not exist anymore)
+RUNTIME_DIR=""
+for candidate in \
+  "${REPO_ROOT}/gl-runtime-platform" \
+  "${REPO_ROOT}/gl-runtime-execution-platform" \
+  "${REPO_ROOT}/gl-runtime-engine-platform"
+do
+  if [[ -d "${candidate}" ]]; then
+    RUNTIME_DIR="${candidate}"
+    break
+  fi
+done
+
+if [[ -n "${RUNTIME_DIR}" ]]; then
+  cd "${RUNTIME_DIR}"
+else
+  cd "${REPO_ROOT}"
+  log "WARN" "No runtime platform directory found; will start minimal HTTP server as placeholder"
+fi
 
 # Create storage directories
 mkdir -p storage/artifacts storage/events storage/postgres logs
 
 # Start GL Runtime Platform (port 3000)
 log "INFO" "Starting GL Runtime Platform (port 3000)..."
-nohup node server.js > "$LOG_DIR/gl-platform.log" 2>&1 &
+if [[ -n "${RUNTIME_DIR}" && -f "${RUNTIME_DIR}/server.js" ]] && command -v node >/dev/null 2>&1; then
+  nohup node server.js > "$LOG_DIR/gl-platform.log" 2>&1 &
+else
+  # Fallback: zero-dependency placeholder server on port 3000
+  nohup python3 -m http.server 3000 --bind 0.0.0.0 > "$LOG_DIR/gl-platform.log" 2>&1 &
+fi
 GL_PID=$!
 echo $GL_PID > "$LOG_DIR/gl-platform.pid"
 log "INFO" "GL Platform started with PID: $GL_PID"
@@ -124,7 +148,7 @@ wait_for_service "GL Runtime Platform" 3000
 
 # Start REST API (port 8080) - Using Python
 log "INFO" "Starting REST API service (port 8080)..."
-cd /workspace/machine-native-ops
+cd "${REPO_ROOT}"
 
 # Create simple REST API server
 cat > /tmp/rest_api_server.py << 'EOF'

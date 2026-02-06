@@ -251,6 +251,14 @@ if __name__ == "__main__":
         print("\nNo rules matched")
 
     # Export rules
-    engine.export_rules(
-        "/workspace/machine-native-ops/ecosystem/reasoning/dual_path/arbitration/rules_export.yaml"
+    repo_root = Path(__file__).resolve().parents[4]
+    output_path = (
+        repo_root
+        / "ecosystem"
+        / "reasoning"
+        / "dual_path"
+        / "arbitration"
+        / "rules_export.yaml"
     )
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    engine.export_rules(str(output_path))

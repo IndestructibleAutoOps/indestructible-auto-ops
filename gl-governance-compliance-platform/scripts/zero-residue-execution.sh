@@ -181,7 +181,8 @@ verify_execution_integrity() {
 
 # Main Execution Function
 main() {
-    local repo_path="${1:-/workspace/machine-native-ops}"
+    # Default to current repo root in this workspace.
+    local repo_path="${1:-/workspace}"
     
     # Initialize zero residue environment
     create_zero_residue_environment || return 1

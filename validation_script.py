@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
+REPO_ROOT = Path(__file__).resolve().parent
+
 def check_file_compliance(file_path):
     """檢查單個檔案的合規性"""
     try:
@@ -19,7 +21,7 @@ def check_file_compliance(file_path):
         has_audit_trail = '@GL-audit-trail:' in content
         
         return {
-            'path': str(file_path.relative_to('/workspace/machine-native-ops')),
+            'path': str(file_path.relative_to(REPO_ROOT)),
             'has_governed': has_governed,
             'has_layer': has_layer,
             'has_semantic': has_semantic,
@@ -51,7 +53,7 @@ def validate_structure():
     ]
     
     for dir_path in expected_dirs:
-        full_path = Path(f'/workspace/machine-native-ops/{dir_path}')
+        full_path = REPO_ROOT / dir_path
         if full_path.exists():
             results['structure_checks'][dir_path] = "EXISTS"
         else:
@@ -65,7 +67,7 @@ def validate_structure():
     ]
     
     for file_path in key_files:
-        full_path = Path(f'/workspace/machine-native-ops/{file_path}')
+        full_path = REPO_ROOT / file_path
         if full_path.exists():
             results['structure_checks'][file_path] = "EXISTS"
         else:
@@ -78,8 +80,8 @@ def validate_compliance():
     print("Checking GL compliance...")
     
     # 掃描所有檔案
-    python_files = list(Path('/workspace/machine-native-').rglob('*.py'))
-    yaml_files = list(Path('/workspace/machine-native-').rglob('*.yaml'))
+    python_files = list(REPO_ROOT.rglob('*.py'))
+    yaml_files = list(REPO_ROOT.rglob('*.yaml'))
     
     results = {
         'python_files': len(python_files),

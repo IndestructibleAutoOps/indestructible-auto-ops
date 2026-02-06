@@ -32,7 +32,9 @@ from collections import defaultdict
 class FilteredTimelineScanner:
     """過濾版時間線掃描器"""
     
-    def __init__(self, repo_path="/workspace/machine-native-ops"):
+    def __init__(self, repo_path=None):
+        if repo_path is None:
+            repo_path = str(Path(__file__).resolve().parents[2])
         self.repo_path = repo_path
         self.results = defaultdict(list)
         self.patterns = self._define_patterns()
@@ -332,7 +334,7 @@ def main():
     print(f"掃描完成！找到 {len(scanner.results)} 個包含時間線的文件")
     
     # 生成報告
-    output_dir = Path("/workspace/machine-native-ops/logs")
+    output_dir = Path(scanner.repo_path) / "logs"
     output_dir.mkdir(parents=True, exist_ok=True)
     
     json_path, md_path = scanner.save_report(output_dir)

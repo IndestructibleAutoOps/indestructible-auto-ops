@@ -549,10 +549,15 @@ class GLSemanticViolationClassifier:
 # ============================================================================
 if __name__ == "__main__":
     # 創建分類器
-    contract_path = Path(
-        "/workspace/machine-native-ops/ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml"
+    ecosystem_root = Path(__file__).resolve().parents[1]
+    repo_root = ecosystem_root.parent
+    contract_path = (
+        ecosystem_root
+        / "contracts"
+        / "governance"
+        / "gl-semantic-violation-classifier.yaml"
     )
-    base_path = Path("/workspace/machine-native-ops")
+    base_path = repo_root
 
     classifier = GLSemanticViolationClassifier(contract_path, base_path)
 

@@ -55,7 +55,7 @@ class AuditTrailQuery:
     """
 
     def __init__(
-        self, db_path: str = None, base_path: str = "/workspace/machine-native-ops"
+        self, db_path: str = None, base_path: str = None
     ):
         """
         Initialize audit trail query engine.
@@ -64,6 +64,9 @@ class AuditTrailQuery:
             db_path: Path to audit trail database (default: ecosystem/logs/audit-logs/audit_trail.db)
             base_path: Base path for default database location
         """
+        if base_path is None:
+            # Default to repo root based on this file location.
+            base_path = str(Path(__file__).resolve().parents[2])
         self.base_path = Path(base_path)
 
         if db_path:
