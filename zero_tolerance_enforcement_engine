@@ -391,9 +391,63 @@ class LayerDependencyRule(GovernanceRule):
                     completed.append(normalized)
 
         return completed
+    _LAYER_ALIASES = {
+        "L1": ArchitectureLayer.L1_GOVERNANCE,
+        "L2": ArchitectureLayer.L2_EVIDENCE,
+        "L3": ArchitectureLayer.L3_DECISION,
+        "L4": ArchitectureLayer.L4_SEMANTIC,
+        "L5": ArchitectureLayer.L5_EXECUTION,
+        "GOVERNANCE": ArchitectureLayer.L1_GOVERNANCE,
+        "EVIDENCE": ArchitectureLayer.L2_EVIDENCE,
+        "DECISION": ArchitectureLayer.L3_DECISION,
+        "SEMANTIC": ArchitectureLayer.L4_SEMANTIC,
+        "EXECUTION": ArchitectureLayer.L5_EXECUTION,
+    }
     
     def get_rule_name(self) -> str:
         return "LayerDependencyRule"
+
+    def _normalize_layers(self, raw_layers: Any) -> Tuple[List[ArchitectureLayer], List[Any]]:
+        """Normalize satisfied layer evidence into ArchitectureLayer values."""
+        if raw_layers is None:
+            return [], []
+        if isinstance(raw_layers, (ArchitectureLayer, str, int)):
+            raw_layers = [raw_layers]
+        elif isinstance(raw_layers, (list, tuple, set)):
+            raw_layers = list(raw_layers)
+        else:
+            raw_layers = [raw_layers]
+        
+        normalized: List[ArchitectureLayer] = []
+        invalid: List[Any] = []
+        for layer in raw_layers:
+            if isinstance(layer, ArchitectureLayer):
+                normalized.append(layer)
+                continue
+            if isinstance(layer, int):
+                try:
+                    normalized.append(ArchitectureLayer(layer))
+                    continue
+                except ValueError:
+                    invalid.append(layer)
+                    continue
+            if isinstance(layer, str):
+                token = layer.strip()
+                if not token:
+                    invalid.append(layer)
+                    continue
+                token_upper = token.upper()
+                if token_upper.startswith("ARCHITECTURELAYER."):
+                    token_upper = token_upper.split(".", 1)[1]
+                if token_upper in ArchitectureLayer.__members__:
+                    normalized.append(ArchitectureLayer[token_upper])
+                    continue
+                if token_upper in self._LAYER_ALIASES:
+                    normalized.append(self._LAYER_ALIASES[token_upper])
+                    continue
+            invalid.append(layer)
+        
+        return normalized, invalid
     
     def evaluate(self, event: GovernanceEvent) -> Tuple[bool, Optional[GovernanceViolation]]:
         """Enforce layer dependency ordering."""
@@ -408,6 +462,41 @@ class LayerDependencyRule(GovernanceRule):
         completed_layers = self._extract_completed_layers(event.evidence)
         missing_layers = [layer for layer in required_layers if layer not in completed_layers]
 
+        satisfied_layers_raw = event.evidence.get("satisfied_layers")
+        satisfied_layers, invalid_entries = self._normalize_layers(satisfied_layers_raw)
+        
+        if satisfied_layers_raw is None:
+            violation = GovernanceViolation(
+                violation_type=ViolationType.LAYER_BYPASS,
+                enforcement_level=EnforcementLevel.CRITICAL,
+                description="Missing layer dependency evidence: satisfied_layers not provided",
+                evidence={
+                    "event_id": event.event_id,
+                    "current_layer": current_layer.name,
+                    "required_layers": [layer.name for layer in required_layers],
+                },
+                blocking=True,
+                escalation_required=True
+            )
+            return False, violation
+        
+        if invalid_entries:
+            violation = GovernanceViolation(
+                violation_type=ViolationType.LAYER_BYPASS,
+                enforcement_level=EnforcementLevel.CRITICAL,
+                description="Invalid layer dependency evidence entries",
+                evidence={
+                    "event_id": event.event_id,
+                    "current_layer": current_layer.name,
+                    "invalid_entries": invalid_entries,
+                    "required_layers": [layer.name for layer in required_layers],
+                },
+                blocking=True,
+                escalation_required=True
+            )
+            return False, violation
+        
+        missing_layers = [layer for layer in required_layers if layer not in satisfied_layers]
         if missing_layers:
             violation = GovernanceViolation(
                 violation_type=ViolationType.LAYER_BYPASS,
@@ -415,12 +504,15 @@ class LayerDependencyRule(GovernanceRule):
                 description=(
                     f"Layer dependencies not satisfied for {current_layer.name}: "
                     f"missing {[layer.name for layer in missing_layers]}"
+                    f"Layer dependency violation: {current_layer.name} requires "
+                    f"{', '.join(layer.name for layer in missing_layers)}"
                 ),
                 evidence={
                     "event_id": event.event_id,
                     "current_layer": current_layer.name,
                     "required_layers": [layer.name for layer in required_layers],
                     "completed_layers": [layer.name for layer in completed_layers],
+                    "satisfied_layers": [layer.name for layer in satisfied_layers],
                     "missing_layers": [layer.name for layer in missing_layers],
                 },
                 blocking=True,
@@ -428,6 +520,7 @@ class LayerDependencyRule(GovernanceRule):
             )
             return False, violation
 
+        
         return True, None
 
 
