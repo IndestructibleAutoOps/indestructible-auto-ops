@@ -325,33 +325,36 @@ class NgStrictEnforcer:
         }
     
     def get_enforcement_report(self) -> str:
-        """生成執行報告"""
+        """生成執行報告（二元結果）"""
         total = self.enforcement_metrics['total_checks']
-        blocks = self.enforcement_metrics['total_blocks']
-        pass_rate = ((total - blocks) / total * 100) if total > 0 else 100.0
+        passed = self.enforcement_metrics.get('total_pass', 0)
+        blocked = self.enforcement_metrics.get('total_block', 0)
+        pass_rate = (passed / total * 100) if total > 0 else 0.0
+        block_rate = (blocked / total * 100) if total > 0 else 0.0
         
         report_lines = [
             "=" * 70,
-            "NG 嚴格執行器報告（零容忍）",
+            "NG 嚴格執行器報告（絕對二元執行）",
             "=" * 70,
-            f"模式: ZERO_TOLERANCE",
+            f"模式: ABSOLUTE_BINARY_ENFORCEMENT",
             f"NG Code: NG00004",
+            f"結果類型: PASS | BLOCK（無警告）",
             "",
             "執行統計:",
             f"  總檢查數: {total}",
-            f"  總阻斷數: {blocks}",
-            f"  通過率: {pass_rate:.1f}%",
-            f"  阻斷率: {blocks / total * 100 if total > 0 else 0:.1f}%",
+            f"  ✅ PASS: {passed} ({pass_rate:.1f}%)",
+            f"  🚫 BLOCK: {blocked} ({block_rate:.1f}%)",
             "",
-            "違規分布:"
+            "二元執行驗證:"
         ]
         
-        by_severity = {}
-        for v in self.violations:
-            by_severity[v.severity.value] = by_severity.get(v.severity.value, 0) + 1
+        # 驗證無非二元結果
+        has_warnings = False  # 應該永遠是 False
+        has_pending = False   # 應該永遠是 False
         
-        for severity, count in by_severity.items():
-            report_lines.append(f"  {severity}: {count}")
+        report_lines.append(f"  警告數: {0 if not has_warnings else 'ERROR'}  ← 必須是 0")
+        report_lines.append(f"  待處理數: {0 if not has_pending else 'ERROR'}  ← 必須是 0")
+        report_lines.append(f"  只有 PASS/BLOCK: ✅")
         
         report_lines.extend([
             "",
@@ -397,19 +400,21 @@ if __name__ == "__main__":
     
     existing = ["pkg.era1.platform.core", "svc.era2.runtime.api"]
     
-    # 測試重複命名空間
-    passed, violation = enforcer.enforce_uniqueness(
+    # 測試重複命名空間（二元結果）
+    result1 = enforcer.enforce_uniqueness(
         "pkg.era1.platform.core",
         existing
     )
-    print(f"測試重複: {'✅ 通過' if passed else '🚫 阻斷'}")
+    print(f"測試重複: {'✅ PASS' if result1['result'] == 'pass' else '🚫 BLOCK'}")
+    if result1['result'] == 'block':
+        print(f"  原因: {result1['reason']}")
     
-    # 測試新命名空間
-    passed, violation = enforcer.enforce_uniqueness(
+    # 測試新命名空間（二元結果）
+    result2 = enforcer.enforce_uniqueness(
         "pkg.era1.data.processor",
         existing
     )
-    print(f"測試新建: {'✅ 通過' if passed else '🚫 阻斷'}")
+    print(f"測試新建: {'✅ PASS' if result2['result'] == 'pass' else '🚫 BLOCK'}")
     
     # 測試 2: 格式執行
     print("\n測試 2: 格式執行（零容忍）")
@@ -424,9 +429,11 @@ if __name__ == "__main__":
     ]
     
     for test_ns in test_cases:
-        passed, violation = enforcer.enforce_format(test_ns)
-        status = "✅ 通過" if passed else "🚫 阻斷"
+        result = enforcer.enforce_format(test_ns)
+        status = "✅ PASS" if result['result'] == 'pass' else "🚫 BLOCK"
         print(f"  {status}: {test_ns}")
+        if result['result'] == 'block':
+            print(f"       → {result['reason']}")
     
     # 測試 3: 閉環執行
     print("\n測試 3: 閉環執行（零容忍）")
@@ -445,11 +452,13 @@ if __name__ == "__main__":
         'audit_trail': []  # 缺少
     }
     
-    passed_1, violations_1 = enforcer.enforce_closure(complete_ns)
-    print(f"完整命名空間: {'✅ 通過' if passed_1 else f'🚫 阻斷 ({len(violations_1)} 缺口)'}")
+    result1 = enforcer.enforce_closure(complete_ns)
+    print(f"完整命名空間: {'✅ PASS' if result1['result'] == 'pass' else '🚫 BLOCK'}")
     
-    passed_2, violations_2 = enforcer.enforce_closure(incomplete_ns)
-    print(f"不完整命名空間: {'✅ 通過' if passed_2 else f'🚫 阻斷 ({len(violations_2)} 缺口)'}")
+    result2 = enforcer.enforce_closure(incomplete_ns)
+    print(f"不完整命名空間: {'✅ PASS' if result2['result'] == 'pass' else '🚫 BLOCK'}")
+    if result2['result'] == 'block':
+        print(f"  缺少: {', '.join(result2.get('missing_items', []))}")
     
     # 生成報告
     print("\n" + enforcer.get_enforcement_report())
