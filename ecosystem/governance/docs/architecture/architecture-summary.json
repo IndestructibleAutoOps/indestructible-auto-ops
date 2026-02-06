@@ -1,17 +1,17 @@
 {
   "timestamp": "2026-02-03T15:13:41.663509Z",
   "metrics": {
-    "total_components": 295,
+    "total_components": 291,
     "by_type": {
-      "documentation": 80,
-      "json_schema": 30,
+      "documentation": 77,
+      "json_schema": 29,
       "python_module": 108,
       "yaml_spec": 77
     },
     "by_layer": {
       "meta-spec": 6,
       "ugs": 10,
-      "governance": 97,
+      "governance": 93,
       "reasoning": 16,
       "gates": 2,
       "platform-cloud": 4,
@@ -20,7 +20,7 @@
       "engines": 0
     },
     "total_dependencies": 628,
-    "avg_dependencies_per_component": 2.128813559322034,
+    "avg_dependencies_per_component": 2.158075601374570,
     "most_dependent": [
       [
         "enforcers.closed_loop_governance",
@@ -137,10 +137,6 @@
       "contracts.naming-governance.gl-user-facing-layer-specification",
       "contracts.naming-governance.gl-validation-layer-specification",
       "contracts.naming-governance.gl-versioning-layer-specification",
-      "ecosystem.governance.docs.architecture.architecture_summary",
-      "ecosystem.governance.docs.architecture.components",
-      "ecosystem.governance.docs.architecture.layers",
-      "ecosystem.governance.docs.architecture.metrics",
       "enforcers.closed_loop_governance",
       "enforcers.governance_enforcer",
       "governance.GL_SEMANTIC_ANCHOR",
@@ -1321,34 +1317,6 @@
       "name": "ecosystem-cloud.registry.cloud_adapters",
       "type": "yaml_spec",
       "path": "ecosystem/ecosystem-cloud/registry/cloud_adapters.yaml",
-      "dependencies": [],
-      "dependents": []
-    },
-    {
-      "name": "ecosystem.governance.docs.architecture.architecture_summary",
-      "type": "json_schema",
-      "path": "ecosystem/ecosystem/governance/docs/architecture/architecture_summary.json",
-      "dependencies": [],
-      "dependents": []
-    },
-    {
-      "name": "ecosystem.governance.docs.architecture.components",
-      "type": "documentation",
-      "path": "ecosystem/ecosystem/governance/docs/architecture/components.md",
-      "dependencies": [],
-      "dependents": []
-    },
-    {
-      "name": "ecosystem.governance.docs.architecture.layers",
-      "type": "documentation",
-      "path": "ecosystem/ecosystem/governance/docs/architecture/layers.md",
-      "dependencies": [],
-      "dependents": []
-    },
-    {
-      "name": "ecosystem.governance.docs.architecture.metrics",
-      "type": "documentation",
-      "path": "ecosystem/ecosystem/governance/docs/architecture/metrics.md",
       "dependencies": [],
       "dependents": []
     },
