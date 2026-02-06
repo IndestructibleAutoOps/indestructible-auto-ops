@@ -10,6 +10,7 @@
 Module Manifest Validator
 Validates module manifests against JSON schema
 """
+
 # MNGA-002: Import organization needs review
 import json
 import yaml
@@ -26,13 +27,19 @@ def main():
         sys.exit(1)
 
     try:
-        with open(schema_path, 'r', encoding='utf-8') as f:
+        with open(schema_path, "r", encoding="utf-8") as f:
             schema = json.load(f)
     except json.JSONDecodeError as exc:
-        print(f"Error: Failed to parse JSON schema at {schema_path}: {exc}", file=sys.stderr)
+        print(
+            f"Error: Failed to parse JSON schema at {schema_path}: {exc}",
+            file=sys.stderr,
+        )
         sys.exit(1)
     except OSError as exc:
-        print(f"Error: Could not read schema file at {schema_path}: {exc}", file=sys.stderr)
+        print(
+            f"Error: Could not read schema file at {schema_path}: {exc}",
+            file=sys.stderr,
+        )
         sys.exit(1)
     # Validate each module manifest
     modules_dir = Path("controlplane/baseline/modules")
@@ -43,14 +50,20 @@ def main():
             manifest_path = module_dir / "module-manifest.yaml"
             if manifest_path.exists():
                 try:
-                    with open(manifest_path, 'r', encoding='utf-8') as f:
+                    with open(manifest_path, "r", encoding="utf-8") as f:
                         manifest = yaml.safe_load(f)
                 except yaml.YAMLError as exc:
-                    print(f"❌ {module_dir.name}: Failed to parse YAML: {exc}", file=sys.stderr)
+                    print(
+                        f"❌ {module_dir.name}: Failed to parse YAML: {exc}",
+                        file=sys.stderr,
+                    )
                     failed = True
                     continue
                 except OSError as exc:
-                    print(f"❌ {module_dir.name}: Could not read file: {exc}", file=sys.stderr)
+                    print(
+                        f"❌ {module_dir.name}: Could not read file: {exc}",
+                        file=sys.stderr,
+                    )
                     failed = True
                     continue
 

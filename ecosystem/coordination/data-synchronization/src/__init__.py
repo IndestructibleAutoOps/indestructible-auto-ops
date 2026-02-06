@@ -26,23 +26,20 @@ from .connectors import BaseConnector, FilesystemConnector
 
 __all__ = [
     # Sync Engine
-    'SyncEngine',
-    'SyncJob',
-    'SyncMode',
-    'SyncStatus',
-    'DataItem',
-    
+    "SyncEngine",
+    "SyncJob",
+    "SyncMode",
+    "SyncStatus",
+    "DataItem",
     # Conflict Resolver
-    'ConflictResolver',
-    'Conflict',
-    
+    "ConflictResolver",
+    "Conflict",
     # Scheduler
-    'SyncScheduler',
-    'Schedule',
-    
+    "SyncScheduler",
+    "Schedule",
     # Connectors
-    'BaseConnector',
-    'FilesystemConnector',
+    "BaseConnector",
+    "FilesystemConnector",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

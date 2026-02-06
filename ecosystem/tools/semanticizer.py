@@ -21,6 +21,7 @@ from datetime import datetime
 
 class Language(Enum):
     """Supported source languages"""
+
     ZH = "zh"  # Chinese (Simplified)
     EN = "en"  # English (Semantic Anchor)
     JA = "ja"  # Japanese
@@ -31,6 +32,7 @@ class Language(Enum):
 
 class SemanticAction(Enum):
     """Semantic action types"""
+
     RESTART_SERVICE = "restart_service"
     DEPLOY_ARTIFACT = "deploy_artifact"
     PATCH_VULNERABILITY = "patch_vulnerability"
@@ -49,6 +51,7 @@ class SemanticAction(Enum):
 
 class SemanticResult(Enum):
     """Semantic result types"""
+
     SUCCESS = "success"
     FAILURE = "failure"
     IN_PROGRESS = "in_progress"
@@ -63,6 +66,7 @@ class SemanticTokenAST:
     Abstract Syntax Tree of semantic tokens.
     This is the canonical representation used for hashing.
     """
+
     action: str
     target: Optional[str]
     timestamp: str
@@ -70,11 +74,11 @@ class SemanticTokenAST:
     result: str
     metadata: Dict[str, str]
     parameters: Optional[Dict[str, str]] = None
-    
+
     def to_dict(self) -> Dict:
         """Convert to dictionary for JSON serialization"""
         return asdict(self)
-    
+
     def to_json(self) -> str:
         """Convert to canonical JSON"""
         return json.dumps(self.to_dict(), indent=2, sort_keys=True, ensure_ascii=False)
@@ -83,11 +87,11 @@ class SemanticTokenAST:
 class Semanticizer:
     """
     Language-Neutral Semantic Tokenization Engine
-    
+
     Converts natural language input from any supported language to
     English semantic tokens/AST for language-neutral hashing.
     """
-    
+
     # Action patterns for different languages
     ACTION_PATTERNS = {
         Language.ZH: {
@@ -131,7 +135,7 @@ class Semanticizer:
             SemanticAction.EXECUTE_REMEDIATION: r"(실행|execute|적용|apply)",
         },
     }
-    
+
     # Result patterns
     RESULT_PATTERNS = {
         Language.ZH: {
@@ -167,93 +171,116 @@ class Semanticizer:
             SemanticResult.ERROR: r"(오류|이상|error)",
         },
     }
-    
+
     # Common service/component names
     COMMON_TARGETS = {
-        "nginx", "redis", "postgres", "postgresql", "mysql", "mongodb",
-        "frontend", "backend", "database", "db", "api", "gateway",
-        "production", "staging", "development", "dev", "test",
-        "kubernetes", "k8s", "docker", "container", "pod", "service",
+        "nginx",
+        "redis",
+        "postgres",
+        "postgresql",
+        "mysql",
+        "mongodb",
+        "frontend",
+        "backend",
+        "database",
+        "db",
+        "api",
+        "gateway",
+        "production",
+        "staging",
+        "development",
+        "dev",
+        "test",
+        "kubernetes",
+        "k8s",
+        "docker",
+        "container",
+        "pod",
+        "service",
     }
-    
+
     # Default actor
     DEFAULT_ACTOR = "indestructible_auto_ops_system"
-    
+
     def __init__(self):
         """Initialize the semanticizer"""
         self.cache = {}
-    
+
     def detect_language(self, text: str) -> Language:
         """
         Detect source language from text.
         Simple heuristic based on character sets.
         """
         # Check for Chinese characters
-        if re.search(r'[\u4e00-\u9fff]', text):
+        if re.search(r"[\u4e00-\u9fff]", text):
             return Language.ZH
-        
+
         # Check for Japanese characters
-        if re.search(r'[\u3040-\u309f\u30a0-\u30ff]', text):
+        if re.search(r"[\u3040-\u309f\u30a0-\u30ff]", text):
             return Language.JA
-        
+
         # Check for Korean characters
-        if re.search(r'[\uac00-\ud7af]', text):
+        if re.search(r"[\uac00-\ud7af]", text):
             return Language.KO
-        
+
         # Check for German characters (ä, ö, ü, ß)
-        if re.search(r'[äöüß]', text):
+        if re.search(r"[äöüß]", text):
             return Language.DE
-        
+
         # Check for French characters (é, è, ê, ë, à, â, ô, î, ï, û, ù, ç)
-        if re.search(r'[éèêëàâôîïûùç]', text):
+        if re.search(r"[éèêëàâôîïûùç]", text):
             return Language.FR
-        
+
         # Default to English
         return Language.EN
-    
-    def extract_action_and_target(self, text: str, lang: Language) -> Tuple[Optional[SemanticAction], Optional[str]]:
+
+    def extract_action_and_target(
+        self, text: str, lang: Language
+    ) -> Tuple[Optional[SemanticAction], Optional[str]]:
         """
         Extract semantic action and target from text.
-        
+
         Returns:
             (action, target) tuple
         """
         patterns = self.ACTION_PATTERNS.get(lang, self.ACTION_PATTERNS[Language.EN])
-        
+
         for action, pattern in patterns.items():
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
-                target = match.group('target') if 'target' in match.groupdict() else None
+                target = (
+                    match.group("target") if "target" in match.groupdict() else None
+                )
                 return action, target
-        
+
         # Try to extract target from common targets
         for target in self.COMMON_TARGETS:
             if target.lower() in text.lower():
                 return None, target
-        
+
         return None, None
-    
+
     def extract_result(self, text: str, lang: Language) -> Optional[SemanticResult]:
         """
         Extract semantic result from text.
         """
         patterns = self.RESULT_PATTERNS.get(lang, self.RESULT_PATTERNS[Language.EN])
-        
+
         for result, pattern in patterns.items():
             if re.search(pattern, text, re.IGNORECASE):
                 return result
-        
+
         return None
-    
+
     def semanticize(self, text: str, lang: Optional[str] = None) -> SemanticTokenAST:
         """
         Convert natural language to English semantic tokens.
-        
+
         Args:
             text: Input text in any supported language
             lang: Source language code (zh, en, ja, ko, de, fr)
                  If None, auto-detect from text
-        
+
         Returns:
             SemanticTokenAST: Abstract syntax tree of semantic tokens
         """
@@ -264,13 +291,13 @@ class Semanticizer:
         else:
             lang_code = lang
             detected_lang = Language(lang)
-        
+
         # Extract action and target
         action, target = self.extract_action_and_target(text, detected_lang)
-        
+
         # Extract result
         result = self.extract_result(text, detected_lang)
-        
+
         # Build semantic token AST
         ast = SemanticTokenAST(
             action=action.value if action else "unknown_action",
@@ -282,78 +309,70 @@ class Semanticizer:
                 "original_lang": lang_code,
                 "original_text": text,
                 "detected_lang": detected_lang.value,
-            }
+            },
         )
-        
+
         return ast
-    
-    def create_language_map(self, semantic_ast: SemanticTokenAST, 
-                           translations: Dict[str, str]) -> Dict:
+
+    def create_language_map(
+        self, semantic_ast: SemanticTokenAST, translations: Dict[str, str]
+    ) -> Dict:
         """
         Create language map for cross-language sealing.
-        
+
         Args:
             semantic_ast: The semantic token AST
             translations: Dictionary of language_code -> text
-        
+
         Returns:
             Language map dictionary
         """
         return {
             "semantic_tokens": semantic_ast.to_dict(),
             "languages": {
-                lang_code: {
-                    "text": text,
-                    "canonical_text": text  # Could be normalized
-                }
+                lang_code: {"text": text, "canonical_text": text}  # Could be normalized
                 for lang_code, text in translations.items()
-            }
+            },
         }
 
 
 def main():
     """Command-line interface for semanticizer"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(
         description="Language-Neutral Semantic Tokenization System"
     )
+    parser.add_argument("text", help="Input text to semanticize")
     parser.add_argument(
-        "text",
-        help="Input text to semanticize"
-    )
-    parser.add_argument(
-        "--lang", "-l",
+        "--lang",
+        "-l",
         choices=["zh", "en", "ja", "ko", "de", "fr"],
-        help="Source language (default: auto-detect)"
+        help="Source language (default: auto-detect)",
     )
+    parser.add_argument("--output", "-o", help="Output file path (default: stdout)")
     parser.add_argument(
-        "--output", "-o",
-        help="Output file path (default: stdout)"
+        "--language-map", help="Generate language map (JSON file with translations)"
     )
-    parser.add_argument(
-        "--language-map",
-        help="Generate language map (JSON file with translations)"
-    )
-    
+
     args = parser.parse_args()
-    
+
     # Create semanticizer
     semanticizer = Semanticizer()
-    
+
     # Semanticize
     ast = semanticizer.semanticize(args.text, lang=args.lang)
-    
+
     # Output
     output = ast.to_json()
-    
+
     if args.output:
-        with open(args.output, 'w', encoding='utf-8') as f:
+        with open(args.output, "w", encoding="utf-8") as f:
             f.write(output)
         print(f"✅ Semantic tokens written to: {args.output}", file=sys.stderr)
     else:
         print(output)
-    
+
     # Generate language map if requested
     if args.language_map:
         # Example translations (in practice, would use translation API)
@@ -362,12 +381,12 @@ def main():
             "en": "We restarted nginx",  # Placeholder
             "ja": "nginx を再起動しました",  # Placeholder
         }
-        
+
         lang_map = semanticizer.create_language_map(ast, translations)
-        
-        with open(args.language_map, 'w', encoding='utf-8') as f:
+
+        with open(args.language_map, "w", encoding="utf-8") as f:
             json.dump(lang_map, f, indent=2, ensure_ascii=False)
-        
+
         print(f"✅ Language map written to: {args.language_map}", file=sys.stderr)
 
 

@@ -8,6 +8,7 @@ Module docstring
 This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
+
 from .path_utils import (
     detect_project_root,
     get_ecosystem_root,
@@ -15,7 +16,7 @@ from .path_utils import (
     get_audit_logs_dir,
     get_contracts_dir,
     get_governance_dir,
-    get_base_path
+    get_base_path,
 )
 
 __all__ = [
@@ -25,5 +26,5 @@ __all__ = [
     "get_audit_logs_dir",
     "get_contracts_dir",
     "get_governance_dir",
-    "get_base_path"
+    "get_base_path",
 ]

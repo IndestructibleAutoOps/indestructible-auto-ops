@@ -9,6 +9,7 @@
 Module Dependency DAG Visualization Generator
 Generates Mermaid diagram and DOT graph of module dependencies
 """
+
 # MNGA-002: Import organization needs review
 import yaml
 import sys
@@ -27,7 +28,7 @@ def load_module_registry() -> Dict:
     """
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
     try:
-        with registry_path.open('r', encoding='utf-8') as f:
+        with registry_path.open("r", encoding="utf-8") as f:
             data = yaml.safe_load(f) or {}
     except FileNotFoundError:
         print(
@@ -58,16 +59,16 @@ def load_module_registry() -> Dict:
 
 def build_dependency_graph(registry: Dict) -> Dict[str, List[str]]:
     """Build dependency graph from registry"""
-    modules = registry.get('modules', [])
+    modules = registry.get("modules", [])
     graph = {}
 
     for module in modules:
-        module_id = module.get('module_id')
+        module_id = module.get("module_id")
         if module_id is None:
             continue
-        dependencies = module.get('dependencies', [])
+        dependencies = module.get("dependencies", [])
         # Filter out 'none' dependencies
-        deps = [d for d in dependencies if d != 'none']
+        deps = [d for d in dependencies if d != "none"]
         graph[module_id] = deps
 
     return graph
@@ -76,6 +77,7 @@ def build_dependency_graph(registry: Dict) -> Dict[str, List[str]]:
 def detect_cycles(graph: Dict[str, List[str]]) -> List[List[str]]:
     """Detect cycles in the dependency graph"""
     cycles = []
+
     def dfs(node: str, visited: Set[str], path: List[str]):
         if node in path:
             # Found a cycle
@@ -89,6 +91,7 @@ def detect_cycles(graph: Dict[str, List[str]]) -> List[List[str]]:
         path.append(node)
         for neighbor in graph.get(node, []):
             dfs(neighbor, visited, path.copy())
+
     visited = set()
     for node in graph:
         if node not in visited:
@@ -99,6 +102,7 @@ def detect_cycles(graph: Dict[str, List[str]]) -> List[List[str]]:
 def calculate_depths(graph: Dict[str, List[str]]) -> Dict[str, int]:
     """Calculate depth of each module in dependency tree"""
     depths = {}
+
     def get_depth(node: str, visited: Set[str]) -> int:
         if node in depths:
             return depths[node]
@@ -113,6 +117,7 @@ def calculate_depths(graph: Dict[str, List[str]]) -> Dict[str, int]:
             depth = 1 + max(get_depth(d, visited.copy()) for d in deps)
         depths[node] = depth
         return depth
+
     for node in graph:
         get_depth(node, set())
     return depths
@@ -120,7 +125,9 @@ def calculate_depths(graph: Dict[str, List[str]]) -> Dict[str, int]:
 
 def generate_mermaid_diagram(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate Mermaid flowchart diagram"""
-    modules = {m['module_id']: m for m in registry.get('modules', []) if 'module_id' in m}
+    modules = {
+        m["module_id"]: m for m in registry.get("modules", []) if "module_id" in m
+    }
     mermaid = """```mermaid
 graph TD
     %% Module Dependency Graph
@@ -128,18 +135,18 @@ graph TD
     # Define nodes with styling based on autonomy level
     for module_id in graph:
         module = modules.get(module_id, {})
-        autonomy = module.get('autonomy_level', 'unknown')
-        status = module.get('status', 'unknown')
+        autonomy = module.get("autonomy_level", "unknown")
+        status = module.get("status", "unknown")
         # Choose style based on status
-        if status == 'active':
-            style_class = 'active'
-        elif status == 'in-development':
-            style_class = 'dev'
+        if status == "active":
+            style_class = "active"
+        elif status == "in-development":
+            style_class = "dev"
         else:
-            style_class = 'planned'
+            style_class = "planned"
         # Create node label
         label = f"{module_id}\\n{autonomy}"
-        mermaid += f"    {module_id}[\"{label}\"]:::{style_class}\n"
+        mermaid += f'    {module_id}["{label}"]:::{style_class}\n'
     mermaid += "\n"
     # Define edges
     for module_id, deps in graph.items():
@@ -158,7 +165,9 @@ graph TD
 
 def generate_dot_graph(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate DOT graph for Graphviz"""
-    modules = {m['module_id']: m for m in registry.get('modules', []) if 'module_id' in m}
+    modules = {
+        m["module_id"]: m for m in registry.get("modules", []) if "module_id" in m
+    }
     dot = """digraph ModuleDependencies {
     rankdir=BT;
     node [shape=box, style=rounded];
@@ -166,17 +175,19 @@ def generate_dot_graph(graph: Dict[str, List[str]], registry: Dict) -> str:
     # Define nodes
     for module_id in graph:
         module = modules.get(module_id, {})
-        autonomy = module.get('autonomy_level', 'unknown')
-        status = module.get('status', 'unknown')
+        autonomy = module.get("autonomy_level", "unknown")
+        status = module.get("status", "unknown")
         # Choose color based on status
-        if status == 'active':
-            color = '#90EE90'
-        elif status == 'in-development':
-            color = '#FFD700'
+        if status == "active":
+            color = "#90EE90"
+        elif status == "in-development":
+            color = "#FFD700"
         else:
-            color = '#E0E0E0'
+            color = "#E0E0E0"
         label = f"{module_id}\\n{autonomy}"
-        dot += f'    "{module_id}" [label="{label}", fillcolor="{color}", style=filled];\n'
+        dot += (
+            f'    "{module_id}" [label="{label}", fillcolor="{color}", style=filled];\n'
+        )
     dot += "\n"
     # Define edges
     for module_id, deps in graph.items():
@@ -188,7 +199,9 @@ def generate_dot_graph(graph: Dict[str, List[str]], registry: Dict) -> str:
 
 def generate_ascii_tree(graph: Dict[str, List[str]], registry: Dict) -> str:
     """Generate ASCII tree representation"""
-    modules = {m['module_id']: m for m in registry.get('modules', []) if 'module_id' in m}
+    modules = {
+        m["module_id"]: m for m in registry.get("modules", []) if "module_id" in m
+    }
     depths = calculate_depths(graph)
     # Sort modules by depth
     sorted_modules = sorted(graph.keys(), key=lambda x: depths.get(x, 0))
@@ -197,14 +210,12 @@ def generate_ascii_tree(graph: Dict[str, List[str]], registry: Dict) -> str:
     for module_id in sorted_modules:
         depth = depths.get(module_id, 0)
         module = modules.get(module_id, {})
-        autonomy = module.get('autonomy_level', 'unknown')
-        status = module.get('status', 'unknown')
+        autonomy = module.get("autonomy_level", "unknown")
+        status = module.get("status", "unknown")
         indent = "  " * depth
-        status_emoji = {
-            'active': '🟢',
-            'in-development': '🟡',
-            'planned': '⚪'
-        }.get(status, '❓')
+        status_emoji = {"active": "🟢", "in-development": "🟡", "planned": "⚪"}.get(
+            status, "❓"
+        )
         tree += f"{indent}├─ {status_emoji} {module_id} ({autonomy})\n"
         # Show dependencies
         deps = graph.get(module_id, [])
@@ -264,6 +275,7 @@ def generate_visualization(output_dir: str = "docs/dag-visualization"):
     output_path.mkdir(parents=True, exist_ok=True)
     # Generate main documentation
     from datetime import datetime
+
     doc = f"""# Module Dependency DAG Visualization
 **Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}  
 **Purpose**: Visualize module dependencies and gl-platform.governance structure
@@ -299,8 +311,8 @@ def generate_visualization(output_dir: str = "docs/dag-visualization"):
         deps = graph.get(module, [])
         dept_list = dependents.get(module, [])
         depth = depths.get(module, 0)
-        deps_str = ', '.join(deps) if deps else 'none'
-        dept_str = ', '.join(dept_list) if dept_list else 'none'
+        deps_str = ", ".join(deps) if deps else "none"
+        dept_str = ", ".join(dept_list) if dept_list else "none"
         doc += f"| {module} | {deps_str} | {dept_str} | {depth} |\n"
     doc += """
 ---
@@ -328,26 +340,27 @@ mmdc -i docs/DAG_VISUALIZATION.md -o dag-visualization.png
 *This visualization is automatically generated from the module registry.*
 """
     # Write main documentation
-    with open(output_path / "DAG_VISUALIZATION.md", 'w') as f:
+    with open(output_path / "DAG_VISUALIZATION.md", "w") as f:
         f.write(doc)
     print(f"✅ Generated: {output_path}/DAG_VISUALIZATION.md")
     # Write DOT file
-    with open(output_path / "module-dependencies.dot", 'w') as f:
+    with open(output_path / "module-dependencies.dot", "w") as f:
         f.write(generate_dot_graph(graph, registry))
     print(f"✅ Generated: {output_path}/module-dependencies.dot")
     # Write JSON data
     import json
+
     json_data = {
-        'graph': graph,
-        'depths': depths,
-        'cycles': detect_cycles(graph),
-        'statistics': {
-            'total_modules': len(graph),
-            'total_dependencies': sum(len(deps) for deps in graph.values()),
-            'max_depth': max(depths.values()) if depths else 0
-        }
+        "graph": graph,
+        "depths": depths,
+        "cycles": detect_cycles(graph),
+        "statistics": {
+            "total_modules": len(graph),
+            "total_dependencies": sum(len(deps) for deps in graph.values()),
+            "max_depth": max(depths.values()) if depths else 0,
+        },
     }
-    with open(output_path / "module-dependencies.json", 'w') as f:
+    with open(output_path / "module-dependencies.json", "w") as f:
         json.dump(json_data, f, indent=2)
     print(f"✅ Generated: {output_path}/module-dependencies.json")
 

@@ -24,28 +24,32 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple, Any
 
+
 # Colors for terminal output
 class Colors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKCYAN = "\033[96m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+    BOLD = "\033[1m"
+
 
 class Era2UpgradeExecutor:
     """
     Era-2 Upgrade Executor - Official One-Stop Upgrade Pipeline Implementation
     """
-    
-    def __init__(self, workspace: str = "/workspace", verbose: bool = False, force: bool = False):
+
+    def __init__(
+        self, workspace: str = "/workspace", verbose: bool = False, force: bool = False
+    ):
         self.workspace = Path(workspace)
         self.ecosystem_dir = self.workspace / "ecosystem"
         self.verbose = verbose
         self.force = force
-        
+
         # Results tracking
         self.results = {
             "pipeline_version": "1.0.0",
@@ -56,22 +60,22 @@ class Era2UpgradeExecutor:
             "status": "RUNNING",
             "steps": {},
             "closure_score": 0.0,
-            "glcm_violations": []
+            "glcm_violations": [],
         }
-        
+
         # Evidence tracking
         self.evidence = {
             "semantic_hash": None,
             "evidence_hash": None,
             "registry_updated": False,
             "glcm_verified": False,
-            "enforcement_verified": False
+            "enforcement_verified": False,
         }
-        
+
     def log(self, message: str, level: str = "INFO"):
         """Log message with color coding"""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
+
         if level == "ERROR":
             print(f"{Colors.FAIL}[{timestamp}] ERROR: {message}{Colors.ENDC}")
         elif level == "WARNING":
@@ -84,41 +88,41 @@ class Era2UpgradeExecutor:
             print(f"\n{Colors.HEADER}{Colors.BOLD}{message}{Colors.ENDC}\n")
         else:
             print(f"[{timestamp}] {message}")
-    
-    def execute_command(self, cmd: List[str], step_name: str, cwd: Optional[Path] = None) -> Tuple[bool, str]:
+
+    def execute_command(
+        self, cmd: List[str], step_name: str, cwd: Optional[Path] = None
+    ) -> Tuple[bool, str]:
         """Execute a command and return success status and output"""
         cmd_str = " ".join(cmd)
         work_dir = cwd or self.workspace
-        
+
         self.log(f"Executing: {cmd_str}", "INFO")
-        
+
         try:
             result = subprocess.run(
-                cmd,
-                cwd=work_dir,
-                capture_output=True,
-                text=True,
-                timeout=300
+                cmd, cwd=work_dir, capture_output=True, text=True, timeout=300
             )
-            
+
             output = result.stdout + result.stderr
-            
+
             if self.verbose:
                 self.log(f"Output:\n{output}", "INFO")
-            
+
             if result.returncode != 0:
-                self.log(f"Command failed with return code {result.returncode}", "ERROR")
+                self.log(
+                    f"Command failed with return code {result.returncode}", "ERROR"
+                )
                 return False, output
-            
+
             return True, output
-            
+
         except subprocess.TimeoutExpired:
             self.log(f"Command timed out after 300 seconds", "ERROR")
             return False, "Command timed out"
         except Exception as e:
             self.log(f"Command execution error: {str(e)}", "ERROR")
             return False, str(e)
-    
+
     def step1_semantic_closure(self) -> bool:
         """
         Step 1: Semantic Closure - Language Root Anchor
@@ -127,7 +131,7 @@ class Era2UpgradeExecutor:
         self.log("=" * 80, "HEADER")
         self.log("STEP 1: Semantic Closure (Language Root Anchor)", "HEADER")
         self.log("=" * 80, "HEADER")
-        
+
         # Use Semantic Closure Engine with simplified approach
         cmd = [
             "python",
@@ -244,30 +248,30 @@ with open('/workspace/semantic_ast.json', 'w') as f:
 print(f"Semantic artifacts generated successfully")
 print(f"Overall semantic hash: sha256:{overall_hash}")
 print(f"Entities defined: {len(canonical_semantic)}")
-"""
+""",
         ]
-        
+
         success, output = self.execute_command(cmd, "semantic_closure")
-        
+
         self.results["steps"]["step1"] = {
             "name": "Semantic Closure",
             "success": success,
             "output": output if self.verbose else "<output hidden>",
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
-        
+
         if not success:
             self.log("Step 1 FAILED - Cannot proceed to Step 2", "ERROR")
             return False
-        
+
         # Validate outputs
         required_outputs = [
             "canonical_semantic.json",
             "semantic_tokens.json",
             "semantic_hash.txt",
-            "semantic_ast.json"
+            "semantic_ast.json",
         ]
-        
+
         all_valid = True
         for output_file in required_outputs:
             file_path = self.workspace / output_file
@@ -276,24 +280,24 @@ print(f"Entities defined: {len(canonical_semantic)}")
             else:
                 self.log(f"✗ Output file missing: {output_file}", "ERROR")
                 all_valid = False
-        
+
         if all_valid:
             # Extract semantic hash
             try:
-                with open(self.workspace / "semantic_hash.txt", 'r') as f:
+                with open(self.workspace / "semantic_hash.txt", "r") as f:
                     self.evidence["semantic_hash"] = f.read().strip()
                 self.log(f"Semantic hash: {self.evidence['semantic_hash']}", "SUCCESS")
             except Exception as e:
                 self.log(f"Failed to read semantic hash: {str(e)}", "ERROR")
                 all_valid = False
-            
+
             self.log("Step 1 PASSED - All semantic artifacts generated", "SUCCESS")
             return True
         else:
             self.log("Step 1 FAILED - Missing required outputs", "ERROR")
             self.results["steps"]["step1"]["success"] = False
             return False
-    
+
     def step2_registry_update(self) -> bool:
         """
         Step 2: Registry Update - Sealing Root Anchor
@@ -302,7 +306,7 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log("=" * 80, "HEADER")
         self.log("STEP 2: Registry Update (Sealing Root Anchor)", "HEADER")
         self.log("=" * 80, "HEADER")
-        
+
         # Update registry using actual update_registry.py script
         cmd = [
             "python",
@@ -310,45 +314,45 @@ print(f"Entities defined: {len(canonical_semantic)}")
             "--scan",
             "ecosystem/tools",
             "--output",
-            "ecosystem/.governance/hash-registry.json"
+            "ecosystem/.governance/hash-registry.json",
         ]
-        
+
         success, output = self.execute_command(cmd, "update_registry")
-        
+
         self.results["steps"]["step2"] = {
             "name": "Registry Update",
             "success": success,
             "output": output if self.verbose else "<output hidden>",
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
-        
+
         if not success:
             self.log("Step 2 FAILED - Cannot proceed to Step 3", "ERROR")
             return False
-        
+
         # Register semantic hash from Step 1
         registry_path = self.ecosystem_dir / ".governance" / "hash-registry.json"
-        
+
         if registry_path.exists():
             try:
-                with open(registry_path, 'r') as f:
+                with open(registry_path, "r") as f:
                     registry = json.load(f)
-                
+
                 # Add semantic hash to registry
                 if self.evidence["semantic_hash"]:
                     registry["semantic_hash"] = self.evidence["semantic_hash"]
                     registry["semantic_hash_timestamp"] = datetime.now().isoformat()
-                
+
                 # Save updated registry
-                with open(registry_path, 'w') as f:
+                with open(registry_path, "w") as f:
                     json.dump(registry, f, indent=2)
-                
+
                 self.log("✓ Registry updated with semantic hash", "SUCCESS")
                 self.evidence["registry_updated"] = True
             except Exception as e:
                 self.log(f"Failed to update registry: {str(e)}", "ERROR")
                 success = False
-        
+
         if success:
             self.log("Step 2 PASSED - Registry updated", "SUCCESS")
             return True
@@ -356,7 +360,7 @@ print(f"Entities defined: {len(canonical_semantic)}")
             self.log("Step 2 FAILED - Registry update failed", "ERROR")
             self.results["steps"]["step2"]["success"] = False
             return False
-    
+
     def step3_execution_summary(self) -> bool:
         """
         Step 3: Execution Summary - Governance Root Anchor
@@ -365,7 +369,7 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log("=" * 80, "HEADER")
         self.log("STEP 3: Execution Summary (Governance Root Anchor)", "HEADER")
         self.log("=" * 80, "HEADER")
-        
+
         # Use generate_execution_summary.py script
         cmd = [
             "python",
@@ -375,36 +379,42 @@ print(f"Entities defined: {len(canonical_semantic)}")
             "--output",
             "ecosystem/evidence/closure/execution_summary.json",
             "--governance-owner",
-            "IndestructibleAutoOps"
+            "IndestructibleAutoOps",
         ]
-        
+
         success, output = self.execute_command(cmd, "generate_execution_summary")
-        
+
         self.results["steps"]["step3"] = {
             "name": "Execution Summary",
             "success": success,
             "output": output if self.verbose else "<output hidden>",
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
-        
+
         if not success:
             self.log("Step 3 FAILED - Cannot proceed to Step 4", "ERROR")
             return False
-        
+
         # Compute closure score
         try:
             # Load semantic matrix
-            matrix_path = self.ecosystem_dir / "governance" / "data" / "semantic_matrix.yaml"
+            matrix_path = (
+                self.ecosystem_dir / "governance" / "data" / "semantic_matrix.yaml"
+            )
             if matrix_path.exists():
                 # Simple closure score calculation
                 # In full implementation, this would use semantic matrix data
                 closure_score = 0.85  # Starting score
                 self.results["closure_score"] = closure_score
-                
+
                 if closure_score >= 0.75:
-                    self.log(f"✓ Closure Score: {closure_score:.2f} (>= 0.75)", "SUCCESS")
+                    self.log(
+                        f"✓ Closure Score: {closure_score:.2f} (>= 0.75)", "SUCCESS"
+                    )
                 else:
-                    self.log(f"✗ Closure Score: {closure_score:.2f} (< 0.75)", "WARNING")
+                    self.log(
+                        f"✗ Closure Score: {closure_score:.2f} (< 0.75)", "WARNING"
+                    )
             else:
                 # Use default score
                 self.results["closure_score"] = 0.80
@@ -412,10 +422,10 @@ print(f"Entities defined: {len(canonical_semantic)}")
         except Exception as e:
             self.log(f"Failed to compute closure score: {str(e)}", "WARNING")
             self.results["closure_score"] = 0.75  # Minimum threshold
-        
+
         self.log("Step 3 PASSED - Execution summary generated", "SUCCESS")
         return True
-    
+
     def step4_enforcement(self) -> bool:
         """
         Step 4: Enforcement - Enforcement Root Anchor
@@ -424,62 +434,65 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log("=" * 80, "HEADER")
         self.log("STEP 4: Enforcement (Enforcement Root Anchor)", "HEADER")
         self.log("=" * 80, "HEADER")
-        
+
         # Run governance closure engine
         cmd1 = [
             "python",
             "ecosystem/engines/governance_closure_engine.py",
             "--workspace",
-            "/workspace"
+            "/workspace",
         ]
-        
+
         success1, output1 = self.execute_command(cmd1, "governance_closure_engine")
-        
+
         # Run enforce.py
-        cmd2 = [
-            "python",
-            "ecosystem/enforce.py"
-        ]
-        
+        cmd2 = ["python", "ecosystem/enforce.py"]
+
         success2, output2 = self.execute_command(cmd2, "enforce")
-        
+
         success = success1 and success2
-        
+
         self.results["steps"]["step4"] = {
             "name": "Enforcement",
             "success": success,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
-        
+
         if not success:
             self.log("Step 4 FAILED - Cannot proceed to Step 5", "ERROR")
             return False
-        
+
         # Check for GLCM violations
         combined_output = output1 + output2
         glcm_violations = []
-        
+
         violation_keywords = ["error", "failed", "violation"]
-        
+
         for keyword in violation_keywords:
             if keyword.lower() in combined_output.lower():
                 glcm_violations.append(keyword)
-        
+
         if glcm_violations:
-            self.log(f"⚠ Potential violations detected: {', '.join(glcm_violations)}", "WARNING")
+            self.log(
+                f"⚠ Potential violations detected: {', '.join(glcm_violations)}",
+                "WARNING",
+            )
             self.results["glcm_violations"] = glcm_violations
-            
+
             if not self.force:
-                self.log("Step 4 FAILED - Violations detected (use --force to override)", "ERROR")
+                self.log(
+                    "Step 4 FAILED - Violations detected (use --force to override)",
+                    "ERROR",
+                )
                 return False
         else:
             self.log("✓ No GLCM violations detected", "SUCCESS")
             self.evidence["glcm_verified"] = True
             self.evidence["enforcement_verified"] = True
-        
+
         self.log("Step 4 PASSED - Enforcement completed", "SUCCESS")
         return True
-    
+
     def step5_deep_retrieval(self) -> bool:
         """
         Step 5: Deep Retrieval - Enhanced Solutions
@@ -488,26 +501,41 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log("=" * 80, "HEADER")
         self.log("STEP 5: Deep Retrieval (Enhanced Solutions)", "HEADER")
         self.log("=" * 80, "HEADER")
-        
-        self.log("Deep Retrieval requires manual research with enhanced-effect prompt:", "INFO")
-        self.log(""""深度檢索找出具有增強效果的解答：
-使用適配專案的「全球最前沿的最佳實踐；具體實作」才開始工作&quot;""", "INFO")
+
+        self.log(
+            "Deep Retrieval requires manual research with enhanced-effect prompt:",
+            "INFO",
+        )
+        self.log(
+            """"深度檢索找出具有增強效果的解答：
+使用適配專案的「全球最前沿的最佳實踐；具體實作」才開始工作&quot;""",
+            "INFO",
+        )
         self.log("\nRetrieval Phases:", "INFO")
-        self.log("1. Intranet Retrieval & Reasoning (Internal documents, wikis, databases)", "INFO")
-        self.log("2. Extranet Retrieval & Reasoning (Academic databases, industry reports, patents)", "INFO")
-        self.log("3. Global Retrieval & Reasoning (Open web, news, social media, multilingual sources)", "INFO")
+        self.log(
+            "1. Intranet Retrieval & Reasoning (Internal documents, wikis, databases)",
+            "INFO",
+        )
+        self.log(
+            "2. Extranet Retrieval & Reasoning (Academic databases, industry reports, patents)",
+            "INFO",
+        )
+        self.log(
+            "3. Global Retrieval & Reasoning (Open web, news, social media, multilingual sources)",
+            "INFO",
+        )
         self.log("\nThis step requires manual research and validation.", "WARNING")
-        
+
         self.results["steps"]["step5"] = {
             "name": "Deep Retrieval",
             "success": True,  # Manual step, marked as success for pipeline continuation
             "timestamp": datetime.now().isoformat(),
-            "note": "Requires manual research with enhanced-effect prompt"
+            "note": "Requires manual research with enhanced-effect prompt",
         }
-        
+
         self.log("Step 5 SKIPPED - Manual research required", "INFO")
         return True
-    
+
     def step6_one_stop_integration(self) -> bool:
         """
         Step 6: One-Stop Integration - Final Integration / Fix / Seal
@@ -516,57 +544,73 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log("=" * 80, "HEADER")
         self.log("STEP 6: One-Stop Integration (Final Closure)", "HEADER")
         self.log("=" * 80, "HEADER")
-        
-        self.log("One-Stop Integration consolidates all artifacts and seals Era-2 closure.", "INFO")
-        
+
+        self.log(
+            "One-Stop Integration consolidates all artifacts and seals Era-2 closure.",
+            "INFO",
+        )
+
         # Verify all previous steps passed
         previous_steps = ["step1", "step2", "step3", "step4", "step5"]
-        all_passed = all(self.results["steps"].get(step, {}).get("success", False) for step in previous_steps)
-        
+        all_passed = all(
+            self.results["steps"].get(step, {}).get("success", False)
+            for step in previous_steps
+        )
+
         if not all_passed:
-            self.log("✗ Not all previous steps passed - Cannot proceed with One-Stop Integration", "ERROR")
+            self.log(
+                "✗ Not all previous steps passed - Cannot proceed with One-Stop Integration",
+                "ERROR",
+            )
             return False
-        
-        self.log("✓ All previous steps passed - Proceeding with One-Stop Integration", "SUCCESS")
-        
+
+        self.log(
+            "✓ All previous steps passed - Proceeding with One-Stop Integration",
+            "SUCCESS",
+        )
+
         # Generate final report
         self.generate_final_report()
-        
+
         self.results["steps"]["step6"] = {
             "name": "One-Stop Integration",
             "success": True,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
-        
+
         self.log("Step 6 PASSED - Era-2 closure completed", "SUCCESS")
         return True
-    
+
     def generate_final_report(self):
         """Generate final pipeline execution report"""
         self.log("Generating final pipeline execution report...", "INFO")
-        
+
         self.results["end_time"] = datetime.now().isoformat()
-        
+
         # Calculate success rate
         total_steps = len(self.results.get("steps", {}))
-        successful_steps = sum(1 for step in self.results.get("steps", {}).values() if step.get("success", False))
+        successful_steps = sum(
+            1
+            for step in self.results.get("steps", {}).values()
+            if step.get("success", False)
+        )
         success_rate = (successful_steps / total_steps) * 100 if total_steps > 0 else 0
-        
+
         self.results["summary"] = {
             "total_steps": total_steps,
             "successful_steps": successful_steps,
             "failed_steps": total_steps - successful_steps,
             "success_rate": success_rate,
-            "status": "COMPLETED" if success_rate == 100 else "PARTIAL"
+            "status": "COMPLETED" if success_rate == 100 else "PARTIAL",
         }
-        
+
         # Save report
         report_path = self.workspace / "era2_upgrade_pipeline_report.json"
-        with open(report_path, 'w') as f:
+        with open(report_path, "w") as f:
             json.dump(self.results, f, indent=2)
-        
+
         self.log(f"Final report saved to: {report_path}", "SUCCESS")
-        
+
         # Print summary
         self.log("\n" + "=" * 80, "HEADER")
         self.log("PIPELINE EXECUTION SUMMARY", "HEADER")
@@ -575,15 +619,23 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log(f"Successful: {successful_steps}", "INFO")
         self.log(f"Failed: {total_steps - successful_steps}", "INFO")
         self.log(f"Success Rate: {success_rate:.1f}%", "INFO")
-        
+
         if self.results.get("closure_score"):
-            self.log(f"Semantic Closure Score: {self.results['closure_score']:.2f}", "INFO")
-        
+            self.log(
+                f"Semantic Closure Score: {self.results['closure_score']:.2f}", "INFO"
+            )
+
         if self.results.get("glcm_violations"):
-            self.log(f"GLCM Violations: {', '.join(self.results['glcm_violations'])}", "WARNING")
-        
-        self.log(f"Final Status: {self.results['summary']['status']}", "SUCCESS" if success_rate == 100 else "WARNING")
-    
+            self.log(
+                f"GLCM Violations: {', '.join(self.results['glcm_violations'])}",
+                "WARNING",
+            )
+
+        self.log(
+            f"Final Status: {self.results['summary']['status']}",
+            "SUCCESS" if success_rate == 100 else "WARNING",
+        )
+
     def run(self, step: Optional[int] = None):
         """Run the upgrade pipeline"""
         self.log("\n" + "=" * 80, "HEADER")
@@ -593,16 +645,16 @@ print(f"Entities defined: {len(canonical_semantic)}")
         self.log(f"Era: Era-2 (Governance Closure)", "INFO")
         self.log(f"Verbose: {self.verbose}", "INFO")
         self.log(f"Force Mode: {self.force}", "INFO")
-        
+
         steps = [
             ("Step 1: Semantic Closure", self.step1_semantic_closure),
             ("Step 2: Registry Update", self.step2_registry_update),
             ("Step 3: Execution Summary", self.step3_execution_summary),
             ("Step 4: Enforcement", self.step4_enforcement),
             ("Step 5: Deep Retrieval", self.step5_deep_retrieval),
-            ("Step 6: One-Stop Integration", self.step6_one_stop_integration)
+            ("Step 6: One-Stop Integration", self.step6_one_stop_integration),
         ]
-        
+
         # Execute requested step or all steps
         if step:
             if 1 <= step <= len(steps):
@@ -610,26 +662,35 @@ print(f"Entities defined: {len(canonical_semantic)}")
                 self.log(f"\nExecuting {step_name} only...\n", "INFO")
                 step_func()
             else:
-                self.log(f"Invalid step number: {step}. Must be between 1 and {len(steps)}", "ERROR")
+                self.log(
+                    f"Invalid step number: {step}. Must be between 1 and {len(steps)}",
+                    "ERROR",
+                )
                 sys.exit(1)
         else:
             # Execute all steps sequentially
             for step_num, (step_name, step_func) in enumerate(steps, 1):
                 if not step_func():
                     if not self.force:
-                        self.log(f"\nPipeline stopped at {step_name}. Use --force to continue.", "ERROR")
+                        self.log(
+                            f"\nPipeline stopped at {step_name}. Use --force to continue.",
+                            "ERROR",
+                        )
                         # Always generate final report even on failure
                         self.generate_final_report()
                         break
                     else:
-                        self.log(f"\nStep failed but continuing due to --force flag...", "WARNING")
-        
+                        self.log(
+                            f"\nStep failed but continuing due to --force flag...",
+                            "WARNING",
+                        )
+
         # Generate final report if summary not already generated
         if "summary" not in self.results:
             self.generate_final_report()
-        
+
         self.results["status"] = self.results["summary"]["status"]
-        
+
         # Print final status
         self.log("\n" + "=" * 80, "HEADER")
         if self.results["status"] == "COMPLETED":
@@ -641,46 +702,38 @@ print(f"Entities defined: {len(canonical_semantic)}")
 
 def main():
     import argparse
-    
+
     parser = argparse.ArgumentParser(
         description="Era-2 Upgrade Execution Script - Official One-Stop Upgrade Pipeline"
     )
-    
+
     parser.add_argument(
         "--step",
         type=int,
         choices=range(1, 7),
         metavar="1|2|3|4|5|6",
-        help="Execute specific step (default: all)"
+        help="Execute specific step (default: all)",
     )
-    
+
     parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Enable detailed logging"
+        "--verbose", action="store_true", help="Enable detailed logging"
     )
-    
+
     parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Force execution even with warnings"
+        "--force", action="store_true", help="Force execution even with warnings"
     )
-    
+
     parser.add_argument(
-        "--workspace",
-        default="/workspace",
-        help="Workspace root directory"
+        "--workspace", default="/workspace", help="Workspace root directory"
     )
-    
+
     args = parser.parse_args()
-    
+
     # Create executor instance
     executor = Era2UpgradeExecutor(
-        workspace=args.workspace,
-        verbose=args.verbose,
-        force=args.force
+        workspace=args.workspace, verbose=args.verbose, force=args.force
     )
-    
+
     # Run pipeline
     executor.run(step=args.step)
 
