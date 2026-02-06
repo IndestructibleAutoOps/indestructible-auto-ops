@@ -20,6 +20,7 @@ class NamingFixer:
         self.failed_count = 0
         self.skipped_count = 0
         self.rename_map: Dict[str, str] = {}  # old_path -> new_path
+        self.rename_plan: List[Dict[str, str]] = []
         
         # 排除目錄
         self.excluded_dirs = {
@@ -29,6 +30,19 @@ class NamingFixer:
         
         # 需要更新引用的文件類型
         self.reference_file_types = {'.py', '.yaml', '.yml', '.json', '.md', '.sh', '.ts', '.js'}
+
+    def record_plan(self, old_path: Path, new_path: Path, entity_type: str) -> None:
+        """Record planned rename for audit/plan output."""
+        old_rel = str(old_path.relative_to(self.workspace))
+        new_rel = str(new_path.relative_to(self.workspace))
+        risk = 'high' if entity_type == 'directory' else 'medium'
+        self.rename_plan.append({
+            'type': entity_type,
+            'old_path': old_rel,
+            'new_path': new_rel,
+            'risk': risk,
+            'destructive': True
+        })
     
     def to_snake_case(self, name: str) -> str:
         """轉換為 snake_case"""
@@ -198,10 +212,38 @@ class NamingFixer:
                             file_path.write_text(new_content, encoding='utf-8')
                 except (UnicodeDecodeError, PermissionError):
                     pass
+
+    def update_path_references(self, old_path: Path, new_path: Path):
+        """更新文件中的路徑引用"""
+        if self.dry_run:
+            return
+        old_rel = str(old_path.relative_to(self.workspace)).replace("\\", "/")
+        new_rel = str(new_path.relative_to(self.workspace)).replace("\\", "/")
+        if old_rel == new_rel:
+            return
+        replacements = [
+            (old_rel, new_rel),
+            (old_rel + "/", new_rel + "/"),
+            (old_rel + "\\\\", new_rel + "\\\\"),
+        ]
+        for ext in self.reference_file_types:
+            for file_path in self.workspace.rglob(f'*{ext}'):
+                if self.should_skip(file_path):
+                    continue
+                try:
+                    content = file_path.read_text(encoding='utf-8')
+                    new_content = content
+                    for old_value, new_value in replacements:
+                        new_content = new_content.replace(old_value, new_value)
+                    if new_content != content:
+                        file_path.write_text(new_content, encoding='utf-8')
+                except (UnicodeDecodeError, PermissionError):
+                    pass
     
     def rename_file(self, old_path: Path, new_path: Path) -> bool:
         """重命名文件"""
         try:
+            self.record_plan(old_path, new_path, 'file')
             if self.dry_run:
                 print(f"  [DRY-RUN] {old_path.relative_to(self.workspace)} -> {new_path.name}")
                 return True
@@ -225,6 +267,7 @@ class NamingFixer:
             
             # 更新引用
             self.update_references(old_path.name, new_path.name)
+            self.update_path_references(old_path, new_path)
             
             print(f"  ✓ {old_path.relative_to(self.workspace)} -> {new_path.name}")
             return True
@@ -236,6 +279,7 @@ class NamingFixer:
     def rename_directory(self, old_path: Path, new_path: Path) -> bool:
         """重命名目錄"""
         try:
+            self.record_plan(old_path, new_path, 'directory')
             if self.dry_run:
                 print(f"  [DRY-RUN] {old_path.relative_to(self.workspace)}/ -> {new_path.name}/")
                 return True
@@ -254,13 +298,15 @@ class NamingFixer:
                 shutil.move(str(old_path), str(new_path))
             
             print(f"  ✓ {old_path.relative_to(self.workspace)}/ -> {new_path.name}/")
+            self.rename_map[str(old_path.relative_to(self.workspace))] = str(new_path.relative_to(self.workspace))
+            self.update_path_references(old_path, new_path)
             return True
             
         except Exception as e:
             print(f"  ✗ {old_path.relative_to(self.workspace)}/: {e}")
             return False
     
-    def run(self):
+    def run(self, plan_output: Path = None):
         """執行修復"""
         print(f"\n{'='*70}")
         print(f"{'MNGA 命名違規自動修復':^70}")
@@ -312,8 +358,19 @@ class NamingFixer:
             print(f"\n⚠️  這是預覽模式，沒有實際修改文件")
             print(f"   使用 --apply 參數來實際執行修復")
         
-        # 保存重命名映射
-        if not self.dry_run and self.rename_map:
+        # 保存重命名映射或修正計畫
+        if plan_output:
+            plan_output.parent.mkdir(parents=True, exist_ok=True)
+            with open(plan_output, 'w', encoding='utf-8') as f:
+                json.dump({
+                    'timestamp': datetime.now().isoformat(),
+                    'workspace': str(self.workspace),
+                    'mode': 'dry-run' if self.dry_run else 'apply',
+                    'changes': self.rename_plan,
+                    'rename_map': self.rename_map,
+                }, f, indent=2, ensure_ascii=False)
+            print(f"\n修正計畫已保存至: {plan_output}")
+        elif not self.dry_run and self.rename_map:
             map_file = self.workspace / 'reports' / 'naming-fix-map.json'
             map_file.parent.mkdir(parents=True, exist_ok=True)
             with open(map_file, 'w', encoding='utf-8') as f:
@@ -332,13 +389,15 @@ def main():
     parser = argparse.ArgumentParser(description='MNGA 命名違規自動修復')
     parser.add_argument('--workspace', '-w', default='.', help='工作區路徑')
     parser.add_argument('--apply', action='store_true', help='實際執行修復（默認為預覽模式）')
+    parser.add_argument('--plan-output', help='輸出修正計畫 JSON 路徑')
     
     args = parser.parse_args()
     
     workspace = Path(args.workspace).resolve()
     fixer = NamingFixer(workspace, dry_run=not args.apply)
     
-    success = fixer.run()
+    plan_output = Path(args.plan_output).resolve() if args.plan_output else None
+    success = fixer.run(plan_output=plan_output)
     return 0 if success else 1
 
 

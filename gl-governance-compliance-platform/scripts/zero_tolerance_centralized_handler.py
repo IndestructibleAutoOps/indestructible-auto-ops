@@ -11,8 +11,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
+import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -92,6 +94,30 @@ def load_json(path: Path) -> Dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def get_git_sha(repo_root: Path) -> str:
+    try:
+        output = run_command(["git", "rev-parse", "HEAD"], cwd=repo_root).strip()
+    except Exception:
+        output = ""
+    return output
+
+
+def get_git_status(repo_root: Path) -> str:
+    try:
+        output = run_command(["git", "status", "--porcelain"], cwd=repo_root).strip()
+    except Exception:
+        output = ""
+    return output
+
+
+def ensure_clean_worktree(repo_root: Path, allow_dirty: bool) -> None:
+    status = get_git_status(repo_root)
+    if status and not allow_dirty:
+        raise RuntimeError(
+            "Dirty git worktree detected. Commit/stash changes or pass --allow-dirty."
+        )
+
+
 def ensure_team_tag(value: Optional[str]) -> str:
     tag = (value or os.environ.get(TEAM_ENV, "")).strip()
     if not tag:
@@ -102,11 +128,15 @@ def ensure_team_tag(value: Optional[str]) -> str:
 
 
 def run_internal_stage(
-    report_dir: Path, repo_root: Path, team_tag: str
+    report_dir: Path,
+    repo_root: Path,
+    team_tag: str,
+    label: Optional[str] = None,
 ) -> List[StageResult]:
     results = []
+    suffix = f"-{label}" if label else ""
 
-    boundary_report = report_dir / "boundary-report.json"
+    boundary_report = report_dir / f"boundary-report{suffix}.json"
     run_command(
         [
             "python3",
@@ -120,18 +150,18 @@ def run_internal_stage(
         stdout_path=boundary_report,
         timeout=600,
     )
-    results.append(StageResult("internal:boundary", "ok", str(boundary_report)))
+    results.append(StageResult(f"internal{suffix}:boundary", "ok", str(boundary_report)))
 
     run_command(["python3", str(DEFAULT_MARKER_SCAN)], timeout=600)
     scan_results = Path("/workspace/scan_results.json")
     if scan_results.exists():
-        marker_copy = report_dir / "gl-marker-scan.json"
+        marker_copy = report_dir / f"gl-marker-scan{suffix}.json"
         marker_copy.write_text(scan_results.read_text(encoding="utf-8"), encoding="utf-8")
-        results.append(StageResult("internal:gl-marker-scan", "ok", str(marker_copy)))
+        results.append(StageResult(f"internal{suffix}:gl-marker-scan", "ok", str(marker_copy)))
     else:
-        results.append(StageResult("internal:gl-marker-scan", "error", error="scan_results.json missing"))
+        results.append(StageResult(f"internal{suffix}:gl-marker-scan", "error", error="scan_results.json missing"))
 
-    naming_report = report_dir / "naming-violations.json"
+    naming_report = report_dir / f"naming-violations{suffix}.json"
     run_command(
         [
             "python3",
@@ -143,7 +173,7 @@ def run_internal_stage(
         ],
         timeout=600,
     )
-    results.append(StageResult("internal:naming-violations", "ok", str(naming_report)))
+    results.append(StageResult(f"internal{suffix}:naming-violations", "ok", str(naming_report)))
 
     run_command(
         [
@@ -156,12 +186,12 @@ def run_internal_stage(
         ],
         timeout=600,
     )
-    results.append(StageResult("internal:ng-namespace", "ok"))
+    results.append(StageResult(f"internal{suffix}:ng-namespace", "ok"))
 
     return results
 
 
-def run_ng_stage(stage: str, team_tag: str, timeout: int = 600) -> StageResult:
+def run_ng_stage(stage: str, team_tag: str, timeout: int = 600, label: Optional[str] = None) -> StageResult:
     run_command(
         [
             "python3",
@@ -173,7 +203,70 @@ def run_ng_stage(stage: str, team_tag: str, timeout: int = 600) -> StageResult:
         ],
         timeout=timeout,
     )
-    return StageResult(f"{stage}:ng-namespace", "ok")
+    suffix = f"-{label}" if label else ""
+    return StageResult(f"{stage}{suffix}:ng-namespace", "ok")
+
+
+def generate_fix_plan(repo_root: Path, report_dir: Path) -> Path:
+    plan_path = report_dir / "fix-plan.json"
+    run_command(
+        [
+            "python3",
+            str(DEFAULT_FIX_NAMING),
+            "--workspace",
+            str(repo_root),
+            "--plan-output",
+            str(plan_path),
+        ],
+        timeout=600,
+    )
+    return plan_path
+
+
+def create_backup_bundle(repo_root: Path, report_dir: Path, plan_path: Path) -> Path:
+    payload = load_json(plan_path)
+    changes = payload.get("changes", [])
+    backup_root = repo_root / ".governance" / "backups" / f"zero-tolerance-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+    backup_root.mkdir(parents=True, exist_ok=True)
+
+    for change in changes:
+        old_rel = change.get("old_path")
+        if not old_rel:
+            continue
+        source_path = repo_root / old_rel
+        if not source_path.exists():
+            continue
+        target_path = backup_root / old_rel
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        if source_path.is_dir():
+            shutil.copytree(source_path, target_path, dirs_exist_ok=True)
+        else:
+            shutil.copy2(source_path, target_path)
+    return backup_root
+
+
+def rollback_from_backup(repo_root: Path, backup_root: Path, plan_path: Path) -> None:
+    payload = load_json(plan_path)
+    changes = payload.get("changes", [])
+    for change in changes:
+        old_rel = change.get("old_path")
+        new_rel = change.get("new_path")
+        if not old_rel:
+            continue
+        old_path = repo_root / old_rel
+        new_path = repo_root / new_rel if new_rel else None
+        backup_path = backup_root / old_rel
+        if new_path and new_path.exists():
+            if new_path.is_dir():
+                shutil.rmtree(new_path)
+            else:
+                new_path.unlink()
+        if backup_path.exists():
+            old_path.parent.mkdir(parents=True, exist_ok=True)
+            if backup_path.is_dir():
+                shutil.copytree(backup_path, old_path, dirs_exist_ok=True)
+            else:
+                shutil.copy2(backup_path, old_path)
 
 
 def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool) -> List[str]:
@@ -183,17 +276,24 @@ def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool) -> Lis
             "Destructive fixes require --ack-destructive to proceed."
         )
     run_command(
-        ["python3", str(DEFAULT_FIX_NAMING), "--workspace", str(repo_root), "--apply"],
+        [
+            "python3",
+            str(DEFAULT_FIX_NAMING),
+            "--workspace",
+            str(repo_root),
+            "--apply",
+        ],
         timeout=600,
     )
     actions.append("Applied naming violation auto-fix.")
     return actions
 
 
-def build_summary(report_dir: Path) -> Dict:
-    boundary = load_json(report_dir / "boundary-report.json")
-    marker_scan = load_json(report_dir / "gl-marker-scan.json")
-    naming = load_json(report_dir / "naming-violations.json")
+def build_summary(report_dir: Path, label: Optional[str] = None) -> Dict:
+    suffix = f"-{label}" if label else ""
+    boundary = load_json(report_dir / f"boundary-report{suffix}.json")
+    marker_scan = load_json(report_dir / f"gl-marker-scan{suffix}.json")
+    naming = load_json(report_dir / f"naming-violations{suffix}.json")
     ng_cross = load_json(
         Path(
             "/workspace/gl-governance-compliance-platform/governance/naming/registry/ng-era1-cross-validation.json"
@@ -299,11 +399,19 @@ def build_remediation_plan(summary: Dict) -> List[Dict]:
     return plan
 
 
-def write_markdown(report_path: Path, summary: Dict, status: Dict, plan: List[Dict], team_tag: str) -> None:
+def write_markdown(
+    report_path: Path,
+    summary: Dict,
+    status: Dict,
+    plan: List[Dict],
+    team_tag: str,
+    run_id: str,
+) -> None:
     lines = [
         "# Zero-Tolerance Centralized Report",
         "",
         f"Timestamp: {utc_now()}",
+        f"Run ID: {run_id}",
         f"Team Tag: {team_tag}",
         "",
         "## Flow Model",
@@ -358,6 +466,21 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Acknowledge destructive fixes (renames).",
     )
+    parser.add_argument(
+        "--plan-only",
+        action="store_true",
+        help="Generate fix plan only (no modifications).",
+    )
+    parser.add_argument(
+        "--rollback-on-fail",
+        action="store_true",
+        help="Rollback from backup if apply or re-validation fails.",
+    )
+    parser.add_argument(
+        "--allow-dirty",
+        action="store_true",
+        help="Allow running apply fixes on a dirty git worktree.",
+    )
     return parser.parse_args()
 
 
@@ -368,6 +491,10 @@ def main() -> int:
     repo_root = Path(args.repo_root)
 
     team_tag = ensure_team_tag(args.team_tag)
+    run_id = str(uuid.uuid4())
+    actor = os.environ.get("USER", "")
+    git_sha_before = get_git_sha(repo_root)
+    git_status_before = get_git_status(repo_root)
 
     stage_results: List[StageResult] = []
     stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag))
@@ -377,21 +504,84 @@ def main() -> int:
     stage_results.append(run_ng_stage("insight", team_tag))
 
     fix_actions: List[str] = []
-    if args.apply_fixes:
-        fix_actions = apply_fixes(repo_root, report_dir, args.ack_destructive)
+    fix_plan_path = generate_fix_plan(repo_root, report_dir)
+    backup_path = ""
 
-    summary = build_summary(report_dir)
+    if args.plan_only:
+        summary = build_summary(report_dir)
+        status = determine_zero_tolerance_status(summary)
+        plan = build_remediation_plan(summary)
+        report_payload = {
+            "timestamp": utc_now(),
+            "run_id": run_id,
+            "team_tag": team_tag,
+            "actor": actor,
+            "git_sha_before": git_sha_before,
+            "git_status_before": git_status_before,
+            "flow_model": FLOW_MODEL,
+            "stage_results": [result.__dict__ for result in stage_results],
+            "summary": summary,
+            "status": status,
+            "remediation_plan": plan,
+            "fix_plan_path": str(fix_plan_path),
+            "fix_actions": [],
+        }
+        json_report = report_dir / "centralized-report.json"
+        json_report.write_text(
+            json.dumps(report_payload, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        markdown_report = report_dir / "centralized-report.md"
+        write_markdown(markdown_report, summary, status, plan, team_tag, run_id)
+        return 2 if status["status"] == "blocked" else 0
+
+    if args.apply_fixes:
+        ensure_clean_worktree(repo_root, args.allow_dirty)
+        backup_root = create_backup_bundle(repo_root, report_dir, fix_plan_path)
+        backup_path = str(backup_root)
+        try:
+            fix_actions = apply_fixes(repo_root, report_dir, args.ack_destructive)
+        except Exception:
+            if args.rollback_on_fail and backup_path:
+                rollback_from_backup(repo_root, Path(backup_path), fix_plan_path)
+            raise
+
+        stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="postfix"))
+        stage_results.append(run_ng_stage("external", team_tag, label="postfix"))
+        stage_results.append(run_ng_stage("global", team_tag, label="postfix"))
+        stage_results.append(run_ng_stage("cross-validate", team_tag, label="postfix"))
+        stage_results.append(run_ng_stage("insight", team_tag, label="postfix"))
+
+    summary_label = "postfix" if args.apply_fixes else None
+    summary = build_summary(report_dir, label=summary_label)
     status = determine_zero_tolerance_status(summary)
     plan = build_remediation_plan(summary)
+    git_sha_after = get_git_sha(repo_root)
+    git_status_after = get_git_status(repo_root)
+
+    rollback_performed = False
+    if args.apply_fixes and args.rollback_on_fail and status["status"] == "blocked" and backup_path:
+        rollback_from_backup(repo_root, Path(backup_path), fix_plan_path)
+        rollback_performed = True
+        git_sha_after = get_git_sha(repo_root)
+        git_status_after = get_git_status(repo_root)
 
     report_payload = {
         "timestamp": utc_now(),
+        "run_id": run_id,
         "team_tag": team_tag,
+        "actor": actor,
+        "git_sha_before": git_sha_before,
+        "git_sha_after": git_sha_after,
+        "git_status_before": git_status_before,
+        "git_status_after": git_status_after,
         "flow_model": FLOW_MODEL,
         "stage_results": [result.__dict__ for result in stage_results],
         "summary": summary,
         "status": status,
         "remediation_plan": plan,
+        "fix_plan_path": str(fix_plan_path),
+        "backup_bundle": backup_path,
+        "rollback_performed": rollback_performed,
         "fix_actions": fix_actions,
     }
 
@@ -401,7 +591,7 @@ def main() -> int:
     )
 
     markdown_report = report_dir / "centralized-report.md"
-    write_markdown(markdown_report, summary, status, plan, team_tag)
+    write_markdown(markdown_report, summary, status, plan, team_tag, run_id)
 
     return 0 if status["status"] == "pass" else 2
 
