@@ -58,101 +58,100 @@ class StrictViolation:
     immutable: bool = True
 
 
+class BinaryResult(Enum):
+    """二元結果（只有兩種）"""
+    PASS = "pass"
+    BLOCK = "block"
+
+
 class NgStrictEnforcer:
     """
-    NG 嚴格執行器
+    NG 嚴格執行器（絕對二元執行）
     
     IndestructibleAutoOps 零容忍執行模式：
-    - 100% 驗證通過率要求
-    - 0% 違規容忍
-    - 立即阻斷機制
-    - 不可變審計
+    - 只有 PASS 或 BLOCK（無警告）
+    - 100% 自動化決策（無人工）
+    - 立即阻斷機制（無延遲）
+    - 不可變審計（無修改）
+    - 無修復建議（只有拒絕原因）
     """
     
-    def __init__(self, zero_tolerance_mode: bool = True):
-        """
-        初始化嚴格執行器
-        
-        Args:
-            zero_tolerance_mode: 零容忍模式（只能是 True）
-        """
-        if not zero_tolerance_mode:
-            raise ValueError("FORBIDDEN: IndestructibleAutoOps 必須使用零容忍模式")
-        
-        self.zero_tolerance_mode = True
-        self.violations: List[StrictViolation] = []
+    def __init__(self):
+        """初始化嚴格執行器（零容忍模式強制）"""
         self.blocked_operations: List[str] = []
         self.enforcement_metrics = {
             'total_checks': 0,
-            'total_blocks': 0,
+            'total_pass': 0,
+            'total_block': 0,
+            'pass_rate': 0.0,
             'block_rate': 0.0
         }
         
-        logger.info("🛡️  NG 嚴格執行器已啟動 [ZERO_TOLERANCE_MODE]")
+        # 禁止任何非二元結果
+        self.allowed_results = {BinaryResult.PASS, BinaryResult.BLOCK}
+        
+        logger.info("🛡️  NG 嚴格執行器已啟動 [ABSOLUTE_BINARY_ENFORCEMENT]")
     
     def enforce_uniqueness(
         self,
         namespace_id: str,
         existing_namespaces: List[str]
-    ) -> Tuple[bool, Optional[StrictViolation]]:
+    ) -> Dict[str, any]:
         """
-        強制唯一性（零容忍）
+        強制唯一性（絕對二元執行）
         
         Returns:
-            (通過, 違規記錄或None)
+            {'result': 'pass'} 或 {'result': 'block', 'reason': '...'}
         """
         self.enforcement_metrics['total_checks'] += 1
         
-        # 檢查完全匹配
+        # 檢查完全匹配（二元決策）
         if namespace_id in existing_namespaces:
-            violation = StrictViolation(
-                violation_id=f"uniq-{len(self.violations)}",
-                namespace_id=namespace_id,
-                rule_code="NG00301",
-                severity=ViolationSeverity.IMMUTABLE,
-                action=EnforcementAction.PERMANENT_BLOCK,
-                description=f"命名空間已存在: {namespace_id}",
-                detected_at=datetime.now().isoformat(),
-                blocked=True,
-                immutable=True
-            )
-            
-            self.violations.append(violation)
+            self.enforcement_metrics['total_block'] += 1
             self.blocked_operations.append(namespace_id)
-            self.enforcement_metrics['total_blocks'] += 1
             
             logger.critical(
-                f"🚨 PERMANENT_BLOCK: 命名空間重複 {namespace_id}"
+                f"🚫 BLOCK: 命名空間 {namespace_id} 已存在"
             )
             
-            return (False, violation)
+            return {
+                'result': BinaryResult.BLOCK.value,
+                'reason': f"命名空間 {namespace_id} 已存在於系統中",
+                'rule_code': 'NG00301',
+                'action_taken': 'REJECT_REGISTRATION',
+                'user_action': '請使用不同的命名空間 ID'
+            }
         
-        # 零容忍：檢查語義相似度（防止混淆）
+        # 檢查語義相似度（ML 二元決策）
         for existing in existing_namespaces:
             similarity = self._calculate_similarity(namespace_id, existing)
             
-            if similarity >= 0.80:  # 80% 以上視為太相似
-                violation = StrictViolation(
-                    violation_id=f"sim-{len(self.violations)}",
-                    namespace_id=namespace_id,
-                    rule_code="NG00301",
-                    severity=ViolationSeverity.ABSOLUTE,
-                    action=EnforcementAction.IMMEDIATE_BLOCK,
-                    description=f"語義相似度過高 {similarity:.0%} 與 {existing}",
-                    detected_at=datetime.now().isoformat()
-                )
-                
-                self.violations.append(violation)
+            # ML 二元決策：>= 0.80 = BLOCK，< 0.80 = 繼續檢查
+            if similarity >= 0.80:
+                self.enforcement_metrics['total_block'] += 1
                 self.blocked_operations.append(namespace_id)
-                self.enforcement_metrics['total_blocks'] += 1
                 
-                logger.error(
-                    f"🚨 IMMEDIATE_BLOCK: 語義相似 {namespace_id} ≈ {existing} ({similarity:.0%})"
+                logger.critical(
+                    f"🚫 BLOCK: 語義相似度 {similarity:.0%} >= 80% 與 {existing}"
                 )
                 
-                return (False, violation)
+                return {
+                    'result': BinaryResult.BLOCK.value,
+                    'reason': f"語義相似度 {similarity:.0%} 過高（與 {existing} 太相似）",
+                    'rule_code': 'NG00301',
+                    'threshold': '80%',
+                    'action_taken': 'REJECT_REGISTRATION',
+                    'user_action': '請使用語義差異更大的命名空間 ID'
+                }
         
-        return (True, None)
+        # 所有檢查通過
+        self.enforcement_metrics['total_pass'] += 1
+        
+        return {
+            'result': BinaryResult.PASS.value,
+            'rule_code': 'NG00301',
+            'checks_passed': ['global_uniqueness', 'semantic_uniqueness']
+        }
     
     def _calculate_similarity(self, ns1: str, ns2: str) -> float:
         """計算語義相似度（簡化版）"""
@@ -168,155 +167,162 @@ class NgStrictEnforcer:
         
         return len(intersection) / len(union)
     
-    def enforce_format(self, namespace_id: str) -> Tuple[bool, Optional[StrictViolation]]:
+    def enforce_format(self, namespace_id: str) -> Dict[str, any]:
         """
-        強制格式（零容忍）
+        強制格式（絕對二元執行）
         
         Returns:
-            (通過, 違規記錄或None)
+            {'result': 'pass'} 或 {'result': 'block', 'reason': '...'}
         """
         self.enforcement_metrics['total_checks'] += 1
         
         # 零容忍：嚴格格式檢查
         parts = namespace_id.split('.')
         
-        # 必須有 4 個部分
+        # 必須有 4 個部分（二元檢查）
         if len(parts) != 4:
-            return self._create_format_violation(
-                namespace_id,
-                f"格式錯誤: 必須恰好 4 個部分，實際 {len(parts)} 個"
-            )
+            self.enforcement_metrics['total_block'] += 1
+            self.blocked_operations.append(namespace_id)
+            
+            return {
+                'result': BinaryResult.BLOCK.value,
+                'reason': f"格式錯誤: 必須恰好 4 個部分（type.era.domain.component），實際 {len(parts)} 個",
+                'rule_code': 'NG00302',
+                'action_taken': 'REJECT_REGISTRATION',
+                'user_action': f'正確格式範例: pkg.era1.platform.core'
+            }
         
         # 檢查每個部分
         type_part, era_part, domain_part, component_part = parts
         
-        # Type 檢查
+        # Type 檢查（二元）
         if not type_part.islower() or not type_part.isalpha():
-            return self._create_format_violation(
-                namespace_id,
-                f"類型部分錯誤: '{type_part}' 必須是小寫字母"
-            )
+            self.enforcement_metrics['total_block'] += 1
+            return {
+                'result': BinaryResult.BLOCK.value,
+                'reason': f"類型部分 '{type_part}' 必須是純小寫字母",
+                'rule_code': 'NG00302',
+                'action_taken': 'REJECT_REGISTRATION'
+            }
         
-        # Era 檢查
+        # Era 檢查（二元）
         if era_part not in ['era1', 'era2', 'era3', 'cross']:
-            return self._create_format_violation(
-                namespace_id,
-                f"Era 錯誤: '{era_part}' 必須是 era1/era2/era3/cross"
-            )
+            self.enforcement_metrics['total_block'] += 1
+            return {
+                'result': BinaryResult.BLOCK.value,
+                'reason': f"Era '{era_part}' 必須是 era1/era2/era3/cross 之一",
+                'rule_code': 'NG00302',
+                'valid_values': ['era1', 'era2', 'era3', 'cross'],
+                'action_taken': 'REJECT_REGISTRATION'
+            }
         
-        # Domain 和 Component 檢查（kebab-case）
+        # Domain 和 Component 檢查（kebab-case）- 二元決策
         for part_name, part_value in [('domain', domain_part), ('component', component_part)]:
+            # 檢查字符白名單
             if not all(c.islower() or c.isdigit() or c == '-' for c in part_value):
-                return self._create_format_violation(
-                    namespace_id,
-                    f"{part_name} 錯誤: '{part_value}' 必須是 kebab-case（小寫+連字號+數字）"
-                )
+                self.enforcement_metrics['total_block'] += 1
+                return {
+                    'result': BinaryResult.BLOCK.value,
+                    'reason': f"{part_name} '{part_value}' 必須只包含小寫字母、數字、連字號",
+                    'rule_code': 'NG00302',
+                    'allowed_chars': '[a-z0-9-]',
+                    'action_taken': 'REJECT_REGISTRATION'
+                }
             
-            # 禁止開頭或結尾是連字號
+            # 禁止連字號開頭或結尾
             if part_value.startswith('-') or part_value.endswith('-'):
-                return self._create_format_violation(
-                    namespace_id,
-                    f"{part_name} 錯誤: '{part_value}' 不能以連字號開頭或結尾"
-                )
+                self.enforcement_metrics['total_block'] += 1
+                return {
+                    'result': BinaryResult.BLOCK.value,
+                    'reason': f"{part_name} '{part_value}' 不能以連字號開頭或結尾",
+                    'rule_code': 'NG00302',
+                    'action_taken': 'REJECT_REGISTRATION'
+                }
             
             # 禁止連續連字號
             if '--' in part_value:
-                return self._create_format_violation(
-                    namespace_id,
-                    f"{part_name} 錯誤: '{part_value}' 不能有連續連字號"
-                )
+                self.enforcement_metrics['total_block'] += 1
+                return {
+                    'result': BinaryResult.BLOCK.value,
+                    'reason': f"{part_name} '{part_value}' 不能有連續連字號",
+                    'rule_code': 'NG00302',
+                    'action_taken': 'REJECT_REGISTRATION'
+                }
         
-        return (True, None)
+        # 所有檢查通過（二元結果）
+        self.enforcement_metrics['total_pass'] += 1
+        
+        return {
+            'result': BinaryResult.PASS.value,
+            'rule_code': 'NG00302',
+            'checks_passed': ['format_structure', 'kebab_case', 'character_whitelist']
+        }
     
-    def _create_format_violation(
-        self,
-        namespace_id: str,
-        description: str
-    ) -> Tuple[bool, StrictViolation]:
-        """創建格式違規"""
-        violation = StrictViolation(
-            violation_id=f"fmt-{len(self.violations)}",
-            namespace_id=namespace_id,
-            rule_code="NG00302",
-            severity=ViolationSeverity.IMMUTABLE,
-            action=EnforcementAction.IMMEDIATE_BLOCK,
-            description=description,
-            detected_at=datetime.now().isoformat()
-        )
-        
-        self.violations.append(violation)
+    def _binary_block(self, namespace_id: str, reason: str, rule_code: str) -> Dict[str, any]:
+        """創建二元 BLOCK 結果（刪除違規記錄概念，直接返回結果）"""
+        self.enforcement_metrics['total_block'] += 1
         self.blocked_operations.append(namespace_id)
-        self.enforcement_metrics['total_blocks'] += 1
         
-        logger.critical(f"🚨 IMMEDIATE_BLOCK: {description}")
+        logger.critical(f"🚫 BLOCK: {reason}")
         
-        return (False, violation)
+        return {
+            'result': BinaryResult.BLOCK.value,
+            'reason': reason,
+            'rule_code': rule_code,
+            'action_taken': 'REJECT_OPERATION',
+            'timestamp': datetime.now().isoformat()
+        }
     
-    def enforce_closure(
-        self,
-        namespace_data: Dict[str, Any]
-    ) -> Tuple[bool, List[StrictViolation]]:
+    def enforce_closure(self, namespace_data: Dict[str, Any]) -> Dict[str, any]:
         """
-        強制閉環完整性（零容忍）
+        強制閉環完整性（絕對二元執行）
         
         Returns:
-            (通過, 違規列表)
+            {'result': 'pass'} 或 {'result': 'block', 'reason': '...'}
         """
         self.enforcement_metrics['total_checks'] += 1
         
-        violations = []
         namespace_id = namespace_data.get('namespace_id', 'unknown')
+        missing_items = []
         
-        # 零容忍：必須有 NG 編碼
+        # 檢查 NG 編碼（必要項）
         if not namespace_data.get('ng_code'):
-            violations.append(StrictViolation(
-                violation_id=f"cls-{len(self.violations)}",
-                namespace_id=namespace_id,
-                rule_code="NG90001",
-                severity=ViolationSeverity.IMMUTABLE,
-                action=EnforcementAction.BLOCK_UNTIL_FIXED,
-                description="缺少 NG 編碼（閉環必要項）",
-                detected_at=datetime.now().isoformat()
-            ))
+            missing_items.append('NG 編碼')
         
-        # 零容忍：必須有審計追蹤
-        audit_trail = namespace_data.get('audit_trail', [])
-        if not audit_trail:
-            violations.append(StrictViolation(
-                violation_id=f"aud-{len(self.violations)}",
-                namespace_id=namespace_id,
-                rule_code="NG00701",
-                severity=ViolationSeverity.ABSOLUTE,
-                action=EnforcementAction.BLOCK_UNTIL_FIXED,
-                description="缺少審計追蹤（閉環必要項）",
-                detected_at=datetime.now().isoformat()
-            ))
+        # 檢查審計追蹤（必要項）
+        if not namespace_data.get('audit_trail') or len(namespace_data.get('audit_trail', [])) == 0:
+            missing_items.append('審計追蹤')
         
-        # 零容忍：必須有驗證記錄
+        # 檢查驗證記錄（必要項）
         if not namespace_data.get('validated'):
-            violations.append(StrictViolation(
-                violation_id=f"val-{len(self.violations)}",
-                namespace_id=namespace_id,
-                rule_code="NG00301",
-                severity=ViolationSeverity.ABSOLUTE,
-                action=EnforcementAction.BLOCK_UNTIL_FIXED,
-                description="缺少驗證記錄（閉環必要項）",
-                detected_at=datetime.now().isoformat()
-            ))
+            missing_items.append('驗證記錄')
         
-        if violations:
-            self.violations.extend(violations)
+        # 二元決策
+        if missing_items:
+            self.enforcement_metrics['total_block'] += 1
             self.blocked_operations.append(namespace_id)
-            self.enforcement_metrics['total_blocks'] += len(violations)
             
             logger.critical(
-                f"🚨 CLOSURE INCOMPLETE: {namespace_id} - "
-                f"{len(violations)} 個閉環缺口 [BLOCK_ALL_OPERATIONS]"
+                f"🚫 BLOCK: 閉環不完整 - 缺少 {', '.join(missing_items)}"
             )
             
-            return (False, violations)
+            return {
+                'result': BinaryResult.BLOCK.value,
+                'reason': f"閉環不完整：缺少 {', '.join(missing_items)}",
+                'rule_code': 'NG90001',
+                'missing_items': missing_items,
+                'action_taken': 'REJECT_ALL_OPERATIONS',
+                'user_action': '命名空間必須完成完整生命週期才能使用'
+            }
         
-        return (True, [])
+        # 所有檢查通過
+        self.enforcement_metrics['total_pass'] += 1
+        
+        return {
+            'result': BinaryResult.PASS.value,
+            'rule_code': 'NG90001',
+            'checks_passed': ['ng_code_present', 'audit_trail_present', 'validation_complete']
+        }
     
     def get_enforcement_report(self) -> str:
         """生成執行報告"""
