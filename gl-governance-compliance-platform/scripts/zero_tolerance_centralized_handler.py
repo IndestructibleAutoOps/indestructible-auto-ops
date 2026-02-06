@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import sys
 import uuid
+import hashlib
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,6 +24,7 @@ from typing import Dict, List, Optional
 
 FLOW_MODEL = ["internal", "external", "global", "cross-validate", "insight"]
 TEAM_ENV = "IND_AUTOOPS_TEAM_TAG"
+ALT_TEAM_ENV = "INDAUTOOPSTEAM_TAG"
 
 DEFAULT_REPORT_DIR = Path("/workspace/reports/zero-tolerance")
 DEFAULT_REPO_ROOT = Path("/workspace")
@@ -37,6 +39,9 @@ DEFAULT_NAMING_SCAN = Path(
 )
 DEFAULT_MARKER_SCAN = Path("/workspace/scan_files.py")
 DEFAULT_FIX_NAMING = Path("/workspace/fix_naming_violations.py")
+DEFAULT_ACCESS_POLICY = Path(
+    "/workspace/gl-governance-compliance-platform/governance/naming/ng-namespace-access-policy.yaml"
+)
 
 
 def utc_now() -> str:
@@ -94,6 +99,32 @@ def load_json(path: Path) -> Dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def read_policy_version(path: Path) -> str:
+    if not path.exists():
+        return ""
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if "version" in line and ":" in line:
+            _, value = line.split(":", 1)
+            return value.strip().strip('"').strip("'")
+    return ""
+
+
+def compute_digest(payload: Dict) -> str:
+    return hashlib.sha256(
+        json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
+def get_files_changed_count(repo_root: Path) -> int:
+    try:
+        output = run_command(["git", "diff", "--name-only"], cwd=repo_root).strip()
+    except Exception:
+        return 0
+    if not output:
+        return 0
+    return len(output.splitlines())
+
+
 def get_git_sha(repo_root: Path) -> str:
     try:
         output = run_command(["git", "rev-parse", "HEAD"], cwd=repo_root).strip()
@@ -118,8 +149,32 @@ def ensure_clean_worktree(repo_root: Path, allow_dirty: bool) -> None:
         )
 
 
+def acquire_lock(repo_root: Path, run_id: str) -> Path:
+    lock_dir = repo_root / ".governance" / "locks"
+    lock_dir.mkdir(parents=True, exist_ok=True)
+    lock_path = lock_dir / "zero-tolerance.lock"
+    if lock_path.exists():
+        raise RuntimeError("Lock file exists; another run may be in progress.")
+    lock_path.write_text(
+        json.dumps({"run_id": run_id, "timestamp": utc_now()}, indent=2),
+        encoding="utf-8",
+    )
+    return lock_path
+
+
+def release_lock(lock_path: Path) -> None:
+    if lock_path.exists():
+        lock_path.unlink()
+
+
 def ensure_team_tag(value: Optional[str]) -> str:
-    tag = (value or os.environ.get(TEAM_ENV, "")).strip()
+    env_primary = os.environ.get(TEAM_ENV, "").strip()
+    env_alt = os.environ.get(ALT_TEAM_ENV, "").strip()
+    if env_primary and env_alt:
+        raise RuntimeError(
+            f"Both {TEAM_ENV} and {ALT_TEAM_ENV} are set; use only one."
+        )
+    tag = (value or env_primary or env_alt).strip()
     if not tag:
         raise RuntimeError(
             f"Missing team tag. Use --team-tag or set {TEAM_ENV}."
@@ -223,11 +278,28 @@ def generate_fix_plan(repo_root: Path, report_dir: Path) -> Path:
     return plan_path
 
 
-def create_backup_bundle(repo_root: Path, report_dir: Path, plan_path: Path) -> Path:
+def load_fix_plan(plan_path: Path) -> Dict:
+    if not plan_path.exists():
+        raise RuntimeError(f"Fix plan missing: {plan_path}")
+    return load_json(plan_path)
+
+
+def ensure_plan_matches_repo(plan_payload: Dict, repo_root: Path) -> None:
+    expected_sha = plan_payload.get("git_sha", "")
+    if expected_sha:
+        current_sha = get_git_sha(repo_root)
+        if current_sha and current_sha != expected_sha:
+            raise RuntimeError(
+                f"Plan git sha mismatch. expected={expected_sha} current={current_sha}"
+            )
+
+
+def create_backup_bundle(repo_root: Path, report_dir: Path, plan_path: Path) -> Dict:
     payload = load_json(plan_path)
     changes = payload.get("changes", [])
     backup_root = repo_root / ".governance" / "backups" / f"zero-tolerance-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     backup_root.mkdir(parents=True, exist_ok=True)
+    manifest = []
 
     for change in changes:
         old_rel = change.get("old_path")
@@ -242,7 +314,22 @@ def create_backup_bundle(repo_root: Path, report_dir: Path, plan_path: Path) -> 
             shutil.copytree(source_path, target_path, dirs_exist_ok=True)
         else:
             shutil.copy2(source_path, target_path)
-    return backup_root
+        if source_path.is_file():
+            digest = hashlib.sha256(source_path.read_bytes()).hexdigest()
+            manifest.append(
+                {
+                    "path": old_rel,
+                    "sha256": digest,
+                    "size": source_path.stat().st_size,
+                }
+            )
+    manifest_path = backup_root / "manifest.json"
+    manifest_path.write_text(
+        json.dumps({"files": manifest}, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    manifest_hash = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+    return {"path": str(backup_root), "manifest": str(manifest_path), "manifest_hash": manifest_hash}
 
 
 def rollback_from_backup(repo_root: Path, backup_root: Path, plan_path: Path) -> None:
@@ -269,7 +356,7 @@ def rollback_from_backup(repo_root: Path, backup_root: Path, plan_path: Path) ->
                 shutil.copy2(backup_path, old_path)
 
 
-def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool) -> List[str]:
+def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool, plan_path: Path) -> List[str]:
     actions = []
     if not ack_destructive:
         raise RuntimeError(
@@ -282,6 +369,8 @@ def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool) -> Lis
             "--workspace",
             str(repo_root),
             "--apply",
+            "--plan-input",
+            str(plan_path),
         ],
         timeout=600,
     )
@@ -472,6 +561,10 @@ def parse_args() -> argparse.Namespace:
         help="Generate fix plan only (no modifications).",
     )
     parser.add_argument(
+        "--plan-input",
+        help="Use an existing fix plan JSON for apply.",
+    )
+    parser.add_argument(
         "--rollback-on-fail",
         action="store_true",
         help="Rollback from backup if apply or re-validation fails.",
@@ -495,105 +588,141 @@ def main() -> int:
     actor = os.environ.get("USER", "")
     git_sha_before = get_git_sha(repo_root)
     git_status_before = get_git_status(repo_root)
+    policy_version = read_policy_version(DEFAULT_ACCESS_POLICY)
+    lock_path = acquire_lock(repo_root, run_id)
 
-    stage_results: List[StageResult] = []
-    stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag))
-    stage_results.append(run_ng_stage("external", team_tag))
-    stage_results.append(run_ng_stage("global", team_tag))
-    stage_results.append(run_ng_stage("cross-validate", team_tag))
-    stage_results.append(run_ng_stage("insight", team_tag))
+    try:
+        stage_results: List[StageResult] = []
+        stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag))
+        stage_results.append(run_ng_stage("external", team_tag))
+        stage_results.append(run_ng_stage("global", team_tag))
+        stage_results.append(run_ng_stage("cross-validate", team_tag))
+        stage_results.append(run_ng_stage("insight", team_tag))
 
-    fix_actions: List[str] = []
-    fix_plan_path = generate_fix_plan(repo_root, report_dir)
-    backup_path = ""
+        fix_actions: List[str] = []
+        fix_plan_path = Path(args.plan_input).resolve() if args.plan_input else generate_fix_plan(repo_root, report_dir)
+        plan_payload = load_fix_plan(fix_plan_path)
+        ensure_plan_matches_repo(plan_payload, repo_root)
+        plan_changes = plan_payload.get("changes", [])
+        plan_digest = plan_payload.get("plan_digest", "")
+        if not plan_digest:
+            plan_digest = compute_digest({"changes": plan_changes})
+        destructive_actions = [item for item in plan_changes if item.get("destructive")]
+        backup_bundle = {}
 
-    if args.plan_only:
         summary = build_summary(report_dir)
+        pre_status = determine_zero_tolerance_status(summary)
+
+        if args.plan_only:
+            plan = build_remediation_plan(summary)
+            report_payload = {
+                "timestamp": utc_now(),
+                "run_id": run_id,
+                "team_tag": team_tag,
+                "actor": actor,
+                "tool_version": git_sha_before,
+                "policy_pack_version": policy_version,
+                "git_sha_before": git_sha_before,
+                "git_status_before": git_status_before,
+                "flow_model": FLOW_MODEL,
+                "stage_results": [result.__dict__ for result in stage_results],
+                "summary": summary,
+                "status": pre_status,
+                "remediation_plan": plan,
+                "fix_plan_path": str(fix_plan_path),
+                "plan_digest": plan_digest,
+                "destructive_actions": destructive_actions,
+                "fix_actions": [],
+            }
+            report_payload["report_digest"] = compute_digest(report_payload)
+            json_report = report_dir / "centralized-report.json"
+            json_report.write_text(
+                json.dumps(report_payload, indent=2, ensure_ascii=False), encoding="utf-8"
+            )
+            markdown_report = report_dir / "centralized-report.md"
+            write_markdown(markdown_report, summary, pre_status, plan, team_tag, run_id)
+            return 2 if pre_status["status"] == "blocked" else 0
+
+        if args.apply_fixes:
+            ensure_clean_worktree(repo_root, args.allow_dirty)
+            backup_bundle = create_backup_bundle(repo_root, report_dir, fix_plan_path)
+            try:
+                fix_actions = apply_fixes(repo_root, report_dir, args.ack_destructive, fix_plan_path)
+            except Exception:
+                if args.rollback_on_fail and backup_bundle:
+                    rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
+                raise
+
+            stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="postfix"))
+            stage_results.append(run_ng_stage("external", team_tag, label="postfix"))
+            stage_results.append(run_ng_stage("global", team_tag, label="postfix"))
+            stage_results.append(run_ng_stage("cross-validate", team_tag, label="postfix"))
+            stage_results.append(run_ng_stage("insight", team_tag, label="postfix"))
+
+        summary_label = "postfix" if args.apply_fixes else None
+        summary = build_summary(report_dir, label=summary_label)
         status = determine_zero_tolerance_status(summary)
         plan = build_remediation_plan(summary)
+        git_sha_after = get_git_sha(repo_root)
+        git_status_after = get_git_status(repo_root)
+        files_changed_count = get_files_changed_count(repo_root)
+
+        rollback_performed = False
+        rollback_validation_passed = None
+        if args.apply_fixes and args.rollback_on_fail and status["status"] == "blocked" and backup_bundle:
+            rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
+            rollback_performed = True
+            stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="rollback"))
+            rollback_summary = build_summary(report_dir, label="rollback")
+            rollback_status = determine_zero_tolerance_status(rollback_summary)
+            rollback_validation_passed = rollback_status["status"] == "pass"
+            git_sha_after = get_git_sha(repo_root)
+            git_status_after = get_git_status(repo_root)
+
         report_payload = {
             "timestamp": utc_now(),
             "run_id": run_id,
             "team_tag": team_tag,
             "actor": actor,
+            "tool_version": git_sha_before,
+            "policy_pack_version": policy_version,
             "git_sha_before": git_sha_before,
+            "git_sha_after": git_sha_after,
             "git_status_before": git_status_before,
+            "git_status_after": git_status_after,
+            "files_changed_count": files_changed_count,
             "flow_model": FLOW_MODEL,
             "stage_results": [result.__dict__ for result in stage_results],
             "summary": summary,
             "status": status,
+            "validation_summary": {
+                "pre_status": pre_status,
+                "post_status": status if args.apply_fixes else None,
+                "rollback_validation_passed": rollback_validation_passed,
+            },
             "remediation_plan": plan,
             "fix_plan_path": str(fix_plan_path),
-            "fix_actions": [],
+            "plan_digest": plan_digest,
+            "backup_bundle": backup_bundle,
+            "bundle_manifest_hash": backup_bundle.get("manifest_hash") if backup_bundle else "",
+            "rollback_performed": rollback_performed,
+            "destructive_actions": destructive_actions,
+            "fix_actions": fix_actions,
         }
+
+        report_payload["report_digest"] = compute_digest(report_payload)
+
         json_report = report_dir / "centralized-report.json"
         json_report.write_text(
             json.dumps(report_payload, indent=2, ensure_ascii=False), encoding="utf-8"
         )
+
         markdown_report = report_dir / "centralized-report.md"
         write_markdown(markdown_report, summary, status, plan, team_tag, run_id)
-        return 2 if status["status"] == "blocked" else 0
 
-    if args.apply_fixes:
-        ensure_clean_worktree(repo_root, args.allow_dirty)
-        backup_root = create_backup_bundle(repo_root, report_dir, fix_plan_path)
-        backup_path = str(backup_root)
-        try:
-            fix_actions = apply_fixes(repo_root, report_dir, args.ack_destructive)
-        except Exception:
-            if args.rollback_on_fail and backup_path:
-                rollback_from_backup(repo_root, Path(backup_path), fix_plan_path)
-            raise
-
-        stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="postfix"))
-        stage_results.append(run_ng_stage("external", team_tag, label="postfix"))
-        stage_results.append(run_ng_stage("global", team_tag, label="postfix"))
-        stage_results.append(run_ng_stage("cross-validate", team_tag, label="postfix"))
-        stage_results.append(run_ng_stage("insight", team_tag, label="postfix"))
-
-    summary_label = "postfix" if args.apply_fixes else None
-    summary = build_summary(report_dir, label=summary_label)
-    status = determine_zero_tolerance_status(summary)
-    plan = build_remediation_plan(summary)
-    git_sha_after = get_git_sha(repo_root)
-    git_status_after = get_git_status(repo_root)
-
-    rollback_performed = False
-    if args.apply_fixes and args.rollback_on_fail and status["status"] == "blocked" and backup_path:
-        rollback_from_backup(repo_root, Path(backup_path), fix_plan_path)
-        rollback_performed = True
-        git_sha_after = get_git_sha(repo_root)
-        git_status_after = get_git_status(repo_root)
-
-    report_payload = {
-        "timestamp": utc_now(),
-        "run_id": run_id,
-        "team_tag": team_tag,
-        "actor": actor,
-        "git_sha_before": git_sha_before,
-        "git_sha_after": git_sha_after,
-        "git_status_before": git_status_before,
-        "git_status_after": git_status_after,
-        "flow_model": FLOW_MODEL,
-        "stage_results": [result.__dict__ for result in stage_results],
-        "summary": summary,
-        "status": status,
-        "remediation_plan": plan,
-        "fix_plan_path": str(fix_plan_path),
-        "backup_bundle": backup_path,
-        "rollback_performed": rollback_performed,
-        "fix_actions": fix_actions,
-    }
-
-    json_report = report_dir / "centralized-report.json"
-    json_report.write_text(
-        json.dumps(report_payload, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
-
-    markdown_report = report_dir / "centralized-report.md"
-    write_markdown(markdown_report, summary, status, plan, team_tag, run_id)
-
-    return 0 if status["status"] == "pass" else 2
+        return 0 if status["status"] == "pass" else 2
+    finally:
+        release_lock(lock_path)
 
 
 if __name__ == "__main__":

@@ -8,6 +8,8 @@ import os
 import re
 import json
 import shutil
+import subprocess
+import hashlib
 from pathlib import Path
 from typing import List, Dict, Set, Tuple
 from datetime import datetime
@@ -21,6 +23,8 @@ class NamingFixer:
         self.skipped_count = 0
         self.rename_map: Dict[str, str] = {}  # old_path -> new_path
         self.rename_plan: List[Dict[str, str]] = []
+        self.plan_locked = False
+        self.sequence = 0
         
         # 排除目錄
         self.excluded_dirs = {
@@ -33,16 +37,27 @@ class NamingFixer:
 
     def record_plan(self, old_path: Path, new_path: Path, entity_type: str) -> None:
         """Record planned rename for audit/plan output."""
+        if self.plan_locked:
+            return
         old_rel = str(old_path.relative_to(self.workspace))
         new_rel = str(new_path.relative_to(self.workspace))
         risk = 'high' if entity_type == 'directory' else 'medium'
+        self.sequence += 1
         self.rename_plan.append({
+            'sequence': self.sequence,
             'type': entity_type,
             'old_path': old_rel,
             'new_path': new_rel,
             'risk': risk,
             'destructive': True
         })
+
+    def load_plan(self, plan_path: Path) -> None:
+        """Load a previously generated plan and lock execution to it."""
+        plan = json.loads(plan_path.read_text(encoding='utf-8'))
+        changes = plan.get('changes', [])
+        self.rename_plan = list(changes)
+        self.plan_locked = True
     
     def to_snake_case(self, name: str) -> str:
         """轉換為 snake_case"""
@@ -110,6 +125,7 @@ class NamingFixer:
                 if new_path != file_path:
                     renames.append((file_path, new_path))
         
+        renames.sort(key=lambda pair: str(pair[0]))
         return renames
     
     def collect_config_file_renames(self) -> List[Tuple[Path, Path]]:
@@ -138,6 +154,7 @@ class NamingFixer:
                     if new_path != file_path:
                         renames.append((file_path, new_path))
         
+        renames.sort(key=lambda pair: str(pair[0]))
         return renames
     
     def collect_directory_renames(self) -> List[Tuple[Path, Path]]:
@@ -178,6 +195,7 @@ class NamingFixer:
                 if new_path != dir_path and not new_path.exists():
                     renames.append((dir_path, new_path))
         
+        renames.sort(key=lambda pair: str(pair[0]))
         return renames
     
     def update_references(self, old_name: str, new_name: str):
@@ -314,38 +332,55 @@ class NamingFixer:
         print(f"\n模式: {'DRY-RUN (預覽)' if self.dry_run else 'APPLY (實際修改)'}")
         print(f"工作區: {self.workspace}\n")
         
-        # 1. 修復 Python 文件命名
-        print("\n📁 Python 文件命名修復 (連字符 -> 下劃線):")
-        print("-" * 50)
-        py_renames = self.collect_python_file_renames()
-        for old_path, new_path in py_renames:
-            if self.rename_file(old_path, new_path):
-                self.fixed_count += 1
-            else:
-                self.failed_count += 1
-        print(f"  共 {len(py_renames)} 個文件")
-        
-        # 2. 修復配置文件命名
-        print("\n📄 配置文件命名修復 (下劃線 -> 連字符):")
-        print("-" * 50)
-        config_renames = self.collect_config_file_renames()
-        for old_path, new_path in config_renames:
-            if self.rename_file(old_path, new_path):
-                self.fixed_count += 1
-            else:
-                self.failed_count += 1
-        print(f"  共 {len(config_renames)} 個文件")
-        
-        # 3. 修復目錄命名
-        print("\n📂 目錄命名修復 (下劃線 -> 連字符):")
-        print("-" * 50)
-        dir_renames = self.collect_directory_renames()
-        for old_path, new_path in dir_renames:
-            if self.rename_directory(old_path, new_path):
-                self.fixed_count += 1
-            else:
-                self.failed_count += 1
-        print(f"  共 {len(dir_renames)} 個目錄")
+        if self.plan_locked:
+            print("\n📦 按修正計畫執行:")
+            print("-" * 50)
+            ordered = sorted(self.rename_plan, key=lambda item: item.get('sequence', 0))
+            for entry in ordered:
+                old_path = self.workspace / entry['old_path']
+                new_path = self.workspace / entry['new_path']
+                if entry['type'] == 'directory':
+                    success = self.rename_directory(old_path, new_path)
+                else:
+                    success = self.rename_file(old_path, new_path)
+                if success:
+                    self.fixed_count += 1
+                else:
+                    self.failed_count += 1
+            print(f"  共 {len(ordered)} 個項目")
+        else:
+            # 1. 修復 Python 文件命名
+            print("\n📁 Python 文件命名修復 (連字符 -> 下劃線):")
+            print("-" * 50)
+            py_renames = self.collect_python_file_renames()
+            for old_path, new_path in py_renames:
+                if self.rename_file(old_path, new_path):
+                    self.fixed_count += 1
+                else:
+                    self.failed_count += 1
+            print(f"  共 {len(py_renames)} 個文件")
+            
+            # 2. 修復配置文件命名
+            print("\n📄 配置文件命名修復 (下劃線 -> 連字符):")
+            print("-" * 50)
+            config_renames = self.collect_config_file_renames()
+            for old_path, new_path in config_renames:
+                if self.rename_file(old_path, new_path):
+                    self.fixed_count += 1
+                else:
+                    self.failed_count += 1
+            print(f"  共 {len(config_renames)} 個文件")
+            
+            # 3. 修復目錄命名
+            print("\n📂 目錄命名修復 (下劃線 -> 連字符):")
+            print("-" * 50)
+            dir_renames = self.collect_directory_renames()
+            for old_path, new_path in dir_renames:
+                if self.rename_directory(old_path, new_path):
+                    self.fixed_count += 1
+                else:
+                    self.failed_count += 1
+            print(f"  共 {len(dir_renames)} 個目錄")
         
         # 總結
         print(f"\n{'='*70}")
@@ -360,13 +395,27 @@ class NamingFixer:
         
         # 保存重命名映射或修正計畫
         if plan_output:
+            ordered_plan = sorted(self.rename_plan, key=lambda item: (item.get('sequence', 0), item.get('old_path', '')))
+            plan_digest = hashlib.sha256(
+                json.dumps(ordered_plan, sort_keys=True, separators=(',', ':')).encode('utf-8')
+            ).hexdigest()
+            git_sha = ""
+            if (self.workspace / '.git').exists():
+                try:
+                    git_sha = subprocess.check_output(
+                        ['git', 'rev-parse', 'HEAD'], cwd=self.workspace
+                    ).decode('utf-8').strip()
+                except Exception:
+                    git_sha = ""
             plan_output.parent.mkdir(parents=True, exist_ok=True)
             with open(plan_output, 'w', encoding='utf-8') as f:
                 json.dump({
                     'timestamp': datetime.now().isoformat(),
                     'workspace': str(self.workspace),
                     'mode': 'dry-run' if self.dry_run else 'apply',
-                    'changes': self.rename_plan,
+                    'git_sha': git_sha,
+                    'plan_digest': plan_digest,
+                    'changes': ordered_plan,
                     'rename_map': self.rename_map,
                 }, f, indent=2, ensure_ascii=False)
             print(f"\n修正計畫已保存至: {plan_output}")
@@ -390,11 +439,14 @@ def main():
     parser.add_argument('--workspace', '-w', default='.', help='工作區路徑')
     parser.add_argument('--apply', action='store_true', help='實際執行修復（默認為預覽模式）')
     parser.add_argument('--plan-output', help='輸出修正計畫 JSON 路徑')
+    parser.add_argument('--plan-input', help='指定修正計畫 JSON 並按計畫執行')
     
     args = parser.parse_args()
     
     workspace = Path(args.workspace).resolve()
     fixer = NamingFixer(workspace, dry_run=not args.apply)
+    if args.plan_input:
+        fixer.load_plan(Path(args.plan_input).resolve())
     
     plan_output = Path(args.plan_output).resolve() if args.plan_output else None
     success = fixer.run(plan_output=plan_output)
