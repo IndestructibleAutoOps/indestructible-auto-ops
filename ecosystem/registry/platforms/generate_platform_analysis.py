@@ -184,7 +184,7 @@ if __name__ == "__main__":
 
     # 保存到文件
     with open(
-        "/workspace/machine-native-ops/ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md",
+        "/workspace/ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md",
         "w",
         encoding="utf-8",
     ) as f:

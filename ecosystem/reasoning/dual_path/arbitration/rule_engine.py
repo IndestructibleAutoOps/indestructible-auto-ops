@@ -252,5 +252,5 @@ if __name__ == "__main__":
 
     # Export rules
     engine.export_rules(
-        "/workspace/machine-native-ops/ecosystem/reasoning/dual_path/arbitration/rules_export.yaml"
+        "/workspace/ecosystem/reasoning/dual_path/arbitration/rules_export.yaml"
     )
