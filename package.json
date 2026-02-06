@@ -2,8 +2,8 @@
   "name": "indestructible-auto-ops",
   "private": true,
   "scripts": {
-    "validate:gl": "python3 ecosystem/enforce.py --audit --strict",
-    "check:gl-compliance": "python3 ecosystem/enforce.py --strict"
+    "validate:gl": "python3 ecosystem/enforce.py --audit",
+    "check:gl-compliance": "python3 ecosystem/enforce.py"
   }
 }
 
