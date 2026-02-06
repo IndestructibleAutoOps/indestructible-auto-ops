@@ -1,0 +1,42 @@
+# @GL-governed
+# @GL-layer: GL60-80
+# @GL-semantic: research-loop.import-pipelines
+# @GL-audit-trail: governance/workflows/research-loop/references/registry.yaml
+version: 1
+pipelines:
+  - id: refpack-import-v1
+    name: isolation-zone-refpack-import
+    description: One-way import from isolation zone into closed zone.
+    steps:
+      - id: request_isolation_route
+        action: forward_gap_list_to_isolation_zone
+        inputs:
+          - "{artifacts_root}/{run_id}/gap-list.md"
+          - "{artifacts_root}/{run_id}/router-decision.json"
+        constraints:
+          - "approval_token_required"
+          - "encrypted_channel_only"
+      - id: isolated_search
+        action: execute_controlled_search_in_isolation
+        environment: isolation_zone
+        constraints:
+          - "ephemeral_session"
+          - "no_persistent_storage"
+      - id: snapshot_and_validate
+        action: generate_refpack_snapshot
+        outputs:
+          - "{artifacts_root}/{run_id}/evidence/{scope}.jsonl"
+          - "{artifacts_root}/{run_id}/provenance/{scope}-audit.json"
+        validations:
+          - "source_credibility_score >= 70"
+          - "cross_verify_with_internal_refs"
+          - "sanitize_for_pii"
+      - id: import_to_closed_zone
+        action: one_way_import_to_closed_zone
+        constraints:
+          - "freeze_as_immutable"
+          - "sign_with_approver_key"
+          - "log_to_provenance"
+    error_handling:
+      on_failure: reject_and_notify_approvers
+      max_retries: 1

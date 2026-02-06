@@ -1,0 +1,93 @@
+{
+  "gl": {
+    "layer": "GL60-80",
+    "semantic": "research-loop.workflow-run",
+    "version": "1.0.0"
+  },
+  "schema_version": "2020-12",
+  "type": "object",
+  "required": [
+    "run_id",
+    "workflow_id",
+    "created_at",
+    "team_tag",
+    "actor",
+    "stages",
+    "artifacts",
+    "summary"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^RUN-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{4}$"
+    },
+    "workflow_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "team_tag": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "ok", "blocked", "error"] },
+          "gate": { "type": "string" },
+          "started_at": { "type": "string" },
+          "completed_at": { "type": "string" },
+          "outputs": { "type": "array", "items": { "type": "string" } },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "decision"],
+        "properties": {
+          "id": { "type": "string" },
+          "decision": { "type": "string", "enum": ["approved", "rejected", "skipped"] },
+          "approvers": { "type": "array", "items": { "type": "string" } },
+          "decision_at": { "type": "string" }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "required": ["intake", "gap_list", "synthesis"],
+      "properties": {
+        "intake": { "type": "string" },
+        "gap_list": { "type": "string" },
+        "synthesis": { "type": "string" },
+        "outputs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["scope", "status"],
+      "properties": {
+        "scope": { "type": "string" },
+        "status": { "type": "string", "enum": ["pass", "blocked"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "references": {
+      "type": "object",
+      "properties": {
+        "ref_ids": { "type": "array", "items": { "type": "string" } },
+        "spec_ids": { "type": "array", "items": { "type": "string" } },
+        "rule_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}
