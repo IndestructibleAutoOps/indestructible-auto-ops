@@ -318,12 +318,19 @@ class DomainFilter:
         }
 
     def export_rules(self) -> Dict[str, Any]:
-        """導出規則"""
+        """導出規則
+
+        注意：為避免在日誌或輸出中洩露敏感配置信息，此導出結果
+        不再包含具體的可信/黑名單域名列表，而是僅提供彙總信息。
+        """
         return {
             "version": "1.0.0",
             "timestamp": datetime.now(timezone.utc).isoformat(),
-            "trusted_domains": self.trusted_domains,
-            "blocked_domains": list(self.blocked_domains),
+            # 不導出具體域名列表以避免敏感信息明文暴露
+            "trusted_domains_count": len(self.trusted_domains),
+            "blocked_domains_count": len(self.blocked_domains),
+            "trusted_domains_exported": False,
+            "blocked_domains_exported": False,
             "suspicious_patterns": self.suspicious_patterns,
             "rules": [
                 {
