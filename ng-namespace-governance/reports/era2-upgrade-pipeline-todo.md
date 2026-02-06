@@ -30,7 +30,7 @@ All executions must be built on semantic closure + governance closure + GLCM ver
 
 ### Step 1: Semanticizer (Language Root Anchor) ✅ PASSED
 
-**Command**: `python ecosystem/era2_upgrade_exec.py --step 1`
+**Command**: `python ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py --step 1`
 
 **Expected Outputs**:
 - ✅ /workspace/canonical_semantic.json

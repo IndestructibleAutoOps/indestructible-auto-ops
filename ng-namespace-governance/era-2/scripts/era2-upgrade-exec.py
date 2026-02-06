@@ -8,7 +8,7 @@ in the ecosystem, adapting to their interfaces while maintaining the proper
 sequencing and validation required by the GL Unified Charter.
 
 Usage:
-    python ecosystem/era2_upgrade_exec.py [--step 1|2|3|4|5|6] [--verbose] [--force]
+    python ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py [--step 1|2|3|4|5|6] [--verbose] [--force]
 
 GL Level: GL50 (Indestructible Kernel)
 Era: Era-2 (Governance Closure)

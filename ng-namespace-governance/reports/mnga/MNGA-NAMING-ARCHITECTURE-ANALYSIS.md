@@ -224,8 +224,8 @@ python ecosystem/enforce.py --audit
 
 ## 附錄 B: 相關文件
 
-- `ecosystem/governance/naming-conventions.yaml` - 命名規範定義
-- `ecosystem/enforcers/naming_enforcer.py` - 命名檢查器
+- `ng-namespace-governance/specs/naming-conventions.yaml` - 命名規範定義
+- `ng-namespace-governance/tools/naming-enforcer.py` - 命名檢查器
 - `.github/workflows/naming-check.yaml` - CI 命名檢查
 
 ---

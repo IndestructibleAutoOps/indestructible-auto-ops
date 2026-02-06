@@ -246,8 +246,8 @@ gl-naming-ontology (核心)
 
 ## 📚 完整文件清單
 
-1. `ecosystem/registry/naming/gl-naming-contracts-registry.yaml` - 命名契約註冊表
-2. `ecosystem/registry/naming/GL_NAMING_CONTRACTS_REGISTRY_SUMMARY.md` - 完成報告
+1. `ng-namespace-governance/specs/gl-naming-registry/gl-naming-contracts-registry.yaml` - 命名契約註冊表
+2. `ng-namespace-governance/specs/gl-naming-registry/GL-NAMING-CONTRACTS-REGISTRY-SUMMARY.md` - 完成報告
 
 ---
 

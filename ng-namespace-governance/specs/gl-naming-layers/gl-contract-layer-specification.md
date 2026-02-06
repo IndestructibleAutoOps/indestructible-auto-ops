@@ -138,11 +138,11 @@ gl.spec.contract:
 ```yaml
 # 直接引用
 gl.spec.naming_ontology:
-  $ref: "ecosystem/contracts/naming-governance/gl-naming-ontology.yaml"
+  $ref: "ng-namespace-governance/specs/gl-naming-layers/gl-naming-ontology.yaml"
 
 # 版本引用
 gl.spec.naming_ontology.v1.0.0:
-  $ref: "ecosystem/contracts/naming-governance/gl-naming-ontology.yaml#v1.0.0"
+  $ref: "ng-namespace-governance/specs/gl-naming-layers/gl-naming-ontology.yaml#v1.0.0"
 
 # 命名空間引用
 gl.spec.platform:
