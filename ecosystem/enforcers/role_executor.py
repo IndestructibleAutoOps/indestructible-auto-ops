@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: role-execution
+# @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+#
 """
 MNGA Role Execution Layer - Role Executor
 Implements the complete role execution lifecycle for MNGA-L5.5

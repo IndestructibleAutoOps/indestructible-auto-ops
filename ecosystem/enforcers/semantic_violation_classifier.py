@@ -544,6 +544,11 @@ class GLSemanticViolationClassifier:
         }
 
 
+# Backward-compatible alias expected by some validators/tools.
+class SemanticViolationClassifier(GLSemanticViolationClassifier):
+    """Alias for `GLSemanticViolationClassifier`."""
+
+
 # ============================================================================
 # 測試和使用示例
 # ============================================================================
