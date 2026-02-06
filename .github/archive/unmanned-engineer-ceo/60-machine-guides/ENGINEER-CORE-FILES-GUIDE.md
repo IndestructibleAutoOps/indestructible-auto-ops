@@ -28,10 +28,10 @@
 | 8 | [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) | 99 項部署驗證清單 | 未完成即開部署造成回滾 |
 | 9 | [SYSTEM_DIAGNOSTICS.md](SYSTEM_DIAGNOSTICS.md) | 監控、告警、健康檢查程序 | 未啟動自我診斷腳本 |
 | 10 | [QUICK_START.production.md](QUICK_START.production.md) | 生產快速啟動（繁/英） | 沒有依序完成 5 分鐘檢查 |
-| 11 | [core/readme.md](core/readme.md) | 核心心智矩陣與 AI 流程 | 忽略安全鉤子導致測試失敗 |
-| 12 | [automation/readme.md](automation/readme.md) | 五骨架自主框架 | 未遵循骨架邊界導致 ROS/K8s 衝突 |
-| 13 | [services/readme.md](services/readme.md) | 代理與 MCP 服務 | 認證/授權流程遺漏 |
-| 14 | [infrastructure/readme.md](infrastructure/readme.md) | K8s、監控、Scaling 策略 | 忽略 HPA/VPA 配置 |
+| 11 | [core/README.md](core/README.md) | 核心心智矩陣與 AI 流程 | 忽略安全鉤子導致測試失敗 |
+| 12 | [automation/README.md](automation/README.md) | 五骨架自主框架 | 未遵循骨架邊界導致 ROS/K8s 衝突 |
+| 13 | [services/README.md](services/README.md) | 代理與 MCP 服務 | 認證/授權流程遺漏 |
+| 14 | [infrastructure/README.md](infrastructure/README.md) | K8s、監控、Scaling 策略 | 忽略 HPA/VPA 配置 |
 | 15 | [FINAL_DELIVERY_REPORT.md](FINAL_DELIVERY_REPORT.md) | 交付統計、後續任務 | 沒有回填交付紀錄，導致稽核缺口 |
 
 ---
@@ -132,12 +132,12 @@
 
 | 模組 | 檔案 | 重點 | 驗證 |
 | --- | --- | --- | --- |
-| 核心引擎 | [core/readme.md](core/readme.md) | 感知→推理→執行→證明四層架構 | `npm run test -w core/contract_service/contracts-L1/contracts` |
-| 自動化骨架 | [automation/readme.md](automation/readme.md) | 五骨架（架構穩定性、API 治理等） | `npm run dev:stack` |
-| 服務層 | [services/readme.md](services/readme.md) | Agents、MCP、API gateway | `npm run lint --workspaces --if-present services/*` |
-| 應用層 | [apps/readme.md](apps/readme.md) | React 18 + FastAPI 雙棧流程 | `npm run dev -w apps/web` + `pytest apps/web/backend` |
-| 基礎設施 | [infrastructure/readme.md](infrastructure/readme.md) | K8s manifests、監控、Scaling | `kubectl kustomize infrastructure/kubernetes` |
-| 工具層 | [tools/readme.md](tools/readme.md) | CLI、索引生成、驗證腳本 | `python tools/docs/validate_index.py --verbose` + `make all-kg` |
+| 核心引擎 | [core/README.md](core/README.md) | 感知→推理→執行→證明四層架構 | `npm run test -w core/contract_service/contracts-L1/contracts` |
+| 自動化骨架 | [automation/README.md](automation/README.md) | 五骨架（架構穩定性、API 治理等） | `npm run dev:stack` |
+| 服務層 | [services/README.md](services/README.md) | Agents、MCP、API gateway | `npm run lint --workspaces --if-present services/*` |
+| 應用層 | [apps/README.md](apps/README.md) | React 18 + FastAPI 雙棧流程 | `npm run dev -w apps/web` + `pytest apps/web/backend` |
+| 基礎設施 | [infrastructure/README.md](infrastructure/README.md) | K8s manifests、監控、Scaling | `kubectl kustomize infrastructure/kubernetes` |
+| 工具層 | [tools/README.md](tools/README.md) | CLI、索引生成、驗證腳本 | `python tools/docs/validate_index.py --verbose` + `make all-kg` |
 
 > **實務建議**：任何程式碼修改前，先閱讀對應模組 README 的「Guard Rails」章節，再決定要更新的配置或腳本。
 

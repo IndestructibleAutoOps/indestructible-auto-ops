@@ -182,7 +182,7 @@ export class StructureAnalyzer {
     if (rootFiles.includes('webpack.config.js') || rootFiles.includes('webpack.config.ts')) {
       tools.push('Webpack');
     }
-    if (rootFiles.includes('vite.config.js') || rootFiles.includes('vite-config.ts')) {
+    if (rootFiles.includes('vite.config.js') || rootFiles.includes('vite.config.ts')) {
       tools.push('Vite');
     }
     if (rootFiles.includes('rollup.config.js')) {
@@ -191,7 +191,7 @@ export class StructureAnalyzer {
     if (rootFiles.includes('tsconfig.json')) {
       tools.push('TypeScript Compiler');
     }
-    if (rootFiles.includes('babel-config.js') || rootFiles.includes('.babelrc')) {
+    if (rootFiles.includes('babel.config.js') || rootFiles.includes('.babelrc')) {
       tools.push('Babel');
     }
     if (rootFiles.includes('Dockerfile')) {
@@ -200,7 +200,7 @@ export class StructureAnalyzer {
     if (rootFiles.includes('docker-compose.yml')) {
       tools.push('Docker Compose');
     }
-    if (rootFiles.includes('makefile')) {
+    if (rootFiles.includes('Makefile')) {
       tools.push('Make');
     }
     if (rootFiles.includes('CMakeLists.txt')) {
@@ -320,7 +320,7 @@ export class StructureAnalyzer {
 
     const rootFiles = fs.readdirSync(this.repoPath);
 
-    if (rootFiles.includes('readme.md') || rootFiles.includes('README.txt')) {
+    if (rootFiles.includes('README.md') || rootFiles.includes('README.txt')) {
       docs.readmeExists = true;
     }
 
@@ -339,7 +339,7 @@ export class StructureAnalyzer {
     }
 
     if (docs.readmeExists) {
-      const readmePath = path.join(this.repoPath, 'readme.md');
+      const readmePath = path.join(this.repoPath, 'README.md');
       const content = fs.readFileSync(readmePath, 'utf-8').toLowerCase();
       
       if (content.includes('install') || content.includes('setup') || content.includes('getting started')) {
@@ -376,7 +376,7 @@ export class StructureAnalyzer {
     // Detect test frameworks
     const rootFiles = fs.readdirSync(this.repoPath);
 
-    if (rootFiles.includes('jest-config.js') || rootFiles.includes('jest.config.json') ||
+    if (rootFiles.includes('jest.config.js') || rootFiles.includes('jest.config.json') ||
         fs.existsSync(path.join(this.repoPath, '__tests__'))) {
       coverage.frameworks.push('Jest');
     }

@@ -41,7 +41,7 @@ ATCP (Architecture-to-Code Protocol) is a **mapping protocol** that transforms a
 ```yaml
 ENTER ARCHITECTURE_TO_CODE_MODE
 
-architecture_spec: ecosystem/governance/specs/backend-governance-responsibility.md
+architecture_spec: ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md
 target_layers: [Layer 1]
 mode: ONE_SHOT_INTEGRATION
 

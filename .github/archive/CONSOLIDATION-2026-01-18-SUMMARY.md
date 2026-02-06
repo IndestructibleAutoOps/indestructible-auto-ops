@@ -148,7 +148,7 @@ Performed comprehensive consolidation-level refactoring to reduce repository clu
 ## Active Files Remaining
 
 ### Root Directory (6 essential files)
-- `readme.md` - Main project documentation
+- `README.md` - Main project documentation
 - `README-MACHINE.md` - Governance framework for AI agents
 - `PROJECT_STATUS.md` - Current project status
 - `QUICKSTART.md` - Quick start guide
@@ -161,7 +161,7 @@ Performed comprehensive consolidation-level refactoring to reduce repository clu
 - `CHANGELOG.md` - Change log
 - `INDEX.md` - Index/navigation
 - `PROJECT_MEMORY.md` - Project memory
-- `readme.md` - Workspace README
+- `README.md` - Workspace README
 - `ROOT_ARCHITECTURE.md` - Root architecture
 - `ROOT_SPECS_GUIDE.md` - Root specifications guide
 - `todo.md` - Workspace tasks

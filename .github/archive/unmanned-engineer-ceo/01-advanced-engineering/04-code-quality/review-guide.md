@@ -31,7 +31,7 @@
 
 ## 清單 Checklist
 
-- [ ] CI/CD pipeline 綠燈（GitHub Actions + makefile）
+- [ ] CI/CD pipeline 綠燈（GitHub Actions + Makefile）
 - [ ] 靜態分析無錯誤
 - [ ] 測試覆蓋率 > team baseline
 - [ ] Logging/Tracing 符合 08-observability 標準

@@ -10,7 +10,7 @@
 
 ### Phase 1: 設計強制執行架構 ✅ (100%)
 
-1. **ecosystem/enforcers/architecture.md** ✅
+1. **ecosystem/enforcers/ARCHITECTURE.md** ✅
    - 完整的架構設計文檔
    - 組件圖和運作流程
    - 治理規範強制執行點定義

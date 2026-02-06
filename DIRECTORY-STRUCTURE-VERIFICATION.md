@@ -252,13 +252,13 @@ done
 
 | Document | Purpose | Status |
 |----------|---------|--------|
-| readme.md | Layer overview | ✅ 100% |
+| README.md | Layer overview | ✅ 100% |
 | ARCHITECTURE.md | Architecture description | ⏳ Pending |
 | RESPONSIBILITIES.md | Responsibility definition | ⏳ Pending |
 | API.md | API documentation (if applicable) | ⏳ Pending |
 
 **Current Status**:
-- ✅ All 8 layers have readme.md files
+- ✅ All 8 layers have README.md files
 - ⏳ Additional documentation can be added as needed
 
 ## Naming Convention Compliance
@@ -379,7 +379,7 @@ for dir in gl-*; do
 done
 
 # Check README files
-ls gl-*/readme.md
+ls gl-*/README.md
 
 # Verify boundary checker
 python3 gl-governance-compliance/scripts/boundary_checker.py --help

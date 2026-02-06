@@ -221,7 +221,7 @@ Please read [CONTRIBUTING.md](../../CONTRIBUTING.md) for details on our code of 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [license](../../license) file for details.
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
 
 ## 🔗 Links
 

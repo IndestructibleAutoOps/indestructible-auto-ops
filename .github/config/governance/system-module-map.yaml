@@ -123,7 +123,7 @@ standardized_subdirectory_framework:
         mandatory_level: "HIGH"
         purpose: "Module-specific documentation"
         contents:
-          - "readme.md"
+          - "README.md"
           - "API.md"
           - "DESIGN.md"
     recommended_directories:
@@ -136,7 +136,7 @@ standardized_subdirectory_framework:
   # Module skeleton template
   module_skeleton_template: |
     {module_name}/
-    ├── readme.md                 # Module entry documentation
+    ├── README.md                 # Module entry documentation
     ├── src/                      # 📝 Source Code [HIGH]
     │   ├── index.ts              # Entry point
     │   ├── types.ts              # Type definitions
@@ -148,7 +148,7 @@ standardized_subdirectory_framework:
     │   ├── e2e/                  # End-to-end tests
     │   └── fixtures/             # Test fixtures
     ├── docs/                     # 📚 Documentation [HIGH]
-    │   ├── readme.md             # Module overview
+    │   ├── README.md             # Module overview
     │   ├── API.md                # API reference
     │   └── DESIGN.md             # Design decisions
     └── config/                   # ⚙️ Configuration [MEDIUM-HIGH]
@@ -495,11 +495,11 @@ directory_categories:
       root_docs:
         description: "根目錄文件"
         files:
-          - "readme.md"
+          - "README.md"
           - "README.en.md"
           - "CONTRIBUTING.md"
-          - "security.md"
-          - "changelog.md"
+          - "SECURITY.md"
+          - "CHANGELOG.md"
           - "CODE_OF_CONDUCT.md"
 
   # ─────────────────────────────────────────────────────────────────────────
@@ -665,7 +665,7 @@ root_directory_guidelines:
   essential_root_files:
     description: "必須保留在根目錄的檔案"
     files:
-      - "readme.md"
+      - "README.md"
       - "README.en.md"
       - "package.json"
       - "package-lock.json"
@@ -676,7 +676,7 @@ root_directory_guidelines:
       - ".gitignore"
       - ".eslintrc.yaml"
       - ".prettierrc"
-      - "jest-config.js"
+      - "jest.config.js"
   
   documentation_to_consolidate:
     description: "應移至 docs/ 的文件"
@@ -692,7 +692,7 @@ root_directory_guidelines:
       - "PHASE1_VALIDATION_REPORT.md"
       - "PRODUCTION_READINESS.md"
       - "REPOSITORY_INTEGRATION_ASSESSMENT.md"
-      - "ROOT_readme.md"
+      - "ROOT_README.md"
       - "SECURITY_SUMMARY.md"
     target: "docs/"
   

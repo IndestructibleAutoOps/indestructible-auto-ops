@@ -18,7 +18,7 @@ gl-enterprise-architecture/
 │   │   ├── gl-unified-naming-charter.yaml
 │   │   └── naming-governance/
 │   ├── IMPLEMENTATION_SUMMARY.md
-│   ├── readme.md
+│   ├── README.md
 │   ├── artifacts/
 │   ├── contracts/
 │   ├── governance/

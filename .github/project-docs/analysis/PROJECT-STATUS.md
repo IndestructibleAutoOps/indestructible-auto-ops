@@ -39,7 +39,7 @@ Location: `docs/repository-understanding/`
 - Event-driven automation (zero manual intervention)
 - Phase 1-4 complete (Scanner, Checker, Visualizer, Learning)
 - Real-time monitoring active
-- Documentation: See `docs/repository-understanding/readme.md`
+- Documentation: See `docs/repository-understanding/README.md`
 
 #### Code Organization
 - Root directory: Machine-native FHS-compliant structure
@@ -79,7 +79,7 @@ This consolidation follows machine-native principles:
 ## Documentation Quick Reference
 
 ### Essential Documentation
-- **Project Overview**: `readme.md` - High-level project introduction
+- **Project Overview**: `README.md` - High-level project introduction
 - **Quick Start**: `QUICKSTART.md` - Get started in 3 steps
 - **Current Status**: This file (`PROJECT_STATUS.md`)
 - **Architecture**: `workspace/ARCHITECTURE.md` - System architecture
@@ -127,6 +127,6 @@ See `todo.md` for current action items and priorities.
 
 ## Historical Archive
 
-All historical completion reports, analyses, and summaries have been consolidated into machine-native compliant archives. See `archive/consolidated-reports/readme.md` for details.
+All historical completion reports, analyses, and summaries have been consolidated into machine-native compliant archives. See `archive/consolidated-reports/README.md` for details.
 
 **Audit Trail**: All changes maintain full git history for auditability and verification.

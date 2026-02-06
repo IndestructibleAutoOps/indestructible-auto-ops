@@ -22,8 +22,8 @@ CONTROLPLANE_CONFIG_FILES=(
     "root.provenance.yaml"
     "root.integrity.yaml"
     "root.naming-policy.yaml"
-    "root-devices.map"
-    "root-kernel.map"
+    "root.devices.map"
+    "root.kernel.map"
 )
 
 # 定義需要移到 controlplane/specifications/ 的文件

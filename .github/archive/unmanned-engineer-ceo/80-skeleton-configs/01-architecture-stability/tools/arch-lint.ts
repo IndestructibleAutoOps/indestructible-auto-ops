@@ -177,13 +177,13 @@ class ArchitectureLinter {
       const servicePath = path.join('services', service.name)
 
       if (requireReadme) {
-        const readmePath = path.join(servicePath, 'readme.md')
+        const readmePath = path.join(servicePath, 'README.md')
         if (!fs.existsSync(readmePath)) {
           this.violations.push({
             rule: 'file-organization',
             severity: 'warning',
             file: servicePath,
-            message: 'Missing readme.md'
+            message: 'Missing README.md'
           })
         }
       }

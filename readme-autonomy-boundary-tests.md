@@ -169,7 +169,7 @@ tests/gl/autonomy-boundary/{scenario}/
 │   ├── test_seal.json
 │   ├── injection/injection_trace.json
 │   └── closure_verification_report.json
-└── readme.md
+└── README.md
 ```
 
 ### 4. MNGA Integration Points

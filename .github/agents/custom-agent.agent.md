@@ -23,6 +23,6 @@ You are a specialist in creating and maintaining custom agents for the Machine N
 
 ## Key References
 
-- `.github/config/agents/readme.md` - Agent configuration guide
+- `.github/config/agents/README.md` - Agent configuration guide
 - `.github/config/agents/profiles/` - Agent profile definitions
 - `.github/scripts/agent-selector.py` - Agent selection logic

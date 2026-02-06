@@ -1,0 +1,79 @@
+Running GL governance pre-commit validation...
+No relevant files staged. Skipping GL validation.
+✅ Governance event logged to event stream
+[main 0664ce89] chore: add latest governance validation events after push
+ 3 files changed, 15 insertions(+)
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769603015070",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:23:35.070Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:23:34.851Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769603017019",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:23:37.019Z",
+      "source": "governance/gl_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:23:37.009Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit 0664ce8.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      [EXTERNAL_URL_REMOVED]        
+remote: 
+To [EXTERNAL_URL_REMOVED]
+   70fc69fb..0664ce89  main -> main

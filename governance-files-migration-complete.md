@@ -46,7 +46,7 @@
 
 #### 保留在根目錄的核心文檔 (11 個)
 ```
-readme.md
+README.md
 CONTRIBUTING.md
 DEVELOPMENT_STRATEGY.md
 DEPLOYMENT_GUIDE.md

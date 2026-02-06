@@ -177,8 +177,8 @@
 
 #### 3.1 Systematic README Duplication Removal
 ```
-方法: MD5 hash 驗證找出完全相同的 readme.md 檔案
-移除: 23 個重複的 readme.md 檔案
+方法: MD5 hash 驗證找出完全相同的 README.md 檔案
+移除: 23 個重複的 README.md 檔案
 規範來源優先級:
   1. workspace/src/ > workspace/teams/holy-grail/
   2. workspace/mcp/ > workspace/teams/holy-grail/dissolved-assets/
@@ -187,7 +187,7 @@
 ```
 
 **影響評估**:
-- 移除檔案: 23 個 readme.md
+- 移除檔案: 23 個 README.md
 - 語意損失: 無 (完全重複，hash 驗證)
 - 破壞性: 無 (保留規範來源)
 - GL 合規: ✅ GL90-99 元規範層 - 單一文檔來源
@@ -196,24 +196,24 @@
 **移除模式分類**:
 
 1. **Holy-Grail 團隊鏡像** (14 檔案):
-   - agents/services/auto-repair/readme.md
-   - agents/services/readme.md
-   - agents/ai-experts/examples/readme.md
-   - agents/ai-experts/scripts/readme.md
-   - automation/readme.md
+   - agents/services/auto-repair/README.md
+   - agents/services/README.md
+   - agents/ai-experts/examples/README.md
+   - agents/ai-experts/scripts/README.md
+   - automation/README.md
    - automation/architect/* (7 個檔案)
-   - dissolved-assets/readme.md
-   - dissolved-assets/servers/tools/readme.md
+   - dissolved-assets/README.md
+   - dissolved-assets/servers/tools/README.md
 
 2. **架構重複** (5 檔案):
    - src/automation/architect/scenarios/* (3 個，與 docs/ 重複)
    - src/automation/architect/frameworks-popular/ (與 frameworks/popular/ 重複)
 
 3. **配置重複** (4 檔案):
-   - src/contracts/readme.md (保留 src/core/contracts/external/)
-   - src/autonomous/infrastructure/config/integrations/readme.md (保留 config/integrations/)
-   - src/autonomous/agents/migration/readme.md (保留 scripts/ops/migration/)
-   - docs/validation/evidence-chains/readme.md (保留 config/dev/validation-system/evidence-chains/)
+   - src/contracts/README.md (保留 src/core/contracts/external/)
+   - src/autonomous/infrastructure/config/integrations/README.md (保留 config/integrations/)
+   - src/autonomous/agents/migration/README.md (保留 scripts/ops/migration/)
+   - docs/validation/evidence-chains/README.md (保留 config/dev/validation-system/evidence-chains/)
 
 ### Phase 4: 冗餘目錄結構移除
 
@@ -299,7 +299,7 @@
 
 以下項目經評估後保留，原因如下：
 
-1. **readme.md vs README-MACHINE.md**
+1. **README.md vs README-MACHINE.md**
    - 保留兩者
    - 原因: 服務不同目的 (人類 vs AI)
    - 驗證: CI/CD 有明確引用

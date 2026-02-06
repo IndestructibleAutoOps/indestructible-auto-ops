@@ -17,8 +17,8 @@ git mv extensions gl-extended
 # 更新 INDEX.yaml
 sed -i 's|extensions/|gl-extended/|g' workspace/governance/gl-architecture/INDEX.yaml
 
-# 更新 readme.md
-sed -i 's|extensions/|gl-extended/|g' workspace/governance/gl-architecture/readme.md
+# 更新 README.md
+sed -i 's|extensions/|gl-extended/|g' workspace/governance/gl-architecture/README.md
 
 # 更新 governance-manifest.yaml
 sed -i 's|extensions/|gl-extended/|g' governance-manifest.yaml
@@ -57,7 +57,7 @@ def verify_gl_refactoring():
         assert os.path.exists(layer_path), f"{layer} must exist in gl-extended/"
         assert os.path.exists(f"{layer_path}/DEFINITION.yaml"), f"{layer}/DEFINITION.yaml must exist"
         assert os.path.exists(f"{layer_path}/EXEC_PROMPTS.md"), f"{layer}/EXEC_PROMPTS.md must exist"
-        assert os.path.exists(f"{layer_path}/readme.md"), f"{layer}/readme.md must exist"
+        assert os.path.exists(f"{layer_path}/README.md"), f"{layer}/README.md must exist"
     
     print("✅ GL 重構驗證完成")
     return True

@@ -152,26 +152,26 @@ machine-native-ops/
 ├── gl-governance-compliance/      # GL60-80: Governance Compliance
 ├── gl-extension-services/          # GL81-83: Extension Services
 ├── gl-meta-specifications/         # GL90-99: Meta Specifications
-└── readme.md
+└── README.md
 ```
 
 ## Documentation
 
 ### Core Documentation
-- [One-Stop Architecture and Specification Hub](one-stop-architecture-specs.md)
+- [One-Stop Architecture and Specification Hub](ONE-STOP-ARCHITECTURE-SPECS.md)
 - [Directory Boundary Specification](gl-enterprise-architecture/governance/directory-boundary-specification.md)
 - [Boundary Reference Matrix](gl-enterprise-architecture/governance/boundary-reference-matrix.md)
 - [Boundary Enforcement Rules](gl-enterprise-architecture/governance/boundary-enforcement-rules.md)
 
 ### Layer Documentation
-- [Enterprise Architecture](gl-enterprise-architecture/readme.md)
-- [Platform Services](gl-platform-services/readme.md)
-- [Data Processing](gl-data-processing/readme.md)
-- [Execution Runtime](gl-execution-runtime/readme.md)
-- [Observability](gl-observability/readme.md)
-- [Governance Compliance](gl-governance-compliance/readme.md)
-- [Extension Services](gl-extension-services/readme.md)
-- [Meta Specifications](gl-meta-specifications/readme.md)
+- [Enterprise Architecture](gl-enterprise-architecture/README.md)
+- [Platform Services](gl-platform-services/README.md)
+- [Data Processing](gl-data-processing/README.md)
+- [Execution Runtime](gl-execution-runtime/README.md)
+- [Observability](gl-observability/README.md)
+- [Governance Compliance](gl-governance-compliance/README.md)
+- [Extension Services](gl-extension-services/README.md)
+- [Meta Specifications](gl-meta-specifications/README.md)
 
 ## Development Guidelines
 

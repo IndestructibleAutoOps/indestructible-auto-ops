@@ -136,7 +136,7 @@ root_directory_restructuring_plan:
       - name: "docs/"
         mandatory_level: "HIGH"
         purpose: "Module-specific documentation"
-        contents: ["readme.md", "API.md", "DESIGN.md"]
+        contents: ["README.md", "API.md", "DESIGN.md"]
     recommended_directories:
       - name: "config/"
         mandatory_level: "MEDIUM-HIGH"
@@ -361,8 +361,8 @@ root_files_consolidation:
       target: "docs/operations/PRODUCTION_READINESS.md"
     - source: "REPOSITORY_INTEGRATION_ASSESSMENT.md"
       target: "docs/architecture/REPOSITORY_INTEGRATION_ASSESSMENT.md"
-    - source: "ROOT_readme.md"
-      target: "docs/ROOT_readme.md"
+    - source: "ROOT_README.md"
+      target: "docs/ROOT_README.md"
     - source: "SECURITY_SUMMARY.md"
       target: "docs/security/SECURITY_SUMMARY.md"
     - source: "DeploymentGuide.txt"
@@ -389,11 +389,11 @@ root_files_consolidation:
 
   # Essential root files (keep in root)
   keep_in_root:
-    - "readme.md"
+    - "README.md"
     - "README.en.md"
     - "CONTRIBUTING.md"
-    - "security.md"
-    - "changelog.md"
+    - "SECURITY.md"
+    - "CHANGELOG.md"
     - "CODE_OF_CONDUCT.md"
     - "package.json"
     - "package-lock.json"
@@ -405,7 +405,7 @@ root_files_consolidation:
     - ".gitignore"
     - ".eslintrc.yaml"
     - ".prettierrc"
-    - "jest-config.js"
+    - "jest.config.js"
     - "nginx.conf"
     - "deploy.sh"
     - "automation-entry.sh"

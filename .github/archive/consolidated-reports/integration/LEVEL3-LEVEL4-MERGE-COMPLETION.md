@@ -59,7 +59,7 @@ ns-root/namespaces-mcp/
 - `docs/reports/` - 31 個報告文件
 
 **level3 保留的獨有內容:**
-- `readme.md`
+- `README.md`
 - `dag/`, `observability/`, `security/` 等子目錄
 - 完整的 engines 子目錄結構
 
@@ -70,7 +70,7 @@ ns-root/namespaces-mcp/
 - `.prettierrc.json` - Prettier 配置
 
 **level4 保留的獨有內容:**
-- `readme.md`
+- `README.md`
 - `k8s/` - Kubernetes 配置
 - `src/autonomy/` - 自主性相關代碼
 

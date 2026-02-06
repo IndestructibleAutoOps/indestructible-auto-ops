@@ -32,7 +32,7 @@ class NamingPolicyRemediator:
     # Files/directories to skip
     SKIP_PATTERNS = [
         r'^README\.md$',
-        r'^license$',
+        r'^LICENSE$',
         r'^CHANGELOG\.md$',
         r'^CONTRIBUTING\.md$',
         r'^CODE_OF_CONDUCT\.md$',
@@ -242,11 +242,11 @@ class SecurityPolicyRemediator:
         """Scan for security policy gaps."""
         self.gaps = []
         # Check for SECURITY.md
-        security_md = self.root_path / 'security.md'
+        security_md = self.root_path / 'SECURITY.md'
         if not security_md.exists():
             self.gaps.append({
                 'type': 'missing_security_policy',
-                'file': 'security.md',
+                'file': 'SECURITY.md',
                 'severity': 'high'
             })
         # Check for supply chain documentation

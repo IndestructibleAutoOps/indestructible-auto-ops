@@ -70,7 +70,7 @@ Located in `controlplane/baseline/modules/`:
 
 #### Registry & Documentation
 - `REGISTRY.yaml` - Central module registry with dependency graph and statistics
-- `readme.md` - Comprehensive module documentation
+- `README.md` - Comprehensive module documentation
 - `module-manifest.schema.json` - JSON Schema for module manifest validation
 
 **Statistics**:
@@ -92,7 +92,7 @@ Located in `controlplane/governance/policies/`:
 
 #### Registry & Documentation
 - `POLICY_MANIFEST.yaml` - Central policy registry with metadata and enforcement rules
-- `readme.md` - Policy framework documentation and usage guide
+- `README.md` - Policy framework documentation and usage guide
 
 **Policy Coverage**:
 - Naming: Medium severity, automatic remediation
@@ -254,12 +254,12 @@ controlplane/
   │   ├── 04-autonomous/module-manifest.yaml
   │   ├── 05-observability/module-manifest.yaml
   │   ├── 06-security/module-manifest.yaml
-  │   ├── readme.md                      # New
+  │   ├── README.md                      # New
   │   ├── REGISTRY.yaml                  # New
   │   └── module-manifest.schema.json    # New
   └── governance/policies/
       ├── POLICY_MANIFEST.yaml           # New
-      ├── readme.md                      # New
+      ├── README.md                      # New
       ├── autonomy.rego                  # New
       ├── naming.rego                    # New
       ├── security.rego                  # New

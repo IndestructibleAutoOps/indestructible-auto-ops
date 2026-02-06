@@ -301,7 +301,7 @@ def main():
     print("📊 演示查詢功能")
     print("="*60)
     # 1. 查詢檔案上下文
-    context = visualizer.query_file_context('machine-native-ops/readme.md')
+    context = visualizer.query_file_context('machine-native-ops/README.md')
     visualizer.print_file_context(context)
     # 2. 查詢目錄結構
     structure = visualizer.query_directory_structure('machine-native-ops')

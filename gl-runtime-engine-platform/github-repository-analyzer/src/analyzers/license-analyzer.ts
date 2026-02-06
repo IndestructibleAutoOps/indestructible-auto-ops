@@ -116,7 +116,7 @@ export class LicenseAnalyzer {
   }
 
   private detectProjectLicense(repoPath: string): LicenseInfo {
-    const licenseFiles = ['license', 'license.txt', 'license.md', 'license-MIT', 'COPYING'];
+    const licenseFiles = ['LICENSE', 'LICENSE.txt', 'LICENSE.md', 'LICENSE-MIT', 'COPYING'];
     const licenseFile = licenseFiles.find(f => fs.existsSync(path.join(repoPath, f)));
 
     if (!licenseFile) {
@@ -261,12 +261,12 @@ export class LicenseAnalyzer {
   private checkMissingLicenses(repoPath: string): string[] {
     const missing: string[] = [];
 
-    // Check for license file
-    const licenseFiles = ['license', 'license.txt', 'license.md', 'COPYING'];
+    // Check for LICENSE file
+    const licenseFiles = ['LICENSE', 'LICENSE.txt', 'LICENSE.md', 'COPYING'];
     const hasLicense = licenseFiles.some(f => fs.existsSync(path.join(repoPath, f)));
 
     if (!hasLicense) {
-      missing.push('Project license file');
+      missing.push('Project LICENSE file');
     }
 
     // Check for license in package.json
@@ -335,7 +335,7 @@ export class LicenseAnalyzer {
       recommendations.push({
         category: 'licensing',
         priority: 'critical',
-        description: 'Add a license file to clearly define usage terms',
+        description: 'Add a LICENSE file to clearly define usage terms',
         actionable: true,
         estimatedEffort: '30 minutes'
       });

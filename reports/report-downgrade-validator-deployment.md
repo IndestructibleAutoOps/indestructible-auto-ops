@@ -19,7 +19,7 @@
 - **合規性評分:** 50.0/100 (已註冊，有小的違規)
 
 ### 2. 完整文檔
-- **文件:** `ecosystem/governance/report-downgrade-validator-guide.md`
+- **文件:** `ecosystem/governance/REPORT-DOWNGRADE-VALIDATOR-GUIDE.md`
 - **內容:** 完整的使用指南、實際案例、故障排除、CI/CD 集成
 - **狀態:** ✅ 已創建
 
@@ -297,8 +297,8 @@ jobs:
 
 ## 📚 相關文檔
 
-- [REPORT-DOWNGRADE-VALIDATOR-GUIDE.md](../ecosystem/governance/report-downgrade-validator-guide.md) - 完整使用指南
-- [AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md](../ecosystem/governance/automated-compliance-verification-system.md) - 自動化合規性驗證系統
+- [REPORT-DOWNGRADE-VALIDATOR-GUIDE.md](../ecosystem/governance/REPORT-DOWNGRADE-VALIDATOR-GUIDE.md) - 完整使用指南
+- [AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md](../ecosystem/governance/AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md) - 自動化合規性驗證系統
 - [reporting-governance-spec.md](../ecosystem/governance/reporting-governance-spec.md) - 報告治理規範
 - [tools-registry.yaml](../ecosystem/governance/tools-registry.yaml) - 工具註冊表
 

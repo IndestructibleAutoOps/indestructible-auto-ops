@@ -513,11 +513,11 @@ opa check controlplane/governance/policies/*.rego
 1. `docs/AUTONOMY_CLASSIFICATION_FRAMEWORK.md` - L1-L5 framework
 2. `docs/LANGUAGE_GOVERNANCE_DASHBOARD.md` - Current metrics
 3. `docs/dag-visualization/DAG_VISUALIZATION.md` - Dependencies
-4. `controlplane/baseline/modules/readme.md` - Module system
-5. `controlplane/governance/policies/readme.md` - Policy framework
+4. `controlplane/baseline/modules/README.md` - Module system
+5. `controlplane/governance/policies/README.md` - Policy framework
 
 ### Scripts Documentation
-1. `scripts/readme.md` - All automation scripts
+1. `scripts/README.md` - All automation scripts
 2. Individual script help: `python3 scripts/script-name.py --help`
 
 ---
@@ -553,7 +553,7 @@ GUIDANCE:
 FILES TO REVIEW FIRST:
 - docs/DOCUMENTATION_PORTAL.md (entry point)
 - HANDOFF_NEXT_PR.md (this document)
-- scripts/readme.md (tools reference)
+- scripts/README.md (tools reference)
 
 VALIDATION COMMANDS:
 ./scripts/validate-infrastructure.sh
@@ -595,7 +595,7 @@ Start with Priority 1 tasks and validate incrementally.
 ### Questions?
 - Review `docs/DOCUMENTATION_PORTAL.md` first
 - Check `docs/PHASE1_INTEGRATION_GUIDE.md` troubleshooting section
-- Read relevant script documentation in `scripts/readme.md`
+- Read relevant script documentation in `scripts/README.md`
 
 ### Making Changes?
 1. Create feature branch from current PR branch

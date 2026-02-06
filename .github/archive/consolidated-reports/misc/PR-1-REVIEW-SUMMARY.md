@@ -261,7 +261,7 @@ detect-secrets scan
 ## 🔗 相關資源
 
 - **原始 PR**: [Pull Request #1]([EXTERNAL_URL_REMOVED])
-- **專案 README**: [readme.md](./readme.md)
+- **專案 README**: [README.md](./README.md)
 - **架構文件**: `workspace/docs/`
 
 ---

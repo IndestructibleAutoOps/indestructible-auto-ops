@@ -11,7 +11,7 @@
 
 ```
 1. 開啟此目錄
-2. 讀取 readme.md 了解系統
+2. 讀取 README.md 了解系統
 3. 查看 skeletons-index.yaml 找到相關骨架
 4. 進入骨架目錄
 5. 按順序讀取 5 個檔案
@@ -137,7 +137,7 @@ A：是的。如果某項不適用，請明確說明原因並記錄。
 
 ## 🔗 相關資源
 
-- 主項目 README: `../../../readme.md`
+- 主項目 README: `../../../README.md`
 - 工程師指南: `../../../ENGINEER_CORE_FILES_GUIDE.md`
 - 部署指南: `../../../DEPLOYMENT_MANIFEST.md`
 - 系統診斷: `../../../SYSTEM_DIAGNOSTICS.md`

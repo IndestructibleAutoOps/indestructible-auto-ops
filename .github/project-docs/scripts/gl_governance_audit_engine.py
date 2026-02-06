@@ -83,15 +83,15 @@ REQUIRED_METADATA = ['version', 'status', 'author', 'last_updated']
 # Best practice directory structure
 BEST_PRACTICE_STRUCTURE = {
     'engine': {
-        'core': ['index.ts', 'interfaces-d.ts'],
-        'parser': ['yaml-parser.ts', 'json-passthrough.ts', 'anchor-resolver.ts'],
-        'loader': ['fs-loader.ts', 'git_loader.ts', 'merge_index.ts'],
-        'normalizer': ['defaults-applier.ts', 'env_merger.ts', 'module-defaults.ts'],
-        'validator': ['schema-validator.ts', 'module_validator.ts', 'error_reporter.ts'],
+        'core': ['index.ts', 'interfaces.d.ts'],
+        'parser': ['yaml_parser.ts', 'json_passthrough.ts', 'anchor_resolver.ts'],
+        'loader': ['fs_loader.ts', 'git_loader.ts', 'merge_index.ts'],
+        'normalizer': ['defaults_applier.ts', 'env_merger.ts', 'module_defaults.ts'],
+        'validator': ['schema_validator.ts', 'module_validator.ts', 'error_reporter.ts'],
         'renderer': ['template_engine.ts', 'module_mapper.ts', 'artifact_writer.ts'],
         'executor': ['local_executor.ts', 'remote_executor.ts', 'rollback.ts'],
-        'gl_platform_universe.governance': ['gl_engine.ts', 'rule_evaluator.ts', 'events-writer.ts', 'anchor-resolver.ts'],
-        'artifacts': ['artifact_manager.ts', 'evidence_chain.ts', 'manifest-generator.ts'],
+        'gl_platform_universe.governance': ['gl_engine.ts', 'rule_evaluator.ts', 'events_writer.ts', 'anchor_resolver.ts'],
+        'artifacts': ['artifact_manager.ts', 'evidence_chain.ts', 'manifest_generator.ts'],
         'tests': {},
         '.gl': ['manifest.yaml', 'semantic-anchors.yaml', 'evidence-chain.json']
     }
@@ -380,7 +380,7 @@ class ETLPipeline:
         
         # 6. README 檢測 (針對目錄)
         parent_dir = extracted_data['parent_dir']
-        readme_path = self.base_path / parent_dir / 'readme.md'
+        readme_path = self.base_path / parent_dir / 'README.md'
         if not readme_path.exists() and ext == '.ts' and 'test' not in file_path:
             issues.append(Issue(
                 issue_id=f"ISS-{len(issues)+1:04d}",
@@ -388,8 +388,8 @@ class ETLPipeline:
                 issue_type=IssueType.DOCUMENTATION_MISSING,
                 severity=Severity.LOW,
                 title="目錄缺少 README",
-                description=f"目錄 {parent_dir} 缺少 readme.md",
-                suggestion=f"在 {parent_dir} 目錄添加 readme.md 文件",
+                description=f"目錄 {parent_dir} 缺少 README.md",
+                suggestion=f"在 {parent_dir} 目錄添加 README.md 文件",
                 auto_fixable=False
             ))
         
@@ -634,23 +634,23 @@ class GovernanceAuditEngine:
             'engine': {
                 'core': {
                     'description': '核心入口和介面定義',
-                    'files': ['index.ts', 'interfaces-d.ts', 'interfaces-fix-d.ts']
+                    'files': ['index.ts', 'interfaces.d.ts', 'interfaces-fix.d.ts']
                 },
                 'parser': {
                     'description': '解析器模組',
-                    'files': ['yaml-parser.ts', 'json-passthrough.ts', 'anchor-resolver.ts']
+                    'files': ['yaml_parser.ts', 'json_passthrough.ts', 'anchor_resolver.ts']
                 },
                 'loader': {
                     'description': '載入器模組',
-                    'files': ['fs-loader.ts', 'git_loader.ts', 'merge_index.ts']
+                    'files': ['fs_loader.ts', 'git_loader.ts', 'merge_index.ts']
                 },
                 'normalizer': {
                     'description': '正規化模組',
-                    'files': ['defaults-applier.ts', 'env_merger.ts', 'module-defaults.ts']
+                    'files': ['defaults_applier.ts', 'env_merger.ts', 'module_defaults.ts']
                 },
                 'validator': {
                     'description': '驗證器模組',
-                    'files': ['schema-validator.ts', 'module_validator.ts', 'error_reporter.ts']
+                    'files': ['schema_validator.ts', 'module_validator.ts', 'error_reporter.ts']
                 },
                 'renderer': {
                     'description': '渲染器模組',
@@ -662,11 +662,11 @@ class GovernanceAuditEngine:
                 },
                 'gl_platform_universe.governance': {
                     'description': '治理模組',
-                    'files': ['gl_engine.ts', 'rule_evaluator.ts', 'events-writer.ts', 'anchor-resolver.ts']
+                    'files': ['gl_engine.ts', 'rule_evaluator.ts', 'events_writer.ts', 'anchor_resolver.ts']
                 },
                 'artifacts': {
                     'description': '產出物管理',
-                    'files': ['artifact_manager.ts', 'evidence_chain.ts', 'manifest-generator.ts']
+                    'files': ['artifact_manager.ts', 'evidence_chain.ts', 'manifest_generator.ts']
                 },
                 'tests': {
                     'description': '測試檔案',

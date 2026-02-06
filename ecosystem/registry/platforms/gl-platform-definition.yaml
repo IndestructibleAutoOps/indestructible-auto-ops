@@ -265,7 +265,7 @@ spec:
   # 6. 平台的治理驗證（Platform Compliance）
   complianceChecks:
     - check: "naming-validation"
-      tool: "gl-platforms-validator.rego"
+      tool: "gl-platforms.validator.rego"
       description: "驗證命名符合 gl.{domain}.{capability}-platform 規範"
 
     - check: "structure-validation"

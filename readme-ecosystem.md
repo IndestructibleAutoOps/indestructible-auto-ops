@@ -228,10 +228,10 @@ It can support 5-10 years of technology evolution.
 ## 📚 Documentation
 
 - [Ecosystem Root Layer Definition](ECOSYSTEM_ROOT_LAYER_DEFINITION.md)
-- [ecosystem-cloud Module](ecosystem/ecosystem-cloud/readme.md)
-- [platform-cloud Module](ecosystem/platform-cloud/readme.md)
-- [Governance Layer](ecosystem/governance/readme.md)
-- [Platform Templates](ecosystem/platform-templates/readme.md)
+- [ecosystem-cloud Module](ecosystem/ecosystem-cloud/README.md)
+- [platform-cloud Module](ecosystem/platform-cloud/README.md)
+- [Governance Layer](ecosystem/governance/README.md)
+- [Platform Templates](ecosystem/platform-templates/README.md)
 
 ---
 
@@ -243,7 +243,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [license](license) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

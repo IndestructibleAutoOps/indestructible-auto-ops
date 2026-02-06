@@ -209,7 +209,7 @@ grep -c "GL" .github/copilot-instructions.md
 - [PEP 8 Style Guide]([EXTERNAL_URL_REMOVED])
 
 ### Repository Documents
-- [readme.md](../readme.md)
+- [README.md](../README.md)
 - [CONTRIBUTING.md](../CONTRIBUTING.md)
 - [governance-manifest.yaml](../governance-manifest.yaml)
 - [DEVELOPER_GUIDELINES.md](../docs/DEVELOPER_GUIDELINES.md)

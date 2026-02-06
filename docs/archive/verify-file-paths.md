@@ -21,7 +21,7 @@
 | gl-platform-definition | ecosystem/registry/platforms/gl-platform-definition.yaml | ✅ | 存在 |
 | gl-platform-index | ecosystem/registry/platforms/gl-platforms.index.yaml | ✅ | 存在 |
 | gl-placement-rules | ecosystem/registry/platforms/gl-platforms.placement-rules.yaml | ✅ | 存在 |
-| gl-platform-validator | ecosystem/registry/platforms/gl-platforms-validator.rego | ✅ | 存在 |
+| gl-platform-validator | ecosystem/registry/platforms/gl-platforms.validator.rego | ✅ | 存在 |
 | gl-platform-lifecycle | ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml | ✅ | 存在 |
 | gl-validation-rules | ecosystem/contracts/validation/gl-validation-rules.yaml | ❌ | 不存在 |
 | gl-extension-points | ecosystem/contracts/extensions/gl-extension-points.yaml | ❌ | 不存在 |

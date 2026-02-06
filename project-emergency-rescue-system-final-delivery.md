@@ -1,4 +1,4 @@
-# indestructibleautoops
+# IndestructibleAutoOps 項目緊急救援系統 - 最終交付報告
 
 **交付日期**: 2026-02-05  
 **系統版本**: 1.0 Release  
@@ -69,7 +69,7 @@ await detector.saveReportAsJSON(report, 'reports/hallucinations.json');
 ---
 
 #### 引擎 2：代碼隔離系統
-**文件**: `code-isolation-system.ts` (19 KB)
+**文件**: `code_isolation_system.ts` (19 KB)
 
 **功能特性**
 - 完整備份機制 (packages、配置文件、鎖定文件)
@@ -96,7 +96,7 @@ isolation.printReport(report);
 ---
 
 #### 引擎 3：架構重建系統
-**文件**: `architecture-rebuild-system.ts` (19 KB)
+**文件**: `architecture_rebuild_system.ts` (19 KB)
 
 **功能特性**
 - 六階段重建流程 (清理→驗證→安裝→構建→測試→驗證)
@@ -335,8 +335,8 @@ await orchestrator.executeCompleteRecovery();
 # 1. 複製文件
 mkdir -p scripts/emergency-recovery
 cp hallucination_detection_engine.ts scripts/emergency-recovery/
-cp code-isolation-system.ts scripts/emergency-recovery/
-cp architecture-rebuild-system.ts scripts/emergency-recovery/
+cp code_isolation_system.ts scripts/emergency-recovery/
+cp architecture_rebuild_system.ts scripts/emergency-recovery/
 cp verification_compliance_framework.ts scripts/emergency-recovery/
 
 # 2. 安裝依賴

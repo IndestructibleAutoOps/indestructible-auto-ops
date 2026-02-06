@@ -35,7 +35,7 @@
 1. **配置檔案**：*.yaml, *.json, *.toml, *.env
 2. **文件檔案**：*.md, README, *.txt
 3. **核心程式碼**：*.py, *.js, *.ts
-4. **結構定義**：makefile, Dockerfile, requirements.txt
+4. **結構定義**：Makefile, Dockerfile, requirements.txt
 
 ## 成功指標
 - 100% 的目錄結構被記錄

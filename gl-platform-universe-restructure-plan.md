@@ -95,7 +95,7 @@ gl-platform/
 │   │   │   ├── variables.tf
 │   │   │   ├── outputs.tf
 │   │   │   ├── versions.tf
-│   │   │   └── readme.md
+│   │   │   └── README.md
 │   │   ├── subnet/
 │   │   └── security-groups/
 │   │
@@ -191,7 +191,7 @@ gl-platform/
 │   ├── kubernetes/
 │   └── make/
 │
-└── makefile                      # Unified entry point
+└── Makefile                      # Unified entry point
 ```
 
 ### 2. Naming Convention Enhancements

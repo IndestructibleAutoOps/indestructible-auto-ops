@@ -66,7 +66,7 @@
 5. **骨架配置** (NEW)：
    - **架構驗證**：`80-skeleton-configs/01-architecture-stability/` 提供 Architecture Linter 驗證系統分層規則
    - **安全檢查**：`80-skeleton-configs/04-security-observability/` 包含 RBAC、日誌、追蹤配置與安全掃描工具
-   - 詳見：[80-skeleton-configs README](./80-skeleton-configs/readme.md)
+   - 詳見：[80-skeleton-configs README](./80-skeleton-configs/README.md)
 
 ## 維運原則 Operating Principles
 <<<<<<< HEAD

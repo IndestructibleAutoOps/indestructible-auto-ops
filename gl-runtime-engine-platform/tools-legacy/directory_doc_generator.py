@@ -157,7 +157,7 @@ class DirectoryDocGenerator:
         if "dockerfile" in name:
             return "Dockerfile"
         elif "makefile" in name:
-            return "makefile"
+            return "Makefile"
         elif "requirements" in name:
             return "Python 依賴文件"
         elif "package.json" in name:

@@ -22,7 +22,7 @@
 
 ```
 v2-multi-islands/
-├── readme.md                    # 本文檔
+├── README.md                    # 本文檔
 ├── __init__.py                  # Python 套件初始化
 ├── main.py                      # 主執行入口
 ├── config/                      # 配置管理

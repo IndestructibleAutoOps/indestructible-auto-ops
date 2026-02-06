@@ -70,7 +70,7 @@
 ### 4. package.json / pyproject.toml / docker-compose 整合 ✅
 
 **Integration Status**:
-- GL Validator 已整合到 makefile (`make test`)
+- GL Validator 已整合到 Makefile (`make test`)
 - Python 依賴包含 GL 驗證腳本
 - Docker 環境包含 GL 工具鏈
 
@@ -159,7 +159,7 @@ python scripts/gl/quantum-validate.py  # 量子驗證
 | GL Unified Charter 啟動 | ✅ 完成 | Version 1.0 |
 | CI/CD 整合 | ✅ 完成 | 4 個驗證 jobs |
 | 程式碼引用 | ✅ 完成 | 所有 artifacts |
-| 配置檔案整合 | ✅ 完成 | makefile, Python, Docker |
+| 配置檔案整合 | ✅ 完成 | Makefile, Python, Docker |
 | Issue/PR/Commit/Deploy | ✅ 完成 | 全流程觸發 |
 | Git Hooks | ✅ 完成 | Pre-commit 已啟用 |
 | Artifacts 封存 | ✅ 完成 | 68 個 YAML 檔案 |

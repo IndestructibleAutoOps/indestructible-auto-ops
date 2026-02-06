@@ -177,7 +177,7 @@ Total: 9.5 hours (8 hours with parallelization)
 ```yaml
 ENTER ARCHITECTURE_TO_CODE_MODE
 
-architecture_spec: ecosystem/governance/specs/backend-governance-responsibility.md
+architecture_spec: ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md
 target_layers: [Layer 1]
 mode: ONE_SHOT_INTEGRATION
 

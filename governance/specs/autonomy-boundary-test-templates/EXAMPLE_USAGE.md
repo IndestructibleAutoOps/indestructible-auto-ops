@@ -129,7 +129,7 @@ tests/gl/autonomy-boundary/external_api_unavailable/
 │   ├── injection/
 │   │   └── injection_trace.json
 │   └── closure_verification_report.json
-└── readme.md
+└── README.md
 ```
 
 ### Key Generated Files:

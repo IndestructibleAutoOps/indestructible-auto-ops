@@ -183,17 +183,17 @@ python3 boundary_checker.py --report
 - `boundary-enforcement-rules.md` - Enforcement rules and mechanisms
 
 #### Layer Documentation
-- `gl-enterprise-architecture/readme.md` - GL00-09 layer docs
-- `gl-platform-services/readme.md` - GL10-29 layer docs
-- `gl-data-processing/readme.md` - GL20-29 layer docs
-- `gl-execution-runtime/readme.md` - GL30-49 layer docs
-- `gl-observability/readme.md` - GL50-59 layer docs
-- `gl-governance-compliance/readme.md` - GL60-80 layer docs
-- `gl-extension-services/readme.md` - GL81-83 layer docs
-- `gl-meta-specifications/readme.md` - GL90-99 layer docs
+- `gl-enterprise-architecture/README.md` - GL00-09 layer docs
+- `gl-platform-services/README.md` - GL10-29 layer docs
+- `gl-data-processing/README.md` - GL20-29 layer docs
+- `gl-execution-runtime/README.md` - GL30-49 layer docs
+- `gl-observability/README.md` - GL50-59 layer docs
+- `gl-governance-compliance/README.md` - GL60-80 layer docs
+- `gl-extension-services/README.md` - GL81-83 layer docs
+- `gl-meta-specifications/README.md` - GL90-99 layer docs
 
 #### Project Documentation
-- `readme.md` - Comprehensive project overview
+- `README.md` - Comprehensive project overview
 - `ARCHITECTURE_COMPLETE.md` - This document
 
 ## 📋 Dependency Matrix Summary

@@ -102,7 +102,7 @@ Created custom analyzer for PR files:
 ### 5. Created Documentation
 **Files**: 
 - `TECHNICAL_DEBT_ANALYSIS.md` - Full analysis report
-- `tools/validation/VALIDATION_TOOL_readme.md` - Tool documentation
+- `tools/validation/VALIDATION_TOOL_README.md` - Tool documentation
 - `TECH_DEBT_PR_REPORT.json` - Machine-readable report
 - `workspace/TECH_DEBT_SCAN_REPORT.json` - Repository-wide scan
 
@@ -217,7 +217,7 @@ Created custom analyzer for PR files:
 ### Created (6 files)
 1. `TECHNICAL_DEBT_ANALYSIS.md` - 300+ lines, comprehensive analysis
 2. `tools/validation/validate-artifact.py` - 300+ lines, stub implementation
-3. `tools/validation/VALIDATION_TOOL_readme.md` - Tool documentation
+3. `tools/validation/VALIDATION_TOOL_README.md` - Tool documentation
 4. `TECH_DEBT_PR_REPORT.json` - Machine-readable report
 5. `workspace/TECH_DEBT_SCAN_REPORT.json` - Repository scan results
 6. `TECHNICAL_DEBT_SUMMARY.md` - This file

@@ -332,4 +332,4 @@ For issues and questions, please refer to the governance documentation in `/cont
 
 ## License
 
-See license file for details.
+See LICENSE file for details.

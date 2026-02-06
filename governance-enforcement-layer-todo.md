@@ -178,7 +178,7 @@ class SelfAuditor:
 ## 📚 Phase 5: 文檔和部署
 
 ### 5.1 撰寫架構設計文檔
-- [ ] ecosystem/enforcers/architecture.md
+- [ ] ecosystem/enforcers/ARCHITECTURE.md
 - [ ] ecosystem/gates/DESIGN.md
 - [ ] ecosystem/hooks/USAGE.md
 - [ ] ecosystem/auditors/AUDIT_GUIDE.md
@@ -197,7 +197,7 @@ class SelfAuditor:
 - [ ] 部署所有實現的組件
 
 ### 5.4 更新 ecosystem 總體文檔
-- [ ] 更新 ecosystem/readme.md
+- [ ] 更新 ecosystem/README.md
 - [ ] 更新 ecosystem/docs/ 索引
 - [ ] 添加強制執行層到總體架構圖
 - [ ] 更新治理框架概述
@@ -273,7 +273,7 @@ class SelfAuditor:
 
 ## 🔗 相關文檔
 
-- ecosystem/contracts/fact-verification/readme.md
+- ecosystem/contracts/fact-verification/README.md
 - ecosystem/tools/fact-verification/gl-fact-pipeline.py
 - ecosystem/contracts/naming-governance/gl-naming-ontology.yaml
 - GL_FACT_VERIFICATION_PIPELINE_SUMMARY.md

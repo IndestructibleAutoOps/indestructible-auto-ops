@@ -32058,7 +32058,7 @@
                 "type": "file"
               },
               {
-                "file": "makefile",
+                "file": "Makefile",
                 "exists": true,
                 "type": "file"
               },
@@ -32074,7 +32074,7 @@
                 "artifacts_count": 2,
                 "artifacts": [
                   {
-                    "file": "bin/readme.md",
+                    "file": "bin/README.md",
                     "size": 436,
                     "hash": "7e08341172ce742aa9370c4d74126468d14989ba0a250df0893005e7ebc56046"
                   },
@@ -72368,21 +72368,21 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "changelog.md",
+                "file": "CHANGELOG.md",
                 "line": 25,
                 "type": "aws_secret_key",
                 "content": "- actions/checkout@v4 \u2192 @0ad4b8f3a27c304e21892351cbf9860471245599",
                 "severity": "CRITICAL"
               },
               {
-                "file": "changelog.md",
+                "file": "CHANGELOG.md",
                 "line": 26,
                 "type": "aws_secret_key",
                 "content": "- actions/setup-python@v5 \u2192 @82c7e631bb3cdc910f68e0081d534527d238d7a7",
                 "severity": "CRITICAL"
               },
               {
-                "file": "changelog.md",
+                "file": "CHANGELOG.md",
                 "line": 27,
                 "type": "aws_secret_key",
                 "content": "- actions/upload-artifact@v4 \u2192 @65462800fd760344b1a7b4382951275a0abb4808",
@@ -72424,28 +72424,28 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "archive/infrastructure/readme.md",
+                "file": "archive/infrastructure/README.md",
                 "line": 231,
                 "type": "password",
                 "content": "--from-literal=password=password \\",
                 "severity": "HIGH"
               },
               {
-                "file": "archive/infrastructure/readme.md",
+                "file": "archive/infrastructure/README.md",
                 "line": 349,
                 "type": "aws_secret_key",
                 "content": "requiredDuringSchedulingIgnoredDuringExecution:",
                 "severity": "CRITICAL"
               },
               {
-                "file": "archive/infrastructure/kubernetes/readme.md",
+                "file": "archive/infrastructure/kubernetes/README.md",
                 "line": 72,
                 "type": "password",
                 "content": "--from-literal=db-password=<STRONG_PASSWORD> \\",
                 "severity": "HIGH"
               },
               {
-                "file": "archive/infrastructure/kubernetes/readme.md",
+                "file": "archive/infrastructure/kubernetes/README.md",
                 "line": 73,
                 "type": "password",
                 "content": "--from-literal=redis-password=<STRONG_PASSWORD> \\",
@@ -74282,7 +74282,7 @@
                 "file": "docs/DOCUMENTATION_INDEX.md",
                 "line": 755,
                 "type": "aws_secret_key",
-                "content": "| [infrastructure/kubernetes/manifests/readme.md](./infrastructure/kubernetes/manifests/readme.md)  ...",
+                "content": "| [infrastructure/kubernetes/manifests/README.md](./infrastructure/kubernetes/manifests/README.md)  ...",
                 "severity": "CRITICAL"
               },
               {
@@ -74664,7 +74664,7 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "docs/api/examples/readme.md",
+                "file": "docs/api/examples/README.md",
                 "line": 105,
                 "type": "password",
                 "content": "\"password\": \"password\"",
@@ -74734,14 +74734,14 @@
                 "severity": "HIGH"
               },
               {
-                "file": "docs/architecture/readme.md",
+                "file": "docs/architecture/README.md",
                 "line": 200,
                 "type": "aws_secret_key",
                 "content": "kubectl apply -f docs/architecture/configuration/kubernetes/",
                 "severity": "CRITICAL"
               },
               {
-                "file": "docs/architecture/readme.md",
+                "file": "docs/architecture/README.md",
                 "line": 206,
                 "type": "aws_secret_key",
                 "content": "kubectl apply -f docs/architecture/configuration/monitoring/",
@@ -74790,14 +74790,14 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "docs/architecture/configuration/readme.md",
+                "file": "docs/architecture/configuration/README.md",
                 "line": 152,
                 "type": "password",
                 "content": "export POSTGRES_PASSWORD=sonarqube_password",
                 "severity": "HIGH"
               },
               {
-                "file": "docs/architecture/configuration/readme.md",
+                "file": "docs/architecture/configuration/README.md",
                 "line": 165,
                 "type": "password",
                 "content": "POSTGRES_PASSWORD=your_password",
@@ -74902,14 +74902,14 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "docs/examples/configuration/readme.md",
+                "file": "docs/examples/configuration/README.md",
                 "line": 141,
                 "type": "password",
                 "content": "export POSTGRES_PASSWORD=sonarqube_password",
                 "severity": "HIGH"
               },
               {
-                "file": "docs/examples/configuration/readme.md",
+                "file": "docs/examples/configuration/README.md",
                 "line": 154,
                 "type": "password",
                 "content": "POSTGRES_PASSWORD=your_password",
@@ -74975,14 +74975,14 @@
                 "file": "docs/refactor_playbooks/infrastructure__playbook.md",
                 "line": 211,
                 "type": "aws_secret_key",
-                "content": "- `infrastructure/kubernetes/baseline/readme.md` \u2014 \u8aaa\u660e\u6587\u6a94",
+                "content": "- `infrastructure/kubernetes/baseline/README.md` \u2014 \u8aaa\u660e\u6587\u6a94",
                 "severity": "CRITICAL"
               },
               {
                 "file": "docs/refactor_playbooks/infrastructure__playbook.md",
                 "line": 212,
                 "type": "aws_secret_key",
-                "content": "- `infrastructure/kubernetes/manifests/readme.md` \u2014 \u8aaa\u660e\u6587\u6a94",
+                "content": "- `infrastructure/kubernetes/manifests/README.md` \u2014 \u8aaa\u660e\u6587\u6a94",
                 "severity": "CRITICAL"
               },
               {
@@ -75059,7 +75059,7 @@
                 "file": "docs/refactor_playbooks/02_integration/BASELINE_YAML_INTEGRATION_PLAN.md",
                 "line": 433,
                 "type": "aws_secret_key",
-                "content": "| 7 | `infrastructure/kubernetes/baseline/readme.md` | \u65b0\u5efa | \u5efa\u7acb baseline \u90e8\u7f72\u6307\u5357\uff0c\u8aaa\u660e 6 \u500b baseline \u7528\u9014 |",
+                "content": "| 7 | `infrastructure/kubernetes/baseline/README.md` | \u65b0\u5efa | \u5efa\u7acb baseline \u90e8\u7f72\u6307\u5357\uff0c\u8aaa\u660e 6 \u500b baseline \u7528\u9014 |",
                 "severity": "CRITICAL"
               },
               {
@@ -75087,7 +75087,7 @@
                 "file": "docs/refactor_playbooks/02_integration/BASELINE_YAML_INTEGRATION_PLAN.md",
                 "line": 594,
                 "type": "aws_secret_key",
-                "content": "\"infrastructure/kubernetes/baseline/readme.md\",",
+                "content": "\"infrastructure/kubernetes/baseline/README.md\",",
                 "severity": "CRITICAL"
               },
               {
@@ -75136,7 +75136,7 @@
                 "file": "docs/refactor_playbooks/02_integration/P0_COMPLETION_REPORT.md",
                 "line": 196,
                 "type": "aws_secret_key",
-                "content": "**Location:** `infrastructure/kubernetes/baseline/readme.md`",
+                "content": "**Location:** `infrastructure/kubernetes/baseline/README.md`",
                 "severity": "CRITICAL"
               },
               {
@@ -75157,7 +75157,7 @@
                 "file": "docs/refactor_playbooks/02_integration/P0_COMPLETION_REPORT.md",
                 "line": 562,
                 "type": "aws_secret_key",
-                "content": "- \ud83c\udfd7\ufe0f [Infrastructure Baseline README](../../../infrastructure/kubernetes/baseline/readme.md)",
+                "content": "- \ud83c\udfd7\ufe0f [Infrastructure Baseline README](../../../infrastructure/kubernetes/baseline/README.md)",
                 "severity": "CRITICAL"
               },
               {
@@ -75430,7 +75430,7 @@
                 "file": "docs/refactor_playbooks/03_refactor/infrastructure/infrastructure__iac_refactor.md",
                 "line": 183,
                 "type": "aws_secret_key",
-                "content": "- `infrastructure/kubernetes/manifests/readme.md` \u2014 \u8aaa\u660e\u6587\u6a94",
+                "content": "- `infrastructure/kubernetes/manifests/README.md` \u2014 \u8aaa\u660e\u6587\u6a94",
                 "severity": "CRITICAL"
               },
               {
@@ -75472,7 +75472,7 @@
                 "file": "docs/refactor_playbooks/03_refactor/meta/KUBERNETES_BASELINE_GUIDE.md",
                 "line": 520,
                 "type": "aws_secret_key",
-                "content": "- \ud83c\udfd7\ufe0f [Infrastructure Baseline README](../../../../infrastructure/kubernetes/baseline/readme.md)",
+                "content": "- \ud83c\udfd7\ufe0f [Infrastructure Baseline README](../../../../infrastructure/kubernetes/baseline/README.md)",
                 "severity": "CRITICAL"
               },
               {
@@ -75763,21 +75763,21 @@
                 "severity": "HIGH"
               },
               {
-                "file": "engine/machinenativenops-auto-monitor/readme.md",
+                "file": "engine/machinenativenops-auto-monitor/README.md",
                 "line": 126,
                 "type": "aws_secret_key",
                 "content": "path: /var/lib/machinenativeops/metrics/metrics.db",
                 "severity": "CRITICAL"
               },
               {
-                "file": "engine/machinenativenops-auto-monitor/readme.md",
+                "file": "engine/machinenativenops-auto-monitor/README.md",
                 "line": 769,
                 "type": "aws_secret_key",
                 "content": "`e7f8a9b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9`",
                 "severity": "CRITICAL"
               },
               {
-                "file": "src/ai/island-ai-readme.md",
+                "file": "src/ai/island-ai-README.md",
                 "line": 3,
                 "type": "aws_secret_key",
                 "content": "Stage 1 delivers six foundational agents described in `island-ai.md`. Stage 2 adds the productionize...",
@@ -75826,28 +75826,28 @@
                 "severity": "HIGH"
               },
               {
-                "file": "src/autonomous/infrastructure/infrastructure/kubernetes/readme.md",
+                "file": "src/autonomous/infrastructure/infrastructure/kubernetes/README.md",
                 "line": 72,
                 "type": "password",
                 "content": "--from-literal=db-password=<STRONG_PASSWORD> \\",
                 "severity": "HIGH"
               },
               {
-                "file": "src/autonomous/infrastructure/infrastructure/kubernetes/readme.md",
+                "file": "src/autonomous/infrastructure/infrastructure/kubernetes/README.md",
                 "line": 73,
                 "type": "password",
                 "content": "--from-literal=redis-password=<STRONG_PASSWORD> \\",
                 "severity": "HIGH"
               },
               {
-                "file": "src/core/engine/readme.md",
+                "file": "src/core/engine/README.md",
                 "line": 56,
                 "type": "aws_secret_key",
                 "content": "kubectl apply -f infrastructure/kubernetes/deployments/hlp-executor-core.yaml",
                 "severity": "CRITICAL"
               },
               {
-                "file": "src/core/engine/readme.md",
+                "file": "src/core/engine/README.md",
                 "line": 152,
                 "type": "aws_secret_key",
                 "content": "- [Deployment Manifest](../../../infrastructure/kubernetes/deployments/hlp-executor-core.yaml)",
@@ -76197,14 +76197,14 @@
                 "severity": "HIGH"
               },
               {
-                "file": "src/governance/35-scripts/readme.md",
+                "file": "src/governance/35-scripts/README.md",
                 "line": 95,
                 "type": "aws_secret_key",
                 "content": "================================================================================",
                 "severity": "CRITICAL"
               },
               {
-                "file": "src/governance/35-scripts/readme.md",
+                "file": "src/governance/35-scripts/README.md",
                 "line": 97,
                 "type": "aws_secret_key",
                 "content": "================================================================================",
@@ -76232,49 +76232,49 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "src/services/readme.md",
+                "file": "src/services/README.md",
                 "line": 213,
                 "type": "password",
                 "content": "\"password\": \"password\"",
                 "severity": "HIGH"
               },
               {
-                "file": "src/services/agents/auto-repair/readme.md",
+                "file": "src/services/agents/auto-repair/README.md",
                 "line": 261,
                 "type": "api_key",
                 "content": "API_KEY = \"sk-1234567890abcdef\"",
                 "severity": "CRITICAL"
               },
               {
-                "file": "src/services/agents/vulnerability-detector/readme.md",
+                "file": "src/services/agents/vulnerability-detector/README.md",
                 "line": 187,
                 "type": "password",
                 "content": "message: Hardcoded password detected",
                 "severity": "HIGH"
               },
               {
-                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u6545\u969c\u6392\u9664/readme.md",
+                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u6545\u969c\u6392\u9664/README.md",
                 "line": 74,
                 "type": "password",
                 "content": "password: process.env.DB_PASSWORD,",
                 "severity": "HIGH"
               },
               {
-                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u6700\u4f73\u5b9e\u8df5/readme.md",
+                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u6700\u4f73\u5b9e\u8df5/README.md",
                 "line": 279,
                 "type": "password",
                 "content": "async function hashPassword(password: string): Promise<string> {",
                 "severity": "HIGH"
               },
               {
-                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u6700\u4f73\u5b9e\u8df5/readme.md",
+                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u6700\u4f73\u5b9e\u8df5/README.md",
                 "line": 281,
                 "type": "password",
                 "content": "return bcrypt.hash(password, saltRounds);",
                 "severity": "HIGH"
               },
               {
-                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u96c6\u6210\u793a\u4f8b/readme.md",
+                "file": "src/\u4ee3\u7801\u5723\u6bbf/\u96c6\u6210\u793a\u4f8b/README.md",
                 "line": 32,
                 "type": "password",
                 "content": "password: process.env.DB_PASSWORD",
@@ -76295,14 +76295,14 @@
                 "severity": "CRITICAL"
               },
               {
-                "file": "tools/scripts/readme.md",
+                "file": "tools/scripts/README.md",
                 "line": 233,
                 "type": "aws_secret_key",
                 "content": "| `action` | \u64cd\u4f5c\u985e\u578b (list/create/update/delete/deploy/export/import) | \u662f |",
                 "severity": "CRITICAL"
               },
               {
-                "file": "tools/scripts/readme.md",
+                "file": "tools/scripts/README.md",
                 "line": 288,
                 "type": "password",
                 "content": "export ELASTICSEARCH_PASSWORD=\"your_password\"",

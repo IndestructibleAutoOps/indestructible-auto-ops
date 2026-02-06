@@ -32,7 +32,7 @@ spec:
     quickref: "workspace/governance/gl-architecture/GL_QUICKREF.md"
     mapping: "workspace/governance/gl-architecture/GL_MAPPING.csv"
     stabilization: "workspace/governance/gl-architecture/GL_SEMANTIC_STABILIZATION.yaml"
-    readme: "workspace/governance/gl-architecture/readme.md"
+    readme: "workspace/governance/gl-architecture/README.md"
   
   # 核心模組映射 - AI 導航地圖
   modules:
@@ -253,7 +253,7 @@ spec:
       manifests:
         - "infrastructure/rke2/manifests/network-policies/default-deny-all.yaml"
       documentation:
-        - "infrastructure/rke2/readme.md"
+        - "infrastructure/rke2/README.md"
       functions:
         - "configure_rke2_security"
         - "validate_cis_compliance"

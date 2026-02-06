@@ -54,7 +54,7 @@ NAMING_RULES = {
     "markdown_files": {
         "pattern": r"^[A-Z][A-Za-z0-9-]*\.md$|^[a-z][a-z0-9-]*\.md$",
         "description": "Markdown files can use PascalCase or lowercase with hyphens",
-        "examples": ["readme.md", "governance-guide.md"],
+        "examples": ["README.md", "governance-guide.md"],
         "gl_binding": "GL02"
     },
     "contract_files": {

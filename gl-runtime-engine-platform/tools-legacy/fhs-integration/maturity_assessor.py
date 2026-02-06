@@ -125,7 +125,7 @@ class MaturityAssessor:
         """檢查文檔完整性"""
         score = 0
         # 檢查 README
-        readme = os.path.join(path, "readme.md")
+        readme = os.path.join(path, "README.md")
         if os.path.exists(readme):
             size = os.path.getsize(readme)
             if size > 1000:
@@ -227,7 +227,7 @@ class MaturityAssessor:
     def _check_release_frequency(self, path: str, verbose: bool) -> int:
         """檢查發布頻率"""
         # 檢查是否有版本標記或 CHANGELOG
-        changelog = os.path.join(path, "changelog.md")
+        changelog = os.path.join(path, "CHANGELOG.md")
         version_file = os.path.join(path, "VERSION")
         if os.path.exists(changelog):
             return 7

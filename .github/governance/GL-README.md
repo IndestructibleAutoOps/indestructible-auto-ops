@@ -25,7 +25,7 @@ engine/governance/gl-artifacts/
 .github/governance/
 ├── architecture/       # GL 核心架構定義
 ├── sealed/            # 已封存的治理決策
-└── GL-readme.md       # 本文件
+└── GL-README.md       # 本文件
 ```
 
 ## GL 層級速查

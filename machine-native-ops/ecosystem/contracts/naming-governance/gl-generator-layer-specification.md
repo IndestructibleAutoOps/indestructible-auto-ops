@@ -354,7 +354,7 @@ generator:
       - docs/
       - requirements.txt
       - Dockerfile
-      - readme.md
+      - README.md
   
   templates:
     - service_main.py.j2
@@ -363,7 +363,7 @@ generator:
     - tests.py.j2
     - requirements.txt.j2
     - Dockerfile.j2
-    - readme.md.j2
+    - README.md.j2
   
   configuration:
     file: generator_config.yaml
@@ -408,8 +408,8 @@ template:
       template: routes.py.j2
     - path: tests/test_api.py
       template: test_api.py.j2
-    - path: readme.md
-      template: readme.md.j2
+    - path: README.md
+      template: README.md.j2
   
   dependencies:
     - fastapi: "^0.104.0"
@@ -482,7 +482,7 @@ output = generator.generate(
 #   ├── docs/
 #   ├── requirements.txt
 #   ├── Dockerfile
-#   └── readme.md
+#   └── README.md
 ```
 
 ### Using Scaffolding Tool

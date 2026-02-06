@@ -22,7 +22,7 @@
 - [x] 1.4 創建架構文檔
 
 ### 交付物
-- `ecosystem/enforcers/architecture.md` (24,528 字節)
+- `ecosystem/enforcers/ARCHITECTURE.md` (24,528 字節)
 
 ### 核心組件定義
 1. **GovernanceEnforcer** - 治理執行器核心引擎

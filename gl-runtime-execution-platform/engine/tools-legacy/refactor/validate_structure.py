@@ -113,7 +113,7 @@ class StructureValidator:
                 "meta",
             ],
             required_files=[
-                "readme.md",
+                "README.md",
             ],
             max_depth=5,
             max_root_files=15,
@@ -408,7 +408,7 @@ class NamingValidator:
         # 例外清單
         self.exceptions = {
             "README",
-            "license",
+            "LICENSE",
             "CHANGELOG",
             "TODO",
             "INDEX",

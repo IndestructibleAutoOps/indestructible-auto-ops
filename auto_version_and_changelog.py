@@ -24,7 +24,7 @@ def manage_version(repo_path, change_type='patch'):
         changelog += f"- {commit.message}\n"
     
     # 写入文件并创建标签
-    with open("changelog.md", "a") as f:
+    with open("CHANGELOG.md", "a") as f:
         f.write(changelog)
     repo.create_tag(f"v{new_version}", message=f"Release {new_version}")
     repo.remotes.origin.push(repo.remotes.origin, tags=True)

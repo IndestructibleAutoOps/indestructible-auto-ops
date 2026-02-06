@@ -31,7 +31,7 @@ Successfully implemented two critical governance systems for IndestructibleAutoO
 #### Components Created
 
 **Specifications**:
-- `ecosystem/governance/gl-languageneutralhash-spec-v1.md` ✅
+- `ecosystem/governance/GL-LanguageNeutralHash-Spec-v1.md` ✅
   - Complete architecture design
   - Multi-language support (zh, en, ja, ko, de, fr)
   - RFC 8785 JCS compliance
@@ -73,7 +73,7 @@ This ensures that the same semantic meaning produces the same hash, regardless o
 #### Components Created
 
 **Specifications**:
-- `ecosystem/governance/gl-narrativefreecompliance-spec-v2.md` ✅
+- `ecosystem/governance/GL-NarrativeFreeCompliance-Spec-v2.md` ✅
   - GLCM-FCT (Fabricated Completion Timeline) Detection - 🔴 CRITICAL
   - Multi-language patterns (zh, en, ja, ko, de, fr)
   - Evidence verification (within 300 characters)
@@ -316,8 +316,8 @@ The systems are ready for integration with the existing MNGA system and producti
 ## Files Created
 
 ### Specifications
-- `ecosystem/governance/gl-languageneutralhash-spec-v1.md`
-- `ecosystem/governance/gl-narrativefreecompliance-spec-v2.md`
+- `ecosystem/governance/GL-LanguageNeutralHash-Spec-v1.md`
+- `ecosystem/governance/GL-NarrativeFreeCompliance-Spec-v2.md`
 
 ### Core Tools
 - `ecosystem/tools/semanticizer.py`
@@ -333,5 +333,5 @@ The systems are ready for integration with the existing MNGA system and producti
 - `ecosystem/tests/compliance/test_narrative_free_compliance.py`
 
 ### Documentation
-- `language-neutral-hash-implementation-summary.md`
-- `final-implementation-report.md`
+- `LANGUAGE_NEUTRAL_HASH_IMPLEMENTATION_SUMMARY.md`
+- `FINAL_IMPLEMENTATION_REPORT.md`

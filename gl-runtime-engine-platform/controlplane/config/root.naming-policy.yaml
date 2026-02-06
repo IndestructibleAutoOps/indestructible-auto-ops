@@ -47,7 +47,7 @@ rules:
       valid:
         - "root.config.yaml"
         - "root.modules.yaml"
-        - "root-devices.map"
+        - "root.devices.map"
       invalid:
         - "Root.Config.yaml" # 大寫
         - "config.yml" # 缺少 root. 前綴

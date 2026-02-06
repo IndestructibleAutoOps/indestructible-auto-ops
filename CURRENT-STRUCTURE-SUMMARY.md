@@ -51,7 +51,7 @@ machine-native-ops/
 **Structure**:
 ```
 gl-enterprise-architecture/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/                           # Configuration files
 │   ├── development/
 │   ├── production/
@@ -105,7 +105,7 @@ gl-enterprise-architecture/
 **Structure**:
 ```
 gl-platform-services/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -123,7 +123,7 @@ gl-platform-services/
 │   ├── scripts/
 │   ├── observability/
 │   ├── governance/
-│   ├── readme.md
+│   ├── README.md
 │   └── go.mod
 ├── quantum-platform/                  # Quantum computing
 │   ├── artifacts/
@@ -143,7 +143,7 @@ gl-platform-services/
 **Structure**:
 ```
 gl-data-processing/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -168,7 +168,7 @@ gl-data-processing/
 **Structure**:
 ```
 gl-execution-runtime/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -221,7 +221,7 @@ gl-execution-runtime/
 **Structure**:
 ```
 gl-observability/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -240,7 +240,7 @@ gl-observability/
 **Structure**:
 ```
 gl-governance-compliance/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -267,7 +267,7 @@ gl-governance-compliance/
 **Structure**:
 ```
 gl-extension-services/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -282,7 +282,7 @@ gl-extension-services/
 **Structure**:
 ```
 gl-meta-specifications/
-├── readme.md                          # Layer overview
+├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
 ├── docs/
@@ -294,7 +294,7 @@ gl-meta-specifications/
 ## Key Documentation Files
 
 ### Project-Level Documentation
-- `readme.md` - Comprehensive project overview
+- `README.md` - Comprehensive project overview
 - `ARCHITECTURE_COMPLETE.md` - Architecture completion summary
 - `DIRECTORY_STRUCTURE_VERIFICATION.md` - Structure verification report
 - `todo.md` - Task tracking and completion status
@@ -307,7 +307,7 @@ gl-meta-specifications/
 - `gl-enterprise-architecture/governance/naming-governance/contracts/directory-standards.yaml`
 
 ### Layer Documentation
-- Each of the 8 GL layers has a comprehensive readme.md file
+- Each of the 8 GL layers has a comprehensive README.md file
 - Each layer documents: purpose, responsibilities, dependencies, usage, compliance
 
 ## Key Tools and Implementations

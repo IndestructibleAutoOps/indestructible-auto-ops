@@ -225,7 +225,7 @@ class ETLPipeline:
             "has_functions": "function " in content or "=>" in content,
             "has_tests": "test(" in content or "describe(" in content or "it(" in content,
             "has_readme_reference": "README" in content,
-            "has_license": "license" in content.lower() or "license" in content
+            "has_license": "license" in content.lower() or "LICENSE" in content
         }
         # JSON specific
         if file_path.endswith('.json'):
@@ -362,7 +362,7 @@ class ETLPipeline:
                 "recommendation": "Add JSDoc comments for public APIs"
             })
         # Check README files
-        if file_path.endswith('readme.md'):
+        if file_path.endswith('README.md'):
             if len(content) < 100:
                 issues.append({
                     "type": IssueType.METADATA_MISSING.value,

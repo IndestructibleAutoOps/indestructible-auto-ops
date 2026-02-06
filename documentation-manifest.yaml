@@ -399,10 +399,10 @@ spec:
     # 要保留的核心文檔
     keep:
       # 根層文檔
-      - path: "readme.md"
+      - path: "README.md"
         reason: "專案入口"
 
-      - path: "readme-machine.md"
+      - path: "README-MACHINE.md"
         reason: "機器可讀架構說明"
 
       # 架構文檔

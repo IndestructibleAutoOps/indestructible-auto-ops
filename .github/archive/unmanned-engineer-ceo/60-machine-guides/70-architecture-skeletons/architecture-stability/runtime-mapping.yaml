@@ -130,13 +130,13 @@ configuration_files:
 documentation:
   # 架構文檔
   architecture:
-    - file: "readme.md"
+    - file: "README.md"
       section: "🌟 系統概述"
-    - file: "core/readme.md"
+    - file: "core/README.md"
       section: "核心平台服務概述"
-    - file: "config/readme.md"
+    - file: "config/README.md"
       section: "配置層說明"
-    - file: "automation/readme.md"
+    - file: "automation/README.md"
       section: "自動化層架構"
 
   # 設計決策
@@ -225,8 +225,8 @@ ai_actions:
 # ═════════════════════════════════════════════════════════════════════════════
 
 quick_reference:
-  "查看現有服務邊界": "core/readme.md"
+  "查看現有服務邊界": "core/README.md"
   "修改模組依賴": "config/system-module-map.yaml"
-  "新增微服務": "services/readme.md"
+  "新增微服務": "services/README.md"
   "驗證架構一致性": "python tools/docs/validate_index.py --verbose"
   "檢查依賴圖": "docs/knowledge-graph.yaml"

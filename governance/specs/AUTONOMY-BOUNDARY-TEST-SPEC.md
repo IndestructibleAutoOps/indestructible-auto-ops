@@ -135,7 +135,7 @@ tests/gl/autonomy-boundary/
 │   │   ├── injection/
 │   │   │   └── injection_trace.json
 │   │   └── closure_verification_report.json
-│   └── readme.md                          # 測試說明
+│   └── README.md                          # 測試說明
 ```
 
 ## Meta.yaml Format

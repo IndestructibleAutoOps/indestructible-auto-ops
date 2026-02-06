@@ -84,7 +84,7 @@ echo ""
 
 # 9. 文檔完整性檢查
 echo "9. 文檔完整性檢查"
-run_test "readme.md 存在" "test -f readme.md"
+run_test "README.md 存在" "test -f README.md"
 run_test "CHANGELOG.md 存在" "test -f CHANGELOG.md"
 run_test "實施指南存在" "test -f docs/guides/implementation-guide.md"
 run_test "最佳實踐存在" "test -f docs/best-practices/naming-patterns.md"

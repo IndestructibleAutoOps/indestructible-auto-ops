@@ -90,7 +90,7 @@ spec:
           uses: gitleaks/gitleaks-action@master
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            GITLEAKS_license: ${{ secrets.GITLEAKS_license }}
+            GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
           with:
             config-path: gitleaks.toml
             format: sarif

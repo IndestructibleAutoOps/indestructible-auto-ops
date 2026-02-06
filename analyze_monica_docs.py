@@ -68,8 +68,8 @@ def analyze_document(filepath):
 def main():
     # Analyze both documents
     docs = [
-        "/workspace/monica-ai-agent-comprehensive-analysis-1.md",
-        "/workspace/monica-ai-agent-engineering-specification.md"
+        "/workspace/MONICA_AI_AGENT_COMPREHENSIVE_ANALYSIS (1).md",
+        "/workspace/MONICA_AI_AGENT_ENGINEERING_SPECIFICATION.md"
     ]
     
     results = []

@@ -205,8 +205,8 @@ echo "5. Validating Documentation"
 echo "--------------------------"
 
 REQUIRED_DOCS=(
-    "controlplane/baseline/modules/readme.md"
-    "controlplane/governance/policies/readme.md"
+    "controlplane/baseline/modules/README.md"
+    "controlplane/governance/policies/README.md"
     "docs/supply-chain-security.md"
     "PHASE1_COMPLETION_REPORT.md"
     "FEATURE_BRANCH_MERGE_SUMMARY.md"

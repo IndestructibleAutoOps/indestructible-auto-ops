@@ -212,7 +212,7 @@ podman system prune -a -f
 
 ## 相關文件
 
-- [完整文檔](KIND_CLUSTER_readme.md)
+- [完整文檔](KIND_CLUSTER_README.md)
 - [驗證清單](VALIDATION_CHECKLIST.md)
 
 ## 支援

@@ -98,7 +98,7 @@ Total Components: 295
 ## README
 
 - **Type**: documentation
-- **Path**: ecosystem/readme.md
+- **Path**: ecosystem/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -134,7 +134,7 @@ Total Components: 295
 ## contracts.fact-verification.README
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/fact-verification/readme.md
+- **Path**: ecosystem/contracts/fact-verification/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -589,7 +589,7 @@ Total Components: 295
 ## coordination.api-gateway.README
 
 - **Type**: documentation
-- **Path**: ecosystem/coordination/api-gateway/readme.md
+- **Path**: ecosystem/coordination/api-gateway/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -650,7 +650,7 @@ Total Components: 295
 ## coordination.communication.README
 
 - **Type**: documentation
-- **Path**: ecosystem/coordination/communication/readme.md
+- **Path**: ecosystem/coordination/communication/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -695,7 +695,7 @@ Total Components: 295
 ## coordination.data-synchronization.README
 
 - **Type**: documentation
-- **Path**: ecosystem/coordination/data-synchronization/readme.md
+- **Path**: ecosystem/coordination/data-synchronization/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -771,7 +771,7 @@ Total Components: 295
 ## coordination.service-discovery.README
 
 - **Type**: documentation
-- **Path**: ecosystem/coordination/service-discovery/readme.md
+- **Path**: ecosystem/coordination/service-discovery/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -987,7 +987,7 @@ Total Components: 295
 ## enforcers.ARCHITECTURE
 
 - **Type**: documentation
-- **Path**: ecosystem/enforcers/architecture.md
+- **Path**: ecosystem/enforcers/ARCHITECTURE.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1311,7 +1311,7 @@ Total Components: 295
 ## governance.meta-governance.README
 
 - **Type**: documentation
-- **Path**: ecosystem/governance/meta-governance/readme.md
+- **Path**: ecosystem/governance/meta-governance/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1620,7 +1620,7 @@ Total Components: 295
 ## mocks.README
 
 - **Type**: documentation
-- **Path**: ecosystem/mocks/readme.md
+- **Path**: ecosystem/mocks/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1663,7 +1663,7 @@ Total Components: 295
 ## platform-cloud.README
 
 - **Type**: documentation
-- **Path**: ecosystem/platform-cloud/readme.md
+- **Path**: ecosystem/platform-cloud/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1691,7 +1691,7 @@ Total Components: 295
 ## platform-templates.cloud-template.README
 
 - **Type**: documentation
-- **Path**: ecosystem/platform-templates/cloud-template/readme.md
+- **Path**: ecosystem/platform-templates/cloud-template/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1705,7 +1705,7 @@ Total Components: 295
 ## platform-templates.core-template.README
 
 - **Type**: documentation
-- **Path**: ecosystem/platform-templates/core-template/readme.md
+- **Path**: ecosystem/platform-templates/core-template/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1766,7 +1766,7 @@ Total Components: 295
 ## platform-templates.on-premise-template.README
 
 - **Type**: documentation
-- **Path**: ecosystem/platform-templates/on-premise-template/readme.md
+- **Path**: ecosystem/platform-templates/on-premise-template/README.md
 - **Dependencies**: 0
 - **Dependents**: 0
 

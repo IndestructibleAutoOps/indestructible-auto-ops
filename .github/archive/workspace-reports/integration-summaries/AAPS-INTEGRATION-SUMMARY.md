@@ -45,7 +45,7 @@ This document summarizes the complete integration of the Auto-Monitor module int
 #### Module Structure
 ```
 engine/machinenativenops-auto-monitor/
-├── readme.md                          # Comprehensive documentation
+├── README.md                          # Comprehensive documentation
 ├── pyproject.toml                     # Package configuration
 ├── assets/
 │   └── default_config.yaml           # Default configuration
@@ -133,7 +133,7 @@ resources:
 ### 4. Documentation
 
 #### Created Documents
-1. **Auto-Monitor README** (`engine/machinenativenops-auto-monitor/readme.md`)
+1. **Auto-Monitor README** (`engine/machinenativenops-auto-monitor/README.md`)
    - Installation instructions
    - Configuration reference
    - Usage examples
@@ -408,11 +408,11 @@ MNO_LOG_LEVEL=DEBUG machinenativenops-auto-monitor serve
 
 ## References
 
-- [Auto-Monitor README](engine/machinenativenops-auto-monitor/readme.md)
+- [Auto-Monitor README](engine/machinenativenops-auto-monitor/README.md)
 - [Integration Guide](docs/AUTO_MONITOR_INTEGRATION.md)
 - [Unified Gates Workflow](.github/workflows/aaps-unified-gates.yml)
 - [Root Modules Configuration](root.modules.yaml)
-- [SuperAgent Documentation](agents/super-agent/readme.md)
+- [SuperAgent Documentation](agents/super-agent/README.md)
 
 ## Changelog
 

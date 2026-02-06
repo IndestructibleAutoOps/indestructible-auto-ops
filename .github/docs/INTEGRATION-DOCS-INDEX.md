@@ -189,7 +189,7 @@ These documents should be updated when:
 ## 🔗 Related Documentation
 
 ### Project Documentation
-- [readme.md](../readme.md) - Project overview
+- [README.md](../README.md) - Project overview
 - [BRANCH_STRATEGY.md](../BRANCH_STRATEGY.md) - Branch strategy guide
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guidelines
 

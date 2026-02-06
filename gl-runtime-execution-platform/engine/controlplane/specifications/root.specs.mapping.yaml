@@ -77,7 +77,7 @@ spec:
     # 3. 設備映射
     device_mapping:
       description: "設備檔案與系統資源的映射"
-      source: "root-devices.map"
+      source: "root.devices.map"
       format: "{device_path} -> {resource_type}:{resource_id}"
       categories:
         - "block_devices"
@@ -115,7 +115,7 @@ spec:
     # 5. 核心模組映射
     kernel_mapping:
       description: "核心模組與功能的映射"
-      source: "root-kernel.map"
+      source: "root.kernel.map"
       format: "{module_name} -> {function}:{description}"
       categories:
         - "core_modules"

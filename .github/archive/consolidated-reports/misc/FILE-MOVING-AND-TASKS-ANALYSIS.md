@@ -117,7 +117,7 @@
 ```
 
 #### 3. **項目架構規範**
-根據 `readme.md` 和 `root.fs.map` 的定義：
+根據 `README.md` 和 `root.fs.map` 的定義：
 - 核心功能應該放在 `ns-root/` 下的 `namespaces-mcp/`
 - `ns-root-mcp/` 可能是一個重複或錯誤的目錄結構
 

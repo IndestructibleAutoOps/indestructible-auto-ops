@@ -81,7 +81,7 @@ Pipeline Integration      ✅ PASS      管道整合器已載入（找不到 Pip
    - Roles and workflows
    - CI/CD integration
 
-6. **ecosystem/governance/GL-semantic-anchors/readme.md**
+6. **ecosystem/governance/GL-semantic-anchors/README.md**
    - Comprehensive documentation
    - Usage instructions
    - Architecture overview
@@ -264,7 +264,7 @@ ecosystem/governance/GL-semantic-anchors/
 ├── GL50-GL99-format-layer-specification.json
 ├── semantic-layer-specification.json
 ├── governance-framework-baseline.json
-└── readme.md
+└── README.md
 
 ecosystem/utils/
 └── simple_yaml.py

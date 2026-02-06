@@ -31,11 +31,11 @@ ns-root/
 │   │   │   ├── policies.yaml
 │   │   │   ├── roles.yaml
 │   │   │   ├── tools.yaml
-│   │   │   └── readme.md
+│   │   │   └── README.md
 │   │   └── governance/            # Governance Framework
 │   │       ├── manifest.yaml
 │   │       ├── schema.yaml
-│   │       └── readme.md
+│   │       └── README.md
 │   │
 │   ├── level2/                    # Integration Layer
 │   │   ├── mcp-artifacts/
@@ -48,7 +48,7 @@ ns-root/
 │   │   ├── mcp-schema/
 │   │   ├── mcp-spec/
 │   │   ├── mcp-tools/
-│   │   └── readme.md
+│   │   └── README.md
 │   │
 │   ├── mcp-level3/                # Application Layer
 │   │   ├── mcp-level3-artifacts/
@@ -61,7 +61,7 @@ ns-root/
 │   │   ├── mcp-level3-schema/
 │   │   ├── mcp-level3-spec/
 │   │   ├── mcp-level3-tools/
-│   │   └── readme.md
+│   │   └── README.md
 │   │
 │   ├── mcp-level4/                # Orchestration Layer
 │   │   ├── mcp-level4-artifacts/
@@ -74,10 +74,10 @@ ns-root/
 │   │   ├── mcp-level4-schema/
 │   │   ├── mcp-level4-spec/
 │   │   ├── mcp-level4-tools/
-│   │   └── readme.md
+│   │   └── README.md
 │   │
 │   ├── namespace-index.yaml       # Central namespace registry
-│   └── readme.md                  # Main documentation
+│   └── README.md                  # Main documentation
 │
 ├── namespaces-adk/                # ADK Namespace (Future)
 └── namespaces-sdk/                # SDK Namespace (Future)

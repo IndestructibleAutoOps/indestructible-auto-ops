@@ -82,7 +82,7 @@ Each subdirectory can:
 
 ```
 governance/gl-architecture/
-├── readme.md                          # This file
+├── README.md                          # This file
 ├── GL_LAYERS.yaml                     # Core GL definitions
 ├── GL_QUICKREF.md                     # Quick reference
 ├── GL_MAPPING.csv                     # Mapping table

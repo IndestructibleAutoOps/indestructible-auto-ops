@@ -27,7 +27,7 @@ workspace/tools/fhs-integration/
 ├── fhs_automation_leader.py       # 主控自動化腳本
 ├── maturity-criteria.yaml         # 可配置評估標準
 ├── requirements.txt               # Python 依賴
-└── readme.md                      # 完整文檔
+└── README.md                      # 完整文檔
 ```
 
 ## 核心功能
@@ -95,4 +95,4 @@ python3 workspace/tools/fhs-integration/fhs_integrator.py repository-understandi
 
 系統現已就緒，可以持續監控並在適當時機推薦整合。
 
-詳細文檔請參閱：`workspace/tools/fhs-integration/readme.md`
+詳細文檔請參閱：`workspace/tools/fhs-integration/README.md`

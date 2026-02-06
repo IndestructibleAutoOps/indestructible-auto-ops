@@ -215,7 +215,7 @@ def scan_repository(
 ) -> list[dict[str, Any]]:
     """Scan repository and generate index entries."""
     if include_patterns is None:
-        include_patterns = ["**/*.md", "**/readme.md"]
+        include_patterns = ["**/*.md", "**/README.md"]
     items = []
     seen_paths = set()
     for pattern in include_patterns:

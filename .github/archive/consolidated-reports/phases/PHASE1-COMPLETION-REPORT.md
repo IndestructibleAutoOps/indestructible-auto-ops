@@ -59,7 +59,7 @@ Created `REGISTRY.yaml` with:
 
 #### 4. Schema & Documentation
 - `module-manifest.schema.json` - JSON Schema for validation
-- `readme.md` - Comprehensive module documentation
+- `README.md` - Comprehensive module documentation
 
 ### Key Features
 - Clear separation of concerns (6 modules)
@@ -113,7 +113,7 @@ Created four comprehensive governance policies:
 
 #### 2. Policy Infrastructure
 - `POLICY_MANIFEST.yaml` - Central policy registry
-- `readme.md` - Policy documentation and usage guide
+- `README.md` - Policy documentation and usage guide
 
 ### Key Features
 - Strict enforcement mode

@@ -140,7 +140,7 @@ gl-platform-services/
 
 ### 6. Documentation
 
-#### Platform README (`readme.md`)
+#### Platform README (`README.md`)
 **Sections:**
 - Platform overview
 - Core capabilities matrix
@@ -166,7 +166,7 @@ gl-platform-services/
 - **Deployment**: 4 files (Kubernetes + Docker)
 - **Tests**: 1 file (test_folding_engine.py - ~300 lines)
 - **Tools**: 1 file (run_benchmark.py - ~300 lines)
-- **Documentation**: 1 file (readme.md - ~200 lines)
+- **Documentation**: 1 file (README.md - ~200 lines)
 - **Dependencies**: 1 file (requirements.txt - 60 packages)
 
 ### Code Statistics

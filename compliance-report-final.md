@@ -26,7 +26,7 @@
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl.runtime.engine-platform/tools-legacy/quantum-alignment-engine/readme.md
+#### GQS-002: gl.runtime.engine-platform/tools-legacy/quantum-alignment-engine/README.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
@@ -50,19 +50,19 @@
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl.governance.architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/workflows/readme.md
+#### GQS-002: gl.governance.architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/workflows/README.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl.governance.architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/docs/readme.md
+#### GQS-002: gl.governance.architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/docs/README.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: docs/quantum-architecture-platform.md
+#### GQS-002: docs/QUANTUM-ARCHITECTURE-PLATFORM.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
@@ -74,7 +74,7 @@
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/readme.md
+#### GQS-002: gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/README.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects

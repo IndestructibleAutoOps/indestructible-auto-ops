@@ -100,7 +100,7 @@ class Stage3DependencyVerifier:
         # 檢查可重現性配置
         reproducibility_files = [
             "Dockerfile",
-            "makefile",
+            "Makefile",
             "justfile",
             "Taskfile.yml",
             ".github/workflows",

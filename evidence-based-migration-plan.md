@@ -170,7 +170,7 @@
 - `FILE_PATH_VERIFICATION_REPORT.md` (信心度 0.60)
 - `COMPLETE_UPGRADE_ROADMAP.md` (信心度 0.40)
 - `DEPLOYMENT_GUIDE.md` (信心度 0.60)
-- `readme.md` (信心度 0.70)
+- `README.md` (信心度 0.70)
 - `FILE_VERSION_AUDIT_PLAN.md` (信心度 0.40)
 - `QUICK_REFERENCE.md` (信心度 0.30)
 - `INIT-GOVERNANCE.SH` (信心度 0.30)
@@ -219,7 +219,7 @@
 
 ```json
 {
-  "file_path": "gl10-migration-complete.md",
+  "file_path": "GL10-MIGRATION-COMPLETE.md",
   "target_path": "ecosystem/docs/GL10-MIGRATION-COMPLETE.md",
   "evidence": {
     "content_hash": "a1b2c3d4e5f6...",

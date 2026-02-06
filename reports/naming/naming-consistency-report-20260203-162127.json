@@ -65,7 +65,7 @@
       "pattern": "^[A-Z][A-Za-z0-9-]*\\.md$|^[a-z][a-z0-9-]*\\.md$",
       "description": "Markdown files can use PascalCase or lowercase with hyphens",
       "examples": [
-        "readme.md",
+        "README.md",
         "governance-guide.md"
       ],
       "gl_binding": "GL02"
@@ -282,8 +282,8 @@
     },
     {
       "type": "file",
-      "path": "/workspace/gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/scripts/quick-install.sh",
-      "name": "quick-install.sh",
+      "path": "/workspace/gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/scripts/QUICK-INSTALL.sh",
+      "name": "QUICK-INSTALL.sh",
       "rule": "Shell scripts must use lowercase with hyphens",
       "suggestion": "q-u-i-c-k-i-n-s-t-a-l-l.sh"
     },
@@ -950,8 +950,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/scripts/quick-install.sh",
-        "name": "quick-install.sh",
+        "path": "/workspace/gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/scripts/QUICK-INSTALL.sh",
+        "name": "QUICK-INSTALL.sh",
         "rule": "Shell scripts must use lowercase with hyphens",
         "suggestion": "q-u-i-c-k-i-n-s-t-a-l-l.sh"
       },
@@ -1405,8 +1405,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-validator-readme.md.json",
-        "name": "engine-validator-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-validator-README.md.json",
+        "name": "engine-validator-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-validator-r-e-a-d-m-e.md.json"
       },
@@ -1475,8 +1475,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-loader-readme.md.json",
-        "name": "engine-loader-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-loader-README.md.json",
+        "name": "engine-loader-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-loader-r-e-a-d-m-e.md.json"
       },
@@ -1489,8 +1489,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-renderer-readme.md.json",
-        "name": "engine-renderer-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-renderer-README.md.json",
+        "name": "engine-renderer-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-renderer-r-e-a-d-m-e.md.json"
       },
@@ -1566,15 +1566,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-executor-readme.md.json",
-        "name": "engine-executor-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-executor-README.md.json",
+        "name": "engine-executor-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-executor-r-e-a-d-m-e.md.json"
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-parser-readme.md.json",
-        "name": "engine-parser-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-parser-README.md.json",
+        "name": "engine-parser-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-parser-r-e-a-d-m-e.md.json"
       },
@@ -1615,8 +1615,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-normalizer-readme.md.json",
-        "name": "engine-normalizer-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-normalizer-README.md.json",
+        "name": "engine-normalizer-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-normalizer-r-e-a-d-m-e.md.json"
       },
@@ -1706,15 +1706,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-artifacts-readme.md.json",
-        "name": "engine-artifacts-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-artifacts-README.md.json",
+        "name": "engine-artifacts-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-artifacts-r-e-a-d-m-e.md.json"
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-governance-readme.md.json",
-        "name": "engine-governance-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-governance-README.md.json",
+        "name": "engine-governance-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-governance-r-e-a-d-m-e.md.json"
       },
@@ -1734,8 +1734,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-readme.md.json",
-        "name": "engine-readme.md.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-reports/file-reports/engine-README.md.json",
+        "name": "engine-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-r-e-a-d-m-e.md.json"
       },
@@ -1755,8 +1755,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-validator-readme.md-audit.json",
-        "name": "engine-validator-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-validator-README.md-audit.json",
+        "name": "engine-validator-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-validator-r-e-a-d-m-e.md-audit.json"
       },
@@ -1776,8 +1776,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-renderer-readme.md-audit.json",
-        "name": "engine-renderer-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-renderer-README.md-audit.json",
+        "name": "engine-renderer-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-renderer-r-e-a-d-m-e.md-audit.json"
       },
@@ -1797,8 +1797,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-parser-readme.md-audit.json",
-        "name": "engine-parser-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-parser-README.md-audit.json",
+        "name": "engine-parser-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-parser-r-e-a-d-m-e.md-audit.json"
       },
@@ -1846,15 +1846,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-artifacts-readme.md-audit.json",
-        "name": "engine-artifacts-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-artifacts-README.md-audit.json",
+        "name": "engine-artifacts-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-artifacts-r-e-a-d-m-e.md-audit.json"
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-normalizer-readme.md-audit.json",
-        "name": "engine-normalizer-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-normalizer-README.md-audit.json",
+        "name": "engine-normalizer-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-normalizer-r-e-a-d-m-e.md-audit.json"
       },
@@ -1867,8 +1867,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-governance-readme.md-audit.json",
-        "name": "engine-governance-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-governance-README.md-audit.json",
+        "name": "engine-governance-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-governance-r-e-a-d-m-e.md-audit.json"
       },
@@ -1930,8 +1930,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-executor-readme.md-audit.json",
-        "name": "engine-executor-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-executor-README.md-audit.json",
+        "name": "engine-executor-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-executor-r-e-a-d-m-e.md-audit.json"
       },
@@ -1951,8 +1951,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-loader-readme.md-audit.json",
-        "name": "engine-loader-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-loader-README.md-audit.json",
+        "name": "engine-loader-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-loader-r-e-a-d-m-e.md-audit.json"
       },
@@ -2049,8 +2049,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-readme.md-audit.json",
-        "name": "engine-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-engine-platform/.governance/audit-results/per-file-reports/engine-README.md-audit.json",
+        "name": "engine-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-r-e-a-d-m-e.md-audit.json"
       },
@@ -4191,8 +4191,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/.github/config/dev/life-system-readme.md",
-        "name": "life-system-readme.md",
+        "path": "/workspace/.github/config/dev/life-system-README.md",
+        "name": "life-system-README.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
         "suggestion": "life-system-r-e-a-d-m-e.md"
       },
@@ -4569,8 +4569,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-validator-readme.md.json",
-        "name": "engine-validator-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-validator-README.md.json",
+        "name": "engine-validator-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-validator-r-e-a-d-m-e.md.json"
       },
@@ -4639,8 +4639,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-loader-readme.md.json",
-        "name": "engine-loader-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-loader-README.md.json",
+        "name": "engine-loader-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-loader-r-e-a-d-m-e.md.json"
       },
@@ -4653,8 +4653,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-renderer-readme.md.json",
-        "name": "engine-renderer-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-renderer-README.md.json",
+        "name": "engine-renderer-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-renderer-r-e-a-d-m-e.md.json"
       },
@@ -4730,15 +4730,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-executor-readme.md.json",
-        "name": "engine-executor-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-executor-README.md.json",
+        "name": "engine-executor-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-executor-r-e-a-d-m-e.md.json"
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-parser-readme.md.json",
-        "name": "engine-parser-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-parser-README.md.json",
+        "name": "engine-parser-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-parser-r-e-a-d-m-e.md.json"
       },
@@ -4779,8 +4779,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-normalizer-readme.md.json",
-        "name": "engine-normalizer-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-normalizer-README.md.json",
+        "name": "engine-normalizer-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-normalizer-r-e-a-d-m-e.md.json"
       },
@@ -4870,15 +4870,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-artifacts-readme.md.json",
-        "name": "engine-artifacts-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-artifacts-README.md.json",
+        "name": "engine-artifacts-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-artifacts-r-e-a-d-m-e.md.json"
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-governance-readme.md.json",
-        "name": "engine-governance-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-governance-README.md.json",
+        "name": "engine-governance-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-governance-r-e-a-d-m-e.md.json"
       },
@@ -4898,8 +4898,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-readme.md.json",
-        "name": "engine-readme.md.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-reports/file-reports/engine-README.md.json",
+        "name": "engine-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-r-e-a-d-m-e.md.json"
       },
@@ -4919,8 +4919,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-validator-readme.md-audit.json",
-        "name": "engine-validator-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-validator-README.md-audit.json",
+        "name": "engine-validator-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-validator-r-e-a-d-m-e.md-audit.json"
       },
@@ -4940,8 +4940,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-renderer-readme.md-audit.json",
-        "name": "engine-renderer-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-renderer-README.md-audit.json",
+        "name": "engine-renderer-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-renderer-r-e-a-d-m-e.md-audit.json"
       },
@@ -4961,8 +4961,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-parser-readme.md-audit.json",
-        "name": "engine-parser-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-parser-README.md-audit.json",
+        "name": "engine-parser-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-parser-r-e-a-d-m-e.md-audit.json"
       },
@@ -5010,15 +5010,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-artifacts-readme.md-audit.json",
-        "name": "engine-artifacts-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-artifacts-README.md-audit.json",
+        "name": "engine-artifacts-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-artifacts-r-e-a-d-m-e.md-audit.json"
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-normalizer-readme.md-audit.json",
-        "name": "engine-normalizer-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-normalizer-README.md-audit.json",
+        "name": "engine-normalizer-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-normalizer-r-e-a-d-m-e.md-audit.json"
       },
@@ -5031,8 +5031,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-governance-readme.md-audit.json",
-        "name": "engine-governance-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-governance-README.md-audit.json",
+        "name": "engine-governance-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-governance-r-e-a-d-m-e.md-audit.json"
       },
@@ -5094,8 +5094,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-executor-readme.md-audit.json",
-        "name": "engine-executor-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-executor-README.md-audit.json",
+        "name": "engine-executor-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-executor-r-e-a-d-m-e.md-audit.json"
       },
@@ -5115,8 +5115,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-loader-readme.md-audit.json",
-        "name": "engine-loader-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-loader-README.md-audit.json",
+        "name": "engine-loader-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-loader-r-e-a-d-m-e.md-audit.json"
       },
@@ -5213,8 +5213,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-readme.md-audit.json",
-        "name": "engine-readme.md-audit.json",
+        "path": "/workspace/gl-runtime-execution-platform/engine/.governance/audit-results/per-file-reports/engine-README.md-audit.json",
+        "name": "engine-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-r-e-a-d-m-e.md-audit.json"
       },
@@ -7180,15 +7180,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/deployment-scripts/01-architecture-analysis.md",
-        "name": "01-architecture-analysis.md",
+        "path": "/workspace/deployment-scripts/01-ARCHITECTURE-ANALYSIS.md",
+        "name": "01-ARCHITECTURE-ANALYSIS.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
         "suggestion": "01-a-r-c-h-i-t-e-c-t-u-r-e-a-n-a-l-y-s-i-s.md"
       },
       {
         "type": "file",
-        "path": "/workspace/deployment-scripts/air-gapped/00-readme.md",
-        "name": "00-readme.md",
+        "path": "/workspace/deployment-scripts/air-gapped/00-README.md",
+        "name": "00-README.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
         "suggestion": "00-r-e-a-d-m-e.md"
       },
@@ -7236,8 +7236,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/deployment-scripts/cluster/00-readme.md",
-        "name": "00-readme.md",
+        "path": "/workspace/deployment-scripts/cluster/00-README.md",
+        "name": "00-README.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
         "suggestion": "00-r-e-a-d-m-e.md"
       },
@@ -7292,8 +7292,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/deployment-scripts/single-node/00-readme.md",
-        "name": "00-readme.md",
+        "path": "/workspace/deployment-scripts/single-node/00-README.md",
+        "name": "00-README.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
         "suggestion": "00-r-e-a-d-m-e.md"
       },
@@ -7355,8 +7355,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/gl-automation-instant-platform/docs/instant-compliance.md",
-        "name": "instant-compliance.md",
+        "path": "/workspace/gl-automation-instant-platform/docs/INSTANT_COMPLIANCE.md",
+        "name": "INSTANT_COMPLIANCE.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
         "suggestion": "i-n-s-t-a-n-t-c-o-m-p-l-i-a-n-c-e.md"
       },
@@ -7495,10 +7495,10 @@
       },
       {
         "type": "file",
-        "path": "/workspace/docs/archive/todo-backup.md",
-        "name": "todo-backup.md",
+        "path": "/workspace/docs/archive/todo.backup.md",
+        "name": "todo.backup.md",
         "rule": "Markdown files can use PascalCase or lowercase with hyphens",
-        "suggestion": "todo-backup.md"
+        "suggestion": "todo.backup.md"
       },
       {
         "type": "file",
@@ -8055,8 +8055,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-validator-readme.md.json",
-        "name": "engine-validator-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-validator-README.md.json",
+        "name": "engine-validator-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-validator-r-e-a-d-m-e.md.json"
       },
@@ -8125,8 +8125,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-loader-readme.md.json",
-        "name": "engine-loader-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-loader-README.md.json",
+        "name": "engine-loader-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-loader-r-e-a-d-m-e.md.json"
       },
@@ -8139,8 +8139,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-renderer-readme.md.json",
-        "name": "engine-renderer-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-renderer-README.md.json",
+        "name": "engine-renderer-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-renderer-r-e-a-d-m-e.md.json"
       },
@@ -8216,15 +8216,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-executor-readme.md.json",
-        "name": "engine-executor-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-executor-README.md.json",
+        "name": "engine-executor-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-executor-r-e-a-d-m-e.md.json"
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-parser-readme.md.json",
-        "name": "engine-parser-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-parser-README.md.json",
+        "name": "engine-parser-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-parser-r-e-a-d-m-e.md.json"
       },
@@ -8265,8 +8265,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-normalizer-readme.md.json",
-        "name": "engine-normalizer-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-normalizer-README.md.json",
+        "name": "engine-normalizer-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-normalizer-r-e-a-d-m-e.md.json"
       },
@@ -8356,15 +8356,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-artifacts-readme.md.json",
-        "name": "engine-artifacts-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-artifacts-README.md.json",
+        "name": "engine-artifacts-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-artifacts-r-e-a-d-m-e.md.json"
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-governance-readme.md.json",
-        "name": "engine-governance-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-governance-README.md.json",
+        "name": "engine-governance-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-governance-r-e-a-d-m-e.md.json"
       },
@@ -8384,8 +8384,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-readme.md.json",
-        "name": "engine-readme.md.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/file-reports/engine-README.md.json",
+        "name": "engine-README.md.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-r-e-a-d-m-e.md.json"
       },
@@ -8405,8 +8405,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-validator-readme.md-audit.json",
-        "name": "engine-validator-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-validator-README.md-audit.json",
+        "name": "engine-validator-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-validator-r-e-a-d-m-e.md-audit.json"
       },
@@ -8426,8 +8426,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-renderer-readme.md-audit.json",
-        "name": "engine-renderer-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-renderer-README.md-audit.json",
+        "name": "engine-renderer-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-renderer-r-e-a-d-m-e.md-audit.json"
       },
@@ -8447,8 +8447,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-parser-readme.md-audit.json",
-        "name": "engine-parser-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-parser-README.md-audit.json",
+        "name": "engine-parser-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-parser-r-e-a-d-m-e.md-audit.json"
       },
@@ -8496,15 +8496,15 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-artifacts-readme.md-audit.json",
-        "name": "engine-artifacts-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-artifacts-README.md-audit.json",
+        "name": "engine-artifacts-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-artifacts-r-e-a-d-m-e.md-audit.json"
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-normalizer-readme.md-audit.json",
-        "name": "engine-normalizer-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-normalizer-README.md-audit.json",
+        "name": "engine-normalizer-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-normalizer-r-e-a-d-m-e.md-audit.json"
       },
@@ -8517,8 +8517,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-governance-readme.md-audit.json",
-        "name": "engine-governance-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-governance-README.md-audit.json",
+        "name": "engine-governance-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-governance-r-e-a-d-m-e.md-audit.json"
       },
@@ -8580,8 +8580,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-executor-readme.md-audit.json",
-        "name": "engine-executor-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-executor-README.md-audit.json",
+        "name": "engine-executor-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-executor-r-e-a-d-m-e.md-audit.json"
       },
@@ -8601,8 +8601,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-loader-readme.md-audit.json",
-        "name": "engine-loader-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-loader-README.md-audit.json",
+        "name": "engine-loader-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-loader-r-e-a-d-m-e.md-audit.json"
       },
@@ -8699,8 +8699,8 @@
       },
       {
         "type": "file",
-        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-readme.md-audit.json",
-        "name": "engine-readme.md-audit.json",
+        "path": "/workspace/machine-native-ops/gl.runtime.engine-platform/.governance/audit-results/per-file-reports/engine-README.md-audit.json",
+        "name": "engine-README.md-audit.json",
         "rule": "JSON files must use lowercase with hyphens",
         "suggestion": "engine-r-e-a-d-m-e.md-audit.json"
       },

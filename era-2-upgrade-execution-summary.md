@@ -26,7 +26,7 @@ The **One-Stop Upgrade Pipeline v1.0** has been successfully executed following 
 
 All planning and specification documents were created:
 
-1. ✅ **One-Stop Upgrade Pipeline v1.0 Specification** (`ecosystem/governance/specs/one-stop-upgrade-pipeline-v1-0.md`)
+1. ✅ **One-Stop Upgrade Pipeline v1.0 Specification** (`ecosystem/governance/specs/ONE-STOP-UPGRADE-PIPELINE-v1.0.md`)
    - Official 6-step upgrade sequence
    - Blocking violation types defined
    - Evidence chain requirements specified
@@ -36,12 +36,12 @@ All planning and specification documents were created:
    - Command-line options: `--step`, `--dry-run`, `--verbose`, `--force`
    - Comprehensive execution reporting
 
-3. ✅ **Era-2 Backward Closed Loop Task List** (`ecosystem/governance/tasks/era-2-backward-closed-loop.md`)
+3. ✅ **Era-2 Backward Closed Loop Task List** (`ecosystem/governance/tasks/ERA-2-BACKWARD-CLOSED-LOOP.md`)
    - 75 comprehensive tasks across 5 categories
    - Complete progress tracking matrix
    - Critical blocking points defined
 
-4. ✅ **GLCM-WORLDCLASS Validation Rules** (`ecosystem/governance/rules/glcm-worldclass.md`)
+4. ✅ **GLCM-WORLDCLASS Validation Rules** (`ecosystem/governance/rules/GLCM-WORLDCLASS.md`)
    - Comprehensive validation rule set
    - Evidence-Based Validation (EBV)
    - Semantic Integrity Validation (SIV)
@@ -354,10 +354,10 @@ python ecosystem/era2_upgrade_exec.py --step 2  # Registry Update
 ## 📚 Deliverables Summary
 
 ### Core Documents Created
-1. ✅ `ecosystem/governance/specs/one-stop-upgrade-pipeline-v1-0.md`
+1. ✅ `ecosystem/governance/specs/ONE-STOP-UPGRADE-PIPELINE-v1.0.md`
 2. ✅ `ecosystem/upgrade_pipeline.py`
-3. ✅ `ecosystem/governance/tasks/era-2-backward-closed-loop.md`
-4. ✅ `ecosystem/governance/rules/glcm-worldclass.md`
+3. ✅ `ecosystem/governance/tasks/ERA-2-BACKWARD-CLOSED-LOOP.md`
+4. ✅ `ecosystem/governance/rules/GLCM-WORLDCLASS.md`
 5. ✅ `ecosystem/governance/data/semantic_matrix.yaml`
 6. ✅ `ecosystem/era2_upgrade_exec.py`
 

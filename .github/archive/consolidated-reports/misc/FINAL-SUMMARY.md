@@ -87,7 +87,7 @@ ns-root/namespaces-mcp/
   - 以及其他 27 個報告文件
 
 **level3 保留的獨有內容:**
-- `readme.md` - 主要文檔
+- `README.md` - 主要文檔
 - `dag/` - DAG 相關功能
 - `observability/` - 可觀測性功能
 - `security/` - 安全功能
@@ -100,7 +100,7 @@ ns-root/namespaces-mcp/
 - `.prettierrc.json` - Prettier 代碼格式化配置
 
 **level4 保留的獨有內容:**
-- `readme.md` - 主要文檔
+- `README.md` - 主要文檔
 - `k8s/` - Kubernetes 配置
 - `src/autonomy/` - 自主性相關代碼
 

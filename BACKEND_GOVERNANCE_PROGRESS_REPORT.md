@@ -175,7 +175,7 @@ Same semantic concept can be expressed in multiple languages and sealed together
 ## Files Created
 
 ### Specifications
-- `ecosystem/governance/specs/backend-governance-responsibility.md`
+- `ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md`
 - `backend_governance_todo.md`
 
 ### Layer 1 Components (Semantic Layer)
@@ -190,7 +190,7 @@ Same semantic concept can be expressed in multiple languages and sealed together
 - `ecosystem/tests/governance/test_semantic_layer.py`
 
 ### Reports
-- `final-implementation-report.md`
+- `FINAL_IMPLEMENTATION_REPORT.md`
 - `BACKEND_GOVERNANCE_PROGRESS_REPORT.md`
 
 ---

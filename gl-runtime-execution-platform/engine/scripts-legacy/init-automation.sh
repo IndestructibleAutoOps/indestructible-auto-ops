@@ -278,7 +278,7 @@ GitHub Actions 工作流程已設定於：
 
 ## 參考文件
 
-- [AUTOMATION-readme.md](./AUTOMATION-readme.md) - 詳細使用指南
+- [AUTOMATION-README.md](./AUTOMATION-README.md) - 詳細使用指南
 - [PR-1-REVIEW-REPORT.md](./PR-1-REVIEW-REPORT.md) - 完整審查報告
 - [PR-1-ACTION-PLAN.md](./PR-1-ACTION-PLAN.md) - 改進計劃
 EOF
@@ -305,6 +305,6 @@ echo "  python scripts/auto-quality-check.py    # 執行品質檢查"
 echo "  python scripts/auto-fix-issues.py       # 自動修復問題"
 echo ""
 echo "📚 詳細文件："
-echo "  - AUTOMATION-readme.md"
+echo "  - AUTOMATION-README.md"
 echo "  - AUTOMATION-INIT-REPORT.md"
 echo ""

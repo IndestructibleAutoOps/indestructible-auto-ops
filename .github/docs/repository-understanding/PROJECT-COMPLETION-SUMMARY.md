@@ -186,7 +186,7 @@ File/System Change Detected
 ### Documentation
 - `FINAL_SYSTEM_DOCUMENTATION.md` - Complete system guide (600+ lines)
 - `EVENT_DRIVEN_SYSTEM_STATUS.md` - Current status report
-- `readme.md` - Project overview
+- `README.md` - Project overview
 - `repo_understanding_todo.md` - Task tracking
 
 ### Configuration

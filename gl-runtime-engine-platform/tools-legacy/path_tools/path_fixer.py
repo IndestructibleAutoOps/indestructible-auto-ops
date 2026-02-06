@@ -189,7 +189,7 @@ class PathFixer:
     def _find_naming_issues(self):
         """找出命名問題並建議修復"""
         snake_case_pattern = re.compile(r"^[a-z][a-z0-9]*(_[a-z0-9]+)*$")
-        exceptions = {"README", "license", "CHANGELOG", "TODO", "INDEX"}
+        exceptions = {"README", "LICENSE", "CHANGELOG", "TODO", "INDEX"}
         for file_path in self.target_path.rglob("*"):
             if file_path.is_file() and not file_path.name.startswith("."):
                 stem = file_path.stem

@@ -798,7 +798,7 @@ All automated checks must pass:
 ### Internal Resources
 - [Code Review Checklist](../.github/CODE_REVIEW_CHECKLIST.md)
 - [Governance Plan](../CODE_QUALITY_GOVERNANCE_PLAN.md)
-- [Project README](../readme.md)
+- [Project README](../README.md)
 
 ---
 

@@ -101,7 +101,7 @@ describe('ArchitectureLinter', () => {
       expect(violations).toContainEqual(
         expect.objectContaining({
           rule: 'file-organization',
-          message: 'Missing readme.md',
+          message: 'Missing README.md',
         })
       )
 

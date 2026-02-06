@@ -12,12 +12,12 @@
 #
 #!/usr/bin/env python3
 """
-Generate machine-native documentation (mndoc.yaml) from readme.md.
-This script extracts structured information from readme.md and generates
+Generate machine-native documentation (mndoc.yaml) from README.md.
+This script extracts structured information from README.md and generates
 a machine-consumable YAML file following the MN-DOC schema.
 Usage:
   python tools/docs/generate_mndoc_from_readme.py \
-    --readme readme.md \
+    --readme README.md \
     --output docs/unmanned-island.mndoc.yaml
   python tools/docs/generate_mndoc_from_readme.py --help
 """
@@ -32,7 +32,7 @@ try:
 except ImportError:
     print("Error: PyYAML is required. Install with: pip install pyyaml")
     sys.exit(1)
-# Regular expressions for parsing readme.md
+# Regular expressions for parsing README.md
 TITLE_RE = re.compile(r"^#\s+(.*)", re.MULTILINE)
 VERSION_BADGE_RE = re.compile(r"version-([\d\.]+)-")
 SECTION_H2_RE = re.compile(r"^##\s+(.+)$", re.MULTILINE)
@@ -197,8 +197,8 @@ def extract_summary(text: str) -> str:
             summary = summary[:500] + "..."
         return summary
     return "Enterprise-grade cloud-native intelligent automation platform."
-def generate_mndoc(readme_path: Path, source_path: str = "readme.md") -> dict[str, Any]:
-    """Generate MN-DOC structure from readme.md content."""
+def generate_mndoc(readme_path: Path, source_path: str = "README.md") -> dict[str, Any]:
+    """Generate MN-DOC structure from README.md content."""
     text = readme_path.read_text(encoding="utf-8")
     mndoc = {
         "$schema": "https://schema.superroot.kn/mndoc/v1",
@@ -226,13 +226,13 @@ def generate_mndoc(readme_path: Path, source_path: str = "readme.md") -> dict[st
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="Generate machine-native documentation (mndoc.yaml) from readme.md"
+        description="Generate machine-native documentation (mndoc.yaml) from README.md"
     )
     parser.add_argument(
         "--readme",
         type=Path,
-        default=Path("readme.md"),
-        help="Path to readme.md file (default: readme.md)",
+        default=Path("README.md"),
+        help="Path to README.md file (default: README.md)",
     )
     parser.add_argument(
         "--output",

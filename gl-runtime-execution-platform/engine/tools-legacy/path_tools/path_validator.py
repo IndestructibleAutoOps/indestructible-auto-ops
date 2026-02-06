@@ -134,7 +134,7 @@ class PathValidator:
         )
     def _validate_structure(self):
         """驗證結構完整性"""
-        required_files = ["readme.md"]
+        required_files = ["README.md"]
         for file_name in required_files:
             if not (self.target_path / file_name).exists():
                 self.issues.append(
@@ -259,7 +259,7 @@ class PathValidator:
     def _validate_naming(self):
         """驗證命名規範"""
         snake_case_pattern = re.compile(r"^[a-z][a-z0-9]*(_[a-z0-9]+)*$")
-        exceptions = {"README", "license", "CHANGELOG", "TODO", "INDEX"}
+        exceptions = {"README", "LICENSE", "CHANGELOG", "TODO", "INDEX"}
         for file_path in self.target_path.rglob("*"):
             if file_path.is_file() and not file_path.name.startswith("."):
                 stem = file_path.stem

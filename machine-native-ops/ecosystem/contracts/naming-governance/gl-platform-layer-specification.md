@@ -275,7 +275,7 @@ gl-{module}/
 │   ├── test_main.py
 │   └── test_services.py
 └── docs/
-    ├── readme.md
+    ├── README.md
     └── API.md
 ```
 

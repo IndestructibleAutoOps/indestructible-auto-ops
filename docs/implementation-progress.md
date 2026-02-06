@@ -193,7 +193,7 @@
 - `audit-reports/real-audit-report.md` - Comprehensive audit report
 - `designs/multi-agent-architecture.md` - MAS architecture design
 - `audit-reports/engineering-recommendations.md` - Prioritized recommendations
-- `audit-reports/final-summary.md` - Complete summary
+- `audit-reports/FINAL-SUMMARY.md` - Complete summary
 - `docs/implementation-progress.md` - This progress report
 
 ---

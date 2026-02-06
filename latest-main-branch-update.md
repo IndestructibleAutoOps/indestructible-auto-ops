@@ -84,7 +84,7 @@ Complete governance management system:
 - `test_strict_version_management.py` (238 lines)
 
 #### Documentation & Configuration
-- `readme.md` (141 lines) - Meta-governance overview
+- `README.md` (141 lines) - Meta-governance overview
 - `DRIFT_ANALYSIS_REPORT.json` (1,693 lines) - Drift analysis
 - `META_GOVERNANCE_APPLICATION_REPORT.md` (770 lines) - Application report
 - `FULL_INTEGRATION_REPORT.md` - Integration status
@@ -107,12 +107,12 @@ Enhanced platform template system:
 
 #### Cloud Template (`platform-templates/cloud-template/`)
 - `configs/platform-config.aws.yaml` (134 lines) - AWS configuration
-- Enhanced readme.md (422 lines)
+- Enhanced README.md (422 lines)
 
 #### On-Premise Template (`platform-templates/on-premise-template/`)
 - `configs/platform-config.yaml` (212 lines)
 - `scripts/prerequisites.sh` (159 lines)
-- Enhanced readme.md (536 lines)
+- Enhanced README.md (536 lines)
 
 #### Testing
 - `test_templates.py` (204 lines) - Template testing

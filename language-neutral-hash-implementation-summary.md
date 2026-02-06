@@ -30,7 +30,7 @@ This violates the core principle of IndestructibleAutoOps:
 
 ### Phase 1: GL-LanguageNeutralHash Specification ✅
 
-**File**: `ecosystem/governance/gl-languageneutralhash-spec-v1.md`
+**File**: `ecosystem/governance/GL-LanguageNeutralHash-Spec-v1.md`
 
 **Key Components**:
 1. **Semanticizer** - Converts natural language to English semantic tokens/AST
@@ -99,7 +99,7 @@ python ecosystem/tools/semanticizer.py "我們重新啟動了 nginx" --lang zh -
 
 ### Phase 3: GL-NarrativeFreeCompliance v2.0 Specification ✅
 
-**File**: `ecosystem/governance/gl-narrativefreecompliance-spec-v2.md`
+**File**: `ecosystem/governance/GL-NarrativeFreeCompliance-Spec-v2.md`
 
 **Key Innovation**: **GLCM-FCT (Fabricated Completion Timeline) Detection** - 🔴 CRITICAL
 

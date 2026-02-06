@@ -305,8 +305,8 @@ def main():
     print(f"📁 包含 {len(checker.knowledge_base.get('directories', {}))} 個目錄\n")
     # 演示一些操作檢查
     test_operations = [
-        ('read', 'machine-native-ops/readme.md'),
-        ('modify', 'machine-native-ops/makefile'),
+        ('read', 'machine-native-ops/README.md'),
+        ('modify', 'machine-native-ops/Makefile'),
         ('delete', 'machine-native-ops/root.env.sh'),
         ('create', 'new_file.txt')
     ]

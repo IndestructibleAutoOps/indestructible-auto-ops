@@ -560,8 +560,8 @@ class DecisionEngine:
         # 尋找目標目錄中的主要文件
         target_path = PLAYBOOKS_PATH / target_dir
         if target_path.exists():
-            # 優先嵌入到 INDEX.md 或 readme.md
-            for candidate in ["INDEX.md", "readme.md", "index.yaml"]:
+            # 優先嵌入到 INDEX.md 或 README.md
+            for candidate in ["INDEX.md", "README.md", "index.yaml"]:
                 if (target_path / candidate).exists():
                     return str(target_path / candidate), "## Related Assets"
         return None, None

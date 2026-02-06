@@ -206,7 +206,7 @@ docs/workflows
 
 ```
 scripts
-scripts/readme.md
+scripts/README.md
 scripts/automation
 scripts/build
 scripts/ci
@@ -231,7 +231,7 @@ scripts/sync
 
 ```
 tools
-tools/readme.md
+tools/README.md
 tools/_scratch
 tools/ai
 tools/automation

@@ -117,7 +117,7 @@
 /
 ├── CONSOLIDATED_PROJECT_STATUS.md  ← Central hub (this file)
 ├── todo.md                         ← Task tracking
-├── readme.md                       ← Project overview
+├── README.md                       ← Project overview
 │
 ├── Security/
 │   ├── PHASE2_EVAL_REMEDIATION_COMPLETE.md
@@ -181,8 +181,8 @@
 
 | Tool | Purpose | Status | Documentation |
 |------|---------|--------|---------------|
-| `scripts/auto-quality-check.py` | Automated quality checks | ✅ Ready | AUTOMATION-readme.md |
-| `scripts/auto-fix-issues.py` | Automated fixes | ✅ Ready | AUTOMATION-readme.md |
+| `scripts/auto-quality-check.py` | Automated quality checks | ✅ Ready | AUTOMATION-README.md |
+| `scripts/auto-fix-issues.py` | Automated fixes | ✅ Ready | AUTOMATION-README.md |
 
 ---
 
@@ -405,9 +405,9 @@ All 7 remaining HIGH issues are eval() usage in tool/analysis files:
 ## 🔗 Quick Links
 
 ### Documentation
-- [README](readme.md) - Project overview
+- [README](README.md) - Project overview
 - [QUICKSTART](QUICKSTART.md) - Quick start guide
-- [AUTOMATION-README](AUTOMATION-readme.md) - Automation guide
+- [AUTOMATION-README](AUTOMATION-README.md) - Automation guide
 
 ### Security
 - [Security Policy](SECURITY.md) - Security guidelines

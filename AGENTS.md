@@ -82,7 +82,7 @@ Our agent system follows established Multi-Agent System principles:
 │   └── virtual-experts.yaml
 ├── schemas/           # JSON schemas for validation
 │   └── virtual-experts.schema.json
-└── readme.md          # Configuration documentation
+└── README.md          # Configuration documentation
 ```
 
 ### Virtual Expert Team
@@ -96,7 +96,7 @@ The platform includes a virtual expert team for specialized domain knowledge:
 - **DevOps Specialist** - CI/CD and infrastructure automation
 - **Cloud Architect** - Cloud-native architecture and services
 
-See [Agent Configuration README](.github/config/agents/readme.md) for detailed configuration instructions.
+See [Agent Configuration README](.github/config/agents/README.md) for detailed configuration instructions.
 
 ## Agent Orchestration
 
@@ -291,7 +291,7 @@ These hooks integrate with Git workflows and CI/CD pipelines to ensure:
 
 ### Creating Custom Agents
 
-See [Agent Configuration README](.github/config/agents/readme.md) for detailed instructions on:
+See [Agent Configuration README](.github/config/agents/README.md) for detailed instructions on:
 - Defining agent profiles
 - Configuring agent capabilities
 - Setting up domain mappings
@@ -303,9 +303,9 @@ See [Agent Configuration README](.github/config/agents/readme.md) for detailed i
 ### Core Documentation
 
 - **[Multi-Agent Architecture Design](designs/multi-agent-architecture.md)** - Detailed MAS design and implementation
-- **[Agent Configuration README](.github/config/agents/readme.md)** - Configuration guide and examples
-- **[Main README](readme.md)** - Platform overview and GL architecture
-- **[GL Layer Documentation](gl.runtime.engine-platform/readme.md)** - Runtime engine details
+- **[Agent Configuration README](.github/config/agents/README.md)** - Configuration guide and examples
+- **[Main README](README.md)** - Platform overview and GL architecture
+- **[GL Layer Documentation](gl.runtime.engine-platform/README.md)** - Runtime engine details
 
 ### Additional Resources
 
@@ -319,7 +319,7 @@ See [Agent Configuration README](.github/config/agents/readme.md) for detailed i
 ### Getting Help
 
 For questions about agents:
-1. Review the documentation in `.github/config/agents/readme.md`
+1. Review the documentation in `.github/config/agents/README.md`
 2. Check the multi-agent architecture design in `designs/multi-agent-architecture.md`
 3. Review AI Behavior Contract in `.github/AI-BEHAVIOR-CONTRACT.md`
 4. Consult technical guidelines in `.github/copilot-instructions.md`

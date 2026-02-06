@@ -381,12 +381,12 @@ class RefactorEvolutionWorkflow:
                     )
             if "organization" in focus_areas:
                 has_init = (target_path / "__init__.py").exists()
-                has_readme = (target_path / "readme.md").exists()
+                has_readme = (target_path / "README.md").exists()
                 if not has_init and analysis["file_counts"]["python"] > 0:
                     analysis["issues"].append("Missing __init__.py for Python package")
                 if not has_readme:
                     analysis["recommendations"].append(
-                        "Add readme.md for documentation"
+                        "Add README.md for documentation"
                     )
         return analysis
     def _summarize_analysis(self, results: List[Dict]) -> Dict[str, Any]:

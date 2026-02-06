@@ -222,7 +222,7 @@ sudo systemctl status event-driven-system.service
 
 ### 文檔資源
 - 查看本目錄中的各個文檔文件
-- 閱讀 `workspace/tools/repository-understanding/readme.md`
+- 閱讀 `workspace/tools/repository-understanding/README.md`
 
 ### 系統檢查
 ```bash

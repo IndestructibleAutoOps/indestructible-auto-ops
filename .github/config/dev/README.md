@@ -231,7 +231,7 @@ npm run type-check
 ├── requirements.txt            # Python 依賴
 ├── prometheus.yml              # 監控配置
 ├── KB.md                       # 詳細知識庫文檔
-└── readme.md                   # 本文件
+└── README.md                   # 本文件
 ```
 
 ## 故障排除
@@ -277,7 +277,7 @@ sudo apt-get install <tool-name>
 如果你發現可以進一步優化配置，歡迎提交 PR！請確保：
 
 1. 測試你的更改不會導致初始化超時
-2. 更新相關文檔（readme.md 和 KB.md）
+2. 更新相關文檔（README.md 和 KB.md）
 3. 說明優化的原因和效果
 
 ---

@@ -325,7 +325,7 @@ findings:
       evidence_refs:
         - "unique_id_11"
       location:
-        file: "docs/readme.md"
+        file: "docs/README.md"
         line: "1-20"
       affected_components:
         - "gl.ai.gpt-platform"

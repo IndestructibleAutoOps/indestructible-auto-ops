@@ -44,7 +44,7 @@ tests/
 ├── conftest.py              # Pytest 配置和 fixtures
 ├── pytest.ini               # Pytest 設置
 ├── requirements-test.txt    # 測試依賴
-├── readme.md                # 測試文檔
+├── README.md                # 測試文檔
 ├── helpers/                 # 測試工具類
 │   ├── __init__.py
 │   └── test_base.py
@@ -162,7 +162,7 @@ addopts =
 
 ### 7. 測試文檔 ✅
 
-創建了 `tests/readme.md`，包含：
+創建了 `tests/README.md`，包含：
 - 測試類型說明
 - 運行測試的命令
 - Fixtures 文檔

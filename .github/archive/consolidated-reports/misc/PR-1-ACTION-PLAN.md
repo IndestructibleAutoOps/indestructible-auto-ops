@@ -451,13 +451,13 @@
 **任務清單**:
 - [ ] 找出重複文件
   ```bash
-  find . -name "TODO.md" -o -name "readme.md"
+  find . -name "TODO.md" -o -name "README.md"
   ```
 
 - [ ] 建立文件結構
   ```
   docs/
-  ├── readme.md (主要文件)
+  ├── README.md (主要文件)
   ├── architecture/
   ├── guides/
   │   ├── development.md

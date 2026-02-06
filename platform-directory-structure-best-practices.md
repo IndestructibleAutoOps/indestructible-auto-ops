@@ -171,7 +171,7 @@ platform-monorepo/
 │   ├── helm/
 │   ├── kustomize/
 │   └── docker-compose/
-└── makefile                 # 統一入口點
+└── Makefile                 # 統一入口點
 ```
 
 #### 模式二：按組件優先，然後按環境
@@ -212,7 +212,7 @@ module-name/
 ├── versions.tf         # Terraform 和提供者版本
 ├── providers.tf        # 提供者配置
 ├── terraform.tfvars    # 環境特定變量（可選）
-├── readme.md           # 模塊文檔
+├── README.md           # 模塊文檔
 └── tests/              # 模塊測試
     └── test.go
 ```

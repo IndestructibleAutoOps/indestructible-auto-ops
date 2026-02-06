@@ -57,7 +57,7 @@ ecosystem/tests/semantic_defense/
 ├── __init__.py
 ├── conftest.py
 ├── pytest.ini
-├── readme.md
+├── README.md
 ├── run_tests.py
 ├── test_semantic_corruption/
 │   └── test_semantic_corruption.py
@@ -142,7 +142,7 @@ ecosystem/tests/semantic_defense/
 ---
 
 ### 7. Documentation
-**File**: `ecosystem/tests/semantic_defense/readme.md`
+**File**: `ecosystem/tests/semantic_defense/README.md`
 
 **Contents**:
 - Test category overview
@@ -392,7 +392,7 @@ All tests must pass (CRITICAL, HIGH, MEDIUM)
 - `ecosystem/tests/semantic_defense/__init__.py` - Package initialization
 - `ecosystem/tests/semantic_defense/conftest.py` - Test configuration
 - `ecosystem/tests/semantic_defense/pytest.ini` - pytest configuration
-- `ecosystem/tests/semantic_defense/readme.md` - Documentation
+- `ecosystem/tests/semantic_defense/README.md` - Documentation
 - `ecosystem/tests/semantic_defense/run_tests.py` - Test runner
 - `ecosystem/tests/semantic_defense/test_semantic_corruption/test_semantic_corruption.py` - Category 1 tests
 - `ecosystem/tests/semantic_defense/test_hash_divergence/test_hash_divergence.py` - Category 2 tests

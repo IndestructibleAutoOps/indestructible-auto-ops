@@ -398,7 +398,7 @@ echo "All checks passed!"
 ### 相關文檔
 - [完整分析報告](duplicate_paths_analysis.json)
 - [Sprint 1.3 Day 1 報告](SPRINT13_DAY1_COMPLETION_REPORT.md)
-- [測試文檔](tests/readme.md)
+- [測試文檔](tests/README.md)
 
 ### Git 資源
 - 當前分支: feature/add-repository-structure

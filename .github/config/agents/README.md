@@ -20,7 +20,7 @@ config/agents/
 │   └── virtual-experts.yaml
 ├── schemas/           # JSON schemas for validation (驗證模式)
 │   └── virtual-experts.schema.json
-└── readme.md          # This file
+└── README.md          # This file
 ```
 
 ## 📋 Configuration Types
@@ -121,7 +121,7 @@ Create agent implementation in `services/agents/`:
 ```
 services/agents/
 └── your-agent/
-    ├── readme.md
+    ├── README.md
     ├── agent.py (or .ts, .js)
     └── tests/
 ```
@@ -141,10 +141,10 @@ agent_profile:
 
 ## 📖 Related Documentation
 
-- **Agent Implementations**: `services/agents/readme.md`
+- **Agent Implementations**: `services/agents/README.md`
 - **AI Constitution**: `config/ai-constitution.yaml`
 - **System Architecture**: `docs/ARCHITECTURE.md`
-- **Virtual Experts Guide**: `automation/autonomous/nucleus-orchestrator/readme.md`
+- **Virtual Experts Guide**: `automation/autonomous/nucleus-orchestrator/README.md`
 
 ## 🔗 Configuration References
 
@@ -235,7 +235,7 @@ All references have been updated accordingly.
 
 For questions or issues:
 
-- Check `services/agents/readme.md` for implementation details
+- Check `services/agents/README.md` for implementation details
 - Review AI Behavior Contract: `.github/AI-BEHAVIOR-CONTRACT.md`
 - See technical guidelines: `.github/copilot-instructions.md`
 

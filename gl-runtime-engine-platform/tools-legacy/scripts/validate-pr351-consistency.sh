@@ -162,7 +162,7 @@ echo ""
 echo "✓ Test 7: Checking bilingual consistency..."
 BILINGUAL_DOCS=(
   "docs/security/PR351_SECURITY_ENHANCEMENTS.md"
-  "governance/10-policy/readme.md"
+  "governance/10-policy/README.md"
 )
 
 for doc in "${BILINGUAL_DOCS[@]}"; do

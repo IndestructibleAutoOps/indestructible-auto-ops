@@ -26,7 +26,7 @@
 
 ### level3/ 獨有內容
 ```
-- readme.md (重要文檔)
+- README.md (重要文檔)
 - dag/ (子目錄)
 - observability/ (子目錄)
 - security/ (子目錄)
@@ -85,7 +85,7 @@
 
 ### level4/ 獨有內容
 ```
-- readme.md (重要文檔)
+- README.md (重要文檔)
 - k8s/ (Kubernetes 配置目錄)
 - src/autonomy/ (自主性相關代碼)
 ```
@@ -151,7 +151,7 @@
    - 複製 .github, .eslintrc.json, .prettierrc.json
    
 2. **再處理文檔文件**（低風險）
-   - 複製 readme.md
+   - 複製 README.md
    - 合併差異的文檔
 
 3. **最後處理 YAML 和代碼文件**（高風險）

@@ -39,7 +39,7 @@ When enabling Git Sync, be careful not to create README files through the GitBoo
 - ❌ Potentially break build and deployment processes
 - ❌ Lead to unpredictable file prioritization
 
-⚠️ **Note**: This includes files named `readme.md`, `readme.md`, `Readme.md`, and `README` without an extension.
+⚠️ **Note**: This includes files named `README.md`, `readme.md`, `Readme.md`, and `README` without an extension.
 
 ✅ **Best Practice**: Always manage your README files directly in your git repository.
 
@@ -51,9 +51,9 @@ When enabling Git Sync, be careful not to create README files through the GitBoo
 
 Please ensure:
 
-#### 1. readme.md File Location
+#### 1. README.md File Location
 
-Your repository **has a `readme.md` file in the root directory** (or in the folder specified in `.gitbook.yaml`) created directly in your git repository.
+Your repository **has a `README.md` file in the root directory** (or in the folder specified in `.gitbook.yaml`) created directly in your git repository.
 
 - This file is **required** and serves as the homepage of your documentation
 - For more details, see our [.gitbook.yaml content configuration]([EXTERNAL_URL_REMOVED])
@@ -89,7 +89,7 @@ Create or edit a `.gitbook.yaml` file in the repository root:
 root: ./docs/
 
 structure:
-  readme: readme.md
+  readme: README.md
   summary: SUMMARY.md
 ```
 
@@ -122,7 +122,7 @@ If after updating your repository by adding or modifying Markdown files, you don
 ```markdown
 # Table of Contents
 
-* [Introduction](readme.md)
+* [Introduction](README.md)
 * [Quick Start](docs/quickstart.md)
 * [Configuration Guide](docs/configuration.md)
   * [Basic Configuration](docs/configuration/basic.md)

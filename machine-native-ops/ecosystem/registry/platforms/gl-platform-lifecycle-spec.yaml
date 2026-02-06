@@ -329,7 +329,7 @@ spec:
   # 文檔要求
   documentation:
     requiredDocuments:
-      - name: "readme.md"
+      - name: "README.md"
         requiredFor: ["review", "active"]
         content:
           - "平台描述"
@@ -339,7 +339,7 @@ spec:
           - "API 文檔"
           - "故障排除"
 
-      - name: "architecture.md"
+      - name: "ARCHITECTURE.md"
         requiredFor: ["review", "active"]
         content:
           - "架構概述"

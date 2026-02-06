@@ -17,7 +17,7 @@ The `config/` directory is the unified center for all system configurations, inc
 
 ```
 config/
-├── readme.md                           # 配置中心說明
+├── README.md                           # 配置中心說明
 │
 ├── 📋 主配置檔案 / Master Configs
 ├── system-manifest.yaml                # 系統宣告清單
@@ -246,6 +246,6 @@ cp .env.staging .env
 
 ## 📞 支援 / Support
 
-- 📖 [配置文檔](./readme.md)
+- 📖 [配置文檔](./README.md)
 - 🐛 [報告問題]([EXTERNAL_URL_REMOVED])
 - 💬 [討論]([EXTERNAL_URL_REMOVED])

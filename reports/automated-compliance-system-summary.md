@@ -23,7 +23,7 @@
 - **狀態:** ✅ 已配置並啟用
 
 ### 3. 完整文檔
-- **文件:** `ecosystem/governance/automated-compliance-verification-system.md`
+- **文件:** `ecosystem/governance/AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md`
 - **內容:** 完整的使用指南、配置選項、故障排除
 - **狀態:** ✅ 已創建
 
@@ -195,7 +195,7 @@ self.thresholds = {
 ## 📚 相關文檔
 
 - [COMPLIANCE-SCORE-DASHBOARD.md](COMPLIANCE-SCORE-DASHBOARD.md) - 合規性評分儀表板
-- [AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md](../ecosystem/governance/automated-compliance-verification-system.md) - 完整系統文檔
+- [AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md](../ecosystem/governance/AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM.md) - 完整系統文檔
 - [tools-registry.yaml](../ecosystem/governance/tools-registry.yaml) - 工具註冊表
 
 ---

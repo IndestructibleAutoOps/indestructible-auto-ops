@@ -222,7 +222,7 @@ graph TD
 ```mermaid
 flowchart LR
     subgraph "Input Sources"
-        README[readme.md]
+        README[README.md]
         CONTRIB[CONTRIBUTING.md]
         MANIFEST[governance-manifest.yaml]
         DEVGUIDE[DEVELOPER_GUIDELINES.md]

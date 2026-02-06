@@ -94,7 +94,7 @@ class ProjectRestructurer:
             "gl_platform_universe.gl_platform_universe.governance": {
                 "policies": ["code-of-conduct.md", "security-policy.md"],
                 "standards": ["coding-standards.md", "api-standards.md"],
-                "compliance": ["soc2.md", "gdpr.md", "hipaa.md"],
+                "compliance": ["SOC2.md", "GDPR.md", "HIPAA.md"],
             },
             "ops": {
                 "monitoring": ["dashboards", "alerts", "logs"],

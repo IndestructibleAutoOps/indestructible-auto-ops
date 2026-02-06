@@ -8,17 +8,17 @@
 ## High Priority Tasks (Must Complete)
 
 - [x] Create comprehensive CONTRIBUTING.md file
-- [x] Add `test` target to makefile
+- [x] Add `test` target to Makefile
 - [x] Setup project contact mechanism (GitHub Issues)
 
 ## Medium Priority Tasks (Recommended)
 
-- [x] Add Troubleshooting section to readme.md
+- [x] Add Troubleshooting section to README.md
 - [x] Unify documentation language (translate QUICKSTART.md to English)
 
 ## Low Priority Tasks (Optional)
 
-- [ ] Add project badges to readme.md
+- [ ] Add project badges to README.md
 - [ ] Add usage examples
 - [ ] Complete performance testing documentation
 

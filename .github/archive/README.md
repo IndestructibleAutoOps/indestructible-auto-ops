@@ -130,7 +130,7 @@ These archived items have been replaced by:
 - **Automation**: `repository-understanding-system/` (event-driven)
 - **Analysis**: Built into event-driven system
 - **Workflows**: Active workflows in `.github/workflows/`
-- **Active Workspace Docs**: Essential docs in `workspace/` (ARCHITECTURE.md, readme.md, etc.)
+- **Active Workspace Docs**: Essential docs in `workspace/` (ARCHITECTURE.md, README.md, etc.)
 
 ## Recovery
 
