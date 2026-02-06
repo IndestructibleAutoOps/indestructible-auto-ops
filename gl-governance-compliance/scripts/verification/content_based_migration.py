@@ -59,7 +59,11 @@ class ContentAnalysis:
 class ContentAnalyzer:
     """Analyzes file content to determine correct placement"""
     
-    def __init__(self, base_path: str = "/workspace/machine-native-ops"):
+    def __init__(self, base_path: Optional[str] = None):
+        # Resolve repository root dynamically by default.
+        if base_path is None:
+            # .../gl-governance-compliance/scripts/verification/content_based_migration.py -> repo root
+            base_path = str(Path(__file__).resolve().parents[3])
         self.base_path = Path(base_path)
         
         # Define directory mappings based on content analysis
@@ -372,7 +376,7 @@ class ContentAnalyzer:
 
 def analyze_root_directory():
     """Analyze all files in root directory"""
-    base_path = Path("/workspace/machine-native-ops")
+    base_path = Path(__file__).resolve().parents[3]
     
     # Get all markdown, Python, shell, and YAML files in root
     extensions = ['.md', '.py', '.sh', '.yaml', '.yml', '.json']

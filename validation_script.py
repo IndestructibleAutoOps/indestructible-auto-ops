@@ -116,11 +116,12 @@ def validate_compliance():
 
 def generate_report(structure_results, compliance_results):
     """生成驗證報告"""
+    repo_id = os.getenv("GITHUB_REPOSITORY", "local-workspace")
     report = f"""# GL Governance Validation Report
 
 ## 執行摘要
 - 驗證時間: {os.popen('date').read().strip()}
-- 驗證範圍: MachineNativeOps/machine-native-ops
+- 驗證範圍: {repo_id}
 
 ## 結構驗證
 """
@@ -153,7 +154,7 @@ def generate_report(structure_results, compliance_results):
 """
     
     # 保存報告
-    with open('/workspace/validation_report.md', 'w') as f:
+    with open(REPO_ROOT / "validation_report.md", "w", encoding="utf-8") as f:
         f.write(report)
     
     return report

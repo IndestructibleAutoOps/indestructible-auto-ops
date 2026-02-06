@@ -8,9 +8,31 @@ import sys
 from pathlib import Path
 
 # Configuration
-REPO_ROOT = Path("machine-native-ops")
-GL_ROOT_SEMANTIC_ANCHOR = "engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml"
-GL_UNIFIED_NAMING_CHARTER = "engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml"
+REPO_ROOT = Path(__file__).resolve().parent
+
+# Try to locate canonical GL anchor / charter files within repo.
+_GL_ROOT_SEMANTIC_ANCHOR_CANDIDATES = [
+    "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml",
+    "gl-runtime-engine-platform/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml",
+    "gl-runtime-execution-platform/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml",
+]
+_GL_UNIFIED_NAMING_CHARTER_CANDIDATES = [
+    "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/gl-unified-naming-charter.yaml",
+    "gl-runtime-engine-platform/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml",
+    "gl-runtime-execution-platform/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml",
+]
+
+
+def _first_existing_path(relative_candidates):
+    for rel in relative_candidates:
+        candidate = REPO_ROOT / rel
+        if candidate.exists():
+            return candidate
+    return None
+
+
+GL_ROOT_SEMANTIC_ANCHOR_PATH = _first_existing_path(_GL_ROOT_SEMANTIC_ANCHOR_CANDIDATES)
+GL_UNIFIED_NAMING_CHARTER_PATH = _first_existing_path(_GL_UNIFIED_NAMING_CHARTER_CANDIDATES)
 
 # Required GL markers
 REQUIRED_MARKERS = [
@@ -74,7 +96,11 @@ def add_gl_markers(file_path):
         # Determine GL metadata
         gl_layer = get_gl_layer_for_file(file_path)
         semantic = get_semantic_type(file_path)
-        audit_trail = f"../../{GL_ROOT_SEMANTIC_ANCHOR}"
+        # Compute a relative audit-trail path if anchor exists.
+        if GL_ROOT_SEMANTIC_ANCHOR_PATH:
+            audit_trail = os.path.relpath(GL_ROOT_SEMANTIC_ANCHOR_PATH, file_path.parent)
+        else:
+            audit_trail = "UNKNOWN_GL_ROOT_SEMANTIC_ANCHOR"
         
         # Generate GL markers header
         gl_header = f"""# @GL-governed
@@ -83,8 +109,8 @@ def add_gl_markers(file_path):
 # @GL-audit-trail: {audit_trail}
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/{GL_ROOT_SEMANTIC_ANCHOR}
-# GL Unified Naming Charter: gl-platform/governance/{GL_UNIFIED_NAMING_CHARTER}
+# GL Root Semantic Anchor: {GL_ROOT_SEMANTIC_ANCHOR_PATH or 'NOT_FOUND'}
+# GL Unified Naming Charter: {GL_UNIFIED_NAMING_CHARTER_PATH or 'NOT_FOUND'}
 
 """
         
@@ -104,8 +130,8 @@ def main():
     """Main execution function"""
     print("=== GL Markers Addition Script v2 ===")
     print(f"Repository: {REPO_ROOT}")
-    print(f"GL Root Semantic Anchor: {GL_ROOT_SEMANTIC_ANCHOR}")
-    print(f"GL Unified Naming Charter: {GL_UNIFIED_NAMING_CHARTER}")
+    print(f"GL Root Semantic Anchor: {GL_ROOT_SEMANTIC_ANCHOR_PATH or 'NOT_FOUND'}")
+    print(f"GL Unified Naming Charter: {GL_UNIFIED_NAMING_CHARTER_PATH or 'NOT_FOUND'}")
     print()
     
     # Find all eligible files

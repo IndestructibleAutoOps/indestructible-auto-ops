@@ -65,7 +65,8 @@ def extract_naming_conventions(file_path):
 
 def build_naming_index():
     """構建命名規範索引"""
-    root_path = Path("machine-native-ops")
+    # Resolve repo root dynamically (script lives at repo root).
+    root_path = Path(__file__).resolve().parent
     
     # 查找所有命名相關文件
     naming_files = []

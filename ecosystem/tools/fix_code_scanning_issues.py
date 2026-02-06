@@ -16,7 +16,8 @@ class CodeScanningFixer:
 
     def __init__(self, report_path: str = "code-scanning-report.json"):
         self.report_path = Path(report_path)
-        self.root = Path("/home/runner/work/machine-native-ops/machine-native-ops")
+        # Resolve repo root dynamically (ecosystem/tools/* -> repo root).
+        self.root = Path(__file__).resolve().parents[2]
         self.fixes_applied = 0
         self.files_modified = set()
 

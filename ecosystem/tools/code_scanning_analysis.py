@@ -232,9 +232,8 @@ class CodeScanningAnalyzer:
 
 def main():
     """Main entry point"""
-    analyzer = CodeScanningAnalyzer(
-        "/home/runner/work/machine-native-ops/machine-native-ops"
-    )
+    repo_root = Path(__file__).resolve().parents[2]
+    analyzer = CodeScanningAnalyzer(str(repo_root))
 
     print("🚀 Starting code scanning analysis...")
     results = analyzer.scan_python_files()
