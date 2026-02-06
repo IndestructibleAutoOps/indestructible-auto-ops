@@ -78,6 +78,8 @@ build/
 
 # Sensitive directories - may contain tokens/secrets
 outputs/
+!reports/research-runs/**/outputs/
+!reports/research-runs/**/outputs/**
 summarized_conversations/
 summarized-conversations/
 # Audit reports (temporary)

@@ -1,0 +1,31 @@
+{
+  "gl": {
+    "layer": "GL60-80",
+    "semantic": "research-loop.source-evidence",
+    "version": "1.0.0"
+  },
+  "schema_version": "2020-12",
+  "type": "object",
+  "required": [
+    "ref_id",
+    "scope",
+    "source_type",
+    "title",
+    "uri",
+    "captured_at"
+  ],
+  "properties": {
+    "ref_id": { "type": "string" },
+    "scope": { "type": "string", "enum": ["internal", "external", "global"] },
+    "source_type": {
+      "type": "string",
+      "enum": ["internal_doc", "snapshot", "analysis", "policy", "evidence"]
+    },
+    "title": { "type": "string" },
+    "uri": { "type": "string" },
+    "captured_at": { "type": "string" },
+    "credibility_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "hash": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } }
+  }
+}
