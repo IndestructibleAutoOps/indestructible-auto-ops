@@ -1,9 +1,10 @@
 # NG 命名空間治理體系
 
-**版本**: 3.1.0  
-**狀態**: Consolidated Hub  
+**版本**: 4.0.0  
+**狀態**: Closed-Loop Complete  
 **編碼範圍**: NG000~999  
-**檔案數量**: 148+
+**檔案數量**: 160+  
+**閉環狀態**: v2 Adaptive Controlled Loop - 14/14 tests passing
 
 ## 概述
 
@@ -11,6 +12,7 @@ NG (Namespace Governance) 是一個完整的命名空間治理閉環體系，涵
 
 本目錄是**儲存庫中所有命名空間治理和命名規範相關內容的集中管理中心**，包括：
 - NG 編碼體系規範（NG000-999）
+- **閉環治理系統（v2 自適應受控迴圈）** - 完整的 SHA3 狀態鎖定、分層驗證、外部約束決策、實時成本評估、密碼學審計鏈
 - 命名規範定義（GL 命名本體、26 層命名層級規範）
 - 跨 Era 映射引擎和工具鏈
 - 命名違規檢測、修復和驗證工具
@@ -96,6 +98,44 @@ NG{層級}{領域}{子類}{序列}
 ### NG90101: 跨 Era 映射
 Era 間命名空間映射和轉換規則
 
+### NG90200: 閉環治理系統
+v2 自適應受控迴圈 - 完整的狀態鎖定、驗證門、決策引擎、成本評估、審計追蹤
+
+## 閉環治理系統（Closed-Loop Governance v2）
+
+基於 `designs/closed-loop-integrity-analysis.md` 的分析實現的完整閉環系統：
+
+```
+【初始狀態鎖定 (SHA3-512)】
+    |
+【Layer 0: 假設驗證 (不可繞過)】
+    |
+【Layer 1-4: 分層驗證 (可配置)】
+    |
+【執行工作】
+    |
+【成本/收益記錄 (已實現 ROI)】
+    |
+【決策引擎 (外部約束優先)】
+    +-- 目標達成 -> 終止 (成功)
+    +-- 時間/資源耗盡 -> 終止 (約束)
+    +-- 正常 -> 繼續 (標準/調整/降級)
+    |
+【密碼學審計鏈 (SHA3-256)】
+    |
+（下一輪 或 終止）
+```
+
+**組件**：`closed-loop/` 目錄
+- `state_lock.py` - SHA3-512 不可變狀態鏈
+- `verification_gates.py` - 分層驗證門（Layer 0 不可繞過）
+- `decision_engine.py` - 外部約束驅動決策
+- `cost_evaluator.py` - 實時已實現 ROI
+- `audit_trail.py` - 密碼學審計鏈
+- `cycle_orchestrator.py` - 完整生命週期編排
+- `test_closed_loop.py` - 14 項整合測試（全通過）
+- `closed-loop-config.yaml` - 配置 schema（含 SOC2/ISO27001/GDPR 映射）
+
 ## 目錄結構
 
 ```
@@ -142,6 +182,16 @@ ng-namespace-governance/
 │   ├── ng-era1-era2-mapping.yaml
 │   ├── ng-era2-era3-mapping.yaml
 │   └── ng-era-comparison.md             #   跨 Era 比較文檔
+│
+├── closed-loop/                          # 閉環治理系統 (v2)
+│   ├── state_lock.py                    #   SHA3-512 狀態鎖定鏈
+│   ├── verification_gates.py            #   分層驗證門
+│   ├── decision_engine.py               #   外部約束決策引擎
+│   ├── cost_evaluator.py                #   實時 ROI 評估器
+│   ├── audit_trail.py                   #   密碼學審計追蹤
+│   ├── cycle_orchestrator.py            #   迴圈生命週期編排
+│   ├── test_closed_loop.py              #   整合測試 (14/14)
+│   └── closed-loop-config.yaml          #   配置 schema
 │
 ├── specs/                               # 命名規範定義
 │   ├── naming-conventions.yaml          #   命名規範（目錄/文件/代碼）

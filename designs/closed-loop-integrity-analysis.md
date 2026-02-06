@@ -502,6 +502,24 @@ adaptation_mechanism:
 
 ---
 
-*文檔版本: 1.0*
+## Implementation Reference
+
+v2 方案已完整實現於 `ng-namespace-governance/closed-loop/`：
+
+| 設計組件 | 實現文件 | 測試狀態 |
+|----------|---------|---------|
+| SHA3-512 狀態鎖定 | `state_lock.py` | 3/3 PASS |
+| 分層驗證門 (Layer 0 不可繞過) | `verification_gates.py` | 3/3 PASS |
+| 外部約束決策引擎 | `decision_engine.py` | 4/4 PASS |
+| 實時已實現 ROI | `cost_evaluator.py` | 1/1 PASS |
+| 密碼學審計鏈 | `audit_trail.py` | 2/2 PASS |
+| 完整生命週期編排 | `cycle_orchestrator.py` | 1/1 PASS |
+| 配置 schema | `closed-loop-config.yaml` | - |
+| **合計** | **7 modules** | **14/14 PASS** |
+
+---
+
+*文檔版本: 2.0*
 *創建日期: 2026-02-07*
-*狀態: Reviewed*
+*實現日期: 2026-02-07*
+*狀態: Implemented & Verified*
