@@ -40,7 +40,7 @@ from ecosystem.reasoning.dual_path.arbitrator import Arbitrator
 | 目錄 | `dual_path` | `dual-path` | `dual_path` ✓ |
 | Python 導入 | `reasoning.dual_path.*` | `reasoning.dual-path.*` | `reasoning.dual_path.*` ✓ |
 | 配置文件 | `dual-path-spec.yaml` | `dual-path-spec.yaml` | `dual-path-spec.yaml` ✓ |
-| 文件系統路徑 | `ecosystem/reasoning/dual_path/` | `ecosystem/reasoning/dual-path/` | `ecosystem/reasoning/dual_path/` ✓ |
+| 文件系統路徑 | `ecosystem/reasoning/dual-path/` | `ecosystem/reasoning/dual-path/` | `ecosystem/reasoning/dual-path/` ✓ |
 
 ### 1.3 衝突根源
 
@@ -85,7 +85,7 @@ MNGA 命名規範層級結構
 
 | 類型 | 命名規範 | 範例 | 原因 |
 |------|---------|------|------|
-| **Python 包目錄** | snake_case | `dual_path/` | Python 語言限制 |
+| **Python 包目錄** | snake_case | `dual-path/` | Python 語言限制 |
 | **Python 文件** | snake_case | `rule_engine.py` | PEP 8 規範 |
 | **Python 類** | PascalCase | `ArbitrationRuleEngine` | PEP 8 規範 |
 | **Python 函數/變數** | snake_case | `process_request()` | PEP 8 規範 |
@@ -108,8 +108,8 @@ MNGA 命名規範層級結構
 
 | 文件 | 問題 | 修正方案 |
 |------|------|---------|
-| `platforms/gl.platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |
-| `platforms/gl.platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |
+| `platforms/gl-platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |
+| `platforms/gl-platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |
 
 ### 3.3 低優先級 (文檔更新)
 
@@ -129,7 +129,7 @@ MNGA 命名規範層級結構
 ("ecosystem.reasoning.dual-path.arbitration.arbitrator", "Arbitrator")
 
 # 修正後
-"ecosystem/reasoning/dual_path/internal": {...}
+"ecosystem/reasoning/dual-path/internal": {...}
 ("ecosystem.reasoning.dual_path.arbitration.arbitrator", "Arbitrator")
 ```
 
@@ -213,7 +213,7 @@ python ecosystem/enforce.py --audit
 
 ```bash
 # 檢查目錄結構
-ls -la ecosystem/reasoning/dual_path/
+ls -la ecosystem/reasoning/dual-path/
 
 # 驗證 Python 導入
 python3 -c "from ecosystem.reasoning.dual_path.arbitration.arbitrator import Arbitrator; print('OK')"

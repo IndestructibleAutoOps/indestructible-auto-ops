@@ -127,33 +127,33 @@
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "ecosystem/reasoning/dual_path",
+      "file_path": "ecosystem/reasoning/dual-path",
       "line_number": null,
-      "message": "目錄名稱 'dual_path' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'dual-path'"
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path_tools",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools",
       "line_number": null,
-      "message": "目錄名稱 'path_tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'path-tools'"
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/path_tools",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/path-tools",
       "line_number": null,
-      "message": "目錄名稱 'path_tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'path-tools'"
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "machine-native-ops/ecosystem/reasoning/dual_path",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path",
       "line_number": null,
-      "message": "目錄名稱 'dual_path' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'dual-path'"
     },
@@ -199,7 +199,7 @@
     },
     {
       "rule_id": "GL70-EVIDENCE-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/engine/.governance",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/engine/.governance",
       "line_number": null,
       "message": "缺少 event-stream.jsonl 證據文件",
       "severity": "MEDIUM",

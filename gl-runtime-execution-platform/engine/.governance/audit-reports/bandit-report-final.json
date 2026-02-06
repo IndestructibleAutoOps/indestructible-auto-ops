@@ -688,7 +688,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py": {
+    "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py": {
       "CONFIDENCE.HIGH": 17,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -701,7 +701,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py": {
+    "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py": {
       "CONFIDENCE.HIGH": 5,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -714,7 +714,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./.github/governance-legacy/naming-governance-v1.0.0/scripts/audit/change_manager.py": {
+    "./.github/governance-legacy/naming-governance-v1-0-0/scripts/audit/change_manager.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -727,7 +727,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./.github/governance-legacy/naming-governance-v1.0.0/scripts/audit/exception_manager.py": {
+    "./.github/governance-legacy/naming-governance-v1-0-0/scripts/audit/exception_manager.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -740,7 +740,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./.github/governance-legacy/naming-governance-v1.0.0/scripts/generation/naming_generator.py": {
+    "./.github/governance-legacy/naming-governance-v1-0-0/scripts/generation/naming_generator.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -753,7 +753,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./.github/governance-legacy/naming-governance-v1.0.0/scripts/validation/naming_validator.py": {
+    "./.github/governance-legacy/naming-governance-v1-0-0/scripts/validation/naming_validator.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -4029,7 +4029,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./engine/tools-legacy/path_tools/__init__.py": {
+    "./engine/tools-legacy/path-tools/__init__.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -4042,7 +4042,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./engine/tools-legacy/path_tools/path_fixer.py": {
+    "./engine/tools-legacy/path-tools/path_fixer.py": {
       "CONFIDENCE.HIGH": 3,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -4055,7 +4055,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./engine/tools-legacy/path_tools/path_scanner.py": {
+    "./engine/tools-legacy/path-tools/path_scanner.py": {
       "CONFIDENCE.HIGH": 2,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -4068,7 +4068,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "./engine/tools-legacy/path_tools/path_validator.py": {
+    "./engine/tools-legacy/path-tools/path_validator.py": {
       "CONFIDENCE.HIGH": 1,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -7136,7 +7136,7 @@
       "code": "29 import re\n30 import subprocess\n31 import sys\n",
       "col_offset": 0,
       "end_col_offset": 17,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7156,7 +7156,7 @@
       "code": "223             cmd = [\"kubectl\", \"get\", \"namespaces\", \"-o\", \"json\"]\n224             result = subprocess.run(cmd, capture_output=True, text=True, check=True)\n225             data = json.loads(result.stdout)\n",
       "col_offset": 21,
       "end_col_offset": 84,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7176,7 +7176,7 @@
       "code": "261 \n262                 result = subprocess.run(cmd, capture_output=True, text=True, check=True)\n263 \n",
       "col_offset": 25,
       "end_col_offset": 88,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7196,7 +7196,7 @@
       "code": "357 \n358                     result = subprocess.run(cmd, capture_output=True, text=True)\n359                     if result.stdout.strip():\n",
       "col_offset": 29,
       "end_col_offset": 80,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7216,7 +7216,7 @@
       "code": "446 \n447             result = subprocess.run(cmd, capture_output=True, text=True, check=True)\n448             data = json.loads(result.stdout)\n",
       "col_offset": 21,
       "end_col_offset": 84,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7236,7 +7236,7 @@
       "code": "645             with open(backup_file, \"w\") as f:\n646                 subprocess.run(cmd, stdout=f, check=True)\n647 \n",
       "col_offset": 16,
       "end_col_offset": 57,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7256,7 +7256,7 @@
       "code": "717 \n718             result = subprocess.run(cmd, capture_output=True, text=True)\n719             existing_names = result.stdout.split()\n",
       "col_offset": 21,
       "end_col_offset": 72,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7276,7 +7276,7 @@
       "code": "906 \n907             result = subprocess.run(\n908                 export_cmd, capture_output=True, text=True, check=True\n909             )\n910             config_data = result.stdout\n",
       "col_offset": 21,
       "end_col_offset": 13,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7298,7 +7298,7 @@
       "code": "919 \n920             subprocess.run(create_cmd, input=config_data, text=True, check=True)\n921 \n",
       "col_offset": 12,
       "end_col_offset": 80,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7318,7 +7318,7 @@
       "code": "931 \n932             subprocess.run(verify_cmd, check=True)\n933 \n",
       "col_offset": 12,
       "end_col_offset": 50,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7338,7 +7338,7 @@
       "code": "943 \n944             subprocess.run(delete_cmd, check=True)\n945 \n",
       "col_offset": 12,
       "end_col_offset": 50,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7358,7 +7358,7 @@
       "code": "1009 \n1010                 result = subprocess.run(verify_cmd, capture_output=True, text=True)\n1011                 if result.returncode != 0:\n",
       "col_offset": 25,
       "end_col_offset": 83,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7378,7 +7378,7 @@
       "code": "1024 \n1025                 result = subprocess.run(old_verify_cmd, capture_output=True, text=True)\n1026                 if result.returncode == 0:\n",
       "col_offset": 25,
       "end_col_offset": 87,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7398,7 +7398,7 @@
       "code": "1060 \n1061                 result = subprocess.run(cmd, capture_output=True, text=True)\n1062                 if result.returncode == 0:\n",
       "col_offset": 25,
       "end_col_offset": 76,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7418,7 +7418,7 @@
       "code": "1073 \n1074                     subprocess.run(delete_cmd, check=True)\n1075 \n",
       "col_offset": 20,
       "end_col_offset": 58,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7438,7 +7438,7 @@
       "code": "1116 \n1117             subprocess.run(restore_cmd, check=True)\n1118 \n",
       "col_offset": 12,
       "end_col_offset": 51,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7458,7 +7458,7 @@
       "code": "1147 \n1148                 result = subprocess.run(cmd, capture_output=True, text=True)\n1149                 if result.returncode != 0:\n",
       "col_offset": 25,
       "end_col_offset": 76,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7478,7 +7478,7 @@
       "code": "25 import re\n26 import subprocess\n27 import sys\n",
       "col_offset": 0,
       "end_col_offset": 17,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7498,7 +7498,7 @@
       "code": "204 \n205                 result = subprocess.run(cmd, capture_output=True, text=True, check=True)\n206 \n",
       "col_offset": 25,
       "end_col_offset": 88,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7518,7 +7518,7 @@
       "code": "577                 if not self.dry_run:\n578                     result = subprocess.run(cmd, capture_output=True, text=True)\n579                     if result.returncode != 0:\n",
       "col_offset": 29,
       "end_col_offset": 80,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7538,7 +7538,7 @@
       "code": "648                 if not self.dry_run:\n649                     result = subprocess.run(cmd, capture_output=True, text=True)\n650                     if result.returncode != 0:\n",
       "col_offset": 29,
       "end_col_offset": 80,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -7558,7 +7558,7 @@
       "code": "706                 if not self.dry_run:\n707                     result = subprocess.run(cmd, capture_output=True, text=True)\n708                     if result.returncode != 0:\n",
       "col_offset": 29,
       "end_col_offset": 80,
-      "filename": "./.github/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py",
+      "filename": "./.github/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 78,
@@ -23949,7 +23949,7 @@
       "code": "133                                 )\n134             except Exception:\n135                 pass\n136     def _find_broken_yaml_refs(self):\n",
       "col_offset": 12,
       "end_col_offset": 20,
-      "filename": "./engine/tools-legacy/path_tools/path_fixer.py",
+      "filename": "./engine/tools-legacy/path-tools/path_fixer.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -23970,7 +23970,7 @@
       "code": "144                 self._scan_yaml_for_fixes(data, yaml_file, content)\n145             except Exception:\n146                 pass\n147         for yml_file in self.target_path.rglob(\"*.yml\"):\n",
       "col_offset": 12,
       "end_col_offset": 20,
-      "filename": "./engine/tools-legacy/path_tools/path_fixer.py",
+      "filename": "./engine/tools-legacy/path-tools/path_fixer.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -23991,7 +23991,7 @@
       "code": "151                 self._scan_yaml_for_fixes(data, yml_file, content)\n152             except Exception:\n153                 pass\n154     def _scan_yaml_for_fixes(\n",
       "col_offset": 12,
       "end_col_offset": 20,
-      "filename": "./engine/tools-legacy/path_tools/path_fixer.py",
+      "filename": "./engine/tools-legacy/path-tools/path_fixer.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -24012,7 +24012,7 @@
       "code": "243                 )\n244         except Exception:\n245             pass\n246     def _extract_yaml_refs(self, file_path: Path, rel_path: str):\n",
       "col_offset": 8,
       "end_col_offset": 16,
-      "filename": "./engine/tools-legacy/path_tools/path_scanner.py",
+      "filename": "./engine/tools-legacy/path-tools/path_scanner.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -24033,7 +24033,7 @@
       "code": "253             self._scan_yaml_paths(data, file_path, rel_path)\n254         except Exception:\n255             pass\n256     def _scan_yaml_paths(\n",
       "col_offset": 8,
       "end_col_offset": 16,
-      "filename": "./engine/tools-legacy/path_tools/path_scanner.py",
+      "filename": "./engine/tools-legacy/path-tools/path_scanner.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -24054,7 +24054,7 @@
       "code": "224             )\n225         except Exception:\n226             pass\n227     def _check_yaml_paths(self, data: Any, yaml_file: Path, key_path: str = \"\"):\n",
       "col_offset": 8,
       "end_col_offset": 16,
-      "filename": "./engine/tools-legacy/path_tools/path_validator.py",
+      "filename": "./engine/tools-legacy/path-tools/path_validator.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,

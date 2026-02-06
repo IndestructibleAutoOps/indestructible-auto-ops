@@ -146,7 +146,7 @@ Phase 5: Closed Loop
 local_artifacts:
   - ecosystem/governance/ugs/                    # Unified Governance Specification
   - ecosystem/governance/meta-spec/              # Meta Specifications
-  - ecosystem/governance/GL-semantic-anchors/    # GL Semantic Anchors
+  - ecosystem/governance/gl-semantic-anchors/    # GL Semantic Anchors
   - ecosystem/governance/enforcement.rules.yaml  # Enforcement Rules
   - ecosystem/governance/core-governance-spec.yaml
   - ecosystem/governance/subsystem-binding-spec.yaml
@@ -179,7 +179,7 @@ local_artifacts:
 ```
 
 **Tools**:
-- `ecosystem/reasoning/dual_path/internal/index_builder.py`
+- `ecosystem/reasoning/dual-path/internal/index_builder.py`
 - `ecosystem/tools/audit_trail_scanner.py`
 - `ecosystem/enforce.py --audit`
 
@@ -478,7 +478,7 @@ local_artifacts:
    # Validate knowledge graph consistency
    python ecosystem/engines/validation_engine.py \
      --mode index \
-     --target ecosystem/reasoning/dual_path/internal/
+     --target ecosystem/reasoning/dual-path/internal/
    ```
 
 6. **Governance Rules Validation**
@@ -609,7 +609,7 @@ ecosystem/.governance/event-stream.jsonl
   "source": "validation_engine",
   "severity": "HIGH",
   "layer": "L03-Index",
-  "artifact": "ecosystem/reasoning/dual_path/internal/index_builder.py",
+  "artifact": "ecosystem/reasoning/dual-path/internal/index_builder.py",
   "description": "Index node orphaned: missing parent reference",
   "evidence": {
     "violation_details": "Node 'semantic_anchor_42' references non-existent parent 'semantic_anchor_invalid'",
@@ -895,8 +895,8 @@ benefits:
 ```yaml
 integration_points:
   reasoning:
-    - "dual_path/internal"    # Local reasoning
-    - "dual_path/external"    # Global reasoning
+    - "dual-path/internal"    # Local reasoning
+    - "dual-path/external"    # Global reasoning
   
   engines:
     - "validation_engine"     # Step 6 validation

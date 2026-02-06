@@ -259,8 +259,8 @@ fi
 # Initialize knowledge graph
 echo ""
 echo "Initializing knowledge graph..."
-if [ -f "ecosystem/reasoning/dual_path/internal/knowledge_graph.py" ]; then
-    python3 ecosystem/reasoning/dual_path/internal/knowledge_graph.py || {
+if [ -f "ecosystem/reasoning/dual-path/internal/knowledge_graph.py" ]; then
+    python3 ecosystem/reasoning/dual-path/internal/knowledge_graph.py || {
         print_warning "Knowledge graph initialization skipped (requires Neo4j)"
     }
     print_success "Knowledge graph initialization attempted"

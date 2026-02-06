@@ -35,37 +35,37 @@ components:
     version: "1.0.0"
 
   tabs_layout:
-    file: "app/(tabs)/_layout.tsx"
+    file: "app/tabs/_layout.tsx"
     type: "layout"
     description: "Tab navigation layout"
     version: "1.0.0"
 
   home_screen:
-    file: "app/(tabs)/index.tsx"
+    file: "app/tabs/index.tsx"
     type: "screen"
     description: "Dashboard home screen with statistics"
     version: "1.0.0"
 
   audit_screen:
-    file: "app/(tabs)/audit.tsx"
+    file: "app/tabs/audit.tsx"
     type: "screen"
     description: "Audit execution and monitoring screen"
     version: "1.0.0"
 
   results_screen:
-    file: "app/(tabs)/results.tsx"
+    file: "app/tabs/results.tsx"
     type: "screen"
     description: "Detection results display screen"
     version: "1.0.0"
 
   report_screen:
-    file: "app/(tabs)/report.tsx"
+    file: "app/tabs/report.tsx"
     type: "screen"
     description: "Global governance reports screen"
     version: "1.0.0"
 
   settings_screen:
-    file: "app/(tabs)/settings.tsx"
+    file: "app/tabs/settings.tsx"
     type: "screen"
     description: "Application settings screen"
     version: "1.0.0"

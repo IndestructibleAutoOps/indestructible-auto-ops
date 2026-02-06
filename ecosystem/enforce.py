@@ -257,7 +257,7 @@ class MNGAEnforcer:
         # 特殊目錄例外
         special_dir_exceptions = {
             '.github', 'PULL_REQUEST_TEMPLATE', 'ISSUE_TEMPLATE',
-            '(tabs)', '(auth)', '(app)', 'RUNBOOKS', 'TRAINING', 'MIGRATION'
+            'tabs', '(auth)', '(app)', 'runbooks', 'training', 'migration'
         }
         
         # GL 語義目錄模式
@@ -714,19 +714,19 @@ class MNGAEnforcer:
         # MNGA 架構定義
         mnga_architecture = {
             # Layer 6: Reasoning
-            "ecosystem/reasoning/dual_path/internal": {
+            "ecosystem/reasoning/dual-path/internal": {
                 "required_files": ["retrieval.py", "knowledge_graph.py", "index_builder.py"],
                 "description": "內部檢索系統"
             },
-            "ecosystem/reasoning/dual_path/external": {
+            "ecosystem/reasoning/dual-path/external": {
                 "required_files": ["retrieval.py", "web_search.py", "domain_filter.py"],
                 "description": "外部檢索系統"
             },
-            "ecosystem/reasoning/dual_path/arbitration": {
+            "ecosystem/reasoning/dual-path/arbitration": {
                 "required_files": ["arbitrator.py", "rule_engine.py"],
                 "description": "仲裁系統"
             },
-            "ecosystem/reasoning/dual_path/arbitration/rules": {
+            "ecosystem/reasoning/dual-path/arbitration/rules": {
                 "required_files": ["security.yaml", "api.yaml", "dependency.yaml"],
                 "description": "仲裁規則庫"
             },
@@ -756,15 +756,15 @@ class MNGAEnforcer:
             },
             
             # Platforms
-            "platforms/gl.platform-ide/plugins": {
+            "platforms/gl-platform-ide/plugins": {
                 "required_dirs": ["vscode"],
                 "description": "IDE 插件"
             },
-            "platforms/gl.platform-assistant/api": {
+            "platforms/gl-platform-assistant/api": {
                 "required_files": ["reasoning.py"],
                 "description": "推理 API"
             },
-            "platforms/gl.platform-assistant/orchestration": {
+            "platforms/gl-platform-assistant/orchestration": {
                 "required_files": ["pipeline.py"],
                 "description": "編排管道"
             }

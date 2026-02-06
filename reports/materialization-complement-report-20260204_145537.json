@@ -8021,10 +8021,10 @@
     {
       "declaration": {
         "type": "platform",
-        "text": "### 補件 #70: | `platforms/gl.platform-assistant/api/reasoning.p...",
+        "text": "### 補件 #70: | `platforms/gl-platform-assistant/api/reasoning.p...",
         "source": "reports/materialization-complement-report-20260204_142106.md",
         "line": 3278,
-        "context": "\n\n### 補件 #70: | `platforms/gl.platform-assistant/api/reasoning.p...\n\n> **類型**: platform"
+        "context": "\n\n### 補件 #70: | `platforms/gl-platform-assistant/api/reasoning.p...\n\n> **類型**: platform"
       },
       "completion_rate": 100.0,
       "entities": []
@@ -8032,10 +8032,10 @@
     {
       "declaration": {
         "type": "platform",
-        "text": "### 補件 #71: | `platforms/gl.platform-assistant/orchestration/p...",
+        "text": "### 補件 #71: | `platforms/gl-platform-assistant/orchestration/p...",
         "source": "reports/materialization-complement-report-20260204_142106.md",
         "line": 3285,
-        "context": "\n\n### 補件 #71: | `platforms/gl.platform-assistant/orchestration/p...\n\n> **類型**: platform"
+        "context": "\n\n### 補件 #71: | `platforms/gl-platform-assistant/orchestration/p...\n\n> **類型**: platform"
       },
       "completion_rate": 100.0,
       "entities": []
@@ -10002,10 +10002,10 @@
     {
       "declaration": {
         "type": "platform",
-        "text": "| `platforms/gl.platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |",
+        "text": "| `platforms/gl-platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |",
         "source": "reports/MNGA-NAMING-ARCHITECTURE-ANALYSIS.md",
         "line": 111,
-        "context": "| 文件 | 問題 | 修正方案 |\n|------|------|---------|\n| `platforms/gl.platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |\n| `platforms/gl.platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |\n"
+        "context": "| 文件 | 問題 | 修正方案 |\n|------|------|---------|\n| `platforms/gl-platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |\n| `platforms/gl-platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |\n"
       },
       "completion_rate": 100.0,
       "entities": []
@@ -10013,10 +10013,10 @@
     {
       "declaration": {
         "type": "platform",
-        "text": "| `platforms/gl.platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |",
+        "text": "| `platforms/gl-platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |",
         "source": "reports/MNGA-NAMING-ARCHITECTURE-ANALYSIS.md",
         "line": 112,
-        "context": "|------|------|---------|\n| `platforms/gl.platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |\n| `platforms/gl.platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |\n\n### 3.3 低優先級 (文檔更新)"
+        "context": "|------|------|---------|\n| `platforms/gl-platform-assistant/api/reasoning.py` | 導入路徑正確 | 無需修改 |\n| `platforms/gl-platform-assistant/orchestration/pipeline.py` | 導入路徑正確 | 無需修改 |\n\n### 3.3 低優先級 (文檔更新)"
       },
       "completion_rate": 100.0,
       "entities": []
@@ -11443,10 +11443,10 @@
     {
       "declaration": {
         "type": "platform",
-        "text": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/",
+        "text": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/",
         "source": "reports/MNGA-COMPLETE-NAMING-GOVERNANCE-ANALYSIS.md",
         "line": 88,
-        "context": "\n```\ngl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/\n└── governance/archived/legacy/governance-legacy/policies/naming/\n    ├── api-naming.yaml           # API 命名政策"
+        "context": "\n```\ngl-governance-architecture-platform/gl90-99-meta-specification-layer/\n└── governance/archived/legacy/governance-legacy/policies/naming/\n    ├── api-naming.yaml           # API 命名政策"
       },
       "completion_rate": 100.0,
       "entities": []
@@ -11457,7 +11457,7 @@
         "text": "| 平台目錄 | `gl-<domain>-<capability>-platform/` | `gl-runtime-dag-platform/` |",
         "source": "reports/MNGA-COMPLETE-NAMING-GOVERNANCE-ANALYSIS.md",
         "line": 179,
-        "context": "| 類型 | 格式 | 範例 |\n|------|------|------|\n| 平台目錄 | `gl-<domain>-<capability>-platform/` | `gl-runtime-dag-platform/` |\n| 服務目錄 | `gl-<domain>-<capability>-service/` | `gl-api-schema-service/` |\n| Python 包 | `snake_case` | `dual_path/` |"
+        "context": "| 類型 | 格式 | 範例 |\n|------|------|------|\n| 平台目錄 | `gl-<domain>-<capability>-platform/` | `gl-runtime-dag-platform/` |\n| 服務目錄 | `gl-<domain>-<capability>-service/` | `gl-api-schema-service/` |\n| Python 包 | `snake_case` | `dual-path/` |"
       },
       "completion_rate": 100.0,
       "entities": []

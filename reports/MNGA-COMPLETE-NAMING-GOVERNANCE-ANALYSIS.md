@@ -85,7 +85,7 @@ gl-governance-architecture-platform/
 ### 2.2 政策文件
 
 ```
-gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/
+gl-governance-architecture-platform/gl90-99-meta-specification-layer/
 └── governance/archived/legacy/governance-legacy/policies/naming/
     ├── api-naming.yaml           # API 命名政策
     ├── k8s-deployment-naming.yaml # K8s 部署命名
@@ -178,7 +178,7 @@ ecosystem/
 |------|------|------|
 | 平台目錄 | `gl-<domain>-<capability>-platform/` | `gl-runtime-dag-platform/` |
 | 服務目錄 | `gl-<domain>-<capability>-service/` | `gl-api-schema-service/` |
-| Python 包 | `snake_case` | `dual_path/` |
+| Python 包 | `snake_case` | `dual-path/` |
 
 ### 5.2 文件命名
 

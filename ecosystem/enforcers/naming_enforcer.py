@@ -75,12 +75,12 @@ class NamingEnforcer:
             '.github',  # GitHub 標準目錄
             'PULL_REQUEST_TEMPLATE',  # GitHub PR 模板目錄
             'ISSUE_TEMPLATE',  # GitHub Issue 模板目錄
-            '(tabs)',  # Next.js/Expo 路由目錄
+            'tabs',  # Next.js/Expo 路由目錄
             '(auth)',  # Next.js/Expo 路由目錄
             '(app)',   # Next.js/Expo 路由目錄
-            'RUNBOOKS',  # 文檔標準目錄
-            'TRAINING',  # 文檔標準目錄
-            'MIGRATION', # 文檔標準目錄
+            'runbooks',  # 文檔標準目錄
+            'training',  # 文檔標準目錄
+            'migration', # 文檔標準目錄
         }
         
         # GL 語義目錄模式（允許大寫開頭）

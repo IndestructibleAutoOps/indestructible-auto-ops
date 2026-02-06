@@ -60,7 +60,7 @@ if self.default_strategy is None:
 **Issue**: Function returns `Dict` but can return `None` on error. Unused type imports (`List`, `Set`).
 
 **Files Fixed**:
-- `gl.runtime.engine-platform/scripts-legacy/gl/validate-dag.py`
+- `gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py`
 - `gl.runtime.execution-platform/engine/scripts-legacy/gl/validate-dag.py`
 
 **Solution**:
@@ -78,7 +78,7 @@ def load_dag_file(dag_path: str) -> Optional[Dict]:
 **Issue**: `validate_dag_structure` and `validate_dag_cycles` assume `dag_data` is a dict and `nodes`/`edges` are lists, causing runtime errors with malformed YAML.
 
 **Files Fixed**:
-- `gl.runtime.engine-platform/scripts-legacy/gl/validate-dag.py`
+- `gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py`
 - `gl.runtime.execution-platform/engine/scripts-legacy/gl/validate-dag.py`
 
 **Solution**: Added comprehensive isinstance checks:

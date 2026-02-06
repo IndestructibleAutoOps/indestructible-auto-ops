@@ -801,7 +801,7 @@ class EnforcementCoordinator:
         print(f"[INFO] Scanning Meta-Spec: {len(meta_spec_files)} files")
         
         # 掃描 GL Anchors
-        gl_anchor_files = list(self.governance.glob("GL-semantic-anchors/*.json"))
+        gl_anchor_files = list(self.governance.glob("gl-semantic-anchors/*.json"))
         print(f"[INFO] Scanning GL Anchors: {len(gl_anchor_files)} files")
         
         # 檢查 Engines

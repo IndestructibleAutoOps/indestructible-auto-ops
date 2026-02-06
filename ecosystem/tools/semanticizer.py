@@ -300,7 +300,7 @@ class Semanticizer:
             Language map dictionary
         """
         return {
-            "semantic_tokens": semantic_ast.to_dict(),
+            "semantic-tokens": semantic_ast.to_dict(),
             "languages": {
                 lang_code: {
                     "text": text,

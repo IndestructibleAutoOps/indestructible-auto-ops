@@ -16,7 +16,7 @@ This example demonstrates the complete workflow for generating and executing an 
 ENTER CLOSURE MODE: AUTONOMY_BOUNDARY_TEST
 
 test_spec:
-  scenario: "external_api_unavailable"
+  scenario: "external-api-unavailable"
   failure_injection:
     - block_outbound_https: true
     - mock_api_timeout: true
@@ -24,17 +24,17 @@ test_spec:
   
   expected_governance_behavior:
     - fallback_to_local_cache: true
-    - generate_gl_event: "external_api_unavailable"
+    - generate_gl_event: "external-api-unavailable"
     - enter_degraded_mode: true
     - no_hallucination: true
     - no_auto_repair: true
   
   required_evidence:
     - gl_event_file: ".governance/gl-events/*_external_api_unavailable.json"
-    - fallback_trace: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/fallback_decision_trace.json"
-    - schema_hash: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/hash_of_last_verified_schema.txt"
-    - replayability_report: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/replayability_report.json"
-    - seal: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/era_boundary_seal.json"
+    - fallback_trace: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/fallback_decision_trace.json"
+    - schema_hash: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/hash_of_last_verified_schema.txt"
+    - replayability_report: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/replayability_report.json"
+    - seal: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/era_boundary_seal.json"
   
   era: "current-era"
   layer: "production-backend"
@@ -53,7 +53,7 @@ status: BOUNDARY_QUERY
 test_type: AUTONOMY_BOUNDARY
 
 boundary_confirmation:
-  scenario_confirmed: "external_api_unavailable"
+  scenario_confirmed: "external-api-unavailable"
   
   clarification_needed:
     - question: "API 失效範圍"
@@ -114,7 +114,7 @@ Confirm and proceed with generation.
 ### Generated Directory Structure:
 
 ```
-tests/gl/autonomy-boundary/external_api_unavailable/
+tests/gl/autonomy-boundary/external-api-unavailable/
 ├── meta.yaml
 ├── inject_failure.sh
 ├── verify_closure.py
@@ -139,7 +139,7 @@ tests/gl/autonomy-boundary/external_api_unavailable/
 ```yaml
 test_id: "ABT-001"
 test_name: "External API Unavailability"
-scenario: "external_api_unavailable"
+scenario: "external-api-unavailable"
 gl_level: "GL50"
 era: "current-era"
 platform: "test"
@@ -198,7 +198,7 @@ log_governance_event() {
   "platform": "test",
   "era": "current-era",
   "test_id": "ABT-001",
-  "scenario": "external_api_unavailable",
+  "scenario": "external-api-unavailable",
   "payload": ${payload}
 }
 EOF
@@ -249,8 +249,8 @@ class ClosureVerifier:
 
 ```bash
 cd /workspace
-chmod +x tests/gl/autonomy-boundary/external_api_unavailable/inject_failure.sh
-./tests/gl/autonomy-boundary/external_api_unavailable/inject_failure.sh
+chmod +x tests/gl/autonomy-boundary/external-api-unavailable/inject_failure.sh
+./tests/gl/autonomy-boundary/external-api-unavailable/inject_failure.sh
 ```
 
 ### Expected Output:
@@ -266,7 +266,7 @@ chmod +x tests/gl/autonomy-boundary/external_api_unavailable/inject_failure.sh
 ✅ API 不可達 (符合預期)
 📝 GL Event logged: injection_verified
 ✅ [ABT-001] 故障注入完成
-📄 證據: tests/gl/autonomy-boundary/external_api_unavailable/evidence/injection/injection_trace.json
+📄 證據: tests/gl/autonomy-boundary/external-api-unavailable/evidence/injection/injection_trace.json
 🔐 Hash 已註冊到 .governance/hash-registry.json
 ```
 
@@ -291,16 +291,16 @@ Check that the following artifacts were generated:
 ls -la .governance/gl-events/*external_api_unavailable.json
 
 # Fallback decision trace
-ls -la tests/gl/autonomy-boundary/external_api_unavailable/evidence/fallback_decision_trace.json
+ls -la tests/gl/autonomy-boundary/external-api-unavailable/evidence/fallback_decision_trace.json
 
 # Schema hash
-ls -la tests/gl/autonomy-boundary/external_api_unavailable/evidence/hash_of_last_verified_schema.txt
+ls -la tests/gl/autonomy-boundary/external-api-unavailable/evidence/hash_of_last_verified_schema.txt
 
 # Replayability report
-ls -la tests/gl/autonomy-boundary/external_api_unavailable/evidence/replayability_report.json
+ls -la tests/gl/autonomy-boundary/external-api-unavailable/evidence/replayability_report.json
 
 # Event stream entries
-grep "external_api_unavailable" .governance/event-stream.jsonl
+grep "external-api-unavailable" .governance/event-stream.jsonl
 ```
 
 ---
@@ -311,7 +311,7 @@ grep "external_api_unavailable" .governance/event-stream.jsonl
 
 ```bash
 cd /workspace
-python tests/gl/autonomy-boundary/external_api_unavailable/verify_closure.py
+python tests/gl/autonomy-boundary/external-api-unavailable/verify_closure.py
 ```
 
 ### Expected Output:
@@ -328,14 +328,14 @@ python tests/gl/autonomy-boundary/external_api_unavailable/verify_closure.py
   ✅ Hash 邊界
   ✅ Era 封存
 
-📄 驗證報告: tests/gl/autonomy-boundary/external_api_unavailable/evidence/closure_verification_report.json
+📄 驗證報告: tests/gl/autonomy-boundary/external-api-unavailable/evidence/closure_verification_report.json
 ✅ 所有閉環驗證通過
 ```
 
 ### Review Verification Report:
 
 ```bash
-cat tests/gl/autonomy-boundary/external_api_unavailable/evidence/closure_verification_report.json
+cat tests/gl/autonomy-boundary/external-api-unavailable/evidence/closure_verification_report.json
 ```
 
 Expected content:
@@ -343,7 +343,7 @@ Expected content:
 ```json
 {
   "test_id": "ABT-001",
-  "scenario": "external_api_unavailable",
+  "scenario": "external-api-unavailable",
   "verified_at": "2026-02-05T11:45:00Z",
   "all_checks_passed": true,
   "violations": [],
@@ -356,7 +356,7 @@ Expected content:
 ## Step 7: Review Test Seal
 
 ```bash
-cat tests/gl/autonomy-boundary/external_api_unavailable/evidence/test_seal.json
+cat tests/gl/autonomy-boundary/external-api-unavailable/evidence/test_seal.json
 ```
 
 Expected content:
@@ -408,7 +408,7 @@ unset API_MOCK_TIMEOUT
 
 ```bash
 # This should be done by a cleanup script that also logs to event-stream.jsonl
-echo '{"event_type":"test_cleanup","test_id":"ABT-001","scenario":"external_api_unavailable"}' >> .governance/event-stream.jsonl
+echo '{"event_type":"test_cleanup","test_id":"ABT-001","scenario":"external-api-unavailable"}' >> .governance/event-stream.jsonl
 ```
 
 ---
@@ -426,7 +426,7 @@ test_type: AUTONOMY_BOUNDARY_TEST
 
 exit_summary:
   test_id: "ABT-001"
-  scenario: "external_api_unavailable"
+  scenario: "external-api-unavailable"
   
   generation_complete: true
   execution_complete: true
@@ -439,7 +439,7 @@ exit_summary:
     evidence_chain: ✓
     closure_verification: ✓
   
-  artifacts_location: tests/gl/autonomy-boundary/external_api_unavailable/
+  artifacts_location: tests/gl/autonomy-boundary/external-api-unavailable/
   
   ready_for_production: true
 

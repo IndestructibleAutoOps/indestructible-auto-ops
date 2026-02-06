@@ -166,7 +166,7 @@ esync-platform/
 - [Architecture Documentation](docs/architecture.md)
 - [Security Documentation](docs/SECURITY.md)
 - [API Documentation](docs/API.md)
-- [Operations Runbooks](docs/RUNBOOKS/)
+- [Operations Runbooks](docs/runbooks/)
 - [Architecture Decision Records](docs/adr/)
 
 ## 🔗 Quick Links

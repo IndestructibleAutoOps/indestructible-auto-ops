@@ -99,8 +99,8 @@ governance_baseline:
 **遺留治理:**
 - `.github/governance-legacy/`
   - gl-artifacts/ (30+ 個治理構件)
-  - naming-governance-v1.0.0/
-  - quantum-naming-v4.0.0/
+  - naming-governance-v1-0-0/
+  - quantum-naming-v4-0-0/
   - tests/ (完整測試套件)
 
 **本地治理:**

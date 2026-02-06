@@ -78,7 +78,7 @@ gl-enterprise-architecture/
 │   │   └── validators/
 │   ├── policies/
 │   └── validators/
-├── GL90-99-Meta-Specification-Layer/  # Meta specifications
+├── gl90-99-meta-specification-layer/  # Meta specifications
 ├── infrastructure/                    # Infrastructure standards
 ├── libraries/                         # Shared libraries
 ├── services/                          # Service definitions

@@ -3275,14 +3275,14 @@ python ecosystem/enforce.py --audit
 ```
 
 
-### 補件 #70: | `platforms/gl.platform-assistant/api/reasoning.p...
+### 補件 #70: | `platforms/gl-platform-assistant/api/reasoning.p...
 
 > **類型**: platform
 > **來源**: reports/MNGA-NAMING-ARCHITECTURE-ANALYSIS.md:111
 > **完成率**: 100.0%
 
 
-### 補件 #71: | `platforms/gl.platform-assistant/orchestration/p...
+### 補件 #71: | `platforms/gl-platform-assistant/orchestration/p...
 
 > **類型**: platform
 > **來源**: reports/MNGA-NAMING-ARCHITECTURE-ANALYSIS.md:112

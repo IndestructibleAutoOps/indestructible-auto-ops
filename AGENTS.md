@@ -305,7 +305,7 @@ See [Agent Configuration README](.github/config/agents/README.md) for detailed i
 - **[Multi-Agent Architecture Design](designs/multi-agent-architecture.md)** - Detailed MAS design and implementation
 - **[Agent Configuration README](.github/config/agents/README.md)** - Configuration guide and examples
 - **[Main README](README.md)** - Platform overview and GL architecture
-- **[GL Layer Documentation](gl.runtime.engine-platform/README.md)** - Runtime engine details
+- **[GL Layer Documentation](gl-runtime-engine-platform/README.md)** - Runtime engine details
 
 ### Additional Resources
 

@@ -348,7 +348,7 @@ kubectl get pods -n machinenativeops
 
 - [操作指南](./axiom-namespace-migration-operation-guide.md)
 - [命名空間配置](../../workspace/mno-namespace.yaml)
-- [命名治理規範](../../governance/naming-governance-v1.0.0-extended/)
+- [命名治理規範](../../governance/naming-governance-v1-0-0-extended/)
 
 ---
 

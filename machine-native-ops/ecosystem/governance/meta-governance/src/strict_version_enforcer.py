@@ -352,7 +352,7 @@ class StrictVersionEnforcer:
                 'compatible': False,
                 'change_type': 'MAJOR',
                 'breaking': True,
-                'action_required': 'MIGRATION',
+                'action_required': 'migration',
                 'timeline_days': 90,
                 'requirements': [
                     '完成下游驗證器重新審查',

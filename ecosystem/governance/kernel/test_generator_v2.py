@@ -510,7 +510,7 @@ def main():
     generator = ClosureModeAutonomyBoundaryTestGenerator()
     
     # Load test meta
-    meta_path = generator.test_root / "external_api_unavailable" / "meta.yaml"
+    meta_path = generator.test_root / "external-api-unavailable" / "meta.yaml"
     if not meta_path.exists():
         print(f"❌ Error: meta.yaml not found at {meta_path}")
         return

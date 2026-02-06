@@ -132,10 +132,10 @@ class AutonomyBoundaryTestFramework:
         directories = [
             self.test_root,
             os.path.join(self.test_root, "gl-events"),
-            os.path.join(self.test_root, "wagb", "append_only_events"),
-            os.path.join(self.test_root, "hash_boundaries"),
-            os.path.join(self.test_root, "replayability_reports"),
-            os.path.join(self.test_root, "era_seals"),
+            os.path.join(self.test_root, "wagb", "append-only-events"),
+            os.path.join(self.test_root, "hash-boundaries"),
+            os.path.join(self.test_root, "replayability-reports"),
+            os.path.join(self.test_root, "era-seals"),
         ]
         
         for directory in directories:
@@ -160,7 +160,7 @@ class AutonomyBoundaryTestFramework:
         )
         
         # Simulate failure injection based on type
-        if failure_type == "external_api_unavailable":
+        if failure_type == "external-api-unavailable":
             self._simulate_api_failure()
         elif failure_type == "model_fetch_failure":
             self._simulate_model_failure()
@@ -198,7 +198,7 @@ class AutonomyBoundaryTestFramework:
         decisions = []
         
         # Make fallback decisions based on scenario
-        if scenario == "external_api_unavailable":
+        if scenario == "external-api-unavailable":
             decisions.append(FallbackDecision(
                 decision_id=str(uuid.uuid4()),
                 timestamp=datetime.now(timezone.utc).isoformat(),
@@ -268,9 +268,9 @@ class AutonomyBoundaryTestFramework:
             "fallback_decisions": [asdict(decision) for decision in fallback_decisions],
             
             "closure_artifact": {
-                "hash_boundary": f"hash_boundaries/{test_id}.yaml",
-                "replayability_report": f"replayability_reports/{test_id}.json",
-                "era_seal": f"era_seals/{test_id}.json"
+                "hash_boundary": f"hash-boundaries/{test_id}.yaml",
+                "replayability_report": f"replayability-reports/{test_id}.json",
+                "era_seal": f"era-seals/{test_id}.json"
             },
             
             "canonical_hash": self.compute_canonical_hash({
@@ -375,10 +375,10 @@ class AutonomyBoundaryTestFramework:
         """
         directory_map = {
             "gl-events": os.path.join(self.test_root, "gl-events"),
-            "hash_boundaries": os.path.join(self.test_root, "hash_boundaries"),
-            "replayability_reports": os.path.join(self.test_root, "replayability_reports"),
-            "era_seals": os.path.join(self.test_root, "era_seals"),
-            "wagb_events": os.path.join(self.test_root, "wagb", "append_only_events"),
+            "hash-boundaries": os.path.join(self.test_root, "hash-boundaries"),
+            "replayability-reports": os.path.join(self.test_root, "replayability-reports"),
+            "era-seals": os.path.join(self.test_root, "era-seals"),
+            "wagb_events": os.path.join(self.test_root, "wagb", "append-only-events"),
         }
         
         directory = directory_map.get(artifact_type, self.test_root)
@@ -404,22 +404,22 @@ def test_external_api_unavailable():
     
     # Step 1: Inject failure
     failure_injection = framework.inject_failure(
-        "external_api_unavailable",
+        "external-api-unavailable",
         {"blocked_ports": [443, 80], "dns_blocked": True}
     )
     
     # Step 2: Activate governance fallback
-    decisions = framework.activate_governance_fallback(test_id, "external_api_unavailable")
+    decisions = framework.activate_governance_fallback(test_id, "external-api-unavailable")
     
     # Step 3: Generate fallback decision trace
     trace = framework.generate_fallback_decision_trace(
-        test_id, "external_api_unavailable", failure_injection, decisions
+        test_id, "external-api-unavailable", failure_injection, decisions
     )
     
     # Step 4: Generate governance events
     events = [
         AutonomyBoundaryTestHelper.generate_governance_event(
-            "external_api_unavailable",
+            "external-api-unavailable",
             {"test_id": test_id, "failure_type": "network_isolation"}
         ),
         AutonomyBoundaryTestHelper.generate_governance_event(
@@ -429,7 +429,7 @@ def test_external_api_unavailable():
     ]
     
     # Step 5: Generate replayability report
-    report = framework.generate_replayability_report(test_id, "external_api_unavailable", len(decisions))
+    report = framework.generate_replayability_report(test_id, "external-api-unavailable", len(decisions))
     
     # Step 6: Generate era boundary seal
     artifacts = {
@@ -442,9 +442,9 @@ def test_external_api_unavailable():
     
     # Step 7: Save artifacts
     framework.save_artifact("gl-events", f"{test_id}_external_api_unavailable.json", events)
-    framework.save_artifact("hash_boundaries", f"{test_id}.yaml", hash_boundary)
-    framework.save_artifact("replayability_reports", f"{test_id}.json", asdict(report))
-    framework.save_artifact("era_seals", f"{test_id}.json", asdict(seal))
+    framework.save_artifact("hash-boundaries", f"{test_id}.yaml", hash_boundary)
+    framework.save_artifact("replayability-reports", f"{test_id}.json", asdict(report))
+    framework.save_artifact("era-seals", f"{test_id}.json", asdict(seal))
     
     # Verification
     assert len(decisions) > 0, "No fallback decisions made"
@@ -502,9 +502,9 @@ def test_model_fetch_failure():
     
     # Step 7: Save artifacts
     framework.save_artifact("gl-events", f"{test_id}_model_update_blocked.json", events)
-    framework.save_artifact("hash_boundaries", f"{test_id}.yaml", hash_boundary)
-    framework.save_artifact("replayability_reports", f"{test_id}.json", asdict(report))
-    framework.save_artifact("era_seals", f"{test_id}.json", asdict(seal))
+    framework.save_artifact("hash-boundaries", f"{test_id}.yaml", hash_boundary)
+    framework.save_artifact("replayability-reports", f"{test_id}.json", asdict(report))
+    framework.save_artifact("era-seals", f"{test_id}.json", asdict(seal))
     
     # Verification
     assert len(decisions) > 0, "No fallback decisions made"
@@ -583,9 +583,9 @@ def test_db_write_failure():
     # Step 8: Save artifacts
     framework.save_artifact("gl-events", f"{test_id}_db_write_blocked.json", events)
     framework.save_artifact("wagb_events", f"{test_id}.json", wagb_events)
-    framework.save_artifact("hash_boundaries", f"{test_id}.yaml", hash_boundary)
-    framework.save_artifact("replayability_reports", f"{test_id}.json", asdict(report))
-    framework.save_artifact("era_seals", f"{test_id}.json", asdict(seal))
+    framework.save_artifact("hash-boundaries", f"{test_id}.yaml", hash_boundary)
+    framework.save_artifact("replayability-reports", f"{test_id}.json", asdict(report))
+    framework.save_artifact("era-seals", f"{test_id}.json", asdict(seal))
     
     # Verification
     assert len(decisions) > 0, "No fallback decisions made"

@@ -9,32 +9,32 @@ All requested features have been successfully implemented and integrated.
 ### Core Reasoning System (MNGA Layer 6)
 
 #### 1. Dual-Path Retrieval System
-- ✅ **Internal Retrieval Engine** (`ecosystem/reasoning/dual_path/internal/retrieval.py`)
+- ✅ **Internal Retrieval Engine** (`ecosystem/reasoning/dual-path/internal/retrieval.py`)
   - Vector-based semantic search (ChromaDB)
   - Knowledge graph integration (Neo4j)
   - Multi-source search (code, docs, governance, history)
   - Confidence scoring
   
-- ✅ **External Retrieval Engine** (`ecosystem/reasoning/dual_path/external/retrieval.py`)
+- ✅ **External Retrieval Engine** (`ecosystem/reasoning/dual-path/external/retrieval.py`)
   - Web search API integration
   - Domain filtering (allowlist)
   - Result caching with TTL
   - Ranking and relevance scoring
 
-- ✅ **Knowledge Graph** (`ecosystem/reasoning/dual_path/internal/knowledge_graph.py`)
+- ✅ **Knowledge Graph** (`ecosystem/reasoning/dual-path/internal/knowledge_graph.py`)
   - Three-layer graph structure (L1: Symbol, L2: Call, L3: Semantic)
   - AST-based code analysis
   - Dependency and impact analysis
   - Context queries with depth control
 
 #### 2. Arbitration Engine
-- ✅ **Arbitrator** (`ecosystem/reasoning/dual_path/arbitration/arbitrator.py`)
+- ✅ **Arbitrator** (`ecosystem/reasoning/dual-path/arbitration/arbitrator.py`)
   - Rule-based decision making
   - Confidence-based fallback strategy
   - Decision explanation and reasoning chain
   - Risk assessment
 
-- ✅ **Rule Engine** (`ecosystem/reasoning/dual_path/arbitration/rule_engine.py`)
+- ✅ **Rule Engine** (`ecosystem/reasoning/dual-path/arbitration/rule_engine.py`)
   - 7 built-in rules (security, API, dependency, style, etc.)
   - Priority-based rule application
   - Custom rule support
@@ -71,7 +71,7 @@ All requested features have been successfully implemented and integrated.
   - Execution mode configuration
 
 #### 5. Pipeline Orchestration
-- ✅ **Reasoning Pipeline** (`platforms/gl.platform-assistant/orchestration/pipeline.py`)
+- ✅ **Reasoning Pipeline** (`platforms/gl-platform-assistant/orchestration/pipeline.py`)
   - End-to-end request handling
   - Dual-path retrieval coordination
   - Arbitration integration

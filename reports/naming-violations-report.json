@@ -46,12 +46,12 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer",
-      "name": "GL90-99-Meta-Specification-Layer",
+      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer",
+      "name": "gl90-99-meta-specification-layer",
       "expected_style": "kebab-case",
       "actual_style": "kebab-case (invalid)",
       "severity": "LOW",
-      "message": "目錄 'GL90-99-Meta-Specification-Layer' 應以小寫字母開頭",
+      "message": "目錄 'gl90-99-meta-specification-layer' 應以小寫字母開頭",
       "suggestion": "gl90-99-meta-specification-layer",
       "line_number": null,
       "auto_fixable": true
@@ -59,12 +59,12 @@
     {
       "rule_id": "GL20-DIR-002",
       "category": "directory",
-      "path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine",
-      "name": "GL90-99-semantic-engine",
+      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine",
+      "name": "gl90-99-semantic-engine",
       "expected_style": "snake_case (Python package)",
       "actual_style": "kebab-case (invalid)",
       "severity": "MEDIUM",
-      "message": "Python 包目錄 'GL90-99-semantic-engine' 命名不規範",
+      "message": "Python 包目錄 'gl90-99-semantic-engine' 命名不規範",
       "suggestion": "gl90_99_semantic_engine",
       "line_number": null,
       "auto_fixable": false
@@ -72,12 +72,12 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "ecosystem/governance/GL-semantic-anchors",
-      "name": "GL-semantic-anchors",
+      "path": "ecosystem/governance/gl-semantic-anchors",
+      "name": "gl-semantic-anchors",
       "expected_style": "kebab-case",
       "actual_style": "kebab-case (invalid)",
       "severity": "LOW",
-      "message": "目錄 'GL-semantic-anchors' 應以小寫字母開頭",
+      "message": "目錄 'gl-semantic-anchors' 應以小寫字母開頭",
       "suggestion": "gl-semantic-anchors",
       "line_number": null,
       "auto_fixable": true
@@ -85,12 +85,12 @@
     {
       "rule_id": "GL20-DIR-001",
       "category": "directory",
-      "path": "ecosystem/reasoning/dual_path",
-      "name": "dual_path",
+      "path": "ecosystem/reasoning/dual-path",
+      "name": "dual-path",
       "expected_style": "kebab-case",
       "actual_style": "snake_case",
       "severity": "MEDIUM",
-      "message": "目錄 'dual_path' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
       "suggestion": "dual-path",
       "line_number": null,
       "auto_fixable": true
@@ -98,13 +98,13 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-runtime-engine-platform/aep-engine-app/app/(tabs)",
-      "name": "(tabs)",
+      "path": "gl-runtime-engine-platform/aep-engine-app/app/tabs",
+      "name": "tabs",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
       "severity": "LOW",
-      "message": "目錄 '(tabs)' 應以小寫字母開頭",
-      "suggestion": "(tabs)",
+      "message": "目錄 'tabs' 應以小寫字母開頭",
+      "suggestion": "tabs",
       "line_number": null,
       "auto_fixable": true
     },
@@ -137,13 +137,13 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-runtime-execution-platform/engine/aep-engine-app/app/(tabs)",
-      "name": "(tabs)",
+      "path": "gl-runtime-execution-platform/engine/aep-engine-app/app/tabs",
+      "name": "tabs",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
       "severity": "LOW",
-      "message": "目錄 '(tabs)' 應以小寫字母開頭",
-      "suggestion": "(tabs)",
+      "message": "目錄 'tabs' 應以小寫字母開頭",
+      "suggestion": "tabs",
       "line_number": null,
       "auto_fixable": true
     },
@@ -163,12 +163,12 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "docs/RUNBOOKS",
-      "name": "RUNBOOKS",
+      "path": "docs/runbooks",
+      "name": "runbooks",
       "expected_style": "kebab-case",
       "actual_style": "UPPER_SNAKE_CASE",
       "severity": "LOW",
-      "message": "目錄 'RUNBOOKS' 應以小寫字母開頭",
+      "message": "目錄 'runbooks' 應以小寫字母開頭",
       "suggestion": "runbooks",
       "line_number": null,
       "auto_fixable": true
@@ -176,12 +176,12 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "docs/TRAINING",
-      "name": "TRAINING",
+      "path": "docs/training",
+      "name": "training",
       "expected_style": "kebab-case",
       "actual_style": "UPPER_SNAKE_CASE",
       "severity": "LOW",
-      "message": "目錄 'TRAINING' 應以小寫字母開頭",
+      "message": "目錄 'training' 應以小寫字母開頭",
       "suggestion": "training",
       "line_number": null,
       "auto_fixable": true
@@ -189,12 +189,12 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "docs/MIGRATION",
-      "name": "MIGRATION",
+      "path": "docs/migration",
+      "name": "migration",
       "expected_style": "kebab-case",
       "actual_style": "UPPER_SNAKE_CASE",
       "severity": "LOW",
-      "message": "目錄 'MIGRATION' 應以小寫字母開頭",
+      "message": "目錄 'migration' 應以小寫字母開頭",
       "suggestion": "migration",
       "line_number": null,
       "auto_fixable": true
@@ -254,7 +254,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py",
+      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "name": "naming-governance-migration.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -267,7 +267,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py",
+      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "name": "naming-governance-repair.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3348,7 +3348,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/auto-fix-issues.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
       "name": "auto-fix-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3361,7 +3361,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/validate-module-registry.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
       "name": "validate-module-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3374,7 +3374,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/generate-dag-visualization.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
       "name": "generate-dag-visualization.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3387,7 +3387,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/auto-remediate-policy.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
       "name": "auto-remediate-policy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3400,7 +3400,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
       "name": "convert-snyk-to-sarif.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3413,7 +3413,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/ci-error-analyzer.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
       "name": "ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3426,7 +3426,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/test-ci-error-analyzer.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
       "name": "test-ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3439,7 +3439,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/generate-governance-dashboard.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
       "name": "generate-governance-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3452,7 +3452,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/test-count-bandit-issues.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
       "name": "test-count-bandit-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3465,7 +3465,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/validate-module-manifests.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
       "name": "validate-module-manifests.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3478,7 +3478,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
       "name": "auto-quality-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3491,7 +3491,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/classify-autonomy.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
       "name": "classify-autonomy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3504,7 +3504,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/autonomy-progress-tracker.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
       "name": "autonomy-progress-tracker.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3517,7 +3517,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/generate-autonomy-summary.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
       "name": "generate-autonomy-summary.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3530,7 +3530,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
       "name": "generate-evidence-chain.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3543,7 +3543,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
       "name": "generate-risk-assessment.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3556,7 +3556,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
       "name": "validate-gpu-scheduling.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3569,7 +3569,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-model-registry.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
       "name": "validate-model-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3582,7 +3582,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/quantum-validate.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
       "name": "quantum-validate.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3595,7 +3595,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-dag.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
       "name": "validate-dag.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3608,7 +3608,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/generate-audit-report.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
       "name": "generate-audit-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3621,7 +3621,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-semantics.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
       "name": "validate-semantics.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3634,7 +3634,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
       "name": "validate-gpu-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3647,7 +3647,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-data-catalog.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
       "name": "validate-data-catalog.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3660,7 +3660,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
       "name": "generate-monitoring-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3673,7 +3673,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl/validate-metadata.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
       "name": "validate-metadata.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3686,7 +3686,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/hooks/gl-naming-check.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/hooks/gl-naming-check.py",
       "name": "gl-naming-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3699,7 +3699,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/hooks/config-sync-check.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
       "name": "config-sync-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3712,7 +3712,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/hooks/gl-pre-commit.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/hooks/gl-pre-commit.py",
       "name": "gl-pre-commit.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3725,7 +3725,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
       "name": "gl-consolidation-plan.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3738,7 +3738,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
+      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
       "name": "axiom-namespace-migrator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",

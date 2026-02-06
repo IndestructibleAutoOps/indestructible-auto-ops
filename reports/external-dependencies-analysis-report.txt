@@ -7177,7 +7177,7 @@ File type: .md
 Dependencies: 1
   Line 203: [registry] https://github.com/MachineNativeOps/machine-native-ops
 
-### docs/TRAINING/GL-PLATFORM-HANDBOOK.md
+### docs/training/GL-PLATFORM-HANDBOOK.md
 File type: .md
 Dependencies: 1
   Line 210: [registry] https://github.com/MachineNativeOps/machine-native-ops.git
@@ -7185,7 +7185,7 @@ cd machine-native-ops
 
 # Install required
 
-### docs/MIGRATION/PLATFORM-MIGRATION-GUIDE.md
+### docs/migration/PLATFORM-MIGRATION-GUIDE.md
 File type: .md
 Dependencies: 1
   Line 58: [api_endpoint] https://api.
@@ -7248,42 +7248,42 @@ File type: .yaml
 Dependencies: 1
   Line 24: [api_endpoint] https://api.
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/gl-artifacts/api-design-specification.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/api-design-specification.yaml
 File type: .yaml
 Dependencies: 3
   Line 87: [api_endpoint] https://api.
   Line 712: [api_endpoint] https://api.
   Line 742: [api_endpoint] https://api.
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-mainline-integration.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-mainline-integration.md
 File type: .md
 Dependencies: 2
   Line 22: [package_manager] Package.json
   Line 23: [package_manager] package.json
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-naming-charter-analysis.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-naming-charter-analysis.md
 File type: .md
 Dependencies: 2
   Line 390: [registry] pip install
   Line 390: [package_manager] pip install
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/gl-artifacts/deployment-record.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/deployment-record.yaml
 File type: .yaml
 Dependencies: 1
   Line 63: [registry] https://github.com/MachineNativeOps/machine-native-ops
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/standards/api-standards.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/standards/api-standards.md
 File type: .md
 Dependencies: 1
   Line 123: [api_endpoint] https://api.
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/api/openapi.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/api/openapi.yaml
 File type: .yaml
 Dependencies: 2
   Line 33: [api_endpoint] https://api.
   Line 35: [api_endpoint] https://api.
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0/README.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/README.md
 File type: .md
 Dependencies: 5
   Line 12: [registry] https://github.com/MachineNativeOps/mno-repository-understanding-system
@@ -7292,12 +7292,12 @@ Dependencies: 5
   Line 35: [registry] pip install
   Line 35: [package_manager] pip install
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0/CHANGELOG.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/CHANGELOG.md
 File type: .md
 Dependencies: 1
   Line 312: [registry] https://github.com/MachineNativeOps/mno-repository-understanding-system
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0/monitoring/prometheus/naming-governance-rules.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml
 File type: .yaml
 Dependencies: 7
   Line 69: [documentation] docs.example.com
@@ -7307,7 +7307,7 @@ Dependencies: 7
   Line 144: [documentation] docs.example.com
   ... and 2 more
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0/docs/guides/implementation-guide.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/docs/guides/implementation-guide.md
 File type: .md
 Dependencies: 8
   Line 52: [registry] pip install
@@ -7317,7 +7317,7 @@ Dependencies: 8
   Line 128: [package_manager] pip install
   ... and 3 more
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0/ci-cd/workflows/naming-governance-ci.yml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/ci-cd/workflows/naming-governance-ci.yml
 File type: .yml
 Dependencies: 8
   Line 74: [registry] pip install
@@ -7327,14 +7327,14 @@ Dependencies: 8
   Line 74: [package_manager] pip install
   ... and 3 more
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/README.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/README.md
 File type: .md
 Dependencies: 3
   Line 214: [registry] pip install
   Line 214: [package_manager] pip install
   Line 214: [package_manager] requirements.txt
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml
 File type: .yaml
 Dependencies: 7
   Line 199: [monitoring] prometheus.io
@@ -7344,7 +7344,7 @@ Dependencies: 7
   Line 293: [monitoring] prometheus.io
   ... and 2 more
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/docs/README.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/docs/README.md
 File type: .md
 Dependencies: 4
   Line 40: [registry] https://github.com/MachineNativeOps/mno-repository-understanding-system.git
@@ -7353,7 +7353,7 @@ cd mno-repository-unders
   Line 239: [package_manager] pip install
   Line 239: [package_manager] requirements.txt
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/quantum-naming-v4.0.0/scripts/QUICK_INSTALL.sh
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/scripts/QUICK_INSTALL.sh
 File type: .sh
 Dependencies: 5
   Line 278: [monitoring] prometheus.io
@@ -7362,18 +7362,18 @@ Dependencies: 5
   Line 355: [monitoring] prometheus.io
   Line 356: [monitoring] prometheus.io
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0-extended/monitoring/grafana-dashboard.json
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/monitoring/grafana-dashboard.json
 File type: .json
 Dependencies: 1
   Line 773: [registry] https://github.com/MachineNativeOps/machine-native-ops
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/naming-governance-v1.0.0-extended/docs/IMPLEMENTATION_GUIDE.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/docs/IMPLEMENTATION_GUIDE.md
 File type: .md
 Dependencies: 1
   Line 762: [registry] https://github.com/MachineNativeOps/naming-governance
 - **文檔網站**: https:
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/policies/naming/api-naming.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/api-naming.yaml
 File type: .yaml
 Dependencies: 2
   Line 161: [registry] https://github.com/microsoft/api-guidelines"
@@ -7381,13 +7381,13 @@ Dependencies: 2
       url: "http
   Line 163: [cloud_services] cloud.google.com
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/policies/naming/pipeline-naming.yaml
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/pipeline-naming.yaml
 File type: .yaml
 Dependencies: 2
   Line 192: [documentation] docs.github.com
   Line 194: [documentation] docs.gitlab.com
 
-### gl-enterprise-architecture/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine/README.md
+### gl-enterprise-architecture/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/README.md
 File type: .md
 Dependencies: 2
   Line 48: [registry] pip install

@@ -55,33 +55,33 @@ Pipeline Integration      ✅ PASS      管道整合器已載入（找不到 Pip
 
 ### Core Specification Files
 
-1. **ecosystem/governance/GL-semantic-anchors/GL00-GL99-unified-charter.json**
+1. **ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-charter.json**
    - Unified charter for all 100 GL semantic anchors
    - Contains GL00-GL19 complete specifications
    - Includes definitions, scope, semantic boundaries, sub-semantics, applicable targets, validation rules
 
-2. **ecosystem/governance/GL-semantic-anchors/GL20-GL49-language-behavior-domains-integration.json**
+2. **ecosystem/governance/gl-semantic-anchors/GL20-GL49-language-behavior-domains-integration.json**
    - Language behavior (GL20-GL29) specifications
    - Language domains (GL30-GL39) specifications
    - Language integration (GL40-GL49) specifications
 
-3. **ecosystem/governance/GL-semantic-anchors/GL50-GL99-format-layer-specification.json**
+3. **ecosystem/governance/gl-semantic-anchors/GL50-GL99-format-layer-specification.json**
    - Format layer complete specifications (GL50-GL99)
    - Core format types, structure, behavior, domains, integration
 
-4. **ecosystem/governance/GL-semantic-anchors/semantic-layer-specification.json**
+4. **ecosystem/governance/gl-semantic-anchors/semantic-layer-specification.json**
    - Semantic relationships and mapping tables
    - Validation rules (LRL, FLR, SLR)
    - Semantic validation pipeline
    - Cross-layer dependencies
 
-5. **ecosystem/governance/GL-semantic-anchors/governance-framework-baseline.json**
+5. **ecosystem/governance/gl-semantic-anchors/governance-framework-baseline.json**
    - Governance principles and enforcement levels
    - Audit framework and metrics
    - Roles and workflows
    - CI/CD integration
 
-6. **ecosystem/governance/GL-semantic-anchors/README.md**
+6. **ecosystem/governance/gl-semantic-anchors/README.md**
    - Comprehensive documentation
    - Usage instructions
    - Architecture overview
@@ -258,7 +258,7 @@ python ecosystem/enforce.py --artifact <artifact-path>
 ### File Structure
 
 ```
-ecosystem/governance/GL-semantic-anchors/
+ecosystem/governance/gl-semantic-anchors/
 ├── GL00-GL99-unified-charter.json
 ├── GL20-GL49-language-behavior-domains-integration.json
 ├── GL50-GL99-format-layer-specification.json

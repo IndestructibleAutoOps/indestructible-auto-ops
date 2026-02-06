@@ -11998,14 +11998,14 @@ Governance Layer: IN PROGRESS
 > **完成率**: 100.0%
 
 
-### 補件 #195: ### 補件 #70: | `platforms/gl.platform-assistant/api...
+### 補件 #195: ### 補件 #70: | `platforms/gl-platform-assistant/api...
 
 > **類型**: platform
 > **來源**: reports/materialization-complement-report-20260204_142106.md:3278
 > **完成率**: 100.0%
 
 
-### 補件 #196: ### 補件 #71: | `platforms/gl.platform-assistant/orc...
+### 補件 #196: ### 補件 #71: | `platforms/gl-platform-assistant/orc...
 
 > **類型**: platform
 > **來源**: reports/materialization-complement-report-20260204_142106.md:3285
@@ -13770,14 +13770,14 @@ python ecosystem/tools/materialization_complement_generator.py \
 > **完成率**: 100.0%
 
 
-### 補件 #335: | `platforms/gl.platform-assistant/api/reasoning.p...
+### 補件 #335: | `platforms/gl-platform-assistant/api/reasoning.p...
 
 > **類型**: platform
 > **來源**: reports/MNGA-NAMING-ARCHITECTURE-ANALYSIS.md:111
 > **完成率**: 100.0%
 
 
-### 補件 #336: | `platforms/gl.platform-assistant/orchestration/p...
+### 補件 #336: | `platforms/gl-platform-assistant/orchestration/p...
 
 > **類型**: platform
 > **來源**: reports/MNGA-NAMING-ARCHITECTURE-ANALYSIS.md:112

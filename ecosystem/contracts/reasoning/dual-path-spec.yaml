@@ -92,7 +92,7 @@ spec:
   arbitration:
     enabled: true
     rule_engine:
-      path: "ecosystem/reasoning/dual_path/arbitration/rules/"
+      path: "ecosystem/reasoning/dual-path/arbitration/rules/"
       
     default_strategy: "confidence_based"
     confidence_threshold:

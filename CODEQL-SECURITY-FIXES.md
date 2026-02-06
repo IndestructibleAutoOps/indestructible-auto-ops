@@ -12,7 +12,7 @@
 ### 1. fix_hardcoded_secrets.py (Both platforms)
 
 **Files Affected**:
-- `gl.runtime.engine-platform/tools-legacy/fix_hardcoded_secrets.py`
+- `gl-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py`
 - `gl.runtime.execution-platform/engine/tools-legacy/fix_hardcoded_secrets.py`
 
 **Issues**:
@@ -27,7 +27,7 @@ The tool was designed to find hardcoded secrets but inadvertently logged and sto
 
 **Files Affected**:
 - `gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py`
-- `gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py`
+- `gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py`
 
 **Issues**:
 1. **Lines 211-214**: Logging all result values without filtering sensitive data
@@ -239,9 +239,9 @@ python3 -m py_compile gl.runtime.*/scripts-legacy/auto-quality-check.py
 **Result**: ✅ All files compile successfully
 
 ### Files Modified
-- `gl.runtime.engine-platform/tools-legacy/fix_hardcoded_secrets.py`
+- `gl-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py`
 - `gl.runtime.execution-platform/engine/tools-legacy/fix_hardcoded_secrets.py`
-- `gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py`
+- `gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py`
 - `gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py`
 
 ### Changes Summary

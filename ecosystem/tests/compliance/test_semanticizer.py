@@ -124,7 +124,7 @@ class TestSemanticizer(unittest.TestCase):
         
         lang_map = self.semanticizer.create_language_map(ast, translations)
         
-        self.assertIn("semantic_tokens", lang_map)
+        self.assertIn("semantic-tokens", lang_map)
         self.assertIn("languages", lang_map)
         self.assertEqual(lang_map["languages"]["zh"]["text"], text_zh)
         self.assertEqual(lang_map["languages"]["en"]["text"], translations["en"])

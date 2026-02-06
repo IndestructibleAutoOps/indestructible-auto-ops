@@ -160,7 +160,7 @@ This is a critical governance threshold for ensuring system resilience and safet
 
 **Artifacts Generated**:
 - `gl-events/*_db_write_blocked.json`
-- `wagb/append_only_events/*.json`
+- `wagb/append-only-events/*.json`
 - `db_write_blocked_event.json`
 - `hash_boundary.yaml`
 - `replayability_report.json`
@@ -178,17 +178,17 @@ ecosystem/.evidence/autonomy-boundary/
 │   ├── 8a880b48-7454-48d3-81c8-8c163ab14620_model_update_blocked.json
 │   └── 1db52b46-8b2f-427b-9765-b977b1d63a65_db_write_blocked.json
 ├── wagb/
-│   └── append_only_events/
+│   └── append-only-events/
 │       └── 1db52b46-8b2f-427b-9765-b977b1d63a65.json
-├── hash_boundaries/
+├── hash-boundaries/
 │   ├── f1613fe8-abe0-49b8-9a33-4a0bd5d63590.yaml
 │   ├── 8a880b48-7454-48d3-81c8-8c163ab14620.yaml
 │   └── 1db52b46-8b2f-427b-9765-b977b1d63a65.yaml
-├── replayability_reports/
+├── replayability-reports/
 │   ├── f1613fe8-abe0-49b8-9a33-4a0bd5d63590.json
 │   ├── 8a880b48-7454-48d3-81c8-8c163ab14620.json
 │   └── 1db52b46-8b2f-427b-9765-b977b1d63a65.json
-└── era_seals/
+└── era-seals/
     ├── f1613fe8-abe0-49b8-9a33-4a0bd5d63590.json
     ├── 8a880b48-7454-48d3-81c8-8c163ab14620.json
     └── 1db52b46-8b2f-427b-9765-b977b1d63a65.json

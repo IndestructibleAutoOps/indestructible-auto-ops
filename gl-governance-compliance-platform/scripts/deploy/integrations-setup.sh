@@ -290,9 +290,9 @@ ${BLUE}Next Steps:${NC}
    - Check Prometheus: https://prometheus.machinenativeops.io
 
 ${BLUE}Documentation:${NC}
-- Migration Guide: docs/MIGRATION/PLATFORM-MIGRATION-GUIDE.md
-- Training Handbook: docs/TRAINING/GL-PLATFORM-HANDBOOK.md
-- Naming Playbook: docs/RUNBOOKS/naming-migration-playbook.md
+- Migration Guide: docs/migration/PLATFORM-MIGRATION-GUIDE.md
+- Training Handbook: docs/training/GL-PLATFORM-HANDBOOK.md
+- Naming Playbook: docs/runbooks/naming-migration-playbook.md
 
 ${GREEN}Setup complete!${NC}
 

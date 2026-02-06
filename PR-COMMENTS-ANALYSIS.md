@@ -37,7 +37,7 @@ This document analyzes all comments and issues that have appeared in the pull re
 
 #### Files and Issues:
 
-**1. gl.runtime.engine-platform/tools-legacy/fix_hardcoded_secrets.py**
+**1. gl-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py**
 - Line 151: Clear text logging of sensitive information
 - Line 152: Clear text logging of sensitive information
 - Line 165: Clear text storage of sensitive information

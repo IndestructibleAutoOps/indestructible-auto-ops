@@ -227,7 +227,7 @@ def test_migration_readiness():
     assert hte.htt_file.exists(), "HTT file should exist"
     
     # Check Era-2 spec exists
-    era2_spec_file = Path("/workspace/ecosystem/governance/hash_spec/era-2.yaml")
+    era2_spec_file = Path("/workspace/ecosystem/governance/hash-spec/era-2.yaml")
     assert era2_spec_file.exists(), "Era-2 hash spec should exist"
     
     # Check migration directory exists

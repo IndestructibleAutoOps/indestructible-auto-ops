@@ -116,9 +116,9 @@ class SemanticEntityTaskConverter:
             self.config["tools_dir"],
             self.config["artifacts_dir"],
             self.config["events_dir"],
-            Path(self.config["template_dir"]) / "tool_stubs",
-            Path(self.config["template_dir"]) / "artifact_schemas",
-            Path(self.config["template_dir"]) / "event_schemas"
+            Path(self.config["template_dir"]) / "tool-stubs",
+            Path(self.config["template_dir"]) / "artifact-schemas",
+            Path(self.config["template_dir"]) / "event-schemas"
         ]
         
         for d in dirs:

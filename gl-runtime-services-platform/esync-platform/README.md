@@ -72,7 +72,7 @@ esync-platform/
 ├── docs/                      # Documentation
 │   ├── adr/                   # Architecture decision records
 │   ├── diagrams/              # System diagrams
-│   └── RUNBOOKS/              # Operational runbooks
+│   └── runbooks/              # Operational runbooks
 ├── cmd/                       # Main executables
 │   └── syncd/                 # Core sync daemon
 ├── internal/                  # Internal packages
@@ -212,7 +212,7 @@ Required labels:
 - [Architecture Documentation](docs/architecture.md)
 - [Security Documentation](docs/SECURITY.md)
 - [API Documentation](docs/API.md)
-- [Operations Runbooks](docs/RUNBOOKS/)
+- [Operations Runbooks](docs/runbooks/)
 - [Architecture Decision Records](docs/adr/)
 
 ## 🤝 Contributing

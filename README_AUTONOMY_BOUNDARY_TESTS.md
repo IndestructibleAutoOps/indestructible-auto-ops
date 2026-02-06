@@ -56,14 +56,14 @@ ls -la ecosystem/.governance/
 ENTER CLOSURE MODE: AUTONOMY_BOUNDARY_TEST
 
 test_spec:
-  scenario: "external_api_unavailable"
+  scenario: "external-api-unavailable"
   failure_injection:
     - block_outbound_https: true
     - mock_api_timeout: true
   
   expected_governance_behavior:
     - fallback_to_local_cache: true
-    - generate_gl_event: "external_api_unavailable"
+    - generate_gl_event: "external-api-unavailable"
     - no_auto_repair: true
 ```
 
@@ -71,14 +71,14 @@ test_spec:
 
 ```bash
 cd /workspace
-chmod +x tests/gl/autonomy-boundary/external_api_unavailable/inject_failure.sh
-./tests/gl/autonomy-boundary/external_api_unavailable/inject_failure.sh
+chmod +x tests/gl/autonomy-boundary/external-api-unavailable/inject_failure.sh
+./tests/gl/autonomy-boundary/external-api-unavailable/inject_failure.sh
 ```
 
 ### Verify Closure
 
 ```bash
-python tests/gl/autonomy-boundary/external_api_unavailable/verify_closure.py
+python tests/gl/autonomy-boundary/external-api-unavailable/verify_closure.py
 ```
 
 ---

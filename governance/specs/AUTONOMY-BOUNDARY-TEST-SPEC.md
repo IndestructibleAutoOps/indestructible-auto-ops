@@ -39,7 +39,7 @@
 ENTER CLOSURE MODE: AUTONOMY_BOUNDARY_TEST
 
 test_spec:
-  scenario: "external_api_unavailable"
+  scenario: "external-api-unavailable"
   failure_injection:
     - block_outbound_https: true
     - mock_api_timeout: true
@@ -47,17 +47,17 @@ test_spec:
   
   expected_governance_behavior:
     - fallback_to_local_cache: true
-    - generate_gl_event: "external_api_unavailable"
+    - generate_gl_event: "external-api-unavailable"
     - enter_degraded_mode: true
     - no_hallucination: true
     - no_auto_repair: true
   
   required_evidence:
     - gl_event_file: ".governance/gl-events/{timestamp}_external_api_unavailable.json"
-    - fallback_trace: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/fallback_decision_trace.json"
-    - schema_hash: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/hash_of_last_verified_schema.txt"
-    - replayability_report: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/replayability_report.json"
-    - seal: "tests/gl/autonomy-boundary/external_api_unavailable/evidence/era_boundary_seal.json"
+    - fallback_trace: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/fallback_decision_trace.json"
+    - schema_hash: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/hash_of_last_verified_schema.txt"
+    - replayability_report: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/replayability_report.json"
+    - seal: "tests/gl/autonomy-boundary/external-api-unavailable/evidence/era_boundary_seal.json"
   
   era: "current-era"
   layer: "production-backend"
@@ -73,7 +73,7 @@ status: BOUNDARY_QUERY
 test_type: AUTONOMY_BOUNDARY
 
 boundary_confirmation:
-  scenario_confirmed: "external_api_unavailable"
+  scenario_confirmed: "external-api-unavailable"
   
   clarification_needed:
     - question: "API 失效範圍"
@@ -143,7 +143,7 @@ tests/gl/autonomy-boundary/
 ```yaml
 test_id: "ABT-001"
 test_name: "External API Unavailability"
-scenario: "external_api_unavailable"
+scenario: "external-api-unavailable"
 gl_level: "GL50"
 era: "current-era"
 platform: "test"

@@ -139,7 +139,7 @@ def test_compatibility_checking():
     assert not compat['compatible'], "MAJOR升級應該不兼容"
     assert compat['change_type'] == 'MAJOR', "應該識別為MAJOR"
     assert compat['timeline_days'] == 90, "應該有90天遷移期"
-    assert 'MIGRATION' in compat['action_required'], "應該要求遷移"
+    assert 'migration' in compat['action_required'], "應該要求遷移"
     print(f"✓ MAJOR升級: breaking=True, migration=90天")
     
     print("✅ Compatibility Checking tests passed")

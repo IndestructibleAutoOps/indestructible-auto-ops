@@ -43,7 +43,7 @@ def audit_governance_files(self):
 **Files Fixed**: 
 - `scripts/version-audit.py`
 - `gl.runtime.execution-platform/engine/tools-legacy/*.py` (10 files)
-- `gl.runtime.engine-platform/tools-legacy/*.py` (10 files)
+- `gl-runtime-engine-platform/tools-legacy/*.py` (10 files)
 - And 27 more files
 
 #### 1.2 Invalid Decorator Syntax

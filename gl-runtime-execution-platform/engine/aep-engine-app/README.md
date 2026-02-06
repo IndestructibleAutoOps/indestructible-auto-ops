@@ -53,7 +53,7 @@ The AEP Engine Governance & Audit App is a React Native/Expo mobile application 
 ```
 aep-engine-app/
 ├── app/                    # Expo Router pages
-│   ├── (tabs)/            # Tab navigation screens
+│   ├── tabs/            # Tab navigation screens
 │   │   ├── index.tsx      # Home/Dashboard
 │   │   ├── audit.tsx      # Audit Execution
 │   │   ├── results.tsx    # Detection Results

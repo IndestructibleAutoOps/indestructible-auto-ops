@@ -47,10 +47,10 @@ This report documents the comprehensive execution of the Governance Bootstrap Di
 **Key Artifacts:**
 
 ```
-✅ ecosystem/.evidence/semantic_tokens/semantic_tokens.json
+✅ ecosystem/.evidence/semantic-tokens/semantic_tokens.json
    Hash: 89865e93d06fa94f90972091ec9bca138ed296035b3195b0bdc795b7cf142ae1
 
-✅ ecosystem/.evidence/semantic_tokens/event_hashes.json
+✅ ecosystem/.evidence/semantic-tokens/event_hashes.json
    Hash: a552484e956cab71b4a5cb117642ca723e0a4163cb84696fcb0520ca49612c2e
 
 ✅ ecosystem/.evidence/language_map.json
@@ -242,7 +242,7 @@ STEP 1: Semantic Tokenization
   ✅ 607 events processed
   ✅ 596 hashes extracted
   ✅ Language map generated
-  Output: ecosystem/.evidence/semantic_tokens/
+  Output: ecosystem/.evidence/semantic-tokens/
 
 STEP 2: Narrative-Free Compliance Scanner
   ✅ 607 files scanned

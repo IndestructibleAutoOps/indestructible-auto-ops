@@ -24,7 +24,7 @@
 
 ### 報告的問題
 
-**位置**: `gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py:246`  
+**位置**: `gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py:246`  
 **嚴重性**: 高 (HIGH)  
 **問題**: 敏感資訊的明文記錄 (Clear-text logging of sensitive information)
 
@@ -412,7 +412,7 @@ GitHub Copilot **不會自動**:
 ### 改進的提示詞 ✅
 
 ```
-請修復 gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py 中的
+請修復 gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py 中的
 CodeQL 安全問題，確保:
 1. 先執行 python ecosystem/enforce.py 驗證
 2. 遵循 GL 治理框架
@@ -430,7 +430,7 @@ CodeQL 安全問題，確保:
 2. 確認 GL 合規性
 
 要求:
-- 檔案: gl.runtime.engine-platform/scripts-legacy/auto-quality-check.py:246
+- 檔案: gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py:246
 - 問題: 敏感資訊明文記錄
 - 解決方案: 使用固定訊息或 [REDACTED FOR SECURITY]
 - GL 層級: GL30-49 (Execution Layer)

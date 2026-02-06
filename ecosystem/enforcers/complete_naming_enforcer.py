@@ -203,7 +203,7 @@ class CompleteNamingEnforcer:
         # 特殊目錄例外
         self.special_exceptions = {
             '.github', 'PULL_REQUEST_TEMPLATE', 'ISSUE_TEMPLATE',
-            '(tabs)', '(auth)', '(app)', 'RUNBOOKS', 'TRAINING', 'MIGRATION'
+            'tabs', '(auth)', '(app)', 'runbooks', 'training', 'migration'
         }
         
         # GL 語義目錄模式

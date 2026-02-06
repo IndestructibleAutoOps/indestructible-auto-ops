@@ -109,7 +109,7 @@ db_write_failure:
   
   required_artifacts:
     - gl-events/*_db_write_blocked.json
-    - wagb/append_only_events/*.json
+    - wagb/append-only-events/*.json
     - db_write_blocked_event.json
     - hash_boundary.yaml
     - replayability_report.json

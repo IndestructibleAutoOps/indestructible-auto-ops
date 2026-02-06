@@ -112,7 +112,7 @@ def main():
     # Step 3: Generate execution summary
     success, output = run_command(
         "python ecosystem/tools/generate_execution_summary.py "
-        "--inputs ecosystem/.evidence/semantic_tokens/ ecosystem/.evidence/compliance/ ecosystem/.evidence/language_map.json "
+        "--inputs ecosystem/.evidence/semantic-tokens/ ecosystem/.evidence/compliance/ ecosystem/.evidence/language_map.json "
         "--output ecosystem/evidence/closure/execution_summary.json "
         "--governance-owner 'IndestructibleAutoOps' "
         "--canonicalize --hash",
@@ -123,7 +123,7 @@ def main():
     success, output = run_command(
         "cp ecosystem/.evidence/compliance/narrative_free_report.json ecosystem/.evidence/reports/narrative_free_report_$(date +%s).json && "
         "mkdir -p ecosystem/.evidence/reports/hashes && "
-        "cp ecosystem/.evidence/semantic_tokens/event_hashes.json ecosystem/.evidence/reports/hashes/",
+        "cp ecosystem/.evidence/semantic-tokens/event_hashes.json ecosystem/.evidence/reports/hashes/",
         "Copy Reports"
     )
     
@@ -132,7 +132,7 @@ def main():
     print("GOVERNANCE ENFORCEMENT COMPLETE")
     print("="*80)
     print("\nKey Outputs:")
-    print("  ✅ Semantic Tokens: ecosystem/.evidence/semantic_tokens/")
+    print("  ✅ Semantic Tokens: ecosystem/.evidence/semantic-tokens/")
     print("  ✅ Compliance Report: ecosystem/.evidence/compliance/narrative_free_report.json")
     print("  ✅ Tool Registry: ecosystem/tools/registry.json")
     print("  ✅ Execution Summary: ecosystem/evidence/closure/execution_summary.json")

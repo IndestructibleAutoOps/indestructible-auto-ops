@@ -586,7 +586,7 @@
               "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
               "/workspace/machine-native-ops/workspace",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended"
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended"
             ]
           },
           "schemas": {
@@ -625,8 +625,8 @@
               "/workspace/machine-native-ops/ns-root/namespaces-sdk",
               "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
               "/workspace/machine-native-ops/templates",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0"
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0"
             ]
           },
           "examples": {
@@ -652,7 +652,7 @@
           "automation": {
             "count": 9,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
               "/workspace/machine-native-ops/workspace/teams/holy-grail",
               "/workspace/machine-native-ops/workspace/src",
               "/workspace/machine-native-ops/workspace/src/tests",
@@ -712,7 +712,7 @@
           "deployment": {
             "count": 6,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4.0.0",
+              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4-0-0",
               "/workspace/machine-native-ops/workspace/src/autonomous",
               "/workspace/machine-native-ops/workspace/config",
               "/workspace/machine-native-ops/workspace/scripts",
@@ -774,7 +774,7 @@
             "locations": [
               "/workspace/machine-native-ops/ns-root/namespaces-sdk/.github",
               "/workspace/machine-native-ops/ns-root/.github",
-              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4.0.0",
+              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4-0-0",
               "/workspace/machine-native-ops/workspace/root/.github",
               "/workspace/machine-native-ops/workspace/docs"
             ]
@@ -845,8 +845,8 @@
           "ci-cd": {
             "count": 4,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0",
               "/workspace/machine-native-ops/workspace/config",
               "/workspace/machine-native-ops/workspace/docs"
             ]
@@ -1408,7 +1408,7 @@
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
               "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
               "/workspace/machine-native-ops/templates",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended"
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended"
             ]
           },
           "governance": {
@@ -1457,7 +1457,7 @@
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines",
               "/workspace/machine-native-ops/controlplane",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/scripts",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts",
               "/workspace/machine-native-ops/workspace/governance/policies"
             ]
           },
@@ -1494,7 +1494,7 @@
           "automation": {
             "count": 13,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
               "/workspace/machine-native-ops/workspace/teams/holy-grail",
               "/workspace/machine-native-ops/workspace/src",
               "/workspace/machine-native-ops/workspace/src/core/new",
@@ -1528,7 +1528,7 @@
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/.github",
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4/.github",
               "/workspace/machine-native-ops/ns-root/.github",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended/ci-cd"
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended/ci-cd"
             ]
           },
           "services": {
@@ -1624,7 +1624,7 @@
           "deployment": {
             "count": 7,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4.0.0",
+              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4-0-0",
               "/workspace/machine-native-ops/workspace/src/governance/34-config",
               "/workspace/machine-native-ops/workspace/src/autonomous",
               "/workspace/machine-native-ops/workspace/config",
@@ -1644,7 +1644,7 @@
           "naming": {
             "count": 6,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended/governance",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended/governance",
               "/workspace/machine-native-ops/workspace/governance/policies",
               "/workspace/machine-native-ops/workspace/src/governance/34-config",
               "/workspace/machine-native-ops/workspace/scripts",
@@ -1706,7 +1706,7 @@
             "locations": [
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
               "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs/reports",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/training",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/training",
               "/workspace/machine-native-ops/opt/machinenativenops",
               "/workspace/machine-native-ops/lib"
             ]
@@ -1846,8 +1846,8 @@
           "ci-cd": {
             "count": 4,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0",
               "/workspace/machine-native-ops/workspace/config",
               "/workspace/machine-native-ops/workspace/docs"
             ]
@@ -1990,7 +1990,7 @@
           "prometheus": {
             "count": 3,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/monitoring",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/monitoring",
               "/workspace/machine-native-ops/workspace/src/templates",
               "/workspace/machine-native-ops/workspace/archive/infrastructure/monitoring"
             ]
@@ -1998,7 +1998,7 @@
           "guides": {
             "count": 3,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/docs",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/docs",
               "/workspace/machine-native-ops/workspace/src/governance/29-docs",
               "/workspace/machine-native-ops/workspace/docs"
             ]
@@ -2168,7 +2168,7 @@
             "count": 2,
             "locations": [
               "/workspace/machine-native-ops/ns-root/namespaces-sdk/security",
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/scripts"
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts"
             ]
           },
           "rbac": {
@@ -2349,14 +2349,14 @@
           "grafana": {
             "count": 2,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/monitoring",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/monitoring",
               "/workspace/machine-native-ops/workspace/config/dev"
             ]
           },
           "best-practices": {
             "count": 2,
             "locations": [
-              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/docs",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/docs",
               "/workspace/machine-native-ops/workspace/examples/code-sanctuary-tutorials"
             ]
           },

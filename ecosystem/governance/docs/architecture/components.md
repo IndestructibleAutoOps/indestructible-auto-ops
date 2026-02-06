@@ -1826,7 +1826,7 @@ Total Components: 295
 ## reasoning.dual_path.arbitration.arbitrator
 
 - **Type**: python_module
-- **Path**: ecosystem/reasoning/dual_path/arbitration/arbitrator.py
+- **Path**: ecosystem/reasoning/dual-path/arbitration/arbitrator.py
 - **Dependencies**: 7
   - enum, typing, json, datetime, yaml, hashlib, os
 - **Dependents**: 0
@@ -1834,7 +1834,7 @@ Total Components: 295
 ## reasoning.dual_path.arbitration.rule_engine
 
 - **Type**: python_module
-- **Path**: ecosystem/reasoning/dual_path/arbitration/rule_engine.py
+- **Path**: ecosystem/reasoning/dual-path/arbitration/rule_engine.py
 - **Dependencies**: 4
   - typing, yaml, datetime, os
 - **Dependents**: 0
@@ -1842,28 +1842,28 @@ Total Components: 295
 ## reasoning.dual_path.arbitration.rules.api
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/reasoning/dual_path/arbitration/rules/api.yaml
+- **Path**: ecosystem/reasoning/dual-path/arbitration/rules/api.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
 ## reasoning.dual_path.arbitration.rules.dependency
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/reasoning/dual_path/arbitration/rules/dependency.yaml
+- **Path**: ecosystem/reasoning/dual-path/arbitration/rules/dependency.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
 ## reasoning.dual_path.arbitration.rules.security
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/reasoning/dual_path/arbitration/rules/security.yaml
+- **Path**: ecosystem/reasoning/dual-path/arbitration/rules/security.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
 ## reasoning.dual_path.external.retrieval
 
 - **Type**: python_module
-- **Path**: ecosystem/reasoning/dual_path/external/retrieval.py
+- **Path**: ecosystem/reasoning/dual-path/external/retrieval.py
 - **Dependencies**: 7
   - typing, json, requests, datetime, yaml, hashlib, os
 - **Dependents**: 0
@@ -1871,7 +1871,7 @@ Total Components: 295
 ## reasoning.dual_path.internal.knowledge_graph
 
 - **Type**: python_module
-- **Path**: ecosystem/reasoning/dual_path/internal/knowledge_graph.py
+- **Path**: ecosystem/reasoning/dual-path/internal/knowledge_graph.py
 - **Dependencies**: 7
   - typing, json, collections, datetime, yaml, hashlib, os
 - **Dependents**: 0
@@ -1879,7 +1879,7 @@ Total Components: 295
 ## reasoning.dual_path.internal.retrieval
 
 - **Type**: python_module
-- **Path**: ecosystem/reasoning/dual_path/internal/retrieval.py
+- **Path**: ecosystem/reasoning/dual-path/internal/retrieval.py
 - **Dependencies**: 6
   - typing, json, datetime, yaml, hashlib, os
 - **Dependents**: 0

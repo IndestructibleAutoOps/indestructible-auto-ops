@@ -2807,7 +2807,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "engine/tools-legacy/path_tools/__init__.py": {
+    "engine/tools-legacy/path-tools/__init__.py": {
       "CONFIDENCE.HIGH": 0,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -2820,7 +2820,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "engine/tools-legacy/path_tools/path_fixer.py": {
+    "engine/tools-legacy/path-tools/path_fixer.py": {
       "CONFIDENCE.HIGH": 3,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -2833,7 +2833,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "engine/tools-legacy/path_tools/path_scanner.py": {
+    "engine/tools-legacy/path-tools/path_scanner.py": {
       "CONFIDENCE.HIGH": 2,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -2846,7 +2846,7 @@
       "nosec": 0,
       "skipped_tests": 0
     },
-    "engine/tools-legacy/path_tools/path_validator.py": {
+    "engine/tools-legacy/path-tools/path_validator.py": {
       "CONFIDENCE.HIGH": 1,
       "CONFIDENCE.LOW": 0,
       "CONFIDENCE.MEDIUM": 0,
@@ -17990,7 +17990,7 @@
       "code": "133                                 )\n134             except Exception:\n135                 pass\n136     def _find_broken_yaml_refs(self):\n",
       "col_offset": 12,
       "end_col_offset": 20,
-      "filename": "engine/tools-legacy/path_tools/path_fixer.py",
+      "filename": "engine/tools-legacy/path-tools/path_fixer.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -18011,7 +18011,7 @@
       "code": "144                 self._scan_yaml_for_fixes(data, yaml_file, content)\n145             except Exception:\n146                 pass\n147         for yml_file in self.target_path.rglob(\"*.yml\"):\n",
       "col_offset": 12,
       "end_col_offset": 20,
-      "filename": "engine/tools-legacy/path_tools/path_fixer.py",
+      "filename": "engine/tools-legacy/path-tools/path_fixer.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -18032,7 +18032,7 @@
       "code": "151                 self._scan_yaml_for_fixes(data, yml_file, content)\n152             except Exception:\n153                 pass\n154     def _scan_yaml_for_fixes(\n",
       "col_offset": 12,
       "end_col_offset": 20,
-      "filename": "engine/tools-legacy/path_tools/path_fixer.py",
+      "filename": "engine/tools-legacy/path-tools/path_fixer.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -18053,7 +18053,7 @@
       "code": "243                 )\n244         except Exception:\n245             pass\n246     def _extract_yaml_refs(self, file_path: Path, rel_path: str):\n",
       "col_offset": 8,
       "end_col_offset": 16,
-      "filename": "engine/tools-legacy/path_tools/path_scanner.py",
+      "filename": "engine/tools-legacy/path-tools/path_scanner.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -18074,7 +18074,7 @@
       "code": "253             self._scan_yaml_paths(data, file_path, rel_path)\n254         except Exception:\n255             pass\n256     def _scan_yaml_paths(\n",
       "col_offset": 8,
       "end_col_offset": 16,
-      "filename": "engine/tools-legacy/path_tools/path_scanner.py",
+      "filename": "engine/tools-legacy/path-tools/path_scanner.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,
@@ -18095,7 +18095,7 @@
       "code": "224             )\n225         except Exception:\n226             pass\n227     def _check_yaml_paths(self, data: Any, yaml_file: Path, key_path: str = \"\"):\n",
       "col_offset": 8,
       "end_col_offset": 16,
-      "filename": "engine/tools-legacy/path_tools/path_validator.py",
+      "filename": "engine/tools-legacy/path-tools/path_validator.py",
       "issue_confidence": "HIGH",
       "issue_cwe": {
         "id": 703,

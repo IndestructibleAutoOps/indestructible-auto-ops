@@ -133,7 +133,7 @@ Establish a unified governance baseline across the MachineNativeOps repository b
 #### GL Root Structure Analysis
 Located GL Root Semantic Anchor at:
 - Primary: `engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml`
-- Reference: `gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml`
+- Reference: `gl-platform/gl90-99-meta-specification-layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml`
 
 #### Layer Hierarchy Validation
 - **GL00-09**: Strategic Layer

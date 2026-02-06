@@ -51,9 +51,9 @@ workspace/governance/                # 工作區治理 (重複!)
 #### 問題 3: 多版本命名治理系統並存
 ```
 governance/
-├── naming-governance-v1.0.0/           # 基礎版本
-├── naming-governance-v1.0.0-extended/  # 擴展版本
-└── quantum-naming-v4.0.0/              # 量子命名版本
+├── naming-governance-v1-0-0/           # 基礎版本
+├── naming-governance-v1-0-0-extended/  # 擴展版本
+└── quantum-naming-v4-0-0/              # 量子命名版本
 ```
 
 **問題**: 缺乏統一的命名治理入口點

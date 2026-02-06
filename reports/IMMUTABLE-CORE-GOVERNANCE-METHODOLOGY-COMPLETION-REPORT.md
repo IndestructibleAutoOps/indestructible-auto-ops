@@ -300,8 +300,8 @@ Create a comprehensive, **production-ready governance methodology** that transfo
 ### Component Integration Points
 
 **Reasoning**:
-- `dual_path/internal` - Local reasoning
-- `dual_path/external` - Global reasoning
+- `dual-path/internal` - Local reasoning
+- `dual-path/external` - Global reasoning
 
 **Engines**:
 - `validation_engine` - Step 6 validation
@@ -496,12 +496,12 @@ Categories:
 
 - `ecosystem/governance/ugs/` - Unified Governance Specification
 - `ecosystem/governance/meta-spec/` - Meta Specifications
-- `ecosystem/governance/GL-semantic-anchors/` - GL Semantic Anchors
+- `ecosystem/governance/gl-semantic-anchors/` - GL Semantic Anchors
 - `ecosystem/governance/enforcement.rules.yaml` - Enforcement Rules
 - `ecosystem/governance/core-governance-spec.yaml` - Core Governance Specification
 - `ecosystem/governance/subsystem-binding-spec.yaml` - Subsystem Binding Specification
 - `ecosystem/engines/` - Governance Engines
-- `ecosystem/reasoning/dual_path/` - Dual-Path Reasoning System
+- `ecosystem/reasoning/dual-path/` - Dual-Path Reasoning System
 - `ecosystem/contracts/` - Governance Contracts
 
 ### Git Commit

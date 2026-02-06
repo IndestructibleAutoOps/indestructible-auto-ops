@@ -53,7 +53,7 @@ class GLConsolidationPlanner:
         ('gl-platform.gl-platform.governance/sealed', 'workspace/gl-platform.gl-platform.governance/sealed'),
         ('gl-platform.gl-platform.governance/naming-gl-platform.gl-platform.governance-v1.0.0', 'workspace/gl-platform.gl-platform.governance/naming-gl-platform.gl-platform.governance-v1.0.0'),
         ('gl-platform.gl-platform.governance/naming-gl-platform.gl-platform.governance-v1.0.0-extended', 'workspace/gl-platform.gl-platform.governance/naming-gl-platform.gl-platform.governance-v1.0.0-extended'),
-        ('gl-platform.gl-platform.governance/quantum-naming-v4.0.0', 'workspace/gl-platform.gl-platform.governance/quantum-naming-v4.0.0'),
+        ('gl-platform.gl-platform.governance/quantum-naming-v4-0-0', 'workspace/gl-platform.gl-platform.governance/quantum-naming-v4-0-0'),
     ]
     # 需要重命名的檔案 (舊名 -> 新名)
     RENAME_MAP = {
