@@ -39,14 +39,20 @@ class ASTNode:
     children: List["ASTNode"] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Convert to dictionary"""
-        return {
+    def to_dict(self, include_metadata: bool = True) -> Dict[str, Any]:
+        """Convert to dictionary.
+
+        For language-neutral hashing, canonical JSON should exclude language-specific
+        metadata (e.g. original_value). Callers can include metadata for debugging.
+        """
+        result = {
             "node_type": self.node_type.value,
             "canonical_value": self.canonical_value,
-            "children": [child.to_dict() for child in self.children],
-            "metadata": self.metadata,
+            "children": [child.to_dict(include_metadata=include_metadata) for child in self.children],
         }
+        if include_metadata and self.metadata:
+            result["metadata"] = self.metadata
+        return result
 
     def add_child(self, child: "ASTNode"):
         """Add child node"""
@@ -119,7 +125,8 @@ class SemanticAST:
         if self.root is None:
             return "{}"
 
-        ast_dict = self.root.to_dict()
+        # Exclude metadata from canonical JSON to ensure language-neutral hashing.
+        ast_dict = self.root.to_dict(include_metadata=False)
         return json.dumps(
             ast_dict, sort_keys=True, separators=(",", ":"), ensure_ascii=False
         )

@@ -211,17 +211,19 @@ class Semanticizer:
         Detect source language from text.
         Simple heuristic based on character sets.
         """
-        # Check for Chinese characters
-        if re.search(r"[\u4e00-\u9fff]", text):
-            return Language.ZH
-
         # Check for Japanese characters
+        # Note: Japanese commonly contains Kanji (CJK range). Detect Japanese first
+        # when Hiragana/Katakana is present to avoid misclassifying as Chinese.
         if re.search(r"[\u3040-\u309f\u30a0-\u30ff]", text):
             return Language.JA
 
         # Check for Korean characters
         if re.search(r"[\uac00-\ud7af]", text):
             return Language.KO
+
+        # Check for Chinese characters
+        if re.search(r"[\u4e00-\u9fff]", text):
+            return Language.ZH
 
         # Check for German characters (ä, ö, ü, ß)
         if re.search(r"[äöüß]", text):
@@ -297,6 +299,10 @@ class Semanticizer:
 
         # Extract result
         result = self.extract_result(text, detected_lang)
+        # If result is not explicitly stated but an action was recognized,
+        # default to SUCCESS (tests expect "restarted X" implies success).
+        if result is None and action is not None:
+            result = SemanticResult.SUCCESS
 
         # Build semantic token AST
         ast = SemanticTokenAST(

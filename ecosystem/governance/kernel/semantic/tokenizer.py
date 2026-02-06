@@ -103,15 +103,16 @@ class SemanticTokenizer:
 
     def _detect_language(self, text: str) -> str:
         """Detect language from text"""
-        # Chinese
-        if re.search(r"[\u4e00-\u9fff]", text):
-            return "zh"
         # Japanese
-        elif re.search(r"[\u3040-\u309f\u30a0-\u30ff]", text):
+        # Note: Japanese often includes Kanji (CJK range); detect Kana first.
+        if re.search(r"[\u3040-\u309f\u30a0-\u30ff]", text):
             return "ja"
         # Korean
-        elif re.search(r"[\ac00-\ud7af]", text):
+        elif re.search(r"[\uac00-\ud7af]", text):
             return "ko"
+        # Chinese
+        elif re.search(r"[\u4e00-\u9fff]", text):
+            return "zh"
         # German
         elif re.search(r"[äöüß]", text):
             return "de"
@@ -185,19 +186,11 @@ class SemanticTokenizer:
                 canonical=email_match.group(),
             )
 
-        # Service/component name pattern (alphanumeric with dashes, dots)
-        # Extract the last alphanumeric identifier in the text
-        identifier_match = re.search(r"\b([\w\-\.]+)\s*$", text)
-        if identifier_match:
-            identifier = identifier_match.group(1)
-            # Filter out common words
-            if identifier.lower() not in [
-                "user",
-                "service",
-                "deployment",
-                "database",
-                "db",
-            ]:
+        # Prefer ASCII identifiers (names, service ids) over trailing CJK tokens.
+        # Example: "把用戶 alice 刪掉" should extract "alice" (not "刪掉").
+        ascii_identifiers = re.findall(r"\b[a-zA-Z0-9][a-zA-Z0-9._-]*\b", text)
+        for identifier in reversed(ascii_identifiers):
+            if identifier.lower() not in {"user", "service", "deployment", "database", "db"}:
                 return SemanticToken(
                     type=TokenType.IDENTIFIER, value=identifier, canonical=identifier
                 )

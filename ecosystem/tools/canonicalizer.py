@@ -34,6 +34,7 @@ class Canonicalizer:
         "trace_id",
         "request_id",
         "correlation_id",
+        "timestamp",
         "event_id",
         "generated_at",
         "execution_time_ms",
