@@ -173,7 +173,7 @@ def main():
         # 推理目录
         "ecosystem/reasoning/dual-path",
         # NG 治理目录
-        "ecosystem/ng-governance",
+        "ng-namespace-governance",
         # 机器原生操作
         "machine-native-ops/ecosystem/reasoning/dual-path",
         # 文档目录

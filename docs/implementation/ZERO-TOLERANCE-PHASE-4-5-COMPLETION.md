@@ -35,7 +35,7 @@ $ ls -lh ecosystem/enforce.py
 - `tools/zero-tolerance-scanner.py` - Scans for violations
 - `tools/auto-fix-violations.py` - Automated violation repair
 - `tools/no-degradation-check.py` - Prevents quality degradation
-- `tools/ng-namespace-guard.py` - Namespace protection
+- `ng-namespace-governance/tools/ng-namespace-guard.py` - Namespace protection
 - `tools/remove-todo-comments.py` - Code cleanliness
 
 **Files Present**:
@@ -441,7 +441,7 @@ ecosystem/.governance/enforcement/zero_tolerance_engine.py
 tools/zero-tolerance-scanner.py                   (10.7 KB)
 tools/auto-fix-violations.py                      (8.7 KB)
 tools/no-degradation-check.py                     (6.0 KB)
-tools/ng-namespace-guard.py                       (4.9 KB)
+ng-namespace-governance/tools/ng-namespace-guard.py                       (4.9 KB)
 ```
 
 ### Test Suites:

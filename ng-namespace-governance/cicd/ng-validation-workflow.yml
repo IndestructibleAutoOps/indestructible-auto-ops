@@ -30,7 +30,7 @@ jobs:
       
       - name: Run NG Namespace Validator
         run: |
-          python ecosystem/ng-governance/implementation/ng-namespace-validator.py \
+          python ng-namespace-governance/tools/ng-namespace-validator.py \
             > /tmp/ng-validation-results.json
       
       - name: Parse validation results
@@ -85,10 +85,10 @@ jobs:
               /tmp/ng-validation-results.json | head -20
             
             # Generate fix script
-            python ecosystem/ng-governance/implementation/ng-namespace-validator.py
+            python ng-namespace-governance/tools/ng-namespace-validator.py
             echo ""
             echo "📝 Auto-fix script generated at:"
-            echo "   ecosystem/ng-governance/implementation/fix-namespace-violations.sh"
+            echo "   ng-namespace-governance/tools/fix-namespace-violations.sh"
             
             # Fail on critical violations
             CRITICAL_COUNT=$(jq '[.results[].violations[]? | select(.severity == "CRITICAL")] | length' \
@@ -151,7 +151,7 @@ jobs:
               
               body += `\n### 🔧 Auto-Fix\n\n`;
               body += `A fix script has been generated at:\n`;
-              body += `\`ecosystem/ng-governance/implementation/fix-namespace-violations.sh\`\n\n`;
+              body += `\`ng-namespace-governance/tools/fix-namespace-violations.sh\`\n\n`;
             }
             
             body += `\n---\n`;
@@ -180,7 +180,7 @@ jobs:
       
       - name: Generate Cross-Era Mapping Matrix
         run: |
-          python ecosystem/ng-governance/implementation/ng-era-mapping-engine.py
+          python ng-namespace-governance/tools/ng-era-mapping-engine.py
       
       - name: Validate Mapping Consistency
         run: |
@@ -189,7 +189,7 @@ jobs:
           from pathlib import Path
           
           # Load mapping matrix
-          matrix_path = Path('ecosystem/ng-governance/analysis/ng-cross-era-matrix.json')
+          matrix_path = Path('ng-namespace-governance/analysis/ng-cross-era-matrix.json')
           with open(matrix_path) as f:
               matrix = json.load(f)
           

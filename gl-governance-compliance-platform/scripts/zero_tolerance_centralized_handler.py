@@ -47,7 +47,7 @@ DEFAULT_NAMING_SCAN = Path(
 DEFAULT_MARKER_SCAN = Path("/workspace/scan_files.py")
 DEFAULT_FIX_NAMING = Path("/workspace/fix_naming_violations.py")
 DEFAULT_ACCESS_POLICY = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/ng-namespace-access-policy.yaml"
+    "/workspace/ng-namespace-governance/core/ng-namespace-access-policy.yaml"
 )
 
 
@@ -569,7 +569,7 @@ def build_remediation_plan(summary: Dict) -> List[Dict]:
             {
                 "issue": "Missing Era-2 mappings",
                 "action": "Extend ng-era1-era2-mapping.yaml for coverage.",
-                "artifact": "/workspace/gl-governance-compliance-platform/governance/naming/ng-era1-era2-mapping.yaml",
+                "artifact": "/workspace/ng-namespace-governance/cross-era/ng-era1-era2-mapping.yaml",
             }
         )
     if summary["ng_namespace"]["prefix_collisions"]:

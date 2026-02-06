@@ -34,10 +34,10 @@ except ImportError:  # pragma: no cover - python < 3.11
 STAGES = ["internal", "external", "global", "cross-validate", "insight"]
 
 DEFAULT_SPEC_PATH = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/ng-era1-namespace.yaml"
+    "/workspace/ng-namespace-governance/era-1/ng-era1-namespace.yaml"
 )
 DEFAULT_MAPPING_PATH = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/ng-era1-era2-mapping.yaml"
+    "/workspace/ng-namespace-governance/cross-era/ng-era1-era2-mapping.yaml"
 )
 DEFAULT_EXTERNAL_SNAPSHOT = Path(
     "/workspace/gl-governance-compliance-platform/governance/naming/external-best-practices.yaml"
@@ -49,7 +49,7 @@ DEFAULT_REGISTRY_DIR = Path(
     "/workspace/gl-governance-compliance-platform/governance/naming/registry"
 )
 DEFAULT_ACCESS_POLICY = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/ng-namespace-access-policy.yaml"
+    "/workspace/ng-namespace-governance/core/ng-namespace-access-policy.yaml"
 )
 
 TEAM_TAG_ENV = "IND_AUTOOPS_TEAM_TAG"
