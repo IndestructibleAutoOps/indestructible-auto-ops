@@ -40,13 +40,13 @@ DEFAULT_MAPPING_PATH = Path(
     "/workspace/ng-namespace-governance/cross-era/ng-era1-era2-mapping.yaml"
 )
 DEFAULT_EXTERNAL_SNAPSHOT = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/external-best-practices.yaml"
+    "/workspace/ng-namespace-governance/specs/external-best-practices.yaml"
 )
 DEFAULT_GLOBAL_ALIASES = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/global-aliases.yaml"
+    "/workspace/ng-namespace-governance/specs/global-aliases.yaml"
 )
 DEFAULT_REGISTRY_DIR = Path(
-    "/workspace/gl-governance-compliance-platform/governance/naming/registry"
+    "/workspace/ng-namespace-governance/registry"
 )
 DEFAULT_ACCESS_POLICY = Path(
     "/workspace/ng-namespace-governance/core/ng-namespace-access-policy.yaml"

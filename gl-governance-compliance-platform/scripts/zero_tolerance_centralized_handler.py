@@ -36,16 +36,16 @@ ALT_TEAM_ENV = "INDAUTOOPSTEAM_TAG"
 DEFAULT_REPORT_DIR = Path("/workspace/reports/zero-tolerance")
 DEFAULT_REPO_ROOT = Path("/workspace")
 DEFAULT_NG_SCRIPT = Path(
-    "/workspace/gl-governance-compliance-platform/scripts/naming/ng_namespace_pipeline.py"
+    "/workspace/ng-namespace-governance/tools/ng-namespace-pipeline.py"
 )
 DEFAULT_BOUNDARY_SCRIPT = Path(
     "/workspace/gl-governance-compliance-platform/scripts/boundary_checker.py"
 )
 DEFAULT_NAMING_SCAN = Path(
-    "/workspace/gl-governance-compliance-platform/scripts/scan_naming_violations.py"
+    "/workspace/ng-namespace-governance/tools/scan-naming-violations.py"
 )
 DEFAULT_MARKER_SCAN = Path("/workspace/scan_files.py")
-DEFAULT_FIX_NAMING = Path("/workspace/fix_naming_violations.py")
+DEFAULT_FIX_NAMING = Path("/workspace/ng-namespace-governance/tools/fix-naming-violations.py")
 DEFAULT_ACCESS_POLICY = Path(
     "/workspace/ng-namespace-governance/core/ng-namespace-access-policy.yaml"
 )
@@ -193,7 +193,7 @@ def ensure_clean_worktree(repo_root: Path, allow_dirty: bool) -> None:
         return
     allowed_prefixes = (
         ".governance/locks/",
-        "gl-governance-compliance-platform/governance/naming/registry/",
+        "ng-namespace-governance/registry/",
     )
     allowed_exact = {"scan_results.json"}
     for line in status.splitlines():
@@ -451,7 +451,7 @@ def build_summary(report_dir: Path, label: Optional[str] = None) -> Dict:
     naming = load_json(report_dir / f"naming-violations{suffix}.json")
     ng_cross = load_json(
         Path(
-            "/workspace/gl-governance-compliance-platform/governance/naming/registry/ng-era1-cross-validation.json"
+            "/workspace/ng-namespace-governance/registry/ng-era1-cross-validation.json"
         )
     )
 
@@ -553,7 +553,7 @@ def build_remediation_plan(summary: Dict) -> List[Dict]:
             {
                 "issue": "Naming violations",
                 "action": "Review naming violations report and apply renames.",
-                "command": "python3 fix_naming_violations.py --workspace /workspace --apply",
+                "command": "python3 ng-namespace-governance/tools/fix-naming-violations.py --workspace /workspace --apply",
             }
         )
     if summary["ng_namespace"]["unmapped_layers"]:
@@ -561,7 +561,7 @@ def build_remediation_plan(summary: Dict) -> List[Dict]:
             {
                 "issue": "Unmapped layers in namespace scan",
                 "action": "Update LAYER_MAP or add explicit mappings.",
-                "artifact": "/workspace/gl-governance-compliance-platform/scripts/naming/ng_namespace_pipeline.py",
+                "artifact": "/workspace/ng-namespace-governance/tools/ng-namespace-pipeline.py",
             }
         )
     if summary["ng_namespace"]["missing_era2_mapping"]:
