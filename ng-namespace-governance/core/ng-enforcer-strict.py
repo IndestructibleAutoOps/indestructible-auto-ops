@@ -17,7 +17,7 @@ import sys
 import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any, Tuple, Optional
 from datetime import datetime
 from dataclasses import dataclass
 from enum import Enum
