@@ -1,10 +1,10 @@
 {
   "timestamp": "2026-02-06",
   "total_platforms": 26,
-  "passed": 25,
-  "failed": 1,
+  "passed": 26,
+  "failed": 0,
   "warnings": 2,
-  "pass_rate": 96.15384615384616,
+  "pass_rate": 100.0,
   "platforms": [
     {
       "name": "gl-automation-instant-platform",
@@ -439,8 +439,8 @@
       }
     },
     {
-      "name": "gl-monitoring-system-platform",
-      "compliant": false,
+      "name": "gl-monitoring-platform",
+      "compliant": true,
       "checks": {
         "format": {
           "passed": true,
@@ -451,8 +451,8 @@
           "message": "唯一性檢查通過"
         },
         "reserved": {
-          "passed": false,
-          "message": "包含保留關鍵字: system"
+          "passed": true,
+          "message": "無保留關鍵字衝突"
         },
         "similarity": {
           "passed": true,
