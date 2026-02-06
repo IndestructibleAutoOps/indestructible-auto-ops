@@ -363,7 +363,13 @@ def rollback_from_backup(repo_root: Path, backup_root: Path, plan_path: Path) ->
                 shutil.copy2(backup_path, old_path)
 
 
-def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool, plan_path: Path) -> List[str]:
+def apply_fixes(
+    repo_root: Path,
+    report_dir: Path,
+    ack_destructive: bool,
+    plan_path: Path,
+    timeout: int,
+) -> List[str]:
     actions = []
     if not ack_destructive:
         raise RuntimeError(
@@ -379,7 +385,7 @@ def apply_fixes(repo_root: Path, report_dir: Path, ack_destructive: bool, plan_p
             "--plan-input",
             str(plan_path),
         ],
-        timeout=600,
+        timeout=timeout,
     )
     actions.append("Applied naming violation auto-fix.")
     return actions
@@ -617,6 +623,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Allow running apply fixes on a dirty git worktree.",
     )
+    parser.add_argument(
+        "--apply-timeout",
+        type=int,
+        default=3600,
+        help="Timeout in seconds for apply fixes.",
+    )
     return parser.parse_args()
 
 
@@ -687,6 +699,8 @@ def main() -> int:
             write_markdown(markdown_report, pre_summary, pre_status, plan, team_tag, run_id, args.scope)
             return 2 if pre_status["status"] == "blocked" else 0
 
+        apply_error = None
+        rollback_after_error = False
         if args.apply_fixes:
             if args.scope not in {"all", "naming_filesystem_only"}:
                 raise RuntimeError(
@@ -695,19 +709,37 @@ def main() -> int:
             ensure_clean_worktree(repo_root, args.allow_dirty)
             backup_bundle = create_backup_bundle(repo_root, report_dir, fix_plan_path)
             try:
-                fix_actions = apply_fixes(repo_root, report_dir, args.ack_destructive, fix_plan_path)
-            except Exception:
+                fix_actions = apply_fixes(
+                    repo_root,
+                    report_dir,
+                    args.ack_destructive,
+                    fix_plan_path,
+                    args.apply_timeout,
+                )
+            except Exception as exc:
+                apply_error = str(exc)
                 if args.rollback_on_fail and backup_bundle:
                     rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
-                raise
+                    rollback_after_error = True
+                fix_actions = []
 
-            stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="postfix"))
-            stage_results.append(run_ng_stage("external", team_tag, label="postfix"))
-            stage_results.append(run_ng_stage("global", team_tag, label="postfix"))
-            stage_results.append(run_ng_stage("cross-validate", team_tag, label="postfix"))
-            stage_results.append(run_ng_stage("insight", team_tag, label="postfix"))
+            if apply_error is None:
+                stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="postfix"))
+                stage_results.append(run_ng_stage("external", team_tag, label="postfix"))
+                stage_results.append(run_ng_stage("global", team_tag, label="postfix"))
+                stage_results.append(run_ng_stage("cross-validate", team_tag, label="postfix"))
+                stage_results.append(run_ng_stage("insight", team_tag, label="postfix"))
+            else:
+                stage_results.append(StageResult("apply:fixes", "error", error=apply_error))
 
-        summary_label = "postfix" if args.apply_fixes else None
+        rollback_validation_passed = None
+        if apply_error and rollback_after_error:
+            stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="rollback"))
+            rollback_summary = build_summary(report_dir, label="rollback")
+            rollback_status = determine_status_with_scope(rollback_summary, args.scope)
+            rollback_validation_passed = rollback_status["status"] == "pass"
+
+        summary_label = "postfix" if args.apply_fixes and apply_error is None else None
         summary = build_summary(report_dir, label=summary_label)
         status = determine_status_with_scope(summary, args.scope)
         plan = build_remediation_plan(summary)
@@ -715,8 +747,7 @@ def main() -> int:
         git_status_after = get_git_status(repo_root)
         files_changed_count = get_files_changed_count(repo_root)
 
-        rollback_performed = False
-        rollback_validation_passed = None
+        rollback_performed = rollback_after_error
         if args.apply_fixes and args.rollback_on_fail and backup_bundle:
             pre_scope_count = pre_status.get("scope_count", extract_scope_count(pre_summary, args.scope))
             post_scope_count = status.get("scope_count", extract_scope_count(summary, args.scope))
@@ -763,6 +794,7 @@ def main() -> int:
             "backup_bundle": backup_bundle,
             "bundle_manifest_hash": backup_bundle.get("manifest_hash") if backup_bundle else "",
             "rollback_performed": rollback_performed,
+            "apply_error": apply_error,
             "destructive_actions": destructive_actions,
             "fix_actions": fix_actions,
         }
