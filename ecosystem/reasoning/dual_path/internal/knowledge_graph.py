@@ -363,5 +363,5 @@ if __name__ == "__main__":
 
     # Export graph
     graph.export_graph(
-        "/workspace/machine-native-ops/ecosystem/indexes/internal/knowledge_graph.json"
+        "/workspace/ecosystem/indexes/internal/knowledge_graph.json"
     )

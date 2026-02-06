@@ -97,7 +97,7 @@ LAYER_MAP = {
     "gl-governance-architecture-platform": "GL00-09",
     "gl-platform-core-platform": "GL10-29",
     "gl-data-processing-platform": "GL20-29",
-    "gl-runtime-engine-platform": "GL30-49",
+    "gl-runtime-execution-platform": "GL30-49",
     "gl-runtime-execution-platform": "GL30-49",
     "gl-monitoring-observability-platform": "GL50-59",
     "gl-monitoring-system-platform": "GL50-59",

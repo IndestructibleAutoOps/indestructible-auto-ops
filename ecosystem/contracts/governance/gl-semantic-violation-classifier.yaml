@@ -17,7 +17,7 @@ metadata:
   semantic_anchor: "SEMANTICVIOLATIONCLASSIFIER"
   gl_semantic_context: "semantic-governance"
   severity: "CRITICAL"
-  ecosystem_root: "/workspace/machine-native-ops/ecosystem"
+  ecosystem_root: "/workspace/ecosystem"
 
 # ============================================================================
 # 語意違規分類維度 (Semantic Violation Classification Dimensions)
@@ -319,7 +319,7 @@ semantic_anchors:
     domain: "semantic-governance"
     capability: "violation-classification"
     type: "specification"
-    path: "/workspace/machine-native-ops/ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml"
+    path: "/workspace/ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml"
     
   - anchor: "EVIDENCEINTEGRITY"
     layer: "GL90-99"
