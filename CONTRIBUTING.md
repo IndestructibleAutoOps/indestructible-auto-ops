@@ -369,7 +369,7 @@ repos:
     hooks:
       - id: ng-namespace-guard
         name: NG Namespace Guardian
-        entry: python tools/ng-namespace-guard.py
+        entry: python ng-namespace-governance/tools/ng-namespace-guard.py
         language: python
         files: '\\.py$'
         # ZERO TOLERANCE: 檢測到覆寫 = BLOCK commit
@@ -641,7 +641,7 @@ IndestructibleAutoOps 的零容忍原則不允許：
 
 ### 1. 命名空間守護腳本
 
-**檔案**: `tools/ng-namespace-guard.py`
+**檔案**: `ng-namespace-governance/tools/ng-namespace-guard.py`
 
 ```python
 #!/usr/bin/env python3
@@ -861,7 +861,7 @@ pre-commit install
 
 # 運行測試驗證環境
 pytest
-python tools/ng-namespace-guard.py
+python ng-namespace-governance/tools/ng-namespace-guard.py
 python tools/no-degradation-check.py
 ```
 
@@ -891,7 +891,7 @@ black .
 isort .
 
 # 檢查命名空間守護
-python tools/ng-namespace-guard.py $(git diff --name-only)
+python ng-namespace-governance/tools/ng-namespace-guard.py $(git diff --name-only)
 
 # 檢查無降級
 python tools/no-degradation-check.py
@@ -971,7 +971,7 @@ def safe_register(namespace):
 - `ng-namespace-governance/docs/NG-EXECUTION-ENGINES.md` - 執行引擎文檔
 
 ### 工具
-- `tools/ng-namespace-guard.py` - 命名空間守護
+- `ng-namespace-governance/tools/ng-namespace-guard.py` - 命名空間守護
 - `tools/no-degradation-check.py` - 降級檢測
 - `ng-namespace-governance/tools/ng-cli.py` - NG CLI
 

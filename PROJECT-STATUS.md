@@ -88,7 +88,7 @@ All systems tested and operational:
 
 ```bash
 # Test everything
-python3 tools/ng-namespace-guard.py *.py        # ✅
+python3 ng-namespace-governance/tools/ng-namespace-guard.py *.py        # ✅
 python3 tools/no-degradation-check.py            # ✅
 cd auto_task_project && python3 main.py          # ✅ 15 tasks
 cd ng-namespace-governance && python3 core/ng-executor.py  # ✅

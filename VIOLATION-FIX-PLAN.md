@@ -277,7 +277,7 @@ python3 tools/zero-tolerance-scanner.py
 python3 tools/no-degradation-check.py
 
 # 檢查無覆寫
-python3 tools/ng-namespace-guard.py $(find . -name "*.py" | head -100)
+python3 ng-namespace-governance/tools/ng-namespace-guard.py $(find . -name "*.py" | head -100)
 ```
 
 ---

@@ -230,7 +230,7 @@ declare -a directories=(
     # 推理目录
     "ecosystem/reasoning/dual-path"
     # NG 治理目录
-    "ecosystem/ng-governance"
+    "ng-namespace-governance"
     # 机器原生操作
     "machine-native-ops/ecosystem/reasoning/dual-path"
     # 文档目录
@@ -324,8 +324,8 @@ echo "验证修复结果..."
 echo "======================================"
 
 # 重新运行验证器
-if [ -f "$WORKSPACE/ecosystem/ng-governance/implementation/ng-namespace-validator.py" ]; then
-    python3 "$WORKSPACE/ecosystem/ng-governance/implementation/ng-namespace-validator.py" > /tmp/ng10100-validation-after.json
+if [ -f "$WORKSPACE/ng-namespace-governance/tools/ng-namespace-validator.py" ]; then
+    python3 "$WORKSPACE/ng-namespace-governance/tools/ng-namespace-validator.py" > /tmp/ng10100-validation-after.json
     echo "验证完成，结果已保存到 /tmp/ng10100-validation-after.json"
 else
     echo "警告：验证器脚本不存在，跳过验证步骤"

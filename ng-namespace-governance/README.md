@@ -100,20 +100,57 @@ ng-namespace-governance/
 │   ├── NG00301-validation-rules.yaml
 │   ├── NG00401-permission-model.yaml
 │   ├── NG00501-version-control.yaml
-│   └── NG00701-audit-trail.yaml
+│   ├── NG00701-audit-trail.yaml
+│   ├── ng-namespace-core.yaml       # 命名空間核心定義
+│   └── ng-namespace-access-policy.yaml  # 訪問策略
 ├── era-1/                           # Era-1 規範 (NG100-299)
+│   └── ng-era1-namespace.yaml       # Era-1 命名空間規範
 ├── era-2/                           # Era-2 規範 (NG300-599)
+│   └── ng-era2-namespace.yaml       # Era-2 命名空間規範
 ├── era-3/                           # Era-3 規範 (NG600-899)
+│   └── ng-era3-namespace.yaml       # Era-3 命名空間規範
 ├── cross-era/                       # 跨 Era 規範 (NG900-999)
-│   └── NG90101-cross-era-mapping.yaml
+│   ├── NG90101-cross-era-mapping.yaml
+│   ├── era1-to-era2-mapping.yaml
+│   ├── era2-to-era3-mapping.yaml
+│   ├── ng-era1-era2-mapping.yaml    # Era-1↔Era-2 映射
+│   ├── ng-era2-era3-mapping.yaml    # Era-2↔Era-3 映射
+│   └── ng-era-comparison.md         # 跨 Era 比較文檔
+├── analysis/                        # 分析報告
+│   ├── ng-cross-era-matrix.json     # 跨 Era 映射矩陣
+│   ├── actual-ng-validation-results.json
+│   ├── evidence-chain-report.json
+│   └── violation-catalog.json
+├── reports/                         # 執行報告
+│   ├── era2-completion-report.md
+│   ├── era2-compliance-verification.md
+│   ├── era2-deployment-report.md
+│   ├── era2-execution-summary.md
+│   ├── era2-upgrade-execution-summary.md
+│   ├── era2-upgrade-pipeline-report.json
+│   ├── era2-upgrade-pipeline-todo.md
+│   └── governance-verification-beyond-era1.md
 ├── registry/                        # 註冊系統
 │   ├── namespace-registry.py
 │   └── namespaces.json
 ├── tools/                           # 工具
-│   └── ng-cli.py
+│   ├── ng-cli.py                    # NG 命令行工具
+│   ├── ng-mapper.py                 # 命名空間映射器
+│   ├── ng-transformer.py            # 命名空間轉換器
+│   ├── ng-namespace-guard.py        # 命名空間守護
+│   ├── ng-namespace-validator.py    # 命名空間驗證器
+│   ├── ng-era-mapping-engine.py     # 跨 Era 映射引擎
+│   └── fix-namespace-violations.sh  # 違規修復腳本
+├── cicd/                            # CI/CD
+│   └── ng-validation-workflow.yml   # GitHub Actions 工作流
+├── monitoring/                      # 監控
+│   └── ng-compliance-dashboard.html # 合規性儀表板
 └── docs/                            # 文檔
     ├── NG-BATCH-1-IMPLEMENTATION-PLAN.md
-    └── LG-TO-NG-TRANSITION-PLAN.md
+    ├── NG-EXECUTION-ENGINES.md
+    ├── LG-TO-NG-TRANSITION-PLAN.md
+    ├── NG-Namespace-Governance-Whitepaper.md  # 白皮書
+    └── ng-namespace-index.md        # 命名空間索引 (NG000-999)
 ```
 
 ## 使用範例
@@ -198,9 +235,13 @@ python tools/ng-cli.py stats
 ## 文檔資源
 
 - **NG-CHARTER.md** - 治理憲章和核心原則
-- **NG-BATCH-1-IMPLEMENTATION-PLAN.md** - 批次 1 實施計劃
-- **LG-TO-NG-TRANSITION-PLAN.md** - LG→NG 轉型計劃
-- **Core Specs** - 7 個核心規範 YAML 文件
+- **docs/NG-BATCH-1-IMPLEMENTATION-PLAN.md** - 批次 1 實施計劃
+- **docs/LG-TO-NG-TRANSITION-PLAN.md** - LG→NG 轉型計劃
+- **docs/NG-Namespace-Governance-Whitepaper.md** - NG 命名空間治理白皮書
+- **docs/ng-namespace-index.md** - 完整 NG000-999 命名空間索引
+- **Core Specs** - 核心規範 YAML 文件（`core/` 目錄）
+- **analysis/** - 分析報告和證據鏈
+- **reports/** - 執行報告和升級摘要
 
 ## 貢獻指南
 

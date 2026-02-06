@@ -294,7 +294,7 @@ kubectl exec -n ng-governance \
 1. **验证基础指标**：
    ```bash
    # 确认 NG 违规数为 0
-   python3 ecosystem/ng-governance/implementation/ng-namespace-validator.py
+   python3 ng-namespace-governance/tools/ng-namespace-validator.py
    
    # 确认参数收敛
    kubectl exec -n ng-governance \

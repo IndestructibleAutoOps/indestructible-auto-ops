@@ -398,7 +398,7 @@ NG 系統實現：
 
 ```bash
 # 測試命名空間守護
-python3 tools/ng-namespace-guard.py <files>
+python3 ng-namespace-governance/tools/ng-namespace-guard.py <files>
 
 # 測試降級檢測
 python3 tools/no-degradation-check.py

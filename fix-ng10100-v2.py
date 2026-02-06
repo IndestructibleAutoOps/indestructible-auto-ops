@@ -143,7 +143,7 @@ def main():
         "ecosystem/governance/templates/event-schemas",
         "ecosystem/governance/templates",
         "ecosystem/reasoning/dual-path",
-        "ecosystem/ng-governance",
+        "ng-namespace-governance",
         "machine-native-ops/ecosystem/reasoning/dual-path",
         "docs/runbooks",
         "docs/training",

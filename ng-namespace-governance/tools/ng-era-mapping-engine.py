@@ -298,7 +298,7 @@ def main():
     print(f"Mapping result: {result}")
     
     # Generate and export matrix
-    output_path = Path("/workspace/ecosystem/ng-governance/analysis/ng-cross-era-matrix.json")
+    output_path = Path("/workspace/ng-namespace-governance/analysis/ng-cross-era-matrix.json")
     engine.export_mapping_matrix(output_path)
     print(f"Mapping matrix exported to: {output_path}")
 

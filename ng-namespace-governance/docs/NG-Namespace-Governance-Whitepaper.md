@@ -317,7 +317,7 @@ pip install -r requirements.txt
 
 ```bash
 # Run NG namespace validator
-python ecosystem/ng-governance/implementation/ng-namespace-validator.py
+python ng-namespace-governance/tools/ng-namespace-validator.py
 
 # Output: ng-validation-results.json
 ```
@@ -326,10 +326,10 @@ python ecosystem/ng-governance/implementation/ng-namespace-validator.py
 
 ```bash
 # View violation catalog
-cat ecosystem/ng-governance/analysis/violation-catalog.json
+cat ng-namespace-governance/analysis/violation-catalog.json
 
 # View evidence chain
-cat ecosystem/ng-governance/analysis/evidence-chain-report.json
+cat ng-namespace-governance/analysis/evidence-chain-report.json
 ```
 
 ### Phase 2: Remediation (Week 3-4)
@@ -338,17 +338,17 @@ cat ecosystem/ng-governance/analysis/evidence-chain-report.json
 
 ```bash
 # Generate fix script
-python ecosystem/ng-governance/implementation/ng-namespace-validator.py
+python ng-namespace-governance/tools/ng-namespace-validator.py
 
 # Script location:
-# ecosystem/ng-governance/implementation/fix-namespace-violations.sh
+# ng-namespace-governance/tools/fix-namespace-violations.sh
 ```
 
 #### Step 2: Preview Changes (Dry-Run)
 
 ```bash
 # Preview changes without applying
-./ecosystem/ng-governance/implementation/fix-namespace-violations.sh \
+./ng-namespace-governance/tools/fix-namespace-violations.sh \
   --dry-run
 ```
 
@@ -356,10 +356,10 @@ python ecosystem/ng-governance/implementation/ng-namespace-validator.py
 
 ```bash
 # Apply fixes (with confirmation)
-./ecosystem/ng-governance/implementation/fix-namespace-violations.sh
+./ng-namespace-governance/tools/fix-namespace-violations.sh
 
 # Or force apply (skip confirmation)
-./ecosystem/ng-governance/implementation/fix-namespace-violations.sh \
+./ng-namespace-governance/tools/fix-namespace-violations.sh \
   --force
 ```
 
@@ -369,7 +369,7 @@ python ecosystem/ng-governance/implementation/ng-namespace-validator.py
 
 ```yaml
 # File: .github/workflows/ng-validation.yml
-# Copy from: ecosystem/ng-governance/cicd/ng-validation-workflow.yml
+# Copy from: ng-namespace-governance/cicd/ng-validation-workflow.yml
 ```
 
 #### Step 2: Configure Pre-commit Hooks
@@ -385,7 +385,7 @@ repos:
     hooks:
       - id: ng-namespace-validator
         name: NG Namespace Validator
-        entry: python ecosystem/ng-governance/implementation/ng-namespace-validator.py
+        entry: python ng-namespace-governance/tools/ng-namespace-validator.py
         language: system
         pass_filenames: false
         always_run: true
@@ -408,7 +408,7 @@ The workflow automatically comments on PRs with:
 ```bash
 # Serve dashboard locally
 python -m http.server 8080 \
-  --directory ecosystem/ng-governance/monitoring/
+  --directory ng-namespace-governance/monitoring/
 
 # Access at: http://localhost:8080/ng-compliance-dashboard.html
 ```
@@ -534,12 +534,12 @@ The NG Namespace Governance Framework v3.0 provides a comprehensive, machine-rea
 
 ### Resources
 
-- **NG Index**: `ecosystem/ng-governance/ng-namespace-index.md`
-- **Validator**: `ecosystem/ng-governance/implementation/ng-namespace-validator.py`
-- **Mapping Engine**: `ecosystem/ng-governance/implementation/ng-era-mapping-engine.py`
-- **CI/CD Workflow**: `ecosystem/ng-governance/cicd/ng-validation-workflow.yml`
-- **Dashboard**: `ecosystem/ng-governance/monitoring/ng-compliance-dashboard.html`
-- **Evidence Chain**: `ecosystem/ng-governance/analysis/evidence-chain-report.json`
+- **NG Index**: `ng-namespace-governance/docs/ng-namespace-index.md`
+- **Validator**: `ng-namespace-governance/tools/ng-namespace-validator.py`
+- **Mapping Engine**: `ng-namespace-governance/tools/ng-era-mapping-engine.py`
+- **CI/CD Workflow**: `ng-namespace-governance/cicd/ng-validation-workflow.yml`
+- **Dashboard**: `ng-namespace-governance/monitoring/ng-compliance-dashboard.html`
+- **Evidence Chain**: `ng-namespace-governance/analysis/evidence-chain-report.json`
 
 ---
 
