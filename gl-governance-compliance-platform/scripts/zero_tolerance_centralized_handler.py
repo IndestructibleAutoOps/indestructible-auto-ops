@@ -132,6 +132,43 @@ def get_files_changed_count(repo_root: Path) -> int:
     return len(output.splitlines())
 
 
+def filter_plan_changes(
+    changes: List[Dict],
+    path_prefixes: List[str],
+    max_changes: Optional[int],
+) -> List[Dict]:
+    filtered = changes
+    if path_prefixes:
+        normalized = [prefix.strip("/").replace("\\", "/") for prefix in path_prefixes]
+        filtered = [
+            item for item in filtered
+            if any(
+                str(item.get("old_path", "")).replace("\\", "/").startswith(prefix)
+                for prefix in normalized
+            )
+        ]
+    filtered = sorted(filtered, key=lambda item: (item.get("sequence", 0), item.get("old_path", "")))
+    if max_changes is not None:
+        filtered = filtered[:max_changes]
+    return filtered
+
+
+def write_trimmed_plan(
+    plan_payload: Dict,
+    changes: List[Dict],
+    output_path: Path,
+) -> Dict:
+    trimmed = dict(plan_payload)
+    trimmed["changes"] = changes
+    trimmed["plan_digest"] = compute_digest({"changes": changes})
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(trimmed, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    return trimmed
+
+
 def get_git_sha(repo_root: Path) -> str:
     try:
         output = run_command(["git", "rev-parse", "HEAD"], cwd=repo_root).strip()
@@ -610,6 +647,17 @@ def parse_args() -> argparse.Namespace:
         help="Limit validation/remediation scope.",
     )
     parser.add_argument(
+        "--path-prefix",
+        action="append",
+        default=[],
+        help="Restrict plan/apply to a path prefix (repeatable).",
+    )
+    parser.add_argument(
+        "--max-changes",
+        type=int,
+        help="Limit number of plan/apply changes.",
+    )
+    parser.add_argument(
         "--plan-input",
         help="Use an existing fix plan JSON for apply.",
     )
@@ -659,6 +707,12 @@ def main() -> int:
         plan_payload = load_fix_plan(fix_plan_path)
         ensure_plan_matches_repo(plan_payload, repo_root)
         plan_changes = plan_payload.get("changes", [])
+        filtered_changes = filter_plan_changes(plan_changes, args.path_prefix, args.max_changes)
+        trimmed_plan_path = None
+        if filtered_changes != plan_changes:
+            trimmed_plan_path = report_dir / "fix-plan-trimmed.json"
+            plan_payload = write_trimmed_plan(plan_payload, filtered_changes, trimmed_plan_path)
+            plan_changes = filtered_changes
         plan_digest = plan_payload.get("plan_digest", "")
         if not plan_digest:
             plan_digest = compute_digest({"changes": plan_changes})
@@ -681,11 +735,13 @@ def main() -> int:
                 "git_status_before": git_status_before,
                 "flow_model": FLOW_MODEL,
                 "scope": args.scope,
+                "path_prefix": args.path_prefix,
+                "max_changes": args.max_changes,
                 "stage_results": [result.__dict__ for result in stage_results],
                 "summary": pre_summary,
                 "status": pre_status,
                 "remediation_plan": plan,
-                "fix_plan_path": str(fix_plan_path),
+                "fix_plan_path": str(trimmed_plan_path or fix_plan_path),
                 "plan_digest": plan_digest,
                 "destructive_actions": destructive_actions,
                 "fix_actions": [],
@@ -707,19 +763,20 @@ def main() -> int:
                     f"Scope '{args.scope}' does not support apply-fixes yet."
                 )
             ensure_clean_worktree(repo_root, args.allow_dirty)
-            backup_bundle = create_backup_bundle(repo_root, report_dir, fix_plan_path)
+            plan_path_to_use = trimmed_plan_path or fix_plan_path
+            backup_bundle = create_backup_bundle(repo_root, report_dir, plan_path_to_use)
             try:
                 fix_actions = apply_fixes(
                     repo_root,
                     report_dir,
                     args.ack_destructive,
-                    fix_plan_path,
+                    plan_path_to_use,
                     args.apply_timeout,
                 )
             except Exception as exc:
                 apply_error = str(exc)
                 if args.rollback_on_fail and backup_bundle:
-                    rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
+                    rollback_from_backup(repo_root, Path(backup_bundle["path"]), plan_path_to_use)
                     rollback_after_error = True
                 fix_actions = []
 
@@ -757,7 +814,7 @@ def main() -> int:
             else:
                 rollback_needed = post_scope_count > pre_scope_count
             if rollback_needed:
-                rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
+                rollback_from_backup(repo_root, Path(backup_bundle["path"]), plan_path_to_use)
                 rollback_performed = True
                 stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="rollback"))
                 rollback_summary = build_summary(report_dir, label="rollback")
@@ -780,6 +837,8 @@ def main() -> int:
             "files_changed_count": files_changed_count,
             "flow_model": FLOW_MODEL,
             "scope": args.scope,
+            "path_prefix": args.path_prefix,
+            "max_changes": args.max_changes,
             "stage_results": [result.__dict__ for result in stage_results],
             "summary": summary,
             "status": status,
@@ -789,7 +848,7 @@ def main() -> int:
                 "rollback_validation_passed": rollback_validation_passed,
             },
             "remediation_plan": plan,
-            "fix_plan_path": str(fix_plan_path),
+            "fix_plan_path": str(trimmed_plan_path or fix_plan_path),
             "plan_digest": plan_digest,
             "backup_bundle": backup_bundle,
             "bundle_manifest_hash": backup_bundle.get("manifest_hash") if backup_bundle else "",
