@@ -89,6 +89,28 @@ class NamingFixer:
         # 將駝峰轉為連字符
         s = re.sub(r'([a-z])([A-Z])', r'\1-\2', s)
         return s.lower()
+
+    def _sanitize_component(self, value: str, separator: str) -> str:
+        cleaned = re.sub(r'\s+', separator, value)
+        cleaned = re.sub(r'[^A-Za-z0-9_-]', separator, cleaned)
+        if separator == '-':
+            cleaned = cleaned.replace('_', '-')
+        else:
+            cleaned = cleaned.replace('-', '_')
+        cleaned = re.sub(rf'{re.escape(separator)}+', separator, cleaned)
+        cleaned = cleaned.strip(separator)
+        return cleaned.lower()
+
+    def sanitize_name(self, name: str, style: str) -> str:
+        separator = '_' if style == 'snake' else '-'
+        if '.' in name:
+            stem, ext = name.rsplit('.', 1)
+        else:
+            stem, ext = name, ''
+        stem = self._sanitize_component(stem, separator)
+        if not stem:
+            return name
+        return f"{stem}.{ext}" if ext else stem
     
     def should_skip(self, path: Path) -> bool:
         """檢查是否應跳過"""
@@ -118,11 +140,11 @@ class NamingFixer:
             if name.startswith('__') and name.endswith('__.py'):
                 continue
             
-            # 檢查是否使用連字符
-            if '-' in stem:
-                new_name = self.to_snake_case(name)
+            needs_normalize = '-' in stem or re.search(r'[A-Z\\s]', stem) or re.search(r'[^a-z0-9_\\-]', stem)
+            if needs_normalize:
+                new_name = self.sanitize_name(name, 'snake')
                 new_path = file_path.parent / new_name
-                if new_path != file_path:
+                if new_path != file_path and not new_path.exists():
                     renames.append((file_path, new_path))
         
         renames.sort(key=lambda pair: str(pair[0]))
@@ -147,13 +169,36 @@ class NamingFixer:
                 if stem.startswith('GL') and re.match(r'^GL\d{2}', stem):
                     continue
                 
-                # 檢查是否使用下劃線
-                if '_' in stem:
-                    new_name = self.to_kebab_case(name)
+                needs_normalize = '_' in stem or re.search(r'[A-Z\\s]', stem) or re.search(r'[^a-z0-9_\\-]', stem)
+                if needs_normalize:
+                    new_name = self.sanitize_name(name, 'kebab')
                     new_path = file_path.parent / new_name
-                    if new_path != file_path:
+                    if new_path != file_path and not new_path.exists():
                         renames.append((file_path, new_path))
         
+        renames.sort(key=lambda pair: str(pair[0]))
+        return renames
+
+    def collect_generic_file_renames(self) -> List[Tuple[Path, Path]]:
+        """收集通用文件重命名（空格/特殊字元/大小寫）"""
+        renames = []
+        handled_exts = {'.py', '.yaml', '.yml', '.json', '.toml'}
+        for file_path in self.workspace.rglob('*'):
+            if not file_path.is_file():
+                continue
+            if self.should_skip(file_path):
+                continue
+            if file_path.suffix.lower() in handled_exts:
+                continue
+            name = file_path.name
+            stem = file_path.stem
+            needs_normalize = re.search(r'[A-Z\\s]', stem) or re.search(r'[^a-z0-9_\\-]', stem)
+            if not needs_normalize:
+                continue
+            new_name = self.sanitize_name(name, 'kebab')
+            new_path = file_path.parent / new_name
+            if new_path != file_path and not new_path.exists():
+                renames.append((file_path, new_path))
         renames.sort(key=lambda pair: str(pair[0]))
         return renames
     
@@ -188,9 +233,9 @@ class NamingFixer:
             if name in {'PULL_REQUEST_TEMPLATE', 'ISSUE_TEMPLATE'}:
                 continue
             
-            # 檢查是否使用下劃線
-            if '_' in name and not name.startswith('_'):
-                new_name = self.to_kebab_case(name)
+            needs_normalize = '_' in name or re.search(r'[A-Z\\s]', name) or re.search(r'[^a-z0-9_\\-]', name)
+            if needs_normalize and not name.startswith('_'):
+                new_name = self.sanitize_name(name, 'kebab')
                 new_path = dir_path.parent / new_name
                 if new_path != dir_path and not new_path.exists():
                     renames.append((dir_path, new_path))
@@ -370,8 +415,19 @@ class NamingFixer:
                 else:
                     self.failed_count += 1
             print(f"  共 {len(config_renames)} 個文件")
+
+            # 3. 修復通用文件命名
+            print("\n📄 通用文件命名修復 (空格/特殊字元/大小寫):")
+            print("-" * 50)
+            generic_renames = self.collect_generic_file_renames()
+            for old_path, new_path in generic_renames:
+                if self.rename_file(old_path, new_path):
+                    self.fixed_count += 1
+                else:
+                    self.failed_count += 1
+            print(f"  共 {len(generic_renames)} 個文件")
             
-            # 3. 修復目錄命名
+            # 4. 修復目錄命名
             print("\n📂 目錄命名修復 (下劃線 -> 連字符):")
             print("-" * 50)
             dir_renames = self.collect_directory_renames()

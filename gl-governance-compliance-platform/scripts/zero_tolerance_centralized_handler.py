@@ -23,6 +23,13 @@ from typing import Dict, List, Optional
 
 
 FLOW_MODEL = ["internal", "external", "global", "cross-validate", "insight"]
+SCOPES = [
+    "all",
+    "gl_marker_only",
+    "naming_filesystem_only",
+    "axiom_references_only",
+    "ng_mapping_only",
+]
 TEAM_ENV = "IND_AUTOOPS_TEAM_TAG"
 ALT_TEAM_ENV = "INDAUTOOPSTEAM_TAG"
 
@@ -436,6 +443,34 @@ def determine_zero_tolerance_status(summary: Dict) -> Dict:
     }
 
 
+def extract_scope_count(summary: Dict, scope: str) -> int:
+    naming = summary.get("naming", {}).get("by_type", {}) or {}
+    if scope == "gl_marker_only":
+        return summary.get("gl_marker", {}).get("needs_adjustment") or 0
+    if scope == "naming_filesystem_only":
+        return (
+            naming.get("file_uppercase", 0)
+            + naming.get("file_spaces", 0)
+            + naming.get("file_special_chars", 0)
+        )
+    if scope == "axiom_references_only":
+        return naming.get("axiom_references", 0)
+    if scope == "ng_mapping_only":
+        return summary.get("ng_namespace", {}).get("missing_era2_mapping") or 0
+    return 0
+
+
+def determine_status_with_scope(summary: Dict, scope: str) -> Dict:
+    if scope == "all":
+        return determine_zero_tolerance_status(summary)
+    count = extract_scope_count(summary, scope)
+    return {
+        "status": "pass" if count == 0 else "blocked",
+        "failures": [scope] if count else [],
+        "scope_count": count,
+    }
+
+
 def build_remediation_plan(summary: Dict) -> List[Dict]:
     plan = []
     if summary["boundary"]["total_violations"]:
@@ -495,6 +530,7 @@ def write_markdown(
     plan: List[Dict],
     team_tag: str,
     run_id: str,
+    scope: str,
 ) -> None:
     lines = [
         "# Zero-Tolerance Centralized Report",
@@ -502,6 +538,7 @@ def write_markdown(
         f"Timestamp: {utc_now()}",
         f"Run ID: {run_id}",
         f"Team Tag: {team_tag}",
+        f"Scope: {scope}",
         "",
         "## Flow Model",
         " -> ".join(FLOW_MODEL),
@@ -561,6 +598,12 @@ def parse_args() -> argparse.Namespace:
         help="Generate fix plan only (no modifications).",
     )
     parser.add_argument(
+        "--scope",
+        choices=SCOPES,
+        default="all",
+        help="Limit validation/remediation scope.",
+    )
+    parser.add_argument(
         "--plan-input",
         help="Use an existing fix plan JSON for apply.",
     )
@@ -610,11 +653,11 @@ def main() -> int:
         destructive_actions = [item for item in plan_changes if item.get("destructive")]
         backup_bundle = {}
 
-        summary = build_summary(report_dir)
-        pre_status = determine_zero_tolerance_status(summary)
+        pre_summary = build_summary(report_dir)
+        pre_status = determine_status_with_scope(pre_summary, args.scope)
 
         if args.plan_only:
-            plan = build_remediation_plan(summary)
+            plan = build_remediation_plan(pre_summary)
             report_payload = {
                 "timestamp": utc_now(),
                 "run_id": run_id,
@@ -625,8 +668,9 @@ def main() -> int:
                 "git_sha_before": git_sha_before,
                 "git_status_before": git_status_before,
                 "flow_model": FLOW_MODEL,
+                "scope": args.scope,
                 "stage_results": [result.__dict__ for result in stage_results],
-                "summary": summary,
+                "summary": pre_summary,
                 "status": pre_status,
                 "remediation_plan": plan,
                 "fix_plan_path": str(fix_plan_path),
@@ -640,10 +684,14 @@ def main() -> int:
                 json.dumps(report_payload, indent=2, ensure_ascii=False), encoding="utf-8"
             )
             markdown_report = report_dir / "centralized-report.md"
-            write_markdown(markdown_report, summary, pre_status, plan, team_tag, run_id)
+            write_markdown(markdown_report, pre_summary, pre_status, plan, team_tag, run_id, args.scope)
             return 2 if pre_status["status"] == "blocked" else 0
 
         if args.apply_fixes:
+            if args.scope not in {"all", "naming_filesystem_only"}:
+                raise RuntimeError(
+                    f"Scope '{args.scope}' does not support apply-fixes yet."
+                )
             ensure_clean_worktree(repo_root, args.allow_dirty)
             backup_bundle = create_backup_bundle(repo_root, report_dir, fix_plan_path)
             try:
@@ -661,7 +709,7 @@ def main() -> int:
 
         summary_label = "postfix" if args.apply_fixes else None
         summary = build_summary(report_dir, label=summary_label)
-        status = determine_zero_tolerance_status(summary)
+        status = determine_status_with_scope(summary, args.scope)
         plan = build_remediation_plan(summary)
         git_sha_after = get_git_sha(repo_root)
         git_status_after = get_git_status(repo_root)
@@ -669,15 +717,23 @@ def main() -> int:
 
         rollback_performed = False
         rollback_validation_passed = None
-        if args.apply_fixes and args.rollback_on_fail and status["status"] == "blocked" and backup_bundle:
-            rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
-            rollback_performed = True
-            stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="rollback"))
-            rollback_summary = build_summary(report_dir, label="rollback")
-            rollback_status = determine_zero_tolerance_status(rollback_summary)
-            rollback_validation_passed = rollback_status["status"] == "pass"
-            git_sha_after = get_git_sha(repo_root)
-            git_status_after = get_git_status(repo_root)
+        if args.apply_fixes and args.rollback_on_fail and backup_bundle:
+            pre_scope_count = pre_status.get("scope_count", extract_scope_count(pre_summary, args.scope))
+            post_scope_count = status.get("scope_count", extract_scope_count(summary, args.scope))
+            rollback_needed = False
+            if args.scope == "all":
+                rollback_needed = status["status"] == "blocked"
+            else:
+                rollback_needed = post_scope_count > pre_scope_count
+            if rollback_needed:
+                rollback_from_backup(repo_root, Path(backup_bundle["path"]), fix_plan_path)
+                rollback_performed = True
+                stage_results.extend(run_internal_stage(report_dir, repo_root, team_tag, label="rollback"))
+                rollback_summary = build_summary(report_dir, label="rollback")
+                rollback_status = determine_status_with_scope(rollback_summary, args.scope)
+                rollback_validation_passed = rollback_status["status"] == "pass"
+                git_sha_after = get_git_sha(repo_root)
+                git_status_after = get_git_status(repo_root)
 
         report_payload = {
             "timestamp": utc_now(),
@@ -692,6 +748,7 @@ def main() -> int:
             "git_status_after": git_status_after,
             "files_changed_count": files_changed_count,
             "flow_model": FLOW_MODEL,
+            "scope": args.scope,
             "stage_results": [result.__dict__ for result in stage_results],
             "summary": summary,
             "status": status,
@@ -718,7 +775,7 @@ def main() -> int:
         )
 
         markdown_report = report_dir / "centralized-report.md"
-        write_markdown(markdown_report, summary, status, plan, team_tag, run_id)
+        write_markdown(markdown_report, summary, status, plan, team_tag, run_id, args.scope)
 
         return 0 if status["status"] == "pass" else 2
     finally:
