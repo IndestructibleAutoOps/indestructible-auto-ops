@@ -23,6 +23,6 @@ from .base_connector import BaseConnector
 from .filesystem_connector import FilesystemConnector
 
 __all__ = [
-    'BaseConnector',
-    'FilesystemConnector',
+    "BaseConnector",
+    "FilesystemConnector",
 ]

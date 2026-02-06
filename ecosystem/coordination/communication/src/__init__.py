@@ -24,13 +24,12 @@ from .event_dispatcher import EventDispatcher, EventHandler
 
 __all__ = [
     # Message Bus
-    'MessageBus',
-    'Message',
-    'Subscription',
-    
+    "MessageBus",
+    "Message",
+    "Subscription",
     # Event Dispatcher
-    'EventDispatcher',
-    'EventHandler',
+    "EventDispatcher",
+    "EventHandler",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

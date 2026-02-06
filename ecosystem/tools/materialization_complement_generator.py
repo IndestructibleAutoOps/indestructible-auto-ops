@@ -24,6 +24,7 @@ from enum import Enum
 
 class DeclarationType(Enum):
     """語義聲明類型"""
+
     ARCHITECTURE = "architecture"  # 架構層級聲明
     PHASE = "phase"  # 階段聲明
     COMPLIANCE = "compliance"  # 合規性聲明
@@ -35,6 +36,7 @@ class DeclarationType(Enum):
 
 class EntityType(Enum):
     """實體類型"""
+
     DOCUMENT = "document"  # 文檔
     CODE = "code"  # 代碼
     DATA = "data"  # 數據
@@ -44,6 +46,7 @@ class EntityType(Enum):
 
 class Priority(Enum):
     """優先級"""
+
     CRITICAL = "CRITICAL"
     HIGH = "HIGH"
     MEDIUM = "MEDIUM"
@@ -52,6 +55,7 @@ class Priority(Enum):
 
 class ComplementStatus(Enum):
     """補件狀態"""
+
     MISSING = "MISSING"  # 缺失
     EXISTS = "EXISTS"  # 存在
     INCOMPLETE = "INCOMPLETE"  # 不完整
@@ -61,6 +65,7 @@ class ComplementStatus(Enum):
 @dataclass
 class SemanticDeclaration:
     """語義聲明"""
+
     declaration_type: DeclarationType
     declaration_text: str
     source_file: str
@@ -71,6 +76,7 @@ class SemanticDeclaration:
 @dataclass
 class ComplementEntity:
     """補件實體"""
+
     entity_type: EntityType
     name: str
     location: str
@@ -84,6 +90,7 @@ class ComplementEntity:
 @dataclass
 class ComplementItem:
     """補件項目"""
+
     declaration: SemanticDeclaration
     entities: List[ComplementEntity] = field(default_factory=list)
     completion_rate: float = 0.0
@@ -92,6 +99,7 @@ class ComplementItem:
 @dataclass
 class ComplementReport:
     """補件報告"""
+
     scan_time: str
     total_declarations: int
     total_entities: int
@@ -106,42 +114,42 @@ class ComplementReport:
 
 class MaterializationComplementGenerator:
     """實體化補件生成器"""
-    
+
     def __init__(self, workspace_root: str = "/workspace"):
         self.workspace_root = Path(workspace_root)
         self.reports_dir = self.workspace_root / "reports"
         self.complements_dir = self.workspace_root / "complements"
         self.templates_dir = self.complements_dir / "templates"
-        
+
         # 確保目錄存在
         self.complements_dir.mkdir(exist_ok=True)
         self.templates_dir.mkdir(parents=True, exist_ok=True)
-        
+
         # 聲明檢測模式
         self.declaration_patterns = {
             DeclarationType.ARCHITECTURE: [
-                r'治理平台|統一治理|完整閉環|完整架構|完全一致',
+                r"治理平台|統一治理|完整閉環|完整架構|完全一致",
             ],
             DeclarationType.PHASE: [
-                r'Phase\s+\d+[：:]\s*\w+|第\s*\d+\s*階段',
+                r"Phase\s+\d+[：:]\s*\w+|第\s*\d+\s*階段",
             ],
             DeclarationType.COMPLIANCE: [
-                r'100%\s*合規|完全符合規範|所有檢查通過|合規性\s*:\s*\d+/\d+',
+                r"100%\s*合規|完全符合規範|所有檢查通過|合規性\s*:\s*\d+/\d+",
             ],
             DeclarationType.COMPLETENESS: [
-                r'完整性保證|無缺點|完整覆蓋|完整性\s*:\s*\d+%',
+                r"完整性保證|無缺點|完整覆蓋|完整性\s*:\s*\d+%",
             ],
             DeclarationType.ERA_LAYER: [
-                r'Era\s*:\s*\d+|Layer\s*:\s*\w+|Semantic Closure\s*:\s*\w+',
+                r"Era\s*:\s*\d+|Layer\s*:\s*\w+|Semantic Closure\s*:\s*\w+",
             ],
             DeclarationType.PLATFORM: [
-                r'平台|Platform|組件化|模塊化',
+                r"平台|Platform|組件化|模塊化",
             ],
             DeclarationType.SEALING: [
-                r'封存|密封|鎖定|Sealed|LOCKED',
+                r"封存|密封|鎖定|Sealed|LOCKED",
             ],
         }
-        
+
         # 補件模板映射
         self.entity_templates = {
             DeclarationType.ARCHITECTURE: [
@@ -152,7 +160,7 @@ class MaterializationComplementGenerator:
                     template="architecture-diagram-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["檢查文件是否存在", "驗證架構圖一致性"],
-                    description="展示整體平台架構和組件關係"
+                    description="展示整體平台架構和組件關係",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DOCUMENT,
@@ -161,7 +169,7 @@ class MaterializationComplementGenerator:
                     template="api-doc-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["檢查接口定義完整性", "驗證 API 文檔格式"],
-                    description="所有公開接口的詳細定義"
+                    description="所有公開接口的詳細定義",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DOCUMENT,
@@ -170,7 +178,7 @@ class MaterializationComplementGenerator:
                     template="component-list-template.md",
                     priority=Priority.MEDIUM,
                     verification_methods=["驗證組件列表完整性", "檢查依賴關係"],
-                    description="所有組件的名稱、職責、依賴"
+                    description="所有組件的名稱、職責、依賴",
                 ),
             ],
             DeclarationType.PHASE: [
@@ -181,7 +189,7 @@ class MaterializationComplementGenerator:
                     template="phase-definition-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["檢查定義完整性", "驗證範圍和目標"],
-                    description="階段的目標、範圍、交付物"
+                    description="階段的目標、範圍、交付物",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DOCUMENT,
@@ -190,7 +198,7 @@ class MaterializationComplementGenerator:
                     template="phase-checklist-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["驗證檢查項覆蓋", "檢查完成標準"],
-                    description="完成標準、驗收條件"
+                    description="完成標準、驗收條件",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DATA,
@@ -199,7 +207,7 @@ class MaterializationComplementGenerator:
                     template="phase-status-template.json",
                     priority=Priority.MEDIUM,
                     verification_methods=["驗證狀態文件格式", "檢查數據完整性"],
-                    description="當前進度、完成度"
+                    description="當前進度、完成度",
                 ),
             ],
             DeclarationType.COMPLIANCE: [
@@ -210,7 +218,7 @@ class MaterializationComplementGenerator:
                     template="compliance-report-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["檢查報告完整性", "驗證得分計算"],
-                    description="詳細檢查結果、得分、違規項"
+                    description="詳細檢查結果、得分、違規項",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DOCUMENT,
@@ -219,7 +227,7 @@ class MaterializationComplementGenerator:
                     template="evidence-list-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["驗證證據清單完整性", "檢查證據鏈"],
-                    description="所有支持合規聲明的證據"
+                    description="所有支持合規聲明的證據",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.CODE,
@@ -228,7 +236,7 @@ class MaterializationComplementGenerator:
                     template="verify_compliance_template.py",
                     priority=Priority.HIGH,
                     verification_methods=["執行驗證腳本", "檢查測試覆蓋"],
-                    description="可重複執行的驗證腳本"
+                    description="可重複執行的驗證腳本",
                 ),
             ],
             DeclarationType.COMPLETENESS: [
@@ -239,7 +247,7 @@ class MaterializationComplementGenerator:
                     template="coverage-report-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["驗證覆蓋率數據", "檢查趨勢一致性"],
-                    description="代碼覆蓋、測試覆蓋、需求覆蓋"
+                    description="代碼覆蓋、測試覆蓋、需求覆蓋",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DOCUMENT,
@@ -248,7 +256,7 @@ class MaterializationComplementGenerator:
                     template="completeness-checklist-template.md",
                     priority=Priority.MEDIUM,
                     verification_methods=["驗證檢查項完整性", "檢查標準定義"],
-                    description="所有完整性指標"
+                    description="所有完整性指標",
                 ),
             ],
             DeclarationType.ERA_LAYER: [
@@ -259,7 +267,7 @@ class MaterializationComplementGenerator:
                     template="era-definition-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["檢查 Era 定義完整性", "驗證限制條件"],
-                    description="當前 Era 的定義、目標、限制"
+                    description="當前 Era 的定義、目標、限制",
                 ),
                 ComplementEntity(
                     entity_type=EntityType.DOCUMENT,
@@ -268,26 +276,26 @@ class MaterializationComplementGenerator:
                     template="layer-definition-template.md",
                     priority=Priority.HIGH,
                     verification_methods=["檢查 Layer 定義完整性", "驗證職責範圍"],
-                    description="當前 Layer 的職責、範圍"
+                    description="當前 Layer 的職責、範圍",
                 ),
             ],
         }
-    
+
     def scan_reports(self) -> List[SemanticDeclaration]:
         """掃描報告文件，提取語義聲明"""
         declarations = []
-        
+
         if not self.reports_dir.exists():
             print(f"⚠️  報告目錄不存在: {self.reports_dir}")
             return declarations
-        
+
         # 掃描所有 markdown 報告
         for report_file in self.reports_dir.glob("*.md"):
             try:
-                with open(report_file, 'r', encoding='utf-8') as f:
+                with open(report_file, "r", encoding="utf-8") as f:
                     content = f.read()
-                    lines = content.split('\n')
-                
+                    lines = content.split("\n")
+
                 # 檢測每種類型的聲明
                 for decl_type, patterns in self.declaration_patterns.items():
                     for pattern in patterns:
@@ -296,38 +304,42 @@ class MaterializationComplementGenerator:
                                 declaration = SemanticDeclaration(
                                     declaration_type=decl_type,
                                     declaration_text=line.strip(),
-                                    source_file=str(report_file.relative_to(self.workspace_root)),
+                                    source_file=str(
+                                        report_file.relative_to(self.workspace_root)
+                                    ),
                                     line_number=line_num,
-                                    context=self._get_context(lines, line_num, 2)
+                                    context=self._get_context(lines, line_num, 2),
                                 )
                                 declarations.append(declaration)
-            
+
             except Exception as e:
                 print(f"⚠️  讀取報告失敗 {report_file}: {e}")
-        
+
         return declarations
-    
+
     def _get_context(self, lines: List[str], line_num: int, context_lines: int) -> str:
         """獲取上下文"""
         start = max(0, line_num - context_lines - 1)
         end = min(len(lines), line_num + context_lines)
-        return '\n'.join(lines[start:end])
-    
-    def detect_missing_entities(self, declaration: SemanticDeclaration) -> List[ComplementEntity]:
+        return "\n".join(lines[start:end])
+
+    def detect_missing_entities(
+        self, declaration: SemanticDeclaration
+    ) -> List[ComplementEntity]:
         """檢測缺失的實體"""
         entities = []
-        
+
         # 獲取該類型的模板實體
         template_entities = self.entity_templates.get(declaration.declaration_type, [])
-        
+
         for template_entity in template_entities:
             # 處理路徑中的變量（如 {phase}）
             location = self._resolve_location(template_entity.location, declaration)
-            
+
             # 檢查實體是否存在
             entity_path = self.workspace_root / location
             status = self._check_entity_status(entity_path, template_entity.entity_type)
-            
+
             entity = ComplementEntity(
                 entity_type=template_entity.entity_type,
                 name=template_entity.name,
@@ -336,96 +348,112 @@ class MaterializationComplementGenerator:
                 status=status,
                 priority=template_entity.priority,
                 verification_methods=template_entity.verification_methods,
-                description=template_entity.description
+                description=template_entity.description,
             )
-            
+
             entities.append(entity)
-        
+
         return entities
-    
+
     def _resolve_location(self, location: str, declaration: SemanticDeclaration) -> str:
         """解析路徑中的變量"""
         # 提取 phase 號
-        phase_match = re.search(r'Phase\s+(\d+)', declaration.declaration_text, re.IGNORECASE)
+        phase_match = re.search(
+            r"Phase\s+(\d+)", declaration.declaration_text, re.IGNORECASE
+        )
         if phase_match:
             phase_num = phase_match.group(1)
             location = location.replace("{phase}", f"phase-{phase_num}")
-        
+
         return location
-    
-    def _check_entity_status(self, entity_path: Path, entity_type: EntityType) -> ComplementStatus:
+
+    def _check_entity_status(
+        self, entity_path: Path, entity_type: EntityType
+    ) -> ComplementStatus:
         """檢查實體狀態"""
         if not entity_path.exists():
             return ComplementStatus.MISSING
-        
+
         # 檢查實體是否完整
         if entity_type == EntityType.DOCUMENT:
             try:
-                content = entity_path.read_text(encoding='utf-8')
+                content = entity_path.read_text(encoding="utf-8")
                 if len(content.strip()) < 50:  # 太短，視為不完整
                     return ComplementStatus.INCOMPLETE
                 return ComplementStatus.EXISTS
             except Exception:
                 return ComplementStatus.INCOMPLETE
-        
+
         elif entity_type == EntityType.CODE:
             try:
-                content = entity_path.read_text(encoding='utf-8')
+                content = entity_path.read_text(encoding="utf-8")
                 if len(content.strip()) < 20:
                     return ComplementStatus.INCOMPLETE
                 return ComplementStatus.EXISTS
             except Exception:
                 return ComplementStatus.INCOMPLETE
-        
+
         elif entity_type == EntityType.DATA:
             try:
-                with open(entity_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f) if entity_path.suffix == '.json' else f.read()
+                with open(entity_path, "r", encoding="utf-8") as f:
+                    data = json.load(f) if entity_path.suffix == ".json" else f.read()
                 return ComplementStatus.EXISTS
             except Exception:
                 return ComplementStatus.INCOMPLETE
-        
+
         return ComplementStatus.EXISTS
-    
-    def generate_complements(self, declarations: List[SemanticDeclaration]) -> ComplementReport:
+
+    def generate_complements(
+        self, declarations: List[SemanticDeclaration]
+    ) -> ComplementReport:
         """生成補件報告"""
         items = []
-        
+
         # 去重：相同類型和文本的聲明只處理一次
         unique_declarations = {}
         for decl in declarations:
             key = (decl.declaration_type, decl.declaration_text)
             if key not in unique_declarations:
                 unique_declarations[key] = decl
-        
+
         for declaration in unique_declarations.values():
             entities = self.detect_missing_entities(declaration)
-            
+
             # 計算完成率
             completed = sum(1 for e in entities if e.status == ComplementStatus.EXISTS)
             completion_rate = (completed / len(entities)) * 100 if entities else 100.0
-            
+
             item = ComplementItem(
                 declaration=declaration,
                 entities=entities,
-                completion_rate=completion_rate
+                completion_rate=completion_rate,
             )
             items.append(item)
-        
+
         # 統計
         all_entities = [e for item in items for e in item.entities]
         total_entities = len(all_entities)
-        missing_entities = sum(1 for e in all_entities if e.status == ComplementStatus.MISSING)
-        exists_entities = sum(1 for e in all_entities if e.status == ComplementStatus.EXISTS)
-        incomplete_entities = sum(1 for e in all_entities if e.status == ComplementStatus.INCOMPLETE)
-        generated_entities = sum(1 for e in all_entities if e.status == ComplementStatus.GENERATED)
-        
+        missing_entities = sum(
+            1 for e in all_entities if e.status == ComplementStatus.MISSING
+        )
+        exists_entities = sum(
+            1 for e in all_entities if e.status == ComplementStatus.EXISTS
+        )
+        incomplete_entities = sum(
+            1 for e in all_entities if e.status == ComplementStatus.INCOMPLETE
+        )
+        generated_entities = sum(
+            1 for e in all_entities if e.status == ComplementStatus.GENERATED
+        )
+
         # 計算完成率
-        completion_rate = (exists_entities / total_entities) * 100 if total_entities > 0 else 100.0
-        
+        completion_rate = (
+            (exists_entities / total_entities) * 100 if total_entities > 0 else 100.0
+        )
+
         # 計算合規性評分（存在實體得分更高）
         compliance_score = completion_rate  # 簡化計算，可以根據優先級加權
-        
+
         report = ComplementReport(
             scan_time=datetime.now().isoformat(),
             total_declarations=len(unique_declarations),
@@ -436,40 +464,40 @@ class MaterializationComplementGenerator:
             incomplete_entities=incomplete_entities,
             completion_rate=completion_rate,
             compliance_score=compliance_score,
-            items=items
+            items=items,
         )
-        
+
         return report
-    
+
     def generate_complement_templates(self, report: ComplementReport) -> None:
         """生成補件模板"""
         for item in report.items:
             for entity in item.entities:
                 if entity.status == ComplementStatus.MISSING and entity.template:
                     self._generate_template(entity)
-    
+
     def _generate_template(self, entity: ComplementEntity) -> None:
         """生成單個實體模板"""
         template_path = self.templates_dir / entity.template
-        
+
         # 檢查模板是否已存在
         if template_path.exists():
             return
-        
+
         # 生成模板內容
         content = self._get_template_content(entity)
-        
+
         # 創建模板目錄
         template_path.parent.mkdir(parents=True, exist_ok=True)
-        
+
         # 寫入模板
-        template_path.write_text(content, encoding='utf-8')
-        
+        template_path.write_text(content, encoding="utf-8")
+
         # 更新實體狀態
         entity.status = ComplementStatus.GENERATED
-        
+
         print(f"✅ 生成模板: {template_path}")
-    
+
     def _get_template_content(self, entity: ComplementEntity) -> str:
         """獲取模板內容"""
         if entity.entity_type == EntityType.DOCUMENT:
@@ -535,11 +563,15 @@ if __name__ == &quot;__main__&quot;:
     &quot;TODO&quot;: &quot;填充實際數據&quot;
   }}
 }}
-""".replace('{entity.name}', entity.name).replace('{entity.description}', entity.description)
-        
+""".replace("{entity.name}", entity.name).replace(
+                "{entity.description}", entity.description
+            )
+
         return f"# {entity.name}\n\nTODO: 生成模板內容\n"
-    
-    def generate_markdown_report(self, report: ComplementReport, output_file: str) -> None:
+
+    def generate_markdown_report(
+        self, report: ComplementReport, output_file: str
+    ) -> None:
         """生成 Markdown 補件報告"""
         content = f"""# 實體化補件報告
 
@@ -566,19 +598,25 @@ if __name__ == &quot;__main__&quot;:
 
 ## 語義聲明分析
 """
-        
+
         # 按類型統計
         type_stats = {}
         for item in report.items:
             decl_type = item.declaration.declaration_type.value
             if decl_type not in type_stats:
-                type_stats[decl_type] = {'total': 0, 'entities': 0, 'exists': 0}
-            type_stats[decl_type]['total'] += 1
-            type_stats[decl_type]['entities'] += len(item.entities)
-            type_stats[decl_type]['exists'] += sum(1 for e in item.entities if e.status == ComplementStatus.EXISTS)
-        
+                type_stats[decl_type] = {"total": 0, "entities": 0, "exists": 0}
+            type_stats[decl_type]["total"] += 1
+            type_stats[decl_type]["entities"] += len(item.entities)
+            type_stats[decl_type]["exists"] += sum(
+                1 for e in item.entities if e.status == ComplementStatus.EXISTS
+            )
+
         for decl_type, stats in type_stats.items():
-            completion = (stats['exists'] / stats['entities'] * 100) if stats['entities'] > 0 else 0
+            completion = (
+                (stats["exists"] / stats["entities"] * 100)
+                if stats["entities"] > 0
+                else 0
+            )
             content += f"""
 ### {decl_type.replace('_', ' ').title()}
 
@@ -591,7 +629,7 @@ if __name__ == &quot;__main__&quot;:
 | 完成率 | {completion:.1f}% |
 
 """
-        
+
         # 補件清單
         content += "---\n\n## 補件清單\n\n"
         for idx, item in enumerate(report.items, 1):
@@ -610,7 +648,7 @@ if __name__ == &quot;__main__&quot;:
                     ComplementStatus.INCOMPLETE: "🟡 不完整",
                     ComplementStatus.GENERATED: "📝 已生成模板",
                 }
-                
+
                 content += f"""
 #### {entity.name}
 
@@ -631,7 +669,7 @@ if __name__ == &quot;__main__&quot;:
 ```
 
 """
-        
+
         # 驗證結果
         content += "---\n\n## 驗證結果\n\n"
         content += f"""
@@ -643,7 +681,7 @@ if __name__ == &quot;__main__&quot;:
 | 📝 已生成模板 | {report.generated_entities} |
 
 """
-        
+
         # 下一步行動
         content += "---\n\n## 下一步行動\n\n"
         content += """
@@ -685,14 +723,14 @@ if __name__ == &quot;__main__&quot;:
 **工具版本**: v1.0.0  
 **Era**: 1 (Evidence-Native Bootstrap)
 """
-        
+
         # 寫入文件
         output_path = Path(output_file)
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(content, encoding='utf-8')
-        
+        output_path.write_text(content, encoding="utf-8")
+
         print(f"✅ 報告已生成: {output_path}")
-    
+
     def generate_json_report(self, report: ComplementReport, output_file: str) -> None:
         """生成 JSON 格式報告"""
         data = {
@@ -708,9 +746,9 @@ if __name__ == &quot;__main__&quot;:
                 "completion_rate": report.completion_rate,
                 "compliance_score": report.compliance_score,
             },
-            "items": []
+            "items": [],
         }
-        
+
         for item in report.items:
             item_data = {
                 "declaration": {
@@ -721,9 +759,9 @@ if __name__ == &quot;__main__&quot;:
                     "context": item.declaration.context,
                 },
                 "completion_rate": item.completion_rate,
-                "entities": []
+                "entities": [],
             }
-            
+
             for entity in item.entities:
                 entity_data = {
                     "type": entity.entity_type.value,
@@ -736,82 +774,70 @@ if __name__ == &quot;__main__&quot;:
                     "description": entity.description,
                 }
                 item_data["entities"].append(entity_data)
-            
+
             data["items"].append(item_data)
-        
+
         # 寫入文件
         output_path = Path(output_file)
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        
+
         print(f"✅ JSON 報告已生成: {output_path}")
 
 
 def main():
     """主函數"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(
         description="實體化補件生成器 - 為語義聲明生成具體實現補件"
     )
+    parser.add_argument("--workspace", default="/workspace", help="工作區根目錄")
     parser.add_argument(
-        "--workspace",
-        default="/workspace",
-        help="工作區根目錄"
+        "--scan-reports", action="store_true", help="掃描報告並生成補件清單"
     )
     parser.add_argument(
-        "--scan-reports",
-        action="store_true",
-        help="掃描報告並生成補件清單"
+        "--generate-templates", action="store_true", help="生成補件模板"
     )
-    parser.add_argument(
-        "--generate-templates",
-        action="store_true",
-        help="生成補件模板"
-    )
-    parser.add_argument(
-        "--output-dir",
-        default="/workspace/reports",
-        help="輸出目錄"
-    )
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="詳細輸出"
-    )
-    
+    parser.add_argument("--output-dir", default="/workspace/reports", help="輸出目錄")
+    parser.add_argument("--verbose", action="store_true", help="詳細輸出")
+
     args = parser.parse_args()
-    
+
     # 創建生成器
     generator = MaterializationComplementGenerator(args.workspace)
-    
+
     # 掃描報告
     print("🔍 掃描報告文件...")
     declarations = generator.scan_reports()
     print(f"✅ 發現 {len(declarations)} 個語義聲明")
-    
+
     if args.verbose:
         for decl in declarations:
             print(f"  - [{decl.declaration_type.value}] {decl.declaration_text}")
-    
+
     # 生成補件
     print("\n📊 生成補件報告...")
     report = generator.generate_complements(declarations)
-    
+
     # 生成模板
     if args.generate_templates:
         print("\n📝 生成補件模板...")
         generator.generate_complement_templates(report)
-    
+
     # 生成報告
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    markdown_report = f"{args.output_dir}/materialization-complement-report-{timestamp}.md"
-    json_report = f"{args.output_dir}/materialization-complement-report-{timestamp}.json"
-    
+    markdown_report = (
+        f"{args.output_dir}/materialization-complement-report-{timestamp}.md"
+    )
+    json_report = (
+        f"{args.output_dir}/materialization-complement-report-{timestamp}.json"
+    )
+
     generator.generate_markdown_report(report, markdown_report)
     generator.generate_json_report(report, json_report)
-    
+
     # 打印摘要
     print("\n" + "=" * 80)
     print("📊 實體化補件摘要")

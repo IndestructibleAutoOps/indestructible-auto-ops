@@ -25,14 +25,14 @@ def parse_yaml(content: str) -> Dict[str, Any]:
     current_list = None
     current_dict = None
 
-    for line in content.split('\n'):
+    for line in content.split("\n"):
         # Skip empty lines and comments
         stripped = line.strip()
-        if not stripped or stripped.startswith('#'):
+        if not stripped or stripped.startswith("#"):
             continue
 
         # Handle list items (-)
-        if stripped.startswith('- '):
+        if stripped.startswith("- "):
             item = stripped[2:].strip()
             if current_list is not None:
                 current_list.append(item)
@@ -42,8 +42,8 @@ def parse_yaml(content: str) -> Dict[str, Any]:
         indent = len(line) - len(line.lstrip())
 
         # Handle section changes (key with colon)
-        if ':' in line and not line.strip().startswith('-'):
-            key, value = line.split(':', 1)
+        if ":" in line and not line.strip().startswith("-"):
+            key, value = line.split(":", 1)
             key = key.strip()
             value = value.strip()
 
@@ -76,7 +76,7 @@ def parse_yaml(content: str) -> Dict[str, Any]:
             current_list = None
 
         # Handle list continuation
-        elif line.strip().startswith('- ') and current_list is not None:
+        elif line.strip().startswith("- ") and current_list is not None:
             item = line.strip()[2:].strip()
             current_list.append(item)
 
@@ -95,26 +95,26 @@ def _parse_value(value: str) -> Any:
     value = value.strip()
 
     # List value
-    if value.startswith('[') and value.endswith(']'):
+    if value.startswith("[") and value.endswith("]"):
         inner = value[1:-1].strip()
         if inner:
-            return [v.strip().strip('"\'') for v in inner.split(',')]
+            return [v.strip().strip("\"'") for v in inner.split(",")]
         return []
 
     # Boolean
-    if value.lower() in ('true', 'yes', 'on'):
+    if value.lower() in ("true", "yes", "on"):
         return True
-    if value.lower() in ('false', 'no', 'off'):
+    if value.lower() in ("false", "no", "off"):
         return False
 
     # Number
     if value.isdigit():
         return int(value)
-    if value.replace('.', '', 1).isdigit():
+    if value.replace(".", "", 1).isdigit():
         return float(value)
 
     # String
-    return value.strip('"\'').strip()
+    return value.strip("\"'").strip()
 
 
 def load_yaml_file(file_path: str) -> Dict[str, Any]:
@@ -126,6 +126,6 @@ def load_yaml_file(file_path: str) -> Dict[str, Any]:
     Returns:
         Parsed dictionary
     """
-    with open(file_path, 'r') as f:
+    with open(file_path, "r") as f:
         content = f.read()
     return parse_yaml(content)

@@ -6,4 +6,4 @@ Refresh Engine - One-time refresh of governance specifications
 
 from .refresh_engine import RefreshEngine
 
-__all__ = ['RefreshEngine']
+__all__ = ["RefreshEngine"]

@@ -15,12 +15,13 @@ Module docstring
 This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
+
 from .language import (
     LanguageEnforcer,
     LanguageType,
     LanguageViolation,
     LanguageValidationResult,
-    Severity as LanguageSeverity
+    Severity as LanguageSeverity,
 )
 
 from .format import (
@@ -28,7 +29,7 @@ from .format import (
     FormatType,
     FormatViolation,
     FormatValidationResult,
-    Severity as FormatSeverity
+    Severity as FormatSeverity,
 )
 
 from .foundation_dag import (
@@ -36,7 +37,7 @@ from .foundation_dag import (
     FoundationLayer,
     DAGNode,
     DAGEdge,
-    UnifiedFoundationEnforcer
+    UnifiedFoundationEnforcer,
 )
 
 __all__ = [
@@ -46,18 +47,16 @@ __all__ = [
     "LanguageViolation",
     "LanguageValidationResult",
     "LanguageSeverity",
-    
     # Format Layer
     "FormatEnforcer",
     "FormatType",
     "FormatViolation",
     "FormatValidationResult",
     "FormatSeverity",
-    
     # Foundation DAG
     "FoundationDAG",
     "FoundationLayer",
     "DAGNode",
     "DAGEdge",
-    "UnifiedFoundationEnforcer"
+    "UnifiedFoundationEnforcer",
 ]

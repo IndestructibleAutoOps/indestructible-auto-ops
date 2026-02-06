@@ -19,6 +19,7 @@ Please add specific module documentation here.
 # Import simple_yaml for zero-dependency YAML parsing
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from utils.simple_yaml import safe_load
 import json
@@ -34,7 +35,7 @@ platforms_data = {
             "target_users": ["個人開發者", "中小型團隊", "AI 新創"],
             "beginner_friendly": "高",
             "scenarios": ["SaaS", "AI 應用", "原型開發"],
-            "performance": "支援 100,000 MAU、8GB 資料庫、100GB 儲存"
+            "performance": "支援 100,000 MAU、8GB 資料庫、100GB 儲存",
         },
         {
             "id": "gl.ai.claude-platform",
@@ -44,7 +45,7 @@ platforms_data = {
             "target_users": ["開發者", "設計師", "學生"],
             "beginner_friendly": "高",
             "scenarios": ["代碼閱讀", "重構", "學習新語言"],
-            "performance": "對於需要 AI 輔助學習與維護的用戶極具價值"
+            "performance": "對於需要 AI 輔助學習與維護的用戶極具價值",
         },
         {
             "id": "gl.ai.deepseek-platform",
@@ -54,7 +55,7 @@ platforms_data = {
             "target_users": ["企業", "開發者", "AI 研究人員"],
             "beginner_friendly": "中等",
             "scenarios": ["長文本處理", "多模態應用", "企業級 AI 部署"],
-            "performance": "高效能低成本，適合大規模應用"
+            "performance": "高效能低成本，適合大規模應用",
         },
         # ... 其他 AI 平台
     ],
@@ -67,12 +68,13 @@ platforms_data = {
             "target_users": ["開發者", "DevOps 工程師"],
             "beginner_friendly": "中等",
             "scenarios": ["核心服務", "資源管理", "服務編排"],
-            "performance": "高效能執行時環境"
+            "performance": "高效能執行時環境",
         },
         # ... 其他運行時平台
     ],
     # ... 其他類別
 }
+
 
 def generate_platform_analysis(platform):
     """生成單個平台的分析"""
@@ -84,10 +86,10 @@ def generate_platform_analysis(platform):
 
 **1.2 核心功能分析**
 """
-    
-    for i, feature in enumerate(platform.get('killer_features', []), 1):
+
+    for i, feature in enumerate(platform.get("killer_features", []), 1):
         analysis += f"- **{feature}**: 核心功能描述\n"
-    
+
     analysis += f"""
 殺手級功能為 {', '.join(platform.get('killer_features', []))}，大幅提升工作效率。
 
@@ -107,6 +109,7 @@ def generate_platform_analysis(platform):
 """
     return analysis
 
+
 def generate_comprehensive_analysis():
     """生成完整的平台分析"""
     output = """# MachineNativeOps 平台全面分析與比較
@@ -122,17 +125,17 @@ AI 與雲端技術的快速發展，徹底改變了開發者、設計師與代�
 ## 平台逐一分析
 
 """
-    
+
     # 生成 AI 平台分析
     output += "### 類別 1: AI 平台\n\n"
-    for platform in platforms_data.get('ai_platforms', []):
+    for platform in platforms_data.get("ai_platforms", []):
         output += generate_platform_analysis(platform)
-    
+
     # 生成運行時平台分析
     output += "### 類別 2: 運行時平台\n\n"
-    for platform in platforms_data.get('runtime_platforms', []):
+    for platform in platforms_data.get("runtime_platforms", []):
         output += generate_platform_analysis(platform)
-    
+
     # 生成橫向比較表
     output += """
 ## 橫向比較表
@@ -140,15 +143,15 @@ AI 與雲端技術的快速發展，徹底改變了開發者、設計師與代�
 | 平台 | 受歡迎原因 | 殺手級功能 | 目標用戶 | 新手友好度 | 適用場景 |
 |------|-----------|-----------|---------|-----------|---------|
 """
-    
+
     # 生成比較表行
     all_platforms = []
-    all_platforms.extend(platforms_data.get('ai_platforms', []))
-    all_platforms.extend(platforms_data.get('runtime_platforms', []))
-    
+    all_platforms.extend(platforms_data.get("ai_platforms", []))
+    all_platforms.extend(platforms_data.get("runtime_platforms", []))
+
     for platform in all_platforms:
         output += f"| {platform['id']} | {platform['popularity'][:30]}... | {', '.join(platform['killer_features'])[:20]}... | {', '.join(platform['target_users'])[:20]}... | {platform['beginner_friendly']} | {', '.join(platform['scenarios'])[:20]}... |\n"
-    
+
     # 生成優劣勢總結
     output += """
 ## 優劣勢總結
@@ -171,16 +174,23 @@ AI 與雲端技術的快速發展，徹底改變了開發者、設計師與代�
 
 MachineNativeOps 的 45 個平台構成了一個完整的技術生態系統，涵蓋了現代軟體開發的所有方面。通過這五大面向的深入分析，開發者可以根據自身需求選擇最合適的平台組合，提升開發效率與產品質量。
 """
-    
+
     return output
+
 
 if __name__ == "__main__":
     # 生成完整分析
     analysis = generate_comprehensive_analysis()
-    
+
     # 保存到文件
-    with open('/workspace/machine-native-ops/ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md', 'w', encoding='utf-8') as f:
+    with open(
+        "/workspace/machine-native-ops/ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md",
+        "w",
+        encoding="utf-8",
+    ) as f:
         f.write(analysis)
-    
+
     print("✅ 平台分析已生成")
-    print(f"📁 文件位置: ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md")
+    print(
+        f"📁 文件位置: ecosystem/registry/platforms/GL_PLATFORMS_ANALYSIS_COMPLETE.md"
+    )

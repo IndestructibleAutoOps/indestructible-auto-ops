@@ -6,4 +6,4 @@ Reverse Architecture Engine - Analyze and document existing architecture
 
 from .reverse_architecture_engine import ReverseArchitectureEngine
 
-__all__ = ['ReverseArchitectureEngine']
+__all__ = ["ReverseArchitectureEngine"]

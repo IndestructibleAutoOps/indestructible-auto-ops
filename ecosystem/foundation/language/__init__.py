@@ -8,6 +8,7 @@ Module docstring
 This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
+
 from .language_enforcer import (
     LanguageEnforcer,
     LanguageType,
@@ -17,7 +18,7 @@ from .language_enforcer import (
     JSONValidator,
     MarkdownValidator,
     PythonValidator,
-    Severity
+    Severity,
 )
 
 __all__ = [
@@ -29,5 +30,5 @@ __all__ = [
     "JSONValidator",
     "MarkdownValidator",
     "PythonValidator",
-    "Severity"
+    "Severity",
 ]

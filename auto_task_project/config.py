@@ -1,4 +1,5 @@
 """配置管理模組"""
+
 import os
 from dotenv import load_dotenv
 

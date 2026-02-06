@@ -1,4 +1,5 @@
 """總入口（永遠不改）"""
+
 import time
 from auto_executor import executor
 from logger import setup_logger

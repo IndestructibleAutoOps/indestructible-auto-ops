@@ -15,6 +15,7 @@ from datetime import datetime
 @dataclass
 class RetrievalResult:
     """Result from a retrieval operation"""
+
     source: str  # INTERNAL or EXTERNAL
     content: str
     confidence: float  # 0.0 to 1.0
@@ -39,6 +40,7 @@ class RetrievalResult:
 @dataclass
 class RetrievalContext:
     """Context for retrieval operations"""
+
     query: str
     task_type: Optional[str] = None
     category: Optional[str] = None

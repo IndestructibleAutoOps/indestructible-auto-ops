@@ -25,7 +25,7 @@ from .service_registry import (
     ServiceMetadata,
     HealthCheck,
     ServiceStatus,
-    HealthStatus
+    HealthStatus,
 )
 
 from .service_agent import ServiceAgent
@@ -37,29 +37,27 @@ from .service_client import (
     RandomStrategy,
     HealthBasedStrategy,
     WeightedStrategy,
-    LeastConnectionsStrategy
+    LeastConnectionsStrategy,
 )
 
 __all__ = [
     # Registry
-    'ServiceRegistry',
-    'ServiceInstance',
-    'ServiceMetadata',
-    'HealthCheck',
-    'ServiceStatus',
-    'HealthStatus',
-    
+    "ServiceRegistry",
+    "ServiceInstance",
+    "ServiceMetadata",
+    "HealthCheck",
+    "ServiceStatus",
+    "HealthStatus",
     # Agent
-    'ServiceAgent',
-    
+    "ServiceAgent",
     # Client
-    'ServiceClient',
-    'LoadBalancingStrategy',
-    'RoundRobinStrategy',
-    'RandomStrategy',
-    'HealthBasedStrategy',
-    'WeightedStrategy',
-    'LeastConnectionsStrategy',
+    "ServiceClient",
+    "LoadBalancingStrategy",
+    "RoundRobinStrategy",
+    "RandomStrategy",
+    "HealthBasedStrategy",
+    "WeightedStrategy",
+    "LeastConnectionsStrategy",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

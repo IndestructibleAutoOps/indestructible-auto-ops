@@ -22,6 +22,7 @@ from ..traceability.feedback import FeedbackLoop
 @dataclass
 class ReasoningResponse:
     """Response from reasoning pipeline"""
+
     request_id: str
     correlation_id: str
     final_answer: str
@@ -124,7 +125,7 @@ class ReasoningPipeline:
         # Aggregate results for arbitration
         internal_result = self._aggregate_results(internal_results, "internal")
         external_result = self._aggregate_results(external_results, "external")
-        
+
         decision = self.arbitrator.arbitrate(
             task_spec,
             internal_result,
@@ -147,20 +148,22 @@ class ReasoningPipeline:
             external_results,
         )
 
-        # Step 7: Build response  
+        # Step 7: Build response
         # Calculate overall confidence based on decision
-        if hasattr(decision.decision, 'value'):
+        if hasattr(decision.decision, "value"):
             dec_value = decision.decision.value
         else:
             dec_value = str(decision.decision)
-            
+
         if dec_value == "INTERNAL":
             overall_confidence = decision.internal_confidence
         elif dec_value == "EXTERNAL":
             overall_confidence = decision.external_confidence
         else:  # HYBRID
-            overall_confidence = (decision.internal_confidence + decision.external_confidence) / 2
-            
+            overall_confidence = (
+                decision.internal_confidence + decision.external_confidence
+            ) / 2
+
         response = ReasoningResponse(
             request_id=str(uuid.uuid4()),  # Generate unique request ID
             correlation_id=correlation_id,
@@ -215,36 +218,42 @@ class ReasoningPipeline:
         # Use decision's final_answer if available, otherwise combine results
         if decision.final_answer:
             return decision.final_answer
-        
+
         # Combine content based on decision
         answer_parts = []
-        answer_parts.append(f"**Decision**: {decision.decision.value if hasattr(decision.decision, 'value') else decision.decision}")
-        answer_parts.append(f"**Internal Confidence**: {decision.internal_confidence:.2%}")
-        answer_parts.append(f"**External Confidence**: {decision.external_confidence:.2%}")
+        answer_parts.append(
+            f"**Decision**: {decision.decision.value if hasattr(decision.decision, 'value') else decision.decision}"
+        )
+        answer_parts.append(
+            f"**Internal Confidence**: {decision.internal_confidence:.2%}"
+        )
+        answer_parts.append(
+            f"**External Confidence**: {decision.external_confidence:.2%}"
+        )
         answer_parts.append(f"**Reasoning**: {decision.reason}")
         answer_parts.append("\n**Answer**:\n")
 
         # Choose results based on decision
         chosen_results = []
-        if hasattr(decision.decision, 'value'):
+        if hasattr(decision.decision, "value"):
             dec_value = decision.decision.value
         else:
             dec_value = str(decision.decision)
-            
+
         if dec_value == "INTERNAL":
             chosen_results = internal_results[:3]
         elif dec_value == "EXTERNAL":
             chosen_results = external_results[:3]
         else:  # HYBRID or other
-            chosen_results = (internal_results[:2] + external_results[:1])
+            chosen_results = internal_results[:2] + external_results[:1]
 
         for i, result in enumerate(chosen_results, 1):
-            if hasattr(result, 'content'):
+            if hasattr(result, "content"):
                 content = result.content
-                conf = result.confidence if hasattr(result, 'confidence') else 0.0
+                conf = result.confidence if hasattr(result, "confidence") else 0.0
             else:
-                content = result.get('content', '')
-                conf = result.get('confidence', 0.0)
+                content = result.get("content", "")
+                conf = result.get("confidence", 0.0)
             answer_parts.append(f"\n{i}. (Confidence: {conf:.2%})")
             answer_parts.append(content.strip() if content else "No content available")
 
@@ -283,11 +292,11 @@ class ReasoningPipeline:
 
     def _aggregate_results(self, results: List, source_type: str) -> Dict:
         """Aggregate list of results into single result dict
-        
+
         Args:
             results: List of retrieval results
             source_type: "internal" or "external"
-            
+
         Returns:
             Aggregated result dictionary
         """
@@ -296,29 +305,31 @@ class ReasoningPipeline:
                 "answer": "",
                 "confidence": 0.0,
                 "source": source_type,
-                "results": []
+                "results": [],
             }
-        
+
         # Calculate average confidence
-        confidences = [r.confidence if hasattr(r, 'confidence') else r.get('confidence', 0.0) 
-                      for r in results]
+        confidences = [
+            r.confidence if hasattr(r, "confidence") else r.get("confidence", 0.0)
+            for r in results
+        ]
         avg_confidence = sum(confidences) / len(confidences) if confidences else 0.0
-        
+
         # Combine content
         contents = []
         for r in results:
-            if hasattr(r, 'content'):
+            if hasattr(r, "content"):
                 contents.append(r.content)
-            elif isinstance(r, dict) and 'content' in r:
-                contents.append(r['content'])
-        
+            elif isinstance(r, dict) and "content" in r:
+                contents.append(r["content"])
+
         combined_answer = "\n\n".join(contents) if contents else ""
-        
+
         return {
             "answer": combined_answer,
             "confidence": avg_confidence,
             "source": source_type,
-            "results": [r.to_dict() if hasattr(r, 'to_dict') else r for r in results]
+            "results": [r.to_dict() if hasattr(r, "to_dict") else r for r in results],
         }
 
     def get_metrics(self) -> Dict[str, Any]:

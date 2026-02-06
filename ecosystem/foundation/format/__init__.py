@@ -8,13 +8,14 @@ Module docstring
 This module is part of the GL governance framework.
 Please add specific module documentation here.
 """
+
 from .format_enforcer import (
     FormatEnforcer,
     FormatType,
     FormatViolation,
     FormatValidationResult,
     SchemaValidator,
-    Severity
+    Severity,
 )
 
 __all__ = [
@@ -23,5 +24,5 @@ __all__ = [
     "FormatViolation",
     "FormatValidationResult",
     "SchemaValidator",
-    "Severity"
+    "Severity",
 ]
