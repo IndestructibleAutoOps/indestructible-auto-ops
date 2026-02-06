@@ -1,0 +1,165 @@
+# NG00301: 命名空間驗證規則
+# Namespace Validation Rules
+
+apiVersion: ng.governance/v3
+kind: ValidationRules
+metadata:
+  ng_code: NG00301
+  name: namespace-validation-rules
+  version: "1.0.0"
+  parent: NG00000
+  domain: "驗證"
+  status: active
+
+spec:
+  validation_categories:
+    uniqueness_validation:
+      ng_code: "NG00301"
+      description: "驗證命名空間唯一性"
+      
+      rules:
+        global_uniqueness:
+          rule: "命名空間 ID 在全局範圍內必須唯一"
+          check: "no_duplicate_namespace_id"
+          severity: "CRITICAL"
+          action: "BLOCK"
+        
+        ng_code_uniqueness:
+          rule: "NG 編碼必須唯一"
+          check: "no_duplicate_ng_code"
+          severity: "CRITICAL"
+          action: "BLOCK"
+        
+        era_scoped_uniqueness:
+          rule: "同 Era 內組件名稱應避免重複"
+          check: "minimize_era_duplicates"
+          severity: "HIGH"
+          action: "WARN"
+    
+    format_validation:
+      ng_code: "NG00302"
+      description: "驗證命名空間格式"
+      
+      rules:
+        identifier_format:
+          rule: "命名空間標識符必須符合格式規範"
+          pattern: "^[a-z][a-z0-9-]*\\.(era[123]|cross)\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+          severity: "CRITICAL"
+          action: "BLOCK"
+        
+        component_naming:
+          rule: "組件名稱必須使用 kebab-case"
+          pattern: "^[a-z][a-z0-9-]*$"
+          severity: "HIGH"
+          action: "BLOCK"
+        
+        reserved_keywords:
+          rule: "不得使用保留關鍵字"
+          reserved: ["system", "admin", "root", "default"]
+          severity: "HIGH"
+          action: "BLOCK"
+    
+    hierarchy_validation:
+      ng_code: "NG00303"
+      description: "驗證命名空間層級結構"
+      
+      rules:
+        parent_exists:
+          rule: "父命名空間必須存在"
+          check: "validate_parent_namespace"
+          severity: "HIGH"
+          action: "BLOCK"
+        
+        depth_limit:
+          rule: "命名空間層級深度不超過 10 層"
+          max_depth: 10
+          severity: "MEDIUM"
+          action: "WARN"
+        
+        circular_reference:
+          rule: "禁止循環引用"
+          check: "no_circular_dependencies"
+          severity: "CRITICAL"
+          action: "BLOCK"
+    
+    era_consistency_validation:
+      ng_code: "NG00304"
+      description: "驗證 Era 一致性"
+      
+      rules:
+        era_match:
+          rule: "命名空間類型必須與 Era 一致"
+          mappings:
+            era-1: ["package", "module", "class", "function"]
+            era-2: ["service", "api", "event", "stream"]
+            era-3: ["intent", "semantic", "neural", "concept"]
+          severity: "HIGH"
+          action: "BLOCK"
+        
+        cross_era_reference:
+          rule: "跨 Era 引用必須使用映射規則"
+          standard: "NG90101"
+          severity: "MEDIUM"
+          action: "WARN"
+  
+  validation_process:
+    on_registration:
+      validations:
+        - "uniqueness_validation"
+        - "format_validation"
+        - "hierarchy_validation"
+        - "era_consistency_validation"
+      
+      failure_handling:
+        critical: "BLOCK_REGISTRATION"
+        high: "BLOCK_REGISTRATION"
+        medium: "ALLOW_WITH_WARNING"
+        low: "ALLOW_WITH_LOG"
+    
+    on_update:
+      validations:
+        - "format_validation"
+        - "hierarchy_validation"
+      
+      preserve:
+        - "ng_code"
+        - "created_at"
+        - "audit_trail"
+    
+    on_migration:
+      validations:
+        - "era_consistency_validation"
+        - "cross_era_reference"
+      
+      additional_checks:
+        - "migration_plan_exists"
+        - "target_namespace_valid"
+        - "backward_compatibility"
+  
+  validation_metrics:
+    validation_rate:
+      description: "驗證通過率"
+      target: ">= 95%"
+      measurement: "daily"
+    
+    blocking_rate:
+      description: "阻擋率（嚴重違規）"
+      target: "< 5%"
+      measurement: "daily"
+    
+    warning_rate:
+      description: "警告率"
+      target: "< 20%"
+      measurement: "daily"
+
+enforcement:
+  automated_validation: true
+  manual_review_required:
+    - "CRITICAL severity failures"
+    - "Cross-Era namespace registrations"
+    - "Reserved domain registrations"
+  
+  escalation_policy:
+    level_1: "Automated blocking"
+    level_2: "Team lead review"
+    level_3: "Governance committee approval"

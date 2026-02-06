@@ -1,0 +1,273 @@
+# NG00201: 命名空間生命週期規範
+# Namespace Lifecycle Standard
+
+apiVersion: ng.governance/v3
+kind: Standard
+metadata:
+  ng_code: NG00201
+  name: namespace-lifecycle-standard
+  version: "1.0.0"
+  parent: NG00000
+  domain: "生命週期"
+  status: active
+  created_at: "2026-02-06"
+
+spec:
+  purpose: "定義命名空間從創建到歸檔的完整生命週期管理規範"
+  
+  lifecycle_stages:
+    stage_1_creation:
+      name: "創建階段"
+      ng_code: "NG00201"
+      
+      substages:
+        proposal:
+          description: "命名空間提案"
+          required_fields:
+            - namespace_id
+            - namespace_type
+            - era_target
+            - owner
+            - description
+          
+          validations:
+            - check: "uniqueness_validation"
+              standard: "NG00301"
+            - check: "format_validation"
+              standard: "NG00302"
+            - check: "conflict_detection"
+              standard: "NG06001"
+        
+        approval:
+          description: "命名空間審批"
+          approvers:
+            - "namespace_owner"
+            - "era_coordinator"
+            - "governance_committee"
+          
+          criteria:
+            - "符合命名規範"
+            - "無命名空間衝突"
+            - "明確的使用目的"
+        
+        registration:
+          description: "命名空間註冊"
+          registry: "NG00103"
+          
+          actions:
+            - "生成命名空間記錄"
+            - "分配 NG 編碼"
+            - "創建審計日誌"
+            - "觸發註冊事件"
+    
+    stage_2_active:
+      name: "活躍階段"
+      ng_code: "NG00202"
+      
+      substages:
+        deployment:
+          description: "命名空間部署"
+          actions:
+            - "部署到目標 Era"
+            - "配置訪問權限"
+            - "啟用監控"
+          
+          validations:
+            - check: "deployment_validation"
+              standard: "NG00303"
+        
+        operation:
+          description: "命名空間運行"
+          monitoring:
+            - metric: "usage_count"
+              standard: "NG00701"
+            - metric: "health_status"
+              standard: "NG00702"
+            - metric: "performance_metrics"
+              standard: "NG90501"
+          
+          maintenance:
+            - task: "定期驗證"
+              frequency: "daily"
+              standard: "NG00301"
+            - task: "性能優化"
+              frequency: "weekly"
+              standard: "NG90502"
+        
+        optimization:
+          description: "命名空間優化"
+          triggers:
+            - "usage_threshold_exceeded"
+            - "performance_degradation"
+            - "conflict_detected"
+          
+          actions:
+            - "重構命名空間"
+            - "優化引用路徑"
+            - "更新映射規則"
+    
+    stage_3_deprecation:
+      name: "棄用階段"
+      ng_code: "NG00203"
+      
+      substages:
+        announcement:
+          description: "棄用公告"
+          notice_period: "90 days"
+          
+          communications:
+            - "發送棄用通知"
+            - "更新文檔"
+            - "標記為 deprecated"
+        
+        migration_planning:
+          description: "遷移計劃"
+          standard: "NG00901"
+          
+          required_items:
+            - "遷移目標命名空間"
+            - "遷移時間表"
+            - "影響範圍分析"
+            - "回滾計劃"
+        
+        grace_period:
+          description: "寬限期"
+          duration: "90 days"
+          
+          actions:
+            - "保持命名空間可用"
+            - "記錄所有使用"
+            - "提供遷移支援"
+    
+    stage_4_migration:
+      name: "遷移階段"
+      ng_code: "NG00204"
+      
+      substages:
+        preparation:
+          description: "遷移準備"
+          actions:
+            - "備份當前狀態"
+            - "創建映射規則"
+            - "通知所有使用者"
+        
+        execution:
+          description: "遷移執行"
+          standard: "NG00902"
+          
+          steps:
+            - "更新引用"
+            - "遷移數據"
+            - "驗證完整性"
+            - "更新註冊表"
+        
+        validation:
+          description: "遷移驗證"
+          validations:
+            - check: "reference_integrity"
+              standard: "NG90201"
+            - check: "data_consistency"
+              standard: "NG90202"
+            - check: "functionality_preserved"
+              standard: "NG90203"
+    
+    stage_5_archival:
+      name: "歸檔階段"
+      ng_code: "NG00205"
+      
+      substages:
+        archival:
+          description: "命名空間歸檔"
+          standard: "NG90901"
+          
+          actions:
+            - "標記為 archived"
+            - "移動到歸檔區"
+            - "保留審計日誌"
+            - "創建歸檔記錄"
+        
+        retention:
+          description: "歸檔保留"
+          retention_period: "365 days"
+          
+          policy:
+            - "保留完整元數據"
+            - "保留審計追蹤"
+            - "允許只讀訪問"
+        
+        destruction:
+          description: "命名空間銷毀"
+          standard: "NG91001"
+          
+          conditions:
+            - "保留期滿"
+            - "無活躍引用"
+            - "治理委員會批准"
+          
+          actions:
+            - "移除命名空間記錄"
+            - "保留審計摘要"
+            - "觸發銷毀事件"
+  
+  state_transitions:
+    allowed_transitions:
+      - from: "proposed"
+        to: "approved"
+        condition: "approval_received"
+      
+      - from: "approved"
+        to: "registered"
+        condition: "registration_complete"
+      
+      - from: "registered"
+        to: "active"
+        condition: "deployment_complete"
+      
+      - from: "active"
+        to: "deprecated"
+        condition: "deprecation_announced"
+      
+      - from: "deprecated"
+        to: "migrating"
+        condition: "migration_started"
+      
+      - from: "migrating"
+        to: "archived"
+        condition: "migration_complete"
+      
+      - from: "archived"
+        to: "destroyed"
+        condition: "retention_expired"
+  
+  lifecycle_metrics:
+    average_lifetime:
+      description: "命名空間平均存活時間"
+      target: "2-5 years"
+    
+    deprecation_rate:
+      description: "命名空間棄用率"
+      target: "< 10% per year"
+    
+    migration_success_rate:
+      description: "遷移成功率"
+      target: ">= 98%"
+    
+    archival_compliance:
+      description: "歸檔合規率"
+      target: "100%"
+
+enforcement:
+  validation_points:
+    - stage: "creation"
+      validators: ["NG00301", "NG00302"]
+    - stage: "active"
+      validators: ["NG00701", "NG00702"]
+    - stage: "migration"
+      validators: ["NG90201", "NG90202"]
+    - stage: "archival"
+      validators: ["NG90901"]
+  
+  audit_requirements:
+    frequency: "all_stage_transitions"
+    retention: "10 years"
+    standard: "NG00701"
