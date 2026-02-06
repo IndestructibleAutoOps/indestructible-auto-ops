@@ -1,0 +1,206 @@
+# NG00301: 命名空間驗證規則
+# Namespace Validation Rules
+
+apiVersion: ng.governance/v3
+kind: ValidationRules
+metadata:
+  ng_code: NG00301
+  name: namespace-validation-rules
+  version: "1.0.0"
+  parent: NG00000
+  domain: "驗證"
+  status: active
+
+spec:
+  validation_categories:
+    uniqueness_validation:
+      ng_code: "NG00301"
+      description: "驗證命名空間唯一性（零容忍）"
+      enforcement: "ABSOLUTE"
+      
+      rules:
+        global_uniqueness:
+          rule: "命名空間 ID 在全局範圍內必須 100% 唯一"
+          check: "no_duplicate_namespace_id"
+          severity: "IMMUTABLE"
+          action: "IMMEDIATE_BLOCK_PERMANENT"
+          tolerance: "0%"
+          override: "FORBIDDEN"
+        
+        ng_code_uniqueness:
+          rule: "NG 編碼必須絕對唯一"
+          check: "no_duplicate_ng_code"
+          severity: "IMMUTABLE"
+          action: "IMMEDIATE_BLOCK_PERMANENT"
+          tolerance: "0%"
+          override: "FORBIDDEN"
+        
+        era_scoped_uniqueness:
+          rule: "同 Era 內組件名稱必須唯一（零重複容忍）"
+          check: "zero_era_duplicates"
+          severity: "ABSOLUTE"
+          action: "IMMEDIATE_BLOCK"
+          tolerance: "0%"
+          override: "FORBIDDEN"
+        
+        semantic_similarity:
+          rule: "命名空間語義相似度必須 < 80%（避免混淆）"
+          check: "ml_semantic_similarity_check"
+          threshold: 0.80
+          severity: "ABSOLUTE"
+          action: "BLOCK_IF_SIMILAR"
+          ml_model: "SemanticSimilarityAnalyzer"
+    
+    format_validation:
+      ng_code: "NG00302"
+      description: "驗證命名空間格式（零容忍）"
+      enforcement: "ABSOLUTE"
+      
+      rules:
+        identifier_format:
+          rule: "命名空間標識符必須 100% 符合格式規範"
+          pattern: "^[a-z][a-z0-9-]*\\.(era[123]|cross)\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+          severity: "IMMUTABLE"
+          action: "IMMEDIATE_REJECT"
+          auto_fix: "FORBIDDEN"
+          tolerance: "0 characters deviation"
+          
+        component_naming:
+          rule: "組件名稱必須嚴格使用 kebab-case（無例外）"
+          pattern: "^[a-z][a-z0-9-]*$"
+          severity: "ABSOLUTE"
+          action: "IMMEDIATE_BLOCK"
+          case_sensitivity: "STRICT"
+          underscore_forbidden: true
+          camelCase_forbidden: true
+          
+        reserved_keywords:
+          rule: "絕對禁止使用保留關鍵字"
+          reserved: ["system", "admin", "root", "default", "internal", "private", "global"]
+          severity: "ABSOLUTE"
+          action: "PERMANENT_BLOCK"
+          check_mode: "EXACT_MATCH_AND_SUBSTRING"
+        
+        character_whitelist:
+          rule: "只允許 [a-z0-9-] 字符（絕對白名單）"
+          allowed: "abcdefghijklmnopqrstuvwxyz0123456789-"
+          severity: "ABSOLUTE"
+          action: "IMMEDIATE_REJECT"
+          special_chars: "FORBIDDEN"
+          unicode: "FORBIDDEN"
+          emoji: "FORBIDDEN"
+    
+    hierarchy_validation:
+      ng_code: "NG00303"
+      description: "驗證命名空間層級結構"
+      
+      rules:
+        parent_exists:
+          rule: "父命名空間必須存在"
+          check: "validate_parent_namespace"
+          severity: "HIGH"
+          action: "BLOCK"
+        
+        depth_limit:
+          rule: "命名空間層級深度不超過 10 層"
+          max_depth: 10
+          severity: "MEDIUM"
+          action: "WARN"
+        
+        circular_reference:
+          rule: "禁止循環引用"
+          check: "no_circular_dependencies"
+          severity: "CRITICAL"
+          action: "BLOCK"
+    
+    era_consistency_validation:
+      ng_code: "NG00304"
+      description: "驗證 Era 一致性"
+      
+      rules:
+        era_match:
+          rule: "命名空間類型必須與 Era 一致"
+          mappings:
+            era-1: ["package", "module", "class", "function"]
+            era-2: ["service", "api", "event", "stream"]
+            era-3: ["intent", "semantic", "neural", "concept"]
+          severity: "HIGH"
+          action: "BLOCK"
+        
+        cross_era_reference:
+          rule: "跨 Era 引用必須使用映射規則"
+          standard: "NG90101"
+          severity: "MEDIUM"
+          action: "WARN"
+  
+  validation_process:
+    on_registration:
+      mode: "ZERO_TOLERANCE"
+      validations:
+        - "uniqueness_validation"
+        - "format_validation"
+        - "hierarchy_validation"
+        - "era_consistency_validation"
+        - "ml_semantic_check"
+        - "closure_pre_check"
+      
+      failure_handling:
+        immutable: "PERMANENT_BLOCK_SYSTEM_FREEZE"
+        absolute: "IMMEDIATE_BLOCK_ROLLBACK"
+        strict: "BLOCK_UNTIL_GOVERNANCE_APPROVAL"
+        mandatory: "BLOCK_UNTIL_FIXED"
+        
+      zero_tolerance_rules:
+        - "ANY failure = BLOCK"
+        - "NO warnings allowed"
+        - "NO grace periods"
+        - "NO manual overrides"
+        - "ALL checks must pass 100%"
+    
+    on_update:
+      validations:
+        - "format_validation"
+        - "hierarchy_validation"
+      
+      preserve:
+        - "ng_code"
+        - "created_at"
+        - "audit_trail"
+    
+    on_migration:
+      validations:
+        - "era_consistency_validation"
+        - "cross_era_reference"
+      
+      additional_checks:
+        - "migration_plan_exists"
+        - "target_namespace_valid"
+        - "backward_compatibility"
+  
+  validation_metrics:
+    validation_rate:
+      description: "驗證通過率"
+      target: ">= 95%"
+      measurement: "daily"
+    
+    blocking_rate:
+      description: "阻擋率（嚴重違規）"
+      target: "< 5%"
+      measurement: "daily"
+    
+    warning_rate:
+      description: "警告率"
+      target: "< 20%"
+      measurement: "daily"
+
+enforcement:
+  automated_validation: true
+  manual_review_required:
+    - "CRITICAL severity failures"
+    - "Cross-Era namespace registrations"
+    - "Reserved domain registrations"
+  
+  escalation_policy:
+    level_1: "Automated blocking"
+    level_2: "Team lead review"
+    level_3: "Governance committee approval"

@@ -1,0 +1,174 @@
+# NG00101: 命名空間標識規範
+# Namespace Identifier Standard
+
+apiVersion: ng.governance/v3
+kind: Standard
+metadata:
+  ng_code: NG00101
+  name: namespace-identifier-standard
+  version: "1.0.0"
+  parent: NG00000
+  domain: "標識"
+  status: active
+  created_at: "2026-02-06"
+
+spec:
+  purpose: "定義統一的命名空間標識符規範"
+  
+  identifier_format:
+    structure: "{namespace_type}.{era}.{domain}.{component}"
+    
+    components:
+      namespace_type:
+        description: "命名空間類型"
+        pattern: "[a-z][a-z0-9-]*"
+        examples:
+          - "package"
+          - "service"
+          - "intent"
+      
+      era:
+        description: "Era 標識"
+        values: ["era1", "era2", "era3", "cross"]
+        optional: true
+      
+      domain:
+        description: "領域標識"
+        pattern: "[a-z][a-z0-9-]*"
+        examples:
+          - "platform"
+          - "runtime"
+          - "governance"
+      
+      component:
+        description: "組件標識"
+        pattern: "[a-z][a-z0-9-]*"
+        examples:
+          - "executor"
+          - "registry"
+          - "validator"
+  
+  naming_conventions:
+    era_1_code_layer:
+      package_namespace:
+        pattern: "pkg.era1.{domain}.{name}"
+        example: "pkg.era1.platform.core"
+      
+      module_namespace:
+        pattern: "mod.era1.{domain}.{name}"
+        example: "mod.era1.runtime.executor"
+      
+      class_namespace:
+        pattern: "cls.era1.{domain}.{name}"
+        example: "cls.era1.governance.enforcer"
+    
+    era_2_microcode_layer:
+      service_namespace:
+        pattern: "svc.era2.{domain}.{name}"
+        example: "svc.era2.platform.api"
+      
+      api_namespace:
+        pattern: "api.era2.{domain}.{endpoint}"
+        example: "api.era2.runtime.tasks"
+      
+      event_namespace:
+        pattern: "evt.era2.{domain}.{event}"
+        example: "evt.era2.registry.updated"
+    
+    era_3_nocode_layer:
+      intent_namespace:
+        pattern: "int.era3.{domain}.{intent}"
+        example: "int.era3.platform.deploy"
+      
+      semantic_namespace:
+        pattern: "sem.era3.{domain}.{concept}"
+        example: "sem.era3.governance.compliance"
+      
+      neural_namespace:
+        pattern: "neu.era3.{domain}.{model}"
+        example: "neu.era3.runtime.optimizer"
+  
+  validation_rules:
+    uniqueness:
+      rule: "命名空間在全局範圍內必須唯一"
+      check: "no_duplicates"
+      severity: "CRITICAL"
+    
+    format_compliance:
+      rule: "命名空間必須符合格式規範"
+      check: "regex_match"
+      severity: "HIGH"
+    
+    hierarchy_validity:
+      rule: "命名空間層級結構必須有效"
+      check: "parent_exists"
+      severity: "HIGH"
+    
+    era_consistency:
+      rule: "命名空間必須與 Era 一致"
+      check: "era_match"
+      severity: "MEDIUM"
+  
+  registration_process:
+    step_1:
+      action: "提交命名空間申請"
+      validator: "NG00301"
+    
+    step_2:
+      action: "驗證命名空間唯一性"
+      validator: "NG00302"
+    
+    step_3:
+      action: "檢查命名空間衝突"
+      validator: "NG06001"
+    
+    step_4:
+      action: "生成命名空間 ID"
+      generator: "NG00102"
+    
+    step_5:
+      action: "註冊到命名空間註冊表"
+      registry: "NG00103"
+    
+    step_6:
+      action: "觸發治理事件"
+      event: "namespace_registered"
+
+examples:
+  era_1_examples:
+    - namespace: "pkg.era1.platform.core"
+      ng_code: "NG10100"
+      description: "Era-1 平台核心包"
+    
+    - namespace: "mod.era1.runtime.executor"
+      ng_code: "NG10201"
+      description: "Era-1 運行時執行器模組"
+  
+  era_2_examples:
+    - namespace: "svc.era2.platform.api"
+      ng_code: "NG30100"
+      description: "Era-2 平台 API 服務"
+    
+    - namespace: "evt.era2.registry.updated"
+      ng_code: "NG30301"
+      description: "Era-2 註冊表更新事件"
+  
+  era_3_examples:
+    - namespace: "int.era3.platform.deploy"
+      ng_code: "NG60100"
+      description: "Era-3 平台部署意圖"
+    
+    - namespace: "sem.era3.governance.compliance"
+      ng_code: "NG60201"
+      description: "Era-3 治理合規語義"
+
+enforcement:
+  validation_frequency: "on_registration"
+  audit_frequency: "daily"
+  compliance_threshold: 99.9
+  
+integration:
+  with_gl_system:
+    mode: "coexistence"
+    gl_continues: ["overall_governance", "layer_boundaries"]
+    ng_focuses: ["namespace_governance", "identifier_management"]

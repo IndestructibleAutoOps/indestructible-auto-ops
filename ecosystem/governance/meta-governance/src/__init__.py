@@ -24,58 +24,46 @@ from .version_manager import (
     SemanticVersion,
     VersionType,
     ReleaseType,
-    VersionMetadata
+    VersionMetadata,
 )
 
-from .change_manager import (
-    ChangeManager,
-    ChangeRequest,
-    ImpactLevel,
-    ChangeStatus
-)
+from .change_manager import ChangeManager, ChangeRequest, ImpactLevel, ChangeStatus
 
 from .review_manager import (
     ReviewManager,
     Review,
     ReviewComment,
     ReviewLayer,
-    ReviewDecision
+    ReviewDecision,
 )
 
-from .dependency_manager import (
-    DependencyManager,
-    Dependency
-)
+from .dependency_manager import DependencyManager, Dependency
 
 from .governance_framework import GovernanceFramework
 
 __all__ = [
     # Version Management
-    'VersionManager',
-    'SemanticVersion',
-    'VersionType',
-    'ReleaseType',
-    'VersionMetadata',
-    
+    "VersionManager",
+    "SemanticVersion",
+    "VersionType",
+    "ReleaseType",
+    "VersionMetadata",
     # Change Management
-    'ChangeManager',
-    'ChangeRequest',
-    'ImpactLevel',
-    'ChangeStatus',
-    
+    "ChangeManager",
+    "ChangeRequest",
+    "ImpactLevel",
+    "ChangeStatus",
     # Review Management
-    'ReviewManager',
-    'Review',
-    'ReviewComment',
-    'ReviewLayer',
-    'ReviewDecision',
-    
+    "ReviewManager",
+    "Review",
+    "ReviewComment",
+    "ReviewLayer",
+    "ReviewDecision",
     # Dependency Management
-    'DependencyManager',
-    'Dependency',
-    
+    "DependencyManager",
+    "Dependency",
     # Governance Framework
-    'GovernanceFramework',
+    "GovernanceFramework",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

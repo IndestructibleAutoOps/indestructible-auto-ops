@@ -20,9 +20,9 @@ TEST_WORKSPACE = Path("/tmp/test_semantic_defense")
 def setup_test_workspace():
     """Setup test workspace directory"""
     TEST_WORKSPACE.mkdir(parents=True, exist_ok=True)
-    
+
     yield
-    
+
     # Cleanup
     if TEST_WORKSPACE.exists():
         shutil.rmtree(TEST_WORKSPACE)
@@ -33,14 +33,14 @@ def test_workspace():
     """Create isolated test workspace"""
     workspace = TEST_WORKSPACE / f"test_{datetime.now().timestamp()}"
     workspace.mkdir(parents=True, exist_ok=True)
-    
+
     # Create governance structure
     (workspace / "ecosystem" / ".governance").mkdir(parents=True, exist_ok=True)
     (workspace / "ecosystem" / ".evidence").mkdir(parents=True, exist_ok=True)
     (workspace / "complements").mkdir(parents=True, exist_ok=True)
-    
+
     yield workspace
-    
+
     # Cleanup
     if workspace.exists():
         shutil.rmtree(workspace)
@@ -62,11 +62,7 @@ def sample_artifact():
         "canonical_hash": "abc123def456",
         "canonicalization_version": "1.0",
         "canonicalization_method": "JCS+LayeredSorting",
-        "hash_chain": {
-            "self": "abc123def456",
-            "parent": None,
-            "merkle_root": None
-        }
+        "hash_chain": {"self": "abc123def456", "parent": None, "merkle_root": None},
     }
 
 
@@ -90,8 +86,8 @@ def sample_event():
         "hash_chain": {
             "self": "xyz789uvw012",
             "previous_event": None,
-            "previous_artifact": "abc123def456"
-        }
+            "previous_artifact": "abc123def456",
+        },
     }
 
 
@@ -104,7 +100,7 @@ def sample_report():
         "status": "COMPLETED",
         "summary": "Test completed successfully",
         "evidence": ["evidence-1.json"],
-        "complements": []
+        "complements": [],
     }
 
 
@@ -117,20 +113,20 @@ def fuzzy_report():
         "status": "COMPLETED",
         "summary": "大致完成，應該沒問題",
         "evidence": ["evidence-1.json"],
-        "complements": []
+        "complements": [],
     }
 
 
 class SemanticDefenseViolation:
     """Represents a semantic defense violation"""
-    
+
     def __init__(
         self,
         test_case: str,
         severity: str,
         detected_issue: str,
         evidence: Dict[str, Any],
-        remediation: Dict[str, str]
+        remediation: Dict[str, str],
     ):
         self.test_case = test_case
         self.severity = severity
@@ -138,7 +134,7 @@ class SemanticDefenseViolation:
         self.evidence = evidence
         self.remediation = remediation
         self.timestamp = datetime.utcnow().isoformat() + "Z"
-    
+
     def to_dict(self) -> Dict[str, Any]:
         return {
             "test_case": self.test_case,
@@ -146,9 +142,9 @@ class SemanticDefenseViolation:
             "detected_issue": self.detected_issue,
             "evidence": self.evidence,
             "remediation": self.remediation,
-            "timestamp": self.timestamp
+            "timestamp": self.timestamp,
         }
-    
+
     def to_complement(self) -> Dict[str, Any]:
         """Generate complement from violation"""
         return {
@@ -158,59 +154,84 @@ class SemanticDefenseViolation:
             "detected_issue": self.detected_issue,
             "evidence": self.evidence,
             "remediation": self.remediation,
-            "timestamp": self.timestamp
+            "timestamp": self.timestamp,
         }
 
 
 @pytest.fixture
 def violation_maker():
     """Factory for creating violations"""
+
     def make_violation(
         test_case: str,
         severity: str = "CRITICAL",
         detected_issue: str = "test_issue",
         evidence: Dict[str, Any] = None,
-        remediation: Dict[str, str] = None
+        remediation: Dict[str, str] = None,
     ) -> SemanticDefenseViolation:
         if evidence is None:
             evidence = {}
         if remediation is None:
             remediation = {}
-        
+
         return SemanticDefenseViolation(
             test_case=test_case,
             severity=severity,
             detected_issue=detected_issue,
             evidence=evidence,
-            remediation=remediation
+            remediation=remediation,
         )
-    
+
     return make_violation
 
 
 class CanonicalizationTester:
     """Helper for testing canonicalization"""
-    
+
     @staticmethod
     def compute_hash(data: Dict[str, Any]) -> str:
         """Compute SHA256 hash of JSON data"""
         json_str = json.dumps(data, sort_keys=True, ensure_ascii=False)
         return hashlib.sha256(json_str.encode()).hexdigest()
-    
+
     @staticmethod
     def canonicalize_jcs(data: Dict[str, Any]) -> str:
         """Apply JCS canonicalization"""
         # Simplified JCS implementation
-        canonical = json.dumps(data, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+        canonical = json.dumps(
+            data, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+        )
         return canonical
-    
+
     @staticmethod
     def layered_sort(data: Dict[str, Any]) -> Dict[str, Any]:
         """Apply layered sorting"""
         return {
-            "_layer1": {k: v for k, v in sorted(data.items()) if k in ["artifact_id", "step_number", "timestamp", "era", "success"]},
-            "_layer2": {k: v for k, v in sorted(data.items()) if k in ["metadata", "execution_time_ms", "violations_count"]},
-            "_layer3": {k: v for k, v in sorted(data.items()) if k not in ["artifact_id", "step_number", "timestamp", "era", "success", "metadata", "execution_time_ms", "violations_count"]}
+            "_layer1": {
+                k: v
+                for k, v in sorted(data.items())
+                if k in ["artifact_id", "step_number", "timestamp", "era", "success"]
+            },
+            "_layer2": {
+                k: v
+                for k, v in sorted(data.items())
+                if k in ["metadata", "execution_time_ms", "violations_count"]
+            },
+            "_layer3": {
+                k: v
+                for k, v in sorted(data.items())
+                if k
+                not in [
+                    "artifact_id",
+                    "step_number",
+                    "timestamp",
+                    "era",
+                    "success",
+                    "metadata",
+                    "execution_time_ms",
+                    "violations_count",
+                ]
+            },
         }
 
 
@@ -222,14 +243,9 @@ def canonicalization_tester():
 
 class EventStreamValidator:
     """Helper for validating event streams"""
-    
-    REQUIRED_FIELDS = [
-        "event_id",
-        "event_type",
-        "timestamp",
-        "era"
-    ]
-    
+
+    REQUIRED_FIELDS = ["event_id", "event_type", "timestamp", "era"]
+
     @classmethod
     def validate_event(cls, event: Dict[str, Any]) -> List[str]:
         """Validate event has all required fields"""
@@ -238,7 +254,7 @@ class EventStreamValidator:
             if field not in event:
                 missing.append(field)
         return missing
-    
+
     @classmethod
     def validate_event_hash(cls, event: Dict[str, Any]) -> bool:
         """Validate event hash is present and valid"""

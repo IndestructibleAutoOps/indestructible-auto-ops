@@ -17,20 +17,20 @@ from .canonicalizer import SemanticCanonicalizer
 
 __all__ = [
     # Tokenizer
-    'SemanticTokenizer',
-    'SemanticToken',
-    'TokenType',
+    "SemanticTokenizer",
+    "SemanticToken",
+    "TokenType",
     # AST Builder
-    'SemanticAST',
-    'ASTNode',
-    'NodeType',
+    "SemanticAST",
+    "ASTNode",
+    "NodeType",
     # Hasher
-    'SemanticHasher',
+    "SemanticHasher",
     # Multi-Language Evidence
-    'MultiLanguageEvidence',
-    'MultiLanguageEvidenceSealer',
+    "MultiLanguageEvidence",
+    "MultiLanguageEvidenceSealer",
     # Canonicalizer
-    'SemanticCanonicalizer',
+    "SemanticCanonicalizer",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

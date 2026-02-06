@@ -1,0 +1,133 @@
+# Era-2 到 Era-3 映射定義
+# Era-2 (Microcode Layer) to Era-3 (No-Code Layer) Mapping
+
+apiVersion: ng.governance/v3
+kind: MappingDefinition
+metadata:
+  ng_code: NG90102
+  name: era2-to-era3-mapping
+  version: "1.0.0"
+  mapping_type: "era_transition"
+  source_era: "era-2"
+  target_era: "era-3"
+  
+spec:
+  purpose: "定義微碼層到無碼層的精確映射規則"
+  
+  type_mappings:
+    service_to_intent:
+      source_pattern: "svc\\.era2\\.(?P<domain>[a-z0-9-]+)\\.(?P<component>[a-z0-9-]+)"
+      target_pattern: "int.era3.{domain}.{component}"
+      transformation: "service → business intent"
+      rationale: "服務抽象為業務意圖"
+      
+      examples:
+        - source: "svc.era2.platform.deployment"
+          target: "int.era3.platform.deploy"
+          description: "部署服務 → 部署意圖"
+          intent_description: "用戶意圖：我想部署應用"
+          
+        - source: "svc.era2.registry.management"
+          target: "int.era3.registry.manage"
+          description: "註冊表管理服務 → 管理意圖"
+          intent_description: "用戶意圖：我想管理註冊表"
+    
+    api_to_semantic:
+      source_pattern: "api\\.era2\\.(?P<domain>[a-z0-9-]+)\\.(?P<component>[a-z0-9-]+)"
+      target_pattern: "sem.era3.{domain}.{component}"
+      transformation: "API → semantic concept"
+      rationale: "API 端點抽象為語義概念"
+      
+      examples:
+        - source: "api.era2.runtime.execute"
+          target: "sem.era3.runtime.execution"
+          description: "執行 API → 執行語義"
+          semantic_meaning: "執行的概念和語義"
+          
+        - source: "api.era2.governance.validate"
+          target: "sem.era3.governance.validation"
+          description: "驗證 API → 驗證語義"
+          semantic_meaning: "驗證的概念和語義"
+    
+    event_to_intent:
+      source_pattern: "evt\\.era2\\.(?P<domain>[a-z0-9-]+)\\.(?P<event>[a-z0-9-]+)"
+      target_pattern: "int.era3.{domain}.{event}"
+      transformation: "event → intent trigger"
+      rationale: "事件觸發抽象為意圖觸發器"
+      
+      examples:
+        - source: "evt.era2.registry.updated"
+          target: "int.era3.registry.update"
+          description: "註冊表更新事件 → 更新意圖觸發"
+          intent_trigger: "當註冊表需要更新時"
+          
+        - source: "evt.era2.system.failure"
+          target: "int.era3.system.recover"
+          description: "系統故障事件 → 恢復意圖觸發"
+          intent_trigger: "當系統需要恢復時"
+    
+    stream_to_neural:
+      source_pattern: "stm\\.era2\\.(?P<domain>[a-z0-9-]+)\\.(?P<stream>[a-z0-9-]+)"
+      target_pattern: "neu.era3.{domain}.{stream}"
+      transformation: "data stream → neural network"
+      rationale: "數據流處理抽象為神經網絡"
+      
+      examples:
+        - source: "stm.era2.data.pipeline"
+          target: "neu.era3.data.processor"
+          description: "數據管道 → 神經網絡處理器"
+          ml_model: "DataStreamNeuralProcessor"
+          
+        - source: "stm.era2.monitoring.metrics"
+          target: "neu.era3.monitoring.analyzer"
+          description: "監控指標流 → 監控分析神經網絡"
+          ml_model: "MetricsAnalysisNetwork"
+  
+  semantic_transformations:
+    imperative_to_declarative:
+      description: "從命令式（如何做）到聲明式（要什麼）"
+      examples:
+        - era2: "service.deploy(config)"
+          era3: "intent: 我想要部署應用"
+          
+    procedural_to_intentional:
+      description: "從程序化到意圖化"
+      examples:
+        - era2: "api.post('/deploy', data)"
+          era3: "intent: 部署應用到生產環境"
+          
+    technical_to_business:
+      description: "從技術細節到業務語言"
+      examples:
+        - era2: "event: pod.crashed"
+          era3: "intent: 確保應用可用性"
+  
+  execution_contract:
+    input:
+      required_fields:
+        - source_namespace_id
+        - source_era: "era-2"
+        - target_era: "era-3"
+      validation: "BINARY_ALL_MUST_PASS"
+      
+    output:
+      result_type: "BINARY"
+      on_success:
+        - target_namespace_id
+        - semantic_mapping
+        - intent_description
+        - ml_model_assigned
+      on_failure:
+        - block_reason
+        - semantic_inconsistency_details
+      no_warnings: true
+
+examples:
+  platform_deployment:
+    source: "svc.era2.platform.deployment"
+    target: "int.era3.platform.deploy"
+    intent: "我想部署應用到雲端"
+    semantic_elements:
+      - action: "deploy"
+      - target: "application"
+      - destination: "cloud"

@@ -4,14 +4,14 @@ Generated: 2026-02-03T15:13:41.663509Z
 
 ## Overview
 
-- **Total Components**: 295
+- **Total Components**: 291
 - **Total Dependencies**: 628
-- **Avg Dependencies/Component**: 2.13
+- **Avg Dependencies/Component**: 2.16
 
 ## By Type
 
-- **documentation**: 80
-- **json_schema**: 30
+- **documentation**: 77
+- **json_schema**: 29
 - **python_module**: 108
 - **yaml_spec**: 77
 
@@ -19,7 +19,7 @@ Generated: 2026-02-03T15:13:41.663509Z
 
 - **meta-spec**: 6
 - **ugs**: 10
-- **governance**: 97
+- **governance**: 93
 - **reasoning**: 16
 - **gates**: 2
 - **platform-cloud**: 4

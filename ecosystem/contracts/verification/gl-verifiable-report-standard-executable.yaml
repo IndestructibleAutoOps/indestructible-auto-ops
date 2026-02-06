@@ -7,12 +7,6 @@ version: "1.0.0"
 status: "PRODUCTION_READY"
 component_type: "Standard"
 
-metadata:
-  gl_semantic_layer: "GL90-99"
-  gl_semantic_domain: "verification"
-  gl_semantic_context: "reporting"
-  audit_trail_enabled: true
-
 # 觸發條件
 trigger:
   conditions:
@@ -201,6 +195,10 @@ audit:
 
 # 合約元數據
 metadata:
+  gl_semantic_layer: "GL90-99"
+  gl_semantic_domain: "verification"
+  gl_semantic_context: "reporting"
+  audit_trail_enabled: true
   created_at: "2026-02-02"
   updated_at: "2026-02-02"
   authors: ["GL-Governance-Team"]

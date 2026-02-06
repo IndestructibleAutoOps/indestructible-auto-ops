@@ -19,16 +19,17 @@ from abc import ABC, abstractmethod
 
 # ========== 日誌配置 ==========
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+    level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
 )
 logger = logging.getLogger(__name__)
+
 
 # ========== 枚舉定義 ==========
 class Decision(Enum):
     ALLOW = "allow"
     BLOCK = "block"
     WARN = "warn"
+
 
 class Severity(Enum):
     CRITICAL = "critical"
@@ -37,10 +38,12 @@ class Severity(Enum):
     LOW = "low"
     INFO = "info"
 
+
 class RuleStatus(Enum):
     PASS = "pass"
     FAIL = "fail"
     WARN = "warn"
+
 
 # ========== 數據類 ==========
 @dataclass
@@ -73,8 +76,9 @@ class RuleEvaluation:
             "reason": self.reason,
             "timestamp": self.timestamp,
             "evidence": self.evidence,
-            "hash": self.hash_value
+            "hash": self.hash_value,
         }
+
 
 @dataclass
 class EnforcementContext:
@@ -84,7 +88,7 @@ class EnforcementContext:
     timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")
     metadata: Dict[str, Any] = field(default_factory=dict)
     evidence: Dict[str, Any] = field(default_factory=dict)
-    
+
     def to_dict(self) -> Dict:
         return {
             "operation_id": self.operation_id,
@@ -92,8 +96,9 @@ class EnforcementContext:
             "module_id": self.module_id,
             "timestamp": self.timestamp,
             "metadata": self.metadata,
-            "evidence": self.evidence
+            "evidence": self.evidence,
         }
+
 
 @dataclass
 class EnforcementDecision:
@@ -106,7 +111,7 @@ class EnforcementDecision:
     enforcement_action: str = ""
     audit_trail: List[str] = field(default_factory=list)
     evidence_chain_hash: str = ""
-    
+
     def __post_init__(self):
         if not self.evidence_chain_hash:
             self.evidence_chain_hash = self._compute_evidence_hash()
@@ -126,8 +131,9 @@ class EnforcementDecision:
             "timestamp": self.timestamp,
             "enforcement_action": self.enforcement_action,
             "rule_evaluations": [r.to_dict() for r in self.rule_evaluations],
-            "evidence_chain_hash": self.evidence_chain_hash
+            "evidence_chain_hash": self.evidence_chain_hash,
         }
+
 
 # ========== 規則評估器 ==========
 class RuleEvaluator(ABC):
@@ -135,13 +141,14 @@ class RuleEvaluator(ABC):
     def evaluate(self, context: EnforcementContext) -> RuleEvaluation:
         pass
 
+
 class SemanticValidationRule(RuleEvaluator):
     def evaluate(self, context: EnforcementContext) -> RuleEvaluation:
         has_tokens = context.evidence.get("semantic_tokens_present", False)
         verified = context.evidence.get("hash_semantic_verified", False)
         result = has_tokens and verified
         status = RuleStatus.PASS if result else RuleStatus.FAIL
-        
+
         return RuleEvaluation(
             rule_name="semantic_validation",
             priority=1000,
@@ -149,8 +156,12 @@ class SemanticValidationRule(RuleEvaluator):
             condition="operation.has_semantic_tokens && operation.semantic_verified",
             result=result,
             reason="語意驗證" if result else "缺少語意驗證",
-            evidence={"semantic_tokens_present": has_tokens, "hash_semantic_verified": verified}
+            evidence={
+                "semantic_tokens_present": has_tokens,
+                "hash_semantic_verified": verified,
+            },
         )
+
 
 class GovernanceValidationRule(RuleEvaluator):
     def evaluate(self, context: EnforcementContext) -> RuleEvaluation:
@@ -158,7 +169,7 @@ class GovernanceValidationRule(RuleEvaluator):
         governance_verified = context.evidence.get("governance_audit_trail", False)
         result = glcm_passed and governance_verified
         status = RuleStatus.PASS if result else RuleStatus.FAIL
-        
+
         return RuleEvaluation(
             rule_name="governance_validation",
             priority=1000,
@@ -166,8 +177,12 @@ class GovernanceValidationRule(RuleEvaluator):
             condition="operation.glcm_passed && operation.governance_verified",
             result=result,
             reason="治理驗證通過" if result else "治理驗證失敗",
-            evidence={"glcm_passed": glcm_passed, "governance_verified": governance_verified}
+            evidence={
+                "glcm_passed": glcm_passed,
+                "governance_verified": governance_verified,
+            },
         )
+
 
 class EvidenceChainValidationRule(RuleEvaluator):
     def evaluate(self, context: EnforcementContext) -> RuleEvaluation:
@@ -175,7 +190,7 @@ class EvidenceChainValidationRule(RuleEvaluator):
         chain_integrity = context.evidence.get("evidence_chain_integrity", False)
         result = chain_complete and chain_integrity
         status = RuleStatus.PASS if result else RuleStatus.FAIL
-        
+
         return RuleEvaluation(
             rule_name="evidence_chain_validation",
             priority=1000,
@@ -183,8 +198,12 @@ class EvidenceChainValidationRule(RuleEvaluator):
             condition="operation.evidence_chain_complete && operation.chain_integrity_verified",
             result=result,
             reason="證據鏈驗證通過" if result else "證據鏈不完整",
-            evidence={"chain_complete": chain_complete, "chain_integrity": chain_integrity}
+            evidence={
+                "chain_complete": chain_complete,
+                "chain_integrity": chain_integrity,
+            },
         )
+
 
 class HashVerificationRule(RuleEvaluator):
     def evaluate(self, context: EnforcementContext) -> RuleEvaluation:
@@ -192,7 +211,7 @@ class HashVerificationRule(RuleEvaluator):
         registry_synced = context.evidence.get("hash_registry_synced", False)
         result = all_hashed and registry_synced
         status = RuleStatus.PASS if result else RuleStatus.FAIL
-        
+
         return RuleEvaluation(
             rule_name="hash_verification",
             priority=1000,
@@ -200,15 +219,19 @@ class HashVerificationRule(RuleEvaluator):
             condition="operation.all_artifacts_hashed && operation.hash_registry_synced",
             result=result,
             reason="Hash 驗證通過" if result else "Hash 驗證失敗",
-            evidence={"all_artifacts_hashed": all_hashed, "registry_synced": registry_synced}
+            evidence={
+                "all_artifacts_hashed": all_hashed,
+                "registry_synced": registry_synced,
+            },
         )
+
 
 class NoHallucinationRule(RuleEvaluator):
     def evaluate(self, context: EnforcementContext) -> RuleEvaluation:
         hallucinations = context.evidence.get("hallucinations_detected", [])
         result = len(hallucinations) == 0
         status = RuleStatus.PASS if result else RuleStatus.FAIL
-        
+
         return RuleEvaluation(
             rule_name="no_hallucination_check",
             priority=1000,
@@ -216,8 +239,12 @@ class NoHallucinationRule(RuleEvaluator):
             condition="operation.hallucinations_detected == 0",
             result=result,
             reason="無幻覺" if result else f"檢測到 {len(hallucinations)} 個幻覺",
-            evidence={"hallucinations_count": len(hallucinations), "hallucinations": hallucinations}
+            evidence={
+                "hallucinations_count": len(hallucinations),
+                "hallucinations": hallucinations,
+            },
         )
+
 
 # ========== 策略決策點 (PDP) ==========
 class PolicyDecisionPoint:
@@ -233,27 +260,33 @@ class PolicyDecisionPoint:
 
     def evaluate(self, context: EnforcementContext) -> EnforcementDecision:
         self.logger.info(f"🔍 PDP 評估操作: {context.operation_id}")
-        
+
         rule_evaluations = []
         for rule in self.rules:
             evaluation = rule.evaluate(context)
             rule_evaluations.append(evaluation)
-            self.logger.debug(f"  規則 {evaluation.rule_name}: {evaluation.status.value}")
+            self.logger.debug(
+                f"  規則 {evaluation.rule_name}: {evaluation.status.value}"
+            )
 
         decision, severity, reason = self._make_decision(rule_evaluations)
-        
+
         return EnforcementDecision(
             operation_id=context.operation_id,
             decision=decision,
             severity=severity,
             reason=reason,
             rule_evaluations=rule_evaluations,
-            enforcement_action=self._get_enforcement_action(decision, severity)
+            enforcement_action=self._get_enforcement_action(decision, severity),
         )
 
-    def _make_decision(self, evaluations: List[RuleEvaluation]) -> Tuple[Decision, Severity, str]:
-        critical_failures = [e for e in evaluations if e.priority == 1000 and e.status == RuleStatus.FAIL]
-        
+    def _make_decision(
+        self, evaluations: List[RuleEvaluation]
+    ) -> Tuple[Decision, Severity, str]:
+        critical_failures = [
+            e for e in evaluations if e.priority == 1000 and e.status == RuleStatus.FAIL
+        ]
+
         if critical_failures:
             reasons = [f"{e.rule_name}: {e.reason}" for e in critical_failures]
             return Decision.BLOCK, Severity.CRITICAL, " | ".join(reasons)
@@ -262,9 +295,12 @@ class PolicyDecisionPoint:
 
     def _get_enforcement_action(self, decision: Decision, severity: Severity) -> str:
         if decision == Decision.BLOCK:
-            return "immediate_block" if severity == Severity.CRITICAL else "block_and_warn"
+            return (
+                "immediate_block" if severity == Severity.CRITICAL else "block_and_warn"
+            )
         else:
             return "allow"
+
 
 # ========== 策略執行點 (PEP) ==========
 class PolicyEnforcementPoint:
@@ -273,14 +309,14 @@ class PolicyEnforcementPoint:
 
     def enforce(self, decision: EnforcementDecision) -> bool:
         self.logger.info(f"⚖️ PEP 執行決策: {decision.operation_id}")
-        
+
         if decision.decision == Decision.BLOCK:
             self._execute_block(decision)
         elif decision.decision == Decision.WARN:
             self._execute_warn(decision)
         else:
             self._execute_allow(decision)
-        
+
         return True
 
     def _execute_block(self, decision: EnforcementDecision):
@@ -293,6 +329,7 @@ class PolicyEnforcementPoint:
     def _execute_allow(self, decision: EnforcementDecision):
         self.logger.info(f"✅ 允許操作: {decision.operation_id}")
 
+
 # ========== 策略信息點 (PIP) ==========
 class PolicyInformationPoint:
     def __init__(self, project_root: str = "/workspace"):
@@ -301,28 +338,45 @@ class PolicyInformationPoint:
 
     def collect_context(self, operation_id: str, module_id: str) -> EnforcementContext:
         self.logger.info(f"📊 PIP 收集上下文: {operation_id}")
-        
+
         context = EnforcementContext(
             operation_id=operation_id,
             operation_type="governance_operation",
-            module_id=module_id
+            module_id=module_id,
         )
-        
+
         context.evidence.update(self._collect_all_evidence())
         return context
 
     def _collect_all_evidence(self) -> Dict[str, Any]:
         return {
-            "semantic_tokens_present": (self.project_root / ".governance" / "semantic_tokens.json").exists(),
-            "hash_semantic_verified": (self.project_root / "semantic_hash.txt").exists(),
-            "glcm_passed_report_present": (self.project_root / "ecosystem" / "evidence" / "closure" / "execution_summary.json").exists(),
-            "governance_audit_trail": (self.project_root / "ecosystem" / ".governance" / "event-stream.jsonl").exists(),
-            "evidence_chain_complete": (self.project_root / "ecosystem" / ".governance" / "hash-registry.json").exists(),
+            "semantic_tokens_present": (
+                self.project_root / ".governance" / "semantic_tokens.json"
+            ).exists(),
+            "hash_semantic_verified": (
+                self.project_root / "semantic_hash.txt"
+            ).exists(),
+            "glcm_passed_report_present": (
+                self.project_root
+                / "ecosystem"
+                / "evidence"
+                / "closure"
+                / "execution_summary.json"
+            ).exists(),
+            "governance_audit_trail": (
+                self.project_root / "ecosystem" / ".governance" / "event-stream.jsonl"
+            ).exists(),
+            "evidence_chain_complete": (
+                self.project_root / "ecosystem" / ".governance" / "hash-registry.json"
+            ).exists(),
             "evidence_chain_integrity": True,  # 簡化檢查
-            "all_artifacts_hashed": (self.project_root / "ecosystem" / ".governance" / "hash-registry.json").exists(),
+            "all_artifacts_hashed": (
+                self.project_root / "ecosystem" / ".governance" / "hash-registry.json"
+            ).exists(),
             "hash_registry_synced": True,  # 簡化檢查
             "hallucinations_detected": [],
         }
+
 
 # ========== 零容忍強制執行引擎 ==========
 class ZeroToleranceEnforcementEngine:
@@ -333,13 +387,15 @@ class ZeroToleranceEnforcementEngine:
         self.pep = PolicyEnforcementPoint()
         self.pip = PolicyInformationPoint(project_root)
 
-    def enforce_operation(self, operation_id: str, module_id: str) -> EnforcementDecision:
+    def enforce_operation(
+        self, operation_id: str, module_id: str
+    ) -> EnforcementDecision:
         self.logger.info(f"🔐 強制執行操作: {operation_id}")
-        
+
         context = self.pip.collect_context(operation_id, module_id)
         decision = self.pdp.evaluate(context)
         self.pep.enforce(decision)
-        
+
         return decision
 
     def print_decision(self, decision: EnforcementDecision):
@@ -356,20 +412,23 @@ class ZeroToleranceEnforcementEngine:
             print(f"  {icon} {evaluation.rule_name}: {evaluation.status.value}")
         print(f"\n{'='*70}\n")
 
+
 def main():
     import sys
+
     if len(sys.argv) < 3:
         print("用法: python zero_tolerance_engine.py <operation_id> <module_id>")
         sys.exit(1)
-    
+
     operation_id = sys.argv[1]
     module_id = sys.argv[2]
-    
+
     engine = ZeroToleranceEnforcementEngine()
     decision = engine.enforce_operation(operation_id, module_id)
     engine.print_decision(decision)
-    
+
     sys.exit(0 if decision.decision == Decision.ALLOW else 1)
+
 
 if __name__ == "__main__":
     main()

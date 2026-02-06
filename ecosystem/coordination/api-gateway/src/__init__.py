@@ -26,21 +26,18 @@ from .gateway import Gateway
 
 __all__ = [
     # Router
-    'Router',
-    'Route',
-    'RouteMatchType',
-    
+    "Router",
+    "Route",
+    "RouteMatchType",
     # Authenticator
-    'Authenticator',
-    'AuthToken',
-    
+    "Authenticator",
+    "AuthToken",
     # Rate Limiter
-    'RateLimiter',
-    'TokenBucket',
-    'RateLimitConfig',
-    
+    "RateLimiter",
+    "TokenBucket",
+    "RateLimitConfig",
     # Gateway
-    'Gateway',
+    "Gateway",
 ]
 
-__version__ = '1.0.0'
+__version__ = "1.0.0"

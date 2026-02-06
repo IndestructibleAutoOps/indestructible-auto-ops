@@ -2,7 +2,7 @@
 
 Generated: 2026-02-03T15:13:41.663509Z
 
-Total Components: 295
+Total Components: 291
 
 ## CODE_SCANNING_ECOSYSTEM_SUMMARY
 
@@ -945,34 +945,6 @@ Total Components: 295
 
 - **Type**: yaml_spec
 - **Path**: ecosystem/ecosystem-cloud/registry/cloud_adapters.yaml
-- **Dependencies**: 0
-- **Dependents**: 0
-
-## ecosystem.governance.docs.architecture.architecture_summary
-
-- **Type**: json_schema
-- **Path**: ecosystem/ecosystem/governance/docs/architecture/architecture_summary.json
-- **Dependencies**: 0
-- **Dependents**: 0
-
-## ecosystem.governance.docs.architecture.components
-
-- **Type**: documentation
-- **Path**: ecosystem/ecosystem/governance/docs/architecture/components.md
-- **Dependencies**: 0
-- **Dependents**: 0
-
-## ecosystem.governance.docs.architecture.layers
-
-- **Type**: documentation
-- **Path**: ecosystem/ecosystem/governance/docs/architecture/layers.md
-- **Dependencies**: 0
-- **Dependents**: 0
-
-## ecosystem.governance.docs.architecture.metrics
-
-- **Type**: documentation
-- **Path**: ecosystem/ecosystem/governance/docs/architecture/metrics.md
 - **Dependencies**: 0
 - **Dependents**: 0
 

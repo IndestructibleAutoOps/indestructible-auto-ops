@@ -30,7 +30,7 @@ Components: 10
 
 ## governance
 
-Components: 97
+Components: 93
 
 - contracts.fact-verification.gl.internal-vs-external-governance
 - contracts.governance.ROLE_LANGUAGE_SPECIFICATION
@@ -81,10 +81,6 @@ Components: 97
 - contracts.naming-governance.gl-user-facing-layer-specification
 - contracts.naming-governance.gl-validation-layer-specification
 - contracts.naming-governance.gl-versioning-layer-specification
-- ecosystem.governance.docs.architecture.architecture_summary
-- ecosystem.governance.docs.architecture.components
-- ecosystem.governance.docs.architecture.layers
-- ecosystem.governance.docs.architecture.metrics
 - enforcers.closed_loop_governance
 - enforcers.governance_enforcer
 - governance.GL_SEMANTIC_ANCHOR

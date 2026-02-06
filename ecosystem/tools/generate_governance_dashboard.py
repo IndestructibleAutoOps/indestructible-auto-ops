@@ -10,10 +10,12 @@
 Language Governance Dashboard Generator
 Generates a dashboard showing semantic health and governance metrics
 """
+
 # MNGA-002: Import organization needs review
 # Import simple_yaml for zero-dependency YAML parsing
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from utils.simple_yaml import safe_load
 import json
@@ -35,10 +37,12 @@ def load_module_registry() -> Dict[str, Any]:
     """
     registry_path = Path("controlplane/baseline/modules/REGISTRY.yaml")
     try:
-        with registry_path.open('r', encoding='utf-8') as f:
+        with registry_path.open("r", encoding="utf-8") as f:
             data = safe_load(f) or {}
     except FileNotFoundError:
-        print(f"Error: Module registry file not found: {registry_path}", file=sys.stderr)
+        print(
+            f"Error: Module registry file not found: {registry_path}", file=sys.stderr
+        )
         sys.exit(1)
     except yaml.YAMLError as exc:
         print(
@@ -54,7 +58,7 @@ def load_module_registry() -> Dict[str, Any]:
         )
         sys.exit(1)
     return data
-    with open(registry_path, 'r') as f:
+    with open(registry_path, "r") as f:
         return safe_load(f)
 
 
@@ -70,10 +74,12 @@ def load_policy_manifest() -> Dict[str, Any]:
     """
     manifest_path = Path("controlplane/governance/policies/POLICY_MANIFEST.yaml")
     try:
-        with manifest_path.open('r', encoding='utf-8') as f:
+        with manifest_path.open("r", encoding="utf-8") as f:
             data = safe_load(f) or {}
     except FileNotFoundError:
-        print(f"Error: Policy manifest file not found: {manifest_path}", file=sys.stderr)
+        print(
+            f"Error: Policy manifest file not found: {manifest_path}", file=sys.stderr
+        )
         sys.exit(1)
     except yaml.YAMLError as exc:
         print(
@@ -89,36 +95,36 @@ def load_policy_manifest() -> Dict[str, Any]:
         )
         sys.exit(1)
     return data
-    with open(manifest_path, 'r') as f:
+    with open(manifest_path, "r") as f:
         return safe_load(f)
 
 
 def calculate_governance_metrics(registry: Dict[str, Any]) -> Dict[str, Any]:
     """Calculate governance metrics"""
-    modules = registry.get('modules', [])
+    modules = registry.get("modules", [])
     # Calculate semantic health statistics
-    health_scores = [m.get('semantic_health_score', 0) for m in modules]
+    health_scores = [m.get("semantic_health_score", 0) for m in modules]
     avg_health = sum(health_scores) / len(health_scores) if health_scores else 0
     min_health = min(health_scores) if health_scores else 0
     max_health = max(health_scores) if health_scores else 0
     # Count modules by status
     status_counts = {}
     for module in modules:
-        status = module.get('status', 'unknown')
+        status = module.get("status", "unknown")
         status_counts[status] = status_counts.get(status, 0) + 1
     # Count modules by autonomy level
     autonomy_counts = {}
     for module in modules:
-        autonomy = module.get('autonomy_level', 'unknown')
+        autonomy = module.get("autonomy_level", "unknown")
         autonomy_counts[autonomy] = autonomy_counts.get(autonomy, 0) + 1
     return {
-        'total_modules': len(modules),
-        'average_semantic_health': round(avg_health, 2),
-        'min_semantic_health': min_health,
-        'max_semantic_health': max_health,
-        'status_distribution': status_counts,
-        'autonomy_distribution': autonomy_counts,
-        'health_scores': health_scores
+        "total_modules": len(modules),
+        "average_semantic_health": round(avg_health, 2),
+        "min_semantic_health": min_health,
+        "max_semantic_health": max_health,
+        "status_distribution": status_counts,
+        "autonomy_distribution": autonomy_counts,
+        "health_scores": health_scores,
     }
 
 
@@ -166,18 +172,20 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 ### Module Health Scores
 """
     # Add individual module scores
-    modules = registry.get('modules', [])
-    for module in sorted(modules, key=lambda x: x.get('semantic_health_score', 0), reverse=True):
-        module_id = module.get('module_id', 'unknown')
-        health = module.get('semantic_health_score', 0)
-        status = module.get('status', 'unknown')
-        autonomy = module.get('autonomy_level', 'unknown')
+    modules = registry.get("modules", [])
+    for module in sorted(
+        modules, key=lambda x: x.get("semantic_health_score", 0), reverse=True
+    ):
+        module_id = module.get("module_id", "unknown")
+        health = module.get("semantic_health_score", 0)
+        status = module.get("status", "unknown")
+        autonomy = module.get("autonomy_level", "unknown")
         status_emoji = {
-            'active': '🟢',
-            'in-development': '🟡',
-            'planned': '⚪',
-            'deprecated': '🔴'
-        }.get(status, '❓')
+            "active": "🟢",
+            "in-development": "🟡",
+            "planned": "⚪",
+            "deprecated": "🔴",
+        }.get(status, "❓")
         dashboard += f"""
 #### {module_id} {status_emoji}
 - **Health Score**: {health}% {generate_health_bar(health, 15)}
@@ -190,34 +198,34 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 ## 📈 Distribution Analytics
 ### Module Status Distribution
 """
-    for status, count in metrics['status_distribution'].items():
-        percentage = (count / metrics['total_modules']) * 100
-        bar = '█' * int(percentage / 5)
+    for status, count in metrics["status_distribution"].items():
+        percentage = (count / metrics["total_modules"]) * 100
+        bar = "█" * int(percentage / 5)
         dashboard += f"- **{status}**: {count} ({percentage:.1f}%) {bar}\n"
     dashboard += """
 ### Autonomy Level Distribution
 """
-    for autonomy, count in metrics['autonomy_distribution'].items():
-        percentage = (count / metrics['total_modules']) * 100
-        bar = '█' * int(percentage / 5)
+    for autonomy, count in metrics["autonomy_distribution"].items():
+        percentage = (count / metrics["total_modules"]) * 100
+        bar = "█" * int(percentage / 5)
         dashboard += f"- **{autonomy}**: {count} ({percentage:.1f}%) {bar}\n"
     dashboard += """
 ---
 ## 🔐 Policy Enforcement Status
 ### Active Policies
 """
-    policies = policy_manifest.get('policies', [])
+    policies = policy_manifest.get("policies", [])
     for policy in policies:
-        policy_name = policy.get('name', 'unknown')
-        severity = policy.get('severity', 'unknown')
-        enforcement = policy.get('enforcement', 'unknown')
+        policy_name = policy.get("name", "unknown")
+        severity = policy.get("severity", "unknown")
+        enforcement = policy.get("enforcement", "unknown")
         severity_emoji = {
-            'critical': '🔴',
-            'high': '🟠',
-            'medium': '🟡',
-            'low': '🟢'
-        }.get(severity.lower(), '⚪')
-        enforcement_status = '✅ Enabled' if enforcement == 'enabled' else '⏸️ Disabled'
+            "critical": "🔴",
+            "high": "🟠",
+            "medium": "🟡",
+            "low": "🟢",
+        }.get(severity.lower(), "⚪")
+        enforcement_status = "✅ Enabled" if enforcement == "enabled" else "⏸️ Disabled"
         dashboard += f"""
 #### {severity_emoji} {policy_name}
 - **Severity**: {severity}
@@ -231,24 +239,26 @@ def generate_dashboard(output_path: str = "docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
 |--------|-----------|----------|--------|--------|
 """
     for module in modules:
-        module_id = module.get('module_id', 'unknown')
-        namespace = module.get('namespace', 'N/A')
-        health = module.get('semantic_health_score', 0)
-        status_emoji = '✅' if health >= 80 else '⚠️'
+        module_id = module.get("module_id", "unknown")
+        namespace = module.get("namespace", "N/A")
+        health = module.get("semantic_health_score", 0)
+        status_emoji = "✅" if health >= 80 else "⚠️"
         # Count semantic mappings if available in manifest
-        manifest_path = Path(f"controlplane/baseline/modules/{module_id}/module-manifest.yaml")
+        manifest_path = Path(
+            f"controlplane/baseline/modules/{module_id}/module-manifest.yaml"
+        )
         concept_count = 0
         if manifest_path.exists():
-            with open(manifest_path, 'r') as f:
+            with open(manifest_path, "r") as f:
                 manifest = safe_load(f)
-                concept_count = len(manifest.get('semantic_mappings', []))
+                concept_count = len(manifest.get("semantic_mappings", []))
         dashboard += f"| {module_id} | {namespace} | {concept_count} | {health}% | {status_emoji} |\n"
     dashboard += """
 ---
 ## 🚨 Health Alerts
 """
     # Check for modules below threshold
-    low_health_modules = [m for m in modules if m.get('semantic_health_score', 0) < 80]
+    low_health_modules = [m for m in modules if m.get("semantic_health_score", 0) < 80]
     if low_health_modules:
         dashboard += "### ⚠️ Modules Below Health Threshold\n\n"
         for module in low_health_modules:
@@ -299,18 +309,18 @@ Recommended review: **{(datetime.now()).strftime('%Y-%m-%d')}** (Monthly)
     # Write dashboard
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
-    with open(output, 'w') as f:
+    with open(output, "w") as f:
         f.write(dashboard)
     print(f"✅ Language Governance Dashboard generated: {output_path}")
     # Also generate JSON report
-    json_output = output_path.replace('.md', '.json')
+    json_output = output_path.replace(".md", ".json")
     report = {
-        'generated_at': datetime.now().isoformat(),
-        'metrics': metrics,
-        'modules': modules,
-        'policies': policies
+        "generated_at": datetime.now().isoformat(),
+        "metrics": metrics,
+        "modules": modules,
+        "policies": policies,
     }
-    with open(json_output, 'w') as f:
+    with open(json_output, "w") as f:
         json.dump(report, f, indent=2)
 
     print(f"✅ JSON report generated: {json_output}")
