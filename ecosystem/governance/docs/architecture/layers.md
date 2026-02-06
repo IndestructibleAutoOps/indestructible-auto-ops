@@ -1,6 +1,6 @@
 # Architecture Layers
 
-Generated: 2026-02-03T15:13:41.663509Z
+Generated: 2026-02-06T17:18:24.744674Z
 
 ## meta-spec
 
@@ -30,12 +30,12 @@ Components: 10
 
 ## governance
 
-Components: 97
+Components: 187
 
 - contracts.fact-verification.gl.internal-vs-external-governance
-- contracts.governance.ROLE_LANGUAGE_SPECIFICATION
-- contracts.governance.ROLE_RUNTIME_FLOW
-- contracts.governance.ROLE_SYSTEM_IMPLEMENTATION_COMPLETE
+- contracts.governance.ROLE-LANGUAGE-SPECIFICATION
+- contracts.governance.ROLE-RUNTIME-FLOW
+- contracts.governance.ROLE-SYSTEM-IMPLEMENTATION-COMPLETE
 - contracts.governance.gl-governance-layers
 - contracts.governance.gl-semantic-violation-classifier
 - contracts.governance.gl.causal-reasoning-spec
@@ -81,32 +81,70 @@ Components: 97
 - contracts.naming-governance.gl-user-facing-layer-specification
 - contracts.naming-governance.gl-validation-layer-specification
 - contracts.naming-governance.gl-versioning-layer-specification
-- ecosystem.governance.docs.architecture.architecture_summary
-- ecosystem.governance.docs.architecture.components
-- ecosystem.governance.docs.architecture.layers
-- ecosystem.governance.docs.architecture.metrics
 - enforcers.closed_loop_governance
 - enforcers.governance_enforcer
-- governance.GL_SEMANTIC_ANCHOR
+- engines.governance.narrative_filter_engine
+- engines.governance_closure_engine
+- evidence.governance.hallucination_artifacts
+- evidence.governance.hallucination_closure_conditions
+- evidence.governance.hallucination_hashes
+- evidence.governance.hallucination_modules
+- evidence.governance.hallucination_overall
+- evidence.governance.narrative_violations
+- governance.AUTOMATED-COMPLIANCE-VERIFICATION-SYSTEM
+- governance.GL-LanguageNeutralHash-Spec-v1
+- governance.GL-NarrativeFreeCompliance-Spec-v2
+- governance.GL-SEMANTIC-ANCHOR
+- governance.GL-semantic-anchors.GL00-GL99-unified-framework
+- governance.GL-semantic-anchors.GL20-GL49-language-behavior-domains-integration
+- governance.GL-semantic-anchors.GL50-GL99-format-layer-specification
+- governance.GL-semantic-anchors.README
+- governance.GL-semantic-anchors.governance-baseline
+- governance.GL-semantic-anchors.semantic-layer-specification
+- governance.REPORT-DOWNGRADE-VALIDATOR-GUIDE
 - governance.audit_logger
-- governance.docs.architecture.architecture_summary
+- governance.autonomy-boundary-spec
+- governance.canonical-hash-chain-spec
+- governance.cicd-compliance-sealing-strategy
+- governance.closure.governance_closure_spec
+- governance.core-governance-spec
+- governance.data.semantic_matrix
+- governance.docs.architecture.architecture-summary
 - governance.docs.architecture.components
 - governance.docs.architecture.layers
 - governance.docs.architecture.metrics
+- governance.enforcement-rules
+- governance.enforcement.rules
 - governance.engines.refresh.__init__
 - governance.engines.refresh.refresh_engine
 - governance.engines.reverse-architecture.__init__
 - governance.engines.reverse-architecture.reverse_architecture_engine
 - governance.engines.validation.__init__
 - governance.engines.validation.validation_engine
+- governance.evidence-verification-engine-spec-v1
 - governance.format-layer.schemas.contract.schema
 - governance.format-layer.schemas.evidence.schema
 - governance.format-layer.schemas.platform-instance.schema
+- governance.glcm-forbid-relaxation
+- governance.glcm-no-fakepass
+- governance.governance-closure-engine-spec-v1
 - governance.governance-manifest
 - governance.governance-monitor-config
-- governance.meta-governance.DRIFT_ANALYSIS_REPORT
-- governance.meta-governance.FULL_INTEGRATION_REPORT
-- governance.meta-governance.META_GOVERNANCE_APPLICATION_REPORT
+- governance.hash-storage-specification
+- governance.hash_boundary
+- governance.hash_spec.era-2
+- governance.kernel.semantic.__init__
+- governance.kernel.semantic.ast_builder
+- governance.kernel.semantic.canonicalizer
+- governance.kernel.semantic.hasher
+- governance.kernel.semantic.multilang_evidence
+- governance.kernel.semantic.tokenizer
+- governance.kernel.test_generator_v2
+- governance.materialization-complement-spec
+- governance.materialization-complement-spec-v2
+- governance.meta-governance.DRIFT-ANALYSIS-REPORT
+- governance.meta-governance.FULL-INTEGRATION-REPORT
+- governance.meta-governance.META-GOVERNANCE-APPLICATION-REPORT
 - governance.meta-governance.README
 - governance.meta-governance.configs.governance-config
 - governance.meta-governance.schemas.version-specification
@@ -127,29 +165,98 @@ Components: 97
 - governance.meta-governance.tools.apply_governance
 - governance.meta-governance.tools.apply_strict_versioning
 - governance.meta-governance.tools.full_governance_integration
-- tools.generate-governance-dashboard
-- tools.gl-markers.fix-governance-markers
+- governance.methodology.immutable-core-governance-engineering-methodology
+- governance.migration.MIGRATION_VULNERABILITIES_FIXED
+- governance.migration.hash-translation-spec-v1
+- governance.migration.htt-metadata
+- governance.migration.migration-report
+- governance.migration.pilot-plan
+- governance.naming-conventions
+- governance.reporting-governance-spec
+- governance.reports.zero_tolerance_enhanced_implementation_summary
+- governance.reports.zero_tolerance_implementation_summary
+- governance.rules.GLCM-WORLDCLASS
+- governance.selfhealing-replayability-spec
+- governance.semantic-defense-specification
+- governance.semantic-driven-executor-spec
+- governance.semantic-entity-task-converter-spec
+- governance.semantic-vulnerability-test-hardening-plan
+- governance.specs.ARCHITECTURE-TO-CODE-PROTOCOL
+- governance.specs.AUTONOMY-BOUNDARY-UPGRADE-COMPLETE
+- governance.specs.BACKEND-GOVERNANCE-RESPONSIBILITY
+- governance.specs.ONE-STOP-UPGRADE-PIPELINE-v1.0
+- governance.specs.automated_enforcement_pipeline
+- governance.specs.enhanced_zero_tolerance_implementation
+- governance.specs.evidence_chain_integrity
+- governance.specs.governance_layer_boundaries
+- governance.specs.hash_policy
+- governance.specs.immutable_core_sealing
+- governance.specs.narrative_free_enforcement
+- governance.specs.standards.autonomy_tiers
+- governance.specs.standards.control_tier_classification
+- governance.specs.standards.governance_chain_of_responsibility
+- governance.specs.standards.intent_verification_protocol
+- governance.specs.standards.reversibility_and_kill_switch
+- governance.subsystem-binding-spec
+- governance.tasks.ERA-2-BACKWARD-CLOSED-LOOP
+- governance.tool-definition-protocol
+- governance.tools-registry
+- governance.unified-governance-integration
+- governance.validation.autonomy_boundary_spec
+- governance.validation.bootstrap_spec
+- governance.validation.canonical_hash_chain_spec
+- governance.validation.selfhealing_replay_spec
+- governance.validation.ultra-verification-spec
+- tests.governance.test_governance_closure
+- tests.governance.test_governance_hallucination
+- tests.governance.test_hash_boundary
+- tests.governance.test_hash_stability
+- tests.governance.test_semantic_drift
+- tests.governance.test_semantic_layer
+- tests.governance.test_tool_registry
+- tools.generate_governance_dashboard
+- tools.gl-markers.fix_governance_markers
+- tools.governance_closure_engine
+- tools.governance_closure_engine_incomplete
+- tools.run_governance_enforcement
 
 ## reasoning
 
-Components: 16
+Components: 33
 
-- contracts.reasoning.dual_path_spec
+- contracts.reasoning.__init__
+- contracts.reasoning.arbitration-rules
+- contracts.reasoning.dual-path-spec
+- contracts.reasoning.feedback-schema
 - contracts.reasoning.gl-reasoning-rules
+- reasoning.__init__
+- reasoning.agents.__init__
 - reasoning.agents.planning_agent
-- reasoning.agents.tools_registry
+- reasoning.agents.tools-registry
 - reasoning.auto_reasoner
-- reasoning.contracts.dual_path_spec
+- reasoning.contracts.dual-path-spec
+- reasoning.dual_path.__init__
+- reasoning.dual_path.arbitration.__init__
 - reasoning.dual_path.arbitration.arbitrator
 - reasoning.dual_path.arbitration.rule_engine
 - reasoning.dual_path.arbitration.rules.api
 - reasoning.dual_path.arbitration.rules.dependency
 - reasoning.dual_path.arbitration.rules.security
+- reasoning.dual_path.base_retrieval
+- reasoning.dual_path.external.__init__
+- reasoning.dual_path.external.domain_filter
 - reasoning.dual_path.external.retrieval
+- reasoning.dual_path.external.web_search
+- reasoning.dual_path.internal.__init__
+- reasoning.dual_path.internal.index_builder
 - reasoning.dual_path.internal.knowledge_graph
 - reasoning.dual_path.internal.retrieval
+- reasoning.dual_path.pipeline
+- reasoning.traceability.__init__
 - reasoning.traceability.feedback
 - reasoning.traceability.traceability
+- reasoning.utils.__init__
+- reasoning.utils.simple_yaml
 
 ## gates
 
@@ -172,17 +279,18 @@ Components: 4
 Components: 7
 
 - ecosystem-cloud.adapters.aws.aws_adapter
-- ecosystem-cloud.contracts.compute.v1.compute_contract
-- ecosystem-cloud.contracts.logging.v1.logging_contract
-- ecosystem-cloud.contracts.queue.v1.queue_contract
-- ecosystem-cloud.contracts.secrets.v1.secrets_contract
-- ecosystem-cloud.contracts.storage.v1.storage_contract
-- ecosystem-cloud.registry.cloud_adapters
+- ecosystem-cloud.contracts.compute.v1.compute-contract
+- ecosystem-cloud.contracts.logging.v1.logging-contract
+- ecosystem-cloud.contracts.queue.v1.queue-contract
+- ecosystem-cloud.contracts.secrets.v1.secrets-contract
+- ecosystem-cloud.contracts.storage.v1.storage-contract
+- ecosystem-cloud.registry.cloud-adapters
 
 ## contracts
 
-Components: 16
+Components: 17
 
+- contracts.__init__
 - contracts.extensions.gl-extension-points
 - contracts.fact-verification.README
 - contracts.fact-verification.gl.fact-pipeline-spec
@@ -202,6 +310,12 @@ Components: 16
 
 ## engines
 
-Components: 0
+Components: 6
 
+- engines.core_sealing_engine
+- engines.era-1.evidence_verification_engine
+- engines.lineage_reconstruction_engine
+- engines.repair_engine
+- engines.selfhealing.replay_engine
+- engines.semantic_closure_engine
 

@@ -6,9 +6,10 @@ Reverse Architecture Engine - Analyze and document existing architecture
 
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
+from pathlib import Path
 
 
 @dataclass
@@ -31,7 +32,11 @@ class ArchitectureAnalysis:
     dependency_graph: Dict[str, List[str]] = field(default_factory=dict)
     layers: Dict[str, List[str]] = field(default_factory=dict)
     metrics: Dict[str, Any] = field(default_factory=dict)
-    timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")
+    timestamp: str = field(
+        default_factory=lambda: datetime.now(timezone.utc)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
 
 
 class ReverseArchitectureEngine:
@@ -42,13 +47,17 @@ class ReverseArchitectureEngine:
     and generates comprehensive architecture documentation.
     """
 
-    def __init__(self, workspace_root: str = "/workspace"):
+    def __init__(self, workspace_root: Optional[str] = None):
         """
         Initialize Reverse Architecture Engine
 
         Args:
             workspace_root: Root directory of the workspace
         """
+        if workspace_root is None:
+            # .../ecosystem/governance/engines/reverse-architecture/* -> repo root
+            workspace_root = str(Path(__file__).resolve().parents[4])
+
         self.workspace_root = workspace_root
         self.ecosystem_root = os.path.join(workspace_root, "ecosystem")
         self.output_dir = os.path.join(
@@ -513,7 +522,7 @@ class ReverseArchitectureEngine:
             f.write("\n")
 
         # Generate JSON summary
-        summary_file = os.path.join(self.output_dir, "architecture_summary.json")
+        summary_file = os.path.join(self.output_dir, "architecture-summary.json")
         summary = {
             "timestamp": analysis.timestamp,
             "metrics": analysis.metrics,

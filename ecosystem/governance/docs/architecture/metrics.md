@@ -1,45 +1,45 @@
 # Architecture Metrics
 
-Generated: 2026-02-03T15:13:41.663509Z
+Generated: 2026-02-06T17:18:24.744674Z
 
 ## Overview
 
-- **Total Components**: 295
-- **Total Dependencies**: 628
-- **Avg Dependencies/Component**: 2.13
+- **Total Components**: 499
+- **Total Dependencies**: 1266
+- **Avg Dependencies/Component**: 2.54
 
 ## By Type
 
-- **documentation**: 80
-- **json_schema**: 30
-- **python_module**: 108
-- **yaml_spec**: 77
+- **documentation**: 117
+- **json_schema**: 62
+- **python_module**: 208
+- **yaml_spec**: 112
 
 ## By Layer
 
 - **meta-spec**: 6
 - **ugs**: 10
-- **governance**: 97
-- **reasoning**: 16
+- **governance**: 187
+- **reasoning**: 33
 - **gates**: 2
 - **platform-cloud**: 4
 - **ecosystem-cloud**: 7
-- **contracts**: 16
-- **engines**: 0
+- **contracts**: 17
+- **engines**: 6
 
 ## Most Dependent Components
 
-1. enforcers.closed_loop_governance (14 dependencies)
-2. governance.meta-governance.src.sha_integrity_system (13 dependencies)
-3. tests.test_ecosystem_integration (12 dependencies)
-4. governance.meta-governance.tools.full_governance_integration (11 dependencies)
-5. verify_network_interaction (11 dependencies)
+1. enforce.rules (14 dependencies)
+2. enforcers.closed_loop_governance (14 dependencies)
+3. tools.materialization_complement_generator_v2 (14 dependencies)
+4. governance.meta-governance.src.sha_integrity_system (13 dependencies)
+5. engines.era-1.evidence_verification_engine (12 dependencies)
 
 ## Most Coupled Components
 
-1. CODE_SCANNING_ECOSYSTEM_SUMMARY (0 dependents)
-2. COMPREHENSIVE_GOVERNANCE_REPORT (0 dependents)
-3. DEPLOYMENT_GUIDE (0 dependents)
-4. ECOSYSTEM_COMPLETE (0 dependents)
-5. ECOSYSTEM_STATUS_ANALYSIS (0 dependents)
+1. CODE-SCANNING-ECOSYSTEM-SUMMARY (0 dependents)
+2. COMPREHENSIVE-GOVERNANCE-REPORT (0 dependents)
+3. DEPLOYMENT-GUIDE (0 dependents)
+4. ECOSYSTEM-COMPLETE (0 dependents)
+5. ECOSYSTEM-STATUS-ANALYSIS (0 dependents)
 
