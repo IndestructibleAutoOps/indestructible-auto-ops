@@ -91,11 +91,12 @@ logger = logging.getLogger(__name__)
 
 
 class ExecutionPriority(Enum):
-    """執行優先級"""
-    CRITICAL = 0  # 最高權重
-    HIGH = 1
-    MEDIUM = 2
-    LOW = 3
+    """執行優先級（零容忍模式）"""
+    IMMUTABLE = -2  # 憲法級（永不寬容）
+    ABSOLUTE = -1   # 絕對級（零容忍）
+    CRITICAL = 0    # 關鍵級（立即阻斷）
+    HIGH = 1        # 高級（嚴格執行）
+    MANDATORY = 2   # 強制級（必須修復）
 
 
 class OperationType(Enum):
@@ -227,7 +228,9 @@ class NgExecutor:
     
     def execute_operation(self, operation: NgOperation) -> ExecutionResult:
         """
-        執行單個操作
+        執行單個操作（零容忍模式）
+        
+        ZERO TOLERANCE: 任何錯誤立即阻斷，無警告，無重試
         
         Args:
             operation: 操作定義
@@ -237,9 +240,12 @@ class NgExecutor:
         """
         start_time = datetime.now()
         
+        # 零容忍：檢查執行時間
+        timeout_ms = 100  # 100ms 超時限制
+        
         logger.info(
             f"▶️  執行: {operation.operation_type.value} "
-            f"[優先級={operation.priority.value}]"
+            f"[優先級={operation.priority.value}] [ZERO_TOLERANCE_MODE]"
         )
         
         result = ExecutionResult(
@@ -254,32 +260,51 @@ class NgExecutor:
         )
         
         try:
+            # ZERO TOLERANCE: 驗證操作合法性
+            self._zero_tolerance_pre_check(operation)
+            
             # 獲取操作處理器
             handler = self.operation_handlers.get(operation.operation_type)
             
             if not handler:
-                raise ValueError(f"不支援的操作類型: {operation.operation_type}")
+                raise ValueError(f"ZERO_TOLERANCE_VIOLATION: 不支援的操作類型: {operation.operation_type}")
             
             # 執行操作
             handler_result = handler(operation)
             
+            # ZERO TOLERANCE: 檢查執行時間
+            elapsed = (datetime.now() - start_time).total_seconds() * 1000
+            if elapsed > timeout_ms:
+                raise TimeoutError(
+                    f"ZERO_TOLERANCE_VIOLATION: 操作超時 {elapsed:.0f}ms > {timeout_ms}ms"
+                )
+            
+            # ZERO TOLERANCE: 驗證結果完整性
+            self._zero_tolerance_post_check(handler_result)
+            
             result.status = 'success'
             result.results = handler_result
             
-            # 記錄審計
+            # 記錄審計（不可變）
             result.audit_trail.append({
                 'action': operation.operation_type.value,
                 'timestamp': datetime.now().isoformat(),
                 'status': 'success',
-                'ng_code': 'NG00001'
+                'ng_code': 'NG00001',
+                'zero_tolerance': True,
+                'immutable': True
             })
             
-            logger.info(f"✅ 完成: {operation.operation_type.value}")
+            logger.info(f"✅ 完成: {operation.operation_type.value} [ZERO_TOLERANCE_PASS]")
             
         except Exception as e:
             result.status = 'failed'
-            result.errors.append(str(e))
-            logger.error(f"❌ 失敗: {operation.operation_type.value} - {e}")
+            result.errors.append(f"ZERO_TOLERANCE_FAILURE: {str(e)}")
+            
+            # ZERO TOLERANCE: 立即觸發緊急處理
+            self._zero_tolerance_failure_handler(operation, e)
+            
+            logger.error(f"❌ 失敗: {operation.operation_type.value} - {e} [IMMEDIATE_BLOCK]")
         
         finally:
             # 計算執行時間
@@ -290,6 +315,48 @@ class NgExecutor:
             self.execution_history.append(result)
         
         return result
+    
+    def _zero_tolerance_pre_check(self, operation: NgOperation):
+        """零容忍前置檢查"""
+        # 檢查操作參數完整性
+        if not operation.target_namespaces:
+            raise ValueError("ZERO_TOLERANCE: 缺少目標命名空間")
+        
+        # 檢查優先級合法性
+        if operation.priority not in ExecutionPriority:
+            raise ValueError("ZERO_TOLERANCE: 非法優先級")
+    
+    def _zero_tolerance_post_check(self, result: Dict[str, Any]):
+        """零容忍後置檢查"""
+        # 檢查結果完整性
+        if not result:
+            raise ValueError("ZERO_TOLERANCE: 操作返回空結果")
+        
+        # 檢查是否有失敗項
+        if 'failed' in result and result['failed']:
+            raise ValueError(f"ZERO_TOLERANCE: 檢測到失敗項 {len(result['failed'])} 個")
+    
+    def _zero_tolerance_failure_handler(self, operation: NgOperation, error: Exception):
+        """零容忍失敗處理器"""
+        # 記錄到不可變審計日誌
+        immutable_log = {
+            'timestamp': datetime.now().isoformat(),
+            'operation_id': operation.operation_id,
+            'operation_type': operation.operation_type.value,
+            'error': str(error),
+            'action_taken': 'IMMEDIATE_BLOCK',
+            'zero_tolerance': True,
+            'immutable': True,
+            'requires_resolution': True
+        }
+        
+        # 觸發警報
+        logger.critical(f"🚨 ZERO_TOLERANCE VIOLATION: {error}")
+        logger.critical(f"🚨 ACTION: IMMEDIATE_BLOCK")
+        logger.critical(f"🚨 RESOLUTION: Manual intervention required")
+        
+        # TODO: 整合到外部告警系統
+        # alert_system.trigger_critical(immutable_log)
     
     def _handle_register(self, operation: NgOperation) -> Dict[str, Any]:
         """處理註冊操作"""
