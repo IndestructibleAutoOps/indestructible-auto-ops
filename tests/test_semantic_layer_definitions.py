@@ -10,6 +10,7 @@ Tests Phase 1 of P1 implementation - Semantic layer metadata
 import sys
 import os
 from pathlib import Path
+import pytest
 
 # Add ecosystem to path
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -20,47 +21,62 @@ sys.path.insert(0, str(REPO_ROOT / "ecosystem"))
 import yaml
 
 
-def test_gl_specs_exist():
+@pytest.fixture(scope="module")
+def contracts_dir():
+    """Fixture providing the contracts directory path"""
+    return REPO_ROOT / "ecosystem" / "contracts" / "verification"
+
+
+@pytest.fixture(scope="module")
+def expected_files():
+    """Fixture providing the list of expected GL spec files"""
+    return [
+        "gl-proof-model-executable.yaml",
+        "gl-verifiable-report-standard-executable.yaml",
+        "gl-verification-engine-spec-executable.yaml"
+    ]
+
+
+@pytest.fixture(scope="module")
+def found_files(contracts_dir, expected_files):
+    """Fixture that finds and validates GL spec files exist"""
+    found = []
+    for filename in expected_files:
+        filepath = contracts_dir / filename
+        if filepath.exists():
+            found.append(filename)
+    return found
+
+
+def test_gl_specs_exist(contracts_dir, expected_files):
     """Test that GL specification files exist"""
     print("=" * 80)
     print("TEST 1: GL Specification Files Existence")
     print("=" * 80)
     
-    contracts_dir = REPO_ROOT / "ecosystem" / "contracts" / "verification"
-    
-    expected_files = [
-        "gl-proof-model-executable.yaml",
-        "gl-verifiable-report-standard-executable.yaml",
-        "gl-verification-engine-spec-executable.yaml"
-    ]
-    
-    found_files = []
-    missing_files = []
+    found = []
+    missing = []
     
     for filename in expected_files:
         filepath = contracts_dir / filename
         if filepath.exists():
-            found_files.append(filename)
+            found.append(filename)
             print(f"  ✓ {filename}")
         else:
-            missing_files.append(filename)
+            missing.append(filename)
             print(f"  ✗ {filename} - NOT FOUND")
     
-    print(f"\nSummary: {len(found_files)}/{len(expected_files)} files found")
+    print(f"\nSummary: {len(found)}/{len(expected_files)} files found")
     
-    assert len(missing_files) == 0, f"Missing files: {missing_files}"
+    assert len(missing) == 0, f"Missing files: {missing}"
     print("\n✓ Test passed: All GL spec files exist")
-    
-    return found_files
 
 
-def test_semantic_layer_metadata(found_files):
+def test_semantic_layer_metadata(contracts_dir, found_files):
     """Test that all GL specs have semantic layer metadata"""
     print("\n" + "=" * 80)
     print("TEST 2: Semantic Layer Metadata Presence")
     print("=" * 80)
-    
-    contracts_dir = REPO_ROOT / "ecosystem" / "contracts" / "verification"
     
     required_fields = [
         "gl_semantic_layer",
@@ -108,27 +124,27 @@ def test_semantic_layer_metadata(found_files):
     # Summary
     print("\n" + "=" * 40)
     print("Summary:")
+    all_valid = True
     for filename, result in results.items():
         if result.get("all_present"):
             print(f"  ✓ {filename}: All fields present")
         elif result.get("parsed"):
             missing = [f for f, present in result["fields"].items() if not present]
             print(f"  ⚠ {filename}: Missing {missing}")
+            all_valid = False
         else:
             print(f"  ✗ {filename}: Parse error")
+            all_valid = False
     
     print("\n✓ Test completed: Semantic layer metadata checked")
-    
-    return results
+    assert all_valid, "Some files are missing semantic layer metadata"
 
 
-def test_semantic_layer_values(found_files):
+def test_semantic_layer_values(contracts_dir, found_files):
     """Test that semantic layer values are correct"""
     print("\n" + "=" * 80)
     print("TEST 3: Semantic Layer Value Validation")
     print("=" * 80)
-    
-    contracts_dir = REPO_ROOT / "ecosystem" / "contracts" / "verification"
     
     expected_values = {
         "gl-proof-model-executable.yaml": {
@@ -192,27 +208,27 @@ def test_semantic_layer_values(found_files):
     correct_count = sum(1 for r in validation_results.values() if r.get("all_correct"))
     print(f"  Files with correct values: {correct_count}/{len(found_files)}")
     
+    all_correct = True
     for filename, result in validation_results.items():
         if result.get("all_correct"):
             print(f"  ✓ {filename}: All values correct")
         elif result.get("validated"):
             incorrect = [f for f, match in result["matches"].items() if not match]
             print(f"  ⚠ {filename}: Incorrect {incorrect}")
+            all_correct = False
         else:
             print(f"  ✗ {filename}: Validation failed")
+            all_correct = False
     
     print("\n✓ Test completed: Semantic layer values validated")
-    
-    return validation_results
+    assert all_correct, "Some files have incorrect semantic layer values"
 
 
-def test_spec_structure(found_files):
+def test_spec_structure(contracts_dir, found_files):
     """Test overall YAML structure of GL specs"""
     print("\n" + "=" * 80)
     print("TEST 4: GL Spec Structure Validation")
     print("=" * 80)
-    
-    contracts_dir = REPO_ROOT / "ecosystem" / "contracts" / "verification"
     
     required_top_level = ["apiVersion", "kind", "metadata", "spec"]
     

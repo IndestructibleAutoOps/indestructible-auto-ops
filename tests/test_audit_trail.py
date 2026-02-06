@@ -12,36 +12,43 @@ import os
 import json
 from pathlib import Path
 from datetime import datetime
+import pytest
 
 # Add ecosystem to path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 
-def test_audit_log_directory():
+@pytest.fixture(scope="module")
+def audit_dir():
+    """Fixture providing the audit directory path"""
+    return REPO_ROOT / "ecosystem" / "logs" / "audit-logs"
+
+
+@pytest.fixture(scope="module")
+def audit_files(audit_dir):
+    """Fixture providing list of audit log files"""
+    return list(audit_dir.glob("audit-*.json"))
+
+
+def test_audit_log_directory(audit_dir):
     """Test that audit log directory exists"""
     print("=" * 80)
     print("TEST 1: Audit Log Directory")
     print("=" * 80)
-    
-    audit_dir = REPO_ROOT / "ecosystem" / "logs" / "audit-logs"
     
     print(f"\nAudit directory: {audit_dir}")
     print(f"Exists: {audit_dir.exists()}")
     
     assert audit_dir.exists(), "Audit log directory should exist"
     print("\n✓ Test passed: Audit directory exists")
-    
-    return audit_dir
 
 
-def test_audit_log_files(audit_dir):
+def test_audit_log_files(audit_files):
     """Test that audit log files exist and are readable"""
     print("\n" + "=" * 80)
     print("TEST 2: Audit Log Files")
     print("=" * 80)
-    
-    audit_files = list(audit_dir.glob("audit-*.json"))
     
     print(f"\nFound {len(audit_files)} audit log files")
     for i, file in enumerate(audit_files[:5], 1):
@@ -52,8 +59,6 @@ def test_audit_log_files(audit_dir):
     
     assert len(audit_files) > 0, "Should have at least one audit log file"
     print("\n✓ Test passed: Audit log files exist")
-    
-    return audit_files
 
 
 def test_audit_log_structure(audit_files):
@@ -87,8 +92,6 @@ def test_audit_log_structure(audit_files):
     print(f"  Violations: {len(audit_log.get('violations', []))}")
     
     print("\n✓ Test passed: Audit log structure verified")
-    
-    return audit_log
 
 
 def test_query_by_operation(audit_files):
@@ -111,8 +114,6 @@ def test_query_by_operation(audit_files):
         print(f"  {op}: {len(logs)} logs")
     
     print("\n✓ Test passed: Query by operation completed")
-    
-    return operations
 
 
 def test_query_by_status(audit_files):
@@ -141,8 +142,6 @@ def test_query_by_status(audit_files):
     print(f"  Pass rate: {pass_rate:.1f}%")
     
     print("\n✓ Test passed: Query by status completed")
-    
-    return {"passed": passed_count, "failed": failed_count}
 
 
 def test_evidence_coverage_analysis(audit_files):
@@ -171,15 +170,38 @@ def test_evidence_coverage_analysis(audit_files):
         print("\n⚠ No coverage data available")
     
     print("\n✓ Test passed: Evidence coverage analysis completed")
-    
-    return coverages
 
 
-def test_generate_summary_report(audit_files, operations, status_counts, coverages):
+def test_generate_summary_report(audit_files):
     """Test generating a summary report"""
     print("\n" + "=" * 80)
     print("TEST 7: Summary Report Generation")
     print("=" * 80)
+    
+    # Recalculate operations
+    operations = {}
+    for file in audit_files:
+        log = json.loads(file.read_text())
+        op = log.get('operation', 'unknown')
+        if op not in operations:
+            operations[op] = []
+        operations[op].append(log)
+    
+    # Recalculate status counts
+    status_counts = {"passed": 0, "failed": 0}
+    for file in audit_files:
+        log = json.loads(file.read_text())
+        if log.get('passed'):
+            status_counts["passed"] += 1
+        else:
+            status_counts["failed"] += 1
+    
+    # Recalculate coverages
+    coverages = []
+    for file in audit_files:
+        log = json.loads(file.read_text())
+        coverage = log.get('evidence_coverage', 0.0)
+        coverages.append(coverage)
     
     report = {
         "report_title": "Audit Trail Summary Report",
@@ -212,8 +234,6 @@ def test_generate_summary_report(audit_files, operations, status_counts, coverag
     print(f"\nReport saved to: {report_file}")
     
     print("\n✓ Test passed: Summary report generated")
-    
-    return report
 
 
 def test_export_to_csv(audit_files):
@@ -245,8 +265,6 @@ def test_export_to_csv(audit_files):
     print(f"CSV file: {csv_file}")
     
     print("\n✓ Test passed: CSV export completed")
-    
-    return csv_file
 
 
 def main():
