@@ -186,8 +186,24 @@ def get_git_status(repo_root: Path) -> str:
 
 
 def ensure_clean_worktree(repo_root: Path, allow_dirty: bool) -> None:
+    if allow_dirty:
+        return
     status = get_git_status(repo_root)
-    if status and not allow_dirty:
+    if not status:
+        return
+    allowed_prefixes = (
+        ".governance/locks/",
+        "gl-governance-compliance-platform/governance/naming/registry/",
+    )
+    allowed_exact = {"scan_results.json"}
+    for line in status.splitlines():
+        path_segment = line[3:].strip()
+        if " -> " in path_segment:
+            _, path_segment = path_segment.split(" -> ", 1)
+        if any(path_segment.startswith(prefix) for prefix in allowed_prefixes):
+            continue
+        if path_segment in allowed_exact:
+            continue
         raise RuntimeError(
             "Dirty git worktree detected. Commit/stash changes or pass --allow-dirty."
         )
