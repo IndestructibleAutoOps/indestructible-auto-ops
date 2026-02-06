@@ -15,7 +15,7 @@ from typing import List, Dict, Set, Tuple
 from datetime import datetime
 
 class NamingFixer:
-    def __init__(self, workspace: Path, dry_run: bool = True):
+    def __init__(self, workspace: Path, dry_run: bool = True, filesystem_policy: Path = None):
         self.workspace = workspace
         self.dry_run = dry_run
         self.fixed_count = 0
@@ -34,6 +34,10 @@ class NamingFixer:
         
         # 需要更新引用的文件類型
         self.reference_file_types = {'.py', '.yaml', '.yml', '.json', '.md', '.sh', '.ts', '.js'}
+        self.exempt_exact: Set[str] = set()
+        self.exempt_root_exact: Set[str] = set()
+        if filesystem_policy:
+            self.load_filesystem_policy(filesystem_policy)
 
     def record_plan(self, old_path: Path, new_path: Path, entity_type: str) -> None:
         """Record planned rename for audit/plan output."""
@@ -56,8 +60,35 @@ class NamingFixer:
         """Load a previously generated plan and lock execution to it."""
         plan = json.loads(plan_path.read_text(encoding='utf-8'))
         changes = plan.get('changes', [])
-        self.rename_plan = list(changes)
+        filtered_changes = []
+        for entry in changes:
+            old_path = self.workspace / entry.get('old_path', '')
+            if old_path.name and self.is_exempt_path(old_path):
+                self.skipped_count += 1
+                continue
+            filtered_changes.append(entry)
+        self.rename_plan = list(filtered_changes)
         self.plan_locked = True
+
+    def load_filesystem_policy(self, policy_path: Path) -> None:
+        if not policy_path or not policy_path.exists():
+            return
+        data = self._load_structured_file(policy_path)
+        fs_policy = (data or {}).get('naming_policy', {}).get('filesystem_only', {})
+        self.exempt_exact = self._load_string_set(fs_policy.get('exempt_exact', []))
+        self.exempt_root_exact = self._load_string_set(fs_policy.get('exempt_root_exact', []))
+
+    def _load_structured_file(self, path: Path) -> Dict:
+        if path.suffix.lower() == '.json':
+            return json.loads(path.read_text(encoding='utf-8'))
+        try:
+            import yaml
+        except Exception:
+            return {}
+        return yaml.safe_load(path.read_text(encoding='utf-8')) or {}
+
+    def _load_string_set(self, values: List[str]) -> Set[str]:
+        return {value for value in values if isinstance(value, str)}
     
     def to_snake_case(self, name: str) -> str:
         """轉換為 snake_case"""
@@ -120,6 +151,14 @@ class NamingFixer:
             if part.startswith('.') and part not in {'.github', '.governance'}:
                 return True
         return False
+
+    def is_exempt_path(self, path: Path) -> bool:
+        name = path.name
+        if name in self.exempt_exact:
+            return True
+        if name in self.exempt_root_exact and path.parent == self.workspace:
+            return True
+        return False
     
     def is_python_package(self, dir_path: Path) -> bool:
         """檢查是否是 Python 包"""
@@ -131,6 +170,8 @@ class NamingFixer:
         
         for file_path in self.workspace.rglob('*.py'):
             if self.should_skip(file_path):
+                continue
+            if self.is_exempt_path(file_path):
                 continue
             
             name = file_path.name
@@ -157,6 +198,8 @@ class NamingFixer:
         for ext in ['.yaml', '.yml', '.json', '.toml']:
             for file_path in self.workspace.rglob(f'*{ext}'):
                 if self.should_skip(file_path):
+                    continue
+                if self.is_exempt_path(file_path):
                     continue
                 
                 name = file_path.name
@@ -187,6 +230,8 @@ class NamingFixer:
             if not file_path.is_file():
                 continue
             if self.should_skip(file_path):
+                continue
+            if self.is_exempt_path(file_path):
                 continue
             if file_path.suffix.lower() in handled_exts:
                 continue
@@ -490,17 +535,20 @@ class NamingFixer:
 
 def main():
     import argparse
+    default_policy = Path('gl-governance-compliance-platform/governance/naming/naming-filesystem-policy.yaml')
     
     parser = argparse.ArgumentParser(description='MNGA 命名違規自動修復')
     parser.add_argument('--workspace', '-w', default='.', help='工作區路徑')
     parser.add_argument('--apply', action='store_true', help='實際執行修復（默認為預覽模式）')
     parser.add_argument('--plan-output', help='輸出修正計畫 JSON 路徑')
     parser.add_argument('--plan-input', help='指定修正計畫 JSON 並按計畫執行')
+    parser.add_argument('--filesystem-policy', default=str(default_policy), help='檔名/目錄白名單政策檔')
     
     args = parser.parse_args()
     
     workspace = Path(args.workspace).resolve()
-    fixer = NamingFixer(workspace, dry_run=not args.apply)
+    policy_path = Path(args.filesystem_policy).resolve() if args.filesystem_policy else None
+    fixer = NamingFixer(workspace, dry_run=not args.apply, filesystem_policy=policy_path)
     if args.plan_input:
         fixer.load_plan(Path(args.plan_input).resolve())
     
