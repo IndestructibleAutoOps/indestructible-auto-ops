@@ -15,49 +15,80 @@ spec:
   validation_categories:
     uniqueness_validation:
       ng_code: "NG00301"
-      description: "驗證命名空間唯一性"
+      description: "驗證命名空間唯一性（零容忍）"
+      enforcement: "ABSOLUTE"
       
       rules:
         global_uniqueness:
-          rule: "命名空間 ID 在全局範圍內必須唯一"
+          rule: "命名空間 ID 在全局範圍內必須 100% 唯一"
           check: "no_duplicate_namespace_id"
-          severity: "CRITICAL"
-          action: "BLOCK"
+          severity: "IMMUTABLE"
+          action: "IMMEDIATE_BLOCK_PERMANENT"
+          tolerance: "0%"
+          override: "FORBIDDEN"
         
         ng_code_uniqueness:
-          rule: "NG 編碼必須唯一"
+          rule: "NG 編碼必須絕對唯一"
           check: "no_duplicate_ng_code"
-          severity: "CRITICAL"
-          action: "BLOCK"
+          severity: "IMMUTABLE"
+          action: "IMMEDIATE_BLOCK_PERMANENT"
+          tolerance: "0%"
+          override: "FORBIDDEN"
         
         era_scoped_uniqueness:
-          rule: "同 Era 內組件名稱應避免重複"
-          check: "minimize_era_duplicates"
-          severity: "HIGH"
-          action: "WARN"
+          rule: "同 Era 內組件名稱必須唯一（零重複容忍）"
+          check: "zero_era_duplicates"
+          severity: "ABSOLUTE"
+          action: "IMMEDIATE_BLOCK"
+          tolerance: "0%"
+          override: "FORBIDDEN"
+        
+        semantic_similarity:
+          rule: "命名空間語義相似度必須 < 80%（避免混淆）"
+          check: "ml_semantic_similarity_check"
+          threshold: 0.80
+          severity: "ABSOLUTE"
+          action: "BLOCK_IF_SIMILAR"
+          ml_model: "SemanticSimilarityAnalyzer"
     
     format_validation:
       ng_code: "NG00302"
-      description: "驗證命名空間格式"
+      description: "驗證命名空間格式（零容忍）"
+      enforcement: "ABSOLUTE"
       
       rules:
         identifier_format:
-          rule: "命名空間標識符必須符合格式規範"
+          rule: "命名空間標識符必須 100% 符合格式規範"
           pattern: "^[a-z][a-z0-9-]*\\.(era[123]|cross)\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
-          severity: "CRITICAL"
-          action: "BLOCK"
-        
+          severity: "IMMUTABLE"
+          action: "IMMEDIATE_REJECT"
+          auto_fix: "FORBIDDEN"
+          tolerance: "0 characters deviation"
+          
         component_naming:
-          rule: "組件名稱必須使用 kebab-case"
+          rule: "組件名稱必須嚴格使用 kebab-case（無例外）"
           pattern: "^[a-z][a-z0-9-]*$"
-          severity: "HIGH"
-          action: "BLOCK"
-        
+          severity: "ABSOLUTE"
+          action: "IMMEDIATE_BLOCK"
+          case_sensitivity: "STRICT"
+          underscore_forbidden: true
+          camelCase_forbidden: true
+          
         reserved_keywords:
-          rule: "不得使用保留關鍵字"
-          reserved: ["system", "admin", "root", "default"]
-          severity: "HIGH"
-          action: "BLOCK"
+          rule: "絕對禁止使用保留關鍵字"
+          reserved: ["system", "admin", "root", "default", "internal", "private", "global"]
+          severity: "ABSOLUTE"
+          action: "PERMANENT_BLOCK"
+          check_mode: "EXACT_MATCH_AND_SUBSTRING"
+        
+        character_whitelist:
+          rule: "只允許 [a-z0-9-] 字符（絕對白名單）"
+          allowed: "abcdefghijklmnopqrstuvwxyz0123456789-"
+          severity: "ABSOLUTE"
+          action: "IMMEDIATE_REJECT"
+          special_chars: "FORBIDDEN"
+          unicode: "FORBIDDEN"
+          emoji: "FORBIDDEN"
     
     hierarchy_validation:
       ng_code: "NG00303"
@@ -104,17 +135,27 @@ spec:
   
   validation_process:
     on_registration:
+      mode: "ZERO_TOLERANCE"
       validations:
         - "uniqueness_validation"
         - "format_validation"
         - "hierarchy_validation"
         - "era_consistency_validation"
+        - "ml_semantic_check"
+        - "closure_pre_check"
       
       failure_handling:
-        critical: "BLOCK_REGISTRATION"
-        high: "BLOCK_REGISTRATION"
-        medium: "ALLOW_WITH_WARNING"
-        low: "ALLOW_WITH_LOG"
+        immutable: "PERMANENT_BLOCK_SYSTEM_FREEZE"
+        absolute: "IMMEDIATE_BLOCK_ROLLBACK"
+        strict: "BLOCK_UNTIL_GOVERNANCE_APPROVAL"
+        mandatory: "BLOCK_UNTIL_FIXED"
+        
+      zero_tolerance_rules:
+        - "ANY failure = BLOCK"
+        - "NO warnings allowed"
+        - "NO grace periods"
+        - "NO manual overrides"
+        - "ALL checks must pass 100%"
     
     on_update:
       validations:
