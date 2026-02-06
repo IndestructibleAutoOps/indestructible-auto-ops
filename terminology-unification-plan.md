@@ -51,10 +51,10 @@
 
 **受影響文件**:
 ```
-ecosystem/governance/GL-semantic-anchors/GL00-GL99-unified-charter.json
-  → ecosystem/governance/GL-semantic-anchors/GL00-GL99-unified-framework.json
+ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-charter.json
+  → ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-framework.json
 
-ecosystem/governance/GL-semantic-anchors/governance-framework-baseline.json
+ecosystem/governance/gl-semantic-anchors/governance-framework-baseline.json
   (更新描述中的 "Charter" 為 "Framework")
 
 ecosystem/governance/GL-SEMANTIC-ANCHOR.json

@@ -105,7 +105,7 @@ The Dual-Path Retrieval + Arbitration Reasoning system is the core reasoning com
 - Multi-layer indexing (symbol, call, semantic graphs)
 - Context-aware search with depth control
 
-**Implementation**: `ecosystem/reasoning/dual_path/internal/retrieval.py`
+**Implementation**: `ecosystem/reasoning/dual-path/internal/retrieval.py`
 
 **Sources**:
 ```yaml
@@ -137,7 +137,7 @@ history:
 - Result caching with TTL
 - Confidence-based ranking
 
-**Implementation**: `ecosystem/reasoning/dual_path/external/retrieval.py`
+**Implementation**: `ecosystem/reasoning/dual-path/external/retrieval.py`
 
 **Allowed Domains**:
 ```yaml
@@ -168,7 +168,7 @@ L3: Semantic Graph  - High-level concepts
 - Impact analysis for refactoring
 - Context queries with upstream/downstream
 
-**Implementation**: `ecosystem/reasoning/dual_path/internal/knowledge_graph.py`
+**Implementation**: `ecosystem/reasoning/dual-path/internal/knowledge_graph.py`
 
 ### 4. Arbitrator
 
@@ -202,7 +202,7 @@ CODE_STYLE_PREFERENCE:
   → Use INTERNAL
 ```
 
-**Implementation**: `ecosystem/reasoning/dual_path/arbitration/arbitrator.py`
+**Implementation**: `ecosystem/reasoning/dual-path/arbitration/arbitrator.py`
 
 ### 5. Traceability Engine
 
@@ -322,7 +322,7 @@ spec:
 
 ### Arbitration Rules
 
-Edit rules in `ecosystem/reasoning/dual_path/arbitration/rules/`:
+Edit rules in `ecosystem/reasoning/dual-path/arbitration/rules/`:
 - `security.yaml` - Security-related rules
 - `api.yaml` - API-related rules
 - `dependency.yaml` - Dependency rules
@@ -439,7 +439,7 @@ View dashboards in Grafana:
 
 - [MNGA Architecture](./ARCHITECTURE.md)
 - [API Documentation](./API.md)
-- [Runbooks](./RUNBOOKS/)
+- [Runbooks](./runbooks/)
 - [Governance Policies](../ecosystem/contracts/governance/)
 
 ---

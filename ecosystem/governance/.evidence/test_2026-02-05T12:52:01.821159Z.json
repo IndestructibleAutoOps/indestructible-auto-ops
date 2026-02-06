@@ -5,7 +5,7 @@
   "artifacts": {
     "chain_of_responsibility": {
       "test_id": "ABT-001",
-      "scenario": "external_api_unavailable",
+      "scenario": "external-api-unavailable",
       "timestamp": "2026-02-05T12:52:01.821159Z",
       "chain_of_responsibility": {
         "test_generator": {
@@ -51,9 +51,9 @@
     },
     "intent_verification": {
       "test_id": "ABT-001",
-      "scenario": "external_api_unavailable",
+      "scenario": "external-api-unavailable",
       "timestamp": "2026-02-05T12:52:01.821159Z",
-      "intent_statement": "\"When external API is unavailable (timeout > 5s), the system should:\n 1. Detect unavailability within 5 seconds\n 2. Switch to local cache\n 3. Log GL event with type 'external_api_unavailable'\n 4. NOT attempt auto-repair\n 5. Return degraded response with cache_source header\"\n",
+      "intent_statement": "\"When external API is unavailable (timeout > 5s), the system should:\n 1. Detect unavailability within 5 seconds\n 2. Switch to local cache\n 3. Log GL event with type 'external-api-unavailable'\n 4. NOT attempt auto-repair\n 5. Return degraded response with cache_source header\"\n",
       "intent_boundaries": [
         "Only cache data older than 1 hour",
         "Only serve read-only operations (GET, HEAD)",
@@ -76,7 +76,7 @@
     },
     "control_tier_test": {
       "test_id": "ABT-001",
-      "scenario": "external_api_unavailable",
+      "scenario": "external-api-unavailable",
       "timestamp": "2026-02-05T12:52:01.821159Z",
       "control_tier": 2,
       "control_tier_description": "High-risk decision with human oversight",
@@ -100,7 +100,7 @@
     },
     "autonomy_boundary_test": {
       "test_id": "ABT-001",
-      "scenario": "external_api_unavailable",
+      "scenario": "external-api-unavailable",
       "timestamp": "2026-02-05T12:52:01.821159Z",
       "failure_injection": [
         {
@@ -187,7 +187,7 @@
     },
     "reversibility_test": {
       "test_id": "ABT-001",
-      "scenario": "external_api_unavailable",
+      "scenario": "external-api-unavailable",
       "timestamp": "2026-02-05T12:52:01.821159Z",
       "reversibility_requirements": {
         "reversible": true,
@@ -222,7 +222,7 @@
     },
     "kill_switch_test": {
       "test_id": "ABT-001",
-      "scenario": "external_api_unavailable",
+      "scenario": "external-api-unavailable",
       "timestamp": "2026-02-05T12:52:01.821159Z",
       "kill_switch_capability": {
         "enabled": true,

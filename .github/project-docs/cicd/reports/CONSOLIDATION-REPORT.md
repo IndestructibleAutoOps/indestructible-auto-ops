@@ -305,8 +305,8 @@
    - 驗證: CI/CD 有明確引用
 
 2. **Naming Governance 版本**
-   - 保留: workspace/governance/quantum-naming-v4.0.0/ (最新版本)
-   - 保留: workspace/governance/naming-governance-v1.0.0/ (測試依賴)
+   - 保留: workspace/governance/quantum-naming-v4-0-0/ (最新版本)
+   - 保留: workspace/governance/naming-governance-v1-0-0/ (測試依賴)
    - 原因: 版本不同，非重複
 
 3. **Config 文件版本差異**
@@ -362,11 +362,11 @@
 ### 1. Naming Governance 版本整理
 ```
 識別但未刪除:
-- workspace/governance/naming-governance-v1.0.0/
-- workspace/governance/naming-governance-v1.0.0-extended/
+- workspace/governance/naming-governance-v1-0-0/
+- workspace/governance/naming-governance-v1-0-0-extended/
 
 保留版本:
-- workspace/governance/quantum-naming-v4.0.0/ (最新版本)
+- workspace/governance/quantum-naming-v4-0-0/ (最新版本)
 
 延遲原因:
 - v1.0.0 仍有測試依賴 (workspace/governance/tests/conftest.py)

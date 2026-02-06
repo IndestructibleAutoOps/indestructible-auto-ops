@@ -24,8 +24,8 @@ files_to_fix = [
     "ecosystem/registry/platforms/generate_platform_analysis.py",
     "ecosystem/foundation/format/format_enforcer.py",
     "ecosystem/foundation/language/language_enforcer.py",
-    "ecosystem/reasoning/dual_path/arbitration/rule_engine.py",
-    "ecosystem/reasoning/dual_path/external/retrieval.py",
+    "ecosystem/reasoning/dual-path/arbitration/rule_engine.py",
+    "ecosystem/reasoning/dual-path/external/retrieval.py",
     "ecosystem/scripts/apply_auto_fixes.py"
 ]
 

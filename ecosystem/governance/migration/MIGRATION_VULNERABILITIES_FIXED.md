@@ -93,7 +93,7 @@ Era-1 已完成封存，但缺乏 Era-1 → Era-2 的遷移基礎設施。這意
 
 ### 2️⃣ Era-2 Hash Specification
 
-**檔案:** `ecosystem/governance/hash_spec/era-2.yaml`
+**檔案:** `ecosystem/governance/hash-spec/era-2.yaml`
 
 **功能:**
 - 定義 Era-2 canonicalization 規則
@@ -503,7 +503,7 @@ python ecosystem/tools/hash_translation_engine.py --verify
 
 ### 內部規範
 1. `ecosystem/governance/migration/hash-translation-spec-v1.md`
-2. `ecosystem/governance/hash_spec/era-2.yaml`
+2. `ecosystem/governance/hash-spec/era-2.yaml`
 3. `ecosystem/governance/migration/hashtranslationtable.jsonl`
 4. `ecosystem/governance/migration/pilot-plan.yaml`
 5. `ecosystem/tests/migration/test_hash_translation.py`

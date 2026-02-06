@@ -1,0 +1,336 @@
+{
+  "GOVERNANCE_BASELINE": {
+    "version": "1.0.0",
+    "created": "2025-01-18T00:00:00Z",
+    "status": "ACTIVE",
+    "description": "MNGA Governance Baseline - Comprehensive governance framework for GL00-GL99 semantic anchors",
+    "baseline_id": "GL-BASELINE-001"
+  },
+  "GOVERNANCE_PRINCIPLES": {
+    "GP-001": {
+      "name": "Semantic Precision",
+      "description": "All GL definitions must be precise, unambiguous, and machine-readable",
+      "applicable_scope": "GL00-GL99",
+      "enforcement": "AUTOMATED"
+    },
+    "GP-002": {
+      "name": "Layer Separation",
+      "description": "Clear separation between language, format, and semantic layers",
+      "applicable_scope": "GL00-GL99",
+      "enforcement": "AUTOMATED"
+    },
+    "GP-003": {
+      "name": "Validation Completeness",
+      "description": "All artifacts must pass all applicable validation rules",
+      "applicable_scope": "GL00-GL99",
+      "enforcement": "AUTOMATED"
+    },
+    "GP-004": {
+      "name": "Traceability",
+      "description": "All governance decisions must be traceable and auditable",
+      "applicable_scope": "GL00-GL99",
+      "enforcement": "AUTOMATED"
+    },
+    "GP-005": {
+      "name": "Backward Compatibility",
+      "description": "All changes must maintain backward compatibility",
+      "applicable_scope": "GL00-GL99",
+      "enforcement": "AUTOMATED"
+    }
+  },
+  "GOVERNANCE_ENFORCEMENT": {
+    "enforcement_levels": {
+      "CRITICAL": {
+        "description": "Must pass before any operation",
+        "action": "BLOCK",
+        "applicable_rules": ["LRL-001", "LRL-002", "LRL-005", "FLR-001", "FLR-002", "FLR-004", "FLR-005", "SLR-003"]
+      },
+      "HIGH": {
+        "description": "Should pass with clear justification for exceptions",
+        "action": "WARN",
+        "applicable_rules": ["LRL-003", "LRL-004", "FLR-003", "SLR-001", "SLR-002"]
+      },
+      "MEDIUM": {
+        "description": "Recommended best practices",
+        "action": "LOG",
+        "applicable_rules": []
+      },
+      "LOW": {
+        "description": "Informational only",
+        "action": "INFO",
+        "applicable_rules": []
+      }
+    },
+    "enforcement_pipeline": [
+      {
+        "stage": "pre_validation",
+        "description": "Validate before any processing",
+        "checks": ["syntax_validation", "structure_validation"]
+      },
+      {
+        "stage": "semantic_validation",
+        "description": "Validate semantics and meaning",
+        "checks": ["semantic_validation", "cross_layer_validation"]
+      },
+      {
+        "stage": "compliance_validation",
+        "description": "Validate compliance with governance requirements",
+        "checks": ["compliance_validation"]
+      },
+      {
+        "stage": "post_validation",
+        "description": "Validate after processing",
+        "checks": ["integrity_validation", "traceability_validation"]
+      }
+    ]
+  },
+  "GOVERNANCE_AUDIT": {
+    "audit_frequency": "CONTINUOUS",
+    "audit_scope": "GL00-GL99",
+    "audit_types": {
+      "syntax_audit": {
+        "description": "Audit syntax compliance with language layer specifications",
+        "frequency": "ON_COMMIT",
+        "applicable_gl": ["GL00-GL09"]
+      },
+      "structure_audit": {
+        "description": "Audit structure compliance with format layer specifications",
+        "frequency": "ON_COMMIT",
+        "applicable_gl": ["GL50-GL69"]
+      },
+      "semantic_audit": {
+        "description": "Audit semantic consistency across all layers",
+        "frequency": "ON_COMMIT",
+        "applicable_gl": ["GL00-GL99"]
+      },
+      "compliance_audit": {
+        "description": "Audit compliance with governance requirements",
+        "frequency": "DAILY",
+        "applicable_gl": ["GL00-GL99"]
+      },
+      "security_audit": {
+        "description": "Audit security properties and vulnerabilities",
+        "frequency": "WEEKLY",
+        "applicable_gl": ["GL46", "GL96"]
+      }
+    },
+    "audit_reporting": {
+      "format": "JSON",
+      "destination": "reports/audit/",
+      "retention": "90_DAYS",
+      "notification": "ON_FAILURE"
+    }
+  },
+  "GOVERNANCE_ARTIFACTS": {
+    "required_artifacts": {
+      "GL00-GL99-unified-charter.json": {
+        "description": "Unified charter for all GL semantic anchors",
+        "location": "ecosystem/governance/gl-semantic-anchors/",
+        "validation": "schema_validation"
+      },
+      "GL20-GL49-language-behavior-domains-integration.json": {
+        "description": "Language layer behavior, domains, and integration specifications",
+        "location": "ecosystem/governance/gl-semantic-anchors/",
+        "validation": "schema_validation"
+      },
+      "GL50-GL99-format-layer-specification.json": {
+        "description": "Format layer specifications",
+        "location": "ecosystem/governance/gl-semantic-anchors/",
+        "validation": "schema_validation"
+      },
+      "semantic-layer-specification.json": {
+        "description": "Semantic layer specifications with validation rules",
+        "location": "ecosystem/governance/gl-semantic-anchors/",
+        "validation": "schema_validation"
+      },
+      "governance-framework-baseline.json": {
+        "description": "Governance baseline document",
+        "location": "ecosystem/governance/gl-semantic-anchors/",
+        "validation": "schema_validation"
+      }
+    },
+    "artifact_validation": {
+      "schema_validation": {
+        "description": "Validate artifact structure against schema",
+        "severity": "CRITICAL"
+      },
+      "content_validation": {
+        "description": "Validate artifact content completeness",
+        "severity": "HIGH"
+      },
+      "integrity_validation": {
+        "description": "Validate artifact integrity with checksums",
+        "severity": "HIGH"
+      }
+    }
+  },
+  "GOVERNANCE_ROLES": {
+    "governance_admin": {
+      "description": "Administer governance framework and policies",
+      "permissions": ["READ", "WRITE", "DELETE", "ENFORCE"]
+    },
+    "governance_auditor": {
+      "description": "Audit compliance and generate reports",
+      "permissions": ["READ", "AUDIT"]
+    },
+    "governance_enforcer": {
+      "description": "Enforce governance rules and policies",
+      "permissions": ["READ", "ENFORCE"]
+    },
+    "governance_user": {
+      "description": "Use governance framework and submit artifacts",
+      "permissions": ["READ", "SUBMIT"]
+    }
+  },
+  "GOVERNANCE_WORKFLOWS": {
+    "artifact_submission": {
+      "steps": [
+        "Create artifact according to GL specifications",
+        "Validate artifact against applicable GL rules",
+        "Submit artifact for review",
+        "Automated validation checks",
+        "Manual review (if required)",
+        "Approval or rejection",
+        "Artifact registration"
+      ]
+    },
+    "violation_handling": {
+      "steps": [
+        "Detect violation",
+        "Log violation with evidence",
+        "Notify stakeholders",
+        "Assess severity",
+        "Initiate remediation",
+        "Verify remediation",
+        "Close violation"
+      ]
+    },
+    "baseline_update": {
+      "steps": [
+        "Propose baseline change",
+        "Impact analysis",
+        "Stakeholder review",
+        "Approval",
+        "Baseline update",
+        "Communication",
+        "Transition period",
+        "Retirement of old baseline"
+      ]
+    }
+  },
+  "GOVERNANCE_METRICS": {
+    "compliance_metrics": {
+      "overall_compliance_rate": {
+        "description": "Percentage of artifacts passing all validations",
+        "target": "100%",
+        "measurement": "CONTINUOUS"
+      },
+      "critical_violation_rate": {
+        "description": "Number of critical violations per day",
+        "target": "0",
+        "measurement": "DAILY"
+      },
+      "high_violation_rate": {
+        "description": "Number of high violations per day",
+        "target": "< 5",
+        "measurement": "DAILY"
+      }
+    },
+    "quality_metrics": {
+      "artifact_quality_score": {
+        "description": "Aggregate quality score of all artifacts",
+        "target": "> 90%",
+        "measurement": "WEEKLY"
+      },
+      "validation_pass_rate": {
+        "description": "Percentage of validations passing on first attempt",
+        "target": "> 95%",
+        "measurement": "WEEKLY"
+      }
+    },
+    "efficiency_metrics": {
+      "validation_time": {
+        "description": "Average time to validate an artifact",
+        "target": "< 5 seconds",
+        "measurement": "CONTINUOUS"
+      },
+      "remediation_time": {
+        "description": "Average time to remediate a violation",
+        "target": "< 24 hours",
+        "measurement": "WEEKLY"
+      }
+    }
+  },
+  "GOVERNANCE_EXCEPTIONS": {
+    "exception_handling": {
+      "temporary_exceptions": {
+        "description": "Temporary exceptions with expiration",
+        "approval": "GOVERNANCE_ADMIN",
+        "max_duration": "30_DAYS"
+      },
+      "permanent_exceptions": {
+        "description": "Permanent exceptions with justification",
+        "approval": "GOVERNANCE_ADMIN",
+        "review_frequency": "QUARTERLY"
+      }
+    },
+    "exception_workflow": [
+      "Submit exception request",
+      "Provide justification and impact analysis",
+      "Review by governance admin",
+      "Approval or rejection",
+      "Exception registration",
+      "Monitoring and review",
+      "Exception expiration or renewal"
+    ]
+  },
+  "GOVERNANCE_INTEGRATION": {
+    "ci_cd_integration": {
+      "description": "Integrate governance validation into CI/CD pipeline",
+      "stages": [
+        "pre-commit: Syntax validation",
+        "pre-push: Structure validation",
+        "pre-merge: Semantic validation",
+        "post-merge: Compliance validation"
+      ]
+    },
+    "tool_integration": {
+      "ecosystem_enforce": {
+        "description": "Use ecosystem/enforce.py for governance enforcement",
+        "command": "python ecosystem/enforce.py --audit"
+      },
+      "validation_engine": {
+        "description": "Use validation engine for artifact validation",
+        "command": "python ecosystem/governance/engines/validation/validation_engine.py"
+      },
+      "refresh_engine": {
+        "description": "Use refresh engine for artifact refresh",
+        "command": "python ecosystem/governance/engines/refresh/refresh_engine.py"
+      }
+    }
+  },
+  "GOVERNANCE_DOCUMENTATION": {
+    "required_documentation": {
+      "GL00-GL99_specifications": {
+        "description": "Complete specifications for all GL semantic anchors",
+        "format": "JSON",
+        "location": "ecosystem/governance/gl-semantic-anchors/"
+      },
+      "validation_rules": {
+        "description": "Complete validation rules for all GL anchors",
+        "format": "JSON",
+        "location": "ecosystem/governance/gl-semantic-anchors/semantic-layer-specification.json"
+      },
+      "governance_baseline": {
+        "description": "Governance baseline document",
+        "format": "JSON",
+        "location": "ecosystem/governance/gl-semantic-anchors/governance-framework-baseline.json"
+      },
+      "user_guide": {
+        "description": "User guide for governance framework",
+        "format": "Markdown",
+        "location": "docs/governance/user-guide.md"
+      }
+    }
+  }
+}

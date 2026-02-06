@@ -43,11 +43,11 @@ def validate_structure():
     
     expected_dirs = [
         'gl-platform',
-        'gl-platform/GL90-99-Meta-Specification-Layer',
-        'gl-platform/GL90-99-Meta-Specification-Layer/governance',
-        'gl-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy',
+        'gl-platform/gl90-99-meta-specification-layer',
+        'gl-platform/gl90-99-meta-specification-layer/governance',
+        'gl-platform/gl90-99-meta-specification-layer/governance/archived/legacy',
         'gl-platform/GL30-49-Execution-Layer',
-        'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine'
+        'gl-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine'
     ]
     
     for dir_path in expected_dirs:
@@ -59,9 +59,9 @@ def validate_structure():
     
     # 檢查關鍵檔案
     key_files = [
-        'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml',
-        'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml',
-        'gl-platform/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine'
+        'gl-platform/gl90-99-meta-specification-layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml',
+        'gl-platform/gl90-99-meta-specification-layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml',
+        'gl-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine'
     ]
     
     for file_path in key_files:

@@ -160,9 +160,9 @@ Developer Dashboard
 ### Generator Templates
 Located in: `ecosystem/governance/templates/`
 
-- `tool_stubs/` - Python tool implementation templates
-- `artifact_schemas/` - Artifact schema templates
-- `event_schemas/` - Event schema templates
+- `tool-stubs/` - Python tool implementation templates
+- `artifact-schemas/` - Artifact schema templates
+- `event-schemas/` - Event schema templates
 - `task_definitions/` - Task definition templates
 
 ### Customization

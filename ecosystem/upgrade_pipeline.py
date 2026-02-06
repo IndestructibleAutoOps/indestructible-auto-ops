@@ -171,7 +171,7 @@ class UpgradePipeline:
         # Validate outputs
         required_outputs = [
             "canonical_semantic",
-            "semantic_tokens",
+            "semantic-tokens",
             "semantic_hash",
             "semantic_ast",
         ]

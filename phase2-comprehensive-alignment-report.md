@@ -250,7 +250,7 @@ gl-platform/
 
 ```
 gl-platform/
-├── GL90-99-Meta-Specification-Layer/
+├── gl90-99-meta-specification-layer/
 │   ├── governance/
 │   │   ├── GL-ROOT-SEMANTIC-ANCHOR.yaml
 │   │   ├── GL-UNIFIED-NAMING-CHARTER.yaml
@@ -273,7 +273,7 @@ gl-platform/
 ├── GL30-49-Execution-Layer/
 │   ├── engine/
 │   │   ├── governance/
-│   │   │   ├── GL90-99-semantic-engine/
+│   │   │   ├── gl90-99-semantic-engine/
 │   │   │   │   ├── GL90-99-semantic-engine-semantic_engine.py
 │   │   │   │   ├── GL90-99-semantic-engine-semantic_models.py
 │   │   │   │   ├── GL90-99-semantic-engine-semantic_folding.py

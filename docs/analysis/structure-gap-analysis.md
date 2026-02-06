@@ -8,10 +8,10 @@ gl-enterprise-architecture/
 ├── GL30-49-Execution-Layer/
 │   ├── engine/
 │   └── governance/
-├── GL90-99-Meta-Specification-Layer/
+├── gl90-99-meta-specification-layer/
 │   ├── governance/
 │   │   ├── GL-ROOT-SEMANTIC-ANCHOR.yaml
-│   │   ├── GL90-99-semantic-engine/
+│   │   ├── gl90-99-semantic-engine/
 │   │   ├── architecture/
 │   │   ├── archived/
 │   │   ├── audit-trails/
@@ -183,7 +183,7 @@ gl-enterprise-architecture/
 
 ### Incorrect Structure Placement
 1. **GL30-49-Execution-Layer/** - Should be platforms/, modules/, services/
-2. **GL90-99-Meta-Specification-Layer/** - Should be governance/ only
+2. **gl90-99-meta-specification-layer/** - Should be governance/ only
 3. **contracts/** at root - Should be under governance/naming-governance/contracts/
 
 ## Restructuring Strategy

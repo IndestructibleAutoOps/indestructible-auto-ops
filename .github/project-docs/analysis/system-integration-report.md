@@ -104,10 +104,10 @@ Data Sources → Extractors → Transformers → Loaders → Elasticsearch
 1. **YAML Multi-Document Parsing Errors**
    - **Files Affected:** 3
    - **Locations:**
-     - `governance/naming-governance-v1.0.0-extended/governance/naming/naming-governance-core.yaml`
-     - `governance/naming-governance-v1.0.0-extended/monitoring/prometheus-rules.yaml`
+     - `governance/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml`
+     - `governance/naming-governance-v1-0-0-extended/monitoring/prometheus-rules.yaml`
      - `governance/policies/gatekeeper/namespace-constraints.yaml`
-     - `governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml`
+     - `governance/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml`
    - **Issue:** These files contain multiple YAML documents separated by `---` but the parser expects single documents
    - **Impact:** High - Prevents proper governance policy validation
    - **Remediation:** Use `yaml.safe_load_all()` for multi-document parsing or split into separate files
@@ -118,8 +118,8 @@ Data Sources → Extractors → Transformers → Loaders → Elasticsearch
    - **Files Affected:** 3
    - **Locations:**
      - `governance/api/openapi.yaml`
-     - `governance/naming-governance-v1.0.0/ci-cd/workflows/naming-governance-ci.yml`
-     - `governance/quantum-naming-v4.0.0/monitoring/prometheus-quantum-rules.yaml`
+     - `governance/naming-governance-v1-0-0/ci-cd/workflows/naming-governance-ci.yml`
+     - `governance/quantum-naming-v4-0-0/monitoring/prometheus-quantum-rules.yaml`
    - **Issue:** Configuration files lack standard version/metadata headers
    - **Impact:** Medium - Affects documentation and compatibility tracking
    - **Remediation:** Add standardized metadata sections with version, author, and modification dates

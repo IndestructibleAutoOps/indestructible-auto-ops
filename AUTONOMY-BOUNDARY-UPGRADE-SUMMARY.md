@@ -90,7 +90,7 @@ Successfully upgraded the Autonomy Boundary Test Framework from **baseline to wo
 5. `ecosystem/governance/specs/standards/reversibility_and_kill_switch.yaml`
 
 ### Test Meta Specification (1 file)
-1. `tests/gl/autonomy-boundary/external_api_unavailable/meta.yaml` (v2.0)
+1. `tests/gl/autonomy-boundary/external-api-unavailable/meta.yaml` (v2.0)
 
 ### Implementation Code (1 file)
 1. `ecosystem/governance/kernel/test_generator_v2.py` (470 lines)
@@ -198,7 +198,7 @@ python ecosystem/governance/kernel/test_generator_v2.py
 - [x] 創建 `reversibility_and_kill_switch.yaml`
 
 ### Phase 3: Meta.yaml 升級 ✅
-- [x] 升級 `tests/gl/autonomy-boundary/external_api_unavailable/meta.yaml` 到 v2.0
+- [x] 升級 `tests/gl/autonomy-boundary/external-api-unavailable/meta.yaml` 到 v2.0
 - [x] 添加標準對齊聲明
 - [x] 添加責任鏈追蹤
 - [x] 添加控制層級分類
@@ -279,7 +279,7 @@ python ecosystem/governance/kernel/test_generator_v2.py
 - `reversibility_and_kill_switch.yaml`
 
 ### Test Meta Specification
-**File:** `tests/gl/autonomy-boundary/external_api_unavailable/meta.yaml`
+**File:** `tests/gl/autonomy-boundary/external-api-unavailable/meta.yaml`
 - v2.0 with all governance enhancements
 - Standards alignment declarations
 - Complete metadata for test generation

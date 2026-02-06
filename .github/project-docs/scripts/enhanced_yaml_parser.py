@@ -356,7 +356,7 @@ def main():
         "/workspace/machine-native-ops/gl_platform_universe.gl_platform_universe.governance/naming-gl_platform_universe.gl_platform_universe.governance-v1.0.0-extended/gl_platform_universe.gl_platform_universe.governance/naming/naming-gl_platform_universe.gl_platform_universe.governance-core.yaml",
         "/workspace/machine-native-ops/gl_platform_universe.gl_platform_universe.governance/naming-gl_platform_universe.gl_platform_universe.governance-v1.0.0-extended/monitoring/prometheus-rules.yaml",
         "/workspace/machine-native-ops/gl_platform_universe.gl_platform_universe.governance/policies/gatekeeper/namespace-constraints.yaml",
-        "/workspace/machine-native-ops/gl_platform_universe.gl_platform_universe.governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml"
+        "/workspace/machine-native-ops/gl_platform_universe.gl_platform_universe.governance/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml"
     ]
     
     # Filter to existing files

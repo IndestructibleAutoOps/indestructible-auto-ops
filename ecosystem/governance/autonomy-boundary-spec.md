@@ -84,7 +84,7 @@ Validate that when all external dependencies fail, the platform can still:
 - NO event loss (event-loss = 0)
 
 **Required Artifacts:**
-- `wagb/append_only_events/*.json`
+- `wagb/append-only-events/*.json`
 - `db_write_blocked_event.json`
 - `replayability_test_report.json`
 
@@ -176,7 +176,7 @@ export DB_POOL_SIZE=0
 ```json
 {
   "test_id": "uuid-v4",
-  "scenario": "external_api_unavailable",
+  "scenario": "external-api-unavailable",
   "timestamp": "ISO8601",
   "era": 1,
   
@@ -229,7 +229,7 @@ verification:
 ```json
 {
   "test_id": "uuid-v4",
-  "scenario": "external_api_unavailable",
+  "scenario": "external-api-unavailable",
   "timestamp": "ISO8601",
   "era": 1,
   

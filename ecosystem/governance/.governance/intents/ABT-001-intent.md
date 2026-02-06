@@ -4,7 +4,7 @@
 "When external API is unavailable (timeout > 5s), the system should:
  1. Detect unavailability within 5 seconds
  2. Switch to local cache
- 3. Log GL event with type 'external_api_unavailable'
+ 3. Log GL event with type 'external-api-unavailable'
  4. NOT attempt auto-repair
  5. Return degraded response with cache_source header"
 

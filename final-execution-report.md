@@ -62,18 +62,18 @@
 ```
 ✓ gl-platform/ (EXISTS)
 ✓ gl-platform/GL90-99-Meta-Specification-Layer (EXISTS)
-✓ gl-platform/GL90-99-Meta-Specification-Layer/governance (EXISTS)
-✓ gl-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy (EXISTS)
+✓ gl-platform/gl90-99-meta-specification-layer/governance (EXISTS)
+✓ gl-platform/gl90-99-meta-specification-layer/governance/archived/legacy (EXISTS)
 ✓ gl-platform/GL30-49-Execution-Layer (EXISTS)
-✓ gl-platform/GL90-99-Meta-Specification-Layer/governance/GL90-99-semantic-engine (EXISTS)
-✓ gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml (EXISTS)
-✓ gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml (NOT_FOUND)
+✓ gl-platform/gl90-99-meta-specification-layer/governance/GL90-99-semantic-engine (EXISTS)
+✓ gl-platform/gl90-99-meta-specification-layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml (EXISTS)
+✓ gl-platform/gl90-99-meta-specification-layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml (NOT_FOUND)
 ```
 
 ### 缺失的檔案
 
 ```
-✗ gl-platform/GL90-99-Meta-Specification-Layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml (NOT_FOUND)
+✗ gl-platform/gl90-99-meta-specification-layer/governance/GL-UNIFIED-NAMING-CHARTER.yaml (NOT_FOUND)
 ```
 
 **說明:** 該檔可能已被移動或名稱不同，需要人工確認。

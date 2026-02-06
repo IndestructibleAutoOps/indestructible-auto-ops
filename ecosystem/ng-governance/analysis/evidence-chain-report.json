@@ -1,0 +1,64 @@
+{
+  "evidence_id": "NG-EVID-2025-001",
+  "timestamp": "2025-01-17T00:00:00Z",
+  "governance_framework": "NG000-999 v3.0",
+  "analysis_type": "NAMING_VIOLATION_DEEP_ANALYSIS",
+  
+  "problem_identification": {
+    "summary": "242 naming convention violations detected in ecosystem enforcement",
+    "severity": "MEDIUM",
+    "affected_era": ["Era-1"],
+    "violation_categories": {
+      "directory_naming_underscore": 237,
+      "directory_exceptions": 5,
+      "total_violations": 242
+    },
+    "top_violations": [
+      {
+        "path": "summarized_conversations",
+        "issue": "Uses underscores instead of kebab-case",
+        "ng_code": "NG10100"
+      },
+      {
+        "path": "ecosystem/tests/semantic-defense/test-complement-missing",
+        "issue": "Directory uses underscores instead of kebab-case",
+        "ng_code": "NG10100"
+      }
+    ]
+  },
+  
+  "root_cause_analysis": {
+    "primary_causes": [
+      "Legacy directory structure predating NG naming standards",
+      "Inconsistent application of GL20-NAMING-001 rules",
+      "Test directories following Python snake_case instead of kebab-case"
+    ],
+    "governance_gaps": [
+      "NG10100 enforcement not integrated into CI/CD",
+      "Missing pre-commit hooks for directory naming",
+      "No automated remediation for existing violations"
+    ],
+    "era_mapping": {
+      "current_state": "Era-1 partial compliance",
+      "target_state": "Era-2 full compliance",
+      "gap_analysis": "Requires NG30100 microservice boundary mapping"
+    }
+  },
+  
+  "evidence_artifacts": [
+    {
+      "artifact_id": "ART-001",
+      "type": "enforcement_report",
+      "path": "ecosystem/.governance/reports/enforce-2025-01-17.json",
+      "hash": "sha256:pending",
+      "description": "Raw enforcement output showing 242 violations"
+    },
+    {
+      "artifact_id": "ART-002",
+      "type": "violation_catalog",
+      "path": "ecosystem/ng-governance/analysis/violation-catalog.json",
+      "hash": "sha256:pending",
+      "description": "Complete catalog of all naming violations with NG codes"
+    }
+  ]
+}

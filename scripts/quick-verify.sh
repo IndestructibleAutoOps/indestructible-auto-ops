@@ -213,12 +213,12 @@ echo ""
 echo "Test 10: Directory Structure"
 TOTAL=$((TOTAL + 1))
 REQUIRED_DIRS=(
-    "ecosystem/reasoning/dual_path/internal"
-    "ecosystem/reasoning/dual_path/external"
-    "ecosystem/reasoning/dual_path/arbitration"
+    "ecosystem/reasoning/dual-path/internal"
+    "ecosystem/reasoning/dual-path/external"
+    "ecosystem/reasoning/dual-path/arbitration"
     "ecosystem/reasoning/traceability"
     "ecosystem/reasoning/agents"
-    "platforms/gl.platform-assistant/orchestration"
+    "platforms/gl-platform-assistant/orchestration"
 )
 
 ALL_DIRS_EXIST=true

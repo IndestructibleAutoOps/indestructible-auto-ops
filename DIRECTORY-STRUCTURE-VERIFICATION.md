@@ -36,7 +36,7 @@ This document provides a comprehensive verification of the directory structure f
 **Special Characteristics**:
 - Pure specification layer (no execution)
 - Provides governance to all layers
-- Contains GL90-99-Meta-Specification-Layer/
+- Contains gl90-99-meta-specification-layer/
 
 ### GL10-29: gl-platform-services
 **Status**: ✅ VERIFIED

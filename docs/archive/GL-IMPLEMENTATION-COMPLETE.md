@@ -136,7 +136,7 @@ The GL Platform has been successfully implemented as a production-ready, event-d
   - Label transformation rules
 
 #### Migration Playbook
-- **Location**: `docs/RUNBOOKS/naming-migration-playbook.md`
+- **Location**: `docs/runbooks/naming-migration-playbook.md`
 - **Phases**:
   1. Discovery Phase
   2. Planning Phase
@@ -345,7 +345,7 @@ The platform enforces the GL Unified Architecture Governance Framework v5.0 gove
 ### Documentation
 
 - **Architecture**: `docs/ARCHITECTURE.md`
-- **Runbooks**: `docs/RUNBOOKS/`
+- **Runbooks**: `docs/runbooks/`
 - **API Docs**: `docs/API.md`
 - **User Guide**: `docs/USER_GUIDE.md`
 

@@ -103,33 +103,33 @@
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "ecosystem/reasoning/dual_path",
+      "file_path": "ecosystem/reasoning/dual-path",
       "line_number": null,
-      "message": "目錄名稱 'dual_path' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'dual-path'"
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path_tools",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools",
       "line_number": null,
-      "message": "目錄名稱 'path_tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'path-tools'"
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/path_tools",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/path-tools",
       "line_number": null,
-      "message": "目錄名稱 'path_tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'path-tools'"
     },
     {
       "rule_id": "GL20-NAMING-001",
-      "file_path": "machine-native-ops/ecosystem/reasoning/dual_path",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path",
       "line_number": null,
-      "message": "目錄名稱 'dual_path' 使用下劃線，應使用連字符 (kebab-case)",
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
       "severity": "LOW",
       "suggestion": "重命名為 'dual-path'"
     },
@@ -159,7 +159,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/governance-legacy/gl-artifacts/api-design-specification.yaml",
+      "file_path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/api-design-specification.yaml",
       "line_number": 408,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -231,7 +231,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/governance/gl-artifacts/execution/artifacts/api-design-specification.yaml",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/governance/gl-artifacts/execution/artifacts/api-design-specification.yaml",
       "line_number": 410,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -535,7 +535,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 3603,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -543,7 +543,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 3631,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -551,7 +551,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 3659,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -559,7 +559,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 13541,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -567,7 +567,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 19965,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -575,7 +575,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 19989,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -583,7 +583,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 20013,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -591,7 +591,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 20037,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -599,7 +599,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "line_number": 20061,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -607,7 +607,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 9604,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -615,7 +615,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 9632,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -623,7 +623,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 9660,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -631,7 +631,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 19542,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -639,7 +639,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 25924,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -647,7 +647,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 25948,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -655,7 +655,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 25972,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -663,7 +663,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 25996,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -671,7 +671,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "line_number": 26020,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -783,7 +783,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/scripts-legacy/install-jaeger-testing.sh",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/install-jaeger-testing.sh",
       "line_number": 162,
       "message": "Hardcoded password",
       "severity": "CRITICAL",
@@ -807,7 +807,7 @@
     },
     {
       "rule_id": "GL70-EVIDENCE-001",
-      "file_path": "machine-native-ops/gl.runtime.engine-platform/engine/.governance",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/engine/.governance",
       "line_number": null,
       "message": "缺少 event-stream.jsonl 證據文件",
       "severity": "MEDIUM",

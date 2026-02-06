@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-02-06T11:39:19.451010+00:00",
+  "governance_version": "NG000-999 v3.0",
+  "summary": {
+    "total_checks": 1,
+    "passed": 0,
+    "failed": 1,
+    "total_violations": 89
+  },
+  "results": [
+    {
+      "ng_code": "NG10100",
+      "era": "Era-1",
+      "passed": false,
+      "files_scanned": 2848,
+      "violations_count": 89,
+      "severity": "MEDIUM",
+      "rule": "Directories must use kebab-case, not underscores",
+      "sample_violations": [
+        {
+          "path": "summarized_conversations",
+          "suggested": "summarized-conversations"
+        },
+        {
+          "path": "ecosystem/ng-governance",
+          "suggested": "ecosystem/ng-governance"
+        },
+        {
+          "path": "ecosystem/tests/semantic-defense",
+          "suggested": "ecosystem/tests/semantic-defense"
+        },
+        {
+          "path": "ecosystem/reasoning/dual-path",
+          "suggested": "ecosystem/reasoning/dual-path"
+        },
+        {
+          "path": "docs/runbooks",
+          "suggested": "docs/runbooks"
+        }
+      ],
+      "compliance_score": 96.87
+    }
+  ],
+  "evidence_chain": {
+    "validator_version": "NG000-999 v3.0",
+    "workspace_root": "/workspace",
+    "scan_duration": "instant",
+    "artifact_generated": true
+  },
+  "remediation": {
+    "auto_fixable": 89,
+    "manual_review_required": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 89,
+    "low": 0
+  }
+}

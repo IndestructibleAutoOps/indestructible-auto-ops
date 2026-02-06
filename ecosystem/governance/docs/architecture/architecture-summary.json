@@ -2483,7 +2483,7 @@
     {
       "name": "reasoning.dual_path.arbitration.arbitrator",
       "type": "python_module",
-      "path": "ecosystem/reasoning/dual_path/arbitration/arbitrator.py",
+      "path": "ecosystem/reasoning/dual-path/arbitration/arbitrator.py",
       "dependencies": [
         "enum",
         "typing",
@@ -2498,7 +2498,7 @@
     {
       "name": "reasoning.dual_path.arbitration.rule_engine",
       "type": "python_module",
-      "path": "ecosystem/reasoning/dual_path/arbitration/rule_engine.py",
+      "path": "ecosystem/reasoning/dual-path/arbitration/rule_engine.py",
       "dependencies": [
         "typing",
         "yaml",
@@ -2510,28 +2510,28 @@
     {
       "name": "reasoning.dual_path.arbitration.rules.api",
       "type": "yaml_spec",
-      "path": "ecosystem/reasoning/dual_path/arbitration/rules/api.yaml",
+      "path": "ecosystem/reasoning/dual-path/arbitration/rules/api.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
       "name": "reasoning.dual_path.arbitration.rules.dependency",
       "type": "yaml_spec",
-      "path": "ecosystem/reasoning/dual_path/arbitration/rules/dependency.yaml",
+      "path": "ecosystem/reasoning/dual-path/arbitration/rules/dependency.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
       "name": "reasoning.dual_path.arbitration.rules.security",
       "type": "yaml_spec",
-      "path": "ecosystem/reasoning/dual_path/arbitration/rules/security.yaml",
+      "path": "ecosystem/reasoning/dual-path/arbitration/rules/security.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
       "name": "reasoning.dual_path.external.retrieval",
       "type": "python_module",
-      "path": "ecosystem/reasoning/dual_path/external/retrieval.py",
+      "path": "ecosystem/reasoning/dual-path/external/retrieval.py",
       "dependencies": [
         "typing",
         "json",
@@ -2546,7 +2546,7 @@
     {
       "name": "reasoning.dual_path.internal.knowledge_graph",
       "type": "python_module",
-      "path": "ecosystem/reasoning/dual_path/internal/knowledge_graph.py",
+      "path": "ecosystem/reasoning/dual-path/internal/knowledge_graph.py",
       "dependencies": [
         "typing",
         "json",
@@ -2561,7 +2561,7 @@
     {
       "name": "reasoning.dual_path.internal.retrieval",
       "type": "python_module",
-      "path": "ecosystem/reasoning/dual_path/internal/retrieval.py",
+      "path": "ecosystem/reasoning/dual-path/internal/retrieval.py",
       "dependencies": [
         "typing",
         "json",

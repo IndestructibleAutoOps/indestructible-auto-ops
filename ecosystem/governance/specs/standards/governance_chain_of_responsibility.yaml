@@ -7,7 +7,7 @@
 governance_chain:
   autonomy_boundary_test:
     test_id: "ABT-001"
-    scenario: "external_api_unavailable"
+    scenario: "external-api-unavailable"
     
     # Core: Chain of Responsibility tracking
     chain_of_responsibility:
@@ -52,7 +52,7 @@ governance_chain:
           executor: "execution_owner"
           timestamp: "2026-02-05T11:41:45Z"
           event_hash: "sha256:def456..."
-          event_type: "external_api_unavailable"
+          event_type: "external-api-unavailable"
           evidence: ".governance/gl-events/external_api_unavailable.json"
 
 # Evidence requirements for chain integrity

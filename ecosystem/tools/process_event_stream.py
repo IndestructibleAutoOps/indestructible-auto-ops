@@ -10,12 +10,12 @@ Purpose:
 - Processes governance event stream for semantic tokenization
 - Generates canonicalized hashes with RFC 8785
 - Creates language maps for cross-language verification
-- Outputs to semantic_tokens/ directory
+- Outputs to semantic-tokens/ directory
 
 Usage:
     python ecosystem/tools/process_event_stream.py \
         --input ecosystem/.governance/event-stream.jsonl \
-        --output ecosystem/.evidence/semantic_tokens/ \
+        --output ecosystem/.evidence/semantic-tokens/ \
         --language-map ecosystem/.evidence/language_map.json
 """
 

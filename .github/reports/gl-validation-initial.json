@@ -27225,8 +27225,8 @@
       "rule_id": "PARSE-002",
       "rule_name": "YAML Syntax",
       "severity": "error",
-      "message": "YAML parsing error: expected a single document in the stream\n  in \"workspace/governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml\", line 5, column 1\nbut found another document\n  in \"workspace/governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml\", line 14, column 1",
-      "file_path": "workspace/governance/quantum-naming-v4.0.0/deployment/quantum-deployment-manifest.yaml",
+      "message": "YAML parsing error: expected a single document in the stream\n  in \"workspace/governance/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml\", line 5, column 1\nbut found another document\n  in \"workspace/governance/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml\", line 14, column 1",
+      "file_path": "workspace/governance/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml",
       "line_number": null,
       "field_path": null,
       "suggestion": null
@@ -27235,8 +27235,8 @@
       "rule_id": "PARSE-002",
       "rule_name": "YAML Syntax",
       "severity": "error",
-      "message": "YAML parsing error: expected a single document in the stream\n  in \"workspace/governance/naming-governance-v1.0.0-extended/monitoring/prometheus-rules.yaml\", line 6, column 1\nbut found another document\n  in \"workspace/governance/naming-governance-v1.0.0-extended/monitoring/prometheus-rules.yaml\", line 555, column 1",
-      "file_path": "workspace/governance/naming-governance-v1.0.0-extended/monitoring/prometheus-rules.yaml",
+      "message": "YAML parsing error: expected a single document in the stream\n  in \"workspace/governance/naming-governance-v1-0-0-extended/monitoring/prometheus-rules.yaml\", line 6, column 1\nbut found another document\n  in \"workspace/governance/naming-governance-v1-0-0-extended/monitoring/prometheus-rules.yaml\", line 555, column 1",
+      "file_path": "workspace/governance/naming-governance-v1-0-0-extended/monitoring/prometheus-rules.yaml",
       "line_number": null,
       "field_path": null,
       "suggestion": null
@@ -27245,8 +27245,8 @@
       "rule_id": "PARSE-002",
       "rule_name": "YAML Syntax",
       "severity": "error",
-      "message": "YAML parsing error: expected a single document in the stream\n  in \"workspace/governance/naming-governance-v1.0.0-extended/governance/naming/naming-governance-core.yaml\", line 9, column 1\nbut found another document\n  in \"workspace/governance/naming-governance-v1.0.0-extended/governance/naming/naming-governance-core.yaml\", line 920, column 1",
-      "file_path": "workspace/governance/naming-governance-v1.0.0-extended/governance/naming/naming-governance-core.yaml",
+      "message": "YAML parsing error: expected a single document in the stream\n  in \"workspace/governance/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml\", line 9, column 1\nbut found another document\n  in \"workspace/governance/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml\", line 920, column 1",
+      "file_path": "workspace/governance/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml",
       "line_number": null,
       "field_path": null,
       "suggestion": null
@@ -27256,7 +27256,7 @@
       "rule_name": "Required Field: metadata.version",
       "severity": "error",
       "message": "Missing required field: metadata.version",
-      "file_path": "workspace/governance/naming-governance-v1.0.0/monitoring/prometheus/naming-governance-rules.yaml",
+      "file_path": "workspace/governance/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
       "line_number": null,
       "field_path": "metadata.version",
       "suggestion": "Add the 'version' field to your artifact"
@@ -27266,7 +27266,7 @@
       "rule_name": "Required Field: metadata.created_at",
       "severity": "error",
       "message": "Missing required field: metadata.created_at",
-      "file_path": "workspace/governance/naming-governance-v1.0.0/monitoring/prometheus/naming-governance-rules.yaml",
+      "file_path": "workspace/governance/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
       "line_number": null,
       "field_path": "metadata.created_at",
       "suggestion": "Add the 'created_at' field to your artifact"
@@ -27276,7 +27276,7 @@
       "rule_name": "Required Field: metadata.owner",
       "severity": "error",
       "message": "Missing required field: metadata.owner",
-      "file_path": "workspace/governance/naming-governance-v1.0.0/monitoring/prometheus/naming-governance-rules.yaml",
+      "file_path": "workspace/governance/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
       "line_number": null,
       "field_path": "metadata.owner",
       "suggestion": "Add the 'owner' field to your artifact"
@@ -27286,7 +27286,7 @@
       "rule_name": "Required Field: metadata.layer",
       "severity": "error",
       "message": "Missing required field: metadata.layer",
-      "file_path": "workspace/governance/naming-governance-v1.0.0/monitoring/prometheus/naming-governance-rules.yaml",
+      "file_path": "workspace/governance/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
       "line_number": null,
       "field_path": "metadata.layer",
       "suggestion": "Add the 'layer' field to your artifact"
@@ -27296,7 +27296,7 @@
       "rule_name": "Field Format: apiVersion",
       "severity": "warning",
       "message": "Field 'apiVersion' has invalid format: monitoring.coreos.com/v1",
-      "file_path": "workspace/governance/naming-governance-v1.0.0/monitoring/prometheus/naming-governance-rules.yaml",
+      "file_path": "workspace/governance/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
       "line_number": null,
       "field_path": "apiVersion",
       "suggestion": "apiVersion should be 'governance.machinenativeops.io/v2'"

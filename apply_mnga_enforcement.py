@@ -57,7 +57,7 @@ FILES_NEEDING_GL_ANNOTATION = {
 
 # 需要重命名的目錄（下劃線 -> 連字符）
 DIRECTORIES_TO_RENAME = [
-    ("ecosystem/reasoning/dual_path", "ecosystem/reasoning/dual-path"),
+    ("ecosystem/reasoning/dual-path", "ecosystem/reasoning/dual-path"),
     ("ecosystem/indexes/internal/code_vectors", "ecosystem/indexes/internal/code-vectors"),
     ("ecosystem/indexes/internal/docs_index", "ecosystem/indexes/internal/docs-index"),
 ]

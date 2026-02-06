@@ -46,7 +46,7 @@ GL60-80: Feedback Layer (反饋層)
 
 GL90-99: Meta-Specification Layer (元規範層)
 ├── 職責: 治理規範、命名章程、語意錨點
-├── 路徑: gl-platform/GL90-99-Meta-Specification-Layer/
+├── 路徑: gl-platform/gl90-99-meta-specification-layer/
 └── 治理域: 治理核心域
 ```
 
@@ -67,9 +67,9 @@ GL90-99: Meta-Specification Layer (元規範層)
 #### 路徑對照表
 | 當前路徑 | 建議路徑 | 職責邊界 | 證明 |
 |---------|---------|---------|------|
-| semantic_engine/ | GL90-99-Meta-Specification-Layer/governance/semantic-engine/ | Meta-Layer / Governance | 語意引擎是治理核心 |
-| .governance/ | GL90-99-Meta-Specification-Layer/governance/ | Meta-Layer / Governance | 治理配置集中管理 |
-| .github/governance-legacy/ | GL90-99-Meta-Specification-Layer/governance/archived/legacy/ | Meta-Layer / Archived | 遺留系統歸檔 |
+| semantic_engine/ | gl90-99-meta-specification-layer/governance/semantic-engine/ | Meta-Layer / Governance | 語意引擎是治理核心 |
+| .governance/ | gl90-99-meta-specification-layer/governance/ | Meta-Layer / Governance | 治理配置集中管理 |
+| .github/governance-legacy/ | gl90-99-meta-specification-layer/governance/archived/legacy/ | Meta-Layer / Archived | 遺留系統歸檔 |
 | engine/ | GL30-49-Execution-Layer/engine/ | Execution-Layer / Core | 執行引擎 |
 
 ### 1.3 語意錨點建立

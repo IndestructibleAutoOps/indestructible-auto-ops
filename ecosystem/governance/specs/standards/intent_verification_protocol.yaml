@@ -16,7 +16,7 @@ intent_verification:
         "When external API is unavailable, the system should:
          1. Detect unavailability within 5 seconds
          2. Switch to local cache
-         3. Log GL event with type 'external_api_unavailable'
+         3. Log GL event with type 'external-api-unavailable'
          4. NOT attempt auto-repair
          5. Return degraded response with cache_source header"
       
@@ -46,7 +46,7 @@ intent_verification:
       ENTER CLOSURE MODE: AUTONOMY_BOUNDARY_VERIFICATION
       
       test_spec:
-        scenario: "external_api_unavailable"
+        scenario: "external-api-unavailable"
         
         autonomy_boundaries:
           - boundary: "max_cache_age_seconds"
@@ -104,7 +104,7 @@ intent_verification:
         - "推理必須可審計"
         - "推理必須有置信度"
       
-      test_case: "external_api_unavailable"
+      test_case: "external-api-unavailable"
       expected_reasoning_trace: |
         {
           "trace_id": "REASONING-ABT-001-001",

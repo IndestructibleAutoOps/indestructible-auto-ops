@@ -18,7 +18,7 @@ Successfully implemented the **Dual-Path Retrieval + Arbitration Reasoning Syste
 ## Architecture Components
 
 ### 1. Internal Retrieval Engine ✅
-**Location**: `ecosystem/reasoning/dual_path/internal/retrieval.py`
+**Location**: `ecosystem/reasoning/dual-path/internal/retrieval.py`
 
 **Features**:
 - Simulated vector search using keyword matching
@@ -40,7 +40,7 @@ Successfully implemented the **Dual-Path Retrieval + Arbitration Reasoning Syste
 ---
 
 ### 2. External Retrieval Engine ✅
-**Location**: `ecosystem/reasoning/dual_path/external/retrieval.py`
+**Location**: `ecosystem/reasoning/dual-path/external/retrieval.py`
 
 **Features**:
 - Simulated web search (offline mode)
@@ -70,7 +70,7 @@ Successfully implemented the **Dual-Path Retrieval + Arbitration Reasoning Syste
 ---
 
 ### 3. Arbitration Engine ✅
-**Location**: `ecosystem/reasoning/dual_path/arbitration/__init__.py`
+**Location**: `ecosystem/reasoning/dual-path/arbitration/__init__.py`
 
 **Features**:
 - Rule-based arbitration (highest priority)
@@ -151,7 +151,7 @@ Successfully implemented the **Dual-Path Retrieval + Arbitration Reasoning Syste
 ---
 
 ### 6. Reasoning Pipeline ✅
-**Location**: `ecosystem/reasoning/dual_path/pipeline.py`
+**Location**: `ecosystem/reasoning/dual-path/pipeline.py`
 
 **Features**:
 - Main orchestration for all components
@@ -262,7 +262,7 @@ arbitration:
 ecosystem/reasoning/
 ├── contracts/
 │   └── dual_path_spec.yaml          # Specification contract
-├── dual_path/
+├── dual-path/
 │   ├── __init__.py
 │   ├── base_retrieval.py            # Base retrieval interface
 │   ├── pipeline.py                  # Main reasoning pipeline

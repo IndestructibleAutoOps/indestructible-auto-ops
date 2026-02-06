@@ -53,23 +53,23 @@ This system implements 9 test categories with 31 test cases covering semantic in
 ### 2. Test Framework Infrastructure
 **Directory Structure**:
 ```
-ecosystem/tests/semantic_defense/
+ecosystem/tests/semantic-defense/
 ├── __init__.py
 ├── conftest.py
 ├── pytest.ini
 ├── README.md
 ├── run_tests.py
-├── test_semantic_corruption/
+├── test-semantic-corruption/
 │   └── test_semantic_corruption.py
-├── test_hash_divergence/
+├── test-hash-divergence/
 │   └── test_hash_divergence.py
-├── test_yaml_failure/
-├── test_event_missing_field/
-├── test_tool_registry/
-├── test_complement_missing/
-├── test_canonicalization_invariant/
-├── test_layered_sorting/
-└── test_pipeline_interrupted/
+├── test-yaml-failure/
+├── test-event-missing-field/
+├── test-tool-registry/
+├── test-complement-missing/
+├── test-canonicalization-invariant/
+├── test-layered-sorting/
+└── test-pipeline-interrupted/
 ```
 
 **Status**: ✅ Complete
@@ -77,7 +77,7 @@ ecosystem/tests/semantic_defense/
 ---
 
 ### 3. Test Configuration
-**File**: `ecosystem/tests/semantic_defense/conftest.py`
+**File**: `ecosystem/tests/semantic-defense/conftest.py`
 
 **Fixtures Provided**:
 - `test_workspace`: Isolated test environment
@@ -94,7 +94,7 @@ ecosystem/tests/semantic_defense/
 ---
 
 ### 4. Test Category 1: Semantic Corruption Tests
-**File**: `ecosystem/tests/semantic_defense/test_semantic_corruption/test_semantic_corruption.py`
+**File**: `ecosystem/tests/semantic-defense/test-semantic-corruption/test_semantic_corruption.py`
 
 **Test Cases Implemented**:
 - ✅ TC-1.1: Fuzzy Language Detection
@@ -111,7 +111,7 @@ ecosystem/tests/semantic_defense/
 ---
 
 ### 5. Test Category 2: Hash Divergence Tests
-**File**: `ecosystem/tests/semantic_defense/test_hash_divergence/test_hash_divergence.py`
+**File**: `ecosystem/tests/semantic-defense/test-hash-divergence/test_hash_divergence.py`
 
 **Test Cases Implemented**:
 - ✅ TC-2.1: Windows vs Linux Hash Consistency
@@ -128,7 +128,7 @@ ecosystem/tests/semantic_defense/
 ---
 
 ### 6. Test Runner
-**File**: `ecosystem/tests/semantic_defense/run_tests.py`
+**File**: `ecosystem/tests/semantic-defense/run_tests.py`
 
 **Features**:
 - Run all tests or specific categories
@@ -142,7 +142,7 @@ ecosystem/tests/semantic_defense/
 ---
 
 ### 7. Documentation
-**File**: `ecosystem/tests/semantic_defense/README.md`
+**File**: `ecosystem/tests/semantic-defense/README.md`
 
 **Contents**:
 - Test category overview
@@ -164,9 +164,9 @@ ecosystem/tests/semantic_defense/
 ```
 collected 12 items
 
-test_hash_divergence/test_hash_divergence.py . [  8%]
+test-hash-divergence/test_hash_divergence.py . [  8%]
 .....                                                    [ 50%]
-test_semantic_corruption/test_semantic_corruption.py . [ 58%]
+test-semantic-corruption/test_semantic_corruption.py . [ 58%]
 .....                                                    [100%]
 
 ============================== 12 passed in 0.02s ===============================
@@ -277,7 +277,7 @@ python run_tests.py --category test_semantic_corruption
 
 ### Run Specific Test Case
 ```bash
-python run_tests.py --test test_semantic_corruption/test_semantic_corruption.py::TestSemanticCorruption::test_tc_1_1_fuzzy_language_detection
+python run_tests.py --test test-semantic-corruption/test_semantic_corruption.py::TestSemanticCorruption::test_tc_1_1_fuzzy_language_detection
 ```
 
 ### Generate HTML Report
@@ -389,24 +389,24 @@ All tests must pass (CRITICAL, HIGH, MEDIUM)
 
 ### New Files
 - `ecosystem/governance/semantic-defense-specification.md` - Complete specification
-- `ecosystem/tests/semantic_defense/__init__.py` - Package initialization
-- `ecosystem/tests/semantic_defense/conftest.py` - Test configuration
-- `ecosystem/tests/semantic_defense/pytest.ini` - pytest configuration
-- `ecosystem/tests/semantic_defense/README.md` - Documentation
-- `ecosystem/tests/semantic_defense/run_tests.py` - Test runner
-- `ecosystem/tests/semantic_defense/test_semantic_corruption/test_semantic_corruption.py` - Category 1 tests
-- `ecosystem/tests/semantic_defense/test_hash_divergence/test_hash_divergence.py` - Category 2 tests
+- `ecosystem/tests/semantic-defense/__init__.py` - Package initialization
+- `ecosystem/tests/semantic-defense/conftest.py` - Test configuration
+- `ecosystem/tests/semantic-defense/pytest.ini` - pytest configuration
+- `ecosystem/tests/semantic-defense/README.md` - Documentation
+- `ecosystem/tests/semantic-defense/run_tests.py` - Test runner
+- `ecosystem/tests/semantic-defense/test-semantic-corruption/test_semantic_corruption.py` - Category 1 tests
+- `ecosystem/tests/semantic-defense/test-hash-divergence/test_hash_divergence.py` - Category 2 tests
 
 ### Test Directories Created
-- `ecosystem/tests/semantic_defense/test_semantic_corruption/`
-- `ecosystem/tests/semantic_defense/test_hash_divergence/`
-- `ecosystem/tests/semantic_defense/test_yaml_failure/`
-- `ecosystem/tests/semantic_defense/test_event_missing_field/`
-- `ecosystem/tests/semantic_defense/test_tool_registry/`
-- `ecosystem/tests/semantic_defense/test_complement_missing/`
-- `ecosystem/tests/semantic_defense/test_canonicalization_invariant/`
-- `ecosystem/tests/semantic_defense/test_layered_sorting/`
-- `ecosystem/tests/semantic_defense/test_pipeline_interrupted/`
+- `ecosystem/tests/semantic-defense/test-semantic-corruption/`
+- `ecosystem/tests/semantic-defense/test-hash-divergence/`
+- `ecosystem/tests/semantic-defense/test-yaml-failure/`
+- `ecosystem/tests/semantic-defense/test-event-missing-field/`
+- `ecosystem/tests/semantic-defense/test-tool-registry/`
+- `ecosystem/tests/semantic-defense/test-complement-missing/`
+- `ecosystem/tests/semantic-defense/test-canonicalization-invariant/`
+- `ecosystem/tests/semantic-defense/test-layered-sorting/`
+- `ecosystem/tests/semantic-defense/test-pipeline-interrupted/`
 
 ---
 
@@ -414,7 +414,7 @@ All tests must pass (CRITICAL, HIGH, MEDIUM)
 
 ### Test Execution
 ```bash
-$ python -m pytest ecosystem/tests/semantic_defense/ -v
+$ python -m pytest ecosystem/tests/semantic-defense/ -v
 ============================== 12 passed in 0.02s ===============================
 ```
 

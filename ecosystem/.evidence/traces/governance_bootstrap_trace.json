@@ -39,7 +39,7 @@
       "name": "Semantic Tokenization",
       "status": "COMPLETED",
       "commands": [
-        "python ecosystem/tools/process_event_stream.py --input ecosystem/.governance/event-stream.jsonl --output ecosystem/.evidence/semantic_tokens/ --language-map ecosystem/.evidence/language_map.json"
+        "python ecosystem/tools/process_event_stream.py --input ecosystem/.governance/event-stream.jsonl --output ecosystem/.evidence/semantic-tokens/ --language-map ecosystem/.evidence/language_map.json"
       ],
       "results": {
         "exit_code": 0,
@@ -47,9 +47,9 @@
         "events_processed": 607,
         "hashes_extracted": 596,
         "outputs": {
-          "semantic_tokens": "ecosystem/.evidence/semantic_tokens/semantic_tokens.json",
+          "semantic-tokens": "ecosystem/.evidence/semantic-tokens/semantic_tokens.json",
           "semantic_tokens_hash": "89865e93d06fa94f90972091ec9bca138ed296035b3195b0bdc795b7cf142ae1",
-          "event_hashes": "ecosystem/.evidence/semantic_tokens/event_hashes.json",
+          "event_hashes": "ecosystem/.evidence/semantic-tokens/event_hashes.json",
           "event_hashes_hash": "a552484e956cab71b4a5cb117642ca723e0a4163cb84696fcb0520ca49612c2e",
           "language_map": "ecosystem/.evidence/language_map.json"
         }
@@ -102,7 +102,7 @@
       "name": "Execution Summary Generation",
       "status": "COMPLETED",
       "commands": [
-        "python ecosystem/tools/generate_execution_summary.py --inputs ecosystem/.evidence/semantic_tokens/ ecosystem/.evidence/compliance/ ecosystem/.evidence/language_map.json --output ecosystem/evidence/closure/execution_summary.json --governance-owner 'IndestructibleAutoOps' --canonicalize --hash"
+        "python ecosystem/tools/generate_execution_summary.py --inputs ecosystem/.evidence/semantic-tokens/ ecosystem/.evidence/compliance/ ecosystem/.evidence/language_map.json --output ecosystem/evidence/closure/execution_summary.json --governance-owner 'IndestructibleAutoOps' --canonicalize --hash"
       ],
       "results": {
         "exit_code": 0,
@@ -122,7 +122,7 @@
       "status": "COMPLETED",
       "commands": [
         "cp ecosystem/.evidence/compliance/narrative_free_report.json ecosystem/.evidence/reports/",
-        "cp ecosystem/.evidence/semantic_tokens/event_hashes.json ecosystem/.evidence/reports/hashes/"
+        "cp ecosystem/.evidence/semantic-tokens/event_hashes.json ecosystem/.evidence/reports/hashes/"
       ],
       "results": {
         "exit_code": 0,
@@ -171,7 +171,7 @@
   
   "artifacts_generated": {
     "evidence_tokens": {
-      "path": "ecosystem/.evidence/semantic_tokens/",
+      "path": "ecosystem/.evidence/semantic-tokens/",
       "files": ["semantic_tokens.json", "event_hashes.json"],
       "hashes_computed": true
     },

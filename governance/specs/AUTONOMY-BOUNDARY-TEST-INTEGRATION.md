@@ -183,7 +183,7 @@ ecosystem/validators/
 **Example Entry:**
 ```json
 {
-  "tests/gl/autonomy-boundary/external_api_unavailable/meta.yaml": {
+  "tests/gl/autonomy-boundary/external-api-unavailable/meta.yaml": {
     "sha256": "a1b2c3d4e5f6...",
     "timestamp": "2026-02-05T11:39:13Z"
   }
@@ -642,7 +642,7 @@ export MNGA_DEBUG=true
 export MNGA_VERBOSE=true
 
 # Run test with debug output
-python tests/gl/autonomy-boundary/external_api_unavailable/verify_closure.py --debug --verbose
+python tests/gl/autonomy-boundary/external-api-unavailable/verify_closure.py --debug --verbose
 ```
 
 ### Log Analysis

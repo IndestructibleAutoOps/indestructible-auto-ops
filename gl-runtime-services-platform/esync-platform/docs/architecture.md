@@ -231,4 +231,4 @@ esync-platform/
 - [GL Unified Architecture Governance Framework v5.0](../../GOVERNANCE.md)
 - [Architecture Decision Records](adr/)
 - [Security Documentation](SECURITY.md)
-- [Operations Runbooks](RUNBOOKS/)
+- [Operations Runbooks](runbooks/)

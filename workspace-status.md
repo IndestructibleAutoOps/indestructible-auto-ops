@@ -17,7 +17,7 @@
 - **Verification:** 12/12 verified ✅
 
 ### 2️⃣ Era-2 Hash Specification ✅
-- **File:** `ecosystem/governance/hash_spec/era-2.yaml`
+- **File:** `ecosystem/governance/hash-spec/era-2.yaml`
 - **Version:** 2.0
 - **Canonicalization:** JCS+EnhancedLayeredSorting
 - **Hash Algorithm:** SHA256
@@ -89,7 +89,7 @@ ecosystem/governance/migration/
 
 ### Era-2 Specification
 ```
-ecosystem/governance/hash_spec/
+ecosystem/governance/hash-spec/
 └── era-2.yaml                          (5.5K)  - Era-2 hash 規範
 ```
 
@@ -173,7 +173,7 @@ ecosystem/tools/
 
 ### Internal Documents
 1. `ecosystem/governance/migration/hash-translation-spec-v1.md`
-2. `ecosystem/governance/hash_spec/era-2.yaml`
+2. `ecosystem/governance/hash-spec/era-2.yaml`
 3. `ecosystem/governance/migration/hashtranslationtable.jsonl`
 4. `ecosystem/governance/migration/pilot-plan.yaml`
 5. `ecosystem/tests/migration/test_hash_translation.py`

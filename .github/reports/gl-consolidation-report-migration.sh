@@ -48,7 +48,7 @@ rm -rf &quot;workspace/governance/sealed&quot;
 
 # 合併重複目錄 workspace/governance/naming-governance-v1.0.0 到 governance/naming-governance-v1.0.0
 echo 'Merging workspace/governance/naming-governance-v1.0.0 to governance/naming-governance-v1.0.0...'
-cp -rn &quot;workspace/governance/naming-governance-v1.0.0/&quot;* &quot;governance/naming-governance-v1.0.0/&quot; 2>/dev/null || true
+cp -rn &quot;workspace/governance/naming-governance-v1-0-0/&quot;* &quot;governance/naming-governance-v1-0-0/&quot; 2>/dev/null || true
 
 # 刪除已合併的重複目錄 workspace/governance/naming-governance-v1.0.0
 echo 'Backing up and removing workspace/governance/naming-governance-v1.0.0...'
@@ -57,7 +57,7 @@ rm -rf &quot;workspace/governance/naming-governance-v1.0.0&quot;
 
 # 合併重複目錄 workspace/governance/naming-governance-v1.0.0-extended 到 governance/naming-governance-v1.0.0-extended
 echo 'Merging workspace/governance/naming-governance-v1.0.0-extended to governance/naming-governance-v1.0.0-extended...'
-cp -rn &quot;workspace/governance/naming-governance-v1.0.0-extended/&quot;* &quot;governance/naming-governance-v1.0.0-extended/&quot; 2>/dev/null || true
+cp -rn &quot;workspace/governance/naming-governance-v1-0-0-extended/&quot;* &quot;governance/naming-governance-v1-0-0-extended/&quot; 2>/dev/null || true
 
 # 刪除已合併的重複目錄 workspace/governance/naming-governance-v1.0.0-extended
 echo 'Backing up and removing workspace/governance/naming-governance-v1.0.0-extended...'
@@ -66,7 +66,7 @@ rm -rf &quot;workspace/governance/naming-governance-v1.0.0-extended&quot;
 
 # 合併重複目錄 workspace/governance/quantum-naming-v4.0.0 到 governance/quantum-naming-v4.0.0
 echo 'Merging workspace/governance/quantum-naming-v4.0.0 to governance/quantum-naming-v4.0.0...'
-cp -rn &quot;workspace/governance/quantum-naming-v4.0.0/&quot;* &quot;governance/quantum-naming-v4.0.0/&quot; 2>/dev/null || true
+cp -rn &quot;workspace/governance/quantum-naming-v4-0-0/&quot;* &quot;governance/quantum-naming-v4-0-0/&quot; 2>/dev/null || true
 
 # 刪除已合併的重複目錄 workspace/governance/quantum-naming-v4.0.0
 echo 'Backing up and removing workspace/governance/quantum-naming-v4.0.0...'

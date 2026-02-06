@@ -54,7 +54,7 @@ gl-enterprise-architecture/
 ├── configs/                       # Configuration standards
 ├── deployments/                   # Deployment standards
 ├── docs/                         # Architecture documentation
-└── GL90-99-Meta-Specification-Layer/  # Meta specifications
+└── gl90-99-meta-specification-layer/  # Meta specifications
 ```
 
 ## Key Files

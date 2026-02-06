@@ -924,7 +924,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-repair.py:15",
+      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py:15",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -932,7 +932,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0-extended/automation/scripts/naming-governance-migration.py:18",
+      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py:18",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -940,7 +940,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/scripts/generation/naming_generator.py:7",
+      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts/generation/naming_generator.py:7",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -948,7 +948,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/scripts/audit/exception_manager.py:7",
+      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts/audit/exception_manager.py:7",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -956,7 +956,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/scripts/audit/change_manager.py:7",
+      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts/audit/change_manager.py:7",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -964,7 +964,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1.0.0/scripts/validation/naming_validator.py:7",
+      "location": "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts/validation/naming_validator.py:7",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -7196,7 +7196,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_validator.py:20",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_validator.py:20",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -7204,7 +7204,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_validator.py:217",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_validator.py:217",
       "issue_type": "代碼氣味",
       "description": "硬編碼的 HTTP URL",
       "solution": "Use configuration files or environment variables",
@@ -7212,7 +7212,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_validator.py:277",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_validator.py:277",
       "issue_type": "代碼氣味",
       "description": "硬編碼的 HTTP URL",
       "solution": "Use configuration files or environment variables",
@@ -7220,7 +7220,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_fixer.py:20",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_fixer.py:20",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -7228,7 +7228,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_fixer.py:127",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_fixer.py:127",
       "issue_type": "代碼氣味",
       "description": "硬編碼的 HTTP URL",
       "solution": "Use configuration files or environment variables",
@@ -7236,7 +7236,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_fixer.py:185",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_fixer.py:185",
       "issue_type": "代碼氣味",
       "description": "硬編碼的 HTTP URL",
       "solution": "Use configuration files or environment variables",
@@ -7244,7 +7244,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_scanner.py:19",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_scanner.py:19",
       "issue_type": "代碼風格",
       "description": "Import order: Standard library imports should come before third party imports",
       "solution": "Reorder imports to follow PEP 8",
@@ -7252,7 +7252,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_scanner.py:244",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_scanner.py:244",
       "issue_type": "代碼氣味",
       "description": "硬編碼的 HTTP URL",
       "solution": "Use configuration files or environment variables",
@@ -7260,7 +7260,7 @@
     },
     {
       "severity": "低",
-      "location": "/workspace/machine-native-ops/workspace/tools/path_tools/path_scanner.py:301",
+      "location": "/workspace/machine-native-ops/workspace/tools/path-tools/path_scanner.py:301",
       "issue_type": "代碼氣味",
       "description": "硬編碼的 HTTP URL",
       "solution": "Use configuration files or environment variables",

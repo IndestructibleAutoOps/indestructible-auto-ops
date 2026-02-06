@@ -129,7 +129,7 @@ def semanticize(text: str, lang: str = "zh") -> SemanticTokenAST:
 {
   "hash": "a8f9c3b1d2e3f4...",
   "canonical_hash": "sha256:a8f9c3b1d2e3f4...",
-  "semantic_tokens": {
+  "semantic-tokens": {
     "action": "restart_service",
     "target": "nginx",
     "timestamp": "2024-02-05T03:35:54Z",
@@ -257,7 +257,7 @@ def _generate_artifact_with_language_neutral_hash(self, input_data, lang="zh"):
     
     # Generate language map
     language_map = {
-        "semantic_tokens": semantic_tokens,
+        "semantic-tokens": semantic_tokens,
         "languages": {lang: input_data},
         "hash": hash_value
     }

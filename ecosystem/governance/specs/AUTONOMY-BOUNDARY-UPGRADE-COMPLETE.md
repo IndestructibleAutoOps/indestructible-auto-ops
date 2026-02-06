@@ -338,7 +338,7 @@ ENTER CLOSURE MODE: CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST
 5. `reversibility_and_kill_switch.yaml`
 
 ### Test Meta Specification (1 file)
-1. `tests/gl/autonomy-boundary/external_api_unavailable/meta.yaml` (v2.0)
+1. `tests/gl/autonomy-boundary/external-api-unavailable/meta.yaml` (v2.0)
 
 ### Implementation Code (1 file)
 1. `ecosystem/governance/kernel/test_generator_v2.py` (470 lines)
@@ -398,7 +398,7 @@ ENTER CLOSURE MODE: CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST
 - [x] 創建 `reversibility_and_kill_switch.yaml`
 
 ### Phase 3: Meta.yaml 升級 ✅
-- [x] 升級 `tests/gl/autonomy-boundary/external_api_unavailable/meta.yaml` 到 v2.0
+- [x] 升級 `tests/gl/autonomy-boundary/external-api-unavailable/meta.yaml` 到 v2.0
 - [x] 添加標準對齊聲明
 - [x] 添加責任鏈追蹤
 - [x] 添加控制層級分類

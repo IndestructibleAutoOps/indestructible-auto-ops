@@ -30,8 +30,8 @@ TERMINOLOGY_MAP = {
 
 # 文件重命名映射
 FILE_RENAME_MAP = {
-    "ecosystem/governance/GL-semantic-anchors/GL00-GL99-unified-charter.json": 
-        "ecosystem/governance/GL-semantic-anchors/GL00-GL99-unified-framework.json",
+    "ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-charter.json": 
+        "ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-framework.json",
 }
 
 # 需要更新的文件模式

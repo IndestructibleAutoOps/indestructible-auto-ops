@@ -86,7 +86,7 @@ This specification applies to all 8 GL layers and their subdirectories:
 **Provided Interfaces**:
 - Governance contracts (contracts/)
 - Naming standards (naming-governance/contracts/)
-- Architecture specifications (GL90-99-Meta-Specification-Layer/)
+- Architecture specifications (gl90-99-meta-specification-layer/)
 
 **Allowed Interactions**:
 - Read-only access to provide governance definitions
