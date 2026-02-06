@@ -365,10 +365,10 @@ def main():
         print(json.dumps(rules, indent=2, ensure_ascii=False))
     elif args.add_trusted:
         filter.add_trusted_domain(args.add_trusted)
-        print(f"已添加可信域名: {args.add_trusted}")
+        print("已添加可信域名")
     elif args.add_blocked:
         filter.add_blocked_domain(args.add_blocked)
-        print(f"已添加黑名單域名: {args.add_blocked}")
+        print("已添加黑名單域名")
     elif args.url:
         info = filter.get_domain_info(args.url)
         print(f"域名: {info['domain']}")
