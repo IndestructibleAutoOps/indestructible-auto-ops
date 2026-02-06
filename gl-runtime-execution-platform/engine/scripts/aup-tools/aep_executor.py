@@ -93,7 +93,7 @@ class AEPGovernanceAuditor:
     ]
     # 最佳實踐目錄結構
     BEST_PRACTICE_STRUCTURE = {
-        'docs': ['*.md', 'readme.md', 'CHANGELOG.md'],
+        'docs': ['*.md', 'readme.md', 'changelog.md'],
         'src': ['*.ts', '*.py', '*.js'],
         'config': ['*.yaml', '*.yml', '*.json'],
         'tests': ['test_*.py', '*.test.ts', '*.spec.ts'],

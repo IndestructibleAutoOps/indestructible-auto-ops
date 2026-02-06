@@ -144,8 +144,8 @@ spec:
         - check: "document_update"
           description: "必須更新相關文檔"
           docs_to_update:
-            - "ARCHITECTURE.md"
-            - "CHANGELOG.md"
+            - "architecture.md"
+            - "changelog.md"
             - "API.md"
           action: "BLOCK_IF_MISSING"
           severity: "MEDIUM"

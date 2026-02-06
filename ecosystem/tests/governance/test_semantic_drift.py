@@ -275,7 +275,7 @@ class TestGovernanceReportNarrativeLeakage:
         """Load governance reports to scan"""
         workspace = Path("/workspace")
         report_paths = [
-            workspace / "ecosystem/governance/migration/MIGRATION_VULNERABILITIES_FIXED.md",
+            workspace / "ecosystem/governance/migration/migration-vulnerabilities-fixed.md",
             workspace / "workspace-status.md",
             workspace / "ecosystem/evidence/migration/era-1-to-era-2.json"
         ]

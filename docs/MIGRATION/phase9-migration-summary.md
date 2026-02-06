@@ -94,7 +94,7 @@ Created automated discovery and audit tools:
 Created comprehensive documentation for teams:
 
 #### Platform Migration Guide
-- **File**: `docs/MIGRATION/PLATFORM-MIGRATION-GUIDE.md`
+- **File**: `docs/MIGRATION/platform-migration-guide.md`
 - **Sections**:
   - Prerequisites and pre-migration checklist
   - Detailed migration phases
@@ -106,7 +106,7 @@ Created comprehensive documentation for teams:
   - Quick reference commands
 
 #### Platform Training Handbook
-- **File**: `docs/TRAINING/GL-PLATFORM-HANDBOOK.md`
+- **File**: `docs/TRAINING/gl-platform-handbook.md`
 - **Sections**:
   - Platform overview and architecture
   - Key features explained
@@ -190,8 +190,8 @@ cp integrations/prometheus/config.example.yaml integrations/prometheus/config.ya
 ### Manual Setup
 
 See detailed instructions in:
-- `docs/MIGRATION/PLATFORM-MIGRATION-GUIDE.md`
-- `docs/TRAINING/GL-PLATFORM-HANDBOOK.md`
+- `docs/MIGRATION/platform-migration-guide.md`
+- `docs/TRAINING/gl-platform-handbook.md`
 
 ## Validation Checklist
 
@@ -269,8 +269,8 @@ If issues arise during migration:
 ## Support and Resources
 
 ### Documentation
-- Migration Guide: `docs/MIGRATION/PLATFORM-MIGRATION-GUIDE.md`
-- Training Handbook: `docs/TRAINING/GL-PLATFORM-HANDBOOK.md`
+- Migration Guide: `docs/MIGRATION/platform-migration-guide.md`
+- Training Handbook: `docs/TRAINING/gl-platform-handbook.md`
 - Naming Playbook: `docs/RUNBOOKS/naming-migration-playbook.md`
 
 ### Communication

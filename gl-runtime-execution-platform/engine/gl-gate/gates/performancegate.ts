@@ -45,7 +45,7 @@ export class PerformanceGate extends BaseGate {
       checksPassed++;
 
       // Check bundle size configuration
-      const webConfigPath = path.join(this.workspace, 'aep-engine-web', 'vite.config.ts');
+      const webConfigPath = path.join(this.workspace, 'aep-engine-web', 'vite-config.ts');
       try {
         const webConfig = await fs.readFile(webConfigPath, 'utf-8');
         if (webConfig.includes('build') || webConfig.includes('chunkSizeWarningLimit')) {

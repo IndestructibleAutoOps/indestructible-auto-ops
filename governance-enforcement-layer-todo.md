@@ -178,7 +178,7 @@ class SelfAuditor:
 ## 📚 Phase 5: 文檔和部署
 
 ### 5.1 撰寫架構設計文檔
-- [ ] ecosystem/enforcers/ARCHITECTURE.md
+- [ ] ecosystem/enforcers/architecture.md
 - [ ] ecosystem/gates/DESIGN.md
 - [ ] ecosystem/hooks/USAGE.md
 - [ ] ecosystem/auditors/AUDIT_GUIDE.md

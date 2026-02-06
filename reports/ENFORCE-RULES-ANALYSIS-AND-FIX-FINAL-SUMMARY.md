@@ -383,7 +383,7 @@ python ecosystem/tools/reporting_compliance_checker.py <output.txt>
 | 文件 | 用途 |
 |------|------|
 | `ecosystem/tools/fix_enforce_rules_final.py` | 自動修復腳本 |
-| `ecosystem/enforce.rules.py.backup` | 備份文件 |
+| `ecosystem/enforce-rules-py.backup` | 備份文件 |
 | `reports/ENFORCE-RULES-PY-REPORTING-FIX-COMPLETION-REPORT.md` | 修復完成報告 |
 | `reports/ENFORCE-RULES-ANALYSIS-AND-FIX-FINAL-SUMMARY.md` | 本文件 |
 
@@ -400,7 +400,7 @@ python ecosystem/tools/reporting_compliance_checker.py <output.txt>
 
 ### 安全措施
 
-- 創建備份文件 `ecosystem/enforce.rules.py.backup`
+- 創建備份文件 `ecosystem/enforce-rules-py.backup`
 - 語法檢查通過後才應用修復
 - 使用合規性檢查器驗證修復效果
 

@@ -290,7 +290,7 @@
 
 | 檔案名稱 | 責任說明 | 屬性描述 | 重要性 |
 |---------|---------|---------|--------|
-| **engine_structure.txt** (4 KB) | 引擎結構 | Engine 模組結構文檔 | 🟡 中 |
+| **engine-structure.txt** (4 KB) | 引擎結構 | Engine 模組結構文檔 | 🟡 中 |
 | **BRANCH_STATUS_REPORT.md** | 分支狀態報告 | Git 分支同步狀態報告 | 🟡 中 |
 | **COMPLETE_UPGRADE_ROADMAP.md** | 完整升級路線圖 | 系統升級計劃 | 🟡 中 |
 | **GOVERNANCE_FILE_STRUCTURE_ANALYSIS.md** | 治理檔案結構分析 | GL 治理檔案結構分析 | 🟡 中 |

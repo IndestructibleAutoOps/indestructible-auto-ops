@@ -10,13 +10,13 @@ and evidence.
 ## Quick Start (by role)
 
 - Executive / Program: [readme.md](readme.md),
-  [executive_summary.md](executive_summary.md),
+  [executive-summary.md](executive-summary.md),
   [workspace-status.md](workspace-status.md)
 - Architect / Tech Lead: [gl-enterprise-architecture/readme.md](gl-enterprise-architecture/readme.md),
   [directory-boundary-specification.md](gl-enterprise-architecture/governance/directory-boundary-specification.md),
   [boundary-reference-matrix.md](gl-enterprise-architecture/governance/boundary-reference-matrix.md),
   [designs/multi-agent-architecture.md](designs/multi-agent-architecture.md),
-  [gl-runtime-engine-platform/SPEC.md](gl-runtime-engine-platform/SPEC.md)
+  [gl-runtime-engine-platform/spec.md](gl-runtime-engine-platform/spec.md)
 - Developer: [Layer READMEs](#canonical-architecture-map-gl-layers),
   [ARCHITECTURE-TO-CODE-PROTOCOL-QUICK-START.md](governance/specs/ARCHITECTURE-TO-CODE-PROTOCOL-QUICK-START.md),
   [scripts/](scripts/)
@@ -69,11 +69,11 @@ and evidence.
 ## Runtime and Platform Architecture
 
 - [AEP Engine Overview](gl-runtime-engine-platform/readme.md)
-- [AEP Engine Spec](gl-runtime-engine-platform/SPEC.md)
+- [AEP Engine Spec](gl-runtime-engine-platform/spec.md)
 - [ETL Pipeline System Architecture](gl-runtime-engine-platform/etl-pipeline/docs/architecture/system-architecture.md)
 - [ETL Pipeline GL Layer Mapping](gl-runtime-engine-platform/etl-pipeline/docs/guides/gl-layer-mapping.md)
 - [Runtime Execution Platform Overview](gl-runtime-execution-platform/readme.md)
-- [Runtime Execution AEP Spec](gl-runtime-execution-platform/engine/SPEC.md)
+- [Runtime Execution AEP Spec](gl-runtime-execution-platform/engine/spec.md)
 - [Data Processing Platform Overview](gl-data-processing-platform/readme.md)
 
 ## Agent System Architecture

@@ -69,7 +69,7 @@ await detector.saveReportAsJSON(report, 'reports/hallucinations.json');
 ---
 
 #### 引擎 2：代碼隔離系統
-**文件**: `code_isolation_system.ts` (19 KB)
+**文件**: `code-isolation-system.ts` (19 KB)
 
 **功能特性**
 - 完整備份機制 (packages、配置文件、鎖定文件)
@@ -335,7 +335,7 @@ await orchestrator.executeCompleteRecovery();
 # 1. 複製文件
 mkdir -p scripts/emergency-recovery
 cp hallucination_detection_engine.ts scripts/emergency-recovery/
-cp code_isolation_system.ts scripts/emergency-recovery/
+cp code-isolation-system.ts scripts/emergency-recovery/
 cp architecture-rebuild-system.ts scripts/emergency-recovery/
 cp verification_compliance_framework.ts scripts/emergency-recovery/
 

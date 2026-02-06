@@ -987,7 +987,7 @@ Total Components: 295
 ## enforcers.ARCHITECTURE
 
 - **Type**: documentation
-- **Path**: ecosystem/enforcers/ARCHITECTURE.md
+- **Path**: ecosystem/enforcers/architecture.md
 - **Dependencies**: 0
 - **Dependents**: 0
 

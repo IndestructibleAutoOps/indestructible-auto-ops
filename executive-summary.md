@@ -191,7 +191,7 @@ This analysis provides a **comprehensive enhancement plan** for GL-Registry v2.0
 ## 🎁 Deliverables
 
 ### 1. Comprehensive Analysis Report
-**File:** `enhancement_analysis_report.md`  
+**File:** `enhancement-analysis-report.md`  
 **Content:** 
 - Global best practices research (NIST, CISA, Fortanix, etc.)
 - Gap analysis for each enhancement area
@@ -314,6 +314,6 @@ By 2028, GL-Registry v2.0 will be:
 ## 📧 Questions?
 
 For questions about this analysis or implementation recommendations:
-- Review the comprehensive report: `enhancement_analysis_report.md`
+- Review the comprehensive report: `enhancement-analysis-report.md`
 - Check the todo.md for detailed task breakdown
 - Refer to the uploaded enhancement proposals for context

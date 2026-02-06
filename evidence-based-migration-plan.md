@@ -219,7 +219,7 @@
 
 ```json
 {
-  "file_path": "GL10-MIGRATION-COMPLETE.md",
+  "file_path": "gl10-migration-complete.md",
   "target_path": "ecosystem/docs/GL10-MIGRATION-COMPLETE.md",
   "evidence": {
     "content_hash": "a1b2c3d4e5f6...",

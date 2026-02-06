@@ -154,7 +154,7 @@
 1. `ecosystem/registry/platforms/gl-platform-definition.yaml`
 2. `ecosystem/registry/platforms/gl-platforms.index.yaml`
 3. `ecosystem/registry/platforms/gl-platforms.placement-rules.yaml`
-4. `ecosystem/registry/platforms/gl-platforms.validator.rego`
+4. `ecosystem/registry/platforms/gl-platforms-validator.rego`
 5. `ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml`
 
 ### 註冊文件（1 個）

@@ -243,11 +243,11 @@ class SecurityPolicyRemediator:
         """Scan for security policy gaps."""
         self.gaps = []
         # Check for SECURITY.md
-        security_md = self.root_path / 'SECURITY.md'
+        security_md = self.root_path / 'security.md'
         if not security_md.exists():
             self.gaps.append({
                 'type': 'missing_security_policy',
-                'file': 'SECURITY.md',
+                'file': 'security.md',
                 'severity': 'high'
             })
         # Check for supply chain documentation

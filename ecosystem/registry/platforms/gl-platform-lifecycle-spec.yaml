@@ -339,7 +339,7 @@ spec:
           - "API 文檔"
           - "故障排除"
 
-      - name: "ARCHITECTURE.md"
+      - name: "architecture.md"
         requiredFor: ["review", "active"]
         content:
           - "架構概述"

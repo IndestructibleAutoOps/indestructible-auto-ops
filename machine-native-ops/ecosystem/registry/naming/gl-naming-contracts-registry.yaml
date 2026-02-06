@@ -203,7 +203,7 @@ spec:
     - id: gl-platform-validator
       name: "GL 平台驗證器"
       version: "1.0.0"
-      path: "ecosystem/registry/platforms/gl-platforms.validator.rego"
+      path: "ecosystem/registry/platforms/gl-platforms-validator.rego"
       description: "平台命名與結構驗證器"
       type: validator
       status: active

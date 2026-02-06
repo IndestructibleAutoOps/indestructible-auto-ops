@@ -94,7 +94,7 @@ class NamingEnforcer:
             'requirements.txt', 'setup.py', 'setup.cfg',
             'pyproject.toml', 'poetry.lock', 'Pipfile', 'Pipfile.lock',
             'package.json', 'package-lock.json', 'yarn.lock',
-            'tsconfig.json', 'webpack.config.js', 'babel.config.js',
+            'tsconfig.json', 'webpack.config.js', 'babel-config.js',
             '.eslintrc', '.prettierrc', '.babelrc',
         }
         

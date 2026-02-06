@@ -504,8 +504,8 @@ end
 
 ### Architecture Documents
 - ✅ `ecosystem/architecture/violations_update_architecture.yaml` - Complete architecture specification
-- ✅ `ecosystem/architecture/violations_update_implementation_guide.md` - Implementation guide with code examples
-- ✅ `ecosystem/evidence/closure/VIOLATIONS_UPDATE_ENHANCED_SOLUTION.md` - This document
+- ✅ `ecosystem/architecture/violations-update-implementation-guide.md` - Implementation guide with code examples
+- ✅ `ecosystem/evidence/closure/violations-update-enhanced-solution.md` - This document
 
 ### Code Examples
 - ✅ Enhanced Semantic Scanner

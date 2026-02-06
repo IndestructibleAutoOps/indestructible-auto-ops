@@ -235,7 +235,7 @@ python ecosystem/tools/reporting_compliance_checker.py <output.txt>
 | 文件 | 用途 |
 |------|------|
 | `ecosystem/tools/fix_enforce_rules_final.py` | 自動修復腳本 |
-| `ecosystem/enforce.rules.py.patch` | 手動修復補丁說明 |
+| `ecosystem/enforce-rules-py.patch` | 手動修復補丁說明 |
 | `reports/ENFORCE-RULES-PY-REPORTING-FIX-COMPLETION-REPORT.md` | 本修復報告 |
 
 ---
@@ -296,7 +296,7 @@ python ecosystem/tools/reporting_compliance_checker.py <output.txt>
 - 所有修改都在 `ecosystem/enforce.rules.py` 檔案範圍內
 
 **安全措施**:
-- 創建備份文件 `ecosystem/enforce.rules.py.backup`
+- 創建備份文件 `ecosystem/enforce-rules-py.backup`
 - 語法檢查通過後才應用修復
 - 使用合規性檢查器驗證修復效果
 

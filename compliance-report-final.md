@@ -62,7 +62,7 @@
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: docs/QUANTUM-ARCHITECTURE-PLATFORM.md
+#### GQS-002: docs/quantum-architecture-platform.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects

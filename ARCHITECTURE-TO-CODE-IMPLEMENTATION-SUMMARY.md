@@ -48,7 +48,7 @@ Layer 3: One-Shot Integration Protocol
 
 ### 1. Architecture-to-Code Protocol Specification
 
-**File:** `ecosystem/governance/specs/ARCHITECTURE-TO-CODE-PROTOCOL.md`
+**File:** `ecosystem/governance/specs/architecture-to-code-protocol.md`
 
 **Contents:**
 - Complete protocol specification (CANONICAL)

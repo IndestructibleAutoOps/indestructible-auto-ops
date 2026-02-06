@@ -96,7 +96,7 @@ Successfully upgraded the Autonomy Boundary Test Framework from **baseline to wo
 1. `ecosystem/governance/kernel/test_generator_v2.py` (470 lines)
 
 ### Documentation (2 files)
-1. `ecosystem/governance/specs/AUTONOMY-BOUNDARY-UPGRADE-COMPLETE.md`
+1. `ecosystem/governance/specs/autonomy-boundary-upgrade-complete.md`
 2. `AUTONOMY-BOUNDARY-UPGRADE-SUMMARY.md` (this file)
 
 ### Generated Governance Artifacts (7 types)
@@ -263,7 +263,7 @@ python ecosystem/governance/kernel/test_generator_v2.py
 ## 📚 Documentation
 
 ### Complete Implementation Guide
-**File:** `ecosystem/governance/specs/AUTONOMY-BOUNDARY-UPGRADE-COMPLETE.md`
+**File:** `ecosystem/governance/specs/autonomy-boundary-upgrade-complete.md`
 - Detailed explanation of all enhancements
 - Code examples and artifact structures
 - Compliance verification results
@@ -331,7 +331,7 @@ python ecosystem/governance/kernel/test_generator_v2.py
 5. Human-In-On-The-Loop (HOTL) Framework
 
 ### Documentation Files
-- `ecosystem/governance/specs/AUTONOMY-BOUNDARY-UPGRADE-COMPLETE.md` - Complete implementation guide
+- `ecosystem/governance/specs/autonomy-boundary-upgrade-complete.md` - Complete implementation guide
 - `AUTONOMY-BOUNDARY-UPGRADE-SUMMARY.md` - This summary document
 - `autonomy-boundary-upgrade-todo.md` - Completion checklist
 

@@ -31,7 +31,7 @@
 | gl-platform-definition | `ecosystem/registry/platforms/gl-platform-definition.yaml` | ✅ 存在 | 平台定义规范 |
 | gl-platform-index | `ecosystem/registry/platforms/gl-platforms.index.yaml` | ✅ 存在 | 平台索引 |
 | gl-placement-rules | `ecosystem/registry/platforms/gl-platforms.placement-rules.yaml` | ✅ 存在 | 平台放置规则 |
-| gl-platform-validator | `ecosystem/registry/platforms/gl-platforms.validator.rego` | ✅ 存在 | 平台验证器 |
+| gl-platform-validator | `ecosystem/registry/platforms/gl-platforms-validator.rego` | ✅ 存在 | 平台验证器 |
 | gl-platform-lifecycle | `ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml` | ✅ 存在 | 平台生命周期规范 |
 | gl-validation-rules | `ecosystem/contracts/validation/gl-validation-rules.yaml` | ✅ 存在 | 命名验证规则 |
 | gl-extension-points | `ecosystem/contracts/extensions/gl-extension-points.yaml` | ✅ 存在 | 扩展点定义 |
@@ -165,7 +165,7 @@ for file in \
   "ecosystem/registry/platforms/gl-platform-definition.yaml" \
   "ecosystem/registry/platforms/gl-platforms.index.yaml" \
   "ecosystem/registry/platforms/gl-platforms.placement-rules.yaml" \
-  "ecosystem/registry/platforms/gl-platforms.validator.rego" \
+  "ecosystem/registry/platforms/gl-platforms-validator.rego" \
   "ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml" \
   "ecosystem/contracts/validation/gl-validation-rules.yaml" \
   "ecosystem/contracts/extensions/gl-extension-points.yaml" \

@@ -291,7 +291,7 @@ The system is production-ready and operating correctly with all governance check
 - **P1 Implementation**: `P1_HIGH_PRIORITY_FIXES_COMPLETE.md`
 - **P2 Implementation**: `P2_MEDIUM_PRIORITY_FIXES_PARTIAL.md`
 - **Semantic Gaps**: `SEMANTIC_GAPS_VULNERABILITIES_REPORT.md`
-- **Architecture**: `ecosystem/enforcers/ARCHITECTURE.md`
+- **Architecture**: `ecosystem/enforcers/architecture.md`
 
 ---
 

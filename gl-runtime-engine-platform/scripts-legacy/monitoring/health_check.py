@@ -136,7 +136,7 @@ class HealthChecker:
             "readme.md": (self.repo_root / "readme.md").exists(),
             "QUICKSTART.md": (self.repo_root / "QUICKSTART.md").exists(),
             "PROJECT_STATUS.md": (self.repo_root / "PROJECT_STATUS.md").exists(),
-            "SECURITY.md": (self.repo_root / "SECURITY.md").exists(),
+            "security.md": (self.repo_root / "security.md").exists(),
         }
         present = sum(docs.values())
         total = len(docs)
@@ -158,7 +158,7 @@ class HealthChecker:
     def _check_security_config(self) -> HealthCheckResult:
         """Check security configuration."""
         checks = {
-            "security_policy": (self.repo_root / "SECURITY.md").exists(),
+            "security_policy": (self.repo_root / "security.md").exists(),
             "secrets_baseline": (self.repo_root / ".secrets.baseline").exists(),
             "pre_commit": (self.repo_root / ".pre-commit-config.yaml").exists(),
             "gitignore": (self.repo_root / ".gitignore").exists(),

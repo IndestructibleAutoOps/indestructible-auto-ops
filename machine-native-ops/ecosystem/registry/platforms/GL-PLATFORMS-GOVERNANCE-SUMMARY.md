@@ -55,7 +55,7 @@
 - ✅ 檢查清單
 
 ### 4. gl-platforms.validator.rego
-**位置**: `ecosystem/registry/platforms/gl-platforms.validator.rego`
+**位置**: `ecosystem/registry/platforms/gl-platforms-validator.rego`
 
 **核心內容**:
 - ✅ 命名格式驗證（GL-PD-001）

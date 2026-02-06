@@ -141,7 +141,7 @@ spec:
         valid:
           - "root.config.yaml"
           - "root.modules.yaml"
-          - "root.devices.map"
+          - "root-devices.map"
           - "root.env.sh"
         invalid:
           - "config.yaml"        # 缺少 root. 前綴

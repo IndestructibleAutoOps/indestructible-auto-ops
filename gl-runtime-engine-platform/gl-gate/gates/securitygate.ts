@@ -50,7 +50,7 @@ export class SecurityGate extends BaseGate {
       }
 
       // Check for security headers in web config
-      const webConfigPath = path.join(this.workspace, 'aep-engine-web', 'vite.config.ts');
+      const webConfigPath = path.join(this.workspace, 'aep-engine-web', 'vite-config.ts');
       try {
         const webConfig = await fs.readFile(webConfigPath, 'utf-8');
         if (webConfig.includes('security') || webConfig.includes('headers')) {

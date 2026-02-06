@@ -302,12 +302,12 @@
         "build": {
           "description": "Build tool configurations",
           "files": [
-            "vite.config.ts",
+            "vite-config.ts",
             "tsconfig.json",
             "eslint.config.js",
             ".eslintrc.yaml",
-            "jest.config.js",
-            "postcss.config.js",
+            "jest-config.js",
+            "postcss-config.js",
             "tailwind.config.ts",
             "drizzle.config.ts",
             "peachy-build.toml"

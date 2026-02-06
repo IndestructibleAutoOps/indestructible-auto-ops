@@ -125,7 +125,7 @@ layers:
 ```yaml
 # 產出文件：.governance/implementation/module-decomposition.yaml
 
-architecture_reference: "ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md"
+architecture_reference: "ecosystem/governance/specs/backend-governance-responsibility.md"
 generated_at: "2025-02-05T12:00:00Z"
 sha256: "..."
 
@@ -633,7 +633,7 @@ class TestSemanticTokenizer:
 ```yaml
 ENTER ARCHITECTURE_TO_CODE_MODE
 
-architecture_spec: "ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md"
+architecture_spec: "ecosystem/governance/specs/backend-governance-responsibility.md"
 target_layers: ["Layer 1"]  # 先實作 Layer 1
 mode: ONE_SHOT_INTEGRATION
 
@@ -910,7 +910,7 @@ closure_status:
 **用戶輸入：**
 ```
 ENTER ARCHITECTURE_TO_CODE_MODE
-architecture_spec: ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md
+architecture_spec: ecosystem/governance/specs/backend-governance-responsibility.md
 target_layers: [Layer 1]
 ```
 

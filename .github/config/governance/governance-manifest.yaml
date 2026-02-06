@@ -237,7 +237,7 @@ spec:
   # Versioning and updates
   versioning:
     scheme: "semver"
-    changelog: "CHANGELOG.md"
+    changelog: "changelog.md"
     updatePolicy: "rolling"
     deprecationWindow: "6 months"
 

@@ -98,7 +98,7 @@ class MetricsCollector:
     def _collect_security_metrics(self) -> Dict[str, Any]:
         """Collect security metrics."""
         return {
-            "security_policy_exists": (self.repo_root / "SECURITY.md").exists(),
+            "security_policy_exists": (self.repo_root / "security.md").exists(),
             "secrets_baseline_exists": (self.repo_root / ".secrets.baseline").exists(),
             "pre_commit_enabled": (self.repo_root / ".pre-commit-config.yaml").exists(),
         }

@@ -273,7 +273,7 @@ spec:
   validationPipeline:
     - step: 1
       name: "Naming Validation"
-      tool: "gl-platforms.validator.rego"
+      tool: "gl-platforms-validator.rego"
       checks:
         - "GL-PD-001: 命名格式驗證"
         - "PR-007: 命名空間驗證"

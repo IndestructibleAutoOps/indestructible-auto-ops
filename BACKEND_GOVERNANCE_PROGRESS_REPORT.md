@@ -175,7 +175,7 @@ Same semantic concept can be expressed in multiple languages and sealed together
 ## Files Created
 
 ### Specifications
-- `ecosystem/governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md`
+- `ecosystem/governance/specs/backend-governance-responsibility.md`
 - `backend_governance_todo.md`
 
 ### Layer 1 Components (Semantic Layer)

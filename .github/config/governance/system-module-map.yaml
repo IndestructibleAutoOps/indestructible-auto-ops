@@ -498,8 +498,8 @@ directory_categories:
           - "readme.md"
           - "README.en.md"
           - "CONTRIBUTING.md"
-          - "SECURITY.md"
-          - "CHANGELOG.md"
+          - "security.md"
+          - "changelog.md"
           - "CODE_OF_CONDUCT.md"
 
   # ─────────────────────────────────────────────────────────────────────────
@@ -676,7 +676,7 @@ root_directory_guidelines:
       - ".gitignore"
       - ".eslintrc.yaml"
       - ".prettierrc"
-      - "jest.config.js"
+      - "jest-config.js"
   
   documentation_to_consolidate:
     description: "應移至 docs/ 的文件"
