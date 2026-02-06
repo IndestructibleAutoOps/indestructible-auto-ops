@@ -4,6 +4,8 @@ NG Era-1 Namespace Governance Pipeline
 
 Strict flow model:
   [internal] -> [external] -> [global] -> [cross-validate] -> [insight] -> (next loop)
+
+External/global/cross/insight stages require authorized team tag per access policy.
 """
 
 from __future__ import annotations
@@ -46,6 +48,11 @@ DEFAULT_GLOBAL_ALIASES = Path(
 DEFAULT_REGISTRY_DIR = Path(
     "/workspace/gl-governance-compliance-platform/governance/naming/registry"
 )
+DEFAULT_ACCESS_POLICY = Path(
+    "/workspace/gl-governance-compliance-platform/governance/naming/ng-namespace-access-policy.yaml"
+)
+
+TEAM_TAG_ENV = "IND_AUTOOPS_TEAM_TAG"
 
 DEFAULT_OUTPUTS = {
     "internal": "ng-era1-internal.json",
@@ -156,6 +163,60 @@ def load_structured_file(path: Path) -> Dict:
     if path.suffix.lower() in {".yaml", ".yml"}:
         return load_yaml_file(path)
     raise ValueError(f"Unsupported structured file: {path}")
+
+
+def load_access_policy(path: Path) -> Dict:
+    if not path.exists():
+        return {}
+    if yaml is None:
+        raise RuntimeError("PyYAML is required to load access policy files.")
+    with path.open("r", encoding="utf-8") as handle:
+        return yaml.safe_load(handle) or {}
+
+
+def resolve_team_tag(args: argparse.Namespace) -> str:
+    return (args.team_tag or os.environ.get(TEAM_TAG_ENV, "")).strip()
+
+
+def authorized_teams(policy: Dict) -> List[str]:
+    return policy.get("ng_namespace_access_policy", {}).get("authorized_teams", [])
+
+
+def is_authorized(team_tag: str, policy: Dict) -> bool:
+    if not team_tag:
+        return False
+    return team_tag in authorized_teams(policy)
+
+
+def require_authorization(stage: str, team_tag: str, policy: Dict) -> None:
+    restricted = {"external", "global", "cross-validate", "insight"}
+    if stage not in restricted:
+        return
+    if not is_authorized(team_tag, policy):
+        allowed = authorized_teams(policy)
+        message = (
+            f"Stage '{stage}' requires authorized team tag. "
+            f"Provide --team-tag or set {TEAM_TAG_ENV}. "
+            f"Allowed teams: {allowed}"
+        )
+        raise RuntimeError(message)
+
+
+def ensure_offline_path(stage: str, path_value: str) -> None:
+    lowered = path_value.lower()
+    if "://" in lowered or lowered.startswith("http"):
+        raise RuntimeError(
+            f"Stage '{stage}' requires offline snapshot path. "
+            f"Remote URLs are not allowed: {path_value}"
+        )
+
+
+def build_authorization_context(team_tag: str, policy_path: Path, policy: Dict) -> Dict:
+    return {
+        "team_tag": team_tag,
+        "authorized": is_authorized(team_tag, policy),
+        "policy_path": str(policy_path),
+    }
 
 
 def write_json(path: Path, payload: Dict) -> None:
@@ -759,6 +820,7 @@ def internal_stage(
     output_path: Path,
     max_file_size: int,
     exclude_dirs: List[str],
+    auth_context: Dict,
 ) -> Path:
     spec = load_yaml_file(spec_path)
     registry_dir.mkdir(parents=True, exist_ok=True)
@@ -773,6 +835,8 @@ def internal_stage(
     payload = {
         "stage": "internal",
         "timestamp": utc_now(),
+        "flow_model": STAGES,
+        "authorization": auth_context,
         "repo_root": str(repo_root),
         "spec_path": str(spec_path),
         "spec_version": spec.get("ngera1namespace_governance", {}).get("version"),
@@ -785,11 +849,13 @@ def internal_stage(
     return output_path
 
 
-def external_stage(snapshot_path: Path, output_path: Path) -> Path:
+def external_stage(snapshot_path: Path, output_path: Path, auth_context: Dict) -> Path:
     data = load_structured_file(snapshot_path) if snapshot_path.exists() else {}
     payload = {
         "stage": "external",
         "timestamp": utc_now(),
+        "flow_model": STAGES,
+        "authorization": auth_context,
         "snapshot_path": str(snapshot_path),
         "snapshot_keys": sorted(list(data.keys())) if isinstance(data, dict) else [],
     }
@@ -797,11 +863,13 @@ def external_stage(snapshot_path: Path, output_path: Path) -> Path:
     return output_path
 
 
-def global_stage(aliases_path: Path, output_path: Path) -> Path:
+def global_stage(aliases_path: Path, output_path: Path, auth_context: Dict) -> Path:
     data = load_structured_file(aliases_path) if aliases_path.exists() else {}
     payload = {
         "stage": "global",
         "timestamp": utc_now(),
+        "flow_model": STAGES,
+        "authorization": auth_context,
         "aliases_path": str(aliases_path),
         "aliases_keys": sorted(list(data.keys())) if isinstance(data, dict) else [],
     }
@@ -816,6 +884,7 @@ def cross_validate_stage(
     external_path: Optional[Path],
     global_path: Optional[Path],
     output_path: Path,
+    auth_context: Dict,
 ) -> Path:
     internal_payload = load_json_file(internal_path)
     mapping_payload = load_yaml_file(mapping_path)
@@ -853,6 +922,8 @@ def cross_validate_stage(
     payload = {
         "stage": "cross-validate",
         "timestamp": utc_now(),
+        "flow_model": STAGES,
+        "authorization": auth_context,
         "inputs": {
             "internal": str(internal_path),
             "external": str(external_path) if external_path else "",
@@ -880,7 +951,7 @@ def cross_validate_stage(
     return output_path
 
 
-def insight_stage(cross_validation_path: Path, output_path: Path) -> Path:
+def insight_stage(cross_validation_path: Path, output_path: Path, auth_context: Dict) -> Path:
     data = load_json_file(cross_validation_path)
     counts = data.get("counts", {})
     details = data.get("details", {})
@@ -903,6 +974,7 @@ def insight_stage(cross_validation_path: Path, output_path: Path) -> Path:
         "# NG Era-1 Namespace Governance Insights",
         "",
         f"Timestamp: {utc_now()}",
+        f"Authorization: {auth_context.get('team_tag', '')}",
         "",
         "## Summary Insights",
         *insights,
@@ -949,6 +1021,10 @@ def ensure_prerequisites(stage: str, registry_dir: Path) -> None:
 def run_all(args: argparse.Namespace) -> None:
     registry_dir = Path(args.registry_dir)
     registry_dir.mkdir(parents=True, exist_ok=True)
+    policy_path = Path(args.access_policy)
+    policy = load_access_policy(policy_path)
+    team_tag = resolve_team_tag(args)
+    auth_context = build_authorization_context(team_tag, policy_path, policy)
 
     internal_path = resolve_output_path("internal", registry_dir, args.out if args.stage == "internal" else None)
     internal_stage(
@@ -958,16 +1034,22 @@ def run_all(args: argparse.Namespace) -> None:
         output_path=internal_path,
         max_file_size=args.max_file_size,
         exclude_dirs=args.exclude_dir,
+        auth_context=auth_context,
     )
 
+    require_authorization("external", team_tag, policy)
+    ensure_offline_path("external", args.snapshot)
     external_path = resolve_output_path("external", registry_dir, None)
-    external_stage(Path(args.snapshot), external_path)
+    external_stage(Path(args.snapshot), external_path, auth_context)
 
+    require_authorization("global", team_tag, policy)
+    ensure_offline_path("global", args.global_aliases)
     global_path = resolve_output_path("global", registry_dir, None)
-    global_stage(Path(args.global_aliases), global_path)
+    global_stage(Path(args.global_aliases), global_path, auth_context)
 
     registry_path = registry_dir / "namespace-registry.jsonl"
     cross_path = resolve_output_path("cross-validate", registry_dir, None)
+    require_authorization("cross-validate", team_tag, policy)
     cross_validate_stage(
         internal_path=internal_path,
         mapping_path=Path(args.mapping),
@@ -975,10 +1057,12 @@ def run_all(args: argparse.Namespace) -> None:
         external_path=external_path,
         global_path=global_path,
         output_path=cross_path,
+        auth_context=auth_context,
     )
 
     insight_path = resolve_output_path("insight", registry_dir, None)
-    insight_stage(cross_path, insight_path)
+    require_authorization("insight", team_tag, policy)
+    insight_stage(cross_path, insight_path, auth_context)
 
     print(f"Pipeline completed. Output directory: {registry_dir}")
 
@@ -987,6 +1071,10 @@ def run_single(args: argparse.Namespace) -> None:
     registry_dir = Path(args.registry_dir)
     registry_dir.mkdir(parents=True, exist_ok=True)
     ensure_prerequisites(args.stage, registry_dir)
+    policy_path = Path(args.access_policy)
+    policy = load_access_policy(policy_path)
+    team_tag = resolve_team_tag(args)
+    auth_context = build_authorization_context(team_tag, policy_path, policy)
 
     if args.stage == "internal":
         internal_stage(
@@ -996,24 +1084,32 @@ def run_single(args: argparse.Namespace) -> None:
             output_path=resolve_output_path("internal", registry_dir, args.out),
             max_file_size=args.max_file_size,
             exclude_dirs=args.exclude_dir,
+            auth_context=auth_context,
         )
         return
 
     if args.stage == "external":
+        require_authorization("external", team_tag, policy)
+        ensure_offline_path("external", args.snapshot)
         external_stage(
             snapshot_path=Path(args.snapshot),
             output_path=resolve_output_path("external", registry_dir, args.out),
+            auth_context=auth_context,
         )
         return
 
     if args.stage == "global":
+        require_authorization("global", team_tag, policy)
+        ensure_offline_path("global", args.global_aliases)
         global_stage(
             aliases_path=Path(args.global_aliases),
             output_path=resolve_output_path("global", registry_dir, args.out),
+            auth_context=auth_context,
         )
         return
 
     if args.stage == "cross-validate":
+        require_authorization("cross-validate", team_tag, policy)
         cross_validate_stage(
             internal_path=registry_dir / DEFAULT_OUTPUTS["internal"],
             mapping_path=Path(args.mapping),
@@ -1021,13 +1117,16 @@ def run_single(args: argparse.Namespace) -> None:
             external_path=registry_dir / DEFAULT_OUTPUTS["external"],
             global_path=registry_dir / DEFAULT_OUTPUTS["global"],
             output_path=resolve_output_path("cross-validate", registry_dir, args.out),
+            auth_context=auth_context,
         )
         return
 
     if args.stage == "insight":
+        require_authorization("insight", team_tag, policy)
         insight_stage(
             cross_validation_path=registry_dir / DEFAULT_OUTPUTS["cross-validate"],
             output_path=resolve_output_path("insight", registry_dir, args.out),
+            auth_context=auth_context,
         )
         return
 
@@ -1072,6 +1171,15 @@ def parse_args() -> argparse.Namespace:
         "--global-aliases",
         default=str(DEFAULT_GLOBAL_ALIASES),
         help="Global aliases mapping file.",
+    )
+    parser.add_argument(
+        "--access-policy",
+        default=str(DEFAULT_ACCESS_POLICY),
+        help="Access policy file for conditional stage authorization.",
+    )
+    parser.add_argument(
+        "--team-tag",
+        help=f"Team tag for authorized stages (or set {TEAM_TAG_ENV}).",
     )
     parser.add_argument(
         "--registry-dir",

@@ -1,0 +1,7 @@
+ng_namespace_access_policy:
+  version: "1.0"
+  authorized_teams:
+    - "@IndestructibleAutoOps 工程團隊"
+  offline_only: true
+  notes:
+    - "External/global stages must use offline snapshots."
