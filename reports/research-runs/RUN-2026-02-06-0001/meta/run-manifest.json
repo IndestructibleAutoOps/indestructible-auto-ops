@@ -1,0 +1,19 @@
+{
+  "run_id": "RUN-2026-02-06-0001",
+  "workflow_id": "GL-WORKFLOW-RESEARCH-LOOP-0001",
+  "status": "draft",
+  "artifacts": {
+    "intake": "intake.md",
+    "gap_list": "gap-list.md",
+    "synthesis": "synthesis.md",
+    "evidence": [
+      "evidence/internal.jsonl",
+      "evidence/external.jsonl",
+      "evidence/global.jsonl"
+    ],
+    "outputs": [
+      "outputs/architecture-plan.md",
+      "outputs/naming-map.json"
+    ]
+  }
+}

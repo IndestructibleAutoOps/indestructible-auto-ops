@@ -342,6 +342,55 @@ class LayerDependencyRule(GovernanceRule):
         ArchitectureLayer.L4_SEMANTIC: [ArchitectureLayer.L1_GOVERNANCE, ArchitectureLayer.L2_EVIDENCE, ArchitectureLayer.L3_DECISION],
         ArchitectureLayer.L5_EXECUTION: [ArchitectureLayer.L1_GOVERNANCE, ArchitectureLayer.L2_EVIDENCE, ArchitectureLayer.L3_DECISION, ArchitectureLayer.L4_SEMANTIC],
     }
+
+    def _normalize_layer(self, value: Any) -> Optional[ArchitectureLayer]:
+        if isinstance(value, ArchitectureLayer):
+            return value
+        if isinstance(value, int):
+            try:
+                return ArchitectureLayer(value)
+            except ValueError:
+                return None
+        if isinstance(value, str):
+            cleaned = value.strip().upper()
+            if cleaned in ArchitectureLayer.__members__:
+                return ArchitectureLayer[cleaned]
+            if cleaned.startswith("L"):
+                cleaned = cleaned[1:]
+            if cleaned.isdigit():
+                try:
+                    return ArchitectureLayer(int(cleaned))
+                except ValueError:
+                    return None
+        return None
+
+    def _extract_completed_layers(self, evidence: Dict[str, Any]) -> List[ArchitectureLayer]:
+        if not evidence:
+            return []
+
+        sources = []
+        for key in ("completed_layers", "satisfied_layers"):
+            if key in evidence:
+                sources.append(evidence[key])
+
+        context = evidence.get("execution_context")
+        if isinstance(context, dict):
+            for key in ("completed_layers", "satisfied_layers"):
+                if key in context:
+                    sources.append(context[key])
+
+        completed = []
+        for source in sources:
+            if isinstance(source, (list, tuple, set)):
+                candidates = source
+            else:
+                candidates = [source]
+            for item in candidates:
+                normalized = self._normalize_layer(item)
+                if normalized and normalized not in completed:
+                    completed.append(normalized)
+
+        return completed
     _LAYER_ALIASES = {
         "L1": ArchitectureLayer.L1_GOVERNANCE,
         "L2": ArchitectureLayer.L2_EVIDENCE,
@@ -410,6 +459,9 @@ class LayerDependencyRule(GovernanceRule):
         
         # Check that all required upstream layers are satisfied
         required_layers = self.LAYER_DEPENDENCIES.get(current_layer, [])
+        completed_layers = self._extract_completed_layers(event.evidence)
+        missing_layers = [layer for layer in required_layers if layer not in completed_layers]
+
         satisfied_layers_raw = event.evidence.get("satisfied_layers")
         satisfied_layers, invalid_entries = self._normalize_layers(satisfied_layers_raw)
         
@@ -450,6 +502,8 @@ class LayerDependencyRule(GovernanceRule):
                 violation_type=ViolationType.LAYER_BYPASS,
                 enforcement_level=EnforcementLevel.CRITICAL,
                 description=(
+                    f"Layer dependencies not satisfied for {current_layer.name}: "
+                    f"missing {[layer.name for layer in missing_layers]}"
                     f"Layer dependency violation: {current_layer.name} requires "
                     f"{', '.join(layer.name for layer in missing_layers)}"
                 ),
@@ -457,6 +511,7 @@ class LayerDependencyRule(GovernanceRule):
                     "event_id": event.event_id,
                     "current_layer": current_layer.name,
                     "required_layers": [layer.name for layer in required_layers],
+                    "completed_layers": [layer.name for layer in completed_layers],
                     "satisfied_layers": [layer.name for layer in satisfied_layers],
                     "missing_layers": [layer.name for layer in missing_layers],
                 },
@@ -464,6 +519,7 @@ class LayerDependencyRule(GovernanceRule):
                 escalation_required=True
             )
             return False, violation
+
         
         return True, None
 
