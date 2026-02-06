@@ -1,125 +1,151 @@
 # Ecosystem Core
 
-The Ecosystem Core contains the centralized governance framework that all platforms must follow. This provides consistent governance, policies, and standards across all platform implementations.
+The Ecosystem Core is the centralized directory containing all platform implementations, governance frameworks, tooling, documentation, and infrastructure for the MachineNativeOps GL Architecture.
 
 ## Structure
 
 ```
 ecosystem/
-├── governance/              # Centralized governance framework
-│   ├── gl-enterprise-architecture/    # GL00-09: Enterprise governance
-│   ├── gl-boundary-enforcement/        # GL60-80: Boundary enforcement
-│   ├── gl-meta-specifications/         # GL90-99: Meta specifications
-│   └── gl-extension-framework/          # GL81-83: Extension framework
-├── platform-templates/      # Standardized platform templates
-│   ├── core-template/        # Core platform template
-│   ├── cloud-template/       # Cloud platform template
-│   └── on-premise-template/  # On-premise template
-├── registry/                 # Centralized registries
-│   ├── platform-registry/    # Platform registration
-│   ├── service-registry/     # Service discovery
-│   └── data-registry/        # Data catalog
-└── coordination/             # Cross-platform coordination
-    ├── service-discovery/    # Service discovery system
-    ├── data-synchronization/ # Data sync mechanisms
-    ├── communication/        # Inter-platform communication
-    └── api-gateway/          # API gateway
+├── platforms/                   # All GL Platform implementations
+│   ├── runtime-engine/          # GL30-49: Execution Runtime Engine (AEP, ETL, etc.)
+│   ├── runtime-services/        # GL30-49: Runtime Services
+│   ├── governance-architecture/ # GL00-09: Governance Architecture
+│   ├── governance-compliance/   # GL60-80: Governance Compliance
+│   ├── enterprise-architecture/ # GL00-09: Enterprise Architecture
+│   ├── infrastructure-foundation/ # Kubernetes, Redis, RKE2
+│   ├── automation-instant/      # Instant Automation Platform
+│   ├── automation-organizer/    # File Organizer Platform
+│   ├── core/                    # Platform Core (TS)
+│   ├── data-processing/         # GL20-29: Data Processing
+│   ├── search-elasticsearch/    # GL20-29: Search System
+│   ├── semantic-core/           # Semantic Computation
+│   ├── quantum-computing/       # Quantum Computing
+│   ├── integration-hub/         # GL10-29: Integration Hub
+│   ├── monitoring-observability/ # GL50-59: Monitoring
+│   ├── gl.platform-assistant/   # Platform Assistant API
+│   ├── gl.platform-ide/         # IDE Plugin
+│   └── registry/                # Platform Registry
+├── governance/                  # Governance specifications & policies
+│   ├── specs/                   # Architecture-to-code protocol specs
+│   ├── workflows/               # Research loop & governance workflows
+│   ├── kernel/                  # Self-governance kernel
+│   ├── ng-namespace/            # NG Namespace Governance System
+│   ├── policies/                # OPA/Rego policies
+│   ├── closure/                 # Governance closure
+│   └── ...                      # Enforcement rules, format layers, etc.
+├── contracts/                   # GL interface contracts
+│   ├── governance/              # Governance contracts
+│   ├── naming-governance/       # Naming convention contracts
+│   ├── verification/            # Verification contracts
+│   ├── reasoning/               # Reasoning contracts
+│   └── ...                      # Other contract definitions
+├── coordination/                # Cross-platform coordination
+│   ├── api-gateway/             # API Gateway (auth, rate limit, routing)
+│   ├── communication/           # Message bus & event dispatcher
+│   ├── data-synchronization/    # Data sync engine & connectors
+│   └── service-discovery/       # Service registry & discovery
+├── reasoning/                   # AI Reasoning engine
+├── engines/                     # Core engines (sealing, repair, governance)
+├── enforcers/                   # Governance enforcers
+├── foundation/                  # Foundation schemas, formatters, DAG
+├── auto-task/                   # Automated task scheduling system
+├── config/                      # Platform configuration files
+├── deploy/                      # Deployment configs & scripts
+│   ├── scripts/                 # Deployment scripts (single-node, cluster, air-gapped)
+│   └── platform/                # Platform deployment (alertmanager, etc.)
+├── docs/                        # All documentation
+│   ├── archive/                 # Historical docs & reports
+│   ├── analysis/                # Architecture analysis
+│   ├── plans/                   # Migration & restructure plans
+│   ├── designs/                 # Multi-agent architecture designs
+│   └── ...                      # Additional documentation
+├── reports/                     # Audit & compliance reports
+├── scripts/                     # Utility & automation scripts
+├── tests/                       # Test suites
+├── tools/                       # Development & governance tools
+├── registry/                    # Service, data & platform registries
+├── evidence/                    # Compliance evidence chain
+├── metrics/                     # Current metrics
+├── monitoring/                  # Alert rules
+├── data/                        # Data files & legacy artifacts
+├── archives/                    # Historical output archives
+├── complements/                 # Templates (reports, checklists, etc.)
+├── platform-templates/          # Platform deployment templates
+│   ├── core-template/           # Core platform template
+│   ├── cloud-template/          # Cloud platform template
+│   └── on-premise-template/     # On-premise template
+├── platform-cloud/              # Cloud platform configuration
+├── ecosystem-cloud/             # Cloud ecosystem adapters & contracts
+├── hooks/                       # Pre/post execution hooks
+├── indexes/                     # Internal/external indexes
+├── mocks/                       # Mock services & data
+├── semantic/                    # Semantic context
+├── utils/                       # Utility modules
+├── validators/                  # Network & data validators
+├── events/                      # Event emitter
+├── gates/                       # Quality gates
+├── shared/                      # Shared resources
+├── __init__.py                  # Python package init
+└── README.md                    # This file
 ```
 
 ## Purpose
 
-The Ecosystem Core serves as the foundation for all platform implementations:
+The ecosystem provides:
 
-1. **Governance Consistency**: All platforms follow the same governance framework
-2. **Platform Scalability**: New platforms can be created from templates
-3. **Cross-Platform Coordination**: Mechanisms for service discovery and data sync
-4. **Centralized Registry**: Single source of truth for platforms, services, and data
-5. **Extension Framework**: Standardized way to extend platform capabilities
+1. **Centralized Governance**: All governance policies, enforcement rules, and compliance checking are managed centrally under `governance/` and `contracts/`.
 
-## Governance Layers
+2. **Platform Consolidation**: All GL platform implementations (formerly scattered as `gl-*` directories) are consolidated under `platforms/`.
 
-### GL00-09: gl-enterprise-architecture
-Enterprise governance framework providing contracts to all layers.
+3. **Cross-Platform Coordination**: Service discovery, data synchronization, API gateway, and communication are managed through `coordination/`.
 
-### GL60-80: gl-boundary-enforcement
-Boundary enforcement and compliance checking across all platforms.
+4. **Unified Tooling**: All scripts, tools, deployment configurations, and test suites are organized in their respective directories.
 
-### GL81-83: gl-extension-framework
-Extension framework for adding platform capabilities.
+5. **Comprehensive Documentation**: All docs, reports, and historical archives are consolidated under `docs/` and `reports/`.
 
-### GL90-99: gl-meta-specifications
-Meta-specifications and documentation standards.
+## Quick Start
 
-## Platform Templates
-
-Templates provide a standardized starting point for new platforms:
-
-- **core-template**: Base template for core infrastructure
-- **cloud-template**: Template for cloud-based platforms (AWS, GCP, Azure)
-- **on-premise-template**: Template for on-premise deployments
-
-## Registries
-
-Centralized registries maintain platform, service, and data metadata:
-
-- **platform-registry**: Registered platforms and their metadata
-- **service-registry**: Available services and their endpoints
-- **data-registry**: Data schemas and catalogs
-
-## Coordination
-
-Coordination mechanisms enable cross-platform operation:
-
-- **service-discovery**: Automatic service discovery across platforms
-- **data-synchronization**: Data synchronization between platforms
-- **communication**: Inter-platform communication protocols
-- **api-gateway**: Unified API gateway for all platforms
-
-## Usage
-
-### Creating a New Platform
-
-1. Copy appropriate template from `platform-templates/`
-2. Customize platform configuration
-3. Register platform in `registry/platform-registry/`
-4. Implement platform-specific services
-5. Update coordination systems
-
-### Platform Registration
-
-Register your platform in `registry/platform-registry/platform-manifest.yaml`:
-
-```yaml
-name: platform-name
-version: 1.0.0
-type: cloud|on-premise|edge
-capabilities:
-  - service-discovery
-  - data-synchronization
-  - api-gateway
-governance:
-  - gl-enterprise-architecture
-  - gl-boundary-enforcement
+### Run Tests
+```bash
+python3 -m pytest ecosystem/tests/
 ```
 
-### Service Discovery
+### Run Governance Checks
+```bash
+python3 ecosystem/platforms/governance-compliance/scripts/boundary_checker.py --check
+```
 
-Services automatically register in `registry/service-registry/` and are discoverable by all platforms.
+### Deploy Platform
+```bash
+# Single-node deployment
+bash ecosystem/deploy/scripts/single-node/02-install-k3s.sh
+bash ecosystem/deploy/scripts/single-node/03-deploy-gl-backend.sh
+```
 
-## Compliance
+### Auto-Task System
+```bash
+cd ecosystem/auto-task
+python3 main.py
+```
+
+## Governance
 
 All platforms must comply with:
-- GL enterprise architecture standards
-- Boundary enforcement rules
-- Meta specifications
-- Extension framework guidelines
+- GL naming conventions (`governance/ng-namespace/`)
+- Interface contracts (`contracts/`)
+- Boundary enforcement rules (`governance/enforcement-rules.yaml`)
+- Quality gates (`gates/`)
 
-## Extension Framework
+## Key Modules
 
-Platform extensions follow the GL81-83 extension framework standards for consistency.
-
----
-
-**GL Compliance**: Yes
-**Layer**: GL00-09 (Enterprise Governance)
-**Status**: Active
+| Module | Description |
+|--------|------------|
+| `platforms/runtime-engine/` | Core execution runtime with AEP engine app/web |
+| `platforms/governance-architecture/` | GL layer governance specifications |
+| `platforms/governance-compliance/` | Compliance checking & enforcement |
+| `platforms/infrastructure-foundation/` | Kubernetes & infrastructure configs |
+| `governance/` | Centralized governance framework |
+| `contracts/` | GL interface contracts |
+| `coordination/` | Cross-platform coordination services |
+| `reasoning/` | AI reasoning engine |
+| `auto-task/` | Automated task scheduling |

@@ -14,91 +14,156 @@ The project follows an 8-layer GL enterprise architecture with clear separation 
 
 ```
 GL90-99 (Meta Specifications)
-    ↓
-GL00-09 (Enterprise Architecture) ← Pure Governance
-    ↓
+    |
+GL00-09 (Enterprise Architecture)  <- Pure Governance
+    |
 GL10-29 (Platform Services)
-    ↓
+    |
 GL20-29 (Data Processing)
-    ↓
+    |
 GL30-49 (Execution Runtime)
-    ↓
+    |
 GL50-59 (Observability) [Read-Only Monitor]
 GL60-80 (Governance Compliance) [GL00-09 Only]
 GL81-83 (Extension Services) [Can Extend All]
+```
+
+## Project Structure
+
+All platform code, governance, tooling, and documentation are consolidated under the core `ecosystem/` directory:
+
+```
+/
+├── ecosystem/                           # Core ecosystem directory
+│   ├── platforms/                       # GL Platform implementations
+│   │   ├── runtime-engine/              # GL30-49: Execution Runtime Engine
+│   │   ├── runtime-services/            # GL30-49: Runtime Services
+│   │   ├── governance-architecture/     # GL00-09: Governance Architecture
+│   │   ├── governance-compliance/       # GL60-80: Governance Compliance
+│   │   ├── enterprise-architecture/     # GL00-09: Enterprise Architecture
+│   │   ├── infrastructure-foundation/   # Infrastructure & K8s
+│   │   ├── automation-instant/          # Instant Automation Platform
+│   │   ├── automation-organizer/        # File Organizer Platform
+│   │   ├── core/                        # Platform Core
+│   │   ├── data-processing/             # GL20-29: Data Processing
+│   │   ├── search-elasticsearch/        # GL20-29: Search System
+│   │   ├── semantic-core/               # Semantic Computation
+│   │   ├── quantum-computing/           # Quantum Computing Platform
+│   │   ├── integration-hub/             # GL10-29: Integration Hub
+│   │   ├── monitoring-observability/    # GL50-59: Monitoring & Observability
+│   │   ├── gl.platform-assistant/       # Platform Assistant API
+│   │   ├── gl.platform-ide/             # IDE Plugin
+│   │   └── registry/                    # Platform Registry
+│   ├── governance/                      # Governance specifications & policies
+│   │   ├── specs/                       # Architecture-to-code protocols
+│   │   ├── workflows/                   # Research & governance workflows
+│   │   ├── kernel/                      # Self-governance kernel
+│   │   ├── ng-namespace/                # NG Namespace Governance
+│   │   ├── policies/                    # OPA/Rego policies
+│   │   └── ...                          # Enforcement rules, closure, etc.
+│   ├── contracts/                       # GL interface contracts
+│   ├── coordination/                    # Service coordination
+│   │   ├── api-gateway/                 # API Gateway
+│   │   ├── communication/               # Message bus & events
+│   │   ├── data-synchronization/        # Data sync engine
+│   │   └── service-discovery/           # Service registry
+│   ├── reasoning/                       # AI reasoning engine
+│   ├── engines/                         # Core engines (sealing, repair, etc.)
+│   ├── enforcers/                       # Governance enforcers
+│   ├── foundation/                      # Foundation schemas & formatters
+│   ├── auto-task/                       # Automated task system
+│   ├── config/                          # Platform configuration
+│   ├── deploy/                          # Deployment scripts & configs
+│   ├── docs/                            # All documentation
+│   ├── reports/                         # Audit & compliance reports
+│   ├── scripts/                         # Utility & automation scripts
+│   ├── tests/                           # Test suites
+│   ├── tools/                           # Development tools
+│   ├── registry/                        # Service & data registries
+│   ├── evidence/                        # Compliance evidence
+│   ├── metrics/                         # Current metrics
+│   ├── monitoring/                      # Alert rules
+│   ├── data/                            # Data files & legacy artifacts
+│   ├── archives/                        # Historical archives
+│   └── ...                              # Additional ecosystem modules
+├── .github/                             # GitHub workflows & CI/CD
+├── .config/                             # System configuration
+├── .agent_hooks/                        # Agent hooks
+├── .governance/                         # Root governance metadata
+├── AGENTS.md                            # Agent system documentation
+├── ARCHITECTURE.md                      # Architecture overview
+├── GOVERNANCE.md                        # Governance overview
+├── readme.md                            # This file
+├── docker-compose.yaml                  # Container orchestration
+├── pytest.ini                           # Python test config
+├── ruff.toml                            # Python linter config
+├── root.bootstrap.yaml                  # Bootstrap configuration
+└── wrangler.toml                        # Wrangler configuration
 ```
 
 ## Layer Descriptions
 
 ### GL00-09: Enterprise Architecture
 - **Purpose**: Enterprise-level governance framework and specification definition
+- **Location**: `ecosystem/platforms/enterprise-architecture/`, `ecosystem/platforms/governance-architecture/`
 - **Responsibilities**: Governance contracts, architectural standards, naming conventions
-- **Dependencies**: None (provides governance to all layers)
-- **Characteristics**: Pure specification, no execution
 
 ### GL10-29: Platform Services
 - **Purpose**: Platform-level services and operational support
+- **Location**: `ecosystem/platforms/integration-hub/`, `ecosystem/coordination/`
 - **Responsibilities**: Service coordination, discovery, external integrations
-- **Dependencies**: GL00-09 only
-- **Characteristics**: Service-oriented, API-based
 
 ### GL20-29: Data Processing
 - **Purpose**: Data pipeline construction and data lake management
+- **Location**: `ecosystem/platforms/data-processing/`, `ecosystem/platforms/search-elasticsearch/`
 - **Responsibilities**: ETL processes, search systems, data transformation
-- **Dependencies**: GL00-09, GL10-29
-- **Characteristics**: Pipeline-oriented, data-centric
 
 ### GL30-49: Execution Runtime
 - **Purpose**: Execution engine and task orchestration
+- **Location**: `ecosystem/platforms/runtime-engine/`, `ecosystem/platforms/runtime-services/`
 - **Responsibilities**: Task execution, resource management, workflow orchestration
-- **Dependencies**: GL00-09, GL10-29, GL20-29
-- **Characteristics**: Task-oriented, execution-centric
 
 ### GL50-59: Observability
 - **Purpose**: System monitoring and observability
+- **Location**: `ecosystem/platforms/monitoring-observability/`
 - **Responsibilities**: Metric collection, log aggregation, alert management
-- **Dependencies**: All layers (read-only)
-- **Characteristics**: Read-only monitoring
 
 ### GL60-80: Governance Compliance
 - **Purpose**: Governance execution and compliance checking
+- **Location**: `ecosystem/platforms/governance-compliance/`, `ecosystem/governance/`
 - **Responsibilities**: Policy enforcement, compliance validation, audit trails
-- **Dependencies**: GL00-09 only
-- **Characteristics**: Validation-focused
 
 ### GL81-83: Extension Services
 - **Purpose**: Extension services and plugin mechanisms
+- **Location**: `ecosystem/platforms/automation-instant/`, `ecosystem/platforms/automation-organizer/`
 - **Responsibilities**: Plugin architecture, extension points, third-party integration
-- **Dependencies**: All layers
-- **Characteristics**: Plugin-oriented, extensible
 
 ### GL90-99: Meta Specifications
 - **Purpose**: Meta-specification definitions and documentation
+- **Location**: `ecosystem/platforms/governance-architecture/GL90-99-Meta-Specification-Layer/`
 - **Responsibilities**: Specification documentation, meta-models, reference implementations
-- **Dependencies**: None
-- **Characteristics**: Pure specification, reference-only
 
 ## Key Features
 
-### ✅ Zero External Dependencies
+### Zero External Dependencies
 - Complete self-sufficiency
 - No external package dependencies
 - Offline operation capability
 - Local-only resources
 
-### ✅ Comprehensive Boundary Enforcement
+### Comprehensive Boundary Enforcement
 - Automated boundary checking
 - Pre-commit hooks for violation detection
 - Dependency matrix enforcement
 - Circular dependency prevention
 
-### ✅ Strict Governance
+### Strict Governance
 - Constitutional-level enforcement
 - Comprehensive policy validation
 - Automated compliance checking
 - Complete audit trails
 
-### ✅ Clear Architectural Boundaries
+### Clear Architectural Boundaries
 - Explicit boundary definitions
 - Clear responsibility separation
 - Dependency flow enforcement
@@ -117,10 +182,6 @@ GL81-83 (Extension Services) [Can Extend All]
 # Clone repository
 git clone https://github.com/MachineNativeOps/machine-native-ops.git
 cd machine-native-ops
-
-# Verify structure
-ls -la
-# You should see 8 GL layer directories
 ```
 
 ### Usage
@@ -128,54 +189,32 @@ ls -la
 #### Running Boundary Checks
 ```bash
 # Check critical violations
-python3 gl-governance-compliance/scripts/boundary_checker.py --level E0
-
-# Check specific file
-python3 gl-governance-compliance/scripts/boundary_checker.py --file path/to/file.py
+python3 ecosystem/platforms/governance-compliance/scripts/boundary_checker.py --level E0
 
 # Generate compliance report
-python3 gl-governance-compliance/scripts/boundary_checker.py --report
-```
-
-#### Pre-Commit Hooks
-The boundary checker automatically runs before each commit to enforce boundary rules.
-
-## Project Structure
-
-```
-machine-native-ops/
-├── gl-enterprise-architecture/     # GL00-09: Enterprise Architecture
-├── gl-platform-services/           # GL10-29: Platform Services
-├── gl-data-processing/             # GL20-29: Data Processing
-├── gl-execution-runtime/           # GL30-49: Execution Runtime
-├── gl-observability/              # GL50-59: Observability
-├── gl-governance-compliance/      # GL60-80: Governance Compliance
-├── gl-extension-services/          # GL81-83: Extension Services
-├── gl-meta-specifications/         # GL90-99: Meta Specifications
-└── README.md
+python3 ecosystem/platforms/governance-compliance/scripts/boundary_checker.py --report
 ```
 
 ## Documentation
 
-### Deep Dive & Upgrade
-- [Project Deep Dive](docs/PROJECT-DEEP-DIVE.md)
-- [Upgrade & Restructure Plan](docs/UPGRADE-RESTRUCTURE-PLAN.md)
-
 ### Core Documentation
-- [One-Stop Architecture and Specification Hub](ONE-STOP-ARCHITECTURE-SPECS.md)
-- [Directory Boundary Specification](gl-enterprise-architecture/governance/directory-boundary-specification.md)
-- [Boundary Reference Matrix](gl-enterprise-architecture/governance/boundary-reference-matrix.md)
-- [Boundary Enforcement Rules](gl-enterprise-architecture/governance/boundary-enforcement-rules.md)
+- [Agent System](AGENTS.md)
+- [Architecture Overview](ARCHITECTURE.md)
+- [Governance](GOVERNANCE.md)
+- [Project Deep Dive](ecosystem/docs/PROJECT-DEEP-DIVE.md)
+- [Upgrade & Restructure Plan](ecosystem/docs/UPGRADE-RESTRUCTURE-PLAN.md)
 
-### Layer Documentation
-- [Enterprise Architecture](gl-enterprise-architecture/README.md)
-- [Platform Services](gl-platform-services/README.md)
-- [Data Processing](gl-data-processing/README.md)
-- [Execution Runtime](gl-execution-runtime/README.md)
-- [Observability](gl-observability/README.md)
-- [Governance Compliance](gl-governance-compliance/README.md)
-- [Extension Services](gl-extension-services/README.md)
-- [Meta Specifications](gl-meta-specifications/README.md)
+### Platform Documentation
+- [Runtime Engine](ecosystem/platforms/runtime-engine/README.md)
+- [Governance Architecture](ecosystem/platforms/governance-architecture/README.md)
+- [Infrastructure Foundation](ecosystem/platforms/infrastructure-foundation/README.md)
+- [Automation Instant](ecosystem/platforms/automation-instant/README.md)
+- [Semantic Core](ecosystem/platforms/semantic-core/README.md)
+
+### Governance Documentation
+- [Enterprise Architecture](ecosystem/platforms/enterprise-architecture/README.md)
+- [Governance Compliance](ecosystem/platforms/governance-compliance/README.md)
+- [NG Namespace](ecosystem/governance/ng-namespace/README.md)
 
 ## Development Guidelines
 
@@ -185,60 +224,6 @@ machine-native-ops/
 3. **Autonomous Operation**: Each layer must operate independently
 4. **Zero External Dependencies**: No external network calls or package dependencies
 
-### Boundary Rules
-- Follow the dependency matrix for all dependencies
-- Define interface contracts for cross-layer interactions
-- Use pre-commit hooks for boundary checking
-- Report and fix all boundary violations
-
-### Compliance
-- All layers must comply with governance contracts
-- Use boundary checker before committing
-- Follow naming conventions defined in GL00-09
-- Maintain proper documentation
-
-## Testing
-
-### Boundary Checking
-```bash
-# Run all boundary checks
-python3 gl-governance-compliance/scripts/boundary_checker.py --check
-
-# Check specific level
-python3 gl-governance-compliance/scripts/boundary_checker.py --level E0
-
-# Generate report
-python3 gl-governance-compliance/scripts/boundary_checker.py --report --format json
-```
-
-### Compliance Validation
-```bash
-# Validate compliance
-python3 gl-governance-compliance/scripts/boundary_checker.py --check
-```
-
-## Compliance Status
-
-| Layer | Boundary Rules | Dependencies | Documentation |
-|-------|---------------|--------------|----------------|
-| GL00-09 | ✅ | ✅ | ✅ |
-| GL10-29 | ✅ | ✅ | ✅ |
-| GL20-29 | ✅ | ✅ | ✅ |
-| GL30-49 | ✅ | ✅ | ✅ |
-| GL50-59 | ✅ | ✅ | ✅ |
-| GL60-80 | ✅ | ✅ | ✅ |
-| GL81-83 | ✅ | ✅ | ✅ |
-| GL90-99 | ✅ | ✅ | ✅ |
-
-## Contributing
-
-### Contribution Guidelines
-1. Follow the architectural principles
-2. Respect boundary rules
-3. Create interface contracts for cross-layer interactions
-4. Run boundary checks before committing
-5. Update documentation for all changes
-
 ### Pre-Commit Process
 1. Make changes to your code
 2. Run boundary checker
@@ -246,71 +231,40 @@ python3 gl-governance-compliance/scripts/boundary_checker.py --check
 4. Commit with descriptive message
 5. Push changes
 
-### Code Review
-All changes must:
-- Pass boundary checks
-- Follow naming conventions
-- Include documentation
-- Have appropriate tests
-- Be reviewed by maintainers
+## Testing
 
-## Architecture Standards
+```bash
+# Run Python tests
+python3 -m pytest ecosystem/tests/
 
-### TOGAF Alignment
-- ✅ 90% alignment with TOGAF architecture
-- ✅ Enterprise architecture framework
-- ✅ Layered architecture pattern
-- ✅ Governance framework
+# Run boundary checks
+python3 ecosystem/platforms/governance-compliance/scripts/boundary_checker.py --check
+```
 
-### DDD Alignment
-- ✅ 92% alignment with Domain-Driven Design
-- ✅ Domain-driven layering
-- ✅ Bounded contexts
-- ✅ Domain models
+## Compliance Status
 
-### Monorepo Standards
-- ✅ 95% alignment with monorepo best practices
-- ✅ Single repository structure
-- ✅ Shared dependencies
-- ✅ Unified tooling
+| Layer | Boundary Rules | Dependencies | Documentation |
+|-------|---------------|--------------|----------------|
+| GL00-09 | Pass | Pass | Pass |
+| GL10-29 | Pass | Pass | Pass |
+| GL20-29 | Pass | Pass | Pass |
+| GL30-49 | Pass | Pass | Pass |
+| GL50-59 | Pass | Pass | Pass |
+| GL60-80 | Pass | Pass | Pass |
+| GL81-83 | Pass | Pass | Pass |
+| GL90-99 | Pass | Pass | Pass |
 
-## Security
+## Contributing
 
-### Zero External Dependencies
-- No external package dependencies
-- No external network calls
-- Complete offline operation
-- Local-only resources
-
-### Security Measures
-- Boundary enforcement
-- Access control
-- Audit trails
-- Compliance validation
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## License
 
-[Specify License Here]
-
-## Contact
-
-For questions or issues:
-- Review the documentation
-- Check the boundary specification
-- Consult the reference matrix
-- Open an issue on GitHub
-
-## Acknowledgments
-
-Built with:
-- GL Architecture Framework
-- Zero-Dependency Philosophy
-- Strict Boundary Enforcement
-- Comprehensive Governance
+See [license](ecosystem/data/root-legacy/license) for details.
 
 ---
 
-**Status**: ✅ Complete Foundation
+**Status**: Complete Foundation
 **Version**: 1.0.0
 **Governance**: CONSTITUTIONAL
 **Compliance**: 100%
