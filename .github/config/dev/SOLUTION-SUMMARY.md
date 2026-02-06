@@ -92,7 +92,7 @@ postStartCommand: start-dev-server.sh
 創建多層次文檔：
 
 - **QUICK_START.md** - 快速開始
-- **README.md** - 詳細指南
+- **readme.md** - 詳細指南
 - **KB.md** - 技術文檔
 - **CHANGELOG.md** - 變更記錄
 - **SOLUTION_SUMMARY.md** - 本文檔
@@ -251,7 +251,7 @@ tail -f logs/dev-server.log
 ### 遇到問題？
 
 1. 查看 [QUICK_START.md](./QUICK_START.md)
-2. 查看 [README.md](./README.md#故障排除)
+2. 查看 [readme.md](./readme.md#故障排除)
 3. 檢查日誌文件
 4. 提交 GitHub Issue
 

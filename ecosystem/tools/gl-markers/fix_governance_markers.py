@@ -19,10 +19,10 @@ from pathlib import Path
 # Files that need @GL-governed marker
 MARKER_FILES = [
     "gl-execution-runtime/code-intel-security-layer/capability-schema/capability-definition-language.md",
-    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/ci-cd-integration/README.md",
-    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/cli-generator/README.md",
-    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/ide-extension/README.md",
-    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/web-console/README.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/ci-cd-integration/readme.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/cli-generator/readme.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/ide-extension/readme.md",
+    "gl-execution-runtime/code-intel-security-layer/deployment-weaver/web-console/readme.md",
     "gl-execution-runtime/code-intel-security-layer/evolution-engine/adaptation-engine.py",
     "gl-execution-runtime/code-intel-security-layer/evolution-engine/self-optimizer.py",
     "gl-execution-runtime/code-intel-security-layer/evolution-engine/usage-tracker.py",

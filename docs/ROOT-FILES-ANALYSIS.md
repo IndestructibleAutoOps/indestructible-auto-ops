@@ -80,9 +80,9 @@
 
 | 檔案名稱 | 責任說明 | 屬性描述 | 重要性 |
 |---------|---------|---------|--------|
-| **README.md** (29 KB) | **專案主文檔** | 專案總覽、快速導航、GL 治理約束說明 | 🔴 高 |
+| **readme.md** (29 KB) | **專案主文檔** | 專案總覽、快速導航、GL 治理約束說明 | 🔴 高 |
 | **CHANGELOG.md** | 變更日誌 | 版本變更記錄 | 🟡 中 |
-| **LICENSE** | 授權協議 | MIT 開源授權 | 🔴 高 |
+| **license** | 授權協議 | MIT 開源授權 | 🔴 高 |
 | **CODE_OF_CONDUCT.md** | 行為準則 | 社區行為規範 | 🟡 中 |
 | **SECURITY.md** | 安全政策 | 安全漏洞報告流程 | 🟡 中 |
 | **CONTRIBUTING.md** (13 KB) | 貢獻指南 | 開發者貢獻流程、準則、GL 合規要求 | 🔴 高 |
@@ -249,7 +249,7 @@
 | **Dockerfile.production** | 生產環境 Dockerfile | 生產環境 Docker 構建配置 | 🔴 高 |
 | **docker-compose.yaml** | Docker Compose | 本地開發 Docker Compose 配置 | 🔴 高 |
 | **docker-compose.production.yml** | 生產 Docker Compose | 生產環境 Docker Compose 配置 | 🔴 高 |
-| **Makefile** (7 KB) | Make 建置指令 | Make 建置自動化指令 | 🔴 高 |
+| **makefile** (7 KB) | Make 建置指令 | Make 建置自動化指令 | 🔴 高 |
 
 ---
 
@@ -319,9 +319,9 @@
 - .checkov.yaml, .secrets.baseline, actionlint
 - requirements.txt, pytest.ini
 - governance-manifest.yaml
-- README.md, LICENSE, CONTRIBUTING.md
+- readme.md, license, CONTRIBUTING.md
 - DEPLOYMENT_GUIDE.md, PLUGGABLE_DEPLOYMENT_GUIDE.md
-- Dockerfile, docker-compose.yaml, Makefile
+- Dockerfile, docker-compose.yaml, makefile
 - 所有 GL 治理腳本 (5 個)
 - todo.md (主任務追蹤)
 
@@ -369,7 +369,7 @@ DEPLOYMENT_GUIDE.md / PLUGGABLE_DEPLOYMENT_GUIDE.md
 
 ### 文檔鏈
 ```
-README.md (總覽)
+readme.md (總覽)
     ↓
 CONTRIBUTING.md (開發指南)
     ↓

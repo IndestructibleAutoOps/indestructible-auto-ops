@@ -163,7 +163,7 @@ The term "universe" may be acceptable only in:
 ## Impact Assessment
 
 ### Low Impact
-- README.md files (quick updates)
+- readme.md files (quick updates)
 - Internal team documentation
 - Comment descriptions
 

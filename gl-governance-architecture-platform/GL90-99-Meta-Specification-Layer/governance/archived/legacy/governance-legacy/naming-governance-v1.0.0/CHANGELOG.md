@@ -139,7 +139,7 @@
 ### 文檔
 
 #### 新增文檔
-- `README.md` - 項目概覽與快速開始
+- `readme.md` - 項目概覽與快速開始
 - `CHANGELOG.md` - 變更日誌
 - `config/machine-spec.yaml` - 核心配置文件
 - `docs/guides/implementation-guide.md` - 實施指南

@@ -27,7 +27,7 @@ axiom_backup/                     → ns-root/namespaces-mcp/axiom/
 ├── examples/                     ├── examples/
 ├── tests/                        ├── tests/
 ├── docs/                         ├── docs/
-└── README.md                     └── project/
+└── readme.md                     └── project/
 ```
 
 ### 📁 遷移文件清單 (15個文件)
@@ -53,7 +53,7 @@ axiom_backup/                     → ns-root/namespaces-mcp/axiom/
 - `tests/test_plugin_system.py` - 綜合測試套件
 
 #### 📖 文檔與項目 (3個文件)
-- `docs/README.md` - 系統文檔
+- `docs/readme.md` - 系統文檔
 - `docs/demo_system.py` - 系統演示
 - `project/todo.md` - 項目追蹤
 
@@ -156,7 +156,7 @@ axiom_backup/                     → ns-root/namespaces-mcp/axiom/
 - [集成配置](NAMESPACE_MCP_AXIOM_INTEGRATION.yaml)
 
 ### 系統文檔
-- [AXIOM系統文檔](mno-repository-understanding-system/ns-root/namespaces-mcp/axiom/docs/README.md)
+- [AXIOM系統文檔](mno-repository-understanding-system/ns-root/namespaces-mcp/axiom/docs/readme.md)
 - [插件接口規範](mno-repository-understanding-system/ns-root/namespaces-mcp/axiom/standards/plugin_interface_v1.yaml)
 - [完整集成示例](mno-repository-understanding-system/ns-root/namespaces-mcp/axiom/examples/complete_integration.py)
 

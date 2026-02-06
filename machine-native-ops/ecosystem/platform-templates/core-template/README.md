@@ -96,7 +96,7 @@ bash scripts/status.sh
 
 ```
 core-template/
-├── README.md                    # 本文件
+├── readme.md                    # 本文件
 ├── configs/
 │   ├── platform-config.yaml    # 平台主配置
 │   ├── services-config.yaml    # 服務配置
@@ -314,10 +314,10 @@ print(pm.get_sync_stats())"
 ## 📚 參考文檔
 
 - [Ecosystem 架構文檔](../../ECOSYSTEM_STATUS_ANALYSIS.md)
-- [Service Discovery 文檔](../../coordination/service-discovery/README.md)
-- [API Gateway 文檔](../../coordination/api-gateway/README.md)
-- [Communication 文檔](../../coordination/communication/README.md)
-- [Data Sync 文檔](../../coordination/data-synchronization/README.md)
+- [Service Discovery 文檔](../../coordination/service-discovery/readme.md)
+- [API Gateway 文檔](../../coordination/api-gateway/readme.md)
+- [Communication 文檔](../../coordination/communication/readme.md)
+- [Data Sync 文檔](../../coordination/data-synchronization/readme.md)
 
 ---
 

@@ -1,4 +1,4 @@
-# IndestructibleAutoOps 項目緊急救援系統 - 最終交付報告
+# indestructibleautoops
 
 **交付日期**: 2026-02-05  
 **系統版本**: 1.0 Release  
@@ -96,7 +96,7 @@ isolation.printReport(report);
 ---
 
 #### 引擎 3：架構重建系統
-**文件**: `architecture_rebuild_system.ts` (19 KB)
+**文件**: `architecture-rebuild-system.ts` (19 KB)
 
 **功能特性**
 - 六階段重建流程 (清理→驗證→安裝→構建→測試→驗證)
@@ -336,7 +336,7 @@ await orchestrator.executeCompleteRecovery();
 mkdir -p scripts/emergency-recovery
 cp hallucination_detection_engine.ts scripts/emergency-recovery/
 cp code_isolation_system.ts scripts/emergency-recovery/
-cp architecture_rebuild_system.ts scripts/emergency-recovery/
+cp architecture-rebuild-system.ts scripts/emergency-recovery/
 cp verification_compliance_framework.ts scripts/emergency-recovery/
 
 # 2. 安裝依賴

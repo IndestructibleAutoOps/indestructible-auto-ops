@@ -45,7 +45,7 @@
 - ❌ 可能破坏构建和部署流程
 - ❌ 导致不可预测的文件优先级
 
-⚠️ **注意**：这包括名为 `README.md`、`readme.md`、`Readme.md` 和不带扩展名的 `README` 的文件。
+⚠️ **注意**：这包括名为 `readme.md`、`readme.md`、`Readme.md` 和不带扩展名的 `README` 的文件。
 
 ✅ **最佳实践**：请记得直接在你的 git 仓库中管理你的 README 文件。
 
@@ -57,9 +57,9 @@
 
 请确保：
 
-#### 1. README.md 文件位置
+#### 1. readme.md 文件位置
 
-你的仓库**在根目录有一个 `README.md` 文件**（或在 `.gitbook.yaml` 中指定的文件夹）直接在你的 git 仓库中创建。
+你的仓库**在根目录有一个 `readme.md` 文件**（或在 `.gitbook.yaml` 中指定的文件夹）直接在你的 git 仓库中创建。
 
 - 该文件是**必需的**，并用作文档的首页
 - 更多细节请参阅我们的 [.gitbook.yaml 内容配置]([EXTERNAL_URL_REMOVED])
@@ -95,7 +95,7 @@ description: 文档描述
 root: ./docs/
 
 structure:
-  readme: README.md
+  readme: readme.md
   summary: SUMMARY.md
 ```
 
@@ -128,7 +128,7 @@ structure:
 ```markdown
 # 目录
 
-* [简介](README.md)
+* [简介](readme.md)
 * [快速开始](docs/quickstart.md)
 * [配置指南](docs/configuration.md)
   * [基础配置](docs/configuration/basic.md)

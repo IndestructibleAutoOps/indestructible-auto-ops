@@ -134,7 +134,7 @@ gl-execution-runtime/
 2. gl/v23/root_governance/anti_fabric/
 3. gl-runtime/v23-root-governance/run_service.py
 4. gl-runtime/v23-root-governance/manifest.json
-5. gl-runtime/v23-root-governance/README.md
+5. gl-runtime/v23-root-governance/readme.md
 6. gl-runtime/v23-root-governance/src/__init__.py
 7. gl-runtime/v23-root-governance/src/core/__init__.py
 8. gl-runtime/v23-root-governance/src/core/root_governance/falsification_engine.py
@@ -145,7 +145,7 @@ gl-execution-runtime/
 2. gl/v24/meta_governance/meta_auditor/
 3. gl-runtime/v24-meta-governance/run_service.py
 4. gl-runtime/v24-meta-governance/manifest.json
-5. gl-runtime/v24-meta-governance/README.md
+5. gl-runtime/v24-meta-governance/readme.md
 6. gl-runtime/v24-meta-governance/src/__init__.py
 7. gl-runtime/v24-meta-governance/src/core/__init__.py
 8. gl-runtime/v24-meta-governance/src/core/meta_governance/meta_auditor.py

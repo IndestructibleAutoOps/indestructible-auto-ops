@@ -308,7 +308,7 @@ metadata:
               ;;
             cpp)
               echo "Building C/C++ project..."
-              if [[ -f "Makefile" ]]; then
+              if [[ -f "makefile" ]]; then
                 make -j$(nproc) 2>/dev/null || true
               elif [[ -f "CMakeLists.txt" ]]; then
                 mkdir -p build && cd build && cmake .. && make -j$(nproc) 2>/dev/null || true

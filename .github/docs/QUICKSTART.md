@@ -58,7 +58,7 @@ cat AUTO-QUALITY-REPORT.md
 
 ## 📋 所有可用命令
 
-### Makefile 命令（推薦）
+### makefile 命令（推薦）
 
 | 命令 | 說明 |
 |------|------|
@@ -150,7 +150,7 @@ bash scripts/verify-automation.sh
 
 ## 📖 詳細文件
 
-- [AUTOMATION-README.md](./AUTOMATION-README.md) - 完整使用指南
+- [AUTOMATION-readme.md](./AUTOMATION-readme.md) - 完整使用指南
 - [AUTOMATION-INIT-REPORT.md](./AUTOMATION-INIT-REPORT.md) - 初始化報告
 - [PR-1-REVIEW-REPORT.md](./PR-1-REVIEW-REPORT.md) - 詳細審查報告
 - [PR-1-CODE-EXAMPLES.md](./PR-1-CODE-EXAMPLES.md) - 程式碼範例

@@ -1788,7 +1788,7 @@ Update the following documentation:
   - Added race condition detection
 ```
 
-### README.md
+### readme.md
 Add any new environment variables or configuration options.
 
 ### API Documentation

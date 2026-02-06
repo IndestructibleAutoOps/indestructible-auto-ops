@@ -127,7 +127,7 @@ workspace/governance/
 │   ├── GL-LAYER-DEFINITIONS.yaml
 │   └── GL-HIGH-WEIGHT-PROMPTS.yaml
 └── layers/
-    ├── README.md
+    ├── readme.md
     ├── GL00-09-strategic/artifacts/
     ├── GL10-29-operational/artifacts/
     ├── GL30-49-execution/artifacts/
@@ -169,7 +169,7 @@ tests/unit/
 
 - [PR #33]([EXTERNAL_URL_REMOVED])
 - [Repository]([EXTERNAL_URL_REMOVED])
-- [GL層級README](workspace/governance/layers/README.md)
+- [GL層級README](workspace/governance/layers/readme.md)
 
 ---
 

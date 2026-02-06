@@ -58,10 +58,10 @@ Configuration Sources / 配置來源
 - State persistence: `.automation_state/`
 Related Documentation / 相關文檔
 --------------------------------
-- System Overview: README.md (三系統視圖)
+- System Overview: readme.md (三系統視圖)
 - Architecture Boundaries: docs/architecture/repo-map.md
-- Automation Layer: automation/README.md
-- Governance Integration: gl-platform.governance/README.md
+- Automation Layer: automation/readme.md
+- Governance Integration: gl-platform.governance/readme.md
 Usage:
     # 啟動主控
     python master_orchestrator.py start
@@ -295,7 +295,7 @@ class EngineRegistry:
     wrap operations in asyncio locks or use separate registry instances.
     See Also / 參考文檔
     -------------------
-    - `automation/README.md` - Automation layer overview
+    - `automation/readme.md` - Automation layer overview
     - `docs/architecture/repo-map.md` - System boundaries
     - `engine_base.py` - BaseEngine interface definition
     - `config/system-manifest.yaml` - Module registration schema

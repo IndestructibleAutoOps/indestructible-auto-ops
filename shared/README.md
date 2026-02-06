@@ -117,7 +117,7 @@ Before contributing to shared resources:
 2. Ensure it follows shared resource standards
 3. Add comprehensive documentation
 4. Include tests
-5. Update shared/standards/README.md
+5. Update shared/standards/readme.md
 
 ## Shared Resource Lifecycle
 

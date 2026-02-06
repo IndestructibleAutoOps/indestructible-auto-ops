@@ -15,8 +15,8 @@ This portal provides comprehensive documentation for the AI-native infrastructur
 ## 🚀 Quick Start
 
 ### New Users
-1. [Introduction](../README.md) - Project overview and getting started
-2. [Architecture and Specification Hub](../../ONE-STOP-ARCHITECTURE-SPECS.md) - One-stop map of specs and architecture
+1. [Introduction](../readme.md) - Project overview and getting started
+2. [Architecture and Specification Hub](../../one-stop-architecture-specs.md) - One-stop map of specs and architecture
 3. [Integration Guide](PHASE1_INTEGRATION_GUIDE.md) - Step-by-step integration instructions
 4. [Architecture Overview](#architecture) - System architecture and design
 
@@ -58,7 +58,7 @@ This portal provides comprehensive documentation for the AI-native infrastructur
 - [06-Security Module](../controlplane/baseline/modules/06-security/module-manifest.yaml) - Security & supply chain
 
 #### 3. Governance & Policies
-- [Policy Framework](../controlplane/governance/policies/README.md) - Policy-as-Code overview
+- [Policy Framework](../controlplane/governance/policies/readme.md) - Policy-as-Code overview
 - [Policy Manifest](../controlplane/governance/policies/POLICY_MANIFEST.yaml) - Central policy registry
 - [Naming Policy](../controlplane/governance/policies/naming.rego) - Kebab-case enforcement
 - [Semantic Policy](../controlplane/governance/policies/semantic.rego) - Semantic consistency

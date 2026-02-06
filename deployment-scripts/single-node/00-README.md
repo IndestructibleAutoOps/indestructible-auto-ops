@@ -4,7 +4,7 @@
 
 ```
 single-node/
-├── 00_README.md                    # 本文件
+├── 00_readme.md                    # 本文件
 ├── 01_pre_install_check.sh         # 安裝前置檢查
 ├── 02_install_k3s.sh              # k3s 安裝腳本
 ├── 03_deploy_gl_backend.sh        # GL-Native Backend 部署

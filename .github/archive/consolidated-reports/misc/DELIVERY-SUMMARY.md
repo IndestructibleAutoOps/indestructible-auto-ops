@@ -64,7 +64,7 @@ Successfully completed comprehensive analysis and implementation of **bi-directi
 - [x] Gate mechanisms and CI/CD integration implemented (25+ KB)
 - [x] 2 initialization scripts created (11+ KB)
 - [x] Runtime artifacts structure established
-- [x] Comprehensive README.md created (10+ KB)
+- [x] Comprehensive readme.md created (10+ KB)
 
 ---
 
@@ -82,7 +82,7 @@ mno-repository-understanding-system/
 │   ├── FileX-standard-template-v1.yaml        # 15+ KB - FileX template v1
 │   └── semantic-closure-rules.md              # 18+ KB - Semantic closure rules
 └── root/                                        # Root configuration
-    ├── README.md                               # 10+ KB - Root documentation
+    ├── readme.md                               # 10+ KB - Root documentation
     ├── .root.semantic-root.yaml                # 20+ KB - Semantic root v1.0.0
     ├── .root.gates.map.yaml                    # 25+ KB - Gate mechanisms
     ├── .root.init.d/

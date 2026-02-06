@@ -32,7 +32,7 @@ AI 驅動的即時執行管線現已**完全架構、整合且可運行**。所�
 | `config/instant-execution-pipeline.yaml` | Pipeline configuration | 300+ | ✅ Complete |
 | `scripts/run-instant-execution.sh` | Quick start script | 350+ | ✅ Executable |
 | `docs/INSTANT_EXECUTION_INTEGRATION_MAP.md` | Complete architecture doc | 600+ | ✅ Complete |
-| `automation/pipelines/README.md` | Pipeline documentation | 100+ | ✅ Complete |
+| `automation/pipelines/readme.md` | Pipeline documentation | 100+ | ✅ Complete |
 | `tools/ai/__init__.py` | AI package init | 20+ | ✅ Complete |
 | `automation/pipelines/__init__.py` | Pipeline package init | 20+ | ✅ Complete |
 
@@ -272,7 +272,7 @@ integrations:
    - API reference
    - Troubleshooting guide
 
-2. **[automation/pipelines/README.md](../src/automation/pipelines/README.md)**
+2. **[automation/pipelines/readme.md](../src/automation/pipelines/readme.md)**
    - Pipeline overview
    - Quick start guide
    - Integration examples
@@ -327,7 +327,7 @@ docs/INSTANT_EXECUTION_INTEGRATION_MAP.md (Main)
   ├─→ Usage examples
   └─→ API reference
 
-automation/pipelines/README.md (Pipeline-specific)
+automation/pipelines/readme.md (Pipeline-specific)
   ├─→ Pipeline overview
   └─→ Quick start
 

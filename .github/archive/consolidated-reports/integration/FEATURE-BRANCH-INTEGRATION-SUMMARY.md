@@ -78,7 +78,7 @@ Added comprehensive project completion summary:
 
 ### 3. README Updates
 
-Enhanced the main README.md with:
+Enhanced the main readme.md with:
 - ✅ Repository Understanding System added to overview section
 - ✅ New entry in "當前焦點" section highlighting the event-driven automation
 - ✅ Dedicated "Repository Understanding System" section including:
@@ -131,7 +131,7 @@ mno-repository-understanding-system/
 │           ├── repository_explorer.py
 │           ├── fix_event_comparison.py
 │           ├── requirements-test.txt
-│           └── README.md
+│           └── readme.md
 │
 ├── scripts/
 │   └── repository-understanding/         # 6 Shell scripts
@@ -144,7 +144,7 @@ mno-repository-understanding-system/
 │
 ├── docs/
 │   ├── repository-understanding/         # 17+ Documentation files
-│   │   ├── README.md
+│   │   ├── readme.md
 │   │   ├── FINAL_SYSTEM_DOCUMENTATION.md
 │   │   ├── PROJECT_COMPLETION_SUMMARY.md  # 🆕 From feature branch
 │   │   ├── AUTOMATED_REPOSITORY_UNDERSTANDING_SYSTEM.md
@@ -230,7 +230,7 @@ cd /home/runner/work/mno-repository-understanding-system/mno-repository-understa
 ```
 
 For detailed documentation, see:
-- `docs/repository-understanding/README.md` - System overview
+- `docs/repository-understanding/readme.md` - System overview
 - `docs/repository-understanding/FINAL_SYSTEM_DOCUMENTATION.md` - Complete documentation
 - `docs/ci-implementation-guide.md` - CI/CD improvements
 

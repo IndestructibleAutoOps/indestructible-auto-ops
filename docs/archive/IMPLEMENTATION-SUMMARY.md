@@ -240,7 +240,7 @@ semantic_engine/
 ├── semantic_engine.py             # Phase 6: Main unified API
 ├── api_server.py                  # REST API server
 ├── test_engine.py                 # Comprehensive test suite
-└── README.md                      # Documentation
+└── readme.md                      # Documentation
 ```
 
 ## Key Achievements

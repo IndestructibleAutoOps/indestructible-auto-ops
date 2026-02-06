@@ -110,8 +110,8 @@ def test_cloud_template():
     template_dir = Path(__file__).parent / 'cloud-template'
     
     # 檢查 README
-    assert (template_dir / 'README.md').exists(), "Missing README.md"
-    print("✓ README.md present")
+    assert (template_dir / 'readme.md').exists(), "Missing readme.md"
+    print("✓ readme.md present")
     
     # 檢查配置文件
     config_files = [
@@ -140,8 +140,8 @@ def test_onpremise_template():
     template_dir = Path(__file__).parent / 'on-premise-template'
     
     # 檢查 README
-    assert (template_dir / 'README.md').exists(), "Missing README.md"
-    print("✓ README.md present")
+    assert (template_dir / 'readme.md').exists(), "Missing readme.md"
+    print("✓ readme.md present")
     
     # 檢查配置文件
     config_path = template_dir / 'configs/platform-config.yaml'
@@ -174,10 +174,10 @@ def test_template_completeness():
         assert template_dir.exists(), f"Template directory missing: {template}"
         
         # 每個模板必須有 README
-        assert (template_dir / 'README.md').exists(), f"{template} missing README.md"
+        assert (template_dir / 'readme.md').exists(), f"{template} missing readme.md"
         
         # 檢查 README 長度
-        readme_size = (template_dir / 'README.md').stat().st_size
+        readme_size = (template_dir / 'readme.md').stat().st_size
         assert readme_size > 1000, f"{template} README too short"
     
     print(f"✓ All {len(templates)} templates present and complete")

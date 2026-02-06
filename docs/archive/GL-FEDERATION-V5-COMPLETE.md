@@ -68,7 +68,7 @@ GL Runtime Platform v5.0.0 Federation 層已成功建構、修復、集成、整
 
 ### 7. Documentation
 ✅ index.yaml - Federation 索引
-✅ README.md - Federation 使用文檔
+✅ readme.md - Federation 使用文檔
 
 ## 能力實現
 
@@ -141,7 +141,7 @@ feat: add GL Federation Layer v5.0.0 for cross-org governance
 - Added topology: repos.yaml, clusters.yaml
 - Added federation-orchestration: federation-orchestration.yaml
 - Added trust: trust-model.yaml, signing-keys.md
-- Added index.yaml and README.md
+- Added index.yaml and readme.md
 - Created storage directories for federation artifacts
 - Federation enables multi-repo, multi-org, multi-cluster governance
 - All components GL-governed with proper metadata

@@ -125,7 +125,7 @@ class MaturityAssessor:
         """檢查文檔完整性"""
         score = 0
         # 檢查 README
-        readme = os.path.join(path, "README.md")
+        readme = os.path.join(path, "readme.md")
         if os.path.exists(readme):
             size = os.path.getsize(readme)
             if size > 1000:

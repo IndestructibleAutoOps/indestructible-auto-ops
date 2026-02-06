@@ -16,7 +16,7 @@
 # 查看項目文檔
 ls docs/
 # 查看README
-cat README.md
+cat readme.md
 ```
 
 ### 問題跟蹤
@@ -28,7 +28,7 @@ cat README.md
 ```bash
 # 創建本地問題追蹤文件
 mkdir -p .local-issues
-echo "# Local Issue Tracking" > .local-issues/README.md
+echo "# Local Issue Tracking" > .local-issues/readme.md
 ```
 
 ### RKE2文檔

@@ -146,7 +146,7 @@ MachineNativeOps-Quantum-Naming-Governance/
 ├── 📄 grafana-quantum-dashboard.json         # Visualization dashboard
 ├── 📄 quantum-deployment-manifest.yaml       # Kubernetes deployment
 ├── 📄 QUICK_INSTALL.sh                           # One-click installation
-├── 📄 README.md                                  # Comprehensive documentation
+├── 📄 readme.md                                  # Comprehensive documentation
 ├── 📄 PROJECT_SUMMARY.md                         # This summary
 └── 📁 charts/                                    # Helm charts (generated)
     └── quantum-naming-governance-v4.0.0.tgz

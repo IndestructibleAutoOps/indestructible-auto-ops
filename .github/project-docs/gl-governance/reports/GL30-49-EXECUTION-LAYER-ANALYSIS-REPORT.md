@@ -58,7 +58,7 @@ tests/                                  # 測試目錄
 └── e2e/                                # 端到端測試 ✅
 
 workspace/docs/architecture/            # 架構文件 ✅
-├── README.md                           # 架構概覽
+├── readme.md                           # 架構概覽
 ├── SYSTEM_ARCHITECTURE.md              # 系統架構
 ├── DEPLOYMENT_INFRASTRUCTURE.md        # 部署基礎設施
 └── CODE_QUALITY_CHECKS.md              # 代碼品質檢查

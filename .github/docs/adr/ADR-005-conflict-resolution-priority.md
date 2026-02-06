@@ -454,7 +454,7 @@ Document:
 - **Validation**: ✅ All tests pass, GL compliance maintained
 
 ### Conflict #2
-- **File**: `docs/README.md`
+- **File**: `docs/readme.md`
 - **Type**: Documentation
 - **Priority**: P3 (Merge All)
 - **Resolution**: Combined content from all branches

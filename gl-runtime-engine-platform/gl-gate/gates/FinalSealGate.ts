@@ -26,7 +26,7 @@ export class FinalSealGate extends BaseGate {
       // Check for deployment readiness
       const requiredFiles = [
         'package.json',
-        'README.md',
+        'readme.md',
         '.governance/GL_SEMANTIC_ANCHOR.json'
       ];
 

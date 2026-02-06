@@ -702,7 +702,7 @@ services/gateway/
             return ["（目錄不存在，無法生成註解）"]
         # Common important files to annotate
         important_patterns = {
-            "README.md": "說明文檔",
+            "readme.md": "說明文檔",
             "package.json": "Node.js 專案配置",
             "tsconfig.json": "TypeScript 編譯配置",
             "pyproject.toml": "Python 專案配置",

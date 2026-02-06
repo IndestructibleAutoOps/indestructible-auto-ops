@@ -26,7 +26,7 @@ federation/
 │   ├── trust-model.yaml      # Trust and permission model
 │   └── signing-keys.md       # Key management documentation
 ├── index.yaml                 # Federation overview
-└── README.md                  # Federation documentation
+└── readme.md                  # Federation documentation
 ```
 
 ### Components Implemented

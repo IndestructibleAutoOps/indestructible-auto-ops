@@ -391,7 +391,7 @@ GitHub Copilot **不會自動**:
 
 1. **整合 CI/CD**: 創建 GitHub Actions 工作流程
 2. **設置 Pre-commit**: 添加 Git hooks
-3. **文檔更新**: 在 ecosystem/README.md 添加使用說明
+3. **文檔更新**: 在 ecosystem/readme.md 添加使用說明
 
 ### 長期改進 (本月)
 

@@ -89,7 +89,7 @@ class NamingEnforcer:
         # 排除文件
         self.excluded_files = {
             '.gitignore', '.gitattributes', '.dockerignore',
-            'Dockerfile', 'Makefile', 'LICENSE', 'CODEOWNERS',
+            'Dockerfile', 'makefile', 'license', 'CODEOWNERS',
             '.env', '.env.example', '.editorconfig',
             'requirements.txt', 'setup.py', 'setup.cfg',
             'pyproject.toml', 'poetry.lock', 'Pipfile', 'Pipfile.lock',
@@ -343,7 +343,7 @@ class NamingEnforcer:
                 # 允許全大寫 (README, CHANGELOG) 或 kebab-case
                 if not (self.check_style(stem, 'kebab-case') or 
                         stem.isupper() or
-                        stem in {'README', 'CHANGELOG', 'CONTRIBUTING', 'LICENSE', 'SECURITY'}):
+                        stem in {'README', 'CHANGELOG', 'CONTRIBUTING', 'license', 'SECURITY'}):
                     if '_' in stem:
                         violations.append(NamingViolation(
                             rule_id='GL20-FILE-004',

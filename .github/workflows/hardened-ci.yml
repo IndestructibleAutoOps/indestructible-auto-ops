@@ -177,8 +177,8 @@ metadata:
         run: |
           echo "Building for ${{ matrix.platform }}..."
           
-          # Run make if Makefile exists
-          if [ -f Makefile ]; then
+          # Run make if makefile exists
+          if [ -f makefile ]; then
             make test-fast 2>/dev/null || echo "make test-fast not available"
           fi
           

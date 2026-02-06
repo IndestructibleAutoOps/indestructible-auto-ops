@@ -72,7 +72,7 @@
 - [x] 建立最佳實踐案例庫
 
 **成果**：
-- `README.md` - 項目概覽
+- `readme.md` - 項目概覽
 - `CHANGELOG.md` - 變更日誌
 - `implementation-guide.md` - 實施指南
 - `naming-patterns.md` - 命名模式最佳實踐

@@ -195,7 +195,7 @@ chart_structure:
   required_files:
     - Chart.yaml
     - values.yaml
-    - README.md
+    - readme.md
     - templates/deployment.yaml
     - templates/service.yaml
   optional_files:

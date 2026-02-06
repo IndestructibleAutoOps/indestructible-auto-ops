@@ -484,7 +484,7 @@ key_files = [
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the license file for details.
 
 ---
 

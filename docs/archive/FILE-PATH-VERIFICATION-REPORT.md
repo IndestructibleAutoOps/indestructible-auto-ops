@@ -217,7 +217,7 @@ path_validator:
 
 ### 3. 文档化目录结构
 
-建议在 `ecosystem/README.md` 中明确记录目录结构和命名规范：
+建议在 `ecosystem/readme.md` 中明确记录目录结构和命名规范：
 
 ```markdown
 # 生态系统目录结构

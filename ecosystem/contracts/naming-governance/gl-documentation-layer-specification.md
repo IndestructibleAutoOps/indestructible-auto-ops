@@ -268,7 +268,7 @@ platform-core/
       gl.learn.tutorial-microservices-beginner.md
     standards/
       gl.std.coding-guidelines-python.md
-    README.md: gl.dev.readme-project-overview.md
+    readme.md: gl.dev.readme-project-overview.md
 ```
 
 ### Individual Documentation Resource

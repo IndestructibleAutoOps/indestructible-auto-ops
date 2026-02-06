@@ -107,11 +107,11 @@ case "$LANGUAGE" in
       mkdir -p build && cd build
       cmake .. -DCMAKE_BUILD_TYPE=Release
       make -j$(nproc)
-    elif [ -f "Makefile" ]; then
-      echo "Using Makefile..."
+    elif [ -f "makefile" ]; then
+      echo "Using makefile..."
       make clean && make release
     else
-      echo "No C/C++ build file found (CMakeLists.txt or Makefile)"
+      echo "No C/C++ build file found (CMakeLists.txt or makefile)"
     fi
     ;;
   

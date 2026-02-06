@@ -26,7 +26,7 @@ controlplane/baseline/modules/
 ├── 06-security/                # Security & Supply Chain Governance (Global Layer)
 ├── REGISTRY.yaml               # Central module registry
 ├── module-manifest.schema.json # JSON Schema for module manifests
-└── README.md                   # This file
+└── readme.md                   # This file
 ```
 
 ## Module Descriptions

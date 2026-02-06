@@ -268,5 +268,5 @@ A: 編輯生成的包裝器腳本，或修改 `maturity-criteria.yaml` 中的 `w
 ## 相關文檔
 
 - [FHS 標準]([EXTERNAL_URL_REMOVED])
-- [MachineNativeOps Taxonomy](../../README.md)
-- [Repository Understanding System](../repository-understanding/README.md)
+- [MachineNativeOps Taxonomy](../../readme.md)
+- [Repository Understanding System](../repository-understanding/readme.md)

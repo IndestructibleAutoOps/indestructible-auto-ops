@@ -205,7 +205,7 @@ All platform instances must:
 1. **Pass validation** - Configuration must be valid
 2. **Comply with contracts** - Use only valid adapters
 3. **Follow naming conventions** - Follow GL naming ontology
-4. **Include documentation** - README.md in each platform instance
+4. **Include documentation** - readme.md in each platform instance
 5. **Use templates** - Start from templates, don't create from scratch
 
 ---

@@ -299,7 +299,7 @@ Follow the [Conventional Commits]([EXTERNAL_URL_REMOVED]) specification:
 ### Scopes
 
 Common scopes include:
-- `readme`: README.md changes
+- `readme`: readme.md changes
 - `docs`: Documentation changes
 - `gl`: GL system changes
 - `ci`: CI/CD changes
@@ -363,7 +363,7 @@ wip
    ```
 
 3. **Update documentation**
-   - Update README.md if needed
+   - Update readme.md if needed
    - Add/update inline documentation
    - Update CHANGELOG.md for significant changes
 
@@ -571,7 +571,7 @@ When reporting documentation issues:
 If you need help:
 
 1. **Read the documentation**
-   - [README.md](README.md)
+   - [readme.md](readme.md)
    - [GL-STATUS-REPORT.md](GL-STATUS-REPORT.md)
    - [GL-CORE-INTEGRATION-REPORT.md](GL-CORE-INTEGRATION-REPORT.md)
 

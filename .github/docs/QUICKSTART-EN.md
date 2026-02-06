@@ -57,7 +57,7 @@ cat AUTO-QUALITY-REPORT.md
 
 ## 📋 All Available Commands
 
-### Makefile Commands (Recommended)
+### makefile Commands (Recommended)
 
 | Command | Description |
 |---------|-------------|
@@ -149,7 +149,7 @@ Configuration file: `.github/workflows/pr-quality-check.yml`
 
 ## 📖 Detailed Documentation
 
-- [AUTOMATION-README.md](./AUTOMATION-README.md) - Complete usage guide
+- [AUTOMATION-readme.md](./AUTOMATION-readme.md) - Complete usage guide
 - [AUTOMATION-INIT-REPORT.md](./AUTOMATION-INIT-REPORT.md) - Initialization report
 - [PR-1-REVIEW-REPORT.md](./PR-1-REVIEW-REPORT.md) - Detailed review report
 - [PR-1-CODE-EXAMPLES.md](./PR-1-CODE-EXAMPLES.md) - Code examples

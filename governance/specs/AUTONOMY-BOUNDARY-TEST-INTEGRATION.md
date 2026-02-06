@@ -101,7 +101,7 @@ MNGA v2.0 Architecture
 │   │   ├── injection/
 │   │   │   └── injection_trace.json
 │   │   └── closure_verification_report.json
-│   └── README.md
+│   └── readme.md
 
 ecosystem/.governance/
 ├── event-stream.jsonl                      # All GL events

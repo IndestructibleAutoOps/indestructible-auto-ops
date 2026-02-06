@@ -31,7 +31,7 @@ Successfully merged all changes from the `copilot/improve-pr-content-review` bra
 - Comprehensive automation tools framework
 - CI/CD workflows for quality checks (`.github/workflows/pr-quality-check.yml`)
 - Automated quality check script (`scripts/auto-quality-check.py`)
-- Makefile targets for automation (`make automation-*`)
+- makefile targets for automation (`make automation-*`)
 
 ### 2. Code Quality Tools
 - Pre-commit hooks configuration (`.pre-commit-config.yaml`)

@@ -24,7 +24,7 @@ infrastructure/rke2/
 │   ├── network-policies/           # Network policies
 │   ├── pod-security-policies/      # Pod Security Admission configs
 │   └── audit-logging/              # Audit configurations
-└── README.md                        # This file
+└── readme.md                        # This file
 ```
 
 ## 🚀 Quick Start
@@ -318,7 +318,7 @@ This RKE2 integration follows GL (Governance Layers) framework:
 
 - [RKE2 Official Documentation]([EXTERNAL_URL_REMOVED])
 - [CIS Kubernetes Benchmark]([EXTERNAL_URL_REMOVED])
-- [MachineNativeOps README](../../../README.md)
+- [MachineNativeOps README](../../../readme.md)
 - [GL Governance System](../../../GL-STATUS-REPORT.md)
 
 ## 🤝 Contributing
@@ -342,7 +342,7 @@ For issues and questions:
 
 ## 📜 License
 
-MIT License - See [LICENSE](../../../LICENSE)
+MIT License - See [license](../../../license)
 
 ---
 

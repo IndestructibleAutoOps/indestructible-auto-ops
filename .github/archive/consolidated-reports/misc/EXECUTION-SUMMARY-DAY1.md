@@ -56,7 +56,7 @@
 
 ### 6. 測試文檔創建 ✅
 創建了完整的測試文檔：
-- `tests/README.md` - 詳細的測試使用指南
+- `tests/readme.md` - 詳細的測試使用指南
 - `SPRINT13_DAY1_COMPLETION_REPORT.md` - Day 1 完成報告
 
 ---

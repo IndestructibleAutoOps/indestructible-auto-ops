@@ -115,6 +115,6 @@ workflow_dispatch:
 
 ## Related Documentation
 
-- [Parent README](../README.md) - Main project documentation
-- [Deployment](../deployment/README.md) - Kubernetes deployment
-- [Monitoring](../monitoring/README.md) - Observability setup
+- [Parent README](../readme.md) - Main project documentation
+- [Deployment](../deployment/readme.md) - Kubernetes deployment
+- [Monitoring](../monitoring/readme.md) - Observability setup

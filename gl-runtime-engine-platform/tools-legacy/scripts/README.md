@@ -82,7 +82,7 @@
 - Java (Gradle/Maven)
 - C# (.NET)
 - Go
-- C/C++ (CMake/Makefile)
+- C/C++ (CMake/makefile)
 - Ruby
 - Swift
 

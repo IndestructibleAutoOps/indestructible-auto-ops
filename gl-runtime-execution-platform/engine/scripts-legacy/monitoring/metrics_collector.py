@@ -106,7 +106,7 @@ class MetricsCollector:
     def _collect_doc_metrics(self) -> Dict[str, Any]:
         """Collect documentation metrics."""
         docs = {
-            "readme_exists": (self.repo_root / "README.md").exists(),
+            "readme_exists": (self.repo_root / "readme.md").exists(),
             "quickstart_exists": (self.repo_root / "QUICKSTART.md").exists(),
             "project_status_exists": (self.repo_root / "PROJECT_STATUS.md").exists(),
         }

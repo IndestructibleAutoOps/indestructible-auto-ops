@@ -183,7 +183,7 @@ INSTANT Standard: PASSED ✅
    - 標示傳統方式已不建議
    - 強調一鍵部署
 
-3. ✅ `10-policy/README.md` → `80-feedback/README.md` (6 個)
+3. ✅ `10-policy/readme.md` → `80-feedback/readme.md` (6 個)
    - 每個都加入 INSTANT 執行資訊
    - 部署時間、自動化程度
    - 即時可用狀態

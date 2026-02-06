@@ -14,7 +14,7 @@ Successfully implemented enterprise-grade infrastructure components for the Mach
 ### Phase 1: Istio Service Mesh ✅
 
 **Files Created:**
-- `k8s/istio/README.md` - Comprehensive documentation (500+ lines)
+- `k8s/istio/readme.md` - Comprehensive documentation (500+ lines)
 - `k8s/istio/namespace.yaml` - Namespace with sidecar injection
 - `k8s/istio/gateway.yaml` - Gateway and virtual service configuration
 - `k8s/istio/virtualservices/canary-deployment.yaml` - Canary, A/B, blue-green routing
@@ -44,7 +44,7 @@ Successfully implemented enterprise-grade infrastructure components for the Mach
 ### Phase 2: Jaeger Distributed Tracing ✅
 
 **Files Created:**
-- `k8s/jaeger/README.md` - Complete documentation (600+ lines)
+- `k8s/jaeger/readme.md` - Complete documentation (600+ lines)
 - `k8s/jaeger/values.yaml` - Production Helm values (400+ lines)
 - `k8s/jaeger/istio-config.yaml` - Istio integration configuration
 - `k8s/jaeger/install.sh` - Installation script (200+ lines)
@@ -71,7 +71,7 @@ Successfully implemented enterprise-grade infrastructure components for the Mach
 ### Phase 3: Disaster Recovery ✅
 
 **Files Created:**
-- `k8s/disaster-recovery/README.md` - Comprehensive DR documentation (800+ lines)
+- `k8s/disaster-recovery/readme.md` - Comprehensive DR documentation (800+ lines)
 - `k8s/disaster-recovery/schedules/backup-schedules.yaml` - Velero backup schedules
 - `k8s/disaster-recovery/jobs/database-backup-jobs.yaml` - Database backup jobs
 
@@ -107,7 +107,7 @@ Successfully implemented enterprise-grade infrastructure components for the Mach
 ### Phase 4: High Availability (Multi-AZ) ✅
 
 **Files Created:**
-- `k8s/high-availability/README.md` - HA documentation (700+ lines)
+- `k8s/high-availability/readme.md` - HA documentation (700+ lines)
 - `k8s/high-availability/deployments/multi-az-deployments.yaml` - Multi-AZ deployments
 - `k8s/high-availability/services/multi-az-services.yaml` - Multi-AZ services
 - `k8s/high-availability/failover/failover-policies.yaml` - Failover policies

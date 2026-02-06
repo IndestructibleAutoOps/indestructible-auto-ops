@@ -455,7 +455,7 @@ curl -X POST YOUR_WEBHOOK_URL -d '{"text":"test"}'
 - [GL Unified Architecture Governance Framework v5.0](./GL-UNIFIED-CHARTER.md)
 - [Naming Migration Playbook](./RUNBOOKS/naming-migration-playbook.md)
 - [Security Policies](../.config/policy/)
-- [Observability Guide](../observability/README.md)
+- [Observability Guide](../observability/readme.md)
 
 ---
 

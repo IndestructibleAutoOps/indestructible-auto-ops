@@ -222,7 +222,7 @@ ast.parse(content)  # ✅ Success for all files
 ### Related Documentation
 - See `CODE_SCANNING_REPORT.md` for detailed findings
 - See `code-scanning-report.json` for raw data
-- See ecosystem/README.md for environment details
+- See ecosystem/readme.md for environment details
 
 ---
 

@@ -18,10 +18,10 @@ The `infrastructure/` directory contains all infrastructure configuration, conta
 
 ```
 infrastructure/
-├── README.md                           # 基礎設施說明
+├── readme.md                           # 基礎設施說明
 │
 ├── 🐳 kubernetes/                      # Kubernetes 編排
-│   ├── README.md
+│   ├── readme.md
 │   ├── manifests/                      # K8s 清單
 │   │   ├── namespace.yaml
 │   │   ├── configmap.yaml
@@ -48,7 +48,7 @@ infrastructure/
 │       └── cleanup.sh
 │
 ├── 📊 monitoring/                      # 監控系統
-│   ├── README.md
+│   ├── readme.md
 │   ├── prometheus/
 │   │   ├── prometheus.yml              # Prometheus 配置
 │   │   ├── rules.yml                   # 告警規則
@@ -73,7 +73,7 @@ infrastructure/
 │       └── logstash.conf
 │
 ├── 🚀 deployment/                      # 部署配置
-│   ├── README.md
+│   ├── readme.md
 │   ├── docker-compose.prod.yml         # 生產容器編排
 │   ├── docker-compose.staging.yml      # 預發佈容器編排
 │   ├── ci-deployment.yaml              # CI/CD 流程
@@ -81,13 +81,13 @@ infrastructure/
 │   └── blue-green-deployment.yaml      # 藍綠部署
 │
 ├── 🔄 drift-detection/                 # 漂移檢測
-│   ├── README.md
+│   ├── readme.md
 │   ├── drift-detector.py
 │   ├── reconciler.py
 │   └── config-snapshot.yaml
 │
 ├── 🔐 security/                        # 安全配置
-│   ├── README.md
+│   ├── readme.md
 │   ├── network-policy.yaml
 │   ├── rbac.yaml
 │   ├── pod-security-policy.yaml
@@ -95,13 +95,13 @@ infrastructure/
 │   └── ingress-tls.yaml
 │
 ├── 📈 scaling/                         # 伸縮配置
-│   ├── README.md
+│   ├── readme.md
 │   ├── hpa.yaml                        # 水平自動伸縮
 │   ├── vpa.yaml                        # 垂直自動伸縮
 │   └── metrics-server.yaml
 │
 ├── 🔍 observability/                   # 可觀測性
-│   ├── README.md
+│   ├── readme.md
 │   ├── jaeger-deployment.yaml          # 分散式追蹤
 │   ├── opentelemetry-config.yaml
 │   └── metrics-collection.yaml
@@ -365,11 +365,11 @@ affinity:
 
 ## 📖 詳細文檔 / Detailed Documentation
 
-- [Kubernetes 配置](./kubernetes/README.md)
-- [監控系統](./monitoring/README.md)
-- [部署策略](./deployment/README.md)
-- [漂移檢測](./drift-detection/README.md)
-- [安全配置](./security/README.md)
+- [Kubernetes 配置](./kubernetes/readme.md)
+- [監控系統](./monitoring/readme.md)
+- [部署策略](./deployment/readme.md)
+- [漂移檢測](./drift-detection/readme.md)
+- [安全配置](./security/readme.md)
 
 ---
 
@@ -386,6 +386,6 @@ affinity:
 
 ## 📞 支援 / Support
 
-- 📖 [基礎設施文檔](./README.md)
+- 📖 [基礎設施文檔](./readme.md)
 - 🐛 [報告問題]([EXTERNAL_URL_REMOVED])
 - 💬 [討論]([EXTERNAL_URL_REMOVED])

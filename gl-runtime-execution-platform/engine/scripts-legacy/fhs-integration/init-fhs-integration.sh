@@ -79,7 +79,7 @@ REQUIRED_FILES=(
     "fhs_validator.py"
     "fhs_automation_master.py"
     "maturity-criteria.yaml"
-    "README.md"
+    "readme.md"
 )
 
 cd "$FHS_TOOLS_DIR"

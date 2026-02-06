@@ -142,7 +142,7 @@ pytest tests/unit/ --junitxml=test-results/unit-tests.xml
 
 ## Related Documentation
 
-- [Test Suite Documentation](../tests/README.md)
+- [Test Suite Documentation](../tests/readme.md)
 - [Pytest Configuration](../pytest.ini)
 - [test-summary/action Documentation]([EXTERNAL_URL_REMOVED])
 

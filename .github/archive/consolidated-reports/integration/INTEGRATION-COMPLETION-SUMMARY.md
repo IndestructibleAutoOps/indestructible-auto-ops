@@ -41,7 +41,7 @@ This integration successfully merged the Repository Understanding System from th
 - **CONSOLIDATED_PROJECT_STATUS.md** - Unified project status tracking
 - **DOCUMENTATION_INDEX.md** - Central documentation hub
 - **Updated**: `docs/repository-understanding/` - Latest reports and guides
-- **Updated**: `README.md` - Quick navigation and status updates
+- **Updated**: `readme.md` - Quick navigation and status updates
 
 #### 4. Phase Reports & Completion Documentation
 - **PHASE2_EVAL_REMEDIATION_COMPLETE.md** - Phase 2 security remediation completion
@@ -262,7 +262,7 @@ sudo systemctl status event-driven-system.service
 - **Integration Report**: [UNDERSTANDING_SYSTEM_INTEGRATION_REPORT.md](UNDERSTANDING_SYSTEM_INTEGRATION_REPORT.md)
 - **Project Status**: [CONSOLIDATED_PROJECT_STATUS.md](CONSOLIDATED_PROJECT_STATUS.md)
 - **Documentation Index**: [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)
-- **Repository Understanding Docs**: [docs/repository-understanding/README.md](docs/repository-understanding/README.md)
+- **Repository Understanding Docs**: [docs/repository-understanding/readme.md](docs/repository-understanding/readme.md)
 
 ### CI/CD Improvements
 - **CI/CD Analysis Summary**: [CI_ANALYSIS_COMPLETE_SUMMARY.md](CI_ANALYSIS_COMPLETE_SUMMARY.md)

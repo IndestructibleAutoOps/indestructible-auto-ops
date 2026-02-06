@@ -123,7 +123,7 @@ standardized_subdirectory_framework:
         mandatory_level: "HIGH"
         purpose: "Module-specific documentation"
         contents:
-          - "README.md"
+          - "readme.md"
           - "API.md"
           - "DESIGN.md"
     recommended_directories:
@@ -136,7 +136,7 @@ standardized_subdirectory_framework:
   # Module skeleton template
   module_skeleton_template: |
     {module_name}/
-    ├── README.md                 # Module entry documentation
+    ├── readme.md                 # Module entry documentation
     ├── src/                      # 📝 Source Code [HIGH]
     │   ├── index.ts              # Entry point
     │   ├── types.ts              # Type definitions
@@ -148,7 +148,7 @@ standardized_subdirectory_framework:
     │   ├── e2e/                  # End-to-end tests
     │   └── fixtures/             # Test fixtures
     ├── docs/                     # 📚 Documentation [HIGH]
-    │   ├── README.md             # Module overview
+    │   ├── readme.md             # Module overview
     │   ├── API.md                # API reference
     │   └── DESIGN.md             # Design decisions
     └── config/                   # ⚙️ Configuration [MEDIUM-HIGH]
@@ -495,7 +495,7 @@ directory_categories:
       root_docs:
         description: "根目錄文件"
         files:
-          - "README.md"
+          - "readme.md"
           - "README.en.md"
           - "CONTRIBUTING.md"
           - "SECURITY.md"
@@ -665,7 +665,7 @@ root_directory_guidelines:
   essential_root_files:
     description: "必須保留在根目錄的檔案"
     files:
-      - "README.md"
+      - "readme.md"
       - "README.en.md"
       - "package.json"
       - "package-lock.json"
@@ -692,7 +692,7 @@ root_directory_guidelines:
       - "PHASE1_VALIDATION_REPORT.md"
       - "PRODUCTION_READINESS.md"
       - "REPOSITORY_INTEGRATION_ASSESSMENT.md"
-      - "ROOT_README.md"
+      - "ROOT_readme.md"
       - "SECURITY_SUMMARY.md"
     target: "docs/"
   

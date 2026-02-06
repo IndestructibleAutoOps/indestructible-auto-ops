@@ -63,7 +63,7 @@ git clone [EXTERNAL_URL_REMOVED]
 - Configuration files: ~13 files
 
 ### Key Files Updated:
-- README.md
+- readme.md
 - All documentation in `docs/` directories
 - All deployment guides
 - CI/CD workflow files

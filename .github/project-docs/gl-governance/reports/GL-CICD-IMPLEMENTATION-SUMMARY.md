@@ -258,7 +258,7 @@ Configure these secrets in your repository settings:
 | Secret | Description |
 |--------|-------------|
 | `SNYK_TOKEN` | Snyk API token (optional) |
-| `GITLEAKS_LICENSE` | Gitleaks license key (optional) |
+| `GITLEAKS_license` | Gitleaks license key (optional) |
 
 ---
 

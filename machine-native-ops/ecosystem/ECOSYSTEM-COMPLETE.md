@@ -264,13 +264,13 @@
 
 ### 組件 README
 
-- `coordination/service-discovery/README.md`
-- `coordination/api-gateway/README.md`
-- `coordination/communication/README.md`
-- `coordination/data-synchronization/README.md`
-- `platform-templates/core-template/README.md`
-- `platform-templates/cloud-template/README.md`
-- `platform-templates/on-premise-template/README.md`
+- `coordination/service-discovery/readme.md`
+- `coordination/api-gateway/readme.md`
+- `coordination/communication/readme.md`
+- `coordination/data-synchronization/readme.md`
+- `platform-templates/core-template/readme.md`
+- `platform-templates/cloud-template/readme.md`
+- `platform-templates/on-premise-template/readme.md`
 
 ---
 

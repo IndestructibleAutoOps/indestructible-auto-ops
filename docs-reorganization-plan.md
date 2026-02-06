@@ -6,7 +6,7 @@
 ## 文檔分類
 
 ### 1. 核心文檔 - 保留在根目錄 (7 個)
-- README.md
+- readme.md
 - CONTRIBUTING.md
 - DEVELOPMENT_STRATEGY.md
 - DEPLOYMENT_GUIDE.md

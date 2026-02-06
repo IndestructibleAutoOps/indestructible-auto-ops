@@ -78,14 +78,14 @@ config/
 
 | 文檔類型 | 文件 | 行數 | 完整性 |
 |---------|------|------|--------|
-| 主文檔 | README.md | 400+ | ✅ 100% |
+| 主文檔 | readme.md | 400+ | ✅ 100% |
 | 架構設計 | docs/architecture.md | 800+ | ✅ 100% |
 | 使用指南 | docs/usage.md | 1000+ | ✅ 100% |
 | 變更日誌 | CHANGELOG.md | 200+ | ✅ 100% |
 | 貢獻指南 | CONTRIBUTING.md | 300+ | ✅ 100% |
 | 專案總結 | PROJECT-SUMMARY.md | 400+ | ✅ 100% |
 | 升級指南 | UPGRADE-GUIDE.md | 300+ | ✅ 100% |
-| 範例說明 | examples/README.md | 250+ | ✅ 100% |
+| 範例說明 | examples/readme.md | 250+ | ✅ 100% |
 
 **總文檔行數**: 3650+ 行
 

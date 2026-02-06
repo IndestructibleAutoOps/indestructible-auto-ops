@@ -108,7 +108,7 @@ SuperNinja Mode System 已一次性構建完成，包含完整的核心架構、
 
 #### ✅ 用戶文檔
 
--   **`README.md`** (4,500+ 字)
+-   **`readme.md`** (4,500+ 字)
     -   快速開始指南
     -   使用示例
     -   模式說明
@@ -239,7 +239,7 @@ superninja-mode-system/
 ├── test_system.py            # 測試腳本
 ├── quick_start.sh            # 快速啟動
 ├── requirements.txt          # 依賴
-├── README.md                 # 用戶文檔
+├── readme.md                 # 用戶文檔
 ├── ARCHITECTURE.md           # 架構文檔
 ├── DEPLOYMENT.md             # 部署文檔
 └── DEVELOPMENT.md            # 開發文檔
@@ -367,7 +367,7 @@ python main.py
 
 ### 文檔字數
 
--   **README.md**: ~4,500 字
+-   **readme.md**: ~4,500 字
 -   **ARCHITECTURE.md**: ~7,000 字
 -   **DEPLOYMENT.md**: ~5,000 字
 -   **DEVELOPMENT.md**: ~5,000 字
@@ -393,7 +393,7 @@ python main.py
 
 ### 文檔
 
--   [x]  README.md
+-   [x]  readme.md
 -   [x]  ARCHITECTURE.md
 -   [x]  DEPLOYMENT.md
 -   [x]  DEVELOPMENT.md
@@ -449,7 +449,7 @@ SuperNinja Mode System 已經**一次性完整構建完成**，包括：
 
 如有任何問題：
 
-1.  查看 README.md - 快速開始指南
+1.  查看 readme.md - 快速開始指南
 2.  查看 ARCHITECTURE.md - 架構詳解
 3.  查看 DEPLOYMENT.md - 部署指南
 4.  查看 DEVELOPMENT.md - 開發指南

@@ -17,10 +17,10 @@ The `tools/` directory contains build, validation, generation, and operations to
 
 ```
 tools/
-├── README.md                           # 工具層說明
+├── readme.md                           # 工具層說明
 │
 ├── 🔍 docs/                            # 文檔與知識圖工具
-│   ├── README.md
+│   ├── readme.md
 │   ├── validate_index.py               # Schema 驗證器
 │   ├── scan_repo_generate_index.py    # 倉庫掃描與索引生成
 │   ├── generate_mndoc_from_readme.py  # MN-DOC 生成器
@@ -31,7 +31,7 @@ tools/
 │   └── requirements.txt                # Python 依賴
 │
 ├── 🔧 cli/                             # Admin Copilot CLI
-│   ├── README.md
+│   ├── readme.md
 │   ├── package.json
 │   ├── bin/
 │   │   └── admin-copilot.js            # CLI 入口
@@ -42,7 +42,7 @@ tools/
 │   └── tests/
 │
 ├── 📋 ci/                              # CI 工具
-│   ├── README.md
+│   ├── readme.md
 │   ├── contract-checker.js             # 合約檢查器
 │   ├── language-checker.js             # 語言檢查器
 │   ├── policy-simulate.yml             # 策略模擬配置
@@ -54,7 +54,7 @@ tools/
 │   └── security-validator.js           # 安全驗證器
 │
 ├── 🛠️ scripts/                         # 運維腳本
-│   ├── README.md
+│   ├── readme.md
 │   ├── setup.sh                        # 環境設置
 │   ├── check-env.sh                    # 環境檢查
 │   ├── analyze.sh                      # 分析腳本
@@ -118,7 +118,7 @@ python3 tools/docs/generate_knowledge_graph.py \
 
 ```bash
 python3 tools/docs/generate_mndoc_from_readme.py \
-  --readme README.md \
+  --readme readme.md \
   --output docs/generated-mndoc.yaml
 ```
 
@@ -335,11 +335,11 @@ node tools/testing/performance-profiler.js --output perf-report.html
 
 ## 📖 工具文檔 / Tool Documentation
 
-- [文檔工具](./docs/README.md)
-- [CLI 指南](./cli/README.md)
-- [CI 工具](./ci/README.md)
-- [運維腳本](./scripts/README.md)
-- [安全工具](./security/README.md)
+- [文檔工具](./docs/readme.md)
+- [CLI 指南](./cli/readme.md)
+- [CI 工具](./ci/readme.md)
+- [運維腳本](./scripts/readme.md)
+- [安全工具](./security/readme.md)
 
 ---
 
@@ -356,6 +356,6 @@ node tools/testing/performance-profiler.js --output perf-report.html
 
 ## 📞 支援 / Support
 
-- 📖 [工具文檔](./README.md)
+- 📖 [工具文檔](./readme.md)
 - 🐛 [報告問題]([EXTERNAL_URL_REMOVED])
 - 💬 [討論]([EXTERNAL_URL_REMOVED])

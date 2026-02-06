@@ -401,7 +401,7 @@ ecosystem/contracts/fact-verification/
 ├── gl.fact-pipeline-spec.yaml           # 管道规范
 ├── gl.verifiable-report-spec.yaml       # 报告规范
 ├── gl.internal-vs-external-governance.yaml  # 边界治理
-└── README.md                             # 本文档
+└── readme.md                             # 本文档
 
 ecosystem/tools/fact-verification/
 └── gl-fact-pipeline.py                   # 执行脚本

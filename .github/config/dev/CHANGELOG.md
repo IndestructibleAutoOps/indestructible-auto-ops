@@ -90,7 +90,7 @@ bash .devcontainer/start-dev-server.sh
 bash .devcontainer/install-optional-tools.sh
 ```
 
-##### README.md
+##### readme.md
 
 新增用戶友好的說明文檔，包含：
 

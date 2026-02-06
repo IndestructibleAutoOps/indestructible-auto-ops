@@ -98,7 +98,7 @@ All scripts generate logs in the repository root:
 ## 🔗 Related Documentation
 
 - Main Plan: `workspace/docs/THREE_PHASE_REFACTORING_EXECUTION_PLAN.md`
-- Playbooks: `workspace/docs/refactor_playbooks/README.md`
+- Playbooks: `workspace/docs/refactor_playbooks/readme.md`
 - INSTANT Plan: `INSTANT-EXECUTION-REFACTOR-PLAN.md`
 
 ## 🤝 Support

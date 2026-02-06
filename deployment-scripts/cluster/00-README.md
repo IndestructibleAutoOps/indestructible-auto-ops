@@ -4,7 +4,7 @@
 
 ```
 cluster/
-├── 00_README.md                           # 本文件
+├── 00_readme.md                           # 本文件
 ├── 01_pre_install_check.sh                # 前置檢查腳本
 ├── 02_init_control_plane.sh               # 控制平面初始化腳本
 ├── 03_join_worker_node.sh                 # Worker 節點加入腳本

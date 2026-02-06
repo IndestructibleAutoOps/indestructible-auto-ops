@@ -71,6 +71,6 @@ GitHub Actions 工作流程已設定於：
 
 ## 參考文件
 
-- [AUTOMATION-README.md](./AUTOMATION-README.md) - 詳細使用指南
+- [AUTOMATION-readme.md](./AUTOMATION-readme.md) - 詳細使用指南
 - [PR-1-REVIEW-REPORT.md](./PR-1-REVIEW-REPORT.md) - 完整審查報告
 - [PR-1-ACTION-PLAN.md](./PR-1-ACTION-PLAN.md) - 改進計劃

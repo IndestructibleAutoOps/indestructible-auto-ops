@@ -74,13 +74,13 @@ mkdir -p tools/{terraform,kubernetes,make}
 
 ### Step 3: Create Template Files
 Add placeholder files for:
-- Module templates (main.tf, variables.tf, outputs.tf, README.md)
+- Module templates (main.tf, variables.tf, outputs.tf, readme.md)
 - Platform configuration files
 - Environment-specific configurations
 - CI/CD workflows
 
 ### Step 4: Update Documentation
-- Update README.md with new structure
+- Update readme.md with new structure
 - Update IMPLEMENTATION_SUMMARY.md
 - Create architecture documentation
 

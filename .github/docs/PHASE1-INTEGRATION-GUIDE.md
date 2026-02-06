@@ -62,7 +62,7 @@ View available policies:
 
 ```bash
 ls -la controlplane/governance/policies/*.rego
-cat controlplane/governance/policies/README.md
+cat controlplane/governance/policies/readme.md
 ```
 
 **Policies Available**:
@@ -435,8 +435,8 @@ cat research_report_verification_plan.md | grep -A 20 "Phase 2"
 ## Resources
 
 ### Documentation
-- [Module Organization README](controlplane/baseline/modules/README.md)
-- [Policy Framework README](controlplane/governance/policies/README.md)
+- [Module Organization README](controlplane/baseline/modules/readme.md)
+- [Policy Framework README](controlplane/governance/policies/readme.md)
 - [Supply Chain Security Guide](docs/supply-chain-security.md)
 - [Phase 1 Completion Report](PHASE1_COMPLETION_REPORT.md)
 

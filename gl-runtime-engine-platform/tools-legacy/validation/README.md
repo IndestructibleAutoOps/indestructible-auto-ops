@@ -28,7 +28,7 @@ tools/validation/
 ├── quantum-validation-policy.yaml     # 量子驗證策略配置
 ├── hybrid-weights-config.yaml         # 混合權重配置
 ├── dynamic-adjustment-rules.yaml      # 動態調整規則
-└── README.md                          # 本文件
+└── readme.md                          # 本文件
 ```
 
 ---

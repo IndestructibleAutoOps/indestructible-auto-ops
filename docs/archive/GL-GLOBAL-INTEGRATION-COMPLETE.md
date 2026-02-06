@@ -137,7 +137,7 @@ engine/governance/
 ├── architecture/
 ├── audit-reports/
 ├── sealed/
-└── GL-README.md
+└── GL-readme.md
 ```
 
 ### Gate System

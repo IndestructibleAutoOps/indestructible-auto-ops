@@ -39,7 +39,7 @@ The following reports have been consolidated into this single document:
 - CI_FAILURE_ANALYSIS_AND_FIX.md
 - CI_FAILURE_FIX_REPORT.md
 - CI_FIX_COMPLETION_REPORT.md
-- CI_FIX_FINAL_SUMMARY.md
+- CI_FIX_final-summary.md
 - CI_IMPLEMENTATION_GUIDE.md
 - CI_IMPROVEMENT_ANALYSIS.md
 - CI_IMPROVEMENT_TODO.md

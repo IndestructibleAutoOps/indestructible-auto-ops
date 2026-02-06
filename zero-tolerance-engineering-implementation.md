@@ -257,7 +257,7 @@ def evaluate_layer_dependencies(event):
 **Immutable Files:**
 ```
 governance_registry.yaml
-architecture_registry.yaml
+architecture-registry.yaml
 hash_policy.yaml
 narrative_free_enforcement.yaml
 ```

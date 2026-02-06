@@ -240,7 +240,7 @@ apiContract:
 
 ### Required Documentation
 Each layer must include:
-- README.md - Layer overview
+- readme.md - Layer overview
 - ARCHITECTURE.md - Architecture description
 - RESPONSIBILITIES.md - Responsibility definition
 - API.md - API documentation (if applicable)

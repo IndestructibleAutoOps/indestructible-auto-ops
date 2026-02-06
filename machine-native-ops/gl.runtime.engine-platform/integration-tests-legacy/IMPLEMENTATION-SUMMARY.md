@@ -25,7 +25,7 @@
   - 4週實施時間線
 
 #### 1.2 測試目錄文檔
-- **文件**: `integration-tests/README.md`
+- **文件**: `integration-tests/readme.md`
 - **內容**:
   - 完整的測試類型說明
   - 環境設置指南
@@ -163,7 +163,7 @@
 machine-native-ops/
 ├── INTEGRATION_TESTING_PLAN.md              # 測試計劃文檔
 └── integration-tests/
-    ├── README.md                            # 測試目錄文檔
+    ├── readme.md                            # 測試目錄文檔
     ├── conftest.py                          # 測試配置和 fixtures
     ├── requirements-test.txt                # 測試依賴
     ├── pytest.ini                           # pytest 配置

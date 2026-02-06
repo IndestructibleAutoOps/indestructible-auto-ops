@@ -46,7 +46,7 @@ Transform the AI-powered instant execution strategy from documentation into a **
 | 2 | `tools/ai/__init__.py` | AI package initialization | 389B | ✅ Complete |
 | 3 | `automation/pipelines/instant_execution_pipeline.py` | Main pipeline orchestrator | 24K | ✅ Complete |
 | 4 | `automation/pipelines/__init__.py` | Pipeline package init | 430B | ✅ Complete |
-| 5 | `automation/pipelines/README.md` | Pipeline documentation | 3.6K | ✅ Complete |
+| 5 | `automation/pipelines/readme.md` | Pipeline documentation | 3.6K | ✅ Complete |
 | 6 | `config/instant-execution-pipeline.yaml` | Pipeline configuration | 8.2K | ✅ Complete |
 | 7 | `scripts/run-instant-execution.sh` | Quick start launcher | 9.5K | ✅ Complete |
 | 8 | `docs/INSTANT_EXECUTION_INTEGRATION_MAP.md` | Architecture documentation | 18K | ✅ Complete |
@@ -342,7 +342,7 @@ AI Governance Engine - Demo
    - Common commands
    - Troubleshooting
 
-4. **automation/pipelines/README.md** (3.6K)
+4. **automation/pipelines/readme.md** (3.6K)
    - Pipeline overview
    - Integration examples
 

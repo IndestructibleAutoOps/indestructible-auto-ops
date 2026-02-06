@@ -119,16 +119,16 @@
 
 #### Build
 
-- `machine-native-ops/Makefile`
+- `machine-native-ops/makefile`
 - `machine-native-ops/ns-root/namespaces-mcp/level1/instant-system/Dockerfile`
 - `machine-native-ops/workspace/Dockerfile`
-- `machine-native-ops/workspace/Makefile`
+- `machine-native-ops/workspace/makefile`
 - `machine-native-ops/workspace/teams/holy-grail/automation/architect/Dockerfile`
 - `machine-native-ops/workspace/teams/default-team/orchestrator/Dockerfile`
 - `machine-native-ops/workspace/src/automation/architect/Dockerfile`
 - `machine-native-ops/workspace/src/core/contract_service/contracts-L1/contracts/Dockerfile`
 - `machine-native-ops/workspace/src/core/contracts/contracts-L1/contracts/Dockerfile`
-- `machine-native-ops/workspace/src/governance/Makefile`
+- `machine-native-ops/workspace/src/governance/makefile`
 - ... 和其他 8 個檔案
 
 #### Entry_points

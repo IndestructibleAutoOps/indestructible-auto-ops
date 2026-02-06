@@ -272,14 +272,14 @@ ecosystem/
 9. FINAL_COMPLETION_REPORT.md - 最終完成報告（本文件）
 
 ### 組件文檔
-10. coordination/service-discovery/README.md
-11. coordination/api-gateway/README.md  
-12. coordination/communication/README.md
-13. coordination/data-synchronization/README.md
-14. platform-templates/core-template/README.md
-15. platform-templates/cloud-template/README.md
-16. platform-templates/on-premise-template/README.md
-17. governance/meta-governance/README.md
+10. coordination/service-discovery/readme.md
+11. coordination/api-gateway/readme.md  
+12. coordination/communication/readme.md
+13. coordination/data-synchronization/readme.md
+14. platform-templates/core-template/readme.md
+15. platform-templates/cloud-template/readme.md
+16. platform-templates/on-premise-template/readme.md
+17. governance/meta-governance/readme.md
 
 ---
 

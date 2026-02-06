@@ -471,7 +471,7 @@ DESCRIPTION: Each layer must have required documentation
 ```python
 def check_documentation_completeness(layer_path):
     required_docs = {
-        'README.md': 'Layer overview',
+        'readme.md': 'Layer overview',
         'ARCHITECTURE.md': 'Architecture description',
         'RESPONSIBILITIES.md': 'Responsibility definition',
         'API.md': 'API documentation (if applicable)'

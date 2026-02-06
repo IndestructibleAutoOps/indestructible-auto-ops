@@ -202,7 +202,7 @@ npm run dev
 
 ## 📚 更多資源
 
-- **詳細文檔**: [README.md](./README.md)
+- **詳細文檔**: [readme.md](./readme.md)
 - **技術細節**: [KB.md](./KB.md)
 - **變更記錄**: [CHANGELOG.md](./CHANGELOG.md)
 - **可選工具**: [install-optional-tools.sh](./install-optional-tools.sh)
@@ -239,4 +239,4 @@ npm run dev
 
 **🎉 享受自動化的開發體驗！**
 
-有問題？查看 [故障排除指南](./README.md#故障排除) 或提交 Issue。
+有問題？查看 [故障排除指南](./readme.md#故障排除) 或提交 Issue。

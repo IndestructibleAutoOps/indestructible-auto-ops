@@ -113,7 +113,7 @@ All 16 naming conventions with:
 ### 4. Documentation
 
 #### README
-**File**: `README.md`
+**File**: `readme.md`
 
 Comprehensive documentation including:
 - Overview and mission

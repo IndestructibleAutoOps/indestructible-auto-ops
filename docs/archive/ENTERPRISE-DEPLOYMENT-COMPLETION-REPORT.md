@@ -237,7 +237,7 @@ MachineNativeOps has been successfully deployed with enterprise-grade infrastruc
 - Kibana logs: [EXTERNAL_URL_REMOVED]
 
 ### Documentation
-- Deployment Guide: `/deployment/README.md`
+- Deployment Guide: `/deployment/readme.md`
 - API Documentation: `/docs/api/`
 - Architecture: `/docs/architecture/`
 

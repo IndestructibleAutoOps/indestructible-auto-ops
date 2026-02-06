@@ -17,14 +17,14 @@
 - `dsl/schema.yaml`
 - `dsl/site.yaml`
 - `engine/SPEC.md`
-- `engine/executor/README.md`
-- `engine/gl/README.md`
+- `engine/executor/readme.md`
+- `engine/gl/readme.md`
 - `engine/index.ts`
-- `engine/loader/README.md`
-- `engine/normalizer/README.md`
-- `engine/parser/README.md`
-- `engine/renderer/README.md`
-- `engine/validator/README.md`
+- `engine/loader/readme.md`
+- `engine/normalizer/readme.md`
+- `engine/parser/readme.md`
+- `engine/renderer/readme.md`
+- `engine/validator/readme.md`
 - `gl/anchors.yaml`
 - `gl/charter.yaml`
 - `gl/manifests/nginx.gl.yaml`
@@ -38,7 +38,7 @@
 
 ## Modified files (5)
 - `.gitignore`
-- `README.md`
+- `readme.md`
 - `engine/interfaces.d.ts`
 - `package.json`
 - `todo.md`

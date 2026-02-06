@@ -132,7 +132,7 @@ class HealthChecker:
     def _check_documentation(self) -> HealthCheckResult:
         """Check documentation completeness."""
         docs = {
-            "README.md": (self.repo_root / "README.md").exists(),
+            "readme.md": (self.repo_root / "readme.md").exists(),
             "QUICKSTART.md": (self.repo_root / "QUICKSTART.md").exists(),
             "PROJECT_STATUS.md": (self.repo_root / "PROJECT_STATUS.md").exists(),
             "SECURITY.md": (self.repo_root / "SECURITY.md").exists(),

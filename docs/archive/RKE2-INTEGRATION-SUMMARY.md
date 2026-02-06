@@ -97,7 +97,7 @@
 ### 6. 文檔
 
 **README**
-- ✅ `infrastructure/rke2/README.md`
+- ✅ `infrastructure/rke2/readme.md`
   - 快速開始指南
   - 配置說明
   - 安全功能詳述
@@ -125,7 +125,7 @@ infrastructure/rke2/
 │   │   └── default-deny-all.yaml ✅
 │   ├── pod-security-policies/
 │   └── audit-logging/
-└── README.md ✅
+└── readme.md ✅
 ```
 
 ---
@@ -325,7 +325,7 @@ infrastructure/rke2/
 
 - [RKE2 官方文檔]([EXTERNAL_URL_REMOVED])
 - [CIS Kubernetes 基準]([EXTERNAL_URL_REMOVED])
-- [MachineNativeOps README](README.md)
+- [MachineNativeOps README](readme.md)
 - [GL 治理系統](GL-STATUS-REPORT.md)
 - [RKE2 安全加固集成方案](docs/RKE2_SECURITY_INTEGRATION_PLAN.md)
 

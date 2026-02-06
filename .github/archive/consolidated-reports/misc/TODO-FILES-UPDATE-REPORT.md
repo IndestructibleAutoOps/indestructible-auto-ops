@@ -159,7 +159,7 @@ pytest.ini
 ### Documentation ✅
 ```bash
 # Documentation created:
-tests/README.md
+tests/readme.md
 docs/DEVELOPER_GUIDELINES.md
 .github/CODE_REVIEW_CHECKLIST.md
 HIGH_LEVEL_INTEGRATION_COMPLETE.md

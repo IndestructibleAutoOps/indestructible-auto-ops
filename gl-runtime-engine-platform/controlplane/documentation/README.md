@@ -24,7 +24,7 @@ This directory contains governance-level documentation for the MachineNativeOps 
 
 ```
 documentation/
-├── README.md              # This file
+├── readme.md              # This file
 ├── governance/            # Governance policies and frameworks
 ├── architecture/          # Architecture decision records
 ├── specifications/        # Technical specifications

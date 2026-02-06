@@ -23,7 +23,7 @@
 ├── scripts/
 │   ├── auto-quality-check.py     # 自動品質檢查腳本
 │   └── auto-fix-issues.py        # 自動修復腳本
-└── AUTOMATION-README.md           # 本文件
+└── AUTOMATION-readme.md           # 本文件
 ```
 
 ## 🚀 快速開始
@@ -166,10 +166,10 @@ python scripts/auto-quality-check.py
 python scripts/auto-fix-issues.py
 ```
 
-### 範例 3: 整合到 Makefile
+### 範例 3: 整合到 makefile
 
 ```makefile
-# Makefile
+# makefile
 
 .PHONY: quality-check quality-fix
 

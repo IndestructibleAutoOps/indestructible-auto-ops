@@ -144,4 +144,4 @@ This app integrates with the AEP Engine (`/engine`) to:
 
 ## License
 
-MIT License - see [LICENSE](../LICENSE) for details.
+MIT License - see [license](../license) for details.

@@ -478,9 +478,9 @@ chmod +x QUICK_INSTALL.sh
 ## Support & Documentation
 
 ### Documentation Links
-- **v1.0.0 Foundation**: [governance/naming-governance-v1.0.0/README.md](naming-governance-v1.0.0/README.md)
+- **v1.0.0 Foundation**: [governance/naming-governance-v1.0.0/readme.md](naming-governance-v1.0.0/readme.md)
 - **v1.0.0 Extended**: [governance/naming-governance-v1.0.0-extended/docs/IMPLEMENTATION_GUIDE.md](naming-governance-v1.0.0-extended/docs/IMPLEMENTATION_GUIDE.md)
-- **v4.0.0 Quantum**: [governance/quantum-naming-v4.0.0/docs/README.md](quantum-naming-v4.0.0/docs/README.md)
+- **v4.0.0 Quantum**: [governance/quantum-naming-v4.0.0/docs/readme.md](quantum-naming-v4.0.0/docs/readme.md)
 
 ### Community Support
 - **Documentation**: [EXTERNAL_URL_REMOVED]

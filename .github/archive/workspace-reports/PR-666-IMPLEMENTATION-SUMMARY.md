@@ -51,7 +51,7 @@ Restructure PR to align with MachineNativeOps namespace standards and implement 
 #### Auto-Monitor Package Structure ✅
 ```
 engine/machinenativenops-auto-monitor/
-├── README.md                   # Documentation
+├── readme.md                   # Documentation
 ├── setup.py                    # Package setup
 └── src/machinenativenops_auto_monitor/
     ├── __init__.py            # Package initialization
@@ -164,7 +164,7 @@ PRODUCTION VERIFICATION
 2. `tools/namespace-converter.py`
 3. `tools/namespace-validator.py`
 4. `tools/verify-namespace-alignment.py`
-5. `engine/machinenativenops-auto-monitor/README.md`
+5. `engine/machinenativenops-auto-monitor/readme.md`
 6. `engine/machinenativenops-auto-monitor/setup.py`
 7. `engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/__init__.py`
 8. `engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/__main__.py`

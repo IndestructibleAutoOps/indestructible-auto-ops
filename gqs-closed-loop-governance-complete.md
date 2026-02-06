@@ -304,9 +304,9 @@ GQS-L5: 純執行（基於證明）
 - 啟動監控
 - 生成啟動報告
 
-### 7. Makefile
+### 7. makefile
 
-**文件**: `Makefile`
+**文件**: `makefile`
 
 **治理目標**:
 - `make bootstrap` - 引導環境
@@ -491,7 +491,7 @@ machine-native-ops/
 ├── scripts/
 │   ├── bootstrap.sh                            # 引導腳本
 │   └── start-min.sh                            # 最小啟動腳本
-├── Makefile                                    # 治理目標
+├── makefile                                    # 治理目標
 └── .env.example                                # 環境配置
 ```
 
@@ -560,7 +560,7 @@ make clean-gov
 - [x] GitHub Actions 工作流實施
 - [x] 引導腳本實施
 - [x] 最小啟動腳本實施
-- [x] Makefile 治理目標
+- [x] makefile 治理目標
 - [x] 環境配置文件
 - [x] 系統驗證通過
 - [x] 所有測試通過

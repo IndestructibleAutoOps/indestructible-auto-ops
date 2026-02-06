@@ -121,7 +121,7 @@ class QuantumValidator:
         config_files = list(layer_path.glob('**/*.yaml')) + list(layer_path.glob('**/*.yml')) + list(layer_path.glob('**/*.json'))
         result['metrics']['configuration_files_found'] = len(config_files)
         # Check for deterministic build scripts
-        build_scripts = list(layer_path.glob('**/build*')) + list(layer_path.glob('**/Makefile'))
+        build_scripts = list(layer_path.glob('**/build*')) + list(layer_path.glob('**/makefile'))
         result['metrics']['build_scripts_found'] = len(build_scripts)
         return result
     def validate_provability(self, path: str) -> Dict[str, Any]:

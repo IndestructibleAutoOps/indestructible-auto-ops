@@ -82,7 +82,7 @@ engine/
 ├── index.ts                      # Main entry point
 ├── package.json
 ├── tsconfig.json
-└── README.md
+└── readme.md
 ```
 
 ---
@@ -225,7 +225,7 @@ export class ArtifactManager {
 | TypeScript Types | snake_case | `interfaces.d.ts` |
 | Test Files | snake_case.test | `artifact_manager.test.ts` |
 | Config Files | kebab-case | `tsconfig.json` |
-| Documentation | UPPER_CASE | `README.md` |
+| Documentation | UPPER_CASE | `readme.md` |
 
 ### Directory Naming
 | Type | Convention | Example |

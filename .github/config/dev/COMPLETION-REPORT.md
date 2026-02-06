@@ -16,7 +16,7 @@
 
 ### 新增檔案 (6 個)
 1. `.devcontainer/scripts/setup-kind-cluster.sh` - 自動建立 Kind cluster 腳本
-2. `.devcontainer/KIND_CLUSTER_README.md` - 完整使用文檔
+2. `.devcontainer/KIND_CLUSTER_readme.md` - 完整使用文檔
 3. `.devcontainer/VALIDATION_CHECKLIST.md` - 驗證測試清單
 4. `.devcontainer/QUICK_REFERENCE.md` - 快速參考指南
 5. `.devcontainer/COMPLETION_REPORT.md` - 本文件
@@ -116,7 +116,7 @@ setup-kind-cluster.sh 自動執行
 ## 📚 文檔完整性
 
 ### 使用者文檔
-- ✅ KIND_CLUSTER_README.md - 完整的技術文檔
+- ✅ KIND_CLUSTER_readme.md - 完整的技術文檔
 - ✅ QUICK_REFERENCE.md - 常用命令快速參考
 - ✅ VALIDATION_CHECKLIST.md - 測試驗證清單
 

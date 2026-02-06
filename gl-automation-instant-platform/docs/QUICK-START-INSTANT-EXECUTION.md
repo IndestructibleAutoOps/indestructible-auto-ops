@@ -126,7 +126,7 @@ export PYTHONPATH="$PWD:$PWD/tools:$PWD/tools/automation/engines:$PWD/tests/auto
 
 - **Full Documentation:** [docs/INSTANT_EXECUTION_INTEGRATION_MAP.md](./INSTANT_EXECUTION_INTEGRATION_MAP.md)
 - **Summary:** [INSTANT_EXECUTION_SUMMARY.md](INSTANT_EXECUTION_SUMMARY.md)
-- **Pipeline README:** [automation/pipelines/README.md](../src/automation/pipelines/README.md)
+- **Pipeline README:** [automation/pipelines/readme.md](../src/automation/pipelines/readme.md)
 
 ---
 

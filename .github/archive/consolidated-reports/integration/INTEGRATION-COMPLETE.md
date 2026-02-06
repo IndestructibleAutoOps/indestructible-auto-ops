@@ -53,7 +53,7 @@ All scripts are executable (chmod +x).
 Location: `docs/repository-understanding/`
 
 ##### Core Documentation
-- `README.md` - Documentation center index and quick start guide
+- `readme.md` - Documentation center index and quick start guide
 - `FINAL_SYSTEM_DOCUMENTATION.md` - Complete system documentation
 - `AUTOMATED_REPOSITORY_UNDERSTANDING_SYSTEM.md` - Automated system guide (Chinese)
 - `EVENT_DRIVEN_SYSTEM_STATUS.md` - Event-driven system status
@@ -146,7 +146,7 @@ mno-repository-understanding-system/
 ├── workspace/
 │   └── tools/
 │       └── repository-understanding/
-│           ├── README.md
+│           ├── readme.md
 │           ├── phase1_scanner.py
 │           ├── phase2_operation_checker.py
 │           ├── phase3_visualizer.py
@@ -169,7 +169,7 @@ mno-repository-understanding-system/
 │
 ├── docs/
 │   └── repository-understanding/
-│       ├── README.md
+│       ├── readme.md
 │       ├── FINAL_SYSTEM_DOCUMENTATION.md
 │       └── [12 more documentation files]
 │
@@ -205,7 +205,7 @@ The repository understanding system is now fully integrated and ready to use. To
 4. **For production deployment**:
    - Review and update paths in `etc/systemd/event-driven-system.service`
    - Install the systemd service
-   - See `docs/repository-understanding/README.md` for detailed instructions
+   - See `docs/repository-understanding/readme.md` for detailed instructions
 
 ## 📊 Summary
 

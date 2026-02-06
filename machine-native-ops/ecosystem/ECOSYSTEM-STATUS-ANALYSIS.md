@@ -176,15 +176,15 @@
 - ❌ `core-template/` - 核心模板實例
   - `template-config.yaml`
   - `setup.sh`
-  - `README.md`（已有但內容簡單）
+  - `readme.md`（已有但內容簡單）
 - ❌ `cloud-template/` - 雲平台模板實例
   - `template-config.yaml`
   - `setup.sh`
-  - `README.md`（已有但內容簡單）
+  - `readme.md`（已有但內容簡單）
 - ❌ `on-premise-template/` - 本地部署模板實例
   - `template-config.yaml`
   - `setup.sh`
-  - `README.md`（已有但內容簡單）
+  - `readme.md`（已有但內容簡單）
 
 **優先級**: **MEDIUM** - 簡化新平台創建
 

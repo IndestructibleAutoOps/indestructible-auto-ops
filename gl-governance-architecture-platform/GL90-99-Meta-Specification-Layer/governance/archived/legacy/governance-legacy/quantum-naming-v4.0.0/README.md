@@ -27,7 +27,7 @@ quantum-naming-v4.0.0/
 ├── scripts/                                   # Automation scripts
 │   └── QUICK_INSTALL.sh                      # One-click installation
 └── docs/                                      # Documentation
-    ├── README.md                              # Comprehensive guide
+    ├── readme.md                              # Comprehensive guide
     └── PROJECT_SUMMARY.md                     # Project overview & metrics
 ```
 
@@ -208,7 +208,7 @@ The quantum pipeline automatically runs on:
 
 ```bash
 # The quantum alignment engine is available at workspace/tools/quantum-alignment-engine/
-# Refer to workspace/tools/quantum-alignment-engine/README.md for installation and usage
+# Refer to workspace/tools/quantum-alignment-engine/readme.md for installation and usage
 
 # Install quantum dependencies
 cd ../../workspace/tools/quantum-alignment-engine/
@@ -230,7 +230,7 @@ python -m src.core.transformer /path/to/code \
 
 ## 📚 Documentation
 
-- **Comprehensive Guide**: [docs/README.md](docs/README.md)
+- **Comprehensive Guide**: [docs/readme.md](docs/readme.md)
 - **Project Summary**: [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md)
 - **API Documentation**: Available at `/api/v4/docs` after deployment
 - **Online Docs**: [EXTERNAL_URL_REMOVED]
@@ -290,4 +290,4 @@ MachineNativeOps Quantum-Enhanced Naming Governance is licensed under the Apache
 
 **🚀 Ready to experience quantum governance? Deploy now and achieve 99.99% naming coherence!**
 
-For detailed implementation guides, architecture documentation, and performance benchmarks, see [docs/README.md](docs/README.md) and [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md).
+For detailed implementation guides, architecture documentation, and performance benchmarks, see [docs/readme.md](docs/readme.md) and [docs/PROJECT_SUMMARY.md](docs/PROJECT_SUMMARY.md).

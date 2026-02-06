@@ -77,6 +77,6 @@ kubectl get svc -n quantum-governance
 
 ## Related Documentation
 
-- [Parent README](../README.md) - Main project documentation
-- [Configuration](../config/README.md) - Governance configuration
-- [Quick Install](../scripts/README.md) - Automated installation
+- [Parent README](../readme.md) - Main project documentation
+- [Configuration](../config/readme.md) - Governance configuration
+- [Quick Install](../scripts/readme.md) - Automated installation

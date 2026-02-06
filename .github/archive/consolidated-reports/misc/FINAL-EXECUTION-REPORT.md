@@ -175,7 +175,7 @@ tests/unit/test_helpers.py .. [100%]
 ## 📝 創建的文檔
 
 ### 測試相關
-- `tests/README.md` - 測試使用指南
+- `tests/readme.md` - 測試使用指南
 - `SPRINT13_DAY1_COMPLETION_REPORT.md` - Sprint Day 1 報告
 - `EXECUTION_SUMMARY_DAY1.md` - 執行摘要
 

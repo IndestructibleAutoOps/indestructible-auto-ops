@@ -19,7 +19,7 @@
 ## 🎯 Start Here
 
 ### New to the Project?
-1. **[README.md](README.md)** - Project overview and introduction
+1. **[readme.md](readme.md)** - Project overview and introduction
 2. **[QUICKSTART.md](QUICKSTART.md)** - Get started in 3 steps
 3. **[CONSOLIDATED_PROJECT_STATUS.md](CONSOLIDATED_PROJECT_STATUS.md)** - Current project status
 
@@ -51,12 +51,12 @@
 - [WORK_COMPLETION_REPORT.md](WORK_COMPLETION_REPORT.md) - Final work completion
 
 **Archived**:
-- [archive/](archive/) - Old TODO and phase reports (see archive/README.md)
+- [archive/](archive/) - Old TODO and phase reports (see archive/readme.md)
 
 ### 🤖 Automation & Tools
 
 **Usage Guides**:
-- [AUTOMATION-README.md](AUTOMATION-README.md) - Complete automation guide
+- [AUTOMATION-readme.md](AUTOMATION-readme.md) - Complete automation guide
 - [QUICKSTART.md](QUICKSTART.md) - Quick start with automation tools
 
 **Tool Documentation**:
@@ -88,7 +88,7 @@
 | Tool | Purpose | Documentation |
 |------|---------|---------------|
 | `fix_eval_comprehensive.py` | Comprehensive eval() analysis | Run: `python3 fix_eval_comprehensive.py` |
-| `code_quality_analyzer.py` | Code quality scanning | See AUTOMATION-README.md |
+| `code_quality_analyzer.py` | Code quality scanning | See AUTOMATION-readme.md |
 | `scripts/auto-quality-check.py` | Automated quality checks | See QUICKSTART.md |
 
 ### Remediation Tools
@@ -184,14 +184,14 @@ machine-native-ops/
 │   └── Other fix_*.py scripts
 │
 ├── Automation/
-│   ├── AUTOMATION-README.md
+│   ├── AUTOMATION-readme.md
 │   ├── QUICKSTART.md
 │   └── scripts/auto-*.py
 │
 └── archive/                        ← Historical reference only
     ├── old-todos/
     ├── phase-reports/
-    └── README.md
+    └── readme.md
 ```
 
 ---
@@ -210,10 +210,10 @@ machine-native-ops/
 → Review [REMAINING_ISSUES_TODO.md](REMAINING_ISSUES_TODO.md)
 
 **Get started with the project**
-→ Read [README.md](README.md) and [QUICKSTART.md](QUICKSTART.md)
+→ Read [readme.md](readme.md) and [QUICKSTART.md](QUICKSTART.md)
 
 **Run quality checks**
-→ See [AUTOMATION-README.md](AUTOMATION-README.md)
+→ See [AUTOMATION-readme.md](AUTOMATION-readme.md)
 
 **Understand eval() remediation**
 → Read [PHASE2_EVAL_REMEDIATION_COMPLETE.md](PHASE2_EVAL_REMEDIATION_COMPLETE.md)
@@ -254,4 +254,4 @@ machine-native-ops/
 
 ---
 
-**Navigation**: [Top](#machine-native-ops---documentation-index) | [Status](CONSOLIDATED_PROJECT_STATUS.md) | [Tasks](todo.md) | [README](README.md)
+**Navigation**: [Top](#machine-native-ops---documentation-index) | [Status](CONSOLIDATED_PROJECT_STATUS.md) | [Tasks](todo.md) | [README](readme.md)

@@ -41,7 +41,7 @@
 | tools/arch-lint.config.yml | ⚙️ 配置 | Architecture Linter 配置 |
 | tools/arch-lint.ts | 🔧 工具 | Linter 實現 (TypeScript) |
 | tests/arch-lint.test.ts | 🧪 測試 | Linter 單元測試 |
-| README.md | 📚 說明 | 使用和集成指南 |
+| readme.md | 📚 說明 | 使用和集成指南 |
 
 **關鍵內容**:
 
@@ -62,7 +62,7 @@
 | config/trace-config.yaml | ⚙️ 配置 | OpenTelemetry 追蹤配置 |
 | tools/security-scan.ts | 🔧 工具 | 安全問題掃描 |
 | tools/log-validator.ts | 🔧 工具 | 日誌 Schema 驗證 |
-| README.md | 📚 說明 | 使用和集成指南 |
+| readme.md | 📚 說明 | 使用和集成指南 |
 
 **關鍵內容**:
 
@@ -73,8 +73,8 @@
 
 ### 4. 創建導航和整合文檔
 
-- ✅ `80-skeleton-configs/README.md` - 主導航和整合指南
-- ✅ 更新 `unmanned-engineer-ceo/README.md` - 新增骨架層級說明
+- ✅ `80-skeleton-configs/readme.md` - 主導航和整合指南
+- ✅ 更新 `unmanned-engineer-ceo/readme.md` - 新增骨架層級說明
 
 ## 📊 統計數據
 

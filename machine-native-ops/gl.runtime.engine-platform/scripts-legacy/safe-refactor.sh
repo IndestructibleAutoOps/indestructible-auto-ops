@@ -120,7 +120,7 @@ phase1() {
         mv "workspace/src/_scratch" "workspace/src/_sandbox"
         
         # 創建說明文件
-        cat > workspace/src/_sandbox/README.md << 'EOF'
+        cat > workspace/src/_sandbox/readme.md << 'EOF'
 # 🚧 Sandbox Environment
 
 此目錄用於存放實驗性代碼和臨時測試。

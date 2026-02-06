@@ -200,7 +200,7 @@ export class StructureAnalyzer {
     if (rootFiles.includes('docker-compose.yml')) {
       tools.push('Docker Compose');
     }
-    if (rootFiles.includes('Makefile')) {
+    if (rootFiles.includes('makefile')) {
       tools.push('Make');
     }
     if (rootFiles.includes('CMakeLists.txt')) {
@@ -320,7 +320,7 @@ export class StructureAnalyzer {
 
     const rootFiles = fs.readdirSync(this.repoPath);
 
-    if (rootFiles.includes('README.md') || rootFiles.includes('README.txt')) {
+    if (rootFiles.includes('readme.md') || rootFiles.includes('README.txt')) {
       docs.readmeExists = true;
     }
 
@@ -339,7 +339,7 @@ export class StructureAnalyzer {
     }
 
     if (docs.readmeExists) {
-      const readmePath = path.join(this.repoPath, 'README.md');
+      const readmePath = path.join(this.repoPath, 'readme.md');
       const content = fs.readFileSync(readmePath, 'utf-8').toLowerCase();
       
       if (content.includes('install') || content.includes('setup') || content.includes('getting started')) {

@@ -107,7 +107,7 @@ instant/
 │   ├── data-sync-service.ts      # Core synchronization service
 │   ├── data-sync-engine.ts       # Orchestration engine
 │   └── index.ts                  # Entry point
-└── README.md                     # This file
+└── readme.md                     # This file
 ```
 
 ## Quick Start
@@ -415,5 +415,5 @@ This project is part of the MachineNativeOps ecosystem and follows the same lice
 
 - [Data Synchronization Service Guide](docs/DATA-SYNC-SERVICE-GUIDE.md)
 - [Agent Orchestration Configuration](../.github/agents/agent-orchestration.yml)
-- [AEP Engine Documentation](../engine/README.md)
-- [File Organizer System](../file-organizer-system/README.md)
+- [AEP Engine Documentation](../engine/readme.md)
+- [File Organizer System](../file-organizer-system/readme.md)

@@ -416,7 +416,7 @@ kubectl exec -it deployment/quantum-governance-service \
 
 ## 📄 License
 
-MachineNativeOps Quantum-Enhanced Naming Governance is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+MachineNativeOps Quantum-Enhanced Naming Governance is licensed under the Apache License 2.0. See [license](license) for details.
 
 ## 🙏 Acknowledgments
 

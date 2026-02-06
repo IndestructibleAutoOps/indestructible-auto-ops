@@ -30,7 +30,7 @@ This directory contains integration configurations for the MachineNativeOps Cont
 
 ```
 integration/
-├── README.md              # This file
+├── readme.md              # This file
 ├── external/              # External system integrations
 ├── internal/              # Internal module integrations
 ├── gateways/              # API gateway configurations

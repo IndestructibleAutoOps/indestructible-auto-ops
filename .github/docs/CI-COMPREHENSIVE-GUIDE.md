@@ -190,7 +190,7 @@ Custom patterns can be added to match project-specific errors.
 ## Profile Readme Development Stats
 
 ### Overview
-The Profile Readme Development Stats workflow automatically updates the repository's README.md with coding statistics from WakaTime.
+The Profile Readme Development Stats workflow automatically updates the repository's readme.md with coding statistics from WakaTime.
 
 ### Configuration
 - **Schedule**: Runs daily at 00:00 UTC
@@ -223,7 +223,7 @@ To enable this workflow, you need to:
 **Note**: The workflow uses the default `GITHUB_TOKEN` for committing README updates. If you encounter permission issues in a protected branch scenario, you may need to configure branch protection rules or use a Personal Access Token (PAT) instead.
 
 ### README Markers
-The workflow updates content between these markers in README.md:
+The workflow updates content between these markers in readme.md:
 ```markdown
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->

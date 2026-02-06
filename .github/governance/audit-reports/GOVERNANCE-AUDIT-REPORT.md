@@ -57,9 +57,9 @@
 ### P0/P1 高優先級問題
 
 #### P1: GL 治理標記缺失
-- **檔案**: `engine/README.md`
+- **檔案**: `engine/readme.md`
 - **類型**: gl_marker_missing
-- **描述**: 檔案 engine/README.md 缺少 GL Unified Charter 標記
+- **描述**: 檔案 engine/readme.md 缺少 GL Unified Charter 標記
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
@@ -69,9 +69,9 @@
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
-- **檔案**: `engine/artifacts/README.md`
+- **檔案**: `engine/artifacts/readme.md`
 - **類型**: gl_marker_missing
-- **描述**: 檔案 engine/artifacts/README.md 缺少 GL Unified Charter 標記
+- **描述**: 檔案 engine/artifacts/readme.md 缺少 GL Unified Charter 標記
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
@@ -93,9 +93,9 @@
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
-- **檔案**: `engine/executor/README.md`
+- **檔案**: `engine/executor/readme.md`
 - **類型**: gl_marker_missing
-- **描述**: 檔案 engine/executor/README.md 缺少 GL Unified Charter 標記
+- **描述**: 檔案 engine/executor/readme.md 缺少 GL Unified Charter 標記
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
@@ -117,9 +117,9 @@
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
-- **檔案**: `engine/governance/README.md`
+- **檔案**: `engine/governance/readme.md`
 - **類型**: gl_marker_missing
-- **描述**: 檔案 engine/governance/README.md 缺少 GL Unified Charter 標記
+- **描述**: 檔案 engine/governance/readme.md 缺少 GL Unified Charter 標記
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
@@ -165,9 +165,9 @@
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失
-- **檔案**: `engine/loader/README.md`
+- **檔案**: `engine/loader/readme.md`
 - **類型**: gl_marker_missing
-- **描述**: 檔案 engine/loader/README.md 缺少 GL Unified Charter 標記
+- **描述**: 檔案 engine/loader/readme.md 缺少 GL Unified Charter 標記
 - **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
 
 #### P1: GL 治理標記缺失

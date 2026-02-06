@@ -19,7 +19,7 @@ Analyze root-level reports to generate consolidated analysis and health metrics.
 **Usage**:
 
 ```bash
-# Via Makefile (recommended)
+# Via makefile (recommended)
 make analyze-reports
 
 # Direct invocation
@@ -81,14 +81,14 @@ python tools/docs/generate_knowledge_graph.py --repo-root . --output docs/knowle
 
 ### 📝 generate_mndoc_from_readme.py
 
-Generate MN-DOC (Multi-Node Documentation) from README.md.
+Generate MN-DOC (Multi-Node Documentation) from readme.md.
 
 **Usage**:
 
 ```bash
 make mndoc
 # or
-python tools/docs/generate_mndoc_from_readme.py --readme README.md --output docs/generated-mndoc.yaml
+python tools/docs/generate_mndoc_from_readme.py --readme readme.md --output docs/generated-mndoc.yaml
 ```
 
 ---
@@ -224,7 +224,7 @@ When adding new tools to this directory:
 3. **Support verbose mode**: Use `--verbose` flag for detailed output
 4. **Output to stdout by default**: Allow `-` or stdout for output
 5. **Make executable**: Add shebang `#!/usr/bin/env python3` and `chmod +x`
-6. **Update Makefile**: Add target if the tool is commonly used
+6. **Update makefile**: Add target if the tool is commonly used
 7. **Document here**: Add entry to this README
 
 ---
@@ -235,4 +235,4 @@ For questions about these tools, see:
 
 - Main documentation: `/docs/`
 - Project manifest: `/docs/project-manifest.md`
-- Governance index: `/governance/README.md`
+- Governance index: `/governance/readme.md`

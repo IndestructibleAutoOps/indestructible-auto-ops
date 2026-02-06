@@ -81,6 +81,6 @@ kubectl apply -f prometheus-quantum-rules.yaml
 
 ## Related Documentation
 
-- [Parent README](../README.md) - Main project documentation
-- [Deployment](../deployment/README.md) - Kubernetes deployment
-- [Configuration](../config/README.md) - Governance configuration
+- [Parent README](../readme.md) - Main project documentation
+- [Deployment](../deployment/readme.md) - Kubernetes deployment
+- [Configuration](../config/readme.md) - Governance configuration

@@ -268,7 +268,7 @@ The service leverages the AEP (Architecture Execution Pipeline) Engine for:
    - Best practices
    - Security considerations
 
-6. **`instant/README.md`** (450 lines)
+6. **`instant/readme.md`** (450 lines)
    - Quick start guide
    - Integration overview
    - Usage examples

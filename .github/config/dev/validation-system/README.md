@@ -82,10 +82,10 @@ validation-system/
 │   └── emergency_mode_manager.py         # 緊急模式管理器
 ├── evidence-chains/
 │   ├── .gitkeep                          # 證據鏈存儲目錄
-│   └── README.md                         # 證據鏈說明
+│   └── readme.md                         # 證據鏈說明
 └── reports/
     ├── .gitkeep                          # 報告輸出目錄
-    └── README.md                         # 報告說明
+    └── readme.md                         # 報告說明
 ```
 
 ## 快速開始
@@ -180,7 +180,7 @@ python scripts/adaptive_decision_engine.py
 
 ## 相關資源
 
-- [MachineNativeOps 架構文檔](../../../../README.md)
+- [MachineNativeOps 架構文檔](../../../../readme.md)
 - [Controlplane 驗證工具](../../../../controlplane/validation/)
 - [治理配置](../../../../controlplane/config/)
 

@@ -49,7 +49,7 @@
 │   ├── arch-lint.ts               # Linter 實現 (TypeScript)
 ├── tests/
 │   └── arch-lint.test.ts          # Linter 單元測試
-└── README.md                       # 使用說明
+└── readme.md                       # 使用說明
 ```
 
 **快速開始**:
@@ -60,7 +60,7 @@ npm install
 npx ts-node tools/arch-lint.ts
 ```
 
-詳見: [Architecture Stability README](./01-architecture-stability/README.md)
+詳見: [Architecture Stability README](./01-architecture-stability/readme.md)
 
 ---
 
@@ -91,7 +91,7 @@ npx ts-node tools/arch-lint.ts
 ├── tools/
 │   ├── security-scan.ts           # 安全問題掃描工具
 │   └── log-validator.ts           # 日誌驗證工具 (Schema 檢查)
-└── README.md                       # 使用說明
+└── readme.md                       # 使用說明
 ```
 
 **快速開始**:
@@ -106,7 +106,7 @@ npx ts-node tools/log-validator.ts config/log-schema.json app.log
 npx ts-node tools/security-scan.ts '**/*.ts'
 ```
 
-詳見: [Security & Observability README](./04-security-observability/README.md)
+詳見: [Security & Observability README](./04-security-observability/readme.md)
 
 ---
 
@@ -229,9 +229,9 @@ unmanned-island/
 
 ## 📚 相關文檔
 
-- [整個 unmanned-engineer-ceo 專案說明](../README.md)
+- [整個 unmanned-engineer-ceo 專案說明](../readme.md)
 - [系統整體架構](../00-foundation/02-system-architecture/playbook-architecture.md)
-- [系統 README](../../README.md)
+- [系統 README](../../readme.md)
 
 ## 🔧 CI/CD 整合建議
 
@@ -273,7 +273,7 @@ jobs:
 ## 🎓 學習路徑
 
 1. **入門** (30 分鐘)
-   - 閱讀 01-architecture-stability/README.md
+   - 閱讀 01-architecture-stability/readme.md
    - 理解五層架構
 
 2. **進階** (1-2 小時)

@@ -26,7 +26,7 @@
   - 4週實施時間線
 
 #### 1.2 測試目錄文檔
-- **文件**: `performance-tests/README.md`
+- **文件**: `performance-tests/readme.md`
 - **內容**:
   - 完整的測試類型說明
   - 性能基準標準表格
@@ -146,7 +146,7 @@ machine-native-ops/
 ├── PERFORMANCE_BENCHMARKING_PLAN.md      # 性能測試計劃
 ├── PERFORMANCE_BENCHMARKING_SUMMARY.md   # 實施總結
 └── performance-tests/
-    ├── README.md                          # 測試目錄文檔
+    ├── readme.md                          # 測試目錄文檔
     ├── conftest.py                        # 測試配置和 fixtures
     ├── requirements-performance.txt        # 測試依賴
     ├── pytest.ini                         # pytest 配置

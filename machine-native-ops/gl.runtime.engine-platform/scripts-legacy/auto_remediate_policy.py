@@ -32,7 +32,7 @@ class NamingPolicyRemediator:
     # Files/directories to skip
     SKIP_PATTERNS = [
         r'^README\.md$',
-        r'^LICENSE$',
+        r'^license$',
         r'^CHANGELOG\.md$',
         r'^CONTRIBUTING\.md$',
         r'^CODE_OF_CONDUCT\.md$',

@@ -294,7 +294,7 @@ cat controlplane/config/root.config.yaml
 
 ## 🔗 相關資源
 
-- **根層 README**: `../README.md`
+- **根層 README**: `../readme.md`
 - **重構報告**: `../workspace/PROJECT_RESTRUCTURE_REPORT.md`
 - **項目文檔**: `../workspace/docs/`
 

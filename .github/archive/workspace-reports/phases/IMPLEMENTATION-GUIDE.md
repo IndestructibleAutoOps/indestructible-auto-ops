@@ -226,7 +226,7 @@
 ## 📞 支援資源
 
 ### 文檔連結
-- [Root 治理層 README](./root/README.md)
+- [Root 治理層 README](./root/readme.md)
 - [代理人交付合約](./root/AGENT_DELIVERY_CONTRACT.md)
 - [驗證清單](./root/VALIDATION_CHECKLIST.md)
 - [命名規範政策](./root/root.naming-policy.yaml)

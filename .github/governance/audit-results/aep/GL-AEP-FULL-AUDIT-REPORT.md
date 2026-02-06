@@ -185,7 +185,7 @@ ns-root/
 | JSON | kebab-case | `schema-definition.json` |
 | TypeScript | kebab-case | `governance-engine.ts` |
 | Python | snake_case | `policy_engine.py` |
-| Markdown | UPPER-KEBAB | `README.md`, `CHANGELOG.md` |
+| Markdown | UPPER-KEBAB | `readme.md`, `CHANGELOG.md` |
 
 ---
 

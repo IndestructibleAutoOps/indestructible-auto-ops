@@ -492,7 +492,7 @@ gap-001: 缺少测试覆盖率指标
 technical-debt-002: 部分文档缺失
   严重性: MEDIUM
   类别: technical-debt
-  内部证据: [证据: 某些规范缺少README.md]
+  内部证据: [证据: 某些规范缺少readme.md]
   建议: 补充文档
   优先级: P2
 ```

@@ -333,5 +333,5 @@ The systems are ready for integration with the existing MNGA system and producti
 - `ecosystem/tests/compliance/test_narrative_free_compliance.py`
 
 ### Documentation
-- `LANGUAGE_NEUTRAL_HASH_IMPLEMENTATION_SUMMARY.md`
-- `FINAL_IMPLEMENTATION_REPORT.md`
+- `language-neutral-hash-implementation-summary.md`
+- `final-implementation-report.md`

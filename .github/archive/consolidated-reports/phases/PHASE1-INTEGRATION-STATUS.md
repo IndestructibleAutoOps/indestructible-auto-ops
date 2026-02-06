@@ -46,7 +46,7 @@ controlplane/baseline/modules/
 ├── 06-security/module-manifest.yaml      ✅
 ├── REGISTRY.yaml                         ✅
 ├── module-manifest.schema.json           ✅
-└── README.md                             ✅
+└── readme.md                             ✅
 ```
 
 **Metrics**:
@@ -76,7 +76,7 @@ controlplane/governance/policies/
 ├── security.rego         ✅ (Critical severity, manual remediation)
 ├── autonomy.rego         ✅ (High severity, manual remediation)
 ├── POLICY_MANIFEST.yaml  ✅
-└── README.md             ✅
+└── readme.md             ✅
 ```
 
 **Policy Coverage**:
@@ -309,8 +309,8 @@ Validation Summary
 - [Integration Guide](docs/PHASE1_INTEGRATION_GUIDE.md) - **NEW**
 - [Phase 1 Completion Report](PHASE1_COMPLETION_REPORT.md)
 - [Feature Branch Merge Summary](FEATURE_BRANCH_MERGE_SUMMARY.md)
-- [Module README](controlplane/baseline/modules/README.md)
-- [Policy README](controlplane/governance/policies/README.md)
+- [Module README](controlplane/baseline/modules/readme.md)
+- [Policy README](controlplane/governance/policies/readme.md)
 - [Supply Chain Guide](docs/supply-chain-security.md)
 
 ### Validation

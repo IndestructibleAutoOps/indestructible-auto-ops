@@ -44,7 +44,7 @@ The comprehensive data synchronization service has been fully implemented in the
   - Retry policies and monitoring configuration
 
 #### Documentation Files
-- **instant/README.md** (9.8KB) - Main service documentation
+- **instant/readme.md** (9.8KB) - Main service documentation
 - **instant/docs/DATA-SYNC-SERVICE-GUIDE.md** (9.9KB) - Comprehensive guide
 - **instant/DATA-SYNC-INTEGRATION-COMPLETION-REPORT.md** - Detailed completion report
 
@@ -195,7 +195,7 @@ instant/
 │   ├── data-sync-service.ts (16KB, 596 lines)
 │   ├── data-sync-engine.ts (11KB, 402 lines)
 │   └── index.ts (938 bytes)
-└── README.md (9.8KB)
+└── readme.md (9.8KB)
 
 .github/agents/
 └── agent-orchestration.yml (MODIFIED - added data-sync-agent)

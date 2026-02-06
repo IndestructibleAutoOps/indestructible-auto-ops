@@ -16,7 +16,7 @@ controlplane/governance/policies/
 ├── semantic.rego           # Semantic consistency and health monitoring
 ├── security.rego           # Security policies and supply chain requirements
 ├── autonomy.rego           # Autonomy level requirements and progression
-└── README.md              # This file
+└── readme.md              # This file
 ```
 
 ## Available Policies
@@ -205,7 +205,7 @@ opa test policies/ --coverage
 
 ## Related Documentation
 
-- [Module Organization](/controlplane/baseline/modules/README.md)
+- [Module Organization](/controlplane/baseline/modules/readme.md)
 - [Governance Architecture](/docs/architecture/governance.md)
 - [Research Report Verification](/research_report_verification_plan.md)
 

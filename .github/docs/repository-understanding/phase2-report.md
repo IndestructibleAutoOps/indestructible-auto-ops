@@ -21,7 +21,7 @@
 
 - **時間**: 2026-01-16T13:00:17.611457
 - **操作**: read
-- **目標**: machine-native-ops/README.md
+- **目標**: machine-native-ops/readme.md
 - **結果**: ✅ 通過
 
 #### 通過的檢查
@@ -36,7 +36,7 @@
 
 - **時間**: 2026-01-16T13:00:17.612224
 - **操作**: modify
-- **目標**: machine-native-ops/Makefile
+- **目標**: machine-native-ops/makefile
 - **結果**: ❌ 失敗
 
 #### 通過的檢查

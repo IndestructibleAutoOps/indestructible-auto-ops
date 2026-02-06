@@ -44,7 +44,7 @@ infrastructure/kubernetes/manifests/
 │   ├── staging/
 │   └── production/
 ├── INDEX.yaml                 # 完整編排索引
-└── README.md                  # 文檔說明
+└── readme.md                  # 文檔說明
 ```
 
 ---

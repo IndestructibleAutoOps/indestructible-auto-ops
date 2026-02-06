@@ -93,6 +93,6 @@ kubectl delete namespace quantum-governance
 
 ## Related Documentation
 
-- [Parent README](../README.md) - Main project documentation
-- [Deployment Manifest](../deployment/README.md) - Manual deployment guide
-- [Configuration](../config/README.md) - Configuration options
+- [Parent README](../readme.md) - Main project documentation
+- [Deployment Manifest](../deployment/readme.md) - Manual deployment guide
+- [Configuration](../config/readme.md) - Configuration options

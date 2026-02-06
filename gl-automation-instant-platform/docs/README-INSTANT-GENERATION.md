@@ -239,7 +239,7 @@ result = await agent.process_task(task)
 
 ## 📄 許可證
 
-本項目採用 MIT 許可證 - 詳見 [LICENSE](LICENSE) 文件。
+本項目採用 MIT 許可證 - 詳見 [license](license) 文件。
 
 ## 🚀 立即開始
 

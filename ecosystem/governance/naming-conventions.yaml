@@ -81,7 +81,7 @@ file_naming:
       - "^package-lock\\.json$"
       - "^tsconfig\\.json$"
       - "^Dockerfile$"
-      - "^Makefile$"
+      - "^makefile$"
       - "^\\..*rc$"  # .eslintrc, .prettierrc
       
   # Markdown 文件

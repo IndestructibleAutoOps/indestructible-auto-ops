@@ -104,7 +104,7 @@
   - 技術亮點
   - 商業價值
 
-#### 2.4 範例文檔 (examples/debug-examples/README.md)
+#### 2.4 範例文檔 (examples/debug-examples/readme.md)
 
 - **頁數**: ~8 頁
 - **內容**:
@@ -420,7 +420,7 @@ python examples/debug-examples/demo.py
 1. **完整文檔**: `docs/RUN_DEBUG_SYSTEM.md`
 2. **快速入門**: `docs/RUN_DEBUG_QUICKSTART.md`
 3. **實作總結**: `docs/RUN_DEBUG_IMPLEMENTATION_SUMMARY.md`
-4. **範例文檔**: `examples/debug-examples/README.md`
+4. **範例文檔**: `examples/debug-examples/readme.md`
 
 ### 範例
 1. **配置範例**: `examples/debug-examples/launch.json`

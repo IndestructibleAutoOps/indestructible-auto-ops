@@ -727,7 +727,7 @@ class BaselineValidationEngine:
 
 ### Documentation
 
-- Main README: `README.md`
+- Main README: `readme.md`
 - API Documentation: `docs/api/`
 - Architecture Guide: `docs/architecture/`
 
@@ -743,7 +743,7 @@ See: `CONTRIBUTING.md`
 
 ## 📄 License
 
-See: `LICENSE`
+See: `license`
 
 ---
 

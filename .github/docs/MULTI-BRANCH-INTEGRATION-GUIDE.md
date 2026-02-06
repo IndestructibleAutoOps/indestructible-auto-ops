@@ -687,7 +687,7 @@ npm run benchmark  # if available
 
 ### Update Documentation
 - [ ] Update CHANGELOG.md with integration summary
-- [ ] Update README.md if features changed
+- [ ] Update readme.md if features changed
 - [ ] Update API documentation if applicable
 - [ ] Archive integration analysis documents
 

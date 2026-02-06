@@ -58,6 +58,6 @@ naming_scheme:
 
 ## Related Documentation
 
-- [Parent README](../README.md) - Main project documentation
-- [Deployment Guide](../deployment/README.md) - Kubernetes deployment
-- [Monitoring Setup](../monitoring/README.md) - Observability configuration
+- [Parent README](../readme.md) - Main project documentation
+- [Deployment Guide](../deployment/readme.md) - Kubernetes deployment
+- [Monitoring Setup](../monitoring/readme.md) - Observability configuration

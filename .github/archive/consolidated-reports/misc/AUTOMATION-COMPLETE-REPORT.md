@@ -19,7 +19,7 @@
 
 1. **建立初始化腳本** - `scripts/init-automation.sh`
 2. **建立驗證腳本** - `scripts/verify-automation.sh`
-3. **整合 Makefile** - 添加 7 個自動化命令
+3. **整合 makefile** - 添加 7 個自動化命令
 4. **建立快速指南** - `QUICKSTART.md`
 5. **執行實際初始化** - 安裝所有依賴並生成報告
 6. **驗證正常運作** - 所有工具測試通過
@@ -77,13 +77,13 @@
 | 檔案 | 大小 | 說明 |
 |------|------|------|
 | `QUICKSTART.md` | 4.7KB | 快速開始指南 ⭐ |
-| `AUTOMATION-README.md` | 6.5KB | 詳細使用指南 |
+| `AUTOMATION-readme.md` | 6.5KB | 詳細使用指南 |
 
 ---
 
-## 🎯 Makefile 命令
+## 🎯 makefile 命令
 
-已整合到 Makefile 的自動化命令：
+已整合到 makefile 的自動化命令：
 
 ```bash
 make automation-init         # 初始化工具（僅需一次）
@@ -153,7 +153,7 @@ make automation-help         # 顯示說明
 
 ## 🚀 使用方式
 
-### 方法 1: Makefile（推薦）
+### 方法 1: makefile（推薦）
 
 ```bash
 # 快速開始
@@ -220,7 +220,7 @@ GitHub Actions 工作流程已設定：
 1. **QUICKSTART.md** ⭐ - 3 步驟快速開始
 2. **AUTOMATION-INIT-REPORT.md** - 查看初始化狀態
 3. **AUTO-QUALITY-REPORT.md** - 了解當前品質
-4. **AUTOMATION-README.md** - 詳細使用指南
+4. **AUTOMATION-readme.md** - 詳細使用指南
 5. **PR-1-REVIEW-REPORT.md** - 完整審查報告
 6. **PR-1-ACTION-PLAN.md** - 改進計劃
 
@@ -237,7 +237,7 @@ GitHub Actions 工作流程已設定：
 3. `PR-1-ACTION-PLAN.md` - 查看改進計劃和時間線
 
 **DevOps 工程師**:
-1. `AUTOMATION-README.md` - 完整技術文件
+1. `AUTOMATION-readme.md` - 完整技術文件
 2. `.github/workflows/pr-quality-check.yml` - CI/CD 設定
 
 ---

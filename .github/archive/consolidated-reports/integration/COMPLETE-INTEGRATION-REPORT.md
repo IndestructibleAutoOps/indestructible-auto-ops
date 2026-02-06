@@ -32,7 +32,7 @@ Successfully completed full integration with the `copilot/improve-pr-content-rev
 - .pre-commit-config.yaml (duplicate from base branch)
 
 ### 3. 測試檔案 (Test Files) - 10 files
-- tests/README.md, tests/__init__.py
+- tests/readme.md, tests/__init__.py
 - tests/e2e/, tests/fixtures/, tests/helpers/
 - tests/unit/test_*.py (replaced by workspace/src tests)
 

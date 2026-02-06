@@ -538,7 +538,7 @@ python scripts/gl/validate-model-registry.py
 - **Examples**: Usage examples in docstring for complex functionality
 
 #### For New Features
-- Update **README.md** if it affects usage
+- Update **readme.md** if it affects usage
 - Update **CHANGELOG.md** for significant changes
 - Add/update architecture docs in `docs/architecture/` if needed
 - Update **governance-manifest.yaml** if it affects GL system
@@ -735,7 +735,7 @@ When reviewing code, focus on:
 ## 📚 Additional Resources
 
 ### Key Documentation Files
-- **[README.md](../README.md)** - Project overview and quick start
+- **[readme.md](../readme.md)** - Project overview and quick start
 - **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Contribution guidelines
 - **[governance-manifest.yaml](../governance-manifest.yaml)** - Central governance entry point
 - **[GL-STATUS-REPORT.md](../GL-STATUS-REPORT.md)** - Overall GL system status
@@ -809,7 +809,7 @@ Related to GL50-59 layer requirements.
 
 ### If You're Stuck
 1. **Search existing issues**: Check if someone has already solved this problem
-2. **Read documentation**: Start with README.md and relevant docs
+2. **Read documentation**: Start with readme.md and relevant docs
 3. **Check governance manifest**: For GL system questions
 4. **Review similar code**: Look for patterns in existing implementations
 5. **Ask in PR comments**: Tag maintainers for guidance

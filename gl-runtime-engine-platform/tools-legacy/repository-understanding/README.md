@@ -25,7 +25,7 @@
 
 ```
 repository-understanding/
-├── README.md                           # 本文件
+├── readme.md                           # 本文件
 ├── requirements-test.txt               # Python 依賴
 │
 ├── 核心 Python 腳本

@@ -108,7 +108,7 @@ fix: 修復 CI 權限問題和 JavaScript 語法錯誤
    - 詳細的修復方案
    - 通用的 CI 排查指南
 
-2. **CI_FIX_FINAL_SUMMARY.md** (本文件)
+2. **CI_FIX_final-summary.md** (本文件)
    - 修復摘要和驗證結果
    - 提交記錄和後續步驟
 

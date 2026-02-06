@@ -329,7 +329,7 @@ spec:
   # 文檔要求
   documentation:
     requiredDocuments:
-      - name: "README.md"
+      - name: "readme.md"
         requiredFor: ["review", "active"]
         content:
           - "平台描述"

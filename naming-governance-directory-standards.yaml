@@ -305,14 +305,14 @@ spec:
   documentation:
     # 每個頂層目錄必須有
     required_docs:
-      - README.md                    # 說明目錄用途
+      - readme.md                    # 說明目錄用途
       - ARCHITECTURE.md               # 架構說明
       - RESPONSIBILITIES.md          # 職責說明
       - API.md                       # API 文檔（如有）
       
     # 每個子目錄推薦有
     recommended_docs:
-      - README.md
+      - readme.md
       - CONTRIBUTING.md
       - CHANGELOG.md
 

@@ -186,7 +186,7 @@ The repository contains three governance versions:
 
 1. **Architecture Documentation**
    - `GOVERNANCE_ARCHITECTURE_OVERVIEW.md` ✅ (504 lines)
-   - `README.md` ✅ (61 lines)
+   - `readme.md` ✅ (61 lines)
    - `getting-started.md` ✅ (66 lines)
 
 2. **Naming Governance v1.0.0**

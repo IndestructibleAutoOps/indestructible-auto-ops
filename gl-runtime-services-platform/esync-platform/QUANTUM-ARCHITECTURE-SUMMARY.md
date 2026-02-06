@@ -95,8 +95,8 @@ esync-platform/
 │   ├── adr/                   ✓ Architecture decisions
 │   ├── architecture.md        ✓ System architecture
 │   └── SECURITY.md            ✓ Security documentation
-├── Makefile                   ✓ Build commands
-├── README.md                  ✓ Project documentation
+├── makefile                   ✓ Build commands
+├── readme.md                  ✓ Project documentation
 └── COMPLETION_REPORT.md       ✓ Implementation report
 ```
 
@@ -154,7 +154,7 @@ esync-platform/
 2. **Security Documentation**: Zero-trust security model
 3. **ADRs**: Architecture decision records
 4. **Runbooks**: Operational procedures
-5. **Makefile**: Build and deployment commands
+5. **makefile**: Build and deployment commands
 6. **Workflows**: CI/CD pipelines
 7. **Policies**: Governance and security policies
 8. **Scripts**: Automation and migration tools

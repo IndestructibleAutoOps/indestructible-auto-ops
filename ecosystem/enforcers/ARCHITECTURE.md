@@ -691,7 +691,7 @@ ecosystem/
 
 ## 📚 相關文檔
 
-- ecosystem/contracts/fact-verification/README.md
+- ecosystem/contracts/fact-verification/readme.md
 - ecosystem/tools/fact-verification/gl-fact-pipeline.py
 - ecosystem/contracts/naming-governance/gl-naming-ontology.yaml
 - GOVERNANCE_ENFORCEMENT_LAYER_TODO.md

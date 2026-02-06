@@ -53,7 +53,7 @@ machine-native-ops/
 │   │   │   ├── deployments/
 │   │   │   ├── docs/
 │   │   │   ├── scripts/
-│   │   │   └── README.md
+│   │   │   └── readme.md
 │   │   │
 │   │   ├── cloud-platform/               # 雲端平台模板
 │   │   │   ├── infrastructure/
@@ -82,12 +82,12 @@ machine-native-ops/
 │   │   ├── workflow-orchestration/      # 工作流編排
 │   │   └── event-routing/               # 事件路由
 │   │
-│   └── README.md                        # 生態圈文檔
+│   └── readme.md                        # 生態圈文檔
 │
 ├── platforms/                           # 各個平台（獨立子專案）
 │   ├── platform-core/                   # 核心平台
 │   │   ├── manifest.yaml                # 平台清單
-│   │   ├── README.md
+│   │   ├── readme.md
 │   │   └── （從 base-platform 模板生成）
 │   │
 │   ├── platform-aws/                    # AWS 平台
@@ -103,7 +103,7 @@ machine-native-ops/
 │   │   │   └── s3/
 │   │   ├── deployments/                 # AWS 部署
 │   │   ├── configs/                     # AWS 配置
-│   │   └── README.md
+│   │   └── readme.md
 │   │
 │   ├── platform-gcp/                    # GCP 平台
 │   │   ├── manifest.yaml
@@ -114,7 +114,7 @@ machine-native-ops/
 │   │   │   └── pubsub/
 │   │   ├── services/
 │   │   ├── deployments/
-│   │   └── README.md
+│   │   └── readme.md
 │   │
 │   ├── platform-azure/                  # Azure 平台
 │   │   ├── manifest.yaml
@@ -124,7 +124,7 @@ machine-native-ops/
 │   │   │   └── storage/
 │   │   ├── services/
 │   │   ├── deployments/
-│   │   └── README.md
+│   │   └── readme.md
 │   │
 │   ├── platform-kubernetes/             # Kubernetes 平台
 │   │   ├── manifest.yaml
@@ -134,7 +134,7 @@ machine-native-ops/
 │   │   │   └── manifests/
 │   │   ├── services/
 │   │   ├── deployments/
-│   │   └── README.md
+│   │   └── readme.md
 │   │
 │   ├── platform-on-premise/             # 本地平台
 │   │   ├── manifest.yaml
@@ -144,21 +144,21 @@ machine-native-ops/
 │   │   │   └── nomad/
 │   │   ├── services/
 │   │   ├── deployments/
-│   │   └── README.md
+│   │   └── readme.md
 │   │
 │   ├── platform-quantum/                # 量子計算平台
 │   │   ├── manifest.yaml
 │   │   ├── infrastructure/
 │   │   ├── services/
 │   │   ├── deployments/
-│   │   └── README.md
+│   │   └── readme.md
 │   │
 │   └── platform-semantic/              # 語義核心平台
 │       ├── manifest.yaml
 │       ├── infrastructure/
 │       ├── services/
 │       ├── deployments/
-│       └── README.md
+│       └── readme.md
 │
 ├── shared/                              # 共享資源
 │   ├── libraries/                      # 共享庫
@@ -175,7 +175,7 @@ machine-native-ops/
 │       └── config/
 │
 ├── .github/                             # GitHub 配置
-├── README.md                            # 專案 README
+├── readme.md                            # 專案 README
 └── ECOSYSTEM_MIGRATION_GUIDE.md         # 本文件
 ```
 

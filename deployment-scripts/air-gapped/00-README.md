@@ -4,7 +4,7 @@
 
 ```
 air-gapped/
-├── 00_README.md                           # 本文件
+├── 00_readme.md                           # 本文件
 ├── 01_export_resources.sh                 # 在線環境資源導出腳本
 ├── 02_import_resources.sh                 # 離線環境資源導入腳本
 ├── 03_setup_registry.sh                   # 本地 Registry 設置腳本

@@ -39,13 +39,13 @@
 ```yaml
 # 修復前
 files: |
-  README.md
+  readme.md
   PROJECT_STATUS.md
   QUICKSTART.md
 pattern: '*'
 
 # 修復後
-files: '["README.md","PROJECT_STATUS.md","QUICKSTART.md"]'
+files: '["readme.md","PROJECT_STATUS.md","QUICKSTART.md"]'
 pattern: '.*'
 ```
 **結果**: ✅ 通過

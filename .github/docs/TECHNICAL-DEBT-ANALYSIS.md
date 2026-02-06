@@ -179,7 +179,7 @@ This comprehensive technical debt analysis reveals significant areas requiring a
 |--------|-------|-------|
 | **Markdown Files** | 1,647 | 472,456 total lines |
 | **README Files** | 304 | Project and subproject documentation |
-| **LICENSE Files** | 5 | Legal documentation |
+| **license Files** | 5 | Legal documentation |
 | **Dockerfiles** | 16 | Containerization docs |
 | **Docker Compose Files** | 14 | Orchestration docs |
 
@@ -210,7 +210,7 @@ This comprehensive technical debt analysis reveals significant areas requiring a
 | **Dockerfiles** | 16 | Container definitions |
 | **Docker Compose Files** | 14 | Orchestration configs |
 | **Kubernetes Manifests** | Unknown | Need analysis |
-| **Makefiles** | 3 | Build automation |
+| **makefiles** | 3 | Build automation |
 
 ### 6.2 Infrastructure Issues
 

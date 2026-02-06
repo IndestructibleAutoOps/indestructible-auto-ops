@@ -36,7 +36,7 @@ Implemented a complete test suite for all 9 infrastructure components with 156+ 
 
 ### Test Configuration Files
 - pytest.ini - Complete pytest configuration with coverage settings
-- README.md - Comprehensive test documentation
+- readme.md - Comprehensive test documentation
 - Coverage reporting configuration
 
 ### Test Execution
@@ -109,7 +109,7 @@ Created comprehensive infrastructure configuration templates for AWS, GCP, and A
    - Dry-run mode support
    - Verbose logging
 
-2. **README.md** (Deployment Guide)
+2. **readme.md** (Deployment Guide)
    - Complete deployment instructions
    - Prerequisites for each provider
    - Step-by-step deployment guides
@@ -150,7 +150,7 @@ Created comprehensive infrastructure configuration templates for AWS, GCP, and A
 
 ```
 deployment/
-├── README.md                          # Deployment guide
+├── readme.md                          # Deployment guide
 ├── scripts/
 │   └── deploy-kubernetes.sh          # Kubernetes deployment script
 ├── helm-charts/                       # Helm charts (placeholder)

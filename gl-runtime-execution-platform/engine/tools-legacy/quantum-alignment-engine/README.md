@@ -193,7 +193,7 @@ This tool is part of the MachineNativeOps ecosystem. Please follow the project's
 
 ## License
 
-MIT License - See LICENSE file for details
+MIT License - See license file for details
 
 ## References
 

@@ -90,7 +90,7 @@ engine/gl-gate/
 ├── package.json                # 套件配置
 ├── tsconfig.json               # TypeScript 配置
 ├── .gl-manifest.yaml           # GL 治理清單
-└── README.md                   # 說明文件
+└── readme.md                   # 說明文件
 ```
 
 ## 快速開始 | Quick Start

@@ -28,8 +28,8 @@ modules:
       - core/unified_integration
       - core/mind_matrix
     outputs:
-      - labs/README.md
-      - patterns/README.md
+      - labs/readme.md
+      - patterns/readme.md
   - id: foundation.system-architecture
     name: System Architecture Patterns
     path: unmanned-engineer-ceo/00-foundation/02-system-architecture
@@ -70,7 +70,7 @@ modules:
     path: unmanned-engineer-ceo/02-enterprise-capabilities/07-ci-cd-devops
     schema: governance/schemas/devops-map.schema.json
     depends_on:
-      - Makefile
+      - makefile
       - .github/workflows
   - id: enterprise.observability
     name: Observability Practices

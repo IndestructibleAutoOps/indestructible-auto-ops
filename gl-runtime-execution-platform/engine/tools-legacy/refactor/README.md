@@ -108,5 +108,5 @@ python3 tools/refactor/validate-phase3.py \
 ## 🔗 Related Documentation
 
 - Master Plan: `workspace/docs/THREE_PHASE_REFACTORING_EXECUTION_PLAN.md`
-- Scripts: `scripts/refactor/README.md`
+- Scripts: `scripts/refactor/readme.md`
 - Quick Reference: `workspace/docs/REFACTORING_QUICK_REFERENCE.md`

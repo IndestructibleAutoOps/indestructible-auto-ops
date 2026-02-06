@@ -76,7 +76,7 @@ All scripts have been updated to work with the new directory structure and made 
 **Location**: `docs/repository-understanding/`
 
 #### Core Documentation
-- `README.md` - Documentation center index and quick start guide
+- `readme.md` - Documentation center index and quick start guide
 - `FINAL_SYSTEM_DOCUMENTATION.md` - Complete system documentation
 - `AUTOMATED_REPOSITORY_UNDERSTANDING_SYSTEM.md` - Automated system guide (Chinese)
 - `EVENT_DRIVEN_SYSTEM_STATUS.md` - Event-driven system status
@@ -113,7 +113,7 @@ mno-repository-understanding-system/
 ├── workspace/
 │   └── tools/
 │       └── repository-understanding/
-│           ├── README.md
+│           ├── readme.md
 │           ├── phase1_scanner.py
 │           ├── phase2_operation_checker.py
 │           ├── phase3_visualizer.py
@@ -136,7 +136,7 @@ mno-repository-understanding-system/
 │
 ├── docs/
 │   └── repository-understanding/
-│       ├── README.md
+│       ├── readme.md
 │       ├── FINAL_SYSTEM_DOCUMENTATION.md
 │       ├── AUTOMATED_REPOSITORY_UNDERSTANDING_SYSTEM.md
 │       ├── EVENT_DRIVEN_SYSTEM_STATUS.md
@@ -245,9 +245,9 @@ bash scripts/repository-understanding/stop_event_driven.sh
 
 ### Main Documentation Files
 
-- **[docs/repository-understanding/README.md](docs/repository-understanding/README.md)** - Documentation center and index
+- **[docs/repository-understanding/readme.md](docs/repository-understanding/readme.md)** - Documentation center and index
 - **[docs/repository-understanding/FINAL_SYSTEM_DOCUMENTATION.md](docs/repository-understanding/FINAL_SYSTEM_DOCUMENTATION.md)** - Complete system documentation
-- **[workspace/tools/repository-understanding/README.md](workspace/tools/repository-understanding/README.md)** - Quick start guide
+- **[workspace/tools/repository-understanding/readme.md](workspace/tools/repository-understanding/readme.md)** - Quick start guide
 
 ### For Detailed Information
 

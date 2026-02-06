@@ -221,7 +221,7 @@ docs/refactor_playbooks/
 ---
 #此文件由 GenerationEngine 自動生成*
 """
-        readme_path = target / "README.md"
+        readme_path = target / "readme.md"
         readme_path.write_text(readme_content, encoding="utf-8")
         return {"generated": str(readme_path)}
     async def _generate_all(self) -> Dict:

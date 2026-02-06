@@ -7,7 +7,7 @@
 
 ### 1. 核心文檔 - 保留在根目錄 (7 個)
 ```
-README.md
+readme.md
 CONTRIBUTING.md
 DEVELOPMENT_STRATEGY.md
 DEPLOYMENT_GUIDE.md
@@ -244,7 +244,7 @@ mv GL-FINAL-COMPLETION.md GL-FIX-COMPLETION.md GL-FINAL-COMPLETION_V3.md \
 mv *.md docs/archive/ 2>/dev/null || true
 
 # 從 archive 移動核心文檔回根目錄
-mv docs/archive/README.md ./
+mv docs/archive/readme.md ./
 mv docs/archive/CONTRIBUTING.md ./
 mv docs/archive/DEVELOPMENT_STRATEGY.md ./
 mv docs/archive/DEPLOYMENT_GUIDE.md ./

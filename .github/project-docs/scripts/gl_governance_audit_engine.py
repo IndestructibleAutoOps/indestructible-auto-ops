@@ -380,7 +380,7 @@ class ETLPipeline:
         
         # 6. README 檢測 (針對目錄)
         parent_dir = extracted_data['parent_dir']
-        readme_path = self.base_path / parent_dir / 'README.md'
+        readme_path = self.base_path / parent_dir / 'readme.md'
         if not readme_path.exists() and ext == '.ts' and 'test' not in file_path:
             issues.append(Issue(
                 issue_id=f"ISS-{len(issues)+1:04d}",
@@ -388,8 +388,8 @@ class ETLPipeline:
                 issue_type=IssueType.DOCUMENTATION_MISSING,
                 severity=Severity.LOW,
                 title="目錄缺少 README",
-                description=f"目錄 {parent_dir} 缺少 README.md",
-                suggestion=f"在 {parent_dir} 目錄添加 README.md 文件",
+                description=f"目錄 {parent_dir} 缺少 readme.md",
+                suggestion=f"在 {parent_dir} 目錄添加 readme.md 文件",
                 auto_fixable=False
             ))
         

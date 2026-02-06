@@ -190,7 +190,7 @@ Same semantic concept can be expressed in multiple languages and sealed together
 - `ecosystem/tests/governance/test_semantic_layer.py`
 
 ### Reports
-- `FINAL_IMPLEMENTATION_REPORT.md`
+- `final-implementation-report.md`
 - `BACKEND_GOVERNANCE_PROGRESS_REPORT.md`
 
 ---

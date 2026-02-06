@@ -278,7 +278,7 @@ IndestructibleAutoOps now operates with:
 5. Enterprise Architecture Governance Standards
 
 ### Internal Documents
-1. `GOVERNANCE_VERIFICATION_BEYOND_ERA1.md` - Complete implementation details
+1. `governance-verification-beyond-era1.md` - Complete implementation details
 2. `ecosystem/governance/validation/ultra-verification-spec.yaml` - Governance assertions
 3. `ecosystem/tests/governance/` - All test suites
 4. `ecosystem/engines/governance/narrative_filter_engine.py` - Narrative filter

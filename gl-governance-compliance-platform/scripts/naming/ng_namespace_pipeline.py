@@ -125,7 +125,7 @@ RESOURCE_EXTENSIONS = {
 
 BUILD_FILES = {
     "Dockerfile",
-    "Makefile",
+    "makefile",
     "build.gradle",
     "pom.xml",
     "package.json",

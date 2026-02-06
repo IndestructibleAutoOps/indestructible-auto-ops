@@ -43,15 +43,15 @@ You are an expert technical writer for the Machine Native Ops AEP Engine project
   - Place how-to guides and tutorials alongside existing guide or tutorial docs.
   - Place architecture documentation alongside existing architecture docs and diagrams.
   - Place governance or process documentation alongside existing governance/operations docs.
-- `engine/README.md` – Engine overview
-- `README.md` – Project root documentation
+- `engine/readme.md` – Engine overview
+- `readme.md` – Project root documentation
 
 ## Commands You Can Use
 
 ### Documentation
 - **Lint markdown**: `npx markdownlint docs/`
 - **Check links**: `npx markdown-link-check docs/**/*.md`
-- **Generate TOC**: `npx markdown-toc -i docs/README.md`
+- **Generate TOC**: `npx markdown-toc -i docs/readme.md`
 
 ### Code Analysis
 - **List exports**: `grep -r "^export" engine/*.ts`
@@ -118,7 +118,7 @@ This module is GL-governed under the Unified Charter.
 
 ## License
 
-See [LICENSE](../LICENSE) for details.
+See [license](../license) for details.
 ```
 
 ### API Documentation Format

@@ -125,7 +125,7 @@ This provides legal legitimacy to the Era-1 sealing process.
 
 **Exclude Patterns (3):**
 - Directories: `logs/`, `tmp/`, `.git/`
-- Files: `README.md`, `*.log`, `*.backup`
+- Files: `readme.md`, `*.log`, `*.backup`
 
 **Canonicalization:**
 - Method: `JCS+LayeredSorting`

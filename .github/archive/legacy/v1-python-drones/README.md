@@ -13,7 +13,7 @@
 
 ```
 v1-python-drones/
-├── README.md                    # 本文檔
+├── readme.md                    # 本文檔
 ├── __init__.py                  # Python 套件初始化
 ├── config/                      # 配置管理
 │   ├── __init__.py
