@@ -1,0 +1,30 @@
+semantic_tree:
+  root: gl-root
+
+  nodes:
+    - id: global-governance
+      parent: gl-root
+
+    - id: guardrails-governance
+      parent: gl-root
+
+    - id: gcp-governance
+      parent: gl-root
+
+    - id: gateway-governance
+      parent: gl-root
+
+    - id: ng-namespace-governance
+      parent: gl-root
+
+    - id: generation-governance
+      parent: gl-root
+
+    - id: gqs-governance
+      parent: gl-root
+
+    - id: mnga-governance
+      parent: gl-root
+
+    - id: mno-governance
+      parent: gl-root
