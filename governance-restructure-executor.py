@@ -22,7 +22,7 @@ import json
 import hashlib
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Dict, Any
 import shutil
 
 class GovernanceRestructureExecutor:
