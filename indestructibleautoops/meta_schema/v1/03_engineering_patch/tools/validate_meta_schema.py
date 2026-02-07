@@ -71,9 +71,11 @@ def validate_minimal(meta, doc):
                     errors.append({"path": f"spec.rules[{i}].severity", "error": "enum"})
     return errors
 
-def walk_examples(root):
+def walk_repo(root):
     files = []
-    for base, _, names in os.walk(root):
+    skip_dirs = {".git", ".evidence", "node_modules", ".venv", "venv", "dist", "build", "__pycache__"}
+    for base, dirs, names in os.walk(root):
+        dirs[:] = [d for d in dirs if d not in skip_dirs]
         for n in names:
             if n.endswith(".yaml") or n.endswith(".yml") or n.endswith(".json"):
                 files.append(os.path.join(base, n))
@@ -82,25 +84,43 @@ def walk_examples(root):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--schema", default="indestructibleautoops/meta_schema/v1/03_engineering_patch/schemas/meta-schema.v1.json")
-    ap.add_argument("--examples", default="indestructibleautoops/meta_schema/v1/03_engineering_patch/examples")
+    ap.add_argument("--root", default=".")
     ap.add_argument("--write-evidence", action="store_true")
     args = ap.parse_args()
 
     meta = load_yaml_or_json(args.schema)
-    ex_files = walk_examples(args.examples)
+    meta_id = meta.get("$id")
+    all_files = walk_repo(args.root)
+    ex_files = []
+    schema_abspath = os.path.abspath(args.schema)
+    for p in all_files:
+        if os.path.abspath(p) == schema_abspath:
+            continue
+        try:
+            with open(p, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+        except Exception:
+            continue
+        if meta_id and meta_id not in content:
+            continue
+        ex_files.append(p)
 
     report = {
         "time": utc(),
         "kind": "meta_schema_validation_report",
         "schema": args.schema,
-        "examples_root": args.examples,
-        "counts": {"examples": len(ex_files), "pass": 0, "fail": 0},
+        "scan_root": args.root,
+        "examples_root": args.root,
+        "counts": {"documents": len(ex_files), "pass": 0, "fail": 0},
         "results": []
     }
 
     for p in ex_files:
-        doc = load_yaml_or_json(p)
-        errs = validate_minimal(meta, doc)
+        try:
+            doc = load_yaml_or_json(p)
+            errs = validate_minimal(meta, doc)
+        except Exception as e:
+            errs = [{"path": "file", "error": "parse", "detail": str(e)}]
         ok = (len(errs) == 0)
         report["results"].append({"file": p, "ok": ok, "errors": errs})
         if ok:

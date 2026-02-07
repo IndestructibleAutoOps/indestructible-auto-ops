@@ -12,7 +12,7 @@ ci_gate:
   - validate_examples_positive
   - validate_examples_negative
 inputs:
-  examples_dir: indestructibleautoops/meta_schema/v1/examples
+  scan_root: .
 outputs:
   evidence_dir: .evidence/meta_schema
   reports:
