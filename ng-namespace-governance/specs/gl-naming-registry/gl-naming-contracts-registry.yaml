@@ -24,7 +24,7 @@ spec:
     - id: gl-naming-ontology
       name: "GL 命名本體"
       version: "1.0.0"
-      path: "ecosystem/contracts/naming-governance/gl-naming-ontology.yaml"
+      path: "ng-namespace-governance/specs/gl-naming-layers/gl-naming-ontology.yaml"
       description: "定義 26 個命名層級的語意結構與關係"
       type: core
       status: active
@@ -69,7 +69,7 @@ spec:
     - id: gl-naming-ontology-expanded
       name: "GL 擴展命名本體 (工程級)"
       version: "3.0.0"
-      path: "ecosystem/contracts/naming-governance/gl-naming-ontology-expanded.yaml"
+      path: "ng-namespace-governance/specs/gl-naming-layers/gl-naming-ontology-expanded.yaml"
       description: "完整工程級 21 層命名本體，包含生成器與語意引擎相容性"
       type: core
       status: active

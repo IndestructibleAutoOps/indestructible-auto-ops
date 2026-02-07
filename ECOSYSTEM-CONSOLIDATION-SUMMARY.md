@@ -83,7 +83,7 @@ Moved 18 markdown report files from root to organized subdirectories:
 - Updated `machine-native-ops/ecosystem` → `ecosystem` in Python files (6 files)
 - Updated `machine-native-ops/ecosystem` → `ecosystem` in YAML contracts (1 file)
 - Fixed hardcoded paths in:
-  - `gl-governance-compliance-platform/scripts/naming/ng_namespace_pipeline.py`
+  - `ng-namespace-governance/tools/ng-namespace-pipeline.py`
   - `ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml`
   - Python files in ecosystem subdirectories
 

@@ -535,7 +535,7 @@ class NamingFixer:
 
 def main():
     import argparse
-    default_policy = Path('gl-governance-compliance-platform/governance/naming/naming-filesystem-policy.yaml')
+    default_policy = Path('ng-namespace-governance/policies/naming-filesystem-policy.yaml')
     
     parser = argparse.ArgumentParser(description='MNGA 命名違規自動修復')
     parser.add_argument('--workspace', '-w', default='.', help='工作區路徑')

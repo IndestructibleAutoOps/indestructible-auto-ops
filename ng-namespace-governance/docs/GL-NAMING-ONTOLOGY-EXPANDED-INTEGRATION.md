@@ -16,7 +16,7 @@
 - **契約 ID**: gl-naming-ontology-expanded
 - **名稱**: GL 擴展命名本體 (工程級)
 - **版本**: 3.0.0
-- **路徑**: ecosystem/contracts/naming-governance/gl-naming-ontology-expanded.yaml
+- **路徑**: ng-namespace-governance/specs/gl-naming-layers/gl-naming-ontology-expanded.yaml
 - **類別**: Core (核心契約)
 - **狀態**: Active (活躍)
 

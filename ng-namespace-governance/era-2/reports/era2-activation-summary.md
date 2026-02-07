@@ -167,7 +167,7 @@ L01-L99 (Governance Layers): ⚠️ PENDING
   - Evidence chain verification
 
 ### 3. Activation & Validation
-- ✅ **Era-2 Activation Script** (`ecosystem/era2_activation.py`)
+- ✅ **Era-2 Activation Script** (`ng-namespace-governance/era-2/scripts/era2-activation.py`)
   - Automated engine initialization
   - Core sealing ceremony execution
   - Comprehensive validation

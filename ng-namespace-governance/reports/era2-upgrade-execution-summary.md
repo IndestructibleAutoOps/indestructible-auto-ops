@@ -63,7 +63,7 @@ All planning and specification documents were created:
 
 **Command Executed**:
 ```bash
-python ecosystem/era2_upgrade_exec.py --step 1
+python ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py --step 1
 ```
 
 **Artifacts Generated**:
@@ -341,11 +341,11 @@ Validators Layer          ✅ PASS      檢查驗證器，發現 0 個問題
 ### Recommended Pipeline Re-execution:
 ```bash
 # Run with force to continue despite minor issues
-python ecosystem/era2_upgrade_exec.py --verbose --force
+python ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py --verbose --force
 
 # Or run specific steps
-python ecosystem/era2_upgrade_exec.py --step 1  # Semantic Closure
-python ecosystem/era2_upgrade_exec.py --step 2  # Registry Update
+python ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py --step 1  # Semantic Closure
+python ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py --step 2  # Registry Update
 # ... etc
 ```
 
@@ -359,7 +359,7 @@ python ecosystem/era2_upgrade_exec.py --step 2  # Registry Update
 3. ✅ `ecosystem/governance/tasks/ERA-2-BACKWARD-CLOSED-LOOP.md`
 4. ✅ `ecosystem/governance/rules/GLCM-WORLDCLASS.md`
 5. ✅ `ecosystem/governance/data/semantic_matrix.yaml`
-6. ✅ `ecosystem/era2_upgrade_exec.py`
+6. ✅ `ng-namespace-governance/era-2/scripts/era2-upgrade-exec.py`
 
 ### Artifacts Generated
 1. ✅ `/workspace/canonical_semantic.json`
