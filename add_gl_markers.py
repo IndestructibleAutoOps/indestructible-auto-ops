@@ -118,11 +118,22 @@ def process_files(scan_results_path):
     print(f"Processing {len(data['adjustment_suggestions'])} files...")
     
     for i, item in enumerate(data['adjustment_suggestions'], 1):
-        file_path = repo_root / item['current_path']
+        raw_path = item['current_path']
+        
+        # Validate and normalize path to prevent directory traversal
+        try:
+            # Convert to Path and resolve to absolute path
+            file_path = (repo_root / raw_path).resolve()
+            # Ensure the resolved path is still within repo_root
+            file_path.relative_to(repo_root.resolve())
+        except (ValueError, RuntimeError) as e:
+            print(f"  {i}/{len(data['adjustment_suggestions'])} ✗ Invalid path outside repo_root: {raw_path}")
+            errors += 1
+            continue
         
         # 檢查檔案是否存在
         if not file_path.exists():
-            print(f"  {i}/{len(data['adjustment_suggestions'])} ✗ File not found: {item['current_path']}")
+            print(f"  {i}/{len(data['adjustment_suggestions'])} ✗ File not found: {raw_path}")
             errors += 1
             continue
         
@@ -137,13 +148,13 @@ def process_files(scan_results_path):
         success, message = add_markers(file_path, layer, semantic, audit_path)
         
         if success:
-            print(f"  {i}/{len(data['adjustment_suggestions'])} ✓ Added markers: {item['current_path']}")
+            print(f"  {i}/{len(data['adjustment_suggestions'])} ✓ Added markers: {raw_path}")
             processed += 1
         elif "Already has markers" in message:
-            print(f"  {i}/{len(data['adjustment_suggestions'])} - Skipped: {item['current_path']} (already has markers)")
+            print(f"  {i}/{len(data['adjustment_suggestions'])} - Skipped: {raw_path} (already has markers)")
             skipped += 1
         else:
-            print(f"  {i}/{len(data['adjustment_suggestions'])} ✗ Error: {item['current_path']} - {message}")
+            print(f"  {i}/{len(data['adjustment_suggestions'])} ✗ Error: {raw_path} - {message}")
             errors += 1
     
     # 生成報告

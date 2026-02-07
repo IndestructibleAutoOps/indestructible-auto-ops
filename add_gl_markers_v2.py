@@ -96,11 +96,18 @@ def add_gl_markers(file_path):
         # Determine GL metadata
         gl_layer = get_gl_layer_for_file(file_path)
         semantic = get_semantic_type(file_path)
-        # Compute a relative audit-trail path if anchor exists.
+        # Compute a relative audit-trail path if anchor exists; fail fast if not.
         if GL_ROOT_SEMANTIC_ANCHOR_PATH:
-            audit_trail = os.path.relpath(GL_ROOT_SEMANTIC_ANCHOR_PATH, file_path.parent)
+            # Compute relative path using os.path.relpath, then normalize to POSIX for cross-platform stability
+            rel_path = os.path.relpath(GL_ROOT_SEMANTIC_ANCHOR_PATH, file_path.parent)
+            # Convert platform-specific separators to POSIX style (forward slashes)
+            audit_trail = rel_path.replace(os.sep, '/')
         else:
-            audit_trail = "UNKNOWN_GL_ROOT_SEMANTIC_ANCHOR"
+            raise RuntimeError(
+                "GL root semantic anchor not found. "
+                "Auto-discovery failed to locate a GL-ROOT-SEMANTIC-ANCHOR.yaml within the repository. "
+                "Please provide an explicit --gl-root-semantic-anchor argument or ensure the anchor file exists."
+            )
         
         # Generate GL markers header
         gl_header = f"""# @GL-governed
