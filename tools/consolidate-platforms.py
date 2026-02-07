@@ -70,15 +70,22 @@ SPECIAL_PLATFORMS = {
 
 
 class PlatformConsolidator:
-    def __init__(self, workspace_root: Path, dry_run: bool = True):
+    def __init__(
+        self, workspace_root: Path, dry_run: bool = True, skip_backup: bool = False
+    ):
         self.root = workspace_root
         self.dry_run = dry_run
+        self.skip_backup = skip_backup
         self.moved_dirs = []
         self.errors = []
 
     def backup_current_state(self):
         """創建備份"""
         print("📦 Creating backup...")
+        if self.skip_backup:
+            print("   Skipped (backup disabled)")
+            return
+
         if not self.dry_run:
             subprocess.run(
                 ["git", "add", "-A"],
@@ -280,6 +287,11 @@ def main():
         help="Execute the consolidation (default is dry-run)",
     )
     parser.add_argument(
+        "--skip-backup",
+        action="store_true",
+        help="Skip creating git backup/tag before executing",
+    )
+    parser.add_argument(
         "--workspace",
         default="/workspace",
         help="Workspace root directory",
@@ -290,6 +302,7 @@ def main():
     consolidator = PlatformConsolidator(
         workspace_root=Path(args.workspace),
         dry_run=not args.execute,
+        skip_backup=args.skip_backup,
     )
 
     return consolidator.run()

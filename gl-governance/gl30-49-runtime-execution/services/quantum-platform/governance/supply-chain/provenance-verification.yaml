@@ -1,0 +1,70 @@
+# @GL-layer: GQS-L0
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-core
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+apiVersion: supplychain.machinenativeops.io/v1
+kind: ProvenanceVerifier
+metadata:
+  name: gl-quantum-provenance-verifier
+  namespace: governance
+  labels:
+    gl-version: v10.0.0
+    tier: quantum-supply-chain
+spec:
+  enabled: true
+  slsa:
+    level: 3
+    verification:
+      enabled: true
+      materials:
+        - sourceCode
+        - dependencies
+        - buildEnvironment
+        
+      subjects:
+        - containerImages
+        - binaries
+        - artifacts
+        
+  verification:
+    preMerge:
+      - verifyBuildAttestations
+      - verifySourceOrigin
+      - verifyBuilderIdentity
+      
+    preDeploy:
+      - verifyProvenanceChain
+      - verifyNoTampering
+      - verifyReproducibility
+      
+  policies:
+    - name: require-signed-builds
+      severity: critical
+      action: block
+      
+    - name: require-reproducible-builds
+      severity: high
+      action: warn
+      
+    - name: require-source-attestation
+      severity: high
+      action: block
+      
+  storage:
+    provenanceStore:
+      type: s3
+      bucket: gl-provenance
+      prefix: provenance/
+      retention: 365d
+      
+  reporting:
+    enabled: true
+    format: json
+    path: artifacts/provenance/verification-reports
