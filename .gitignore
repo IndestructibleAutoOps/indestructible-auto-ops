@@ -85,3 +85,8 @@ summarized-conversations/
 # Audit reports (temporary)
 reports/audit_report_*.json
 backup/
+
+# Reintegrate backfill evidence (generated during execution)
+.evidence/reintegrate_backfill/logs/*.log
+.evidence/reintegrate_backfill/reports/*.json
+.evidence/reintegrate_backfill/reports/*.tsv
