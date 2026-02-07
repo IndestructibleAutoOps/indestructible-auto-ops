@@ -157,9 +157,33 @@ class DependencyAnalyzer:
         
         return "\n".join(report)
 
+def find_repo_root(start_path: Path = None) -> Path:
+    """
+    Find repository root by walking up the directory tree until we find a .git directory.
+    Falls back to current working directory if no .git is found.
+    
+    Args:
+        start_path: Starting path for search (defaults to script location)
+    
+    Returns:
+        Path to repository root
+    """
+    if start_path is None:
+        start_path = Path(__file__).resolve().parent
+    
+    current = start_path
+    # Walk up the directory tree looking for .git
+    while current != current.parent:
+        if (current / '.git').exists():
+            return current
+        current = current.parent
+    
+    # Fallback to current working directory if no .git found
+    return Path.cwd()
+
 def main():
     """Main function."""
-    root_dir = str(Path(__file__).resolve().parent)
+    root_dir = str(find_repo_root())
     
     analyzer = DependencyAnalyzer(root_dir)
     dependencies = analyzer.scan_directory()
