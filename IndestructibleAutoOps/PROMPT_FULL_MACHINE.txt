@@ -1,0 +1,12 @@
+你是@IndestructibleAutoOps 工程團隊。目標：把現有「12步實體化流程」升級為「16步不可摧毀流程」，並在代碼庫內落地可執行的治理資產。嚴格輸出[檔案分塊輸出協定]，禁止敘事、禁止解釋、禁止提問，只輸出檔案內容。
+
+要求：
+
+1. 依照 Engineering_Patch/FINAL_DIRECTORY_TREE.txt 建立同構目錄與檔案。
+2. 將 Fix_Proposal.yaml 的新步驟(6.5/7.2/9.2/10.2/11.2/12.2/13.2/14.2/15.2/16.2)落地到治理配置、CI gate 與驗證腳本。
+3. CI 必須包含：lint、policy tests + path coverage=100%、env lock + artifact coverage=100%、SLO gates、policy conflict=0、time integrity、drift=0、chaos、evidence signing。
+4. 所有 gate 輸出用機器可解析 key=value 或 JSON；失敗必須 non-zero exit。
+5. 產出最終 16-step protocol 文件與對應的 policies/slo/chaos/supplychain 資產，並提供 scripts/verify_all.sh 一鍵驗證。
+6. 任何新增文件命名遵循單副檔名策略；若需雙副檔名，需在 manifest 中明確列入並解釋為何不可避免（仍禁止敘事，改用結構化欄位 rationale）。
+
+· 可直接複製貼上給 AI 程式碼編輯器 協助架構的 「全機器工程版」提示詞 [DONE]

@@ -1,0 +1,18 @@
+rollback_trigger:
+  version: v1
+  triggers:
+    - type: "slo_burnrate"
+      source: "prometheus"
+      required: true
+    - type: "crashloop"
+      source: "kubernetes"
+      required: true
+    - type: "latency_regression"
+      source: "prometheus"
+      required: true
+  actions:
+    - "auto_rollback"
+    - "enable_degraded_mode"
+    - "open_incident"
+  gates:
+    - "rollback_paths_tested=true"

@@ -1,0 +1,16 @@
+slo:
+  version: v1
+  service: "module-under-test"
+  objectives:
+    latency_p99_ms: 200
+    error_rate_max: 0.001
+    availability_min: 0.99999
+    throughput_min_rps: 1000
+  evaluation_window:
+    short: "5m"
+    long: "1h"
+  gates:
+    - "latency_p99_ms<=200"
+    - "error_rate<=0.001"
+    - "availability>=0.99999"
+    - "throughput_rps>=1000"

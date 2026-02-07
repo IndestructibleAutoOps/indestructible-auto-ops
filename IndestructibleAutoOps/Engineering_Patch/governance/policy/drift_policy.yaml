@@ -1,0 +1,20 @@
+drift_policy:
+  version: v1
+  detection:
+    sources:
+      - "gitops_desired_state"
+      - "cluster_live_state"
+    mode: "continuous"
+    interval_seconds: 60
+  reconciliation:
+    allowed: true
+    actions:
+      - "auto_reconcile_safe_changes"
+      - "block_manual_hotfixes_without_attestation"
+  gates:
+    - id: "DRIFT-000"
+      condition: "drift_count == 0"
+      on_fail: "block_deploy"
+    - id: "DRIFT-001"
+      condition: "hotfix_detected == false"
+      on_fail: "open_incident"
