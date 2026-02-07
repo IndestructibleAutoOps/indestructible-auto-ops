@@ -1,0 +1,24 @@
+governance_baseline:
+  version: 1.0
+  description: >
+    Defines the unified governance specification for all governance modules.
+    Establishes mandatory requirements for registration, semantic attachment,
+    integrity boundaries, evidence generation, and verification.
+
+  root_anchor: "gl-root"
+
+  mandatory_requirements:
+    - each governance module must provide governance-binding.yaml
+    - each module must attach to the semantic-tree
+    - each module must define a hash boundary specification
+    - each module must expose evidence paths
+    - each module must support deterministic replay
+    - each module must pass global verification rules
+    - all pipelines must be stoppable, replayable, and integrity-protected
+
+  governance_dimensions:
+    - semantic_consistency
+    - execution_consistency
+    - evidence_integrity
+    - replay_determinism
+    - boundary_compliance

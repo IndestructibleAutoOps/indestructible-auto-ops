@@ -1,0 +1,17 @@
+hash_spec:
+  algorithm: sha256
+
+  include:
+    - governance-binding.yaml
+    - pipelines/
+    - gates/
+    - evidence/
+    - semantic-model/
+    - baseline/
+    - event-model/
+    - verification/
+
+  exclude:
+    - tmp/
+    - cache/
+    - logs/
