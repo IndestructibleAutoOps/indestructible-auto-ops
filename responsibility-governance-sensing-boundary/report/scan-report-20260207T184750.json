@@ -1,6 +1,6 @@
 {
-  "scan_id": "SCAN-20260207T184756",
-  "timestamp": "2026-02-07T18:47:56.742608+00:00",
+  "scan_id": "SCAN-20260207T184749",
+  "timestamp": "2026-02-07T18:47:49.929888+00:00",
   "scanner_version": "2.0.0",
   "mode": "autonomous",
   "repo_root": "/home/ubuntu/indestructible-auto-ops",
@@ -17,18 +17,18 @@
         },
         {
           "check": "readme_exists",
-          "passed": true,
-          "detail": "README.md 存在"
+          "passed": false,
+          "detail": "README.md 缺失"
         },
         {
           "check": "has_content",
           "passed": true,
-          "detail": "檔案數: 7"
+          "detail": "檔案數: 5"
         },
         {
           "check": "hash_computed",
           "passed": true,
-          "detail": "SHA-256: b52e431844aa80bc..."
+          "detail": "SHA-256: 446358e6d4eeb45b..."
         },
         {
           "check": "subdirectory_structure",
@@ -36,9 +36,9 @@
           "detail": "子目錄: ['baseline', 'event-model', 'hash-boundary', 'semantic-model', 'verification']"
         }
       ],
-      "status": "PASS",
-      "hash": "b52e431844aa80bca84469eade8a431cd18aa88169c3b6a7c58246a68e0a58bd",
-      "file_count": 7
+      "status": "WARNING",
+      "hash": "446358e6d4eeb45b7cd02f29c34bfc12623ee512bdaac57a5fc6ebdd1dc275ea",
+      "file_count": 5
     },
     {
       "module_id": "governance-execution",
@@ -51,28 +51,28 @@
         },
         {
           "check": "readme_exists",
-          "passed": true,
-          "detail": "README.md 存在"
+          "passed": false,
+          "detail": "README.md 缺失"
         },
         {
           "check": "has_content",
           "passed": true,
-          "detail": "檔案數: 10"
+          "detail": "檔案數: 7"
         },
         {
           "check": "hash_computed",
           "passed": true,
-          "detail": "SHA-256: 4534a84960a30a5b..."
+          "detail": "SHA-256: 4798f043d9c76ae9..."
         },
         {
           "check": "subdirectory_structure",
           "passed": true,
-          "detail": "子目錄: ['consistency', 'engines', 'gates', 'pipelines', 'registry', 'reports']"
+          "detail": "子目錄: ['consistency', 'engines', 'gates', 'pipelines', 'registry']"
         }
       ],
-      "status": "PASS",
-      "hash": "4534a84960a30a5bf7b10e6502e28c876fcf42fec885a35922bc999d8ee7915f",
-      "file_count": 10
+      "status": "WARNING",
+      "hash": "4798f043d9c76ae9fbb99a38e70b734b121a91c92dc5f658ec7adfac3d8f5ce3",
+      "file_count": 7
     },
     {
       "module_id": "governance-sensing",
@@ -85,18 +85,18 @@
         },
         {
           "check": "readme_exists",
-          "passed": true,
-          "detail": "README.md 存在"
+          "passed": false,
+          "detail": "README.md 缺失"
         },
         {
           "check": "has_content",
           "passed": true,
-          "detail": "檔案數: 8"
+          "detail": "檔案數: 6"
         },
         {
           "check": "hash_computed",
           "passed": true,
-          "detail": "SHA-256: 925e8ec8658485ea..."
+          "detail": "SHA-256: 195137acc4b2b0d0..."
         },
         {
           "check": "subdirectory_structure",
@@ -104,9 +104,9 @@
           "detail": "子目錄: ['report']"
         }
       ],
-      "status": "PASS",
-      "hash": "925e8ec8658485ea11c58b37e9e5164e79e43136dc60f116f4f2bd4d520b61d3",
-      "file_count": 8
+      "status": "WARNING",
+      "hash": "195137acc4b2b0d0eb0e1c4b7e676eba257c6df6a64abdc86d7bd3010e258b91",
+      "file_count": 6
     },
     {
       "module_id": "governance-specs",
@@ -119,18 +119,18 @@
         },
         {
           "check": "readme_exists",
-          "passed": true,
-          "detail": "README.md 存在"
+          "passed": false,
+          "detail": "README.md 缺失"
         },
         {
           "check": "has_content",
           "passed": true,
-          "detail": "檔案數: 30"
+          "detail": "檔案數: 29"
         },
         {
           "check": "hash_computed",
           "passed": true,
-          "detail": "SHA-256: b0b48d842708214d..."
+          "detail": "SHA-256: 627d2921d1bbd183..."
         },
         {
           "check": "subdirectory_structure",
@@ -138,9 +138,9 @@
           "detail": "子目錄: ['audit', 'kernel', 'specs', 'workflows']"
         }
       ],
-      "status": "PASS",
-      "hash": "b0b48d842708214dbd7ccb21b03c031f94435658af10762bdc22a77b65f4f640",
-      "file_count": 30
+      "status": "WARNING",
+      "hash": "627d2921d1bbd1830e4f516de5103c38efe05d1f6ed16f590d9b4c42d62e4b52",
+      "file_count": 29
     },
     {
       "module_id": "global-policy",
@@ -187,18 +187,18 @@
         },
         {
           "check": "readme_exists",
-          "passed": true,
-          "detail": "README.md 存在"
+          "passed": false,
+          "detail": "README.md 缺失"
         },
         {
           "check": "has_content",
           "passed": true,
-          "detail": "檔案數: 1556"
+          "detail": "檔案數: 1555"
         },
         {
           "check": "hash_computed",
           "passed": true,
-          "detail": "SHA-256: 443a84725f81c745..."
+          "detail": "SHA-256: 169a87e5b779831c..."
         },
         {
           "check": "subdirectory_structure",
@@ -206,9 +206,9 @@
           "detail": "子目錄: ['gl00-09-enterprise-architecture', 'gl10-19-platform-services', 'gl20-29-data-processing', 'gl30-49-runtime-execution', 'gl50-59-monitoring-observability', 'gl60-80-governance-compliance', 'gl81-83-extension-services', 'gl90-99-meta-specifications']"
         }
       ],
-      "status": "PASS",
-      "hash": "443a84725f81c745fa382d645213051b6d19bf4321061f601548fcddc6325328",
-      "file_count": 1556
+      "status": "WARNING",
+      "hash": "169a87e5b779831cf46c80f519ab286b0109b0c73a87fdc4a90de397b9db0aa9",
+      "file_count": 1555
     },
     {
       "module_id": "gap-analysis",
@@ -621,14 +621,14 @@
   ],
   "summary": {
     "total": 18,
-    "passed": 18,
+    "passed": 13,
     "failed": 0,
-    "warnings": 0,
-    "pass_rate": 100.0,
+    "warnings": 5,
+    "pass_rate": 72.22,
     "violations_count": 1,
-    "drift_count": 5,
-    "remediation_count": 0,
-    "scan_completed_at": "2026-02-07T18:47:56.988654+00:00"
+    "drift_count": 0,
+    "remediation_count": 5,
+    "scan_completed_at": "2026-02-07T18:47:50.180086+00:00"
   },
   "violations": [
     {
@@ -640,37 +640,37 @@
       "action": "move_to_correct_boundary"
     }
   ],
-  "drift_detected": [
+  "drift_detected": [],
+  "remediation_required": [
     {
       "module_id": "governance-anchor",
-      "previous_hash": "446358e6d4eeb45b...",
-      "current_hash": "b52e431844aa80bc...",
-      "detected_at": "2026-02-07T18:47:56.988538+00:00"
+      "issue": "缺少 README.md",
+      "action": "generate_readme:responsibility-governance-anchor-boundary",
+      "severity": "HIGH"
     },
     {
       "module_id": "governance-execution",
-      "previous_hash": "4798f043d9c76ae9...",
-      "current_hash": "4534a84960a30a5b...",
-      "detected_at": "2026-02-07T18:47:56.988572+00:00"
+      "issue": "缺少 README.md",
+      "action": "generate_readme:responsibility-governance-execution-boundary",
+      "severity": "HIGH"
     },
     {
       "module_id": "governance-sensing",
-      "previous_hash": "195137acc4b2b0d0...",
-      "current_hash": "925e8ec8658485ea...",
-      "detected_at": "2026-02-07T18:47:56.988580+00:00"
+      "issue": "缺少 README.md",
+      "action": "generate_readme:responsibility-governance-sensing-boundary",
+      "severity": "HIGH"
     },
     {
       "module_id": "governance-specs",
-      "previous_hash": "627d2921d1bbd183...",
-      "current_hash": "b0b48d842708214d...",
-      "detected_at": "2026-02-07T18:47:56.988591+00:00"
+      "issue": "缺少 README.md",
+      "action": "generate_readme:responsibility-governance-specs-boundary",
+      "severity": "HIGH"
     },
     {
       "module_id": "gl-layers",
-      "previous_hash": "169a87e5b779831c...",
-      "current_hash": "443a84725f81c745...",
-      "detected_at": "2026-02-07T18:47:56.988608+00:00"
+      "issue": "缺少 README.md",
+      "action": "generate_readme:responsibility-gl-layers-boundary",
+      "severity": "HIGH"
     }
-  ],
-  "remediation_required": []
+  ]
 }

@@ -1,0 +1,57 @@
+{
+  "cycle_id": "CYCLE-20260207T184756",
+  "started_at": "2026-02-07T18:47:56.741526+00:00",
+  "mode": "autonomous",
+  "phases": [
+    {
+      "phase": "sensing",
+      "status": "COMPLETED",
+      "timestamp": "2026-02-07T18:47:56.991175+00:00",
+      "summary": {
+        "total": 18,
+        "passed": 18,
+        "failed": 0,
+        "warnings": 0,
+        "pass_rate": 100.0,
+        "violations_count": 1,
+        "drift_count": 5,
+        "remediation_count": 0,
+        "scan_completed_at": "2026-02-07T18:47:56.988654+00:00"
+      }
+    },
+    {
+      "phase": "execution",
+      "status": "COMPLETED",
+      "timestamp": "2026-02-07T18:47:56.994778+00:00",
+      "summary": {
+        "execution_id": "EXEC-20260207T184756",
+        "gates_passed": 17,
+        "gates_failed": 1,
+        "gate_pass_rate": 94.44,
+        "fixes_applied": 0,
+        "evidence_id": "EV-20260207T184756"
+      }
+    },
+    {
+      "phase": "feedback",
+      "status": "COMPLETED",
+      "timestamp": "2026-02-07T18:47:56.995557+00:00",
+      "hash_modules_updated": 18
+    },
+    {
+      "phase": "report",
+      "status": "COMPLETED",
+      "timestamp": "2026-02-07T18:47:56.995655+00:00"
+    }
+  ],
+  "status": "COMPLETED",
+  "overall_health": "DEGRADED",
+  "metrics": {
+    "scan_pass_rate": 100.0,
+    "gate_pass_rate": 94.44,
+    "violations": 1,
+    "drift_detected": 5,
+    "fixes_applied": 0
+  },
+  "completed_at": "2026-02-07T18:47:56.995661+00:00"
+}
