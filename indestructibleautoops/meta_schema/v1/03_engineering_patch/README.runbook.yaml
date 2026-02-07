@@ -1,0 +1,25 @@
+version: 1
+system: IndestructibleAutoOps
+component: meta-schema
+meta_schema_version: v1
+json_schema_dialect: 2020-12
+authoritative_files:
+  - indestructibleautoops/meta_schema/v1/schemas/meta-schema.v1.json
+  - indestructibleautoops/meta_schema/v1/schemas/kinds/index.v1.json
+  - indestructibleautoops/meta_schema/v1/tools/validate_meta_schema.py
+ci_gate:
+  - validate_meta_schema_self
+  - validate_examples_positive
+  - validate_examples_negative
+inputs:
+  examples_dir: indestructibleautoops/meta_schema/v1/examples
+outputs:
+  evidence_dir: .evidence/meta_schema
+  reports:
+    - .evidence/meta_schema/reports/summary.json
+    - .evidence/meta_schema/reports/ajv_compat.json
+execution:
+  local:
+    - python indestructibleautoops/meta_schema/v1/tools/validate_meta_schema.py --write-evidence
+  ci:
+    - .github/workflows/meta-schema-validate.yml
