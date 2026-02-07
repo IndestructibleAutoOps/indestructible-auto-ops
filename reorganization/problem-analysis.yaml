@@ -1,0 +1,113 @@
+# Problem Identification
+problem_identification:
+  primary_issue: governance_structure_fragmentation
+  affected_directories:
+    - ng-namespace-governance
+    - ecosystem
+    - audit-reports
+    - auto_task_project
+    - 17+ gl-* platform directories
+  symptoms:
+    - scattered_files_in_root
+    - unclear_responsibility_boundaries
+    - duplicate_directories
+    - pr_auto_created_subdirs
+
+# Root Cause Analysis
+root_cause_analysis:
+  cause_1:
+    id: RCA-01
+    description: no_clear_meta_governance_hierarchy
+    impact: ng-namespace-governance_and_ecosystem_compete_for_meta_governance_role
+
+  cause_2:
+    id: RCA-02
+    description: gl_platform_directories_scattered_at_root
+    impact: flat_structure_obscures_platform_relationships
+
+  cause_3:
+    id: RCA-03
+    description: duplicate_functional_directories
+    impact: audit-reports_and_auto_task_project_overlap_with_ecosystem_functions
+
+# Fix Proposal
+fix_proposal:
+  strategy: establish_ng_as_meta_governance_root
+  approach:
+    - consolidate_ecosystem_under_ng
+    - group_gl_platforms_by_layer
+    - merge_duplicate_directories_into_ecosystem
+    - archive_pr_generated_files
+
+  principles:
+    - ng_namespace_governance_is_meta_governance_core
+    - ecosystem_implements_ng_specifications
+    - gl_platforms_organized_by_governance_layer
+    - clear_separation_of_concerns
+
+# Engineering Patch
+engineering_patch:
+  action_1:
+    operation: elevate_ng_namespace_governance
+    target: ng-namespace-governance
+    result: meta_governance_root
+
+  action_2:
+    operation: subordinate_ecosystem
+    target: ecosystem
+    result: ng-namespace-governance/implementation/ecosystem
+
+  action_3:
+    operation: group_gl_platforms
+    target: gl-*-platform
+    result: platforms/gl/
+
+  action_4:
+    operation: merge_duplicates
+    targets:
+      - audit-reports -> ng-namespace-governance/reports/audit
+      - auto_task_project -> ecosystem/automation/task-engine
+
+  action_5:
+    operation: archive_scattered_files
+    target: root_markdown_files
+    result: archives/documentation
+
+# Verification Steps
+verification_steps:
+  step_1:
+    check: ng_namespace_governance_is_root
+    validation: directory_structure_reflects_meta_governance_role
+
+  step_2:
+    check: ecosystem_is_subordinate
+    validation: ecosystem_resides_under_ng_implementation
+
+  step_3:
+    check: gl_platforms_grouped
+    validation: all_gl_platforms_under_platforms/gl/
+
+  step_4:
+    check: no_duplicates
+    validation: audit-reports_and_auto_task_project_merged
+
+  step_5:
+    check: clean_root
+    validation: only_essential_files_at_root
+
+# Governance Compliance Check
+governance_compliance_check:
+  ng_charter_compliance:
+    NG00000: enforces_uniqueness_hierarchy_consistency
+    NG00101: maintains_identifier_standards
+    NG00201: respects_lifecycle_standards
+
+  ecosystem_contract_compliance:
+    maintains: governance_framework_integrity
+    preserves: platform_registry_structure
+    enforces: boundary_enforcement_rules
+
+  gl_layer_compliance:
+    GL00-09: meta_specifications_preserved
+    GL90-99: governance_architecture_maintained
+    GL81-83: extension_framework_intact

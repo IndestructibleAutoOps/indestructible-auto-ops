@@ -1,0 +1,375 @@
+# Governance Mapping Table
+
+version: 1.0.0
+mapping_type: governance_layer_integration
+
+# NG to GL Mapping
+ng_to_gl_mapping:
+  semantic_replacement:
+    gl_layer: ng_era
+    gl_governance: ng_namespace_governance
+    gl_compliance: ng_closure
+    gl_boundary: ng_scope
+
+  layer_alignment:
+    GL90-99:
+      ng_alignment: NG000-099
+      description: meta_specifications
+      relationship: constitutional_foundation
+
+    GL00-09:
+      ng_alignment: NG000-099
+      description: enterprise_governance
+      relationship: strategic_governance
+
+    GL10-19:
+      ng_alignment: NG100-299
+      description: platform_services
+      relationship: era_1_operational
+
+    GL20-29:
+      ng_alignment: NG100-299
+      description: data_semantic_search
+      relationship: era_1_data_layer
+
+    GL30-39:
+      ng_alignment: NG300-599
+      description: runtime_execution
+      relationship: era_2_runtime
+
+    GL40-49:
+      ng_alignment: NG300-599
+      description: runtime_services
+      relationship: era_2_services
+
+    GL50-59:
+      ng_alignment: NG300-599
+      description: observability
+      relationship: era_2_monitoring
+
+    GL60-80:
+      ng_alignment: NG000-099
+      description: governance_compliance
+      relationship: meta_governance_enforcement
+
+    GL81-83:
+      ng_alignment: NG900-999
+      description: extensions
+      relationship: cross_era_integration
+
+# Governance Flow Mapping
+governance_flow:
+  specification_flow:
+    source: ng-namespace-governance/core/
+    specification_type: ng_specifications
+    targets:
+      - ng-namespace-governance/implementation/ecosystem/
+      - platforms/gl/
+
+  enforcement_flow:
+    source: ng-namespace-governance/implementation/ecosystem/
+    enforcement_type: operational_governance
+    targets:
+      - platforms/gl/*
+
+  compliance_flow:
+    sources:
+      - platforms/gl/*
+    compliance_type: platform_compliance_reports
+    target: ng-namespace-governance/reports/
+
+# Directory to Governance Layer Mapping
+directory_governance_mapping:
+  ng-namespace-governance:
+    governance_role: meta_governance_authority
+    gl_layer_equivalent: GL90-99_plus_GL60-80
+    ng_scope: NG000-099_constitutional
+
+  ng-namespace-governance/core:
+    governance_role: specification_authority
+    gl_layer_equivalent: GL90-99_meta_specification
+    ng_scope: NG000-099_specifications
+
+  ng-namespace-governance/era-1:
+    governance_role: era_1_governance
+    gl_layer_equivalent: GL10-29_operational_data
+    ng_scope: NG100-299_code_layer
+
+  ng-namespace-governance/era-2:
+    governance_role: era_2_governance
+    gl_layer_equivalent: GL30-59_runtime_observability
+    ng_scope: NG300-599_microcode_layer
+
+  ng-namespace-governance/era-3:
+    governance_role: era_3_governance
+    gl_layer_equivalent: future_semantic_layer
+    ng_scope: NG600-899_no_code_layer
+
+  ng-namespace-governance/cross-era:
+    governance_role: cross_era_governance
+    gl_layer_equivalent: GL81-83_extensions
+    ng_scope: NG900-999_cross_era
+
+  ng-namespace-governance/implementation/ecosystem:
+    governance_role: operational_enforcement
+    gl_layer_equivalent: GL60-80_governance_compliance
+    ng_scope: implementation_layer
+    origin: previous_/ecosystem
+
+  platforms/gl/meta-specifications:
+    governance_role: meta_platform
+    gl_layer: GL90-99
+    ng_alignment: NG000-099
+
+  platforms/gl/enterprise-architecture:
+    governance_role: enterprise_governance
+    gl_layer: GL00-09
+    ng_alignment: NG000-099
+
+  platforms/gl/platform-services:
+    governance_role: platform_services
+    gl_layer: GL10-19
+    ng_alignment: NG100-299
+
+  platforms/gl/data-processing:
+    governance_role: data_layer
+    gl_layer: GL20-29
+    ng_alignment: NG100-299
+
+  platforms/gl/semantic-core:
+    governance_role: semantic_layer
+    gl_layer: GL20-29
+    ng_alignment: NG100-299
+
+  platforms/gl/search-elasticsearch:
+    governance_role: search_layer
+    gl_layer: GL20-29
+    ng_alignment: NG100-299
+
+  platforms/gl/runtime-execution:
+    governance_role: execution_layer
+    gl_layer: GL30-39
+    ng_alignment: NG300-599
+
+  platforms/gl/automation-instant:
+    governance_role: automation_layer
+    gl_layer: GL30-39
+    ng_alignment: NG300-599
+
+  platforms/gl/automation-organizer:
+    governance_role: automation_coordination
+    gl_layer: GL30-39
+    ng_alignment: NG300-599
+
+  platforms/gl/infrastructure-foundation:
+    governance_role: infrastructure_layer
+    gl_layer: GL30-39
+    ng_alignment: NG300-599
+
+  platforms/gl/runtime-services:
+    governance_role: services_layer
+    gl_layer: GL40-49
+    ng_alignment: NG300-599
+
+  platforms/gl/observability:
+    governance_role: monitoring_layer
+    gl_layer: GL50-59
+    ng_alignment: NG300-599
+
+  platforms/gl/governance-compliance:
+    governance_role: compliance_enforcement
+    gl_layer: GL60-80
+    ng_alignment: NG000-099
+
+  platforms/gl/governance-architecture:
+    governance_role: governance_architecture
+    gl_layer: GL60-80
+    ng_alignment: NG000-099
+
+  platforms/gl/extension-services:
+    governance_role: extension_framework
+    gl_layer: GL81-83
+    ng_alignment: NG900-999
+
+  platforms/gl/integration-hub:
+    governance_role: integration_layer
+    gl_layer: GL81-83
+    ng_alignment: NG900-999
+
+  platforms/gl/quantum-computing:
+    governance_role: quantum_extension
+    gl_layer: GL81-83
+    ng_alignment: NG900-999
+
+# NG to Ecosystem Contracts
+ng_ecosystem_contracts:
+  specification_contract:
+    ng_provides: governance_specifications
+    ecosystem_implements: operational_enforcement
+    validation: mandatory_compliance
+
+  registry_contract:
+    ng_defines: registration_standards
+    ecosystem_maintains: platform_service_data_registries
+    validation: uniqueness_enforcement
+
+  coordination_contract:
+    ng_specifies: coordination_protocols
+    ecosystem_implements: cross_platform_coordination
+    validation: protocol_compliance
+
+  enforcement_contract:
+    ng_mandates: governance_rules
+    ecosystem_enforces: boundary_and_contract_compliance
+    validation: continuous_monitoring
+
+# Ecosystem to Platform Contracts
+ecosystem_platform_contracts:
+  registration_contract:
+    ecosystem_provides: registry_services
+    platforms_register: platform_metadata_services
+    validation: registration_completeness
+
+  coordination_contract:
+    ecosystem_provides: coordination_services
+    platforms_consume: service_discovery_data_sync
+    validation: coordination_protocol_compliance
+
+  contract_enforcement:
+    ecosystem_defines: interface_contracts
+    platforms_implement: contract_compliance
+    validation: contract_validation
+
+  boundary_enforcement:
+    ecosystem_enforces: gl_layer_boundaries
+    platforms_respect: layer_isolation
+    validation: boundary_checker
+
+# GL Layer to NG Era Mapping
+gl_ng_era_mapping:
+  code_layer_era1:
+    gl_layers:
+      - GL10-19
+      - GL20-29
+    ng_era: ERA_1
+    ng_scope: NG100-299
+    characteristics: static_code_structure
+
+  microcode_layer_era2:
+    gl_layers:
+      - GL30-39
+      - GL40-49
+      - GL50-59
+    ng_era: ERA_2
+    ng_scope: NG300-599
+    characteristics: dynamic_distributed_services
+
+  no_code_layer_era3:
+    gl_layers: future
+    ng_era: ERA_3
+    ng_scope: NG600-899
+    characteristics: intent_driven_semantic
+
+  meta_governance:
+    gl_layers:
+      - GL90-99
+      - GL00-09
+      - GL60-80
+    ng_era: META
+    ng_scope: NG000-099
+    characteristics: governance_framework
+
+  cross_layer:
+    gl_layers:
+      - GL81-83
+    ng_era: CROSS_ERA
+    ng_scope: NG900-999
+    characteristics: integration_extension
+
+# Governance Authority Chain
+authority_chain:
+  constitutional:
+    level: 1
+    authority: ng-namespace-governance/core/
+    scope: define_all_governance
+    artifacts: NG_specifications
+
+  operational:
+    level: 2
+    authority: ng-namespace-governance/implementation/ecosystem/
+    scope: enforce_governance
+    artifacts: enforcement_engines
+
+  platform:
+    level: 3
+    authority: platforms/gl/
+    scope: implement_compliant_services
+    artifacts: platform_implementations
+
+  escalation:
+    path:
+      - platform_internal
+      - ecosystem_coordination
+      - ng_implementation
+      - ng_constitutional
+
+# Validation Chain
+validation_chain:
+  specification_validation:
+    validator: ng-namespace-governance/core/
+    validates: specification_consistency
+    authority: constitutional
+
+  implementation_validation:
+    validator: ng-namespace-governance/implementation/ecosystem/
+    validates: implementation_compliance
+    authority: operational
+
+  platform_validation:
+    validator: platforms/gl/*/governance/
+    validates: platform_compliance
+    authority: platform_internal
+
+  integration_validation:
+    validator: ng-namespace-governance/cicd/
+    validates: end_to_end_compliance
+    authority: continuous_integration
+
+# Audit Trail Mapping
+audit_trail_mapping:
+  specification_changes:
+    source: ng-namespace-governance/core/
+    audit_log: ng-namespace-governance/analysis/evidence/
+    scope: governance_specification_changes
+
+  implementation_actions:
+    source: ng-namespace-governance/implementation/ecosystem/
+    audit_log: ng-namespace-governance/reports/audit/
+    scope: enforcement_actions
+
+  platform_operations:
+    source: platforms/gl/*/
+    audit_log: platforms/gl/*/logs/
+    scope: platform_operations
+
+  aggregation:
+    aggregator: ng-namespace-governance/monitoring/
+    output: compliance_dashboard
+    scope: repository_wide
+
+# Cross-Reference Table
+cross_reference:
+  previous_structure:
+    /ecosystem: /ng-namespace-governance/implementation/ecosystem
+    /audit-reports: /ng-namespace-governance/reports/audit
+    /auto_task_project: /ng-namespace-governance/implementation/ecosystem/automation/task-engine
+    /gl-*-platform: /platforms/gl/*
+
+  governance_documents:
+    NG-CHARTER.md: ng-namespace-governance/NG-CHARTER.md
+    NG-SYSTEM-COMPLETE.md: ng-namespace-governance/NG-SYSTEM-COMPLETE.md
+    ecosystem/README.md: ng-namespace-governance/implementation/ecosystem/README.md
+
+  enforcement_tools:
+    ecosystem/enforce.py: ng-namespace-governance/implementation/ecosystem/enforce.py
+    ng-namespace-validator.py: ng-namespace-governance/tools/ng-namespace-validator.py

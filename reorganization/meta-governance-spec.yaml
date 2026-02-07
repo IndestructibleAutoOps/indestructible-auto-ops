@@ -1,0 +1,333 @@
+# Meta-Governance Specification
+
+version: 3.0.0
+specification_id: NG00000-EXTENDED
+status: CONSTITUTIONAL
+
+# Meta-Governance Definition
+meta_governance:
+  authority: ng-namespace-governance
+  scope: complete_governance_framework
+  jurisdiction: entire_repository
+
+  principles:
+    uniqueness:
+      definition: single_source_of_governance_truth
+      enforcement: namespace_registry_uniqueness_check
+
+    hierarchy:
+      definition: clear_governance_layer_structure
+      levels:
+        - meta_governance
+        - implementation_governance
+        - platform_governance
+        - operational_governance
+
+    consistency:
+      definition: uniform_governance_application
+      mechanisms:
+        - standardized_specifications
+        - centralized_enforcement
+        - cross_layer_validation
+
+    traceability:
+      definition: complete_audit_trail
+      requirements:
+        - all_changes_logged
+        - provenance_maintained
+        - lineage_traceable
+
+    closure:
+      definition: governance_loop_completeness
+      cycle:
+        - specification
+        - implementation
+        - validation
+        - monitoring
+        - feedback
+        - refinement
+
+# Directory Responsibility Matrix
+responsibility_matrix:
+  ng-namespace-governance:
+    level: meta_governance_root
+    responsibilities:
+      - define_governance_standards
+      - enforce_namespace_uniqueness
+      - manage_lifecycle_rules
+      - validate_compliance
+      - audit_changes
+      - coordinate_cross_era_mapping
+
+    authorities:
+      - approve_namespace_registrations
+      - resolve_namespace_conflicts
+      - enforce_validation_rules
+      - mandate_audit_requirements
+      - define_permission_models
+      - establish_version_control_standards
+
+    boundaries:
+      input: governance_requirements_from_all_layers
+      output: governance_specifications_and_enforcement
+      no_direct: platform_implementation_details
+
+  ng-namespace-governance/core:
+    level: specification_authority
+    responsibilities:
+      - maintain_ng_specifications
+      - define_validation_rules
+      - establish_permission_models
+      - specify_lifecycle_standards
+
+    artifacts:
+      - NG00000-charter.yaml
+      - NG00101-identifier-standard.yaml
+      - NG00201-lifecycle-standard.yaml
+      - NG00301-validation-rules.yaml
+      - NG00401-permission-model.yaml
+      - NG00501-version-control.yaml
+      - NG00701-audit-trail.yaml
+
+  ng-namespace-governance/implementation:
+    level: implementation_authority
+    responsibilities:
+      - implement_ng_specifications
+      - provide_concrete_enforcement
+      - maintain_operational_systems
+      - coordinate_platform_integration
+
+    boundaries:
+      input: ng_core_specifications
+      output: operational_governance_systems
+      no_modify: ng_core_specifications
+
+  ng-namespace-governance/implementation/ecosystem:
+    level: operational_implementation
+    origin: previous_/ecosystem
+    responsibilities:
+      - implement_governance_framework
+      - maintain_platform_registry
+      - coordinate_platform_services
+      - enforce_contracts
+      - execute_governance_engines
+
+    structure:
+      governance: governance_framework_implementation
+      registry: platform_service_data_registries
+      coordination: cross_platform_coordination
+      contracts: interface_contract_definitions
+      engines: execution_and_enforcement_engines
+      tools: operational_tooling
+      automation: automated_governance_tasks
+
+    boundaries:
+      input: ng_specifications_platform_requirements
+      output: operational_governance_enforcement
+      no_modify: meta_governance_specifications
+
+  platforms/gl:
+    level: platform_implementation
+    responsibilities:
+      - implement_gl_layer_platforms
+      - comply_with_ng_governance
+      - register_with_ecosystem
+      - expose_platform_services
+
+    organization:
+      by_layer: gl_governance_layers
+      hierarchy:
+        - GL90-99: meta_specifications
+        - GL00-09: enterprise_architecture
+        - GL10-19: platform_services
+        - GL20-29: data_processing_semantic_search
+        - GL30-39: runtime_execution_automation_infrastructure
+        - GL40-49: runtime_services
+        - GL50-59: observability_monitoring
+        - GL60-80: governance_compliance_architecture
+        - GL81-83: extensions_integrations
+
+    boundaries:
+      input: ng_governance_specifications_platform_templates
+      output: platform_services_and_capabilities
+      no_modify: ng_specifications_or_ecosystem_contracts
+
+# Governance Mapping Table
+governance_mapping:
+  ng_to_ecosystem:
+    specification: ng-namespace-governance/core/
+    implementation: ng-namespace-governance/implementation/ecosystem/
+    relationship: specification_to_implementation
+    enforcement: mandatory_compliance
+
+  ng_to_platforms:
+    specification: ng-namespace-governance/core/
+    platforms: platforms/gl/
+    relationship: governance_to_governed
+    enforcement: compliance_required
+
+  ecosystem_to_platforms:
+    coordinator: ng-namespace-governance/implementation/ecosystem/
+    platforms: platforms/gl/
+    relationship: operational_coordination
+    mechanisms:
+      - service_registry
+      - platform_registry
+      - coordination_protocols
+      - contract_enforcement
+
+# Governance Flow
+governance_flow:
+  specification_layer:
+    location: ng-namespace-governance/core/
+    artifacts: NG_specifications
+    authority: define_governance_rules
+    output: specifications
+
+  implementation_layer:
+    location: ng-namespace-governance/implementation/ecosystem/
+    artifacts: operational_systems
+    authority: enforce_governance_rules
+    input: specifications
+    output: enforcement_mechanisms
+
+  platform_layer:
+    location: platforms/gl/
+    artifacts: platform_implementations
+    authority: comply_with_governance
+    input: specifications_and_enforcement
+    output: compliant_platform_services
+
+# Authority Hierarchy
+authority_hierarchy:
+  level_1_constitutional:
+    authority: ng-namespace-governance/core/
+    power: define_governance_framework
+    scope: entire_repository
+    override: none
+
+  level_2_operational:
+    authority: ng-namespace-governance/implementation/ecosystem/
+    power: enforce_governance_framework
+    scope: platforms_and_services
+    override: none
+    subject_to: ng_core_specifications
+
+  level_3_platform:
+    authority: platforms/gl/
+    power: implement_platform_services
+    scope: platform_internal
+    override: none
+    subject_to: ng_governance_and_ecosystem_coordination
+
+# Compliance Requirements
+compliance_requirements:
+  all_directories:
+    - respect_ng_namespace_governance
+    - register_namespaces_with_registry
+    - comply_with_validation_rules
+    - maintain_audit_trails
+    - follow_lifecycle_standards
+
+  ng_implementation:
+    - implement_all_ng_specifications
+    - provide_enforcement_mechanisms
+    - coordinate_with_platforms
+    - report_compliance_status
+
+  platforms:
+    - register_with_platform_registry
+    - comply_with_gl_layer_boundaries
+    - expose_services_via_coordination
+    - implement_required_contracts
+    - submit_to_governance_validation
+
+# Validation Framework
+validation_framework:
+  structural_validation:
+    validator: ng-namespace-governance/tools/ng-namespace-validator.py
+    checks:
+      - directory_structure_compliance
+      - namespace_uniqueness
+      - hierarchy_integrity
+
+  operational_validation:
+    validator: ng-namespace-governance/implementation/ecosystem/enforce.py
+    checks:
+      - contract_compliance
+      - boundary_enforcement
+      - service_registration
+
+  platform_validation:
+    validator: platforms/gl/*/governance/validate.py
+    checks:
+      - gl_layer_compliance
+      - ng_governance_compliance
+      - platform_contract_fulfillment
+
+# Enforcement Mechanisms
+enforcement_mechanisms:
+  pre_commit:
+    hook: .agent_hooks/pre-commit
+    validations:
+      - ng_namespace_validation
+      - ecosystem_contract_check
+      - boundary_enforcement
+
+  ci_cd:
+    workflow: ng-namespace-governance/cicd/ng-validation-workflow.yml
+    validations:
+      - complete_governance_validation
+      - cross_platform_integration_test
+      - compliance_report_generation
+
+  runtime:
+    enforcement: ng-namespace-governance/implementation/ecosystem/enforce.py
+    mechanisms:
+      - contract_enforcement
+      - boundary_checking
+      - audit_logging
+
+# Monitoring and Reporting
+monitoring:
+  compliance_dashboard:
+    location: ng-namespace-governance/monitoring/ng-compliance-dashboard.html
+    metrics:
+      - namespace_uniqueness_rate
+      - validation_pass_rate
+      - governance_closure_rate
+      - platform_compliance_score
+
+  audit_reports:
+    location: ng-namespace-governance/reports/audit/
+    frequency: continuous
+    content:
+      - namespace_changes
+      - validation_results
+      - compliance_status
+      - violation_tracking
+
+  execution_reports:
+    location: ng-namespace-governance/reports/
+    types:
+      - era_completion_reports
+      - compliance_verification_reports
+      - execution_summaries
+      - upgrade_pipeline_reports
+
+# Integration Points
+integration_points:
+  ng_to_ecosystem:
+    interface: ng-namespace-governance/implementation/ecosystem/
+    protocol: specification_implementation
+    validation: mandatory
+
+  ecosystem_to_platforms:
+    interface: ng-namespace-governance/implementation/ecosystem/coordination/
+    protocol: service_coordination
+    validation: contract_based
+
+  platforms_internal:
+    interface: platforms/gl/*/
+    protocol: platform_specific
+    validation: gl_layer_compliance
