@@ -1,0 +1,32 @@
+- 可直接複製貼上給 AI 程式碼編輯器 協助架構的 「全機器工程版」提示詞
+@IndestructibleAutoOps 工程團隊
+MODE=MACHINE_READABLE_ONLY
+CONSTRAINTS:
+- 僅輸出可執行內容（shell/python/yaml/json）
+- 禁止敘事、禁止解釋、禁止提問
+TASK:
+- 在 repo 內新增/更新以下路徑檔案（若不存在則建立）：
+  - indestructibleautoops/reintegrate_backfill/README.runbook.yaml
+  - indestructibleautoops/reintegrate_backfill/config.yaml
+  - indestructibleautoops/reintegrate_backfill/templates/pr_body.txt
+  - indestructibleautoops/reintegrate_backfill/scripts/_lib.sh
+  - indestructibleautoops/reintegrate_backfill/scripts/discover_rank_select.py
+  - indestructibleautoops/reintegrate_backfill/scripts/preflight_main_latest.sh
+  - indestructibleautoops/reintegrate_backfill/scripts/try_rebase_and_test.sh
+  - indestructibleautoops/reintegrate_backfill/scripts/backfill_execute.sh
+  - indestructibleautoops/reintegrate_backfill/scripts/verify_post_merge.sh
+  - indestructibleautoops/reintegrate_backfill/agent_prompt/IndestructibleAutoOps_Agents_Preflight_Backfill.prompt.txt
+EXECUTION:
+- 依 repo 分支命名調整 config.yaml 的 include_patterns/exclude_patterns 與 family_prefix_rules
+- 若要加入測試 Gate：設定 execution.test_command（例如 "make test" 或 "go test ./..."）
+- 執行：
+  - bash indestructibleautoops/reintegrate_backfill/scripts/backfill_execute.sh
+  - bash indestructibleautoops/reintegrate_backfill/scripts/verify_post_merge.sh
+EXPECTED OUTPUTS:
+- .evidence/reintegrate_backfill/reports/discovery.json
+- .evidence/reintegrate_backfill/reports/ranking.json
+- .evidence/reintegrate_backfill/reports/selection.json
+- .evidence/reintegrate_backfill/reports/result.json
+- .evidence/reintegrate_backfill/reports/verify.json
+- .evidence/reintegrate_backfill/logs/commands.log
+[DONE]

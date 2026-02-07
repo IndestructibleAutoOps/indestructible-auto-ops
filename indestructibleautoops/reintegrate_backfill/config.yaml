@@ -1,0 +1,51 @@
+version: 1
+repo:
+  remote: origin
+  main_branch: main
+discovery:
+  include_patterns:
+    - "^cursor/.*"
+    - "^副駕駛/.*"
+    - "^功能/.*"
+    - "^bugfix/.*"
+    - "^hotfix/.*"
+    - "^feature/.*"
+  exclude_patterns:
+    - "^main$"
+    - "^master$"
+    - "^reintegrate/.*"
+    - "^reintegrate-backfill/.*"
+    - "^dependabot/.*"
+    - "^release/.*"
+grouping:
+  mode: family_prefix
+  family_prefix_rules:
+    - name: cursor
+      regex: "^(cursor/[^/]+)"
+    - name: copilots
+      regex: "^(副駕駛/[^/]+)"
+    - name: feature
+      regex: "^(功能/[^/]+)"
+    - name: generic_two_level
+      regex: "^([^/]+/[^/]+)"
+    - name: fallback_one_level
+      regex: "^([^/]+)"
+selection:
+  per_family_take: 1
+  score_weights:
+    ci_green: 60
+    rebase_clean: 30
+    test_pass: 30
+    conflicts: -120
+    ahead_commits: 0.02
+    changed_files: -0.05
+    diffstat_lines: -0.001
+    staleness_days: -0.2
+  thresholds:
+    min_score: 25
+execution:
+  mode: rebase_then_merge_pr
+  auto_merge: true
+  required_status_checks: true
+  test_command: ""
+  commit_message_prefix: "reintegrate-backfill"
