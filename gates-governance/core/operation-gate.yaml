@@ -37,7 +37,7 @@ spec:
             - "contract_references"
             - "validation_results"
             - "evidence_links"
-            - "sha256_hashes"
+            - "sha3_512_hashes"
           action: "BLOCK_IF_MISSING"
           severity: "CRITICAL"
           rule: "GA-003"
