@@ -1,0 +1,20 @@
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: policy
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+# Root Policy
+# GL-Layer: GL06 (Root Policy)
+# Closure-Signal: policy
+
+metadata:
+  name: root-policy
+  version: "1.0.0"
+  layer: "GL06"
+
+policy-rules:
+  - rule: "naming-convention-enforcement"
+    description: "All names must follow kebab-case or snake_case"
+    enforcement: "strict"

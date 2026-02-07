@@ -1,0 +1,15 @@
+# @GL-governed
+# @GL-layer: infrastructure
+# @GL-semantic: namespace
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: machine-native-ops
+  labels:
+    name: machine-native-ops
+    environment: production
+    tier: infrastructure

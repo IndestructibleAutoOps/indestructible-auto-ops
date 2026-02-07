@@ -1,0 +1,24 @@
+# @GL-governed
+# @GL-layer: infrastructure
+# @GL-semantic: kubernetes-configmap
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Architecture Governance Framework Activated
+# Kubernetes Base ConfigMap Manifest
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: machine-native-ops-config
+  namespace: machine-native-ops
+  labels:
+    app.kubernetes.io/name: machine-native-ops
+    app.kubernetes.io/component: config
+    governance.machinenativeops.io/charter-version: "2.0.0"
+data:
+  LOG_LEVEL: "info"
+  ENVIRONMENT: "production"
+  GOVERNANCE_MODE: "strict"
+  CONTINUE_ON_ERROR: "false"
+  VALIDATION_REQUIRED: "true"
+  AUDIT_TRAIL_REQUIRED: "true"

@@ -1,0 +1,12 @@
+# 
+#  @GL-governed
+#  @GL-layer: search
+#  @GL-semantic: __init__
+#  @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
+# 
+#  GL Unified Architecture Governance Framework Activated
+# /
+"""Analytics Services Package"""
+from .search_analytics import SearchAnalytics
+from .relevance_tuning import RelevanceTuner
+__all__ = ['SearchAnalytics', 'RelevanceTuner']
