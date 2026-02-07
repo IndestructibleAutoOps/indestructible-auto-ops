@@ -98,8 +98,10 @@ def add_gl_markers(file_path):
         semantic = get_semantic_type(file_path)
         # Compute a relative audit-trail path if anchor exists; fail fast if not.
         if GL_ROOT_SEMANTIC_ANCHOR_PATH:
-            # Use pathlib to compute relative path, then convert to POSIX for cross-platform stability
-            audit_trail = Path(GL_ROOT_SEMANTIC_ANCHOR_PATH).relative_to(file_path.parent.resolve()).as_posix()
+            # Compute relative path using os.path.relpath, then normalize to POSIX for cross-platform stability
+            rel_path = os.path.relpath(GL_ROOT_SEMANTIC_ANCHOR_PATH, file_path.parent)
+            # Convert platform-specific separators to POSIX style (forward slashes)
+            audit_trail = rel_path.replace(os.sep, '/')
         else:
             raise RuntimeError(
                 "GL root semantic anchor not found. "
