@@ -21,7 +21,7 @@ import hashlib
 import unicodedata
 from dataclasses import dataclass, field, asdict
 from typing import Dict, List, Optional, Tuple
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 # ==============================================================================
@@ -114,7 +114,7 @@ class ValidationResult:
     passed: bool
     errors: List[str]
     audit_trail: List[NormalizationStep] = field(default_factory=list)
-    timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'))
 
     def to_dict(self) -> Dict:
         """Convert to dictionary for JSON serialization."""

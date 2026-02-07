@@ -17,7 +17,7 @@ import json
 import logging
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, asdict
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 # Import core validation logic
@@ -175,7 +175,7 @@ class AuditLogger:
             return
 
         audit_entry = {
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
             "request_uid": request_uid,
             "operation": operation,
             "kind": kind,
