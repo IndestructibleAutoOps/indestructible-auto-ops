@@ -278,14 +278,13 @@ build_rules:
   
   Go:
     version: ">=1.21"
+    build: "go build"
+    output: "bin/"
+
 metadata:
   name: ""
   description: ""
   labels: {}
-
-    build: "go build"
-    output: "bin/"
-
 # CI/CD 檢查規則
 ci_checks:
   language_scanner:
