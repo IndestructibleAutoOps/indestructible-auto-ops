@@ -29,7 +29,7 @@ def test_normalizer():
     failed = 0
 
     for input_val, expected in test_cases:
-        result, _ = normalizer.normalize(input_val)
+        result = normalizer.normalize(input_val)
         if result == expected:
             print(f"  ✓ {input_val} -> {result}")
             passed += 1
@@ -133,7 +133,7 @@ def test_rules():
     failed = 0
 
     for case in valid_cases:
-        is_valid, _ = rule.validate(case)
+        is_valid = rule.matches(case)
         if is_valid:
             print(f"  ✓ {case} is valid")
             passed += 1
@@ -142,7 +142,7 @@ def test_rules():
             failed += 1
 
     for case in invalid_cases:
-        is_valid, _ = rule.validate(case)
+        is_valid = rule.matches(case)
         if not is_valid:
             print(f"  ✓ {case} is invalid (as expected)")
             passed += 1
