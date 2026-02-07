@@ -1,0 +1,119 @@
+---
+# Kubernetes Deployment for Naming Policy Webhook
+# GL Layer: GL60-80 Governance Compliance
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: naming-policy-webhook
+  namespace: platform
+  labels:
+    app: naming-policy-webhook
+    component: governance
+    gl-layer: gl60-80
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: naming-policy-webhook
+  template:
+    metadata:
+      labels:
+        app: naming-policy-webhook
+        component: governance
+        gl-layer: gl60-80
+    spec:
+      serviceAccountName: naming-policy-webhook
+      containers:
+      - name: webhook
+        image: naming-policy-webhook:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8443
+          name: webhook
+          protocol: TCP
+        env:
+        - name: TLS_CERT_FILE
+          value: /etc/webhook/certs/tls.crt
+        - name: TLS_KEY_FILE
+          value: /etc/webhook/certs/tls.key
+        - name: WEBHOOK_PORT
+          value: "8443"
+        - name: LOG_LEVEL
+          value: INFO
+        - name: FAIL_MODE
+          value: closed
+        - name: AUDIT_ENABLED
+          value: "true"
+        - name: METRICS_ENABLED
+          value: "true"
+        volumeMounts:
+        - name: webhook-certs
+          mountPath: /etc/webhook/certs
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: webhook
+            scheme: HTTPS
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: webhook
+            scheme: HTTPS
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+      volumes:
+      - name: webhook-certs
+        secret:
+          secretName: naming-policy-webhook-certs
+
+---
+# Service for Naming Policy Webhook
+apiVersion: v1
+kind: Service
+metadata:
+  name: naming-policy-webhook
+  namespace: platform
+  labels:
+    app: naming-policy-webhook
+    component: governance
+    gl-layer: gl60-80
+spec:
+  type: ClusterIP
+  selector:
+    app: naming-policy-webhook
+  ports:
+  - name: webhook
+    port: 443
+    targetPort: webhook
+    protocol: TCP
+
+---
+# PodDisruptionBudget for HA
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: naming-policy-webhook
+  namespace: platform
+  labels:
+    app: naming-policy-webhook
+    component: governance
+    gl-layer: gl60-80
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: naming-policy-webhook
