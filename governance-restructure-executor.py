@@ -16,7 +16,6 @@ Author: IndestructibleAutoOps
 Compliance: GL00-99, MNGA v1.0
 """
 
-import os
 import sys
 import yaml
 import json
