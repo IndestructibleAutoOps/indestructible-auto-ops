@@ -1,8 +1,10 @@
 # Ecosystem Core
 
-The Ecosystem Core is the centralized directory containing all platform implementations, governance frameworks, tooling, documentation, and infrastructure for the MachineNativeOps GL Architecture.
+The Ecosystem Core describes the governance-aligned layout for platform implementations, governance frameworks, tooling, documentation, and infrastructure for the MachineNativeOps GL Architecture.
 
-## Structure
+## Structure (Planned / Proposed Consolidation)
+
+> Note: The tree below describes the **planned consolidated `ecosystem/` layout**. The current `main` branch may still reflect the pre-consolidation directory structure until the migration is complete.
 
 ```
 ecosystem/
@@ -89,6 +91,8 @@ ecosystem/
 └── README.md                    # This file
 ```
 
+> NOTE: The following `ecosystem/` directory tree describes a **planned / proposed consolidated layout** for the MachineNativeOps GL Architecture. It may not exactly match the current `main` branch filesystem. Use the root-level README (and the live repository tree) as the source of truth for the current on-main layout; treat this section as a migration / design reference until the consolidation lands.
+
 ## Purpose
 
 The ecosystem provides:
@@ -112,7 +116,7 @@ python3 -m pytest ecosystem/tests/
 
 ### Run Governance Checks
 ```bash
-python3 ecosystem/platforms/governance-compliance/scripts/boundary_checker.py --check
+python3 ecosystem/enforce.py
 ```
 
 ### Deploy Platform
@@ -139,7 +143,7 @@ All platforms must comply with:
 ## Key Modules
 
 | Module | Description |
-|--------|------------|
+|--------|-------------|
 | `platforms/runtime-engine/` | Core execution runtime with AEP engine app/web |
 | `platforms/governance-architecture/` | GL layer governance specifications |
 | `platforms/governance-compliance/` | Compliance checking & enforcement |
