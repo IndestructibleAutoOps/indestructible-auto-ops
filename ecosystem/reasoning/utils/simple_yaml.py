@@ -18,12 +18,15 @@ def parse_yaml(content: str) -> Dict[str, Any]:
 
     Returns:
         Parsed dictionary
+    
+    Note: This is a minimal YAML parser that handles simple structures.
+    For complex YAML with lists of dictionaries, consider using PyYAML.
     """
     result = {}
     current_section = result
     stack = []
     current_list = None
-    current_dict = None
+    current_dict = result  # Initialize to result to handle root-level key:value pairs
 
     for line in content.split("\n"):
         # Skip empty lines and comments

@@ -268,8 +268,15 @@ class GovernanceEnforcer:
         gate_file = gates_path / "operation-gate.yaml"
         if gate_file.exists():
             try:
-                with open(gate_file, "r", encoding="utf-8") as f:
-                    config = yaml.parse_yaml(f.read())
+                # Try to use PyYAML for complex YAML structures (lists of dicts)
+                try:
+                    import yaml as pyyaml
+                    with open(gate_file, "r", encoding="utf-8") as f:
+                        config = pyyaml.safe_load(f)
+                except ImportError:
+                    # Fallback to simple_yaml for simple structures
+                    with open(gate_file, "r", encoding="utf-8") as f:
+                        config = yaml.parse_yaml(f.read())
 
                 for gate_spec in config.get("spec", {}).get("gates", []):
                     gate = Gate(
