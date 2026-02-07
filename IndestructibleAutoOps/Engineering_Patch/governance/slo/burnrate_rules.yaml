@@ -1,0 +1,11 @@
+burnrate_rules:
+  version: v1
+  rules:
+    - name: "error_budget_burn_fast"
+      window: "5m"
+      burn_rate_threshold: 14
+      action: "rollback"
+    - name: "error_budget_burn_slow"
+      window: "1h"
+      burn_rate_threshold: 6
+      action: "pause_rollout"
