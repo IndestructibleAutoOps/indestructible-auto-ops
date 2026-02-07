@@ -28,13 +28,19 @@ System-wide policies
 - `global-policies.yaml`
 - `best-practices.yaml`
 
-### `aliases/`
+### `config/`
 
-Global naming aliases
+Global configuration specifications
 
 **Key Files:**
-- `aliases.yaml`
-- `mappings.yaml`
+- `global-aliases.yaml`
+
+### `policies/`
+
+System-wide policies
+
+**Key Files:**
+- `language-policy.yaml`
 
 ## Governance Attributes
 

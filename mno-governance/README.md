@@ -20,29 +20,19 @@ Operational policies and procedures
 - `ops-policies.yaml`
 - `procedures/`
 
-### `lifecycle/`
+### `operations/`
 
-Lifecycle management specifications
-
-**Key Files:**
-- `lifecycle-spec.yaml`
-- `stages/`
-
-### `automation/`
-
-Automation policies and guardrails
+Operational policies and procedures
 
 **Key Files:**
-- `automation-policy.yaml`
-- `automation-rules.yaml`
+- `NG00201-lifecycle-standard.yaml`
 
-### `monitoring/`
+### `core/`
 
-Operational monitoring specifications
+Core operational governance
 
 **Key Files:**
-- `monitoring-spec.yaml`
-- `alert-rules.yaml`
+- `enforcement-rules.yaml`
 
 ## Migration Sources
 

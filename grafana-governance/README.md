@@ -12,29 +12,30 @@ This directory contains governance specifications for Monitoring Dashboards.
 
 ## Directory Structure
 
-### `dashboards/`
+### `core/grafana/dashboards/`
 
 Dashboard specifications
 
 **Key Files:**
-- `dashboard-specs.yaml`
-- `dashboards/`
+- `core/grafana/dashboards/fallback-validation-dashboard.json`
+- `core/grafana/dashboards/ng-governance-dashboard.json`
+- `core/grafana/dashboards/parametric-convergence-dashboard.json`
 
-### `datasources/`
+### `core/grafana/provisioning/`
 
-Datasource configurations
-
-**Key Files:**
-- `datasources.yaml`
-- `connections.yaml`
-
-### `alerts/`
-
-Alert configurations
+Provisioning configurations
 
 **Key Files:**
-- `alert-rules.yaml`
-- `notification-channels.yaml`
+- `core/grafana/provisioning/datasources.yaml`
+- `core/grafana/provisioning/dashboards.yaml`
+
+### `core/`
+
+Monitoring stack configurations
+
+**Key Files:**
+- `core/monitoring-stack.yaml`
+- `core/grafana/README.md`
 
 ## Governance Attributes
 
