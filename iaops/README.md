@@ -43,7 +43,7 @@ python3 -m pytest tests/ -v
 
 ## CI/CD
 
-The IAOPS CI workflow is located at the repository root: `../.github/workflows/iaops-ci.yml`
+The IAOPS CI workflow is located at the repository root in `.github/workflows/iaops-ci.yml`
 
 This workflow runs automatically on:
 - Pushes affecting `iaops/**` paths

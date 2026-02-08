@@ -6,6 +6,30 @@ from typing import Any
 from .io import ensure_dir, write_text
 
 
+# Internal templates for common files
+INTERNAL_TEMPLATES = {
+    "ci.yml": """\
+# Auto-generated CI workflow
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Add your build and test steps here"
+""",
+    "pyproject.toml": """\
+# Auto-generated pyproject.toml
+[project]
+name = "project"
+version = "0.1.0"
+description = "A Python project"
+requires-python = ">=3.11"
+""",
+}
+
+
 class Patcher:
     def __init__(self, project_root: Path, allow_writes: bool):
         self.root = project_root
