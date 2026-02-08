@@ -1,3 +1,5 @@
+import pytest
+
 from indestructibleautoops.graph import DAG, dag_is_acyclic, topological_sort
 
 
@@ -59,8 +61,5 @@ def test_topological_sort_raises_on_cycle():
             {"id": "b", "kind": "step", "run": "x", "deps": ["a"]},
         ]
     )
-    try:
+    with pytest.raises(ValueError, match=r"cyclic"):
         topological_sort(dag)
-        raise AssertionError("Expected ValueError for cyclic graph")
-    except ValueError as e:
-        assert "cyclic" in str(e).lower()

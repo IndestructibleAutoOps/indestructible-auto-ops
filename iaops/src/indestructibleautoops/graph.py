@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import deque
 from dataclasses import dataclass
 from typing import Any
 
@@ -67,12 +68,12 @@ def topological_sort(dag: DAG) -> list[str]:
             graph[d].append(i)
             indeg[i] += 1
     
-    # Kahn's algorithm for topological sort
-    q = [i for i in ids if indeg[i] == 0]
+    # Kahn's algorithm for topological sort using deque for O(1) popleft
+    q = deque([i for i in ids if indeg[i] == 0])
     result: list[str] = []
     
     while q:
-        cur = q.pop(0)  # Use pop(0) for stable ordering
+        cur = q.popleft()
         result.append(cur)
         for nxt in graph[cur]:
             indeg[nxt] -= 1
