@@ -147,47 +147,12 @@ class Engine:
         trace_id = self.events.new_trace_id()
         dag = DAG.from_nodes(self.cfg.dag_nodes)
 
-        # Validate that the DAG is acyclic
-        topo_order = topological_sort(dag)
-        if topo_order is None:
-            self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})
-            return {"ok": False, "error": "dag_cycle", "traceId": trace_id}
-
-        # Derive execution order from DAG topology
-        step_order = topological_sort(dag)
-
-        # Map step IDs to their corresponding methods
-        step_methods = {
-            "interface_metadata_parse": self.step_interface_metadata_parse,
-            "parameter_validation": self.step_parameter_validation,
-            "permission_resolution": self.step_permission_resolution,
-            "security_assessment": self.step_security_assessment,
-            "approval_chain_validation": self.step_approval_chain_validation,
-            "tool_execution": self.step_tool_execution,
-            "history_immutable": self.step_history_immutable,
-            "continuous_monitoring": self.step_continuous_monitoring,
-        }
-
-        # Build execution list from DAG order
-        steps = []
-        for step_id in step_order:
-            if step_id not in step_methods:
-                self.events.emit(
-                    trace_id, "governance", "unknown_step", {"step_id": step_id, "ok": False}
-                )
-                return {
-                    "ok": False,
-                    "error": "unknown_step",
-                    "stepId": step_id,
-                    "traceId": trace_id,
-                }
-            steps.append((step_id, step_methods[step_id]))
-        # Validate that DAG node IDs match supported steps
+        # Get step method mappings
         step_methods = self._get_step_methods()
         supported_step_ids = set(step_methods.keys())
         dag_step_ids = set(dag.ids())
 
-        # Check for unsupported steps in DAG
+        # Validate that DAG node IDs match supported steps
         unsupported = dag_step_ids - supported_step_ids
         if unsupported:
             self.events.emit(
@@ -218,6 +183,12 @@ class Engine:
                 "missing": sorted(missing),
                 "traceId": trace_id,
             }
+
+        # Derive execution order from DAG topology using topological sort
+        topo_order = topological_sort(dag)
+        if topo_order is None:
+            self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})
+            return {"ok": False, "error": "dag_cycle", "traceId": trace_id}
 
         # Execute steps in topological order derived from the DAG
         outputs: dict[str, Any] = {"ok": True, "traceId": trace_id, "mode": self.cfg.mode}

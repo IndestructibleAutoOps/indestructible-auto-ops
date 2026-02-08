@@ -44,18 +44,6 @@ def dag_is_acyclic(dag: DAG) -> bool:
     return seen == len(ids)
 
 
-def topological_sort(dag: DAG) -> list[str]:
-    """
-    Return the node IDs in topological order (dependencies before dependents).
-
-    Returns:
-        A list of node IDs in topological order.
-
-    Raises:
-        ValueError: If the DAG contains a cycle.
-    """
-    if not dag_is_acyclic(dag):
-        raise ValueError("Cannot perform topological sort on a cyclic graph")
 def topological_sort(dag: DAG) -> list[str] | None:
     """Return a topological ordering of DAG node IDs, or None if the DAG has a cycle.
 
@@ -65,13 +53,10 @@ def topological_sort(dag: DAG) -> list[str] | None:
     Returns:
         List of node IDs in topological order, or None if cyclic.
     """
-    from collections import deque
-
     ids = set(dag.ids())
     graph: dict[str, list[str]] = {i: [] for i in ids}
     indeg: dict[str, int] = {i: 0 for i in ids}
 
-    # Build adjacency list and calculate in-degrees
     # Build adjacency list and compute in-degrees
     for i in ids:
         deps = [d for d in dag.deps(i) if d in ids]
@@ -80,21 +65,13 @@ def topological_sort(dag: DAG) -> list[str] | None:
             indeg[i] += 1
 
     # Kahn's algorithm for topological sort using deque for O(1) popleft
-    q = deque([i for i in ids if indeg[i] == 0])
-    result: list[str] = []
-    # Start with nodes that have no dependencies
+    # Start with nodes that have no dependencies, sorted for deterministic results
     q = deque(sorted(i for i in ids if indeg[i] == 0))
     result = []
 
     while q:
         cur = q.popleft()
         result.append(cur)
-        for nxt in graph[cur]:
-            indeg[nxt] -= 1
-            if indeg[nxt] == 0:
-                q.append(nxt)
-
-    return result
 
         # Collect next nodes and add them in sorted order for deterministic results
         next_nodes = []
