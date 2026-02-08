@@ -41,3 +41,42 @@ def dag_is_acyclic(dag: DAG) -> bool:
             if indeg[nxt] == 0:
                 q.append(nxt)
     return seen == len(ids)
+
+
+def topological_sort(dag: DAG) -> list[str]:
+    """
+    Return the node IDs in topological order (dependencies before dependents).
+    
+    Returns:
+        A list of node IDs in topological order.
+        
+    Raises:
+        ValueError: If the DAG contains a cycle.
+    """
+    if not dag_is_acyclic(dag):
+        raise ValueError("Cannot perform topological sort on a cyclic graph")
+    
+    ids = set(dag.ids())
+    graph: dict[str, list[str]] = {i: [] for i in ids}
+    indeg: dict[str, int] = {i: 0 for i in ids}
+    
+    # Build adjacency list and calculate in-degrees
+    for i in ids:
+        deps = [d for d in dag.deps(i) if d in ids]
+        for d in deps:
+            graph[d].append(i)
+            indeg[i] += 1
+    
+    # Kahn's algorithm for topological sort
+    q = [i for i in ids if indeg[i] == 0]
+    result: list[str] = []
+    
+    while q:
+        cur = q.pop(0)  # Use pop(0) for stable ordering
+        result.append(cur)
+        for nxt in graph[cur]:
+            indeg[nxt] -= 1
+            if indeg[nxt] == 0:
+                q.append(nxt)
+    
+    return result
