@@ -544,6 +544,10 @@ class GLSemanticViolationClassifier:
         }
 
 
+class SemanticViolationClassifier(GLSemanticViolationClassifier):
+    """Compatibility alias required by enforcement checks."""
+
+
 # ============================================================================
 # 測試和使用示例
 # ============================================================================

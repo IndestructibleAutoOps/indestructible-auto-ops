@@ -7,6 +7,9 @@ Pipeline Integration - GL治理執行層與事實驗證管道的集成
 3. 證據收集和驗證的自動化
 4. 報告生成和驗證
 """
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: pipeline-integration
 
 import sys
 import os
