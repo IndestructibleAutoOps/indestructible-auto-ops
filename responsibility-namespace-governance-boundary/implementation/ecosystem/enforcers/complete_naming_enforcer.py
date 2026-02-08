@@ -127,7 +127,11 @@ class CompleteNamingReport:
 
 
 class NamingPatterns:
-    """命名規範模式定義"""
+    """命名規範模式定義。
+
+    NG 前綴代表 Naming Governance 命名空間，只用於命名規範檢查，並不要求整個儲存庫都改名；
+    同時保留 legacy GL 前綴兼容。
+    """
 
     def __init__(self, primary_prefix: str = "ng", legacy_prefix: Optional[str] = "gl"):
         prefixes = [primary_prefix.lower()]
