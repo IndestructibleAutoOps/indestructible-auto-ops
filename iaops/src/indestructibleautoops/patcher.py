@@ -11,6 +11,26 @@ class Patcher:
         self.root = project_root
         self.allow_writes = allow_writes
 
+    def _get_template_content(self, action: dict[str, Any]) -> str:
+        """Get content for an action, using templateRef if available.
+        
+        Args:
+            action: Action dictionary that may contain a templateRef.
+            
+        Returns:
+            Template content if templateRef is "internal:<name>", 
+            otherwise a placeholder comment.
+        """
+        template_ref = action.get("templateRef", "")
+        if template_ref.startswith("internal:"):
+            template_name = template_ref.split(":", 1)[1]
+            if template_name in INTERNAL_TEMPLATES:
+                return INTERNAL_TEMPLATES[template_name]
+        
+        # Fallback to placeholder
+        rel = action.get("path", "unknown")
+        return f"# generated placeholder: {rel}\n"
+
     def apply(self, plan: dict[str, Any]) -> dict[str, Any]:
         actions = plan.get("actions", [])
         applied: list[dict[str, Any]] = []
@@ -26,8 +46,11 @@ class Patcher:
                 if not self.allow_writes:
                     skipped.append({"action": a, "reason": "writes_disabled"})
                     continue
+                
+                # Get content from templateRef if available
+                content = self._get_template_content(a)
                 ensure_dir(p.parent)
-                write_text(p, f"# generated placeholder: {rel}\n")
+                write_text(p, content)
                 applied.append({"action": a})
                 continue
             if kind == "mkdir":
