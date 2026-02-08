@@ -13,7 +13,16 @@
     },
     "spec": {
       "type": "object",
-      "required": ["projectRoot", "stateDir", "dag", "inputs", "outputs", "governance"],
+      "required": [
+        "projectRoot",
+        "stateDir",
+        "evidenceDir",
+        "eventStream",
+        "dag",
+        "inputs",
+        "outputs",
+        "governance"
+      ],
       "properties": {
         "projectRoot": { "type": "string" },
         "stateDir": { "type": "string" },

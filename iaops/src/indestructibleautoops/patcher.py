@@ -30,6 +30,18 @@ class Patcher:
                 write_text(p, f"# generated placeholder: {rel}\n")
                 applied.append({"action": a})
                 continue
+            if kind == "mkdir":
+                rel = a["path"]
+                p = self.root / rel
+                if p.exists():
+                    skipped.append({"action": a, "reason": "exists"})
+                    continue
+                if not self.allow_writes:
+                    skipped.append({"action": a, "reason": "writes_disabled"})
+                    continue
+                ensure_dir(p)
+                applied.append({"action": a})
+                continue
             skipped.append({"action": a, "reason": "unsupported"})
         return {
             "ok": True,
