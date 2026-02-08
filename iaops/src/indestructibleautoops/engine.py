@@ -95,10 +95,22 @@ class Engine:
             schema_path=self.cfg.resolve_input(self.cfg.inputs["schemas"]["event"]),
         )
         self.hasher = Hasher(self.cfg.governance["hash"]["algorithms"])
+        
+        # Honor enabled flags for narrative and question checking
+        narrative_patterns = (
+            self.cfg.governance["banNarrative"]["patterns"]
+            if self.cfg.governance["banNarrative"].get("enabled", True)
+            else []
+        )
+        forbid_question_patterns = (
+            self.cfg.governance["forbidQuestions"]["patterns"]
+            if self.cfg.governance["forbidQuestions"].get("enabled", True)
+            else []
+        )
+        
         self.scanner = NarrativeSecretScanner(
-            narrative_patterns=self.cfg.governance["banNarrative"]["patterns"],
-            forbid_question_patterns=self.cfg.governance["forbidQuestions"]["patterns"],
-            secret_patterns=None,
+            narrative_patterns=narrative_patterns,
+            forbid_question_patterns=forbid_question_patterns,
         )
         adapters_cfg = load_adapters_config(
             self.cfg.resolve_input(self.cfg.inputs["adaptersConfig"])
@@ -115,6 +127,18 @@ class Engine:
         if not schema_path.exists():
             schema_path = project_root / schema_rel
         load_jsonschema(schema_path).validate(raw)
+        
+        # Validate spec.projectRoot if it's an absolute path
+        spec_project_root_str = raw["spec"]["projectRoot"]
+        spec_project_root = Path(spec_project_root_str)
+        if spec_project_root.is_absolute():
+            actual_project_root = project_root.resolve()
+            if spec_project_root.resolve() != actual_project_root:
+                raise ValueError(
+                    f"Config spec.projectRoot ({spec_project_root.resolve()}) "
+                    f"does not match provided project_root ({actual_project_root})"
+                )
+        
         m = mode or raw["spec"]["modes"]["default"]
         cfg = EngineConfig(raw=raw, config_path=config_path, project_root=project_root, mode=m)
         return Engine(cfg)

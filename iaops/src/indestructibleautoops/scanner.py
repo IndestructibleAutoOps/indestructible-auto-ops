@@ -9,7 +9,6 @@ from typing import Any
 class NarrativeSecretScanner:
     narrative_patterns: list[str]
     forbid_question_patterns: list[str]
-    secret_patterns: list[str] | None
 
     def scan_index(self, index: dict[str, Any]) -> dict[str, Any]:
         files = index.get("files", [])
