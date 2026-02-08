@@ -137,10 +137,21 @@ class NamingPatterns:
         prefixes = [primary_prefix.lower()]
         if legacy_prefix:
             prefixes.append(legacy_prefix.lower())
-        self.prefixes: Tuple[str, ...] = tuple(dict.fromkeys(prefixes))
+
+        allowed_prefix = re.compile(r"^[a-z0-9-]+$")
+        validated = []
+        for p in prefixes:
+            if not allowed_prefix.fullmatch(p):
+                raise ValueError(f"Invalid naming prefix: {p}")
+            validated.append(p)
+
+        self.prefixes: Tuple[str, ...] = tuple(dict.fromkeys(validated))
+        escaped_prefixes = [re.escape(p) for p in self.prefixes]
+        escaped_upper_prefixes = [re.escape(p.upper()) for p in self.prefixes]
+
         self.primary_prefix = self.prefixes[0]
-        self.prefix_group = "|".join(self.prefixes)
-        self.upper_prefix_group = "|".join(p.upper() for p in self.prefixes)
+        self.prefix_group = "|".join(escaped_prefixes)
+        self.upper_prefix_group = "|".join(escaped_upper_prefixes)
 
         prefix = rf"(?:{self.prefix_group})"
         upper_prefix = rf"(?:{self.upper_prefix_group})"
@@ -206,7 +217,7 @@ class NamingPatterns:
 
         # K8s Labels
         self.K8S_LABEL_KEY = re.compile(
-            r"^(app\.kubernetes\.io|gl\.machinenativeops\.io)/[a-z-]+$"
+            r"^(app\.kubernetes\.io|(gl|ng)\.machinenativeops\.io)/[a-z-]+$"
         )
 
         # Governance Annotations (allowing NG/GL prefixes)
@@ -353,8 +364,20 @@ class CompleteNamingEnforcer:
                                         line_number=i + 1,
                                     )
                                 )
-            except Exception:
-                pass
+            except Exception as e:
+                violations.append(
+                    NamingViolation(
+                        rule_id="GL20-COMMENT-999",
+                        category=NamingCategory.COMMENT,
+                        path=str(py_file.relative_to(self.workspace)),
+                        name=str(py_file.name),
+                        expected_pattern="可讀取並掃描檔案",
+                        actual_value="scan_failed",
+                        severity=Severity.LOW,
+                        message=f"掃描檔案失敗: {e}",
+                        suggestion="檢查檔案內容或權限後重新掃描",
+                    )
+                )
 
         elapsed = (datetime.now() - start_time).total_seconds() * 1000
 
@@ -465,8 +488,20 @@ class CompleteNamingEnforcer:
                                 suggestion=f"重命名為 /{self.patterns.primary_prefix}{path} 或 /api/v1{path}",
                             )
                         )
-            except Exception:
-                pass
+            except Exception as e:
+                violations.append(
+                    NamingViolation(
+                        rule_id="GL20-PATH-999",
+                        category=NamingCategory.PATH,
+                        path=str(yaml_file.relative_to(self.workspace)),
+                        name=str(yaml_file.name),
+                        expected_pattern="可讀取並掃描 API 路徑",
+                        actual_value="scan_failed",
+                        severity=Severity.LOW,
+                        message=f"解析 API 路徑失敗: {e}",
+                        suggestion="確認 YAML 格式與編碼後重新掃描",
+                    )
+                )
 
         # 檢查治理契約中的路徑定義
         for yaml_file in self.workspace.rglob("*governance*.yaml"):
@@ -499,8 +534,20 @@ class CompleteNamingEnforcer:
                                     suggestion=f"使用 /{self.patterns.primary_prefix}/<domain>/<capability>/<resource> 格式",
                                 )
                             )
-            except Exception:
-                pass
+            except Exception as e:
+                violations.append(
+                    NamingViolation(
+                        rule_id="GL20-PATH-998",
+                        category=NamingCategory.PATH,
+                        path=str(yaml_file.relative_to(self.workspace)),
+                        name=str(yaml_file.name),
+                        expected_pattern="可讀取並掃描治理路徑",
+                        actual_value="scan_failed",
+                        severity=Severity.LOW,
+                        message=f"解析治理路徑失敗: {e}",
+                        suggestion="確認檔案可讀並符合 YAML 格式",
+                    )
+                )
 
         elapsed = (datetime.now() - start_time).total_seconds() * 1000
 
@@ -583,8 +630,20 @@ class CompleteNamingEnforcer:
                                     suggestion=f"重命名為 {service_name}-svc",
                                 )
                             )
-            except Exception:
-                pass
+            except Exception as e:
+                violations.append(
+                    NamingViolation(
+                        rule_id="GL20-SVC-999",
+                        category=NamingCategory.SERVICE,
+                        path=str(yaml_file.relative_to(self.workspace)),
+                        name=str(yaml_file.name),
+                        expected_pattern="可讀取並掃描 Service",
+                        actual_value="scan_failed",
+                        severity=Severity.LOW,
+                        message=f"解析 Service 檔案失敗: {e}",
+                        suggestion="確認 YAML 格式與編碼後重新掃描",
+                    )
+                )
 
         elapsed = (datetime.now() - start_time).total_seconds() * 1000
 
@@ -831,8 +890,44 @@ class CompleteNamingEnforcer:
                                         suggestion=f"添加 {label} 標籤",
                                     )
                                 )
+                        label_keys = re.findall(
+                            r"labels:\s*(?:\n\s+([A-Za-z0-9\.\-\/]+):)", content
+                        )
+                        for key in label_keys:
+                            if (
+                                "machinenativeops.io" in key
+                                or key.startswith("app.kubernetes.io")
+                            ):
+                                if not self.patterns.K8S_LABEL_KEY.match(key):
+                                    violations.append(
+                                        NamingViolation(
+                                            rule_id="GL20-LABEL-002",
+                                            category=NamingCategory.LABEL,
+                                            path=str(
+                                                yaml_file.relative_to(self.workspace)
+                                            ),
+                                            name=key,
+                                            expected_pattern=self.patterns.K8S_LABEL_KEY.pattern,
+                                            actual_value=key,
+                                            severity=Severity.MEDIUM,
+                                            message="K8s 標籤鍵不符合命名空間規範",
+                                            suggestion="使用 app.kubernetes.io/* 或 ng/gl.machinenativeops.io/* 格式",
+                                        )
+                                    )
             except Exception:
-                pass
+                violations.append(
+                    NamingViolation(
+                        rule_id="GL20-LABEL-999",
+                        category=NamingCategory.LABEL,
+                        path=str(yaml_file.relative_to(self.workspace)),
+                        name=str(yaml_file.name),
+                        expected_pattern="可讀取並掃描標籤",
+                        actual_value="scan_failed",
+                        severity=Severity.LOW,
+                        message="解析標籤檔案失敗",
+                        suggestion="確認檔案可讀並符合 YAML 格式",
+                    )
+                )
 
         elapsed = (datetime.now() - start_time).total_seconds() * 1000
 
@@ -897,8 +992,20 @@ class CompleteNamingEnforcer:
                                         line_number=i + 1,
                                     )
                                 )
-            except Exception:
-                pass
+            except Exception as e:
+                violations.append(
+                    NamingViolation(
+                        rule_id="GL20-ENV-999",
+                        category=NamingCategory.ENV_VAR,
+                        path=str(env_file.relative_to(self.workspace)),
+                        name=str(env_file.name),
+                        expected_pattern="可讀取並掃描環境變數檔案",
+                        actual_value="scan_failed",
+                        severity=Severity.LOW,
+                        message=f"解析環境變數檔案失敗: {e}",
+                        suggestion="確認檔案存在且編碼正確",
+                    )
+                )
 
         elapsed = (datetime.now() - start_time).total_seconds() * 1000
 
@@ -954,14 +1061,19 @@ class CompleteNamingEnforcer:
             except Exception as e:
                 print(f"檢查失敗: {check.__name__}: {e}")
 
+        # 排除僅為佔位的檢查（尚未實作且無檢查項目）
+        effective_results = [
+            r for r in results if r.items_checked > 0 or len(r.violations) > 0
+        ]
+
         # 統計
-        total_violations = sum(len(r.violations) for r in results)
-        passed_checks = len([r for r in results if r.passed])
+        total_violations = sum(len(r.violations) for r in effective_results)
+        passed_checks = len([r for r in effective_results if r.passed])
 
         by_category = {}
         by_severity = {}
 
-        for result in results:
+        for result in effective_results:
             by_category[result.category.value] = len(result.violations)
             for v in result.violations:
                 by_severity[v.severity.value] = by_severity.get(v.severity.value, 0) + 1
@@ -969,14 +1081,16 @@ class CompleteNamingEnforcer:
         report = CompleteNamingReport(
             timestamp=datetime.now().isoformat(),
             workspace=str(self.workspace),
-            total_checks=len(results),
+            total_checks=len(effective_results),
             passed_checks=passed_checks,
             total_violations=total_violations,
             by_category=by_category,
             by_severity=by_severity,
             results=results,
             compliance_rate=(
-                round(passed_checks / len(results) * 100, 2) if results else 0
+                round(passed_checks / len(effective_results) * 100, 2)
+                if effective_results
+                else 0
             ),
         )
 
