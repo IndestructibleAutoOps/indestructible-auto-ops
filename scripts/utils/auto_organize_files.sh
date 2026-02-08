@@ -64,7 +64,7 @@ for file in ARCHITECTURE*.md *ARCHITECTURE*.md *architecture*.md; do
     if [ -f "$file" ] && [ "$file" != "ARCHITECTURE.md" ]; then
         echo "   移動 $file -> docs/architecture/"
         git mv "$file" docs/architecture/ 2>/dev/null || mv "$file" docs/architecture/
-        ((MOVED_ARCHITECTURE++))
+        ((++MOVED_ARCHITECTURE))
     fi
 done
 
@@ -73,7 +73,7 @@ for file in DEPLOYMENT*.md *DEPLOYMENT*.md *deployment*.md; do
     if [ -f "$file" ] && [ "$file" != "DEPLOYMENT-GUIDE.md" ]; then
         echo "   移動 $file -> docs/deployment/"
         git mv "$file" docs/deployment/ 2>/dev/null || mv "$file" docs/deployment/
-        ((MOVED_GUIDE++))
+        ((++MOVED_GUIDE))
     fi
 done
 
@@ -82,7 +82,7 @@ for file in *GUIDE*.md *guide*.md *Guide*.md; do
     if [ -f "$file" ]; then
         echo "   移動 $file -> docs/guides/"
         git mv "$file" docs/guides/ 2>/dev/null || mv "$file" docs/guides/
-        ((MOVED_GUIDE++))
+        ((++MOVED_GUIDE))
     fi
 done
 
@@ -91,7 +91,7 @@ for file in *report*.md *summary*.md *Report*.md *Summary*.md *REPORT*.md *SUMMA
     if [ -f "$file" ]; then
         echo "   移動 $file -> docs/reports/"
         git mv "$file" docs/reports/ 2>/dev/null || mv "$file" docs/reports/
-        ((MOVED_REPORT++))
+        ((++MOVED_REPORT))
     fi
 done
 
@@ -100,7 +100,7 @@ for file in *analysis*.md *Analysis*.md *ANALYSIS*.md; do
     if [ -f "$file" ]; then
         echo "   移動 $file -> docs/analysis/"
         git mv "$file" docs/analysis/ 2>/dev/null || mv "$file" docs/analysis/
-        ((MOVED_REPORT++))
+        ((++MOVED_REPORT))
     fi
 done
 
@@ -135,7 +135,7 @@ for file in *.yaml *.yml; do
             echo "   移動 $file -> config/environments/"
             git mv "$file" config/environments/ 2>/dev/null || mv "$file" config/environments/
         fi
-        ((MOVED_CONFIG++))
+        ((++MOVED_CONFIG))
     fi
 done
 
@@ -149,7 +149,7 @@ for file in *.json; do
         
         echo "   移動 $file -> config/"
         git mv "$file" config/ 2>/dev/null || mv "$file" config/
-        ((MOVED_CONFIG++))
+        ((++MOVED_CONFIG))
     fi
 done
 
@@ -164,7 +164,7 @@ for file in *.sh; do
     if [ -f "$file" ]; then
         echo "   移動 $file -> scripts/utils/"
         git mv "$file" scripts/utils/ 2>/dev/null || mv "$file" scripts/utils/
-        ((MOVED_SCRIPT++))
+        ((++MOVED_SCRIPT))
     fi
 done
 
@@ -190,25 +190,25 @@ echo -e "${BLUE}步驟 6：更新索引檔案${NC}"
 echo ""
 
 # 創建或更新文檔索引
-cat > docs/INDEX.md << 'EOF'
+cat > docs/INDEX.md << EOF
 # 文檔索引
 
 本目錄包含所有專案文檔。
 
 ## 架構文檔
-- [架構設計](architecture/ARCHITECTURE.md)
+- [架構文檔目錄](architecture/)
 
 ## 部署文檔
-- [部署指南](deployment/DEPLOYMENT-GUIDE.md)
+- [部署文檔目錄](deployment/)
 
 ## 使用指南
-- [開發指南](guides/DEVELOPMENT-STRATEGY.md)
+- [指南文檔目錄](guides/)
 
 ## 報告
-- [專案報告](reports/)
+- [專案報告目錄](reports/)
 
 ## 分析
-- [分析文檔](analysis/)
+- [分析文檔目錄](analysis/)
 
 ---
 最後更新：$(date +%Y-%m-%d)
@@ -242,7 +242,7 @@ echo "   3. 提交變更："
 echo "      git commit -m 'chore: reorganize project file structure'"
 echo ""
 echo "   4. 驗證整理結果："
-echo "      ./check_file_organization.sh"
+echo "      ./scripts/utils/check_file_organization.sh"
 echo ""
 
 echo -e "${BLUE}========================================${NC}"
