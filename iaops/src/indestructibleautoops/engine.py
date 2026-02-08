@@ -11,7 +11,7 @@ from .adapters.generic import AdapterContext, GenericAdapter, detect_adapter, lo
 from .adapters.go import GoAdapter
 from .adapters.node import NodeAdapter
 from .adapters.python import PythonAdapter
-from .graph import DAG, dag_is_acyclic, topological_sort
+from .graph import DAG, topological_sort
 from .hashing import Hasher
 from .io import ensure_dir, read_text, write_text
 from .normalize import Normalizer
@@ -145,46 +145,50 @@ class Engine:
     def run(self) -> dict[str, Any]:
         trace_id = self.events.new_trace_id()
         dag = DAG.from_nodes(self.cfg.dag_nodes)
-        
+
         # Validate that the DAG is acyclic
         topo_order = topological_sort(dag)
         if topo_order is None:
             self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})
             return {"ok": False, "error": "dag_cycle", "traceId": trace_id}
-        
+
         # Validate that DAG node IDs match supported steps
         step_methods = self._get_step_methods()
         supported_step_ids = set(step_methods.keys())
         dag_step_ids = set(dag.ids())
-        
+
         # Check for unsupported steps in DAG
         unsupported = dag_step_ids - supported_step_ids
         if unsupported:
             self.events.emit(
-                trace_id, "governance", "dag_invalid_steps", 
-                {"ok": False, "unsupported": sorted(unsupported)}
+                trace_id,
+                "governance",
+                "dag_invalid_steps",
+                {"ok": False, "unsupported": sorted(unsupported)},
             )
             return {
-                "ok": False, 
-                "error": "dag_invalid_steps", 
+                "ok": False,
+                "error": "dag_invalid_steps",
                 "unsupported": sorted(unsupported),
-                "traceId": trace_id
+                "traceId": trace_id,
             }
-        
+
         # Check for missing steps (steps defined but not in DAG)
         missing = supported_step_ids - dag_step_ids
         if missing:
             self.events.emit(
-                trace_id, "governance", "dag_missing_steps",
-                {"ok": False, "missing": sorted(missing)}
+                trace_id,
+                "governance",
+                "dag_missing_steps",
+                {"ok": False, "missing": sorted(missing)},
             )
             return {
                 "ok": False,
                 "error": "dag_missing_steps",
                 "missing": sorted(missing),
-                "traceId": trace_id
+                "traceId": trace_id,
             }
-        
+
         # Execute steps in topological order derived from the DAG
         outputs: dict[str, Any] = {"ok": True, "traceId": trace_id, "mode": self.cfg.mode}
         for step_id in topo_order:
