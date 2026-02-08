@@ -138,7 +138,7 @@ class Engine:
 
         # Derive execution order from DAG topology
         step_order = topological_sort(dag)
-        
+
         # Map step IDs to their corresponding methods
         step_methods = {
             "interface_metadata_parse": self.step_interface_metadata_parse,
@@ -156,14 +156,13 @@ class Engine:
         for step_id in step_order:
             if step_id not in step_methods:
                 self.events.emit(
-                    trace_id, "governance", "unknown_step", 
-                    {"step_id": step_id, "ok": False}
+                    trace_id, "governance", "unknown_step", {"step_id": step_id, "ok": False}
                 )
                 return {
-                    "ok": False, 
-                    "error": "unknown_step", 
-                    "stepId": step_id, 
-                    "traceId": trace_id
+                    "ok": False,
+                    "error": "unknown_step",
+                    "stepId": step_id,
+                    "traceId": trace_id,
                 }
             steps.append((step_id, step_methods[step_id]))
 
