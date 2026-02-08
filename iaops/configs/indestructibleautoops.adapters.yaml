@@ -12,4 +12,3 @@ spec:
       matchAnyFiles: ["go.mod"]
     - id: generic
       matchAnyFiles: ["README.md"]
-  adapterOrder: ["python", "node", "go", "generic"]

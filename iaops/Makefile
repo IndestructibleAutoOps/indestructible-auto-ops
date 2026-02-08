@@ -1,18 +1,18 @@
 .PHONY: setup lint test run example clean
 
 setup:
-	python -m pip install -U pip
-	python -m pip install -e .[dev]
+	python3 -m pip install -U pip
+	python3 -m pip install -e .[dev]
 
 lint:
-	python -m ruff check src tests
-	python -m ruff format --check src tests
+	python3 -m ruff check src tests
+	python3 -m ruff format --check src tests
 
 test:
-	python -m pytest -q
+	python3 -m pytest -q
 
 run:
-	python -m indestructibleautoops run --config configs/indestructibleautoops.pipeline.yaml --project .
+	python3 -m indestructibleautoops run --config configs/indestructibleautoops.pipeline.yaml --project .
 
 example:
 	bash examples/run.sh

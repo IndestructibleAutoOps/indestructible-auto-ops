@@ -69,8 +69,7 @@ class EngineConfig:
         Config paths like 'configs/...' and 'schemas/...' are relative to the
         repository root that contains the config file, i.e. config_path's
         grandparent when the config lives in a 'configs/' subdirectory.
-        We walk up from config_path.parent until we find a directory that
-        makes the relative path resolve, falling back to config_path.parent.
+        This is a fixed calculation of config_path.parent.parent.
         """
         return self.config_path.resolve().parent.parent
 
@@ -137,6 +136,10 @@ class Engine:
             self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})
             return {"ok": False, "error": "dag_cycle", "traceId": trace_id}
 
+        # NOTE: Current implementation uses a fixed step order rather than
+        # executing from the configured DAG. The DAG is validated for cycles
+        # but not used to drive execution order. Future enhancement: execute
+        # steps in topological order derived from the DAG.
         steps = [
             ("interface_metadata_parse", self.step_interface_metadata_parse),
             ("parameter_validation", self.step_parameter_validation),
