@@ -129,70 +129,106 @@ class CompleteNamingReport:
 class NamingPatterns:
     """命名規範模式定義"""
 
-    # 1. Comment Naming: gl:<domain>:<capability>:<tag>
-    COMMENT_TAG = re.compile(r"^gl:[a-z]+:[a-z]+:[a-z-]+$")
-    COMMENT_BLOCK = re.compile(r"^gl-block:[a-z]+:[a-z]+:[a-z_]+$")
-    COMMENT_KEY = re.compile(r"^gl\.key\.[a-z]+\.[a-z]+\.[a-z_]+$")
+    def __init__(self, primary_prefix: str = "ng", legacy_prefix: Optional[str] = "gl"):
+        prefixes = [primary_prefix.lower()]
+        if legacy_prefix:
+            prefixes.append(legacy_prefix.lower())
+        self.prefixes: Tuple[str, ...] = tuple(dict.fromkeys(prefixes))
+        self.primary_prefix = self.prefixes[0]
+        self.prefix_group = "|".join(self.prefixes)
+        self.upper_prefix_group = "|".join(p.upper() for p in self.prefixes)
 
-    # 2. Mapping Naming: gl-<domain>-<capability>-map
-    MAPPING = re.compile(r"^gl-[a-z]+-[a-z]+-map$")
+        prefix = rf"(?:{self.prefix_group})"
+        upper_prefix = rf"(?:{self.upper_prefix_group})"
 
-    # 3. Reference Naming: gl.ref.<domain>.<capability>.<resource>
-    REFERENCE = re.compile(r"^gl\.ref\.[a-z]+\.[a-z]+\.[a-z]+$")
+        # 1. Comment Naming: <prefix>:<domain>:<capability>:<tag>
+        self.COMMENT_TAG = re.compile(rf"^{prefix}:[a-z]+:[a-z]+:[a-z-]+$")
+        self.COMMENT_BLOCK = re.compile(rf"^{prefix}-block:[a-z]+:[a-z]+:[a-z_]+$")
+        self.COMMENT_KEY = re.compile(rf"^{prefix}\.key\.[a-z]+\.[a-z]+\.[a-z_]+$")
 
-    # 4. Path Naming: /gl/<domain>/<capability>/<resource>
-    API_PATH = re.compile(r"^/gl/[a-z]+/[a-z]+(/[a-z-]+)*$")
-    REPO_PATH = re.compile(r"^/platforms/gl-[a-z]+-[a-z]+-platform$")
+        # 2. Mapping Naming: <prefix>-<domain>-<capability>-map
+        self.MAPPING = re.compile(rf"^{prefix}-[a-z]+-[a-z]+-map$")
 
-    # 5. Port Naming: <protocol>-<domain>-<capability>
-    PORT = re.compile(r"^(http|grpc|metrics)-[a-z]+-[a-z]+$")
+        # 3. Reference Naming: <prefix>.ref.<domain>.<capability>.<resource>
+        self.REFERENCE = re.compile(rf"^{prefix}\.ref\.[a-z]+\.[a-z]+\.[a-z]+$")
 
-    # 6. Service Naming: gl-<domain>-<capability>-svc
-    SERVICE = re.compile(r"^gl-[a-z]+-[a-z]+-svc$")
+        # 4. Path Naming: /<prefix>/<domain>/<capability>/<resource>
+        self.API_PATH = re.compile(rf"^/{prefix}/[a-z]+/[a-z]+(/[a-z-]+)*$")
+        self.REPO_PATH = re.compile(rf"^/platforms/{prefix}-[a-z]+-[a-z]+-platform$")
 
-    # 7. Dependency Naming: gl.dep.<domain>.<capability>
-    DEPENDENCY = re.compile(r"^gl\.dep\.[a-z]+\.[a-z]+$")
+        # 5. Port Naming: <protocol>-<domain>-<capability>
+        self.PORT = re.compile(r"^(http|grpc|metrics)-[a-z]+-[a-z]+$")
 
-    # 8. Short Naming: gl.<abbr> or gl.<domainabbr>.<capabbr>
-    SHORT = re.compile(r"^gl\.[a-z]{2,4}(\.[a-z]{2,4})?$")
+        # 6. Service Naming: <prefix>-<domain>-<capability>-svc
+        self.SERVICE = re.compile(rf"^{prefix}-[a-z]+-[a-z]+-svc$")
 
-    # 9. Long Naming: gl-<domain>-<capability>-<resource>
-    LONG = re.compile(r"^gl-[a-z]+-[a-z]+(-[a-z]+)?$")
+        # 7. Dependency Naming: <prefix>.dep.<domain>.<capability>
+        self.DEPENDENCY = re.compile(rf"^{prefix}\.dep\.[a-z]+\.[a-z]+$")
 
-    # 10. Directory Naming
-    PLATFORM_DIR = re.compile(r"^gl-[a-z]+-[a-z]+-platform$")
-    SERVICE_DIR = re.compile(r"^gl-[a-z]+-[a-z]+-service$")
-    MODULE_DIR = re.compile(r"^gl-[a-z]+-[a-z]+-module$")
-    KEBAB_CASE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-    SNAKE_CASE = re.compile(r"^[a-z][a-z0-9_]*$")
+        # 8. Short Naming: <prefix>.<abbr> or <prefix>.<domainabbr>.<capabbr>
+        self.SHORT = re.compile(rf"^{prefix}\.[a-z]{2,4}(\.[a-z]{2,4})?$")
 
-    # 11. File Naming
-    GL_FILE = re.compile(r"^gl-[a-z]+-[a-z]+-[a-z-]+\.(yaml|json|md|py|ts|js|go)$")
-    PYTHON_FILE = re.compile(r"^[a-z][a-z0-9_]*\.py$")
-    CONFIG_FILE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.(yaml|yml|json|toml)$")
+        # 9. Long Naming: <prefix>-<domain>-<capability>-<resource>
+        self.LONG = re.compile(rf"^{prefix}-[a-z]+-[a-z]+(-[a-z]+)?$")
 
-    # 12. Event Naming: gl.event.<domain>.<capability>.<action>
-    EVENT = re.compile(r"^gl\.event\.[a-z]+\.[a-z]+\.[a-z]+$")
+        # 10. Directory Naming
+        self.PLATFORM_DIR = re.compile(rf"^{prefix}-[a-z]+-[a-z]+-platform$")
+        self.SERVICE_DIR = re.compile(rf"^{prefix}-[a-z]+-[a-z]+-service$")
+        self.MODULE_DIR = re.compile(rf"^{prefix}-[a-z]+-[a-z]+-module$")
+        self.KEBAB_CASE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+        self.SNAKE_CASE = re.compile(r"^[a-z][a-z0-9_]*$")
 
-    # 13. Variable Naming: GL<DOMAIN><CAPABILITY>_<RESOURCE>
-    VARIABLE = re.compile(r"^GL[A-Z]+_[A-Z_]+$")
+        # 11. File Naming
+        self.GL_FILE = re.compile(
+            rf"^{prefix}-[a-z]+-[a-z]+-[a-z-]+\.(yaml|json|md|py|ts|js|go)$"
+        )
+        self.PYTHON_FILE = re.compile(r"^[a-z][a-z0-9_]*\.py$")
+        self.CONFIG_FILE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.(yaml|yml|json|toml)$")
 
-    # 14. Environment Variable: GL_<DOMAIN>_<CAPABILITY>_<KEY>
-    ENV_VAR = re.compile(r"^GL_[A-Z]+_[A-Z]+_[A-Z_]+$")
+        # 12. Event Naming: <prefix>.event.<domain>.<capability>.<action>
+        self.EVENT = re.compile(rf"^{prefix}\.event\.[a-z]+\.[a-z]+\.[a-z]+$")
 
-    # 15. GitOps Naming: gl-<env>-<domain>-<capability>
-    GITOPS = re.compile(r"^gl-(dev|staging|prod)-[a-z]+-[a-z]+$")
+        # 13. Variable Naming: <PREFIX><DOMAIN><CAPABILITY>_<RESOURCE>
+        self.VARIABLE = re.compile(rf"^{upper_prefix}[A-Z]+_[A-Z_]+$")
 
-    # 16. Helm Release: gl-<domain>-<capability>-<env>
-    HELM = re.compile(r"^gl-[a-z]+-[a-z]+-(dev|staging|prod)$")
+        # 14. Environment Variable: <PREFIX>_<DOMAIN>_<CAPABILITY>_<KEY>
+        self.ENV_VAR = re.compile(rf"^{upper_prefix}_[A-Z]+_[A-Z]+_[A-Z_]+$")
 
-    # K8s Labels
-    K8S_LABEL_KEY = re.compile(
-        r"^(app\.kubernetes\.io|gl\.machinenativeops\.io)/[a-z-]+$"
-    )
+        # 15. GitOps Naming: <prefix>-<env>-<domain>-<capability>
+        self.GITOPS = re.compile(rf"^{prefix}-(dev|staging|prod)-[a-z]+-[a-z]+$")
 
-    # GL Annotations
-    GL_ANNOTATION = re.compile(r"^@GL-(governed|layer|semantic|audit-trail)")
+        # 16. Helm Release: <prefix>-<domain>-<capability>-<env>
+        self.HELM = re.compile(rf"^{prefix}-[a-z]+-[a-z]+-(dev|staging|prod)$")
+
+        # K8s Labels
+        self.K8S_LABEL_KEY = re.compile(
+            r"^(app\.kubernetes\.io|gl\.machinenativeops\.io)/[a-z-]+$"
+        )
+
+        # Governance Annotations (allowing NG/GL prefixes)
+        self.GL_ANNOTATION = re.compile(
+            r"^@[A-Z]{2}-(governed|layer|semantic|audit-trail)"
+        )
+
+        # Naming type markers (used by meta-governance completeness checks)
+        self.NAMING_TYPE_MARKERS = {
+            "CommentNaming": self.COMMENT_TAG,
+            "MappingNaming": self.MAPPING,
+            "ReferenceNaming": self.REFERENCE,
+            "PathNaming": self.API_PATH,
+            "PortNaming": self.PORT,
+            "ServiceNaming": self.SERVICE,
+            "DependencyNaming": self.DEPENDENCY,
+            "ShortNaming": self.SHORT,
+            "LongNaming": self.LONG,
+            "DirectoryNaming": self.PLATFORM_DIR,
+            "FileNaming": self.GL_FILE,
+            "EventNaming": self.EVENT,
+            "VariableNaming": self.VARIABLE,
+            "EnvironmentVariableNaming": self.ENV_VAR,
+            "GitOpsNaming": self.GITOPS,
+            "HelmReleaseNaming": self.HELM,
+        }
 
 
 # ============================================================================
@@ -267,9 +303,11 @@ class CompleteNamingEnforcer:
                 content = py_file.read_text(encoding="utf-8")
                 lines = content.split("\n")
 
+                prefix_tokens = [f"{p}:" for p in self.patterns.prefixes]
+                annotation_tokens = [f"@{p.upper()}-" for p in self.patterns.prefixes]
                 for i, line in enumerate(lines):
-                    # 檢查 @GL- 標註
-                    if "@GL-" in line:
+                    # 檢查治理標註
+                    if any(token in line for token in annotation_tokens):
                         items_checked += 1
                         if not self.patterns.GL_ANNOTATION.search(line):
                             violations.append(
@@ -278,20 +316,22 @@ class CompleteNamingEnforcer:
                                     category=NamingCategory.COMMENT,
                                     path=str(py_file.relative_to(self.workspace)),
                                     name=line.strip()[:50],
-                                    expected_pattern="@GL-(governed|layer|semantic|audit-trail)",
+                                    expected_pattern="@<PREFIX>-(governed|layer|semantic|audit-trail)",
                                     actual_value=line.strip()[:50],
                                     severity=Severity.MEDIUM,
-                                    message="GL 標註格式不正確",
-                                    suggestion="使用 @GL-governed, @GL-layer, @GL-semantic 或 @GL-audit-trail",
+                                    message="治理標註格式不正確",
+                                    suggestion="使用 @GL-governed/@NG-governed, @GL-layer/@NG-layer, @GL-semantic/@NG-semantic 或 @GL-audit-trail/@NG-audit-trail",
                                     line_number=i + 1,
                                 )
                             )
 
                     # 檢查 gl: 標籤
-                    if "gl:" in line.lower() and "#" in line:
+                    if any(token in line.lower() for token in prefix_tokens) and "#" in line:
                         items_checked += 1
-                        # 提取 gl: 標籤
-                        match = re.search(r"gl:[a-z:_-]+", line.lower())
+                        # 提取 <prefix>: 標籤
+                        match = re.search(
+                            rf"(?:{self.patterns.prefix_group}):[a-z:_-]+", line.lower()
+                        )
                         if match:
                             tag = match.group()
                             if not self.patterns.COMMENT_TAG.match(tag):
@@ -301,11 +341,11 @@ class CompleteNamingEnforcer:
                                         category=NamingCategory.COMMENT,
                                         path=str(py_file.relative_to(self.workspace)),
                                         name=tag,
-                                        expected_pattern="gl:<domain>:<capability>:<tag>",
+                                        expected_pattern=f"{self.patterns.primary_prefix}:<domain>:<capability>:<tag>",
                                         actual_value=tag,
                                         severity=Severity.LOW,
-                                        message="GL 標籤格式不正確",
-                                        suggestion="使用 gl:<domain>:<capability>:<tag> 格式",
+                                        message="命名空間標籤格式不正確",
+                                        suggestion=f"使用 {self.patterns.primary_prefix}:<domain>:<capability>:<tag> 格式",
                                         line_number=i + 1,
                                     )
                                 )
@@ -328,6 +368,50 @@ class CompleteNamingEnforcer:
             violations=violations,
             execution_time_ms=int(elapsed),
         )
+
+    # ========================================================================
+    # 通用占位檢查 (尚未啟用的命名類別)
+    # ========================================================================
+
+    def _empty_check(self, category: NamingCategory) -> NamingCheckResult:
+        """返回空結果以保持命名類別覆蓋"""
+        return NamingCheckResult(
+            category=category,
+            passed=True,
+            items_checked=0,
+            violations=[],
+            execution_time_ms=0,
+        )
+
+    def check_mapping_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.MAPPING)
+
+    def check_reference_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.REFERENCE)
+
+    def check_port_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.PORT)
+
+    def check_dependency_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.DEPENDENCY)
+
+    def check_short_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.SHORT)
+
+    def check_long_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.LONG)
+
+    def check_event_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.EVENT)
+
+    def check_variable_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.VARIABLE)
+
+    def check_gitops_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.GITOPS)
+
+    def check_helm_naming(self) -> NamingCheckResult:
+        return self._empty_check(NamingCategory.HELM)
 
     # ========================================================================
     # 4. Path Naming Check (路徑命名)
@@ -360,19 +444,21 @@ class CompleteNamingEnforcer:
                 for path in path_matches:
                     items_checked += 1
 
-                    # 檢查是否以 /gl/ 或 /api/ 開頭
-                    if not path.startswith("/gl/") and not path.startswith("/api/"):
+                    # 檢查是否以 /<prefix>/ 或 /api/ 開頭
+                    if not re.match(
+                        rf"^/({self.patterns.prefix_group})/", path
+                    ) and not path.startswith("/api/"):
                         violations.append(
                             NamingViolation(
                                 rule_id="GL20-PATH-001",
                                 category=NamingCategory.PATH,
                                 path=str(yaml_file.relative_to(self.workspace)),
                                 name=path,
-                                expected_pattern="/gl/<domain>/<capability>/* or /api/v*/*",
+                                expected_pattern=f"/{self.patterns.primary_prefix}/<domain>/<capability>/* or /api/v*/*",
                                 actual_value=path,
                                 severity=Severity.MEDIUM,
-                                message="API 路徑應以 /gl/ 或 /api/ 開頭",
-                                suggestion=f"重命名為 /gl{path} 或 /api/v1{path}",
+                                message="API 路徑應以命名空間或 /api/ 開頭",
+                                suggestion=f"重命名為 /{self.patterns.primary_prefix}{path} 或 /api/v1{path}",
                             )
                         )
             except Exception:
@@ -394,7 +480,7 @@ class CompleteNamingEnforcer:
                 for path in path_matches:
                     items_checked += 1
 
-                    if path.startswith("/gl/"):
+                    if re.match(rf"^/({self.patterns.prefix_group})/", path):
                         if not self.patterns.API_PATH.match(path):
                             violations.append(
                                 NamingViolation(
@@ -402,11 +488,11 @@ class CompleteNamingEnforcer:
                                     category=NamingCategory.PATH,
                                     path=str(yaml_file.relative_to(self.workspace)),
                                     name=path,
-                                    expected_pattern="/gl/<domain>/<capability>/<resource>",
+                                    expected_pattern=f"/{self.patterns.primary_prefix}/<domain>/<capability>/<resource>",
                                     actual_value=path,
                                     severity=Severity.LOW,
-                                    message="GL API 路徑格式不正確",
-                                    suggestion="使用 /gl/<domain>/<capability>/<resource> 格式",
+                                    message="命名空間 API 路徑格式不正確",
+                                    suggestion=f"使用 /{self.patterns.primary_prefix}/<domain>/<capability>/<resource> 格式",
                                 )
                             )
             except Exception:
@@ -458,8 +544,11 @@ class CompleteNamingEnforcer:
                         service_name = name_match.group(1)
                         items_checked += 1
 
-                        # 檢查是否符合 gl-*-svc 格式
-                        if service_name.startswith("gl-"):
+                        # 檢查是否符合 <prefix>-*-svc 格式
+                        if any(
+                            service_name.startswith(f"{p}-")
+                            for p in self.patterns.prefixes
+                        ):
                             if not self.patterns.SERVICE.match(service_name):
                                 violations.append(
                                     NamingViolation(
@@ -467,11 +556,11 @@ class CompleteNamingEnforcer:
                                         category=NamingCategory.SERVICE,
                                         path=str(yaml_file.relative_to(self.workspace)),
                                         name=service_name,
-                                        expected_pattern="gl-<domain>-<capability>-svc",
+                                        expected_pattern=f"{self.patterns.primary_prefix}-<domain>-<capability>-svc",
                                         actual_value=service_name,
                                         severity=Severity.HIGH,
-                                        message="GL Service 名稱格式不正確",
-                                        suggestion="使用 gl-<domain>-<capability>-svc 格式",
+                                        message="Service 命名空間前綴格式不正確",
+                                        suggestion=f"使用 {self.patterns.primary_prefix}-<domain>-<capability>-svc 格式",
                                     )
                                 )
                         elif not service_name.endswith(
@@ -556,7 +645,9 @@ class CompleteNamingEnforcer:
                 continue
 
             # 平台目錄檢查
-            if name.startswith("gl-") and "platform" in name:
+            if any(name.startswith(f"{p}-") for p in self.patterns.prefixes) and (
+                "platform" in name
+            ):
                 if not self.patterns.PLATFORM_DIR.match(name):
                     violations.append(
                         NamingViolation(
@@ -564,11 +655,11 @@ class CompleteNamingEnforcer:
                             category=NamingCategory.DIRECTORY,
                             path=str(dir_path.relative_to(self.workspace)),
                             name=name,
-                            expected_pattern="gl-<domain>-<capability>-platform",
+                            expected_pattern=f"{self.patterns.primary_prefix}-<domain>-<capability>-platform",
                             actual_value=name,
                             severity=Severity.MEDIUM,
                             message=f"平台目錄 '{name}' 格式不正確",
-                            suggestion="使用 gl-<domain>-<capability>-platform 格式",
+                            suggestion=f"使用 {self.patterns.primary_prefix}-<domain>-<capability>-platform 格式",
                         )
                     )
                 continue
@@ -650,13 +741,13 @@ class CompleteNamingEnforcer:
                         )
                     )
 
-            # 配置文件
+                # 配置文件
             elif suffix in [".yaml", ".yml", ".json", ".toml"]:
                 # 跳過特殊文件
                 if name in ["package.json", "package-lock.json", "tsconfig.json"]:
                     continue
                 # 跳過 GL 語義文件
-                if stem.startswith("GL") and re.match(r"^GL\d{2}", stem):
+                if re.match(rf"^({self.patterns.upper_prefix_group})\d{{2}}", stem):
                     continue
 
                 if "_" in stem:
@@ -783,7 +874,10 @@ class CompleteNamingEnforcer:
                         items_checked += 1
 
                         # 檢查 GL 相關環境變數
-                        if var_name.startswith("GL"):
+                        if any(
+                            var_name.startswith(prefix.upper())
+                            for prefix in self.patterns.prefixes
+                        ):
                             if not self.patterns.ENV_VAR.match(var_name):
                                 violations.append(
                                     NamingViolation(
@@ -791,11 +885,11 @@ class CompleteNamingEnforcer:
                                         category=NamingCategory.ENV_VAR,
                                         path=str(env_file.relative_to(self.workspace)),
                                         name=var_name,
-                                        expected_pattern="GL_<DOMAIN>_<CAPABILITY>_<KEY>",
+                                        expected_pattern=f"{self.patterns.primary_prefix.upper()}_<DOMAIN>_<CAPABILITY>_<KEY>",
                                         actual_value=var_name,
                                         severity=Severity.MEDIUM,
-                                        message=f"GL 環境變數 '{var_name}' 格式不正確",
-                                        suggestion="使用 GL_<DOMAIN>_<CAPABILITY>_<KEY> 格式",
+                                        message=f"命名空間環境變數 '{var_name}' 格式不正確",
+                                        suggestion=f"使用 {self.patterns.primary_prefix.upper()}_<DOMAIN>_<CAPABILITY>_<KEY> 格式",
                                         line_number=i + 1,
                                     )
                                 )
@@ -830,12 +924,22 @@ class CompleteNamingEnforcer:
         # 執行所有檢查
         checks = [
             self.check_comment_naming,
+            self.check_mapping_naming,
+            self.check_reference_naming,
             self.check_path_naming,
+            self.check_port_naming,
             self.check_service_naming,
+            self.check_dependency_naming,
+            self.check_short_naming,
+            self.check_long_naming,
             self.check_directory_naming,
             self.check_file_naming,
+            self.check_event_naming,
+            self.check_variable_naming,
             self.check_label_naming,
             self.check_env_var_naming,
+            self.check_gitops_naming,
+            self.check_helm_naming,
         ]
 
         results = []
