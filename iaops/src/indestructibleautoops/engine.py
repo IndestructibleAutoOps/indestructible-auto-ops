@@ -11,7 +11,7 @@ from .adapters.generic import AdapterContext, GenericAdapter, detect_adapter, lo
 from .adapters.go import GoAdapter
 from .adapters.node import NodeAdapter
 from .adapters.python import PythonAdapter
-from .graph import DAG, dag_is_acyclic
+from .graph import DAG, topological_sort
 from .hashing import Hasher
 from .io import ensure_dir, read_text, write_text
 from .normalize import Normalizer
@@ -129,30 +129,70 @@ class Engine:
             return GoAdapter(ctx)
         return GenericAdapter(ctx)
 
+    def _get_step_methods(self) -> dict[str, Any]:
+        """Return a mapping of step IDs to their corresponding step methods."""
+        return {
+            "interface_metadata_parse": self.step_interface_metadata_parse,
+            "parameter_validation": self.step_parameter_validation,
+            "permission_resolution": self.step_permission_resolution,
+            "security_assessment": self.step_security_assessment,
+            "approval_chain_validation": self.step_approval_chain_validation,
+            "tool_execution": self.step_tool_execution,
+            "history_immutable": self.step_history_immutable,
+            "continuous_monitoring": self.step_continuous_monitoring,
+        }
+
     def run(self) -> dict[str, Any]:
         trace_id = self.events.new_trace_id()
         dag = DAG.from_nodes(self.cfg.dag_nodes)
-        if not dag_is_acyclic(dag):
+
+        # Validate that the DAG is acyclic
+        topo_order = topological_sort(dag)
+        if topo_order is None:
             self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})
             return {"ok": False, "error": "dag_cycle", "traceId": trace_id}
 
-        # NOTE: Current implementation uses a fixed step order rather than
-        # executing from the configured DAG. The DAG is validated for cycles
-        # but not used to drive execution order. Future enhancement: execute
-        # steps in topological order derived from the DAG.
-        steps = [
-            ("interface_metadata_parse", self.step_interface_metadata_parse),
-            ("parameter_validation", self.step_parameter_validation),
-            ("permission_resolution", self.step_permission_resolution),
-            ("security_assessment", self.step_security_assessment),
-            ("approval_chain_validation", self.step_approval_chain_validation),
-            ("tool_execution", self.step_tool_execution),
-            ("history_immutable", self.step_history_immutable),
-            ("continuous_monitoring", self.step_continuous_monitoring),
-        ]
+        # Validate that DAG node IDs match supported steps
+        step_methods = self._get_step_methods()
+        supported_step_ids = set(step_methods.keys())
+        dag_step_ids = set(dag.ids())
 
+        # Check for unsupported steps in DAG
+        unsupported = dag_step_ids - supported_step_ids
+        if unsupported:
+            self.events.emit(
+                trace_id,
+                "governance",
+                "dag_invalid_steps",
+                {"ok": False, "unsupported": sorted(unsupported)},
+            )
+            return {
+                "ok": False,
+                "error": "dag_invalid_steps",
+                "unsupported": sorted(unsupported),
+                "traceId": trace_id,
+            }
+
+        # Check for missing steps (steps defined but not in DAG)
+        missing = supported_step_ids - dag_step_ids
+        if missing:
+            self.events.emit(
+                trace_id,
+                "governance",
+                "dag_missing_steps",
+                {"ok": False, "missing": sorted(missing)},
+            )
+            return {
+                "ok": False,
+                "error": "dag_missing_steps",
+                "missing": sorted(missing),
+                "traceId": trace_id,
+            }
+
+        # Execute steps in topological order derived from the DAG
         outputs: dict[str, Any] = {"ok": True, "traceId": trace_id, "mode": self.cfg.mode}
-        for step_id, fn in steps:
+        for step_id in topo_order:
+            fn = step_methods[step_id]
             self.events.emit(trace_id, step_id, "start", {})
             out = fn(trace_id=trace_id, step_id=step_id)
             self.events.emit(trace_id, step_id, "end", {"result": out})
