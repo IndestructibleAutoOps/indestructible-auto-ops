@@ -11,6 +11,7 @@ from .adapters.generic import AdapterContext, GenericAdapter, detect_adapter, lo
 from .adapters.go import GoAdapter
 from .adapters.node import NodeAdapter
 from .adapters.python import PythonAdapter
+from .graph import DAG, dag_is_acyclic, topological_sort
 from .graph import DAG, topological_sort
 from .hashing import Hasher
 from .io import ensure_dir, read_text, write_text
@@ -176,6 +177,35 @@ class Engine:
             self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})
             return {"ok": False, "error": "dag_cycle", "traceId": trace_id}
 
+        # Derive execution order from DAG topology
+        step_order = topological_sort(dag)
+
+        # Map step IDs to their corresponding methods
+        step_methods = {
+            "interface_metadata_parse": self.step_interface_metadata_parse,
+            "parameter_validation": self.step_parameter_validation,
+            "permission_resolution": self.step_permission_resolution,
+            "security_assessment": self.step_security_assessment,
+            "approval_chain_validation": self.step_approval_chain_validation,
+            "tool_execution": self.step_tool_execution,
+            "history_immutable": self.step_history_immutable,
+            "continuous_monitoring": self.step_continuous_monitoring,
+        }
+
+        # Build execution list from DAG order
+        steps = []
+        for step_id in step_order:
+            if step_id not in step_methods:
+                self.events.emit(
+                    trace_id, "governance", "unknown_step", {"step_id": step_id, "ok": False}
+                )
+                return {
+                    "ok": False,
+                    "error": "unknown_step",
+                    "stepId": step_id,
+                    "traceId": trace_id,
+                }
+            steps.append((step_id, step_methods[step_id]))
         # Validate that DAG node IDs match supported steps
         step_methods = self._get_step_methods()
         supported_step_ids = set(step_methods.keys())
