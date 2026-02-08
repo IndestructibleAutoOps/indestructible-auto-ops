@@ -52,6 +52,8 @@ def topological_sort(dag: DAG) -> list[str] | None:
     Returns:
         List of node IDs in topological order, or None if cyclic.
     """
+    from collections import deque
+
     ids = set(dag.ids())
     graph: dict[str, list[str]] = {i: [] for i in ids}
     indeg: dict[str, int] = {i: 0 for i in ids}
@@ -64,19 +66,23 @@ def topological_sort(dag: DAG) -> list[str] | None:
             indeg[i] += 1
 
     # Start with nodes that have no dependencies
-    q = [i for i in ids if indeg[i] == 0]
+    q = deque(sorted(i for i in ids if indeg[i] == 0))
     result = []
 
     while q:
-        # Process nodes in a stable order for deterministic results
-        q.sort()
-        cur = q.pop(0)
+        cur = q.popleft()
         result.append(cur)
 
+        # Collect next nodes and add them in sorted order for deterministic results
+        next_nodes = []
         for nxt in graph[cur]:
             indeg[nxt] -= 1
             if indeg[nxt] == 0:
-                q.append(nxt)
+                next_nodes.append(nxt)
+
+        # Add in sorted order to maintain deterministic behavior
+        for node in sorted(next_nodes):
+            q.append(node)
 
     # If we processed all nodes, return the ordering; otherwise there's a cycle
     return result if len(result) == len(ids) else None
