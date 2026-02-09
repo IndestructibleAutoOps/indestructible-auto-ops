@@ -69,7 +69,7 @@
 - **格式規則**: 標準化 Markdown 語法
 
 ### 10. gl Rego（gl.rego.xxx）
-- **policy 命名**: gl_policy_{policy_name}
+- **policy 命名**: gov_policy_{policy_name}
 - **rule 命名**: gl_rule_{rule_name}
 - **語法規則**: Rego 策略和規則定義
 

@@ -122,7 +122,7 @@ The comprehensive GL (Governance Layers) audit and remediation process has been 
 
 ### Core Governance Files
 1. `engine/scripts/add-gl-markers.js` - Enhanced marker addition script
-2. `engine/governance/gl_engine.ts` - Validation logic
+2. `engine/governance/gov_engine.ts` - Validation logic
 3. `.github/workflows/gl-validation.yml` - CI/CD workflow
 4. `.github/hooks/pre-commit` - Git hook
 5. `.github/hooks/pre-push` - Git hook

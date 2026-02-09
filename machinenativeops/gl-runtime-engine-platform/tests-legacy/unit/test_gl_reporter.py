@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: test_gl_reporter
+# @GL-semantic: test_gov_reporter
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import datetime
 # Add scripts directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / 'scripts' / 'gl-engine'))
-from gl_reporter import (
+from gov_reporter import (
     ReportType,
     OutputFormat,
     LayerMetrics,

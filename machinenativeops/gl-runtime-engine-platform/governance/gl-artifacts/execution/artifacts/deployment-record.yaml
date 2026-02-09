@@ -56,9 +56,9 @@ spec:
       - GL Reporter: Multi-format report generation
       - CI/CD Workflows: Automated governance pipelines
       ### Components
-      - gl_executor.py: Main execution engine
-      - gl_validator.py: Validation framework
-      - gl_reporter.py: Report generator
+      - gov_executor.py: Main execution engine
+      - gov_validator.py: Validation framework
+      - gov_reporter.py: Report generator
       - gl-layer-validation.yml: Validation workflow
       - gl-artifacts-generator.yml: Artifact generation workflow
       - gl-compliance-check.yml: Compliance checking workflow
@@ -69,9 +69,9 @@ spec:
       type: "python-package"
       path: "scripts/gl-engine/"
       files:
-        - "gl_executor.py"
-        - "gl_validator.py"
-        - "gl_reporter.py"
+        - "gov_executor.py"
+        - "gov_validator.py"
+        - "gov_reporter.py"
         - "__init__.py"
       dependencies:
         - "pyyaml>=6.0"

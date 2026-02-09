@@ -218,7 +218,7 @@ spec:
           critical: 10
         collection_interval: "1h"
         retention: "365d"
-      - metric_id: "gl_policy_coverage"
+      - metric_id: "gov_policy_coverage"
         name: "GL Policy Coverage"
         name_zh: "GL政策覆蓋率"
         description: "政策覆蓋的Artifact百分比"
