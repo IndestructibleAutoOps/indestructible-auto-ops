@@ -11,11 +11,10 @@ Provides:
 """
 
 import json
-import time
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 class Severity(str, Enum):
@@ -27,6 +26,7 @@ class Severity(str, Enum):
     - WARNING: 警告，不阻止部署但需关注
     - INFO: 信息，仅供参考
     """
+
     BLOCKER = "BLOCKER"
     CRITICAL = "CRITICAL"
     ERROR = "ERROR"
@@ -41,7 +41,7 @@ class Severity(str, Enum):
     @classmethod
     def is_blocking(cls, severity: "Severity") -> bool:
         """判断是否为阻塞性严重级别"""
-        return severity in [cls.BLOCKER, cls.CRITICAL]
+        return severity in [cls.BLOCKER, cls.CRITICAL, cls.ERROR]
 
     def __lt__(self, other):
         if not isinstance(other, Severity):
@@ -68,10 +68,11 @@ class ValidationConfig:
     - performance_threshold: 性能偏差阈值 (默认20%)
     - metric_threshold: 通用指标偏差阈值 (默认10%)
     """
+
     project_root: str
     baseline_dir: str = ".baselines"
     output_dir: str = ".validation"
-    whitelist_path: Optional[str] = None
+    whitelist_path: str | None = None
     strict_mode: bool = True
     performance_threshold: float = 0.2
     metric_threshold: float = 0.1
@@ -93,10 +94,11 @@ class ValidationIssue:
     - category: 问题类别 (performance/structural/functional)
     - source: 问题来源 (文件路径/模块名)
     """
+
     issue_id: str
     description: str
     severity: Severity
-    details: Dict[str, Any]
+    details: dict[str, Any]
     category: str = ""
     source: str = ""
 
@@ -123,13 +125,14 @@ class ValidatorResult:
     - issues: 发现的问题列表
     - execution_time: 执行耗时(秒)
     """
+
     validator_name: str
     passed: bool
-    issues: List[ValidationIssue]
+    issues: list[ValidationIssue]
     execution_time: float = 0.0
 
     @property
-    def blocking_issues(self) -> List[ValidationIssue]:
+    def blocking_issues(self) -> list[ValidationIssue]:
         """获取所有阻塞性问题"""
         return [issue for issue in self.issues if issue.is_blocking()]
 
@@ -165,9 +168,10 @@ class ValidationResult:
     - overall_passed: 整体是否通过
     - suppressed_issues: 被白名单抑制的问题数
     """
+
     timestamp: float
     config: dict
-    validators: Dict[str, ValidatorResult]
+    validators: dict[str, ValidatorResult]
     overall_passed: bool
     suppressed_issues: int = 0
 
@@ -185,9 +189,7 @@ class ValidationResult:
         return {
             "timestamp": self.timestamp,
             "config": self.config,
-            "validators": {
-                k: v.to_dict() for k, v in self.validators.items()
-            },
+            "validators": {k: v.to_dict() for k, v in self.validators.items()},
             "overall_passed": self.overall_passed,
             "suppressed_issues": self.suppressed_issues,
             "summary": self.get_summary(),
@@ -210,7 +212,7 @@ class ValidationResult:
         else:
             print("❌ 发现阻塞性问题 - 部署被阻止")
 
-        print(f"\n📊 问题摘要:")
+        print("\n📊 问题摘要:")
         summary = self.get_summary()
         for sev in Severity.severity_order():
             count = summary.get(sev.value, 0)
@@ -219,10 +221,12 @@ class ValidationResult:
         print(f"  总计: {summary['total']}")
         print(f"  已抑制: {self.suppressed_issues}")
 
-        print(f"\n📋 验证器详情:")
+        print("\n📋 验证器详情:")
         for name, result in self.validators.items():
             status = "✅" if result.passed else "❌"
-            print(f"  {status} {name} ({result.execution_time:.3f}s) - "
-                  f"{result.issue_count} 问题, {result.blocking_count} 阻塞")
+            print(
+                f"  {status} {name} ({result.execution_time:.3f}s) - "
+                f"{result.issue_count} 问题, {result.blocking_count} 阻塞"
+            )
             for issue in result.blocking_issues:
                 print(f"    🛑 [{issue.severity.value}] {issue.issue_id}: {issue.description}")

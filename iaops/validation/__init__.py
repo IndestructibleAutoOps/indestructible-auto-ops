@@ -11,16 +11,16 @@ Core modules:
 - performance_validator: Performance regression detector
 """
 
+from .regression_detector import RegressionDetector
+from .strict_validator import StrictValidator, ValidationEngine
 from .validator import (
     Severity,
-    ValidationIssue,
-    ValidatorResult,
-    ValidationResult,
     ValidationConfig,
+    ValidationIssue,
+    ValidationResult,
+    ValidatorResult,
 )
-from .regression_detector import RegressionDetector
 from .whitelist_manager import WhitelistManager, WhitelistRule
-from .strict_validator import StrictValidator, ValidationEngine
 
 __all__ = [
     "Severity",

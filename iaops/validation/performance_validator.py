@@ -10,10 +10,10 @@ Validates:
 """
 
 import time
-from typing import Callable, Dict, List, Optional
+from collections.abc import Callable
 
-from .validator import Severity, ValidationConfig, ValidationIssue, ValidatorResult
 from .regression_detector import RegressionDetector
+from .validator import Severity, ValidationConfig, ValidationIssue, ValidatorResult
 
 
 class PerformanceValidator:
@@ -22,12 +22,12 @@ class PerformanceValidator:
     检测 API 延迟、算法耗时、内存使用和吞吐量的退化
     """
 
-    def __init__(self, config: ValidationConfig, baseline: Optional[dict] = None):
+    def __init__(self, config: ValidationConfig, baseline: dict | None = None):
         self.config = config
         self.name = "performance_validator"
         self.baseline = baseline or {}
         self.detector = RegressionDetector(config)
-        self._benchmarks: Dict[str, Callable] = {}
+        self._benchmarks: dict[str, Callable] = {}
 
     def register_benchmark(self, name: str, func: Callable):
         """
@@ -40,7 +40,7 @@ class PerformanceValidator:
     def execute(self) -> ValidatorResult:
         """执行性能验证"""
         start_time = time.time()
-        issues: List[ValidationIssue] = []
+        issues: list[ValidationIssue] = []
 
         # 1. 执行已注册的基准测试
         for bench_name, bench_func in self._benchmarks.items():
@@ -62,7 +62,7 @@ class PerformanceValidator:
 
     def _run_benchmark(
         self, name: str, func: Callable, iterations: int = 3
-    ) -> List[ValidationIssue]:
+    ) -> list[ValidationIssue]:
         """
         运行单个基准测试并与基线对比
         :param name: 测试名称
@@ -78,18 +78,20 @@ class PerformanceValidator:
             try:
                 func()
             except Exception as e:
-                issues.append(ValidationIssue(
-                    issue_id=f"benchmark_error_{name}",
-                    description=f"基准测试执行失败: {name} - {str(e)}",
-                    severity=Severity.ERROR,
-                    details={
-                        "benchmark": name,
-                        "error": str(e),
-                        "error_type": type(e).__name__,
-                    },
-                    category="performance",
-                    source=name,
-                ))
+                issues.append(
+                    ValidationIssue(
+                        issue_id=f"benchmark_error_{name}",
+                        description=f"基准测试执行失败: {name} - {str(e)}",
+                        severity=Severity.ERROR,
+                        details={
+                            "benchmark": name,
+                            "error": str(e),
+                            "error_type": type(e).__name__,
+                        },
+                        category="performance",
+                        source=name,
+                    )
+                )
                 return issues
             t_end = time.perf_counter()
             timings.append(t_end - t_start)
@@ -110,12 +112,18 @@ class PerformanceValidator:
                 issue.details["timings"] = [round(t, 6) for t in timings]
                 issue.details["avg_time"] = round(avg_time, 6)
                 issues.append(issue)
+                # 如果检测到回归，不更新基线
+                # 基线只在验证通过时由 StrictValidator 统一更新
+            else:
+                # 仅在无回归时更新基线
+                self.baseline[f"benchmark_{name}"] = round(avg_time, 6)
+        else:
+            # 首次运行时初始化基线
+            self.baseline[f"benchmark_{name}"] = round(avg_time, 6)
 
-        # 更新基线
-        self.baseline[f"benchmark_{name}"] = round(avg_time, 6)
         return issues
 
-    def _check_baseline_metrics(self) -> List[ValidationIssue]:
+    def _check_baseline_metrics(self) -> list[ValidationIssue]:
         """检查基线中记录的性能指标"""
         issues = []
         perf_metrics = self.baseline.get("performance_metrics", {})
@@ -140,8 +148,9 @@ class PerformanceValidator:
 
         return issues
 
-    def add_metric(self, name: str, current: float, baseline: float,
-                   metric_type: str = "performance"):
+    def add_metric(
+        self, name: str, current: float, baseline: float, metric_type: str = "performance"
+    ):
         """
         手动添加性能指标用于验证
         :param name: 指标名称
@@ -169,7 +178,7 @@ class MemoryValidator:
     检测内存泄漏和异常内存增长
     """
 
-    def __init__(self, config: ValidationConfig, baseline: Optional[dict] = None):
+    def __init__(self, config: ValidationConfig, baseline: dict | None = None):
         self.config = config
         self.name = "memory_validator"
         self.baseline = baseline or {}
@@ -178,10 +187,11 @@ class MemoryValidator:
     def execute(self) -> ValidatorResult:
         """执行内存验证"""
         start_time = time.time()
-        issues: List[ValidationIssue] = []
+        issues: list[ValidationIssue] = []
 
         try:
             import resource
+
             current_mem = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
             baseline_mem = self.baseline.get("peak_memory")
 
@@ -189,22 +199,27 @@ class MemoryValidator:
                 # 内存增长超过 50% 视为异常
                 if current_mem > baseline_mem * 1.5:
                     growth_pct = ((current_mem - baseline_mem) / baseline_mem) * 100
-                    issues.append(ValidationIssue(
-                        issue_id="memory_growth_anomaly",
-                        description=f"内存使用异常增长: {growth_pct:.1f}% "
-                                    f"(基线: {baseline_mem}KB, 当前: {current_mem}KB)",
-                        severity=Severity.WARNING,
-                        details={
-                            "baseline_kb": baseline_mem,
-                            "current_kb": current_mem,
-                            "growth_pct": round(growth_pct, 1),
-                        },
-                        category="performance",
-                        source="memory",
-                    ))
+                    issues.append(
+                        ValidationIssue(
+                            issue_id="memory_growth_anomaly",
+                            description=f"内存使用异常增长: {growth_pct:.1f}% "
+                            f"(基线: {baseline_mem}KB, 当前: {current_mem}KB)",
+                            severity=Severity.WARNING,
+                            details={
+                                "baseline_kb": baseline_mem,
+                                "current_kb": current_mem,
+                                "growth_pct": round(growth_pct, 1),
+                            },
+                            category="performance",
+                            source="memory",
+                        )
+                    )
 
             self.baseline["peak_memory"] = current_mem
         except (ImportError, AttributeError):
+            # Some platforms do not support the `resource` module or `ru_maxrss`;
+            # in that case we intentionally skip memory validation but keep the
+            # overall performance validation flow running.
             pass
 
         passed = not any(issue.is_blocking() for issue in issues)

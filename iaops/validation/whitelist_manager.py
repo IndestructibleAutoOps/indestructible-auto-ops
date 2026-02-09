@@ -13,15 +13,16 @@ Key features:
 - YAML-based rule persistence
 """
 
-import re
 import json
-from datetime import datetime
+import re
 from dataclasses import asdict, dataclass, field
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 try:
     import yaml
+
     HAS_YAML = True
 except ImportError:
     HAS_YAML = False
@@ -44,16 +45,17 @@ class WhitelistRule:
     - created_at: 创建时间
     - audit_log: 抑制事件审计日志
     """
+
     rule_id: str
     description: str
     pattern: str
     max_severity: str = "ERROR"
-    file_pattern: Optional[str] = None
-    category: Optional[str] = None
-    expires_at: Optional[str] = None
+    file_pattern: str | None = None
+    category: str | None = None
+    expires_at: str | None = None
     approved_by: str = ""
     created_at: str = field(default_factory=lambda: datetime.utcnow().isoformat())
-    audit_log: List[Dict[str, Any]] = field(default_factory=list)
+    audit_log: list[dict[str, Any]] = field(default_factory=list)
 
     def is_expired(self) -> bool:
         """检查规则是否已过期"""
@@ -98,27 +100,35 @@ class WhitelistRule:
             return False
 
         # 文件路径匹配
-        if self.file_pattern and "file" in issue.details:
+        if self.file_pattern:
+            # 如果配置了 file_pattern，则必须提供文件路径且需匹配
+            file_path = issue.details.get("file") if isinstance(issue.details, dict) else None
+            if not file_path:
+                return False
             try:
-                if not re.search(self.file_pattern, issue.details["file"]):
+                if not re.search(self.file_pattern, file_path):
                     return False
             except re.error:
                 return False
 
-        # 类别匹配
-        if self.category and issue.category and issue.category != self.category:
-            return False
+        # 类别匹配: 如果规则指定了 category，则必须严格匹配，
+        # 空/缺失的 issue.category 也视为不匹配
+        if self.category:
+            if issue.category != self.category:
+                return False
 
         return True
 
     def log_suppression(self, issue_id: str, issue_description: str = ""):
         """记录抑制事件到审计日志"""
-        self.audit_log.append({
-            "timestamp": datetime.utcnow().isoformat(),
-            "issue_id": issue_id,
-            "description": issue_description,
-            "action": "suppressed",
-        })
+        self.audit_log.append(
+            {
+                "timestamp": datetime.utcnow().isoformat(),
+                "issue_id": issue_id,
+                "description": issue_description,
+                "action": "suppressed",
+            }
+        )
 
 
 class WhitelistManager:
@@ -127,9 +137,9 @@ class WhitelistManager:
     负责规则加载、匹配、抑制和持久化
     """
 
-    def __init__(self, config_path: Optional[str] = None):
+    def __init__(self, config_path: str | None = None):
         self.config_path = Path(config_path) if config_path else None
-        self.rules: Dict[str, WhitelistRule] = {}
+        self.rules: dict[str, WhitelistRule] = {}
         self._suppression_count = 0
         if self.config_path:
             self.load_rules()
@@ -182,12 +192,13 @@ class WhitelistManager:
             return True
         return False
 
-    def apply_rules(self, issues: List[ValidationIssue]) -> List[ValidationIssue]:
+    def apply_rules(self, issues: list[ValidationIssue]) -> list[ValidationIssue]:
         """
         应用白名单规则过滤问题列表
         - BLOCKER 问题不可豁免
         - 匹配的问题降级为 INFO 并标记 [SUPPRESSED]
         - 所有抑制事件记录到审计日志
+        注意：不再自动保存规则，由调用方决定何时持久化
         :return: 处理后的问题列表
         """
         processed_issues = []
@@ -199,7 +210,6 @@ class WhitelistManager:
                 processed_issues.append(issue)
                 continue
 
-            suppressed = False
             for rule in self.rules.values():
                 if rule.is_expired():
                     continue
@@ -213,14 +223,11 @@ class WhitelistManager:
                     issue.description = f"[SUPPRESSED] {issue.description}"
                     issue.details["suppression_rule"] = rule.rule_id
                     issue.details["suppressed_at"] = datetime.utcnow().isoformat()
-                    suppressed = True
                     self._suppression_count += 1
                     break
 
             processed_issues.append(issue)
 
-        # 保存更新后的规则（包含审计日志）
-        self.save_rules()
         return processed_issues
 
     @property
@@ -228,15 +235,15 @@ class WhitelistManager:
         """获取最近一次 apply_rules 的抑制数量"""
         return self._suppression_count
 
-    def get_active_rules(self) -> List[WhitelistRule]:
+    def get_active_rules(self) -> list[WhitelistRule]:
         """获取所有未过期的活跃规则"""
         return [r for r in self.rules.values() if not r.is_expired()]
 
-    def get_expired_rules(self) -> List[WhitelistRule]:
+    def get_expired_rules(self) -> list[WhitelistRule]:
         """获取所有已过期的规则"""
         return [r for r in self.rules.values() if r.is_expired()]
 
-    def get_audit_summary(self) -> Dict[str, int]:
+    def get_audit_summary(self) -> dict[str, int]:
         """获取审计日志摘要"""
         summary = {}
         for rule in self.rules.values():

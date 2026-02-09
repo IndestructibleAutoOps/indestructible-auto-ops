@@ -9,8 +9,6 @@ Provides:
   - detect_trend: Multi-point trend regression detection
 """
 
-from typing import Dict, List, Optional, Tuple
-
 from .validator import Severity, ValidationConfig, ValidationIssue
 
 
@@ -31,7 +29,7 @@ class RegressionDetector:
         baseline: float,
         metric_type: str = "general",
         metric_name: str = "unknown",
-    ) -> Optional[ValidationIssue]:
+    ) -> ValidationIssue | None:
         """
         检测数值型指标退化
         :param current: 当前指标值
@@ -65,7 +63,7 @@ class RegressionDetector:
 
     def _test_performance_regression(
         self, current: float, baseline: float, metric_name: str
-    ) -> Optional[ValidationIssue]:
+    ) -> ValidationIssue | None:
         """
         检查性能退化（值越大表示退化，如延迟、响应时间）
         超过阈值则报告 CRITICAL
@@ -76,7 +74,7 @@ class RegressionDetector:
             return ValidationIssue(
                 issue_id=f"performance_regression_{metric_name}",
                 description=f"性能退化: {metric_name} 增加 {regression_pct:.2f}% "
-                            f"(基线: {baseline:.4f}, 当前: {current:.4f})",
+                f"(基线: {baseline:.4f}, 当前: {current:.4f})",
                 severity=Severity.CRITICAL,
                 details={
                     "metric_name": metric_name,
@@ -93,7 +91,7 @@ class RegressionDetector:
 
     def _test_general_regression(
         self, current: float, baseline: float, metric_name: str
-    ) -> Optional[ValidationIssue]:
+    ) -> ValidationIssue | None:
         """
         检查通用指标退化（值越小表示退化，如覆盖率、通过率）
         超过阈值则报告 CRITICAL
@@ -104,7 +102,7 @@ class RegressionDetector:
             return ValidationIssue(
                 issue_id=f"metric_regression_{metric_name}",
                 description=f"指标下降: {metric_name} 减少 {regression_pct:.2f}% "
-                            f"(基线: {baseline:.4f}, 当前: {current:.4f})",
+                f"(基线: {baseline:.4f}, 当前: {current:.4f})",
                 severity=Severity.CRITICAL,
                 details={
                     "metric_name": metric_name,
@@ -126,7 +124,7 @@ class RegressionDetector:
         current: dict,
         baseline: dict,
         context: str = "unknown",
-    ) -> Optional[ValidationIssue]:
+    ) -> ValidationIssue | None:
         """
         检测结构变化退化（键差异、类型变更）
         结构变化为 BLOCKER 级别
@@ -184,11 +182,11 @@ class RegressionDetector:
 
     def detect_trend(
         self,
-        values: List[float],
+        values: list[float],
         metric_name: str = "unknown",
         window: int = 5,
         decline_threshold: float = 0.05,
-    ) -> Optional[ValidationIssue]:
+    ) -> ValidationIssue | None:
         """
         多点趋势退化检测
         检查最近 window 个数据点是否呈持续下降趋势
@@ -215,7 +213,7 @@ class RegressionDetector:
             return ValidationIssue(
                 issue_id=f"trend_regression_{metric_name}",
                 description=f"趋势退化: {metric_name} 在最近 {window} 个数据点中"
-                            f"持续下降 {total_decline:.2f}%",
+                f"持续下降 {total_decline:.2f}%",
                 severity=Severity.WARNING,
                 details={
                     "metric_name": metric_name,
@@ -234,10 +232,10 @@ class RegressionDetector:
 
     def detect_all(
         self,
-        current_metrics: Dict[str, float],
-        baseline_metrics: Dict[str, float],
-        metric_types: Optional[Dict[str, str]] = None,
-    ) -> List[ValidationIssue]:
+        current_metrics: dict[str, float],
+        baseline_metrics: dict[str, float],
+        metric_types: dict[str, str] | None = None,
+    ) -> list[ValidationIssue]:
         """
         批量检测所有指标的回归
         :param current_metrics: 当前指标字典

@@ -13,34 +13,38 @@ Tests:
 7. PerformanceValidator benchmark execution
 8. StrictValidator full pipeline integration
 9. ValidationEngine high-level API
+
+注意：本测试套件同时支持直接运行和 pytest 运行
 """
 
 import json
 import os
+import shutil
 import sys
 import tempfile
-import time
-import shutil
 from pathlib import Path
+
+# pytest compatibility
+import pytest
 
 # 确保可以导入 validation 模块
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from validation.file_validator import FileCheckValidator
+from validation.performance_validator import PerformanceValidator
+from validation.regression_detector import RegressionDetector
+from validation.strict_validator import StrictValidator, ValidationEngine
 from validation.validator import (
     Severity,
     ValidationConfig,
     ValidationIssue,
-    ValidatorResult,
     ValidationResult,
+    ValidatorResult,
 )
-from validation.regression_detector import RegressionDetector
 from validation.whitelist_manager import WhitelistManager, WhitelistRule
-from validation.file_validator import FileCheckValidator
-from validation.performance_validator import PerformanceValidator, MemoryValidator
-from validation.strict_validator import StrictValidator, ValidationEngine
-
 
 # ── 测试辅助 ──────────────────────────────────────────────
+
 
 class TestContext:
     """测试上下文管理器，自动创建和清理临时目录"""
@@ -112,7 +116,20 @@ class TestContext:
         return self.failed == 0
 
 
+# ── Pytest 兼容性 ──────────────────────────────────────────
+
+
+@pytest.fixture
+def ctx():
+    """Pytest fixture for test context"""
+    test_ctx = TestContext()
+    test_ctx.setup()
+    yield test_ctx
+    test_ctx.teardown()
+
+
 # ── 测试用例 ──────────────────────────────────────────────
+
 
 def test_severity(ctx: TestContext):
     """测试严重级别定义和排序"""
@@ -125,7 +142,7 @@ def test_severity(ctx: TestContext):
 
     ctx.assert_true(Severity.is_blocking(Severity.BLOCKER), "BLOCKER 是阻塞性的")
     ctx.assert_true(Severity.is_blocking(Severity.CRITICAL), "CRITICAL 是阻塞性的")
-    ctx.assert_true(not Severity.is_blocking(Severity.ERROR), "ERROR 不是阻塞性的")
+    ctx.assert_true(Severity.is_blocking(Severity.ERROR), "ERROR 是阻塞性的")
     ctx.assert_true(not Severity.is_blocking(Severity.WARNING), "WARNING 不是阻塞性的")
     ctx.assert_true(not Severity.is_blocking(Severity.INFO), "INFO 不是阻塞性的")
 
@@ -222,22 +239,16 @@ def test_regression_structural(ctx: TestContext):
     detector = RegressionDetector(config)
 
     # 键差异
-    issue = detector.detect_structural(
-        {"a": 1, "c": 3}, {"a": 1, "b": 2}, "test_api"
-    )
+    issue = detector.detect_structural({"a": 1, "c": 3}, {"a": 1, "b": 2}, "test_api")
     ctx.assert_not_none(issue, "检测到键差异")
     ctx.assert_equal(issue.severity, Severity.BLOCKER, "结构变化为 BLOCKER")
 
     # 类型变化
-    issue = detector.detect_structural(
-        {"a": "string"}, {"a": 123}, "test_api"
-    )
+    issue = detector.detect_structural({"a": "string"}, {"a": 123}, "test_api")
     ctx.assert_not_none(issue, "检测到类型变化")
 
     # 结构一致
-    issue = detector.detect_structural(
-        {"a": 1, "b": 2}, {"a": 1, "b": 2}, "test_api"
-    )
+    issue = detector.detect_structural({"a": 1, "b": 2}, {"a": 1, "b": 2}, "test_api")
     ctx.assert_none(issue, "结构一致无问题")
 
     # 空基线
@@ -326,13 +337,15 @@ def test_whitelist_suppression(ctx: TestContext):
     print("\n📋 测试 9: WhitelistManager 抑制功能")
 
     manager = WhitelistManager()
-    manager.add_rule(WhitelistRule(
-        rule_id="WL-SUPP-001",
-        description="抑制性能问题",
-        pattern="performance_.*",
-        max_severity="CRITICAL",
-        approved_by="tester",
-    ))
+    manager.add_rule(
+        WhitelistRule(
+            rule_id="WL-SUPP-001",
+            description="抑制性能问题",
+            pattern="performance_.*",
+            max_severity="CRITICAL",
+            approved_by="tester",
+        )
+    )
 
     issues = [
         ValidationIssue("performance_regression_api", "性能退化", Severity.CRITICAL, {}),
@@ -530,13 +543,15 @@ def test_whitelist_persistence(ctx: TestContext):
 
     # 创建并保存
     manager = WhitelistManager(wl_path)
-    manager.add_rule(WhitelistRule(
-        rule_id="WL-PERSIST-001",
-        description="持久化测试",
-        pattern="test_.*",
-        max_severity="ERROR",
-        approved_by="tester",
-    ))
+    manager.add_rule(
+        WhitelistRule(
+            rule_id="WL-PERSIST-001",
+            description="持久化测试",
+            pattern="test_.*",
+            max_severity="ERROR",
+            approved_by="tester",
+        )
+    )
     manager.save_rules()
 
     # 重新加载
@@ -550,6 +565,7 @@ def test_whitelist_persistence(ctx: TestContext):
 
 
 # ── 主执行 ──────────────────────────────────────────────
+
 
 def main():
     print("=" * 60)

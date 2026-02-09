@@ -14,13 +14,12 @@ Exit codes:
 import argparse
 import os
 import sys
-import time
 
 # 确保可以导入 validation 模块
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from validation.validator import ValidationConfig, Severity
 from validation.strict_validator import ValidationEngine
+from validation.validator import ValidationConfig
 
 
 def parse_args():
@@ -57,9 +56,19 @@ def parse_args():
         default=".validation",
         help="报告输出目录 (默认: .validation)",
     )
+
+    # 计算相对于脚本的默认白名单路径
+    whitelist_default = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "configs",
+            "validation_whitelist.yaml",
+        )
+    )
     parser.add_argument(
         "--whitelist",
-        default="configs/validation_whitelist.yaml",
+        default=whitelist_default,
         help="白名单配置文件路径",
     )
     parser.add_argument(
@@ -70,8 +79,14 @@ def parse_args():
     parser.add_argument(
         "--strict",
         action="store_true",
-        default=True,
-        help="启用严格模式 (默认: 启用)",
+        default=False,
+        help="启用严格模式 (默认: 禁用)",
+    )
+    parser.add_argument(
+        "--no-strict",
+        dest="strict",
+        action="store_false",
+        help="禁用严格模式",
     )
     parser.add_argument(
         "--perf-threshold",
