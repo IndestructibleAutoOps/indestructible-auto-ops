@@ -67,6 +67,7 @@ def topological_sort(dag: DAG) -> list[str] | None:
             indeg[i] += 1
 
     # Kahn's algorithm for topological sort using deque for O(1) popleft
+    # Start with nodes that have no dependencies, sorted for deterministic results
     # Start with nodes that have no dependencies
     q = deque(sorted(i for i in ids if indeg[i] == 0))
     result: list[str] = []
@@ -89,5 +90,9 @@ def topological_sort(dag: DAG) -> list[str] | None:
 
         for node in sorted(next_nodes):
             q.append(node)
+        for nxt in graph[cur]:
+            indeg[nxt] -= 1
+            if indeg[nxt] == 0:
+                q.append(nxt)
 
     return result if len(result) == len(ids) else None

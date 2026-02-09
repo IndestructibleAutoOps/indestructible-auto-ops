@@ -172,12 +172,13 @@ class Engine:
         trace_id = self.events.new_trace_id()
         dag = DAG.from_nodes(self.cfg.dag_nodes)
 
+        # Get step method mappings
         # Validate that DAG node IDs match supported steps
         step_methods = self._get_step_methods()
         supported_step_ids = set(step_methods.keys())
         dag_step_ids = set(dag.ids())
 
-        # Check for unsupported steps in DAG
+        # Validate that DAG node IDs match supported steps
         unsupported = dag_step_ids - supported_step_ids
         if unsupported:
             self.events.emit(
@@ -209,6 +210,7 @@ class Engine:
                 "traceId": trace_id,
             }
 
+        # Derive execution order from DAG topology using topological sort
         # Validate that the DAG is acyclic and derive execution order
         topo_order = topological_sort(dag)
         if topo_order is None:
