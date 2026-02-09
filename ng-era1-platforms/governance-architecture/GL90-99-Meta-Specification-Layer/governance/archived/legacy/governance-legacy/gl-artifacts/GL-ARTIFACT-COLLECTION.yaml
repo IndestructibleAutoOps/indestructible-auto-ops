@@ -1,0 +1,139 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: governance.machinenativeops.io/v1
+kind: GLArtifactCollection
+metadata:
+  name: gl-artifact-collection
+  version: "1.0.0"
+  created: "2026-01-21"
+artifacts:
+  # Core Governance Artifacts
+  - artifact_id: "GL-ROOT-SEMANTIC-ANCHOR"
+    name: "GL Root Semantic Anchor"
+    type: "SEMANTIC_ROOT"
+    path: "gl/90-meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:root:semantic-anchor:1.0.0"
+    layer: "GL90-99"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  - artifact_id: "GL-GOVERNANCE-EVENT-FLOW"
+    name: "GL Governance Event Flow"
+    type: "GOVERNANCE_FLOW"
+    path: "gl/90-meta/artifacts/GL-GOVERNANCE-EVENT-FLOW.yaml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:governance:event-flow:1.0.0"
+    layer: "GL90-99"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  - artifact_id: "GL-QUANTUM-VALIDATION"
+    name: "GL Quantum Validation System"
+    type: "VALIDATION_SYSTEM"
+    path: "gl/90-meta/artifacts/GL-QUANTUM-VALIDATION.yaml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:validation:quantum:1.0.0"
+    layer: "GL90-99"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  - artifact_id: "GL-AI-NATIVE-MODULES"
+    name: "GL AI-Native Modules Registry"
+    type: "MODULE_REGISTRY"
+    path: "controlplane/registries/GL-AI-NATIVE-MODULES.yaml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:registry:ai-native-modules:1.0.0"
+    layer: "GL90-99"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  # Data Layer Artifacts (GL20-29)
+  - artifact_id: "GL-DATA-SEMANTIC-INDEX"
+    name: "GL Data Semantic Index"
+    type: "SEMANTIC_INDEX"
+    path: "workspace/src/data/GL-SEMANTIC-INDEX.json"
+    format: "JSON"
+    semantic_urn: "urn:machinenativeops:gl:data:semantic-index:1.0.0"
+    layer: "GL20-29"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  - artifact_id: "GL-DATA-CI-WORKFLOW"
+    name: "GL Data CI Workflow"
+    type: "CI_WORKFLOW"
+    path: ".github/workflows/GL-DATA-CI.yml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:data:ci-workflow:1.0.0"
+    layer: "GL20-29"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  # Algorithms Layer Artifacts (GL40-49)
+  - artifact_id: "GL-ALGORITHMS-SEMANTIC-INDEX"
+    name: "GL Algorithms Semantic Index"
+    type: "SEMANTIC_INDEX"
+    path: "workspace/src/algorithms/GL-SEMANTIC-INDEX.json"
+    format: "JSON"
+    semantic_urn: "urn:machinenativeops:gl:algorithms:semantic-index:1.0.0"
+    layer: "GL40-49"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  - artifact_id: "GL-ALGORITHMS-CI-WORKFLOW"
+    name: "GL Algorithms CI Workflow"
+    type: "CI_WORKFLOW"
+    path: ".github/workflows/GL-ALGORITHMS-CI.yml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:algorithms:ci-workflow:1.0.0"
+    layer: "GL40-49"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  # GPU Layer Artifacts (GL50-59)
+  - artifact_id: "GL-GPU-SEMANTIC-INDEX"
+    name: "GL GPU Semantic Index"
+    type: "SEMANTIC_INDEX"
+    path: "workspace/src/gpu/GL-SEMANTIC-INDEX.json"
+    format: "JSON"
+    semantic_urn: "urn:machinenativeops:gl:gpu:semantic-index:1.0.0"
+    layer: "GL50-59"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+  - artifact_id: "GL-GPU-CI-WORKFLOW"
+    name: "GL GPU CI Workflow"
+    type: "CI_WORKFLOW"
+    path: ".github/workflows/GL-GPU-CI.yml"
+    format: "YAML"
+    semantic_urn: "urn:machinenativeops:gl:gpu:ci-workflow:1.0.0"
+    layer: "GL50-59"
+    status: "ACTIVE"
+    evidence_required: true
+    created: "2026-01-21"
+artifact_schema:
+  version: "1.0"
+  required_fields:
+    - "artifact_id"
+    - "name"
+    - "type"
+    - "path"
+    - "format"
+    - "semantic_urn"
+    - "layer"
+    - "status"
+  optional_fields:
+    - "evidence_required"
+    - "created"
+    - "modified"
+    - "checksum"
+governance_policy:
+  audit_required: true
+  evidence_chain_required: true
+  blocking_on_failure: true
+  semantic_mapping_required: true
+  parent_validation_required: true
+activation_status: "GL Unified Architecture Governance Framework Activated"

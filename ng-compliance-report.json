@@ -1,0 +1,719 @@
+{
+  "timestamp": "2026-02-06",
+  "total_platforms": 26,
+  "passed": 26,
+  "failed": 0,
+  "warnings": 2,
+  "pass_rate": 100.0,
+  "platforms": [
+    {
+      "name": "gl-automation-instant-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "Unknown",
+        "era": "Unknown",
+        "description": "無法映射"
+      }
+    },
+    {
+      "name": "gl-automation-organizer-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "Unknown",
+        "era": "Unknown",
+        "description": "無法映射"
+      }
+    },
+    {
+      "name": "gl-data-processing",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-399",
+        "era": "Era-2",
+        "description": "數據處理"
+      }
+    },
+    {
+      "name": "gl-data-processing-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-399",
+        "era": "Era-2",
+        "description": "數據處理"
+      }
+    },
+    {
+      "name": "gl-enterprise-architecture",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG100-199",
+        "era": "Era-1",
+        "description": "企業架構"
+      }
+    },
+    {
+      "name": "gl-execution-runtime",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-499",
+        "era": "Era-2",
+        "description": "執行運行時"
+      }
+    },
+    {
+      "name": "gl-extension-services",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG600-799",
+        "era": "Era-3",
+        "description": "擴展服務"
+      }
+    },
+    {
+      "name": "gl-extension-services-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG100-299",
+        "era": "Era-1",
+        "description": "平台服務"
+      }
+    },
+    {
+      "name": "gl-governance-architecture-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG100-199",
+        "era": "Era-1",
+        "description": "企業架構"
+      }
+    },
+    {
+      "name": "gl-governance-compliance",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-599",
+        "era": "Era-2",
+        "description": "治理合規"
+      }
+    },
+    {
+      "name": "gl-governance-compliance-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-599",
+        "era": "Era-2",
+        "description": "治理合規"
+      }
+    },
+    {
+      "name": "gl-infrastructure-foundation-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "Unknown",
+        "era": "Unknown",
+        "description": "無法映射"
+      }
+    },
+    {
+      "name": "gl-integration-hub-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG600-799",
+        "era": "Era-3",
+        "description": "擴展服務"
+      }
+    },
+    {
+      "name": "gl-meta-specifications",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG900-999",
+        "era": "Cross-Era",
+        "description": "元規範"
+      }
+    },
+    {
+      "name": "gl-meta-specifications-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG900-999",
+        "era": "Cross-Era",
+        "description": "元規範"
+      }
+    },
+    {
+      "name": "gl-monitoring-observability-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG500-599",
+        "era": "Era-2",
+        "description": "監控可觀測性"
+      }
+    },
+    {
+      "name": "gl-monitoring-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG500-599",
+        "era": "Era-2",
+        "description": "監控可觀測性"
+      }
+    },
+    {
+      "name": "gl-observability",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG500-599",
+        "era": "Era-2",
+        "description": "監控可觀測性"
+      }
+    },
+    {
+      "name": "gl-platform-core-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "Unknown",
+        "era": "Unknown",
+        "description": "無法映射"
+      }
+    },
+    {
+      "name": "gl-platform-services",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG100-299",
+        "era": "Era-1",
+        "description": "平台服務"
+      }
+    },
+    {
+      "name": "gl-quantum-computing-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "Unknown",
+        "era": "Unknown",
+        "description": "無法映射"
+      }
+    },
+    {
+      "name": "gl-runtime-engine-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": false,
+          "message": "語義相似度過高: 與 'gl-runtime-services-platform' 相似度 82%"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-499",
+        "era": "Era-2",
+        "description": "執行運行時"
+      }
+    },
+    {
+      "name": "gl-runtime-execution-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-499",
+        "era": "Era-2",
+        "description": "執行運行時"
+      }
+    },
+    {
+      "name": "gl-runtime-services-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": false,
+          "message": "語義相似度過高: 與 'gl-runtime-engine-platform' 相似度 82%"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG100-299",
+        "era": "Era-1",
+        "description": "平台服務"
+      }
+    },
+    {
+      "name": "gl-search-elasticsearch-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG300-399",
+        "era": "Era-2",
+        "description": "數據處理"
+      }
+    },
+    {
+      "name": "gl-semantic-core-platform",
+      "compliant": true,
+      "checks": {
+        "format": {
+          "passed": true,
+          "message": "格式符合 kebab-case 規範"
+        },
+        "uniqueness": {
+          "passed": true,
+          "message": "唯一性檢查通過"
+        },
+        "reserved": {
+          "passed": true,
+          "message": "無保留關鍵字衝突"
+        },
+        "similarity": {
+          "passed": true,
+          "message": "語義相似度檢查通過"
+        }
+      },
+      "ng_mapping": {
+        "ng_range": "NG900-999",
+        "era": "Cross-Era",
+        "description": "元規範"
+      }
+    }
+  ],
+  "era_distribution": {
+    "Unknown": 5,
+    "Era-2": 11,
+    "Era-1": 5,
+    "Era-3": 2,
+    "Cross-Era": 3
+  }
+}
