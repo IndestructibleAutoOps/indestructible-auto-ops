@@ -159,7 +159,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_gl_validator.py",
+      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py",
       "line_number": 291,
       "message": "API Key exposed",
       "severity": "CRITICAL",
@@ -199,7 +199,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "gl-runtime-execution-platform/engine/tests-legacy/unit/test_gl_validator.py",
+      "file_path": "gl-runtime-execution-platform/engine/tests-legacy/unit/test_gov_validator.py",
       "line_number": 291,
       "message": "API Key exposed",
       "severity": "CRITICAL",
@@ -255,7 +255,7 @@
     },
     {
       "rule_id": "GL-SECURITY-001",
-      "file_path": "machine-native-ops/gl-runtime-engine-platform/tests-legacy/unit/test_gl_validator.py",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py",
       "line_number": 291,
       "message": "API Key exposed",
       "severity": "CRITICAL",

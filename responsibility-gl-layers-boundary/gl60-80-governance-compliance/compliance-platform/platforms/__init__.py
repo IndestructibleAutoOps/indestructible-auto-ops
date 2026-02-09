@@ -18,7 +18,7 @@ from .gl_event import GLEvent
 from .gl_environment import GLEnvironment
 from .gl_label import GLLabel
 from .gl_comment import GLComment
-from .gl_filesystem import GLFileSystem
+from .gov_filesystem import GLFileSystem
 
 __all__ = [
     'GLPlatform',

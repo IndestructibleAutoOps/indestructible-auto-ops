@@ -746,11 +746,11 @@ class GLMarkdown:
 ### 4.10 gl Rego（gl.rego.xxx）
 
 #### gl.rego.policy 命名
-- **格式**: gl_policy_{policy_name}
+- **格式**: gov_policy_{policy_name}
 - **範例**:
-  - gl_policy_prefix_required
-  - gl_policy_no_circular_deps
-  - gl_policy_api_authentication
+  - gov_policy_prefix_required
+  - gov_policy_no_circular_deps
+  - gov_policy_api_authentication
 
 #### gl.rego.rule 命名
 - **格式**: gl_rule_{rule_name}
@@ -761,7 +761,7 @@ class GLMarkdown:
 
 #### 實現範例
 ```rego
-# gl_policy_prefix_required.rego
+# gov_policy_prefix_required.rego
 package gl.policies.prefix
 
 default allow = false
@@ -779,7 +779,7 @@ check_prefix[name] {
     startswith(name, "gl.")
 }
 
-# gl_policy_no_circular_deps.rego
+# gov_policy_no_circular_deps.rego
 package gl.policies.circular_deps
 
 default allow = false
@@ -793,7 +793,7 @@ has_circular_dep(deps) {
     dep in input.dependencies
 }
 
-# gl_policy_api_authentication.rego
+# gov_policy_api_authentication.rego
 package gl.policies.api_auth
 
 default allow = false

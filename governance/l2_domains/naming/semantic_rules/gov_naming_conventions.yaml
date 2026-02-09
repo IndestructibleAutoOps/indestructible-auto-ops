@@ -1,0 +1,25 @@
+governance:
+  domain: "naming"
+  layer: "L2"
+  version: "1.0.0"
+
+conventions:
+  - id: "NAMING-001"
+    name: "File Naming Convention"
+    severity: "CRITICAL"
+    pattern: "^[a-z][a-z0-9_]*\\.(py|yaml|json|md|txt)$"
+    allowed_prefixes: ["gov_"]
+    forbidden_prefixes: ["ng_", "gl_"]
+  - id: "NAMING-002"
+    name: "Directory Naming Convention"
+    severity: "CRITICAL"
+    pattern: "^[a-z][a-z0-9_-]*$"
+    allowed_prefixes: ["gov_"]
+    forbidden_prefixes: ["ng_", "gl_"]
+
+policies:
+  - id: "NAMING-POLICY-001"
+    name: "Prefix Migration Policy"
+    description: "所有 ng_ 和 gl_ 前綴必須遷移到 gov_"
+    severity: "BLOCKER"
+    enforcement: "automated"

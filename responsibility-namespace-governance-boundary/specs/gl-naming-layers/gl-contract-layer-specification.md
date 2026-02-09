@@ -707,7 +707,7 @@ else:
 ### Python 實現範例
 
 ```python
-# contracts/gl_contract.py
+# contracts/gov_contract.py
 from typing import Dict, Any, Optional
 from datetime import datetime
 import json
@@ -781,7 +781,7 @@ else:
 ### 驗證器實現
 
 ```python
-# validators/gl_contract_validator.py
+# validators/gov_contract_validator.py
 from typing import Dict, Any, List
 from dataclasses import dataclass
 

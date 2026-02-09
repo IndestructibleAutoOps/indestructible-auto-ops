@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: test_gl_aep_engine_auditor
+# @GL-semantic: test_gov_aep_engine_auditor
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -15,7 +15,7 @@ import pytest
 # Add the tools/gl-platform.gl-platform.governance-audit directory to the path
 tools_path = Path(__file__).parent.parent.parent / "tools" / "gl-platform.gl-platform.governance-audit"
 sys.path.insert(0, str(tools_path))
-from gl_aep_engine_auditor import ETLPipeline, IssueType
+from gov_aep_engine_auditor import ETLPipeline, IssueType
 def extract_any_count_from_message(message: str) -> int:
     """Helper function to extract the count of 'any' usages from error message."""
     match = re.search(r'Found (\d+) uses', message)

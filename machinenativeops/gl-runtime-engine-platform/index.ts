@@ -63,7 +63,7 @@ export { ModuleValidator } from './validator/module_validator';
 export { ErrorReporter } from './validator/error_reporter';
 
 // Export governance components
-export { GovernanceEngine } from './governance/gl_engine';
+export { GovernanceEngine } from './governance/gov_engine';
 export { RuleEvaluator } from './governance/rule_evaluator';
 export { AnchorResolver as GovernanceAnchorResolver } from './governance/anchor_resolver';
 export { EventsWriter } from './governance/events_writer';

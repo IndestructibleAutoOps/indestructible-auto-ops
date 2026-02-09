@@ -58,7 +58,7 @@ def main():
     def check_tools_layer(self) -> EnforcementResult:
         """檢查工具層"""
         violations = []
-        for tool_path in ["ecosystem/tools/scan_secrets.py", "ecosystem/tools/fix_security_issues.py", "ecosystem/tools/generate_governance_dashboard.py", "ecosystem/tools/fact-verification/gl_fact_pipeline.py"]:
+        for tool_path in ["ecosystem/tools/scan_secrets.py", "ecosystem/tools/fix_security_issues.py", "ecosystem/tools/generate_governance_dashboard.py", "ecosystem/tools/fact-verification/gov_fact_pipeline.py"]:
             if not (self.workspace / tool_path).exists():
                 violations.append(Violation(path=tool_path, line=0, severity="MEDIUM", message=f"Critical tool not found: {tool_path}"))
         return EnforcementResult(check_name="Tools Layer", passed=len(violations)==0, violations=violations, message=f"Checked 4 critical tools, found {len(violations)} issues")

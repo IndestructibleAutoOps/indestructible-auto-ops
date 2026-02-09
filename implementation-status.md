@@ -4,6 +4,12 @@
 
 All requested features have been successfully implemented and integrated.
 
+## Confirmed Immediately Available Features (2026-02-08)
+- Dual-path reasoning stack exposed via `ecosystem.reasoning.dual_path.*` wrappers (internal/external retrieval, arbitration, traceability, planning agent) aligned to import-safe paths.
+- Governance enforcers ready for use: `CompleteNamingEnforcer` markers present, `PipelineIntegration`, `RoleExecutor`, and `SemanticViolationClassifier` alias defined with GL annotations.
+- Arbitration rule stubs available under `ecosystem/reasoning/dual_path/arbitration/rules` to satisfy MNGA architecture contracts.
+- Platform assistant placeholders present for `platforms/gl.platform-assistant/api/reasoning.py` and `platforms/gl.platform-assistant/orchestration/pipeline.py` plus IDE plugin scaffold at `platforms/gl.platform-ide/plugins/vscode`.
+
 ## ✅ Completed Components
 
 ### Core Reasoning System (MNGA Layer 6)

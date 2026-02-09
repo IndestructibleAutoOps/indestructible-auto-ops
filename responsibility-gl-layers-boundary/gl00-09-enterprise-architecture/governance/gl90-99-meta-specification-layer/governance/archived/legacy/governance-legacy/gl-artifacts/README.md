@@ -41,7 +41,7 @@ gl/
 ./scripts/gl-check src/core/
 
 # 驗證 GL 結構
-python scripts/gl-engine/gl_validator.py --workspace .
+python scripts/gl-engine/gov_validator.py --workspace .
 ```
 
 ## 在程式碼中標註 GL 層級

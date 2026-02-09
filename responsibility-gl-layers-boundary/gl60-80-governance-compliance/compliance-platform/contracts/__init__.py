@@ -7,9 +7,9 @@ This module provides GL contract validation, policy evaluation,
 and quality gate enforcement.
 """
 
-from .gl_contract import GLContract, GLContractException
-from .gl_policy import GLPolicy, PolicyCondition
-from .gl_validator import GLContractValidator, ValidationResult, ValidationError
+from .gov_contract import GLContract, GLContractException
+from .gov_policy import GLPolicy, PolicyCondition
+from .gov_validator import GLContractValidator, ValidationResult, ValidationError
 from .gl_quality_gate import GLQualityGate, QualityGateStatus
 from .gl_audit_event import GLAuditEvent
 

@@ -56,7 +56,7 @@ semantic_anchors:
     paths:
       - "engine/governance/anchor_resolver.ts"
       - "engine/governance/events_writer.ts"
-      - "engine/governance/gl_engine.ts"
+      - "engine/governance/gov_engine.ts"
       - "engine/governance/rule_evaluator.ts"
 
   - id: "GL-30-EXEC-LOADER"
