@@ -4,13 +4,13 @@
   "description": "GL Unified Charter Activated - Architecture Execution Pipeline Engine",
   "main": "index.ts",
   "scripts": {
-    "validate": "npx ts-node governance/gl_engine.ts validate --strict",
-    "governance:check": "npx ts-node governance/gl_engine.ts check",
-    "governance:fix": "npx ts-node governance/gl_engine.ts fix --auto",
+    "validate": "npx ts-node governance/gov_engine.ts validate --strict",
+    "governance:check": "npx ts-node governance/gov_engine.ts check",
+    "governance:fix": "npx ts-node governance/gov_engine.ts fix --auto",
     "test": "jest --coverage",
     "build": "tsc",
     "gate:execute": "npx ts-node gl-gate/core/GateExecutor.ts",
-    "pipeline:run": "npx ts-node governance/gl_engine.ts pipeline --full"
+    "pipeline:run": "npx ts-node governance/gov_engine.ts pipeline --full"
   },
   "keywords": [
     "governance",

@@ -1,6 +1,6 @@
 
 > @machinenativeops/aep-engine@1.0.0 pipeline:run
-> npx ts-node governance/gl_engine.ts pipeline --full
+> npx ts-node governance/gov_engine.ts pipeline --full
 
 {
   "success": true,
@@ -1656,7 +1656,7 @@
       "id": "gl-validation-1769558714269",
       "type": "validation",
       "timestamp": "2026-01-28T00:05:14.269Z",
-      "source": "governance/gl_engine.ts",
+      "source": "governance/gov_engine.ts",
       "data": {
         "success": true,
         "violationCount": 235,

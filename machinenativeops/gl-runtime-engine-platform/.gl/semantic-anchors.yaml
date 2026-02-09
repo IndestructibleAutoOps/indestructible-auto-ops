@@ -106,8 +106,8 @@ anchors:
       events_writer:
         file: "events_writer.ts"
         class: "EventsWriter"
-      gl_engine:
-        file: "gl_engine.ts"
+      gov_engine:
+        file: "gov_engine.ts"
         class: "GovernanceEngine"
       rule_evaluator:
         file: "rule_evaluator.ts"

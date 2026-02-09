@@ -50,9 +50,9 @@
 
 | ID | Criteria | Expected Result | Status | Evidence |
 |----|----------|-----------------|--------|----------|
-| FAC-001 | GL Executor can execute layer operations | Operations execute successfully | ✅ Pass | test_gl_executor.py |
-| FAC-002 | GL Validator validates artifacts | Artifacts validated correctly | ✅ Pass | test_gl_validator.py |
-| FAC-003 | GL Reporter generates reports | Reports generated in multiple formats | ✅ Pass | test_gl_reporter.py |
+| FAC-001 | GL Executor can execute layer operations | Operations execute successfully | ✅ Pass | test_gov_executor.py |
+| FAC-002 | GL Validator validates artifacts | Artifacts validated correctly | ✅ Pass | test_gov_validator.py |
+| FAC-003 | GL Reporter generates reports | Reports generated in multiple formats | ✅ Pass | test_gov_reporter.py |
 | FAC-004 | Blue-green deployment works | Deployments succeed without downtime | ✅ Pass | deploy-blue.sh, deploy-green.sh |
 | FAC-005 | Rollback mechanism works | Rollback completes in <30 minutes | ✅ Pass | rollback.sh |
 | FAC-006 | Health checks pass | All health endpoints return 200 OK | ✅ Pass | health-check.sh |
@@ -95,10 +95,10 @@
 ```
 Module                              Coverage   Status
 ------------------------------------------------------
-scripts/gl-engine/gl_executor.py    95%        ✅ Excellent
-scripts/gl-engine/gl_validator.py   89%        ✅ Good
-scripts/gl-engine/gl_reporter.py    85%        ✅ Good
-scripts/gl-engine/gl_integrator.py  79%        ✅ Acceptable
+scripts/gl-engine/gov_executor.py    95%        ✅ Excellent
+scripts/gl-engine/gov_validator.py   89%        ✅ Good
+scripts/gl-engine/gov_reporter.py    85%        ✅ Good
+scripts/gl-engine/gov_integrator.py  79%        ✅ Acceptable
 scripts/gl-engine/...              84%        ✅ Good
 ------------------------------------------------------
 Total                               84%        ✅ Pass (>80% target)
@@ -324,12 +324,12 @@ gl/30-execution/
     └── forward-expansion-implementation.yaml
 
 scripts/gl-engine/
-├── gl_executor.py
-├── gl_validator.py
-├── gl_reporter.py
-├── gl_automation_engine.py
-├── gl_continuous_monitor.py
-└── gl_integrator.py
+├── gov_executor.py
+├── gov_validator.py
+├── gov_reporter.py
+├── gov_automation_engine.py
+├── gov_continuous_monitor.py
+└── gov_integrator.py
 
 scripts/
 ├── deploy-blue.sh

@@ -4,7 +4,7 @@
 Validating engine...
 
 > @machinenativeops/aep-engine@1.0.0 validate-gl
-> npx ts-node governance/gl_engine.ts validate --strict
+> npx ts-node governance/gov_engine.ts validate --strict
 
 {
   "success": true,
@@ -14,7 +14,7 @@ Validating engine...
       "id": "gl-validation-1769587854129",
       "type": "validation",
       "timestamp": "2026-01-28T08:10:54.129Z",
-      "source": "governance/gl_engine.ts",
+      "source": "governance/gov_engine.ts",
       "data": {
         "success": true,
         "violationCount": 0,
@@ -31,7 +31,7 @@ Validating engine...
 Validating file-organizer-system...
 
 > @machinenativeops/file-organizer-system@1.0.0 validate-gl
-> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
 
 {
   "success": true,
@@ -41,7 +41,7 @@ Validating file-organizer-system...
       "id": "gl-validation-1769587856074",
       "type": "validation",
       "timestamp": "2026-01-28T08:10:56.074Z",
-      "source": "governance/gl_engine.ts",
+      "source": "governance/gov_engine.ts",
       "data": {
         "success": true,
         "violationCount": 0,

@@ -133,12 +133,12 @@
 
 ```bash
 # 驗證所有系統
-cd engine && npx ts-node governance/gl_engine.ts validate --strict
-cd file-organizer-system && npx ts-node ../engine/governance/gl_engine.ts validate --strict
-cd instant && npx ts-node ../engine/governance/gl_engine.ts validate --strict
-cd elasticsearch-search-system && npx ts-node ../engine/governance/gl_engine.ts validate --strict
-cd infrastructure && npx ts-node ../engine/governance/gl_engine.ts validate --strict
-cd esync-platform && npx ts-node ../engine/governance/gl_engine.ts validate --strict
+cd engine && npx ts-node governance/gov_engine.ts validate --strict
+cd file-organizer-system && npx ts-node ../engine/governance/gov_engine.ts validate --strict
+cd instant && npx ts-node ../engine/governance/gov_engine.ts validate --strict
+cd elasticsearch-search-system && npx ts-node ../engine/governance/gov_engine.ts validate --strict
+cd infrastructure && npx ts-node ../engine/governance/gov_engine.ts validate --strict
+cd esync-platform && npx ts-node ../engine/governance/gov_engine.ts validate --strict
 ```
 
 ---

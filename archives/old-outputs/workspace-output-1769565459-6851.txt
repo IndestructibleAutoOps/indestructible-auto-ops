@@ -1,6 +1,6 @@
 
 > @machinenativeops/aep-engine@1.0.0 validate
-> npx ts-node governance/gl_engine.ts validate --strict
+> npx ts-node governance/gov_engine.ts validate --strict
 
 {
   "success": true,
@@ -10,7 +10,7 @@
       "id": "gl-validation-1769565461167",
       "type": "validation",
       "timestamp": "2026-01-28T01:57:41.167Z",
-      "source": "governance/gl_engine.ts",
+      "source": "governance/gov_engine.ts",
       "data": {
         "success": true,
         "violationCount": 0,

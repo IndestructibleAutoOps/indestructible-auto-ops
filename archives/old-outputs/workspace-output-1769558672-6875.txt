@@ -1,6 +1,6 @@
 
 > @machinenativeops/aep-engine@1.0.0 validate
-> npx ts-node governance/gl_engine.ts validate --strict
+> npx ts-node governance/gov_engine.ts validate --strict
 
 {
   "success": false,
@@ -9,7 +9,7 @@
       "code": "GL-ENGINE-ERROR",
       "severity": "critical",
       "message": "GL Engine execution error: ENOENT: no such file or directory, scandir '/workspace/machine-native-ops/engine/engine'",
-      "file": "governance/gl_engine.ts",
+      "file": "governance/gov_engine.ts",
       "fixRequired": true
     }
   ],

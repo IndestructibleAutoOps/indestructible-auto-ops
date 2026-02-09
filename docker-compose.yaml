@@ -42,7 +42,7 @@ services:
       - /tmp
       - /run
     healthcheck:
-      test: ["CMD", "python", "-c", "from scripts.gl_engine.gl_executor import GLLayerExecutor; print('OK')"]
+      test: ["CMD", "python", "-c", "from scripts.gov_engine.gov_executor import GLLayerExecutor; print('OK')"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -55,7 +55,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: gl-validator
-    command: ["python", "-m", "scripts.gl_engine.gl_validator"]
+    command: ["python", "-m", "scripts.gov_engine.gov_validator"]
     environment:
       - PYTHONPATH=/app
       - GL_ENGINE_LOG_LEVEL=INFO
@@ -82,7 +82,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: gl-reporter
-    command: ["python", "-m", "scripts.gl_engine.gl_reporter"]
+    command: ["python", "-m", "scripts.gov_engine.gov_reporter"]
     environment:
       - PYTHONPATH=/app
       - GL_ENGINE_LOG_LEVEL=INFO
@@ -110,7 +110,7 @@ services:
     image: postgres:15-alpine
     container_name: gl-postgres
     environment:
-      - POSTGRES_DB=gl_engine
+      - POSTGRES_DB=gov_engine
       - POSTGRES_USER=gluser
       - POSTGRES_PASSWORD=glpassword
     volumes:

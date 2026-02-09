@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: test_gl_executor
+# @GL-semantic: test_gov_executor
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -14,7 +14,7 @@ from pathlib import Path
 # Add scripts directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / 'scripts' / 'gl-engine'))
 try:
-    from gl_executor import (
+    from gov_executor import (
         GLLayer,
         GLArtifact,
         ExecutionContext,

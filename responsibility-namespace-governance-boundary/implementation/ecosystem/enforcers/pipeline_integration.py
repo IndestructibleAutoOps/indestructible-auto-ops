@@ -7,6 +7,9 @@ Pipeline Integration - GL治理執行層與事實驗證管道的集成
 3. 證據收集和驗證的自動化
 4. 報告生成和驗證
 """
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: pipeline-integration
 
 import sys
 import os
@@ -27,7 +30,7 @@ fact_verification_path = Path(__file__).parent.parent / "tools" / "fact-verifica
 sys.path.insert(0, str(fact_verification_path))
 
 try:
-    from gl_fact_pipeline import (
+    from gov_fact_pipeline import (
         GLFactPipeline,
         ValidationResult,
         InternalSource,
@@ -35,7 +38,7 @@ try:
         DifferenceCategory,
     )
 except ImportError as e:
-    print(f"警告: 無法導入 gl_fact_pipeline: {e}")
+    print(f"警告: 無法導入 gov_fact_pipeline: {e}")
     print("將使用模擬實現")
 
     # 模擬類（用於測試）

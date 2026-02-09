@@ -147,7 +147,7 @@ def add_new_checks_to_enforce():
             "ecosystem/tools/scan_secrets.py",
             "ecosystem/tools/fix_security_issues.py",
             "ecosystem/tools/generate_governance_dashboard.py",
-            "ecosystem/tools/fact-verification/gl_fact_pipeline.py"
+            "ecosystem/tools/fact-verification/gov_fact_pipeline.py"
         ]
         
         for tool_path in critical_tools:
