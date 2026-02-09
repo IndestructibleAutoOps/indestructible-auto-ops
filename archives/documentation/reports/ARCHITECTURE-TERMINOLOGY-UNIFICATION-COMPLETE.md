@@ -272,7 +272,7 @@ References:
    - gl-markers/*.py
    - code_scanning_analysis.py
    - fix_code_scanning_issues.py
-   - audit/gl_audit_simple.py
+   - audit/gov_audit_simple.py
 
 3. **文檔** (多個)
    - CODE-SCANNING-ECOSYSTEM-SUMMARY.md

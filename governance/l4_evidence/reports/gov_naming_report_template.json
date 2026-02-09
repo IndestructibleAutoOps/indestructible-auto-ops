@@ -1,0 +1,18 @@
+{
+  "report_id": "gov_naming_report_{{TIMESTAMP}}",
+  "report_type": "naming_governance_report",
+  "layer": "L4",
+  "generated_at": "{{TIMESTAMP}}",
+  "project_root": "{{PROJECT_ROOT}}",
+  "summary": {
+    "total_assets_scanned": 0,
+    "compliant_assets": 0,
+    "non_compliant_assets": 0,
+    "compliance_rate": 0.0
+  },
+  "violations": [],
+  "evidence_chain": {
+    "hash": "{{HASH}}",
+    "previous_hash": "{{PREVIOUS_HASH}}"
+  }
+}

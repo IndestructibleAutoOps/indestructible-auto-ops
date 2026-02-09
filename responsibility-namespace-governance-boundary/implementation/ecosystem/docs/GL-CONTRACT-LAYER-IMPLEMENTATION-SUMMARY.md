@@ -8,7 +8,7 @@
 
 ### 1. GL 契約（gl.contract）
 
-**文件**: `gl-governance-compliance/contracts/gl_contract.py`
+**文件**: `gl-governance-compliance/contracts/gov_contract.py`
 
 **功能**:
 - ✅ 契約定義和管理
@@ -43,7 +43,7 @@ contract.save_yaml('/tmp/contract.yaml')
 
 ### 2. GL 策略（gl.policy）
 
-**文件**: `gl-governance-compliance/contracts/gl_policy.py`
+**文件**: `gl-governance-compliance/contracts/gov_policy.py`
 
 **功能**:
 - ✅ 策略定義和管理
@@ -92,7 +92,7 @@ result = policy.evaluate({'name': 'gl.user'})
 ### 3. GL 驗證器（gl.validator）
 
 **待實現模塊**:
-- `gl_validator.py`: 驗證器實現
+- `gov_validator.py`: 驗證器實現
 - `gl_audit_event.py`: 審計事件實現
 - `gl_quality_gate.py`: 品質門檻實現
 
@@ -123,9 +123,9 @@ result = policy.evaluate({'name': 'gl.user'})
 gl-governance-compliance/
 └── contracts/
     ├── __init__.py              # 模組導出
-    ├── gl_contract.py           # 契約實現 ✅
-    ├── gl_policy.py             # 策略實現 ✅
-    ├── gl_validator.py          # 驗證器實現 (待實現)
+    ├── gov_contract.py           # 契約實現 ✅
+    ├── gov_policy.py             # 策略實現 ✅
+    ├── gov_validator.py          # 驗證器實現 (待實現)
     ├── gl_quality_gate.py       # 品質門檻實現 (待實現)
     └── gl_audit_event.py       # 審計事件實現 (待實現)
 ```
@@ -239,13 +239,13 @@ jobs:
    - 完整的代碼範例
 
 2. **GL 契約實現**
-   - `gl_contract.py` - 完整的契約類
+   - `gov_contract.py` - 完整的契約類
    - 序列化/反序列化支持
    - 元資料管理
    - 依賴管理
 
 3. **GL 策略實現**
-   - `gl_policy.py` - 完整的策略類
+   - `gov_policy.py` - 完整的策略類
    - 條件評估系統
    - 違規檢測
    - 優先級系統

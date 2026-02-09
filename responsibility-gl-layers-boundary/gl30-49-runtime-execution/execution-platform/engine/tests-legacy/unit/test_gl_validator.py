@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.governance
-# @GL-semantic: test_gl_validator
+# @GL-semantic: test_gov_validator
 # @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 # Add scripts directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / 'scripts' / 'gl-engine'))
 try:
-    from gl_validator import (
+    from gov_validator import (
         ValidationSeverity,
         ValidationFinding,
         ValidationResult,
@@ -25,27 +25,27 @@ try:
     )
     # Try to import optional rule classes
     try:
-        from gl_validator import FormatRule
+        from gov_validator import FormatRule
     except ImportError:
         FormatRule = None
     try:
-        from gl_validator import LayerRule
+        from gov_validator import LayerRule
     except ImportError:
         LayerRule = None
     try:
-        from gl_validator import AgeRule
+        from gov_validator import AgeRule
     except ImportError:
         AgeRule = None
     try:
-        from gl_validator import SecurityRule
+        from gov_validator import SecurityRule
     except ImportError:
         SecurityRule = None
     try:
-        from gl_validator import DependencyRule
+        from gov_validator import DependencyRule
     except ImportError:
         DependencyRule = None
     try:
-        from gl_validator import SpecCompletenessRule
+        from gov_validator import SpecCompletenessRule
     except ImportError:
         SpecCompletenessRule = None
 except ImportError as e:

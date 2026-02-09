@@ -8,9 +8,9 @@
 GL Engine - Governance Layer Execution Engine
 MachineNativeOps GL Architecture Implementation
 This package provides the core components for GL gl-platform.gl-platform.governance operations:
-- gl_executor: Main execution engine for GL commands
-- gl_validator: Comprehensive artifact validation
-- gl_reporter: Report generation and dashboards
+- gov_executor: Main execution engine for GL commands
+- gov_validator: Comprehensive artifact validation
+- gov_reporter: Report generation and dashboards
 """
 from pathlib import Path
 __version__ = "2.0.0"

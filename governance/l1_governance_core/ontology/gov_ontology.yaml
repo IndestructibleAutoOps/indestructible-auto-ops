@@ -1,0 +1,18 @@
+semantic_model:
+  name: "gov_unified_ontology"
+  version: "1.0.0"
+  layer: "L1"
+
+concepts:
+  - name: "gov_asset"
+    definition: "治理範圍內的任何可治理資產"
+  - name: "gov_domain"
+    definition: "治理子領域"
+  - name: "gov_policy"
+    definition: "治理政策"
+  - name: "gov_violation"
+    definition: "治理違規"
+
+prefix_rules:
+  allowed: ["gov_"]
+  forbidden: ["ng_", "gl_"]

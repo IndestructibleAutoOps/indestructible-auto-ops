@@ -65,7 +65,7 @@
 ```bash
 # Run GL validation
 npm run validate:gl
-python scripts/GL-engine/gl_validator.py --workspace .
+python scripts/GL-engine/gov_validator.py --workspace .
 
 # Generate GL artifacts
 npm run generate:gl-artifacts

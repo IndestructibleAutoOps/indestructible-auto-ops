@@ -1,6 +1,6 @@
 
 > @machinenativeops/file-organizer-system@1.0.0 validate
-> npx ts-node ../engine/governance/gl_engine.ts validate --strict
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
 
 {
   "success": true,
@@ -10,7 +10,7 @@
       "id": "gl-validation-1769565475389",
       "type": "validation",
       "timestamp": "2026-01-28T01:57:55.389Z",
-      "source": "governance/gl_engine.ts",
+      "source": "governance/gov_engine.ts",
       "data": {
         "success": true,
         "violationCount": 0,

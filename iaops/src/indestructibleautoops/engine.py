@@ -12,6 +12,7 @@ from .adapters.go import GoAdapter
 from .adapters.node import NodeAdapter
 from .adapters.python import PythonAdapter
 from .graph import DAG, topological_sort
+from .graph import DAG, dag_is_acyclic, topological_sort
 from .hashing import Hasher
 from .io import ensure_dir, read_text, write_text
 from .normalize import Normalizer
@@ -172,6 +173,7 @@ class Engine:
         dag = DAG.from_nodes(self.cfg.dag_nodes)
 
         # Get step method mappings
+        # Validate that DAG node IDs match supported steps
         step_methods = self._get_step_methods()
         supported_step_ids = set(step_methods.keys())
         dag_step_ids = set(dag.ids())
@@ -209,6 +211,7 @@ class Engine:
             }
 
         # Derive execution order from DAG topology using topological sort
+        # Validate that the DAG is acyclic and derive execution order
         topo_order = topological_sort(dag)
         if topo_order is None:
             self.events.emit(trace_id, "governance", "dag_cycle", {"ok": False})

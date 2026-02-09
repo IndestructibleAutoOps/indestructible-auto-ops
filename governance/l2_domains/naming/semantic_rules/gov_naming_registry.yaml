@@ -1,0 +1,26 @@
+registry:
+  name: "gov_naming_registry"
+  version: "1.0.0"
+  domain: "naming"
+  layer: "L2"
+
+namespaces:
+  - id: "GOV-CORE"
+    prefix: "gov_"
+    scope: "global"
+  - id: "GOV-DOMAINS"
+    prefix: "gov_"
+    scope: "domain"
+  - id: "GOV-EXECUTION"
+    prefix: "gov_"
+    scope: "execution"
+
+deprecated_prefixes:
+  - prefix: "ng_"
+    replacement: "gov_naming_"
+    deprecated_since: "2026-02-01"
+    removal_deadline: "2026-06-01"
+  - prefix: "gl_"
+    replacement: "gov_"
+    deprecated_since: "2026-02-01"
+    removal_deadline: "2026-06-01"

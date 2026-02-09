@@ -984,7 +984,7 @@ Total Components: 291
 - **Type**: python_module
 - **Path**: ecosystem/enforcers/pipeline_integration.py
 - **Dependencies**: 10
-  - typing, json, re, datetime, gl_fact_pipeline, sys, yaml, pathlib, hashlib, os
+  - typing, json, re, datetime, gov_fact_pipeline, sys, yaml, pathlib, hashlib, os
 - **Dependents**: 0
 
 ## enforcers.role_executor

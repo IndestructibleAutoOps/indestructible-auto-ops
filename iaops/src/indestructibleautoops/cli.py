@@ -77,3 +77,7 @@ def clean(state_dir: str | None):
                 Path(root, name).rmdir()
         sd.rmdir()
     click.echo(json.dumps({"cleaned": str(sd)}, indent=2, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

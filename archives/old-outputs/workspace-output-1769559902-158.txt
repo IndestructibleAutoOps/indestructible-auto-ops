@@ -3,16 +3,16 @@ npm warn exec The following package was not found and will be installed: ts-node
     return new TSError(diagnosticText, diagnosticCodes, diagnostics);
            ^
 TSError: ⨯ Unable to compile TypeScript:
-governance/gl_engine.ts(11,32): error TS2307: Cannot find module 'fs' or its corresponding type declarations.
-governance/gl_engine.ts(12,18): error TS2307: Cannot find module 'path' or its corresponding type declarations.
-governance/gl_engine.ts(47,43): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
-governance/gl_engine.ts(281,5): error TS2580: Cannot find name 'require'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
-governance/gl_engine.ts(281,22): error TS2580: Cannot find name 'module'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
-governance/gl_engine.ts(282,19): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
-governance/gl_engine.ts(287,7): error TS2584: Cannot find name 'console'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
-governance/gl_engine.ts(288,7): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
-governance/gl_engine.ts(291,7): error TS2584: Cannot find name 'console'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
-governance/gl_engine.ts(292,7): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+governance/gov_engine.ts(11,32): error TS2307: Cannot find module 'fs' or its corresponding type declarations.
+governance/gov_engine.ts(12,18): error TS2307: Cannot find module 'path' or its corresponding type declarations.
+governance/gov_engine.ts(47,43): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+governance/gov_engine.ts(281,5): error TS2580: Cannot find name 'require'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+governance/gov_engine.ts(281,22): error TS2580: Cannot find name 'module'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+governance/gov_engine.ts(282,19): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+governance/gov_engine.ts(287,7): error TS2584: Cannot find name 'console'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
+governance/gov_engine.ts(288,7): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+governance/gov_engine.ts(291,7): error TS2584: Cannot find name 'console'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
+governance/gov_engine.ts(292,7): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
 
     at createTSError (/root/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:859:12)
     at reportTSError (/root/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:863:19)

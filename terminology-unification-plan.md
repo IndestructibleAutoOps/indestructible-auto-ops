@@ -86,7 +86,7 @@ gl-platform → gl_platform (或 gl-machine-native-platform)
 - ecosystem/tools/gl-markers/*.py
 - ecosystem/tools/code_scanning_analysis.py
 - ecosystem/tools/fix_code_scanning_issues.py
-- ecosystem/tools/audit/gl_audit_simple.py
+- ecosystem/tools/audit/gov_audit_simple.py
 - ecosystem/reasoning/auto_reasoner.py
 - ecosystem/CODE-SCANNING-ECOSYSTEM-SUMMARY.md
 ```

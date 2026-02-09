@@ -92,7 +92,7 @@ metadata:
     hooks:
       - id: gl-governance-validation
         name: GL Governance Validation
-        entry: python scripts/gl-engine/gl_validator.py --workspace .
+        entry: python scripts/gl-engine/gov_validator.py --workspace .
         language: python
         pass_filenames: false
         always_run: true

@@ -98,8 +98,8 @@
 
 ### 3. 實現代碼
 
-#### gl_evolution_engine.py
-**位置**: `gl-governance-compliance/scripts/evolution/gl_evolution_engine.py`
+#### gov_evolution_engine.py
+**位置**: `gl-governance-compliance/scripts/evolution/gov_evolution_engine.py`
 
 **功能**:
 - 完整的 Python 實現
@@ -284,7 +284,7 @@
 ### 基本使用
 
 ```python
-from gl_evolution_engine import GLEvolutionEngine
+from gov_evolution_engine import GLEvolutionEngine
 
 # 初始化引擎
 engine = GLEvolutionEngine(config_path="evolution_config.yaml")
@@ -449,7 +449,7 @@ machine-native-ops/
 └── gl-governance-compliance/
     └── scripts/
         └── evolution/
-            ├── gl_evolution_engine.py                 # 核心引擎
+            ├── gov_evolution_engine.py                 # 核心引擎
             └── evolution_config.yaml                  # 配置文件
 ```
 

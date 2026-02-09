@@ -28,7 +28,7 @@
 
 | 文件名 | 路徑 | 大小 | 說明 |
 |--------|------|------|------|
-| gl_evolution_engine.py | `gl-governance-compliance/scripts/evolution/` | 600+ 行 | Python 演化引擎實現 |
+| gov_evolution_engine.py | `gl-governance-compliance/scripts/evolution/` | 600+ 行 | Python 演化引擎實現 |
 
 ### 4. 配置文件（1個）
 
@@ -168,7 +168,7 @@
 ## 🚀 使用示例
 
 ```python
-from gl_evolution_engine import GLEvolutionEngine
+from gov_evolution_engine import GLEvolutionEngine
 
 # 初始化引擎
 engine = GLEvolutionEngine(config_path="evolution_config.yaml")
@@ -212,7 +212,7 @@ machine-native-ops/
 └── gl-governance-compliance/
     └── scripts/
         └── evolution/
-            ├── gl_evolution_engine.py                 ✅
+            ├── gov_evolution_engine.py                 ✅
             └── evolution_config.yaml                  ✅
 ```
 
@@ -305,7 +305,7 @@ machine-native-ops/
 
 - **完整實現報告**: `ecosystem/docs/GL_EXECUTION_FINALIZATION_COMPLETE.md`
 - **核心規範**: `ecosystem/contracts/governance/gl.execution.finalization-spec.yaml`
-- **演化引擎**: `gl-governance-compliance/scripts/evolution/gl_evolution_engine.py`
+- **演化引擎**: `gl-governance-compliance/scripts/evolution/gov_evolution_engine.py`
 - **配置文件**: `gl-governance-compliance/scripts/evolution/evolution_config.yaml`
 
 ---

@@ -32,10 +32,10 @@ def dag_is_acyclic(dag: DAG) -> bool:
         for d in deps:
             graph[d].append(i)
             indeg[i] += 1
-    q = [i for i in ids if indeg[i] == 0]
+    q = deque(sorted(i for i in ids if indeg[i] == 0))
     seen = 0
     while q:
-        cur = q.pop()
+        cur = q.popleft()
         seen += 1
         for nxt in graph[cur]:
             indeg[nxt] -= 1
@@ -54,6 +54,7 @@ def topological_sort(dag: DAG) -> list[str] | None:
         List of node IDs in topological order, or None if cyclic.
     """
 
+    """Return a topological ordering of DAG node IDs, or None if the DAG has a cycle."""
     ids = set(dag.ids())
     graph: dict[str, list[str]] = {i: [] for i in ids}
     indeg: dict[str, int] = {i: 0 for i in ids}
@@ -69,20 +70,24 @@ def topological_sort(dag: DAG) -> list[str] | None:
     # Start with nodes that have no dependencies, sorted for deterministic results
     # Start with nodes that have no dependencies
     q = deque(sorted(i for i in ids if indeg[i] == 0))
-    result = []
+    result: list[str] = []
 
     while q:
         cur = q.popleft()
         result.append(cur)
+        for nxt in graph[cur]:
+            indeg[nxt] -= 1
+            if indeg[nxt] == 0:
+                q.append(nxt)
 
-        # Collect next nodes and add them in sorted order for deterministic results
+    # If we processed all nodes, return the ordering; otherwise there's a cycle
+
         next_nodes = []
         for nxt in graph[cur]:
             indeg[nxt] -= 1
             if indeg[nxt] == 0:
                 next_nodes.append(nxt)
 
-        # Add in sorted order to maintain deterministic behavior
         for node in sorted(next_nodes):
             q.append(node)
         for nxt in graph[cur]:
@@ -90,5 +95,4 @@ def topological_sort(dag: DAG) -> list[str] | None:
             if indeg[nxt] == 0:
                 q.append(nxt)
 
-    # If we processed all nodes, return the ordering; otherwise there's a cycle
     return result if len(result) == len(ids) else None
