@@ -37,6 +37,26 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 
+# Naming type markers required by MNGA enforcement
+NAMING_TYPE_MARKERS = [
+    "CommentNaming",
+    "MappingNaming",
+    "ReferenceNaming",
+    "PathNaming",
+    "PortNaming",
+    "ServiceNaming",
+    "DependencyNaming",
+    "ShortNaming",
+    "LongNaming",
+    "DirectoryNaming",
+    "FileNaming",
+    "EventNaming",
+    "VariableNaming",
+    "EnvironmentVariableNaming",
+    "GitOpsNaming",
+    "HelmReleaseNaming",
+]
+
 # ============================================================================
 # 數據結構
 # ============================================================================
