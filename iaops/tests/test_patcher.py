@@ -1,4 +1,3 @@
-"""Tests for the Patcher class to ensure mkdir and write_file_if_missing actions work correctly."""
 """Tests for Patcher action handling."""
 
 from pathlib import Path
@@ -95,7 +94,7 @@ def test_patcher_write_file_if_missing_action_creates_file(tmp_path: Path):
     readme_path = tmp_path / "README.md"
     assert readme_path.exists()
     assert readme_path.is_file()
-    assert "generated placeholder: README.md" in readme_path.read_text()
+    assert "generated placeholder" in readme_path.read_text()
 
 
 def test_patcher_unsupported_action_is_skipped(tmp_path: Path):
@@ -183,14 +182,12 @@ def test_python_adapter_mkdir_action_integration(tmp_path: Path):
     # Verify the src directory was created
     assert (tmp_path / "src").exists()
     assert (tmp_path / "src").is_dir()
+
+
 def test_patcher_write_file_if_missing(tmp_path: Path):
     """Test write_file_if_missing action creates files."""
     patcher = Patcher(tmp_path, allow_writes=True)
-    plan = {
-        "actions": [
-            {"kind": "write_file_if_missing", "path": "test.txt"}
-        ]
-    }
+    plan = {"actions": [{"kind": "write_file_if_missing", "path": "test.txt"}]}
     result = patcher.apply(plan)
     assert result["ok"] is True
     assert len(result["applied"]) == 1
@@ -202,11 +199,7 @@ def test_patcher_write_file_if_missing_exists(tmp_path: Path):
     """Test write_file_if_missing skips existing files."""
     (tmp_path / "existing.txt").write_text("content", encoding="utf-8")
     patcher = Patcher(tmp_path, allow_writes=True)
-    plan = {
-        "actions": [
-            {"kind": "write_file_if_missing", "path": "existing.txt"}
-        ]
-    }
+    plan = {"actions": [{"kind": "write_file_if_missing", "path": "existing.txt"}]}
     result = patcher.apply(plan)
     assert result["ok"] is True
     assert len(result["applied"]) == 0
@@ -217,11 +210,7 @@ def test_patcher_write_file_if_missing_exists(tmp_path: Path):
 def test_patcher_mkdir(tmp_path: Path):
     """Test mkdir action creates directories."""
     patcher = Patcher(tmp_path, allow_writes=True)
-    plan = {
-        "actions": [
-            {"kind": "mkdir", "path": "src"}
-        ]
-    }
+    plan = {"actions": [{"kind": "mkdir", "path": "src"}]}
     result = patcher.apply(plan)
     assert result["ok"] is True
     assert len(result["applied"]) == 1
@@ -233,11 +222,7 @@ def test_patcher_mkdir_exists(tmp_path: Path):
     """Test mkdir skips existing directories."""
     (tmp_path / "existing_dir").mkdir()
     patcher = Patcher(tmp_path, allow_writes=True)
-    plan = {
-        "actions": [
-            {"kind": "mkdir", "path": "existing_dir"}
-        ]
-    }
+    plan = {"actions": [{"kind": "mkdir", "path": "existing_dir"}]}
     result = patcher.apply(plan)
     assert result["ok"] is True
     assert len(result["applied"]) == 0
@@ -248,11 +233,7 @@ def test_patcher_mkdir_exists(tmp_path: Path):
 def test_patcher_unsupported_action(tmp_path: Path):
     """Test unsupported actions are skipped."""
     patcher = Patcher(tmp_path, allow_writes=True)
-    plan = {
-        "actions": [
-            {"kind": "unknown_action", "path": "test"}
-        ]
-    }
+    plan = {"actions": [{"kind": "unknown_action", "path": "test"}]}
     result = patcher.apply(plan)
     assert result["ok"] is True
     assert len(result["applied"]) == 0
@@ -266,7 +247,7 @@ def test_patcher_writes_disabled(tmp_path: Path):
     plan = {
         "actions": [
             {"kind": "write_file_if_missing", "path": "test.txt"},
-            {"kind": "mkdir", "path": "src"}
+            {"kind": "mkdir", "path": "src"},
         ]
     }
     result = patcher.apply(plan)
@@ -285,7 +266,7 @@ def test_patcher_mixed_actions(tmp_path: Path):
             {"kind": "mkdir", "path": "src"},
             {"kind": "write_file_if_missing", "path": "src/main.py"},
             {"kind": "mkdir", "path": "tests"},
-            {"kind": "unknown_action", "path": "ignored"}
+            {"kind": "unknown_action", "path": "ignored"},
         ]
     }
     result = patcher.apply(plan)

@@ -11,6 +11,7 @@ from .adapters.generic import AdapterContext, GenericAdapter, detect_adapter, lo
 from .adapters.go import GoAdapter
 from .adapters.node import NodeAdapter
 from .adapters.python import PythonAdapter
+from .graph import DAG, topological_sort
 from .graph import DAG, dag_is_acyclic, topological_sort
 from .hashing import Hasher
 from .io import ensure_dir, read_text, write_text
@@ -95,9 +96,20 @@ class Engine:
             schema_path=self.cfg.resolve_input(self.cfg.inputs["schemas"]["event"]),
         )
         self.hasher = Hasher(self.cfg.governance["hash"]["algorithms"])
+        # Honor enabled flags - pass empty patterns if disabled
+        narrative_pats = (
+            self.cfg.governance["banNarrative"]["patterns"]
+            if self.cfg.governance["banNarrative"].get("enabled", True)
+            else []
+        )
+        question_pats = (
+            self.cfg.governance["forbidQuestions"]["patterns"]
+            if self.cfg.governance["forbidQuestions"].get("enabled", True)
+            else []
+        )
         self.scanner = NarrativeSecretScanner(
-            narrative_patterns=self.cfg.governance["banNarrative"]["patterns"],
-            forbid_question_patterns=self.cfg.governance["forbidQuestions"]["patterns"],
+            narrative_patterns=narrative_pats,
+            forbid_question_patterns=question_pats,
             secret_patterns=None,
         )
         adapters_cfg = load_adapters_config(
@@ -115,6 +127,20 @@ class Engine:
         if not schema_path.exists():
             schema_path = project_root / schema_rel
         load_jsonschema(schema_path).validate(raw)
+
+        # Validate spec.projectRoot matches project_root if it's an absolute path
+        spec_project_root = raw["spec"].get("projectRoot")
+        if spec_project_root:
+            spec_path = Path(spec_project_root)
+            if spec_path.is_absolute():
+                resolved_project = project_root.resolve()
+                if spec_path.resolve() != resolved_project:
+                    msg = (
+                        f"Config projectRoot mismatch: "
+                        f"spec={spec_path.resolve()}, actual={resolved_project}"
+                    )
+                    raise ValueError(msg)
+
         m = mode or raw["spec"]["modes"]["default"]
         cfg = EngineConfig(raw=raw, config_path=config_path, project_root=project_root, mode=m)
         return Engine(cfg)
