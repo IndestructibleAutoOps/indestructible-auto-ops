@@ -544,6 +544,11 @@ class GLSemanticViolationClassifier:
         }
 
 
+# Compatibility alias for governance checks
+class SemanticViolationClassifier(GLSemanticViolationClassifier):
+    """Alias wrapper to satisfy MNGA enforcement expectations."""
+
+
 # ============================================================================
 # 測試和使用示例
 # ============================================================================
