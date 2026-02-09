@@ -7,11 +7,27 @@ from typing import Any
 
 @dataclass
 class NarrativeSecretScanner:
+    """Scanner for detecting narrative patterns and questions in file paths.
+    
+    Note: This scanner currently only checks file PATHS, not file contents.
+    This is by design to provide fast, lightweight governance checks during
+    the indexing phase. Content-based scanning could be added in future versions.
+    """
     narrative_patterns: list[str]
     forbid_question_patterns: list[str]
-    secret_patterns: list[str] | None
 
     def scan_index(self, index: dict[str, Any]) -> dict[str, Any]:
+        """Scan file paths in the index for narrative patterns and questions.
+        
+        Args:
+            index: Index dictionary containing list of files with their paths.
+            
+        Returns:
+            Dictionary with:
+                - blocked: True if any patterns matched
+                - reason: "narrative_detected" or "question_detected"
+                - narrativeHits: List of path/pattern matches for narratives
+                - questionHits: List of path/pattern matches for questions
         """Scan file contents for narrative, questions, and secrets.
 
         Note: Currently scans file paths for narrative/question patterns.

@@ -95,17 +95,25 @@ class Engine:
             schema_path=self.cfg.resolve_input(self.cfg.inputs["schemas"]["event"]),
         )
         self.hasher = Hasher(self.cfg.governance["hash"]["algorithms"])
+        
+        # Honor enabled flags for narrative and question checking
+        narrative_patterns = (
         # Honor enabled flags - pass empty patterns if disabled
         narrative_pats = (
             self.cfg.governance["banNarrative"]["patterns"]
             if self.cfg.governance["banNarrative"].get("enabled", True)
             else []
         )
+        forbid_question_patterns = (
         question_pats = (
             self.cfg.governance["forbidQuestions"]["patterns"]
             if self.cfg.governance["forbidQuestions"].get("enabled", True)
             else []
         )
+        
+        self.scanner = NarrativeSecretScanner(
+            narrative_patterns=narrative_patterns,
+            forbid_question_patterns=forbid_question_patterns,
         self.scanner = NarrativeSecretScanner(
             narrative_patterns=narrative_pats,
             forbid_question_patterns=question_pats,
@@ -126,6 +134,18 @@ class Engine:
         if not schema_path.exists():
             schema_path = project_root / schema_rel
         load_jsonschema(schema_path).validate(raw)
+        
+        # Validate spec.projectRoot if it's an absolute path
+        spec_project_root_str = raw["spec"]["projectRoot"]
+        spec_project_root = Path(spec_project_root_str)
+        if spec_project_root.is_absolute():
+            actual_project_root = project_root.resolve()
+            if spec_project_root.resolve() != actual_project_root:
+                raise ValueError(
+                    f"Config spec.projectRoot ({spec_project_root.resolve()}) "
+                    f"does not match provided project_root ({actual_project_root})"
+                )
+        
 
         # Validate spec.projectRoot matches project_root if it's an absolute path
         spec_project_root = raw["spec"].get("projectRoot")
