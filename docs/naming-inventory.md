@@ -1,6 +1,6 @@
 # Naming-Related Assets Inventory
 
-Generated on 2026-02-09 using `rg --files -g '*naming*'` from the repository root. The list captures every tracked path containing `naming` in its name for quick reference.
+Generated on 2026-02-09 22:30:50Z using `rg --files -g '*naming*'` from the repository root. The list captures every tracked path containing `naming` in its name for quick reference.
 
 ## archives (1)
 - archives/documentation/reports/complete-naming-governance-report.json
@@ -8,7 +8,8 @@ Generated on 2026-02-09 using `rg --files -g '*naming*'` from the repository roo
 ## audit-automation (1)
 - audit-automation/task-engine/tasks/registries/naming/gl-naming-contracts-registry.yaml
 
-## docs (1)
+## docs (2)
+- docs/naming-inventory.md
 - docs/runbooks/naming-migration-playbook.md
 
 ## indestructibleautoops (1)
@@ -124,3 +125,9 @@ Generated on 2026-02-09 using `rg --files -g '*naming*'` from the repository roo
 ## scripts (2)
 - scripts/discovery/naming-audit.sh
 - scripts/fix-axiom-naming-repo.sh
+
+## Namespace, conventions, and prefixes (key references)
+- responsibility-namespace-governance-boundary/implementation/ecosystem/enforcers/complete_naming_enforcer.py: primary prefix `ng` with legacy `gl` fallback; patterns cover 16 naming categories plus uppercase variants for env variables.
+- responsibility-namespace-governance-boundary/docs/gl-naming-ontology-complete.md and specs/gl-naming-layers/gl-naming-ontology-expanded.yaml: GL naming ontology requiring `gl` prefix for naming entities and namespace consistency rules.
+- responsibility-namespace-governance-boundary/policies/naming-policy.rego: Kubernetes resource names must start with environment prefixes `dev|staging|prod`, include allowed resource type suffixes, and follow version suffix `vX.Y.Z`.
+- responsibility-namespace-governance-boundary/specs/naming-governance-directory-standards.yaml: directory standards include a `platform-` prefix for platform layer directories.
