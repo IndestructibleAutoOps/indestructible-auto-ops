@@ -497,13 +497,13 @@ Priority Distribution:
    Estimated: 1 hour
    Artifacts: 1
 
-79. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gl_audit_simple.py
+79. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gov_audit_simple.py
    State: pending
    Type: register_tool
    Estimated: 1 hour
    Artifacts: 1
 
-80. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gl_fact_pipeline.py
+80. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gov_fact_pipeline.py
    State: pending
    Type: register_tool
    Estimated: 1 hour
@@ -791,7 +791,7 @@ Priority Distribution:
    Estimated: 1 hour
    Artifacts: 1
 
-128. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gl_audit_simple.py
+128. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gov_audit_simple.py
    State: pending
    Type: register_tool
    Estimated: 1 hour
@@ -815,7 +815,7 @@ Priority Distribution:
    Estimated: 1 hour
    Artifacts: 1
 
-132. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gl_fact_pipeline.py
+132. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gov_fact_pipeline.py
    State: pending
    Type: register_tool
    Estimated: 1 hour
@@ -1565,7 +1565,7 @@ Priority Distribution:
    Estimated: 1 hour
    Artifacts: 1
 
-257. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gl_fact_pipeline.py
+257. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gov_fact_pipeline.py
    State: pending
    Type: register_tool
    Estimated: 1 hour
@@ -2081,7 +2081,7 @@ Priority Distribution:
    Estimated: 1 hour
    Artifacts: 1
 
-343. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gl_audit_simple.py
+343. [critical] TASK-20260204-001: Fix tool_references: 未注册工具引用: gov_audit_simple.py
    State: pending
    Type: register_tool
    Estimated: 1 hour

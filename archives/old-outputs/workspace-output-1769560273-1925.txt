@@ -26,7 +26,7 @@ jobs:
       - name: Run GL Semantic Validation
         run: |
           cd engine
-          npx ts-node governance/gl_engine.ts validate --strict
+          npx ts-node governance/gov_engine.ts validate --strict
           
       - name: Generate Governance Event Stream
         if: failure()

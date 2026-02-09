@@ -41,7 +41,7 @@ jobs:
       - name: Run GL Semantic Validation - Engine
         run: |
           cd engine
-          npx ts-node governance/gl_engine.ts validate --strict
+          npx ts-node governance/gov_engine.ts validate --strict
           
       - name: Generate Governance Event Stream
         if: failure()
@@ -75,7 +75,7 @@ jobs:
           
       - name: Run GL Semantic Validation - File Organizer
         run: |
-          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=file-organizer-system
+          npx ts-node engine/governance/gov_engine.ts validate --strict --workspace=file-organizer-system
           
       - name: Generate Governance Event Stream
         if: failure()
@@ -108,7 +108,7 @@ jobs:
           
       - name: Run GL Semantic Validation - Instant
         run: |
-          npx ts-node engine/governance/gl_engine.ts validate --strict --workspace=instant
+          npx ts-node engine/governance/gov_engine.ts validate --strict --workspace=instant
           
       - name: Generate Governance Event Stream
         if: failure()
@@ -174,7 +174,7 @@ jobs:
       - name: Generate Audit History Report
         run: |
           cd engine
-          npx ts-node governance/gl_engine.ts audit-history --days=7
+          npx ts-node governance/gov_engine.ts audit-history --days=7
           
       - name: Sync Audit Results
         run: |

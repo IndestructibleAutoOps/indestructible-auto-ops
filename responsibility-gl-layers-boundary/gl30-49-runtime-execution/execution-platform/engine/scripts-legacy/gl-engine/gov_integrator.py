@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: gl_integrator
+# @GL-semantic: gov_integrator
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -83,8 +83,8 @@ class GLIntegrator:
     def load_artifacts(self, root_path: Path) -> None:
         """Load all GL artifacts from the repository."""
         logger.info(f"Loading artifacts from: {root_path}")
-        gl_files = list(root_path.glob("GL*.json"))
-        for gl_file in gl_files:
+        gov_files = list(root_path.glob("GL*.json"))
+        for gl_file in gov_files:
             try:
                 with open(gl_file, 'r') as f:
                     data = json.load(f)

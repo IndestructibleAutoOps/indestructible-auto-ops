@@ -96,7 +96,7 @@ and evidence.
 
 - [Boundary Checker](gl-governance-compliance-platform/scripts/boundary_checker.py)
 - [Naming Validator](gl-governance-compliance/scripts/naming/gl_naming_validator.py)
-- [Evolution Engine](gl-governance-compliance/scripts/evolution/gl_evolution_engine.py)
+- [Evolution Engine](gl-governance-compliance/scripts/evolution/gov_evolution_engine.py)
 - [Validation Scripts](scripts/)
 - [Tests](tests/)
 - [Evidence](evidence/)

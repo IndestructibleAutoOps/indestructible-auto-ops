@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: gl_reporter
+# @GL-semantic: gov_reporter
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3

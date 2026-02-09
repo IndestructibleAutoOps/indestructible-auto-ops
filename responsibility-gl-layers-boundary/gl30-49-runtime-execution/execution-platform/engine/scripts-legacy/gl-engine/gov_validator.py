@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: gl_validator
+# @GL-semantic: gov_validator
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -12,6 +12,7 @@ This module provides comprehensive validation for GL gl-platform.gl-platform.gov
 including schema validation, policy compliance, security checks, and
 cross-layer consistency verification.
 """
+# MNGA-002: Import organization needs review
 import sys
 import yaml
 import json

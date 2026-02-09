@@ -135,11 +135,11 @@ validators                  1        0        1       0.0%
   Suggested check: check_tools_layer
   Description: 工具腳本
 
-- [TOOLS] ecosystem/tools/audit/gl_audit_simple.py
+- [TOOLS] ecosystem/tools/audit/gov_audit_simple.py
   Suggested check: check_tools_layer
   Description: 工具腳本
 
-- [TOOLS] ecosystem/tools/fact-verification/gl_fact_pipeline.py
+- [TOOLS] ecosystem/tools/fact-verification/gov_fact_pipeline.py
   Suggested check: check_tools_layer
   Description: 工具腳本
 
@@ -200,11 +200,11 @@ validators                  1        0        1       0.0%
 ⚪ [GOVERNANCE] ecosystem/governance/meta-governance/tools/full_governance_integration.py
 ⚪ [REASONING] ecosystem/reasoning/auto_reasoner.py
 ⚪ [TOOLS] ecosystem/tools/analyze_semantic_gaps.py
-🔴 [TOOLS] ecosystem/tools/audit/gl_audit_simple.py
+🔴 [TOOLS] ecosystem/tools/audit/gov_audit_simple.py
 🔴 [TOOLS] ecosystem/tools/audit_trail_query.py
 🔴 [TOOLS] ecosystem/tools/audit_trail_report.py
 🔴 [TOOLS] ecosystem/tools/code_scanning_analysis.py
-🔴 [TOOLS] ecosystem/tools/fact-verification/gl_fact_pipeline.py
+🔴 [TOOLS] ecosystem/tools/fact-verification/gov_fact_pipeline.py
 🔴 [TOOLS] ecosystem/tools/fix_code_scanning_issues.py
 🔴 [TOOLS] ecosystem/tools/fix_security_issues.py
 🔴 [TOOLS] ecosystem/tools/generate_governance_dashboard.py

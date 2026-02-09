@@ -323,7 +323,7 @@ spec:
 
   integration:
     dataSources:
-      - source: "gl_evolution_engine"
+      - source: "gov_evolution_engine"
         type: "internal"
         endpoint: "http://localhost:8080/api/metrics"
         authentication:

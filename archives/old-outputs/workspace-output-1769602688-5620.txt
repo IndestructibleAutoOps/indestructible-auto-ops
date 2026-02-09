@@ -2,7 +2,7 @@ Running GL governance pre-push validation...
 Validating engine module...
 
 > @machinenativeops/aep-engine@1.0.0 validate-gl
-> npx ts-node governance/gl_engine.ts validate --strict
+> npx ts-node governance/gov_engine.ts validate --strict
 
 {
   "success": true,
@@ -12,7 +12,7 @@ Validating engine module...
       "id": "gl-validation-1769602691325",
       "type": "validation",
       "timestamp": "2026-01-28T12:18:11.325Z",
-      "source": "governance/gl_engine.ts",
+      "source": "governance/gov_engine.ts",
       "data": {
         "success": true,
         "violationCount": 0,
