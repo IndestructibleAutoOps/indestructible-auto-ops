@@ -53,6 +53,7 @@ def topological_sort(dag: DAG) -> list[str] | None:
     Returns:
         List of node IDs in topological order, or None if cyclic.
     """
+
     ids = set(dag.ids())
     graph: dict[str, list[str]] = {i: [] for i in ids}
     indeg: dict[str, int] = {i: 0 for i in ids}
@@ -66,6 +67,7 @@ def topological_sort(dag: DAG) -> list[str] | None:
 
     # Kahn's algorithm for topological sort using deque for O(1) popleft
     # Start with nodes that have no dependencies, sorted for deterministic results
+    # Start with nodes that have no dependencies
     q = deque(sorted(i for i in ids if indeg[i] == 0))
     result = []
 
@@ -83,6 +85,10 @@ def topological_sort(dag: DAG) -> list[str] | None:
         # Add in sorted order to maintain deterministic behavior
         for node in sorted(next_nodes):
             q.append(node)
+        for nxt in graph[cur]:
+            indeg[nxt] -= 1
+            if indeg[nxt] == 0:
+                q.append(nxt)
 
     # If we processed all nodes, return the ordering; otherwise there's a cycle
     return result if len(result) == len(ids) else None
