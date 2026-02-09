@@ -7,11 +7,16 @@
 - [x] 文檔準備（當前結構、目標結構、遷移映射）
 - [x] 創建 feature 分支：refactor/governance-standardization
 
-## 階段 2: 根層目錄重構 ⏸️ 待執行
-- [ ] 整合 18 個 responsibility-* 目錄
-- [ ] 整合 enterprise-governance 目錄
-- [ ] 整合 .governance 目錄
-- [ ] 清理根層目錄
+## 階段 2: 根層目錄重構 ✅ 已完成
+- [x] 整合 18 個 responsibility-* 目錄
+- [x] 整合 enterprise-governance 目錄
+- [x] 整合 .governance 目錄（白名單跳過）
+- [x] 清理根層目錄
+
+**成果**:
+- 根層目錄從 35 減少到 17（減少 51%）
+- 2,443 個文件成功重新組織
+- L0-L4 治理層級結構建立完成
 
 ## 階段 3: 命名規範統一
 - [ ] 實施 16 種命名規範
