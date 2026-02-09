@@ -41,7 +41,7 @@ spec:
         name: "Validation Feedback"
         name_zh: "驗證回饋"
         description: "自動收集Artifact驗證結果作為回饋"
-        source: "gl_validator"
+        source: "gov_validator"
         data_points:
           - "validation_errors"
           - "validation_warnings"

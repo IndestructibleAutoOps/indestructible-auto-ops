@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.governance
-# @GL-semantic: gl_automation_engine
+# @GL-semantic: gov_automation_engine
 # @GL-audit-trail: ../../engine/gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -79,8 +79,8 @@ class GLAutomationEngine:
         self.results: List[AutomationResult] = []
         self.running = False
         self._stop_event = threading.Event()
-        self.validator = None  # Will be imported from gl_validator
-        self.executor = None  # Will be imported from gl_executor
+        self.validator = None  # Will be imported from gov_validator
+        self.executor = None  # Will be imported from gov_executor
     def register_task(self, 
                      task_id: str,
                      name: str,
@@ -218,7 +218,7 @@ def validate_all_artifacts(engine: GLAutomationEngine) -> Dict[str, Any]:
     """Validate all GL gl-platform.governance artifacts."""
     try:
         # Import validator here to avoid circular imports
-        from gl_validator import GLValidator
+        from gov_validator import GLValidator
         validator = GLValidator()
         results = validator.validate_directory(Path.cwd())
         return {

@@ -81,7 +81,7 @@
   - `scan_secrets.py` - 機密掃描
   - `fix_security_issues.py` - 安全問題修復
   - `generate_governance_dashboard.py` - 治理儀表板生成
-  - `gl_fact_pipeline.py` - GL 事實管道
+  - `gov_fact_pipeline.py` - GL 事實管道
 - **狀態**: ✅ PASS
 
 #### 5. Events Layer

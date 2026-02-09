@@ -30,7 +30,7 @@ fact_verification_path = Path(__file__).parent.parent / "tools" / "fact-verifica
 sys.path.insert(0, str(fact_verification_path))
 
 try:
-    from gl_fact_pipeline import (
+    from gov_fact_pipeline import (
         GLFactPipeline,
         ValidationResult,
         InternalSource,
@@ -38,7 +38,7 @@ try:
         DifferenceCategory,
     )
 except ImportError as e:
-    print(f"警告: 無法導入 gl_fact_pipeline: {e}")
+    print(f"警告: 無法導入 gov_fact_pipeline: {e}")
     print("將使用模擬實現")
 
     # 模擬類（用於測試）

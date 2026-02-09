@@ -103,7 +103,7 @@ export class GLEngine {
         code: 'GL-ENGINE-ERROR',
         severity: 'critical',
         message: `GL Engine execution error: ${errorMessage}`,
-        file: 'governance/gl_engine.ts',
+        file: 'governance/gov_engine.ts',
         fixRequired: true
       });
     }
@@ -214,7 +214,7 @@ export class GLEngine {
       id: `gl-validation-${Date.now()}`,
       type: 'validation',
       timestamp: new Date().toISOString(),
-      source: 'governance/gl_engine.ts',
+      source: 'governance/gov_engine.ts',
       data: {
         success: result.success,
         violationCount: result.violations.length,
@@ -227,7 +227,7 @@ export class GLEngine {
         id: `gl-violation-${Date.now()}`,
         type: 'enforcement',
         timestamp: new Date().toISOString(),
-        source: 'governance/gl_engine.ts',
+        source: 'governance/gov_engine.ts',
         data: {
           violations: result.violations,
           enforcement: 'strict'

@@ -7,7 +7,7 @@
 #
 # @GL-governed
 # @GL-layer: governance
-# @GL-semantic: gl_aep_engine_auditor
+# @GL-semantic: gov_aep_engine_auditor
 # @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3

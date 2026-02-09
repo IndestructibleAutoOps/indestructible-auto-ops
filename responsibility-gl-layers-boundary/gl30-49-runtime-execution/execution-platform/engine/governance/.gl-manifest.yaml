@@ -47,8 +47,8 @@ components:
       - "path"
       - "../interfaces.d"
 
-  gl_engine:
-    file: "gl_engine.ts"
+  gov_engine:
+    file: "gov_engine.ts"
     class: "GovernanceEngine"
     description: "Core governance engine orchestrator"
     version: "1.0.0"

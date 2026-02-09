@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: gl_executor
+# @GL-semantic: gov_executor
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -11,7 +11,6 @@ MachineNativeOps GL Architecture Implementation
 This module provides the core execution engine for GL (Governance Layers) operations,
 enabling automated gl-platform.gl-platform.governance artifact management, validation, and orchestration.
 """
-# MNGA-002: Import organization needs review
 import sys
 import yaml
 import json
@@ -593,15 +592,15 @@ def main():
         epilog="""
 Examples:
   # List all artifacts
-  python gl_executor.py list
+  python gov_executor.py list
   # List artifacts for a specific layer
-  python gl_executor.py list --layer GL00-09
+  python gov_executor.py list --layer GL00-09
   # Validate all artifacts
-  python gl_executor.py validate
+  python gov_executor.py validate
   # Generate a new artifact
-  python gl_executor.py generate --layer GL00-09 --type vision_statement --name my-vision
+  python gov_executor.py generate --layer GL00-09 --type vision_statement --name my-vision
   # Generate a report
-  python gl_executor.py report --type summary
+  python gov_executor.py report --type summary
         """
     )
     parser.add_argument('command', choices=['list', 'validate', 'generate', 'report'],

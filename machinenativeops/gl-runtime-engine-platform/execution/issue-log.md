@@ -234,7 +234,7 @@ Standardized error handling:
 3. Added error codes and context information
 
 **Resolution Method**:
-Refactored `scripts/gl-engine/gl_executor.py`
+Refactored `scripts/gl-engine/gov_executor.py`
 
 **Labels**: code-quality, refactoring
 

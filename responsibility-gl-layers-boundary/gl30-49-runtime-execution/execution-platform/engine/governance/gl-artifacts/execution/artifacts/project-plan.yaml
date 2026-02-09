@@ -61,9 +61,9 @@ spec:
         duration_weeks: 6
         status: "in_progress"
         deliverables:
-          - "gl_executor.py"
-          - "gl_validator.py"
-          - "gl_reporter.py"
+          - "gov_executor.py"
+          - "gov_validator.py"
+          - "gov_reporter.py"
       - phase: "Phase 3: 測試與優化"
         start: "2025-03-16"
         end: "2025-04-15"

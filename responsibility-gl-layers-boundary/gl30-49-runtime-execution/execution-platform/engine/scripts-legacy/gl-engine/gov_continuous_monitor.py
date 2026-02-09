@@ -1,7 +1,7 @@
 #
 # @GL-governed
 # @GL-layer: gl-platform.gl-platform.governance
-# @GL-semantic: gl_continuous_monitor
+# @GL-semantic: gov_continuous_monitor
 # @GL-audit-trail: ../../engine/gl-platform.gl-platform.governance/GL_SEMANTIC_ANCHOR.json
 #
 #!/usr/bin/env python3
@@ -351,10 +351,10 @@ def check_artifact_validity() -> Dict[str, Any]:
     """Check validity of all gl-platform.gl-platform.governance artifacts."""
     try:
         artifact_dir = Path.cwd()
-        gl_files = list(artifact_dir.glob("GL*.json"))
+        gov_files = list(artifact_dir.glob("GL*.json"))
         valid_count = 0
         error_count = 0
-        for gl_file in gl_files:
+        for gl_file in gov_files:
             try:
                 with open(gl_file, 'r') as f:
                     data = json.load(f)
@@ -363,10 +363,10 @@ def check_artifact_validity() -> Dict[str, Any]:
             except Exception:
                 error_count += 1
         return {
-            "total_artifacts": len(gl_files),
+            "total_artifacts": len(gov_files),
             "valid_artifacts": valid_count,
             "invalid_artifacts": error_count,
-            "validity_rate": (valid_count / len(gl_files) * 100) if gl_files else 100
+            "validity_rate": (valid_count / len(gov_files) * 100) if gov_files else 100
         }
     except Exception as e:
         raise Exception(f"Artifact validity check failed: {str(e)}")

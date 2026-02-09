@@ -104,7 +104,7 @@ gl-governance-compliance/
     ├── gl_environment.py        # 環境實現
     ├── gl_label.py              # 標籤實現
     ├── gl_comment.py            # 註釋實現
-    └── gl_filesystem.py         # 文件系統實現
+    └── gov_filesystem.py         # 文件系統實現
 ```
 
 ### 核心類別

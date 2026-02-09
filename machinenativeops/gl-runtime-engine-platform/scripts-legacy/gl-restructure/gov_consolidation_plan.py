@@ -11,7 +11,6 @@ GL Consolidation Plan Generator
 This script analyzes the current GL structure and generates a consolidation plan
 based on the GL Unified Naming Charter.
 """
-# MNGA-002: Import organization needs review
 import json
 import yaml
 from pathlib import Path
@@ -69,12 +68,12 @@ class GLConsolidationPlanner:
     }
     def __init__(self, repo_path: str):
         self.repo_path = Path(repo_path)
-        self.gl_files: List[FileInfo] = []
+        self.gov_files: List[FileInfo] = []
         self.actions: List[ConsolidationAction] = []
         self.analysis_results: Dict = {}
-    def scan_gl_files(self) -> List[FileInfo]:
+    def scan_gov_files(self) -> List[FileInfo]:
         """掃描所有 GL 相關檔案"""
-        gl_files = []
+        gov_files = []
         for pattern in ['**/GL*', '**/gl-*', '**/gl_*']:
             for file_path in self.repo_path.rglob(pattern):
                 if '.git' in str(file_path) or 'node_modules' in str(file_path):
@@ -90,9 +89,9 @@ class GLConsolidationPlanner:
                     if issues:
                         file_info.naming_compliant = False
                         file_info.issues = issues
-                    gl_files.append(file_info)
-        self.gl_files = gl_files
-        return gl_files
+                    gov_files.append(file_info)
+        self.gov_files = gov_files
+        return gov_files
     def _check_naming_compliance(self, filename: str) -> List[str]:
         """檢查檔案命名合規性"""
         issues = []
@@ -145,7 +144,7 @@ class GLConsolidationPlanner:
                     risk_level="medium"
                 ))
         # 2. 重命名不合規檔案
-        for file_info in self.gl_files:
+        for file_info in self.gov_files:
             if file_info.name in self.RENAME_MAP:
                 new_name = self.RENAME_MAP[file_info.name]
                 new_path = str(Path(file_info.path).parent / new_name)
@@ -158,8 +157,8 @@ class GLConsolidationPlanner:
                     risk_level="low"
                 ))
         # 3. 移動根目錄的 GL 檔案到統一位置
-        root_gl_files = [f for f in self.gl_files if '/' not in f.path or f.path.count('/') == 0]
-        for file_info in root_gl_files:
+        root_gov_files = [f for f in self.gov_files if '/' not in f.path or f.path.count('/') == 0]
+        for file_info in root_gov_files:
             if file_info.name.startswith('GL-') or file_info.name.startswith('gl-'):
                 target_path = f"gl-platform.gl-platform.governance/GL-architecture/{file_info.name}"
                 actions.append(ConsolidationAction(
@@ -174,17 +173,17 @@ class GLConsolidationPlanner:
         return actions
     def analyze(self) -> Dict:
         """執行完整分析"""
-        self.scan_gl_files()
+        self.scan_gov_files()
         duplicates = self.find_duplicates()
         self.generate_consolidation_actions()
         # 統計分析
-        total_files = len(self.gl_files)
-        compliant_files = sum(1 for f in self.gl_files if f.naming_compliant)
+        total_files = len(self.gov_files)
+        compliant_files = sum(1 for f in self.gov_files if f.naming_compliant)
         non_compliant_files = total_files - compliant_files
         self.analysis_results = {
             "scan_date": datetime.now().isoformat(),
             "summary": {
-                "total_gl_files": total_files,
+                "total_gov_files": total_files,
                 "compliant_files": compliant_files,
                 "non_compliant_files": non_compliant_files,
                 "compliance_rate": f"{(compliant_files/total_files*100):.1f}%" if total_files > 0 else "N/A",
@@ -205,7 +204,7 @@ class GLConsolidationPlanner:
                     "name": f.name,
                     "issues": f.issues
                 }
-                for f in self.gl_files if not f.naming_compliant
+                for f in self.gov_files if not f.naming_compliant
             ],
             "actions": [
                 {
