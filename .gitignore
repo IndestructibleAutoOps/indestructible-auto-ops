@@ -76,6 +76,11 @@ build/
 .env
 .gh_token
 
+# Coverage artifacts
+.coverage
+.coverage.*
+htmlcov/
+
 # Sensitive directories - may contain tokens/secrets
 outputs/
 !reports/research-runs/**/outputs/
