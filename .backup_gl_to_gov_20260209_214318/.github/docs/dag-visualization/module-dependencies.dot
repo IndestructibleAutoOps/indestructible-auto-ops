@@ -1,0 +1,24 @@
+digraph ModuleDependencies {
+    rankdir=BT;
+    node [shape=box, style=rounded];
+    
+    "01-core" [label="01-core\nL1-L2", fillcolor="#90EE90", style=filled];
+    "02-intelligence" [label="02-intelligence\nL2-L3", fillcolor="#90EE90", style=filled];
+    "03-governance" [label="03-governance\nL3-L4", fillcolor="#90EE90", style=filled];
+    "04-autonomous" [label="04-autonomous\nL4-L5", fillcolor="#FFD700", style=filled];
+    "05-observability" [label="05-observability\nL4-L5", fillcolor="#90EE90", style=filled];
+    "06-security" [label="06-security\nGlobal Layer", fillcolor="#90EE90", style=filled];
+
+    "01-core" -> "02-intelligence";
+    "01-core" -> "03-governance";
+    "02-intelligence" -> "03-governance";
+    "01-core" -> "04-autonomous";
+    "02-intelligence" -> "04-autonomous";
+    "03-governance" -> "04-autonomous";
+    "01-core" -> "05-observability";
+    "02-intelligence" -> "05-observability";
+    "03-governance" -> "05-observability";
+    "01-core" -> "06-security";
+    "03-governance" -> "06-security";
+    "05-observability" -> "06-security";
+}

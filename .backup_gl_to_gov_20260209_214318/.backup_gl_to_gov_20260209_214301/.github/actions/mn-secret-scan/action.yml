@@ -1,0 +1,502 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-secret-scan
+# Replaces: trufflesecurity/trufflehog@main, gitleaks/gitleaks-action@v2
+# Description: Secret and credential scanning for repositories
+# Version: 1.0.0
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 'MN Secret Scan'
+description: 'MachineNativeOps official secret scanning action - detects leaked credentials'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'key'
+  color: 'orange'
+
+inputs:
+  scan-path:
+    description: 'Path to scan for secrets'
+    required: false
+    default: '.'
+  scan-type:
+    description: 'Scan type: filesystem, git-history, git-diff'
+    required: false
+    default: 'filesystem'
+  config-file:
+    description: 'Path to custom configuration file'
+    required: false
+    default: ''
+  baseline-file:
+    description: 'Path to baseline file for ignoring known secrets'
+    required: false
+    default: ''
+  output-format:
+    description: 'Output format: json, sarif, table'
+    required: false
+    default: 'table'
+  output-file:
+    description: 'Output file path'
+    required: false
+    default: ''
+  fail-on-secrets:
+    description: 'Fail the workflow if secrets are found'
+    required: false
+    default: 'true'
+  include-patterns:
+    description: 'File patterns to include (comma-separated)'
+    required: false
+    default: ''
+  exclude-patterns:
+    description: 'File patterns to exclude (comma-separated)'
+    required: false
+    default: 'node_modules,vendor,.git,*.min.js,*.min.css,package-lock.json,yarn.lock'
+  max-depth:
+    description: 'Maximum directory depth to scan'
+    required: false
+    default: ''
+  entropy-threshold:
+    description: 'Minimum entropy for detecting high-entropy strings'
+    required: false
+    default: '4.5'
+  upload-sarif:
+    description: 'Upload SARIF results to GitHub Security'
+    required: false
+    default: 'false'
+  github-token:
+    description: 'GitHub token for API access'
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  secrets-found:
+    description: 'Number of secrets found'
+    value: ${{ steps.scan.outputs.secrets_found }}
+  sarif-file:
+    description: 'Path to SARIF output file'
+    value: ${{ steps.scan.outputs.sarif_file }}
+  scan-status:
+    description: 'Scan status: clean, secrets-detected, error'
+    value: ${{ steps.scan.outputs.status }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Secret Scanner
+      id: setup
+      shell: bash
+      run: |
+        # Create temporary directory for scanner
+        SCANNER_DIR=$(mktemp -d)
+        echo "scanner_dir=$SCANNER_DIR" >> $GITHUB_OUTPUT
+
+        # Define secret patterns
+        cat > "$SCANNER_DIR/patterns.txt" << 'PATTERNS_EOF'
+        # AWS
+        AKIA[0-9A-Z]{16}
+        # AWS Secret Key
+        [A-Za-z0-9/+=]{40}
+        # GitHub Token
+        gh[pousr]_[A-Za-z0-9_]{36,}
+        # GitHub Personal Access Token (classic)
+        ghp_[A-Za-z0-9]{36}
+        # GitHub OAuth Access Token
+        gho_[A-Za-z0-9]{36}
+        # GitHub User-to-Server Token
+        ghu_[A-Za-z0-9]{36}
+        # GitHub Server-to-Server Token
+        ghs_[A-Za-z0-9]{36}
+        # GitHub Refresh Token
+        ghr_[A-Za-z0-9]{36}
+        # Generic API Key
+        [aA][pP][iI]_?[kK][eE][yY].*['"][0-9a-zA-Z]{32,}['"]
+        # Generic Secret
+        [sS][eE][cC][rR][eE][tT].*['"][0-9a-zA-Z]{32,}['"]
+        # Private Key
+        -----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----
+        # Slack Token
+        xox[baprs]-[0-9]{10,13}-[0-9]{10,13}[a-zA-Z0-9-]*
+        # Slack Webhook
+        https://hooks\.slack\.com/services/T[a-zA-Z0-9_]{8}/B[a-zA-Z0-9_]{8,}/[a-zA-Z0-9_]{24}
+        # Google API Key
+        AIza[0-9A-Za-z\\-_]{35}
+        # Google OAuth
+        [0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com
+        # Heroku API Key
+        [hH][eE][rR][oO][kK][uU].*[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}
+        # Mailchimp API Key
+        [0-9a-f]{32}-us[0-9]{1,2}
+        # Mailgun API Key
+        key-[0-9a-zA-Z]{32}
+        # PayPal Braintree Access Token
+        access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}
+        # Picatic API Key
+        sk_live_[0-9a-z]{32}
+        # Stripe API Key
+        sk_live_[0-9a-zA-Z]{24}
+        # Stripe Restricted API Key
+        rk_live_[0-9a-zA-Z]{24}
+        # Square Access Token
+        sq0atp-[0-9A-Za-z\\-_]{22}
+        # Square OAuth Secret
+        sq0csp-[0-9A-Za-z\\-_]{43}
+        # Twilio API Key
+        SK[0-9a-fA-F]{32}
+        # Twitter Access Token
+        [tT][wW][iI][tT][tT][eE][rR].*[1-9][0-9]+-[0-9a-zA-Z]{40}
+        # Twitter OAuth
+        [tT][wW][iI][tT][tT][eE][rR].*['"][0-9a-zA-Z]{35,44}['"]
+        # Password in URL
+        [a-zA-Z]{3,10}://[^/\\s:@]{3,20}:[^/\\s:@]{3,20}@.{1,100}["'\\s]
+        # Generic Password
+        [pP][aA][sS][sS][wW][oO][rR][dD].*['"][^'"]{8,}['"]
+        # JWT Token
+        eyJ[A-Za-z0-9-_=]+\.eyJ[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*
+        # Base64 Encoded Secrets (high entropy)
+        [A-Za-z0-9+/]{40,}={0,2}
+        # Azure Storage Account Key
+        [a-zA-Z0-9+/]{86}==
+        # SendGrid API Key
+        SG\.[a-zA-Z0-9]{22}\.[a-zA-Z0-9-_]{43}
+        # npm Token
+        npm_[A-Za-z0-9]{36}
+        # PyPI Token
+        pypi-AgEIcHlwaS5vcmc[A-Za-z0-9-_]{50,}
+        # NuGet API Key
+        oy2[a-z0-9]{43}
+        # Docker Hub Token
+        dckr_pat_[A-Za-z0-9-_]{27}
+        PATTERNS_EOF
+
+        echo "Secret patterns configured"
+
+    - name: Build Exclude List
+      id: exclude
+      shell: bash
+      run: |
+        EXCLUDE_PATTERNS="${{ inputs.exclude-patterns }}"
+        SCANNER_DIR="${{ steps.setup.outputs.scanner_dir }}"
+
+        # Create exclude file
+        EXCLUDE_FILE="$SCANNER_DIR/excludes.txt"
+
+        # Default excludes
+        cat > "$EXCLUDE_FILE" << 'EXCLUDE_EOF'
+        .git
+        node_modules
+        vendor
+        __pycache__
+        .pytest_cache
+        .tox
+        .eggs
+        *.egg-info
+        dist
+        build
+        *.min.js
+        *.min.css
+        *.map
+        package-lock.json
+        yarn.lock
+        pnpm-lock.yaml
+        Gemfile.lock
+        Cargo.lock
+        poetry.lock
+        composer.lock
+        go.sum
+        *.pyc
+        *.pyo
+        *.class
+        *.o
+        *.so
+        *.dylib
+        *.dll
+        *.exe
+        *.png
+        *.jpg
+        *.jpeg
+        *.gif
+        *.ico
+        *.svg
+        *.woff
+        *.woff2
+        *.ttf
+        *.eot
+        *.pdf
+        *.zip
+        *.tar
+        *.gz
+        *.rar
+        EXCLUDE_EOF
+
+        # Add custom excludes
+        if [[ -n "$EXCLUDE_PATTERNS" ]]; then
+          echo "$EXCLUDE_PATTERNS" | tr ',' '\n' >> "$EXCLUDE_FILE"
+        fi
+
+        echo "exclude_file=$EXCLUDE_FILE" >> $GITHUB_OUTPUT
+
+    - name: Run Secret Scan
+      id: scan
+      shell: bash
+      run: |
+        SCAN_PATH="${{ inputs.scan-path }}"
+        SCAN_TYPE="${{ inputs.scan-type }}"
+        CONFIG_FILE="${{ inputs.config-file }}"
+        BASELINE_FILE="${{ inputs.baseline-file }}"
+        OUTPUT_FORMAT="${{ inputs.output-format }}"
+        OUTPUT_FILE="${{ inputs.output-file }}"
+        FAIL_ON_SECRETS="${{ inputs.fail-on-secrets }}"
+
+        # Validate scan-type (only filesystem is currently implemented)
+        if [[ "$SCAN_TYPE" != "filesystem" ]]; then
+          echo "::warning::scan-type '$SCAN_TYPE' is not yet implemented. Only 'filesystem' is supported. Falling back to filesystem scan."
+          SCAN_TYPE="filesystem"
+        fi
+        INCLUDE_PATTERNS="${{ inputs.include-patterns }}"
+        MAX_DEPTH="${{ inputs.max-depth }}"
+        ENTROPY_THRESHOLD="${{ inputs.entropy-threshold }}"
+        SCANNER_DIR="${{ steps.setup.outputs.scanner_dir }}"
+        EXCLUDE_FILE="${{ steps.exclude.outputs.exclude_file }}"
+
+        # Results file
+        RESULTS_FILE="$SCANNER_DIR/results.json"
+        SARIF_FILE=""
+
+        if [[ "$OUTPUT_FORMAT" == "sarif" || "${{ inputs.upload-sarif }}" == "true" ]]; then
+          SARIF_FILE="${OUTPUT_FILE:-secret-scan-results.sarif}"
+        fi
+
+        echo "Starting secret scan..."
+        echo "Scan path: $SCAN_PATH"
+        echo "Scan type: $SCAN_TYPE"
+
+        # Initialize results
+        SECRETS_FOUND=0
+        FINDINGS="[]"
+
+        # Build find command arguments as array to avoid injection
+        FIND_ARGS=("$SCAN_PATH" -type f)
+
+        # Add depth limit
+        if [[ -n "$MAX_DEPTH" ]]; then
+          FIND_ARGS+=(-maxdepth "$MAX_DEPTH")
+        fi
+
+        # Add include patterns
+        if [[ -n "$INCLUDE_PATTERNS" ]]; then
+          FIND_ARGS+=(\()
+          FIRST_PATTERN=true
+          for pattern in $(echo "$INCLUDE_PATTERNS" | tr ',' ' '); do
+            if [[ "$FIRST_PATTERN" == "false" ]]; then
+              FIND_ARGS+=(-o)
+            fi
+            FIND_ARGS+=(-name "$pattern")
+            FIRST_PATTERN=false
+          done
+          FIND_ARGS+=(\))
+        fi
+
+        # Load patterns
+        PATTERNS_FILE="$SCANNER_DIR/patterns.txt"
+
+        # Load baseline (known false positives)
+        BASELINE_HASHES=""
+        if [[ -n "$BASELINE_FILE" && -f "$BASELINE_FILE" ]]; then
+          BASELINE_HASHES=$(cat "$BASELINE_FILE" | grep -v '^#' | tr '\n' '|')
+        fi
+
+        # Scan files
+        echo "Scanning files..."
+
+        while IFS= read -r file; do
+          # Skip excluded files
+          SKIP=false
+          while IFS= read -r exclude; do
+            exclude=$(echo "$exclude" | xargs)
+            if [[ -z "$exclude" || "$exclude" == \#* ]]; then continue; fi
+            if [[ "$file" == *"$exclude"* ]]; then
+              SKIP=true
+              break
+            fi
+          done < "$EXCLUDE_FILE"
+
+          if [[ "$SKIP" == "true" ]]; then continue; fi
+
+          # Check if file is binary
+          if file "$file" | grep -q "binary\|executable\|image\|archive"; then
+            continue
+          fi
+
+          # Scan file for patterns
+          LINE_NUM=0
+          while IFS= read -r line || [[ -n "$line" ]]; do
+            LINE_NUM=$((LINE_NUM + 1))
+
+            # Check each pattern
+            while IFS= read -r pattern; do
+              pattern=$(echo "$pattern" | xargs)
+              if [[ -z "$pattern" || "$pattern" == \#* ]]; then continue; fi
+
+              if echo "$line" | grep -qE "$pattern" 2>/dev/null; then
+                # Extract matched secret
+                MATCH=$(echo "$line" | grep -oE "$pattern" 2>/dev/null | head -1)
+
+                if [[ -n "$MATCH" ]]; then
+                  # Generate hash for deduplication
+                  MATCH_HASH=$(echo "$file:$LINE_NUM:$MATCH" | md5sum | cut -d' ' -f1)
+
+                  # Check baseline
+                  if [[ -n "$BASELINE_HASHES" ]] && echo "$MATCH_HASH" | grep -qE "$BASELINE_HASHES"; then
+                    continue
+                  fi
+
+                  # Mask the secret for output
+                  MASKED_MATCH="${MATCH:0:4}****${MATCH: -4}"
+
+                  echo "::warning file=$file,line=$LINE_NUM::Potential secret found: $MASKED_MATCH"
+
+                  SECRETS_FOUND=$((SECRETS_FOUND + 1))
+
+                  # Add to findings
+                  FINDING=$(jq -n \
+                    --arg file "$file" \
+                    --arg line "$LINE_NUM" \
+                    --arg pattern "$pattern" \
+                    --arg hash "$MATCH_HASH" \
+                    '{file: $file, line: ($line | tonumber), pattern: $pattern, hash: $hash}')
+
+                  FINDINGS=$(echo "$FINDINGS" | jq ". + [$FINDING]")
+                fi
+              fi
+            done < "$PATTERNS_FILE"
+          done < "$file" 2>/dev/null || true
+
+        done < <(find "${FIND_ARGS[@]}" -print0 2>/dev/null | while IFS= read -r -d '' file; do echo "$file"; done)
+
+        # Save results
+        echo "$FINDINGS" > "$RESULTS_FILE"
+
+        # Generate SARIF if requested
+        if [[ -n "$SARIF_FILE" ]]; then
+          echo "Generating SARIF output..."
+
+          cat > "$SARIF_FILE" << SARIF_EOF
+        {
+          "\$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+          "version": "2.1.0",
+          "runs": [{
+            "tool": {
+              "driver": {
+                "name": "MN-Secret-Scan",
+                "version": "1.0.0",
+                "informationUri": "https://github.com/MachineNativeOps/machine-native-ops",
+                "rules": [{
+                  "id": "secret-detected",
+                  "name": "SecretDetected",
+                  "shortDescription": { "text": "Potential secret or credential detected" },
+                  "fullDescription": { "text": "A potential secret, API key, or credential was detected in the source code." },
+                  "defaultConfiguration": { "level": "error" },
+                  "properties": { "security-severity": "8.0" }
+                }]
+              }
+            },
+            "results": $(echo "$FINDINGS" | jq '[.[] | {
+              "ruleId": "secret-detected",
+              "level": "error",
+              "message": { "text": ("Potential secret detected matching pattern: " + .pattern) },
+              "locations": [{
+                "physicalLocation": {
+                  "artifactLocation": { "uri": .file },
+                  "region": { "startLine": .line }
+                }
+              }],
+              "fingerprints": { "primary": .hash }
+            }]')
+          }]
+        }
+        SARIF_EOF
+        fi
+
+        # Determine status
+        if [[ "$SECRETS_FOUND" -gt 0 ]]; then
+          STATUS="secrets-detected"
+        else
+          STATUS="clean"
+        fi
+
+        echo "secrets_found=$SECRETS_FOUND" >> $GITHUB_OUTPUT
+        echo "sarif_file=$SARIF_FILE" >> $GITHUB_OUTPUT
+        echo "status=$STATUS" >> $GITHUB_OUTPUT
+
+        echo "=========================================="
+        echo "Scan complete: $SECRETS_FOUND potential secrets found"
+        echo "=========================================="
+
+        # Fail if secrets found and configured to fail
+        if [[ "$FAIL_ON_SECRETS" == "true" && "$SECRETS_FOUND" -gt 0 ]]; then
+          echo "::error::$SECRETS_FOUND potential secrets detected!"
+          exit 1
+        fi
+
+    - name: Upload SARIF
+      if: inputs.upload-sarif == 'true' && steps.scan.outputs.sarif_file != ''
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        SARIF_FILE="${{ steps.scan.outputs.sarif_file }}"
+
+        if [[ ! -f "$SARIF_FILE" ]]; then
+          echo "::warning::SARIF file not found"
+          exit 0
+        fi
+
+        echo "Uploading SARIF to GitHub Security..."
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+
+        SARIF_CONTENT=$(gzip -c "$SARIF_FILE" | base64 -w0)
+
+        JSON_PAYLOAD=$(jq -n \
+          --arg commit_sha "${{ github.sha }}" \
+          --arg ref "${{ github.ref }}" \
+          --arg sarif "$SARIF_CONTENT" \
+          --arg tool_name "MN-Secret-Scan" \
+          '{commit_sha: $commit_sha, ref: $ref, sarif: $sarif, tool_name: $tool_name}')
+
+        curl -s -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$API_URL/repos/$REPO/code-scanning/sarifs" \
+          -d "$JSON_PAYLOAD" || echo "::warning::SARIF upload may have failed"
+
+    - name: Cleanup
+      if: always()
+      shell: bash
+      run: |
+        SCANNER_DIR="${{ steps.setup.outputs.scanner_dir }}"
+        if [[ -n "$SCANNER_DIR" && -d "$SCANNER_DIR" ]]; then
+          rm -rf "$SCANNER_DIR"
+        fi
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-SECRET-SCAN SUMMARY"
+        echo "=========================================="
+        echo "Scan Path: ${{ inputs.scan-path }}"
+        echo "Scan Type: ${{ inputs.scan-type }}"
+        echo "Secrets Found: ${{ steps.scan.outputs.secrets_found }}"
+        echo "Status: ${{ steps.scan.outputs.status }}"
+        echo "SARIF File: ${{ steps.scan.outputs.sarif_file }}"
+        echo "=========================================="

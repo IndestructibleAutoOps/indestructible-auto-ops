@@ -1,0 +1,34 @@
+{
+  "nodes": [
+    "L01:SemanticOriginEngine",
+    "L02:CoreSealingEngine",
+    "L03:LineageReconstructionEngine",
+    "L04:GLCMValidationEngine"
+  ],
+  "edges": [
+    {
+      "from": "L02:CoreSealingEngine",
+      "to": "L01"
+    },
+    {
+      "from": "L03:LineageReconstructionEngine",
+      "to": "L01"
+    },
+    {
+      "from": "L03:LineageReconstructionEngine",
+      "to": "L02"
+    },
+    {
+      "from": "L04:GLCMValidationEngine",
+      "to": "L01"
+    },
+    {
+      "from": "L04:GLCMValidationEngine",
+      "to": "L02"
+    },
+    {
+      "from": "L04:GLCMValidationEngine",
+      "to": "L03"
+    }
+  ]
+}

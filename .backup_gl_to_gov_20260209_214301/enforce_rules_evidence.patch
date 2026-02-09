@@ -1,0 +1,91 @@
+--- a/ecosystem/enforce.rules.py
++++ b/ecosystem/enforce.rules.py
+@@ -268,6 +268,90 @@
+         self.metadata = MetaSpec()
+         
++    # ========== 證據鏈輔助方法 ==========
++    
++    def _create_evidence_dir(self) -> Path:
++        """創建證據目錄"""
++        evidence_dir = self.workspace_root / "ecosystem" / ".evidence"
++        evidence_dir.mkdir(parents=True, exist_ok=True)
++        return evidence_dir
++    
++    def _generate_artifact(self, step_number: int, input_data: dict, output_data: dict, result: dict) -> Path:
++        """生成 step artifact"""
++        import json
++        import uuid
++        import hashlib
++        from datetime import datetime
++        
++        evidence_dir = self._create_evidence_dir()
++        
++        artifact = {
++            "artifact_id": f"step-{step_number}",
++            "step_number": step_number,
++            "timestamp": datetime.utcnow().isoformat(),
++            "uuid": str(uuid.uuid4()),
++            "sha256_hash": None,
++            "input_trace": input_data,
++            "output_trace": output_data,
++            "result": result,
++            "evidence_links": {
++                "event_stream": str(self.event_stream.event_stream_file),
++                "artifact_file": None
++            },
++            "provenance": {
++                "executor": "SuperNinja AI Agent",
++                "methodology": "Immutable Core Governance Engineering Methodology v1.0",
++                "enforcement_rules_version": "2.0.0"
++            }
++        }
++        
++        # 保存 artifact
++        artifact_file = evidence_dir / f"step-{step_number}.json"
++        with open(artifact_file, 'w', encoding='utf-8') as f:
++            json.dump(artifact, f, indent=2, enforce_ascii=False)
++        
++        # 計算 hash
++        hash_value = hashlib.sha256(artifact_file.read_bytes()).hexdigest()
++        artifact["sha256_hash"] = hash_value
++        artifact["evidence_links"]["artifact_file"] = str(artifact_file)
++        
++        # 重新寫入（包含 hash）
++        with open(artifact_file, 'w', encoding='utf-8') as f:
++            json.dump(artifact, f, indent=2, enforce_ascii=False)
++        
++        print(f"[INFO] Generated artifact: {artifact_file}")
++        return artifact_file
++    
++    def _write_step_event(self, step_number: int, artifact_file: Path, result: dict):
++        """寫入 step 執行事件到 event stream"""
++        import hashlib
++        from datetime import datetime
++        import uuid
++        
++        violation = Violation(
++            violation_id=str(uuid.uuid4()),
++            event_type="STEP_EXECUTED",
++            timestamp=datetime.utcnow().isoformat(),
++            source="enforce.rules.py",
++            severity=Severity.LOW,
++            layer=Layer.ENFORCEMENT,
++            artifact=f"step-{step_number}",
++            description=f"Step {step_number} executed successfully",
++            evidence={
++                "artifact_file": str(artifact_file),
++                "sha256_hash": hashlib.sha256(artifact_file.read_bytes()).hexdigest(),
++                "result": result
++            },
++            action_taken=Action.LOG,
++            result="PASS",
++            metadata={
++                "executor": "SuperNinja AI Agent",
++                "step_number": step_number,
++                "evidence_chain_enabled": True
++            }
++        )
++        
++        self.event_stream.write_event(violation)
++        print(f"[INFO] Wrote event to stream: step-{step_number}")
++    

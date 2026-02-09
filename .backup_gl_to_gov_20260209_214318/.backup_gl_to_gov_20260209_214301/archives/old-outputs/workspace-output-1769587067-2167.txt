@@ -1,0 +1,26 @@
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587069393",
+      "type": "validation",
+      "timestamp": "2026-01-28T07:57:49.393Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T07:57:49.334Z",
+    "Workspace: /workspace/machine-native-ops/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}

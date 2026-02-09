@@ -1,0 +1,48 @@
+name: meta-schema-validate
+
+on:
+  push:
+    paths:
+      - "indestructibleautoops/meta_schema/**"
+      - ".github/workflows/meta-schema-validate.yml"
+  pull_request:
+    paths:
+      - "indestructibleautoops/meta_schema/**"
+      - ".github/workflows/meta-schema-validate.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python indestructibleautoops/meta_schema/v1/03_engineering_patch/tools/validate_meta_schema.py --write-evidence
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: meta-schema-evidence
+          path: .evidence/meta_schema

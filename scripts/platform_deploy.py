@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL30-49
 # @GL-semantic: python-module
-# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# @GL-audit-trail: ../../engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gov-enterprise-architecture/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-enterprise-architecture/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 #!/usr/bin/env python3
 # @GL-governed @GL-internal-only
@@ -51,7 +51,7 @@ class ZeroResidueEnvironment:
                 print(f"ERROR: /dev/shm not available", file=sys.stderr)
                 return False
 
-            self.workspace = shm_path / f"gl-work-{self.execution_id}"
+            self.workspace = shm_path / f"gov-work-{self.execution_id}"
             self.workspace.mkdir(mode=0o700, exist_ok=True)
 
             # Set resource limits
@@ -80,7 +80,7 @@ class ZeroResidueEnvironment:
     def _configure_cgroup(self):
         """Configure cgroup limits"""
         try:
-            cgroup_name = f"gl-exec-{self.execution_id}"
+            cgroup_name = f"gov-exec-{self.execution_id}"
 
             # Create cgroup
             subprocess.run(
@@ -224,7 +224,7 @@ class PlatformDeployer:
                 "echo 'Governance validation complete'", 5
             )
             print(f"   Status: {'✅ SUCCESS' if result['success'] else '❌ FAILED'}")
-            self.reports.append({"phase": "gl-platform.governance", "result": result})
+            self.reports.append({"phase": "gov-platform.governance", "result": result})
             print()
 
             # Phase 2: Architecture Deployment

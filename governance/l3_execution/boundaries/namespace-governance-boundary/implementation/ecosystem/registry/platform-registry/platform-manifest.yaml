@@ -20,9 +20,9 @@ metadata:
 
   purpose: Central registry for all platform implementations
   governance:
-    - gl-enterprise-architecture
-    - gl-boundary-enforcement
-    - gl-meta-specifications
+    - gov-enterprise-architecture
+    - gov-boundary-enforcement
+    - gov-meta-specifications
 
 platforms:
   # Runtime Platforms
@@ -423,6 +423,6 @@ registry-configuration:
 
 compliance:
   directory-standards: v2.0.0
-  gl-architecture: enterprise
+  gov-architecture: enterprise
   boundary-enforcement: strict
   meta-specifications: latest

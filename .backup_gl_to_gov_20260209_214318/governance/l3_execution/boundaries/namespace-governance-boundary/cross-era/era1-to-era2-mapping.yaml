@@ -1,0 +1,158 @@
+# Era-1 到 Era-2 映射定義
+# Era-1 (Code Layer) to Era-2 (Microcode Layer) Mapping
+
+apiVersion: ng.governance/v3
+kind: MappingDefinition
+metadata:
+  ng_code: NG90101
+  name: era1-to-era2-mapping
+  version: "1.0.0"
+  mapping_type: "era_transition"
+  source_era: "era-1"
+  target_era: "era-2"
+  
+spec:
+  purpose: "定義代碼層到微碼層的精確映射規則"
+  
+  type_mappings:
+    package_to_service:
+      source_pattern: "pkg\\.era1\\.(?P<domain>[a-z0-9-]+)\\.(?P<component>[a-z0-9-]+)"
+      target_pattern: "svc.era2.{domain}.{component}"
+      transformation: "package → microservice"
+      rationale: "包裝為獨立服務"
+      
+      examples:
+        - source: "pkg.era1.platform.core"
+          target: "svc.era2.platform.core"
+          description: "平台核心包 → 平台核心服務"
+          
+        - source: "pkg.era1.runtime.executor"
+          target: "svc.era2.runtime.executor"
+          description: "運行時執行器包 → 運行時執行器服務"
+    
+    module_to_api:
+      source_pattern: "mod\\.era1\\.(?P<domain>[a-z0-9-]+)\\.(?P<component>[a-z0-9-]+)"
+      target_pattern: "api.era2.{domain}.{component}"
+      transformation: "module → REST API"
+      rationale: "模組暴露為 REST API"
+      
+      examples:
+        - source: "mod.era1.governance.validator"
+          target: "api.era2.governance.validator"
+          description: "治理驗證器模組 → 驗證 API"
+          endpoint: "/api/v1/governance/validate"
+          
+        - source: "mod.era1.registry.manager"
+          target: "api.era2.registry.manager"
+          description: "註冊表管理器模組 → 管理 API"
+          endpoint: "/api/v1/registry/manage"
+    
+    class_to_component:
+      source_pattern: "cls\\.era1\\.(?P<domain>[a-z0-9-]+)\\.(?P<component>[a-z0-9-]+)"
+      target_pattern: "cmp.era2.{domain}.{component}"
+      transformation: "class → service component"
+      rationale: "類別重構為服務組件"
+      
+      examples:
+        - source: "cls.era1.executor.task-executor"
+          target: "cmp.era2.executor.task-executor"
+          description: "任務執行器類別 → 執行器組件"
+          
+        - source: "cls.era1.registry.namespace-registry"
+          target: "cmp.era2.registry.namespace-registry"
+          description: "註冊表類別 → 註冊表組件"
+    
+    function_to_endpoint:
+      source_pattern: "fn\\.era1\\.(?P<domain>[a-z0-9-]+)\\.(?P<component>[a-z0-9-]+)"
+      target_pattern: "ep.era2.{domain}.{component}"
+      transformation: "function → API endpoint"
+      rationale: "函數暴露為 HTTP 端點"
+      
+      examples:
+        - source: "fn.era1.platform.deploy"
+          target: "ep.era2.platform.deploy"
+          description: "部署函數 → 部署端點"
+          http_method: "POST"
+          path: "/api/v1/platform/deploy"
+          
+        - source: "fn.era1.registry.register"
+          target: "ep.era2.registry.register"
+          description: "註冊函數 → 註冊端點"
+          http_method: "POST"
+          path: "/api/v1/registry/register"
+  
+  metadata_transformations:
+    ownership:
+      source: "code_owner"
+      target: "service_owner"
+      transformation: "團隊名稱保持，角色從開發轉為運維"
+      
+    dependencies:
+      source: "import_statements"
+      target: "service_dependencies"
+      transformation: "Python imports → Service mesh dependencies"
+      
+    configuration:
+      source: "class_attributes"
+      target: "service_config"
+      transformation: "類別屬性 → 環境變數 / ConfigMap"
+  
+  validation_rules:
+    pre_mapping:
+      - check: "source_namespace_exists"
+        action_on_fail: "BLOCK"
+      - check: "source_namespace_validated"
+        action_on_fail: "BLOCK"
+      - check: "no_circular_dependencies"
+        action_on_fail: "BLOCK"
+        
+    post_mapping:
+      - check: "target_namespace_unique"
+        action_on_fail: "BLOCK"
+      - check: "target_namespace_format_valid"
+        action_on_fail: "BLOCK"
+      - check: "mapping_semantically_consistent"
+        action_on_fail: "BLOCK"
+        ml_model: "SemanticConsistencyChecker"
+        confidence_threshold: 0.95
+  
+  execution_contract:
+    input:
+      required_fields:
+        - source_namespace_id
+        - source_type
+        - target_era
+      validation: "BINARY_CHECK_ALL"
+      
+    output:
+      result_type: "BINARY"  # PASS or BLOCK
+      on_success:
+        return:
+          - target_namespace_id
+          - mapping_metadata
+          - ng_code_assigned
+      on_failure:
+        return:
+          - block_reason
+          - user_action
+          - rule_violated
+      no_warnings: true
+      no_suggestions: true
+
+examples:
+  complete_migration:
+    source:
+      namespace: "pkg.era1.platform.core"
+      ng_code: "NG10001"
+      type: "package"
+      
+    target:
+      namespace: "svc.era2.platform.core"
+      ng_code: "NG30001"
+      type: "service"
+      
+    transformation_steps:
+      - "Extract service interface from package API"
+      - "Containerize package as microservice"
+      - "Configure service mesh"
+      - "Register in service registry"

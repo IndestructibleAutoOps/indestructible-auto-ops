@@ -151,7 +151,7 @@ Successfully implemented the complete GL Enterprise Architecture for the Machine
 ## 🛠️ Implementation Artifacts
 
 ### 1. Boundary Checker Tool
-**Location**: `gl-governance-compliance/scripts/boundary_checker.py`
+**Location**: `gov-governance-compliance/scripts/boundary_checker.py`
 
 **Features**:
 - Multi-level enforcement (E0-E3)
@@ -183,14 +183,14 @@ python3 boundary_checker.py --report
 - `boundary-enforcement-rules.md` - Enforcement rules and mechanisms
 
 #### Layer Documentation
-- `gl-enterprise-architecture/README.md` - GL00-09 layer docs
-- `gl-platform-services/README.md` - GL10-29 layer docs
-- `gl-data-processing/README.md` - GL20-29 layer docs
-- `gl-execution-runtime/README.md` - GL30-49 layer docs
-- `gl-observability/README.md` - GL50-59 layer docs
-- `gl-governance-compliance/README.md` - GL60-80 layer docs
-- `gl-extension-services/README.md` - GL81-83 layer docs
-- `gl-meta-specifications/README.md` - GL90-99 layer docs
+- `gov-enterprise-architecture/README.md` - GL00-09 layer docs
+- `gov-platform-services/README.md` - GL10-29 layer docs
+- `gov-data-processing/README.md` - GL20-29 layer docs
+- `gov-execution-runtime/README.md` - GL30-49 layer docs
+- `gov-observability/README.md` - GL50-59 layer docs
+- `gov-governance-compliance/README.md` - GL60-80 layer docs
+- `gov-extension-services/README.md` - GL81-83 layer docs
+- `gov-meta-specifications/README.md` - GL90-99 layer docs
 
 #### Project Documentation
 - `README.md` - Comprehensive project overview
@@ -282,7 +282,7 @@ python3 boundary_checker.py --report
 2. **Create Interface Contracts**
    ```yaml
    # Define contracts for cross-layer interactions
-   apiVersion: gl-runtime.io/v1.0.0
+   apiVersion: gov-runtime.io/v1.0.0
    kind: InterfaceContract
    metadata:
      name: layer-from-layer-to-contract

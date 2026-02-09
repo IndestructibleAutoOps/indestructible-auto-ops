@@ -1,0 +1,10 @@
+{{
+  &quot;name&quot;: &quot;階段狀態&quot;,
+  &quot;description&quot;: &quot;當前進度、完成度&quot;,
+  &quot;created_at&quot;: &quot;{datetime.now().isoformat()}&quot;,
+  &quot;location&quot;: &quot;{entity.location}&quot;,
+  &quot;status&quot;: &quot;pending&quot;,
+  &quot;data&quot;: {{
+    &quot;TODO&quot;: &quot;填充實際數據&quot;
+  }}
+}}

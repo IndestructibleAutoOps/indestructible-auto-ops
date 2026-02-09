@@ -1,0 +1,52 @@
+{
+  "test": "test_fake_hash_reference",
+  "status": "warning",
+  "reports_scanned": 3,
+  "hallucinations_found": 6,
+  "hallucinations": [
+    {
+      "type": "fake_hash",
+      "hash": "sha256:7fdadcc7bfbe86f4f69ce21305a76e69bae085ffe345a97b263d8a5d25c5880a",
+      "context": "ature\": {\n    \"algorithm\": \"SHA256\",\n    \"hash\": \"sha256:7fdadcc7bfbe86f4f69ce21305a76e69bae085ffe345a97b263d8a5d25c5880a\"\n  }\n}\n```\n\n---\n\n## \u9a57\u8b49\u7d50\u679c\n\n### \u2705 \u6240\u6709\u6aa2\u6e2c\u9805\u76ee\u5df2\u901a\u904e\n\n| \u6aa2\u6e2c\u9805\u76ee",
+      "hash_of_violation": "sha256:601d4d53b13cd7a095148d81f389dfd884636477747594914715eb91af2d28f3",
+      "file": "ecosystem/governance/migration/MIGRATION_VULNERABILITIES_FIXED.md"
+    },
+    {
+      "type": "fake_hash",
+      "hash": "sha256:f436e6d56b8571859ea17d3da265a7fb225f99760736e1c040723db8bb07f42b",
+      "context": "p artifacts + 2 \u500b closure artifacts\uff09\n- HTT Hash: `sha256:f436e6d56b8571859ea17d3da265a7fb225f99760736e1c040723db8bb07f42b`\n- \u9a57\u8b49\u72c0\u614b: 12/12 verified \u2705\n\n**\u7bc4\u4f8b\u689d\u76ee:**\n```json\n{",
+      "hash_of_violation": "sha256:0211e13485dfb1d582c51f5e35bbad21f3919cf60bd4e3e28f328d5c42a7f84d",
+      "file": "ecosystem/governance/migration/MIGRATION_VULNERABILITIES_FIXED.md"
+    },
+    {
+      "type": "fake_hash",
+      "hash": "sha256:7fdadcc7bfbe86f4f69ce21305a76e69bae085ffe345a97b263d8a5d25c5880a",
+      "context": "ra-2.json`\n- **Status:** SEALED\n- **Signature:** `sha256:7fdadcc7bfbe86f4f69ce21305a76e69bae085ffe345a97b263d8a5d25c5880a`\n- **Overall Status:** VERIFIED\n\n---\n\n## \ud83d\udd0d Verifi",
+      "hash_of_violation": "sha256:601d4d53b13cd7a095148d81f389dfd884636477747594914715eb91af2d28f3",
+      "file": "WORKSPACE_STATUS.md"
+    },
+    {
+      "type": "fake_hash",
+      "hash": "sha256:f436e6d56b8571859ea17d3da265a7fb225f99760736e1c040723db8bb07f42b",
+      "context": "rtifacts (10 steps + 2 closures)\n- **HTT Hash:** `sha256:f436e6d56b8571859ea17d3da265a7fb225f99760736e1c040723db8bb07f42b`\n- **Verification:** 12/12 verified \u2705\n\n### 2\ufe0f\u20e3 Er",
+      "hash_of_violation": "sha256:0211e13485dfb1d582c51f5e35bbad21f3919cf60bd4e3e28f328d5c42a7f84d",
+      "file": "WORKSPACE_STATUS.md"
+    },
+    {
+      "type": "fake_hash",
+      "hash": "sha256:7fdadcc7bfbe86f4f69ce21305a76e69bae085ffe345a97b263d8a5d25c5880a",
+      "context": "ature\": {\n    \"algorithm\": \"SHA256\",\n    \"hash\": \"sha256:7fdadcc7bfbe86f4f69ce21305a76e69bae085ffe345a97b263d8a5d25c5880a\",\n    \"signing_authority\": \"IndestructibleAutoOps",
+      "hash_of_violation": "sha256:601d4d53b13cd7a095148d81f389dfd884636477747594914715eb91af2d28f3",
+      "file": "ecosystem/evidence/migration/era-1-to-era-2.json"
+    },
+    {
+      "type": "fake_hash",
+      "hash": "sha256:f436e6d56b8571859ea17d3da265a7fb225f99760736e1c040723db8bb07f42b",
+      "context": "ation/hashtranslationtable.jsonl\",\n      \"hash\": \"sha256:f436e6d56b8571859ea17d3da265a7fb225f99760736e1c040723db8bb07f42b\",\n      \"entries\": 12,\n      \"generated_at\": \"202",
+      "hash_of_violation": "sha256:0211e13485dfb1d582c51f5e35bbad21f3919cf60bd4e3e28f328d5c42a7f84d",
+      "file": "ecosystem/evidence/migration/era-1-to-era-2.json"
+    }
+  ],
+  "timestamp": "2026-02-05T01:48:32.942941Z",
+  "hash": "sha256:af6dfe1e45a2b9236aad2a6d7d5b14c5652ce5158295b3694d7aba9a4d2078bd"
+}

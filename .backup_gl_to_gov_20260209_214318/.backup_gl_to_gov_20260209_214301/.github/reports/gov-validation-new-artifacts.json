@@ -1,0 +1,51 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "passed": true,
+  "findings": [
+    {
+      "rule_id": "AGE-001",
+      "rule_name": "Artifact Age Policy",
+      "severity": "warning",
+      "message": "Artifact is 367 days old, exceeds 365 day limit for GL00-09",
+      "file_path": "workspace/governance/layers/GL00-09-strategic/artifacts/governance-charter.yaml",
+      "line_number": null,
+      "field_path": "metadata.updated_at",
+      "suggestion": "Review and update the artifact to ensure it remains current"
+    },
+    {
+      "rule_id": "AGE-001",
+      "rule_name": "Artifact Age Policy",
+      "severity": "warning",
+      "message": "Artifact is 367 days old, exceeds 365 day limit for GL00-09",
+      "file_path": "workspace/governance/layers/GL00-09-strategic/artifacts/strategic-objectives.yaml",
+      "line_number": null,
+      "field_path": "metadata.updated_at",
+      "suggestion": "Review and update the artifact to ensure it remains current"
+    },
+    {
+      "rule_id": "AGE-001",
+      "rule_name": "Artifact Age Policy",
+      "severity": "warning",
+      "message": "Artifact is 367 days old, exceeds 365 day limit for GL00-09",
+      "file_path": "workspace/governance/layers/GL00-09-strategic/artifacts/vision-statement.yaml",
+      "line_number": null,
+      "field_path": "metadata.updated_at",
+      "suggestion": "Review and update the artifact to ensure it remains current"
+    }
+  ],
+  "files_validated": 3,
+  "artifacts_validated": 3,
+  "error_count": 0,
+  "warning_count": 3,
+  "info_count": 0,
+  "execution_time": 0.05741548538208008
+}

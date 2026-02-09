@@ -1,0 +1,28 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Architecture Stability Checklist for AI
+
+- [ ] 新模組是否明確定位在正確的層級？
+- [ ] 所有依賴是否符合分層規則？
+- [ ] 是否包含新的外部依賴？如有，是否在 ADR 中說明？
+- [ ] 是否存在循環依賴風險？
+- [ ] 跨服務通訊是否遵循單向依賴原則？
+- [ ] 資料所有權是否清晰界定？
+- [ ] 是否向後相容？
+- [ ] 架構檢查工具是否通過？

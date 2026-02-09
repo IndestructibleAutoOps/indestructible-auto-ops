@@ -1,0 +1,52 @@
+[
+    {
+        "task_id": "TASK-20260204-001",
+        "name": "Register semantic_validator.py",
+        "description": "Register semantic_validator.py in tools-registry.yaml",
+        "task_type": "register_tool",
+        "priority": "critical",
+        "state": "pending",
+        "estimated_effort": "0.5h",
+        "created_from": "VIO-001"
+    },
+    {
+        "task_id": "TASK-20260204-002",
+        "name": "Implement Phase 1",
+        "description": "Define and implement Phase 1 architecture",
+        "task_type": "implement_phase",
+        "priority": "high",
+        "state": "pending",
+        "estimated_effort": "8h",
+        "created_from": "VIO-002"
+    },
+    {
+        "task_id": "TASK-20260204-003",
+        "name": "Define terminology",
+        "description": "Define governance terminology in terminology.yaml",
+        "task_type": "define_terminology",
+        "priority": "medium",
+        "state": "pending",
+        "estimated_effort": "2h",
+        "created_from": "VIO-003"
+    },
+    {
+        "task_id": "TASK-20260204-004",
+        "name": "Correct architecture description",
+        "description": "Update architecture level descriptions to match Era-1",
+        "task_type": "fix_semantic_violation",
+        "priority": "high",
+        "state": "pending",
+        "estimated_effort": "1h",
+        "created_from": "VIO-004"
+    },
+    {
+        "task_id": "TASK-20260204-005",
+        "name": "Provide compliance data",
+        "description": "Replace 100% compliance claims with actual data",
+        "task_type": "fix_semantic_violation",
+        "priority": "medium",
+        "state": "pending",
+        "estimated_effort": "1h",
+        "created_from": "VIO-005"
+    }
+]

@@ -16,7 +16,7 @@ Successfully implemented P0 critical fixes for GL governance layer and pushed to
 
 #### Contracts Updated:
 
-1. **gl-proof-model-executable.yaml**
+1. **gov-proof-model-executable.yaml**
    - Evidence validation rules: 5
    - Audit rules: 3
    - Key validations:
@@ -26,7 +26,7 @@ Successfully implemented P0 critical fixes for GL governance layer and pushed to
      - ✅ Evidence must have source attribution
      - ✅ Evidence chain integrity verification
 
-2. **gl-verifiable-report-standard-executable.yaml**
+2. **gov-verifiable-report-standard-executable.yaml**
    - Evidence validation rules: 4
    - Audit rules: 3
    - Key validations:
@@ -35,7 +35,7 @@ Successfully implemented P0 critical fixes for GL governance layer and pushed to
      - ✅ Evidence coverage >= 90%
      - ✅ Evidence timestamp validation
 
-3. **gl-verification-engine-spec-executable.yaml**
+3. **gov-verification-engine-spec-executable.yaml**
    - Evidence validation rules: 3
    - Audit rules: 3
    - Key validations:
@@ -129,15 +129,15 @@ def log_proof_chain_validation(self, chain_id, chain_integrity_status,
 ## Files Modified
 
 ### Contract Files (3)
-1. `ecosystem/contracts/verification/gl-proof-model-executable.yaml`
+1. `ecosystem/contracts/verification/gov-proof-model-executable.yaml`
    - Lines added: ~50
    - Sections: evidence_validation, audit
 
-2. `ecosystem/contracts/verification/gl-verifiable-report-standard-executable.yaml`
+2. `ecosystem/contracts/verification/gov-verifiable-report-standard-executable.yaml`
    - Lines added: ~45
    - Sections: evidence_validation, audit
 
-3. `ecosystem/contracts/verification/gl-verification-engine-spec-executable.yaml`
+3. `ecosystem/contracts/verification/gov-verification-engine-spec-executable.yaml`
    - Lines added: ~40
    - Sections: evidence_validation, audit
 

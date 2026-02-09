@@ -1,0 +1,445 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-docker-build
+# Replaces: docker/build-push-action@v5, docker/setup-buildx-action@v3, docker/metadata-action@v5
+# Description: Complete Docker build, tag, and push workflow
+# Version: 1.0.0
+
+name: 'MN Docker Build'
+description: 'MachineNativeOps official Docker build and push action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'box'
+  color: 'blue'
+
+inputs:
+  context:
+    description: 'Build context path'
+    required: false
+    default: '.'
+  file:
+    description: 'Path to Dockerfile'
+    required: false
+    default: './Dockerfile'
+  push:
+    description: 'Push image to registry'
+    required: false
+    default: 'false'
+  load:
+    description: 'Load image into local Docker daemon'
+    required: false
+    default: 'false'
+  tags:
+    description: 'Image tags (comma or newline separated)'
+    required: false
+    default: ''
+  labels:
+    description: 'Image labels (comma or newline separated key=value pairs)'
+    required: false
+    default: ''
+  build-args:
+    description: 'Build arguments (comma or newline separated key=value pairs)'
+    required: false
+    default: ''
+  target:
+    description: 'Build target stage'
+    required: false
+    default: ''
+  platforms:
+    description: 'Target platforms (e.g., linux/amd64,linux/arm64)'
+    required: false
+    default: ''
+  cache-from:
+    description: 'Cache sources (e.g., type=gha, type=registry,ref=image:cache)'
+    required: false
+    default: ''
+  cache-to:
+    description: 'Cache destinations'
+    required: false
+    default: ''
+  no-cache:
+    description: 'Disable build cache'
+    required: false
+    default: 'false'
+  pull:
+    description: 'Always pull base images'
+    required: false
+    default: 'false'
+  secrets:
+    description: 'Build secrets (key=value pairs)'
+    required: false
+    default: ''
+  ssh:
+    description: 'SSH agent socket or keys'
+    required: false
+    default: ''
+  outputs:
+    description: 'Output destinations (e.g., type=local,dest=./output)'
+    required: false
+    default: ''
+  provenance:
+    description: 'Generate provenance attestation'
+    required: false
+    default: 'false'
+  sbom:
+    description: 'Generate SBOM attestation'
+    required: false
+    default: 'false'
+  # Auto-tagging options
+  auto-tag:
+    description: 'Enable automatic tagging based on git context'
+    required: false
+    default: 'false'
+  image-name:
+    description: 'Base image name for auto-tagging (e.g., ghcr.io/owner/repo)'
+    required: false
+    default: ''
+  tag-latest:
+    description: 'Add latest tag for default branch'
+    required: false
+    default: 'true'
+  tag-sha:
+    description: 'Add short SHA tag'
+    required: false
+    default: 'true'
+  # Registry login
+  registry:
+    description: 'Container registry URL'
+    required: false
+    default: ''
+  username:
+    description: 'Registry username'
+    required: false
+    default: ''
+  password:
+    description: 'Registry password or token'
+    required: false
+    default: ''
+
+outputs:
+  imageid:
+    description: 'Image ID'
+    value: ${{ steps.build.outputs.imageid }}
+  digest:
+    description: 'Image digest'
+    value: ${{ steps.build.outputs.digest }}
+  metadata:
+    description: 'Build metadata JSON'
+    value: ${{ steps.build.outputs.metadata }}
+  tags:
+    description: 'Generated tags'
+    value: ${{ steps.tags.outputs.tags }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check Docker
+      id: check
+      shell: bash
+      run: |
+        if ! command -v docker &> /dev/null; then
+          echo "::error::Docker is not installed"
+          exit 1
+        fi
+
+        DOCKER_VERSION=$(docker --version)
+        echo "Docker version: $DOCKER_VERSION"
+
+        # Check if buildx is available
+        if docker buildx version &> /dev/null; then
+          echo "buildx_available=true" >> $GITHUB_OUTPUT
+          BUILDX_VERSION=$(docker buildx version)
+          echo "Buildx version: $BUILDX_VERSION"
+        else
+          echo "buildx_available=false" >> $GITHUB_OUTPUT
+          echo "::warning::Docker Buildx not available, using standard build"
+        fi
+
+    - name: Setup Buildx
+      if: steps.check.outputs.buildx_available == 'true'
+      shell: bash
+      run: |
+        # Create buildx builder if needed
+        if ! docker buildx inspect mn-builder &> /dev/null; then
+          echo "Creating buildx builder..."
+          docker buildx create --name mn-builder --driver docker-container --bootstrap 2>/dev/null || true
+        fi
+
+        docker buildx use mn-builder 2>/dev/null || docker buildx use default
+
+    - name: Registry Login
+      if: inputs.registry != '' && inputs.username != '' && inputs.password != ''
+      shell: bash
+      run: |
+        REGISTRY="${{ inputs.registry }}"
+        USERNAME="${{ inputs.username }}"
+        PASSWORD="${{ inputs.password }}"
+
+        echo "Logging into registry: $REGISTRY"
+
+        echo "$PASSWORD" | docker login "$REGISTRY" -u "$USERNAME" --password-stdin
+
+        echo "Registry login successful"
+
+    - name: Generate Tags
+      id: tags
+      shell: bash
+      run: |
+        TAGS="${{ inputs.tags }}"
+        AUTO_TAG="${{ inputs.auto-tag }}"
+        IMAGE_NAME="${{ inputs.image-name }}"
+        TAG_LATEST="${{ inputs.tag-latest }}"
+        TAG_SHA="${{ inputs.tag-sha }}"
+
+        GENERATED_TAGS=""
+
+        # Use provided tags
+        if [[ -n "$TAGS" ]]; then
+          GENERATED_TAGS=$(echo "$TAGS" | tr ',' '\n' | tr '\n' ',' | sed 's/,$//')
+        fi
+
+        # Auto-generate tags
+        if [[ "$AUTO_TAG" == "true" && -n "$IMAGE_NAME" ]]; then
+          echo "Auto-generating tags for: $IMAGE_NAME"
+
+          # Get git info
+          GIT_SHA="${{ github.sha }}"
+          GIT_SHA_SHORT="${GIT_SHA:0:7}"
+          GIT_REF="${{ github.ref }}"
+          GIT_REF_NAME="${{ github.ref_name }}"
+          EVENT_NAME="${{ github.event_name }}"
+
+          # Branch/tag based tagging
+          if [[ "$GIT_REF" == refs/tags/* ]]; then
+            # Tag push - use tag name
+            TAG_NAME="${GIT_REF#refs/tags/}"
+            GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:$TAG_NAME"
+
+            # Semver parsing
+            if [[ "$TAG_NAME" =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+              MAJOR="${BASH_REMATCH[1]}"
+              MINOR="${BASH_REMATCH[2]}"
+              GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:$MAJOR.$MINOR"
+              GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:$MAJOR"
+            fi
+          elif [[ "$GIT_REF" == refs/heads/* ]]; then
+            # Branch push
+            BRANCH_NAME="${GIT_REF#refs/heads/}"
+            SAFE_BRANCH=$(echo "$BRANCH_NAME" | sed 's/[^a-zA-Z0-9._-]/-/g')
+            GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:$SAFE_BRANCH"
+
+            # Latest tag for default branch
+            if [[ "$TAG_LATEST" == "true" ]]; then
+              if [[ "$BRANCH_NAME" == "main" || "$BRANCH_NAME" == "master" ]]; then
+                GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:latest"
+              fi
+            fi
+          elif [[ "$GIT_REF" == refs/pull/* ]]; then
+            # Pull request
+            PR_NUMBER="${{ github.event.pull_request.number }}"
+            GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:pr-$PR_NUMBER"
+          fi
+
+          # SHA tag
+          if [[ "$TAG_SHA" == "true" ]]; then
+            GENERATED_TAGS="$GENERATED_TAGS,$IMAGE_NAME:sha-$GIT_SHA_SHORT"
+          fi
+        fi
+
+        # Clean up tags
+        GENERATED_TAGS=$(echo "$GENERATED_TAGS" | sed 's/^,//' | tr ',' '\n' | sort -u | tr '\n' ',' | sed 's/,$//')
+
+        echo "Generated tags: $GENERATED_TAGS"
+        echo "tags=$GENERATED_TAGS" >> $GITHUB_OUTPUT
+
+    - name: Generate Labels
+      id: labels
+      shell: bash
+      run: |
+        LABELS="${{ inputs.labels }}"
+
+        # Add OCI standard labels
+        OCI_LABELS=""
+        OCI_LABELS="$OCI_LABELS,org.opencontainers.image.created=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        OCI_LABELS="$OCI_LABELS,org.opencontainers.image.revision=${{ github.sha }}"
+        OCI_LABELS="$OCI_LABELS,org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}"
+
+        if [[ -n "${{ github.ref_name }}" ]]; then
+          OCI_LABELS="$OCI_LABELS,org.opencontainers.image.version=${{ github.ref_name }}"
+        fi
+
+        # Combine with user labels
+        ALL_LABELS="$OCI_LABELS"
+        if [[ -n "$LABELS" ]]; then
+          ALL_LABELS="$ALL_LABELS,$LABELS"
+        fi
+
+        ALL_LABELS=$(echo "$ALL_LABELS" | sed 's/^,//')
+
+        echo "labels=$ALL_LABELS" >> $GITHUB_OUTPUT
+
+    - name: Build Image
+      id: build
+      shell: bash
+      run: |
+        CONTEXT="${{ inputs.context }}"
+        DOCKERFILE="${{ inputs.file }}"
+        PUSH="${{ inputs.push }}"
+        LOAD="${{ inputs.load }}"
+        TAGS="${{ steps.tags.outputs.tags }}"
+        LABELS="${{ steps.labels.outputs.labels }}"
+        BUILD_ARGS="${{ inputs.build-args }}"
+        TARGET="${{ inputs.target }}"
+        PLATFORMS="${{ inputs.platforms }}"
+        CACHE_FROM="${{ inputs.cache-from }}"
+        CACHE_TO="${{ inputs.cache-to }}"
+        NO_CACHE="${{ inputs.no-cache }}"
+        PULL="${{ inputs.pull }}"
+        OUTPUTS="${{ inputs.outputs }}"
+        PROVENANCE="${{ inputs.provenance }}"
+        SBOM="${{ inputs.sbom }}"
+        BUILDX_AVAILABLE="${{ steps.check.outputs.buildx_available }}"
+
+        # Determine build command
+        if [[ "$BUILDX_AVAILABLE" == "true" && (-n "$PLATFORMS" || "$PUSH" == "true") ]]; then
+          BUILD_CMD="docker buildx build"
+        else
+          BUILD_CMD="docker build"
+        fi
+
+        # Build arguments
+        BUILD_ARGS_STR=""
+
+        # Dockerfile
+        BUILD_ARGS_STR="$BUILD_ARGS_STR -f $DOCKERFILE"
+
+        # Tags
+        if [[ -n "$TAGS" ]]; then
+          for tag in $(echo "$TAGS" | tr ',' ' '); do
+            BUILD_ARGS_STR="$BUILD_ARGS_STR -t $tag"
+          done
+        fi
+
+        # Labels
+        if [[ -n "$LABELS" ]]; then
+          for label in $(echo "$LABELS" | tr ',' '\n'); do
+            label=$(echo "$label" | xargs)
+            if [[ -n "$label" ]]; then
+              BUILD_ARGS_STR="$BUILD_ARGS_STR --label=$label"
+            fi
+          done
+        fi
+
+        # Build args
+        if [[ -n "$BUILD_ARGS" ]]; then
+          for arg in $(echo "$BUILD_ARGS" | tr ',' '\n'); do
+            arg=$(echo "$arg" | xargs)
+            if [[ -n "$arg" ]]; then
+              BUILD_ARGS_STR="$BUILD_ARGS_STR --build-arg=$arg"
+            fi
+          done
+        fi
+
+        # Target
+        if [[ -n "$TARGET" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --target=$TARGET"
+        fi
+
+        # Platforms (buildx only)
+        if [[ -n "$PLATFORMS" && "$BUILDX_AVAILABLE" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --platform=$PLATFORMS"
+        fi
+
+        # Cache
+        if [[ -n "$CACHE_FROM" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --cache-from=$CACHE_FROM"
+        fi
+        if [[ -n "$CACHE_TO" && "$BUILDX_AVAILABLE" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --cache-to=$CACHE_TO"
+        fi
+
+        # No cache
+        if [[ "$NO_CACHE" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --no-cache"
+        fi
+
+        # Pull
+        if [[ "$PULL" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --pull"
+        fi
+
+        # Push/Load
+        if [[ "$PUSH" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --push"
+        elif [[ "$LOAD" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --load"
+        fi
+
+        # Outputs
+        if [[ -n "$OUTPUTS" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --output=$OUTPUTS"
+        fi
+
+        # Provenance/SBOM (buildx only)
+        if [[ "$BUILDX_AVAILABLE" == "true" ]]; then
+          if [[ "$PROVENANCE" == "true" ]]; then
+            BUILD_ARGS_STR="$BUILD_ARGS_STR --provenance=true"
+          fi
+          if [[ "$SBOM" == "true" ]]; then
+            BUILD_ARGS_STR="$BUILD_ARGS_STR --sbom=true"
+          fi
+        fi
+
+        # Metadata output
+        METADATA_FILE=$(mktemp)
+        if [[ "$BUILDX_AVAILABLE" == "true" ]]; then
+          BUILD_ARGS_STR="$BUILD_ARGS_STR --metadata-file=$METADATA_FILE"
+        fi
+
+        echo "Running: $BUILD_CMD $BUILD_ARGS_STR $CONTEXT"
+        echo "=========================================="
+
+        # Execute build
+        $BUILD_CMD $BUILD_ARGS_STR "$CONTEXT"
+
+        # Extract metadata
+        IMAGEID=""
+        DIGEST=""
+        METADATA="{}"
+
+        if [[ -f "$METADATA_FILE" && -s "$METADATA_FILE" ]]; then
+          METADATA=$(cat "$METADATA_FILE")
+          IMAGEID=$(echo "$METADATA" | jq -r '."containerimage.config.digest" // empty')
+          DIGEST=$(echo "$METADATA" | jq -r '."containerimage.digest" // empty')
+        fi
+
+        # Fallback: get image ID from docker
+        if [[ -z "$IMAGEID" && -n "$TAGS" ]]; then
+          FIRST_TAG=$(echo "$TAGS" | tr ',' '\n' | head -1)
+          IMAGEID=$(docker images -q "$FIRST_TAG" 2>/dev/null | head -1)
+        fi
+
+        echo "imageid=$IMAGEID" >> $GITHUB_OUTPUT
+        echo "digest=$DIGEST" >> $GITHUB_OUTPUT
+        echo "metadata=$METADATA" >> $GITHUB_OUTPUT
+
+        rm -f "$METADATA_FILE"
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-DOCKER-BUILD SUMMARY"
+        echo "=========================================="
+        echo "Context: ${{ inputs.context }}"
+        echo "Dockerfile: ${{ inputs.file }}"
+        echo "Tags: ${{ steps.tags.outputs.tags }}"
+        echo "Push: ${{ inputs.push }}"
+        echo "Platforms: ${{ inputs.platforms }}"
+        echo "Image ID: ${{ steps.build.outputs.imageid }}"
+        echo "Digest: ${{ steps.build.outputs.digest }}"
+        echo "=========================================="

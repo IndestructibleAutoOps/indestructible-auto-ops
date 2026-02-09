@@ -1,0 +1,7 @@
+# 通过Terraform管理多平台配置
+resource "meta_governance_rule" "dependency_depth" {
+  platform          = ["kubernetes", "serverless", "edge"]
+  rule_type          = "dependency"
+  max_depth          = 3
+  enforcement_level  = "blocking"
+}

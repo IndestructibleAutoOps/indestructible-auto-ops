@@ -1,0 +1,17 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: grafana

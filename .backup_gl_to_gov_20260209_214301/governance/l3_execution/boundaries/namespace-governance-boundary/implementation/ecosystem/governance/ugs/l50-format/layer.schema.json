@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mnga.org/schemas/ugs-layer@1.0.0.json",
+  "title": "UGS Layer Format Schema",
+  "description": "Unified schema for all governance layer specifications",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "@GL-semantic",
+    "@GL-audit-trail",
+    "meta_spec"
+  ],
+  "properties": {
+    "@GL-semantic": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$",
+      "description": "Semantic anchor"
+    },
+    "@GL-audit-trail": {
+      "type": "string",
+      "enum": ["enabled", "disabled"],
+      "description": "Audit trail status"
+    },
+    "meta_spec": {
+      "type": "object",
+      "required": ["id", "version", "title"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 5
+        },
+        "description": {
+          "type": "string"
+        },
+        "extends": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "default": []
+        },
+        "immutable": {
+          "type": "boolean",
+          "default": false
+        },
+        "governance": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string"
+            },
+            "reviewers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "approval": {
+              "type": "string",
+              "enum": ["consensus", "majority", "owner-only"]
+            }
+          }
+        }
+      }
+    },
+    "layer_definition": {
+      "type": "object",
+      "description": "Layer-specific definition"
+    },
+    "checksum": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": true,
+  "GL-governance": {
+    "layer": "l50-format",
+    "immutable": true,
+    "dependencies": ["org.mnga.meta-format@1.0.0", "org.mnga.ugs-language@1.0.0"]
+  }
+}

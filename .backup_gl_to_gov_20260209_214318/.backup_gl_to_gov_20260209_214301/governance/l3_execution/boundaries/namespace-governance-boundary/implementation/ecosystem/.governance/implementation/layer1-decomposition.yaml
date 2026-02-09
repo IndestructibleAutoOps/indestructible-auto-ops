@@ -1,0 +1,76 @@
+# Module Map - Layer 1 Semantic Layer
+# Architecture Decomposition
+# GL Level: GL50
+# Namespace: /governance/kernel/semantic
+
+modules:
+  semantic_tokenizer:
+    type: class
+    file: governance/kernel/semantic/tokenizer.py
+    responsibility: "語意 Token 化"
+    description: "將自然語言轉換為語意 token 序列，支援多語言"
+    dependencies: []
+    priority: 1
+    test_file: tests/kernel/semantic/test_tokenizer.py
+    test_coverage_target: ">= 90%"
+    estimated_loc: 150
+    
+  semantic_ast:
+    type: class
+    file: governance/kernel/semantic/ast_builder.py
+    responsibility: "語意 AST 建構"
+    description: "從語意 token 建構抽象語法樹"
+    dependencies: [semantic_tokenizer]
+    priority: 2
+    test_file: tests/kernel/semantic/test_ast.py
+    test_coverage_target: ">= 90%"
+    estimated_loc: 200
+    
+  semantic_hasher:
+    type: class
+    file: governance/kernel/semantic/hasher.py
+    responsibility: "語言中立 Hash"
+    description: "產生語言中立的語意 hash"
+    dependencies: [semantic_tokenizer, semantic_ast]
+    priority: 3
+    test_file: tests/kernel/semantic/test_hasher.py
+    test_coverage_target: ">= 95%"
+    estimated_loc: 180
+    
+  semantic_canonicalizer:
+    type: class
+    file: governance/kernel/semantic/canonicalizer.py
+    responsibility: "語意正規化"
+    description: "正規化語意表示，確保一致性"
+    dependencies: [semantic_tokenizer, semantic_ast]
+    priority: 3
+    test_file: tests/kernel/semantic/test_canonicalizer.py
+    test_coverage_target: ">= 90%"
+    estimated_loc: 150
+    
+  multilang_evidence:
+    type: class
+    file: governance/kernel/semantic/multilang_evidence.py
+    responsibility: "多語言對照封存"
+    description: "封存多語言對照證據"
+    dependencies: [semantic_hasher]
+    priority: 4
+    test_file: tests/kernel/semantic/test_multilang_evidence.py
+    test_coverage_target: ">= 85%"
+    estimated_loc: 200
+
+implementation_order:
+  - priority_1: [semantic_tokenizer]
+  - priority_2: [semantic_ast]
+  - priority_3: [semantic_hasher, semantic_canonicalizer]
+  - priority_4: [multilang_evidence]
+
+metadata:
+  layer: "Layer 1 - Semantic Layer"
+  gl_level: "GL50"
+  mnga_version: "v2.0"
+  evidence_native: true
+  traceability: "complete"
+  
+total_modules: 5
+total_estimated_loc: 880

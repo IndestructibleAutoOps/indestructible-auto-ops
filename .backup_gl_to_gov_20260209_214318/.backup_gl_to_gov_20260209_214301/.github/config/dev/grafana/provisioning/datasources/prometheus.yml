@@ -1,0 +1,18 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: 1
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true

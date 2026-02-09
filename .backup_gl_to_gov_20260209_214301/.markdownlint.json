@@ -1,0 +1,63 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "default": true,
+  "MD001": false,
+  "MD003": false,
+  "MD004": false,
+  "MD005": false,
+  "MD007": false,
+  "MD009": false,
+  "MD010": false,
+  "MD012": false,
+  "MD013": false,
+  "MD014": false,
+  "MD018": false,
+  "MD022": false,
+  "MD023": false,
+  "MD024": false,
+  "MD025": false,
+  "MD026": false,
+  "MD028": false,
+  "MD029": false,
+  "MD030": false,
+  "MD031": false,
+  "MD032": false,
+  "MD033": false,
+  "MD034": false,
+  "MD036": false,
+  "MD037": false,
+  "MD040": false,
+  "MD041": false,
+  "MD042": false,
+  "MD045": false,
+  "MD046": false,
+  "MD047": false,
+  "MD048": false,
+  "MD049": false,
+  "MD050": false,
+  "MD051": false,
+  "MD052": false,
+  "MD053": false,
+  "MD055": false,
+  "MD056": false,
+  "MD058": false,
+  "MD059": false,
+  "MD060": false,
+  "_GL": {
+    "governed": true,
+    "layer": "common",
+    "semantic": ".markdownlint",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Architecture Governance Framework",
+    "version": "2.0.0"
+  }
+}

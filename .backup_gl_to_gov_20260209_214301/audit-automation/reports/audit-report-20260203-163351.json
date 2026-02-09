@@ -1,0 +1,199 @@
+{
+  "timestamp": "20260203_163351",
+  "version": "2.0.0",
+  "status": "PASS",
+  "summary": {
+    "total_checks": 6,
+    "passed": 6,
+    "failed": 0,
+    "total_violations": 16,
+    "critical_violations": 0,
+    "high_violations": 1
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 114 個文件，發現 4 個問題",
+      "files_scanned": 114,
+      "execution_time_ms": 9,
+      "violations_count": 4
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1319 個目錄，發現 8 個命名問題",
+      "files_scanned": 1319,
+      "execution_time_ms": 138,
+      "violations_count": 8
+    },
+    {
+      "name": "Security Check",
+      "passed": true,
+      "message": "掃描 4188 個文件，發現 0 個安全問題",
+      "files_scanned": 4188,
+      "execution_time_ms": 819,
+      "violations_count": 0
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 3 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 29,
+      "violations_count": 3
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 1 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 17,
+      "violations_count": 1
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/enforcers/self_auditor.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/tools/audit_trail_report.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/tools/audit_trail_query.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "summarized_conversations",
+      "line_number": null,
+      "message": "目錄名稱 'summarized_conversations' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'summarized-conversations'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/reasoning/dual-path",
+      "line_number": null,
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'dual-path'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools",
+      "line_number": null,
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'path-tools'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/path-tools",
+      "line_number": null,
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'path-tools'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path",
+      "line_number": null,
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'dual-path'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/external_cache",
+      "line_number": null,
+      "message": "目錄名稱 'external_cache' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'external-cache'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/vector_index",
+      "line_number": null,
+      "message": "目錄名稱 'vector_index' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'vector-index'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/knowledge_graph",
+      "line_number": null,
+      "message": "目錄名稱 'knowledge_graph' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'knowledge-graph'"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "gl-runtime-engine-platform/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "gl-runtime-execution-platform/engine/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "MNGA-ENFORCER-005",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": null,
+      "message": "before_operation 執行失敗: 未找到相關治理合約，請檢查 ecosystem/contracts/",
+      "severity": "HIGH",
+      "suggestion": "修復 before_operation 方法"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

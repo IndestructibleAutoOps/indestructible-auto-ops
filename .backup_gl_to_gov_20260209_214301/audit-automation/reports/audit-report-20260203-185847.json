@@ -1,0 +1,175 @@
+{
+  "timestamp": "20260203_185847",
+  "version": "2.0.0",
+  "status": "PASS",
+  "summary": {
+    "total_checks": 18,
+    "passed": 18,
+    "failed": 0,
+    "total_violations": 1,
+    "critical_violations": 0,
+    "high_violations": 0
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 133 個文件，發現 0 個問題",
+      "files_scanned": 133,
+      "execution_time_ms": 8,
+      "violations_count": 0
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1653 個目錄和 2842 個文件，發現 1 個命名問題",
+      "files_scanned": 4495,
+      "execution_time_ms": 302,
+      "violations_count": 1
+    },
+    {
+      "name": "Security Check",
+      "passed": true,
+      "message": "掃描 4238 個文件，發現 0 個安全問題",
+      "files_scanned": 4238,
+      "execution_time_ms": 767,
+      "violations_count": 0
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 0 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 28,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 0
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "MNGA Architecture",
+      "passed": true,
+      "message": "檢查 39 個架構組件，發現 0 個問題",
+      "files_scanned": 39,
+      "execution_time_ms": 51,
+      "violations_count": 0
+    },
+    {
+      "name": "Foundation Layer",
+      "passed": true,
+      "message": "Scanned 3 foundation modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Layer",
+      "passed": true,
+      "message": "Checked 4 coordination components, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Engines",
+      "passed": true,
+      "message": "Checked 4 governance engines, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Tools Layer",
+      "passed": true,
+      "message": "Checked 4 critical tools, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Events Layer",
+      "passed": true,
+      "message": "Checked event layer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Complete Naming Enforcer",
+      "passed": true,
+      "message": "Checked complete naming enforcer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Enforcers Completeness",
+      "passed": true,
+      "message": "Checked 4 enforcer modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Services",
+      "passed": true,
+      "message": "Checked 6 coordination services, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Meta-Governance Systems",
+      "passed": true,
+      "message": "Checked 7 meta-governance modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Reasoning System",
+      "passed": true,
+      "message": "Checked reasoning system, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Validators Layer",
+      "passed": true,
+      "message": "Checked validators, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_185836.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_185836.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-185836.json'"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

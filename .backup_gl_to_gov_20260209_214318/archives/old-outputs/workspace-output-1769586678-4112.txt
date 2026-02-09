@@ -1,0 +1,28 @@
+[main e4a70d02] GL-ROOT Elasticsearch Search System 稽核完成 - Audit Reports Generated
+ 29 files changed, 1146 insertions(+), 4 deletions(-)
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_controlplane_manifest.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_controlplane_policy.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_manifest.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_manifest.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_policy.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_tools_search_run_root_files.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_tools_search_structure_validator.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_manifest.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_policy.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_config_index-mapping.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_config_search-config.yaml.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src___init__.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_analytics___init__.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_analytics_relevance_tuning.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_analytics_search_analytics.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_elasticsearch___init__.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_elasticsearch_client.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_indexing___init__.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_indexing_bulk_indexer.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_indexing_incremental_updater.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_indexing_index_optimizer.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_search___init__.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_search_autocomplete.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_search_faceted_search.py.json
+ create mode 100644 engine/.governance/per-file-audits/es-elasticsearch-search-system_workspace_projects_search-system_src_search_full_text_search.py.json

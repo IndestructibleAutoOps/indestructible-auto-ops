@@ -1,0 +1,30 @@
+Running GL governance pre-commit validation...
+Checking: gl-execution-runtime/README.md
+Checking: gl-execution-runtime/api/rest/index.js
+Checking: gl-execution-runtime/connectors/connector-ci-github/index.js
+Checking: gl-execution-runtime/connectors/connector-format-yaml-json-md/index.js
+Checking: gl-execution-runtime/connectors/connector-git/index.js
+Checking: gl-execution-runtime/connectors/connector-lang-js/index.js
+Checking: gl-execution-runtime/connectors/connector-lang-py/index.js
+Checking: gl-execution-runtime/deployment/docker-compose.yaml
+Checking: gl-execution-runtime/deployment/k8s/orchestration-engine-deployment.yaml
+Checking: gl-execution-runtime/engine/orchestration-engine/index.js
+Checking: gl-execution-runtime/engine/sandbox-runner/index.js
+Checking: gl-execution-runtime/engine/scheduler/index.js
+Checking: gl-execution-runtime/governance/gl-annotations/index.js
+Checking: gl-execution-runtime/governance/gl-core/index.js
+Checking: gl-execution-runtime/governance/gl-policy-engine/index.js
+Checking: gl-execution-runtime/ops/agents/agent-orchestration.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-deploy.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-federation.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-integrate.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/auto-repair.yaml
+Checking: gl-execution-runtime/ops/auto-bootstrap/bootstrap-loader.js
+Checking: gl-execution-runtime/ops/pipelines/directory-audit-pipeline.yaml
+Checking: gl-execution-runtime/ops/pipelines/repo-gl-fix-pipeline.yaml
+Checking: gl-execution-runtime/package.json
+❌ ERROR: Missing _gl metadata in gl-execution-runtime/package.json
+Checking: todo.md
+
+❌ GL Governance Validation Failed
+Found 1 violations. Please fix before committing.

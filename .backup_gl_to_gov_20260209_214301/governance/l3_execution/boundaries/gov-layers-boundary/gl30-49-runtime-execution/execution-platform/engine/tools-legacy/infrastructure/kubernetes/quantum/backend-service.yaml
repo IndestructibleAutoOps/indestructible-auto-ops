@@ -1,0 +1,31 @@
+# @GL-layer: GQS-L0
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: backend-service
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: quantumflow-backend
+  namespace: quantumflow
+  labels:
+    app: quantumflow
+    component: backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: quantumflow
+    component: backend
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+

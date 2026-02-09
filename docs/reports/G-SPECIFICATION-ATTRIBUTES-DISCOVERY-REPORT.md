@@ -35,7 +35,7 @@ This report documents the comprehensive discovery of specification attributes an
 #### Key Files:
 - `ecosystem/gates/operation-gate.yaml` - Primary gate definitions
 - `governance/workflows/research-loop/gates.yaml` - Research workflow gates
-- `gl-runtime-execution-platform/engine/gl-gate/gates/gates-01-99.yaml` - Runtime gates
+- `gov-runtime-execution-platform/engine/gov-gate/gates/gates-01-99.yaml` - Runtime gates
 
 #### Specification Structure:
 
@@ -148,7 +148,7 @@ global:
   smtp_from: 'alerts@indestructible-auto-ops.com'
 ```
 
-3. **Helm Values** (`gl-infrastructure-foundation-platform/deployment/helm/machine-native-ops/values.yaml`):
+3. **Helm Values** (`gov-infrastructure-foundation-platform/deployment/helm/machine-native-ops/values.yaml`):
 ```yaml
 global:
   registry: ghcr.io
@@ -469,7 +469,7 @@ gateway:
       backend: service-b
 ```
 
-2. **Istio Gateway** (`gl-infrastructure-foundation-platform/k8s-legacy/istio/gateway.yaml`):
+2. **Istio Gateway** (`gov-infrastructure-foundation-platform/k8s-legacy/istio/gateway.yaml`):
 ```yaml
 gateways:
   - name: inbound-gateway
@@ -604,8 +604,8 @@ Found throughout YAML files as semantic markers:
 ### 4.2 Gatekeeper Files
 
 Located in governance directories for policy enforcement:
-- `gl-quantum-computing-platform/governance/naming/gatekeeper-constraints.yaml`
-- `gl-runtime-services-platform/quantum-platform/governance/naming/gatekeeper-constraints.yaml`
+- `gov-quantum-computing-platform/governance/naming/gatekeeper-constraints.yaml`
+- `gov-runtime-services-platform/quantum-platform/governance/naming/gatekeeper-constraints.yaml`
 
 ---
 

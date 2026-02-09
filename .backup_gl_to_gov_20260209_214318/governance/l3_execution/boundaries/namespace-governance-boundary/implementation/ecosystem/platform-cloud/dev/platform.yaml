@@ -1,0 +1,207 @@
+# Development Platform Instance - Service Configuration
+# Semantic Anchor: CLOUDPLATFORMINSTANCE.DEV.SERVICES
+
+services:
+  api_gateway:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.APIGATEWAY
+    
+    compute:
+      instance_type: t3.medium
+      min_instances: 1
+      max_instances: 3
+      target_cpu_percent: 70
+      target_memory_percent: 75
+    
+    networking:
+      port: 8080
+      health_check_path: /health
+      health_check_interval_seconds: 30
+    
+    storage:
+      attach_volume: true
+      volume_size_gb: 20
+      volume_type: gp2
+    
+    autoscaling:
+      enabled: true
+      scale_up_cooldown_seconds: 300
+      scale_down_cooldown_seconds: 600
+    
+    environment_variables:
+      LOG_LEVEL: DEBUG
+      ENVIRONMENT: dev
+      DATABASE_HOST: ${DB_HOST}
+      DATABASE_PORT: 5432
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: 6379
+
+  data_processing:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.DATAPROCESSING
+    
+    compute:
+      instance_type: t3.large
+      min_instances: 1
+      max_instances: 2
+      target_cpu_percent: 80
+      target_memory_percent: 85
+    
+    networking:
+      port: 8081
+      health_check_path: /health
+      health_check_interval_seconds: 30
+    
+    storage:
+      attach_volume: true
+      volume_size_gb: 50
+      volume_type: gp2
+    
+    queue:
+      enabled: true
+      queue_name: dev-data-processing-queue
+      max_receive_count: 5
+      visibility_timeout_seconds: 300
+    
+    environment_variables:
+      LOG_LEVEL: DEBUG
+      ENVIRONMENT: dev
+      QUEUE_URL: ${QUEUE_URL}
+      STORAGE_BUCKET: ${STORAGE_BUCKET}
+
+  observability:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.OBSERVABILITY
+    
+    compute:
+      instance_type: t3.small
+      min_instances: 1
+      max_instances: 2
+      target_cpu_percent: 60
+      target_memory_percent: 70
+    
+    networking:
+      port: 8082
+      health_check_path: /health
+      health_check_interval_seconds: 30
+    
+    storage:
+      attach_volume: true
+      volume_size_gb: 30
+      volume_type: gp2
+    
+    logging:
+      enabled: true
+      log_group_name: /dev/observability
+      retention_in_days: 7
+    
+    environment_variables:
+      LOG_LEVEL: INFO
+      ENVIRONMENT: dev
+      METRICS_ENDPOINT: ${METRICS_ENDPOINT}
+      ALERT_WEBHOOK: ${ALERT_WEBHOOK}
+
+  integration_hub:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.INTEGRATIONHUB
+    
+    compute:
+      instance_type: t3.medium
+      min_instances: 1
+      max_instances: 2
+      target_cpu_percent: 70
+      target_memory_percent: 75
+    
+    networking:
+      port: 8083
+      health_check_path: /health
+      health_check_interval_seconds: 30
+    
+    storage:
+      attach_volume: true
+      volume_size_gb: 25
+      volume_type: gp2
+    
+    secrets:
+      enabled: true
+      secret_prefix: /dev/integration-hub
+    
+    environment_variables:
+      LOG_LEVEL: DEBUG
+      ENVIRONMENT: dev
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
+      API_KEY_SECRET: ${API_KEY_SECRET}
+
+databases:
+  postgres_primary:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.DATABASE
+    engine: postgres
+    engine_version: 14.7
+    instance_type: db.t3.micro
+    
+    storage:
+      allocated_storage_gb: 20
+      storage_type: gp2
+      storage_encrypted: true
+      kms_key_id: ${KMS_KEY_ID}
+    
+    networking:
+      subnet_group: private-subnets
+      port: 5432
+      publicly_accessible: false
+    
+    backup:
+      retention_period_days: 7
+      backup_window: 03:00-04:00
+      maintenance_window: sun:04:00-sun:05:00
+    
+    environment_variables:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: dev_platform
+
+queues:
+  data_processing_queue:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.QUEUE
+    visibility_timeout_seconds: 300
+    message_retention_seconds: 345600
+    max_message_size_bytes: 262144
+    dead_letter_queue: dev-data-processing-dlq
+
+  notification_queue:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.NOTIFICATIONQUEUE
+    visibility_timeout_seconds: 60
+    message_retention_seconds: 1209600
+    max_message_size_bytes: 262144
+    dead_letter_queue: dev-notification-dlq
+
+storage_buckets:
+  data_storage:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.STORAGE
+    versioning: enabled
+    encryption: AES256
+    lifecycle_rules:
+      - id: delete_old_files
+        status: enabled
+        days: 90
+        noncurrent_versions: 5
+
+  logs_storage:
+    enabled: true
+    semantic_anchor: CLOUDPLATFORMINSTANCE.DEV.LOGSTORAGE
+    versioning: disabled
+    encryption: AES256
+    lifecycle_rules:
+      - id: delete_old_logs
+        status: enabled
+        days: 30
+
+secret_names:
+  db_credentials: /dev/postgres/credentials
+  redis_credentials: /dev/redis/credentials
+  api_keys: /dev/api/keys
+  webhooks: /dev/webhooks/secrets

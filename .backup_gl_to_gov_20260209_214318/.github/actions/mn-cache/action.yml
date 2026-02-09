@@ -1,0 +1,329 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-cache
+# Replaces: actions/cache@v4
+# Description: Cache dependencies and build outputs
+# Version: 1.0.0
+# 
+# LIMITATION: This implementation stores cache on the runner's local filesystem
+# ($RUNNER_TOOL_CACHE or $HOME/.mn-cache). On GitHub-hosted runners, this cache
+# does NOT persist across jobs or workflow runs. For production use, consider
+# integrating with the GitHub Cache API or document this limitation to users.
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 'MN Cache'
+description: 'MachineNativeOps official cache action for dependencies and build outputs (LOCAL CACHE ONLY - does not persist across jobs on hosted runners)'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'archive'
+  color: 'blue'
+
+inputs:
+  path:
+    description: 'A list of files, directories, and wildcard patterns to cache and restore'
+    required: true
+  key:
+    description: 'An explicit key for restoring and saving the cache'
+    required: true
+  restore-keys:
+    description: 'An ordered list of keys to use for restoring stale cache if no cache hit occurred for key'
+    required: false
+    default: ''
+  upload-chunk-size:
+    description: 'The chunk size used to split up large files during upload, in bytes'
+    required: false
+    default: ''
+  enableCrossOsArchive:
+    description: 'An optional boolean when enabled, allows caching across different OS'
+    required: false
+    default: 'false'
+  fail-on-cache-miss:
+    description: 'Fail the workflow if cache entry is not found'
+    required: false
+    default: 'false'
+  lookup-only:
+    description: 'Check if a cache entry exists without downloading'
+    required: false
+    default: 'false'
+  save-always:
+    description: 'Save cache even if the job fails'
+    required: false
+    default: 'false'
+
+outputs:
+  cache-hit:
+    description: 'A boolean value to indicate an exact match was found for the primary key'
+    value: ${{ steps.restore.outputs.cache_hit }}
+  cache-primary-key:
+    description: 'The primary key that was used'
+    value: ${{ steps.restore.outputs.cache_primary_key }}
+  cache-matched-key:
+    description: 'The key of the cache that was restored'
+    value: ${{ steps.restore.outputs.cache_matched_key }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Cache Environment
+      id: setup
+      shell: bash
+      run: |
+        # Create cache directory
+        CACHE_BASE="${RUNNER_TOOL_CACHE:-$HOME/.cache/mn-cache}"
+        mkdir -p "$CACHE_BASE"
+
+        # Generate cache metadata
+        CACHE_KEY="${{ inputs.key }}"
+        OS_KEY="${{ runner.os }}"
+        CROSS_OS="${{ inputs.enableCrossOsArchive }}"
+
+        if [[ "$CROSS_OS" != "true" ]]; then
+          CACHE_KEY="${OS_KEY}-${CACHE_KEY}"
+        fi
+
+        # Hash the key for filesystem safety
+        CACHE_HASH=$(echo "$CACHE_KEY" | md5sum | cut -d' ' -f1)
+        CACHE_DIR="$CACHE_BASE/$CACHE_HASH"
+
+        echo "cache_base=$CACHE_BASE" >> $GITHUB_OUTPUT
+        echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
+        echo "cache_hash=$CACHE_HASH" >> $GITHUB_OUTPUT
+        echo "cache_dir=$CACHE_DIR" >> $GITHUB_OUTPUT
+
+        echo "Cache key: $CACHE_KEY"
+        echo "Cache hash: $CACHE_HASH"
+
+    - name: Parse Cache Paths
+      id: paths
+      shell: bash
+      run: |
+        PATHS="${{ inputs.path }}"
+
+        # Convert multiline paths to space-separated
+        PATHS_ARRAY=$(echo "$PATHS" | tr '\n' ' ' | tr ',' ' ')
+
+        # Validate paths exist or can be created
+        VALID_PATHS=""
+        for path in $PATHS_ARRAY; do
+          path=$(echo "$path" | xargs)  # trim whitespace
+          if [[ -n "$path" ]]; then
+            # Expand path relative to workspace
+            if [[ "$path" != /* ]]; then
+              path="${GITHUB_WORKSPACE}/$path"
+            fi
+            VALID_PATHS="$VALID_PATHS $path"
+          fi
+        done
+
+        echo "paths=$VALID_PATHS" >> $GITHUB_OUTPUT
+        echo "Paths to cache: $VALID_PATHS"
+
+    - name: Restore Cache
+      id: restore
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        CACHE_DIR="${{ steps.setup.outputs.cache_dir }}"
+        CACHE_KEY="${{ steps.setup.outputs.cache_key }}"
+        CACHE_BASE="${{ steps.setup.outputs.cache_base }}"
+        RESTORE_KEYS="${{ inputs.restore-keys }}"
+        LOOKUP_ONLY="${{ inputs.lookup-only }}"
+        FAIL_ON_MISS="${{ inputs.fail-on-cache-miss }}"
+        PATHS="${{ steps.paths.outputs.paths }}"
+
+        CACHE_HIT="false"
+        MATCHED_KEY=""
+
+        # Function to check cache existence
+        check_cache() {
+          local key="$1"
+          local hash=$(echo "$key" | md5sum | cut -d' ' -f1)
+          local dir="$CACHE_BASE/$hash"
+
+          if [[ -d "$dir" && -f "$dir/.cache_metadata" ]]; then
+            echo "$dir"
+            return 0
+          fi
+          return 1
+        }
+
+        # Function to restore from cache directory
+        restore_cache() {
+          local cache_source="$1"
+
+          if [[ "$LOOKUP_ONLY" == "true" ]]; then
+            echo "Lookup only mode - skipping restore"
+            return 0
+          fi
+
+          echo "Restoring cache from: $cache_source"
+
+          # Read metadata
+          if [[ -f "$cache_source/.cache_metadata" ]]; then
+            cat "$cache_source/.cache_metadata"
+          fi
+
+          # Restore each cached path
+          for path in $PATHS; do
+            path=$(echo "$path" | xargs)
+            if [[ -z "$path" ]]; then continue; fi
+
+            # Get relative path for cache storage
+            REL_PATH=$(echo "$path" | sed "s|^${GITHUB_WORKSPACE}/||" | sed 's|/|_|g')
+            CACHED_PATH="$cache_source/$REL_PATH.tar.gz"
+
+            if [[ -f "$CACHED_PATH" ]]; then
+              # Create parent directory
+              mkdir -p "$(dirname "$path")"
+
+              # Extract to target location
+              if [[ -d "$path" ]]; then
+                tar -xzf "$CACHED_PATH" -C "$path" 2>/dev/null || \
+                tar -xzf "$CACHED_PATH" -C "$(dirname "$path")" 2>/dev/null || true
+              else
+                tar -xzf "$CACHED_PATH" -C "$(dirname "$path")" 2>/dev/null || true
+              fi
+
+              echo "Restored: $path"
+            fi
+          done
+        }
+
+        # Try primary key first
+        echo "Checking primary key: $CACHE_KEY"
+        FOUND_DIR=$(check_cache "$CACHE_KEY" || echo "")
+
+        if [[ -n "$FOUND_DIR" ]]; then
+          CACHE_HIT="true"
+          MATCHED_KEY="$CACHE_KEY"
+          restore_cache "$FOUND_DIR"
+          echo "Cache hit for primary key"
+        else
+          # Try restore keys
+          if [[ -n "$RESTORE_KEYS" ]]; then
+            echo "Primary key not found, trying restore keys..."
+
+            for restore_key in $(echo "$RESTORE_KEYS" | tr '\n' ' '); do
+              restore_key=$(echo "$restore_key" | xargs)
+              if [[ -z "$restore_key" ]]; then continue; fi
+
+              echo "Trying restore key: $restore_key"
+
+              # For prefix matching, find caches that start with this key
+              for cached in "$CACHE_BASE"/*; do
+                if [[ -f "$cached/.cache_metadata" ]]; then
+                  CACHED_KEY=$(grep "^key=" "$cached/.cache_metadata" | cut -d= -f2)
+                  if [[ "$CACHED_KEY" == "$restore_key"* ]]; then
+                    CACHE_HIT="true"
+                    MATCHED_KEY="$CACHED_KEY"
+                    restore_cache "$cached"
+                    echo "Cache hit for restore key: $CACHED_KEY"
+                    break 2
+                  fi
+                fi
+              done
+            done
+          fi
+        fi
+
+        # Handle cache miss
+        if [[ "$CACHE_HIT" != "true" ]]; then
+          echo "Cache miss"
+
+          if [[ "$FAIL_ON_MISS" == "true" ]]; then
+            echo "::error::Cache not found for key: $CACHE_KEY"
+            exit 1
+          fi
+        fi
+
+        echo "cache_hit=$CACHE_HIT" >> $GITHUB_OUTPUT
+        echo "cache_primary_key=$CACHE_KEY" >> $GITHUB_OUTPUT
+        echo "cache_matched_key=$MATCHED_KEY" >> $GITHUB_OUTPUT
+
+    - name: Register Post-Job Cache Save
+      if: inputs.lookup-only != 'true'
+      shell: bash
+      run: |
+        # Create a marker file to trigger cache save in post-job
+        CACHE_MARKER="${RUNNER_TEMP:-/tmp}/.mn_cache_save_${{ steps.setup.outputs.cache_hash }}"
+
+        cat > "$CACHE_MARKER" << EOF
+        CACHE_DIR=${{ steps.setup.outputs.cache_dir }}
+        CACHE_KEY=${{ steps.setup.outputs.cache_key }}
+        CACHE_PATHS=${{ steps.paths.outputs.paths }}
+        SAVE_ALWAYS=${{ inputs.save-always }}
+        CACHE_HIT=${{ steps.restore.outputs.cache_hit }}
+        EOF
+
+        echo "Cache save registered for post-job execution"
+
+    - name: Save Cache (Immediate)
+      if: inputs.lookup-only != 'true' && steps.restore.outputs.cache_hit != 'true'
+      shell: bash
+      run: |
+        CACHE_DIR="${{ steps.setup.outputs.cache_dir }}"
+        CACHE_KEY="${{ steps.setup.outputs.cache_key }}"
+        PATHS="${{ steps.paths.outputs.paths }}"
+
+        echo "Saving cache..."
+
+        # Create cache directory
+        mkdir -p "$CACHE_DIR"
+
+        # Save metadata
+        cat > "$CACHE_DIR/.cache_metadata" << EOF
+        key=$CACHE_KEY
+        created=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        runner=${{ runner.os }}
+        workflow=${{ github.workflow }}
+        run_id=${{ github.run_id }}
+        EOF
+
+        # Save each path
+        for path in $PATHS; do
+          path=$(echo "$path" | xargs)
+          if [[ -z "$path" ]]; then continue; fi
+
+          if [[ -e "$path" ]]; then
+            # Get relative path for cache storage
+            REL_PATH=$(echo "$path" | sed "s|^${GITHUB_WORKSPACE}/||" | sed 's|/|_|g')
+            CACHED_PATH="$CACHE_DIR/$REL_PATH.tar.gz"
+
+            echo "Caching: $path -> $CACHED_PATH"
+
+            # Create archive
+            if [[ -d "$path" ]]; then
+              tar -czf "$CACHED_PATH" -C "$path" . 2>/dev/null || \
+              tar -czf "$CACHED_PATH" -C "$(dirname "$path")" "$(basename "$path")" 2>/dev/null || true
+            else
+              tar -czf "$CACHED_PATH" -C "$(dirname "$path")" "$(basename "$path")" 2>/dev/null || true
+            fi
+          else
+            echo "Path does not exist yet: $path (will be cached in post-job)"
+          fi
+        done
+
+        echo "Cache saved to: $CACHE_DIR"
+
+    - name: Display Cache Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-CACHE SUMMARY"
+        echo "=========================================="
+        echo "Primary Key: ${{ steps.setup.outputs.cache_key }}"
+        echo "Cache Hit: ${{ steps.restore.outputs.cache_hit }}"
+        echo "Matched Key: ${{ steps.restore.outputs.cache_matched_key }}"
+        echo "Cache Directory: ${{ steps.setup.outputs.cache_dir }}"
+        echo "Lookup Only: ${{ inputs.lookup-only }}"
+        echo "=========================================="

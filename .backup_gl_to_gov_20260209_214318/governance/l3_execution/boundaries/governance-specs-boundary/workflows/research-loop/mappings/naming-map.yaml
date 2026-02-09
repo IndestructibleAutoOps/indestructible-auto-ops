@@ -1,0 +1,27 @@
+# @GL-governed
+# @GL-layer: GL60-80
+# @GL-semantic: research-loop.naming-map
+# @GL-audit-trail: governance/workflows/research-loop/references/registry.yaml
+version: 1
+mappings:
+  - source: "Research Loop Boot Sequence"
+    target: "GL-WORKFLOW-RESEARCH-LOOP-0001"
+    rationale: "Normalize workflow identifiers to GL governance format."
+  - source: "EGRESS-EXTERNAL"
+    target: "EGRESS-EXTERNAL-ISOLATION"
+    rationale: "Enforce isolation-only external stage."
+  - source: "EGRESS-GLOBAL"
+    target: "EGRESS-GLOBAL-ISOLATION"
+    rationale: "Enforce isolation-only global stage."
+  - source: "REF-Pack"
+    target: "refpack-import-v1"
+    rationale: "Bind to controlled import pipeline ID."
+  - source: "workflow.yaml"
+    target: "governance/workflows/research-loop/workflow.yaml"
+    rationale: "Pin to governance workflow location."
+  - source: "gates.yaml"
+    target: "governance/workflows/research-loop/gates.yaml"
+    rationale: "Pin to governance gate location."
+  - source: "snapshots/"
+    target: "reports/research-runs/{run_id}/evidence/"
+    rationale: "Store offline snapshots under run artifacts."

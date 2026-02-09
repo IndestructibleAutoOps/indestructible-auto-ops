@@ -1,0 +1,84 @@
+{
+  "$schema": "../role.schema.json",
+  "version": "1.0.0",
+  "description": "MNGA Role Execution Layer Registry - Official Role Index",
+  "namespace": "ecosystem",
+  "registry_metadata": {
+    "created_at": "2025-01-01T00:00:00Z",
+    "last_updated": "2025-01-01T00:00:00Z",
+    "total_roles": 5,
+    "semantic_index": "MNGA-L3"
+  },
+  "roles": [
+    {
+      "id": "ecosystem.runner",
+      "name": "Ecosystem Runner",
+      "version": "1.0.0",
+      "definition_file": "ecosystem.runner.json",
+      "status": "ACTIVE",
+      "capabilities": [
+        "directory_scan",
+        "index_build",
+        "governance_check",
+        "report_generation"
+      ],
+      "semantic_tags": ["execution", "automation", "verification"]
+    },
+    {
+      "id": "ecosystem.architect",
+      "name": "Ecosystem Architect",
+      "version": "1.0.0",
+      "definition_file": "ecosystem.architect.json",
+      "status": "ACTIVE",
+      "capabilities": [
+        "architecture_analysis",
+        "semantic_topology",
+        "version_contract_analysis",
+        "architecture_recommendation"
+      ],
+      "semantic_tags": ["analysis", "design", "governance"]
+    },
+    {
+      "id": "ecosystem.analyst",
+      "name": "Ecosystem Analyst",
+      "version": "1.0.0",
+      "definition_file": "ecosystem.analyst.json",
+      "status": "ACTIVE",
+      "capabilities": [
+        "drift_detection",
+        "semantic_inconsistency_detection",
+        "evidence_gap_detection",
+        "metadata_gap_detection"
+      ],
+      "semantic_tags": ["detection", "validation", "compliance"]
+    },
+    {
+      "id": "ecosystem.validator",
+      "name": "Ecosystem Validator",
+      "version": "1.0.0",
+      "definition_file": "ecosystem.validator.json",
+      "status": "ACTIVE",
+      "capabilities": [
+        "contract_validation",
+        "schema_validation",
+        "policy_validation",
+        "governance_compliance"
+      ],
+      "semantic_tags": ["validation", "enforcement", "compliance"]
+    },
+    {
+      "id": "ecosystem.semantic-checker",
+      "name": "Ecosystem Semantic Checker",
+      "version": "1.0.0",
+      "definition_file": "ecosystem.semantic-checker.json",
+      "status": "ACTIVE",
+      "capabilities": [
+        "semantic_analysis",
+        "meaning_verification",
+        "context_validation",
+        "semantic_drift_detection"
+      ],
+      "semantic_tags": ["semantic", "meaning", "context"]
+    }
+  ]
+}

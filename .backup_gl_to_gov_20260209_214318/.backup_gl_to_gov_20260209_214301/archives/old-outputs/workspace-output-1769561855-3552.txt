@@ -1,0 +1,300 @@
+{
+  "success": true,
+  "violations": [
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "config/build-tools/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "config/build-tools/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "config/build-tools/vite.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "ns-root/namespaces-mcp/level2/src/data/cache/distributed-cache.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "ns-root/namespaces-mcp/level2/src/data/cache/distributed-cache.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "ns-root/namespaces-mcp/level2/src/data/cache/distributed-cache.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "ns-root/namespaces-mcp/level2/src/monitoring/distributed-tracing.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "ns-root/namespaces-mcp/level2/src/monitoring/distributed-tracing.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "ns-root/namespaces-mcp/level2/src/monitoring/distributed-tracing.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "ns-root/namespaces-mcp/level3/engines/dag/builder/dag-builder.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "ns-root/namespaces-mcp/level3/engines/dag/builder/dag-builder.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "ns-root/namespaces-mcp/level3/engines/dag/builder/dag-builder.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "workspace/config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "workspace/config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "workspace/config/build-tools/drizzle.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "workspace/config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "workspace/config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "workspace/config/build-tools/eslint.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "workspace/config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "workspace/config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "workspace/config/build-tools/jest.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "workspace/config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "workspace/config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "workspace/config/build-tools/postcss.config.js",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-governed marker",
+      "file": "workspace/config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-LAYER-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-layer marker",
+      "file": "workspace/config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-SEMANTIC-MISSING",
+      "severity": "medium",
+      "message": "Missing @GL-semantic marker",
+      "file": "workspace/config/build-tools/tailwind.config.ts",
+      "fixRequired": true
+    },
+    {
+      "code": "GL-MARKER-MISSING",
+      "severity": "medium",

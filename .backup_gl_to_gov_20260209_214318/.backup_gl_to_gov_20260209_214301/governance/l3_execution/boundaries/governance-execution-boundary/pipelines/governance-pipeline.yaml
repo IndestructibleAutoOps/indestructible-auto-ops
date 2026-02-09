@@ -1,0 +1,11 @@
+governance_pipeline:
+  version: 1.0
+
+  steps:
+    - loadgovernancebinding
+    - validatehashboundary
+    - executemodulepipelines
+    - runglobalgates
+    - generate_evidence
+    - updatesemanticmodel
+    - runconsistencyverification

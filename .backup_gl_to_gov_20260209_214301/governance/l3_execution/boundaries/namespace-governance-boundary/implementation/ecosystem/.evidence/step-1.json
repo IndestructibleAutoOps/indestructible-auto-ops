@@ -1,0 +1,35 @@
+{
+  "artifact_id": "e831fb39-aef6-4995-a20c-612bd0094bb7",
+  "step_number": 1,
+  "timestamp": "2026-02-06T11:27:50.729168+00:00",
+  "era": 1,
+  "success": true,
+  "metadata": {
+    "local_state": {
+      "ugs_version": "1.0.0",
+      "meta_spec_version": "1.0.0",
+      "gl_anchors_version": "1.0.0",
+      "immutable_layers": [
+        "L00",
+        "L02",
+        "L03",
+        "L04",
+        "L50"
+      ],
+      "engines": [
+        "validation",
+        "refresh",
+        "reverse_architecture"
+      ],
+      "bound_subsystems": 7,
+      "governance_events_count": 805,
+      "last_enforcement_check": "2026-02-06T11:27:50.726941+00:00"
+    }
+  },
+  "execution_time_ms": 4,
+  "violations_count": 0,
+  "artifacts_generated": [
+    "local_state_model.json"
+  ],
+  "sha256_hash": "eb4c17dfdf3b24de56713e98484df4e6ba747e246ef3453208f508461802d628"
+}

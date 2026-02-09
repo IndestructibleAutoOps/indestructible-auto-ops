@@ -1,0 +1,259 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-download-artifact
+# Replaces: actions/download-artifact@v4
+# Description: Download build artifacts with full feature parity
+# Version: 1.0.0
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 'MN Download Artifact'
+description: 'MachineNativeOps official artifact download action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'download-cloud'
+  color: 'blue'
+
+inputs:
+  name:
+    description: 'Name of the artifact to download. If unspecified, all artifacts are downloaded.'
+    required: false
+    default: ''
+  path:
+    description: 'Destination path for the downloaded artifact'
+    required: false
+    default: '.'
+  pattern:
+    description: 'A glob pattern to filter artifacts by name'
+    required: false
+    default: ''
+  merge-multiple:
+    description: 'When multiple artifacts are matched, merge them into a single directory'
+    required: false
+    default: 'false'
+  github-token:
+    description: 'GitHub token for authentication'
+    required: false
+    default: ${{ github.token }}
+  repository:
+    description: 'Repository to download artifacts from (owner/repo format)'
+    required: false
+    default: ${{ github.repository }}
+  run-id:
+    description: 'The ID of the workflow run to download artifacts from'
+    required: false
+    default: ${{ github.run_id }}
+
+outputs:
+  download-path:
+    description: 'Path where artifacts were downloaded'
+    value: ${{ steps.download.outputs.download_path }}
+  artifact-ids:
+    description: 'Comma-separated list of downloaded artifact IDs'
+    value: ${{ steps.download.outputs.artifact_ids }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Download Directory
+      id: setup
+      shell: bash
+      run: |
+        DOWNLOAD_PATH="${{ inputs.path }}"
+        if [[ -z "$DOWNLOAD_PATH" || "$DOWNLOAD_PATH" == "." ]]; then
+          DOWNLOAD_PATH="${GITHUB_WORKSPACE}"
+        elif [[ "$DOWNLOAD_PATH" != /* ]]; then
+          DOWNLOAD_PATH="${GITHUB_WORKSPACE}/$DOWNLOAD_PATH"
+        fi
+
+        mkdir -p "$DOWNLOAD_PATH"
+        echo "download_path=$DOWNLOAD_PATH" >> $GITHUB_OUTPUT
+
+    - name: List Available Artifacts
+      id: list
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ inputs.repository }}"
+        RUN_ID="${{ inputs.run-id }}"
+
+        echo "Fetching artifacts from run $RUN_ID..."
+
+        # Get all artifacts for the run
+        ARTIFACTS_JSON=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$API_URL/repos/$REPO/actions/runs/$RUN_ID/artifacts")
+
+        # Save artifacts list
+        echo "$ARTIFACTS_JSON" > /tmp/artifacts_list.json
+
+        # Count artifacts
+        TOTAL=$(echo "$ARTIFACTS_JSON" | jq -r '.total_count // 0')
+        echo "Found $TOTAL artifacts"
+
+        echo "artifacts_json=/tmp/artifacts_list.json" >> $GITHUB_OUTPUT
+        echo "total_count=$TOTAL" >> $GITHUB_OUTPUT
+
+    - name: Filter Artifacts
+      id: filter
+      shell: bash
+      run: |
+        ARTIFACTS_JSON="${{ steps.list.outputs.artifacts_json }}"
+        ARTIFACT_NAME="${{ inputs.name }}"
+        PATTERN="${{ inputs.pattern }}"
+
+        # Start with all artifacts
+        FILTERED=$(cat "$ARTIFACTS_JSON" | jq -c '.artifacts // []')
+
+        # Filter by name if specified
+        if [[ -n "$ARTIFACT_NAME" ]]; then
+          FILTERED=$(echo "$FILTERED" | jq -c --arg name "$ARTIFACT_NAME" '[.[] | select(.name == $name)]')
+        fi
+
+        # Filter by pattern if specified
+        if [[ -n "$PATTERN" ]]; then
+          # Convert glob pattern to regex
+          REGEX=$(echo "$PATTERN" | sed 's/\./\\./g' | sed 's/\*/.*/g' | sed 's/\?/./g')
+          FILTERED=$(echo "$FILTERED" | jq -c --arg regex "$REGEX" '[.[] | select(.name | test($regex))]')
+        fi
+
+        # Save filtered list
+        echo "$FILTERED" > /tmp/filtered_artifacts.json
+
+        # Count filtered
+        COUNT=$(echo "$FILTERED" | jq -r 'length')
+        echo "Matched $COUNT artifacts"
+
+        # Get artifact IDs and names
+        IDS=$(echo "$FILTERED" | jq -r '.[].id' | tr '\n' ',' | sed 's/,$//')
+        NAMES=$(echo "$FILTERED" | jq -r '.[].name' | tr '\n' ',' | sed 's/,$//')
+
+        echo "filtered_json=/tmp/filtered_artifacts.json" >> $GITHUB_OUTPUT
+        echo "count=$COUNT" >> $GITHUB_OUTPUT
+        echo "ids=$IDS" >> $GITHUB_OUTPUT
+        echo "names=$NAMES" >> $GITHUB_OUTPUT
+
+    - name: Check Artifacts Found
+      shell: bash
+      run: |
+        COUNT="${{ steps.filter.outputs.count }}"
+        if [[ "$COUNT" == "0" ]]; then
+          ARTIFACT_NAME="${{ inputs.name }}"
+          PATTERN="${{ inputs.pattern }}"
+
+          if [[ -n "$ARTIFACT_NAME" ]]; then
+            echo "::warning::No artifact found with name: $ARTIFACT_NAME"
+          elif [[ -n "$PATTERN" ]]; then
+            echo "::warning::No artifacts found matching pattern: $PATTERN"
+          else
+            echo "::warning::No artifacts found for this workflow run"
+          fi
+
+          # Check local artifacts directory as fallback
+          LOCAL_ARTIFACTS="${GITHUB_WORKSPACE}/.artifacts"
+          if [[ -d "$LOCAL_ARTIFACTS" ]]; then
+            echo "Checking local artifacts directory..."
+            ls -la "$LOCAL_ARTIFACTS" || true
+          fi
+        fi
+
+    - name: Download Artifacts
+      id: download
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        DOWNLOAD_PATH="${{ steps.setup.outputs.download_path }}"
+        MERGE="${{ inputs.merge-multiple }}"
+        FILTERED_JSON="${{ steps.filter.outputs.filtered_json }}"
+
+        DOWNLOADED_IDS=""
+        DOWNLOADED_COUNT=0
+
+        # Process each artifact using process substitution to avoid subshell
+        while read -r artifact; do
+          ARTIFACT_ID=$(echo "$artifact" | jq -r '.id')
+          ARTIFACT_NAME=$(echo "$artifact" | jq -r '.name')
+          ARCHIVE_URL=$(echo "$artifact" | jq -r '.archive_download_url')
+
+          echo "Downloading artifact: $ARTIFACT_NAME (ID: $ARTIFACT_ID)"
+
+          # Determine destination
+          if [[ "$MERGE" == "true" ]]; then
+            DEST_DIR="$DOWNLOAD_PATH"
+          else
+            DEST_DIR="$DOWNLOAD_PATH/$ARTIFACT_NAME"
+          fi
+          mkdir -p "$DEST_DIR"
+
+          # Download artifact zip
+          TEMP_ZIP=$(mktemp)
+          HTTP_CODE=$(curl -s -w "%{http_code}" -o "$TEMP_ZIP" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -L "$ARCHIVE_URL")
+
+          if [[ "$HTTP_CODE" == "200" ]]; then
+            # Extract artifact
+            unzip -q -o "$TEMP_ZIP" -d "$DEST_DIR" 2>/dev/null || {
+              # If unzip fails, try tar (for our custom format)
+              tar -xzf "$TEMP_ZIP" -C "$DEST_DIR" 2>/dev/null || {
+                echo "::warning::Failed to extract artifact: $ARTIFACT_NAME"
+              }
+            }
+
+            echo "Extracted to: $DEST_DIR"
+            DOWNLOADED_COUNT=$((DOWNLOADED_COUNT + 1))
+
+            if [[ -n "$DOWNLOADED_IDS" ]]; then
+              DOWNLOADED_IDS="$DOWNLOADED_IDS,$ARTIFACT_ID"
+            else
+              DOWNLOADED_IDS="$ARTIFACT_ID"
+            fi
+          else
+            echo "::warning::Failed to download artifact $ARTIFACT_NAME (HTTP $HTTP_CODE)"
+
+            # Try local fallback
+            LOCAL_ARTIFACT="${GITHUB_WORKSPACE}/.artifacts/${ARTIFACT_NAME}.tar.gz"
+            if [[ -f "$LOCAL_ARTIFACT" ]]; then
+              echo "Using local artifact: $LOCAL_ARTIFACT"
+              tar -xzf "$LOCAL_ARTIFACT" -C "$DEST_DIR" 2>/dev/null || true
+              DOWNLOADED_COUNT=$((DOWNLOADED_COUNT + 1))
+            fi
+          fi
+
+          rm -f "$TEMP_ZIP"
+        done < <(jq -c '.[]' "$FILTERED_JSON")
+
+        echo "download_path=$DOWNLOAD_PATH" >> $GITHUB_OUTPUT
+        echo "artifact_ids=$DOWNLOADED_IDS" >> $GITHUB_OUTPUT
+        echo "downloaded_count=$DOWNLOADED_COUNT" >> $GITHUB_OUTPUT
+
+    - name: Display Download Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-DOWNLOAD-ARTIFACT SUMMARY"
+        echo "=========================================="
+        echo "Repository: ${{ inputs.repository }}"
+        echo "Run ID: ${{ inputs.run-id }}"
+        echo "Requested: ${{ inputs.name }}${{ inputs.pattern }}"
+        echo "Matched: ${{ steps.filter.outputs.count }} artifacts"
+        echo "Download Path: ${{ steps.setup.outputs.download_path }}"
+        echo "Artifact IDs: ${{ steps.filter.outputs.ids }}"
+        echo "=========================================="
+
+        # List downloaded files
+        echo "Downloaded contents:"
+        ls -la "${{ steps.setup.outputs.download_path }}" || true

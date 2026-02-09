@@ -1,0 +1,96 @@
+# Meta-Semantics Specification
+# Version: 1.0.0
+# Layer: Meta-Spec / Semantics
+
+@GL-semantic: meta-semantics-spec
+@GL-audit-trail: enabled
+
+meta_spec:
+  id: org.mnga.meta-semantics@1.0.0
+  version: "1.0.0"
+  title: "Meta-Semantics Specification"
+  description: |
+    Defines the semantic classification system for all governance 
+    specifications. This is the root semantic layer.
+  
+  immutable: true
+
+semantic_domains:
+  # Language-level semantics (L00-L49)
+  language:
+    L00:
+      name: "Core Language"
+      description: "Fundamental language constructs"
+      semantic_anchors:
+        - "@GL-semantic: language-core"
+        - "@GL-semantic: parser-definition"
+        - "@GL-semantic: lexer-definition"
+    
+    L01:
+      name: "Language Extensions"
+      description: "Language extension mechanisms"
+      semantic_anchors:
+        - "@GL-semantic: language-extension"
+        - "@GL-semantic: macro-definition"
+    
+    L10:
+      name: "AST Definitions"
+      description: "Abstract Syntax Tree node types"
+      semantic_anchors:
+        - "@GL-semantic: ast-node"
+        - "@GL-semantic: ast-structure"
+    
+    L20:
+      name: "Type System"
+      description: "Type definitions and constraints"
+      semantic_anchors:
+        - "@GL-semantic: type-definition"
+        - "@GL-semantic: type-constraint"
+  
+  # Format-level semantics (L50-L99)
+  format:
+    L50:
+      name: "Core Format"
+      description: "Fundamental format structures"
+      semantic_anchors:
+        - "@GL-semantic: format-core"
+        - "@GL-semantic: schema-definition"
+    
+    L60:
+      name: "Format Structures"
+      description: "Data structure definitions"
+      semantic_anchors:
+        - "@GL-semantic: data-structure"
+        - "@GL-semantic: field-definition"
+    
+    L70:
+      name: "Format Behaviors"
+      description: "Format behaviors and migrations"
+      semantic_anchors:
+        - "@GL-semantic: format-behavior"
+        - "@GL-semantic: migration-script"
+
+semantic_relationships:
+  - from: "L00"
+    to: "L10"
+    relationship: "defines"
+    description: "Core language defines AST structures"
+  
+  - from: "L10"
+    to: "L50"
+    relationship: "informs"
+    description: "AST structures inform format schemas"
+  
+  - from: "L50"
+    to: "L60"
+    relationship: "constrains"
+    description: "Core format constrains structure definitions"
+
+semantic_inheritance:
+  rule: "single_inheritance"
+  description: |
+    All semantics inherit from their parent layer. 
+    Child layers cannot redefine parent semantics.
+  
+  enforcement: "strict"
+  violation_severity: "CRITICAL"

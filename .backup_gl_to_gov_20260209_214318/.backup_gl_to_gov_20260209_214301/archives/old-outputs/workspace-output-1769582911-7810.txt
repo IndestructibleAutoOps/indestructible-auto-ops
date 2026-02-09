@@ -1,0 +1,11 @@
+        validation_scope:
+          - "engine"
+          - "file-organizer-system"
+          - "instant
+          - elasticsearch-search-system
+          - infrastructure
+          - esync-platform
+          - gl-gate
+          - .github"
+        strict_mode: true
+        enforce_semantic_anchors: true

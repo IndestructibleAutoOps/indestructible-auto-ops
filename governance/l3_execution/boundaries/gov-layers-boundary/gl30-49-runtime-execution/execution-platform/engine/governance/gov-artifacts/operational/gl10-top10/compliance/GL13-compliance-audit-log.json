@@ -1,0 +1,33 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-core
+# @GL-audit-trail: gov-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gov-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "id": "GL13-compliance-audit-log",
+  "gllevel": "GL13",
+  "name": "GL13-compliance-audit-log",
+  "createdat": "$TIMESTAMP",
+  "immutable": true,
+  "language": "zh-TW",
+  "semanticterms": [
+    "Compliance"
+  ],
+  "functionaldimensions": [
+    "Monitoring"
+  ],
+  "path": "compliance/GL13-compliance-audit-log.json",
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "GL13-compliance-audit-log",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Architecture Governance Framework",
+    "version": "2.0.0"
+  }
+}

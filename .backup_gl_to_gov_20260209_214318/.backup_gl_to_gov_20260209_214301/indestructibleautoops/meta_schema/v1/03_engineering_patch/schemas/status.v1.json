@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://indestructibleautoops.com/schemas/common/status/v1.json",
+  "title": "IndestructibleAutoOps Common Status v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "type": "string",
+      "enum": ["Pending", "Active", "Deprecated", "Archived"]
+    },
+    "conditions": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "status", "lastTransitionTime"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["Validated", "Enforced", "Violated", "Synced"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["True", "False", "Unknown"]
+          },
+          "reason": { "type": "string" },
+          "message": { "type": "string" },
+          "lastTransitionTime": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "lastUpdateTime": { "type": "string", "format": "date-time" }
+  }
+}

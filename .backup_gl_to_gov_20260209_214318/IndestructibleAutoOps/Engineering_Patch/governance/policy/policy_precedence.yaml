@@ -1,0 +1,21 @@
+policy_precedence:
+  version: v1
+  resolution:
+    deterministic: true
+    order:
+      - "deny > allow"
+      - "namespace_policy > cluster_policy"
+      - "workload_specific > generic"
+      - "higher_priority_label > lower"
+      - "newer_version_if_compat=true"
+  required_labels:
+    - key: "indestructibleautoops.io/policy-priority"
+      type: integer
+      range: [0, 1000]
+  conflict_rules:
+    - id: "CONFLICT-001"
+      description: "Simultaneous allow+deny for same tuple(resource, action, subject)"
+      action: "fail"
+    - id: "CONFLICT-002"
+      description: "Overlapping selectors with different priorities without explicit precedence label"
+      action: "fail"

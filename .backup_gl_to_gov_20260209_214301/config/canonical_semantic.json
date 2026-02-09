@@ -1,0 +1,47 @@
+{
+  "L01:SemanticOriginEngine": {
+    "entity_id": "SemanticOriginEngine",
+    "entity_type": "SemanticCore",
+    "definition": {
+      "purpose": "Generate semantic root anchors"
+    },
+    "dependencies": [],
+    "hash": "7f2f200082c57721c463a118e03d1f24860e84567555cb7f9922842d6cc4c18c"
+  },
+  "L02:CoreSealingEngine": {
+    "entity_id": "CoreSealingEngine",
+    "entity_type": "SealingCore",
+    "definition": {
+      "purpose": "Immutable core sealing"
+    },
+    "dependencies": [
+      "L01"
+    ],
+    "hash": "3d52eaae6ec9b324df77b922e026dd72d2634f4204ea960965b1ea2e40cdb781"
+  },
+  "L03:LineageReconstructionEngine": {
+    "entity_id": "LineageReconstructionEngine",
+    "entity_type": "LineageCore",
+    "definition": {
+      "purpose": "Complete lineage tracking"
+    },
+    "dependencies": [
+      "L01",
+      "L02"
+    ],
+    "hash": "3b93aae318e7eba541460bbbbbc392b0bc60619d998adfbd191ad46308d05f68"
+  },
+  "L04:GLCMValidationEngine": {
+    "entity_id": "GLCMValidationEngine",
+    "entity_type": "GovernanceCore",
+    "definition": {
+      "purpose": "GLCM validation enforcement"
+    },
+    "dependencies": [
+      "L01",
+      "L02",
+      "L03"
+    ],
+    "hash": "64696215e00b9bddce6db6cfc1bde030de00befee123f63551a572daf1b1abe9"
+  }
+}

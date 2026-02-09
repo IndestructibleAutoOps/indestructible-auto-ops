@@ -1,0 +1,147 @@
+{
+  "$schema": "../role.schema.json",
+  "id": "ecosystem.semantic-checker",
+  "name": "Ecosystem Semantic Checker",
+  "version": "1.0.0",
+  "description": "Performs deep semantic analysis, meaning verification, context validation, and semantic drift detection to ensure semantic integrity across all MNGA artifacts",
+  "capabilities": [
+    "semantic_analysis",
+    "meaning_verification",
+    "context_validation",
+    "semantic_drift_detection"
+  ],
+  "inputs": {
+    "parameters": {
+      "target": {
+        "type": "string",
+        "description": "Artifact or content to analyze semantically",
+        "required": true
+      },
+      "semantic_depth": {
+        "type": "string",
+        "enum": ["surface", "deep", "contextual"],
+        "description": "Depth of semantic analysis",
+        "default": "deep"
+      },
+      "context_anchors": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Semantic anchors to validate against",
+        "default": []
+      },
+      "language_model": {
+        "type": "string",
+        "description": "Language model to use for semantic analysis",
+        "default": "default"
+      }
+    },
+    "required": ["target"]
+  },
+  "outputs": {
+    "format": "json",
+    "schema": {
+      "semantic_analysis": {
+        "type": "object",
+        "properties": {
+          "semantic_score": {"type": "number"},
+          "meaning_verified": {"type": "boolean"},
+          "context_valid": {"type": "boolean"},
+          "semantic_confidence": {"type": "number"}
+        }
+      },
+      "semantic_issues": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string"},
+            "description": {"type": "string"},
+            "severity": {"type": "string"},
+            "suggestion": {"type": "string"}
+          }
+        },
+        "description": "Semantic issues detected"
+      },
+      "context_analysis": {
+        "type": "object",
+        "description": "Context validation results"
+      },
+      "semantic_drift": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Semantic drift from baseline"
+      },
+      "recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Semantic improvement recommendations"
+      }
+    }
+  },
+  "runtime_behavior": {
+    "execution_mode": "asynchronous",
+    "timeout": 240,
+    "retry_policy": {
+      "max_retries": 1,
+      "backoff": "exponential"
+    },
+    "hooks": {
+      "pre_execute": "scripts/semantic_checker_pre_hook.sh",
+      "post_execute": "scripts/semantic_checker_post_hook.sh"
+    }
+  },
+  "semantic_tags": [
+    "semantic",
+    "meaning",
+    "context",
+    "verification",
+    "nlp"
+  ],
+  "governance_rules": {
+    "permissions": [
+      "semantic:analyze",
+      "meaning:verify",
+      "context:validate",
+      "drift:detect"
+    ],
+    "constraints": [
+      {
+        "type": "SEMANTIC_INTEGRITY_THRESHOLD",
+        "rule": "semantic_score must be >= 0.85 for production",
+        "severity": "HIGH"
+      },
+      {
+        "type": "CONTEXT_ANCHOR_VALIDATION",
+        "rule": "must validate against at least one context anchor",
+        "severity": "MEDIUM"
+      },
+      {
+        "type": "SEMANTIC_DRIFT_LIMIT",
+        "rule": "semantic drift must be < 15% from baseline",
+        "severity": "HIGH"
+      }
+    ],
+    "audit_required": true,
+    "evidence_required": true
+  },
+  "dependencies": [
+    "@mnga/tools/semantic-analyzer",
+    "@mnga/tools/context-validator",
+    "@mnga/nlp/meaning-verifier"
+  ],
+  "mnga_layer": "L6",
+  "layer_interactions": [
+    "L0",
+    "L1",
+    "L2",
+    "L3",
+    "L6",
+    "L7"
+  ]
+}

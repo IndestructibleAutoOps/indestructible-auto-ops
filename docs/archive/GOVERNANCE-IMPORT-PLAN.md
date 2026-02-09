@@ -6,7 +6,7 @@
 ## 📊 現狀分析
 
 ### zip 文件內容（正確版本）
-- **總文件數**: 589 個 gl-execution-runtime 文件
+- **總文件數**: 589 個 gov-execution-runtime 文件
 - **治理文件**: 114 個
 - **V23 Root Governance**: 9 個文件 ✅
 - **V24 Meta Governance**: 8 個文件 ✅
@@ -29,7 +29,7 @@
 
 #### zip 文件中的正確結構：
 ```
-gl-execution-runtime/
+gov-execution-runtime/
 ├── gl/v23/root_governance/
 │   ├── anti_fabric/
 │   │   └── anti_fabric.py
@@ -38,11 +38,11 @@ gl-execution-runtime/
 │   ├── meta_auditor/
 │   │   └── meta_auditor.py
 │   └── ...
-├── gl-runtime/v23-root-governance/
+├── gov-runtime/v23-root-governance/
 │   └── src/core/root_governance/
 │       ├── falsification_engine.py
 │       └── anti_fabric.py
-├── gl-runtime/v24-meta-governance/
+├── gov-runtime/v24-meta-governance/
 │   └── src/core/meta_governance/
 │       └── meta_auditor.py
 └── ultra-strict-verification-core/
@@ -55,7 +55,7 @@ gl-execution-runtime/
 
 #### 當前倉庫結構（不完整）：
 ```
-gl-execution-runtime/
+gov-execution-runtime/
 ├── gl/v23/root_governance/ ❌ 不完整
 ├── gl/v24/meta_governance/ ❌ 不完整
 └── 缺少大量文件...
@@ -64,7 +64,7 @@ gl-execution-runtime/
 ## 📋 導入計劃
 
 ### Phase 1: 備份當前狀態
-- [ ] 備份當前 gl-repo
+- [ ] 備份當前 gov-repo
 - [ ] 記錄當前文件結構
 - [ ] 創建恢復點
 
@@ -75,7 +75,7 @@ gl-execution-runtime/
 - [ ] 導入 Falsification Engine (6 個文件)
 - [ ] 導入其他治理文件 (91 個文件)
 
-### Phase 3: 導入所有 gl-execution-runtime 文件
+### Phase 3: 導入所有 gov-execution-runtime 文件
 - [ ] 導入 582 個缺失文件
 - [ ] 導入文檔文件 (82 個 .md)
 - [ ] 導入代碼文件 (324 個 .py/.ts/.js)
@@ -132,23 +132,23 @@ gl-execution-runtime/
 ### V23 Root Governance (9 個文件)
 1. gl/v23/root_governance/anti_fabric/anti_fabric.py
 2. gl/v23/root_governance/anti_fabric/
-3. gl-runtime/v23-root-governance/run_service.py
-4. gl-runtime/v23-root-governance/manifest.json
-5. gl-runtime/v23-root-governance/README.md
-6. gl-runtime/v23-root-governance/src/__init__.py
-7. gl-runtime/v23-root-governance/src/core/__init__.py
-8. gl-runtime/v23-root-governance/src/core/root_governance/falsification_engine.py
-9. gl-runtime/v23-root-governance/src/core/root_governance/anti_fabric.py
+3. gov-runtime/v23-root-governance/run_service.py
+4. gov-runtime/v23-root-governance/manifest.json
+5. gov-runtime/v23-root-governance/README.md
+6. gov-runtime/v23-root-governance/src/__init__.py
+7. gov-runtime/v23-root-governance/src/core/__init__.py
+8. gov-runtime/v23-root-governance/src/core/root_governance/falsification_engine.py
+9. gov-runtime/v23-root-governance/src/core/root_governance/anti_fabric.py
 
 ### V24 Meta Governance (8 個文件)
 1. gl/v24/meta_governance/meta_auditor/meta_auditor.py
 2. gl/v24/meta_governance/meta_auditor/
-3. gl-runtime/v24-meta-governance/run_service.py
-4. gl-runtime/v24-meta-governance/manifest.json
-5. gl-runtime/v24-meta-governance/README.md
-6. gl-runtime/v24-meta-governance/src/__init__.py
-7. gl-runtime/v24-meta-governance/src/core/__init__.py
-8. gl-runtime/v24-meta-governance/src/core/meta_governance/meta_auditor.py
+3. gov-runtime/v24-meta-governance/run_service.py
+4. gov-runtime/v24-meta-governance/manifest.json
+5. gov-runtime/v24-meta-governance/README.md
+6. gov-runtime/v24-meta-governance/src/__init__.py
+7. gov-runtime/v24-meta-governance/src/core/__init__.py
+8. gov-runtime/v24-meta-governance/src/core/meta_governance/meta_auditor.py
 
 ### Falsification Engine (6 個文件)
 1. ultra-strict-verification-core/falsification-engine/index.ts
@@ -165,16 +165,16 @@ gl-execution-runtime/
 # 解壓縮並導入所有文件
 cd /workspace
 unzip -q "package (1).zip" -d /tmp/extracted
-cp -r /tmp/extracted/gl-repo/gl-execution-runtime/* /workspace/gl-repo/gl-execution-runtime/
+cp -r /tmp/extracted/gov-repo/gov-execution-runtime/* /workspace/gov-repo/gov-execution-runtime/
 ```
 
 ### 驗證導入
 ```bash
 # 檢查導入的文件數量
-find /workspace/gl-repo/gl-execution-runtime -type f | wc -l
+find /workspace/gov-repo/gov-execution-runtime -type f | wc -l
 
 # 執行版本核對
-python3 /workspace/gl-repo/scripts/version-audit.py
+python3 /workspace/gov-repo/scripts/version-audit.py
 ```
 
 ## 📋 注意事項

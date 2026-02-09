@@ -1,0 +1,212 @@
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: platform-templates
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+# On-Premise Platform Configuration
+# GL Governance Layer: GL10-29 (Operational Layer)
+
+apiVersion: platform.ecosystem/v1
+kind: OnPremisePlatformConfig
+metadata:
+  name: onprem-platform
+  version: "1.0.0"
+  template: on-premise-template
+  deployment: on-premise
+
+# Platform Information
+platform:
+  name: gl.onprem.datacenter-platform
+  display_name: "On-Premise Datacenter Platform"
+  type: on-premise
+  environment: production
+  
+  datacenter:
+    location: "Primary Datacenter"
+    rack: "Rack-A1"
+    network_zone: "zone-1"
+
+# Infrastructure Configuration
+infrastructure:
+  # Compute
+  compute:
+    nodes:
+      - hostname: node-1
+        ip: 10.0.1.10
+        role: master
+        cpu: 8
+        memory: 16384  # MB
+      
+      - hostname: node-2
+        ip: 10.0.1.11
+        role: worker
+        cpu: 8
+        memory: 16384
+      
+      - hostname: node-3
+        ip: 10.0.1.12
+        role: worker
+        cpu: 8
+        memory: 16384
+  
+  # Storage
+  storage:
+    type: local  # local, nfs, ceph
+    
+    local:
+      data_path: /data/platform
+      logs_path: /var/log/platform
+      backup_path: /backup/platform
+    
+    nfs:
+      enabled: false
+      server: 10.0.2.100
+      export: /exports/platform
+    
+    ceph:
+      enabled: false
+      monitors:
+        - 10.0.3.10:6789
+        - 10.0.3.11:6789
+  
+  # Network
+  network:
+    internal_network: 10.0.0.0/16
+    service_network: 10.1.0.0/16
+    gateway: 10.0.0.1
+    dns:
+      - 10.0.0.53
+      - 8.8.8.8
+
+# Service Discovery
+service_discovery:
+  enabled: true
+  registry_type: inmemory  # or consul-local
+  port: 8500
+  bind_ip: 0.0.0.0
+  
+  clustering:
+    enabled: true
+    peers:
+      - http://10.0.1.10:8500
+      - http://10.0.1.11:8500
+
+# API Gateway
+api_gateway:
+  enabled: true
+  host: 0.0.0.0
+  port: 8000
+  
+  load_balancing:
+    algorithm: least-connections
+    health_check: true
+  
+  ssl:
+    enabled: true
+    cert_path: /etc/platform/certs/server.crt
+    key_path: /etc/platform/certs/server.key
+
+# Communication
+communication:
+  enabled: true
+  message_bus:
+    type: inmemory  # or rabbitmq-local
+    port: 5672
+    
+    rabbitmq:
+      enabled: false
+      host: localhost
+      vhost: /platform
+
+# Data Synchronization
+data_sync:
+  enabled: true
+  mode: scheduled
+  
+  connectors:
+    filesystem:
+      enabled: true
+      base_path: /data/platform/sync
+    
+    nfs:
+      enabled: false
+      mount_point: /mnt/nfs/sync
+
+# High Availability
+high_availability:
+  enabled: true
+  
+  keepalived:
+    enabled: true
+    virtual_ip: 10.0.1.100
+    priority: 100
+  
+  replication:
+    enabled: true
+    mode: async
+    targets:
+      - 10.0.1.11
+      - 10.0.1.12
+
+# Backup Configuration
+backup:
+  enabled: true
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  retention_days: 30
+  
+  targets:
+    - type: local
+      path: /backup/platform
+    
+    - type: nfs
+      server: 10.0.2.100
+      path: /exports/backup
+
+# Monitoring
+monitoring:
+  prometheus:
+    enabled: true
+    port: 9090
+    retention: 15d
+    
+  grafana:
+    enabled: true
+    port: 3000
+    
+  alertmanager:
+    enabled: true
+    port: 9093
+
+# Security
+security:
+  firewall:
+    enabled: true
+    default_policy: deny
+    
+    allowed_ports:
+      - 8000  # API Gateway
+      - 8500  # Service Discovery
+      - 9090  # Prometheus
+    
+    allowed_networks:
+      - 10.0.0.0/16
+  
+  encryption:
+    at_rest: true
+    in_transit: true
+    algorithm: AES256
+  
+  audit:
+    enabled: true
+    log_path: /var/log/platform/audit.log
+
+# Resource Limits
+resources:
+  per_service:
+    cpu_limit: 2000m
+    memory_limit: 2Gi
+  
+  total:
+    cpu_reservation: 4000m
+    memory_reservation: 8Gi

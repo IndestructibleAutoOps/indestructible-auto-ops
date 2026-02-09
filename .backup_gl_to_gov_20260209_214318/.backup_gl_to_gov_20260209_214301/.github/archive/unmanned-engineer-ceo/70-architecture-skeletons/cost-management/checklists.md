@@ -1,0 +1,13 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: documentation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Unified Charter Activated
+# Cost Management Checklist for AI
+
+- [ ] 是否估算了變更的成本影響？
+- [ ] 是否考慮了更經濟的替代方案？
+- [ ] 是否設定了預算告警？
+- [ ] 是否有成本歸因機制？
+- [ ] 是否識別了成本優化機會？

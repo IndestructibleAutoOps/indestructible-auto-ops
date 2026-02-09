@@ -1,0 +1,37 @@
+{
+  "diagnostic_result": {
+    "timestamp": "2026-02-05T00:42:50.487963",
+    "total_items_checked": 536,
+    "total_issues": 3,
+    "score": 95.0,
+    "can_seal": true
+  },
+  "issues": [
+    {
+      "category": "complement",
+      "item_id": "no_complements",
+      "severity": "Severity.MEDIUM",
+      "issue": "No complement files found",
+      "remediation": "Run materialization_complement_generator.py to generate complements",
+      "evidence": {
+        "directory": "/workspace/ecosystem/.evidence/complements"
+      }
+    },
+    {
+      "category": "registry",
+      "item_id": "era1_to_era2",
+      "severity": "Severity.INFO",
+      "issue": "era1_to_era2 hash mapping is empty (expected for Era-1)",
+      "remediation": "No action needed until Era-2 migration",
+      "evidence": {}
+    },
+    {
+      "category": "registry",
+      "item_id": "era2_to_era1",
+      "severity": "Severity.INFO",
+      "issue": "era2_to_era1 hash mapping is empty (expected for Era-1)",
+      "remediation": "No action needed until Era-2 migration",
+      "evidence": {}
+    }
+  ]
+}

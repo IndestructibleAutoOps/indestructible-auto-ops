@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-02-03T15:44:01Z",
+  "version": "1.0.0",
+  "status": "FAIL",
+  "total_checks": 4,
+  "passed": 3,
+  "failed": 1,
+  "violations": [
+    {
+      "rule_id": "GL-COMPLIANCE",
+      "file": "ecosystem",
+      "message": "缺少關鍵治理文件: /workspace/governance-manifest.yaml",
+      "severity": "MEDIUM",
+      "suggestion": "Fix GL Compliance issue"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "audit_mode": true,
+    "auto_fix": false
+  }
+}

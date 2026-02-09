@@ -21,7 +21,7 @@ This document provides a comprehensive summary of the current structure of the M
 f76c6b80 Radical Dependency Elimination - Complete Self-Sufficient Platform v1.0
 73186a06 GL Enterprise Architecture Restructure - Complete 8-Layer GL Standardization
 f20c68f5 Governance: Replace 'universe' with 'enterprise-architecture'
-c232e362 Merge pull request #86 from MachineNativeOps/gl-cross-comparison-reports
+c232e362 Merge pull request #86 from MachineNativeOps/gov-cross-comparison-reports
 95423ca6 Add GL Cross-Comparison and Integration Analysis Reports
 16f32dcc Governance: Add directory standards and update naming conventions
 3d798468 GL High-Resolution Analysis & Alignment - Complete 100% Compliance
@@ -33,24 +33,24 @@ c232e362 Merge pull request #86 from MachineNativeOps/gl-cross-comparison-report
 
 ```
 machine-native-ops/
-├── gl-enterprise-architecture/      # GL00-09: Enterprise Architecture
-├── gl-platform-services/             # GL10-29: Platform Services
-├── gl-data-processing/               # GL20-29: Data Processing
-├── gl-execution-runtime/           # GL30-49: Execution Runtime
-├── gl-observability/               # GL50-59: Observability
-├── gl-governance-compliance/        # GL60-80: Governance Compliance
-├── gl-extension-services/           # GL81-83: Extension Services
-├── gl-meta-specifications/          # GL90-99: Meta Specifications
+├── gov-enterprise-architecture/      # GL00-09: Enterprise Architecture
+├── gov-platform-services/             # GL10-29: Platform Services
+├── gov-data-processing/               # GL20-29: Data Processing
+├── gov-execution-runtime/           # GL30-49: Execution Runtime
+├── gov-observability/               # GL50-59: Observability
+├── gov-governance-compliance/        # GL60-80: Governance Compliance
+├── gov-extension-services/           # GL81-83: Extension Services
+├── gov-meta-specifications/          # GL90-99: Meta Specifications
 ```
 
 ### Layer Details
 
-#### GL00-09: gl-enterprise-architecture
+#### GL00-09: gov-enterprise-architecture
 **Purpose**: Enterprise-level governance framework and specification definition
 
 **Structure**:
 ```
-gl-enterprise-architecture/
+gov-enterprise-architecture/
 ├── README.md                          # Layer overview
 ├── configs/                           # Configuration files
 │   ├── development/
@@ -99,12 +99,12 @@ gl-enterprise-architecture/
 - boundary-enforcement-rules.md
 - directory-standards.yaml
 
-#### GL10-29: gl-platform-services
+#### GL10-29: gov-platform-services
 **Purpose**: Platform-level services and operational support
 
 **Structure**:
 ```
-gl-platform-services/
+gov-platform-services/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -137,12 +137,12 @@ gl-platform-services/
     └── slack/
 ```
 
-#### GL20-29: gl-data-processing
+#### GL20-29: gov-data-processing
 **Purpose**: Data pipelines and ETL processes
 
 **Structure**:
 ```
-gl-data-processing/
+gov-data-processing/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -162,12 +162,12 @@ gl-data-processing/
     └── workspace/
 ```
 
-#### GL30-49: gl-execution-runtime
+#### GL30-49: gov-execution-runtime
 **Purpose**: Task execution and orchestration
 
 **Structure**:
 ```
-gl-execution-runtime/
+gov-execution-runtime/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -188,7 +188,7 @@ gl-execution-runtime/
 │   ├── execution/
 │   ├── executor/
 │   ├── github-repository-analyzer/
-│   ├── gl-gate/
+│   ├── gov-gate/
 │   ├── governance/
 │   ├── integration-tests-legacy/
 │   ├── loader/
@@ -215,12 +215,12 @@ gl-execution-runtime/
     └── server/
 ```
 
-#### GL50-59: gl-observability
+#### GL50-59: gov-observability
 **Purpose**: Monitoring and observability
 
 **Structure**:
 ```
-gl-observability/
+gov-observability/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -234,12 +234,12 @@ gl-observability/
     └── dashboards/
 ```
 
-#### GL60-80: gl-governance-compliance
+#### GL60-80: gov-governance-compliance
 **Purpose**: Policy enforcement and compliance
 
 **Structure**:
 ```
-gl-governance-compliance/
+gov-governance-compliance/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -261,12 +261,12 @@ gl-governance-compliance/
 
 **Key Tool**: boundary_checker.py - Automated boundary checking
 
-#### GL81-83: gl-extension-services
+#### GL81-83: gov-extension-services
 **Purpose**: Plugin architecture and extensions
 
 **Structure**:
 ```
-gl-extension-services/
+gov-extension-services/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -276,12 +276,12 @@ gl-extension-services/
 └── tests/
 ```
 
-#### GL90-99: gl-meta-specifications
+#### GL90-99: gov-meta-specifications
 **Purpose**: Meta-specifications and standards
 
 **Structure**:
 ```
-gl-meta-specifications/
+gov-meta-specifications/
 ├── README.md                          # Layer overview
 ├── configs/
 ├── deployments/
@@ -300,11 +300,11 @@ gl-meta-specifications/
 - `todo.md` - Task tracking and completion status
 
 ### Governance Documents
-- `gl-enterprise-architecture/governance/directory-boundary-specification.md`
-- `gl-enterprise-architecture/governance/boundary-reference-matrix.md`
-- `gl-enterprise-architecture/governance/boundary-enforcement-rules.md`
-- `gl-enterprise-architecture/governance/directory-boundary-complete.md`
-- `gl-enterprise-architecture/governance/naming-governance/contracts/directory-standards.yaml`
+- `gov-enterprise-architecture/governance/directory-boundary-specification.md`
+- `gov-enterprise-architecture/governance/boundary-reference-matrix.md`
+- `gov-enterprise-architecture/governance/boundary-enforcement-rules.md`
+- `gov-enterprise-architecture/governance/directory-boundary-complete.md`
+- `gov-enterprise-architecture/governance/naming-governance/contracts/directory-standards.yaml`
 
 ### Layer Documentation
 - Each of the 8 GL layers has a comprehensive README.md file
@@ -313,7 +313,7 @@ gl-meta-specifications/
 ## Key Tools and Implementations
 
 ### Boundary Checker
-**Location**: `gl-governance-compliance/scripts/boundary_checker.py`
+**Location**: `gov-governance-compliance/scripts/boundary_checker.py`
 
 **Features**:
 - Multi-level enforcement (E0-E3)

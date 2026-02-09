@@ -1,0 +1,39 @@
+infrastructure/kubernetes/manifests
+├── README.md
+├── base
+│   ├── configmap.yaml
+│   ├── hpa.yaml
+│   ├── ingress.yaml
+│   ├── kustomization.yaml
+│   ├── limitrange.yaml
+│   ├── namespace.yaml
+│   ├── networkpolicy.yaml
+│   ├── poddisruptionbudget.yaml
+│   ├── resourcequota.yaml
+│   ├── secret.yaml
+│   └── serviceaccount.yaml
+├── overlays
+│   ├── dev
+│   │   └── kustomization.yaml
+│   ├── production
+│   │   └── kustomization.yaml
+│   └── staging
+│       └── kustomization.yaml
+└── systems
+    ├── elasticsearch-search-system
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    ├── engine
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    ├── esync-platform
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    ├── file-organizer-system
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    └── instant
+        ├── deployment.yaml
+        └── service.yaml
+
+12 directories, 25 files

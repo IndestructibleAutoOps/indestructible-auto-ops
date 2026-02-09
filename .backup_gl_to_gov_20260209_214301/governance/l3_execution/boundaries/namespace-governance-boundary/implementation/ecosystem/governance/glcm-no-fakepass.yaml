@@ -1,0 +1,178 @@
+# GLCM-NOFAKEPASS
+# Era-2 Governance Closure Core Rule
+# Purpose: Prohibit fake success declarations achieved through rule manipulation
+
+rule_id: "GLCM-NOFAKEPASS"
+version: "1.0.0"
+era: "2"
+severity: "CRITICAL"
+status: "ACTIVE"
+
+description: >
+  No module may declare success if any step was skipped, validation rules were relaxed,
+  or repairs were not sealed. Success must be genuine and achieved through proper
+  execution of all required steps with strict validation.
+
+trigger_conditions:
+  fake_pass_detection:
+    - step_skipped_without_evidence:
+        type: "pipeline_execution"
+        detection: "Step marked as SKIPPED without sealed justification report"
+        required_for_skip:
+          - "justification.yaml (why skip is necessary)"
+          - "impact_analysis.json (what effects this has on closure)"
+          - "mitigation_plan.yaml (how this will be addressed)"
+          - "governance_approval.json (who authorized this deviation)"
+        
+    - validation_rules_relaxed:
+        type: "code_behavior"
+        detection: "Any validation method was modified to increase pass rate"
+        violation_of: "GLCM-FORBID-RELAXATION"
+        
+    - success_without_repair:
+        type: "data_integrity"
+        detection: "Validation score reaches 100% without any repair actions being sealed"
+        evidence_required: "repair_action.json must exist if any validation failed"
+        
+    - missing_critical_artifacts:
+        type: "evidence_completeness"
+        required_artifacts:
+          - "repair_plan.yaml"
+          - "repair_action.json"
+          - "repair_trace.log"
+          - "glcm_passed_report.json"
+          - "closure_score_verification.json"
+        violation: "Any missing artifact after declaring success"
+
+actions:
+  on_detection:
+    immediate: "FAIL_IMMEDIATELY"
+    block_success_declaration: true
+    downgrade_closure_status: true
+    new_status: "FAKEPASS_VIOLATION"
+    
+  violation_sealing:
+    required: true
+    location: "ecosystem/.governance/violations/fakepass/"
+    format: "json"
+    include:
+      - "fake_pass_method_used"
+      - "original_validation_score"
+      - "modified_validation_score"
+      - "what_was_relaxed"
+      - "what_should_have_been_repaired"
+      - "true_status_if_strict_validation"
+
+  remediation:
+    required_before_retry:
+      - "Revert all validation rule relaxations"
+      - "Generate proper repair plans"
+      - "Execute genuine repairs"
+      - "Seal all repair actions"
+      - "Generate all missing artifacts"
+      - "Re-validate with strict rules"
+      - "Achieve genuine success (not fake pass)"
+
+strict_success_criteria:
+  all_steps_must_pass:
+    - "Step 1: Semantic Closure - must generate and seal all artifacts"
+    - "Step 2: Registry Update - must complete without rule modification"
+    - "Step 3: Execution Summary - must reflect true state"
+    - "Step 4: Enforcement - must use strict validation"
+    - "Step 5: Deep Retrieval - cannot be skipped without sealed evidence"
+    - "Step 6: Closure - only if all previous steps genuinely passed"
+  
+  validation_must_be_strict:
+    - "No field removal from required lists"
+    - No severity downgrades
+    - No schema acceptance without repair
+    - No historical data acceptance without migration
+    - Score must be achieved through repair, not relaxation
+  
+  repairs_must_be_sealed:
+    - "Every validation failure must have corresponding repair_action.json"
+    - "Every repair must be reproducible (repair_trace.log)"
+    - "Every repair must be verifiable (glcm_passed_report.json)"
+    - "No 'invisible' or 'implicit' repairs"
+
+detection_mechanisms:
+  runtime_monitoring:
+    - "Track validation score changes during execution"
+    - "Detect when score improves without repair actions"
+    - "Block success declaration if any violations detected"
+  
+  code_analysis:
+    - "Scan for validation rule modification patterns"
+    - "Check for new exceptions or fallback paths"
+    - "Verify no required field removals"
+    
+  evidence_verification:
+    - "Validate all required artifacts exist and are sealed"
+    - "Check repair_trace.log for actual repair actions"
+    - "Verify closure_score.json was generated with strict validation"
+
+examples:
+  fake_pass_example:
+    scenario: "Era-2 Upgrade Report"
+    claimed_status: "COMPLETED SUCCESSFULLY"
+    actual_status: "FAKEPASS_VIOLATION"
+    
+    violations:
+      - "Event stream validation: relaxed from ['uuid', 'type', 'payload'] to ['event_type']"
+      - "Complement validation: changed from required to optional"
+      - "Tool registry: changed path from YAML to JSON instead of fixing schema"
+      - "Hash registry: changed from UUID to step-name IDs instead of fixing data"
+      - "Step 5: skipped without any sealed evidence"
+      
+    true_status_if_strict: "FAILED (33.3/100 score with 773 blocker issues)"
+    violation_id: "GLCM-NOFAKEPASS-2026-02-05-Era2"
+    
+  genuine_success_example:
+    scenario: "Proper Era-2 Closure"
+    validation_method: "STRICT"
+    all_steps: "PASSED"
+    repairs_executed: "Yes (all sealed)"
+    closure_score: "1.0 (achieved through repair, not relaxation)"
+    status: "COMPLETED SUCCESSFULLY (genuine)"
+
+compliance_requirements:
+  before_declaring_success:
+    - "All 6 steps must pass with strict validation"
+    - "No steps may be skipped without sealed justification"
+    - "All repairs must be sealed and verifiable"
+    - "All required artifacts must exist"
+    - "GLCM-NOFAKEPASS must not be triggered"
+    
+  validation_requirements:
+    - "Original validation rules must be used (not modified)"
+    - "Score must be achieved through repair (not relaxation)"
+    - "Historical data must be migrated to Era-2 standards"
+    - "Schema mismatches must be resolved with transformation"
+
+enforcement:
+  automated:
+    - "Block any success declaration if violations detected"
+    - "Automatically generate fakepass violation report"
+    - "Downgrade closure status to FAKEPASS_VIOLATION"
+    
+  manual:
+    required: "All fake pass violations must be manually reviewed by Governance Owner"
+    remediation: "Must complete proper repairs before retrying"
+
+era_2_principles:
+  - "Genuine success only: No shortcuts, no relaxation, no fake passes"
+  - "Transparency: All repairs must be sealed and visible"
+  - "Verifiability: Success must be reproducible with strict validation"
+  - "Accountability: All deviations must be justified and sealed"
+
+related_rules:
+  - "GLCM-FORBID-RELAXATION"
+  - "GLCM-REPAIR-REQUIRED"
+  - "GLCM-SEALED-EVIDENCE"
+  - "GLCM-HALLUCINATION-DETECTION"
+
+implementation_notes: >
+  This rule works in conjunction with GLCM-FORBID-RELAXATION to prevent the classic
+  Era-0/1 pattern of "adjust validation to make it pass" which creates governance
+  hallucinations. In Era-2, success is binary: genuine or fake. There is no middle
+  ground where "relaxed validation success" is acceptable.

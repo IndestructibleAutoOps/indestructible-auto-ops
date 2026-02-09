@@ -1,0 +1,59 @@
+pipeline_gates:
+  version: v1
+  stages:
+    - name: "lint"
+      required: true
+      commands:
+        - "opa fmt -w ."
+        - "yamllint ."
+    - name: "unit_policy_tests"
+      required: true
+      commands:
+        - "opa test ./tests -v --coverage"
+      gates:
+        - "path_coverage=100%"
+    - name: "env_lock_verify"
+      required: true
+      commands:
+        - "./IndestructibleAutoOps/Engineering_Patch/scripts/verify_artifact_coverage.sh"
+      gates:
+        - "env_hash_match=true"
+        - "no_high_cve=true"
+    - name: "perf_baseline"
+      required: true
+      commands:
+        - "./IndestructibleAutoOps/Engineering_Patch/scripts/verify_slo_gates.sh"
+      gates:
+        - "slo_pass=true"
+    - name: "policy_conflicts"
+      required: true
+      commands:
+        - "./IndestructibleAutoOps/Engineering_Patch/scripts/verify_policy_conflicts.sh"
+      gates:
+        - "conflicts=0"
+    - name: "time_integrity"
+      required: true
+      commands:
+        - "./IndestructibleAutoOps/Engineering_Patch/scripts/verify_time_integrity.sh"
+      gates:
+        - "clock_skew_ok=true"
+        - "timestamp_signed_ok=true"
+    - name: "drift"
+      required: true
+      commands:
+        - "./IndestructibleAutoOps/Engineering_Patch/scripts/verify_drift.sh"
+      gates:
+        - "gitops_drift=0"
+    - name: "chaos"
+      required: true
+      commands:
+        - "kubectl apply -f IndestructibleAutoOps/Engineering_Patch/governance/chaos/chaos_suite.yaml"
+      gates:
+        - "mttr_ok=true"
+    - name: "evidence"
+      required: true
+      commands:
+        - "cosign attest --key env://COSIGN_KEY --predicate attestation.json --type slsaprovenance image:tag"
+      gates:
+        - "attested=true"
+        - "signed=true"

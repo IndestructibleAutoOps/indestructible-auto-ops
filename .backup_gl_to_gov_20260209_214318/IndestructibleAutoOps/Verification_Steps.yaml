@@ -1,0 +1,30 @@
+verification_steps:
+  order:
+    - id: "VERIFY-01"
+      name: "Policy lint + unit tests + coverage"
+      run: ["opa fmt -w .", "opa test ./tests -v --coverage"]
+      pass_criteria: ["path_coverage=100%"]
+    - id: "VERIFY-02"
+      name: "Environment lock + artifact class coverage"
+      run: ["./IndestructibleAutoOps/Engineering_Patch/scripts/verify_artifact_coverage.sh"]
+      pass_criteria: ["env_hash_match=true", "artifact_coverage=100%"]
+    - id: "VERIFY-03"
+      name: "SLO gates"
+      run: ["./IndestructibleAutoOps/Engineering_Patch/scripts/verify_slo_gates.sh"]
+      pass_criteria: ["slo_pass=true"]
+    - id: "VERIFY-04"
+      name: "Time integrity"
+      run: ["./IndestructibleAutoOps/Engineering_Patch/scripts/verify_time_integrity.sh"]
+      pass_criteria: ["clock_skew_ok=true", "timestamp_signed_ok=true"]
+    - id: "VERIFY-05"
+      name: "Drift detection"
+      run: ["./IndestructibleAutoOps/Engineering_Patch/scripts/verify_drift.sh"]
+      pass_criteria: ["gitops_drift=0"]
+    - id: "VERIFY-06"
+      name: "Chaos recovery validation"
+      run: ["kubectl apply -f IndestructibleAutoOps/Engineering_Patch/governance/chaos/chaos_suite.yaml"]
+      pass_criteria: ["mttr_ok=true"]
+    - id: "VERIFY-07"
+      name: "Evidence signing"
+      run: ["cosign attest ...", "cosign verify ..."]
+      pass_criteria: ["attested=true", "signed=true"]

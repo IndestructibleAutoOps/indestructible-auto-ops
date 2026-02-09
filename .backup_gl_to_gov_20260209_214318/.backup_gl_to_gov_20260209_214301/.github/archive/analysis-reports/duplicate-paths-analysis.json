@@ -1,0 +1,3131 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "base_path": "/workspace/machine-native-ops",
+  "analysis": {
+    "duplicate_directories": {},
+    "potential_duplicates": {
+      "depth_1": {
+        "total_duplicates": 14,
+        "directories": {
+          "config": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/controlplane",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "scripts": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "docs": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "tests": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "lib": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr",
+              "/workspace/machine-native-ops/var"
+            ]
+          },
+          "sbin": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "governance": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "root": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "bin": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "templates": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "schemas": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "tools": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "outputs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "migration": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/docs"
+            ]
+          }
+        }
+      },
+      "depth_2": {
+        "total_duplicates": 50,
+        "directories": {
+          "tests": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "scripts": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "governance": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "templates": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "config": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/controlplane"
+            ]
+          },
+          "docs": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "reports": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "src": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/taxonomy-core",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "security": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "examples": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "validation": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/controlplane",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "automation": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "schemas": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src"
+            ]
+          },
+          "ci": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/templates",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "migration": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/docs"
+            ]
+          },
+          "bin": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "lib": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr",
+              "/workspace/machine-native-ops/var"
+            ]
+          },
+          ".github": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "monitoring": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/templates",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "k8s": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "policies": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/ops"
+            ]
+          },
+          "quantum": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tests"
+            ]
+          },
+          "deployment": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "sbin": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "root": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "contracts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace/src"
+            ]
+          },
+          "tools": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "outputs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "integrations": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "level1": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root-mcp"
+            ]
+          },
+          "legacy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/workspace/archive"
+            ]
+          },
+          "workflows": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/.github",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "info": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/.git/objects"
+            ]
+          },
+          "hooks": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "refs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/.git/logs"
+            ]
+          },
+          "refactor": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "teams": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "engine": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "ops": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          ".local": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "api": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "ai": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "apps": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "ci-cd": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "agents": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "evolution": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "infrastructure": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/archive",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "unit": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/tests",
+              "/workspace/machine-native-ops/tests"
+            ]
+          },
+          "modules": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/opt/machinenativenops",
+              "/workspace/machine-native-ops/lib"
+            ]
+          },
+          "cache": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/var",
+              "/workspace/machine-native-ops/.pytest_cache/v"
+            ]
+          }
+        }
+      },
+      "depth_3": {
+        "total_duplicates": 101,
+        "directories": {
+          "config": {
+            "count": 15,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "scripts": {
+            "count": 12,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "docs": {
+            "count": 12,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "tests": {
+            "count": 12,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "src": {
+            "count": 12,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/taxonomy-core",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "governance": {
+            "count": 11,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended"
+            ]
+          },
+          "schemas": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src"
+            ]
+          },
+          "core": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/quantum"
+            ]
+          },
+          "security": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/governance/policies"
+            ]
+          },
+          "monitoring": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
+              "/workspace/machine-native-ops/templates",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0"
+            ]
+          },
+          "examples": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/governance"
+            ]
+          },
+          "validation": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/controlplane",
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "automation": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/teams/holy-grail",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/tests",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "templates": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "reports": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace/governance"
+            ]
+          },
+          "migration": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/scripts/ops",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "policies": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/security",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "ci": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/templates",
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "deployment": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4-0-0",
+              "/workspace/machine-native-ops/workspace/src/autonomous",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "agents": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail",
+              "/workspace/machine-native-ops/workspace/src/ai",
+              "/workspace/machine-native-ops/workspace/src/autonomous",
+              "/workspace/machine-native-ops/workspace/src/services",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "quantum": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/quantum",
+              "/workspace/machine-native-ops/workspace/src/ai",
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "tools": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/mcp/validation-mcp"
+            ]
+          },
+          ".github": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "unit": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/tests",
+              "/workspace/machine-native-ops/workspace/governance/tests",
+              "/workspace/machine-native-ops/workspace/src/tests",
+              "/workspace/machine-native-ops/workspace/tests",
+              "/workspace/machine-native-ops/tests"
+            ]
+          },
+          "workflows": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/.github",
+              "/workspace/machine-native-ops/ns-root/.github",
+              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4-0-0",
+              "/workspace/machine-native-ops/workspace/root/.github",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "bin": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/tools/cli",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "plugins": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/original_dev/original_axiom_backup"
+            ]
+          },
+          "mcp": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/src/services",
+              "/workspace/machine-native-ops/workspace/docs/agents"
+            ]
+          },
+          "observability": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "integrations": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/enterprise",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "k8s": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "configuration": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/docs/examples",
+              "/workspace/machine-native-ops/workspace/docs/architecture"
+            ]
+          },
+          "ci-cd": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "naming": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs/policies",
+              "/workspace/machine-native-ops/workspace/tools/scripts"
+            ]
+          },
+          "types": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/shared",
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp",
+              "/workspace/machine-native-ops/workspace/mcp/validation-mcp"
+            ]
+          },
+          "config-manager": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/ci-tools",
+              "/workspace/machine-native-ops/workspace/engine",
+              "/workspace/machine-native-ops/workspace/tools/templates",
+              "/workspace/machine-native-ops/opt/machinenativenops/modules"
+            ]
+          },
+          "root": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/src/templates"
+            ]
+          },
+          "lib": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr",
+              "/workspace/machine-native-ops/var"
+            ]
+          },
+          "contracts": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/core"
+            ]
+          },
+          "integration": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/tests",
+              "/workspace/machine-native-ops/workspace/src/tests",
+              "/workspace/machine-native-ops/tests"
+            ]
+          },
+          "registries": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/controlplane"
+            ]
+          },
+          "tutorials": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/workspace/governance/examples",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "performance": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3",
+              "/workspace/machine-native-ops/workspace/governance/tests",
+              "/workspace/machine-native-ops/workspace/src/tests"
+            ]
+          },
+          "engine": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src/core"
+            ]
+          },
+          "api": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/src/quantum",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "registry": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp"
+            ]
+          },
+          "playbooks": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail",
+              "/workspace/machine-native-ops/workspace/teams/default-team",
+              "/workspace/machine-native-ops/workspace/src/templates"
+            ]
+          },
+          "infrastructure": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous",
+              "/workspace/machine-native-ops/workspace/archive",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "pipelines": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/config/automation",
+              "/workspace/machine-native-ops/workspace/mcp/validation-mcp"
+            ]
+          },
+          "sbin": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "outputs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "data": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/workspace/src/enterprise"
+            ]
+          },
+          "level1": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root-mcp"
+            ]
+          },
+          "legacy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/workspace/archive"
+            ]
+          },
+          "endpoints": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "example-project": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/examples",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/examples"
+            ]
+          },
+          "verification": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "compliance": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs",
+              "/workspace/machine-native-ops/workspace/governance"
+            ]
+          },
+          "engines": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3",
+              "/workspace/machine-native-ops/workspace/tools/automation"
+            ]
+          },
+          "info": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/.git/objects"
+            ]
+          },
+          "hooks": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "refs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/.git/logs"
+            ]
+          },
+          "heads": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git/logs/refs",
+              "/workspace/machine-native-ops/.git/refs"
+            ]
+          },
+          "remotes": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git/logs/refs",
+              "/workspace/machine-native-ops/.git/refs"
+            ]
+          },
+          "refactor": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "teams": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "ops": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          ".local": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "standards": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/original_dev/original_axiom_backup"
+            ]
+          },
+          "gatekeeper": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "change-management": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "exception": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "e2e": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/tests",
+              "/workspace/machine-native-ops/tests"
+            ]
+          },
+          "troubleshooting": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/examples/code-sanctuary-tutorials",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "default-team": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/teams",
+              "/workspace/machine-native-ops/workspace/teams"
+            ]
+          },
+          "machinenativeops.egg-info": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/src",
+              "/workspace/machine-native-ops/workspace/src"
+            ]
+          },
+          "state": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/.local",
+              "/workspace/machine-native-ops/workspace/.local"
+            ]
+          },
+          "profiles": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/default-team",
+              "/workspace/machine-native-ops/workspace/config/agents"
+            ]
+          },
+          "ai": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "utils": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/shared"
+            ]
+          },
+          "client": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/web"
+            ]
+          },
+          "apps": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "scheduler": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/services",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "github": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "conftest": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "sync": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "git-hooks": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "ui": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/frontend",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "converters": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp"
+            ]
+          },
+          "credit": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp"
+            ]
+          },
+          "architecture": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/next_gen",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "environments": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/config/dev"
+            ]
+          },
+          "runbooks": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/scripts/ops",
+              "/workspace/machine-native-ops/workspace/docs/operations"
+            ]
+          },
+          "artifacts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/scripts/ops",
+              "/workspace/machine-native-ops/workspace/tools/scripts"
+            ]
+          },
+          "evolution": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "components": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs/mndoc",
+              "/workspace/machine-native-ops/workspace/docs/architecture"
+            ]
+          },
+          "cli": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs/agents",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "kubernetes": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/archive/infrastructure",
+              "/workspace/machine-native-ops/workspace/tools/infrastructure"
+            ]
+          },
+          "python": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/tools",
+              "/workspace/machine-native-ops/workspace/tools/governance"
+            ]
+          },
+          "modules": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/opt/machinenativenops",
+              "/workspace/machine-native-ops/lib"
+            ]
+          },
+          "cache": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/var",
+              "/workspace/machine-native-ops/.pytest_cache/v"
+            ]
+          }
+        }
+      },
+      "depth_4": {
+        "total_duplicates": 227,
+        "directories": {
+          "config": {
+            "count": 32,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "scripts": {
+            "count": 22,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "tests": {
+            "count": 22,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1/verification"
+            ]
+          },
+          "src": {
+            "count": 20,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/taxonomy-core",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "core": {
+            "count": 17,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src/protocol",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src/tools"
+            ]
+          },
+          "monitoring": {
+            "count": 17,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
+              "/workspace/machine-native-ops/templates",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended"
+            ]
+          },
+          "governance": {
+            "count": 16,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines"
+            ]
+          },
+          "schemas": {
+            "count": 16,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/dissolved-assets"
+            ]
+          },
+          "docs": {
+            "count": 16,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "reports": {
+            "count": 14,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/docs",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110"
+            ]
+          },
+          "validation": {
+            "count": 14,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines",
+              "/workspace/machine-native-ops/controlplane",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts",
+              "/workspace/machine-native-ops/workspace/governance/policies"
+            ]
+          },
+          "security": {
+            "count": 13,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/workspace/governance"
+            ]
+          },
+          "k8s": {
+            "count": 13,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/workspace/teams/default-team/orchestrator",
+              "/workspace/machine-native-ops/workspace/src/governance/02-decision",
+              "/workspace/machine-native-ops/workspace/src/governance/00-vision-strategy"
+            ]
+          },
+          "examples": {
+            "count": 13,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/governance"
+            ]
+          },
+          "automation": {
+            "count": 13,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/teams/holy-grail",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/core/new",
+              "/workspace/machine-native-ops/workspace/src/tests"
+            ]
+          },
+          "templates": {
+            "count": 12,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/integration-layer",
+              "/workspace/machine-native-ops/workspace/src"
+            ]
+          },
+          "tools": {
+            "count": 10,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "workflows": {
+            "count": 10,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/.github",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/.github",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4/.github",
+              "/workspace/machine-native-ops/ns-root/.github",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended/ci-cd"
+            ]
+          },
+          "services": {
+            "count": 9,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/agents",
+              "/workspace/machine-native-ops/workspace/teams/default-team/orchestrator",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/frontend/ui",
+              "/workspace/machine-native-ops/workspace/src/apps/web-backend"
+            ]
+          },
+          "policies": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/security",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/src/automation/hyperautomation",
+              "/workspace/machine-native-ops/workspace/src/governance"
+            ]
+          },
+          "migration": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/src/autonomous/agents",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/scripts/ops"
+            ]
+          },
+          "agents": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail",
+              "/workspace/machine-native-ops/workspace/src/ai",
+              "/workspace/machine-native-ops/workspace/src/core/instant_generation",
+              "/workspace/machine-native-ops/workspace/src/autonomous",
+              "/workspace/machine-native-ops/workspace/src/autonomous/agents"
+            ]
+          },
+          "quantum": {
+            "count": 8,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/quantum",
+              "/workspace/machine-native-ops/workspace/src/ai",
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "unit": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/tests",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/tests",
+              "/workspace/machine-native-ops/workspace/governance/tests",
+              "/workspace/machine-native-ops/workspace/src/governance/28-tests",
+              "/workspace/machine-native-ops/workspace/src/tests"
+            ]
+          },
+          "integration": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/tests",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/tests",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4/src",
+              "/workspace/machine-native-ops/workspace/src/governance/28-tests"
+            ]
+          },
+          "registry": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src/protocol",
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src/governance/30-agents",
+              "/workspace/machine-native-ops/workspace/src/governance/60-contracts"
+            ]
+          },
+          "ci": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops/templates",
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/src/templates/governance",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "deployment": {
+            "count": 7,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/quantum-naming-v4-0-0",
+              "/workspace/machine-native-ops/workspace/src/governance/34-config",
+              "/workspace/machine-native-ops/workspace/src/autonomous",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "plugins": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/slsa_provenance",
+              "/workspace/machine-native-ops/workspace/src/governance/24-registry"
+            ]
+          },
+          "naming": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended/governance",
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/src/governance/34-config",
+              "/workspace/machine-native-ops/workspace/scripts",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "infrastructure": {
+            "count": 6,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous",
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks/02_integration",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks/03_refactor",
+              "/workspace/machine-native-ops/workspace/archive"
+            ]
+          },
+          ".github": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "data": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/workspace/src/governance/34-config",
+              "/workspace/machine-native-ops/workspace/src/governance/29-docs",
+              "/workspace/machine-native-ops/workspace/src/enterprise"
+            ]
+          },
+          "mcp": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/agents",
+              "/workspace/machine-native-ops/workspace/src/services",
+              "/workspace/machine-native-ops/workspace/docs/agents"
+            ]
+          },
+          "configuration": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src",
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/docs/examples",
+              "/workspace/machine-native-ops/workspace/docs/architecture"
+            ]
+          },
+          "modules": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs/reports",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/training",
+              "/workspace/machine-native-ops/opt/machinenativenops",
+              "/workspace/machine-native-ops/lib"
+            ]
+          },
+          "engines": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4/tests",
+              "/workspace/machine-native-ops/workspace/src/governance/39-automation",
+              "/workspace/machine-native-ops/workspace/tools/automation"
+            ]
+          },
+          "orchestrator": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/teams/default-team",
+              "/workspace/machine-native-ops/workspace/teams/default-team",
+              "/workspace/machine-native-ops/workspace/src/ai/agents",
+              "/workspace/machine-native-ops/workspace/src/services/agents",
+              "/workspace/machine-native-ops/workspace/archive/legacy/v2-multi-islands"
+            ]
+          },
+          "types": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/dissolved-assets",
+              "/workspace/machine-native-ops/workspace/src/shared",
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp",
+              "/workspace/machine-native-ops/workspace/mcp/validation-mcp"
+            ]
+          },
+          "utils": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/default-team/orchestrator",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/shared",
+              "/workspace/machine-native-ops/workspace/archive/legacy/v1-python-drones",
+              "/workspace/machine-native-ops/workspace/archive/legacy/v2-multi-islands"
+            ]
+          },
+          "docker": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/deployment",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/config/dev/templates",
+              "/workspace/machine-native-ops/workspace/docs/examples/configuration",
+              "/workspace/machine-native-ops/workspace/docs/architecture/configuration"
+            ]
+          },
+          "kubernetes": {
+            "count": 5,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/deployment",
+              "/workspace/machine-native-ops/workspace/docs/examples/configuration",
+              "/workspace/machine-native-ops/workspace/docs/architecture/configuration",
+              "/workspace/machine-native-ops/workspace/archive/infrastructure",
+              "/workspace/machine-native-ops/workspace/tools/infrastructure"
+            ]
+          },
+          "bin": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/tools/cli",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "lib": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace/src/client/src",
+              "/workspace/machine-native-ops/usr",
+              "/workspace/machine-native-ops/var"
+            ]
+          },
+          "contracts": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/automation/hyperautomation",
+              "/workspace/machine-native-ops/workspace/src/core"
+            ]
+          },
+          "observability": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-adk/adk",
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "integrations": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk",
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/enterprise",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "compliance": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs",
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/30-agents",
+              "/workspace/machine-native-ops/workspace/src/governance/23-policies"
+            ]
+          },
+          "performance": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/tests",
+              "/workspace/machine-native-ops/workspace/governance/tests",
+              "/workspace/machine-native-ops/workspace/src/tests"
+            ]
+          },
+          "api": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/src/quantum",
+              "/workspace/machine-native-ops/workspace/src/governance/29-docs",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "ci-cd": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0-extended",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "playbooks": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/teams/default-team",
+              "/workspace/machine-native-ops/workspace/teams/holy-grail",
+              "/workspace/machine-native-ops/workspace/teams/default-team",
+              "/workspace/machine-native-ops/workspace/src/templates"
+            ]
+          },
+          "pipelines": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/dissolved-assets",
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/config/automation",
+              "/workspace/machine-native-ops/workspace/mcp/validation-mcp"
+            ]
+          },
+          "autonomous": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/agents",
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/governance/23-policies",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks/03_refactor"
+            ]
+          },
+          "deploy": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/services/mcp",
+              "/workspace/machine-native-ops/workspace/src/frontend/ui",
+              "/workspace/machine-native-ops/workspace/src/web/admin",
+              "/workspace/machine-native-ops/workspace/src/mcp-servers"
+            ]
+          },
+          "public": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/client",
+              "/workspace/machine-native-ops/workspace/src/web/client",
+              "/workspace/machine-native-ops/workspace/src/web/admin",
+              "/workspace/machine-native-ops/workspace/tools/apps/quantum-dashboard"
+            ]
+          },
+          "config-manager": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/ci-tools",
+              "/workspace/machine-native-ops/workspace/engine",
+              "/workspace/machine-native-ops/workspace/tools/templates",
+              "/workspace/machine-native-ops/opt/machinenativenops/modules"
+            ]
+          },
+          "python": {
+            "count": 4,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs/examples/configuration",
+              "/workspace/machine-native-ops/workspace/docs/architecture/configuration",
+              "/workspace/machine-native-ops/workspace/tools",
+              "/workspace/machine-native-ops/workspace/tools/governance"
+            ]
+          },
+          "root": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/src/templates"
+            ]
+          },
+          "github": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src/adapters",
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "registries": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/controlplane"
+            ]
+          },
+          "manifests": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/workspace/config/dev/validation-system",
+              "/workspace/machine-native-ops/workspace/archive/infrastructure/kubernetes"
+            ]
+          },
+          "tutorials": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/workspace/governance/examples",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "execution": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src/tools",
+              "/workspace/machine-native-ops/workspace/src/enterprise"
+            ]
+          },
+          "hooks": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/workspace/src/client/src",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "feature": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/.git/logs/refs/heads",
+              "/workspace/machine-native-ops/.git/refs/heads",
+              "/workspace/machine-native-ops/.git/refs/remotes/origin"
+            ]
+          },
+          "engine": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src/core"
+            ]
+          },
+          "prometheus": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/monitoring",
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/archive/infrastructure/monitoring"
+            ]
+          },
+          "guides": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/docs",
+              "/workspace/machine-native-ops/workspace/src/governance/29-docs",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "gatekeeper": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/src/governance/00-vision-strategy",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "e2e": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/tests",
+              "/workspace/machine-native-ops/workspace/src/governance/28-tests",
+              "/workspace/machine-native-ops/tests"
+            ]
+          },
+          "profiles": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/teams/default-team",
+              "/workspace/machine-native-ops/workspace/teams/default-team",
+              "/workspace/machine-native-ops/workspace/config/agents"
+            ]
+          },
+          "architect": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/automation",
+              "/workspace/machine-native-ops/workspace/src/ai/agents",
+              "/workspace/machine-native-ops/workspace/src/automation"
+            ]
+          },
+          "cli": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/agents",
+              "/workspace/machine-native-ops/workspace/docs/agents",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "ai": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/services/edge",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "apps": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks/03_refactor",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "workflow": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/quantum",
+              "/workspace/machine-native-ops/workspace/src/governance/23-policies",
+              "/workspace/machine-native-ops/workspace/src/governance/packages"
+            ]
+          },
+          "conftest": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance/23-policies",
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/config"
+            ]
+          },
+          "architecture": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance/29-docs",
+              "/workspace/machine-native-ops/workspace/src/next_gen",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "runbooks": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/agents",
+              "/workspace/machine-native-ops/workspace/scripts/ops",
+              "/workspace/machine-native-ops/workspace/docs/operations"
+            ]
+          },
+          "artifacts": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/agents",
+              "/workspace/machine-native-ops/workspace/scripts/ops",
+              "/workspace/machine-native-ops/workspace/tools/scripts"
+            ]
+          },
+          "components": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/client/src",
+              "/workspace/machine-native-ops/workspace/docs/mndoc",
+              "/workspace/machine-native-ops/workspace/docs/architecture"
+            ]
+          },
+          "cache": {
+            "count": 3,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/archive/infrastructure/kubernetes",
+              "/workspace/machine-native-ops/var",
+              "/workspace/machine-native-ops/.pytest_cache/v"
+            ]
+          },
+          "sbin": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/usr"
+            ]
+          },
+          "etc": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace/engine/machinenativenops-auto-monitor/rootfs"
+            ]
+          },
+          "usr": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace/engine/machinenativenops-auto-monitor/rootfs"
+            ]
+          },
+          "outputs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops",
+              "/workspace/machine-native-ops/workspace"
+            ]
+          },
+          "adapters": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/src/core/run-debug"
+            ]
+          },
+          "schema": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src",
+              "/workspace/machine-native-ops/workspace/scripts/ops/reports"
+            ]
+          },
+          "cloudflare": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/src/adapters",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "audit": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/security",
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/scripts"
+            ]
+          },
+          "rbac": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-sdk/security",
+              "/workspace/machine-native-ops/workspace/archive/infrastructure/kubernetes"
+            ]
+          },
+          "level2": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs/reports"
+            ]
+          },
+          "level1": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/ns-root-mcp"
+            ]
+          },
+          "legacy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp",
+              "/workspace/machine-native-ops/workspace/archive"
+            ]
+          },
+          "endpoints": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3"
+            ]
+          },
+          "communication": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src"
+            ]
+          },
+          "protocol": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src"
+            ]
+          },
+          "data-management": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/src"
+            ]
+          },
+          "scalability": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level2/src",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs"
+            ]
+          },
+          "example-project": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/examples",
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp.backup.20250110/examples"
+            ]
+          },
+          "verification": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level1",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "implementation": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/docs/reports",
+              "/workspace/machine-native-ops/workspace/docs/reports"
+            ]
+          },
+          "edge": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines",
+              "/workspace/machine-native-ops/workspace/src/services"
+            ]
+          },
+          "federated": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level3/engines",
+              "/workspace/machine-native-ops/workspace/src/ai"
+            ]
+          },
+          "interfaces": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/ns-root/namespaces-mcp/level4/src",
+              "/workspace/machine-native-ops/workspace/src/core/new"
+            ]
+          },
+          "info": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/.git/objects"
+            ]
+          },
+          "refs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git",
+              "/workspace/machine-native-ops/.git/logs"
+            ]
+          },
+          "heads": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git/logs/refs",
+              "/workspace/machine-native-ops/.git/refs"
+            ]
+          },
+          "remotes": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git/logs/refs",
+              "/workspace/machine-native-ops/.git/refs"
+            ]
+          },
+          "origin": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/.git/logs/refs/remotes",
+              "/workspace/machine-native-ops/.git/refs/remotes"
+            ]
+          },
+          "refactor": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/scripts",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "teams": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "ops": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          ".local": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace",
+              "/workspace/machine-native-ops/workspace/root"
+            ]
+          },
+          "standards": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance",
+              "/workspace/machine-native-ops/workspace/original_dev/original_axiom_backup"
+            ]
+          },
+          "grafana": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/monitoring",
+              "/workspace/machine-native-ops/workspace/config/dev"
+            ]
+          },
+          "best-practices": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/naming-governance-v1-0-0/docs",
+              "/workspace/machine-native-ops/workspace/examples/code-sanctuary-tutorials"
+            ]
+          },
+          "change-management": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "exception": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/governance/policies",
+              "/workspace/machine-native-ops/workspace/docs/policies"
+            ]
+          },
+          "troubleshooting": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/examples/code-sanctuary-tutorials",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "policy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root",
+              "/workspace/machine-native-ops/workspace/src/governance/00-vision-strategy"
+            ]
+          },
+          "default-team": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/teams",
+              "/workspace/machine-native-ops/workspace/teams"
+            ]
+          },
+          "machinenativeops.egg-info": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/src",
+              "/workspace/machine-native-ops/workspace/src"
+            ]
+          },
+          "state": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/.local",
+              "/workspace/machine-native-ops/workspace/.local"
+            ]
+          },
+          "replit": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/root/.local/state",
+              "/workspace/machine-native-ops/workspace/.local/state"
+            ]
+          },
+          "hyperautomation": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/automation",
+              "/workspace/machine-native-ops/workspace/src/automation"
+            ]
+          },
+          "genetic": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/automation",
+              "/workspace/machine-native-ops/workspace/src/automation"
+            ]
+          },
+          "architecture-skeletons": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/automation",
+              "/workspace/machine-native-ops/workspace/src/automation"
+            ]
+          },
+          "unmanned-engineer-ceo": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/legacy-archive",
+              "/workspace/machine-native-ops/workspace/archive"
+            ]
+          },
+          "v1-python-drones": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/legacy-archive",
+              "/workspace/machine-native-ops/workspace/archive/legacy"
+            ]
+          },
+          "v2-multi-islands": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/legacy-archive",
+              "/workspace/machine-native-ops/workspace/archive/legacy"
+            ]
+          },
+          "servers": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/dissolved-assets",
+              "/workspace/machine-native-ops/workspace/mcp/validation-mcp"
+            ]
+          },
+          "virtual-experts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/agents",
+              "/workspace/machine-native-ops/workspace/docs/agents"
+            ]
+          },
+          "01_deconstruction": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/integration-layer",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks"
+            ]
+          },
+          "02_integration": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/integration-layer",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks"
+            ]
+          },
+          "03_refactor": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/integration-layer",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks"
+            ]
+          },
+          "_legacy_scratch": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/holy-grail/integration-layer",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks"
+            ]
+          },
+          "overlays": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/teams/default-team/orchestrator",
+              "/workspace/machine-native-ops/workspace/archive/infrastructure/kubernetes"
+            ]
+          },
+          "client": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/web"
+            ]
+          },
+          "bridges": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/archive/legacy/v2-multi-islands"
+            ]
+          },
+          "runtime": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src",
+              "/workspace/machine-native-ops/workspace/src/core/new"
+            ]
+          },
+          "dependency-manager": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/ai/agents",
+              "/workspace/machine-native-ops/workspace/src/services/agents"
+            ]
+          },
+          "vulnerability-detector": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/ai/agents",
+              "/workspace/machine-native-ops/workspace/src/services/agents"
+            ]
+          },
+          "auto-repair": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/ai/agents",
+              "/workspace/machine-native-ops/workspace/src/services/agents"
+            ]
+          },
+          "code-analyzer": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/ai/agents",
+              "/workspace/machine-native-ops/workspace/src/services/agents"
+            ]
+          },
+          "cloud_agent_delegation": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "ci_error_handler": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "yaml_module_system": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "training_system": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "virtual_experts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "main_system": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "tech_stack": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "ai_constitution": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core",
+              "/workspace/machine-native-ops/workspace/src/core/plugins"
+            ]
+          },
+          "optimization": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core/quantum",
+              "/workspace/machine-native-ops/workspace/src/core/instant_generation"
+            ]
+          },
+          "mind_matrix": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core/plugins",
+              "/workspace/machine-native-ops/workspace/src/runtime"
+            ]
+          },
+          "contracts-L1": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core/contract_service",
+              "/workspace/machine-native-ops/workspace/src/core/contracts"
+            ]
+          },
+          "external": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/core/contract_service",
+              "/workspace/machine-native-ops/workspace/src/core/contracts"
+            ]
+          },
+          "32-rules": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "40-self-healing": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "26-tools": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "28-tests": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "36-modules": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "24-registry": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "20-intent": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "34-config": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "08-process": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "11-tools-systems": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "01-architecture": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "02-decision": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "39-automation": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "19-evolutionary": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "15-economic": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "10-policy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "37-behavior-contracts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "35-scripts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "30-agents": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "25-principles": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "00-vision-strategy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "14-improvement": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "13-metrics-reporting": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "23-policies": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "05-compliance": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "21-ecological": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "38-sbom": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "03-change": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "04-risk": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "22-aesthetic": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "09-performance": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "07-audit": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "12-culture-capability": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "27-templates": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "31-schemas": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "29-docs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "16-psychological": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "17-sociological": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "33-common": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "06-security": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "18-complex-system": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "60-contracts": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance",
+              "/workspace/machine-native-ops/workspace/src/governance/dimensions"
+            ]
+          },
+          "events": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance/index",
+              "/workspace/machine-native-ops/workspace/src/enterprise"
+            ]
+          },
+          "mndoc": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/governance/31-schemas",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "knowledge-base": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "performance-reliability": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "nucleus-orchestrator": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "architecture-stability": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "cost-management": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "identity-tenancy": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "security-observability": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/infrastructure",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/70-architecture-skeletons"
+            ]
+          },
+          "onboarding": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/autonomous/agents",
+              "/workspace/machine-native-ops/workspace/scripts/ops"
+            ]
+          },
+          "scheduler": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/services",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "sync": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/scripts"
+            ]
+          },
+          "git-hooks": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/templates",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "pages": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/client/src",
+              "/workspace/machine-native-ops/workspace/tools/cloudflare"
+            ]
+          },
+          "ui": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/frontend",
+              "/workspace/machine-native-ops/workspace/docs"
+            ]
+          },
+          "converters": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp"
+            ]
+          },
+          "credit": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/namespace-mcp",
+              "/workspace/machine-native-ops/workspace/src/grail-mcp"
+            ]
+          },
+          "auto-fix-bot": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/tests/unit",
+              "/workspace/machine-native-ops/workspace/src/tests/vectors"
+            ]
+          },
+          "osv-advisory": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/tests/unit",
+              "/workspace/machine-native-ops/workspace/src/tests/vectors"
+            ]
+          },
+          "cloud-agent-delegation": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/src/tests/unit",
+              "/workspace/machine-native-ops/workspace/src/tests/vectors"
+            ]
+          },
+          "axiom": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/docs/refactor_playbooks/03_refactor"
+            ]
+          },
+          "environments": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config",
+              "/workspace/machine-native-ops/workspace/config/dev"
+            ]
+          },
+          "evidence-chains": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/config/dev/validation-system",
+              "/workspace/machine-native-ops/workspace/docs/validation"
+            ]
+          },
+          "evolution": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs",
+              "/workspace/machine-native-ops/workspace/tools"
+            ]
+          },
+          "jenkins": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/docs/examples/configuration",
+              "/workspace/machine-native-ops/workspace/docs/architecture/configuration"
+            ]
+          },
+          "rootfs": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/engine/machinenativenops-auto-monitor",
+              "/workspace/machine-native-ops/workspace/tools/templates/config-manager"
+            ]
+          },
+          "70-architecture-skeletons": {
+            "count": 2,
+            "locations": [
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo",
+              "/workspace/machine-native-ops/workspace/archive/unmanned-engineer-ceo/60-machine-guides"
+            ]
+          }
+        }
+      }
+    },
+    "unique_directories": {}
+  }
+}

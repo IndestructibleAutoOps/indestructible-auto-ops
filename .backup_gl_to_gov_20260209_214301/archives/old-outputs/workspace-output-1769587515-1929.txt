@@ -1,0 +1,11 @@
+Errors with syntax issues:
+  - ./engine/aep-engine-web/src/components/__init__.py: syntax error while parsing AST from file
+  - ./engine/aep-engine-web/src/data/__init__.py: syntax error while parsing AST from file
+  - ./engine/aep-engine-web/src/hooks/__init__.py: syntax error while parsing AST from file
+  - ./engine/aep-engine-web/src/screens/__init__.py: syntax error while parsing AST from file
+  - ./engine/controlplane/validation/__init__.py: syntax error while parsing AST from file
+  - ./engine/controlplane/validation/hash_manager.py: syntax error while parsing AST from file
+  - ./engine/controlplane/validation/stage1_lint_format.py: syntax error while parsing AST from file
+  - ./engine/controlplane/validation/stage2_schema_semantic.py: syntax error while parsing AST from file
+  - ./engine/controlplane/validation/stage3_dependency.py: syntax error while parsing AST from file
+  - ./engine/controlplane/validation/stage4_sbom_scan.py: syntax error while parsing AST from file

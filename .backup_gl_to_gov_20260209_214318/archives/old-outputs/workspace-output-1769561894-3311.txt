@@ -1,0 +1,6 @@
+function processDirectory(dir, processed = []) {
+  const files = fs.readdirSync(dir, { withFileTypes: true });
+  
+  for (const file of files) {
+    const fullPath = path.join(dir, file.name);
+    const relativePath = path.relative(WORKSPACE, fullPath);

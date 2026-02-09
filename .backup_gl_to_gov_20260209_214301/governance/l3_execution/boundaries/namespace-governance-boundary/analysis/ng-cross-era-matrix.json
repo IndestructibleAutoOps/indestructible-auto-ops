@@ -1,0 +1,133 @@
+{
+  "ng_code": "NG90100",
+  "description": "Cross-Era Namespace Mapping Matrix",
+  "timestamp": "2025-01-17T00:00:00Z",
+  "governance_version": "NG000-999 v3.0",
+  
+  "era1_to_era2": {
+    "NG10100": {
+      "target_ng_code": "NG30100",
+      "description": "Code Package → Microservice Boundary",
+      "transformation": "Convert Java/Python package format to microservice naming",
+      "bidirectional": true,
+      "example": {
+        "source": "com.example.quantum.service",
+        "target": "quantum-service"
+      }
+    },
+    "NG10200": {
+      "target_ng_code": "NG30200",
+      "description": "Class/Interface → Service Mesh Component",
+      "transformation": "Map class names to service mesh components",
+      "bidirectional": true,
+      "example": {
+        "source": "QuantumComputeEngine",
+        "target": "quantum-compute-engine"
+      }
+    },
+    "NG10300": {
+      "target_ng_code": "NG30300",
+      "description": "Method/Function → Event Stream",
+      "transformation": "Convert method names to event stream names",
+      "bidirectional": true,
+      "example": {
+        "source": "execute()",
+        "target": "quantum-job-executed"
+      }
+    },
+    "NG20600": {
+      "target_ng_code": "NG40300",
+      "description": "Database Table → Data Shard",
+      "transformation": "Map table names to data shard identifiers",
+      "bidirectional": true,
+      "example": {
+        "source": "jobs_table",
+        "target": "jobs-shard-01"
+      }
+    }
+  },
+  
+  "era2_to_era3": {
+    "NG30100": {
+      "target_ng_code": "NG60100",
+      "description": "Microservice Boundary → Business Intent",
+      "transformation": "Extract business intent from microservice boundaries",
+      "bidirectional": false,
+      "example": {
+        "source": "quantum-service",
+        "target": "maximize-quantum-fidelity"
+      }
+    },
+    "NG30300": {
+      "target_ng_code": "NG60400",
+      "description": "Event Stream → Semantic Intent",
+      "transformation": "Map event streams to semantic intent representations",
+      "bidirectional": false,
+      "example": {
+        "source": "quantum-job-executed",
+        "target": "semantic-job-completion"
+      }
+    },
+    "NG30400": {
+      "target_ng_code": "NG60500",
+      "description": "Data Pipeline → Neural Network Intent",
+      "transformation": "Convert data pipelines to neural network processing intents",
+      "bidirectional": false,
+      "example": {
+        "source": "results-pipeline",
+        "target": "nn-results-processing"
+      }
+    },
+    "NG30800": {
+      "target_ng_code": "NG60800",
+      "description": "Configuration Center → Automation Policy",
+      "transformation": "Transform configs to automation policies",
+      "bidirectional": false,
+      "example": {
+        "source": "backend-config",
+        "target": "policy-backend-selection"
+      }
+    },
+    "NG31000": {
+      "target_ng_code": "NG80400",
+      "description": "Circuit Breaker → Self-Protecting System",
+      "transformation": "Upgrade circuit breakers to autonomous protection",
+      "bidirectional": false,
+      "example": {
+        "source": "circuit-breaker",
+        "target": "auto-protect-circuit"
+      }
+    }
+  },
+  
+  "direct_mappings": [
+    {
+      "ng_code": "NG50000",
+      "description": "Security namespaces are universal across all Eras",
+      "applicable_eras": ["Era-1", "Era-2", "Era-3"]
+    },
+    {
+      "ng_code": "NG10700",
+      "description": "Configuration namespaces are universal across all Eras",
+      "applicable_eras": ["Era-1", "Era-2", "Era-3"]
+    }
+  ],
+  
+  "mapping_constraints": {
+    "era1_to_era2_requirements": [
+      "NG10100 compliance must be 100% before Era-2 migration",
+      "All Python files must follow NG10300 conventions",
+      "Database schemas must conform to NG20600 standards"
+    ],
+    "era2_to_era3_requirements": [
+      "Semantic annotations must be present on all services",
+      "Event streams must be documented with NG60400 metadata",
+      "Configuration must be centralized under NG30800"
+    ],
+    "validation_rules": [
+      "Bidirectional mappings must be semantically equivalent",
+      "Cross-era mappings must preserve business intent",
+      "Security namespaces (NG50000) must maintain consistency"
+    ]
+  }
+}

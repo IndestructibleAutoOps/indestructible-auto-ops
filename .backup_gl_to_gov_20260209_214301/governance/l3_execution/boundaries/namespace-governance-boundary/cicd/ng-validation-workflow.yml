@@ -1,0 +1,222 @@
+name: NG Namespace Governance Validation
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  validate-ng-namespaces:
+    name: Validate NG Namespace Compliance
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyyaml
+      
+      - name: Run NG Namespace Validator
+        run: |
+          python ng-namespace-governance/tools/ng-namespace-validator.py \
+            > /tmp/ng-validation-results.json
+      
+      - name: Parse validation results
+        id: parse
+        run: |
+          python3 << 'EOF'
+          import json
+          
+          with open('/tmp/ng-validation-results.json', 'r') as f:
+              results = json.load(f)
+          
+          summary = results['summary']
+          violations = summary['total_violations']
+          failed = summary['failed']
+          
+          # Set output for next steps
+          with open('/tmp/validation_summary.txt', 'w') as f:
+              f.write(f"Total Checks: {summary['total_checks']}\n")
+              f.write(f"Passed: {summary['passed']}\n")
+              f.write(f"Failed: {failed}\n")
+              f.write(f"Total Violations: {violations}\n")
+          
+          # Check for critical violations
+          critical_violations = 0
+          for result in results['results']:
+              for v in result['violations']:
+                  if v['severity'] == 'CRITICAL':
+                      critical_violations += 1
+          
+          # Set GitHub Actions output
+          print(f"::set-output name=violations::{violations}")
+          print(f"::set-output name=critical_violations::{critical_violations}")
+          print(f"::set-output name=failed::{failed}")
+          EOF
+      
+      - name: Display validation summary
+        run: |
+          echo "🔍 NG Namespace Validation Results"
+          echo "=================================="
+          cat /tmp/validation_summary.txt
+      
+      - name: Check for violations
+        run: |
+          VIOLATIONS=$(cat /tmp/validation_summary.txt | grep "Total Violations" | awk '{print $3}')
+          CRITICAL=$(cat /tmp/validation_summary.txt | grep "Total Violations" | awk '{print $3}')
+          
+          if [ "$VIOLATIONS" -gt 0 ]; then
+            echo "⚠️  Found $VIOLATIONS namespace violations"
+            
+            # Show violations
+            jq -r '.results[].violations[]? | "\(.severity): \(.file_path) - \(.message)"' \
+              /tmp/ng-validation-results.json | head -20
+            
+            # Generate fix script
+            python ng-namespace-governance/tools/ng-namespace-validator.py
+            echo ""
+            echo "📝 Auto-fix script generated at:"
+            echo "   ng-namespace-governance/tools/fix-namespace-violations.sh"
+            
+            # Fail on critical violations
+            CRITICAL_COUNT=$(jq '[.results[].violations[]? | select(.severity == "CRITICAL")] | length' \
+              /tmp/ng-validation-results.json)
+            
+            if [ "$CRITICAL_COUNT" -gt 0 ]; then
+              echo "❌ Validation FAILED: $CRITICAL_COUNT critical violations found"
+              exit 1
+            fi
+          fi
+          
+          echo "✅ NG Namespace validation passed"
+      
+      - name: Upload validation results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: ng-validation-results
+          path: /tmp/ng-validation-results.json
+          retention-days: 30
+      
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('/tmp/ng-validation-results.json', 'utf8'));
+            
+            const summary = results.summary;
+            let body = `## 🔍 NG Namespace Governance Validation\n\n`;
+            body += `**Status:** ${summary.failed === 0 ? '✅ PASSED' : '⚠️  FAILED'}\n\n`;
+            body += `| Metric | Count |\n`;
+            body += `|--------|-------|\n`;
+            body += `| Total Checks | ${summary.total_checks} |\n`;
+            body += `| Passed | ${summary.passed} |\n`;
+            body += `| Failed | ${summary.failed} |\n`;
+            body += `| Total Violations | ${summary.total_violations} |\n\n`;
+            
+            if (summary.total_violations > 0) {
+              body += `### 🚨 Violations Found\n\n`;
+              
+              for (const result of results.results) {
+                if (result.violations.length > 0) {
+                  body += `#### ${result.ng_code} (${result.era})\n`;
+                  
+                  for (const violation of result.violations.slice(0, 10)) {
+                    const icon = violation.severity === 'CRITICAL' ? '🔴' : 
+                                violation.severity === 'HIGH' ? '🟠' : '🟡';
+                    body += `${icon} **${violation.severity}**: \`${violation.file_path}\`\n`;
+                    body += `- ${violation.message}\n`;
+                    body += `- 💡 Suggestion: ${violation.suggestion}\n\n`;
+                  }
+                  
+                  if (result.violations.length > 10) {
+                    body += `... and ${result.violations.length - 10} more violations\n\n`;
+                  }
+                }
+              }
+              
+              body += `\n### 🔧 Auto-Fix\n\n`;
+              body += `A fix script has been generated at:\n`;
+              body += `\`ng-namespace-governance/tools/fix-namespace-violations.sh\`\n\n`;
+            }
+            
+            body += `\n---\n`;
+            body += `*Governance Framework: NG000-999 v3.0*\n`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+  cross-era-mapping-validation:
+    name: Validate Cross-Era Mapping
+    runs-on: ubuntu-latest
+    needs: validate-ng-namespaces
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Generate Cross-Era Mapping Matrix
+        run: |
+          python ng-namespace-governance/tools/ng-era-mapping-engine.py
+      
+      - name: Validate Mapping Consistency
+        run: |
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+          
+          # Load mapping matrix
+          matrix_path = Path('ng-namespace-governance/analysis/ng-cross-era-matrix.json')
+          with open(matrix_path) as f:
+              matrix = json.load(f)
+          
+          # Validate Era-1 → Era-2 mappings
+          era1_count = len(matrix['era1_to_era2'])
+          print(f"✓ Era-1 → Era-2 mappings: {era1_count}")
+          
+          # Validate Era-2 → Era-3 mappings
+          era2_count = len(matrix['era2_to_era3'])
+          print(f"✓ Era-2 → Era-3 mappings: {era2_count}")
+          
+          # Validate direct mappings
+          direct_count = len(matrix['direct_mappings'])
+          print(f"✓ Direct mappings: {direct_count}")
+          
+          # Check for bidirectional consistency
+          bidirectional_issues = 0
+          for ng_code, mapping in matrix['era1_to_era2'].items():
+              if mapping['bidirectional']:
+                  # Verify reverse mapping exists
+                  target_code = mapping['target_ng_code']
+                  # This would need more complex validation logic
+                  pass
+          
+          if bidirectional_issues > 0:
+              print(f"❌ Found {bidirectional_issues} bidirectional mapping issues")
+              exit(1)
+          
+          print("✅ Cross-Era mapping validation passed")
+          EOF

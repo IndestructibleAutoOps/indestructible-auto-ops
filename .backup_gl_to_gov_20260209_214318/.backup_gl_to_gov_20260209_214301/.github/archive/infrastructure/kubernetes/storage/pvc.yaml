@@ -1,0 +1,68 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+# ============================================================================
+# Persistent Volume Claims
+# ============================================================================
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: autofix-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fast-ssd
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  namespace: autofix-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fast-ssd
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-pvc
+  namespace: autofix-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fast-ssd
+  resources:
+    requests:
+      storage: 50Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: loki-pvc
+  namespace: autofix-bot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fast-ssd
+  resources:
+    requests:
+      storage: 30Gi

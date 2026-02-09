@@ -166,7 +166,7 @@ topology_enforcement:
       gl_binding: ["GL87"]
       severity: CRITICAL
       action: BLOCK
-      validation: "gl-binding-check"
+      validation: "gov-binding-check"
       description: "All nodes must have GL binding"
       
     - rule_id: "TOP-003"
@@ -192,7 +192,7 @@ governance_binding_enforcement:
       gl_binding: ["GL47", "GL97"]
       severity: CRITICAL
       action: BLOCK
-      validation: "artifact-gl-binding-check"
+      validation: "artifact-gov-binding-check"
       description: "All artifacts must be bound to GL anchors"
       
     - rule_id: "BIND-002"
@@ -200,7 +200,7 @@ governance_binding_enforcement:
       gl_binding: ["GL47", "GL97"]
       severity: CRITICAL
       action: BLOCK
-      validation: "layer-gl-binding-check"
+      validation: "layer-gov-binding-check"
       description: "All layers must be bound to GL anchor ranges"
       
     - rule_id: "BIND-003"
@@ -208,7 +208,7 @@ governance_binding_enforcement:
       gl_binding: ["GL47", "GL97"]
       severity: HIGH
       action: WARN
-      validation: "role-gl-binding-check"
+      validation: "role-gov-binding-check"
       description: "All roles should be bound to GL anchors"
 
 # =============================================================================

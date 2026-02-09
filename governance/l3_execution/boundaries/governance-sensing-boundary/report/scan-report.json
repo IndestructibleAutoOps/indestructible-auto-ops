@@ -177,13 +177,13 @@
       "file_count": 3
     },
     {
-      "module_id": "gl-layers",
-      "directory": "responsibility-gl-layers-boundary",
+      "module_id": "gov-layers",
+      "directory": "responsibility-gov-layers-boundary",
       "checks": [
         {
           "check": "directory_exists",
           "passed": true,
-          "detail": "存在: responsibility-gl-layers-boundary"
+          "detail": "存在: responsibility-gov-layers-boundary"
         },
         {
           "check": "readme_exists",
@@ -666,7 +666,7 @@
       "detected_at": "2026-02-07T18:47:56.988591+00:00"
     },
     {
-      "module_id": "gl-layers",
+      "module_id": "gov-layers",
       "previous_hash": "169a87e5b779831c...",
       "current_hash": "443a84725f81c745...",
       "detected_at": "2026-02-07T18:47:56.988608+00:00"

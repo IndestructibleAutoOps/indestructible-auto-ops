@@ -1,0 +1,299 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# AWS Infrastructure Configuration - Monitoring Stack
+# Provider: AWS
+# Components: Prometheus, Grafana, AlertManager, Thanos
+
+apiVersion: "v1"
+kind: "Config"
+metadata:
+  name: "aws-monitoring-stack"
+  provider: "aws"
+  region: "us-east-1"
+
+# VPC Configuration
+vpc:
+  cidr: "10.0.0.0/16"
+  enable_dns_hostnames: true
+  enable_dns_support: true
+  subnets:
+    public:
+      - cidr: "10.0.1.0/24"
+        availability_zone: "us-east-1a"
+        map_public_ip_on_launch: true
+      - cidr: "10.0.2.0/24"
+        availability_zone: "us-east-1b"
+        map_public_ip_on_launch: true
+    private:
+      - cidr: "10.0.10.0/24"
+        availability_zone: "us-east-1a"
+      - cidr: "10.0.11.0/24"
+        availability_zone: "us-east-1b"
+
+# EKS Cluster Configuration
+eks_cluster:
+  name: "monitoring-cluster"
+  version: "1.28"
+  instance_types:
+    - "m5.xlarge"
+    - "m5.2xlarge"
+  node_groups:
+    primary:
+      desired_size: 3
+      min_size: 2
+      max_size: 10
+      instance_types:
+        - "m5.xlarge"
+      labels:
+        role: "monitoring"
+      taints: []
+    prometheus:
+      desired_size: 2
+      min_size: 1
+      max_size: 5
+      instance_types:
+        - "c5.2xlarge"
+      labels:
+        component: "prometheus"
+      taints:
+        - key: "dedicated"
+          value: "prometheus"
+          effect: "NO_SCHEDULE"
+
+# Prometheus Configuration
+prometheus:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "1000m"
+      memory: "2Gi"
+    limits:
+      cpu: "4000m"
+      memory: "8Gi"
+  persistence:
+    enabled: true
+    storage_class: "gp3"
+    size: "100Gi"
+  retention:
+    days: 15
+    size: "50GB"
+  service:
+    type: "LoadBalancer"
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+  service_account:
+    create: true
+    annotations:
+      eks.amazonaws.com/role-arn: "arn:aws:iam::ACCOUNT_ID:role/prometheus-role"
+
+# Grafana Configuration
+grafana:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  persistence:
+    enabled: true
+    storage_class: "gp3"
+    size: "10Gi"
+  service:
+    type: "LoadBalancer"
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "alb"
+  service_account:
+    create: true
+    annotations:
+      eks.amazonaws.com/role-arn: "arn:aws:iam::ACCOUNT_ID:role/grafana-role"
+  admin_password: "{{ .Values.grafana.adminPassword }}"
+  env:
+    GF_SERVER_ROOT_URL: "https://grafana.example.com"
+    GF_INSTALL_PLUGINS: "grafana-piechart-panel,grafana-worldmap-panel,grafana-polystat-panel"
+
+# AlertManager Configuration
+alertmanager:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  persistence:
+    enabled: true
+    storage_class: "gp3"
+    size: "5Gi"
+  config:
+    global:
+      resolve_timeout: "5m"
+    route:
+      group_by: ["alertname", "cluster", "service"]
+      group_wait: "30s"
+      group_interval: "5m"
+      repeat_interval: "12h"
+      receiver: "default"
+    receivers:
+      - name: "default"
+      - name: "slack"
+        slack_configs:
+          - api_url: "{{ .Values.alertmanager.slack.webhook_url }}"
+            channel: "#alerts"
+            title: "[{{ .Status }}] {{ .CommonLabels.alertname }}"
+            text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+      - name: "pagerduty"
+        pagerduty_configs:
+          - service_key: "{{ .Values.alertmanager.pagerduty.service_key }}"
+            description: "{{ .CommonLabels.alertname }}"
+
+# Thanos Configuration (Long-term Storage)
+thanos:
+  enabled: true
+  replicas: 2
+  objstore_config:
+    type: "s3"
+    config:
+      bucket: "{{ .Values.thanos.s3.bucket }}"
+      endpoint: "{{ .Values.thanos.s3.endpoint }}"
+      region: "{{ .Values.thanos.s3.region }}"
+  query:
+    replicas: 2
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+      limits:
+        cpu: "2000m"
+        memory: "4Gi"
+  store:
+    enabled: true
+    persistence:
+      enabled: true
+      storage_class: "gp3"
+      size: "50Gi"
+  compactor:
+    enabled: true
+    retention:
+      raw: "90d"
+      resolution_5m: "180d"
+      resolution_1h: "365d"
+    resources:
+      requests:
+        cpu: "1000m"
+        memory: "2Gi"
+      limits:
+        cpu: "4000m"
+        memory: "8Gi"
+
+# Node Exporter Configuration
+node_exporter:
+  enabled: true
+  service:
+    port: 9100
+    target_port: 9100
+  tolerations:
+    - key: "dedicated"
+      operator: "Exists"
+      effect: "NoSchedule"
+
+# Kube State Metrics Configuration
+kube_state_metrics:
+  enabled: true
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+# AWS CloudWatch Integration
+cloudwatch:
+  enabled: true
+  namespace: "monitoring"
+  region: "us-east-1"
+  metrics:
+    - name: "prometheus_http_requests_total"
+      namespace: "monitoring"
+      dimensions:
+        - name: "Cluster"
+          value: "monitoring-cluster"
+      statistics:
+        - "Sum"
+      period: 60
+      unit: "Count"
+
+# IAM Roles
+iam:
+  prometheus:
+    name: "prometheus-role"
+    policies:
+      - name: "PrometheusS3Access"
+        statement:
+          - Effect: "Allow"
+            Action:
+              - "s3:GetObject"
+              - "s3:PutObject"
+              - "s3:ListBucket"
+            Resource:
+              - "arn:aws:s3:::monitoring-thanos-*"
+              - "arn:aws:s3:::monitoring-thanos-*/*"
+  grafana:
+    name: "grafana-role"
+    policies:
+      - name: "GrafanaCloudWatchAccess"
+        statement:
+          - Effect: "Allow"
+            Action:
+              - "cloudwatch:ListMetrics"
+              - "cloudwatch:GetMetricStatistics"
+              - "cloudwatch:GetMetricData"
+            Resource: "*"
+
+# S3 Buckets
+s3:
+  thanos:
+    bucket: "monitoring-thanos-us-east-1"
+    versioning: true
+    lifecycle:
+      rules:
+        - id: "DeleteOldObjects"
+          expiration:
+            days: 365
+          noncurrent_version_expiration:
+            noncurrent_days: 30
+
+# CloudWatch Alarms
+cloudwatch_alarms:
+  - name: "PrometheusHighCPU"
+    description: "Prometheus CPU utilization exceeds 80%"
+    metric_name: "cpu_utilization"
+    namespace: "AWS/EKS"
+    statistic: "Average"
+    period: 300
+    evaluation_periods: 2
+    threshold: 80
+    comparison_operator: "GreaterThanThreshold"
+    alarm_actions:
+      - "arn:aws:sns:us-east-1:ACCOUNT_ID:monitoring-alerts"
+  - name: "PrometheusPodCrashLooping"
+    description: "Prometheus pods are crash looping"
+    metric_name: "kube_pod_container_status_restarts_total"
+    namespace: "monitoring"
+    statistic: "Sum"
+    period: 60
+    evaluation_periods: 5
+    threshold: 5
+    comparison_operator: "GreaterThanThreshold"
+    alarm_actions:
+      - "arn:aws:sns:us-east-1:ACCOUNT_ID:monitoring-alerts"

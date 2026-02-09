@@ -1,0 +1,33 @@
+M  .github/agents/agent-orchestration.yml
+A  .github/hooks/post-commit
+M  .github/hooks/pre-commit
+A  .github/hooks/pre-push
+M  .github/workflows/gl-validation.yml
+ M engine/.governance/event-stream.jsonl
+ M engine/aep-engine-app/constants/const.ts
+ M engine/aep-engine-app/constants/oauth.ts
+ M engine/aep-engine-app/constants/theme.ts
+ M engine/aep-engine-app/hooks/use-auth.ts
+ M engine/aep-engine-app/hooks/use-color-scheme.ts
+ M engine/aep-engine-app/hooks/use-color-scheme.web.ts
+ M engine/aep-engine-app/hooks/use-colors.ts
+ M engine/aep-engine-app/scripts/load-env.js
+ M engine/aep-engine-web/src/data/mock.ts
+ M engine/aep-engine-web/src/hooks/useAppState.ts
+ M engine/gl-gate/core/index.ts
+ M engine/gl-gate/gates/index.ts
+ M engine/gl-gate/types/index.ts
+ M engine/index.ts
+ M engine/interfaces-fix.d.ts
+ M engine/interfaces.d.ts
+ M engine/jest.config.js
+ M engine/package-lock.json
+ M engine/package.json
+ M engine/tests/artifacts/evidence_chain.test.ts
+ M engine/tests/governance/rule_evaluator.test.ts
+ M engine/tests/loader/fs_loader.test.ts
+ M engine/tests/loader/merge_index.test.ts
+ M engine/tests/normalizer/env_merger.test.ts
+ M engine/tests/validator/schema_validator.test.ts
+ M file-organizer-system/.governance/event-stream.jsonl
+?? GL-FIX-COMPLETION.md

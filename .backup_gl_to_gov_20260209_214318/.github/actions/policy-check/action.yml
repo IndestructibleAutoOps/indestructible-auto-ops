@@ -1,0 +1,79 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 'Policy Compliance Check'
+description: 'Check compliance against OPA/Conftest governance policies'
+
+inputs:
+  policy-path:
+    description: 'Path to policy directory'
+    required: false
+    default: '.governance/policies'
+  files-to-check:
+    description: 'Files or patterns to check'
+    required: false
+    default: '.'
+  strict-mode:
+    description: 'Fail on any policy violation'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Conftest
+      shell: bash
+      run: |
+        wget https://github.com/open-policy-agent/conftest/releases/download/v0.49.0/conftest_0.49.0_Linux_x86_64.tar.gz
+        tar xzf conftest_0.49.0_Linux_x86_64.tar.gz
+        sudo mv conftest /usr/local/bin/
+        conftest --version
+    
+    - name: Install OPA
+      shell: bash
+      run: |
+        wget https://github.com/open-policy-agent/opa/releases/download/v0.59.0/opa_linux_amd64
+        chmod +x opa_linux_amd64
+        sudo mv opa_linux_amd64 /usr/local/bin/opa
+        opa version
+    
+    - name: Run Conftest validation
+      shell: bash
+      run: |
+        echo "Running policy checks against: ${{ inputs.files-to-check }}"
+        echo "Policy directory: ${{ inputs.policy-path }}"
+        
+        if [ "${{ inputs.strict-mode }}" = "true" ]; then
+          echo "Strict mode enabled - will fail on any violation"
+          conftest verify ${{ inputs.policy-path }} || true
+          conftest test ${{ inputs.files-to-check }} --policy ${{ inputs.policy-path }} --fail-on-warn --output json
+        else
+          echo "Non-strict mode - violations will be reported but not cause failure"
+          conftest test ${{ inputs.files-to-check }} --policy ${{ inputs.policy-path }} --output json || true
+        fi
+    
+    - name: Generate policy report
+      if: always()
+      shell: bash
+      run: |
+        echo "## Policy Compliance Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Configuration" >> $GITHUB_STEP_SUMMARY
+        echo "- Policy path: ${{ inputs.policy-path }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Files checked: ${{ inputs.files-to-check }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Strict mode: ${{ inputs.strict-mode }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Policy check completed" >> $GITHUB_STEP_SUMMARY

@@ -30,7 +30,7 @@ spec:
   
   # Agent definitions
   agents:
-    - id: gl-governance-validator
+    - id: gov-governance-validator
       name: "GL Governance Validator Agent"
       type: "governance"
       priority: 1
@@ -39,13 +39,13 @@ spec:
         validation_scope:
           - "engine"
           - "file-organizer-system"
-          - "gl-audit-reports"
+          - "gov-audit-reports"
         strict_mode: true
         enforce_semantic_anchors: true
       dependencies: []
       outputs:
-        - "gl-validation-report.json"
-        - "gl-compliance-summary.md"
+        - "gov-validation-report.json"
+        - "gov-compliance-summary.md"
 
     - id: codeql-monitor
       name: "CodeQL Monitor Agent"

@@ -1,0 +1,36 @@
+# @GL-governed
+# @GL-layer: GL60-80
+# @GL-semantic: research-loop.references
+# @GL-audit-trail: governance/workflows/research-loop/references/registry.yaml
+version: 1
+registry:
+  workflow:
+    - id: REF-RESEARCH-LOOP-0001
+      path: governance/workflows/research-loop/workflow.yaml
+      description: Research loop boot sequence.
+  gates:
+    - id: RULE-EGRESS-EXTERNAL-ISOLATION-0001
+      path: governance/workflows/research-loop/gates.yaml
+      description: External domain isolation gate.
+    - id: RULE-EGRESS-GLOBAL-ISOLATION-0002
+      path: governance/workflows/research-loop/gates.yaml
+      description: Global isolation gate.
+  pipelines:
+    - id: PIPE-REFPACK-IMPORT-0001
+      path: governance/workflows/research-loop/import-pipelines.yaml
+      description: Isolation zone refpack import pipeline.
+  templates:
+    - id: TEMPLATE-INTAKE-0001
+      path: governance/workflows/research-loop/templates/intake.md
+    - id: TEMPLATE-GAP-LIST-0002
+      path: governance/workflows/research-loop/templates/gap-list.md
+    - id: TEMPLATE-FINDINGS-0003
+      path: governance/workflows/research-loop/templates/findings.md
+  schemas:
+    - id: SCHEMA-WORKFLOW-RUN-0001
+      path: governance/workflows/research-loop/schemas/workflow-run.schema.json
+    - id: SCHEMA-SOURCE-EVIDENCE-0002
+      path: governance/workflows/research-loop/schemas/source-evidence.schema.json
+  mappings:
+    - id: MAP-RESEARCH-LOOP-NAMES-0001
+      path: governance/workflows/research-loop/mappings/naming-map.yaml

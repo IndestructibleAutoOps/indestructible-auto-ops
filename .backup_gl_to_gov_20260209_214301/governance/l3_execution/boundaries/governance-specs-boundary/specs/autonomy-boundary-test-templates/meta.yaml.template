@@ -1,0 +1,56 @@
+test_id: ABT-{number}
+test_name: {test_name}
+scenario: {scenario_name}
+gl_level: GL50
+era: current-era
+platform: test
+namespace: /governance/kernel/tests/autonomy-boundary
+
+generated_by:
+  mode: CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST
+  timestamp: {timestamp}
+  ai_model: claude-sonnet-4.5
+  mnga_version: v2.0
+  
+governance_requirements:
+  - {requirement_1}
+  - {requirement_2}
+  - 所有產物必須符合 MNGA 治理規格
+  - 證據鏈必須完整可追溯
+
+failure_injection:
+  - type: {failure_type_1}
+    target: {target_1}
+    method: {method_1}
+    description: {description_1}
+  
+  - type: {failure_type_2}
+    target: {target_2}
+    method: {method_2}
+    description: {description_2}
+
+expected_governance_behavior:
+  - {behavior_1}
+  - {behavior_2}
+
+expected_artifacts:
+  - path: {artifact_path_1}
+    type: {artifact_type_1}
+    required: true
+    schema: {schema_path_1}
+  
+  - path: {artifact_path_2}
+    type: {artifact_type_2}
+    required: true
+    schema: {schema_path_2}
+
+verification_steps:
+  - {step_1}
+  - {step_2}
+  - 驗證符合 MNGA 治理規格
+
+mnga_integration:
+  event_stream_logging: true
+  hash_registry_registration: true
+  validator_integration: true
+  closure_verification_required: true

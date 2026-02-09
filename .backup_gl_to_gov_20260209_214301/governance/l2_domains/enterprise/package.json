@@ -1,0 +1,153 @@
+{
+  "name": "enterprise-governance-framework",
+  "version": "1.0.0",
+  "description": "Enterprise DevSecOps and Supply Chain Governance Framework - Node.js Components",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "build": "tsc",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:fast": "jest --testPathIgnorePatterns=integration --maxWorkers=4",
+    "lint": "eslint src tests --ext .js,.ts",
+    "lint:fix": "eslint src tests --ext .js,.ts --fix",
+    "format": "prettier --write &quot;src/**/*.js&quot; &quot;tests/**/*.js&quot;",
+    "format:check": "prettier --check &quot;src/**/*.js&quot; &quot;tests/**/*.js&quot;",
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix",
+    "docker:build": "docker build -t enterprise-governance:latest .",
+    "docker:run": "docker-compose up",
+    "clean": "rimraf dist coverage"
+  },
+  "keywords": [
+    "devsecops",
+    "governance",
+    "compliance",
+    "audit",
+    "security",
+    "supply-chain",
+    "enterprise"
+  ],
+  "author": "Engineering Governance Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.7.0",
+    "@opentelemetry/sdk-node": "^0.45.1",
+    "@opentelemetry/auto-instrumentations-node": "^0.40.2",
+    "@opentelemetry/exporter-jaeger": "^1.18.1",
+    "@opentelemetry/exporter-prometheus": "^0.45.1",
+    "express": "^4.18.2",
+    "fastify": "^4.24.3",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "yaml": "^2.3.4",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcrypt": "^5.1.1",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "pino": "^8.16.2",
+    "pino-pretty": "^10.2.3",
+    "pg": "^8.11.3",
+    "redis": "^4.6.11",
+    "bull": "^4.11.4",
+    "axios": "^1.6.2",
+    "node-cron": "^3.0.3",
+    "blake3": "^2.1.7",
+    "openpgp": "^5.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcrypt": "^5.0.2",
+    "@types/uuid": "^9.0.7",
+    "@types/pg": "^8.10.9",
+    "@types/jest": "^29.5.11",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "nodemon": "^3.0.2",
+    "rimraf": "^5.0.5",
+    "supertest": "^6.3.3",
+    "@types/supertest": "^6.0.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/tests"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.ts",
+      "**/?(*.)+(spec|test).ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts",
+      "!src/**/*.interface.ts",
+      "!src/**/index.ts"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "moduleNameMapping": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module"
+    },
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-unused-vars": ["error", {
+        "argsIgnorePattern": "^_"
+      }]
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+  "nodemonConfig": {
+    "watch": ["src"],
+    "ext": "ts,js,json",
+    "ignore": ["src/**/*.spec.ts", "tests/**/*.ts"],
+    "exec": "ts-node src/index.ts"
+  }
+}

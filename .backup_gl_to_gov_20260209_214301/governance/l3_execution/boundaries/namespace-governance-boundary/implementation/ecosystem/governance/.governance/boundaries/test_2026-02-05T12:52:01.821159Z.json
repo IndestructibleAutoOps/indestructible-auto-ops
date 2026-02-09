@@ -1,0 +1,87 @@
+{
+  "test_id": "ABT-001",
+  "scenario": "external-api-unavailable",
+  "timestamp": "2026-02-05T12:52:01.821159Z",
+  "failure_injection": [
+    {
+      "type": "network_block",
+      "target": "outbound_https",
+      "method": "iptables",
+      "duration": "60s"
+    },
+    {
+      "type": "dns_block",
+      "target": "api.example.com",
+      "method": "/etc/hosts",
+      "duration": "60s"
+    }
+  ],
+  "autonomy_boundaries": [
+    {
+      "boundary": "max_cache_age_seconds",
+      "value": 3600,
+      "violation_action": "reject_request",
+      "test_injection": "request_with_cache_age_7200"
+    },
+    {
+      "boundary": "allowed_operations",
+      "value": [
+        "GET",
+        "HEAD"
+      ],
+      "violation_action": "reject_request",
+      "test_injection": "attempt_POST_to_cache"
+    },
+    {
+      "boundary": "max_response_time_ms",
+      "value": 500,
+      "violation_action": "timeout_and_escalate",
+      "test_injection": "slow_cache_access"
+    },
+    {
+      "boundary": "cache_read_only",
+      "value": true,
+      "violation_action": "reject_and_log",
+      "test_injection": "attempt_cache_modification"
+    }
+  ],
+  "expected_behavior": {
+    "fallback_to_local_cache": true,
+    "gl_event_generated": true,
+    "no_auto_repair_attempted": true,
+    "all_decisions_traceable": true
+  },
+  "boundary_tests": [
+    {
+      "boundary": "max_cache_age_seconds",
+      "value": 3600,
+      "violation_action": "reject_request",
+      "test_injection": "request_with_cache_age_7200",
+      "status": "PENDING"
+    },
+    {
+      "boundary": "allowed_operations",
+      "value": [
+        "GET",
+        "HEAD"
+      ],
+      "violation_action": "reject_request",
+      "test_injection": "attempt_POST_to_cache",
+      "status": "PENDING"
+    },
+    {
+      "boundary": "max_response_time_ms",
+      "value": 500,
+      "violation_action": "timeout_and_escalate",
+      "test_injection": "slow_cache_access",
+      "status": "PENDING"
+    },
+    {
+      "boundary": "cache_read_only",
+      "value": true,
+      "violation_action": "reject_and_log",
+      "test_injection": "attempt_cache_modification",
+      "status": "PENDING"
+    }
+  ]
+}

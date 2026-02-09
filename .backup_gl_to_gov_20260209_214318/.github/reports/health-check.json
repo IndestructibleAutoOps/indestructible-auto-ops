@@ -1,0 +1,88 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "timestamp": "2026-01-18T15:37:02.080050",
+  "overall_status": "degraded",
+  "checks": [
+    {
+      "name": "git_status",
+      "status": "degraded",
+      "message": "5 uncommitted changes",
+      "details": {
+        "uncommitted_changes": 5
+      },
+      "timestamp": "2026-01-18T15:37:02.079430"
+    },
+    {
+      "name": "workflows",
+      "status": "healthy",
+      "message": "7 workflows configured",
+      "details": {
+        "workflow_count": 7,
+        "workflows": [
+          "supply-chain-security.yml",
+          "scheduled-dashboard-updates.yml",
+          "ai-integration-analyzer.yml",
+          "pr-quality-check.yml",
+          "infrastructure-validation.yml",
+          "policy-gate.yml",
+          "fhs-integration-auto-init.yml"
+        ]
+      },
+      "timestamp": "2026-01-18T15:37:02.079708"
+    },
+    {
+      "name": "dependencies",
+      "status": "healthy",
+      "message": "Dependency files found",
+      "details": {
+        "requirements_txt": false,
+        "package_json": true,
+        "pyproject_toml": false
+      },
+      "timestamp": "2026-01-18T15:37:02.079755"
+    },
+    {
+      "name": "documentation",
+      "status": "healthy",
+      "message": "All documentation present",
+      "details": {
+        "README.md": true,
+        "QUICKSTART.md": true,
+        "PROJECT_STATUS.md": true,
+        "SECURITY.md": true
+      },
+      "timestamp": "2026-01-18T15:37:02.079785"
+    },
+    {
+      "name": "security_config",
+      "status": "healthy",
+      "message": "All security configurations present",
+      "details": {
+        "security_policy": true,
+        "secrets_baseline": true,
+        "pre_commit": true,
+        "gitignore": true
+      },
+      "timestamp": "2026-01-18T15:37:02.079805"
+    },
+    {
+      "name": "tests",
+      "status": "healthy",
+      "message": "3 test files found",
+      "details": {
+        "test_file_count": 3,
+        "pytest_ini_exists": true
+      },
+      "timestamp": "2026-01-18T15:37:02.080022"
+    }
+  ]
+}

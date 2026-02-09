@@ -1,0 +1,27 @@
+[main 05e0da09] Kubernetes Manifests 整合完成 - 新增完整 K8s 編排最佳實踐目錄結構與 GL 治理標記
+ 25 files changed, 1128 insertions(+)
+ create mode 100644 infrastructure/kubernetes/manifests/README.md
+ create mode 100644 infrastructure/kubernetes/manifests/base/configmap.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/hpa.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/ingress.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/kustomization.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/limitrange.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/namespace.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/networkpolicy.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/poddisruptionbudget.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/resourcequota.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/secret.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/base/serviceaccount.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/overlays/dev/kustomization.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/overlays/production/kustomization.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/overlays/staging/kustomization.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/elasticsearch-search-system/deployment.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/elasticsearch-search-system/service.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/engine/deployment.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/engine/service.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/esync-platform/deployment.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/esync-platform/service.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/file-organizer-system/deployment.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/file-organizer-system/service.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/instant/deployment.yaml
+ create mode 100644 infrastructure/kubernetes/manifests/systems/instant/service.yaml

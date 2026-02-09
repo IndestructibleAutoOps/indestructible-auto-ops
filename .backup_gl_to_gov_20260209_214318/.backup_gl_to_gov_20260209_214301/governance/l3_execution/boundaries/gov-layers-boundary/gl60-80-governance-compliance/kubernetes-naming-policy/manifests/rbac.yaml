@@ -1,0 +1,48 @@
+---
+# ServiceAccount for Naming Policy Webhook
+# GL Layer: GL60-80 Governance Compliance
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: naming-policy-webhook
+  namespace: platform
+  labels:
+    app: naming-policy-webhook
+    component: governance
+    gl-layer: gl60-80
+
+---
+# ClusterRole for reading ConfigMaps (if needed for dynamic rules)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: naming-policy-webhook
+  labels:
+    app: naming-policy-webhook
+    component: governance
+    gl-layer: gl60-80
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list", "watch"]
+  # Optional: restrict to specific ConfigMap
+  # resourceNames: ["naming-policy-config"]
+
+---
+# ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: naming-policy-webhook
+  labels:
+    app: naming-policy-webhook
+    component: governance
+    gl-layer: gl60-80
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: naming-policy-webhook
+subjects:
+- kind: ServiceAccount
+  name: naming-policy-webhook
+  namespace: platform

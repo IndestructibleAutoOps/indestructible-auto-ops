@@ -1,0 +1,58 @@
+{
+  "execution_mode": "HIGH_WEIGHT_EXECUTION",
+  "analysis_mode": "HIGH_RESOLUTION_ANALYSIS",
+  "timestamp": "2026-01-26",
+  "scope": {
+    "repository": "machine-native-ops",
+    "focus_domains": [
+      "gl-platform/governance",
+      "gl-platform/governance/naming-governance",
+      "GL Root Governance Layer",
+      "GL Naming Governance"
+    ],
+    "target_artifacts": [
+      "files",
+      "folders",
+      "modules",
+      "variables",
+      "constants",
+      "interfaces",
+      "structures",
+      "paths",
+      "imports",
+      "configurations"
+    ]
+  },
+  "governance_baseline": {
+    "source": "GL Root Semantic Anchor",
+    "version": "1.0.0",
+    "activation_date": "2026-01-21",
+    "status": "ACTIVE",
+    "layers": {
+      "GL00-09": "Strategic Layer",
+      "GL20-29": "Data Science / Data Access Layer",
+      "GL40-49": "Algorithm Layer",
+      "GL50-59": "CUDA / GPU Acceleration Layer",
+      "GL90-99": "Meta-Specification Layer"
+    }
+  },
+  "naming_charter": {
+    "version": "1.0.0",
+    "principles": [
+      "consistency",
+      "readability",
+      "predictability",
+      "semantic_orientation"
+    ],
+    "three_layer_architecture": {
+      "taxonomy_root": "Taxonomy Root Layer",
+      "gl_governance_layers": "GL Governance Layers",
+      "artifact_naming": "Artifact Naming Layer"
+    }
+  },
+  "project_stats": {
+    "total_code_files": 979,
+    "governance_dirs_found": 10,
+    "naming_governance_files": 30
+  }
+}

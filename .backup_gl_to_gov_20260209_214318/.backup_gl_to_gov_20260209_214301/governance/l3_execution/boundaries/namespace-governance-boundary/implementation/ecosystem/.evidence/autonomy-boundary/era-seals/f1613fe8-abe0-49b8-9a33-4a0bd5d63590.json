@@ -1,0 +1,19 @@
+{
+  "seal_id": "2a5c20ea-8c15-4ac7-b61c-fd2c67224b26",
+  "test_id": "f1613fe8-abe0-49b8-9a33-4a0bd5d63590",
+  "timestamp": "2026-02-05T02:18:50.304454+00:00",
+  "era": 1,
+  "sealed_artifacts": {
+    "decision_trace": "sha256:01effd75133b13a2e43888f489886e761ea4a06ac043f553fe7cc2e600e82ec9",
+    "governance_events": "sha256:4cc7fe0888774df3ba257b51aad28cc329ef8aa8b32aba232581269f13001d95",
+    "replayability_report": "sha256:b06324c6752790cd96690b4882d473b5624b1d5fe80c8610c52d85e3651d8ebf"
+  },
+  "merkle_root": "sha256:c5fd4e775b5a1f9e1dab03bff6e9a8660c0f96d79513f59c2ba20d561933711e",
+  "verification": {
+    "all_artifacts_sealed": true,
+    "merkle_tree_valid": true,
+    "era_boundary_verified": true
+  },
+  "canonical_hash": "sha256:b06324c6752790cd96690b4882d473b5624b1d5fe80c8610c52d85e3651d8ebf",
+  "signature": null
+}

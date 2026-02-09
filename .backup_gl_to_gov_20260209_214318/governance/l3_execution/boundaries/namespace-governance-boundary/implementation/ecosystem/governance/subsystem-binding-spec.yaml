@@ -1,0 +1,422 @@
+# subsystem-binding-spec.yaml
+# 子系統綁定規範
+# 版本: 1.0.0
+# 基於: UGS + Meta-Spec + 最佳架構實踐
+
+version: 1.0.0
+spec_type: subsystem-binding-spec
+layer: binding
+
+@GL-semantic: org.mnga.subsystem.binding.spec@1.0.0
+@GL-audit-trail: enabled
+
+# 子系統綁定規範
+subsystem_binding:
+  description: "子系統如何被綁定到 UGS"
+  binding_type: "mandatory"
+  enforcement: "Governance-as-Execution"
+  
+  # 子系統定義
+  subsystems:
+    GL:
+      name: "Governance Layer"
+      type: "core"
+      description: "治理層 - 核心治理規範"
+      binding:
+        type: "inherit"
+        scope: "full"
+        enforcement: BLOCK
+      allowed_variations:
+        - implementation_details
+        - enforcement_policies
+        - audit_configuration
+      forbidden_mutations:
+        - language_layer
+        - format_schema
+        - semantic_definition
+        - governance_boundaries
+      dependencies:
+        - UGS (L00-L99)
+        - Meta-Spec (language, format, semantics, topology)
+      compliance_checks:
+        - "語言層一致性"
+        - "格式層合法性"
+        - "語意層一致性"
+    
+    MNGA:
+      name: "Machine Native Governance Architecture"
+      type: "core"
+      description: "機器原生治理架構"
+      binding:
+        type: "inherit"
+        scope: "full"
+        enforcement: BLOCK
+      allowed_variations:
+        - governance_policies
+        - enforcement_strategies
+        - monitoring_configuration
+      forbidden_mutations:
+        - language_layer
+        - format_schema
+        - governance_boundaries
+        - semantic_definition
+      dependencies:
+        - UGS (L00-L99)
+        - Meta-Spec (language, format, semantics, topology)
+        - GL
+      compliance_checks:
+        - "語言層一致性"
+        - "格式層合法性"
+        - "語意層一致性"
+        - "治理邊界合規性"
+    
+    GQS:
+      name: "Governance Query System"
+      type: "service"
+      description: "治理查詢系統"
+      binding:
+        type: "inherit"
+        scope: "query"
+        enforcement: BLOCK
+      allowed_variations:
+        - query_optimization
+        - caching_strategies
+        - result_formatting
+      forbidden_mutations:
+        - language_layer
+        - schema_structure
+        - semantic_definition
+      dependencies:
+        - UGS (L00-L99)
+        - Meta-Spec (language, format)
+        - GL
+        - MNGA
+      compliance_checks:
+        - "語言層一致性"
+        - "格式層合法性"
+        - "查詢接口合規性"
+    
+    roles:
+      name: "Roles System"
+      type: "component"
+      description: "角色系統"
+      binding:
+        type: "conform"
+        scope: "format"
+        enforcement: BLOCK
+      allowed_variations:
+        - role_definitions
+        - permission_mapping
+        - access_control_policies
+      forbidden_mutations:
+        - format_schema
+        - core_roles_structure
+      dependencies:
+        - UGS (L50-Format)
+        - Meta-Spec (format)
+        - GL
+      compliance_checks:
+        - "格式層合法性"
+        - "角色 schema 合規性"
+    
+    naming:
+      name: "Naming System"
+      type: "component"
+      description: "命名系統"
+      binding:
+        type: "conform"
+        scope: "format"
+        enforcement: BLOCK
+      allowed_variations:
+        - naming_rules
+        - naming_patterns
+        - validation_strategies
+      forbidden_mutations:
+        - schema_structure
+        - core_naming_schema
+      dependencies:
+        - UGS (L50-Format)
+        - Meta-Spec (format)
+        - GL
+      compliance_checks:
+        - "格式層合法性"
+        - "命名 schema 合規性"
+    
+    topology:
+      name: "Topology System"
+      type: "component"
+      description: "拓撲系統"
+      binding:
+        type: "conform"
+        scope: "structure"
+        enforcement: REBUILD
+      allowed_variations:
+        - topology_definitions
+        - relationship_mappings
+        - dependency_rules
+      forbidden_mutations:
+        - core_topology
+        - topology_schema
+      dependencies:
+        - UGS (L04-Topology, L50-Format)
+        - Meta-Spec (topology, format)
+        - GL
+      compliance_checks:
+        - "拓撲層完整性"
+        - "格式層合法性"
+        - "拓撲 schema 合規性"
+    
+    governance:
+      name: "Governance System"
+      type: "component"
+      description: "治理系統"
+      binding:
+        type: "conform"
+        scope: "full"
+        enforcement: BLOCK
+      allowed_variations:
+        - enforcement_policies
+        - audit_trail_config
+        - notification_settings
+      forbidden_mutations:
+        - language_layer
+        - format_schema
+        - semantic_definition
+        - governance_boundaries
+      dependencies:
+        - UGS (L00-L99)
+        - Meta-Spec (language, format, semantics, topology)
+        - GL
+        - MNGA
+      compliance_checks:
+        - "語言層一致性"
+        - "格式層合法性"
+        - "語意層一致性"
+        - "治理邊界合規性"
+
+  # 變異點定義
+  variation_points:
+    VP-001:
+      name: "implementation_details"
+      description: "實現細節變異點"
+      scope:
+        - ecosystem/adapter
+        - GL
+        - MNGA
+      allowed:
+        - performance_optimization
+        - custom_validators
+        - caching_strategies
+      forbidden:
+        - language_extension
+        - schema_modification
+        - semantic_override
+      approval_required: false
+      auto_fix_enabled: false
+    
+    VP-002:
+      name: "business_logic"
+      description: "業務邏輯變異點"
+      scope:
+        - ecosystem/contracts
+      allowed:
+        - business_rules
+        - validation_logic
+        - transaction_handling
+      forbidden:
+        - language_extension
+        - schema_modification
+      approval_required: false
+      auto_fix_enabled: false
+    
+    VP-003:
+      name: "governance_enforcement"
+      description: "治理強制執行變異點"
+      scope:
+        - ecosystem/governance
+      allowed:
+        - enforcement_policies
+        - audit_trail_config
+        - notification_settings
+      forbidden:
+        - language_layer
+        - format_schema
+        - semantic_definition
+        - governance_boundaries
+      approval_required: true
+      auto_fix_enabled: true
+
+  # 核心層保護
+  core_layer_protection:
+    protected_layers:
+      - L00-Language
+      - L02-Semantics
+      - L03-Index
+      - L04-Topology
+      - L50-Format
+    
+    protected_schemas:
+      - ecosystem/governance/ugs/l50-format/layer.schema.json
+      - ecosystem/governance/ugs/l50-format/governance.schema.json
+      - ecosystem/governance/ugs/l50-format/naming.schema.json
+    
+    protected_semantics:
+      - ecosystem/governance/ugs/l02-semantics/layer-semantics.yaml
+    
+    protected_directories:
+      - ecosystem/governance/ugs/l00-language
+      - ecosystem/governance/ugs/l02-semantics
+      - ecosystem/governance/ugs/l03-index
+      - ecosystem/governance/ugs/l04-topology
+      - ecosystem/governance/ugs/l50-format
+      - ecosystem/governance/meta-spec/language
+      - ecosystem/governance/meta-spec/format
+      - ecosystem/governance/meta-spec/semantics
+      - ecosystem/governance/meta-spec/topology
+    
+    protection_rules:
+      - id: PR-001
+        title: "核心層只讀"
+        description: "核心層文件只讀，不得修改"
+        enforcement: BLOCK
+        severity: CRITICAL
+        scope: protected_directories
+        auto_fix: false
+      
+      - id: PR-002
+        title: "Schema 不可修改"
+        description: "核心 schema 不可修改"
+        enforcement: BLOCK
+        severity: CRITICAL
+        scope: protected_schemas
+        auto_fix: false
+      
+      - id: PR-003
+        title: "語意不可變更"
+        description: "語意定義不可變更"
+        enforcement: BLOCK
+        severity: CRITICAL
+        scope: protected_semantics
+        auto_fix: false
+
+  # 合規驗證
+  compliance_validation:
+    required_checks:
+      - "語言層一致性"
+      - "格式層合法性"
+      - "語意層一致性"
+      - "索引層完整性"
+      - "拓撲層完整性"
+      - "不可變核心合規性"
+      - "子系統綁定合規性"
+      - "變異點合規性"
+    
+    validation_frequency: "on_change"
+    auto_fix_enabled: true
+    evidence_required: true
+    
+    validation_pipeline:
+      - step: pre_validation
+        checks:
+          - syntax_validation
+          - structure_validation
+        on_failure: BLOCK
+      
+      - step: semantic_validation
+        checks:
+          - semantic_validation
+          - cross_layer_validation
+        on_failure: BLOCK
+      
+      - step: compliance_validation
+        checks:
+          - compliance_validation
+          - immutable_core_check
+          - subsystem_binding_check
+        on_failure: BLOCK
+
+  # 綁定違規處理
+  violation_handling:
+    BINDING_VIOLATION:
+      description: "子系統綁定違規"
+      severity: CRITICAL
+      action: BLOCK
+      message: "子系統違反綁定規範"
+      auto_fix: false
+      requires_approval: true
+    
+    MUTATION_VIOLATION:
+      description: "禁止的變異"
+      severity: CRITICAL
+      action: BLOCK
+      message: "子系統嘗試修改禁止的變異點"
+      auto_fix: false
+      requires_approval: true
+    
+    CORE_LAYER_VIOLATION:
+      description: "核心層違規"
+      severity: CRITICAL
+      action: BLOCK
+      message: "子系統嘗試修改核心層"
+      auto_fix: false
+      requires_approval: true
+
+  # 依賴管理
+  dependency_management:
+    enforced: true
+    validation: strict
+    
+    dependency_graph:
+      UGS:
+        dependents:
+          - GL
+          - MNGA
+          - GQS
+          - roles
+          - naming
+          - topology
+          - governance
+      
+      Meta-Spec:
+        dependents:
+          - GL
+          - MNGA
+          - GQS
+          - roles
+          - naming
+          - topology
+          - governance
+      
+      GL:
+        dependents:
+          - MNGA
+          - GQS
+          - roles
+          - naming
+          - topology
+          - governance
+      
+      MNGA:
+        dependents:
+          - GQS
+          - governance
+
+# 元數據
+metadata:
+  created_at: "2026-02-03T23:49:00Z"
+  updated_at: "2026-02-03T23:49:00Z"
+  author: "MNGA Governance Team"
+  status: "active"
+  
+  references:
+    - "TOGAF Standard, 10th Edition"
+    - "Federal Enterprise Architecture Framework (FEAF)"
+    - "ISO/IEC/IEEE 42010:2011"
+    - "KPMG Modern EA Governance Framework"
+    - "ExecLayer Policy-Enforced Execution Layer"
+  
+  version_history:
+    - version: "1.0.0"
+      date: "2026-02-03T23:49:00Z"
+      author: "MNGA Governance Team"
+      description: "Initial version - Subsystem binding specification"

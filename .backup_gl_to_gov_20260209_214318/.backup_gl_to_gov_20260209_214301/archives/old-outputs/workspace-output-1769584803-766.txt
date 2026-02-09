@@ -1,0 +1,16 @@
+node:internal/modules/package_json_reader:93
+        throw error;
+        ^
+
+SyntaxError: Error parsing /workspace/machine-native-ops/engine/package.json: Unexpected token '#', "# @GL-gove"... is not valid JSON
+    at parse (<anonymous>)
+    at read (node:internal/modules/package_json_reader:80:16)
+    at readPackage (node:internal/modules/package_json_reader:141:10)
+    at readPackageScope (node:internal/modules/package_json_reader:164:19)
+    at shouldUseESMLoader (node:internal/modules/run_main:79:15)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:157:24)
+    at node:internal/main/run_main_module:28:49 {
+  path: '/workspace/machine-native-ops/engine/package.json'
+}
+
+Node.js v20.19.6

@@ -1,0 +1,75 @@
+indestructibleautoops:
+  mode: MACHINE_READABLE_ONLY
+  protocol: EXECUTION_PROTOCOL_v1
+  problem_identification:
+    scope: gqs_materialization_protocol
+    baseline: "12-step (with 3.5/5.5/7.5/8.5)"
+    remaining_vulnerabilities:
+      - id: VULN-05
+        title: "Secrets/Keys lifecycle not governed end-to-end"
+        impact:
+          - "credential leakage"
+          - "unsigned runtime access"
+          - "broken non-repudiation"
+      - id: VULN-06
+        title: "Identity/RBAC/Policy enforcement gaps at runtime (admission + authorization)"
+        impact:
+          - "policy bypass"
+          - "privilege escalation"
+          - "cross-namespace lateral movement"
+      - id: VULN-07
+        title: "Data lineage + schema evolution not controlled"
+        impact:
+          - "silent data corruption"
+          - "training-serving skew via schema drift"
+          - "inconsistent replay"
+      - id: VULN-08
+        title: "Time/Clock integrity not enforced (NTP/chrony + signed timestamps)"
+        impact:
+          - "attestation timestamp invalidation"
+          - "token/JWT failure"
+          - "audit ordering ambiguity"
+      - id: VULN-09
+        title: "Runtime drift detection missing (spec vs cluster) + reconciliation policy"
+        impact:
+          - "configuration drift"
+          - "untracked hotfixes"
+          - "compliance erosion"
+      - id: VULN-10
+        title: "Policy conflict resolution + precedence model missing"
+        impact:
+          - "non-deterministic enforcement"
+          - "unexpected allow/deny"
+      - id: VULN-11
+        title: "Observability SLO correctness not contractually gated (burn-rate, error budget)"
+        impact:
+          - "false confidence in SLA"
+          - "no automated rollback based on SLO"
+      - id: VULN-12
+        title: "Supply-chain integrity incomplete for non-code artifacts (base images, models, dashboards)"
+        impact:
+          - "poisoned base image"
+          - "tampered model artifacts"
+          - "unverifiable dashboards/rules"
+      - id: VULN-13
+        title: "Chaos/failure injection not included in acceptance criteria"
+        impact:
+          - "recovery playbooks untested"
+          - "unknown failure modes"
+      - id: VULN-14
+        title: "Boundary protocol verification absent (ingress/egress/mTLS/contracts)"
+        impact:
+          - "open system boundaries"
+          - "data exfiltration"
+          - "MITM / downgrade risks"
+      - id: VULN-15
+        title: "Human override & break-glass governance not constrained + audited"
+        impact:
+          - "unsafe emergency changes"
+          - "untracked overrides"
+      - id: VULN-16
+        title: "Multi-tenancy isolation not specified (quotas, network policies, node isolation)"
+        impact:
+          - "noisy neighbor"
+          - "tenant data leakage"
+          - "resource starvation"

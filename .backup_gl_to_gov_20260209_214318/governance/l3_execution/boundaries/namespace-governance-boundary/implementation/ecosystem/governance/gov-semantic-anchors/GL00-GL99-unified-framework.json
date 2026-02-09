@@ -1,0 +1,414 @@
+{
+  "GL00-GL09": {
+    "category": "Core Language Types",
+    "description": "Fundamental language specifications for syntax, parsing, and tokenization",
+    "anchors": {
+      "GL00": {
+        "name": "YAML Language Specification",
+        "definition": "Formal specification of YAML syntax including indentation rules, key-value pairs, anchors, aliases, and data types",
+        "scope": "All YAML files in the repository including configurations, manifests, and governance contracts",
+        "semantic_boundaries": "Strict YAML 1.2 compliance with custom anchor/alias extensions",
+        "sub_semantics": [
+          "YAML-001: Indentation Rules",
+          "YAML-002: Anchor/Alias Syntax",
+          "YAML-003: Data Type Coercion"
+        ],
+        "applicable_targets": [
+          "contract",
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "yaml-indentation-check",
+          "yaml-anchor-validation",
+          "yaml-type-safety"
+        ]
+      },
+      "GL01": {
+        "name": "JSON Language Specification",
+        "definition": "Formal specification of JSON syntax including key-value pairs, arrays, objects, and data type constraints",
+        "scope": "All JSON files including schemas, metadata, and evidence artifacts",
+        "semantic_boundaries": "RFC 8259 compliance with additional schema validation",
+        "sub_semantics": [
+          "JSON-001: Key Naming Conventions",
+          "JSON-002: Array Ordering",
+          "JSON-003: Null Handling"
+        ],
+        "applicable_targets": [
+          "contract",
+          "evidence",
+          "platform"
+        ],
+        "validation_rules": [
+          "json-syntax-check",
+          "json-schema-validation",
+          "json-key-naming"
+        ]
+      },
+      "GL02": {
+        "name": "Markdown Language Specification",
+        "definition": "Formal specification of Markdown syntax including headings, lists, code blocks, and inline formatting",
+        "scope": "All documentation files including README, guides, and technical specifications",
+        "semantic_boundaries": "CommonMark specification with GitHub Flavored Markdown extensions",
+        "sub_semantics": [
+          "MD-001: Heading Hierarchy",
+          "MD-002: Code Block Syntax",
+          "MD-003: Link Validation"
+        ],
+        "applicable_targets": [
+          "governance",
+          "contract"
+        ],
+        "validation_rules": [
+          "markdown-lint",
+          "heading-level-check",
+          "link-reference-check"
+        ]
+      },
+      "GL03": {
+        "name": "Python Language Specification",
+        "definition": "Formal specification of Python syntax including indentation, modules, classes, and type hints",
+        "scope": "All Python source files in the ecosystem",
+        "semantic_boundaries": "Python 3.11+ compliance with PEP 8 style guidelines",
+        "sub_semantics": [
+          "PY-001: Module Structure",
+          "PY-002: Type Hinting",
+          "PY-003: Docstring Format"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter",
+          "platform"
+        ],
+        "validation_rules": [
+          "pylint",
+          "mypy",
+          "black-formatting"
+        ]
+      },
+      "GL04": {
+        "name": "Shell Script Specification",
+        "definition": "Formal specification of bash/shell script syntax including variables, functions, and control structures",
+        "scope": "All shell scripts for automation and deployment",
+        "semantic_boundaries": "POSIX shell compliance with bash extensions",
+        "sub_semantics": [
+          "SH-001: Shebang Declaration",
+          "SH-002: Variable Scoping",
+          "SH-003: Error Handling"
+        ],
+        "applicable_targets": [
+          "platform",
+          "adapter"
+        ],
+        "validation_rules": [
+          "shellcheck",
+          "bash-syntax-check"
+        ]
+      },
+      "GL05": {
+        "name": "TypeScript Specification",
+        "definition": "Formal specification of TypeScript syntax including types, interfaces, and generics",
+        "scope": "All TypeScript source files for web interfaces and tooling",
+        "semantic_boundaries": "TypeScript 5.0+ compliance with strict type checking",
+        "sub_semantics": [
+          "TS-001: Interface Definitions",
+          "TS-002: Generic Constraints",
+          "TS-003: Type Guards"
+        ],
+        "applicable_targets": [
+          "platform",
+          "adapter"
+        ],
+        "validation_rules": [
+          "tsc",
+          "eslint-typescript"
+        ]
+      },
+      "GL06": {
+        "name": "DSL-Core Specification",
+        "definition": "Formal specification of the MNGA Governance DSL syntax and semantics",
+        "scope": "All governance rule definitions and policy specifications",
+        "semantic_boundaries": "Custom DSL with YAML-based syntax and semantic validation",
+        "sub_semantics": [
+          "DSL-001: Rule Syntax",
+          "DSL-002: Policy Composition",
+          "DSL-003: Constraint Expressions"
+        ],
+        "applicable_targets": [
+          "governance",
+          "contract"
+        ],
+        "validation_rules": [
+          "dsl-parser",
+          "dsl-semantic-check",
+          "dsl-rule-validation"
+        ]
+      },
+      "GL07": {
+        "name": "Regex Specification",
+        "definition": "Formal specification of regular expression syntax and patterns",
+        "scope": "All regex patterns used in validation and parsing",
+        "semantic_boundaries": "Python re module compliance with Unicode support",
+        "sub_semantics": [
+          "RE-001: Pattern Syntax",
+          "RE-002: Capture Groups",
+          "RE-003: Lookahead/Lookbehind"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "regex-syntax-check",
+          "regex-performance-check"
+        ]
+      },
+      "GL08": {
+        "name": "GraphQL Specification",
+        "definition": "Formal specification of GraphQL query language syntax and schema definitions",
+        "scope": "All GraphQL schemas and queries for API interfaces",
+        "semantic_boundaries": "GraphQL June 2018 specification",
+        "sub_semantics": [
+          "GQL-001: Schema Definition",
+          "GQL-002: Query Syntax",
+          "GQL-003: Mutation Rules"
+        ],
+        "applicable_targets": [
+          "platform",
+          "adapter"
+        ],
+        "validation_rules": [
+          "graphql-schema-validation",
+          "graphql-query-validation"
+        ]
+      },
+      "GL09": {
+        "name": "SQL Specification",
+        "definition": "Formal specification of SQL query language syntax and data manipulation",
+        "scope": "All SQL queries for data retrieval and manipulation",
+        "semantic_boundaries": "SQL:2016 standard with dialect-specific extensions",
+        "sub_semantics": [
+          "SQL-001: SELECT Syntax",
+          "SQL-002: JOIN Operations",
+          "SQL-003: Transaction Rules"
+        ],
+        "applicable_targets": [
+          "platform",
+          "adapter"
+        ],
+        "validation_rules": [
+          "sql-syntax-check",
+          "sql-injection-prevention"
+        ]
+      }
+    }
+  },
+  "GL10-GL19": {
+    "category": "Language Structure",
+    "description": "Abstract syntax tree, tokenization, and grammatical structures",
+    "anchors": {
+      "GL10": {
+        "name": "AST Model Specification",
+        "definition": "Formal definition of Abstract Syntax Tree structures for all supported languages",
+        "scope": "All parser implementations and AST transformations",
+        "semantic_boundaries": "Language-agnostic AST model with language-specific extensions",
+        "sub_semantics": [
+          "AST-001: Node Types",
+          "AST-002: Edge Relationships",
+          "AST-003: Traversal Rules"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "ast-consistency-check",
+          "ast-type-validation"
+        ]
+      },
+      "GL11": {
+        "name": "Token Model Specification",
+        "definition": "Formal specification of token types, tokenization rules, and token streams",
+        "scope": "All lexer implementations and token processing pipelines",
+        "semantic_boundaries": "Unified token model with language-specific token definitions",
+        "sub_semantics": [
+          "TOK-001: Token Types",
+          "TOK-002: Token Attributes",
+          "TOK-003: Token Positioning"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "token-stream-validation",
+          "token-type-check"
+        ]
+      },
+      "GL12": {
+        "name": "Grammar Rules Specification",
+        "definition": "Formal grammar definitions for all supported languages using BNF/EBNF notation",
+        "scope": "All language grammars and parser generators",
+        "semantic_boundaries": "Context-free grammars with semantic action specifications",
+        "sub_semantics": [
+          "GRM-001: Production Rules",
+          "GRM-002: Precedence Rules",
+          "GRM-003: Associativity"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "grammar-ambiguity-check",
+          "grammar-completeness-check"
+        ]
+      },
+      "GL13": {
+        "name": "Lexical Rules Specification",
+        "definition": "Formal specification of lexical analysis rules including character classes and patterns",
+        "scope": "All lexer implementations and lexical analyzers",
+        "semantic_boundaries": "Regular expression-based lexical rules with Unicode support",
+        "sub_semantics": [
+          "LEX-001: Character Classes",
+          "LEX-002: Token Patterns",
+          "LEX-003: Whitespace Handling"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "lexical-rule-validation",
+          "character-class-check"
+        ]
+      },
+      "GL14": {
+        "name": "Semantic Rules Specification",
+        "definition": "Formal specification of language semantics including type systems and evaluation rules",
+        "scope": "All semantic analyzers and type checkers",
+        "semantic_boundaries": "Static and dynamic semantic rules with formal verification",
+        "sub_semantics": [
+          "SEM-001: Type Rules",
+          "SEM-002: Scope Rules",
+          "SEM-003: Evaluation Rules"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "semantic-rule-validation",
+          "type-safety-check"
+        ]
+      },
+      "GL15": {
+        "name": "Language Versioning Specification",
+        "definition": "Formal specification of language version management and compatibility rules",
+        "scope": "All language version declarations and migration strategies",
+        "semantic_boundaries": "Semantic versioning with backward compatibility guarantees",
+        "sub_semantics": [
+          "VER-001: Version Syntax",
+          "VER-002: Compatibility Matrix",
+          "VER-003: Migration Rules"
+        ],
+        "applicable_targets": [
+          "governance",
+          "contract"
+        ],
+        "validation_rules": [
+          "version-syntax-check",
+          "compatibility-validation"
+        ]
+      },
+      "GL16": {
+        "name": "Language Constraints Specification",
+        "definition": "Formal specification of language restrictions and prohibited constructs",
+        "scope": "All language constraint definitions and enforcement mechanisms",
+        "semantic_boundaries": "Whitelist-based allowed constructs with explicit prohibitions",
+        "sub_semantics": [
+          "CON-001: Prohibited Syntax",
+          "CON-002: Restricted APIs",
+          "CON-003: Security Constraints"
+        ],
+        "applicable_targets": [
+          "governance",
+          "contract"
+        ],
+        "validation_rules": [
+          "constraint-validation",
+          "prohibited-construct-check"
+        ]
+      },
+      "GL17": {
+        "name": "Language Extensions Specification",
+        "definition": "Formal specification of language extensions and custom syntax",
+        "scope": "All language extension definitions and implementations",
+        "semantic_boundaries": "Well-defined extension points with backward compatibility",
+        "sub_semantics": [
+          "EXT-001: Extension Syntax",
+          "EXT-002: Extension Loading",
+          "EXT-003: Extension Validation"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "extension-validation",
+          "extension-compatibility-check"
+        ]
+      },
+      "GL18": {
+        "name": "Language Safety Specification",
+        "definition": "Formal specification of language safety properties and guarantees",
+        "scope": "All language safety mechanisms and runtime protections",
+        "semantic_boundaries": "Memory safety, type safety, and execution safety guarantees",
+        "sub_semantics": [
+          "SAF-001: Memory Safety",
+          "SAF-002: Type Safety",
+          "SAF-003: Execution Safety"
+        ],
+        "applicable_targets": [
+          "governance",
+          "platform"
+        ],
+        "validation_rules": [
+          "safety-validation",
+          "security-check"
+        ]
+      },
+      "GL19": {
+        "name": "Language Compatibility Specification",
+        "definition": "Formal specification of cross-language compatibility and interoperability",
+        "scope": "All language boundary definitions and interoperability layers",
+        "semantic_boundaries": "Well-defined foreign function interfaces and data marshaling",
+        "sub_semantics": [
+          "COMP-001: Type Mapping",
+          "COMP-002: Data Marshaling",
+          "COMP-003: Error Propagation"
+        ],
+        "applicable_targets": [
+          "governance",
+          "adapter"
+        ],
+        "validation_rules": [
+          "compatibility-check",
+          "interoperability-validation"
+        ]
+      }
+    }
+  },
+  "GL_UNIFIED_FRAMEWORK": {
+    "version": "1.0.0",
+    "created": "2025-01-18T00:00:00Z",
+    "status": "ACTIVE",
+    "description": "MNGA Governance Layer Unified Architecture Governance Framework - 100 Semantic Anchors",
+    "governance_baseline": {
+      "total_anchors": 100,
+      "language_layer": "L00-L49",
+      "format_layer": "L50-L99",
+      "semantic_layer": "S00-S99"
+    }
+  }
+}

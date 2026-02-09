@@ -1,0 +1,50 @@
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: ci-cd-workflow-governance-validation
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+name: GL Governance Validation
+
+on:
+  push:
+    branches:
+      - main
+      - 'gl/**'
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - 'esync-platform/**'
+      - '.github/**'
+      - 'gl-gate/**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      validation_mode:
+        description: 'Validation mode'
+        required: true
+        default: 'strict'
+        type: choice
+        options:
+          - strict
+          - standard
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  gl-engine-validation:
+    name: GL Engine Module Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Engine GL Markers
+        run: |
+          cd engine && npm run validate-gl
+        continue-on-error: false
+
+  gl-file-organizer-validation:
+    name: GL File Organizer Validation
+    runs-on: ubuntu-latest

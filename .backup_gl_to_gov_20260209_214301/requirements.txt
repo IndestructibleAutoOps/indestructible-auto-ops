@@ -1,0 +1,13 @@
+# Pure Python Standard Library Only
+# No external dependencies
+
+# Reasoning system dependencies (added for MNGA dual-path)
+openai>=1.0.0,<2.0.0
+anthropic>=0.7.0,<1.0.0
+chromadb>=0.4.0,<1.0.0
+neo4j>=5.0.0,<6.0.0
+tree-sitter>=0.20.0,<1.0.0
+networkx>=3.0,<4.0.0
+matplotlib>=3.7.0,<4.0.0
+seaborn>=0.12.0,<1.0.0
+

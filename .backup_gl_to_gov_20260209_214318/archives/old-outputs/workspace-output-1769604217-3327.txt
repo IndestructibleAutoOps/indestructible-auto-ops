@@ -1,0 +1,50 @@
+// @GL-governed
+// GL-ROOT Global Governance Audit & Platform Build
+// Unified Charter v2.0.0 - GL Core Module
+
+const fs = require('fs').promises;
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+const winston = require('winston');
+const yaml = require('js-yaml');
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.File({ filename: '../../storage/gov-events-stream/gl-core.log' }),
+    new winston.transports.Console()
+  ]
+});
+
+class GLCore {
+  constructor() {
+    this.semanticAnchor = null;
+    this.governanceRules = new Map();
+    this.eventStream = [];
+    this.loadSemanticAnchor();
+    this.loadGovernanceRules();
+  }
+
+  async loadSemanticAnchor() {
+    try {
+      const anchorPath = path.join(__dirname, '../../../engine/governance/GL_SEMANTIC_ANCHOR.json');
+      const content = await fs.readFile(anchorPath, 'utf8');
+      this.semanticAnchor = JSON.parse(content);
+      logger.info('Semantic anchor loaded', { version: this.semanticAnchor.version });
+      this.logEvent('semantic_anchor_loaded', { path: anchorPath });
+    } catch (error) {
+      logger.warn('Semantic anchor not found, using defaults', { error: error.message });
+      this.semanticAnchor = {
+        version: '2.0.0',
+        root: 'GL-ROOT',
+        layers: ['GL00-10', 'GL10-30', 'GL30-60', 'GL60-90', 'GL90-99'],
+        semantics: {}
+      };
+      this.logEvent('semantic_anchor_defaults_used', {});
+    }
+  }
+
+  async loadGovernanceRules() {
+    try {
+      const rulesPath = path.join(__dirname, 'rules.yaml');

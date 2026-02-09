@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "generated_at": "2025-01-17T00:00:00Z",
+    "governance_version": "NG000-999 v3.0",
+    "enforcer_version": "MNGA v2.0.0",
+    "total_violations": 242,
+    "evidence_chain": "GL70-EVIDENCE-001"
+  },
+  
+  "violations_by_ng_code": {
+    "NG10100": {
+      "description": "Code Package Namespace Violation",
+      "era": "Era-1",
+      "severity": "MEDIUM",
+      "count": 237,
+      "rule": "Directories must use kebab-case, not underscores",
+      "remediation": "Rename directories from snake_case to kebab-case",
+      "sample_violations": [
+        {
+          "path": "summarized_conversations",
+          "suggested": "summarized-conversations",
+          "line": null,
+          "file": null
+        },
+        {
+          "path": "tests/gl/autonomy-boundary/external-api-unavailable",
+          "suggested": "tests/gl/autonomy-boundary/external-api-unavailable",
+          "line": null,
+          "file": null
+        },
+        {
+          "path": "ecosystem/tests/semantic-defense/test-complement-missing",
+          "suggested": "ecosystem/tests/semantic-defense/test-complement-missing",
+          "line": null,
+          "file": null
+        }
+      ]
+    }
+  },
+  
+  "era_analysis": {
+    "Era-1": {
+      "violations": 242,
+      "compliance_score": 89.7,
+      "issues": [
+        "Directory naming violations (NG10100)",
+        "Inconsistent kebab-case application"
+      ],
+      "blocking_issues": 0
+    },
+    "Era-2": {
+      "violations": 0,
+      "compliance_score": 100.0,
+      "issues": [],
+      "blocking_issues": 0
+    },
+    "Era-3": {
+      "violations": 0,
+      "compliance_score": 100.0,
+      "issues": [],
+      "blocking_issues": 0
+    }
+  },
+  
+  "remediation_priority": {
+    "P0": [],
+    "P1": [],
+    "P2": ["NG10100 - Directory naming violations"],
+    "P3": []
+  },
+  
+  "cross_era_mapping": {
+    "NG10100_to_NG30100": {
+      "mapping": "Code Package → Microservice Boundary",
+      "action_required": "Fix NG10100 before Era-2 migration",
+      "dependency": "Era-1 compliance required for Era-2 deployment"
+    }
+  }
+}

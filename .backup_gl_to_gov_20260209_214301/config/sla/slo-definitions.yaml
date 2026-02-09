@@ -1,0 +1,46 @@
+# @GL-governed
+# @GL-layer: GL90-95 (Optimization Layer)
+# @GL-semantic: service-level-objectives
+# @GL-charter-version: 5.0.0
+# @GL-audit-trail: Created for GL Platform v5.0 optimization
+
+apiVersion: slo.machinenativeops.io/v1
+kind: ServiceLevelObjectives
+metadata:
+  name: gl-platform-slos
+  namespace: gl-platform
+  labels:
+    app: gl-platform
+    component: sla
+    tier: optimization
+  annotations:
+    governance.machinenativeops.io/charter: "GL Unified Architecture Governance Framework v5.0"
+    governance.machinenativeops.io/layer: "Optimization"
+    governance.machinenativeops.io/version: "5.0.0"
+
+spec:
+  availability:
+    - name: platform-availability
+      target: 99.9
+      window: 30d
+      
+  latency:
+    - name: policy-validation-latency
+      target: 200ms
+      window: 7d
+      percentile: 95
+      
+  accuracy:
+    - name: naming-compliance-rate
+      target: 100
+      window: 24h
+      
+  throughput:
+    - name: policy-validations-per-minute
+      target: 1000
+      window: 5m
+      
+  compliance:
+    - name: cis-benchmark-score
+      target: 100
+      window: 24h

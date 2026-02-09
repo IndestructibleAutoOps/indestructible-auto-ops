@@ -1,0 +1,11 @@
+[main 6d67fc59] ESync Platform - 企業級多來源同步平台完整實作
+ 9 files changed, 449 insertions(+)
+ create mode 100644 esync-platform/.governance/event-stream.jsonl
+ create mode 100644 esync-platform/README.md
+ create mode 100644 esync-platform/cmd/syncd/main.go
+ create mode 100644 esync-platform/go.mod
+ create mode 100644 esync-platform/governance/GL_SEMANTIC_ANCHOR.json
+ create mode 100644 esync-platform/internal/connectors/interface.go
+ create mode 100644 esync-platform/internal/monitoring/metrics.go
+ create mode 100644 esync-platform/internal/registry/service.go
+ create mode 100644 esync-platform/pipelines/example-pipeline.yaml

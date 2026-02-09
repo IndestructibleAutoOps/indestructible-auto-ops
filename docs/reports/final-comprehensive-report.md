@@ -11,8 +11,8 @@ This comprehensive report documents the complete analysis and alignment of the M
 1. [Project Overview](#project-overview)
 2. [Phase 1: Semantic Model Creation](#phase-1-semantic-model-creation)
 3. [Phase 2: Comprehensive File Scanning](#phase-2-comprehensive-file-scanning)
-4. [Phase 3: GL Root Semantic Anchor Reconstruction](#phase-3-gl-root-semantic-anchor-reconstruction)
-5. [Phase 4: GL Markers Addition](#phase-4-gl-markers-addition)
+4. [Phase 3: GL Root Semantic Anchor Reconstruction](#phase-3-gov-root-semantic-anchor-reconstruction)
+5. [Phase 4: GL Markers Addition](#phase-4-gov-markers-addition)
 6. [Phase 5: Final Reporting](#phase-5-final-reporting)
 7. [Key Findings](#key-findings)
 8. [Recommendations](#recommendations)
@@ -132,8 +132,8 @@ Establish a unified governance baseline across the MachineNativeOps repository b
 
 #### GL Root Structure Analysis
 Located GL Root Semantic Anchor at:
-- Primary: `engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml`
-- Reference: `gl-platform/gl90-99-meta-specification-layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml`
+- Primary: `engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml`
+- Reference: `gov-platform/gl90-99-meta-specification-layer/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml`
 
 #### Layer Hierarchy Validation
 - **GL00-09**: Strategic Layer
@@ -350,11 +350,11 @@ Established baseline includes:
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: python-module
-# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# @GL-audit-trail: ../../engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gov-platform/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-platform/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 def semantic_engine():
     """Main semantic processing engine"""
@@ -366,11 +366,11 @@ def semantic_engine():
 // @GL-governed
 // @GL-layer: GL20-29
 // @GL-semantic: typescript-module
-// @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+// @GL-audit-trail: ../../engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 //
 // GL Unified Architecture Governance Framework Activated
-// GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-// GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+// GL Root Semantic Anchor: gov-platform/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+// GL Unified Naming Charter: gov-platform/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 export class MetaCognitiveEngine {
     constructor() {}
@@ -382,11 +382,11 @@ export class MetaCognitiveEngine {
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: config-artifact
-# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# @GL-audit-trail: ../../engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gov-platform/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-platform/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 apiVersion: governance.machinenativeops.io/v1
 kind: GovernanceConfig
@@ -410,11 +410,11 @@ metadata:
    - Purpose: Core governance definitions and requirements
 
 2. GL-ROOT-SEMANTIC-ANCHOR.yaml
-   - Location: `engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml`
+   - Location: `engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml`
    - Purpose: Root semantic anchor for all governance layers
 
 3. GL-UNIFIED-NAMING-CHARTER.yaml
-   - Location: `engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml`
+   - Location: `engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml`
    - Purpose: Naming conventions and standards
 
 ---

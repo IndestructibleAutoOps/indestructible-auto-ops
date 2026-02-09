@@ -26,7 +26,7 @@
       "suggested_path": "coordination/data-synchronization/src/connectors/base_connector.py"
     },
     {
-      "path": "registry/platforms/gl-platforms.placement-rules.yaml",
+      "path": "registry/platforms/gov-platforms.placement-rules.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -39,7 +39,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "registry/platforms/gl-platforms.placement-rules.yaml"
+      "suggested_path": "registry/platforms/gov-platforms.placement-rules.yaml"
     },
     {
       "path": "governance/governance-monitor-config.yaml",
@@ -74,7 +74,7 @@
       "suggested_path": "coordination/data-synchronization/configs/sync-config.yaml"
     },
     {
-      "path": "contracts/naming-governance/gl-naming-ontology.yaml",
+      "path": "contracts/naming-governance/gov-naming-ontology.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -87,7 +87,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/naming-governance/gl-naming-ontology.yaml"
+      "suggested_path": "contracts/naming-governance/gov-naming-ontology.yaml"
     },
     {
       "path": "platform-templates/on-premise-template/configs/platform-config.yaml",
@@ -122,7 +122,7 @@
       "suggested_path": "enforcers/test_complete_system.py"
     },
     {
-      "path": "tools/gl-markers/add-gl-markers-yaml.py",
+      "path": "tools/gov-markers/add-gov-markers-yaml.py",
       "file_type": "python",
       "has_gl_markers": true,
       "current_gl_layer": "{}",
@@ -135,10 +135,10 @@
         "GL \u5c64\u7d1a\u4e0d\u6b63\u78ba\uff1a{} vs GL10-29"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/gl-markers/add-gl-markers-yaml.py"
+      "suggested_path": "tools/gov-markers/add-gov-markers-yaml.py"
     },
     {
-      "path": "tools/platform/start-gl-platform.sh",
+      "path": "tools/platform/start-gov-platform.sh",
       "file_type": "shell",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -151,7 +151,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/platform/start-gl-platform.sh"
+      "suggested_path": "tools/platform/start-gov-platform.sh"
     },
     {
       "path": "coordination/api-gateway/src/gateway.py",
@@ -218,7 +218,7 @@
       "suggested_path": "contracts/governance/gl.cognitive-modes-spec.yaml"
     },
     {
-      "path": "tools/gl-markers/add-gl-markers-json.py",
+      "path": "tools/gov-markers/add-gov-markers-json.py",
       "file_type": "python",
       "has_gl_markers": true,
       "current_gl_layer": "GL20-29",
@@ -231,7 +231,7 @@
         "GL \u5c64\u7d1a\u4e0d\u6b63\u78ba\uff1aGL20-29 vs GL10-29"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/gl-markers/add-gl-markers-json.py"
+      "suggested_path": "tools/gov-markers/add-gov-markers-json.py"
     },
     {
       "path": "coordination/api-gateway/configs/gateway-config.yaml",
@@ -250,7 +250,7 @@
       "suggested_path": "coordination/api-gateway/configs/gateway-config.yaml"
     },
     {
-      "path": "contracts/governance/gl-governance-layers.yaml",
+      "path": "contracts/governance/gov-governance-layers.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -263,7 +263,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/governance/gl-governance-layers.yaml"
+      "suggested_path": "contracts/governance/gov-governance-layers.yaml"
     },
     {
       "path": "coordination/service-discovery/src/__init__.py",
@@ -282,7 +282,7 @@
       "suggested_path": "coordination/service-discovery/src/__init__.py"
     },
     {
-      "path": "contracts/generator/gl-generator-spec.yaml",
+      "path": "contracts/generator/gov-generator-spec.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -295,7 +295,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/generator/gl-generator-spec.yaml"
+      "suggested_path": "contracts/generator/gov-generator-spec.yaml"
     },
     {
       "path": "platform-templates/test_templates.py",
@@ -330,7 +330,7 @@
       "suggested_path": "coordination/service-discovery/src/service_agent.py"
     },
     {
-      "path": "contracts/naming-governance/gl-naming-ontology-expanded.yaml",
+      "path": "contracts/naming-governance/gov-naming-ontology-expanded.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -343,10 +343,10 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/naming-governance/gl-naming-ontology-expanded.yaml"
+      "suggested_path": "contracts/naming-governance/gov-naming-ontology-expanded.yaml"
     },
     {
-      "path": "registry/platforms/gl-platform-definition.yaml",
+      "path": "registry/platforms/gov-platform-definition.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -359,10 +359,10 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "registry/platforms/gl-platform-definition.yaml"
+      "suggested_path": "registry/platforms/gov-platform-definition.yaml"
     },
     {
-      "path": "tools/gl-markers/add-gl-markers-batch.py",
+      "path": "tools/gov-markers/add-gov-markers-batch.py",
       "file_type": "python",
       "has_gl_markers": true,
       "current_gl_layer": "GL90-99",
@@ -375,7 +375,7 @@
         "GL \u5c64\u7d1a\u4e0d\u6b63\u78ba\uff1aGL90-99 vs GL10-29"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/gl-markers/add-gl-markers-batch.py"
+      "suggested_path": "tools/gov-markers/add-gov-markers-batch.py"
     },
     {
       "path": "coordination/data-synchronization/src/connectors/filesystem_connector.py",
@@ -410,7 +410,7 @@
       "suggested_path": "contracts/fact-verification/gl.internal-vs-external-governance.yaml"
     },
     {
-      "path": "contracts/validation/gl-validation-rules.yaml",
+      "path": "contracts/validation/gov-validation-rules.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -423,7 +423,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/validation/gl-validation-rules.yaml"
+      "suggested_path": "contracts/validation/gov-validation-rules.yaml"
     },
     {
       "path": "governance/meta-governance/src/change_manager.py",
@@ -666,7 +666,7 @@
       "suggested_path": "coordination/data-synchronization/src/sync_scheduler.py"
     },
     {
-      "path": "contracts/reasoning/gl-reasoning-rules.yaml",
+      "path": "contracts/reasoning/gov-reasoning-rules.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -679,7 +679,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/reasoning/gl-reasoning-rules.yaml"
+      "suggested_path": "contracts/reasoning/gov-reasoning-rules.yaml"
     },
     {
       "path": "platform-templates/core-template/scripts/deploy.sh",
@@ -778,7 +778,7 @@
       "suggested_path": "platform-templates/core-template/scripts/status.sh"
     },
     {
-      "path": "contracts/verification/gl-verification-engine-spec.yaml",
+      "path": "contracts/verification/gov-verification-engine-spec.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -791,10 +791,10 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/verification/gl-verification-engine-spec.yaml"
+      "suggested_path": "contracts/verification/gov-verification-engine-spec.yaml"
     },
     {
-      "path": "tools/gl-markers/add-gl-markers.py",
+      "path": "tools/gov-markers/add-gov-markers.py",
       "file_type": "python",
       "has_gl_markers": true,
       "current_gl_layer": "{}",
@@ -807,7 +807,7 @@
         "GL \u5c64\u7d1a\u4e0d\u6b63\u78ba\uff1a{} vs GL10-29"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/gl-markers/add-gl-markers.py"
+      "suggested_path": "tools/gov-markers/add-gov-markers.py"
     },
     {
       "path": "coordination/communication/src/message_bus.py",
@@ -826,7 +826,7 @@
       "suggested_path": "coordination/communication/src/message_bus.py"
     },
     {
-      "path": "registry/platforms/gl-platform-lifecycle-spec.yaml",
+      "path": "registry/platforms/gov-platform-lifecycle-spec.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -839,7 +839,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "registry/platforms/gl-platform-lifecycle-spec.yaml"
+      "suggested_path": "registry/platforms/gov-platform-lifecycle-spec.yaml"
     },
     {
       "path": "platform-templates/core-template/examples/sync_data.py",
@@ -906,7 +906,7 @@
       "suggested_path": "governance/meta-governance/src/governance_framework.py"
     },
     {
-      "path": "contracts/verification/gl-proof-model.yaml",
+      "path": "contracts/verification/gov-proof-model.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -919,7 +919,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/verification/gl-proof-model.yaml"
+      "suggested_path": "contracts/verification/gov-proof-model.yaml"
     },
     {
       "path": "governance/meta-governance/src/review_manager.py",
@@ -1098,7 +1098,7 @@
       "suggested_path": "governance/meta-governance/tests/test_meta_governance.py"
     },
     {
-      "path": "registry/platforms/gl-platforms.index.yaml",
+      "path": "registry/platforms/gov-platforms.index.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1111,7 +1111,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "registry/platforms/gl-platforms.index.yaml"
+      "suggested_path": "registry/platforms/gov-platforms.index.yaml"
     },
     {
       "path": "coordination/service-discovery/src/service_client.py",
@@ -1226,7 +1226,7 @@
       "suggested_path": "registry/data-registry/data-catalog.yaml"
     },
     {
-      "path": "tools/audit/gl-audit-simple.py",
+      "path": "tools/audit/gov-audit-simple.py",
       "file_type": "python",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1239,7 +1239,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/audit/gl-audit-simple.py"
+      "suggested_path": "tools/audit/gov-audit-simple.py"
     },
     {
       "path": "governance/meta-governance/configs/governance-config.yaml",
@@ -1258,7 +1258,7 @@
       "suggested_path": "governance/meta-governance/configs/governance-config.yaml"
     },
     {
-      "path": "registry/naming/gl-naming-contracts-registry.yaml",
+      "path": "registry/naming/gov-naming-contracts-registry.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1271,7 +1271,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "registry/naming/gl-naming-contracts-registry.yaml"
+      "suggested_path": "registry/naming/gov-naming-contracts-registry.yaml"
     },
     {
       "path": "coordination/api-gateway/src/router.py",
@@ -1338,7 +1338,7 @@
       "suggested_path": "coordination/data-synchronization/tests/test_data_sync.py"
     },
     {
-      "path": "tools/gl-markers/fix-governance-markers.py",
+      "path": "tools/gov-markers/fix-governance-markers.py",
       "file_type": "python",
       "has_gl_markers": true,
       "current_gl_layer": "GL20-29",
@@ -1351,7 +1351,7 @@
         "GL \u5c64\u7d1a\u4e0d\u6b63\u78ba\uff1aGL20-29 vs GL90-99"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/gl-markers/fix-governance-markers.py"
+      "suggested_path": "tools/gov-markers/fix-governance-markers.py"
     },
     {
       "path": "platform-templates/core-template/configs/services-config.yaml",
@@ -1402,7 +1402,7 @@
       "suggested_path": "coordination/service-discovery/src/service_registry.py"
     },
     {
-      "path": "contracts/verification/gl-verifiable-report-standard.yaml",
+      "path": "contracts/verification/gov-verifiable-report-standard.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1415,7 +1415,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/verification/gl-verifiable-report-standard.yaml"
+      "suggested_path": "contracts/verification/gov-verifiable-report-standard.yaml"
     },
     {
       "path": "platform-templates/core-template/scripts/cleanup.sh",
@@ -1434,7 +1434,7 @@
       "suggested_path": "platform-templates/core-template/scripts/cleanup.sh"
     },
     {
-      "path": "tools/fact-verification/gl-fact-pipeline.py",
+      "path": "tools/fact-verification/gov-fact-pipeline.py",
       "file_type": "python",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1447,7 +1447,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "tools/fact-verification/gl-fact-pipeline.py"
+      "suggested_path": "tools/fact-verification/gov-fact-pipeline.py"
     },
     {
       "path": "hooks/post_execution.py",
@@ -1466,7 +1466,7 @@
       "suggested_path": "hooks/post_execution.py"
     },
     {
-      "path": "contracts/extensions/gl-extension-points.yaml",
+      "path": "contracts/extensions/gov-extension-points.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1479,7 +1479,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/extensions/gl-extension-points.yaml"
+      "suggested_path": "contracts/extensions/gov-extension-points.yaml"
     },
     {
       "path": "contracts/governance/gl.execution.finalization-spec.yaml",
@@ -1658,7 +1658,7 @@
       "suggested_path": "registry/service-registry/service-catalog.yaml"
     },
     {
-      "path": "contracts/platforms/gl-platforms.yaml",
+      "path": "contracts/platforms/gov-platforms.yaml",
       "file_type": "yaml",
       "has_gl_markers": false,
       "current_gl_layer": "none",
@@ -1671,7 +1671,7 @@
         "\u7f3a\u5c11 GL \u6cbb\u7406\u6a19\u8a18"
       ],
       "needs_relocation": false,
-      "suggested_path": "contracts/platforms/gl-platforms.yaml"
+      "suggested_path": "contracts/platforms/gov-platforms.yaml"
     },
     {
       "path": "platform-templates/core-template/examples/register_service.py",

@@ -1,0 +1,50 @@
+{
+  "name": "@machine-native-ops/gl-gate",
+  "version": "1.0.0",
+  "description": "GL-Gate Governance Gate System - Comprehensive governance gates for machine-native-ops engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    },
+    "./gates": {
+      "types": "./dist/gates/index.d.ts",
+      "require": "./dist/gates/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/types/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build && npm run test"
+  },
+  "keywords": [
+    "governance",
+    "gate",
+    "quality-gate",
+    "ci-cd",
+    "compliance",
+    "security",
+    "observability",
+    "testing",
+    "validation",
+    "machine-native",
+    "gl-gate"
+  ],
+  "author": "MachineNativeOps",
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.12.0",

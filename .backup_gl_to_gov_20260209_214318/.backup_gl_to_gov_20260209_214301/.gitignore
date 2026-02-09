@@ -1,0 +1,97 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# Compiled JavaScript files in source directories
+# (TypeScript output should only go to dist/)
+gl-runtime-platform/inter-reality/**/*.js
+!gl-runtime-platform/inter-reality/**/*.config.js
+!gl-runtime-platform/inter-reality/**/*.test.js
+gl-runtime-platform/src/**/*.js
+!gl-runtime-platform/src/**/*.config.js
+!gl-runtime-platform/src/**/*.test.js
+
+app-example
+
+# generated native folders
+/ios
+/android
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs
+*.log
+
+# OS
+Thumbs.db
+
+# Build files
+*.tgz
+*.tar.gz
+.cache/
+*.pyc
+__pycache__/
+*.egg-info/
+build/
+.env
+.gh_token
+
+# Coverage artifacts
+.coverage
+.coverage.*
+htmlcov/
+
+# Sensitive directories - may contain tokens/secrets
+outputs/
+!reports/research-runs/**/outputs/
+!reports/research-runs/**/outputs/**
+summarized_conversations/
+summarized-conversations/
+# Audit reports (temporary)
+reports/audit_report_*.json
+backup/
+
+# Reintegrate backfill evidence (generated during execution)
+.evidence/reintegrate_backfill/logs/*.log
+.evidence/reintegrate_backfill/reports/*.json
+.evidence/reintegrate_backfill/reports/*.tsv

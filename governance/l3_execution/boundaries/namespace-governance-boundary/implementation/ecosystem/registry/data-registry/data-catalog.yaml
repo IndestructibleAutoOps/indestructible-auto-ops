@@ -19,8 +19,8 @@ metadata:
 
   purpose: Central registry for all platform data schemas and catalogs
   governance:
-    - gl-enterprise-architecture
-    - gl-boundary-enforcement
+    - gov-enterprise-architecture
+    - gov-boundary-enforcement
 
 data-schemas:
   # Platform Configuration Data
@@ -87,7 +87,7 @@ data-schemas:
         
   # AWS Platform Data
   - name: aws-resource-data-schema
-    platform: gl-platform-aws
+    platform: gov-platform-aws
     type: resource
     version: 1.0.0
     format: json
@@ -107,7 +107,7 @@ data-schemas:
         
   # GCP Platform Data
   - name: gcp-resource-data-schema
-    platform: gl-platform-gcp
+    platform: gov-platform-gcp
     type: resource
     version: 1.0.0
     format: json
@@ -127,7 +127,7 @@ data-schemas:
         
   # Azure Platform Data
   - name: azure-resource-data-schema
-    platform: gl-platform-azure
+    platform: gov-platform-azure
     type: resource
     version: 1.0.0
     format: json
@@ -147,7 +147,7 @@ data-schemas:
         
   # Kubernetes Platform Data
   - name: k8s-pod-data-schema
-    platform: gl-platform-kubernetes
+    platform: gov-platform-kubernetes
     type: resource
     version: 1.0.0
     format: yaml
@@ -169,7 +169,7 @@ data-schemas:
         
   # On-Premise Platform Data
   - name: on-premise-resource-data-schema
-    platform: gl-platform-on-premise
+    platform: gov-platform-on-premise
     type: resource
     version: 1.0.0
     format: json
@@ -195,27 +195,27 @@ data-catalogs:
       - service-metadata-schema
       - monitoring-metrics-schema
       
-  - name: gl-platform-aws-catalog
+  - name: gov-platform-aws-catalog
     description: AWS platform data catalog
     schemas:
       - aws-resource-data-schema
       
-  - name: gl-platform-gcp-catalog
+  - name: gov-platform-gcp-catalog
     description: GCP platform data catalog
     schemas:
       - gcp-resource-data-schema
       
-  - name: gl-platform-azure-catalog
+  - name: gov-platform-azure-catalog
     description: Azure platform data catalog
     schemas:
       - azure-resource-data-schema
       
-  - name: gl-platform-kubernetes-catalog
+  - name: gov-platform-kubernetes-catalog
     description: Kubernetes platform data catalog
     schemas:
       - k8s-pod-data-schema
       
-  - name: gl-platform-on-premise-catalog
+  - name: gov-platform-on-premise-catalog
     description: On-premise platform data catalog
     schemas:
       - on-premise-resource-data-schema
@@ -238,6 +238,6 @@ registry-configuration:
     retention: 30
 
 compliance:
-  gl-architecture: enterprise
+  gov-architecture: enterprise
   boundary-enforcement: strict
   data-standards: latest

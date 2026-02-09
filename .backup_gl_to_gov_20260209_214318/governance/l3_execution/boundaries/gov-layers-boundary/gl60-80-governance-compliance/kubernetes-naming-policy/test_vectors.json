@@ -1,0 +1,209 @@
+{
+  "version": "1.0",
+  "description": "Cross-language compatibility test vectors for Kubernetes naming policy validation",
+  "last_updated": "2026-02-07",
+  "test_cases": [
+    {
+      "id": "TC001",
+      "description": "Basic valid DNS label",
+      "input": "test",
+      "rule": "dns1123Label63",
+      "expected_normalized": "test",
+      "expected_final": "test",
+      "should_pass_strict": true,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC002",
+      "description": "Mixed case with special chars requiring normalization",
+      "input": "Prod/Payment@SVC",
+      "rule": "dns1123Label63",
+      "expected_normalized": "prod-payment-svc",
+      "expected_final": "prod-payment-svc",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC003",
+      "description": "Multiple leading/trailing dashes",
+      "input": "---a---",
+      "rule": "dns1123Label63",
+      "expected_normalized": "a",
+      "expected_final": "a",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC004",
+      "description": "Uppercase only",
+      "input": "UPPERCASE",
+      "rule": "dns1123Label63",
+      "expected_normalized": "uppercase",
+      "expected_final": "uppercase",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC005",
+      "description": "Valid with dashes and numbers",
+      "input": "test-123",
+      "rule": "dns1123Label63",
+      "expected_normalized": "test-123",
+      "expected_final": "test-123",
+      "should_pass_strict": true,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC006",
+      "description": "Valid port name",
+      "input": "http",
+      "rule": "portName15",
+      "expected_normalized": "http",
+      "expected_final": "http",
+      "should_pass_strict": true,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC007",
+      "description": "Port name starting with number (invalid)",
+      "input": "8080-http",
+      "rule": "portName15",
+      "expected_normalized": "8080-http",
+      "expected_final": "8080-http",
+      "should_pass_strict": false,
+      "should_pass_normalized": false
+    },
+    {
+      "id": "TC008",
+      "description": "Empty label value (allowed)",
+      "input": "",
+      "rule": "k8sLabelValue63",
+      "expected_normalized": "",
+      "expected_final": "",
+      "should_pass_strict": true,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC009",
+      "description": "Valid label value with underscores",
+      "input": "valid_label",
+      "rule": "k8sLabelValue63",
+      "expected_normalized": "valid-label",
+      "expected_final": "valid-label",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC010",
+      "description": "Underscore replacement",
+      "input": "test_underscore",
+      "rule": "dns1123Label63",
+      "expected_normalized": "test-underscore",
+      "expected_final": "test-underscore",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC011",
+      "description": "Multiple special characters",
+      "input": "hello@world#test",
+      "rule": "dns1123Label63",
+      "expected_normalized": "hello-world-test",
+      "expected_final": "hello-world-test",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC012",
+      "description": "Collapsed dashes",
+      "input": "hello---world",
+      "rule": "dns1123Label63",
+      "expected_normalized": "hello-world",
+      "expected_final": "hello-world",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC013",
+      "description": "Leading dash (invalid)",
+      "input": "-test",
+      "rule": "dns1123Label63",
+      "expected_normalized": "test",
+      "expected_final": "test",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC014",
+      "description": "Trailing dash (invalid)",
+      "input": "test-",
+      "rule": "dns1123Label63",
+      "expected_normalized": "test",
+      "expected_final": "test",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC015",
+      "description": "Valid production-like name",
+      "input": "prod-payment-svc",
+      "rule": "dns1123Label63",
+      "expected_normalized": "prod-payment-svc",
+      "expected_final": "prod-payment-svc",
+      "should_pass_strict": true,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC016",
+      "description": "Unicode normalization (café)",
+      "input": "café",
+      "rule": "dns1123Label63",
+      "expected_normalized": "caf-",
+      "expected_final": "caf",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC017",
+      "description": "Port name with uppercase (invalid)",
+      "input": "HTTP",
+      "rule": "portName15",
+      "expected_normalized": "http",
+      "expected_final": "http",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC018",
+      "description": "Very long name requiring truncation",
+      "input": "very-long-production-payment-service-name-that-exceeds-maximum-length-limit",
+      "rule": "dns1123Label63",
+      "expected_normalized": "very-long-production-payment-service-name-that-exceeds-maximum-length-limit",
+      "truncation_required": true,
+      "should_pass_strict": false,
+      "should_pass_normalized": false,
+      "should_pass_with_truncate": true,
+      "note": "Final value depends on hash function, but should be ≤63 chars"
+    },
+    {
+      "id": "TC019",
+      "description": "Label value with dots and dashes",
+      "input": "v1.2.3-beta",
+      "rule": "k8sLabelValue63",
+      "expected_normalized": "v1-2-3-beta",
+      "expected_final": "v1-2-3-beta",
+      "should_pass_strict": false,
+      "should_pass_normalized": true
+    },
+    {
+      "id": "TC020",
+      "description": "Single character valid",
+      "input": "a",
+      "rule": "dns1123Label63",
+      "expected_normalized": "a",
+      "expected_final": "a",
+      "should_pass_strict": true,
+      "should_pass_normalized": true
+    }
+  ]
+}

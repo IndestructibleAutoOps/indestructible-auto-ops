@@ -19,8 +19,8 @@ metadata:
 
   purpose: Central registry for all platform services
   governance:
-    - gl-enterprise-architecture
-    - gl-boundary-enforcement
+    - gov-enterprise-architecture
+    - gov-boundary-enforcement
 
 services:
   # Platform Core Services
@@ -44,7 +44,7 @@ services:
     
   # Platform AWS Services
   - name: aws-compute-service
-    platform: gl-platform-aws
+    platform: gov-platform-aws
     type: compute
     version: 1.0.0
     endpoint: /api/v1/aws/compute
@@ -53,7 +53,7 @@ services:
     dependencies: [platform-orchestrator]
     
   - name: aws-storage-service
-    platform: gl-platform-aws
+    platform: gov-platform-aws
     type: storage
     version: 1.0.0
     endpoint: /api/v1/aws/storage
@@ -62,7 +62,7 @@ services:
     dependencies: [platform-orchestrator]
     
   - name: aws-networking-service
-    platform: gl-platform-aws
+    platform: gov-platform-aws
     type: networking
     version: 1.0.0
     endpoint: /api/v1/aws/networking
@@ -72,7 +72,7 @@ services:
     
   # Platform GCP Services
   - name: gcp-compute-service
-    platform: gl-platform-gcp
+    platform: gov-platform-gcp
     type: compute
     version: 1.0.0
     endpoint: /api/v1/gcp/compute
@@ -81,7 +81,7 @@ services:
     dependencies: [platform-orchestrator]
     
   - name: gcp-storage-service
-    platform: gl-platform-gcp
+    platform: gov-platform-gcp
     type: storage
     version: 1.0.0
     endpoint: /api/v1/gcp/storage
@@ -91,7 +91,7 @@ services:
     
   # Platform Azure Services
   - name: azure-compute-service
-    platform: gl-platform-azure
+    platform: gov-platform-azure
     type: compute
     version: 1.0.0
     endpoint: /api/v1/azure/compute
@@ -100,7 +100,7 @@ services:
     dependencies: [platform-orchestrator]
     
   - name: azure-storage-service
-    platform: gl-platform-azure
+    platform: gov-platform-azure
     type: storage
     version: 1.0.0
     endpoint: /api/v1/azure/storage
@@ -110,7 +110,7 @@ services:
     
   # Platform Kubernetes Services
   - name: k8s-orchestration-service
-    platform: gl-platform-kubernetes
+    platform: gov-platform-kubernetes
     type: orchestration
     version: 1.0.0
     endpoint: /api/v1/k8s/orchestrate
@@ -119,7 +119,7 @@ services:
     dependencies: [platform-orchestrator]
     
   - name: k8s-service-discovery
-    platform: gl-platform-kubernetes
+    platform: gov-platform-kubernetes
     type: service-discovery
     version: 1.0.0
     endpoint: /api/v1/k8s/discover
@@ -129,7 +129,7 @@ services:
     
   # Platform On-Premise Services
   - name: on-premise-resource-service
-    platform: gl-platform-on-premise
+    platform: gov-platform-on-premise
     type: resource-management
     version: 1.0.0
     endpoint: /api/v1/on-premise/resources
@@ -157,6 +157,6 @@ registry-configuration:
     strategy: semantic
 
 compliance:
-  gl-architecture: enterprise
+  gov-architecture: enterprise
   boundary-enforcement: strict
   service-standards: latest

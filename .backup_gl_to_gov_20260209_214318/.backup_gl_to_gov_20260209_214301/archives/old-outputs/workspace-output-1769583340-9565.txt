@@ -1,0 +1,5 @@
+[main 64aa4013] GL 全域治理標記修復 - 添加 GL governance 標記到所有檔案
+ 76 files changed, 684 insertions(+), 67 deletions(-)
+ delete mode 100755 .github/hooks/post-commit
+ create mode 100644 .github/hooks/post-commit.sh
+ delete mode 100755 .github/hooks/pre-push

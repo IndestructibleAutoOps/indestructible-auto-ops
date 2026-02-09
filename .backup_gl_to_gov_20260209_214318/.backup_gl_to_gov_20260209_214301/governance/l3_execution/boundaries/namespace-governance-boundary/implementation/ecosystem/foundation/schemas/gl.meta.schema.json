@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://machine-native-ops.io/schemas/gl.meta.json",
+  "title": "GL Module Metadata Schema",
+  "description": "Schema for gl.meta.json - Module metadata files in the governance ecosystem",
+  "type": "object",
+  "required": ["id", "version", "type", "language", "format"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the module",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the module",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9]+)?$"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the module",
+      "enum": ["governance", "enforcer", "adapter", "contract", "evidence", "index", "spec"]
+    },
+    "language": {
+      "type": "string",
+      "description": "Primary language of the module",
+      "enum": ["yaml", "json", "markdown", "python", "gl-dsl"]
+    },
+    "format": {
+      "type": "string",
+      "description": "Format specification",
+      "enum": ["gl.meta.json", "gl-rule.yaml", "semantic-index.json", "evidence.yaml", "contract.yaml", "adapter.yaml"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the module"
+    },
+    "layer": {
+      "type": "string",
+      "description": "GL governance layer",
+      "pattern": "^GL\\d{2}-\\d{2}$"
+    },
+    "semantic": {
+      "type": "string",
+      "description": "Semantic tag for the module"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of module dependencies"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp (RFC3339)"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp (RFC3339)"
+    },
+    "author": {
+      "type": "string",
+      "description": "Module author"
+    }
+  },
+  "additionalProperties": false
+}

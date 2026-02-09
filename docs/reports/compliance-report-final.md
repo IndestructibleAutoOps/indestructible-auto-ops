@@ -26,19 +26,19 @@
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/README.md
+#### GQS-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/README.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/USAGE_GUIDE.md
+#### GQS-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/USAGE_GUIDE.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/DEMONSTRATION_REPORT.md
+#### GQS-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/DEMONSTRATION_REPORT.md
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
@@ -308,19 +308,19 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: ecosystem/tools/gl-markers/add-gl-markers-json.py
+#### MNGA-001: ecosystem/tools/gov-markers/add-gov-markers-json.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: ecosystem/tools/gl-markers/fix-governance-markers.py
+#### MNGA-001: ecosystem/tools/gov-markers/fix-governance-markers.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: ecosystem/tools/gl-markers/add-gl-markers-batch.py
+#### MNGA-001: ecosystem/tools/gov-markers/add-gov-markers-batch.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -350,7 +350,7 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: ecosystem/tools/fact-verification/gl-fact-pipeline.py
+#### MNGA-001: ecosystem/tools/fact-verification/gov-fact-pipeline.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -524,1513 +524,1513 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/base_loader.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/base_loader.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/change_tracking.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/change_tracking.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/log_extractors.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/log_extractors.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/base_extractor.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/base_extractor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_transformer.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_transformer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_validator.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py
+#### MNGA-001: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_config_validator.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_config_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_gov_reporter.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_gov_reporter.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_strategies.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_strategies.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_autonomous_cleanup_toolkit.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_autonomous_cleanup_toolkit.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_health_check.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_health_check.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_gov_aep_engine_auditor.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_gov_aep_engine_auditor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_gov_executor.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_gov_executor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_governance_audit_script.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_governance_audit_script.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_marker_detection.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_marker_detection.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_artifact_validation.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_artifact_validation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_helpers.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_helpers.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/unit/test_workflow_orchestrator.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/unit/test_workflow_orchestrator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/helpers/test_base.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/helpers/test_base.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tests-legacy/helpers/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tests-legacy/helpers/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/test_smoke_reporting.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/test_smoke_reporting.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/conftest.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/conftest.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/test_smoke_memory.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/test_smoke_memory.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/test_functional_memory_system.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/test_functional_memory_system.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/test_smoke_supply_chain.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/test_smoke_supply_chain.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/test_smoke_system.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/test_smoke_system.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py
+#### MNGA-001: gov-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/performance-tests-legacy/test_unit_cache_operations.py
+#### MNGA-001: gov-runtime-engine-platform/performance-tests-legacy/test_unit_cache_operations.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/performance-tests-legacy/conftest.py
+#### MNGA-001: gov-runtime-engine-platform/performance-tests-legacy/conftest.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/performance-tests-legacy/test_unit_memory_operations.py
+#### MNGA-001: gov-runtime-engine-platform/performance-tests-legacy/test_unit_memory_operations.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/extract_conflicts.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/extract_conflicts.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/detect_patterns.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/detect_patterns.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/convert_markdown_to_yaml.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/convert_markdown_to_yaml.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/auto-fix-issues.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/auto-fix-issues.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/validate-module-registry.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/check_ci_comments.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/check_ci_comments.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/fix_yaml_structure.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/fix_yaml_structure.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/fix_yaml_indentation.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/fix_yaml_indentation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/count_bandit_issues.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/count_bandit_issues.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/fix_yaml_markdown.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/fix_yaml_markdown.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/clean_yaml_files.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/clean_yaml_files.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/validate-module-manifests.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/deploy.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/deploy.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/auto-quality-check.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/classify-autonomy.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-dag.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/test_implementation.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/test_implementation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/reconciliation.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/reconciliation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/hooks/gl-naming-check.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/hooks/gov-naming-check.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/hooks/gl-pre-commit.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/hooks/gov-pre-commit.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl-consolidation-plan.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/monitoring/health_check.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/monitoring/health_check.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_automation_engine.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_continuous_monitor.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_continuous_monitor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_integrator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_integrator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_executor.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_executor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_validator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_reporter.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_reporter.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/utils/config_validator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/utils/config_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts-legacy/fhs-integration/operational_test.py
+#### MNGA-001: gov-runtime-engine-platform/scripts-legacy/fhs-integration/operational_test.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/hash_manager.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/hash_manager.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/supply_chain_types.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/supply_chain_types.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage1_lint_format.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage1_lint_format.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/verify_refactoring.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/verify_refactoring.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage3_dependency.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage3_dependency.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/test_supply_chain_types.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/test_supply_chain_types.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/test_stage1_lint_format.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/test_stage1_lint_format.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/test_stage2_schema_semantic.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/test_stage2_schema_semantic.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/test_hash_manager.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/test_hash_manager.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/test_integration.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/test_integration.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/run_tests.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/run_tests.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/controlplane/validation/tests/test_performance_benchmark.py
+#### MNGA-001: gov-runtime-engine-platform/controlplane/validation/tests/test_performance_benchmark.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts/tools/gl10top10validator.py
+#### MNGA-001: gov-runtime-engine-platform/scripts/tools/gl10top10validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts/aup-tools/aep-executor.py
+#### MNGA-001: gov-runtime-engine-platform/scripts/aup-tools/aep-executor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/scripts/aup-tools/gl-marker-injector.py
+#### MNGA-001: gov-runtime-engine-platform/scripts/aup-tools/gov-marker-injector.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/subtree_integrate.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/subtree_integrate.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/ai-auto-fix.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/ai-auto-fix.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/real-module-launcher.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/real-module-launcher.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/root-validator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/root-validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/find_duplicate_scripts.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/find_duplicate_scripts.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/evidence_generator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/evidence_generator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generate-sankey-data.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generate-sankey-data.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validate_directory_docs.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validate_directory_docs.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/load-playbook.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/load-playbook.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/module_graph_gate.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/module_graph_gate.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validate_restructure.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validate_restructure.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/cleanup_duplicates.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/cleanup_duplicates.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/ai-refactor-review.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/ai-refactor-review.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/gl10top10validator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/gl10top10validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/directory_doc_generator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/directory_doc_generator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/lkb-update.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/lkb-update.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/verify_p0_safety.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/verify_p0_safety.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/security_audit.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/security_audit.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/rootfs_assembler.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/rootfs_assembler.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/scan_tech_debt.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/scan_tech_debt.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/semantic-commit-generator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/semantic-commit-generator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/namespace-validator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/namespace-validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/sync_external_repos.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/sync_external_repos.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automated_directory_restructure.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automated_directory_restructure.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/namespace-converter.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/namespace-converter.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/build_module.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/build_module.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/language-history-writer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/language-history-writer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generate-language-dashboard.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generate-language-dashboard.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/ci-cost-dashboard.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/ci-cost-dashboard.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validate-refactor-index.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validate-refactor-index.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/language-health-score.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/language-health-score.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generate-migration-flow.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generate-migration-flow.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/root_schema_gate.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/root_schema_gate.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/fix-yaml-structure.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/fix-yaml-structure.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/ai/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/ai/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/ai/governance_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/ai/governance_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### GQS-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py
+#### GQS-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### GQS-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py
+#### GQS-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/path-tools/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/path-tools/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/path-tools/path_validator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/path-tools/path_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engine_base.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engine_base.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engines/integration_automation_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engines/integration_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engines/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engines/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/__init__.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/auto_refactor.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/auto_refactor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/validate_structure.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/validate_structure.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/update_indexes.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/update_indexes.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/refactor/execute_integration.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/refactor/execute_integration.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/python/governance_agent.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/python/governance_agent.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/world_class_validation.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/world_class_validation.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/validate-artifact.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/validate-artifact.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/validate_pr1063_layers.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/validate_pr1063_layers.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/validation/validate_pr1064_layers.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/validation/validate_pr1064_layers.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/project_to_superroot.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/project_to_superroot.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/validate_index.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/validate_index.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/generate_mndoc_from_readme.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/generate_mndoc_from_readme.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/docs/provenance_injector.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/docs/provenance_injector.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/automated_maintenance_system.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/automated_maintenance_system.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/fix_event_comparison.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/fix_event_comparison.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generators/documentation_generator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generators/documentation_generator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generators/contract_generator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generators/contract_generator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/generators/validator_generator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/generators/validator_generator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_integrator.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_integrator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py
+#### MNGA-001: gov-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -2870,19 +2870,19 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-semantic-core-platform/tests/unit/test_folding_engine.py
+#### MNGA-001: gov-semantic-core-platform/tests/unit/test_folding_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-semantic-core-platform/tools/benchmark/run_benchmark.py
+#### MNGA-001: gov-semantic-core-platform/tools/benchmark/run_benchmark.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-semantic-core-platform/src/semantic-folding/engine.py
+#### MNGA-001: gov-semantic-core-platform/src/semantic-folding/engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -3434,7 +3434,7 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/hooks/gl-naming-check.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/hooks/gov-naming-check.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -3446,13 +3446,13 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/hooks/gl-pre-commit.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/hooks/gov-pre-commit.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-restructure/gov-consolidation-plan.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -3476,43 +3476,43 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_automation_engine.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_continuous_monitor.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_continuous_monitor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/__init__.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_integrator.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_integrator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_executor.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_executor.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_validator.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_reporter.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_reporter.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -3668,7 +3668,7 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl.runtime.execution-platform/engine/scripts/aup-tools/gl-marker-injector.py
+#### MNGA-001: gl.runtime.execution-platform/engine/scripts/aup-tools/gov-marker-injector.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -4514,55 +4514,55 @@
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/contracts/__init__.py
+#### MNGA-001: gov-governance-compliance/contracts/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/contracts/gov_contract.py
+#### MNGA-001: gov-governance-compliance/contracts/gov_contract.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/contracts/gov_policy.py
+#### MNGA-001: gov-governance-compliance/contracts/gov_policy.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/platforms/__init__.py
+#### MNGA-001: gov-governance-compliance/platforms/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/languages/__init__.py
+#### MNGA-001: gov-governance-compliance/languages/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/formats/__init__.py
+#### MNGA-001: gov-governance-compliance/formats/__init__.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/scripts/verification/content_based_migration.py
+#### MNGA-001: gov-governance-compliance/scripts/verification/content_based_migration.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/scripts/naming/gl_naming_validator.py
+#### MNGA-001: gov-governance-compliance/scripts/naming/gl_naming_validator.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
 - **Evidence:** First few lines do not contain docstring
 
-#### MNGA-001: gl-governance-compliance/scripts/evolution/gov_evolution_engine.py
+#### MNGA-001: gov-governance-compliance/scripts/evolution/gov_evolution_engine.py
 - **Type:** MNGA
 - **Description:** Python file missing module docstring
 - **Suggestion:** Add module docstring at the beginning of the file
@@ -4592,13 +4592,13 @@
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json
+#### GQS-002: gov-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
 - **Evidence:** Contains "superposition" keyword
 
-#### GQS-002: gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json
+#### GQS-002: gov-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json
 - **Type:** GL_GQS
 - **Description:** Superposition state definition missing max_superposition constraint
 - **Suggestion:** Add max_superposition limit for superposition objects
@@ -4750,7 +4750,7 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: ecosystem/tools/gl-markers/fix-governance-markers.py
+#### MNGA-002: ecosystem/tools/gov-markers/fix-governance-markers.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -4774,13 +4774,13 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: ecosystem/tools/audit/gl-audit-simple.py
+#### MNGA-002: ecosystem/tools/audit/gov-audit-simple.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: ecosystem/tools/fact-verification/gl-fact-pipeline.py
+#### MNGA-002: ecosystem/tools/fact-verification/gov-fact-pipeline.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -4930,913 +4930,913 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py
+#### MNGA-002: gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tests-legacy/unit/test_config_validator.py
+#### MNGA-002: gov-runtime-engine-platform/tests-legacy/unit/test_config_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py
+#### MNGA-002: gov-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py
+#### MNGA-002: gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tests-legacy/unit/test_health_check.py
+#### MNGA-002: gov-runtime-engine-platform/tests-legacy/unit/test_health_check.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py
+#### MNGA-002: gov-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tests-legacy/helpers/test_base.py
+#### MNGA-002: gov-runtime-engine-platform/tests-legacy/helpers/test_base.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/integration-tests-legacy/conftest.py
+#### MNGA-002: gov-runtime-engine-platform/integration-tests-legacy/conftest.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py
+#### MNGA-002: gov-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/extract_conflicts.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/extract_conflicts.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/validate-module-registry.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 3 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 2 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/count_bandit_issues.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/count_bandit_issues.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 2 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/validate-module-manifests.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/auto-quality-check.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/classify-autonomy.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/validate-dag.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl-consolidation-plan.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/monitoring/health_check.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/monitoring/health_check.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_continuous_monitor.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_continuous_monitor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_integrator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_integrator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_executor.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_executor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 16 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_validator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_reporter.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_reporter.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/utils/config_validator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/utils/config_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/stage1_lint_format.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/stage1_lint_format.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 17 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/controlplane/validation/tests/test_integration.py
+#### MNGA-002: gov-runtime-engine-platform/controlplane/validation/tests/test_integration.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts/tools/gl10top10validator.py
+#### MNGA-002: gov-runtime-engine-platform/scripts/tools/gl10top10validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts/aup-tools/aep-executor.py
+#### MNGA-002: gov-runtime-engine-platform/scripts/aup-tools/aep-executor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/scripts/aup-tools/gl-marker-injector.py
+#### MNGA-002: gov-runtime-engine-platform/scripts/aup-tools/gov-marker-injector.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/ai-auto-fix.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/ai-auto-fix.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/real-module-launcher.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/real-module-launcher.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/root-validator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/root-validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/evidence_generator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/evidence_generator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/generate-sankey-data.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/generate-sankey-data.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validate_directory_docs.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validate_directory_docs.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/load-playbook.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/load-playbook.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/module_graph_gate.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/module_graph_gate.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validate_restructure.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validate_restructure.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/ai-refactor-review.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/ai-refactor-review.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/gl10top10validator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/gl10top10validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/lkb-update.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/lkb-update.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/verify_p0_safety.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/verify_p0_safety.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 13 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/security_audit.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/security_audit.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/rootfs_assembler.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/rootfs_assembler.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/scan_tech_debt.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/scan_tech_debt.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/sync_external_repos.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/sync_external_repos.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automated_directory_restructure.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automated_directory_restructure.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/namespace-converter.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/namespace-converter.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/language-history-writer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/language-history-writer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/generate-language-dashboard.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/generate-language-dashboard.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validate-refactor-index.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validate-refactor-index.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/language-health-score.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/language-health-score.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/generate-migration-flow.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/generate-migration-flow.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/root_schema_gate.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/root_schema_gate.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/path-tools/path_validator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/path-tools/path_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 14 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automation/engine_base.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automation/engine_base.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/validate_structure.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/validate_structure.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 13 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/refactor/execute_integration.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/refactor/execute_integration.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/python/governance_agent.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/python/governance_agent.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validation/world_class_validation.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validation/world_class_validation.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/docs/validate_index.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/docs/validate_index.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/docs/provenance_injector.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/docs/provenance_injector.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 5 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/generators/contract_generator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/generators/contract_generator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 4 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py
+#### MNGA-002: gov-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -5992,7 +5992,7 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: platforms/gl-platform-assistant/orchestration/pipeline.py
+#### MNGA-002: platforms/gov-platform-assistant/orchestration/pipeline.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -6280,19 +6280,19 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-semantic-core-platform/tests/unit/test_folding_engine.py
+#### MNGA-002: gov-semantic-core-platform/tests/unit/test_folding_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 8 import lines
 
-#### MNGA-002: gl-semantic-core-platform/tools/benchmark/run_benchmark.py
+#### MNGA-002: gov-semantic-core-platform/tools/benchmark/run_benchmark.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl-semantic-core-platform/src/semantic-folding/engine.py
+#### MNGA-002: gov-semantic-core-platform/src/semantic-folding/engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -6544,7 +6544,7 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gov-restructure/gov-consolidation-plan.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -6568,31 +6568,31 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_continuous_monitor.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_continuous_monitor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 10 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_integrator.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_integrator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 7 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_executor.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_executor.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 16 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_validator.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_validator.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 12 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_reporter.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_reporter.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -6676,7 +6676,7 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 11 import lines
 
-#### MNGA-002: gl.runtime.execution-platform/engine/scripts/aup-tools/gl-marker-injector.py
+#### MNGA-002: gl.runtime.execution-platform/engine/scripts/aup-tools/gov-marker-injector.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
@@ -7330,19 +7330,19 @@
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 6 import lines
 
-#### MNGA-002: gl-governance-compliance/formats/__init__.py
+#### MNGA-002: gov-governance-compliance/formats/__init__.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-governance-compliance/scripts/verification/content_based_migration.py
+#### MNGA-002: gov-governance-compliance/scripts/verification/content_based_migration.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local
 - **Evidence:** Found 9 import lines
 
-#### MNGA-002: gl-governance-compliance/scripts/evolution/gov_evolution_engine.py
+#### MNGA-002: gov-governance-compliance/scripts/evolution/gov_evolution_engine.py
 - **Type:** MNGA
 - **Description:** Python imports not organized according to MNGA standards
 - **Suggestion:** Organize imports: standard library, third-party, then local

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNGA 合規性評分儀表板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .era-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .overall-score {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .score-circle svg {
+            transform: rotate(-90deg);
+        }
+        
+        .score-circle .score {
+            position: absolute;
+            font-size: 3em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+        
+        .score-grade {
+            font-size: 1.5em;
+            color: #f39c12;
+            margin-top: 10px;
+        }
+        
+        .section-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .card-weight {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 0.85em;
+        }
+        
+        .card-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .card-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .status-dot.green {
+            background: #2ecc71;
+        }
+        
+        .status-dot.yellow {
+            background: #f39c12;
+        }
+        
+        .status-dot.red {
+            background: #e74c3c;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .chart-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .issues-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .issues-table th,
+        .issues-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .issues-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .issues-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .priority-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .priority-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .priority-low {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .action-items {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .action-items h3 {
+            color: #856404;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .action-list {
+            list-style: none;
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .action-icon {
+            font-size: 1.5em;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .action-content h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .action-content p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            color: #666;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-fill.green {
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+        }
+        
+        .progress-fill.yellow {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+        
+        .progress-fill.red {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>🛡️ MNGA 治理合規性評分儀表板</h1>
+            <p>Machine Native Governance Architecture - Compliance Score Dashboard</p>
+            <div class="era-badge">Era: 1 (Evidence-Native Bootstrap) | Layer: Operational</div>
+        </div>
+        
+        <div class="content">
+            <!-- Overall Score -->
+            <div class="overall-score">
+                <h2>總體合規性評分</h2>
+                <div class="score-circle">
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#e9ecef" stroke-width="15"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#764ba2" stroke-width="15" 
+                                stroke-dasharray="565.48" stroke-dashoffset="166.8" 
+                                style="transition: stroke-dashoffset 1s ease;"/>
+                    </svg>
+                    <div class="score">70.6</div>
+                </div>
+                <div class="score-grade">🟠 及格 (60-74)</div>
+                <p style="color: #666; margin-top: 15px;">系統需要改進才能達到生產就緒狀態</p>
+            </div>
+            
+            <!-- Section Cards -->
+            <div class="section-cards">
+                <!-- Core Governance -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">1️⃣ 核心治理檢查</div>
+                        <div class="card-weight">權重: 40%</div>
+                    </div>
+                    <div class="card-score">100/100</div>
+                    <div class="card-status">
+                        <div class="status-dot green"></div>
+                        <span>18/18 檢查通過</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <!-- Semantic Compliance -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">2️⃣ 報告語義合規性</div>
+                        <div class="card-weight">權重: 30%</div>
+                    </div>
+                    <div class="card-score">66.7/100</div>
+                    <div class="card-status">
+                        <div class="status-dot yellow"></div>
+                        <span>6 個違規 (1 HIGH, 5 MEDIUM)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill yellow" style="width: 66.7%"></div>
+                    </div>
+                </div>
+                
+                <!-- Tool Definition -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">3️⃣ 工具定義合規性</div>
+                        <div class="card-weight">權重: 20%</div>
+                    </div>
+                    <div class="card-score">3.2/100</div>
+                    <div class="card-status">
+                        <div class="status-dot red"></div>
+                        <span>132/139 工具未註冊</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill red" style="width: 3.2%"></div>
+                    </div>
+                </div>
+                
+                <!-- Evidence Chain -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">4️⃣ 證據鏈完整性</div>
+                        <div class="card-weight">權重: 10%</div>
+                    </div>
+                    <div class="card-score">100/100</div>
+                    <div class="card-status">
+                        <div class="status-dot green"></div>
+                        <span>10/10 步驟完整</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts -->
+            <div class="charts-container">
+                <!-- Score Breakdown -->
+                <div class="chart-box">
+                    <div class="chart-title">📊 合規性分數分解</div>
+                    <canvas id="scoreBreakdown"></canvas>
+                </div>
+                
+                <!-- Compliance Trends -->
+                <div class="chart-box">
+                    <div class="chart-title">📈 合規性趨勢</div>
+                    <canvas id="complianceTrend"></canvas>
+                </div>
+                
+                <!-- Tool Registration Status -->
+                <div class="chart-box">
+                    <div class="chart-title">🔧 工具註冊狀態</div>
+                    <canvas id="toolRegistration"></canvas>
+                </div>
+                
+                <!-- Violation Severity -->
+                <div class="chart-box">
+                    <div class="chart-title">🚨 違規嚴重級別分布</div>
+                    <canvas id="violationSeverity"></canvas>
+                </div>
+            </div>
+            
+            <!-- Issues Table -->
+            <div class="chart-box">
+                <div class="chart-title">⚠️ 關鍵問題清單</div>
+                <table class="issues-table">
+                    <thead>
+                        <tr>
+                            <th>優先級</th>
+                            <th>問題描述</th>
+                            <th>影響範圍</th>
+                            <th>預計提升</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="priority-high">🔴 高</td>
+                            <td>工具定義合規性過低</td>
+                            <td>95% 工具未註冊</td>
+                            <td>+20-30 分</td>
+                        </tr>
+                        <tr>
+                            <td class="priority-high">🔴 高</td>
+                            <td>報告語義違規</td>
+                            <td>階段聲明、禁止術語</td>
+                            <td>+10-15 分</td>
+                        </tr>
+                        <tr>
+                            <td class="priority-medium">🟡 中</td>
+                            <td>命名約定違規</td>
+                            <td>13 個文件/目錄</td>
+                            <td>+2-3 分</td>
+                        </tr>
+                        <tr>
+                            <td class="priority-low">🟢 低</td>
+                            <td>證據生成覆蓋率</td>
+                            <td>部分工具缺少</td>
+                            <td>+5-10 分</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Action Items -->
+            <div class="action-items">
+                <h3>🎯 優先行動項</h3>
+                <ul class="action-list">
+                    <li class="action-item">
+                        <div class="action-icon">🔥</div>
+                        <div class="action-content">
+                            <h4>立即行動（今天）</h4>
+                            <p>修復報告語義違規（移除 Phase 1-5 虛構階段）、註冊核心治理工具（至少 20 個）</p>
+                        </div>
+                    </li>
+                    <li class="action-item">
+                        <div class="action-icon">📅</div>
+                        <div class="action-content">
+                            <h4>本週行動</h4>
+                            <p>批量註冊所有 ecosystem/tools 工具、修復命名約定違規、驗證所有報告語義合規性</p>
+                        </div>
+                    </li>
+                    <li class="action-item">
+                        <div class="action-icon">🗓️</div>
+                        <div class="action-content">
+                            <h4>本月行動</h4>
+                            <p>為所有已註冊工具添加證據生成代碼、建立自動化工具註冊流程、實現 CI/CD 合規性檢查門禁</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>報告生成: MNGA Enforcement Coordinator v1.0 | 生成時間: 2026-02-04T09:57:57+00:00</p>
+            <p>驗證工具: enforce.py, enforce.rules.py, semantic_validator.py, verify_tool_definition.py</p>
+        </div>
+    </div>
+    
+    <script>
+        // Score Breakdown Chart
+        const scoreBreakdownCtx = document.getElementById('scoreBreakdown').getContext('2d');
+        new Chart(scoreBreakdownCtx, {
+            type: 'bar',
+            data: {
+                labels: ['核心治理檢查', '報告語義合規性', '工具定義合規性', '證據鏈完整性'],
+                datasets: [{
+                    label: '得分',
+                    data: [100, 66.7, 3.2, 100],
+                    backgroundColor: [
+                        'rgba(46, 204, 113, 0.8)',
+                        'rgba(243, 156, 18, 0.8)',
+                        'rgba(231, 76, 60, 0.8)',
+                        'rgba(46, 204, 113, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(46, 204, 113)',
+                        'rgb(243, 156, 18)',
+                        'rgb(231, 76, 60)',
+                        'rgb(46, 204, 113)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '/100';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // Compliance Trend Chart
+        const complianceTrendCtx = document.getElementById('complianceTrend').getContext('2d');
+        new Chart(complianceTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Era-0 (無記錄)', 'Era-1 (當前)', '短期目標', '中期目標', '長期目標'],
+                datasets: [{
+                    label: '合規性評分',
+                    data: [0, 70.6, 85, 92, 95],
+                    fill: true,
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    borderColor: 'rgb(102, 126, 234)',
+                    tension: 0.4,
+                    pointBackgroundColor: 'rgb(102, 126, 234)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '/100';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // Tool Registration Chart
+        const toolRegistrationCtx = document.getElementById('toolRegistration').getContext('2d');
+        new Chart(toolRegistrationCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['已註冊工具', '未註冊工具'],
+                datasets: [{
+                    data: [7, 132],
+                    backgroundColor: [
+                        'rgba(46, 204, 113, 0.8)',
+                        'rgba(231, 76, 60, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(46, 204, 113)',
+                        'rgb(231, 76, 60)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        
+        // Violation Severity Chart
+        const violationSeverityCtx = document.getElementById('violationSeverity').getContext('2d');
+        new Chart(violationSeverityCtx, {
+            type: 'pie',
+            data: {
+                labels: ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'],
+                datasets: [{
+                    data: [0, 1, 5, 0],
+                    backgroundColor: [
+                        'rgba(231, 76, 60, 0.8)',
+                        'rgba(243, 156, 18, 0.8)',
+                        'rgba(241, 196, 15, 0.8)',
+                        'rgba(46, 204, 113, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(231, 76, 60)',
+                        'rgb(243, 156, 18)',
+                        'rgb(241, 196, 15)',
+                        'rgb(46, 204, 113)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

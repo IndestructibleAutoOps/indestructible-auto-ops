@@ -1,0 +1,25 @@
+ngnamespace_registry:
+  version: "1.0"
+  owner: "IndestructibleAutoOps"
+  scope: "ng-namespace-governance"
+  references:
+    core:
+      path: gov-governance-compliance-platform/governance/naming/ng-namespace-core.yaml
+    era1:
+      path: gov-governance-compliance-platform/governance/naming/ng-era1-namespace.yaml
+    era2:
+      path: gov-governance-compliance-platform/governance/naming/ng-era2-namespace.yaml
+    era3:
+      path: gov-governance-compliance-platform/governance/naming/ng-era3-namespace.yaml
+    cross_era:
+      path: gov-governance-compliance-platform/governance/naming/ng-cross-era-namespace.yaml
+    mappings:
+      era1_to_era2:
+        path: gov-governance-compliance-platform/governance/naming/ng-era1-era2-mapping.yaml
+      era2_to_era3:
+        path: gov-governance-compliance-platform/governance/naming/ng-era2-era3-mapping.yaml
+  documents:
+    era_comparison:
+      path: gov-governance-compliance-platform/governance/naming/ng-era-comparison.md
+  notes:
+    - "Registry only; does not overwrite existing governance files."

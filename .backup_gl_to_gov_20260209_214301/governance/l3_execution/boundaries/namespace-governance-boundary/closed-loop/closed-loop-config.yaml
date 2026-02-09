@@ -1,0 +1,197 @@
+# NG 閉環治理系統配置
+# Closed-Loop Governance Configuration v2
+#
+# 此配置定義閉環的所有可調參數。
+# 修改此文件需經過治理審查流程。
+
+apiVersion: ng.governance/v3
+kind: ClosedLoopConfiguration
+metadata:
+  ng_code: NG90200
+  name: closed-loop-governance-config
+  version: "2.0.0"
+  status: active
+
+spec:
+  # =================================================================
+  # Phase 1: 狀態鎖定配置
+  # =================================================================
+  state_locking:
+    algorithm: "SHA3-512"
+    chain_storage: "ng-namespace-governance/closed-loop/data/state_chain.json"
+    enforce_parent_hash: true
+    parameters:
+      - name: "namespace_coverage"
+        initial_value: 0.95
+        tolerance: 0.05
+        unit: "ratio"
+      - name: "validation_pass_rate"
+        initial_value: 0.98
+        tolerance: 0.02
+        unit: "ratio"
+      - name: "closure_completeness"
+        initial_value: 0.99
+        tolerance: 0.01
+        unit: "ratio"
+
+  # =================================================================
+  # Phase 2: 驗證門配置
+  # =================================================================
+  verification_gates:
+    # Layer 0: 不可繞過
+    layer_0_assumption:
+      gate_id: "V0_assumption_verification"
+      metric: "initial_assumptions_documented"
+      threshold: true
+      comparator: "eq"
+      failure_action: "block"
+      can_be_bypassed: false
+      description: "初始假設必須明確文檔化"
+
+    # Layer 1: 內部一致性
+    layer_1_internal:
+      gate_id: "V1_internal_consistency"
+      metric: "hash_divergence"
+      threshold: 0.0
+      comparator: "lte"
+      failure_action: "log_and_continue"
+      can_be_bypassed: true
+
+    # Layer 2: 外部可驗證性
+    layer_2_external:
+      gate_id: "V2_external_verifiability"
+      metric: "validation_rate"
+      threshold: 0.95
+      comparator: "gte"
+      failure_action: "warn_and_continue"
+      can_be_bypassed: true
+
+    # Layer 3: 規模穩定性
+    layer_3_scale:
+      gate_id: "V3_scale_stability"
+      metric: "performance_variance"
+      threshold: 0.03
+      comparator: "lte"
+      failure_action: "throttle"
+      can_be_bypassed: true
+
+    # Layer 4: 因果鏈
+    layer_4_causal:
+      gate_id: "V4_causal_completeness"
+      metric: "proof_chain_coverage"
+      threshold: 0.90
+      comparator: "gte"
+      failure_action: "log_and_continue"
+      can_be_bypassed: true
+
+  # =================================================================
+  # Phase 3: 決策引擎配置
+  # =================================================================
+  decision_engine:
+    # 外部約束（不可協商）
+    external_constraints:
+      max_cycles: 100
+      time_budget_seconds: 3600
+      resource_budget_units: 1000
+
+    # 錯誤限制
+    error_limit: 10
+
+    # 決策優先級
+    priority_order:
+      - "business_objective_met"
+      - "manual_stop_requested"
+      - "time_budget_exhausted"
+      - "resource_budget_exhausted"
+      - "max_cycles_reached"
+      - "error_limit_reached"
+      - "verification_blocked"
+      - "adaptive_adjustment"
+      - "standard_continue"
+
+  # =================================================================
+  # Phase 4: 成本評估配置
+  # =================================================================
+  cost_evaluation:
+    # 收益量化權重（基於已實現數據）
+    benefit_weights:
+      insights_documented: 10.0
+      problems_resolved: 50.0
+      assumptions_eliminated: 20.0
+      efficiency_gain: 100.0
+      error_rate_reduction: 200.0
+
+    # 趨勢計算窗口
+    trend_window: 3  # 最近 N 輪
+
+    # 信心度模型
+    confidence_model:
+      base: 0.5
+      increment_per_cycle: 0.1
+      max: 0.99
+
+  # =================================================================
+  # Phase 5: 審計追蹤配置
+  # =================================================================
+  audit_trail:
+    algorithm: "SHA3-256"
+    storage: "ng-namespace-governance/closed-loop/data/audit_trail.json"
+    tamper_protection: "cryptographic_chain"
+    retention: "permanent"
+    real_time_logging: true
+
+    severity_levels:
+      - DEBUG
+      - INFO
+      - WARNING
+      - ERROR
+      - CRITICAL
+
+  # =================================================================
+  # 治理合規映射
+  # =================================================================
+  compliance_mapping:
+    SOC2_Type_II:
+      CC6.1: "state_locking"         # 系統變更管理
+      CC7.1: "verification_gates"     # 系統監控
+      CC7.2: "audit_trail"           # 異常檢測
+      CC8.1: "decision_engine"       # 變更管理流程
+
+    ISO_27001:
+      A.12.1.2: "decision_engine"    # 變更管理
+      A.12.4.1: "audit_trail"       # 事件記錄
+      A.12.4.3: "audit_trail"       # 管理員活動日誌
+      A.14.2.2: "verification_gates" # 系統變更控制
+
+    GDPR:
+      Article_30: "audit_trail"      # 處理活動記錄
+      Article_32: "state_locking"    # 處理安全性
+      Article_35: "cost_evaluator"   # 數據保護影響評估
+
+  # =================================================================
+  # 閉環完整性驗證標準
+  # =================================================================
+  integrity_criteria:
+    reproducibility:
+      description: "相同輸入 -> 相同 SHA3-512 hash"
+      threshold: 1.0  # 100%
+
+    verification_pass_rate:
+      description: "V0-V4 通過率"
+      threshold: 0.95  # >= 95%
+
+    error_accumulation:
+      description: "累積誤差"
+      threshold: 0.03  # <= 3%
+
+    decision_accuracy:
+      description: "決策判定準確率"
+      threshold: 0.98  # >= 98%
+
+    audit_completeness:
+      description: "審計鏈完整性"
+      threshold: 1.0  # 100%
+
+    cost_measurability:
+      description: "ROI 計算精度"
+      threshold: 0.99  # >= 99%

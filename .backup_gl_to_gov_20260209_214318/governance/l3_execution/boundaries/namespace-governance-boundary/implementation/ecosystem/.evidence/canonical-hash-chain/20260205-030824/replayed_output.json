@@ -1,0 +1,10 @@
+{
+  "action": "restart_container",
+  "action_parameters": {
+    "service": "api-gateway",
+    "container": "container-1",
+    "grace_period_seconds": 30
+  },
+  "execution_status": "success",
+  "duration_ms": 5000
+}

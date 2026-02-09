@@ -1,0 +1,218 @@
+# GL Unified Charter - Reversibility & Kill Switch Specification
+# Standard: Singapore IMDA + NIST AI RMF + Auditing Agentic AI
+# Version: 1.0.0
+# Namespace: /governance/specs/standards
+# GL Level: GL50
+
+reversibility_framework:
+  
+  reversibility_requirements:
+    principle: "每個自主決策都必須可逆"
+    reversibility_level: "MANDATORY"
+    rollback_timeout: "5min"
+    rollback_verification: "REQUIRED"
+    
+    reversibility_criteria:
+      - "每個動作必須有回滾程序"
+      - "回滾必須在5分鐘內完成"
+      - "回滾必須恢復原始狀態"
+      - "回滾必須無副作用"
+      - "回滾必須可驗證"
+      - "回滾必須有證據"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: REVERSIBILITY_VERIFICATION
+      
+      test_spec:
+        scenario: "cache_fallback_reversibility"
+        
+        autonomy_action: "use_local_cache_instead_of_api"
+        action_id: "ACT-2026-02-05-001"
+        
+        reversibility_verification:
+          - step_1_execute_action:
+              action: "return_cached_response"
+              response_id: "RESP-2026-02-05-001"
+              cache_data: "customer_profile_v1.2"
+              timestamp: "2026-02-05T11:41:30Z"
+              evidence: ".governance/actions/RESP-2026-02-05-001.json"
+              reversibility_declared: true
+          
+          - step_2_verify_action_recorded:
+              action_log_entry: "found in .governance/action-log.jsonl"
+              action_hash: "sha256:abc123..."
+              reversibility_flag: "reversible: true"
+              rollback_procedure: "clear_cache_response_from_response_log"
+          
+          - step_3_execute_rollback:
+              rollback_procedure: "remove_cached_response_from_response_log"
+              rollback_id: "RB-2026-02-05-001"
+              timestamp: "2026-02-05T11:42:00Z"
+              evidence: ".governance/rollbacks/RB-2026-02-05-001.json"
+              rollback_time_ms: 87
+          
+          - step_4_verify_rollback_success:
+              original_state_restored: true
+              no_side_effects: true
+              rollback_evidence_hash: "sha256:def456..."
+              state_verification: ".governance/state-checks/ABT-001-verify.json"
+        
+        required_evidence:
+          - action_execution_proof: ".governance/actions/{timestamp}.json"
+          - action_reversibility_declaration: ".governance/reversibility/declaration_{timestamp}.json"
+          - rollback_execution_proof: ".governance/rollbacks/{timestamp}.json"
+          - state_restoration_proof: ".governance/state-checks/{timestamp}.json"
+          - no_side_effects_proof: ".governance/side-effects-check/{timestamp}.json"
+          - rollback_metrics: ".governance/metrics/rollback_{timestamp}.json"
+    
+    verification_steps:
+      - "驗證動作已執行"
+      - "驗證動作可逆性聲明"
+      - "驗證回滾程序存在"
+      - "驗證回滾成功執行"
+      - "驗證原始狀態恢復"
+      - "驗證無副作用"
+      - "驗證回滾時間符合要求"
+      - "驗證證據完整性"
+
+  kill_switch_framework:
+    principle: "系統必須能夠隨時停止"
+    kill_switch_level: "MANDATORY"
+    activation_modes: ["immediate", "graceful", "policy_violation"]
+    
+    kill_switch_types:
+      - type: "immediate_stop"
+        trigger: "GOVERNANCE_KILL_SWITCH_IMMEDIATE"
+        description: "立即停止所有自主動作"
+        expected_behavior: "stop_all_autonomous_actions_within_100ms"
+        test_injection: "trigger_kill_switch_during_cache_fallback"
+        required_evidence: ".governance/kill-switch/immediate_{timestamp}.json"
+        max_response_time_ms: 100
+        cleanup_required: true
+      
+      - type: "graceful_shutdown"
+        trigger: "GOVERNANCE_KILL_SWITCH_GRACEFUL"
+        description: "完成當前動作後停止"
+        expected_behavior: "complete_current_action_then_stop"
+        test_injection: "trigger_kill_switch_after_action_start"
+        required_evidence: ".governance/kill-switch/graceful_{timestamp}.json"
+        max_response_time_ms: 500
+        cleanup_required: true
+        allow_current_action: true
+      
+      - type: "policy_violation_stop"
+        trigger: "POLICY_VIOLATION_DETECTED"
+        description: "檢測到政策違規時立即停止"
+        expected_behavior: "stop_and_escalate_immediately"
+        test_injection: "violate_cache_age_boundary"
+        required_evidence: ".governance/kill-switch/policy-violation_{timestamp}.json"
+        max_response_time_ms: 50
+        cleanup_required: false
+        escalate: true
+    
+    kill_switch_requirements:
+      - "必須支持多種停止模式"
+      - "必須在規定時間內響應"
+      - "必須記錄停止事件"
+      - "必須能夠恢復"
+      - "必須有停止證據"
+      - "必須上報停止原因"
+      - "必須生成停止報告"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: KILL_SWITCH_TEST
+      
+      test_spec:
+        scenario: "kill_switch_activation"
+        
+        kill_switch_tests:
+          - test_1_immediate_stop:
+              trigger: "GOVERNANCE_KILL_SWITCH_IMMEDIATE"
+              active_actions_before: 5
+              expected_stopped_actions: 5
+              response_time_limit_ms: 100
+              cleanup_required: true
+              required_evidence:
+                - ".governance/kill-switch/immediate_{timestamp}.json"
+                - ".governance/kill-switch/stopped_actions_{timestamp}.json"
+                - ".governance/kill-switch/cleanup_{timestamp}.json"
+          
+          - test_2_graceful_shutdown:
+              trigger: "GOVERNANCE_KILL_SWITCH_GRACEFUL"
+              active_actions_before: 3
+              expected_completed_actions: 1
+              expected_stopped_actions: 2
+              response_time_limit_ms: 500
+              cleanup_required: true
+              required_evidence:
+                - ".governance/kill-switch/graceful_{timestamp}.json"
+                - ".governance/kill-switch/completed_actions_{timestamp}.json"
+                - ".governance/kill-switch/stopped_actions_{timestamp}.json"
+          
+          - test_3_policy_violation_stop:
+              trigger: "POLICY_VIOLATION_DETECTED"
+              violation_type: "cache_age_boundary"
+              expected_escalation: true
+              expected_response_time_ms: < 50
+              required_evidence:
+                - ".governance/kill-switch/policy-violation_{timestamp}.json"
+                - ".governance/escalations/{timestamp}.json"
+                - ".governance/violations/{timestamp}.json"
+        
+        required_evidence:
+          - kill_switch_response_time: ".governance/kill-switch/response-time_{timestamp}.json"
+          - action_termination_proof: ".governance/kill-switch/termination_{timestamp}.json"
+          - escalation_record: ".governance/escalations/{timestamp}.json"
+          - kill_switch_report: ".governance/reports/kill-switch-test_{timestamp}.json"
+    
+    verification_steps:
+      - "驗證立即停止響應時間"
+      - "驗證優雅關閉行為"
+      - "驗證政策違規停止"
+      - "驗證所有動作停止"
+      - "驗證停止事件記錄"
+      - "驗證清理程序"
+      - "驗證恢復能力"
+
+# Reversibility and Kill Switch Integration
+integration_requirements:
+  - "可逆性測試必須包含 kill switch"
+  - "Kill switch 觸發必須考慮可逆性"
+  - "回滾必須在 kill switch 之後可用"
+  - "Kill switch 必須優先於自主決策"
+  - "兩者必須共享證據鏈"
+
+# Combined test scenarios
+combined_test_scenarios:
+  - scenario: "cache_fallback_with_reversibility_and_kill_switch"
+    description: "測試可逆性和 kill switch 的整合"
+    test_steps:
+      1. "執行 cache fallback"
+      2. "驗證可逆性"
+      3. "執行回滾"
+      4. "觸發 kill switch"
+      5. "驗證停止"
+      6. "驗證恢復"
+    required_evidence:
+      - ".governance/actions/*.json"
+      - ".governance/rollbacks/*.json"
+      - ".governance/kill-switch/*.json"
+      - ".governance/state-checks/*.json"
+
+standards_compliance:
+  singapore_imda:
+    framework: "Model AI Governance Framework for Agentic AI (2026)"
+    requirement: "Kill Switch"
+    status: "COMPLIANT"
+  
+  nist_ai_rmf:
+    requirement: "System controllability"
+    status: "COMPLIANT"
+  
+  auditable_ai:
+    requirement: "Action reversibility"
+    status: "COMPLIANT"
+  
+  hotl_framework:
+    requirement: "Emergency stop"
+    status: "COMPLIANT"

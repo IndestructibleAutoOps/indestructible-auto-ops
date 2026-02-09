@@ -1,0 +1,31 @@
+# @GL-governed
+# @GL-layer: search
+# @GL-semantic: naming-registry
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+# Naming Convention Registry
+# GL-Layer: GL06 (Root Policy)
+# Closure-Signal: manifest
+
+metadata:
+  name: naming-registry
+  version: "1.0.0"
+  layer: "GL06"
+
+conventions:
+  directories:
+    pattern: '^[a-z0-9\-]+$'
+    case: "kebab-case"
+    examples:
+      valid: ["search-system", "indexing", "analytics"]
+      invalid: ["SearchSystem", "search_system", "Search-System"]
+  files:
+    patterns:
+      kebab-case: '^[a-z0-9\-\.]+$'
+      snake_case: '^[a-z0-9_\.]+$'
+    cases: ["kebab-case", "snake_case"]
+    examples:
+      valid: ["search-config.yaml", "bulk_indexer.py", "index-mapping.yaml"]
+      invalid: ["SearchConfig.yaml", "bulkIndexer.py", "indexMapping.yaml"]

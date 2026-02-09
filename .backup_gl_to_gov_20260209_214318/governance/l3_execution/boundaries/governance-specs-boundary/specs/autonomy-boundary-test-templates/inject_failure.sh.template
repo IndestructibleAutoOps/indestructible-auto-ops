@@ -1,0 +1,97 @@
+#!/bin/bash
+# Autonomy Boundary Test - Failure Injection Template
+# Test ID: {test_id}
+# Scenario: {scenario}
+# Generated: {timestamp}
+# Mode: CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST
+# MNGA Version: v2.0
+
+set -euo pipefail
+
+# ===== 元數據 =====
+TEST_ID="{test_id}"
+SCENARIO="{scenario}"
+TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+NAMESPACE="/governance/kernel/tests/autonomy-boundary"
+LAYER="kernel"
+
+# ===== MNGA 事件日誌 =====
+get_next_event_id() {
+    local event_stream="/workspace/ecosystem/.governance/event-stream.jsonl"
+    if [ -f "$event_stream" ]; then
+        local last_id=$(tail -1 "$event_stream" | jq -r '.event_id // "00000000-0000-0000-0000-000000000000"')
+        # Simple UUID increment simulation
+        echo "${last_id}"
+    else
+        echo "00000000-0000-0000-0000-000000000001"
+    fi
+}
+
+log_governance_event() {
+    local event_type=$1
+    local payload=$2
+    
+    local event_id=$(uuidgen 2>/dev/null || echo "$(date +%s%N)-$(hostname)")
+    
+    cat >> /workspace/ecosystem/.governance/event-stream.jsonl <<EOF
+{
+  "event_id": "$event_id",
+  "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "event_type": "test_${event_type}",
+  "namespace": "${NAMESPACE}",
+  "layer": "${LAYER}",
+  "platform": "test",
+  "era": "current-era",
+  "test_id": "${TEST_ID}",
+  "scenario": "${SCENARIO}",
+  "payload": ${payload}
+}
+EOF
+    
+    echo "📝 GL Event logged: ${event_type}"
+}
+
+# ===== 證據目錄 =====
+EVIDENCE_DIR="tests/gl/autonomy-boundary/${SCENARIO}/evidence"
+INJECTION_DIR="${EVIDENCE_DIR}/injection"
+mkdir -p "${INJECTION_DIR}"
+
+# ===== 故障注入 =====
+echo "🧨 [${TEST_ID}] 開始注入故障: ${SCENARIO}"
+log_governance_event "injection_start" '{"status": "starting"}'
+
+{injection_commands}
+
+# ===== 驗證注入成功 =====
+echo "🔍 驗證故障注入..."
+{verification_commands}
+
+# ===== 產生注入證據 =====
+cat > "${INJECTION_DIR}/injection_trace.json" <<EOF
+{
+  "test_id": "${TEST_ID}",
+  "scenario": "${SCENARIO}",
+  "namespace": "${NAMESPACE}",
+  "injected_at": "${TIMESTAMP}",
+  "failures_injected": [
+    {injected_failures_list}
+  ],
+  "injection_hash": "$(echo -n "${SCENARIO}${TIMESTAMP}" | sha256sum | cut -d' ' -f1)",
+  "gl_event_logged": true,
+  "mnga_compliant": true
+}
+EOF
+
+# 註冊到 hash registry
+HASH=$(sha256sum "${INJECTION_DIR}/injection_trace.json" | cut -d' ' -f1)
+jq --arg path "${INJECTION_DIR}/injection_trace.json" \
+   --arg hash "${HASH}" \
+   '. += {"\($path)": {"sha256": $hash, "timestamp": "${TIMESTAMP}"}}' \
+   /workspace/ecosystem/.governance/hash-registry.json > /tmp/hash-registry.json
+mv /tmp/hash-registry.json /workspace/ecosystem/.governance/hash-registry.json
+
+log_governance_event "injection_complete" '{"status": "success", "evidence_path": "'"${INJECTION_DIR}/injection_trace.json"'"}'
+
+echo "✅ [${TEST_ID}] 故障注入完成"
+echo "📄 證據: ${INJECTION_DIR}/injection_trace.json"
+echo "🔐 Hash 已註冊到 .governance/hash-registry.json"

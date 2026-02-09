@@ -1,0 +1,187 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: generator.gl/v1
+kind: GeneratorSpec
+metadata:
+  name: gov-generator-spec
+  version: "1.0.0"
+  description: "GL 生成器規範 - 定義命名生成器的規範與介面"
+  category: generator
+  compliance:
+    - gov-meta-specifications
+    - gov-extension-framework
+
+spec:
+  generatorInterface:
+    method: generate
+    description: "生成符合命名規範的名稱"
+    parameters:
+      - name: context
+        type: object
+        required: true
+        description: "生成上下文信息"
+        properties:
+          - name: type
+            type: string
+            description: "資源類型"
+          - name: purpose
+            type: string
+            description: "用途"
+          - name: domain
+            type: string
+            description: "領域"
+          - name: capability
+            type: string
+            description: "能力"
+      
+      - name: namingConvention
+        type: object
+        required: false
+        description: "命名契約規範"
+        properties:
+          - name: format
+            type: string
+            description: "命名格式"
+          - name: prefix
+            type: string
+            description: "前綴"
+          - name: suffix
+            type: string
+            description: "後綴"
+      
+      - name: options
+        type: object
+        required: false
+        description: "生成選項"
+        properties:
+          - name: includeVersion
+            type: boolean
+            description: "是否包含版本"
+          - name: includeEnvironment
+            type: boolean
+            description: "是否包含環境"
+          - name: includeRegion
+            type: boolean
+            description: "是否包含區域"
+    
+    returns:
+      type: string
+      description: "生成的名稱"
+      validation:
+        - "必須符合命名契約"
+        - "必須通過驗證規則"
+
+  generatorTypes:
+    - id: platform-generator
+      name: "平台生成器"
+      description: "生成平台名稱"
+      namingConvention: "gl.{domain}.{capability}-platform"
+      examples:
+        - context:
+            type: platform
+            domain: ai
+            capability: gpt
+          output: "gl.ai.gpt-platform"
+    
+    - id: service-generator
+      name: "服務生成器"
+      description: "生成服務名稱"
+      namingConvention: "{service-name}-service"
+      examples:
+        - context:
+            type: service
+            purpose: user-management
+          output: "user-management-service"
+    
+    - id: api-generator
+      name: "API 生成器"
+      description: "生成 API 名稱"
+      namingConvention: "api-{service-name}"
+      examples:
+        - context:
+            type: api
+            service: user
+          output: "api-user"
+    
+    - id: database-generator
+      name: "資料庫生成器"
+      description: "生成資料庫名稱"
+      namingConvention: "{service-name}-db"
+      examples:
+        - context:
+            type: database
+            service: user
+          output: "user-db"
+
+  validation:
+    preGeneration:
+      - "驗證上下文完整性"
+      - "驗證命名契約存在"
+      - "驗證用戶權限"
+    
+    postGeneration:
+      - "驗證生成名稱符合契約"
+      - "驗證生成名稱通過驗證規則"
+      - "檢查名稱唯一性"
+    
+    onError:
+      - "生成錯誤訊息"
+      - "提供建議修復"
+      - "記錄錯誤日誌"
+
+  bestPractices:
+    - "生成器應該有明確的用途"
+    - "生成器應該遵循命名契約"
+    - "生成器應該通過驗證"
+    - "生成器應該有完整的文檔"
+    - "生成器應該有測試覆蓋"
+    - "生成器應該考慮擴展性"
+
+  extensionSupport:
+    customNamingConventions:
+      method: register_naming_convention
+      parameters:
+        - name: convention_id
+          type: string
+          required: true
+        - name: convention_definition
+          type: object
+          required: true
+    
+    customGenerators:
+      method: register_generator
+      parameters:
+        - name: generator_id
+          type: string
+          required: true
+        - name: generator_implementation
+          type: function
+          required: true
+
+  outputFormats:
+    - format: "raw"
+      description: "原始字符串"
+    
+    - format: "formatted"
+      description: "格式化字符串"
+    
+    - format: "documented"
+      description: "帶文檔的字符串"
+    
+    - format: "json"
+      description: "JSON 格式"
+
+  configuration:
+    defaultNamingConvention:
+      format: "kebab-case"
+      delimiter: "-"
+      prefix: ""
+      suffix: ""
+    
+    validationLevel: "STRICT"
+    allowOverride: false
+    version: "1.0.0"

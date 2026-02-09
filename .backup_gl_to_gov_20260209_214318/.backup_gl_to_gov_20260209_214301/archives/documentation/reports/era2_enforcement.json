@@ -1,0 +1,1295 @@
+{
+  "timestamp": "20260205_140051",
+  "version": "2.0.0",
+  "status": "PASS",
+  "summary": {
+    "total_checks": 18,
+    "passed": 18,
+    "failed": 0,
+    "total_violations": 141,
+    "critical_violations": 0,
+    "high_violations": 0
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 201 個文件，發現 0 個問題",
+      "files_scanned": 201,
+      "execution_time_ms": 22,
+      "violations_count": 0
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1756 個目錄和 3106 個文件，發現 140 個命名問題",
+      "files_scanned": 4862,
+      "execution_time_ms": 375,
+      "violations_count": 140
+    },
+    {
+      "name": "Security Check",
+      "passed": true,
+      "message": "掃描 4673 個文件，發現 0 個安全問題",
+      "files_scanned": 4673,
+      "execution_time_ms": 915,
+      "violations_count": 0
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 29 個證據源，發現 1 個問題",
+      "files_scanned": 29,
+      "execution_time_ms": 31,
+      "violations_count": 1
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 0
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "MNGA Architecture",
+      "passed": true,
+      "message": "檢查 39 個架構組件，發現 0 個問題",
+      "files_scanned": 39,
+      "execution_time_ms": 54,
+      "violations_count": 0
+    },
+    {
+      "name": "Foundation Layer",
+      "passed": true,
+      "message": "Scanned 3 foundation modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Layer",
+      "passed": true,
+      "message": "Checked 4 coordination components, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Engines",
+      "passed": true,
+      "message": "Checked 4 governance engines, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Tools Layer",
+      "passed": true,
+      "message": "Checked 4 critical tools, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Events Layer",
+      "passed": true,
+      "message": "Checked event layer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Complete Naming Enforcer",
+      "passed": true,
+      "message": "Checked complete naming enforcer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Enforcers Completeness",
+      "passed": true,
+      "message": "Checked 4 enforcer modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Services",
+      "passed": true,
+      "message": "Checked 6 coordination services, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Meta-Governance Systems",
+      "passed": true,
+      "message": "Checked 7 meta-governance modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Reasoning System",
+      "passed": true,
+      "message": "Checked reasoning system, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Validators Layer",
+      "passed": true,
+      "message": "Checked validators, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "summarized_conversations",
+      "line_number": null,
+      "message": "目錄 'summarized_conversations' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'summarized-conversations'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "tests/gl/autonomy-boundary/external-api-unavailable",
+      "line_number": null,
+      "message": "目錄 'external-api-unavailable' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'external-api-unavailable'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-hash-divergence",
+      "line_number": null,
+      "message": "目錄 'test-hash-divergence' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-hash-divergence'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-pipeline-interrupted",
+      "line_number": null,
+      "message": "目錄 'test-pipeline-interrupted' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-pipeline-interrupted'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-complement-missing",
+      "line_number": null,
+      "message": "目錄 'test-complement-missing' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-complement-missing'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-yaml-failure",
+      "line_number": null,
+      "message": "目錄 'test-yaml-failure' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-yaml-failure'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-layered-sorting",
+      "line_number": null,
+      "message": "目錄 'test-layered-sorting' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-layered-sorting'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-tool-registry",
+      "line_number": null,
+      "message": "目錄 'test-tool-registry' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-tool-registry'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-canonicalization-invariant",
+      "line_number": null,
+      "message": "目錄 'test-canonicalization-invariant' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-canonicalization-invariant'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-semantic-corruption",
+      "line_number": null,
+      "message": "目錄 'test-semantic-corruption' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-semantic-corruption'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/tests/semantic-defense/test-event-missing-field",
+      "line_number": null,
+      "message": "目錄 'test-event-missing-field' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-event-missing-field'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/governance/hash-spec",
+      "line_number": null,
+      "message": "目錄 'hash-spec' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-spec'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/governance/templates/event-schemas",
+      "line_number": null,
+      "message": "目錄 'event-schemas' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'event-schemas'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/governance/templates/tool-stubs",
+      "line_number": null,
+      "message": "目錄 'tool-stubs' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'tool-stubs'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/governance/templates/artifact-schemas",
+      "line_number": null,
+      "message": "目錄 'artifact-schemas' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'artifact-schemas'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/.evidence/semantic-tokens",
+      "line_number": null,
+      "message": "目錄 'semantic-tokens' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'semantic-tokens'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/replayability-reports",
+      "line_number": null,
+      "message": "目錄 'replayability-reports' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'replayability-reports'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/hash-boundaries",
+      "line_number": null,
+      "message": "目錄 'hash-boundaries' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-boundaries'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/era-seals",
+      "line_number": null,
+      "message": "目錄 'era-seals' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'era-seals'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/wagb/append-only-events",
+      "line_number": null,
+      "message": "目錄 'append-only-events' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'append-only-events'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/tools/compliance/narrative_banlist.yaml",
+      "line_number": null,
+      "message": "配置文件 'narrative_banlist.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'narrative-banlist.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/tools/compliance/adaptive_rules.yaml",
+      "line_number": null,
+      "message": "配置文件 'adaptive_rules.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'adaptive-rules.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/hash_boundary.yaml",
+      "line_number": null,
+      "message": "配置文件 'hash_boundary.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-boundary.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/evidence_chain_integrity.yaml",
+      "line_number": null,
+      "message": "配置文件 'evidence_chain_integrity.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'evidence-chain-integrity.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/automated_enforcement_pipeline.yaml",
+      "line_number": null,
+      "message": "配置文件 'automated_enforcement_pipeline.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'automated-enforcement-pipeline.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/immutable_core_sealing.yaml",
+      "line_number": null,
+      "message": "配置文件 'immutable_core_sealing.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'immutable-core-sealing.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/narrative_free_enforcement.yaml",
+      "line_number": null,
+      "message": "配置文件 'narrative_free_enforcement.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'narrative-free-enforcement.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/governance_layer_boundaries.yaml",
+      "line_number": null,
+      "message": "配置文件 'governance_layer_boundaries.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'governance-layer-boundaries.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/hash_policy.yaml",
+      "line_number": null,
+      "message": "配置文件 'hash_policy.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-policy.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/enhanced_zero_tolerance_implementation.yaml",
+      "line_number": null,
+      "message": "配置文件 'enhanced_zero_tolerance_implementation.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'enhanced-zero-tolerance-implementation.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/standards/intent_verification_protocol.yaml",
+      "line_number": null,
+      "message": "配置文件 'intent_verification_protocol.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'intent-verification-protocol.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/standards/reversibility_and_kill_switch.yaml",
+      "line_number": null,
+      "message": "配置文件 'reversibility_and_kill_switch.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'reversibility-and-kill-switch.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/standards/control_tier_classification.yaml",
+      "line_number": null,
+      "message": "配置文件 'control_tier_classification.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'control-tier-classification.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/standards/autonomy_tiers.yaml",
+      "line_number": null,
+      "message": "配置文件 'autonomy_tiers.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'autonomy-tiers.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/specs/standards/governance_chain_of_responsibility.yaml",
+      "line_number": null,
+      "message": "配置文件 'governance_chain_of_responsibility.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'governance-chain-of-responsibility.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/closure/governance_closure_spec.yaml",
+      "line_number": null,
+      "message": "配置文件 'governance_closure_spec.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'governance-closure-spec.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/validation/autonomy_boundary_spec.yaml",
+      "line_number": null,
+      "message": "配置文件 'autonomy_boundary_spec.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'autonomy-boundary-spec.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/validation/bootstrap_spec.yaml",
+      "line_number": null,
+      "message": "配置文件 'bootstrap_spec.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'bootstrap-spec.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/validation/canonical_hash_chain_spec.yaml",
+      "line_number": null,
+      "message": "配置文件 'canonical_hash_chain_spec.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'canonical-hash-chain-spec.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/validation/selfhealing_replay_spec.yaml",
+      "line_number": null,
+      "message": "配置文件 'selfhealing_replay_spec.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'selfhealing-replay-spec.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/architecture/violations_update_architecture.yaml",
+      "line_number": null,
+      "message": "配置文件 'violations_update_architecture.yaml' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'violations-update-architecture.yaml'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "step1_internal_retrieval.json",
+      "line_number": null,
+      "message": "配置文件 'step1_internal_retrieval.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'step1-internal-retrieval.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "indestructible_autoops_comprehensive_analysis.json",
+      "line_number": null,
+      "message": "配置文件 'indestructible_autoops_comprehensive_analysis.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'indestructible-autoops-comprehensive-analysis.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "monica_analysis.json",
+      "line_number": null,
+      "message": "配置文件 'monica_analysis.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'monica-analysis.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/.evidence/test_report_2026-02-05T12:52:01.822130.json",
+      "line_number": null,
+      "message": "配置文件 'test_report_2026-02-05T12:52:01.822130.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-report-2026-02-05T12:52:01.822130.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/governance/.evidence/test_2026-02-05T12:52:01.821159Z.json",
+      "line_number": null,
+      "message": "配置文件 'test_2026-02-05T12:52:01.821159Z.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-2026-02-05T12:52:01.821159Z.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/hash_stability_yaml_anchors.json",
+      "line_number": null,
+      "message": "配置文件 'hash_stability_yaml_anchors.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-stability-yaml-anchors.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/hash_stability_whitespace.json",
+      "line_number": null,
+      "message": "配置文件 'hash_stability_whitespace.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-stability-whitespace.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/semantic_drift_overall.json",
+      "line_number": null,
+      "message": "配置文件 'semantic_drift_overall.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'semantic-drift-overall.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/hash_stability_determinism.json",
+      "line_number": null,
+      "message": "配置文件 'hash_stability_determinism.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-stability-determinism.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/semantic_integrity.json",
+      "line_number": null,
+      "message": "配置文件 'semantic_integrity.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'semantic-integrity.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/semantic_drift.json",
+      "line_number": null,
+      "message": "配置文件 'semantic_drift.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'semantic-drift.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/hash_stability_overall.json",
+      "line_number": null,
+      "message": "配置文件 'hash_stability_overall.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-stability-overall.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/self_healing_determinism.json",
+      "line_number": null,
+      "message": "配置文件 'self_healing_determinism.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'self-healing-determinism.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/hash_stability_field_order.json",
+      "line_number": null,
+      "message": "配置文件 'hash_stability_field_order.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-stability-field-order.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/tests/hash_stability_timestamp.json",
+      "line_number": null,
+      "message": "配置文件 'hash_stability_timestamp.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hash-stability-timestamp.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/closure/execution_summary.json",
+      "line_number": null,
+      "message": "配置文件 'execution_summary.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'execution-summary.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/closure/enforcement_artifacts_summary.json",
+      "line_number": null,
+      "message": "配置文件 'enforcement_artifacts_summary.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'enforcement-artifacts-summary.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/governance/narrative_violations.json",
+      "line_number": null,
+      "message": "配置文件 'narrative_violations.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'narrative-violations.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/governance/hallucination_overall.json",
+      "line_number": null,
+      "message": "配置文件 'hallucination_overall.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hallucination-overall.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/governance/hallucination_hashes.json",
+      "line_number": null,
+      "message": "配置文件 'hallucination_hashes.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hallucination-hashes.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/governance/hallucination_closure_conditions.json",
+      "line_number": null,
+      "message": "配置文件 'hallucination_closure_conditions.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hallucination-closure-conditions.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/governance/hallucination_modules.json",
+      "line_number": null,
+      "message": "配置文件 'hallucination_modules.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hallucination-modules.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/evidence/governance/hallucination_artifacts.json",
+      "line_number": null,
+      "message": "配置文件 'hallucination_artifacts.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'hallucination-artifacts.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/language_map.json",
+      "line_number": null,
+      "message": "配置文件 'language_map.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'language-map.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/tests/selfhealing/testreplayability_606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json",
+      "line_number": null,
+      "message": "配置文件 'testreplayability_606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'testreplayability-606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/canonical_output.json",
+      "line_number": null,
+      "message": "配置文件 'canonical_output.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'canonical-output.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/canonical_trace.json",
+      "line_number": null,
+      "message": "配置文件 'canonical_trace.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'canonical-trace.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/canonical_input.json",
+      "line_number": null,
+      "message": "配置文件 'canonical_input.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'canonical-input.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/replay_verification_report.json",
+      "line_number": null,
+      "message": "配置文件 'replay_verification_report.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'replay-verification-report.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/replayed_output.json",
+      "line_number": null,
+      "message": "配置文件 'replayed_output.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'replayed-output.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/replayed_trace.json",
+      "line_number": null,
+      "message": "配置文件 'replayed_trace.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'replayed-trace.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/canonical-hash-chain/20260205-030824/tamper_check_report.json",
+      "line_number": null,
+      "message": "配置文件 'tamper_check_report.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'tamper-check-report.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/reports/narrative_free_report_1770269225.json",
+      "line_number": null,
+      "message": "配置文件 'narrative_free_report_1770269225.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'narrative-free-report-1770269225.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/reports/hashes/event_hashes.json",
+      "line_number": null,
+      "message": "配置文件 'event_hashes.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'event-hashes.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/traces/summary_trace_20260205_060359.json",
+      "line_number": null,
+      "message": "配置文件 'summary_trace_20260205_060359.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'summary-trace-20260205-060359.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/traces/governance_bootstrap_trace.json",
+      "line_number": null,
+      "message": "配置文件 'governance_bootstrap_trace.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'governance-bootstrap-trace.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/traces/summary_trace_20260205_052834.json",
+      "line_number": null,
+      "message": "配置文件 'summary_trace_20260205_052834.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'summary-trace-20260205-052834.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/compliance/narrative_free_report.json",
+      "line_number": null,
+      "message": "配置文件 'narrative_free_report.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'narrative-free-report.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/registry/update_trace_20260205_052705.json",
+      "line_number": null,
+      "message": "配置文件 'update_trace_20260205_052705.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'update-trace-20260205-052705.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/registry/update_trace_20260205_134746.json",
+      "line_number": null,
+      "message": "配置文件 'update_trace_20260205_134746.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'update-trace-20260205-134746.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/registry/update_trace_20260205_060352.json",
+      "line_number": null,
+      "message": "配置文件 'update_trace_20260205_060352.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'update-trace-20260205-060352.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/registry/update_trace_20260205_073519.json",
+      "line_number": null,
+      "message": "配置文件 'update_trace_20260205_073519.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'update-trace-20260205-073519.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/gl-events/1db52b46-8b2f-427b-9765-b977b1d63a65_db_write_blocked.json",
+      "line_number": null,
+      "message": "配置文件 '1db52b46-8b2f-427b-9765-b977b1d63a65_db_write_blocked.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 '1db52b46-8b2f-427b-9765-b977b1d63a65-db-write-blocked.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/gl-events/f1613fe8-abe0-49b8-9a33-4a0bd5d63590_external_api_unavailable.json",
+      "line_number": null,
+      "message": "配置文件 'f1613fe8-abe0-49b8-9a33-4a0bd5d63590_external_api_unavailable.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'f1613fe8-abe0-49b8-9a33-4a0bd5d63590-external-api-unavailable.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/gl-events/e36f5af9-83fb-4395-aed7-f3914421a0ca_external_api_unavailable.json",
+      "line_number": null,
+      "message": "配置文件 'e36f5af9-83fb-4395-aed7-f3914421a0ca_external_api_unavailable.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'e36f5af9-83fb-4395-aed7-f3914421a0ca-external-api-unavailable.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/autonomy-boundary/gl-events/8a880b48-7454-48d3-81c8-8c163ab14620_model_update_blocked.json",
+      "line_number": null,
+      "message": "配置文件 '8a880b48-7454-48d3-81c8-8c163ab14620_model_update_blocked.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 '8a880b48-7454-48d3-81c8-8c163ab14620-model-update-blocked.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/semantic-tokens/test_zh.json",
+      "line_number": null,
+      "message": "配置文件 'test_zh.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-zh.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/semantic-tokens/test_en.json",
+      "line_number": null,
+      "message": "配置文件 'test_en.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-en.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/semantic-tokens/semantic_tokens.json",
+      "line_number": null,
+      "message": "配置文件 'semantic_tokens.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'semantic-tokens.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "ecosystem/.evidence/semantic-tokens/event_hashes.json",
+      "line_number": null,
+      "message": "配置文件 'event_hashes.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'event-hashes.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "tmp/test_tasks.json",
+      "line_number": null,
+      "message": "配置文件 'test_tasks.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-tasks.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "tmp/test_violations.json",
+      "line_number": null,
+      "message": "配置文件 'test_violations.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'test-violations.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260205_000133.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260205_000133.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260205-000133.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_142743.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_142743.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-142743.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_170505.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_170505.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-170505.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/materialization-complement-report-20260204_142106.json",
+      "line_number": null,
+      "message": "配置文件 'materialization-complement-report-20260204_142106.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'materialization-complement-report-20260204-142106.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260205_134818.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260205_134818.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260205-134818.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260205_080407.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260205_080407.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260205-080407.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_232558.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_232558.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-232558.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_112910.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_112910.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-112910.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_015429.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_015429.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-015429.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_233057.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_233057.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-233057.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_051931.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_051931.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-051931.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_232449.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_232449.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-232449.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_003408.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_003408.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-003408.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_165352.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_165352.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-165352.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_223218.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_223218.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-223218.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_234402.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_234402.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-234402.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_231952.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_231952.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-231952.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_102431.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_102431.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-102431.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_113640.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_113640.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-113640.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_223336.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_223336.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-223336.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_215809.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_215809.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-215809.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_133326.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_133326.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-133326.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_223325.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_223325.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-223325.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_120200.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_120200.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-120200.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_234924.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_234924.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-234924.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_204349.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_204349.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-204349.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_103801.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_103801.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-103801.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_113738.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_113738.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-113738.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_125929.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_125929.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-125929.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_162410.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_162410.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-162410.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_135353.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_135353.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-135353.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/materialization-complement-report-20260204_145537.json",
+      "line_number": null,
+      "message": "配置文件 'materialization-complement-report-20260204_145537.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'materialization-complement-report-20260204-145537.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_095757.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_095757.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-095757.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260205_073530.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260205_073530.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260205-073530.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_142559.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_142559.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-142559.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_214457.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_214457.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-214457.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_102124.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_102124.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-102124.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_214600.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_214600.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-214600.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_054548.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_054548.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-054548.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_162419.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_162419.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-162419.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260205_083221.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260205_083221.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260205-083221.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_133225.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_133225.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-133225.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_235912.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_235912.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-235912.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_233828.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_233828.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-233828.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/materialization-complement-report-20260205_003756.json",
+      "line_number": null,
+      "message": "配置文件 'materialization-complement-report-20260205_003756.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'materialization-complement-report-20260205-003756.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260204_125802.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260204_125802.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260204-125802.json'"
+    },
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "governance/specs/autonomy-boundary-test-templates/GL_EVENT_TEMPLATE.json",
+      "line_number": null,
+      "message": "配置文件 'GL_EVENT_TEMPLATE.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'GL-EVENT-TEMPLATE.json'"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "ecosystem/governance/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": true
+  }
+}

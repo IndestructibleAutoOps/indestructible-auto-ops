@@ -1,0 +1,111 @@
+{
+  "workflow_name": "Era-2-ZeroTolerance-Workflow",
+  "start_time": "2026-02-05T19:05:24.513131",
+  "phases": [
+    {
+      "phase_id": "PHASE_01_SEMANTIC_LAYER",
+      "name": "Semantic Layer Activation",
+      "priority": 1000,
+      "blocking": true,
+      "start_time": "2026-02-05T19:05:24.513161",
+      "success": false,
+      "decisions": [
+        {
+          "operation_id": "step_01_01",
+          "decision": "block",
+          "severity": "critical",
+          "reason": "semantic_validation: 缺少語意驗證",
+          "timestamp": "2026-02-05T19:05:24.513570Z",
+          "enforcement_action": "immediate_block",
+          "rule_evaluations": [
+            {
+              "rule_name": "semantic_validation",
+              "priority": 1000,
+              "status": "fail",
+              "condition": "operation.has_semantic_tokens && operation.semantic_verified",
+              "result": false,
+              "reason": "缺少語意驗證",
+              "timestamp": "2026-02-05T19:05:24.513490Z",
+              "evidence": {
+                "semantic_tokens_present": false,
+                "hash_semantic_verified": true
+              },
+              "hash": "3edbb21410ca1a60d5c4aa371f7775b665f5d4378bef499e31158b5c25ab845b"
+            },
+            {
+              "rule_name": "governance_validation",
+              "priority": 1000,
+              "status": "pass",
+              "condition": "operation.glcm_passed && operation.governance_verified",
+              "result": true,
+              "reason": "治理驗證通過",
+              "timestamp": "2026-02-05T19:05:24.513543Z",
+              "evidence": {
+                "glcm_passed": true,
+                "governance_verified": true
+              },
+              "hash": "d503452a693e9f2a16a05fc298c3fce2ec5af5319518eed295c851ec3938f595"
+            },
+            {
+              "rule_name": "evidence_chain_validation",
+              "priority": 1000,
+              "status": "pass",
+              "condition": "operation.evidence_chain_complete && operation.chain_integrity_verified",
+              "result": true,
+              "reason": "證據鏈驗證通過",
+              "timestamp": "2026-02-05T19:05:24.513549Z",
+              "evidence": {
+                "chain_complete": true,
+                "chain_integrity": true
+              },
+              "hash": "3965c9178e6b9fd66963f43e234490647b4f886e68ca5bb193592bdb5c8b817a"
+            },
+            {
+              "rule_name": "hash_verification",
+              "priority": 1000,
+              "status": "pass",
+              "condition": "operation.all_artifacts_hashed && operation.hash_registry_synced",
+              "result": true,
+              "reason": "Hash 驗證通過",
+              "timestamp": "2026-02-05T19:05:24.513554Z",
+              "evidence": {
+                "all_artifacts_hashed": true,
+                "registry_synced": true
+              },
+              "hash": "772cb1e825a648932b0bb91f7c8589a2643a7b14b777a9774144cfbda6fa87b7"
+            },
+            {
+              "rule_name": "no_hallucination_check",
+              "priority": 1000,
+              "status": "pass",
+              "condition": "operation.hallucinations_detected == 0",
+              "result": true,
+              "reason": "無幻覺",
+              "timestamp": "2026-02-05T19:05:24.513559Z",
+              "evidence": {
+                "hallucinations_count": 0,
+                "hallucinations": []
+              },
+              "hash": "36abc5211d92137092ca542b681f208929a3b474be630dc756a06e71873c1f5d"
+            }
+          ],
+          "evidence_chain_hash": "b01ceae0947a1993b7c2d1cdda8bfd44df0afb446ade903f3eda38086bbed146"
+        }
+      ],
+      "violations": [
+        {
+          "type": "policy_violation",
+          "description": "semantic_validation: 缺少語意驗證",
+          "severity": "high"
+        }
+      ],
+      "steps_executed": 1,
+      "end_time": "2026-02-05T19:05:24.550617"
+    }
+  ],
+  "decisions": [],
+  "violations": [],
+  "compliance_score": 0,
+  "end_time": "2026-02-05T19:05:24.550646",
+  "duration_seconds": 0.0375218391418457
+}

@@ -1,0 +1,25 @@
+[IndestructibleAutoOps::ReintegrateBackfill]
+family={{FAMILY}}
+candidate_branch={{SOURCE_BRANCH}}
+target_branch={{TARGET_BRANCH}}
+mode={{MODE}}
+
+selection:
+  score={{SCORE}}
+  signals={{SIGNALS_JSON}}
+
+gates:
+  - clean_worktree
+  - fetch_all
+  - main_ff_latest
+  - candidate_discovery_allowlist
+  - ranking_and_threshold
+  - rebase_or_merge_policy
+  - tests_optional
+  - ci_required
+
+evidence:
+  - .evidence/reintegrate_backfill/reports/discovery.json
+  - .evidence/reintegrate_backfill/reports/ranking.json
+  - .evidence/reintegrate_backfill/reports/selection.json
+  - .evidence/reintegrate_backfill/reports/result.json

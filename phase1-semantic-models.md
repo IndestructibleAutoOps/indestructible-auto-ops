@@ -24,7 +24,7 @@
 ### 1.2 核心治理架構識別
 
 #### 1.2.1 GL Root Semantic Anchor
-**來源檔案:** `.github/governance-legacy/gl-artifacts/GL-ROOT-SEMANTIC-ANCHOR.yaml`
+**來源檔案:** `.github/governance-legacy/gov-artifacts/GL-ROOT-SEMANTIC-ANCHOR.yaml`
 
 **核心定義:**
 ```yaml
@@ -45,7 +45,7 @@ governance_baseline:
 - GL90-99: Meta-Specification Layer (元規範層)
 
 #### 1.2.2 GL Unified Naming Charter
-**來源檔案:** `.github/governance-legacy/gl-artifacts/gl-unified-naming-charter.yaml`
+**來源檔案:** `.github/governance-legacy/gov-artifacts/gov-unified-naming-charter.yaml`
 
 **命名原則:**
 1. **一致性** - 跨層級、模組、語言、工具間保持統一
@@ -74,8 +74,8 @@ governance_baseline:
 
 **不符合 GL 治理的命名範例:**
 ```
-./add-gl-markers-json.py
-./add-gl-markers.py
+./add-gov-markers-json.py
+./add-gov-markers.py
 ./fix-governance-markers.py
 ./semantic_engine/semantic_engine.py
 ```
@@ -98,7 +98,7 @@ governance_baseline:
 
 **遺留治理:**
 - `.github/governance-legacy/`
-  - gl-artifacts/ (30+ 個治理構件)
+  - gov-artifacts/ (30+ 個治理構件)
   - naming-governance-v1-0-0/
   - quantum-naming-v4-0-0/
   - tests/ (完整測試套件)
@@ -121,7 +121,7 @@ governance_baseline:
 #### 1.4.1 結構差異
 **預期結構:**
 ```
-gl-platform/
+gov-platform/
 ├── governance/           # 核心治理
 │   ├── naming-governance/ # 命名治理
 │   └── ...
@@ -137,7 +137,7 @@ semantic_engine/                 # 獨立引擎
 
 **差異:**
 1. 治理目錄分散在 `.github/`、`.governance/` 和根目錄
-2. 缺少統一的 `gl-platform/governance/` 入口
+2. 缺少統一的 `gov-platform/governance/` 入口
 3. `governance-legacy` 表示有遺留系統需要遷移
 4. `semantic_engine` 可能應該被整合到治理架構中
 
@@ -165,7 +165,7 @@ semantic_engine/                 # 獨立引擎
 
 #### 1.4.4 路徑差異
 **預期路徑結構:**
-- `gl-platform/governance/naming-governance/`
+- `gov-platform/governance/naming-governance/`
 
 **實際路徑:**
 - `.github/governance-legacy/...`
@@ -180,7 +180,7 @@ semantic_engine/                 # 獨立引擎
 基於 GL Root Semantic Anchor，目標狀態應建立:
 
 ```
-gl-platform/
+gov-platform/
 ├── governance/                          # GL90-99: Meta-Specification Layer
 │   ├── root-semantic-anchor.yaml        # 根語意錨點
 │   ├── unified-naming-charter.yaml      # 統一命名章程
@@ -229,7 +229,7 @@ gl-platform/
 
 | 類別 | 當前狀態 | 目標狀態 | 差異類型 | 優先級 |
 |------|---------|---------|---------|--------|
-| 治理入口 | 分散在多個位置 | 統一於 `gl-platform/governance/` | 結構重組 | 高 |
+| 治理入口 | 分散在多個位置 | 統一於 `gov-platform/governance/` | 結構重組 | 高 |
 | 語意引擎 | 獨立 `semantic_engine/` | 整合到 `engine/governance/semantic-engine/` | 架構整合 | 高 |
 | 遺留治理 | `governance-legacy/` | 遷移或歸檔 | 遺留處理 | 中 |
 | 本地治理 | `.governance/` | 整合到主治理架構 | 整合 | 中 |
@@ -248,7 +248,7 @@ gl-platform/
 
 | 當前命名 | 問題 | 建議命名 | 理由 |
 |---------|------|---------|------|
-| `add-gl-markers.py` | 缺少 GL 層級標識 | `GL90-99-Script-AddGLMarkers.py` | 屬於 Meta-Specification Layer 的腳本 |
+| `add-gov-markers.py` | 缺少 GL 層級標識 | `GL90-99-Script-AddGLMarkers.py` | 屬於 Meta-Specification Layer 的腳本 |
 | `semantic_engine/` | 未對齊 GL 路徑 | `engine/governance/GL30-49-Semantic-Engine/` | 應在 Execution Layer 的治理域 |
 | `test_naming_validator.py` | 符合規範 | 維持不變 | 已有完整 GL 標記 |
 | `fix-governance-markers.py` | 缺少 GL 層級標識 | `GL90-99-Script-FixGovernanceMarkers.py` | 維護腳本屬於 Meta-Specification Layer |
@@ -257,8 +257,8 @@ gl-platform/
 
 | 當前路徑 | 問題 | 建議路徑 | 理由 |
 |---------|------|---------|------|
-| `.github/governance-legacy/` | 遺留系統 | `gl-platform/governance/archived/legacy/` | 歸檔到治理架構 |
-| `.governance/` | 分散的本地治理 | `gl-platform/governance/` | 統一治理入口 |
+| `.github/governance-legacy/` | 遺留系統 | `gov-platform/governance/archived/legacy/` | 歸檔到治理架構 |
+| `.governance/` | 分散的本地治理 | `gov-platform/governance/` | 統一治理入口 |
 | `semantic_engine/` | 位置錯誤 | `engine/governance/GL30-49-Semantic-Engine/` | 對齊 Execution Layer |
 
 ### 3.5 模組關聯差異
@@ -279,7 +279,7 @@ gl-platform/
 
 ### 4.1 核心治理域
 
-#### 域 A: gl-platform/governance
+#### 域 A: gov-platform/governance
 **狀態:** 缺失 / 需要建立  
 **優先級:** 最高  
 **行動:** 
@@ -287,7 +287,7 @@ gl-platform/
 2. 整合現有治理資產
 3. 建立入口點文檔
 
-#### 域 B: gl-platform/governance/naming-governance
+#### 域 B: gov-platform/governance/naming-governance
 **狀態:** 分散在多個位置  
 **優先級:** 高  
 **行動:**

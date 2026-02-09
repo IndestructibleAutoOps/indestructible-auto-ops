@@ -1,0 +1,17 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-exporter
+  namespace: monitoring
+spec:
+  type: ClusterIP
+  ports:
+  - port: 9100
+    targetPort: 9100
+  selector:
+    app: node-exporter

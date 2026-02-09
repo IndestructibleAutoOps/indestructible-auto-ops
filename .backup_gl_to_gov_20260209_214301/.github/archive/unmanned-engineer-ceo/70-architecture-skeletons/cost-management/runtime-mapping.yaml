@@ -1,0 +1,20 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+runtime_module:
+  root: platform/operations/cost-management
+
+  docs:
+    cost_model: platform/operations/cost-management/docs/cost-model.md
+    optimization_strategies: platform/operations/cost-management/docs/optimization.md
+
+  config:
+    pricing_tiers: platform/operations/cost-management/config/pricing-tiers.yaml

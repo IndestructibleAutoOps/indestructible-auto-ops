@@ -124,10 +124,10 @@ Total Components: 291
   - typing, argparse, re, json, datetime, sys, dataclasses, pathlib, os
 - **Dependents**: 0
 
-## contracts.extensions.gl-extension-points
+## contracts.extensions.gov-extension-points
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/extensions/gl-extension-points.yaml
+- **Path**: ecosystem/contracts/extensions/gov-extension-points.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -159,10 +159,10 @@ Total Components: 291
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.generator.gl-generator-spec
+## contracts.generator.gov-generator-spec
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/generator/gl-generator-spec.yaml
+- **Path**: ecosystem/contracts/generator/gov-generator-spec.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -187,17 +187,17 @@ Total Components: 291
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.governance.gl-governance-layers
+## contracts.governance.gov-governance-layers
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/governance/gl-governance-layers.yaml
+- **Path**: ecosystem/contracts/governance/gov-governance-layers.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.governance.gl-semantic-violation-classifier
+## contracts.governance.gov-semantic-violation-classifier
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml
+- **Path**: ecosystem/contracts/governance/gov-semantic-violation-classifier.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -306,206 +306,206 @@ Total Components: 291
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-build-layer-specification
+## contracts.naming-governance.gov-build-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-build-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-build-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-ci-cd-layer-specification
+## contracts.naming-governance.gov-ci-cd-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-ci-cd-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-ci-cd-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-contract-layer-specification
+## contracts.naming-governance.gov-contract-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-contract-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-contract-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-dependency-layer-specification
+## contracts.naming-governance.gov-dependency-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-dependency-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-dependency-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-deployment-layer-specification
+## contracts.naming-governance.gov-deployment-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-deployment-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-deployment-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-documentation-layer-specification
+## contracts.naming-governance.gov-documentation-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-documentation-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-documentation-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-extensibility-layer-specification
+## contracts.naming-governance.gov-extensibility-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-extensibility-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-extensibility-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-format-layer-specification
+## contracts.naming-governance.gov-format-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-format-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-format-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-generator-layer-specification
+## contracts.naming-governance.gov-generator-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-generator-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-generator-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-governance-layer-specification
+## contracts.naming-governance.gov-governance-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-governance-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-governance-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-indexing-layer-specification
+## contracts.naming-governance.gov-indexing-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-indexing-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-indexing-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-interface-layer-specification
+## contracts.naming-governance.gov-interface-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-interface-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-interface-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-language-layer-specification
+## contracts.naming-governance.gov-language-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-language-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-language-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-metadata-layer-specification
+## contracts.naming-governance.gov-metadata-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-metadata-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-metadata-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-naming-ontology
+## contracts.naming-governance.gov-naming-ontology
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/naming-governance/gl-naming-ontology.yaml
+- **Path**: ecosystem/contracts/naming-governance/gov-naming-ontology.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-naming-ontology-expanded
+## contracts.naming-governance.gov-naming-ontology-expanded
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/naming-governance/gl-naming-ontology-expanded.yaml
+- **Path**: ecosystem/contracts/naming-governance/gov-naming-ontology-expanded.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-observability-layer-specification
+## contracts.naming-governance.gov-observability-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-observability-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-observability-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-packaging-layer-specification
+## contracts.naming-governance.gov-packaging-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-packaging-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-packaging-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-permission-layer-specification
+## contracts.naming-governance.gov-permission-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-permission-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-permission-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-platform-layer-specification
+## contracts.naming-governance.gov-platform-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-platform-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-platform-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-prefix-principles-engineering
+## contracts.naming-governance.gov-prefix-principles-engineering
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-prefix-principles-engineering.md
+- **Path**: ecosystem/contracts/naming-governance/gov-prefix-principles-engineering.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-reasoning-layer-specification
+## contracts.naming-governance.gov-reasoning-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-reasoning-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-security-layer-specification
+## contracts.naming-governance.gov-security-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-security-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-security-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-supply-chain-layer-specification
+## contracts.naming-governance.gov-supply-chain-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-supply-chain-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-supply-chain-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-testing-layer-specification
+## contracts.naming-governance.gov-testing-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-testing-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-testing-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-user-facing-layer-specification
+## contracts.naming-governance.gov-user-facing-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-user-facing-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-user-facing-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-validation-layer-specification
+## contracts.naming-governance.gov-validation-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-validation-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-validation-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.naming-governance.gl-versioning-layer-specification
+## contracts.naming-governance.gov-versioning-layer-specification
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/naming-governance/gl-versioning-layer-specification.md
+- **Path**: ecosystem/contracts/naming-governance/gov-versioning-layer-specification.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.platforms.gl-platforms
+## contracts.platforms.gov-platforms
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/platforms/gl-platforms.yaml
+- **Path**: ecosystem/contracts/platforms/gov-platforms.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -523,66 +523,66 @@ Total Components: 291
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.reasoning.gl-reasoning-rules
+## contracts.reasoning.gov-reasoning-rules
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/reasoning/gl-reasoning-rules.yaml
+- **Path**: ecosystem/contracts/reasoning/gov-reasoning-rules.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.validation.gl-validation-rules
+## contracts.validation.gov-validation-rules
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/validation/gl-validation-rules.yaml
+- **Path**: ecosystem/contracts/validation/gov-validation-rules.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-audit-report-template
+## contracts.verification.gov-audit-report-template
 
 - **Type**: documentation
-- **Path**: ecosystem/contracts/verification/gl-audit-report-template.md
+- **Path**: ecosystem/contracts/verification/gov-audit-report-template.md
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-proof-model
+## contracts.verification.gov-proof-model
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/verification/gl-proof-model.yaml
+- **Path**: ecosystem/contracts/verification/gov-proof-model.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-proof-model-executable
+## contracts.verification.gov-proof-model-executable
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/verification/gl-proof-model-executable.yaml
+- **Path**: ecosystem/contracts/verification/gov-proof-model-executable.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-verifiable-report-standard
+## contracts.verification.gov-verifiable-report-standard
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/verification/gl-verifiable-report-standard.yaml
+- **Path**: ecosystem/contracts/verification/gov-verifiable-report-standard.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-verifiable-report-standard-executable
+## contracts.verification.gov-verifiable-report-standard-executable
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/verification/gl-verifiable-report-standard-executable.yaml
+- **Path**: ecosystem/contracts/verification/gov-verifiable-report-standard-executable.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-verification-engine-spec
+## contracts.verification.gov-verification-engine-spec
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/verification/gl-verification-engine-spec.yaml
+- **Path**: ecosystem/contracts/verification/gov-verification-engine-spec.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## contracts.verification.gl-verification-engine-spec-executable
+## contracts.verification.gov-verification-engine-spec-executable
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/contracts/verification/gl-verification-engine-spec-executable.yaml
+- **Path**: ecosystem/contracts/verification/gov-verification-engine-spec-executable.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1100,10 +1100,10 @@ Total Components: 291
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## foundation.schemas.gl-rule.schema
+## foundation.schemas.gov-rule.schema
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/foundation/schemas/gl-rule.schema.yaml
+- **Path**: ecosystem/foundation/schemas/gov-rule.schema.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1886,10 +1886,10 @@ Total Components: 291
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## registry.naming.gl-naming-contracts-registry
+## registry.naming.gov-naming-contracts-registry
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/registry/naming/gl-naming-contracts-registry.yaml
+- **Path**: ecosystem/registry/naming/gov-naming-contracts-registry.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1929,31 +1929,31 @@ Total Components: 291
   - yaml, json
 - **Dependents**: 0
 
-## registry.platforms.gl-platform-definition
+## registry.platforms.gov-platform-definition
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/registry/platforms/gl-platform-definition.yaml
+- **Path**: ecosystem/registry/platforms/gov-platform-definition.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## registry.platforms.gl-platform-lifecycle-spec
+## registry.platforms.gov-platform-lifecycle-spec
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml
+- **Path**: ecosystem/registry/platforms/gov-platform-lifecycle-spec.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## registry.platforms.gl-platforms.index
+## registry.platforms.gov-platforms.index
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/registry/platforms/gl-platforms.index.yaml
+- **Path**: ecosystem/registry/platforms/gov-platforms.index.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
-## registry.platforms.gl-platforms.placement-rules
+## registry.platforms.gov-platforms.placement-rules
 
 - **Type**: yaml_spec
-- **Path**: ecosystem/registry/platforms/gl-platforms.placement-rules.yaml
+- **Path**: ecosystem/registry/platforms/gov-platforms.placement-rules.yaml
 - **Dependencies**: 0
 - **Dependents**: 0
 
@@ -1996,10 +1996,10 @@ Total Components: 291
   - service_agent, traceback, gateway, event_dispatcher, service_client, service_registry, router, time, sys, pathlib, sync_engine, message_bus
 - **Dependents**: 0
 
-## tools.audit.gl-audit-simple
+## tools.audit.gov-audit-simple
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/audit/gl-audit-simple.py
+- **Path**: ecosystem/tools/audit/gov-audit-simple.py
 - **Dependencies**: 4
   - yaml, pathlib, datetime, json
 - **Dependents**: 0
@@ -2020,10 +2020,10 @@ Total Components: 291
   - typing, argparse, traceback, json, csv, collections, datetime, sqlite3, dataclasses, pathlib
 - **Dependents**: 0
 
-## tools.fact-verification.gl-fact-pipeline
+## tools.fact-verification.gov-fact-pipeline
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/fact-verification/gl-fact-pipeline.py
+- **Path**: ecosystem/tools/fact-verification/gov-fact-pipeline.py
 - **Dependencies**: 10
   - enum, typing, argparse, re, json, datetime, dataclasses, yaml, pathlib, hashlib
 - **Dependents**: 0
@@ -2036,42 +2036,42 @@ Total Components: 291
   - typing, json, datetime, sys, yaml, pathlib
 - **Dependents**: 0
 
-## tools.gl-markers.add-gl-markers
+## tools.gov-markers.add-gov-markers
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/gl-markers/add-gl-markers.py
+- **Path**: ecosystem/tools/gov-markers/add-gov-markers.py
 - **Dependencies**: 3
   - pathlib, sys, os
 - **Dependents**: 0
 
-## tools.gl-markers.add-gl-markers-batch
+## tools.gov-markers.add-gov-markers-batch
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/gl-markers/add-gl-markers-batch.py
+- **Path**: ecosystem/tools/gov-markers/add-gov-markers-batch.py
 - **Dependencies**: 4
   - json, pathlib, sys, os
 - **Dependents**: 0
 
-## tools.gl-markers.add-gl-markers-json
+## tools.gov-markers.add-gov-markers-json
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/gl-markers/add-gl-markers-json.py
+- **Path**: ecosystem/tools/gov-markers/add-gov-markers-json.py
 - **Dependencies**: 4
   - json, pathlib, sys, os
 - **Dependents**: 0
 
-## tools.gl-markers.add-gl-markers-yaml
+## tools.gov-markers.add-gov-markers-yaml
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/gl-markers/add-gl-markers-yaml.py
+- **Path**: ecosystem/tools/gov-markers/add-gov-markers-yaml.py
 - **Dependencies**: 3
   - pathlib, sys, os
 - **Dependents**: 0
 
-## tools.gl-markers.fix-governance-markers
+## tools.gov-markers.fix-governance-markers
 
 - **Type**: python_module
-- **Path**: ecosystem/tools/gl-markers/fix-governance-markers.py
+- **Path**: ecosystem/tools/gov-markers/fix-governance-markers.py
 - **Dependencies**: 3
   - json, pathlib, os
 - **Dependents**: 0

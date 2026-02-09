@@ -1,0 +1,84 @@
+Running GL governance pre-commit validation...
+Checking: README-GOVERNANCE-MONITOR.md
+Checking: governance-monitor-config.yaml
+✅ GL Governance Validation Passed
+✅ Governance event logged to event stream
+[main 1627e824] feat: add enhanced governance event stream monitoring system
+ 3 files changed, 319 insertions(+)
+ create mode 100644 README-GOVERNANCE-MONITOR.md
+ create mode 100644 governance-monitor-config.yaml
+ create mode 100755 improved-monitor.sh
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769603184621",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:26:24.621Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:26:24.405Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769603186672",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:26:26.672Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:26:26.662Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit 1627e82.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      [EXTERNAL_URL_REMOVED]        
+remote: 
+To [EXTERNAL_URL_REMOVED]
+   0664ce89..1627e824  main -> main

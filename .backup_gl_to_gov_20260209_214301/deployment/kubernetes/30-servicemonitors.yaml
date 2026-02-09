@@ -1,0 +1,126 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ng-namespace-validator
+  namespace: ng-governance
+  labels:
+    app: ng-namespace-validator
+    ng-code: NG70400
+spec:
+  selector:
+    matchLabels:
+      app: ng-namespace-validator
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ng-parametric-engine
+  namespace: ng-governance
+  labels:
+    app: ng-parametric-engine
+    ng-code: NG80300
+spec:
+  selector:
+    matchLabels:
+      app: ng-parametric-engine
+  endpoints:
+  - port: metrics
+    path: /metrics
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ng-vector-space-manager
+  namespace: ng-governance
+  labels:
+    app: ng-vector-space-manager
+    ng-code: NG70800
+spec:
+  selector:
+    matchLabels:
+      app: ng-vector-space-manager
+  endpoints:
+  - port: metrics
+    path: /metrics
+    interval: 30s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: ng-governance-alerts
+  namespace: ng-governance
+  labels:
+    ng-code: NG80400
+    ng-category: self-protection-system
+spec:
+  groups:
+  - name: ng-violations
+    rules:
+    - alert: NGViolationsDetected
+      expr: ng_violations_total > 0
+      for: 5m
+      labels:
+        severity: warning
+        ng-code: NG10100
+      annotations:
+        summary: "NG violations detected"
+        description: "{{ $value }} NG violations detected in the workspace"
+    
+    - alert: NGViolationsCritical
+      expr: ng_violations_total > 100
+      for: 1m
+      labels:
+        severity: critical
+        ng-code: NG10100
+      annotations:
+        summary: "Critical NG violations"
+        description: "{{ $value }} NG violations detected - immediate attention required"
+  
+  - name: convergence-metrics
+    rules:
+    - alert: ParameterConvergenceStalled
+      expr: parameter_convergence_rate < 0.0001
+      for: 10m
+      labels:
+        severity: warning
+        ng-code: NG80300
+      annotations:
+        summary: "Parameter convergence stalled"
+        description: "Parameter convergence rate is {{ $value }} which is below threshold"
+    
+    - alert: FeedbackLoopUnstable
+      expr: feedback_loop_stability < 0.7
+      for: 5m
+      labels:
+        severity: critical
+        ng-code: NG80200
+      annotations:
+        summary: "Feedback loop unstable"
+        description: "Feedback loop stability is {{ $value }} which indicates instability"
+  
+  - name: fallback-alerts
+    rules:
+    - alert: FallbackLevel3Activated
+      expr: fallback_activation_total{level="3"} > 0
+      for: 1m
+      labels:
+        severity: warning
+        ng-code: NG80100
+      annotations:
+        summary: "Fallback level 3 activated"
+        description: "System has fallen back to RULE_BASED_HEURISTIC mode"
+    
+    - alert: FallbackLevel4Activated
+      expr: fallback_activation_total{level="4"} > 0
+      for: 1m
+      labels:
+        severity: critical
+        ng-code: NG80100
+      annotations:
+        summary: "Fallback level 4 activated"
+        description: "System has fallen back to HUMAN_IN_THE_LOOP mode - immediate human intervention required"

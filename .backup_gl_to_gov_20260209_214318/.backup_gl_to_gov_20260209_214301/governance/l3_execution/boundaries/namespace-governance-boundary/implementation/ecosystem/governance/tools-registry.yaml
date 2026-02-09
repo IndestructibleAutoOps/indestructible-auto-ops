@@ -1,0 +1,820 @@
+# Tools Registry (工具注册表)
+# 
+# This registry contains all officially registered tools in the MNGA ecosystem.
+# Any tool not listed here is considered UNDEFINED and should not be used.
+#
+# Registration is MANDATORY before tool creation (see tool-definition-protocol.md)
+
+version: "1.1.4"
+era: "1"
+last_updated: "2026-02-04T23:55:00Z"
+
+# ============================================================================
+# REGISTERED TOOLS (已注册工具)
+# ============================================================================
+
+registered_tools:
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 1: CORE TOOLS (核心工具)
+  # --------------------------------------------------------------------------
+  
+  - name: "enforce.py"
+    category: "core"
+    era: "0,1"
+    purpose: "主治理执行器，执行 18 个治理检查"
+    input_schema: "command_line_args"
+    output_schema: "governance_report"
+    evidence_generation: "true"
+    immutable: "true"
+    description: "Main governance enforcer with 18 checks including GL compliance, naming conventions, security, evidence chain, governance enforcer, self auditor, MNGA architecture, and ecosystem module binding"
+    file_path: "ecosystem/enforce.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-20"
+  
+  - name: "enforce.rules.py"
+    category: "core"
+    era: "1"
+    purpose: "10 步闭环治理协调器，执行 Immutable Core Governance Engineering Methodology"
+    input_schema: "command_line_args"
+    output_schema: "evidence_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Enforcement coordinator implementing 10-step closed-loop governance process with evidence generation, event stream recording, and SHA256 hash protection"
+    file_path: "ecosystem/enforce.rules.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-01"
+  
+  - name: "materialization_complement_generator.py"
+    category: "governance"
+    era: "1"
+    purpose: "實體化補件生成器，為語義聲明生成具體實現補件"
+    input_schema: "command_line_args"
+    output_schema: "complement_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Materialization Complement Generator that scans reports for semantic declarations and generates concrete implementation complements without downgrading (preserving all semantic declarations and providing materialized evidence)"
+    file_path: "ecosystem/tools/materialization_complement_generator.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "evidence_verification_logic.py"
+    category: "governance"
+    era: "1"
+    purpose: "證據驗證邏輯，檢測 Era-1 語義漏洞"
+    input_schema: "command_line_args"
+    output_schema: "verification_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Evidence Verification Logic that implements 7-step semantic vulnerability detection across 5 layers (semantic corruption, structural integrity, canonicalization, semantic consistency, pipeline integrity) to make Era-1 uncheatable, undrifting, and unnarratable"
+    file_path: "ecosystem/tools/evidence_verification_logic.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "evidence_chain_vulnerability_tests.py"
+    category: "governance"
+    era: "1"
+    purpose: "證據鏈漏洞檢測，執行 6 個證據鏈漏洞測試"
+    input_schema: "command_line_args"
+    output_schema: "vulnerability_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Evidence Chain Vulnerability Tests that implement 6 tests across hash inconsistency, YAML anchors destruction, JSON canonicalization, event-stream completeness, evidence completeness, and hash registry validation"
+    file_path: "ecosystem/tools/evidence_chain_vulnerability_tests.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 2A: GOVERNANCE ENGINES (治理引擎)
+  # --------------------------------------------------------------------------
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 2: GOVERNANCE TOOLS (治理工具)
+  # --------------------------------------------------------------------------
+  
+  - name: "governance_enforcer.py"
+    category: "governance"
+    era: "1"
+    purpose: "治理合约执行器，验证操作符合治理规范"
+    input_schema: "operation_context"
+    output_schema: "compliance_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Governance contract enforcer that validates operations against governance rules, checks category mappings, and verifies compliance"
+    file_path: "ecosystem/enforcers/governance_enforcer.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-20"
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 2A: GOVERNANCE ENGINES (治理引擎)
+  # --------------------------------------------------------------------------
+  
+  - name: "validation_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "验证引擎，执行语言层、格式层、语义层验证"
+    input_schema: "validation_request"
+    output_schema: "validation_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Validation engine that performs schema, semantics, topology, index, governance rules, and enforcement rules validation"
+    file_path: "ecosystem/engines/validation_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+  - name: "governance_closure_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "治理閉環引擎，驗證 Era-1 封存準備度"
+    input_schema: "command_line_args"
+    output_schema: "closure_manifest"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Governance Closure Engine that validates all 6 closure categories (artifact hashes, event stream, complements, tool registration, test results, hash registry) and produces era-1-closure.json for Era-1 sealing"
+    file_path: "ecosystem/engines/governance_closure_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+    approved_date: "2026-02-04"
+  
+  - name: "refresh_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "刷新引擎，执行索引、拓扑、元数据自动修复"
+    input_schema: "refresh_request"
+    output_schema: "refresh_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Refresh engine that rebuilds indexes, fixes graph structure, and updates stale metadata with auto-fix capabilities"
+    file_path: "ecosystem/engines/refresh_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "reverse_architecture_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "反向架构引擎，验证工件合规性、检测结构漂移"
+    input_schema: "reverse_architecture_request"
+    output_schema: "reverse_architecture_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Reverse architecture engine that extracts structure from artifacts, compares with specifications, detects drift, and generates compliance reports"
+    file_path: "ecosystem/engines/reverse_architecture_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "semantic_entity_task_converter.py"
+    category: "governance"
+    era: "1"
+    purpose: "語義實體任務轉換器，將語義違規轉為實作任務"
+    input_schema: "violation_data"
+    output_schema: "implementation_tasks"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Semantic Entity Task Converter that transforms semantic violations into actionable implementation tasks, generating tool stubs, schemas, and task tracking"
+    file_path: "ecosystem/tools/semantic_entity_task_converter.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "materialization_complement_generator_v2.py"
+    category: "governance"
+    era: "1"
+    purpose: "Era-1 語義實體化補件生成器 v2.0，整合 RFC 8785 正規化、證明攜帶工件、語義完整性約束"
+    input_schema: "report_files"
+    output_schema: "complements, verification_results"
+    evidence_generation: "true"
+    canonicalization: "RFC8785+LayeredSorting"
+    proof_carrying: "true"
+    immutable: "false"
+    description: "Enhanced materialization complement generator with RFC 8785 canonicalization, proof-carrying artifacts, semantic integrity constraints, and governance-first workflow"
+    file_path: "ecosystem/tools/materialization_complement_generator_v2.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "evidence_verification_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "Era-1 證據驗證引擎，密碼學證明鏈與完整性保證，實作 SHA256 驗證、鏈條完整性、監管鏈驗證"
+    input_schema: "artifacts, event_stream, hash_registry"
+    output_schema: "verification_results, compliance_score"
+    evidence_generation: "true"
+    hash_verification: "SHA256"
+    chain_of_custody: "true"
+    proof_carrying: "true"
+    immutable: "false"
+    description: "Evidence Verification Engine implementing cryptographic proof chain validation, SHA256 hash verification, chain of custody validation, and proof-carrying artifact verification based on global best practices"
+    file_path: "ecosystem/tools/evidence_verification_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "governance_closure_engine.py"
+    category: "governance"
+    era: "1"
+    purpose: "Era-1 治理閉環引擎，封存標準與 Era-2 轉換驗證，實作 7 層封存框架、Era 準備度驗證、轉換協議"
+    input_schema: "evidence_layer, hash_layer, event_layer, artifact_layer"
+    output_schema: "era_readiness_score, closure_status, sealing_certificate"
+    evidence_generation: "true"
+    sealing_framework: "7-layer"
+    era_transition: "5-phase"
+    closure_verification: "true"
+    immutable: "false"
+    description: "Governance Closure Engine implementing 7-layer sealing framework, era readiness validation, transition protocol, and closure verification for Era-1 sealing and Era-2 transition"
+    file_path: "ecosystem/tools/governance_closure_engine.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "self_auditor.py"
+    category: "governance"
+    era: "1"
+    purpose: "自我审计器，记录和验证治理操作"
+  - name: "materialization_complement_generator_v2.py"
+    category: "governance"
+    era: "1"
+    purpose: "Era-1 語義實體化補件生成器 v2.0，整合 RFC 8785 正規化、證明攜帶工件、語義完整性約束"
+    input_schema: "report_files"
+    output_schema: "complements, verification_results"
+    evidence_generation: "true"
+    canonicalization: "RFC8785+LayeredSorting"
+    proof_carrying: "true"
+    immutable: "false"
+    description: "Enhanced materialization complement generator with RFC 8785 canonicalization, proof-carrying artifacts, semantic integrity constraints, and governance-first workflow"
+    file_path: "ecosystem/tools/materialization_complement_generator_v2.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+    input_schema: "operation_context"
+    output_schema: "audit_trail"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Self auditor that records governance operations, generates audit trails, and verifies operation compliance"
+    file_path: "ecosystem/enforcers/self_auditor.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-20"
+  
+  - name: "complete_naming_enforcer.py"
+    category: "governance"
+    era: "1"
+    purpose: "完整命名治理执行器，检查 16 种命名类型"
+    input_schema: "file_system_scan"
+    output_schema: "naming_violations"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Complete naming enforcer implementing all 16 naming types from unified-naming-governance-contract.yaml"
+    file_path: "ecosystem/enforcers/complete_naming_enforcer.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-25"
+  
+  - name: "pipeline_integration.py"
+    category: "governance"
+    era: "1"
+    purpose: "管道集成器，集成治理检查到 CI/CD 流程"
+    input_schema: "pipeline_config"
+    output_schema: "integration_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Pipeline integrator that embeds governance checks into CI/CD workflows"
+    file_path: "ecosystem/enforcers/pipeline_integration.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-20"
+  
+  - name: "auto_verify_report.py"
+    category: "governance"
+    era: "1"
+    purpose: "自動化合規性驗證系統，在每次生成報告後自動驗證"
+    input_schema: "command_line_args"
+    output_schema: "compliance_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Automated compliance verification system that runs 4 validation checks (core governance, evidence chain, semantic compliance, tool definition) and calculates overall compliance score"
+    file_path: "ecosystem/tools/auto_verify_report.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "report_downgrade_validator.py"
+    category: "governance"
+    era: "1"
+    purpose: "報告降階驗證工具，檢測並移除不符合 Era-1 狀態的高級語義"
+    input_schema: "markdown_file"
+    output_schema: "downgrade_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Report downgrade validator that detects and removes advanced semantics not compliant with Era-1 status"
+    file_path: "ecosystem/tools/report_downgrade_validator.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "semantic_driven_executor.py"
+    category: "governance"
+    era: "1"
+    purpose: "語義驅動治理實作引擎，整合違規檢測、任務生成、實作清單與補件驗證"
+    input_schema: "violations_and_tasks"
+    output_schema: "implementation_checklist"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Semantic-Driven Governance Executor that integrates violation detection, task generation, implementation checklist creation, and comprehensive verification of implementation artifacts (files, events, artifacts, hash, sealing)"
+    file_path: "ecosystem/tools/semantic_driven_executor.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  - name: "generate_core_hash.py"
+    category: "governance"
+    era: "1"
+    purpose: "核心雜湊生成器，生成所有治理 artifact 的 SHA256 hash 並創建 core-hash.json 用於封存"
+    input_schema: "artifact_patterns"
+    output_schema: "core_hash"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Core Hash Generator that generates SHA256 hashes for all governance artifacts (step-*.json, event-stream.jsonl, etc.) and creates a core-hash.json file for sealing purposes in CI/CD pipelines"
+    file_path: "ecosystem/tools/generate_core_hash.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Report downgrade validator that detects and removes advanced semantics not compliant with Era-1 Evidence-Native Bootstrap state, including fictional phases, completeness claims, and forbidden terminology"
+    file_path: "ecosystem/tools/report_downgrade_validator.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-04"
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 3: EXECUTION TOOLS (执行工具)
+  # --------------------------------------------------------------------------
+  
+  - name: "audit_trail_manager.py"
+    category: "execution"
+    era: "1"
+    purpose: "审计线索管理器，记录治理操作历史"
+    input_schema: "audit_event"
+    output_schema: "audit_record"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Audit trail manager that records governance operations and maintains audit history"
+    file_path: "ecosystem/tools/audit_trail_manager.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-20"
+  
+  - name: "event_logger.py"
+    category: "execution"
+    era: "1"
+    purpose: "事件记录器，记录治理事件到 event-stream.jsonl"
+    input_schema: "event_data"
+    output_schema: "event_record"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Event logger that writes governance events to event-stream.jsonl"
+    file_path: "ecosystem/tools/event_logger.py"
+    status: "active"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-20"
+  
+  - name: "evidence_verifier.py"
+    category: "execution"
+    era: "1"
+    purpose: "证据验证器，验证证据文件的完整性和真实性"
+    input_schema: "evidence_file"
+    output_schema: "verification_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Evidence verifier that validates SHA256 hashes, timestamps, and artifact integrity"
+    file_path: "ecosystem/tools/evidence_verifier.py"
+    status: "pending"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-03"
+  
+  - name: "scan_unbound_modules.py"
+    category: "execution"
+    era: "1"
+    purpose: "扫描未绑定的生态系统模块"
+    input_schema: "directory_scan"
+    output_schema: "module_list"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to scan ecosystem modules and identify unbound modules"
+    file_path: "scan_unbound_modules.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-30"
+    deprecated_reason: "One-time script, no longer needed after module binding"
+  
+  - name: "add_new_checks.py"
+    category: "execution"
+    era: "1"
+    purpose: "添加新的治理检查到 enforce.py"
+    input_schema: "check_definition"
+    output_schema: "updated_enforce_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to add new governance checks to enforce.py"
+    file_path: "add_new_checks.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-30"
+    deprecated_reason: "One-time script, no longer needed after checks added"
+  
+  - name: "apply_mnga_enforcement.py"
+    category: "execution"
+    era: "1"
+    purpose: "应用 MNGA 治理到整个仓库"
+    input_schema: "repository_path"
+    output_schema: "enforcement_result"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to apply MNGA enforcement across the repository"
+    file_path: "apply_mnga_enforcement.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-01-25"
+    deprecated_reason: "One-time script, no longer needed after enforcement applied"
+  
+  - name: "update_terminology.py"
+    category: "execution"
+    era: "1"
+    purpose: "更新架构术语，统一命名规范"
+    input_schema: "terminology_mapping"
+    output_schema: "updated_files"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to update architecture terminology based on international standards"
+    file_path: "update_terminology.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-01"
+    deprecated_reason: "One-time script, no longer needed after terminology updated"
+  
+  - name: "add_evidence_methods.py"
+    category: "execution"
+    era: "1"
+    purpose: "添加证据生成方法到 enforce.rules.py"
+    input_schema: "code_injection"
+    output_schema: "updated_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to add evidence generation methods to enforce.rules.py"
+    file_path: "add_evidence_methods.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, no longer needed after methods added"
+  
+  - name: "update_step_methods.py"
+    category: "execution"
+    era: "1"
+    purpose: "更新步骤方法以包含证据生成"
+    input_schema: "code_injection"
+    output_schema: "updated_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to update step methods with evidence generation code"
+    file_path: "update_step_methods.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, failed due to syntax errors"
+  
+  - name: "fix_enforce_rules_evidence.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复 enforce.rules.py 的证据生成问题"
+    input_schema: "code_patch"
+    output_schema: "fixed_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to fix evidence generation in enforce.rules.py"
+    file_path: "fix_enforce_rules_evidence.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, failed due to syntax errors"
+  
+  - name: "fix_step_methods.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复步骤方法的证据生成代码"
+    input_schema: "code_patch"
+    output_schema: "fixed_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to fix step methods with evidence generation code"
+    file_path: "fix_step_methods.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, failed due to syntax errors"
+  
+  - name: "fix_all_steps_evidence.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复所有步骤的证据生成代码"
+    input_schema: "code_patch"
+    output_schema: "fixed_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to fix all steps with evidence generation code"
+    file_path: "fix_all_steps_evidence.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, failed due to syntax errors"
+  
+  - name: "add_evidence_to_steps.py"
+    category: "execution"
+    era: "1"
+    purpose: "添加证据生成到所有步骤"
+    input_schema: "code_injection"
+    output_schema: "updated_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to add evidence generation to all steps"
+    file_path: "add_evidence_to_steps.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, failed due to syntax errors"
+  
+  - name: "fix_evidence_system_v3.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复证据系统版本 3"
+    input_schema: "code_patch"
+    output_schema: "fixed_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to fix evidence system v3"
+    file_path: "fix_evidence_system_v3.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, failed due to syntax errors"
+  
+  - name: "reporting_compliance_checker.py"
+    category: "reporting"
+    era: "1"
+    purpose: "报告合规性检查器（已废弃，使用 semantic_validator.py 替代）"
+    input_schema: "report_file"
+    output_schema: "compliance_report"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Deprecated: Replaced by semantic_validator.py with enhanced features"
+    file_path: "ecosystem/tools/reporting_compliance_checker.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "Replaced by semantic_validator.py with 6 validation checks instead of 4"
+  
+  - name: "fix_enforce_rules_final.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复 enforce.rules.py（已废弃）"
+    input_schema: "code_patch"
+    output_schema: "fixed_code"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Deprecated: One-time fix script that was applied successfully"
+    file_path: "ecosystem/tools/fix_enforce_rules_final.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script that successfully fixed enforce.rules.py"
+  
+  - name: "apply_governance_alignment.py"
+    category: "execution"
+    era: "1"
+    purpose: "应用治理对齐到 enforce.rules.py"
+    input_schema: "code_patch"
+    output_schema: "aligned_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to apply governance alignment to enforce.rules.py"
+    file_path: "apply_governance_alignment.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-02"
+    deprecated_reason: "One-time script, no longer needed after alignment applied"
+  
+  - name: "fix_enforce_rules_v2.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复 enforce.rules.py 版本 2"
+    input_schema: "code_patch"
+    output_schema: "fixed_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to fix enforce.rules.py v2"
+    file_path: "ecosystem/tools/fix_enforce_rules_v2.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-03"
+    deprecated_reason: "One-time script, no longer needed after fix applied"
+  
+  - name: "fix_enforce_rules_final.py"
+    category: "execution"
+    era: "1"
+    purpose: "修复 enforce.rules.py 最终版本"
+    input_schema: "code_patch"
+    output_schema: "fixed_enforce_rules_py"
+    evidence_generation: "true"
+    immutable: "false"
+    description: "Script to fix enforce.rules.py final version"
+    file_path: "ecosystem/tools/fix_enforce_rules_final.py"
+    status: "deprecated"
+    approved_by: "governance_layer"
+    approved_date: "2026-02-03"
+    deprecated_reason: "One-time script, no longer needed after fix applied"
+  
+  # --------------------------------------------------------------------------
+  # CATEGORY 4: REPORTING TOOLS (报告工具)
+  # --------------------------------------------------------------------------
+  
+  # NOTE: No reporting tools are currently registered. All report generation
+  # is handled by enforce.py and enforce.rules.py directly.
+  
+  # UNDEFINED TOOLS (FOR REFERENCE - DO NOT USE)
+  # These tools were mentioned in reports but never registered:
+  # - reporting_compliance_checker.py (UNDEFINED - VIOLATION)
+  # - Various "compliance checker" tools (UNDEFINED - VIOLATION)
+  
+# ============================================================================
+# PROHIBITED TOOL PATTERNS (禁止的工具模式)
+# ============================================================================
+
+prohibited_tool_patterns:
+  # Self-referential compliance tools (自我参照合规工具)
+  - pattern: "*compliance*checker*"
+    severity: "CRITICAL"
+    reason: "Self-referential compliance tools violate governance principles"
+    alternative: "Use enforce.py or enforce.rules.py for governance checks"
+  
+  - pattern: "*compliance*validator*"
+    severity: "CRITICAL"
+    reason: "Self-referential compliance tools violate governance principles"
+    alternative: "Use enforce.py or enforce.rules.py for governance checks"
+  
+  # False completion claims (虚假完成声明)
+  - pattern: "*completion*report*"
+    severity: "CRITICAL"
+    reason: "False completion claims before Era sealing"
+    alternative: "Use status report with Era/Layer/Semantic Closure fields"
+  
+  - pattern: "*final*summary*"
+    severity: "CRITICAL"
+    reason: "Final state claims before Era sealing"
+    alternative: "Use progress report with accurate Era/Layer status"
+  
+  - pattern: "*final*report*"
+    severity: "CRITICAL"
+    reason: "Final state claims before Era sealing"
+    alternative: "Use status report with accurate Era/Layer status"
+  
+  # Undefined phase tracking (未定义阶段跟踪)
+  - pattern: "*phase*tracker*"
+    severity: "HIGH"
+    reason: "Undefined phase tracking violates architecture definition"
+    alternative: "Use Era + Layer for system state description"
+  
+  - pattern: "*stage*monitor*"
+    severity: "HIGH"
+    reason: "Undefined stage monitoring violates architecture definition"
+    alternative: "Use Era + Layer for system state description"
+  
+  # False platform claims (虚假平台声明)
+  - pattern: "*platform*manager*"
+    severity: "HIGH"
+    reason: "Single-file scripts cannot be described as platforms"
+    alternative: "Use 'tool' or 'script' for single-file systems"
+  
+  # False maturity claims (虚假成熟度声明)
+  - pattern: "*maturity*model*"
+    severity: "MEDIUM"
+    reason: "Maturity claims before Era sealing are not allowed"
+    alternative: "Use Era + Layer for system state description"
+  
+  - pattern: "*maturity*level*"
+    severity: "MEDIUM"
+    reason: "Maturity claims before Era sealing are not allowed"
+    alternative: "Use Era + Layer for system state description"
+
+# ============================================================================
+# TOOL APPROVAL WORKFLOW (工具审批流程)
+# ============================================================================
+
+approval_workflow:
+  core_tools:
+    required_approvals: ["governance_layer"]
+    approval_time: "within_1_week"
+  
+  governance_tools:
+    required_approvals: ["governance_layer", "core_team"]
+    approval_time: "within_2_weeks"
+  
+  execution_tools:
+    required_approvals: ["governance_layer"]
+    approval_time: "within_1_week"
+  
+  reporting_tools:
+    required_approvals: ["governance_layer", "core_team"]
+    approval_time: "within_2_weeks"
+    additional_requirements:
+      - "Must pass semantic validation"
+      - "Must comply with reporting-governance-spec.md"
+      - "Must not use final-state language"
+
+# ============================================================================
+# COMPLIANCE METRICS (合规度量)
+# ============================================================================
+
+compliance_metrics:
+  total_registered_tools: 24
+  active_tools: 9
+  deprecated_tools: 14
+  undefined_tools: 134  # Most are __init__.py and test files
+  
+  tool_distribution:
+    core: 2
+    governance: 6
+    execution: 13
+    reporting: 0
+  
+  compliance_score: 15.2  # 24 registered tools, 134 undefined tools
+  
+  violations:
+    critical: 134  # Undefined tools
+    high: 0
+    medium: 0
+    low: 0
+
+# ============================================================================
+# MAINTENANCE NOTES (维护说明)
+# ============================================================================
+
+maintenance_notes:
+  - "Review quarterly for deprecated tool cleanup"
+  - "Update prohibited patterns based on governance violations"
+  - "Audit tool registry against actual file system"
+  - "Verify evidence generation for all active tools"
+  - "Check Era applicability on Era transition"
+
+# ============================================================================
+# CHANGE LOG
+# ============================================================================
+
+change_log:
+  - version: "1.1.4"
+    date: "2026-02-04"
+    changes:
+      - "Added semantic_entity_task_converter.py to governance tools"
+      - "Implemented automatic violation-to-task conversion system"
+      - "Generated 419 tasks from semantic violations"
+      - "Active tools increased from 12 to 13"
+      - "Governance tools increased from 9 to 10"
+
+  - version: "1.1.1"
+    date: "2026-02-04"
+    changes:
+      - "Added 3 governance engines (validation_engine.py, refresh_engine.py, reverse_architecture_engine.py)"
+      - "Marked deprecated tools in separate section"
+      - "Fixed YAML parser bug in enforce.rules.py for better spec loading"
+      - "Active tools increased from 9 to 12"
+      - "Governance tools increased from 6 to 9"
+  
+  - version: "1.1.0"
+    date: "2026-02-03"
+    changes:
+      - "Added semantic_validator.py to governance tools"
+      - "Updated compliance metrics to reflect current state"
+      - "Active tools increased from 8 to 9"
+      - "Governance tools increased from 5 to 6"
+  
+  - version: "1.0.0"
+    date: "2026-02-03"
+    changes:
+      - "Initial tool registry creation"
+      - "Registered 20 tools across 4 categories"
+      - "Defined 12 prohibited tool patterns"
+      - "Established approval workflow"
+      - "Documented compliance metrics"
+  
+  - version: "0.9.0"
+    date: "2026-02-02"
+    changes:
+      - "Draft tool registry specification"
+      - "Identified undefined tools from reports"
+      - "Collected existing tool information"

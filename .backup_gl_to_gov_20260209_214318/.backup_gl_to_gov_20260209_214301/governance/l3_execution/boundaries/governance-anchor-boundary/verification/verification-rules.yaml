@@ -1,0 +1,16 @@
+verification_rules:
+  global:
+    - id: binding_exists
+      rule: "Each governance module must provide governance-binding.yaml"
+
+    - id: semantic_attachment
+      rule: "Each module must attach to the semantic-tree"
+
+    - id: hashboundaryvalid
+      rule: "Module artifacts must comply with the defined hash boundary"
+
+    - id: evidence_integrity
+      rule: "Evidence must be complete and integrity-protected"
+
+    - id: replay_determinism
+      rule: "Replay must produce identical execution traces"

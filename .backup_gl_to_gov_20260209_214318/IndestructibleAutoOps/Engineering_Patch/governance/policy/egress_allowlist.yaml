@@ -1,0 +1,24 @@
+network_boundary:
+  version: v1
+  egress:
+    default_deny: true
+    allow:
+      - name: "cluster-dns"
+        namespace: "kube-system"
+        ports: [53]
+        protocol: "UDP"
+      - name: "observability"
+        namespace: "axiom-observability"
+        ports: [9090, 3100, 16686]
+        protocol: "TCP"
+      - name: "artifact-registry"
+        namespace: "harbor"
+        ports: [443]
+        protocol: "TCP"
+  ingress:
+    mtls:
+      mode: "strict"
+      allowed_hosts: ["*.axiom.local"]
+  gates:
+    - "egress_default_deny=true"
+    - "mtls_strict=true"

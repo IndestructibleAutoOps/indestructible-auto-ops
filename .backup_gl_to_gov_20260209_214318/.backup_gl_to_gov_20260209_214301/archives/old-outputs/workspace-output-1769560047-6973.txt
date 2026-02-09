@@ -1,0 +1,83 @@
+ M engine/.governance/event-stream.jsonl
+M  engine/aep-engine-app/app.config.ts
+M  engine/aep-engine-app/app/tabs/_layout.tsx
+M  engine/aep-engine-app/app/tabs/audit.tsx
+M  engine/aep-engine-app/app/tabs/index.tsx
+M  engine/aep-engine-app/app/tabs/report.tsx
+M  engine/aep-engine-app/app/tabs/results.tsx
+M  engine/aep-engine-app/app/tabs/settings.tsx
+M  engine/aep-engine-app/app/_layout.tsx
+M  engine/aep-engine-app/app/dev/theme-lab.tsx
+M  engine/aep-engine-app/app/oauth/callback.tsx
+M  engine/aep-engine-app/babel.config.js
+M  engine/aep-engine-app/components/external-link.tsx
+M  engine/aep-engine-app/components/haptic-tab.tsx
+M  engine/aep-engine-app/components/hello-wave.tsx
+M  engine/aep-engine-app/components/parallax-scroll-view.tsx
+M  engine/aep-engine-app/components/screen-container.tsx
+M  engine/aep-engine-app/components/themed-view.tsx
+M  engine/aep-engine-app/components/ui/collapsible.tsx
+M  engine/aep-engine-app/components/ui/event-card.tsx
+M  engine/aep-engine-app/components/ui/icon-symbol.ios.tsx
+M  engine/aep-engine-app/components/ui/icon-symbol.tsx
+M  engine/aep-engine-app/components/ui/problem-card.tsx
+M  engine/aep-engine-app/components/ui/statistic-card.tsx
+ M engine/aep-engine-app/constants/const.ts
+ M engine/aep-engine-app/constants/oauth.ts
+ M engine/aep-engine-app/constants/theme.ts
+ M engine/aep-engine-app/hooks/use-auth.ts
+ M engine/aep-engine-app/hooks/use-color-scheme.ts
+ M engine/aep-engine-app/hooks/use-color-scheme.web.ts
+ M engine/aep-engine-app/hooks/use-colors.ts
+M  engine/aep-engine-app/metro.config.js
+ M engine/aep-engine-app/scripts/load-env.js
+M  engine/aep-engine-app/tailwind.config.js
+M  engine/aep-engine-web/postcss.config.js
+M  engine/aep-engine-web/src/App.tsx
+M  engine/aep-engine-web/src/components/EventCard.tsx
+M  engine/aep-engine-web/src/components/ProblemCard.tsx
+M  engine/aep-engine-web/src/components/StatisticCard.tsx
+ M engine/aep-engine-web/src/data/mock.ts
+ M engine/aep-engine-web/src/hooks/useAppState.ts
+M  engine/aep-engine-web/src/main.tsx
+M  engine/aep-engine-web/src/screens/AuditScreen.tsx
+M  engine/aep-engine-web/src/screens/HomeScreen.tsx
+M  engine/aep-engine-web/src/screens/ReportScreen.tsx
+M  engine/aep-engine-web/src/screens/ResultsScreen.tsx
+M  engine/aep-engine-web/src/screens/SettingsScreen.tsx
+M  engine/aep-engine-web/tailwind.config.js
+M  engine/aep-engine-web/tsconfig.json
+M  engine/aep-engine-web/vite.config.ts
+M  engine/executor/local_executor.ts
+M  engine/executor/remote_executor.ts
+M  engine/executor/rollback.ts
+ M engine/gl-gate/core/index.ts
+ M engine/gl-gate/gates/index.ts
+M  engine/gl-gate/index.ts
+ M engine/gl-gate/types/index.ts
+ M engine/index.ts
+ M engine/interfaces-fix.d.ts
+ M engine/interfaces.d.ts
+ M engine/jest.config.js
+M  engine/loader/git_loader.ts
+M  engine/normalizer/defaults_applier.ts
+M  engine/normalizer/env_merger.ts
+M  engine/normalizer/module_defaults.ts
+ M engine/package-lock.json
+ M engine/package.json
+M  engine/parser/anchor_resolver.ts
+M  engine/parser/json_passthrough.ts
+M  engine/parser/yaml_parser.ts
+M  engine/renderer/artifact_writer.ts
+M  engine/renderer/module_mapper.ts
+M  engine/renderer/template_engine.ts
+A  engine/scripts/add-gl-markers.js
+ M engine/tests/artifacts/evidence_chain.test.ts
+ M engine/tests/governance/rule_evaluator.test.ts
+ M engine/tests/loader/fs_loader.test.ts
+ M engine/tests/loader/merge_index.test.ts
+ M engine/tests/normalizer/env_merger.test.ts
+ M engine/tests/validator/schema_validator.test.ts
+M  engine/types/index.ts
+M  engine/validator/error_reporter.ts
+M  engine/validator/module_validator.ts

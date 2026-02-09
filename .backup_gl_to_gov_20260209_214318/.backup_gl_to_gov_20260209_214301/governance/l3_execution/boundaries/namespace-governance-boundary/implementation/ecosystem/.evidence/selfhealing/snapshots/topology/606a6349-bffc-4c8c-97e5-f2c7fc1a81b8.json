@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-02-05T02:01:14.731929+00:00",
+  "services": [
+    {
+      "name": "api-gateway",
+      "instances": 3,
+      "health": "degraded",
+      "dependencies": [
+        "auth-service",
+        "user-service"
+      ]
+    }
+  ],
+  "canonical_hash": "sha256:e6e2b826e31fca5c36125c48f130dcb6f961e698ff8a8776a1f290cf0892e8e6"
+}

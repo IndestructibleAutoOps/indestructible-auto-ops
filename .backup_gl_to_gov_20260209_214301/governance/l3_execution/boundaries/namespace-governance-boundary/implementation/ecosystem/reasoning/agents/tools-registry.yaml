@@ -1,0 +1,362 @@
+# Tools Registry for Planning Agent
+# Defines available tools with permissions and safety checks
+
+apiVersion: tools.mnga.io/v1
+kind: ToolsRegistry
+metadata:
+  name: agent-tools
+  version: "1.0.0"
+
+tools:
+  # Code Operations
+  - name: "read_file"
+    description: "Read file content from the repository"
+    category: "code"
+    parameters:
+      - name: "path"
+        type: "string"
+        required: true
+        description: "File path to read"
+      - name: "encoding"
+        type: "string"
+        required: false
+        default: "utf-8"
+        description: "File encoding"
+    permissions:
+      - "file:read"
+    safety_checks: []
+    execution_mode: "direct"
+    
+  - name: "write_file"
+    description: "Write content to a file"
+    category: "code"
+    parameters:
+      - name: "path"
+        type: "string"
+        required: true
+        description: "File path to write"
+      - name: "content"
+        type: "string"
+        required: true
+        description: "Content to write"
+      - name: "mode"
+        type: "string"
+        required: false
+        default: "overwrite"
+        enum: ["overwrite", "append"]
+        description: "Write mode"
+    permissions:
+      - "file:write"
+    safety_checks:
+      - "path_not_in_ecosystem_contracts"
+      - "confirm_large_writes"
+      - "backup_existing_file"
+    execution_mode: "direct"
+    
+  - name: "search_code"
+    description: "Search code using patterns or keywords"
+    category: "code"
+    parameters:
+      - name: "query"
+        type: "string"
+        required: true
+        description: "Search query or pattern"
+      - name: "file_patterns"
+        type: "array"
+        required: false
+        default: ["*.py", "*.yaml", "*.json"]
+        description: "File patterns to search"
+      - name: "context_lines"
+        type: "integer"
+        required: false
+        default: 3
+        description: "Number of context lines"
+    permissions:
+      - "file:read"
+      - "search:execute"
+    safety_checks: []
+    execution_mode: "direct"
+    
+  - name: "analyze_patterns"
+    description: "Analyze code patterns and structure"
+    category: "analysis"
+    parameters:
+      - name: "target"
+        type: "string"
+        required: true
+        description: "Target to analyze (file, directory, or pattern)"
+      - name: "analysis_type"
+        type: "string"
+        required: false
+        default: "structural"
+        enum: ["structural", "dependencies", "complexity", "security"]
+        description: "Type of analysis to perform"
+    permissions:
+      - "file:read"
+      - "analysis:execute"
+    safety_checks: []
+    execution_mode: "direct"
+    
+  # Testing Operations
+  - name: "run_tests"
+    description: "Execute unit or integration tests"
+    category: "testing"
+    parameters:
+      - name: "test_path"
+        type: "string"
+        required: false
+        default: "tests/"
+        description: "Path to tests"
+      - name: "test_pattern"
+        type: "string"
+        required: false
+        description: "Test pattern to match"
+      - name: "coverage"
+        type: "boolean"
+        required: false
+        default: false
+        description: "Generate coverage report"
+    permissions:
+      - "test:execute"
+    safety_checks:
+      - "run_in_sandbox"
+    execution_mode: "sandbox"
+    
+  # Database Operations
+  - name: "query_database"
+    description: "Query database schema or data"
+    category: "database"
+    parameters:
+      - name: "table"
+        type: "string"
+        required: false
+        description: "Table name to query"
+      - name: "query"
+        type: "string"
+        required: false
+        description: "Custom SQL query"
+      - name: "schema_only"
+        type: "boolean"
+        required: false
+        default: true
+        description: "Only query schema, not data"
+    permissions:
+      - "database:read"
+    safety_checks:
+      - "read_only"
+      - "limit_results"
+    execution_mode: "direct"
+    
+  # Documentation Operations
+  - name: "update_docs"
+    description: "Update documentation files"
+    category: "documentation"
+    parameters:
+      - name: "target"
+        type: "string"
+        required: true
+        description: "Documentation file to update"
+      - name: "content"
+        type: "string"
+        required: true
+        description: "Documentation content"
+      - name: "format"
+        type: "string"
+        required: false
+        default: "markdown"
+        enum: ["markdown", "json", "yaml"]
+        description: "Documentation format"
+    permissions:
+      - "file:write"
+      - "documentation:update"
+    safety_checks:
+      - "path_in_docs_directory"
+    execution_mode: "direct"
+    
+  # Build Operations
+  - name: "trigger_build"
+    description: "Trigger CI/CD build pipeline"
+    category: "build"
+    parameters:
+      - name: "branch"
+        type: "string"
+        required: true
+        description: "Branch to build"
+      - name: "pipeline"
+        type: "string"
+        required: false
+        description: "Specific pipeline to trigger"
+    permissions:
+      - "build:trigger"
+    safety_checks:
+      - "require_approval"
+    execution_mode: "async"
+    
+  # Git Operations
+  - name: "create_branch"
+    description: "Create a new Git branch"
+    category: "git"
+    parameters:
+      - name: "branch_name"
+        type: "string"
+        required: true
+        description: "Name for the new branch"
+      - name: "base_branch"
+        type: "string"
+        required: false
+        default: "main"
+        description: "Base branch to create from"
+    permissions:
+      - "git:branch"
+    safety_checks:
+      - "validate_branch_name"
+    execution_mode: "direct"
+    
+  - name: "create_pr"
+    description: "Create a pull request"
+    category: "git"
+    parameters:
+      - name: "title"
+        type: "string"
+        required: true
+        description: "PR title"
+      - name: "body"
+        type: "string"
+        required: true
+        description: "PR description"
+      - name: "source_branch"
+        type: "string"
+        required: true
+        description: "Source branch"
+      - name: "target_branch"
+        type: "string"
+        required: false
+        default: "main"
+        description: "Target branch"
+      - name: "labels"
+        type: "array"
+        required: false
+        description: "PR labels"
+    permissions:
+      - "git:pr"
+    safety_checks:
+      - "require_approval"
+    execution_mode: "async"
+    
+  # Deployment Operations
+  - name: "deploy"
+    description: "Deploy application or service"
+    category: "deployment"
+    parameters:
+      - name: "environment"
+        type: "string"
+        required: true
+        enum: ["dev", "staging", "prod"]
+        description: "Target environment"
+      - name: "service"
+        type: "string"
+        required: true
+        description: "Service to deploy"
+      - name: "version"
+        type: "string"
+        required: true
+        description: "Version to deploy"
+    permissions:
+      - "deploy:execute"
+    safety_checks:
+      - "require_approval"
+      - "check_current_status"
+      - "verify_rollout_plan"
+    execution_mode: "async"
+    
+  # Monitoring Operations
+  - name: "check_logs"
+    description: "Check application logs"
+    category: "monitoring"
+    parameters:
+      - name: "service"
+        type: "string"
+        required: true
+        description: "Service name"
+      - name: "time_range"
+        type: "string"
+        required: false
+        default: "1h"
+        description: "Time range to check"
+      - name: "log_level"
+        type: "string"
+        required: false
+        enum: ["DEBUG", "INFO", "WARNING", "ERROR"]
+        description: "Log level filter"
+    permissions:
+      - "logs:read"
+    safety_checks:
+      - "log_retention_check"
+    execution_mode: "direct"
+    
+  # Security Operations
+  - name: "security_scan"
+    description: "Run security vulnerability scan"
+    category: "security"
+    parameters:
+      - name: "target"
+        type: "string"
+        required: true
+        description: "Target to scan (file, directory, or image)"
+      - name: "scan_type"
+        type: "string"
+        required: false
+        default: "dependency"
+        enum: ["dependency", "code", "container", "iac"]
+        description: "Type of security scan"
+    permissions:
+      - "security:scan"
+    safety_checks:
+      - "run_in_sandbox"
+    execution_mode: "sandbox"
+
+safety_policies:
+  path_not_in_ecosystem_contracts:
+    description: "Prevent modifications to ecosystem contracts"
+    check: |
+      if path.startswith("ecosystem/contracts/"):
+        raise PermissionError("Cannot modify ecosystem contracts")
+  
+  confirm_large_writes:
+    description: "Require confirmation for writes larger than 1MB"
+    threshold: 1048576
+    check: |
+      if len(content) > threshold:
+        return False  # Requires approval
+  
+  backup_existing_file:
+    description: "Create backup before overwriting files"
+    action: "create_backup"
+  
+  run_in_sandbox:
+    description: "Execute in isolated sandbox environment"
+    enabled: true
+  
+  require_approval:
+    description: "Require human approval for this operation"
+    enabled: true
+  
+  read_only:
+    description: "Ensure operation is read-only"
+    check: "query_type == 'SELECT'"
+  
+  limit_results:
+    description: "Limit query results to prevent data exfiltration"
+    max_results: 1000
+  
+  validate_branch_name:
+    description: "Validate Git branch name format"
+    pattern: "^[a-z0-9-]+$"
+  
+  check_current_status:
+    description: "Check current deployment status before deploying"
+    action: "get_deployment_status"
+  
+  verify_rollout_plan:
+    description: "Verify rollout plan exists and is valid"
+    action: "check_rollout_plan"

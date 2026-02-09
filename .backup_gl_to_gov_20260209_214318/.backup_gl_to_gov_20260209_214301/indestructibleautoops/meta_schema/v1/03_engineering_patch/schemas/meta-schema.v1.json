@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://indestructibleautoops.com/schemas/meta-schema/v1.json",
+  "title": "IndestructibleAutoOps Meta-Schema v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "$id", "apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "$id": { "type": "string" },
+    "apiVersion": {
+      "type": "string",
+      "pattern": "^[a-z0-9.-]+\\.com/v[0-9]+(alpha|beta)?[0-9]*$"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "MetaSchema",
+        "NamingConvention",
+        "SecurityPolicy",
+        "ComplianceFramework",
+        "ChangeManagement",
+        "ResourceQuota",
+        "Monitoring",
+        "Logging",
+        "BackupStrategy",
+        "NetworkPolicy",
+        "CostOptimization",
+        "AccessControl",
+        "DataGovernance",
+        "AuditPolicy",
+        "DisasterRecovery",
+        "EmergencyManagement"
+      ]
+    },
+    "metadata": { "$ref": "https://indestructibleautoops.com/schemas/common/metadata/v1.json" },
+    "spec": {
+      "type": "object",
+      "description": "Schema-specific specification (open object).",
+      "default": {},
+      "properties": {
+        "rules": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["id", "severity", "description"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[A-Z]+-[0-9]{3}$" },
+              "severity": { "type": "string", "enum": ["critical", "high", "medium", "low", "info"] },
+              "description": { "type": "string" },
+              "extensions": { "type": "object", "default": {} }
+            }
+          }
+        },
+        "extensions": { "type": "object", "default": {} }
+      },
+      "additionalProperties": true
+    },
+    "status": { "$ref": "https://indestructibleautoops.com/schemas/common/status/v1.json" }
+  }
+}

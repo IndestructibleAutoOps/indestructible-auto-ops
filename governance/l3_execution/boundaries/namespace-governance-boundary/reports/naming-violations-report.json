@@ -46,7 +46,7 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer",
+      "path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer",
       "name": "gl90-99-meta-specification-layer",
       "expected_style": "kebab-case",
       "actual_style": "kebab-case (invalid)",
@@ -59,7 +59,7 @@
     {
       "rule_id": "GL20-DIR-002",
       "category": "directory",
-      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine",
+      "path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine",
       "name": "gl90-99-semantic-engine",
       "expected_style": "snake_case (Python package)",
       "actual_style": "kebab-case (invalid)",
@@ -72,13 +72,13 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "ecosystem/governance/gl-semantic-anchors",
-      "name": "gl-semantic-anchors",
+      "path": "ecosystem/governance/gov-semantic-anchors",
+      "name": "gov-semantic-anchors",
       "expected_style": "kebab-case",
       "actual_style": "kebab-case (invalid)",
       "severity": "LOW",
-      "message": "目錄 'gl-semantic-anchors' 應以小寫字母開頭",
-      "suggestion": "gl-semantic-anchors",
+      "message": "目錄 'gov-semantic-anchors' 應以小寫字母開頭",
+      "suggestion": "gov-semantic-anchors",
       "line_number": null,
       "auto_fixable": true
     },
@@ -98,7 +98,7 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-runtime-engine-platform/aep-engine-app/app/tabs",
+      "path": "gov-runtime-engine-platform/aep-engine-app/app/tabs",
       "name": "tabs",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
@@ -137,7 +137,7 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-runtime-execution-platform/engine/aep-engine-app/app/tabs",
+      "path": "gov-runtime-execution-platform/engine/aep-engine-app/app/tabs",
       "name": "tabs",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
@@ -150,7 +150,7 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-runtime-execution-platform/file-organizer-system/.github",
+      "path": "gov-runtime-execution-platform/file-organizer-system/.github",
       "name": ".github",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
@@ -202,7 +202,7 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-automation-organizer-platform/.github",
+      "path": "gov-automation-organizer-platform/.github",
       "name": ".github",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
@@ -215,7 +215,7 @@
     {
       "rule_id": "GL20-DIR-003",
       "category": "directory",
-      "path": "gl-runtime-services-platform/esync-platform/.github",
+      "path": "gov-runtime-services-platform/esync-platform/.github",
       "name": ".github",
       "expected_style": "kebab-case",
       "actual_style": "unknown",
@@ -254,7 +254,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
+      "path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
       "name": "naming-governance-migration.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -267,7 +267,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
+      "path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
       "name": "naming-governance-repair.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -371,12 +371,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers-json.py",
-      "name": "add-gl-markers-json.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers-json.py",
+      "name": "add-gov-markers-json.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers-json.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers-json.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers_json.py",
       "line_number": null,
       "auto_fixable": true
@@ -384,7 +384,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/gl-markers/fix-governance-markers.py",
+      "path": "ecosystem/tools/gov-markers/fix-governance-markers.py",
       "name": "fix-governance-markers.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -397,12 +397,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers.py",
-      "name": "add-gl-markers.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers.py",
+      "name": "add-gov-markers.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers.py",
       "line_number": null,
       "auto_fixable": true
@@ -410,12 +410,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers-yaml.py",
-      "name": "add-gl-markers-yaml.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers-yaml.py",
+      "name": "add-gov-markers-yaml.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers-yaml.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers-yaml.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers_yaml.py",
       "line_number": null,
       "auto_fixable": true
@@ -423,12 +423,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers-batch.py",
-      "name": "add-gl-markers-batch.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers-batch.py",
+      "name": "add-gov-markers-batch.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers-batch.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers-batch.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers_batch.py",
       "line_number": null,
       "auto_fixable": true
@@ -436,12 +436,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/audit/gl-audit-simple.py",
-      "name": "gl-audit-simple.py",
+      "path": "ecosystem/tools/audit/gov-audit-simple.py",
+      "name": "gov-audit-simple.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-audit-simple.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-audit-simple.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_audit_simple.py",
       "line_number": null,
       "auto_fixable": true
@@ -449,12 +449,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "ecosystem/tools/fact-verification/gl-fact-pipeline.py",
-      "name": "gl-fact-pipeline.py",
+      "path": "ecosystem/tools/fact-verification/gov-fact-pipeline.py",
+      "name": "gov-fact-pipeline.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-fact-pipeline.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-fact-pipeline.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_fact_pipeline.py",
       "line_number": null,
       "auto_fixable": true
@@ -462,7 +462,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
       "name": "auto-fix-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -475,7 +475,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
       "name": "validate-module-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -488,7 +488,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
       "name": "generate-dag-visualization.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -501,7 +501,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
       "name": "auto-remediate-policy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -514,7 +514,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
       "name": "convert-snyk-to-sarif.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -527,7 +527,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
       "name": "ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -540,7 +540,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
       "name": "test-ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -553,7 +553,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
       "name": "generate-governance-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -566,7 +566,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
       "name": "test-count-bandit-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -579,7 +579,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
       "name": "validate-module-manifests.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -592,7 +592,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
       "name": "auto-quality-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -605,7 +605,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
       "name": "classify-autonomy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -618,7 +618,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
       "name": "autonomy-progress-tracker.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -631,7 +631,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
       "name": "generate-autonomy-summary.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -644,7 +644,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
       "name": "generate-evidence-chain.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -657,7 +657,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
       "name": "generate-risk-assessment.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -670,7 +670,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
       "name": "validate-gpu-scheduling.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -683,7 +683,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
       "name": "validate-model-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -696,7 +696,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
       "name": "quantum-validate.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -709,7 +709,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
       "name": "validate-dag.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -722,7 +722,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
       "name": "generate-audit-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -735,7 +735,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
       "name": "validate-semantics.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -748,7 +748,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
       "name": "validate-gpu-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -761,7 +761,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
       "name": "validate-data-catalog.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -774,7 +774,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
       "name": "generate-monitoring-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -787,7 +787,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
       "name": "validate-metadata.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -800,12 +800,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/hooks/gl-naming-check.py",
-      "name": "gl-naming-check.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/hooks/gov-naming-check.py",
+      "name": "gov-naming-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-naming-check.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-naming-check.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_naming_check.py",
       "line_number": null,
       "auto_fixable": true
@@ -813,7 +813,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
       "name": "config-sync-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -826,12 +826,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/hooks/gl-pre-commit.py",
-      "name": "gl-pre-commit.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/hooks/gov-pre-commit.py",
+      "name": "gov-pre-commit.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-pre-commit.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-pre-commit.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_pre_commit.py",
       "line_number": null,
       "auto_fixable": true
@@ -839,12 +839,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
-      "name": "gl-consolidation-plan.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl-consolidation-plan.py",
+      "name": "gov-consolidation-plan.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-consolidation-plan.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-consolidation-plan.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_consolidation_plan.py",
       "line_number": null,
       "auto_fixable": true
@@ -852,7 +852,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
+      "path": "gov-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
       "name": "axiom-namespace-migrator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -865,12 +865,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts/add-gl-markers.py",
-      "name": "add-gl-markers.py",
+      "path": "gov-runtime-engine-platform/scripts/add-gov-markers.py",
+      "name": "add-gov-markers.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers.py",
       "line_number": null,
       "auto_fixable": true
@@ -878,7 +878,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
+      "path": "gov-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
       "name": "aep-executor.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -891,12 +891,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/scripts/aup-tools/gl-marker-injector.py",
-      "name": "gl-marker-injector.py",
+      "path": "gov-runtime-engine-platform/scripts/aup-tools/gov-marker-injector.py",
+      "name": "gov-marker-injector.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-marker-injector.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-marker-injector.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_marker_injector.py",
       "line_number": null,
       "auto_fixable": true
@@ -904,7 +904,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
       "name": "ai-auto-fix.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -917,7 +917,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/real-module-launcher.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/real-module-launcher.py",
       "name": "real-module-launcher.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -930,7 +930,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/root-validator.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/root-validator.py",
       "name": "root-validator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -943,7 +943,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
       "name": "generate-sankey-data.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -956,7 +956,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/load-playbook.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/load-playbook.py",
       "name": "load-playbook.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -969,7 +969,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
       "name": "ai-refactor-review.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -982,7 +982,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/lkb-update.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/lkb-update.py",
       "name": "lkb-update.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -995,7 +995,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
       "name": "verify-namespace-alignment.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1008,7 +1008,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
       "name": "generate-refactor-playbook.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1021,7 +1021,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
       "name": "generate-hotspot-heatmap.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1034,7 +1034,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
       "name": "map-violations-to-playbooks.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1047,7 +1047,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
       "name": "platform-bootstrap-runner.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1060,7 +1060,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/semantic-commit-generator.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/semantic-commit-generator.py",
       "name": "semantic-commit-generator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1073,7 +1073,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/namespace-validator.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/namespace-validator.py",
       "name": "namespace-validator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1086,7 +1086,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/namespace-converter.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/namespace-converter.py",
       "name": "namespace-converter.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1099,7 +1099,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/language-history-writer.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/language-history-writer.py",
       "name": "language-history-writer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1112,7 +1112,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
       "name": "generate-language-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1125,7 +1125,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/ci-cost-dashboard.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/ci-cost-dashboard.py",
       "name": "ci-cost-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1138,7 +1138,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
       "name": "validate-refactor-index.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1151,7 +1151,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/language-health-score.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/language-health-score.py",
       "name": "language-health-score.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1164,7 +1164,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
       "name": "generate-migration-flow.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1177,7 +1177,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/fix-yaml-structure.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/fix-yaml-structure.py",
       "name": "fix-yaml-structure.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1190,7 +1190,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
       "name": "validate-governance-matrix.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1203,7 +1203,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
       "name": "language-governance-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1216,7 +1216,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
       "name": "generate-consolidated-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1229,7 +1229,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
       "name": "naming-migration.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1242,7 +1242,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/automation/deployment-automation.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/automation/deployment-automation.py",
       "name": "deployment-automation.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1255,7 +1255,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/automation/ci-automation.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/automation/ci-automation.py",
       "name": "ci-automation.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1268,7 +1268,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/cli/deployment-cli.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/cli/deployment-cli.py",
       "name": "deployment-cli.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1281,7 +1281,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
       "name": "validate-phase2.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1294,7 +1294,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
       "name": "validate-phase3.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1307,7 +1307,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
       "name": "validate-phase1.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1320,7 +1320,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/validation/validate-artifact.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/validation/validate-artifact.py",
       "name": "validate-artifact.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1333,7 +1333,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/utilities/file-processor.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/utilities/file-processor.py",
       "name": "file-processor.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1346,7 +1346,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/utilities/config-validator.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/utilities/config-validator.py",
       "name": "config-validator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1359,7 +1359,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generators/code-generator.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generators/code-generator.py",
       "name": "code-generator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1372,7 +1372,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/generators/project-generator.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/generators/project-generator.py",
       "name": "project-generator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1385,7 +1385,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
       "name": "manage-secret-patterns.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1398,7 +1398,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
+      "path": "gov-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
       "name": "vulnerability-alert-handler.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1411,7 +1411,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/scan-hardcoded-timelines.py",
+      "path": "gov-governance-compliance-platform/scripts/scan-hardcoded-timelines.py",
       "name": "scan-hardcoded-timelines.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1424,7 +1424,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/validate-module-registry.py",
+      "path": "gov-governance-compliance-platform/scripts/validate-module-registry.py",
       "name": "validate-module-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1437,7 +1437,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/generate-dag-visualization.py",
+      "path": "gov-governance-compliance-platform/scripts/generate-dag-visualization.py",
       "name": "generate-dag-visualization.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1450,7 +1450,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/version-audit.py",
+      "path": "gov-governance-compliance-platform/scripts/version-audit.py",
       "name": "version-audit.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1463,7 +1463,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/scan-naming-violations.py",
+      "path": "gov-governance-compliance-platform/scripts/scan-naming-violations.py",
       "name": "scan-naming-violations.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1476,7 +1476,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/fix-hardcoded-timelines.py",
+      "path": "gov-governance-compliance-platform/scripts/fix-hardcoded-timelines.py",
       "name": "fix-hardcoded-timelines.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1489,7 +1489,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/generate-governance-dashboard.py",
+      "path": "gov-governance-compliance-platform/scripts/generate-governance-dashboard.py",
       "name": "generate-governance-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1502,7 +1502,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/scan-hardcoded-timelines-filtered.py",
+      "path": "gov-governance-compliance-platform/scripts/scan-hardcoded-timelines-filtered.py",
       "name": "scan-hardcoded-timelines-filtered.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1515,7 +1515,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/validate-module-manifests.py",
+      "path": "gov-governance-compliance-platform/scripts/validate-module-manifests.py",
       "name": "validate-module-manifests.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1528,7 +1528,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/platform-deploy.py",
+      "path": "gov-governance-compliance-platform/scripts/platform-deploy.py",
       "name": "platform-deploy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1541,7 +1541,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-governance-compliance-platform/scripts/scan-source-code-timelines.py",
+      "path": "gov-governance-compliance-platform/scripts/scan-source-code-timelines.py",
       "name": "scan-source-code-timelines.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1671,7 +1671,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/auto-fix-issues.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/auto-fix-issues.py",
       "name": "auto-fix-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1684,7 +1684,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/validate-module-registry.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/validate-module-registry.py",
       "name": "validate-module-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1697,7 +1697,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/generate-dag-visualization.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/generate-dag-visualization.py",
       "name": "generate-dag-visualization.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1710,7 +1710,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/auto-remediate-policy.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/auto-remediate-policy.py",
       "name": "auto-remediate-policy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1723,7 +1723,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/convert-snyk-to-sarif.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/convert-snyk-to-sarif.py",
       "name": "convert-snyk-to-sarif.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1736,7 +1736,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/ci-error-analyzer.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/ci-error-analyzer.py",
       "name": "ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1749,7 +1749,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/test-ci-error-analyzer.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/test-ci-error-analyzer.py",
       "name": "test-ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1762,7 +1762,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/generate-governance-dashboard.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/generate-governance-dashboard.py",
       "name": "generate-governance-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1775,7 +1775,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/test-count-bandit-issues.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/test-count-bandit-issues.py",
       "name": "test-count-bandit-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1788,7 +1788,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/validate-module-manifests.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/validate-module-manifests.py",
       "name": "validate-module-manifests.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1801,7 +1801,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/auto-quality-check.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/auto-quality-check.py",
       "name": "auto-quality-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1814,7 +1814,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/classify-autonomy.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/classify-autonomy.py",
       "name": "classify-autonomy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1827,7 +1827,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/autonomy-progress-tracker.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/autonomy-progress-tracker.py",
       "name": "autonomy-progress-tracker.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1840,7 +1840,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/generate-autonomy-summary.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/generate-autonomy-summary.py",
       "name": "generate-autonomy-summary.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1853,7 +1853,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/generate-evidence-chain.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/generate-evidence-chain.py",
       "name": "generate-evidence-chain.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1866,7 +1866,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/generate-risk-assessment.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/generate-risk-assessment.py",
       "name": "generate-risk-assessment.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1879,7 +1879,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-gpu-scheduling.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-gpu-scheduling.py",
       "name": "validate-gpu-scheduling.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1892,7 +1892,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-model-registry.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-model-registry.py",
       "name": "validate-model-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1905,7 +1905,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/quantum-validate.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/quantum-validate.py",
       "name": "quantum-validate.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1918,7 +1918,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-dag.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-dag.py",
       "name": "validate-dag.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1931,7 +1931,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/generate-audit-report.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/generate-audit-report.py",
       "name": "generate-audit-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1944,7 +1944,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-semantics.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-semantics.py",
       "name": "validate-semantics.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1957,7 +1957,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-gpu-registry.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-gpu-registry.py",
       "name": "validate-gpu-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1970,7 +1970,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-data-catalog.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-data-catalog.py",
       "name": "validate-data-catalog.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1983,7 +1983,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/generate-monitoring-report.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/generate-monitoring-report.py",
       "name": "generate-monitoring-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -1996,7 +1996,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl/validate-metadata.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/validate-metadata.py",
       "name": "validate-metadata.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2009,12 +2009,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/hooks/gl-naming-check.py",
-      "name": "gl-naming-check.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/hooks/gov-naming-check.py",
+      "name": "gov-naming-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-naming-check.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-naming-check.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_naming_check.py",
       "line_number": null,
       "auto_fixable": true
@@ -2022,7 +2022,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/hooks/config-sync-check.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/hooks/config-sync-check.py",
       "name": "config-sync-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2035,12 +2035,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/hooks/gl-pre-commit.py",
-      "name": "gl-pre-commit.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/hooks/gov-pre-commit.py",
+      "name": "gov-pre-commit.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-pre-commit.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-pre-commit.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_pre_commit.py",
       "line_number": null,
       "auto_fixable": true
@@ -2048,12 +2048,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
-      "name": "gl-consolidation-plan.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/gov-restructure/gl-consolidation-plan.py",
+      "name": "gov-consolidation-plan.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-consolidation-plan.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-consolidation-plan.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_consolidation_plan.py",
       "line_number": null,
       "auto_fixable": true
@@ -2061,7 +2061,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts-legacy/migration/axiom-namespace-migrator.py",
+      "path": "gov-runtime-execution-platform/engine/scripts-legacy/migration/axiom-namespace-migrator.py",
       "name": "axiom-namespace-migrator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2074,12 +2074,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts/add-gl-markers.py",
-      "name": "add-gl-markers.py",
+      "path": "gov-runtime-execution-platform/engine/scripts/add-gov-markers.py",
+      "name": "add-gov-markers.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers.py",
       "line_number": null,
       "auto_fixable": true
@@ -2087,7 +2087,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts/aup-tools/aep-executor.py",
+      "path": "gov-runtime-execution-platform/engine/scripts/aup-tools/aep-executor.py",
       "name": "aep-executor.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2100,12 +2100,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/scripts/aup-tools/gl-marker-injector.py",
-      "name": "gl-marker-injector.py",
+      "path": "gov-runtime-execution-platform/engine/scripts/aup-tools/gov-marker-injector.py",
+      "name": "gov-marker-injector.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-marker-injector.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-marker-injector.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_marker_injector.py",
       "line_number": null,
       "auto_fixable": true
@@ -2113,7 +2113,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/ai-auto-fix.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/ai-auto-fix.py",
       "name": "ai-auto-fix.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2126,7 +2126,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/real-module-launcher.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/real-module-launcher.py",
       "name": "real-module-launcher.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2139,7 +2139,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/root-validator.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/root-validator.py",
       "name": "root-validator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2152,7 +2152,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generate-sankey-data.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generate-sankey-data.py",
       "name": "generate-sankey-data.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2165,7 +2165,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/load-playbook.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/load-playbook.py",
       "name": "load-playbook.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2178,7 +2178,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/ai-refactor-review.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/ai-refactor-review.py",
       "name": "ai-refactor-review.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2191,7 +2191,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/lkb-update.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/lkb-update.py",
       "name": "lkb-update.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2204,7 +2204,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/verify-namespace-alignment.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/verify-namespace-alignment.py",
       "name": "verify-namespace-alignment.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2217,7 +2217,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generate-refactor-playbook.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generate-refactor-playbook.py",
       "name": "generate-refactor-playbook.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2230,7 +2230,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generate-hotspot-heatmap.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generate-hotspot-heatmap.py",
       "name": "generate-hotspot-heatmap.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2243,7 +2243,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/map-violations-to-playbooks.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/map-violations-to-playbooks.py",
       "name": "map-violations-to-playbooks.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2256,7 +2256,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/platform-bootstrap-runner.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/platform-bootstrap-runner.py",
       "name": "platform-bootstrap-runner.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2269,7 +2269,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/semantic-commit-generator.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/semantic-commit-generator.py",
       "name": "semantic-commit-generator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2282,7 +2282,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/namespace-validator.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/namespace-validator.py",
       "name": "namespace-validator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2295,7 +2295,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/namespace-converter.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/namespace-converter.py",
       "name": "namespace-converter.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2308,7 +2308,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/language-history-writer.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/language-history-writer.py",
       "name": "language-history-writer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2321,7 +2321,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generate-language-dashboard.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generate-language-dashboard.py",
       "name": "generate-language-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2334,7 +2334,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/ci-cost-dashboard.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/ci-cost-dashboard.py",
       "name": "ci-cost-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2347,7 +2347,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/validate-refactor-index.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/validate-refactor-index.py",
       "name": "validate-refactor-index.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2360,7 +2360,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/language-health-score.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/language-health-score.py",
       "name": "language-health-score.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2373,7 +2373,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generate-migration-flow.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generate-migration-flow.py",
       "name": "generate-migration-flow.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2386,7 +2386,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/fix-yaml-structure.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/fix-yaml-structure.py",
       "name": "fix-yaml-structure.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2399,7 +2399,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/governance/validate-governance-matrix.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/governance/validate-governance-matrix.py",
       "name": "validate-governance-matrix.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2412,7 +2412,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/governance/language-governance-analyzer.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/governance/language-governance-analyzer.py",
       "name": "language-governance-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2425,7 +2425,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/governance/generate-consolidated-report.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/governance/generate-consolidated-report.py",
       "name": "generate-consolidated-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2438,7 +2438,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/governance/python/naming-migration.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/governance/python/naming-migration.py",
       "name": "naming-migration.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2451,7 +2451,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/automation/deployment-automation.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/automation/deployment-automation.py",
       "name": "deployment-automation.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2464,7 +2464,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/automation/ci-automation.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/automation/ci-automation.py",
       "name": "ci-automation.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2477,7 +2477,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/cli/deployment-cli.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/cli/deployment-cli.py",
       "name": "deployment-cli.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2490,7 +2490,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/refactor/validate-phase2.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/refactor/validate-phase2.py",
       "name": "validate-phase2.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2503,7 +2503,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/refactor/validate-phase3.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/refactor/validate-phase3.py",
       "name": "validate-phase3.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2516,7 +2516,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/refactor/validate-phase1.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/refactor/validate-phase1.py",
       "name": "validate-phase1.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2529,7 +2529,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/validation/validate-artifact.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/validation/validate-artifact.py",
       "name": "validate-artifact.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2542,7 +2542,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/utilities/file-processor.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/utilities/file-processor.py",
       "name": "file-processor.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2555,7 +2555,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/utilities/config-validator.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/utilities/config-validator.py",
       "name": "config-validator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2568,7 +2568,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generators/code-generator.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generators/code-generator.py",
       "name": "code-generator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2581,7 +2581,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/generators/project-generator.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/generators/project-generator.py",
       "name": "project-generator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2594,7 +2594,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/scripts/manage-secret-patterns.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/scripts/manage-secret-patterns.py",
       "name": "manage-secret-patterns.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2607,7 +2607,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-execution-platform/engine/tools-legacy/scripts/vulnerability-alert-handler.py",
+      "path": "gov-runtime-execution-platform/engine/tools-legacy/scripts/vulnerability-alert-handler.py",
       "name": "vulnerability-alert-handler.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2880,39 +2880,39 @@
     {
       "rule_id": "GL20-FILE-003",
       "category": "file",
-      "path": "reports/gl-anchors/gl-validation-report_20260203_155913.json",
-      "name": "gl-validation-report-20260203-155913.json",
+      "path": "reports/gov-anchors/gov-validation-report_20260203_155913.json",
+      "name": "gov-validation-report-20260203-155913.json",
       "expected_style": "kebab-case",
       "actual_style": "snake_case (invalid)",
       "severity": "MEDIUM",
-      "message": "配置文件 'gl-validation-report-20260203-155913.json' 使用下劃線，應使用連字符 (kebab-case)",
-      "suggestion": "gl-validation-report-20260203-155913.json",
+      "message": "配置文件 'gov-validation-report-20260203-155913.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "suggestion": "gov-validation-report-20260203-155913.json",
       "line_number": null,
       "auto_fixable": true
     },
     {
       "rule_id": "GL20-FILE-003",
       "category": "file",
-      "path": "reports/gl-anchors/gl-classification-20260203_155913.json",
-      "name": "gl-classification-20260203-155913.json",
+      "path": "reports/gov-anchors/gov-classification-20260203_155913.json",
+      "name": "gov-classification-20260203-155913.json",
       "expected_style": "kebab-case",
       "actual_style": "snake_case (invalid)",
       "severity": "MEDIUM",
-      "message": "配置文件 'gl-classification-20260203-155913.json' 使用下劃線，應使用連字符 (kebab-case)",
-      "suggestion": "gl-classification-20260203-155913.json",
+      "message": "配置文件 'gov-classification-20260203-155913.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "suggestion": "gov-classification-20260203-155913.json",
       "line_number": null,
       "auto_fixable": true
     },
     {
       "rule_id": "GL20-FILE-003",
       "category": "file",
-      "path": "reports/gl-anchors/gl-coverage-report_20260203_155913.json",
-      "name": "gl-coverage-report-20260203-155913.json",
+      "path": "reports/gov-anchors/gov-coverage-report_20260203_155913.json",
+      "name": "gov-coverage-report-20260203-155913.json",
       "expected_style": "kebab-case",
       "actual_style": "snake_case (invalid)",
       "severity": "MEDIUM",
-      "message": "配置文件 'gl-coverage-report-20260203-155913.json' 使用下劃線，應使用連字符 (kebab-case)",
-      "suggestion": "gl-coverage-report-20260203-155913.json",
+      "message": "配置文件 'gov-coverage-report-20260203-155913.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "suggestion": "gov-coverage-report-20260203-155913.json",
       "line_number": null,
       "auto_fixable": true
     },
@@ -2958,7 +2958,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-automation-instant-platform/scripts/validate-instant-execution.py",
+      "path": "gov-automation-instant-platform/scripts/validate-instant-execution.py",
       "name": "validate-instant-execution.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2971,7 +2971,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-automation-instant-platform/scripts/validate-instant-manifest.py",
+      "path": "gov-automation-instant-platform/scripts/validate-instant-manifest.py",
       "name": "validate-instant-manifest.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2984,7 +2984,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-automation-instant-platform/scripts/generate-instant-dag.py",
+      "path": "gov-automation-instant-platform/scripts/generate-instant-dag.py",
       "name": "generate-instant-dag.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -2997,7 +2997,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-automation-instant-platform/scripts/INSTANT-DEPLOY.py",
+      "path": "gov-automation-instant-platform/scripts/INSTANT-DEPLOY.py",
       "name": "instant_deploy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case (invalid)",
@@ -3010,7 +3010,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-quantum-computing-platform/artifacts/cli/artifact-cli.py",
+      "path": "gov-quantum-computing-platform/artifacts/cli/artifact-cli.py",
       "name": "artifact-cli.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3023,7 +3023,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-quantum-computing-platform/artifacts/converters/markdown-to-python-module.py",
+      "path": "gov-quantum-computing-platform/artifacts/converters/markdown-to-python-module.py",
       "name": "markdown-to-python-module.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3036,7 +3036,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-quantum-computing-platform/artifacts/converters/pdf-to-json-converter.py",
+      "path": "gov-quantum-computing-platform/artifacts/converters/pdf-to-json-converter.py",
       "name": "pdf-to-json-converter.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3049,7 +3049,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-quantum-computing-platform/artifacts/converters/docx-to-yaml-converter.py",
+      "path": "gov-quantum-computing-platform/artifacts/converters/docx-to-yaml-converter.py",
       "name": "docx-to-yaml-converter.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3062,7 +3062,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-services-platform/quantum-platform/artifacts/cli/artifact-cli.py",
+      "path": "gov-runtime-services-platform/quantum-platform/artifacts/cli/artifact-cli.py",
       "name": "artifact-cli.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3075,7 +3075,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-services-platform/quantum-platform/artifacts/converters/markdown-to-python-module.py",
+      "path": "gov-runtime-services-platform/quantum-platform/artifacts/converters/markdown-to-python-module.py",
       "name": "markdown-to-python-module.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3088,7 +3088,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-services-platform/quantum-platform/artifacts/converters/pdf-to-json-converter.py",
+      "path": "gov-runtime-services-platform/quantum-platform/artifacts/converters/pdf-to-json-converter.py",
       "name": "pdf-to-json-converter.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3101,7 +3101,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "gl-runtime-services-platform/quantum-platform/artifacts/converters/docx-to-yaml-converter.py",
+      "path": "gov-runtime-services-platform/quantum-platform/artifacts/converters/docx-to-yaml-converter.py",
       "name": "docx-to-yaml-converter.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3257,12 +3257,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/gl-markers/add-gl-markers-json.py",
-      "name": "add-gl-markers-json.py",
+      "path": "machine-native-ops/ecosystem/tools/gov-markers/add-gov-markers-json.py",
+      "name": "add-gov-markers-json.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers-json.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers-json.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers_json.py",
       "line_number": null,
       "auto_fixable": true
@@ -3270,7 +3270,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/gl-markers/fix-governance-markers.py",
+      "path": "machine-native-ops/ecosystem/tools/gov-markers/fix-governance-markers.py",
       "name": "fix-governance-markers.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3283,12 +3283,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/gl-markers/add-gl-markers.py",
-      "name": "add-gl-markers.py",
+      "path": "machine-native-ops/ecosystem/tools/gov-markers/add-gov-markers.py",
+      "name": "add-gov-markers.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers.py",
       "line_number": null,
       "auto_fixable": true
@@ -3296,12 +3296,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/gl-markers/add-gl-markers-yaml.py",
-      "name": "add-gl-markers-yaml.py",
+      "path": "machine-native-ops/ecosystem/tools/gov-markers/add-gov-markers-yaml.py",
+      "name": "add-gov-markers-yaml.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers-yaml.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers-yaml.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers_yaml.py",
       "line_number": null,
       "auto_fixable": true
@@ -3309,12 +3309,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/gl-markers/add-gl-markers-batch.py",
-      "name": "add-gl-markers-batch.py",
+      "path": "machine-native-ops/ecosystem/tools/gov-markers/add-gov-markers-batch.py",
+      "name": "add-gov-markers-batch.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'add-gl-markers-batch.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'add-gov-markers-batch.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "add_gl_markers_batch.py",
       "line_number": null,
       "auto_fixable": true
@@ -3322,12 +3322,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/audit/gl-audit-simple.py",
-      "name": "gl-audit-simple.py",
+      "path": "machine-native-ops/ecosystem/tools/audit/gov-audit-simple.py",
+      "name": "gov-audit-simple.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-audit-simple.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-audit-simple.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_audit_simple.py",
       "line_number": null,
       "auto_fixable": true
@@ -3335,12 +3335,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/ecosystem/tools/fact-verification/gl-fact-pipeline.py",
-      "name": "gl-fact-pipeline.py",
+      "path": "machine-native-ops/ecosystem/tools/fact-verification/gov-fact-pipeline.py",
+      "name": "gov-fact-pipeline.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-fact-pipeline.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-fact-pipeline.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_fact_pipeline.py",
       "line_number": null,
       "auto_fixable": true
@@ -3348,7 +3348,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
       "name": "auto-fix-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3361,7 +3361,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
       "name": "validate-module-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3374,7 +3374,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
       "name": "generate-dag-visualization.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3387,7 +3387,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
       "name": "auto-remediate-policy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3400,7 +3400,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
       "name": "convert-snyk-to-sarif.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3413,7 +3413,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
       "name": "ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3426,7 +3426,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
       "name": "test-ci-error-analyzer.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3439,7 +3439,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
       "name": "generate-governance-dashboard.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3452,7 +3452,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
       "name": "test-count-bandit-issues.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3465,7 +3465,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
       "name": "validate-module-manifests.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3478,7 +3478,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
       "name": "auto-quality-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3491,7 +3491,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
       "name": "classify-autonomy.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3504,7 +3504,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
       "name": "autonomy-progress-tracker.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3517,7 +3517,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
       "name": "generate-autonomy-summary.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3530,7 +3530,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
       "name": "generate-evidence-chain.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3543,7 +3543,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
       "name": "generate-risk-assessment.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3556,7 +3556,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
       "name": "validate-gpu-scheduling.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3569,7 +3569,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
       "name": "validate-model-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3582,7 +3582,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
       "name": "quantum-validate.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3595,7 +3595,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
       "name": "validate-dag.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3608,7 +3608,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
       "name": "generate-audit-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3621,7 +3621,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
       "name": "validate-semantics.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3634,7 +3634,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
       "name": "validate-gpu-registry.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3647,7 +3647,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
       "name": "validate-data-catalog.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3660,7 +3660,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
       "name": "generate-monitoring-report.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3673,7 +3673,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
       "name": "validate-metadata.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3686,12 +3686,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/hooks/gl-naming-check.py",
-      "name": "gl-naming-check.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/hooks/gov-naming-check.py",
+      "name": "gov-naming-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-naming-check.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-naming-check.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_naming_check.py",
       "line_number": null,
       "auto_fixable": true
@@ -3699,7 +3699,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
       "name": "config-sync-check.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
@@ -3712,12 +3712,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/hooks/gl-pre-commit.py",
-      "name": "gl-pre-commit.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/hooks/gov-pre-commit.py",
+      "name": "gov-pre-commit.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-pre-commit.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-pre-commit.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_pre_commit.py",
       "line_number": null,
       "auto_fixable": true
@@ -3725,12 +3725,12 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
-      "name": "gl-consolidation-plan.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl-consolidation-plan.py",
+      "name": "gov-consolidation-plan.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",
       "severity": "HIGH",
-      "message": "Python 文件 'gl-consolidation-plan.py' 使用連字符，應使用下劃線 (snake_case)",
+      "message": "Python 文件 'gov-consolidation-plan.py' 使用連字符，應使用下劃線 (snake_case)",
       "suggestion": "gov_consolidation_plan.py",
       "line_number": null,
       "auto_fixable": true
@@ -3738,7 +3738,7 @@
     {
       "rule_id": "GL20-FILE-001",
       "category": "file",
-      "path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
+      "path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
       "name": "axiom-namespace-migrator.py",
       "expected_style": "snake_case",
       "actual_style": "kebab-case",

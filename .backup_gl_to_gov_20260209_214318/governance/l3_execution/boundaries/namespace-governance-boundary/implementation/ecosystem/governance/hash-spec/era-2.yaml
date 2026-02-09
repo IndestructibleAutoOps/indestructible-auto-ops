@@ -1,0 +1,239 @@
+# Era-2 Hash Specification
+# Defines canonicalization and hashing rules for Era-2 (Semantic-Native Governance)
+
+version: "2.0"
+era: 2
+era_name: "Semantic-Native Governance"
+effective_date: "2026-02-05T00:00:00Z"
+backward_compatibility:
+  era: 1
+  translation_table: "governance/migration/hashtranslationtable.jsonl"
+  chain_preservation: true
+
+# Canonicalization Rules
+canonicalization:
+  standard: "RFC 8785"
+  method: "JCS+EnhancedLayeredSorting"
+  version: "2.0"
+  
+  # Enhanced Layered Sorting Protocol
+  layered_sorting:
+    layer_1:  # Core fields (immutable - never change)
+      - "artifact_id"
+      - "step_number"
+      "timestamp"
+      - "era"
+      - "success"
+      - "closure_type"
+    
+    layer_2:  # Optional fields (can be added in future)
+      - "semantic_version"
+      - "governance_version"
+      - "canonicalization_version"
+      - "canonicalization_method"
+      - "execution_time_ms"
+      - "violations_count"
+    
+    layer_3:  # Extension fields (infinitely extensible)
+      - "artifacts_generated"
+      - "metadata"
+      - "chain_references"
+      - "semantic_delta"
+    
+    # Sorting rules
+    rules:
+      - "fields_in_layer_1_sorted_first"
+      - "fields_in_layer_2_sorted_second"
+      - "fields_in_layer_3_sorted_last"
+      - "missing_fields_do_not_affect_sorting"
+      - "all_field_values_must_be_canonicalized"
+  
+  # Ignore fields (excluded from hash computation)
+  ignore_fields:
+    - "execution_time_ms"
+    - "_layer1"
+    - "_layer2"
+    - "_layer3"
+    - "legacy_fields"
+    - "debug_info"
+    - "temp_data"
+  
+  # Multi-semantic mapping support
+  multi_semantic:
+    enabled: true
+    contexts:
+      - "audit"
+      - "governance"
+      - "compliance"
+      - "verification"
+    mapping_strategy: "context_aware_hash"
+
+# Hash Configuration
+hash:
+  algorithm: "SHA256"
+  output_format: "sha256:{hash}"
+  encoding: "hex"
+  
+  # Hash chain architecture
+  chain:
+    artifact_chain:
+      enabled: true
+      link_field: "parent_hash"
+      verify_continuity: true
+    
+    event_chain:
+      enabled: true
+      link_field: "previous_event_hash"
+      verify_continuity: true
+    
+    combined_chain:
+      enabled: true
+      link_artifact_to_event: true
+      link_event_to_artifact: true
+    
+    merkle_tree:
+      enabled: true
+      root_field: "merkle_root"
+      verification_enabled: true
+
+# Semantic Versioning
+semantic_versioning:
+  enabled: true
+  version_field: "semantic_version"
+  format: "major.minor.patch"
+  current_version: "2.0.0"
+  
+  # Semantic delta tracking
+  delta_tracking:
+    fields_added: []
+    fields_removed: []
+    fields_renamed: {}
+    semantic_changes: []
+    
+  # Backward compatibility
+  backward_compatibility:
+    era_1_support: true
+    translation_required: true
+    translation_method: "canonical_rehash"
+
+# Complement Format
+complements:
+  format_version: "2.0"
+  required_fields:
+    - "complement_id"
+    - "source_artifact_hash"
+    - "complement_type"
+    - "semantic_binding"
+    - "evidence"
+    - "created_at"
+  
+  optional_fields:
+    - "era_2_specific_fields"
+    - "enhanced_metadata"
+    - "verification_tokens"
+  
+  # Era-1 complement compatibility
+  era_1_compatibility:
+    enable: true
+    translate_hashes: true
+    preserve_semantics: true
+
+# Event Stream Format
+event_stream:
+  format: "JSONL"
+  version: "2.0"
+  required_fields:
+    - "uuid"
+    - "timestamp"
+    - "type"
+    - "payload"
+    - "era"
+    - "canonical_hash"
+    - "hash_chain"
+    - "semantic_version"
+  
+  optional_fields:
+    - "era_2_specific_metadata"
+    - "context_info"
+    - "verification_status"
+
+# Verification Rules
+verification:
+  # Hash verification
+  hash_verification:
+    enabled: true
+    methods:
+      - "forward_translation"
+      - "reverse_translation"
+      - "chain_continuity"
+    
+  # Semantic verification
+  semantic_verification:
+    enabled: true
+    checks:
+      - "era_1_semantic_interpretability"
+      - "semantic_delta_consistency"
+      - "multi_semantic_mapping"
+    
+  # Chain verification
+  chain_verification:
+    enabled: true
+    checks:
+      - "artifact_chain_integrity"
+      - "event_chain_integrity"
+      - "combined_chain_integrity"
+      - "merkle_root_verification"
+
+# Migration Support
+migration:
+  era_1_to_era_2:
+    enabled: true
+    translation_table: "governance/migration/hashtranslationtable.jsonl"
+    
+    # Migration phases
+    phases:
+      - name: "htt_generation"
+        description: "Generate Hash Translation Table"
+        required: true
+      
+      - name: "pilot_migration"
+        description: "Migrate pilot modules"
+        required: false
+      
+      - name: "parallel_run"
+        description: "Run Era-1 and Era-2 in parallel"
+        required: false
+      
+      - name: "full_migration"
+        description: "Migrate all modules to Era-2"
+        required: true
+      
+      - name: "era_1_seal"
+        description: "Seal Era-1 after successful migration"
+        required: true
+
+# Security Considerations
+security:
+  # Hash algorithm upgrade path
+  crypto_agility:
+    enabled: true
+    current_algorithm: "SHA256"
+    future_algorithms:
+      - "SHA3-256"
+      - "BLAKE3"
+      - "Post-Quantum"
+    upgrade_path: "seamless"
+  
+  # Tamper evidence
+  tamper_evidence:
+    htt_sealed: true
+    htt_hash_recorded: true
+    chain_integrity_verified: true
+
+# References
+references:
+  - "RFC 8785 - JSON Canonicalization Scheme (JCS)"
+  - "NIST SP 1800-38C - Post-Quantum Cryptography Migration"
+  - "NIST IR 8387 - Digital Evidence Preservation"
+  - "ecosystem/governance/hash-storage-specification.md"
+  - "ecosystem/governance/migration/hash-translation-spec-v1.md"

@@ -1,0 +1,22 @@
+root_cause_analysis:
+  causes:
+    - id: RCA-01
+      statement: "Protocol focuses on build-time correctness; runtime governance surfaces are under-specified."
+      evidence:
+        - "No explicit admission/authorization gate definition"
+        - "No drift reconciliation contract"
+    - id: RCA-02
+      statement: "Evidence chain limited to build artifacts; operational artifacts and time integrity not fully sealed."
+      evidence:
+        - "No enforced timestamp authority"
+        - "No artifact class coverage (models, dashboards, base images)"
+    - id: RCA-03
+      statement: "Resilience validated procedurally (playbooks) but not systematically (chaos + SLO-driven automation)."
+      evidence:
+        - "No chaos test suite required"
+        - "No error-budget based rollout/rollback policy"
+    - id: RCA-04
+      statement: "Open-system boundaries not proven; network/service identity contracts are not tested as first-class."
+      evidence:
+        - "Missing mTLS policy tests"
+        - "Missing egress allowlist verification"

@@ -1,0 +1,3823 @@
+{
+  "timestamp": "20260203_163050",
+  "version": "2.0.0",
+  "status": "FAIL",
+  "summary": {
+    "total_checks": 6,
+    "passed": 5,
+    "failed": 1,
+    "total_violations": 469,
+    "critical_violations": 453,
+    "high_violations": 1
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 114 個文件，發現 4 個問題",
+      "files_scanned": 114,
+      "execution_time_ms": 8,
+      "violations_count": 4
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1319 個目錄，發現 8 個命名問題",
+      "files_scanned": 1319,
+      "execution_time_ms": 134,
+      "violations_count": 8
+    },
+    {
+      "name": "Security Check",
+      "passed": false,
+      "message": "掃描 4185 個文件，發現 453 個安全問題",
+      "files_scanned": 4185,
+      "execution_time_ms": 752,
+      "violations_count": 453
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 3 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 31,
+      "violations_count": 3
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 1 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 1
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/enforcers/self_auditor.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/tools/audit_trail_report.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/tools/audit_trail_query.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "summarized_conversations",
+      "line_number": null,
+      "message": "目錄名稱 'summarized_conversations' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'summarized-conversations'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/reasoning/dual-path",
+      "line_number": null,
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'dual-path'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools",
+      "line_number": null,
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'path-tools'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/path-tools",
+      "line_number": null,
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'path-tools'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path",
+      "line_number": null,
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'dual-path'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/external_cache",
+      "line_number": null,
+      "message": "目錄名稱 'external_cache' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'external-cache'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/vector_index",
+      "line_number": null,
+      "message": "目錄名稱 'vector_index' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'vector-index'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/knowledge_graph",
+      "line_number": null,
+      "message": "目錄名稱 'knowledge_graph' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'knowledge-graph'"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py",
+      "line_number": 291,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "line_number": 4,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
+      "line_number": 186,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/scripts/tools/gl10top10validator.py",
+      "line_number": 69,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/gl10top10validator.py",
+      "line_number": 85,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tests-legacy/unit/test_gov_validator.py",
+      "line_number": 291,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/generate-risk-assessment.py",
+      "line_number": 4,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/scripts-legacy/gl/implementation/governance_loop.py",
+      "line_number": 186,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/scripts/tools/gl10top10validator.py",
+      "line_number": 69,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/gl10top10validator.py",
+      "line_number": 85,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path/internal/retrieval.py",
+      "line_number": 123,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path/external/retrieval.py",
+      "line_number": 71,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py",
+      "line_number": 291,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "line_number": 4,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
+      "line_number": 185,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/apps/quantum-dashboard/src/components/WorkflowDesigner.js",
+      "line_number": 17,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/apps/quantum-dashboard/src/components/WorkflowDesigner.js",
+      "line_number": 18,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/apps/quantum-dashboard/src/components/WorkflowDesigner.js",
+      "line_number": 17,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/apps/quantum-dashboard/src/components/WorkflowDesigner.js",
+      "line_number": 18,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/contracts/semantic-unification-spec.yaml",
+      "line_number": 130,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/naming-governance/registry/capability-registry.yaml",
+      "line_number": 30,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/naming-governance/registry/capability-registry.yaml",
+      "line_number": 46,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/naming-governance/registry/capability-registry.yaml",
+      "line_number": 55,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/naming-governance/registry/capability-registry.yaml",
+      "line_number": 136,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/naming-governance/registry/resource-registry.yaml",
+      "line_number": 36,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/naming-governance/registry/resource-registry.yaml",
+      "line_number": 172,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-integrated-seal.yaml",
+      "line_number": 78,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-execution-mode.yaml",
+      "line_number": 39,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-skills-matrix.yaml",
+      "line_number": 53,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-skills-matrix.yaml",
+      "line_number": 111,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-skills-matrix.yaml",
+      "line_number": 163,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 116,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 271,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 366,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 458,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifacts-matrix.yaml",
+      "line_number": 160,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifacts-matrix.yaml",
+      "line_number": 799,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifacts-matrix.yaml",
+      "line_number": 1078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifacts-matrix.yaml",
+      "line_number": 1636,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-global-semantic-index.yaml",
+      "line_number": 124,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-global-semantic-index.yaml",
+      "line_number": 182,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-global-semantic-index.yaml",
+      "line_number": 224,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-semantic-boundaries.yaml",
+      "line_number": 108,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-task-lifecycle.yaml",
+      "line_number": 9,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-task-lifecycle.yaml",
+      "line_number": 152,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-semantic-seal.yaml",
+      "line_number": 80,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-automation-engine.yaml",
+      "line_number": 218,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifact-engine.yaml",
+      "line_number": 89,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/governance-loop-process-policy.yaml",
+      "line_number": 31,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/monitoring/prometheus-rules.yaml",
+      "line_number": 503,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/exception/exception-policy.yaml",
+      "line_number": 289,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/controlplane/governance/policies/pipeline-governance.yaml",
+      "line_number": 72,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 118,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 273,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 368,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 460,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/artifacts/governance-loop-process-policy.yaml",
+      "line_number": 33,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/config/root.modules.yaml",
+      "line_number": 202,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/config/root.modules.yaml",
+      "line_number": 413,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/config/root.modules.yaml",
+      "line_number": 414,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/config/root.modules.yaml",
+      "line_number": 436,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/config/root.modules.yaml",
+      "line_number": 459,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/config/root.trust.yaml",
+      "line_number": 184,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/etl-pipeline/controlplane/governance/policies/pipeline-governance.yaml",
+      "line_number": 72,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 118,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 273,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 368,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 460,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/artifacts/governance-loop-process-policy.yaml",
+      "line_number": 33,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/config/root.modules.yaml",
+      "line_number": 202,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/config/root.modules.yaml",
+      "line_number": 413,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/config/root.modules.yaml",
+      "line_number": 414,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/config/root.modules.yaml",
+      "line_number": 436,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/config/root.modules.yaml",
+      "line_number": 459,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/config/root.trust.yaml",
+      "line_number": 184,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "platforms/registry/platform-registry/gov-platform-registry.yaml",
+      "line_number": 117,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "platforms/registry/platform-registry/gov-platform-registry.yaml",
+      "line_number": 232,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/production/resource-optimization-monitoring.yaml",
+      "line_number": 136,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/production/resource-optimization-monitoring.yaml",
+      "line_number": 145,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/production/resource-optimization-monitoring.yaml",
+      "line_number": 153,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/production/resource-optimization-monitoring.yaml",
+      "line_number": 185,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/production/platform-agnostic-config.yaml",
+      "line_number": 52,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/production/performance-auto-tuning.yaml",
+      "line_number": 134,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "config/enterprise-platform-architecture.yaml",
+      "line_number": 236,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-quantum-computing-platform/governance/naming/migration-playbook.yaml",
+      "line_number": 57,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-quantum-computing-platform/governance/naming/migration-playbook.yaml",
+      "line_number": 59,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-quantum-computing-platform/governance/naming/migration-playbook.yaml",
+      "line_number": 61,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-services-platform/quantum-platform/governance/naming/migration-playbook.yaml",
+      "line_number": 57,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-services-platform/quantum-platform/governance/naming/migration-playbook.yaml",
+      "line_number": 59,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-services-platform/quantum-platform/governance/naming/migration-playbook.yaml",
+      "line_number": 61,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/etl-pipeline/controlplane/governance/policies/pipeline-governance.yaml",
+      "line_number": 72,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 118,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 273,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 368,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+      "line_number": 460,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/artifacts/governance-loop-process-policy.yaml",
+      "line_number": 33,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "compliance-fix-log.json",
+      "line_number": 2108,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "compliance-fix-log.json",
+      "line_number": 3653,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "internal-cross-comparison-report.json",
+      "line_number": 300,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "internal-cross-comparison-report.json",
+      "line_number": 301,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 10110,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 10111,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 10236,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 10237,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 15887,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 15888,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16049,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16049,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16050,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16283,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16284,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16355,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16355,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "scan-results.json",
+      "line_number": 16356,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-report-fixed.json",
+      "line_number": 362,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-report-fixed.json",
+      "line_number": 2840,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 1159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-report.json",
+      "line_number": 434,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-report.json",
+      "line_number": 2794,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 2407,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-MARKER-INJECTION-REPORT.json",
+      "line_number": 301,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-ISSUES-LIST-20260126-082639.json",
+      "line_number": 9586,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082815.json",
+      "line_number": 11078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082815.json",
+      "line_number": 11090,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082639.json",
+      "line_number": 11078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082639.json",
+      "line_number": 11090,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082815.json",
+      "line_number": 17717,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082815.json",
+      "line_number": 17747,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21865,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21876,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21905,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 16,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 16,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 25,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/.gl10-index.json",
+      "line_number": 21,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 32,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 26,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 51,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 63,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-fixed.json",
+      "line_number": 362,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-fixed.json",
+      "line_number": 2840,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 1159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-reports/bandit-report.json",
+      "line_number": 434,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-reports/bandit-report.json",
+      "line_number": 2794,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 2407,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-MARKER-INJECTION-REPORT.json",
+      "line_number": 301,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-ISSUES-LIST-20260126-082639.json",
+      "line_number": 9586,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082815.json",
+      "line_number": 11078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082815.json",
+      "line_number": 11090,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082639.json",
+      "line_number": 11078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082639.json",
+      "line_number": 11090,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082815.json",
+      "line_number": 17717,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082815.json",
+      "line_number": 17747,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21865,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21876,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21905,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 16,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 16,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 25,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10/.gl10-index.json",
+      "line_number": 21,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 32,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 26,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 51,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 63,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report.json",
+      "line_number": 5686,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report.json",
+      "line_number": 5695,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report.json",
+      "line_number": 11680,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report.json",
+      "line_number": 11689,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report-fixed.json",
+      "line_number": 2239,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report-fixed.json",
+      "line_number": 2248,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report-fixed.json",
+      "line_number": 7837,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/mnga-compliance-report-fixed.json",
+      "line_number": 7846,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 2159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 6319,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 10209,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 26629,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 26719,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 26719,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 26839,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 26879,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 26879,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 27229,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 27299,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 30949,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 31039,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 31039,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 31159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 31199,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 31199,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 34429,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 34519,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 34519,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 34639,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 34679,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 34679,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 39316,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report_20260203_155913.json",
+      "line_number": 44886,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 3000,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 8824,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 14270,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 37511,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 37637,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 37637,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 37805,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 37861,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 37861,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 38351,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 38449,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 43559,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 43685,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 43685,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 43853,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 43909,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 43909,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 48431,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 48557,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 48557,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 48725,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 48781,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 48781,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 55323,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203_155913.json",
+      "line_number": 63121,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 2159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 6319,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 10209,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 26629,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 26719,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 26719,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 26839,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 26879,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 26879,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 27229,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 27299,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 30949,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 31039,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 31039,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 31159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 31199,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 31199,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 34429,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 34519,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 34519,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 34639,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 34679,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 34679,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 39316,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-validation-report-20260203-155913.json",
+      "line_number": 44886,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 3000,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 8824,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 14270,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 37511,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 37637,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 37637,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 37805,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 37861,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 37861,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 38351,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 38449,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 43559,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 43685,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 43685,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 43853,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 43909,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 43909,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 48431,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 48557,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 48557,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 48725,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 48781,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 48781,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 55323,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/gov-anchors/gl-classification-20260203-155913.json",
+      "line_number": 63121,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 5071,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 5072,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 5074,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 11630,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 11631,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 11633,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 15326,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 15327,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-161926.json",
+      "line_number": 15329,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 3305,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 3306,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 3308,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 6469,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 6470,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 6472,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 9955,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 9956,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162127.json",
+      "line_number": 9958,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 3291,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 3292,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 3294,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 6455,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 6456,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 6458,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 9948,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 9949,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report_20260203_162203.json",
+      "line_number": 9951,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 4376,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 4377,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 4379,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 9577,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 9578,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 9580,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 14561,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 14562,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "reports/naming/naming-consistency-report-20260203-162040.json",
+      "line_number": 14564,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/reports/integration-synthesis-report.json",
+      "line_number": 314,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/reports/integration-synthesis-report.json",
+      "line_number": 315,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/reports/internal-cross-comparison-report.json",
+      "line_number": 300,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/reports/internal-cross-comparison-report.json",
+      "line_number": 301,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report-fixed.json",
+      "line_number": 362,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report-fixed.json",
+      "line_number": 2840,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 1159,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report.json",
+      "line_number": 434,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report.json",
+      "line_number": 2794,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 2407,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-MARKER-INJECTION-REPORT.json",
+      "line_number": 301,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-ISSUES-LIST-20260126-082639.json",
+      "line_number": 9586,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082815.json",
+      "line_number": 11078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082815.json",
+      "line_number": 11090,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082639.json",
+      "line_number": 11078,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-GOVERNANCE-EVENT-STREAM-20260126-082639.json",
+      "line_number": 11090,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082815.json",
+      "line_number": 17717,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082815.json",
+      "line_number": 17747,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21865,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21876,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/.governance/audit-results/aep-reports/GL-FILE-REPORTS-20260126-082639.json",
+      "line_number": 21905,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 16,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 16,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
+      "line_number": 25,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/.gl10-index.json",
+      "line_number": 21,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 14,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 28,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "line_number": 32,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 24,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 26,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 51,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/root/.gl-index.json",
+      "line_number": 63,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "compliance-report-final.md",
+      "line_number": 965,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "compliance-report-final.md",
+      "line_number": 3329,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "compliance-report-final.md",
+      "line_number": 5119,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "compliance-report-final.md",
+      "line_number": 6487,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "README.md",
+      "line_number": 55,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-platform-restructure-plan.md",
+      "line_number": 420,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ARCHITECTURE-COMPLETE.md",
+      "line_number": 73,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/governance/boundary-reference-matrix.md",
+      "line_number": 353,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/GOVERNANCE-ARCHITECTURE-OVERVIEW.md",
+      "line_number": 138,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/board-minutes-template.md",
+      "line_number": 284,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/standards/coding-standards.md",
+      "line_number": 668,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-platform-layer-specification.md",
+      "line_number": 94,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 185,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 192,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 378,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 435,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 534,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
+      "line_number": 80,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
+      "line_number": 289,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
+      "line_number": 561,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-interface-layer-specification.md",
+      "line_number": 179,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gov-interface-layer-specification.md",
+      "line_number": 184,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/governance/gl-artifacts/strategic/artifacts/board-minutes-template.md",
+      "line_number": 283,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/controlplane/baseline/modules/README.md",
+      "line_number": 198,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/README.md",
+      "line_number": 181,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/README.md",
+      "line_number": 183,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/governance/gl-artifacts/strategic/artifacts/board-minutes-template.md",
+      "line_number": 283,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/controlplane/baseline/modules/README.md",
+      "line_number": 198,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-execution-runtime/README.md",
+      "line_number": 181,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-execution-runtime/README.md",
+      "line_number": 183,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/RKE2-SECURITY-INTEGRATION-PLAN.md",
+      "line_number": 95,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/archive/GL10-MIGRATION-COMPLETE.md",
+      "line_number": 22,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/archive/GL10-TOP10-MIGRATION-COMPLETE.md",
+      "line_number": 30,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/archive/GL10-TOP10-MIGRATION-COMPLETE.md",
+      "line_number": 38,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/archive/IMPLEMENTATION-SUMMARY.md",
+      "line_number": 183,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "docs/archive/todo.backup.md",
+      "line_number": 3,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-enterprise-architecture/governance/boundary-reference-matrix.md",
+      "line_number": 353,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ARCHITECTURE-COMPLETE.md",
+      "line_number": 73,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-platform-layer-specification.md",
+      "line_number": 94,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 185,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 192,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 378,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 435,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
+      "line_number": 534,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
+      "line_number": 80,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
+      "line_number": 289,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
+      "line_number": 561,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-interface-layer-specification.md",
+      "line_number": 179,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gov-interface-layer-specification.md",
+      "line_number": 184,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/governance/gl-artifacts/strategic/artifacts/board-minutes-template.md",
+      "line_number": 283,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "file_sample.txt",
+      "line_number": 80,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "deprecation-and-lts-scanner.sh",
+      "line_number": 12,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/install-jaeger-testing.sh",
+      "line_number": 162,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/deploy-governance-crds.sh",
+      "line_number": 67,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/deploy-governance-crds.sh",
+      "line_number": 128,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/deploy-governance-crds.sh",
+      "line_number": 158,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/scripts-legacy/install-jaeger-testing.sh",
+      "line_number": 162,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/deploy-governance-crds.sh",
+      "line_number": 67,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/deploy-governance-crds.sh",
+      "line_number": 128,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-runtime-execution-platform/engine/tools-legacy/deploy-governance-crds.sh",
+      "line_number": 158,
+      "message": "API Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gov-infrastructure-foundation-platform/k8s-legacy/jaeger/install.sh",
+      "line_number": 156,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/scripts-legacy/install-jaeger-testing.sh",
+      "line_number": 162,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "gov-runtime-engine-platform/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "gov-runtime-execution-platform/engine/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "machine-native-ops/gov-runtime-engine-platform/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "MNGA-ENFORCER-005",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": null,
+      "message": "before_operation 執行失敗: Operation.__init__() got an unexpected keyword argument 'files'",
+      "severity": "HIGH",
+      "suggestion": "修復 before_operation 方法"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

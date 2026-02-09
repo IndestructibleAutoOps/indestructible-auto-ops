@@ -1,0 +1,156 @@
+# AST Definitions for LDL
+# Version: 1.0.0
+# Layer: UGS / L00-Language / Grammar
+
+@GL-semantic: ugs-ast
+@GL-audit-trail: enabled
+
+ast_nodes:
+  Specification:
+    description: "Root node for any governance specification"
+    immutable: true
+    fields:
+      - name: "semantic_anchor"
+        type: "string"
+        required: true
+        validation: "must start with '@GL-semantic:'"
+        
+      - name: "audit_trail"
+        type: "boolean"
+        required: true
+        default: true
+        
+      - name: "meta_spec"
+        type: "MetaSpec"
+        required: true
+        
+      - name: "body"
+        type: "object"
+        required: true
+        dynamic: true
+        
+    children: []
+    
+  MetaSpec:
+    description: "Metadata about the specification"
+    immutable: true
+    fields:
+      - name: "id"
+        type: "string"
+        required: true
+        pattern: "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+        
+      - name: "version"
+        type: "string"
+        required: true
+        pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        
+      - name: "title"
+        type: "string"
+        required: true
+        min_length: 5
+        
+      - name: "description"
+        type: "string"
+        required: false
+        
+      - name: "extends"
+        type: "array<SpecReference>"
+        required: false
+        default: []
+        
+      - name: "immutable"
+        type: "boolean"
+        required: false
+        default: false
+        
+      - name: "governance"
+        type: "GovernanceInfo"
+        required: false
+        
+    children: []
+    
+  SpecReference:
+    description: "Reference to another specification"
+    fields:
+      - name: "spec_id"
+        type: "string"
+        required: true
+        
+      - name: "min_version"
+        type: "string"
+        required: false
+        
+    children: []
+    
+  GovernanceInfo:
+    description: "Governance metadata"
+    fields:
+      - name: "owner"
+        type: "string"
+        required: true
+        
+      - name: "reviewers"
+        type: "array<string>"
+        required: false
+        
+      - name: "approval"
+        type: "enum"
+        enum_values: ["consensus", "majority", "owner-only"]
+        required: false
+        
+    children: []
+    
+  List:
+    description: "List node"
+    fields:
+      - name: "items"
+        type: "array<Node>"
+        required: true
+        
+    children: ["items"]
+    
+  Map:
+    description: "Map/object node"
+    fields:
+      - name: "entries"
+        type: "array<KeyValuePair>"
+        required: true
+        
+    children: ["entries"]
+    
+  KeyValuePair:
+    description: "Key-value pair"
+    fields:
+      - name: "key"
+        type: "string"
+        required: true
+        
+      - name: "value"
+        type: "Node"
+        required: true
+        
+    children: ["value"]
+
+ast_traversal:
+  post_order: ["Specification", "MetaSpec", "SpecReference", "GovernanceInfo"]
+  pre_order: ["List", "Map", "KeyValuePair"]
+  
+validation_rules:
+  - rule_id: "AST-001"
+    description: "Specification must have meta_spec"
+    node: "Specification"
+    check: "meta_spec is not null"
+    severity: "ERROR"
+    
+  - rule_id: "AST-002"
+    description: "MetaSpec must have valid ID"
+    node: "MetaSpec"
+    check: "id matches spec_id_pattern"
+    severity: "ERROR"
+    
+  - rule_id: "AST-003"
+    description: "Immutable specs cannot extend mutable specs"
+    node: "MetaSpec"
+    check: "if immutable then all extends are immutable"
+    severity: "ERROR"

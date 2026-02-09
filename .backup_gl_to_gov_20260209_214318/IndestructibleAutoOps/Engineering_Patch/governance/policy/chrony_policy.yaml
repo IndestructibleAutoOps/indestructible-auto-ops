@@ -1,0 +1,16 @@
+time_integrity:
+  version: v1
+  ntp:
+    required: true
+    daemon: "chrony"
+    max_clock_skew_ms: 50
+    sources:
+      - "internal-ntp-1"
+      - "internal-ntp-2"
+  timestamp_authority:
+    required: true
+    type: "signed_timestamp"
+    key_ref: "vault/transit/timestamp"
+  gates:
+    - "clock_skew_ok"
+    - "timestamp_signed_ok"

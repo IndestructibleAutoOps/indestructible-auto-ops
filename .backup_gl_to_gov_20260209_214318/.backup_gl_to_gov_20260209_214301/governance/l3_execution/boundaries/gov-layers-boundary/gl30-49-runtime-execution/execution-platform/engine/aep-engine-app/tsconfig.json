@@ -1,0 +1,47 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL30_49-audit.json
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "types": [
+      "node",
+      "nativewind/types"
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@shared/*": [
+        "./shared/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": "tsconfig",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Architecture Governance Framework",
+    "version": "2.0.0"
+  }
+}

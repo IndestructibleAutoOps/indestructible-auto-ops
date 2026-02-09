@@ -1,0 +1,370 @@
+# Directory Mapping Table
+
+version: 1.0.0
+migration_strategy: preserve_then_move
+
+# Core Governance Migration
+governance_migration:
+  ng-namespace-governance:
+    current: /ng-namespace-governance
+    target: /ng-namespace-governance
+    action: keep_as_root
+    rationale: meta_governance_authority
+
+  ecosystem:
+    current: /ecosystem
+    target: /ng-namespace-governance/implementation/ecosystem
+    action: move
+    rationale: ecosystem_implements_ng_specifications
+    preserve:
+      - governance/
+      - registry/
+      - coordination/
+      - platform-templates/
+      - contracts/
+      - engines/
+      - tools/
+      - tests/
+      - automation/
+
+# Duplicate Directory Resolution
+duplicate_resolution:
+  audit-reports:
+    current: /audit-reports
+    target: /ng-namespace-governance/reports/audit
+    action: merge_and_remove
+    rationale: consolidate_audit_reports_under_ng_reports
+    contents:
+      - FINAL-SUMMARY.md
+      - engineering-recommendations.md
+      - real-audit-report.md
+
+  auto_task_project:
+    current: /auto_task_project
+    target: /ng-namespace-governance/implementation/ecosystem/automation/task-engine
+    action: merge_and_remove
+    rationale: task_automation_is_ecosystem_function
+    preserve:
+      - api/
+      - models/
+      - utils/
+      - tasks/
+      - auto_executor.py
+      - scheduler.py
+      - event_bus.py
+      - logger.py
+      - config.py
+      - main.py
+
+# GL Platform Reorganization
+gl_platform_migration:
+  gl-meta-specifications-platform:
+    current: /gl-meta-specifications-platform
+    target: /platforms/gl/meta-specifications
+    layer: GL90-99
+    action: move
+
+  gl-enterprise-architecture:
+    current: /gl-enterprise-architecture
+    target: /platforms/gl/enterprise-architecture
+    layer: GL00-09
+    action: move
+
+  gl-platform-core-platform:
+    current: /gl-platform-core-platform
+    target: /platforms/gl/platform-services
+    layer: GL10-19
+    action: move
+
+  gl-data-processing-platform:
+    current: /gl-data-processing-platform
+    target: /platforms/gl/data-processing
+    layer: GL20-29
+    action: move
+
+  gl-semantic-core-platform:
+    current: /gl-semantic-core-platform
+    target: /platforms/gl/semantic-core
+    layer: GL20-29
+    action: move
+
+  gl-search-elasticsearch-platform:
+    current: /gl-search-elasticsearch-platform
+    target: /platforms/gl/search-elasticsearch
+    layer: GL20-29
+    action: move
+
+  gl-runtime-execution-platform:
+    current: /gl-runtime-execution-platform
+    target: /platforms/gl/runtime-execution
+    layer: GL30-39
+    action: move
+
+  gl-automation-instant-platform:
+    current: /gl-automation-instant-platform
+    target: /platforms/gl/automation-instant
+    layer: GL30-39
+    action: move
+
+  gl-automation-organizer-platform:
+    current: /gl-automation-organizer-platform
+    target: /platforms/gl/automation-organizer
+    layer: GL30-39
+    action: move
+
+  gl-infrastructure-foundation-platform:
+    current: /gl-infrastructure-foundation-platform
+    target: /platforms/gl/infrastructure-foundation
+    layer: GL30-39
+    action: move
+
+  gl-runtime-services-platform:
+    current: /gl-runtime-services-platform
+    target: /platforms/gl/runtime-services
+    layer: GL40-49
+    action: move
+
+  gl-monitoring-observability-platform:
+    current: /gl-monitoring-observability-platform
+    target: /platforms/gl/observability
+    layer: GL50-59
+    action: move
+
+  gl-governance-compliance-platform:
+    current: /gl-governance-compliance-platform
+    target: /platforms/gl/governance-compliance
+    layer: GL60-80
+    action: move
+
+  gl-governance-architecture-platform:
+    current: /gl-governance-architecture-platform
+    target: /platforms/gl/governance-architecture
+    layer: GL60-80
+    action: move
+
+  gl-extension-services-platform:
+    current: /gl-extension-services-platform
+    target: /platforms/gl/extension-services
+    layer: GL81-83
+    action: move
+
+  gl-integration-hub-platform:
+    current: /gl-integration-hub-platform
+    target: /platforms/gl/integration-hub
+    layer: GL81-83
+    action: move
+
+  gl-quantum-computing-platform:
+    current: /gl-quantum-computing-platform
+    target: /platforms/gl/quantum-computing
+    layer: GL81-83
+    action: move
+
+# Support Directory Actions
+support_directories:
+  governance:
+    current: /governance
+    target: /ng-namespace-governance/implementation/ecosystem/governance
+    action: merge
+    rationale: consolidate_governance_framework
+
+  policies:
+    current: /policies
+    target: /ng-namespace-governance/core/policies
+    action: merge
+    rationale: policies_are_core_specifications
+
+  metrics:
+    current: /metrics
+    target: /platforms/gl/observability/metrics
+    action: merge
+    rationale: metrics_belong_to_observability_layer
+
+  evidence:
+    current: /evidence
+    target: /ng-namespace-governance/analysis/evidence
+    action: merge
+    rationale: evidence_supports_ng_analysis
+
+  designs:
+    current: /designs
+    target: /docs/architecture/designs
+    action: merge
+    rationale: design_documents_are_architecture_documentation
+
+  deploy:
+    current: /deploy
+    target: /deployment
+    action: merge
+    rationale: consolidate_deployment_configurations
+
+  tools:
+    current: /tools
+    target: /scripts/tools
+    action: merge
+    rationale: consolidate_utility_scripts
+
+  shared:
+    current: /shared
+    target: /ng-namespace-governance/implementation/ecosystem/shared
+    action: merge
+    rationale: shared_resources_part_of_ecosystem
+
+  outputs:
+    current: /outputs
+    target: /archives/old-outputs
+    action: move
+    rationale: archive_historical_outputs
+
+  tmp:
+    current: /tmp
+    target: null
+    action: remove_or_gitignore
+    rationale: temporary_files_should_not_be_committed
+
+  complements:
+    current: /complements
+    target: /ng-namespace-governance/implementation/ecosystem/templates
+    action: evaluate_and_merge
+    rationale: templates_part_of_ecosystem
+
+  machine-native-ops:
+    current: /machine-native-ops
+    target: /docs/reference/machine-native-ops
+    action: evaluate_and_archive
+    rationale: legacy_reference_material
+
+# Root Markdown File Migration
+root_markdown_migration:
+  CI-FIXES-COMPLETE.md:
+    target: /archives/documentation/ci-fixes-complete.md
+    action: archive
+
+  monica-ai-agent-engineering-specification.md:
+    target: /docs/specifications/monica-ai-agent-engineering.md
+    action: move
+
+  ECOSYSTEM-ROOT-LAYER-DEFINITION.md:
+    target: /ng-namespace-governance/implementation/ecosystem/ECOSYSTEM-ROOT-LAYER-DEFINITION.md
+    action: move
+
+  comprehensive-cross-comparison-report.md:
+    target: /archives/documentation/comprehensive-cross-comparison-report.md
+    action: archive
+
+  governance-enforcement-implementation-summary.md:
+    target: /archives/documentation/governance-enforcement-implementation-summary.md
+    action: archive
+
+  DEVELOPMENT-STRATEGY.md:
+    target: /docs/development/DEVELOPMENT-STRATEGY.md
+    action: move
+
+  network-interaction-implementation-summary.md:
+    target: /archives/documentation/network-interaction-implementation-summary.md
+    action: archive
+
+  professional-naming-restructure-proposal.md:
+    target: /archives/documentation/professional-naming-restructure-proposal.md
+    action: archive
+
+  indestructible-autoops-comprehensive-analysis.md:
+    target: /docs/analysis/indestructible-autoops-comprehensive-analysis.md
+    action: move
+
+  phase1-semantic-models.md:
+    target: /archives/documentation/phase1-semantic-models.md
+    action: archive
+
+  execution-plan.md:
+    target: /archives/documentation/execution-plan.md
+    action: archive
+
+  governance-enforcement-progress-report.md:
+    target: /archives/documentation/governance-enforcement-progress-report.md
+    action: archive
+
+  platform-directory-structure-best-practices.md:
+    target: /docs/architecture/platform-directory-structure-best-practices.md
+    action: move
+
+  one-stop-architecture-specs.md:
+    target: /docs/architecture/one-stop-architecture-specs.md
+    action: move
+
+  readme-ecosystem.md:
+    target: /ng-namespace-governance/implementation/ecosystem/README.md
+    action: merge_or_replace
+
+  WORK-CONTINUATION-COMPLETE.md:
+    target: /archives/documentation/work-continuation-complete.md
+    action: archive
+
+  FINAL-WORK-SUMMARY.md:
+    target: /archives/documentation/final-work-summary.md
+    action: archive
+
+# Retention Rules
+retain_at_root:
+  - README.md
+  - ARCHITECTURE.md
+  - CONTRIBUTING.md
+  - CHANGELOG.md
+  - .gitignore
+  - .github/
+  - .git/
+  - .governance/
+  - .agent_hooks/
+  - .config/
+
+retain_with_rationale:
+  docs:
+    rationale: general_documentation_discoverability
+  scripts:
+    rationale: utility_script_accessibility
+  tests:
+    rationale: test_suite_ci_cd_integration
+  deployment:
+    rationale: deployment_operations
+  deployment-scripts:
+    rationale: deployment_automation
+  monitoring:
+    rationale: monitoring_operations
+  config:
+    rationale: global_configuration_accessibility
+  archives:
+    rationale: historical_artifact_preservation
+  reports:
+    rationale: report_generation_and_tracking
+  summarized-conversations:
+    rationale: conversation_history_tracking
+
+# Migration Sequence
+migration_sequence:
+  phase_1_prepare:
+    - create_target_directories
+    - backup_current_state
+
+  phase_2_governance:
+    - move_ecosystem_to_ng_implementation
+    - merge_audit_reports
+    - merge_auto_task_project
+
+  phase_3_platforms:
+    - create_platforms_gl_structure
+    - move_all_gl_platforms
+
+  phase_4_consolidate:
+    - merge_governance_directories
+    - merge_support_directories
+    - archive_root_markdown_files
+
+  phase_5_cleanup:
+    - remove_empty_directories
+    - update_documentation_links
+    - update_import_paths
+
+  phase_6_verify:
+    - run_governance_checks
+    - validate_directory_structure
+    - test_platform_access

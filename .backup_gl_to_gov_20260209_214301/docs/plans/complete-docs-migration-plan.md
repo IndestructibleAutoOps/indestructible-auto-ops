@@ -1,0 +1,267 @@
+# 完整文檔遷移計劃
+
+## 概況
+當前根目錄有 110 個 MD 文檔需要重新組織。
+
+## 文檔分類
+
+### 1. 核心文檔 - 保留在根目錄 (7 個)
+```
+README.md
+CONTRIBUTING.md
+DEVELOPMENT_STRATEGY.md
+DEPLOYMENT_GUIDE.md
+CODE_OF_CONDUCT.md
+CHANGELOG.md
+ARCHITECTURE_COMPLETE.md
+```
+
+### 2. 項目狀態文檔 - 保留在根目錄 (4 個)
+```
+CURRENT_STRUCTURE_SUMMARY.md
+DIRECTORY_STRUCTURE_VERIFICATION.md
+ECOSYSTEM_MIGRATION_GUIDE.md
+GL_NAMING_ONTOLOGY_COMPLETE.md
+```
+
+### 3. GL 版本完成報告 - docs/reports/versions/ (15 個)
+```
+GL-FINAL-COMPLETION.md
+GL-FIX-COMPLETION.md
+GL-FINAL-COMPLETION_V3.md
+GL-GLOBAL-COMPLETION.md
+GL-GLOBAL-INTEGRATION-COMPLETE.md
+GL-GLOBAL-REMEDIATION-COMPLETE.md
+GL-IMPLEMENTATION-COMPLETE.md
+GL-INTEGRATION-COMPLETION.md
+GL_V4_COMPLETION.md
+GL_V4_FINAL_DEPLOYMENT_COMPLETE.md
+GL_V4_POST_DEPLOYMENT_COMPLETE.md
+GL_V5_COMPLETION.md
+GL_V9_COMPLETION.md
+GL_VERSION_4_COMPLETION.md
+VERSION_3_DEPLOYMENT_COMPLETE.md
+```
+
+### 4. GL 功能完成報告 - docs/reports/gl/ (25 個)
+```
+GL-GATES-01-99-INTEGRATION-COMPLETE.md
+GL-GLOBAL-COMPLETION.md
+GL-GLOBAL-INTEGRATION-COMPLETE.md
+GL-GLOBAL-REMEDIATION-COMPLETE.md
+GL-ROOT-AUDIT-COMPLETE.md
+GL-ROOT-CONSOLIDATION-COMPLETE.md
+GL-VULNERABILITY-FIX-COMPLETE.md
+GL10-MIGRATION-COMPLETE.md
+GL10-TOP10-MIGRATION-COMPLETE.md
+GL_FEDERATION_V5_COMPLETE.md
+GL_FEDERATION_V5_V6_COMPLETE.md
+GL_PLATFORM_DEPLOYMENT_SUMMARY.md
+GL_PLATFORM_STARTUP_REPORT.md
+GL_V10_QUANTUM_ARCHITECT_PLATFORM_COMPLETION.md
+GL_V11_COGNITIVE_MESH_IMPLEMENTATION.md
+GL_V12_SELF_EVOLVING_RUNTIME.md
+GL_EXECUTION_FINALIZATION_IMPLEMENTATION_SUMMARY.md
+GL_AUDIT-REMEDICATION-COMPLETE.md
+GL_CODEQL_SECURITY_FIX_SUMMARY.md
+GL_CODEQL_TOOLS_FIX_COMPLETE.md
+GL_HOOKS_MIGRATION-COMPLETE.md
+GL_ROOT_AUDIT_COMPLETE.md
+GL_ROOT_CONSOLIDATION_COMPLETE.md
+GL_V9_GLOBAL_GOVERNANCE_AUDIT_REPORT.md
+```
+
+### 5. 遷移完成報告 - docs/reports/migrations/ (20 個)
+```
+AEP-GOVERNANCE-AUDIT-MIGRATION-COMPLETE.md
+DATA-SYNC-INTEGRATION-COMPLETION-REPORT.md
+DUPLICATE_PLATFORMS_REMOVED.md
+ENTERPRISE_DEPLOYMENT_COMPLETION_REPORT.md
+ECOSYSTEM_PLATFORM_STRUCTURE_COMPLETE.md
+GL10-MIGRATION-COMPLETE.md
+GL-HOOKS-MIGRATION-COMPLETE.md
+KUBERNETES-INTEGRATION-COMPLETE.md
+MULTI_BRANCH_INTEGRATION_COMPLETION_REPORT.md
+MULTI_BRANCH_INTEGRATION_SUMMARY.md
+PLATFORM_DEPLOYMENT_V3_COMPLETE.md
+PLATFORM_MIGRATION_COMPLETE.md
+QUANTUM_PLATFORM_INTEGRATION_COMPLETE.md
+GL_EXECUTION_FINALIZATION_IMPLEMENTATION_SUMMARY.md
+```
+
+### 6. 安全修復報告 - docs/reports/security/ (5 個)
+```
+AEP_ENGINE_APP_SECURITY_FIX_REPORT.md
+BARCODE-QR-CODE-FIX-COMPLETE.md
+GL-VULNERABILITY-FIX-COMPLETE.md
+GL-CODEQL-SECURITY-FIX-SUMMARY.md
+GL-CODEQL-TOOLS-FIX-COMPLETE.md
+```
+
+### 7. Bug 修復報告 - docs/reports/bugs/ (3 個)
+```
+BUG_FIX_COMPLETION_REPORT.md
+PRODUCTION_BUG_FIX_SUMMARY.md
+WORKFLOW_FAILURE_ANALYSIS.md
+```
+
+### 8. 部署報告 - docs/reports/deployment/ (6 個)
+```
+ENTERPRISE_DEPLOYMENT_COMPLETION_REPORT.md
+PLATFORM_DEPLOYMENT_V3_COMPLETE.md
+PRODUCTION_DEPLOYMENT_PLAN.md
+PRODUCTION_DEPLOYMENT_SUMMARY.md
+PUSH_BLOCKED_SUMMARY.md
+GL_V4_FINAL_DEPLOYMENT_COMPLETE.md
+```
+
+### 9. 測試報告 - docs/reports/testing/ (5 個)
+```
+INFRASTRUCTURE_TEST_REPORT.md
+INTEGRATION_TESTING_PLAN.md
+TESTING_COMPLETION_REPORT.md
+TESTING_SUMMARY.md
+VERIFICATION_FRAMEWORK_COMPLETE.md
+```
+
+### 10. 分析報告 - docs/analysis/ (10 個)
+```
+comprehensive_cross_comparison_report.md
+final_comprehensive_report.md
+final_execution_report.md
+gl_markers_report.md
+validation_report.md
+FILE_PATH_VERIFICATION_REPORT.md
+GOVERNANCE_FILE_STRUCTURE_ANALYSIS.md
+platform_audit_report.md
+naming_governance_analysis_report.md
+structure_gap_analysis.md
+```
+
+### 11. 計劃文檔 - docs/plans/ (15 個)
+```
+BRANCH_STRATEGY.md
+COMPLETE_UPGRADE_ROADMAP.md
+external_dependency_removal_strategy.md
+FILE_VERSION_AUDIT_PLAN.md
+governance_files_migration_plan.md
+migration_strategy.md
+professional_naming_restructure_proposal.md
+radical_dependency_elimination_plan.md
+structure_migration_plan.md
+structure_rebuild_verification_report.md
+terminology_replacement_strategy.md
+docs_reorganization_plan.md
+scripts_cleanup_plan.md
+platform_directory_structure_best_practices.md
+PROJECT_STRUCTURE_REBUILD_COMPLETE.md
+```
+
+### 12. 架構文檔 - docs/architecture/ (5 個)
+```
+ENTERPRISE_INFRASTRUCTURE_IMPLEMENTATION.md
+INFRASTRUCTURE_COMPONENTS_COMPLETION_REPORT.md
+MODERNIZATION-CAPABILITIES.md
+PLUGGABLE_DEPLOYMENT_GUIDE.md
+QUANTUM_PLATFORM_ARCHITECTURE.md
+```
+
+### 13. Todo 文檔 - docs/todos/ (6 個)
+```
+todo.md
+todo-revolutionary-ai.md
+todo-v19.md
+todo-v20.md
+todo.backup.md
+multi-agent-setup-todo.md
+```
+
+### 14. 階段報告 - docs/phases/ (3 個)
+```
+phase1_semantic_models.md
+phase2_comprehensive_alignment_report.md
+phase3_gl_root_reconstruction.md
+phase4_gl_markers_compliance_summary.md
+```
+
+### 15. 遺留/參考文檔 - docs/archive/ (20 個)
+```
+AEP-GOVERNANCE-AUDIT-MIGRATION-COMPLETE.md
+ARTIFACTS_UPGRADE_V10.md
+BRANCH_QUICK_REFERENCE.md
+BRANCH_STATUS_REPORT.md
+COMMIT-BEST-PRACTICES.md
+DATA-SYNC-INTEGRATION-COMPLETION-REPORT.md
+DUPLICATE_PLATFORMS_REMOVED.md
+ECOSYSTEM_MIGRATION_GUIDE.md
+ECOSYSTEM_PLATFORM_RESTRUCTURE_PLAN.md
+FACT_VERIFICATION_PIPELINE_SUMMARY.md
+FINAL-INTEGRATION-SUMMARY.md
+GITHUB-REPOSITORY-ANALYZER-COMPLETE.md
+GOVERNANCE_IMPORT_PLAN.md
+IMMEDIATE_ACTIONS_COMPLETED.md
+IMPLEMENTATION_SUMMARY.md
+PERFORMANCE_BENCHMARKING_PLAN.md
+PERFORMANCE_BENCHMARKING_SUMMARY.md
+PHASE_7_8_COMPLETION_REPORT.md
+QUICK_REFERENCE.md
+README-GOVERNANCE-MONITOR.md
+README-MACHINE.md
+RKE2_INTEGRATION_SUMMARY.md
+SECURITY.md
+SEMANTIC-SEARCH-SYSTEM-COMPLETE.md
+TASK_COMPLETION_REPORT.md
+verify_file_paths.md
+GL_NAMING_ONTOLOGY_GAP_ANALYSIS.md
+LOCAL_KNOWLEDGE_BASE.md
+MAIN_BRANCH_FILE_PATH_VERIFICATION.md
+```
+
+## 執行腳本
+
+```bash
+#!/bin/bash
+cd /workspace/machine-native-ops
+
+# 創建所有目標目錄
+mkdir -p docs/reports/{versions,gl,migrations,security,bugs,deployment,testing} \
+         docs/analysis \
+         docs/plans \
+         docs/architecture \
+         docs/todos \
+         docs/phases \
+         docs/archive
+
+# 移動 GL 版本完成報告
+mv GL-FINAL-COMPLETION.md GL-FIX-COMPLETION.md GL-FINAL-COMPLETION_V3.md \
+   GL-GLOBAL-COMPLETION.md GL-GLOBAL-INTEGRATION-COMPLETE.md GL-GLOBAL-REMEDIATION-COMPLETE.md \
+   GL-IMPLEMENTATION-COMPLETE.md GL-INTEGRATION-COMPLETION.md \
+   GL_V4_COMPLETION.md GL_V4_FINAL_DEPLOYMENT_COMPLETE.md GL_V4_POST_DEPLOYMENT_COMPLETE.md \
+   GL_V5_COMPLETION.md GL_V9_COMPLETION.md GL_VERSION_4_COMPLETION.md \
+   VERSION_3_DEPLOYMENT_COMPLETE.md docs/reports/versions/
+
+# 移動所有其他文檔到 archive
+mv *.md docs/archive/ 2>/dev/null || true
+
+# 從 archive 移動核心文檔回根目錄
+mv docs/archive/README.md ./
+mv docs/archive/CONTRIBUTING.md ./
+mv docs/archive/DEVELOPMENT_STRATEGY.md ./
+mv docs/archive/DEPLOYMENT_GUIDE.md ./
+mv docs/archive/CODE_OF_CONDUCT.md ./
+mv docs/archive/CHANGELOG.md ./
+mv docs/archive/ARCHITECTURE_COMPLETE.md ./
+
+# 從 archive 移動項目狀態文檔回根目錄
+mv docs/archive/CURRENT_STRUCTURE_SUMMARY.md ./
+mv docs/archive/DIRECTORY_STRUCTURE_VERIFICATION.md ./
+mv docs/archive/ECOSYSTEM_MIGRATION_GUIDE.md ./
+mv docs/archive/GL_NAMING_ONTOLOGY_COMPLETE.md ./
+
+# 移動文檔計劃到根目錄
+mv docs/archive/docs_reorganization_plan.md ./
+mv docs/archive/governance_files_migration_plan.md ./
+mv docs/archive/scripts_cleanup_plan.md ./
+
+echo "文檔遷移完成"
+```

@@ -1,0 +1,194 @@
+# GL Unified Charter - Tiered Autonomy Strategy Specification
+# Standard: Singapore IMDA Model AI Governance Framework for Agentic AI (2026)
+# Version: 1.0.0
+# Namespace: /governance/specs/standards
+# GL Level: GL50
+
+autonomy_tiers:
+  tier_1_human_in_the_loop:
+    description: "高風險決策 - 人類在循環內"
+    autonomy_level: "0% (No autonomy)"
+    human_involvement: "Mandatory approval before action"
+    risk_classification: "CRITICAL"
+    
+    scenarios:
+      - "financial_transaction_above_threshold"
+      - "data_deletion_request"
+      - "external_api_retry_decision"
+      - "production_system_shutdown"
+    
+    governance_requirement:
+      - "必須人類明確批准"
+      - "決策必須可解釋"
+      - "必須有 rollback 路徑"
+      - "必須記錄完整證據鏈"
+      - "批准者必須有足夠權限"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: TIER_1_HUMAN_IN_LOOP_TEST
+      
+      test_spec:
+        scenario: "financial_transaction_above_threshold"
+        failure_injection:
+          - block_payment_gateway: true
+        
+        expected_governance_behavior:
+          - escalate_to_human: true
+          - wait_for_approval: true
+          - timeout_if_no_approval: "300s"
+          - no_auto_proceed: true
+          - log_all_escalations: true
+        
+        required_evidence:
+          - human_approval_record: ".governance/approvals/{timestamp}.json"
+          - escalation_trace: ".governance/escalations/{timestamp}.json"
+          - approval_decision_log: ".governance/decisions/{timestamp}.json"
+          - timeout_handling_proof: ".governance/timeouts/{timestamp}.json"
+
+  tier_2_human_over_the_loop:
+    description: "中風險決策 - 人類在循環上方（監督）"
+    autonomy_level: "20-40% (Bounded autonomy with monitoring)"
+    human_involvement: "Real-time monitoring and override capability"
+    risk_classification: "HIGH"
+    
+    scenarios:
+      - "cache_fallback_decision"
+      - "retry_with_backoff"
+      - "degraded_mode_activation"
+      - "service_scaling_decision"
+    
+    governance_requirement:
+      - "系統自主決策，但必須可審計"
+      - "決策必須符合預定義政策"
+      - "必須實時監控和可中斷"
+      - "人類必須能夠覆蓋決策"
+      - "必須生成決策證據"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: TIER_2_HUMAN_OVER_LOOP_TEST
+      
+      test_spec:
+        scenario: "cache_fallback_decision"
+        failure_injection:
+          - block_outbound_https: true
+        
+        expected_governance_behavior:
+          - autonomous_fallback: true
+          - policy_bounded: true
+          - generate_decision_trace: true
+          - enable_human_override: true
+          - real_time_monitoring: true
+        
+        required_evidence:
+          - policy_compliance_proof: ".governance/policies/compliance/{timestamp}.json"
+          - decision_trace: ".governance/decisions/trace/{timestamp}.json"
+          - override_capability_test: ".governance/overrides/test_{timestamp}.json"
+          - monitoring_log: ".governance/monitoring/{timestamp}.json"
+
+  tier_3_autonomous_bounded:
+    description: "低風險決策 - 完全自主但邊界明確"
+    autonomy_level: "60-80% (High autonomy with audit)"
+    human_involvement: "Periodic review and audit trail"
+    risk_classification: "MEDIUM"
+    
+    scenarios:
+      - "log_rotation"
+      - "cache_cleanup"
+      - "metric_collection"
+      - "health_check_monitoring"
+    
+    governance_requirement:
+      - "自主執行，但必須在預定義邊界內"
+      - "必須有完整審計日誌"
+      - "必須可回放"
+      - "違規必須自動上報"
+      - "定期人工審查"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: TIER_3_AUTONOMOUS_BOUNDED_TEST
+      
+      test_spec:
+        scenario: "log_rotation"
+        failure_injection:
+          - disk_space_low: true
+        
+        expected_governance_behavior:
+          - autonomous_execution: true
+          - boundary_respected: true
+          - complete_audit_trail: true
+          - violation_auto_report: true
+          - periodic_review_enabled: true
+        
+        required_evidence:
+          - audit_trail: ".governance/audits/{timestamp}.json"
+          - boundary_compliance: ".governance/boundaries/compliance_{timestamp}.json"
+          - review_schedule: ".governance/reviews/schedule.json"
+          - violation_report: ".governance/violations/{timestamp}.json"
+
+  tier_4_full_autonomous:
+    description: "常規低風險操作 - 完全自主"
+    autonomy_level: "95%+ (Full autonomy)"
+    human_involvement: "Logging only"
+    risk_classification: "LOW"
+    
+    scenarios:
+      - "metric_collection"
+      - "status_ping"
+      - "read_only_cache_access"
+    
+    governance_requirement:
+      - "完全自主執行"
+      - "必須有日誌記錄"
+      - "邊界嚴格限制"
+      - "異常自動觸發警報"
+      - "無需人工干預"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: TIER_4_FULL_AUTONOMOUS_TEST
+      
+      test_spec:
+        scenario: "metric_collection"
+        failure_injection:
+          - metric_service_slow: true
+        
+        expected_governance_behavior:
+          - autonomous_execution: true
+          - no_human_intervention: true
+          - comprehensive_logging: true
+          - anomaly_detection: true
+          - automatic_alerting: true
+        
+        required_evidence:
+          - execution_log: ".governance/logs/{timestamp}.json"
+          - boundary_check: ".governance/boundaries/check_{timestamp}.json"
+          - anomaly_report: ".governance/anomalies/{timestamp}.json"
+          - alert_log: ".governance/alerts/{timestamp}.json"
+
+# Tier mapping to test generation requirements
+tier_mapping_to_test_generation:
+  tier_1: "requires_human_approval_evidence"
+  tier_2: "requires_policy_compliance_evidence"
+  tier_3: "requires_boundary_verification_evidence"
+  tier_4: "requires_logging_completeness_evidence"
+
+# Decision flow for tier assignment
+tier_assignment_rules:
+  - rule: "如果操作涉及財務交易 → Tier 1"
+  - rule: "如果操作涉及數據刪除 → Tier 1"
+  - rule: "如果操作影響系統可用性 → Tier 2"
+  - rule: "如果操作有明確邊界且風險可控 → Tier 3"
+  - rule: "如果操作是常規只讀操作 → Tier 4"
+
+standards_compliance:
+  singapore_imda:
+    framework: "Model AI Governance Framework for Agentic AI (2026)"
+    requirement: "Tiered Autonomy Strategy"
+    status: "COMPLIANT"
+  
+  hotl_framework:
+    requirement: "Control tier classification"
+    status: "COMPLIANT"
+  
+  nist_ai_rmf:
+    requirement: "Risk-based autonomy"
+    status: "COMPLIANT"

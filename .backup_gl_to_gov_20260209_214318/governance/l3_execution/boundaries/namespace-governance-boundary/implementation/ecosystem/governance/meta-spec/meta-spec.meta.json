@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Meta-Spec Metadata",
+  "version": "1.0.0",
+  "layer": "meta-spec",
+  "immutable": true,
+  "metadata": {
+    "spec_id": "org.mnga.meta-spec@1.0.0",
+    "title": "Meta-Specification Layer",
+    "description": "The layer that governs all specifications (specifications of specifications)",
+    "created": "2026-02-03T00:00:00Z",
+    "modified": "2026-02-03T00:00:00Z",
+    "author": "MNGA Core Team",
+    "status": "active"
+  },
+  "governance": {
+    "owner": "MNGA Core Team",
+    "reviewers": ["governance-council"],
+    "approval_process": "consensus",
+    "change_control": "strict"
+  },
+  "layers": {
+    "language": {
+      "purpose": "Define allowable languages for specifications",
+      "immutable": true
+    },
+    "format": {
+      "purpose": "Define schema format for specifications",
+      "immutable": true
+    },
+    "semantics": {
+      "purpose": "Define semantic classification system",
+      "immutable": true
+    },
+    "topology": {
+      "purpose": "Define specification topology and relationships",
+      "immutable": true
+    },
+    "registry": {
+      "purpose": "Central registry of all specifications",
+      "immutable": false
+    }
+  },
+  "checksum": "sha256:placeholder",
+  "GL-governance": {
+    "layer": "meta-spec",
+    "immutable": true,
+    "version": "1.0.0"
+  }
+}

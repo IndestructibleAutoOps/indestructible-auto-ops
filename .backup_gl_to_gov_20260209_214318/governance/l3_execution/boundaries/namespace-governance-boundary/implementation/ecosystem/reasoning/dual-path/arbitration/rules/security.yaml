@@ -1,0 +1,63 @@
+# Security-Related Arbitration Rules
+# MNGA Layer 6 - Reasoning System
+
+apiVersion: arbitration.mnga.io/v1
+kind: ArbitrationRules
+metadata:
+  name: security-rules
+  description: "Rules for security-related decision making"
+
+rules:
+  security_vulnerability_fix:
+    description: "Prefer external solution for security vulnerability fixes"
+    priority: 1
+    condition:
+      type: "field_match"
+      field: "external.metadata.category"
+      value: "security"
+      and:
+        field: "external.metadata.type"
+        value: "vulnerability_fix"
+    decision: "EXTERNAL"
+    reason: "Security vulnerability fixes should adopt external best practices"
+    severity: "CRITICAL"
+    action: "highlight_security_impact"
+    
+  security_audit_trail:
+    description: "Require audit trail for security changes"
+    priority: 2
+    condition:
+      type: "field_match"
+      field: "internal.metadata.category"
+      value: "security"
+    decision: "HYBRID"
+    reason: "Security changes require both internal compliance and external best practices"
+    severity: "CRITICAL"
+    requirement: "require_audit_trail"
+    
+  sensitive_data_handling:
+    description: "Use internal implementation for sensitive data handling"
+    priority: 3
+    condition:
+      type: "field_match"
+      field: "internal.metadata.sensitivity"
+      value: "high"
+    decision: "INTERNAL"
+    reason: "Sensitive data handling must follow internal security policies"
+    severity: "CRITICAL"
+    
+  authentication_authorization:
+    description: "Prefer internal auth implementation"
+    priority: 4
+    condition:
+      type: "or"
+      conditions:
+        - field_match:
+            field: "internal.metadata.type"
+            value: "authentication"
+        - field_match:
+            field: "internal.metadata.type"
+            value: "authorization"
+    decision: "INTERNAL"
+    reason: "Authentication and authorization must follow internal security standards"
+    severity: "CRITICAL"

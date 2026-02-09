@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 GL Governance Simple Audit
-Quick validation of GL gl-platform.gl-platform.governance markers in YAML/JSON files
+Quick validation of GL gov-platform.gov-platform.governance markers in YAML/JSON files
 
 GL Unified Architecture Governance Framework Activated ✓
 """
@@ -20,7 +20,7 @@ from datetime import datetime
 
 
 def check_file(file_path: Path) -> dict:
-    """Check a single file for GL gl-platform.gl-platform.governance markers."""
+    """Check a single file for GL gov-platform.gov-platform.governance markers."""
     result = {
         "file": str(file_path),
         "status": "unknown",
@@ -70,7 +70,7 @@ def check_file(file_path: Path) -> dict:
 
 
 def main():
-    """Run simple GL gl-platform.gl-platform.governance audit."""
+    """Run simple GL gov-platform.gov-platform.governance audit."""
     print("=" * 60)
     print("GL Governance Simple Audit")
     print("=" * 60)
@@ -127,7 +127,7 @@ def main():
     }
 
     # Save report
-    report_path = Path("gl-simple-audit-report.json")
+    report_path = Path("gov-simple-audit-report.json")
     with open(report_path, "w") as f:
         json.dump(summary, f, indent=2)
 

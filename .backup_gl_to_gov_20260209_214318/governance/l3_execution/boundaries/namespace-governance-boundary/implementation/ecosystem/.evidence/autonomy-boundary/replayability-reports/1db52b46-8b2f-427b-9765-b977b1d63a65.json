@@ -1,0 +1,23 @@
+{
+  "test_id": "1db52b46-8b2f-427b-9765-b977b1d63a65",
+  "scenario": "db_write_failure",
+  "timestamp": "2026-02-05T02:18:50.305434+00:00",
+  "era": 1,
+  "replayability": {
+    "replay_consistent": true,
+    "output_match": true,
+    "trace_match": true,
+    "duration_ms": 150.0
+  },
+  "self_healing_verification": {
+    "unauthorized_self_healing": false,
+    "unauthorized_repairs": 0,
+    "hallucination_detected": false
+  },
+  "evidence_integrity": {
+    "all_artifacts_present": true,
+    "all_hashes_valid": true,
+    "chain_of_custody_intact": true
+  },
+  "canonical_hash": "sha256:9d4f3695f6f497bdbae95c77481f580a69cdecf4fb37d60470c6cffb43a7b82b"
+}

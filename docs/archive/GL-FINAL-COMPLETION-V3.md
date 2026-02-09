@@ -84,10 +84,10 @@
 
 ### Core Modules ✅
 - **orchestration-engine**: 運作中（Port 3000）
-- **gl-policy-engine**: 已載入（4 policies, 3 schemas）
+- **gov-policy-engine**: 已載入（4 policies, 3 schemas）
 - **connector-git**: 運作中（scan, diff, patch, apply, commit, push）
-- **gl-artifacts-store**: 運作中（2 artifacts）
-- **gl-events-stream**: 運作中（4 events）
+- **gov-artifacts-store**: 運作中（2 artifacts）
+- **gov-events-stream**: 運作中（4 events）
 
 ### API Layer ✅
 - **REST API**: 運作中
@@ -101,7 +101,7 @@
 ### Operations ✅
 - **ops/pipelines**: 
   - directory-audit-pipeline ✅
-  - repo-gl-fix-pipeline ✅
+  - repo-gov-fix-pipeline ✅
 - **ops/agents**: 10 agents 配置完成
 - **ops/auto-bootstrap**: 11 auto-starters 運作中
 
@@ -137,7 +137,7 @@ Quality Score: 95%
 ```
 
 ### Agent Results ✅
-- **gl-governance-validator**: ✅ 100% compliance
+- **gov-governance-validator**: ✅ 100% compliance
 - **codeql-monitor**: ✅ 0 findings
 - **quality-assurance**: ✅ 95% quality
 - **dependency-scanner**: ✅ 0 vulnerabilities
@@ -164,7 +164,7 @@ c7289f85 feat: activate GL-ROOT global governance audit parallel multi-agent mod
 
 ## 完成條件驗證
 
-- ✅ gl-execution-runtime 全模組建構完成
+- ✅ gov-execution-runtime 全模組建構完成
 - ✅ 全模組整合 GL 治理層
 - ✅ 全模組可執行、可部署、可修復、可稽核
 - ✅ 所有 pipelines 可運行
@@ -198,17 +198,17 @@ GL Runtime Platform v2.2.0 現已完全運作，具備：
 ## 最終輸出
 
 ### 1. Global Governance Audit Report ✅
-- Location: `/workspace/gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report-2026-01-28.json`
+- Location: `/workspace/gov-execution-runtime/storage/gov-audit-reports/global-governance-audit-report-2026-01-28.json`
 - Status: Generated
 - Content: Comprehensive governance audit results
 
 ### 2. Governance Event Stream ✅
-- Location: `/workspace/gl-execution-runtime/storage/gl-events-stream/events.jsonl`
+- Location: `/workspace/gov-execution-runtime/storage/gov-events-stream/events.jsonl`
 - Status: Active logging
 - Events: Audit, configuration, engine lifecycle, deployment
 
 ### 3. Artifact Store ✅
-- Location: `/workspace/gl-execution-runtime/storage/gl-artifacts-store/`
+- Location: `/workspace/gov-execution-runtime/storage/gov-artifacts-store/`
 - Status: Operational
 - Content: Audit reports, validation results
 

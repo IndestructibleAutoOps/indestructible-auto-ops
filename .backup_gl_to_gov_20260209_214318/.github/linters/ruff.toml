@@ -1,0 +1,67 @@
+# Ruff Configuration for MachineNativeOps
+# This configuration is used by Super-Linter
+
+# Line length - must be at root level
+line-length = 200
+
+# Target Python version - must be at root level
+target-version = "py311"
+
+[lint]
+# Enable specific rule categories - enhanced set
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "S",      # flake8-bandit - security checks
+]
+
+# Ignore rules that are too strict or have many false positives
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "E741",   # ambiguous variable name
+    # "E722",   # bare except - REMOVED to enable detection
+    "E702",   # multiple statements on one line
+    "E711",   # comparison to None
+    "E712",   # comparison to True/False
+    "E713",   # test for membership should be 'not in'
+    "E714",   # test for object identity should be 'is not'
+    "E721",   # type comparison instead of isinstance()
+    "E731",   # do not assign a lambda expression
+    "W191",   # indentation contains tabs
+    "W291",   # trailing whitespace
+    "W292",   # no newline at end of file
+    "W293",   # blank line contains whitespace
+    "W391",   # blank line at end of file
+]
+
+# Exclude directories
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "archive",
+    "vendor",
+]
+
+[lint.per-file-ignores]
+"__init__.py" = ["E401"]
+"tests/**/*.py" = ["E501", "E402"]
+"**/test_*.py" = ["E501", "E402"]
+"scripts/**/*.py" = ["E501"]
+"tools/**/*.py" = ["E501"]

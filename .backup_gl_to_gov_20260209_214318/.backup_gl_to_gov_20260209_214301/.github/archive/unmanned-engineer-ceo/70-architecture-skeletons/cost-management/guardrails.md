@@ -1,0 +1,15 @@
+<!-- @GL-governed -->
+<!-- @GL-layer: GL90-99 -->
+<!-- @GL-semantic: governed-documentation -->
+<!-- @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json -->
+
+# Cost Management Guardrails
+
+1. **禁止無限制的資源使用**
+   - 必須設定配額與預算
+
+2. **禁止忽略成本影響的架構決策**
+   - 重大變更必須附上成本估算
+
+3. **禁止未優化的資源配置**
+   - 必須定期檢視資源利用率

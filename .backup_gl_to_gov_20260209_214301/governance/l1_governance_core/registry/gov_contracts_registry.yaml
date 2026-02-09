@@ -1,0 +1,22 @@
+registry:
+  name: "gov_contracts"
+  version: "1.0.0"
+  layer: "L1"
+
+contracts:
+  - id: "L0-L1-CONTRACT"
+    from_layer: "L0"
+    to_layer: "L1"
+    type: "boundary_contract"
+  - id: "L1-L2-CONTRACT"
+    from_layer: "L1"
+    to_layer: "L2"
+    type: "boundary_contract"
+  - id: "L2-L3-CONTRACT"
+    from_layer: "L2"
+    to_layer: "L3"
+    type: "implementation_contract"
+  - id: "L3-L4-CONTRACT"
+    from_layer: "L3"
+    to_layer: "L4"
+    type: "evidence_contract"

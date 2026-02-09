@@ -1,0 +1,41 @@
+[
+  {
+    "step": 1,
+    "action": "analyze_metrics",
+    "input": {
+      "metrics": "high_cpu_usage"
+    },
+    "output": {
+      "status": "analyzed"
+    },
+    "duration_ms": 10
+  },
+  {
+    "step": 2,
+    "action": "diagnose_issue",
+    "input": {
+      "symptoms": [
+        "high_latency",
+        "timeout"
+      ]
+    },
+    "output": {
+      "issue": "service_timeout",
+      "severity": "CRITICAL"
+    },
+    "duration_ms": 25
+  },
+  {
+    "step": 3,
+    "action": "execute_restart",
+    "input": {
+      "service": "api-gateway",
+      "container": "api-gateway-1"
+    },
+    "output": {
+      "success": true,
+      "restart_time_ms": 5000
+    },
+    "duration_ms": 5010
+  }
+]

@@ -1,0 +1,106 @@
+[main fafdaea5] GL 全域修復完成 - GL 目錄整合遷移至治理結構 - GL Unified Charter Activated
+ Committer: root <root@172.16.12.72>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 84 files changed, 28942 insertions(+)
+ create mode 100644 governance/.governance/event-stream.jsonl
+ create mode 100644 governance/GL_SEMANTIC_ANCHOR.json
+ create mode 100644 governance/gl-artifacts/DEFINITION.yaml
+ create mode 100644 governance/gl-artifacts/GL-ARCHITECTURE-SPEC.yaml
+ create mode 100644 governance/gl-artifacts/GL-ARTIFACT-COLLECTION.yaml
+ create mode 100644 governance/gl-artifacts/GL-ARTIFACTS-TEMPLATES.yaml
+ create mode 100644 governance/gl-artifacts/GL-DEPENDENCY-GRAPH.yaml
+ create mode 100644 governance/gl-artifacts/GL-GOVERNANCE-EVENT-FLOW.yaml
+ create mode 100644 governance/gl-artifacts/GL-HIGH-WEIGHT-PROMPTS.yaml
+ create mode 100644 governance/gl-artifacts/GL-LAYER-DEFINITIONS.yaml
+ create mode 100644 governance/gl-artifacts/GL-QUANTUM-VALIDATION.yaml
+ create mode 100644 governance/gl-artifacts/GL-ROOT-SEMANTIC-ANCHOR.yaml
+ create mode 100644 governance/gl-artifacts/GL-SEAL-MANIFEST.yaml
+ create mode 100644 governance/gl-artifacts/GL-SEMANTIC-SEAL.yaml
+ create mode 100644 governance/gl-artifacts/README.md
+ create mode 100644 governance/gl-artifacts/alert-rules.yaml
+ create mode 100644 governance/gl-artifacts/api-design-specification.yaml
+ create mode 100644 governance/gl-artifacts/backward-reconciliation-mechanism.yaml
+ create mode 100644 governance/gl-artifacts/bi-direction-governance-loop-vision.yaml
+ create mode 100644 governance/gl-artifacts/board-minutes-template.md
+ create mode 100644 governance/gl-artifacts/compliance-standards-reference.yaml
+ create mode 100644 governance/gl-artifacts/controlplane-integration.yaml
+ create mode 100644 governance/gl-artifacts/cross-domain-integration.yaml
+ create mode 100644 governance/gl-artifacts/database-architecture-specification.yaml
+ create mode 100644 governance/gl-artifacts/deployment-record.yaml
+ create mode 100644 governance/gl-artifacts/dimension-template.yaml
+ create mode 100644 governance/gl-artifacts/ethical-guidelines.yaml
+ create mode 100644 governance/gl-artifacts/external-integration-config.yaml
+ create mode 100644 governance/gl-artifacts/feedback-mechanism.yaml
+ create mode 100644 governance/gl-artifacts/forward-expansion-implementation.yaml
+ create mode 100644 governance/gl-artifacts/frontend-backend-separation-architecture.yaml
+ create mode 100644 governance/gl-artifacts/gl-architecture-readme.md
+ create mode 100644 governance/gl-artifacts/gl-artifact-dsl.yaml
+ create mode 100644 governance/gl-artifacts/gl-artifact-engine.yaml
+ create mode 100644 governance/gl-artifacts/gl-artifacts-matrix.yaml
+ create mode 100644 governance/gl-artifacts/gl-automation-engine.yaml
+ create mode 100644 governance/gl-artifacts/gl-chain-registry.yaml
+ create mode 100644 governance/gl-artifacts/gl-constitution.yaml
+ create mode 100644 governance/gl-artifacts/gl-dag.md
+ create mode 100644 governance/gl-artifacts/gl-dag.yaml
+ create mode 100644 governance/gl-artifacts/gl-directory-naming-spec.yaml
+ create mode 100644 governance/gl-artifacts/gl-execution-mode.yaml
+ create mode 100644 governance/gl-artifacts/gl-filesystem-mapping.yaml
+ create mode 100644 governance/gl-artifacts/gl-final-seal.yaml
+ create mode 100644 governance/gl-artifacts/gl-global-governance-audit-report.yaml
+ create mode 100644 governance/gl-artifacts/gl-global-parallelism-engine.yaml
+ create mode 100644 governance/gl-artifacts/gl-global-semantic-index.yaml
+ create mode 100644 governance/gl-artifacts/gl-governance-loop.yaml
+ create mode 100644 governance/gl-artifacts/gl-index.yaml
+ create mode 100644 governance/gl-artifacts/gl-integrated-seal.yaml
+ create mode 100644 governance/gl-artifacts/gl-layers.yaml
+ create mode 100644 governance/gl-artifacts/gl-mainline-integration.md
+ create mode 100644 governance/gl-artifacts/gl-naming-charter-analysis.md
+ create mode 100644 governance/gl-artifacts/gl-quickref.md
+ create mode 100644 governance/gl-artifacts/gl-refactoring-exec-prompts.md
+ create mode 100644 governance/gl-artifacts/gl-root-cause-actions.md
+ create mode 100644 governance/gl-artifacts/gl-semantic-boundaries.yaml
+ create mode 100644 governance/gl-artifacts/gl-semantic-seal.yaml
+ create mode 100644 governance/gl-artifacts/gl-semantic-stabilization.yaml
+ create mode 100644 governance/gl-artifacts/gl-skills-matrix.yaml
+ create mode 100644 governance/gl-artifacts/gl-task-lifecycle.yaml
+ create mode 100644 governance/gl-artifacts/gl-unified-naming-charter.yaml
+ create mode 100644 governance/gl-artifacts/governance-charter.yaml
+ create mode 100644 governance/gl-artifacts/governance-loop-process-policy.yaml
+ create mode 100644 governance/gl-artifacts/governance-standards.yaml
+ create mode 100644 governance/gl-artifacts/innovation-registry.yaml
+ create mode 100644 governance/gl-artifacts/layer-template.yaml
+ create mode 100644 governance/gl-artifacts/metrics-definition.yaml
+ create mode 100644 governance/gl-artifacts/operational-plan.yaml
+ create mode 100644 governance/gl-artifacts/org-structure.yaml
+ create mode 100644 governance/gl-artifacts/project-plan.yaml
+ create mode 100644 governance/gl-artifacts/quantum-enhanced-validation-implementation.yaml
+ create mode 100644 governance/gl-artifacts/quantum-validation-metrics.yaml
+ create mode 100644 governance/gl-artifacts/resource-allocation.yaml
+ create mode 100644 governance/gl-artifacts/semantic-root-management.yaml
+ create mode 100644 governance/gl-artifacts/stakeholder-matrix.yaml
+ create mode 100644 governance/gl-artifacts/strategic-objectives.yaml
+ create mode 100644 governance/gl-artifacts/tools-integration.yaml
+ create mode 100644 governance/gl-artifacts/validation-rules-definition.yaml
+ create mode 100644 governance/gl-artifacts/vision-statement.yaml
+ create mode 100644 governance/gl-artifacts/workspace-integration.yaml
+ create mode 100644 governance/gl-core/gl-constitution.yaml
+ create mode 100644 governance/gl-core/gl-index.yaml
+ create mode 100644 governance/gl-core/gl-layers.yaml
+To [EXTERNAL_URL_REMOVED]
+ ! [rejected]          main -> main (fetch first)
+error: failed to push some refs to '[EXTERNAL_URL_REMOVED]
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.

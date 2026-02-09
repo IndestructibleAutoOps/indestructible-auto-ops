@@ -1,0 +1,23 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-core
+# @GL-audit-trail: gov-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gov-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "file": ".gov-index.json",
+  "sha256": "0142095b3d2b89f72874f10b9992da1a6cdc70895233eb20bf5c355a7091a741",
+  "immutable": true,
+  "_GL": {
+    "governed": true,
+    "layer": "governance",
+    "semantic": ".gov-index.json.immutable",
+    "audit_trail": "../../engine/governance/GL_SEMANTIC_ANCHOR.json",
+    "charter": "GL Unified Architecture Governance Framework",
+    "version": "2.0.0"
+  }
+}

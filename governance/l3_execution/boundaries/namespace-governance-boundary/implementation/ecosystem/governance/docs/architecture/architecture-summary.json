@@ -92,8 +92,8 @@
       "contracts.governance.ROLE_LANGUAGE_SPECIFICATION",
       "contracts.governance.ROLE_RUNTIME_FLOW",
       "contracts.governance.ROLE_SYSTEM_IMPLEMENTATION_COMPLETE",
-      "contracts.governance.gl-governance-layers",
-      "contracts.governance.gl-semantic-violation-classifier",
+      "contracts.governance.gov-governance-layers",
+      "contracts.governance.gov-semantic-violation-classifier",
       "contracts.governance.gl.causal-reasoning-spec",
       "contracts.governance.gl.cognitive-modes-spec",
       "contracts.governance.gl.evolution-metrics",
@@ -109,34 +109,34 @@
       "contracts.governance.templates.gl.execution.analysis-report",
       "contracts.governance.templates.gl.execution.delta-report",
       "contracts.governance.templates.gl.flow.upgrade-log",
-      "contracts.naming-governance.gl-build-layer-specification",
-      "contracts.naming-governance.gl-ci-cd-layer-specification",
-      "contracts.naming-governance.gl-contract-layer-specification",
-      "contracts.naming-governance.gl-dependency-layer-specification",
-      "contracts.naming-governance.gl-deployment-layer-specification",
-      "contracts.naming-governance.gl-documentation-layer-specification",
-      "contracts.naming-governance.gl-extensibility-layer-specification",
-      "contracts.naming-governance.gl-format-layer-specification",
-      "contracts.naming-governance.gl-generator-layer-specification",
-      "contracts.naming-governance.gl-governance-layer-specification",
-      "contracts.naming-governance.gl-indexing-layer-specification",
-      "contracts.naming-governance.gl-interface-layer-specification",
-      "contracts.naming-governance.gl-language-layer-specification",
-      "contracts.naming-governance.gl-metadata-layer-specification",
-      "contracts.naming-governance.gl-naming-ontology",
-      "contracts.naming-governance.gl-naming-ontology-expanded",
-      "contracts.naming-governance.gl-observability-layer-specification",
-      "contracts.naming-governance.gl-packaging-layer-specification",
-      "contracts.naming-governance.gl-permission-layer-specification",
-      "contracts.naming-governance.gl-platform-layer-specification",
-      "contracts.naming-governance.gl-prefix-principles-engineering",
-      "contracts.naming-governance.gl-reasoning-layer-specification",
-      "contracts.naming-governance.gl-security-layer-specification",
-      "contracts.naming-governance.gl-supply-chain-layer-specification",
-      "contracts.naming-governance.gl-testing-layer-specification",
-      "contracts.naming-governance.gl-user-facing-layer-specification",
-      "contracts.naming-governance.gl-validation-layer-specification",
-      "contracts.naming-governance.gl-versioning-layer-specification",
+      "contracts.naming-governance.gov-build-layer-specification",
+      "contracts.naming-governance.gov-ci-cd-layer-specification",
+      "contracts.naming-governance.gov-contract-layer-specification",
+      "contracts.naming-governance.gov-dependency-layer-specification",
+      "contracts.naming-governance.gov-deployment-layer-specification",
+      "contracts.naming-governance.gov-documentation-layer-specification",
+      "contracts.naming-governance.gov-extensibility-layer-specification",
+      "contracts.naming-governance.gov-format-layer-specification",
+      "contracts.naming-governance.gov-generator-layer-specification",
+      "contracts.naming-governance.gov-governance-layer-specification",
+      "contracts.naming-governance.gov-indexing-layer-specification",
+      "contracts.naming-governance.gov-interface-layer-specification",
+      "contracts.naming-governance.gov-language-layer-specification",
+      "contracts.naming-governance.gov-metadata-layer-specification",
+      "contracts.naming-governance.gov-naming-ontology",
+      "contracts.naming-governance.gov-naming-ontology-expanded",
+      "contracts.naming-governance.gov-observability-layer-specification",
+      "contracts.naming-governance.gov-packaging-layer-specification",
+      "contracts.naming-governance.gov-permission-layer-specification",
+      "contracts.naming-governance.gov-platform-layer-specification",
+      "contracts.naming-governance.gov-prefix-principles-engineering",
+      "contracts.naming-governance.gov-reasoning-layer-specification",
+      "contracts.naming-governance.gov-security-layer-specification",
+      "contracts.naming-governance.gov-supply-chain-layer-specification",
+      "contracts.naming-governance.gov-testing-layer-specification",
+      "contracts.naming-governance.gov-user-facing-layer-specification",
+      "contracts.naming-governance.gov-validation-layer-specification",
+      "contracts.naming-governance.gov-versioning-layer-specification",
       "enforcers.closed_loop_governance",
       "enforcers.governance_enforcer",
       "governance.GL_SEMANTIC_ANCHOR",
@@ -180,11 +180,11 @@
       "governance.meta-governance.tools.apply_strict_versioning",
       "governance.meta-governance.tools.full_governance_integration",
       "tools.generate-governance-dashboard",
-      "tools.gl-markers.fix-governance-markers"
+      "tools.gov-markers.fix-governance-markers"
     ],
     "reasoning": [
       "contracts.reasoning.dual_path_spec",
-      "contracts.reasoning.gl-reasoning-rules",
+      "contracts.reasoning.gov-reasoning-rules",
       "reasoning.agents.planning_agent",
       "reasoning.agents.tools_registry",
       "reasoning.auto_reasoner",
@@ -220,22 +220,22 @@
       "ecosystem-cloud.registry.cloud_adapters"
     ],
     "contracts": [
-      "contracts.extensions.gl-extension-points",
+      "contracts.extensions.gov-extension-points",
       "contracts.fact-verification.README",
       "contracts.fact-verification.gl.fact-pipeline-spec",
       "contracts.fact-verification.gl.verifiable-report-spec",
-      "contracts.generator.gl-generator-spec",
-      "contracts.platforms.gl-platforms",
+      "contracts.generator.gov-generator-spec",
+      "contracts.platforms.gov-platforms",
       "contracts.policies.conftest",
-      "contracts.validation.gl-validation-rules",
-      "contracts.verification.gl-audit-report-template",
-      "contracts.verification.gl-proof-model",
-      "contracts.verification.gl-proof-model-executable",
-      "contracts.verification.gl-verifiable-report-standard",
-      "contracts.verification.gl-verifiable-report-standard-executable",
-      "contracts.verification.gl-verification-engine-spec",
-      "contracts.verification.gl-verification-engine-spec-executable",
-      "registry.naming.gl-naming-contracts-registry"
+      "contracts.validation.gov-validation-rules",
+      "contracts.verification.gov-audit-report-template",
+      "contracts.verification.gov-proof-model",
+      "contracts.verification.gov-proof-model-executable",
+      "contracts.verification.gov-verifiable-report-standard",
+      "contracts.verification.gov-verifiable-report-standard-executable",
+      "contracts.verification.gov-verification-engine-spec",
+      "contracts.verification.gov-verification-engine-spec-executable",
+      "registry.naming.gov-naming-contracts-registry"
     ],
     "engines": []
   },
@@ -370,9 +370,9 @@
       "dependents": []
     },
     {
-      "name": "contracts.extensions.gl-extension-points",
+      "name": "contracts.extensions.gov-extension-points",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/extensions/gl-extension-points.yaml",
+      "path": "ecosystem/contracts/extensions/gov-extension-points.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -405,9 +405,9 @@
       "dependents": []
     },
     {
-      "name": "contracts.generator.gl-generator-spec",
+      "name": "contracts.generator.gov-generator-spec",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/generator/gl-generator-spec.yaml",
+      "path": "ecosystem/contracts/generator/gov-generator-spec.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -433,16 +433,16 @@
       "dependents": []
     },
     {
-      "name": "contracts.governance.gl-governance-layers",
+      "name": "contracts.governance.gov-governance-layers",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/governance/gl-governance-layers.yaml",
+      "path": "ecosystem/contracts/governance/gov-governance-layers.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.governance.gl-semantic-violation-classifier",
+      "name": "contracts.governance.gov-semantic-violation-classifier",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml",
+      "path": "ecosystem/contracts/governance/gov-semantic-violation-classifier.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -552,205 +552,205 @@
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-build-layer-specification",
+      "name": "contracts.naming-governance.gov-build-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-build-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-build-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-ci-cd-layer-specification",
+      "name": "contracts.naming-governance.gov-ci-cd-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-ci-cd-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-ci-cd-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-contract-layer-specification",
+      "name": "contracts.naming-governance.gov-contract-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-contract-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-contract-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-dependency-layer-specification",
+      "name": "contracts.naming-governance.gov-dependency-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-dependency-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-dependency-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-deployment-layer-specification",
+      "name": "contracts.naming-governance.gov-deployment-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-deployment-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-deployment-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-documentation-layer-specification",
+      "name": "contracts.naming-governance.gov-documentation-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-documentation-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-documentation-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-extensibility-layer-specification",
+      "name": "contracts.naming-governance.gov-extensibility-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-extensibility-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-extensibility-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-format-layer-specification",
+      "name": "contracts.naming-governance.gov-format-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-format-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-format-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-generator-layer-specification",
+      "name": "contracts.naming-governance.gov-generator-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-generator-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-generator-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-governance-layer-specification",
+      "name": "contracts.naming-governance.gov-governance-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-governance-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-governance-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-indexing-layer-specification",
+      "name": "contracts.naming-governance.gov-indexing-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-indexing-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-indexing-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-interface-layer-specification",
+      "name": "contracts.naming-governance.gov-interface-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-interface-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-interface-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-language-layer-specification",
+      "name": "contracts.naming-governance.gov-language-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-language-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-language-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-metadata-layer-specification",
+      "name": "contracts.naming-governance.gov-metadata-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-metadata-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-metadata-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-naming-ontology",
+      "name": "contracts.naming-governance.gov-naming-ontology",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/naming-governance/gl-naming-ontology.yaml",
+      "path": "ecosystem/contracts/naming-governance/gov-naming-ontology.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-naming-ontology-expanded",
+      "name": "contracts.naming-governance.gov-naming-ontology-expanded",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/naming-governance/gl-naming-ontology-expanded.yaml",
+      "path": "ecosystem/contracts/naming-governance/gov-naming-ontology-expanded.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-observability-layer-specification",
+      "name": "contracts.naming-governance.gov-observability-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-observability-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-observability-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-packaging-layer-specification",
+      "name": "contracts.naming-governance.gov-packaging-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-packaging-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-packaging-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-permission-layer-specification",
+      "name": "contracts.naming-governance.gov-permission-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-permission-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-permission-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-platform-layer-specification",
+      "name": "contracts.naming-governance.gov-platform-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-platform-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-platform-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-prefix-principles-engineering",
+      "name": "contracts.naming-governance.gov-prefix-principles-engineering",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-prefix-principles-engineering.md",
+      "path": "ecosystem/contracts/naming-governance/gov-prefix-principles-engineering.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-reasoning-layer-specification",
+      "name": "contracts.naming-governance.gov-reasoning-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-reasoning-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-reasoning-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-security-layer-specification",
+      "name": "contracts.naming-governance.gov-security-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-security-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-security-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-supply-chain-layer-specification",
+      "name": "contracts.naming-governance.gov-supply-chain-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-supply-chain-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-supply-chain-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-testing-layer-specification",
+      "name": "contracts.naming-governance.gov-testing-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-testing-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-testing-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-user-facing-layer-specification",
+      "name": "contracts.naming-governance.gov-user-facing-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-user-facing-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-user-facing-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-validation-layer-specification",
+      "name": "contracts.naming-governance.gov-validation-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-validation-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-validation-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.naming-governance.gl-versioning-layer-specification",
+      "name": "contracts.naming-governance.gov-versioning-layer-specification",
       "type": "documentation",
-      "path": "ecosystem/contracts/naming-governance/gl-versioning-layer-specification.md",
+      "path": "ecosystem/contracts/naming-governance/gov-versioning-layer-specification.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.platforms.gl-platforms",
+      "name": "contracts.platforms.gov-platforms",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/platforms/gl-platforms.yaml",
+      "path": "ecosystem/contracts/platforms/gov-platforms.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -769,65 +769,65 @@
       "dependents": []
     },
     {
-      "name": "contracts.reasoning.gl-reasoning-rules",
+      "name": "contracts.reasoning.gov-reasoning-rules",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/reasoning/gl-reasoning-rules.yaml",
+      "path": "ecosystem/contracts/reasoning/gov-reasoning-rules.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.validation.gl-validation-rules",
+      "name": "contracts.validation.gov-validation-rules",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/validation/gl-validation-rules.yaml",
+      "path": "ecosystem/contracts/validation/gov-validation-rules.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-audit-report-template",
+      "name": "contracts.verification.gov-audit-report-template",
       "type": "documentation",
-      "path": "ecosystem/contracts/verification/gl-audit-report-template.md",
+      "path": "ecosystem/contracts/verification/gov-audit-report-template.md",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-proof-model",
+      "name": "contracts.verification.gov-proof-model",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/verification/gl-proof-model.yaml",
+      "path": "ecosystem/contracts/verification/gov-proof-model.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-proof-model-executable",
+      "name": "contracts.verification.gov-proof-model-executable",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/verification/gl-proof-model-executable.yaml",
+      "path": "ecosystem/contracts/verification/gov-proof-model-executable.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-verifiable-report-standard",
+      "name": "contracts.verification.gov-verifiable-report-standard",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/verification/gl-verifiable-report-standard.yaml",
+      "path": "ecosystem/contracts/verification/gov-verifiable-report-standard.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-verifiable-report-standard-executable",
+      "name": "contracts.verification.gov-verifiable-report-standard-executable",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/verification/gl-verifiable-report-standard-executable.yaml",
+      "path": "ecosystem/contracts/verification/gov-verifiable-report-standard-executable.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-verification-engine-spec",
+      "name": "contracts.verification.gov-verification-engine-spec",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/verification/gl-verification-engine-spec.yaml",
+      "path": "ecosystem/contracts/verification/gov-verification-engine-spec.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "contracts.verification.gl-verification-engine-spec-executable",
+      "name": "contracts.verification.gov-verification-engine-spec-executable",
       "type": "yaml_spec",
-      "path": "ecosystem/contracts/verification/gl-verification-engine-spec-executable.yaml",
+      "path": "ecosystem/contracts/verification/gov-verification-engine-spec-executable.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -1575,9 +1575,9 @@
       "dependents": []
     },
     {
-      "name": "foundation.schemas.gl-rule.schema",
+      "name": "foundation.schemas.gov-rule.schema",
       "type": "yaml_spec",
-      "path": "ecosystem/foundation/schemas/gl-rule.schema.yaml",
+      "path": "ecosystem/foundation/schemas/gov-rule.schema.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -2616,9 +2616,9 @@
       "dependents": []
     },
     {
-      "name": "registry.naming.gl-naming-contracts-registry",
+      "name": "registry.naming.gov-naming-contracts-registry",
       "type": "yaml_spec",
-      "path": "ecosystem/registry/naming/gl-naming-contracts-registry.yaml",
+      "path": "ecosystem/registry/naming/gov-naming-contracts-registry.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -2661,30 +2661,30 @@
       "dependents": []
     },
     {
-      "name": "registry.platforms.gl-platform-definition",
+      "name": "registry.platforms.gov-platform-definition",
       "type": "yaml_spec",
-      "path": "ecosystem/registry/platforms/gl-platform-definition.yaml",
+      "path": "ecosystem/registry/platforms/gov-platform-definition.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "registry.platforms.gl-platform-lifecycle-spec",
+      "name": "registry.platforms.gov-platform-lifecycle-spec",
       "type": "yaml_spec",
-      "path": "ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml",
+      "path": "ecosystem/registry/platforms/gov-platform-lifecycle-spec.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "registry.platforms.gl-platforms.index",
+      "name": "registry.platforms.gov-platforms.index",
       "type": "yaml_spec",
-      "path": "ecosystem/registry/platforms/gl-platforms.index.yaml",
+      "path": "ecosystem/registry/platforms/gov-platforms.index.yaml",
       "dependencies": [],
       "dependents": []
     },
     {
-      "name": "registry.platforms.gl-platforms.placement-rules",
+      "name": "registry.platforms.gov-platforms.placement-rules",
       "type": "yaml_spec",
-      "path": "ecosystem/registry/platforms/gl-platforms.placement-rules.yaml",
+      "path": "ecosystem/registry/platforms/gov-platforms.placement-rules.yaml",
       "dependencies": [],
       "dependents": []
     },
@@ -2757,9 +2757,9 @@
       "dependents": []
     },
     {
-      "name": "tools.audit.gl-audit-simple",
+      "name": "tools.audit.gov-audit-simple",
       "type": "python_module",
-      "path": "ecosystem/tools/audit/gl-audit-simple.py",
+      "path": "ecosystem/tools/audit/gov-audit-simple.py",
       "dependencies": [
         "yaml",
         "pathlib",
@@ -2803,9 +2803,9 @@
       "dependents": []
     },
     {
-      "name": "tools.fact-verification.gl-fact-pipeline",
+      "name": "tools.fact-verification.gov-fact-pipeline",
       "type": "python_module",
-      "path": "ecosystem/tools/fact-verification/gl-fact-pipeline.py",
+      "path": "ecosystem/tools/fact-verification/gov-fact-pipeline.py",
       "dependencies": [
         "enum",
         "typing",
@@ -2835,9 +2835,9 @@
       "dependents": []
     },
     {
-      "name": "tools.gl-markers.add-gl-markers",
+      "name": "tools.gov-markers.add-gov-markers",
       "type": "python_module",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers.py",
       "dependencies": [
         "pathlib",
         "sys",
@@ -2846,21 +2846,9 @@
       "dependents": []
     },
     {
-      "name": "tools.gl-markers.add-gl-markers-batch",
+      "name": "tools.gov-markers.add-gov-markers-batch",
       "type": "python_module",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers-batch.py",
-      "dependencies": [
-        "json",
-        "pathlib",
-        "sys",
-        "os"
-      ],
-      "dependents": []
-    },
-    {
-      "name": "tools.gl-markers.add-gl-markers-json",
-      "type": "python_module",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers-json.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers-batch.py",
       "dependencies": [
         "json",
         "pathlib",
@@ -2870,9 +2858,21 @@
       "dependents": []
     },
     {
-      "name": "tools.gl-markers.add-gl-markers-yaml",
+      "name": "tools.gov-markers.add-gov-markers-json",
       "type": "python_module",
-      "path": "ecosystem/tools/gl-markers/add-gl-markers-yaml.py",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers-json.py",
+      "dependencies": [
+        "json",
+        "pathlib",
+        "sys",
+        "os"
+      ],
+      "dependents": []
+    },
+    {
+      "name": "tools.gov-markers.add-gov-markers-yaml",
+      "type": "python_module",
+      "path": "ecosystem/tools/gov-markers/add-gov-markers-yaml.py",
       "dependencies": [
         "pathlib",
         "sys",
@@ -2881,9 +2881,9 @@
       "dependents": []
     },
     {
-      "name": "tools.gl-markers.fix-governance-markers",
+      "name": "tools.gov-markers.fix-governance-markers",
       "type": "python_module",
-      "path": "ecosystem/tools/gl-markers/fix-governance-markers.py",
+      "path": "ecosystem/tools/gov-markers/fix-governance-markers.py",
       "dependencies": [
         "json",
         "pathlib",

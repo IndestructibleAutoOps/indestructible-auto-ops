@@ -1,0 +1,324 @@
+# Adaptive Rules Configuration for GL-NarrativeFree Compliance Scanner
+#
+# This file defines automatic mode switching rules for context-sensitive
+# narrative-free compliance scanning.
+#
+# Governance Owner: IndestructibleAutoOps
+# Version: 2.0
+# Date: 2024-02-05
+
+# Adaptive Rules
+rules:
+  # Governance Reports - Strictest Mode
+  - if:
+      output_path: "outputs/selfhealing/*.json"
+      context: "governance_report"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    disable:
+      - GLCM-EMO
+      - GLCM-SOFT
+      - GLCM-EXC
+    description: "Strictest mode for governance reports - zero tolerance for narrative"
+  
+  - if:
+      output_path: "outputs/**/*.json"
+      context: "governance_report"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    disable:
+      - GLCM-EMO
+      - GLCM-SOFT
+      - GLCM-EXC
+    description: "Strict mode for all JSON outputs"
+
+  # Documentation - Softer Mode
+  - if:
+      output_path: "docs/**/*.md"
+      context: "documentation"
+    enable:
+      - GLCM-SOFT
+      - GLCM-EVC
+    disable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-FCT
+    description: "Soft mode for documentation - narrative allowed with evidence"
+
+  # README Files - Most Permissive
+  - if:
+      output_path: "README*.md"
+      context: "documentation"
+    enable:
+      - GLCM-SOFT
+    disable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+      - GLCM-EMO
+    description: "Most permissive mode for README files"
+
+  # Human Dialogue - Permissive
+  - if:
+      output_path: "chatlogs/*.txt"
+      context: "human_dialogue"
+    enable:
+      - GLCM-EMO
+      - GLCM-SOFT
+    disable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    description: "Permissive mode for human dialogue - emotive language allowed"
+
+  # Logs - Strict
+  - if:
+      output_path: "**/*.log"
+      context: "system_logs"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    disable:
+      - GLCM-EMO
+      - GLCM-SOFT
+    description: "Strict mode for system logs"
+
+  # Test Files - Mixed
+  - if:
+      output_path: "**/test*.py"
+      context: "test_files"
+    enable:
+      - GLCM-UNC
+      - GLCM-EVC
+    disable:
+      - GLCM-NAR
+      - GLCM-FCT
+      - GLCM-EMO
+    description: "Mixed mode for test files"
+
+  # Branch-Based Rules
+  - if:
+      branch: "dev"
+      context: "development"
+    enable:
+      - GLCM-SOFT
+      - GLCM-UNC
+      - GLCM-EVC
+    disable:
+      - GLCM-NAR
+      - GLCM-FCT
+    description: "Dev branch - allow soft narrative"
+
+  - if:
+      branch: "main"
+      context: "production"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    disable:
+      - GLCM-SOFT
+      - GLCM-EMO
+      - GLCM-EXC
+    description: "Main branch - strictest mode"
+
+  - if:
+      branch: "staging"
+      context: "staging"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+    disable:
+      - GLCM-FCT
+      - GLCM-SOFT
+    description: "Staging branch - strict but no fabricated timeline check"
+
+  # Evidence Files - Strictest
+  - if:
+      output_path: ".evidence/**/*"
+      context: "evidence_sealing"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    disable:
+      - GLCM-EMO
+      - GLCM-SOFT
+      - GLCM-EXC
+    description: "Strictest mode for evidence files - must be narrative-free"
+
+  # Compliance Reports - Strictest
+  - if:
+      output_path: "reports/**/*compliance*.json"
+      context: "compliance_report"
+    enable:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT
+    disable:
+      - GLCM-EMO
+      - GLCM-SOFT
+      - GLCM-EXC
+    description: "Strictest mode for compliance reports"
+
+  # Configuration Files - Mixed
+  - if:
+      output_path: "*.yaml"
+      context: "configuration"
+    enable:
+      - GLCM-UNC
+    disable:
+      - GLCM-NAR
+      - GLCM-FCT
+      - GLCM-EVC
+      - GLCM-EMO
+    description: "Mixed mode for configuration files"
+
+# Module Definitions
+modules:
+  GLCM-NAR:
+    name: "Narrative Phrases Detection"
+    description: "Detects non-deterministic, subjective, speculative language"
+    severity: MEDIUM
+    default_enabled: true
+
+  GLCM-UNC:
+    name: "Unsealed Conclusions Detection"
+    description: "Detects conclusion statements without trace/hash evidence"
+    severity: HIGH
+    default_enabled: true
+
+  GLCM-EVC:
+    name: "Evidence Chain Verification"
+    description: "Verifies evidence chain completeness and integrity"
+    severity: HIGH
+    default_enabled: true
+
+  GLCM-FCT:
+    name: "Fabricated Completion Timeline Detection"
+    description: "Detects fabricated 'completed' statements without evidence (CRITICAL)"
+    severity: CRITICAL
+    default_enabled: true
+
+  GLCM-EMO:
+    name: "Emotive Language Detection"
+    description: "Detects emotional or subjective language"
+    severity: LOW
+    default_enabled: false
+
+  GLCM-SOFT:
+    name: "Soft Narrative Allowance"
+    description: "Allows narrative phrases when accompanied by evidence"
+    severity: LOW
+    default_enabled: false
+
+  GLCM-EXC:
+    name: "Exception Whitelist"
+    description: "Allows exceptions for specific files or patterns"
+    severity: LOW
+    default_enabled: false
+
+# Default Configuration
+default_config:
+  enabled: true
+  modules:
+    GLCM-NAR: true
+    GLCM-UNC: true
+    GLCM-EVC: true
+    GLCM-FCT: true
+    GLCM-EMO: false
+    GLCM-SOFT: false
+    GLCM-EXC:
+      enabled: false
+      whitelist:
+        - "README.md"
+        - "docs/intro/*.md"
+        - "CHANGELOG.md"
+
+# Context Definitions
+contexts:
+  governance_report:
+    description: "Official governance reports and documents"
+    strictness: HIGHEST
+
+  human_dialogue:
+    description: "Human-machine conversation logs"
+    strictness: LOW
+
+  documentation:
+    description: "Technical documentation and guides"
+    strictness: MEDIUM
+
+  system_logs:
+    description: "System operation logs"
+    strictness: HIGH
+
+  test_files:
+    description: "Test files and test data"
+    strictness: MEDIUM
+
+  development:
+    description: "Development environment"
+    strictness: LOW
+
+  staging:
+    description: "Staging environment"
+    strictness: HIGH
+
+  production:
+    description: "Production environment"
+    strictness: HIGHEST
+
+  evidence_sealing:
+    description: "Evidence sealing and archival"
+    strictness: HIGHEST
+
+  compliance_report:
+    description: "Compliance scanning and audit reports"
+    strictness: HIGHEST
+
+  configuration:
+    description: "System configuration files"
+    strictness: LOW
+
+# Strictness Levels
+strictness_levels:
+  LOW:
+    description: "Permissive - allows most narrative and emotive language"
+    recommended_modules:
+      - GLCM-UNC
+
+  MEDIUM:
+    description: "Balanced - allows some narrative with evidence requirements"
+    recommended_modules:
+      - GLCM-UNC
+      - GLCM-EVC
+
+  HIGH:
+    description: "Strict - prohibits most narrative"
+    recommended_modules:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+
+  HIGHEST:
+    description: "Strictest - zero tolerance for narrative"
+    recommended_modules:
+      - GLCM-NAR
+      - GLCM-UNC
+      - GLCM-EVC
+      - GLCM-FCT

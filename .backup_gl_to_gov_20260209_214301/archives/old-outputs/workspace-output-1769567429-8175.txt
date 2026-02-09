@@ -1,0 +1,8 @@
+[main 93d2a4ec] 修復條碼掃瞄問題 - 實現 QR 碼生成功能
+ 6 files changed, 18640 insertions(+)
+ create mode 100644 engine/aep-engine-app/package-lock.json
+ create mode 100644 engine/aep-engine-app/public/qrcodes/audit-report-sample.png
+ create mode 100644 engine/aep-engine-app/public/qrcodes/auth-sample.png
+ create mode 100644 engine/aep-engine-app/public/qrcodes/pairing-sample.png
+ create mode 100644 engine/aep-engine-app/public/qrcodes/test-verification.png
+ create mode 100644 engine/aep-engine-app/scripts/generate_qr.mjs

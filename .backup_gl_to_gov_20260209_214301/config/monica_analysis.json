@@ -1,0 +1,50 @@
+[
+  {
+    "filepath": "/workspace/MONICA_AI_AGENT_COMPREHENSIVE_ANALYSIS (1).md",
+    "stats": {
+      "length": 11726,
+      "sections": 1,
+      "has_code_blocks": true,
+      "has_tables": true,
+      "word_count": 854
+    },
+    "sections_count": 1,
+    "features_found": 28,
+    "sample_features": [
+      "：\\n\\n假設用戶需要了解「2026 年 AI 代碼編輯工具的市場趨勢」。Deep Research 會自動：\\n\\n1. 分解為子問題：「有哪些主要的 AI 代碼編輯工具？」、「市場規模是多少？」、「發展方向是什麼？」、「企業採用率如何？」\\n2. 搜索各類源：Gartner 魔力象限報告、StackOverflow 開發者調查、GitHub Trends、公司新聞發布\\n3. 綜合信息：對比工具功能、分析市場增長率、識別新興技術方向\\n4. 生成報告",
+      "：\\n\\n一家競爭分析公司需要監控 50 個競爭對手的定價和功能更新。手動方法需要每天 4-5 小時。使用 Browser Operator，該過程可以自動化",
+      "：\\n\\n一個研究人員用 Deep Research 生成了 15 頁的市場分析報告。使用 Create Slides，系統自動：\\n\\n1. 識別報告的關鍵部分（執行摘要、市場規模、競爭格局、趨勢、建議）\\n2. 為每個部分創建適當的幻燈片\\n3. 將數據表自動轉換為柱狀圖、餅圖或折線圖\\n4. 應用企業品牌指南（顏色、字體、標識）\\n5. 生成 20 張專業幻燈片的演示文稿\\n\\n從報告到演示文稿的轉換時間從 2-3 小時減少到 2-3 分鐘。\\n\\n---\\n\\n## 第二部分",
+      "：提供豐富的背景信息\\n\\nMonica AI Agent 的性能與所提供的上下文質量成正比。指定",
+      "：\\n\\n較弱的提示：「分析 AI 代碼工具的市場\\\"\\n\\n優化的提示",
+      "：將 Agent 的輸出視為初始草稿\\n\\nAI Agent 在快速生成高質量初始内容方面表現出色，但應將其輸出視為起點而非終點。最佳實踐包括",
+      "：使用 Agent 生成的分析作為決策支援，而不是決策本身\\n\\n---\\n\\n## 第三部分：代碼編輯器 Agent 的全球最前沿最佳實踐\\n\\n### 1. Cursor 的 Agent Harness 模型\\n\\nCursor 代表代碼編輯工具 AI 集成的最佳實踐。[2] 其 Agent Harness 由三個關鍵組件組成",
+      "：Cursor 為其代理提供了五個核心工具",
+      "：您的提示和後續反饋指導工作。Cursor 發現，最有效的工作流程包括：\\n- 首先用「@codebase」標記激活代碼庫感知模式\\n- 使用「#file」語法引用特定文件\\n- 在需要時添加上下文性評論（例如「#TODO(agent): refactor this function\\\"）\\n\\n### 2. 計劃驅動的開發模式\\n\\n芝加哥大學的研究表明，經驗豐富的開發人員在生成代碼前更可能進行計劃。[2] Cursor 通過「計劃模式」實現了這一點，通過按 `Shift+Tab` 激活。在計劃模式中，代理：\\n\\n1. 研究您的代碼庫以找到相關文件\\n2. 提出澄清性問題\\n3. 創建詳細的實施計劃\\n4. 等待您的批准再開始編碼\\n\\nMonica 的 Deep Research 可以提供類似的規劃能力。當要求創建代碼時，首先請求一個詳細的計劃而不是立即編碼。\\n\\n### 3. 工具聚焦的架構\\n\\nAnthrop IC 的研究發現，最成功的 AI Agent 實現使用簡單的、可組合的模式，而不是複雜的框架。[3] 關鍵原則包括",
+      "：代理按預定義順序工作。例如"
+    ]
+  },
+  {
+    "filepath": "/workspace/MONICA_AI_AGENT_ENGINEERING_SPECIFICATION.md",
+    "stats": {
+      "length": 70555,
+      "sections": 1,
+      "has_code_blocks": true,
+      "has_tables": true,
+      "word_count": 4826
+    },
+    "sections_count": 1,
+    "features_found": 57,
+    "sample_features": [
+      "選擇 X\\\", \\\"基於定價：選擇 Y\\\"]\\n\\n",
+      ": 架構師、高級開發工程師、DevOps 工程師  \\n\\n---\\n\\n## 第一部分：Monica AI Agent 核心功能架構分析\\n\\n### 1.1 系統架構概覽\\n\\nMonICA AI Agent 由三個高度集成的模組組成，共同構成完整的智能工作流系統。[1] 架構設計採用微服務模式，允許各模組獨立部署和擴展，同時通過統一的編排層實現協調。\\n\\n```\\n┌────────────────────────────────────────────────────────────┐\\n│                  用戶輸入層                                 │\\n│        自然語言查詢 / 結構化指令 / 交互反饋                │\\n└────────────────────────────────────────────────────────────┘\\n                            ↓\\n┌────────────────────────────────────────────────────────────┐\\n│                    統一編排層                               │\\n│  任務理解 → 模組選擇 → 參數配置 → 執行控制 → 結果驗證    │\\n└────────────────────────────────────────────────────────────┘\\n        ↓                   ↓                   ↓\\n┌──────────────┐  ┌──────────────┐  ┌──────────────┐\\n│Deep Research │  │   Browser    │  │    Create    │\\n│  模組        │  │  Operator    │  │   Slides     │\\n│              │  │  模組        │  │   模組       │\\n└──────────────┘  └──────────────┘  └──────────────┘\\n        ↓                   ↓                   ↓\\n┌──────────────┐  ┌──────────────┐  ┌──────────────┐\\n│問題分解引擎  │  │視覺識別引擎  │  │結構化引擎    │\\n│多源搜索引擎  │  │導航控制引擎  │  │設計應用引擎  │\\n│綜合分析引擎  │  │數據提取引擎  │  │渲染引擎      │\\n└──────────────┘  └──────────────┘  └──────────────┘\\n        ↓                   ↓                   ↓\\n  結構化報告        結構化數據集        演示文稿\\n```\\n\\n### 1.2 Deep Research 模組",
+      "：輸入一個複雜查詢（例如「分析 2026 年 AI 代碼編輯市場」），該引擎使用結構化提示和 LLM 自動生成 5-8 個互相補充的子問題。分解遵循以下原則",
+      "（問題分解）：\\n\\n```python\\nclass QuestionDecomposer:\\n    \\\"\\\"\\\"將複雜問題分解為結構化子問題\\\"\\\"\\\"\\n    \\n    def __init__(self, llm_client, model=\\\"gpt-4o\\\"):\\n        self.llm = llm_client\\n        self.model = model\\n    \\n    def decompose(self, main_question: str, num_subquestions: int = 7) -> List[Dict]:\\n        \\\"\\\"\\\"分解查詢為子問題\\\"\\\"\\\"\\n        \\n        decomposition_prompt = f\\\"\\\"\\\"\\n        請將以下複雜問題分解為 {num_subquestions} 個相互補充的子問題。\\n        每個子問題應該：\\n        1. 涵蓋不同的維度或視角\\n        2. 具有明確的搜索焦點\\n        3. 可獨立回答但對整體問題有貢獻\\n        \\n        主問題：{main_question}\\n        \\n        返回 JSON 格式：\\n        {{\\n            \\\"subquestions\\\": [\\n                {{\\n                    \\\"id\\\": 1,\\n                    \\\"question\\\": \\\"具體問題\\\",\\n                    \\\"search_focus\\\": \\\"搜索重點\\\",\\n                    \\\"dimension\\\": \\\"問題維度\\\",\\n                    \\\"priority\\\": \\\"high/medium/low\\\"\\n                }}\\n            ],\\n            \\\"strategy\\\": \\\"分解策略說明\\\"\\n        }}\\n        \\\"\\\"\\\"\\n        \\n        response = self.llm.create(\\n            model=self.model,\\n            messages=[\\n                {\\\"role\\\": \\\"system\\\", \\\"content\\\": \\\"你是一位資深研究分析師。\\\"},\\n                {\\\"role\\\": \\\"user\\\", \\\"content\\\"",
+      "：對於每個子問題，該引擎並行發起搜索請求到多個信息源。數據源按優先級分類",
+      "（權重 0.4）",
+      "（權重 0.3）",
+      "（權重 0.2）",
+      "（權重 0.1）",
+      "（並行搜索）：\\n\\n```python\\nimport asyncio\\nfrom typing import List, Dict\\nimport aiohttp\\n\\nclass ParallelSearchEngine:\\n    \\\"\\\"\\\"多源並行搜索引擎\\\"\\\"\\\"\\n    \\n    # 數據源配置\\n    DATA_SOURCES = {\\n        \\\"google_scholar\\\": {\\n            \\\"url\\\": \\\"https://scholar.google.com/scholar\\\",\\n            \\\"priority\\\": 0.4,\\n            \\\"timeout\\\": 15\\n        },\\n        \\\"hacker_news\\\": {\\n            \\\"url\\\": \\\"https://hn.algolia.com/api/v1/search\\\",\\n            \\\"priority\\\": 0.3,\\n            \\\"timeout\\\": 10\\n        },\\n        \\\"stack_overflow\\\": {\\n            \\\"url\\\": \\\"https://api.stackexchange.com/2.3/search/advanced\\\",\\n            \\\"priority\\\": 0.3,\\n            \\\"timeout\\\": 10\\n        },\\n        \\\"arxiv\\\": {\\n            \\\"url\\\": \\\"http://export.arxiv.org/api/query\\\",\\n            \\\"priority\\\": 0.4,\\n            \\\"timeout\\\": 12\\n        }\\n    }\\n    \\n    async def search_parallel(self, query: str, subquestions: List[Dict]) -> Dict:\\n        \\\"\\\"\\\"並行搜索多個數據源\\\"\\\"\\\"\\n        \\n        tasks = []\\n        results = {}\\n        \\n        async with aiohttp.ClientSession() as session:\\n            for source_name, source_config in self.DATA_SOURCES.items():\\n                # 為每個源創建搜索任務\\n                for subq in subquestions"
+    ]
+  }
+]

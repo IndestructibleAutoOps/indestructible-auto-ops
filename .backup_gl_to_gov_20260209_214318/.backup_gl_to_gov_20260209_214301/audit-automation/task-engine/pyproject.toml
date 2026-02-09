@@ -1,0 +1,24 @@
+[project]
+name = "auto-task-project"
+version = "0.1.0"
+description = "自動任務執行框架（APScheduler + 事件 + 優先級 + 日誌）"
+requires-python = ">=3.10"
+dependencies = [
+    "apscheduler>=3.10",
+    "python-dotenv>=1.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"

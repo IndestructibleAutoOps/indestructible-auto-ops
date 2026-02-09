@@ -1,0 +1,72 @@
+✅ GL validation passed
+[main be5195d0] GL 全域治理標記完成 - package.json 檔案治理標記
+ 2 files changed, 2 insertions(+)
+Validating engine...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587030947",
+      "type": "validation",
+      "timestamp": "2026-01-28T07:57:10.947Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T07:57:10.681Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587033112",
+      "type": "validation",
+      "timestamp": "2026-01-28T07:57:13.112Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T07:57:13.105Z",
+    "Workspace: /workspace/machine-native-ops/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+Validating instant...
+Validating elasticsearch-search-system...
+Validating infrastructure...
+Validating esync-platform...
+✅ GL validation passed for all workspaces
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit be5195d.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      [EXTERNAL_URL_REMOVED]        
+remote: 
+To [EXTERNAL_URL_REMOVED]
+   9546f4d2..be5195d0  main -> main

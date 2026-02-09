@@ -1,0 +1,304 @@
+# @GL-governed
+# @GL-layer: GL30-49
+# @GL-semantic: enforcement-pipeline
+# @GL-audit-trail: ./governance/GL_SEMANTIC_ANCHOR.json
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+#                    Machine Native Ops - Enforcement Pipeline
+#                    GL Layer: GL30-49 Execution Layer
+#                    Purpose: Automated governance enforcement workflow
+# ═══════════════════════════════════════════════════════════════════════════════
+
+name: Enforcement Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'ecosystem/**'
+      - 'scripts/**'
+      - '.github/workflows/enforcement-pipeline.yml'
+  pull_request:
+    branches:
+      - main
+      - develop
+  schedule:
+    # Run daily at 2:00 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      auto_fix:
+        description: 'Enable auto-fix mode'
+        required: false
+        default: 'false'
+        type: boolean
+      dry_run:
+        description: 'Dry run mode (no changes)'
+        required: false
+        default: 'false'
+        type: boolean
+
+# Minimal permissions for security
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: '3.11'
+  LOG_LEVEL: 'INFO'
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # L1: Scan - Run governance enforcement checks
+  # ─────────────────────────────────────────────────────────────────────────────
+  L1_scan:
+    name: L1 - Governance Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      violations: ${{ steps.scan.outputs.violations }}
+      status: ${{ steps.scan.outputs.status }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      - name: Create logs directory
+        run: |
+          mkdir -p logs/audit_$(date +%Y%m%d_%H%M%S)
+          mkdir -p reports
+      
+      - name: Run governance enforcement
+        id: scan
+        run: |
+          set +e
+          python ecosystem/enforce.py 2>&1 | tee reports/enforcement_output.log
+          exit_code=$?
+          set -e
+          
+          # Count violations
+          violations=$(grep -c "CRITICAL\|HIGH" reports/enforcement_output.log 2>/dev/null || echo "0")
+          
+          echo "violations=$violations" >> $GITHUB_OUTPUT
+          echo "status=$exit_code" >> $GITHUB_OUTPUT
+          
+          # Generate audit report
+          timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          cat > reports/audit_report_$(date +%Y%m%d_%H%M%S).json <<EOF
+          {
+            "timestamp": "$timestamp",
+            "violations": $violations,
+            "status": $exit_code,
+            "workflow_run": "${{ github.run_id }}",
+            "commit": "${{ github.sha }}",
+            "branch": "${{ github.ref_name }}"
+          }
+          EOF
+          
+          exit $exit_code
+        continue-on-error: true
+      
+      - name: Upload audit reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-reports
+          path: |
+            reports/
+            logs/
+          retention-days: 30
+      
+      - name: Check scan status
+        if: steps.scan.outputs.status != '0'
+        run: |
+          echo "⚠️ Governance scan detected issues"
+          echo "Violations: ${{ steps.scan.outputs.violations }}"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # L2: Auto-Fix - Automatically remediate violations
+  # ─────────────────────────────────────────────────────────────────────────────
+  L2_auto_fix:
+    name: L2 - Auto Fix
+    runs-on: ubuntu-latest
+    needs: L1_scan
+    permissions:
+      contents: write
+      pull-requests: write
+    if: |
+      (needs.L1_scan.outputs.violations != '0' || github.event.inputs.auto_fix == 'true') &&
+      github.event_name != 'pull_request'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      - name: Download audit reports
+        uses: actions/download-artifact@v4
+        with:
+          name: audit-reports
+          path: downloaded-reports/
+      
+      - name: Run auto-fix engine
+        id: autofix
+        run: |
+          mkdir -p reports
+          
+          # Find the latest audit report
+          latest_report=$(find downloaded-reports -name "audit_report_*.json" | sort -r | head -1)
+          
+          if [ -n "$latest_report" ]; then
+            echo "Using audit report: $latest_report"
+            
+            # Run auto-fix (safe mode by default for PRs)
+            if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+              python ecosystem/autofix_engine.py --report "$latest_report" --safe-mode --output reports/autofix_report.json
+            else
+              python ecosystem/autofix_engine.py --report "$latest_report" --apply --output reports/autofix_report.json
+            fi
+            
+            # Check if fixes were applied
+            fixes=$(python -c "import json; r=json.load(open('reports/autofix_report.json')); print(r.get('fixed_count', 0))")
+            echo "fixes_applied=$fixes" >> $GITHUB_OUTPUT
+          else
+            echo "No audit report found"
+            echo "fixes_applied=0" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+      
+      - name: Upload auto-fix report
+        uses: actions/upload-artifact@v4
+        with:
+          name: autofix-reports
+          path: reports/autofix_report.json
+          retention-days: 30
+      
+      - name: Create Pull Request
+        if: steps.autofix.outputs.fixes_applied != '0' && github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "[AutoFix] Governance rule violation fixes"
+          title: "[AutoFix] Rule Violation Fixes - ${{ github.run_number }}"
+          body: |
+            ## Automated Governance Fixes
+            
+            This PR contains automatic fixes for governance rule violations detected by the enforcement pipeline.
+            
+            **Workflow Run**: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            **Fixes Applied**: ${{ steps.autofix.outputs.fixes_applied }}
+            
+            ### Please Review
+            - Verify the automatic fixes are correct
+            - Ensure no unintended changes were made
+            - Run tests before merging
+            
+            ---
+            *Generated by [Enforcement Pipeline](.github/workflows/enforcement-pipeline.yml)*
+          branch: auto-fix/${{ github.run_number }}-${{ github.run_attempt }}
+          delete-branch: true
+          labels: |
+            auto-fix
+            governance
+            automated
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # L3: Verify - Final verification after fixes
+  # ─────────────────────────────────────────────────────────────────────────────
+  L3_verify:
+    name: L3 - Verification
+    runs-on: ubuntu-latest
+    needs: [L1_scan, L2_auto_fix]
+    permissions:
+      contents: read
+    if: always() && needs.L1_scan.result == 'success'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      - name: Run quick verification
+        run: |
+          ./scripts/quick-verify.sh --json > reports/verification.json 2>&1 || true
+          
+          echo "=== Verification Results ==="
+          cat reports/verification.json
+        continue-on-error: true
+      
+      - name: Generate summary
+        run: |
+          echo "## Enforcement Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Stage | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| L1 Scan | ${{ needs.L1_scan.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| L2 Auto-Fix | ${{ needs.L2_auto_fix.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Violations | ${{ needs.L1_scan.outputs.violations }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Notify - Send notifications on failure
+  # ─────────────────────────────────────────────────────────────────────────────
+  notify:
+    name: Notify on Failure
+    runs-on: ubuntu-latest
+    needs: [L1_scan, L2_auto_fix, L3_verify]
+    permissions: {}
+    if: failure()
+    
+    steps:
+      - name: Send notification
+        run: |
+          echo "⚠️ Enforcement Pipeline Failed"
+          echo "Run: ${{ github.run_id }}"
+          echo "Commit: ${{ github.sha }}"
+          # In production, send to Slack/PagerDuty/email
+          # curl -X POST -d '{"text":"Enforcement pipeline failed for ${{ github.repository }}"}' $SLACK_WEBHOOK_URL

@@ -1,0 +1,29 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+runtime_module:
+  root: core/orchestrator
+
+  docs:
+    workflow_patterns: core/orchestrator/docs/workflow-patterns.md
+    state_management: core/orchestrator/docs/state-management.md
+    failure_recovery: core/orchestrator/docs/failure-recovery.md
+
+  core:
+    orchestrator_engine: core/orchestrator/src/engine.ts
+    workflow_executor: core/orchestrator/src/executor.ts
+    state_store: core/orchestrator/src/state-store.ts
+
+  schemas:
+    workflow_definition: core/orchestrator/schemas/workflow.json
+
+  tests:
+    orchestration_tests: core/orchestrator/tests/orchestration.test.ts

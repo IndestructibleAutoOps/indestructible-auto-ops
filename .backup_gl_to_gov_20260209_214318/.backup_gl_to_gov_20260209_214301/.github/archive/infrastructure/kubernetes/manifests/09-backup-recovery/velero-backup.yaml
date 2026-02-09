@@ -1,0 +1,34 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: autofix-daily-backup
+  namespace: velero
+spec:
+  schedule: "0 2 * * *"
+  template:
+    includedNamespaces:
+    - autofix
+    - monitoring
+    - logging
+    storageLocation: default
+    volumeSnapshotLocations:
+    - default
+    ttl: 720h0m0s
+---
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: default
+  namespace: velero
+spec:
+  provider: aws
+  objectStorage:
+    bucket: autofix-backups
+    prefix: velero
+  config:
+    region: us-east-1

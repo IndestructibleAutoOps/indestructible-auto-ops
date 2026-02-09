@@ -1,0 +1,130 @@
+# Era-1 Hash Boundary Specification
+# =================================
+# Defines what must be hashed and how canonicalization should work
+
+version: "1.0.0"
+era: 1
+
+# Files to Include in Hashing
+include:
+  artifacts:
+    - "ecosystem/.evidence/step-*.json"
+    - "ecosystem/.evidence/closure/*.json"
+  events:
+    - "ecosystem/.governance/event-stream.jsonl"
+  governance:
+    - "ecosystem/governance/closure/*.yaml"
+    - "ecosystem/governance/hash_boundary.yaml"
+  tools:
+    - "ecosystem/tools/registry.json"
+    - "ecosystem/tools/*.py"
+
+# Files to Exclude from Hashing
+exclude:
+  directories:
+    - "logs/"
+    - "tmp/"
+    - "cache/"
+    - ".git/"
+  files:
+    - "README.md"
+    - "*.log"
+    - "*.backup"
+  patterns:
+    - "*.tmp"
+    - "*.swp"
+    - "*~"
+
+# Canonicalization Configuration
+canonicalization:
+  method: "JCS+LayeredSorting"
+  standard: "RFC 8785"
+  version: "1.0"
+  hash_algorithm: "SHA256"
+
+# Fields to Canonicalize
+canonicalize_fields:
+  artifacts:
+    - "artifact_id"
+    - "step_number"
+    - "timestamp"
+    - "era"
+    - "success"
+    - "metadata"
+    - "execution_time_ms"
+    - "violations_count"
+    - "artifacts_generated"
+  events:
+    - "event_id"
+    - "event_type"
+    - "timestamp"
+    - "era"
+    - "step_number"
+    - "success"
+    - "violations_count"
+  closure:
+    - "closure_id"
+    - "era"
+    - "sealed_at"
+    - "governance_owner"
+    - "evidence_summary"
+    - "closure_criteria"
+
+# Fields to Ignore
+ignore_fields:
+  artifacts:
+    - "comments"
+    - "ui_metadata"
+    - "debug_info"
+  events:
+    - "log_level"
+    - "performance_metrics"
+  governance:
+    - "internal_notes"
+
+# Hash Chain Configuration
+hash_chain:
+  enabled: true
+  link_method: "previous_event_hash"
+  merkle_tree: false
+  depth: 2
+
+# Artifact Layering
+layering:
+  layer_1:
+    name: "core_fields"
+    required: true
+    fields:
+      - "artifact_id"
+      - "timestamp"
+      - "era"
+  layer_2:
+    name: "optional_fields"
+    required: false
+    fields:
+      - "metadata"
+      - "execution_time_ms"
+  layer_3:
+    name: "extension_fields"
+    required: false
+    fields:
+      - "artifacts_generated"
+      - "custom_data"
+
+# Hash Verification Rules
+verification_rules:
+  reproducibility_required: true
+  consistency_check: true
+  chain_integrity_check: true
+  timestamp_validation: true
+
+# Hash Registry
+registry:
+  path: "ecosystem/.governance/hash-registry.json"
+  format: "JSON"
+  include_metadata: true
+
+# Hash Expiration
+expiration:
+  enabled: false
+  era_based: true

@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769567856852",
+      "type": "validation",
+      "timestamp": "2026-01-28T02:37:36.852Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T02:37:36.651Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}

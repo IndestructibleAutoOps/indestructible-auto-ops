@@ -23,9 +23,9 @@
 ### 階段 2: 執行調整 [進行中]
 - [x] 建立目標目錄結構
 - [x] 執行檔案遷移
-  - ✅ semantic_engine → gl-platform/GL90-99-semantic-engine
-  - ✅ .governance → gl-platform/GL90-99-governance
-  - ✅ .github/governance-legacy → gl-platform/governance/archived/legacy
+  - ✅ semantic_engine → gov-platform/GL90-99-semantic-engine
+  - ✅ .governance → gov-platform/GL90-99-governance
+  - ✅ .github/governance-legacy → gov-platform/governance/archived/legacy
 - [x] 新增 GL 標記
   - ✅ 處理 1000 個檔案
   - ✅ 成功標記: 766 個
@@ -90,21 +90,21 @@ def verify_backup(backup_file):
 # 建立目標結構腳本
 
 # 基礎目錄
-mkdir -p gl-platform/gl90-99-meta-specification-layer/governance
-mkdir -p gl-platform/gl90-99-meta-specification-layer/governance/naming-governance
-mkdir -p gl-platform/gl90-99-meta-specification-layer/governance/archived/legacy
-mkdir -p gl-platform/gl90-99-meta-specification-layer/governance/audit-trails
-mkdir -p gl-platform/gl90-99-meta-specification-layer/governance/architecture
-mkdir -p gl-platform/GL30-49-Execution-Layer/engine/governance
-mkdir -p gl-platform/GL30-49-Execution-Layer/engine/governance/GL90-99-semantic-engine
+mkdir -p gov-platform/gl90-99-meta-specification-layer/governance
+mkdir -p gov-platform/gl90-99-meta-specification-layer/governance/naming-governance
+mkdir -p gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy
+mkdir -p gov-platform/gl90-99-meta-specification-layer/governance/audit-trails
+mkdir -p gov-platform/gl90-99-meta-specification-layer/governance/architecture
+mkdir -p gov-platform/GL30-49-Execution-Layer/engine/governance
+mkdir -p gov-platform/GL30-49-Execution-Layer/engine/governance/GL90-99-semantic-engine
 
 # 建立 GL 根錨點
-cp machine-native-ops/.github/governance-legacy/gl-artifacts/GL-ROOT-SEMANTIC-ANCHOR.yaml \
-   gl-platform/gl90-99-meta-specification-layer/governance/
+cp machine-native-ops/.github/governance-legacy/gov-artifacts/GL-ROOT-SEMANTIC-ANCHOR.yaml \
+   gov-platform/gl90-99-meta-specification-layer/governance/
 
 # 建立命名章程
-cp machine-native-ops/.github/governance-legacy/gl-artifacts/gl-unified-naming-charter.yaml \
-   gl-platform/gl90-99-meta-specification-layer/governance/
+cp machine-native-ops/.github/governance-legacy/gov-artifacts/gov-unified-naming-charter.yaml \
+   gov-platform/gl90-99-meta-specification-layer/governance/
 
 echo "目標結構建立完成"
 ```
@@ -126,8 +126,8 @@ PYTHON_MARKER = """# @GL-governed
 # @GL-audit-trail: {audit_path}
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gov-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """
 
@@ -137,8 +137,8 @@ YAML_MARKER = """# @GL-governed
 # @GL-audit-trail: {audit_path}
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gov-platform/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-platform/governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 """
 
@@ -197,7 +197,7 @@ if __name__ == '__main__':
         if file_path.exists():
             layer = item['gl_layer']
             semantic = item['semantic_type']
-            audit_path = f"gl-platform/governance/audit-trails/{layer}-audit.json"
+            audit_path = f"gov-platform/governance/audit-trails/{layer}-audit.json"
             
             if add_markers(file_path, layer, semantic, audit_path):
                 print(f"✓ Added markers to: {item['current_path']}")
@@ -215,9 +215,9 @@ from pathlib import Path
 
 # 遷移映射
 MIGRATION_MAP = {
-    'semantic_engine/': 'gl-platform/gl90-99-meta-specification-layer/governance/semantic-engine/',
-    '.governance/': 'gl-platform/gl90-99-meta-specification-layer/governance/',
-    '.github/governance-legacy/': 'gl-platform/gl90-99-meta-specification-layer/governance/archived/legacy/',
+    'semantic_engine/': 'gov-platform/gl90-99-meta-specification-layer/governance/semantic-engine/',
+    '.governance/': 'gov-platform/gl90-99-meta-specification-layer/governance/',
+    '.github/governance-legacy/': 'gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/',
 }
 
 def migrate_file(file_path, target_path):
@@ -240,7 +240,7 @@ def migrate_all():
     # 遷移 semantic_engine
     semantic_engine_src = Path('/workspace/machine-native-ops/semantic_engine')
     if semantic_engine_src.exists():
-        semantic_engine_dst = Path('/workspace/machine-native-ops/gl-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine')
+        semantic_engine_dst = Path('/workspace/machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine')
         if not semantic_engine_dst.exists():
             shutil.move(str(semantic_engine_src), str(semantic_engine_dst))
             print(f"✓ Migrated semantic_engine directory")
@@ -248,7 +248,7 @@ def migrate_all():
     # 遷移 .governance
     governance_src = Path('/workspace/machine-native-ops/.governance')
     if governance_src.exists():
-        governance_dst = Path('/workspace/machine-native-ops/gl-platform/gl90-99-meta-specification-layer/governance')
+        governance_dst = Path('/workspace/machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance')
         if not governance_dst.exists():
             shutil.move(str(governance_src), str(governance_dst))
             print(f"✓ Migrated .governance directory")
@@ -256,7 +256,7 @@ def migrate_all():
     # 遷移 governance-legacy
     legacy_src = Path('/workspace/machine-native-ops/.github/governance-legacy')
     if legacy_src.exists():
-        legacy_dst = Path('/workspace/machine-native-oss/gl-platform/gl90-99-meta-specification-layer/governance/archived/legacy')
+        legacy_dst = Path('/workspace/machine-native-oss/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy')
         if not legacy_dst.exists():
             shutil.move(str(legacy_src), str(legacy_dst))
             print(f"✓ Migrated governance-legacy directory")
@@ -276,8 +276,8 @@ from pathlib import Path
 
 # 引用映射
 IMPORT_MAP = {
-    'semantic_engine': 'gl-platform.governance.semantic_engine',
-    'governance': 'gl-platform.governance',
+    'semantic_engine': 'gov-platform.governance.semantic_engine',
+    'governance': 'gov-platform.governance',
 }
 
 # 正則模式

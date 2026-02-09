@@ -1,0 +1,300 @@
+# NG00000: 命名空間治理憲章
+# Namespace Governance Charter
+
+apiVersion: ng.governance/v3
+kind: Charter
+metadata:
+  ng_code: NG00000
+  name: namespace-governance-charter
+  version: "3.0.0"
+  era_coverage: [era-1, era-2, era-3, cross-era]
+  status: constitutional
+  created_at: "2026-02-06"
+  updated_at: "2026-02-06"
+
+spec:
+  charter:
+    title: "NG 命名空間治理憲章"
+    purpose: "建立統一的命名空間治理閉環體系"
+    scope: "涵蓋 Era-1（代碼層）、Era-2（微碼層）、Era-3（無碼層）"
+    
+  core_principles:
+    uniqueness:
+      description: "所有命名空間必須唯一"
+      enforcement: "STRICT"
+      validation: "NG00301"
+    
+    hierarchy:
+      description: "支持多層級命名空間"
+      enforcement: "MANDATORY"
+      validation: "NG00302"
+    
+    consistency:
+      description: "跨Era命名空間一致性"
+      enforcement: "STRICT"
+      validation: "NG90201"
+    
+    traceability:
+      description: "完整命名空間變更追溯"
+      enforcement: "MANDATORY"
+      validation: "NG00701"
+    
+    closure:
+      description: "命名空間治理閉環"
+      enforcement: "STRICT"
+      validation: "NG90001"
+  
+  encoding_system:
+    format: "NG{層級}{領域}{子類}{序列}"
+    components:
+      prefix: "NG"
+      level: "00~99"
+      domain: "0~9"
+      subclass: "0~9"
+      sequence: "00~99"
+    
+    examples:
+      - code: "NG00000"
+        description: "命名空間治理憲章"
+      - code: "NG00101"
+        description: "命名空間標識規範"
+      - code: "NG10203"
+        description: "Era-1 模組命名空間規範 #3"
+  
+  era_mapping:
+    ng000_099:
+      era: "Meta"
+      description: "元框架和基礎規範"
+      focus: "治理憲章、標識、生命週期"
+    
+    ng100_299:
+      era: "Era-1"
+      description: "代碼層命名空間"
+      focus: "包、模組、類、函數"
+    
+    ng300_599:
+      era: "Era-2"
+      description: "微碼層命名空間"
+      focus: "服務、API、事件流"
+    
+    ng600_899:
+      era: "Era-3"
+      description: "無碼層命名空間"
+      focus: "意圖、語義、神經網絡"
+    
+    ng900_999:
+      era: "Cross-Era"
+      description: "跨層級治理"
+      focus: "映射、轉換、一致性"
+  
+  lifecycle_stages:
+    creation:
+      stage: "創建"
+      standards: ["NG00201"]
+      validations: ["NG00301", "NG00401"]
+      registrations: ["NG00101"]
+    
+    active:
+      stage: "活躍"
+      monitoring: ["NG00701"]
+      optimization: ["NG90501"]
+      maintenance: ["NG00801"]
+    
+    migration:
+      stage: "遷移"
+      standards: ["NG00901"]
+      mappings: ["NG90101"]
+      validations: ["NG90201"]
+    
+    archival:
+      stage: "歸檔"
+      archive: ["NG90901"]
+      destruction: ["NG91001"]
+      audit: ["NG00701"]
+  
+  governance_closure:
+    description: "命名空間治理閉環"
+    flow:
+      - step: 1
+        action: "註冊"
+        standard: "NG00101"
+      - step: 2
+        action: "驗證"
+        standard: "NG00301"
+      - step: 3
+        action: "監控"
+        standard: "NG00701"
+      - step: 4
+        action: "優化"
+        standard: "NG90501"
+      - step: 5
+        action: "遷移"
+        standard: "NG00901"
+      - step: 6
+        action: "歸檔"
+        standard: "NG90901"
+      - step: 7
+        action: "閉環回註冊"
+        standard: "NG00101"
+  
+  domain_classification:
+    domain_0:
+      name: "元框架"
+      description: "治理憲章、基礎規範"
+      range: "NG00000~NG00999"
+    
+    domain_1:
+      name: "標識"
+      description: "命名空間標識和引用"
+      range: "NG01000~NG01999"
+    
+    domain_2:
+      name: "生命週期"
+      description: "創建、遷移、歸檔"
+      range: "NG02000~NG02999"
+    
+    domain_3:
+      name: "繼承"
+      description: "命名空間繼承和層級"
+      range: "NG03000~NG03999"
+    
+    domain_4:
+      name: "權限"
+      description: "訪問控制和權限模型"
+      range: "NG04000~NG04999"
+    
+    domain_5:
+      name: "版本"
+      description: "版本控制和演進"
+      range: "NG05000~NG05999"
+    
+    domain_6:
+      name: "衝突"
+      description: "衝突檢測和解決"
+      range: "NG06000~NG06999"
+    
+    domain_7:
+      name: "審計"
+      description: "審計追蹤和監控"
+      range: "NG07000~NG07999"
+    
+    domain_8:
+      name: "映射"
+      description: "Era 間映射轉換"
+      range: "NG08000~NG08999"
+    
+    domain_9:
+      name: "跨域"
+      description: "跨命名空間協作"
+      range: "NG09000~NG09999"
+  
+  implementation_strategy:
+    batch_1:
+      scope: "NG000~099"
+      focus: "元框架建立"
+      deliverables:
+        - "治理憲章"
+        - "標識規範"
+        - "生命週期規範"
+        - "註冊系統"
+    
+    batch_2:
+      scope: "NG100~299"
+      focus: "Era-1 代碼層"
+      deliverables:
+        - "包命名空間規範"
+        - "模組命名空間規範"
+        - "類命名空間規範"
+        - "函數命名空間規範"
+    
+    batch_3:
+      scope: "NG300~599"
+      focus: "Era-2 微碼層"
+      deliverables:
+        - "服務命名空間規範"
+        - "API 命名空間規範"
+        - "事件命名空間規範"
+        - "數據流命名空間規範"
+    
+    batch_4:
+      scope: "NG600~899"
+      focus: "Era-3 無碼層"
+      deliverables:
+        - "意圖命名空間規範"
+        - "語義命名空間規範"
+        - "神經網絡命名空間規範"
+        - "概念映射規範"
+    
+    batch_5:
+      scope: "NG900~999"
+      focus: "跨 Era 閉環"
+      deliverables:
+        - "Era 映射規則"
+        - "轉換引擎"
+        - "一致性保證"
+        - "閉環完整性"
+  
+  gl_to_ng_transition:
+    description: "從 GL 到 NG 的語義替換"
+    mappings:
+      - from: "GL Layer"
+        to: "NG Era"
+        rationale: "從層級概念到時代概念"
+      
+      - from: "GL Governance"
+        to: "NG Namespace Governance"
+        rationale: "從通用治理到命名空間專項治理"
+      
+      - from: "GL Compliance"
+        to: "NG Closure"
+        rationale: "從合規性到閉環性"
+      
+      - from: "GL Boundary"
+        to: "NG Scope"
+        rationale: "從邊界到範圍"
+    
+    coexistence_strategy:
+      - "NG 作為 GL 的命名空間治理子系統"
+      - "GL 繼續處理整體治理"
+      - "NG 專注命名空間治理"
+      - "逐步遷移 GL 命名空間功能到 NG"
+  
+  quality_metrics:
+    uniqueness_score:
+      description: "命名空間唯一性評分"
+      target: ">= 99.9%"
+      measurement: "NG90502"
+    
+    consistency_score:
+      description: "跨 Era 一致性評分"
+      target: ">= 95%"
+      measurement: "NG90202"
+    
+    utilization_rate:
+      description: "命名空間使用率"
+      target: "60-80%"
+      measurement: "NG90503"
+    
+    conflict_rate:
+      description: "命名空間衝突率"
+      target: "< 0.1%"
+      measurement: "NG06001"
+    
+    lifecycle_health:
+      description: "生命週期健康度"
+      target: ">= 90%"
+      measurement: "NG02001"
+
+authorization:
+  approved_by: "NG Governance Committee"
+  approval_date: "2026-02-06"
+  effective_date: "2026-02-06"
+  next_review: "2027-02-06"
+  
+  granted_authorities:
+    - "定義命名空間治理規範"
+    - "管理命名空間生命週期"
+    - "執行命名空間驗證和審計"
+    - "維護命名空間註冊表"
+    - "解決命名空間衝突"
+    - "支援跨 Era 命名空間映射"

@@ -1,0 +1,214 @@
+# @GL-governed
+# @GL-layer: common
+# @GL-semantic: docker-compose
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+version: '3.8'
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+services:
+  # GL Execution Engine
+  gl-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gl-engine
+    ports:
+      - "8080:8080"
+    environment:
+      - PYTHONPATH=/app
+      - GL_ENGINE_LOG_LEVEL=INFO
+      - GL_ENGINE_LOG_DIR=/app/logs
+      - GL_ENGINE_REPORT_DIR=/app/reports
+      - GL_ENGINE_ARTIFACT_DIR=/app/artifacts
+    volumes:
+      - ./scripts:/app/scripts
+      - ./tests:/app/tests
+      - ./gl:/app/gl
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+      - ./artifacts:/app/artifacts
+    networks:
+      - gl-network
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run
+    healthcheck:
+      test: ["CMD", "python", "-c", "from scripts.gov_engine.gov_executor import GLLayerExecutor; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+
+  # GL Validator Service
+  gl-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gl-validator
+    command: ["python", "-m", "scripts.gov_engine.gov_validator"]
+    environment:
+      - PYTHONPATH=/app
+      - GL_ENGINE_LOG_LEVEL=INFO
+      - GL_ENGINE_LOG_DIR=/app/logs
+    volumes:
+      - ./scripts:/app/scripts
+      - ./gl:/app/gl
+      - ./logs:/app/logs
+    networks:
+      - gl-network
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run
+    depends_on:
+      - gl-engine
+    restart: unless-stopped
+
+  # GL Reporter Service
+  gl-reporter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gl-reporter
+    command: ["python", "-m", "scripts.gov_engine.gov_reporter"]
+    environment:
+      - PYTHONPATH=/app
+      - GL_ENGINE_LOG_LEVEL=INFO
+      - GL_ENGINE_LOG_DIR=/app/logs
+      - GL_ENGINE_REPORT_DIR=/app/reports
+    volumes:
+      - ./scripts:/app/scripts
+      - ./gl:/app/gl
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    networks:
+      - gl-network
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run
+    depends_on:
+      - gl-engine
+    restart: unless-stopped
+
+  # Database (PostgreSQL for metadata)
+  postgres:
+    image: postgres:15-alpine
+    container_name: gl-postgres
+    environment:
+      - POSTGRES_DB=gov_engine
+      - POSTGRES_USER=gluser
+      - POSTGRES_PASSWORD=glpassword
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - gl-network
+    ports:
+      - "5432:5432"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run/postgresql
+      - /var/run/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gluser"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: gl-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - gl-network
+    ports:
+      - "6379:6379"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Monitoring (Prometheus)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: gl-prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    networks:
+      - gl-network
+    ports:
+      - "9090:9090"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+
+  # Monitoring (Grafana)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: gl-grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - gl-network
+    ports:
+      - "3000:3000"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+networks:
+  gl-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:
+  prometheus-data:
+  grafana-data:

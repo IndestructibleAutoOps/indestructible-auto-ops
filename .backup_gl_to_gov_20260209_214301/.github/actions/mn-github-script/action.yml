@@ -1,0 +1,525 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-github-script
+# Replaces: actions/github-script@v7
+# Description: Execute JavaScript with GitHub API access
+# Version: 1.0.0
+
+name: 'MN GitHub Script'
+description: 'MachineNativeOps official GitHub Script action - run JavaScript with Octokit'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'terminal'
+  color: 'blue'
+
+inputs:
+  script:
+    description: 'The JavaScript code to execute'
+    required: true
+  github-token:
+    description: 'GitHub token for API authentication'
+    required: false
+    default: ${{ github.token }}
+  debug:
+    description: 'Enable debug logging'
+    required: false
+    default: 'false'
+  user-agent:
+    description: 'Custom user agent for API requests'
+    required: false
+    default: 'mn-github-script'
+  previews:
+    description: 'Comma-separated list of API preview features to enable'
+    required: false
+    default: ''
+  result-encoding:
+    description: 'Encoding for the result output (string or json)'
+    required: false
+    default: 'json'
+  retries:
+    description: 'Number of retries for failed API requests'
+    required: false
+    default: '3'
+  retry-exempt-status-codes:
+    description: 'Comma-separated list of status codes that should not be retried'
+    required: false
+    default: '400,401,403,404,422'
+
+outputs:
+  result:
+    description: 'The return value of the script'
+    value: ${{ steps.script.outputs.result }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js Environment
+      shell: bash
+      run: |
+        # Ensure Node.js is available
+        if ! command -v node &> /dev/null; then
+          echo "::error::Node.js is required but not found"
+          exit 1
+        fi
+
+        echo "Node.js version: $(node --version)"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+
+    - name: Create Script Runner
+      id: prepare
+      shell: bash
+      run: |
+        # Create temporary directory for script execution
+        SCRIPT_DIR=$(mktemp -d)
+        SCRIPT_FILE="$SCRIPT_DIR/script.mjs"
+        RESULT_FILE="$SCRIPT_DIR/result.json"
+
+        echo "script_dir=$SCRIPT_DIR" >> $GITHUB_OUTPUT
+        echo "script_file=$SCRIPT_FILE" >> $GITHUB_OUTPUT
+        echo "result_file=$RESULT_FILE" >> $GITHUB_OUTPUT
+
+    - name: Generate Script Wrapper
+      shell: bash
+      env:
+        USER_SCRIPT: ${{ inputs.script }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        DEBUG_MODE: ${{ inputs.debug }}
+        RESULT_ENCODING: ${{ inputs.result-encoding }}
+        RETRIES: ${{ inputs.retries }}
+      run: |
+        SCRIPT_FILE="${{ steps.prepare.outputs.script_file }}"
+        RESULT_FILE="${{ steps.prepare.outputs.result_file }}"
+
+        cat > "$SCRIPT_FILE" << 'SCRIPT_WRAPPER_EOF'
+        import https from 'https';
+        import fs from 'fs';
+
+        // Simple GitHub API client (Octokit-like interface)
+        class GitHubClient {
+          constructor(token, options = {}) {
+            this.token = token;
+            this.baseUrl = 'api.github.com';
+            this.userAgent = options.userAgent || 'mn-github-script';
+            this.retries = options.retries || 3;
+            this.debug = options.debug || false;
+          }
+
+          async request(method, path, data = null) {
+            return new Promise((resolve, reject) => {
+              const options = {
+                hostname: this.baseUrl,
+                path: path,
+                method: method,
+                headers: {
+                  'Authorization': `token ${this.token}`,
+                  'User-Agent': this.userAgent,
+                  'Accept': 'application/vnd.github+json',
+                  'X-GitHub-Api-Version': '2022-11-28'
+                }
+              };
+
+              if (data) {
+                options.headers['Content-Type'] = 'application/json';
+              }
+
+              if (this.debug) {
+                console.log(`[DEBUG] ${method} ${path}`);
+              }
+
+              const req = https.request(options, (res) => {
+                let body = '';
+                res.on('data', chunk => body += chunk);
+                res.on('end', () => {
+                  try {
+                    const parsed = body ? JSON.parse(body) : {};
+                    if (res.statusCode >= 400) {
+                      reject({ status: res.statusCode, message: parsed.message || body });
+                    } else {
+                      resolve({ status: res.statusCode, data: parsed, headers: res.headers });
+                    }
+                  } catch (e) {
+                    resolve({ status: res.statusCode, data: body, headers: res.headers });
+                  }
+                });
+              });
+
+              req.on('error', reject);
+
+              if (data) {
+                req.write(JSON.stringify(data));
+              }
+
+              req.end();
+            });
+          }
+
+          // REST API methods
+          get rest() {
+            const client = this;
+            return {
+              issues: {
+                async get(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/issues/${params.issue_number}`);
+                },
+                async create(params) {
+                  const { owner, repo, ...body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/issues`, body);
+                },
+                async update(params) {
+                  const { owner, repo, issue_number, ...body } = params;
+                  return client.request('PATCH', `/repos/${owner}/${repo}/issues/${issue_number}`, body);
+                },
+                async createComment(params) {
+                  const { owner, repo, issue_number, body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/issues/${issue_number}/comments`, { body });
+                },
+                async listComments(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/issues/${params.issue_number}/comments`);
+                },
+                async addLabels(params) {
+                  const { owner, repo, issue_number, labels } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/issues/${issue_number}/labels`, { labels });
+                },
+                async removeLabel(params) {
+                  return client.request('DELETE', `/repos/${params.owner}/${params.repo}/issues/${params.issue_number}/labels/${params.name}`);
+                }
+              },
+              pulls: {
+                async get(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/pulls/${params.pull_number}`);
+                },
+                async create(params) {
+                  const { owner, repo, ...body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/pulls`, body);
+                },
+                async update(params) {
+                  const { owner, repo, pull_number, ...body } = params;
+                  return client.request('PATCH', `/repos/${owner}/${repo}/pulls/${pull_number}`, body);
+                },
+                async listFiles(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/pulls/${params.pull_number}/files`);
+                },
+                async createReview(params) {
+                  const { owner, repo, pull_number, ...body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/pulls/${pull_number}/reviews`, body);
+                },
+                async merge(params) {
+                  const { owner, repo, pull_number, ...body } = params;
+                  return client.request('PUT', `/repos/${owner}/${repo}/pulls/${pull_number}/merge`, body);
+                }
+              },
+              repos: {
+                async get(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}`);
+                },
+                async getContent(params) {
+                  let path = `/repos/${params.owner}/${params.repo}/contents/${params.path}`;
+                  if (params.ref) path += `?ref=${params.ref}`;
+                  return client.request('GET', path);
+                },
+                async createOrUpdateFileContents(params) {
+                  const { owner, repo, path, ...body } = params;
+                  return client.request('PUT', `/repos/${owner}/${repo}/contents/${path}`, body);
+                },
+                async listCommits(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/commits`);
+                },
+                async getBranch(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/branches/${params.branch}`);
+                },
+                async createRelease(params) {
+                  const { owner, repo, ...body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/releases`, body);
+                }
+              },
+              actions: {
+                async listWorkflowRuns(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/actions/runs`);
+                },
+                async getWorkflowRun(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/actions/runs/${params.run_id}`);
+                },
+                async listArtifacts(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/actions/runs/${params.run_id}/artifacts`);
+                },
+                async createWorkflowDispatch(params) {
+                  const { owner, repo, workflow_id, ref, inputs } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/actions/workflows/${workflow_id}/dispatches`, { ref, inputs });
+                }
+              },
+              checks: {
+                async create(params) {
+                  const { owner, repo, ...body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/check-runs`, body);
+                },
+                async update(params) {
+                  const { owner, repo, check_run_id, ...body } = params;
+                  return client.request('PATCH', `/repos/${owner}/${repo}/check-runs/${check_run_id}`, body);
+                }
+              },
+              git: {
+                async getRef(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/git/ref/${params.ref}`);
+                },
+                async createRef(params) {
+                  const { owner, repo, ...body } = params;
+                  return client.request('POST', `/repos/${owner}/${repo}/git/refs`, body);
+                },
+                async getCommit(params) {
+                  return client.request('GET', `/repos/${params.owner}/${params.repo}/git/commits/${params.commit_sha}`);
+                }
+              },
+              search: {
+                async issuesAndPullRequests(params) {
+                  return client.request('GET', `/search/issues?q=${encodeURIComponent(params.q)}`);
+                },
+                async code(params) {
+                  return client.request('GET', `/search/code?q=${encodeURIComponent(params.q)}`);
+                }
+              }
+            };
+          }
+
+          // GraphQL support
+          async graphql(query, variables = {}) {
+            const response = await this.request('POST', '/graphql', { query, variables });
+            return response.data;
+          }
+        }
+
+        // Core utilities
+        const core = {
+          getInput: (name) => process.env[`INPUT_${name.toUpperCase().replace(/-/g, '_')}`] || '',
+          setOutput: (name, value) => {
+            const outputFile = process.env.GITHUB_OUTPUT;
+            if (outputFile) {
+              fs.appendFileSync(outputFile, `${name}=${typeof value === 'object' ? JSON.stringify(value) : value}\n`);
+            }
+          },
+          setFailed: (message) => {
+            console.error(`::error::${message}`);
+            process.exitCode = 1;
+          },
+          info: (message) => console.log(message),
+          debug: (message) => console.log(`::debug::${message}`),
+          warning: (message) => console.log(`::warning::${message}`),
+          error: (message) => console.log(`::error::${message}`),
+          startGroup: (name) => console.log(`::group::${name}`),
+          endGroup: () => console.log('::endgroup::'),
+          exportVariable: (name, value) => {
+            const envFile = process.env.GITHUB_ENV;
+            if (envFile) {
+              fs.appendFileSync(envFile, `${name}=${value}\n`);
+            }
+          }
+        };
+
+        // Context object
+        const context = {
+          eventName: process.env.GITHUB_EVENT_NAME,
+          sha: process.env.GITHUB_SHA,
+          ref: process.env.GITHUB_REF,
+          workflow: process.env.GITHUB_WORKFLOW,
+          action: process.env.GITHUB_ACTION,
+          actor: process.env.GITHUB_ACTOR,
+          job: process.env.GITHUB_JOB,
+          runNumber: parseInt(process.env.GITHUB_RUN_NUMBER || '0'),
+          runId: parseInt(process.env.GITHUB_RUN_ID || '0'),
+          apiUrl: process.env.GITHUB_API_URL || 'https://api.github.com',
+          serverUrl: process.env.GITHUB_SERVER_URL || 'https://github.com',
+          graphqlUrl: process.env.GITHUB_GRAPHQL_URL || 'https://api.github.com/graphql',
+          get repo() {
+            const [owner, repo] = (process.env.GITHUB_REPOSITORY || '/').split('/');
+            return { owner, repo };
+          },
+          get issue() {
+            // Parse from event payload if available
+            const eventPath = process.env.GITHUB_EVENT_PATH;
+            if (eventPath && fs.existsSync(eventPath)) {
+              const event = JSON.parse(fs.readFileSync(eventPath, 'utf8'));
+              if (event.issue) {
+                return { owner: context.repo.owner, repo: context.repo.repo, number: event.issue.number };
+              }
+              if (event.pull_request) {
+                return { owner: context.repo.owner, repo: context.repo.repo, number: event.pull_request.number };
+              }
+            }
+            return { owner: context.repo.owner, repo: context.repo.repo, number: 0 };
+          },
+          get payload() {
+            const eventPath = process.env.GITHUB_EVENT_PATH;
+            if (eventPath && fs.existsSync(eventPath)) {
+              return JSON.parse(fs.readFileSync(eventPath, 'utf8'));
+            }
+            return {};
+          }
+        };
+
+        // IO utilities
+        const io = {
+          cp: async (source, dest, options = {}) => {
+            const { execSync } = await import('child_process');
+            const flags = options.recursive ? '-r' : '';
+            execSync(`cp ${flags} "${source}" "${dest}"`);
+          },
+          mv: async (source, dest) => {
+            const { execSync } = await import('child_process');
+            execSync(`mv "${source}" "${dest}"`);
+          },
+          rmRF: async (path) => {
+            const { execSync } = await import('child_process');
+            execSync(`rm -rf "${path}"`);
+          },
+          mkdirP: async (path) => {
+            fs.mkdirSync(path, { recursive: true });
+          },
+          which: async (tool) => {
+            const { execSync } = await import('child_process');
+            try {
+              return execSync(`which "${tool}"`).toString().trim();
+            } catch {
+              return null;
+            }
+          }
+        };
+
+        // Exec utilities
+        const exec = {
+          exec: async (command, args = [], options = {}) => {
+            const { spawn } = await import('child_process');
+            return new Promise((resolve, reject) => {
+              const proc = spawn(command, args, {
+                cwd: options.cwd,
+                env: { ...process.env, ...options.env },
+                stdio: options.silent ? 'pipe' : 'inherit'
+              });
+
+              let stdout = '';
+              let stderr = '';
+
+              if (proc.stdout) proc.stdout.on('data', d => stdout += d);
+              if (proc.stderr) proc.stderr.on('data', d => stderr += d);
+
+              proc.on('close', code => {
+                if (options.listeners?.stdout) options.listeners.stdout(Buffer.from(stdout));
+                if (options.listeners?.stderr) options.listeners.stderr(Buffer.from(stderr));
+                resolve(code);
+              });
+              proc.on('error', reject);
+            });
+          },
+          getExecOutput: async (command, args = [], options = {}) => {
+            const { execSync } = await import('child_process');
+            try {
+              const stdout = execSync(`${command} ${args.join(' ')}`, {
+                cwd: options.cwd,
+                env: { ...process.env, ...options.env },
+                encoding: 'utf8'
+              });
+              return { exitCode: 0, stdout, stderr: '' };
+            } catch (e) {
+              return { exitCode: e.status || 1, stdout: '', stderr: e.message };
+            }
+          }
+        };
+
+        // Initialize GitHub client
+        const token = process.env.GITHUB_TOKEN;
+        const debug = process.env.DEBUG_MODE === 'true';
+        const retries = parseInt(process.env.RETRIES || '3');
+
+        const github = new GitHubClient(token, { debug, retries });
+
+        // Execute user script
+        async function main() {
+          try {
+            const userScript = process.env.USER_SCRIPT;
+            const resultEncoding = process.env.RESULT_ENCODING || 'json';
+            const resultFile = '${RESULT_FILE}';
+
+            // Create async function from user script
+            const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+            const scriptFn = new AsyncFunction('github', 'context', 'core', 'io', 'exec', 'require', userScript);
+
+            // Execute script
+            const result = await scriptFn(github, context, core, io, exec, (m) => import(m));
+
+            // Handle result
+            let outputResult;
+            if (resultEncoding === 'json') {
+              outputResult = JSON.stringify(result);
+            } else {
+              outputResult = String(result);
+            }
+
+            // Write result to file
+            fs.writeFileSync(resultFile, outputResult);
+
+            // Set output
+            core.setOutput('result', outputResult);
+
+            if (debug) {
+              console.log('[DEBUG] Script result:', outputResult);
+            }
+
+          } catch (error) {
+            core.setFailed(error.message);
+            console.error(error);
+            process.exit(1);
+          }
+        }
+
+        main();
+        SCRIPT_WRAPPER_EOF
+
+    - name: Execute Script
+      id: script
+      shell: bash
+      env:
+        USER_SCRIPT: ${{ inputs.script }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        DEBUG_MODE: ${{ inputs.debug }}
+        RESULT_ENCODING: ${{ inputs.result-encoding }}
+        RETRIES: ${{ inputs.retries }}
+      run: |
+        SCRIPT_FILE="${{ steps.prepare.outputs.script_file }}"
+        RESULT_FILE="${{ steps.prepare.outputs.result_file }}"
+
+        echo "Executing GitHub Script..."
+
+        # Run the script
+        node "$SCRIPT_FILE"
+
+        # Read result
+        if [[ -f "$RESULT_FILE" ]]; then
+          RESULT=$(cat "$RESULT_FILE")
+          echo "result=$RESULT" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Cleanup
+      if: always()
+      shell: bash
+      run: |
+        SCRIPT_DIR="${{ steps.prepare.outputs.script_dir }}"
+        if [[ -n "$SCRIPT_DIR" && -d "$SCRIPT_DIR" ]]; then
+          rm -rf "$SCRIPT_DIR"
+        fi
+
+    - name: Display Summary
+      if: inputs.debug == 'true'
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-GITHUB-SCRIPT SUMMARY"
+        echo "=========================================="
+        echo "Result Encoding: ${{ inputs.result-encoding }}"
+        echo "Debug Mode: ${{ inputs.debug }}"
+        echo "=========================================="

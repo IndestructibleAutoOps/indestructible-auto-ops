@@ -1,0 +1,15 @@
+global_gates:
+  - id: binding_exists
+    description: "Each governance module must provide governance-binding.yaml"
+
+  - id: semantic_attachment
+    description: "Module must attach to the semantic-tree"
+
+  - id: hashboundaryvalid
+    description: "Artifacts must comply with the defined hash boundary"
+
+  - id: evidence_integrity
+    description: "Evidence must be complete and integrity-protected"
+
+  - id: replay_determinism
+    description: "Replay must produce identical execution traces"

@@ -2410,7 +2410,7 @@ engine/github-repository-analyzer/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-engine/gl-gate/package-lock.json:
+engine/gov-gate/package-lock.json:
   npm_packages:
     - "node_modules/@babel/code-frame":
     - "node_modules/@babel/compat-data":
@@ -3752,7 +3752,7 @@ file-organizer-system/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/package-lock.json:
+gov-execution-runtime/engine/package-lock.json:
   npm_packages:
     - "node_modules/@babel/code-frame":
     - "node_modules/@babel/compat-data":
@@ -4149,7 +4149,7 @@ gl-execution-runtime/engine/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/semantic-search-system/package-lock.json:
+gov-execution-runtime/engine/semantic-search-system/package-lock.json:
   npm_packages:
     - "node_modules/@cspotcode/source-map-support":
     - "node_modules/@jridgewell/resolve-uri":
@@ -4278,7 +4278,7 @@ gl-execution-runtime/engine/semantic-search-system/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/aep-engine-app/package-lock.json:
+gov-execution-runtime/engine/aep-engine-app/package-lock.json:
   npm_packages:
     - "node_modules/@0no-co/graphql.web":
     - "node_modules/@alloc/quick-lru":
@@ -6044,7 +6044,7 @@ gl-execution-runtime/engine/aep-engine-app/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/github-repository-analyzer/package-lock.json:
+gov-execution-runtime/engine/github-repository-analyzer/package-lock.json:
   npm_packages:
     - "node_modules/@cspotcode/source-map-support":
     - "node_modules/@jridgewell/resolve-uri":
@@ -6161,7 +6161,7 @@ gl-execution-runtime/engine/github-repository-analyzer/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/gl-gate/package-lock.json:
+gov-execution-runtime/engine/gov-gate/package-lock.json:
   npm_packages:
     - "node_modules/@babel/code-frame":
     - "node_modules/@babel/compat-data":
@@ -6694,7 +6694,7 @@ gl-execution-runtime/engine/gl-gate/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/tools-legacy/cloudflare/workers/package-lock.json:
+gov-execution-runtime/engine/tools-legacy/cloudflare/workers/package-lock.json:
   npm_packages:
     - "node_modules/@cloudflare/kv-asset-handler":
     - "node_modules/@cloudflare/unenv-preset":
@@ -7101,7 +7101,7 @@ gl-execution-runtime/engine/tools-legacy/cloudflare/workers/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/engine/tools-legacy/cli/package-lock.json:
+gov-execution-runtime/engine/tools-legacy/cli/package-lock.json:
   npm_packages:
     - "node_modules/@cspotcode/source-map-support":
     - "node_modules/@esbuild/aix-ppc64":
@@ -7256,7 +7256,7 @@ gl-execution-runtime/engine/tools-legacy/cli/package-lock.json:
     - [EXTERNAL_URL_REMOVED]
     - [EXTERNAL_URL_REMOVED]
 
-gl-execution-runtime/file-organizer-system/package-lock.json:
+gov-execution-runtime/file-organizer-system/package-lock.json:
   npm_packages:
     - "node_modules/@cspotcode/source-map-support":
     - "node_modules/@cspotcode/source-map-support/node_modules/@jridgewell/trace-mapping":
@@ -7582,7 +7582,7 @@ engine/tools-legacy/fhs-integration/requirements.txt:
   pip_packages:
     - PyYAML>=
 
-gl-execution-runtime/engine/tools-legacy/requirements.txt:
+gov-execution-runtime/engine/tools-legacy/requirements.txt:
   pip_packages:
     - PyYAML>=
     - jsonschema>=
@@ -7596,7 +7596,7 @@ gl-execution-runtime/engine/tools-legacy/requirements.txt:
     - black>=
     - flake8>=
 
-gl-execution-runtime/engine/tools-legacy/quantum-alignment-engine/requirements.txt:
+gov-execution-runtime/engine/tools-legacy/quantum-alignment-engine/requirements.txt:
   pip_packages:
     - numpy>=
     - scipy>=
@@ -7612,11 +7612,11 @@ gl-execution-runtime/engine/tools-legacy/quantum-alignment-engine/requirements.t
     - pytest>=
     - pytest-cov>=
 
-gl-execution-runtime/engine/tools-legacy/fhs-integration/requirements.txt:
+gov-execution-runtime/engine/tools-legacy/fhs-integration/requirements.txt:
   pip_packages:
     - PyYAML>=
 
-gl-semantic-core-platform/requirements.txt:
+gov-semantic-core-platform/requirements.txt:
   pip_packages:
     - numpy>=
     - scipy>=
@@ -7649,7 +7649,7 @@ gl-semantic-core-platform/requirements.txt:
     - aiohttp>=
     - python-multipart>=
 
-.github/workflows/gl-compliance-issues.yml:
+.github/workflows/gov-compliance-issues.yml:
   github_actions:
     - uses: actions/checkout@v6
     - uses: actions/github-script@v8
@@ -7674,7 +7674,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/checkout@v6
     - uses: komorebitech/read-files-action@v1
 
-.github/workflows/gl-validation.yml:
+.github/workflows/gov-validation.yml:
   github_actions:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v6
@@ -7759,7 +7759,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/checkout@v6
     - uses: alstr/todo-to-issue-action@v5
 
-.github/workflows/gl-unified-ci-fixed.yml:
+.github/workflows/gov-unified-ci-fixed.yml:
   github_actions:
     - uses: actions/checkout@v4
     - uses: actions/checkout@v4
@@ -7847,7 +7847,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/checkout@v4
     - uses: actions/github-script@v8
 
-.github/workflows/gl-cluster-security-scan.yml:
+.github/workflows/gov-cluster-security-scan.yml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: helm/kind-action@99576bfa6ddf9a8e612d83b513da5a75875caced
@@ -7865,7 +7865,7 @@ gl-semantic-core-platform/requirements.txt:
   github_actions:
     - uses: actions/checkout@v6
 
-.github/workflows/gl-layer-validation.yml:
+.github/workflows/gov-layer-validation.yml:
   github_actions:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -7883,7 +7883,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/upload-artifact@v6
     - uses: actions/github-script@v8
 
-.github/workflows/gl-supply-chain-security.yml:
+.github/workflows/gov-supply-chain-security.yml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
@@ -7924,7 +7924,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/upload-artifact@v6
     - uses: actions/upload-artifact@v6
 
-.github/workflows/gl-naming-governance.yml:
+.github/workflows/gov-naming-governance.yml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
@@ -8041,7 +8041,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: nodejs/is-my-node-vulnerable@v1
     - uses: actions/attest-build-provenance@v3
 
-.github/workflows/gl-artifacts-generator.yml:
+.github/workflows/gov-artifacts-generator.yml:
   github_actions:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -8145,7 +8145,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/upload-artifact@v6
     - uses: actions/checkout@v6
 
-.github/workflows/gl-unified-validator.yml:
+.github/workflows/gov-unified-validator.yml:
   github_actions:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -8206,7 +8206,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/upload-artifact@v6
     - uses: actions/upload-artifact@v6
 
-.github/workflows/gl-workflow-auto-healer.yml:
+.github/workflows/gov-workflow-auto-healer.yml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
@@ -8298,7 +8298,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/checkout@v6
     - uses: lirantal/is-website-vulnerable@1
 
-.github/workflows/gl-compliance-check.yml:
+.github/workflows/gov-compliance-check.yml:
   github_actions:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -8314,7 +8314,7 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/upload-artifact@v6
     - uses: actions/github-script@v8
 
-.github/workflows/gl-mainline-enforcement.yml:
+.github/workflows/gov-mainline-enforcement.yml:
   github_actions:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
@@ -8367,12 +8367,12 @@ gl-semantic-core-platform/requirements.txt:
     - uses: actions/checkout@v6
     - uses: actions/upload-artifact@v6
 
-file-organizer-system/.github/workflows/gl-validation.yml:
+file-organizer-system/.github/workflows/gov-validation.yml:
   github_actions:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
 
-gl-execution-runtime/file-organizer-system/.github/workflows/gl-validation.yml:
+gov-execution-runtime/file-organizer-system/.github/workflows/gov-validation.yml:
   github_actions:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -8475,7 +8475,7 @@ gl-execution-runtime/file-organizer-system/.github/workflows/gl-validation.yml:
     - uses: actions/upload-artifact@v3
     - uses: actions/github-script@v7
 
-gl-platform-services/esync-platform/.github/workflows/naming-governance.yaml:
+gov-platform-services/esync-platform/.github/workflows/naming-governance.yaml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/setup-python@v5
@@ -8483,7 +8483,7 @@ gl-platform-services/esync-platform/.github/workflows/naming-governance.yaml:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: peter-evans/create-pull-request@b1ddad2c994a25fbc81a28b5ec28e3948fa99e77
 
-gl-platform-services/esync-platform/.github/workflows/ci.yaml:
+gov-platform-services/esync-platform/.github/workflows/ci.yaml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491
@@ -8500,7 +8500,7 @@ gl-platform-services/esync-platform/.github/workflows/ci.yaml:
     - uses: actions/upload-artifact@1eb3cb2b3e0f296241caca2a7ab8ed34950fe83f
     - uses: actions/upload-artifact@1eb3cb2b3e0f296241caca2a7ab8ed34950fe83f
 
-gl-platform-services/esync-platform/.github/workflows/auto-fix-bot.yaml:
+gov-platform-services/esync-platform/.github/workflows/auto-fix-bot.yaml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/setup-python@v5
@@ -8513,7 +8513,7 @@ gl-platform-services/esync-platform/.github/workflows/auto-fix-bot.yaml:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/upload-artifact@1eb3cb2b3e0f296241caca2a7ab8ed34950fe83f
 
-gl-platform-services/esync-platform/.github/workflows/slsa-provenance.yaml:
+gov-platform-services/esync-platform/.github/workflows/slsa-provenance.yaml:
   github_actions:
     - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
     - uses: actions/upload-artifact@1eb3cb2b3e0f296241caca2a7ab8ed34950fe83f

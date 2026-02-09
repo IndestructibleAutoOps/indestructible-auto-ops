@@ -1,0 +1,61 @@
+{
+  "system": "IndestructibleAutoOps",
+  "component": "governance/naming/v1",
+  "finding_class": "vulnerability_and_gap_assessment",
+  "problems": [
+    {
+      "id": "PID-001",
+      "title": "Policy metadata integrityHash 與演算法標記不一致",
+      "severity": "CRITICAL",
+      "evidence": {
+        "observed": "schema.yaml metadata.integrityHash=sha3-512:e3b0c4... (實為 SHA-256 空字串雜湊)",
+        "impact": "完整性標記不可用；封存/驗證鏈失效"
+      }
+    },
+    {
+      "id": "PID-002",
+      "title": "Python 物件模型與 CLI/Processor 介面不相容",
+      "severity": "CRITICAL",
+      "evidence": {
+        "observed": "NamingProcessor(policy.policy_config) 但 NamingPolicy 無 policy_config 欄位",
+        "impact": "CLI 立即 RuntimeError；無法上線"
+      }
+    },
+    {
+      "id": "PID-003",
+      "title": "Overflow 哈希允許降級到 SHA-256，與治理要求衝突",
+      "severity": "HIGH",
+      "evidence": {
+        "observed": "OverflowStrategy.calculate_hash / OverflowEngine._compute_hash blake3 不可用時 fallback sha256",
+        "impact": "雜湊治理不一致；可被供應鏈規則阻斷；驗證不可重現"
+      }
+    },
+    {
+      "id": "PID-004",
+      "title": "Webhook 缺少可執行實作與請求安全防護",
+      "severity": "CRITICAL",
+      "evidence": {
+        "observed": "webhook/{admission.py,server.py} 未提供可運行內容；無 request size limit / rate limit / AdmissionReview 嚴格驗證",
+        "impact": "准入控制不可用；或暴露 DoS/格式注入風險"
+      }
+    },
+    {
+      "id": "PID-005",
+      "title": "Evidence 封存缺口：缺少雙雜湊、深度驗證與可重播封存格式",
+      "severity": "CRITICAL",
+      "evidence": {
+        "observed": "未提供 sha3-512 + blake3 雙雜湊、canonicalization、證據序列化/驗證",
+        "impact": "不可變證據與治理 Gate 無法落地"
+      }
+    },
+    {
+      "id": "PID-006",
+      "title": "監控規則引用 metrics 名稱與實作不一致",
+      "severity": "HIGH",
+      "evidence": {
+        "observed": "PrometheusRule 使用 naming_policy_validation_attempts 等，但無對應 exporter",
+        "impact": "告警失真；SLO 不可監測"
+      }
+    }
+  ]
+}

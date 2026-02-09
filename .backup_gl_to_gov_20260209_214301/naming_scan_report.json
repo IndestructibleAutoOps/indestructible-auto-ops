@@ -1,0 +1,2423 @@
+{
+  "patterns": {
+    "gl-": {
+      "gl-evolution-data": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/data/evolution/gl-evolution-data",
+          "depth": 6
+        }
+      ],
+      "gl-gate": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/gl-gate",
+          "depth": 5
+        }
+      ],
+      "gl-artifacts": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts",
+          "depth": 9
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts",
+          "depth": 4
+        }
+      ],
+      "gl-hooks": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-hooks",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-hooks",
+          "depth": 4
+        }
+      ],
+      "gl-restructure": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-restructure",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-restructure",
+          "depth": 4
+        }
+      ],
+      "gl-engine": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine",
+          "depth": 4
+        }
+      ],
+      "gl-core": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-core",
+          "depth": 9
+        }
+      ],
+      "gl-governance": [
+        {
+          "type": "directory",
+          "path": ".github/project-docs/gl-governance",
+          "depth": 3
+        }
+      ],
+      "gl-platform-assistant": [
+        {
+          "type": "directory",
+          "path": "platforms/gl-platform-assistant",
+          "depth": 2
+        }
+      ],
+      "gl-platform-ide": [
+        {
+          "type": "directory",
+          "path": "platforms/gl-platform-ide",
+          "depth": 2
+        }
+      ],
+      "gl-anchors": [
+        {
+          "type": "directory",
+          "path": "archives/documentation/reports/gl-anchors",
+          "depth": 4
+        }
+      ],
+      "gl-naming-layers": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers",
+          "depth": 3
+        }
+      ],
+      "gl-naming-registry": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-registry",
+          "depth": 3
+        }
+      ],
+      "gl-markers": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/tools/gl-markers",
+          "depth": 5
+        }
+      ],
+      "gl-semantic-anchors": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/gl-semantic-anchors",
+          "depth": 5
+        }
+      ],
+      "gl-events": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/.evidence/autonomy-boundary/gl-events",
+          "depth": 6
+        }
+      ],
+      "gl-runtime-engine-platform": [
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform",
+          "depth": 2
+        }
+      ],
+      "gl-platform-universe-restructure-plan": [
+        {
+          "type": "file",
+          "path": "gl-platform-universe-restructure-plan.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-semantic-violation-classifier-complete": [
+        {
+          "type": "file",
+          "path": "gl-semantic-violation-classifier-complete.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-root-audit-init": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-reports/gl-root-audit-init.json",
+          "extension": ".json"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/.governance/audit-reports/gl-root-audit-init.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-layer-mapping": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/docs/guides/gl-layer-mapping.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/etl-pipeline/docs/guides/gl-layer-mapping.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-root-cause-actions": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts/meta/gl-root-cause-actions.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-root-cause-actions.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts/meta/gl-root-cause-actions.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-naming-charter-analysis": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts/meta/gl-naming-charter-analysis.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-naming-charter-analysis.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts/meta/gl-naming-charter-analysis.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-unified-naming-charter": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl-unified-naming-charter.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-unified-naming-charter.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-validation": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/file-organizer-system/.github/workflows/gl-validation.yml",
+          "extension": ".yml"
+        },
+        {
+          "type": "file",
+          "path": "platforms/automation/organizer/.github/workflows/gl-validation.yml",
+          "extension": ".yml"
+        }
+      ],
+      "gl-semantic-stabilization": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-semantic-stabilization.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-semantic-stabilization.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-governance-loop": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-governance-loop.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-governance-loop.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-integrated-seal": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-integrated-seal.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-integrated-seal.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-chain-registry": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-chain-registry.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-chain-registry.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-global-parallelism-engine": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-global-parallelism-engine.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-global-parallelism-engine.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-layers": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-layers.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-core/gl-layers.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-layers.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-execution-mode": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-execution-mode.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-execution-mode.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-skills-matrix": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-skills-matrix.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-skills-matrix.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-dag": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-dag.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-dag.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-dag.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-dag.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-mainline-integration": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-mainline-integration.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-mainline-integration.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-refactoring-exec-prompts": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-refactoring-exec-prompts.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-refactoring-exec-prompts.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-artifacts-matrix": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifacts-matrix.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-artifacts-matrix.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-global-semantic-index": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-global-semantic-index.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-global-semantic-index.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-semantic-boundaries": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-semantic-boundaries.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-semantic-boundaries.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-task-lifecycle": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-task-lifecycle.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-task-lifecycle.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-filesystem-mapping": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-filesystem-mapping.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-filesystem-mapping.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-artifact-dsl": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifact-dsl.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-artifact-dsl.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-index": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-index.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-core/gl-index.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-index.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-final-seal": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-final-seal.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-final-seal.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-semantic-seal": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-semantic-seal.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-semantic-seal.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-automation-engine": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-automation-engine.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-automation-engine.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-architecture-readme": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-architecture-readme.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-architecture-readme.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-global-governance-audit-report": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-global-governance-audit-report.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-global-governance-audit-report.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-directory-naming-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-directory-naming-spec.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-directory-naming-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-constitution": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-constitution.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-core/gl-constitution.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-constitution.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-artifact-engine": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-artifact-engine.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-artifact-engine.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-quickref": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/gl-quickref.md",
+          "extension": ".md"
+        },
+        {
+          "type": "file",
+          "path": ".github/governance/architecture/gl-quickref.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-consolidation-report": [
+        {
+          "type": "file",
+          "path": ".github/reports/gl-consolidation-report.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-validation-after-refactor": [
+        {
+          "type": "file",
+          "path": ".github/reports/gl-validation-after-refactor.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-validation-initial": [
+        {
+          "type": "file",
+          "path": ".github/reports/gl-validation-initial.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-validation-new-artifacts": [
+        {
+          "type": "file",
+          "path": ".github/reports/gl-validation-new-artifacts.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-governance-checklist": [
+        {
+          "type": "file",
+          "path": ".github/PULL_REQUEST_TEMPLATE/gl-governance-checklist.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-governance.agent": [
+        {
+          "type": "file",
+          "path": ".github/agents/gl-governance.agent.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-compliance": [
+        {
+          "type": "file",
+          "path": ".github/ISSUE_TEMPLATE/gl-compliance.yml",
+          "extension": ".yml"
+        }
+      ],
+      "gl-platform-registry": [
+        {
+          "type": "file",
+          "path": "platforms/registry/platform-registry/gl-platform-registry.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-coverage-report-20260203-155913": [
+        {
+          "type": "file",
+          "path": "archives/documentation/reports/gl-anchors/gl-coverage-report-20260203-155913.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-validation-report-20260203-155913": [
+        {
+          "type": "file",
+          "path": "archives/documentation/reports/gl-anchors/gl-validation-report-20260203-155913.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-classification-20260203-155913": [
+        {
+          "type": "file",
+          "path": "archives/documentation/reports/gl-anchors/gl-classification-20260203-155913.json",
+          "extension": ".json"
+        }
+      ],
+      "gl-platform-lifecycle-spec": [
+        {
+          "type": "file",
+          "path": "audit-automation/task-engine/tasks/registries/platforms/gl-platform-lifecycle-spec.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-platforms.index": [
+        {
+          "type": "file",
+          "path": "audit-automation/task-engine/tasks/registries/platforms/gl-platforms.index.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/registry/platforms/gl-platforms.index.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-platform-definition": [
+        {
+          "type": "file",
+          "path": "audit-automation/task-engine/tasks/registries/platforms/gl-platform-definition.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/registry/platforms/gl-platform-definition.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-platforms.placement-rules": [
+        {
+          "type": "file",
+          "path": "audit-automation/task-engine/tasks/registries/platforms/gl-platforms.placement-rules.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/registry/platforms/gl-platforms.placement-rules.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-naming-contracts-registry": [
+        {
+          "type": "file",
+          "path": "audit-automation/task-engine/tasks/registries/naming/gl-naming-contracts-registry.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-registry/gl-naming-contracts-registry.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-platform-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-platform-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-language-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-language-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-naming-ontology": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-naming-ontology.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-extensibility-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-extensibility-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-supply-chain-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-supply-chain-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-ci-cd-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-ci-cd-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-governance-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-governance-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-versioning-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-versioning-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-build-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-build-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-contract-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-contract-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-format-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-format-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-user-facing-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-user-facing-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-generator-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-generator-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-dependency-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-dependency-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-permission-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-permission-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-metadata-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-metadata-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-indexing-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-indexing-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-naming-ontology-expanded": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-naming-ontology-expanded.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-observability-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-observability-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-security-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-security-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-documentation-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-documentation-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-packaging-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-packaging-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-testing-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-testing-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-reasoning-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-reasoning-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-validation-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-validation-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-prefix-principles-engineering": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-prefix-principles-engineering.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-interface-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-interface-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-deployment-layer-specification": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/specs/gl-naming-layers/gl-deployment-layer-specification.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-naming-validator": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/tools/gl-naming-validator.py",
+          "extension": ".py"
+        }
+      ],
+      "gl-generator-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/generator/gl-generator-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-extension-points": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/extensions/gl-extension-points.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-platforms": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/platforms/gl-platforms.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-governance-layers": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/gl-governance-layers.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-semantic-violation-classifier": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/gl-semantic-violation-classifier.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-validation-rules": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/validation/gl-validation-rules.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-verifiable-report-standard-executable": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-verifiable-report-standard-executable.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-verification-engine-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-verification-engine-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-proof-model-executable": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-proof-model-executable.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-verifiable-report-standard": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-verifiable-report-standard.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-verification-engine-spec-executable": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-verification-engine-spec-executable.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-proof-model": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-proof-model.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-audit-report-template": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/verification/gl-audit-report-template.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-reasoning-rules": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/reasoning/gl-reasoning-rules.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-rule.schema": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/foundation/schemas/gl-rule.schema.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl-naming-ontology-gap-analysis": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/docs/gl-naming-ontology-gap-analysis.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-naming-ontology-complete": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/docs/gl-naming-ontology-complete.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-anchors-repository-application-report": [
+        {
+          "type": "file",
+          "path": "docs/reports/gl-anchors-repository-application-report.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-markers-report": [
+        {
+          "type": "file",
+          "path": "docs/reports/gl-markers-report.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-diagnostics-system-architecture": [
+        {
+          "type": "file",
+          "path": "docs/architecture/gl-diagnostics-system-architecture.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-native-architecture-gap-remediation-report": [
+        {
+          "type": "file",
+          "path": "docs/architecture/designs/gl-native-architecture-gap-remediation-report.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-native-technical-implementation": [
+        {
+          "type": "file",
+          "path": "docs/architecture/designs/gl-native-technical-implementation.md",
+          "extension": ".md"
+        }
+      ],
+      "gl-native-governance-module-gap-analysis": [
+        {
+          "type": "file",
+          "path": "docs/architecture/designs/gl-native-governance-module-gap-analysis.md",
+          "extension": ".md"
+        }
+      ]
+    },
+    "gl.": {
+      "gl.platform-assistant": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/platforms/gl.platform-assistant",
+          "depth": 4
+        }
+      ],
+      "gl.platform-ide": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/platforms/gl.platform-ide",
+          "depth": 4
+        }
+      ],
+      "gl.causal-reasoning-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/gl.causal-reasoning-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.execution.finalization-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/gl.execution.finalization-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.evolution-metrics": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/gl.evolution-metrics.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.cognitive-modes-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/gl.cognitive-modes-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.execution.analysis-report": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/templates/gl.execution.analysis-report.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.flow.upgrade-log": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/templates/gl.flow.upgrade-log.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.execution.delta-report": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance/templates/gl.execution.delta-report.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.verifiable-report-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/fact-verification/gl.verifiable-report-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.fact-pipeline-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/fact-verification/gl.fact-pipeline-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.internal-vs-external-governance": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/fact-verification/gl.internal-vs-external-governance.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gl.meta.schema": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/foundation/schemas/gl.meta.schema.json",
+          "extension": ".json"
+        }
+      ]
+    },
+    "gl_": {
+      "gl_governance_audit_engine": [
+        {
+          "type": "file",
+          "path": ".github/project-docs/scripts/gl_governance_audit_engine.py",
+          "extension": ".py"
+        }
+      ]
+    },
+    "GL_": {
+      "GL_EVENT_TEMPLATE": [
+        {
+          "type": "file",
+          "path": "responsibility-governance-specs-boundary/specs/autonomy-boundary-test-templates/GL_EVENT_TEMPLATE.json",
+          "extension": ".json"
+        }
+      ]
+    },
+    "governance": {
+      "governance": [
+        {
+          "type": "directory",
+          "path": "governance",
+          "depth": 1
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl20-29-data-processing/processing-platform/elasticsearch-search-system/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl20-29-data-processing/search/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/services/quantum-platform/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/services/esync-platform/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/controlplane/governance",
+          "depth": 7
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests/governance",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/aep-engine-app/governance",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/governance",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/governance",
+          "depth": 6
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/file-organizer-system/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/governance",
+          "depth": 10
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/specifications/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": ".github/governance",
+          "depth": 2
+        },
+        {
+          "type": "directory",
+          "path": ".github/config/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": ".github/archive/legacy/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": ".indestructibleautoops/governance",
+          "depth": 2
+        },
+        {
+          "type": "directory",
+          "path": "platforms/automation/instant/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "platforms/automation/organizer/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "platforms/infrastructure/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": "platforms/quantum/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": "IndestructibleAutoOps/Engineering_Patch/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/tests/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/contracts/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/evidence/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/engines/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/etl-pipeline/controlplane/governance",
+          "depth": 5
+        },
+        {
+          "type": "directory",
+          "path": "machinenativeops/gl-runtime-engine-platform/tests/governance",
+          "depth": 4
+        },
+        {
+          "type": "directory",
+          "path": "enterprise-governance/src/governance",
+          "depth": 3
+        },
+        {
+          "type": "directory",
+          "path": "indestructibleautoops/governance",
+          "depth": 2
+        }
+      ],
+      "governance-audit": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/governance-audit",
+          "depth": 6
+        }
+      ],
+      "governance-legacy": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy",
+          "depth": 8
+        }
+      ],
+      "governance-enforcement-implementation-complete": [
+        {
+          "type": "file",
+          "path": "governance-enforcement-implementation-complete.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-enforcement-progress": [
+        {
+          "type": "file",
+          "path": "governance-enforcement-progress.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-enforcement-layer-todo": [
+        {
+          "type": "file",
+          "path": "governance-enforcement-layer-todo.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-files-migration-complete": [
+        {
+          "type": "file",
+          "path": "governance-files-migration-complete.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-files-migration-plan": [
+        {
+          "type": "file",
+          "path": "governance-files-migration-plan.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-restructure-executor": [
+        {
+          "type": "file",
+          "path": "governance-restructure-executor.py",
+          "extension": ".py"
+        }
+      ],
+      "governance-event-stream": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-reports/governance-event-stream.json",
+          "extension": ".json"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-results/governance-event-stream.json",
+          "extension": ".json"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/.governance/audit-reports/governance-event-stream.json",
+          "extension": ".json"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/.governance/audit-results/governance-event-stream.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-manifest.yaml": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/per-file-audits/governance-manifest.yaml.json",
+          "extension": ".json"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/.governance/per-file-audits/governance-manifest.yaml.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-charter": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts/strategic/artifacts/governance-charter.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/governance-charter.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts/strategic/artifacts/governance-charter.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-standards": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts/meta/artifacts/governance-standards.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/governance-standards.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts/meta/artifacts/governance-standards.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-loop-process-policy": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl-artifacts/operational/artifacts/governance-loop-process-policy.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/governance-loop-process-policy.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/governance/gl-artifacts/operational/artifacts/governance-loop-process-policy.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance_loop": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/implementation/governance_loop.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
+          "extension": ".py"
+        }
+      ],
+      "governance_engine": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/ai/governance_engine.py",
+          "extension": ".py"
+        }
+      ],
+      "governance_agent": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/python/governance_agent.py",
+          "extension": ".py"
+        }
+      ],
+      "governance-unification-spec": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl00-09-enterprise-architecture/governance/contracts/governance-unification-spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-manifest": [
+        {
+          "type": "file",
+          "path": ".github/config/governance/governance-manifest.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/governance-manifest.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-compliance-check": [
+        {
+          "type": "file",
+          "path": ".github/workflows/governance-compliance-check.yml",
+          "extension": ".yml"
+        }
+      ],
+      "governance_audit_script": [
+        {
+          "type": "file",
+          "path": ".github/project-docs/scripts/governance_audit_script.py",
+          "extension": ".py"
+        }
+      ],
+      "governance_executor": [
+        {
+          "type": "file",
+          "path": ".github/project-docs/scripts/governance_executor.py",
+          "extension": ".py"
+        }
+      ],
+      "governance-closed-loop-system": [
+        {
+          "type": "file",
+          "path": ".github/archive/workspace-reports/governance-closed-loop-system.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-execution-report": [
+        {
+          "type": "file",
+          "path": ".github/archive/test-artifacts/governance-execution-report.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-events": [
+        {
+          "type": "file",
+          "path": "responsibility-governance-anchor-boundary/event-model/governance-events.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-baseline": [
+        {
+          "type": "file",
+          "path": "responsibility-governance-anchor-boundary/baseline/governance-baseline.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/gl-semantic-anchors/governance-baseline.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-modules": [
+        {
+          "type": "file",
+          "path": "responsibility-governance-execution-boundary/registry/governance-modules.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-execution-engine": [
+        {
+          "type": "file",
+          "path": "responsibility-governance-execution-boundary/engines/governance-execution-engine.py",
+          "extension": ".py"
+        }
+      ],
+      "governance-pipeline": [
+        {
+          "type": "file",
+          "path": "responsibility-governance-execution-boundary/pipelines/governance-pipeline.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-closure-report": [
+        {
+          "type": "file",
+          "path": "archives/documentation/reports/governance-closure-report.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-vulnerabilities-remediation": [
+        {
+          "type": "file",
+          "path": "archives/documentation/reports/governance-vulnerabilities-remediation.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-mapping-table": [
+        {
+          "type": "file",
+          "path": "archives/documentation/reorganization/governance-mapping-table.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-tools-registry": [
+        {
+          "type": "file",
+          "path": "audit-automation/task-engine/tasks/registries/governance-tools-registry.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-illusion-2025-02-05": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/analysis/evidence/violations/governance-illusion-2025-02-05.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-verification-beyond-era1": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/reports/governance-verification-beyond-era1.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-alignment-report": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/.governance/governance-alignment-report.md",
+          "extension": ".md"
+        }
+      ],
+      "governance_enforcer": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/enforcers/governance_enforcer.py",
+          "extension": ".py"
+        }
+      ],
+      "governance_closure_engine_incomplete": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/tools/governance_closure_engine_incomplete.py",
+          "extension": ".py"
+        }
+      ],
+      "governance_closure_engine": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/tools/governance_closure_engine.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/engines/governance_closure_engine.py",
+          "extension": ".py"
+        }
+      ],
+      "governance-monitor-config": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/governance-monitor-config.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-closure-engine-spec-v1": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/governance-closure-engine-spec-v1.md",
+          "extension": ".md"
+        }
+      ],
+      "governance_layer_boundaries": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/specs/governance_layer_boundaries.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance_chain_of_responsibility": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/specs/standards/governance_chain_of_responsibility.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance-config": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/meta-governance/configs/governance-config.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance_framework": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/meta-governance/src/governance_framework.py",
+          "extension": ".py"
+        }
+      ],
+      "governance_closure_spec": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/closure/governance_closure_spec.yaml",
+          "extension": ".yaml"
+        },
+        {
+          "type": "file",
+          "path": "responsibility-quantum-stack-boundary/layers/governance_closure_spec.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "governance.schema": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/governance/ugs/l50-format/governance.schema.json",
+          "extension": ".json"
+        }
+      ],
+      "governance_bootstrap_trace": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/.evidence/traces/governance_bootstrap_trace.json",
+          "extension": ".json"
+        }
+      ],
+      "governance-layer-fix-summary": [
+        {
+          "type": "file",
+          "path": "docs/reports/governance-layer-fix-summary.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-layers-implementation-summary": [
+        {
+          "type": "file",
+          "path": "docs/reports/governance-layers-implementation-summary.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-enforcement-progress-report": [
+        {
+          "type": "file",
+          "path": "docs/reports/governance-enforcement-progress-report.md",
+          "extension": ".md"
+        }
+      ],
+      "governance-enforcement-implementation-summary": [
+        {
+          "type": "file",
+          "path": "docs/reports/governance-enforcement-implementation-summary.md",
+          "extension": ".md"
+        }
+      ]
+    },
+    "gov_": {
+      "gov_policy": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/contracts/gov_policy.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_contract": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/contracts/gov_contract.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_evolution_engine": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/evolution/gov_evolution_engine.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_pre_commit": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gov_pre_commit.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/hooks/gov_pre_commit.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_naming_check": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gov_naming_check.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/hooks/gov_naming_check.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_consolidation_plan": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-restructure/gov_consolidation_plan.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-restructure/gov_consolidation_plan.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_integrator": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gov_integrator.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_integrator.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_executor": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gov_executor.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_executor.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_validator": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gov_validator.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_validator.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_reporter": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gov_reporter.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_reporter.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_automation_engine": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gov_automation_engine.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_automation_engine.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_continuous_monitor": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+          "extension": ".py"
+        },
+        {
+          "type": "file",
+          "path": "machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_marker_injector": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/aup-tools/gov_marker_injector.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_aep_engine_auditor": [
+        {
+          "type": "file",
+          "path": "responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_naming_migration_report": [
+        {
+          "type": "file",
+          "path": "governance/l4_evidence/reports/gov_naming_migration_report.md",
+          "extension": ".md"
+        }
+      ],
+      "gov_naming_report_template": [
+        {
+          "type": "file",
+          "path": "governance/l4_evidence/reports/gov_naming_report_template.json",
+          "extension": ".json"
+        }
+      ],
+      "gov_charter": [
+        {
+          "type": "file",
+          "path": "governance/l1_governance_core/charter/gov_charter.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gov_ontology": [
+        {
+          "type": "file",
+          "path": "governance/l1_governance_core/ontology/gov_ontology.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gov_contracts_registry": [
+        {
+          "type": "file",
+          "path": "governance/l1_governance_core/registry/gov_contracts_registry.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gov_naming_enforcer": [
+        {
+          "type": "file",
+          "path": "governance/l3_execution/enforcement/gov_naming_enforcer.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_naming_migration_full": [
+        {
+          "type": "file",
+          "path": "governance/l3_execution/migration/gov_naming_migration_full.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_naming_migration": [
+        {
+          "type": "file",
+          "path": "governance/l3_execution/migration/gov_naming_migration.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_naming_conventions": [
+        {
+          "type": "file",
+          "path": "governance/l2_domains/naming/semantic_rules/gov_naming_conventions.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gov_naming_registry": [
+        {
+          "type": "file",
+          "path": "governance/l2_domains/naming/semantic_rules/gov_naming_registry.yaml",
+          "extension": ".yaml"
+        }
+      ],
+      "gov_audit_simple": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/tools/audit/gov_audit_simple.py",
+          "extension": ".py"
+        }
+      ],
+      "gov_fact_pipeline": [
+        {
+          "type": "file",
+          "path": "responsibility-namespace-governance-boundary/implementation/ecosystem/tools/fact-verification/gov_fact_pipeline.py",
+          "extension": ".py"
+        }
+      ]
+    },
+    "responsibility-": {
+      "responsibility-gcp-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-gcp-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-gl-layers-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-gl-layers-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-gap-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-gap-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-guardrails-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-guardrails-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-governance-anchor-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-governance-anchor-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-gateway-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-gateway-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-governance-execution-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-governance-execution-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-governance-sensing-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-governance-sensing-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-mno-operations-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-mno-operations-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-namespace-governance-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-namespace-governance-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-group-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-group-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-global-policy-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-global-policy-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-observability-grafana-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-observability-grafana-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-generation-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-generation-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-gates-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-gates-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-quantum-stack-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-quantum-stack-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-governance-specs-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-governance-specs-boundary",
+          "depth": 1
+        }
+      ],
+      "responsibility-mnga-architecture-boundary": [
+        {
+          "type": "directory",
+          "path": "responsibility-mnga-architecture-boundary",
+          "depth": 1
+        }
+      ]
+    },
+    "enterprise-": {
+      "enterprise-governance": [
+        {
+          "type": "directory",
+          "path": "enterprise-governance",
+          "depth": 1
+        }
+      ],
+      "enterprise-platform-architecture": [
+        {
+          "type": "file",
+          "path": "config/enterprise-platform-architecture.yaml",
+          "extension": ".yaml"
+        }
+      ]
+    }
+  },
+  "structure": {
+    "total_root_dirs": 35,
+    "root_dirs": [
+      {
+        "name": "IndestructibleAutoOps",
+        "prefix": "IndestructibleAutoOps",
+        "items": 7
+      },
+      {
+        "name": "archives",
+        "prefix": "archives",
+        "items": 4
+      },
+      {
+        "name": "audit-automation",
+        "prefix": "audit",
+        "items": 2
+      },
+      {
+        "name": "config",
+        "prefix": "config",
+        "items": 20
+      },
+      {
+        "name": "deployment",
+        "prefix": "deployment",
+        "items": 6
+      },
+      {
+        "name": "deployment-scripts",
+        "prefix": "deployment",
+        "items": 5
+      },
+      {
+        "name": "docs",
+        "prefix": "docs",
+        "items": 25
+      },
+      {
+        "name": "ecosystem",
+        "prefix": "ecosystem",
+        "items": 1
+      },
+      {
+        "name": "enterprise-governance",
+        "prefix": "enterprise",
+        "items": 11
+      },
+      {
+        "name": "governance",
+        "prefix": "governance",
+        "items": 6
+      },
+      {
+        "name": "iaops",
+        "prefix": "iaops",
+        "items": 16
+      },
+      {
+        "name": "indestructibleautoops",
+        "prefix": "indestructibleautoops",
+        "items": 3
+      },
+      {
+        "name": "machinenativeops",
+        "prefix": "machinenativeops",
+        "items": 15
+      },
+      {
+        "name": "monitoring",
+        "prefix": "monitoring",
+        "items": 6
+      },
+      {
+        "name": "platforms",
+        "prefix": "platforms",
+        "items": 8
+      },
+      {
+        "name": "responsibility-gap-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-gates-boundary",
+        "prefix": "responsibility",
+        "items": 3
+      },
+      {
+        "name": "responsibility-gateway-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-gcp-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-generation-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-gl-layers-boundary",
+        "prefix": "responsibility",
+        "items": 9
+      },
+      {
+        "name": "responsibility-global-policy-boundary",
+        "prefix": "responsibility",
+        "items": 3
+      },
+      {
+        "name": "responsibility-governance-anchor-boundary",
+        "prefix": "responsibility",
+        "items": 6
+      },
+      {
+        "name": "responsibility-governance-execution-boundary",
+        "prefix": "responsibility",
+        "items": 7
+      },
+      {
+        "name": "responsibility-governance-sensing-boundary",
+        "prefix": "responsibility",
+        "items": 7
+      },
+      {
+        "name": "responsibility-governance-specs-boundary",
+        "prefix": "responsibility",
+        "items": 5
+      },
+      {
+        "name": "responsibility-group-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-guardrails-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-mnga-architecture-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-mno-operations-boundary",
+        "prefix": "responsibility",
+        "items": 3
+      },
+      {
+        "name": "responsibility-namespace-governance-boundary",
+        "prefix": "responsibility",
+        "items": 23
+      },
+      {
+        "name": "responsibility-observability-grafana-boundary",
+        "prefix": "responsibility",
+        "items": 2
+      },
+      {
+        "name": "responsibility-quantum-stack-boundary",
+        "prefix": "responsibility",
+        "items": 3
+      },
+      {
+        "name": "scripts",
+        "prefix": "scripts",
+        "items": 34
+      },
+      {
+        "name": "tests",
+        "prefix": "tests",
+        "items": 12
+      }
+    ],
+    "duplicate_prefixes": {
+      "deployment": [
+        "deployment",
+        "deployment-scripts"
+      ],
+      "responsibility": [
+        "responsibility-gap-boundary",
+        "responsibility-gates-boundary",
+        "responsibility-gateway-boundary",
+        "responsibility-gcp-boundary",
+        "responsibility-generation-boundary",
+        "responsibility-gl-layers-boundary",
+        "responsibility-global-policy-boundary",
+        "responsibility-governance-anchor-boundary",
+        "responsibility-governance-execution-boundary",
+        "responsibility-governance-sensing-boundary",
+        "responsibility-governance-specs-boundary",
+        "responsibility-group-boundary",
+        "responsibility-guardrails-boundary",
+        "responsibility-mnga-architecture-boundary",
+        "responsibility-mno-operations-boundary",
+        "responsibility-namespace-governance-boundary",
+        "responsibility-observability-grafana-boundary",
+        "responsibility-quantum-stack-boundary"
+      ]
+    },
+    "inconsistent_naming": [
+      {
+        "name": "IndestructibleAutoOps",
+        "issue": "使用大寫字母"
+      }
+    ]
+  }
+}

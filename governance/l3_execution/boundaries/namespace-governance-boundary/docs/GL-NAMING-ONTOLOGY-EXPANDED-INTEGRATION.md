@@ -2,7 +2,7 @@
 
 ## 概述
 
-本報告記錄了 GL 擴展命名本體（gl-naming-ontology-expanded v3.0.0）的整合過程，該規範為大型 Monorepo 多平台架構提供了完整的工程級命名治理體系。
+本報告記錄了 GL 擴展命名本體（gov-naming-ontology-expanded v3.0.0）的整合過程，該規範為大型 Monorepo 多平台架構提供了完整的工程級命名治理體系。
 
 ## 整合時間
 
@@ -13,10 +13,10 @@
 ## 新增契約資訊
 
 ### 契約詳情
-- **契約 ID**: gl-naming-ontology-expanded
+- **契約 ID**: gov-naming-ontology-expanded
 - **名稱**: GL 擴展命名本體 (工程級)
 - **版本**: 3.0.0
-- **路徑**: ng-namespace-governance/specs/gl-naming-layers/gl-naming-ontology-expanded.yaml
+- **路徑**: ng-namespace-governance/specs/gov-naming-layers/gov-naming-ontology-expanded.yaml
 - **類別**: Core (核心契約)
 - **狀態**: Active (活躍)
 
@@ -141,9 +141,9 @@
    - 用途: 類別名稱、類型定義
    - 示例: glTestSuite
 
-4. **gl-xxx** - 連字號命名
+4. **gov-xxx** - 連字號命名
    - 用途: 檔案名稱、元件名稱
-   - 示例: gl-build-artifact
+   - 示例: gov-build-artifact
 
 5. **gl.xxx.yyy** - 多層級命名空間
    - 用途: 命名空間層級、限定名稱
@@ -168,7 +168,7 @@
 
 ### 生成器與引擎相容性
 
-1. **結構化 YAML** - 所有命名項目以 YAML 結構化條列，便於 gl-platform-generator 自動解析
+1. **結構化 YAML** - 所有命名項目以 YAML 結構化條列，便於 gov-platform-generator 自動解析
 2. **語意引擎支持** - 支持語意引擎自動推理權限繼承、依賴關係、版本兼容性、治理政策
 3. **可驗證性** - 可被 Schema 驗證、CI/CD 校驗、語意引擎一致性檢查
 
@@ -204,35 +204,35 @@
 ecosystem/
 ├── contracts/
 │   └── naming-governance/
-│       ├── gl-naming-ontology.yaml (v1.0.0)
-│       └── gl-naming-ontology-expanded.yaml (v3.0.0) [NEW]
+│       ├── gov-naming-ontology.yaml (v1.0.0)
+│       └── gov-naming-ontology-expanded.yaml (v3.0.0) [NEW]
 └── registry/
     └── naming/
-        └── gl-naming-contracts-registry.yaml (UPDATED)
+        └── gov-naming-contracts-registry.yaml (UPDATED)
 ```
 
 ## 依賴關係
 
 ### 擴展命名本體依賴
-- **gl-naming-ontology** (基礎命名本體 v1.0.0)
+- **gov-naming-ontology** (基礎命名本體 v1.0.0)
 
 ### 依賴擴展命名本體的契約
-- gl-platforms
-- gl-validation-rules
-- gl-extension-points
-- gl-governance-layers
-- gl-generator-spec
-- gl-reasoning-rules
+- gov-platforms
+- gov-validation-rules
+- gov-extension-points
+- gov-governance-layers
+- gov-generator-spec
+- gov-reasoning-rules
 
 ## 使用場景
 
 ### 1. 命名驗證
-- 開發者使用 gl-naming-ontology-expanded 作為命名規範參考
+- 開發者使用 gov-naming-ontology-expanded 作為命名規範參考
 - CI/CD 集成命名驗證檢查
 - 自動化命名規範掃描工具
 
 ### 2. 平台生成
-- gl-platform-generator 解析擴展命名本體生成工程代碼
+- gov-platform-generator 解析擴展命名本體生成工程代碼
 - 自動生成配置文件
 - 自動生成文檔結構
 

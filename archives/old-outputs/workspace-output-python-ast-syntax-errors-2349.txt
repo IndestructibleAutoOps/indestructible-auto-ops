@@ -373,35 +373,35 @@
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/__init__.py",
+            "filename": "./engine/scripts-legacy/gov-engine/__init__.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/gov_automation_engine.py",
+            "filename": "./engine/scripts-legacy/gov-engine/gov_automation_engine.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+            "filename": "./engine/scripts-legacy/gov-engine/gov_continuous_monitor.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/gov_executor.py",
+            "filename": "./engine/scripts-legacy/gov-engine/gov_executor.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/gov_integrator.py",
+            "filename": "./engine/scripts-legacy/gov-engine/gov_integrator.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/gov_reporter.py",
+            "filename": "./engine/scripts-legacy/gov-engine/gov_reporter.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-engine/gov_validator.py",
+            "filename": "./engine/scripts-legacy/gov-engine/gov_validator.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+            "filename": "./engine/scripts-legacy/gov-restructure/gov-consolidation-plan.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
@@ -489,11 +489,11 @@
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/hooks/gl-naming-check.py",
+            "filename": "./engine/scripts-legacy/hooks/gov-naming-check.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts-legacy/hooks/gl-pre-commit.py",
+            "filename": "./engine/scripts-legacy/hooks/gov-pre-commit.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
@@ -541,7 +541,7 @@
             "reason": "syntax error while parsing AST from file"
         },
         {
-            "filename": "./engine/scripts/aup-tools/gl-marker-injector.py",
+            "filename": "./engine/scripts/aup-tools/gov-marker-injector.py",
             "reason": "syntax error while parsing AST from file"
         },
         {
@@ -2201,7 +2201,7 @@
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./add-gl-markers-json.py": {
+        "./add-gov-markers-json.py": {
             "CONFIDENCE.HIGH": 0,
             "CONFIDENCE.LOW": 0,
             "CONFIDENCE.MEDIUM": 0,
@@ -2214,7 +2214,7 @@
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./add-gl-markers-yaml.py": {
+        "./add-gov-markers-yaml.py": {
             "CONFIDENCE.HIGH": 0,
             "CONFIDENCE.LOW": 0,
             "CONFIDENCE.MEDIUM": 0,
@@ -2227,7 +2227,7 @@
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./add-gl-markers.py": {
+        "./add-gov-markers.py": {
             "CONFIDENCE.HIGH": 0,
             "CONFIDENCE.LOW": 0,
             "CONFIDENCE.MEDIUM": 0,
@@ -2721,42 +2721,42 @@
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/__init__.py": {
+        "./engine/scripts-legacy/gov-engine/__init__.py": {
             "loc": 70,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/gov_automation_engine.py": {
+        "./engine/scripts-legacy/gov-engine/gov_automation_engine.py": {
             "loc": 309,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/gov_continuous_monitor.py": {
+        "./engine/scripts-legacy/gov-engine/gov_continuous_monitor.py": {
             "loc": 424,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/gov_executor.py": {
+        "./engine/scripts-legacy/gov-engine/gov_executor.py": {
             "loc": 666,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/gov_integrator.py": {
+        "./engine/scripts-legacy/gov-engine/gov_integrator.py": {
             "loc": 349,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/gov_reporter.py": {
+        "./engine/scripts-legacy/gov-engine/gov_reporter.py": {
             "loc": 619,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-engine/gov_validator.py": {
+        "./engine/scripts-legacy/gov-engine/gov_validator.py": {
             "loc": 571,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py": {
+        "./engine/scripts-legacy/gov-restructure/gov-consolidation-plan.py": {
             "loc": 356,
             "nosec": 0,
             "skipped_tests": 0
@@ -2866,12 +2866,12 @@
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/hooks/gl-naming-check.py": {
+        "./engine/scripts-legacy/hooks/gov-naming-check.py": {
             "loc": 37,
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts-legacy/hooks/gl-pre-commit.py": {
+        "./engine/scripts-legacy/hooks/gov-pre-commit.py": {
             "loc": 41,
             "nosec": 0,
             "skipped_tests": 0
@@ -2931,7 +2931,7 @@
             "nosec": 0,
             "skipped_tests": 0
         },
-        "./engine/scripts/aup-tools/gl-marker-injector.py": {
+        "./engine/scripts/aup-tools/gov-marker-injector.py": {
             "loc": 287,
             "nosec": 0,
             "skipped_tests": 0

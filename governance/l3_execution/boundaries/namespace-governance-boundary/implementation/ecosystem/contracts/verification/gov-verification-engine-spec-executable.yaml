@@ -1,0 +1,141 @@
+# GL Verification Engine Specification v1.0.0 - Executable Contract
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: verification-engine
+
+version: "1.0.0"
+status: "PRODUCTION_READY"
+component_type: "GovernanceEngine"
+
+# 觸發條件
+trigger:
+  conditions:
+    - type: "file_change"
+      path_pattern: "**/*.{py,yaml,json,md}"
+      scope: "all"
+    - type: "ci_event"
+      events: ["pull_request", "push", "workflow_run"]
+    - type: "manual"
+      allowed_roles: ["admin", "governance_manager"]
+  
+  validation:
+    required:
+      - "file_exists"
+      - "syntax_valid"
+      - "gl_markers_present"
+
+# 驗證規則
+verify:
+  evidence_collection:
+    - rule: "all_files_must_have_evidence"
+      severity: "CRITICAL"
+      check: "file.evidence_links.length >= 1"
+      remediation: "Add evidence links using format [证据: path/to/file#L10-L15]"
+    
+    - rule: "evidence_must_be_verifiable"
+      severity: "CRITICAL"
+      check: "evidence.source_exists AND evidence.checksum_valid"
+      remediation: "Verify source file exists and calculate SHA-256 checksum"
+  
+  report_validation:
+    - rule: "min_evidence_coverage"
+      severity: "CRITICAL"
+      threshold: 0.90
+      check: "report.evidence_coverage >= 0.90"
+      remediation: "Add more evidence links until coverage reaches 90%"
+    
+    - rule: "no_forbidden_phrases"
+      severity: "CRITICAL"
+      forbidden_phrases:
+        - phrase: "100% 完成"
+          replacement: "基于已实现的功能集"
+        - phrase: "完全符合"
+          replacement: "在[方面]与标准对齐"
+        - phrase: "已全部实现"
+          replacement: "已实现[具体功能列表]"
+      remediation: "Replace with approved alternatives"
+
+# 審計規則
+audit:
+  governance_events:
+    - event: "verification_started"
+      required_fields: ["operation_id", "files_scanned", "timestamp"]
+    
+    - event: "verification_completed"
+      required_fields: ["operation_id", "violations_found", "evidence_coverage"]
+    
+    - event: "verification_failed"
+      required_fields: ["operation_id", "violation_type", "severity"]
+
+  audit_trail:
+    - requirement: "all_operations_must_be_logged"
+      storage: "SQLite + Blockchain"
+      retention: "7 years"
+    
+    - requirement: "results_must_be_reproducible"
+      check: "same_input_produces_same_output"
+      verification: "run_with_same_commit_hash"
+
+# 異常處理策略
+fallback:
+  on_contract_load_failure:
+    action: "use_default_contract"
+    log_level: "WARNING"
+    notify: ["governance_manager"]
+  
+  on_verification_failure:
+    action: "block_operation"
+    generate_report: true
+    suggest_remediation: true
+  
+  on_evidence_missing:
+    action: "request_evidence"
+    max_retries: 3
+    timeout: 3600
+
+# P0 FIX: Audit Rules
+audit:
+  - rule: "log_all_verification_operations"
+    scope: "all"
+    retention: "90_days"
+    storage: "sqlite"
+    encryption: "AES-256"
+    
+  - rule: "log_evidence_collection"
+    scope: "evidence_collection"
+    include:
+      - "collection_timestamp"
+      - "operation_id"
+      - "files_scanned"
+      - "evidence_collected"
+      - "checksums_calculated"
+      - "validation_results"
+      
+  - rule: "log_report_validation"
+    scope: "report_validation"
+    include:
+      - "validation_timestamp"
+      - "operation_id"
+      - "report_id"
+      - "evidence_coverage"
+      - "forbidden_phrases"
+      - "quality_gate_results"
+      - "validation_status"
+
+# 合約元數據
+metadata:
+  gl_semantic_layer: "GL90-99"
+  gl_semantic_domain: "verification"
+  gl_semantic_context: "enforcement"
+  audit_trail_enabled: true
+  created_at: "2026-02-02"
+  updated_at: "2026-02-02"
+  authors: ["GL-Governance-Team"]
+  reviewers: ["GL-Compliance-Team"]
+  dependencies:
+    - "ecosystem/contracts/verification/gov-proof-model.yaml"
+    - "ecosystem/contracts/verification/gov-verifiable-report-standard.yaml"
+  integration_points:
+    - "GovernanceEnforcer.validate()"
+    - "SelfAuditor.audit()"
+    - "PipelineIntegrator.bind()"

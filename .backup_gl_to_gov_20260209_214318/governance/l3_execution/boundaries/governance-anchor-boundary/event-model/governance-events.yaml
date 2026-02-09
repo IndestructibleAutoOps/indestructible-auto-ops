@@ -1,0 +1,11 @@
+governance_events:
+  events:
+    - module_registered
+    - moduleattachedtosemantictree
+    - pipeline_executed
+    - gate_passed
+    - gate_failed
+    - evidence_generated
+    - hashboundaryvalidated
+    - replay_verified
+    - semantictreeupdated

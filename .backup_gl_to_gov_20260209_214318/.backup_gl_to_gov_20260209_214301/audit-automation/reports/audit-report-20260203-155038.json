@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-02-03T15:50:38Z",
+  "version": "1.0.0",
+  "status": "FAIL",
+  "total_checks": 4,
+  "passed": 1,
+  "failed": 3,
+  "violations": [
+    {
+      "rule_id": "GOVERNANCE-ENFORCER",
+      "file": "ecosystem",
+      "message": "執行治理檢查時發生錯誤: No module named 'yaml'",
+      "severity": "MEDIUM",
+      "suggestion": "Fix Governance Enforcer issue"
+    },
+    {
+      "rule_id": "SELF-AUDITOR",
+      "file": "ecosystem",
+      "message": "執行自我審計時發生錯誤: No module named 'yaml'",
+      "severity": "MEDIUM",
+      "suggestion": "Fix Self Auditor issue"
+    },
+    {
+      "rule_id": "PIPELINE-INTEGRATION",
+      "file": "ecosystem",
+      "message": "執行管道整合檢查時發生錯誤: No module named 'yaml'",
+      "severity": "MEDIUM",
+      "suggestion": "Fix Pipeline Integration issue"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "audit_mode": true,
+    "auto_fix": false
+  }
+}

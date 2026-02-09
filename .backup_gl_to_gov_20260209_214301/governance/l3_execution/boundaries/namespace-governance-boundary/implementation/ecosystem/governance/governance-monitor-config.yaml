@@ -1,0 +1,49 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: config-artifact
+# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+
+# @GL-governed
+# GL-ROOT Global Governance Audit & Platform Build
+# Unified Architecture Governance Framework v2.0.0 - Governance Event Stream Monitor Configuration
+
+# Governance Event Stream Monitor Configuration
+# GL-ROOT Global Governance Audit & Platform Build
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+monitor:
+  enabled: true
+  check_interval: 60  # seconds
+  auto_commit: true
+  auto_push: true
+  
+paths:
+  event_streams:
+    - engine/.governance/event-stream.jsonl
+    - engine/.governance/governance-event-stream.jsonl
+    - file-organizer-system/.governance/event-stream.jsonl
+  
+git:
+  user_name: "MachineNativeOps"
+  user_email: "251967226+MachineNativeOps@users.noreply.github.com"
+  commit_message_template: "chore: periodic governance event stream update - {timestamp}"
+  branch: "main"
+  remote: "origin"
+  
+logging:
+  enabled: true
+  log_file: "governance-monitor.log"
+  verbose: true
+  
+notifications:
+  enabled: false
+  # 可以在未來添加通知功能

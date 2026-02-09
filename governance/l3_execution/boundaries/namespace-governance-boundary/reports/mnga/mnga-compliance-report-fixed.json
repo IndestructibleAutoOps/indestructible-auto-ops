@@ -49,7 +49,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/README.md",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/README.md",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -58,7 +58,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/USAGE_GUIDE.md",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/USAGE_GUIDE.md",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -67,7 +67,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/DEMONSTRATION_REPORT.md",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/DEMONSTRATION_REPORT.md",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -148,7 +148,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -157,7 +157,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "file_path": "gov-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -706,7 +706,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "ecosystem/tools/gl-markers/add-gl-markers-json.py",
+      "file_path": "ecosystem/tools/gov-markers/add-gov-markers-json.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -715,7 +715,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "ecosystem/tools/gl-markers/fix-governance-markers.py",
+      "file_path": "ecosystem/tools/gov-markers/fix-governance-markers.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -724,7 +724,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "ecosystem/tools/gl-markers/fix-governance-markers.py",
+      "file_path": "ecosystem/tools/gov-markers/fix-governance-markers.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -733,7 +733,7 @@
       "evidence": "Found 3 import lines"
     },
     {
-      "file_path": "ecosystem/tools/gl-markers/add-gl-markers-batch.py",
+      "file_path": "ecosystem/tools/gov-markers/add-gov-markers-batch.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -805,7 +805,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "ecosystem/tools/audit/gl-audit-simple.py",
+      "file_path": "ecosystem/tools/audit/gov-audit-simple.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -814,7 +814,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "ecosystem/tools/fact-verification/gl-fact-pipeline.py",
+      "file_path": "ecosystem/tools/fact-verification/gov-fact-pipeline.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -823,7 +823,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "ecosystem/tools/fact-verification/gl-fact-pipeline.py",
+      "file_path": "ecosystem/tools/fact-verification/gov-fact-pipeline.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1300,7 +1300,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1309,7 +1309,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1318,7 +1318,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1327,7 +1327,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1336,7 +1336,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1345,7 +1345,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1354,7 +1354,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1363,7 +1363,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1372,7 +1372,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1381,7 +1381,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/base_loader.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/base_loader.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1390,7 +1390,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1399,7 +1399,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1408,7 +1408,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1417,7 +1417,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/change_tracking.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/change_tracking.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1426,7 +1426,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1435,7 +1435,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1444,7 +1444,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1453,7 +1453,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1462,7 +1462,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1471,7 +1471,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/log_extractors.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/log_extractors.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1480,7 +1480,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/base_extractor.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/base_extractor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1489,7 +1489,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1498,7 +1498,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_transformer.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_transformer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1507,7 +1507,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_validator.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1516,7 +1516,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/__init__.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1525,7 +1525,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1534,7 +1534,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
+      "file_path": "gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1543,7 +1543,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_config_validator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_config_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1552,7 +1552,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_config_validator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_config_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1561,7 +1561,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1570,7 +1570,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1579,7 +1579,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1588,7 +1588,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1597,7 +1597,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_gov_reporter.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_gov_reporter.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1606,7 +1606,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_strategies.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_strategies.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1615,7 +1615,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_autonomous_cleanup_toolkit.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_autonomous_cleanup_toolkit.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1624,7 +1624,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_health_check.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_health_check.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1633,7 +1633,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_health_check.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_health_check.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1642,7 +1642,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_gov_aep_engine_auditor.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_gov_aep_engine_auditor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1651,7 +1651,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1660,7 +1660,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1669,7 +1669,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_gov_executor.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_gov_executor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1678,7 +1678,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_governance_audit_script.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_governance_audit_script.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1687,7 +1687,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_marker_detection.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_marker_detection.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1696,7 +1696,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_artifact_validation.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_artifact_validation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1705,7 +1705,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_helpers.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_helpers.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1714,7 +1714,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_gov_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1723,7 +1723,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1732,7 +1732,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/helpers/test_base.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/helpers/test_base.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1741,7 +1741,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/helpers/test_base.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/helpers/test_base.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1750,7 +1750,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tests-legacy/helpers/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tests-legacy/helpers/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1759,7 +1759,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_reporting.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_smoke_reporting.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1768,7 +1768,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/conftest.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/conftest.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1777,7 +1777,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/conftest.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/conftest.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1786,7 +1786,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_memory.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_smoke_memory.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1795,7 +1795,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_functional_memory_system.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_functional_memory_system.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1804,7 +1804,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_supply_chain.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_smoke_supply_chain.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1813,7 +1813,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_system.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_smoke_system.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1822,7 +1822,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1831,7 +1831,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py",
+      "file_path": "gov-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1840,7 +1840,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/performance-tests-legacy/test_unit_cache_operations.py",
+      "file_path": "gov-runtime-engine-platform/performance-tests-legacy/test_unit_cache_operations.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1849,7 +1849,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/performance-tests-legacy/conftest.py",
+      "file_path": "gov-runtime-engine-platform/performance-tests-legacy/conftest.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1858,7 +1858,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/performance-tests-legacy/test_unit_memory_operations.py",
+      "file_path": "gov-runtime-engine-platform/performance-tests-legacy/test_unit_memory_operations.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1867,7 +1867,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/extract_conflicts.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/extract_conflicts.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1876,7 +1876,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/extract_conflicts.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/extract_conflicts.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1885,7 +1885,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/detect_patterns.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/detect_patterns.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1894,7 +1894,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/convert_markdown_to_yaml.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/convert_markdown_to_yaml.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1903,7 +1903,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/auto-fix-issues.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1912,7 +1912,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1921,7 +1921,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1930,7 +1930,7 @@
       "evidence": "Found 3 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1939,7 +1939,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1948,7 +1948,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1957,7 +1957,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1966,7 +1966,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/check_ci_comments.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/check_ci_comments.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1975,7 +1975,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -1984,7 +1984,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -1993,7 +1993,7 @@
       "evidence": "Found 2 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/fix_yaml_structure.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/fix_yaml_structure.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2002,7 +2002,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2011,7 +2011,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2020,7 +2020,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/fix_yaml_indentation.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/fix_yaml_indentation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2029,7 +2029,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2038,7 +2038,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2047,7 +2047,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/count_bandit_issues.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/count_bandit_issues.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2056,7 +2056,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/count_bandit_issues.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/count_bandit_issues.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2065,7 +2065,7 @@
       "evidence": "Found 2 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2074,7 +2074,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2083,7 +2083,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/fix_yaml_markdown.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/fix_yaml_markdown.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2092,7 +2092,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/clean_yaml_files.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/clean_yaml_files.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2101,7 +2101,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2110,7 +2110,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2119,7 +2119,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2128,7 +2128,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2137,7 +2137,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/deploy.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/deploy.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2146,7 +2146,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2155,7 +2155,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2164,7 +2164,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2173,7 +2173,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2182,7 +2182,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2191,7 +2191,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2200,7 +2200,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2209,7 +2209,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2218,7 +2218,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2227,7 +2227,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2236,7 +2236,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2245,7 +2245,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2254,7 +2254,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-scheduling.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2263,7 +2263,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-model-registry.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2272,7 +2272,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2281,7 +2281,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2290,7 +2290,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2299,7 +2299,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2308,7 +2308,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2317,7 +2317,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2326,7 +2326,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2335,7 +2335,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2344,7 +2344,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-gpu-registry.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2353,7 +2353,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-data-catalog.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2362,7 +2362,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2371,7 +2371,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2380,7 +2380,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/validate-metadata.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2389,7 +2389,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2398,7 +2398,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2407,7 +2407,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/test_implementation.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/test_implementation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2416,7 +2416,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/__init__.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2425,7 +2425,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/reconciliation.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/reconciliation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2434,7 +2434,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2443,7 +2443,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2452,7 +2452,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2461,7 +2461,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2470,7 +2470,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2479,7 +2479,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2488,7 +2488,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/hooks/gl-naming-check.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/hooks/gov-naming-check.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2497,7 +2497,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/hooks/config-sync-check.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2506,7 +2506,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/hooks/gl-pre-commit.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/hooks/gov-pre-commit.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2515,7 +2515,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl-consolidation-plan.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2524,7 +2524,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl-consolidation-plan.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2533,7 +2533,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2542,7 +2542,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2551,7 +2551,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/monitoring/health_check.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/monitoring/health_check.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2560,7 +2560,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/monitoring/health_check.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/monitoring/health_check.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2569,7 +2569,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2578,7 +2578,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2587,7 +2587,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_automation_engine.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2596,7 +2596,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_continuous_monitor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2605,7 +2605,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_continuous_monitor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2614,7 +2614,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/__init__.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2623,7 +2623,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_integrator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_integrator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2632,7 +2632,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_integrator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_integrator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2641,7 +2641,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_executor.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_executor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2650,7 +2650,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_executor.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_executor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2659,7 +2659,7 @@
       "evidence": "Found 16 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2668,7 +2668,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2677,7 +2677,7 @@
       "evidence": "Found 12 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_reporter.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_reporter.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2686,7 +2686,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_reporter.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_reporter.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2695,7 +2695,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2704,7 +2704,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2713,7 +2713,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/config_validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/utils/config_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2722,7 +2722,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/config_validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/utils/config_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2731,7 +2731,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2740,7 +2740,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2749,7 +2749,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts-legacy/fhs-integration/operational_test.py",
+      "file_path": "gov-runtime-engine-platform/scripts-legacy/fhs-integration/operational_test.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2758,7 +2758,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/hash_manager.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/hash_manager.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2767,7 +2767,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/__init__.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2776,7 +2776,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/supply_chain_types.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/supply_chain_types.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2785,7 +2785,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2794,7 +2794,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2803,7 +2803,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage1_lint_format.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage1_lint_format.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2812,7 +2812,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage1_lint_format.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage1_lint_format.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2821,7 +2821,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2830,7 +2830,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2839,7 +2839,7 @@
       "evidence": "Found 17 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2848,7 +2848,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2857,7 +2857,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/verify_refactoring.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/verify_refactoring.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2866,7 +2866,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2875,7 +2875,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2884,7 +2884,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage3_dependency.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage3_dependency.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2893,7 +2893,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2902,7 +2902,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2911,7 +2911,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2920,7 +2920,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2929,7 +2929,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_supply_chain_types.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_supply_chain_types.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2938,7 +2938,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_stage1_lint_format.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_stage1_lint_format.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2947,7 +2947,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_stage2_schema_semantic.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_stage2_schema_semantic.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2956,7 +2956,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_hash_manager.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_hash_manager.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2965,7 +2965,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_integration.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_integration.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2974,7 +2974,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_integration.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_integration.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -2983,7 +2983,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/run_tests.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/run_tests.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -2992,7 +2992,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_performance_benchmark.py",
+      "file_path": "gov-runtime-engine-platform/controlplane/validation/tests/test_performance_benchmark.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3001,7 +3001,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts/tools/gl10top10validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts/tools/gl10top10validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3010,7 +3010,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts/tools/gl10top10validator.py",
+      "file_path": "gov-runtime-engine-platform/scripts/tools/gl10top10validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3019,7 +3019,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
+      "file_path": "gov-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3028,7 +3028,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
+      "file_path": "gov-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3037,7 +3037,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts/aup-tools/gl-marker-injector.py",
+      "file_path": "gov-runtime-engine-platform/scripts/aup-tools/gov-marker-injector.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3046,7 +3046,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/scripts/aup-tools/gl-marker-injector.py",
+      "file_path": "gov-runtime-engine-platform/scripts/aup-tools/gov-marker-injector.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3055,7 +3055,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3064,7 +3064,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3073,7 +3073,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/subtree_integrate.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/subtree_integrate.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3082,7 +3082,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3091,7 +3091,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3100,7 +3100,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/real-module-launcher.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/real-module-launcher.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3109,7 +3109,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/real-module-launcher.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/real-module-launcher.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3118,7 +3118,7 @@
       "evidence": "Found 12 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/root-validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/root-validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3127,7 +3127,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/root-validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/root-validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3136,7 +3136,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/find_duplicate_scripts.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/find_duplicate_scripts.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3145,7 +3145,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/evidence_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/evidence_generator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3154,7 +3154,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/evidence_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/evidence_generator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3163,7 +3163,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3172,7 +3172,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3181,7 +3181,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fix_hardcoded_secrets.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3190,7 +3190,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validate_directory_docs.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validate_directory_docs.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3199,7 +3199,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validate_directory_docs.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validate_directory_docs.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3208,7 +3208,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/load-playbook.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/load-playbook.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3217,7 +3217,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/load-playbook.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/load-playbook.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3226,7 +3226,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/module_graph_gate.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/module_graph_gate.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3235,7 +3235,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/module_graph_gate.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/module_graph_gate.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3244,7 +3244,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validate_restructure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validate_restructure.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3253,7 +3253,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validate_restructure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validate_restructure.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3262,7 +3262,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/cleanup_duplicates.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/cleanup_duplicates.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3271,7 +3271,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3280,7 +3280,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3289,7 +3289,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/gl10top10validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/gl10top10validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3298,7 +3298,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/gl10top10validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/gl10top10validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3307,7 +3307,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/directory_doc_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/directory_doc_generator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3316,7 +3316,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/lkb-update.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/lkb-update.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3325,7 +3325,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/lkb-update.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/lkb-update.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3334,7 +3334,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/verify_p0_safety.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/verify_p0_safety.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3343,7 +3343,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/verify_p0_safety.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/verify_p0_safety.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3352,7 +3352,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3361,7 +3361,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3370,7 +3370,7 @@
       "evidence": "Found 13 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/security_audit.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/security_audit.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3379,7 +3379,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/security_audit.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/security_audit.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3388,7 +3388,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/rootfs_assembler.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/rootfs_assembler.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3397,7 +3397,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/rootfs_assembler.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/rootfs_assembler.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3406,7 +3406,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3415,7 +3415,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3424,7 +3424,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3433,7 +3433,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3442,7 +3442,7 @@
       "evidence": "Found 12 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3451,7 +3451,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3460,7 +3460,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3469,7 +3469,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3478,7 +3478,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scan_tech_debt.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scan_tech_debt.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3487,7 +3487,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scan_tech_debt.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scan_tech_debt.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3496,7 +3496,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3505,7 +3505,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3514,7 +3514,7 @@
       "evidence": "Found 12 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/semantic-commit-generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/semantic-commit-generator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3523,7 +3523,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/namespace-validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/namespace-validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3532,7 +3532,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/sync_external_repos.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/sync_external_repos.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3541,7 +3541,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/sync_external_repos.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/sync_external_repos.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3550,7 +3550,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automated_directory_restructure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automated_directory_restructure.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3559,7 +3559,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automated_directory_restructure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automated_directory_restructure.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3568,7 +3568,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/namespace-converter.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/namespace-converter.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3577,7 +3577,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/namespace-converter.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/namespace-converter.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3586,7 +3586,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/build_module.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/build_module.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3595,7 +3595,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/language-history-writer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/language-history-writer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3604,7 +3604,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/language-history-writer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/language-history-writer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3613,7 +3613,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3622,7 +3622,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3631,7 +3631,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ci-cost-dashboard.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ci-cost-dashboard.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3640,7 +3640,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3649,7 +3649,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3658,7 +3658,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3667,7 +3667,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3676,7 +3676,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/language-health-score.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/language-health-score.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3685,7 +3685,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/language-health-score.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/language-health-score.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3694,7 +3694,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3703,7 +3703,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3712,7 +3712,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/root_schema_gate.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/root_schema_gate.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3721,7 +3721,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/root_schema_gate.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/root_schema_gate.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3730,7 +3730,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fix-yaml-structure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fix-yaml-structure.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3739,7 +3739,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3748,7 +3748,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3757,7 +3757,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ai/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ai/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3766,7 +3766,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/ai/governance_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/ai/governance_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3775,7 +3775,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3784,7 +3784,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3793,7 +3793,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -3802,7 +3802,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3811,7 +3811,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3820,7 +3820,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3829,7 +3829,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3838,7 +3838,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
       "violation_type": "GL_GQS",
       "severity": "MEDIUM",
       "rule_id": "GQS-002",
@@ -3847,7 +3847,7 @@
       "evidence": "Contains \"superposition\" keyword"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3856,7 +3856,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3865,7 +3865,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3874,7 +3874,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/path_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3883,7 +3883,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/path_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3892,7 +3892,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3901,7 +3901,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3910,7 +3910,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3919,7 +3919,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3928,7 +3928,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3937,7 +3937,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3946,7 +3946,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3955,7 +3955,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3964,7 +3964,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3973,7 +3973,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -3982,7 +3982,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -3991,7 +3991,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4000,7 +4000,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4009,7 +4009,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4018,7 +4018,7 @@
       "evidence": "Found 14 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4027,7 +4027,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engine_base.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engine_base.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4036,7 +4036,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engine_base.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engine_base.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4045,7 +4045,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/integration_automation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/integration_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4054,7 +4054,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4063,7 +4063,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4072,7 +4072,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4081,7 +4081,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4090,7 +4090,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4099,7 +4099,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4108,7 +4108,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4117,7 +4117,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4126,7 +4126,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4135,7 +4135,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/__init__.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4144,7 +4144,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4153,7 +4153,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4162,7 +4162,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4171,7 +4171,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4180,7 +4180,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4189,7 +4189,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4198,7 +4198,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/auto_refactor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/auto_refactor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4207,7 +4207,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate_structure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate_structure.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4216,7 +4216,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate_structure.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/validate_structure.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4225,7 +4225,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4234,7 +4234,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4243,7 +4243,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/update_indexes.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/update_indexes.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4252,7 +4252,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4261,7 +4261,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4270,7 +4270,7 @@
       "evidence": "Found 13 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4279,7 +4279,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4288,7 +4288,7 @@
       "evidence": "Found 12 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4297,7 +4297,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4306,7 +4306,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/execute_integration.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/execute_integration.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4315,7 +4315,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/execute_integration.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/refactor/execute_integration.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4324,7 +4324,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/python/governance_agent.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/python/governance_agent.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4333,7 +4333,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/python/governance_agent.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/python/governance_agent.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4342,7 +4342,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4351,7 +4351,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4360,7 +4360,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4369,7 +4369,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4378,7 +4378,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4387,7 +4387,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4396,7 +4396,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/world_class_validation.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/world_class_validation.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4405,7 +4405,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/world_class_validation.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/world_class_validation.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4414,7 +4414,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/validate-artifact.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/validate-artifact.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4423,7 +4423,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/validate_pr1063_layers.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/validate_pr1063_layers.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4432,7 +4432,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4441,7 +4441,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4450,7 +4450,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/validation/validate_pr1064_layers.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/validation/validate_pr1064_layers.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4459,7 +4459,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4468,7 +4468,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4477,7 +4477,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4486,7 +4486,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4495,7 +4495,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4504,7 +4504,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4513,7 +4513,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/project_to_superroot.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/project_to_superroot.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4522,7 +4522,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4531,7 +4531,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4540,7 +4540,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/validate_index.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/validate_index.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4549,7 +4549,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/validate_index.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/validate_index.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4558,7 +4558,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4567,7 +4567,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4576,7 +4576,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/generate_mndoc_from_readme.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/generate_mndoc_from_readme.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4585,7 +4585,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4594,7 +4594,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4603,7 +4603,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/provenance_injector.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/provenance_injector.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4612,7 +4612,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/docs/provenance_injector.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/docs/provenance_injector.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4621,7 +4621,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4630,7 +4630,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4639,7 +4639,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/automated_maintenance_system.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/automated_maintenance_system.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4648,7 +4648,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4657,7 +4657,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4666,7 +4666,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4675,7 +4675,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4684,7 +4684,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4693,7 +4693,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4702,7 +4702,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4711,7 +4711,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4720,7 +4720,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4729,7 +4729,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4738,7 +4738,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/fix_event_comparison.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/fix_event_comparison.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4747,7 +4747,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4756,7 +4756,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4765,7 +4765,7 @@
       "evidence": "Found 5 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4774,7 +4774,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4783,7 +4783,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generators/documentation_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generators/documentation_generator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4792,7 +4792,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generators/contract_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generators/contract_generator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4801,7 +4801,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generators/contract_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generators/contract_generator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4810,7 +4810,7 @@
       "evidence": "Found 4 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/generators/validator_generator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/generators/validator_generator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4819,7 +4819,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4828,7 +4828,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4837,7 +4837,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4846,7 +4846,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4855,7 +4855,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4864,7 +4864,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4873,7 +4873,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4882,7 +4882,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4891,7 +4891,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4900,7 +4900,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -4909,7 +4909,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_integrator.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/fhs_integrator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4918,7 +4918,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -4927,7 +4927,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py",
+      "file_path": "gov-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -5737,7 +5737,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "platforms/gl-platform-assistant/orchestration/pipeline.py",
+      "file_path": "platforms/gov-platform-assistant/orchestration/pipeline.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -6844,7 +6844,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-semantic-core-platform/tests/unit/test_folding_engine.py",
+      "file_path": "gov-semantic-core-platform/tests/unit/test_folding_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -6853,7 +6853,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-semantic-core-platform/tests/unit/test_folding_engine.py",
+      "file_path": "gov-semantic-core-platform/tests/unit/test_folding_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -6862,7 +6862,7 @@
       "evidence": "Found 8 import lines"
     },
     {
-      "file_path": "gl-semantic-core-platform/tools/benchmark/run_benchmark.py",
+      "file_path": "gov-semantic-core-platform/tools/benchmark/run_benchmark.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -6871,7 +6871,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-semantic-core-platform/tools/benchmark/run_benchmark.py",
+      "file_path": "gov-semantic-core-platform/tools/benchmark/run_benchmark.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -6880,7 +6880,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl-semantic-core-platform/src/semantic-folding/engine.py",
+      "file_path": "gov-semantic-core-platform/src/semantic-folding/engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -6889,7 +6889,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-semantic-core-platform/src/semantic-folding/engine.py",
+      "file_path": "gov-semantic-core-platform/src/semantic-folding/engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8086,7 +8086,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/hooks/gl-naming-check.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/hooks/gov-naming-check.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8104,7 +8104,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/hooks/gl-pre-commit.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/hooks/gov-pre-commit.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8113,7 +8113,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-restructure/gov-consolidation-plan.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8122,7 +8122,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-restructure/gov-consolidation-plan.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8185,7 +8185,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_automation_engine.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_automation_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8194,7 +8194,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_continuous_monitor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8203,7 +8203,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_continuous_monitor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8212,7 +8212,7 @@
       "evidence": "Found 10 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/__init__.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8221,7 +8221,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_integrator.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_integrator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8230,7 +8230,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_integrator.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_integrator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8239,7 +8239,7 @@
       "evidence": "Found 7 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_executor.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_executor.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8248,7 +8248,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_executor.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_executor.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8257,7 +8257,7 @@
       "evidence": "Found 16 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_validator.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8266,7 +8266,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_validator.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_validator.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8275,7 +8275,7 @@
       "evidence": "Found 12 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_reporter.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_reporter.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8284,7 +8284,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_reporter.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gov-engine/gov_reporter.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -8635,7 +8635,7 @@
       "evidence": "Found 11 import lines"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts/aup-tools/gl-marker-injector.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts/aup-tools/gov-marker-injector.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -8644,7 +8644,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl.runtime.execution-platform/engine/scripts/aup-tools/gl-marker-injector.py",
+      "file_path": "gl.runtime.execution-platform/engine/scripts/aup-tools/gov-marker-injector.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -10885,7 +10885,7 @@
       "evidence": "Found 6 import lines"
     },
     {
-      "file_path": "gl-governance-compliance/contracts/__init__.py",
+      "file_path": "gov-governance-compliance/contracts/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10894,7 +10894,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/contracts/gov_contract.py",
+      "file_path": "gov-governance-compliance/contracts/gov_contract.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10903,7 +10903,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/contracts/gov_policy.py",
+      "file_path": "gov-governance-compliance/contracts/gov_policy.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10912,7 +10912,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/platforms/__init__.py",
+      "file_path": "gov-governance-compliance/platforms/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10921,7 +10921,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/languages/__init__.py",
+      "file_path": "gov-governance-compliance/languages/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10930,7 +10930,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/formats/__init__.py",
+      "file_path": "gov-governance-compliance/formats/__init__.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10939,7 +10939,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/formats/__init__.py",
+      "file_path": "gov-governance-compliance/formats/__init__.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -10948,7 +10948,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-governance-compliance/scripts/verification/content_based_migration.py",
+      "file_path": "gov-governance-compliance/scripts/verification/content_based_migration.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10957,7 +10957,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/scripts/verification/content_based_migration.py",
+      "file_path": "gov-governance-compliance/scripts/verification/content_based_migration.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",
@@ -10966,7 +10966,7 @@
       "evidence": "Found 9 import lines"
     },
     {
-      "file_path": "gl-governance-compliance/scripts/naming/gl_naming_validator.py",
+      "file_path": "gov-governance-compliance/scripts/naming/gl_naming_validator.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10975,7 +10975,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/scripts/evolution/gov_evolution_engine.py",
+      "file_path": "gov-governance-compliance/scripts/evolution/gov_evolution_engine.py",
       "violation_type": "MNGA",
       "severity": "MEDIUM",
       "rule_id": "MNGA-001",
@@ -10984,7 +10984,7 @@
       "evidence": "First few lines do not contain docstring"
     },
     {
-      "file_path": "gl-governance-compliance/scripts/evolution/gov_evolution_engine.py",
+      "file_path": "gov-governance-compliance/scripts/evolution/gov_evolution_engine.py",
       "violation_type": "MNGA",
       "severity": "LOW",
       "rule_id": "MNGA-002",

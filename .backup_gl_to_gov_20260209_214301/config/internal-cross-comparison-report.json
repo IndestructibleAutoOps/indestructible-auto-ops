@@ -1,0 +1,432 @@
+{
+  "timestamp": "2026-01-31T00:00:00Z",
+  "analysis_phase": "internal_repository_cross_comparison",
+  "findings": {
+    "directory_patterns": {
+      "total_patterns_found": 9,
+      "sample_patterns": {
+        "platform-universe-unknown": [
+          "gl-platform"
+        ],
+        "semantic-core-platform": [
+          "gl-semantic-core-platform"
+        ],
+        "runtime-platform-unknown": [
+          "gl-runtime-platform"
+        ],
+        "policy-engine-unknown": [
+          "gl-policy-engine"
+        ],
+        "semantic-graph-unknown": [
+          "gl-semantic-graph",
+          "gl-semantic-graph",
+          "gl-semantic-graph"
+        ],
+        "resource-graph-unknown": [
+          "gl-resource-graph"
+        ],
+        "artifacts-store-unknown": [
+          "gl-artifacts-store"
+        ],
+        "events-stream-unknown": [
+          "gl-events-stream"
+        ],
+        "audit-reports-unknown": [
+          "gl-audit-reports"
+        ]
+      }
+    },
+    "naming_conventions": {
+      "total_conventions": 16,
+      "convention_types": [
+        "comment-naming",
+        "dependency-naming",
+        "directory-naming",
+        "env-naming",
+        "event-naming",
+        "file-naming",
+        "gitops-naming",
+        "helm-naming",
+        "long-naming",
+        "mapping-naming",
+        "path-naming",
+        "port-naming",
+        "reference-naming",
+        "service-naming",
+        "short-naming",
+        "variable-naming"
+      ],
+      "enforcement_level": "MANDATORY",
+      "governance_level": "CONSTITUTIONAL"
+    },
+    "governance_files": {
+      "total_files": 238,
+      "sample_files": [
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/sealed/GL-SEAL-MANIFEST.yaml",
+          "size": 1879
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/sealed/GL-SEMANTIC-SEAL.yaml",
+          "size": 16246
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/security/info-security-policy-reference.yaml",
+          "size": 8402
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/gatekeeper/namespace-constraints.yaml",
+          "size": 12894
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/exception/exception-policy.yaml",
+          "size": 7721
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/observability/naming-metrics-policy.yaml",
+          "size": 6238
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/validation/ci-validation-policy.yaml",
+          "size": 5500
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/migration/naming-migration-policy.yaml",
+          "size": 8614
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/naming/api-naming.yaml",
+          "size": 4607
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/naming/k8s-deployment-naming.yaml",
+          "size": 4130
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/naming/pipeline-naming.yaml",
+          "size": 4817
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/naming/canonical-regex.policy.yaml",
+          "size": 9822
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/naming/required-labels.policy.yaml",
+          "size": 12564
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/policies/change-management/change-policy.yaml",
+          "size": 7670
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-semantic-stabilization.yaml",
+          "size": 1995
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-governance-loop.yaml",
+          "size": 7240
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-integrated-seal.yaml",
+          "size": 21706
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-chain-registry.yaml",
+          "size": 12483
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-global-parallelism-engine.yaml",
+          "size": 27770
+        },
+        {
+          "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-layers.yaml",
+          "size": 5139
+        }
+      ]
+    },
+    "inconsistencies": [],
+    "governance_patterns": [
+      {
+        "file": "GL-SEAL-MANIFEST.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/sealed/GL-SEAL-MANIFEST.yaml",
+        "kind": "SealManifest",
+        "api_version": "governance.machinenativeops.io/v2"
+      },
+      {
+        "file": "GL-SEMANTIC-SEAL.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/sealed/GL-SEMANTIC-SEAL.yaml",
+        "kind": "SemanticSeal",
+        "api_version": "governance.machinenativeops.io/v2"
+      },
+      {
+        "file": "info-security-policy-reference.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/security/info-security-policy-reference.yaml",
+        "kind": "GovernancePolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "exception-policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/exception/exception-policy.yaml",
+        "kind": "GovernancePolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "naming-metrics-policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/observability/naming-metrics-policy.yaml",
+        "kind": "NamingObservability",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "ci-validation-policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/validation/ci-validation-policy.yaml",
+        "kind": "ValidationPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "naming-migration-policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/migration/naming-migration-policy.yaml",
+        "kind": "MigrationPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "api-naming.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/naming/api-naming.yaml",
+        "kind": "NamingPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "k8s-deployment-naming.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/naming/k8s-deployment-naming.yaml",
+        "kind": "NamingPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "pipeline-naming.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/naming/pipeline-naming.yaml",
+        "kind": "NamingPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "canonical-regex.policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/naming/canonical-regex.policy.yaml",
+        "kind": "NamingPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "required-labels.policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/naming/required-labels.policy.yaml",
+        "kind": "LabelPolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "change-policy.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/policies/change-management/change-policy.yaml",
+        "kind": "GovernancePolicy",
+        "api_version": "governance.machinenativeops.io/v1alpha1"
+      },
+      {
+        "file": "gl-semantic-stabilization.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-semantic-stabilization.yaml",
+        "kind": "SemanticStabilizationStatus",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-governance-loop.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-governance-loop.yaml",
+        "kind": "GLGovernanceLoop",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-integrated-seal.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-integrated-seal.yaml",
+        "kind": "GLIntegratedSeal",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-chain-registry.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-chain-registry.yaml",
+        "kind": "GLChainRegistry",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-global-parallelism-engine.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-global-parallelism-engine.yaml",
+        "kind": "unknown",
+        "api_version": "unknown"
+      },
+      {
+        "file": "gl-layers.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-layers.yaml",
+        "kind": "GovernanceLayersDefinition",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-execution-mode.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-execution-mode.yaml",
+        "kind": "GLExecutionMode",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-skills-matrix.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-skills-matrix.yaml",
+        "kind": "GLSkillsMatrix",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-artifacts-matrix.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-artifacts-matrix.yaml",
+        "kind": "GLArtifactsMatrix",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-global-semantic-index.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-global-semantic-index.yaml",
+        "kind": "GLGlobalSemanticIndex",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-dag.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-dag.yaml",
+        "kind": "GLDirectedAcyclicGraph",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-semantic-boundaries.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-semantic-boundaries.yaml",
+        "kind": "GLSemanticBoundaries",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-task-lifecycle.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-task-lifecycle.yaml",
+        "kind": "GLTaskLifecycle",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-filesystem-mapping.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-filesystem-mapping.yaml",
+        "kind": "GLFilesystemMapping",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-artifact-dsl.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-artifact-dsl.yaml",
+        "kind": "unknown",
+        "api_version": "unknown"
+      },
+      {
+        "file": "gl-index.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-index.yaml",
+        "kind": "GLArchitectureIndex",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-final-seal.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-final-seal.yaml",
+        "kind": "unknown",
+        "api_version": "unknown"
+      },
+      {
+        "file": "gl-semantic-seal.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-semantic-seal.yaml",
+        "kind": "GLSemanticSeal",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-automation-engine.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-automation-engine.yaml",
+        "kind": "GLAutomationEngine",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-global-governance-audit-report.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-global-governance-audit-report.yaml",
+        "kind": "GLGlobalGovernanceAuditReport",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-directory-naming-spec.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-directory-naming-spec.yaml",
+        "kind": "GLDirectoryNamingSpecification",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-constitution.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-constitution.yaml",
+        "kind": "GLConstitution",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "gl-artifact-engine.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/gl-artifact-engine.yaml",
+        "kind": "GLArtifactEngine",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "controlplane-integration.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/integrations/controlplane-integration.yaml",
+        "kind": "GLIntegration",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "workspace-integration.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/integrations/workspace-integration.yaml",
+        "kind": "GLIntegration",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "tools-integration.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/integrations/tools-integration.yaml",
+        "kind": "GLIntegration",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "layer-template.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/templates/layer-template.yaml",
+        "kind": "GLLayerTemplate",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "dimension-template.yaml",
+        "path": "/workspace/machine-native-ops/.github/governance/architecture/templates/dimension-template.yaml",
+        "kind": "GLDimensionTemplate",
+        "api_version": "governance.machinenativeops.io/v1"
+      },
+      {
+        "file": "naming-conventions.yaml",
+        "path": "/workspace/machine-native-ops/gl-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+        "kind": "NamingConventionSpecification",
+        "api_version": "gl-runtime.io/v1.0.0"
+      },
+      {
+        "file": "capability-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-platform/governance/naming-governance/registry/capability-registry.yaml",
+        "kind": "CapabilityRegistry",
+        "api_version": "gl-runtime.io/v1.0.0"
+      },
+      {
+        "file": "abbreviation-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-platform/governance/naming-governance/registry/abbreviation-registry.yaml",
+        "kind": "AbbreviationRegistry",
+        "api_version": "gl-runtime.io/v1.0.0"
+      },
+      {
+        "file": "resource-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-platform/governance/naming-governance/registry/resource-registry.yaml",
+        "kind": "ResourceRegistry",
+        "api_version": "gl-runtime.io/v1.0.0"
+      },
+      {
+        "file": "domain-registry.yaml",
+        "path": "/workspace/machine-native-ops/gl-platform/governance/naming-governance/registry/domain-registry.yaml",
+        "kind": "DomainRegistry",
+        "api_version": "gl-runtime.io/v1.0.0"
+      }
+    ],
+    "statistics": {
+      "gl_prefixed_directories": 24,
+      "governance_yaml_files": 42,
+      "platform_directories": 5
+    }
+  }
+}

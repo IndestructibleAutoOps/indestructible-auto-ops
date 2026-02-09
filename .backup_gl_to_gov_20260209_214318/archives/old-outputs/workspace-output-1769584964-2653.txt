@@ -1,0 +1,5 @@
+  File "<string>", line 1
+    import json; data=json.load(open()); print(_gl in data and layer in data[_gl] and semantic in data[_gl]) && exit(0) || exit(1)
+                                                                                                              ^
+SyntaxError: invalid syntax
+Exit code: 1

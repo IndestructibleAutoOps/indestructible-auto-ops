@@ -1,0 +1,51 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "graph": {
+    "01-core": [],
+    "02-intelligence": [
+      "01-core"
+    ],
+    "03-governance": [
+      "01-core",
+      "02-intelligence"
+    ],
+    "04-autonomous": [
+      "01-core",
+      "02-intelligence",
+      "03-governance"
+    ],
+    "05-observability": [
+      "01-core",
+      "02-intelligence",
+      "03-governance"
+    ],
+    "06-security": [
+      "01-core",
+      "03-governance",
+      "05-observability"
+    ]
+  },
+  "depths": {
+    "01-core": 0,
+    "02-intelligence": 1,
+    "03-governance": 2,
+    "04-autonomous": 3,
+    "05-observability": 3,
+    "06-security": 4
+  },
+  "cycles": [],
+  "statistics": {
+    "total_modules": 6,
+    "total_dependencies": 12,
+    "max_depth": 4
+  }
+}

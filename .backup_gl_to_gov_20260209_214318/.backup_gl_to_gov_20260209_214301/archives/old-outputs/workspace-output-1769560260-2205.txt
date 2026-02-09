@@ -1,0 +1,30 @@
+{
+    "session_id": "gl-audit-20260126-020557",
+    "total_events": 376,
+    "events": [
+        {
+            "event_id": "evt-0001",
+            "timestamp": "2026-01-26T02:05:57.107025+00:00",
+            "event_type": "AUDIT",
+            "source": "engine",
+            "target": "engine/README.md",
+            "action": "start",
+            "status": "running",
+            "details": {},
+            "hash": "1f0438f194a855fd"
+        },
+        {
+            "event_id": "evt-0002",
+            "timestamp": "2026-01-26T02:05:57.107064+00:00",
+            "event_type": "ETL",
+            "source": "extract",
+            "target": "engine/README.md",
+            "action": "start",
+            "status": "running",
+            "details": {},
+            "hash": "aeec227d6b8fcb82"
+        },
+        {
+            "event_id": "evt-0003",
+            "timestamp": "2026-01-26T02:05:57.107212+00:00",
+            "event_type": "ETL",

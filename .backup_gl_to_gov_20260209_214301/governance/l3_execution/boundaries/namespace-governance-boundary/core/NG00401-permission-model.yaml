@@ -1,0 +1,128 @@
+# NG00401: 命名空間權限模型
+# Namespace Permission Model
+
+apiVersion: ng.governance/v3
+kind: PermissionModel
+metadata:
+  ng_code: NG00401
+  name: namespace-permission-model
+  version: "1.0.0"
+  parent: NG00000
+  domain: "權限"
+  status: active
+
+spec:
+  purpose: "定義命名空間訪問控制和權限管理模型"
+  
+  permission_levels:
+    level_1_read:
+      name: "讀取權限"
+      ng_code: "NG00401"
+      capabilities:
+        - "查詢命名空間資訊"
+        - "列出命名空間"
+        - "查看審計日誌"
+    
+    level_2_write:
+      name: "寫入權限"
+      ng_code: "NG00402"
+      includes: ["level_1_read"]
+      capabilities:
+        - "更新命名空間元數據"
+        - "添加標籤"
+        - "更新描述"
+    
+    level_3_manage:
+      name: "管理權限"
+      ng_code: "NG00403"
+      includes: ["level_1_read", "level_2_write"]
+      capabilities:
+        - "更改命名空間狀態"
+        - "執行遷移"
+        - "配置權限"
+    
+    level_4_admin:
+      name: "管理員權限"
+      ng_code: "NG00404"
+      includes: ["level_1_read", "level_2_write", "level_3_manage"]
+      capabilities:
+        - "創建命名空間"
+        - "刪除命名空間"
+        - "分配 NG 編碼"
+        - "歸檔命名空間"
+  
+  role_based_access:
+    namespace_owner:
+      permissions: ["read", "write", "manage"]
+      description: "命名空間擁有者"
+    
+    era_coordinator:
+      permissions: ["read", "write"]
+      description: "Era 協調員"
+      scope: "within_era"
+    
+    domain_manager:
+      permissions: ["read", "manage"]
+      description: "領域管理員"
+      scope: "within_domain"
+    
+    governance_committee:
+      permissions: ["admin"]
+      description: "治理委員會"
+      scope: "global"
+    
+    read_only_user:
+      permissions: ["read"]
+      description: "只讀用戶"
+      scope: "public_namespaces"
+  
+  access_control_matrix:
+    create_namespace:
+      required_permission: "admin"
+      additional_checks:
+        - "owner_verified"
+        - "domain_quota_available"
+    
+    update_namespace:
+      required_permission: "write"
+      additional_checks:
+        - "is_owner_or_manager"
+    
+    delete_namespace:
+      required_permission: "admin"
+      additional_checks:
+        - "no_active_references"
+        - "governance_committee_approval"
+    
+    migrate_namespace:
+      required_permission: "manage"
+      additional_checks:
+        - "migration_plan_approved"
+        - "target_namespace_available"
+  
+  permission_inheritance:
+    parent_to_child:
+      rule: "子命名空間繼承父命名空間的權限"
+      exceptions:
+        - "明確拒絕（deny）"
+        - "跨 Era 邊界"
+    
+    era_boundary:
+      rule: "跨 Era 權限需要明確授予"
+      validation: "NG90401"
+  
+  audit_requirements:
+    log_all_access:
+      description: "記錄所有命名空間訪問"
+      standard: "NG00701"
+      retention: "1 year"
+    
+    log_permission_changes:
+      description: "記錄所有權限變更"
+      standard: "NG00702"
+      retention: "5 years"
+
+enforcement:
+  automatic_enforcement: true
+  permission_check_frequency: "on_every_access"
+  violation_action: "BLOCK_AND_ALERT"

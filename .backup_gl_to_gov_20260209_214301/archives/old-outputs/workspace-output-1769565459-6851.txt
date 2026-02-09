@@ -1,0 +1,26 @@
+
+> @machinenativeops/aep-engine@1.0.0 validate
+> npx ts-node governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769565461167",
+      "type": "validation",
+      "timestamp": "2026-01-28T01:57:41.167Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T01:57:41.004Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}

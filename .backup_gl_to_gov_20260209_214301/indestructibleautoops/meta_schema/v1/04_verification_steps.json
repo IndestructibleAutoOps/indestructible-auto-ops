@@ -1,0 +1,25 @@
+{
+  "system": "IndestructibleAutoOps",
+  "component": "meta-schema",
+  "version": "v1",
+  "section": "Verification Steps",
+  "steps": [
+    {
+      "id": "V-001",
+      "command": "python indestructibleautoops/meta_schema/v1/03_engineering_patch/tools/validate_meta_schema.py --write-evidence",
+      "pass_criteria": [
+        "exit_code==0",
+        ".evidence/meta_schema/reports/summary.json exists",
+        "invalid_cases unexpected_pass == []"
+      ]
+    },
+    {
+      "id": "V-002",
+      "command": "github_actions:.github/workflows/meta-schema-validate.yml",
+      "pass_criteria": [
+        "workflow green",
+        "artifact meta-schema-evidence uploaded"
+      ]
+    }
+  ]
+}

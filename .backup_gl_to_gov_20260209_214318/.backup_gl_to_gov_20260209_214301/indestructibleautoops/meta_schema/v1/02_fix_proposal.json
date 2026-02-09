@@ -1,0 +1,47 @@
+{
+  "system": "IndestructibleAutoOps",
+  "component": "meta-schema",
+  "version": "v1",
+  "section": "Fix Proposal",
+  "proposal": [
+    {
+      "id": "FP-001",
+      "title": "L0 Meta-Schema（JSON Schema 2020-12）",
+      "deliverables": [
+        "schemas/meta-schema.v1.json",
+        "schemas/kind-enum.v1.json",
+        "schemas/metadata.v1.json",
+        "schemas/status.v1.json"
+      ]
+    },
+    {
+      "id": "FP-002",
+      "title": "L1-L15 kind 分類與封閉 enum 治理",
+      "deliverables": [
+        "schemas/kinds/index.v1.json"
+      ]
+    },
+    {
+      "id": "FP-003",
+      "title": "CI 驗證 gate（離線可驗證）",
+      "deliverables": [
+        "tools/validate_meta_schema.py",
+        ".github/workflows/meta-schema-validate.yml"
+      ]
+    },
+    {
+      "id": "FP-004",
+      "title": "範例與測試向量（examples + negative cases）",
+      "deliverables": [
+        "examples/naming_convention.v1.yaml",
+        "examples/security_policy.v1.yaml",
+        "examples/invalid_cases/*.yaml"
+      ]
+    }
+  ],
+  "compatibility_policy": {
+    "meta_schema": "immutable_core_fields",
+    "api_versioning": "kubernetes_style",
+    "id_versioning": "major_in_path"
+  }
+}

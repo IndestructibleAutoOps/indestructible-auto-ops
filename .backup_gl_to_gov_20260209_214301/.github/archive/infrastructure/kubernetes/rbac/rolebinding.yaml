@@ -1,0 +1,18 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: autofix-bot-rolebinding
+  namespace: autofix-bot
+subjects:
+- kind: ServiceAccount
+  name: autofix-bot
+  namespace: autofix-bot
+roleRef:
+  kind: Role
+  name: autofix-bot-role
+  apiGroup: rbac.authorization.k8s.io

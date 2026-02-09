@@ -1,0 +1,3276 @@
+{
+  "timestamp": "2026-02-09T21:43:21.711757",
+  "dry_run": false,
+  "root_dir": "/workspace/indestructibleautoops",
+  "backup_dir": "/workspace/indestructibleautoops/.backup_gl_to_gov_20260209_214318",
+  "results": {
+    "directories_renamed": 0,
+    "files_renamed": 0,
+    "files_updated": 407,
+    "errors": [],
+    "skipped": []
+  },
+  "migration_log": [
+    {
+      "timestamp": "2026-02-09T21:43:21.377729",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/gov_files.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 7
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.379079",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/naming_scan_report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 113
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.379408",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/execution-plan.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.379561",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/file_sample.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 21
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.379717",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/add_gl_markers_v2.py",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.379886",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance-files-migration-complete.md",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.392852",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/gl_to_gov_migration_report_20260209_214301.json",
+      "target": null,
+      "status": "completed",
+      "changes": 458
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.393811",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/phase1-semantic-models.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.394001",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/terminology-unification-plan.md",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.396152",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/quick_dependency_scan_results.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.396570",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/platforms/quantum/artifacts/cli/artifact_cli.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.396748",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/platforms/quantum/artifacts/converters/docx_to_yaml_converter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.396955",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/platforms/quantum/artifacts/converters/markdown_to_python_module.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.397128",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/platforms/quantum/artifacts/converters/pdf_to_json_converter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.397338",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l4_evidence/reports/gov_naming_migration_report.md",
+      "target": null,
+      "status": "completed",
+      "changes": 14
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.397519",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/specs/gov-naming-registry/GL-NAMING-CONTRACTS-REGISTRY-SUMMARY.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.397801",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/specs/gov-naming-registry/gov-naming-contracts-registry.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.398268",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/specs/gov-naming-layers/gov-contract-layer-specification.md",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.398603",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/specs/gov-naming-layers/gov-naming-ontology-expanded.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.399169",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/naming-conventions-index.json",
+      "target": null,
+      "status": "completed",
+      "changes": 36
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.401278",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/naming-violations-report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 24
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.405756",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/scan-results.json",
+      "target": null,
+      "status": "completed",
+      "changes": 174
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.415435",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/mnga/mnga-compliance-report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 88
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.419340",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/mnga/mnga-compliance-report-fixed.json",
+      "target": null,
+      "status": "completed",
+      "changes": 22
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.423814",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/naming/naming-consistency-report-20260203-162127.json",
+      "target": null,
+      "status": "completed",
+      "changes": 162
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.430013",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/naming/naming-consistency-report-20260203-161926.json",
+      "target": null,
+      "status": "completed",
+      "changes": 87
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.436387",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/naming/naming-consistency-report-20260203-162040.json",
+      "target": null,
+      "status": "completed",
+      "changes": 130
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.441271",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/reports/naming/naming-consistency-report-20260203-162203.json",
+      "target": null,
+      "status": "completed",
+      "changes": 162
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.441984",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/scan_secrets.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.442188",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/gov-markers/fix_governance_markers.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.442332",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/gov-markers/add_gl_markers.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.442446",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/gov-markers/add_gl_markers_batch.py",
+      "target": null,
+      "status": "completed",
+      "changes": 7
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.442599",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/gov-markers/add_gl_markers_json.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.442739",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/gov-markers/add_gl_markers_yaml.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.442901",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/tools/audit/gov_audit_simple.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.443000",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/governance/governance-monitor-config.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.443469",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/governance/meta-governance/DRIFT-ANALYSIS-REPORT.json",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.444236",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/governance/docs/architecture/architecture-summary.json",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.444837",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/implementation/ecosystem/governance/docs/architecture/components.md",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.445007",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/docs/naming-governance-analysis-task.md",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.445193",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/namespace-governance-boundary/docs/GL-NAMING-ONTOLOGY-EXPANDED-INTEGRATION.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.445542",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/scan_source_code_timelines.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.445852",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/fix_hardcoded_timelines.py",
+      "target": null,
+      "status": "completed",
+      "changes": 11
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.446069",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/platform_deploy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.446308",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/scan_hardcoded_timelines.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.446582",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/scan_hardcoded_timelines_filtered.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.446801",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl90-99-meta-specifications/semantic-core/tests/unit/test_folding_engine.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.447024",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl90-99-meta-specifications/semantic-core/tools/benchmark/run_benchmark.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.447366",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl90-99-meta-specifications/semantic-core/src/semantic-folding/engine.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.447584",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/services/quantum-platform/artifacts/cli/artifact_cli.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.447748",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/services/quantum-platform/artifacts/converters/docx_to_yaml_converter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.447949",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/services/quantum-platform/artifacts/converters/markdown_to_python_module.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.448120",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/services/quantum-platform/artifacts/converters/pdf_to_json_converter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.450451",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-reports/bandit-report-fixed.json",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.456698",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.459430",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-reports/bandit-report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.467777",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.468531",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/tools/etl/pipeline_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.468742",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/tools/etl/run_root_files.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.468854",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.468952",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469139",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469224",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469347",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/base_loader.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469429",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/sync/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469592",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469752",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/sync/change_tracking.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.469886",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470036",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470118",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470274",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/log_extractors.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470399",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/base_extractor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470478",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470650",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_transformer.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470792",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.470877",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471019",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471099",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471174",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/integration/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471330",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_config_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471469",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_metrics_collector.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471761",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_auto_fix_bot_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.471857",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.472181",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_gl_reporter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 15
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.472407",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_auto_fix_strategies.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.472566",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_autonomous_cleanup_toolkit.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.472735",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_health_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.472960",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_gl_aep_engine_auditor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.473100",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_code_deduplicator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.473342",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_gl_executor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 14
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.473546",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_governance_audit_script.py",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.473700",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_marker_detection.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.473870",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_artifact_validation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474005",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_helpers.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474168",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/unit/test_workflow_orchestrator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474246",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/e2e/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474317",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/fixtures/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474452",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/helpers/test_base.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474528",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tests-legacy/helpers/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474665",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/test_smoke_reporting.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.474894",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/conftest.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475047",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/test_smoke_memory.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475251",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/test_functional_memory_system.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475416",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/test_smoke_supply_chain.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475638",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/test_smoke_system.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475775",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/integration-tests-legacy/test_smoke_config.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475863",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/aep-engine-web/src/hooks/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.475937",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/aep-engine-web/src/screens/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.476020",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/aep-engine-web/src/components/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.476092",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/aep-engine-web/src/data/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.476375",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.476545",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/performance-tests-legacy/test_unit_cache_operations.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.476770",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/performance-tests-legacy/conftest.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.476971",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/performance-tests-legacy/test_unit_memory_operations.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.477080",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/validate_module_manifests.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.477350",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/extract_conflicts.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.477513",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/detect_patterns.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.477624",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/convert_markdown_to_yaml.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.477813",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/auto_fix_issues.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.478088",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/generate_autonomy_summary.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.478448",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/auto_quality_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.478633",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/check_ci_comments.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.478914",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/generate_dag_visualization.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.479037",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/fix_yaml_structure.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.479283",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/classify_autonomy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.479704",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/auto_remediate_policy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.479831",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/fix_yaml_indentation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.479949",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/convert_snyk_to_sarif.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.480039",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/count_bandit_issues.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.480283",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/ci_error_analyzer.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.480384",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/fix_yaml_markdown.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.480474",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/clean_yaml_files.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.480688",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/test_ci_error_analyzer.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.480991",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/test_count_bandit_issues.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481102",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/validate_module_registry.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481220",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/deploy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481564",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/autonomy_progress_tracker.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481665",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_data_catalog.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481764",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_model_registry.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481862",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/generate_monitoring_report.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.481942",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.482210",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/quantum_validate.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.482303",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_gpu_scheduling.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.482391",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/generate_risk_assessment.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.482598",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/generate_evidence_chain.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.482689",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_metadata.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.483034",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_semantics.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.483267",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/generate_audit_report.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.483438",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_dag.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.483525",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/validate_gpu_registry.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.483773",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/implementation/semantic_root.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.483874",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/implementation/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.484083",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/implementation/reconciliation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.484412",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl/implementation/quantum_validation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.484577",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/config_sync_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.484677",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gov_pre_commit.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.484767",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gov_naming_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.484903",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/monitoring/metrics_collector.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.485112",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/monitoring/health_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.485339",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gov_integrator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.485903",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gov_executor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 23
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.486040",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.486554",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gov_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 12
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.487220",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gov_reporter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 12
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.487495",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gov_continuous_monitor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 7
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.488053",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/migration/axiom_namespace_migrator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.488215",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/utils/code_deduplicator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.488391",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/utils/config_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.488705",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/utils/auto_fix_bot_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.489069",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-restructure/gov_consolidation_plan.py",
+      "target": null,
+      "status": "completed",
+      "changes": 17
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.489248",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/fhs-integration/operational_test.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.489353",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/hash_manager.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.489442",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.489530",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/supply_chain_types.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.489848",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage5_sign_attestation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.490062",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage1_lint_format.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.490331",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/supply_chain_verifier.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.490564",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage6_admission_policy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.490790",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/verify_refactoring.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.491035",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage2_schema_semantic.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.491256",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage3_dependency.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.491595",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage4_sbom_scan.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.491837",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/stage7_runtime_monitoring.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.491986",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/test_supply_chain_types.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492067",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492266",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/test_stage1_lint_format.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492404",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/test_stage2_schema_semantic.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492523",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/test_hash_manager.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492725",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/test_integration.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492855",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/run_tests.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.492973",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/controlplane/validation/tests/test_performance_benchmark.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.493107",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/add_gl_markers.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.493212",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/tools/gl10top10validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.493689",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/aup-tools/aep_executor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.494035",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/aup-tools/gov_marker_injector.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.494215",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/bootstrap_from_manifest.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.494460",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/subtree_integrate.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.494627",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/find_duplicate_scripts.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.494795",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/evidence_generator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.495189",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/root_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.495411",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/fix_hardcoded_secrets.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.495724",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/validate_directory_docs.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.495857",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/module_graph_gate.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.496301",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/validate_restructure.py",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.496475",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/cleanup_duplicates.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.496589",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/gl10top10validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.496862",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/directory_doc_generator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.497232",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/verify_p0_safety.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.497448",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/lkb_update.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.497672",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/load_playbook.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.497815",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/gl10semanticvalidator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.498263",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/ai_refactor_review.py",
+      "target": null,
+      "status": "completed",
+      "changes": 27
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.498563",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/real_module_launcher.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.498805",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/python/governance_agent.py",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.498971",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/.governance/monitoring/prometheus-rules.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.499099",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/.governance/audit/audit-schema.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.499259",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/.governance/playbooks/naming-migration.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.499365",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.499652",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_indexing.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.499872",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_inference.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.500089",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_folding.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.500368",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_engine.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.500599",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_parameterization.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.500825",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/test_engine.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.500969",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/api_server.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501141",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_models.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501264",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gov-directory-naming-spec.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 9
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501348",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/controlplane-integration.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501434",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/workspace-integration.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501554",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gov-refactoring-exec-prompts.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501632",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/tools-integration.yaml",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.501952",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/governance/l3_execution/boundaries/gov-layers-boundary/gl00-09-enterprise-architecture/governance/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gov-naming-charter-analysis.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.595010",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/documentation/reports/external-dependencies-analysis.json",
+      "target": null,
+      "status": "completed",
+      "changes": 2333
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.608471",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/documentation/reports/zero-tolerance-violations.json",
+      "target": null,
+      "status": "completed",
+      "changes": 29
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.612803",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/documentation/reports/external-dependencies-analysis-report.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 19
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.625000",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/documentation/reports/gov-anchors/gov-validation-report-20260203-155913.json",
+      "target": null,
+      "status": "completed",
+      "changes": 298
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.639905",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/documentation/reports/gov-anchors/gov-classification-20260203-155913.json",
+      "target": null,
+      "status": "completed",
+      "changes": 298
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641071",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604079-7687.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641191",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604253-696.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641408",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace_output_1769665661_4905.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 15
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641560",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769561721-9492.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 34
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641727",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace_output_1769668871_7016.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641836",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604119-9824.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.641990",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769575630-38.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.642087",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604089-6080.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.642214",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604188-8520.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.643192",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-archiving-workspace-outputs-2518.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.643358",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604262-4565.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.643450",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604217-3327.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.644761",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604288-9170.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.644915",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769564339-4779.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.644993",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769582962-4170.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.645084",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604149-694.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.652140",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769565327-619.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 37
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.654197",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604275-6434.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.654733",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604227-4590.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.654888",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace_output_1769669050_2222.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.655065",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace_output_1769668965_3507.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.655168",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604178-9651.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.655338",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769561724-4166.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 34
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.655437",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769564336-5885.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.657931",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-python-ast-syntax-errors-2349.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.658245",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/archives/old-outputs/workspace-output-1769604101-7572.txt",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.660369",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/audit-automation/reports/audit-report-20260203-163050.json",
+      "target": null,
+      "status": "completed",
+      "changes": 220
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.660955",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/audit-automation/reports/audit-report-20260203-163147.json",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.662367",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/config/compliance-fix-log.json",
+      "target": null,
+      "status": "completed",
+      "changes": 38
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.665092",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/compliance-report-final.md",
+      "target": null,
+      "status": "completed",
+      "changes": 22
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.665634",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/final-comprehensive-report.md",
+      "target": null,
+      "status": "completed",
+      "changes": 7
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.666039",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/G-SPECIFICATION-ATTRIBUTES-DISCOVERY-REPORT.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.666754",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/ECOSYSTEM-MERGE-DIFF-REPORT.md",
+      "target": null,
+      "status": "completed",
+      "changes": 46
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.667065",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/G-SPECIFICATION-FINDINGS-SUMMARY.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.667217",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/phase4-gl-markers-compliance-summary.md",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.667413",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/reports/gov-anchors-repository-application-report.md",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.667573",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/architecture/one-stop-architecture-specs.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.667757",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GL-PLATFORM-STARTUP-REPORT.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.667898",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GL-PLATFORM-DEPLOYMENT-SUMMARY.md",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668047",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GL-V4-FINAL-DEPLOYMENT-COMPLETE.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668263",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GL-V5-COMPLETION.md",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668423",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/ARTIFACTS-UPGRADE-V10.md",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668554",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/COMPLETE-UPGRADE-ROADMAP.md",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668712",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GOVERNANCE-IMPORT-PLAN.md",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668815",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GOVERNANCE-FILE-STRUCTURE-ANALYSIS.md",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.668981",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/GL-FINAL-COMPLETION-V3.md",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.669174",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/docs/archive/PUSH-BLOCKED-SUMMARY.md",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.671521",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report-fixed.json",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.677798",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.680547",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report.json",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.689195",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.689984",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690200",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690305",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690387",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690569",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690653",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690778",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/loaders/base_loader.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.690866",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691031",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691175",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/change_tracking.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691302",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691453",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691537",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691695",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/log_extractors.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691826",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/base_extractor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.691906",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692080",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_transformer.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692225",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/transformers/data_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692301",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692446",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692526",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692600",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/integration/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692756",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_config_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.692904",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.693197",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.693281",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.693596",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_gl_reporter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 15
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.693839",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_auto_fix_strategies.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.693991",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_autonomous_cleanup_toolkit.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.694152",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_health_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.694364",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_gl_aep_engine_auditor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.694500",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.694741",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_gl_executor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 14
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.694948",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_governance_audit_script.py",
+      "target": null,
+      "status": "completed",
+      "changes": 8
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695158",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_marker_detection.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695321",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_artifact_validation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695457",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_helpers.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695625",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/unit/test_workflow_orchestrator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695703",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/e2e/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695773",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/fixtures/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695918",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/helpers/test_base.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.695993",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/tests-legacy/helpers/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.696131",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/test_smoke_reporting.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.696353",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/conftest.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.696507",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/test_smoke_memory.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.696708",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/test_functional_memory_system.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.696876",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/test_smoke_supply_chain.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697098",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/test_smoke_system.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697234",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697312",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/aep-engine-web/src/hooks/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697385",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/aep-engine-web/src/screens/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697455",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/aep-engine-web/src/components/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697525",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/aep-engine-web/src/data/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697825",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+      "target": null,
+      "status": "completed",
+      "changes": 1
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.697998",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/performance-tests-legacy/test_unit_cache_operations.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.698220",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/performance-tests-legacy/conftest.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.698411",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/performance-tests-legacy/test_unit_memory_operations.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.698516",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/validate_module_manifests.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.698782",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/extract_conflicts.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.698961",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/detect_patterns.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.699073",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/convert_markdown_to_yaml.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.699248",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/auto_fix_issues.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.699513",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/generate_autonomy_summary.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.699870",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/auto_quality_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.700054",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/check_ci_comments.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.700325",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/generate_dag_visualization.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.700442",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/fix_yaml_structure.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.700679",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/classify_autonomy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701102",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/auto_remediate_policy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701222",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/fix_yaml_indentation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701338",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/convert_snyk_to_sarif.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701424",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/count_bandit_issues.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701681",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/ci_error_analyzer.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701796",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/fix_yaml_markdown.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.701892",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/clean_yaml_files.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.702101",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/test_ci_error_analyzer.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.702402",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/test_count_bandit_issues.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.702513",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/validate_module_registry.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.702633",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/deploy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.702974",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/autonomy_progress_tracker.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703071",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_data_catalog.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703154",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_model_registry.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703241",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/generate_monitoring_report.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703314",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703577",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/quantum_validate.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703669",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_gpu_scheduling.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703753",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/generate_risk_assessment.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.703961",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/generate_evidence_chain.py",
+      "target": null,
+      "status": "completed",
+      "changes": 4
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.704052",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_metadata.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.704303",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_semantics.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.704527",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/generate_audit_report.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.704694",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_dag.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.704779",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/validate_gpu_registry.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.705033",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.705126",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/implementation/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.705332",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/implementation/reconciliation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.705658",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.705840",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/hooks/config_sync_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.705937",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/hooks/gov_pre_commit.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.706024",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/hooks/gov_naming_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.706152",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.706362",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/monitoring/health_check.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.706578",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_integrator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 5
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.707095",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_executor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 23
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.707219",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/__init__.py",
+      "target": null,
+      "status": "completed",
+      "changes": 6
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.707723",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 12
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.708376",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_reporter.py",
+      "target": null,
+      "status": "completed",
+      "changes": 12
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.708627",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gov_continuous_monitor.py",
+      "target": null,
+      "status": "completed",
+      "changes": 7
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.709161",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/migration/axiom_namespace_migrator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.709313",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.709479",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/utils/config_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.709837",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.710194",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-restructure/gov_consolidation_plan.py",
+      "target": null,
+      "status": "completed",
+      "changes": 17
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.710368",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/machinenativeops/gov-runtime-engine-platform/scripts-legacy/fhs-integration/operational_test.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.710707",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/scripts/scan_source_code_timelines.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.711000",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/scripts/fix_hardcoded_timelines.py",
+      "target": null,
+      "status": "completed",
+      "changes": 11
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.711211",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/scripts/platform_deploy.py",
+      "target": null,
+      "status": "completed",
+      "changes": 2
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.711456",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/scripts/scan_hardcoded_timelines.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    },
+    {
+      "timestamp": "2026-02-09T21:43:21.711729",
+      "action": "update_content",
+      "source": "/workspace/indestructibleautoops/scripts/scan_hardcoded_timelines_filtered.py",
+      "target": null,
+      "status": "completed",
+      "changes": 3
+    }
+  ],
+  "summary": {
+    "total_changes": 407,
+    "successful": 407,
+    "failed": 0
+  }
+}

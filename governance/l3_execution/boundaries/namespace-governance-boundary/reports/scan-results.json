@@ -22,8 +22,8 @@
   },
   "adjustment_suggestions": [
     {
-      "current_path": "add-gl-markers-json.py",
-      "suggested_name": "GL00-09-general-component-add-gl-markers-json.py",
+      "current_path": "add-gov-markers-json.py",
+      "suggested_name": "GL00-09-general-component-add-gov-markers-json.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -56,8 +56,8 @@
       ]
     },
     {
-      "current_path": "gl-audit-simple.py",
-      "suggested_name": "GL00-09-general-component-gl-audit-simple.py",
+      "current_path": "gov-audit-simple.py",
+      "suggested_name": "GL00-09-general-component-gov-audit-simple.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -342,7 +342,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/tests/unit/test_folding_engine.py",
+      "current_path": "gov-semantic-core-platform/tests/unit/test_folding_engine.py",
       "suggested_name": "GL00-09-test-test_folding_engine.py",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -360,7 +360,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/tools/benchmark/run_benchmark.py",
+      "current_path": "gov-semantic-core-platform/tools/benchmark/run_benchmark.py",
       "suggested_name": "GL00-09-general-component-run_benchmark.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -378,7 +378,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/src/semantic-folding/engine.py",
+      "current_path": "gov-semantic-core-platform/src/semantic-folding/engine.py",
       "suggested_name": "GL00-09-general-component-engine.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -396,7 +396,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/version_registry.py",
+      "current_path": "gov-runtime-platform/gl/version_registry.py",
       "suggested_name": "GL00-09-general-component-version_registry.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -411,7 +411,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v01/exec/io_handler.py",
+      "current_path": "gov-runtime-platform/gl/v01/exec/io_handler.py",
       "suggested_name": "GL00-09-general-component-io_handler.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -429,7 +429,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v01/exec/state_manager.py",
+      "current_path": "gov-runtime-platform/gl/v01/exec/state_manager.py",
       "suggested_name": "GL00-09-general-component-state_manager.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -444,7 +444,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v01/exec/task_executor.py",
+      "current_path": "gov-runtime-platform/gl/v01/exec/task_executor.py",
       "suggested_name": "GL00-09-general-component-task_executor.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -459,7 +459,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v23/root_governance/anti_fabric/anti_fabric.py",
+      "current_path": "gov-runtime-platform/gl/v23/root_governance/anti_fabric/anti_fabric.py",
       "suggested_name": "GL90-99-governance-core-anti_fabric.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -474,7 +474,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v21/code_intel/code_intelligence.py",
+      "current_path": "gov-runtime-platform/gl/v21/code_intel/code_intelligence.py",
       "suggested_name": "GL00-09-general-component-code_intelligence.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -492,7 +492,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v13/civilization/civilization_layer.py",
+      "current_path": "gov-runtime-platform/gl/v13/civilization/civilization_layer.py",
       "suggested_name": "GL00-09-general-component-civilization_layer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -510,7 +510,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v11/mesh/mesh_node.py",
+      "current_path": "gov-runtime-platform/gl/v11/mesh/mesh_node.py",
       "suggested_name": "GL00-09-general-component-mesh_node.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -528,7 +528,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v11/mesh/cognition_coordinator.py",
+      "current_path": "gov-runtime-platform/gl/v11/mesh/cognition_coordinator.py",
       "suggested_name": "GL00-09-general-component-cognition_coordinator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -546,7 +546,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v17/cross_domain/integrator.py",
+      "current_path": "gov-runtime-platform/gl/v17/cross_domain/integrator.py",
       "suggested_name": "GL00-09-general-component-integrator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -564,7 +564,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v04/repair/patcher.py",
+      "current_path": "gov-runtime-platform/gl/v04/repair/patcher.py",
       "suggested_name": "GL00-09-general-component-patcher.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -582,7 +582,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v04/repair/retry_manager.py",
+      "current_path": "gov-runtime-platform/gl/v04/repair/retry_manager.py",
       "suggested_name": "GL00-09-general-component-retry_manager.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -600,7 +600,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v16/context/context_universe.py",
+      "current_path": "gov-runtime-platform/gl/v16/context/context_universe.py",
       "suggested_name": "GL00-09-general-component-context_universe.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -618,7 +618,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v15/universal/universal_intelligence.py",
+      "current_path": "gov-runtime-platform/gl/v15/universal/universal_intelligence.py",
       "suggested_name": "GL00-09-general-component-universal_intelligence.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -636,7 +636,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v05/optimize/perf_optimizer.py",
+      "current_path": "gov-runtime-platform/gl/v05/optimize/perf_optimizer.py",
       "suggested_name": "GL00-09-general-component-perf_optimizer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -654,7 +654,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v05/optimize/resource_tuner.py",
+      "current_path": "gov-runtime-platform/gl/v05/optimize/resource_tuner.py",
       "suggested_name": "GL00-09-general-component-resource_tuner.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -672,7 +672,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v03/governance/audit.py",
+      "current_path": "gov-runtime-platform/gl/v03/governance/audit.py",
       "suggested_name": "GL90-99-governance-core-audit.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -690,7 +690,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v03/governance/result_checker.py",
+      "current_path": "gov-runtime-platform/gl/v03/governance/result_checker.py",
       "suggested_name": "GL90-99-governance-core-result_checker.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -708,7 +708,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v02/semantic/analyzer.py",
+      "current_path": "gov-runtime-platform/gl/v02/semantic/analyzer.py",
       "suggested_name": "GL00-09-general-component-analyzer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -726,7 +726,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v02/semantic/structure_parser.py",
+      "current_path": "gov-runtime-platform/gl/v02/semantic/structure_parser.py",
       "suggested_name": "GL00-09-general-component-structure_parser.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -744,7 +744,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v08/srg/edges/semantic_edge.py",
+      "current_path": "gov-runtime-platform/gl/v08/srg/edges/semantic_edge.py",
       "suggested_name": "GL00-09-general-component-semantic_edge.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -762,7 +762,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v08/srg/nodes/semantic_node.py",
+      "current_path": "gov-runtime-platform/gl/v08/srg/nodes/semantic_node.py",
       "suggested_name": "GL00-09-general-component-semantic_node.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -777,7 +777,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v08/srg/reasoning/semantic_reasoner.py",
+      "current_path": "gov-runtime-platform/gl/v08/srg/reasoning/semantic_reasoner.py",
       "suggested_name": "GL00-09-general-component-semantic_reasoner.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -795,7 +795,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v24/meta_governance/meta_auditor/meta_auditor.py",
+      "current_path": "gov-runtime-platform/gl/v24/meta_governance/meta_auditor/meta_auditor.py",
       "suggested_name": "GL90-99-governance-core-meta_auditor.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -810,7 +810,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v19/fabric/unified_fabric.py",
+      "current_path": "gov-runtime-platform/gl/v19/fabric/unified_fabric.py",
       "suggested_name": "GL00-09-general-component-unified_fabric.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -828,7 +828,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v12/evolution/evolution_engine.py",
+      "current_path": "gov-runtime-platform/gl/v12/evolution/evolution_engine.py",
       "suggested_name": "GL30-49-general-component-evolution_engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -846,7 +846,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v09/shel/healing/self_healer.py",
+      "current_path": "gov-runtime-platform/gl/v09/shel/healing/self_healer.py",
       "suggested_name": "GL00-09-general-component-self_healer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -864,7 +864,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v09/shel/adjustment/self_adjuster.py",
+      "current_path": "gov-runtime-platform/gl/v09/shel/adjustment/self_adjuster.py",
       "suggested_name": "GL00-09-general-component-self_adjuster.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -882,7 +882,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v18/inter_reality/bridge.py",
+      "current_path": "gov-runtime-platform/gl/v18/inter_reality/bridge.py",
       "suggested_name": "GL00-09-general-component-bridge.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -900,7 +900,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v10/swarm/agents/agent_manager.py",
+      "current_path": "gov-runtime-platform/gl/v10/swarm/agents/agent_manager.py",
       "suggested_name": "GL00-09-general-component-agent_manager.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -918,7 +918,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v10/swarm/orchestration/swarm_orchestrator.py",
+      "current_path": "gov-runtime-platform/gl/v10/swarm/orchestration/swarm_orchestrator.py",
       "suggested_name": "GL00-09-general-component-swarm_orchestrator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -936,7 +936,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v22/code_universe/code_universe.py",
+      "current_path": "gov-runtime-platform/gl/v22/code_universe/code_universe.py",
       "suggested_name": "GL00-09-general-component-code_universe.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -954,7 +954,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v14/meta/meta_cognition.py",
+      "current_path": "gov-runtime-platform/gl/v14/meta/meta_cognition.py",
       "suggested_name": "GL00-09-general-component-meta_cognition.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -972,7 +972,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v06/collaboration/task_collaborator.py",
+      "current_path": "gov-runtime-platform/gl/v06/collaboration/task_collaborator.py",
       "suggested_name": "GL00-09-general-component-task_collaborator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -990,7 +990,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v06/collaboration/module_interactor.py",
+      "current_path": "gov-runtime-platform/gl/v06/collaboration/module_interactor.py",
       "suggested_name": "GL00-09-general-component-module_interactor.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1008,7 +1008,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v20/learning/infinite_learner.py",
+      "current_path": "gov-runtime-platform/gl/v20/learning/infinite_learner.py",
       "suggested_name": "GL00-09-general-component-infinite_learner.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1026,7 +1026,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v0_pro/platform/native_platform.py",
+      "current_path": "gov-runtime-platform/gl/v0_pro/platform/native_platform.py",
       "suggested_name": "GL00-09-general-component-native_platform.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1044,7 +1044,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v25/ecosystem/ecosystem_integrator.py",
+      "current_path": "gov-runtime-platform/gl/v25/ecosystem/ecosystem_integrator.py",
       "suggested_name": "GL00-09-general-component-ecosystem_integrator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1062,7 +1062,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v07/dag/scheduler.py",
+      "current_path": "gov-runtime-platform/gl/v07/dag/scheduler.py",
       "suggested_name": "GL00-09-general-component-scheduler.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1080,7 +1080,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl/v07/dag/dependency_graph.py",
+      "current_path": "gov-runtime-platform/gl/v07/dag/dependency_graph.py",
       "suggested_name": "GL00-09-general-component-dependency_graph.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1098,7 +1098,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/server.py",
+      "current_path": "gov-runtime-platform/gov-runtime/server.py",
       "suggested_name": "GL00-09-general-component-server.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1116,7 +1116,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/unified_server.py",
+      "current_path": "gov-runtime-platform/gov-runtime/unified_server.py",
       "suggested_name": "GL00-09-general-component-unified_server.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1134,7 +1134,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/service_manager.py",
+      "current_path": "gov-runtime-platform/gov-runtime/service_manager.py",
       "suggested_name": "GL00-09-general-component-service_manager.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1152,7 +1152,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/start_all_services.py",
+      "current_path": "gov-runtime-platform/gov-runtime/start_all_services.py",
       "suggested_name": "GL00-09-general-component-start_all_services.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1170,7 +1170,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v12-evolution-engine/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v12-evolution-engine/run_service.py",
       "suggested_name": "GL30-49-general-component-run_service.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1188,7 +1188,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v12-evolution-engine/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v12-evolution-engine/src/__init__.py",
       "suggested_name": "GL30-49-general-component-__init__.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1206,7 +1206,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v12-evolution-engine/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v12-evolution-engine/src/core/__init__.py",
       "suggested_name": "GL30-49-general-component-__init__.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1224,7 +1224,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v12-evolution-engine/src/core/evolution_engine.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v12-evolution-engine/src/core/evolution_engine.py",
       "suggested_name": "GL30-49-general-component-evolution_engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1242,7 +1242,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1260,7 +1260,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1278,7 +1278,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1296,7 +1296,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/src/core/task/task_executor.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/src/core/task/task_executor.py",
       "suggested_name": "GL00-09-general-component-task_executor.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1314,7 +1314,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/src/core/io/io_handler.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/src/core/io/io_handler.py",
       "suggested_name": "GL00-09-general-component-io_handler.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1332,7 +1332,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/src/core/state/state_machine.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/src/core/state/state_machine.py",
       "suggested_name": "GL00-09-general-component-state_machine.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1350,7 +1350,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v9-self-healing/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v9-self-healing/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1368,7 +1368,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v9-self-healing/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v9-self-healing/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1386,7 +1386,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v9-self-healing/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v9-self-healing/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1404,7 +1404,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v9-self-healing/src/core/healing_system.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v9-self-healing/src/core/healing_system.py",
       "suggested_name": "GL00-09-general-component-healing_system.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1422,7 +1422,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v5-auto-optimization/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v5-auto-optimization/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1440,7 +1440,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v5-auto-optimization/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v5-auto-optimization/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1458,7 +1458,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v5-auto-optimization/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v5-auto-optimization/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1476,7 +1476,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v5-auto-optimization/src/core/optimizer.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v5-auto-optimization/src/core/optimizer.py",
       "suggested_name": "GL00-09-general-component-optimizer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1494,7 +1494,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v20-infinity-pool/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v20-infinity-pool/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1512,7 +1512,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v20-infinity-pool/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v20-infinity-pool/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1530,7 +1530,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v20-infinity-pool/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v20-infinity-pool/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1548,7 +1548,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v20-infinity-pool/src/core/infinity_pool.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v20-infinity-pool/src/core/infinity_pool.py",
       "suggested_name": "GL00-09-general-component-infinity_pool.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1566,7 +1566,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v15-neural-fabric/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v15-neural-fabric/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1584,7 +1584,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v15-neural-fabric/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v15-neural-fabric/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1602,7 +1602,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v15-neural-fabric/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v15-neural-fabric/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1620,7 +1620,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v15-neural-fabric/src/core/neural_fabric.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v15-neural-fabric/src/core/neural_fabric.py",
       "suggested_name": "GL00-09-general-component-neural_fabric.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1638,7 +1638,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v19-universal-translator/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v19-universal-translator/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1656,7 +1656,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v19-universal-translator/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v19-universal-translator/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1674,7 +1674,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v19-universal-translator/src/core/universal_translator.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v19-universal-translator/src/core/universal_translator.py",
       "suggested_name": "GL00-09-general-component-universal_translator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1692,7 +1692,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v19-universal-translator/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v19-universal-translator/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1710,7 +1710,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v16-temporal-engine/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v16-temporal-engine/run_service.py",
       "suggested_name": "GL30-49-general-component-run_service.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1728,7 +1728,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v16-temporal-engine/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v16-temporal-engine/src/__init__.py",
       "suggested_name": "GL30-49-general-component-__init__.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1746,7 +1746,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v16-temporal-engine/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v16-temporal-engine/src/core/__init__.py",
       "suggested_name": "GL30-49-general-component-__init__.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1764,7 +1764,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v16-temporal-engine/src/core/temporal_engine.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v16-temporal-engine/src/core/temporal_engine.py",
       "suggested_name": "GL30-49-general-component-temporal_engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1782,7 +1782,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v13-civilization-layer/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v13-civilization-layer/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1800,7 +1800,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v13-civilization-layer/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v13-civilization-layer/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1818,7 +1818,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v13-civilization-layer/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v13-civilization-layer/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1836,7 +1836,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v13-civilization-layer/src/core/civilization_manager.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v13-civilization-layer/src/core/civilization_manager.py",
       "suggested_name": "GL00-09-general-component-civilization_manager.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1854,7 +1854,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v21-genesis-protocol/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v21-genesis-protocol/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1872,7 +1872,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v21-genesis-protocol/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v21-genesis-protocol/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1890,7 +1890,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v21-genesis-protocol/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v21-genesis-protocol/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1908,7 +1908,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v21-genesis-protocol/src/core/genesis_protocol.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v21-genesis-protocol/src/core/genesis_protocol.py",
       "suggested_name": "GL00-09-general-component-genesis_protocol.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1926,7 +1926,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v7-global-dag/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v7-global-dag/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1944,7 +1944,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v7-global-dag/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v7-global-dag/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1962,7 +1962,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v7-global-dag/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v7-global-dag/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -1980,7 +1980,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v7-global-dag/src/core/dag_engine.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v7-global-dag/src/core/dag_engine.py",
       "suggested_name": "GL30-49-general-component-dag_engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -1998,7 +1998,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v3-basic-governance/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v3-basic-governance/run_service.py",
       "suggested_name": "GL90-99-governance-core-run_service.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2016,7 +2016,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v3-basic-governance/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v3-basic-governance/src/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2034,7 +2034,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v3-basic-governance/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v3-basic-governance/src/core/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2052,7 +2052,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v3-basic-governance/src/core/governor.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v3-basic-governance/src/core/governor.py",
       "suggested_name": "GL90-99-governance-core-governor.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2070,7 +2070,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v24-meta-governance/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v24-meta-governance/run_service.py",
       "suggested_name": "GL90-99-governance-core-run_service.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2088,7 +2088,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v24-meta-governance/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v24-meta-governance/src/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2106,7 +2106,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v24-meta-governance/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v24-meta-governance/src/core/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2124,7 +2124,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v24-meta-governance/src/core/meta_governance/meta_auditor.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v24-meta-governance/src/core/meta_governance/meta_auditor.py",
       "suggested_name": "GL90-99-governance-core-meta_auditor.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2142,7 +2142,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v4-auto-repair/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v4-auto-repair/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2160,7 +2160,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v4-auto-repair/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v4-auto-repair/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2178,7 +2178,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v4-auto-repair/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v4-auto-repair/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2196,7 +2196,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v4-auto-repair/src/core/repair_engine.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v4-auto-repair/src/core/repair_engine.py",
       "suggested_name": "GL30-49-general-component-repair_engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -2214,7 +2214,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v6-multi-module/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v6-multi-module/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2232,7 +2232,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v6-multi-module/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v6-multi-module/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2250,7 +2250,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v6-multi-module/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v6-multi-module/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2268,7 +2268,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v6-multi-module/src/core/module_orchestrator.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v6-multi-module/src/core/module_orchestrator.py",
       "suggested_name": "GL00-09-general-component-module_orchestrator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2286,7 +2286,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v18-consciousness-layer/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v18-consciousness-layer/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2304,7 +2304,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v18-consciousness-layer/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v18-consciousness-layer/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2322,7 +2322,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v18-consciousness-layer/src/core/consciousness_system.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v18-consciousness-layer/src/core/consciousness_system.py",
       "suggested_name": "GL00-09-general-component-consciousness_system.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2340,7 +2340,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v18-consciousness-layer/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v18-consciousness-layer/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2358,7 +2358,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v10-multi-agent-swarm/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v10-multi-agent-swarm/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2376,7 +2376,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v10-multi-agent-swarm/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v10-multi-agent-swarm/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2394,7 +2394,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v10-multi-agent-swarm/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v10-multi-agent-swarm/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2412,7 +2412,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v10-multi-agent-swarm/src/core/swarm_coordinator.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v10-multi-agent-swarm/src/core/swarm_coordinator.py",
       "suggested_name": "GL00-09-general-component-swarm_coordinator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2430,7 +2430,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v14-quantum-consensus/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v14-quantum-consensus/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2448,7 +2448,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v14-quantum-consensus/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v14-quantum-consensus/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2466,7 +2466,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v14-quantum-consensus/src/core/quantum_consensus.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v14-quantum-consensus/src/core/quantum_consensus.py",
       "suggested_name": "GL00-09-general-component-quantum_consensus.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2484,7 +2484,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v14-quantum-consensus/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v14-quantum-consensus/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2502,7 +2502,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v22-omega-synthesis/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v22-omega-synthesis/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2520,7 +2520,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v22-omega-synthesis/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v22-omega-synthesis/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2538,7 +2538,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v22-omega-synthesis/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v22-omega-synthesis/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2556,7 +2556,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v22-omega-synthesis/src/core/omega_synthesis.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v22-omega-synthesis/src/core/omega_synthesis.py",
       "suggested_name": "GL00-09-general-component-omega_synthesis.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2574,7 +2574,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v11-mesh-cognition/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v11-mesh-cognition/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2592,7 +2592,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v11-mesh-cognition/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v11-mesh-cognition/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2610,7 +2610,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v11-mesh-cognition/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v11-mesh-cognition/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2628,7 +2628,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v11-mesh-cognition/src/core/cognition_mesh.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v11-mesh-cognition/src/core/cognition_mesh.py",
       "suggested_name": "GL00-09-general-component-cognition_mesh.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2646,7 +2646,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v17-reality-bridge/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v17-reality-bridge/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2664,7 +2664,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v17-reality-bridge/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v17-reality-bridge/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2682,7 +2682,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v17-reality-bridge/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v17-reality-bridge/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2700,7 +2700,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v17-reality-bridge/src/core/reality_bridge.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v17-reality-bridge/src/core/reality_bridge.py",
       "suggested_name": "GL00-09-general-component-reality_bridge.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2718,7 +2718,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2736,7 +2736,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/interfaces/governance_interface.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/interfaces/governance_interface.py",
       "suggested_name": "GL90-99-governance-core-governance_interface.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2754,7 +2754,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/interfaces/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/interfaces/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2772,7 +2772,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/interfaces/task_interface.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/interfaces/task_interface.py",
       "suggested_name": "GL00-09-general-component-task_interface.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2790,7 +2790,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/contracts/base_contract.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/contracts/base_contract.py",
       "suggested_name": "GL00-09-general-component-base_contract.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2808,7 +2808,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/errors/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/errors/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2826,7 +2826,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/errors/base_error.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/errors/base_error.py",
       "suggested_name": "GL00-09-general-component-base_error.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2844,7 +2844,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/governance/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/governance/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -2862,7 +2862,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/utils/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/utils/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2880,7 +2880,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/shared/utils/logger.py",
+      "current_path": "gov-runtime-platform/gov-runtime/shared/utils/logger.py",
       "suggested_name": "GL00-09-general-component-logger.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2898,7 +2898,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v2-basic-analysis/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v2-basic-analysis/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2916,7 +2916,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v2-basic-analysis/tests/unit/test_analyzer.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v2-basic-analysis/tests/unit/test_analyzer.py",
       "suggested_name": "GL00-09-test-test_analyzer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -2934,7 +2934,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v2-basic-analysis/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v2-basic-analysis/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2952,7 +2952,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v2-basic-analysis/src/core/analyzer.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v2-basic-analysis/src/core/analyzer.py",
       "suggested_name": "GL00-09-general-component-analyzer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2970,7 +2970,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v2-basic-analysis/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v2-basic-analysis/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -2988,7 +2988,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v23-root-governance/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v23-root-governance/run_service.py",
       "suggested_name": "GL90-99-governance-core-run_service.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3006,7 +3006,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v23-root-governance/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v23-root-governance/src/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3024,7 +3024,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v23-root-governance/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v23-root-governance/src/core/__init__.py",
       "suggested_name": "GL90-99-governance-core-__init__.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3042,7 +3042,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v23-root-governance/src/core/root_governance/falsification_engine.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v23-root-governance/src/core/root_governance/falsification_engine.py",
       "suggested_name": "GL90-99-governance-core-falsification_engine.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3060,7 +3060,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v23-root-governance/src/core/root_governance/anti_fabric.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v23-root-governance/src/core/root_governance/anti_fabric.py",
       "suggested_name": "GL90-99-governance-core-anti_fabric.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3078,7 +3078,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v8-semantic-resource-graph/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v8-semantic-resource-graph/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3096,7 +3096,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v8-semantic-resource-graph/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v8-semantic-resource-graph/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3114,7 +3114,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v8-semantic-resource-graph/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v8-semantic-resource-graph/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3132,7 +3132,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v8-semantic-resource-graph/src/core/srg/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v8-semantic-resource-graph/src/core/srg/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3150,7 +3150,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v8-semantic-resource-graph/src/core/srg/semantic_graph.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v8-semantic-resource-graph/src/core/srg/semantic_graph.py",
       "suggested_name": "GL00-09-general-component-semantic_graph.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3168,7 +3168,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v25-ecosystem-integration/run_service.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v25-ecosystem-integration/run_service.py",
       "suggested_name": "GL00-09-general-component-run_service.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3186,7 +3186,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v25-ecosystem-integration/src/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v25-ecosystem-integration/src/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3204,7 +3204,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v25-ecosystem-integration/src/core/ecosystem_integrator.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v25-ecosystem-integration/src/core/ecosystem_integrator.py",
       "suggested_name": "GL00-09-general-component-ecosystem_integrator.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3222,7 +3222,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v25-ecosystem-integration/src/core/__init__.py",
+      "current_path": "gov-runtime-platform/gov-runtime/v25-ecosystem-integration/src/core/__init__.py",
       "suggested_name": "GL00-09-general-component-__init__.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3240,7 +3240,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/control-plane/nlp-control-api.py",
+      "current_path": "gov-runtime-platform/control-plane/nlp-control-api.py",
       "suggested_name": "GL00-09-general-component-nlp-control-api.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3255,7 +3255,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/check-service-health.py",
+      "current_path": "gov-runtime-platform/scripts/check-service-health.py",
       "suggested_name": "GL00-09-execution-script-check-service-health.py",
       "gl_layer": "GL00-09",
       "semantic_type": "execution-script",
@@ -3270,7 +3270,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/test-code-intel-security-layer.py",
+      "current_path": "gov-runtime-platform/scripts/test-code-intel-security-layer.py",
       "suggested_name": "GL00-09-test-test-code-intel-security-layer.py",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -3287,7 +3287,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/verify-canonical.py",
+      "current_path": "gov-runtime-platform/scripts/verify-canonical.py",
       "suggested_name": "GL00-09-execution-script-verify-canonical.py",
       "gl_layer": "GL00-09",
       "semantic_type": "execution-script",
@@ -3302,7 +3302,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/check-ports.py",
+      "current_path": "gov-runtime-platform/scripts/check-ports.py",
       "suggested_name": "GL00-09-execution-script-check-ports.py",
       "gl_layer": "GL00-09",
       "semantic_type": "execution-script",
@@ -3317,7 +3317,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/verify-pipelines-connectors.py",
+      "current_path": "gov-runtime-platform/scripts/verify-pipelines-connectors.py",
       "suggested_name": "GL00-09-execution-script-verify-pipelines-connectors.py",
       "gl_layer": "GL00-09",
       "semantic_type": "execution-script",
@@ -3334,7 +3334,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/add-governance-tags-main.py",
+      "current_path": "gov-runtime-platform/scripts/add-governance-tags-main.py",
       "suggested_name": "GL90-99-governance-core-add-governance-tags-main.py",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3351,7 +3351,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/verify-signatures.py",
+      "current_path": "gov-runtime-platform/scripts/verify-signatures.py",
       "suggested_name": "GL00-09-execution-script-verify-signatures.py",
       "gl_layer": "GL00-09",
       "semantic_type": "execution-script",
@@ -3366,7 +3366,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/scripts/fix-axiom-naming.py",
+      "current_path": "gov-runtime-platform/scripts/fix-axiom-naming.py",
       "suggested_name": "GL00-09-naming-governance-fix-axiom-naming.py",
       "gl_layer": "GL00-09",
       "semantic_type": "naming-governance",
@@ -3381,7 +3381,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/evolution-engine/self-optimizer.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/evolution-engine/self-optimizer.py",
       "suggested_name": "GL30-49-general-component-self-optimizer.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -3398,7 +3398,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/evolution-engine/adaptation-engine.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/evolution-engine/adaptation-engine.py",
       "suggested_name": "GL30-49-general-component-adaptation-engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -3415,7 +3415,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/evolution-engine/usage-tracker.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/evolution-engine/usage-tracker.py",
       "suggested_name": "GL30-49-general-component-usage-tracker.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -3432,7 +3432,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/generator-engine/template-engine.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/generator-engine/template-engine.py",
       "suggested_name": "GL30-49-general-component-template-engine.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -3449,7 +3449,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/generator-engine/pattern-matcher.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/generator-engine/pattern-matcher.py",
       "suggested_name": "GL30-49-general-component-pattern-matcher.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -3466,7 +3466,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/generator-engine/capability-generator.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/generator-engine/capability-generator.py",
       "suggested_name": "GL30-49-general-component-capability-generator.py",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -3483,7 +3483,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/integrations/v19-fabric/fabric-adapter.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/integrations/v19-fabric/fabric-adapter.py",
       "suggested_name": "GL00-09-general-component-fabric-adapter.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3500,7 +3500,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/integrations/v19-fabric/fabric-connector.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/integrations/v19-fabric/fabric-connector.py",
       "suggested_name": "GL00-09-general-component-fabric-connector.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3517,7 +3517,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/integrations/v20-continuum/learning-adapter.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/integrations/v20-continuum/learning-adapter.py",
       "suggested_name": "GL00-09-general-component-learning-adapter.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3534,7 +3534,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/integrations/v20-continuum/continuum-connector.py",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/integrations/v20-continuum/continuum-connector.py",
       "suggested_name": "GL00-09-general-component-continuum-connector.py",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3733,8 +3733,8 @@
       ]
     },
     {
-      "current_path": "engine/scripts/add-gl-markers-v2.js",
-      "suggested_name": "add-gl-markers-v2.js",
+      "current_path": "engine/scripts/add-gov-markers-v2.js",
+      "suggested_name": "add-gov-markers-v2.js",
       "gl_layer": "GL30-49",
       "semantic_type": "execution-script",
       "compliance_issues": [
@@ -3748,8 +3748,8 @@
       ]
     },
     {
-      "current_path": "engine/scripts/add-gl-markers.js",
-      "suggested_name": "add-gl-markers.js",
+      "current_path": "engine/scripts/add-gov-markers.js",
+      "suggested_name": "add-gov-markers.js",
       "gl_layer": "GL30-49",
       "semantic_type": "execution-script",
       "compliance_issues": [
@@ -3763,7 +3763,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/server.js",
+      "current_path": "gov-runtime-platform/server.js",
       "suggested_name": "server.js",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3778,7 +3778,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-civilization.js",
+      "current_path": "gov-runtime-platform/test-civilization.js",
       "suggested_name": "test-civilization.js",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -3795,7 +3795,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/simple-server.js",
+      "current_path": "gov-runtime-platform/simple-server.js",
       "suggested_name": "simple-server.js",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3813,7 +3813,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-meta-cognitive.js",
+      "current_path": "gov-runtime-platform/test-meta-cognitive.js",
       "suggested_name": "test-meta-cognitive.js",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -3830,7 +3830,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/fix-v14.js",
+      "current_path": "gov-runtime-platform/fix-v14.js",
       "suggested_name": "fix-v14.js",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3847,7 +3847,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.js",
+      "current_path": "gov-runtime-platform/engine/semantic-graph-runtime/runtime.js",
       "suggested_name": "runtime.js",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3862,7 +3862,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/semantic-graph-runtime/index.js",
+      "current_path": "gov-runtime-platform/engine/semantic-graph-runtime/index.js",
       "suggested_name": "index.js",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -3877,7 +3877,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/index.js",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/index.js",
       "suggested_name": "index.js",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3892,7 +3892,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.js",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/scanners/scanner.js",
       "suggested_name": "scanner.js",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -3907,7 +3907,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.js",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/indexers/indexer.js",
       "suggested_name": "indexer.js",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4022,7 +4022,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/infinite-learning-continuum/index.ts",
+      "current_path": "gov-runtime-platform/infinite-learning-continuum/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4039,7 +4039,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/tests/integration-main/run-integration-tests.ts",
+      "current_path": "gov-runtime-platform/tests/integration-main/run-integration-tests.ts",
       "suggested_name": "run-integration-tests.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -4056,7 +4056,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/tests/integration-main/run-integration-tests-simple.ts",
+      "current_path": "gov-runtime-platform/tests/integration-main/run-integration-tests-simple.ts",
       "suggested_name": "run-integration-tests-simple.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -4073,7 +4073,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/tests/integration-main/integration-test-suite.ts",
+      "current_path": "gov-runtime-platform/tests/integration-main/integration-test-suite.ts",
       "suggested_name": "integration-test-suite.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -4090,7 +4090,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/resource-graph-runtime/runtime.ts",
+      "current_path": "gov-runtime-platform/engine/resource-graph-runtime/runtime.ts",
       "suggested_name": "runtime.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4105,7 +4105,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/index.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4120,7 +4120,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/completion-checker/checker.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/completion-checker/checker.ts",
       "suggested_name": "checker.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4135,7 +4135,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/strategy-library/strategies.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/strategy-library/strategies.ts",
       "suggested_name": "strategies.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4150,7 +4150,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/validation-loop/validator.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/validation-loop/validator.ts",
       "suggested_name": "validator.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4165,7 +4165,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/multi-path-runner/runner.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/multi-path-runner/runner.ts",
       "suggested_name": "runner.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4180,7 +4180,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/fallback-engine/fallback.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/fallback-engine/fallback.ts",
       "suggested_name": "fallback.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4195,7 +4195,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/mutation-engine/mutator.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/mutation-engine/mutator.ts",
       "suggested_name": "mutator.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4210,7 +4210,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/self-healing-engine/retry-engine/retry.ts",
+      "current_path": "gov-runtime-platform/engine/self-healing-engine/retry-engine/retry.ts",
       "suggested_name": "retry.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4225,7 +4225,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/semantic-graph-runtime/runtime.ts",
+      "current_path": "gov-runtime-platform/engine/semantic-graph-runtime/runtime.ts",
       "suggested_name": "runtime.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4240,7 +4240,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/engine/semantic-graph-runtime/index.ts",
+      "current_path": "gov-runtime-platform/engine/semantic-graph-runtime/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4255,7 +4255,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4270,7 +4270,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-repair/repair.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-repair/repair.ts",
       "suggested_name": "repair.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4285,7 +4285,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-repair/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-repair/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4302,7 +4302,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-resolver/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-resolver/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4319,7 +4319,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-resolver/resolver.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-resolver/resolver.ts",
       "suggested_name": "resolver.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4334,7 +4334,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-optimizer/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-optimizer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4351,7 +4351,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-optimizer/optimizer.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-optimizer/optimizer.ts",
       "suggested_name": "optimizer.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4366,7 +4366,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-model/dag-node.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-model/dag-node.ts",
       "suggested_name": "dag-node.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4381,7 +4381,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-model/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-model/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4396,7 +4396,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-model/dag-graph.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-model/dag-graph.ts",
       "suggested_name": "dag-graph.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4411,7 +4411,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-visualizer/visualizer.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-visualizer/visualizer.ts",
       "suggested_name": "visualizer.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4426,7 +4426,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-visualizer/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-visualizer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4443,7 +4443,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-builder/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-builder/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4460,7 +4460,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-builder/builder.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-builder/builder.ts",
       "suggested_name": "builder.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4475,7 +4475,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-executor/index.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-executor/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4492,7 +4492,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/global-dag/dag-executor/executor.ts",
+      "current_path": "gov-runtime-platform/global-dag/dag-executor/executor.ts",
       "suggested_name": "executor.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4507,7 +4507,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4525,7 +4525,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/context-fusion/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/context-fusion/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4543,7 +4543,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/context-aware-strategy/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/context-aware-strategy/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4561,7 +4561,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/global-consistency-fabric/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/global-consistency-fabric/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4579,7 +4579,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/knowledge-alignment/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/knowledge-alignment/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4597,7 +4597,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/temporal-coherence/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/temporal-coherence/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4615,7 +4615,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/omni-context/multi-scale-reasoning/index.ts",
+      "current_path": "gov-runtime-platform/omni-context/multi-scale-reasoning/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4633,7 +4633,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4650,7 +4650,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/knowledge-synthesis-engine/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/knowledge-synthesis-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4667,7 +4667,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/universal-learning-loop/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/universal-learning-loop/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4684,7 +4684,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/intelligence-transfer/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/intelligence-transfer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4701,7 +4701,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/cross-domain-reasoning/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/cross-domain-reasoning/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4718,7 +4718,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/universal-adaptation/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/universal-adaptation/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4735,7 +4735,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/universal-abstraction-engine/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/universal-abstraction-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -4752,7 +4752,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/universal-intelligence/general-problem-solving/index.ts",
+      "current_path": "gov-runtime-platform/universal-intelligence/general-problem-solving/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -4769,7 +4769,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/index.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4784,7 +4784,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/index.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/intent-resolver/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4799,7 +4799,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/intent-resolver/resolver.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/intent-resolver/resolver.ts",
       "suggested_name": "resolver.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4814,7 +4814,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/parser.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/content-parsers/parser.ts",
       "suggested_name": "parser.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4829,7 +4829,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/content-parsers/index.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/content-parsers/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4844,7 +4844,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/inferencer.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/schema-infer/inferencer.ts",
       "suggested_name": "inferencer.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4859,7 +4859,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/schema-infer/index.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/schema-infer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4874,7 +4874,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/classifier.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/semantic-classifiers/classifier.ts",
       "suggested_name": "classifier.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4889,7 +4889,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/semantic-classifiers/index.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/semantic-classifiers/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4904,7 +4904,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-semantic-graph/gl-mapping/index.ts",
+      "current_path": "gov-runtime-platform/governance/gov-semantic-graph/gl-mapping/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4919,7 +4919,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/resource-graph-manager.ts",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/resource-graph-manager.ts",
       "suggested_name": "resource-graph-manager.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4934,7 +4934,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/scanners/scanner.ts",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/scanners/scanner.ts",
       "suggested_name": "scanner.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4949,7 +4949,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/resolvers/resolver.ts",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/resolvers/resolver.ts",
       "suggested_name": "resolver.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4964,7 +4964,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/indexers/indexer.ts",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/indexers/indexer.ts",
       "suggested_name": "indexer.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4979,7 +4979,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/governance/gl-resource-graph/graph-model/graph-model.ts",
+      "current_path": "gov-runtime-platform/governance/gov-resource-graph/graph-model/graph-model.ts",
       "suggested_name": "graph-model.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -4994,7 +4994,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognitive/meta-cognitive-monitoring/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognitive/meta-cognitive-monitoring/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5011,7 +5011,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognitive/consciousness-emergence/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognitive/consciousness-emergence/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5028,7 +5028,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognitive/self-assessment/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognitive/self-assessment/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5045,7 +5045,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognitive/reflection-loop/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognitive/reflection-loop/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5062,7 +5062,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognitive/meta-decision/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognitive/meta-decision/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5079,7 +5079,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5096,7 +5096,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/deep-index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/deep-index.ts",
       "suggested_name": "deep-index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5113,7 +5113,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/self-awareness-engine/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/self-awareness-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5130,7 +5130,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/self-monitoring-layer/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/self-monitoring-layer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5147,7 +5147,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/meta-correction-engine/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/meta-correction-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5164,7 +5164,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/meta-feedback-loop/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/meta-feedback-loop/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5181,7 +5181,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/meta-reasoning-engine/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/meta-reasoning-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5198,7 +5198,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/wisdom-engine/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/wisdom-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5215,7 +5215,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/deep-thinking-engine/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/deep-thinking-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5232,7 +5232,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/decision-optimizer/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/decision-optimizer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5249,7 +5249,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/reflective-memory/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/reflective-memory/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5266,7 +5266,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/meta-cognition/deep-consciousness-engine/index.ts",
+      "current_path": "gov-runtime-platform/meta-cognition/deep-consciousness-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5283,7 +5283,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/ecosystem-engine/index.ts",
+      "current_path": "gov-runtime-platform/civilization/ecosystem-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5300,7 +5300,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/civilization-memory/index.ts",
+      "current_path": "gov-runtime-platform/civilization/civilization-memory/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5317,7 +5317,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/role-specialization/index.ts",
+      "current_path": "gov-runtime-platform/civilization/role-specialization/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5334,7 +5334,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/cultural-engine/index.ts",
+      "current_path": "gov-runtime-platform/civilization/cultural-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5351,7 +5351,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/governance-system/index.ts",
+      "current_path": "gov-runtime-platform/civilization/governance-system/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -5368,7 +5368,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/expansion-engine/index.ts",
+      "current_path": "gov-runtime-platform/civilization/expansion-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5385,7 +5385,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/civilization/sustainability-engine/index.ts",
+      "current_path": "gov-runtime-platform/civilization/sustainability-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5402,7 +5402,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/evolution/self-optimization-loop/index.ts",
+      "current_path": "gov-runtime-platform/evolution/self-optimization-loop/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5417,7 +5417,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/test-verification.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/test-verification.ts",
       "suggested_name": "test-verification.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -5432,7 +5432,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/governance-event-stream.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/governance-event-stream.ts",
       "suggested_name": "governance-event-stream.ts",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -5447,7 +5447,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/index.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5462,7 +5462,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/types.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/types.ts",
       "suggested_name": "types.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5477,7 +5477,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/index.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5492,7 +5492,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/real-runner/real-runner.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/real-runner/real-runner.ts",
       "suggested_name": "real-runner.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5507,7 +5507,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/regression-diff/regression-diff.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/regression-diff/regression-diff.ts",
       "suggested_name": "regression-diff.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5522,7 +5522,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/oracle-validator/oracle-validator.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/oracle-validator/oracle-validator.ts",
       "suggested_name": "oracle-validator.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5537,7 +5537,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/fuzzing-engine/fuzzing-engine.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/fuzzing-engine/fuzzing-engine.ts",
       "suggested_name": "fuzzing-engine.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5552,7 +5552,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/stress-tester/stress-tester.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/stress-tester/stress-tester.ts",
       "suggested_name": "stress-tester.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -5567,7 +5567,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/execution-harness/baseline-comparator/baseline-comparator.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/execution-harness/baseline-comparator/baseline-comparator.ts",
       "suggested_name": "baseline-comparator.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5582,7 +5582,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/falsification-engine/index.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/falsification-engine/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5597,7 +5597,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/falsification-engine/extreme-boundary-tests/extreme-boundary-tests.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/falsification-engine/extreme-boundary-tests/extreme-boundary-tests.ts",
       "suggested_name": "extreme-boundary-tests.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "test",
@@ -5612,7 +5612,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/falsification-engine/semantic-contradiction-tests/semantic-contradiction-tests.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/falsification-engine/semantic-contradiction-tests/semantic-contradiction-tests.ts",
       "suggested_name": "semantic-contradiction-tests.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -5627,7 +5627,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/falsification-engine/behavior-divergence-tests/behavior-divergence-tests.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/falsification-engine/behavior-divergence-tests/behavior-divergence-tests.ts",
       "suggested_name": "behavior-divergence-tests.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "test",
@@ -5642,7 +5642,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/falsification-engine/reality-vs-report-diff/reality-vs-report-diff.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/falsification-engine/reality-vs-report-diff/reality-vs-report-diff.ts",
       "suggested_name": "reality-vs-report-diff.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5657,7 +5657,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/falsification-engine/adversarial-inputs/adversarial-inputs.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/falsification-engine/adversarial-inputs/adversarial-inputs.ts",
       "suggested_name": "adversarial-inputs.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5672,7 +5672,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/anti-fabric/index.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/anti-fabric/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5687,7 +5687,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/anti-fabric/contradiction-detector/contradiction-detector.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/anti-fabric/contradiction-detector/contradiction-detector.ts",
       "suggested_name": "contradiction-detector.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5702,7 +5702,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/anti-fabric/semantic-inconsistency-scanner/semantic-inconsistency-scanner.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/anti-fabric/semantic-inconsistency-scanner/semantic-inconsistency-scanner.ts",
       "suggested_name": "semantic-inconsistency-scanner.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5717,7 +5717,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/anti-fabric/pattern-breaker/pattern-breaker.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/anti-fabric/pattern-breaker/pattern-breaker.ts",
       "suggested_name": "pattern-breaker.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5732,7 +5732,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/anti-fabric/assumption-invalidator/assumption-invalidator.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/anti-fabric/assumption-invalidator/assumption-invalidator.ts",
       "suggested_name": "assumption-invalidator.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5747,7 +5747,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ultra-strict-verification-core/anti-fabric/adversarial-generator/adversarial-generator.ts",
+      "current_path": "gov-runtime-platform/ultra-strict-verification-core/anti-fabric/adversarial-generator/adversarial-generator.ts",
       "suggested_name": "adversarial-generator.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5762,7 +5762,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/meta-cognitive-server.ts",
+      "current_path": "gov-runtime-platform/src/meta-cognitive-server.ts",
       "suggested_name": "meta-cognitive-server.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5779,7 +5779,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/universal-intelligence-server.ts",
+      "current_path": "gov-runtime-platform/src/universal-intelligence-server.ts",
       "suggested_name": "universal-intelligence-server.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5796,7 +5796,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/omni-context-server-simple.ts",
+      "current_path": "gov-runtime-platform/src/omni-context-server-simple.ts",
       "suggested_name": "omni-context-server-simple.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5814,7 +5814,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/index.ts",
+      "current_path": "gov-runtime-platform/src/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5829,7 +5829,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/deep-meta-cognitive-server.ts",
+      "current_path": "gov-runtime-platform/src/deep-meta-cognitive-server.ts",
       "suggested_name": "deep-meta-cognitive-server.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5846,7 +5846,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/civilization-server.ts",
+      "current_path": "gov-runtime-platform/src/civilization-server.ts",
       "suggested_name": "civilization-server.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5863,7 +5863,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/api/routes.ts",
+      "current_path": "gov-runtime-platform/src/api/routes.ts",
       "suggested_name": "routes.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5878,7 +5878,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/orchestration/orchestrator-engine.ts",
+      "current_path": "gov-runtime-platform/src/orchestration/orchestrator-engine.ts",
       "suggested_name": "orchestrator-engine.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5893,7 +5893,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/policies/policy-engine.ts",
+      "current_path": "gov-runtime-platform/src/policies/policy-engine.ts",
       "suggested_name": "policy-engine.ts",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -5908,7 +5908,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/storage/artifact-store.ts",
+      "current_path": "gov-runtime-platform/src/storage/artifact-store.ts",
       "suggested_name": "artifact-store.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5923,7 +5923,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/utils/logger.ts",
+      "current_path": "gov-runtime-platform/src/utils/logger.ts",
       "suggested_name": "logger.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5938,7 +5938,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/connectors/git-connector.ts",
+      "current_path": "gov-runtime-platform/src/connectors/git-connector.ts",
       "suggested_name": "git-connector.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5953,7 +5953,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/src/events/event-stream-manager.ts",
+      "current_path": "gov-runtime-platform/src/events/event-stream-manager.ts",
       "suggested_name": "event-stream-manager.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -5968,7 +5968,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/code-intel-security-layer/index.ts",
+      "current_path": "gov-runtime-platform/code-intel-security-layer/index.ts",
       "suggested_name": "index.ts",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -6127,7 +6127,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/contracts/unified-naming-governance-contract.yaml",
+      "current_path": "gov-platform/contracts/unified-naming-governance-contract.yaml",
       "suggested_name": "GL90-99-naming-governance-unified-naming-governance-contract.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
@@ -6145,7 +6145,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/contracts/structural-unification-spec.yaml",
+      "current_path": "gov-platform/contracts/structural-unification-spec.yaml",
       "suggested_name": "GL00-09-general-component-structural-unification-spec.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -6163,7 +6163,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/contracts/semantic-unification-spec.yaml",
+      "current_path": "gov-platform/contracts/semantic-unification-spec.yaml",
       "suggested_name": "GL00-09-general-component-semantic-unification-spec.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -6181,7 +6181,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/contracts/governance-unification-spec.yaml",
+      "current_path": "gov-platform/contracts/governance-unification-spec.yaml",
       "suggested_name": "GL90-99-governance-core-governance-unification-spec.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -6199,7 +6199,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+      "current_path": "gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
       "suggested_name": "GL90-99-naming-governance-naming-conventions.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
@@ -6217,7 +6217,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/governance/naming-governance/registry/capability-registry.yaml",
+      "current_path": "gov-platform/governance/naming-governance/registry/capability-registry.yaml",
       "suggested_name": "GL90-99-naming-governance-capability-registry.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
@@ -6235,7 +6235,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/governance/naming-governance/registry/abbreviation-registry.yaml",
+      "current_path": "gov-platform/governance/naming-governance/registry/abbreviation-registry.yaml",
       "suggested_name": "GL90-99-naming-governance-abbreviation-registry.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
@@ -6253,7 +6253,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/governance/naming-governance/registry/resource-registry.yaml",
+      "current_path": "gov-platform/governance/naming-governance/registry/resource-registry.yaml",
       "suggested_name": "GL90-99-naming-governance-resource-registry.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
@@ -6271,7 +6271,7 @@
       ]
     },
     {
-      "current_path": "gl-platform/governance/naming-governance/registry/domain-registry.yaml",
+      "current_path": "gov-platform/governance/naming-governance/registry/domain-registry.yaml",
       "suggested_name": "GL90-99-naming-governance-domain-registry.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
@@ -6970,7 +6970,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/configs/folding-config.yaml",
+      "current_path": "gov-semantic-core-platform/configs/folding-config.yaml",
       "suggested_name": "GL00-09-general-component-folding-config.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -6988,7 +6988,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/deployments/kubernetes/ingress.yaml",
+      "current_path": "gov-semantic-core-platform/deployments/kubernetes/ingress.yaml",
       "suggested_name": "GL00-09-general-component-ingress.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7006,7 +7006,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/deployments/kubernetes/service.yaml",
+      "current_path": "gov-semantic-core-platform/deployments/kubernetes/service.yaml",
       "suggested_name": "GL00-09-general-component-service.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7024,7 +7024,7 @@
       ]
     },
     {
-      "current_path": "gl-semantic-core-platform/deployments/kubernetes/deployment.yaml",
+      "current_path": "gov-semantic-core-platform/deployments/kubernetes/deployment.yaml",
       "suggested_name": "GL00-09-general-component-deployment.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7042,7 +7042,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v12-evolution-engine/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v12-evolution-engine/config/default.yaml",
       "suggested_name": "GL30-49-general-component-default.yaml",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -7060,7 +7060,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7078,7 +7078,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v9-self-healing/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v9-self-healing/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7096,7 +7096,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v5-auto-optimization/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v5-auto-optimization/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7114,7 +7114,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v20-infinity-pool/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v20-infinity-pool/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7132,7 +7132,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v15-neural-fabric/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v15-neural-fabric/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7150,7 +7150,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v19-universal-translator/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v19-universal-translator/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7168,7 +7168,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v16-temporal-engine/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v16-temporal-engine/config/default.yaml",
       "suggested_name": "GL30-49-general-component-default.yaml",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -7186,7 +7186,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v13-civilization-layer/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v13-civilization-layer/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7204,7 +7204,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v21-genesis-protocol/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v21-genesis-protocol/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7222,7 +7222,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v7-global-dag/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v7-global-dag/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7240,7 +7240,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v3-basic-governance/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v3-basic-governance/config/default.yaml",
       "suggested_name": "GL90-99-governance-core-default.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -7258,7 +7258,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v24-meta-governance/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v24-meta-governance/config/default.yaml",
       "suggested_name": "GL90-99-governance-core-default.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -7276,7 +7276,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v4-auto-repair/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v4-auto-repair/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7294,7 +7294,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v6-multi-module/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v6-multi-module/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7312,7 +7312,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v18-consciousness-layer/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v18-consciousness-layer/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7330,7 +7330,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v10-multi-agent-swarm/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v10-multi-agent-swarm/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7348,7 +7348,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v14-quantum-consensus/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v14-quantum-consensus/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7366,7 +7366,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v22-omega-synthesis/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v22-omega-synthesis/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7384,7 +7384,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v11-mesh-cognition/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v11-mesh-cognition/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7402,7 +7402,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v17-reality-bridge/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v17-reality-bridge/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7420,7 +7420,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v2-basic-analysis/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v2-basic-analysis/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7438,7 +7438,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v23-root-governance/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v23-root-governance/config/default.yaml",
       "suggested_name": "GL90-99-governance-core-default.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -7456,7 +7456,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v8-semantic-resource-graph/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v8-semantic-resource-graph/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7474,7 +7474,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v25-ecosystem-integration/config/default.yaml",
+      "current_path": "gov-runtime-platform/gov-runtime/v25-ecosystem-integration/config/default.yaml",
       "suggested_name": "GL00-09-general-component-default.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7492,7 +7492,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/federation/index.yaml",
+      "current_path": "gov-runtime-platform/federation/index.yaml",
       "suggested_name": "GL00-09-general-component-index.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7507,7 +7507,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/federation/topology/repos.yaml",
+      "current_path": "gov-runtime-platform/federation/topology/repos.yaml",
       "suggested_name": "GL00-09-general-component-repos.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7522,7 +7522,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/federation/topology/clusters.yaml",
+      "current_path": "gov-runtime-platform/federation/topology/clusters.yaml",
       "suggested_name": "GL00-09-general-component-clusters.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7537,7 +7537,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/federation/org-registry/projects.yaml",
+      "current_path": "gov-runtime-platform/federation/org-registry/projects.yaml",
       "suggested_name": "GL00-09-general-component-projects.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7552,7 +7552,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/ops/pipelines/global-audit-pipeline.yaml",
+      "current_path": "gov-runtime-platform/ops/pipelines/global-audit-pipeline.yaml",
       "suggested_name": "GL00-09-general-component-global-audit-pipeline.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7567,7 +7567,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/dev/kustomization.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/dev/kustomization.yaml",
       "suggested_name": "GL00-09-general-component-kustomization.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7585,7 +7585,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/dev/patches/deployment-patch.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/dev/patches/deployment-patch.yaml",
       "suggested_name": "GL00-09-general-component-deployment-patch.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7603,7 +7603,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/dev/patches/configmap-patch.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/dev/patches/configmap-patch.yaml",
       "suggested_name": "GL00-09-general-component-configmap-patch.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7621,7 +7621,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/kustomization.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/kustomization.yaml",
       "suggested_name": "GL00-09-general-component-kustomization.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7639,7 +7639,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/ingress/ingress-platform.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/ingress/ingress-platform.yaml",
       "suggested_name": "GL00-09-general-component-ingress-platform.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7657,7 +7657,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/patches/service-patch.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/patches/service-patch.yaml",
       "suggested_name": "GL00-09-general-component-service-patch.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7675,7 +7675,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/patches/deployment-patch.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/patches/deployment-patch.yaml",
       "suggested_name": "GL00-09-general-component-deployment-patch.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7693,7 +7693,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/patches/configmap-patch.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/patches/configmap-patch.yaml",
       "suggested_name": "GL00-09-general-component-configmap-patch.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7711,7 +7711,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/hpa/hpa-nlp-control-plane.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/hpa/hpa-nlp-control-plane.yaml",
       "suggested_name": "GL00-09-general-component-hpa-nlp-control-plane.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7729,7 +7729,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/hpa/hpa-platform-api.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/hpa/hpa-platform-api.yaml",
       "suggested_name": "GL00-09-general-component-hpa-platform-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7747,7 +7747,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/environments/prod/hpa/hpa-rest-api.yaml",
+      "current_path": "gov-runtime-platform/templates/environments/prod/hpa/hpa-rest-api.yaml",
       "suggested_name": "GL00-09-general-component-hpa-rest-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7765,7 +7765,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/policies/opa/constraint-template-k8s-naming-requirements.yaml",
+      "current_path": "gov-runtime-platform/templates/policies/opa/constraint-template-k8s-naming-requirements.yaml",
       "suggested_name": "GL00-09-naming-governance-constraint-template-k8s-naming-requirements.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "naming-governance",
@@ -7783,7 +7783,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/policies/opa/constraint-namespace-naming.yaml",
+      "current_path": "gov-runtime-platform/templates/policies/opa/constraint-namespace-naming.yaml",
       "suggested_name": "GL00-09-naming-governance-constraint-namespace-naming.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "naming-governance",
@@ -7801,7 +7801,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/services/service-postgres.yaml",
+      "current_path": "gov-runtime-platform/templates/base/services/service-postgres.yaml",
       "suggested_name": "GL00-09-general-component-service-postgres.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7819,7 +7819,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/services/service-rest-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/services/service-rest-api.yaml",
       "suggested_name": "GL00-09-general-component-service-rest-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7837,7 +7837,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/services/service-platform-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/services/service-platform-api.yaml",
       "suggested_name": "GL00-09-general-component-service-platform-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7855,7 +7855,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/services/service-nlp-control-plane.yaml",
+      "current_path": "gov-runtime-platform/templates/base/services/service-nlp-control-plane.yaml",
       "suggested_name": "GL00-09-general-component-service-nlp-control-plane.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7873,7 +7873,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/namespace/namespace-test.yaml",
+      "current_path": "gov-runtime-platform/templates/base/namespace/namespace-test.yaml",
       "suggested_name": "GL00-09-test-namespace-test.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -7891,7 +7891,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/namespace/namespace-base.yaml",
+      "current_path": "gov-runtime-platform/templates/base/namespace/namespace-base.yaml",
       "suggested_name": "GL00-09-general-component-namespace-base.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7909,7 +7909,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/namespace/namespace-dev.yaml",
+      "current_path": "gov-runtime-platform/templates/base/namespace/namespace-dev.yaml",
       "suggested_name": "GL00-09-general-component-namespace-dev.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7927,7 +7927,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/namespace/namespace-staging.yaml",
+      "current_path": "gov-runtime-platform/templates/base/namespace/namespace-staging.yaml",
       "suggested_name": "GL00-09-general-component-namespace-staging.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7945,7 +7945,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/namespace/namespace-prod.yaml",
+      "current_path": "gov-runtime-platform/templates/base/namespace/namespace-prod.yaml",
       "suggested_name": "GL00-09-general-component-namespace-prod.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7963,7 +7963,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/rbac/serviceaccount-nlp-control-plane.yaml",
+      "current_path": "gov-runtime-platform/templates/base/rbac/serviceaccount-nlp-control-plane.yaml",
       "suggested_name": "GL00-09-general-component-serviceaccount-nlp-control-plane.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7981,7 +7981,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/rbac/serviceaccount-platform-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/rbac/serviceaccount-platform-api.yaml",
       "suggested_name": "GL00-09-general-component-serviceaccount-platform-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -7999,7 +7999,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/rbac/serviceaccount-rest-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/rbac/serviceaccount-rest-api.yaml",
       "suggested_name": "GL00-09-general-component-serviceaccount-rest-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8017,7 +8017,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/deployments/deployment-platform-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/deployments/deployment-platform-api.yaml",
       "suggested_name": "GL00-09-general-component-deployment-platform-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8035,7 +8035,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/deployments/deployment-nlp-control-plane.yaml",
+      "current_path": "gov-runtime-platform/templates/base/deployments/deployment-nlp-control-plane.yaml",
       "suggested_name": "GL00-09-general-component-deployment-nlp-control-plane.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8053,7 +8053,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/deployments/deployment-postgres.yaml",
+      "current_path": "gov-runtime-platform/templates/base/deployments/deployment-postgres.yaml",
       "suggested_name": "GL00-09-general-component-deployment-postgres.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8071,7 +8071,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/deployments/deployment-rest-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/deployments/deployment-rest-api.yaml",
       "suggested_name": "GL00-09-general-component-deployment-rest-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8089,7 +8089,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/configmaps/configmap-platform-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/configmaps/configmap-platform-api.yaml",
       "suggested_name": "GL00-09-general-component-configmap-platform-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8107,7 +8107,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/configmaps/configmap-postgres.yaml",
+      "current_path": "gov-runtime-platform/templates/base/configmaps/configmap-postgres.yaml",
       "suggested_name": "GL00-09-general-component-configmap-postgres.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8125,7 +8125,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/templates/base/configmaps/configmap-rest-api.yaml",
+      "current_path": "gov-runtime-platform/templates/base/configmaps/configmap-rest-api.yaml",
       "suggested_name": "GL00-09-general-component-configmap-rest-api.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8340,8 +8340,8 @@
       ]
     },
     {
-      "current_path": ".github/workflows/gl-cluster-security-scan.yml",
-      "suggested_name": "GL00-09-general-component-gl-cluster-security-scan.yaml",
+      "current_path": ".github/workflows/gov-cluster-security-scan.yml",
+      "suggested_name": "GL00-09-general-component-gov-cluster-security-scan.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -8358,8 +8358,8 @@
       ]
     },
     {
-      "current_path": ".github/workflows/gl-supply-chain-security.yml",
-      "suggested_name": "GL00-09-general-component-gl-supply-chain-security.yaml",
+      "current_path": ".github/workflows/gov-supply-chain-security.yml",
+      "suggested_name": "GL00-09-general-component-gov-supply-chain-security.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -8376,8 +8376,8 @@
       ]
     },
     {
-      "current_path": ".github/workflows/gl-naming-governance.yml",
-      "suggested_name": "GL90-99-naming-governance-gl-naming-governance.yaml",
+      "current_path": ".github/workflows/gov-naming-governance.yml",
+      "suggested_name": "GL90-99-naming-governance-gov-naming-governance.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "naming-governance",
       "compliance_issues": [
@@ -8412,8 +8412,8 @@
       ]
     },
     {
-      "current_path": ".github/workflows/gl-workflow-auto-healer.yml",
-      "suggested_name": "GL00-09-general-component-gl-workflow-auto-healer.yaml",
+      "current_path": ".github/workflows/gov-workflow-auto-healer.yml",
+      "suggested_name": "GL00-09-general-component-gov-workflow-auto-healer.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -8589,7 +8589,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/config/services-config.yml",
+      "current_path": "gov-runtime-platform/config/services-config.yml",
       "suggested_name": "GL00-09-general-component-services-config.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8604,7 +8604,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/config/ports-config.yml",
+      "current_path": "gov-runtime-platform/config/ports-config.yml",
       "suggested_name": "GL00-09-general-component-ports-config.yaml",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -8619,7 +8619,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/config/governance-config.yml",
+      "current_path": "gov-runtime-platform/config/governance-config.yml",
       "suggested_name": "GL90-99-governance-core-governance-config.yaml",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -8634,8 +8634,8 @@
       ]
     },
     {
-      "current_path": "gl-simple-audit-report.json",
-      "suggested_name": "GL00-09-general-component-gl-simple-audit-report.json",
+      "current_path": "gov-simple-audit-report.json",
+      "suggested_name": "GL00-09-general-component-gov-simple-audit-report.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -8795,8 +8795,8 @@
       ]
     },
     {
-      "current_path": ".github/reports/gl-validation-after-refactor.json",
-      "suggested_name": "GL00-09-general-component-gl-validation-after-refactor.json",
+      "current_path": ".github/reports/gov-validation-after-refactor.json",
+      "suggested_name": "GL00-09-general-component-gov-validation-after-refactor.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -8813,8 +8813,8 @@
       ]
     },
     {
-      "current_path": ".github/reports/gl-validation-initial.json",
-      "suggested_name": "GL00-09-general-component-gl-validation-initial.json",
+      "current_path": ".github/reports/gov-validation-initial.json",
+      "suggested_name": "GL00-09-general-component-gov-validation-initial.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -8831,8 +8831,8 @@
       ]
     },
     {
-      "current_path": ".github/reports/gl-validation-new-artifacts.json",
-      "suggested_name": "GL00-09-general-component-gl-validation-new-artifacts.json",
+      "current_path": ".github/reports/gov-validation-new-artifacts.json",
+      "suggested_name": "GL00-09-general-component-gov-validation-new-artifacts.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
       "compliance_issues": [
@@ -10017,7 +10017,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL18-semantic-term-standard.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL18-semantic-term-standard.json",
       "suggested_name": "GL90-99-governance-core-GL18-semantic-term-standard.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10035,7 +10035,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL22-func-resource-scheduling.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL22-func-resource-scheduling.json",
       "suggested_name": "GL90-99-governance-core-GL22-func-resource-scheduling.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10053,7 +10053,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL24-func-operational-supervision.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL24-func-operational-supervision.json",
       "suggested_name": "GL90-99-governance-core-GL24-func-operational-supervision.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10071,7 +10071,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL17-semantic-term-process.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL17-semantic-term-process.json",
       "suggested_name": "GL90-99-governance-core-GL17-semantic-term-process.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10089,7 +10089,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL19-semantic-term-monitoring.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL19-semantic-term-monitoring.json",
       "suggested_name": "GL90-99-governance-core-GL19-semantic-term-monitoring.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10107,7 +10107,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL23-func-risk-control.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL23-func-risk-control.json",
       "suggested_name": "GL90-99-governance-core-GL23-func-risk-control.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10125,7 +10125,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL20-semantic-term-resource.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL20-semantic-term-resource.json",
       "suggested_name": "GL90-99-governance-core-GL20-semantic-term-resource.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10143,7 +10143,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/semantic-terms/GL21-func-process-optimization.json",
+      "current_path": ".github/project-docs/gov-governance/semantic-terms/GL21-func-process-optimization.json",
       "suggested_name": "GL90-99-governance-core-GL21-func-process-optimization.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10161,7 +10161,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL00-root-semantic-anchor.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL00-root-semantic-anchor.json",
       "suggested_name": "GL90-99-governance-core-GL00-root-semantic-anchor.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10179,7 +10179,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL02-success-metrics.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL02-success-metrics.json",
       "suggested_name": "GL90-99-governance-core-GL02-success-metrics.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10197,7 +10197,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL10-phase2-root.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL10-phase2-root.json",
       "suggested_name": "GL90-99-governance-core-GL10-phase2-root.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10215,7 +10215,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL00-09-ENHANCEMENT_SUMMARY.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL00-09-ENHANCEMENT_SUMMARY.json",
       "suggested_name": "GL90-99-governance-core-GL00-09-ENHANCEMENT_SUMMARY.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10233,7 +10233,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL01-risk-registry.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL01-risk-registry.json",
       "suggested_name": "GL90-99-governance-core-GL01-risk-registry.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10251,7 +10251,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL-AUTOMATION-STATUS-REPORT.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL-AUTOMATION-STATUS-REPORT.json",
       "suggested_name": "GL90-99-governance-core-GL-AUTOMATION-STATUS-REPORT.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10269,7 +10269,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GLINTEGRATIONCOMPLETE.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GLINTEGRATIONCOMPLETE.json",
       "suggested_name": "GL90-99-governance-core-GLINTEGRATIONCOMPLETE.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10287,7 +10287,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL-schema-singleline.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL-schema-singleline.json",
       "suggested_name": "GL90-99-governance-core-GL-schema-singleline.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10305,7 +10305,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GLUNIFIEDCHARTER_ACTIVATED.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GLUNIFIEDCHARTER_ACTIVATED.json",
       "suggested_name": "GL90-99-governance-core-GLUNIFIEDCHARTER_ACTIVATED.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10323,7 +10323,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GL99-unified-charter.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GL99-unified-charter.json",
       "suggested_name": "GL90-99-governance-core-GL99-unified-charter.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -10341,7 +10341,7 @@
       ]
     },
     {
-      "current_path": ".github/project-docs/gl-governance/schemas/GLGLOBALREPAIR_DONE.json",
+      "current_path": ".github/project-docs/gov-governance/schemas/GLGLOBALREPAIR_DONE.json",
       "suggested_name": "GL90-99-governance-core-GLGLOBALREPAIR_DONE.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -11043,8 +11043,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/audit-reports/gl-root-audit-init.json",
-      "suggested_name": "GL90-99-governance-core-gl-root-audit-init.json",
+      "current_path": "engine/.governance/audit-reports/gov-root-audit-init.json",
+      "suggested_name": "GL90-99-governance-core-gov-root-audit-init.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -13455,8 +13455,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/add-gl-markers-yaml.py.json",
-      "suggested_name": "GL90-99-governance-core-add-gl-markers-yaml.py.json",
+      "current_path": "engine/.governance/per-file-audits/add-gov-markers-yaml.py.json",
+      "suggested_name": "GL90-99-governance-core-add-gov-markers-yaml.py.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -13671,8 +13671,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/add-gl-markers.py.json",
-      "suggested_name": "GL90-99-governance-core-add-gl-markers.py.json",
+      "current_path": "engine/.governance/per-file-audits/add-gov-markers.py.json",
+      "suggested_name": "GL90-99-governance-core-add-gov-markers.py.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -13761,8 +13761,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/add-gl-markers-json.py.json",
-      "suggested_name": "GL90-99-governance-core-add-gl-markers-json.py.json",
+      "current_path": "engine/.governance/per-file-audits/add-gov-markers-json.py.json",
+      "suggested_name": "GL90-99-governance-core-add-gov-markers-json.py.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -14121,8 +14121,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_scripts_add-gl-markers-v2.js.json",
-      "suggested_name": "GL90-99-governance-core-engine_scripts_add-gl-markers-v2.js.json",
+      "current_path": "engine/.governance/per-file-audits/engine_scripts_add-gov-markers-v2.js.json",
+      "suggested_name": "GL90-99-governance-core-engine_scripts_add-gov-markers-v2.js.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -14337,8 +14337,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_parser_.gl-manifest.yaml.json",
-      "suggested_name": "GL90-99-governance-core-engine_parser_.gl-manifest.yaml.json",
+      "current_path": "engine/.governance/per-file-audits/engine_parser_.gov-manifest.yaml.json",
+      "suggested_name": "GL90-99-governance-core-engine_parser_.gov-manifest.yaml.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -14499,8 +14499,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_artifacts_.gl-manifest.yaml.json",
-      "suggested_name": "GL90-99-governance-core-engine_artifacts_.gl-manifest.yaml.json",
+      "current_path": "engine/.governance/per-file-audits/engine_artifacts_.gov-manifest.yaml.json",
+      "suggested_name": "GL90-99-governance-core-engine_artifacts_.gov-manifest.yaml.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -14571,8 +14571,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_validator_.gl-manifest.yaml.json",
-      "suggested_name": "GL90-99-governance-core-engine_validator_.gl-manifest.yaml.json",
+      "current_path": "engine/.governance/per-file-audits/engine_validator_.gov-manifest.yaml.json",
+      "suggested_name": "GL90-99-governance-core-engine_validator_.gov-manifest.yaml.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -14733,8 +14733,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_scripts_add-gl-markers.js.json",
-      "suggested_name": "GL90-99-governance-core-engine_scripts_add-gl-markers.js.json",
+      "current_path": "engine/.governance/per-file-audits/engine_scripts_add-gov-markers.js.json",
+      "suggested_name": "GL90-99-governance-core-engine_scripts_add-gov-markers.js.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -14949,8 +14949,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_aep-engine-web_.gl-manifest.yaml.json",
-      "suggested_name": "GL90-99-governance-core-engine_aep-engine-web_.gl-manifest.yaml.json",
+      "current_path": "engine/.governance/per-file-audits/engine_aep-engine-web_.gov-manifest.yaml.json",
+      "suggested_name": "GL90-99-governance-core-engine_aep-engine-web_.gov-manifest.yaml.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -15273,8 +15273,8 @@
       ]
     },
     {
-      "current_path": "engine/.governance/per-file-audits/engine_renderer_.gl-manifest.yaml.json",
-      "suggested_name": "GL90-99-governance-core-engine_renderer_.gl-manifest.yaml.json",
+      "current_path": "engine/.governance/per-file-audits/engine_renderer_.gov-manifest.yaml.json",
+      "suggested_name": "GL90-99-governance-core-engine_renderer_.gov-manifest.yaml.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -15704,7 +15704,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/GL10TOP10COMPLETE.json",
+      "current_path": "engine/governance/gov-artifacts/operational/GL10TOP10COMPLETE.json",
       "suggested_name": "GL90-99-governance-core-GL10TOP10COMPLETE.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15722,7 +15722,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/GL10-root.json",
+      "current_path": "engine/governance/gov-artifacts/operational/GL10-root.json",
       "suggested_name": "GL90-99-governance-core-GL10-root.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15740,7 +15740,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/GL10-schema.json",
+      "current_path": "engine/governance/gov-artifacts/operational/GL10-schema.json",
       "suggested_name": "GL90-99-governance-core-GL10-schema.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15758,7 +15758,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/sop/GL11-incident-response-sop.json",
+      "current_path": "engine/governance/gov-artifacts/operational/sop/GL11-incident-response-sop.json",
       "suggested_name": "GL90-99-governance-core-GL11-incident-response-sop.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15776,7 +15776,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL13-compliance-audit-log.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL13-compliance-audit-log.json",
       "suggested_name": "GL90-99-governance-core-GL13-compliance-audit-log.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15794,7 +15794,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL10TOP10COMPLETE.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL10TOP10COMPLETE.json",
       "suggested_name": "GL90-99-governance-core-GL10TOP10COMPLETE.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15812,8 +15812,8 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/.gl-index.json",
-      "suggested_name": "GL90-99-governance-core-.gl-index.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/.gov-index.json",
+      "suggested_name": "GL90-99-governance-core-.gov-index.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -15830,7 +15830,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL10-root.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL10-root.json",
       "suggested_name": "GL90-99-governance-core-GL10-root.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15848,7 +15848,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL10-schema.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL10-schema.json",
       "suggested_name": "GL90-99-governance-core-GL10-schema.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15866,7 +15866,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL11-incident-response-sop.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL11-incident-response-sop.json",
       "suggested_name": "GL90-99-governance-core-GL11-incident-response-sop.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15884,7 +15884,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL12-risk-control-report.json",
       "suggested_name": "GL90-99-governance-core-GL12-risk-control-report.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15902,7 +15902,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL15-issue-tracker.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL15-issue-tracker.json",
       "suggested_name": "GL90-99-governance-core-GL15-issue-tracker.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15920,7 +15920,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL14-metrics-dashboard.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL14-metrics-dashboard.json",
       "suggested_name": "GL90-99-governance-core-GL14-metrics-dashboard.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15938,7 +15938,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/GL16-training-materials.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/GL16-training-materials.json",
       "suggested_name": "GL90-99-governance-core-GL16-training-materials.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15956,7 +15956,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/sop/GL11-incident-response-sop.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/sop/GL11-incident-response-sop.json",
       "suggested_name": "GL90-99-governance-core-GL11-incident-response-sop.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15974,7 +15974,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/issue-tracking/GL15-issue-tracker.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/issue-tracking/GL15-issue-tracker.json",
       "suggested_name": "GL90-99-governance-core-GL15-issue-tracker.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -15992,7 +15992,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/training/GL16-training-materials.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/training/GL16-training-materials.json",
       "suggested_name": "GL90-99-governance-core-GL16-training-materials.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16010,7 +16010,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/compliance/GL13-compliance-audit-log.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/compliance/GL13-compliance-audit-log.json",
       "suggested_name": "GL90-99-governance-core-GL13-compliance-audit-log.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16028,7 +16028,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/metrics/GL14-metrics-dashboard.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/metrics/GL14-metrics-dashboard.json",
       "suggested_name": "GL90-99-governance-core-GL14-metrics-dashboard.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16046,7 +16046,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10-top10/risk-control/GL12-risk-control-report.json",
       "suggested_name": "GL90-99-governance-core-GL12-risk-control-report.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16064,7 +16064,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/issue-tracking/GL15-issue-tracker.json",
+      "current_path": "engine/governance/gov-artifacts/operational/issue-tracking/GL15-issue-tracker.json",
       "suggested_name": "GL90-99-governance-core-GL15-issue-tracker.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16082,7 +16082,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/documentation/GL10-documentation-placeholder.json",
+      "current_path": "engine/governance/gov-artifacts/operational/documentation/GL10-documentation-placeholder.json",
       "suggested_name": "GL90-99-governance-core-GL10-documentation-placeholder.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16100,7 +16100,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/training/GL16-training-materials.json",
+      "current_path": "engine/governance/gov-artifacts/operational/training/GL16-training-materials.json",
       "suggested_name": "GL90-99-governance-core-GL16-training-materials.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16118,7 +16118,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/compliance/GL13-compliance-audit-log.json",
+      "current_path": "engine/governance/gov-artifacts/operational/compliance/GL13-compliance-audit-log.json",
       "suggested_name": "GL90-99-governance-core-GL13-compliance-audit-log.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16136,7 +16136,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/policies/GL10-policies-placeholder.json",
+      "current_path": "engine/governance/gov-artifacts/operational/policies/GL10-policies-placeholder.json",
       "suggested_name": "GL90-99-governance-core-GL10-policies-placeholder.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16154,7 +16154,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/metrics/GL14-metrics-dashboard.json",
+      "current_path": "engine/governance/gov-artifacts/operational/metrics/GL14-metrics-dashboard.json",
       "suggested_name": "GL90-99-governance-core-GL14-metrics-dashboard.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16172,7 +16172,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/procedures/GL10-procedures-placeholder.json",
+      "current_path": "engine/governance/gov-artifacts/operational/procedures/GL10-procedures-placeholder.json",
       "suggested_name": "GL90-99-governance-core-GL10-procedures-placeholder.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16190,7 +16190,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL13-compliance-audit-log.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL13-compliance-audit-log.json",
       "suggested_name": "GL90-99-governance-core-GL13-compliance-audit-log.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16208,7 +16208,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL10-root.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL10-root.json",
       "suggested_name": "GL90-99-governance-core-GL10-root.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16226,7 +16226,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL10-schema.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL10-schema.json",
       "suggested_name": "GL90-99-governance-core-GL10-schema.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16244,7 +16244,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL11-incident-response-sop.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL11-incident-response-sop.json",
       "suggested_name": "GL90-99-governance-core-GL11-incident-response-sop.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16262,7 +16262,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/.gl10-index.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/.gl10-index.json",
       "suggested_name": "GL90-99-governance-core-.gl10-index.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16280,7 +16280,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL12-risk-control-report.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL12-risk-control-report.json",
       "suggested_name": "GL90-99-governance-core-GL12-risk-control-report.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16298,7 +16298,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL15-issue-tracker.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL15-issue-tracker.json",
       "suggested_name": "GL90-99-governance-core-GL15-issue-tracker.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16316,7 +16316,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL14-metrics-dashboard.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL14-metrics-dashboard.json",
       "suggested_name": "GL90-99-governance-core-GL14-metrics-dashboard.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16334,7 +16334,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/gl10/GL16-training-materials.json",
+      "current_path": "engine/governance/gov-artifacts/operational/gl10/GL16-training-materials.json",
       "suggested_name": "GL90-99-governance-core-GL16-training-materials.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16352,7 +16352,7 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/operational/risk-control/GL12-risk-control-report.json",
+      "current_path": "engine/governance/gov-artifacts/operational/risk-control/GL12-risk-control-report.json",
       "suggested_name": "GL90-99-governance-core-GL12-risk-control-report.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
@@ -16370,8 +16370,8 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/root/.gl-index.json",
-      "suggested_name": "GL90-99-governance-core-.gl-index.json",
+      "current_path": "engine/governance/gov-artifacts/root/.gov-index.json",
+      "suggested_name": "GL90-99-governance-core-.gov-index.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -16388,8 +16388,8 @@
       ]
     },
     {
-      "current_path": "engine/governance/gl-artifacts/root/.gl-index.json.immutable.json",
-      "suggested_name": "GL90-99-governance-core-.gl-index.json.immutable.json",
+      "current_path": "engine/governance/gov-artifacts/root/.gov-index.json.immutable.json",
+      "suggested_name": "GL90-99-governance-core-.gov-index.json.immutable.json",
       "gl_layer": "GL90-99",
       "semantic_type": "governance-core",
       "compliance_issues": [
@@ -16567,7 +16567,7 @@
       ]
     },
     {
-      "current_path": "engine/gl-gate/package.json",
+      "current_path": "engine/gov-gate/package.json",
       "suggested_name": "GL30-49-general-component-package.json",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -16585,7 +16585,7 @@
       ]
     },
     {
-      "current_path": "engine/gl-gate/tsconfig.json",
+      "current_path": "engine/gov-gate/tsconfig.json",
       "suggested_name": "GL30-49-general-component-tsconfig.json",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -16603,7 +16603,7 @@
       ]
     },
     {
-      "current_path": "engine/gl-gate/package-lock.json",
+      "current_path": "engine/gov-gate/package-lock.json",
       "suggested_name": "GL30-49-general-component-package-lock.json",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -17316,7 +17316,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-sandbox.json",
+      "current_path": "gov-runtime-platform/test-sandbox.json",
       "suggested_name": "GL00-09-test-test-sandbox.json",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -17334,7 +17334,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/package.json",
+      "current_path": "gov-runtime-platform/package.json",
       "suggested_name": "GL00-09-general-component-package.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17352,7 +17352,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-reports-main/integration-test-report.json",
+      "current_path": "gov-runtime-platform/test-reports-main/integration-test-report.json",
       "suggested_name": "GL00-09-test-integration-test-report.json",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -17370,7 +17370,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/fabric-storage/fabric-nodes.json",
+      "current_path": "gov-runtime-platform/fabric-storage/fabric-nodes.json",
       "suggested_name": "GL00-09-general-component-fabric-nodes.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17388,7 +17388,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/fabric-storage/fabric-edges.json",
+      "current_path": "gov-runtime-platform/fabric-storage/fabric-edges.json",
       "suggested_name": "GL00-09-general-component-fabric-edges.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17406,7 +17406,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-reports/integration-test-report.json",
+      "current_path": "gov-runtime-platform/test-reports/integration-test-report.json",
       "suggested_name": "GL00-09-test-integration-test-report.json",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -17424,7 +17424,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-reports/pipelines-connectors-verification.json",
+      "current_path": "gov-runtime-platform/test-reports/pipelines-connectors-verification.json",
       "suggested_name": "GL00-09-test-pipelines-connectors-verification.json",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -17442,7 +17442,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/test-reports/code-intel-test-report.json",
+      "current_path": "gov-runtime-platform/test-reports/code-intel-test-report.json",
       "suggested_name": "GL00-09-test-code-intel-test-report.json",
       "gl_layer": "GL00-09",
       "semantic_type": "test",
@@ -17460,7 +17460,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v12-evolution-engine/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v12-evolution-engine/manifest.json",
       "suggested_name": "GL30-49-general-component-manifest.json",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -17478,7 +17478,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v1-basic-execution/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v1-basic-execution/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17496,7 +17496,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v9-self-healing/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v9-self-healing/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17514,7 +17514,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v5-auto-optimization/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v5-auto-optimization/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17532,7 +17532,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v20-infinity-pool/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v20-infinity-pool/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17550,7 +17550,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v15-neural-fabric/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v15-neural-fabric/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17568,7 +17568,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v19-universal-translator/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v19-universal-translator/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",
@@ -17586,7 +17586,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v16-temporal-engine/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v16-temporal-engine/manifest.json",
       "suggested_name": "GL30-49-general-component-manifest.json",
       "gl_layer": "GL30-49",
       "semantic_type": "general-component",
@@ -17604,7 +17604,7 @@
       ]
     },
     {
-      "current_path": "gl-runtime-platform/gl-runtime/v13-civilization-layer/manifest.json",
+      "current_path": "gov-runtime-platform/gov-runtime/v13-civilization-layer/manifest.json",
       "suggested_name": "GL00-09-general-component-manifest.json",
       "gl_layer": "GL00-09",
       "semantic_type": "general-component",

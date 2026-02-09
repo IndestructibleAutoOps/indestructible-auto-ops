@@ -1,0 +1,50 @@
+{
+  "session_id": "gl-audit-20260126-020557",
+  "charter_version": "2.0.0",
+  "audit_start": "2026-01-26T02:05:57.101990+00:00",
+  "audit_end": "2026-01-26T02:05:57.164586+00:00",
+  "summary": {
+    "total_files": 47,
+    "files_processed": 47,
+    "files_passed": 47,
+    "files_failed": 0,
+    "total_issues": 143,
+    "issues_by_severity": {
+      "P1": 47,
+      "P2": 93,
+      "P3": 3
+    },
+    "issues_by_type": {
+      "gl_marker_missing": 47,
+      "metadata_missing": 44,
+      "type_error": 23,
+      "pipeline_error": 1,
+      "semantic_manifest_missing": 26,
+      "naming_inconsistent": 2
+    }
+  },
+  "best_practice_recommendations": [
+    {
+      "type": "structure",
+      "priority": "medium",
+      "title": "建議添加 .gl 目錄",
+      "description": "最佳實踐建議包含 .gl 目錄以組織相關功能",
+      "action": "mkdir -p engine/.gl"
+    },
+    {
+      "type": "governance",
+      "priority": "high",
+      "title": "建議添加 .gl 治理目錄",
+      "description": "缺少 .gl 目錄，無法存放治理配置",
+      "action": "mkdir -p engine/.gl && touch engine/.gl/manifest.yaml"
+    },
+    {
+      "type": "governance",
+      "priority": "high",
+      "title": "批量添加 GL 標記",
+      "description": "有 47 個檔案缺少 GL 標記",
+      "action": "執行自動化腳本批量添加 GL 標記"
+    },
+    {
+      "type": "documentation",
+      "priority": "medium",

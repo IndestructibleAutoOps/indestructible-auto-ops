@@ -1,0 +1,159 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "timestamp": "2026-01-22T01:52:33.450585",
+  "analysis_results": {
+    "ISSUE-001": {
+      "gl01_risk_levels": [],
+      "gl99_risk_levels": [],
+      "inconsistent": false
+    },
+    "ISSUE-002": {
+      "missing_fields": [
+        "type",
+        "version",
+        "created_at"
+      ],
+      "content_issues": [
+        "缺少 'categories' 字段"
+      ],
+      "has_issues": true
+    },
+    "ISSUE-003": {
+      "path_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-004": {
+      "version_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-005": {
+      "undefined_categories": [],
+      "has_issues": false
+    },
+    "ISSUE-006": {
+      "date_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-007": {
+      "reference_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-008": {
+      "naming_issues": [
+        {
+          "file": "GL10-phase2-root.json",
+          "file_id": "GL10-PHASE2-ROOT",
+          "data_id": "GL10-0001",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL01-risk-registry.json",
+          "file_id": "GL01-RISK-REGISTRY",
+          "data_id": "GL01-0001",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL00-09-ENHANCEMENT_SUMMARY.json",
+          "file_id": "GL00-09-ENHANCEMENT_SUMMARY",
+          "data_id": "GL00-09-SUMMARY-2025-01-21",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL99-unified-charter.json",
+          "file_id": "GL99-UNIFIED-CHARTER",
+          "data_id": "GL99-0001",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL02-success-metrics.json",
+          "file_id": "GL02-SUCCESS-METRICS",
+          "data_id": "GL02-0001",
+          "issue": "文件名與 ID 不匹配"
+        }
+      ],
+      "has_issues": true
+    }
+  },
+  "issues_found": {
+    "ISSUE-001": {
+      "gl01_risk_levels": [],
+      "gl99_risk_levels": [],
+      "inconsistent": false
+    },
+    "ISSUE-002": {
+      "missing_fields": [
+        "type",
+        "version",
+        "created_at"
+      ],
+      "content_issues": [
+        "缺少 'categories' 字段"
+      ],
+      "has_issues": true
+    },
+    "ISSUE-003": {
+      "path_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-004": {
+      "version_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-005": {
+      "undefined_categories": [],
+      "has_issues": false
+    },
+    "ISSUE-006": {
+      "date_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-007": {
+      "reference_issues": [],
+      "has_issues": false
+    },
+    "ISSUE-008": {
+      "naming_issues": [
+        {
+          "file": "GL10-phase2-root.json",
+          "file_id": "GL10-PHASE2-ROOT",
+          "data_id": "GL10-0001",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL01-risk-registry.json",
+          "file_id": "GL01-RISK-REGISTRY",
+          "data_id": "GL01-0001",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL00-09-ENHANCEMENT_SUMMARY.json",
+          "file_id": "GL00-09-ENHANCEMENT_SUMMARY",
+          "data_id": "GL00-09-SUMMARY-2025-01-21",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL99-unified-charter.json",
+          "file_id": "GL99-UNIFIED-CHARTER",
+          "data_id": "GL99-0001",
+          "issue": "文件名與 ID 不匹配"
+        },
+        {
+          "file": "GL02-success-metrics.json",
+          "file_id": "GL02-SUCCESS-METRICS",
+          "data_id": "GL02-0001",
+          "issue": "文件名與 ID 不匹配"
+        }
+      ],
+      "has_issues": true
+    }
+  }
+}

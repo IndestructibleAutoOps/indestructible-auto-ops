@@ -1,0 +1,415 @@
+# Era-2 Zero Tolerance Workflow Sequence
+# 綁定所有工具和引擎到零容忍強制執行系統
+
+kind: WorkflowSequence
+apiVersion: gl.workflow/v1
+metadata:
+  name: "Era-2-ZeroTolerance-Workflow"
+  version: "v1.0.0"
+  description: "Era-2 零容忍治理工作流序列"
+  created: "2026-02-05T15:30:00Z"
+  governance_owner: "IndestructibleAutoOps"
+  enforcement_engine: "GL.Engine.Enforcement.ZeroTolerance.v1"
+
+spec:
+  # ========== 核心原則 ==========
+  principles:
+    - "zero_tolerance"
+    - "genuine_success_only"
+    - "no_fake_pass"
+    - "no_validation_relaxation"
+    - "sealed_repairs_only"
+    - "complete_evidence_chain"
+
+  # ========== 執行模式 ==========
+  execution_mode: "STRICT"
+  enforcement_priority: 1000
+  blocking_enabled: true
+  bypass_disabled: true
+
+  # ========== 階段序列 ==========
+  phases:
+    # 階段 1: 語意層啟動
+    - phase_id: "PHASE_01_SEMANTIC_LAYER"
+      phase_name: "Semantic Layer Activation"
+      priority: 1000
+      blocking: true
+      
+      steps:
+        - step_id: "step_01_01"
+          step_name: "Load Semantic Closure Engine"
+          tool: "ecosystem/engines/semantic_closure_engine.py"
+          enforcement_point: "on_module_load"
+          required: true
+          timeout_ms: 5000
+          output_artifacts:
+            - "semantic_closure_matrix.yaml"
+            - "semantic_tokens.json"
+          validation_rules:
+            - "semantic_validation"
+
+        - step_id: "step_01_02"
+          step_name: "Generate Canonical Semantic"
+          tool: "python ecosystem/engines/semantic_closure_engine.py"
+          enforcement_point: "on_claim_governed"
+          required: true
+          output_artifacts:
+            - "canonical_semantic.json"
+          validation_rules:
+            - "semantic_validation"
+            - "hash_verification"
+
+    # 階段 2: 核心密封層啟動
+    - phase_id: "PHASE_02_CORE_SEALING"
+      phase_name: "Core Sealing Layer Activation"
+      priority: 1000
+      blocking: true
+      
+      steps:
+        - step_id: "step_02_01"
+          step_name: "Load Core Sealing Engine"
+          tool: "ecosystem/engines/core_sealing_engine.py"
+          enforcement_point: "on_module_load"
+          required: true
+          output_artifacts:
+            - "core_hash_sealed.json"
+          validation_rules:
+            - "hash_verification"
+            - "evidence_chain_validation"
+
+        - step_id: "step_02_02"
+          step_name: "Generate Core Hash"
+          tool: "python ecosystem/tools/generate_core_hash.py"
+          enforcement_point: "on_archival"
+          required: true
+          output_artifacts:
+            - "core-hash.json"
+          validation_rules:
+            - "hash_verification"
+
+    # 階段 3: 譜系重建層啟動
+    - phase_id: "PHASE_03_LINEAGE_RECONSTRUCTION"
+      phase_name: "Lineage Reconstruction Layer Activation"
+      priority: 1000
+      blocking: true
+      
+      steps:
+        - step_id: "step_03_01"
+          step_name: "Load Lineage Reconstruction Engine"
+          tool: "ecosystem/engines/lineage_reconstruction_engine.py"
+          enforcement_point: "on_module_load"
+          required: true
+          output_artifacts:
+            - "lineage_graph.json"
+            - "lineage_integrity_report.json"
+          validation_rules:
+            - "evidence_chain_validation"
+            - "governance_validation"
+
+    # 階段 4: GLCM 驗證層啟動
+    - phase_id: "PHASE_04_GLCM_VALIDATION"
+      phase_name: "GLCM Validation Layer Activation"
+      priority: 1000
+      blocking: true
+      
+      steps:
+        - step_id: "step_04_01"
+          step_name: "Load GLCM Validation Engine"
+          tool: "ecosystem/engines/governance_closure_engine.py"
+          enforcement_point: "on_module_load"
+          required: true
+          output_artifacts:
+            - "era-1-closure.json"
+          validation_rules:
+            - "governance_validation"
+            - "no_hallucination_check"
+
+        - step_id: "step_04_02"
+          step_name: "Run Governance Enforcement"
+          tool: "python ecosystem/enforce.py"
+          enforcement_point: "on_operation_request"
+          required: true
+          output_artifacts:
+            - "glcm_passed_report.json"
+          validation_rules:
+            - "governance_validation"
+            - "evidence_chain_validation"
+
+    # 階段 5: 修復引擎啟動（替代規則放寬）
+    - phase_id: "PHASE_05_REPAIR_ENGINE"
+      phase_name: "Repair Engine Activation"
+      priority: 1000
+      blocking: true
+      
+      steps:
+        - step_id: "step_05_01"
+          step_name: "Load Repair Engine"
+          tool: "ecosystem/engines/repair_engine.py"
+          enforcement_point: "on_module_load"
+          required: true
+          output_artifacts:
+            - "repair_plan.yaml"
+            - "repair_action.json"
+          validation_rules:
+            - "no_hallucination_check"
+            - "evidence_chain_validation"
+
+        - step_id: "step_05_02"
+          step_name: "Execute Repairs (Not Relaxation)"
+          tool: "python ecosystem/engines/repair_engine.py"
+          enforcement_point: "on_operation_request"
+          required: true
+          output_artifacts:
+            - "repair_trace.log"
+          validation_rules:
+            - "evidence_chain_validation"
+            - "no_hallucination_check"
+
+    # 階段 6: 工具註冊與更新
+    - phase_id: "PHASE_06_TOOL_REGISTRY"
+      phase_name: "Tool Registry Update"
+      priority: 900
+      blocking: true
+      
+      steps:
+        - step_id: "step_06_01"
+          step_name: "Update Registry"
+          tool: "python ecosystem/tools/update_registry.py"
+          enforcement_point: "on_archival"
+          required: true
+          output_artifacts:
+            - "ecosystem/tools/registry.json"
+          validation_rules:
+            - "hash_verification"
+            - "evidence_chain_validation"
+
+        - step_id: "step_06_02"
+          step_name: "Canonicalize Artifacts"
+          tool: "python ecosystem/tools/canonicalize.py"
+          enforcement_point: "on_archival"
+          required: true
+          output_artifacts:
+            - "canonicalized_artifacts.json"
+          validation_rules:
+            - "hash_verification"
+            - "semantic_validation"
+
+    # 階段 7: 執行摘要生成
+    - phase_id: "PHASE_07_EXECUTION_SUMMARY"
+      phase_name: "Execution Summary Generation"
+      priority: 900
+      blocking: true
+      
+      steps:
+        - step_id: "step_07_01"
+          step_name: "Generate Execution Summary"
+          tool: "python ecosystem/tools/generate_execution_summary.py"
+          enforcement_point: "on_claim_pass"
+          required: true
+          output_artifacts:
+            - "ecosystem/evidence/closure/execution_summary.json"
+          validation_rules:
+            - "governance_validation"
+            - "evidence_chain_validation"
+            - "hash_verification"
+
+    # 階段 8: 深度檢索（不可跳過）
+    - phase_id: "PHASE_08_DEEP_RETRIEVAL"
+      phase_name: "Deep Retrieval"
+      priority: 1000
+      blocking: true
+      skip_allowed: false
+      
+      steps:
+        - step_id: "step_08_01"
+          step_name: "Global Best Practices Research"
+          tool: "manual_research_required"
+          enforcement_point: "on_claim_world_class"
+          required: true
+          output_artifacts:
+            - "step5deepretrieval_report.json"
+            - "global_best_practices_report.json"
+          validation_rules:
+            - "semantic_validation"
+            - "evidence_chain_validation"
+          notes: "This step cannot be skipped - violates GLCM-NOFAKEPASS if skipped"
+
+    # 階段 9: 綜合驗證與閉合
+    - phase_id: "PHASE_09_COMPLIANCE_VALIDATION"
+      phase_name: "Compliance Validation & Closure"
+      priority: 1000
+      blocking: true
+      
+      steps:
+        - step_id: "step_09_01"
+          step_name: "Zero Tolerance Enforcement Check"
+          tool: "python ecosystem/.governance/enforcement/zero_tolerance_engine.py"
+          enforcement_point: "on_claim_pass"
+          required: true
+          output_artifacts:
+            - "enforcement_decision.json"
+            - "gl-events/enforcement_*.yaml"
+          validation_rules:
+            - "semantic_validation"
+            - "governance_validation"
+            - "evidence_chain_validation"
+            - "hash_verification"
+            - "no_hallucination_check"
+          notes: "All rules must pass - zero tolerance for violations"
+
+        - step_id: "step_09_02"
+          step_name: "Final Closure Validation"
+          tool: "python ecosystem/era2_activation.py"
+          enforcement_point: "on_deployment"
+          required: true
+          output_artifacts:
+            - "era-2-closure-sealed.json"
+          validation_rules:
+            - "semantic_validation"
+            - "governance_validation"
+            - "evidence_chain_validation"
+            - "hash_verification"
+            - "no_hallucination_check"
+
+  # ========== GLCM 規則綁定 ==========
+  glcm_rules:
+    critical:
+      - "GLCM-FORBID-RELAXATION"
+      - "GLCM-NOFAKEPASS"
+      - "GLCM-NO-SKIP-WITHOUT-EVIDENCE"
+      - "GLCM-REPAIR-NOT-SEALED"
+    high:
+      - "GLCM-REPAIR-REQUIRED"
+      - "GLCM-SEALED-EVIDENCE"
+    medium:
+      - "GLCM-HALLUCINATION-DETECTION"
+
+  # ========== 工具目錄綁定 ==========
+  tool_registry:
+    engines:
+      - path: "ecosystem/engines/semantic_closure_engine.py"
+        name: "Semantic Closure Engine"
+        layer: "L01"
+        weight: 1000
+      - path: "ecosystem/engines/core_sealing_engine.py"
+        name: "Core Sealing Engine"
+        layer: "L02"
+        weight: 1000
+      - path: "ecosystem/engines/lineage_reconstruction_engine.py"
+        name: "Lineage Reconstruction Engine"
+        layer: "L03"
+        weight: 1000
+      - path: "ecosystem/engines/governance_closure_engine.py"
+        name: "Governance Closure Engine"
+        layer: "L04"
+        weight: 1000
+      - path: "ecosystem/engines/repair_engine.py"
+        name: "Repair Engine"
+        layer: "L05"
+        weight: 1000
+      - path: "ecosystem/.governance/enforcement/zero_tolerance_engine.py"
+        name: "Zero Tolerance Enforcement Engine"
+        layer: "L00"
+        weight: 1000
+
+    tools:
+      - path: "ecosystem/tools/update_registry.py"
+        name: "Update Registry"
+        category: "maintenance"
+      - path: "ecosystem/tools/canonicalize.py"
+        name: "Canonicalize"
+        category: "semantic"
+      - path: "ecosystem/tools/generate_execution_summary.py"
+        name: "Generate Execution Summary"
+        category: "reporting"
+      - path: "ecosystem/tools/generate_core_hash.py"
+        name: "Generate Core Hash"
+        category: "hashing"
+      - path: "ecosystem/enforce.py"
+        name: "Enforce Rules"
+        category: "governance"
+      - path: "ecosystem/enforce.rules.py"
+        name: "Enforce Rules"
+        category: "governance"
+
+    validators:
+      - path: "ecosystem/tools/evidence_verification_logic.py"
+        name: "Evidence Verification Logic"
+        category: "validation"
+      - path: "ecosystem/tools/evidence_chain_vulnerability_tests.py"
+        name: "Evidence Chain Vulnerability Tests"
+        category: "testing"
+      - path: "ecosystem/tools/governance_closure_engine.py"
+        name: "Governance Closure Engine"
+        category: "validation"
+
+  # ========== 執行順序依賴 ==========
+  dependencies:
+    # PHASE_01 無依賴
+    PHASE_02_SEALING:
+      depends_on: ["PHASE_01_SEMANTIC_LAYER"]
+      reason: "Core sealing requires semantic definitions"
+    
+    PHASE_03_LINEAGE:
+      depends_on: ["PHASE_01_SEMANTIC_LAYER", "PHASE_02_CORE_SEALING"]
+      reason: "Lineage requires semantic and core layers"
+    
+    PHASE_04_GLCM:
+      depends_on: ["PHASE_01_SEMANTIC_LAYER", "PHASE_02_CORE_SEALING", "PHASE_03_LINEAGE_RECONSTRUCTION"]
+      reason: "GLCM validation requires all core layers"
+    
+    PHASE_05_REPAIR:
+      depends_on: ["PHASE_04_GLCM_VALIDATION"]
+      reason: "Repairs based on GLCM validation findings"
+    
+    PHASE_06_REGISTRY:
+      depends_on: ["PHASE_05_REPAIR_ENGINE"]
+      reason: "Registry update after all repairs"
+    
+    PHASE_07_SUMMARY:
+      depends_on: ["PHASE_06_TOOL_REGISTRY"]
+      reason: "Summary requires all previous phases"
+    
+    PHASE_08_DEEP_RETRIEVAL:
+      depends_on: ["PHASE_07_EXECUTION_SUMMARY"]
+      reason: "Deep retrieval requires complete evidence"
+    
+    PHASE_09_CLOSURE:
+      depends_on: ["PHASE_08_DEEP_RETRIEVAL"]
+      reason: "Final closure requires all phases including deep retrieval"
+
+  # ========== 成功標準 ==========
+  success_criteria:
+    all_phases_completed: true
+    all_critical_rules_passed: true
+    closure_score: 1.0  # Must be 1.0, not 0.85
+    zero_violations: true
+    no_fake_pass: true
+    all_repairs_sealed: true
+    step_8_completed: true  # Cannot be skipped
+
+  # ========== 違規處理 ==========
+  violation_handling:
+    on_critical:
+      action: "immediate_block"
+      rollback: "automatic"
+      escalation: "immediate"
+      log_to: ".governance/violations/"
+    
+    on_high:
+      action: "block_and_warn"
+      rollback: "automatic"
+      escalation: "within_1_hour"
+    
+    on_medium:
+      action: "warn"
+      rollback: "manual"
+      escalation: "within_24_hours"
+
+  # ========== 審計追蹤 ==========
+  audit_trail:
+    enabled: true
+    format: "jsonl"
+    location: ".governance/logs/audit.jsonl"
+    immutable: true
+    hash_verification: true

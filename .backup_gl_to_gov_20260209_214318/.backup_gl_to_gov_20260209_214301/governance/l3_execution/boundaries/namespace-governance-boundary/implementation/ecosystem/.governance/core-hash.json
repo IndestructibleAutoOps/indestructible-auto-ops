@@ -1,0 +1,21 @@
+{
+  "status": "CANDIDATE",
+  "era": 1,
+  "scope": [
+    "ecosystem/.evidence/",
+    "ecosystem/.governance/event-stream.jsonl"
+  ],
+  "hash_algorithm": "sha256",
+  "core_hash": "PENDING_GENERATION",
+  "generated_at": "2026-02-04T06:30:00+00:00",
+  "metadata": {
+    "description": "Core Hash in CANDIDATE state. Evidence chain is active but not yet sealed. Awaiting semantic closure and governance closure before transitioning to SEALED state.",
+    "transition_to_sealed_conditions": [
+      "Semantic closure achieved",
+      "Immutable core boundaries defined",
+      "Lineage reconstruction validated",
+      "Governance closure confirmed",
+      "No pending era transitions"
+    ]
+  }
+}

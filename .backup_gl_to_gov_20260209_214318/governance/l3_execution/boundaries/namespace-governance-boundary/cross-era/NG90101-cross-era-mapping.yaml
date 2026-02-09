@@ -1,0 +1,206 @@
+# NG90101: 跨 Era 命名空間映射規範
+# Cross-Era Namespace Mapping Standard
+
+apiVersion: ng.governance/v3
+kind: MappingStandard
+metadata:
+  ng_code: NG90101
+  name: cross-era-namespace-mapping
+  version: "1.0.0"
+  parent: NG00000
+  domain: "跨Era映射"
+  status: active
+
+spec:
+  purpose: "定義 Era 間命名空間映射和轉換規則"
+  
+  mapping_rules:
+    era1_to_era2:
+      name: "代碼層 → 微碼層"
+      
+      mappings:
+        package_to_service:
+          from: "pkg.era1.{domain}.{name}"
+          to: "svc.era2.{domain}.{name}"
+          transformation: "package → microservice"
+          example:
+            from: "pkg.era1.platform.core"
+            to: "svc.era2.platform.core"
+        
+        module_to_api:
+          from: "mod.era1.{domain}.{name}"
+          to: "api.era2.{domain}.{name}"
+          transformation: "module → REST API"
+          example:
+            from: "mod.era1.runtime.executor"
+            to: "api.era2.runtime.executor"
+        
+        class_to_service_component:
+          from: "cls.era1.{domain}.{name}"
+          to: "cmp.era2.{domain}.{name}"
+          transformation: "class → service component"
+          example:
+            from: "cls.era1.governance.enforcer"
+            to: "cmp.era2.governance.enforcer"
+        
+        function_to_endpoint:
+          from: "fn.era1.{domain}.{name}"
+          to: "ep.era2.{domain}.{name}"
+          transformation: "function → API endpoint"
+          example:
+            from: "fn.era1.platform.deploy"
+            to: "ep.era2.platform.deploy"
+    
+    era2_to_era3:
+      name: "微碼層 → 無碼層"
+      
+      mappings:
+        service_to_intent:
+          from: "svc.era2.{domain}.{name}"
+          to: "int.era3.{domain}.{name}"
+          transformation: "service → business intent"
+          example:
+            from: "svc.era2.platform.deployment"
+            to: "int.era3.platform.deploy"
+        
+        api_to_semantic:
+          from: "api.era2.{domain}.{name}"
+          to: "sem.era3.{domain}.{name}"
+          transformation: "API → semantic concept"
+          example:
+            from: "api.era2.runtime.execute"
+            to: "sem.era3.runtime.execution"
+        
+        event_to_intent:
+          from: "evt.era2.{domain}.{name}"
+          to: "int.era3.{domain}.{name}"
+          transformation: "event → intent trigger"
+          example:
+            from: "evt.era2.registry.updated"
+            to: "int.era3.registry.update"
+        
+        stream_to_neural:
+          from: "stm.era2.{domain}.{name}"
+          to: "neu.era3.{domain}.{name}"
+          transformation: "data stream → neural network"
+          example:
+            from: "stm.era2.data.pipeline"
+            to: "neu.era3.data.processor"
+    
+    era1_to_era3:
+      name: "代碼層 → 無碼層（直接映射）"
+      
+      mappings:
+        package_to_intent:
+          from: "pkg.era1.{domain}.{name}"
+          to: "int.era3.{domain}.{name}"
+          transformation: "package → business intent"
+          skip_era2: true
+          
+        function_to_semantic:
+          from: "fn.era1.{domain}.{name}"
+          to: "sem.era3.{domain}.{name}"
+          transformation: "function → semantic operation"
+          skip_era2: true
+  
+  universal_namespaces:
+    description: "所有 Era 通用的命名空間"
+    
+    security:
+      namespace: "sec.cross.security.*"
+      ng_code_range: "NG90401~NG90499"
+      eras: ["era-1", "era-2", "era-3"]
+      reason: "安全策略跨所有 Era 統一"
+    
+    configuration:
+      namespace: "cfg.cross.config.*"
+      ng_code_range: "NG90501~NG90599"
+      eras: ["era-1", "era-2", "era-3"]
+      reason: "配置管理跨所有 Era 統一"
+    
+    monitoring:
+      namespace: "mon.cross.monitor.*"
+      ng_code_range: "NG90601~NG90699"
+      eras: ["era-1", "era-2", "era-3"]
+      reason: "監控系統跨所有 Era 統一"
+  
+  transformation_engine:
+    name: "ng-namespace-transformer"
+    version: "2.0.0"
+    ng_code: "NG90102"
+    
+    capabilities:
+      automatic_mapping:
+        description: "自動命名空間映射"
+        algorithm: "rule_based_with_ml"
+      
+      semantic_similarity:
+        description: "語義相似度計算"
+        algorithm: "transformer_based"
+        threshold: 0.85
+      
+      conflict_detection:
+        description: "映射衝突檢測"
+        checks:
+          - "duplicate_target_namespace"
+          - "semantic_mismatch"
+          - "dependency_break"
+      
+      bidirectional_transformation:
+        description: "雙向轉換支援"
+        forward: "era1 → era2 → era3"
+        backward: "era3 → era2 → era1"
+  
+  mapping_validation:
+    pre_mapping_checks:
+      - check: "source_namespace_exists"
+        ng_code: "NG90103"
+      - check: "target_era_compatible"
+        ng_code: "NG90104"
+      - check: "no_mapping_conflict"
+        ng_code: "NG90105"
+    
+    post_mapping_checks:
+      - check: "mapping_completeness"
+        ng_code: "NG90106"
+      - check: "semantic_consistency"
+        ng_code: "NG90107"
+      - check: "reference_integrity"
+        ng_code: "NG90108"
+  
+  mapping_examples:
+    platform_core_migration:
+      description: "平台核心從 Era-1 到 Era-3 的完整映射"
+      
+      era1:
+        namespace: "pkg.era1.platform.core"
+        ng_code: "NG10001"
+        components:
+          - "mod.era1.platform.executor"
+          - "cls.era1.platform.manager"
+      
+      era2:
+        namespace: "svc.era2.platform.core"
+        ng_code: "NG30001"
+        components:
+          - "api.era2.platform.executor"
+          - "cmp.era2.platform.manager"
+      
+      era3:
+        namespace: "int.era3.platform.core"
+        ng_code: "NG60001"
+        components:
+          - "sem.era3.platform.execute"
+          - "neu.era3.platform.manage"
+
+enforcement:
+  automated_mapping: true
+  manual_review_required:
+    - "Era-1 to Era-3 direct mappings"
+    - "Mappings with semantic_similarity < 0.85"
+    - "Mappings affecting > 10 namespaces"
+  
+  rollback_policy:
+    enabled: true
+    retention: "30 days"
+    trigger: "validation_failure"

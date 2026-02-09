@@ -1,0 +1,359 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: governance.machinenativeops.io/v1
+kind: GLChainRegistry
+metadata:
+  name: gl-chain-registry
+  version: "1.0.0"
+  status: ACTIVE
+  created_at: "2025-01-19T00:00:00Z"
+  owner: governance-committee
+chain_declaration:
+  purpose: "建立 GL 治理架構所有文件之間的完整鏈鍵關係"
+  authority: "GL-CONSTITUTION.yaml"
+  integrity: VERIFIED
+core_governance_chain:
+  chain_id: "CHAIN-CORE"
+  name: "Core Governance Chain"
+  name_zh: "核心治理鏈"
+  nodes:
+    - node_id: "NODE-01"
+      file: "GL-CONSTITUTION.yaml"
+      type: "constitution"
+      role: "最高治理規範"
+      status: ENACTED
+      authority: SUPREME
+      depends_on: []
+      provides_to:
+        - "GL-SEMANTIC-SEAL.yaml"
+        - "GL-SEMANTIC-BOUNDARIES.yaml"
+        - "GL-GOVERNANCE-LOOP.yaml"
+        - "GL-TASK-LIFECYCLE.yaml"
+        - "GL-EXECUTION-MODE.yaml"
+        - "GL-AUTOMATION-ENGINE.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+        - "GL-SKILLS-MATRIX.yaml"
+        - "GL-ARTIFACTS-MATRIX.yaml"
+        - "GL-FILESYSTEM-MAPPING.yaml"
+        - "GL-DAG.yaml"
+    - node_id: "NODE-02"
+      file: "GL-SEMANTIC-SEAL.yaml"
+      type: "semantic-specification"
+      role: "語意封存規範"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+      provides_to:
+        - "GL-SEMANTIC-BOUNDARIES.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+    - node_id: "NODE-03"
+      file: "GL-SEMANTIC-BOUNDARIES.yaml"
+      type: "semantic-specification"
+      role: "語意邊界定義"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-SEMANTIC-SEAL.yaml"
+      provides_to:
+        - "GL-SKILLS-MATRIX.yaml"
+        - "GL-ARTIFACTS-MATRIX.yaml"
+        - "GL-FILESYSTEM-MAPPING.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+execution_governance_chain:
+  chain_id: "CHAIN-EXEC"
+  name: "Execution Governance Chain"
+  name_zh: "執行治理鏈"
+  nodes:
+    - node_id: "NODE-04"
+      file: "GL-GOVERNANCE-LOOP.yaml"
+      type: "governance-process"
+      role: "治理循環"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+      provides_to:
+        - "GL-TASK-LIFECYCLE.yaml"
+        - "GL-AUTOMATION-ENGINE.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+    - node_id: "NODE-05"
+      file: "GL-TASK-LIFECYCLE.yaml"
+      type: "governance-process"
+      role: "任務生命週期"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-GOVERNANCE-LOOP.yaml"
+      provides_to:
+        - "GL-AUTOMATION-ENGINE.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+    - node_id: "NODE-06"
+      file: "GL-EXECUTION-MODE.yaml"
+      type: "execution-specification"
+      role: "執行模式"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+      provides_to:
+        - "GL-AUTOMATION-ENGINE.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+automation_engine_chain:
+  chain_id: "CHAIN-AUTO"
+  name: "Automation Engine Chain"
+  name_zh: "自動化引擎鏈"
+  nodes:
+    - node_id: "NODE-07"
+      file: "GL-AUTOMATION-ENGINE.yaml"
+      type: "automation-engine"
+      role: "自動化引擎"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-GOVERNANCE-LOOP.yaml"
+        - "GL-TASK-LIFECYCLE.yaml"
+        - "GL-EXECUTION-MODE.yaml"
+      provides_to:
+        - "GL-ARTIFACT-ENGINE.yaml"
+    - node_id: "NODE-08"
+      file: "GL-ARTIFACT-ENGINE.yaml"
+      type: "artifact-engine"
+      role: "產物生成引擎"
+      status: ACTIVE
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-SEMANTIC-SEAL.yaml"
+        - "GL-SEMANTIC-BOUNDARIES.yaml"
+        - "GL-GOVERNANCE-LOOP.yaml"
+        - "GL-TASK-LIFECYCLE.yaml"
+        - "GL-EXECUTION-MODE.yaml"
+        - "GL-AUTOMATION-ENGINE.yaml"
+        - "GL-SKILLS-MATRIX.yaml"
+        - "GL-ARTIFACTS-MATRIX.yaml"
+        - "GL-FILESYSTEM-MAPPING.yaml"
+      provides_to: []
+matrix_definition_chain:
+  chain_id: "CHAIN-MATRIX"
+  name: "Matrix Definition Chain"
+  name_zh: "矩陣定義鏈"
+  nodes:
+    - node_id: "NODE-09"
+      file: "GL-SKILLS-MATRIX.yaml"
+      type: "matrix-definition"
+      role: "技能能力責任矩陣"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-SEMANTIC-BOUNDARIES.yaml"
+      provides_to:
+        - "GL-ARTIFACTS-MATRIX.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+    - node_id: "NODE-10"
+      file: "GL-ARTIFACTS-MATRIX.yaml"
+      type: "matrix-definition"
+      role: "產物矩陣"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-SEMANTIC-BOUNDARIES.yaml"
+        - "GL-SKILLS-MATRIX.yaml"
+      provides_to:
+        - "GL-FILESYSTEM-MAPPING.yaml"
+        - "GL-ARTIFACT-ENGINE.yaml"
+    - node_id: "NODE-11"
+      file: "GL-FILESYSTEM-MAPPING.yaml"
+      type: "filesystem-mapping"
+      role: "檔案系統映射"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+        - "GL-SEMANTIC-BOUNDARIES.yaml"
+        - "GL-ARTIFACTS-MATRIX.yaml"
+      provides_to:
+        - "GL-ARTIFACT-ENGINE.yaml"
+structure_definition_chain:
+  chain_id: "CHAIN-STRUCT"
+  name: "Structure Definition Chain"
+  name_zh: "結構定義鏈"
+  nodes:
+    - node_id: "NODE-12"
+      file: "GL-DAG.yaml"
+      type: "structure-definition"
+      role: "有向無環圖"
+      status: SEALED
+      authority: HIGH
+      depends_on:
+        - "GL-CONSTITUTION.yaml"
+      provides_to:
+        - "GL-GOVERNANCE-LOOP.yaml"
+    - node_id: "NODE-13"
+      file: "GL-DAG.md"
+      type: "documentation"
+      role: "DAG 文檔"
+      status: SEALED
+      authority: MEDIUM
+      depends_on:
+        - "GL-DAG.yaml"
+      provides_to: []
+complete_chain_graph:
+  graph_id: "GRAPH-COMPLETE"
+  name: "Complete GL Chain Graph"
+  name_zh: "完整 GL 鏈鍵圖"
+  topology: |
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │                        GL-CONSTITUTION.yaml                              │
+    │                         (SUPREME AUTHORITY)                              │
+    └─────────────────────────────────────────────────────────────────────────┘
+                                      │
+          ┌───────────────────────────┼───────────────────────────┐
+          │                           │                           │
+          ▼                           ▼                           ▼
+    ┌─────────────┐           ┌─────────────┐           ┌─────────────┐
+    │GL-SEMANTIC- │           │GL-GOVERNANCE│           │  GL-DAG     │
+    │SEAL.yaml    │           │-LOOP.yaml   │           │  .yaml      │
+    └─────────────┘           └─────────────┘           └─────────────┘
+          │                           │                           │
+          ▼                           ▼                           ▼
+    ┌─────────────┐           ┌─────────────┐           ┌─────────────┐
+    │GL-SEMANTIC- │           │GL-TASK-     │           │  GL-DAG     │
+    │BOUNDARIES   │           │LIFECYCLE    │           │  .md        │
+    │.yaml        │           │.yaml        │           └─────────────┘
+    └─────────────┘           └─────────────┘
+          │                           │
+          │                           ▼
+          │                   ┌─────────────┐
+          │                   │GL-EXECUTION-│
+          │                   │MODE.yaml    │
+          │                   └─────────────┘
+          │                           │
+          ▼                           ▼
+    ┌─────────────┐           ┌─────────────┐
+    │GL-SKILLS-   │           │GL-AUTOMATION│
+    │MATRIX.yaml  │           │-ENGINE.yaml │
+    └─────────────┘           └─────────────┘
+          │                           │
+          ▼                           │
+    ┌─────────────┐                   │
+    │GL-ARTIFACTS-│                   │
+    │MATRIX.yaml  │                   │
+    └─────────────┘                   │
+          │                           │
+          ▼                           │
+    ┌─────────────┐                   │
+    │GL-FILESYSTEM│                   │
+    │-MAPPING.yaml│                   │
+    └─────────────┘                   │
+          │                           │
+          └───────────────────────────┘
+                        │
+                        ▼
+              ┌─────────────────┐
+              │GL-ARTIFACT-     │
+              │ENGINE.yaml      │
+              │(ACTIVE ENGINE)  │
+              └─────────────────┘
+chain_statistics:
+  total_nodes: 13
+  total_chains: 5
+  chains:
+    - chain_id: "CHAIN-CORE"
+      nodes: 3
+    - chain_id: "CHAIN-EXEC"
+      nodes: 3
+    - chain_id: "CHAIN-AUTO"
+      nodes: 2
+    - chain_id: "CHAIN-MATRIX"
+      nodes: 3
+    - chain_id: "CHAIN-STRUCT"
+      nodes: 2
+  node_status:
+    ENACTED: 1
+    SEALED: 11
+    ACTIVE: 1
+  authority_levels:
+    SUPREME: 1
+    HIGH: 11
+    MEDIUM: 1
+dependency_matrix:
+  matrix_id: "DEP-MATRIX-001"
+  dependencies:
+    GL-CONSTITUTION.yaml:
+      depends_on: []
+      depended_by: 12
+    GL-SEMANTIC-SEAL.yaml:
+      depends_on: 1
+      depended_by: 2
+    GL-SEMANTIC-BOUNDARIES.yaml:
+      depends_on: 2
+      depended_by: 4
+    GL-GOVERNANCE-LOOP.yaml:
+      depends_on: 1
+      depended_by: 3
+    GL-TASK-LIFECYCLE.yaml:
+      depends_on: 2
+      depended_by: 2
+    GL-EXECUTION-MODE.yaml:
+      depends_on: 1
+      depended_by: 2
+    GL-AUTOMATION-ENGINE.yaml:
+      depends_on: 4
+      depended_by: 1
+    GL-ARTIFACT-ENGINE.yaml:
+      depends_on: 10
+      depended_by: 0
+    GL-SKILLS-MATRIX.yaml:
+      depends_on: 2
+      depended_by: 2
+    GL-ARTIFACTS-MATRIX.yaml:
+      depends_on: 3
+      depended_by: 2
+    GL-FILESYSTEM-MAPPING.yaml:
+      depends_on: 3
+      depended_by: 1
+    GL-DAG.yaml:
+      depends_on: 1
+      depended_by: 2
+    GL-DAG.md:
+      depends_on: 1
+      depended_by: 0
+chain_validation:
+  rules:
+    - rule_id: "CHAIN-VAL-01"
+      name: "依賴完整性"
+      description: "所有依賴必須存在且有效"
+      enforcement: STRICT
+    - rule_id: "CHAIN-VAL-02"
+      name: "循環依賴禁止"
+      description: "不得存在循環依賴"
+      enforcement: STRICT
+    - rule_id: "CHAIN-VAL-03"
+      name: "權限層級遵守"
+      description: "低權限不得覆蓋高權限"
+      enforcement: STRICT
+    - rule_id: "CHAIN-VAL-04"
+      name: "狀態一致性"
+      description: "依賴的文件狀態必須一致"
+      enforcement: STRICT
+    - rule_id: "CHAIN-VAL-05"
+      name: "鏈鍵完整性"
+      description: "所有鏈鍵必須完整連接"
+      enforcement: STRICT
+chain_signature:
+  registry_id: "GL-CHAIN-REGISTRY-001"
+  version: "1.0.0"
+  status: ACTIVE
+  created_at: "2025-01-19T00:00:00Z"
+  integrity_hash: "sha256:gl-chain-registry-v1"
+  total_files: 13
+  total_chains: 5

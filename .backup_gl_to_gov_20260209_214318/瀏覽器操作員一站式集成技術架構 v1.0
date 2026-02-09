@@ -1,0 +1,795 @@
+# 瀏覽器操作員一站式集成技術架構 v1.0
+
+## 執行摘要
+
+本文件定義了瀏覽器操作員（Browser Operator）在 IndestructibleAutoOps 平台中的完整技術架構。該架構採用事件驅動、微服務設計模式，整合了零容忍治理規則、多層驗證機制、HSM 密鑰管理與完整的審計追蹤。所有組件均設計為高可用、高性能、可審計且符合生產級別要求。
+
+---
+
+## 架構願景
+
+### 設計原則
+
+1. **零信任**：所有操作均視為潛在威脅，需多層驗證
+2. **事件驅動**：所有狀態變更均作為事件發佈，支持異步處理
+3. **可審計**：完整的操作追蹤鏈，密碼學簽名確保完整性
+4. **自動化**：所有規則執行與回應自動化，無人工干預延遲
+5. **可靠性**：冗餘設計、故障轉移、自動恢復
+6. **性能**：毫秒級延遲、水平擴展能力
+
+### 架構層次
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    應用層 (Application)                  │
+│  Browser  Workflow  Orchestration  Task  Management      │
+├─────────────────────────────────────────────────────────┤
+│                    服務層 (Services)                      │
+│  Auth  AuthZ  RBAC  Audit  Event  Cryptography  HSM      │
+├─────────────────────────────────────────────────────────┤
+│                    基礎層 (Foundation)                    │
+│  Event Bus  State Store  Key Store  Log Store  Metrics   │
+├─────────────────────────────────────────────────────────┤
+│                    基礎設施層 (Infrastructure)           │
+│  Kubernetes  Database  Cache  Message Queue  Monitoring  │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 核心架構組件
+
+### 1. 入口與控制流
+
+#### 1.1 API 閘道 (API Gateway)
+
+**職責**：
+- 請求認證與令牌驗證
+- 請求路由與限流
+- 請求日誌與監控
+- SSL/TLS 終止
+
+**API 端點**：
+
+| 端點 | 方法 | 驗證 | 速率限制 |
+|-----|------|------|--------|
+| `/api/v1/operator/start-session` | POST | MFA + 2FA | 5 req/分鐘 |
+| `/api/v1/operator/execute` | POST | Bearer Token | 100 req/分鐘 |
+| `/api/v1/operator/get-status` | GET | Bearer Token | 1000 req/分鐘 |
+| `/api/v1/audit/logs` | GET | Bearer Token + RBAC | 100 req/分鐘 |
+| `/api/v1/operator/revoke-session` | POST | Bearer Token | 10 req/分鐘 |
+
+#### 1.2 會話管理器 (Session Manager)
+
+**職責**：
+- 會話建立與驗證
+- 會話生命週期管理
+- 令牌簽發與驗證
+- 並發會話控制
+
+**會話生命週期**：
+
+```
+初始化 → 認證 → 授權 → 活躍 → 非活躍 → 終止
+ |      ↓      ↓      ↓      ↓      ↓      |
+ ├──────────────────────────────────────────┤
+ └─── 任何階段檢測異常 → 立即隔離 → 取證 ───┘
+```
+
+**會話資料結構**：
+
+```python
+class Session:
+    session_id: str              # 唯一識別
+    user_id: str                 # 使用者 ID
+    auth_token: str              # Bearer 令牌（加密）
+    auth_token_hash: str         # 令牌雜湊
+    created_at: datetime         # 建立時間
+    last_activity: datetime      # 最後活動
+    expires_at: datetime         # 過期時間
+    mfa_verified: bool           # MFA 驗證狀態
+    session_state: str           # ACTIVE, INACTIVE, REVOKED
+    ip_address: str              # 來源 IP
+    user_agent: str              # 用戶代理
+    concurrent_operations: int   # 並發操作數
+    resource_consumed: dict      # CPU, RAM, DISK, NET
+```
+
+### 2. 認證與授權層
+
+#### 2.1 多因子認證 (MFA) 服務
+
+**支持的認證方式**：
+
+1. **硬體金鑰** (FIDO2/WebAuthn)
+   - 強度：最高
+   - 延遲：< 5 秒
+   - 失敗模式：無
+
+2. **時間一次性密碼** (TOTP - RFC 6238)
+   - 強度：高
+   - 延遲：< 1 秒
+   - 失敗模式：時鐘同步
+
+3. **生物特徵**（可選，企業級）
+   - 強度：高
+   - 延遲：< 3 秒
+   - 失敗模式：識別失敗
+
+**認證流程**：
+
+```
+使用者提供認證信息 → MFA 服務驗證 → 生成令牌 → 簽發會話
+     ↓
+ 驗證失敗 → 記錄失敗 → 失敗次數 > 3 → 鎖定帳戶
+```
+
+#### 2.2 基於角色的存取控制 (RBAC)
+
+**角色定義**（已在規則集中定義）：
+- VIEWER：唯讀，公開資源
+- OPERATOR：執行指派工作流程
+- ADMIN：全平台管理
+- SUPERVISOR：監督與回應
+- AUDITOR：審計與報告
+
+**權限模型**：
+
+```python
+class Permission:
+    permission_id: str           # 權限識別
+    resource: str                # 資源類型（browser, workflow, audit）
+    action: str                  # 操作（read, write, delete, execute）
+    constraints: dict            # 約束條件（如時間範圍）
+    
+class Role:
+    role_id: str
+    role_name: str
+    permissions: List[Permission]
+    
+class RoleAssignment:
+    user_id: str
+    role_id: str
+    assigned_at: datetime
+    expires_at: datetime
+    assigned_by: str
+    approval_chain: List[Approval]
+```
+
+**授權決策**：
+
+```
+操作請求 → 檢查使用者角色 → 檢查角色權限 → 檢查約束 → 決策
+            ↓
+       角色或權限缺失 → 阻斷 + 記錄 + 升報
+       約束不符合 → 阻斷 + 記錄
+       SoD 衝突 → 阻斷 + 記錄 + 升報
+       通過 → 執行 + 記錄
+```
+
+### 3. 事件驅動核心
+
+#### 3.1 事件總線 (Event Bus)
+
+**架構**：採用 Apache Kafka 或 RabbitMQ，支持：
+- 異步消息發佈與訂閱
+- 訊息持久化與重放
+- 事件排序與順序保證
+- 死字母隊列處理
+
+**事件主題**：
+
+| 主題 | 描述 | 使用者 |
+|-----|------|-------|
+| `browser.session.created` | 會話建立 | Audit, Monitor |
+| `browser.session.terminated` | 會話終止 | Audit, Cleanup |
+| `browser.operation.started` | 操作開始 | Audit, Monitor |
+| `browser.operation.completed` | 操作完成 | Audit, Validator |
+| `browser.operation.failed` | 操作失敗 | Audit, Recovery |
+| `security.violation.detected` | 安全違反 | Audit, Responder |
+| `policy.conflict.detected` | 政策衝突 | Policy Engine |
+| `resource.quota.exceeded` | 資源超額 | Limiter |
+
+#### 3.2 事件定義
+
+**事件結構**：
+
+```python
+class Event:
+    event_id: str                # 唯一識別 (UUID)
+    event_type: str              # 事件類型（主題）
+    timestamp: datetime          # 發生時間（微秒精度）
+    actor_id: str                # 執行者
+    source_component: str        # 發起組件
+    source_version: str          # 組件版本
+    
+    # 事件內容
+    subject: dict                # 事件主體（如 session_id）
+    data: dict                   # 事件資料
+    
+    # 追蹤與驗證
+    correlation_id: str          # 關聯 ID（用於追蹤鏈）
+    prior_event_hash: str        # 前一事件雜湊
+    event_hash: str              # 此事件雜湊（SHA3-512）
+    signature: str               # RSA-4096 簽名
+    signer_cert: str             # 簽名者憑證
+    
+    # 元資料
+    encryption_key_id: str       # 加密密鑰 ID（如使用）
+    priority: str                # CRITICAL, HIGH, MEDIUM, LOW
+    retention_policy: str        # 保留政策
+```
+
+### 4. 狀態與存儲層
+
+#### 4.1 狀態存儲 (State Store)
+
+**架構**：採用 Redis Cluster 或 etcd，特性：
+- 強一致性（適合關鍵決策）
+- 快速讀寫（毫秒級）
+- 自動過期（TTL 支持）
+- 事務支持
+
+**關鍵狀態對象**：
+
+1. **會話狀態** (`session:{session_id}`)
+   - TTL：30 分鐘
+   - 更新頻率：每次活動
+
+2. **操作狀態** (`operation:{operation_id}`)
+   - TTL：24 小時
+   - 更新頻率：實時
+
+3. **使用者資源計數** (`user_quota:{user_id}:hour`)
+   - TTL：1 小時
+   - 更新頻率：每操作
+
+4. **黑名單** (`blacklist:session:{session_id}`)
+   - TTL：7 天
+   - 更新頻率：隔離時
+
+#### 4.2 審計日誌存儲 (Log Store)
+
+**架構**：採用 Elasticsearch 或 Apache Cassandra，特性：
+- 不可篡改性（雜湊鏈）
+- 高容量（每秒 10,000+ 事件）
+- 快速查詢
+- 長期保留（10 年）
+
+**日誌記錄結構**：
+
+```python
+class AuditLog:
+    log_id: str                  # 唯一識別
+    sequence_number: int         # 序列號（用於檢測缺失）
+    timestamp_ms: int            # 毫秒時間戳
+    
+    # 追蹤信息
+    actor_id: str
+    session_id: str
+    correlation_id: str
+    
+    # 操作信息
+    operation: str               # 操作類型
+    resource: str                # 操作對象
+    status: str                  # SUCCESS, FAILURE, PARTIAL
+    
+    # 詳細資訊
+    details: dict                # 操作參數與結果
+    
+    # 安全信息
+    prior_log_hash: str          # 前一日誌雜湊
+    log_hash: str                # 此日誌雜湊
+    signature: str               # 密碼學簽名
+    
+    # 分類
+    data_classification: str     # PUBLIC, INTERNAL, CONFIDENTIAL
+    retention_days: int          # 保留天數
+```
+
+### 5. 密碼學與密鑰管理
+
+#### 5.1 HSM 集成
+
+**架構**：使用 CloudHSM 或本地 Thales Luna，提供：
+- 密鑰生成與存儲（不可導出）
+- 加密/解密操作
+- 數位簽名與驗證
+- 密鑰輪換管理
+
+**密鑰類型**：
+
+| 密鑰類型 | 用途 | 強度 | 輪換 |
+|---------|------|------|------|
+| **OPERATOR-KEY** | 操作者會話令牌簽署 | RSA-4096 | 90 天 |
+| **AUDIT-KEY** | 審計日誌簽署 | RSA-4096 | 180 天 |
+| **SESSION-KEY** | 會話加密（AES） | 256 位 | 30 天 |
+| **TRANSPORT-KEY** | 傳輸加密（AES） | 256 位 | 30 天 |
+| **MASTER-KEY** | 主密鑰加密密鑰 | RSA-4096 | 1 年 |
+
+**密鑰生命週期管理**：
+
+```python
+class KeyLifecycleManager:
+    def generate_key(self, key_type: str, strength: int):
+        # 在 HSM 內生成，不導出
+        pass
+    
+    def rotate_key(self, key_id: str):
+        # 1. 生成新密鑰
+        # 2. 測試新密鑰
+        # 3. 發佈新密鑰至所有節點
+        # 4. 保留舊密鑰 7 天作為驗證
+        # 5. 存檔舊密鑰
+        pass
+    
+    def revoke_key(self, key_id: str, reason: str):
+        # 1. 標記為已撤銷
+        # 2. 發佈撤銷清單 (CRL)
+        # 3. 通知所有節點
+        # 4. 禁止該密鑰使用
+        pass
+    
+    def destroy_key(self, key_id: str):
+        # 1. 確認撤銷期滿
+        # 2. 在 HSM 中加密刪除
+        # 3. 驗證不可恢復
+        # 4. 記錄銷毀事件
+        pass
+```
+
+#### 5.2 加密服務
+
+**支持的操作**：
+
+```python
+class CryptoService:
+    def sign_data(self, key_id: str, data: bytes) -> str:
+        # 使用 RSA-4096 簽署
+        # 返回 base64 編碼簽名
+        pass
+    
+    def verify_signature(self, key_id: str, data: bytes, signature: str) -> bool:
+        # 驗證簽名
+        pass
+    
+    def encrypt_data(self, key_id: str, data: bytes) -> str:
+        # 使用 AES-256-GCM 加密
+        # 返回 base64 編碼密文
+        pass
+    
+    def decrypt_data(self, key_id: str, ciphertext: str) -> bytes:
+        # 解密
+        pass
+    
+    def hash_data(self, data: bytes) -> str:
+        # SHA3-512 雜湊
+        # 返回十六進制字符串
+        pass
+```
+
+### 6. 瀏覽器操作引擎
+
+#### 6.1 操作執行器 (Operation Executor)
+
+**架構**：採用 Playwright + FastAPI，提供：
+- 瀏覽器生命週期管理
+- DOM 操作與視覺驗證
+- 會話與認證管理
+- 錯誤處理與重試
+
+**支持的操作**：
+
+| 操作 | 描述 | 超時 | 驗證 |
+|-----|------|------|------|
+| `navigate` | 導航到 URL | 30 秒 | 頁面加載完成 |
+| `click` | 點擊元素 | 5 秒 | 元素狀態變更 |
+| `fill` | 填充輸入框 | 5 秒 | 文本匹配 |
+| `screenshot` | 截圖 | 5 秒 | 文件生成 |
+| `wait_for_selector` | 等待選擇器 | 10 秒 | DOM 出現 |
+| `extract_data` | 提取資料 | 5 秒 | 資料驗證 |
+| `submit_form` | 提交表單 | 15 秒 | 響應確認 |
+
+**操作流程**：
+
+```
+操作請求 → 預驗證 → 執行 → 結果驗證 → 後處理 → 記錄
+    ↓
+ 認證失敗 → 拒絕
+ 授權失敗 → 拒絕
+ 超時 → 回滾
+ 驗證失敗 → 回滾
+ 異常 → 隔離
+```
+
+#### 6.2 會話管理
+
+**瀏覽器會話**：
+
+```python
+class BrowserSession:
+    session_id: str              # 會話識別
+    browser_context: Any         # Playwright Context
+    cookies: dict                # 已存儲 Cookie
+    local_storage: dict          # LocalStorage
+    
+    # 隔離與安全
+    isolated_network: str        # 隔離網路命名空間
+    proxy_config: dict           # 代理配置
+    
+    # 監控
+    created_at: datetime
+    last_operation: datetime
+    operation_count: int
+    
+    async def navigate(self, url: str):
+        # 驗證 URL 安全性
+        # 設置超時
+        # 執行導航
+        # 驗證頁面加載
+        pass
+    
+    async def execute_action(self, action: dict):
+        # 驗證操作授權
+        # 執行 DOM 操作
+        # 驗證結果
+        # 返回結果與截圖
+        pass
+```
+
+### 7. 規則執行與政策引擎
+
+#### 7.1 政策決策點 (PDP)
+
+**職責**：
+- 評估操作是否合法
+- 應用所有規則集
+- 做出准許/拒絕決策
+- 返回決策理由
+
+**決策流程**：
+
+```
+操作請求 + 上下文信息 
+    ↓
+應用認證規則 → 檢查 MFA、會話、令牌
+    ↓
+應用授權規則 → 檢查 RBAC、SoD、約束
+    ↓
+應用行為規則 → 檢查異常、配額、速率限制
+    ↓
+應用一致性規則 → 檢查狀態、衝突、完整性
+    ↓
+最終決策：ALLOW / DENY / REQUIRE_ADDITIONAL_ACTION
+```
+
+#### 7.2 政策執行點 (PEP)
+
+**職責**：
+- 攔截操作請求
+- 獲取 PDP 決策
+- 執行決策（允許/阻斷）
+- 記錄執行結果
+
+```python
+class PolicyEnforcementPoint:
+    async def evaluate_operation(self, operation: dict, context: dict):
+        # 1. 提取操作與上下文
+        # 2. 應用所有規則
+        # 3. 計算決策
+        
+        decision = self.pdp.evaluate(operation, context)
+        
+        # 4. 執行決策
+        if decision.result == "ALLOW":
+            return await self.execute_operation(operation)
+        elif decision.result == "DENY":
+            self.record_denial(operation, decision.reason)
+            raise OperationDenied(decision.reason)
+        else:
+            return await self.request_additional_verification(operation)
+        
+        # 5. 記錄所有操作
+        self.audit_log.record(operation, decision)
+```
+
+### 8. 監控、告警與回應
+
+#### 8.1 監控服務
+
+**監控指標**：
+
+```python
+class MonitoringMetrics:
+    # 性能指標
+    operation_latency_ms: Histogram
+    operation_success_rate: Counter
+    session_duration_s: Histogram
+    
+    # 安全指標
+    auth_failures_count: Counter
+    policy_violations_count: Counter
+    resource_quota_violations: Counter
+    
+    # 系統指標
+    cpu_usage_percent: Gauge
+    memory_usage_percent: Gauge
+    disk_usage_percent: Gauge
+    network_throughput_mbps: Gauge
+    
+    # 業務指標
+    active_sessions_count: Gauge
+    total_operations: Counter
+    average_operations_per_session: Gauge
+```
+
+**告警規則**：
+
+| 告警 | 條件 | 嚴重性 | 操作 |
+|-----|------|--------|------|
+| 認證失敗率過高 | > 10% 在 5 分鐘 | HIGH | 升報、限流 |
+| 政策違反激增 | > 100 次/分鐘 | CRITICAL | 隔離、調查 |
+| 資源耗盡 | CPU > 90% 或 RAM > 85% | HIGH | 限流、警報 |
+| 異常行為 | 執行時間 > 3σ | MEDIUM | 記錄、監控 |
+| 密鑰輪換失敗 | 輪換未在 24 小時內完成 | HIGH | 手動干預 |
+
+#### 8.2 自動回應編排器
+
+**回應策略**：
+
+```python
+class AutomatedResponseOrchestrator:
+    async def respond_to_violation(self, violation: SecurityViolation):
+        if violation.severity == "CRITICAL":
+            # 立即隔離
+            await self.isolate_session(violation.session_id)
+            await self.revoke_all_tokens(violation.user_id)
+            await self.trigger_forensics(violation)
+            await self.escalate_to_security(violation)
+            
+        elif violation.severity == "HIGH":
+            # 降速與監督
+            await self.rate_limit_user(violation.user_id, 50)  # 降至 50%
+            await self.enable_supervision_mode(violation.session_id)
+            await self.notify_admin(violation)
+            
+        elif violation.severity == "MEDIUM":
+            # 增強監控
+            await self.increase_monitoring_level(violation.session_id)
+            await self.log_violation(violation)
+            
+        else:
+            # 記錄與通知
+            await self.log_violation(violation)
+```
+
+---
+
+## 數據模型
+
+### 關鍵實體
+
+#### 1. 操作 (Operation)
+
+```python
+class Operation:
+    operation_id: str            # 唯一識別
+    session_id: str              # 關聯會話
+    operator_id: str             # 操作者
+    
+    # 操作內容
+    operation_type: str          # 操作類型
+    target_url: str              # 目標 URL
+    parameters: dict             # 操作參數
+    
+    # 時間信息
+    created_at: datetime
+    started_at: datetime
+    completed_at: datetime
+    duration_ms: int
+    
+    # 狀態與結果
+    status: str                  # PENDING, RUNNING, SUCCESS, FAILED
+    error_message: str
+    result_data: dict            # 操作結果
+    screenshot: str              # 結果截圖（base64）
+    
+    # 驗證與決策
+    pre_approval: dict           # 預驗證結果
+    post_validation: dict        # 後驗證結果
+    policy_decision: dict        # 政策決策
+    
+    # 審計信息
+    audit_log_id: str
+    signature: str
+```
+
+#### 2. 違反 (Violation)
+
+```python
+class Violation:
+    violation_id: str
+    detected_at: datetime
+    violation_type: str          # auth, authz, behavior, integrity
+    severity: str                # CRITICAL, HIGH, MEDIUM, LOW
+    
+    # 上下文
+    session_id: str
+    operation_id: str
+    user_id: str
+    
+    # 詳細信息
+    rule_violated: str           # 違反的規則
+    expected_state: dict         # 預期狀態
+    actual_state: dict           # 實際狀態
+    
+    # 回應
+    response_action: str         # 採取的操作
+    response_time_ms: int        # 回應延遲
+    investigation_id: str        # 調查單 ID
+```
+
+#### 3. 調查 (Investigation)
+
+```python
+class Investigation:
+    investigation_id: str
+    violation_id: str
+    
+    # 時間軸
+    started_at: datetime
+    completed_at: datetime
+    
+    # 調查信息
+    investigator_id: str
+    root_cause: str
+    impact_assessment: str
+    recommendations: str
+    
+    # 成果
+    forensic_data: dict          # 數位取證數據
+    related_operations: List[str]
+    related_violations: List[str]
+```
+
+### 關係圖
+
+```
+User ─── Session ─── Operation ─── Violation
+ │         │            │            │
+ │         │            │            └──────── Investigation
+ │         │            └──────── AuditLog
+ │         └──────── BrowserSession
+ └──────── RoleAssignment ─── Role ─── Permission
+```
+
+---
+
+## 集成流
+
+### 1. 典型操作流
+
+```
+1. 操作者啟動會話
+   → MFA 認證 → 生成會話 ID → 發起 session.created 事件
+
+2. 操作者執行瀏覽器操作
+   → API 請求 → 認證驗證 → 授權檢查 
+   → PDP 評估 → PEP 執行 → 操作執行
+   → 結果驗證 → 記錄審計 → 發起 operation.completed 事件
+
+3. 系統檢測到違反
+   → 記錄 Violation → 發起 violation.detected 事件
+   → AutomatedResponseOrchestrator 採取行動
+   → 隔離/限流/監督
+   → 升報管理員 → 啟動調查
+
+4. 會話終止
+   → 操作者登出或超時 → 清理資源
+   → 撤銷令牌 → 發起 session.terminated 事件
+```
+
+### 2. 事件驅動流
+
+```
+[Event Bus]
+    │
+    ├──> [Audit Service]  → 記錄至 Log Store
+    ├──> [Monitoring]     → 更新指標
+    ├──> [Policy Engine]  → 評估規則
+    ├──> [Responder]      → 自動回應
+    └──> [Notification]   → 發送告警
+```
+
+---
+
+## 部署拓撲
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   負載均衡器 (Load Balancer)            │
+│               (AWS NLB / Nginx / HAProxy)               │
+└─────────────────────────────────────────────────────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+    ┌───────┐          ┌───────┐          ┌───────┐
+    │ API   │          │ API   │          │ API   │
+    │Node 1 │          │Node 2 │          │Node 3 │
+    └───────┘          └───────┘          └───────┘
+        │                  │                  │
+        └──────────────────┼──────────────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+    ┌─────────────┐   ┌─────────────┐   ┌──────────┐
+    │Redis Cluster│   │Elasticsearch│   │Kafka     │
+    │(State Store)│   │(Log Store)  │   │(Event Bus)
+    └─────────────┘   └─────────────┘   └──────────┘
+        │                  │                  │
+        └──────────────────┼──────────────────┘
+                           │
+                    ┌──────────────┐
+                    │   HSM/KMS    │
+                    │(Key Storage) │
+                    └──────────────┘
+```
+
+---
+
+## 可擴展性與性能
+
+### 可擴展性設計
+
+- **無狀態 API 節點**：可水平擴展
+- **分佈式狀態存儲**：Redis Cluster
+- **事件驅動架構**：非同步處理，低耦合
+- **微服務設計**：獨立服務，獨立擴展
+
+### 性能指標
+
+| 指標 | 目標 | 設計 |
+|-----|------|------|
+| API 響應延遲 | < 200 ms（p99） | 非同步處理、緩存 |
+| 操作吞吐量 | > 10,000 ops/秒 | 水平擴展 |
+| 會話管理延遲 | < 100 ms | 記憶體存儲 |
+| 審計日誌延遲 | < 500 ms | 非同步寫入 |
+| 政策決策延遲 | < 50 ms | 規則緩存 |
+
+---
+
+## 安全性考慮
+
+### 威脅模型
+
+1. **身份冒充**：多因子認證 + 會話隔離
+2. **特權提升**：嚴格的 RBAC + SoD + 監督
+3. **資料洩露**：加密 + HSM + 分類控制
+4. **操作篡改**：審計日誌鏈 + 簽名驗證
+5. **資源耗盡**：配額限制 + 自動限流
+6. **拒絕服務**：限流 + 隔離 + 水平擴展
+
+### 防禦層
+
+1. **邊界防禦**：API 閘道、TLS、限流
+2. **認證層**：MFA、會話管理
+3. **授權層**：RBAC、SoD、政策評估
+4. **運行時層**：異常檢測、行為監控
+5. **審計層**：完整日誌記錄、鏈驗證
+
+---
+
+## 版本與演進
+
+本架構支持平滑的版本升級與向後兼容性：
+
+- **API 版本控制**：`/api/v1/*`, `/api/v2/*`
+- **事件格式演進**：版本欄位允許升級
+- **資料遷移**：支持藍綠部署
+- **政策版本**：新規則集與舊版本共存
+
+---
+
+**版本**: 1.0  
+**架構師**: IndestructibleAutoOps 平台團隊  
+**最後更新**: 2026 年 2 月 5 日

@@ -1,0 +1,10 @@
+name: GL Governance Validation
+      - name: Setup Node.js
+      - name: Install GL Engine Dependencies
+      - name: Run GL Semantic Validation - Engine
+      - name: Generate Governance Event Stream
+      - name: Upload Governance Artifacts
+          name: gl-governance-engine
+      - name: Setup Node.js
+      - name: Install GL Engine Dependencies
+      - name: Run GL Semantic Validation - File Organizer

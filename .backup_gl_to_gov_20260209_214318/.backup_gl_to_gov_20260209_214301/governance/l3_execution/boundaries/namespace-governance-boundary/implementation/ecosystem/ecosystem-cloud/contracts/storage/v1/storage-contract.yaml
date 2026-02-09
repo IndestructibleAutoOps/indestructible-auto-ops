@@ -1,0 +1,131 @@
+# Cross-Cloud Storage Contract v1.0.0
+# Semantic Anchor: CLOUDPROVIDERABSTRACTION.STORAGE
+
+contract:
+  name: CrossCloudStorage
+  version: 1.0.0
+  semantic_anchor: CLOUDPROVIDERABSTRACTION.STORAGE
+  description: |
+    Unified abstraction for cloud storage services across all providers.
+    Defines the contract that all cloud adapters must implement for storage operations.
+  
+  capability:
+    - name: upload_object
+      input:
+        bucket: string (required)
+        key: string (required)
+        data: binary (required)
+        content_type: string (optional)
+        metadata: map[string]string (optional)
+      output:
+        success: boolean
+        object_url: string
+        version_id: string
+        size_bytes: integer
+        etag: string
+    
+    - name: download_object
+      input:
+        bucket: string (required)
+        key: string (required)
+        version_id: string (optional)
+      output:
+        success: boolean
+        data: binary
+        content_type: string
+        metadata: map[string]string
+        size_bytes: integer
+        last_modified: timestamp
+    
+    - name: delete_object
+      input:
+        bucket: string (required)
+        key: string (required)
+        version_id: string (optional)
+      output:
+        success: boolean
+    
+    - name: list_objects
+      input:
+        bucket: string (required)
+        prefix: string (optional)
+        max_keys: integer (optional, default: 1000)
+        continuation_token: string (optional)
+      output:
+        success: boolean
+        objects: list[ObjectInfo]
+        next_continuation_token: string
+        is_truncated: boolean
+    
+    - name: create_bucket
+      input:
+        bucket: string (required)
+        region: string (optional)
+        versioning: boolean (optional, default: false)
+        encryption: boolean (optional, default: true)
+      output:
+        success: boolean
+        bucket_arn: string
+    
+    - name: delete_bucket
+      input:
+        bucket: string (required)
+        force: boolean (optional, default: false)
+      output:
+        success: boolean
+
+  types:
+    ObjectInfo:
+      key: string
+      size_bytes: integer
+      last_modified: timestamp
+      etag: string
+      storage_class: string
+      version_id: string
+  
+  validation:
+    - name: bucket_name_validation
+      rule: |
+        Bucket names must:
+        - Be 3-63 characters long
+        - Contain only lowercase letters, numbers, and hyphens
+        - Start and end with a letter or number
+        - Not contain consecutive periods
+      severity: CRITICAL
+    
+    - name: key_validation
+      rule: |
+        Object keys must:
+        - Be 1-1024 characters long
+        - Not contain newline characters
+        - Be URL-encoded if special characters present
+      severity: HIGH
+    
+    - name: size_limit_validation
+      rule: |
+        Single object size must not exceed 5TB
+      severity: HIGH
+
+  adapter_requirements:
+    - Adapter must implement all capability methods
+    - Adapter must handle provider-specific errors and map to contract errors
+    - Adapter must support versioning if provider supports it
+    - Adapter must support encryption at rest
+    - Adapter must provide metrics for all operations
+  
+  compatibility:
+    aws_s3:
+      implements: full
+      notes: AWS S3 is the reference implementation
+    azure_blob:
+      implements: full
+      notes: Fully compatible with slight naming differences
+    gcp_storage:
+      implements: full
+      notes: Fully compatible
+    minio:
+      implements: full
+      notes: S3-compatible, fully supported
+    ceph:
+      implements: partial
+      notes: Some advanced features may not be available

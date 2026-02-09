@@ -1,0 +1,35 @@
+GL Unified Charter Activated - Pre-Commit Validation (Strict Mode)
+Validating GL compliance for changed files...
+❌ Error: .github/archive/unmanned-engineer-ceo/80-skeleton-configs/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/aep-engine-app/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/aep-engine-app/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/aep-engine-app/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: engine/aep-engine-web/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/aep-engine-web/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/aep-engine-web/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: engine/gl-gate/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/gl-gate/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/gl-gate/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: engine/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: engine/tools-legacy/apps/quantum-dashboard/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/tools-legacy/apps/quantum-dashboard/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/tools-legacy/apps/quantum-dashboard/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: engine/tools-legacy/cli/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/tools-legacy/cli/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/tools-legacy/cli/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: engine/tools-legacy/cloudflare/workers/package.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/tools-legacy/cloudflare/workers/package.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/tools-legacy/cloudflare/workers/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: file-organizer-system/client/package.json missing @GL-governed marker - Commit blocked
+❌ Error: file-organizer-system/client/package.json missing @GL-layer marker - Commit blocked
+❌ Error: file-organizer-system/client/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: file-organizer-system/package.json missing @GL-governed marker - Commit blocked
+❌ Error: file-organizer-system/package.json missing @GL-layer marker - Commit blocked
+❌ Error: file-organizer-system/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: file-organizer-system/server/package.json missing @GL-governed marker - Commit blocked
+❌ Error: file-organizer-system/server/package.json missing @GL-layer marker - Commit blocked
+❌ Error: file-organizer-system/server/package.json missing @GL-semantic marker - Commit blocked
+❌ Error: package.json missing @GL-governed marker - Commit blocked
+❌ GL Pre-Commit Validation Failed: 32 violations found

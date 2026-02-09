@@ -1,0 +1,43 @@
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: kind-kube-bench-config
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: kube-bench-cluster
+nodes:
+- role: control-plane
+  image: kindest/node:v1.27.3
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
+- role: worker
+  image: kindest/node:v1.27.3
+- role: worker
+  image: kindest/node:v1.27.3
+
+networking:
+  apiServerAddress: "127.0.0.1"
+  apiServerPort: 6443
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: "10.96.0.0/12"
+
+# Add labels for node monitoring
+containerdConfigPatches:
+- |-
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+    endpoint = ["https://registry-1.docker.io"]
+  [plugins."io.containerd.grpc.v1.cri".registry.configs."docker.io".auth]
+    username = ""
+    password = ""

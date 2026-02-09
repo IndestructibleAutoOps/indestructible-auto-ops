@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG Namespace Governance Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e4e4e7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #a1a1aa;
+            font-size: 1.1rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-card h3 {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .metric-change {
+            font-size: 0.9rem;
+            color: #34d399;
+        }
+
+        .metric-value.pass {
+            color: #34d399;
+        }
+
+        .metric-value.fail {
+            color: #f87171;
+        }
+
+        .metric-value.warning {
+            color: #fbbf24;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chart-card h3 {
+            margin-bottom: 20px;
+            color: #e4e4e7;
+            font-size: 1.2rem;
+        }
+
+        .era-status {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .era-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .era-card h3 {
+            color: #a1a1aa;
+            margin-bottom: 15px;
+        }
+
+        .era-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .era-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            transition: width 0.5s ease;
+        }
+
+        .era-violations {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+        }
+
+        .violations-table {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+
+        .violations-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .violations-table th,
+        .violations-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .violations-table th {
+            color: #a1a1aa;
+            font-weight: 600;
+        }
+
+        .severity-critical {
+            color: #f87171;
+        }
+
+        .severity-high {
+            color: #fbbf24;
+        }
+
+        .severity-medium {
+            color: #60a5fa;
+        }
+
+        .severity-low {
+            color: #a1a1aa;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .era-status {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 NG Namespace Governance Dashboard</h1>
+            <p>Framework: NG000-999 v3.0 | Last Updated: <span id="lastUpdate"></span></p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>Compliance Score</h3>
+                <div class="metric-value pass" id="complianceScore">89.7%</div>
+                <div class="metric-change">↑ 0.3% from last week</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Total Violations</h3>
+                <div class="metric-value warning" id="totalViolations">242</div>
+                <div class="metric-change">↓ 15 from last week</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Namespaces Validated</h3>
+                <div class="metric-value" id="namespacesValidated">3,505</div>
+                <div class="metric-change">↑ 120 new namespaces</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Auto-Fixed</h3>
+                <div class="metric-value pass" id="autoFixed">0</div>
+                <div class="metric-change">Ready to fix 237</div>
+            </div>
+        </div>
+
+        <div class="era-status">
+            <div class="era-card">
+                <h3>📦 Era-1 (Code Layer)</h3>
+                <div class="era-progress">
+                    <div class="era-progress-bar" style="width: 89.7%;"></div>
+                </div>
+                <div class="era-violations">Compliance: 89.7% | Violations: 242</div>
+            </div>
+
+            <div class="era-card">
+                <h3>🔧 Era-2 (Microservices)</h3>
+                <div class="era-progress">
+                    <div class="era-progress-bar" style="width: 100%;"></div>
+                </div>
+                <div class="era-violations">Compliance: 100% | Violations: 0</div>
+            </div>
+
+            <div class="era-card">
+                <h3>🧠 Era-3 (Semantic/Autonomous)</h3>
+                <div class="era-progress">
+                    <div class="era-progress-bar" style="width: 100%;"></div>
+                </div>
+                <div class="era-violations">Compliance: 100% | Violations: 0</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>📊 Violations by Era</h3>
+                <canvas id="violationsByEra"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>📈 Compliance Trend</h3>
+                <canvas id="complianceTrend"></canvas>
+            </div>
+        </div>
+
+        <div class="violations-table">
+            <h3>🚨 Recent Violations (Top 10)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NG Code</th>
+                        <th>Severity</th>
+                        <th>Path</th>
+                        <th>Message</th>
+                        <th>Auto-Fix</th>
+                    </tr>
+                </thead>
+                <tbody id="violationsTableBody">
+                    <tr>
+                        <td>NG10100</td>
+                        <td class="severity-medium">MEDIUM</td>
+                        <td>summarized_conversations</td>
+                        <td>Directory uses underscores instead of kebab-case</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>NG10100</td>
+                        <td class="severity-medium">MEDIUM</td>
+                        <td>tests/gl/autonomy-boundary/external_api_unavailable</td>
+                        <td>Directory uses underscores instead of kebab-case</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>NG10100</td>
+                        <td class="severity-medium">MEDIUM</td>
+                        <td>ecosystem/tests/semantic_defense</td>
+                        <td>Directory uses underscores instead of kebab-case</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>NG10100</td>
+                        <td class="severity-medium">MEDIUM</td>
+                        <td>ecosystem/tests/semantic_defense/test_complement_missing</td>
+                        <td>Directory uses underscores instead of kebab-case</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>NG10100</td>
+                        <td class="severity-medium">MEDIUM</td>
+                        <td>ecosystem/tests/semantic_defense/test_yaml_failure</td>
+                        <td>Directory uses underscores instead of kebab-case</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn" onclick="runAutoFix()">🔧 Run Auto-Fix</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set last update time
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+
+        // Violations by Era Chart
+        const violationsByEraCtx = document.getElementById('violationsByEra').getContext('2d');
+        new Chart(violationsByEraCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Era-1', 'Era-2', 'Era-3'],
+                datasets: [{
+                    data: [242, 0, 0],
+                    backgroundColor: ['#f87171', '#34d399', '#60a5fa'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#e4e4e7'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Compliance Trend Chart
+        const complianceTrendCtx = document.getElementById('complianceTrend').getContext('2d');
+        new Chart(complianceTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Current'],
+                datasets: [{
+                    label: 'Compliance %',
+                    data: [85.2, 86.8, 88.5, 89.4, 89.7],
+                    borderColor: '#34d399',
+                    backgroundColor: 'rgba(52, 211, 153, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 80,
+                        max: 100,
+                        ticks: {
+                            color: '#a1a1aa'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#a1a1aa'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Auto-fix function (placeholder)
+        function runAutoFix() {
+            alert('Auto-fix script is ready at:\n\ncosystem/NG-governance/implementation/fix-namespace-violations.sh\n\nRun with --dry-run first to preview changes.');
+        }
+    </script>
+</body>
+</html>

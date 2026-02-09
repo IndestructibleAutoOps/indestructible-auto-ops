@@ -8,8 +8,8 @@
 
 ## ✅ 已完成的治理文件
 
-### 1. gl-platform-definition.yaml
-**位置**: `ecosystem/registry/platforms/gl-platform-definition.yaml`
+### 1. gov-platform-definition.yaml
+**位置**: `ecosystem/registry/platforms/gov-platform-definition.yaml`
 
 **核心內容**:
 - ✅ 平台的核心定義（語意單位）
@@ -24,8 +24,8 @@
 - ✅ 平台模板系統（4 種模板）
 - ✅ 平台註冊格式（Manifest Schema）
 
-### 2. gl-platforms.index.yaml
-**位置**: `ecosystem/registry/platforms/gl-platforms.index.yaml`
+### 2. gov-platforms.index.yaml
+**位置**: `ecosystem/registry/platforms/gov-platforms.index.yaml`
 
 **核心內容**:
 - ✅ 完整平台索引（49 個平台）
@@ -41,8 +41,8 @@
 - **自定義平台**: 18 個（位於 root/）
 - **重複平台**: 4 個（需解決）
 
-### 3. gl-platforms.placement-rules.yaml
-**位置**: `ecosystem/registry/platforms/gl-platforms.placement-rules.yaml`
+### 3. gov-platforms.placement-rules.yaml
+**位置**: `ecosystem/registry/platforms/gov-platforms.placement-rules.yaml`
 
 **核心內容**:
 - ✅ 核心原則（4 大原則）
@@ -54,8 +54,8 @@
 - ✅ 監控與報告
 - ✅ 檢查清單
 
-### 4. gl-platforms.validator.rego
-**位置**: `ecosystem/registry/platforms/gl-platforms.validator.rego`
+### 4. gov-platforms.validator.rego
+**位置**: `ecosystem/registry/platforms/gov-platforms.validator.rego`
 
 **核心內容**:
 - ✅ 命名格式驗證（GL-PD-001）
@@ -70,8 +70,8 @@
 - ✅ 批量驗證功能
 - ✅ 驗證報告生成
 
-### 5. gl-platform-lifecycle-spec.yaml
-**位置**: `ecosystem/registry/platforms/gl-platform-lifecycle-spec.yaml`
+### 5. gov-platform-lifecycle-spec.yaml
+**位置**: `ecosystem/registry/platforms/gov-platform-lifecycle-spec.yaml`
 
 **核心內容**:
 - ✅ 生命週期階段定義（6 個階段）
@@ -91,7 +91,7 @@
 
 ```
 GL 平台治理體系
-├── gl-platform-definition.yaml (定義規範)
+├── gov-platform-definition.yaml (定義規範)
 │   ├── 平台定義
 │   ├── 構成條件
 │   ├── 語意邊界
@@ -100,27 +100,27 @@ GL 平台治理體系
 │   ├── 治理驗證
 │   └── 模板系統
 │
-├── gl-platforms.index.yaml (平台索引)
+├── gov-platforms.index.yaml (平台索引)
 │   ├── 契約平台 (31 個)
 │   ├── 自定義平台 (18 個)
 │   ├── 位置映射
 │   └── 狀態管理
 │
-├── gl-platforms.placement-rules.yaml (放置規則)
+├── gov-platforms.placement-rules.yaml (放置規則)
 │   ├── 放置規則
 │   ├── 放置策略
 │   ├── 驗證流程
 │   ├── 遷移指南
 │   └── 檢查清單
 │
-├── gl-platforms.validator.rego (驗證器)
+├── gov-platforms.validator.rego (驗證器)
 │   ├── 命名驗證
 │   ├── 結構驗證
 │   ├── 位置驗證
 │   ├── 合規驗譗
 │   └── 報告生成
 │
-└── gl-platform-lifecycle-spec.yaml (生命週期)
+└── gov-platform-lifecycle-spec.yaml (生命週期)
     ├── 生命週期階段
     ├── 狀態轉換
     ├── 審查檢查
@@ -172,7 +172,7 @@ GL 平台治理體系
 
 2. **非契約平台**（18 個）
    - 位於 root/ 目錄
-   - 未在 gl-platforms.yaml 中定義
+   - 未在 gov-platforms.yaml 中定義
    - 需要決定是否加入契約或移至 custom/
 
 3. **合規性不足**
@@ -206,7 +206,7 @@ capabilities:
   - service-discovery
   - data-synchronization
 governance:
-  - gl-enterprise-architecture
+  - gov-enterprise-architecture
 status: active
 template: cloud
 ```
@@ -287,14 +287,14 @@ python3 /workspace/generate_platform_report.py
    capabilities:
      - service-discovery
    governance:
-     - gl-enterprise-architecture
+     - gov-enterprise-architecture
    status: draft
    template: cloud
    ```
 
 4. **註冊到索引**
    ```bash
-   # 更新 gl-platforms.index.yaml
+   # 更新 gov-platforms.index.yaml
    # 添加平台定義
    ```
 
@@ -334,7 +334,7 @@ python3 platform_validator.py --report
 
 3. **更新索引**
    ```bash
-   # 更新 gl-platforms.index.yaml
+   # 更新 gov-platforms.index.yaml
    # 更新 platform status
    ```
 
@@ -378,15 +378,15 @@ python3 platform_validator.py --report
 ## 📚 相關文件
 
 ### 治理文件
-- `gl-platform-definition.yaml` - 平台定義規範
-- `gl-platforms.index.yaml` - 平台索引
-- `gl-platforms.placement-rules.yaml` - 放置規則
-- `gl-platforms.validator.rego` - 驗證器
-- `gl-platform-lifecycle-spec.yaml` - 生命週期規範
+- `gov-platform-definition.yaml` - 平台定義規範
+- `gov-platforms.index.yaml` - 平台索引
+- `gov-platforms.placement-rules.yaml` - 放置規則
+- `gov-platforms.validator.rego` - 驗證器
+- `gov-platform-lifecycle-spec.yaml` - 生命週期規範
 
 ### 支持文件
 - `platform_audit_report.md` - 平台審計報告
-- `gl-platforms.yaml` - 平台命名契約
+- `gov-platforms.yaml` - 平台命名契約
 - `directory-standards.yaml` - 目錄標準
 
 ---

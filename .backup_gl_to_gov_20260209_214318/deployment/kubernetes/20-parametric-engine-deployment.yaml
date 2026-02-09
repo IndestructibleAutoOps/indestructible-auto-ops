@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ng-parametric-engine
+  namespace: ng-governance
+  labels:
+    app: ng-parametric-engine
+    ng-code: NG80300
+    ng-category: self-optimization-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ng-parametric-engine
+  template:
+    metadata:
+      labels:
+        app: ng-parametric-engine
+        ng-code: NG80300
+    spec:
+      containers:
+      - name: parametric-engine
+        image: ng-governance/parametric-engine:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+          name: http
+        - containerPort: 9091
+          name: metrics
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: REDIS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: redis-host
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: redis-password
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-host
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-password
+        - name: POSTGRES_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-database
+        volumeMounts:
+        - name: config
+          mountPath: /etc/ng-governance/config
+          readOnly: true
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 5
+      volumes:
+      - name: config
+        configMap:
+          name: ng-governance-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ng-parametric-engine
+  namespace: ng-governance
+  labels:
+    app: ng-parametric-engine
+    ng-code: NG80300
+spec:
+  ports:
+  - port: 80
+    targetPort: 8081
+    name: http
+  - port: 9090
+    targetPort: 9091
+    name: metrics
+  selector:
+    app: ng-parametric-engine
+  type: ClusterIP

@@ -1,0 +1,96 @@
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769604350627",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:45:50.627Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:45:50.386Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769604352643",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:45:52.643Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:45:52.635Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   —————————————————————————————————————————        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      [EXTERNAL_URL_REMOVED]        
+remote:             
+remote:             
+remote:       —— GitHub Personal Access Token ——————————————————————        
+remote:        locations:        
+remote:          - commit: 37f3df63db730f602961dae7ca15fa12ce1eaa0d        
+remote:            path: summarized_conversations/original_conversation_1769602788_8292.txt:12        
+remote:          - commit: 37f3df63db730f602961dae7ca15fa12ce1eaa0d        
+remote:            path: summarized_conversations/original_conversation_1769602788_8292.txt:51        
+remote:          - commit: 37f3df63db730f602961dae7ca15fa12ce1eaa0d        
+remote:            path: summarized_conversations/original_conversation_1769602788_8292.txt:97        
+remote:          - commit: 37f3df63db730f602961dae7ca15fa12ce1eaa0d        
+remote:            path: summarized_conversations/original_conversation_1769602788_8292.txt:105        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        [EXTERNAL_URL_REMOVED]        
+remote:             
+remote: 
+remote: 
+To [EXTERNAL_URL_REMOVED]
+ ! [remote rejected]   main -> main (push declined due to repository rule violations)
+error: failed to push some refs to '[EXTERNAL_URL_REMOVED]
