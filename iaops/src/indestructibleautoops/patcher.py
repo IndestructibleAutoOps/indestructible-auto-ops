@@ -29,11 +29,54 @@ description = "Generated project"
 }
 
 
+# Internal templates for common files
+INTERNAL_TEMPLATES = {
+    "ci.yml": """\
+# Auto-generated CI workflow
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Add your build and test steps here"
+""",
+    "pyproject.toml": """\
+# Auto-generated pyproject.toml
+[project]
+name = "project"
+version = "0.1.0"
+description = "A Python project"
+requires-python = ">=3.11"
+""",
+}
+
+
 class Patcher:
     def __init__(self, project_root: Path, allow_writes: bool):
         self.root = project_root
         self.allow_writes = allow_writes
 
+    def _get_template_content(self, action: dict[str, Any]) -> str:
+        """Get content for an action, using templateRef if available.
+        
+        Args:
+            action: Action dictionary that may contain a templateRef.
+            
+        Returns:
+            Template content if templateRef is "internal:<name>", 
+            otherwise a placeholder comment.
+        """
+        template_ref = action.get("templateRef", "")
+        if template_ref.startswith("internal:"):
+            template_name = template_ref.split(":", 1)[1]
+            if template_name in INTERNAL_TEMPLATES:
+                return INTERNAL_TEMPLATES[template_name]
+        
+        # Fallback to placeholder
+        rel = action.get("path", "unknown")
+        return f"# generated placeholder: {rel}\n"
     def _get_template_content(self, template_ref: str | None) -> str:
         """Get template content from templateRef.
 
@@ -66,6 +109,9 @@ class Patcher:
                 if not self.allow_writes:
                     skipped.append({"action": a, "reason": "writes_disabled"})
                     continue
+                
+                # Get content from templateRef if available
+                content = self._get_template_content(a)
                 ensure_dir(p.parent)
                 # Use templateRef to generate proper content
                 template_ref = a.get("templateRef")
