@@ -28,9 +28,9 @@ responsibility-governance-anchor-boundary (baseline + semantic + hash + event + 
 
 ## Separation of Duties
 
-- **Specification stewardship:** confined to `governance-root-anchor/` (policy owners only).
-- **Operational execution:** confined to `governance-execution-engine/` (runbooks, pipelines, gates).
-- **Sensing and discovery:** confined to `governance-scanner-sensing/` (inventory, integrity, semantic attachment).
+- **Specification stewardship:** confined to `responsibility-governance-anchor-boundary/` (policy owners only).
+- **Operational execution:** confined to `responsibility-governance-execution-boundary/` (runbooks, pipelines, gates).
+- **Sensing and discovery:** confined to `responsibility-governance-sensing-boundary/` (inventory, integrity, semantic attachment).
 
 ## Violation Handling
 
