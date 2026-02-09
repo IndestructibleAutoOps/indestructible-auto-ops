@@ -23,8 +23,6 @@ def test_dag_cycle_fail():
     assert dag_is_acyclic(dag) is False
 
 
-def test_topological_sort_linear():
-    """Test topological sort on a linear dependency chain."""
 def test_topological_sort_simple():
     """Test topological sort with a simple linear DAG."""
     dag = DAG.from_nodes(
@@ -36,12 +34,6 @@ def test_topological_sort_simple():
     )
     result = topological_sort(dag)
     assert result == ["a", "b", "c"]
-
-
-def test_topological_sort_diamond():
-    """Test topological sort on a diamond-shaped DAG."""
-    order = topological_sort(dag)
-    assert order == ["a", "b", "c"]
 
 
 def test_topological_sort_diamond():
@@ -61,15 +53,6 @@ def test_topological_sort_diamond():
     assert set(result[1:3]) == {"b", "c"}
 
 
-def test_topological_sort_raises_on_cycle():
-    """Test that topological sort raises on cyclic graphs."""
-    order = topological_sort(dag)
-    assert order is not None
-    assert order[0] == "a"
-    assert order[-1] == "d"
-    assert set(order[1:3]) == {"b", "c"}
-
-
 def test_topological_sort_cyclic():
     """Test that topological sort returns None for cyclic DAGs."""
     dag = DAG.from_nodes(
@@ -78,8 +61,6 @@ def test_topological_sort_cyclic():
             {"id": "b", "kind": "step", "run": "x", "deps": ["a"]},
         ]
     )
-    with pytest.raises(ValueError, match=r"cyclic"):
-        topological_sort(dag)
     order = topological_sort(dag)
     assert order is None
 
