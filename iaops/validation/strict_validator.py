@@ -16,10 +16,11 @@ Workflow:
 
 import json
 import time
-from dataclasses import asdict
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
 
+from .file_validator import FileCheckValidator
+from .performance_validator import MemoryValidator, PerformanceValidator
 from .validator import (
     Severity,
     ValidationConfig,
@@ -27,10 +28,7 @@ from .validator import (
     ValidationResult,
     ValidatorResult,
 )
-from .regression_detector import RegressionDetector
 from .whitelist_manager import WhitelistManager
-from .file_validator import FileCheckValidator
-from .performance_validator import PerformanceValidator, MemoryValidator
 
 
 class StrictValidator:
@@ -52,13 +50,13 @@ class StrictValidator:
     def __init__(
         self,
         config: ValidationConfig,
-        whitelist_manager: Optional[WhitelistManager] = None,
+        whitelist_manager: WhitelistManager | None = None,
     ):
         self.config = config
-        self.results: Dict[str, ValidatorResult] = {}
+        self.results: dict[str, ValidatorResult] = {}
         self.whitelist_manager = whitelist_manager
         self.baseline = self._load_baseline()
-        self._custom_validators: Dict[str, Callable] = {}
+        self._custom_validators: dict[str, Callable] = {}
 
         # 确保输出目录存在
         config.ensure_dirs()
@@ -97,14 +95,27 @@ class StrictValidator:
                 )
                 suppressed_count += self.whitelist_manager.suppression_count
 
+                # 重新计算 passed 状态：如果白名单抑制后没有阻塞性问题，则通过
+                if not validator_result.issues:
+                    validator_result.passed = True
+                else:
+                    has_blocking = any(issue.is_blocking() for issue in validator_result.issues)
+                    validator_result.passed = not has_blocking
+
+            # 保存白名单规则（包含审计日志）一次
+            self.whitelist_manager.save_rules()
+
         # 生成最终报告
         report = self._generate_report(suppressed_count)
 
         # 保存报告
         report_path = report.save(self.config.output_dir)
 
-        # 保存更新后的基线
-        self._save_baseline()
+        # 只在验证通过时保存基线，避免将失败/退化的运行作为新基线
+        if report.overall_passed:
+            self._save_baseline()
+        else:
+            print("⚠️  验证未通过，基线数据未更新")
 
         total_time = time.time() - total_start
         print(f"\n⏱️  验证总耗时: {total_time:.3f}s")
@@ -112,7 +123,7 @@ class StrictValidator:
 
         return report
 
-    def _run_validator(self, name: str) -> Optional[ValidatorResult]:
+    def _run_validator(self, name: str) -> ValidatorResult | None:
         """运行单个验证器"""
         start_time = time.time()
 
@@ -170,13 +181,14 @@ class StrictValidator:
             return None
 
     def _generate_report(self, suppressed_count: int) -> ValidationResult:
-        """生成验证报告"""
+        """生成验证报告（基于白名单后的最终问题列表）"""
+        # 检查是否存在阻塞性问题（白名单后）
         has_blockers = any(
-            len(v.blocking_issues) > 0 for v in self.results.values()
+            any(issue.is_blocking() for issue in v.issues) for v in self.results.values()
         )
 
-        all_passed = all(result.passed for result in self.results.values())
-        overall_passed = not has_blockers and all_passed and len(self.results) > 0
+        # 整体通过需要：无阻塞性问题 + 至少有一个验证器运行
+        overall_passed = not has_blockers and len(self.results) > 0
 
         return ValidationResult(
             timestamp=time.time(),
@@ -198,7 +210,7 @@ class StrictValidator:
             try:
                 with baseline_path.open("r", encoding="utf-8") as f:
                     return json.load(f)
-            except (json.JSONDecodeError, IOError):
+            except (OSError, json.JSONDecodeError):
                 return {}
         return {}
 
@@ -218,11 +230,7 @@ class ValidationEngine:
 
     def __init__(self, config: ValidationConfig):
         self.config = config
-        self.whitelist = (
-            WhitelistManager(config.whitelist_path)
-            if config.whitelist_path
-            else None
-        )
+        self.whitelist = WhitelistManager(config.whitelist_path) if config.whitelist_path else None
         self.validator = StrictValidator(config, whitelist_manager=self.whitelist)
 
     def run(self) -> ValidationResult:
@@ -245,6 +253,7 @@ class ValidationEngine:
         - 失败: exit(1)
         """
         import sys
+
         passed = self.run_and_report()
         sys.exit(0 if passed else 1)
 
@@ -252,9 +261,15 @@ class ValidationEngine:
         """注册自定义验证器"""
         self.validator.register_validator(name, factory)
 
-    def register_benchmark(self, name: str, func: Callable):
-        """注册性能基准测试"""
-        # 这将在下次运行时被 performance_validator 使用
-        if not hasattr(self, "_benchmarks"):
-            self._benchmarks = {}
-        self._benchmarks[name] = func
+    def register_benchmark(self, name: str, func: Callable) -> None:
+        """注册性能基准测试（当前为兼容性保留的空操作）。
+
+        注意：
+            历史上该方法尝试在 ValidationEngine 上存储自定义基准，
+            但这些数据并不会被 StrictValidator 或 PerformanceValidator 使用。
+            为避免误导与静态分析告警，该方法目前不再持久化任何状态。
+
+            如需添加自定义基准测试，请直接在 PerformanceValidator 中配置。
+        """
+        # 当前实现为安全的空操作，不存储任何状态
+        pass
