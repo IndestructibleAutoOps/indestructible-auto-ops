@@ -8,18 +8,18 @@ conventions:
     name: "File Naming Convention"
     severity: "CRITICAL"
     pattern: "^[a-z][a-z0-9_]*\\.(py|yaml|json|md|txt)$"
-    allowed_prefixes: ["gov_"]
+    allowed_prefixes: ["gov_", "gov_naming_"]
     forbidden_prefixes: ["ng_", "gl_"]
   - id: "NAMING-002"
     name: "Directory Naming Convention"
     severity: "CRITICAL"
     pattern: "^[a-z][a-z0-9_-]*$"
-    allowed_prefixes: ["gov_"]
+    allowed_prefixes: ["gov_", "gov_naming_", "l0_", "l1_", "l2_", "l3_", "l4_", "l5_", "l6_", "l7_", "l8_", "l9_"]
     forbidden_prefixes: ["ng_", "gl_"]
 
 policies:
   - id: "NAMING-POLICY-001"
     name: "Prefix Migration Policy"
-    description: "所有 ng_ 和 gl_ 前綴必須遷移到 gov_"
+    description: "所有 ng_ 前綴必須遷移到 gov_naming_，所有 gl_ 前綴必須遷移到 gov_"
     severity: "BLOCKER"
     enforcement: "automated"

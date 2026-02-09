@@ -3,28 +3,35 @@
 命名規範遷移腳本
 """
 
-import re
 from pathlib import Path
+from typing import List
 
 
 class GovNamingMigration:
+    # Mapping of deprecated prefixes to their replacement prefixes,
+    # aligned with gov_naming_registry.yaml.
+    PREFIX_MIGRATIONS = {
+        "ng_": "gov_naming_",
+        "gl_": "gov_",
+    }
+    DEPRECATED_PREFIXES = list(PREFIX_MIGRATIONS.keys())
+    
     def __init__(self, project_root: str, dry_run: bool = True):
         self.project_root = Path(project_root)
         self.dry_run = dry_run
-        self.DEPRECATED_PREFIXES = ["ng_", "gl_"]
-        self.REPLACEMENT_PREFIX = "gov_"
 
     def generate_new_name(self, old_name: str) -> str:
-        new_name = old_name
-        for prefix in self.DEPRECATED_PREFIXES:
-            if new_name.startswith(prefix):
-                new_name = new_name[len(prefix):]
-                break
-        if not new_name.startswith("gov_"):
-            new_name = self.REPLACEMENT_PREFIX + new_name
-        return new_name
+        """Generate a new asset name based on deprecated prefix mappings."""
+        for prefix, replacement in self.PREFIX_MIGRATIONS.items():
+            if old_name.startswith(prefix):
+                # Strip the deprecated prefix and prepend the mapped replacement.
+                remainder = old_name[len(prefix):]
+                return f"{replacement}{remainder}"
+        # If no deprecated prefix is found, return the original name unchanged.
+        return old_name
 
-    def scan_deprecated(self):
+    def scan_deprecated(self) -> List[Path]:
+        """Scan for assets with deprecated prefixes."""
         deprecated = []
         for asset in self.project_root.rglob("*"):
             for prefix in self.DEPRECATED_PREFIXES:
