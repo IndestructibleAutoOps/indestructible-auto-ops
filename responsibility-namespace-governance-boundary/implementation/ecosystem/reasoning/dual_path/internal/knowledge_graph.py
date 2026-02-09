@@ -1,3 +1,11 @@
+"""Knowledge graph placeholder for MNGA internal reasoning path."""
+
+
+class KnowledgeGraph:
+    """Stub knowledge graph container."""
+
+    def query(self, expression: str) -> list:
+        return []
 """Compatibility wrapper for the internal knowledge graph implementation."""
 
 try:
