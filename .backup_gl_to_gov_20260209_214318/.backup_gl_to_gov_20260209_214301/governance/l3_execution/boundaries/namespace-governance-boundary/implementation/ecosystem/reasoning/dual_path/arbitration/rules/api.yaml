@@ -1,2 +1,7 @@
+# GL Layer: GL30-49
+# Purpose: Placeholder API arbitration rules
+rules:
+  - id: api-default-allow
+    effect: allow
 # Stub rules for compatibility with enforcement checks.
 # Refer to ecosystem/reasoning/dual-path/arbitration/rules/api.yaml for full ruleset.

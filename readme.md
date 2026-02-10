@@ -10,23 +10,59 @@ MachineNativeOps is a comprehensive enterprise architecture implementing the GL 
 
 ## Architecture
 
+### NG Governance Framework (Constitutional)
+
+This project is governed by the **NG (Namespace Governance) Constitutional Framework** which provides zero-tolerance enforcement and immutable core principles.
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ NG00000: Namespace Governance Charter (Constitutional)  │
+│ - Zero Tolerance Enforcement                             │
+│ - Absolute Uniqueness, Consistency, Traceability         │
+│ - Governance Closure Loop                                │
+└────────────────────┬─────────────────────────────────────┘
+                     │ Constrains
+                     ▼
+┌──────────────────────────────────────────────────────────┐
+│ GL Governance Layers (Implementation)                    │
+│ 8-layer Enterprise Architecture                          │
+└──────────────────────────────────────────────────────────┘
+```
+
+### GL Architecture Layers
+
 The project follows an 8-layer GL enterprise architecture with clear separation of concerns and strict boundary enforcement:
 
 ```
-GL90-99 (Meta Specifications)
+GL90-99 (Meta Specifications) → NG900-999 (Cross-Era)
     ↓
-GL00-09 (Enterprise Architecture) ← Pure Governance
+GL00-09 (Enterprise Architecture) → NG100-199 (Era-1 Foundation)
     ↓
-GL10-29 (Platform Services)
+GL10-29 (Platform Services) → NG100-299 (Era-1 Complete)
     ↓
-GL20-29 (Data Processing)
+GL20-29 (Data Processing) → NG300-399 (Era-2 Data)
     ↓
-GL30-49 (Execution Runtime)
+GL30-49 (Execution Runtime) → NG300-499 (Era-2 Runtime)
     ↓
-GL50-59 (Observability) [Read-Only Monitor]
-GL60-80 (Governance Compliance) [GL00-09 Only]
-GL81-83 (Extension Services) [Can Extend All]
+GL50-59 (Observability) → NG500-599 (Era-2 Monitoring)
+GL60-80 (Governance Compliance) → NG300-599 (Era-2 Governance)
+GL81-83 (Extension Services) → NG600-799 (Era-3 Extensions)
 ```
+
+### Platform Organization (NG Era-Aligned)
+
+All GL platforms are now organized by NG Era for better maintainability and governance compliance:
+
+```
+workspace/
+├── ng-era1-platforms/          # Era-1: Code Layer (5 platforms)
+├── ng-era2-platforms/          # Era-2: Microcode Layer (11 platforms)
+├── ng-era3-platforms/          # Era-3: No-Code Layer (3 platforms)
+├── ng-cross-era-platforms/     # Cross-Era (3 platforms)
+└── platforms/                  # Special purpose platforms
+```
+
+See [Platform Consolidation Report](PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md) for details.
 
 ## Layer Descriptions
 

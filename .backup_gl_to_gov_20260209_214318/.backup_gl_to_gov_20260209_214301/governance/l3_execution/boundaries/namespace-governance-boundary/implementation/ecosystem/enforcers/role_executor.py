@@ -2,6 +2,7 @@
 """
 MNGA Role Execution Layer - Role Executor
 Implements the complete role execution lifecycle for MNGA-L5.5
+@GL-governed
 """
 # @GL-governed
 # @GL-layer: GL30-49

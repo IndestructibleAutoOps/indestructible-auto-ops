@@ -11,6 +11,7 @@ from .adapters.generic import AdapterContext, GenericAdapter, detect_adapter, lo
 from .adapters.go import GoAdapter
 from .adapters.node import NodeAdapter
 from .adapters.python import PythonAdapter
+from .graph import DAG, topological_sort
 from .graph import DAG, dag_is_acyclic, topological_sort
 from .hashing import Hasher
 from .io import ensure_dir, read_text, write_text
@@ -95,9 +96,28 @@ class Engine:
             schema_path=self.cfg.resolve_input(self.cfg.inputs["schemas"]["event"]),
         )
         self.hasher = Hasher(self.cfg.governance["hash"]["algorithms"])
+        
+        # Honor enabled flags for narrative and question checking
+        narrative_patterns = (
+        # Honor enabled flags - pass empty patterns if disabled
+        narrative_pats = (
+            self.cfg.governance["banNarrative"]["patterns"]
+            if self.cfg.governance["banNarrative"].get("enabled", True)
+            else []
+        )
+        forbid_question_patterns = (
+        question_pats = (
+            self.cfg.governance["forbidQuestions"]["patterns"]
+            if self.cfg.governance["forbidQuestions"].get("enabled", True)
+            else []
+        )
+        
         self.scanner = NarrativeSecretScanner(
-            narrative_patterns=self.cfg.governance["banNarrative"]["patterns"],
-            forbid_question_patterns=self.cfg.governance["forbidQuestions"]["patterns"],
+            narrative_patterns=narrative_patterns,
+            forbid_question_patterns=forbid_question_patterns,
+        self.scanner = NarrativeSecretScanner(
+            narrative_patterns=narrative_pats,
+            forbid_question_patterns=question_pats,
             secret_patterns=None,
         )
         adapters_cfg = load_adapters_config(
@@ -115,6 +135,32 @@ class Engine:
         if not schema_path.exists():
             schema_path = project_root / schema_rel
         load_jsonschema(schema_path).validate(raw)
+        
+        # Validate spec.projectRoot if it's an absolute path
+        spec_project_root_str = raw["spec"]["projectRoot"]
+        spec_project_root = Path(spec_project_root_str)
+        if spec_project_root.is_absolute():
+            actual_project_root = project_root.resolve()
+            if spec_project_root.resolve() != actual_project_root:
+                raise ValueError(
+                    f"Config spec.projectRoot ({spec_project_root.resolve()}) "
+                    f"does not match provided project_root ({actual_project_root})"
+                )
+        
+
+        # Validate spec.projectRoot matches project_root if it's an absolute path
+        spec_project_root = raw["spec"].get("projectRoot")
+        if spec_project_root:
+            spec_path = Path(spec_project_root)
+            if spec_path.is_absolute():
+                resolved_project = project_root.resolve()
+                if spec_path.resolve() != resolved_project:
+                    msg = (
+                        f"Config projectRoot mismatch: "
+                        f"spec={spec_path.resolve()}, actual={resolved_project}"
+                    )
+                    raise ValueError(msg)
+
         m = mode or raw["spec"]["modes"]["default"]
         cfg = EngineConfig(raw=raw, config_path=config_path, project_root=project_root, mode=m)
         return Engine(cfg)
@@ -146,12 +192,13 @@ class Engine:
         trace_id = self.events.new_trace_id()
         dag = DAG.from_nodes(self.cfg.dag_nodes)
 
+        # Get step method mappings
         # Validate that DAG node IDs match supported steps
         step_methods = self._get_step_methods()
         supported_step_ids = set(step_methods.keys())
         dag_step_ids = set(dag.ids())
 
-        # Check for unsupported steps in DAG
+        # Validate that DAG node IDs match supported steps
         unsupported = dag_step_ids - supported_step_ids
         if unsupported:
             self.events.emit(
@@ -183,6 +230,7 @@ class Engine:
                 "traceId": trace_id,
             }
 
+        # Derive execution order from DAG topology using topological sort
         # Validate that the DAG is acyclic and derive execution order
         topo_order = topological_sort(dag)
         if topo_order is None:

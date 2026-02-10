@@ -1,0 +1,23 @@
+# @GL-layer: GQS-L0
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: pvc
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quantumflow-data
+  namespace: quantumflow
+  labels:
+    app: quantumflow
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard
+

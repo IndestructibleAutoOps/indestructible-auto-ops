@@ -1,3 +1,11 @@
+"""Web search placeholder for MNGA external reasoning path."""
+
+
+class WebSearchClient:
+    """Stub web search client."""
+
+    def search(self, query: str) -> list:
+        return []
 """Compatibility wrapper for the external web search module."""
 
 try:

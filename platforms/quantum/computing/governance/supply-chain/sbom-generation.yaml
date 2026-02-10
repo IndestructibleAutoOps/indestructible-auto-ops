@@ -1,0 +1,87 @@
+# @GL-layer: GQS-L0
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-core
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
+#
+# GL Unified Architecture Governance Framework Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+apiVersion: supplychain.machinenativeops.io/v1
+kind: SBOMGenerator
+metadata:
+  name: gl-quantum-sbom-generator
+  namespace: governance
+  labels:
+    gl-version: v10.0.0
+    tier: quantum-supply-chain
+spec:
+  enabled: true
+  format:
+    - spdx
+    - cyclonedx
+    - syft-json
+    
+  generators:
+    - name: syft
+      tool: syft
+      version: latest
+      enabled: true
+      scanTargets:
+        - container-images
+        - filesystem
+        - directories
+      options:
+        scope: all-layers
+        package-type: all
+      
+    - name: trivy
+      tool: trivy
+      version: latest
+      enabled: true
+      scanTargets:
+        - container-images
+        - filesystem
+        - git-repositories
+      options:
+        security-checks:
+          - vuln
+          - config
+          
+  output:
+    artifacts:
+      path: artifacts/sbom
+      retention: 365d
+      compress: true
+      
+    upload:
+      enabled: true
+      destinations:
+        - type: github-artifacts
+          retention: 90d
+          
+        - type: s3
+          bucket: gl-sbom-artifacts
+          prefix: sbom/
+          
+  validation:
+    verifySBOM:
+      enabled: true
+      requiredFields:
+        - name
+        - version
+        - components
+        
+    compareSBOMs:
+      enabled: true
+      detectChanges:
+        - added
+        - removed
+        - modified
+        
+  attestation:
+    enabled: true
+    signer: cosign
+    keyLocation: ${{ secrets.SBOM_SIGNING_KEY }}

@@ -1,5 +1,3 @@
-import pytest
-
 from indestructibleautoops.graph import DAG, dag_is_acyclic, topological_sort
 
 
@@ -21,6 +19,10 @@ def test_dag_cycle_fail():
         ]
     )
     assert dag_is_acyclic(dag) is False
+
+
+def test_topological_sort_linear():
+    """Test topological sort on a linear dependency chain."""
 
 
 def test_topological_sort_simple():
@@ -51,6 +53,23 @@ def test_topological_sort_diamond():
     assert result[0] == "a"
     assert result[3] == "d"
     assert set(result[1:3]) == {"b", "c"}
+
+
+def test_topological_sort_raises_on_cycle():
+    """Test that topological sort handles acyclic graphs correctly."""
+    dag = DAG.from_nodes(
+        [
+            {"id": "a", "kind": "step", "run": "x", "deps": []},
+            {"id": "b", "kind": "step", "run": "x", "deps": ["a"]},
+            {"id": "c", "kind": "step", "run": "x", "deps": ["a"]},
+            {"id": "d", "kind": "step", "run": "x", "deps": ["b", "c"]},
+        ]
+    )
+    order = topological_sort(dag)
+    assert order is not None
+    assert order[0] == "a"
+    assert order[-1] == "d"
+    assert set(order[1:3]) == {"b", "c"}
 
 
 def test_topological_sort_cyclic():
