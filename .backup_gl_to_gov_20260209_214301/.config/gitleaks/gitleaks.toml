@@ -26,7 +26,7 @@ paths = [
 [[rules]]
 description = "GitHub Token"
 id = "gl-github-token"
-regex = '''(ghp_|gho_|ghu_|ghs_|ghr_)ghp_[a-zA-Z0-9]{36}'''
+regex = '''(ghp_|gho_|ghu_|ghs_|ghr_)[a-zA-Z0-9]{36}'''
 entropy = 3.5
 secretGroup = 1
 keywords = ["github", "token", "ghp_"]
