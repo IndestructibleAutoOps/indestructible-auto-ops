@@ -80,13 +80,13 @@ receivers:
           
   - name: 'pagerduty-critical'
     pagerduty_configs:
-      - service_key: 'YOUR_PAGERDUTY_SERVICE_KEY'
+      - service_key: '${PAGERDUTY_SERVICE_KEY_CRITICAL}'
         severity: critical
         description: '{{ .CommonLabels.alertname }}'
         
   - name: 'pagerduty-high'
     pagerduty_configs:
-      - service_key: 'YOUR_PAGERDUTY_SERVICE_KEY'
+      - service_key: '${PAGERDUTY_SERVICE_KEY_HIGH}'
         severity: error
         description: '{{ .CommonLabels.alertname }}'
         
