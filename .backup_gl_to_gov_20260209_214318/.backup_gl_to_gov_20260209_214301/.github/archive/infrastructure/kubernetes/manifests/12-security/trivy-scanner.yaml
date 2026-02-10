@@ -1,0 +1,27 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: trivy-scanner
+  namespace: autofix
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: trivy
+            image: aquasec/trivy:latest
+            securityContext:
+              allowPrivilegeEscalation: false
+            command:
+            - trivy
+            - image
+            - --severity=HIGH,CRITICAL
+            - autofix/code-analyzer:latest
+          restartPolicy: OnFailure

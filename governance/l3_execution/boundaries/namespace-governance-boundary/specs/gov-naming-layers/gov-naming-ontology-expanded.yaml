@@ -1,0 +1,709 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+# GL Naming Ontology - Enterprise Engineering-Grade Naming Specification
+# Version: 3.0.0
+# Purpose: Complete engineering-grade naming governance for large-scale monorepo multi-platform architecture
+# Compatibility: gov-platform-generator v2.0+, gov-semantic-engine v1.0+
+
+gov-naming-ontology:
+  semantic:
+    # Semantic Layer - Business domain semantics and entities
+    entities:
+      - name: gl.semantic.domain
+        format: gl.semantic.domain
+        description: Domain semantic namespace (e.g., gl.semantic.domain:finance)
+      - name: gl.semantic.entity
+        format: gl.semantic.entity
+        description: Business semantic entity (e.g., gl.semantic.entity:user)
+      - name: gl.semantic.relation
+        format: gl.semantic.relation
+        description: Semantic relations between entities (e.g., gl.semantic.relation:belongs_to)
+      - name: gl.semantic.attribute
+        format: gl.semantic.attribute
+        description: Entity semantic attribute (e.g., gl.semantic.attribute:email)
+      - name: gl.semantic.event
+        format: gl.semantic.event
+        description: Business semantic event (e.g., gl.semantic.event:user_registered)
+      - name: gl.semantic.intent
+        format: gl.semantic.intent
+        description: Semantic intent (e.g., gl.semantic.intent:purchase)
+      - name: gl.semantic.tag
+        format: gl.semantic.tag
+        description: Semantic tag (e.g., gl.semantic.tag:vip)
+    attributes:
+      - name: description
+        description: Semantic description
+      - name: label
+        description: Display label
+      - name: alias
+        description: Alias
+      - name: language
+        description: Language marker (e.g., en, zh-TW)
+
+  contract:
+    # Contract/Interface Contract Layer - API contracts and specifications
+    entities:
+      - name: gl.contract.interface
+        format: gl.contract.interface
+        description: API/protocol/contract interface (e.g., gl.contract.interface:UserService)
+      - name: gl.contract.method
+        format: gl.contract.method
+        description: Interface method (e.g., gl.contract.method:getUser)
+      - name: gl.contract.param
+        format: gl.contract.param
+        description: Interface parameter (e.g., gl.contract.param:userId)
+      - name: gl.contract.response
+        format: gl.contract.response
+        description: Interface response structure (e.g., gl.contract.response:UserDetail)
+      - name: gl.contract.error
+        format: gl.contract.error
+        description: Contract error code (e.g., gl.contract.error:USER_NOT_FOUND)
+      - name: gl.contract.event
+        format: gl.contract.event
+        description: Contract event (e.g., gl.contract.event:UserCreated)
+    attributes:
+      - name: version
+        description: Contract version number
+      - name: deprecated
+        description: Deprecated flag
+      - name: visibility
+        description: Visibility (public/private/internal)
+      - name: stability
+        description: Stability level
+
+  platform:
+    # Platform/Environment Layer - Platform types and environments
+    entities:
+      - name: gl.platform.type
+        format: gl.platform.type
+        description: Platform type (e.g., gl.platform.type:web, gl.platform.type:android)
+      - name: gl.platform.env
+        format: gl.platform.env
+        description: Execution environment (e.g., gl.platform.env:prod, gl.platform.env:dev)
+      - name: gl.platform.node
+        format: gl.platform.node
+        description: Execution node (e.g., gl.platform.node:us-east-1a)
+      - name: gl.platform.arch
+        format: gl.platform.arch
+        description: Architecture type (e.g., gl.platform.arch:x86_64)
+      - name: gl.platform.region
+        format: gl.platform.region
+        description: Region identifier (e.g., gl.platform.region:ap-northeast-1)
+    attributes:
+      - name: os
+        description: Operating system (e.g., linux, windows)
+      - name: cpu
+        description: CPU model
+      - name: memory
+        description: Memory configuration
+      - name: zone
+        description: Availability zone
+
+  format:
+    # Data/File Format Layer - Data formats and schemas
+    entities:
+      - name: gl.format.type
+        format: gl.format.type
+        description: Format type (e.g., gl.format.type:json, gl.format.type:protobuf)
+      - name: gl.format.schema
+        format: gl.format.schema
+        description: Data structure definition (e.g., gl.format.schema:UserSchema)
+      - name: gl.format.mime
+        format: gl.format.mime
+        description: MIME type (e.g., gl.format.mime:application/json)
+      - name: gl.format.encoding
+        format: gl.format.encoding
+        description: Encoding method (e.g., gl.format.encoding:utf-8)
+      - name: gl.format.compression
+        format: gl.format.compression
+        description: Compression format (e.g., gl.format.compression:gzip)
+    attributes:
+      - name: extension
+        description: File extension (e.g., .json, .csv)
+      - name: version
+        description: Format version
+      - name: checksum
+        description: Checksum
+
+  language:
+    # Programming Language/Locale Layer - Language codes and frameworks
+    entities:
+      - name: gl.language.code
+        format: gl.language.code
+        description: Language code (e.g., gl.language.code:python, gl.language.code:go)
+      - name: gl.language.locale
+        format: gl.language.locale
+        description: Locale region (e.g., gl.language.locale:en-US)
+      - name: gl.language.framework
+        format: gl.language.framework
+        description: Framework name (e.g., gl.language.framework:django)
+      - name: gl.language.version
+        format: gl.language.version
+        description: Language version (e.g., gl.language.version:3.11.2)
+    attributes:
+      - name: dialect
+        description: Language dialect
+      - name: standard
+        description: Standard specification (e.g., ECMAScript 2022)
+
+  deployment:
+    # Deployment/Environment Layer - Deployment targets and strategies
+    entities:
+      - name: gl.deployment.target
+        format: gl.deployment.target
+        description: Deployment target (e.g., gl.deployment.target:k8s-cluster-1)
+      - name: gl.deployment.stage
+        format: gl.deployment.stage
+        description: Deployment stage (e.g., gl.deployment.stage:staging, gl.deployment.stage:production)
+      - name: gl.deployment.strategy
+        format: gl.deployment.strategy
+        description: Deployment strategy (e.g., gl.deployment.strategy:blue-green)
+      - name: gl.deployment.release
+        format: gl.deployment.release
+        description: Release version (e.g., gl.deployment.release:v1.2.3)
+      - name: gl.deployment.artifact
+        format: gl.deployment.artifact
+        description: Deployment artifact (e.g., gl.deployment.artifact:docker-image)
+    attributes:
+      - name: timestamp
+        description: Deployment timestamp
+      - name: operator
+        description: Deployment operator
+      - name: status
+        description: Deployment status (e.g., success, failed)
+
+  supply-chain:
+    # Supply Chain/Dependency Layer - Dependencies and packages
+    entities:
+      - name: gl.supply.dependency
+        format: gl.supply.dependency
+        description: Software dependency (e.g., gl.supply.dependency:requests)
+      - name: gl.supply.package
+        format: gl.supply.package
+        description: Package name (e.g., gl.supply.package:numpy)
+      - name: gl.supply.lockfile
+        format: gl.supply.lockfile
+        description: Lock file (e.g., gl.supply.lockfile:package-lock.json)
+      - name: gl.supply.license
+        format: gl.supply.license
+        description: License type (e.g., gl.supply.license:MIT)
+      - name: gl.supply.registry
+        format: gl.supply.registry
+        description: Package registry (e.g., gl.supply.registry:pypi)
+    attributes:
+      - name: version
+        description: Dependency version
+      - name: hash
+        description: Dependency checksum
+      - name: source
+        description: Source URL
+
+  user-facing:
+    # User Interface/Endpoint Layer - UI components and API endpoints
+    entities:
+      - name: gl.ui.component
+        format: gl.ui.component
+        description: Frontend component name (e.g., gl.ui.component:Button)
+      - name: gl.ui.route
+        format: gl.ui.route
+        description: Frontend route (e.g., gl.ui.route:/dashboard)
+      - name: gl.api.endpoint
+        format: gl.api.endpoint
+        description: API endpoint (e.g., gl.api.endpoint:/v1/users)
+      - name: gl.api.method
+        format: gl.api.method
+        description: API method (e.g., gl.api.method:GET)
+      - name: gl.api.version
+        format: gl.api.version
+        description: API version (e.g., gl.api.version:v2)
+      - name: gl.ui.i18n
+        format: gl.ui.i18n
+        description: i18n resource key (e.g., gl.ui.i18n:welcome_message)
+    attributes:
+      - name: path
+        description: Path
+      - name: label
+        description: Display label
+      - name: icon
+        description: Icon name
+
+  metadata:
+    # Metadata Layer - Metadata objects and schemas
+    entities:
+      - name: gl.metadata.object
+        format: gl.metadata.object
+        description: Metadata object (e.g., gl.metadata.object:dataset)
+      - name: gl.metadata.schema
+        format: gl.metadata.schema
+        description: Metadata structure (e.g., gl.metadata.schema:UserMeta)
+      - name: gl.metadata.tag
+        format: gl.metadata.tag
+        description: Metadata tag (e.g., gl.metadata.tag:confidential)
+      - name: gl.metadata.annotation
+        format: gl.metadata.annotation
+        description: Metadata annotation (e.g., gl.metadata.annotation:deprecated)
+      - name: gl.metadata.version
+        format: gl.metadata.version
+        description: Metadata version (e.g., gl.metadata.version:1.0.0)
+    attributes:
+      - name: created_at
+        description: Creation time
+      - name: updated_at
+        description: Update time
+      - name: owner
+        description: Owner
+
+  interface:
+    # Interface/Abstraction Layer - Interface types and adapters
+    entities:
+      - name: gl.interface.type
+        format: gl.interface.type
+        description: Interface type (e.g., gl.interface.type:REST, gl.interface.type:GraphQL)
+      - name: gl.interface.adapter
+        format: gl.interface.adapter
+        description: Interface adapter (e.g., gl.interface.adapter:grpc-adapter)
+      - name: gl.interface.contract
+        format: gl.interface.contract
+        description: Interface contract (e.g., gl.interface.contract:OpenAPI)
+      - name: gl.interface.stub
+        format: gl.interface.stub
+        description: Interface stub (e.g., gl.interface.stub:UserServiceStub)
+    attributes:
+      - name: protocol
+        description: Communication protocol (e.g., http, ws, grpc)
+      - name: endpoint
+        description: Interface endpoint
+
+  dependency:
+    # Dependency Management Layer - Dependency graphs and nodes
+    entities:
+      - name: gl.dependency.graph
+        format: gl.dependency.graph
+        description: Dependency graph (e.g., gl.dependency.graph:project-graph)
+      - name: gl.dependency.edge
+        format: gl.dependency.edge
+        description: Dependency edge (e.g., gl.dependency.edge:serviceA->serviceB)
+      - name: gl.dependency.node
+        format: gl.dependency.node
+        description: Dependency node (e.g., gl.dependency.node:packageX)
+    attributes:
+      - name: type
+        description: Dependency type (direct/indirect/dev/peer)
+      - name: scope
+        description: Scope (e.g., runtime, build, test)
+
+  versioning:
+    # Version Management Layer - Semantic versioning
+    entities:
+      - name: gl.version.semver
+        format: gl.version.semver
+        description: Semantic version (e.g., gl.version.semver:1.2.3)
+      - name: gl.version.tag
+        format: gl.version.tag
+        description: Version tag (e.g., gl.version.tag:release-2026-02-01)
+      - name: gl.version.branch
+        format: gl.version.branch
+        description: Version branch (e.g., gl.version.branch:feature/login)
+      - name: gl.version.changelog
+        format: gl.version.changelog
+        description: Version changelog (e.g., gl.version.changelog:v1.2.0)
+    attributes:
+      - name: pre_release
+        description: Pre-release marker (e.g., alpha, beta, rc)
+      - name: build_metadata
+        description: Build metadata
+
+  testing:
+    # Testing Layer - Test suites and cases
+    entities:
+      - name: gl.test.suite
+        format: gl.test.suite
+        description: Test suite (e.g., gl.test.suite:integration-tests)
+      - name: gl.test.case
+        format: gl.test.case
+        description: Test case (e.g., gl.test.case:should_return_200)
+      - name: gl.test.mock
+        format: gl.test.mock
+        description: Mock object (e.g., gl.test.mock:UserRepositoryMock)
+      - name: gl.test.coverage
+        format: gl.test.coverage
+        description: Coverage report (e.g., gl.test.coverage:api-coverage)
+      - name: gl.test.fixture
+        format: gl.test.fixture
+        description: Test fixture (e.g., gl.test.fixture:user_data.json)
+    attributes:
+      - name: type
+        description: Test type (unit/integration/e2e)
+      - name: status
+        description: Test status (pass/fail/skip)
+      - name: priority
+        description: Priority
+
+  build:
+    # Build Layer - Build pipelines and artifacts
+    entities:
+      - name: gl.build.pipeline
+        format: gl.build.pipeline
+        description: Build pipeline (e.g., gl.build.pipeline:default)
+      - name: gl.build.job
+        format: gl.build.job
+        description: Build job (e.g., gl.build.job:compile-typescript)
+      - name: gl.build.target
+        format: gl.build.target
+        description: Build target (e.g., gl.build.target:dist)
+      - name: gl.build.artifact
+        format: gl.build.artifact
+        description: Build artifact (e.g., gl.build.artifact:main.js)
+    attributes:
+      - name: status
+        description: Build status
+      - name: duration
+        description: Execution duration
+      - name: runner
+        description: Execution node
+
+  ci-cd:
+    # CI/CD Layer - Continuous integration/deployment
+    entities:
+      - name: gl.cicd.pipeline
+        format: gl.cicd.pipeline
+        description: CI/CD pipeline (e.g., gl.cicd.pipeline:main-pipeline)
+      - name: gl.cicd.stage
+        format: gl.cicd.stage
+        description: Pipeline stage (e.g., gl.cicd.stage:deploy)
+      - name: gl.cicd.job
+        format: gl.cicd.job
+        description: Pipeline job (e.g., gl.cicd.job:lint)
+      - name: gl.cicd.trigger
+        format: gl.cicd.trigger
+        description: Trigger condition (e.g., gl.cicd.trigger:on-merge)
+      - name: gl.cicd.env
+        format: gl.cicd.env
+        description: CI/CD execution environment (e.g., gl.cicd.env:ci-prod)
+    attributes:
+      - name: variables
+        description: Environment variables
+      - name: timeout
+        description: Timeout setting
+      - name: allow_failure
+        description: Allow failure
+
+  documentation:
+    # Documentation Layer - Documentation pages and assets
+    entities:
+      - name: gl.doc.page
+        format: gl.doc.page
+        description: Documentation page (e.g., gl.doc.page:getting-started)
+      - name: gl.doc.section
+        format: gl.doc.section
+        description: Documentation section (e.g., gl.doc.section:introduction)
+      - name: gl.doc.example
+        format: gl.doc.example
+        description: Documentation example (e.g., gl.doc.example:api-usage)
+      - name: gl.doc.reference
+        format: gl.doc.reference
+        description: Reference document (e.g., gl.doc.reference:semver)
+      - name: gl.doc.asset
+        format: gl.doc.asset
+        description: Documentation asset (e.g., gl.doc.asset:diagram.svg)
+    attributes:
+      - name: language
+        description: Documentation language
+      - name: version
+        description: Documentation version
+      - name: author
+        description: Author
+
+  permission:
+    # Permission/Ownership Layer - Roles and policies
+    entities:
+      - name: gl.permission.role
+        format: gl.permission.role
+        description: Role name (e.g., gl.permission.role:admin)
+      - name: gl.permission.policy
+        format: gl.permission.policy
+        description: Permission policy (e.g., gl.permission.policy:read-only)
+      - name: gl.permission.binding
+        format: gl.permission.binding
+        description: Role binding (e.g., gl.permission.binding:user-admin)
+      - name: gl.permission.resource
+        format: gl.permission.resource
+        description: Permission resource (e.g., gl.permission.resource:projectX)
+      - name: gl.permission.scope
+        format: gl.permission.scope
+        description: Permission scope (e.g., gl.permission.scope:global)
+    attributes:
+      - name: principal
+        description: Principal (user/group/service-account)
+      - name: action
+        description: Action (read/write/execute)
+      - name: condition
+        description: Condition
+
+  observability:
+    # Monitoring/Log/Tracing Layer - Observability
+    entities:
+      - name: gl.obs.metric
+        format: gl.obs.metric
+        description: Monitoring metric (e.g., gl.obs.metric:cpu_usage)
+      - name: gl.obs.log
+        format: gl.obs.log
+        description: Log type (e.g., gl.obs.log:access_log)
+      - name: gl.obs.trace
+        format: gl.obs.trace
+        description: Trace name (e.g., gl.obs.trace:request_trace)
+      - name: gl.obs.event
+        format: gl.obs.event
+        description: Monitoring event (e.g., gl.obs.event:deployment_failed)
+      - name: gl.obs.dashboard
+        format: gl.obs.dashboard
+        description: Monitoring dashboard (e.g., gl.obs.dashboard:service-health)
+    attributes:
+      - name: severity
+        description: Severity level
+      - name: timestamp
+        description: Occurrence time
+      - name: source
+        description: Source
+
+  security:
+    # Security Layer - Security policies and compliance
+    entities:
+      - name: gl.security.policy
+        format: gl.security.policy
+        description: Security policy (e.g., gl.security.policy:password-policy)
+      - name: gl.security.vulnerability
+        format: gl.security.vulnerability
+        description: Vulnerability name (e.g., gl.security.vulnerability:CVE-2026-1234)
+      - name: gl.security.secret
+        format: gl.security.secret
+        description: Secret resource (e.g., gl.security.secret:db-password)
+      - name: gl.security.audit
+        format: gl.security.audit
+        description: Audit record (e.g., gl.security.audit:login-attempts)
+      - name: gl.security.compliance
+        format: gl.security.compliance
+        description: Compliance standard (e.g., gl.security.compliance:GDPR)
+    attributes:
+      - name: level
+        description: Security level
+      - name: status
+        description: Status (active/inactive)
+      - name: owner
+        description: Owner
+
+  packaging:
+    # Package/Artifact Layer - Packages and artifacts
+    entities:
+      - name: gl.package.name
+        format: gl.package.name
+        description: Package name (e.g., gl.package.name:my-lib)
+      - name: gl.package.version
+        format: gl.package.version
+        description: Package version (e.g., gl.package.version:1.0.0)
+      - name: gl.artifact.id
+        format: gl.artifact.id
+        description: Artifact unique identifier (e.g., gl.artifact.id:build-20260201)
+      - name: gl.artifact.type
+        format: gl.artifact.type
+        description: Artifact type (e.g., gl.artifact.type:jar, gl.artifact.type:docker-image)
+      - name: gl.artifact.checksum
+        format: gl.artifact.checksum
+        description: Artifact checksum
+    attributes:
+      - name: repository
+        description: Package repository
+      - name: url
+        description: Download URL
+      - name: size
+        description: File size
+
+  indexing:
+    # Indexing/Searchability Layer - Indexes and keys
+    entities:
+      - name: gl.index.key
+        format: gl.index.key
+        description: Index key (e.g., gl.index.key:user_id)
+      - name: gl.index.type
+        format: gl.index.type
+        description: Index type (e.g., gl.index.type:btree)
+      - name: gl.index.field
+        format: gl.index.field
+        description: Index field (e.g., gl.index.field:email)
+      - name: gl.index.schema
+        format: gl.index.schema
+        description: Index structure (e.g., gl.index.schema:UserIndex)
+    attributes:
+      - name: unique
+        description: Unique index
+      - name: sparse
+        description: Sparse index
+      - name: ttl
+        description: Time to live
+
+  extensibility:
+    # Extension Point/Extension Layer - Plugins and hooks
+    entities:
+      - name: gl.ext.point
+        format: gl.ext.point
+        description: Extension point name (e.g., gl.ext.point:auth-provider)
+      - name: gl.ext.plugin
+        format: gl.ext.plugin
+        description: Extension plugin (e.g., gl.ext.plugin:ldap-auth)
+      - name: gl.ext.hook
+        format: gl.ext.hook
+        description: Extension hook (e.g., gl.ext.hook:pre-deploy)
+      - name: gl.ext.module
+        format: gl.ext.module
+        description: Extension module (e.g., gl.ext.module:payment-gateway)
+    attributes:
+      - name: enabled
+        description: Enabled flag
+      - name: priority
+        description: Execution priority
+      - name: config
+        description: Extension configuration
+
+  validation:
+    # Validability/Verification Layer - Validation schemas and rules
+    entities:
+      - name: gl.validation.schema
+        format: gl.validation.schema
+        description: Validation schema (e.g., gl.validation.schema:UserInput)
+      - name: gl.validation.rule
+        format: gl.validation.rule
+        description: Validation rule (e.g., gl.validation.rule:email-format)
+      - name: gl.validation.error
+        format: gl.validation.error
+        description: Validation error (e.g., gl.validation.error:INVALID_EMAIL)
+      - name: gl.validation.report
+        format: gl.validation.report
+        description: Validation report (e.g., gl.validation.report:build-20260201)
+    attributes:
+      - name: severity
+        description: Severity level
+      - name: message
+        description: Error message
+      - name: path
+        description: Error path
+
+  governance:
+    # Governance/Change Management Layer - Policies and audits
+    entities:
+      - name: gl.governance.policy
+        format: gl.governance.policy
+        description: Governance policy (e.g., gl.governance.policy:code-review-required)
+      - name: gl.governance.audit
+        format: gl.governance.audit
+        description: Governance audit (e.g., gl.governance.audit:merge-approval)
+      - name: gl.governance.change
+        format: gl.governance.change
+        description: Change record (e.g., gl.governance.change:PR-1234)
+      - name: gl.governance.approval
+        format: gl.governance.approval
+        description: Change approval (e.g., gl.governance.approval:security-team)
+      - name: gl.governance.exception
+        format: gl.governance.exception
+        description: Governance exception (e.g., gl.governance.exception:hotfix-bypass)
+    attributes:
+      - name: status
+        description: Status (pending/approved/rejected)
+      - name: reviewer
+        description: Reviewer
+      - name: timestamp
+        description: Change time
+
+  generator:
+    # GL Platform Generator Compatibility
+    entities:
+      - name: gl.generator.id
+        format: gl.generator.id
+        description: Generator unique identifier (e.g., gl.generator.id:gov-platform-gen)
+      - name: gl.generator.version
+        format: gl.generator.version
+        description: Generator version (e.g., gl.generator.version:2.0.1)
+      - name: gl.generator.config
+        format: gl.generator.config
+        description: Generator configuration (e.g., gl.generator.config:default)
+    attributes:
+      - name: compatible
+        description: Compatibility marker
+      - name: supported_layers
+        description: Supported layer list
+      - name: parse_mode
+        description: Parse mode (strict/lenient)
+
+  reasoning:
+    # GL Semantic Engine Reasoning Support
+    entities:
+      - name: gl.reasoning.rule
+        format: gl.reasoning.rule
+        description: Reasoning rule (e.g., gl.reasoning.rule:inherit-permission)
+      - name: gl.reasoning.inference
+        format: gl.reasoning.inference
+        description: Reasoning result (e.g., gl.reasoning.inference:role-admin-has-all-access)
+      - name: gl.reasoning.context
+        format: gl.reasoning.context
+        description: Reasoning context (e.g., gl.reasoning.context:api-request)
+    attributes:
+      - name: input
+        description: Reasoning input
+      - name: output
+        description: Reasoning output
+      - name: confidence
+        description: Reasoning confidence score
+
+# Naming Format Rules
+naming_format_rules:
+  - name: gl.key.xxx
+    description: Key-value naming (e.g., gl.index.key:user_id)
+    usage: Configuration keys, metadata keys, index keys
+  - name: gl.xxx/yyy
+    description: Hierarchical path naming (e.g., gl.api.endpoint:/v1/users)
+    usage: Paths, endpoints, routes
+  - name: glXxx
+    description: CamelCase naming (e.g., glTestSuite)
+    usage: Class names, type definitions
+  - name: gov-xxx
+    description: Hyphen naming (e.g., gov-build-artifact)
+    usage: File names, component names
+  - name: gl.xxx.yyy
+    description: Multi-level namespace (e.g., gl.semantic.entity.user)
+    usage: Namespace hierarchies, qualified names
+
+# Design Principles
+design_principles:
+  consistency: "All naming entities follow consistent gl prefix, separators, case, namespace rules"
+  extensibility: "Naming levels and items can be dynamically expanded based on project evolution"
+  verifiability: "Naming standards can be parsed and validated by automated tools, CI/CD, schema validation"
+  indexability: "Naming structure supports efficient indexing, querying, folding, and aggregation"
+  engineering_language: "All descriptions use engineering terminology, no metaphors or narrative"
+  gl_prefix_rule: "Naming entities (uniquely identifiable objects) must have gl prefix; naming attributes (descriptive keys) do not have gl prefix"
+
+# Platform Support
+platform_support:
+  frontend_backend_fullstack:
+    description: "Supports frontend (UI components, routes, i18n), backend (API, services, database), fullstack (shared modules, SDK) collaboration"
+  api_ci_cd_deployment_testing_documentation_version_dependency_format_ui:
+    description: "Covers API interfaces, CI/CD pipelines, deployment targets, test cases, documentation resources, version tags, dependency management, data formats, user interfaces across engineering full stack"
+  multi_platform_scalability:
+    description: "All levels and items can be dynamically expanded based on project needs, supporting custom namespaces and extension points"
+  verifiability_indexability_reasoning:
+    description: "Naming standards can be parsed by automated tools, CI/CD, schema validation, semantic engines; supports efficient indexing and querying"
+
+# Generator and Engine Compatibility
+generator_compatibility:
+  structured_yaml: "All naming items are structured in YAML for gov-platform-generator to automatically parse and generate engineering code, configurations, documentation"
+  semantic_engine_support: "Naming ontology design supports semantic engines to automatically reason about permission inheritance, dependency relationships, version compatibility, governance policies"
+  verifiability: "Naming standards can be validated by schema, CI/CD checks, semantic engine consistency checks, ensuring naming uniqueness and compliance"
+
+# Version and Registry
+version: 3.0.0
+registry:
+  path: ng-namespace-governance/specs/gov-naming-registry/gov-naming-contracts-registry.yaml
+  status: ACTIVE
+  contract_id: gov-naming-ontology-expanded

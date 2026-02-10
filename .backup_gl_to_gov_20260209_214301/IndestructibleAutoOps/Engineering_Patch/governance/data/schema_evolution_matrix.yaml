@@ -1,0 +1,20 @@
+schema_evolution_matrix:
+  version: v1
+  rules:
+    - change: "add_optional_field"
+      backward_compatible: true
+      forward_compatible: false
+    - change: "add_required_field"
+      backward_compatible: false
+      forward_compatible: false
+    - change: "remove_field"
+      backward_compatible: false
+      forward_compatible: true
+    - change: "widen_type"
+      backward_compatible: true
+      forward_compatible: false
+    - change: "narrow_type"
+      backward_compatible: false
+      forward_compatible: true
+  gates:
+    - "schema_compatibility=pass"

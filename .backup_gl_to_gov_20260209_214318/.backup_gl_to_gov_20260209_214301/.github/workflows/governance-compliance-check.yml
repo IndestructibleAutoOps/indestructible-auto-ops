@@ -1,0 +1,508 @@
+name: Governance Compliance Check
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [ main ]
+
+env:
+  OVERALL_THRESHOLD: 85.0
+  SEMANTIC_THRESHOLD: 85.0
+  COMPLETION_THRESHOLD: 80.0
+  VERIFICATION_THRESHOLD: 75.0
+
+jobs:
+  # Stage 1: Pre-check
+  pre-check:
+    name: 📋 Pre-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Check Git status
+        run: |
+          git status
+          echo "✅ Git status OK"
+
+  # Stage 2: Core Governance Check
+  core-governance:
+    name: 🛡️ Core Governance Check
+    runs-on: ubuntu-latest
+    needs: pre-check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Run MNGA Governance Audit
+        id: audit
+        run: |
+          python ecosystem/enforce.py --audit
+          echo "✅ Core governance check passed"
+        continue-on-error: false
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v3
+        with:
+          name: audit-report
+          path: reports/audit_report_*.json
+          retention-days: 30
+
+  # Stage 3: Semantic Validation
+  semantic-validation:
+    name: 🔍 Semantic Validation
+    runs-on: ubuntu-latest
+    needs: core-governance
+    outputs:
+      score: ${{ steps.semantic-check.outputs.score }}
+      critical: ${{ steps.semantic-check.outputs.critical }}
+      high: ${{ steps.semantic-check.outputs.high }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Run Semantic Validator
+        id: semantic-check
+        run: |
+          python ecosystem/tools/semantic_validator.py \
+            --directory reports/ \
+            --output semantic-validation.json
+          
+          score=$(python -c "import json; print(json.load(open('semantic-validation.json'))['compliance_score'])")
+          critical=$(python -c "import json; print(len([v for v in json.load(open('semantic-validation.json'))['violations'] if v['severity'] == 'CRITICAL']))")
+          high=$(python -c "import json; print(len([v for v in json.load(open('semantic-validation.json'))['violations'] if v['severity'] == 'HIGH']))")
+          
+          echo "score=$score" >> $GITHUB_OUTPUT
+          echo "critical=$critical" >> $GITHUB_OUTPUT
+          echo "high=$high" >> $GITHUB_OUTPUT
+          
+          echo "Semantic Compliance Score: $score"
+          echo "Critical Violations: $critical"
+          echo "High Violations: $high"
+
+      - name: Check Semantic Threshold
+        run: |
+          score=${{ steps.semantic-check.outputs.score }}
+          critical=${{ steps.semantic-check.outputs.critical }}
+          
+          if (( $(echo "$score < $SEMANTIC_THRESHOLD" | bc -l) )); then
+            echo "❌ Semantic compliance $score below threshold $SEMANTIC_THRESHOLD"
+            exit 1
+          fi
+          
+          if [ "$critical" -gt 0 ]; then
+            echo "❌ Found $critical CRITICAL violations"
+            exit 1
+          fi
+          
+          echo "✅ Semantic validation passed"
+
+      - name: Upload semantic validation report
+        uses: actions/upload-artifact@v3
+        with:
+          name: semantic-validation-report
+          path: semantic-validation.json
+          retention-days: 30
+
+  # Stage 4: Implementation Verification
+  implementation-verification:
+    name: 🔧 Implementation Verification
+    runs-on: ubuntu-latest
+    needs: semantic-validation
+    outputs:
+      completion: ${{ steps.verify.outputs.completion }}
+      verification: ${{ steps.verify.outputs.verification }}
+      overall: ${{ steps.verify.outputs.overall }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Download semantic validation
+        uses: actions/download-artifact@v3
+        with:
+          name: semantic-validation-report
+
+      - name: Convert violations to tasks
+        run: |
+          python ecosystem/tools/semantic_entity_task_converter.py \
+            --from-validator semantic-validation.json \
+            --output tasks.json
+
+      - name: Generate implementation checklist
+        run: |
+          python ecosystem/tools/semantic_driven_executor.py \
+            --violations semantic-validation.json \
+            --tasks tasks.json \
+            --report "reports/ci-check.md" \
+            --generate-checklist \
+            --output implementation-checklist.json
+
+      - name: Verify implementation
+        id: verify
+        run: |
+          python ecosystem/tools/semantic_driven_executor.py \
+            --checklist implementation-checklist.json \
+            --verify-implementation \
+            --output verification-report.json
+          
+          completion=$(python -c "import json; print(json.load(open('verification-report.json'))['completion_rate'])")
+          verification=$(python -c "import json; print(json.load(open('verification-report.json'))['verification_rate'])")
+          overall=$(python -c "import json; print(json.load(open('verification-report.json'))['overall_score'])")
+          
+          echo "completion=$completion" >> $GITHUB_OUTPUT
+          echo "verification=$verification" >> $GITHUB_OUTPUT
+          echo "overall=$overall" >> $GITHUB_OUTPUT
+          
+          echo "Implementation Completion: $completion%"
+          echo "Verification Pass Rate: $verification%"
+          echo "Overall Score: $overall"
+
+      - name: Check Implementation Thresholds
+        run: |
+          completion=${{ steps.verify.outputs.completion }}
+          verification=${{ steps.verify.outputs.verification }}
+          
+          if (( $(echo "$completion < $COMPLETION_THRESHOLD" | bc -l) )); then
+            echo "❌ Implementation completion $completion below threshold $COMPLETION_THRESHOLD"
+            exit 1
+          fi
+          
+          if (( $(echo "$verification < $VERIFICATION_THRESHOLD" | bc -l) )); then
+            echo "❌ Verification pass rate $verification below threshold $VERIFICATION_THRESHOLD"
+            exit 1
+          fi
+          
+          echo "✅ Implementation verification passed"
+
+      - name: Upload verification report
+        uses: actions/upload-artifact@v3
+        with:
+          name: verification-report
+          path: verification-report.json
+          retention-days: 30
+
+  # Stage 5: Evidence Chain Verification
+  evidence-verification:
+    name: 🔗 Evidence Chain Verification
+    runs-on: ubuntu-latest
+    needs: core-governance
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Run 10-Step Closed Loop
+        run: |
+          python ecosystem/enforce.rules.py
+          echo "✅ 10-step closed loop completed"
+
+      - name: Verify Event Stream
+        run: |
+          if [ ! -f .governance/event-stream.jsonl ]; then
+            echo "❌ Event stream file not found"
+            exit 1
+          fi
+          
+          events=$(wc -l < .governance/event-stream.jsonl)
+          echo "Event stream records: $events"
+          
+          if [ "$events" -lt 10 ]; then
+            echo "❌ Insufficient event stream records ($events < 10)"
+            exit 1
+          fi
+          
+          echo "✅ Event stream verified"
+
+      - name: Verify Artifacts
+        run: |
+          for step in {1..10}; do
+            if [ ! -f .evidence/step-$step.json ]; then
+              echo "❌ Artifact step-$step.json not found"
+              exit 1
+            fi
+            
+            hash=$(python -c "import json; print(json.load(open('.evidence/step-$step.json')).get('artifact_hash', 'null'))")
+            
+            if [ -z "$hash" ] || [ "$hash" == "null" ]; then
+              echo "❌ Artifact step-$step.json missing hash"
+              exit 1
+            fi
+            
+            echo "✅ Step $step artifact verified (hash: ${hash:0:16}...)"
+          done
+          
+          echo "✅ All artifacts verified"
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@v3
+        with:
+          name: evidence-chain
+          path: |
+            .governance/event-stream.jsonl
+            .evidence/*.json
+          retention-days: 30
+
+  # Stage 6: Calculate Overall Score
+  overall-score:
+    name: 📊 Overall Compliance Score
+    runs-on: ubuntu-latest
+    needs: [core-governance, semantic-validation, implementation-verification, evidence-verification]
+    outputs:
+      overall_score: ${{ steps.calculate.outputs.overall_score }}
+      status: ${{ steps.calculate.outputs.status }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Calculate overall score
+        id: calculate
+        run: |
+          # Core governance (always 100 if reached here)
+          core_score=100.0
+          
+          # Semantic compliance (25%)
+          semantic_score=${{ needs.semantic-validation.outputs.score }}
+          
+          # Implementation completion (20%)
+          completion_score=${{ needs.implementation-verification.outputs.completion }}
+          
+          # Verification pass rate (15%)
+          verification_score=${{ needs.implementation-verification.outputs.verification }}
+          
+          # Calculate weighted score
+          overall=$(python -c "print(f'{($core_score * 0.40 + $semantic_score * 0.25 + $completion_score * 0.20 + $verification_score * 0.15):.1f}')")
+          
+          echo "overall_score=$overall" >> $GITHUB_OUTPUT
+          
+          # Determine status
+          if (( $(echo "$overall >= 85.0" | bc -l) )); then
+            echo "status=PASS" >> $GITHUB_OUTPUT
+          elif (( $(echo "$overall >= 75.0" | bc -l) )); then
+            echo "status=WARNING" >> $GITHUB_OUTPUT
+          else
+            echo "status=FAIL" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "========================================"
+          echo "📊 Overall Compliance Score: $overall/100"
+          echo "========================================"
+          echo "Core Governance: $core_score/100 (40%)"
+          echo "Semantic Compliance: $semantic_score/100 (25%)"
+          echo "Implementation: $completion_score/100 (20%)"
+          echo "Verification: $verification_score/100 (15%)"
+          echo "========================================"
+          echo "Status: ${{ steps.calculate.outputs.status }}"
+          echo "Threshold: $OVERALL_THRESHOLD/100"
+
+      - name: Check overall threshold
+        run: |
+          score=${{ steps.calculate.outputs.overall_score }}
+          
+          if [ "${{ steps.calculate.outputs.status }}" == "FAIL" ]; then
+            echo "❌ Overall compliance $score below threshold $OVERALL_THRESHOLD"
+            exit 1
+          fi
+          
+          echo "✅ Overall compliance check passed"
+
+      - name: Generate compliance report
+        run: |
+          cat > compliance-report.md << EOF
+          # CI/CD Compliance Report
+          
+          **Pipeline ID**: ${{ github.run_id }}
+          **Timestamp**: ${{ github.event.head_commit.timestamp }}
+          **Status**: ${{ steps.calculate.outputs.status }}
+          
+          ## Overall Score
+          
+          | Component | Score | Weight | Contribution |
+          |-----------|-------|--------|--------------|
+          | Core Governance | 100.0 | 40% | 40.0 |
+          | Semantic Compliance | ${{ needs.semantic-validation.outputs.score }} | 25% | ${{ needs.semantic-validation.outputs.score * 0.25 }} |
+          | Implementation | ${{ needs.implementation-verification.outputs.completion }} | 20% | ${{ needs.implementation-verification.outputs.completion * 0.20 }} |
+          | Verification | ${{ needs.implementation-verification.outputs.verification }} | 15% | ${{ needs.implementation-verification.outputs.verification * 0.15 }} |
+          | **Overall** | **${{ steps.calculate.outputs.overall_score }}** | **100%** | **${{ steps.calculate.outputs.overall_score }}** |
+          
+          ## Violations
+          
+          - **Critical**: ${{ needs.semantic-validation.outputs.critical }}
+          - **High**: ${{ needs.semantic-validation.outputs.high }}
+          
+          ## Status
+          
+          - ✅ Core Governance: PASS
+          - ✅ Semantic Validation: PASS
+          - ✅ Implementation Verification: PASS
+          - ✅ Evidence Chain: COMPLETE
+          - ✅ Overall: ${{ steps.calculate.outputs.status }}
+          EOF
+          
+          cat compliance-report.md
+
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: compliance-report
+          path: compliance-report.md
+          retention-days: 90
+
+  # Stage 7: Sealing (Era-1 partial sealing)
+  sealing:
+    name: 🔐 Sealing
+    runs-on: ubuntu-latest
+    needs: overall-score
+    if: needs.overall-score.outputs.status == 'PASS'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Download evidence
+        uses: actions/download-artifact@v3
+        with:
+          name: evidence-chain
+          path: ./
+
+      - name: Generate Core Hash (Era-1 partial)
+        run: |
+          mkdir -p .governance
+          
+          # Generate hash for all artifacts
+          python << 'EOF'
+          import json
+          import hashlib
+          from pathlib import Path
+          
+          core_hash_data = {
+            "sealed_at": "${{ github.event.head_commit.timestamp }}",
+            "pipeline_id": "${{ github.run_id }}",
+            "overall_score": ${{ needs.overall-score.outputs.overall_score }},
+            "sealed_artifacts": {}
+          }
+          
+          # Hash each step artifact
+          evidence_dir = Path(".evidence")
+          if evidence_dir.exists():
+              for artifact_file in sorted(evidence_dir.glob("step-*.json")):
+                  with open(artifact_file, 'rb') as f:
+                      content = f.read()
+                      file_hash = hashlib.sha256(content).hexdigest()
+                      
+                  artifact_name = artifact_file.name
+                  core_hash_data["sealed_artifacts"][artifact_name] = {
+                      "hash": file_hash,
+                      "path": str(artifact_file)
+                  }
+                  
+                  print(f"✅ Sealed {artifact_name}: {file_hash[:16]}...")
+          
+          # Save core hash
+          with open(".governance/core-hash.json", 'w') as f:
+              json.dump(core_hash_data, f, indent=2)
+          
+          print(f"✅ Core hash generated with {len(core_hash_data['sealed_artifacts'])} artifacts")
+          EOF
+
+      - name: Record sealing event
+        run: |
+          mkdir -p .governance
+          
+          jq -n \
+            --arg event_type "CORE_HASH_SEALED" \
+            --arg timestamp "${{ github.event.head_commit.timestamp }}" \
+            --arg pipeline_id "${{ github.run_id }}" \
+            --arg overall_score "${{ needs.overall-score.outputs.overall_score }}" \
+            '{
+              event_type: $event_type,
+              timestamp: $timestamp,
+              metadata: {
+                pipeline_id: $pipeline_id,
+                overall_score: ($overall_score | tonumber)
+              }
+            }' >> .governance/event-stream.jsonl
+
+      - name: Upload sealed artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: sealed-artifacts
+          path: |
+            .governance/core-hash.json
+            .governance/event-stream.jsonl
+          retention-days: 365
+
+      - name: Summary
+        run: |
+          echo "========================================"
+          echo "🔐 Sealing Complete (Era-1 Partial)"
+          echo "========================================"
+          echo "Overall Score: ${{ needs.overall-score.outputs.overall_score }}/100"
+          echo "Artifacts Sealed: 10"
+          echo "Core Hash: .governance/core-hash.json"
+          echo "Event Stream: .governance/event-stream.jsonl"
+          echo "========================================"
+          echo "✅ Ready for merge"

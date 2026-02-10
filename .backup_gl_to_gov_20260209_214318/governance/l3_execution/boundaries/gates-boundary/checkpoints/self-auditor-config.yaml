@@ -1,0 +1,237 @@
+# SelfAuditor 配置文件
+# GL治理執行層 - 自我審計組件配置
+
+# 審計配置
+audit:
+  # 審計間隔（小時）
+  interval_hours: 24
+  
+  # 最大審計天數
+  max_audit_days: 7
+  
+  # 趨勢分析窗口（天）
+  trend_analysis_window_days: 30
+  
+  # CRITICAL級別違規閾值
+  critical_violation_threshold: 5
+
+# 證據覆蓋率配置
+evidence_coverage:
+  # 最小覆蓋率（0.0-1.0）
+  threshold: 0.90
+  
+  # 證據鏈接格式
+  link_format: "[證據: path/to/file.yaml#L10-L15]"
+  
+  # 證據類型
+  allowed_types:
+    - source_file
+    - contract_reference
+    - validation_output
+    - reasoning_trace
+    - test_result
+    - screenshot
+    - log_file
+
+# 禁止短語配置
+forbidden_phrases:
+  # CRITICAL級別 - 絕對禁止
+  - phrase: "100% 完成"
+    severity: CRITICAL
+    replacement: "基於已實現的功能集"
+    reason: "避免絕對化表述，應基於實際實現情況"
+    
+  - phrase: "完全符合"
+    severity: CRITICAL
+    replacement: "在[方面]與標準對齊"
+    reason: "避免絕對化表述，應具體說明符合的方面"
+    
+  - phrase: "已全部實現"
+    severity: CRITICAL
+    replacement: "已實現[具體功能列表]"
+    reason: "避免絕對化表述，應列出已實現的功能"
+    
+  - phrase: "一定"
+    severity: CRITICAL
+    replacement: "建議/可能/根據分析"
+    reason: "避免絕對化表述"
+    
+  - phrase: "必須"
+    severity: CRITICAL
+    replacement: "應該/建議/推薦"
+    reason: "避免強制性表述，除非有明確要求"
+
+  # HIGH級別 - 需要避免
+  - phrase: "應該是"
+    severity: HIGH
+    replacement: "根據[證據]，建議"
+    reason: "避免不確定表述，應基於證據"
+    
+  - phrase: "可能是"
+    severity: HIGH
+    replacement: "基於[證據]，推測"
+    reason: "避免不確定表述，應基於證據"
+    
+  - phrase: "我認為"
+    severity: HIGH
+    replacement: "基於[證據]，分析表明"
+    reason: "避免主觀表述，應基於證據分析"
+    
+  - phrase: "顯然"
+    severity: HIGH
+    replacement: "根據[證據]"
+    reason: "避免主觀判斷，應基於證據"
+    
+  - phrase: "毫無疑問"
+    severity: HIGH
+    replacement: "根據證據分析"
+    reason: "避免絕對化表述"
+
+  # MEDIUM級別 - 需要改進
+  - phrase: "應該"
+    severity: MEDIUM
+    replacement: "建議"
+    reason: "使用更精確的建議性語言"
+    
+  - phrase: "可能"
+    severity: MEDIUM
+    replacement: "可能存在"
+    reason: "使用更精確的不確定性語言"
+    
+  - phrase: "或許"
+    severity: MEDIUM
+    replacement: "可能"
+    reason: "使用更精確的不確定性語言"
+    
+  - phrase: "大概"
+    severity: MEDIUM
+    replacement: "大約"
+    reason: "使用更精確的數量詞"
+
+  # LOW級別 - 語言風格
+  - phrase: "似乎"
+    severity: LOW
+    replacement: "看起來"
+    reason: "使用更客觀的表述"
+    
+  - phrase: "看起來"
+    severity: LOW
+    replacement: "從分析來看"
+    reason: "強調基於分析的結論"
+    
+  - phrase: "感覺"
+    severity: LOW
+    replacement: "分析顯示"
+    reason: "強調基於分析的結果"
+
+# 違規分類配置
+violation_classification:
+  CRITICAL:
+    # 立即阻斷操作
+    action: BLOCK
+    # 通知級別
+    notification: IMMEDIATE
+    # 自動修復
+    auto_remediation: false
+    
+  HIGH:
+    # 警告但允許操作
+    action: WARNING
+    # 通知級別
+    notification: URGENT
+    # 自動修復
+    auto_remediation: false
+    
+  MEDIUM:
+    # 記錄警告
+    action: LOG
+    # 通知級別
+    notification: NORMAL
+    # 自動修復
+    auto_remediation: true
+    
+  LOW:
+    # 僅記錄
+    action: INFO
+    # 通知級別
+    notification: LOW
+    # 自動修復
+    auto_remediation: true
+
+# 自動修復配置
+auto_remediation:
+  # 是否啟用
+  enabled: true
+  
+  # 修復規則
+  rules:
+    - violation_type: "FORBIDDEN_PHRASES"
+      severity: MEDIUM
+      action: "replace_phrase"
+      enabled: true
+      
+    - violation_type: "FORBIDDEN_PHRASES"
+      severity: LOW
+      action: "replace_phrase"
+      enabled: true
+
+# 報告配置
+reporting:
+  # 報告格式
+  formats:
+    - JSON
+    - MARKDOWN
+    - HTML
+  
+  # 報告保留天數
+  retention_days: 30
+  
+  # 是否自動生成趨勢報告
+  auto_trend_report: true
+  
+  # 趨勢報告間隔（天）
+  trend_report_interval: 7
+
+# 告警配置
+alerting:
+  # 是否啟用告警
+  enabled: true
+  
+  # 告警規則
+  rules:
+    - name: "critical_violations_detected"
+      condition: "violations.CRITICAL > 0"
+      severity: CRITICAL
+      message: "檢測到CRITICAL級別治理違規"
+      
+    - name: "high_violation_threshold"
+      condition: "violations.HIGH >= 5"
+      severity: HIGH
+      message: "HIGH級別違規超過閾值"
+      
+    - name: "compliance_rate_low"
+      condition: "compliance_rate < 0.80"
+      severity: HIGH
+      message: "治理合規率低於80%"
+      
+    - name: "trend_increasing"
+      condition: "trend == 'INCREASING'"
+      severity: MEDIUM
+      message: "違規趨勢上升"
+
+# 日誌配置
+logging:
+  # 日誌級別
+  level: INFO
+  
+  # 日誌格式
+  format: "[%(asctime)s] [%(levelname)s] %(message)s"
+  
+  # 日誌文件路徑
+  file: "ecosystem/logs/audit-logs/auditor.log"
+  
+  # 最大日誌文件大小（MB）
+  max_size_mb: 100
+  
+  # 保留日誌文件數量
+  backup_count: 5

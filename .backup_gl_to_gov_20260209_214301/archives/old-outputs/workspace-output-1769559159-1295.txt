@@ -1,0 +1,24 @@
+file-organizer-system
+├── client
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── tsconfig.node.json
+├── package-lock.json
+├── package.json
+└── server
+    ├── package.json
+    ├── src
+    │   ├── index.ts
+    │   ├── routes
+    │   │   ├── files.ts
+    │   │   ├── rules.ts
+    │   │   └── tasks.ts
+    │   ├── services
+    │   │   ├── classification.ts
+    │   │   ├── database.ts
+    │   │   └── organization.ts
+    │   └── types
+    │       └── index.ts
+    └── tsconfig.json
+
+7 directories, 15 files

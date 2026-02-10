@@ -1,0 +1,262 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: naming.gl/v1
+kind: PlatformNamingContract
+metadata:
+  name: gov-platforms
+  version: "1.0.0"
+  description: "GL 平台命名契約 - 定義所有平台級資源的命名規範"
+  category: platform
+  compliance:
+    - gov-enterprise-architecture
+    - gov-boundary-enforcement
+    - gov-meta-specifications
+
+spec:
+  namingConvention:
+    format: "gl.{domain}.{capability}-platform"
+    delimiter: "."
+    suffix: "-platform"
+    prefix: "gl"
+
+  platforms:
+    # AI 平台
+    - id: gl.ai.gpt-platform
+      source: openai-gpt-platform
+      domain: ai
+      capability: gpt
+
+    - id: gl.ai.claude-platform
+      source: claude-enterprise-platform
+      domain: ai
+      capability: claude
+
+    - id: gl.ai.deepseek-platform
+      source: deepseek-moe-platform
+      domain: ai
+      capability: deepseek
+
+    - id: gl.ai.blackbox-platform
+      source: blackbox-ai-platform
+      domain: ai
+      capability: blackbox
+
+    - id: gl.ai.agent-platform
+      source: maxagent-platform
+      domain: ai
+      capability: agent
+
+    - id: gl.ai.unified-platform
+      source: allinone-ai-platform
+      domain: ai
+      capability: unified
+
+    - id: gl.ai.realtime-platform
+      source: grok-realtime-platform
+      domain: ai
+      capability: realtime
+
+    - id: gl.ai.slack-platform
+      source: slack-ai-platform
+      domain: ai
+      capability: slack
+
+    - id: gl.ai.csdn-platform
+      source: csdn-ai-platform
+      domain: ai
+      capability: csdn
+
+    # 運行時平台
+    - id: gl.runtime.core-platform
+      source: gov-runtime-platform
+      domain: runtime
+      capability: core
+
+    - id: gl.runtime.sync-platform
+      source: gov-esync-platform
+      domain: runtime
+      capability: sync
+
+    - id: gl.runtime.quantum-platform
+      source: quantum-platform
+      domain: runtime
+      capability: quantum
+
+    - id: gl.runtime.build-platform
+      source: earthly-build-platform
+      domain: runtime
+      capability: build
+
+    # 開發工具平台
+    - id: gl.dev.iac-platform
+      source: terraform-iac-platform
+      domain: dev
+      capability: iac
+
+    - id: gl.dev.review-platform
+      source: code-review-platform
+      domain: dev
+      capability: review
+
+    # IDE 平台
+    - id: gl.ide.copilot-platform
+      source: github-copilot-platform
+      domain: ide
+      capability: copilot
+
+    - id: gl.ide.vscode-platform
+      source: vscode-extensions-platform
+      domain: ide
+      capability: vscode
+
+    - id: gl.ide.replit-platform
+      source: replit-ghostwriter-platform
+      domain: ide
+      capability: replit
+
+    - id: gl.ide.preview-platform
+      source: codepen-preview-platform
+      domain: ide
+      capability: preview
+
+    # MCP 平台
+    - id: gl.mcp.multimodal-platform
+      source: multimodal-mcp-platform
+      domain: mcp
+      capability: multimodal
+
+    - id: gl.mcp.cursor-platform
+      source: cursor-ai-platform
+      domain: mcp
+      capability: cursor
+
+    # API 平台
+    - id: gl.api.supabase-platform
+      source: supabase-api-platform
+      domain: api
+      capability: supabase
+
+    - id: gl.api.notion-platform
+      source: notion-api-platform
+      domain: api
+      capability: notion
+
+    # 資料庫平台
+    - id: gl.db.planetscale-platform
+      source: planetscale-db-platform
+      domain: db
+      capability: planetscale
+
+    # 設計平台
+    - id: gl.design.figma-platform
+      source: figma-design-platform
+      domain: design
+      capability: figma
+
+    - id: gl.design.sketch-platform
+      source: sketch-components-platform
+      domain: design
+      capability: sketch
+
+    # 文檔平台
+    - id: gl.doc.gitbook-platform
+      source: gitbook-md-platform
+      domain: doc
+      capability: gitbook
+
+    # 邊緣平台
+    - id: gl.edge.vercel-platform
+      source: vercel-edge-platform
+      domain: edge
+      capability: vercel
+
+    # Web 平台
+    - id: gl.web.wix-platform
+      source: wix-vibe-platform
+      domain: web
+      capability: wix
+
+    # 教育平台
+    - id: gl.edu.sololearn-platform
+      source: sololearn-platform
+      domain: edu
+      capability: sololearn
+
+    # Bot 平台
+    - id: gl.bot.poe-platform
+      source: poe-bot-platform
+      domain: bot
+      capability: poe
+
+  validationRules:
+    - rule: "GL-PD-001"
+      name: "命名格式驗證"
+      description: "平台名稱必須符合 gl.{domain}.{capability}-platform 格式"
+      level: "CRITICAL"
+    
+    - rule: "GL-PD-002"
+      name: "單一位置驗證"
+      description: "平台不能在多個位置重複存在"
+      level: "CRITICAL"
+    
+    - rule: "GL-PD-003"
+      name: "契約註冊驗證"
+      description: "契約平台必須在 gov-platforms.yaml 中註冊"
+      level: "HIGH"
+
+  domains:
+    ai:
+      description: "AI 模型與代理平台"
+      platforms: 9
+    
+    runtime:
+      description: "執行時與核心運算平台"
+      platforms: 4
+    
+    dev:
+      description: "開發工具與工程平台"
+      platforms: 2
+    
+    ide:
+      description: "編輯器與 IDE 插件平台"
+      platforms: 4
+    
+    mcp:
+      description: "多模態與控制平台"
+      platforms: 2
+    
+    api:
+      description: "API 接入與整合平台"
+      platforms: 2
+    
+    db:
+      description: "資料庫與儲存平台"
+      platforms: 1
+    
+    design:
+      description: "設計工具平台"
+      platforms: 2
+    
+    doc:
+      description: "文件與知識平台"
+      platforms: 1
+    
+    edge:
+      description: "邊緣部署平台"
+      platforms: 1
+    
+    web:
+      description: "前端與網站平台"
+      platforms: 1
+    
+    edu:
+      description: "教育與學習平台"
+      platforms: 1
+    
+    bot:
+      description: "對話與聊天代理平台"
+      platforms: 1

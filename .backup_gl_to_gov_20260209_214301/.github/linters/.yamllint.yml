@@ -1,0 +1,99 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+---
+# yamllint configuration for MachineNativeOps
+# Used by Super-Linter
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+extends: default
+
+rules:
+  # Disable document-start requirement
+  document-start: disable
+  
+  # Allow longer lines (300 characters)
+  line-length:
+    max: 300
+    level: warning
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+  
+  # Disable trailing spaces check (can be auto-fixed)
+  trailing-spaces: disable
+  
+  # Disable new-line-at-end-of-file (can be auto-fixed)
+  new-line-at-end-of-file: disable
+  
+  # Disable key-duplicates (some config files may have intentional duplicates)
+  key-duplicates: disable
+  
+  # Allow truthy values - expanded list
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no', 'on', 'off', 'TRUE', 'FALSE', 'True', 'False']
+    check-keys: false
+  
+  # Disable indentation check - too many false positives with various YAML styles
+  indentation: disable
+  
+  # Disable comments indentation check
+  comments-indentation: disable
+  
+  # Comments settings
+  comments:
+    require-starting-space: false
+    min-spaces-from-content: 1
+  
+  # Disable braces check - allow flexible spacing
+  braces: disable
+  
+  # Disable brackets check - allow flexible spacing
+  brackets: disable
+  
+  # Disable colons check - allow flexible spacing
+  colons: disable
+  
+  # Disable commas check - allow flexible spacing
+  commas: disable
+  
+  # Empty lines - allow more flexibility
+  empty-lines:
+    max: 5
+    max-start: 2
+    max-end: 2
+  
+  # Disable empty values check
+  empty-values: disable
+  
+  # Disable octal values check
+  octal-values: disable
+
+# Ignore certain directories and template files
+ignore:
+  - "node_modules/"
+  - ".git/"
+  - "dist/"
+  - "build/"
+  - "archive/"
+  - "vendor/"
+  - "**/templates/**/*.yaml"
+  - "**/templates/**/*.yml"
+  - "**/*-template.yaml"
+  - "**/*-template.yml"
+  - "**/*.template.yaml"
+  - "**/*.template.yml"
+  - "**/gac-templates/**/*.yaml"
+  - "**/gac-templates/**/*.yml"
+  - "ns-root/namespaces-sdk/templates/"
+  - "etl-pipeline/root-policy/naming-convention/"
+  - "etl-pipeline/root-policy/naming-convention/**"
+  - "etl-pipeline/root-policy/naming-convention/*.yaml"
+  - "workspace/src/templates/"
+  - "workspace/src/governance/00-vision-strategy/gac-templates/"

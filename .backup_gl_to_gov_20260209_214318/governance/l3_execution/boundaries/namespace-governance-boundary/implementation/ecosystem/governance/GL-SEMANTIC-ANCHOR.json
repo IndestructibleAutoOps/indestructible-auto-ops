@@ -1,0 +1,120 @@
+{
+  "governance": {
+    "charter": "GL Ecosystem Governance",
+    "version": "1.0.0",
+    "activation": "active",
+    "scope": "ecosystem"
+  },
+  "semantic": {
+    "anchor": {
+      "id": "GL-ECOSYSTEM-SEMANTIC-ANCHOR",
+      "namespace": "ecosystem.governance",
+      "description": "Semantic anchor for ecosystem governance artifacts",
+      "parent_anchor": "GL-ROOT-SEMANTIC-ANCHOR"
+    },
+    "hierarchy": {
+      "levels": [
+        "ecosystem",
+        "domain",
+        "module",
+        "component",
+        "artifact"
+      ]
+    },
+    "domains": {
+      "coordination": {
+        "gl_layer": "GL10-29",
+        "description": "Cross-platform coordination services",
+        "modules": [
+          "service-discovery",
+          "api-gateway",
+          "communication",
+          "data-synchronization"
+        ]
+      },
+      "platform-templates": {
+        "gl_layer": "GL10-29",
+        "description": "Platform instantiation templates",
+        "modules": [
+          "core-template",
+          "cloud-template",
+          "on-premise-template"
+        ]
+      },
+      "registry": {
+        "gl_layer": "GL10-29",
+        "description": "Registry management",
+        "modules": [
+          "platform-registry",
+          "service-registry",
+          "data-registry",
+          "naming"
+        ]
+      },
+      "tools": {
+        "gl_layer": "GL10-29",
+        "description": "Management and operational tools",
+        "modules": [
+          "registry",
+          "audit",
+          "fact-verification",
+          "gov-markers"
+        ]
+      },
+      "enforcers": {
+        "gl_layer": "GL30-49",
+        "description": "Governance enforcement layer",
+        "modules": [
+          "governance_enforcer",
+          "self_auditor",
+          "pipeline_integration"
+        ]
+      },
+      "hooks": {
+        "gl_layer": "GL30-49",
+        "description": "Execution hooks",
+        "modules": [
+          "pre_execution",
+          "post_execution"
+        ]
+      },
+      "governance": {
+        "gl_layer": "GL90-99",
+        "description": "Meta-governance and specifications",
+        "modules": [
+          "meta-governance",
+          "contracts",
+          "governance-manifest",
+          "governance-monitor"
+        ]
+      }
+    },
+    "metadata": {
+      "required": [
+        "@GL-governed",
+        "@GL-layer",
+        "@GL-semantic",
+        "@GL-audit-trail"
+      ],
+      "enforcement_level": "strict"
+    }
+  },
+  "enforcement": {
+    "strict": true,
+    "continue_on_error": false,
+    "validation_required": true,
+    "audit_trail_required": true
+  },
+  "versioning": {
+    "semantic_version": "1.0.0",
+    "meta_governance_version": "1.0.0",
+    "last_updated": "2026-02-02T00:00:00Z"
+  },
+  "audit": {
+    "created_at": "2026-02-02T00:00:00Z",
+    "created_by": "GL Cloud Agent",
+    "governance_applied": true,
+    "files_governed": 100,
+    "compliance_rate": 0.952
+  }
+}

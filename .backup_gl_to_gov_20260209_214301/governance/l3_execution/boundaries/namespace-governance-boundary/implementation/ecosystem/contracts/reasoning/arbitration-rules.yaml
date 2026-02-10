@@ -1,0 +1,127 @@
+# 仲裁規則定義
+# Arbitration Rules Definition
+#
+# @GL-governed
+# @GL-layer: GL40-49
+# @GL-semantic: reasoning-arbitration-contract
+
+version: "1.0.0"
+metadata:
+  name: "MNGA Arbitration Rules"
+  description: "雙路檢索仲裁規則定義"
+  created: "2026-02-03"
+  updated: "2026-02-03"
+
+# 仲裁策略
+arbitration_strategy:
+  default_mode: "weighted_merge"  # weighted_merge, internal_first, external_first, consensus
+  confidence_threshold: 0.7
+  max_results: 10
+  timeout_ms: 5000
+
+# 權重配置
+weights:
+  internal:
+    base_weight: 0.6
+    modifiers:
+      - condition: "query_type == 'code'"
+        weight_delta: 0.2
+      - condition: "query_type == 'architecture'"
+        weight_delta: 0.15
+      - condition: "has_local_context"
+        weight_delta: 0.1
+  
+  external:
+    base_weight: 0.4
+    modifiers:
+      - condition: "query_type == 'api'"
+        weight_delta: 0.2
+      - condition: "query_type == 'library'"
+        weight_delta: 0.15
+      - condition: "query_contains_version"
+        weight_delta: 0.1
+
+# 衝突解決規則
+conflict_resolution:
+  rules:
+    - name: "security_priority"
+      description: "安全相關內容優先使用內部源"
+      condition: "topic == 'security'"
+      action: "prefer_internal"
+      priority: 100
+    
+    - name: "api_external"
+      description: "API 文檔優先使用外部官方源"
+      condition: "topic == 'api' && external_source.is_official"
+      action: "prefer_external"
+      priority: 90
+    
+    - name: "code_internal"
+      description: "代碼實現優先使用內部源"
+      condition: "topic == 'implementation'"
+      action: "prefer_internal"
+      priority: 85
+    
+    - name: "freshness"
+      description: "時效性內容優先使用外部源"
+      condition: "query_requires_freshness"
+      action: "prefer_external"
+      priority: 80
+    
+    - name: "consensus"
+      description: "當兩個源一致時提高置信度"
+      condition: "internal_result.similar_to(external_result)"
+      action: "boost_confidence"
+      confidence_boost: 0.2
+      priority: 70
+
+# 質量門檻
+quality_gates:
+  minimum_confidence: 0.5
+  minimum_evidence_count: 1
+  require_source_citation: true
+  max_staleness_days: 30
+
+# 結果合併策略
+merge_strategy:
+  deduplication:
+    enabled: true
+    similarity_threshold: 0.85
+  
+  ranking:
+    factors:
+      - name: "relevance"
+        weight: 0.4
+      - name: "confidence"
+        weight: 0.3
+      - name: "freshness"
+        weight: 0.15
+      - name: "source_trust"
+        weight: 0.15
+  
+  enrichment:
+    add_source_metadata: true
+    add_confidence_scores: true
+    add_evidence_links: true
+
+# 回退策略
+fallback:
+  on_internal_failure:
+    action: "use_external_only"
+    log_level: "warn"
+  
+  on_external_failure:
+    action: "use_internal_only"
+    log_level: "warn"
+  
+  on_both_failure:
+    action: "return_empty_with_error"
+    log_level: "error"
+
+# 學習配置
+learning:
+  enabled: true
+  feedback_collection: true
+  auto_weight_adjustment: true
+  adjustment_rate: 0.05
+  min_feedback_count: 10

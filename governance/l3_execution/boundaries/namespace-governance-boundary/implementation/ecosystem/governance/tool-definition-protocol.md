@@ -1,0 +1,307 @@
+# Tool Definition Protocol (工具定义协定)
+
+## 📋 Overview
+
+This protocol establishes mandatory standards for tool creation, registration, and validation within the Machine Native Governance Architecture (MNGA) ecosystem.
+
+### Purpose
+- Prevent creation of undefined tools
+- Ensure all tools are registered before use
+- Establish semantic boundaries for tool naming
+- Enforce evidence generation requirements
+- Maintain governance layer integrity
+
+### Scope
+- Applies to all Python scripts, executables, and automation tools
+- Applies to all reporting and documentation tools
+- Applies to all governance enforcement tools
+- Applies to all testing and validation tools
+
+---
+
+## 🔴 Mandatory Requirements
+
+### 1. Pre-Creation Registration (强制预注册)
+
+**Rule**: All tools MUST be registered in `tools-registry.yaml` before creation.
+
+**Violation Classification**: CRITICAL
+
+**Implementation**:
+```yaml
+# Before creating any tool, it must be registered in tools-registry.yaml
+registered_tools:
+  - name: "tool_name.py"
+    category: "core|governance|execution|reporting"
+    era: "0|1|2|..."  # Applicable Era(s)
+    purpose: "Clear, concise description"
+    input_schema: "file|api|command_line|..."
+    output_schema: "json|yaml|markdown|..."
+    evidence_generation: "true|false"
+    immutable: "true|false"
+```
+
+### 2. Tool Naming Standards (工具命名规范)
+
+**Rule**: Tool names must comply with GL naming conventions.
+
+**Prohibited Patterns**:
+- ❌ `*compliance*checker*` - Self-referential compliance tools
+- ❌ `*completion*report*` - False completion claims
+- ❌ `*final*summary*` - Final state claims before Era sealing
+- ❌ `*phase*tracker*` - Undefined phase tracking
+
+**Required Patterns**:
+- ✅ `era-<n>-*` - Era-appropriate naming
+- ✅ `gl-<domain>-<capability>-*` - GL semantic naming
+- ✅ `-tool.py` or `-script.py` - Consistent suffixes
+
+**Examples**:
+```
+✅ era-1-evidence-validator.py
+✅ gov-governance-validation-tool.py
+✅ semantic-validator.py
+❌ reporting_compliance_checker.py
+❌ fix_enforce_rules_final.py
+```
+
+### 3. Evidence Generation (证据生成强制要求)
+
+**Rule**: All tools MUST generate evidence and record events.
+
+**Minimum Requirements**:
+- Evidence file in `.evidence/` directory
+- SHA256 hash for all artifacts
+- Event record in `event-stream.jsonl`
+- UUID-based artifact tracking
+- Timestamp with ISO8601 format
+
+**Evidence Structure**:
+```json
+{
+  "artifact_id": "uuid-v4",
+  "timestamp": "iso8601",
+  "tool_name": "tool_name.py",
+  "era": "1",
+  "layer": "Operational",
+  "input_hash": "sha256",
+  "output_hash": "sha256",
+  "result": {
+    "status": "success|failure",
+    "metrics": {...},
+    "violations": [...]
+  }
+}
+```
+
+### 4. Era Applicability (Era 适用性)
+
+**Rule**: Tools must declare their Era applicability and comply with Era constraints.
+
+**Era Constraints**:
+- **Era-0**: Core infrastructure, immutable foundation
+- **Era-1**: Evidence generation, bootstrap phase
+- **Era-2**: Semantic closure, governance layer
+- **Era-3**: Immutable core sealed, mature governance
+
+**Compliance Requirements**:
+- Tools must not claim capabilities beyond their Era
+- Reports must accurately reflect Era limitations
+- Prohibited: "100% compliance" before Era sealing
+
+---
+
+## 📊 Tool Classification (工具分类标准)
+
+### Category 1: Core Tools (核心工具)
+- **Definition**: Foundation infrastructure, immutable
+- **Era Applicability**: Era-0, Era-1
+- **Examples**: `enforce.py`, `enforce.rules.py`
+- **Requirements**:
+  - Immutable: `true`
+  - Evidence Generation: `true`
+  - Must be in source control from Era-0
+
+### Category 2: Governance Tools (治理工具)
+- **Definition**: Governance layer enforcement and validation
+- **Era Applicability**: Era-1, Era-2+
+- **Examples**: `governance_enforcer.py`, `semantic_validator.py`
+- **Requirements**:
+  - Must be registered before use
+  - Must have governance contract references
+  - Evidence Generation: `true`
+
+### Category 3: Execution Tools (执行工具)
+- **Definition**: Operational layer automation and execution
+- **Era Applicability**: Era-1+
+- **Examples**: `fix_scripts`, `automation_tools`
+- **Requirements**:
+  - Must comply with GL naming conventions
+  - Must generate evidence
+  - Must be idempotent where possible
+
+### Category 4: Reporting Tools (报告工具)
+- **Definition**: Documentation and report generation
+- **Era Applicability**: Era-1+
+- **Examples**: Report generators, documentation tools
+- **Requirements**:
+  - Must comply with reporting governance spec
+  - Must NOT use final-state language (before Era sealing)
+  - Must pass semantic validation
+  - Must be registered
+
+---
+
+## 🔍 Validation Requirements (验证要求)
+
+### 1. Unit Testing
+- All tools must have unit tests
+- Tests must verify evidence generation
+- Tests must verify compliance with this protocol
+
+### 2. Tool Verification
+Run before tool integration:
+```bash
+python ecosystem/tools/verify_tool_definition.py <tool_name>
+```
+
+### 3. Semantic Validation
+Reports generated by tools must pass semantic validation:
+```bash
+python ecosystem/tools/semantic_validator.py <report_file>
+```
+
+### 4. Evidence Verification
+Evidence files must be verifiable:
+```bash
+python ecosystem/tools/verify_evidence.py <evidence_file>
+```
+
+---
+
+## 🚫 Prohibited Actions (禁止行为)
+
+### CRITICAL Violations
+
+1. **Creating Undefined Tools**
+   - Creating tools without registration
+   - Using tools not in `tools-registry.yaml`
+   - Penalty: Tool deletion + Event recording
+
+2. **False Governance Claims**
+   - Claiming "100% compliance" before Era sealing
+   - Claiming "maturity" in bootstrap phases
+   - Penalty: Report rejection + Correction required
+
+3. **Architecture Fiction**
+   - Describing single-file scripts as "platforms"
+   - Creating undefined "phases" or "stages"
+   - Penalty: Report reclassification + Warning
+
+### HIGH Violations
+
+4. **Naming Violations**
+   - Using prohibited patterns (compliance_checker, final_summary)
+   - Not using GL naming conventions
+   - Penalty: Tool renaming required
+
+5. **Missing Evidence**
+   - Tools not generating evidence
+   - Not recording events in event-stream
+   - Penalty: Tool disabled until fixed
+
+---
+
+## 📋 Registration Process (注册流程)
+
+### Step 1: Pre-Registration
+```bash
+# 1. Create entry in tools-registry.yaml
+# 2. Define all required fields
+# 3. Get approval for governance tools
+```
+
+### Step 2: Tool Creation
+```bash
+# 1. Create tool file following naming standards
+# 2. Implement evidence generation
+# 3. Implement event recording
+# 4. Create unit tests
+```
+
+### Step 3: Verification
+```bash
+# 1. Run tool definition verification
+python ecosystem/tools/verify_tool_definition.py <tool_name>
+
+# 2. Run unit tests
+pytest ecosystem/tests/<tool_name>_test.py
+
+# 3. Generate evidence and verify
+python <tool_name> --dry-run
+```
+
+### Step 4: Integration
+```bash
+# 1. Add to git repository
+# 2. Update documentation
+# 3. Register in CI/CD pipeline
+```
+
+---
+
+## 📊 Compliance Metrics (合规度量)
+
+### Tool Compliance Score
+```python
+score = (
+    registration_status * 30 +      # Registered?
+    naming_compliance * 20 +        # Naming correct?
+    evidence_generation * 30 +      # Evidence generated?
+    era_applicability * 10 +        # Era-appropriate?
+    semantic_compliance * 10        # Reports validated?
+)
+# Score range: 0-100
+# Required: >= 80 for integration
+# Required: >= 90 for production
+```
+
+### Violation Classification
+- **CRITICAL**: Registration, Governance Claims, Architecture Fiction
+- **HIGH**: Naming, Evidence, Era Violations
+- **MEDIUM**: Documentation, Testing Gaps
+- **LOW**: Minor Style Issues
+
+---
+
+## 🔗 Related Specifications
+
+This protocol integrates with:
+- `reporting-governance-spec.md` - Report generation constraints
+- `enforcement.rules.yaml` - Governance enforcement rules
+- `tools-registry.yaml` - Tool registration database
+- `core-governance-spec.yaml` - Core governance definitions
+- `subsystem-binding-spec.yaml` - Subsystem integration rules
+
+---
+
+## 📝 Change Log
+
+- **v1.0.0** (Era-1): Initial protocol definition
+  - Established mandatory registration
+  - Defined tool classification
+  - Set evidence generation requirements
+  - Listed prohibited actions
+
+---
+
+## 📞 Contact and Approval
+
+For questions or approvals regarding this protocol:
+- Governance Layer: `ecosystem/governance/`
+- Core Team: MachineNativeOps/machine-native-ops
+- Era Context: Current Era is 1 (Evidence-Native Bootstrap)
+
+**Effective Date**: 2026-02-03
+**Applicable Era**: Era-1+
+**Review Schedule**: Quarterly or on Era transition

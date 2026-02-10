@@ -1,0 +1,19 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+skeleton_id: "knowledge-base"
+
+mapping:
+  knowledge_structure: "docs/mndoc/"
+  knowledge_graph: "docs/knowledge-graph.yaml"
+  knowledge_health: "docs/knowledge-health-report.yaml"
+  query_engine: "core/modules/mind_matrix/"
+  update_script: "automation/self_awareness_report.py"

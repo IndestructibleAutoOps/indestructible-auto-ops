@@ -1,0 +1,20 @@
+$schema: "https://indestructibleautoops.com/schemas/meta-schema/v1.json"
+$id: "https://indestructibleautoops.com/schemas/l1/naming-convention/kubernetes-resource-naming/v1.json"
+apiVersion: "indestructibleautoops.com/v1"
+kind: "NamingConvention"
+metadata:
+  name: "kubernetes-resource-naming"
+  namespace: "platform-prod"
+  labels:
+    indestructibleautoops.com/layer: "L1"
+    indestructibleautoops.com/criticality: "high"
+spec:
+  rules:
+    - id: "NC-001"
+      severity: "high"
+      description: "Kubernetes resources must use DNS-1123 label (kebab-case)."
+      extensions:
+        appliesTo:
+          apiGroups: ["*"]
+          resources: ["*"]
+        pattern: "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"

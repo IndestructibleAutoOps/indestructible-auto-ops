@@ -1,0 +1,40 @@
+{
+  "test_id": "93fd78e2-1b36-4e72-ab4e-7f99a870b8bc",
+  "decision_id": "606a6349-bffc-4c8c-97e5-f2c7fc1a81b8",
+  "timestamp": "2026-02-05T02:01:14.734108+00:00",
+  "era": 1,
+  "tests": {
+    "decision_replayability": {
+      "status": "passed",
+      "output_match": true,
+      "trace_match": false,
+      "duration_ms": 0.104
+    },
+    "engine_version_drift": {
+      "status": "passed",
+      "semantic_drift": false,
+      "drift_magnitude": 0.0,
+      "duration_ms": 0.085
+    },
+    "input_order_independence": {
+      "status": "passed",
+      "order_independence": true,
+      "duration_ms": 0.07200000000000001
+    },
+    "canonical_hash_determinism": {
+      "status": "passed",
+      "determinism": 1.0,
+      "iterations": 100,
+      "duration_ms": 0.751
+    }
+  },
+  "summary": {
+    "total_tests": 4,
+    "passed": 4,
+    "failed": 0,
+    "overall_status": "passed",
+    "total_duration_ms": 1.012
+  },
+  "canonical_hash": "sha256:e20e7c94c5e16146f5784b2330d0d36bef7a8584dcc7ee0105ca02fa9033586c",
+  "signature": null
+}

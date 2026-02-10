@@ -1,0 +1,118 @@
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: checkov-config
+# @GL-audit-trail: ../governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+framework:
+  - kubernetes
+  - terraform
+  - cloudformation
+  - dockerfile
+  - github_actions
+
+compact: false
+compact-json: false
+directory: .
+external-checks-dir: []
+external-checks-git: []
+file: []
+
+check:
+  - CKV_K8S_1  # Ensure API server has audit log configuration
+  - CKV_K8S_2  # Ensure API server has admission control enabled
+  - CKV_K8S_5  # Ensure CPU requests are set
+  - CKV_K8S_6  # Ensure CPU limits are set
+  - CKV_K8S_7  # Ensure memory requests are set
+  - CKV_K8S_8  # Ensure memory limits are set
+  - CKV_K8S_14 # Ensure no wildcard selectors
+  - CKV_K8S_20 # Ensure default namespace is not used
+  - CKV_K8S_30 # Ensure privileged containers are not used
+  - CKV_K8S_31 # Ensure containers don't run as root
+  - CKV_K8S_37 # Ensure liveness probe is configured
+  - CKV_K8S_38 # Ensure readiness probe is configured
+  - CKV_K8S_42 # Ensure default service account is not used
+  - CKV2_K8S_1 # Ensure immutable file systems
+  - CKV2_K8S_5 # Ensure resource limits are set
+
+  - CKV_GIT_1  # Ensure branch protection rules are set
+  - CKV_GIT_2  # Ensure code owners file is present
+  - CKV_GIT_3  # Ensure commits are signed
+  - CKV_GIT_4  # Ensure pull requests require approval
+  - CKV_GIT_5  # Ensure status checks are required
+
+  - CKV_DOCKER_1  # Ensure base image is not latest
+  - CKV_DOCKER_2  # Ensure healthcheck is configured
+  - CKV_DOCKER_3  # Ensure user is not root
+  - CKV_DOCKER_5  # Ensure sudo is not used
+  - CKV_DOCKER_6  # Ensure add is not used
+  - CKV_DOCKER_7  # Ensure update is used instead of add
+
+  - CKV_TF_1     # Ensure Terraform version is pinned
+  - CKV_TF_2     # Ensure S3 bucket has encryption
+  - CKV_TF_3     # Ensure S3 bucket has versioning
+  - CKV_TF_10    # Ensure VPC flow logs are enabled
+  - CKV_TF_12    # Ensure no default security groups
+  - CKV_TF_13    # Ensure security groups have descriptions
+  - CKV_TF_14    # Ensure security groups restrict inbound traffic
+  - CKV_TF_15    # Ensure security groups restrict outbound traffic
+
+skip-check:
+  - CKV_K8S_21  # Skip readiness timeout check (customized per service)
+
+soft-fail: false
+soft-fail-on:
+  - CKV_K8S_20  # Soft fail on namespace check for legacy deployments
+
+hard-fail-on:
+  - CKV_K8S_30  # Hard fail on privileged containers
+  - CKV_K8S_31  # Hard fail on root user
+  - CKV2_K8S_1  # Hard fail on file system immutability
+
+# Naming convention checks (custom policy integration)
+custom-policy:
+  - .config/checkov/custom-naming-policy.yaml
+
+# Naming pattern validation
+custom-checks:
+  - .config/checkov/naming-checks.py
+
+# Output configuration
+output:
+  - cli
+  - json
+  - sarif
+  - junit
+
+quiet: false
+framework: all
+evaluate-variables: true
+secrets-scan-file-type: []
+severity:
+  - CRITICAL
+  - HIGH
+  - MEDIUM
+
+# Compliance frameworks
+compliance:
+  - cis-kubernetes-v1.5.1
+  - cis-aws-foundations-level-1
+  - pci-dss-3.2.1
+  - nist-800-53
+
+# Remediation settings
+remediation:
+  remediate-plan: true
+
+# Module download settings
+download-external-modules: true
+external-modules-download-path: .external-modules
+
+# Context configuration
+context:
+  - .

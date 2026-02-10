@@ -1,0 +1,676 @@
+{
+  "scan_id": "SCAN-20260207T184756",
+  "timestamp": "2026-02-07T18:47:56.742608+00:00",
+  "scanner_version": "2.0.0",
+  "mode": "autonomous",
+  "repo_root": "/home/ubuntu/indestructible-auto-ops",
+  "total_modules": 18,
+  "modules": [
+    {
+      "module_id": "governance-anchor",
+      "directory": "responsibility-governance-anchor-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-governance-anchor-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 7"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: b52e431844aa80bc..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['baseline', 'event-model', 'hash-boundary', 'semantic-model', 'verification']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "b52e431844aa80bca84469eade8a431cd18aa88169c3b6a7c58246a68e0a58bd",
+      "file_count": 7
+    },
+    {
+      "module_id": "governance-execution",
+      "directory": "responsibility-governance-execution-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-governance-execution-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 10"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 4534a84960a30a5b..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['consistency', 'engines', 'gates', 'pipelines', 'registry', 'reports']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "4534a84960a30a5bf7b10e6502e28c876fcf42fec885a35922bc999d8ee7915f",
+      "file_count": 10
+    },
+    {
+      "module_id": "governance-sensing",
+      "directory": "responsibility-governance-sensing-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-governance-sensing-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 8"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 925e8ec8658485ea..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['report']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "925e8ec8658485ea11c58b37e9e5164e79e43136dc60f116f4f2bd4d520b61d3",
+      "file_count": 8
+    },
+    {
+      "module_id": "governance-specs",
+      "directory": "responsibility-governance-specs-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-governance-specs-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 30"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: b0b48d842708214d..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['audit', 'kernel', 'specs', 'workflows']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "b0b48d842708214dbd7ccb21b03c031f94435658af10762bdc22a77b65f4f640",
+      "file_count": 30
+    },
+    {
+      "module_id": "global-policy",
+      "directory": "responsibility-global-policy-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-global-policy-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 3"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 32f79c1c0dd71f25..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['config', 'policies']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "32f79c1c0dd71f25e25f8a74ab524df59ae93f6793bbec10c70c0e384455d798",
+      "file_count": 3
+    },
+    {
+      "module_id": "gov-layers",
+      "directory": "responsibility-gov-layers-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-gov-layers-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 1556"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 443a84725f81c745..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['gl00-09-enterprise-architecture', 'gl10-19-platform-services', 'gl20-29-data-processing', 'gl30-49-runtime-execution', 'gl50-59-monitoring-observability', 'gl60-80-governance-compliance', 'gl81-83-extension-services', 'gl90-99-meta-specifications']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "443a84725f81c745fa382d645213051b6d19bf4321061f601548fcddc6325328",
+      "file_count": 1556
+    },
+    {
+      "module_id": "gap-analysis",
+      "directory": "responsibility-gap-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-gap-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 2"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 104298ec5c4c1052..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['analysis']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "104298ec5c4c10525e50df9685f8bb5dfc5efff51c75724e4c730ba9d81feace",
+      "file_count": 2
+    },
+    {
+      "module_id": "gates",
+      "directory": "responsibility-gates-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-gates-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 4"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 002c397750323733..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['checkpoints', 'core']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "002c3977503237330920b5b9f346473cb6eede1fdecb50020ced3848823c0202",
+      "file_count": 4
+    },
+    {
+      "module_id": "gateway",
+      "directory": "responsibility-gateway-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-gateway-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 2"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 956bd96afd00dc5c..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['routing']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "956bd96afd00dc5c8925dd8673be2728c2fce62fe0a03a33459e4754dc8d73a4",
+      "file_count": 2
+    },
+    {
+      "module_id": "guardrails",
+      "directory": "responsibility-guardrails-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-guardrails-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 2"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 8f557ee4970756f4..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['safety']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "8f557ee4970756f486114538c9708f6659393fa108877bc8374d92721af45e35",
+      "file_count": 2
+    },
+    {
+      "module_id": "gcp",
+      "directory": "responsibility-gcp-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-gcp-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 2"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: f3660b1001645fbc..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['infrastructure']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "f3660b1001645fbc39fb98927fe26dc4524b7cf7ef3cd08f428518bae68f05cf",
+      "file_count": 2
+    },
+    {
+      "module_id": "generation",
+      "directory": "responsibility-generation-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-generation-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 2"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 8c3f6ad201169aeb..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['core']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "8c3f6ad201169aeb89f6f4615c6eb960e1e9c3aada8ab178c1d1c6e3e89a8a99",
+      "file_count": 2
+    },
+    {
+      "module_id": "quantum-stack",
+      "directory": "responsibility-quantum-stack-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-quantum-stack-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 3"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: b3bc03036ede18a6..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['contracts', 'layers']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "b3bc03036ede18a63172ebdf57790f1013929c16b9fa6919b5d99bbd1efa7d69",
+      "file_count": 3
+    },
+    {
+      "module_id": "group",
+      "directory": "responsibility-group-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-group-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 2"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 5f845dcb9f0987c4..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['monitoring']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "5f845dcb9f0987c4f64126c600dcb6ee670520a8473278b01fb4280da60dce67",
+      "file_count": 2
+    },
+    {
+      "module_id": "observability-grafana",
+      "directory": "responsibility-observability-grafana-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-observability-grafana-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 8"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 79c39d313bcdcfcb..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['core']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "79c39d313bcdcfcb3c3f3473e966703bc6268737ea613692a095cfafb6aca945",
+      "file_count": 8
+    },
+    {
+      "module_id": "mnga-architecture",
+      "directory": "responsibility-mnga-architecture-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-mnga-architecture-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 3"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 4beb79d2dbaa2117..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['core']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "4beb79d2dbaa21172eaae9ca91a0e73f96feef9ee6ea9988326c3cb1c54fbdfb",
+      "file_count": 3
+    },
+    {
+      "module_id": "mno-operations",
+      "directory": "responsibility-mno-operations-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-mno-operations-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 3"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 349445302153509a..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['core', 'operations']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "349445302153509acc213c789a6bfc5d398dcc0c9fb1f0c1b6118ebb51aa4af8",
+      "file_count": 3
+    },
+    {
+      "module_id": "namespace-governance",
+      "directory": "responsibility-namespace-governance-boundary",
+      "checks": [
+        {
+          "check": "directory_exists",
+          "passed": true,
+          "detail": "存在: responsibility-namespace-governance-boundary"
+        },
+        {
+          "check": "readme_exists",
+          "passed": true,
+          "detail": "README.md 存在"
+        },
+        {
+          "check": "has_content",
+          "passed": true,
+          "detail": "檔案數: 744"
+        },
+        {
+          "check": "hash_computed",
+          "passed": true,
+          "detail": "SHA-256: 6da29342ddab3dec..."
+        },
+        {
+          "check": "subdirectory_structure",
+          "passed": true,
+          "detail": "子目錄: ['analysis', 'cicd', 'closed-loop', 'core', 'cross-era', 'docs', 'era-1', 'era-2', 'era-3', 'implementation', 'monitoring', 'policies', 'registry', 'reports', 'schemas', 'specs', 'tools']"
+        }
+      ],
+      "status": "PASS",
+      "hash": "6da29342ddab3decacc780ceafa889e35706d1f7b711200ec5eda1e5905f1189",
+      "file_count": 744
+    }
+  ],
+  "summary": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "warnings": 0,
+    "pass_rate": 100.0,
+    "violations_count": 1,
+    "drift_count": 5,
+    "remediation_count": 0,
+    "scan_completed_at": "2026-02-07T18:47:56.988654+00:00"
+  },
+  "violations": [
+    {
+      "boundary": "responsibility-governance-specs-boundary",
+      "file": "responsibility-governance-specs-boundary/kernel/self_governance.py",
+      "pattern": "\\.py$",
+      "reason": "specs 邊界禁止存放執行腳本或暫存檔",
+      "severity": "HIGH",
+      "action": "move_to_correct_boundary"
+    }
+  ],
+  "drift_detected": [
+    {
+      "module_id": "governance-anchor",
+      "previous_hash": "446358e6d4eeb45b...",
+      "current_hash": "b52e431844aa80bc...",
+      "detected_at": "2026-02-07T18:47:56.988538+00:00"
+    },
+    {
+      "module_id": "governance-execution",
+      "previous_hash": "4798f043d9c76ae9...",
+      "current_hash": "4534a84960a30a5b...",
+      "detected_at": "2026-02-07T18:47:56.988572+00:00"
+    },
+    {
+      "module_id": "governance-sensing",
+      "previous_hash": "195137acc4b2b0d0...",
+      "current_hash": "925e8ec8658485ea...",
+      "detected_at": "2026-02-07T18:47:56.988580+00:00"
+    },
+    {
+      "module_id": "governance-specs",
+      "previous_hash": "627d2921d1bbd183...",
+      "current_hash": "b0b48d842708214d...",
+      "detected_at": "2026-02-07T18:47:56.988591+00:00"
+    },
+    {
+      "module_id": "gov-layers",
+      "previous_hash": "169a87e5b779831c...",
+      "current_hash": "443a84725f81c745...",
+      "detected_at": "2026-02-07T18:47:56.988608+00:00"
+    }
+  ],
+  "remediation_required": []
+}

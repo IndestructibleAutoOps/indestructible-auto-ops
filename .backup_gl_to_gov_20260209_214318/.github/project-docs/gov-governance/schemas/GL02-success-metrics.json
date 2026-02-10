@@ -1,0 +1,334 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-core
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL90_99-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "id": "GL02-SUCCESS-METRICS",
+  "gllevel": "GL02",
+  "name": "GL02-success-metrics",
+  "semanticanchor": "GL00",
+  "createdat": "2025-01-21T00:00:00Z",
+  "immutable": true,
+  "content": {
+    "metrics": [
+      {
+        "id": "M001",
+        "name": "Strategic Alignment Score",
+        "category": "strategic",
+        "description": "Percentage of initiatives aligned with organizational strategic objectives",
+        "owner": "CTO",
+        "target": 90,
+        "current": 75,
+        "unit": "percentage",
+        "frequency": "Quarterly",
+        "trend": "improving",
+        "thresholds": {
+          "critical": 60,
+          "warning": 75,
+          "success": 90
+        }
+      },
+      {
+        "id": "M002",
+        "name": "Time-to-Market",
+        "category": "strategic",
+        "description": "Average time from concept to production deployment",
+        "owner": "COO",
+        "target": 60,
+        "current": 85,
+        "unit": "days",
+        "frequency": "Monthly",
+        "trend": "stable",
+        "thresholds": {
+          "critical": 120,
+          "warning": 90,
+          "success": 60
+        }
+      },
+      {
+        "id": "M003",
+        "name": "Customer Satisfaction Score",
+        "category": "customer",
+        "description": "Net Promoter Score measuring customer loyalty and satisfaction",
+        "owner": "CMO",
+        "target": 50,
+        "current": 42,
+        "unit": "NPS",
+        "frequency": "Monthly",
+        "trend": "improving",
+        "thresholds": {
+          "critical": 20,
+          "warning": 40,
+          "success": 50
+        }
+      },
+      {
+        "id": "M004",
+        "name": "System Reliability",
+        "category": "operational",
+        "description": "Percentage of system uptime and availability",
+        "owner": "CTO",
+        "target": 99.9,
+        "current": 99.7,
+        "unit": "percentage",
+        "frequency": "Daily",
+        "trend": "stable",
+        "thresholds": {
+          "critical": 99.0,
+          "warning": 99.5,
+          "success": 99.9
+        }
+      },
+      {
+        "id": "M005",
+        "name": "Deployment Frequency",
+        "category": "operational",
+        "description": "Number of production deployments per week",
+        "owner": "DevOps Lead",
+        "target": 10,
+        "current": 6,
+        "unit": "deployments/week",
+        "frequency": "Weekly",
+        "trend": "improving",
+        "thresholds": {
+          "critical": 2,
+          "warning": 5,
+          "success": 10
+        }
+      },
+      {
+        "id": "M006",
+        "name": "Change Failure Rate",
+        "category": "quality",
+        "description": "Percentage of deployments requiring hotfix or rollback",
+        "owner": "QA Lead",
+        "target": 5,
+        "current": 12,
+        "unit": "percentage",
+        "frequency": "Monthly",
+        "trend": "degrading",
+        "thresholds": {
+          "critical": 15,
+          "warning": 10,
+          "success": 5
+        }
+      },
+      {
+        "id": "M007",
+        "name": "Technical Debt Ratio",
+        "category": "technical",
+        "description": "Ratio of effort spent on fixing legacy code vs new features",
+        "owner": "Chief Architect",
+        "target": 20,
+        "current": 35,
+        "unit": "percentage",
+        "frequency": "Quarterly",
+        "trend": "degrading",
+        "thresholds": {
+          "critical": 50,
+          "warning": 35,
+          "success": 20
+        }
+      },
+      {
+        "id": "M008",
+        "name": "Employee Engagement Score",
+        "category": "talent",
+        "description": "Employee satisfaction and engagement index",
+        "owner": "CHRO",
+        "target": 85,
+        "current": 78,
+        "unit": "index",
+        "frequency": "Quarterly",
+        "trend": "stable",
+        "thresholds": {
+          "critical": 60,
+          "warning": 75,
+          "success": 85
+        }
+      },
+      {
+        "id": "M009",
+        "name": "Security Incidents",
+        "category": "security",
+        "description": "Number of security incidents per quarter",
+        "owner": "CISO",
+        "target": 0,
+        "current": 2,
+        "unit": "incidents",
+        "frequency": "Quarterly",
+        "trend": "stable",
+        "thresholds": {
+          "critical": 5,
+          "warning": 2,
+          "success": 0
+        }
+      },
+      {
+        "id": "M010",
+        "name": "Compliance Score",
+        "category": "compliance",
+        "description": "Percentage of compliance requirements met",
+        "owner": "Compliance Officer",
+        "target": 100,
+        "current": 95,
+        "unit": "percentage",
+        "frequency": "Quarterly",
+        "trend": "improving",
+        "thresholds": {
+          "critical": 80,
+          "warning": 90,
+          "success": 100
+        }
+      },
+      {
+        "id": "M011",
+        "name": "Budget Variance",
+        "category": "financial",
+        "description": "Deviation from planned budget as percentage",
+        "owner": "CFO",
+        "target": 5,
+        "current": 8,
+        "unit": "percentage",
+        "frequency": "Monthly",
+        "trend": "stable",
+        "thresholds": {
+          "critical": 15,
+          "warning": 10,
+          "success": 5
+        }
+      },
+      {
+        "id": "M012",
+        "name": "Innovation Index",
+        "category": "innovation",
+        "description": "Number of new features and capabilities delivered per quarter",
+        "owner": "CTO",
+        "target": 15,
+        "current": 10,
+        "unit": "features/quarter",
+        "frequency": "Quarterly",
+        "trend": "improving",
+        "thresholds": {
+          "critical": 5,
+          "warning": 10,
+          "success": 15
+        }
+      }
+    ],
+    "dashboard": {
+      "widgets": [
+        {
+          "id": "W001",
+          "title": "Executive Overview",
+          "metrics": [
+            "M001",
+            "M003",
+            "M004",
+            "M010"
+          ],
+          "type": "summary"
+        },
+        {
+          "id": "W002",
+          "title": "Delivery Performance",
+          "metrics": [
+            "M002",
+            "M005",
+            "M006",
+            "M007"
+          ],
+          "type": "trend"
+        },
+        {
+          "id": "W003",
+          "title": "Risk Monitoring",
+          "metrics": [
+            "M009",
+            "M010",
+            "M011"
+          ],
+          "type": "alert"
+        },
+        {
+          "id": "W004",
+          "title": "Organizational Health",
+          "metrics": [
+            "M008",
+            "M012"
+          ],
+          "type": "scorecard"
+        }
+      ]
+    },
+    "metadata": {
+      "version": "1.0",
+      "lastUpdated": "2025-01-21",
+      "framework": "Balanced Scorecard",
+      "reviewCycle": "Monthly",
+      "automatedCollection": true,
+      "alertThresholds": "dynamic"
+    },
+    "categories": [
+      {
+        "id": "customer",
+        "name": "Customer",
+        "description": "Customer metrics"
+      },
+      {
+        "id": "strategic",
+        "name": "Strategic",
+        "description": "Strategic metrics"
+      },
+      {
+        "id": "security",
+        "name": "Security",
+        "description": "Security metrics"
+      },
+      {
+        "id": "compliance",
+        "name": "Compliance",
+        "description": "Compliance metrics"
+      },
+      {
+        "id": "financial",
+        "name": "Financial",
+        "description": "Financial metrics"
+      },
+      {
+        "id": "innovation",
+        "name": "Innovation",
+        "description": "Innovation metrics"
+      },
+      {
+        "id": "quality",
+        "name": "Quality",
+        "description": "Quality metrics"
+      },
+      {
+        "id": "talent",
+        "name": "Talent",
+        "description": "Talent metrics"
+      },
+      {
+        "id": "technical",
+        "name": "Technical",
+        "description": "Technical metrics"
+      },
+      {
+        "id": "operational",
+        "name": "Operational",
+        "description": "Operational metrics"
+      }
+    ]
+  },
+  "type": "success-metrics",
+  "version": "1.0.0",
+  "created_at": "2026-01-22T01:52:33.451635"
+}

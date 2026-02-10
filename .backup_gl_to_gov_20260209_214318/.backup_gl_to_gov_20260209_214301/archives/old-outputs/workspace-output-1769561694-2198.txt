@@ -1,0 +1,30 @@
+apiVersion: governance.machinenativeops.io/v1
+kind: GLRootSemanticAnchor
+metadata:
+  name: gl-root-semantic-anchor
+  version: "1.0.0"
+  created: "2026-01-21"
+  status: active
+# GL Root Semantic Anchor - The single source of truth for all governance
+# All child nodes must map back to this root anchor
+semantic_root:
+  urn: "urn:machinenativeops:gl:root:semantic-anchor:1.0.0"
+  type: "ROOT_ANCHOR"
+  description: "The unified semantic root for all GL governance layers"
+governance_baseline:
+  charter_version: "GL-UNIFIED-1.0"
+  activated_date: "2026-01-21"
+  activation_status: "ACTIVE"
+layer_hierarchy:
+  - id: "GL00-09"
+    name: "Strategic Layer"
+    semantic_urn: "urn:machinenativeops:gl:strategic:layer:1.0.0"
+    parent_urn: "urn:machinenativeops:gl:root:semantic-anchor:1.0.0"
+  - id: "GL20-29"
+    name: "Data Science / Data Access Layer"
+    semantic_urn: "urn:machinenativeops:gl:data:layer:1.0.0"
+    parent_urn: "urn:machinenativeops:gl:root:semantic-anchor:1.0.0"
+    sub_layers:
+      - id: "GL20"
+        name: "Data Ingestion"
+        path: "ingestion"

@@ -1,0 +1,83 @@
+diff --git a/code_quality_issues.json b/code_quality_issues.json
+index 5781c83..05f2282 100644
+--- a/code_quality_issues.json
++++ b/code_quality_issues.json
+@@ -1,11 +1,11 @@
+ {
+   "summary": {
+-    "files_analyzed": 1149,
+-    "lines_analyzed": 376574,
+-    "total_issues": 959,
++    "files_analyzed": 1151,
++    "lines_analyzed": 377189,
++    "total_issues": 966,
+     "high_severity": 0,
+     "medium_severity": 0,
+-    "low_severity": 871
++    "low_severity": 872
+   },
+   "issues": [
+     {
+@@ -6912,6 +6912,62 @@
+       "solution": "Reorder imports to follow PEP 8",
+       "fixed_code": null
+     },
++    {
++      "severity": "低",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:9",
++      "issue_type": "代碼風格",
++      "description": "Import order: Standard library imports should come before third party imports",
++      "solution": "Reorder imports to follow PEP 8",
++      "fixed_code": null
++    },
++    {
++      "severity": "高危",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:6",
++      "issue_type": "安全漏洞",
++      "description": "高危：使用 eval() 可能導致代碼注入漏洞",
++      "solution": "使用更安全的替代方案",
++      "fixed_code": null
++    },
++    {
++      "severity": "高危",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:120",
++      "issue_type": "安全漏洞",
++      "description": "高危：使用 eval() 可能導致代碼注入漏洞",
++      "solution": "使用更安全的替代方案",
++      "fixed_code": null
++    },
++    {
++      "severity": "高危",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:128",
++      "issue_type": "安全漏洞",
++      "description": "高危：使用 eval() 可能導致代碼注入漏洞",
++      "solution": "使用更安全的替代方案",
++      "fixed_code": null
++    },
++    {
++      "severity": "高危",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:157",
++      "issue_type": "安全漏洞",
++      "description": "高危：使用 eval() 可能導致代碼注入漏洞",
++      "solution": "使用更安全的替代方案",
++      "fixed_code": null
++    },
++    {
++      "severity": "高危",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:159",
++      "issue_type": "安全漏洞",
++      "description": "高危：使用 eval() 可能導致代碼注入漏洞",
++      "solution": "使用更安全的替代方案",
++      "fixed_code": null
++    },
++    {
++      "severity": "高危",
++      "location": "/workspace/machine-native-ops/workspace/tools/security_audit.py:160",
++      "issue_type": "安全漏洞",
++      "description": "高危：使用 eval() 可能導致代碼注入漏洞",
++      "solution": "使用更安全的替代方案",
++      "fixed_code": null
++    },
+     {
+       "severity": "低",
+       "location": "/workspace/machine-native-ops/workspace/tools/ai-auto-fix.py:21",

@@ -1,0 +1,6 @@
+GL Unified Charter Activated - Pre-Commit Validation (Strict Mode)
+Validating GL compliance for changed files...
+❌ Error: engine/.governance/audit-reports/global-governance-audit-report.json missing @GL-governed marker - Commit blocked
+❌ Error: engine/.governance/audit-reports/global-governance-audit-report.json missing @GL-layer marker - Commit blocked
+❌ Error: engine/.governance/audit-reports/global-governance-audit-report.json missing @GL-semantic marker - Commit blocked
+❌ GL Pre-Commit Validation Failed: 3 violations found

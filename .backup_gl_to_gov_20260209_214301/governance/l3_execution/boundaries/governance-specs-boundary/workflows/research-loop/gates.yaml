@@ -1,0 +1,41 @@
+# @GL-governed
+# @GL-layer: GL60-80
+# @GL-semantic: research-loop.gates
+# @GL-audit-trail: governance/workflows/research-loop/references/registry.yaml
+version: 1
+gates:
+  - id: EGRESS-EXTERNAL-ISOLATION
+    description: Controlled external domain research via isolation import.
+    mode: isolation_import_only
+    required_approvers:
+      - "@RepoSafetyOfficer"
+      - "@IndestructibleAutoOps"
+    allowed_when:
+      - "gap_list.severity >= high"
+      - "internal_refs.count < minimum_required"
+    constraints:
+      - "no_direct_egress_from_closed_zone"
+      - "route_to_isolation_zone"
+      - "no_credentials_export"
+      - "no_pii"
+      - "results_must_be_snapshotted_to_refpack"
+      - "import_pipeline: refpack-import-v1"
+      - "timeboxed_minutes: 30"
+      - "evidence_required: true"
+
+  - id: EGRESS-GLOBAL-ISOLATION
+    description: Global open research via isolation import.
+    mode: isolation_import_only
+    required_approvers:
+      - "@RepoSafetyOfficer"
+    allowed_when:
+      - "external_stage_completed == true"
+      - "gap_list.contains('unknown-unknowns') == true"
+    constraints:
+      - "no_direct_egress_from_closed_zone"
+      - "route_to_isolation_zone"
+      - "results_must_be_snapshotted_to_refpack"
+      - "multi_source_cross_validation_required: true"
+      - "import_pipeline: refpack-import-v1"
+      - "timeboxed_minutes: 15"
+      - "evidence_required: true"

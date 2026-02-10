@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:indestructibleautoops:schema:data-contract:v1",
+  "title": "Data Contract",
+  "type": "object",
+  "required": ["name", "version", "schemas", "compatibility", "lineage"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "pattern": "^v\\d+\\.\\d+\\.\\d+$" },
+    "schemas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "format", "contentHash"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "format": { "type": "string", "enum": ["jsonschema", "avro", "protobuf"] },
+          "contentHash": { "type": "string", "pattern": "^[a-f0-9]{64,128}$" }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["backward", "forward", "full"] }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["emitEvents", "requiredFields"],
+      "properties": {
+        "emitEvents": { "type": "boolean", "const": true },
+        "requiredFields": { "type": "array", "minItems": 5, "items": { "type": "string" } }
+      }
+    }
+  }
+}

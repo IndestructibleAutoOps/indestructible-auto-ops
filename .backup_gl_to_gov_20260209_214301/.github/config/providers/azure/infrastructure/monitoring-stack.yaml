@@ -1,0 +1,484 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# Azure Infrastructure Configuration - Monitoring Stack
+# Provider: Azure (Microsoft Azure)
+# Components: Prometheus, Grafana, AlertManager, Thanos
+
+apiVersion: "v1"
+kind: "Config"
+metadata:
+  name: "azure-monitoring-stack"
+  provider: "azure"
+  subscription_id: "{{ .Values.azure.subscriptionId }}"
+  resource_group: "{{ .Values.azure.resourceGroup }}"
+  location: "eastus"
+
+# Azure Kubernetes Service (AKS) Configuration
+aks_cluster:
+  name: "monitoring-aks"
+  location: "eastus"
+  version: "1.28.3"
+  dns_prefix: "monitoring-aks"
+  
+  # Network Profile
+  network_profile:
+    network_plugin: "azure"
+    network_policy: "calico"
+    pod_cidr: "10.244.0.0/16"
+    service_cidr: "10.0.0.0/16"
+    dns_service_ip: "10.0.0.10"
+    docker_bridge_cidr: "172.17.0.1/16"
+  
+  # Node Pools
+  node_pools:
+    system:
+      name: "systempool"
+      count: 3
+      vm_size: "Standard_D4s_v3"
+      os_type: "Linux"
+      os_disk_size_gb: 128
+      os_disk_type: "Premium_LRS"
+      enable_auto_scaling: true
+      min_count: 2
+      max_count: 10
+      max_pods: 110
+      vnet_subnet_id: "{{ .Values.azure.vnet.subnetId }}"
+      mode: "System"
+      taints: []
+      labels:
+        role: "system"
+    
+    prometheus:
+      name: "prometheusprompt"
+      count: 2
+      vm_size: "Standard_E4s_v3"
+      os_type: "Linux"
+      os_disk_size_gb: 256
+      os_disk_type: "Premium_LRS"
+      enable_auto_scaling: true
+      min_count: 1
+      max_count: 5
+      max_pods: 110
+      vnet_subnet_id: "{{ .Values.azure.vnet.subnetId }}"
+      mode: "User"
+      taints:
+        - key: "dedicated"
+          value: "prometheus"
+          effect: "NoSchedule"
+      labels:
+        component: "prometheus"
+    
+    grafana:
+      name: "grafanapool"
+      count: 2
+      vm_size: "Standard_D2s_v3"
+      os_type: "Linux"
+      os_disk_size_gb: 128
+      os_disk_type: "Premium_LRS"
+      enable_auto_scaling: true
+      min_count: 1
+      max_count: 3
+      max_pods: 110
+      vnet_subnet_id: "{{ .Values.azure.vnet.subnetId }}"
+      mode: "User"
+      taints: []
+      labels:
+        component: "grafana"
+
+# Virtual Network Configuration
+vnet:
+  name: "monitoring-vnet"
+  address_space:
+    - "10.0.0.0/16"
+  
+  subnets:
+    - name: "aks-subnet"
+      address_prefix: "10.0.1.0/24"
+      service_endpoints:
+        - "Microsoft.Storage"
+        - "Microsoft.KeyVault"
+      delegation:
+        service_name: "Microsoft.ContainerService/managedClusters"
+        name: "aks-delegation"
+    
+    - name: "prometheus-subnet"
+      address_prefix: "10.0.2.0/24"
+      service_endpoints:
+        - "Microsoft.Storage"
+    
+    - name: "grafana-subnet"
+      address_prefix: "10.0.3.0/24"
+      service_endpoints:
+        - "Microsoft.Storage"
+  
+  peering:
+    enabled: false
+    peer_vnet_id: ""
+
+# Azure Monitor Integration
+azure_monitor:
+  enabled: true
+  workspace_name: "monitoring-workspace"
+  location: "eastus"
+  
+  # Metrics Configuration
+  metrics:
+    collection_interval: "PT1M"
+    namespace: "Microsoft.ContainerService/managedClusters"
+    
+    # Alerts
+    alerts:
+      - name: "PrometheusHighCPU"
+        description: "Prometheus CPU utilization exceeds 80%"
+        severity: "Warning"
+        enabled: true
+        frequency: "PT5M"
+        window: "PT15M"
+        criteria:
+          metric_name: "cpuUsagePercentage"
+          operator: "GreaterThan"
+          threshold: 80
+          aggregation: "Average"
+        action_groups:
+          - "{{ .Values.azure_monitor.actionGroups.slack }}"
+          - "{{ .Values.azure_monitor.actionGroups.email }}"
+      
+      - name: "GrafanaPodDown"
+        description: "Grafana pods are not running"
+        severity: "Critical"
+        enabled: true
+        frequency: "PT1M"
+        window: "PT5M"
+        criteria:
+          metric_name: "podCount"
+          operator: "LessThan"
+          threshold: 1
+          aggregation: "Minimum"
+        action_groups:
+          - "{{ .Values.azure_monitor.actionGroups.pagerduty }}"
+
+# Application Insights
+application_insights:
+  enabled: true
+  name: "monitoring-app-insights"
+  location: "eastus"
+  application_type: "other"
+  sampling_percentage: 100
+  
+  # Telemetry Configuration
+  telemetry:
+    live_metrics:
+      enabled: true
+    dependency_tracking:
+      enabled: true
+    performance_counters:
+      enabled: true
+
+# Prometheus Configuration
+prometheus:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "1000m"
+      memory: "2Gi"
+    limits:
+      cpu: "4000m"
+      memory: "8Gi"
+  persistence:
+    enabled: true
+    storage_class: "managed-premium"
+    size: "100Gi"
+  retention:
+    days: 15
+    size: "50GB"
+  service:
+    type: "LoadBalancer"
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  service_account:
+    create: true
+    annotations:
+      azure.workload.identity/use: "true"
+  env:
+    AZURE_SUBSCRIPTION_ID: "{{ .Values.azure.subscriptionId }}"
+    AZURE_RESOURCE_GROUP: "{{ .Values.azure.resourceGroup }}"
+
+# Grafana Configuration
+grafana:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+  persistence:
+    enabled: true
+    storage_class: "managed-premium"
+    size: "10Gi"
+  service:
+    type: "LoadBalancer"
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "false"
+  service_account:
+    create: true
+    annotations:
+      azure.workload.identity/use: "true"
+  admin_password: "{{ .Values.grafana.adminPassword }}"
+  env:
+    GF_SERVER_ROOT_URL: "https://grafana.example.com"
+    GF_INSTALL_PLUGINS: "grafana-piechart-panel,grafana-worldmap-panel"
+
+# AlertManager Configuration
+alertmanager:
+  enabled: true
+  replicas: 2
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  persistence:
+    enabled: true
+    storage_class: "managed-premium"
+    size: "5Gi"
+  config:
+    global:
+      resolve_timeout: "5m"
+    route:
+      group_by: ["alertname", "cluster", "service"]
+      group_wait: "30s"
+      group_interval: "5m"
+      repeat_interval: "12h"
+      receiver: "default"
+    receivers:
+      - name: "default"
+      - name: "slack"
+        slack_configs:
+          - api_url: "{{ .Values.alertmanager.slack.webhook_url }}"
+            channel: "#alerts"
+            title: "[{{ .Status }}] {{ .CommonLabels.alertname }}"
+            text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+      - name: "pagerduty"
+        pagerduty_configs:
+          - service_key: "{{ .Values.alertmanager.pagerduty.service_key }}"
+            description: "{{ .CommonLabels.alertname }}"
+
+# Thanos Configuration (Long-term Storage)
+thanos:
+  enabled: true
+  replicas: 2
+  objstore_config:
+    type: "azure"
+    config:
+      storage_account: "{{ .Values.thanos.azure.storageAccount }}"
+      container: "thanos"
+  query:
+    replicas: 2
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+      limits:
+        cpu: "2000m"
+        memory: "4Gi"
+  store:
+    enabled: true
+    persistence:
+      enabled: true
+      storage_class: "managed-premium"
+      size: "50Gi"
+  compactor:
+    enabled: true
+    retention:
+      raw: "90d"
+      resolution_5m: "180d"
+      resolution_1h: "365d"
+    resources:
+      requests:
+        cpu: "1000m"
+        memory: "2Gi"
+      limits:
+        cpu: "4000m"
+        memory: "8Gi"
+
+# Azure Storage Account Configuration
+storage_account:
+  name: "{{ .Values.thanos.azure.storageAccount }}"
+  location: "eastus"
+  kind: "StorageV2"
+  sku:
+    name: "Standard_RAGRS"
+    tier: "Standard"
+  
+  access_tier: "Hot"
+  enable_https_traffic_only: true
+  minimum_tls_version: "TLS1_2"
+  allow_blob_public_access: false
+  
+  # Containers
+  containers:
+    - name: "thanos"
+      public_access: "Disabled"
+      versioning_enabled: true
+  
+  # Lifecycle Management
+  lifecycle_management:
+    rules:
+      - name: "DeleteOldObjects"
+        enabled: true
+        filter:
+          prefix: "raw/"
+          blob_types: "blockBlob"
+        actions:
+          delete_after_days: 365
+        filters:
+          blob_index_match:
+            - name: "ContentLastModifiedDate"
+              operator: "LessThan"
+              value: "365.00:00:00"
+
+# Azure Key Vault Configuration
+key_vault:
+  name: "monitoring-keyvault"
+  location: "eastus"
+  sku:
+    name: "standard"
+    family: "A"
+  
+  tenant_id: "{{ .Values.azure.tenantId }}"
+  enable_soft_delete: true
+  enable_purge_protection: true
+  enable_rbac_authorization: true
+  
+  # Secrets
+  secrets:
+    - name: "grafana-admin-password"
+      value: "{{ .Values.grafana.adminPassword }}"
+      content_type: "password"
+      attributes:
+        enabled: true
+    
+    - name: "prometheus-admin-password"
+      value: "{{ .Values.prometheus.adminPassword }}"
+      content_type: "password"
+      attributes:
+        enabled: true
+
+# Managed Identities
+managed_identities:
+  prometheus:
+    name: "prometheus-identity"
+    location: "eastus"
+    role_assignments:
+      - role: "Storage Blob Data Contributor"
+        scope: "/subscriptions/{{ .Values.azure.subscriptionId }}/resourceGroups/{{ .Values.azure.resourceGroup }}/providers/Microsoft.Storage/storageAccounts/{{ .Values.thanos.azure.storageAccount }}"
+      - role: "Monitoring Reader"
+        scope: "/subscriptions/{{ .Values.azure.subscriptionId }}"
+  
+  grafana:
+    name: "grafana-identity"
+    location: "eastus"
+    role_assignments:
+      - role: "Storage Blob Data Reader"
+        scope: "/subscriptions/{{ .Values.azure.subscriptionId }}/resourceGroups/{{ .Values.azure.resourceGroup }}/providers/Microsoft.Storage/storageAccounts/{{ .Values.thanos.azure.storageAccount }}"
+      - role: "Monitoring Reader"
+        scope: "/subscriptions/{{ .Values.azure.subscriptionId }}"
+
+# Log Analytics Workspace
+log_analytics:
+  name: "monitoring-log-analytics"
+  location: "eastus"
+  sku:
+    name: "PerGB2018"
+  retention_in_days: 30
+  
+  # Data Sources
+  data_sources:
+    - name: "aks-container-logs"
+      kind: "ContainerInsights"
+      location: "eastus"
+      resource_id: "/subscriptions/{{ .Values.azure.subscriptionId }}/resourceGroups/{{ .Values.azure.resourceGroup }}/providers/Microsoft.ContainerService/managedClusters/monitoring-aks"
+
+# Action Groups
+action_groups:
+  slack:
+    name: "monitoring-slack-alerts"
+    short_name: "slack-alerts"
+    enabled: true
+    group_short_name: "slack"
+    email_receivers: []
+    sms_receivers: []
+    webhook_receivers:
+      - name: "slack-webhook"
+        service_uri: "{{ .Values.alertmanager.slack.webhook_url }}"
+  
+  email:
+    name: "monitoring-email-alerts"
+    short_name: "email-alerts"
+    enabled: true
+    group_short_name: "email"
+    email_receivers:
+      - name: "DevOps Team"
+        email_address: "{{ .Values.azure_monitor.emailRecipients.devops }}"
+        use_common_alert_schema: true
+    sms_receivers: []
+    webhook_receivers: []
+  
+  pagerduty:
+    name: "monitoring-pagerduty-alerts"
+    short_name: "pagerduty-alerts"
+    enabled: true
+    group_short_name: "pagerduty"
+    email_receivers: []
+    sms_receivers: []
+    webhook_receivers:
+      - name: "pagerduty-webhook"
+        service_uri: "{{ .Values.alertmanager.pagerduty.webhook_url }}"
+
+# Network Policies
+network_policies:
+  enabled: true
+  policies:
+    - name: "allow-prometheus-scrape"
+      selector:
+        match_labels:
+          app: "prometheus"
+      ingress:
+        - from:
+          - namespace_selector: {}
+          ports:
+            - protocol: "TCP"
+              port: 9090
+    
+    - name: "allow-grafana-access"
+      selector:
+        match_labels:
+          app: "grafana"
+      ingress:
+        - from:
+          - namespace_selector: {}
+          ports:
+            - protocol: "TCP"
+              port: 3000
+
+# Diagnostic Settings
+diagnostic_settings:
+  enabled: true
+  settings:
+    - name: "aks-diagnostics"
+      target_resource: "/subscriptions/{{ .Values.azure.subscriptionId }}/resourceGroups/{{ .Values.azure.resourceGroup }}/providers/Microsoft.ContainerService/managedClusters/monitoring-aks"
+      logs:
+        - "containerInsights"
+      metrics:
+        - "AllMetrics"
+      log_analytics_workspace:
+        id: "/subscriptions/{{ .Values.azure.subscriptionId }}/resourceGroups/{{ .Values.azure.resourceGroup }}/providers/Microsoft.OperationalInsights/workspaces/monitoring-log-analytics"

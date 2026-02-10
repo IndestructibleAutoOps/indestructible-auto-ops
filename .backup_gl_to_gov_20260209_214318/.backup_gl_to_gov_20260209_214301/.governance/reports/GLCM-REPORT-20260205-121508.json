@@ -1,0 +1,300 @@
+{
+  "report_id": "GLCM-REPORT-20260205-121508",
+  "started_at": "2026-02-05T12:15:08.138055Z",
+  "completed_at": "2026-02-05T12:15:08.226790Z",
+  "total_checks": 8,
+  "passed": 1,
+  "failed": 5,
+  "warnings": 2,
+  "checks": [
+    {
+      "check_id": "GLCM-NAR-001",
+      "rule": "GLCM-NAR",
+      "status": "FAIL",
+      "evidence": {
+        "files_scanned": 197,
+        "violations_found": 97,
+        "violations": [
+          {
+            "file": "governance/kernel/self_governance.py",
+            "keyword": "應該",
+            "line": 290
+          },
+          {
+            "file": "ecosystem/enforce.py",
+            "keyword": "可能",
+            "line": 845
+          },
+          {
+            "file": "ecosystem/enforce.py",
+            "keyword": "should",
+            "line": 270
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "應該",
+            "line": 165
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "可能",
+            "line": 165
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "大概",
+            "line": 165
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "也許",
+            "line": 165
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "或許",
+            "line": 165
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "可能會",
+            "line": 165
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "keyword": "should",
+            "line": 166
+          }
+        ]
+      }
+    },
+    {
+      "check_id": "GLCM-FCT-001",
+      "rule": "GLCM-FCT",
+      "status": "FAIL",
+      "evidence": {
+        "files_scanned": 197,
+        "violations_found": 171,
+        "violations": [
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 869,
+            "statement": "print(\"[INFO] Analyzing completeness...\")",
+            "keyword": "complete"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 876,
+            "statement": "print(f\"   ✅ UGS: {completeness['ugs']}\")",
+            "keyword": "complete"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 877,
+            "statement": "print(f\"   ✅ Meta-Spec: {completeness['meta_spec']}\")",
+            "keyword": "complete"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 878,
+            "statement": "print(f\"   ⏸️  Engines: PARTIAL - Core engines present, validation incomplete\")",
+            "keyword": "complete"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 879,
+            "statement": "print(f\"   ✅ Enforcement Rules: {completeness['enforcement_rules']}\")",
+            "keyword": "complete"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 1791,
+            "statement": "print(\"✅ 10-Step Closed-Loop Governance Cycle - Era-1 Bootstrap Complete\")",
+            "keyword": "complete"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 1795,
+            "statement": "print(f\"   - Successful: {sum(1 for r in results if r.success)}\")",
+            "keyword": "success"
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "line": 779,
+            "statement": "print(f\"\\n❌ 治理檢查失敗: {report.failed} 個檢查未通過\")",
+            "keyword": "通過"
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "line": 782,
+            "statement": "print(f\"\\n⚠️  治理檢查完成但有 {report.warnings} 個警告\")",
+            "keyword": "完成"
+          },
+          {
+            "file": "ecosystem/enforce.rules.v2.py",
+            "line": 785,
+            "statement": "print(f\"\\n✅ 治理檢查全部通過\")",
+            "keyword": "通過"
+          }
+        ]
+      }
+    },
+    {
+      "check_id": "GLCM-UNC-001",
+      "rule": "GLCM-UNC",
+      "status": "WARN",
+      "evidence": {
+        "files_scanned": 197,
+        "potential_violations": 420,
+        "violations": [
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 747,
+            "statement": "return {}"
+          },
+          {
+            "file": "ecosystem/enforce.rules.py",
+            "line": 768,
+            "statement": "return {}"
+          },
+          {
+            "file": "ecosystem/platform_adapter.py",
+            "line": 173,
+            "statement": "return {"
+          },
+          {
+            "file": "ecosystem/platform_adapter.py",
+            "line": 318,
+            "statement": "return {"
+          },
+          {
+            "file": "ecosystem/verify_network_interaction.py",
+            "line": 94,
+            "statement": "return True, audit_report"
+          },
+          {
+            "file": "ecosystem/verify_network_interaction.py",
+            "line": 98,
+            "statement": "return True, {\"status\": \"UNKNOWN\", \"violations\": []}"
+          },
+          {
+            "file": "ecosystem/verify_network_interaction.py",
+            "line": 102,
+            "statement": "return False, {\"error\": \"timeout\"}"
+          },
+          {
+            "file": "ecosystem/verify_network_interaction.py",
+            "line": 105,
+            "statement": "return False, {\"error\": str(e)}"
+          },
+          {
+            "file": "ecosystem/verify_network_interaction.py",
+            "line": 136,
+            "statement": "return False, {\"error\": str(e)}"
+          },
+          {
+            "file": "ecosystem/verify_network_interaction.py",
+            "line": 185,
+            "statement": "return {\"error\": str(e)}"
+          }
+        ]
+      }
+    },
+    {
+      "check_id": "GLCM-EVC-001",
+      "rule": "GLCM-EVC",
+      "status": "FAIL",
+      "evidence": {
+        "evidence_dir": ".governance/evidence",
+        "required_subdirs": [
+          "violations",
+          "requirements",
+          "implementation"
+        ],
+        "existing_subdirs": [],
+        "missing_subdirs": [
+          "violations",
+          "requirements",
+          "implementation"
+        ],
+        "event_stream_exists": false,
+        "evidence_files_count": 0
+      }
+    },
+    {
+      "check_id": "DIR-001",
+      "rule": "DIRECTORY_STRUCTURE",
+      "status": "PASS",
+      "evidence": {
+        "required_dirs": [
+          "governance/kernel",
+          "governance/specs",
+          "ecosystem",
+          ".governance"
+        ],
+        "existing_dirs": [
+          "governance/kernel",
+          "governance/specs",
+          "ecosystem",
+          ".governance"
+        ],
+        "missing_dirs": []
+      }
+    },
+    {
+      "check_id": "HASH-001",
+      "rule": "HASH_INTEGRITY",
+      "status": "FAIL",
+      "evidence": {
+        "file_exists": false,
+        "total_hashes": 0,
+        "has_valid_hashes": false
+      }
+    },
+    {
+      "check_id": "EVENT-001",
+      "rule": "EVENT_STREAM",
+      "status": "FAIL",
+      "evidence": {
+        "file_exists": false,
+        "valid_events": 0,
+        "invalid_events": 0
+      }
+    },
+    {
+      "check_id": "FILE-001",
+      "rule": "FILE_INTEGRITY",
+      "status": "WARN",
+      "evidence": {
+        "key_files": [
+          "ecosystem/enforce.py",
+          "ecosystem/enforce.rules.py",
+          "governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md"
+        ],
+        "existing_files": [
+          "ecosystem/enforce.py",
+          "ecosystem/enforce.rules.py"
+        ],
+        "missing_files": [
+          "governance/specs/BACKEND-GOVERNANCE-RESPONSIBILITY.md"
+        ]
+      }
+    }
+  ],
+  "config_used": {
+    "glcm_rules": [
+      "GLCM-NAR",
+      "GLCM-FCT",
+      "GLCM-UNC",
+      "GLCM-EVC"
+    ],
+    "evidence_dir": ".governance/evidence",
+    "minimum_execution_time_ms": 5000,
+    "scan_directories": [
+      "governance",
+      "ecosystem",
+      ".governance"
+    ]
+  },
+  "trace_hash": "2bcae33e2943d46673f5babb7d62772e9511321f721c209f2ca82d72b16d6f5a"
+}

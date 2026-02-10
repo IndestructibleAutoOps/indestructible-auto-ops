@@ -1,0 +1,17 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: governance.machinenativeops.io/v1
+kind: GLIntegration
+metadata:
+  name: tools-gov-integration
+  version: "1.0.0"
+spec:
+  target: tools
+  gl_architecture_ref: "governance/gov-architecture/GL_LAYERS.yaml"
+  layer_mappings:
+    GL30-49:
+      source: "tools/python/governance_agent.py"
+      extends: "workspace/governance/gov-architecture/gov-extended/GL30-49-execution"

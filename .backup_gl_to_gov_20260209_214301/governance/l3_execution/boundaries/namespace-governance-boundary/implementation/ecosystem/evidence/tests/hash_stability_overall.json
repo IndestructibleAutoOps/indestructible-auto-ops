@@ -1,0 +1,48 @@
+{
+  "test": "overall_hash_stability",
+  "status": "passed",
+  "tests_executed": 5,
+  "test_results": {
+    "hash_stability_determinism.json": {
+      "test": "test_canonicalization_determinism",
+      "status": "passed",
+      "iterations": 100,
+      "unique_hashes": 1,
+      "hash": "sha256:6eca304720a7423d66a07399f97b796a33fdf60e80cb0654a7de070824c60099",
+      "timestamp": "2026-02-05T01:48:33.248765Z"
+    },
+    "hash_stability_yaml_anchors.json": {
+      "test": "test_yaml_anchor_impact",
+      "status": "passed",
+      "hash": "sha256:d323080c3badeefdd6ba2b43ca50d958b800309272ec2cbafd9db47fb0ba5226",
+      "yaml_anchors_deterministic": true,
+      "iterations": 10,
+      "timestamp": "2026-02-05T01:48:33.268370Z"
+    },
+    "hash_stability_field_order.json": {
+      "test": "test_field_order_stability",
+      "status": "passed",
+      "hash": "sha256:d280bdd48961fdea704bdcac63e23d7b636643caf44ad64d85e2b7799196e6ee",
+      "field_order_independent": true,
+      "canonical_string": "{\"artifact_id\":\"test-001\",\"era\":\"1\",\"step_number\":1,\"success\":true,\"timestamp\":\"2026-02-05T10:00:00Z\"}",
+      "timestamp": "2026-02-05T01:48:33.270075Z"
+    },
+    "hash_stability_timestamp.json": {
+      "test": "test_timestamp_format_stability",
+      "status": "passed",
+      "hash1": "sha256:9266c8e3534e25e367c0775dd6e5aafa06a4e6f3c0d6578e772cfbe276ee4853",
+      "hash2": "sha256:84c3b524ec960b4b49c6a9c6a60515ce882f61252c3c577a4bd3863560f0a3a5",
+      "timestamp_format_sensitive": true,
+      "timestamp": "2026-02-05T01:48:33.271365Z"
+    },
+    "hash_stability_whitespace.json": {
+      "test": "test_whitespace_normalization",
+      "status": "passed",
+      "hash1": "sha256:0406904f175081598f135859105996a05bc7270c07f744113b676afe9c89b8b1",
+      "hash2": "sha256:677c9ab17de89558dcd23e9899bb3c8b44679658623b192f8926f1de4c72f776",
+      "whitespace_sensitive": true,
+      "timestamp": "2026-02-05T01:48:33.272695Z"
+    }
+  },
+  "timestamp": "2026-02-05T01:48:33.274093Z"
+}

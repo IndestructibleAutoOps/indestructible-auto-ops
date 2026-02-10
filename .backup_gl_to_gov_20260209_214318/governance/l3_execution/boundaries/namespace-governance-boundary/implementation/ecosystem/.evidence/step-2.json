@@ -1,0 +1,36 @@
+{
+  "artifact_id": "ca38251f-8b8c-4417-a758-6269bb67ce4c",
+  "step_number": 2,
+  "timestamp": "2026-02-06T11:27:50.731115+00:00",
+  "era": 1,
+  "success": true,
+  "metadata": {
+    "local_gap_matrix": {
+      "strengths": [
+        "Complete UGS definition",
+        "Robust engine implementation",
+        "Strong naming governance",
+        "Comprehensive event stream"
+      ],
+      "gaps": [
+        "Evidence verification logic: MISSING",
+        "Governance closure: NOT DEFINED"
+      ],
+      "inconsistencies": [],
+      "risks": [
+        "Evidence credibility risk: Present (historical)",
+        "Governance completeness risk: Present"
+      ],
+      "recommendations": [
+        "Strengthen event stream monitoring",
+        "Add automated fix capabilities"
+      ]
+    }
+  },
+  "execution_time_ms": 0,
+  "violations_count": 0,
+  "artifacts_generated": [
+    "local_gap_matrix.json"
+  ],
+  "sha256_hash": "ceb6bcc07d052da972dadf33b3bceeb23e69b0455ad85ed01ae60f3d06911e06"
+}

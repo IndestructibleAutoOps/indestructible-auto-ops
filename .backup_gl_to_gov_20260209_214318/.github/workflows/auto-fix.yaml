@@ -1,0 +1,255 @@
+# Auto-Fix Workflow
+# Automatically detects issues, applies fixes, and creates signed PRs
+
+name: Auto-Fix Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  L1-detect:
+    name: Detect Issues
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    outputs:
+      violations_found: ${{ steps.scan.outputs.violations }}
+      violation_types: ${{ steps.scan.outputs.types }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Run governance enforcement
+        id: scan
+        env:
+          LOG_LEVEL: INFO
+        run: |
+          python ecosystem/enforce.py --audit > scan_report.json 2>&1 || true
+          
+          violations=$(jq '.violations | length' scan_report.json 2>/dev/null || echo "0")
+          types=$(jq -r '.violations[].type' scan_report.json 2>/dev/null | sort -u | jq -R -s -c 'split("\n")[:-1]' || echo "[]")
+          
+          echo "violations=$violations" >> $GITHUB_OUTPUT
+          echo "types=$types" >> $GITHUB_OUTPUT
+          
+          echo "Violations found: $violations"
+          
+      - name: Upload scan results
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: scan-results
+          path: scan_report.json
+          retention-days: 30
+
+  L2-analyze:
+    name: Analyze Issues
+    needs: L1-detect
+    if: needs.L1-detect.outputs.violations_found != '0'
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    outputs:
+      fixable_issues: ${{ steps.analyze.outputs.fixable }}
+      auto_fix_count: ${{ steps.analyze.outputs.auto_fix_count }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Download scan results
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        with:
+          name: scan-results
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Analyze violations
+        id: analyze
+        run: |
+          python ecosystem/scripts/analyze_violations.py \
+            --input scan_report.json \
+            --output analysis.json \
+            --auto-fixable
+          
+          fixable=$(jq '.fixable | length' analysis.json)
+          auto_fix_count=$(jq '.auto_fix_count' analysis.json)
+          
+          echo "fixable=$fixable" >> $GITHUB_OUTPUT
+          echo "auto_fix_count=$auto_fix_count" >> $GITHUB_OUTPUT
+          
+      - name: Upload analysis
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: violation-analysis
+          path: analysis.json
+          retention-days: 30
+
+  L3-autofix:
+    name: Apply Auto-Fixes
+    needs: L2-analyze
+    if: needs.L2-analyze.outputs.auto_fix_count != '0'
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    outputs:
+      fixes_applied: ${{ steps.fix.outputs.count }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Download analysis
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        with:
+          name: violation-analysis
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Apply fixes
+        id: fix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/scripts/apply_auto_fixes.py \
+            --input analysis.json \
+            --output fix_report.json \
+            --dry-run=false
+          
+          fixes=$(jq '.fixes_applied | length' fix_report.json)
+          echo "count=$fixes" >> $GITHUB_OUTPUT
+          
+      - name: Upload fix report
+        uses: actions/upload-artifact@v4@sha256:5efc380b48df272362a7b9282c10a00d9f51b8d513b62e8737d6a862e6a5eb58
+        with:
+          name: auto-fix-report
+          path: fix_report.json
+          retention-days: 30
+
+  L4-create-pr:
+    name: Create Signed PR
+    needs: [L2-analyze, L3-autofix]
+    if: needs.L3-autofix.outputs.fixes_applied != '0'
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    permissions:
+      contents: write
+      pull-requests: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Download fix report
+        uses: actions/download-artifact@v4@sha256:f44bd761a6a7a3dbd60563873f1fda5e4a74991ee30229b30512f701326d5c75
+        with:
+          name: auto-fix-report
+          
+      - name: Generate PR summary
+        id: summary
+        run: |
+          python ecosystem/scripts/generate_pr_summary.py \
+            --input fix_report.json \
+            --output pr_summary.md
+          
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6@sha256:6d6867b55352e51e8d6545b5a14531bb55a9a03428b5d2301910b2e8e7771b5d
+        with:
+          title: "[AutoFix] Governance violations $(date +'%Y-%m-%d %H:%M')"
+          body-path: pr_summary.md
+          branch: auto-fix/$(date +%s)
+          labels: |
+            auto-fix
+            governance
+          commit-message: |
+            [AutoFix] Apply governance fixes
+            
+            This commit was automatically generated by the Auto-Fix Pipeline.
+            
+            Co-authored-by: MNGA Auto-Fix <bot@machine-native-ops>
+          signoff: true
+          
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7@sha256:21e8c83667fbcdfb63d317dc9629d4b86aa97077e9b933c37217691d914936dc
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Auto-Fix Pipeline Failed',
+              body: 'The auto-fix pipeline failed. Please check the workflow logs for details.',
+              labels: ['bug', 'auto-fix']
+            })
+
+  L5-verify:
+    name: Verify PR
+    needs: L4-create-pr
+    if: success()
+    runs-on: ubuntu-latest@sha256:8bde641660f4b8fae717c7a8f532729588674165b5d4f8c5be9c60c7887c2b91
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4@sha256:c85c95e3d82511333ab7824ca70bbeffc55e030074547651fb4e59a86fcaf24c
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5@sha256:0a5c61590064822a04f3ac2bc0a7e7cb8c4081d2a2b648d4fcdd94f52a9b23e5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Run validation
+        run: |
+          python ecosystem/enforce.py --audit --strict
+          
+      - name: Comment on PR
+        if: always()
+        uses: actions/github-script@v7@sha256:21e8c83667fbcdfb63d317dc9629d4b86aa97077e9b933c37217691d914936dc
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (pr) {
+              const comment = '✅ Auto-fix PR verification completed successfully.';
+              github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: comment
+              });
+            }

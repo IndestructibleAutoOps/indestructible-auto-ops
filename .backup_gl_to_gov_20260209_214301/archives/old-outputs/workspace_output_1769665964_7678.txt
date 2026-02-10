@@ -1,0 +1,19 @@
+🚀 Starting REAL Integration Tests on Main Branch...
+
+⚠️  These tests will actually check file system and components
+
+  ✅ V19 fabric storage found
+/workspace/gl-execution-runtime/tests/integration-main/run-integration-tests-simple.ts:79
+    results[0].tests[1].passed = false;
+                              ^
+TypeError: Cannot set properties of undefined (setting 'passed')
+    at runRealTests (/workspace/gl-execution-runtime/tests/integration-main/run-integration-tests-simple.ts:79:31)
+    at Object.<anonymous> (/workspace/gl-execution-runtime/tests/integration-main/run-integration-tests-simple.ts:426:1)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module.m._compile (/root/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Object.require.extensions.<computed> [as .ts] (/root/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at phase4 (/root/.npm/_npx/1bf7c3c15bf47d04/node_modules/ts-node/src/bin.ts:649:14)

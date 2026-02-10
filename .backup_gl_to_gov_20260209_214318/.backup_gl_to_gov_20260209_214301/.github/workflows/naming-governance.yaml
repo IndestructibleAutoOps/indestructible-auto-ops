@@ -1,0 +1,181 @@
+# Naming Governance Workflow
+# Enforces naming conventions across the codebase
+
+name: Naming Governance
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/k8s/**'
+      - 'kubernetes/**'
+      - 'deploy/**'
+  pull_request:
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/k8s/**'
+      - 'kubernetes/**'
+      - 'deploy/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-naming:
+    name: Validate Naming Conventions
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install Conftest
+        run: |
+          curl -Lo conftest.tar.gz https://github.com/open-policy-agent/conftest/releases/download/v0.49.0/conftest_0.49.0_Linux_x86_64.tar.gz
+          tar xzf conftest.tar.gz
+          sudo mv conftest /usr/local/bin/
+          conftest --version
+          
+      - name: Run Conftest naming policy
+        id: conftest
+        run: |
+          conftest test . \
+            --all \
+            --output json \
+            --policy .config/conftest/policies/ \
+            > conftest_results.json || true
+          
+          violations=$(jq '.[] | select(.namespace=="naming") | length' conftest_results.json | jq -s 'add // 0')
+          echo "violations=$violations" >> $GITHUB_OUTPUT
+          
+      - name: Upload Conftest results
+        uses: actions/upload-artifact@v4
+        with:
+          name: conftest-results
+          path: conftest_results.json
+          retention-days: 30
+          
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && steps.conftest.outputs.violations != '0'
+        uses: actions/github-script@v7
+        env:
+          VIOLATIONS: ${{ steps.conftest.outputs.violations }}
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('conftest_results.json', 'utf8'));
+            
+            let comment = '## 🚨 Naming Convention Violations\n\n';
+            comment += `Found ${process.env.VIOLATIONS} naming violations:\n\n`;
+            
+            results.forEach(result => {
+              if (result.namespace === 'naming') {
+                result.violations.forEach(v => {
+                  comment += `- **${result.filename}**: ${v.message}\n`;
+                });
+              }
+            });
+            
+            comment += '\nPlease fix these violations before merging.';
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+            
+      - name: Fail on violations
+        if: steps.conftest.outputs.violations != '0'
+        run: |
+          echo "::error::Found ${steps.conftest.outputs.violations} naming violations"
+          exit 1
+
+  auto-label-resources:
+    name: Auto-Label K8s Resources
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install yq
+        run: |
+          wget https://github.com/mikefarah/yq/releases/download/v4.35.2/yq_linux_amd64
+          sudo mv yq_linux_amd64 /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+          
+      - name: Auto-label resources
+        id: label
+        run: |
+          python ecosystem/scripts/naming/auto_label_resources.py \
+            --diff-target origin/${{ github.base_ref }} \
+            --output labels.json
+          
+          labels_applied=$(jq '.labels_applied | length' labels.json)
+          echo "applied=$labels_applied" >> $GITHUB_OUTPUT
+          
+      - name: Commit labels
+        if: steps.label.outputs.applied != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-apply labels to K8s resources"
+          git push
+
+  generate-naming-report:
+    name: Generate Naming Compliance Report
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Generate report
+        run: |
+          python ecosystem/scripts/naming/generate_naming_report.py \
+            --output artifacts/reports/naming/compliance_report.json \
+            --format json
+          
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: naming-compliance-report
+          path: artifacts/reports/naming/compliance_report.json
+          retention-days: 90
+          
+      - name: Export metrics to Prometheus
+        run: |
+          python ecosystem/scripts/naming/export_prometheus_metrics.py \
+            --input artifacts/reports/naming/compliance_report.json

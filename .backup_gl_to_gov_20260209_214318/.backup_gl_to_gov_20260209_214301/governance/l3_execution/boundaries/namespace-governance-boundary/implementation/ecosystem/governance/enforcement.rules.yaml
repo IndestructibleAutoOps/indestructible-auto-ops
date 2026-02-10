@@ -1,0 +1,362 @@
+# enforcement.rules.yaml
+# Immutable Core 強制執行規則定義
+# 版本: 2.0.0
+# 基於: UGS + Meta-Spec + 最佳架構實踐 + 證據鏈標準
+# 修復: 增強證據閉環、不可否認性、可審計性
+
+version: 2.0.0
+spec_type: enforcement-rules
+layer: enforcement
+
+@GL-semantic: org.mnga.enforcement.rules@2.0.0
+@GL-audit-trail: enabled
+@GL-evidence-chain: required
+
+# 強制執行層級定義
+enforcement_layers:
+  language_layer:
+    id: L00-L49
+    priority: CRITICAL
+    immutable: true
+    description: "語言層強制執行 - 語法、語言定義、AST、token、parsing rules"
+    scope:
+      - ecosystem/governance/ugs/l00-language
+      - ecosystem/governance/meta-spec/language
+    violations:
+      - type: LANGUAGE_VIOLATION
+        severity: CRITICAL
+        action: BLOCK
+        message: "語言層違規：不允許自訂語言層"
+        engine: validation_engine
+        check_id: EL-L001
+    
+  format_layer:
+    id: L50-L99
+    priority: CRITICAL
+    immutable: true
+    description: "格式層強制執行 - schema 驗證"
+    scope:
+      - ecosystem/governance/ugs/l50-format
+      - ecosystem/governance/meta-spec/format
+    violations:
+      - type: FORMAT_VIOLATION
+        severity: CRITICAL
+        action: BLOCK
+        message: "格式層違規：artifact 不符合 schema"
+        engine: validation_engine
+        check_id: EL-F001
+    
+  semantics_layer:
+    id: L02
+    priority: HIGH
+    immutable: true
+    description: "語意層強制執行 - 語意錨點驗證"
+    scope:
+      - ecosystem/governance/ugs/l02-semantics
+      - ecosystem/governance/meta-spec/semantics
+    violations:
+      - type: SEMANTIC_VIOLATION
+        severity: HIGH
+        action: BLOCK
+        message: "語意層違規：語意與 L02 定義不符"
+        engine: validation_engine
+        check_id: EL-S001
+    
+  index_layer:
+    id: L03
+    priority: HIGH
+    immutable: true
+    description: "索引層強制執行 - 索引一致性"
+    scope:
+      - ecosystem/governance/ugs/l03-index
+    violations:
+      - type: INDEX_VIOLATION
+        severity: MEDIUM
+        action: REBUILD
+        message: "索引層違規：索引不一致，將自動重建"
+        engine: refresh_engine
+        check_id: EL-I001
+    
+  topology_layer:
+    id: L04
+    priority: HIGH
+    immutable: true
+    description: "拓撲層強制執行 - 拓撲完整性"
+    scope:
+      - ecosystem/governance/ugs/l04-topology
+      - ecosystem/governance/meta-spec/topology
+    violations:
+      - type: TOPOLOGY_VIOLATION
+        severity: MEDIUM
+        action: REBUILD
+        message: "拓撲層違規：拓撲不完整，將自動重建"
+        engine: refresh_engine
+        check_id: EL-T001
+
+# 違規處理策略
+violation_handling:
+  BLOCK:
+    description: "阻擋操作並報錯"
+    action: "阻止操作，記錄違規，發送警報"
+    requires_approval: true
+    auto_fix: false
+    evidence_required: true
+  
+  WARN:
+    description: "警告但允許操作"
+    action: "記錄警告，發送通知，允許操作"
+    requires_approval: false
+    auto_fix: false
+    evidence_required: true
+  
+  REBUILD:
+    description: "自動修復並重建"
+    action: "自動修復結構，重建索引/拓撲"
+    requires_approval: false
+    auto_fix: true
+    evidence_required: true
+  
+  LOG:
+    description: "僅記錄"
+    action: "記錄信息，不干預"
+    requires_approval: false
+    auto_fix: false
+    evidence_required: false
+
+# 引擎分配
+engine_allocation:
+  validation_engine:
+    responsibilities:
+      - LANGUAGE_VIOLATION
+      - FORMAT_VIOLATION
+      - SEMANTIC_VIOLATION
+    priority: CRITICAL
+    execution_mode: "strict"
+    
+  refresh_engine:
+    responsibilities:
+      - INDEX_VIOLATION
+      - TOPOLOGY_VIOLATION
+    priority: HIGH
+    execution_mode: "auto_fix"
+    
+  reverse_architecture_engine:
+    responsibilities:
+      - STRUCTURAL_DRIFT
+      - COMPLIANCE_VIOLATION
+    priority: MEDIUM
+    execution_mode: "analysis"
+
+# 合規要求
+compliance_requirements:
+  evidence_coverage: 90.0
+  governance_contract_compliance: 100.0
+  semantic_anchor_required: true
+  audit_trail_enabled: true
+  immutable_core_compliance: 100.0
+
+# 強制執行閘門
+enforcement_gates:
+  pre_validation:
+    enabled: true
+    checks:
+      - syntax_validation
+      - structure_validation
+    on_failure: BLOCK
+  
+  semantic_validation:
+    enabled: true
+    checks:
+      - semantic_validation
+      - cross_layer_validation
+    on_failure: BLOCK
+  
+  compliance_validation:
+    enabled: true
+    checks:
+      - compliance_validation
+      - immutable_core_check
+    on_failure: BLOCK
+
+# 不可變核心保護
+immutable_core_protection:
+  layers:
+    - L00-Language
+    - L02-Semantics
+    - L03-Index
+    - L04-Topology
+    - L50-Format
+  
+  schemas:
+    - ecosystem/governance/ugs/l50-format/layer.schema.json
+    - ecosystem/governance/ugs/l50-format/governance.schema.json
+    - ecosystem/governance/ugs/l50-format/naming.schema.json
+  
+  semantics:
+    - ecosystem/governance/ugs/l02-semantics/layer-semantics.yaml
+  
+  protection_rules:
+    - id: PR-001
+      title: "核心層只讀"
+      description: "核心層文件只讀，不得修改"
+      enforcement: BLOCK
+      severity: CRITICAL
+    
+    - id: PR-002
+      title: "Schema 不可修改"
+      description: "核心 schema 不可修改"
+      enforcement: BLOCK
+      severity: CRITICAL
+    
+    - id: PR-003
+      title: "語意不可變更"
+      description: "語意定義不可變更"
+      enforcement: BLOCK
+      severity: CRITICAL
+
+# 審計追蹤
+audit_trail:
+  enabled: true
+  log_level: "DEBUG"
+  retention_days: 365
+  export_format: "json"
+  events:
+    - enforcement_triggered
+    - violation_detected
+    - auto_fix_applied
+    - compliance_check_passed
+    - compliance_check_failed
+    - step_executed
+    - artifact_generated
+    - evidence_logged
+
+# 證據鏈要求
+evidence_chain:
+  enabled: true
+  required_for_all_steps: true
+  artifact_output_dir: ".evidence"
+  event_stream_file: ".governance/event-stream.jsonl"
+  
+  requirements:
+    - step_artifacts: true
+    - hash_verification: true
+    - timestamp_tracking: true
+    - uuid_tracing: true
+    - diff_generation: true
+    - replay_capability: true
+    - provenance_tracking: true
+  
+  artifact_format:
+    schema_version: "2.0.0"
+    required_fields:
+      - artifact_id
+      - step_number
+      - timestamp
+      - uuid
+      - sha256_hash
+      - input_trace
+      - output_trace
+      - result
+      - evidence_links
+  
+  hash_algorithm: "SHA256"
+  timestamp_format: "ISO8601"
+  uuid_version: 4
+
+# 違規處理增強
+violation_handling_enhanced:
+  BLOCK:
+    description: "阻擋操作並報錯"
+    action: "阻止操作，記錄違規，發送警報"
+    requires_approval: true
+    auto_fix: false
+    evidence_required: true
+    artifact_required: true
+    event_stream_required: true
+    
+  WARN:
+    description: "警告但允許操作"
+    action: "記錄警告，發送通知，允許操作"
+    requires_approval: false
+    auto_fix: false
+    evidence_required: true
+    artifact_required: true
+    event_stream_required: true
+    
+  REBUILD:
+    description: "自動修復並重建"
+    action: "自動修復結構，重建索引/拓撲"
+    requires_approval: false
+    auto_fix: true
+    evidence_required: true
+    artifact_required: true
+    event_stream_required: true
+    diff_required: true
+    
+  LOG:
+    description: "僅記錄"
+    action: "記錄信息，不干預"
+    requires_approval: false
+    auto_fix: false
+    evidence_required: false
+    artifact_required: false
+    event_stream_required: true
+
+# Step 執行證據要求
+step_execution_requirements:
+  pre_execution:
+    - input_validation
+    - dependency_check
+    - evidence_dir_creation
+  
+  during_execution:
+    - real_time_logging
+    - intermediate_artifacts
+    - state_tracking
+  
+  post_execution:
+    - artifact_generation
+    - hash_computation
+    - event_stream_write
+    - result_serialization
+
+# 不可否認性
+non_repudiation:
+  enabled: true
+  requirements:
+    - all_actions_logged: true
+    - all_decisions_traced: true
+    - all_artifacts_hashed: true
+    - all_events_uuid_tagged: true
+    - all_actors_identified: true
+  
+  signing:
+    enabled: false
+    algorithm: "SHA256withRSA"
+    key_location: ".governance/keys"
+
+# 重放驗證
+replay_verification:
+  enabled: true
+  requirements:
+    - deterministic_execution: true
+    - input_capture: true
+    - output_capture: true
+    - state_snapshot: true
+    - side_effects_tracked: true
+
+# 元數據
+metadata:
+  created_at: "2026-02-03T23:49:00Z"
+  updated_at: "2026-02-04T02:00:00Z"
+  author: "MNGA Governance Team"
+  status: "active"
+  version_history:
+    - version: "1.0.0"
+      date: "2026-02-03T23:49:00Z"
+      author: "MNGA Governance Team"
+      description: "Initial version - Immutable Core enforcement rules"
+    - version: "2.0.0"
+      date: "2026-02-04T02:00:00Z"
+      author: "SuperNinja AI Agent"
+      description: "Evidence chain enhancement - non-repudiation, auditability, reconstructability"

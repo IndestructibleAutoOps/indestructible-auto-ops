@@ -37,15 +37,15 @@
 
 #### Core Modules Operational:
 - **orchestration-engine**: Running on port 3000
-- **gl-policy-engine**: 4 policies, 3 schemas loaded
+- **gov-policy-engine**: 4 policies, 3 schemas loaded
 - **connector-git**: Scan, diff, patch, apply, commit, push capabilities
-- **gl-artifacts-store**: Operational
-- **gl-events-stream**: Operational
+- **gov-artifacts-store**: Operational
+- **gov-events-stream**: Operational
 - **api-layer**: REST API operational, gRPC configured
 
 #### Pipelines Ready:
 - directory-audit-pipeline
-- repo-gl-fix-pipeline
+- repo-gov-fix-pipeline
 
 #### Deployment Configurations:
 - **docker-compose**: Ready
@@ -113,17 +113,17 @@ c7289f85 feat: activate GL-ROOT global governance audit parallel multi-agent mod
 ## Governance Artifacts
 
 ### Event Stream
-- **Location**: `/workspace/gl-execution-runtime/storage/gl-events-stream/events.jsonl`
+- **Location**: `/workspace/gov-execution-runtime/storage/gov-events-stream/events.jsonl`
 - **Status**: Active logging
 - **Events**: Audit, configuration, engine lifecycle
 
 ### Artifacts Store
-- **Location**: `/workspace/gl-execution-runtime/storage/gl-artifacts-store/`
+- **Location**: `/workspace/gov-execution-runtime/storage/gov-artifacts-store/`
 - **Status**: Operational
 - **Content**: Audit reports, validation results
 
 ### Global Audit Report
-- **Location**: `/workspace/gl-execution-runtime/storage/gl-audit-reports/global-governance-audit-report.json`
+- **Location**: `/workspace/gov-execution-runtime/storage/gov-audit-reports/global-governance-audit-report.json`
 - **Status**: Generated
 - **Content**: Comprehensive governance audit results
 

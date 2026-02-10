@@ -1,0 +1,132 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "timestamp": "2026-01-16T08:58:28.095229",
+  "summary": {
+    "total_checks": 8,
+    "passed": 2,
+    "warnings": 6,
+    "pass_rate": "25.0%"
+  },
+  "details": {
+    "security": {
+      "status": "⚠️ WARNING",
+      "secrets_detected": true,
+      "details": "請審查包含敏感關鍵字的檔案"
+    },
+    "python_quality": {
+      "total_files": 1328,
+      "files_with_type_hints": 883,
+      "type_hint_coverage": "66.5%",
+      "status": "⚠️ WARNING",
+      "target": "90%"
+    },
+    "typescript_quality": {
+      "total_ts_files": 1128,
+      "total_js_files": 40,
+      "status": "✅ PASS"
+    },
+    "code_duplication": {
+      "duplicates_found": 1,
+      "details": [
+        {
+          "pattern": "dependency-manager",
+          "locations": [
+            "workspace/teams/holy-grail/agents/services/dependency-manager",
+            "workspace/teams/holy-grail/agents/ai-experts/dependency-manager",
+            "workspace/src/ai/agents/dependency-manager",
+            "workspace/src/services/agents/dependency-manager"
+          ]
+        }
+      ],
+      "status": "⚠️ WARNING"
+    },
+    "docstring_coverage": {
+      "total_files": 1328,
+      "files_with_docstrings": 1284,
+      "coverage": "96.7%",
+      "status": "✅ PASS",
+      "target": "85%"
+    },
+    "non_ascii_filenames": {
+      "count": 7,
+      "files": [
+        "workspace/命名治理自動化管線.code.yaml",
+        "workspace/docs/Island-AI 專案目錄結構圖譜註解.pdf",
+        "workspace/docs/Island-AI 專案目錄結構圖譜註解.docx",
+        "workspace/engine/machinenativenops-auto-monitor/src/machinenativenops_auto_monitor/儲存.py",
+        "workspace/src/governance/PR172_評估摘要.md",
+        "workspace/src/governance/INSTANT_EXECUTION_PROOF_即時執行證明.md",
+        "workspace/src/governance/CRITICAL_CLARIFICATION_執行能力澄清.md"
+      ],
+      "status": "⚠️ WARNING"
+    },
+    "console_logs": {
+      "count": 79,
+      "files": [
+        "ns-root/namespaces-sdk/src/commands/validate.ts",
+        "ns-root/namespaces-sdk/src/commands/status.ts",
+        "ns-root/namespaces-sdk/src/commands/deploy.ts",
+        "ns-root/namespaces-sdk/src/observability/logger.ts",
+        "ns-root/namespaces-sdk/src/observability/audit.ts",
+        "ns-root/namespaces-mcp/level2/src/communication/custom-serializer.ts",
+        "ns-root/namespaces-mcp/level2/src/modules/module-5e-universal-integration/examples/basic-usage.ts",
+        "ns-root/namespaces-mcp/level2/src/modules/module-5e-universal-integration/examples/advanced-scenarios.ts",
+        "ns-root/namespaces-mcp/level4/src/engines/observation-engine.ts",
+        "ns-root/namespaces-mcp/level4/src/engines/evolution-engine.ts",
+        "ns-root/namespaces-mcp/level4/src/engines/reflex-engine.ts",
+        "ns-root/namespaces-mcp/level4/src/engines/audit-engine.ts",
+        "ns-root/namespaces-mcp/level3/tests/performance/benchmark.test.ts",
+        "ns-root/namespaces-mcp.backup.20250110/src/communication/custom-serializer.ts",
+        "workspace/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-console.ts",
+        "workspace/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-lint.ts",
+        "workspace/archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts",
+        "workspace/archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/log-validator.ts",
+        "workspace/archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tools/arch-lint.ts",
+        "workspace/teams/holy-grail/legacy-archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-console.ts"
+      ],
+      "status": "⚠️ WARNING"
+    },
+    "eval_usage": {
+      "count": 27,
+      "files": [
+        "scripts/auto-quality-check.py",
+        "ns-root/namespaces-adk/adk/core/workflow_orchestrator.py",
+        "ns-root/namespaces-adk/tests/integration/test_agent_workflows.py",
+        "workspace/tests/test_tool_executor_validation.py",
+        "workspace/teams/holy-grail/automation/architect/core/analysis/security_scanner.py",
+        "workspace/teams/holy-grail/agents/autonomous/pipeline_service.py",
+        "workspace/teams/holy-grail/agents/autonomous/examples/demo.py",
+        "workspace/teams/holy-grail/agents/autonomous/agents/task_executor.py",
+        "workspace/teams/holy-grail/agents/autonomous/test-vectors/generator.py",
+        "workspace/teams/holy-grail/agents/autonomous/tests/test_phase5_components.py",
+        "workspace/teams/holy-grail/agents/autonomous/tests/test_task_executor.py",
+        "workspace/src/automation/architect/core/analysis/security_scanner.py",
+        "workspace/src/autonomous/agents/pipeline_service.py",
+        "workspace/src/autonomous/agents/examples/demo.py",
+        "workspace/src/autonomous/agents/agents/task_executor.py",
+        "workspace/src/autonomous/agents/test-vectors/generator.py",
+        "workspace/src/autonomous/agents/tests/test_phase5_components.py",
+        "workspace/src/autonomous/agents/tests/test_task_executor.py",
+        "workspace/src/core/run-debug/cli.py",
+        "workspace/src/core/virtual_experts/domain_experts.py",
+        "workspace/src/core/plugins/virtual_experts/domain_experts.py",
+        "ns-root/namespaces-mcp/level3/engines/governance/policy/policy-evaluator.ts",
+        "workspace/archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts",
+        "workspace/teams/holy-grail/legacy-archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/tools/security-scan.ts",
+        "workspace/src/mcp-servers/security-scanner.js",
+        "workspace/src/mcp-servers/logic-validator.js",
+        "workspace/src/mcp-servers/code-analyzer.js"
+      ],
+      "status": "⚠️ WARNING"
+    }
+  }
+}

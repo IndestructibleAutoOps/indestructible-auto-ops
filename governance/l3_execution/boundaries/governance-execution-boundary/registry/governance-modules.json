@@ -1,0 +1,32 @@
+{
+  "registry_version": "2.0.0",
+  "generated_at": "2026-02-08T00:00:00Z",
+  "mode": "autonomous",
+  "description": "全機器自理治理模組註冊表 — 18 個責任邊界全部註冊為可執行治理模組",
+  "modules": [
+    {"id": "governance-anchor", "name": "Governance Anchor Boundary", "directory": "responsibility-governance-anchor-boundary", "gl_layer": "GL90-99", "role": "baseline-authority", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": false},
+    {"id": "governance-execution", "name": "Governance Execution Boundary", "directory": "responsibility-governance-execution-boundary", "gl_layer": "GL30-49", "role": "execution-engine", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": true},
+    {"id": "governance-sensing", "name": "Governance Sensing Boundary", "directory": "responsibility-governance-sensing-boundary", "gl_layer": "GL10-29", "role": "sensing-scanner", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": true},
+    {"id": "governance-specs", "name": "Governance Specs Boundary", "directory": "responsibility-governance-specs-boundary", "gl_layer": "GL90-99", "role": "specs-authority", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": false},
+    {"id": "global-policy", "name": "Global Policy Boundary", "directory": "responsibility-global-policy-boundary", "gl_layer": "GL90-99", "role": "global-policy", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "gov-layers", "name": "GL Layers Boundary", "directory": "responsibility-gov-layers-boundary", "gl_layer": "GL00-99", "role": "layer-definitions", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "gap-analysis", "name": "Gap Boundary", "directory": "responsibility-gap-boundary", "gl_layer": "GL60-80", "role": "gap-tracking", "enforcement": "LOG", "auto_scan": true, "auto_fix": true},
+    {"id": "gates", "name": "Gates Boundary", "directory": "responsibility-gates-boundary", "gl_layer": "GL30-49", "role": "gate-definitions", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": false},
+    {"id": "gateway", "name": "Gateway Boundary", "directory": "responsibility-gateway-boundary", "gl_layer": "GL20-29", "role": "gateway-specs", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "guardrails", "name": "Guardrails Boundary", "directory": "responsibility-guardrails-boundary", "gl_layer": "GL60-80", "role": "safety-compliance", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": false},
+    {"id": "gcp", "name": "GCP Boundary", "directory": "responsibility-gcp-boundary", "gl_layer": "GL10-29", "role": "cloud-governance", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "generation", "name": "Generation Boundary", "directory": "responsibility-generation-boundary", "gl_layer": "GL30-49", "role": "artifact-generation", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "quantum-stack", "name": "Quantum Stack Boundary", "directory": "responsibility-quantum-stack-boundary", "gl_layer": "GQS", "role": "quantum-governance", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": false},
+    {"id": "group", "name": "Group Boundary", "directory": "responsibility-group-boundary", "gl_layer": "GL10-29", "role": "group-tenant", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "observability-grafana", "name": "Observability Grafana Boundary", "directory": "responsibility-observability-grafana-boundary", "gl_layer": "GL50-59", "role": "observability", "enforcement": "LOG", "auto_scan": true, "auto_fix": true},
+    {"id": "mnga-architecture", "name": "MNGA Architecture Boundary", "directory": "responsibility-mnga-architecture-boundary", "gl_layer": "GL90-99", "role": "strategic-architecture", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": false},
+    {"id": "mno-operations", "name": "MNO Operations Boundary", "directory": "responsibility-mno-operations-boundary", "gl_layer": "GL10-29", "role": "operations-governance", "enforcement": "REBUILD", "auto_scan": true, "auto_fix": true},
+    {"id": "namespace-governance", "name": "Namespace Governance Boundary", "directory": "responsibility-namespace-governance-boundary", "gl_layer": "GL10-29", "role": "namespace-control", "enforcement": "BLOCK", "auto_scan": true, "auto_fix": true}
+  ],
+  "closed_loop": {
+    "sensing_to_execution": "responsibility-governance-sensing-boundary/report/scan-report.json",
+    "execution_to_anchor": "responsibility-governance-anchor-boundary/event-model/governance-events.yaml",
+    "anchor_to_sensing": "responsibility-governance-anchor-boundary/baseline/governance-baseline.yaml",
+    "feedback_channel": ".governance/event-stream.jsonl"
+  }
+}

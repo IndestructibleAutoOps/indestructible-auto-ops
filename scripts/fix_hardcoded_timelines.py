@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: execution-script
-# @GL-audit-trail: gl-enterprise-architecture/gl-platform.governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gov-enterprise-architecture/gov-platform.governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-enterprise-architecture/gl-platform.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-enterprise-architecture/gl-platform.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gov-enterprise-architecture/gov-platform.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-enterprise-architecture/gov-platform.governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 #!/usr/bin/env python3
@@ -296,26 +296,26 @@ def main():
     files_to_fix = [
         # 高優先級 - 截止日期
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/operational/artifacts/operational-plan.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/operational/artifacts/operational-plan.yaml",
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/strategic/artifacts/strategic-objectives.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/strategic/artifacts/strategic-objectives.yaml",
         repo_path / "documentation-manifest.yaml",
         # 中優先級
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/strategic/artifacts/cross-domain-integration.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/strategic/artifacts/cross-domain-integration.yaml",
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/feedback/artifacts/innovation-registry.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/feedback/artifacts/innovation-registry.yaml",
         # 配置文件
         repo_path / "engine/etl-pipeline/controlplane/baseline/pipeline-baseline.yaml",
         # 元數據文件
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/meta/spec/GL-ARCHITECTURE-SPEC.yaml",
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/meta/spec/GL-ARTIFACTS-TEMPLATES.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/meta/spec/GL-ARTIFACTS-TEMPLATES.yaml",
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/meta/spec/GL-DEPENDENCY-GRAPH.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/meta/spec/GL-DEPENDENCY-GRAPH.yaml",
         repo_path
-        / "engine/gl-platform.governance/gl-artifacts/execution/artifacts/deployment-record.yaml",
+        / "engine/gov-platform.governance/gov-artifacts/execution/artifacts/deployment-record.yaml",
     ]
 
     # 過濾存在的文件

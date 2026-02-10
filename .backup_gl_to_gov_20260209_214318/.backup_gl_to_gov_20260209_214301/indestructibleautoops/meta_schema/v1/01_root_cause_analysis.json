@@ -1,0 +1,28 @@
+{
+  "system": "IndestructibleAutoOps",
+  "component": "meta-schema",
+  "version": "v1",
+  "section": "Root Cause Analysis",
+  "root_causes": [
+    {
+      "id": "RCA-001",
+      "cause": "缺少統一 Top-level 欄位契約（apiVersion/kind/metadata/spec/status）",
+      "impact": "工具鏈無法通用化；規範解析成本與錯誤率隨規模非線性上升"
+    },
+    {
+      "id": "RCA-002",
+      "cause": "缺少可引用的全域唯一 $id 與 2020-12 方言聲明",
+      "impact": "跨 Schema $ref 失效；版本演進缺乏穩定辨識與相容策略"
+    },
+    {
+      "id": "RCA-003",
+      "cause": "缺少 Spec/Status 分離與 conditions 模式",
+      "impact": "無法沉澱執行效果與違規狀態；審計/觀測不可追溯"
+    },
+    {
+      "id": "RCA-004",
+      "cause": "缺少強制 CI gate（schema lint + examples 驗證 + 引用一致性）",
+      "impact": "規範變更未被阻斷；治理回歸只能靠人工"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+#!/bin/bash
+# GL Governance Pre-Push Hook - GL Unified Charter Activated
+set -e
+
+echo "GL Unified Charter Activated - Pre-Push Validation"
+
+# Run full GL validation
+echo "Running comprehensive GL validation before push..."
+
+# Validate Engine
+cd engine
+npx ts-node governance/gov_engine.ts validate --strict || {
+  echo "❌ Engine GL Validation Failed - Push blocked"
+  exit 1
+}
+
+# Validate File Organizer System
+cd ..
+npx ts-node engine/governance/gov_engine.ts validate --strict --workspace=file-organizer-system || {
+  echo "❌ File Organizer GL Validation Failed - Push blocked"
+  exit 1
+}
+
+# Execute all GL gates
+cd engine
+npx ts-node gl-gate/core/GateExecutor.ts executeAll || {
+  echo "❌ GL Gate Execution Failed - Push blocked"
+  exit 1
+}
+
+echo "✅ GL Governance Pre-Push Check Passed"

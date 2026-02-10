@@ -1,0 +1,30 @@
+# =============================================================================
+# GL00-09 Strategic Layer - Governance Charter
+# MachineNativeOps Governance Artifact
+# =============================================================================
+apiVersion: governance.machinenativeops.io/v2
+kind: GovernanceCharter
+metadata:
+  name: machinenativeops-governance-charter
+  version: "1.0.0"
+  created_at: "2025-01-18T00:00:00Z"
+  updated_at: "2025-01-18T00:00:00Z"
+  owner: governance-committee
+  layer: "GL00-09"
+  tags:
+    - strategic
+    - charter
+    - governance
+    - core
+  annotations:
+    governance.machinenativeops.io/classification: "internal"
+    governance.machinenativeops.io/review-cycle: "annual"
+spec:
+  # Required fields for GL00-09 compliance
+  vision: "成為機器原生運維領域的領導者，實現組織運營的完全自主化與智能化"
+  mission: "透過GL架構提供完整的治理解決方案，使組織能夠以機器原生的方式運作"
+  values:
+    - name: "透明度"
+      description: "所有治理決策與流程完全透明"
+    - name: "自動化"
+      description: "優先採用自動化方案"

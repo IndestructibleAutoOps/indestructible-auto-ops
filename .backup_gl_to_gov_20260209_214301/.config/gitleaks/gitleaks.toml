@@ -1,0 +1,163 @@
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: gitleaks-config
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+
+title = "Gitleaks Config for GL Platform"
+
+[extend]
+useDefault = true
+
+# Allowlist for known safe patterns
+[allowlist]
+description = "Allowlist for known safe patterns and test data"
+paths = [
+    '''\.git''',
+    '''node_modules''',
+    '''\.env\.example''',
+    '''\.secrets\.baseline''',
+    '''test.*\.json''',
+    '''\.mock''',
+    '''examples''',
+    '''\.example'''
+]
+
+# Custom rules for GL Platform
+[[rules]]
+description = "GitHub Token"
+id = "gl-github-token"
+regex = '''(ghp_|gho_|ghu_|ghs_|ghr_)[a-zA-Z0-9]{36}'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["github", "token", "ghp_"]
+
+[[rules]]
+description = "GitHub App Token"
+id = "gl-github-app-token"
+regex = '''gh[pousr]_[a-zA-Z0-9]{36}'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["ghp_", "gho_", "ghu_", "ghs_", "ghr_"]
+
+[[rules]]
+description = "AWS Access Key"
+id = "gl-aws-access-key"
+regex = '''(A3T[A-Z0-9]|AKIA|ASIA)[A-Z0-9]{16}'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["aws", "access", "key"]
+
+[[rules]]
+description = "AWS Secret Key"
+id = "gl-aws-secret-key"
+regex = '''(?i)aws(.{0,20})?['&quot;\\s](?i)secret['&quot;\\s]{0,2}[:=]{0,2}['&quot;\\s][A-Za-z0-9\\/=+]{40}'''
+entropy = 3.5
+keywords = ["aws", "secret"]
+
+[[rules]]
+description = "GPG Private Key"
+id = "gl-gpg-private-key"
+regex = '''-----BEGIN PGP PRIVATE KEY BLOCK-----'''
+entropy = 5.0
+keywords = ["pgp", "private", "key"]
+
+[[rules]]
+description = "Private Key"
+id = "gl-private-key"
+regex = '''-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----'''
+entropy = 4.5
+keywords = ["private", "key"]
+
+[[rules]]
+description = "Slack Token"
+id = "gl-slack-token"
+regex = '''(xoxb|xoxp|xoxa|xoxr)-[0-9]{10,13}-[0-9]{10,13}-[a-zA-Z0-9]{24}'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["slack", "token", "xoxb", "xoxp"]
+
+[[rules]]
+description = "NPM Token"
+id = "gl-npm-token"
+regex = '''npm_[a-zA-Z0-9]{36}'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["npm", "token"]
+
+[[rules]]
+description = "Docker Registry Token"
+id = "gl-docker-token"
+regex = '''dockerpassword(:|=)[a-zA-Z0-9_\-]{20,}'''
+entropy = 3.0
+secretGroup = 1
+keywords = ["docker", "password", "token"]
+
+[[rules]]
+description = "Kubernetes Service Account Token"
+id = "gl-k8s-sa-token"
+regex = '''eyJhbGciOiJSUzI1NiIsImtpZCI6I[A-Za-z0-9_\-\.]+'''
+entropy = 4.0
+secretGroup = 1
+keywords = ["k8s", "kubernetes", "service", "account", "token"]
+
+[[rules]]
+description = "Database Connection String"
+id = "gl-db-connection-string"
+regex = '''(mongodb|mysql|postgres|redis):\/\/[a-zA-Z0-9_\-]+:[a-zA-Z0-9_\-]+@'''
+entropy = 3.0
+keywords = ["mongodb", "mysql", "postgres", "redis", "connection", "string"]
+
+[[rules]]
+description = "Google Cloud Token"
+id = "gl-gcloud-token"
+regex = '''ya29\.[a-zA-Z0-9_\-]{100,}'''
+entropy = 4.0
+secretGroup = 1
+keywords = ["gcloud", "google", "token", "ya29"]
+
+[[rules]]
+description = "Datadog API Key"
+id = "gl-datadog-api-key"
+regex = '''datadog-api-key: ['&quot;][a-zA-Z0-9]{32}['&quot;]'''
+entropy = 3.0
+secretGroup = 1
+keywords = ["datadog", "api", "key"]
+
+[[rules]]
+description = "PagerDuty Token"
+id = "gl-pagerduty-token"
+regex = '''[a-zA-Z0-9]{40}@pagerduty.com'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["pagerduty", "token"]
+
+# Custom GL Platform secrets
+[[rules]]
+description = "GL Platform API Key"
+id = "gl-platform-api-key"
+regex = '''gl_api_key_[a-zA-Z0-9]{32,}'''
+entropy = 3.5
+secretGroup = 1
+keywords = ["gl", "platform", "api", "key"]
+
+[[rules]]
+description = "GL Platform Secret"
+id = "gl-platform-secret"
+regex = '''gl_secret_[a-zA-Z0-9]{64,}'''
+entropy = 4.0
+secretGroup = 1
+keywords = ["gl", "secret"]
+
+# Test data exceptions
+[[rules.allowlist]]
+description = "Allow test data"
+paths = [
+    '''test.*\.json$''',
+    '''spec/.*\.js$''',
+    '''__tests__/.*'''
+]
+regexes = [
+    '''test_token_\w+''',
+    '''mock_secret_\w+''',
+    '''example_password_\w+'''
+]

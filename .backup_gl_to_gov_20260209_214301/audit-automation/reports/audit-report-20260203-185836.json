@@ -1,0 +1,214 @@
+{
+  "timestamp": "20260203_185836",
+  "version": "2.0.0",
+  "status": "PASS",
+  "summary": {
+    "total_checks": 24,
+    "passed": 24,
+    "failed": 0,
+    "total_violations": 0,
+    "critical_violations": 0,
+    "high_violations": 0
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 133 個文件，發現 0 個問題",
+      "files_scanned": 133,
+      "execution_time_ms": 8,
+      "violations_count": 0
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1653 個目錄和 2841 個文件，發現 0 個命名問題",
+      "files_scanned": 4494,
+      "execution_time_ms": 311,
+      "violations_count": 0
+    },
+    {
+      "name": "Security Check",
+      "passed": true,
+      "message": "掃描 4237 個文件，發現 0 個安全問題",
+      "files_scanned": 4237,
+      "execution_time_ms": 789,
+      "violations_count": 0
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 0 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 29,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 0
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "MNGA Architecture",
+      "passed": true,
+      "message": "檢查 39 個架構組件，發現 0 個問題",
+      "files_scanned": 39,
+      "execution_time_ms": 52,
+      "violations_count": 0
+    },
+    {
+      "name": "Foundation Layer",
+      "passed": true,
+      "message": "Scanned 3 foundation modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Layer",
+      "passed": true,
+      "message": "Checked 4 coordination components, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Engines",
+      "passed": true,
+      "message": "Checked 4 governance engines, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Tools Layer",
+      "passed": true,
+      "message": "Checked 4 critical tools, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Events Layer",
+      "passed": true,
+      "message": "Checked event layer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Complete Naming Enforcer",
+      "passed": true,
+      "message": "Checked complete naming enforcer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Enforcers Completeness",
+      "passed": true,
+      "message": "Checked 4 enforcer modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Services",
+      "passed": true,
+      "message": "Checked 6 coordination services, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Meta-Governance Systems",
+      "passed": true,
+      "message": "Checked 7 meta-governance modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Reasoning System",
+      "passed": true,
+      "message": "Checked reasoning system, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Validators Layer",
+      "passed": true,
+      "message": "Checked validators, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Foundation Layer",
+      "passed": true,
+      "message": "Scanned 3 foundation modules, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Coordination Layer",
+      "passed": true,
+      "message": "Checked 4 coordination components, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Engines",
+      "passed": true,
+      "message": "Checked 4 governance engines, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Tools Layer",
+      "passed": true,
+      "message": "Checked 4 critical tools, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Events Layer",
+      "passed": true,
+      "message": "Checked event layer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "Complete Naming Enforcer",
+      "passed": true,
+      "message": "Checked complete naming enforcer, found 0 issues",
+      "files_scanned": 0,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    }
+  ],
+  "violations": [],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

@@ -1,0 +1,83 @@
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+  external_labels:
+    cluster: 'ng-governance'
+    environment: 'production'
+
+# Alertmanager configuration (optional)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets:
+#           - alertmanager:9093
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - "alert-rules.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: 'prometheus'
+
+  # Node Exporter - System metrics
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+        labels:
+          service: 'node-exporter'
+
+  # NG Semantic Binding Service
+  - job_name: 'ng-semantic-binding'
+    static_configs:
+      - targets: ['ng-semantic-binding:8080']
+        labels:
+          service: 'ng-semantic-binding'
+          component: 'governance'
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Parametric Convergence Service
+  - job_name: 'parametric-convergence'
+    static_configs:
+      - targets: ['parametric-convergence:8081']
+        labels:
+          service: 'parametric-convergence'
+          component: 'governance'
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Fallback Validator Service
+  - job_name: 'fallback-validator'
+    static_configs:
+      - targets: ['fallback-validator:8082']
+        labels:
+          service: 'fallback-validator'
+          component: 'governance'
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Kubernetes Pods (if running in Kubernetes)
+  # - job_name: 'kubernetes-pods'
+  #   kubernetes_sd_configs:
+  #     - role: pod
+  #   relabel_configs:
+  #     - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+  #       action: keep
+  #       regex: true
+  #     - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+  #       action: replace
+  #       target_label: __metrics_path__
+  #       regex: (.+)
+  #     - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+  #       action: replace
+  #       regex: ([^:]+)(?::\d+)?;(\d+)
+  #       replacement: $1:$2
+  #       target_label: __address__
+
+  # Additional services can be added here

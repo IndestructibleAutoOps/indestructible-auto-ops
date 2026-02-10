@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MachineNativeOps - Machine Native Operations Platform</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #e2e8f0;
+            --text-muted: #94a3b8;
+            --success-color: #22c55e;
+            --border-color: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .badge.success {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .card a:hover {
+            text-decoration: underline;
+        }
+        
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .status-table th,
+        .status-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .status-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success-color);
+        }
+        
+        .footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+        
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>🚀 MachineNativeOps</h1>
+        <p>Machine Native Operations Platform with GL Governance System</p>
+        <div class="badges">
+            <span class="badge success">✓ GL Compliance 100%</span>
+            <span class="badge">Python 3.11+</span>
+            <span class="badge">MIT License</span>
+            <span class="badge">Actively Maintained</span>
+        </div>
+        <div class="cta-buttons">
+            <a href="https://github.com/MachineNativeOps/machine-native-ops" class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+            <a href="https://github.com/MachineNativeOps/machine-native-ops/blob/main/QUICKSTART.md" class="btn btn-secondary">
+                📖 Quick Start Guide
+            </a>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>📋 GL Governance System</h3>
+                <p>Comprehensive governance layer system (GL00-99) ensuring code quality, security, and compliance across all operations.</p>
+                <a href="https://github.com/MachineNativeOps/machine-native-ops/blob/main/GL-STATUS-REPORT.md">View GL Status Report →</a>
+            </div>
+            
+            <div class="card">
+                <h3>⚡ Instant Execution</h3>
+                <p>Zero-delay execution framework for immediate task processing with full audit trail and governance compliance.</p>
+                <a href="https://github.com/MachineNativeOps/machine-native-ops/tree/main/instant">Explore Instant Module →</a>
+            </div>
+            
+            <div class="card">
+                <h3>🔧 AEP Engine</h3>
+                <p>Advanced Execution Platform engine for orchestrating complex workflows with built-in monitoring and error handling.</p>
+                <a href="https://github.com/MachineNativeOps/machine-native-ops/tree/main/engine">View Engine Documentation →</a>
+            </div>
+            
+            <div class="card">
+                <h3>📊 Dashboard</h3>
+                <p>Real-time monitoring dashboard for system health, performance metrics, and governance compliance status.</p>
+                <a href="https://github.com/MachineNativeOps/machine-native-ops/tree/main/dashboard">Access Dashboard →</a>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 2rem;">
+            <h3>🔒 GL Constraint Status</h3>
+            <table class="status-table">
+                <thead>
+                    <tr>
+                        <th>Constraint</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GL Semantic Boundaries</td>
+                        <td><span class="status-indicator"><span class="status-dot"></span> ENFORCED</span></td>
+                        <td>All changes respect semantic layer boundaries (GL00-99)</td>
+                    </tr>
+                    <tr>
+                        <td>GL Artifacts Matrix</td>
+                        <td><span class="status-indicator"><span class="status-dot"></span> LOCKED</span></td>
+                        <td>Governance artifact structure protected</td>
+                    </tr>
+                    <tr>
+                        <td>GL Filesystem Mapping</td>
+                        <td><span class="status-indicator"><span class="status-dot"></span> FROZEN</span></td>
+                        <td>Directory structure follows FHS+GL compliance</td>
+                    </tr>
+                    <tr>
+                        <td>GL DSL</td>
+                        <td><span class="status-indicator"><span class="status-dot"></span> SEALED</span></td>
+                        <td>Domain-Specific Language remains unchanged</td>
+                    </tr>
+                    <tr>
+                        <td>GL DAG</td>
+                        <td><span class="status-indicator"><span class="status-dot"></span> PRESERVED</span></td>
+                        <td>Dependency graph topology is immutable</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>
+            © 2024 MachineNativeOps. Licensed under <a href="https://opensource.org/licenses/MIT">MIT License</a>.
+        </p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/MachineNativeOps/machine-native-ops">GitHub</a> · 
+            <a href="https://github.com/MachineNativeOps/machine-native-ops/issues">Issues</a> · 
+            <a href="https://github.com/MachineNativeOps/machine-native-ops/discussions">Discussions</a>
+        </p>
+    </footer>
+</body>
+</html>

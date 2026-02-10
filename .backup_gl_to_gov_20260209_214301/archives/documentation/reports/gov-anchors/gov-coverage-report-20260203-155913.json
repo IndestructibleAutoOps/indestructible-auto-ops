@@ -1,0 +1,154 @@
+{
+  "timestamp": "2026-02-03T15:59:13.197340Z",
+  "total_classified": 5382,
+  "categories": {
+    "python_files": {
+      "count": 1077,
+      "primary_gl": "GL03",
+      "secondary_gl": [
+        "GL60",
+        "GL61"
+      ],
+      "validation_rules": [
+        "LRL-003",
+        "FLR-004"
+      ]
+    },
+    "markdown_files": {
+      "count": 1125,
+      "primary_gl": "GL02",
+      "secondary_gl": [
+        "GL32",
+        "GL52"
+      ],
+      "validation_rules": [
+        "LRL-001"
+      ]
+    },
+    "shell_scripts": {
+      "count": 280,
+      "primary_gl": "GL04",
+      "secondary_gl": [
+        "GL31"
+      ],
+      "validation_rules": [
+        "LRL-004"
+      ]
+    },
+    "json_files": {
+      "count": 1123,
+      "primary_gl": "GL01",
+      "secondary_gl": [
+        "GL50",
+        "GL59"
+      ],
+      "validation_rules": [
+        "LRL-002",
+        "FLR-001"
+      ]
+    },
+    "governance_dsl": {
+      "count": 82,
+      "primary_gl": "GL06",
+      "secondary_gl": [
+        "GL34",
+        "GL57",
+        "GL80"
+      ],
+      "validation_rules": [
+        "LRL-005",
+        "FLR-001"
+      ]
+    },
+    "platform_artifacts": {
+      "count": 142,
+      "primary_gl": "GL38",
+      "secondary_gl": [
+        "GL56",
+        "GL84"
+      ],
+      "validation_rules": [
+        "FLR-001",
+        "FLR-005"
+      ]
+    },
+    "yaml_files": {
+      "count": 1206,
+      "primary_gl": "GL00",
+      "secondary_gl": [
+        "GL51",
+        "GL30"
+      ],
+      "validation_rules": [
+        "LRL-001",
+        "FLR-002"
+      ]
+    },
+    "contract_artifacts": {
+      "count": 6,
+      "primary_gl": "GL36",
+      "secondary_gl": [
+        "GL54",
+        "GL82"
+      ],
+      "validation_rules": [
+        "FLR-001",
+        "FLR-005"
+      ]
+    },
+    "typescript_files": {
+      "count": 331,
+      "primary_gl": "GL05",
+      "secondary_gl": [
+        "GL60",
+        "GL61"
+      ],
+      "validation_rules": [
+        "LRL-003",
+        "FLR-004"
+      ]
+    },
+    "adapter_artifacts": {
+      "count": 10,
+      "primary_gl": "GL37",
+      "secondary_gl": [
+        "GL55",
+        "GL83"
+      ],
+      "validation_rules": [
+        "FLR-001",
+        "FLR-005"
+      ]
+    }
+  },
+  "gl_coverage": {
+    "GL03": 1077,
+    "GL60": 1408,
+    "GL61": 1408,
+    "GL02": 1125,
+    "GL32": 1125,
+    "GL52": 1125,
+    "GL04": 280,
+    "GL31": 280,
+    "GL01": 1123,
+    "GL50": 1123,
+    "GL59": 1123,
+    "GL06": 82,
+    "GL34": 82,
+    "GL57": 82,
+    "GL80": 82,
+    "GL38": 142,
+    "GL56": 142,
+    "GL84": 142,
+    "GL00": 1206,
+    "GL51": 1206,
+    "GL30": 1206,
+    "GL36": 6,
+    "GL54": 6,
+    "GL82": 6,
+    "GL05": 331,
+    "GL37": 10,
+    "GL55": 10,
+    "GL83": 10
+  }
+}

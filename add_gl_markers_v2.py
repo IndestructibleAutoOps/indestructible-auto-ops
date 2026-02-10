@@ -9,8 +9,8 @@ from pathlib import Path
 
 # Configuration
 REPO_ROOT = Path("machine-native-ops")
-GL_ROOT_SEMANTIC_ANCHOR = "engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml"
-GL_UNIFIED_NAMING_CHARTER = "engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml"
+GL_ROOT_SEMANTIC_ANCHOR = "engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml"
+GL_UNIFIED_NAMING_CHARTER = "engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml"
 
 # Required GL markers
 REQUIRED_MARKERS = [
@@ -83,8 +83,8 @@ def add_gl_markers(file_path):
 # @GL-audit-trail: {audit_trail}
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/{GL_ROOT_SEMANTIC_ANCHOR}
-# GL Unified Naming Charter: gl-platform/governance/{GL_UNIFIED_NAMING_CHARTER}
+# GL Root Semantic Anchor: gov-platform/governance/{GL_ROOT_SEMANTIC_ANCHOR}
+# GL Unified Naming Charter: gov-platform/governance/{GL_UNIFIED_NAMING_CHARTER}
 
 """
         

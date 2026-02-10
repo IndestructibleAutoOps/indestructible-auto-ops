@@ -1,0 +1,346 @@
+# Enforcement Rules - Governance-as-Execution
+# Version: 1.0.0
+# Status: ACTIVE
+# GL Binding: GL76, GL97
+
+enforcement_rules:
+  version: "1.0.0"
+  created: "2026-02-03T16:01:22Z"
+  status: ACTIVE
+  description: "Mandatory enforcement rules for UGS + Meta-Spec governance"
+
+# =============================================================================
+# LANGUAGE LAYER ENFORCEMENT (L00-L49)
+# =============================================================================
+language_enforcement:
+  enforcement_id: "ENF-LANG"
+  gl_binding: ["GL00-GL49"]
+  enforcement_type: MANDATORY
+  description: "Language layer enforcement - syntax, grammar, constraints"
+  
+  rules:
+    - rule_id: "LANG-001"
+      name: "YAML Syntax Enforcement"
+      gl_binding: ["GL00"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "yaml-syntax-check"
+      description: "All YAML files must pass syntax validation"
+      
+    - rule_id: "LANG-002"
+      name: "JSON Syntax Enforcement"
+      gl_binding: ["GL01"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "json-syntax-check"
+      description: "All JSON files must pass syntax validation"
+      
+    - rule_id: "LANG-003"
+      name: "Python Type Enforcement"
+      gl_binding: ["GL03"]
+      severity: HIGH
+      action: WARN
+      validation: "python-type-check"
+      description: "All Python files should have type hints"
+      
+    - rule_id: "LANG-004"
+      name: "Shell Script Safety"
+      gl_binding: ["GL04"]
+      severity: HIGH
+      action: WARN
+      validation: "shellcheck"
+      description: "All shell scripts must pass safety checks"
+      
+    - rule_id: "LANG-005"
+      name: "DSL Syntax Enforcement"
+      gl_binding: ["GL06"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "dsl-syntax-check"
+      description: "All governance DSL files must pass syntax validation"
+
+# =============================================================================
+# FORMAT LAYER ENFORCEMENT (L50-L99)
+# =============================================================================
+format_enforcement:
+  enforcement_id: "ENF-FORMAT"
+  gl_binding: ["GL50-GL99"]
+  enforcement_type: MANDATORY
+  description: "Format layer enforcement - schema, structure, validation"
+  
+  rules:
+    - rule_id: "FMT-001"
+      name: "JSON Schema Enforcement"
+      gl_binding: ["GL50"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "json-schema-validation"
+      description: "All JSON files must conform to their schemas"
+      
+    - rule_id: "FMT-002"
+      name: "YAML Schema Enforcement"
+      gl_binding: ["GL51"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "yaml-schema-validation"
+      description: "All YAML files must conform to their schemas"
+      
+    - rule_id: "FMT-003"
+      name: "Field Definition Enforcement"
+      gl_binding: ["GL60"]
+      severity: HIGH
+      action: WARN
+      validation: "field-definition-check"
+      description: "All fields must follow naming conventions"
+      
+    - rule_id: "FMT-004"
+      name: "Required Field Enforcement"
+      gl_binding: ["GL63"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "required-field-check"
+      description: "All required fields must be present"
+      
+    - rule_id: "FMT-005"
+      name: "Format Constraint Enforcement"
+      gl_binding: ["GL65"]
+      severity: HIGH
+      action: WARN
+      validation: "format-constraint-check"
+      description: "All format constraints must be satisfied"
+
+# =============================================================================
+# SEMANTIC LAYER ENFORCEMENT
+# =============================================================================
+semantic_enforcement:
+  enforcement_id: "ENF-SEMANTIC"
+  gl_binding: ["GL14", "GL88"]
+  enforcement_type: MANDATORY
+  description: "Semantic layer enforcement - consistency, boundaries, inference"
+  
+  rules:
+    - rule_id: "SEM-001"
+      name: "Semantic Consistency Enforcement"
+      gl_binding: ["GL14", "GL88"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "semantic-consistency-check"
+      description: "All artifacts must be semantically consistent"
+      
+    - rule_id: "SEM-002"
+      name: "Cross-Layer Dependency Enforcement"
+      gl_binding: ["GL41", "GL91"]
+      severity: HIGH
+      action: WARN
+      validation: "cross-layer-dependency-check"
+      description: "All cross-layer dependencies must be valid"
+      
+    - rule_id: "SEM-003"
+      name: "Semantic Boundary Enforcement"
+      gl_binding: ["GL44", "GL94"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "semantic-boundary-check"
+      description: "All semantic boundaries must be respected"
+
+# =============================================================================
+# TOPOLOGY LAYER ENFORCEMENT
+# =============================================================================
+topology_enforcement:
+  enforcement_id: "ENF-TOPOLOGY"
+  gl_binding: ["GL87"]
+  enforcement_type: MANDATORY
+  description: "Topology layer enforcement - graph, relationships, dependencies"
+  
+  rules:
+    - rule_id: "TOP-001"
+      name: "Circular Dependency Prevention"
+      gl_binding: ["GL87"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "circular-dependency-check"
+      description: "No circular dependencies allowed"
+      
+    - rule_id: "TOP-002"
+      name: "GL Binding Enforcement"
+      gl_binding: ["GL87"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "gov-binding-check"
+      description: "All nodes must have GL binding"
+      
+    - rule_id: "TOP-003"
+      name: "Topology Connectivity Enforcement"
+      gl_binding: ["GL87"]
+      severity: HIGH
+      action: WARN
+      validation: "topology-connectivity-check"
+      description: "Topology graph must be connected"
+
+# =============================================================================
+# GOVERNANCE BINDING ENFORCEMENT
+# =============================================================================
+governance_binding_enforcement:
+  enforcement_id: "ENF-BINDING"
+  gl_binding: ["GL47", "GL97"]
+  enforcement_type: MANDATORY
+  description: "Governance binding enforcement - all artifacts must be bound"
+  
+  rules:
+    - rule_id: "BIND-001"
+      name: "Artifact GL Binding"
+      gl_binding: ["GL47", "GL97"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "artifact-gov-binding-check"
+      description: "All artifacts must be bound to GL anchors"
+      
+    - rule_id: "BIND-002"
+      name: "Layer GL Binding"
+      gl_binding: ["GL47", "GL97"]
+      severity: CRITICAL
+      action: BLOCK
+      validation: "layer-gov-binding-check"
+      description: "All layers must be bound to GL anchor ranges"
+      
+    - rule_id: "BIND-003"
+      name: "Role GL Binding"
+      gl_binding: ["GL47", "GL97"]
+      severity: HIGH
+      action: WARN
+      validation: "role-gov-binding-check"
+      description: "All roles should be bound to GL anchors"
+
+# =============================================================================
+# NAMING CONVENTION ENFORCEMENT
+# =============================================================================
+naming_enforcement:
+  enforcement_id: "ENF-NAMING"
+  gl_binding: ["GL60", "GL65"]
+  enforcement_type: MANDATORY
+  description: "Naming convention enforcement - consistent naming across all artifacts"
+  
+  rules:
+    - rule_id: "NAME-001"
+      name: "GL Anchor Naming"
+      gl_binding: ["GL60"]
+      severity: CRITICAL
+      action: BLOCK
+      pattern: "GL[0-9]{2}"
+      description: "GL anchors must follow GL00-GL99 pattern"
+      
+    - rule_id: "NAME-002"
+      name: "Artifact Naming"
+      gl_binding: ["GL60"]
+      severity: HIGH
+      action: WARN
+      pattern: "[a-z][a-z0-9-]*\\.(yaml|json|md|py|sh)"
+      description: "Artifacts must use lowercase with hyphens"
+      
+    - rule_id: "NAME-003"
+      name: "Schema Naming"
+      gl_binding: ["GL50", "GL60"]
+      severity: HIGH
+      action: WARN
+      pattern: "[a-z][a-z0-9-]*\\.schema\\.json"
+      description: "Schemas must use .schema.json suffix"
+      
+    - rule_id: "NAME-004"
+      name: "Contract Naming"
+      gl_binding: ["GL36", "GL54"]
+      severity: HIGH
+      action: WARN
+      pattern: "[a-z][a-z0-9-]*-contract\\.(yaml|json)"
+      description: "Contracts must use -contract suffix"
+
+# =============================================================================
+# ENFORCEMENT PIPELINE
+# =============================================================================
+enforcement_pipeline:
+  description: "Ordered enforcement pipeline for governance validation"
+  stages:
+    - stage: 1
+      name: "Language Validation"
+      enforcement: "language_enforcement"
+      blocking: true
+      timeout: 60
+      
+    - stage: 2
+      name: "Format Validation"
+      enforcement: "format_enforcement"
+      blocking: true
+      timeout: 60
+      
+    - stage: 3
+      name: "Semantic Validation"
+      enforcement: "semantic_enforcement"
+      blocking: true
+      timeout: 120
+      
+    - stage: 4
+      name: "Topology Validation"
+      enforcement: "topology_enforcement"
+      blocking: false
+      timeout: 60
+      
+    - stage: 5
+      name: "Governance Binding Validation"
+      enforcement: "governance_binding_enforcement"
+      blocking: true
+      timeout: 60
+      
+    - stage: 6
+      name: "Naming Convention Validation"
+      enforcement: "naming_enforcement"
+      blocking: false
+      timeout: 30
+
+# =============================================================================
+# ENFORCEMENT ACTIONS
+# =============================================================================
+enforcement_actions:
+  BLOCK:
+    description: "Block operation and prevent execution"
+    severity_threshold: CRITICAL
+    notification: true
+    audit_log: true
+    
+  WARN:
+    description: "Warn but allow operation to continue"
+    severity_threshold: HIGH
+    notification: true
+    audit_log: true
+    
+  LOG:
+    description: "Log violation but allow operation"
+    severity_threshold: MEDIUM
+    notification: false
+    audit_log: true
+    
+  INFO:
+    description: "Informational only"
+    severity_threshold: LOW
+    notification: false
+    audit_log: false
+
+# =============================================================================
+# ENFORCEMENT EXCEPTIONS
+# =============================================================================
+enforcement_exceptions:
+  temporary_exceptions:
+    max_duration: "30d"
+    approval_required: true
+    audit_log: true
+    
+  permanent_exceptions:
+    approval_required: true
+    review_frequency: "90d"
+    audit_log: true
+    
+  exception_workflow:
+    - "Submit exception request"
+    - "Provide justification"
+    - "Impact analysis"
+    - "Approval by governance admin"
+    - "Exception registration"
+    - "Monitoring and review"

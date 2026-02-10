@@ -1,0 +1,17 @@
+{
+  "gl_root": "sha256:f73419447a7c7e90858e970549b386094bb69df34d2364c1fd3a13297fcb389d",
+  "era": 1,
+  "timestamp": "2026-02-05T02:18:50.304461+00:00",
+  "hashes": {
+    "decision_trace": "sha256:01effd75133b13a2e43888f489886e761ea4a06ac043f553fe7cc2e600e82ec9",
+    "governance_events": "sha256:4cc7fe0888774df3ba257b51aad28cc329ef8aa8b32aba232581269f13001d95",
+    "replayability_report": "sha256:b06324c6752790cd96690b4882d473b5624b1d5fe80c8610c52d85e3651d8ebf"
+  },
+  "verification": {
+    "all_decisions_hashed": true,
+    "all_events_sealed": true,
+    "replayability_verified": true,
+    "unauthorized_self_healing": false
+  },
+  "canonical_hash": "sha256:4c28b51f0337ccf8a2c98bb824f43e0166fe9628e575ba2f3410813029d1b75f"
+}

@@ -1,0 +1,92 @@
+indestructibleautoops_materialization_protocol:
+  version: v1
+  name: "Materialization Protocol (Indestructible 16-step)"
+  steps:
+    - step: 1
+      name: "Space & Ontology"
+      outputs: ["GL_ANCHOR"]
+      gates: ["anchor_present=true", "anchor_immutable=true"]
+    - step: 2
+      name: "Semantic Definition"
+      outputs: ["SPEC.md"]
+      gates: ["terms_defined=true", "must_should_used=true"]
+    - step: 3
+      name: "TDD for Governance"
+      outputs: ["tests/*"]
+      gates: ["acceptance_tests_present=true", "negative_tests_present=true"]
+    - step: "3.5"
+      name: "Environment & Dependency Lock"
+      outputs: ["Dockerfile", "lockfiles/*", "sbom.json", "vuln_scan.json"]
+      gates: ["env_hash_match=true", "no_high_cve=true"]
+    - step: 4
+      name: "Structural Materialization"
+      outputs: ["policy.rego|rule.yaml"]
+      gates: ["schema_valid=true", "lint_pass=true"]
+    - step: 5
+      name: "Coverage Validation"
+      outputs: ["coverage_report.json"]
+      gates: ["path_coverage=100%"]
+    - step: 6
+      name: "Registration"
+      outputs: ["registry.yaml"]
+      gates: ["urn_valid=true", "deps_resolved=true"]
+    - step: "6.5"
+      name: "Identity + Authorization Gate"
+      outputs: ["rbac.yaml", "admission_policies.yaml", "service_identity.yaml"]
+      gates: ["least_privilege=true", "admission_enforced=true"]
+    - step: 7
+      name: "Performance Baseline"
+      outputs: ["perf_suite/*", "sla.yaml", "complexity.md"]
+      gates: ["p99_latency<=slo", "throughput>=min", "error_rate<=max"]
+    - step: "7.2"
+      name: "Data Contract + Lineage Sealing"
+      outputs: ["data_contract.schema.json", "lineage_events.jsonl", "schema_evolution_matrix.yaml"]
+      gates: ["schema_compat=pass", "lineage_required=true"]
+    - step: 8
+      name: "Evidence Chain Generation"
+      outputs: ["attestation.json", "provenance.json", "signed_digests.json"]
+      gates: ["attested=true", "signed=true"]
+    - step: "9.2"
+      name: "Time Integrity + Timestamp Authority"
+      outputs: ["chrony_policy.yaml", "timestamp_attestation.json"]
+      gates: ["clock_skew_ms<=50", "trusted_timestamp=required"]
+    - step: 10
+      name: "Recovery Mechanism"
+      outputs: ["rollback.sh", "degrade_tree.yaml", "dr_report.json"]
+      gates: ["rollback_tested=true", "degrade_defined=true"]
+    - step: "10.2"
+      name: "Runtime Drift Detection + Reconciliation"
+      outputs: ["drift_policy.yaml", "reconcile_plan.yaml"]
+      gates: ["gitops_drift=0"]
+    - step: 11
+      name: "Version Management & Traffic Control"
+      outputs: ["compat_matrix.yaml", "rollout.yaml", "retirement.yaml"]
+      gates: ["compat_verified=true", "canary_enabled=true"]
+    - step: "11.2"
+      name: "Policy Conflict Resolution Model"
+      outputs: ["policy_precedence.yaml", "conflict_tests.rego"]
+      gates: ["conflicts=0"]
+    - step: "12.2"
+      name: "SLO Burn-rate Gates"
+      outputs: ["slo.yaml", "burnrate_rules.yaml", "rollback_trigger.yaml"]
+      gates: ["error_budget_ok=true"]
+    - step: "13.2"
+      name: "Chaos Verification"
+      outputs: ["chaos_suite.yaml", "recovery_e2e_report.json"]
+      gates: ["mttr_ok=true", "auto_recovery_ok=true"]
+    - step: "14.2"
+      name: "Boundary Protocol Verification"
+      outputs: ["egress_allowlist.yaml", "ingress_contract_tests.yaml", "mtls_policy.yaml"]
+      gates: ["egress_default_deny=true", "mtls_strict=true"]
+    - step: "15.2"
+      name: "Break-glass Governance"
+      outputs: ["breakglass_policy.yaml", "override_audit.jsonl"]
+      gates: ["two_person_rule=true", "override_ttl_ok=true"]
+    - step: "16.2"
+      name: "Artifact Class Coverage Expansion"
+      outputs: ["artifact_manifest.yaml", "sbom_all_classes.json", "attestations_all_classes/"]
+      gates: ["artifact_coverage=100%"]
+    - step: 16
+      name: "Final Automated Verification & Deploy"
+      outputs: ["deployment_report.json"]
+      gates: ["all_gates_pass=true"]

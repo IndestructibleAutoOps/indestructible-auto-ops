@@ -1,0 +1,1491 @@
+{
+  "total_files": 90,
+  "files": [
+    {
+      "path": "machine-native-ops/.github/governance/policies/observability/naming-metrics-policy.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/governance/policies/observability/naming-metrics-policy.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/governance/policies/migration/naming-migration-policy.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/governance/policies/migration/naming-migration-policy.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/governance/policies/naming/api-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/governance/policies/naming/api-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/governance/policies/naming/k8s-deployment-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/governance/policies/naming/k8s-deployment-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/governance/policies/naming/pipeline-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/governance/policies/naming/pipeline-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/governance/architecture/gov-directory-naming-spec.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/governance/architecture/gov-directory-naming-spec.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLD",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/workflows/conftest-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/workflows/conftest-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/workflows/gov-naming-governance.yml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/workflows/gov-naming-governance.yml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/archive/workspace-reports/templates/quantum-naming-governance-workflow.code.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/archive/workspace-reports/templates/quantum-naming-governance-workflow.code.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/archive/legacy-workflows/naming-governance.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/archive/legacy-workflows/naming-governance.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/.governance/per-file-audits/elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/.governance/per-file-audits/elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/etl-pipeline/root-policy/naming-convention/naming-registry.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/etl-pipeline/root-policy/naming-convention/naming-registry.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_LAYERS",
+          "GL_FILESYSTEM_MAPPING",
+          "GL_DIRECTORY_NAMING_SPEC",
+          "GLOBAL",
+          "GL_SEMANTIC_ANCHOR",
+          "GLN",
+          "GLXX",
+          "GL_SEMANTIC_STABILIZATION"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLU",
+          "GL_LAYERS",
+          "GLXX",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/scripts-legacy/hooks/gov-naming-check.py",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/scripts-legacy/hooks/gov-naming-check.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/templates/ci/github-actions-naming-check.yml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/templates/ci/github-actions-naming-check.yml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/controlplane/governance/policies/naming.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/controlplane/governance/policies/naming.rego",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/controlplane/specifications/root.specs.naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/controlplane/specifications/root.specs.naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/controlplane/config/root.naming-policy.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/controlplane/config/root.naming-policy.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/tools-legacy/governance/python/validate_naming.py",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/tools-legacy/governance/python/validate_naming.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/tools-legacy/governance/python/naming-migration.py",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/tools-legacy/governance/python/naming-migration.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/tools-legacy/scripts/naming/check-naming.sh",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/tools-legacy/scripts/naming/check-naming.sh",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/observability/dashboards/naming-compliance.json",
+      "patterns": {
+        "file_path": "machine-native-ops/observability/dashboards/naming-compliance.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/contracts/unified-naming-governance-contract.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/contracts/unified-naming-governance-contract.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLGOVERNANCEPOLICY_LEVEL",
+          "GLAGENTMAX_TIMEOUT",
+          "GL_GOVERNANCE_LEVEL",
+          "GLAGENTMAX_RETRIES",
+          "GLRUNTIMEDAG_TIMEOUT",
+          "GLAPISCHEMA_VALIDATION_ENABLED",
+          "GL_AGENT_MAX_ENABLED",
+          "GL_API_RATE_LIMIT",
+          "GL_RUNTIME_MAX_WORKERS",
+          "GL_RUNTIME_TIMEOUT",
+          "GL_",
+          "GLRUNTIMEDAG_MAX_DEPTH",
+          "GL_DB_CONNECTION_POOL",
+          "GLAPISCHEMA_VERSION",
+          "GL_API_PORT",
+          "GL_DB_SHARD_COUNT",
+          "GLMULTIMODALVISION_MODEL"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": [
+          "gov-agent-max-svc",
+          "gov-mcp-multimodal-svc",
+          "gov-quantum-compute-svc",
+          "gov-api-schema-svc",
+          "gov-runtime-dag-svc"
+        ]
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLGOVERNANCEPOLICY_LEVEL",
+          "GLAGENTMAX_TIMEOUT",
+          "GL_GOVERNANCE_LEVEL",
+          "GLAGENTMAX_RETRIES",
+          "GLRUNTIMEDAG_TIMEOUT",
+          "GLAPISCHEMA_VALIDATION_ENABLED",
+          "GL_AGENT_MAX_ENABLED",
+          "GL_API_RATE_LIMIT",
+          "GL_RUNTIME_MAX_WORKERS",
+          "GL_RUNTIME_TIMEOUT",
+          "GL_",
+          "GLRUNTIMEDAG_MAX_DEPTH",
+          "GL_DB_CONNECTION_POOL",
+          "GLAPISCHEMA_VERSION",
+          "GL_API_PORT",
+          "GL_DB_SHARD_COUNT",
+          "GLMULTIMODALVISION_MODEL"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": [
+          "gov-agent-max-svc",
+          "gov-mcp-multimodal-svc",
+          "gov-quantum-compute-svc",
+          "gov-api-schema-svc",
+          "gov-runtime-dag-svc"
+        ]
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gov-unified-naming-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gov-unified-naming-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLU",
+          "GL_LAYERS",
+          "GLXX",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/.governance/policies/naming.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/.governance/policies/naming.rego",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/.governance/playbooks/naming-migration.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/.governance/playbooks/naming-migration.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_validator.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_validator.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_generator.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_generator.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/e2e/test_naming_workflow.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/e2e/test_naming_workflow.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/performance/benchmark_naming.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/performance/benchmark_naming.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-unified-naming-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-unified-naming-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLU",
+          "GL_LAYERS",
+          "GLXX",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-naming-charter-analysis.md",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-naming-charter-analysis.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_LAYERS",
+          "GL_FILESYSTEM_MAPPING",
+          "GL_DIRECTORY_NAMING_SPEC",
+          "GLOBAL",
+          "GL_SEMANTIC_ANCHOR",
+          "GLN",
+          "GLXX",
+          "GL_SEMANTIC_STABILIZATION"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-directory-naming-spec.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-directory-naming-spec.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLD",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/grafana/naming-governance-dashboard.json",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/grafana/naming-governance-dashboard.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/docs/best-practices/naming-patterns.md",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/docs/best-practices/naming-patterns.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/ci-cd/workflows/naming-governance-ci.yml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/ci-cd/workflows/naming-governance-ci.yml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/validation/naming_validator.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/validation/naming_validator.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/generation/naming_generator.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/generation/naming_generator.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/config/naming-governance-v2.0.0.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/config/naming-governance-v2.0.0.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/workflows/quantum-naming-governance.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/workflows/quantum-naming-governance.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR",
+          "GLEMENT_DEPTH"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/observability/naming-metrics-policy.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/observability/naming-metrics-policy.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/migration/naming-migration-policy.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/migration/naming-migration-policy.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/api-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/api-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/k8s-deployment-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/k8s-deployment-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/pipeline-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/pipeline-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/elasticsearch-search-system/root-policy/naming-convention/naming-registry.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/elasticsearch-search-system/root-policy/naming-convention/naming-registry.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/quantum-platform/monitoring/prometheus/naming-violation-rules.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/quantum-platform/monitoring/prometheus/naming-violation-rules.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/quantum-platform/monitoring/grafana/naming-compliance-dashboard.json",
+      "patterns": {
+        "file_path": "machine-native-ops/quantum-platform/monitoring/grafana/naming-compliance-dashboard.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/quantum-platform/governance/naming/opa-naming-policy.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/quantum-platform/governance/naming/opa-naming-policy.rego",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/docs/runbooks/naming-migration-playbook.md",
+      "patterns": {
+        "file_path": "machine-native-ops/docs/runbooks/naming-migration-playbook.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/.github/workflows/naming-governance.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/.github/workflows/naming-governance.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/observability/dashboards/naming-compliance.json",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/observability/dashboards/naming-compliance.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/.config/gatekeeper/constraints/naming-constraints.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/.config/gatekeeper/constraints/naming-constraints.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/.config/gatekeeper/templates/naming-template.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/.config/gatekeeper/templates/naming-template.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/.config/policy/naming.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/.config/policy/naming.rego",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/.config/conftest/policies/naming_policy.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/.config/conftest/policies/naming_policy.rego",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.config/policy/opa/naming.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/.config/policy/opa/naming.rego",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.config/conftest/policies/naming_policy.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/.config/conftest/policies/naming_policy.rego",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-runtime-platform/templates/tools/validate-naming.sh",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-runtime-platform/templates/tools/validate-naming.sh",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-runtime-platform/templates/policies/opa/constraint-template-k8s-naming-requirements.rego",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-runtime-platform/templates/policies/opa/constraint-template-k8s-naming-requirements.rego",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-runtime-platform/templates/policies/opa/constraint-template-k8s-naming-requirements.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-runtime-platform/templates/policies/opa/constraint-template-k8s-naming-requirements.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-runtime-platform/templates/policies/opa/constraint-namespace-naming.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-runtime-platform/templates/policies/opa/constraint-namespace-naming.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-runtime-platform/scripts/fix-axiom-naming.sh",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-runtime-platform/scripts/fix-axiom-naming.sh",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-runtime-platform/scripts/fix-axiom-naming.py",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-runtime-platform/scripts/fix-axiom-naming.py",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/scripts/fix-axiom-naming-repo.sh",
+      "patterns": {
+        "file_path": "machine-native-ops/scripts/fix-axiom-naming-repo.sh",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/scripts/scan-naming-violations.py",
+      "patterns": {
+        "file_path": "machine-native-ops/scripts/scan-naming-violations.py",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/scripts/discovery/naming-audit.sh",
+      "patterns": {
+        "file_path": "machine-native-ops/scripts/discovery/naming-audit.sh",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/archive/unmanned-engineer-ceo/01-advanced-engineering/06-versioning-collaboration/commit-convention.md",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/archive/unmanned-engineer-ceo/01-advanced-engineering/06-versioning-collaboration/commit-convention.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/.governance/per-file-audits/elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/.governance/per-file-audits/elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLGOVERNANCEPOLICY_LEVEL",
+          "GLAGENTMAX_TIMEOUT",
+          "GL_GOVERNANCE_LEVEL",
+          "GLAGENTMAX_RETRIES",
+          "GLRUNTIMEDAG_TIMEOUT",
+          "GLAPISCHEMA_VALIDATION_ENABLED",
+          "GL_AGENT_MAX_ENABLED",
+          "GL_API_RATE_LIMIT",
+          "GL_RUNTIME_MAX_WORKERS",
+          "GL_RUNTIME_TIMEOUT",
+          "GL_",
+          "GLRUNTIMEDAG_MAX_DEPTH",
+          "GL_DB_CONNECTION_POOL",
+          "GLAPISCHEMA_VERSION",
+          "GL_API_PORT",
+          "GL_DB_SHARD_COUNT",
+          "GLMULTIMODALVISION_MODEL"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": [
+          "gov-agent-max-svc",
+          "gov-mcp-multimodal-svc",
+          "gov-quantum-compute-svc",
+          "gov-api-schema-svc",
+          "gov-runtime-dag-svc"
+        ]
+      }
+    },
+    {
+      "path": "machine-native-ops/esync-platform/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/esync-platform/observability/alerts/prometheus-rules/naming-convention-alerts.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/.github/project-docs/gov-governance/schemas/GL99-unified-charter.json",
+      "patterns": {
+        "file_path": "machine-native-ops/.github/project-docs/gov-governance/schemas/GL99-unified-charter.json",
+        "comment_patterns": [],
+        "variable_patterns": [],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/governance/gov-artifacts/strategic/artifacts/governance-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/governance/gov-artifacts/strategic/artifacts/governance-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_LAYERS",
+          "GL_FILESYSTEM_MAPPING",
+          "GL_DIRECTORY_NAMING_SPEC",
+          "GLOBAL",
+          "GL_SEMANTIC_ANCHOR",
+          "GLN",
+          "GLXX",
+          "GL_SEMANTIC_STABILIZATION"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLU",
+          "GL_LAYERS",
+          "GLXX",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gov-unified-naming-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gov-unified-naming-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLU",
+          "GL_LAYERS",
+          "GLXX",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/governance-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/governance-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-unified-naming-charter.yaml",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-unified-naming-charter.yaml",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GLU",
+          "GL_LAYERS",
+          "GLXX",
+          "GL_SEMANTIC_ANCHOR"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    },
+    {
+      "path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-naming-charter-analysis.md",
+      "patterns": {
+        "file_path": "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-naming-charter-analysis.md",
+        "comment_patterns": [],
+        "variable_patterns": [
+          "GL_LAYERS",
+          "GL_FILESYSTEM_MAPPING",
+          "GL_DIRECTORY_NAMING_SPEC",
+          "GLOBAL",
+          "GL_SEMANTIC_ANCHOR",
+          "GLN",
+          "GLXX",
+          "GL_SEMANTIC_STABILIZATION"
+        ],
+        "function_patterns": [],
+        "class_patterns": [],
+        "file_patterns": [],
+        "directory_patterns": [],
+        "service_patterns": []
+      }
+    }
+  ],
+  "patterns": {
+    "file_path": 9952,
+    "variable_patterns": 159,
+    "service_patterns": 15
+  },
+  "categories": {
+    "governance": [
+      "machine-native-ops/.github/governance/policies/observability/naming-metrics-policy.yaml",
+      "machine-native-ops/.github/governance/policies/migration/naming-migration-policy.yaml",
+      "machine-native-ops/.github/governance/policies/naming/api-naming.yaml",
+      "machine-native-ops/.github/governance/policies/naming/k8s-deployment-naming.yaml",
+      "machine-native-ops/.github/governance/policies/naming/pipeline-naming.yaml",
+      "machine-native-ops/.github/governance/architecture/gov-directory-naming-spec.yaml",
+      "machine-native-ops/.github/workflows/gov-naming-governance.yml",
+      "machine-native-ops/.github/archive/workspace-reports/templates/quantum-naming-governance-workflow.code.yaml",
+      "machine-native-ops/.github/archive/legacy-workflows/naming-governance.yaml",
+      "machine-native-ops/engine/.governance/per-file-audits/elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "machine-native-ops/engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "machine-native-ops/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+      "machine-native-ops/engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml",
+      "machine-native-ops/engine/controlplane/governance/policies/naming.rego",
+      "machine-native-ops/engine/tools-legacy/governance/python/validate_naming.py",
+      "machine-native-ops/engine/tools-legacy/governance/python/naming-migration.py",
+      "machine-native-ops/gov-platform/contracts/unified-naming-governance-contract.yaml",
+      "machine-native-ops/gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gov-unified-naming-charter.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/.governance/policies/naming.rego",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/.governance/playbooks/naming-migration.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_validator.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_generator.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/e2e/test_naming_workflow.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/performance/benchmark_naming.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-unified-naming-charter.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-naming-charter-analysis.md",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-directory-naming-spec.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/prometheus/naming-governance-rules.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/monitoring/grafana/naming-governance-dashboard.json",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/docs/best-practices/naming-patterns.md",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/ci-cd/workflows/naming-governance-ci.yml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/validation/naming_validator.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/generation/naming_generator.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/config/naming-governance-v2.0.0.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/workflows/quantum-naming-governance.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/governance/naming/naming-governance-core.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/observability/naming-metrics-policy.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/migration/naming-migration-policy.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/api-naming.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/k8s-deployment-naming.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/policies/naming/pipeline-naming.yaml",
+      "machine-native-ops/quantum-platform/governance/naming/opa-naming-policy.rego",
+      "machine-native-ops/esync-platform/.github/workflows/naming-governance.yaml",
+      "machine-native-ops/engine/.governance/per-file-audits/elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "machine-native-ops/engine/.governance/per-file-audits/es-elasticsearch-search-system_root-policy_naming-convention_naming-registry.yaml.json",
+      "machine-native-ops/gov-platform/governance/naming-governance/contracts/naming-conventions.yaml",
+      "machine-native-ops/.github/project-docs/gov-governance/schemas/GL99-unified-charter.json",
+      "machine-native-ops/engine/governance/gov-artifacts/strategic/artifacts/governance-charter.yaml",
+      "machine-native-ops/engine/governance/gov-artifacts/meta/gov-naming-charter-analysis.md",
+      "machine-native-ops/engine/governance/gov-artifacts/meta/naming-charter/gov-unified-naming-charter.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/gov-unified-naming-charter.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/governance-charter.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-unified-naming-charter.yaml",
+      "machine-native-ops/gov-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gov-artifacts/gl-naming-charter-analysis.md"
+    ],
+    "github": [
+      "machine-native-ops/.github/workflows/conftest-naming.yaml",
+      "machine-native-ops/engine/templates/ci/github-actions-naming-check.yml",
+      "machine-native-ops/.github/archive/unmanned-engineer-ceo/01-advanced-engineering/06-versioning-collaboration/commit-convention.md"
+    ],
+    "engine": [
+      "machine-native-ops/engine/etl-pipeline/root-policy/naming-convention/naming-registry.yaml",
+      "machine-native-ops/engine/scripts-legacy/hooks/gov-naming-check.py",
+      "machine-native-ops/engine/controlplane/specifications/root.specs.naming.yaml",
+      "machine-native-ops/engine/controlplane/config/root.naming-policy.yaml",
+      "machine-native-ops/engine/tools-legacy/scripts/naming/check-naming.sh"
+    ]
+  }
+}

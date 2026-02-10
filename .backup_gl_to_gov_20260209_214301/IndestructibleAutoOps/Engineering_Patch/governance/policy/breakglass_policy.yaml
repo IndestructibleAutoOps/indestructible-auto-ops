@@ -1,0 +1,19 @@
+breakglass:
+  version: v1
+  enabled: true
+  constraints:
+    two_person_rule: true
+    ttl_minutes_max: 15
+  scope:
+    namespaces_allowlist: ["axiom-system", "axiom-ops"]
+    actions_allowlist: ["rollback", "scale", "cordon", "drain"]
+  audit:
+    immutable_log: true
+    required_fields: ["request_id", "actor", "approver", "reason", "ttl_minutes", "start_ts", "end_ts"]
+  keys:
+    rotate_days: 90
+    storage: "vault/hsm"
+  gates:
+    - "override_ttl_ok"
+    - "two_person_rule_ok"
+    - "audit_fields_ok"

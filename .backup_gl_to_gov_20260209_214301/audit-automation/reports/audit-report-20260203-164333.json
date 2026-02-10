@@ -1,0 +1,135 @@
+{
+  "timestamp": "20260203_164333",
+  "version": "2.0.0",
+  "status": "FAIL",
+  "summary": {
+    "total_checks": 7,
+    "passed": 6,
+    "failed": 1,
+    "total_violations": 7,
+    "critical_violations": 6,
+    "high_violations": 1
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 117 個文件，發現 0 個問題",
+      "files_scanned": 117,
+      "execution_time_ms": 8,
+      "violations_count": 0
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1331 個目錄，發現 0 個命名問題",
+      "files_scanned": 1331,
+      "execution_time_ms": 127,
+      "violations_count": 0
+    },
+    {
+      "name": "Security Check",
+      "passed": false,
+      "message": "掃描 4284 個文件，發現 6 個安全問題",
+      "files_scanned": 4284,
+      "execution_time_ms": 857,
+      "violations_count": 6
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 0 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 29,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 1 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 1
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "MNGA Architecture",
+      "passed": true,
+      "message": "檢查 39 個架構組件，發現 0 個問題",
+      "files_scanned": 39,
+      "execution_time_ms": 50,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "summarized-conversations/original_conversation_1769912781_1905.txt",
+      "line_number": 122,
+      "message": "GitHub Personal Access Token exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "summarized-conversations/original_conversation_1769912781_1905.txt",
+      "line_number": 122,
+      "message": "GitHub Token exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "summarized-conversations/original_conversation_1770129769_9578.txt",
+      "line_number": 143,
+      "message": "GitHub Personal Access Token exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "summarized-conversations/original_conversation_1770129769_9578.txt",
+      "line_number": 143,
+      "message": "GitHub Token exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "summarized-conversations/original_conversation_1769918020_1595.txt",
+      "line_number": 60,
+      "message": "GitHub Personal Access Token exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "summarized-conversations/original_conversation_1769918020_1595.txt",
+      "line_number": 60,
+      "message": "GitHub Token exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "MNGA-ENFORCER-005",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": null,
+      "message": "before_operation 執行失敗: 未找到相關治理合約，請檢查 ecosystem/contracts/",
+      "severity": "HIGH",
+      "suggestion": "修復 before_operation 方法"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

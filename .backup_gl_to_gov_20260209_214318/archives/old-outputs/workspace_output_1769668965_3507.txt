@@ -1,0 +1,133 @@
+Running GL governance pre-commit validation...
+Checking: .github/workflows/integration-tests.yml
+Checking: gov-execution-runtime/civilization/civilization-memory/index.ts
+Checking: gov-execution-runtime/civilization/cultural-engine/index.ts
+Checking: gov-execution-runtime/civilization/ecosystem-engine/index.ts
+Checking: gov-execution-runtime/civilization/expansion-engine/index.ts
+Checking: gov-execution-runtime/civilization/governance-system/index.ts
+Checking: gov-execution-runtime/civilization/role-specialization/index.ts
+Checking: gov-execution-runtime/civilization/sustainability-engine/index.ts
+Checking: gov-execution-runtime/code-intel-security-layer/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-core/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-emergence/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-memory/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-nodes/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-optimizer/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-routing/index.ts
+Checking: gov-execution-runtime/cognitive-mesh/mesh-synchronization/index.ts
+Checking: gov-execution-runtime/docs/API-Documentation.md
+Checking: gov-execution-runtime/docs/Deployment-Guide.md
+Checking: gov-execution-runtime/evolution/evolutionary-memory/index.ts
+Checking: gov-execution-runtime/evolution/evolutionary-strategy-engine/index.ts
+Checking: gov-execution-runtime/evolution/index.ts
+Checking: gov-execution-runtime/evolution/self-optimization-loop/index.ts
+Checking: gov-execution-runtime/evolution/self-rewriting-engine/index.ts
+Checking: gov-execution-runtime/evolution/self-versioning/index.ts
+Checking: gov-execution-runtime/evolution/structural-mutation-engine/index.ts
+Checking: gov-execution-runtime/fabric-storage/fabric-edges.json
+Checking: gov-execution-runtime/fabric-storage/fabric-nodes.json
+Checking: gov-execution-runtime/fix-v14.js
+Checking: gov-execution-runtime/global-dag/dag-builder/index.ts
+Checking: gov-execution-runtime/global-dag/dag-executor/index.ts
+Checking: gov-execution-runtime/global-dag/dag-optimizer/index.ts
+Checking: gov-execution-runtime/global-dag/dag-repair/index.ts
+Checking: gov-execution-runtime/global-dag/dag-resolver/index.ts
+Checking: gov-execution-runtime/global-dag/dag-visualizer/index.ts
+Checking: gov-execution-runtime/governance-audit-reports-main/governance-tags-report.json
+Checking: gov-execution-runtime/governance-audit-reports-main/governance-tags-report.md
+Checking: gov-execution-runtime/meta-cognition/decision-optimizer/index.ts
+Checking: gov-execution-runtime/meta-cognition/deep-consciousness-engine/index.ts
+Checking: gov-execution-runtime/meta-cognition/deep-index.ts
+Checking: gov-execution-runtime/meta-cognition/deep-thinking-engine/index.ts
+Checking: gov-execution-runtime/meta-cognition/index.ts
+Checking: gov-execution-runtime/meta-cognition/meta-correction-engine/index.ts
+Checking: gov-execution-runtime/meta-cognition/meta-feedback-loop/index.ts
+Checking: gov-execution-runtime/meta-cognition/meta-reasoning-engine/index.ts
+Checking: gov-execution-runtime/meta-cognition/reflective-memory/index.ts
+Checking: gov-execution-runtime/meta-cognition/self-awareness-engine/index.ts
+Checking: gov-execution-runtime/meta-cognition/self-monitoring-layer/index.ts
+Checking: gov-execution-runtime/meta-cognition/wisdom-engine/index.ts
+Checking: gov-execution-runtime/meta-cognitive/consciousness-emergence/index.ts
+Checking: gov-execution-runtime/meta-cognitive/meta-cognitive-monitoring/index.ts
+Checking: gov-execution-runtime/meta-cognitive/meta-decision/index.ts
+Checking: gov-execution-runtime/meta-cognitive/reflection-loop/index.ts
+Checking: gov-execution-runtime/meta-cognitive/self-assessment/index.ts
+Checking: gov-execution-runtime/package.json
+Checking: gov-execution-runtime/reports-main/priority2-completion-report.md
+Checking: gov-execution-runtime/scripts/add-governance-tags-main.py
+Checking: gov-execution-runtime/src/civilization-server.ts
+Checking: gov-execution-runtime/src/cognitive-mesh-server.ts
+Checking: gov-execution-runtime/src/deep-meta-cognitive-server.ts
+Checking: gov-execution-runtime/src/evolution-server.ts
+Checking: gov-execution-runtime/src/meta-cognitive-server.ts
+Checking: gov-execution-runtime/src/universal-intelligence-server.ts
+Checking: gov-execution-runtime/storage/gl-artifacts-store/global-resource-graph.json
+Checking: gov-execution-runtime/storage/gl-artifacts-store/semantic-resource-graph.json
+Checking: gov-execution-runtime/storage/gl-semantic-graph/analyses.json
+Checking: gov-execution-runtime/test-civilization.js
+Checking: gov-execution-runtime/test-meta-cognitive.js
+Checking: gov-execution-runtime/test-reports-main/integration-test-report.json
+Checking: gov-execution-runtime/test-reports-main/integration-test-report.md
+Checking: gov-execution-runtime/tests/integration-main/integration-test-suite.ts
+Checking: gov-execution-runtime/tests/integration-main/run-integration-tests-simple.ts
+Checking: gov-execution-runtime/tests/integration-main/run-integration-tests.ts
+Checking: gov-execution-runtime/universal-intelligence/cross-domain-reasoning/index.ts
+Checking: gov-execution-runtime/universal-intelligence/general-problem-solving/index.ts
+Checking: gov-execution-runtime/universal-intelligence/index.ts
+Checking: gov-execution-runtime/universal-intelligence/intelligence-transfer/index.ts
+Checking: gov-execution-runtime/universal-intelligence/knowledge-synthesis-engine/index.ts
+Checking: gov-execution-runtime/universal-intelligence/universal-abstraction-engine/index.ts
+Checking: gov-execution-runtime/universal-intelligence/universal-adaptation/index.ts
+Checking: gov-execution-runtime/universal-intelligence/universal-learning-loop/index.ts
+Checking: priority2-main.md
+✅ GL Governance Validation Passed
+✅ Governance event logged to event stream
+[main bda54514] feat(v21): Complete Priority 2 on main branch - Integration tests, governance tags, documentation
+ 112 files changed, 499648 insertions(+), 495779 deletions(-)
+ create mode 100644 .github/workflows/integration-tests.yml
+ create mode 100644 gov-execution-runtime/code-intel-security-layer/index.ts
+ create mode 100644 gov-execution-runtime/docs/API-Documentation.md
+ create mode 100644 gov-execution-runtime/docs/Deployment-Guide.md
+ create mode 100644 gov-execution-runtime/fabric-storage/fabric-edges.json
+ create mode 100644 gov-execution-runtime/fabric-storage/fabric-nodes.json
+ create mode 100644 gov-execution-runtime/governance-audit-reports-main/governance-tags-report.json
+ create mode 100644 gov-execution-runtime/governance-audit-reports-main/governance-tags-report.md
+ create mode 100644 gov-execution-runtime/reports-main/priority2-completion-report.md
+ create mode 100644 gov-execution-runtime/scripts/add-governance-tags-main.py
+ create mode 100644 gov-execution-runtime/test-reports-main/integration-test-report.json
+ create mode 100644 gov-execution-runtime/test-reports-main/integration-test-report.md
+ create mode 100644 gov-execution-runtime/tests/integration-main/integration-test-suite.ts
+ create mode 100644 gov-execution-runtime/tests/integration-main/run-integration-tests-simple.ts
+ create mode 100644 gov-execution-runtime/tests/integration-main/run-integration-tests.ts
+ create mode 100644 outputs/workspace_output_1769665448_8638.txt
+ create mode 100644 outputs/workspace_output_1769665452_7275.txt
+ create mode 100644 outputs/workspace_output_1769665466_7086.txt
+ create mode 100644 outputs/workspace_output_1769665476_1188.txt
+ create mode 100644 outputs/workspace_output_1769665479_283.txt
+ create mode 100644 outputs/workspace_output_1769665482_9348.txt
+ create mode 100644 outputs/workspace_output_1769665485_2113.txt
+ create mode 100644 outputs/workspace_output_1769665489_4092.txt
+ create mode 100644 outputs/workspace_output_1769665502_6153.txt
+ create mode 100644 outputs/workspace_output_1769665516_2386.txt
+ create mode 100644 outputs/workspace_output_1769665524_878.txt
+ create mode 100644 outputs/workspace_output_1769665586_204.txt
+ create mode 100644 outputs/workspace_output_1769665661_4905.txt
+ create mode 100644 outputs/workspace_output_1769665964_7678.txt
+ create mode 100644 outputs/workspace_output_1769666038_3707.txt
+ create mode 100644 outputs/workspace_output_1769668299_3113.txt
+ create mode 100644 outputs/workspace_output_1769668348_4849.txt
+ create mode 100644 outputs/workspace_output_1769668377_3515.txt
+ create mode 100644 outputs/workspace_output_1769668381_3041.txt
+ create mode 100644 outputs/workspace_output_1769668394_3794.txt
+ create mode 100644 outputs/workspace_output_1769668434_4464.txt
+ create mode 100644 outputs/workspace_output_1769668438_1469.txt
+ create mode 100644 outputs/workspace_output_1769668473_9812.txt
+ create mode 100644 outputs/workspace_output_1769668501_1384.txt
+ create mode 100644 outputs/workspace_output_1769668512_4382.txt
+ create mode 100644 outputs/workspace_output_1769668584_1073.txt
+ create mode 100644 outputs/workspace_output_1769668860_3556.txt
+ create mode 100644 outputs/workspace_output_1769668864_4192.txt
+ create mode 100644 outputs/workspace_output_1769668871_7016.txt
+ create mode 100644 outputs/workspace_output_1769668949_2085.txt
+ create mode 100644 priority2-main.md

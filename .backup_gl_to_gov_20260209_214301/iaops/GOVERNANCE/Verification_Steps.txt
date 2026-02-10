@@ -1,0 +1,6 @@
+驗證步驟（Verification Steps）
+make setup
+make lint
+make test
+make example
+indestructibleautoops run --config configs/indestructibleautoops.pipeline.yaml --project examples/dirty_project --mode seal

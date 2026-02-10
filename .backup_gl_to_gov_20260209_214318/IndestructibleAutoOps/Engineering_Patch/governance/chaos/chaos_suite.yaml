@@ -1,0 +1,21 @@
+chaos_suite:
+  version: v1
+  experiments:
+    - id: "CHAOS-CPU-PRESSURE"
+      type: "cpu_hog"
+      duration_seconds: 120
+      success_criteria:
+        - "slo.latency_p99_ms<=slo.objectives.latency_p99_ms"
+        - "auto_recovery=true"
+    - id: "CHAOS-NETWORK-PARTITION"
+      type: "network_partition"
+      duration_seconds: 120
+      success_criteria:
+        - "error_budget_burnrate<burnrate_rules.rules[0].burn_rate_threshold"
+        - "rollback_triggered_if_needed=true"
+    - id: "CHAOS-POD-KILL"
+      type: "pod_kill"
+      count: 3
+      success_criteria:
+        - "mttr_seconds<=20"
+        - "no_data_loss=true"

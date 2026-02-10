@@ -30,7 +30,7 @@ spec:
   
   # Agent definitions
   agents:
-    - id: gl-governance-validator
+    - id: gov-governance-validator
       name: "GL Governance Validator Agent"
       type: "governance"
       priority: 1
@@ -43,14 +43,14 @@ spec:
           - elasticsearch-search-system
           - infrastructure
           - esync-platform
-          - gl-gate
+          - gov-gate
           - .github"
         strict_mode: true
         enforce_semantic_anchors: true
       dependencies: []
       outputs:
-        - "gl-validation-report.json"
-        - "gl-compliance-summary.md"
+        - "gov-validation-report.json"
+        - "gov-compliance-summary.md"
 
     - id: codeql-monitor
       name: "CodeQL Monitor Agent"
@@ -109,7 +109,7 @@ spec:
       enabled: true
       config:
         validation_rules:
-          - "gl-layer-compliance"
+          - "gov-layer-compliance"
           - "api-version-consistency"
           - "metadata-completeness"
         schema_paths:
@@ -208,7 +208,7 @@ spec:
           - "detailed"
           - "dashboard"
       dependencies:
-        - "gl-governance-validator"
+        - "gov-governance-validator"
         - "codeql-monitor"
         - "quality-assurance"
         - "dependency-scanner"

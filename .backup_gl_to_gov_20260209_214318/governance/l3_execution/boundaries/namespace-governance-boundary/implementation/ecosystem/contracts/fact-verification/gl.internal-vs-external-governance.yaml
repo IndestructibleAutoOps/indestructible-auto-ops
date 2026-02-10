@@ -1,0 +1,114 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: gov-governance/v1
+kind: KnowledgeBoundaryGovernance
+metadata:
+  name: internal-external-boundary-governance
+  version: 1.0.0
+  description: 内部事实与外部语境的边界治理规范
+  category: governance
+spec:
+  internal_truth:
+    principle: 唯一真实来源
+    scope:
+      - 当前系统的实际状态
+      - 已部署的契约和配置
+      - 代码仓库的实际内容
+      - 运行时的实际行为
+    invariants:
+      - 内部事实不可被外部信息覆盖
+      - 内部事实描述必须可验证
+      - 内部事实版本与代码版本绑定
+    verification_methods:
+      - static_analysis: 代码/配置解析
+      - runtime_query: API/CLI查询
+      - hash_verification: 内容哈希验证
+  external_context:
+    principle: 参考框架
+    allowed_uses:
+      - 提供设计模式和最佳实践
+      - 提供标准化术语
+      - 提供行业基准
+      - 提供演进方向
+    prohibited_uses:
+      - 声称系统已完成某标准
+      - 描述系统的实际状态
+      - 替代内部文档
+      - 做出实现承诺
+    citation_requirements:
+      - 必须注明来源URL
+      - 必须注明标准版本
+      - 必须注明引用日期
+      - 必须区分要求和建议
+  cross_boundary_rules:
+    rule1:
+      name: 事实流向
+      description: 信息只能从内部流向报告，外部只能作为对照
+    rule2:
+      name: 差异处理流程
+      steps:
+        - 检测差异（内部 vs 外部）
+        - 分类差异（aligned/intentional-debt/gap）
+        - 记录理由（对于intentional差异）
+        - 创建事项（对于debt/gap）
+    rule3:
+      name: 术语映射
+      requirement: 当使用外部术语时，必须建立到内部术语的映射表
+  enforcement:
+    pre_generation_checks:
+      - 验证内部事实收集是否完成
+      - 检查是否有足够的证据覆盖率
+      - 确保没有禁止使用的短语
+    runtime_guards:
+      guard1:
+        name: 绝对声明拦截器
+        pattern: /(完全|所有|100%|已全部|彻底)/
+        action: reject
+      guard2:
+        name: 无证据声明拦截器
+        pattern: /(应该|可能|推测|我认为)/
+        action: require_evidence
+      guard3:
+        name: 外部冒充内部拦截器
+        pattern: 根据.*标准，我们.*已经.*实现
+        action: rewrite
+    post_generation_audit:
+      checklist:
+        - 所有陈述都有证据链接
+        - 外部引用都有适当限定词
+        - 差异分类正确
+        - 建议基于具体差距分析
+  exceptions:
+    type1:
+      name: 已知设计决策
+      process: 必须在design-decisions/目录下有记录
+      presentation: 报告中必须包含'设计理由'部分
+    type2:
+      name: 标准冲突
+      process: 必须记录在standards-conflicts/目录
+      presentation: 必须解释选择的原因和权衡
+    type3:
+      name: 部分实现
+      process: 必须创建partial-implementation跟踪事项
+      presentation: 必须明确标注实现百分比和缺失部分
+  responsibilities:
+    fact_collector:
+      role: 内部事实收集
+      accountable_for: 事实的完整性和准确性
+    context_researcher:
+      role: 外部语境研究
+      accountable_for: 标准的正确引用和版本管理
+    cross_validator:
+      role: 交叉验证
+      accountable_for: 差异分析的客观性和分类准确性
+    report_generator:
+      role: 报告生成
+      accountable_for: 遵守所有生成规则和格式要求
+
+# Version: 1.0.0  
+# Last Updated: 2024-01-20  
+# Maintained By: GL Governance Team

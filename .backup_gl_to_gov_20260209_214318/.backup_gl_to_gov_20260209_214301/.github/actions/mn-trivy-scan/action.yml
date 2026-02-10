@@ -1,0 +1,382 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-trivy-scan
+# Replaces: aquasecurity/trivy-action@master
+# Description: Trivy vulnerability scanner for containers and filesystems
+# Version: 1.0.0
+
+name: 'MN Trivy Scan'
+description: 'MachineNativeOps official Trivy vulnerability scanning action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'search'
+  color: 'red'
+
+inputs:
+  scan-type:
+    description: 'Scan type: fs (filesystem), image, repo, config, sbom'
+    required: false
+    default: 'fs'
+  image-ref:
+    description: 'Container image to scan (for image scan type)'
+    required: false
+    default: ''
+  scan-ref:
+    description: 'Path or reference to scan'
+    required: false
+    default: '.'
+  format:
+    description: 'Output format: table, json, sarif, cyclonedx, spdx'
+    required: false
+    default: 'table'
+  output:
+    description: 'Output file path'
+    required: false
+    default: ''
+  severity:
+    description: 'Severities to include: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+    required: false
+    default: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+  vuln-type:
+    description: 'Vulnerability types: os,library'
+    required: false
+    default: 'os,library'
+  ignore-unfixed:
+    description: 'Ignore unpatched/unfixed vulnerabilities'
+    required: false
+    default: 'false'
+  exit-code:
+    description: 'Exit code when vulnerabilities are found'
+    required: false
+    default: '0'
+  skip-dirs:
+    description: 'Comma-separated list of directories to skip'
+    required: false
+    default: ''
+  skip-files:
+    description: 'Comma-separated list of files to skip'
+    required: false
+    default: ''
+  cache-dir:
+    description: 'Cache directory for Trivy database'
+    required: false
+    default: '${{ runner.temp }}/.trivy-cache'
+  timeout:
+    description: 'Scan timeout (e.g., 5m, 10m)'
+    required: false
+    default: '10m'
+  trivyignores:
+    description: 'Path to .trivyignore file'
+    required: false
+    default: ''
+  list-all-pkgs:
+    description: 'List all packages regardless of vulnerability'
+    required: false
+    default: 'false'
+  scanners:
+    description: 'Comma-separated list of scanners: vuln,misconfig,secret,license'
+    required: false
+    default: 'vuln,secret'
+  github-pat:
+    description: 'GitHub PAT for private repo scanning'
+    required: false
+    default: ${{ github.token }}
+  upload-sarif:
+    description: 'Upload SARIF results to GitHub Security'
+    required: false
+    default: 'false'
+
+outputs:
+  sarif-file:
+    description: 'Path to SARIF output file'
+    value: ${{ steps.scan.outputs.sarif_file }}
+  vulnerability-count:
+    description: 'Number of vulnerabilities found'
+    value: ${{ steps.scan.outputs.vuln_count }}
+  critical-count:
+    description: 'Number of critical vulnerabilities'
+    value: ${{ steps.scan.outputs.critical_count }}
+  high-count:
+    description: 'Number of high vulnerabilities'
+    value: ${{ steps.scan.outputs.high_count }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check Trivy Installation
+      id: check
+      shell: bash
+      run: |
+        if command -v trivy &> /dev/null; then
+          TRIVY_VERSION=$(trivy --version 2>&1 | head -1)
+          echo "Trivy found: $TRIVY_VERSION"
+          echo "trivy_installed=true" >> $GITHUB_OUTPUT
+          echo "trivy_path=$(which trivy)" >> $GITHUB_OUTPUT
+        else
+          echo "Trivy not found, will install"
+          echo "trivy_installed=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Install Trivy
+      if: steps.check.outputs.trivy_installed != 'true'
+      shell: bash
+      run: |
+        echo "Installing Trivy..."
+
+        # Detect OS
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m)
+
+        case "$ARCH" in
+          x86_64) ARCH="64bit" ;;
+          aarch64|arm64) ARCH="ARM64" ;;
+          armv7l) ARCH="ARM" ;;
+        esac
+
+        # Get latest version
+        TRIVY_VERSION=$(curl -s https://api.github.com/repos/aquasecurity/trivy/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+
+        if [[ -z "$TRIVY_VERSION" || "$TRIVY_VERSION" == "null" ]]; then
+          TRIVY_VERSION="0.49.1"  # Fallback version
+        fi
+
+        echo "Installing Trivy version: $TRIVY_VERSION"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+
+        # Download and install
+        DOWNLOAD_URL="https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_${OS^}-${ARCH}.tar.gz"
+
+        curl -sL "$DOWNLOAD_URL" -o /tmp/trivy.tar.gz
+
+        sudo tar -xzf /tmp/trivy.tar.gz -C /usr/local/bin trivy 2>/dev/null || \
+        tar -xzf /tmp/trivy.tar.gz -C "$HOME/.local/bin" trivy 2>/dev/null || {
+          mkdir -p "$HOME/.local/bin"
+          tar -xzf /tmp/trivy.tar.gz -C "$HOME/.local/bin" trivy
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+        }
+
+        rm /tmp/trivy.tar.gz
+
+        # Verify installation
+        trivy --version || "$HOME/.local/bin/trivy" --version
+
+    - name: Setup Cache Directory
+      shell: bash
+      run: |
+        CACHE_DIR="${{ inputs.cache-dir }}"
+
+        mkdir -p "$CACHE_DIR"
+        echo "TRIVY_CACHE_DIR=$CACHE_DIR" >> $GITHUB_ENV
+
+    - name: Download Trivy Database
+      shell: bash
+      run: |
+        echo "Updating Trivy vulnerability database..."
+        trivy image --download-db-only 2>/dev/null || true
+
+    - name: Run Trivy Scan
+      id: scan
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-pat }}
+      run: |
+        SCAN_TYPE="${{ inputs.scan-type }}"
+        IMAGE_REF="${{ inputs.image-ref }}"
+        SCAN_REF="${{ inputs.scan-ref }}"
+        FORMAT="${{ inputs.format }}"
+        OUTPUT="${{ inputs.output }}"
+        SEVERITY="${{ inputs.severity }}"
+        VULN_TYPE="${{ inputs.vuln-type }}"
+        IGNORE_UNFIXED="${{ inputs.ignore-unfixed }}"
+        EXIT_CODE="${{ inputs.exit-code }}"
+        SKIP_DIRS="${{ inputs.skip-dirs }}"
+        SKIP_FILES="${{ inputs.skip-files }}"
+        TIMEOUT="${{ inputs.timeout }}"
+        TRIVYIGNORES="${{ inputs.trivyignores }}"
+        LIST_ALL="${{ inputs.list-all-pkgs }}"
+        SCANNERS="${{ inputs.scanners }}"
+        UPLOAD_SARIF="${{ inputs.upload-sarif }}"
+
+        # Build trivy command
+        TRIVY_CMD="trivy"
+        TRIVY_ARGS=""
+
+        # Determine scan target
+        case "$SCAN_TYPE" in
+          fs|filesystem)
+            TRIVY_ARGS="fs $SCAN_REF"
+            ;;
+          image)
+            if [[ -n "$IMAGE_REF" ]]; then
+              TRIVY_ARGS="image $IMAGE_REF"
+            else
+              echo "::error::image-ref is required for image scan type"
+              exit 1
+            fi
+            ;;
+          repo)
+            TRIVY_ARGS="repo $SCAN_REF"
+            ;;
+          config)
+            TRIVY_ARGS="config $SCAN_REF"
+            ;;
+          sbom)
+            TRIVY_ARGS="sbom $SCAN_REF"
+            ;;
+          *)
+            TRIVY_ARGS="fs $SCAN_REF"
+            ;;
+        esac
+
+        # Add common options
+        TRIVY_ARGS="$TRIVY_ARGS --severity=$SEVERITY"
+        TRIVY_ARGS="$TRIVY_ARGS --timeout=$TIMEOUT"
+
+        # Add scanners
+        if [[ -n "$SCANNERS" ]]; then
+          TRIVY_ARGS="$TRIVY_ARGS --scanners=$SCANNERS"
+        fi
+
+        # Add vulnerability type
+        if [[ -n "$VULN_TYPE" && "$SCAN_TYPE" != "config" ]]; then
+          TRIVY_ARGS="$TRIVY_ARGS --vuln-type=$VULN_TYPE"
+        fi
+
+        # Ignore unfixed
+        if [[ "$IGNORE_UNFIXED" == "true" ]]; then
+          TRIVY_ARGS="$TRIVY_ARGS --ignore-unfixed"
+        fi
+
+        # Skip directories
+        if [[ -n "$SKIP_DIRS" ]]; then
+          for dir in $(echo "$SKIP_DIRS" | tr ',' ' '); do
+            TRIVY_ARGS="$TRIVY_ARGS --skip-dirs=$dir"
+          done
+        fi
+
+        # Skip files
+        if [[ -n "$SKIP_FILES" ]]; then
+          for file in $(echo "$SKIP_FILES" | tr ',' ' '); do
+            TRIVY_ARGS="$TRIVY_ARGS --skip-files=$file"
+          done
+        fi
+
+        # Trivyignore file
+        if [[ -n "$TRIVYIGNORES" && -f "$TRIVYIGNORES" ]]; then
+          TRIVY_ARGS="$TRIVY_ARGS --ignorefile=$TRIVYIGNORES"
+        fi
+
+        # List all packages
+        if [[ "$LIST_ALL" == "true" ]]; then
+          TRIVY_ARGS="$TRIVY_ARGS --list-all-pkgs"
+        fi
+
+        # Determine output format and file
+        SARIF_FILE=""
+        if [[ "$UPLOAD_SARIF" == "true" || "$FORMAT" == "sarif" ]]; then
+          SARIF_FILE="${OUTPUT:-trivy-results.sarif}"
+          TRIVY_ARGS="$TRIVY_ARGS --format=sarif --output=$SARIF_FILE"
+        elif [[ -n "$OUTPUT" ]]; then
+          TRIVY_ARGS="$TRIVY_ARGS --format=$FORMAT --output=$OUTPUT"
+        else
+          TRIVY_ARGS="$TRIVY_ARGS --format=$FORMAT"
+        fi
+
+        # Exit code
+        TRIVY_ARGS="$TRIVY_ARGS --exit-code=$EXIT_CODE"
+
+        echo "Running: $TRIVY_CMD $TRIVY_ARGS"
+        echo "=========================================="
+
+        # Run scan and capture output
+        SCAN_OUTPUT=$($TRIVY_CMD $TRIVY_ARGS 2>&1) || SCAN_EXIT=$?
+        echo "$SCAN_OUTPUT"
+
+        # Parse results for counts
+        VULN_COUNT=0
+        CRITICAL_COUNT=0
+        HIGH_COUNT=0
+
+        if [[ -n "$SARIF_FILE" && -f "$SARIF_FILE" ]]; then
+          VULN_COUNT=$(jq '[.runs[].results[]] | length' "$SARIF_FILE" 2>/dev/null || echo "0")
+          CRITICAL_COUNT=$(jq '[.runs[].results[] | select(.level == "error")] | length' "$SARIF_FILE" 2>/dev/null || echo "0")
+          HIGH_COUNT=$(jq '[.runs[].results[] | select(.level == "warning")] | length' "$SARIF_FILE" 2>/dev/null || echo "0")
+        else
+          # Parse from table output
+          CRITICAL_COUNT=$(echo "$SCAN_OUTPUT" | grep -c "CRITICAL" || echo "0")
+          HIGH_COUNT=$(echo "$SCAN_OUTPUT" | grep -c "HIGH" || echo "0")
+          VULN_COUNT=$((CRITICAL_COUNT + HIGH_COUNT))
+        fi
+
+        echo "sarif_file=$SARIF_FILE" >> $GITHUB_OUTPUT
+        echo "vuln_count=$VULN_COUNT" >> $GITHUB_OUTPUT
+        echo "critical_count=$CRITICAL_COUNT" >> $GITHUB_OUTPUT
+        echo "high_count=$HIGH_COUNT" >> $GITHUB_OUTPUT
+
+        # Handle exit code
+        if [[ -n "$SCAN_EXIT" && "$SCAN_EXIT" != "0" && "$EXIT_CODE" != "0" ]]; then
+          exit $SCAN_EXIT
+        fi
+
+    - name: Upload SARIF to GitHub Security
+      if: inputs.upload-sarif == 'true' && steps.scan.outputs.sarif_file != ''
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-pat }}
+      run: |
+        SARIF_FILE="${{ steps.scan.outputs.sarif_file }}"
+
+        if [[ ! -f "$SARIF_FILE" ]]; then
+          echo "::warning::SARIF file not found, skipping upload"
+          exit 0
+        fi
+
+        echo "Uploading SARIF to GitHub Security..."
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+        REF="${{ github.ref }}"
+        SHA="${{ github.sha }}"
+
+        # Compress and encode SARIF
+        SARIF_CONTENT=$(gzip -c "$SARIF_FILE" | base64 -w0)
+
+        # Build JSON payload for SARIF upload
+        PAYLOAD=$(jq -n \
+          --arg commit_sha "$SHA" \
+          --arg ref "$REF" \
+          --arg sarif "$SARIF_CONTENT" \
+          --arg tool_name "Trivy" \
+          '{commit_sha: $commit_sha, ref: $ref, sarif: $sarif, tool_name: $tool_name}')
+
+        # Upload
+        curl -s -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "$API_URL/repos/$REPO/code-scanning/sarifs" \
+          -d "$PAYLOAD" \
+          || echo "::warning::SARIF upload may have failed"
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-TRIVY-SCAN SUMMARY"
+        echo "=========================================="
+        echo "Scan Type: ${{ inputs.scan-type }}"
+        echo "Target: ${{ inputs.scan-ref }}${{ inputs.image-ref }}"
+        echo "Severity Filter: ${{ inputs.severity }}"
+        echo "Vulnerabilities Found: ${{ steps.scan.outputs.vuln_count }}"
+        echo "  - Critical: ${{ steps.scan.outputs.critical_count }}"
+        echo "  - High: ${{ steps.scan.outputs.high_count }}"
+        echo "SARIF File: ${{ steps.scan.outputs.sarif_file }}"
+        echo "=========================================="

@@ -1,0 +1,48 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-aggregator
+  namespace: autofix
+  labels:
+    app: result-aggregator
+    tier: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: result-aggregator
+  template:
+    metadata:
+      labels:
+        app: result-aggregator
+        tier: api
+    spec:
+      serviceAccountName: autofix-sa
+      containers:
+      - name: result-aggregator
+        image: autofix/result-aggregator:latest
+        securityContext:
+          allowPrivilegeEscalation: false
+        ports:
+        - containerPort: 8084
+        envFrom:
+        - configMapRef:
+            name: autofix-config
+        env:
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: autofix-secrets
+              key: DATABASE_PASSWORD
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"

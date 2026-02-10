@@ -1,0 +1,451 @@
+# 遷移映射表
+# 定義所有文件和目錄的遷移路徑
+
+version: "1.0"
+created: "2026-02-09T13:16:31"
+description: "IndestructibleAutoOps 重構遷移映射表"
+
+# 根層目錄遷移
+root_directory_mapping:
+  # 整合 responsibility-* 目錄
+  responsibility-gap-boundary:
+    target: "governance/l3_execution/boundaries/gap-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-gates-boundary:
+    target: "governance/l3_execution/boundaries/gates-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-gateway-boundary:
+    target: "governance/l3_execution/boundaries/gateway-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-gcp-boundary:
+    target: "governance/l3_execution/boundaries/gcp-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-generation-boundary:
+    target: "governance/l3_execution/boundaries/generation-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-gov-layers-boundary:
+    target: "governance/l3_execution/boundaries/gov-layers-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-global-policy-boundary:
+    target: "governance/l3_execution/boundaries/global-policy-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-governance-anchor-boundary:
+    target: "governance/l3_execution/boundaries/governance-anchor-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-governance-execution-boundary:
+    target: "governance/l3_execution/boundaries/governance-execution-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-governance-sensing-boundary:
+    target: "governance/l3_execution/boundaries/governance-sensing-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-governance-specs-boundary:
+    target: "governance/l3_execution/boundaries/governance-specs-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-group-boundary:
+    target: "governance/l3_execution/boundaries/group-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-guardrails-boundary:
+    target: "governance/l3_execution/boundaries/guardrails-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-mnga-architecture-boundary:
+    target: "governance/l3_execution/boundaries/mnga-architecture-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-mno-operations-boundary:
+    target: "governance/l3_execution/boundaries/mno-operations-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-namespace-governance-boundary:
+    target: "governance/l3_execution/boundaries/namespace-governance-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-observability-grafana-boundary:
+    target: "governance/l3_execution/boundaries/observability-grafana-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  responsibility-quantum-stack-boundary:
+    target: "governance/l3_execution/boundaries/quantum-stack-boundary"
+    reason: "整合所有責任邊界到統一位置"
+    priority: "high"
+  
+  # 整合 enterprise-governance
+  enterprise-governance:
+    target: "governance/l2_domains/enterprise"
+    reason: "整合企業治理到治理領域"
+    priority: "high"
+
+# 命名前綴遷移映射
+naming_prefix_mapping:
+  # gl- → gov-
+  gov-evolution-data:
+    target: "gov-evolution-data"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-gate:
+    target: "gov-gate"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-artifacts:
+    target: "gov-artifacts"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-hooks:
+    target: "gov-hooks"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-restructure:
+    target: "gov-restructure"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-engine:
+    target: "gov-engine"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-core:
+    target: "gov-core"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-governance:
+    target: "gov-governance"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-platform-assistant:
+    target: "gov-platform-assistant"
+    reason: "統一命名前綴為 gov-"
+  
+  gov-platform-ide:
+    target: "gov-platform-ide"
+    reason: "統一命名前綴為 gov-"
+  
+  # gl. → gov.
+  gl.platform-assistant:
+    target: "gov.platform-assistant"
+    reason: "統一命名前綴為 gov."
+  
+  gl.platform-ide:
+    target: "gov.platform-ide"
+    reason: "統一命名前綴為 gov."
+  
+  gl.causal-reasoning-spec:
+    target: "gov.causal-reasoning-spec"
+    reason: "統一命名前綴為 gov."
+  
+  gl.execution.finalization-spec:
+    target: "gov.execution.finalization-spec"
+    reason: "統一命名前綴為 gov."
+  
+  gl.evolution-metrics:
+    target: "gov.evolution-metrics"
+    reason: "統一命名前綴為 gov."
+  
+  gl.cognitive-modes-spec:
+    target: "gov.cognitive-modes-spec"
+    reason: "統一命名前綴為 gov."
+  
+  gl.execution.analysis-report:
+    target: "gov.execution.analysis-report"
+    reason: "統一命名前綴為 gov."
+  
+  gl.flow.upgrade-log:
+    target: "gov.flow.upgrade-log"
+    reason: "統一命名前綴為 gov."
+  
+  gl.execution.delta-report:
+    target: "gov.execution.delta-report"
+    reason: "統一命名前綴為 gov."
+  
+  gl.verifiable-report-spec:
+    target: "gov.verifiable-report-spec"
+    reason: "統一命名前綴為 gov."
+  
+  # gl_ → gov_
+  gl_governance_audit_engine:
+    target: "gov_governance_audit_engine"
+    reason: "統一命名前綴為 gov_"
+  
+  # GL_ → GOV_
+  GL_EVENT_TEMPLATE:
+    target: "GOV_EVENT_TEMPLATE"
+    reason: "統一命名前綴為 GOV_"
+  
+  # governance-* → gov-*
+  governance-audit:
+    target: "gov-audit"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-legacy:
+    target: "gov-legacy"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-enforcement-implementation-complete:
+    target: "gov-enforcement-implementation-complete"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-enforcement-progress:
+    target: "gov-enforcement-progress"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-enforcement-layer-todo:
+    target: "gov-enforcement-layer-todo"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-files-migration-complete:
+    target: "gov-files-migration-complete"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-files-migration-plan:
+    target: "gov-files-migration-plan"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-restructure-executor:
+    target: "gov-restructure-executor"
+    reason: "統一命名前綴為 gov-"
+  
+  governance-event-stream:
+    target: "gov-event-stream"
+    reason: "統一命名前綴為 gov-"
+  
+  # gov_* → gov-*（統一為 kebab-case）
+  gov_policy:
+    target: "gov-policy"
+    reason: "統一為 kebab-case"
+  
+  gov_contract:
+    target: "gov-contract"
+    reason: "統一為 kebab-case"
+  
+  gov_evolution_engine:
+    target: "gov-evolution-engine"
+    reason: "統一為 kebab-case"
+  
+  gov_pre_commit:
+    target: "gov-pre-commit"
+    reason: "統一為 kebab-case"
+  
+  gov_naming_check:
+    target: "gov-naming-check"
+    reason: "統一為 kebab-case"
+  
+  gov_consolidation_plan:
+    target: "gov-consolidation-plan"
+    reason: "統一為 kebab-case"
+  
+  gov_integrator:
+    target: "gov-integrator"
+    reason: "統一為 kebab-case"
+  
+  gov_executor:
+    target: "gov-executor"
+    reason: "統一為 kebab-case"
+  
+  gov_validator:
+    target: "gov-validator"
+    reason: "統一為 kebab-case"
+  
+  gov_reporter:
+    target: "gov-reporter"
+    reason: "統一為 kebab-case"
+
+# 文件內容替換映射
+content_replacement_mapping:
+  # 導入路徑替換
+  import_replacements:
+    - pattern: "from gl\\."
+      replacement: "from gov."
+      description: "替換 gl. 導入為 gov."
+    
+    - pattern: "import gl\\."
+      replacement: "import gov."
+      description: "替換 import gl. 為 import gov."
+    
+    - pattern: "from gl_"
+      replacement: "from gov_"
+      description: "替換 gl_ 導入為 gov_"
+    
+    - pattern: "import gl_"
+      replacement: "import gov_"
+      description: "替換 import gl_ 為 import gov_"
+    
+    - pattern: "from governance"
+      replacement: "from gov"
+      description: "替換 governance 導入為 gov"
+    
+    - pattern: "import governance"
+      replacement: "import gov"
+      description: "替換 import governance 為 import gov"
+  
+  # 配置文件替換
+  config_replacements:
+    - pattern: "gl-"
+      replacement: "gov-"
+      description: "替換 gl- 配置為 gov-"
+    
+    - pattern: "gl\\."
+      replacement: "gov."
+      description: "替換 gl. 配置為 gov."
+    
+    - pattern: "gl_"
+      replacement: "gov_"
+      description: "替換 gl_ 配置為 gov_"
+    
+    - pattern: "GL_"
+      replacement: "GOV_"
+      description: "替換 GL_ 配置為 GOV_"
+    
+    - pattern: "governance-"
+      replacement: "gov-"
+      description: "替換 governance- 配置為 gov-"
+
+# 遷移順序
+migration_order:
+  - phase: "phase1"
+    description: "整合根層目錄"
+    tasks:
+      - "整合 18 個 responsibility-* 目錄"
+      - "整合 enterprise-governance 目錄"
+      - "整合 .governance 目錄"
+      - "創建 L0-L4 層級結構"
+  
+  - phase: "phase2"
+    description: "統一命名前綴"
+    tasks:
+      - "重命名 gl-* → gov-*"
+      - "重命名 gl.* → gov.*"
+      - "重命名 gl_* → gov_*"
+      - "重命名 GL_* → GOV_*"
+      - "重命名 governance-* → gov-*"
+      - "重命名 gov_* → gov-*"
+  
+  - phase: "phase3"
+    description: "更新文件內容"
+    tasks:
+      - "更新導入路徑"
+      - "更新配置文件"
+      - "更新文檔引用"
+      - "更新腳本引用"
+  
+  - phase: "phase4"
+    description: "驗證和測試"
+    tasks:
+      - "驗證結構完整性"
+      - "驗證命名一致性"
+      - "運行測試套件"
+      - "驗證 CI/CD"
+
+# 驗證規則
+validation_rules:
+  structure:
+    - rule: "根層目錄數應該為 14"
+      check: "count_root_directories == 14"
+      severity: "critical"
+    
+    - rule: "所有 responsibility-* 目錄應該已移動"
+      check: "count_responsibility_directories == 0"
+      severity: "critical"
+    
+    - rule: "governance/ 目錄應該包含 L0-L4 層級"
+      check: "exists('governance/l0_semantic_root') and exists('governance/l1_governance_core') and exists('governance/l2_domains') and exists('governance/l3_execution') and exists('governance/l4_evidence')"
+      severity: "critical"
+  
+  naming:
+    - rule: "所有 gl-* 前綴應該已替換為 gov-*"
+      check: "count_prefix('gl-') == 0"
+      severity: "high"
+    
+    - rule: "所有 gl.* 前綴應該已替換為 gov.*"
+      check: "count_prefix('gl.') == 0"
+      severity: "high"
+    
+    - rule: "所有 gl_ 前綴應該已替換為 gov_"
+      check: "count_prefix('gl_') == 0"
+      severity: "high"
+    
+    - rule: "所有 GL_ 前綴應該已替換為 GOV_"
+      check: "count_prefix('GL_') == 0"
+      severity: "high"
+    
+    - rule: "所有 governance-* 前綴應該已替換为 gov-*"
+      check: "count_prefix('governance-') == 0"
+      severity: "high"
+    
+    - rule: "所有 gov_* 前綴應該已替換為 gov-*"
+      check: "count_prefix('gov_') == 0"
+      severity: "medium"
+  
+  content:
+    - rule: "所有導入路徑應該已更新"
+      check: "count_imports('gl.') == 0 and count_imports('gl_') == 0 and count_imports('governance') == 0"
+      severity: "high"
+    
+    - rule: "所有配置文件應該已更新"
+      check: "count_config_references('gl-') == 0 and count_config_references('gl.') == 0"
+      severity: "high"
+
+# 風險評估
+risk_assessment:
+  high:
+    - "破壞性變更可能影響現有用戶"
+    - "導入路徑更新可能導致運行時錯誤"
+    - "配置文件更新可能導致配置錯誤"
+  
+  medium:
+    - "命名衝突可能導致覆蓋"
+    - "性能影響可能影響用戶體驗"
+    - "文檔滯後可能導致混淆"
+  
+  low:
+    - "臨時文件清理可能影響開發"
+    - "測試用例更新可能影響覆蓋率"
+    - "日誌文件清理可能影響調試"
+
+# 回滾策略
+rollback_strategy:
+  triggers:
+    - "測試失敗率 > 10%"
+    - "關鍵功能失效"
+    - "性能下降 > 20%"
+    - "用戶投訴 > 5"
+  
+  procedure:
+    - "停止所有正在進行的遷移"
+    - "恢復最新備份"
+    - "執行回滾腳本"
+    - "驗證回滾結果"
+    - "通知相關方"
+  
+  verification:
+    - "檢查根層目錄數為 35"
+    - "檢查所有 responsibility-* 目錄存在"
+    - "檢查命名前綴恢復原狀"
+    - "運行所有測試"
+    - "驗證 CI/CD 管道"

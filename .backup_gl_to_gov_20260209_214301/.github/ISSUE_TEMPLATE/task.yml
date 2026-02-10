@@ -1,0 +1,153 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 📋 Task
+description: Create a development task or work item
+title: "[Task]: "
+labels: ["status:triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📋 Development Task
+        Create a specific development task or work item.
+        
+        **GL Unified Charter Activated**
+
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task Type
+      description: What type of task is this?
+      options:
+        - Implementation
+        - Refactoring
+        - Testing
+        - Documentation
+        - Configuration
+        - Research/Spike
+        - Maintenance
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component does this task affect?
+      options:
+        - AEP Engine Core
+        - GL Gate Module
+        - Governance System
+        - Web Application
+        - CLI Application
+        - CI/CD Pipeline
+        - Documentation
+        - Infrastructure
+        - Multiple Components
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Task priority
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Estimated Size
+      description: Estimated effort for this task
+      options:
+        - XS (< 1 hour)
+        - S (1-4 hours)
+        - M (1-2 days)
+        - L (3-5 days)
+        - XL (1+ week)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: Describe the task in detail
+      placeholder: |
+        Provide a clear description of what needs to be done.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Define when this task is complete
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-details
+    attributes:
+      label: Technical Details
+      description: Any technical specifications or implementation notes
+      placeholder: |
+        Include relevant technical details, code references, or implementation guidance.
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: List any dependencies or blockers
+      placeholder: |
+        - Depends on #123
+        - Requires completion of X
+        - Blocked by Y
+
+  - type: textarea
+    id: related
+    attributes:
+      label: Related Issues/PRs
+      description: Link related issues or pull requests
+      placeholder: |
+        - Related to #123
+        - Part of epic #456
+
+  - type: dropdown
+    id: gl-layer
+    attributes:
+      label: GL Layer
+      description: Which GL layer does this task affect?
+      options:
+        - L0-Foundation
+        - L1-Core
+        - L2-Engine
+        - L3-Application
+        - L4-Integration
+        - Multiple Layers
+        - N/A
+    validations:
+      required: true

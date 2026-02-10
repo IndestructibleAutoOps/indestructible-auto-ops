@@ -1,0 +1,79 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# Machine-Native Observability Configuration
+# Unified configuration for monitoring, metrics, and health checks
+
+apiVersion: v1
+kind: ObservabilityConfig
+metadata:
+  name: machine-native-observability
+  version: "1.0.0"
+
+metrics:
+  enabled: true
+  collection_interval: 300  # seconds
+  exporters:
+    - type: json
+      path: reports/metrics.json
+    - type: prometheus
+      port: 9090
+      path: /metrics
+
+health_checks:
+  enabled: true
+  interval: 60  # seconds
+  checks:
+    - name: git_status
+      enabled: true
+      critical: false
+    - name: workflows
+      enabled: true
+      critical: true
+    - name: dependencies
+      enabled: true
+      critical: false
+    - name: documentation
+      enabled: true
+      critical: false
+    - name: security_config
+      enabled: true
+      critical: true
+    - name: tests
+      enabled: true
+      critical: false
+
+alerting:
+  enabled: true
+  channels:
+    - type: github_issue
+      on_status: [unhealthy]
+      labels: [bug, automated]
+    - type: log
+      on_status: [degraded, unhealthy]
+
+dashboards:
+  governance:
+    enabled: true
+    refresh_interval: 3600
+    output: docs/LANGUAGE_GOVERNANCE_DASHBOARD.md
+  
+  autonomy:
+    enabled: true
+    refresh_interval: 86400
+    output: docs/autonomy/
+
+logging:
+  level: INFO
+  format: json
+  outputs:
+    - type: file
+      path: logs/observability.log
+    - type: stdout
+
+retention:
+  metrics_days: 30
+  health_check_days: 7
+  logs_days: 14

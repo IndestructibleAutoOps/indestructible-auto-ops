@@ -1,0 +1,50 @@
+# Data Synchronization Service
+
+## Overview
+
+This directory contains the Data Synchronization Service for the MachineNativeOps platform. The service provides comprehensive data synchronization capabilities between two systems with advanced features including conflict resolution, incremental sync, retry logic, data validation, and monitoring.
+
+## GL Unified Charter Activated
+
+This service is governed by the GL (Governance Layers) Unified Charter and follows all governance requirements:
+
+- **Governance Layer**: GL90-99
+- **Charter Version**: 2.0.0
+- **Semantic Anchor**: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+
+## Integration with Agent Orchestration
+
+This service integrates with the `.github/agents/agent-orchestration.yml` system as a high-priority synchronization agent:
+
+```yaml
+agents:
+  - id: data-sync-agent
+    name: "Data Synchronization Agent"
+    type: "synchronization"
+    priority: 1
+    enabled: true
+    config:
+      serviceConfig: "instant/configs/data-sync-config.yaml"
+      pipelines:
+        - "users-sync"
+        - "orders-sync"
+        - "inventory-sync"
+    outputs:
+      - "sync-status.json"
+      - "sync-report.md"
+```
+
+## Integration with File Organizer System
+
+The service works with the `file-organizer-system` for:
+- Configuration file management
+- Artifact storage and organization
+- Log file management
+- Backup and archive operations
+
+## Integration with AEP Engine
+
+The service leverages the `engine` (Architecture Execution Pipeline) for:
+- Architecture validation and compliance
+- Governance enforcement
+- Semantic anchoring and evidence chain generation

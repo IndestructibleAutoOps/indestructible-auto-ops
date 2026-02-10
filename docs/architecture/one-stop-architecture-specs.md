@@ -12,15 +12,15 @@ and evidence.
 - Executive / Program: [README.md](README.md),
   [executive_summary.md](executive_summary.md),
   [WORKSPACE_STATUS.md](WORKSPACE_STATUS.md)
-- Architect / Tech Lead: [gl-enterprise-architecture/README.md](gl-enterprise-architecture/README.md),
-  [directory-boundary-specification.md](gl-enterprise-architecture/governance/directory-boundary-specification.md),
-  [boundary-reference-matrix.md](gl-enterprise-architecture/governance/boundary-reference-matrix.md),
+- Architect / Tech Lead: [gov-enterprise-architecture/README.md](gov-enterprise-architecture/README.md),
+  [directory-boundary-specification.md](gov-enterprise-architecture/governance/directory-boundary-specification.md),
+  [boundary-reference-matrix.md](gov-enterprise-architecture/governance/boundary-reference-matrix.md),
   [designs/multi-agent-architecture.md](designs/multi-agent-architecture.md),
-  [gl-runtime-engine-platform/SPEC.md](gl-runtime-engine-platform/SPEC.md)
-- Developer: [Layer READMEs](#canonical-architecture-map-gl-layers),
+  [gov-runtime-engine-platform/SPEC.md](gov-runtime-engine-platform/SPEC.md)
+- Developer: [Layer READMEs](#canonical-architecture-map-gov-layers),
   [ARCHITECTURE-TO-CODE-PROTOCOL-QUICK-START.md](governance/specs/ARCHITECTURE-TO-CODE-PROTOCOL-QUICK-START.md),
   [scripts/](scripts/)
-- Compliance / QA: [boundary_checker.py](gl-governance-compliance-platform/scripts/boundary_checker.py),
+- Compliance / QA: [boundary_checker.py](gov-governance-compliance-platform/scripts/boundary_checker.py),
   [policies](.github/governance/policies/),
   [evidence/](evidence/),
   [reports/](reports/)
@@ -29,14 +29,14 @@ and evidence.
 
 | GL Layer | Purpose | Canonical Docs | Implementation Roots |
 | --- | --- | --- | --- |
-| GL00-09 | Enterprise governance and architecture | [gl-enterprise-architecture/README.md](gl-enterprise-architecture/README.md)<br>[directory-boundary-specification.md](gl-enterprise-architecture/governance/directory-boundary-specification.md)<br>[boundary-reference-matrix.md](gl-enterprise-architecture/governance/boundary-reference-matrix.md)<br>[boundary-enforcement-rules.md](gl-enterprise-architecture/governance/boundary-enforcement-rules.md) | `gl-enterprise-architecture/` (canonical)<br>`gl-governance-architecture-platform/` (mirror) |
-| GL10-29 | Platform services | [gl-platform-services/README.md](gl-platform-services/README.md) | `gl-platform-services/`<br>`gl-automation-*`<br>`gl-platform-core-platform/` |
-| GL20-29 | Data processing | [gl-data-processing/README.md](gl-data-processing/README.md)<br>[gl-data-processing-platform/README.md](gl-data-processing-platform/README.md) | `gl-data-processing/`<br>`gl-data-processing-platform/`<br>`gl-search-elasticsearch-platform/` |
-| GL30-49 | Execution runtime | [gl-execution-runtime/README.md](gl-execution-runtime/README.md) | `gl-execution-runtime/`<br>`gl-runtime-engine-platform/`<br>`gl-runtime-execution-platform/` |
-| GL50-59 | Observability | [gl-observability/README.md](gl-observability/README.md)<br>[gl-monitoring-observability-platform/README.md](gl-monitoring-observability-platform/README.md) | `gl-observability/`<br>`gl-monitoring-observability-platform/`<br>`gl-monitoring-system-platform/` |
-| GL60-80 | Governance compliance | [gl-governance-compliance-platform/README.md](gl-governance-compliance-platform/README.md) | `gl-governance-compliance/`<br>`gl-governance-compliance-platform/` |
-| GL81-83 | Extension services | [gl-extension-services/README.md](gl-extension-services/README.md)<br>[gl-extension-services-platform/README.md](gl-extension-services-platform/README.md) | `gl-extension-services/`<br>`gl-extension-services-platform/` |
-| GL90-99 | Meta specifications | [gl-meta-specifications/README.md](gl-meta-specifications/README.md)<br>[.github/governance/GL-README.md](.github/governance/GL-README.md) | `gl-meta-specifications/`<br>`.github/governance/`<br>`gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/` |
+| GL00-09 | Enterprise governance and architecture | [gov-enterprise-architecture/README.md](gov-enterprise-architecture/README.md)<br>[directory-boundary-specification.md](gov-enterprise-architecture/governance/directory-boundary-specification.md)<br>[boundary-reference-matrix.md](gov-enterprise-architecture/governance/boundary-reference-matrix.md)<br>[boundary-enforcement-rules.md](gov-enterprise-architecture/governance/boundary-enforcement-rules.md) | `gov-enterprise-architecture/` (canonical)<br>`gov-governance-architecture-platform/` (mirror) |
+| GL10-29 | Platform services | [gov-platform-services/README.md](gov-platform-services/README.md) | `gov-platform-services/`<br>`gov-automation-*`<br>`gov-platform-core-platform/` |
+| GL20-29 | Data processing | [gov-data-processing/README.md](gov-data-processing/README.md)<br>[gov-data-processing-platform/README.md](gov-data-processing-platform/README.md) | `gov-data-processing/`<br>`gov-data-processing-platform/`<br>`gov-search-elasticsearch-platform/` |
+| GL30-49 | Execution runtime | [gov-execution-runtime/README.md](gov-execution-runtime/README.md) | `gov-execution-runtime/`<br>`gov-runtime-engine-platform/`<br>`gov-runtime-execution-platform/` |
+| GL50-59 | Observability | [gov-observability/README.md](gov-observability/README.md)<br>[gov-monitoring-observability-platform/README.md](gov-monitoring-observability-platform/README.md) | `gov-observability/`<br>`gov-monitoring-observability-platform/`<br>`gov-monitoring-system-platform/` |
+| GL60-80 | Governance compliance | [gov-governance-compliance-platform/README.md](gov-governance-compliance-platform/README.md) | `gov-governance-compliance/`<br>`gov-governance-compliance-platform/` |
+| GL81-83 | Extension services | [gov-extension-services/README.md](gov-extension-services/README.md)<br>[gov-extension-services-platform/README.md](gov-extension-services-platform/README.md) | `gov-extension-services/`<br>`gov-extension-services-platform/` |
+| GL90-99 | Meta specifications | [gov-meta-specifications/README.md](gov-meta-specifications/README.md)<br>[.github/governance/GL-README.md](.github/governance/GL-README.md) | `gov-meta-specifications/`<br>`.github/governance/`<br>`gov-governance-architecture-platform/GL90-99-Meta-Specification-Layer/` |
 
 ## Core Specifications and Protocols
 
@@ -68,13 +68,13 @@ and evidence.
 
 ## Runtime and Platform Architecture
 
-- [AEP Engine Overview](gl-runtime-engine-platform/README.md)
-- [AEP Engine Spec](gl-runtime-engine-platform/SPEC.md)
-- [ETL Pipeline System Architecture](gl-runtime-engine-platform/etl-pipeline/docs/architecture/system-architecture.md)
-- [ETL Pipeline GL Layer Mapping](gl-runtime-engine-platform/etl-pipeline/docs/guides/gl-layer-mapping.md)
-- [Runtime Execution Platform Overview](gl-runtime-execution-platform/README.md)
-- [Runtime Execution AEP Spec](gl-runtime-execution-platform/engine/SPEC.md)
-- [Data Processing Platform Overview](gl-data-processing-platform/README.md)
+- [AEP Engine Overview](gov-runtime-engine-platform/README.md)
+- [AEP Engine Spec](gov-runtime-engine-platform/SPEC.md)
+- [ETL Pipeline System Architecture](gov-runtime-engine-platform/etl-pipeline/docs/architecture/system-architecture.md)
+- [ETL Pipeline GL Layer Mapping](gov-runtime-engine-platform/etl-pipeline/docs/guides/gov-layer-mapping.md)
+- [Runtime Execution Platform Overview](gov-runtime-execution-platform/README.md)
+- [Runtime Execution AEP Spec](gov-runtime-execution-platform/engine/SPEC.md)
+- [Data Processing Platform Overview](gov-data-processing-platform/README.md)
 
 ## Agent System Architecture
 
@@ -87,16 +87,16 @@ and evidence.
 
 - [GL Governance README](.github/governance/GL-README.md)
 - [Governance Architecture Overview](.github/governance/GOVERNANCE-ARCHITECTURE-OVERVIEW.md)
-- [GL Architecture Quick Reference](.github/governance/architecture/gl-quickref.md)
-- [GL Architecture Readme](.github/governance/architecture/gl-architecture-readme.md)
+- [GL Architecture Quick Reference](.github/governance/architecture/gov-quickref.md)
+- [GL Architecture Readme](.github/governance/architecture/gov-architecture-readme.md)
 - [Security Policy](.github/governance/policies/security-policy.md)
 - [Repository Policies](policies/)
 
 ## Compliance, Validation, and Evidence
 
-- [Boundary Checker](gl-governance-compliance-platform/scripts/boundary_checker.py)
-- [Naming Validator](gl-governance-compliance/scripts/naming/gl_naming_validator.py)
-- [Evolution Engine](gl-governance-compliance/scripts/evolution/gov_evolution_engine.py)
+- [Boundary Checker](gov-governance-compliance-platform/scripts/boundary_checker.py)
+- [Naming Validator](gov-governance-compliance/scripts/naming/gl_naming_validator.py)
+- [Evolution Engine](gov-governance-compliance/scripts/evolution/gov_evolution_engine.py)
 - [Validation Scripts](scripts/)
 - [Tests](tests/)
 - [Evidence](evidence/)
@@ -119,7 +119,7 @@ canonical sources listed above unless you are explicitly validating legacy
 work.
 
 - `machine-native-ops/` contains historical mirrors of runtime docs.
-- `gl-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/`
+- `gov-governance-architecture-platform/GL90-99-Meta-Specification-Layer/governance/archived/legacy/`
   contains archived governance artifacts.
 
 ## Closed-Loop Update Workflow
@@ -128,6 +128,6 @@ When adding or updating a spec or architecture document, close the loop:
 
 1. Add/update the spec in `governance/specs/` or `ecosystem/governance/`.
 2. Link the implementation in the relevant GL layer or `gl-*-platform/`.
-3. Add or update validation in `gl-governance-compliance*/` or `scripts/`.
+3. Add or update validation in `gov-governance-compliance*/` or `scripts/`.
 4. Attach evidence in `evidence/` or `reports/`.
 5. Update this hub so the entry point stays current.

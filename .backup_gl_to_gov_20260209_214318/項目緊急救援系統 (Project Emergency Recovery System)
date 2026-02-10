@@ -1,0 +1,655 @@
+# 項目緊急救援系統 (Project Emergency Recovery System)
+
+## 執行摘要
+
+本文檔定義了 **IndestructibleAutoOps** 平台的**企業級項目緊急救援系統**，用於診斷、隔離、重建並驗證因 AI 虛構代碼污染而飄移的架構。該系統採用**六層架構**、**零容忍強制執行**、**完整審計追蹤**和**自動化恢復機制**，確保項目完全恢復並建立長期治理框架。
+
+| 方面 | 說明 |
+|------|------|
+| **目標** | 快速檢測虛構代碼、隔離污染源、重建架構、驗證完整性 |
+| **架構層級** | 6 層 (診斷→隔離→重建→驗證→鎖定→運營) |
+| **執行模式** | 自動化 + 人工審核二元流程 |
+| **恢復時間** | 4-8 小時 (取決於項目規模) |
+| **成功標準** | 0 個虛構代碼 + 100% 編譯通過 + 所有測試通過 |
+
+---
+
+## 第 1 部分：系統架構設計
+
+### 1.1 六層救援架構
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 第 6 層：運營與監控 (Operational Monitoring)               │
+│ - 持續監控 - 自動告警 - 定期審計                            │
+└──────────────────────────────────────────────────────────────┘
+                            ↑↓
+┌─────────────────────────────────────────────────────────────┐
+│ 第 5 層：防止機制 (Prevention & Locking)                   │
+│ - 架構鎖定 - 虛構檢測網關 - CI/CD 強制                      │
+└──────────────────────────────────────────────────────────────┘
+                            ↑↓
+┌─────────────────────────────────────────────────────────────┐
+│ 第 4 層：驗證框架 (Verification Framework)                 │
+│ - 多層驗證 - 靜態分析 - 動態測試 - 架構檢查                 │
+└──────────────────────────────────────────────────────────────┘
+                            ↑↓
+┌─────────────────────────────────────────────────────────────┐
+│ 第 3 層：重建系統 (Rebuild System)                         │
+│ - 六階段重建流程 - 依賴重裝 - 增量恢復                      │
+└──────────────────────────────────────────────────────────────┘
+                            ↑↓
+┌─────────────────────────────────────────────────────────────┐
+│ 第 2 層：隔離系統 (Isolation System)                       │
+│ - 備份 - 隔離虛構文件 - 清理依賴 - 沙箱隔離                 │
+└──────────────────────────────────────────────────────────────┘
+                            ↑↓
+┌─────────────────────────────────────────────────────────────┐
+│ 第 1 層：檢測引擎 (Detection Engine)                       │
+│ - 虛構代碼掃描 - 違規分類 - 優先級排序                      │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### 1.2 核心原則
+
+**原則 1：零容忍 (Zero-Tolerance)**
+- 虛構代碼發現即隔離，不允許繼續傳播
+- 所有 P0 級虛構必須在 24 小時內清理完成
+- 自動化執行，人工審核後續
+
+**原則 2：完整追蹤 (Complete Audit Trail)**
+- 每次檢測、隔離、重建操作都記錄在案
+- 支持完全回溯和取證分析
+- 所有備份保留 30 天以上
+
+**原則 3：增量恢復 (Incremental Recovery)**
+- 不是推倒重來，而是有控制地逐步恢復
+- 每個階段都有驗證檢查點
+- 可以在任何時刻回滾到上一個穩定狀態
+
+**原則 4：自動化優先 (Automation First)**
+- 所有流程都應該自動化執行
+- 人工審核只用於決策點和異常情況
+- 提供 CLI 工具和 API 接口
+
+**原則 5：雙重驗證 (Dual Verification)**
+- 靜態分析 + 動態測試
+- 編譯檢查 + 運行時檢查
+- 自動化測試 + 人工測試
+
+---
+
+## 第 2 部分：虛構代碼檢測引擎
+
+### 2.1 檢測維度矩陣
+
+| 檢測類型 | 特徵 | 嚴重級別 | 檢測方法 |
+|---------|------|--------|--------|
+| **虛假 API 調用** | `api.fake.*`, `mock.*` | 🔴 P0 | 正則表達式 + 靜態分析 |
+| **未導入函數** | 使用但未定義/導入的函數 | 🟠 P1 | 符號表追蹤 |
+| **循環依賴** | A→B→A 的導入循環 | 🟠 P1 | 依賴圖分析 |
+| **孤立代碼** | 導出但無人使用 | 🟡 P2 | 調用圖分析 |
+| **邏輯缺陷** | `if(true)`, 空 throw | 🟡 P2 | 控制流分析 |
+| **TODO 標記** | 未完成代碼 | 🟢 P3 | 正則表達式 |
+
+### 2.2 檢測引擎工作流
+
+```
+輸入文件集合
+    ↓
+[1] 語法解析 (AST 構建)
+    ↓
+[2] 符號表構建 (導入/導出/定義分析)
+    ↓
+[3] 依賴圖構建 (調用圖、導入圖)
+    ↓
+[4] 五層檢測並行執行
+    ├─ 檢測 A: 虛假 API 和 placeholder
+    ├─ 檢測 B: 未導入/未定義符號
+    ├─ 檢測 C: 循環依賴
+    ├─ 檢測 D: 孤立代碼
+    └─ 檢測 E: 邏輯缺陷
+    ↓
+[5] 結果聚合與優先級排序
+    ↓
+輸出違規報告 (JSON + Markdown)
+```
+
+### 2.3 檢測配置規範
+
+```yaml
+detection_engine:
+  enabled: true
+  concurrency: 4  # 並行掃描 4 個文件
+  
+  patterns:
+    fake_api:
+      - "api\\.fake\\."
+      - "mock\\."
+      - "TODO_IMPLEMENT"
+      - "PLACEHOLDER"
+    
+    undefined_symbols:
+      max_depth: 3  # 最多追蹤 3 層調用
+      builtin_list: [console, Array, Object, Promise]
+    
+    circular_dependencies:
+      max_path_length: 5
+      timeout_ms: 5000
+  
+  severity_mapping:
+    fake_api: "critical"
+    undefined_function: "high"
+    circular_dependency: "high"
+    orphaned_code: "low"
+    broken_logic: "medium"
+  
+  thresholds:
+    critical_count: 0  # 最多允許 0 個 critical
+    high_count: 5      # 最多允許 5 個 high
+    medium_count: 20   # 最多允許 20 個 medium
+```
+
+---
+
+## 第 3 部分：代碼隔離系統
+
+### 3.1 隔離流程 (5 個步驟)
+
+| 步驟 | 名稱 | 操作 | 驗證方式 |
+|------|------|------|---------|
+| 1 | 備份 | 複製整個 `src/` 到 `.recovery/backup/` | 校驗和驗證 |
+| 2 | 識別 | 標記虛構文件為 "quarantine" | 文件掃描 |
+| 3 | 隔離 | 複製到 `.recovery/quarantine/`，替換為空文件 | 路徑驗證 |
+| 4 | 清理 | 移除指向虛構文件的導入語句 | 編譯測試 |
+| 5 | 驗證 | TypeScript 編譯 + ESLint 檢查 | 零錯誤標準 |
+
+### 3.2 隔離區目錄結構
+
+```
+.recovery/
+├── backup/
+│   ├── packages-backup-2026-02-05-180000/
+│   │   ├── api/
+│   │   ├── frontend/
+│   │   ├── core/
+│   │   └── ...
+│   ├── package.json.backup
+│   └── tsconfig.json.backup
+│
+├── quarantine/
+│   ├── packages_api_service_ts
+│   ├── packages_api_handler_ts
+│   ├── packages_frontend_App_tsx
+│   └── ...
+│
+└── logs/
+    ├── isolation-2026-02-05-180000.json
+    ├── recovery-2026-02-05-180000.json
+    └── ...
+```
+
+### 3.3 恢復策略
+
+**完全恢復 (Full Recovery)**
+```bash
+# 如果隔離後發現有誤，使用此命令完全恢復
+cp -r .recovery/backup/packages-backup-* packages/
+pnpm install
+pnpm run build
+```
+
+**部分恢復 (Selective Recovery)**
+```bash
+# 只恢復特定文件
+cp .recovery/quarantine/packages_api_service_ts packages/api/service.ts
+```
+
+**差異比較 (Diff Analysis)**
+```bash
+# 比較原始和隔離版本
+diff -u .recovery/backup/packages-backup-*/api/service.ts packages/api/service.ts
+```
+
+---
+
+## 第 4 部分：架構重建系統
+
+### 4.1 六階段重建流程
+
+#### 階段 1：清理 (Cleanup) - ~5 分鐘
+
+**目標**：清除所有污染源和損壞的工件
+
+| 操作 | 命令 | 驗證 |
+|------|------|------|
+| 刪除 node_modules | `rm -rf node_modules pnpm-lock.yaml` | 路徑不存在 |
+| 清理構建產物 | `rm -rf dist build .next out` | 路徑不存在 |
+| 驗證配置 | `node -e "JSON.parse(fs.readFileSync('package.json'))"` | 無解析錯誤 |
+
+#### 階段 2：驗證核心 (Core Validation) - ~2 分鐘
+
+**目標**：確認核心配置文件完整有效
+
+```typescript
+// 驗證 package.json
+- name 存在且有效
+- version 格式正確
+- dependencies 沒有虛構包
+- scripts 中 build/test 存在
+
+// 驗證 tsconfig.json
+- compilerOptions 有效
+- paths 配置正確
+- 無圓形依賴
+```
+
+#### 階段 3：重新安裝 (Reinstall) - ~30-60 分鐘
+
+**目標**：安裝所有依賴，確保依賴樹完整
+
+```bash
+pnpm install
+pnpm list --depth=0  # 驗證頂級依賴
+```
+
+#### 階段 4：構建 (Build) - ~10-20 分鐘
+
+**目標**：編譯所有包，發現遺留的編譯錯誤
+
+```bash
+# 對每個 package 執行
+pnpm run build --filter=@core/*
+pnpm run build --filter=@api/*
+pnpm run build --filter=@frontend/*
+
+# 驗證產物
+- dist/ 存在且包含所有預期文件
+- 無編譯警告（除了已知的排除項）
+- Source maps 生成完整
+```
+
+#### 階段 5：測試 (Testing) - ~15-30 分鐘
+
+**目標**：確認功能正常，沒有運行時缺陷
+
+```bash
+# 執行所有測試
+pnpm run test
+pnpm run test:integration
+pnpm run test:e2e
+
+# 驗證標準
+- 單元測試 100% 通過
+- 集成測試 95% 以上通過（允許網絡依賴失敗）
+- 代碼覆蓋率 > 80%
+```
+
+#### 階段 6：驗證 (Verification) - ~5 分鐘
+
+**目標**：最終確認架構完整性和合規性
+
+```bash
+# 架構檢查
+pnpm run validate:architecture
+
+# 代碼質量
+pnpm run lint
+pnpm run type-check
+
+# 安全掃描
+pnpm run security:audit
+```
+
+### 4.2 重建流程決策樹
+
+```
+開始重建
+  ├─ 階段 1 失敗？
+  │  ├─ YES → 停止，手動檢查 package.json
+  │  └─ NO → 繼續
+  │
+  ├─ 階段 2 失敗？
+  │  ├─ YES → 停止，修復配置文件
+  │  └─ NO → 繼續
+  │
+  ├─ 階段 3 失敗？
+  │  ├─ YES → 清理 pnpm-lock.yaml，重試
+  │  └─ NO → 繼續
+  │
+  ├─ 階段 4 失敗？
+  │  ├─ 編譯錯誤 < 5？
+  │  │  ├─ YES → 手動修復，重試
+  │  │  └─ NO → 檢查虛構代碼是否完全隔離
+  │  └─ NO → 繼續
+  │
+  ├─ 階段 5 失敗？
+  │  ├─ 失敗率 < 10%？
+  │  │  ├─ YES → 允許通過，但標記為需要審查
+  │  │  └─ NO → 檢查測試配置
+  │  └─ NO → 繼續
+  │
+  └─ 階段 6 失敗？
+     ├─ YES → 未通過驗證，返回第 3 階段
+     └─ NO → 重建完成 ✅
+```
+
+---
+
+## 第 5 部分：驗證與合規框架
+
+### 5.1 多層驗證策略
+
+**第 1 層：靜態分析 (Static Analysis)**
+- 虛構代碼檢測 (正則表達式 + AST)
+- 類型檢查 (TypeScript noEmit)
+- 依賴分析 (循環依賴檢測)
+
+**第 2 層：編譯驗證 (Compilation Verification)**
+- TypeScript 編譯無錯誤
+- ESLint 無嚴重警告
+- Bundle size 未異常增長
+
+**第 3 層：測試驗證 (Test Verification)**
+- 單元測試 100% 通過
+- 集成測試 > 95% 通過
+- 代碼覆蓋率 > 80%
+
+**第 4 層：架構驗證 (Architecture Verification)**
+- 層級邊界遵守 (L1 不能訪問 L5)
+- 模塊隔離完善
+- 依賴方向正確
+
+**第 5 層：運行時驗證 (Runtime Verification)**
+- 無未捕獲異常
+- 無內存洩漏
+- 性能指標在基線內
+
+### 5.2 驗證檢查清單
+
+```yaml
+verification_checklist:
+  static_analysis:
+    - name: "無虛構 API 調用"
+      command: "npm run detect:hallucinations"
+      threshold: 0  # 零容忍
+      
+    - name: "類型檢查通過"
+      command: "tsc --noEmit"
+      threshold: 0  # 零錯誤
+  
+  compilation:
+    - name: "TypeScript 編譯成功"
+      command: "pnpm run build"
+      threshold: 0  # 零錯誤
+      
+    - name: "ESLint 檢查通過"
+      command: "eslint ."
+      threshold: "warn"  # 只允許 warn 級別
+  
+  testing:
+    - name: "單元測試通過率"
+      command: "jest"
+      threshold: 100  # 百分比
+      
+    - name: "集成測試通過率"
+      command: "jest --testPathPattern=integration"
+      threshold: 95  # 百分比
+  
+  architecture:
+    - name: "層級邊界遵守"
+      command: "npm run validate:architecture"
+      threshold: 0  # 零違規
+      
+    - name: "循環依賴檢查"
+      command: "npm run detect:circular-deps"
+      threshold: 0  # 零循環
+```
+
+---
+
+## 第 6 部分：防止虛構機制
+
+### 6.1 五重防護網
+
+#### 防護 1：預提交檢查 (Pre-commit Hook)
+
+```bash
+# .husky/pre-commit
+#!/bin/sh
+
+# 運行虛構代碼檢測
+npm run detect:hallucinations
+
+if [ $? -ne 0 ]; then
+  echo "❌ 發現虛構代碼，提交已阻止"
+  exit 1
+fi
+
+# 運行類型檢查
+npm run type-check
+
+if [ $? -ne 0 ]; then
+  echo "❌ 類型檢查失敗"
+  exit 1
+fi
+```
+
+#### 防護 2：CI 檢查門 (CI Gate)
+
+```yaml
+# .github/workflows/quality-gate.yml
+name: Quality Gate
+
+on: [pull_request]
+
+jobs:
+  hallucination-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 檢測虛構代碼
+        run: npm run detect:hallucinations
+        
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 類型檢查
+        run: npm run type-check
+  
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 運行測試
+        run: npm run test
+```
+
+#### 防護 3：代碼審查 (Code Review Policy)
+
+- **2 個審核者**最少要求
+- **必須檢查**：新文件、虛構代碼模式、依賴更改
+- **自動掃描**：PR 差異與虛構代碼檢測器
+
+#### 防護 4：架構檢查 (Architecture Gate)
+
+```typescript
+// 在每個發佈前運行
+class ArchitectureCheckGate {
+  async validate() {
+    // 1. 檢查每個 package 都有有效的 index.ts
+    // 2. 檢查沒有越界依賴
+    // 3. 檢查導出都被使用或被明確標記為公開
+    // 4. 檢查沒有循環依賴
+    // 5. 檢查所有內部 API 都有文檔
+  }
+}
+```
+
+#### 防護 5：運行時監控 (Runtime Monitoring)
+
+```typescript
+// 在生產環境監控
+class ProductionMonitor {
+  monitorUndefinedFunctions() {
+    // 捕獲 "undefined is not a function" 錯誤
+    // 立即告警並阻止服務
+  }
+  
+  monitorMissingImports() {
+    // 檢測動態導入失敗
+    // 記錄到日誌
+  }
+  
+  monitorCircularDependencies() {
+    // 檢測無限循環
+    // 設置看門狗超時
+  }
+}
+```
+
+---
+
+## 第 7 部分：運營與監控
+
+### 7.1 日常運營檢查清單
+
+| 頻率 | 操作 | 負責人 |
+|------|------|--------|
+| **每日** | 查看虛構代碼檢測告警 | 平台團隊 |
+| **每日** | 驗證 CI/CD 檢查通過 | 開發團隊 |
+| **每週** | 審查架構違規報告 | 架構團隊 |
+| **每月** | 運行完整驗證流程 | QA 團隊 |
+| **每季** | 審計 `.recovery/` 備份 | 合規團隊 |
+
+### 7.2 告警規則
+
+```yaml
+alerts:
+  - name: "虛構代碼發現"
+    condition: "hallucination_count > 0"
+    severity: "critical"
+    action: "page_oncall"
+    
+  - name: "編譯失敗"
+    condition: "build_failures > 0"
+    severity: "high"
+    action: "email_team"
+    
+  - name: "測試失敗率 > 5%"
+    condition: "test_failure_rate > 5"
+    severity: "medium"
+    action: "slack_notification"
+    
+  - name: "循環依賴檢測"
+    condition: "circular_deps > 0"
+    severity: "high"
+    action: "block_merge"
+```
+
+### 7.3 指標儀表盤
+
+```
+IndestructibleAutoOps 健康指標板
+=================================
+
+緒轉狀態指標
+├─ 虛構代碼計數: 0 🟢
+├─ 編譯成功率: 100% 🟢
+├─ 測試通過率: 99.2% 🟢
+├─ 架構違規數: 0 🟢
+└─ 平均修復時間: 2.3h 🟡
+
+依賴狀態
+├─ 循環依賴: 0 🟢
+├─ 過期依賴: 3 🟡
+├─ 安全漏洞: 0 🟢
+└─ 授權合規: ✅ 🟢
+
+備份與恢復
+├─ 最後完整備份: 2026-02-05 15:30 ✅
+├─ 備份可用性: 100% ✅
+├─ 恢復 RTO: < 4h ✅
+└─ 隔離文件數: 5 個
+```
+
+---
+
+## 第 8 部分：成功標準與交付清單
+
+### 8.1 救援成功標準
+
+| 指標 | 標準 | 檢驗方法 |
+|------|------|---------|
+| 虛構代碼數 | = 0 | `npm run detect:hallucinations` |
+| 編譯成功率 | 100% | `pnpm run build` |
+| 測試通過率 | ≥ 95% | `pnpm run test` |
+| 架構違規數 | = 0 | `npm run validate:architecture` |
+| 循環依賴 | = 0 | `npm run detect:circular-deps` |
+| 類型檢查 | 0 errors | `tsc --noEmit` |
+| 回滾時間 | < 5 min | `.recovery/` 恢復 |
+
+### 8.2 交付物清單
+
+```
+[✅] 1. 虛構代碼檢測引擎
+    - detect-hallucinations.ts (500+ 行)
+    - 支持 5 種檢測模式
+    - JSON + Markdown 報告輸出
+
+[✅] 2. 代碼隔離系統
+    - isolate-corrupted-code.ts (400+ 行)
+    - 自動備份機制
+    - 完整恢復流程
+
+[✅] 3. 架構重建系統
+    - rebuild-architecture.ts (600+ 行)
+    - 6 階段流程
+    - 檢查點驗證
+
+[✅] 4. 驗證框架
+    - verify-rebuild.ts (300+ 行)
+    - 5 層驗證策略
+    - 自動決策引擎
+
+[✅] 5. 一鍵救援流程
+    - emergency-recovery.ts (200+ 行)
+    - 完整自動化執行
+    - 詳細報告生成
+
+[✅] 6. 運營手冊
+    - EMERGENCY_RECOVERY_OPERATIONS.md (50+ 頁)
+    - 日常檢查清單
+    - 故障排查指南
+
+[✅] 7. 防護配置
+    - husky 配置 (pre-commit hooks)
+    - GitHub Actions 工作流
+    - ESLint 和 TypeScript 配置
+```
+
+---
+
+## 結論
+
+本架構救援系統為 IndestructibleAutoOps 提供了**完整的、可自動化的、零容忍的**虛構代碼清理與架構恢復框架。通過**六層架構**和**五重防護**，系統確保項目能夠快速檢測並隔離虛構代碼，並在 4-8 小時內完全恢復至穩定狀態。
+
+核心優勢：
+
+1. **自動化優先**：所有流程都可自動執行，減少人工干預
+2. **零容忍強制**：檢測到虛構代碼立即隔離，不允許傳播
+3. **完整審計**：每次操作都記錄在案，支持完全回溯
+4. **快速恢復**：平均 4-8 小時內完全恢復
+5. **長期防護**：建立 5 重防護網，防止再次漂移
+
+---
+
+**下一步行動計劃**
+
+1. ✅ 完成虛構代碼檢測引擎開發（第 2 部分）
+2. ✅ 完成代碼隔離系統實現（第 3 部分）
+3. ✅ 完成架構重建系統開發（第 4 部分）
+4. ✅ 完成驗證與防止框架（第 5 部分）
+5. ✅ 完成一鍵救援流程與運營手冊（第 6 部分）
+6. ✅ 所有交付物集成與質量檢查（第 7 部分）

@@ -1,0 +1,747 @@
+{
+  "execution_id": "EXEC-20260207T184750",
+  "timestamp": "2026-02-07T18:47:50.184320+00:00",
+  "scan_id": "SCAN-20260207T184749",
+  "total_modules": 18,
+  "gates_passed": 13,
+  "gates_failed": 5,
+  "gate_pass_rate": 72.22,
+  "fixes_applied": 5,
+  "fixes_skipped": 0,
+  "fixes_failed": 0,
+  "gate_details": [
+    {
+      "module_id": "governance-anchor",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": false,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": false,
+      "gate_count": 5,
+      "passed_count": 4
+    },
+    {
+      "module_id": "governance-execution",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": false,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": false,
+      "gate_count": 5,
+      "passed_count": 4
+    },
+    {
+      "module_id": "governance-sensing",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": false,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": false,
+      "gate_count": 5,
+      "passed_count": 4
+    },
+    {
+      "module_id": "governance-specs",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": false,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": false,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": false,
+      "gate_count": 5,
+      "passed_count": 3
+    },
+    {
+      "module_id": "global-policy",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "gov-layers",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": false,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": false,
+      "gate_count": 5,
+      "passed_count": 4
+    },
+    {
+      "module_id": "gap-analysis",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "gates",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "gateway",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "guardrails",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "gcp",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "generation",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "quantum-stack",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "group",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "observability-grafana",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "mnga-architecture",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "mno-operations",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    },
+    {
+      "module_id": "namespace-governance",
+      "gates": [
+        {
+          "gate_id": "directory_exists",
+          "passed": true,
+          "severity": "CRITICAL",
+          "description": "模組目錄必須存在"
+        },
+        {
+          "gate_id": "readme_exists",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含 README.md"
+        },
+        {
+          "gate_id": "has_content",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "模組必須包含至少一個檔案"
+        },
+        {
+          "gate_id": "hash_computed",
+          "passed": true,
+          "severity": "MEDIUM",
+          "description": "模組雜湊必須可計算"
+        },
+        {
+          "gate_id": "no_cross_boundary_violations",
+          "passed": true,
+          "severity": "HIGH",
+          "description": "不得有跨邊界違規"
+        }
+      ],
+      "all_passed": true,
+      "gate_count": 5,
+      "passed_count": 5
+    }
+  ],
+  "fix_details": [
+    {
+      "module_id": "governance-anchor",
+      "action": "generated_readme:/home/ubuntu/indestructible-auto-ops/responsibility-governance-anchor-boundary/README.md",
+      "status": "FIXED",
+      "timestamp": "2026-02-07T18:47:50.183486+00:00"
+    },
+    {
+      "module_id": "governance-execution",
+      "action": "generated_readme:/home/ubuntu/indestructible-auto-ops/responsibility-governance-execution-boundary/README.md",
+      "status": "FIXED",
+      "timestamp": "2026-02-07T18:47:50.183700+00:00"
+    },
+    {
+      "module_id": "governance-sensing",
+      "action": "generated_readme:/home/ubuntu/indestructible-auto-ops/responsibility-governance-sensing-boundary/README.md",
+      "status": "FIXED",
+      "timestamp": "2026-02-07T18:47:50.183901+00:00"
+    },
+    {
+      "module_id": "governance-specs",
+      "action": "generated_readme:/home/ubuntu/indestructible-auto-ops/responsibility-governance-specs-boundary/README.md",
+      "status": "FIXED",
+      "timestamp": "2026-02-07T18:47:50.184090+00:00"
+    },
+    {
+      "module_id": "gov-layers",
+      "action": "generated_readme:/home/ubuntu/indestructible-auto-ops/responsibility-gov-layers-boundary/README.md",
+      "status": "FIXED",
+      "timestamp": "2026-02-07T18:47:50.184295+00:00"
+    }
+  ],
+  "violations_from_scan": 1,
+  "evidence": {
+    "evidence_id": "EV-20260207T184750",
+    "timestamp": "2026-02-07T18:47:50.184720+00:00",
+    "execution_hash": "2f85bbf1586552b96467658bcbc551a85385c4c8aba78d1d5538ac39898e535c",
+    "execution_summary": {
+      "total_modules": 18,
+      "gates_passed": 13,
+      "gates_failed": 5,
+      "fixes_applied": 5
+    },
+    "integrity": {
+      "algorithm": "SHA-256",
+      "hash": "2f85bbf1586552b96467658bcbc551a85385c4c8aba78d1d5538ac39898e535c",
+      "sealed": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# ============================================================================
+# Redis Service
+# ============================================================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: autofix-bot
+spec:
+  clusterIP: None
+  selector:
+    app: redis
+  ports:
+  - port: 6379
+    targetPort: 6379
+    name: redis

@@ -1,0 +1,430 @@
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: registry
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: placement.gl/v1
+kind: PlatformPlacementRules
+metadata:
+  name: gl-platforms-placement-rules
+  version: "1.0.0"
+  description: "GL 平台放置規則 - 定義平台應該位於何處的治理規則"
+  category: governance
+  compliance:
+    - gl-enterprise-architecture
+    - gl-boundary-enforcement
+    - gl-meta-specifications
+
+spec:
+  # 核心原則
+  principles:
+    - principle: "Single Source of Truth (SSOT)"
+      description: "每個平台必須只存在於一個位置"
+      enforcement: "CRITICAL"
+      reference: "GL-PD-002"
+
+    - principle: "Contract Standardization"
+      description: "所有契約定義的平台必須使用標準結構"
+      enforcement: "HIGH"
+      reference: "GL-PD-003"
+
+    - principle: "Separation of Concerns"
+      description: "標準平台與自定義平台應分開管理"
+      enforcement: "MEDIUM"
+      reference: "placement-separation"
+
+    - principle: "Lifecycle Management"
+      description: "平台狀態決定其放置位置"
+      enforcement: "MEDIUM"
+      reference: "lifecycle-placement"
+
+  # 放置規則定義
+  rules:
+    # 規則 1: 契約平台放置規則
+    - ruleId: "PR-001"
+      name: "Contract Platforms Location Rule"
+      description: "所有契約定義的平台必須位於 platforms/ 目錄"
+      level: "CRITICAL"
+      criteria:
+        field: "platform_id"
+        operator: "in"
+        value: "gl-platforms.yaml"
+      placement:
+        directory: "platforms/"
+        structure: "standard"
+      enforcement:
+        type: "strict"
+        action: "block-commit"
+        message: "契約平台必須位於 platforms/ 目錄，不允許放置於其他位置"
+
+    # 規則 2: 自定義平台放置規則
+    - ruleId: "PR-002"
+      name: "Custom Platforms Location Rule"
+      description: "非契約平台可位於 root/ 或 custom/ 目錄"
+      level: "MEDIUM"
+      criteria:
+        field: "platform_id"
+        operator: "not-in"
+        value: "gl-platforms.yaml"
+      placement:
+        directories:
+          - "root/"
+          - "custom/"
+        structure: "flexible"
+      enforcement:
+        type: "recommended"
+        action: "warn"
+        message: "建議將自定義平台放置於 root/ 或 custom/ 目錄"
+
+    # 規則 3: 實驗性平台放置規則
+    - ruleId: "PR-003"
+      name: "Experimental Platforms Rule"
+      description: "實驗性平台應標記 gl.experimental domain"
+      level: "RECOMMENDED"
+      criteria:
+        field: "domain"
+        operator: "equals"
+        value: "gl.experimental"
+      placement:
+        directory: "platforms/experimental/"
+        structure: "standard"
+      enforcement:
+        type: "recommended"
+        action: "warn"
+        message: "實驗性平台建議放置於 platforms/experimental/ 目錄"
+
+    # 規則 4: 已退役平台放置規則
+    - ruleId: "PR-004"
+      name: "Deprecated Platforms Rule"
+      description: "已退役平台應移至 deprecated/ 目錄"
+      level: "HIGH"
+      criteria:
+        field: "status"
+        operator: "equals"
+        value: "deprecated"
+      placement:
+        directory: "platforms/deprecated/"
+        structure: "archived"
+      enforcement:
+        type: "required"
+        action: "warn-and-block"
+        message: "已退役平台必須移至 platforms/deprecated/ 目錄"
+
+    # 規則 5: 重複平台禁止規則
+    - ruleId: "PR-005"
+      name: "No Duplicates Rule"
+      description: "禁止平台在多個位置重複存在"
+      level: "CRITICAL"
+      criteria:
+        field: "platform_id"
+        operator: "count"
+        value: "> 1"
+      placement:
+        allowed: false
+      enforcement:
+        type: "critical"
+        action: "block-commit"
+        message: "平台不能在多個位置重複存在（違反 SSOT 原則）"
+
+    # 規則 6: 平台狀態驗證規則
+    - ruleId: "PR-006"
+      name: "Platform Status Validation Rule"
+      description: "驗證平台狀態與放置位置的一致性"
+      level: "HIGH"
+      criteria:
+        - field: "status"
+          operator: "equals"
+          value: "active"
+          expectedLocation: "platforms/ or root/"
+        - field: "status"
+          operator: "equals"
+          value: "experimental"
+          expectedLocation: "platforms/experimental/"
+        - field: "status"
+          operator: "equals"
+          value: "deprecated"
+          expectedLocation: "platforms/deprecated/"
+      enforcement:
+        type: "validation"
+        action: "warn"
+        message: "平台狀態與放置位置不一致"
+
+    # 規則 7: 命名空間驗證規則
+    - ruleId: "PR-007"
+      name: "Namespace Validation Rule"
+      description: "驗證平台命名符合 gl.{domain}.{capability}-platform 格式"
+      level: "CRITICAL"
+      criteria:
+        field: "platform_id"
+        operator: "regex"
+        value: "^gl\\.[a-z]+\\.[a-z]+-platform$"
+      placement:
+        appliesTo: "all"
+      enforcement:
+        type: "strict"
+        action: "block-commit"
+        message: "平台名稱必須符合 gl.{domain}.{capability}-platform 格式"
+
+    # 規則 8: 目錄結構驗證規則
+    - ruleId: "PR-008"
+      name: "Directory Structure Validation Rule"
+      description: "平台目錄必須包含標準子目錄"
+      level: "MEDIUM"
+      criteria:
+        field: "standard_subdirectories"
+        operator: "contains-all"
+        value:
+          - "src/"
+          - "configs/"
+          - "docs/"
+          - "tests/"
+          - "deployments/"
+          - "governance/"
+      placement:
+        appliesTo: "contract-platforms"
+      enforcement:
+        type: "recommended"
+        action: "warn"
+        message: "契約平台目錄必須包含標準子目錄"
+
+    # 規則 9: Manifest 註冊規則
+    - ruleId: "PR-009"
+      name: "Manifest Registration Rule"
+      description: "平台必須在 registry 中註冊 manifest"
+      level: "HIGH"
+      criteria:
+        field: "manifest_registered"
+        operator: "equals"
+        value: true
+      placement:
+        appliesTo: "all"
+      enforcement:
+        type: "required"
+        action: "warn"
+        message: "平台必須在 registry/platform-registry/ 中註冊 manifest"
+
+    # 規則 10: 治理層級驗證規則
+    - ruleId: "PR-010"
+      name: "Governance Layer Validation Rule"
+      description: "平台必須聲明遵循的治理層級"
+      level: "MEDIUM"
+      criteria:
+        field: "governance_layers"
+        operator: "non-empty"
+        value: true
+      placement:
+        appliesTo: "all"
+      enforcement:
+        type: "recommended"
+        action: "warn"
+        message: "平台必須聲明遵循的治理層級"
+
+  # 放置策略
+  strategies:
+    - name: "Standard Platform Strategy"
+      description: "標準契約平台的放置策略"
+      appliesTo:
+        - "contract-platforms"
+      placement:
+        directory: "platforms/"
+        structure: "standard"
+        subdirectories:
+          - src/
+          - configs/
+          - docs/
+          - tests/
+          - deployments/
+          - governance/
+          - services/
+          - data/
+      lifecycle:
+        draft: "platforms/draft/"
+        active: "platforms/"
+        experimental: "platforms/experimental/"
+        deprecated: "platforms/deprecated/"
+
+    - name: "Custom Platform Strategy"
+      description: "自定義平台的放置策略"
+      appliesTo:
+        - "custom-platforms"
+      placement:
+        directories:
+          - "root/"
+          - "custom/"
+        structure: "flexible"
+      lifecycle:
+        draft: "custom/draft/"
+        active: "root/ or custom/"
+        experimental: "custom/experimental/"
+        deprecated: "custom/deprecated/"
+
+    - name: "Legacy Platform Strategy"
+      description: "舊版平台的放置策略"
+      appliesTo:
+        - "legacy-platforms"
+      placement:
+        directory: "platforms/deprecated/"
+        structure: "archived"
+      lifecycle:
+        all: "platforms/deprecated/"
+
+  # 驗證流程
+  validationPipeline:
+    - step: 1
+      name: "Naming Validation"
+      tool: "gl-platforms.validator.rego"
+      checks:
+        - "GL-PD-001: 命名格式驗證"
+        - "PR-007: 命名空間驗證"
+
+    - step: 2
+      name: "Location Validation"
+      tool: "location-validator"
+      checks:
+        - "PR-001: 契約平台位置"
+        - "PR-002: 自定義平台位置"
+        - "PR-005: 無重複平台"
+
+    - step: 3
+      name: "Structure Validation"
+      tool: "structure-validator"
+      checks:
+        - "PR-008: 目錄結構驗證"
+        - "GL-PD-005: 平台結構驗證"
+
+    - step: 4
+      name: "Registry Validation"
+      tool: "registry-validator"
+      checks:
+        - "PR-009: Manifest 註冊"
+        - "GL-PD-004: Manifest 存在驗證"
+
+    - step: 5
+      name: "Governance Validation"
+      tool: "governance-validator"
+      checks:
+        - "PR-010: 治理層級驗證"
+        - "GL-PD-007: 治理層級聲明"
+
+  # 執行策略
+  enforcementStrategies:
+    - level: "CRITICAL"
+      action: "block-commit"
+      message: "阻擋提交並顯示錯誤"
+      example: "平台 gl.xxx.yyy-platform 在多個位置存在，違反 SSOT 原則"
+
+    - level: "HIGH"
+      action: "warn-and-block"
+      message: "警告並要求修正"
+      example: "平台 gl.xxx.yyy-platform 已退役，必須移至 platforms/deprecated/"
+
+    - level: "MEDIUM"
+      action: "warn"
+      message: "顯示警告但允許提交"
+      example: "平台 gl.xxx.yyy-platform 目錄結構不完整"
+
+    - level: "LOW"
+      action: "info"
+      message: "僅顯示資訊"
+      example: "平台 gl.xxx.yyy-platform 未聲明治理層級"
+
+    - level: "RECOMMENDED"
+      action: "suggest"
+      message: "提供建議"
+      example: "建議將實驗性平台放置於 platforms/experimental/"
+
+  # 遷移指南
+  migrationGuide:
+    scenario1:
+      description: "重複平台解決"
+      current: "gl.web.wix-platform 存在於 root/ 和 platforms/"
+      recommended: "保留 platforms/ 版本，刪除 root/ 版本"
+      steps:
+        - "驗證兩個版本的內容是否一致"
+        - "備份 platforms/ 版本"
+        - "刪除 root/ 版本"
+        - "更新 gl-platforms.index.yaml"
+        - "驗證重複平台已移除"
+
+    scenario2:
+      description: "非契約平台加入契約"
+      current: "gl.data.processing-platform 存在於 root/ 但未在契約中"
+      recommended: "將平台加入 gl-platforms.yaml 並移至 platforms/"
+      steps:
+        - "分析平台功能和用途"
+        - "確定 domain 和 capability"
+        - "在 gl-platforms.yaml 中添加平台定義"
+        - "將平台從 root/ 移至 platforms/"
+        - "更新 gl-platforms.index.yaml"
+        - "驗證平台符合契約規範"
+
+    scenario3:
+      description: "平台狀態變更"
+      current: "gl.experimental.xxx-platform 從實驗性變為正式"
+      recommended: "將平台從 platforms/experimental/ 移至 platforms/"
+      steps:
+        - "更新平台狀態為 active"
+        - "從 platforms/experimental/ 移至 platforms/"
+        - "更新 gl-platforms.index.yaml"
+        - "驗證平台符合正式平台規範"
+
+  # 監控與報告
+  monitoring:
+    metrics:
+      - name: "platform_compliance_rate"
+        description: "平台合規率"
+        calculation: "(合規平台數 / 總平台數) * 100"
+        target: ">= 95%"
+
+      - name: "duplicate_platform_count"
+        description: "重複平台數量"
+        calculation: "重複平台數"
+        target: "= 0"
+
+      - name: "platform_placement_accuracy"
+        description: "平台放置準確度"
+        calculation: "(正確放置的平台 / 總平台數) * 100"
+        target: ">= 98%"
+
+    reports:
+      - name: "daily-platform-compliance-report"
+        format: "markdown"
+        schedule: "daily"
+        includes:
+          - "平台合規狀態"
+          - "重複平台清單"
+          - "放置規則違反情況"
+          - "建議的修正措施"
+
+      - name: "weekly-platform-audit-report"
+        format: "yaml"
+        schedule: "weekly"
+        includes:
+          - "平台狀態變更歷史"
+          - "平台遷移記錄"
+          - "合規趨勢分析"
+
+  # 檢查清單
+  checklist:
+    preCommit:
+      - "驗證平台命名格式"
+      - "確認平台沒有重複"
+      - "驗證平台位置符合規則"
+      - "檢查目錄結構完整性"
+      - "確認 Manifest 已註冊"
+      - "驗證治理層級聲明"
+
+    postMigration:
+      - "更新 gl-platforms.index.yaml"
+      - "驗證所有平台可見性"
+      - "測試平台功能"
+      - "更新相關文檔"
+      - "通知相關團隊"
+
+    periodicAudit:
+      - "檢查重複平台"
+      - "驗證平台放置規則"
+      - "審查平台狀態"
+      - "更新平台索引"
+      - "生成合規報告"

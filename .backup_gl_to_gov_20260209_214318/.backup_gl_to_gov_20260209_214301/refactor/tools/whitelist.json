@@ -1,0 +1,61 @@
+{
+  "entries": [
+    {
+      "pattern": "^\\.",
+      "reason": "隱藏目錄",
+      "category": "system"
+    },
+    {
+      "pattern": "^node_modules$",
+      "reason": "第三方依賴",
+      "category": "dependencies"
+    },
+    {
+      "pattern": "^__pycache__$",
+      "reason": "Python 緩存",
+      "category": "system"
+    },
+    {
+      "pattern": "\\.git$",
+      "reason": "Git 版本控制",
+      "category": "system"
+    },
+    {
+      "pattern": "\\.pyc$",
+      "reason": "Python 編譯文件",
+      "category": "system"
+    },
+    {
+      "pattern": "\\.log$",
+      "reason": "日誌文件",
+      "category": "logs"
+    },
+    {
+      "pattern": "\\.tmp$",
+      "reason": "臨時文件",
+      "category": "system"
+    },
+    {
+      "pattern": "^README\\.md$",
+      "reason": "標準文檔",
+      "category": "documentation"
+    },
+    {
+      "pattern": "^LICENSE$",
+      "reason": "許可證文件",
+      "category": "legal"
+    },
+    {
+      "pattern": "^\\.gitignore$",
+      "reason": "Git 配置",
+      "category": "system"
+    }
+  ],
+  "categories": {
+    "system": "系統文件和目錄",
+    "dependencies": "第三方依賴",
+    "documentation": "文檔文件",
+    "legal": "法律文件",
+    "logs": "日誌文件"
+  }
+}

@@ -1,0 +1,26 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluent-bit-config
+  namespace: logging
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush 1
+        Log_Level info
+    
+    [INPUT]
+        Name tail
+        Path /var/log/containers/*.log
+        Parser docker
+    
+    [OUTPUT]
+        Name loki
+        Match *
+        Host loki.logging.svc.cluster.local
+        Port 3100

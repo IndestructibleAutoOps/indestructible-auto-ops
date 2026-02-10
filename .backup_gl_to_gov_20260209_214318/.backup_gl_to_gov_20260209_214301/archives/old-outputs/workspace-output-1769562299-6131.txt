@@ -1,0 +1,20 @@
+/**
+ * @GL-governed
+ * @GL-layer: instant
+ * @GL-semantic: data-synchronization-service
+ * @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+ *
+ * GL Unified Charter Activated
+ * Data Synchronization Service
+ * 
+ * A comprehensive service for synchronizing data between two systems with:
+ * - Conflict resolution strategies
+ * - Incremental sync with change tracking
+ * - Retry logic for failed operations
+ * - Data validation layer
+ * - Sync status monitoring
+ * - Real-time and scheduled sync modes
+ */
+
+export interface SyncConfig {
+  sourceSystem: {

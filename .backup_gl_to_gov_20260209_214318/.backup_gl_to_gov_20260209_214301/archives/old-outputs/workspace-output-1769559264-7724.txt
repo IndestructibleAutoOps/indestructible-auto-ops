@@ -1,0 +1,19 @@
+[main 0b7b261] GL 全域修復完成 - File Organizer System - GL Unified Charter Activated
+ Committer: root <root@172.16.205.212>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 16 files changed, 610 insertions(+), 3014 deletions(-)
+ create mode 100755 file-organizer-system/.github/hooks/pre-commit
+ create mode 100644 file-organizer-system/.github/workflows/gl-validation.yml
+ create mode 100644 file-organizer-system/.governance/GL_SEMANTIC_ANCHOR.json
+ create mode 100644 file-organizer-system/.governance/event-stream.jsonl
+ create mode 100644 file-organizer-system/governance/GL_SEMANTIC_ANCHOR.json

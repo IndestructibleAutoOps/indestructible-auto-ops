@@ -1,0 +1,9 @@
+consistency_rules:
+  - id: execution_consistency
+    rule: "Execution must produce stable and repeatable results"
+
+  - id: evidence_consistency
+    rule: "Evidence must match the expected integrity state"
+
+  - id: replay_consistency
+    rule: "Replay must match original execution trace"

@@ -10,7 +10,7 @@
 
 ### Global Resource Graph (GRG)
 
-**文件路徑:** `gl-execution-runtime/storage/gl-artifacts-store/global-resource-graph.json`
+**文件路徑:** `gov-execution-runtime/storage/gov-artifacts-store/global-resource-graph.json`
 
 **升級前 (v7.0.0):**
 - 版本: 7.0.0
@@ -51,7 +51,7 @@
 
 ### Semantic Resource Graph (SRG)
 
-**文件路徑:** `gl-execution-runtime/storage/gl-artifacts-store/semantic-resource-graph.json`
+**文件路徑:** `gov-execution-runtime/storage/gov-artifacts-store/semantic-resource-graph.json`
 
 **升級前 (v7.0.0):**
 - 版本: 7.0.0
@@ -122,14 +122,14 @@
 
 **移動前:**
 ```
-machine-native-ops/storage/gl-artifacts-store/
+machine-native-ops/storage/gov-artifacts-store/
 ├── global-resource-graph.json
 └── semantic-resource-graph.json
 ```
 
 **移動後:**
 ```
-machine-native-ops/gl-execution-runtime/storage/gl-artifacts-store/
+machine-native-ops/gov-execution-runtime/storage/gov-artifacts-store/
 ├── global-resource-graph.json (v10.0.0)
 ├── semantic-resource-graph.json (v10.0.0)
 └── [其他 artifact JSON 文件]

@@ -1,0 +1,140 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-setup-opa
+# Replaces: open-policy-agent/setup-opa@v2
+# Description: Setup Open Policy Agent for policy evaluation
+# Version: 1.0.0
+
+name: 'MN Setup OPA'
+description: 'MachineNativeOps official OPA setup action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  version:
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+    description: 'OPA version to install (e.g., 0.60.0, latest)'
+    required: false
+    default: 'latest'
+  github-token:
+    description: 'GitHub token for API rate limiting'
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  version:
+    description: 'Installed OPA version'
+    value: ${{ steps.install.outputs.version }}
+  path:
+    description: 'Path to OPA binary'
+    value: ${{ steps.install.outputs.path }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check Existing Installation
+      id: check
+      shell: bash
+      run: |
+        if command -v opa &> /dev/null; then
+          CURRENT_VERSION=$(opa version | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+          echo "OPA already installed: $CURRENT_VERSION"
+          echo "installed=true" >> $GITHUB_OUTPUT
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+        else
+          echo "OPA not found"
+          echo "installed=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Determine Version
+      id: version
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: |
+        VERSION="${{ inputs.version }}"
+
+        if [[ "$VERSION" == "latest" ]]; then
+          VERSION=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            https://api.github.com/repos/open-policy-agent/opa/releases/latest | \
+            jq -r '.tag_name' | sed 's/^v//')
+
+          if [[ -z "$VERSION" || "$VERSION" == "null" ]]; then
+            VERSION="0.60.0"  # Fallback
+          fi
+        fi
+
+        echo "target_version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Target OPA version: $VERSION"
+
+    - name: Install OPA
+      id: install
+      shell: bash
+      run: |
+        VERSION="${{ steps.version.outputs.target_version }}"
+
+        # Detect OS and architecture
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m)
+
+        case "$ARCH" in
+          x86_64) ARCH="amd64" ;;
+          aarch64|arm64) ARCH="arm64" ;;
+        esac
+
+        # Download URL
+        DOWNLOAD_URL="https://github.com/open-policy-agent/opa/releases/download/v${VERSION}/opa_${OS}_${ARCH}"
+
+        if [[ "$OS" == "windows" ]]; then
+          DOWNLOAD_URL="${DOWNLOAD_URL}.exe"
+          OPA_BIN="opa.exe"
+        else
+          OPA_BIN="opa"
+        fi
+
+        echo "Downloading OPA from: $DOWNLOAD_URL"
+
+        # Install to /usr/local/bin or user bin
+        INSTALL_DIR="/usr/local/bin"
+        if [[ ! -w "$INSTALL_DIR" ]]; then
+          INSTALL_DIR="$HOME/.local/bin"
+          mkdir -p "$INSTALL_DIR"
+        fi
+
+        curl -sL "$DOWNLOAD_URL" -o "$INSTALL_DIR/$OPA_BIN"
+        chmod +x "$INSTALL_DIR/$OPA_BIN"
+
+        # Add to PATH if needed
+        if [[ "$INSTALL_DIR" == "$HOME/.local/bin" ]]; then
+          echo "$INSTALL_DIR" >> $GITHUB_PATH
+        fi
+
+        # Verify installation
+        OPA_PATH="$INSTALL_DIR/$OPA_BIN"
+        INSTALLED_VERSION=$("$OPA_PATH" version 2>&1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+
+        echo "version=$INSTALLED_VERSION" >> $GITHUB_OUTPUT
+        echo "path=$OPA_PATH" >> $GITHUB_OUTPUT
+
+        echo "OPA $INSTALLED_VERSION installed at $OPA_PATH"
+
+    - name: Verify Installation
+      shell: bash
+      run: |
+        opa version
+        echo "=========================================="
+        echo "MN-SETUP-OPA SUMMARY"
+        echo "=========================================="
+        echo "Version: ${{ steps.install.outputs.version }}"
+        echo "Path: ${{ steps.install.outputs.path }}"
+        echo "=========================================="

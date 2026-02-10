@@ -1,0 +1,354 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-slack-notify
+# Replaces: 8398a7/action-slack@v3
+# Description: Send notifications to Slack channels
+# Version: 1.0.0
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 'MN Slack Notify'
+description: 'MachineNativeOps official Slack notification action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'message-square'
+  color: 'purple'
+
+inputs:
+  webhook-url:
+    description: 'Slack webhook URL'
+    required: true
+  status:
+    description: 'Job status: success, failure, cancelled, or custom'
+    required: false
+    default: ${{ job.status }}
+  title:
+    description: 'Message title'
+    required: false
+    default: ''
+  message:
+    description: 'Custom message text'
+    required: false
+    default: ''
+  channel:
+    description: 'Slack channel to post to (overrides webhook default)'
+    required: false
+    default: ''
+  username:
+    description: 'Bot username'
+    required: false
+    default: 'GitHub Actions'
+  icon-emoji:
+    description: 'Bot icon emoji'
+    required: false
+    default: ':github:'
+  icon-url:
+    description: 'Bot icon URL (overrides emoji)'
+    required: false
+    default: ''
+  color:
+    description: 'Attachment color (good, warning, danger, or hex)'
+    required: false
+    default: ''
+  fields:
+    description: 'Custom fields in JSON format'
+    required: false
+    default: ''
+  mention:
+    description: 'Users or groups to mention (comma-separated)'
+    required: false
+    default: ''
+  mention-if:
+    description: 'Condition to mention: always, failure, success'
+    required: false
+    default: 'failure'
+  thread-ts:
+    description: 'Thread timestamp to reply to'
+    required: false
+    default: ''
+  include-job-info:
+    description: 'Include job information in message'
+    required: false
+    default: 'true'
+  include-commit-info:
+    description: 'Include commit information in message'
+    required: false
+    default: 'true'
+
+outputs:
+  message-id:
+    description: 'Slack message timestamp ID'
+    value: ${{ steps.notify.outputs.message_id }}
+  response:
+    description: 'Slack API response'
+    value: ${{ steps.notify.outputs.response }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Determine Status Color
+      id: color
+      shell: bash
+      run: |
+        STATUS="${{ inputs.status }}"
+        COLOR="${{ inputs.color }}"
+
+        if [[ -z "$COLOR" ]]; then
+          case "$STATUS" in
+            success|Success|SUCCESS)
+              COLOR="good"
+              EMOJI="✅"
+              ;;
+            failure|Failure|FAILURE|failed|Failed)
+              COLOR="danger"
+              EMOJI="❌"
+              ;;
+            cancelled|Cancelled|CANCELLED)
+              COLOR="#808080"
+              EMOJI="⚪"
+              ;;
+            warning|Warning|WARNING)
+              COLOR="warning"
+              EMOJI="⚠️"
+              ;;
+            *)
+              COLOR="#439FE0"
+              EMOJI="ℹ️"
+              ;;
+          esac
+        else
+          EMOJI="📢"
+        fi
+
+        echo "color=$COLOR" >> $GITHUB_OUTPUT
+        echo "emoji=$EMOJI" >> $GITHUB_OUTPUT
+
+    - name: Build Message Payload
+      id: payload
+      shell: bash
+      run: |
+        WEBHOOK_URL="${{ inputs.webhook-url }}"
+        STATUS="${{ inputs.status }}"
+        TITLE="${{ inputs.title }}"
+        MESSAGE="${{ inputs.message }}"
+        CHANNEL="${{ inputs.channel }}"
+        USERNAME="${{ inputs.username }}"
+        ICON_EMOJI="${{ inputs.icon-emoji }}"
+        ICON_URL="${{ inputs.icon-url }}"
+        COLOR="${{ steps.color.outputs.color }}"
+        EMOJI="${{ steps.color.outputs.emoji }}"
+        CUSTOM_FIELDS="${{ inputs.fields }}"
+        MENTION="${{ inputs.mention }}"
+        MENTION_IF="${{ inputs.mention-if }}"
+        THREAD_TS="${{ inputs.thread-ts }}"
+        INCLUDE_JOB="${{ inputs.include-job-info }}"
+        INCLUDE_COMMIT="${{ inputs.include-commit-info }}"
+
+        # Build title
+        if [[ -z "$TITLE" ]]; then
+          TITLE="$EMOJI GitHub Actions: $STATUS"
+        fi
+
+        # Build fields array
+        FIELDS="[]"
+
+        # Add job info
+        if [[ "$INCLUDE_JOB" == "true" ]]; then
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Repository",
+            "value": "<${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}>",
+            "short": true
+          }]")
+
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Workflow",
+            "value": "${{ github.workflow }}",
+            "short": true
+          }]")
+
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Job",
+            "value": "${{ github.job }}",
+            "short": true
+          }]")
+
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Run",
+            "value": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|#${{ github.run_number }}>",
+            "short": true
+          }]")
+        fi
+
+        # Add commit info
+        if [[ "$INCLUDE_COMMIT" == "true" ]]; then
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Branch/Ref",
+            "value": "\`${{ github.ref_name }}\`",
+            "short": true
+          }]")
+
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Commit",
+            "value": "<${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|\`${GITHUB_SHA:0:7}\`>",
+            "short": true
+          }]")
+
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Actor",
+            "value": "${{ github.actor }}",
+            "short": true
+          }]")
+
+          FIELDS=$(echo "$FIELDS" | jq ". + [{
+            "title": "Event",
+            "value": "${{ github.event_name }}",
+            "short": true
+          }]")
+        fi
+
+        # Add custom fields
+        if [[ -n "$CUSTOM_FIELDS" && "$CUSTOM_FIELDS" != "null" ]]; then
+          FIELDS=$(echo "$FIELDS" | jq ". + $CUSTOM_FIELDS")
+        fi
+
+        # Build mention text
+        MENTION_TEXT=""
+        SHOULD_MENTION="false"
+
+        if [[ -n "$MENTION" ]]; then
+          case "$MENTION_IF" in
+            always)
+              SHOULD_MENTION="true"
+              ;;
+            failure)
+              if [[ "$STATUS" == "failure" || "$STATUS" == "Failure" || "$STATUS" == "FAILURE" ]]; then
+                SHOULD_MENTION="true"
+              fi
+              ;;
+            success)
+              if [[ "$STATUS" == "success" || "$STATUS" == "Success" || "$STATUS" == "SUCCESS" ]]; then
+                SHOULD_MENTION="true"
+              fi
+              ;;
+          esac
+
+          if [[ "$SHOULD_MENTION" == "true" ]]; then
+            for user in $(echo "$MENTION" | tr ',' ' '); do
+              user=$(echo "$user" | xargs)
+              if [[ "$user" == @* ]]; then
+                MENTION_TEXT="$MENTION_TEXT <$user>"
+              elif [[ "$user" == "here" || "$user" == "channel" || "$user" == "everyone" ]]; then
+                MENTION_TEXT="$MENTION_TEXT <!$user>"
+              else
+                MENTION_TEXT="$MENTION_TEXT <@$user>"
+              fi
+            done
+          fi
+        fi
+
+        # Build message text
+        TEXT=""
+        if [[ -n "$MENTION_TEXT" ]]; then
+          TEXT="$MENTION_TEXT\n"
+        fi
+        if [[ -n "$MESSAGE" ]]; then
+          TEXT="$TEXT$MESSAGE"
+        fi
+
+        # Build payload
+        PAYLOAD=$(jq -n \
+          --arg username "$USERNAME" \
+          --arg icon_emoji "$ICON_EMOJI" \
+          --arg icon_url "$ICON_URL" \
+          --arg channel "$CHANNEL" \
+          --arg text "$TEXT" \
+          --arg title "$TITLE" \
+          --arg color "$COLOR" \
+          --arg thread_ts "$THREAD_TS" \
+          --argjson fields "$FIELDS" \
+          '{
+            "username": $username,
+            "attachments": [{
+              "color": $color,
+              "title": $title,
+              "fields": $fields,
+              "footer": "GitHub Actions",
+              "footer_icon": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+              "ts": (now | floor)
+            }]
+          }')
+
+        # Add optional fields
+        if [[ -n "$ICON_URL" ]]; then
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg url "$ICON_URL" '.icon_url = $url | del(.icon_emoji)')
+        elif [[ -n "$ICON_EMOJI" ]]; then
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg emoji "$ICON_EMOJI" '.icon_emoji = $emoji')
+        fi
+
+        if [[ -n "$CHANNEL" ]]; then
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg ch "$CHANNEL" '.channel = $ch')
+        fi
+
+        if [[ -n "$TEXT" ]]; then
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg txt "$TEXT" '.text = $txt')
+        fi
+
+        if [[ -n "$THREAD_TS" ]]; then
+          PAYLOAD=$(echo "$PAYLOAD" | jq --arg ts "$THREAD_TS" '.thread_ts = $ts')
+        fi
+
+        # Save payload to file
+        PAYLOAD_FILE=$(mktemp)
+        echo "$PAYLOAD" > "$PAYLOAD_FILE"
+
+        echo "payload_file=$PAYLOAD_FILE" >> $GITHUB_OUTPUT
+
+    - name: Send Notification
+      id: notify
+      shell: bash
+      run: |
+        WEBHOOK_URL="${{ inputs.webhook-url }}"
+        PAYLOAD_FILE="${{ steps.payload.outputs.payload_file }}"
+
+        echo "Sending Slack notification..."
+
+        RESPONSE=$(curl -s -X POST \
+          -H "Content-Type: application/json" \
+          -d @"$PAYLOAD_FILE" \
+          "$WEBHOOK_URL")
+
+        echo "Response: $RESPONSE"
+
+        # Check response
+        if [[ "$RESPONSE" == "ok" || "$RESPONSE" == *'"ok":true'* ]]; then
+          echo "Notification sent successfully"
+          MESSAGE_ID=$(echo "$RESPONSE" | jq -r '.ts // empty' 2>/dev/null || echo "")
+        else
+          echo "::warning::Slack notification may have failed: $RESPONSE"
+          MESSAGE_ID=""
+        fi
+
+        echo "message_id=$MESSAGE_ID" >> $GITHUB_OUTPUT
+        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+
+        # Cleanup
+        rm -f "$PAYLOAD_FILE"
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-SLACK-NOTIFY SUMMARY"
+        echo "=========================================="
+        echo "Status: ${{ inputs.status }}"
+        echo "Channel: ${{ inputs.channel }}"
+        echo "Message ID: ${{ steps.notify.outputs.message_id }}"
+        echo "=========================================="

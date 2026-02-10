@@ -1,0 +1,11 @@
+            "files_failed": self.stats["failed_files"],
+            "total_errors": self.stats["errors"],
+            "total_warnings": self.stats["warnings"],
+            "success_rate": (
+                self.stats["passed_files"] / max(self.stats["total_files"], 1)
+            )
+# 100,
+            "overall_status": "PASSED" if self.stats["errors"] == 0 else "FAILED",
+        }
+        # Add hash lock if no critical errors
+        if self.stats["errors"] == 0:

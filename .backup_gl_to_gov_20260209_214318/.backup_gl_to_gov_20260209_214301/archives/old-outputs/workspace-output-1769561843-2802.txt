@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+/**
+ * Architecture Debug Console
+ * 提供統一的偵錯與診斷入口
+ */
+
+import * as fs from 'fs'
+import * as path from 'path'
+import ArchitectureLinter from './arch-lint'
+

@@ -1,0 +1,90 @@
+fix_proposal:
+  objective: "Extend 12-step to Indestructible 16-step with runtime governance, boundary verification, and sealed evidence for all artifact classes."
+  new_steps:
+    - step: "6.5"
+      name: "Identity + Authorization Gate"
+      outputs:
+        - "rbac_bindings.yaml"
+        - "admission_policies (kyverno/opa)"
+        - "service_identity (spiffe/mtls)"
+      gates:
+        - "least_privilege_rbac=true"
+        - "admission_enforced=true"
+    - step: "7.2"
+      name: "Data Contract + Lineage Sealing"
+      outputs:
+        - "data_contract.schema.json"
+        - "lineage_events.jsonl"
+        - "schema_evolution_matrix.yaml"
+      gates:
+        - "schema_compatibility=pass"
+        - "lineage_emitted=required"
+    - step: "9.2"
+      name: "Time Integrity + Timestamp Authority"
+      outputs:
+        - "chrony_policy.yaml"
+        - "timestamp_attestation.json"
+      gates:
+        - "clock_skew_ms<=50"
+        - "trusted_timestamp=required"
+    - step: "10.2"
+      name: "Runtime Drift Detection + Reconciliation"
+      outputs:
+        - "drift_policy.yaml"
+        - "reconcile_plan.yaml"
+      gates:
+        - "gitops_drift=0"
+    - step: "11.2"
+      name: "Policy Conflict Resolution Model"
+      outputs:
+        - "policy_precedence.yaml"
+        - "conflict_tests.rego"
+      gates:
+        - "conflicts=0"
+    - step: "12.2"
+      name: "SLO Burn-rate Gates"
+      outputs:
+        - "slo.yaml"
+        - "burnrate_rules.yaml"
+        - "rollback_trigger.yaml"
+      gates:
+        - "error_budget_remaining>=threshold"
+    - step: "13.2"
+      name: "Chaos Verification for Recovery"
+      outputs:
+        - "chaos_suite.yaml"
+        - "recovery_e2e_report.json"
+      gates:
+        - "mttr_seconds<=target"
+        - "auto_rollback_tested=true"
+    - step: "14.2"
+      name: "Boundary Protocol Verification"
+      outputs:
+        - "egress_allowlist.yaml"
+        - "ingress_contract_tests.yaml"
+        - "mtls_mode=strict"
+      gates:
+        - "egress_denied_by_default=true"
+        - "mtls_strict=true"
+    - step: "15.2"
+      name: "Break-glass Governance"
+      outputs:
+        - "breakglass_policy.yaml"
+        - "override_audit_required=true"
+      gates:
+        - "override_ttl_minutes<=15"
+        - "two_person_rule=true"
+    - step: "16.2"
+      name: "Artifact Class Coverage Expansion"
+      outputs:
+        - "artifact_manifest.yaml"
+        - "sbom_all_classes.json"
+        - "attestations_all_classes/"
+      gates:
+        - "artifact_coverage=100%"
+  mapping:
+    replaces: []
+    augments:
+      - "Step 3.5 (env lock) -> add base-image provenance + policy"
+      - "Step 7.5 (recovery) -> require chaos verification + SLO-based triggers"
+      - "Step 8.5 (version/traffic) -> require compat matrix + policy precedence tests"

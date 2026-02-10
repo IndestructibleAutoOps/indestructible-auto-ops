@@ -89,7 +89,7 @@ This document provides a high-level summary of G-specification attributes discov
 ### Gates & Control
 - `ecosystem/gates/operation-gate.yaml`
 - `governance/workflows/research-loop/gates.yaml`
-- `gl-runtime-execution-platform/engine/gl-gate/`
+- `gov-runtime-execution-platform/engine/gov-gate/`
 
 ### Guardrails & Safety
 - `.github/config/governance/ai-constitution.yaml`

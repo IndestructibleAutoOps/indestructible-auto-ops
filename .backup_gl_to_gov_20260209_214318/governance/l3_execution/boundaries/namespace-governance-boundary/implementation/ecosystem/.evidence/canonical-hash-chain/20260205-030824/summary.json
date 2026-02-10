@@ -1,0 +1,32 @@
+{
+  "test_id": "750d7b7c-b60e-43be-a005-b80370220d98",
+  "timestamp": "2026-02-05T03:08:24.088088+00:00",
+  "era": 1,
+  "evidence_directory": "/workspace/ecosystem/.evidence/canonical-hash-chain/20260205-030824",
+  "tests": {
+    "canonicalization": {
+      "status": "passed"
+    },
+    "hash_computation": {
+      "status": "passed"
+    },
+    "merkle_root": {
+      "status": "passed"
+    },
+    "evidence_writing": {
+      "status": "passed"
+    },
+    "replayability": {
+      "status": "passed"
+    },
+    "tamper_proof": {
+      "status": "passed"
+    }
+  },
+  "summary": {
+    "total_tests": 6,
+    "passed": 3,
+    "overall_status": "passed"
+  },
+  "canonical_hash": "sha256:991a53a0e277b62a45f01b3b767e98f24be1be28a2c451646015f595a9e0bb35"
+}

@@ -1,0 +1,207 @@
+# GL20-29 命名規範定義
+# MNGA Naming Conventions Specification
+# Version: 2.0.0
+
+metadata:
+  gl_layer: GL20-29
+  semantic: naming-conventions
+  version: "2.0.0"
+  last_updated: "2026-02-03"
+
+# =============================================================================
+# 目錄命名規範
+# =============================================================================
+directory_naming:
+  default_style: kebab-case
+  description: "所有目錄應使用 kebab-case (小寫字母和連字符)"
+  
+  rules:
+    - id: DIR-001
+      pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+      description: "目錄名稱必須是 kebab-case"
+      severity: MEDIUM
+      
+  exceptions:
+    # Python 包目錄 (必須使用下劃線或無分隔符)
+    - pattern: "^[a-z][a-z0-9_]*$"
+      condition: "contains __init__.py"
+      description: "Python 包目錄可以使用 snake_case"
+      
+    # 特殊目錄
+    - names:
+        - "__pycache__"
+        - ".git"
+        - ".github"
+        - ".vscode"
+        - ".idea"
+        - "node_modules"
+        - ".venv"
+        - "venv"
+        - ".env"
+      description: "系統和工具目錄例外"
+      
+    # GL 語義目錄
+    - pattern: "^GL[0-9]{2}-[0-9]{2}$"
+      description: "GL 層級目錄格式"
+    - pattern: "^\\.governance$"
+      description: "治理元數據目錄"
+
+# =============================================================================
+# 文件命名規範
+# =============================================================================
+file_naming:
+  # Python 文件
+  python:
+    style: snake_case
+    pattern: "^[a-z][a-z0-9_]*\\.py$"
+    description: "Python 文件使用 snake_case"
+    severity: HIGH
+    exceptions:
+      - "^__[a-z]+__\\.py$"  # __init__.py, __main__.py
+      - "^[A-Z][a-zA-Z0-9]*\\.py$"  # 類別文件 (可選)
+    
+  # JavaScript/TypeScript 文件
+  javascript:
+    style: camelCase_or_kebab
+    patterns:
+      - "^[a-z][a-zA-Z0-9]*\\.(js|ts|jsx|tsx)$"  # camelCase
+      - "^[a-z0-9]+(-[a-z0-9]+)*\\.(js|ts|jsx|tsx)$"  # kebab-case
+    description: "JS/TS 文件使用 camelCase 或 kebab-case"
+    severity: MEDIUM
+    
+  # 配置文件
+  config:
+    style: kebab-case
+    patterns:
+      - "^[a-z0-9]+(-[a-z0-9]+)*\\.(yaml|yml|json|toml)$"
+    description: "配置文件使用 kebab-case"
+    severity: MEDIUM
+    exceptions:
+      - "^package\\.json$"
+      - "^package-lock\\.json$"
+      - "^tsconfig\\.json$"
+      - "^Dockerfile$"
+      - "^Makefile$"
+      - "^\\..*rc$"  # .eslintrc, .prettierrc
+      
+  # Markdown 文件
+  markdown:
+    style: kebab-case_or_UPPER
+    patterns:
+      - "^[a-z0-9]+(-[a-z0-9]+)*\\.md$"  # kebab-case
+      - "^[A-Z][A-Z0-9_-]*\\.md$"  # UPPER_CASE (README, CHANGELOG)
+    description: "Markdown 文件使用 kebab-case 或全大寫"
+    severity: LOW
+    
+  # Shell 腳本
+  shell:
+    style: kebab-case
+    pattern: "^[a-z0-9]+(-[a-z0-9]+)*\\.sh$"
+    description: "Shell 腳本使用 kebab-case"
+    severity: LOW
+
+# =============================================================================
+# 代碼內部命名規範
+# =============================================================================
+code_naming:
+  python:
+    # 類別
+    classes:
+      style: PascalCase
+      pattern: "^[A-Z][a-zA-Z0-9]*$"
+      description: "類別名稱使用 PascalCase"
+      severity: HIGH
+      
+    # 函數和方法
+    functions:
+      style: snake_case
+      pattern: "^[a-z][a-z0-9_]*$"
+      description: "函數名稱使用 snake_case"
+      severity: HIGH
+      exceptions:
+        - "^__[a-z]+__$"  # 魔術方法
+        - "^_[a-z][a-z0-9_]*$"  # 私有方法
+        
+    # 變數
+    variables:
+      style: snake_case
+      pattern: "^[a-z][a-z0-9_]*$"
+      description: "變數名稱使用 snake_case"
+      severity: MEDIUM
+      
+    # 常數
+    constants:
+      style: UPPER_SNAKE_CASE
+      pattern: "^[A-Z][A-Z0-9_]*$"
+      description: "常數使用 UPPER_SNAKE_CASE"
+      severity: MEDIUM
+      
+    # 模組級變數
+    module_variables:
+      style: snake_case_or_UPPER
+      patterns:
+        - "^[a-z][a-z0-9_]*$"
+        - "^[A-Z][A-Z0-9_]*$"
+      description: "模組變數使用 snake_case 或 UPPER_SNAKE_CASE"
+      severity: LOW
+
+# =============================================================================
+# GL 語義錨點命名規範
+# =============================================================================
+gl_semantic_naming:
+  anchor_files:
+    pattern: "^GL[0-9]{2}-[A-Z0-9-]+\\.json$"
+    description: "GL 錨點文件格式: GL00-ANCHOR-NAME.json"
+    severity: HIGH
+    
+  semantic_keys:
+    pattern: "^[a-z]+(-[a-z]+)*$"
+    description: "語義鍵使用 kebab-case"
+    severity: MEDIUM
+    
+  layer_references:
+    pattern: "^GL[0-9]{2}(-[0-9]{2})?$"
+    description: "GL 層級引用格式"
+    severity: HIGH
+
+# =============================================================================
+# 特殊命名規則
+# =============================================================================
+special_rules:
+  # 測試文件
+  test_files:
+    pattern: "^test_[a-z][a-z0-9_]*\\.py$"
+    description: "測試文件以 test_ 開頭"
+    severity: MEDIUM
+    
+  # 私有文件/目錄
+  private:
+    pattern: "^_[a-z][a-z0-9_]*"
+    description: "私有項目以單下劃線開頭"
+    severity: LOW
+    
+  # 內部文件/目錄
+  internal:
+    pattern: "^__[a-z]+__"
+    description: "內部項目以雙下劃線包圍"
+    severity: LOW
+
+# =============================================================================
+# 驗證規則
+# =============================================================================
+validation:
+  # 嚴格模式 - 所有違規都是錯誤
+  strict_mode: false
+  
+  # 報告級別
+  report_levels:
+    - CRITICAL  # 必須修復
+    - HIGH      # 強烈建議修復
+    - MEDIUM    # 建議修復
+    - LOW       # 可選修復
+    
+  # 自動修復
+  auto_fix:
+    enabled: true
+    dry_run_first: true
+    backup: true

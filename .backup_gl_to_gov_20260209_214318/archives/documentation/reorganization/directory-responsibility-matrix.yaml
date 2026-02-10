@@ -1,0 +1,459 @@
+# Directory Responsibility Matrix
+
+version: 1.0.0
+matrix_type: governance_responsibility_boundary_definition
+
+# Matrix Structure
+matrix:
+  ng-namespace-governance:
+    tier: T0_META_GOVERNANCE
+    responsibility: constitutional_governance_authority
+    scope: entire_repository
+
+    capabilities:
+      define:
+        - governance_specifications
+        - namespace_standards
+        - validation_rules
+        - lifecycle_policies
+        - permission_models
+        - audit_requirements
+
+      enforce:
+        - namespace_uniqueness
+        - validation_compliance
+        - audit_trail_completeness
+        - cross_era_consistency
+
+      coordinate:
+        - era_transitions
+        - namespace_mappings
+        - governance_upgrades
+
+    boundaries:
+      can:
+        - define_all_governance_rules
+        - override_governance_decisions
+        - resolve_namespace_conflicts
+        - mandate_compliance_requirements
+
+      cannot:
+        - implement_platform_features
+        - execute_business_logic
+        - modify_platform_internals
+
+      must:
+        - maintain_specification_integrity
+        - ensure_backward_compatibility
+        - document_all_changes
+
+    interfaces:
+      input:
+        - governance_requirements
+        - compliance_reports
+        - validation_results
+
+      output:
+        - ng_specifications
+        - validation_rules
+        - governance_decisions
+
+  ng-namespace-governance/core:
+    tier: T0_SPECIFICATION
+    responsibility: specification_authority
+    scope: governance_standards
+
+    capabilities:
+      define:
+        - ng_charter
+        - identifier_standards
+        - lifecycle_standards
+        - validation_rules
+        - permission_models
+        - version_control_standards
+        - audit_trail_specifications
+
+    boundaries:
+      can:
+        - create_ng_specifications
+        - update_governance_standards
+        - define_validation_criteria
+
+      cannot:
+        - implement_specifications
+        - execute_validation
+        - modify_platforms
+
+      must:
+        - maintain_specification_consistency
+        - version_all_changes
+        - document_rationale
+
+    artifacts:
+      type: yaml_specifications
+      pattern: "NG*.yaml"
+      examples:
+        - NG00000-charter.yaml
+        - NG00101-identifier-standard.yaml
+        - NG00301-validation-rules.yaml
+
+  ng-namespace-governance/era-{1,2,3}:
+    tier: T0_ERA_SPECIFICATION
+    responsibility: era_specific_governance
+    scope: era_namespace_standards
+
+    capabilities:
+      define:
+        - era_specific_namespace_rules
+        - era_transition_protocols
+        - era_validation_criteria
+
+    boundaries:
+      can:
+        - define_era_standards
+        - specify_era_validation
+
+      cannot:
+        - modify_other_era_standards
+        - implement_validation
+
+      must:
+        - align_with_ng_charter
+        - coordinate_with_cross_era
+
+  ng-namespace-governance/cross-era:
+    tier: T0_CROSS_ERA_SPECIFICATION
+    responsibility: cross_era_mapping_authority
+    scope: era_transition_governance
+
+    capabilities:
+      define:
+        - cross_era_mapping_rules
+        - era_transition_protocols
+        - namespace_transformation_standards
+
+    boundaries:
+      can:
+        - define_mapping_rules
+        - specify_transformations
+
+      cannot:
+        - execute_transformations
+        - modify_era_internals
+
+      must:
+        - maintain_semantic_consistency
+        - ensure_bidirectional_mapping
+
+  ng-namespace-governance/implementation:
+    tier: T1_IMPLEMENTATION
+    responsibility: operational_implementation
+    scope: ng_specification_execution
+
+    capabilities:
+      implement:
+        - ng_specifications
+        - validation_engines
+        - enforcement_mechanisms
+        - coordination_systems
+
+    boundaries:
+      can:
+        - implement_specifications
+        - execute_validation
+        - enforce_compliance
+        - coordinate_operations
+
+      cannot:
+        - modify_ng_specifications
+        - override_validation_rules
+        - violate_boundaries
+
+      must:
+        - comply_with_ng_specifications
+        - maintain_audit_trails
+        - report_violations
+
+  ng-namespace-governance/implementation/ecosystem:
+    tier: T1_OPERATIONAL_CORE
+    responsibility: ecosystem_governance_implementation
+    scope: platform_coordination_and_enforcement
+    origin: previous_/ecosystem
+
+    capabilities:
+      implement:
+        - governance_framework
+        - platform_registry
+        - service_registry
+        - coordination_protocols
+        - contract_enforcement
+        - execution_engines
+
+      coordinate:
+        - platform_integration
+        - service_discovery
+        - data_synchronization
+        - cross_platform_communication
+
+      enforce:
+        - contract_compliance
+        - boundary_rules
+        - validation_requirements
+
+    boundaries:
+      can:
+        - register_platforms_and_services
+        - enforce_contracts
+        - coordinate_platforms
+        - implement_governance_operations
+
+      cannot:
+        - modify_ng_specifications
+        - override_governance_rules
+        - violate_platform_boundaries
+
+      must:
+        - implement_all_ng_specifications
+        - maintain_registry_integrity
+        - enforce_all_contracts
+        - audit_all_operations
+
+    subdirectories:
+      governance:
+        responsibility: governance_framework_implementation
+        scope: gl_layer_governance_contracts
+
+      registry:
+        responsibility: centralized_registry_management
+        scope: platform_service_data_registration
+
+      coordination:
+        responsibility: cross_platform_coordination
+        scope: service_discovery_data_sync_communication
+
+      contracts:
+        responsibility: interface_contract_definition
+        scope: cross_layer_interface_specifications
+
+      engines:
+        responsibility: execution_engine_implementation
+        scope: governance_enforcement_automation
+
+      automation:
+        responsibility: automated_governance_tasks
+        scope: task_execution_scheduling_workflow
+
+        task-engine:
+          responsibility: automated_task_execution
+          origin: previous_/auto_task_project
+          scope: task_automation_and_orchestration
+
+  ng-namespace-governance/registry:
+    tier: T1_REGISTRY
+    responsibility: namespace_registration_system
+    scope: namespace_lifecycle_management
+
+    capabilities:
+      manage:
+        - namespace_registrations
+        - namespace_lifecycle
+        - namespace_metadata
+
+    boundaries:
+      can:
+        - register_namespaces
+        - update_namespace_status
+        - query_namespace_info
+
+      cannot:
+        - violate_uniqueness
+        - skip_validation
+
+      must:
+        - enforce_uniqueness
+        - maintain_audit_trail
+        - validate_all_registrations
+
+  ng-namespace-governance/tools:
+    tier: T1_TOOLING
+    responsibility: governance_tooling
+    scope: ng_operational_tools
+
+    capabilities:
+      provide:
+        - ng_cli
+        - namespace_validator
+        - namespace_mapper
+        - era_mapping_engine
+
+    boundaries:
+      can:
+        - execute_validations
+        - perform_mappings
+        - generate_reports
+
+      cannot:
+        - modify_specifications
+        - override_validation_results
+
+      must:
+        - comply_with_ng_specifications
+        - report_accurately
+
+  ng-namespace-governance/reports:
+    tier: T1_REPORTING
+    responsibility: governance_reporting
+    scope: compliance_execution_audit_reports
+
+    subdirectories:
+      audit:
+        responsibility: audit_reports_and_findings
+        origin: previous_/audit-reports
+        scope: governance_audit_and_compliance
+
+  platforms:
+    tier: T2_PLATFORM_ROOT
+    responsibility: platform_organization
+    scope: platform_implementations
+
+    boundaries:
+      can:
+        - organize_platforms
+        - define_platform_structure
+
+      cannot:
+        - modify_governance
+        - violate_ng_specifications
+
+      must:
+        - comply_with_ng_governance
+        - follow_gl_layer_hierarchy
+
+  platforms/gl:
+    tier: T2_GL_PLATFORM_GROUP
+    responsibility: gl_layer_platform_organization
+    scope: gl_governance_layer_platforms
+
+    organization:
+      principle: gl_layer_hierarchy
+      structure:
+        GL90-99: meta_specifications
+        GL00-09: enterprise_architecture
+        GL10-19: platform_services
+        GL20-29: data_semantic_search
+        GL30-39: runtime_automation_infrastructure
+        GL40-49: runtime_services
+        GL50-59: observability
+        GL60-80: governance_compliance
+        GL81-83: extensions_integrations
+
+    boundaries:
+      can:
+        - group_platforms_by_layer
+        - coordinate_platform_services
+
+      cannot:
+        - violate_gl_layer_boundaries
+        - modify_ng_governance
+
+      must:
+        - maintain_layer_hierarchy
+        - enforce_layer_boundaries
+        - register_all_platforms
+
+  platforms/gl/*:
+    tier: T3_PLATFORM_IMPLEMENTATION
+    responsibility: individual_platform_implementation
+    scope: platform_specific_services
+
+    capabilities:
+      implement:
+        - platform_services
+        - gl_layer_requirements
+        - platform_contracts
+
+      provide:
+        - platform_apis
+        - platform_data
+        - platform_capabilities
+
+      consume:
+        - ng_governance_specifications
+        - ecosystem_coordination_services
+        - other_platform_services
+
+    boundaries:
+      can:
+        - implement_platform_internals
+        - expose_platform_services
+        - consume_coordination_services
+
+      cannot:
+        - violate_gl_layer_boundaries
+        - modify_ng_specifications
+        - bypass_ecosystem_coordination
+
+      must:
+        - comply_with_ng_governance
+        - register_with_platform_registry
+        - implement_required_contracts
+        - maintain_gl_layer_compliance
+
+# Cross-Cutting Responsibilities
+cross_cutting:
+  validation:
+    all_tiers_must:
+      - validate_inputs
+      - enforce_specifications
+      - report_violations
+
+  audit:
+    all_tiers_must:
+      - log_all_changes
+      - maintain_audit_trails
+      - support_traceability
+
+  compliance:
+    all_tiers_must:
+      - comply_with_higher_tier_rules
+      - report_compliance_status
+      - remediate_violations
+
+# Tier Interaction Rules
+tier_interactions:
+  T0_to_T1:
+    relationship: specification_to_implementation
+    flow: specifications_down_reports_up
+    enforcement: mandatory_compliance
+
+  T1_to_T2:
+    relationship: coordination_to_platform
+    flow: coordination_down_registration_up
+    enforcement: contract_based
+
+  T2_to_T3:
+    relationship: organization_to_implementation
+    flow: standards_down_services_up
+    enforcement: layer_compliance
+
+  cross_tier:
+    prohibited:
+      - T3_to_T0_direct_modification
+      - T2_to_T0_specification_override
+      - T1_bypass_of_T0_rules
+
+# Responsibility Conflict Resolution
+conflict_resolution:
+  priority_order:
+    1: ng_core_specifications
+    2: ng_implementation_enforcement
+    3: ecosystem_coordination
+    4: platform_implementation
+
+  resolution_authority: ng-namespace-governance/core/
+
+  escalation_path:
+    - platform_internal_resolution
+    - ecosystem_coordination_resolution
+    - ng_implementation_resolution
+    - ng_core_constitutional_resolution

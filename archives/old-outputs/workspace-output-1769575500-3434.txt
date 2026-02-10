@@ -23,7 +23,7 @@ npx ts-node engine/governance/gov_engine.ts validate --strict --workspace=file-o
 
 # Execute all GL gates
 cd engine
-npx ts-node gl-gate/core/GateExecutor.ts executeAll || {
+npx ts-node gov-gate/core/GateExecutor.ts executeAll || {
   echo "❌ GL Gate Execution Failed - Push blocked"
   exit 1
 }

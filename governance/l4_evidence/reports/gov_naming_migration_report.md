@@ -24,35 +24,35 @@
 1. `gl_files.txt` → `gov_files.txt`
 
 #### GL30-49 執行平台 (Execution Platform)
-2. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl_engine.ts` → `gov_engine.ts`
-3. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/governance-audit/gl_aep_engine_auditor.py` → `gov_aep_engine_auditor.py`
-4. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/aup-tools/gl_marker_injector.py` → `gov_marker_injector.py`
-5. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gl_pre_commit.py` → `gov_pre_commit.py`
-6. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gl_naming_check.py` → `gov_naming_check.py`
-7. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gl_reporter.py` → `gov_reporter.py`
-8. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gl_continuous_monitor.py` → `gov_continuous_monitor.py`
-9. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gl_validator.py` → `gov_validator.py`
-10. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gl_executor.py` → `gov_executor.py`
-11. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gl_integrator.py` → `gov_integrator.py`
-12. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-engine/gl_automation_engine.py` → `gov_automation_engine.py`
-13. `responsibility-gl-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gl-restructure/gl_consolidation_plan.py` → `gov_consolidation_plan.py`
+2. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/governance/gl_engine.ts` → `gov_engine.ts`
+3. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/tools-legacy/governance-audit/gl_aep_engine_auditor.py` → `gov_aep_engine_auditor.py`
+4. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts/aup-tools/gl_marker_injector.py` → `gov_marker_injector.py`
+5. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gl_pre_commit.py` → `gov_pre_commit.py`
+6. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/hooks/gl_naming_check.py` → `gov_naming_check.py`
+7. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gl_reporter.py` → `gov_reporter.py`
+8. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gl_continuous_monitor.py` → `gov_continuous_monitor.py`
+9. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gl_validator.py` → `gov_validator.py`
+10. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gl_executor.py` → `gov_executor.py`
+11. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gl_integrator.py` → `gov_integrator.py`
+12. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-engine/gl_automation_engine.py` → `gov_automation_engine.py`
+13. `responsibility-gov-layers-boundary/gl30-49-runtime-execution/execution-platform/engine/scripts-legacy/gov-restructure/gl_consolidation_plan.py` → `gov_consolidation_plan.py`
 
 #### GL60-80 合規平台 (Compliance Platform)
-14. `responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/contracts/gl_policy.py` → `gov_policy.py`
-15. `responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/contracts/gl_contract.py` → `gov_contract.py`
-16. `responsibility-gl-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/evolution/gl_evolution_engine.py` → `gov_evolution_engine.py`
+14. `responsibility-gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/contracts/gl_policy.py` → `gov_policy.py`
+15. `responsibility-gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/contracts/gl_contract.py` → `gov_contract.py`
+16. `responsibility-gov-layers-boundary/gl60-80-governance-compliance/compliance-platform/scripts/evolution/gl_evolution_engine.py` → `gov_evolution_engine.py`
 
 #### MachineNativeOps 平台 (MachineNativeOps Platform)
-17. `machinenativeops/gl-runtime-engine-platform/governance/gl_engine.ts` → `gov_engine.ts`
-18. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/hooks/gl_pre_commit.py` → `gov_pre_commit.py`
-19. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/hooks/gl_naming_check.py` → `gov_naming_check.py`
-20. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gl_reporter.py` → `gov_reporter.py`
-21. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gl_continuous_monitor.py` → `gov_continuous_monitor.py`
-22. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gl_validator.py` → `gov_validator.py`
-23. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gl_executor.py` → `gov_executor.py`
-24. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gl_integrator.py` → `gov_integrator.py`
-25. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-engine/gl_automation_engine.py` → `gov_automation_engine.py`
-26. `machinenativeops/gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl_consolidation_plan.py` → `gov_consolidation_plan.py`
+17. `machinenativeops/gov-runtime-engine-platform/governance/gl_engine.ts` → `gov_engine.ts`
+18. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/hooks/gl_pre_commit.py` → `gov_pre_commit.py`
+19. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/hooks/gl_naming_check.py` → `gov_naming_check.py`
+20. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gl_reporter.py` → `gov_reporter.py`
+21. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gl_continuous_monitor.py` → `gov_continuous_monitor.py`
+22. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gl_validator.py` → `gov_validator.py`
+23. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gl_executor.py` → `gov_executor.py`
+24. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gl_integrator.py` → `gov_integrator.py`
+25. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-engine/gl_automation_engine.py` → `gov_automation_engine.py`
+26. `machinenativeops/gov-runtime-engine-platform/scripts-legacy/gov-restructure/gl_consolidation_plan.py` → `gov_consolidation_plan.py`
 
 #### 命名空間治理邊界 (Namespace Governance Boundary)
 27. `responsibility-namespace-governance-boundary/implementation/ecosystem/tools/audit/gl_audit_simple.py` → `gov_audit_simple.py`

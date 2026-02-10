@@ -1,0 +1,155 @@
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: coordination
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+# Service Discovery Configuration
+# GL Governance Layer: GL10-29 (Operational Layer)
+
+apiVersion: ecosystem.coordination/v1
+kind: ServiceDiscoveryConfig
+metadata:
+  name: service-discovery-config
+  version: "1.0.0"
+
+# Registry Configuration
+registry:
+  enabled: true
+  type: inmemory  # Options: inmemory, consul, etcd, custom
+  storage_path: "/tmp/service-registry"
+  persistence: true
+  
+  # Consul Configuration (if type: consul)
+  consul:
+    host: localhost
+    port: 8500
+    token: ""
+    
+  # Etcd Configuration (if type: etcd)
+  etcd:
+    endpoints:
+      - http://localhost:2379
+    timeout: 5
+
+# Health Check Configuration
+health_check:
+  enabled: true
+  default_interval: 30  # seconds
+  default_timeout: 5    # seconds
+  default_retries: 3
+  deregistration_timeout: 60  # seconds - time after which unhealthy service is deregistered
+  
+  # Health check types
+  types:
+    http:
+      enabled: true
+      method: GET
+      expected_status: 200
+    tcp:
+      enabled: true
+    custom:
+      enabled: true
+
+# Load Balancing Configuration
+load_balancing:
+  default_strategy: round-robin  # Options: round-robin, weighted, health-based, least-connections, geographic
+  
+  strategies:
+    round_robin:
+      enabled: true
+    weighted:
+      enabled: true
+    health_based:
+      enabled: true
+      exclude_unhealthy: true
+    least_connections:
+      enabled: true
+    geographic:
+      enabled: false  # Requires geo metadata
+
+# Service Configuration
+service:
+  registration:
+    auto_register: true
+    require_health_check: true
+    default_ttl: 300  # seconds
+    
+  metadata:
+    required_fields:
+      - name
+      - platform
+      - endpoint
+    optional_fields:
+      - version
+      - type
+      - tags
+      - capabilities
+      - region
+      - zone
+
+# API Configuration
+api:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8080
+  prefix: "/api/v1"
+  
+  authentication:
+    enabled: false  # Set to true in production
+    type: jwt  # Options: jwt, api-key, oauth2
+    
+  rate_limiting:
+    enabled: true
+    default_limit: 1000  # requests per minute
+    burst: 100
+
+# Monitoring Configuration
+monitoring:
+  metrics:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    
+  logging:
+    level: INFO  # DEBUG, INFO, WARNING, ERROR
+    format: json
+    output: stdout
+    
+  tracing:
+    enabled: false
+    provider: jaeger
+    endpoint: "http://localhost:14268/api/traces"
+
+# Security Configuration
+security:
+  tls:
+    enabled: false  # Set to true in production
+    cert_file: "/etc/ssl/service-discovery/cert.pem"
+    key_file: "/etc/ssl/service-discovery/key.pem"
+    ca_file: "/etc/ssl/service-discovery/ca.pem"
+    
+  encryption:
+    enabled: false
+    algorithm: AES256
+
+# Platform Integration
+platforms:
+  aws:
+    enabled: true
+    region: us-east-1
+  gcp:
+    enabled: true
+    project: ""
+  azure:
+    enabled: true
+    subscription: ""
+  on_premise:
+    enabled: true
+
+# Feature Flags
+features:
+  service_mesh_integration: false
+  kubernetes_integration: false
+  consul_integration: false
+  etcd_integration: false

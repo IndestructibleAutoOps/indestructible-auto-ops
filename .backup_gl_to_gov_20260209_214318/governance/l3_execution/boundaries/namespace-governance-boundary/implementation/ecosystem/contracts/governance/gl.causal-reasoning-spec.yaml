@@ -1,0 +1,538 @@
+# @GL-layer: GQS-L2
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: gov-governance/v1
+kind: GovernanceLayerSpec
+metadata:
+  layerId: "GL10-19"
+  name: "Causal Reasoning Governance"
+  version: "1.0.0"
+  description: "因 果 推 理 治 理 层 - 实 现真正的因果理解和反事实推理能力"
+  parentLayer: "GL00-09"
+  childLayers: []
+  status: "draft"
+
+spec:
+  layerPurpose: |
+    GL10-19 层为系统提供因果推理能力，使其能够：
+    1. 理解因果关系而非仅仅是相关性
+    2. 执行反事实推理（"如果...会怎样"的思考）
+    3. 设计和评估干预策略
+    4. 构建世界模型的因果结构
+
+  governancePrinciples:
+    - principle: "因果真实性"
+      description: "所有因果推断必须基于证据和验证"
+      enforcement: "strict"
+    - principle: "沙盒隔离"
+      description: "反事实推理必须在隔离环境中进行"
+      enforcement: "critical"
+    - principle: "干预边界"
+      description: "任何现实干预必须经过人工批准"
+      enforcement: "strict"
+    - principle: "可解释性"
+      description: "因果推理过程必须完全可解释"
+      enforcement: "strict"
+
+  architecturalComponents:
+    structuralCausalModels:
+      componentId: "GL10-SCM"
+      name: "Structural Causal Models"
+      purpose: "表示和推理因果结构的数学框架"
+      
+      registry:
+        location: "registry/causal-models/"
+        format: "YAML + DAG representation"
+        versioning: "semver"
+        validation: "GL10: 因果图完整性检查"
+      
+      capabilities:
+        - capability: "causal_discovery"
+          description: "从观测数据中发现因果结构"
+          methods:
+            - PC_algorithm
+            - FCI_algorithm
+            - GES_algorithm
+          governance:
+            - 发现过程必须记录
+            - 结果需人工验证
+            - 不确定性必须量化
+        
+        - capability: "do_calculus"
+          description: "执行 do-演算计算干预效果"
+          methods:
+            - Pearl_do_calculus
+            - backdoor_criterion
+            - frontdoor_criterion
+          governance:
+            - 计算步骤必须可追溯
+            - 假设必须明确声明
+            - 结果需敏感性分析
+        
+        - capability: "counterfactual_query"
+          description: "回答反事实问题"
+          methods:
+            - twin_networks
+            - structural_equation_models
+            - potential_outcomes
+          governance:
+            - 查询必须明确标记为反事实
+            - 结果需不确定性估计
+            - 不得作为现实决策依据
+        
+        - capability: "causal_inference_verification"
+          description: "验证因果推断的有效性"
+          methods:
+            - randomization_tests
+            - instrumental_variables
+            - sensitivity_analysis
+          governance:
+            - 验证方法必须记录
+            - p-values 和置信区间必须报告
+            - 多重比较校正
+
+    counterfactualEngine:
+      componentId: "GL11-CFE"
+      name: "Counterfactual Reasoning Engine"
+      purpose: "在隔离环境中模拟反事实情境"
+      
+      sandbox:
+        location: "coordination/counterfactual-sandbox/"
+        isolation:
+          physical: true
+          network: "strict_isolation"
+          resource: "isolated_compute"
+        access:
+          read_only_real_world: true
+          write_real_world: false
+          execution: "simulation_only"
+      
+      capabilities:
+        - capability: "what_if_simulation"
+          description: "模拟'如果...会怎样'的场景"
+          workflow:
+            1. 定义反事实前提
+            2. 构建反事实世界模型
+            3. 执行推理链
+            4. 生成反事实结果
+          governance:
+            - 前提必须明确标记为假设
+            - 模型假设必须透明
+            - 结果不得作为现实行动依据
+        
+        - capability: "alternative_history_generation"
+          description: "生成替代历史路径"
+          workflow:
+            1. 识别历史分支点
+            2. 定义替代决策
+            3. 推演替代时间线
+            4. 评估可能影响
+          governance:
+            - 分支点必须基于现实
+            - 替代路径需合理性检查
+            - 结果需多路径比较
+        
+        - capability: "intervention_effect_prediction"
+          description: "预测干预的效果"
+          workflow:
+            1. 定义干预策略
+            2. 构建干预模型
+            3. 预测干预结果
+            4. 评估副作用
+          governance:
+            - 干预策略需道德审查
+            - 预测需不确定性量化
+            - 副作用必须全面评估
+        
+        - capability: "counterfactual_reasoning_verification"
+          description: "验证反事实推理的合理性"
+          workflow:
+            1. 检查逻辑一致性
+            2. 验证假设合理性
+            3. 评估证据支持
+            4. 标记置信度
+          governance:
+            - 验证过程必须记录
+            - 置信度必须量化
+            - 低置信度结果需警告
+
+      safetyConstraints:
+        - constraint: "物理隔离"
+          description: "沙盒必须在物理上与生产环境隔离"
+          enforcement: "critical"
+          monitoring: "continuous"
+        
+        - constraint: "只读访问"
+          description: "只能读取现实世界状态，不能修改"
+          enforcement: "critical"
+          monitoring: "audit_log"
+        
+        - constraint: "推理结果标记"
+          description: "所有反事实结果必须明确标记"
+          enforcement: "strict"
+          monitoring: "automated_check"
+        
+        - constraint: "人工审核"
+          description: "重要反事实推理需人工审核"
+          enforcement: "strict"
+          monitoring: "human_review"
+
+    interventionPlanner:
+      componentId: "GL12-IP"
+      name: "Intervention Planner"
+      purpose: "设计和评估干预策略"
+      
+      hooks:
+        location: "agent_hooks/intervention-hooks/"
+        types:
+          - pre_intervention_assessment
+          - intervention_authorization
+          - post_intervention_evaluation
+      
+      capabilities:
+        - capability: "intervention_strategy_design"
+          description: "设计自主干预策略"
+          workflow:
+            1. 分析问题空间
+            2. 识别干预点
+            3. 生成候选策略
+            4. 评估策略效果
+          governance:
+            - GL60: 边界审批
+            - 策略需可解释
+            - 风险评估必需
+        
+        - capability: "intervention_effect_evaluation"
+          description: "评估干预的效果"
+          workflow:
+            1. 定义成功指标
+            2. 测量干预影响
+            3. 比较基线和干预
+            4. 评估因果关系
+          governance:
+            - 指标需预先定义
+            - 测量方法需透明
+            - 因果推断需验证
+        
+        - capability: "intervention_timing_optimization"
+          description: "优化干预的时机"
+          workflow:
+            1. 分析时间窗口
+            2. 评估不同时机
+            3. 预测动态效果
+            4. 选择最优时机
+          governance:
+            - 时机选择需理由
+            - 时间敏感性需评估
+            - 延迟风险需考虑
+      
+      ethicalConstraints:
+        - constraint: "最小化意外后果"
+          description: "干预策略必须最小化意外后果"
+          enforcement: "strict"
+          evaluation: "comprehensive_risk_assessment"
+        
+        - constraint: "人类最终批准权"
+          description: "所有现实干预需人类批准"
+          enforcement: "critical"
+          approval: "GL62: 需人类批准的决策"
+        
+        - constraint: "可解释的干预理由"
+          description: "干预理由必须可解释"
+          enforcement: "strict"
+          explanation: "natural_language + causal_chain"
+        
+        - constraint: "可撤销的干预"
+          description: "干预应尽可能可撤销"
+          enforcement: "recommended"
+          rollback: "GL63: 审计追踪"
+
+  worldModel:
+    physicalLaws:
+      componentId: "GL13-PL"
+      name: "Physical Laws Integration"
+      purpose: "集成物理定律到世界模型"
+      
+      integration:
+        location: "platform-templates/physics-engine/"
+        format: "standard_physics_libraries"
+        real_time: true
+      
+      capabilities:
+        - capability: "newtonian_mechanics"
+          description: "牛顿力学模拟"
+          accuracy: "high"
+          scope: "macroscopic_objects"
+        - capability: "thermodynamics"
+          description: "热力学模拟"
+          accuracy: "medium"
+          scope: "energy_transfer"
+        - capability: "fluid_dynamics"
+          description: "流体动力学模拟"
+          accuracy: "medium"
+          scope: "fluids_and_gases"
+      
+      governance:
+        - 物理定律必须验证
+        - 模拟精度必须声明
+        - 局限性必须透明
+
+    socialDynamics:
+      componentId: "GL14-SD"
+      name: "Social Dynamics Simulation"
+      purpose: "模拟社会动态和群体行为"
+      
+      simulation:
+        location: "coordination/social-simulation/"
+        multi_agent: true
+        scale: "thousands_of_agents"
+      
+      capabilities:
+        - capability: "agent_based_modeling"
+          description: "基于主体的建模"
+          methods:
+            - individual_behavior_rules
+            - interaction_patterns
+            - emergence_detection
+        - capability: "network_dynamics"
+          description: "网络动态模拟"
+          methods:
+            - social_network_analysis
+            - information_diffusion
+            - influence_propagation
+        - capability: "collective_behavior"
+          description: "集体行为模拟"
+          methods:
+            - crowd_dynamics
+            - consensus_formation
+            - social_norms_evolution
+      
+      governance:
+        - GL45: 隐私保护
+        - 伦理审查必需
+        - 结果需人类解释
+
+    abstractionLayers:
+      componentId: "GL15-AL"
+      name: "Abstraction Layers"
+      purpose: "实现从物理层到概念层的统一表示"
+      
+      mapping:
+        location: "registry/abstraction-mappings/"
+        format: "hierarchical_representation"
+        verification: "GL12: 抽象一致性验证"
+      
+      layers:
+        - layer: "physical"
+          description: "物理层表示"
+          representation: "spatial_temporal_coordinates"
+          granularity: "continuous"
+        - layer: "functional"
+          description: "功能层表示"
+          representation: "state_transitions"
+          granularity: "discrete"
+        - layer: "semantic"
+          description: "语义层表示"
+          representation: "conceptual_graph"
+          granularity: "symbolic"
+        - layer: "pragmatic"
+          description: "语用层表示"
+          representation: "goal_oriented_actions"
+          granularity: "intent"
+      
+      capabilities:
+        - capability: "abstraction_mapping"
+          description: "在不同抽象层之间映射"
+          governance:
+            - 映射必须可逆
+            - 信息损失必须量化
+            - 一致性必须验证
+        
+        - capability: "abstraction_consistency_verification"
+          description: "验证抽象层之间的一致性"
+          governance:
+            - 验证方法必须记录
+            - 不一致必须报告
+            - 修正策略必须定义
+
+  safetyFramework:
+    corePrinciples:
+      - principle: "因果真实性"
+        description: "不接受未经验证的因果主张"
+        enforcement: "strict"
+      - principle: "沙盒隔离"
+        description: "反事实推理必须在隔离环境"
+        enforcement: "critical"
+      - principle: "干预边界"
+        description: "现实干预需人工批准"
+        enforcement: "strict"
+      - principle: "透明度"
+        description: "所有推理过程必须可解释"
+        enforcement: "strict"
+
+    preConditionChecks:
+      - check: "causal_model_validated"
+        description: "因果模型必须经过验证"
+        required: true
+        validation: "GL10: 因果图完整性检查"
+      
+      - check: "sandbox_isolated"
+        description: "沙盒必须完全隔离"
+        required: true
+        validation: "automated_isolation_test"
+      
+      - check: "intervention_authorized"
+        description: "干预必须经过授权"
+        required: true
+        validation: "GL62: 人类批准"
+
+    postConditionChecks:
+      - check: "reasoning_logged"
+        description: "所有推理必须记录"
+        required: true
+        logging: "GL63: 审计追踪"
+      
+      - check: "results_marked"
+        description: "结果必须明确标记类型"
+        required: true
+        marking: "causal|counterfactual|intervention"
+      
+      - check: "confidence_quantified"
+        description: "置信度必须量化"
+        required: true
+        quantification: "probability_distribution"
+
+    emergencyProtocols:
+      - protocol: "sandbox_breach"
+        description: "沙盒逃逸应急响应"
+        actions:
+          - 立即终止所有反事实推理
+          - 隔离受影响组件
+          - 启动安全审计
+          - 人工接管控制
+        notification: "security_team + governance_board"
+      
+      - protocol: "causal_model_corruption"
+        description: "因果模型损坏应急响应"
+        actions:
+          - 停止使用受损模型
+          - 回滚到最后已知良好状态
+          - 启动模型修复
+          - 重新验证模型
+        notification: "research_team + governance_board"
+      
+      - protocol: "intervention_failure"
+        description: "干预失败应急响应"
+        actions:
+          - 立即停止干预
+          - 评估影响范围
+          - 启动修复程序
+          - 报告事故
+        notification: "incident_response_team"
+
+  monitoringMetrics:
+    performance:
+      - metric: "causal_inference_accuracy"
+        description: "因果推断准确率"
+        target: "> 95%"
+        measurement: "test_set_evaluation"
+      - metric: "counterfactical_reasoning_time"
+        description: "反事实推理时间"
+        target: "< 10s"
+        measurement: "latency_monitoring"
+      - metric: "intervention_success_rate"
+        description: "干预成功率"
+        target: "> 90%"
+        measurement: "success_tracking"
+    
+    safety:
+      - metric: "sandbox_isolation_violations"
+        description: "沙盒隔离违规次数"
+        target: "0"
+        measurement: "security_monitoring"
+      - metric: "unauthorized_interventions"
+        description: "未授权干预次数"
+        target: "0"
+        measurement: "audit_log"
+      - metric: "causal_model_corruptions"
+        description: "因果模型损坏次数"
+        target: "0"
+        measurement: "integrity_checks"
+    
+    quality:
+      - metric: "causal_explanation_quality"
+        description: "因果解释质量"
+        target: "> 90%"
+        measurement: "human_evaluation"
+      - metric: "counterfactual_uncertainty_quantification"
+        description: "反事实不确定性量化"
+        target: "100%"
+        measurement: "completeness_check"
+
+  integrationPoints:
+    dependencies:
+      - layer: "GL00-09"
+        dependency: "governance_foundation"
+        description: "依赖基础治理框架"
+      - layer: "GL81-83"
+        dependency: "extension_framework"
+        description: "使用扩展框架注册能力"
+    
+    consumers:
+      - layer: "GL20-29"
+        consumer: "cognitive_modes"
+        description: "为认知模式提供因果推理能力"
+      - layer: "GL40-49"
+        consumer: "environment_interaction"
+        description: "为环境交互提供干预规划"
+      - layer: "GL50-59"
+        consumer: "self_evolution"
+        description: "为自我演化提供因果模型"
+
+  compliance:
+    standards:
+      - standard: "GL10"
+        title: "因果图完整性检查"
+        compliance: "required"
+      - standard: "GL11"
+        title: "反事实推理安全规范"
+        compliance: "required"
+      - standard: "GL12"
+        title: "干预策略设计规范"
+        compliance: "required"
+      - standard: "GL60"
+        title: "边界强制执行"
+        compliance: "required"
+    
+    auditRequirements:
+      - requirement: "所有因果推断必须可审计"
+        frequency: "continuous"
+      - requirement: "所有反事实推理必须记录"
+        frequency: "continuous"
+      - requirement: "所有干预必须完全追踪"
+        frequency: "continuous"
+
+  versioning:
+    current: "1.0.0"
+    schemaVersion: "1.0"
+    lastUpdated: "2025-01-18"
+    nextReview: "2025-04-18"
+
+  approval:
+    status: "draft"
+    reviewers:
+      - role: "causal_inference_expert"
+        status: "pending"
+      - role: "safety_engineer"
+        status: "pending"
+      - role: "governance_board"
+        status: "pending"
+    approvalCriteria:
+      - "因果推理架构合理性"
+      - "安全框架完整性"
+      - "与现有治理层兼容性"
+      - "实施可行性"

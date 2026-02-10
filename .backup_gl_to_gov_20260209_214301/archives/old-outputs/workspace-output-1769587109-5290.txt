@@ -1,0 +1,73 @@
+✅ GL validation passed
+[main bb45bcf2] GL-ROOT 稽核模式啟動 - 多代理並行編排系統整合
+ 3 files changed, 61 insertions(+)
+ create mode 100644 engine/.governance/audit-reports/gl-root-audit-init.json
+Validating engine...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587112301",
+      "type": "validation",
+      "timestamp": "2026-01-28T07:58:32.301Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T07:58:32.090Z",
+    "Workspace: /workspace/machine-native-ops/engine",
+    "Strict Mode: true"
+  ]
+}
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769587114314",
+      "type": "validation",
+      "timestamp": "2026-01-28T07:58:34.314Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T07:58:34.265Z",
+    "Workspace: /workspace/machine-native-ops/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+Validating instant...
+Validating elasticsearch-search-system...
+Validating infrastructure...
+Validating esync-platform...
+✅ GL validation passed for all workspaces
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit bb45bcf.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      [EXTERNAL_URL_REMOVED]        
+remote: 
+To [EXTERNAL_URL_REMOVED]
+   be5195d0..bb45bcf2  main -> main

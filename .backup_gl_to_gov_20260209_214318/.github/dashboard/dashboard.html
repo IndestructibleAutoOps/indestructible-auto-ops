@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Metrics Dashboard - MachineNativeOps</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>Strategic Performance Monitoring Dashboard</h1>
+                    <p>Real-time KPI tracking and strategic decision support</p>
+                    <div class="last-updated">Last Updated: <span id="lastUpdated"></span></div>
+                </div>
+                <div class="charter-badge">GL Unified Charter Activated</div>
+            </div>
+        </header>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all" aria-label="Filter to show all metrics">All Metrics</button>
+            <button class="filter-btn" data-filter="Strategic" aria-label="Filter metrics by Strategic category">Strategic</button>
+            <button class="filter-btn" data-filter="Customer" aria-label="Filter metrics by Customer category">Customer</button>
+            <button class="filter-btn" data-filter="Operational" aria-label="Filter metrics by Operational category">Operational</button>
+            <button class="filter-btn" data-filter="Quality" aria-label="Filter metrics by Quality category">Quality</button>
+            <button class="filter-btn" data-filter="Technical" aria-label="Filter metrics by Technical category">Technical</button>
+            <button class="filter-btn" data-filter="Talent" aria-label="Filter metrics by Talent category">Talent</button>
+            <button class="filter-btn" data-filter="Security" aria-label="Filter metrics by Security category">Security</button>
+            <button class="filter-btn" data-filter="Compliance" aria-label="Filter metrics by Compliance category">Compliance</button>
+            <button class="filter-btn" data-filter="Financial" aria-label="Filter metrics by Financial category">Financial</button>
+            <button class="filter-btn" data-filter="Innovation" aria-label="Filter metrics by Innovation category">Innovation</button>
+        </div>
+
+        <!-- Performance Status Summary -->
+        <div class="performance-status">
+            <div class="status-item status-success">
+                <div id="successCount" role="status" aria-live="polite" aria-label="Number of metrics on track">0</div>
+                <div>On Track</div>
+            </div>
+            <div class="status-item status-warning">
+                <div id="warningCount" role="status" aria-live="polite" aria-label="Number of metrics needing attention">0</div>
+                <div>Needs Attention</div>
+            </div>
+            <div class="status-item status-critical">
+                <div id="criticalCount" role="status" aria-live="polite" aria-label="Number of critical metrics">0</div>
+                <div>Critical</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid" id="metricsGrid">
+            <!-- Metrics will be populated by JavaScript -->
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+            <div class="summary-card">
+                <div class="summary-title">Executive Overview</div>
+                <div class="summary-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="overallScore">0%</div>
+                        <div class="stat-label">Overall Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="metricsTracked">0</div>
+                        <div class="stat-label">Metrics Tracked</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="avgProgress">0%</div>
+                        <div class="stat-label">Avg Progress</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="trendScore">0</div>
+                        <div class="stat-label">Trend Score</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-title">Category Performance</div>
+                <div class="summary-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="strategicScore">0%</div>
+                        <div class="stat-label">Strategic</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="operationalScore">0%</div>
+                        <div class="stat-label">Operational</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="qualityScore">0%</div>
+                        <div class="stat-label">Quality</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="complianceScore">0%</div>
+                        <div class="stat-label">Compliance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Section -->
+        <div class="alerts-section">
+            <div class="alerts-title">Critical Alerts & Recommendations</div>
+            <div id="alertsList">
+                <!-- Alerts will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div>Success Metrics Dashboard v1.0 | MachineNativeOps GL Unified Charter</div>
+            <div class="footer-links">
+                <a href="#" id="refreshDataLink">Refresh Data</a> |
+                <a href="#" id="exportDataLink">Export Report</a> |
+                <a href="#">Documentation</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var refreshLink = document.getElementById('refreshDataLink');
+            var exportLink = document.getElementById('exportDataLink');
+
+            if (refreshLink && typeof window.refreshData === 'function') {
+                refreshLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    window.refreshData();
+                });
+            }
+
+            if (exportLink && typeof window.exportData === 'function') {
+                exportLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    window.exportData();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

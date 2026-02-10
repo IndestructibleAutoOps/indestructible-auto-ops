@@ -1,0 +1,89 @@
+[2026-01-28 12:29:09] [INFO] Governance Event Stream Monitor 已啟動
+[2026-01-28 12:29:09] [INFO] 配置文件: governance-monitor-config.yaml
+[2026-01-28 12:29:09] [INFO] 日誌文件: governance-monitor.log
+[2026-01-28 12:29:09] [INFO] 監控間隔: 60 秒
+[2026-01-28 12:29:09] [DEBUG] 監控檢查 #1
+[2026-01-28 12:29:09] [INFO] 檢測到 governance event stream 變更
+[2026-01-28 12:29:09] [INFO] 發現 governance event stream 更新，正在處理...
+[2026-01-28 12:29:09] [DEBUG] 已添加文件: engine/.governance/event-stream.jsonl
+[2026-01-28 12:29:09] [DEBUG] 已添加文件: engine/.governance/governance-event-stream.jsonl
+[2026-01-28 12:29:09] [DEBUG] 已添加文件: file-organizer-system/.governance/event-stream.jsonl
+[main 4e9ce643] chore: periodic governance event stream update - 2026-01-28 12:29:09
+ 3 files changed, 30 insertions(+)
+[2026-01-28 12:29:09] [INFO] 提交成功: chore: periodic governance event stream update - 2026-01-28 12:29:09
+Running GL governance pre-push validation...
+Validating engine module...
+
+> @machinenativeops/aep-engine@1.0.0 validate-gl
+> npx ts-node governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769603351475",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:29:11.475Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:29:11.265Z",
+    "Workspace: /workspace/engine",
+    "Strict Mode: true"
+  ]
+}
+✅ Engine module validation passed
+Validating file-organizer-system...
+
+> @machinenativeops/file-organizer-system@1.0.0 validate-gl
+> npx ts-node ../engine/governance/gov_engine.ts validate --strict
+
+{
+  "success": true,
+  "violations": [],
+  "events": [
+    {
+      "id": "gl-validation-1769603353409",
+      "type": "validation",
+      "timestamp": "2026-01-28T12:29:13.409Z",
+      "source": "governance/gov_engine.ts",
+      "data": {
+        "success": true,
+        "violationCount": 0,
+        "criticalCount": 0
+      }
+    }
+  ],
+  "auditTrail": [
+    "GL Validation Started at 2026-01-28T12:29:13.398Z",
+    "Workspace: /workspace/file-organizer-system",
+    "Strict Mode: true"
+  ]
+}
+✅ File organizer system validation passed
+Validating instant system...
+✅ Instant system validation passed
+Validating elasticsearch-search-system...
+✅ Elasticsearch search system validation passed
+Validating esync-platform...
+⚠️  Go not installed, skipping ESync platform validation
+✅ GL Governance Pre-Push Validation Passed
+remote: Bypassed rule violations for refs/heads/main:        
+remote: 
+remote: - Code scanning is waiting for results from Bandit for the commit 4e9ce64.        
+remote: 
+remote: 
+remote: GitHub found 4 vulnerabilities on MachineNativeOps/machine-native-ops's default branch (3 moderate, 1 low). To find out more, visit:        
+remote:      [EXTERNAL_URL_REMOVED]        
+remote: 
+To [EXTERNAL_URL_REMOVED]
+   1627e824..4e9ce643  main -> main
+[2026-01-28 12:29:14] [INFO] ✅ 推送成功
+[2026-01-28 12:29:14] [INFO] 統計: 檢查=1, 提交=1, 推送成功=1, 推送失敗=0

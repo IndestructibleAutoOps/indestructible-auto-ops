@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/governance/schemas/gov-event-v1.json",
+  "title": "GL Event Schema",
+  "description": "Governance Layer Event Schema for Autonomy Boundary Tests",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "event_type",
+    "namespace",
+    "layer",
+    "platform",
+    "era",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the event"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp with timezone"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Type of the event (e.g., 'external-api-unavailable')"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Namespace path (e.g., '/governance/kernel/system')"
+    },
+    "layer": {
+      "type": "string",
+      "enum": ["foundation", "coordination", "governance", "tools", "application"],
+      "description": "Governance layer where the event originated"
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform identifier (e.g., 'production', 'test')"
+    },
+    "era": {
+      "type": "string",
+      "description": "Era identifier (e.g., 'current-era')"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event payload with scenario-specific data"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+governance_compliance_check:
+  renamed_axiom: "IndestructibleAutoOps"
+  constraints:
+    narrative_free: true
+    machine_readable_only: true
+    executable_artifacts_only: true
+  coverage:
+    functional_correctness: true
+    env_immutability: true
+    performance_slo: true
+    recovery: true
+    versioning_traffic: true
+    evidence_chain: true
+    runtime_authz_admission: true
+    drift_detection: true
+    boundary_verification: true
+    time_integrity: true
+    artifact_class_coverage: true
+  gaps_remaining:
+    - id: "GAP-01"
+      title: "Concrete implementation bindings to specific tools (ArgoCD, Kyverno, Istio, Rekor endpoints)"
+      mitigation: "Provide environment-specific adapter layer in target repo"
+    - id: "GAP-02"
+      title: "Formal complexity proofs automation"
+      mitigation: "Add static analyzer + documented proofs for bounded algorithms where applicable"

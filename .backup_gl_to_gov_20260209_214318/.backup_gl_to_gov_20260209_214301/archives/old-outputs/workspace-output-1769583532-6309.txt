@@ -1,0 +1,21 @@
+./.eslintrc.json
+./package-lock.json
+./.markdownlint.json
+./file-organizer-system/client/tsconfig.node.json
+./file-organizer-system/client/tsconfig.json
+./file-organizer-system/package-lock.json
+./file-organizer-system/server/tsconfig.json
+./elasticsearch-search-system/var/evidence/validation-report.json
+./elasticsearch-search-system/controlplane/evidence-chain.json
+./elasticsearch-search-system/root-policy/evidence-chain.json
+./elasticsearch-search-system/root-evidence/root-file-run.json
+./elasticsearch-search-system/workspace/evidence-chain.json
+./engine/aep-engine-web/tsconfig.node.json
+./engine/aep-engine-web/vercel.json
+./engine/aep-engine-web/tsconfig.json
+./engine/.gl/evidence-chain.json
+./engine/package-lock.json
+./engine/.governance/audit-results/governance_event_stream.json
+./engine/.governance/audit-results/GLOBAL_GOVERNANCE_AUDIT_REPORT.json
+./engine/.governance/audit-results/aep-reports/GL-GLOBAL-GOVERNANCE-AUDIT-20260126_082815.json
+xargs: grep: terminated by signal 13

@@ -1,0 +1,20 @@
+{
+  "name": "@machinenativeops/file-organizer-system",
+  "version": "1.0.0",
+  "description": "GL Unified Charter Activated - File Organizer System Monorepo",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build:all": "cd client && npm run build && cd ../server && npm run build",
+    "validate": "npx ts-node ../engine/governance/gov_engine.ts validate --strict",
+    "governance:check": "npx ts-node ../engine/governance/gov_engine.ts check",
+    "pipeline:run": "npx ts-node ../engine/governance/gov_engine.ts pipeline --full"
+  },
+  "keywords": [
+    "file-organizer",
+    "governance",
+    "gl",
+    "monorepo"
+  ],
+  "author": "MachineNativeOps",
+  "license": "MIT",
+  "governance": {

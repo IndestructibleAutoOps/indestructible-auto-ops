@@ -1,0 +1,23 @@
+{
+  "decision_id": "606a6349-bffc-4c8c-97e5-f2c7fc1a81b8",
+  "timestamp": "2026-02-05T02:01:14.731656+00:00",
+  "era": 1,
+  "engine_version": "v2.1.0",
+  "engine_hash": "sha256:1476f1911c0a83c0961f5322f79a59316afff2fcdf9ea494096680d4b227842a",
+  "input_snapshot": {
+    "metrics": "snapshots/metrics/606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json",
+    "logs": "snapshots/logs/606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json",
+    "topology": "snapshots/topology/606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json",
+    "alerts": "snapshots/alerts/606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json"
+  },
+  "decision": {
+    "output_action": "restart_container",
+    "action_parameters": {
+      "service": "api-gateway",
+      "container": "api-gateway-1",
+      "grace_period_seconds": 30
+    },
+    "execution_trace": "traces/606a6349-bffc-4c8c-97e5-f2c7fc1a81b8.json"
+  },
+  "canonical_hash": "sha256:a5d7098a17fe2289bf5323027754c32d148c7043ab153c14a29f0e0120efde35"
+}

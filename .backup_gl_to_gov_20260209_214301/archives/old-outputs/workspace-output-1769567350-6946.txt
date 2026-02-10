@@ -1,0 +1,4 @@
+root       14820 89.8 16.9 1894228 682576 ?      Rl   02:28   0:33 npm install
+root       14873  0.0  0.0   2920   880 ?        Ss   02:29   0:00 timeout --preserve-status --signal=KILL 60s bash -lc { cd /workspace/machine-native-ops ; mkdir -p /workspace/outputs ; } { sleep 15 && ps aux | grep npm __ec=$? } >"/workspace/outputs/workspace_output_1769567350_6946.txt" 2>&1 head -c 80000 "/workspace/outputs/workspace_output_1769567350_6946.txt" ( exit "$__ec" )
+root       14874  0.0  0.0   4352  3068 ?        S    02:29   0:00 bash -lc { cd /workspace/machine-native-ops ; mkdir -p /workspace/outputs ; } { sleep 15 && ps aux | grep npm __ec=$? } >"/workspace/outputs/workspace_output_1769567350_6946.txt" 2>&1 head -c 80000 "/workspace/outputs/workspace_output_1769567350_6946.txt" ( exit "$__ec" )
+root       14880  0.0  0.0   3752  2032 ?        S    02:29   0:00 grep npm

@@ -1,0 +1,570 @@
+#!/usr/bin/env python3
+"""
+Autonomy Boundary Test - Closure Verification Template
+Test ID: {test_id}
+Scenario: {scenario}
+Generated: {timestamp}
+Mode: CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST
+MNGA Version: v2.0
+"""
+
+import json
+import os
+import sys
+import hashlib
+from pathlib import Path
+from typing import Dict, List, Any
+from datetime import datetime
+
+# Add validators to path
+sys.path.insert(0, '/workspace/ecosystem/validators')
+
+try:
+    from governance_validator import GovernanceValidator
+except ImportError:
+    # Fallback if validator not available
+    GovernanceValidator = None
+
+class ClosureVerifier:
+    """治理閉環驗證器 - MNGA Compliant"""
+    
+    def __init__(self, test_id: str, scenario: str):
+        self.test_id = test_id
+        self.scenario = scenario
+        self.base_path = Path(f"tests/gl/autonomy-boundary/{scenario}")
+        self.violations = []
+        self.warnings = []
+        
+        # Initialize governance validator if available
+        self.governance_validator = GovernanceValidator() if GovernanceValidator else None
+        
+        # Paths
+        self.governance_dir = Path("/workspace/ecosystem/.governance")
+        self.event_stream = self.governance_dir / "event-stream.jsonl"
+        self.hash_registry = self.governance_dir / "hash-registry.json"
+        self.gl_events_dir = self.governance_dir / "gl-events"
+        
+    def verify_all(self) -> bool:
+        """執行所有驗證"""
+        
+        print(f"🔍 [{self.test_id}] 開始閉環驗證: {self.scenario}")
+        print(f"📍 路徑: {self.base_path.absolute()}")
+        print()
+        
+        checks = [
+            ("目錄結構", self.verify_directory_structure),
+            ("Meta.yaml 格式", self.verify_meta_yaml),
+            ("GL Event 存在性", self.verify_gl_event_exists),
+            ("GL Event 格式", self.verify_gl_event_format),
+            ("GL Event 日誌記錄", self.verify_gl_event_logged),
+            ("Fallback 決策追蹤", self.verify_fallback_trace),
+            ("Schema Hash", self.verify_schema_hash),
+            ("可重播性", self.verify_replayability),
+            ("無未授權修復", self.verify_no_unauthorized_repair),
+            ("證據完整性", self.verify_evidence_integrity),
+            ("Hash 註冊", self.verify_hash_registry),
+            ("Event Stream 完整性", self.verify_event_stream),
+            ("Hash 邊界", self.verify_hash_boundary),
+            ("Era 封存", self.verify_era_seal),
+            ("MNGA 合規性", self.verify_mnga_compliance),
+        ]
+        
+        all_passed = True
+        
+        for check_name, check_func in checks:
+            try:
+                result = check_func()
+                if result:
+                    print(f"  ✅ {check_name}")
+                else:
+                    print(f"  ❌ {check_name}")
+                    all_passed = False
+            except Exception as e:
+                print(f"  ❌ {check_name}: {e}")
+                self.violations.append({
+                    "check": check_name,
+                    "error": str(e),
+                    "type": "exception"
+                })
+                all_passed = False
+        
+        # 產生驗證報告
+        self.generate_verification_report(all_passed)
+        
+        # 記錄驗證完成到 event stream
+        self.log_verification_complete(all_passed)
+        
+        return all_passed
+    
+    def verify_directory_structure(self) -> bool:
+        """驗證目錄結構"""
+        required_dirs = [
+            self.base_path,
+            self.base_path / "expected_artifacts",
+            self.base_path / "expected_artifacts" / "gl-events",
+            self.base_path / "evidence",
+            self.base_path / "evidence" / "injection",
+        ]
+        
+        for dir_path in required_dirs:
+            if not dir_path.exists():
+                raise FileNotFoundError(f"目錄不存在: {dir_path}")
+        
+        return True
+    
+    def verify_meta_yaml(self) -> bool:
+        """驗證 Meta.yaml 格式"""
+        meta_file = self.base_path / "meta.yaml"
+        
+        if not meta_file.exists():
+            raise FileNotFoundError(f"找不到 meta.yaml: {meta_file}")
+        
+        # Load and parse YAML
+        import yaml
+        with open(meta_file, 'r') as f:
+            meta = yaml.safe_load(f)
+        
+        # 驗證必要欄位
+        required_fields = [
+            "test_id", "test_name", "scenario", "gl_level", "era", 
+            "platform", "namespace", "generated_by", "mnga_integration"
+        ]
+        
+        for field in required_fields:
+            if field not in meta:
+                raise ValueError(f"meta.yaml 缺少欄位: {field}")
+        
+        # 驗證 MNGA 合規性欄位
+        if meta.get("namespace") != "/governance/kernel/tests/autonomy-boundary":
+            raise ValueError(f"namespace 不符: {meta.get('namespace')}")
+        
+        if meta.get("mnga_version") != "v2.0":
+            raise ValueError(f"MNGA 版本不符: {meta.get('mnga_version')}")
+        
+        return True
+    
+    def verify_gl_event_exists(self) -> bool:
+        """驗證 GL Event 存在"""
+        if not self.gl_events_dir.exists():
+            raise FileNotFoundError(
+                f"GL events 目錄不存在: {self.gl_events_dir}"
+            )
+        
+        # 尋找符合模式的事件檔案
+        pattern = f"*_{self.scenario}.json"
+        matching_files = list(self.gl_events_dir.glob(pattern))
+        
+        if not matching_files:
+            raise FileNotFoundError(
+                f"找不到 GL Event 檔案 (pattern: {pattern})"
+            )
+        
+        return True
+    
+    def verify_gl_event_format(self) -> bool:
+        """驗證 GL Event 格式"""
+        pattern = f"*_{self.scenario}.json"
+        event_file = list(self.gl_events_dir.glob(pattern))[0]
+        
+        with open(event_file, 'r') as f:
+            event = json.load(f)
+        
+        required_fields = [
+            "event_id", "timestamp", "event_type", "namespace",
+            "layer", "platform", "era", "payload"
+        ]
+        
+        for field in required_fields:
+            if field not in event:
+                raise ValueError(f"GL Event 缺少欄位: {field}")
+        
+        # 驗證 event_type 正確
+        if self.scenario not in event["event_type"]:
+            raise ValueError(
+                f"Event type 不符: expected '{self.scenario}', "
+                f"got '{event['event_type']}'"
+            )
+        
+        # 驗證 namespace
+        if not event["namespace"].startswith("/governance/kernel/"):
+            raise ValueError(
+                f"GL Event namespace 不符: {event['namespace']}"
+            )
+        
+        return True
+    
+    def verify_gl_event_logged(self) -> bool:
+        """驗證 GL Event 已記錄到 event-stream.jsonl"""
+        if not self.event_stream.exists():
+            raise FileNotFoundError(
+                f"event-stream.jsonl 不存在: {self.event_stream}"
+            )
+        
+        # 尋找相關事件
+        found = False
+        with open(self.event_stream, 'r') as f:
+            for line in f:
+                event = json.loads(line)
+                if (event.get("event_type") == f"test_{self.scenario}" or
+                    self.scenario in event.get("event_type", "")):
+                    found = True
+                    break
+        
+        if not found:
+            raise ValueError(
+                f"GL Event 未記錄到 event-stream.jsonl: {self.scenario}"
+            )
+        
+        return True
+    
+    def verify_fallback_trace(self) -> bool:
+        """驗證 Fallback 決策追蹤"""
+        trace_file = self.base_path / "evidence" / "fallback_decision_trace.json"
+        
+        if not trace_file.exists():
+            raise FileNotFoundError(
+                f"找不到 fallback 決策追蹤: {trace_file}"
+            )
+        
+        with open(trace_file, 'r') as f:
+            trace = json.load(f)
+        
+        # 驗證必要欄位
+        required_fields = [
+            "test_id", "scenario", "fallback_decisions", "decision_trace_hash"
+        ]
+        
+        for field in required_fields:
+            if field not in trace:
+                raise ValueError(f"Fallback trace 缺少欄位: {field}")
+        
+        # 驗證至少有一個決策
+        if len(trace["fallback_decisions"]) == 0:
+            raise ValueError("Fallback trace 沒有任何決策記錄")
+        
+        # 驗證每個決策都有時間戳和理由
+        for decision in trace["fallback_decisions"]:
+            if "timestamp" not in decision or "reason" not in decision:
+                raise ValueError("Fallback 決策缺少時間戳或理由")
+        
+        # 驗證 hash 格式
+        if len(trace["decision_trace_hash"]) != 64:
+            raise ValueError("decision_trace_hash 格式錯誤")
+        
+        return True
+    
+    def verify_schema_hash(self) -> bool:
+        """驗證 Schema Hash"""
+        hash_file = self.base_path / "evidence" / "hash_of_last_verified_schema.txt"
+        
+        if not hash_file.exists():
+            raise FileNotFoundError(
+                f"找不到 schema hash: {hash_file}"
+            )
+        
+        with open(hash_file, 'r') as f:
+            hash_value = f.read().strip()
+        
+        # 驗證 hash 格式 (SHA256)
+        if len(hash_value) != 64:
+            raise ValueError(
+                f"Schema hash 格式錯誤 (expected 64 chars, got {len(hash_value)})"
+            )
+        
+        # 驗證 hash 只包含十六進制字符
+        try:
+            int(hash_value, 16)
+        except ValueError:
+            raise ValueError("Schema hash 包含無效字符")
+        
+        return True
+    
+    def verify_replayability(self) -> bool:
+        """驗證可重播性"""
+        replay_file = self.base_path / "evidence" / "replayability_report.json"
+        
+        if not replay_file.exists():
+            raise FileNotFoundError(
+                f"找不到可重播性報告: {replay_file}"
+            )
+        
+        with open(replay_file, 'r') as f:
+            report = json.load(f)
+        
+        # 驗證可重播性
+        if not report.get("replay_consistent", False):
+            raise ValueError("系統決策不可重播")
+        
+        # 驗證重播次數
+        if report.get("replay_count", 0) < 2:
+            self.warnings.append({
+                "check": "Replayability",
+                "warning": "重播次數少於 2 次，建議增加重播測試"
+            })
+        
+        return True
+    
+    def verify_no_unauthorized_repair(self) -> bool:
+        """驗證無未授權修復"""
+        replay_file = self.base_path / "evidence" / "replayability_report.json"
+        
+        with open(replay_file, 'r') as f:
+            report = json.load(f)
+        
+        # 驗證沒有未授權修復
+        if report.get("unauthorized_self_healing", False):
+            raise ValueError("偵測到未授權的自我修復行為")
+        
+        return True
+    
+    def verify_evidence_integrity(self) -> bool:
+        """驗證證據完整性"""
+        evidence_dir = self.base_path / "evidence"
+        
+        required_files = [
+            "test_generation_trace.json",
+            "test_seal.json",
+            "injection/injection_trace.json",
+            "fallback_decision_trace.json",
+            "hash_of_last_verified_schema.txt",
+            "replayability_report.json",
+        ]
+        
+        for required_file in required_files:
+            file_path = evidence_dir / required_file
+            if not file_path.exists():
+                raise FileNotFoundError(
+                    f"證據檔案缺失: {required_file}"
+                )
+        
+        return True
+    
+    def verify_hash_registry(self) -> bool:
+        """驗證 Hash 註冊"""
+        if not self.hash_registry.exists():
+            raise FileNotFoundError(
+                f"hash-registry.json 不存在: {self.hash_registry}"
+            )
+        
+        with open(self.hash_registry, 'r') as f:
+            registry = json.load(f)
+        
+        # 驗證至少有一個條目
+        if not isinstance(registry, dict) or len(registry) == 0:
+            raise ValueError("hash-registry.json 為空或格式錯誤")
+        
+        # 驗證證據檔案都已註冊
+        evidence_files = [
+            self.base_path / "meta.yaml",
+            self.base_path / "inject_failure.sh",
+            self.base_path / "verify_closure.py",
+            self.base_path / "evidence" / "test_generation_trace.json",
+            self.base_path / "evidence" / "test_seal.json",
+        ]
+        
+        for file_path in evidence_files:
+            if not file_path.exists():
+                continue
+            
+            file_path_str = str(file_path)
+            if file_path_str not in registry:
+                raise ValueError(
+                    f"檔案未註冊到 hash-registry.json: {file_path_str}"
+                )
+            
+            # 驗證 hash 格式
+            entry = registry[file_path_str]
+            if "sha256" not in entry:
+                raise ValueError(
+                    f"hash-registry.json 條目缺少 sha256: {file_path_str}"
+                )
+            
+            # 驗證 hash 長度
+            if len(entry["sha256"]) != 64:
+                raise ValueError(
+                    f"hash-registry.json 條目 hash 格式錯誤: {file_path_str}"
+                )
+        
+        return True
+    
+    def verify_event_stream(self) -> bool:
+        """驗證 Event Stream 完整性"""
+        if not self.event_stream.exists():
+            raise FileNotFoundError(
+                f"event-stream.jsonl 不存在: {self.event_stream}"
+            )
+        
+        # 驗證至少有一個測試相關事件
+        test_events_found = 0
+        with open(self.event_stream, 'r') as f:
+            for line in f:
+                event = json.loads(line)
+                if event.get("test_id") == self.test_id:
+                    test_events_found += 1
+        
+        if test_events_found == 0:
+            raise ValueError(
+                f"event-stream.jsonl 中沒有找到測試 {self.test_id} 的事件"
+            )
+        
+        return True
+    
+    def verify_hash_boundary(self) -> bool:
+        """驗證 Hash 邊界"""
+        hash_boundary_file = Path(".governance/hash_boundary.yaml")
+        
+        if not hash_boundary_file.exists():
+            raise FileNotFoundError(
+                f"找不到 hash boundary: {hash_boundary_file}"
+            )
+        
+        with open(hash_boundary_file, 'r') as f:
+            content = f.read()
+        
+        # 驗證必要欄位存在
+        required_fields = ["gl_root:", "era:", "test_id:"]
+        for field in required_fields:
+            if field not in content:
+                raise ValueError(f"Hash boundary 缺少欄位: {field}")
+        
+        return True
+    
+    def verify_era_seal(self) -> bool:
+        """驗證 Era 封存"""
+        seal_file = self.base_path / "evidence" / "era_boundary_seal.json"
+        
+        if not seal_file.exists():
+            raise FileNotFoundError(
+                f"找不到 era seal: {seal_file}"
+            )
+        
+        with open(seal_file, 'r') as f:
+            seal = json.load(f)
+        
+        # 驗證封存欄位
+        required_fields = [
+            "test_id", "scenario", "sealed_at", "evidence_hash", "artifacts"
+        ]
+        
+        for field in required_fields:
+            if field not in seal:
+                raise ValueError(f"Era seal 缺少欄位: {field}")
+        
+        # 驗證 MNGA 版本
+        if seal.get("mnga_version") != "v2.0":
+            raise ValueError(
+                f"Era seal MNGA 版本不符: {seal.get('mnga_version')}"
+            )
+        
+        return True
+    
+    def verify_mnga_compliance(self) -> bool:
+        """驗證 MNGA 合規性"""
+        meta_file = self.base_path / "meta.yaml"
+        
+        import yaml
+        with open(meta_file, 'r') as f:
+            meta = yaml.safe_load(f)
+        
+        # 驗證 MNGA 整合要求
+        mnga_integration = meta.get("mnga_integration", {})
+        
+        required_integrations = [
+            "event_stream_logging",
+            "hash_registry_registration",
+            "validator_integration",
+            "closure_verification_required"
+        ]
+        
+        for integration in required_integrations:
+            if not mnga_integration.get(integration, False):
+                raise ValueError(
+                    f"MNGA 整合要求未滿足: {integration}"
+                )
+        
+        return True
+    
+    def generate_verification_report(self, all_passed: bool):
+        """產生驗證報告"""
+        report = {
+            "test_id": self.test_id,
+            "scenario": self.scenario,
+            "verified_at": datetime.utcnow().isoformat() + 'Z',
+            "all_checks_passed": all_passed,
+            "violations": self.violations,
+            "warnings": self.warnings,
+            "closure_verified": all_passed,
+            "mnga_compliant": all_passed,
+            "validator_version": "v2.0"
+        }
+        
+        report_file = self.base_path / "evidence" / "closure_verification_report.json"
+        report_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(report_file, 'w') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
+        
+        print(f"\n📄 驗證報告: {report_file}")
+        
+        if all_passed:
+            print("✅ 所有閉環驗證通過")
+            print("✅ MNGA 合規性驗證通過")
+        else:
+            print(f"❌ {len(self.violations)} 個驗證失敗")
+            for violation in self.violations:
+                print(f"  - {violation['check']}: {violation['error']}")
+        
+        if self.warnings:
+            print(f"⚠️  {len(self.warnings)} 個警告")
+            for warning in self.warnings:
+                print(f"  - {warning['check']}: {warning.get('warning', '')}")
+    
+    def log_verification_complete(self, all_passed: bool):
+        """記錄驗證完成到 event stream"""
+        try:
+            import uuid
+            event_id = str(uuid.uuid4())
+            
+            event = {
+                "event_id": event_id,
+                "timestamp": datetime.utcnow().isoformat() + 'Z',
+                "event_type": "test_verification_complete",
+                "namespace": "/governance/kernel/tests/autonomy-boundary",
+                "layer": "kernel",
+                "platform": "test",
+                "era": "current-era",
+                "test_id": self.test_id,
+                "scenario": self.scenario,
+                "payload": {
+                    "all_checks_passed": all_passed,
+                    "violations_count": len(self.violations),
+                    "warnings_count": len(self.warnings),
+                    "closure_verified": all_passed,
+                    "mnga_compliant": all_passed
+                }
+            }
+            
+            with open(self.event_stream, 'a') as f:
+                f.write(json.dumps(event) + '\n')
+            
+            print(f"📝 驗證完成已記錄到 event-stream.jsonl")
+        except Exception as e:
+            print(f"⚠️  無法記錄到 event-stream.jsonl: {e}")
+
+if __name__ == "__main__":
+    import argparse
+    
+    parser = argparse.ArgumentParser(
+        description="Autonomy Boundary Test - Closure Verification"
+    )
+    parser.add_argument("test_id", help="Test ID (e.g., ABT-001)")
+    parser.add_argument("scenario", help="Test scenario name")
+    
+    args = parser.parse_args()
+    
+    verifier = ClosureVerifier(args.test_id, args.scenario)
+    
+    if verifier.verify_all():
+        sys.exit(0)
+    else:
+        sys.exit(1)

@@ -1,0 +1,24 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: yq - portable yaml processor
+description: Install yq - a portable YAML processor for reading and manipulating YAML files
+author: MachineNativeOps
+
+branding:
+  icon: file-text
+  color: blue
+
+runs:
+  using: composite
+  steps:
+    - name: Install yq
+      uses: mikefarah/yq@v4.50.1

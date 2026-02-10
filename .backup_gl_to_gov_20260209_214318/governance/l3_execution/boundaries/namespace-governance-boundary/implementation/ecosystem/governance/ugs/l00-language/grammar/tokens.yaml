@@ -1,0 +1,111 @@
+# @GL-semantic: org.mnga.ugs.tokens@1.0.0
+# @GL-audit-trail: enabled
+# Token Definitions for LDL
+# Version: 1.0.0
+# Layer: UGS / L00-Language / Grammar
+
+spec_id: org.mnga.ugs.tokens@1.0.0
+version: 1.0.0
+spec_type: token_definition
+layer: L00
+immutable: true
+
+tokens:
+  # Markers
+  GL_SEMANTIC_MARKER:
+    pattern: "@GL-semantic:"
+    token_type: "marker"
+    description: "Semantic anchor marker"
+    
+  GL_AUDIT_TRAIL_MARKER:
+    pattern: "@GL-audit-trail:"
+    token_type: "marker"
+    description: "Audit trail marker"
+    
+  # Literals
+  VERSION_LITERAL:
+    pattern: 'version:\s*["\']?([0-9]+\.[0-9]+\.[0-9]+)["\']?'
+    token_type: "literal"
+    capture_group: 1
+    description: "Version number"
+    
+  SPEC_ID:
+    pattern: '([a-z][a-z0-9._-]+)@([0-9]+\.[0-9]+\.[0-9]+)'
+    token_type: "identifier"
+    capture_groups: [1, 2]
+    description: "Specification identifier with version"
+    
+  # Keywords
+  META_SPEC:
+    pattern: "^meta_spec:"
+    token_type: "keyword"
+    description: "Meta specification header"
+    
+  IMMUTABLE:
+    pattern: "immutable:\\s*(true|false)"
+    token_type: "keyword"
+    description: "Immutability flag"
+    
+  # Types
+  STRING:
+    pattern: '["\'][^"\']*["\']'
+    token_type: "literal"
+    description: "String literal"
+    
+  NUMBER:
+    pattern: '[0-9]+(\\.[0-9]+)?'
+    token_type: "literal"
+    description: "Numeric literal"
+    
+  BOOLEAN:
+    pattern: '(true|false)'
+    token_type: "literal"
+    description: "Boolean literal"
+    
+  # Delimiters
+  COLON:
+    pattern: ":"
+    token_type: "delimiter"
+    description: "Key-value separator"
+    
+  DASH:
+    pattern: "-"
+    token_type: "delimiter"
+    description: "List item marker"
+    
+  # Comments
+  COMMENT:
+    pattern: "#.*$"
+    token_type: "comment"
+    description: "Single-line comment"
+    
+  # Whitespace
+  INDENT:
+    pattern: "^  "
+    token_type: "whitespace"
+    description: "2-space indent"
+    
+  NEWLINE:
+    pattern: "\\n"
+    token_type: "whitespace"
+    description: "Line ending"
+
+token_precedence:
+  - markers: [GL_SEMANTIC_MARKER, GL_AUDIT_TRAIL_MARKER]
+  - keywords: [META_SPEC, IMMUTABLE]
+  - identifiers: [SPEC_ID]
+  - literals: [VERSION_LITERAL, STRING, NUMBER, BOOLEAN]
+  - delimiters: [COLON, DASH]
+  - comments: [COMMENT]
+  - whitespace: [INDENT, NEWLINE]
+
+audit_trail:
+  created_at: 2024-02-03T14:00:00Z
+  created_by: MNGA Governance Team
+  version: 1.0.0
+  checksum: sha256:da960c4dac60ad363f280a462af011d5972b235cca7e950c50afb125e9bb8b6a
+  changes:
+    - version: 1.0.0
+      date: 2024-02-03T14:00:00Z
+      author: MNGA Governance Team
+      description: Initial version of UGS token definitions

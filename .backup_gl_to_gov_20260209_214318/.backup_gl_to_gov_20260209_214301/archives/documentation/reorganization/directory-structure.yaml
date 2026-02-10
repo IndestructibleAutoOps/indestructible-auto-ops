@@ -1,0 +1,382 @@
+# Directory Structure Specification
+
+## Root Level
+root:
+  path: /
+  responsibility: minimal_entry_point
+  contents:
+    - README.md
+    - ARCHITECTURE.md
+    - CONTRIBUTING.md
+    - CHANGELOG.md
+    - .github/
+    - .git/
+    - ng-namespace-governance/
+
+## ng-namespace-governance (Meta-Governance Core)
+ng_namespace_governance:
+  path: /ng-namespace-governance
+  responsibility: meta_governance_specifications_and_enforcement
+  role: constitutional_governance_authority
+
+  subdirectories:
+    core:
+      path: /ng-namespace-governance/core
+      responsibility: ng_core_specifications
+      contents:
+        - NG00000-charter.yaml
+        - NG00101-identifier-standard.yaml
+        - NG00201-lifecycle-standard.yaml
+        - NG00301-validation-rules.yaml
+        - NG00401-permission-model.yaml
+        - NG00501-version-control.yaml
+        - NG00701-audit-trail.yaml
+
+    era-1:
+      path: /ng-namespace-governance/era-1
+      responsibility: code_layer_namespace_governance
+      scope: NG100-299
+
+    era-2:
+      path: /ng-namespace-governance/era-2
+      responsibility: microcode_layer_namespace_governance
+      scope: NG300-599
+
+    era-3:
+      path: /ng-namespace-governance/era-3
+      responsibility: no_code_layer_namespace_governance
+      scope: NG600-899
+
+    cross-era:
+      path: /ng-namespace-governance/cross-era
+      responsibility: cross_era_mapping_and_transformation
+      scope: NG900-999
+
+    implementation:
+      path: /ng-namespace-governance/implementation
+      responsibility: concrete_implementation_of_ng_specifications
+
+      subdirectories:
+        ecosystem:
+          path: /ng-namespace-governance/implementation/ecosystem
+          responsibility: platform_ecosystem_implementation
+          origin: current_/ecosystem
+
+          structure:
+            governance:
+              path: governance/
+              responsibility: governance_framework_contracts
+
+            registry:
+              path: registry/
+              responsibility: platform_service_data_registries
+
+            coordination:
+              path: coordination/
+              responsibility: cross_platform_coordination
+
+            platform-templates:
+              path: platform-templates/
+              responsibility: standardized_platform_templates
+
+            contracts:
+              path: contracts/
+              responsibility: interface_contracts
+
+            engines:
+              path: engines/
+              responsibility: execution_engines
+
+            tools:
+              path: tools/
+              responsibility: tooling_and_utilities
+
+            tests:
+              path: tests/
+              responsibility: ecosystem_test_suite
+
+            automation:
+              path: automation/
+              responsibility: automation_engines
+
+              subdirectories:
+                task-engine:
+                  path: automation/task-engine/
+                  origin: current_/auto_task_project
+                  responsibility: automated_task_execution
+
+    registry:
+      path: /ng-namespace-governance/registry
+      responsibility: namespace_registration_system
+      contents:
+        - namespace-registry.py
+        - namespaces.json
+
+    tools:
+      path: /ng-namespace-governance/tools
+      responsibility: ng_governance_tooling
+      contents:
+        - ng-cli.py
+        - ng-mapper.py
+        - ng-transformer.py
+        - ng-namespace-guard.py
+        - ng-namespace-validator.py
+        - ng-era-mapping-engine.py
+
+    cicd:
+      path: /ng-namespace-governance/cicd
+      responsibility: ci_cd_workflows_for_ng
+      contents:
+        - ng-validation-workflow.yml
+
+    monitoring:
+      path: /ng-namespace-governance/monitoring
+      responsibility: ng_compliance_monitoring
+      contents:
+        - ng-compliance-dashboard.html
+
+    reports:
+      path: /ng-namespace-governance/reports
+      responsibility: execution_and_compliance_reports
+
+      subdirectories:
+        audit:
+          path: reports/audit/
+          origin: current_/audit-reports
+          responsibility: audit_reports_and_findings
+
+    analysis:
+      path: /ng-namespace-governance/analysis
+      responsibility: analysis_and_evidence
+      contents:
+        - ng-cross-era-matrix.json
+        - actual-ng-validation-results.json
+        - evidence-chain-report.json
+        - violation-catalog.json
+
+    docs:
+      path: /ng-namespace-governance/docs
+      responsibility: ng_documentation
+      contents:
+        - NG-BATCH-1-IMPLEMENTATION-PLAN.md
+        - NG-EXECUTION-ENGINES.md
+        - LG-TO-NG-TRANSITION-PLAN.md
+        - NG-Namespace-Governance-Whitepaper.md
+        - ng-namespace-index.md
+
+## platforms (Platform Implementations)
+platforms:
+  path: /platforms
+  responsibility: platform_implementations_organized_by_gl_layer
+
+  subdirectories:
+    gl:
+      path: /platforms/gl
+      responsibility: gl_governance_layer_platforms
+
+      subdirectories:
+        meta-specifications:
+          path: /platforms/gl/meta-specifications
+          layer: GL90-99
+          origin: current_/gl-meta-specifications-platform
+
+        enterprise-architecture:
+          path: /platforms/gl/enterprise-architecture
+          layer: GL00-09
+          origin: current_/gl-enterprise-architecture
+
+        platform-services:
+          path: /platforms/gl/platform-services
+          layer: GL10-19
+          origin: current_/gl-platform-core-platform
+
+        data-processing:
+          path: /platforms/gl/data-processing
+          layer: GL20-29
+          origin: current_/gl-data-processing-platform
+
+        runtime-execution:
+          path: /platforms/gl/runtime-execution
+          layer: GL30-39
+          origin: current_/gl-runtime-execution-platform
+
+        runtime-services:
+          path: /platforms/gl/runtime-services
+          layer: GL40-49
+          origin: current_/gl-runtime-services-platform
+
+        observability:
+          path: /platforms/gl/observability
+          layer: GL50-59
+          origin: current_/gl-monitoring-observability-platform
+
+        governance-compliance:
+          path: /platforms/gl/governance-compliance
+          layer: GL60-80
+          origin: current_/gl-governance-compliance-platform
+
+        governance-architecture:
+          path: /platforms/gl/governance-architecture
+          layer: GL60-80
+          origin: current_/gl-governance-architecture-platform
+
+        extension-services:
+          path: /platforms/gl/extension-services
+          layer: GL81-83
+          origin: current_/gl-extension-services-platform
+
+        automation-instant:
+          path: /platforms/gl/automation-instant
+          layer: GL30-39
+          origin: current_/gl-automation-instant-platform
+
+        automation-organizer:
+          path: /platforms/gl/automation-organizer
+          layer: GL30-39
+          origin: current_/gl-automation-organizer-platform
+
+        quantum-computing:
+          path: /platforms/gl/quantum-computing
+          layer: GL81-83
+          origin: current_/gl-quantum-computing-platform
+
+        semantic-core:
+          path: /platforms/gl/semantic-core
+          layer: GL20-29
+          origin: current_/gl-semantic-core-platform
+
+        search-elasticsearch:
+          path: /platforms/gl/search-elasticsearch
+          layer: GL20-29
+          origin: current_/gl-search-elasticsearch-platform
+
+        integration-hub:
+          path: /platforms/gl/integration-hub
+          layer: GL81-83
+          origin: current_/gl-integration-hub-platform
+
+        infrastructure-foundation:
+          path: /platforms/gl/infrastructure-foundation
+          layer: GL30-39
+          origin: current_/gl-infrastructure-foundation-platform
+
+## archives (Historical Artifacts)
+archives:
+  path: /archives
+  responsibility: archived_materials
+
+  subdirectories:
+    documentation:
+      path: /archives/documentation
+      responsibility: archived_documentation
+      origin: scattered_root_markdown_files
+
+    old-scripts:
+      path: /archives/old-scripts
+      responsibility: deprecated_scripts
+
+    old-outputs:
+      path: /archives/old-outputs
+      responsibility: deprecated_outputs
+
+## Support Directories (Retained at Root)
+support_directories:
+  docs:
+    path: /docs
+    responsibility: general_project_documentation
+    retention: keep_at_root_for_discoverability
+
+  scripts:
+    path: /scripts
+    responsibility: utility_scripts
+    retention: keep_at_root_for_accessibility
+
+  tests:
+    path: /tests
+    responsibility: integration_tests
+    retention: keep_at_root_for_ci_cd
+
+  deployment:
+    path: /deployment
+    responsibility: deployment_configurations
+    retention: keep_at_root_for_operations
+
+  deployment-scripts:
+    path: /deployment-scripts
+    responsibility: deployment_automation
+    retention: keep_at_root_for_operations
+
+  monitoring:
+    path: /monitoring
+    responsibility: monitoring_configurations
+    retention: keep_at_root_for_operations
+
+  config:
+    path: /config
+    responsibility: global_configurations
+    retention: keep_at_root_for_accessibility
+
+  .github:
+    path: /.github
+    responsibility: github_workflows_and_templates
+    retention: required_at_root
+
+  .governance:
+    path: /.governance
+    responsibility: implementation_tracking
+    retention: keep_at_root_for_workflow_integration
+
+  .agent_hooks:
+    path: /.agent_hooks
+    responsibility: agent_automation_hooks
+    retention: keep_at_root_for_agent_access
+
+## Deprecated/Remove
+deprecated:
+  machine-native-ops:
+    path: /machine-native-ops
+    action: evaluate_for_merge_or_archive
+
+  governance:
+    path: /governance
+    action: merge_into_ng-namespace-governance/implementation/ecosystem/governance
+
+  policies:
+    path: /policies
+    action: merge_into_ng-namespace-governance/core/
+
+  metrics:
+    path: /metrics
+    action: merge_into_platforms/gl/observability/
+
+  complements:
+    path: /complements
+    action: evaluate_relevance_then_archive_or_integrate
+
+  deploy:
+    path: /deploy
+    action: merge_into_/deployment
+
+  designs:
+    path: /designs
+    action: merge_into_/docs/architecture/
+
+  shared:
+    path: /shared
+    action: merge_into_ng-namespace-governance/implementation/ecosystem/
+
+  tools:
+    path: /tools
+    action: merge_into_/scripts
+
+  evidence:
+    path: /evidence
+    action: merge_into_ng-namespace-governance/analysis/evidence/
+
+  outputs:
+    path: /outputs
+    action: merge_into_/archives/old-outputs/
+
+  tmp:
+    path: /tmp
+    action: remove_if_empty_or_add_to_gitignore

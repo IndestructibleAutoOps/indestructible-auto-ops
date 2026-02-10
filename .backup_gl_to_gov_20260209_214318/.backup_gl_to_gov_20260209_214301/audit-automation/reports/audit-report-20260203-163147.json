@@ -1,0 +1,831 @@
+{
+  "timestamp": "20260203_163147",
+  "version": "2.0.0",
+  "status": "FAIL",
+  "summary": {
+    "total_checks": 6,
+    "passed": 5,
+    "failed": 1,
+    "total_violations": 95,
+    "critical_violations": 79,
+    "high_violations": 1
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 114 個文件，發現 4 個問題",
+      "files_scanned": 114,
+      "execution_time_ms": 8,
+      "violations_count": 4
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1319 個目錄，發現 8 個命名問題",
+      "files_scanned": 1319,
+      "execution_time_ms": 126,
+      "violations_count": 8
+    },
+    {
+      "name": "Security Check",
+      "passed": false,
+      "message": "掃描 4186 個文件，發現 79 個安全問題",
+      "files_scanned": 4186,
+      "execution_time_ms": 1709,
+      "violations_count": 79
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 3 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 28,
+      "violations_count": 3
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 1 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 17,
+      "violations_count": 1
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/enforcers/self_auditor.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/tools/audit_trail_report.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL-COMPLIANCE-002",
+      "file_path": "ecosystem/tools/audit_trail_query.py",
+      "line_number": 1,
+      "message": "核心治理文件缺少 GL 標註",
+      "severity": "MEDIUM",
+      "suggestion": "添加 @GL-governed 和 @GL-layer 標註"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "summarized_conversations",
+      "line_number": null,
+      "message": "目錄名稱 'summarized_conversations' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'summarized-conversations'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "ecosystem/reasoning/dual-path",
+      "line_number": null,
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'dual-path'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools",
+      "line_number": null,
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'path-tools'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/path-tools",
+      "line_number": null,
+      "message": "目錄名稱 'path-tools' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'path-tools'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/dual-path",
+      "line_number": null,
+      "message": "目錄名稱 'dual-path' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'dual-path'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/external_cache",
+      "line_number": null,
+      "message": "目錄名稱 'external_cache' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'external-cache'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/vector_index",
+      "line_number": null,
+      "message": "目錄名稱 'vector_index' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'vector-index'"
+    },
+    {
+      "rule_id": "GL20-NAMING-001",
+      "file_path": "machine-native-ops/ecosystem/reasoning/data/knowledge_graph",
+      "line_number": null,
+      "message": "目錄名稱 'knowledge_graph' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "LOW",
+      "suggestion": "重命名為 'knowledge-graph'"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-governance-architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/api-design-specification.yaml",
+      "line_number": 408,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/governance/gl-artifacts/execution/artifacts/api-design-specification.yaml",
+      "line_number": 410,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/governance/gl-artifacts/execution/artifacts/api-design-specification.yaml",
+      "line_number": 410,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-automation-instant-platform/configs/data-sync-config.yaml",
+      "line_number": 44,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-infrastructure-foundation-platform/deployment/kubernetes/base/secrets.yaml",
+      "line_number": 18,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-infrastructure-foundation-platform/deployment/kubernetes/base/secrets.yaml",
+      "line_number": 35,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-infrastructure-foundation-platform/k8s-legacy/production/velero-config.yaml",
+      "line_number": 154,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-infrastructure-foundation-platform/kubernetes/manifests/base/secret.yaml",
+      "line_number": 23,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-infrastructure-foundation-platform/kubernetes/manifests/base/secret.yaml",
+      "line_number": 24,
+      "message": "Hardcoded API key",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/governance/gl-artifacts/execution/artifacts/api-design-specification.yaml",
+      "line_number": 410,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-governance-compliance/scripts/evolution/evolution-config.yaml",
+      "line_number": 166,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3603,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3631,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3659,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 13541,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 19965,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 19989,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20013,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20037,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20061,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9604,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9632,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9660,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 19542,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25924,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25948,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25972,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25996,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 26020,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3603,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3631,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3659,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 13541,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 19965,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 19989,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20013,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20037,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20061,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9604,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9632,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9660,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 19542,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25924,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25948,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25972,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25996,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 26020,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3603,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3631,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 3659,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 13541,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 19965,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 19989,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20013,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20037,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-engine-report.json",
+      "line_number": 20061,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9604,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9632,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 9660,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 19542,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25924,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25948,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25972,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 25996,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/.governance/audit-reports/bandit-report-final.json",
+      "line_number": 26020,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "ecosystem/contracts/naming-governance/gl-extensibility-layer-specification.md",
+      "line_number": 459,
+      "message": "AWS Access Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/README.md",
+      "line_number": 293,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/scripts/README.md",
+      "line_number": 293,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-automation-instant-platform/README.md",
+      "line_number": 142,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-automation-instant-platform/docs/DATA-SYNC-SERVICE-GUIDE.md",
+      "line_number": 92,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/ecosystem/contracts/naming-governance/gl-extensibility-layer-specification.md",
+      "line_number": 459,
+      "message": "AWS Access Key exposed",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/scripts-legacy/install-jaeger-testing.sh",
+      "line_number": 162,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/backup/restore.sh",
+      "line_number": 130,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/backup/backup.sh",
+      "line_number": 148,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/scripts-legacy/install-jaeger-testing.sh",
+      "line_number": 162,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/scripts/backup/restore.sh",
+      "line_number": 130,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-runtime-execution-platform/engine/tools-legacy/scripts/backup/backup.sh",
+      "line_number": 148,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "gl-infrastructure-foundation-platform/k8s-legacy/jaeger/install.sh",
+      "line_number": 156,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL-SECURITY-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/scripts-legacy/install-jaeger-testing.sh",
+      "line_number": 162,
+      "message": "Hardcoded password",
+      "severity": "CRITICAL",
+      "suggestion": "移除敏感信息並添加到 .gitignore"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "gl-runtime-engine-platform/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "gl-runtime-execution-platform/engine/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "GL70-EVIDENCE-001",
+      "file_path": "machine-native-ops/gl-runtime-engine-platform/engine/.governance",
+      "line_number": null,
+      "message": "缺少 event-stream.jsonl 證據文件",
+      "severity": "MEDIUM",
+      "suggestion": "創建 event-stream.jsonl 來記錄治理事件"
+    },
+    {
+      "rule_id": "MNGA-ENFORCER-005",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": null,
+      "message": "before_operation 執行失敗: Operation.__init__() got an unexpected keyword argument 'files'",
+      "severity": "HIGH",
+      "suggestion": "修復 before_operation 方法"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

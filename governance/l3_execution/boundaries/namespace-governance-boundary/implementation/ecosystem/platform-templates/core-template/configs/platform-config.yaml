@@ -1,0 +1,168 @@
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: platform-templates
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+# Core Platform Configuration
+# GL Governance Layer: GL10-29 (Operational Layer)
+
+apiVersion: platform.ecosystem/v1
+kind: PlatformConfig
+metadata:
+  name: core-platform
+  version: "1.0.0"
+  template: core-template
+  created_at: "2026-02-01T00:00:00Z"
+
+# Platform Information
+platform:
+  name: gl.example.core-platform
+  display_name: "Example Core Platform"
+  description: "Core platform instance based on core-template"
+  type: core
+  environment: development  # development, staging, production
+  
+  # Governance
+  governance:
+    enabled: true
+    layers:
+      - gov-enterprise-architecture
+      - gov-boundary-enforcement
+      - gov-meta-specifications
+    compliance_level: standard
+  
+  # Capabilities
+  capabilities:
+    - service-discovery
+    - api-gateway
+    - messaging
+    - data-sync
+
+# Service Discovery Configuration
+service_discovery:
+  enabled: true
+  registry_type: inmemory
+  port: 8500
+  
+  health_check:
+    enabled: true
+    interval: 30
+    timeout: 5
+  
+  load_balancing:
+    strategy: health-based
+
+# API Gateway Configuration
+api_gateway:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8000
+  
+  authentication:
+    enabled: true
+    jwt:
+      enabled: true
+      secret: "${JWT_SECRET}"
+      expiration: 3600
+  
+  rate_limiting:
+    enabled: true
+    default_limit: 1000
+
+# Communication Configuration
+communication:
+  enabled: true
+  message_bus:
+    enabled: true
+    type: inmemory
+  
+  event_dispatcher:
+    enabled: true
+    worker_threads: 4
+
+# Data Synchronization Configuration
+data_sync:
+  enabled: true
+  mode: scheduled
+  
+  connectors:
+    filesystem:
+      enabled: true
+      base_path: /data/sync
+  
+  scheduler:
+    default_interval: 3600
+
+# Services Configuration
+services:
+  # Platform core services
+  - name: platform-api
+    type: api
+    endpoint: http://localhost:8080
+    health_check:
+      type: http
+      path: /health
+    tags:
+      - core
+      - api
+  
+  - name: platform-registry
+    type: registry
+    endpoint: http://localhost:8500
+    health_check:
+      type: http
+      path: /health
+    tags:
+      - core
+      - registry
+
+# Monitoring Configuration
+monitoring:
+  enabled: true
+  
+  metrics:
+    enabled: true
+    port: 9090
+    interval: 60
+  
+  logging:
+    level: INFO
+    format: json
+    output: stdout
+  
+  health_check:
+    enabled: true
+    path: /health
+
+# Storage Configuration
+storage:
+  data_dir: /data/platform
+  logs_dir: /data/logs
+  temp_dir: /tmp/platform
+
+# Security Configuration
+security:
+  tls:
+    enabled: false
+    cert_file: ""
+    key_file: ""
+  
+  secrets:
+    provider: environment  # environment, vault, file
+
+# Resource Limits
+resources:
+  cpu:
+    limit: "2000m"
+    request: "500m"
+  memory:
+    limit: "2Gi"
+    request: "512Mi"
+
+# Feature Flags
+features:
+  auto_scaling: false
+  backup: true
+  monitoring: true
+  tracing: false

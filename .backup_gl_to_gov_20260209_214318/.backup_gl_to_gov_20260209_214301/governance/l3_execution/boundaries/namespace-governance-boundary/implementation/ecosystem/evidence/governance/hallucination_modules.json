@@ -1,0 +1,31 @@
+{
+  "test": "test_nonexistent_module_reference",
+  "status": "warning",
+  "reports_scanned": 3,
+  "hallucinations_found": 3,
+  "hallucinations": [
+    {
+      "type": "nonexistent_module",
+      "module_name": "",
+      "context": "# \u9077\u79fb\u6f0f\u6d1e\uff08Migration Vulnerabilities\uff09\u4fee\u5fa9\u5831\u544a\n\n## \u57f7\u884c\u6458\u8981\n\n**",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "ecosystem/governance/migration/MIGRATION_VULNERABILITIES_FIXED.md"
+    },
+    {
+      "type": "nonexistent_module",
+      "module_name": "",
+      "context": "# Workspace Status - Era-1 \u2192 Era-2 Migration Vulne",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "WORKSPACE_STATUS.md"
+    },
+    {
+      "type": "nonexistent_module",
+      "module_name": "",
+      "context": "{\n  \"migration_id\": \"era-1-to-era-2-migration-2026",
+      "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "ecosystem/evidence/migration/era-1-to-era-2.json"
+    }
+  ],
+  "timestamp": "2026-02-05T01:48:32.815883Z",
+  "hash": "sha256:a9e4bd052cef83e81a01232af44185ae3f872bf36fa23e06aa80cbf513d3df1e"
+}

@@ -1,0 +1,95 @@
+{
+  "timestamp": "20260203_170928",
+  "version": "2.0.0",
+  "status": "PASS",
+  "summary": {
+    "total_checks": 7,
+    "passed": 7,
+    "failed": 0,
+    "total_violations": 2,
+    "critical_violations": 0,
+    "high_violations": 1
+  },
+  "checks": [
+    {
+      "name": "GL Compliance",
+      "passed": true,
+      "message": "掃描 132 個文件，發現 0 個問題",
+      "files_scanned": 132,
+      "execution_time_ms": 8,
+      "violations_count": 0
+    },
+    {
+      "name": "Naming Conventions",
+      "passed": true,
+      "message": "掃描 1653 個目錄和 2825 個文件，發現 1 個命名問題",
+      "files_scanned": 4478,
+      "execution_time_ms": 307,
+      "violations_count": 1
+    },
+    {
+      "name": "Security Check",
+      "passed": true,
+      "message": "掃描 4219 個文件，發現 0 個安全問題",
+      "files_scanned": 4219,
+      "execution_time_ms": 766,
+      "violations_count": 0
+    },
+    {
+      "name": "Evidence Chain",
+      "passed": true,
+      "message": "檢查 26 個證據源，發現 0 個問題",
+      "files_scanned": 26,
+      "execution_time_ms": 30,
+      "violations_count": 0
+    },
+    {
+      "name": "Governance Enforcer",
+      "passed": true,
+      "message": "治理執行器檢查完成，發現 1 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 18,
+      "violations_count": 1
+    },
+    {
+      "name": "Self Auditor",
+      "passed": true,
+      "message": "自我審計器檢查完成，發現 0 個問題",
+      "files_scanned": 1,
+      "execution_time_ms": 0,
+      "violations_count": 0
+    },
+    {
+      "name": "MNGA Architecture",
+      "passed": true,
+      "message": "檢查 39 個架構組件，發現 0 個問題",
+      "files_scanned": 39,
+      "execution_time_ms": 50,
+      "violations_count": 0
+    }
+  ],
+  "violations": [
+    {
+      "rule_id": "GL20-NAMING-003",
+      "file_path": "reports/audit_report_20260203_170306.json",
+      "line_number": null,
+      "message": "配置文件 'audit_report_20260203_170306.json' 使用下劃線，應使用連字符 (kebab-case)",
+      "severity": "MEDIUM",
+      "suggestion": "重命名為 'audit-report-20260203-170306.json'"
+    },
+    {
+      "rule_id": "MNGA-ENFORCER-005",
+      "file_path": "ecosystem/enforcers/governance_enforcer.py",
+      "line_number": null,
+      "message": "before_operation 執行失敗: 未找到相關治理合約，請檢查 ecosystem/contracts/",
+      "severity": "HIGH",
+      "suggestion": "修復 before_operation 方法"
+    }
+  ],
+  "metadata": {
+    "ecosystem_root": "/workspace/ecosystem",
+    "workspace_root": "/workspace",
+    "audit_mode": true,
+    "strict_mode": false
+  }
+}

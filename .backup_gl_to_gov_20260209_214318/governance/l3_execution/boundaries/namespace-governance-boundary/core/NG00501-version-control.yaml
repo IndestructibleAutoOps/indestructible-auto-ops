@@ -1,0 +1,94 @@
+# NG00501: 命名空間版本控制
+# Namespace Version Control
+
+apiVersion: ng.governance/v3
+kind: VersionControl
+metadata:
+  ng_code: NG00501
+  name: namespace-version-control
+  version: "1.0.0"
+  parent: NG00000
+  domain: "版本控制"
+  status: active
+
+spec:
+  purpose: "定義命名空間版本控制和演進規範"
+  
+  versioning_scheme:
+    format: "MAJOR.MINOR.PATCH"
+    
+    semantic_versioning:
+      major:
+        description: "重大變更（不向後兼容）"
+        triggers:
+          - "命名空間格式變更"
+          - "Era 遷移"
+          - "權限模型變更"
+        example: "1.0.0 → 2.0.0"
+      
+      minor:
+        description: "次要變更（向後兼容）"
+        triggers:
+          - "新增子命名空間"
+          - "新增元數據欄位"
+          - "優化規則"
+        example: "1.0.0 → 1.1.0"
+      
+      patch:
+        description: "修補變更（bug 修復）"
+        triggers:
+          - "修正驗證規則"
+          - "更新文檔"
+          - "性能優化"
+        example: "1.0.0 → 1.0.1"
+  
+  version_lifecycle:
+    development:
+      version_prefix: "0.x.x"
+      status: "unstable"
+      guarantees: "none"
+    
+    stable:
+      version_prefix: "1.x.x - 9.x.x"
+      status: "stable"
+      guarantees: "backward_compatible_within_major"
+    
+    deprecated:
+      version_suffix: "-deprecated"
+      status: "deprecated"
+      support_period: "90 days"
+    
+    archived:
+      version_suffix: "-archived"
+      status: "archived"
+      access: "read_only"
+  
+  compatibility_matrix:
+    era1_compatibility:
+      rule: "Era-1 命名空間版本必須向後兼容"
+      exception: "major_version_change"
+    
+    era2_compatibility:
+      rule: "Era-2 服務版本支援 API 版本協商"
+      negotiation: "semantic_versioning"
+    
+    era3_compatibility:
+      rule: "Era-3 意圖版本基於語義相似度"
+      threshold: 0.90
+  
+  version_migration:
+    upgrade_path:
+      description: "版本升級路徑"
+      rules:
+        - "不能跳過 major 版本"
+        - "可以跳過 minor 版本"
+        - "patch 版本自動升級"
+    
+    deprecation_policy:
+      notice_period: "90 days"
+      support_period: "180 days"
+      removal_policy: "after_support_period"
+
+enforcement:
+  version_check_frequency: "on_namespace_access"
+  compatibility_validation: "on_version_change"

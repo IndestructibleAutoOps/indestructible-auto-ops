@@ -1,0 +1,20 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+runtime_module:
+  root: platform/application/performance
+
+  docs:
+    slo_definitions: platform/application/performance/docs/slo-definitions.md
+    resilience_patterns: platform/application/performance/docs/resilience-patterns.md
+
+  config:
+    performance_budgets: platform/application/performance/config/performance-budgets.yaml

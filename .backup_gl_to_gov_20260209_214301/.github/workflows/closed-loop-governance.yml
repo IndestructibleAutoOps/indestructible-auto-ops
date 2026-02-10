@@ -1,0 +1,528 @@
+# @GL-governed
+# @GL-layer: GQS-L5
+# @GL-semantic: pure-enforcement
+# @GL-audit-trail: ./ecosystem/governance/GL_SEMANTIC_ANCHOR.json
+
+---
+# Closed-Loop Governance Workflow
+# 閉環治理工作流 - 自動監控、判斷、修復、自動開 PR
+#
+# 基於 Governance Quantum Stack (GQS) 7層模型
+# 實現完整的治理閉環
+
+name: Closed-Loop Governance
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # 每小時運行一次治理檢查
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '運行模式'
+        required: true
+        default: 'detect'
+        type: choice
+        options:
+          - detect
+          - fix
+          - rollback
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: read
+  checks: write
+  security-events: write
+
+# 併發控制
+concurrency:
+  group: governance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ============================================================================
+  # GQS-L1: Superposed State Collection (疊加狀態收集)
+  # ============================================================================
+  collect-state:
+    name: Collect Superposed State
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Setup Python
+        uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ec7dd50 # v5.1.0
+        with:
+          python-version: '3.11'
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+          cache: 'pip'
+          
+      - name: Install Dependencies
+        run: |
+          pip install pyyaml jsonschema python-dateutil
+          
+      - name: Collect Evidence
+        id: collect
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REQUEST_ID: ${{ github.run_id }}
+          CORRELATION_ID: ${{ github.event_name }}-${{ github.run_id }}
+          ACTOR: ${{ github.actor }}
+          IP: ${{ github.event.repository.owner.id }}
+          USER_AGENT: GitHub-Actions
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py collect-state \
+            --repo ${{ github.repository }} \
+            --ref ${{ github.ref }} \
+            --event ${{ github.event_name }} \
+            --timestamp $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            
+      - name: Upload State Artifacts
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: superposed-state-${{ github.run_id }}
+          path: ecosystem/governance/states/
+          retention-days: 30
+
+  # ============================================================================
+  # GQS-L2: Contract Validation (合同驗證)
+  # ============================================================================
+  validate-contracts:
+    name: Validate Contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: collect-state
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download State Artifacts
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: superposed-state-${{ github.run_id }}
+          path: ecosystem/governance/states/
+          
+      - name: Setup Conftest & OPA
+        run: |
+          wget https://github.com/open-policy-agent/conftest/releases/download/v0.49.0/conftest_0.49.0_Linux_x86_64.tar.gz
+          tar xzf conftest_0.49.0_Linux_x86_64.tar.gz
+          sudo mv conftest /usr/local/bin/
+          conftest --version
+          
+      - name: Validate Naming Policies
+        run: |
+          conftest verify ecosystem/contracts/policies/
+          
+      - name: Validate Contracts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py validate-contracts \
+            --state-dir ecosystem/governance/states/ \
+            --policies-dir ecosystem/contracts/policies/
+            
+      - name: Upload Validation Results
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: validation-results-${{ github.run_id }}
+          path: ecosystem/governance/validation/
+          retention-days: 30
+
+  # ============================================================================
+  # GQS-L3: Binding Verification (綁定驗證)
+  # ============================================================================
+  verify-bindings:
+    name: Verify Bindings
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: validate-contracts
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download Validation Results
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: validation-results-${{ github.run_id }}
+          path: ecosystem/governance/validation/
+          
+      - name: Verify Deterministic Bindings
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py verify-bindings \
+            --validation-dir ecosystem/governance/validation/
+            
+      - name: Upload Verification Results
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: verification-results-${{ github.run_id }}
+          path: ecosystem/governance/verification/
+          retention-days: 30
+
+  # ============================================================================
+  # GQS-L4: Generate Consistency Proofs (生成一致性證明)
+  # ============================================================================
+  generate-proofs:
+    name: Generate Consistency Proofs
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: verify-bindings
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download Verification Results
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: verification-results-${{ github.run_id }}
+          path: ecosystem/governance/verification/
+          
+      - name: Generate Merkle Proofs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py generate-proofs \
+            --verification-dir ecosystem/governance/verification/ \
+            --output-dir ecosystem/governance/proofs/
+            
+      - name: Generate ZK-SNARK Proofs
+        run: |
+          # Placeholder for ZK-SNARK proof generation
+          echo "Generating ZK-SNARK proofs..."
+          echo "This would use circom, snarkjs, or similar tools"
+          
+      - name: Upload Proofs
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: consistency-proofs-${{ github.run_id }}
+          path: ecosystem/governance/proofs/
+          retention-days: 90
+
+  # ============================================================================
+  # GQS-L5: Pure Enforcement (純執行層)
+  # ============================================================================
+  enforce-governance:
+    name: Enforce Governance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: generate-proofs
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download Proofs
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: consistency-proofs-${{ github.run_id }}
+          path: ecosystem/governance/proofs/
+          
+      - name: Verify Proofs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py verify-proofs \
+            --proofs-dir ecosystem/governance/proofs/
+            
+      - name: Enforce Governance Rules
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: github-actions
+          REQUEST_ID: ${{ github.run_id }}
+          CORRELATION_ID: ${{ github.event_name }}-${{ github.run_id }}
+          IP: ${{ github.event.repository.owner.id }}
+          USER_AGENT: GitHub-Actions
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py enforce \
+            --proofs-dir ecosystem/governance/proofs/ \
+            --event ${{ github.event_name }} \
+            --mode ${{ github.event.inputs.mode || 'detect' }}
+            
+      - name: Upload Execution Logs
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: execution-logs-${{ github.run_id }}
+          path: ecosystem/governance/execution-logs/
+          retention-days: 90
+          
+      - name: Check Governance Result
+        id: governance-check
+        run: |
+          if [ -f "ecosystem/governance/execution-logs/block.txt" ]; then
+            echo "result=block" >> $GITHUB_OUTPUT
+            echo "Governance rules blocked this operation"
+            cat ecosystem/governance/execution-logs/block.txt
+            exit 1
+          else
+            echo "result=allow" >> $GITHUB_OUTPUT
+            echo "Governance rules allow this operation"
+          fi
+
+  # ============================================================================
+  # GQS-L6: Arbitration & Auto-Fix (仲裁與自動修復)
+  # ============================================================================
+  arbitrate-and-fix:
+    name: Arbitrate and Auto-Fix
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: enforce-governance
+    if: failure()
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download Execution Logs
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: execution-logs-${{ github.run_id }}
+          path: ecosystem/governance/execution-logs/
+          
+      - name: Detect Violations
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py detect-violations \
+            --logs-dir ecosystem/governance/execution-logs/
+            
+      - name: Classify Violations
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/semantic_violation_classifier.py analyze \
+            --operation ecosystem/governance/execution-logs/violation.json
+            
+      - name: Apply Fixers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py apply-fixers \
+            --violations-dir ecosystem/governance/violations/ \
+            --fixes-dir ecosystem/governance/fixes/
+            
+      - name: Upload Fixes
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: governance-fixes-${{ github.run_id }}
+          path: ecosystem/governance/fixes/
+          retention-days: 30
+
+  # ============================================================================
+  # Auto-PR Generation (自動 PR 生成)
+  # ============================================================================
+  create-auto-pr:
+    name: Create Auto-PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: arbitrate-and-fix
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download Fixes
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: governance-fixes-${{ github.run_id }}
+          path: ecosystem/governance/fixes/
+          
+      - name: Create Branch for Fixes
+        run: |
+          BRANCH="governance/auto-fix-$(date +%Y%m%d-%H%M%S)"
+          echo "branch=$BRANCH" >> $GITHUB_ENV
+          git config user.name "Governance Bot"
+          git config user.email "governance-bot@example.com"
+          git checkout -b $BRANCH
+          
+      - name: Apply Fixes
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py apply-fixes-git \
+            --fixes-dir ecosystem/governance/fixes/
+            
+      - name: Commit Fixes
+        run: |
+          git add -A
+          git commit -m "[Governance Auto-Fix] Apply automated governance fixes
+
+          This PR was automatically created by the closed-loop governance system.
+
+          - Applied fixes for violations detected in run ${{ github.run_id }}
+          - All fixes have been reviewed and approved by the governance system
+          - See individual commits for detailed changes"
+          
+      - name: Push Branch
+        run: |
+          git push -u origin ${{ env.branch }}
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@c5a780bc6a1356fe2429b8e909466a4ee6e658a7 # v6.0.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.branch }}
+          title: "[Governance Auto-Fix] Automated Fixes for Violations"
+          body: |
+            # Governance Auto-Fix PR
+            
+            This PR was automatically created by the closed-loop governance system.
+            
+            ## Summary
+            - **Run ID**: ${{ github.run_id }}
+            - **Triggered by**: ${{ github.event_name }}
+            - **Timestamp**: ${{ github.event.head_commit.timestamp }}
+            
+            ## Fixes Applied
+            - Applied automated fixes for governance violations
+            - All fixes have been validated and approved
+            
+            ## Evidence
+            - Validation results attached as artifacts
+            - Consistency proofs generated and verified
+            
+            ## Verification
+            - [ ] Review the changes
+            - [ ] Verify the fixes address the violations
+            - [ ] Test in staging environment
+            - [ ] Approve and merge
+            
+            ---
+            *This PR follows the governance closed-loop process*
+          labels: governance,auto-fix,automated
+          draft: false
+          
+      - name: Comment on Original PR (if applicable)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const autoFixPr = '${{ env.branch }}';
+            
+            github.rest.issues.createComment({
+              ...context.issue,
+              body: `
+              ## Governance Auto-Fix Created 🔧
+              
+              A pull request with automated fixes has been created:
+              
+              - **Auto-Fix PR**: \`${autoFixPr}\`
+              - **Run ID**: \`${{ github.run_id }}\`
+              
+              The fixes address governance violations detected in this PR.
+              Please review the auto-fix PR and merge it after validation.
+              `
+            });
+
+  # ============================================================================
+  # Post-Enforcement Reports (執行後報告)
+  # ============================================================================
+  generate-reports:
+    name: Generate Reports
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [enforce-governance, create-auto-pr]
+    if: always()
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download All Artifacts
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          path: ecosystem/governance/artifacts/
+          
+      - name: Generate Governance Report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py generate-report \
+            --artifacts-dir ecosystem/governance/artifacts/ \
+            --output-dir ecosystem/governance/reports/
+            
+      - name: Upload Reports
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: governance-report-${{ github.run_id }}
+          path: ecosystem/governance/reports/
+          retention-days: 90
+          
+      - name: Comment Report on PR (if applicable)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'ecosystem/governance/reports/summary.md';
+            
+            if (fs.existsSync(reportPath)) {
+              const report = fs.readFileSync(reportPath, 'utf8');
+              
+              github.rest.issues.createComment({
+                ...context.issue,
+                body: `## Governance Enforcement Report 📊\n\n${report}`
+              });
+            }
+
+  # ============================================================================
+  # SLA Monitoring & Alerting (SLA 監控與告警)
+  # ============================================================================
+  monitor-sla:
+    name: Monitor SLA
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: generate-reports
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v4.1.1
+        
+      - name: Download Reports
+        uses: actions/download-artifact@65a9edc532b4b8f3be429fb72b5fef5dbf97a429 # v4.1.7
+        with:
+          name: governance-report-${{ github.run_id }}
+          path: ecosystem/governance/reports/
+          
+      - name: Check SLA Compliance
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ecosystem/enforcers/closed_loop_governance.py check-sla \
+            --reports-dir ecosystem/governance/reports/ \
+            --sla-thresholds '{"response_time": 300, "fix_rate": 0.95}'
+            
+      - name: Alert on SLA Violation
+        if: failure()
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 SLA Violation Detected',
+              body: `
+              ## SLA Violation Alert
+              
+              - **Workflow**: ${{ github.workflow }}
+              - **Run ID**: ${{ github.run_id }}
+              - **Timestamp**: ${new Date().toISOString()}
+              
+              One or more SLA thresholds have been violated. Please investigate.
+              `,
+              labels: ['sla', 'alert', 'governance']
+            });

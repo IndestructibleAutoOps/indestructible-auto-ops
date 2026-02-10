@@ -1,0 +1,51 @@
+@IndestructibleAutoOps 工程團隊
+MODE=MACHINE_READABLE_ONLY
+OUTPUT=EXECUTABLE_ONLY
+
+用途 (PURPOSE):
+- 以 main 最新版本為主體 (base)
+- 從最遠的歷史分支開始依序回推 backfill（以 merge-base 時間排序：最舊 → 最新）
+- 每輪以「全球最佳典範實踐」強制 Gate：可重播、可驗證、可審計、可回滾
+- 每個 family 自動選擇最正確版本（score + 閾值 + rebase/test/CI Gate）
+
+工作前強制執行 (HARD FAIL):
+- 工作樹必須乾淨
+- main 必須 fast-forward 最新
+- 禁止直接 push main；只能 PR
+- 必須產生 .evidence/reintegrate_backfill 報告與日誌
+
+流程 (ENFORCED PIPELINE):
+1) 問題識別:
+   - 讀取 indestructibleautoops/reintegrate_backfill/config.yaml
+   - fetch --all --prune
+   - 確保 main 已更新為最新
+2) 原因分析:
+   - discovery: 依 include/exclude 掃描遠端分支
+   - ranking: 以 merge-base 時間排序（最舊優先），並計算 diff/時效/CI 信號
+3) 修正方案:
+   - selection: 依 family_prefix 分組
+   - 每組選擇 score 最高且 >= min_score 的候選（per_family_take=1）
+   - 對候選執行 trial：rebase onto main + (可選)test_command
+4) 工程實作:
+   - 對通過 trial 的候選建立 reintegrate-backfill 工作分支
+   - rebase onto main
+   - 推送工作分支並建立 PR
+   - 可選 auto-merge（依 mode: merge/squash）
+5) 驗證步驟:
+   - verify_post_merge：拉取 main，查 PR state/mergeStateStatus
+6) 治理檢查:
+   - 強制輸出:
+     - .evidence/reintegrate_backfill/reports/discovery.json
+     - .evidence/reintegrate_backfill/reports/ranking.json
+     - .evidence/reintegrate_backfill/reports/selection.json
+     - .evidence/reintegrate_backfill/reports/result.json
+     - .evidence/reintegrate_backfill/reports/verify.json
+     - .evidence/reintegrate_backfill/logs/commands.log
+
+可執行命令 (COPY/PASTE):
+bash indestructibleautoops/reintegrate_backfill/scripts/backfill_execute.sh
+bash indestructibleautoops/reintegrate_backfill/scripts/verify_post_merge.sh
+
+回滾 (ROLLBACK):
+- 未合併 PR：gh pr close <PR> --delete-branch
+- 已推送工作分支：git push origin :<work_branch>

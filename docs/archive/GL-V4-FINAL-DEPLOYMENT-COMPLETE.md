@@ -92,7 +92,7 @@
 
 ### 推送的文件
 - GL_V4_POST_DEPLOYMENT_COMPLETE.md
-- gl-execution-runtime/storage/gl-audit-reports/post-deployment-monitoring-report-v4.json
+- gov-execution-runtime/storage/gov-audit-reports/post-deployment-monitoring-report-v4.json
 - PUSH_BLOCKED_SUMMARY.md
 - 更新的治理事件流
 - 更新的 todo.md（所有階段標記完成）

@@ -1,0 +1,66 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# Docker Compose Staging Environment Configuration
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+provider:
+  type: docker-compose
+  environment: staging
+
+services:
+  api-server:
+    image: machine-native-ops/api-server:1.0.0-staging
+    ports:
+      - "8080:8080"
+    environment:
+      - LOG_LEVEL=DEBUG
+      - ENVIRONMENT=staging
+      - DATABASE_URL=postgres://user:password@postgres:5432/machine_native_ops_staging
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - backend
+    restart: unless-stopped
+  
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=machine_native_ops_staging
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres-staging-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: unless-stopped
+  
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-staging-data:/data
+    networks:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres-staging-data:
+  redis-staging-data:

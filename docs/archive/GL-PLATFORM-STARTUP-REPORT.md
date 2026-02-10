@@ -91,7 +91,7 @@ All 20 subsystems have been successfully loaded and initialized:
 
 1. ✅ **api/rest** - REST API Gateway
 2. ✅ **engine** - GL Execution Engine
-3. ✅ **gl-runtime** - GL Runtime Core
+3. ✅ **gov-runtime** - GL Runtime Core
 4. ✅ **cognitive-mesh** - Cognitive Processing Mesh
 5. ✅ **meta-cognition** - Meta-Cognitive Layer
 6. ✅ **meta-cognitive** - Meta-Cognitive Runtime
@@ -132,7 +132,7 @@ All 20 subsystems have been successfully loaded and initialized:
 ### Prometheus (Port 9090)
 - **Status:** ✅ OPERATIONAL
 - **Active Targets:** 5 services monitored
-  - gl-platform (3000)
+  - gov-platform (3000)
   - rest-api (8080)
   - control-plane (5001)
   - postgresql (5432)
@@ -141,7 +141,7 @@ All 20 subsystems have been successfully loaded and initialized:
 ### MinIO Object Storage (Port 9000)
 - **Status:** ✅ OPERATIONAL
 - **Service:** MinIO Object Storage Mock
-- **Buckets Available:** gl-artifacts, gl-events, gl-reports
+- **Buckets Available:** gov-artifacts, gov-events, gov-reports
 
 ---
 
@@ -236,7 +236,7 @@ expose-port 8080
 ## Logs Directory
 
 All service logs are available in:
-- GL Platform: `/workspace/machine-native-ops/gl-execution-runtime/storage/gl-events-stream/platform.log`
+- GL Platform: `/workspace/machine-native-ops/gov-execution-runtime/storage/gov-events-stream/platform.log`
 - Startup Log: `/workspace/machine-native-ops/logs/startup.log` (if startup script was used)
 
 ---

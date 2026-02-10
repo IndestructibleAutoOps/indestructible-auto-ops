@@ -1,0 +1,271 @@
+# GL Unified Charter - Control Tier Classification Specification
+# Standard: Human-In-On-The-Loop (HOTL) Framework
+# Version: 1.0.0
+# Namespace: /governance/specs/standards
+# GL Level: GL50
+
+control_tier_framework:
+  
+  control_tier_1_critical_decisions:
+    description: "Critical decisions requiring human approval"
+    autonomy_level: "0% (No autonomy)"
+    human_involvement: "Mandatory approval before action"
+    risk_classification: "CRITICAL"
+    approval_timeout: "300s"
+    
+    scenarios:
+      - "financial_transaction_above_threshold"
+      - "data_deletion_request"
+      - "system_shutdown_request"
+      - "security_policy_change"
+      - "external_api_retry_decision"
+    
+    governance_requirements:
+      - "必須等待明確人類批准"
+      - "超時不得自動執行"
+      - "必須記錄所有升級事件"
+      - "批准必須可追溯"
+      - "必須有覆蓋程序"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: CONTROL_TIER_1_TEST
+      
+      test_spec:
+        control_tier: 1
+        scenario: "financial_transaction_above_threshold"
+        
+        failure_injection:
+          - block_payment_gateway: true
+        
+        expected_governance_behavior:
+          - escalate_to_human: true
+          - wait_for_explicit_approval: true
+          - approval_timeout: "300s"
+          - no_auto_proceed_on_timeout: true
+          - log_all_escalations: true
+          - require_multi_factor_approval: false
+        
+        required_evidence:
+          - escalation_record: ".governance/escalations/{timestamp}.json"
+          - human_approval_record: ".governance/approvals/{timestamp}.json"
+          - approval_decision_trace: ".governance/decisions/{timestamp}.json"
+          - timeout_handling_proof: ".governance/timeouts/{timestamp}.json"
+          - approval_chain: ".governance/approvals/chain_{timestamp}.json"
+    
+    verification_steps:
+      - "驗證升級到人類"
+      - "驗證等待批准"
+      - "驗證超時處理"
+      - "驗證不自動執行"
+      - "驗證批准記錄"
+
+  control_tier_2_high_risk_decisions:
+    description: "High-risk decisions with human oversight"
+    autonomy_level: "20-40% (Bounded autonomy with monitoring)"
+    human_involvement: "Real-time monitoring and override capability"
+    risk_classification: "HIGH"
+    override_latency: "< 100ms"
+    monitoring_interval: "1s"
+    
+    scenarios:
+      - "cache_fallback_with_monitoring"
+      - "retry_with_backoff"
+      - "degraded_mode_activation"
+      - "service_scaling_decision"
+      - "load_balancing_adjustment"
+    
+    governance_requirements:
+      - "系統可自主決策"
+      - "必須在政策邊界內"
+      - "實時監控必須啟用"
+      - "人類覆蓋必須可用"
+      - "必須生成決策證據"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: CONTROL_TIER_2_TEST
+      
+      test_spec:
+        control_tier: 2
+        scenario: "cache_fallback_with_monitoring"
+        
+        failure_injection:
+          - block_outbound_https: true
+        
+        expected_governance_behavior:
+          - autonomous_decision: true
+          - policy_bounded: true
+          - real_time_monitoring: true
+          - human_override_enabled: true
+          - decision_trace_generated: true
+          - override_latency_ms: < 100
+        
+        required_evidence:
+          - policy_compliance_proof: ".governance/policies/compliance/{timestamp}.json"
+          - real_time_monitoring_log: ".governance/monitoring/{timestamp}.json"
+          - override_capability_test: ".governance/overrides/test_{timestamp}.json"
+          - decision_trace: ".governance/decisions/trace/{timestamp}.json"
+          - override_latency_test: ".governance/overrides/latency_{timestamp}.json"
+    
+    verification_steps:
+      - "驗證自主決策"
+      - "驗證政策邊界"
+      - "驗證實時監控"
+      - "驗證覆蓋能力"
+      - "驗證決策證據"
+      - "驗證覆蓋延遲"
+
+  control_tier_3_medium_risk_decisions:
+    description: "Medium-risk decisions with periodic review"
+    autonomy_level: "60-80% (High autonomy with audit)"
+    human_involvement: "Periodic review and audit trail"
+    risk_classification: "MEDIUM"
+    review_interval: "daily"
+    
+    scenarios:
+      - "log_rotation_with_audit"
+      - "cache_cleanup"
+      - "metric_collection"
+      - "health_check_monitoring"
+      - "automatic_scaling"
+    
+    governance_requirements:
+      - "完全自主執行"
+      - "必須尊重邊界"
+      - "必須有完整審計日誌"
+      - "必須定期審查"
+      - "違規必須上報"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: CONTROL_TIER_3_TEST
+      
+      test_spec:
+        control_tier: 3
+        scenario: "log_rotation_with_audit"
+        
+        failure_injection:
+          - disk_space_low: true
+        
+        expected_governance_behavior:
+          - autonomous_execution: true
+          - boundary_respected: true
+          - complete_audit_trail: true
+          - periodic_review_enabled: true
+          - violation_auto_report: true
+        
+        required_evidence:
+          - audit_trail: ".governance/audits/{timestamp}.json"
+          - boundary_compliance: ".governance/boundaries/compliance_{timestamp}.json"
+          - review_schedule: ".governance/reviews/schedule.json"
+          - review_history: ".governance/reviews/history_{timestamp}.json"
+          - violation_reports: ".governance/violations/{timestamp}.json"
+    
+    verification_steps:
+      - "驗證自主執行"
+      - "驗證邊界遵守"
+      - "驗證審計日誌"
+      - "驗證定期審查"
+      - "驗證違規上報"
+
+  control_tier_4_low_risk_decisions:
+    description: "Low-risk routine decisions"
+    autonomy_level: "95%+ (Full autonomy)"
+    human_involvement: "Logging only"
+    risk_classification: "LOW"
+    alert_threshold: "anomaly_detected"
+    
+    scenarios:
+      - "metric_collection"
+      - "status_ping"
+      - "read_only_cache_access"
+      - "heartbeat_monitoring"
+      - "background_cleanup"
+    
+    governance_requirements:
+      - "完全自主執行"
+      - "無需人工干預"
+      - "必須有日誌記錄"
+      - "異常自動警報"
+      - "邊界嚴格限制"
+    
+    test_closure_mode: |
+      ENTER CLOSURE MODE: CONTROL_TIER_4_TEST
+      
+      test_spec:
+        control_tier: 4
+        scenario: "metric_collection"
+        
+        failure_injection:
+          - metric_service_slow: true
+        
+        expected_governance_behavior:
+          - autonomous_execution: true
+          - no_human_intervention: true
+          - comprehensive_logging: true
+          - anomaly_detection: true
+          - automatic_alerting: true
+        
+        required_evidence:
+          - execution_log: ".governance/logs/{timestamp}.json"
+          - boundary_check: ".governance/boundaries/check_{timestamp}.json"
+          - anomaly_report: ".governance/anomalies/{timestamp}.json"
+          - alert_log: ".governance/alerts/{timestamp}.json"
+          - metric_history: ".governance/metrics/{timestamp}.json"
+    
+    verification_steps:
+      - "驗證自主執行"
+      - "驗證無人工干預"
+      - "驗證日誌完整性"
+      - "驗證異常檢測"
+      - "驗證自動警報"
+
+# Control tier assignment rules
+control_tier_assignment:
+  criteria:
+    financial_impact:
+      - "> $10,000: Tier 1"
+      - "$1,000 - $10,000: Tier 2"
+      - "$100 - $1,000: Tier 3"
+      - "< $100: Tier 4"
+    
+    data_impact:
+      - "permanent_deletion: Tier 1"
+      - "modification: Tier 2"
+      - "read_access: Tier 3"
+      - "read_only_cache: Tier 4"
+    
+    system_impact:
+      - "downtime: Tier 1"
+      - "degraded_performance: Tier 2"
+      - "maintenance: Tier 3"
+      - "monitoring: Tier 4"
+    
+    security_impact:
+      - "policy_change: Tier 1"
+      - "configuration_change: Tier 2"
+      - "access_change: Tier 3"
+      - "logging: Tier 4"
+
+# Control tier comparison matrix
+tier_comparison_matrix:
+  criteria:
+    - "autonomy_level"
+    - "human_involvement"
+    - "approval_required"
+    - "monitoring_required"
+    - "audit_required"
+    - "override_latency"
+    - "risk_classification"
+
+standards_compliance:
+  hotl_framework:
+    framework: "Human-In-On-The-Loop (HOTL) Governance Framework"
+    requirement: "Control tier classification"
+    status: "COMPLIANT"
+  
+  singapore_imda:
+    requirement: "Tiered autonomy"
+    status: "COMPLIANT"
+  
+  nist_ai_rmf:
+    requirement: "Risk-based controls"
+    status: "COMPLIANT"

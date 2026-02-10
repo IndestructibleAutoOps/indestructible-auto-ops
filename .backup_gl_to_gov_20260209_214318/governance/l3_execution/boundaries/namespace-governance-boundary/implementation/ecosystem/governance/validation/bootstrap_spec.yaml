@@ -1,0 +1,418 @@
+# Governance Bootstrap Validation Specification
+#
+# Governance: GL-Bootstrap-Validation v1.0
+# Era: 1 (Evidence-Native Bootstrap)
+# Status: OPERATIONAL
+#
+# Purpose:
+# - Defines validation rules for governance bootstrap enforcement
+# - Ensures all governance operations produce sealable evidence
+# - Enforces narrative-free compliance and language-neutral hashing
+# - Maintains governance consistency across all artifacts
+
+version: "1.0.0"
+era: 1
+governance_owner: "IndestructibleAutoOps"
+
+# Metadata
+metadata:
+  spec_id: "GL-Bootstrap-Validation"
+  created_at: "2025-02-05T04:50:00Z"
+  canonicalization_method: "RFC8785 JCS"
+  hash_algorithm: "SHA256"
+  layered_sorting: true
+
+# Validation Rules
+validation_rules:
+  # Rule 1: Semantic Sealing
+  semantic_sealing:
+    enabled: true
+    severity: "CRITICAL"
+    description: "All outputs must be canonicalizable → hash → replayable"
+    checks:
+      - name: "canonicalizable_output"
+        required: true
+        validation: "output must be valid JSON structure"
+        
+      - name: "hash_computed"
+        required: true
+        validation: "SHA256 hash must be computed and stored"
+        
+      - name: "replayable"
+        required: true
+        validation: "output must be reproducible from hash"
+        
+      - name: "language_neutral"
+        required: true
+        validation: "same semantics must produce identical hash across languages"
+        
+  # Rule 2: Narrative-Free Compliance
+  narrative_free_compliance:
+    enabled: true
+    severity: "CRITICAL"
+    description: "All statements must avoid narrative, fuzzy semantics, fictional completion claims"
+    checks:
+      - name: "no_narrative_phrases"
+        required: true
+        validation: "prohibited narrative phrases must not appear"
+        patterns:
+          - "我們認為"
+          - "從...角度來看"
+          - "似乎"
+          - "大約"
+          - "基本上"
+        
+      - name: "no_fuzzy_semantics"
+        required: true
+        validation: "ambiguous terminology must not be used"
+        patterns:
+          - "大致完成"
+          - "應該沒問題"
+          - "差不多"
+          - "可能"
+        
+      - name: "no_fictional_completion"
+        required: true
+        validation: "completion claims must have sealed evidence"
+        patterns:
+          - "已完成"
+          - "已修復"
+          - "已部署"
+          - "問題已解決"
+          - "系統已恢復"
+        evidence_required: true
+        evidence_window: 300  # characters
+        
+      - name: "no_platform_fantasy"
+        required: true
+        validation: "unsupported platform capability claims must not exist"
+        patterns:
+          - "完整平台"
+          - "成熟系統"
+          - "生產就緒"
+          - "完整閉環"
+        
+      - name: "no_governance_exaggeration"
+        required: true
+        validation: "absolute claims must have evidence"
+        patterns:
+          - "100%"
+          - "完美"
+          - "無缺點"
+          - "絕對"
+        evidence_required: true
+        
+      - name: "no_hallucination"
+        required: true
+        validation: "references to non-existent entities must not exist"
+        validation: "all references must be verifiable"
+        
+  # Rule 3: Language-Neutral Hash Verification
+  language_neutral_hash:
+    enabled: true
+    severity: "HIGH"
+    description: "All semantic outputs must produce identical hash across languages"
+    checks:
+      - name: "semantic_tokenization"
+        required: true
+        validation: "inputs must pass through semanticizer"
+        
+      - name: "canonicalization"
+        required: true
+        validation: "output must be canonicalized with RFC 8785"
+        
+      - name: "language_neutral_hash"
+        required: true
+        validation: "zh, en, ja, ko, de, fr must produce identical hash for same semantics"
+        supported_languages: ["zh", "en", "ja", "ko", "de", "fr"]
+        test_strings:
+          zh: "我們重新啟動了 nginx"
+          en: "We restarted nginx"
+          ja: "nginxを再起動しました"
+        
+      - name: "volatile_fields_removed"
+        required: true
+        validation: "volatile fields must be excluded from hash"
+        volatile_fields:
+          - "uuid"
+          - "timestamp"
+          - "trace_id"
+          - "request_id"
+          - "correlation_id"
+          - "event_id"
+          - "generated_at"
+          - "original_lang"
+          - "original_text"
+          - "detected_lang"
+        
+      - name: "layered_sorting_applied"
+        required: true
+        validation: "layered sorting (Core → Optional → Extension) must be applied"
+        
+  # Rule 4: Evidence Chain Verification
+  evidence_chain:
+    enabled: true
+    severity: "CRITICAL"
+    description: "All outputs must have complete evidence chain"
+    checks:
+      - name: "hash_present"
+        required: true
+        validation: "hash field must be present in output"
+        
+      - name: "trace_present"
+        required: true
+        validation: "trace file must exist in .evidence/traces/"
+        
+      - name: "evidence_present"
+        required: true
+        validation: "evidence file must exist in .evidence/"
+        
+      - name: "hash_chain_intact"
+        required: true
+        validation: "hash chain (parent, self, merkle_root) must be valid"
+        
+      - name: "canonical_hash_present"
+        required: true
+        validation: "canonical_hash field must be present"
+        
+      - name: "era_field_present"
+        required: true
+        validation: "era field must be present and valid"
+        
+  # Rule 5: Governance Consistency Enforcement
+  governance_consistency:
+    enabled: true
+    severity: "HIGH"
+    description: "All modules, tools, specs, tests must be registered and verified"
+    checks:
+      - name: "tool_registered"
+        required: true
+        validation: "all tools must be in tools/registry.json"
+        registry_path: "ecosystem/tools/registry.json"
+        
+      - name: "status_marked"
+        required: true
+        validation: "all outputs must have status: EXISTS/PLANNED/PROPOSED/DEPRECATED"
+        valid_statuses: ["EXISTS", "PLANNED", "PROPOSED", "DEPRECATED"]
+        
+      - name: "artifact_sealed"
+        required: true
+        validation: "all artifacts must be in .evidence/ and replayable"
+        evidence_directory: "ecosystem/.evidence/"
+        
+      - name: "compliance_score_threshold"
+        required: true
+        validation: "compliance score must be >= 90.0 for sealing"
+        threshold: 90.0
+        
+      - name: "no_unsealed_architecture"
+        required: true
+        validation: "unsealed architecture generation is prohibited"
+        
+      - name: "no_unmarked_modules"
+        required: true
+        validation: "unmarked modules, components, tools are prohibited"
+        
+      - name: "no_unsupported_claims"
+        required: true
+        validation: "completion claims without evidence chain support are prohibited"
+        
+      - name: "no_narrative_language"
+        required: true
+        validation: "narrative language, platform fantasy, maturity hallucinations are prohibited"
+
+# Compliance Thresholds
+thresholds:
+  # Overall compliance threshold
+  overall_compliance:
+    pass: 90.0
+    warning: 75.0
+    fail: 0.0
+  
+  # Critical violations threshold (blocking)
+  critical_violations:
+    pass: 0
+    warning: 0
+    fail: 1
+  
+  # High severity violations threshold
+  high_violations:
+    pass: 0
+    warning: 5
+    fail: 10
+  
+  # Evidence chain integrity threshold
+  evidence_chain_integrity:
+    pass: 100.0
+    warning: 95.0
+    fail: 0.0
+  
+  # Language-neutral hash consistency threshold
+  hash_consistency:
+    pass: 100.0
+    warning: 95.0
+    fail: 0.0
+
+# Evidence Requirements
+evidence_requirements:
+  # Artifacts must be in .evidence/
+  artifacts:
+    location: "ecosystem/.evidence/"
+    required_fields:
+      - "artifact_id"
+      - "era"
+      - "timestamp"
+      - "sha256_hash"
+      - "canonical_hash"
+      - "hash_chain"
+      - "evidence_type"
+    hash_chain_required: true
+  
+  # Traces must be in .evidence/traces/
+  traces:
+    location: "ecosystem/.evidence/traces/"
+    required_fields:
+      - "trace_id"
+      - "trace_type"
+      - "timestamp"
+      - "era"
+      - "output_path"
+      - "hash"
+  
+  # Event stream must be in .governance/
+  event_stream:
+    location: "ecosystem/.governance/event-stream.jsonl"
+    required_fields:
+      - "uuid"
+      - "timestamp"
+      - "type"
+      - "payload"
+      - "canonical_hash"
+      - "era"
+      - "hash_chain"
+    append_only: true
+    immutable: true
+  
+  # Hash registry must be in .governance/
+  hash_registry:
+    location: "ecosystem/.governance/hash-registry.json"
+    required_fields:
+      - "version"
+      - "era"
+      - "generated_at"
+      - "governance_owner"
+      - "total_hashes"
+      - "artifacts"
+      - "events"
+
+# Mode Detection Rules
+mode_detection:
+  # Mode 1: Analysis & Fix Mode
+  mode_1:
+    triggers:
+      - "分析"
+      - "修正"
+      - "debug"
+      - "diagnose"
+    semantic_rules:
+      - "factual"
+      - "evidence_based"
+      - "no_narrative"
+      - "no_completions_without_evidence"
+  
+  # Mode 2: System Generation Mode
+  mode_2:
+    triggers:
+      - "生成"
+      - "建立"
+      - "scaffold"
+      - "整合"
+    semantic_rules:
+      - "state_marked"
+      - "evidence_generated"
+      - "registered_in_registry"
+      - "sealed_in_evidence"
+
+# Semantic Safety Rules
+semantic_safety:
+  # Prohibited patterns
+  prohibited:
+    - "unsealed_architecture_generation"
+    - "unmarked_modules"
+    - "unsupported_completion_claims"
+    - "narrative_language"
+    - "platform_fantasy"
+    - "maturity_hallucinations"
+  
+  # Required patterns
+  required:
+    - "evidence_chain_support"
+    - "canonicalization"
+    - "hash_verification"
+    - "language_neutrality"
+    - "narrative_filtering"
+    - "governance_consistency"
+
+# Verification Requirements
+verification_requirements:
+  # All governance operations must be verifiable
+  verifiable_operations:
+    - "semantic_sealing"
+    - "narrative_free_compliance"
+    - "language_neutral_hash"
+    - "evidence_chain"
+    - "governance_consistency"
+  
+  # Verification methods
+  verification_methods:
+    - "hash_replay"
+    - "trace_verification"
+    - "evidence_validation"
+    - "semantic_comparison"
+    - "cross_language_hash_check"
+
+# Era-1 Specific Requirements
+era_1_requirements:
+  era: 1
+  era_name: "Evidence-Native Bootstrap"
+  era_status: "OPERATIONAL"
+  
+  # Evidence layer
+  evidence_layer:
+    status: "ENABLED"
+    required: true
+    completeness: "PARTIAL"
+    target_completeness: 100.0
+  
+  # Governance layer
+  governance_layer:
+    status: "IN_PROGRESS"
+    required: true
+    completeness: "PARTIAL"
+    target_completeness: 100.0
+  
+  # Semantic closure
+  semantic_closure:
+    status: "NOT_DEFINED"
+    required: true
+    completeness: 0.0
+    target_completeness: 100.0
+  
+  # Immutable core
+  immutable_core:
+    status: "CANDIDATE"
+    required: true
+    sealing_status: "NOT_SEALED"
+    target_status: "SEALED"
+  
+  # Era sealing
+  era_sealing:
+    status: "PENDING"
+    required: true
+    sealing_criteria:
+      - "semantic_closure: 100%"
+      - "immutable_core: SEALED"
+      - "evidence_layer: 100%"
+      - "governance_layer: 100%"
+      - "compliance_score: >=90.0"
+      - "zero_blocking_violations"

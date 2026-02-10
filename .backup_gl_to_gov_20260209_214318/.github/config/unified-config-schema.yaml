@@ -1,0 +1,116 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# Machine-Native Unified Configuration Schema
+# Standard schema for all YAML/JSON configurations
+
+$schema: "http://json-schema.org/draft-07/schema#"
+$id: "https://machine-native-ops/schemas/unified-config-schema.yaml"
+title: "Machine-Native Unified Configuration Schema"
+version: "1.0.0"
+
+definitions:
+  metadata:
+    type: object
+    required: [name, version]
+    properties:
+      name:
+        type: string
+        pattern: "^[a-z][a-z0-9-]*$"
+        description: "Lowercase kebab-case name"
+      version:
+        type: string
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
+        description: "Semantic version"
+      description:
+        type: string
+      labels:
+        type: object
+        additionalProperties:
+          type: string
+      annotations:
+        type: object
+        additionalProperties:
+          type: string
+
+  resource_reference:
+    type: object
+    required: [kind, name]
+    properties:
+      kind:
+        type: string
+      name:
+        type: string
+      namespace:
+        type: string
+
+  environment:
+    type: string
+    enum: [dev, staging, prod, test]
+
+  log_level:
+    type: string
+    enum: [DEBUG, INFO, WARNING, ERROR, CRITICAL]
+
+standards:
+  naming:
+    files:
+      pattern: "^[a-z][a-z0-9-]*\\.(yaml|yml|json)$"
+      description: "Lowercase kebab-case with extension"
+    
+    resources:
+      pattern: "^[a-z][a-z0-9-]*$"
+      max_length: 63
+      description: "Kubernetes-compatible naming"
+    
+    environments:
+      allowed: [dev, staging, prod, test]
+      default: dev
+
+  structure:
+    required_fields:
+      - apiVersion
+      - kind
+      - metadata
+    
+    optional_fields:
+      - spec
+      - status
+      - data
+
+  versioning:
+    format: "semver"
+    pattern: "^\\d+\\.\\d+\\.\\d+(-[a-z0-9]+)?$"
+
+validation:
+  strict_mode: true
+  allow_unknown_fields: false
+  required_metadata: true
+
+examples:
+  minimal_config:
+    apiVersion: v1
+    kind: Config
+    metadata:
+      name: example-config
+      version: "1.0.0"
+    spec: {}
+
+  full_config:
+    apiVersion: v1
+    kind: Config
+    metadata:
+      name: example-config
+      version: "1.0.0"
+      description: "Example configuration"
+      labels:
+        environment: prod
+        team: platform
+      annotations:
+        owner: "platform-team@example.com"
+    spec:
+      enabled: true
+      settings:
+        key: value

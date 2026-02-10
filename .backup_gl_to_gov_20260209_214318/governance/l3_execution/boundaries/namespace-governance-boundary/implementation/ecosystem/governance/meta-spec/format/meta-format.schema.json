@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mnga.org/schemas/meta-format@1.0.0.json",
+  "title": "Meta-Format Specification Schema",
+  "description": "Schema definition for all meta-specification format files",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "@GL-semantic",
+    "@GL-audit-trail",
+    "meta_spec",
+    "format_definition"
+  ],
+  "properties": {
+    "@GL-semantic": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$",
+      "description": "Semantic anchor for GL governance"
+    },
+    "@GL-audit-trail": {
+      "type": "string",
+      "enum": ["enabled", "disabled"],
+      "description": "Audit trail enablement status"
+    },
+    "meta_spec": {
+      "type": "object",
+      "required": ["id", "version", "title"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "description": "Unique specification identifier"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "description": "Semantic version (SemVer)"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Specification title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description"
+        },
+        "extends": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "description": "Parent specifications this extends"
+        },
+        "immutable": {
+          "type": "boolean",
+          "description": "Whether this specification is immutable"
+        },
+        "governance": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string"
+            },
+            "reviewers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "approval": {
+              "type": "string",
+              "enum": ["consensus", "majority", "owner-only"]
+            }
+          }
+        }
+      }
+    },
+    "format_definition": {
+      "type": "object",
+      "required": ["schema_type", "structure"],
+      "properties": {
+        "schema_type": {
+          "type": "string",
+          "enum": ["json-schema", "yaml-schema", "custom"],
+          "description": "Type of schema definition"
+        },
+        "structure": {
+          "type": "object",
+          "description": "Schema structure definition"
+        },
+        "validation_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "rule_id": {
+                "type": "string",
+                "pattern": "^RULE-[0-9]{3}$"
+              },
+              "description": {
+                "type": "string"
+              },
+              "severity": {
+                "type": "string",
+                "enum": ["ERROR", "WARNING", "INFO"]
+              },
+              "validation": {
+                "type": "string",
+                "description": "Validation expression or script path"
+              }
+            }
+          }
+        }
+      }
+    },
+    "checksum": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 checksum for integrity verification"
+    }
+  },
+  "additionalProperties": false,
+  "GL-governance": {
+    "layer": "meta-spec",
+    "immutable": true,
+    "dependencies": []
+  }
+}

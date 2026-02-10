@@ -1,0 +1,17 @@
+# @GL-layer: GQS-L0
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: namespace
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: quantumflow
+  labels:
+    name: quantumflow
+    app.kubernetes.io/name: quantumflow
+    app.kubernetes.io/version: "1.0.0"
+

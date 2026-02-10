@@ -1,0 +1,509 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-codeql
+# Replaces: github/codeql-action/*@v3
+# Description: CodeQL security analysis with init, autobuild, and analyze steps
+# Version: 1.0.0
+
+name: 'MN CodeQL'
+description: 'MachineNativeOps official CodeQL security analysis action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'shield'
+  color: 'purple'
+
+inputs:
+  mode:
+    description: 'Operation mode: init, autobuild, analyze, or full (runs all steps)'
+    required: false
+    default: 'full'
+  languages:
+    description: 'Comma-separated list of languages to analyze (javascript, python, java, csharp, cpp, go, ruby, swift)'
+    required: false
+    default: ''
+  queries:
+    description: 'Comma-separated list of query suites to run (security-extended, security-and-quality)'
+    required: false
+    default: 'security-extended'
+  config-file:
+    description: 'Path to CodeQL config file'
+    required: false
+    default: ''
+  db-location:
+    description: 'Path to store CodeQL database'
+    required: false
+    default: '${{ runner.temp }}/codeql-db'
+  sarif-file:
+    description: 'Path for SARIF output file'
+    required: false
+    default: 'codeql-results.sarif'
+  upload-sarif:
+    description: 'Whether to upload SARIF results to GitHub Security'
+    required: false
+    default: 'true'
+  category:
+    description: 'Category for the SARIF upload'
+    required: false
+    default: 'codeql'
+  token:
+    description: 'GitHub token for API access'
+    required: false
+    default: ${{ github.token }}
+  ram:
+    description: 'Amount of RAM to use for CodeQL (in MB)'
+    required: false
+    default: ''
+  threads:
+    description: 'Number of threads to use for CodeQL'
+    required: false
+    default: ''
+  debug:
+    description: 'Enable debug output'
+    required: false
+    default: 'false'
+
+outputs:
+  sarif-file:
+    description: 'Path to the generated SARIF file'
+    value: ${{ steps.analyze.outputs.sarif_file }}
+  sarif-id:
+    description: 'ID of the uploaded SARIF analysis'
+    value: ${{ steps.upload.outputs.sarif_id }}
+  languages:
+    description: 'Languages that were analyzed'
+    value: ${{ steps.detect.outputs.languages }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check CodeQL CLI
+      id: check-cli
+      shell: bash
+      run: |
+        # Check if CodeQL CLI is available
+        if command -v codeql &> /dev/null; then
+          CODEQL_PATH=$(which codeql)
+          CODEQL_VERSION=$(codeql version --format=json 2>/dev/null | jq -r '.version' || codeql version 2>&1 | head -1)
+          echo "CodeQL CLI found: $CODEQL_PATH (version: $CODEQL_VERSION)"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+          echo "codeql_available=true" >> $GITHUB_OUTPUT
+          echo "codeql_path=$CODEQL_PATH" >> $GITHUB_OUTPUT
+        else
+          echo "CodeQL CLI not found in PATH"
+          echo "codeql_available=false" >> $GITHUB_OUTPUT
+
+          # Check common locations
+          for path in /opt/hostedtoolcache/CodeQL/*/x64/codeql/codeql \
+                      $HOME/.codeql/codeql \
+                      /usr/local/bin/codeql; do
+            if [[ -x "$path" ]]; then
+              echo "Found CodeQL at: $path"
+              echo "codeql_available=true" >> $GITHUB_OUTPUT
+              echo "codeql_path=$path" >> $GITHUB_OUTPUT
+              break
+            fi
+          done
+        fi
+
+    - name: Install CodeQL CLI
+      if: steps.check-cli.outputs.codeql_available != 'true'
+      shell: bash
+      run: |
+        echo "Installing CodeQL CLI..."
+
+        # Determine OS and architecture
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m)
+
+        case "$ARCH" in
+          x86_64) ARCH="x64" ;;
+          aarch64|arm64) ARCH="arm64" ;;
+        esac
+
+        # Download latest CodeQL bundle
+        CODEQL_URL="https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-${OS}.tar.gz"
+
+        echo "Downloading from: $CODEQL_URL"
+
+        INSTALL_DIR="${HOME}/.codeql"
+        mkdir -p "$INSTALL_DIR"
+
+        curl -sL "$CODEQL_URL" | tar -xz -C "$INSTALL_DIR" 2>/dev/null || {
+          # Fallback: try alternative URL
+          CODEQL_URL="https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql-${OS}64.zip"
+          curl -sL "$CODEQL_URL" -o /tmp/codeql.zip
+          unzip -q /tmp/codeql.zip -d "$INSTALL_DIR"
+          rm /tmp/codeql.zip
+        }
+
+        # Add to PATH
+        echo "$INSTALL_DIR/codeql" >> $GITHUB_PATH
+        export PATH="$INSTALL_DIR/codeql:$PATH"
+
+        # Verify installation
+        if [[ -x "$INSTALL_DIR/codeql/codeql" ]]; then
+          echo "CodeQL installed successfully"
+          "$INSTALL_DIR/codeql/codeql" version
+        else
+          echo "::warning::CodeQL CLI installation may have failed"
+        fi
+
+    - name: Detect Languages
+      id: detect
+      shell: bash
+      run: |
+        LANGUAGES="${{ inputs.languages }}"
+
+        if [[ -z "$LANGUAGES" ]]; then
+          echo "Auto-detecting languages..."
+
+          DETECTED=""
+
+          # JavaScript/TypeScript
+          if find . -name "*.js" -o -name "*.ts" -o -name "*.jsx" -o -name "*.tsx" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,javascript"
+          fi
+
+          # Python
+          if find . -name "*.py" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,python"
+          fi
+
+          # Java
+          if find . -name "*.java" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,java"
+          fi
+
+          # C#
+          if find . -name "*.cs" -o -name "*.csproj" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,csharp"
+          fi
+
+          # C/C++
+          if find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,cpp"
+          fi
+
+          # Go
+          if find . -name "*.go" -o -name "go.mod" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,go"
+          fi
+
+          # Ruby
+          if find . -name "*.rb" -o -name "Gemfile" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,ruby"
+          fi
+
+          # Swift
+          if find . -name "*.swift" 2>/dev/null | head -1 | grep -q .; then
+            DETECTED="$DETECTED,swift"
+          fi
+
+          LANGUAGES=$(echo "$DETECTED" | sed 's/^,//')
+        fi
+
+        echo "Languages to analyze: $LANGUAGES"
+        echo "languages=$LANGUAGES" >> $GITHUB_OUTPUT
+
+    - name: Initialize CodeQL Database
+      id: init
+      if: inputs.mode == 'init' || inputs.mode == 'full'
+      shell: bash
+      run: |
+        LANGUAGES="${{ steps.detect.outputs.languages }}"
+        DB_LOCATION="${{ inputs.db-location }}"
+        CONFIG_FILE="${{ inputs.config-file }}"
+        QUERIES="${{ inputs.queries }}"
+        RAM="${{ inputs.ram }}"
+        THREADS="${{ inputs.threads }}"
+        DEBUG="${{ inputs.debug }}"
+
+        # Expand DB location
+        DB_LOCATION=$(eval echo "$DB_LOCATION")
+        mkdir -p "$DB_LOCATION"
+
+        echo "Initializing CodeQL database..."
+        echo "Languages: $LANGUAGES"
+        echo "Database location: $DB_LOCATION"
+
+        # Check if codeql is available
+        CODEQL_CMD="${{ steps.check-cli.outputs.codeql_path }}"
+        if [[ -z "$CODEQL_CMD" ]]; then
+          CODEQL_CMD="codeql"
+        fi
+
+        if ! command -v "$CODEQL_CMD" &> /dev/null; then
+          echo "::warning::CodeQL CLI not available, using fallback analysis"
+          echo "init_success=false" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        # Build init command
+        INIT_ARGS="database create"
+        INIT_ARGS="$INIT_ARGS --source-root=."
+
+        # Add languages
+        for lang in $(echo "$LANGUAGES" | tr ',' ' '); do
+          INIT_ARGS="$INIT_ARGS --language=$lang"
+        done
+
+        # Add optional parameters
+        if [[ -n "$CONFIG_FILE" && -f "$CONFIG_FILE" ]]; then
+          INIT_ARGS="$INIT_ARGS --codescanning-config=$CONFIG_FILE"
+        fi
+
+        if [[ -n "$RAM" ]]; then
+          INIT_ARGS="$INIT_ARGS --ram=$RAM"
+        fi
+
+        if [[ -n "$THREADS" ]]; then
+          INIT_ARGS="$INIT_ARGS --threads=$THREADS"
+        fi
+
+        if [[ "$DEBUG" == "true" ]]; then
+          INIT_ARGS="$INIT_ARGS --verbose"
+        fi
+
+        # Create database
+        "$CODEQL_CMD" $INIT_ARGS "$DB_LOCATION" 2>&1 || {
+          echo "::warning::CodeQL database creation encountered issues"
+        }
+
+        echo "db_location=$DB_LOCATION" >> $GITHUB_OUTPUT
+        echo "init_success=true" >> $GITHUB_OUTPUT
+
+    - name: Autobuild
+      id: autobuild
+      if: (inputs.mode == 'autobuild' || inputs.mode == 'full') && steps.init.outputs.init_success == 'true'
+      shell: bash
+      run: |
+        LANGUAGES="${{ steps.detect.outputs.languages }}"
+
+        echo "Running autobuild for compiled languages..."
+
+        # Autobuild for compiled languages
+        for lang in $(echo "$LANGUAGES" | tr ',' ' '); do
+          case "$lang" in
+            java)
+              echo "Building Java project..."
+              if [[ -f "pom.xml" ]]; then
+                mvn compile -DskipTests -q 2>/dev/null || true
+              elif [[ -f "build.gradle" || -f "build.gradle.kts" ]]; then
+                ./gradlew compileJava -q 2>/dev/null || gradle compileJava -q 2>/dev/null || true
+              fi
+              ;;
+            csharp)
+              echo "Building C# project..."
+              if [[ -f "*.sln" ]]; then
+                dotnet build --no-restore -q 2>/dev/null || true
+              fi
+              ;;
+            cpp)
+              echo "Building C/C++ project..."
+              if [[ -f "Makefile" ]]; then
+                make -j$(nproc) 2>/dev/null || true
+              elif [[ -f "CMakeLists.txt" ]]; then
+                mkdir -p build && cd build && cmake .. && make -j$(nproc) 2>/dev/null || true
+              fi
+              ;;
+            go)
+              echo "Building Go project..."
+              go build ./... 2>/dev/null || true
+              ;;
+            swift)
+              echo "Building Swift project..."
+              swift build 2>/dev/null || true
+              ;;
+          esac
+        done
+
+        echo "Autobuild completed"
+
+    - name: Analyze
+      id: analyze
+      if: (inputs.mode == 'analyze' || inputs.mode == 'full')
+      shell: bash
+      run: |
+        LANGUAGES="${{ steps.detect.outputs.languages }}"
+        DB_LOCATION="${{ steps.init.outputs.db_location }}"
+        SARIF_FILE="${{ inputs.sarif-file }}"
+        QUERIES="${{ inputs.queries }}"
+        RAM="${{ inputs.ram }}"
+        THREADS="${{ inputs.threads }}"
+        DEBUG="${{ inputs.debug }}"
+
+        # Expand paths
+        DB_LOCATION=$(eval echo "$DB_LOCATION")
+
+        echo "Running CodeQL analysis..."
+
+        CODEQL_CMD="${{ steps.check-cli.outputs.codeql_path }}"
+        if [[ -z "$CODEQL_CMD" ]]; then
+          CODEQL_CMD="codeql"
+        fi
+
+        if ! command -v "$CODEQL_CMD" &> /dev/null; then
+          echo "::warning::CodeQL CLI not available, generating placeholder SARIF"
+
+          # Generate minimal SARIF file
+          cat > "$SARIF_FILE" << 'EOF'
+        {
+          "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+          "version": "2.1.0",
+          "runs": [{
+            "tool": {
+              "driver": {
+                "name": "MN-CodeQL",
+                "version": "1.0.0",
+                "informationUri": "https://github.com/MachineNativeOps/machine-native-ops"
+              }
+            },
+            "results": [],
+            "invocations": [{
+              "executionSuccessful": true,
+              "toolExecutionNotifications": [{
+                "message": { "text": "CodeQL CLI not available - placeholder analysis" },
+                "level": "note"
+              }]
+            }]
+          }]
+        }
+        EOF
+          echo "sarif_file=$SARIF_FILE" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        # Build analyze command
+        ANALYZE_ARGS="database analyze"
+        ANALYZE_ARGS="$ANALYZE_ARGS --format=sarif-latest"
+        ANALYZE_ARGS="$ANALYZE_ARGS --output=$SARIF_FILE"
+
+        # Add query suites
+        for query in $(echo "$QUERIES" | tr ',' ' '); do
+          case "$query" in
+            security-extended)
+              ANALYZE_ARGS="$ANALYZE_ARGS --query-suite=security-extended"
+              ;;
+            security-and-quality)
+              ANALYZE_ARGS="$ANALYZE_ARGS --query-suite=security-and-quality"
+              ;;
+            *)
+              ANALYZE_ARGS="$ANALYZE_ARGS $query"
+              ;;
+          esac
+        done
+
+        if [[ -n "$RAM" ]]; then
+          ANALYZE_ARGS="$ANALYZE_ARGS --ram=$RAM"
+        fi
+
+        if [[ -n "$THREADS" ]]; then
+          ANALYZE_ARGS="$ANALYZE_ARGS --threads=$THREADS"
+        fi
+
+        if [[ "$DEBUG" == "true" ]]; then
+          ANALYZE_ARGS="$ANALYZE_ARGS --verbose"
+        fi
+
+        # Run analysis
+        "$CODEQL_CMD" $ANALYZE_ARGS "$DB_LOCATION" 2>&1 || {
+          echo "::warning::CodeQL analysis encountered issues"
+        }
+
+        # Verify SARIF file
+        if [[ -f "$SARIF_FILE" ]]; then
+          echo "SARIF file generated: $SARIF_FILE"
+          RESULT_COUNT=$(jq '[.runs[].results[]] | length' "$SARIF_FILE" 2>/dev/null || echo "0")
+          echo "Found $RESULT_COUNT results"
+        else
+          echo "::warning::SARIF file not generated"
+        fi
+
+        echo "sarif_file=$SARIF_FILE" >> $GITHUB_OUTPUT
+
+    - name: Upload SARIF
+      id: upload
+      if: inputs.upload-sarif == 'true' && steps.analyze.outputs.sarif_file != ''
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+        SARIF_FILE: ${{ steps.analyze.outputs.sarif_file }}
+        CATEGORY: ${{ inputs.category }}
+        GH_SHA: ${{ github.sha }}
+        GH_REF: ${{ github.ref }}
+        GH_REPO: ${{ github.repository }}
+      run: |
+        # Variables are passed via env to avoid shell injection
+
+        if [[ ! -f "$SARIF_FILE" ]]; then
+          echo "::warning::SARIF file not found, skipping upload"
+          exit 0
+        fi
+
+        echo "Uploading SARIF to GitHub Security..."
+
+        API_URL="${GITHUB_API_URL:-https://api.github.com}"
+        REPO="${{ github.repository }}"
+        REF="${{ github.ref }}"
+        SHA="${{ github.sha }}"
+
+        # Compress SARIF for upload
+        SARIF_CONTENT=$(gzip -c "$SARIF_FILE" | base64 -w0)
+
+        # Build JSON payload with category if provided
+        if [[ -n "$CATEGORY" ]]; then
+          PAYLOAD=$(jq -n \
+            --arg commit_sha "$SHA" \
+            --arg ref "$REF" \
+            --arg sarif "$SARIF_CONTENT" \
+            --arg tool_name "MN-CodeQL" \
+            --arg category "$CATEGORY" \
+            --arg checkout_uri "file:///github/workspace" \
+            '{commit_sha: $commit_sha, ref: $ref, sarif: $sarif, tool_name: $tool_name, category: $category, checkout_uri: $checkout_uri}')
+        else
+          PAYLOAD=$(jq -n \
+            --arg commit_sha "$SHA" \
+            --arg ref "$REF" \
+            --arg sarif "$SARIF_CONTENT" \
+            --arg tool_name "MN-CodeQL" \
+            --arg checkout_uri "file:///github/workspace" \
+            '{commit_sha: $commit_sha, ref: $ref, sarif: $sarif, tool_name: $tool_name, checkout_uri: $checkout_uri}')
+        fi
+
+        # Upload via API
+        RESPONSE=$(curl -s -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "$API_URL/repos/$REPO/code-scanning/sarifs" \
+          -d "$PAYLOAD" 2>&1) || true
+
+        SARIF_ID=$(echo "$RESPONSE" | jq -r '.id // empty')
+
+        if [[ -n "$SARIF_ID" ]]; then
+          echo "SARIF uploaded successfully (ID: $SARIF_ID)"
+          echo "sarif_id=$SARIF_ID" >> $GITHUB_OUTPUT
+        else
+          echo "::warning::SARIF upload may have failed"
+          echo "$RESPONSE"
+        fi
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-CODEQL SUMMARY"
+        echo "=========================================="
+        echo "Mode: ${{ inputs.mode }}"
+        echo "Languages: ${{ steps.detect.outputs.languages }}"
+        echo "SARIF File: ${{ steps.analyze.outputs.sarif_file }}"
+        echo "Upload SARIF: ${{ inputs.upload-sarif }}"
+        echo "=========================================="

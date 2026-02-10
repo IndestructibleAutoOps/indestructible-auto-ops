@@ -1,0 +1,24 @@
+scanner_config:
+  version: 1.0
+
+  scan_paths:
+    modules: "governance-systems/"
+    bindings: "/governance-binding.yaml"
+    pipelines: "/pipelines/"
+    gates: "/gates/"
+    evidence: "/evidence/"
+
+  ignore:
+    - "tmp/"
+    - "cache/"
+    - "logs/"
+
+  checks:
+    - module_registration
+    - binding_validity
+    - semantic_attachment
+    - hashboundarycompliance
+    - pipeline_completeness
+    - gate_completeness
+    - evidence_presence
+    - replay_support

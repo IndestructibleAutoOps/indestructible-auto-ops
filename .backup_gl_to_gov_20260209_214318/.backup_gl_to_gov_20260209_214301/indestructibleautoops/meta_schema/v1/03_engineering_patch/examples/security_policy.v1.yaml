@@ -1,0 +1,18 @@
+$schema: "https://indestructibleautoops.com/schemas/meta-schema/v1.json"
+$id: "https://indestructibleautoops.com/schemas/l2/security-policy/pod-security-baseline/v1.json"
+apiVersion: "indestructibleautoops.com/v1"
+kind: "SecurityPolicy"
+metadata:
+  name: "pod-security-baseline"
+  namespace: "security-prod"
+  labels:
+    indestructibleautoops.com/layer: "L2"
+    indestructibleautoops.com/criticality: "high"
+spec:
+  rules:
+    - id: "SEC-042"
+      severity: "critical"
+      description: "Containers must run as non-root."
+      extensions:
+        control: "runAsNonRoot"
+        required: true

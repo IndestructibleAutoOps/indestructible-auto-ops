@@ -1,0 +1,354 @@
+# NG00000: 絕對執行規範（零容忍實踐版）
+# ABSOLUTE ENFORCEMENT SPECIFICATION
+
+apiVersion: ng.governance/v3
+kind: AbsoluteEnforcement
+metadata:
+  ng_code: NG00000
+  name: absolute-enforcement-specification
+  version: "4.0.0"
+  classification: CONSTITUTIONAL
+  enforcement_model: BINARY_ONLY
+  status: IMMUTABLE
+  created_at: "2026-02-06"
+
+spec:
+  foundational_principle:
+    statement: |
+      零容忍不是「發現問題後阻斷」，而是「規範本身必須可以絕對執行」。
+      
+      任何規則必須：
+      1. 可自動化檢測（100% 機器可執行）
+      2. 只有兩種結果：PASS 或 BLOCK（無警告）
+      3. BLOCK 必須附帶自動修復動作或明確拒絕
+      4. 無灰色地帶、無建議、無「應該」
+    
+    rationale: |
+      IndestructibleAutoOps 的零容忍意味著：
+      - 規範不是「指南」，而是「執行規則」
+      - 檢查不是「建議」，而是「決策」
+      - 結果不是「警告」，而是「阻斷」
+      - 修復不是「可選」，而是「強制」
+
+  binary_enforcement_model:
+    only_two_outcomes:
+      PASS:
+        definition: "100% 符合規範"
+        action: "允許操作繼續"
+        logging: "記錄成功"
+        no_warnings: true
+        no_suggestions: true
+        
+      BLOCK:
+        definition: "任何不符合規範"
+        action: "立即阻斷操作"
+        附帶動作:
+          - "自動修復（如可行）"
+          - "明確拒絕（如不可修復）"
+          - "不可變審計日誌"
+        no_grace_period: true
+        no_manual_override: true
+    
+    禁止的結果:
+      - "WARNING（警告）" → 禁止，必須改為 BLOCK
+      - "SUGGEST（建議）" → 禁止，必須改為 PASS 或 BLOCK
+      - "REVIEW（需審查）" → 禁止，必須改為自動決策
+      - "PENDING（待處理）" → 禁止，必須立即處理
+      - "MANUAL（人工）" → 禁止，必須自動化或明確拒絕
+  
+  rule_specification_requirements:
+    all_rules_must_be:
+      automatable:
+        requirement: "100% 機器可執行"
+        no_human_judgment: true
+        no_subjective_criteria: true
+        implementation: "Python function or regex pattern"
+        
+      binary_decidable:
+        requirement: "只能返回 PASS 或 BLOCK"
+        no_warning_level: true
+        no_severity_gradation: true
+        decision_time: "< 100ms"
+        
+      self_contained:
+        requirement: "規則包含完整的執行邏輯"
+        no_external_context: true
+        no_human_interpretation: true
+        includes: "檢查邏輯 + 修復動作 + 拒絕原因"
+        
+      deterministic:
+        requirement: "相同輸入必定相同輸出"
+        no_randomness: true
+        no_time_dependent: true
+        no_environment_dependent: true
+
+  example_absolute_rules:
+    命名空間唯一性:
+      規則: "命名空間 ID 必須在全局唯一"
+      檢查: |
+        def check_uniqueness(namespace_id, existing_namespaces):
+            return namespace_id not in existing_namespaces
+      結果:
+        - "True → PASS"
+        - "False → BLOCK（原因：重複，動作：拒絕註冊）"
+      禁止:
+        - "❌ 警告：命名空間可能重複"
+        - "❌ 建議：考慮更換名稱"
+        - "❌ 需審查：人工確認是否重複"
+      
+    命名空間格式:
+      規則: "必須符合 ^[a-z][a-z0-9-]*\\.(era[123]|cross)\\.[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+      檢查: |
+        def check_format(namespace_id):
+            import re
+            pattern = r'^[a-z][a-z0-9-]*\.(era[123]|cross)\.[a-z][a-z0-9-]*\.[a-z][a-z0-9-]*$'
+            return bool(re.match(pattern, namespace_id))
+      結果:
+        - "True → PASS"
+        - "False → BLOCK（原因：格式違規，動作：拒絕註冊）"
+      禁止:
+        - "❌ 警告：格式不符建議"
+        - "❌ 建議：嘗試自動修正"
+        - "❌ ML 修復：自動格式化" ← 禁止！必須人工正確輸入
+      
+    閉環完整性:
+      規則: "命名空間必須有 NG 編碼 AND 審計追蹤 AND 驗證記錄"
+      檢查: |
+        def check_closure(namespace):
+            return (
+                namespace.get('ng_code') is not None and
+                len(namespace.get('audit_trail', [])) > 0 and
+                namespace.get('validated') == True
+            )
+      結果:
+        - "True → PASS"
+        - "False → BLOCK（原因：閉環不完整，動作：拒絕所有操作）"
+      禁止:
+        - "❌ 警告：閉環未完成"
+        - "❌ 建議：完成缺失項"
+        - "❌ ML 修復：自動補全" ← 禁止！閉環必須完整才能註冊
+
+  ml_self_healing_constraints:
+    重新定義_ML_角色:
+      原先錯誤:
+        description: "ML 在違規後修復"
+        model: "format_corrector、closure_predictor"
+        action: "檢測到違規 → ML 嘗試修復"
+        問題: "這允許違規進入系統"
+        
+      正確定義:
+        description: "ML 在規範檢查時輔助決策（僅限模糊情況）"
+        model: "semantic_similarity_analyzer"
+        用途: "當規則有模糊性時，ML 提供二元決策"
+        限制: "ML 只能返回 PASS 或 BLOCK，不能返回『修復方案』"
+        
+      嚴格限制:
+        - "ML 不得用於『修復違規』"
+        - "ML 僅用於『消除規則模糊性』"
+        - "ML 輸出必須是二元決策（PASS/BLOCK）"
+        - "ML 信心 < 閾值 → 默認 BLOCK"
+        
+    唯一允許的_ML_使用:
+      語義相似度檢查:
+        scenario: "判斷兩個命名空間是否過於相似"
+        ml_model: "SemanticSimilarityAnalyzer"
+        input: "[namespace_a, namespace_b]"
+        output: "similarity_score (0.0-1.0)"
+        決策:
+          - "similarity >= 0.80 → BLOCK"
+          - "similarity < 0.80 → PASS"
+        禁止:
+          - "❌ similarity 0.75-0.85 → WARN（灰色地帶）"
+          - "❌ ML 建議改名"
+          - "❌ ML 自動修正"
+
+  violation_handling_model:
+    絕對規則:
+      - "違規檢測到 → 立即 BLOCK"
+      - "BLOCK 後無修復機會（操作已拒絕）"
+      - "正確做法：使用者修正輸入後重新提交"
+      - "系統不提供『修復建議』，只提供『拒絕原因』"
+      
+    prohibited_patterns:
+      pattern_1:
+        code: "if format_invalid: try_auto_fix()"
+        reason: "允許違規進入系統"
+        correct: "if format_invalid: return BLOCK"
+        
+      pattern_2:
+        code: "if conflict: warn_user() and allow()"
+        reason: "警告後仍允許"
+        correct: "if conflict: return BLOCK"
+        
+      pattern_3:
+        code: "if incomplete_closure: suggest_fix() and continue()"
+        reason: "建議後仍繼續"
+        correct: "if incomplete_closure: return BLOCK"
+        
+      pattern_4:
+        code: "if ml_confidence < 0.95: escalate_to_human()"
+        reason: "升級人工 = 延遲決策"
+        correct: "if ml_confidence < 0.95: return BLOCK"
+
+  validation_execution_flow:
+    正確流程:
+      step_1:
+        action: "接收操作請求"
+        example: "register_namespace('pkg.era1.platform.core')"
+        
+      step_2:
+        action: "執行所有自動化檢查（< 100ms）"
+        checks:
+          - "格式檢查 → PASS or BLOCK"
+          - "唯一性檢查 → PASS or BLOCK"
+          - "閉環前置檢查 → PASS or BLOCK"
+        ALL_MUST_PASS: true
+        
+      step_3:
+        action: "決策"
+        options:
+          - "所有檢查 PASS → 執行操作"
+          - "任何檢查 BLOCK → 拒絕操作 + 返回明確原因"
+        no_partial_pass: true
+        no_warnings: true
+        
+      step_4:
+        action: "記錄結果（不可變）"
+        log: "PASS: 記錄成功 | BLOCK: 記錄拒絕原因"
+        no_pending_state: true
+    
+    禁止的流程:
+      - "檢查 → 警告 → 允許繼續"
+      - "檢查 → 失敗 → ML 修復 → 重試"
+      - "檢查 → 不確定 → 人工審查 → 等待"
+      - "檢查 → 建議修改 → 使用者選擇"
+
+  specification_rewrite_requirements:
+    所有現有規範必須改寫為:
+      格式:
+        舊版（錯誤）: |
+          severity: CRITICAL
+          action: BLOCK
+          warning: true  ← 矛盾
+          
+        新版（正確）: |
+          result: BINARY  # 只有 PASS 或 BLOCK
+          pass_condition: "regex_match == true"
+          block_condition: "regex_match == false"
+          block_reason: "格式不符合規範"
+          auto_fix: FORBIDDEN  # 明確禁止自動修復
+          manual_fix: "使用者必須輸入正確格式"
+      
+      範例改寫:
+        原規範: |
+          唯一性檢查:
+            severity: HIGH
+            action: BLOCK_OR_WARN  ← 有警告選項
+            
+        改寫後: |
+          唯一性檢查:
+            result: BINARY
+            pass_condition: "namespace_id NOT IN existing_namespaces"
+            block_condition: "namespace_id IN existing_namespaces"
+            block_reason: "命名空間 {namespace_id} 已存在"
+            block_action: "REJECT_REGISTRATION_PERMANENT"
+            no_warnings: true
+            no_suggestions: true
+            no_auto_fix: true
+
+  implementation_contract:
+    所有執行引擎必須:
+      返回類型:
+        - "只能返回：{'status': 'pass'} 或 {'status': 'block', 'reason': '...'}"
+        - "禁止返回：{'status': 'warning'}"
+        - "禁止返回：{'status': 'pending'}"
+        - "禁止返回：{'status': 'review_needed'}"
+        
+      檢查函數簽名:
+        正確: |
+          def check_rule(input) -> BinaryResult:
+              if condition_met:
+                  return BinaryResult.PASS
+              else:
+                  return BinaryResult.BLOCK(reason="明確原因")
+        
+        禁止: |
+          def check_rule(input) -> Result:
+              if critical_violation:
+                  return Result.BLOCK
+              elif minor_issue:
+                  return Result.WARN  ← 禁止
+              else:
+                  return Result.PASS
+      
+      處理流程:
+        正確: |
+          for check in all_checks:
+              result = check.execute()
+              if result == BLOCK:
+                  return REJECT_IMMEDIATELY(result.reason)
+          return ALLOW()
+        
+        禁止: |
+          warnings = []
+          for check in all_checks:
+              result = check.execute()
+              if result == WARN:
+                  warnings.append(result)  ← 禁止收集警告
+          if warnings:
+              log_warnings()  ← 禁止僅記錄
+          return ALLOW()  ← 禁止有警告仍允許
+
+enforcement:
+  implementation_validation:
+    check_all_validators:
+      - "掃描所有 validator 函數"
+      - "確認只返回 PASS 或 BLOCK"
+      - "禁止任何 WARNING、SUGGEST、PENDING 返回值"
+      
+    check_all_handlers:
+      - "掃描所有 handler 函數"
+      - "確認無『建議修復』邏輯"
+      - "確認無『等待審查』邏輯"
+      
+    check_all_flows:
+      - "確認無『收集警告後繼續』流程"
+      - "確認無『部分通過』邏輯"
+      - "確認無『寬限期』機制"
+
+  zero_tolerance_test_suite:
+    test_no_warnings:
+      description: "測試系統是否產生任何警告"
+      assertion: "assert len(get_all_warnings()) == 0"
+      failure_action: "測試失敗 = 系統不符合零容忍"
+      
+    test_binary_only:
+      description: "測試所有檢查只返回 PASS 或 BLOCK"
+      assertion: "assert all(r in ['pass', 'block'] for r in all_results)"
+      failure_action: "發現其他狀態 = 系統不符合零容忍"
+      
+    test_no_pending_state:
+      description: "測試系統無待處理狀態"
+      assertion: "assert get_pending_count() == 0"
+      failure_action: "有待處理項 = 系統不符合零容忍"
+
+declaration:
+  absolute_enforcement_guarantee:
+    we_guarantee:
+      - "所有規範 100% 可自動執行"
+      - "所有檢查結果二元決策（PASS/BLOCK）"
+      - "所有 BLOCK 附帶明確原因"
+      - "零警告、零建議、零灰色地帶"
+      - "零待處理、零人工審查、零延遲決策"
+      
+    we_prohibit:
+      - "任何『警告但允許』的邏輯"
+      - "任何『建議修改』的機制"
+      - "任何『等待人工』的流程"
+      - "任何『部分符合』的判斷"
+      - "任何無法自動化的規則"
+      
+  effective_immediately: "2026-02-06T00:00:00Z"
+  supersedes:
+    - "NG00000-ZERO-TOLERANCE-POLICY.yaml（版本 3.0）"
+    - "所有包含『警告』、『建議』概念的規範"

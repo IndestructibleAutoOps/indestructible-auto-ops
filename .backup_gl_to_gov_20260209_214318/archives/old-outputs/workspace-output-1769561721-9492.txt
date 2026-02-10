@@ -1,0 +1,114 @@
+ M engine/.governance/event-stream.jsonl
+ M engine/aep-engine-app/constants/const.ts
+ M engine/aep-engine-app/constants/oauth.ts
+ M engine/aep-engine-app/constants/theme.ts
+ M engine/aep-engine-app/hooks/use-auth.ts
+ M engine/aep-engine-app/hooks/use-color-scheme.ts
+ M engine/aep-engine-app/hooks/use-color-scheme.web.ts
+ M engine/aep-engine-app/hooks/use-colors.ts
+ M engine/aep-engine-app/scripts/load-env.js
+ M engine/aep-engine-web/src/data/mock.ts
+ M engine/aep-engine-web/src/hooks/useAppState.ts
+ M engine/gov-gate/core/index.ts
+ M engine/gov-gate/gates/index.ts
+ M engine/gov-gate/types/index.ts
+ M engine/index.ts
+ M engine/interfaces-fix.d.ts
+ M engine/interfaces.d.ts
+ M engine/jest.config.js
+ M engine/package-lock.json
+ M engine/package.json
+ M engine/tests/artifacts/evidence_chain.test.ts
+ M engine/tests/governance/rule_evaluator.test.ts
+ M engine/tests/loader/fs_loader.test.ts
+ M engine/tests/loader/merge_index.test.ts
+ M engine/tests/normalizer/env_merger.test.ts
+ M engine/tests/validator/schema_validator.test.ts
+ M file-organizer-system/.governance/event-stream.jsonl
+A  governance/.governance/event-stream.jsonl
+A  governance/GL_SEMANTIC_ANCHOR.json
+A  governance/gov-artifacts/DEFINITION.yaml
+A  governance/gov-artifacts/GL-ARCHITECTURE-SPEC.yaml
+A  governance/gov-artifacts/GL-ARTIFACT-COLLECTION.yaml
+A  governance/gov-artifacts/GL-ARTIFACTS-TEMPLATES.yaml
+A  governance/gov-artifacts/GL-DEPENDENCY-GRAPH.yaml
+A  governance/gov-artifacts/GL-GOVERNANCE-EVENT-FLOW.yaml
+A  governance/gov-artifacts/GL-HIGH-WEIGHT-PROMPTS.yaml
+A  governance/gov-artifacts/GL-LAYER-DEFINITIONS.yaml
+A  governance/gov-artifacts/GL-QUANTUM-VALIDATION.yaml
+A  governance/gov-artifacts/GL-ROOT-SEMANTIC-ANCHOR.yaml
+A  governance/gov-artifacts/GL-SEAL-MANIFEST.yaml
+A  governance/gov-artifacts/GL-SEMANTIC-SEAL.yaml
+A  governance/gov-artifacts/README.md
+A  governance/gov-artifacts/alert-rules.yaml
+A  governance/gov-artifacts/api-design-specification.yaml
+A  governance/gov-artifacts/backward-reconciliation-mechanism.yaml
+A  governance/gov-artifacts/bi-direction-governance-loop-vision.yaml
+A  governance/gov-artifacts/board-minutes-template.md
+A  governance/gov-artifacts/compliance-standards-reference.yaml
+A  governance/gov-artifacts/controlplane-integration.yaml
+A  governance/gov-artifacts/cross-domain-integration.yaml
+A  governance/gov-artifacts/database-architecture-specification.yaml
+A  governance/gov-artifacts/deployment-record.yaml
+A  governance/gov-artifacts/dimension-template.yaml
+A  governance/gov-artifacts/ethical-guidelines.yaml
+A  governance/gov-artifacts/external-integration-config.yaml
+A  governance/gov-artifacts/feedback-mechanism.yaml
+A  governance/gov-artifacts/forward-expansion-implementation.yaml
+A  governance/gov-artifacts/frontend-backend-separation-architecture.yaml
+A  governance/gov-artifacts/gl-architecture-readme.md
+A  governance/gov-artifacts/gl-artifact-dsl.yaml
+A  governance/gov-artifacts/gl-artifact-engine.yaml
+A  governance/gov-artifacts/gl-artifacts-matrix.yaml
+A  governance/gov-artifacts/gl-automation-engine.yaml
+A  governance/gov-artifacts/gl-chain-registry.yaml
+A  governance/gov-artifacts/gl-constitution.yaml
+A  governance/gov-artifacts/gl-dag.md
+A  governance/gov-artifacts/gl-dag.yaml
+A  governance/gov-artifacts/gl-directory-naming-spec.yaml
+A  governance/gov-artifacts/gl-execution-mode.yaml
+A  governance/gov-artifacts/gl-filesystem-mapping.yaml
+A  governance/gov-artifacts/gl-final-seal.yaml
+A  governance/gov-artifacts/gl-global-governance-audit-report.yaml
+A  governance/gov-artifacts/gl-global-parallelism-engine.yaml
+A  governance/gov-artifacts/gl-global-semantic-index.yaml
+A  governance/gov-artifacts/gl-governance-loop.yaml
+A  governance/gov-artifacts/gl-index.yaml
+A  governance/gov-artifacts/gl-integrated-seal.yaml
+A  governance/gov-artifacts/gl-layers.yaml
+A  governance/gov-artifacts/gl-mainline-integration.md
+A  governance/gov-artifacts/gl-naming-charter-analysis.md
+A  governance/gov-artifacts/gl-quickref.md
+A  governance/gov-artifacts/gl-refactoring-exec-prompts.md
+A  governance/gov-artifacts/gl-root-cause-actions.md
+A  governance/gov-artifacts/gl-semantic-boundaries.yaml
+A  governance/gov-artifacts/gl-semantic-seal.yaml
+A  governance/gov-artifacts/gl-semantic-stabilization.yaml
+A  governance/gov-artifacts/gl-skills-matrix.yaml
+A  governance/gov-artifacts/gl-task-lifecycle.yaml
+A  governance/gov-artifacts/gl-unified-naming-charter.yaml
+A  governance/gov-artifacts/governance-charter.yaml
+A  governance/gov-artifacts/governance-loop-process-policy.yaml
+A  governance/gov-artifacts/governance-standards.yaml
+A  governance/gov-artifacts/innovation-registry.yaml
+A  governance/gov-artifacts/layer-template.yaml
+A  governance/gov-artifacts/metrics-definition.yaml
+A  governance/gov-artifacts/operational-plan.yaml
+A  governance/gov-artifacts/org-structure.yaml
+A  governance/gov-artifacts/project-plan.yaml
+A  governance/gov-artifacts/quantum-enhanced-validation-implementation.yaml
+A  governance/gov-artifacts/quantum-validation-metrics.yaml
+A  governance/gov-artifacts/resource-allocation.yaml
+A  governance/gov-artifacts/semantic-root-management.yaml
+A  governance/gov-artifacts/stakeholder-matrix.yaml
+A  governance/gov-artifacts/strategic-objectives.yaml
+A  governance/gov-artifacts/tools-integration.yaml
+A  governance/gov-artifacts/validation-rules-definition.yaml
+A  governance/gov-artifacts/vision-statement.yaml
+A  governance/gov-artifacts/workspace-integration.yaml
+A  governance/gov-core/gl-constitution.yaml
+A  governance/gov-core/gl-index.yaml
+A  governance/gov-core/gl-layers.yaml
+?? GL-FIX-COMPLETION.md
+?? GL-INTEGRATION-COMPLETION.md
+?? file-organizer-system/GL_SEMANTIC_ANCHOR.json

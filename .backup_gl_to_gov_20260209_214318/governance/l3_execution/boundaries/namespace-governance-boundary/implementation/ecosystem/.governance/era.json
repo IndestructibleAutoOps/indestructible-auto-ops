@@ -1,0 +1,25 @@
+{
+  "current_era": 1,
+  "era_definition": {
+    "0": {
+      "label": "pre-evidence",
+      "evidence_model": "none",
+      "reconstructable": false,
+      "description": "Pre-Evidence Era: No evidence chain, no audit trail, no lineage reconstruction capability"
+    },
+    "1": {
+      "label": "evidence-native-bootstrap",
+      "evidence_model": "step-artifacts+event-stream",
+      "reconstructable": true,
+      "started_at": "2026-02-04T05:18:40.824321+00:00",
+      "description": "Evidence-Native Bootstrap Era: Evidence generation enabled, event stream active, but governance closure not yet achieved. Core Hash in CANDIDATE state, not SEALED."
+    }
+  },
+  "metadata": {
+    "created_at": "2026-02-04T06:30:00+00:00",
+    "semantic_closure": "NO",
+    "immutable_core_status": "CANDIDATE",
+    "lineage_reconstructable": "PARTIAL",
+    "governance_closure": "IN_PROGRESS"
+  }
+}

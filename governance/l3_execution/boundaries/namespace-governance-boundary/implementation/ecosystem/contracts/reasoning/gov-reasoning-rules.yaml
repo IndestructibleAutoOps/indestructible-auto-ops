@@ -1,0 +1,195 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: reasoning.gl/v1
+kind: ReasoningRules
+metadata:
+  name: gov-reasoning-rules
+  version: "1.0.0"
+  description: "GL 推理規則 - 定義命名推理的規則與邏輯"
+  category: reasoning
+  compliance:
+    - gov-meta-specifications
+    - gov-boundary-enforcement
+
+spec:
+  reasoningRules:
+    # 語意推理規則
+    - id: RR-001
+      name: "語意推理規則"
+      description: "根據名稱推斷其語意和用途"
+      logic:
+        - "分析名稱的組成部分"
+        - "識別關鍵詞和概念"
+        - "推斷業務領域和用途"
+        - "驗證語意一致性"
+      examples:
+        - input: "user-management-service"
+          reasoning: "名稱包含 'user', 'management', 'service'，表示這是一個用戶管理服務"
+          output: { "domain": "user", "purpose": "management", "type": "service" }
+    
+    # 關係推理規則
+    - id: RR-002
+      name: "關係推理規則"
+      description: "推斷資源之間的關係"
+      logic:
+        - "識別資源類型"
+        - "分析命名契約"
+        - "推斷依賴關係"
+        - "驗證關係正確性"
+      examples:
+        - input: ["user-service", "user-database"]
+          reasoning: "兩個資源都有 'user' 前綴，推斷它們相關，服務依賴資料庫"
+          output: { "relationship": "dependency", "type": "service->database" }
+    
+    # 上下文推理規則
+    - id: RR-003
+      name: "上下文推理規則"
+      description: "根據上下文推斷適當的命名"
+      logic:
+        - "分析當前上下文"
+        - "識別相關契約"
+        - "應用命名規範"
+        - "生成建議命名"
+      examples:
+        - input:
+            context: { "type": "platform", "domain": "ai", "capability": "gpt" }
+          reasoning: "根據上下文和平台命名契約，生成平台名稱"
+          output: "gl.ai.gpt-platform"
+    
+    # 合規性推理規則
+    - id: RR-004
+      name: "合規性推理規則"
+      description: "推斷命名是否合規"
+      logic:
+        - "檢查命名格式"
+        - "驗證契約符合性"
+        - "檢查驗證規則"
+        - "生成合規報告"
+      examples:
+        - input: "gl.ai.gpt-platform"
+          reasoning: "檢查是否符合 gl.{domain}.{capability}-platform 格式"
+          output: { "compliant": true, "issues": [] }
+
+  reasoningEngine:
+    inputTypes:
+      - name: "naming_request"
+        description: "命名請求"
+        required: ["context"]
+        optional: ["naming_convention", "options"]
+      
+      - name: "validation_request"
+        description: "驗證請求"
+        required: ["name", "context"]
+        optional: ["strict_mode"]
+      
+      - name: "reasoning_request"
+        description: "推理請求"
+        required: ["query"]
+        optional: ["context"]
+
+    outputTypes:
+      - name: "generated_name"
+        description: "生成的名稱"
+        fields: ["name", "format", "validation_status"]
+      
+      - name: "validation_result"
+        description: "驗證結果"
+        fields: ["valid", "issues", "suggestions"]
+      
+      - name: "reasoning_result"
+        description: "推理結果"
+        fields: ["conclusion", "confidence", "reasoning"]
+
+    processingPipeline:
+      - step: 1
+        name: "輸入解析"
+        actions:
+          - "解析輸入參數"
+          - "驗證輸入完整性"
+          - "準備上下文"
+      
+      - step: 2
+        name: "語意分析"
+        actions:
+          - "分析語意結構"
+          - "識別關鍵概念"
+          - "構建語意表示"
+      
+      - step: 3
+        name: "契約匹配"
+        actions:
+          - "查詢命名契約"
+          - "匹配適用契約"
+          - "提取契約規則"
+      
+      - step: 4
+        name: "規則應用"
+        actions:
+          - "應用推理規則"
+          - "執行驗證規則"
+          - "生成結果"
+      
+      - step: 5
+        name: "輸出生成"
+        actions:
+          - "格式化輸出"
+          - "添加元數據"
+          - "返回結果"
+
+    errorHandling:
+      onInputError:
+        - "返回錯誤訊息"
+        - "提供建議修復"
+      
+      onReasoningError:
+        - "記錄錯誤"
+        - "使用默認策略"
+        - "返回部分結果"
+      
+      onValidationError:
+        - "返回驗證錯誤"
+        - "提供建議修復"
+
+  bestPractices:
+    - "推理規則應該有明確的定義"
+    - "推理規則應該可測試"
+    - "推理規則應該有文檔"
+    - "推理規則應該考慮邊界情況"
+    - "推理規則應該保持一致性"
+    - "推理規則應該有適當的覆蓋率"
+
+  validation:
+    ruleValidation:
+      - "規則語法正確性"
+      - "規則邏輯完整性"
+      - "規則相互一致性"
+    
+    outputValidation:
+      - "輸出格式正確性"
+      - "輸出內容合理性"
+      - "輸出驗證通過"
+
+  confidenceScoring:
+    high:
+      range: "0.8-1.0"
+      description: "高度確信"
+    
+    medium:
+      range: "0.5-0.8"
+      description: "中度確信"
+    
+    low:
+      range: "0.0-0.5"
+      description: "低度確信"
+
+  logging:
+    level: "INFO"
+    categories:
+      - "reasoning"
+      - "validation"
+      - "errors"
+      - "performance"

@@ -1,0 +1,21 @@
+npm error code ERESOLVE
+npm error ERESOLVE unable to resolve dependency tree
+npm error
+npm error While resolving: @machine-native-ops/aep-engine-app@1.0.0
+npm error Found: @trpc/server@11.8.0
+npm error node_modules/@trpc/server
+npm error   @trpc/server@"11.8.0" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer @trpc/server@"11.7.2" from @trpc/client@11.7.2
+npm error node_modules/@trpc/client
+npm error   @trpc/client@"11.7.2" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error /root/.npm/_logs/2026-01-28T02_27_39_300Z-eresolve-report.txt
+npm error A complete log of this run can be found in: /root/.npm/_logs/2026-01-28T02_27_39_300Z-debug-0.log

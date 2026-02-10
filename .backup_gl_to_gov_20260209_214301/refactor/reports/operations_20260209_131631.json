@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-02-09T13:16:31.966561",
+  "operations": [
+    {
+      "type": "rename",
+      "source": "test_dir",
+      "target": "test_renamed",
+      "reason": "測試重命名",
+      "timestamp": "2026-02-09T13:16:31.966204",
+      "status": "pending"
+    },
+    {
+      "type": "move",
+      "source": "test_renamed",
+      "target": "refactor/tests/test_moved",
+      "reason": "測試移動",
+      "timestamp": "2026-02-09T13:16:31.966488",
+      "status": "pending"
+    }
+  ],
+  "rollback_operations": [
+    {
+      "type": "rename_back",
+      "source": "test_renamed",
+      "target": "test_dir"
+    },
+    {
+      "type": "move_back",
+      "source": "refactor/tests/test_moved",
+      "target": "test_renamed"
+    }
+  ],
+  "total_operations": 2,
+  "successful_operations": 0
+}

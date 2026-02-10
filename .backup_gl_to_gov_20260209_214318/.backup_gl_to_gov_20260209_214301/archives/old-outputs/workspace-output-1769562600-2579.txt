@@ -1,0 +1,50 @@
+# GL Unified Charter - AEP Engine 治理稽核報告
+
+**GL Unified Charter Activated**
+
+## 執行摘要
+
+| 項目 | 數值 |
+|------|------|
+| Session ID | `gl-audit-20260126-020557` |
+| Charter Version | 2.0.0 |
+| 稽核開始 | 2026-01-26T02:05:57.101990+00:00 |
+| 稽核結束 | 2026-01-26T02:05:57.164586+00:00 |
+| 總檔案數 | 47 |
+| 處理成功 | 47 |
+| 處理失敗 | 0 |
+| 總問題數 | 143 |
+
+## 問題分布
+
+### 按嚴重度
+
+| 嚴重度 | 數量 | 說明 |
+|--------|------|------|
+| P0 (Critical) | 0 | 必須立即修復 |
+| P1 (High) | 47 | 高優先級修復 |
+| P2 (Medium) | 93 | 中優先級修復 |
+| P3 (Low) | 3 | 低優先級修復 |
+| P4 (Info) | 0 | 資訊性提示 |
+
+### 按類型
+
+| 問題類型 | 數量 |
+|----------|------|
+| gl_marker_missing | 47 |
+| metadata_missing | 44 |
+| semantic_manifest_missing | 26 |
+| type_error | 23 |
+| naming_inconsistent | 2 |
+| pipeline_error | 1 |
+
+## 問題詳情
+
+### P0/P1 高優先級問題
+
+#### P1: GL 治理標記缺失
+- **檔案**: `engine/README.md`
+- **類型**: gl_marker_missing
+- **描述**: 檔案 engine/README.md 缺少 GL Unified Charter 標記
+- **建議**: 在檔案開頭添加 '// GL Unified Charter Activated' 或 '@gl-governed' 標記
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MachineNativeOps - Interactive Module Dependency Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔗 MachineNativeOps Module Dependency Graph</h1>
+            <p class="subtitle">Interactive visualization of module dependencies and autonomy levels</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="layout">Layout:</label>
+                <select id="layout">
+                    <option value="hierarchical">Hierarchical (Top-Down)</option>
+                    <option value="force">Force-Directed</option>
+                    <option value="radial">Radial</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="filter">Filter by Status:</label>
+                <select id="filter">
+                    <option value="all">All Modules</option>
+                    <option value="active">Active Only</option>
+                    <option value="in-development">In Development</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <button id="resetZoom">Reset View</button>
+                <button id="exportSVG">Export SVG</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="graph-container">
+                <svg id="dag-graph"></svg>
+            </div>
+            
+            <div class="sidebar">
+                <div class="info-panel" id="info-panel">
+                    <h3>📋 Module Information</h3>
+                    <p class="hint">Click on a module to see details</p>
+                    <div id="module-details" class="hidden">
+                        <div class="detail-row">
+                            <span class="label">Module ID:</span>
+                            <span id="detail-id" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Name:</span>
+                            <span id="detail-name" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Autonomy Level:</span>
+                            <span id="detail-autonomy" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Status:</span>
+                            <span id="detail-status" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Semantic Health:</span>
+                            <span id="detail-health" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Dependencies:</span>
+                            <span id="detail-deps" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Dependents:</span>
+                            <span id="detail-dependents" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Namespace:</span>
+                            <span id="detail-namespace" class="value"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <h3>📊 Legend</h3>
+                    <div class="legend-item">
+                        <span class="legend-color active"></span>
+                        <span>Active Module</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color in-development"></span>
+                        <span>In Development</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color global-layer"></span>
+                        <span>Global Layer</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-line"></span>
+                        <span>Dependency Link</span>
+                    </div>
+                </div>
+
+                <div class="statistics">
+                    <h3>📈 Statistics</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Modules:</span>
+                        <span id="stat-modules" class="stat-value">6</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Dependencies:</span>
+                        <span id="stat-deps" class="stat-value">12</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Max Depth:</span>
+                        <span id="stat-depth" class="stat-value">4</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Circular Dependencies:</span>
+                        <span id="stat-cycles" class="stat-value">0 ✅</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Generated by MachineNativeOps DAG Visualization Tool | 
+               <a href="../DAG_VISUALIZATION.md">View Markdown Version</a> |
+               <a href="https://github.com/MachineNativeOps/machine-native-ops">GitHub Repository</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="dag-data.js"></script>
+    <script src="dag-visualization.js"></script>
+</body>
+</html>

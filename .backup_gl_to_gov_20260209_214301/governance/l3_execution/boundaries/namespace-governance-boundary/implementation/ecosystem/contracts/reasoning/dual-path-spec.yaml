@@ -1,0 +1,150 @@
+# Dual-Path Retrieval Specification
+# MNGA Layer 6 - Reasoning System
+
+apiVersion: reasoning.mnga.io/v1
+kind: DualPathSpec
+metadata:
+  name: dual-path-retrieval
+  version: "1.0.0"
+  description: "Dual-path retrieval system with internal and external knowledge sources"
+  
+spec:
+  # Internal Retrieval Configuration
+  internal_retrieval:
+    enabled: true
+    vector_store:
+      type: "chromadb"
+      embedding_model: "text-embedding-3-small"
+      dimension: 1536
+      collection_name: "code_vectors"
+      index_path: "ecosystem/indexes/internal/code_vectors"
+      
+    knowledge_graph:
+      type: "neo4j"
+      uri: "bolt://localhost:7687"
+      database: "knowledge_graph"
+      layers:
+        - L1_symbol_graph
+        - L2_call_graph
+        - L3_semantic_graph
+      
+    sources:
+      code:
+        type: "code_embeddings"
+        patterns:
+          - "**/*.py"
+          - "**/*.js"
+          - "**/*.go"
+          - "**/*.ts"
+        priority: 1
+        
+      documentation:
+        type: "markdown_docs"
+        patterns:
+          - "**/*.md"
+        priority: 2
+        
+      governance:
+        type: "governance_contracts"
+        patterns:
+          - "ecosystem/contracts/**/*.yaml"
+        priority: 0  # Highest priority
+        
+      history:
+        type: "git_commits"
+        source: ".git/"
+        fields: ["hash", "message", "author", "timestamp"]
+        priority: 1
+        
+      decisions:
+        type: "issue_discussions"
+        patterns:
+          - ".github/issue_*.json"
+        priority: 2
+        
+  # External Retrieval Configuration
+  external_retrieval:
+    enabled: true
+    web_search:
+      provider: "bing"
+      api_endpoint: "https://api.bing.microsoft.com/v7.0/search"
+      max_results: 10
+      timeout: 30
+      
+    domain_filter:
+      enabled: true
+      allowed_domains:
+        - "docs.python.org"
+        - "go.dev"
+        - "nodejs.org"
+        - "developer.mozilla.org"
+        - "kubernetes.io"
+        - "istio.io"
+        - "prometheus.io"
+        - "grafana.com"
+        
+    cache:
+      enabled: true
+      ttl: 3600
+      path: "ecosystem/indexes/external/cache"
+      
+  # Arbitration Configuration
+  arbitration:
+    enabled: true
+    rule_engine:
+      path: "ecosystem/reasoning/dual-path/arbitration/rules/"
+      
+    default_strategy: "confidence_based"
+    confidence_threshold:
+      internal: 0.8
+      external: 0.85
+      hybrid: 0.75
+      
+  # Traceability Configuration
+  traceability:
+    enabled: true
+    audit_fields:
+      - actor
+      - action
+      - resource
+      - result
+      - hash
+      - version
+      - requestId
+      - correlationId
+      - ip
+      - userAgent
+      
+    timestamp_format: "RFC3339"
+    timezone: "UTC"
+    
+    output_formats:
+      - "JSON"
+      - "JSONL"
+      - "Markdown"
+      
+    storage:
+      path: "ecosystem/logs/audit/"
+      retention_days: 90
+      
+  # Performance Configuration
+  performance:
+    cache_size_mb: 512
+    max_concurrent_queries: 10
+    query_timeout_seconds: 30
+    
+    vector_index:
+      type: "IVF_PQ"
+      nlist: 100
+      nprobe: 10
+      
+  # Security Configuration
+  security:
+    audit_logging: true
+    encryption:
+      enabled: true
+      algorithm: "AES-256-GCM"
+      
+    rate_limiting:
+      enabled: true
+      requests_per_minute: 100

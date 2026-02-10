@@ -1,0 +1,39 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "default": true,
+  "MD013": false,
+  "MD025": false,
+  "MD033": {
+    "allowed_elements": [
+      "div",
+      "span",
+      "br",
+      "img",
+      "sup",
+      "sub",
+      "details",
+      "summary",
+      "p",
+      "a",
+      "hr"
+    ]
+  },
+  "MD003": false,
+  "MD036": false,
+  "MD040": false,
+  "MD041": false,
+  "MD051": false,
+  "MD024": false,
+  "MD055": false,
+  "MD056": false,
+  "MD060": false
+}

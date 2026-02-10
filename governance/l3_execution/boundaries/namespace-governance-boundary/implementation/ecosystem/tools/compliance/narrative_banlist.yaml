@@ -1,0 +1,263 @@
+# Narrative Banlist Configuration for GL-NarrativeFree Compliance Scanner
+#
+# This file defines all banned narrative phrases, unsealed conclusions,
+# and fabricated timeline patterns for narrative-free compliance scanning.
+#
+# Governance Owner: IndestructibleAutoOps
+# Version: 2.0
+# Date: 2024-02-05
+
+# Narrative phrases (GLCM-NAR)
+narrative_phrases:
+  # Chinese
+  - 我們相信
+  - 應該
+  - 可能
+  - 預期
+  - 希望
+  - 也許
+  - 有望
+  - 我們認為
+  - 我們預估
+  - 我們樂觀地
+  - 令人擔憂
+  - 值得期待
+  - 預料之中
+  - 看起來
+  - 似乎
+  - 大概
+  - 或許
+  - 估計
+  
+  # English
+  - we believe
+  - should
+  - could
+  - might
+  - would
+  - expect
+  - hope
+  - maybe
+  - likely
+  - probably
+  - optimistic
+  - concerning
+  - promising
+  - anticipated
+  - appears
+  - seems
+  - roughly
+  - perhaps
+  
+  # Japanese
+  - 我々は信じる
+  - はず
+  - 可能性
+  - 期待
+  - 希望
+  - 多分
+  - 有望
+  - 我々は考えている
+  - 楽観的
+  - 懸念
+  - 期待できる
+  - 予想通り
+  - 見える
+  - 似乎
+  
+  # Korean
+  - 우리는 믿는다
+  - 해야 한다
+  - 가능성
+  - 기대
+  - 희망
+  - 아마도
+  - 유망
+  - 우리는 생각한다
+  - 낙관적
+  - 우려
+  - 기대된
+  - 예상대로
+  - 보인다
+  - 듯하다
+
+# Unsealed conclusions (GLCM-UNC)
+unsealed_conclusions:
+  # Chinese
+  - 因此我們決定
+  - 我們已完成
+  - 我們已修復
+  - 我們採取了行動
+  - 我們已部署
+  - 問題已解決
+  - 系統已恢復
+  - 我們已執行
+  - 我們已實施
+  
+  # English
+  - therefore we decided
+  - we have completed
+  - we have fixed
+  - we have taken action
+  - we have deployed
+  - the issue was resolved
+  - the system has been restored
+  - we have executed
+  - we have implemented
+  
+  # Japanese
+  - したがって決定しました
+  - 完了しました
+  - 修正しました
+  - 行動をとりました
+  - 展開しました
+  - 問題は解決されました
+  - システムは復旧しました
+  - 実行しました
+  - 実施しました
+  
+  # Korean
+  - 따라서 결정했습니다
+  - 완료했습니다
+  - 수정했습니다
+  - 조치를 취했습니다
+  - 배포했습니다
+  - 문제가 해결되었습니다
+  - 시스템이 복구되었습니다
+  - 실행했습니다
+  - 시행했습니다
+
+# Fabricated timeline patterns (GLCM-FCT) - CRITICAL
+fabricated_timeline:
+  zh:
+    - 已完成
+    - 已修復
+    - 已部署
+    - 已恢復
+    - 已解決
+    - 已執行
+    - 已實施
+    - 已修正
+    - 已完成修復
+    - 問題已解決
+    - 系統已恢復
+  
+  en:
+    - has been completed
+    - has been resolved
+    - was fixed
+    - has been deployed
+    - we have completed
+    - the issue was addressed
+    - was successfully repaired
+    - has been restored
+    - has been executed
+    - has been implemented
+    - was successfully fixed
+  
+  ja:
+    - 修正しました
+    - 完了しました
+    - 復旧しました
+    - 解決しました
+    - 実行しました
+    - 展開しました
+    - 実施しました
+    - 修正が完了しました
+    - 問題は解決されました
+    - システムは復旧しました
+  
+  ko:
+    - 수정했습니다
+    - 완료했습니다
+    - 복구했습니다
+    - 해결했습니다
+    - 실행했습니다
+    - 배포했습니다
+    - 실시했습니다
+    - 수정이 완료되었습니다
+    - 문제가 해결되었습니다
+    - 시스템이 복구되었습니다
+  
+  de:
+    - haben wir abgeschlossen
+    - wurde behoben
+    - wurde bereitgestellt
+    - wurde wiederhergestellt
+    - wurde gelöst
+    - wurde ausgeführt
+    - wurde implementiert
+    - wurde erfolgreich behoben
+    - das Problem wurde gelöst
+    - das System wurde wiederhergestellt
+  
+  fr:
+    - a été résolu
+    - a été corrigé
+    - a été déployé
+    - a été restauré
+    - a été achevé
+    - a été exécuté
+    - a été mis en œuvre
+    - a été réparé avec succès
+    - le problème a été résolu
+    - le système a été restauré
+
+# Evidence hints (required within 300 characters)
+evidence_hints:
+  - hash
+  - trace
+  - .evidence
+  - 補件
+  - 封存
+  - gov-events
+  - replay
+  - canonical
+  - era-1-closure
+  - hash_translation_table
+  - hash_of_
+  - trace_id
+  - evidence_file
+  - artifact_hash
+  - canonical_hash
+  - semantic_hash
+
+# Emotive language patterns (GLCM-EMO)
+emotive_phrases:
+  # Chinese
+  - 令人擔憂
+  - 值得高興
+  - 非常遺憾
+  - 深表歉意
+  - 感到興奮
+  
+  # English
+  - concerning
+  -令人欣喜
+  - regrettable
+  - deeply apologize
+  - excited about
+  
+  # Japanese
+  - 懸念される
+  - 喜ばしい
+  - 遺憾
+  - 深くお詫び
+  - 興奮する
+
+# Severity levels
+severity_levels:
+  narrative: MEDIUM
+  unsealed_claim: HIGH
+  fabricated_timeline: CRITICAL
+  evidence_missing: HIGH
+  emotive_language: LOW
+
+# Language detection patterns
+language_patterns:
+  zh: "[\u4e00-\u9fff]"
+  ja: "[\u3040-\u309f\u30a0-\u30ff]"
+  ko: "[\ac00-\ud7af]"
+  de: "[äöüß]"
+  fr: "[éèêëàâôîïûùç]"
+  en: "[a-zA-Z]"

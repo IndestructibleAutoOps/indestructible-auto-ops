@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mnga.org/schemas/ugs-governance@1.0.0.json",
+  "title": "UGS Governance Format Schema",
+  "description": "Schema for governance metadata structures",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "@GL-semantic",
+    "@GL-audit-trail",
+    "meta_spec"
+  ],
+  "properties": {
+    "@GL-semantic": {
+      "type": "string",
+      "description": "Semantic anchor"
+    },
+    "@GL-audit-trail": {
+      "type": "string",
+      "enum": ["enabled", "disabled"]
+    },
+    "meta_spec": {
+      "type": "object",
+      "required": ["id", "version", "title"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9._-]+@[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 5
+        },
+        "immutable": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "governance_structure": {
+      "type": "object",
+      "description": "Governance structure definition",
+      "properties": {
+        "governance_node": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string",
+              "description": "Owner of the specification"
+            },
+            "reviewers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of reviewers"
+            },
+            "approval": {
+              "type": "string",
+              "enum": ["consensus", "majority", "owner-only"],
+              "description": "Approval process type"
+            }
+          }
+        },
+        "change_control": {
+          "type": "object",
+          "properties": {
+            "strict": {
+              "type": "boolean",
+              "default": true
+            },
+            "review_required": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "GL-governance": {
+    "layer": "l50-format",
+    "immutable": true,
+    "dependencies": ["org.mnga.meta-format@1.0.0"]
+  }
+}

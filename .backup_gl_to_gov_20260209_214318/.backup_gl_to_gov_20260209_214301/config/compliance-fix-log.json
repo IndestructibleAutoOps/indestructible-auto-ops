@@ -1,0 +1,5027 @@
+[
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/requirements.txt",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.009932Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/requirements.txt",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.010086Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/outputs/gl-validation-output.txt",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.010196Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/naming/opa-naming-policy.rego",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.010301Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/naming/opa-naming-policy.rego",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.010393Z"
+  },
+  {
+    "file_path": ".github/config/dev/validation-system/reports/pr-local/quantum-maturity-governance.yaml.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.013000Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/monitoring/grafana-quantum-dashboard.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.013295Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/monitoring/dashboards/observability-dashboard.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.013443Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/monitoring/grafana/naming-compliance-dashboard.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.013542Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/monitoring/dashboards/observability-dashboard.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.013646Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/monitoring/grafana/naming-compliance-dashboard.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.013736Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/outputs/gl-simple-audit-report.json",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.016428Z"
+  },
+  {
+    "file_path": ".checkov.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.016630Z"
+  },
+  {
+    "file_path": ".pre-commit-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.016723Z"
+  },
+  {
+    "file_path": "docker-compose.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.016834Z"
+  },
+  {
+    "file_path": "ecosystem/contracts/governance/gl.causal-reasoning-spec.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017064Z"
+  },
+  {
+    "file_path": "ecosystem/contracts/policies/conftest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017166Z"
+  },
+  {
+    "file_path": "ecosystem/contracts/verification/gl-verification-engine-spec.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017388Z"
+  },
+  {
+    "file_path": "ecosystem/contracts/verification/gl-proof-model-executable.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017503Z"
+  },
+  {
+    "file_path": "ecosystem/contracts/verification/gl-proof-model.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017653Z"
+  },
+  {
+    "file_path": "ecosystem/platform-cloud/dev/environment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017753Z"
+  },
+  {
+    "file_path": "ecosystem/platform-cloud/dev/platform.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017867Z"
+  },
+  {
+    "file_path": "ecosystem/platform-cloud/dev/deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.017985Z"
+  },
+  {
+    "file_path": "ecosystem/governance/governance-monitor-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.018086Z"
+  },
+  {
+    "file_path": "ecosystem/ecosystem-cloud/contracts/logging/v1/logging_contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018194Z"
+  },
+  {
+    "file_path": "ecosystem/ecosystem-cloud/contracts/secrets/v1/secrets_contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018284Z"
+  },
+  {
+    "file_path": "ecosystem/ecosystem-cloud/contracts/compute/v1/compute_contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018372Z"
+  },
+  {
+    "file_path": "ecosystem/ecosystem-cloud/contracts/queue/v1/queue_contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018486Z"
+  },
+  {
+    "file_path": "ecosystem/ecosystem-cloud/registry/cloud_adapters.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018598Z"
+  },
+  {
+    "file_path": "ecosystem/registry/service-registry/service-catalog.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018697Z"
+  },
+  {
+    "file_path": "ecosystem/registry/data-registry/data-catalog.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018798Z"
+  },
+  {
+    "file_path": "ecosystem/registry/platform-registry/platform-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.018995Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/normalizer/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019086Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/.gl/semantic-anchors.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019187Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/.gl/manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019273Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/governance/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019354Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/governance/gl-artifacts/strategic/artifacts/cross-domain-integration.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019499Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/governance/gl-artifacts/observability/artifacts/quantum-validation-metrics.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019595Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/governance/gl-artifacts/observability/artifacts/quantum-enhanced-validation-implementation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019683Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/governance/gl-artifacts/meta/artifacts/GL-QUANTUM-VALIDATION.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019774Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/renderer/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019856Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/executor/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.019939Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/aep-engine-app/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.020026Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/artifacts/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.020109Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/schemas/generation-request.schema.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.020192Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/schemas/change-request.schema.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.020291Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/schemas/exception-request.schema.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.020384Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/schemas/validation-request.schema.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.020468Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/governance/policies/POLICY_MANIFEST.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.020573Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/config/root.naming-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.020823Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/baseline/modules/REGISTRY.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.020916Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/loader/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021000Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/validator/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021082Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/security/quantum-integrity-protocol.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021166Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/security/quantum-root-trust.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021247Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/security/post-quantum-confidentiality.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021327Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validation/quantum-validation-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021420Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/validation/quantum-scanner-daemonset.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021519Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/configmap.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021595Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/frontend-deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021673Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/kustomization.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021748Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/backend-service.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021823Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/namespace.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021896Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/backend-deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.021985Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/hpa.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022073Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/ingress.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022152Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/pvc.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022224Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/frontend-service.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022301Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/infrastructure/kubernetes/quantum/secret.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022373Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/parser/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022454Z"
+  },
+  {
+    "file_path": ".github/actions/docx-to-artifact/action.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022563Z"
+  },
+  {
+    "file_path": ".github/config/.pre-commit-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.022673Z"
+  },
+  {
+    "file_path": ".github/config/brand-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.022801Z"
+  },
+  {
+    "file_path": ".github/config/collaboration-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.022889Z"
+  },
+  {
+    "file_path": ".github/config/yaml-module-system.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.023001Z"
+  },
+  {
+    "file_path": ".github/config/.eslintrc.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.023119Z"
+  },
+  {
+    "file_path": ".github/config/ci-error-analyzer.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.023221Z"
+  },
+  {
+    "file_path": ".github/config/integrations-index.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.023383Z"
+  },
+  {
+    "file_path": ".github/config/unified-config-index.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.023629Z"
+  },
+  {
+    "file_path": ".github/config/security/safety-mechanisms.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.023774Z"
+  },
+  {
+    "file_path": ".github/config/dev/validation-system/manifests/quantum-scanner-daemonset.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.023880Z"
+  },
+  {
+    "file_path": ".github/config/dev/validation-system/config/quantum-validation-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024006Z"
+  },
+  {
+    "file_path": ".github/config/environments/prod.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.024075Z"
+  },
+  {
+    "file_path": ".github/config/environments/dev.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.024150Z"
+  },
+  {
+    "file_path": ".github/config/monitoring/monitoring.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024238Z"
+  },
+  {
+    "file_path": ".github/config/docker/compose.example.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024326Z"
+  },
+  {
+    "file_path": ".github/config/docker/compose.devcontainer.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024426Z"
+  },
+  {
+    "file_path": ".github/config/docker/compose.dev.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024540Z"
+  },
+  {
+    "file_path": ".github/config/docker/compose.base.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024634Z"
+  },
+  {
+    "file_path": ".github/config/docker/index.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024724Z"
+  },
+  {
+    "file_path": ".github/config/docker/compose.architect.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.024820Z"
+  },
+  {
+    "file_path": ".github/config/governance/system-module-map.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.025133Z"
+  },
+  {
+    "file_path": ".github/config/governance/refactor-evolution.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.025271Z"
+  },
+  {
+    "file_path": ".github/config/governance/module-interaction-governance.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.025364Z"
+  },
+  {
+    "file_path": ".github/config/governance/resource-optimization-governance.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.025451Z"
+  },
+  {
+    "file_path": ".github/config/governance/performance-calibration-governance.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.025538Z"
+  },
+  {
+    "file_path": ".github/config/governance/synergymesh.config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.025710Z"
+  },
+  {
+    "file_path": ".github/config/governance/system-evolution.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.025802Z"
+  },
+  {
+    "file_path": ".github/config/governance/system-module-map.example.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.026045Z"
+  },
+  {
+    "file_path": ".github/config/governance/language-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.026218Z"
+  },
+  {
+    "file_path": ".github/config/governance/quantum-maturity-governance.yaml",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.026324Z"
+  },
+  {
+    "file_path": ".github/config/governance/sync-refactor-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.026471Z"
+  },
+  {
+    "file_path": ".github/config/governance/layer-standardization-governance.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.026559Z"
+  },
+  {
+    "file_path": ".github/config/governance/unified-compliance-governance.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.026643Z"
+  },
+  {
+    "file_path": ".github/config/governance/island-ai-runtime.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.026781Z"
+  },
+  {
+    "file_path": ".github/config/automation/automation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.026887Z"
+  },
+  {
+    "file_path": ".github/config/automation/pipelines/integration_pipeline.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.027032Z"
+  },
+  {
+    "file_path": ".github/config/automation/pipelines/refactor_pipeline.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.027144Z"
+  },
+  {
+    "file_path": ".github/config/agents/team/virtual-experts.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.027290Z"
+  },
+  {
+    "file_path": ".github/config/providers/aws/infrastructure.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.027386Z"
+  },
+  {
+    "file_path": ".github/config/providers/aws/environments/staging.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.027469Z"
+  },
+  {
+    "file_path": ".github/config/providers/docker-compose/services.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.027568Z"
+  },
+  {
+    "file_path": ".github/config/providers/docker-compose/environments/staging.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.027651Z"
+  },
+  {
+    "file_path": ".github/config/providers/kubernetes/deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.027731Z"
+  },
+  {
+    "file_path": ".github/config/providers/kubernetes/environments/staging.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.027811Z"
+  },
+  {
+    "file_path": ".github/config/prod/config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.027941Z"
+  },
+  {
+    "file_path": ".github/config/ci-cd/ci-error-handler.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028058Z"
+  },
+  {
+    "file_path": ".github/config/ci-cd/ci-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028184Z"
+  },
+  {
+    "file_path": ".github/config/integrations/knowledge-graph-integration.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028300Z"
+  },
+  {
+    "file_path": ".github/config/integrations/quantum-integration.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.028418Z"
+  },
+  {
+    "file_path": ".github/config/integrations/matechat/config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028534Z"
+  },
+  {
+    "file_path": ".github/config/autofix/rules/performance-rules.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028657Z"
+  },
+  {
+    "file_path": ".github/config/autofix/rules/security-rules.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028770Z"
+  },
+  {
+    "file_path": ".github/config/base/application.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.028854Z"
+  },
+  {
+    "file_path": ".github/workflows/naming-governance.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.029009Z"
+  },
+  {
+    "file_path": ".github/workflows/auto-fix.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.029153Z"
+  },
+  {
+    "file_path": ".github/archive/workspace-reports/templates/quantum-naming-governance-workflow.code.yaml",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.029256Z"
+  },
+  {
+    "file_path": ".github/archive/legacy-workflows/naming-governance.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.029635Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.029755Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/30-assessment/trait-matrix.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.029839Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/30-assessment/skill-matrix.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.029922Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/skeletons-index.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030096Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/knowledge-base/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030175Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/identity-tenancy/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030257Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/identity-tenancy/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030361Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/nucleus-orchestrator/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030436Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/nucleus-orchestrator/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030524Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/performance-reliability/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030598Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/performance-reliability/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030705Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/cost-management/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030778Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/cost-management/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030883Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/security-observability/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.030994Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/security-observability/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031081Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/security-observability/config/rbac-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031169Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/runtime-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031320Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031492Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/config/rbac-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031597Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/80-skeleton-configs/04-security-observability/config/trace-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031687Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/80-skeleton-configs/05-identity-tenancy/config/tenant-quotas.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031776Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/99-meta/knowledge-index.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031856Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/skeletons-index.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.031985Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/knowledge-base/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032065Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/identity-tenancy/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032143Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/identity-tenancy/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.032226Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/nucleus-orchestrator/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032304Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/nucleus-orchestrator/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.032387Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/performance-reliability/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032461Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/performance-reliability/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.032541Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/cost-management/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032620Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/cost-management/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.032697Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/security-observability/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032777Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/security-observability/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.032864Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/architecture-stability/runtime-mapping.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.032946Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/70-architecture-skeletons/architecture-stability/io-contract.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.033055Z"
+  },
+  {
+    "file_path": ".github/archive/infrastructure/drift/rules.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.033171Z"
+  },
+  {
+    "file_path": "gl.infrastructure.foundation-platform/deployment/helm/machine-native-ops/values.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.033317Z"
+  },
+  {
+    "file_path": "gl.infrastructure.foundation-platform/deployment/helm/machine-native-ops/Chart.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.033395Z"
+  },
+  {
+    "file_path": "gl.infrastructure.foundation-platform/rke2/profiles/production/config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.033518Z"
+  },
+  {
+    "file_path": "gl.infrastructure.foundation-platform/k8s-legacy/jaeger/values.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.033651Z"
+  },
+  {
+    "file_path": "gl.infrastructure.foundation-platform/redis-stack/redis-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.033780Z"
+  },
+  {
+    "file_path": "gl.infrastructure.foundation-platform/redis-stack/docker-compose.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.033858Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.033937Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034009Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/config/search-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.034106Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/config/index-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034190Z"
+  },
+  {
+    "file_path": "config/platform-deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034280Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/GL-QUANTUM-VALIDATION.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034468Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/quantum-validation-metrics.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034565Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/cross-domain-integration.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034710Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/gl-artifacts/quantum-enhanced-validation-implementation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034792Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/api/openapi.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.034967Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/deployment/quantum-deployment-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.035112Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/monitoring/prometheus-quantum-rules.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.035275Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/config/naming-governance-v2.0.0.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.035415Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/workflows/quantum-naming-governance.yaml",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.035620Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/configs/instant-execution-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.035753Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/configs/INSTANT-EXECUTION-MANIFEST.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.035942Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/legacy/instant_grail.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036038Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036118Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036192Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/config/search-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.036291Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/config/index-mapping.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036373Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/k3s-upgrade/upgrade-monitoring.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036468Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/k3s-upgrade/rollback/rollback-procedures.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036557Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/k3s-upgrade/automatic/system-upgrade-controller.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036641Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/monitoring/alerting/alert-correlation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036751Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/monitoring/alerts/alerting-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036841Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/monitoring/prometheus/naming-violation-rules.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.036931Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/supply-chain/workflow-hardening.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037015Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/supply-chain/provenance-verification.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037090Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/supply-chain/cosign-signing.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037167Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/supply-chain/sbom-generation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037244Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/naming/conftest-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037322Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/naming/kyverno-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037400Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/naming/gatekeeper-constraints.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037478Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/naming/migration-playbook.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037570Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/audit/sla-sli-metrics.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037662Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/audit/exception-governance.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037744Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/audit/audit-trail-system.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037829Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/ci-pipeline/pipeline-metadata.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.037915Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/governance/ci-pipeline/metadata-driven-pipeline.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038016Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/enforcers/policy-enforcer.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038097Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/scanners/checkov-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038175Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/scanners/kube-bench-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038252Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/service-mesh/istio-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038351Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/service-mesh/service-mesh-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038434Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/service-mesh/traffic-management.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038514Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/infrastructure/policies/security-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038600Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.github/workflows/naming-governance.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038713Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.github/workflows/ci.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038807Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.github/workflows/auto-fix-bot.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.038944Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.github/workflows/slsa-provenance.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.039032Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/pipelines/example-pipeline.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039113Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/k3s-upgrade/upgrade-monitoring.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039202Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/k3s-upgrade/rollback/rollback-procedures.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039288Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/k3s-upgrade/automatic/system-upgrade-controller.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039367Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/monitoring/alerting/alert-correlation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039494Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/monitoring/alerts/alerting-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039625Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/monitoring/prometheus/naming-violation-rules.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039736Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/supply-chain/workflow-hardening.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039830Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/supply-chain/provenance-verification.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.039938Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/supply-chain/cosign-signing.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040007Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/supply-chain/sbom-generation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040086Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/naming/conftest-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040165Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/naming/kyverno-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040247Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/naming/gatekeeper-constraints.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040327Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/naming/migration-playbook.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040423Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/audit/sla-sli-metrics.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040518Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/audit/exception-governance.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040602Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/audit/audit-trail-system.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040688Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/ci-pipeline/pipeline-metadata.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040774Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/governance/ci-pipeline/metadata-driven-pipeline.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040870Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/enforcers/policy-enforcer.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.040963Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/scanners/checkov-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041045Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/scanners/kube-bench-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041125Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/service-mesh/istio-config.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041222Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/service-mesh/service-mesh-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041305Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/service-mesh/traffic-management.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041387Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/infrastructure/policies/security-policies.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041474Z"
+  },
+  {
+    "file_path": ".config/alertmanager/alertmanager-config.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.041622Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/normalizer/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041711Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/.gl/semantic-anchors.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041812Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/.gl/manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041897Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/governance/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.041985Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/governance/gl-artifacts/strategic/artifacts/cross-domain-integration.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042131Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/governance/gl-artifacts/observability/artifacts/quantum-validation-metrics.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042230Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/governance/gl-artifacts/observability/artifacts/quantum-enhanced-validation-implementation.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042311Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/governance/gl-artifacts/meta/artifacts/GL-QUANTUM-VALIDATION.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042397Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/renderer/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042477Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/executor/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042576Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/aep-engine-app/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042668Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/artifacts/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042746Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/schemas/generation-request.schema.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.042831Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/schemas/change-request.schema.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.042992Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/schemas/exception-request.schema.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.043086Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/schemas/validation-request.schema.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.043172Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/governance/policies/POLICY_MANIFEST.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043273Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/config/root.naming-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043380Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/baseline/modules/REGISTRY.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043469Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/loader/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043550Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/validator/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043629Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/security/quantum-integrity-protocol.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043712Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/security/quantum-root-trust.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043793Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/security/post-quantum-confidentiality.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043873Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validation/quantum-validation-policy.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.043974Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/validation/quantum-scanner-daemonset.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044075Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/configmap.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044150Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/frontend-deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044227Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/kustomization.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044299Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/backend-service.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044372Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/namespace.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044443Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/backend-deployment.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044523Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/hpa.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044599Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/ingress.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044673Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/pvc.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044744Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/frontend-service.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044815Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/infrastructure/kubernetes/quantum/secret.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044885Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/parser/.gl-manifest.yaml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.044971Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/executions/raw/1d86e97a-96c1-4d5d-bede-0fd283643b01.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.045071Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/executions/raw/05a65738-f8e8-4e40-88a9-484e81458e0d.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.045157Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/executions/raw/ce140863-b63f-4094-a82c-ebc7ab1274b6.yaml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.045240Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/executions/analyzed/ce140863-b63f-4094-a82c-ebc7ab1274b6_analysis.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045351Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/executions/analyzed/05a65738-f8e8-4e40-88a9-484e81458e0d_analysis.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045450Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/executions/analyzed/1d86e97a-96c1-4d5d-bede-0fd283643b01_analysis.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045546Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/reports/cycle_1d86e97a-96c1-4d5d-bede-0fd283643b01.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045631Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/reports/cycle_ce140863-b63f-4094-a82c-ebc7ab1274b6.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045710Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/reports/cycle_05a65738-f8e8-4e40-88a9-484e81458e0d.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045788Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/snapshots/evolution_snapshot_20260201_113039.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045868Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/upgrades/planned/29c4438b-1b2e-4cf0-b38b-f42dbacd480e.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.045967Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/upgrades/executed/29c4438b-1b2e-4cf0-b38b-f42dbacd480e.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.046068Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/deltas/50f2098a-6082-4847-a71d-4185b4fdd081.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.046155Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/data/evolution/gl-evolution-data/deltas/2efec51a-0936-415c-8e07-767ece957571.yaml",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.046234Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/scripts/evolution/evolution_config.yaml",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.046460Z"
+  },
+  {
+    "file_path": "scan-secrets.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.046580Z"
+  },
+  {
+    "file_path": "fix-code-scanning-issues.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.046706Z"
+  },
+  {
+    "file_path": "code-scanning-analysis.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.046845Z"
+  },
+  {
+    "file_path": "fix-security-issues.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.046995Z"
+  },
+  {
+    "file_path": "ecosystem/platform_adapter.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.047150Z"
+  },
+  {
+    "file_path": "ecosystem/enforce.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.047488Z"
+  },
+  {
+    "file_path": "ecosystem/autofix_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.047699Z"
+  },
+  {
+    "file_path": "ecosystem/mocks/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.047783Z"
+  },
+  {
+    "file_path": "ecosystem/mocks/services/mock_service.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.047932Z"
+  },
+  {
+    "file_path": "ecosystem/mocks/services/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.048009Z"
+  },
+  {
+    "file_path": "ecosystem/semantic/semantic_context.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.048181Z"
+  },
+  {
+    "file_path": "ecosystem/enforcers/closed_loop_governance.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.048704Z"
+  },
+  {
+    "file_path": "ecosystem/enforcers/test_complete_system.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.048815Z"
+  },
+  {
+    "file_path": "ecosystem/enforcers/semantic_violation_classifier.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.049231Z"
+  },
+  {
+    "file_path": "ecosystem/tests/test_ecosystem_integration.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.049430Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/service-discovery/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.049524Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/service-discovery/src/service_registry.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.049767Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/service-discovery/src/service_agent.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.049971Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/service-discovery/src/service_client.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050131Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/communication/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050220Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/communication/src/message_bus.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050357Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/communication/src/event_dispatcher.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050471Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050552Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/sync_scheduler.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050684Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/conflict_resolver.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.050803Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/sync_engine.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051081Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/connectors/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051166Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/connectors/filesystem_connector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.051300Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/data-synchronization/src/connectors/base_connector.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051394Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/api-gateway/src/rate_limiter.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051533Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/api-gateway/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051615Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/api-gateway/src/authenticator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051738Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/api-gateway/src/router.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051862Z"
+  },
+  {
+    "file_path": "ecosystem/coordination/api-gateway/src/gateway.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.051994Z"
+  },
+  {
+    "file_path": "ecosystem/hooks/pre_execution.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.052161Z"
+  },
+  {
+    "file_path": "ecosystem/hooks/post_execution.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.052341Z"
+  },
+  {
+    "file_path": "ecosystem/tools/audit_trail_report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.052713Z"
+  },
+  {
+    "file_path": "ecosystem/tools/audit_trail_query.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.053036Z"
+  },
+  {
+    "file_path": "ecosystem/tools/generate-governance-dashboard.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.053230Z"
+  },
+  {
+    "file_path": "ecosystem/tools/gl-markers/fix-governance-markers.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.053407Z"
+  },
+  {
+    "file_path": "ecosystem/tools/gl-markers/add-gl-markers-batch.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.053496Z"
+  },
+  {
+    "file_path": "ecosystem/tools/registry/data_catalog_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.053672Z"
+  },
+  {
+    "file_path": "ecosystem/tools/registry/platform_registry_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.053887Z"
+  },
+  {
+    "file_path": "ecosystem/tools/registry/service_registry_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.054065Z"
+  },
+  {
+    "file_path": "ecosystem/tools/registry/test_registry_tools.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.054185Z"
+  },
+  {
+    "file_path": "ecosystem/tools/audit/gl-audit-simple.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.054295Z"
+  },
+  {
+    "file_path": "ecosystem/tools/fact-verification/gl-fact-pipeline.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.054594Z"
+  },
+  {
+    "file_path": "ecosystem/governance/audit_logger.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.054808Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/tools/apply_governance.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.054999Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/tools/full_governance_integration.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.055178Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/tools/apply_strict_versioning.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.055353Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.055447Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/change_control_system.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.055792Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/change_manager.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.055932Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/version_manager.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.056097Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/dependency_manager.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.056215Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/sha_integrity_system.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.056535Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/strict_version_enforcer.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.056722Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/review_manager.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.056842Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/governance_framework.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.056957Z"
+  },
+  {
+    "file_path": "ecosystem/governance/meta-governance/src/impact_analyzer.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.057115Z"
+  },
+  {
+    "file_path": "ecosystem/platform-templates/test_templates.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.057253Z"
+  },
+  {
+    "file_path": "ecosystem/platform-templates/core-template/platform_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.057418Z"
+  },
+  {
+    "file_path": "ecosystem/platform-templates/core-template/examples/register_service.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.057512Z"
+  },
+  {
+    "file_path": "ecosystem/platform-templates/core-template/examples/api_gateway_example.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.057608Z"
+  },
+  {
+    "file_path": "ecosystem/platform-templates/core-template/examples/sync_data.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.057697Z"
+  },
+  {
+    "file_path": "ecosystem/platform-templates/core-template/examples/messaging_example.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.057799Z"
+  },
+  {
+    "file_path": "ecosystem/registry/platforms/generate_platform_analysis.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.057941Z"
+  },
+  {
+    "file_path": "ecosystem/foundation/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.058029Z"
+  },
+  {
+    "file_path": "ecosystem/foundation/foundation_dag.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.058339Z"
+  },
+  {
+    "file_path": "ecosystem/foundation/format/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.058420Z"
+  },
+  {
+    "file_path": "ecosystem/foundation/format/format_enforcer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.058658Z"
+  },
+  {
+    "file_path": "ecosystem/foundation/language/language_enforcer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.058987Z"
+  },
+  {
+    "file_path": "ecosystem/foundation/language/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.059074Z"
+  },
+  {
+    "file_path": "ecosystem/utils/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.059198Z"
+  },
+  {
+    "file_path": "ecosystem/utils/path_utils.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.059293Z"
+  },
+  {
+    "file_path": "ecosystem/events/event_emitter.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.059710Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/tools/etl/pipeline_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.059889Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/tools/etl/run_root_files.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.060031Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.060116Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.060289Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.060584Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.060722Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.060845Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.061183Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.061262Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/integration/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.061340Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_config_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.061461Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_metrics_collector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.061570Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_auto_fix_bot_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.061763Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/unit/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.061838Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_health_check.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.062110Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/unit/test_code_deduplicator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.062264Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/e2e/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.062615Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/fixtures/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.062689Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tests-legacy/helpers/test_base.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.062802Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/integration-tests-legacy/conftest.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.063192Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/integration-tests-legacy/test_smoke_config.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.063628Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/aep-engine-web/src/hooks/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.063723Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/aep-engine-web/src/screens/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.063801Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/aep-engine-web/src/components/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.063876Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/aep-engine-web/src/data/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.063958Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/extract_conflicts.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.064300Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/validate-module-registry.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.064525Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-dag-visualization.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.064718Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-remediate-policy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.064994Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/convert-snyk-to-sarif.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.065179Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/ci-error-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.065394Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/test-ci-error-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.065576Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/count_bandit_issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.065660Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-governance-dashboard.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.065821Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/test-count-bandit-issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.066067Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/validate-module-manifests.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.066161Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/auto-quality-check.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.066421Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/classify-autonomy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.066580Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/autonomy-progress-tracker.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.066779Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/generate-autonomy-summary.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.066971Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-evidence-chain.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.067118Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-risk-assessment.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.067209Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.067286Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/quantum-validate.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.067543Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-dag.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.067674Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-audit-report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.067819Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/validate-semantics.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.067988Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/generate-monitoring-report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.068119Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/semantic_root.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.068336Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/governance_loop.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.068644Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/coordination_layer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.068760Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl/implementation/quantum_validation.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.069027Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.069358Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/monitoring/metrics_collector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.069477Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/monitoring/health_check.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.069621Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/migration/axiom-namespace-migrator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.069935Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.070157Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_integrator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.070348Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_executor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.070622Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.070953Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/gl-engine/gov_reporter.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.071307Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/code_deduplicator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.071427Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/config_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.071556Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts-legacy/utils/auto_fix_bot_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.071740Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/stage5_sign_attestation.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.072063Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/stage1_lint_format.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.072213Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/supply_chain_verifier.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.072403Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/stage6_admission_policy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.072568Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/stage2_schema_semantic.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.072790Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/stage4_sbom_scan.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.073061Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/stage7_runtime_monitoring.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.073243Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.073366Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/controlplane/validation/tests/test_integration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.073613Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts/tools/gl10top10validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.073778Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts/aup-tools/aep-executor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.074084Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/scripts/aup-tools/gl-marker-injector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.074278Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/bootstrap_from_manifest.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.074412Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/ai-auto-fix.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.074728Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/real-module-launcher.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.074918Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/root-validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.075156Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/evidence_generator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.075347Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generate-sankey-data.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.075490Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validate_directory_docs.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.075765Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/load-playbook.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.075920Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/module_graph_gate.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.076036Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validate_restructure.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.076320Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/ai-refactor-review.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.076627Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/gl10top10validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.076733Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/lkb-update.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.076987Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/verify_p0_safety.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.077267Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/verify-namespace-alignment.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.077497Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/security_audit.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.077737Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/rootfs_assembler.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.077855Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generate-refactor-playbook.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.078260Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/autonomous_cleanup_toolkit.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.078656Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generate-hotspot-heatmap.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.078854Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/map-violations-to-playbooks.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.079035Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/scan_tech_debt.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.079228Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/platform-bootstrap-runner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.079452Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/sync_external_repos.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.079759Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automated_directory_restructure.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.080055Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/namespace-converter.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.080242Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/build_module.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.080331Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/language-history-writer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.080493Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generate-language-dashboard.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.080688Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/gl10semanticvalidator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.080855Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validate-refactor-index.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.081034Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/language-health-score.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.081220Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generate-migration-flow.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.081425Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/root_schema_gate.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.081526Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/cloudflare/workers/src/durable-objects/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.081647Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.081942Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.082227Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.082318Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.082433Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.083007Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_scanner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.083285Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.083558Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/path-tools/path_fixer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.083801Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/governance/validate-governance-matrix.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.083960Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/governance/language-governance-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.084130Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/governance/generate-consolidated-report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.084274Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/governance/python/validate_naming.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.084459Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/governance/python/naming-migration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.084681Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/master_orchestrator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.085240Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.085355Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/deployment-automation.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.085437Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/ci-automation.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.085513Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engine_base.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.085813Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.085970Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/baseline_validation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.086282Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/validation_automation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.086435Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/refactor_automation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.086716Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/automation/engines/generation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.086875Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/cli/deployment-cli.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.086992Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/cli/myninja.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.087070Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.087169Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase2.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.087328Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase3.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.087503Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate-phase1.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.087650Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/validate_structure.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.088133Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/process_legacy_scratch.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.088563Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/refactor_evolution_workflow.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.089156Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/refactor_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.089753Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/cognitive_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.090313Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/refactor/execute_integration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.090711Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/python/governance_agent.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.090955Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validation/adaptive_decision_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.091211Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validation/validate_pr1023_layers.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.091417Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validation/quantum_feature_extractor.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.091707Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validation/world_class_validation.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.091825Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/validation/emergency_mode_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.092320Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/file-processor.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.092438Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/config-validator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.092515Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/validate_yaml.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.092689Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/utilities/validate_vectors.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.092816Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/apps/quantum-dashboard/src/components/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.092903Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/apps/quantum-dashboard/src/styles/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.092996Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/docs/analyze_root_reports.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.093296Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/docs/generate_knowledge_graph.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.093583Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/docs/validate_index.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.093772Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/docs/scan_repo_generate_index.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.093998Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/docs/pr_comment_summary.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.094218Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/docs/provenance_injector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.094438Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/evolution/generate_evolution_report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.094627Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase3_visualizer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.094918Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase1_scanner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.095165Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase2_operation_checker.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.095378Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/event_driven_system.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.095623Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/auto_maintenance_wrapper.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.095801Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/repository_explorer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.096006Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/repository-understanding/phase4_learning_system.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.096236Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generators/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.096347Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generators/contract_generator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.096462Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generators/code-generator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.096526Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/generators/project-generator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.096627Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/validate_auto_fix_bot_config.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.096813Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/manage-secret-patterns.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.097057Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/scripts/vulnerability-alert-handler.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.097375Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_automation_master.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.097643Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/fhs_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.097897Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/fhs-integration/maturity_assessor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.098315Z"
+  },
+  {
+    "file_path": ".github/config/dev/validation-system/scripts/adaptive_decision_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.098532Z"
+  },
+  {
+    "file_path": ".github/config/dev/validation-system/scripts/quantum_feature_extractor.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.098757Z"
+  },
+  {
+    "file_path": ".github/config/dev/validation-system/scripts/emergency_mode_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.099033Z"
+  },
+  {
+    "file_path": ".github/config/dev/automation/drone-coordinator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.099204Z"
+  },
+  {
+    "file_path": ".github/config/integrations/jira-integration.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.099327Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/gl_governance_audit_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.099979Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/deep-workflow-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.100244Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/fix_json.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.100383Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/workflow-cleanup-fixer.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.100476Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/simple-workflow-fixer.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.100561Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/governance-audit-script.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.100943Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/governance_executor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.101105Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/enhanced_yaml_parser.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.101301Z"
+  },
+  {
+    "file_path": ".github/project-docs/scripts/fix_consistency_issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.101643Z"
+  },
+  {
+    "file_path": ".github/archive/workspace-reports/restructure-tools/restructure_project.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.101920Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_critical_secrets.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.102058Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_remaining_issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.102287Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_phase4a_safe_issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.102500Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_eval_usage.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.102638Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/add_eval_security_warnings.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.102833Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/show_critical.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.102940Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_remaining_high_issues.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103044Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_eval_comprehensive.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.103203Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_final_issues.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103295Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/show_medium.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103388Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_event_comparison.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103472Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_code_quality.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103599Z"
+  },
+  {
+    "file_path": ".github/archive/remediation-scripts/fix_md5_usage.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103701Z"
+  },
+  {
+    "file_path": ".github/archive/merge-scripts/smart_merge_branches.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103795Z"
+  },
+  {
+    "file_path": ".github/archive/merge-scripts/merge_branches.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.103943Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104033Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/main.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104151Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104230Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/base_island.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104348Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/rust_island.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104458Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/python_island.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104577Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/typescript_island.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104694Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/go_island.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104839Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/islands/java_island.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.104957Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/config/island_config.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105072Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/orchestrator/island_orchestrator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105219Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/bridges/language_bridge.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.105363Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v2-multi-islands/utils/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105442Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105526Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/main.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105633Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/drones/autopilot_drone.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105775Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/drones/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.105879Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/drones/base_drone.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.106043Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/drones/deployment_drone.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.106217Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/drones/coordinator_drone.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.106347Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/config/drone_config.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.106455Z"
+  },
+  {
+    "file_path": ".github/archive/legacy/v1-python-drones/utils/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.106535Z"
+  },
+  {
+    "file_path": ".github/archive/legacy-automation/automated_maintenance_system.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.106668Z"
+  },
+  {
+    "file_path": ".github/archive/legacy-automation/auto_maintenance_wrapper.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.106953Z"
+  },
+  {
+    "file_path": ".github/archive/analysis-scripts/analyze_branches.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.107083Z"
+  },
+  {
+    "file_path": ".github/archive/analysis-scripts/analyze_duplicate_paths.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.107246Z"
+  },
+  {
+    "file_path": ".github/archive/analysis-scripts/repository_explorer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.107456Z"
+  },
+  {
+    "file_path": ".github/archive/analysis-scripts/analyze_security_report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.107557Z"
+  },
+  {
+    "file_path": ".github/archive/analysis-scripts/code_quality_analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.107777Z"
+  },
+  {
+    "file_path": ".github/scripts/agent-selector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.107888Z"
+  },
+  {
+    "file_path": ".github/scripts/refactor-workflows.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.108100Z"
+  },
+  {
+    "file_path": ".github/scripts/parallel-agent-runner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.108246Z"
+  },
+  {
+    "file_path": ".agent_hooks/run_all_hooks.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.108338Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/tools/search/run_root_files.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.108551Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/tools/search/structure_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.108663Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.108748Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/elasticsearch/client.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.108886Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/search/full_text_search.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.108997Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/search/autocomplete.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109110Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/search/faceted_search.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109209Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/indexing/incremental_updater.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109334Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/indexing/index_optimizer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109422Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/indexing/bulk_indexer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109518Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/analytics/relevance_tuning.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109613Z"
+  },
+  {
+    "file_path": "gl.search.elasticsearch-platform/workspace/projects/search-system/src/analytics/search_analytics.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.109763Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/conftest.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.109860Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_validator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.109961Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_quantum_engine.py",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.110097Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/unit/test_naming_generator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.110191Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/e2e/test_naming_workflow.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.110282Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/e2e/test_quantum_workflow.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.110387Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/performance/benchmark_quantum.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.110535Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/tests/performance/benchmark_naming.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.110627Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/validation/naming_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.110937Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/generation/naming_generator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.111096Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/audit/change_manager.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.111261Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/scripts/audit/exception_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.111566Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-migration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.112084Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0-extended/automation/scripts/naming-governance-repair.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.112480Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.112584Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_indexing.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.112789Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_inference.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.112972Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_folding.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.113132Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.113325Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_parameterization.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.113458Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/test_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.113622Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/api_server.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.113748Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/gl90-99-semantic-engine/semantic_models.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.113885Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/scripts/instant_archiver_v1.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.114087Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/scripts/validate-instant-execution.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.114312Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/scripts/demo_instant_generation.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.114594Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/scripts/instant_execution_pipeline.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.114908Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/scripts/instant_execution_engine_v2.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.115345Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/tools/search/run_root_files.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.115569Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/tools/search/structure_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.115682Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.115768Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/elasticsearch/client.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.115906Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/search/full_text_search.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116015Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/search/autocomplete.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116133Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/search/faceted_search.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116235Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/indexing/incremental_updater.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116364Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/indexing/index_optimizer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116454Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/indexing/bulk_indexer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116553Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/analytics/relevance_tuning.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116649Z"
+  },
+  {
+    "file_path": "gl.data.processing-platform/elasticsearch-search-system/workspace/projects/search-system/src/analytics/search_analytics.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.116788Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/artifacts/cli/artifact-cli.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.116997Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/artifacts/converters/markdown-to-python-module.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.117157Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/artifacts/converters/pdf-to-json-converter.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.117315Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/artifacts/converters/docx-to-yaml-converter.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.117461Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.github/actions/docx-to-artifact/convert.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.117634Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/artifacts/cli/artifact-cli.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.117839Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/artifacts/converters/markdown-to-python-module.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.118001Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/artifacts/converters/pdf-to-json-converter.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.118156Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/artifacts/converters/docx-to-yaml-converter.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.118291Z"
+  },
+  {
+    "file_path": "gl-semantic-core-platform/tests/unit/test_folding_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.118461Z"
+  },
+  {
+    "file_path": "gl-semantic-core-platform/tools/benchmark/run_benchmark.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.118677Z"
+  },
+  {
+    "file_path": "gl-semantic-core-platform/src/semantic-folding/engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.118990Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/tools/etl/pipeline_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.119137Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/tools/etl/run_root_files.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.119277Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.119365Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/monitoring/monitoring_service.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.119528Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/sync/base_sync.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.119734Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/api_extractors.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.119876Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/extractors/database_extractors.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.120001Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/etl-pipeline/workspace/projects/etl-pipeline/src/pipeline/etl_pipeline.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.120330Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.120413Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/integration/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.120489Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_config_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.120612Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_metrics_collector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.120723Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_auto_fix_bot_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.120945Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/unit/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.121028Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_health_check.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.121294Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/unit/test_code_deduplicator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.121453Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/e2e/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.121804Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/fixtures/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.121885Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tests-legacy/helpers/test_base.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.122003Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/integration-tests-legacy/conftest.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.122209Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/integration-tests-legacy/test_smoke_config.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.122479Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/aep-engine-web/src/hooks/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.122556Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/aep-engine-web/src/screens/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.122629Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/aep-engine-web/src/components/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.122704Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/aep-engine-web/src/data/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.122776Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/extract_conflicts.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.123122Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/validate-module-registry.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.123338Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/generate-dag-visualization.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.123524Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/auto-remediate-policy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.123788Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/convert-snyk-to-sarif.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.123962Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/ci-error-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.124169Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/test-ci-error-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.124355Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/count_bandit_issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.124440Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/generate-governance-dashboard.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.124604Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/test-count-bandit-issues.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.124913Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/validate-module-manifests.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.125019Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/auto-quality-check.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.125286Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/classify-autonomy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.125445Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/autonomy-progress-tracker.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.125648Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/generate-autonomy-summary.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.125821Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/generate-evidence-chain.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.125978Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/generate-risk-assessment.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.126070Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.126146Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/quantum-validate.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.126403Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/validate-dag.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.126536Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/generate-audit-report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.126683Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/validate-semantics.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.126850Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/generate-monitoring-report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.127247Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/implementation/semantic_root.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.127476Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/implementation/governance_loop.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.127795Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/implementation/coordination_layer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.127915Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl/implementation/quantum_validation.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.128184Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-restructure/gl-consolidation-plan.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.128492Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/monitoring/metrics_collector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.128604Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/monitoring/health_check.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.128750Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/migration/axiom-namespace-migrator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.129065Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_continuous_monitor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.129278Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_integrator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.129459Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_executor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.129725Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.130013Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/gl-engine/gov_reporter.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.130345Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/utils/code_deduplicator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.130463Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/utils/config_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.130592Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts-legacy/utils/auto_fix_bot_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.130778Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/stage5_sign_attestation.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.131124Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/stage1_lint_format.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.131273Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/supply_chain_verifier.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.131455Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/stage6_admission_policy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.131613Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/stage2_schema_semantic.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.131829Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/stage4_sbom_scan.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.132090Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/stage7_runtime_monitoring.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.132245Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/tests/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.132363Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/controlplane/validation/tests/test_integration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.132599Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts/tools/gl10top10validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.132760Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts/aup-tools/aep-executor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.133053Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/scripts/aup-tools/gl-marker-injector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.133244Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/bootstrap_from_manifest.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.133379Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/ai-auto-fix.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.133688Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/real-module-launcher.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.133866Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/root-validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.134095Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/evidence_generator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.134280Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generate-sankey-data.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.134422Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validate_directory_docs.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.134703Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/load-playbook.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.134859Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/module_graph_gate.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.134990Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validate_restructure.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.135273Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/ai-refactor-review.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.135573Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/gl10top10validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.135680Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/lkb-update.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.135916Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/verify_p0_safety.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.136168Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/verify-namespace-alignment.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.136389Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/security_audit.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.136624Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/rootfs_assembler.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.136741Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generate-refactor-playbook.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.137139Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/autonomous_cleanup_toolkit.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.137522Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generate-hotspot-heatmap.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.137705Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/map-violations-to-playbooks.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.137857Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/scan_tech_debt.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.138050Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/platform-bootstrap-runner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.138271Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/sync_external_repos.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.138573Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automated_directory_restructure.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.138860Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/namespace-converter.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.139083Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/build_module.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.139173Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/language-history-writer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.139327Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generate-language-dashboard.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.139509Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/gl10semanticvalidator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.139669Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validate-refactor-index.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.139826Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/language-health-score.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.140018Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generate-migration-flow.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.140216Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/root_schema_gate.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.140315Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/cloudflare/workers/src/durable-objects/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.140435Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/governance-audit/gov_aep_engine_auditor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.140732Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/tests/test_transformer.py",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.141028Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/src/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.141120Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/src/core/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.141203Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/src/core/transformer.py",
+    "violations_fixed": 4,
+    "timestamp": "2026-02-03T12:25:36.141692Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/path-tools/path_scanner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.141956Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/path-tools/path_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.142197Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/path-tools/path_fixer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.142429Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/governance/validate-governance-matrix.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.142573Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/governance/language-governance-analyzer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.142740Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/governance/generate-consolidated-report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.142882Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/governance/python/validate_naming.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.143082Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/governance/python/naming-migration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.143306Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/master_orchestrator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.143856Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.143972Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/deployment-automation.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.144054Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/ci-automation.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.144131Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/engine_base.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.144418Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/engines/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.144573Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/engines/baseline_validation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.144803Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/engines/validation_automation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.144947Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/engines/refactor_automation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.145226Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/automation/engines/generation_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.145379Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/cli/deployment-cli.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.145459Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/cli/myninja.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.145536Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.145632Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/validate-phase2.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.145788Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/validate-phase3.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.145959Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/validate-phase1.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.146106Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/validate_structure.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.146570Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/process_legacy_scratch.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.147027Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/refactor_evolution_workflow.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.147565Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/refactor_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.148158Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/cognitive_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.148682Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/refactor/execute_integration.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.149074Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/python/governance_agent.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.149254Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validation/adaptive_decision_engine.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.149466Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validation/validate_pr1023_layers.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.149603Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validation/quantum_feature_extractor.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.149806Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validation/world_class_validation.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.149907Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/validation/emergency_mode_manager.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.150354Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/utilities/file-processor.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.150469Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/utilities/config-validator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.150549Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/utilities/validate_yaml.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.150723Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/utilities/validate_vectors.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.150850Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/apps/quantum-dashboard/src/components/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.151005Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/apps/quantum-dashboard/src/styles/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.151093Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/docs/analyze_root_reports.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.151389Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/docs/generate_knowledge_graph.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.151649Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/docs/validate_index.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.151830Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/docs/scan_repo_generate_index.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.152050Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/docs/pr_comment_summary.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.152265Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/docs/provenance_injector.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.152473Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/evolution/generate_evolution_report.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.152679Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/phase3_visualizer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.153013Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/phase1_scanner.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.153257Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/phase2_operation_checker.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.153476Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/event_driven_system.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.153723Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/auto_maintenance_wrapper.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.153945Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/repository_explorer.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.154146Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/repository-understanding/phase4_learning_system.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.154371Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generators/__init__.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.154481Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generators/contract_generator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.154575Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generators/code-generator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.154651Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/generators/project-generator.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.154753Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/scripts/validate_auto_fix_bot_config.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.154962Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/scripts/manage-secret-patterns.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.155125Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/scripts/vulnerability-alert-handler.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.155317Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/fhs-integration/fhs_automation_master.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.155476Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/fhs-integration/fhs_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.155707Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/fhs-integration/maturity_assessor.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.156035Z"
+  },
+  {
+    "file_path": "scripts/scan-hardcoded-timelines.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.156225Z"
+  },
+  {
+    "file_path": "scripts/validate-module-registry.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.156332Z"
+  },
+  {
+    "file_path": "scripts/generate-dag-visualization.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.156540Z"
+  },
+  {
+    "file_path": "scripts/version-audit.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.156717Z"
+  },
+  {
+    "file_path": "scripts/scan-naming-violations.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.156856Z"
+  },
+  {
+    "file_path": "scripts/fix-hardcoded-timelines.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.157019Z"
+  },
+  {
+    "file_path": "scripts/scan-hardcoded-timelines-filtered.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.157218Z"
+  },
+  {
+    "file_path": "scripts/validate-module-manifests.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.157318Z"
+  },
+  {
+    "file_path": "scripts/platform-deploy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.157470Z"
+  },
+  {
+    "file_path": "scripts/scan-source-code-timelines.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.157699Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/scan-hardcoded-timelines.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.157877Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/validate-module-registry.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.157992Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/generate-dag-visualization.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.158192Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/version-audit.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.158360Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/scan-naming-violations.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.158493Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/fix-hardcoded-timelines.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.158644Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/generate-governance-dashboard.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.158819Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/boundary_checker.py",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.159116Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/scan-hardcoded-timelines-filtered.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.159329Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/validate-module-manifests.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.159429Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/platform-deploy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.159580Z"
+  },
+  {
+    "file_path": "gl.governance.compliance-platform/scripts/scan-source-code-timelines.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.159805Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/contracts/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.159896Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/contracts/gov_contract.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.160072Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/contracts/gov_policy.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.160214Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/platforms/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.160298Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/languages/__init__.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.160378Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/formats/__init__.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.160460Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/scripts/verification/content_based_migration.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.160779Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/scripts/naming/gl_naming_validator.py",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.161019Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/scripts/evolution/gov_evolution_engine.py",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.161784Z"
+  },
+  {
+    "file_path": ".yamllint.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.161910Z"
+  },
+  {
+    "file_path": "prometheus.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.162007Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/templates/ci/github-actions-naming-check.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.162107Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/ci/policy-simulate.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.162271Z"
+  },
+  {
+    "file_path": ".github/dependabot.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.162357Z"
+  },
+  {
+    "file_path": ".github/linters/.yamllint.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.162452Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/deployment/automated-deployment.yml",
+    "violations_fixed": 3,
+    "timestamp": "2026-02-03T12:25:36.162549Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/backup/backup-restore.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.162663Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/security/security-scanning.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.162783Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/repair/workflow-auto-repair.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.162869Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/testing/comprehensive-testing.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.162989Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/monitoring/workflow-monitor.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.163084Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/automation/dependency-update.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.163218Z"
+  },
+  {
+    "file_path": ".github/workflows-quantum/auto-pr/auto-pr-generator.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.163300Z"
+  },
+  {
+    "file_path": ".github/actions/setup-build-environment/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.163387Z"
+  },
+  {
+    "file_path": ".github/actions/setup-yq/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.163470Z"
+  },
+  {
+    "file_path": ".github/actions/mn-cache/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.163628Z"
+  },
+  {
+    "file_path": ".github/actions/mn-download-artifact/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.163773Z"
+  },
+  {
+    "file_path": ".github/actions/mn-super-linter/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.163960Z"
+  },
+  {
+    "file_path": ".github/actions/mn-create-pr/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.164135Z"
+  },
+  {
+    "file_path": ".github/actions/mn-setup-opa/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.164224Z"
+  },
+  {
+    "file_path": ".github/actions/mn-upload-artifact/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.164371Z"
+  },
+  {
+    "file_path": ".github/actions/policy-check/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.164478Z"
+  },
+  {
+    "file_path": ".github/actions/mn-setup-python/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.164593Z"
+  },
+  {
+    "file_path": ".github/actions/mn-codeql/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.164736Z"
+  },
+  {
+    "file_path": ".github/actions/mn-checkout/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.164888Z"
+  },
+  {
+    "file_path": ".github/actions/mn-github-script/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.165064Z"
+  },
+  {
+    "file_path": ".github/actions/mn-setup-node/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.165240Z"
+  },
+  {
+    "file_path": ".github/actions/mn-trivy-scan/action.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.165445Z"
+  },
+  {
+    "file_path": ".github/actions/mn-slack-notify/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.165732Z"
+  },
+  {
+    "file_path": ".github/actions/mn-secret-scan/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.165947Z"
+  },
+  {
+    "file_path": ".github/ISSUE_TEMPLATE/task.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.166079Z"
+  },
+  {
+    "file_path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.166208Z"
+  },
+  {
+    "file_path": ".github/ISSUE_TEMPLATE/gl_compliance.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.166330Z"
+  },
+  {
+    "file_path": ".github/ISSUE_TEMPLATE/config.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.166414Z"
+  },
+  {
+    "file_path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.166528Z"
+  },
+  {
+    "file_path": ".github/config/config.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.166654Z"
+  },
+  {
+    "file_path": ".github/config/island-control.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.166761Z"
+  },
+  {
+    "file_path": ".github/config/config-example.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.166959Z"
+  },
+  {
+    "file_path": ".github/config/security/security-network-config.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.167083Z"
+  },
+  {
+    "file_path": ".github/config/dev/prometheus.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.167173Z"
+  },
+  {
+    "file_path": ".github/config/dev/grafana/provisioning/dashboards/life-system.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.167253Z"
+  },
+  {
+    "file_path": ".github/config/dev/grafana/provisioning/datasources/prometheus.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.167326Z"
+  },
+  {
+    "file_path": ".github/config/monitoring/prometheus-rules.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.167474Z"
+  },
+  {
+    "file_path": ".github/config/monitoring/prometheus-config.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.167578Z"
+  },
+  {
+    "file_path": ".github/config/ci-cd/drone-config.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.167703Z"
+  },
+  {
+    "file_path": ".github/config/ci-cd/auto-fix-bot.prompt.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.167883Z"
+  },
+  {
+    "file_path": ".github/config/ci-cd/github-actions/main.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.167978Z"
+  },
+  {
+    "file_path": ".github/workflows/closed-loop-governance.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168189Z"
+  },
+  {
+    "file_path": ".github/workflows/hardened-ci.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168353Z"
+  },
+  {
+    "file_path": ".github/workflows/enforcement-pipeline.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168494Z"
+  },
+  {
+    "file_path": ".github/archive/workflow-configs/enhanced-pr-quality-check.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168663Z"
+  },
+  {
+    "file_path": ".github/archive/workflow-configs/ai-integration-analyzer-fixed.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168798Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/architecture-stability/tools/arch-lint.config.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168895Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/80-skeleton-configs/01-architecture-stability/tools/arch-lint.config.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.168994Z"
+  },
+  {
+    "file_path": ".github/archive/infrastructure/monitoring/prometheus.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.169164Z"
+  },
+  {
+    "file_path": ".github/archive/infrastructure/monitoring/alerts/service-alerts.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.169377Z"
+  },
+  {
+    "file_path": "monitoring/alert_rules.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.169558Z"
+  },
+  {
+    "file_path": "gl.automation.organizer-platform/.github/workflows/gl-validation.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.169648Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/naming-governance-v1-0-0/ci-cd/workflows/naming-governance-ci.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.169853Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/workflows/instant-validation.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170034Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/artifacts/upload/artifact-upload-workflow.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170128Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/workflows/repair/workflow-auto-repair.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170221Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/workflows/monitoring/workflow-monitor.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170320Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/quantum-platform/workflows/auto-pr/auto-pr-generator.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170414Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.github/actions/docx-to-artifact/action.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.170502Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/.config/lint/golangci.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.170601Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/artifacts/upload/artifact-upload-workflow.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170685Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/workflows/repair/workflow-auto-repair.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170774Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/workflows/monitoring/workflow-monitor.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170865Z"
+  },
+  {
+    "file_path": "gl.quantum.computing-platform/workflows/auto-pr/auto-pr-generator.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.170977Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/templates/ci/github-actions-naming-check.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.171069Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/ci/policy-simulate.yml",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.171228Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/file-organizer-system/.github/workflows/gl-validation.yml",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.171312Z"
+  },
+  {
+    "file_path": "VERIFICATION_PROOF.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.171444Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/README.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.171647Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/USAGE_GUIDE.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.171780Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/QUICK_START.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.171889Z"
+  },
+  {
+    "file_path": "gl-runtime-engine-platform/tools-legacy/quantum-alignment-engine/DEMONSTRATION_REPORT.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.172044Z"
+  },
+  {
+    "file_path": ".github/archive/workspace-reports/integration-summaries/QUANTUM_CODE_ALIGNMENT_PROPOSAL.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.172167Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/03-intelligence/13-quantum-computing/conceptual-map.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172258Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/03-intelligence/13-quantum-computing/labs/README.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172340Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/03-intelligence/12-causal-reasoning/decision-policies.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172418Z"
+  },
+  {
+    "file_path": ".github/archive/unmanned-engineer-ceo/03-intelligence/12-causal-reasoning/causal-diagrams.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172496Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/README.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172640Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/deployment/README.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172730Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/monitoring/README.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172822Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/config/README.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.172903Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/workflows/README.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.173006Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/docs/README.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.173232Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/docs/PROJECT_SUMMARY.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.173412Z"
+  },
+  {
+    "file_path": "gl.governance.architecture-platform/gl90-99-meta-specification-layer/governance/archived/legacy/governance-legacy/quantum-naming-v4-0-0/scripts/README.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.173502Z"
+  },
+  {
+    "file_path": "docs/QUANTUM-ARCHITECTURE-PLATFORM.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.173641Z"
+  },
+  {
+    "file_path": "docs/archive/QUANTUM_PLATFORM_ARCHITECTURE.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.173765Z"
+  },
+  {
+    "file_path": "docs/archive/QUANTUM_PLATFORM_INTEGRATION_COMPLETE.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.173957Z"
+  },
+  {
+    "file_path": "docs/archive/GL_V10_QUANTUM_ARCHITECT_PLATFORM_COMPLETION.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.174050Z"
+  },
+  {
+    "file_path": "gl.automation.instant-platform/src/INSTANT_EXECUTION_PROOF_\u5373\u6642\u57f7\u884c\u8b49\u660e.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.174284Z"
+  },
+  {
+    "file_path": "gl.runtime.services-platform/esync-platform/QUANTUM_ARCHITECTURE_SUMMARY.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.174436Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/README.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.174554Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/USAGE_GUIDE.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.174670Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/QUICK_START.md",
+    "violations_fixed": 1,
+    "timestamp": "2026-02-03T12:25:36.174776Z"
+  },
+  {
+    "file_path": "gl.runtime.execution-platform/engine/tools-legacy/quantum-alignment-engine/DEMONSTRATION_REPORT.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.174978Z"
+  },
+  {
+    "file_path": "gl-governance-compliance/scripts/naming/naming_examples.md",
+    "violations_fixed": 2,
+    "timestamp": "2026-02-03T12:25:36.175274Z"
+  }
+]

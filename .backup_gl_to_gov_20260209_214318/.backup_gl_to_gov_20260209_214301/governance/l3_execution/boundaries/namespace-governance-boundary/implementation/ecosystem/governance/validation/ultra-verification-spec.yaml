@@ -1,0 +1,318 @@
+# Ultra Verification Specification - Beyond Era-1 Governance
+# Defines governance-level assertions and destructive verification requirements
+
+version: "1.0"
+spec_name: "Ultra Verification Specification"
+effective_date: "2026-02-05T00:00:00Z"
+era: "beyond-era-1"
+governance_owner: "IndestructibleAutoOps"
+
+# Core Governance Assertions
+governance_assertions:
+  # No Narrative Language
+  - id: "GA-NL-001"
+    name: "no_narrative_language"
+    description: "Governance reports must contain no narrative language (e.g., '我們相信', '這代表')"
+    severity: "medium"
+    enforced_by: "narrative_filter_engine"
+    verification_method: "regex_pattern_matching"
+    evidence_required: true
+  
+  # No Semantic Drift
+  - id: "GA-SD-001"
+    name: "no_semantic_drift"
+    description: "Platform must maintain semantic consistency across versions, inputs, and model states"
+    severity: "critical"
+    enforced_by: "semantic_drift_detector"
+    verification_method: "hash_comparison_across_versions"
+    evidence_required: true
+  
+  # No Hallucinated Modules
+  - id: "GA-HM-001"
+    name: "no_hallucinated_modules"
+    description: "Governance reports must not reference modules that don't exist in tool registry"
+    severity: "critical"
+    enforced_by: "hallucination_detector"
+    verification_method: "registry_cross_reference"
+    evidence_required: true
+  
+  # Hash Stability Across Runs
+  - id: "GA-HS-001"
+    name: "hash_stability_across_runs"
+    description: "Same input must produce same hash across different runs, environments, and times"
+    severity: "critical"
+    enforced_by: "hash_stability_tester"
+    verification_method: "deterministic_hash_verification"
+    evidence_required: true
+  
+  # Self-Healing Determinism
+  - id: "GA-SH-001"
+    name: "self_healing_determinism"
+    description: "Self-healing decisions must be deterministic and reproducible"
+    severity: "high"
+    enforced_by: "semantic_drift_detector"
+    verification_method: "action_hash_consistency"
+    evidence_required: true
+  
+  # Governance Reports Fully Canonicalized
+  - id: "GA-GR-001"
+    name: "governance_reports_fully_canonicalized"
+    description: "All governance reports must be fully canonicalized with sealed hashes"
+    severity: "critical"
+    enforced_by: "canonicalization_validator"
+    verification_method: "rfc_8785_compliance_check"
+    evidence_required: true
+  
+  # All Tests Hash-Sealed and Reproducible
+  - id: "GA-TH-001"
+    name: "all_tests_hash_sealed_and_reproducible"
+    description: "All test results must be hash-sealed and reproducible across runs"
+    severity: "critical"
+    enforced_by: "test_hash_sealer"
+    verification_method: "hash_chain_verification"
+    evidence_required: true
+
+# Verification Engines
+enforced_by:
+  semantic_drift_detector:
+    path: "ecosystem/tests/governance/test_semantic_drift.py"
+    capabilities:
+      - "output_consistency_across_versions"
+      - "self_healing_determinism"
+      - "governance_report_narrative_leakage"
+      - "semantic_integrity_verification"
+  
+  narrative_filter_engine:
+    path: "ecosystem/engines/governance/narrative_filter_engine.py"
+    capabilities:
+      - "narrative_statement_detection"
+      - "fuzzy_semantic_detection"
+      - "platform_fantasy_detection"
+      - "governance_exaggeration_detection"
+    pattern_categories:
+      - "narrative_statements"
+      - "fuzzy_semantics"
+      - "platform_fantasy"
+      - "governance_exaggeration"
+  
+  hash_stability_tester:
+    path: "ecosystem/tests/governance/test_hash_stability.py"
+    capabilities:
+      - "canonicalization_determinism"
+      - "yaml_anchor_impact_verification"
+      - "field_order_stability"
+      - "timestamp_format_stability"
+      - "whitespace_normalization"
+  
+  hallucination_detector:
+    path: "ecosystem/tests/governance/test_governance_hallucination.py"
+    capabilities:
+      - "nonexistent_module_reference_detection"
+      - "fake_hash_reference_detection"
+      - "fake_artifact_reference_detection"
+      - "undefined_closure_condition_detection"
+  
+  canonicalization_validator:
+    path: "ecosystem/tools/hash_translation_engine.py"
+    capabilities:
+      - "rfc_8785_jcs_compliance"
+      - "json_canonicalization"
+      - "yaml_canonicalization"
+      - "layered_sorting_validation"
+  
+  test_hash_sealer:
+    path: "ecosystem/tests/governance/__init__.py"
+    capabilities:
+      - "test_result_hash_sealing"
+      - "test_result_verification"
+      - "hash_chain_integrity"
+      - "reproducibility_verification"
+
+# Verification Levels
+verification_levels:
+  level_1_functional:
+    description: "Basic functional verification"
+    tests:
+      - "test_output_consistency_across_versions"
+      - "test_canonicalization_determinism"
+    pass_threshold: 100%
+  
+  level_2_semantic:
+    description: "Semantic consistency verification"
+    tests:
+      - "test_self_healing_determinism"
+      - "test_semantic_integrity_across_artifacts"
+      - "test_field_order_stability"
+    pass_threshold: 100%
+  
+  level_3_governance:
+    description: "Governance-level verification"
+    tests:
+      - "test_governance_report_narrative_leakage"
+      - "test_nonexistent_module_reference"
+      - "test_fake_hash_reference"
+      - "test_fake_artifact_reference"
+    pass_threshold: 95%
+  
+  level_4_destructive:
+    description: "Destructive verification (beyond Era-1)"
+    tests:
+      - "test_yaml_anchor_impact"
+      - "test_undefined_closure_conditions"
+      - "test_timestamp_format_stability"
+      - "test_whitespace_normalization"
+    pass_threshold: 100%
+
+# Evidence Requirements
+evidence_requirements:
+  all_tests:
+    format: "JSON"
+    required_fields:
+      - "test"
+      - "status"
+      - "timestamp"
+      - "hash"
+    hash_algorithm: "SHA256"
+    canonicalization: "RFC 8785 (JCS)"
+    storage_location: "ecosystem/evidence/tests/"
+  
+  narrative_violations:
+    format: "JSON"
+    required_fields:
+      - "category"
+      - "pattern"
+      - "match"
+      - "context"
+      - "line_number"
+      - "hash"
+      - "suggestion"
+    storage_location: "ecosystem/evidence/governance/narrative_violations.json"
+  
+  hallucination_reports:
+    format: "JSON"
+    required_fields:
+      - "type"
+      - "file"
+      - "context"
+      - "hash"
+    storage_location: "ecosystem/evidence/governance/hallucination_*.json"
+  
+  hash_stability_results:
+    format: "JSON"
+    required_fields:
+      - "test"
+      - "status"
+      - "hash"
+      - "iterations"
+    storage_location: "ecosystem/evidence/tests/hash_stability_*.json"
+
+# Critical Success Factors
+critical_success_factors:
+  csf_1_narrative_free:
+    name: "Narrative-Free Documentation"
+    description: "All governance reports must be free of narrative language and subjective statements"
+    metric: "zero_narrative_violations"
+    target: 0
+    current: null
+  
+  csf_2_semantic_consistency:
+    name: "Semantic Consistency"
+    description: "Platform must maintain semantic consistency across all versions and inputs"
+    metric: "semantic_drift_score"
+    target: 0
+    current: null
+  
+  csf_3_deterministic_hashes:
+    name: "Deterministic Hash Generation"
+    description: "Hash generation must be 100% deterministic and reproducible"
+    metric: "hash_determinism_rate"
+    target: 100.0
+    current: null
+  
+  csf_4_evidence_backed_claims:
+    name: "Evidence-Backed Claims"
+    description: "All claims must be backed by existing evidence in .evidence/"
+    metric: "evidence_backed_claim_rate"
+    target: 100.0
+    current: null
+  
+  csf_5_no_hallucinations:
+    name: "Zero Hallucinations"
+    description: "No references to non-existent modules, hashes, or artifacts"
+    metric: "hallucination_count"
+    target: 0
+    current: null
+
+# Failure Modes
+failure_modes:
+  fm_1_narrative_leakage:
+    severity: "medium"
+    detection: "narrative_filter_engine"
+    remediation: "rewrite_with_verifiable_semantics"
+    impact: "reduced_trustworthiness"
+  
+  fm_2_semantic_drift:
+    severity: "critical"
+    detection: "semantic_drift_detector"
+    remediation: "version_alignment_and_semantic_mapping"
+    impact: "incompatible_era_transitions"
+  
+  fm_3_hash_instability:
+    severity: "critical"
+    detection: "hash_stability_tester"
+    remediation: "canonicalization_fix_and_retest"
+    impact: "broken_evidence_chain"
+  
+  fm_4_hallucinated_content:
+    severity: "critical"
+    detection: "hallucination_detector"
+    remediation: "content_audit_and_correction"
+    impact: "false_claims_and_lost_trust"
+
+# Governance Principles
+governance_principles:
+  principle_1_verifiability:
+    name: "Verifiability"
+    description: "All claims must be verifiable through evidence"
+    implementation: "hash_sealed_artifacts_and_test_results"
+  
+  principle_2_reproducibility:
+    name: "Reproducibility"
+    description: "All operations must be reproducible across runs"
+    implementation: "deterministic_hash_generation_and_test_sealing"
+  
+  principle_3_transparency:
+    name: "Transparency"
+    description: "All processes must be transparent and auditable"
+    implementation: "event_stream_logging_and_artifact_trail"
+  
+  principle_4_immutability:
+    name: "Immutability"
+    description: "All sealed artifacts must be immutable"
+    implementation: "append_only_event_stream_and_hash_chain"
+
+# Compliance Standards
+compliance_standards:
+  - "RFC 8785 - JSON Canonicalization Scheme (JCS)"
+  - "NIST SP 800-90A - Random Bit Generation"
+  - "NIST SP 800-107 - Recommendation for Key Derivation"
+  - "ISO/IEC 27001 - Information Security Management"
+  - "ISO/IEC 27034 - Application Security"
+
+# References
+references:
+  - "ecosystem/governance/migration/hash-translation-spec-v1.md"
+  - "ecosystem/governance/hash-spec/era-2.yaml"
+  - "ecosystem/tests/governance/test_semantic_drift.py"
+  - "ecosystem/engines/governance/narrative_filter_engine.py"
+  - "ecosystem/tests/governance/test_hash_stability.py"
+  - "ecosystem/tests/governance/test_governance_hallucination.py"
+
+# Metadata
+metadata:
+  created_at: "2026-02-05T10:00:00Z"
+  created_by: "IndestructibleAutoOps"
+  document_version: "1.0"
+  classification: "GOVERNANCE_CRITICAL"
+  gl_unified_charter_activated: true
+  beyond_era_1: true

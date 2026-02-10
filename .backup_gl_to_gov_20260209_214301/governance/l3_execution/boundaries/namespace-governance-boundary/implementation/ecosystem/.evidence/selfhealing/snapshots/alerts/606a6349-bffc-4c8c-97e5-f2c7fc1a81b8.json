@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-02-05T02:01:14.731929+00:00",
+  "alerts": [
+    {
+      "severity": "CRITICAL",
+      "type": "service_timeout",
+      "component": "api-gateway",
+      "threshold": "30s",
+      "actual": "45s"
+    }
+  ],
+  "canonical_hash": "sha256:deb3e366c077c2288d22ec2434789afa0f0374e9070ed1c8426f88674864df11"
+}

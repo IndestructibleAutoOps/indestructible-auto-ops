@@ -1,0 +1,71 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "total_files": 53,
+  "actual_workflows": [
+    "infrastructure-validation.yml",
+    "website-vulnerability-check.yml",
+    "release.yml",
+    "ai-pr-reviewer.yml",
+    "publish-npm-packages.yml",
+    "gl-layer-validation.yml",
+    "words-really-matter.yml",
+    "super-linter.yml",
+    "deploy-staging.yml",
+    "test-yq-action.yml",
+    "typescript-build-check.yml",
+    "GL-GPU-CI.yml",
+    "ai-integration-analyzer.yml",
+    "transform-lab-to-skills.yml",
+    "todo.yml",
+    "project-automation.yml",
+    "waka-readme.yml",
+    "ai-code-review.yml",
+    "GL-ALGORITHMS-CI.yml",
+    "security-scan.yml",
+    "profile-readme-stats.yml",
+    "documentation-reader.yml",
+    "launchdarkly-code-references.yml",
+    "fhs-integration-auto-init.yml",
+    "gl10-phase2-semantic.yml",
+    "issue-metrics.yml",
+    "auto-fix-staging-validation.yml",
+    "GL-DATA-CI.yml",
+    "dependency-check.yml",
+    "gl-validator.yml",
+    "gl-artifacts-generator.yml",
+    "gl10-top10-validator.yml",
+    "gl-mainline-enforcement.yml",
+    "policy-gate.yml",
+    "pr-quality-check.yml",
+    "automated-issue-carrier.yml",
+    "todo-to-issue.yml",
+    "update-readme-repo-info.yml",
+    "ci.yml",
+    "gl-compliance-check.yml",
+    "static.yml",
+    "gl10-validator.yml",
+    "combined-ci.yml",
+    "codeql.yml",
+    "scheduled-dashboard-updates.yml",
+    "supply-chain-security.yml",
+    "test-suite.yml",
+    "deploy-production.yml",
+    "issue-pr-automation.yml",
+    "todo-tracker.yml",
+    "ai-algorithm-mentor.yml"
+  ],
+  "config_files": [
+    "config-example.yml",
+    "config.yml"
+  ],
+  "problem_files": []
+}

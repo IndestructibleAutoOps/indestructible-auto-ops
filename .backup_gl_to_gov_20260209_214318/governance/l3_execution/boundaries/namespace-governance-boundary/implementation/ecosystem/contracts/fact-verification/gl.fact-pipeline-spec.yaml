@@ -1,0 +1,615 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: gov-governance/v1
+kind: FactVerificationPipeline
+metadata:
+  name: gov-fact-verification-pipeline
+  version: 1.0.0
+  description: "GL生态系统事实验证三层管道规范 - 防止外部推理冒充内部事实"
+  category: governance
+  compliance:
+    - nist-sp-800-53
+    - soc-2-type-ii
+    - gdpr-article-30
+    - togaf-architecture-governance
+
+spec:
+  pipeline:
+    # 第一阶段：内部事实收集（强制、唯一真实来源）
+    stage1:
+      name: internal-fact-collection
+      phase: mandatory
+      timeout: 30s
+      priority: 1
+      retry: 3
+      
+      sources:
+        - type: contracts
+          priority: 1
+          paths:
+            - ecosystem/contracts/**/*.yaml
+            - ecosystem/contracts/**/*.json
+            - ecosystem/contracts/**/*.md
+          validation:
+            - "所有契约必须可解析"
+            - "必须包含 version 字段"
+            - "必须包含 metadata.kind"
+          
+        - type: registry
+          priority: 2
+          paths:
+            - ecosystem/registry/platforms/gov-platforms.index.yaml
+            - ecosystem/registry/naming/gov-naming-contracts-registry.yaml
+            - ecosystem/registry/**/*.yaml
+          validation:
+            - "注册表必须包含契约引用"
+            - "所有引用的契约必须存在"
+          
+        - type: governance
+          priority: 3
+          paths:
+            - ecosystem/contracts/governance/gov-governance-layers.yaml
+            - ecosystem/contracts/validation/gov-validation-rules.yaml
+          validation:
+            - "治理规则必须明确范围"
+            - "验证规则必须有优先级"
+          
+        - type: ontology
+          priority: 4
+          paths:
+            - ecosystem/contracts/naming-governance/gov-naming-ontology.yaml
+            - ecosystem/contracts/naming-governance/gov-naming-ontology-expanded.yaml
+          validation:
+            - "本体必须包含层定义"
+            - "必须包含关系图"
+          
+        - type: actual-state
+          priority: 5
+          paths:
+            - ecosystem/**/*.yaml
+            - ecosystem/**/*.md
+          validation:
+            - "所有文件必须可访问"
+            - "必须计算内容哈希"
+      
+      validation_rules:
+        - id: "GL-FP-001"
+          name: "源存在性检查"
+          severity: CRITICAL
+          rule: "所有列出的内部源必须存在且可读"
+          enforcement: block
+          
+        - id: "GL-FP-002"
+          name: "版本一致性检查"
+          severity: HIGH
+          rule: "所有契约版本必须符合语义化版本控制"
+          enforcement: warn
+          
+        - id: "GL-FP-003"
+          name: "哈希完整性检查"
+          severity: CRITICAL
+          rule: "所有文件必须计算并存储 SHA-256 哈希"
+          enforcement: block
+          
+        - id: "GL-FP-004"
+          name: "引用完整性检查"
+          severity: HIGH
+          rule: "所有契约引用必须指向存在的文件"
+          enforcement: block
+          
+        - id: "GL-FP-005"
+          name: "循环依赖检查"
+          severity: CRITICAL
+          rule: "不允许契约间的循环依赖"
+          enforcement: block
+      
+      output:
+        format: gov-internal-fact-set
+        version: "1.0.0"
+        required_fields:
+          - internal_facts:
+              - timestamp: ISO8601
+              - source_count: integer
+              - total_files: integer
+              - total_size: integer
+              - root_hash: SHA256
+          
+          - sources:
+              type: array
+              items:
+                - path: string
+                - hash: SHA256
+                - size: integer
+                - last_modified: ISO8601
+                - kind: string
+                - version: string
+          
+          - contracts:
+              type: object
+              properties:
+                - contract_id: string
+                - version: string
+                - dependencies: array
+                - validations: array
+          
+          - registry_state:
+              type: object
+              properties:
+                - platform_count: integer
+                - contract_count: integer
+                - layer_count: integer
+      
+      evidence_proofs:
+        - type: "merkle_tree"
+          algorithm: "SHA-256"
+          purpose: "完整性证明"
+          
+        - type: "snapshot"
+          format: "tar.gz"
+          purpose: "时间戳证明"
+
+    # 第二阶段：外部语境收集（可选、参考性）
+    stage2:
+      name: external-context-collection
+      phase: conditional
+      triggers:
+        - on: comparison-needed
+          description: "当需要与外部标准对比时"
+        - on: best-practice-reference
+          description: "当引用最佳实践时"
+        - on: evolution-guidance
+          description: "当需要演进指导时"
+      priority: 2
+      timeout: 60s
+      
+      sources:
+        - type: standards
+          priority: 1
+          domains:
+            - name: "SemVer"
+              url: "https://semver.org/"
+              version: "2.0.0"
+              reliability: high
+              purpose: "versioning-reference"
+              
+            - name: "CNCF"
+              url: "https://www.cncf.io/"
+              version: "latest"
+              reliability: high
+              purpose: "cloud-native-reference"
+              
+            - name: "TOGAF"
+              url: "https://www.opengroup.org/togaf/"
+              version: "9.2"
+              reliability: high
+              purpose: "architecture-reference"
+          
+        - type: documentation
+          priority: 2
+          domains:
+            - name: "Kubernetes"
+              url: "https://kubernetes.io/docs/"
+              version: "latest"
+              reliability: high
+              purpose: "container-orchestration"
+              
+            - name: "OpenAI"
+              url: "https://docs.openai.com/"
+              version: "latest"
+              reliability: medium
+              purpose: "ai-integration-reference"
+          
+        - type: best-practices
+          priority: 3
+          domains:
+            - name: "Google SRE"
+              url: "https://sre.google/sre-book/"
+              version: "latest"
+              reliability: high
+              purpose: "reliability-practices"
+              
+            - name: "Monorepo"
+              url: "https://monorepo.tools/"
+              version: "latest"
+              reliability: medium
+              purpose: "monorepo-patterns"
+      
+      constraints:
+        - id: "GL-FP-101"
+          name: "外部不得覆盖内部"
+          severity: CRITICAL
+          rule: "外部源不得覆盖或修改内部事实"
+          enforcement: block
+          
+        - id: "GL-FP-102"
+          name: "仅作参考"
+          severity: HIGH
+          rule: "外部源只能提供建议和参考模式"
+          enforcement: warn
+          
+        - id: "GL-FP-103"
+          name: "时间戳要求"
+          severity: MEDIUM
+          rule: "必须注明外部源的时间戳和版本"
+          enforcement: warn
+          
+        - id: "GL-FP-104"
+          name: "来源标注"
+          severity: HIGH
+          rule: "所有外部引用必须注明明确的来源URL"
+          enforcement: block
+          
+        - id: "GL-FP-105"
+          name: "适用性声明"
+          severity: MEDIUM
+          rule: "必须声明外部标准的适用性范围"
+          enforcement: warn
+      
+      output:
+        format: gov-external-context-set
+        version: "1.0.0"
+        fields:
+          - external_context:
+              - collected_at: ISO8601
+              - version: string
+              - sources: array
+          
+          - references:
+              type: array
+              items:
+                - standard_name: string
+                - standard_version: string
+                - source_url: string
+                - last_updated: ISO8601
+                - applicability: string
+                - reliability_level: string
+          
+          - reference_patterns:
+              type: array
+              items:
+                - pattern_name: string
+                - pattern_description: string
+                - source_reference: string
+          
+          - best_practices:
+              type: array
+              items:
+                - practice_name: string
+                - practice_description: string
+                - source_reference: string
+                - adoption_level: string
+          
+          - standard_requirements:
+              type: array
+              items:
+                - requirement_id: string
+                - requirement_text: string
+                - source_standard: string
+                - category: string
+                - mandatory: boolean
+      
+      disclaimers:
+        - "外部标准仅供参考，不构成完成度声明"
+        - "外部建议可能不适用于当前系统架构"
+        - "外部标准可能存在版本差异"
+        - "外部标准的适用性需要独立评估"
+
+    # 第三阶段：交叉比对推理
+    stage3:
+      name: cross-verification-reasoning
+      phase: mandatory
+      requires:
+        - internal-fact-collection
+        - external-context-collection
+      priority: 3
+      timeout: 45s
+      
+      comparison:
+        method: delta-analysis
+        algorithm: bidirectional-diff
+        rules:
+          - id: "GL-FP-201"
+            name: "内部为基准"
+            severity: CRITICAL
+            rule: "内部事实为基准，外部语境为对照"
+            enforcement: block
+          
+          - id: "GL-FP-202"
+            name: "双向分析"
+            severity: HIGH
+            rule: "差异分析必须是双向的"
+            enforcement: warn
+          
+          - id: "GL-FP-203"
+            name: "差异分类"
+            severity: HIGH
+            rule: "任何差异必须有分类标签"
+            enforcement: block
+      
+      classification:
+        categories:
+          - name: aligned
+            description: "内部状态与外部标准一致"
+            confidence_level: high
+            criteria:
+              - "功能完全一致"
+              - "实现方式相同"
+              - "术语映射明确"
+            evidence_requirement: "提供双方证据链接"
+            action: none
+          
+          - name: intentional-deviation
+            description: "有明确设计理由的差异"
+            confidence_level: high
+            criteria:
+              - "有设计决策文档"
+              - "有架构理由说明"
+              - "有权衡分析"
+            evidence_requirement: "必须引用 design-rationale.md 文件"
+            action: document
+            
+          - name: alternative-implementation
+            description: "功能相同但实现方式不同"
+            confidence_level: medium
+            criteria:
+              - "功能等效"
+              - "实现方式不同"
+              - "有内部标准"
+            evidence_requirement: "提供内部标准和外部标准的对比"
+            action: document
+            
+          - name: technical-debt
+            description: "无明确理由的差异"
+            confidence_level: medium
+            criteria:
+              - "缺少实现"
+              - "未找到设计文档"
+              - "临时解决方案"
+            evidence_requirement: "创建 technical-debt 跟踪事项"
+            action: track
+            
+          - name: gap
+            description: "外部标准要求但内部缺少"
+            confidence_level: high
+            criteria:
+              - "外部标准明确要求"
+              - "内部缺少对应功能"
+              - "影响安全或合规"
+            evidence_requirement: "创建 feature-request 跟踪事项"
+            action: create_issue
+            
+          - name: extension
+            description: "内部有但外部标准无"
+            confidence_level: medium
+            criteria:
+              - "内部独有功能"
+              - "超出标准范围"
+              - "有创新价值"
+            evidence_requirement: "提供创新价值说明"
+            action: document
+      
+      output:
+        format: gov-assessment-report
+        version: "1.0.0"
+        sections:
+          - actual_state:
+              type: object
+              description: "基于内部事实的实际状态"
+              evidence: required
+          
+          - reference_state:
+              type: object
+              description: "外部标准的状态"
+              source: required
+          
+          - delta_analysis:
+              type: object
+              description: "差异分析"
+              classification: required
+          
+          - recommendations:
+              type: array
+              description: "基于差异的建议"
+              prioritization: required
+              evidence: required
+          
+        required_disclaimers:
+          - "本报告基于内部实际状态生成"
+          - "外部标准仅供参考，不构成完成度声明"
+          - "差异分析基于 [日期] 的外部标准版本"
+          - "所有结论都基于可验证的证据"
+  
+  validation:
+    strict_mode: true
+    
+    forbidden_phrases:
+      - phrase: "100% 完成"
+        severity: CRITICAL
+        replacement: "基于已实现的 [功能集]"
+        enforcement: block
+      
+      - phrase: "完全符合"
+        severity: CRITICAL
+        replacement: "在 [方面] 与标准对齐"
+        enforcement: block
+      
+      - phrase: "已全部实现"
+        severity: CRITICAL
+        replacement: "已实现 [具体功能列表]"
+        enforcement: block
+      
+      - phrase: "覆盖所有标准"
+        severity: CRITICAL
+        replacement: "覆盖 [具体标准列表]"
+        enforcement: block
+      
+      - phrase: "应该是"
+        severity: HIGH
+        replacement: "根据 [证据]，建议"
+        enforcement: require_evidence
+      
+      - phrase: "可能是"
+        severity: HIGH
+        replacement: "基于 [证据]，推测"
+        enforcement: require_evidence
+      
+      - phrase: "我认为"
+        severity: HIGH
+        replacement: "基于 [证据]，分析表明"
+        enforcement: require_evidence
+      
+      - phrase: "推测"
+        severity: MEDIUM
+        replacement: "基于 [证据]，推断"
+        enforcement: require_evidence
+    
+    required_evidence:
+      - id: "GL-VP-001"
+        name: "事实声明证据"
+        rule: "每个事实声明必须链接到内部源文件"
+        format: "[证据: path/to/file.yaml#L10-L15]"
+        coverage: 90%
+        enforcement: block
+      
+      - id: "GL-VP-002"
+        name: "建议引用"
+        rule: "每个建议必须引用外部标准或内部差异"
+        format: "[参考: external-standard#section]"
+        coverage: 95%
+        enforcement: warn
+      
+      - id: "GL-VP-003"
+        name: "版本引用"
+        rule: "所有外部引用必须包含版本号"
+        format: "[标准名称 v版本号]"
+        coverage: 100%
+        enforcement: block
+      
+      - id: "GL-VP-004"
+        name: "时间戳引用"
+        rule: "所有外部引用必须包含引用日期"
+        format: "[引用日期: YYYY-MM-DD]"
+        coverage: 100%
+        enforcement: warn
+    
+    audit_trail:
+      enabled: true
+      retention_days: 90
+      log_level: INFO
+      include:
+        - pipeline_execution_timestamp
+        - internal_fact_collection_details
+        - external_context_collection_details
+        - cross_verification_decisions
+        - evidence_references
+        - validation_errors
+        - report_generation_parameters
+  
+  execution:
+    parallel_stages: false
+    stage_timeout: 120s
+    total_timeout: 180s
+    
+    error_handling:
+      stage1_failure:
+        action: fail_fast
+        reason: "内部事实收集失败，无法继续"
+      
+      stage2_failure:
+        action: continue
+        reason: "外部语境收集失败，不影响内部事实报告"
+      
+      stage3_failure:
+        action: warn
+        reason: "交叉验证失败，生成基础事实报告"
+    
+    quality_gates:
+      gate1:
+        name: "evidence_coverage_gate"
+        threshold: 90%
+        description: "证据覆盖率必须达到 90%"
+      
+      gate2:
+        name: "no_forbidden_phrases_gate"
+        threshold: 0
+        description: "不能有任何禁止使用的短语"
+      
+      gate3:
+        name: "source_consistency_gate"
+        threshold: 100%
+        description: "所有引用的内部源必须存在"
+  
+  reporting:
+    formats:
+      - name: json
+        extension: .json
+        schema: gov-assessment-report-schema-v1
+        
+      - name: yaml
+        extension: .yaml
+        schema: gov-assessment-report-schema-v1
+        
+      - name: markdown
+        extension: .md
+        template: gov-assessment-report-template
+      
+    output_location: ecosystem/reports/
+    naming_pattern: gov-assessment-{timestamp}-{report_type}
+    retention: 90 days
+    
+    distribution:
+      - type: artifact_storage
+        enabled: true
+        format: tar.gz
+      
+      - type: version_control
+        enabled: true
+        auto_commit: false
+      
+      - type: notification
+        enabled: false
+
+  monitoring:
+    metrics:
+      - name: pipeline_execution_duration
+        type: histogram
+        labels: [stage, status]
+        
+      - name: internal_fact_collection_success_rate
+        type: gauge
+        threshold: 100%
+        
+      - name: evidence_coverage_percentage
+        type: gauge
+        threshold: 90%
+        
+      - name: forbidden_phrase_detection_count
+        type: counter
+        
+      - name: quality_gate_pass_rate
+        type: gauge
+    
+    alerts:
+      - name: internal_fact_collection_failure
+        severity: CRITICAL
+        condition: "stage1_success == false"
+        
+      - name: low_evidence_coverage
+        severity: HIGH
+        condition: "evidence_coverage < 90%"
+        
+      - name: forbidden_phrase_detected
+        severity: CRITICAL
+        condition: "forbidden_phrase_count > 0"
+        
+      - name: quality_gate_failure
+        severity: HIGH
+        condition: "any_gate_failed == true"
+
+# Version: 1.0.0  
+# Last Updated: 2024-01-20  
+# Maintained By: GL Governance Team

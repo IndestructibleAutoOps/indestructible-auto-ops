@@ -164,13 +164,13 @@ ls -la
 #### Running Boundary Checks
 ```bash
 # Check critical violations
-python3 gl-governance-compliance/scripts/boundary_checker.py --level E0
+python3 gov-governance-compliance/scripts/boundary_checker.py --level E0
 
 # Check specific file
-python3 gl-governance-compliance/scripts/boundary_checker.py --file path/to/file.py
+python3 gov-governance-compliance/scripts/boundary_checker.py --file path/to/file.py
 
 # Generate compliance report
-python3 gl-governance-compliance/scripts/boundary_checker.py --report
+python3 gov-governance-compliance/scripts/boundary_checker.py --report
 ```
 
 #### Pre-Commit Hooks
@@ -180,14 +180,14 @@ The boundary checker automatically runs before each commit to enforce boundary r
 
 ```
 machine-native-ops/
-├── gl-enterprise-architecture/     # GL00-09: Enterprise Architecture
-├── gl-platform-services/           # GL10-29: Platform Services
-├── gl-data-processing/             # GL20-29: Data Processing
-├── gl-execution-runtime/           # GL30-49: Execution Runtime
-├── gl-observability/              # GL50-59: Observability
-├── gl-governance-compliance/      # GL60-80: Governance Compliance
-├── gl-extension-services/          # GL81-83: Extension Services
-├── gl-meta-specifications/         # GL90-99: Meta Specifications
+├── gov-enterprise-architecture/     # GL00-09: Enterprise Architecture
+├── gov-platform-services/           # GL10-29: Platform Services
+├── gov-data-processing/             # GL20-29: Data Processing
+├── gov-execution-runtime/           # GL30-49: Execution Runtime
+├── gov-observability/              # GL50-59: Observability
+├── gov-governance-compliance/      # GL60-80: Governance Compliance
+├── gov-extension-services/          # GL81-83: Extension Services
+├── gov-meta-specifications/         # GL90-99: Meta Specifications
 └── README.md
 ```
 
@@ -199,19 +199,19 @@ machine-native-ops/
 
 ### Core Documentation
 - [One-Stop Architecture and Specification Hub](ONE-STOP-ARCHITECTURE-SPECS.md)
-- [Directory Boundary Specification](gl-enterprise-architecture/governance/directory-boundary-specification.md)
-- [Boundary Reference Matrix](gl-enterprise-architecture/governance/boundary-reference-matrix.md)
-- [Boundary Enforcement Rules](gl-enterprise-architecture/governance/boundary-enforcement-rules.md)
+- [Directory Boundary Specification](gov-enterprise-architecture/governance/directory-boundary-specification.md)
+- [Boundary Reference Matrix](gov-enterprise-architecture/governance/boundary-reference-matrix.md)
+- [Boundary Enforcement Rules](gov-enterprise-architecture/governance/boundary-enforcement-rules.md)
 
 ### Layer Documentation
-- [Enterprise Architecture](gl-enterprise-architecture/README.md)
-- [Platform Services](gl-platform-services/README.md)
-- [Data Processing](gl-data-processing/README.md)
-- [Execution Runtime](gl-execution-runtime/README.md)
-- [Observability](gl-observability/README.md)
-- [Governance Compliance](gl-governance-compliance/README.md)
-- [Extension Services](gl-extension-services/README.md)
-- [Meta Specifications](gl-meta-specifications/README.md)
+- [Enterprise Architecture](gov-enterprise-architecture/README.md)
+- [Platform Services](gov-platform-services/README.md)
+- [Data Processing](gov-data-processing/README.md)
+- [Execution Runtime](gov-execution-runtime/README.md)
+- [Observability](gov-observability/README.md)
+- [Governance Compliance](gov-governance-compliance/README.md)
+- [Extension Services](gov-extension-services/README.md)
+- [Meta Specifications](gov-meta-specifications/README.md)
 
 ## Development Guidelines
 
@@ -238,19 +238,19 @@ machine-native-ops/
 ### Boundary Checking
 ```bash
 # Run all boundary checks
-python3 gl-governance-compliance/scripts/boundary_checker.py --check
+python3 gov-governance-compliance/scripts/boundary_checker.py --check
 
 # Check specific level
-python3 gl-governance-compliance/scripts/boundary_checker.py --level E0
+python3 gov-governance-compliance/scripts/boundary_checker.py --level E0
 
 # Generate report
-python3 gl-governance-compliance/scripts/boundary_checker.py --report --format json
+python3 gov-governance-compliance/scripts/boundary_checker.py --report --format json
 ```
 
 ### Compliance Validation
 ```bash
 # Validate compliance
-python3 gl-governance-compliance/scripts/boundary_checker.py --check
+python3 gov-governance-compliance/scripts/boundary_checker.py --check
 ```
 
 ## Compliance Status

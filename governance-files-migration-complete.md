@@ -18,29 +18,29 @@
 ### 2. 工具和腳本遷移 (已完成)
 
 #### GL Markers 工具
-- `add-gl-markers.py` → `ecosystem/tools/gl-markers/add-gl-markers.py`
-- `add-gl-markers-batch.py` → `ecosystem/tools/gl-markers/add-gl-markers-batch.py`
-- `add-gl-markers-json.py` → `ecosystem/tools/gl-markers/add-gl-markers-json.py`
-- `add-gl-markers-yaml.py` → `ecosystem/tools/gl-markers/add-gl-markers-yaml.py`
-- `fix-governance-markers.py` → `ecosystem/tools/gl-markers/fix-governance-markers.py`
+- `add-gov-markers.py` → `ecosystem/tools/gov-markers/add-gov-markers.py`
+- `add-gov-markers-batch.py` → `ecosystem/tools/gov-markers/add-gov-markers-batch.py`
+- `add-gov-markers-json.py` → `ecosystem/tools/gov-markers/add-gov-markers-json.py`
+- `add-gov-markers-yaml.py` → `ecosystem/tools/gov-markers/add-gov-markers-yaml.py`
+- `fix-governance-markers.py` → `ecosystem/tools/gov-markers/fix-governance-markers.py`
 
 #### 審計工具
-- `gl-audit-simple.py` → `ecosystem/tools/audit/gl-audit-simple.py`
+- `gov-audit-simple.py` → `ecosystem/tools/audit/gov-audit-simple.py`
 
 #### 平台工具
-- `start-gl-platform.sh` → `ecosystem/tools/platform/start-gl-platform.sh`
+- `start-gov-platform.sh` → `ecosystem/tools/platform/start-gov-platform.sh`
 - `scripts/generate-governance-dashboard.py` → `ecosystem/tools/generate-governance-dashboard.py`
 
 ### 3. 演化數據遷移 (已完成)
-- `gl-evolution-data/` → `gl-governance-compliance/data/evolution/gl-evolution-data/`
+- `gov-evolution-data/` → `gov-governance-compliance/data/evolution/gov-evolution-data/`
   - 包含 3 個執行記錄（已分析和原始）
   - 包含 2 個 delta 計算結果
   - 包含 1 個已執行的升級
   - 包含 1 個快照
 
 ### 4. 輸出文件遷移 (已完成)
-- `gl-simple-audit-report.json` → `gl-governance-compliance/outputs/`
-- `gl-validation-output.txt` → `gl-governance-compliance/outputs/`
+- `gov-simple-audit-report.json` → `gov-governance-compliance/outputs/`
+- `gov-validation-output.txt` → `gov-governance-compliance/outputs/`
 
 ### 5. 文檔重組 (已完成)
 
@@ -85,22 +85,22 @@ ecosystem/
 │   └── revolutionary-ai/
 │       └── GL_REVOLUTIONARY_AI_FRAMEWORK_ANALYSIS.md
 └── tools/
-    ├── gl-markers/
-    │   ├── add-gl-markers.py
-    │   ├── add-gl-markers-batch.py
-    │   ├── add-gl-markers-json.py
-    │   ├── add-gl-markers-yaml.py
+    ├── gov-markers/
+    │   ├── add-gov-markers.py
+    │   ├── add-gov-markers-batch.py
+    │   ├── add-gov-markers-json.py
+    │   ├── add-gov-markers-yaml.py
     │   └── fix-governance-markers.py
     ├── audit/
-    │   └── gl-audit-simple.py
+    │   └── gov-audit-simple.py
     ├── platform/
-    │   └── start-gl-platform.sh
+    │   └── start-gov-platform.sh
     └── generate-governance-dashboard.py
 
-gl-governance-compliance/
+gov-governance-compliance/
 ├── data/
 │   └── evolution/
-│       └── gl-evolution-data/
+│       └── gov-evolution-data/
 │           ├── executions/
 │           │   ├── analyzed/
 │           │   └── raw/
@@ -111,8 +111,8 @@ gl-governance-compliance/
 │               ├── executed/
 │               └── planned/
 └── outputs/
-    ├── gl-simple-audit-report.json
-    └── gl-validation-output.txt
+    ├── gov-simple-audit-report.json
+    └── gov-validation-output.txt
 
 docs/
 └── archive/
@@ -130,7 +130,7 @@ docs/
 1. **治理配置文件**: 3 個重命名到 ecosystem/governance/
 2. **工具和腳本**: 10 個重命名到 ecosystem/tools/
 3. **演化數據**: 1 個目錄 + 12 個文件遷移
-4. **輸出文件**: 2 個重命名到 gl-governance-compliance/outputs/
+4. **輸出文件**: 2 個重命名到 gov-governance-compliance/outputs/
 5. **文檔文件**: 99 個重命名到 docs/archive/
 6. **革命性 AI 文檔**: 1 個重命名到 ecosystem/docs/revolutionary-ai/
 
@@ -141,7 +141,7 @@ docs/
 - 包括治理、命名、驗證等合約
 
 ### 2. 實現代碼
-- 所有實現代碼保留在 gl-governance-compliance/
+- 所有實現代碼保留在 gov-governance-compliance/
 - 包括 contracts/, scripts/, formats/, languages/, platforms/
 
 ### 3. 文檔
@@ -151,19 +151,19 @@ docs/
 
 ### 4. 配置
 - 治理配置移至 ecosystem/governance/
-- 演化配置保留在 gl-governance-compliance/
+- 演化配置保留在 gov-governance-compliance/
 
 ### 5. 數據
-- 演化數據移至 gl-governance-compliance/data/evolution/
-- 輸出文件移至 gl-governance-compliance/outputs/
+- 演化數據移至 gov-governance-compliance/data/evolution/
+- 輸出文件移至 gov-governance-compliance/outputs/
 
 ## 驗證檢查清單
 
 ✅ 所有合約文件仍在 ecosystem/contracts/  
-✅ 所有實現代碼仍在 gl-governance-compliance/  
+✅ 所有實現代碼仍在 gov-governance-compliance/  
 ✅ 所有文檔已正確分類  
 ✅ 所有配置在 ecosystem/governance/  
-✅ 所有數據在 gl-governance-compliance/data/  
+✅ 所有數據在 gov-governance-compliance/data/  
 ✅ 根目錄清爽，只保留核心文檔  
 ✅ Git 狀態正確  
 ✅ 所有變更已追蹤  

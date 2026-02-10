@@ -1,0 +1,30 @@
+semantic_tree:
+  root: gov-root
+
+  nodes:
+    - id: global-governance
+      parent: gov-root
+
+    - id: guardrails-governance
+      parent: gov-root
+
+    - id: gcp-governance
+      parent: gov-root
+
+    - id: gateway-governance
+      parent: gov-root
+
+    - id: ng-namespace-governance
+      parent: gov-root
+
+    - id: generation-governance
+      parent: gov-root
+
+    - id: gqs-governance
+      parent: gov-root
+
+    - id: mnga-governance
+      parent: gov-root
+
+    - id: mno-governance
+      parent: gov-root

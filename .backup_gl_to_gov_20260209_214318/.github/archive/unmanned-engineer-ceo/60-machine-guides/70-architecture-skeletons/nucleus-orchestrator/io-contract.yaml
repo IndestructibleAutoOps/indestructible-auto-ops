@@ -1,0 +1,32 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+skeleton_id: "nucleus-orchestrator"
+
+input:
+  schema:
+    properties:
+      action_type:
+        enum:
+          [
+            "define_workflow",
+            "coordinate_agents",
+            "dispatch_task",
+            "manage_state",
+          ]
+
+output:
+  schema:
+    properties:
+      workflow_plan: { type: "object" }
+      execution_steps: { type: "array" }
+      agent_assignments: { type: "array" }
+      state_transitions: { type: "array" }

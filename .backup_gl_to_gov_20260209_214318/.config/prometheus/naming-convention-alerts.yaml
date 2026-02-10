@@ -1,0 +1,170 @@
+# Prometheus Alerting Rules for Naming Convention Violations
+# Monitors naming compliance and triggers alerts
+
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: naming-convention-alerts
+  namespace: monitoring
+  labels:
+    app: mnga-governance
+    component: naming-governance
+    severity: P2
+spec:
+  groups:
+    - name: naming_convention.alerts
+      interval: 5m
+      rules:
+        # P0 - Critical: Core infrastructure naming violations
+        - alert: NamingViolationCritical
+          expr: |
+            count(
+              naming_convention_violations_total{severity="critical"} > 0
+            ) > 0
+          for: 5m
+          labels:
+            severity: P0
+            category: naming
+            team: platform
+          annotations:
+            summary: "Critical naming convention violations detected"
+            description: |
+              {{ $value }} critical naming violations found in namespace {{ $labels.namespace }}.
+              Resource: {{ $labels.resource_type }}
+              Violation: {{ $labels.violation_type }}
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-violations"
+            
+        # P1 - High: Production environment violations
+        - alert: NamingViolationProduction
+          expr: |
+            count(
+              naming_convention_violations_total{environment="prod"} > 0
+            ) > 0
+          for: 10m
+          labels:
+            severity: P1
+            category: naming
+            team: platform
+          annotations:
+            summary: "Naming convention violations in production"
+            description: |
+              {{ $value }} naming violations found in production environment.
+              Namespace: {{ $labels.namespace }}
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-violations"
+            
+        # P2 - Medium: High violation rate
+        - alert: NamingViolationRateHigh
+          expr: |
+            rate(naming_convention_violations_total[1h]) > 5
+          for: 15m
+          labels:
+            severity: P2
+            category: naming
+            team: platform
+          annotations:
+            summary: "High naming violation rate detected"
+            description: |
+              Naming violation rate is {{ $value | humanize }}/hour.
+              Threshold exceeded: > 5/hour
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-violations"
+            
+        # P2 - Medium: Compliance rate below threshold
+        - alert: NamingComplianceLow
+          expr: |
+            naming_compliance_rate < 0.95
+          for: 1h
+          labels:
+            severity: P2
+            category: naming
+            team: platform
+          annotations:
+            summary: "Naming compliance rate below 95%"
+            description: |
+              Current compliance rate: {{ $value | humanizePercentage }}
+              Target: 95%
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-compliance"
+            
+        # P3 - Low: Naming drift detected
+        - alert: NamingDriftDetected
+          expr: |
+            increase(naming_convention_violations_total[24h]) > 10
+          labels:
+            severity: P3
+            category: naming
+            team: platform
+          annotations:
+            summary: "Naming drift detected in last 24 hours"
+            description: |
+              {{ $value }} new naming violations detected in the last 24 hours.
+              Namespace: {{ $labels.namespace }}
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-drift"
+            
+    - name: naming_auto_fix.alerts
+      interval: 10m
+      rules:
+        # Auto-fix success rate
+        - alert: AutoFixSuccessRateLow
+          expr: |
+            rate(naming_auto_fix_success_total[1h]) / 
+            rate(naming_auto_fix_total[1h]) < 0.8
+          for: 30m
+          labels:
+            severity: P2
+            category: naming
+            team: platform
+          annotations:
+            summary: "Auto-fix success rate below 80%"
+            description: |
+              Auto-fix success rate: {{ $value | humanizePercentage }}
+              Check auto-fix logs for details.
+            runbook_url: "https://docs.machine-native-ops/runbooks/auto-fix"
+            
+        # Auto-fix pending
+        - alert: AutoFixPendingHigh
+          expr: |
+            naming_auto_fix_pending_total > 20
+          for: 1h
+          labels:
+            severity: P3
+            category: naming
+            team: platform
+          annotations:
+            summary: "High number of pending auto-fixes"
+            description: |
+              {{ $value }} auto-fixes pending approval or execution.
+              Please review and process pending fixes.
+            runbook_url: "https://docs.machine-native-ops/runbooks/auto-fix"
+
+    - name: naming_migration.alerts
+      interval: 1h
+      rules:
+        # Migration in progress
+        - alert: NamingMigrationStalled
+          expr: |
+            time() - naming_migration_last_success_timestamp_seconds > 86400
+          labels:
+            severity: P2
+            category: naming
+            team: platform
+          annotations:
+            summary: "Naming migration stalled for > 24 hours"
+            description: |
+              Last successful migration was over 24 hours ago.
+              Check migration status and logs.
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-migration"
+            
+        # Migration rollback needed
+        - alert: NamingMigrationRollbackNeeded
+          expr: |
+            naming_migration_status{status="failed"} > 0
+          for: 10m
+          labels:
+            severity: P1
+            category: naming
+            team: platform
+          annotations:
+            summary: "Naming migration failed, rollback may be needed"
+            description: |
+              Migration {{ $labels.migration_id }} failed.
+              Review failure logs and consider rollback.
+            runbook_url: "https://docs.machine-native-ops/runbooks/naming-migration"

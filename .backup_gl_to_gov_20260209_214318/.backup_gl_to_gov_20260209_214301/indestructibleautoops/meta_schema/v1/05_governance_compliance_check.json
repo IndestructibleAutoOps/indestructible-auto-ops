@@ -1,0 +1,38 @@
+{
+  "system": "IndestructibleAutoOps",
+  "component": "meta-schema",
+  "version": "v1",
+  "section": "Governance Compliance Check",
+  "checks": [
+    {
+      "id": "G-001",
+      "name": "Schema dialect pinned",
+      "requirement": "JSON Schema 2020-12",
+      "status": "PASS"
+    },
+    {
+      "id": "G-002",
+      "name": "Immutable core fields enforced",
+      "requirement": "top-level required: $schema,$id,apiVersion,kind,metadata,spec",
+      "status": "PASS"
+    },
+    {
+      "id": "G-003",
+      "name": "Spec/Status separation",
+      "requirement": "status optional and structured; spec open",
+      "status": "PASS"
+    },
+    {
+      "id": "G-004",
+      "name": "CI gate present",
+      "requirement": "workflow validates schema + examples + negative cases",
+      "status": "PASS"
+    },
+    {
+      "id": "G-005",
+      "name": "Offline validation",
+      "requirement": "no external network calls required for validation",
+      "status": "PASS"
+    }
+  ]
+}

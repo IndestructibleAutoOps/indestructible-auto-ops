@@ -1,0 +1,47 @@
+name: Automated Multi-Agent Research Pipeline
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Research Topic'
+        required: true
+        default: 'Future of AI Agents in DevOps'
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Auto-Orchestrator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          chmod +x .github/scripts/auto-orchestrator.sh
+          if [ "${{ github.event_name }}" == "issues" ]; then
+            ./.github/scripts/auto-orchestrator.sh "${{ github.event.issue.title }}: ${{ github.event.issue.body }}"
+          else
+            ./.github/scripts/auto-orchestrator.sh "${{ github.event.inputs.topic }}"
+          fi
+
+      - name: Comment on Issue
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀 高級多代理研究系統已自動啟動！\n\n- **20 路並行研究**：執行中\n- **自動代理選擇**：已完成\n- **預計產出**：網站部署、幻燈片報告\n\n請稍候，結果將自動更新於此。'
+            })

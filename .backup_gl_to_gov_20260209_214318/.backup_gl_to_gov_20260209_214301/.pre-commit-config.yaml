@@ -1,0 +1,123 @@
+# @GL-governed
+# @GL-layer: common
+# @GL-semantic: .pre-commit-config
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+# Pre-commit hooks for machine-native-ops project
+# GL Layer: GL30-49 Execution Layer
+# Purpose: Pre-commit hook configuration for code quality
+# Run: pre-commit install --hook-type commit-msg
+
+repos:
+  # General hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(tests/|\.md$)
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: ['--unsafe']
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+      - id: debug-statements
+        language: python
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: check-case-conflict
+      - id: mixed-line-ending
+
+  # Python imports
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
+        exclude: ^(build/|dist/|\.eggs/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/|venv/)
+
+  # Python formatting
+  - repo: https://github.com/psf/black
+    rev: 24.3.0
+    hooks:
+      - id: black
+        language_version: python3.11
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+        args: ["--line-length=100"]
+        exclude: ^(build/|dist/|\.eggs/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/|venv/)
+
+  # Python linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: ["--max-line-length=100", "--extend-ignore=E203,W503,E501", "--max-doc-length=100"]
+        exclude: ^(build/|dist/|\.eggs/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/|venv/|tests/)
+
+  # Security checks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.6
+    hooks:
+      - id: bandit
+        args: ["-r", ".", "--skip", "B101,B601"]
+        exclude: ^(tests/|test_|setup\.py)
+        additional_dependencies: ["bandit[toml]"]
+
+  # Type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        args: ["--ignore-missing-imports", "--no-strict-optional"]
+        exclude: ^(tests/|test_|setup\.py)
+        additional_dependencies: ["types-requests"]
+
+  # Documentation
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        args: ["--convention=google"]
+        exclude: ^(tests/|test_|setup\.py)
+
+  # GL Governance Validation - Pre-commit Hooks
+  - repo: local
+    hooks:
+      - id: gl-governance-validation
+        name: GL Governance Validation
+        entry: python scripts/gl-engine/gov_validator.py --workspace .
+        language: python
+        pass_filenames: false
+        always_run: true
+
+      - id: gl-layer-check
+        name: GL Layer Annotation Check
+        entry: python scripts/hooks/gl-pre-commit.py
+        language: python
+        types: [python]
+        pass_filenames: true
+
+      - id: gl-naming-check
+        name: GL Naming Convention Check
+        entry: python scripts/hooks/gl-naming-check.py
+        language: python
+        files: ^gl/
+        pass_filenames: true
+
+      - id: config-sync-check
+        name: Auto-Fix Bot Config Sync
+        entry: python scripts/hooks/config-sync-check.py
+        language: python
+        files: (config/\.auto-fix-bot\.yml|workspace/config/\.auto-fix-bot\.yml)
+        pass_filenames: true
+
+# Default excludes for all hooks
+default_language_version:
+  python: python3.11

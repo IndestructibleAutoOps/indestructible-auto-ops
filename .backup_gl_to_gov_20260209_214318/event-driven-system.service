@@ -1,0 +1,21 @@
+# GL Layer: GL10-29 Operational Layer
+# Purpose: Event-driven system service definition
+[Unit]
+Description=Event Driven Repository Understanding System
+After=network.target
+
+[Service]
+Type=simple
+# NOTE: Replace these placeholders with actual values during installation:
+# - Replace $USER with the user running the service (e.g., runner, ubuntu)
+# - Replace $PWD with the absolute path to the repository (e.g., /home/runner/work/machine-native-ops/machine-native-ops)
+User=$USER
+WorkingDirectory=$PWD
+ExecStart=/usr/bin/python3 $PWD/event_driven_system.py
+Restart=always
+RestartSec=10
+StandardOutput=append:$PWD/logs/system.log
+StandardError=append:$PWD/logs/error.log
+
+[Install]
+WantedBy=multi-user.target

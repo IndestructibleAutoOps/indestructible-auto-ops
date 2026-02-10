@@ -1,0 +1,187 @@
+# @GL-governed
+# @GL-layer: GL00-09
+# @GL-semantic: general-component
+# @GL-audit-trail: gl-enterprise-architecture/governance/audit-trails/GL00_09-audit.json
+#
+# GL Unified Charter Activated
+# GL Root Semantic Anchor: gl-enterprise-architecture/governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gl-enterprise-architecture/governance/GL-UNIFIED-NAMING-CHARTER.yaml
+
+
+{
+  "generated_at": "2026-01-18T08:53:17.330374",
+  "metrics": {
+    "total_modules": 6,
+    "average_semantic_health": 97.5,
+    "min_semantic_health": 85,
+    "max_semantic_health": 100,
+    "status_distribution": {
+      "active": 5,
+      "in-development": 1
+    },
+    "autonomy_distribution": {
+      "L1-L2": 1,
+      "L2-L3": 1,
+      "L3-L4": 1,
+      "L4-L5": 2,
+      "Global Layer": 1
+    },
+    "health_scores": [
+      100,
+      100,
+      100,
+      85,
+      100,
+      100
+    ]
+  },
+  "modules": [
+    {
+      "module_id": "01-core",
+      "manifest_path": "01-core/module-manifest.yaml",
+      "namespace": "mno-core",
+      "autonomy_level": "L1-L2",
+      "status": "active",
+      "semantic_health_score": 100,
+      "dependencies": []
+    },
+    {
+      "module_id": "02-intelligence",
+      "manifest_path": "02-intelligence/module-manifest.yaml",
+      "namespace": "mno-intelligence",
+      "autonomy_level": "L2-L3",
+      "status": "active",
+      "semantic_health_score": 100,
+      "dependencies": [
+        "01-core"
+      ]
+    },
+    {
+      "module_id": "03-governance",
+      "manifest_path": "03-governance/module-manifest.yaml",
+      "namespace": "mno-governance",
+      "autonomy_level": "L3-L4",
+      "status": "active",
+      "semantic_health_score": 100,
+      "dependencies": [
+        "01-core",
+        "02-intelligence"
+      ]
+    },
+    {
+      "module_id": "04-autonomous",
+      "manifest_path": "04-autonomous/module-manifest.yaml",
+      "namespace": "mno-autonomous",
+      "autonomy_level": "L4-L5",
+      "status": "in-development",
+      "semantic_health_score": 85,
+      "dependencies": [
+        "01-core",
+        "02-intelligence",
+        "03-governance"
+      ]
+    },
+    {
+      "module_id": "05-observability",
+      "manifest_path": "05-observability/module-manifest.yaml",
+      "namespace": "mno-observability",
+      "autonomy_level": "L4-L5",
+      "status": "active",
+      "semantic_health_score": 100,
+      "dependencies": [
+        "01-core",
+        "02-intelligence",
+        "03-governance"
+      ]
+    },
+    {
+      "module_id": "06-security",
+      "manifest_path": "06-security/module-manifest.yaml",
+      "namespace": "mno-security",
+      "autonomy_level": "Global Layer",
+      "status": "active",
+      "semantic_health_score": 100,
+      "dependencies": [
+        "01-core",
+        "03-governance",
+        "05-observability"
+      ],
+      "veto_authority": true
+    }
+  ],
+  "policies": [
+    {
+      "policy_id": "naming",
+      "policy_name": "Naming Policy",
+      "description": "Enforces kebab-case naming conventions and namespace governance",
+      "file": "naming.rego",
+      "package": "mno.governance.policies.naming",
+      "status": "active",
+      "version": "1.0.0",
+      "enforcement_mode": "strict",
+      "applies_to": [
+        "files",
+        "directories",
+        "modules",
+        "interfaces",
+        "components"
+      ],
+      "severity": "medium",
+      "remediation": "automatic"
+    },
+    {
+      "policy_id": "semantic",
+      "policy_name": "Semantic Policy",
+      "description": "Ensures semantic consistency across modules and components",
+      "file": "semantic.rego",
+      "package": "mno.governance.policies.semantic",
+      "status": "active",
+      "version": "1.0.0",
+      "enforcement_mode": "strict",
+      "applies_to": [
+        "modules",
+        "semantic_mappings",
+        "components"
+      ],
+      "severity": "high",
+      "remediation": "manual"
+    },
+    {
+      "policy_id": "security",
+      "policy_name": "Security Policy",
+      "description": "Enforces security policies, secret management, and vulnerability requirements",
+      "file": "security.rego",
+      "package": "mno.governance.policies.security",
+      "status": "active",
+      "version": "1.0.0",
+      "enforcement_mode": "strict",
+      "applies_to": [
+        "artifacts",
+        "deployments",
+        "secrets",
+        "dependencies",
+        "code",
+        "images"
+      ],
+      "severity": "critical",
+      "remediation": "manual"
+    },
+    {
+      "policy_id": "autonomy",
+      "policy_name": "Autonomy Policy",
+      "description": "Enforces autonomy level requirements and progression rules",
+      "file": "autonomy.rego",
+      "package": "mno.governance.policies.autonomy",
+      "status": "active",
+      "version": "1.0.0",
+      "enforcement_mode": "strict",
+      "applies_to": [
+        "modules",
+        "operations",
+        "components"
+      ],
+      "severity": "medium",
+      "remediation": "manual"
+    }
+  ]
+}

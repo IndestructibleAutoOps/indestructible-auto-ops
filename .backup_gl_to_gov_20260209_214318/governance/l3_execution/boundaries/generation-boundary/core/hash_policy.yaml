@@ -1,0 +1,247 @@
+# Zero-Tolerance Hash Policy Specification v1.0
+# Based on NIST SP 800-57 Part 1 Rev. 5 and Global Cryptographic Best Practices
+
+version: "1.0.0"
+effective_date: "2026-02-05"
+status: "ENFORCED"
+governance_stage: "S5-VERIFIED"
+
+# =============================================================================
+# AUTHORIZED HASH ALGORITHMS
+# =============================================================================
+hash_algorithms:
+  authoritative:
+    algorithm: "SHA3-512"
+    rationale: "SHA-3 family selected by NIST in 2015, provides 512-bit output with proven security against length extension attacks"
+    nist_approval: true
+    fips_compliant: true
+    bit_strength: 512
+    collision_resistance: "CRYPTOGRAPHICALLY_PROVEN"
+    preimage_resistance: "CRYPTOGRAPHICALLY_PROVEN"
+    use_cases:
+      - "Primary evidence integrity verification"
+      - "Immutable core sealing"
+      - "Governance artifact attestation"
+      - "Audit trail chain verification"
+      - "All authoritative governance signatures"
+
+  secondary:
+    algorithm: "BLAKE3"
+    rationale: "Modern hash function from BLAKE2 family, optimized for parallel processing with tree hashing"
+    performance: "HIGH_THROUGHPUT_PARALLEL"
+    bit_strength: 256
+    collision_resistance: "CRYPTOGRAPHICALLY_PROVEN"
+    preimage_resistance: "CRYPTOGRAPHICALLY_PROVEN"
+    use_cases:
+      - "Real-time verification in hot paths"
+      - "Content-addressable storage indexing"
+      - "Deduplication operations"
+      - "Performance-critical operations"
+      - "Temporary verification (non-authoritative)"
+
+  compatibility_only:
+    algorithm: "SHA256"
+    rationale: "Legacy compatibility only, NEVER authoritative"
+    status: "DEPRECATED_FOR_GOVERNANCE"
+    allowed_contexts:
+      - "External system integration requiring SHA256"
+      - "Third-party API compatibility"
+      - "Legacy artifact references"
+    prohibited_contexts:
+      - "Primary evidence integrity"
+      - "Governance artifact attestation"
+      - "Immutable core sealing"
+      - "Audit trail authoritative verification"
+    requirements:
+      - "Must be paired with SHA3-512 hash for governance use"
+      - "Clearly labeled as compatibility hash in metadata"
+      - "Never used alone for compliance verification"
+
+# =============================================================================
+# HASH POLICY ENFORCEMENT RULES (ZERO-TOLERANCE)
+# =============================================================================
+enforcement_rules:
+  strict_compliance:
+    level: "ZERO_TOLERANCE"
+    description: "No exceptions permitted for hash policy violations"
+    
+  violation_classifications:
+    critical:
+      - "Using SHA256 as authoritative hash"
+      - "Missing SHA3-512 hash for governance artifacts"
+      - "Hash chain with non-authoritative algorithms"
+      - "Modifying evidence without hash verification"
+      - "Hash collision detected (any algorithm)"
+      - "Missing hash verification for any evidence artifact"
+      
+    high:
+      - "Using unapproved hash algorithms"
+      - "Hash mismatch without proper rollback"
+      - "Hash not stored in canonical form"
+      - "Hash verification skipped in production"
+      - "Hash policy bypass attempts"
+      
+    medium:
+      - "Using compatibility hash without proper labeling"
+      - "Hash generation with insufficient entropy"
+      - "Hash stored in non-immutable location"
+      - "Hash verification timeout (must fail secure)"
+
+# =============================================================================
+# EVIDENCE CHAIN INTEGRITY PROTOCOLS
+# =============================================================================
+evidence_chain_protocols:
+  chain_requirements:
+    - "Every evidence artifact MUST have SHA3-512 hash"
+    - "Hash chains MUST use SHA3-512 exclusively"
+    - "Each hash MUST reference previous hash in chain"
+    - "Chain MUST be append-only (immutable)"
+    - "Chain MUST have genesis block hash"
+    - "All hashes MUST be cryptographically verified before acceptance"
+    - "Chain MUST support reproducible verification"
+    
+  verification_protocols:
+    standard_verification:
+      steps:
+        1: "Generate SHA3-512 hash of artifact"
+        2: "Compare with stored hash"
+        3: "Verify hash chain continuity"
+        4: "Verify genesis block integrity"
+        5: "Verify no modifications to historical hashes"
+        6: "Verify hash is in canonical form"
+        7: "Verify algorithm matches policy"
+        
+    failure_handling:
+      hash_mismatch:
+        action: "IMMEDIATE_BLOCK"
+        rollback: "AUTOMATIC"
+        alert: "CRITICAL"
+        remediation: "Restore from immutable backup"
+        
+      chain_broken:
+        action: "IMMEDIATE_BLOCK"
+        rollback: "AUTOMATIC"
+        alert: "CRITICAL"
+        remediation: "Full audit required"
+        
+      unauthorized_algorithm:
+        action: "IMMEDIATE_BLOCK"
+        rollback: "AUTOMATIC"
+        alert: "CRITICAL"
+        remediation: "Replace with authorized hash"
+
+# =============================================================================
+# HASH GENERATION STANDARDS
+# =============================================================================
+generation_standards:
+  input_normalization:
+    - "All inputs MUST be canonicalized before hashing"
+    - "Unicode normalization form NFKC"
+    - "Line endings normalized to LF"
+    - "Whitespace normalized"
+    - "Encoding normalized to UTF-8"
+    - "Timestamps in ISO 8601 format"
+    - "Numbers in canonical JSON representation"
+    
+  output_format:
+    encoding: "hexadecimal"
+    case: "lowercase"
+    length: "128 characters for SHA3-512"
+    prefix: "sha3-512:"
+    example: "sha3-512:a8098d7e..."
+    
+  storage_requirements:
+    - "Hash MUST be stored in immutable storage"
+    - "Hash MUST be replicated across nodes"
+    - "Hash MUST have backup in separate location"
+    - "Hash MUST be indexed for fast retrieval"
+    - "Hash MUST be version-controlled with policy"
+
+# =============================================================================
+# CRYPTOGRAPHIC MATERIAL MANAGEMENT
+# =============================================================================
+cryptographic_material:
+  key_management:
+    - "Hash algorithms use no keys (deterministic)"
+    - "HMAC keys MUST be 512-bit minimum"
+    - "Keys MUST be stored in HSM or KMS"
+    - "Keys MUST rotate quarterly"
+    - "Keys MUST have access logging"
+    
+  entropy_requirements:
+    source: "CSPRNG (Cryptographically Secure Pseudo-Random Number Generator)"
+    minimum_entropy_bits: 256
+    testing_frequency: "Before each production use"
+    compliance: "NIST SP 800-90A"
+
+# =============================================================================
+# COMPLIANCE REQUIREMENTS
+# =============================================================================
+compliance_requirements:
+  frameworks:
+    nist_sp_800_53:
+      controls:
+        - "AU-2: Audit Records"
+        - "AU-10: Non-Repudiation"
+        - "AU-12: Audit Record Generation"
+        - "AU-14: Session Audit"
+        - "SC-13: Cryptographic Protection"
+        - "SC-28: Protection of Information at Rest"
+        
+    iso_27001:
+      controls:
+        - "A.10.1.1: Cryptographic controls"
+        - "A.12.4.1: Backup"
+        - "A.12.7.1: Information backup"
+        - "A.16.1.7: Collection of evidence"
+        
+    pci_dss:
+      requirements:
+        - "Requirement 3: Protect stored cardholder data"
+        - "Requirement 10: Track and monitor all access"
+
+# =============================================================================
+# MONITORING AND ALERTING
+# =============================================================================
+monitoring:
+  metrics:
+    - "Hash verification success rate"
+    - "Hash chain integrity status"
+    - "Algorithm usage distribution"
+    - "Verification latency"
+    - "Hash generation rate"
+    
+  alerts:
+    critical:
+      - "Hash mismatch detected"
+      - "Chain integrity broken"
+      - "Unauthorized algorithm used"
+      - "Hash verification failed"
+      
+    warning:
+      - "High verification latency"
+      - "Algorithm usage deviation"
+      - "Hash generation failure rate increase"
+
+# =============================================================================
+# REFERENCES AND SOURCES
+# =============================================================================
+references:
+  - "NIST SP 800-57 Part 1 Rev. 5: Recommendation for Key Management"
+  - "NIST SP 800-90A Rev. 1: Recommendation for Random Number Generation"
+  - "FIPS PUB 202: SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions"
+  - "RFC 7693: The BLAKE2 Cryptographic Hash and Message Authentication Code (MAC)"
+  - "BLAKE3 Specification: https://github.com/BLAKE3-team/BLAKE3/blob/master/BLAKE3-spec.pdf"
+  - "ISO/IEC 27001:2022: Information security, cybersecurity and privacy protection"
+  - "PCI DSS v4.0: Payment Card Industry Data Security Standard"
+
+# =============================================================================
+# GOVERNANCE METADATA
+# =============================================================================
+governance_metadata:
+  document_owner: "IndestructibleAutoOps Governance Team"
+  approval_authority: "GL-Registry Governance Council"
+  review_cycle: "Quarterly"
+  change_control: "GL-Registry Change Control Board"
+  evidence_chain_id: "hash-policy-v1.0"
+  hash_chain_anchor: "sha3-512:GENERATE_AT_DEPLOYMENT"

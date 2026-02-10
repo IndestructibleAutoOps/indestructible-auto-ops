@@ -1,0 +1,25 @@
+graph TB
+  subgraph 私有存储库
+    A[治理规则库] --> |变更推送| B[GitLab]
+  end
+  
+  subgraph CI/CD流水线
+    B --> C{治理检查}
+    C -->|高风险| D[影子部署]
+    C -->|中低风险| E[标准发布]
+    D --> F[生产流量复制]
+  end
+  
+  subgraph 运行环境
+    F --> G[数学验证集群]
+    F --> H[代码验证集群]
+    F --> I[安全验证集群]
+  end
+  
+  subgraph 元治理监控
+    G --> J[Prometheus]
+    H --> J
+    I --> J
+    J --> K[Grafana仪表板]
+    K --> L[治理合规报告]
+  end

@@ -22,7 +22,7 @@ Successfully added GL governance markers to 86 files out of 2,026 eligible files
 
 ### TypeScript Modules
 - 28 TypeScript files received GL markers
--主要在 gl-runtime-platform 和 platform 目录
+-主要在 gov-runtime-platform 和 platform 目录
 
 ### YAML Configuration Files
 - 2 YAML files received GL markers
@@ -39,8 +39,8 @@ Each modified file now includes:
 # @GL-audit-trail: {AUDIT_TRAIL_PATH}
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gov-platform/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-platform/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 ```
 
 ## GL Layer Distribution
@@ -80,11 +80,11 @@ Modified files were assigned to appropriate GL layers:
 # @GL-governed
 # @GL-layer: GL90-99
 # @GL-semantic: python-module
-# @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# @GL-audit-trail: ../../engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+# GL Root Semantic Anchor: gov-platform/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-platform/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 def semantic_engine():
     """Main semantic processing engine"""
@@ -96,11 +96,11 @@ def semantic_engine():
 // @GL-governed
 // @GL-layer: GL20-29
 // @GL-semantic: typescript-module
-// @GL-audit-trail: ../../engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+// @GL-audit-trail: ../../engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
 //
 // GL Unified Architecture Governance Framework Activated
-// GL Root Semantic Anchor: gl-platform/governance/engine/governance/gl-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
-// GL Unified Naming Charter: gl-platform/governance/engine/governance/gl-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
+// GL Root Semantic Anchor: gov-platform/governance/engine/governance/gov-artifacts/meta/semantic/GL-ROOT-SEMANTIC-ANCHOR.yaml
+// GL Unified Naming Charter: gov-platform/governance/engine/governance/gov-artifacts/meta/naming-charter/gl-unified-naming-charter.yaml
 
 export class MetaCognitiveEngine {
     constructor() {}

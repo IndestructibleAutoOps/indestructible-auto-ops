@@ -1,0 +1,394 @@
+# core-governance-spec.yaml
+# 不可變核心治理層正式規範
+# 版本: 1.0.0
+# 基於: UGS + Meta-Spec + TOGAF + FEAF + ISO/IEC/IEEE 42010
+
+version: 1.0.0
+spec_type: core-governance-spec
+layer: immutable-core
+
+@GL-semantic: org.mnga.core.governance.spec@1.0.0
+@GL-audit-trail: enabled
+
+# 不可變核心治理層定義
+immutable_core:
+  name: "Immutable Core Governance Layer"
+  description: "UGS + Meta-Spec 構成的不可變核心治理層"
+  components:
+    - UGS
+    - Meta-Spec
+  
+  # 不可變條款
+  immutable_clauses:
+    - id: IC-001
+      title: "不可覆寫條款"
+      description: "子目錄、子系統不得重新定義或覆蓋 UGS / Meta-Spec"
+      severity: CRITICAL
+      enforcement: BLOCK
+      scope:
+        - ecosystem/governance/ugs
+        - ecosystem/governance/meta-spec
+      reference: "TOGAF Architecture Governance Framework"
+    
+    - id: IC-002
+      title: "不可改語言條款"
+      description: "adapter / contract / governance 不得自訂語言層"
+      severity: CRITICAL
+      enforcement: BLOCK
+      scope:
+        - ecosystem/adapter
+        - ecosystem/contracts
+        - ecosystem/governance
+      reference: "FEAF Standards Information Base"
+    
+    - id: IC-003
+      title: "不可改格式條款"
+      description: "roles 不得自訂格式；naming 不得自訂 schema"
+      severity: CRITICAL
+      enforcement: BLOCK
+      scope:
+        - ecosystem/roles
+        - ecosystem/naming
+      reference: "ISO/IEC/IEEE 42010 Architecture Description"
+    
+    - id: IC-004
+      title: "不可改治理邊界條款"
+      description: "GL、MNGA、GQS、roles、naming、topology、governance 全部只能「服從」，不能「重寫」"
+      severity: CRITICAL
+      enforcement: BLOCK
+      scope:
+        - GL
+        - MNGA
+        - GQS
+        - roles
+        - naming
+        - topology
+        - governance
+      reference: "KPMG Modern EA Governance Framework"
+
+  # 子系統可配置範圍
+  configurable_scopes:
+    subsystems:
+      - id: SS-001
+        name: "adapter"
+        type: "component"
+        description: "適配器層"
+        configurable:
+          - implementation_details
+          - optimization_parameters
+          - custom_validators
+        immutable:
+          - language_layer
+          - format_schema
+          - semantic_definition
+        binding_type: "conform"
+      
+      - id: SS-002
+        name: "contracts"
+        type: "component"
+        description: "契約層"
+        configurable:
+          - business_logic
+          - validation_rules
+        immutable:
+          - language_layer
+          - format_schema
+        binding_type: "conform"
+      
+      - id: SS-003
+        name: "governance"
+        type: "component"
+        description: "治理層"
+        configurable:
+          - enforcement_policies
+          - audit_trail_config
+        immutable:
+          - language_layer
+          - format_schema
+          - semantic_definition
+          - governance_boundaries
+        binding_type: "inherit"
+
+  # 變異點定義
+  variation_points:
+    - id: VP-001
+      name: "adapter_implementation"
+      description: "adapter 實現的變異點"
+      scope:
+        - ecosystem/adapter
+      allowed:
+        - performance_optimization
+        - custom_validators
+        - caching_strategies
+      forbidden:
+        - language_extension
+        - schema_modification
+        - semantic_override
+      approval_required: false
+    
+    - id: VP-002
+      name: "contract_business_logic"
+      description: "contract 業務邏輯的變異點"
+      scope:
+        - ecosystem/contracts
+      allowed:
+        - business_rules
+        - validation_logic
+        - transaction_handling
+      forbidden:
+        - language_extension
+        - schema_modification
+      approval_required: false
+    
+    - id: VP-003
+      name: "governance_enforcement"
+      description: "governance 強制執行的變異點"
+      scope:
+        - ecosystem/governance
+      allowed:
+        - enforcement_policies
+        - audit_trail_config
+        - notification_settings
+      forbidden:
+        - language_layer
+        - format_schema
+        - semantic_definition
+        - governance_boundaries
+      approval_required: true
+
+# UGS 規範
+ugs_specification:
+  name: "Unified Governance Specification"
+  version: "1.0.0"
+  immutable: true
+  description: "統一治理規範 - 定義語言、語意、索引、拓撲和格式"
+  
+  layers:
+    L00-Language:
+      immutable: true
+      priority: CRITICAL
+      description: "語言定義層 - 語法、語言定義、AST、token、parsing rules"
+      files:
+        - ecosystem/governance/ugs/l00-language/ldl.spec.yaml
+        - ecosystem/governance/ugs/l00-language/grammar/tokens.yaml
+        - ecosystem/governance/ugs/l00-language/grammar/ast.yaml
+      enforcement: BLOCK
+      reference: "TOGAF Architecture Continuum"
+    
+    L02-Semantics:
+      immutable: true
+      priority: HIGH
+      description: "語意分類系統 - 語意錨點、語意邊界、語意約束"
+      files:
+        - ecosystem/governance/ugs/l02-semantics/layer-semantics.yaml
+      enforcement: BLOCK
+      reference: "ISO/IEC/IEEE 42010 Semantic Classification"
+    
+    L03-Index:
+      immutable: true
+      priority: HIGH
+      description: "索引和查找機制 - 索引結構、查找算法、維護策略"
+      files:
+        - ecosystem/governance/ugs/l03-index/index-spec.yaml
+      enforcement: REBUILD
+      reference: "FEAF Architecture Repository"
+    
+    L04-Topology:
+      immutable: true
+      priority: HIGH
+      description: "拓撲和關係 - 節點定義、邊定義、關係約束"
+      files:
+        - ecosystem/governance/ugs/l04-topology/topology-spec.yaml
+      enforcement: REBUILD
+      reference: "TOGAF Architecture Taxonomy"
+    
+    L50-Format:
+      immutable: true
+      priority: CRITICAL
+      description: "統一格式規範 - schema 定義、格式約束、驗證規則"
+      files:
+        - ecosystem/governance/ugs/l50-format/layer.schema.json
+        - ecosystem/governance/ugs/l50-format/governance.schema.json
+        - ecosystem/governance/ugs/l50-format/naming.schema.json
+      enforcement: BLOCK
+      reference: "JSON Schema Draft 07"
+
+# Meta-Spec 規範
+meta_spec_specification:
+  name: "Meta-Specification Layer"
+  version: "1.0.0"
+  immutable: true
+  description: "Meta 規範層 - 規範的規範"
+  
+  layers:
+    language:
+      immutable: true
+      priority: CRITICAL
+      description: "定義允許的規範語言"
+      scope:
+        - ecosystem/governance/meta-spec/language
+      enforcement: BLOCK
+      allowed_languages:
+        - YAML
+        - JSON
+        - Markdown
+    
+    format:
+      immutable: true
+      priority: CRITICAL
+      description: "定義規範的 schema 格式"
+      scope:
+        - ecosystem/governance/meta-spec/format
+      enforcement: BLOCK
+      allowed_formats:
+        - JSON Schema
+        - YAML Schema
+    
+    semantics:
+      immutable: true
+      priority: HIGH
+      description: "定義語意分類系統"
+      scope:
+        - ecosystem/governance/meta-spec/semantics
+      enforcement: BLOCK
+    
+    topology:
+      immutable: true
+      priority: HIGH
+      description: "定義規範拓撲和關係"
+      scope:
+        - ecosystem/governance/meta-spec/topology
+      enforcement: BLOCK
+    
+    registry:
+      immutable: false
+      priority: MEDIUM
+      description: "中央規範註冊表"
+      scope:
+        - ecosystem/governance/meta-spec/registry
+      enforcement: LOG
+      configurable: true
+
+# 強制執行機制
+enforcement_mechanism:
+  type: "Governance-as-Execution"
+  description: "高權重強制執行層，不是建議而是強制"
+  
+  enforcement_layers:
+    - language_layer (L00-L49)
+    - semantics_layer (L02)
+    - index_layer (L03)
+    - topology_layer (L04)
+    - format_layer (L50-L99)
+  
+  execution_interfaces:
+    - ecosystem/governance/engines/validation_engine
+    - ecosystem/governance/engines/refresh_engine
+    - ecosystem/governance/engines/reverse_architecture_engine
+  
+  governance_modes:
+    - "Governance-as-Execution"
+    - "Governance-as-Language"
+    - "Governance-as-Topology"
+  
+  enforcement_priorities:
+    CRITICAL:
+      action: BLOCK
+      requires_approval: false
+      auto_fix: false
+    
+    HIGH:
+      action: BLOCK
+      requires_approval: true
+      auto_fix: false
+    
+    MEDIUM:
+      action: REBUILD
+      requires_approval: false
+      auto_fix: true
+    
+    LOW:
+      action: LOG
+      requires_approval: false
+      auto_fix: false
+
+# 治理邊界
+governance_boundaries:
+  core_layers:
+    - L00-Language
+    - L02-Semantics
+    - L03-Index
+    - L04-Topology
+    - L50-Format
+  
+  protected_artifacts:
+    - ecosystem/governance/ugs/**
+    - ecosystem/governance/meta-spec/language/**
+    - ecosystem/governance/meta-spec/format/**
+    - ecosystem/governance/meta-spec/semantics/**
+    - ecosystem/governance/meta-spec/topology/**
+  
+  subsystem_boundaries:
+    GL:
+      boundary: "inherit"
+      scope: "full"
+      restrictions:
+        - "cannot override core layers"
+        - "cannot define custom language"
+        - "cannot modify schema"
+    
+    MNGA:
+      boundary: "inherit"
+      scope: "full"
+      restrictions:
+        - "cannot override core layers"
+        - "cannot modify governance boundaries"
+        - "cannot define custom semantics"
+    
+    GQS:
+      boundary: "conform"
+      scope: "query"
+      restrictions:
+        - "cannot override core layers"
+        - "cannot modify schema structure"
+
+# 合規驗證
+compliance_validation:
+  required_checks:
+    - "語言層一致性"
+    - "格式層合法性"
+    - "語意層一致性"
+    - "索引層完整性"
+    - "拓撲層完整性"
+    - "不可變核心合規性"
+  
+  validation_frequency: "on_change"
+  auto_fix_enabled: true
+  evidence_required: true
+  
+  compliance_standards:
+    - "TOGAF Standard 10th Edition"
+    - "Federal Enterprise Architecture Framework (FEAF)"
+    - "ISO/IEC/IEEE 42010:2011"
+    - "California Enterprise Architecture Glossary"
+
+# 元數據
+metadata:
+  created_at: "2026-02-03T23:49:00Z"
+  updated_at: "2026-02-03T23:49:00Z"
+  author: "MNGA Governance Team"
+  status: "active"
+  
+  references:
+    - "TOGAF Standard, 10th Edition"
+    - "Federal Enterprise Architecture Framework (FEAF)"
+    - "ISO/IEC/IEEE 42010:2011"
+    - "California Enterprise Architecture Glossary"
+    - "KPMG Modern EA Governance Framework"
+    - "ExecLayer Policy-Enforced Execution Layer"
+  
+  version_history:
+    - version: "1.0.0"
+      date: "2026-02-03T23:49:00Z"
+      author: "MNGA Governance Team"
+      description: "Initial version - Immutable Core governance specification"

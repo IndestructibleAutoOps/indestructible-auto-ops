@@ -1,0 +1,482 @@
+{
+  "GL50-GL59": {
+    "category": "Core Format Types",
+    "description": "Fundamental format specifications for schemas, structures, and data representations",
+    "anchors": {
+      "GL50": {
+        "name": "JSON Schema Specification",
+        "definition": "Formal specification of JSON schema definitions including types, constraints, and validation rules",
+        "scope": "All JSON schema files and schema validation implementations",
+        "semantic_boundaries": "JSON Schema Draft 2020-12 compliance with custom extensions",
+        "sub_semantics": ["JSC-001: Type Definitions", "JSC-002: Constraint Rules", "JSC-003: Validation Keywords"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["json-schema-validation", "schema-compliance-check"]
+      },
+      "GL51": {
+        "name": "YAML Schema Specification",
+        "definition": "Formal specification of YAML schema definitions including types, constraints, and validation rules",
+        "scope": "All YAML schema files and schema validation implementations",
+        "semantic_boundaries": "YAML Schema specification with custom validation extensions",
+        "sub_semantics": ["YSC-001: Type Definitions", "YSC-002: Constraint Rules", "YSC-003: Validation Keywords"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["yaml-schema-validation", "schema-compliance-check"]
+      },
+      "GL52": {
+        "name": "Markdown Structure Specification",
+        "definition": "Formal specification of Markdown document structure including headings, sections, and metadata",
+        "scope": "All Markdown documentation files and structure validation",
+        "semantic_boundaries": "Structured Markdown with frontmatter and semantic sections",
+        "sub_semantics": ["MDS-001: Document Structure", "MDS-002: Heading Hierarchy", "MDS-003: Metadata Format"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["markdown-structure-validation", "heading-hierarchy-check"]
+      },
+      "GL53": {
+        "name": "Evidence Format Specification",
+        "definition": "Formal specification of evidence artifact format including structure, metadata, and provenance",
+        "scope": "All evidence artifacts and evidence collection systems",
+        "semantic_boundaries": "Structured evidence with cryptographic integrity verification",
+        "sub_semantics": ["EVF-001: Evidence Structure", "EVF-002: Metadata Requirements", "EVF-003: Provenance Tracking"],
+        "applicable_targets": ["evidence", "governance"],
+        "validation_rules": ["evidence-format-validation", "integrity-check"]
+      },
+      "GL54": {
+        "name": "Contract Format Specification",
+        "definition": "Formal specification of contract artifact format including structure, terms, and enforcement rules",
+        "scope": "All contract artifacts and contract enforcement systems",
+        "semantic_boundaries": "Formal contracts with validation and enforcement semantics",
+        "sub_semantics": ["CTF-001: Contract Structure", "CTF-002: Terms Definition", "CTF-003: Enforcement Rules"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["contract-format-validation", "enforcement-check"]
+      },
+      "GL55": {
+        "name": "Adapter Format Specification",
+        "definition": "Formal specification of adapter artifact format including interface definitions and integration rules",
+        "scope": "All adapter artifacts and adapter integration systems",
+        "semantic_boundaries": "Standardized adapter interfaces with validation",
+        "sub_semantics": ["ADF-001: Adapter Structure", "ADF-002: Interface Definition", "ADF-003: Integration Rules"],
+        "applicable_targets": ["adapter", "platform"],
+        "validation_rules": ["adapter-format-validation", "interface-compliance-check"]
+      },
+      "GL56": {
+        "name": "Platform Format Specification",
+        "definition": "Formal specification of platform artifact format including deployment configs and platform-specific settings",
+        "scope": "All platform artifacts and platform deployment systems",
+        "semantic_boundaries": "Platform-agnostic format with platform-specific extensions",
+        "sub_semantics": ["PLF-001: Platform Structure", "PLF-002: Deployment Config", "PLF-003: Extension Rules"],
+        "applicable_targets": ["platform", "adapter"],
+        "validation_rules": ["platform-format-validation", "deployment-check"]
+      },
+      "GL57": {
+        "name": "Governance Rule Format Specification",
+        "definition": "Formal specification of governance rule format including rule definitions and enforcement logic",
+        "scope": "All governance rule artifacts and rule enforcement systems",
+        "semantic_boundaries": "Declarative rule format with validation and execution semantics",
+        "sub_semantics": ["GRF-001: Rule Structure", "GRF-002: Condition Definition", "GRF-003: Action Definition"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["governance-rule-validation", "execution-check"]
+      },
+      "GL58": {
+        "name": "Index Format Specification",
+        "definition": "Formal specification of index artifact format including index structure and lookup semantics",
+        "scope": "All index artifacts and indexing systems",
+        "semantic_boundaries": "Efficient index format with fast lookup and update operations",
+        "sub_semantics": ["IDF-001: Index Structure", "IDF-002: Lookup Semantics", "IDF-003: Update Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["index-format-validation", "lookup-check"]
+      },
+      "GL59": {
+        "name": "Metadata Format Specification",
+        "definition": "Formal specification of metadata artifact format including metadata structure and validation rules",
+        "scope": "All metadata artifacts and metadata management systems",
+        "semantic_boundaries": "Structured metadata with validation and versioning",
+        "sub_semantics": ["MDF-001: Metadata Structure", "MDF-002: Validation Rules", "MDF-003: Versioning Rules"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["metadata-format-validation", "versioning-check"]
+      }
+    }
+  },
+  "GL60-GL69": {
+    "category": "Format Structure",
+    "description": "Field definitions, type systems, and structural validation rules",
+    "anchors": {
+      "GL60": {
+        "name": "Field Definitions Specification",
+        "definition": "Formal specification of field definitions including naming, types, and constraints",
+        "scope": "All field definitions in schemas and data structures",
+        "semantic_boundaries": "Standardized field definitions with validation",
+        "sub_semantics": ["FLD-001: Field Naming", "FLD-002: Field Types", "FLD-003: Field Constraints"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["field-definition-validation", "naming-convention-check"]
+      },
+      "GL61": {
+        "name": "Type Definitions Specification",
+        "definition": "Formal specification of type definitions including primitive types, complex types, and custom types",
+        "scope": "All type definitions in schemas and type systems",
+        "semantic_boundaries": "Strong type system with type inference and validation",
+        "sub_semantics": ["TYP-001: Primitive Types", "TYP-002: Complex Types", "TYP-003: Custom Types"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["type-definition-validation", "type-safety-check"]
+      },
+      "GL62": {
+        "name": "Structure Rules Specification",
+        "definition": "Formal specification of structure rules including nesting, ordering, and cardinality",
+        "scope": "All structure definitions and validation rules",
+        "semantic_boundaries": "Well-defined structure rules with validation",
+        "sub_semantics": ["STR-001: Nesting Rules", "STR-002: Ordering Rules", "STR-003: Cardinality Rules"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["structure-validation", "cardinality-check"]
+      },
+      "GL63": {
+        "name": "Required Fields Specification",
+        "definition": "Formal specification of required field definitions and validation rules",
+        "scope": "All required field definitions and validation implementations",
+        "semantic_boundaries": "Explicit required field definitions with validation",
+        "sub_semantics": ["REQ-001: Required Field Definition", "REQ-002: Validation Rules", "REQ-003: Error Handling"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["required-field-validation", "completeness-check"]
+      },
+      "GL64": {
+        "name": "Optional Fields Specification",
+        "definition": "Formal specification of optional field definitions and default value handling",
+        "scope": "All optional field definitions and default value implementations",
+        "semantic_boundaries": "Explicit optional field definitions with default values",
+        "sub_semantics": ["OPT-001: Optional Field Definition", "OPT-002: Default Values", "OPT-003: Null Handling"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["optional-field-validation", "default-value-check"]
+      },
+      "GL65": {
+        "name": "Format Constraints Specification",
+        "definition": "Formal specification of format constraints including length, pattern, and range constraints",
+        "scope": "All constraint definitions and validation implementations",
+        "semantic_boundaries": "Comprehensive constraint system with validation",
+        "sub_semantics": ["CST-001: Length Constraints", "CST-002: Pattern Constraints", "CST-003: Range Constraints"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["constraint-validation", "pattern-check"]
+      },
+      "GL66": {
+        "name": "Format Extensions Specification",
+        "definition": "Formal specification of format extensions and extension mechanisms",
+        "scope": "All format extension definitions and extension implementations",
+        "semantic_boundaries": "Well-defined extension points with validation",
+        "sub_semantics": ["EXT-001: Extension Definition", "EXT-002: Extension Mechanism", "EXT-003: Validation Rules"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["extension-validation", "compatibility-check"]
+      },
+      "GL67": {
+        "name": "Format Normalization Specification",
+        "definition": "Formal specification of format normalization rules and canonical forms",
+        "scope": "All normalization implementations and canonical form generators",
+        "semantic_boundaries": "Deterministic normalization with unique canonical forms",
+        "sub_semantics": ["NRM-001: Normalization Rules", "NRM-002: Canonical Forms", "NRM-003: Equivalence Checking"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["normalization-validation", "canonical-form-check"]
+      },
+      "GL68": {
+        "name": "Format Canonicalization Specification",
+        "definition": "Formal specification of format canonicalization and standardization",
+        "scope": "All canonicalization implementations and standardization tools",
+        "semantic_boundaries": "Standardized representations with deterministic output",
+        "sub_semantics": ["CAN-001: Canonicalization Rules", "CAN-002: Standard Formats", "CAN-003: Hash Generation"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["canonicalization-validation", "standardization-check"]
+      },
+      "GL69": {
+        "name": "Format Validation Specification",
+        "definition": "Formal specification of format validation rules and validation pipelines",
+        "scope": "All validation implementations and validation frameworks",
+        "semantic_boundaries": "Comprehensive validation with configurable rule sets",
+        "sub_semantics": ["VAL-001: Validation Rules", "VAL-002: Validation Pipeline", "VAL-003: Error Reporting"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["validation-engine-validation", "rule-completeness-check"]
+      }
+    }
+  },
+  "GL70-GL79": {
+    "category": "Format Behavior",
+    "description": "Schema validation, evolution, migration, and compatibility",
+    "anchors": {
+      "GL70": {
+        "name": "Schema Validation Behavior Specification",
+        "definition": "Formal specification of schema validation behavior including error handling and reporting",
+        "scope": "All schema validation implementations and validation engines",
+        "semantic_boundaries": "Deterministic validation with comprehensive error reporting",
+        "sub_semantics": ["SVB-001: Validation Strategy", "SVB-002: Error Handling", "SVB-003: Reporting Format"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["validation-behavior-validation", "error-reporting-check"]
+      },
+      "GL71": {
+        "name": "Schema Evolution Specification",
+        "definition": "Formal specification of schema evolution rules and backward compatibility",
+        "scope": "All schema evolution implementations and migration strategies",
+        "semantic_boundaries": "Controlled evolution with backward compatibility guarantees",
+        "sub_semantics": ["EVL-001: Evolution Rules", "EVL-002: Compatibility Guarantees", "EVL-003: Migration Strategies"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["evolution-validation", "compatibility-check"]
+      },
+      "GL72": {
+        "name": "Schema Versioning Specification",
+        "definition": "Formal specification of schema versioning and version management",
+        "scope": "All schema versioning implementations and version management systems",
+        "semantic_boundaries": "Semantic versioning with clear version semantics",
+        "sub_semantics": ["VER-001: Version Syntax", "VER-002: Version Semantics", "VER-003: Version Management"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["versioning-validation", "semver-compliance-check"]
+      },
+      "GL73": {
+        "name": "Schema Migration Specification",
+        "definition": "Formal specification of schema migration rules and migration strategies",
+        "scope": "All schema migration implementations and migration tools",
+        "semantic_boundaries": "Automated migration with validation and rollback",
+        "sub_semantics": ["MIG-001: Migration Rules", "MIG-002: Migration Strategies", "MIG-003: Rollback Mechanisms"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["migration-validation", "rollback-check"]
+      },
+      "GL74": {
+        "name": "Schema Compatibility Specification",
+        "definition": "Formal specification of schema compatibility rules and compatibility checking",
+        "scope": "All compatibility implementations and compatibility checking systems",
+        "semantic_boundaries": "Formal compatibility model with automated checking",
+        "sub_semantics": ["CMP-001: Compatibility Rules", "CMP-002: Compatibility Checking", "CMP-003: Compatibility Reports"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["compatibility-validation", "compatibility-check"]
+      },
+      "GL75": {
+        "name": "Schema Diffing Specification",
+        "definition": "Formal specification of schema diffing rules and diff generation",
+        "scope": "All schema diffing implementations and diff generation tools",
+        "semantic_boundaries": "Semantic diffing with change categorization",
+        "sub_semantics": ["DIF-001: Diffing Rules", "DIF-002: Change Categorization", "DIF-003: Diff Format"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["diffing-validation", "change-categorization-check"]
+      },
+      "GL76": {
+        "name": "Schema Enforcement Specification",
+        "definition": "Formal specification of schema enforcement rules and enforcement mechanisms",
+        "scope": "All enforcement implementations and enforcement engines",
+        "semantic_boundaries": "Automated enforcement with configurable policies",
+        "sub_semantics": ["ENF-001: Enforcement Rules", "ENF-002: Enforcement Mechanisms", "ENF-003: Policy Configuration"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["enforcement-validation", "policy-check"]
+      },
+      "GL77": {
+        "name": "Schema Mutation Specification",
+        "definition": "Formal specification of schema mutation rules and mutation operations",
+        "scope": "All mutation implementations and mutation engines",
+        "semantic_boundaries": "Controlled mutation with validation and rollback",
+        "sub_semantics": ["MUT-001: Mutation Rules", "MUT-002: Mutation Operations", "MUT-003: Validation Checks"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["mutation-validation", "validation-check"]
+      },
+      "GL78": {
+        "name": "Schema Safety Specification",
+        "definition": "Formal specification of schema safety properties and safety guarantees",
+        "scope": "All safety implementations and safety checking systems",
+        "semantic_boundaries": "Formal safety model with automated verification",
+        "sub_semantics": ["SAF-001: Safety Properties", "SAF-002: Safety Guarantees", "SAF-003: Verification Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["safety-validation", "verification-check"]
+      },
+      "GL79": {
+        "name": "Schema Observability Specification",
+        "definition": "Formal specification of schema observability mechanisms and monitoring",
+        "scope": "All observability implementations and monitoring systems",
+        "semantic_boundaries": "Comprehensive observability with metrics and tracing",
+        "sub_semantics": ["OBS-001: Observability Mechanisms", "OBS-002: Metrics Collection", "OBS-003: Tracing Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["observability-validation", "monitoring-check"]
+      }
+    }
+  },
+  "GL80-GL89": {
+    "category": "Format Domains",
+    "description": "Domain-specific format classifications and usage patterns",
+    "anchors": {
+      "GL80": {
+        "name": "Governance Schema Specification",
+        "definition": "Formal specification of governance schema format and structure",
+        "scope": "All governance schema files and governance validation systems",
+        "semantic_boundaries": "Standardized governance schema with validation",
+        "sub_semantics": ["GVS-001: Schema Structure", "GVS-002: Validation Rules", "GVS-003: Enforcement Semantics"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["governance-schema-validation", "enforcement-check"]
+      },
+      "GL81": {
+        "name": "Evidence Schema Specification",
+        "definition": "Formal specification of evidence schema format and structure",
+        "scope": "All evidence schema files and evidence validation systems",
+        "semantic_boundaries": "Structured evidence schema with integrity verification",
+        "sub_semantics": ["EVS-001: Schema Structure", "EVS-002: Integrity Rules", "EVS-003: Provenance Tracking"],
+        "applicable_targets": ["evidence", "governance"],
+        "validation_rules": ["evidence-schema-validation", "integrity-check"]
+      },
+      "GL82": {
+        "name": "Contract Schema Specification",
+        "definition": "Formal specification of contract schema format and structure",
+        "scope": "All contract schema files and contract validation systems",
+        "semantic_boundaries": "Formal contract schema with validation and enforcement",
+        "sub_semantics": ["CTS-001: Schema Structure", "CTS-002: Validation Rules", "CTS-003: Enforcement Semantics"],
+        "applicable_targets": ["contract", "governance"],
+        "validation_rules": ["contract-schema-validation", "enforcement-check"]
+      },
+      "GL83": {
+        "name": "Adapter Schema Specification",
+        "definition": "Formal specification of adapter schema format and structure",
+        "scope": "All adapter schema files and adapter validation systems",
+        "semantic_boundaries": "Standardized adapter schema with interface validation",
+        "sub_semantics": ["ADS-001: Schema Structure", "ADS-002: Interface Definition", "ADS-003: Integration Rules"],
+        "applicable_targets": ["adapter", "platform"],
+        "validation_rules": ["adapter-schema-validation", "interface-compliance-check"]
+      },
+      "GL84": {
+        "name": "Platform Schema Specification",
+        "definition": "Formal specification of platform schema format and structure",
+        "scope": "All platform schema files and platform validation systems",
+        "semantic_boundaries": "Platform-agnostic schema with platform-specific extensions",
+        "sub_semantics": ["PLS-001: Schema Structure", "PLS-002: Extension Rules", "PLS-003: Compatibility Rules"],
+        "applicable_targets": ["platform", "adapter"],
+        "validation_rules": ["platform-schema-validation", "compatibility-check"]
+      },
+      "GL85": {
+        "name": "Index Schema Specification",
+        "definition": "Formal specification of index schema format and structure",
+        "scope": "All index schema files and index validation systems",
+        "semantic_boundaries": "Efficient index schema with fast lookup semantics",
+        "sub_semantics": ["IDS-001: Schema Structure", "IDS-002: Lookup Semantics", "IDS-003: Update Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["index-schema-validation", "lookup-check"]
+      },
+      "GL86": {
+        "name": "Metadata Schema Specification",
+        "definition": "Formal specification of metadata schema format and structure",
+        "scope": "All metadata schema files and metadata validation systems",
+        "semantic_boundaries": "Structured metadata schema with validation and versioning",
+        "sub_semantics": ["MDS-001: Schema Structure", "MDS-002: Validation Rules", "MDS-003: Versioning Rules"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["metadata-schema-validation", "versioning-check"]
+      },
+      "GL87": {
+        "name": "Topology Schema Specification",
+        "definition": "Formal specification of topology schema format and structure",
+        "scope": "All topology schema files and topology validation systems",
+        "semantic_boundaries": "Graph-based topology schema with validation",
+        "sub_semantics": ["TPS-001: Schema Structure", "TPS-002: Graph Rules", "TPS-003: Validation Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["topology-schema-validation", "graph-validation-check"]
+      },
+      "GL88": {
+        "name": "Semantic Schema Specification",
+        "definition": "Formal specification of semantic schema format and structure",
+        "scope": "All semantic schema files and semantic validation systems",
+        "semantic_boundaries": "Formal semantic schema with validation and inference",
+        "sub_semantics": ["SMS-001: Schema Structure", "SMS-002: Validation Rules", "SMS-003: Inference Rules"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["semantic-schema-validation", "inference-check"]
+      },
+      "GL89": {
+        "name": "Runtime Schema Specification",
+        "definition": "Formal specification of runtime schema format and structure",
+        "scope": "All runtime schema files and runtime validation systems",
+        "semantic_boundaries": "Runtime-aware schema with validation and monitoring",
+        "sub_semantics": ["RTS-001: Schema Structure", "RTS-002: Validation Rules", "RTS-003: Monitoring Rules"],
+        "applicable_targets": ["platform", "governance"],
+        "validation_rules": ["runtime-schema-validation", "monitoring-check"]
+      }
+    }
+  },
+  "GL90-GL99": {
+    "category": "Format Integration",
+    "description": "Multi-format interoperability, security, and governance",
+    "anchors": {
+      "GL90": {
+        "name": "Multi-Format Interoperability Specification",
+        "definition": "Formal specification of cross-format interoperability mechanisms and protocols",
+        "scope": "All format interoperability implementations and integration layers",
+        "semantic_boundaries": "Standardized interfaces with type-safe data exchange",
+        "sub_semantics": ["INT-001: Interface Definition", "INT-002: Type Mapping", "INT-003: Data Exchange"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["interoperability-validation", "type-safety-check"]
+      },
+      "GL91": {
+        "name": "Cross-Format Mapping Specification",
+        "definition": "Formal specification of format-to-format mapping rules and transformations",
+        "scope": "All format mapping implementations and transformation engines",
+        "semantic_boundaries": "Bi-directional mappings with semantic preservation",
+        "sub_semantics": ["MAP-001: Mapping Rules", "MAP-002: Transformation Logic", "MAP-003: Semantic Preservation"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["mapping-validation", "semantic-preservation-check"]
+      },
+      "GL92": {
+        "name": "Format Embedding Specification",
+        "definition": "Formal specification of format embedding rules and embedded content handling",
+        "scope": "All format embedding implementations and embedded content processing",
+        "semantic_boundaries": "Secure embedding with validation and isolation",
+        "sub_semantics": ["EMB-001: Embedding Rules", "EMB-002: Content Validation", "EMB-003: Isolation Mechanisms"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["embedding-validation", "security-check"]
+      },
+      "GL93": {
+        "name": "Format Composition Specification",
+        "definition": "Formal specification of format composition rules and multi-format artifacts",
+        "scope": "All format composition implementations and mixed-format files",
+        "semantic_boundaries": "Well-defined composition boundaries with validation",
+        "sub_semantics": ["CMP-001: Composition Rules", "CMP-002: Boundary Definition", "CMP-003: Validation Strategy"],
+        "applicable_targets": ["governance", "adapter"],
+        "validation_rules": ["composition-validation", "boundary-check"]
+      },
+      "GL94": {
+        "name": "Format Isolation Specification",
+        "definition": "Formal specification of format isolation mechanisms and separation of concerns",
+        "scope": "All format isolation implementations and separation layers",
+        "semantic_boundaries": "Strict isolation with controlled communication channels",
+        "sub_semantics": ["ISO-001: Isolation Mechanism", "ISO-002: Communication Channels", "ISO-003: Resource Separation"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["isolation-validation", "separation-check"]
+      },
+      "GL95": {
+        "name": "Format Sandbox Specification",
+        "definition": "Formal specification of format sandboxing and secure processing environments",
+        "scope": "All sandbox implementations and secure processing environments",
+        "semantic_boundaries": "Secure sandboxing with resource limits and monitoring",
+        "sub_semantics": ["SBX-001: Sandbox Definition", "SBX-002: Resource Limits", "SBX-003: Monitoring Rules"],
+        "applicable_targets": ["platform", "governance"],
+        "validation_rules": ["sandbox-validation", "security-check"]
+      },
+      "GL96": {
+        "name": "Format Security Specification",
+        "definition": "Formal specification of format security properties and security mechanisms",
+        "scope": "All format security implementations and security checks",
+        "semantic_boundaries": "Defense-in-depth with multiple security layers",
+        "sub_semantics": ["SEC-001: Security Properties", "SEC-002: Security Mechanisms", "SEC-003: Threat Mitigation"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["security-validation", "threat-mitigation-check"]
+      },
+      "GL97": {
+        "name": "Format Governance Specification",
+        "definition": "Formal specification of format governance rules and enforcement mechanisms",
+        "scope": "All format governance implementations and enforcement engines",
+        "semantic_boundaries": "Comprehensive governance with automated enforcement",
+        "sub_semantics": ["GOV-001: Governance Rules", "GOV-002: Enforcement Mechanisms", "GOV-003: Compliance Checking"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["governance-validation", "compliance-check"]
+      },
+      "GL98": {
+        "name": "Format Compliance Specification",
+        "definition": "Formal specification of format compliance requirements and validation",
+        "scope": "All compliance implementations and validation frameworks",
+        "semantic_boundaries": "Standards-based compliance with audit trails",
+        "sub_semantics": ["CMP-001: Compliance Requirements", "CMP-002: Validation Rules", "CMP-003: Audit Trails"],
+        "applicable_targets": ["governance", "contract"],
+        "validation_rules": ["compliance-validation", "audit-trail-check"]
+      },
+      "GL99": {
+        "name": "Format Observability Specification",
+        "definition": "Formal specification of format observability mechanisms and monitoring",
+        "scope": "All observability implementations and monitoring systems",
+        "semantic_boundaries": "Comprehensive observability with metrics and tracing",
+        "sub_semantics": ["OBS-001: Observability Mechanisms", "OBS-002: Metrics Collection", "OBS-003: Tracing Rules"],
+        "applicable_targets": ["governance", "platform"],
+        "validation_rules": ["observability-validation", "monitoring-check"]
+      }
+    }
+  }
+}

@@ -1,0 +1,590 @@
+# GL.Module.Diagnostics.OneStop透析.v1 - YAML 規範
+# 完整的配置、維度定義、驗證規則
+
+apiVersion: "gl.governance/v1"
+kind: "GovernanceDiagnosticsModule"
+
+metadata:
+  name: "GL.Module.Diagnostics.OneStop透析"
+  shortName: "DIAGNOSTICS-v1"
+  version: "1.0.0"
+  releaseDate: "2026-02-05"
+  status: "production"
+  maintainer: "Governance.Platform.Team"
+  contact: "governance@internal"
+
+spec:
+  # ============================================================
+  # 一、系統配置
+  # ============================================================
+  
+  system:
+    description: "一站式治理透析系統 - 多維度零容忍診斷引擎"
+    purpose: "在模組宣稱通過/世界級/已治理前進行全面審查"
+    
+    goals:
+      - name: "Complete Dimensional Analysis"
+        description: "對所有9個治理維度進行全面分析"
+        weight: 0.15
+      
+      - name: "Hallucination Detection"
+        description: "檢測所有自相矛盾和虛假聲稱"
+        weight: 0.20
+      
+      - name: "Immutable Evidence Chain"
+        description: "建立不可篡改的SHA-256審計追蹤"
+        weight: 0.15
+      
+      - name: "Claim Authorization"
+        description: "基於規則的聲稱權限驗證"
+        weight: 0.25
+      
+      - name: "Zero Tolerance Enforcement"
+        description: "P0級缺陷零容忍"
+        weight: 0.25
+
+  constraints:
+    tolerance:
+      hallucinations: 0  # 絕對零容忍
+      p0_failures: 0     # P0級檢查全部必須通過
+      p1_failures: 1     # P1級最多允許1個失敗
+      evidence_gaps: 0   # 證據不能有缺口
+      hash_mismatches: 0 # Hash不能有不一致
+    
+    latency:
+      max_execution_time_seconds: 300  # 5分鐘限制
+      warning_threshold_seconds: 180   # 3分鐘告警
+    
+    audit:
+      trace_retention_days: 365*10  # 10年保留
+      immutability: "SHA256-signed"  # 簽名確保不可篡改
+      replayability: "100%"          # 100%可重播
+
+  # ============================================================
+  # 二、9層維度定義
+  # ============================================================
+  
+  dimensions:
+    - dimensionId: "D1_SEMANTIC"
+      name: "語意層"
+      description: "驗證語意定義的完整性和有效性"
+      criticality: "high"
+      pass_rate_requirement: 1.0  # 100% 必須通過
+      
+      checks:
+        - checkId: "D1_C1"
+          name: "semantic_tokens_present"
+          description: "檢查語意tokens是否存在"
+          type: "file_presence"
+          location: ".governance/semantic/tokens.json"
+          requirement: "must_exist"
+          severity: "high"
+          threshold: "count > 0"
+          evidence_type: "file_hash"
+        
+        - checkId: "D1_C2"
+          name: "canonical_semantic_present"
+          description: "檢查規範語意定義是否存在"
+          type: "config_validation"
+          location: ".governance/semantic/canonical.yaml"
+          requirement: "must_contain"
+          required_fields: ["canonical_definitions"]
+          severity: "high"
+          evidence_type: "content_hash"
+        
+        - checkId: "D1_C3"
+          name: "hash_semantic_verified"
+          description: "驗證語意hash值正確性"
+          type: "hash_validation"
+          location: ".governance/hashes/semantic_hashes.json"
+          requirement: "all_hashes_verified"
+          severity: "high"
+          algorithm: "SHA256"
+          evidence_type: "verification_result"
+
+    - dimensionId: "D2_GOVERNANCE"
+      name: "治理層"
+      description: "驗證治理配置和GLCM集成的有效性"
+      criticality: "critical"
+      pass_rate_requirement: 0.8  # 80% 必須通過
+      
+      checks:
+        - checkId: "D2_C1"
+          name: "glcm_config_present"
+          description: "GLCM配置是否存在且啟用"
+          type: "config_validation"
+          location: ".governance/glcm/config.yaml"
+          requirement: "must_contain"
+          required_fields: ["glcm_enabled"]
+          required_value: true
+          severity: "critical"
+          evidence_type: "config_snapshot"
+        
+        - checkId: "D2_C2"
+          name: "glcm_passed_report_present"
+          description: "GLCM通過報告是否存在"
+          type: "report_validation"
+          location: ".governance/glcm/passed_report.json"
+          requirement: "status_equals"
+          required_value: "passed"
+          severity: "critical"
+          evidence_type: "report_hash"
+        
+        - checkId: "D2_C3"
+          name: "glcm_engine_trace_present"
+          description: "GLCM引擎執行追蹤是否存在"
+          type: "trace_validation"
+          location: ".governance/glcm/engine_trace.json"
+          requirement: "trace_has_steps"
+          min_steps: 1
+          severity: "critical"
+          evidence_type: "trace_hash"
+
+    - dimensionId: "D3_EVIDENCE"
+      name: "證據層"
+      description: "驗證證據收集和鏈完整性"
+      criticality: "critical"
+      pass_rate_requirement: 0.8  # 80% 必須通過
+      
+      checks:
+        - checkId: "D3_C1"
+          name: "event_stream_present"
+          description: "事件流是否完整"
+          type: "stream_validation"
+          location: ".governance/gl-events/"
+          requirement: "directory_not_empty"
+          severity: "critical"
+          evidence_type: "file_listing"
+        
+        - checkId: "D3_C2"
+          name: "hash_registry_present"
+          description: "Hash註冊表是否存在"
+          type: "registry_validation"
+          location: ".governance/hashes/registry.json"
+          requirement: "registry_has_entries"
+          min_entries: 5
+          severity: "critical"
+          evidence_type: "registry_snapshot"
+        
+        - checkId: "D3_C3"
+          name: "evidence_chain_complete"
+          description: "證據鏈是否完整且未破損"
+          type: "chain_validation"
+          location: ".governance/evidence/chain.json"
+          requirement: "chain_integrity_verified"
+          severity: "critical"
+          algorithm: "SHA256-linked"
+          evidence_type: "chain_verification"
+
+    - dimensionId: "D4_RESPONSIBILITY"
+      name: "責任層"
+      description: "驗證責任鏈和控制層級定義"
+      criticality: "high"
+      pass_rate_requirement: 0.8  # 80% 必須通過
+      
+      checks:
+        - checkId: "D4_C1"
+          name: "responsibility_chain_present"
+          description: "責任鏈是否完整"
+          type: "chain_validation"
+          location: ".governance/responsibility/chain.yaml"
+          requirement: "chain_has_entries"
+          severity: "high"
+          evidence_type: "chain_snapshot"
+        
+        - checkId: "D4_C2"
+          name: "control_tier_defined"
+          description: "控制層級是否明確定義"
+          type: "config_validation"
+          location: ".governance/control/tier.yaml"
+          requirement: "must_contain"
+          required_fields: ["tier_level"]
+          severity: "high"
+          evidence_type: "tier_definition"
+        
+        - checkId: "D4_C3"
+          name: "autonomy_tier_defined"
+          description: "自主層級是否定義"
+          type: "config_validation"
+          location: ".governance/autonomy/tier.yaml"
+          requirement: "must_contain"
+          required_fields: ["autonomy_level"]
+          severity: "high"
+          evidence_type: "autonomy_definition"
+
+    - dimensionId: "D5_INTENT"
+      name: "意圖層"
+      description: "驗證模組意圖定義和驗證"
+      criticality: "high"
+      pass_rate_requirement: 1.0  # 100% 必須通過
+      
+      checks:
+        - checkId: "D5_C1"
+          name: "intent_type_defined"
+          description: "意圖類型是否明確"
+          type: "config_validation"
+          location: ".governance/intent/definition.yaml"
+          requirement: "must_contain"
+          required_fields: ["intent_type"]
+          severity: "high"
+          evidence_type: "intent_definition"
+        
+        - checkId: "D5_C2"
+          name: "intent_verification_passed"
+          description: "意圖驗證是否通過"
+          type: "verification_validation"
+          location: ".governance/intent/verification.json"
+          requirement: "verified_equals_true"
+          severity: "high"
+          evidence_type: "verification_result"
+
+    - dimensionId: "D6_REVERSIBILITY"
+      name: "可逆性層"
+      description: "驗證系統回滾能力"
+      criticality: "medium"
+      pass_rate_requirement: 0.5  # 50% 通過即可
+      
+      checks:
+        - checkId: "D6_C1"
+          name: "rollback_point_defined"
+          description: "回滾點是否已定義"
+          type: "checkpoint_validation"
+          location: ".governance/reversibility/rollback_point.json"
+          requirement: "must_contain"
+          required_fields: ["checkpoint_hash"]
+          severity: "medium"
+          evidence_type: "checkpoint_snapshot"
+        
+        - checkId: "D6_C2"
+          name: "reversibility_level_documented"
+          description: "可逆性級別是否文檔化"
+          type: "documentation_validation"
+          location: ".governance/reversibility/documentation.md"
+          requirement: "file_exists"
+          severity: "medium"
+          evidence_type: "doc_hash"
+
+    - dimensionId: "D7_GLCM_VALIDATION"
+      name: "GLCM模組驗證層"
+      description: "驗證所有必需的GLCM模組"
+      criticality: "critical"
+      pass_rate_requirement: 0.9  # 90% 必須通過
+      
+      checks:
+        - checkId: "D7_C1"
+          name: "GLCM-EVC_passed"
+          description: "GLCM-EVC模組通過"
+          type: "module_validation"
+          location: ".governance/glcm/GLCM-EVC.json"
+          requirement: "status_equals"
+          required_value: "passed"
+          severity: "critical"
+          evidence_type: "module_report"
+        
+        - checkId: "D7_C2"
+          name: "GLCM-UNC_passed"
+          description: "GLCM-UNC模組通過"
+          type: "module_validation"
+          location: ".governance/glcm/GLCM-UNC.json"
+          requirement: "status_equals"
+          required_value: "passed"
+          severity: "critical"
+          evidence_type: "module_report"
+        
+        - checkId: "D7_C3"
+          name: "GLCM-FCT_passed"
+          description: "GLCM-FCT模組通過"
+          type: "module_validation"
+          location: ".governance/glcm/GLCM-FCT.json"
+          requirement: "status_equals"
+          required_value: "passed"
+          severity: "critical"
+          evidence_type: "module_report"
+        
+        - checkId: "D7_C4"
+          name: "GLCM-NOFAKEPASS_passed"
+          description: "GLCM-NOFAKEPASS反虛假模組通過"
+          type: "module_validation"
+          location: ".governance/glcm/GLCM-NOFAKEPASS.json"
+          requirement: "status_equals"
+          required_value: "passed"
+          severity: "critical"
+          evidence_type: "module_report"
+
+    - dimensionId: "D8_REPLAY_CAPABILITY"
+      name: "重播能力層"
+      description: "驗證完全重播性"
+      criticality: "high"
+      pass_rate_requirement: 1.0  # 100% 必須通過
+      
+      checks:
+        - checkId: "D8_C1"
+          name: "semantic_replayable"
+          description: "語意是否可完全重播"
+          type: "replay_validation"
+          location: ".governance/replay/semantic_replay.json"
+          requirement: "replayable_equals_true"
+          severity: "high"
+          evidence_type: "replay_verification"
+        
+        - checkId: "D8_C2"
+          name: "governance_replayable"
+          description: "治理過程是否可完全重播"
+          type: "replay_validation"
+          location: ".governance/replay/governance_replay.json"
+          requirement: "replayable_equals_true"
+          severity: "high"
+          evidence_type: "replay_verification"
+
+    - dimensionId: "D9_HASH_INTEGRITY"
+      name: "Hash完整性層"
+      description: "驗證所有工件的Hash完整性"
+      criticality: "critical"
+      pass_rate_requirement: 1.0  # 100% 必須通過
+      
+      checks:
+        - checkId: "D9_C1"
+          name: "all_artifacts_hashed"
+          description: "所有關鍵工件是否已Hash"
+          type: "artifact_validation"
+          required_artifacts:
+            - "semantic_tokens"
+            - "governance_config"
+            - "evidence_chain"
+            - "responsibility_chain"
+            - "intent_definition"
+          severity: "critical"
+          algorithm: "SHA256"
+          evidence_type: "artifact_list"
+        
+        - checkId: "D9_C2"
+          name: "hash_registry_synced"
+          description: "Hash註冊表是否與工件同步"
+          type: "sync_validation"
+          location: ".governance/hashes/sync_status.json"
+          requirement: "synced_equals_true"
+          severity: "critical"
+          evidence_type: "sync_status"
+        
+        - checkId: "D9_C3"
+          name: "hash_collision_check"
+          description: "是否存在Hash碰撞"
+          type: "collision_detection"
+          requirement: "no_collisions_detected"
+          severity: "critical"
+          evidence_type: "collision_report"
+
+  # ============================================================
+  # 三、幻覺檢測規則
+  # ============================================================
+  
+  hallucination_detection:
+    enabled: true
+    zero_tolerance: true
+    
+    detection_rules:
+      - ruleId: "HR1"
+        name: "虛假聲稱檢測"
+        condition: "報告聲稱通過但無支持證據"
+        action: "mark_as_hallucination"
+        severity: "critical"
+      
+      - ruleId: "HR2"
+        name: "多重聲稱衝突"
+        condition: "同時聲稱通過和失敗"
+        action: "mark_as_hallucination"
+        severity: "critical"
+      
+      - ruleId: "HR3"
+        name: "Hash不一致"
+        condition: "計算的Hash與存儲值不匹配"
+        action: "mark_as_hallucination"
+        severity: "critical"
+      
+      - ruleId: "HR4"
+        name: "證據缺失"
+        condition: "聲稱但無審計追蹤"
+        action: "mark_as_hallucination"
+        severity: "high"
+      
+      - ruleId: "HR5"
+        name: "時間戳矛盾"
+        condition: "檢查時間在報告時間之後"
+        action: "mark_as_hallucination"
+        severity: "high"
+      
+      - ruleId: "HR6"
+        name: "模組衝突"
+        condition: "GLCM模組互相否定"
+        action: "mark_as_hallucination"
+        severity: "high"
+
+  # ============================================================
+  # 四、結論合法性規則
+  # ============================================================
+  
+  claim_authorization:
+    pass:
+      name: "通過 (PASS)"
+      description: "模組滿足基本通過條件"
+      requirements:
+        - dimension: "D2_GOVERNANCE"
+          min_pass_rate: 0.8
+        - dimension: "D3_EVIDENCE"
+          min_pass_rate: 0.8
+        - criterion: "hallucinations"
+          must_equal: 0
+      permissions:
+        - allow_continue_workflow: true
+        - allow_claim_pass: true
+        - allow_claim_governed: false
+        - allow_claim_world_class: false
+    
+    governed:
+      name: "已治理 (GOVERNED)"
+      description: "模組達到企業級治理標準"
+      requirements:
+        - dimension: "D2_GOVERNANCE"
+          min_pass_rate: 0.9
+        - dimension: "D3_EVIDENCE"
+          min_pass_rate: 0.9
+        - dimension: "D4_RESPONSIBILITY"
+          min_pass_rate: 0.8
+        - dimension: "D7_GLCM_VALIDATION"
+          min_pass_rate: 0.9
+        - criterion: "hallucinations"
+          must_equal: 0
+      permissions:
+        - allow_production_deploy: true
+        - allow_claim_governed: true
+        - allow_claim_world_class: false
+    
+    world_class:
+      name: "世界級 (WORLD_CLASS)"
+      description: "模組達到全球最高治理標準"
+      requirements:
+        - dimension: "D1_SEMANTIC"
+          min_pass_rate: 1.0
+        - dimension: "D2_GOVERNANCE"
+          min_pass_rate: 1.0
+        - dimension: "D3_EVIDENCE"
+          min_pass_rate: 1.0
+        - dimension: "D5_INTENT"
+          min_pass_rate: 1.0
+        - dimension: "D8_REPLAY_CAPABILITY"
+          min_pass_rate: 1.0
+        - dimension: "D9_HASH_INTEGRITY"
+          min_pass_rate: 1.0
+        - dimension: "D7_GLCM_VALIDATION"
+          min_pass_rate: 1.0
+        - criterion: "hallucinations"
+          must_equal: 0
+      permissions:
+        - allow_open_source_publish: true
+        - allow_claim_world_class: true
+
+  # ============================================================
+  # 五、輸出規範
+  # ============================================================
+  
+  output:
+    format: "multi_format"
+    
+    yaml_report:
+      filename: "diagnostics_{timestamp}.yaml"
+      location: ".governance/gl-events/"
+      retention_days: 3650  # 10年
+      include:
+        - metadata
+        - dimension_analysis
+        - check_results
+        - evidence_chain_hash
+        - hallucination_list
+        - claim_authorization
+        - recommendations
+    
+    json_report:
+      filename: "diagnostics_{timestamp}.json"
+      location: ".governance/gl-events/"
+      retention_days: 3650
+      schema: "structured"
+      include:
+        - all_yaml_fields
+        - detailed_evidence
+        - metrics
+    
+    summary_report:
+      filename: "diagnostics_summary_{timestamp}.txt"
+      format: "human_readable"
+      include:
+        - overall_status
+        - dimension_summary
+        - key_findings
+        - recommendations
+
+  # ============================================================
+  # 六、執行策略
+  # ============================================================
+  
+  execution:
+    trigger_points:
+      - event: "before_verify_closure"
+        action: "run_diagnostics"
+        enforcement: "block_if_failed"
+      
+      - event: "before_claim_pass"
+        action: "verify_can_claim_pass"
+        enforcement: "block_if_not_authorized"
+      
+      - event: "before_claim_governed"
+        action: "verify_can_claim_governed"
+        enforcement: "block_if_not_authorized"
+      
+      - event: "before_claim_world_class"
+        action: "verify_can_claim_world_class"
+        enforcement: "block_if_not_authorized"
+      
+      - event: "on_module_startup"
+        action: "run_diagnostics_light"
+        enforcement: "warn_if_issues"
+      
+      - event: "on_scheduled_audit"
+        action: "run_full_diagnostics"
+        enforcement: "report_only"
+    
+    timeout_seconds: 300  # 5分鐘限制
+    
+    enforcement_strategy:
+      hallucination_found: "BLOCK_ALL"  # 發現幻覺則全部阻止
+      p0_check_failed: "BLOCK_FORWARD"  # P0失敗則阻止前進
+      p1_check_failed: "WARN_ONLY"      # P1失敗只警告
+      p2_check_failed: "LOG_ONLY"       # P2失敗只日誌
+
+  # ============================================================
+  # 七、集成配置
+  # ============================================================
+  
+  integration:
+    ci_cd:
+      pre_verify: ".governance/scripts/pre_verify_check.sh"
+      enforce_claim: ".governance/scripts/enforce_diagnostics.sh"
+      
+    git_hooks:
+      pre_commit: "diagnostics_light"
+      pre_push: "diagnostics_full"
+    
+    event_system:
+      publish_to_channel: "governance-events"
+      publish_format: "json"
+    
+    audit_trail:
+      enabled: true
+      persistence: "immutable"
+      algorithm: "SHA256-signed"
+
+---
+
+# 結束定義
+version: "1.0.0"
+status: "production_ready"
+last_updated: "2026-02-05T21:21:00Z"

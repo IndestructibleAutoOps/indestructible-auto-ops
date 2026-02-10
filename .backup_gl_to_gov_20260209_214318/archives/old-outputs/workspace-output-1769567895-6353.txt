@@ -1,0 +1,24 @@
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module './gov_engine.ts'
+Require stack:
+- /workspace/machine-native-ops/engine/aep-engine-app/governance/imaginaryUncacheableRequireResolveScript
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Function.resolve (node:internal/modules/helpers:193:19)
+    at requireResolveNonCached (/workspace/machine-native-ops/engine/node_modules/ts-node/dist/bin.js:555:16)
+    at getProjectSearchDir (/workspace/machine-native-ops/engine/node_modules/ts-node/dist/bin.js:525:40)
+    at phase3 (/workspace/machine-native-ops/engine/node_modules/ts-node/dist/bin.js:273:27)
+    at bootstrap (/workspace/machine-native-ops/engine/node_modules/ts-node/dist/bin.js:53:30)
+    at main (/workspace/machine-native-ops/engine/node_modules/ts-node/dist/bin.js:39:12)
+    at Object.<anonymous> (/workspace/machine-native-ops/engine/node_modules/ts-node/dist/bin.js:585:5)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/workspace/machine-native-ops/engine/aep-engine-app/governance/imaginaryUncacheableRequireResolveScript'
+  ]
+}
+
+Node.js v20.19.6

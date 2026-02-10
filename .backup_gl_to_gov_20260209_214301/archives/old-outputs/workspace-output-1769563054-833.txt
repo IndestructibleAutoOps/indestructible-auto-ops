@@ -1,0 +1,1 @@
+{"$schema":"[EXTERNAL_URL_REMOVED] Artifact Schema","type":"object","required":["id","gllevel","name","createdat","immutable"],"properties":{"id":{"type":"string"},"gllevel":{"type":"string","pattern":"^GL1[0-9]$"},"name":{"type":"string"},"createdat":{"type":"string","format":"date-time"},"immutable":{"type":"boolean"}}}

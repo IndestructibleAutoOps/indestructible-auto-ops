@@ -1,0 +1,30 @@
+name: GL Governance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - '.github/governance/**'
+      - '.github/agents/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'engine/**'
+      - 'file-organizer-system/**'
+      - 'instant/**'
+      - 'elasticsearch-search-system/**'
+      - 'infrastructure/**'
+      - '.github/governance/**'
+      - '.github/agents/**'
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 0 * * *' # Daily audit at midnight UTC
+
+jobs:
+  gl-engine-validation:

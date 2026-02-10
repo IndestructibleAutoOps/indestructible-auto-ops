@@ -1,0 +1,76 @@
+# @GL-governed
+# @GL-layer: governance
+# @GL-semantic: .gl-manifest
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+# GL Semantic Manifest - Governance Subsystem
+# @gl-layer GL-10-OPERATIONAL
+# @gl-semantic-anchor GL-10-GOV-ENGINE
+# GL Unified Architecture Governance Framework Activated
+
+gl_version: "2.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+manifest:
+  subsystem: "governance"
+  module: "aep-engine"
+  layer: "GL-10-OPERATIONAL"
+  semantic_anchor: "GL-10-GOV-ENGINE"
+  updated: "2026-01-28"
+  migration_status: "completed"
+
+components:
+  anchor_resolver:
+    file: "anchor_resolver.ts"
+    class: "AnchorResolver"
+    description: "Semantic anchor resolution for governance"
+    version: "1.0.0"
+    exports:
+      - "AnchorResolver"
+    dependencies:
+      - "../interfaces.d"
+
+  events_writer:
+    file: "events_writer.ts"
+    class: "EventsWriter"
+    description: "Governance event stream writer"
+    version: "1.0.0"
+    exports:
+      - "EventsWriter"
+    dependencies:
+      - "fs"
+      - "path"
+      - "../interfaces.d"
+
+  gov_engine:
+    file: "gov_engine.ts"
+    class: "GovernanceEngine"
+    description: "Core governance engine orchestrator"
+    version: "1.0.0"
+    exports:
+      - "GovernanceEngine"
+    dependencies:
+      - "./rule_evaluator"
+      - "./anchor_resolver"
+      - "./events_writer"
+      - "../interfaces.d"
+
+  rule_evaluator:
+    file: "rule_evaluator.ts"
+    class: "RuleEvaluator"
+    description: "Governance rule evaluation engine"
+    version: "1.0.0"
+    exports:
+      - "RuleEvaluator"
+    dependencies:
+      - "../interfaces.d"
+
+governance:
+  charter_activated: true
+  evidence_required: true
+  audit_compliant: true

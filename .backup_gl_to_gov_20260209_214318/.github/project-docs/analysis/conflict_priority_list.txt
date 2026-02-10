@@ -1,0 +1,64 @@
+================================================================================
+GL00-09 命名衝突優先級清單
+生成時間：2026-01-22 03:17:28
+================================================================================
+
+P0 - 關鍵（0 個）
+--------------------------------------------------------------------------------
+
+P1 - 高（0 個）
+--------------------------------------------------------------------------------
+
+P2 - 中（974 個）
+--------------------------------------------------------------------------------
+  ./archive/legacy-workflows/naming-governance.yaml:80 - # 工作定義 - Jobs Definition
+  ./archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/cost-management/runtime-mapping.yaml:6 - budget_config: "config/budget-definitions.yaml"
+  ./archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/nucleus-orchestrator/runtime-mapping.yaml:6 - workflow_definitions: "config/workflows/"
+  ./archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/identity-tenancy/runtime-mapping.yaml:20 - rbac_definitions: "config/rbac-definitions.yaml"
+  ./archive/unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/performance-reliability/runtime-mapping.yaml:5 - sla_definitions: "config/sla-definitions.yaml"
+  ./root/.root.gates.map.yaml:21 - # === GATE DEFINITIONS ===
+  ./root/.root.gates.map.yaml:84 - - name: "definition_completeness"
+  ./root/.root.gates.map.yaml:85 - expression: "validation.semantic.definition_completeness == 'pass'"
+  ./root/.root.gates.map.yaml:86 - description: "All concept definitions must be complete"
+  ./root/.root.semantic-root.yaml:58 - definition: "Any entity in the system that can be versioned, governed, and trace
+  ./root/.root.semantic-root.yaml:76 - - "Service definition"
+  ./root/.root.semantic-root.yaml:80 - definition: "System of policies, procedures, and mechanisms that regulate behavi
+  ./root/.root.semantic-root.yaml:102 - definition: "Self-contained unit of functionality with defined interfaces and de
+  ./root/.root.semantic-root.yaml:124 - definition: "System of establishing and maintaining trust relationships between 
+  ./root/.root.semantic-root.yaml:146 - definition: "Complete record of the origin, history, and lifecycle of an artifac
+  ./root/.root.semantic-root.yaml:168 - definition: "System for ensuring and verifying the consistency and authenticity 
+  ./root/.root.semantic-root.yaml:190 - definition: "Flow and orchestration of system operations and workflows"
+  ./root/.root.semantic-root.yaml:215 - definition: "Artifact following FileX Standard Template v1 with bi-directional g
+  ./root/.root.semantic-root.yaml:226 - definition: "Governance system with both forward and backward reconciliation mec
+  ./gl/00-strategic/artifacts/org-structure.yaml:524 - changes: "Initial organization structure definition"
+  ./gl/00-strategic/artifacts/compliance-standards-reference.yaml:410 - - "BAI02: Manage Requirements Definition"
+  ./gl/00-strategic/artifacts/ethical-guidelines.yaml:508 - changes: "Initial ethical guidelines definition"
+  ./gl/00-strategic/artifacts/cross-domain-integration.yaml:402 - - "Semantic definition"
+  ./gl/90-meta/artifacts/governance-standards.yaml:200 - - "ProcessDefinition"
+  ./gl/90-meta/artifacts/governance-standards.yaml:219 - - "MetricsDefinition"
+  ./gl/90-meta/artifacts/governance-standards.yaml:221 - - "SLODefinition"
+  ./gl/90-meta/artifacts/governance-standards.yaml:233 - - "ExperimentDefinition"
+  ./gl/90-meta/artifacts/governance-standards.yaml:255 - - "LayerDefinition"
+  ./gl/90-meta/spec/GL-ARCHITECTURE-SPEC.yaml:798 - - name: "metrics_definition"
+  ./gl/90-meta/spec/GL-ARCHITECTURE-SPEC.yaml:800 - path: "observability/metrics-definition.yaml"
+  ./gl/90-meta/spec/GL-ARCHITECTURE-SPEC.yaml:878 - - artifact_type: "metrics_definition"
+  ./gl/90-meta/spec/GL-ARCHITECTURE-SPEC.yaml:881 - path: "observability/metrics-definition.yaml"
+  ./gl/90-meta/spec/GL-ARTIFACTS-TEMPLATES.yaml:509 - {{#each definitions}}
+  ./gl/90-meta/spec/GL-ARTIFACTS-TEMPLATES.yaml:511 - definition: "{{ this.definition }}"
+  ./gl/90-meta/spec/GL-ARTIFACTS-TEMPLATES.yaml:897 - kind: "MetricsDefinition"
+  ./gl/architecture/gl-global-parallelism-engine.yaml:19 - # PARALLELISM SCOPE DEFINITION
+  ./gl/architecture/gl-artifacts-matrix.yaml:79 - artifact_type: "process-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:145 - artifact_type: "schema-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:311 - type: "process-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:462 - artifact_type: "schema-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:465 - artifact_type: "metric-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:538 - artifact_type: "process-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:556 - type: "schema-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:578 - artifact_type: "metric-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:587 - skill_mapping: ["schema_definition"]
+  ./gl/architecture/gl-artifacts-matrix.yaml:607 - artifact_type: "process-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:680 - artifact_type: "metric-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:694 - type: "rule-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:771 - type: "metric-definition"
+  ./gl/architecture/gl-artifacts-matrix.yaml:789 - artifact_type: "schema-definition"
+  ... 還有 924 個

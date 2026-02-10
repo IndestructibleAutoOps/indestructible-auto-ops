@@ -1,0 +1,71 @@
+# @GL-governed
+# @GL-layer: GL60-80
+# @GL-semantic: research-loop.workflow
+# @GL-audit-trail: governance/workflows/research-loop/references/registry.yaml
+version: 1
+metadata:
+  id: GL-WORKFLOW-RESEARCH-LOOP-0001
+  name: research-loop-boot-sequence
+  status: canonical
+  owner: IndestructibleAutoOps
+  gl_layer: GL60-80
+  mode: pre-work-mandatory
+  offline_only: true
+  isolation_import_only: true
+  artifacts_root: reports/research-runs
+  schema:
+    run: governance/workflows/research-loop/schemas/workflow-run.schema.json
+    evidence: governance/workflows/research-loop/schemas/source-evidence.schema.json
+  references:
+    registry: governance/workflows/research-loop/references/registry.yaml
+    policy_pack_lock: governance/workflows/research-loop/policy-pack.lock.json
+
+stages:
+  - id: A_INTERNAL_BASELINE
+    required: true
+    description: Build internal baseline and gap list.
+    actions:
+      - collect_internal_refs
+      - build_gap_list
+      - emit_router_inputs
+    outputs:
+      - "{artifacts_root}/{run_id}/intake.md"
+      - "{artifacts_root}/{run_id}/gap-list.md"
+      - "{artifacts_root}/{run_id}/evidence/internal.jsonl"
+  - id: B_EXTERNAL_DOMAIN
+    required: false
+    gate: EGRESS-EXTERNAL-ISOLATION
+    description: Controlled external domain research via isolation import.
+    actions:
+      - request_isolation_import
+      - snapshot_to_refpack
+      - score_sources
+    outputs:
+      - "{artifacts_root}/{run_id}/evidence/external.jsonl"
+      - "{artifacts_root}/{run_id}/provenance/external-audit.json"
+  - id: C_GLOBAL_OPEN
+    required: false
+    gate: EGRESS-GLOBAL-ISOLATION
+    description: Global open research via isolation import.
+    actions:
+      - request_isolation_import
+      - snapshot_to_refpack
+      - cross_validate
+    outputs:
+      - "{artifacts_root}/{run_id}/evidence/global.jsonl"
+      - "{artifacts_root}/{run_id}/provenance/global-audit.json"
+  - id: D_SYNTHESIS
+    required: true
+    description: Cross-validate and produce plan outputs.
+    actions:
+      - map_to_ref_spec_rule
+      - produce_plan
+      - emit_pr_tasks
+    outputs:
+      - "{artifacts_root}/{run_id}/synthesis.md"
+      - "{artifacts_root}/{run_id}/outputs/architecture-plan.md"
+      - "{artifacts_root}/{run_id}/outputs/naming-map.json"
+      - "{artifacts_root}/{run_id}/outputs/pr-plan.yaml"
+
+gates:
+  registry: governance/workflows/research-loop/gates.yaml

@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ng-namespace-validator
+  namespace: ng-governance
+  labels:
+    app: ng-namespace-validator
+    ng-code: NG70400
+    ng-category: semantic-context
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ng-namespace-validator
+  template:
+    metadata:
+      labels:
+        app: ng-namespace-validator
+        ng-code: NG70400
+    spec:
+      containers:
+      - name: validator
+        image: ng-governance/namespace-validator:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: github-token
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-host
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-password
+        - name: POSTGRES_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: postgres-database
+        volumeMounts:
+        - name: config
+          mountPath: /etc/ng-governance/config
+          readOnly: true
+        - name: workspace
+          mountPath: /workspace
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+      volumes:
+      - name: config
+        configMap:
+          name: ng-governance-config
+      - name: workspace
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ng-namespace-validator
+  namespace: ng-governance
+  labels:
+    app: ng-namespace-validator
+    ng-code: NG70400
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http
+  selector:
+    app: ng-namespace-validator
+  type: ClusterIP

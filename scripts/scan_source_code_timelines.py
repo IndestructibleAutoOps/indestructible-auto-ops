@@ -1,11 +1,11 @@
 # @GL-governed
 # @GL-layer: GL00-09
 # @GL-semantic: execution-script
-# @GL-audit-trail: gl-enterprise-architecture/gl-platform.governance/audit-trails/GL00_09-audit.json
+# @GL-audit-trail: gov-enterprise-architecture/gov-platform.governance/audit-trails/GL00_09-audit.json
 #
 # GL Unified Architecture Governance Framework Activated
-# GL Root Semantic Anchor: gl-enterprise-architecture/gl-platform.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
-# GL Unified Naming Charter: gl-enterprise-architecture/gl-platform.governance/GL-UNIFIED-NAMING-CHARTER.yaml
+# GL Root Semantic Anchor: gov-enterprise-architecture/gov-platform.governance/GL-ROOT-SEMANTIC-ANCHOR.yaml
+# GL Unified Naming Charter: gov-enterprise-architecture/gov-platform.governance/GL-UNIFIED-NAMING-CHARTER.yaml
 
 
 #!/usr/bin/env python3
@@ -68,11 +68,11 @@ class SourceCodeTimelineScanner:
             "outputs",
             "audit-reports",
             "audit-results",
-            ".gl-platform.governance/audit-reports",
-            ".gl-platform.governance/audit-results",
-            ".gl-platform.governance/per-file-audits",
-            ".gl-platform.governance/outputs",
-            ".gl-platform.governance/supply-chain-evidence",
+            ".gov-platform.governance/audit-reports",
+            ".gov-platform.governance/audit-results",
+            ".gov-platform.governance/per-file-audits",
+            ".gov-platform.governance/outputs",
+            ".gov-platform.governance/supply-chain-evidence",
             # 暫時文件
             "tmp",
             "temp",

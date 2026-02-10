@@ -1,0 +1,83 @@
+# API-Related Arbitration Rules
+# MNGA Layer 6 - Reasoning System
+
+apiVersion: arbitration.mnga.io/v1
+kind: ArbitrationRules
+metadata:
+  name: api-rules
+  description: "Rules for API-related decision making"
+
+rules:
+  core_module_api:
+    description: "Use internal implementation for core module APIs"
+    priority: 1
+    condition:
+      type: "and"
+      conditions:
+        - field_match:
+            field: "internal.confidence"
+            operator: ">"
+            value: 0.8
+        - field_in_list:
+            field: "internal.metadata.module"
+            list: ["gov-platform-services", "gov-execution-runtime", "gov-governance"]
+    decision: "INTERNAL"
+    reason: "Core module APIs must use internal implementation for compatibility"
+    severity: "CRITICAL"
+    
+  breaking_api_change:
+    description: "Reject breaking API changes without migration plan"
+    priority: 2
+    condition:
+      type: "and"
+      conditions:
+        - field_match:
+            field: "external.metadata.breaking_change"
+            value: true
+        - field_match:
+            field: "internal.confidence"
+            operator: ">"
+            value: 0.6
+    decision: "INTERNAL"
+    reason: "Breaking API changes rejected - maintaining backward compatibility"
+    severity: "CRITICAL"
+    requirement: "require_migration_plan"
+    
+  api_version_mismatch:
+    description: "Use API version matching production environment"
+    priority: 3
+    condition:
+      type: "field_match"
+      field: "internal.metadata.environment"
+      value: "production"
+    decision: "INTERNAL"
+    reason: "Using production-tested API version for consistency"
+    severity: "HIGH"
+    
+  public_api_contract:
+    description: "External best practices for public APIs"
+    priority: 4
+    condition:
+      type: "and"
+      conditions:
+        - field_match:
+            field: "internal.metadata.visibility"
+            value: "public"
+        - field_match:
+            field: "external.confidence"
+            operator: ">"
+            value: 0.9
+    decision: "HYBRID"
+    reason: "Public APIs should combine internal patterns with external best practices"
+    severity: "MEDIUM"
+    
+  internal_api:
+    description: "Use internal implementation for internal APIs"
+    priority: 5
+    condition:
+      type: "field_match"
+      field: "internal.metadata.visibility"
+      value: "internal"
+    decision: "INTERNAL"
+    reason: "Internal APIs follow project-specific conventions"
+    severity: "MEDIUM"

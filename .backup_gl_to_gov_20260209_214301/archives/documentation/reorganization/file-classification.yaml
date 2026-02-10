@@ -1,0 +1,412 @@
+# File Classification Rules
+
+version: 1.0.0
+classification_framework: ng_governance_aligned
+
+# Classification Dimensions
+dimensions:
+  governance_layer:
+    - meta_governance
+    - implementation
+    - platform
+    - support
+    - archive
+
+  era_alignment:
+    - era_1_code_layer
+    - era_2_microcode_layer
+    - era_3_no_code_layer
+    - cross_era
+    - era_agnostic
+
+  gl_layer:
+    - gl_90_99_meta
+    - gl_00_09_enterprise
+    - gl_10_19_platform
+    - gl_20_29_data
+    - gl_30_39_runtime_execution
+    - gl_40_49_runtime_services
+    - gl_50_59_observability
+    - gl_60_80_governance
+    - gl_81_83_extensions
+
+  functional_category:
+    - specification
+    - implementation
+    - configuration
+    - documentation
+    - test
+    - tool
+    - report
+    - archive
+
+# Classification Rules
+
+## Meta-Governance Files
+meta_governance:
+  patterns:
+    - "NG*.yaml"
+    - "NG*.md"
+    - "*charter*.md"
+    - "*governance*.yaml"
+  target: /ng-namespace-governance/core/
+  exception_patterns:
+    - "*implementation*": /ng-namespace-governance/implementation/
+    - "*report*": /ng-namespace-governance/reports/
+
+## Era-Specific Files
+era_specific:
+  era_1:
+    patterns:
+      - "*era1*"
+      - "*era-1*"
+      - "NG1*.yaml"
+      - "NG2*.yaml"
+    target: /ng-namespace-governance/era-1/
+
+  era_2:
+    patterns:
+      - "*era2*"
+      - "*era-2*"
+      - "NG3*.yaml"
+      - "NG4*.yaml"
+      - "NG5*.yaml"
+    target: /ng-namespace-governance/era-2/
+
+  era_3:
+    patterns:
+      - "*era3*"
+      - "*era-3*"
+      - "NG6*.yaml"
+      - "NG7*.yaml"
+      - "NG8*.yaml"
+    target: /ng-namespace-governance/era-3/
+
+  cross_era:
+    patterns:
+      - "*cross-era*"
+      - "*mapping*"
+      - "NG9*.yaml"
+    target: /ng-namespace-governance/cross-era/
+
+## GL Platform Files
+gl_platform:
+  by_layer:
+    gl_90_99:
+      patterns:
+        - "gl-meta-*"
+        - "*meta-specifications*"
+      target: /platforms/gl/meta-specifications/
+
+    gl_00_09:
+      patterns:
+        - "*enterprise-architecture*"
+      target: /platforms/gl/enterprise-architecture/
+
+    gl_10_19:
+      patterns:
+        - "*platform-core*"
+        - "*platform-services*"
+      target: /platforms/gl/platform-services/
+
+    gl_20_29:
+      patterns:
+        - "*data-processing*"
+        - "*semantic-core*"
+        - "*search-elasticsearch*"
+      target: /platforms/gl/data-processing/ # or semantic-core/ or search-elasticsearch/
+
+    gl_30_39:
+      patterns:
+        - "*runtime-execution*"
+        - "*automation-instant*"
+        - "*automation-organizer*"
+        - "*infrastructure-foundation*"
+      target: /platforms/gl/runtime-execution/ # or automation-instant/ etc.
+
+    gl_40_49:
+      patterns:
+        - "*runtime-services*"
+      target: /platforms/gl/runtime-services/
+
+    gl_50_59:
+      patterns:
+        - "*monitoring*"
+        - "*observability*"
+      target: /platforms/gl/observability/
+
+    gl_60_80:
+      patterns:
+        - "*governance-compliance*"
+        - "*governance-architecture*"
+      target: /platforms/gl/governance-compliance/ # or governance-architecture/
+
+    gl_81_83:
+      patterns:
+        - "*extension-services*"
+        - "*integration-hub*"
+        - "*quantum-computing*"
+      target: /platforms/gl/extension-services/ # or integration-hub/ or quantum-computing/
+
+## Ecosystem Implementation Files
+ecosystem_files:
+  governance:
+    patterns:
+      - "governance/**"
+      - "*governance*.py"
+      - "*policy*.yaml"
+    target: /ng-namespace-governance/implementation/ecosystem/governance/
+
+  registry:
+    patterns:
+      - "registry/**"
+      - "*registry*.py"
+      - "*registry*.json"
+    target: /ng-namespace-governance/implementation/ecosystem/registry/
+
+  coordination:
+    patterns:
+      - "coordination/**"
+      - "*coordinator*.py"
+      - "*service-discovery*"
+    target: /ng-namespace-governance/implementation/ecosystem/coordination/
+
+  contracts:
+    patterns:
+      - "contracts/**"
+      - "*contract*.yaml"
+      - "*interface*.yaml"
+    target: /ng-namespace-governance/implementation/ecosystem/contracts/
+
+  engines:
+    patterns:
+      - "engines/**"
+      - "*engine*.py"
+      - "*executor*.py"
+    target: /ng-namespace-governance/implementation/ecosystem/engines/
+
+  tools:
+    patterns:
+      - "tools/**/*.py"
+      - "*tool*.py"
+      - "*util*.py"
+    target: /ng-namespace-governance/implementation/ecosystem/tools/
+
+  automation:
+    patterns:
+      - "automation/**"
+      - "*auto*.py"
+      - "*task*.py"
+      - "*scheduler*.py"
+    target: /ng-namespace-governance/implementation/ecosystem/automation/
+
+## Documentation Files
+documentation:
+  architecture:
+    patterns:
+      - "*architecture*.md"
+      - "*design*.md"
+      - "ARCHITECTURE.md"
+    target: /docs/architecture/
+
+  specifications:
+    patterns:
+      - "*specification*.md"
+      - "*spec*.md"
+      - "*standard*.md"
+    target: /docs/specifications/
+
+  guides:
+    patterns:
+      - "*guide*.md"
+      - "*howto*.md"
+      - "*tutorial*.md"
+    target: /docs/guides/
+
+  reference:
+    patterns:
+      - "*reference*.md"
+      - "*api*.md"
+    target: /docs/reference/
+
+  analysis:
+    patterns:
+      - "*analysis*.md"
+      - "*comparison*.md"
+      - "*evaluation*.md"
+    target: /docs/analysis/
+
+  development:
+    patterns:
+      - "*development*.md"
+      - "*strategy*.md"
+      - "DEVELOPMENT*.md"
+    target: /docs/development/
+
+## Report Files
+reports:
+  audit:
+    patterns:
+      - "*audit*.md"
+      - "*audit-report*"
+    target: /ng-namespace-governance/reports/audit/
+
+  execution:
+    patterns:
+      - "*execution*.md"
+      - "*execution-report*"
+      - "*execution-summary*"
+    target: /ng-namespace-governance/reports/execution/
+
+  compliance:
+    patterns:
+      - "*compliance*.md"
+      - "*verification*.md"
+    target: /ng-namespace-governance/reports/compliance/
+
+  analysis:
+    patterns:
+      - "*analysis*.json"
+      - "*evidence*.json"
+      - "*violation*.json"
+    target: /ng-namespace-governance/analysis/
+
+## Test Files
+tests:
+  unit:
+    patterns:
+      - "test_*.py"
+      - "*_test.py"
+    target: /tests/unit/
+
+  integration:
+    patterns:
+      - "test_integration_*.py"
+      - "*_integration_test.py"
+    target: /tests/integration/
+
+  ecosystem:
+    patterns:
+      - "ecosystem/tests/**"
+    target: /ng-namespace-governance/implementation/ecosystem/tests/
+
+## Configuration Files
+configuration:
+  global:
+    patterns:
+      - "config/**"
+      - "*.config.yaml"
+      - "*.config.json"
+    target: /config/
+
+  platform:
+    patterns:
+      - "*/config/**"
+      - "*/configs/**"
+    target: preserve_in_platform_directory
+
+  deployment:
+    patterns:
+      - "*deployment*.yaml"
+      - "docker-compose*.yaml"
+      - "kubernetes/*.yaml"
+    target: /deployment/
+
+## Archive Candidates
+archive:
+  completed_work:
+    patterns:
+      - "*COMPLETE*.md"
+      - "*FINAL*.md"
+      - "*SUMMARY*.md"
+    target: /archives/documentation/
+
+  historical:
+    patterns:
+      - "*old*"
+      - "*legacy*"
+      - "*deprecated*"
+    target: /archives/
+
+  reports:
+    patterns:
+      - "*-report-*.md"
+      - "*-summary-*.md"
+    conditions:
+      - older_than_90_days
+    target: /archives/documentation/
+
+## Special Cases
+special_cases:
+  root_essential:
+    patterns:
+      - README.md
+      - ARCHITECTURE.md
+      - CONTRIBUTING.md
+      - CHANGELOG.md
+      - LICENSE
+      - .gitignore
+    action: retain_at_root
+
+  github_required:
+    patterns:
+      - .github/**
+    action: retain_at_root
+
+  hidden_config:
+    patterns:
+      - .governance/**
+      - .agent_hooks/**
+      - .config/**
+    action: retain_at_root
+
+  temporary:
+    patterns:
+      - tmp/**
+      - temp/**
+      - "*.tmp"
+      - "*.temp"
+    action: gitignore_or_remove
+
+## Priority Resolution
+priority_order:
+  1: special_cases
+  2: meta_governance
+  3: era_specific
+  4: gl_platform
+  5: ecosystem_files
+  6: reports
+  7: documentation
+  8: tests
+  9: configuration
+  10: archive
+
+# Classification Algorithm
+algorithm:
+  steps:
+    1: check_special_cases
+    2: match_pattern_priority
+    3: check_directory_context
+    4: apply_governance_alignment
+    5: determine_target_location
+
+  conflict_resolution:
+    - use_highest_priority_match
+    - prefer_governance_alignment
+    - preserve_original_context
+    - log_ambiguous_cases
+
+# Migration Metadata
+migration_metadata:
+  track:
+    - original_path
+    - target_path
+    - classification_reason
+    - migration_timestamp
+    - validation_status
+
+  validation:
+    - verify_target_exists
+    - check_no_duplicates
+    - validate_governance_compliance
+    - confirm_accessibility

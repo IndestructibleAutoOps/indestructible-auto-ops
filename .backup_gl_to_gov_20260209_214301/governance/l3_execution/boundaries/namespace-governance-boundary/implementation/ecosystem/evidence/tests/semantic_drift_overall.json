@@ -1,0 +1,51 @@
+{
+  "test": "overall_semantic_drift_status",
+  "status": "passed",
+  "tests_executed": 3,
+  "test_results": {
+    "semantic_drift.json": {
+      "test": "test_output_consistency_across_versions",
+      "status": "passed",
+      "artifacts_tested": 2,
+      "drift_violations": [],
+      "timestamp": "2026-02-05T01:48:33.275642Z",
+      "hash": "sha256:f63a3c1f283d334f4efc38f7382aa6af57eb9b69887488b6485abf1939c78fd1"
+    },
+    "self_healing_determinism.json": {
+      "test": "test_self_healing_determinism",
+      "status": "passed",
+      "scenarios_tested": 3,
+      "determinism_verified": true,
+      "healing_actions": [
+        {
+          "scenario": "failure-001",
+          "action_hash": "sha256:96429d2be1990b877ce696961d7e029e1c1d5cf94ec0068cdff80cd3d91b745a",
+          "deterministic": true
+        },
+        {
+          "scenario": "failure-002",
+          "action_hash": "sha256:63c48ab23565da41f6ce2cfe717e09119022c7784d1e3203cf66bc8acf66d844",
+          "deterministic": true
+        },
+        {
+          "scenario": "failure-003",
+          "action_hash": "sha256:b5407fb00a5d903230853d14b6e035898ee535d368345ab3437a5c2dc0d4f650",
+          "deterministic": true
+        }
+      ],
+      "timestamp": "2026-02-05T01:48:33.279485Z",
+      "hash": "sha256:4fbfcf7d30fe740a7abf728a2bb8870e3a8cd5bf6c13faa06f33b18ddfeb0978"
+    },
+    "semantic_integrity.json": {
+      "test": "test_semantic_integrity_across_artifacts",
+      "status": "passed",
+      "artifacts_scanned": 10,
+      "violations_found": 0,
+      "violations": [],
+      "timestamp": "2026-02-05T01:48:33.284387Z",
+      "hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "timestamp": "2026-02-05T01:48:33.285715Z",
+  "hash": "sha256:5011d000b5db5777305a33e010ad33d1bb279762fcda03b7dbe40ddb0dc268b1"
+}

@@ -1,0 +1,59 @@
+# @GL-governed
+# @GL-layer: common
+# @GL-semantic: root.bootstrap
+# @GL-audit-trail: ../../engine/governance/GL_SEMANTIC_ANCHOR.json
+# 
+# GL Unified Architecture Governance Framework Activated
+
+# Root Bootstrap Configuration
+# GL Layer: Environment (GL90-99 Meta-Specification)
+# Root layer bootstrap configuration - points to controlplane entrypoint
+
+apiVersion: root.bootstrap/v1
+kind: RootBootstrap
+
+metadata:
+  name: machine-native-ops-taxonomy-bootstrap
+  version: v1.0.0
+  description: Root layer bootstrap configuration for MachineNativeOps Taxonomy Root Layer
+
+# ============================================================================
+# Controlplane Configuration (GL00-09 Strategic)
+# ============================================================================
+controlplane:
+  # Controlplane path
+  path: "./controlplane"
+  
+  # Required files validation (GL30-49 Execution)
+  requiredFiles:
+    - "config/root.config.yaml"
+    - "config/root.governance.yaml"
+    - "registries/root.registry.modules.yaml"
+    - "validation/root.validator.schema.yaml"
+  
+  # Entrypoint configuration (GL10-29 Operational)
+  entrypoint:
+    superExecution: "config/root.super-execution.yaml"
+    governance: "config/root.governance.yaml"
+    modules: "config/root.modules.yaml"
+  
+  # Version lock (GL90-99 Meta-Specification)
+  versionLock:
+    controlplaneVersion: "v1.0.0"
+    minCompatibleVersion: "v1.0.0"
+
+# ============================================================================
+# Boot Mode (GL00-09 Strategic)
+# ============================================================================
+bootMode:
+  mode: "production"  # production | development | testing
+  strictValidation: true  # Strict validation of config and structure at startup
+  autoRepair: false       # Auto-attempt repair of recoverable issues
+
+# ============================================================================
+# Health Check (GL50-59 Observability)
+# ============================================================================
+healthCheck:
+  enabled: true   # Enable health checks
+  interval: 60    # seconds
+  timeout: 10     # seconds

@@ -1,0 +1,426 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governed-configuration
+# @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
+
+# MachineNativeOps Official Action: mn-super-linter
+# Replaces: super-linter/super-linter/slim@v7
+# Description: Comprehensive code linting for multiple languages
+# Version: 1.0.0
+
+version: "1.0.0"
+metadata:
+  name: ""
+  description: ""
+  labels: {}
+
+name: 'MN Super Linter'
+description: 'MachineNativeOps official multi-language linter action'
+author: 'MachineNativeOps'
+
+branding:
+  icon: 'check-circle'
+  color: 'yellow'
+
+inputs:
+  validate-all-codebase:
+    description: 'Validate entire codebase vs only changed files'
+    required: false
+    default: 'true'
+  default-branch:
+    description: 'Default branch for comparison'
+    required: false
+    default: 'main'
+  github-token:
+    description: 'GitHub token for API access'
+    required: false
+    default: ${{ github.token }}
+  # Language toggles
+  validate-javascript:
+    description: 'Enable JavaScript/TypeScript linting'
+    required: false
+    default: 'true'
+  validate-python:
+    description: 'Enable Python linting'
+    required: false
+    default: 'true'
+  validate-yaml:
+    description: 'Enable YAML linting'
+    required: false
+    default: 'true'
+  validate-json:
+    description: 'Enable JSON linting'
+    required: false
+    default: 'true'
+  validate-markdown:
+    description: 'Enable Markdown linting'
+    required: false
+    default: 'true'
+  validate-bash:
+    description: 'Enable Bash/Shell linting'
+    required: false
+    default: 'true'
+  validate-dockerfile:
+    description: 'Enable Dockerfile linting'
+    required: false
+    default: 'true'
+  # Configuration
+  linter-rules-path:
+    description: 'Path to linter configuration files'
+    required: false
+    default: '.github/linters'
+  filter-regex-include:
+    description: 'Regex pattern for files to include'
+    required: false
+    default: ''
+  filter-regex-exclude:
+    description: 'Regex pattern for files to exclude'
+    required: false
+    default: ''
+  output-format:
+    description: 'Output format: text, json, sarif'
+    required: false
+    default: 'text'
+  output-file:
+    description: 'Output file path'
+    required: false
+    default: ''
+  fail-on-error:
+    description: 'Fail workflow on linting errors'
+    required: false
+    default: 'true'
+
+outputs:
+  status:
+    description: 'Linting status: success, failure'
+    value: ${{ steps.lint.outputs.status }}
+  error-count:
+    description: 'Total number of errors found'
+    value: ${{ steps.lint.outputs.error_count }}
+  sarif-file:
+    description: 'Path to SARIF output file'
+    value: ${{ steps.lint.outputs.sarif_file }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Linters
+      id: setup
+      shell: bash
+      run: |
+        echo "Setting up linters..."
+
+        # Create results directory
+        RESULTS_DIR=$(mktemp -d)
+        echo "results_dir=$RESULTS_DIR" >> $GITHUB_OUTPUT
+
+        # Check available linters
+        LINTERS_AVAILABLE=""
+
+        # ESLint for JavaScript/TypeScript
+        if command -v eslint &> /dev/null || command -v npx &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,eslint"
+        fi
+
+        # Python linters
+        if command -v pylint &> /dev/null || command -v flake8 &> /dev/null || command -v python3 &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,python"
+        fi
+
+        # YAML lint
+        if command -v yamllint &> /dev/null || command -v python3 &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,yamllint"
+        fi
+
+        # JSON lint
+        if command -v jq &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,jsonlint"
+        fi
+
+        # Markdown lint
+        if command -v markdownlint &> /dev/null || command -v npx &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,markdownlint"
+        fi
+
+        # Shell check
+        if command -v shellcheck &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,shellcheck"
+        fi
+
+        # Hadolint for Dockerfile
+        if command -v hadolint &> /dev/null; then
+          LINTERS_AVAILABLE="$LINTERS_AVAILABLE,hadolint"
+        fi
+
+        echo "linters=$LINTERS_AVAILABLE" >> $GITHUB_OUTPUT
+        echo "Available linters: $LINTERS_AVAILABLE"
+
+    - name: Get Files to Lint
+      id: files
+      shell: bash
+      run: |
+        VALIDATE_ALL="${{ inputs.validate-all-codebase }}"
+        DEFAULT_BRANCH="${{ inputs.default-branch }}"
+        INCLUDE_REGEX="${{ inputs.filter-regex-include }}"
+        EXCLUDE_REGEX="${{ inputs.filter-regex-exclude }}"
+
+        FILES_LIST=$(mktemp)
+
+        if [[ "$VALIDATE_ALL" == "true" ]]; then
+          # Get all files
+          find . -type f \
+            -not -path './.git/*' \
+            -not -path './node_modules/*' \
+            -not -path './vendor/*' \
+            -not -path './__pycache__/*' \
+            -not -name '*.min.js' \
+            -not -name '*.min.css' \
+            -not -name 'package-lock.json' \
+            -not -name 'yarn.lock' \
+            > "$FILES_LIST"
+        else
+          # Get changed files
+          git diff --name-only "origin/$DEFAULT_BRANCH"...HEAD > "$FILES_LIST" 2>/dev/null || \
+          git diff --name-only HEAD~1 > "$FILES_LIST" 2>/dev/null || \
+          find . -type f -not -path './.git/*' > "$FILES_LIST"
+        fi
+
+        # Apply include filter
+        if [[ -n "$INCLUDE_REGEX" ]]; then
+          grep -E "$INCLUDE_REGEX" "$FILES_LIST" > "${FILES_LIST}.tmp" || true
+          mv "${FILES_LIST}.tmp" "$FILES_LIST"
+        fi
+
+        # Apply exclude filter
+        if [[ -n "$EXCLUDE_REGEX" ]]; then
+          grep -vE "$EXCLUDE_REGEX" "$FILES_LIST" > "${FILES_LIST}.tmp" || true
+          mv "${FILES_LIST}.tmp" "$FILES_LIST"
+        fi
+
+        FILE_COUNT=$(wc -l < "$FILES_LIST" | tr -d ' ')
+        echo "files_list=$FILES_LIST" >> $GITHUB_OUTPUT
+        echo "file_count=$FILE_COUNT" >> $GITHUB_OUTPUT
+        echo "Found $FILE_COUNT files to lint"
+
+    - name: Run Linters
+      id: lint
+      shell: bash
+      run: |
+        # Disable exit on error to handle linter failures gracefully
+        set +e
+
+        FILES_LIST="${{ steps.files.outputs.files_list }}"
+        RESULTS_DIR="${{ steps.setup.outputs.results_dir }}"
+        FAIL_ON_ERROR="${{ inputs.fail-on-error }}"
+        OUTPUT_FORMAT="${{ inputs.output-format }}"
+        OUTPUT_FILE="${{ inputs.output-file }}"
+
+        TOTAL_ERRORS=0
+        LINT_STATUS="success"
+        SARIF_FILE=""
+
+        # Initialize SARIF structure
+        if [[ "$OUTPUT_FORMAT" == "sarif" ]]; then
+          SARIF_FILE="${OUTPUT_FILE:-lint-results.sarif}"
+          cat > "$SARIF_FILE" << 'SARIF_INIT'
+        {
+          "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+          "version": "2.1.0",
+          "runs": []
+        }
+        SARIF_INIT
+        fi
+
+        # JavaScript/TypeScript Linting
+        if [[ "${{ inputs.validate-javascript }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting JavaScript/TypeScript..."
+          echo "=========================================="
+
+          JS_FILES=$(grep -E '\.(js|jsx|ts|tsx)$' "$FILES_LIST" 2>/dev/null || true)
+          if [[ -n "$JS_FILES" ]]; then
+            if command -v eslint &> /dev/null; then
+              echo "$JS_FILES" | xargs eslint --format stylish 2>&1 | tee "$RESULTS_DIR/eslint.txt" || {
+                JS_ERRORS=$(grep -c "error" "$RESULTS_DIR/eslint.txt" 2>/dev/null || echo "0")
+                TOTAL_ERRORS=$((TOTAL_ERRORS + JS_ERRORS))
+              }
+            elif command -v npx &> /dev/null && [[ -f "package.json" ]]; then
+              echo "$JS_FILES" | xargs npx eslint --format stylish 2>&1 | tee "$RESULTS_DIR/eslint.txt" || true
+            fi
+          fi
+        fi
+
+        # Python Linting
+        if [[ "${{ inputs.validate-python }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting Python..."
+          echo "=========================================="
+
+          PY_FILES=$(grep -E '\.py$' "$FILES_LIST" 2>/dev/null || true)
+          if [[ -n "$PY_FILES" ]]; then
+            if command -v flake8 &> /dev/null; then
+              echo "$PY_FILES" | xargs flake8 --max-line-length=120 2>&1 | tee "$RESULTS_DIR/flake8.txt" || {
+                PY_ERRORS=$(wc -l < "$RESULTS_DIR/flake8.txt" | tr -d ' ')
+                TOTAL_ERRORS=$((TOTAL_ERRORS + PY_ERRORS))
+              }
+            elif command -v pylint &> /dev/null; then
+              echo "$PY_FILES" | xargs pylint --exit-zero 2>&1 | tee "$RESULTS_DIR/pylint.txt" || true
+            elif command -v python3 &> /dev/null; then
+              for file in $PY_FILES; do
+                python3 -m py_compile "$file" 2>&1 || {
+                  echo "Syntax error in: $file"
+                  TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+                }
+              done
+            fi
+          fi
+        fi
+
+        # YAML Linting
+        if [[ "${{ inputs.validate-yaml }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting YAML..."
+          echo "=========================================="
+
+          YAML_FILES=$(grep -E '\.(yml|yaml)$' "$FILES_LIST" 2>/dev/null || true)
+          if [[ -n "$YAML_FILES" ]]; then
+            if command -v yamllint &> /dev/null; then
+              echo "$YAML_FILES" | xargs yamllint -d relaxed 2>&1 | tee "$RESULTS_DIR/yamllint.txt" || {
+                YAML_ERRORS=$(grep -c "error" "$RESULTS_DIR/yamllint.txt" 2>/dev/null || echo "0")
+                TOTAL_ERRORS=$((TOTAL_ERRORS + YAML_ERRORS))
+              }
+            elif command -v python3 &> /dev/null && python3 -c "import yaml" 2>/dev/null; then
+              # Basic YAML validation with Python and PyYAML
+              for file in $YAML_FILES; do
+                python3 -c "import sys,yaml; yaml.safe_load(open('$file','r',encoding='utf-8'))" 2>/dev/null || {
+                  echo "::error file=$file::Invalid YAML syntax"
+                  TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+                }
+              done
+            else
+              echo "::warning::Skipping YAML validation: neither 'yamllint' nor Python 'yaml' module is available."
+            fi
+          fi
+        fi
+
+        # JSON Linting
+        if [[ "${{ inputs.validate-json }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting JSON..."
+          echo "=========================================="
+
+          JSON_FILES=$(grep -E '\.json$' "$FILES_LIST" | grep -v 'package-lock.json' 2>/dev/null || true)
+          if [[ -n "$JSON_FILES" ]]; then
+            for file in $JSON_FILES; do
+              if ! jq empty "$file" 2>/dev/null; then
+                echo "::error file=$file::Invalid JSON syntax"
+                TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+              fi
+            done
+          fi
+        fi
+
+        # Markdown Linting
+        if [[ "${{ inputs.validate-markdown }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting Markdown..."
+          echo "=========================================="
+
+          MD_FILES=$(grep -E '\.md$' "$FILES_LIST" 2>/dev/null || true)
+          if [[ -n "$MD_FILES" ]]; then
+            if command -v markdownlint &> /dev/null; then
+              echo "$MD_FILES" | xargs markdownlint 2>&1 | tee "$RESULTS_DIR/markdownlint.txt" || {
+                MD_ERRORS=$(wc -l < "$RESULTS_DIR/markdownlint.txt" | tr -d ' ')
+                TOTAL_ERRORS=$((TOTAL_ERRORS + MD_ERRORS))
+              }
+            elif command -v npx &> /dev/null; then
+              echo "$MD_FILES" | xargs npx markdownlint-cli 2>&1 || true
+            fi
+          fi
+        fi
+
+        # Shell/Bash Linting
+        if [[ "${{ inputs.validate-bash }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting Shell Scripts..."
+          echo "=========================================="
+
+          SH_FILES=$(grep -E '\.(sh|bash)$' "$FILES_LIST" 2>/dev/null || true)
+          if [[ -n "$SH_FILES" ]]; then
+            if command -v shellcheck &> /dev/null; then
+              echo "$SH_FILES" | xargs shellcheck -f gcc 2>&1 | tee "$RESULTS_DIR/shellcheck.txt" || {
+                SH_ERRORS=$(grep -c "error" "$RESULTS_DIR/shellcheck.txt" 2>/dev/null || echo "0")
+                TOTAL_ERRORS=$((TOTAL_ERRORS + SH_ERRORS))
+              }
+            else
+              # Basic syntax check
+              for file in $SH_FILES; do
+                bash -n "$file" 2>&1 || {
+                  echo "::error file=$file::Shell syntax error"
+                  TOTAL_ERRORS=$((TOTAL_ERRORS + 1))
+                }
+              done
+            fi
+          fi
+        fi
+
+        # Dockerfile Linting
+        if [[ "${{ inputs.validate-dockerfile }}" == "true" ]]; then
+          echo "=========================================="
+          echo "Linting Dockerfiles..."
+          echo "=========================================="
+
+          DOCKER_FILES=$(grep -E '(Dockerfile|\.dockerfile)' "$FILES_LIST" 2>/dev/null || true)
+          if [[ -n "$DOCKER_FILES" ]]; then
+            if command -v hadolint &> /dev/null; then
+              echo "$DOCKER_FILES" | xargs hadolint 2>&1 | tee "$RESULTS_DIR/hadolint.txt" || {
+                DOCKER_ERRORS=$(grep -c "error" "$RESULTS_DIR/hadolint.txt" 2>/dev/null || echo "0")
+                TOTAL_ERRORS=$((TOTAL_ERRORS + DOCKER_ERRORS))
+              }
+            fi
+          fi
+        fi
+
+        # Determine final status
+        if [[ "$TOTAL_ERRORS" -gt 0 ]]; then
+          LINT_STATUS="failure"
+          echo "::warning::Found $TOTAL_ERRORS linting errors"
+        fi
+
+        echo "status=$LINT_STATUS" >> $GITHUB_OUTPUT
+        echo "error_count=$TOTAL_ERRORS" >> $GITHUB_OUTPUT
+        echo "sarif_file=$SARIF_FILE" >> $GITHUB_OUTPUT
+
+        echo "=========================================="
+        echo "LINTING COMPLETE"
+        echo "Total Errors: $TOTAL_ERRORS"
+        echo "Status: $LINT_STATUS"
+        echo "=========================================="
+
+        # Fail if configured, otherwise always exit 0
+        if [[ "$FAIL_ON_ERROR" == "true" && "$TOTAL_ERRORS" -gt 0 ]]; then
+          exit 1
+        else
+          exit 0
+        fi
+
+    - name: Cleanup
+      if: always()
+      shell: bash
+      run: |
+        RESULTS_DIR="${{ steps.setup.outputs.results_dir }}"
+        FILES_LIST="${{ steps.files.outputs.files_list }}"
+
+        rm -rf "$RESULTS_DIR" 2>/dev/null || true
+        rm -f "$FILES_LIST" 2>/dev/null || true
+
+    - name: Display Summary
+      shell: bash
+      run: |
+        echo "=========================================="
+        echo "MN-SUPER-LINTER SUMMARY"
+        echo "=========================================="
+        echo "Files Checked: ${{ steps.files.outputs.file_count }}"
+        echo "Errors Found: ${{ steps.lint.outputs.error_count }}"
+        echo "Status: ${{ steps.lint.outputs.status }}"
+        echo "=========================================="

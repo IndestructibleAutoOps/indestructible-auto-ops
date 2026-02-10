@@ -1,0 +1,44 @@
+# ============================================================
+# Enterprise Strict Validation - Whitelist Configuration
+# 企业级严格验证 - 白名单配置
+# ============================================================
+#
+# 规则说明:
+# - rule_id: 规则唯一标识
+# - description: 规则描述
+# - pattern: 问题ID匹配正则表达式
+# - max_severity: 可豁免的最高严重级别 (CRITICAL/ERROR/WARNING)
+# - file_pattern: 文件路径匹配正则 (可选)
+# - category: 问题类别匹配 (可选)
+# - expires_at: 过期时间 ISO格式 (可选)
+# - approved_by: 审批人
+#
+# 重要: BLOCKER 级别问题永远不可豁免
+# ============================================================
+
+rules:
+  - rule_id: "WL-001"
+    description: "允许测试环境中的性能波动"
+    pattern: "performance_regression_.*"
+    max_severity: "CRITICAL"
+    file_pattern: "tests/.*"
+    category: "performance"
+    expires_at: "2027-12-31T23:59:59"
+    approved_by: "governance-admin"
+
+  - rule_id: "WL-002"
+    description: "允许文档文件的大小变化"
+    pattern: "file_size_anomaly_.*"
+    max_severity: "WARNING"
+    file_pattern: "docs/.*"
+    category: "file_integrity"
+    expires_at: "2027-06-30T23:59:59"
+    approved_by: "governance-admin"
+
+  - rule_id: "WL-003"
+    description: "允许示例项目中的空文件"
+    pattern: "empty_file_.*"
+    max_severity: "WARNING"
+    file_pattern: "examples/.*"
+    category: "file_integrity"
+    approved_by: "governance-admin"

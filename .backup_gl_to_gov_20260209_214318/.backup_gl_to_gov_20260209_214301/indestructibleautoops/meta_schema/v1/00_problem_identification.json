@@ -1,0 +1,20 @@
+{
+  "system": "IndestructibleAutoOps",
+  "component": "meta-schema",
+  "version": "v1",
+  "section": "Problem Identification",
+  "problems": [
+    "治理規範缺乏可機器驗證的一致結構，導致命名/安全/合規規則在多團隊、多服務、多資源情境下不可控擴散",
+    "文件與實作脫節，規範難以進入 CI/CD gate，缺乏可重播、可審計的證據鏈",
+    "缺少統一的 Schema-of-Schemas（Meta-Schema）導致上層 L1-L15 規範的版本化、相容性、引用關係難以治理"
+  ],
+  "scope": [
+    "定義 IndestructibleAutoOps L0 Meta-Schema（JSON Schema 2020-12）",
+    "提供 L1-L15 類型（kind）結構與可擴充點",
+    "提供驗證工具鏈與 CI 驗證 gate"
+  ],
+  "non_goals": [
+    "不提供每個治理層的完整業務規則細節（僅提供 schema 框架與可擴充介面）",
+    "不建立任何外網依賴（離線可驗證）"
+  ]
+}

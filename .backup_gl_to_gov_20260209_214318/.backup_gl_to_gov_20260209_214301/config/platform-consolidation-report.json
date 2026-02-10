@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-02-06",
+  "dry_run": false,
+  "moved_directories": 17,
+  "migrations": [
+    [
+      "gl-enterprise-architecture",
+      "gl00-09-enterprise-architecture/specifications/"
+    ],
+    [
+      "gl-governance-architecture-platform",
+      "gl00-09-enterprise-architecture/governance/"
+    ],
+    [
+      "gl-platform-core-platform",
+      "gl10-19-platform-services/core/"
+    ],
+    [
+      "gl-data-processing-platform",
+      "gl20-29-data-processing/processing-platform/"
+    ],
+    [
+      "gl-search-elasticsearch-platform",
+      "gl20-29-data-processing/search/"
+    ],
+    [
+      "gl-runtime-execution-platform",
+      "gl30-49-runtime-execution/execution-platform/"
+    ],
+    [
+      "gl-runtime-services-platform",
+      "gl30-49-runtime-execution/services/"
+    ],
+    [
+      "gl-monitoring-observability-platform",
+      "gl50-59-monitoring-observability/monitoring/"
+    ],
+    [
+      "gl-governance-compliance-platform",
+      "gl60-80-governance-compliance/compliance-platform/"
+    ],
+    [
+      "gl-extension-services-platform",
+      "gl81-83-extension-services/extensions-platform/"
+    ],
+    [
+      "gl-integration-hub-platform",
+      "gl81-83-extension-services/integrations/"
+    ],
+    [
+      "gl-meta-specifications-platform",
+      "gl90-99-meta-specifications/specifications-platform/"
+    ],
+    [
+      "gl-semantic-core-platform",
+      "gl90-99-meta-specifications/semantic-core/"
+    ],
+    [
+      "gl-automation-instant-platform",
+      "platforms/automation/instant/"
+    ],
+    [
+      "gl-automation-organizer-platform",
+      "platforms/automation/organizer/"
+    ],
+    [
+      "gl-quantum-computing-platform",
+      "platforms/quantum/"
+    ],
+    [
+      "gl-infrastructure-foundation-platform",
+      "platforms/infrastructure/"
+    ]
+  ],
+  "errors": [
+    "     \u26a0 Source not found: gl-platform-services",
+    "     \u26a0 Source not found: gl-data-processing",
+    "     \u26a0 Source not found: gl-execution-runtime",
+    "     \u26a0 Source not found: gl-runtime-engine-platform",
+    "     \u26a0 Source not found: gl-monitoring-system-platform",
+    "     \u26a0 Source not found: gl-observability",
+    "     \u26a0 Source not found: gl-governance-compliance",
+    "     \u26a0 Source not found: gl-extension-services",
+    "     \u26a0 Source not found: gl-meta-specifications"
+  ],
+  "status": "completed_with_warnings"
+}

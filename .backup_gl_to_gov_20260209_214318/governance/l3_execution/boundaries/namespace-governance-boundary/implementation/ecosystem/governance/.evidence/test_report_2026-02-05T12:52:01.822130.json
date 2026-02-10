@@ -1,0 +1,72 @@
+{
+  "test_execution": {
+    "test_id": "ABT-001",
+    "timestamp": "2026-02-05T12:52:01.821159Z",
+    "status": "GENERATED",
+    "closure_mode": "CLOSURE_MODE_AUTONOMY_BOUNDARY_TEST",
+    "chain_of_responsibility_verification": {
+      "status": "GENERATED",
+      "test_generator": {
+        "role": "test_generator",
+        "entity": "claude-sonnet-4.5",
+        "timestamp": "2026-02-05T11:39:13Z",
+        "evidence": ".governance/chain/initiation/ABT-001-init.json"
+      },
+      "governance_validator": {
+        "role": "governance_validator",
+        "entity": "human_approver_id",
+        "approval_timestamp": "2026-02-05T11:40:00Z",
+        "approval_evidence": ".governance/approvals/ABT-001-approval.json",
+        "authority_level": "GL50"
+      },
+      "system_executor": {
+        "role": "system_executor",
+        "entity": "production_backend_gl50",
+        "execution_timestamp": "2026-02-05T11:41:00Z",
+        "execution_evidence": ".governance/execution/ABT-001-exec.json"
+      }
+    },
+    "intent_verification": {
+      "status": "GENERATED",
+      "intent_statement_approved": true,
+      "boundaries_defined": 4
+    },
+    "control_tier_test": {
+      "status": "GENERATED",
+      "control_tier": 2,
+      "risk_classification": "HIGH"
+    },
+    "autonomy_boundary_test": {
+      "status": "GENERATED",
+      "scenario": "external-api-unavailable",
+      "boundary_tests_count": 4
+    },
+    "reversibility_test": {
+      "status": "GENERATED",
+      "reversible": true
+    },
+    "kill_switch_test": {
+      "status": "GENERATED",
+      "enabled": true,
+      "kill_switch_tests_count": 3
+    },
+    "governance_compliance": {
+      "status": "COMPLIANT",
+      "singapore_imda": "\u2713 COMPLIANT",
+      "eu_ai_act": "\u2713 COMPLIANT",
+      "iso_iec_42001": "\u2713 COMPLIANT",
+      "nist_ai_rmf": "\u2713 COMPLIANT",
+      "hotl_framework": "\u2713 COMPLIANT"
+    },
+    "artifacts_generated": {
+      "total_artifacts": 7,
+      "evidence_chain_complete": true
+    },
+    "evidence_chain": {
+      "complete": true,
+      "traceable": true,
+      "sealed": false,
+      "chain_hash": "270fceebd9fa255c6c1ecb5d48034fd72af3f8c4f558728dbeb71b09ec168551"
+    }
+  }
+}

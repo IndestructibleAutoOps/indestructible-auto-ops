@@ -1,0 +1,341 @@
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: governance-restructure
+# @GL-audit-trail: ecosystem/governance/GL_SEMANTIC_ANCHOR.json
+---
+apiVersion: governance.indestructibleautoops.io/v1
+kind: GovernanceRestructureSpecification
+metadata:
+  name: governance-directory-restructure
+  version: "1.0.0"
+  timestamp: "2026-02-07T07:30:00Z"
+  governance_owner: IndestructibleAutoOps
+  governance_stage: S5-VERIFIED
+
+spec:
+  objective: |
+    Formalize governance directory structure for Machine Native Ops
+    with G-specification attributes and quantum governance layers.
+    
+  principles:
+    - machine_readable: true
+    - executable: true
+    - gl_compliant: true
+    - fhs_compliant: true
+    - audit_traceable: true
+    
+  directory_structure:
+    # =========================================================================
+    # Core Governance Architectures
+    # =========================================================================
+    - name: mnga-governance
+      full_name: Machine Native Governance Architecture
+      purpose: Core governance architecture for machine-native operations
+      gl_layer: GL00-09
+      subdirectories:
+        - core:
+            purpose: Core MNGA specifications and charter
+            files: ["charter.yaml", "architecture.yaml", "principles.yaml"]
+        - enforcement:
+            purpose: Enforcement rules and validation
+            files: ["enforcement-rules.yaml", "validators.py"]
+        - validation:
+            purpose: Validation frameworks and schemas
+            files: ["validation-framework.yaml", "schemas/"]
+        - contracts:
+            purpose: Governance contracts and SLAs
+            files: ["contracts/", "sla-definitions.yaml"]
+      migration_sources:
+        - ng-namespace-governance/core/NG00000-ZERO-TOLERANCE-POLICY.yaml
+        - ecosystem/governance/core-governance-spec.yaml
+        
+    - name: mno-governance
+      full_name: Machine Native Ops Governance
+      purpose: Operational governance for machine-native infrastructure
+      gl_layer: GL10-29
+      subdirectories:
+        - operations:
+            purpose: Operational policies and procedures
+            files: ["ops-policies.yaml", "procedures/"]
+        - lifecycle:
+            purpose: Lifecycle management specifications
+            files: ["lifecycle-spec.yaml", "stages/"]
+        - automation:
+            purpose: Automation policies and guardrails
+            files: ["automation-policy.yaml", "automation-rules.yaml"]
+        - monitoring:
+            purpose: Operational monitoring specifications
+            files: ["monitoring-spec.yaml", "alert-rules.yaml"]
+      migration_sources:
+        - ng-namespace-governance/core/NG00201-lifecycle-standard.yaml
+        - ecosystem/governance/enforcement-rules.yaml
+        
+    - name: gqs-governance
+      full_name: Governance Quantum Stack
+      purpose: Quantum governance with superposition states and validation
+      gl_layer: GL90-99
+      subdirectories:
+        - layers:
+            purpose: GQS L0-L7 layer specifications
+            files: ["gqs-l0.yaml", "gqs-l1.yaml", "gqs-l2.yaml", "gqs-l3.yaml", 
+                    "gqs-l4.yaml", "gqs-l5.yaml", "gqs-l6.yaml", "gqs-l7.yaml"]
+        - contracts:
+            purpose: Quantum governance contracts
+            files: ["quantum-contracts.yaml", "superposition-specs.yaml"]
+        - validation:
+            purpose: Quantum validation and proof generation
+            files: ["quantum-validation.yaml", "proof-generator.py"]
+        - closure:
+            purpose: Governance closure mechanisms
+            files: ["closure-spec.yaml", "closure-engine.py"]
+      migration_sources:
+        - ecosystem/contracts/governance/gqs-layers.yaml
+        - ecosystem/governance/closure/governance_closure_spec.yaml
+        
+    # =========================================================================
+    # G-Attribute Governance Directories (9 Categories)
+    # =========================================================================
+    - name: gates-governance
+      full_name: Operation Control Gates
+      purpose: Operation checkpoints with enforcement rules
+      category: operation_control
+      attribute_count: 5
+      attributes: ["gates", "gate_fidelity", "gatekeeper", "gateway", "gateways"]
+      subdirectories:
+        - checkpoints:
+            purpose: Operation checkpoint definitions
+            files: ["file-migration-gates.yaml", "code-commit-gates.yaml"]
+        - enforcement:
+            purpose: Gate enforcement rules
+            files: ["enforcement-spec.yaml", "validators/"]
+        - policies:
+            purpose: Gate policies and approval workflows
+            files: ["gate-policies.yaml", "approval-matrix.yaml"]
+      migration_sources:
+        - ecosystem/gates/operation-gate.yaml
+        - ecosystem/gates/self-auditor-config.yaml
+        - governance/workflows/research-loop/gates.yaml
+        
+    - name: guardrails-governance
+      full_name: Safety and Compliance Boundaries
+      purpose: AI safety boundaries and compliance checks
+      category: safety_compliance
+      attribute_count: 4
+      attributes: ["guardrails", "guards", "gdpr_compliance", "gdpr"]
+      subdirectories:
+        - safety:
+            purpose: Safety guardrails specifications
+            files: ["safety-guardrails.yaml", "pii-detection.yaml"]
+        - compliance:
+            purpose: Compliance requirements and checks
+            files: ["compliance-spec.yaml", "gdpr-rules.yaml"]
+        - policies:
+            purpose: Guardrail policies and actions
+            files: ["policy-definitions.yaml", "action-rules.yaml"]
+      migration_sources:
+        - .github/config/governance/ai-constitution.yaml
+        
+    - name: global-governance
+      full_name: System-wide Configuration
+      purpose: Global system configuration and policies
+      category: system_configuration
+      attribute_count: 5
+      attributes: ["global", "global_config", "global_policy", "global_aliases", "global_best_practices"]
+      subdirectories:
+        - config:
+            purpose: Global configuration specifications
+            files: ["global-config.yaml", "defaults.yaml"]
+        - policies:
+            purpose: System-wide policies
+            files: ["global-policies.yaml", "best-practices.yaml"]
+        - aliases:
+            purpose: Global naming aliases
+            files: ["aliases.yaml", "mappings.yaml"]
+      migration_sources:
+        - gl-governance-compliance-platform/governance/naming/global-aliases.yaml
+        - .github/config/governance/language-policy.yaml
+        
+    - name: gateway-governance
+      full_name: API and Network Gateway
+      purpose: API gateway and network routing specifications
+      category: infrastructure
+      attribute_count: 2
+      attributes: ["gateway", "gateways"]
+      subdirectories:
+        - routing:
+            purpose: Gateway routing specifications
+            files: ["routes.yaml", "routing-policies.yaml"]
+        - security:
+            purpose: Gateway security configurations
+            files: ["security-spec.yaml", "auth-policies.yaml"]
+        - monitoring:
+            purpose: Gateway monitoring and metrics
+            files: ["monitoring-spec.yaml", "metrics.yaml"]
+      migration_sources:
+        - ecosystem/coordination/api-gateway/configs/gateway-config.yaml
+        
+    - name: gap-governance
+      full_name: Gap Analysis and Planning
+      purpose: Gap analysis and remediation tracking
+      category: analysis_planning
+      attribute_count: 6
+      attributes: ["gap", "gaps", "gap_analysis", "gap_description", "gap_tolerance", "gap_action"]
+      subdirectories:
+        - analysis:
+            purpose: Gap analysis specifications
+            files: ["analysis-framework.yaml", "templates/"]
+        - remediation:
+            purpose: Gap remediation plans
+            files: ["remediation-spec.yaml", "action-plans/"]
+        - tracking:
+            purpose: Gap tracking and metrics
+            files: ["tracking-spec.yaml", "metrics.yaml"]
+      migration_sources:
+        - governance/workflows/research-loop/templates/gap-list.md
+        
+    - name: generation-governance
+      full_name: Artifact Generation
+      purpose: Artifact generation and metadata tracking
+      category: artifact_management
+      attribute_count: 9
+      attributes: ["generate", "generated", "generated_at", "generated_by", 
+                   "generation_timestamp", "generation_standards", "generator",
+                   "generator_compatibility", "generators"]
+      subdirectories:
+        - standards:
+            purpose: Generation standards and specifications
+            files: ["generation-standards.yaml", "schemas/"]
+        - generators:
+            purpose: Generator configurations
+            files: ["generator-registry.yaml", "generators/"]
+        - metadata:
+            purpose: Generation metadata specifications
+            files: ["metadata-spec.yaml", "tracking.yaml"]
+      migration_sources:
+        - ecosystem/governance/specs/hash_policy.yaml
+        
+    - name: group-governance
+      full_name: Resource Grouping
+      purpose: Resource grouping and organization
+      category: organization
+      attribute_count: 5
+      attributes: ["group", "groups", "group_by", "group_wait", "group_interval"]
+      subdirectories:
+        - policies:
+            purpose: Grouping policies and rules
+            files: ["grouping-policies.yaml", "rules.yaml"]
+        - workflows:
+            purpose: Workflow grouping configurations
+            files: ["workflow-groups.yaml", "concurrency.yaml"]
+        - monitoring:
+            purpose: Monitoring group configurations
+            files: ["alert-groups.yaml", "metric-groups.yaml"]
+      migration_sources:
+        - .github/workflows-quantum/monitoring/workflow-monitor.yml
+        
+    - name: gcp-governance
+      full_name: Google Cloud Platform
+      purpose: GCP infrastructure specifications and configurations
+      category: cloud_infrastructure
+      attribute_count: 12
+      attributes: ["gcp", "gcp_project", "gcp_bucket", "gcp_cloud_logging",
+                   "gcp_compute", "gcp_endpoint", "gcp_pubsub", "gcp_secret_manager",
+                   "gcp_service_account_key", "gcp_storage", "gke_cluster", "gcs"]
+      subdirectories:
+        - infrastructure:
+            purpose: GCP infrastructure specifications
+            files: ["gcp-infrastructure.yaml", "gke-spec.yaml"]
+        - monitoring:
+            purpose: GCP monitoring configurations
+            files: ["monitoring-stack.yaml", "logging-spec.yaml"]
+        - security:
+            purpose: GCP security specifications
+            files: ["security-spec.yaml", "iam-policies.yaml"]
+      migration_sources:
+        - .github/config/providers/gcp/
+        
+    - name: grafana-governance
+      full_name: Monitoring Dashboards
+      purpose: Grafana dashboard and visualization specifications
+      category: observability
+      attribute_count: 1
+      attributes: ["grafana"]
+      subdirectories:
+        - dashboards:
+            purpose: Dashboard specifications
+            files: ["dashboard-specs.yaml", "dashboards/"]
+        - datasources:
+            purpose: Datasource configurations
+            files: ["datasources.yaml", "connections.yaml"]
+        - alerts:
+            purpose: Alert configurations
+            files: ["alert-rules.yaml", "notification-channels.yaml"]
+      migration_sources:
+        - monitoring/grafana/
+        - .github/config/providers/aws/infrastructure/monitoring-stack.yaml
+
+  # ===========================================================================
+  # Migration Rules
+  # ===========================================================================
+  migration_rules:
+    - rule: preserve_gl_annotations
+      description: Preserve all @GL-* annotations during migration
+      required: true
+      
+    - rule: maintain_audit_trail
+      description: Maintain audit trail references
+      required: true
+      
+    - rule: update_references
+      description: Update cross-references in migrated files
+      required: true
+      
+    - rule: validate_gl_compliance
+      description: Validate GL compliance after migration
+      required: true
+      validator: ecosystem/enforce.py
+
+  # ===========================================================================
+  # Validation Framework
+  # ===========================================================================
+  validation:
+    pre_migration:
+      - check: directory_availability
+        description: Ensure target directories don't exist
+        action: BLOCK_IF_EXISTS
+        
+      - check: source_file_integrity
+        description: Verify source files are intact
+        action: BLOCK_IF_CORRUPTED
+        
+    post_migration:
+      - check: gl_compliance
+        description: Validate GL semantic boundaries
+        command: python ecosystem/enforce.py
+        threshold: 100%
+        
+      - check: reference_integrity
+        description: Verify all cross-references are valid
+        action: WARN_IF_BROKEN
+        
+      - check: documentation_completeness
+        description: Ensure all directories have README.md
+        action: BLOCK_IF_MISSING
+
+  # ===========================================================================
+  # Governance Metadata
+  # ===========================================================================
+  governance_metadata:
+    enforcement_level: MANDATORY
+    review_cycle: quarterly
+    compliance_level: L5
+    audit_required: true
+    immutable_after_seal: true
+    
+  audit_trail:
+    initial_state_hash: "SHA3-512(current_structure)"
+    migration_timestamp: "ISO-8601"
+    approvers:
+      - "@IndestructibleAutoOps"
+      - "@RepoSafetyOfficer"
+    evidence_chain: "governance/audit/restructure-evidence.json"

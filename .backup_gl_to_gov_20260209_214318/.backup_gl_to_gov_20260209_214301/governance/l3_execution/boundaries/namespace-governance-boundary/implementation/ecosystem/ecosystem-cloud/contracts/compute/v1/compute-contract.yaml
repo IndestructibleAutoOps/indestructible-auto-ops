@@ -1,0 +1,141 @@
+# Cross-Cloud Compute Contract v1.0.0
+# Semantic Anchor: CLOUDPROVIDERABSTRACTION.COMPUTE
+
+contract:
+  name: CrossCloudCompute
+  version: 1.0.0
+  semantic_anchor: CLOUDPROVIDERABSTRACTION.COMPUTE
+  description: |
+    Unified abstraction for cloud compute resources across all providers.
+    Defines the contract that all cloud adapters must implement for compute operations.
+  
+  capability:
+    - name: create_vm
+      input:
+        instance_type: string (required)
+        image_id: string (required)
+        region: string (optional)
+        availability_zone: string (optional)
+        subnet_id: string (optional)
+        security_groups: list[string] (optional)
+        user_data: string (optional)
+        tags: map[string]string (optional)
+        volume_size_gb: integer (optional, default: 20)
+        volume_type: string (optional)
+      output:
+        success: boolean
+        instance_id: string
+        public_ip: string
+        private_ip: string
+        status: string
+    
+    - name: delete_vm
+      input:
+        instance_id: string (required)
+        force: boolean (optional, default: false)
+      output:
+        success: boolean
+    
+    - name: start_vm
+      input:
+        instance_id: string (required)
+      output:
+        success: boolean
+        status: string
+    
+    - name: stop_vm
+      input:
+        instance_id: string (required)
+        force: boolean (optional, default: false)
+      output:
+        success: boolean
+        status: string
+    
+    - name: get_vm_status
+      input:
+        instance_id: string (required)
+      output:
+        success: boolean
+        status: string
+        state: string
+        uptime_seconds: integer
+    
+    - name: list_vms
+      input:
+        filters: map[string]string (optional)
+        max_results: integer (optional, default: 50)
+      output:
+        success: boolean
+        instances: list[VMInfo]
+        next_token: string
+    
+    - name: create_snapshot
+      input:
+        instance_id: string (required)
+        snapshot_name: string (required)
+        description: string (optional)
+      output:
+        success: boolean
+        snapshot_id: string
+    
+    - name: restore_from_snapshot
+      input:
+        snapshot_id: string (required)
+        instance_type: string (required)
+        region: string (optional)
+      output:
+        success: boolean
+        instance_id: string
+
+  types:
+    VMInfo:
+      instance_id: string
+      instance_type: string
+      image_id: string
+      state: string
+      public_ip: string
+      private_ip: string
+      region: string
+      availability_zone: string
+      created_at: timestamp
+      tags: map[string]string
+  
+  validation:
+    - name: instance_type_validation
+      rule: |
+        Instance types must be from provider's supported list
+      severity: CRITICAL
+    
+    - name: image_id_validation
+      rule: |
+        Image IDs must exist and be accessible
+      severity: CRITICAL
+    
+    - name: resource_limit_validation
+      rule: |
+        Instance count must not exceed account limits
+      severity: HIGH
+    
+    - name: network_validation
+      rule: |
+        Subnets and security groups must exist in same VPC
+      severity: HIGH
+
+  adapter_requirements:
+    - Adapter must implement all capability methods
+    - Adapter must handle instance lifecycle states correctly
+    - Adapter must support security groups and networking
+    - Adapter must provide status polling
+    - Adapter must support snapshot and restore operations
+    - Adapter must handle provider-specific errors
+  
+  compatibility:
+    aws_ec2:
+      implements: full
+      notes: AWS EC2 is the reference implementation
+    azure_vm:
+      implements: full
+      notes: Fully compatible
+    gcp_compute:
+      implements: full
+      notes: Fully compatible

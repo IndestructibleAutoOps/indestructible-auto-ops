@@ -1,0 +1,41 @@
+{
+  "era": "2",
+  "era_name": "Governance Closure",
+  "activation_timestamp": "2026-02-05T13:42:20.136417",
+  "workspace_root": "/workspace",
+  "activation_status": {
+    "started_at": "2026-02-05T13:42:20.133128",
+    "phase": "INITIALIZING",
+    "engines_initialized": [
+      "semantic_closure_engine",
+      "core_sealing_engine"
+    ],
+    "validations_completed": [
+      "governance_closure"
+    ],
+    "overall_status": "IN_PROGRESS"
+  },
+  "sealed_core_status": {
+    "status": "SEALED",
+    "core_hash": "b9ac1700a4ec2d45e866eebf85ca076c5bbc25760bb0ed0bb0dd33bc5dff3133",
+    "previous_hash": "GENESIS",
+    "sealed_at": "2026-02-05T13:42:20.136237",
+    "approvals": [
+      "system_architect",
+      "governance_lead",
+      "security_chief"
+    ],
+    "merkle_root": "735d422d8e85e8238aabbabd91f74cceeaadda63d62f53c69f59a2d79a666469",
+    "verification_count": 2,
+    "last_verification": "2026-02-05T13:42:20.136404"
+  },
+  "gl_unified_charter": {
+    "activated": true,
+    "activation_version": "v2.0.0",
+    "components": [
+      "semantic_closure_engine",
+      "core_sealing_engine",
+      "lineage_reconstruction_engine"
+    ]
+  }
+}

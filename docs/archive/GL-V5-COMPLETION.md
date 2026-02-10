@@ -73,7 +73,7 @@ GL Runtime Platform v5.0.0 has been successfully constructed, integrated, and de
 ### Multi-Agent Orchestration
 
 #### Configured Agents (10 total)
-1. **gl-governance-validator** - Governance compliance validation
+1. **gov-governance-validator** - Governance compliance validation
 2. **codeql-monitor** - Code quality monitoring
 3. **quality-assurance** - QA checks (linting, formatting, coverage)
 4. **dependency-scanner** - Security vulnerability scanning
@@ -108,10 +108,10 @@ GL Runtime Platform v5.0.0 has been successfully constructed, integrated, and de
 ### Docker Compose
 ```yaml
 Services:
-- gl-execution-runtime (port 3000)
-- gl-artifacts-store (MinIO, ports 9000/9001)
-- gl-events-stream (Redis, port 6379)
-- gl-postgres (port 5432)
+- gov-execution-runtime (port 3000)
+- gov-artifacts-store (MinIO, ports 9000/9001)
+- gov-events-stream (Redis, port 6379)
+- gov-postgres (port 5432)
 ```
 
 ### Kubernetes
@@ -203,13 +203,13 @@ Resources:
 ## Integration Points
 
 ### Event Stream
-- **Path**: `storage/gl-events-stream`
+- **Path**: `storage/gov-events-stream`
 - **Format**: JSONL
 - **Events Logged**: 16
 - **Status**: Operational
 
 ### Artifact Store
-- **Path**: `storage/gl-artifacts`
+- **Path**: `storage/gov-artifacts`
 - **Artifact Types**: 4
 - **Artifacts Stored**: 1
 - **Status**: Operational
@@ -230,13 +230,13 @@ Resources:
 ```
 feat: implement GL Runtime Platform v5.0.0 with complete multi-agent orchestration
 
-- Construct complete gl-execution-runtime with minimal operational implementation
+- Construct complete gov-execution-runtime with minimal operational implementation
 - Implement orchestration-engine with multi-agent + per-file pipeline support
-- Implement gl-policy-engine with schema/naming/path/semantic/governance validation
+- Implement gov-policy-engine with schema/naming/path/semantic/governance validation
 - Implement connector-git with scan/diff/patch/apply/commit/push capabilities
 - Implement ops/pipelines executable by orchestration-engine
-- Implement gl-artifacts-store for JSON reports/patch/metadata storage
-- Implement gl-events-stream for governance events storage
+- Implement gov-artifacts-store for JSON reports/patch/metadata storage
+- Implement gov-events-stream for governance events storage
 - Implement API layer with REST endpoints for audit/fix/deploy/orchestrate
 - Implement deployment configs with k8s + docker-compose
 - Integrate all modules with GL Root Semantic Anchor
@@ -255,26 +255,26 @@ GL Unified Architecture Governance Framework Activated | Version 5.0.0 | Charter
 - **Deletions**: 39
 
 ### New Files Created
-1. `gl-execution-runtime/.gitignore`
-2. `gl-execution-runtime/Dockerfile`
-3. `gl-execution-runtime/deployment/k8s/deployment.yaml`
-4. `gl-execution-runtime/docker-compose.yml`
-5. `gl-execution-runtime/ops/pipelines/global-audit-pipeline.yaml`
-6. `gl-execution-runtime/src/api/routes.ts`
-7. `gl-execution-runtime/src/connectors/git-connector.ts`
-8. `gl-execution-runtime/src/events/event-stream-manager.ts`
-9. `gl-execution-runtime/src/index.ts`
-10. `gl-execution-runtime/src/orchestration/orchestrator-engine.ts`
-11. `gl-execution-runtime/src/policies/policy-engine.ts`
-12. `gl-execution-runtime/src/storage/artifact-store.ts`
-13. `gl-execution-runtime/src/utils/logger.ts`
-14. `gl-execution-runtime/storage/gl-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json`
-15. `gl-execution-runtime/tsconfig.json`
+1. `gov-execution-runtime/.gitignore`
+2. `gov-execution-runtime/Dockerfile`
+3. `gov-execution-runtime/deployment/k8s/deployment.yaml`
+4. `gov-execution-runtime/docker-compose.yml`
+5. `gov-execution-runtime/ops/pipelines/global-audit-pipeline.yaml`
+6. `gov-execution-runtime/src/api/routes.ts`
+7. `gov-execution-runtime/src/connectors/git-connector.ts`
+8. `gov-execution-runtime/src/events/event-stream-manager.ts`
+9. `gov-execution-runtime/src/index.ts`
+10. `gov-execution-runtime/src/orchestration/orchestrator-engine.ts`
+11. `gov-execution-runtime/src/policies/policy-engine.ts`
+12. `gov-execution-runtime/src/storage/artifact-store.ts`
+13. `gov-execution-runtime/src/utils/logger.ts`
+14. `gov-execution-runtime/storage/gov-artifacts/audit-report/80480787-1a8d-4d74-b5b1-8df3b0357375.json`
+15. `gov-execution-runtime/tsconfig.json`
 
 ### Modified Files
 1. `.github/agents/agent-orchestration.yml`
-2. `gl-execution-runtime/package.json`
-3. `gl-execution-runtime/storage/gl-events-stream/events.jsonl`
+2. `gov-execution-runtime/package.json`
+3. `gov-execution-runtime/storage/gov-events-stream/events.jsonl`
 
 ## Deployment Verification
 

@@ -17,7 +17,7 @@
 | 當前術語 | 使用位置 | 問題分析 |
 |---------|---------|---------|
 | **框架** (Charter) | GL00-GL99-unified-charter.json, governance-framework-baseline.json | 非標準架構術語，企業架構領域不使用"框架" |
-| **宇宙** (Universe) | gl-platform, 多個工具腳本 | 概念模糊，不符合專業架構命名規範 |
+| **宇宙** (Universe) | gov-platform, 多個工具腳本 | 概念模糊，不符合專業架構命名規範 |
 
 ### 專業標準對照
 
@@ -51,10 +51,10 @@
 
 **受影響文件**:
 ```
-ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-charter.json
-  → ecosystem/governance/gl-semantic-anchors/GL00-GL99-unified-framework.json
+ecosystem/governance/gov-semantic-anchors/GL00-GL99-unified-charter.json
+  → ecosystem/governance/gov-semantic-anchors/GL00-GL99-unified-framework.json
 
-ecosystem/governance/gl-semantic-anchors/governance-framework-baseline.json
+ecosystem/governance/gov-semantic-anchors/governance-framework-baseline.json
   (更新描述中的 "Charter" 為 "Framework")
 
 ecosystem/governance/GL-SEMANTIC-ANCHOR.json
@@ -80,10 +80,10 @@ ecosystem/governance/GL-SEMANTIC-ANCHOR.json
 
 **受影響文件**:
 ```
-gl-platform → gl_platform (或 gl-machine-native-platform)
+gov-platform → gl_platform (或 gov-machine-native-platform)
 
 影響範圍：
-- ecosystem/tools/gl-markers/*.py
+- ecosystem/tools/gov-markers/*.py
 - ecosystem/tools/code_scanning_analysis.py
 - ecosystem/tools/fix_code_scanning_issues.py
 - ecosystem/tools/audit/gov_audit_simple.py
@@ -94,10 +94,10 @@ gl-platform → gl_platform (或 gl-machine-native-platform)
 **新術語示例**:
 ```python
 # 舊
-gl-platform.gl-platform.governance
+gov-platform.gov-platform.governance
 
 # 新
-gl-platform.governance  # 或 gl-machine-native-platform.governance
+gov-platform.governance  # 或 gov-machine-native-platform.governance
 ```
 
 ### 3. "統一框架" (Unified Architecture Governance Framework) → "統一架構治理框架" (Unified Architecture Governance Framework)
@@ -128,7 +128,7 @@ gl-platform.governance  # 或 gl-machine-native-platform.governance
 - [ ] 更新 `governance-monitor-config.yaml`
 
 ### Phase 3: 代碼庫批量替換
-- [ ] 更新所有 `gl-platform` 引用
+- [ ] 更新所有 `gov-platform` 引用
 - [ ] 更新工具腳本中的術語
 - [ ] 更新文檔中的描述
 
@@ -149,14 +149,14 @@ gl-platform.governance  # 或 gl-machine-native-platform.governance
 ### 替換前
 ```
 "GL_UNIFIED_FRAMEWORK": "MNGA Governance Layer Unified Architecture Governance Framework"
-gl-platform.gl-platform.governance
+gov-platform.gov-platform.governance
 ```
 **問題**: 使用非標準術語 "Charter" 和 "Universe"
 
 ### 替換後
 ```
 "GL_UNIFIED_FRAMEWORK": "MNGA Governance Layer Unified Architecture Governance Framework"
-gl-platform.governance
+gov-platform.governance
 ```
 **優點**: 符合 TOGAF、FEAF、ISO 等國際標準，專業度提升
 

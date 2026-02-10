@@ -1,0 +1,212 @@
+# 反饋數據結構
+# Feedback Schema Definition
+#
+# @GL-governed
+# @GL-layer: GL40-49
+# @GL-semantic: reasoning-feedback-contract
+
+version: "1.0.0"
+metadata:
+  name: "MNGA Feedback Schema"
+  description: "推理系統反饋數據結構定義"
+  created: "2026-02-03"
+  updated: "2026-02-03"
+
+# 反饋類型
+feedback_types:
+  - id: "relevance"
+    name: "相關性反饋"
+    description: "結果與查詢的相關程度"
+    scale: "1-5"
+    
+  - id: "accuracy"
+    name: "準確性反饋"
+    description: "結果的正確性"
+    scale: "binary"  # correct/incorrect
+    
+  - id: "usefulness"
+    name: "有用性反饋"
+    description: "結果對解決問題的幫助程度"
+    scale: "1-5"
+    
+  - id: "preference"
+    name: "偏好反饋"
+    description: "用戶對內部/外部源的偏好"
+    scale: "categorical"  # internal/external/both
+
+# 反饋記錄結構
+feedback_record:
+  type: object
+  required:
+    - feedback_id
+    - query_id
+    - timestamp
+    - feedback_type
+    - value
+  properties:
+    feedback_id:
+      type: string
+      format: uuid
+      description: "反饋唯一標識符"
+    
+    query_id:
+      type: string
+      format: uuid
+      description: "關聯的查詢 ID"
+    
+    result_id:
+      type: string
+      description: "關聯的結果 ID（可選）"
+    
+    timestamp:
+      type: string
+      format: date-time
+      description: "反饋時間"
+    
+    feedback_type:
+      type: string
+      enum: ["relevance", "accuracy", "usefulness", "preference"]
+      description: "反饋類型"
+    
+    value:
+      oneOf:
+        - type: integer
+          minimum: 1
+          maximum: 5
+        - type: boolean
+        - type: string
+          enum: ["internal", "external", "both"]
+      description: "反饋值"
+    
+    context:
+      type: object
+      properties:
+        query_text:
+          type: string
+          description: "原始查詢文本"
+        query_type:
+          type: string
+          description: "查詢類型"
+        result_source:
+          type: string
+          enum: ["internal", "external", "merged"]
+          description: "結果來源"
+        result_rank:
+          type: integer
+          description: "結果排名位置"
+    
+    user_comment:
+      type: string
+      maxLength: 1000
+      description: "用戶評論（可選）"
+    
+    metadata:
+      type: object
+      description: "額外元數據"
+
+# 聚合反饋結構
+aggregated_feedback:
+  type: object
+  properties:
+    query_pattern:
+      type: string
+      description: "查詢模式"
+    
+    time_range:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+    
+    statistics:
+      type: object
+      properties:
+        total_feedback_count:
+          type: integer
+        average_relevance:
+          type: number
+        accuracy_rate:
+          type: number
+        average_usefulness:
+          type: number
+        source_preference:
+          type: object
+          properties:
+            internal:
+              type: number
+            external:
+              type: number
+            both:
+              type: number
+    
+    trends:
+      type: array
+      items:
+        type: object
+        properties:
+          metric:
+            type: string
+          direction:
+            type: string
+            enum: ["improving", "declining", "stable"]
+          change_rate:
+            type: number
+
+# 反饋收集配置
+collection_config:
+  implicit_feedback:
+    enabled: true
+    signals:
+      - name: "click_through"
+        weight: 0.3
+      - name: "dwell_time"
+        weight: 0.2
+      - name: "copy_action"
+        weight: 0.4
+      - name: "follow_up_query"
+        weight: 0.1
+  
+  explicit_feedback:
+    enabled: true
+    prompt_frequency: "on_demand"  # always, on_demand, periodic
+    required_fields:
+      - "feedback_type"
+      - "value"
+  
+  storage:
+    retention_days: 90
+    aggregation_interval: "daily"
+    anonymization: true
+
+# 反饋處理管道
+processing_pipeline:
+  stages:
+    - name: "validation"
+      description: "驗證反饋數據格式"
+      
+    - name: "enrichment"
+      description: "添加上下文信息"
+      
+    - name: "aggregation"
+      description: "聚合相似反饋"
+      
+    - name: "analysis"
+      description: "分析反饋趨勢"
+      
+    - name: "action"
+      description: "觸發權重調整或規則更新"
+
+# 反饋驅動的優化
+optimization:
+  weight_adjustment:
+    trigger_threshold: 10  # 最小反饋數量
+    adjustment_cap: 0.1    # 單次最大調整幅度
+    
+  rule_suggestion:
+    enabled: true
+    confidence_threshold: 0.8
+    min_sample_size: 50

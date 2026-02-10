@@ -1,0 +1,42 @@
+{
+  "compliance": "PASS",
+  "compliance_statistics": {
+    "critical_violations": 0,
+    "total_reports": 1,
+    "violations_found": 0
+  },
+  "era": 1,
+  "evidence_chain": {
+    "canonicalization": "RFC8785",
+    "hash_algorithm": "SHA256",
+    "hash_integrity": "VERIFIED"
+  },
+  "governance_owner": "IndestructibleAutoOps",
+  "governance_status": {
+    "era": "1 (Evidence-Native Bootstrap)",
+    "governance_closure": "IN PROGRESS",
+    "immutable_core": "CANDIDATE (Not SEALED)",
+    "layer": "Operational (Evidence Generation)",
+    "semantic_closure": "NO (Evidence layer only, governance not closed)"
+  },
+  "hash_statistics": {
+    "total_hashes": 0,
+    "unique_hashes": 0
+  },
+  "language_support": {
+    "language_neutral": true,
+    "languages_supported": [
+      "zh",
+      "en",
+      "ja",
+      "ko",
+      "de",
+      "fr"
+    ],
+    "total_mappings": 596
+  },
+  "sha256_hash": "df15a67c3a981150a4a23fc0b970d9ae0cf12d99e9f6f6d5c19304ad7c02c2b3",
+  "summary_id": "exec-summary-20260205152443",
+  "summary_type": "execution_summary",
+  "timestamp": "2026-02-05T15:24:43.437184Z"
+}

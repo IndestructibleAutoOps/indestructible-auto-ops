@@ -1,0 +1,516 @@
+#
+# @GL-governed
+# @GL-layer: GL10-29
+# @GL-semantic: registry
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: naming.gl/v1
+kind: NamingContractRegistry
+metadata:
+  name: gov-naming-contracts
+  version: "1.0.0"
+  description: "GL 命名契約註冊表 - 所有命名層級契約的統一索引與治理索引入口"
+  category: governance
+  compliance:
+    - gov-enterprise-architecture
+    - gov-boundary-enforcement
+    - gov-meta-specifications
+    - gov-extension-framework
+
+spec:
+  # 命名契約註冊表
+  contracts:
+    # === 核心命名契約 ===
+    - id: gov-naming-ontology
+      name: "GL 命名本體"
+      version: "1.0.0"
+      path: "ng-namespace-governance/specs/gov-naming-layers/gl-naming-ontology.yaml"
+      description: "定義 26 個命名層級的語意結構與關係"
+      type: core
+      status: active
+      layers:
+        - semantic
+        - contract
+        - platform
+        - format
+        - language
+        - deployment
+        - supply-chain
+        - user-facing
+        - metadata
+        - interface
+        - dependency
+        - versioning
+        - testing
+        - build
+        - ci-cd
+        - documentation
+        - permission
+        - observability
+        - security
+        - packaging
+        - indexing
+        - extensibility
+        - validation
+        - governance
+        - generator
+        - reasoning
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+        - gov-meta-specifications
+        - gov-extension-framework
+      dependencies: []
+      validationRules:
+        - "GL-NO-001: 語意一致性"
+        - "GL-NO-002: 層級關係驗證"
+
+    # === 擴展命名本體 ===
+    - id: gov-naming-ontology-expanded
+      name: "GL 擴展命名本體 (工程級)"
+      version: "3.0.0"
+      path: "ng-namespace-governance/specs/gov-naming-layers/gl-naming-ontology-expanded.yaml"
+      description: "完整工程級 21 層命名本體，包含生成器與語意引擎相容性"
+      type: core
+      status: active
+      layers:
+        - semantic
+        - contract
+        - platform
+        - format
+        - language
+        - deployment
+        - supply-chain
+        - user-facing
+        - metadata
+        - interface
+        - dependency
+        - versioning
+        - testing
+        - build
+        - ci-cd
+        - documentation
+        - permission
+        - observability
+        - security
+        - packaging
+        - indexing
+        - extensibility
+        - validation
+        - governance
+        - generator
+        - reasoning
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+        - gov-meta-specifications
+        - gov-extension-framework
+      dependencies:
+        - gov-naming-ontology
+      validationRules:
+        - "GL-NO-001: 語意一致性"
+        - "GL-NO-002: 層級關係驗證"
+        - "GL-NO-003: 命名格式規則"
+        - "GL-NO-004: 命名實體屬性區分"
+
+    # === 平台命名契約 ===
+    - id: gov-platforms
+      name: "GL 平台命名契約"
+      version: "1.0.0"
+      path: "ecosystem/contracts/platforms/gov-platforms.yaml"
+      description: "定義所有平台級資源的命名規範 gl.{domain}.{capability}-platform"
+      type: platform
+      status: active
+      layers:
+        - platform
+        - semantic
+        - contract
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+        - gov-meta-specifications
+      dependencies:
+        - gov-naming-ontology
+      validationRules:
+        - "GL-PD-001: 命名格式驗證"
+        - "GL-PD-002: 單一位置驗證"
+
+    # === 平台定義規範 ===
+    - id: gov-platform-definition
+      name: "GL 平台定義規範"
+      version: "1.0.0"
+      path: "ecosystem/registry/platforms/gov-platform-definition.yaml"
+      description: "定義平台的語意單位、構成條件與治理邊界"
+      type: definition
+      status: active
+      layers:
+        - platform
+        - governance
+        - validation
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+        - gov-meta-specifications
+      dependencies:
+        - gov-naming-ontology
+        - gov-platforms
+      validationRules:
+        - "GL-PD-001 至 GL-PD-008"
+        - "PR-001 至 PR-010"
+
+    # === 平台索引 ===
+    - id: gov-platform-index
+      name: "GL 平台索引"
+      version: "1.0.0"
+      path: "ecosystem/registry/platforms/gov-platforms.index.yaml"
+      description: "所有平台的完整索引與狀態管理"
+      type: registry
+      status: active
+      layers:
+        - platform
+        - metadata
+        - registry
+      governance:
+        - gov-meta-specifications
+        - gov-boundary-enforcement
+      dependencies:
+        - gov-platforms
+        - gov-platform-definition
+      validationRules:
+        - "PR-005: 無重複平台"
+
+    # === 平台放置規則 ===
+    - id: gov-placement-rules
+      name: "GL 平台放置規則"
+      version: "1.0.0"
+      path: "ecosystem/registry/platforms/gov-platforms.placement-rules.yaml"
+      description: "定義平台的放置規則與遷移策略"
+      type: rules
+      status: active
+      layers:
+        - platform
+        - governance
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+      dependencies:
+        - gov-platform-definition
+        - gov-platform-index
+      validationRules:
+        - "PR-001 至 PR-010"
+
+    # === 平台驗證器 ===
+    - id: gov-platform-validator
+      name: "GL 平台驗證器"
+      version: "1.0.0"
+      path: "ecosystem/registry/platforms/gov-platforms.validator.rego"
+      description: "平台命名與結構驗證器"
+      type: validator
+      status: active
+      layers:
+        - validation
+        - governance
+      governance:
+        - gov-boundary-enforcement
+        - gov-meta-specifications
+      dependencies:
+        - gov-platform-definition
+        - gov-placement-rules
+      validationRules:
+        - "GL-PD-001 至 GL-PD-008"
+        - "PR-001 至 PR-010"
+
+    # === 平台生命週期 ===
+    - id: gov-platform-lifecycle
+      name: "GL 平台生命週期規範"
+      version: "1.0.0"
+      path: "ecosystem/registry/platforms/gov-platform-lifecycle-spec.yaml"
+      description: "定義平台的生命週期、狀態轉換與遷移策略"
+      type: lifecycle
+      status: active
+      layers:
+        - platform
+        - governance
+        - lifecycle
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+      dependencies:
+        - gov-platform-definition
+        - gov-placement-rules
+      validationRules:
+        - "生命週期狀態驗證"
+        - "遷移策略執行"
+
+    # === 命名驗證規則 ===
+    - id: gov-validation-rules
+      name: "GL 命名驗證規則"
+      version: "1.0.0"
+      path: "ecosystem/contracts/validation/gov-validation-rules.yaml"
+      description: "統一的命名驗證規則集合"
+      type: validation
+      status: active
+      layers:
+        - validation
+        - governance
+      governance:
+        - gov-boundary-enforcement
+        - gov-meta-specifications
+      dependencies:
+        - gov-naming-ontology
+      validationRules:
+        - "GL-VR-001 至 GL-VR-999"
+
+    # === 擴展點定義 ===
+    - id: gov-extension-points
+      name: "GL 擴展點定義"
+      version: "1.0.0"
+      path: "ecosystem/contracts/extensions/gov-extension-points.yaml"
+      description: "定義命名系統的擴展點與擴展機制"
+      type: extension
+      status: active
+      layers:
+        - extensibility
+        - governance
+      governance:
+        - gov-extension-framework
+        - gov-meta-specifications
+      dependencies:
+        - gov-naming-ontology
+      validationRules:
+        - "擴展點一致性驗證"
+
+    # === 治理層級定義 ===
+    - id: gov-governance-layers
+      name: "GL 治理層級定義"
+      version: "1.0.0"
+      path: "ecosystem/contracts/governance/gov-governance-layers.yaml"
+      description: "定義 8 個 GL 治理層級與職責邊界"
+      type: governance
+      status: active
+      layers:
+        - governance
+        - platform
+      governance:
+        - gov-enterprise-architecture
+        - gov-boundary-enforcement
+      dependencies:
+        - gov-naming-ontology
+      validationRules:
+        - "GL-GO-001: 層級邊界驗證"
+        - "GL-GO-002: 依賴關係驗證"
+
+    # === 生成器規範 ===
+    - id: gov-generator-spec
+      name: "GL 生成器規範"
+      version: "1.0.0"
+      path: "ecosystem/contracts/generator/gov-generator-spec.yaml"
+      description: "定義命名生成器的規範與介面"
+      type: generator
+      status: active
+      layers:
+        - generator
+        - validation
+      governance:
+        - gov-meta-specifications
+        - gov-extension-framework
+      dependencies:
+        - gov-naming-ontology
+        - gov-extension-points
+      validationRules:
+        - "生成器輸出驗證"
+        - "命名格式一致性"
+
+    # === 推理規則 ===
+    - id: gov-reasoning-rules
+      name: "GL 推理規則"
+      version: "1.0.0"
+      path: "ecosystem/contracts/reasoning/gov-reasoning-rules.yaml"
+      description: "定義命名推理的規則與邏輯"
+      type: reasoning
+      status: active
+      layers:
+        - reasoning
+        - validation
+      governance:
+        - gov-meta-specifications
+        - gov-boundary-enforcement
+      dependencies:
+        - gov-naming-ontology
+        - gov-validation-rules
+      validationRules:
+        - "推理一致性驗證"
+        - "邏輯完整性檢查"
+
+  # 契約分類
+  categories:
+    core:
+      - gov-naming-ontology
+    platform:
+      - gov-platforms
+      - gov-platform-definition
+      - gov-platform-index
+      - gov-placement-rules
+      - gov-platform-validator
+      - gov-platform-lifecycle
+    validation:
+      - gov-validation-rules
+      - gov-platform-validator
+    governance:
+      - gov-governance-layers
+      - gov-placement-rules
+    extension:
+      - gov-extension-points
+    generator:
+      - gov-generator-spec
+    reasoning:
+      - gov-reasoning-rules
+
+  # 契約依賴圖
+  dependencyGraph:
+    gov-naming-ontology:
+      - gov-platforms
+      - gov-validation-rules
+      - gov-extension-points
+      - gov-governance-layers
+      - gov-generator-spec
+      - gov-reasoning-rules
+    
+    gov-platforms:
+      - gov-platform-definition
+    
+    gov-platform-definition:
+      - gov-platform-index
+      - gov-placement-rules
+    
+    gov-platform-index:
+      - gov-platform-validator
+    
+    gov-placement-rules:
+      - gov-platform-validator
+      - gov-platform-lifecycle
+    
+    gov-validation-rules:
+      - gov-platform-validator
+    
+    gov-extension-points:
+      - gov-generator-spec
+    
+    gov-reasoning-rules:
+      - gov-platform-validator
+
+  # 驗證規則索引
+  validationRulesIndex:
+    GL-PD-001:
+      name: "命名格式驗證"
+      level: "CRITICAL"
+      description: "平台名稱必須符合 gl.{domain}.{capability}-platform 格式"
+    
+    GL-PD-002:
+      name: "單一位置驗證"
+      level: "CRITICAL"
+      description: "平台不能在多個位置重複存在"
+    
+    PR-001:
+      name: "契約平台位置規則"
+      level: "CRITICAL"
+      description: "所有契約平台必須位於 platforms/ 目錄"
+    
+    PR-005:
+      name: "無重複平台"
+      level: "CRITICAL"
+      description: "禁止平台在多個位置重複存在"
+
+  # 治理層級索引
+  governanceLayersIndex:
+    semantic:
+      description: "語意層級定義命名單元的語意與含義"
+      contracts:
+        - gov-naming-ontology
+    
+    contract:
+      description: "契約層級定義命名規範與規則"
+      contracts:
+        - gov-naming-ontology
+        - gov-platforms
+    
+    platform:
+      description: "平台層級定義平台級資源的命名"
+      contracts:
+        - gov-platforms
+        - gov-platform-definition
+    
+    validation:
+      description: "驗證層級定義命名驗證規則"
+      contracts:
+        - gov-validation-rules
+        - gov-platform-validator
+    
+    governance:
+      description: "治理層級定義治理規則與邊界"
+      contracts:
+        - gov-governance-layers
+        - gov-placement-rules
+    
+    generator:
+      description: "生成器層級定義命名生成器"
+      contracts:
+        - gov-generator-spec
+    
+    reasoning:
+      description: "推理層級定義命名推理規則"
+      contracts:
+        - gov-reasoning-rules
+
+  # 擴展點索引
+  extensionPointsIndex:
+    custom-platform:
+      description: "自定義平台擴展點"
+      contract: gov-extension-points
+    
+    custom-rules:
+      description: "自定義規則擴展點"
+      contract: gov-extension-points
+    
+    custom-validators:
+      description: "自定義驗證器擴展點"
+      contract: gov-extension-points
+
+  # 使用方式
+  usage:
+    validators:
+      - "命名驗證器": "查詢 gov-validation-rules 與 gov-platform-validator"
+      - "平台驗證器": "查詢 gov-platform-validator"
+      - "合規檢查器": "查詢所有相關契約"
+    
+    generators:
+      - "命名生成器": "查詢 gov-generator-spec 與 gov-naming-ontology"
+      - "平台生成器": "查詢 gov-platform-definition 與 gov-platforms"
+      - "文檔生成器": "查詢 gov-naming-ontology"
+    
+    engines:
+      - "語意引擎": "查詢 gov-naming-ontology 與 gov-reasoning-rules"
+      - "推理引擎": "查詢 gov-reasoning-rules"
+      - "治理引擎": "查詢 gov-governance-layers"
+    
+    tools:
+      - "CLI 工具": "查詢 gov-validation-rules 與 gov-platform-validator"
+      - "Web 介面": "查詢 gov-platform-index 與 gov-placement-rules"
+      - "CI/CD 集成": "查詢 gov-validation-rules 與 gov-platform-validator"
+
+  # 統計信息
+  statistics:
+    totalContracts: 12
+    activeContracts: 12
+    deprecatedContracts: 0
+    coreContracts: 2
+    platformContracts: 6
+    validationContracts: 2
+    governanceContracts: 2
+    extensionContracts: 1
+    generatorContracts: 1
+    reasoningContracts: 1
+    totalValidationRules: 150+
+    totalGovernanceLayers: 26
+    totalExtensionPoints: 10+
+    expandedNamingEntities: 100+

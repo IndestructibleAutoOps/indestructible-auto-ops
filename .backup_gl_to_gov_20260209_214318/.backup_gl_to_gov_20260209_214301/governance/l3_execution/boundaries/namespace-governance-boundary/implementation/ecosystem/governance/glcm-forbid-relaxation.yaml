@@ -1,0 +1,144 @@
+# GLCM-FORBID-RELAXATION
+# Era-2 Governance Closure Core Rule
+# Purpose: Prevent any module from relaxing validation rules under any circumstance
+
+rule_id: "GLCM-FORBID-RELAXATION"
+version: "1.0.0"
+era: "2"
+severity: "CRITICAL"
+status: "ACTIVE"
+
+description: >
+  No module may relax validation rules, lower standards, or modify acceptance criteria
+  to achieve a pass status. This is a fundamental Era-2 principle that distinguishes
+  proper governance from "fake pass" behavior.
+
+trigger_conditions:
+  - validation_rules_modified:
+      type: "code_change"
+      detection: "Any modification to validation methods that reduces strictness"
+      examples:
+        - "Required fields list reduced"
+        - "Severity level downgraded (BLOCKER → CRITICAL → WARNING)"
+        - "Acceptance criteria weakened"
+        - "Optional flags added to required validations"
+        - "Schema mismatches accepted without repair"
+  
+  - standards_lowered:
+      type: "runtime_behavior"
+      detection: "Validation score improves without actual data repair"
+      indicators:
+        - "Score increases from <90 to 100 with no data changes"
+        - "Failed count drops to 0 with no repair actions"
+        - "New exceptions added to validation logic"
+        - "Historical data accepted without migration"
+  
+  - self_relaxation_pattern:
+      type: "architectural_anti_pattern"
+      detection: "System modifies its own validation to accommodate incomplete data"
+      pattern: "When validation fails → modify rules → re-validate → declare success"
+      violation: "This is Era-0/1 self-relaxation behavior, strictly forbidden in Era-2"
+
+actions:
+  on_detection:
+    immediate: "FAIL_IMMEDIATELY"
+    block: true
+    evidence_required: true
+    
+  required_evidence:
+    - "original_validation_rules.yaml"
+    - "modified_validation_rules.yaml"
+    - "diff_of_changes.txt"
+    - "repair_plan.yaml (explaining why repair was not possible)"
+    - "justification_for_relaxation.yaml"
+    
+  violation_sealing:
+    location: "ecosystem/.governance/violations/validation_relaxation/"
+    format: "json"
+    include:
+      - "rule_change_diff"
+      - "impact_analysis"
+      - "correct_repair_approach"
+      - "who_authorized_relaxation"
+
+exceptions:
+  none: "There are NO exceptions to this rule. Validation relaxation is NEVER permitted in Era-2."
+  
+  historical_data_handling:
+    correct_approach: "Generate repair plan to migrate historical data to Era-2 standards"
+    incorrect_approach: "Relax validation to accept Era-0/1 data as-is"
+    
+  incompatible_schemas:
+    correct_approach: "Generate schema transformation and migrate data"
+    incorrect_approach: "Modify validation to accept incompatible schema"
+
+validation:
+  self_test:
+    - "This rule cannot be relaxed"
+    - "This rule cannot be modified to permit relaxation"
+    - "Any attempt to modify this rule is itself a violation"
+    
+  compliance_check:
+    method: "static_analysis + runtime_monitoring"
+    scan_targets:
+      - "All validation methods in engines/"
+      - "All rule definitions in governance/"
+      - "All pipeline steps in upgrade_*.py"
+      
+    violation_patterns:
+      - "if not field in event: continue" (should repair, not skip)
+      - "required_fields.remove('x')" (should never reduce requirements)
+      - "severity = WARNING if not strict_mode" (no strict_mode exists)
+
+enforcement:
+  automated_checks:
+    - "Pre-commit: Detect validation rule relaxation"
+    - "Runtime: Block relaxed validations from executing"
+    - "Post-execution: Validate no relaxation occurred"
+    
+  manual_review:
+    required: true
+    when: "Any validation score improvement without corresponding repair actions"
+    reviewer: "Governance Owner (IndestructibleAutoOps)"
+    
+  violation_reporting:
+    immediate: true
+    channels:
+      - "Governance event stream"
+      - "Violation registry"
+      - "Closure status downgrade"
+
+era_2_principles:
+  - "NOFAKEPASS: Success must be genuine, not achieved by rule manipulation"
+  - "NO_SKIP: Steps cannot be skipped without proper evidence"
+  - "NO_RELAXATION: Validation rules cannot be weakened"
+  - "SEALED_REPAIRS: All repairs must be sealed and verifiable"
+
+related_rules:
+  - "GLCM-NOFAKEPASS"
+  - "GLCM-REPAIR-REQUIRED"
+  - "GLCM-SEALED-EVIDENCE"
+  - "GLCM-HALLUCINATION-DETECTION"
+
+examples:
+  violation_example:
+    scenario: "Event stream validation fails due to missing canonical_hash"
+    incorrect_action: "Change required_fields from ['uuid', 'type', 'payload', 'canonical_hash'] to ['event_type']"
+    correct_action: "Generate repair plan to add canonical_hash to all historical events"
+    violation_status: "GLCM-FORBID-RELAXATION"
+    
+  compliance_example:
+    scenario: "Tool registry in wrong format"
+    incorrect_action: "Modify validation to accept JSON instead of YAML"
+    correct_action: "Generate YAML registry or add schema transformation layer"
+    compliance_status: "PASS (with proper repair)"
+
+implementation_notes: >
+  This rule is enforced at multiple levels:
+  1. Code level: Static analysis prevents relaxation patterns
+  2. Runtime level: Blocks relaxed validations from executing
+  3. Governance level: Violations immediately downgrades closure status
+  4. Audit level: All relaxation attempts are permanently sealed as violations
+  
+  This is a "meta-rule" that protects the integrity of all other rules.
+  It cannot be modified, relaxed, or excepted without triggering a violation.

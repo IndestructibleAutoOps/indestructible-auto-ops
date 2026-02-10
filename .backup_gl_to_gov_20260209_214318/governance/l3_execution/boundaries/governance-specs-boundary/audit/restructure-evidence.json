@@ -1,0 +1,393 @@
+{
+  "restructure_audit": {
+    "timestamp": "2026-02-07T07:34:34.999123Z",
+    "spec_file": "GOVERNANCE-RESTRUCTURE-SPEC.yaml",
+    "dry_run": false,
+    "actions": [
+      {
+        "timestamp": "2026-02-07T07:34:34.990730Z",
+        "action": "validate_preconditions",
+        "details": {
+          "passed": true,
+          "checks_count": 2
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.991274Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "mnga-governance",
+          "full_name": "Machine Native Governance Architecture",
+          "subdirectories": [
+            "core",
+            "enforcement",
+            "validation",
+            "contracts"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.991609Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "mno-governance",
+          "full_name": "Machine Native Ops Governance",
+          "subdirectories": [
+            "operations",
+            "lifecycle",
+            "automation",
+            "monitoring"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.991940Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "gqs-governance",
+          "full_name": "Governance Quantum Stack",
+          "subdirectories": [
+            "layers",
+            "contracts",
+            "validation",
+            "closure"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.992210Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "gates-governance",
+          "full_name": "Operation Control Gates",
+          "subdirectories": [
+            "checkpoints",
+            "enforcement",
+            "policies"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.992481Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "guardrails-governance",
+          "full_name": "Safety and Compliance Boundaries",
+          "subdirectories": [
+            "safety",
+            "compliance",
+            "policies"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.992793Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "global-governance",
+          "full_name": "System-wide Configuration",
+          "subdirectories": [
+            "config",
+            "policies",
+            "aliases"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.993079Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "gateway-governance",
+          "full_name": "API and Network Gateway",
+          "subdirectories": [
+            "routing",
+            "security",
+            "monitoring"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.993338Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "gap-governance",
+          "full_name": "Gap Analysis and Planning",
+          "subdirectories": [
+            "analysis",
+            "remediation",
+            "tracking"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.993597Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "generation-governance",
+          "full_name": "Artifact Generation",
+          "subdirectories": [
+            "standards",
+            "generators",
+            "metadata"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.993882Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "group-governance",
+          "full_name": "Resource Grouping",
+          "subdirectories": [
+            "policies",
+            "workflows",
+            "monitoring"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.994162Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "gcp-governance",
+          "full_name": "Google Cloud Platform",
+          "subdirectories": [
+            "infrastructure",
+            "monitoring",
+            "security"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.994421Z",
+        "action": "create_directory",
+        "details": {
+          "directory": "grafana-governance",
+          "full_name": "Monitoring Dashboards",
+          "subdirectories": [
+            "dashboards",
+            "datasources",
+            "alerts"
+          ]
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.994693Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ng-namespace-governance/core/NG00000-ZERO-TOLERANCE-POLICY.yaml",
+          "target_directory": "mnga-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.994930Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/governance/core-governance-spec.yaml",
+          "target_directory": "mnga-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.995112Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ng-namespace-governance/core/NG00201-lifecycle-standard.yaml",
+          "target_directory": "mno-governance",
+          "target_subdirectory": "operations"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.995304Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/governance/enforcement-rules.yaml",
+          "target_directory": "mno-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.995475Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/contracts/governance/gqs-layers.yaml",
+          "target_directory": "gqs-governance",
+          "target_subdirectory": "contracts"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.995640Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/governance/closure/governance_closure_spec.yaml",
+          "target_directory": "gqs-governance",
+          "target_subdirectory": "layers"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.995828Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/gates/operation-gate.yaml",
+          "target_directory": "gates-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.996008Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/gates/self-auditor-config.yaml",
+          "target_directory": "gates-governance",
+          "target_subdirectory": "checkpoints"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.996166Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "governance/workflows/research-loop/gates.yaml",
+          "target_directory": "gates-governance",
+          "target_subdirectory": "checkpoints"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.996336Z",
+        "action": "migrate_file",
+        "details": {
+          "source": ".github/config/governance/ai-constitution.yaml",
+          "target_directory": "guardrails-governance",
+          "target_subdirectory": "safety"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.996492Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "gov-governance-compliance-platform/governance/naming/global-aliases.yaml",
+          "target_directory": "global-governance",
+          "target_subdirectory": "config"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.996658Z",
+        "action": "migrate_file",
+        "details": {
+          "source": ".github/config/governance/language-policy.yaml",
+          "target_directory": "global-governance",
+          "target_subdirectory": "policies"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.996819Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/coordination/api-gateway/configs/gateway-config.yaml",
+          "target_directory": "gateway-governance",
+          "target_subdirectory": "routing"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.997046Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "governance/workflows/research-loop/templates/gap-list.md",
+          "target_directory": "gap-governance",
+          "target_subdirectory": "analysis"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.997264Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "ecosystem/governance/specs/hash_policy.yaml",
+          "target_directory": "generation-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.997426Z",
+        "action": "migrate_file",
+        "details": {
+          "source": ".github/workflows-quantum/monitoring/workflow-monitor.yml",
+          "target_directory": "group-governance",
+          "target_subdirectory": "monitoring"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.997779Z",
+        "action": "migrate_file",
+        "details": {
+          "source": ".github/config/providers/gcp/",
+          "target_directory": "gcp-governance",
+          "target_subdirectory": "infrastructure"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.998683Z",
+        "action": "migrate_file",
+        "details": {
+          "source": "monitoring/grafana/",
+          "target_directory": "grafana-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.998854Z",
+        "action": "migrate_file",
+        "details": {
+          "source": ".github/config/providers/aws/infrastructure/monitoring-stack.yaml",
+          "target_directory": "grafana-governance",
+          "target_subdirectory": "core"
+        },
+        "dry_run": false
+      },
+      {
+        "timestamp": "2026-02-07T07:34:34.999046Z",
+        "action": "validate_postconditions",
+        "details": {
+          "passed": true,
+          "checks_count": 3
+        },
+        "dry_run": false
+      }
+    ],
+    "summary": {
+      "total_actions": 33,
+      "directories_created": 12,
+      "files_migrated": 19
+    }
+  }
+}

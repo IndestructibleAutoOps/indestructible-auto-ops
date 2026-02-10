@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ng-vector-space-manager
+  namespace: ng-governance
+  labels:
+    app: ng-vector-space-manager
+    ng-code: NG70800
+    ng-category: semantic-embedding
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ng-vector-space-manager
+  template:
+    metadata:
+      labels:
+        app: ng-vector-space-manager
+        ng-code: NG70800
+    spec:
+      containers:
+      - name: vector-space-manager
+        image: ng-governance/vector-space-manager:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+          name: http
+        - containerPort: 9092
+          name: metrics
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: REDIS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: redis-host
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: redis-password
+        - name: EMBEDDING_MODEL_VERSION
+          value: "internal-multimodal-encoder-v3"
+        - name: ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ng-governance-secrets
+              key: encryption-key
+        volumeMounts:
+        - name: config
+          mountPath: /etc/ng-governance/config
+          readOnly: true
+        - name: model-cache
+          mountPath: /models
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8082
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8082
+          initialDelaySeconds: 30
+          periodSeconds: 5
+      volumes:
+      - name: config
+        configMap:
+          name: ng-governance-config
+      - name: model-cache
+        emptyDir:
+          sizeLimit: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ng-vector-space-manager
+  namespace: ng-governance
+  labels:
+    app: ng-vector-space-manager
+    ng-code: NG70800
+spec:
+  ports:
+  - port: 80
+    targetPort: 8082
+    name: http
+  - port: 9090
+    targetPort: 9092
+    name: metrics
+  selector:
+    app: ng-vector-space-manager
+  type: ClusterIP

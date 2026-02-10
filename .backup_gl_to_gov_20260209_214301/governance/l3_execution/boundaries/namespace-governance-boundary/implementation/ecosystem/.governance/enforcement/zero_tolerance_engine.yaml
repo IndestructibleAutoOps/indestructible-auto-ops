@@ -1,0 +1,118 @@
+kind: EnforcementEngine
+apiVersion: gl.enforcement/v1
+metadata:
+  name: "GL.Engine.Enforcement.ZeroTolerance"
+  version: "v1"
+  description: "最高權重零容忍治理強制執行引擎"
+  created: "2026-02-05T15:30:00Z"
+  maintainer: "Governance.Enforcement"
+  weight: 1000
+
+spec:
+  principles:
+    - "zero_tolerance"
+    - "auto_enforcement"
+    - "strict_definition"
+    - "strict_execution"
+    - "highest_priority"
+    - "immutable_rules"
+    - "real_time_blocking"
+    - "no_bypass"
+
+  components:
+    policy_decision_point:
+      name: "PDP"
+      description: "策略決策中心"
+      weight: 1000
+      response_time_ms: 100
+
+    policy_enforcement_point:
+      name: "PEP"
+      description: "執行守衛"
+      weight: 1000
+      enforcement_time_ms: 50
+
+    policy_information_point:
+      name: "PIP"
+      description: "證據收集器"
+      weight: 900
+
+  enforcement_rules:
+    semantic_validation:
+      name: "語意驗證"
+      priority: 1000
+      condition: "operation.has_semantic_tokens && operation.semantic_verified"
+      action: "allow"
+      else_action: "block"
+      blocking_reason: "缺少語意驗證"
+      severity: "critical"
+
+    governance_validation:
+      name: "治理驗證"
+      priority: 1000
+      condition: "operation.glcm_passed && operation.governance_verified"
+      action: "allow"
+      else_action: "block"
+      blocking_reason: "治理驗證失敗"
+      severity: "critical"
+
+    evidence_chain_validation:
+      name: "證據鏈驗證"
+      priority: 1000
+      condition: "operation.evidence_chain_complete && operation.chain_integrity_verified"
+      action: "allow"
+      else_action: "block"
+      blocking_reason: "證據鏈不完整"
+      severity: "critical"
+
+    hash_verification:
+      name: "Hash 驗證"
+      priority: 1000
+      condition: "operation.all_artifacts_hashed && operation.hash_registry_synced"
+      action: "allow"
+      else_action: "block"
+      blocking_reason: "Hash 驗證失敗"
+      severity: "critical"
+
+    no_hallucination_check:
+      name: "無幻覺檢查"
+      priority: 1000
+      condition: "operation.hallucinations_detected == 0"
+      action: "allow"
+      else_action: "block"
+      blocking_reason: "檢測到治理幻覺"
+      severity: "critical"
+
+  execution_modes:
+    strict_mode:
+      name: "嚴格模式"
+      description: "所有規則必須通過，零容忍"
+      rules_must_pass: "all"
+      blocking_enabled: true
+      bypass_enabled: false
+      auto_enforcement: true
+      default: true
+
+  trigger_points:
+    - "on_module_startup"
+    - "on_operation_request"
+    - "on_claim_pass"
+    - "on_claim_world_class"
+    - "on_claim_governed"
+    - "on_archival"
+    - "on_deployment"
+    - "periodic_check"
+
+  blocking_policies:
+    critical_violation:
+      action: "immediate_block"
+      notification: "critical_alert"
+      escalation: "immediate"
+      rollback: "automatic"
+      audit_log: "immutable"
+
+  deployment:
+    auto_start: true
+    startup_priority: 1000
+    enforcement_priority: 1000
+    blocking_priority: 1000

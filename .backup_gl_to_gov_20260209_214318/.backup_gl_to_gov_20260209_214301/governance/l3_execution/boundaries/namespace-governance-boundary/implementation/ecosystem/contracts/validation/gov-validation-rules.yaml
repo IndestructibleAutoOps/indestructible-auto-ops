@@ -1,0 +1,187 @@
+#
+# @GL-governed
+# @GL-layer: GL90-99
+# @GL-semantic: general
+# @GL-audit-trail: ../../governance/GL_SEMANTIC_ANCHOR.json
+#
+apiVersion: validation.gl/v1
+kind: ValidationRules
+metadata:
+  name: gl-validation-rules
+  version: "1.0.0"
+  description: "GL 命名驗證規則 - 統一的命名驗證規則集合"
+  category: validation
+  compliance:
+    - gl-boundary-enforcement
+    - gl-meta-specifications
+
+spec:
+  validationRules:
+    # === 語意驗證規則 ===
+    - id: GL-VR-001
+      name: "語意一致性驗證"
+      description: "名稱必須具有清晰的語意和業務含義"
+      level: "CRITICAL"
+      appliesTo: ["all"]
+      check: "名稱是否反映實際功能或用途"
+      errorMessage: "名稱缺乏語意或含義不明確"
+    
+    - id: GL-VR-002
+      name: "名稱唯一性驗證"
+      description: "名稱必須在作用域內唯一"
+      level: "CRITICAL"
+      appliesTo: ["all"]
+      check: "名稱是否在作用域內重複"
+      errorMessage: "名稱在作用域內重複"
+
+    # === 格式驗證規則 ===
+    - id: GL-VR-003
+      name: "命名格式驗證"
+      description: "名稱必須符合命名格式規範"
+      level: "CRITICAL"
+      appliesTo: ["all"]
+      check: "是否符合命名格式"
+      errorMessage: "不符合命名格式規範"
+    
+    - id: GL-VR-004
+      name: "字符集驗證"
+      description: "只能使用允許的字符集"
+      level: "MEDIUM"
+      appliesTo: ["all"]
+      check: "是否包含非法字符"
+      errorMessage: "包含非法字符"
+    
+    - id: GL-VR-005
+      name: "長度限制驗證"
+      description: "名稱長度必須在合理範圍內"
+      level: "MEDIUM"
+      appliesTo: ["all"]
+      check: "名稱長度是否超過限制"
+      errorMessage: "名稱長度超過限制"
+
+    # === 平台驗證規則 ===
+    - id: GL-VR-010
+      name: "平台命名格式驗證"
+      description: "平台名稱必須符合 gl.{domain}.{capability}-platform 格式"
+      level: "CRITICAL"
+      appliesTo: ["platform"]
+      check: "是否符合 gl.{domain}.{capability}-platform 格式"
+      errorMessage: "平台名稱不符合格式要求"
+    
+    - id: GL-VR-011
+      name: "平台單一位置驗證"
+      description: "平台不能在多個位置重複存在"
+      level: "CRITICAL"
+      appliesTo: ["platform"]
+      check: "平台是否在多個位置存在"
+      errorMessage: "平台在多個位置重複存在"
+    
+    - id: GL-VR-012
+      name: "平台契約註冊驗證"
+      description: "契約平台必須在 gl-platforms.yaml 中註冊"
+      level: "HIGH"
+      appliesTo: ["platform"]
+      check: "平台是否在契約中註冊"
+      errorMessage: "平台未在契約中註冊"
+    
+    - id: GL-VR-013
+      name: "平台目錄結構驗證"
+      description: "平台目錄必須包含標準子目錄"
+      level: "MEDIUM"
+      appliesTo: ["platform"]
+      check: "平台目錄結構是否完整"
+      errorMessage: "平台目錄結構不完整"
+    
+    - id: GL-VR-014
+      name: "平台 Manifest 存在驗證"
+      description: "平台必須在 registry 中有 manifest 檔案"
+      level: "HIGH"
+      appliesTo: ["platform"]
+      check: "平台 manifest 是否存在"
+      errorMessage: "平台 manifest 不存在"
+
+    # === 治理驗證規則 ===
+    - id: GL-VR-020
+      name: "治理層級驗證"
+      description: "平台必須聲明遵循的治理層級"
+      level: "MEDIUM"
+      appliesTo: ["platform"]
+      check: "平台是否聲明治理層級"
+      errorMessage: "平台未聲明治理層級"
+    
+    - id: GL-VR-021
+      name: "依賴關係驗證"
+      description: "平台依賴關係必須正確"
+      level: "HIGH"
+      appliesTo: ["platform"]
+      check: "平台依賴關係是否正確"
+      errorMessage: "平台依賴關係不正確"
+    
+    - id: GL-VR-022
+      name: "邊界規則驗證"
+      description: "平台必須符合邊界規則"
+      level: "CRITICAL"
+      appliesTo: ["platform"]
+      check: "平台是否違反邊界規則"
+      errorMessage: "平台違反邊界規則"
+
+  # === 驗證級別定義 ===
+  levels:
+      CRITICAL:
+        description: "關鍵錯誤，必須修復"
+        action: "阻擋提交"
+        example: "平台命名格式錯誤"
+      
+      HIGH:
+        description: "高優先級錯誤，建議修復"
+        action: "警告並建議修復"
+        example: "平台未註冊 manifest"
+      
+      MEDIUM:
+        description: "中等優先級錯誤"
+        action: "顯示警告"
+        example: "名稱過長"
+      
+      LOW:
+        description: "低優先級錯誤"
+        action: "僅顯示資訊"
+        example: "建議使用更清晰的名稱"
+
+  # 驗證流程
+  validationPipeline:
+      - step: 1
+        name: "語意驗證"
+        rules: ["GL-VR-001", "GL-VR-002"]
+      
+      - step: 2
+        name: "格式驗證"
+        rules: ["GL-VR-003", "GL-VR-004", "GL-VR-005"]
+      
+      - step: 3
+        name: "平台驗證"
+        rules: ["GL-VR-010 至 GL-VR-014"]
+        condition: "type == platform"
+      
+      - step: 4
+        name: "治理驗證"
+        rules: ["GL-VR-020 至 GL-VR-022"]
+        condition: "type == platform"
+
+  # 錯誤處理
+  errorHandling:
+      onCritical:
+        - "阻擋提交"
+        - "顯示錯誤訊息"
+        - "提供建議修復"
+      
+      onHigh:
+        - "警告並建議修復"
+        - "允許繼續但記錄警告"
+      
+      onMedium:
+        - "顯示警告"
+        - "建議修復但允許繼續"
+      
+      onLow:
+        - "僅顯示資訊"
+        - "不影響驗證結果"

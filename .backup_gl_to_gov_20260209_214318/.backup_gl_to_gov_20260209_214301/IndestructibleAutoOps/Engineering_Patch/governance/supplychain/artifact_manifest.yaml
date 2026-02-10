@@ -1,0 +1,31 @@
+artifact_manifest:
+  version: v1
+  artifact_classes:
+    - class: "source"
+      required: true
+      attest: true
+      sbom: true
+    - class: "container_image"
+      required: true
+      attest: true
+      sbom: true
+      base_image_policy:
+        pinned_digest: true
+        signed: true
+    - class: "policy"
+      required: true
+      attest: true
+      sbom: false
+    - class: "model"
+      required: false
+      attest: true
+      sbom: true
+      constraints:
+        - "training_data_lineage_required=true"
+        - "reproducibility_required=true"
+    - class: "dashboard_rules"
+      required: true
+      attest: true
+      sbom: false
+  gates:
+    - "artifact_coverage=100%"
