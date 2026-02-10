@@ -471,7 +471,7 @@ git revert bb5d065a
 
 - 📋 **執行計劃**: `PLATFORM-CONSOLIDATION-NG-COMPLIANT.md`
 - 📊 **執行總結**: `PLATFORM-INTEGRATION-FINAL-SUMMARY.md`
-- ✅ **本報告**: `PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md`
+- ✅ **本報告**: `docs/reports/platform-consolidation-execution-report.md`
 - 🔧 **工具**: `tools/consolidate-platforms.py`
 - ✅ **NG 驗證**: `tools/validate-ng-compliance.py`
 - 📄 **NG 憲章**: `ng-namespace-governance/NG-CHARTER.md`

@@ -243,7 +243,7 @@ Easy to navigate
 4. ✅ PLATFORM-INTEGRATION-FINAL-SUMMARY.md（最終方案）
 
 ### 執行文檔（1 份）
-5. ✅ PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md（執行報告）
+5. ✅ docs/reports/platform-consolidation-execution-report.md（執行報告）
 
 ### 完成文檔（1 份）
 6. ✅ PLATFORM-CONSOLIDATION-COMPLETE.md（本文檔）
@@ -497,7 +497,7 @@ New structure: 100% NG compliant
 ## 📞 聯繫與支持
 
 ### 相關資源
-- 📋 **執行報告**: `PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md`
+- 📋 **執行報告**: `docs/reports/platform-consolidation-execution-report.md`
 - 📊 **最終方案**: `PLATFORM-INTEGRATION-FINAL-SUMMARY.md`
 - ✅ **本文檔**: `PLATFORM-CONSOLIDATION-COMPLETE.md`
 - 🔧 **工具**: `tools/validate-ng-compliance.py`

@@ -12,6 +12,32 @@
 - **治理與執行**：`governance/`、`ecosystem/`（強制執行入口已集中到 namespace-governance-boundary）、`scripts/`、`tools/`（需保留單一入口並將舊路徑標記為受控遺留）。
 - **文檔分散**：根目錄大量狀態/報告類 MD（`*_COMPLETE.md`, `*_REPORT.md`, `*_SUMMARY.md`），同時 `docs/` 已有 plans/analysis/reports 結構與文檔清單（`docs/plans/docs-reorganization-plan.md`）。需一次性收斂。
 
+## 目錄映射表（初版）
+| Source | Target | Action | Status |
+| --- | --- | --- | --- |
+| `IndestructibleAutoOps/` | `indestructibleautoops/` | 合併/歸檔，統一小寫入口 | Planned |
+| `indestructibleautoops/` | `machinenativeops/` | 建立主幹映射（治理/回填同步） | Planned |
+| `iaops/` | `machinenativeops/iaops/` (只讀) | 轉為受控遺留或文檔化接口 | Planned |
+| `machinenativeops/` | `machinenativeops/` | 保持主幹（含 gov-runtime-engine） | In progress |
+| `ng-era*-platforms/`、`ng-cross-era-platforms/` | `platforms/` (GL00-99 分層) | 按年代計畫收斂，遺留歸檔到 `archives/platforms/` | Planned |
+| `governance/`、`ecosystem/` | 保留原位 | 唯一強制執行/治理入口 | Locked |
+
+## 文檔搬遷映射（按優先級）
+| Source (root) | Target | Rationale | Status |
+| --- | --- | --- | --- |
+| `PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md` | `docs/reports/platform-consolidation-execution-report.md` | 平台整合報告應集中於 reports | Done |
+| `ABSOLUTE-ZERO-TOLERANCE-ACHIEVED.md` | `docs/reports/absolute-zero-tolerance-achieved.md` | 減少根目錄雜訊並改善命名 | Done |
+| `execution-plan.md` | `docs/plans/execution-plan.md` | 計畫類文檔集中於 plans | Pending |
+| `radical-dependency-elimination-plan.md` | `docs/plans/radical-dependency-elimination-plan.md` | 跟隨重組計畫 | Pending |
+| `PHASE*_COMPLETION_REPORT.md` | `docs/phases/` (保留原檔名或建立索引頁) | 階段報告集中化，後續更新索引 | Planned |
+
+## 命名修正（批次切入點）
+| Offending/legacy name | Target naming | Note |
+| --- | --- | --- |
+| `PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md` | `platform-consolidation-execution-report.md` | 已搬至 `docs/reports/` |
+| `ABSOLUTE-ZERO-TOLERANCE-ACHIEVED.md` | `absolute-zero-tolerance-achieved.md` | 已搬至 `docs/reports/` |
+| `PHASE*_COMPLETION_REPORT.md` | `phase*-completion-report.md` (或索引聚合) | 後續批次處理，需更新引用 |
+
 ## 合併路線圖（階段化）
 ### Phase 1：盤點與護欄
 - 以最新 `actual-tree-structure.txt`、`DIRECTORY-STRUCTURE-VERIFICATION.md` 為基準，補齊目錄 → 目標的映射表（含「保留/合併/歸檔」標記）。
