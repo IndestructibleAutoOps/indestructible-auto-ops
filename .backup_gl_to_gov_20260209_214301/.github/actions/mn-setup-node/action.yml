@@ -16,13 +16,13 @@ branding:
   icon: 'hexagon'
   color: 'green'
 
+# Governance Metadata:
+#   name: ""
+#   description: ""
+#   labels: {}
+
 inputs:
   node-version:
-metadata:
-  name: ""
-  description: ""
-  labels: {}
-
     description: 'Version Spec of the version to use (e.g., 18, 20.x, lts/*)'
     required: false
     default: ''

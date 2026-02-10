@@ -3,15 +3,16 @@
 # @GL-semantic: governed-configuration
 # @GL-audit-trail: engine/governance/GL_SEMANTIC_ANCHOR.json
 
-version: "1.0.0"
-metadata:
-  name: ""
-  description: ""
-  labels: {}
+# Action version (governance metadata; kept as comment to comply with GitHub Actions schema)
+# version: "1.0.0"
+# metadata:
+#   name: ""
+#   description: ""
+#   labels: {}
 
 name: yq - portable yaml processor
 description: Install yq - a portable YAML processor for reading and manipulating YAML files
-author: MachineNativeOps
+# author: MachineNativeOps  # governance metadata; not part of official GitHub Actions schema
 
 branding:
   icon: file-text

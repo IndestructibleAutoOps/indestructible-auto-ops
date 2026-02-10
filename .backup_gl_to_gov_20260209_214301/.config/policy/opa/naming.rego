@@ -77,8 +77,8 @@ deny[msg] {
 deny[msg] {
     input.kind
     required_label := {"app", "version", "environment"}
-    not required_label[label]
-    label := input.metadata.labels[label]
+    label := required_label[_]
+    not input.metadata.labels[label]
     msg := sprintf("Resource of kind '%s' is missing required label '%s'", [input.kind, label])
 }
 
