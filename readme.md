@@ -55,11 +55,19 @@ All GL platforms are now organized by NG Era for better maintainability and gove
 
 ```
 workspace/
-├── ng-era1-platforms/          # Era-1: Code Layer (5 platforms)
-├── ng-era2-platforms/          # Era-2: Microcode Layer (11 platforms)
-├── ng-era3-platforms/          # Era-3: No-Code Layer (3 platforms)
-├── ng-cross-era-platforms/     # Cross-Era (3 platforms)
-└── platforms/                  # Special purpose platforms
+└── platforms/
+    ├── ng-era-platforms/                   # Consolidated NG era bundle
+    │   ├── ng-era1-platforms/              # Era-1: Code Layer (5 platforms)
+    │   ├── ng-era2-platforms/              # Era-2: Microcode Layer (11 platforms)
+    │   ├── ng-era3-platforms/              # Era-3: No-Code Layer (3 platforms)
+    │   └── ng-cross-era-platforms/         # Cross-Era (3 platforms)
+    ├── gl/                               # GL platform set
+    ├── gov-platform-assistant/
+    ├── gov-platform-ide/
+    ├── automation/
+    ├── quantum/
+    ├── infrastructure/
+    └── registry/
 ```
 
 See [Platform Consolidation Report](PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md) for details.

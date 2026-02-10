@@ -61,29 +61,33 @@
 ┌──────────────────────────────────────────────────────────────┐
 │ GL 平台生態系統（實施級，NG Era 組織）                         │
 │                                                              │
-│ ng-era1-platforms/      [Era-1: 代碼層, 5 platforms, 3.8M]  │
+│ platforms/ng-era-platforms/ng-era1-platforms/               │
 │   ├─ enterprise-architecture/       (GL00-09 → NG100-199)   │
 │   ├─ governance-architecture/       (GL00-09 → NG100-199)   │
 │   ├─ platform-core/                 (GL10-29 → NG100-299)   │
 │   ├─ platform-services/             (GL10-29 → NG100-299)   │
 │   └─ runtime-services/              (GL10-29 → NG100-299)   │
 │                                                              │
-│ ng-era2-platforms/      [Era-2: 微碼層, 11 platforms, 76M]  │
+│ platforms/ng-era-platforms/ng-era2-platforms/               │
 │   ├─ runtime/ (3)                   (GL30-49 → NG300-499)   │
 │   ├─ data-processing/ (3)           (GL20-29 → NG300-399)   │
 │   ├─ monitoring/ (3)                (GL50-59 → NG500-599)   │
 │   └─ governance/ (2)                (GL60-80 → NG300-599)   │
 │                                                              │
-│ ng-era3-platforms/      [Era-3: 無碼層, 3 platforms, 68K]   │
+│ platforms/ng-era-platforms/ng-era3-platforms/               │
 │   └─ extensions/ (3)                (GL81-83 → NG600-799)   │
 │                                                              │
-│ ng-cross-era-platforms/ [Cross-Era, 3 platforms, 232K]      │
+│ platforms/ng-era-platforms/ng-cross-era-platforms/          │
 │   └─ meta/ (3)                      (GL90-99 → NG900-999)   │
 │                                                              │
-│ platforms/              [專項平台, 8 platforms, 2.5M]        │
-│   ├─ automation/ (instant, organizer)                       │
-│   ├─ quantum/ (computing)                                   │
-│   └─ infrastructure/ (foundation)                           │
+│ platforms/              [專項平台與工具集]                     │
+│   ├─ gl/                                                   │
+│   ├─ gov-platform-assistant/                               │
+│   ├─ gov-platform-ide/                                     │
+│   ├─ automation/ (instant, organizer)                      │
+│   ├─ quantum/ (computing)                                  │
+│   ├─ infrastructure/ (foundation)                          │
+│   └─ registry/                                             │
 └──────────────────────────────────────────────────────────────┘
 ```
 

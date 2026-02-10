@@ -59,6 +59,10 @@ All platforms follow the format: `gl.{domain}.{capability}-platform`
 - **gl.ai.slack-platform**: Slack AI 整合平台
 - **gl.ai.csdn-platform**: CSDN AI 平台
 
+## NG Era Consolidation
+
+Legacy NG era platform artifacts (cross-era meta, Era-1/2/3 stacks) are now grouped under `platforms/ng-era-platforms/`. See `platforms/ng-era-platforms/README.md` for layout and audit/replay guidance.
+
 ### MCP Platforms (gl.mcp.*)
 - **gl.mcp.multimodal-platform**: 多模態控制平台
 - **gl.mcp.cursor-platform**: Cursor AI 編輯器平台
