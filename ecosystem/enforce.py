@@ -16,7 +16,10 @@ def main() -> int:
     repo_root = Path(__file__).resolve().parent.parent
     target = (
         repo_root
-        / "responsibility-namespace-governance-boundary"
+        / "governance"
+        / "l3_execution"
+        / "boundaries"
+        / "namespace-governance-boundary"
         / "implementation"
         / "ecosystem"
         / "enforce.py"
