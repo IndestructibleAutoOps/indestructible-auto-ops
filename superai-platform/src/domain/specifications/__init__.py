@@ -1,4 +1,4 @@
-"""Specification pattern for composable business rules."""
+"""Specification pattern — composable query predicates for domain filtering."""
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -8,11 +8,10 @@ T = TypeVar("T")
 
 
 class Specification(ABC, Generic[T]):
-    """Base specification for composable domain rules."""
+    """Base specification interface."""
 
     @abstractmethod
-    def is_satisfied_by(self, candidate: T) -> bool:
-        ...
+    def is_satisfied_by(self, candidate: T) -> bool: ...
 
     def and_(self, other: Specification[T]) -> AndSpecification[T]:
         return AndSpecification(self, other)
@@ -25,7 +24,7 @@ class Specification(ABC, Generic[T]):
 
 
 class AndSpecification(Specification[T]):
-    def __init__(self, left: Specification[T], right: Specification[T]):
+    def __init__(self, left: Specification[T], right: Specification[T]) -> None:
         self._left = left
         self._right = right
 
@@ -34,7 +33,7 @@ class AndSpecification(Specification[T]):
 
 
 class OrSpecification(Specification[T]):
-    def __init__(self, left: Specification[T], right: Specification[T]):
+    def __init__(self, left: Specification[T], right: Specification[T]) -> None:
         self._left = left
         self._right = right
 
@@ -43,35 +42,54 @@ class OrSpecification(Specification[T]):
 
 
 class NotSpecification(Specification[T]):
-    def __init__(self, spec: Specification[T]):
+    def __init__(self, spec: Specification[T]) -> None:
         self._spec = spec
 
     def is_satisfied_by(self, candidate: T) -> bool:
         return not self._spec.is_satisfied_by(candidate)
 
 
-# --- Concrete User Specifications ---
-class IsActiveUser(Specification):
+# --- User Specifications ---
+
+class ActiveUserSpecification(Specification):
+    """Matches users with 'active' status."""
     def is_satisfied_by(self, candidate: Any) -> bool:
-        return getattr(candidate, "is_active", False)
+        return getattr(candidate, "status", None) == "active" or (
+            hasattr(candidate, "status") and hasattr(candidate.status, "value") and candidate.status.value == "active"
+        )
 
 
-class HasRole(Specification):
-    def __init__(self, role: str):
+class UserByRoleSpecification(Specification):
+    """Matches users with a specific role."""
+    def __init__(self, role: str) -> None:
         self._role = role
 
     def is_satisfied_by(self, candidate: Any) -> bool:
-        return getattr(candidate, "role", None) == self._role or (hasattr(candidate, "role") and getattr(candidate.role, "value", None) == self._role)
+        role = getattr(candidate, "role", None)
+        if hasattr(role, "value"):
+            return role.value == self._role
+        return role == self._role
 
 
-class HasPermission(Specification):
-    def __init__(self, permission: str):
-        self._permission = permission
+class UserByEmailDomainSpecification(Specification):
+    """Matches users whose email belongs to a specific domain."""
+    def __init__(self, domain: str) -> None:
+        self._domain = domain.lower()
 
     def is_satisfied_by(self, candidate: Any) -> bool:
-        return hasattr(candidate, "has_permission") and candidate.has_permission(self._permission)
+        email = getattr(candidate, "email", None)
+        if email is None:
+            return False
+        email_str = email.value if hasattr(email, "value") else str(email)
+        return email_str.lower().endswith(f"@{self._domain}")
 
 
-class IsNotLocked(Specification):
-    def is_satisfied_by(self, candidate: Any) -> bool:
-        return not getattr(candidate, "is_locked", True)
+__all__ = [
+    "Specification",
+    "AndSpecification",
+    "OrSpecification",
+    "NotSpecification",
+    "ActiveUserSpecification",
+    "UserByRoleSpecification",
+    "UserByEmailDomainSpecification",
+]

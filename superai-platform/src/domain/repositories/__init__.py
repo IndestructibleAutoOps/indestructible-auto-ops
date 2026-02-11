@@ -1,4 +1,4 @@
-"""Repository interfaces (ports) for the domain layer."""
+"""Domain repository interfaces (ports) — abstract contracts for persistence."""
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -10,69 +10,74 @@ T = TypeVar("T", bound=AggregateRoot)
 
 
 class Repository(ABC, Generic[T]):
-    """Abstract repository interface."""
+    """Base repository interface."""
 
     @abstractmethod
-    async def get_by_id(self, entity_id: str) -> T | None:
-        ...
+    async def find_by_id(self, entity_id: str) -> T | None: ...
 
     @abstractmethod
-    async def save(self, entity: T) -> T:
-        ...
+    async def save(self, entity: T) -> T: ...
 
     @abstractmethod
-    async def delete(self, entity_id: str) -> bool:
-        ...
+    async def delete(self, entity_id: str) -> None: ...
 
     @abstractmethod
-    async def list_all(self, skip: int = 0, limit: int = 100) -> list[T]:
-        ...
-
-    @abstractmethod
-    async def count(self) -> int:
-        ...
+    async def exists(self, entity_id: str) -> bool: ...
 
 
 class UserRepository(Repository):
-    """User-specific repository interface."""
+    """User aggregate repository port."""
 
     @abstractmethod
-    async def get_by_email(self, email: str) -> Any | None:
-        ...
+    async def find_by_id(self, entity_id: str) -> Any | None: ...
 
     @abstractmethod
-    async def get_by_username(self, username: str) -> Any | None:
-        ...
+    async def find_by_username(self, username: str) -> Any | None: ...
 
     @abstractmethod
-    async def search(self, query: str, skip: int = 0, limit: int = 20) -> list[Any]:
-        ...
+    async def find_by_email(self, email: str) -> Any | None: ...
 
     @abstractmethod
-    async def get_active_users(self, skip: int = 0, limit: int = 100) -> list[Any]:
-        ...
-
-
-class UnitOfWork(ABC):
-    """Unit of Work pattern for transaction management."""
+    async def save(self, entity: Any) -> Any: ...
 
     @abstractmethod
-    async def __aenter__(self) -> "UnitOfWork":
-        ...
+    async def delete(self, entity_id: str) -> None: ...
 
     @abstractmethod
-    async def __aexit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
-        ...
+    async def exists(self, entity_id: str) -> bool: ...
 
     @abstractmethod
-    async def commit(self) -> None:
-        ...
+    async def list_users(
+        self, skip: int = 0, limit: int = 20, search: str | None = None
+    ) -> tuple[list[Any], int]: ...
 
     @abstractmethod
-    async def rollback(self) -> None:
-        ...
+    async def count(self) -> int: ...
 
-    @property
     @abstractmethod
-    def users(self) -> UserRepository:
-        ...
+    async def update(self, entity: Any) -> Any: ...
+
+
+class QuantumJobRepository(Repository):
+    """Quantum job repository port."""
+
+    @abstractmethod
+    async def find_by_id(self, entity_id: str) -> Any | None: ...
+
+    @abstractmethod
+    async def save(self, entity: Any) -> Any: ...
+
+    @abstractmethod
+    async def delete(self, entity_id: str) -> None: ...
+
+    @abstractmethod
+    async def exists(self, entity_id: str) -> bool: ...
+
+    @abstractmethod
+    async def find_by_status(self, status: str, limit: int = 50) -> list[Any]: ...
+
+    @abstractmethod
+    async def find_by_user(self, user_id: str, skip: int = 0, limit: int = 20) -> list[Any]: ...
+
+
+__all__ = ["Repository", "UserRepository", "QuantumJobRepository"]
