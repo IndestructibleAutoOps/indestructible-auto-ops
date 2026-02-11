@@ -1,0 +1,106 @@
+# ============================================================================
+# SuperAI Platform .gitignore
+# ============================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+pip-wheel-metadata/
+.installed.cfg
+
+# --- Virtual Environments ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Testing ---
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.tox/
+.nox/
+
+# --- Type Checking ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+
+# --- Linting ---
+.ruff_cache/
+
+# --- IDE ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.orig
+
+# --- Environment ---
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# --- Docker ---
+docker-compose.override.yml
+
+# --- Terraform ---
+infrastructure/terraform/**/.terraform/
+infrastructure/terraform/**/*.tfstate
+infrastructure/terraform/**/*.tfstate.backup
+infrastructure/terraform/**/*.tfplan
+*.tfvars
+!*.tfvars.example
+
+# --- Secrets ---
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+secrets/
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Data ---
+*.db
+*.sqlite3
+data/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Node (if any frontend tooling) ---
+node_modules/
+package-lock.json
+
+# --- Misc ---
+*.pid
+*.seed
+*.pid.lock
