@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: superai
+  labels:
+    app.kubernetes.io/name: superai-platform
+    app.kubernetes.io/part-of: superai
+    app.kubernetes.io/managed-by: kustomize
+  annotations:
+    description: "SuperAI Platform — Quantum-AI Hybrid Cloud-Native Platform"
