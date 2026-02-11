@@ -51,43 +51,46 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│ NG00000: 命名空間治理憲章（憲章級，最高權重）                  │
-│ - 零容忍執行（Zero Tolerance）                                │
-│ - 唯一性、一致性、可追溯性、閉環性                             │
-│ - 約束所有 GL 層級和平台                                       │
+│ NG00000: 命名空間治理憲章（憲章級，最高權重）                  │                
+│ - 零容忍執行（Zero Tolerance）                                │      
+│ - 唯一性、一致性、可追溯性、閉環性                             │              
+│ - 約束所有 GL 層級和平台                                       │       
 └────────────────────┬─────────────────────────────────────────┘
-                     │ 約束並治理
+                     │ 約束並治理                                    
                      ▼
 ┌──────────────────────────────────────────────────────────────┐
-│ GL 平台生態系統（實施級，NG Era 組織）                         │
+│ GL 平台生態系統（實施級，NG Era 組織）                         │            
 │                                                              │
-│ platforms/ng-era-platforms/ng-era1-platforms/               │
-│   ├─ enterprise-architecture/       (GL00-09 → NG100-199)   │
-│   ├─ governance-architecture/       (GL00-09 → NG100-199)   │
-│   ├─ platform-core/                 (GL10-29 → NG100-299)   │
-│   ├─ platform-services/             (GL10-29 → NG100-299)   │
-│   └─ runtime-services/              (GL10-29 → NG100-299)   │
+│ platforms/ng-era-platforms/ng-era1-platforms/               │ 
+│   [Era-1: 代碼層, 5 platforms, 3.8M]                       │     
+│   ├─ enterprise-architecture/       (GL00-09 → NG100-199)   │ 
+│   ├─ governance-architecture/       (GL00-09 → NG100-199)   │ 
+│   ├─ platform-core/                 (GL10-29 → NG100-299)   │ 
+│   ├─ platform-services/             (GL10-29 → NG100-299)   │ 
+│   └─ runtime-services/              (GL10-29 → NG100-299)   │ 
 │                                                              │
-│ platforms/ng-era-platforms/ng-era2-platforms/               │
-│   ├─ runtime/ (3)                   (GL30-49 → NG300-499)   │
-│   ├─ data-processing/ (3)           (GL20-29 → NG300-399)   │
-│   ├─ monitoring/ (3)                (GL50-59 → NG500-599)   │
-│   └─ governance/ (2)                (GL60-80 → NG300-599)   │
+│ platforms/ng-era-platforms/ng-era2-platforms/               │ 
+│   [Era-2: 微碼層, 11 platforms, 76M]                       │     
+│   ├─ runtime/ (3)                   (GL30-49 → NG300-499)   │ 
+│   ├─ data-processing/ (3)           (GL20-29 → NG300-399)   │ 
+│   ├─ monitoring/ (3)                (GL50-59 → NG500-599)   │ 
+│   └─ governance/ (2)                (GL60-80 → NG300-599)   │ 
 │                                                              │
-│ platforms/ng-era-platforms/ng-era3-platforms/               │
-│   └─ extensions/ (3)                (GL81-83 → NG600-799)   │
+│ platforms/ng-era-platforms/ng-era3-platforms/               │ 
+│   └─ extensions/ (3)                (GL81-83 → NG600-799)   │ 
 │                                                              │
-│ platforms/ng-era-platforms/ng-cross-era-platforms/          │
-│   └─ meta/ (3)                      (GL90-99 → NG900-999)   │
+│ platforms/ng-era-platforms/ng-cross-era-platforms/          │ 
+│   [Cross-Era, 3 platforms, 232K]                          │   
+│   └─ meta/ (3)                      (GL90-99 → NG900-999)   │ 
 │                                                              │
-│ platforms/              [專項平台與工具集]                     │
-│   ├─ gl/                                                   │
-│   ├─ gov-platform-assistant/                               │
-│   ├─ gov-platform-ide/                                     │
-│   ├─ automation/ (instant, organizer)                      │
-│   ├─ quantum/ (computing)                                  │
-│   ├─ infrastructure/ (foundation)                          │
-│   └─ registry/                                             │
+│ platforms/              [專項平台與工具集]                     │      
+│   ├─ gl/                                                   │  
+│   ├─ gov-platform-assistant/                               │  
+│   ├─ gov-platform-ide/                                     │  
+│   ├─ automation/ (instant, organizer)                      │  
+│   ├─ quantum/ (computing)                                  │  
+│   ├─ infrastructure/ (foundation)                          │  
+│   └─ registry/                                             │  
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -95,34 +98,34 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ Layer 1: NG 治理層（最高權重）                               │
-│ NG00000: NgOrchestrator (Priority: -1)                      │
-│   ├─→ NG00001: NgExecutor (Zero Tolerance)                 │
-│   ├─→ NG00002: NgBatchExecutor (Batch Processing)          │
-│   ├─→ NG00003: NgMlSelfHealer (ML Self-Healing)            │
-│   ├─→ NG00004: NgStrictEnforcer (Strict Enforcement)       │
-│   └─→ NG90001: NgClosureEngine (Closure Integrity)         │
+│ Layer 1: NG 治理層（最高權重）                               │         
+│ NG00000: NgOrchestrator (Priority: -1)                      │ 
+│   ├─→ NG00001: NgExecutor (Zero Tolerance)                 │  
+│   ├─→ NG00002: NgBatchExecutor (Batch Processing)          │  
+│   ├─→ NG00003: NgMlSelfHealer (ML Self-Healing)            │  
+│   ├─→ NG00004: NgStrictEnforcer (Strict Enforcement)       │  
+│   └─→ NG90001: NgClosureEngine (Closure Integrity)         │  
 ├─────────────────────────────────────────────────────────────┤
-│ Layer 2: GL 平台生態系統（NG Era 組織）                      │
-│ 30 個平台按 NG Era 組織                                      │
-│   ├─→ Era-1: 代碼層平台（5 個）                              │
-│   ├─→ Era-2: 微碼層平台（11 個）⭐ 最大                      │
-│   ├─→ Era-3: 無碼層平台（3 個）                              │
-│   ├─→ Cross-Era: 跨層級平台（3 個）                          │
-│   └─→ Special: 專項平台（8 個）                              │
+│ Layer 2: GL 平台生態系統（NG Era 組織）                      │          
+│ 30 個平台按 NG Era 組織                                      │      
+│   ├─→ Era-1: 代碼層平台（5 個）                              │        
+│   ├─→ Era-2: 微碼層平台（11 個）⭐ 最大                      │           
+│   ├─→ Era-3: 無碼層平台（3 個）                              │        
+│   ├─→ Cross-Era: 跨層級平台（3 個）                          │        
+│   └─→ Special: 專項平台（8 個）                              │       
 ├─────────────────────────────────────────────────────────────┤
-│ Layer 3: 自動任務與註冊表層                                  │
-│ Auto Task Project (15 tasks) + Registries (5 types)        │
-│   ├─→ P0: NG 命名空間治理（最優先）                          │
-│   ├─→ P1-2: 核心任務（備份、監控）                           │
-│   ├─→ P3-6: 註冊表管理任務                                   │
-│   └─→ P8: 清理維護任務                                       │
+│ Layer 3: 自動任務與註冊表層                                  │         
+│ Auto Task Project (15 tasks) + Registries (5 types)        │  
+│   ├─→ P0: NG 命名空間治理（最優先）                          │           
+│   ├─→ P1-2: 核心任務（備份、監控）                           │           
+│   ├─→ P3-6: 註冊表管理任務                                   │       
+│   └─→ P8: 清理維護任務                                       │      
 ├─────────────────────────────────────────────────────────────┤
-│ Layer 4: 測試與文檔層                                        │
-│ Test Infrastructure + Documentation                         │
-│   ├─→ Test Suites (18 tests, 100% pass)                    │
-│   ├─→ NG Compliance Tools                                  │
-│   └─→ Documentation (30+ docs)                             │
+│ Layer 4: 測試與文檔層                                        │      
+│ Test Infrastructure + Documentation                         │ 
+│   ├─→ Test Suites (18 tests, 100% pass)                    │  
+│   ├─→ NG Compliance Tools                                  │  
+│   └─→ Documentation (30+ docs)                             │  
 └─────────────────────────────────────────────────────────────┘
 ```
 
