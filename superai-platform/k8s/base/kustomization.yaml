@@ -11,15 +11,19 @@ labels:
 
 resources:
   - namespace.yaml
+  - priorityclass.yaml
+  - resourcequota.yaml
+  - limitrange.yaml
   - configmap.yaml
   - secret.yaml
   - serviceaccount.yaml
+  - networkpolicy.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
   - hpa.yaml
   - pdb.yaml
-  - networkpolicy.yaml
+  - cronjob.yaml
 
 commonAnnotations:
   app.kubernetes.io/version: "1.0.0"

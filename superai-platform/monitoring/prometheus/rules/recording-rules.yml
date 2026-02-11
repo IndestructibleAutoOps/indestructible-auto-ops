@@ -1,0 +1,109 @@
+groups:
+  # =========================================================================
+  # API Performance Recording Rules
+  # =========================================================================
+  - name: superai_api_recording
+    interval: 30s
+    rules:
+      # Request rate by method
+      - record: superai:http_requests:rate5m
+        expr: sum(rate(superai_http_requests_total[5m])) by (method, endpoint, status)
+
+      # Total request rate
+      - record: superai:http_requests_total:rate5m
+        expr: sum(rate(superai_http_requests_total[5m]))
+
+      # Error rate (5xx)
+      - record: superai:http_errors_5xx:rate5m
+        expr: sum(rate(superai_http_requests_total{status=~"5.."}[5m]))
+
+      # Error ratio
+      - record: superai:http_error_ratio:rate5m
+        expr: |
+          sum(rate(superai_http_requests_total{status=~"5.."}[5m]))
+          /
+          sum(rate(superai_http_requests_total[5m]))
+
+      # Latency percentiles
+      - record: superai:http_latency_p50:5m
+        expr: histogram_quantile(0.50, sum(rate(superai_http_request_duration_seconds_bucket[5m])) by (le))
+
+      - record: superai:http_latency_p95:5m
+        expr: histogram_quantile(0.95, sum(rate(superai_http_request_duration_seconds_bucket[5m])) by (le))
+
+      - record: superai:http_latency_p99:5m
+        expr: histogram_quantile(0.99, sum(rate(superai_http_request_duration_seconds_bucket[5m])) by (le))
+
+      # Average latency
+      - record: superai:http_latency_avg:5m
+        expr: |
+          sum(rate(superai_http_request_duration_seconds_sum[5m]))
+          /
+          sum(rate(superai_http_request_duration_seconds_count[5m]))
+
+      # Latency by endpoint
+      - record: superai:http_latency_p95_by_endpoint:5m
+        expr: histogram_quantile(0.95, sum(rate(superai_http_request_duration_seconds_bucket[5m])) by (le, endpoint))
+
+  # =========================================================================
+  # SLI / SLO Recording Rules
+  # =========================================================================
+  - name: superai_slo_recording
+    interval: 1m
+    rules:
+      # Availability SLI: ratio of non-5xx responses
+      - record: superai:sli_availability:rate5m
+        expr: |
+          1 - (
+            sum(rate(superai_http_requests_total{status=~"5.."}[5m]))
+            /
+            sum(rate(superai_http_requests_total[5m]))
+          )
+
+      # Latency SLI: ratio of requests under 500ms
+      - record: superai:sli_latency:rate5m
+        expr: |
+          sum(rate(superai_http_request_duration_seconds_bucket{le="0.5"}[5m]))
+          /
+          sum(rate(superai_http_request_duration_seconds_count[5m]))
+
+      # Error budget burn rate (1h window, 99.9% SLO)
+      - record: superai:error_budget_burn_rate:1h
+        expr: |
+          sum(rate(superai_http_requests_total{status=~"5.."}[1h]))
+          /
+          sum(rate(superai_http_requests_total[1h]))
+          / 0.001
+
+      # Error budget burn rate (6h window)
+      - record: superai:error_budget_burn_rate:6h
+        expr: |
+          sum(rate(superai_http_requests_total{status=~"5.."}[6h]))
+          /
+          sum(rate(superai_http_requests_total[6h]))
+          / 0.001
+
+  # =========================================================================
+  # Infrastructure Recording Rules
+  # =========================================================================
+  - name: superai_infra_recording
+    interval: 1m
+    rules:
+      # Pod CPU usage
+      - record: superai:pod_cpu_usage:rate5m
+        expr: sum(rate(container_cpu_usage_seconds_total{pod=~"superai-.*", container!=""}[5m])) by (pod)
+
+      # Pod memory usage
+      - record: superai:pod_memory_usage_bytes
+        expr: sum(container_memory_working_set_bytes{pod=~"superai-.*", container!=""}) by (pod)
+
+      # Pod restart count
+      - record: superai:pod_restarts_total
+        expr: sum(kube_pod_container_status_restarts_total{pod=~"superai-.*"}) by (pod)
+
+      # Deployment replica availability
+      - record: superai:deployment_available_ratio
+        expr: |
+          kube_deployment_status_replicas_available{deployment=~"superai-.*"}
+          /
+          kube_deployment_spec_replicas{deployment=~"superai-.*"}

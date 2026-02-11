@@ -1,0 +1,70 @@
+# === Git ===
+.git
+.gitignore
+
+# === Python ===
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info
+*.egg
+dist
+build
+.eggs
+*.whl
+
+# === Virtual Environments ===
+.venv
+venv
+env
+
+# === IDE ===
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# === Testing & Coverage ===
+.pytest_cache
+.coverage
+htmlcov
+coverage.xml
+.mypy_cache
+.ruff_cache
+
+# === Docker ===
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# === CI/CD ===
+.github
+.pre-commit-config.yaml
+
+# === Documentation (not needed in image) ===
+docs
+*.md
+!README.md
+LICENSE
+
+# === Infrastructure configs (not needed in app image) ===
+k8s
+helm
+argocd
+infrastructure/terraform
+infrastructure/docker
+monitoring
+security
+logging
+
+# === Misc ===
+.env
+.env.*
+!.env.example
+tmp
+logs
+*.log
+node_modules
