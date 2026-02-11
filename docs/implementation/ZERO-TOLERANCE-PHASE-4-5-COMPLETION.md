@@ -149,7 +149,7 @@ metrics/current.json                    (System metrics)
 ```
 ZERO-TOLERANCE-SYSTEM-COMPLETE.md
 ZERO-TOLERANCE-FINAL-REPORT.md
-ABSOLUTE-ZERO-TOLERANCE-ACHIEVED.md
+../reports/absolute-zero-tolerance-achieved.md
 BINARY-ENFORCEMENT-COMPLETE.md
 GOVERNANCE.md
 ARCHITECTURE.md
@@ -455,7 +455,7 @@ tests/test_audit_trail.py                         (8 tests)
 ```
 ZERO-TOLERANCE-SYSTEM-COMPLETE.md
 ZERO-TOLERANCE-FINAL-REPORT.md
-ABSOLUTE-ZERO-TOLERANCE-ACHIEVED.md
+../reports/absolute-zero-tolerance-achieved.md
 BINARY-ENFORCEMENT-COMPLETE.md
 docs/implementation/P1-IMPLEMENTATION-REPORT.md
 ```

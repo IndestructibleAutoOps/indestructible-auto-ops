@@ -373,7 +373,7 @@ platforms/                      [專項平台, 8 platforms]
 2. ✅ PLATFORM-CONSOLIDATION-SUMMARY.md
 3. ✅ PLATFORM-CONSOLIDATION-NG-COMPLIANT.md
 4. ✅ PLATFORM-INTEGRATION-FINAL-SUMMARY.md
-5. ✅ PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md
+5. ✅ docs/reports/platform-consolidation-execution-report.md
 6. ✅ PLATFORM-CONSOLIDATION-COMPLETE.md
 7. ✅ FINAL-INTEGRATION-SUCCESS.md（本文檔）
 8. ✅ readme.md（已更新）

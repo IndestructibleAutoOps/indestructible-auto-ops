@@ -70,7 +70,7 @@ workspace/
     └── registry/
 ```
 
-See [Platform Consolidation Report](PLATFORM-CONSOLIDATION-EXECUTION-REPORT.md) for details.
+See [Platform Consolidation Report](docs/reports/platform-consolidation-execution-report.md) for details.
 
 ## Layer Descriptions
 
