@@ -1,0 +1,137 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: superai-app
+  namespace: superai
+  labels:
+    app: superai
+    component: api
+    version: v1
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: superai
+      component: api
+  template:
+    metadata:
+      labels:
+        app: superai
+        component: api
+        version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: superai-sa
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: superai-app
+          image: superai-platform:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: superai-config
+            - secretRef:
+                name: superai-secrets
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          livenessProbe:
+            httpGet:
+              path: /api/v1/live
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/v1/ready
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /api/v1/health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+          volumeMounts:
+            - name: app-logs
+              mountPath: /app/logs
+            - name: tmp
+              mountPath: /app/tmp
+      volumes:
+        - name: app-logs
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: superai
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: superai-worker
+  namespace: superai
+  labels:
+    app: superai
+    component: worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: superai
+      component: worker
+  template:
+    metadata:
+      labels:
+        app: superai
+        component: worker
+    spec:
+      serviceAccountName: superai-sa
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+      containers:
+        - name: worker
+          image: superai-platform:1.0.0
+          command: ["celery", "-A", "src.infrastructure.tasks.worker:celery_app", "worker", "--loglevel=info", "--concurrency=4", "-Q", "default,quantum,ai,scientific"]
+          envFrom:
+            - configMapRef:
+                name: superai-config
+            - secretRef:
+                name: superai-secrets
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: "2"
+              memory: 4Gi

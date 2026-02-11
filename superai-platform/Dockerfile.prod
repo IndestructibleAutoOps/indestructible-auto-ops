@@ -1,0 +1,94 @@
+# ============================================================================
+# SuperAI Platform - Production Multi-Stage Dockerfile
+# ============================================================================
+# Stage 1: Builder - Install dependencies and build wheels
+# Stage 2: Runtime - Minimal production image
+# ============================================================================
+
+# ---------------------------------------------------------------------------
+# Stage 1: Builder
+# ---------------------------------------------------------------------------
+FROM python:3.11-slim AS builder
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+WORKDIR /build
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml ./
+RUN pip install --upgrade pip setuptools wheel \
+    && pip wheel --no-deps --wheel-dir /build/wheels -e ".[dev]" \
+    || pip wheel --no-deps --wheel-dir /build/wheels -e .
+
+COPY . .
+RUN pip wheel --no-deps --wheel-dir /build/wheels .
+
+# ---------------------------------------------------------------------------
+# Stage 2: Runtime
+# ---------------------------------------------------------------------------
+FROM python:3.11-slim AS runtime
+
+LABEL maintainer="Enterprise Engineering Team" \
+      version="1.0.0" \
+      description="SuperAI Cloud-Native Platform"
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH="/app/src:${PYTHONPATH}" \
+    APP_ENV=production \
+    APP_PORT=8000 \
+    APP_WORKERS=4 \
+    APP_LOG_LEVEL=info
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 \
+    curl \
+    tini \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd -r appuser && useradd -r -g appuser -d /app -s /sbin/nologin appuser
+
+WORKDIR /app
+
+COPY --from=builder /build/wheels /tmp/wheels
+RUN pip install --no-cache-dir --no-deps /tmp/wheels/*.whl 2>/dev/null; \
+    pip install --no-cache-dir \
+    fastapi uvicorn[standard] gunicorn sqlalchemy[asyncio] asyncpg \
+    alembic pydantic pydantic-settings python-jose[cryptography] \
+    passlib[bcrypt] redis celery structlog prometheus-client \
+    python-dotenv httpx orjson pyyaml tenacity aiofiles \
+    numpy pandas scipy scikit-learn \
+    && rm -rf /tmp/wheels
+
+COPY --chown=appuser:appuser . .
+
+RUN mkdir -p /app/logs /app/data /app/tmp \
+    && chown -R appuser:appuser /app
+
+USER appuser
+
+EXPOSE ${APP_PORT}
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:${APP_PORT}/api/v1/health || exit 1
+
+ENTRYPOINT ["tini", "--"]
+
+CMD ["gunicorn", "src.presentation.api.main:app", \
+     "--worker-class", "uvicorn.workers.UvicornWorker", \
+     "--bind", "0.0.0.0:8000", \
+     "--workers", "4", \
+     "--timeout", "120", \
+     "--graceful-timeout", "30", \
+     "--keep-alive", "5", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-", \
+     "--log-level", "info"]

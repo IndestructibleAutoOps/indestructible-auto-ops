@@ -1,0 +1,90 @@
+groups:
+  - name: superai-api
+    rules:
+      - alert: HighErrorRate
+        expr: rate(superai_http_requests_total{status=~"5.."}[5m]) / rate(superai_http_requests_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate on {{ $labels.endpoint }}"
+          description: "Error rate is {{ $value | humanizePercentage }} on {{ $labels.endpoint }}"
+
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, rate(superai_http_request_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency on {{ $labels.endpoint }}"
+          description: "P95 latency is {{ $value }}s"
+
+      - alert: ServiceDown
+        expr: up{job="superai-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SuperAI API is down"
+
+  - name: superai-infrastructure
+    rules:
+      - alert: DatabaseDown
+        expr: up{job="postgres"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL is down"
+
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down"
+
+      - alert: HighMemoryUsage
+        expr: process_resident_memory_bytes{job="superai-api"} / 1024 / 1024 > 1500
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage: {{ $value }}MB"
+
+      - alert: HighCPUUsage
+        expr: rate(process_cpu_seconds_total{job="superai-api"}[5m]) > 0.8
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+
+  - name: superai-quantum
+    rules:
+      - alert: QuantumJobFailureRate
+        expr: rate(superai_quantum_jobs_failed_total[15m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High quantum job failure rate"
+
+  - name: superai-ai
+    rules:
+      - alert: LLMHighLatency
+        expr: histogram_quantile(0.95, rate(superai_llm_request_duration_seconds_bucket[5m])) > 30
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "LLM response time exceeds 30s"
+
+      - alert: VectorDBDown
+        expr: up{job="chromadb"} == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "ChromaDB vector database is down"

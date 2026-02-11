@@ -1,0 +1,158 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: superai-app
+  namespace: superai
+  labels:
+    app: superai
+    component: api
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: superai
+    component: api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: superai-metrics
+  namespace: superai
+  labels:
+    app: superai
+    component: metrics
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8000"
+spec:
+  type: ClusterIP
+  ports:
+    - name: metrics
+      port: 8000
+      targetPort: http
+  selector:
+    app: superai
+    component: api
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: superai-ingress
+  namespace: superai
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - api.superai.example.com
+      secretName: superai-tls
+  rules:
+    - host: api.superai.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: superai-app
+                port:
+                  name: http
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: superai-config
+  namespace: superai
+data:
+  APP_ENV: "production"
+  APP_PORT: "8000"
+  APP_WORKERS: "4"
+  LOG_LEVEL: "info"
+  DATABASE_POOL_SIZE: "20"
+  DATABASE_MAX_OVERFLOW: "10"
+  REDIS_MAX_CONNECTIONS: "50"
+  QUANTUM_BACKEND: "aer_simulator"
+  QUANTUM_SHOTS: "1024"
+  PROMETHEUS_ENABLED: "true"
+  ELASTICSEARCH_URL: "http://elasticsearch:9200"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: superai-secrets
+  namespace: superai
+type: Opaque
+stringData:
+  SECRET_KEY: "CHANGE-ME-use-openssl-rand-hex-64"
+  DATABASE_URL: "postgresql+asyncpg://superai:CHANGE_ME@postgres:5432/superai_db"
+  REDIS_URL: "redis://:CHANGE_ME@redis:6379/0"
+  CELERY_BROKER_URL: "amqp://superai:CHANGE_ME@rabbitmq:5672//"
+  JWT_SECRET_KEY: "CHANGE-ME-jwt-secret"
+  AI_OPENAI_API_KEY: ""
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: superai-sa
+  namespace: superai
+  labels:
+    app: superai
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: superai-app-hpa
+  namespace: superai
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: superai-app
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 120
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: superai-app-pdb
+  namespace: superai
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: superai
+      component: api
