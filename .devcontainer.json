@@ -1,0 +1,93 @@
+{
+  "name": "IndestructibleAutoOps Development",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20.10.0"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "python.linting.enabled": true,
+        "python.formatting.provider": "black",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-python.pylint",
+        "github.copilot",
+        "github.copilot-chat",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "humao.rest-client",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-bicep",
+        "github.vscode-github-actions"
+      ]
+    }
+  },
+  "postCreateCommand": "bash ./.devcontainer/post-create.sh",
+  "remoteUser": "vscode",
+  "forwardPorts": [3000, 4000, 5432, 6379, 7687],
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend Development Server",
+      "onAutoForward": "notify"
+    },
+    "4000": {
+      "label": "API Server",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "PostgreSQL Database",
+      "onAutoForward": "silent"
+    },
+    "6379": {
+      "label": "Redis Cache",
+      "onAutoForward": "silent"
+    },
+    "7687": {
+      "label": "Neo4j Database",
+      "onAutoForward": "silent"
+    }
+  },
+  "containerEnv": {
+    "NODE_ENV": "development",
+    "PORT": "4000",
+    "LOG_LEVEL": "debug",
+    "DEBUG_MODE": "true"
+  },
+  "secrets": {
+    "GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}",
+    "ANTHROPIC_API_KEY": "${{ secrets.ANTHROPIC_API_KEY }}",
+    "OPENAI_API_KEY": "${{ secrets.OPENAI_API_KEY }}",
+    "GOOGLE_AI_API_KEY": "${{ secrets.GOOGLE_AI_API_KEY }}",
+    "HF_API_KEY": "${{ secrets.HF_API_KEY }}"
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "source=${localWorkspaceFolderBasename}-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+    "source=${localWorkspaceFolderBasename}-python-cache,target=${containerWorkspaceFolder}/.cache/pip,type=volume"
+  ]
+}

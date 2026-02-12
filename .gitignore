@@ -1,6 +1,8 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# dependencies
+# ============================================================================
+# DEPENDENCIES
+# ============================================================================
 node_modules/
 
 # Expo
@@ -8,6 +10,49 @@ node_modules/
 dist/
 web-build/
 expo-env.d.ts
+
+# ============================================================================
+# BUILD & ARTIFACTS
+# ============================================================================
+build/
+out/
+.cache/
+*.tgz
+*.tar.gz
+*.pyc
+__pycache__/
+*.egg-info/
+
+# ============================================================================
+# ENVIRONMENT & SENSITIVE FILES
+# ============================================================================
+.env
+.env.*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.gh_token
+.secrets/
+*.key
+*.pem
+*.p12
+*.p8
+*.jks
+*.mobileprovision
+
+# API Key & Token Files
+*api-key*
+*api_key*
+*apikey*
+*api-key.*
+*token*
+*token.*
+*credentials*
+*creds*
+*secrets*
+*.secret
+*.secrets
 
 # Native
 .kotlin/
@@ -21,66 +66,49 @@ expo-env.d.ts
 # Metro
 .metro-health-check*
 
-# debug
+# ============================================================================
+# DATABASE & BACKUP FILES
+# ============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.sql.backup
+dump.sql
+backup/
+backups/
+outputs/
+!reports/research-runs/**/outputs/
+!reports/research-runs/**/outputs/**
+
+# ============================================================================
+# LOGS & TEMPORARY FILES
+# ============================================================================
+logs/
+*.log
 npm-debug.*
 yarn-debug.*
 yarn-error.*
-
-# macOS
-.DS_Store
-*.pem
-
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-# Compiled JavaScript files in source directories
-# (TypeScript output should only go to dist/)
-gl-runtime-platform/inter-reality/**/*.js
-!gl-runtime-platform/inter-reality/**/*.config.js
-!gl-runtime-platform/inter-reality/**/*.test.js
-gl-runtime-platform/src/**/*.js
-!gl-runtime-platform/src/**/*.config.js
-!gl-runtime-platform/src/**/*.test.js
-
-app-example
-
-# generated native folders
-/ios
-/android
-
-# IDE
-.vscode/
-.idea/
+tmp/
+temp/
+*.tmp
 *.swp
 *.swo
 *~
 
-# Logs
-logs
-*.log
-
-# OS
+# macOS
+.DS_Store
 Thumbs.db
 
-# Build files
-*.tgz
-*.tar.gz
-.cache/
-*.pyc
-__pycache__/
-*.egg-info/
-build/
-.env
-.gh_token
-
-# Coverage artifacts
+# ============================================================================
+# COVERAGE & TEST RESULTS
+# ============================================================================
 .coverage
 .coverage.*
 htmlcov/
 
+# ============================================================================
+# GENERATED & SENSITIVE DIRECTORIES
+# ============================================================================
 # Sensitive directories - may contain tokens/secrets
 outputs/
 !reports/research-runs/**/outputs/
@@ -98,3 +126,70 @@ backup/
 
 # IAOPS runtime artifacts
 .indestructibleautoops/
+
+# ============================================================================
+# CONFIGURATION SECRETS
+# ============================================================================
+config/secrets.yml
+config/secrets.yaml
+config/secrets.json
+*secrets.*
+*credentials.*
+
+# ============================================================================
+# DEPLOYMENT SECRETS
+# ============================================================================
+deploy/secrets/
+.env.production/
+.env.staging/
+.cloudformation/secrets/
+terraform/secrets.tfvars/
+kubeconfig/
+*.kubeconfig/
+
+# ============================================================================
+# THIRD-PARTY SECRETS
+# ============================================================================
+.aws/credentials/
+.aws/config/
+.gcloud/credentials/
+.azure/config/
+.heroku/credentials/
+
+# ============================================================================
+# AI & API KEYS
+# ============================================================================
+.claude/
+claude-api-key.txt
+anthropic-key.txt
+.openai/
+openai-key.txt
+.openai-key
+google-ai-key.txt
+hf-key.txt
+
+# ============================================================================
+# IDE & EDITOR
+# ============================================================================
+.vscode/
+.idea/
+*.sublime-*
+.history/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# CERTIFICATES & KEYS
+# ============================================================================
+*.crt
+*.cer
+*.der
+*.pfx
+*.p7b
+*.p7r
+*.csr
+*.rsa
+*.key
+*.pkcs12
+*.p12
+*.pem
